@@ -1,0 +1,37 @@
+/* stylelint-disable */
+
+/**************************************************************************
+
+    Font Size Helpers
+    =================
+
+    Generates helper classes for font size.
+
+**************************************************************************/
+
+
+@each $_shortname, $_value in $__typography {
+  .#{$helper_ns}text-#{$_shortname} {
+    font-size: $_value !important;
+  }
+}
+
+
+
+/**************************************************************************
+
+    Text Aligning Helpers
+
+**************************************************************************/
+
+.#{$helper_ns}text {
+  &-left {
+    text-align: left !important;
+  }
+  &-center {
+    text-align: center !important;
+  }
+  &-right {
+    text-align: right !important;
+  }
+}

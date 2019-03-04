@@ -1,0 +1,4 @@
+// Theme Extend is created as an empty default map.
+// This is to prevent the map merge of custom theme values
+// from breaking.
+$__colors: non-destructive-map-merge($__colors, $navy--colors);

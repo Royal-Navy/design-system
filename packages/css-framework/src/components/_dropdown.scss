@@ -1,0 +1,122 @@
+
+
+$dropdown-btn-sizes: (
+  small: (
+    font-size: font-size(xxs),
+    padding: spacing(2) spacing(3)
+  ),
+  regular: (
+    font-size: font-size(xs),
+    padding: spacing(3) spacing(4)
+  ),
+  large: (
+    font-size: font-size(s),
+    padding: spacing(3) spacing(5)
+  )
+);
+
+
+.rn-dropdown {
+  position: relative;
+  display: inline-block;
+
+  &__button {
+    color: color(neutral, 700);
+    background-color: color(neutral, white);
+    border: 1px solid color(neutral, 200);
+    font-weight: 500;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s;
+    line-height: 1;
+    min-width: 140px;
+    cursor: pointer;
+    outline: none;
+    svg {
+      color: color(neutral, 400);
+    }
+    @include hover {
+      box-shadow: 0 0 0 3px color(primary, 100);
+    }
+  }
+
+  &__arrow {
+    transition: all 0.3s;
+  }
+
+  
+
+  &.is-open {
+    .rn-dropdown__button {
+      outline: none;
+      border: 1px solid color(primary, 500);
+      box-shadow: 0 0 0 3px color(primary, 100);
+    }
+    .rn-dropdown__arrow {
+      transform: rotate(180deg);
+    }
+    .rn-dropdown__sheet {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      transition: all 0.1s;
+      .option {
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &__sheet {
+    background-color: color(neutral, white);
+    @include shadow(1);
+    top: calc(100% + 8px);
+    position: absolute;
+    border: 1px solid color(neutral, 200);
+    border-radius: 5px;
+    padding: spacing(1) 0;
+    min-width: 160px;
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+    transition: all 0.3s;
+    max-height: 158px;
+    overflow-y: scroll;
+  }
+
+  &__option {
+    cursor: pointer;
+    @include font-size(xs);    
+    padding: spacing(2) spacing(3);
+    display: flex;
+    justify-content: space-between;
+    &:hover {
+      color: color(neutral, 800);
+      background-color: color(neutral, 000);
+    }
+    &__label {
+      color: color(neutral, 800);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    &__helper {
+      white-space: nowrap;
+      color: color(neutral, 500);
+      padding-left: 24px;
+    }
+  }
+
+  // Providing default sizing
+  &__button {
+    font-size: map-deep-get($dropdown-btn-sizes, "regular", "font-size");
+    padding: map-deep-get($dropdown-btn-sizes, "regular", "padding");
+  }
+
+  @each $size, $values in $dropdown-btn-sizes {
+    &.#{$size} {
+      .rn-dropdown__button {
+        font-size: map-get($values, "font-size");
+        padding: map-get($values, "padding");
+      }
+    }
+  }
+}

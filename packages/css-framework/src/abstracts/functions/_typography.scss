@@ -1,0 +1,15 @@
+@function font-size($size) {
+
+  // By Default, assume the font-size doesn't exist
+  $value: false;
+
+  @if map-has-key($__typography, $size) {
+    $value: map-get($__typography, $size);    
+  }
+
+  @else {
+    @error "No font size could be retrieved for #{$size}";
+  }
+
+  @return $value;
+}

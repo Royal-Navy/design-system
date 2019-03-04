@@ -1,0 +1,31 @@
+// .rn-list__item {
+//   // border-bottom: 1px solid color(40);
+//   @include font-size(s);
+//   // color: color(70);
+//   padding: spacing(3) spacing(4);
+//   flex-direction: row;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   > * {
+//     margin-bottom: 0;
+//   }
+
+//   :last-child {
+//     margin-bottom: 0;
+//   }
+
+//   .title {
+//     margin-bottom: spacing(1);
+//   }
+
+//   &.active {
+//     // background-color: color(70, blue);
+//     .title {
+//       // color: color(10);
+//     }
+//     > * {
+//       // color: color(40);
+//     }
+//   }
+// }

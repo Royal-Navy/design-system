@@ -1,0 +1,71 @@
+/*****************************************************
+
+        Build Base Font Size
+
+*****************************************************/
+
+
+// Local variable to check loop position
+$x: 0;
+html {
+  @each $_bp, $_baseFontSize in $__breakpoints {
+    $_fontSize: map-deep-get($__breakpoints, $_bp, "baseFontSize");
+    $_width: #{map-deep-get($__breakpoints, $_bp, "breakpoint")};
+    @if $x == 0 {
+      font-size: $_fontSize;
+    }
+    @else {
+      @media only screen and (min-width: #{$_width}) {
+        font-size: $_fontSize;
+      }
+    }
+    $x: $x + 1;
+  }
+
+  font-family: $navy--font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+h1,
+.rn-h1 {
+  @include font-size(xl);
+}
+
+h2,
+.rn-h2 {
+  @include font-size(l);
+}
+
+h3,
+.rn-h3 {
+  @include font-size(m);
+}
+
+h4,
+.rn-h4 {
+  @include font-size(base);
+}
+
+h5,
+.rn-h5 {
+  @include font-size(s);
+}
+
+h6,
+.rn-h6 {
+  @include font-size(xs);
+}
+
+p,
+.rn-p {
+  @include font-size(s);  
+}

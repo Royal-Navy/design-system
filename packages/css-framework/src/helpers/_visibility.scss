@@ -1,0 +1,15 @@
+/* stylelint-disable */
+
+// Visibility Helper
+
+.#{$helper_ns} {
+  &visible {
+    visibility: visible !important;
+  }
+  &hidden {
+    visibility: hidden !important;
+  }
+  &none {
+    display: none !important;
+  }
+}

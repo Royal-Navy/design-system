@@ -1,0 +1,18 @@
+/**************************************************************************
+
+    Font Size Mixin
+    =================
+
+    When supplied with a typography level, the associated value is returned
+
+**************************************************************************/
+
+@mixin font-size($size) {
+  @if map-has-key($__typography, $size) {
+    font-size: map-get($__typography, $size);
+  }
+
+  @else {
+    @error "No font size could be retrieved for #{$size}";
+  }
+}

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RnNavigation.vue snapshot: has same HTML structure 1`] = `
+<nav class="rn-nav horizontal"><a href="http://testurl.test" class="rn-nav__item">Home
+  </a><a href="http://testurl.test" class="rn-nav__item">Link 1
+  </a><a href="http://testurl.test" class="rn-nav__item">Link 2
+  </a><a href="http://testurl.test" class="rn-nav__item">Link 3
+  </a></nav>
+`;

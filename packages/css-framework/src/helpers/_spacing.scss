@@ -1,0 +1,30 @@
+/* stylelint-disable */
+
+$rules: (
+  margin: m,
+  padding: p
+);
+
+$sides: (
+  top: t,
+  right: r,
+  bottom: b,
+  left: l
+);
+
+// Build Spacing Helper Classes
+
+@each $_size, $_multiplier in $__spacing {
+  @each $_rule, $_rule-shortname in $rules {
+    .#{$helper-ns}#{$_rule-shortname}-#{$_size} {
+      #{$_rule}: $_multiplier !important;
+    }
+  }
+  @each $_property, $_shortname in $sides {
+    @each $_rule, $_rule-shortname in $rules {
+      .#{$helper-ns}#{$_rule-shortname}#{$_shortname}-#{$_size} {
+        #{$_rule}-#{$_property}: $_multiplier !important;
+      }
+    }
+  }
+}

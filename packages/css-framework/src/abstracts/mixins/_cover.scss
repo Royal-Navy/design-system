@@ -1,0 +1,6 @@
+@mixin cover($pos: 0) {
+  top: $pos;
+  bottom: $pos;
+  left: $pos;
+  right: $pos;
+}

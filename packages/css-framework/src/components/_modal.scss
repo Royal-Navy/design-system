@@ -1,0 +1,46 @@
+.rn-modal {
+  @include cover;
+  @include cover;
+  @include font-size(s);
+  @include shadow(1);
+  @include z-index(dialog);
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid color(neutral, 300);
+  border-radius: 3px;
+  display: flex;
+  padding: spacing(8);
+  position: fixed;
+
+  .window {
+    background-color: color(neutral, white);
+    margin: auto;
+    width: 90vw;
+    @include breakpoint(s) {
+      width: 80vw;
+    }
+    @include breakpoint(m) {
+      width: 70vw;
+    }
+  }
+
+  .header {
+    padding: spacing(6) spacing(8);
+    border-bottom: 1px solid color(neutral, 100);
+  }
+
+  .content {
+    padding: spacing(4) spacing(8);
+  }
+
+  .footer {
+    background-color: color(neutral, 000);
+    padding: spacing(4) spacing(4);
+    border-top: 1px solid color(neutral, 100);
+    display: flex;
+    justify-content: flex-end;
+
+    > :last-child {
+      margin-left: 8px;
+    }
+  }
+}

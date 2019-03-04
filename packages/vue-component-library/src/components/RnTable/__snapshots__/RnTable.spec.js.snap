@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RnTable.vue snapshot: has same HTML structure 1`] = `
+<table class="rn-table">
+  <thead>
+    <tr>
+      <th>Fruit Name</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Apple</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Banana</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Megafruit</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>Snozzberry</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+  <caption><span class="table-caption">Whoever heard of a snozzberry?</span></caption>
+</table>
+`;

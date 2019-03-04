@@ -1,0 +1,41 @@
+.rn-nav {
+  display: flex;
+  &.vertical {
+    flex-direction: column;
+  }
+}
+
+.rn-nav__item {
+  color: color(neutral, 700);
+  transition: all 0.3s;
+  @include font-size(xs);
+  text-decoration: none;
+  padding: spacing(2) spacing(4);
+  border-radius: 4px;
+  &:hover {
+    background-color: color(neutral, 000);
+    color: color(primary, 800);
+  }
+
+  .horizontal & + & {
+    margin-left: spacing(1);
+  }
+
+  .vertical & + & {
+    margin-top: spacing(1);
+  }
+
+  &.active {
+    background-color: color(primary, 500);
+    color: color(neutral, white);
+  }
+
+  &.disabled {
+    color: color(neutral, 400);
+    pointer-events: none;
+  }
+
+  &.stretch {
+    flex: 1;
+  }
+}

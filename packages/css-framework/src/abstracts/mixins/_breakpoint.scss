@@ -1,0 +1,23 @@
+/**************************************************************************
+
+    Breakpoint Mixin
+    =================
+
+    When supplied with a breakpoint name, the size in px is returned
+
+
+**************************************************************************/
+
+
+@mixin breakpoint($bp) {
+  @if map-has-key($__breakpoints, $bp) {
+    $_width: #{map-deep-get($__breakpoints, $bp, "breakpoint")};
+    @media only screen and (min-width: #{$_width}) {
+      @content;
+    }
+  }
+
+  @else {
+    @error "No breakpoint value could be retrieved for #{$bp}";
+  }
+}

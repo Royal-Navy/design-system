@@ -1,0 +1,28 @@
+/**************************************************************************
+
+    Z Index Mixin
+    =============
+
+    When supplied with a group, the z index is returned
+
+
+**************************************************************************/
+
+
+@mixin z-index($level, $subLevel: 0) {
+  @if map-has-key($__zIndex, $level) {
+    $group: map-get($__zIndex, $level);
+    @if $subLevel < 1000 {
+      z-index: $group + $subLevel;
+    }
+    @else {
+      z-index: $group;
+      @warn "#{$subLevel} exceeds range, so z-index has been set to the base group level. Please use a maximum value of 1000.";
+    }
+
+  }
+
+  @else {
+    @error "No value could be retrieved for the group #{$level}";
+  }
+}

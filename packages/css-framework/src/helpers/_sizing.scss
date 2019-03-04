@@ -1,0 +1,16 @@
+/* stylelint-disable */
+// Sizing Helper
+$axes: (
+  width: w,
+  height: h
+);
+
+// Build Spacing Helper Classes
+
+@each $_size, $_multiplier in $__spacing {
+  @each $_axis, $_axis-shortname in $axes {
+    .#{$helper-ns}#{$_axis-shortname}-#{$_size} {
+      #{$_axis}: $_multiplier !important;
+    }
+  }
+}

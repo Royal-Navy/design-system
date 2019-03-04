@@ -1,0 +1,16 @@
+/**************************************************************************
+
+    Truncate Mixin
+    =============
+
+    The Truncate Mixin takes a max width value, and ensures text does not
+    flow beyond this width.
+
+**************************************************************************/
+
+@mixin truncate($width) {
+  max-width: $width;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

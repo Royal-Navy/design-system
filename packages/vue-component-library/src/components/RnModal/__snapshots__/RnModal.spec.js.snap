@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RnModal.vue snapshot: has same HTML structure 1`] = `
+<div class="rn-modal">
+  <div class="window">
+    <!---->
+    <div class="content"></div>
+    <div class="footer">
+      <rn-button-stub type="link" class="secondary h_mr-2">Cancel</rn-button-stub>
+      <rn-button-stub>OK</rn-button-stub>
+    </div>
+  </div>
+</div>
+`;

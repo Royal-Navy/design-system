@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RnProgress.vue snapshot: has same HTML structure 1`] = `
+<div class="rn-progress default">
+  <div class="rn-progress__bar" style="width:50%;"></div>
+</div>
+`;

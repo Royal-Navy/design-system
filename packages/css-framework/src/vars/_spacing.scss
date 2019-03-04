@@ -1,0 +1,11 @@
+/**************************************************************************
+
+    System-wide Spacing
+    =======================
+
+    Nelson components use REMs to size and scale components at various
+    screen resolutions.
+
+**************************************************************************/
+
+$__spacing: non-destructive-map-merge($__spacing, $navy--spacing);

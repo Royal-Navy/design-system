@@ -1,0 +1,11 @@
+/**************************************************************************
+
+    System-wide Breakpoints
+    =======================
+
+    Nelson component libray uses REMs to size and scale components at various
+    screen resolutions.
+
+**************************************************************************/
+
+$__breakpoints: non-destructive-map-merge($__breakpoints, $navy--breakpoints);

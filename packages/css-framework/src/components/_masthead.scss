@@ -1,0 +1,55 @@
+.rn-masthead {  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  @include shadow(1);
+  
+  &__head {
+    background: color(neutral, white);
+    border-bottom: 1px solid color(neutral, 000);
+    padding: spacing(3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__title {
+    margin: 0 0 0 spacing(2);
+    color: color(neutral, 700);
+    font-weight: 400;
+    @include font-size(base);
+  }
+
+  &__action {
+    min-width: 140px;
+  }
+
+
+  &__nav {
+    display: flex;
+    background: color(neutral, white);
+    padding-left: spacing(1);
+  }
+
+  &__link {
+    @include font-size(xs);
+    font-weight: 500;
+    color: color(neutral, 600);
+    text-align: center;
+    text-decoration: none;
+    padding: spacing(4) spacing(4);
+    display: block;
+    border-top: 2px solid transparent;
+    border-bottom: 4px solid transparent;
+    transition: all 0.3s;
+    &:hover {
+      border-bottom: 4px solid color(primary, 400);
+    }
+    &.active {
+      border-bottom: 4px solid color(primary, 400);
+      color: color(primary, 400);
+    }
+  }
+
+}

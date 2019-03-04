@@ -1,0 +1,129 @@
+{
+  "name": "@royalnavy/vue-component-library",
+  "version": "0.3.0",
+  "description": "A collection of react components and helpers to assist in building applications for the Royal Navy",
+  "keywords": [
+    "vue",
+    "components"
+  ],
+  "author": "NELSON",
+  "contributors": [
+    "98dfsj <98dfsj@royalnavy.io> (royalnavy.io)",
+    "hxltrhuxze <hxltrhuxze@royalnavy.io> (royalnavy.io)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Royal-Navy/nelson-frontend-component-library.git"
+  },
+  "homepage": "https://github.com/Royal-Navy/nelson-frontend-component-library#readme",
+  "license": "MIT",
+  "main": "./dist/bundle.common.js",
+  "files": [
+    "dist",
+    "static"
+  ],
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vue-cli-service build --target lib --name bundle ./index.js",
+    "build-storybook": "build-storybook",
+    "lint": "eslint src",
+    "lint-staged": "lint-staged",
+    "storybook": "start-storybook -s ./static -p 3001",
+    "svg": "vsvg -s ./static/assets/icons -t ./src/icons",
+    "test": "jest --silent",
+    "test:ci": "JEST_JUNIT_OUTPUT=../../test-results/vue-components-unit.xml jest --ci --reporters=default --reporters=jest-junit",
+    "test:watch": "jest --silent --watch"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "@royalnavy/css-framework": "^0.3.0",
+    "@storybook/addon-actions": "^4.1.13",
+    "@storybook/addon-centered": "^4.1.13",
+    "@storybook/addon-console": "^1.1.0",
+    "@storybook/addon-knobs": "^4.1.13",
+    "@storybook/addon-links": "^4.1.13",
+    "@storybook/addon-options": "^4.1.13",
+    "@storybook/addons": "^4.1.13",
+    "@storybook/vue": "^4.1.13",
+    "@vue/cli-plugin-babel": "^3.4.1",
+    "@vue/cli-service": "^3.4.1",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^24.1.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-vue": "^2.0.2",
+    "eslint": "^5.15.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "husky": "^1.3.1",
+    "jest": "^24.1.0",
+    "jest-environment-jsdom-global": "^1.1.1",
+    "jest-junit": "^6.3.0",
+    "jest-localstorage-mock": "^2.4.0",
+    "jest-serializer-vue": "^2.0.2",
+    "lint-staged": "^8.1.4",
+    "node-sass": "^4.11.0",
+    "postcss-preset-env": "^6.5.0",
+    "sass-loader": "^7.1.0",
+    "sass-resources-loader": "^2.0.0",
+    "uuid": "^3.3.2",
+    "vue-jest": "^3.0.3",
+    "vue-server-renderer": "^2.6.7",
+    "vue-svg-inline-loader": "^1.2.11",
+    "vue-svgicon": "^3.2.2",
+    "vue-template-compiler": "^2.6.7"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "vue"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "@babel/plugin-transform-modules-commonjs",
+          "transform-vue-jsx"
+        ]
+      }
+    }
+  },
+  "lint-staged": {
+    "*.@(js|vue": "eslint"
+  },
+  "jest": {
+    "verbose": false,
+    "moduleFileExtensions": [
+      "js",
+      "vue",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1"
+    },
+    "transform": {
+      "^.+\\.js$": "<rootDir>/../../node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/../../node_modules/vue-jest"
+    },
+    "transformIgnorePatterns": [],
+    "snapshotSerializers": [
+      "<rootDir>/../../node_modules/jest-serializer-vue"
+    ],
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ],
+    "testEnvironment": "jest-environment-jsdom-global",
+    "testMatch": [
+      "**/?(*.)(spec|test).js?(x)"
+    ]
+  }
+}

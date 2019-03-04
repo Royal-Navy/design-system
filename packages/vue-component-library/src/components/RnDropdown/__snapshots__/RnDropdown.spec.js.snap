@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RnDropdown.vue snapshot: has same HTML structure 1`] = `
+<div count="2" class="rn-dropdown is-closed"><button class="button">
+    One
+    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="7" class="h_ml-10 rn-dropdown-arrow">
+      <path fill="#6F798A" fill-rule="evenodd" d="M5.66 4.49L9.19.95a1 1 0 1 1 1.42 1.41L6.36 6.61a1 1 0 0 1-1.41 0L.71 2.36A1 1 0 1 1 2.12.95l3.54 3.54z"></path>
+    </svg></button>
+  <rn-card-stub class="rn-dropdown-menu"><a>
+      One
+    </a><a>
+      Two
+    </a></rn-card-stub>
+</div>
+`;

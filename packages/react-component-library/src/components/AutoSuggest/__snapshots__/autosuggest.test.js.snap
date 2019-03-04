@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AutoSuggest text should render correctly render the AutoSuggest component 1`] = `
+<Autosuggest
+  alwaysRenderSuggestions={false}
+  focusInputOnSuggestionClick={true}
+  getSuggestionValue={[Function]}
+  highlightFirstSuggestion={false}
+  id="1"
+  inputProps={
+    Object {
+      "onChange": [Function],
+      "placeholder": "Begin typing...",
+      "value": "",
+    }
+  }
+  multiSection={false}
+  onSuggestionsClearRequested={[Function]}
+  onSuggestionsFetchRequested={[Function]}
+  renderSuggestion={[Function]}
+  renderSuggestionsContainer={[Function]}
+  shouldRenderSuggestions={[Function]}
+  suggestions={Array []}
+  theme={
+    Object {
+      "container": "rn-autosuggest",
+      "containerOpen": "rn-autosuggest open",
+      "input": "rn-autosuggest__input",
+      "inputFocused": "rn-autosuggest__input--focused",
+      "inputOpen": "rn-autosuggest__input open",
+      "sectionContainer": "rn-autosuggest__section-container",
+      "sectionContainerFirst": "rn-autosuggest__section-container--first",
+      "sectionTitle": "rn-autosuggest__section-title",
+      "suggestion": "rn-autosuggest__suggestion",
+      "suggestionFirst": "rn-autosuggest__suggestion--first",
+      "suggestionHighlighted": "rn-autosuggest__suggestion--highlighted",
+      "suggestionsContainer": "rn-autosuggest__suggestions",
+      "suggestionsContainerOpen": "rn-autosuggest__suggestions open",
+      "suggestionsList": "rn-autosuggest__suggestions-list",
+    }
+  }
+/>
+`;

@@ -1,0 +1,57 @@
+/* stylelint-disable */
+
+.#{$helper-ns}f {
+  display: flex !important;
+
+  // Direction
+  &-row {
+    flex-direction: row !important;
+    &-reverse {
+      flex-direction: row-reverse !important;
+    }
+  }
+  &-col {
+    flex-direction: column !important;
+    &-reverse {
+      flex-direction: column-reverse !important;
+    }
+  }
+
+  // Alignment
+  &-align {
+    &-stretch {
+      align-items: stretch !important;
+    }
+    &-start {
+      align-items: flex-start !important;
+    }
+    &-center {
+      align-items: center !important;
+    }
+    &-end {
+      align-items: flex-end !important;
+    }
+  }
+
+  // Content
+  &-justify {
+    &-stretch {
+      justify-content: stretch !important;
+    }
+    &-start {
+      justify-content: start !important;
+    }
+    &-center {
+      justify-content: center !important;
+    }
+    &-end {
+      justify-content: end !important;
+    }
+  }
+
+  &-1 {
+    flex: 1 !important;
+  }
+
+
+}

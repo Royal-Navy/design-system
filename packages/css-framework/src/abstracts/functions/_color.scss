@@ -1,0 +1,25 @@
+// Return Colour from map
+@function color($type, $shade) {
+
+  // By Default, assume the colour doesn't exist
+  $value: false;
+
+  // Check if the specified type exists
+  @if map-has-key($__colors, $type) {
+    $_type: map-get($__colors, $type);
+    // Check if the specified shade exists
+    @if map-has-key($_type, $shade) {
+      $value: map-get($_type, $shade);
+    }
+    
+    @else {
+      @error "Color Function: No match for #{$shade} in #{$type}";
+    }
+  }
+
+  @else {
+    @error "Color Function: No match for #{$type}";
+  }
+
+  @return $value;
+}

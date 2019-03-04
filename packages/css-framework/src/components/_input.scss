@@ -1,0 +1,82 @@
+.rn-inputBlock {
+  @include font-size(s);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: spacing(4);
+
+  .inputLabel {
+    position: absolute;
+    @include font-size(s);
+    @include cover;
+    display: flex;
+    align-items: center;
+    padding-left: spacing(3);
+    pointer-events: none;
+    transition: all 0.1s;
+    color: color(neutral, 700);
+    width: 100%;
+    &__inner {
+      display: inline-block;
+      padding: spacing(1);
+    }
+  }
+
+  .textarea,
+  .input {
+    width: 100%;
+    padding: spacing(3);
+    border-radius: 3px;
+    @include font-size(s);
+    border: 1px solid color(neutral, 400);
+    transition: all 0.2s;
+    &:focus {
+      border: 1px solid color(primary, 400);
+      box-shadow: 0 0 0 1px color(primary, 400);
+      + .rn-input-label {
+        
+      }
+    }
+    &:focus,
+    &.hasContent {
+      outline: none;
+      + .inputLabel {
+        @include font-size(xxs);
+        transform: translate3d(0, -50%, 0);
+        transition: transform 0.1s, background-color 0s 0.1s;
+        .inputLabelInner {
+          padding: 0 spacing(1);
+          background-color: color(neutral, white);
+          color: color(primary, 500);
+        }
+      }
+    }
+    &:invalid,
+    &.hasError {
+      border: 1px solid color(danger, 500);
+    }
+
+    &::-webkit-datetime-edit {
+      color: transparent;
+    }
+
+    /* Include this to make it visible when input is clicked */
+    &.hasContent::-webkit-datetime-edit,
+    &:focus::-webkit-datetime-edit {
+      color: color(neutral, 700);
+    }
+  }
+
+  .textarea {
+    + .inputLabel {
+      padding-top: spacing(2);
+      align-items: flex-start;
+    }
+    &:focus,
+    &.hasContent {
+      + .inputLabel {
+        transform: translate3d(0, -15px, 0);
+      }
+    }
+  }
+}

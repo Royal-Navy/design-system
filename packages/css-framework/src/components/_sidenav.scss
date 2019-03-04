@@ -1,0 +1,26 @@
+.rn-sidenav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: color(neutral, 900);
+  min-width: 200px;
+
+  &__header {
+    background-color: color(neutral, black);
+    padding: spacing(4) 0;
+  }
+
+  &__nav {
+    padding: spacing(4) 0;
+  }
+
+  &__link {
+    display: block;
+    @include font-size(s);
+    font-weight: 400;
+    padding: spacing(2) spacing(5);
+    color: color(neutral, 200);
+    text-decoration: none;
+  }
+}

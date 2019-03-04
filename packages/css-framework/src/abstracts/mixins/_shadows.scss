@@ -1,0 +1,18 @@
+/**************************************************************************
+
+    Shadows Mixin
+    =============
+
+    When supplied with a Shadow level, the associated value is returned
+
+**************************************************************************/
+
+@mixin shadow($size, $inset: "") {
+  @if map-has-key($__shadows, $size) {
+    box-shadow: #{$inset} #{map-get($__shadows, $size)};
+  }
+  
+  @else {
+    @error "No shadow could be retrieved for #{$size}";
+  }
+}

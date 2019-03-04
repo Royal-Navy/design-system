@@ -1,0 +1,11 @@
+// Map Deep Get
+// @param {Map} $map - map
+// @param {Arglist} $keys - Key chain
+// @return {*} - Desired Value
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
