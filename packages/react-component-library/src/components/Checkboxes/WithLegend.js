@@ -4,8 +4,8 @@ import React from 'react'
 import Checkbox from '../Checkbox'
 
 const WithLegend = ({ legend, name, onChange, optionsWithState }) => (
-  <fieldset className="rn-checkboxes rn-checkboxes--has-legend">
-    <legend className="rn-checkboxes__legend">{legend}</legend>
+  <fieldset className="rn-check rn-check--has-legend">
+    <legend className="rn-check__legend">{legend}</legend>
     {optionsWithState.map(option => (
       <Checkbox
         {...option}

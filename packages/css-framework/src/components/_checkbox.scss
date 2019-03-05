@@ -1,29 +1,26 @@
-.rn-checkbox {
+.rn-check {
   &__label {
     display: inline-block;    
     vertical-align: center;
+    @include font-size(s);
+    color: color(neutral, 600);
   }
 }
 
-.rn-checkbox__label {
-  @include font-size(s);
-  color: color(neutral, 600);
-}
-
-.rn-checkbox__input {
+.rn-check__input {
   margin-left: spacing(2);
   position: relative;
   top: -1px;
 }
 
-.rn-checkboxes__legend {
+.rn-check__legend {
   @include font-size(xs);
   @include cover;
   color: color(neutral, 700);  
   padding: 0 spacing(1);
 }
 
-.rn-checkboxes--has-legend {
+.rn-check--has-legend {
   width: 100%;
   padding: spacing(1) spacing(3) spacing(3) spacing(3);
   border: 1px solid color(neutral, 400);

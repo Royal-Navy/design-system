@@ -4,7 +4,7 @@ import React from 'react'
 import Radio from '../Radio'
 
 const WithoutLabel = ({ name, onChange, optionsWithState }) => (
-  <div className="rn-radios">
+  <div className="rn-check">
     {optionsWithState.map(option => (
       <Radio key={option.value} name={name} onChange={onChange} {...option} />
     ))}
