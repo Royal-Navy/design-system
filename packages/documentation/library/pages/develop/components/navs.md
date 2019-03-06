@@ -1,6 +1,6 @@
 ---
 title: Navs
-description: Navs are an easy way to organise links
+description: Documentation and examples of how to use NELSON navs
 audience: public
 pageClasses: ''
 context: 'Component Library'
@@ -9,29 +9,53 @@ usageExampleType: javascript
 usageExample: Import { ICON_NAME } from '@NELSON/Icons'
 ---
 
-# Basic Example
+# Overview
+
+# Horizontal
+
+By default, the nav component lays out its links horizontally.
 
 ```html
-  <rn-nav alignment="stretch" orientation="vertical" :navItems="navItems"/>
+  <nav className="rn-nav">
+    <a className="rn-nav__item" href="">Nav Item</a>
+    <a className="rn-nav__item" href="">Nav Item</a>
+  </nav>
 ```
 
-#### Props
+## Vertical
 
-##### Nav
+Adding a class of `.vertical` to the `.rn-nav` component will stack the nav links on top of each other.
 
-Prop Name       | Value                    | Required
--------------   | ------------------------ | --------
-**navItems**    | `{Array}`                | Yes
-**alignment**   | `stretch`                | false
-**orientation** | `horizontal` `vertical`  | false
+```html
+  <nav className="rn-nav">
+    <a className="rn-nav__item" href="">Nav Item</a>
+    <a className="rn-nav__item" href="">Nav Item</a>
+  </nav>
+```
 
-##### Nav Item
+## Full Width
 
-Prop Name     | Value      | Required
-------------- | ---------- | --------
-**url**       | `{String}` | Yes
-**label**     | `{String}` | Yes
+To stretch the nav links across the full width of their parent, add a class of `.stretch` to the `.rn-nav` component. *Note*: this class is only available with the horizontal orientation.
 
-#### Storybook
 
-To view all the variations of this component, including interactive examples, please visit our [Storybook]().
+## Active States
+
+Adding a class of `.active` to the `.rn-nav__item` component will provide styling for the active state.
+
+```html
+  <nav className="rn-nav">
+    <a className="rn-nav__item active" href="">Nav Item</a>
+    <a className="rn-nav__item" href="">Nav Item</a>
+  </nav>
+```
+
+## Disabled State
+
+Adding `.disabled` to any of the links will visually fade out the link, and prevent all pointer events.
+
+```html
+  <nav className="rn-nav">
+    <a className="rn-nav__item" href="">Nav Item</a>
+    <a className="rn-nav__item disabled" href="">Nav Item</a>
+  </nav>
+```
