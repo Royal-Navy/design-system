@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Radio = ({ checked, label, name, onChange, value }) => (
-  <div className="rn-radio">
-    <label className="rn-radio__label">
-      <span className="rn-radio__label-inner">{label}</span>
+  <div className="rn-check">
+    <label className="rn-check__label">
+      <span className="rn-check__label-inner">{label}</span>
       <input
         checked={checked}
-        className="rn-radio__input"
+        className="rn-check__input"
         name={name}
         onChange={onChange}
         type="radio"

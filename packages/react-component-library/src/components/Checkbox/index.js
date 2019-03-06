@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Checkbox = ({ checked, label, name, onChange, value }) => (
-  <div className="rn-checkbox">
-    <label className="rn-checkbox__label">
-      <span className="rn-checkbox__label-inner">{label}</span>
+  <div className="rn-check">
+    <label className="rn-check__label">
+      <span className="rn-check__label-inner">{label}</span>
       <input
         checked={checked}
-        className="rn-checkbox__input"
+        className="rn-check__input"
         name={name}
         onChange={onChange}
         type="checkbox"
