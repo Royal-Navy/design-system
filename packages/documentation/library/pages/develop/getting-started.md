@@ -1,6 +1,6 @@
 ---
 title: Getting started
-description: Cupidatat ut aliqua nisi ut aliqua consequat cillum quis et reprehenderit ullamco sint culpa elit.
+description: A quick start guide to get up and running with the NELSON toolkit.
 tags: public
 pageClass: ''
 template: withsidebar
