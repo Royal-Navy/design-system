@@ -1,0 +1,27 @@
+.layout {
+
+  &.vertical {
+    .layout {
+      &__app {
+        padding-top: 71px;
+      }
+    }
+  }
+
+  &.vertical--tabs {
+    .layout {
+      &__app {
+        padding-top: 128px;
+      }
+    }
+  }
+
+  &.horizontal {
+    .layout {
+      &__app {
+        padding-left: 200px;
+      }
+    }
+  }
+
+}
