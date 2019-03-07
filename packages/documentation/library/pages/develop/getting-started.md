@@ -47,7 +47,6 @@ If you are planning on only using the toolkit to build a page, you will need to 
         <! --  App Content -->
     </div>
 </div>
-</div>
 ```
 
 ## Use with front-end frameworks.
