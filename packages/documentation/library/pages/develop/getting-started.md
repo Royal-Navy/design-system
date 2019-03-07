@@ -47,7 +47,6 @@ If you are planning on only using the toolkit to build a page, you will need to 
         <! --  App Content -->
     </div>
 </div>
-  <-- Your content goes here -->
 </div>
 ```
 <!-- ED: You need to update this bit, I pulled the above code out of the air -->
