@@ -47,7 +47,7 @@ If you are planning on only using the toolkit to build a page, you will need to 
 
 ## Use with front-end frameworks.
 
-These components and classes can be used in any package but obviously if you are using a front-end framework like React or Vue then the component HTML may need to be altered to accomodate this, unfortunately that is out of the scope of this document but we do have a React and Vue version of this component library coming soon. Keep an eye on this website for more information.
+These components and classes can be used in any package, however if you are using a front-end framework like React or Vue, the component HTML may need to be altered to accommodate this. Whilst the current version of the NELSON toolkit (`v0.1.0`) doesn't contain any React or Vue components, from `v.0.2.0` we will begin adding support for these frameworks from `v0.2.0` . Keep an eye on this website for more information.
 
 ## If something isn't working.
 
