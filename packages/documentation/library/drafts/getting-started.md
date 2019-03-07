@@ -14,7 +14,7 @@ This guide assumes that you are familiar with the following technologies:
 - [NPM (Node Package Manager)](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/en/)
 - Basic terminal commands (Most commonly [Bash](https://www.gnu.org/software/bash/), [Zsh](https://www.zsh.org/) or [Windows Command Prompt]())
 
-If you are not familiar with any of the above technologies, I recommend finding a tutorial and familiarsing yourself before contining with the installation instructions.
+It is worth taking time to familiarise yourself with these technologies, as they serve as the basis of the NELSON toolkit.
 
 It also makes the assumption that you have already set up a basic node project and want to add the component library to it.
 
