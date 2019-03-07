@@ -36,7 +36,22 @@ Then you are good to go.
 
 ## Layouts
 
-If you are planning on only using the toolkit to build a page, you will need to use a layout component. To do this, simply add the following immediately after the opening `<body>` tag:
+The NELSON Toolkit contains support for both horizontal and vertical app layouts. The HTML remains the same, however the direction can be changed via the `.horizontal` and `.vertical` classes.
+
+There are two variations of the `.vertical` app layout. This is to accommodate the two variations of the [Masthead Component](/develop/components/masthead). If you are using the larger Masthead with tabs, add the `.vertical--tabs` class to the `.rn-layout` component.
+
+```html
+    <div class="rn-layout vertical--tabs">
+        <div class="rn-layout__nav">
+            <! --  Masthead Content -->  
+        </div>
+        <div class="rn-layout__app">
+            <! --  App Content --> 
+        </div>
+    </div>
+`` `
+
+To change the app into a horizontal layout, change the `.vertical` class to `.horizontal`.
 
 ```html
 <div class="rn-layout horizontal">
