@@ -39,7 +39,14 @@ Then you are good to go.
 If you are planning on only using the toolkit to build a page, you will need to use a layout component. To do this, simply add the following immediately after the opening `<body>` tag:
 
 ```html
-<div class="rn-layout">
+<div class="rn-layout horizontal">
+    <div class="rn-layout__nav">
+        <! --  Sidebar Component -->
+    </div>
+    <div class="rn-layout__app">
+        <! --  App Content -->
+    </div>
+</div>
   <-- Your content goes here -->
 </div>
 ```
