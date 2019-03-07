@@ -20,7 +20,7 @@ It also makes the assumption that you have already set up a basic node project a
 
 ## Installation
 
-In your favourite command line tool, navigate to your projects root folder and type one of the following:
+In your favourite command line tool, navigate to your project's root folder and type one of the following:
 
 ### If you are using NPM
 
