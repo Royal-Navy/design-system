@@ -49,7 +49,7 @@ There are two variations of the `.vertical` app layout. This is to accommodate t
             <! --  App Content --> 
         </div>
     </div>
-`` `
+```
 
 To change the app into a horizontal layout, change the `.vertical` class to `.horizontal`.
 
@@ -66,7 +66,7 @@ To change the app into a horizontal layout, change the `.vertical` class to `.ho
 
 ## Use with front-end frameworks.
 
-These components and classes can be used in any package, however if you are using a front-end framework like React or Vue, the component HTML may need to be altered to accommodate this. Whilst the current version of the NELSON toolkit (`v0.1.0`) doesn't contain any React or Vue components, from `v.0.2.0` we will begin adding support for these frameworks from `v0.2.0` . Keep an eye on this website for more information.
+These components and classes can be used in any package, however if you are using a front-end framework like React or Vue, the component HTML may need to be altered to accommodate this. Whilst the current version of the NELSON toolkit (`v0.1.0`) doesn't contain any React or Vue components, from `v.0.2.0` we will begin adding support for these frameworks. Keep an eye on this website for more information.
 
 ## If something isn't working.
 
