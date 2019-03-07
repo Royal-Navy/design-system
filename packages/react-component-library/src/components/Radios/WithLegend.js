@@ -4,8 +4,8 @@ import React from 'react'
 import Radio from '../Radio'
 
 const WithLegend = ({ legend, name, onChange, optionsWithState }) => (
-  <fieldset className="rn-radios rn-radios--has-legend">
-    <legend className="rn-radios__legend">{legend}</legend>
+  <fieldset className="rn-check rn-check--has-legend">
+    <legend className="rn-check__legend">{legend}</legend>
     {optionsWithState.map(option => (
       <Radio {...option} key={option.value} name={name} onChange={onChange} />
     ))}

@@ -4,7 +4,7 @@ import React from 'react'
 import Checkbox from '../Checkbox'
 
 const WithoutLabel = ({ name, onChange, optionsWithState }) => (
-  <div className="rn-checkboxes">
+  <div className="rn-check">
     {optionsWithState.map(option => (
       <Checkbox
         key={option.value}
