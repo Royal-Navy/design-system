@@ -49,7 +49,6 @@ If you are planning on only using the toolkit to build a page, you will need to 
 </div>
 </div>
 ```
-<!-- ED: You need to update this bit, I pulled the above code out of the air -->
 
 ## Use with front-end frameworks.
 
