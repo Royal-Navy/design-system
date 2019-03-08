@@ -1,7 +1,7 @@
-.layout {
+.rn-layout {
 
   &.vertical {
-    .layout {
+    .rn-layout {
       &__app {
         padding-top: 71px;
       }
@@ -9,7 +9,7 @@
   }
 
   &.vertical--tabs {
-    .layout {
+    .rn-layout {
       &__app {
         padding-top: 128px;
       }
@@ -17,7 +17,7 @@
   }
 
   &.horizontal {
-    .layout {
+    .rn-layout {
       &__app {
         padding-left: 200px;
       }
