@@ -13,7 +13,7 @@ usageExample: ''
 
 The NELSON Toolkit contains support for both horizontal and vertical app layouts. The HTML remains the same, however the direction can be changed via the `.horizontal` and `.vertical` classes.
 
-There are two variations of the `.vertical` app layout. This is to accommodate the two variations of the Masthead Component. If you are using the larger Masthead with tabs, add the `.vertical--tabs` class to the `.rn-layout` component.
+There are two variations of the `.vertical` app layout. This is to accommodate the two variations of the [Masthead Component](/develop/components/masthead). If you are using the larger Masthead with tabs, add the `.vertical--tabs` class to the `.rn-layout` component.
 
 ```
 <div class="rn-layout vertical--tabs">
