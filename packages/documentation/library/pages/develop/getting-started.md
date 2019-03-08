@@ -24,7 +24,7 @@ The toolkit includes components to help build up a page with minimal coding, thi
 
 ## Installation
 
-In order to use the HTML snippets you will first need to add the toolkit css to your HTML file.
+In order to use the HTML snippets you will first need to add the toolkit CSS to your HTML file.
 
 To do this locate the `<head>` section and add the following snippet:
 
@@ -32,7 +32,7 @@ To do this locate the `<head>` section and add the following snippet:
 <link rel="stylesheet" href="style.css">
 ```
 
-Then you are good to go.
+View the page in a browser and you should be good to go.
 
 ## Layouts
 
@@ -66,7 +66,9 @@ To change the app into a horizontal layout, change the `.vertical` class to `.ho
 
 ## Use with front-end frameworks.
 
-These components and classes can be used in any package, however if you are using a front-end framework like React or Vue, the component HTML may need to be altered to accommodate this. Whilst the current version of the NELSON toolkit (`v0.1.0`) doesn't contain any React or Vue components, from `v.0.2.0` we will begin adding support for these frameworks. Keep an eye on this website for more information.
+These components and classes can be used in any package, however if you are using a front-end framework like React or Vue, the component HTML may need to be altered to accommodate this. 
+
+Whilst the current version of the NELSON toolkit (`v0.1.0`) doesn't contain any React or Vue components, from `v.0.2.0` we will begin adding support for these frameworks. Keep an eye on this website for more information.
 
 ## If something isn't working.
 
