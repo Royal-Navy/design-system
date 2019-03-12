@@ -54,6 +54,6 @@ The NELSON Toolkit is under constant development - our aim is to grow the projec
   Mastheads serve as the main header and navigation for apps.
 - [Button Component](/develop/components/buttons/){class="design"}
   Buttons are one of the foundational elements of any application.
-- [Tone and voice](/develop/components/dialogs/){class="system"}
+- [Dialog Component](/develop/components/dialogs/){class="system"}
   Dialogs are an easy way to get validation from the user.
 </content-box>
