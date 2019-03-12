@@ -19,6 +19,9 @@ const Input = ({
   ...rest
 }) => (
   <div className="rn-inputBlock">
+    <label className="inputLabel" htmlFor={id}>
+      {label}
+    </label>
     {type === 'textarea' ? (
       <textarea
         className={`textarea ${value && value.length ? 'hasContent' : ''}`}
@@ -40,10 +43,6 @@ const Input = ({
         {...rest}
       />
     )}
-
-    <label className="inputLabel" htmlFor={id}>
-      <span className="inputLabelInner">{label}</span>
-    </label>
   </div>
 )
 
