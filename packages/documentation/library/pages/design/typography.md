@@ -1,5 +1,6 @@
 ---
 title: Typography
+description: Typography in NELSON applications
 audience: public
 pageClasses: ''
 context: 'Design'

@@ -1,5 +1,6 @@
 ---
 title: Spacing
+description: How we handle spacing and sizing in the NELSON toolkit
 audience: public
 pageClasses: ''
 context: 'Design'
@@ -14,9 +15,9 @@ Sometimes interfaces (particularly dashboards, or data heavy components) need to
 
 ## The Spacing Scale
 
-By reducing application spacing to a predetermined scale, it is easy to ensure all elements & components are spaced in proportion to each other, rather than with arbitary values.
+By reducing application spacing to a predetermined scale, it is easy to ensure all elements & components are spaced in proportion to each other, rather than with arbitrary values.
 
-The spacing scale, much like the typography scale, doesn't increase in a linear fashion. This is because as elements get positioned further apart, the difference between adjacent values would become less noticable.
+The spacing scale, much like the typography scale, doesn't increase in a linear fashion. This is because as elements get positioned further apart, the difference between adjacent values would become less noticeable.
 
 Scale     | Size
 --------- | -----------

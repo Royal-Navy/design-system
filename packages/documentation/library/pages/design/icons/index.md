@@ -7,6 +7,7 @@ context: 'Icon Library'
 template: nosidebar
 usageExampleType: javascript
 usageExample: import { ICON_NAME } from '@NELSON/Icons'
+status: draft
 ---
 
 <!-- This page should always be empty, please use the `icons` folder and subfolders to add/edit/delete icons -->

@@ -1,6 +1,6 @@
 ---
 title: Component Library
-description: The NELSON Component Libary
+description: The NELSON Component Library
 audience: public
 pageClasses: ''
 context: 'Component Library'
