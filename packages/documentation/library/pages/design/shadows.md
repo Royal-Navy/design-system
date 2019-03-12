@@ -17,10 +17,10 @@ Shadow Scale | Value
 3            | `0 12px 28px 0 rgba(0, 0, 0, 0.26)`
 
 
-<Swatch property="box-shadow" label="0" value="0 0 0 transparent">
-<Swatch property="box-shadow" label="1" value="0 1px 3px 0 rgba(0, 0, 0, 0.1)">
-<Swatch property="box-shadow" label="2" value="0 6px 14px 0 rgba(0, 0, 0, 0.16)">
-<Swatch property="box-shadow" label="3" value="0 12px 28px 0 rgba(0, 0, 0, 0.26)">
+<Swatch property="box-shadow" label="0" value="0 0 0 transparent"></swatch>
+<Swatch property="box-shadow" label="1" value="0 1px 3px 0 rgba(0, 0, 0, 0.1)"></swatch>
+<Swatch property="box-shadow" label="2" value="0 6px 14px 0 rgba(0, 0, 0, 0.16)"></swatch>
+<Swatch property="box-shadow" label="3" value="0 12px 28px 0 rgba(0, 0, 0, 0.26)"></swatch>
 
 
 #### Using Shadows
