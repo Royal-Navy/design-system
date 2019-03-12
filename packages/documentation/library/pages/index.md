@@ -1,6 +1,6 @@
 ---
 title: 'NELSON Toolkit'
-description: Welcome to the NELSON Toolkit. This is the comprehensive resource for designing & building Applications for the Royal Navy.
+description: Welcome to the NELSON Toolkit. This is the comprehensive resource for designing & building Applications and services for the Royal Navy.
 tags: public
 pageClass: ''
 context: ''
@@ -10,7 +10,7 @@ template: landing
 
 ## Design
 
-The Design Docs contains guidelines on how applications look and feel, including common NELSON design patterns.
+The Design Docs contain guidelines on how applications look and feel, including common NELSON design patterns.
 
 
 </info-box>
@@ -19,7 +19,7 @@ The Design Docs contains guidelines on how applications look and feel, including
 
 ## Development
 
-The Development Docs provides a library of components and CSS helpers to aid with application development.
+The Development Docs provide a library of components and CSS helpers to help with application development.
 
 </info-box>
 
@@ -27,7 +27,7 @@ The Development Docs provides a library of components and CSS helpers to aid wit
 
 ## Contact us
 
-If you need assistance with this website, or would like to suggest new content, please feel free to get in touch with us.
+If you need support using the NELSON Toolkit, or want to suggest new content, get in touch with us.
 
 </info-box>
 
@@ -35,9 +35,11 @@ If you need assistance with this website, or would like to suggest new content, 
 
 # Welcome to the Nelson Toolkit
 
-This project is the end-to-end toolkit serving as the foundation for Royal Navy applications - we provide tools and resources to aid with the rapid design & development of apps and services.
+This project is the end-to-end toolkit for designing and building Royal Navy applications and services. The goal is give users across the Royal Navy access to applications that work and look and feel consistent. We also want to make it easier for developers to design, build and experiment with data and iteratively prototype user interfaces. 
 
-The NELSON Toolkit is under constant development - our aim is to grow the project into a rich ecosystem of patterns, components, and starter apps. If you would like to contribute in any way, our entire toolkit is [open source on GitHub](https://github.com/royal-navy/standards-toolkit).
+The NELSON Toolkit will be continuously updated based on feedback from users. The aim is for the toolkit into a rich ecosystem of patterns, components, and starter apps and build the Royal Navy's developer community. Guidance for how to access unclassified Royal Navy data and interact with our APIs will also be published here.  If you want to contribute the toolkit, visit our [GitHub](https://github.com/royal-navy/standards-toolkit).
+
+This is the first public version of the NELSON Toolkit, which includes HTML and CSS for styling applications. More functionality will be available soon.  
 
 
 [Get Started](/develop/geting-started){class="button"}
@@ -49,11 +51,11 @@ The NELSON Toolkit is under constant development - our aim is to grow the projec
 ## Quick links
 
 - [Getting Started](/develop/getting-started){class="system"}
-  A quick start guide to get up and running with the NELSON toolkit.
+  A quick start guide to get set up and install what you need to use the NELSON toolkit.
 - [Masthead Component](/develop/components/masthead/){class="develop"}
-  Mastheads serve as the main header and navigation for apps.
+  Mastheads serve as the main header and navigation for applications.
 - [Button Component](/develop/components/buttons/){class="design"}
-  Buttons are one of the foundational elements of any application.
+  Buttons are one of the foundational elements for applications.
 - [Dialog Component](/develop/components/dialogs/){class="system"}
-  Dialogs are an easy way to get validation from the user.
+  Dialogs are an easy way to get validation from users.
 </content-box>
