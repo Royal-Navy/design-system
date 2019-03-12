@@ -4,6 +4,12 @@ exports[`Input text should render correctly render the input component 1`] = `
 <div
   className="rn-inputBlock"
 >
+  <label
+    className="inputLabel"
+    htmlFor="user"
+  >
+    test
+  </label>
   <input
     className="input hasContent"
     id="user"
@@ -11,16 +17,6 @@ exports[`Input text should render correctly render the input component 1`] = `
     onChange={[MockFunction]}
     value="1234"
   />
-  <label
-    className="inputLabel"
-    htmlFor="user"
-  >
-    <span
-      className="inputLabelInner"
-    >
-      test
-    </span>
-  </label>
 </div>
 `;
 
@@ -28,6 +24,12 @@ exports[`Input textarea should render correctly render the input component 1`] =
 <div
   className="rn-inputBlock"
 >
+  <label
+    className="inputLabel"
+    htmlFor="user"
+  >
+    test
+  </label>
   <textarea
     className="textarea hasContent"
     cols="80"
@@ -37,15 +39,5 @@ exports[`Input textarea should render correctly render the input component 1`] =
     rows="5"
     value="1234"
   />
-  <label
-    className="inputLabel"
-    htmlFor="user"
-  >
-    <span
-      className="inputLabelInner"
-    >
-      test
-    </span>
-  </label>
 </div>
 `;
