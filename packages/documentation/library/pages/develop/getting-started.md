@@ -46,4 +46,4 @@ Whilst the current version of the NELSON toolkit (`v0.1.0`) doesn't contain any 
 
 ## If something isn't working.
 
-If you are struggling with something in the toolkit or if you see a potential bug, please don't hesitate to contact us, you can get in touch with us via email at standards@royalnavy.io or you can raise an issue on our [GitHub Page](https://github.com/Royal-Navy/standards-toolkit/issues).
+If you are struggling with something in the toolkit or if you see a potential bug, please don't hesitate to contact us. You can get in touch with us via email at standards@royalnavy.io, or you can raise an issue on our [GitHub Page](https://github.com/Royal-Navy/standards-toolkit/issues).

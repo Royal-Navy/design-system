@@ -1,44 +1,46 @@
 ---
-title: Nelson Design System
-description: Cupidatat ut aliqua nisi ut aliqua consequat cillum quis et reprehenderit ullamco sint culpa elit.
+title: 'NELSON Toolkit'
+description: Welcome to the NELSON Toolkit. This is the comprehensive resource for designing & building Applications for the Royal Navy.
 tags: public
 pageClass: ''
-context: 'Quick Start'
+context: ''
 template: landing
 ---
-<info-box class="design" link="/design" linktext="Open Section">
+<info-box class="design" link="/design" linktext="Read Documentation">
 
 ## Design
 
-The CSS framework is what all NELSON Components and Applications are built on. It provides base variables and helper classes to aid with application development.
+The Design Docs contains guidelines on how applications look and feel, including common NELSON design patterns.
+
 
 </info-box>
 
-<info-box class="develop" link="/develop" linktext="Open Section">
+<info-box class="develop" link="/develop" linktext="Read Documentation">
 
-## Develop
+## Development
 
-The component library
+The Development Docs provides a library of components and CSS helpers to aid with application development.
 
 </info-box>
 
-<info-box class="contact-us" link="/contact-us" linktext="Open Section">
+<info-box class="contact-us" link="/contact-us" linktext="Contact Us">
 
 ## Contact us
 
-Get in touch with us if you need assistance.
+If you need assistance with this website, or would like to suggest new content, please feel free to get in touch with us.
 
 </info-box>
 
 <content-box class="span-2">
 
-# Welcome to the Nelson design system
+# Welcome to the Nelson Toolkit
 
-Laborum consectetur sint in cillum pariatur exercitation. Et mollit nostrud enim labore. In cillum Lorem eu eiusmod ipsum non ex esse esse pariatur ex do. Dolore enim culpa officia veniam eiusmod dolor. Reprehenderit consequat tempor proident eiusmod velit ut ea commodo est.
+This project is the end-to-end toolkit serving as the foundation for Royal Navy applications - we provide tools and resources to aid with the rapid design & development of apps and services.
 
-Id labore mollit duis exercitation amet ut cillum. Nisi laboris velit labore commodo id duis ullamco. Laboris pariatur laborum quis est ex deserunt cillum. In anim duis laboris fugiat adipisicing Lorem commodo in aliqua sunt irure fugiat. Sint [labore velit ipsum](/blah) et dolore exercitation. Aliquip magna excepteur qui sint sunt esse in consectetur ad tempor et incididunt. Elit eiusmod excepteur elit sunt culpa duis.
+The NELSON Toolkit is under constant development - our aim is to grow the project into a rich ecosystem of patterns, components, and starter apps. If you would like to contribute in any way, our entire toolkit is [open source on GitHub](https://github.com/royal-navy/standards-toolkit).
 
-[Get Started](/get-started){class="button"}
+
+[Get Started](/develop/geting-started){class="button"}
 
 </content-box>
 
@@ -46,13 +48,12 @@ Id labore mollit duis exercitation amet ut cillum. Nisi laboris velit labore com
 
 ## Quick links
 
-- [An introduction to user research](/blah){class="system"}
-  Non officia in culpa qui. Fugiat laboris consequat esse culpa in.
-- [Creating GraphQL Queries](/blah){class="develop"}
-  Nulla enim eiusmod ex fugiat voluptate magna occaecat reprehenderit nulla do sint voluptate in.
-- [Extending Contexts](/blah){class="design"}
-  Lorem dolore id magna et Lorem anim id amet tempor.
-- [Tone and voice](/blah){class="system"}
-  Duis ullamco Lorem mollit id officia excepteur ullamco.
-
+- [Getting Started](/develop/getting-started){class="system"}
+  A quick start guide to get up and running with the NELSON toolkit.
+- [Masthead Component](/develop/components/masthead/){class="develop"}
+  Mastheads serve as the main header and navigation for apps.
+- [Button Component](/develop/components/buttons/){class="design"}
+  Buttons are one of the foundational elements of any application.
+- [Dialog Component](/develop/components/dialogs/){class="system"}
+  Dialogs are an easy way to get validation from the user.
 </content-box>
