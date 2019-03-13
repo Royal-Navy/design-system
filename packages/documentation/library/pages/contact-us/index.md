@@ -1,11 +1,11 @@
 ---
 title: Contact Us
-description: If you require help, please contact us
+description: Provides a contact email address for people looking for support using the NELSON Toolkit. 
 tags: public
 pageClass: ''
 template: nosidebar
 ---
 
-For any technical support issues or help using the NELSON Design System please email [navyiw-nelson@mod.gov.uk](navyiw-nelson@mod.gov.uk)
+If you need support using the NELSON Toolkit, please email [standards@royalnavy.io](standards@royalnavy.io)
 
-We are looking into other support channels like Slack or phone. When these are available we will update this page. 
+We are looking into other support channels like Slack or phone based on what our users prefer. If you have any feedback get in touch.  
