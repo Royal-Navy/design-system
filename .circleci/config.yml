@@ -40,7 +40,7 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths: 
-            - packages/react-component-library/.static_storybook
+            - packages/react-component-library/public
   deploy-react-storybook:
     <<: *defaults
     steps:
