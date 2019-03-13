@@ -33,14 +33,11 @@ jobs:
       - checkout
 
       - run:
-          name: Open react package
-          command: cd packages/react-component-library
-      - run:
-          name: Install dependencies
-          command: yarn install
-      - run:
           name: Build storybook
-          command: yarn run build-storybook-prod
+          `command: |
+            cd packages/react-component-library
+            yarn install
+            yarn run build-storybook-prod
       - persist_to_workspace:
           root: ~/repo
           paths: 
@@ -65,14 +62,11 @@ jobs:
       - checkout
 
       - run:
-          name: Open vue package
-          command: cd packages/vue-component-library
-      - run:
-          name: Install dependencies
-          command: yarn install
-      - run:
           name: Build storybook
-          command: yarn run build-storybook-prod
+          command: |
+            cd packages/vue-component-library
+            yarn install
+            yarn run build-storybook-prod
       - persist_to_workspace:
           root: ~/repo
           paths: 
