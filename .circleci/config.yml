@@ -1,12 +1,13 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:10.15.2
+  working_directory: ~/repo
+
 version: 2
 
 jobs:
   build:
-    docker:
-      - image: circleci/node:10.15.2
-
-    working_directory: ~/app
-
+    <<: *defaults
     environment:
       NODE_ENV: development
     steps:
@@ -26,3 +27,85 @@ jobs:
 
       - store_test_results:
           path: test-results
+  build-react-storybook:
+    <<: *defaults
+    steps:
+      - checkout
+
+      - run:
+          name: Open react package
+          command: cd packages/react-component-library
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Build storybook
+          command: yarn run build-storybook-prod
+      - persist_to_workspace:
+          root: ~/repo
+          paths: 
+            - node_modules
+            - .static_storybook
+  deploy-react-storybook:
+    <<: *defaults
+    steps:
+      - checkout:
+          path: ~/repo
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Install Firebase tools
+          command: yarn add firebase-tools
+      - run:
+          name: Deploy Master to Firebase
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_SB_REACT
+  build-vue-storybook:
+    <<: *defaults
+    steps:
+      - checkout
+
+      - run:
+          name: Open vue package
+          command: cd packages/vue-component-library
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Build storybook
+          command: yarn run build-storybook-prod
+      - persist_to_workspace:
+          root: ~/repo
+          paths: 
+            - node_modules
+            - .static_storybook
+deploy-vue-storybook:
+    <<: *defaults
+    steps:
+      - checkout:
+          path: ~/repo
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Install Firebase tools
+          command: yarn add firebase-tools
+      - run:
+          name: Deploy Master to Firebase
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_SB_VUE
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build-react-storybook
+      - deploy-react-storybook:
+          requires:
+            - build-react-storybook
+          filters:
+            branches:
+              only: master
+      - build-vue-storybook
+      - deploy-vue-storybook:
+          requires:
+            - build-vue-storybook
+          filters:
+            branches:
+              only: master
