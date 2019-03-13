@@ -1,35 +1,49 @@
 ---
-title: Component Library
-description: The NELSON Component Library
-audience: public
-pageClasses: ''
-context: 'Component Library'
+title: Getting started
+description: A quick start guide to get up and running with the NELSON toolkit.
+tags: public
+pageClass: ''
 template: withsidebar
-usageExampleType: javascript
-usageExample: Import { ICON_NAME } from '@NELSON/Icons'
 ---
 
-<note-block class="warning">
+The Nelson toolkit provides a suite of components and CSS styles which you can use to build your webapp. 
 
-# Experimental Code Ahead
+## Assumptions
 
-Both the [CSS Framework](/bedrock) and Component Library are in their early stages of development. Feedback we gather at this hackathon will greatly help shape and steer the direction of both these projects.
+This guide makes the following assumptions:
 
-</note-block>
+- You have basic knowledge of HTML
+- You have basic knowledge of CSS
+- You are comfortable working with SASS
 
-# Welcome to the component library
+## Components
 
-This is a Component Library, provided to serve as a base for all NELSON applcations. It sits on top of [The CSS framework](/css-framework) and acts as a UI Kit, ensuring all NELSON Apps are consistent in look and behaviour.
+The toolkit includes components to help build up a page with minimal coding, this guide contains HTML snippets which you can copy and paste directly into your HTML page and use immediately.
 
-It is currently built with [VueJS](http://vuejs.org), however in the future we will be expanding this to additional front end frameworks (e.g. React).
+[A full list of those components is available here](/develop/).
 
-## What We Provide
+## Installation
 
-In its current form, only basic components are provided.
+In order to use the HTML snippets you will first need to add the toolkit CSS to your HTML file.
 
-- expanding to more detailed components once more applications are created
-- Invite hackathon atendees to suggest components/additions
+To do this locate the `<head>` section and add the following snippet:
 
-### Storybook
+```html
+<link rel="stylesheet" href="style.css">
+```
 
-To view all of our components, including interactive examples, please visit our [Storybook]().
+View the page in a browser and you should be good to go.
+
+## Layouts
+
+The NELSON Toolkit contains support for both horizontal and vertical app layouts. Visit the [Layout Component docs](/develop/components/layout) for more information.
+
+## Use with front-end frameworks.
+
+These components and classes can be used in any package, however if you are using a front-end framework like React or Vue, the component HTML may need to be altered to accommodate this. 
+
+Whilst the current version of the NELSON toolkit (`v0.1.0`) doesn't contain any React or Vue components, from `v.0.2.0` we will begin adding support for these frameworks. Keep an eye on this website for more information.
+
+## If something isn't working.
+
+If you are struggling with something in the toolkit or if you see a potential bug, please don't hesitate to contact us. You can get in touch with us via email at standards@royalnavy.io, or you can raise an issue on our [GitHub Page](https://github.com/Royal-Navy/standards-toolkit/issues).

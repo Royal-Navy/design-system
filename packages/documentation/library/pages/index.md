@@ -42,7 +42,7 @@ The NELSON Toolkit will be continuously updated based on feedback from users. Th
 This is the first public version of the NELSON Toolkit, which includes HTML and CSS for styling applications. More functionality will be available soon.  
 
 
-[Get Started](/develop/geting-started){class="button"}
+[Get Started](/develop/){class="button"}
 
 </content-box>
 
@@ -50,7 +50,7 @@ This is the first public version of the NELSON Toolkit, which includes HTML and 
 
 ## Quick links
 
-- [Getting Started](/develop/getting-started){class="system"}
+- [Getting Started](/develop/){class="system"}
   A quick start guide to get set up and install what you need to use the NELSON toolkit.
 - [Masthead Component](/develop/components/masthead/){class="develop"}
   Mastheads serve as the main header and navigation for applications.
