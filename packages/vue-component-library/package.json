@@ -29,6 +29,7 @@
   "scripts": {
     "build": "vue-cli-service build --target lib --name bundle ./index.js",
     "build-storybook": "build-storybook",
+    "build-storybook-prod": "build-storybook -c .storybook -o .static_storybook",
     "lint": "eslint src",
     "lint-staged": "lint-staged",
     "storybook": "start-storybook -s ./static -p 3001",
