@@ -34,7 +34,7 @@ jobs:
 
       - run:
           name: Build storybook
-          `command: |
+          command: |
             cd packages/react-component-library
             yarn install
             yarn run build-storybook-prod
