@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "react-storybook",
-      "public": ".static_storybook",
+      "public": "public",
       "ignore": [
         "firebase.json",
         "**/.*",

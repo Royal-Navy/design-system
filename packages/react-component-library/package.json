@@ -27,7 +27,7 @@
   "scripts": {
     "build": "webpack --config webpack/webpack.prod.js",
     "build-storybook": "build-storybook",
-    "build-storybook-prod": "build-storybook -c .storybook -o .static_storybook",
+    "build-storybook-prod": "build-storybook -c .storybook -o public",
     "lint": "eslint src",
     "lint-staged": "lint-staged",
     "storybook": "start-storybook -p 6006",
