@@ -90,7 +90,7 @@ workflows:
             - build-react-storybook
           filters:
             branches:
-              only: feature/sb-deploy
+              only: master
       # Vue not ready yet 
       # - build-vue-storybook
       # - deploy-vue-storybook:
