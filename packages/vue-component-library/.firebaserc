@@ -1,10 +1,16 @@
 {
   "projects": {
-    "standards-vue-storybook": "standards"
-  }
-},
+    "vue-storybook": "standards"
+  },
   "targets": {
     "vue-storybook": {
+      "hosting": {
+        "vue-storybook": [
+          "standards-vue-storybook"
+        ]
+      }
+    },
+    "standards": {
       "hosting": {
         "vue-storybook": [
           "standards-vue-storybook"

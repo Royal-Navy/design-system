@@ -1,9 +1,16 @@
 {
   "projects": {
-    "standards-react-storybook": "standards"
+    "react-storybook": "standards"
   },
   "targets": {
     "react-storybook": {
+      "hosting": {
+        "react-storybook": [
+          "standards-react-storybook"
+        ]
+      }
+    },
+    "standards": {
       "hosting": {
         "react-storybook": [
           "standards-react-storybook"

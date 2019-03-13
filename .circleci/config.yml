@@ -52,7 +52,7 @@ jobs:
           name: Install Firebase tools
           command: cd packages/react-component-library && yarn add firebase-tools
       - run:
-          name: Deploy Master to Firebase
+          name: Deploy to Firebase
           command: cd packages/react-component-library && ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_SB_REACT
   build-vue-storybook:
     <<: *defaults
