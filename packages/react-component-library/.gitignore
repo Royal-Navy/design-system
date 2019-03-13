@@ -7,7 +7,7 @@
 /coverage
 /storybook-static
 /test-results
-
+.static_storybook/
 # production
 /build
 /dist
