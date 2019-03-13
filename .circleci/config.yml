@@ -51,6 +51,9 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run:
+          name: Install Firebase tools
+          command: yarn add firebase-tools -W
+      - run:
           name: Deploy Master to Firebase
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_SB_REACT
   build-vue-storybook:
