@@ -95,11 +95,12 @@ workflows:
             - build-react-storybook
           filters:
             branches:
-              only: master
-      - build-vue-storybook
-      - deploy-vue-storybook:
-          requires:
-            - build-vue-storybook
-          filters:
-            branches:
-              only: master
+              only: feature/sb-deploy
+      # Vue not ready yet 
+      # - build-vue-storybook
+      # - deploy-vue-storybook:
+      #     requires:
+      #       - build-vue-storybook
+      #     filters:
+      #       branches:
+      #         only: master
