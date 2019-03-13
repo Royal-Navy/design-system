@@ -1,6 +1,6 @@
 {
   "name": "@royalnavy/eslint-config-react",
-  "version": "0.3.3",
+  "version": "0.1.0",
   "private": false,
   "engines": {
     "node": ">=10.13.0 <11"

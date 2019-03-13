@@ -6,7 +6,7 @@
 # testing
 /coverage
 /storybook-static
-.static_storybook/
+public/
 /test-results
 
 # production
