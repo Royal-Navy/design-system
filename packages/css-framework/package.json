@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/css-framework",
-  "version": "0.3.0",
   "description": "Foundational CSS Framework for Royal Navy components and applications.",
+  "version": "0.1.0",
   "author": "NELSON",
   "contributors": [
     "hxltrhuxze <hxltrhuxze@royalnavy.io> (royalnavy.io)"
