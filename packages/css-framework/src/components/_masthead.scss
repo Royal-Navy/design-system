@@ -4,6 +4,7 @@
   left: 0;
   right: 0;
   @include shadow(1);
+  @include z-index(header);
   
   &__head {
     background: color(neutral, white);
