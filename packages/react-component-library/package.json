@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/react-component-library",
-  "version": "0.3.0",
   "description": "A collection of react components and helpers to assist in building applications for the Royal Navy",
+  "version": "0.1.0",
   "keywords": [
     "react",
     "components"
@@ -27,7 +27,7 @@
   "scripts": {
     "build": "webpack --config webpack/webpack.prod.js",
     "build-storybook": "build-storybook",
-    "build-storybook-prod": "build-storybook -c .storybook -o .static_storybook",
+    "build-storybook-prod": "build-storybook -c .storybook -o public",
     "lint": "eslint src",
     "lint-staged": "lint-staged",
     "storybook": "start-storybook -p 6006",
@@ -44,8 +44,8 @@
     "@babel/plugin-proposal-class-properties": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
-    "@royalnavy/css-framework": "^0.3.0",
-    "@royalnavy/storybook-react-input-state": "1.0.0",
+    "@royalnavy/css-framework": "^0.1.0",
+    "@royalnavy/storybook-react-input-state": "0.1.0",
     "@storybook/addon-actions": "^4.1.13",
     "@storybook/addon-info": "^4.1.13",
     "@storybook/addon-knobs": "^4.1.13",

@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "target": "vue-storybook",
+    "public": ".static_storybook",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
