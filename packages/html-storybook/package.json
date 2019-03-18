@@ -1,0 +1,103 @@
+{
+  "name": "@royalnavy/html-storybook",
+  "description": "A html storybook companion to the html boilerplate",
+  "version": "0.1.0",
+  "keywords": [
+    "react",
+    "components"
+  ],
+  "author": "NELSON",
+  "contributors": [
+    "98dfsj <98dfsj@royalnavy.io> (royalnavy.io)",
+    "hxltrhuxze <hxltrhuxze@royalnavy.io> (royalnavy.io)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Royal-Navy/standards-toolkit.git"
+  },
+  "homepage": "https://github.com/Royal-Navy/standards-toolkit#readme",
+  "license": "MIT",
+  "main": "./dist/bundle.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build-storybook": "build-storybook",
+    "build-storybook-prod": "build-storybook -c .storybook -o public",
+    "lint": "eslint src",
+    "lint-staged": "lint-staged",
+    "storybook": "start-storybook -p 6006",
+    "test": "jest",
+    "test:ci": "JEST_JUNIT_OUTPUT=../../test-results/rect-components-unit.xml jest --ci --reporters=default --reporters=jest-junit"
+  },
+  "peerDependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@royalnavy/css-framework": "^0.1.0",
+    "@storybook/addon-actions": "^4.1.13",
+    "@storybook/addon-info": "^4.1.13",
+    "@storybook/addon-knobs": "^4.1.13",
+    "@storybook/addon-links": "^4.1.13",
+    "@storybook/addons": "^4.1.13",
+    "@storybook/react": "^4.1.13",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.1.0",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^1.0.1",
+    "css-loader": "^2.1.0",
+    "eslint": "^5.15.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.1.0",
+    "jest-junit": "^6.3.0",
+    "lint-staged": "^8.1.4",
+    "lodash": "^4.17.11",
+    "node-sass": "^4.11.0",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.5.0",
+    "prop-types": "^15.7.2",
+    "regenerator-runtime": "^0.13.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "stylelint": "^9.10.1",
+    "stylelint-webpack-plugin": "^0.10.5",
+    "uuid": "^3.3.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  },
+  "lint-staged": {
+    "*.@(js)": "eslint"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "./tests/setupTests.js"
+    ],
+    "testMatch": [
+      "**/?(*.)(spec|test).js?(x)"
+    ],
+    "moduleNameMapper": {
+      "^.+.(css|sass|scss)$": "identity-obj-proxy"
+    }
+  }
+}
