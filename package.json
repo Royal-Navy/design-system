@@ -5,6 +5,7 @@
   "workspaces": [
     "packages/css-framework",
     "packages/eslint-config-react",
+    "packages/html-storybook",
     "packages/react-component-library",
     "packages/storybook-react-input-state",
     "packages/vue-component-library"
