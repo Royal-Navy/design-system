@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/documentation",
   "description": "A filesystem based CMS meant to compliment the 'royalnavy.io' project",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
