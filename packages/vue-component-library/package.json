@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/vue-component-library",
   "description": "A collection of react components and helpers to assist in building applications for the Royal Navy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "vue",
     "components"
@@ -46,7 +46,7 @@
     "@babel/core": "^7.3.3",
     "@babel/plugin-transform-modules-commonjs": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
-    "@royalnavy/css-framework": "^0.1.0",
+    "@royalnavy/css-framework": "0.1.1",
     "@storybook/addon-actions": "^4.1.13",
     "@storybook/addon-centered": "^4.1.13",
     "@storybook/addon-console": "^1.1.0",
