@@ -9,18 +9,18 @@
   "author": "NELSON",
   "contributors": [
     "98dfsj <98dfsj@royalnavy.io> (royalnavy.io)",
-    "hxltrhuxze <hxltrhuxze@royalnavy.io> (royalnavy.io)"
+    "hxltrhuxze <hxltrhuxze@royalnavy.io> (royalnavy.io)",
+    "antictor <antictor@royalnavy.io> (royalnavy.io)"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Royal-Navy/nelson-frontend-component-library.git"
+    "url": "https://github.com/Royal-Navy/standards-toolkit"
   },
-  "homepage": "https://github.com/Royal-Navy/nelson-frontend-component-library#readme",
+  "homepage": "https://github.com/Royal-Navy/standards-toolkit/tree/develop/packages/vue-component-library#readme",
   "license": "MIT",
   "main": "./dist/bundle.common.js",
   "files": [
-    "dist",
-    "static"
+    "dist"
   ],
   "private": false,
   "publishConfig": {
@@ -32,6 +32,7 @@
     "build-storybook-prod": "build-storybook -c .storybook -o .static_storybook",
     "lint": "eslint src",
     "lint-staged": "lint-staged",
+    "prepublishOnly": "NODE_ENV=production npm run build",
     "storybook": "start-storybook -s ./static -p 3001",
     "svg": "vsvg -s ./static/assets/icons -t ./src/icons",
     "test": "jest --silent",
