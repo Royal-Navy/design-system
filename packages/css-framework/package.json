@@ -1,24 +1,30 @@
 {
   "name": "@royalnavy/css-framework",
   "description": "Foundational CSS Framework for Royal Navy components and applications.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "NELSON",
   "contributors": [
-    "hxltrhuxze <hxltrhuxze@royalnavy.io> (royalnavy.io)"
+    "hxltrhuxze <hxltrhuxze@royalnavy.io> (royalnavy.io)",
+    "antictor <antictor@royalnavy.io> (royalnavy.io)"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Royal-Navy/nelson-frontend-component-library.git"
+    "url": "https://github.com/Royal-Navy/standards-toolkit"
   },
-  "homepage": "https://github.com/Royal-Navy/nelson-frontend-component-library#readme",
+  "homepage": "https://github.com/Royal-Navy/standards-toolkit/tree/develop/packages/css-framework#readme",
   "license": "MIT",
   "main": "index.scss",
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "start": "webpack-dev-server --history-api-fallback --inline --progress",
-    "build": "node-sass index.scss build/style.css"
+    "build": "node-sass index.scss dist/style.css",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "bootstrap": "^4.3.1",
