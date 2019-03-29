@@ -13,7 +13,7 @@
         </template>
         <template v-if="!hideAction">
           <rn-button v-if="error" type="error" @click="clickAction">{{ actionButtonText }}</rn-button>
-          <rn-button v-else @click="clickAction">{{ actionButtonText }}</rn-button>
+          <rn-button state="neutral regular" v-else @click="clickAction">{{ actionButtonText }}</rn-button>
         </template>
       </div>
     </div>
