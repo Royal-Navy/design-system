@@ -12,7 +12,7 @@ const wrapperStyle = {
 }
 
 stories.add('Card with title', () => (
-  <div class="rn-card null null" style="max-width: 440px;">
+  <div class="rn-card null null">
     <div class="rn-card__header">Do you understand your rights?</div>
     <div class="rn-card__body">
       <p class="h_mb-4">
@@ -28,7 +28,7 @@ stories.add('Card with title', () => (
 ))
 
 stories.add('Card with no title', () => (
-  <div class="rn-card null null" style="max-width: 440px;">
+  <div class="rn-card null null">
     <div class="rn-card__body">
       <p class="h_mb-4">
         Sed posuere consectetur est at lobortis. Curabitur blandit tempus
@@ -42,7 +42,7 @@ stories.add('Card with no title', () => (
   </div>
 ))
 
-stories.add('Car Items', () => (
+stories.add('Card Items', () => (
   <div class="rn-card flush null">
     <div class="carditem">
       <h4>Title one</h4>

@@ -1,5 +1,5 @@
 <template lang="html">
-  <button :icon="icon" :class="`rn-button + ${state}`" @click="onClick">
+  <button :icon="icon" :class="`rn-btn--primary ${state || ''}`" @click="onClick">
     <span><slot></slot></span>
     <rn-icon class="h_ml-1" v-if="!!icon" :name="icon" size="small" />
   </button>
