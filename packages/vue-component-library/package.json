@@ -80,6 +80,7 @@
     "sass-resources-loader": "^2.0.0",
     "uuid": "^3.3.2",
     "vue-jest": "^3.0.3",
+    "vue-loader": "^15.7.0",
     "vue-server-renderer": "^2.6.7",
     "vue-svg-inline-loader": "^1.2.11",
     "vue-svgicon": "^3.2.2",
