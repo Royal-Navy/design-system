@@ -10,9 +10,13 @@
   display: flex;
   padding: spacing(8);
   position: fixed;
+  opacity:0;
+  pointer-events: none;
+
 
   &.open {
-    background-color: rgba(red, 0.3);
+    opacity: 100;
+    pointer-events: auto;
   }
 
   .window {
