@@ -2,78 +2,93 @@ import { storiesOf } from '@storybook/vue'
 import { action } from '@storybook/addon-actions'
 
 import RnModal from './index.vue'
+import RnButton from '../RnButton/index.vue'
 
 storiesOf('Modals', module)
   .add('Basic', () => ({
-    components: { RnModal },
+    components: { RnModal, RnButton },
+    data() {
+      return {
+        isOpen: false
+      }
+    },
     template: `
+    <div>
+      <rn-button style="position:relative;z-index:9999" id="show-modal" state="neutral regular" @click="isOpen = true">Activate Modal</rn-button>
       <rn-modal
         title="Generic Card Content with a long title that wraps multiple rows"
         actionButtonText="I Understand"
-        v-on:cancel="cancel"
-        v-on:action="ok"
+        :class="{ open: isOpen }"
+        @close="isOpen = false"
+        @clickAction="isOpen = false"
       >
         <p>Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor. Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui.</p>
-      </rn-modal>`,
-    methods: {
-      cancel() {
-        action('cancel')
-      },
-      ok() {
-        action('ok')
-      },
-    },
+      </rn-modal>
+    </div>
+    `,
   }))
   .add('Hide action', () => ({
-    components: { RnModal },
+    components: { RnModal, RnButton },
+    data() {
+      return {
+        isOpen: false
+      }
+    },
     template: `
+    <div>
+      <rn-button style="position:relative;z-index:9999" id="show-modal" state="neutral regular" @click="isOpen = true">Activate Modal</rn-button>
       <rn-modal
         error
         hideAction
         title="Generic Card Content with a long title that wraps multiple rows"
-        v-on:cancel="cancel"
+        :class="{ open: isOpen }"
+        @close="isOpen = false"
       >
         <p>Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor. Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui.</p>
-      </rn-modal>`,
-    methods: {
-      cancel() {
-        action('cancel')
-      },
-    },
+      </rn-modal>
+    </div>
+      `,
   }))
   .add('Hide cancel', () => ({
-    components: { RnModal },
+    components: { RnModal, RnButton },
+    data() {
+      return {
+        isOpen: false
+      }
+    },
     template: `
+    <div>
+      <rn-button style="position:relative;z-index:9999" id="show-modal" state="neutral regular" @click="isOpen = true">Activate Modal</rn-button>
       <rn-modal
         error
         hideCancel
         title="Generic Card Content with a long title that wraps multiple rows"
-        v-on:cancel="cancel"
+        :class="{ open: isOpen }"
+        @clickAction="isOpen = false"
       >
         <p>Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor. Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui.</p>
-      </rn-modal>`,
-    methods: {
-      cancel() {
-        action('cancel')
-      },
-    },
+      </rn-modal>
+    </div>
+      `,
   }))
   .add('No Title', () => ({
-    components: { RnModal },
+    components: { RnModal, RnButton },
+    data() {
+      return {
+        isOpen: false
+      }
+    },
     template: `
+    <div>
+      <rn-button style="position:relative;z-index:9999" id="show-modal" state="neutral regular" @click="isOpen = true">Activate Modal</rn-button>
       <rn-modal
-        actionText="I Understand"
-        v-on:cancel="cancel"
-        v-on:action="ok"
+        actionButtonText="OK"
+        :class="{ open: isOpen }"
+        @close="isOpen = false"
+        @clickAction="isOpen = false"
       >
         <p>Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor. Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui.</p>
-      </rn-modal>`,
-    methods: {
-      cancel() {
-        action('cancel')
-      },
-      ok() {
-        action('ok')
-      },
-    },
+      </rn-modal>
+    </div>
+    `,
   }))

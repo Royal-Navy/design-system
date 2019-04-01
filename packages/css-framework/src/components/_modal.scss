@@ -11,6 +11,10 @@
   padding: spacing(8);
   position: fixed;
 
+  &.open {
+    background-color: rgba(red, 0.3);
+  }
+
   .window {
     background-color: color(neutral, white);
     margin: auto;
