@@ -8,7 +8,11 @@ describe('RnAlert.vue', () => {
   beforeEach(() => {
     wrapper = shallow(RnAlert, {
       propsData: {
-        text: 'foo',
+        title: 'This is a test title',
+        actionButtonText: 'ok',
+        hideClose: false,
+        hideAction: false,
+        error: false
       },
     })
   })
@@ -24,4 +28,26 @@ describe('RnAlert.vue', () => {
       expect(str).toMatchSnapshot()
     })
   })
+
+  it('Has expected props', () => {
+    expect(wrapper.props('title')).toBe('This is a test title')
+    expect(wrapper.props('actionButtonText')).toBe('ok')
+    expect(wrapper.props('hideClose')).toBe(false)
+    expect(wrapper.props('hideAction')).toBe(false)
+    expect(wrapper.props('error')).toBe(false)
+  })
+
+  it('Displays a title', () => {
+    expect(wrapper.find('.title').text()).toBe('This is a test title')
+  })
+
+  it('Displays an action button', () => {
+    expect(wrapper.find('#action-button').text()).toBe('ok')
+  })
+
+  it('Displays a close button', () => {
+    expect(wrapper.find('#close-button').isVisible()).toBe(true)
+  })
+
+
 })

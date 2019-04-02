@@ -46,6 +46,11 @@ $alert-states: (
     margin: 0;
   }
 
+  opacity: 0;
+  &.open {
+    opacity: 100;
+  }
+
   @each $state, $variation in $alert-states {
     &.#{$state} {      
       background: map-get($variation, "background");
