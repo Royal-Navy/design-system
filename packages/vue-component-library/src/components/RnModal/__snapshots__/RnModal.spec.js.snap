@@ -3,11 +3,13 @@
 exports[`RnModal.vue snapshot: has same HTML structure 1`] = `
 <div class="rn-modal">
   <div class="window">
-    <!---->
+    <div class="header">
+      <h4 class="title">This is a test title</h4>
+    </div>
     <div class="content"></div>
     <div class="footer">
-      <rn-button-stub type="link" class="secondary h_mr-2">Cancel</rn-button-stub>
-      <rn-button-stub state="neutral regular">OK</rn-button-stub>
+      <rn-button-stub id="cancel-button" type="link" class="secondary h_mr-2">Cancel</rn-button-stub>
+      <rn-button-stub state="neutral regular" id="action-button">ok</rn-button-stub>
     </div>
   </div>
 </div>

@@ -9,11 +9,11 @@
       </div>
       <div class="footer">
         <template v-if="!hideCancel">
-          <rn-button class="secondary h_mr-2" type="link" @click="$emit('close')">Cancel</rn-button>
+          <rn-button id="cancel-button" class="secondary h_mr-2" type="link" @click="$emit('close')">Cancel</rn-button>
         </template>
         <template v-if="!hideAction">
-          <rn-button v-if="error" type="error" @click="$emit('clickAction')">{{ actionButtonText }}</rn-button>
-          <rn-button state="neutral regular" v-else @click="$emit('clickAction')">{{ actionButtonText }}</rn-button>
+          <rn-button id="error-button" v-if="error" type="error" @click="$emit('clickAction')">{{ actionButtonText }}</rn-button>
+          <rn-button id="action-button" state="neutral regular" v-else @click="$emit('clickAction')">{{ actionButtonText }}</rn-button>
         </template>
       </div>
     </div>
