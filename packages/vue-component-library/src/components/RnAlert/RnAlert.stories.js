@@ -13,9 +13,10 @@ storiesOf('Alerts', module)
     },
     template: `
     <div>
-      <rn-button style="position:relative;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
+    <rn-button style="position:relative;margin-bottom: 30px;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
       <rn-alert
         hideClose
+        state="neutral"
         actionButtonText="Dismiss"
         :class="{ open: isOpen }"
         @close="isOpen = false"
@@ -35,8 +36,9 @@ storiesOf('Alerts', module)
     },
     template: `
     <div>
-      <rn-button style="position:relative;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
+    <rn-button style="position:relative;margin-bottom: 30px;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
       <rn-alert
+        state="neutral"
         actionButtonText="Dismiss"
         :class="{ open: isOpen }"
         @close="isOpen = false"
@@ -56,9 +58,10 @@ storiesOf('Alerts', module)
     },
     template: `
     <div>
-      <rn-button style="position:relative;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
+      <rn-button style="position:relative;margin-bottom: 30px;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
       <rn-alert
         hideClose
+        state="neutral"
         title="Generic Card Content with a long title that wraps multiple rows"
         actionButtonText="Dismiss"
         :class="{ open: isOpen }"
@@ -79,7 +82,7 @@ storiesOf('Alerts', module)
     },
     template: `
     <div>
-      <rn-button style="position:relative;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
+      <rn-button style="position:relative;margin-bottom: 30px;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
       <rn-alert
         state="primary"
         hideClose
@@ -102,7 +105,7 @@ storiesOf('Alerts', module)
     },
     template: `
     <div>
-      <rn-button style="position:relative;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
+      <rn-button style="position:relative;margin-bottom: 30px;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
       <rn-alert
         state="success"
         hideClose
@@ -125,7 +128,7 @@ storiesOf('Alerts', module)
     },
     template: `
     <div>
-      <rn-button style="position:relative;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
+      <rn-button style="position:relative;margin-bottom: 30px;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
       <rn-alert
         state="warning"
         hideClose
@@ -148,7 +151,7 @@ storiesOf('Alerts', module)
     },
     template: `
     <div>
-      <rn-button style="position:relative;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
+      <rn-button style="position:relative;margin-bottom: 30px;z-index:9999" id="show-alert" state="neutral regular" @click="isOpen = true">Activate Alert</rn-button>
       <rn-alert
         state="danger"
         hideClose
