@@ -38,8 +38,8 @@
     "watch": "webpack --config webpack/webpack.dev.js --watch"
   },
   "peerDependencies": {
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "dependencies": {
     "react-autosuggest": "^9.4.3"
@@ -49,14 +49,17 @@
     "@babel/plugin-proposal-class-properties": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.10",
     "@royalnavy/css-framework": "0.1.1",
     "@royalnavy/storybook-react-input-state": "0.1.1",
-    "@storybook/addon-actions": "^4.1.13",
-    "@storybook/addon-info": "^4.1.13",
-    "@storybook/addon-knobs": "^4.1.13",
-    "@storybook/addon-links": "^4.1.13",
-    "@storybook/addons": "^4.1.13",
-    "@storybook/react": "^4.1.13",
+    "@storybook/addon-actions": "^5.0.6",
+    "@storybook/addon-info": "^5.0.6",
+    "@storybook/addon-knobs": "^5.0.6",
+    "@storybook/addon-links": "^5.0.6",
+    "@storybook/addons": "^5.0.6",
+    "@storybook/react": "^5.0.6",
+    "@storybook/theming": "^5.0.6",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
@@ -64,6 +67,7 @@
     "babel-plugin-react-docgen": "^2.0.2",
     "clean-webpack-plugin": "^1.0.1",
     "css-loader": "^2.1.0",
+    "emotion-theming": "^10.0.10",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
     "enzyme-to-json": "^3.3.5",
