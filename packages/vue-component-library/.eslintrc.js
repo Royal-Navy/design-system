@@ -3,13 +3,43 @@ module.exports = {
     browser: true,
     jest: true,
     es6: true,
-    node: true,
   },
-  extends: ['airbnb-base', 'plugin:vue/recommended', '../../.eslintrc.js'],
+  extends: [
+    'plugin:vue/essential',
+    '@vue/airbnb',
+    '@vue/typescript',
+    'prettier',
+    'prettier/@typescript-eslint',
+  ],
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+  },
+  plugins: ['@typescript-eslint', 'prettier'],
+  root: true,
   rules: {
-    'import/no-extraneous-dependencies': 0,
-    'import/no-unresolved': 0,
-    'import/prefer-default-export': 0,
-    'prefer-destructuring': 0,
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'import/extensions': 0,
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
+      },
+    },
+  },
+  overrides: {
+    files: [
+      '*.stories.js',
+      '*.stories.ts',
+      '*.spec.js',
+      '*.spec.ts',
+      '*.test.js',
+      '*.test.ts',
+    ],
+    rules: {
+      'import/no-extraneous-dependencies': 0,
+      'import/no-unresolved': 0,
+    },
   },
 }

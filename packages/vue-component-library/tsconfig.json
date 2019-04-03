@@ -1,0 +1,6 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "typings/**/*.ts"],
+  "exclude": ["node_modules"],
+  "baseUrl": "."
+}

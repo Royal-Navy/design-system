@@ -1,6 +1,6 @@
 import SvgIcon from 'vue-svgicon'
 
-import Components from './src/components'
+import Components from './components/index'
 
 const { icons: Icons } = SvgIcon
 
