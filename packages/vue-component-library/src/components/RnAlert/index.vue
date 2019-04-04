@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="rn-alert" :class="[state, error]">
-    <div class="alert_window">
+    <div id="alert-window">
       <button id="close-button" v-if="!hideClose" type="button" class="close"  @click="$emit('close')">
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
             <path

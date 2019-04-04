@@ -12,7 +12,10 @@ export default {
   }),
   props: {
     title: String,
-    state: String,
+    state: {
+      type: String,
+      default: 'neutral',
+    },
     hideClose: {
       type: Boolean,
       default: false,
