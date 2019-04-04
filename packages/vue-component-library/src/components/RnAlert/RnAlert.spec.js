@@ -60,7 +60,7 @@ describe('RnAlert.vue', () => {
   
     it('Has expected default props', () => {
       expect(wrapper.props('title')).toBe(undefined)
-      // expect(wrapper.props('state')).toBe('neutral') //TODO: Fix this test when we work out what's going on with jest
+      expect(wrapper.props('state')).toBe('neutral')
       expect(wrapper.props('actionButtonText')).toBe('OK')
       expect(wrapper.props('hideClose')).toBe(false)
       expect(wrapper.props('hideAction')).toBe(false)
