@@ -32,10 +32,10 @@ $alert-states: (
 );
 
 .rn-alert {
-
+  position: relative;
   border-radius: 4px;
-  padding: spacing(4) spacing(5);
   max-width: 600px;
+  padding: spacing(4) spacing(5);
 
   &__title {
     @include font-size(s);
@@ -44,6 +44,24 @@ $alert-states: (
   &__message {
     @include font-size(xs);
     margin: 0;
+  }
+
+  opacity: 0;
+
+  &.open {
+    opacity: 100;
+  }
+
+  .content {
+    p {
+      line-height: 1.6;
+    }
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 10px;
   }
 
   @each $state, $variation in $alert-states {

@@ -1,36 +1,33 @@
+import RnButton from '../RnButton/index.vue'
 import RnCard from '../RnCard/index.vue'
 
 export default {
   name: 'RnAlert',
-
   components: {
     RnCard,
+    RnButton,
   },
-
+  data: () => ({
+    isOpen: false,
+  }),
   props: {
-    title: {
-      type: String,
-    },
+    title: String,
     state: {
       type: String,
-      default: 'default',
+      default: 'neutral',
     },
-  },
-
-  data: () => ({
-    open: true,
-  }),
-
-  computed: {
-    classes() {
-      return `rn-alert ${this.state}`
+    hideClose: {
+      type: Boolean,
+      default: false,
     },
-  },
-
-  methods: {
-    close() {
-      this.open = false
-      this.$emit('close')
+    hideAction: {
+      type: Boolean,
+      default: false,
     },
+    actionButtonText: {
+      type: String,
+      default: 'OK',
+    },
+    error: Boolean,
   },
 }

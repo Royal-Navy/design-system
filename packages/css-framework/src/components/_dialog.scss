@@ -51,12 +51,13 @@ $dialog-states: (
       padding: spacing(4);
     }    
   }
-}
-
-@each $state, $variation in $dialog-states {
-  &.#{$state} {
-    .window {
-      border-top: 4px solid map-get($variation, "border");
+  @each $state, $variation in $dialog-states {
+    &.#{$state} {
+      .window {
+        border-top: 4px solid map-get($variation, "border");
+      }
     }
   }
 }
+
+
