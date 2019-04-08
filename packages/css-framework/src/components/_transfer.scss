@@ -1,0 +1,32 @@
+.rn-transfer {
+  .column-left,
+  .column-right {
+    width: 40%;
+    float: left;
+    border: 1px solid black;
+    padding: 10px 20px;
+  }
+  .transfer-buttons {
+    width: 10%;
+    float: left;
+    margin-top: 30px;
+
+    .left, .right {
+      display: block;
+      text-align: center;
+      border: 1px solid black;
+      padding: 10px;
+      margin: 10px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  h1 {
+    font-size: 20px;
+  }
+}
