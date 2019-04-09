@@ -21,15 +21,7 @@ When used in a regular web page the toggle component uses markup identical to a 
 
 #### Example
 
-<label class="rn-toggle" label-for="happy">
-  <input
-    class="rn-toggle__input"
-    name="happy"
-    type="checkbox"
-    value="yes"
-  />
-  <span class="rn-toggle__label-inner">Toggle title</span>
-</label>
+![Toggle example](images/toggle.png)
 
 ```
 <label class="rn-toggle" label-for="happy">
