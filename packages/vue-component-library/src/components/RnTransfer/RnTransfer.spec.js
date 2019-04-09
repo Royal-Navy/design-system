@@ -8,8 +8,34 @@ describe('RnTransfer.vue', () => {
   beforeEach(() => {
     wrapper = shallow(RnTransfer, {
       propsData: {
-        title: 'This is a test title',
-        error: false
+        leftHeader: 'This is a test title',
+        rightHeader: 'This is a test title',
+        listData: [
+          {
+            "id": "stfaith",
+            "location": 'St Faith', 
+            "list" : 'left',
+            "checked" : false,
+          },
+          {
+            "id": "portsmouth",
+            "location": 'Portsmouth', 
+            "list" : 'right',
+            "checked" : false,
+          },
+          {
+            "id": "gosport",
+            "location": 'Gosport', 
+            "list" : 'left',
+            "checked" : false,
+          },
+          {
+            "id": "southampton",
+            "location": 'Southampton', 
+            "list" : 'left',
+            "checked" : false,
+          },
+        ]
       },
     })
   })
@@ -25,15 +51,23 @@ describe('RnTransfer.vue', () => {
       expect(str).toMatchSnapshot()
     })
   })
-
-  it('Has expected props', () => {
-    expect(wrapper.props('title')).toBe('This is a test title')
-    expect(wrapper.props('actionButtonText')).toBe('OK')
-    expect(wrapper.props('hideClose')).toBe(false)
-    expect(wrapper.props('hideAction')).toBe(false)
-    expect(wrapper.props('error')).toBe(false)
+  it('Displays a left Header', () => {
+    expect(wrapper.find('.column-left > h1').text()).toBe('This is a test title')
   })
-
+  it('Displays a right Header', () => {
+    expect(wrapper.find('.column-right > h1').text()).toBe('This is a test title')
+  })
+  it('Has 3 items in the left column', () => {
+    expect(wrapper.find('.column-left > ul').findAll('li').length).toBe(3)
+  })
+  it('Has 1 item in the right column', () => {
+    expect(wrapper.find('.column-right > ul').findAll('li').length).toBe(1)
+  })
+  it('Moves items from the right list to the left list', () => {
+    wrapper.find('.column-right > ul > li > label > input[name="portsmouth"]').setChecked()
+    wrapper.find('.transfer-buttons > .left').trigger('click')
+    expect(wrapper.find('.column-left > ul').findAll('li').length).toBe(4)
+  })
 })
 
 
