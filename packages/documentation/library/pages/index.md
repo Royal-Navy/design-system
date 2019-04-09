@@ -35,9 +35,9 @@ If you need support using the NELSON Toolkit, or want to suggest new content, ge
 
 # Welcome to the Nelson Toolkit
 
-This project is the end-to-end toolkit for designing and building Royal Navy applications and services. The goal is give users across the Royal Navy access to applications that work and look and feel consistent. We also want to make it easier for developers to design, build and experiment with data and iteratively prototype user interfaces. 
+This project is the end-to-end toolkit for designing and building Royal Navy applications and services. The goal is give users across the Royal Navy access to applications that work well and look and feel consistent. We want to make it easier for developers to design, build and experiment with data and iteratively prototype user interfaces. 
 
-The NELSON Toolkit will be continuously updated based on feedback from users. The aim is for the toolkit into a rich ecosystem of patterns, components, and starter apps and build the Royal Navy's developer community. Guidance for how to access unclassified Royal Navy data and interact with our APIs will also be published here.  If you want to contribute the toolkit, visit our [GitHub](https://github.com/royal-navy/standards-toolkit).
+The NELSON Toolkit will be continuously updated based on feedback from users. The aim is for the toolkit to grow into a rich ecosystem of patterns, components, and starter apps and build the Royal Navy's developer community. Guidance for how to access unclassified Royal Navy data and interact with our APIs will also be published here.  If you want to contribute the toolkit, visit our [GitHub](https://github.com/royal-navy/standards-toolkit).
 
 This is the first public version of the NELSON Toolkit, which includes HTML and CSS for styling applications. More functionality will be available soon.  
 
