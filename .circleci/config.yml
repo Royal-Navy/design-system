@@ -1,101 +1,104 @@
-defaults: &defaults
-  docker:
-    - image: circleci/node:10.15.2
-  working_directory: ~/repo
+version: 2.1
 
-version: 2
+commands:
+  dependencies:
+    description: 'Load dependency cache, get dependencies and update cache'
+    steps:
+      - restore_cache:
+          keys:
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v1-{{ .Branch }}-
+            - yarn-packages-v1-
+      - run: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - ~/.cache/yarn
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
+executors:
+  node:
+    docker:
+      - image: circleci/node:10.15.3
 
 jobs:
-  build:
-    <<: *defaults
-    environment:
-      NODE_ENV: development
+  lint_css-framework:
+    executor: node
     steps:
       - checkout
-
-      - run:
-          name: Install
-          command: yarn install
-
-      - run:
-          name: Lint
-          command: yarn run lint
-
-      - run:
-          name: Run Tests
-          command: yarn run test:ci
-
+      - dependencies
+      - run: mkdir -p test-results/stylelint
+      - run: yarn --silent stylelint --custom-formatter './node_modules/stylelint-junit-formatter/index.js' ./packages/css-framework/index.scss > test-results/stylelint/results.xml
       - store_test_results:
           path: test-results
-  build-react-storybook:
-    <<: *defaults
+      - store_artifacts:
+          path: test-results
+  lint_html-storybook:
+    executor: node
     steps:
       - checkout
+      - dependencies
+      - run: mkdir -p test-results/eslint
       - run:
-          name: Build storybook
-          command: |
-            cd packages/react-component-library
-            yarn install
-            yarn run build-storybook-prod
-      - persist_to_workspace:
-          root: ~/repo
-          paths: 
-            - packages/react-component-library/public
-  deploy-react-storybook:
-    <<: *defaults
-    steps:
-      - checkout:
-          path: ~/repo
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          name: Install Firebase tools
-          command: cd packages/react-component-library && yarn add firebase-tools
-      - run:
-          name: Deploy to Firebase
-          command: cd packages/react-component-library && ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_SB_REACT
-  build-vue-storybook:
-    <<: *defaults
+          name: Lint
+          environment:
+            ESLINT_JUNIT_OUTPUT: test-results/eslint/html-storybook-results.xml
+          command: yarn eslint -f ./node_modules/eslint-junit/index.js packages/html-storybook/src
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+  lint_react-component-library:
+    executor: node
     steps:
       - checkout
+      - dependencies
+      - run: mkdir -p test-results/eslint
+      - run:
+          name: Lint
+          environment:
+            ESLINT_JUNIT_OUTPUT: test-results/eslint/react-component-results.xml
+          command: yarn eslint -f ./node_modules/eslint-junit/index.js packages/react-component-library/src
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+  lint_storybook-react-input-state:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run: mkdir -p test-results/eslint
+      - run:
+          name: Lint
+          environment:
+            ESLINT_JUNIT_OUTPUT: test-results/eslint/storybook-react-input-state-results.xml
+          command: yarn eslint -f ./node_modules/eslint-junit/index.js packages/storybook-react-input-state/src
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+  lint_vue-component-library:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run: mkdir -p test-results/eslint
+      - run:
+          name: Lint
+          environment:
+            ESLINT_JUNIT_OUTPUT: test-results/eslint/vue-component-results.xml
+          command: yarn eslint -f ./node_modules/eslint-junit/index.js packages/vue-component-library/src
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
 
-      - run:
-          name: Build storybook
-          command: |
-            cd packages/vue-component-library
-            yarn install
-            yarn run build-storybook-prod
-      - persist_to_workspace:
-          root: ~/repo
-          paths: 
-            - node_modules
-            - .static_storybook
-deploy-vue-storybook:
-    <<: *defaults
-    steps:
-      - checkout:
-          path: ~/repo
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          name: Deploy Master to Firebase
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_SB_VUE
 workflows:
   version: 2
-  build-and-deploy:
+  lint:
     jobs:
-      - build-react-storybook
-      - deploy-react-storybook:
-          requires:
-            - build-react-storybook
-          filters:
-            branches:
-              only: master
-      # Vue not ready yet 
-      # - build-vue-storybook
-      # - deploy-vue-storybook:
-      #     requires:
-      #       - build-vue-storybook
-      #     filters:
-      #       branches:
-      #         only: master
+      - lint_css-framework
+      - lint_html-storybook
+      - lint_react-component-library
+      - lint_storybook-react-input-state
+      - lint_vue-component-library
