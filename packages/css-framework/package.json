@@ -37,6 +37,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "stylelint": "^9.10.1",
+    "stylelint-junit-formatter": "^0.2.1",
     "stylelint-webpack-plugin": "^0.10.5",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
