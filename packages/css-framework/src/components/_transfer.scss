@@ -3,30 +3,57 @@
   .column-right {
     width: 40%;
     float: left;
-    border: 1px solid black;
-    padding: 10px 20px;
+    border: 1px solid #e0e8ed;
+    color: #012159;
+    label {
+      span {
+        display: block;
+        padding: 10px;
+        margin-bottom: 1px;
+        &:hover {
+          background: #e9f8ff;
+        }
+      }
+      input {
+        display: none;
+        &:checked + span {
+          background: #e9f8ff;
+        }
+      }
+    }
   }
   .transfer-buttons {
     width: 10%;
     float: left;
-    margin-top: 30px;
+    margin-top: 90px;
 
     .left, .right {
       display: block;
       text-align: center;
-      border: 1px solid black;
+      border: 1px solid #e0e8ed;
+      background-color: rgba(#324E68, .8);
+      color: #fff;
       padding: 10px;
       margin: 10px;
       &:hover {
         cursor: pointer;
+        background-color: #324E68;
       }
     }
   }
   ul {
+    margin: 0;
     list-style: none;
     padding-left: 0;
+    height: 250px;
+    overflow-y: auto;
   }
   h1 {
     font-size: 20px;
+    padding: 20px 10px;
+    font-weight: normal;
+    margin: 0;
+    background-color: rgba(#324E68, .2);
+    border-bottom: 1px solid #e0e8ed;
   }
 }

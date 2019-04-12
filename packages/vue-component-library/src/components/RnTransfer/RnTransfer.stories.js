@@ -48,25 +48,21 @@ storiesOf('Transfer', module)
             "id": "stfaith",
             "location": 'St Faith', 
             "list" : 'left',
-            "checked" : false,
           },
           {
             "id": "portsmouth",
             "location": 'Portsmouth', 
             "list" : 'right',
-            "checked" : false,
           },
           {
             "id": "gosport",
             "location": 'Gosport', 
             "list" : 'left',
-            "checked" : false,
           },
           {
             "id": "southampton",
             "location": 'Southampton', 
             "list" : 'left',
-            "checked" : false,
           },
         ]
       }
