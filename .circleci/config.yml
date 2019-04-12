@@ -21,6 +21,12 @@ executors:
       - image: circleci/node:10.15.3
 
 jobs:
+  security_audit:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run: yarn audit
   lint_css-framework:
     executor: node
     steps:
@@ -124,6 +130,7 @@ workflows:
   version: 2
   build_and_test:
     jobs:
+      - security_audit
       - lint_css-framework
       - lint_react-component-library
       - lint_storybook-react-input-state
