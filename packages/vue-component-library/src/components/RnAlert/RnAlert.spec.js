@@ -9,7 +9,7 @@ describe('RnAlert.vue', () => {
     wrapper = shallow(RnAlert, {
       propsData: {
         title: 'This is a test title',
-        error: false
+        error: false,
       },
     })
   })
@@ -45,19 +45,17 @@ describe('RnAlert.vue', () => {
   it('Displays a close button', () => {
     expect(wrapper.find('#close-button').isVisible()).toBe(true)
   })
-  
+
   it('The close event is fired when the close button is clicked', () => {
     expect(wrapper.find('#close-button').trigger('click'))
     expect(wrapper.emitted('close')).toBeTruthy()
   })
-  
+
   describe('RnAlert.vue without props provided', () => {
-    let wrapper
-  
     beforeEach(() => {
       wrapper = shallow(RnAlert)
     })
-  
+
     it('Has expected default props', () => {
       expect(wrapper.props('title')).toBe(undefined)
       expect(wrapper.props('state')).toBe('neutral')
@@ -67,7 +65,4 @@ describe('RnAlert.vue', () => {
       expect(wrapper.props('error')).toBe(false)
     })
   })
-
 })
-
-

@@ -32,21 +32,6 @@ jobs:
           path: test-results
       - store_artifacts:
           path: test-results
-  lint_html-storybook:
-    executor: node
-    steps:
-      - checkout
-      - dependencies
-      - run: mkdir -p test-results/eslint
-      - run:
-          name: Lint
-          environment:
-            ESLINT_JUNIT_OUTPUT: test-results/eslint/html-storybook-results.xml
-          command: yarn eslint -f ./node_modules/eslint-junit/index.js packages/html-storybook/src
-      - store_test_results:
-          path: test-results
-      - store_artifacts:
-          path: test-results
   lint_react-component-library:
     executor: node
     steps:
@@ -98,7 +83,6 @@ workflows:
   lint:
     jobs:
       - lint_css-framework
-      - lint_html-storybook
       - lint_react-component-library
       - lint_storybook-react-input-state
       - lint_vue-component-library
