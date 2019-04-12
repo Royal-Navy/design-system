@@ -31,10 +31,7 @@
     "prepublish": "yarn build",
     "storybook": "start-storybook -p 6006",
     "release": "release-it",
-    "test": "jest",
-    "test:watch": "jest --watchAll",
-    "test:ci": "JEST_JUNIT_OUTPUT=./test-results/jest.xml jest --ci --reporters=default --reporters=jest-junit",
-    "upgrade-interactive": "npm-check --update"
+    "test": "jest --silent --no-cache"
   },
   "peerDependencies": {
     "react": "^16.0.0",
