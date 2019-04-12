@@ -31,8 +31,6 @@
     "lint": "eslint src",
     "lint-staged": "lint-staged",
     "storybook": "start-storybook -p 6006",
-    "test": "jest",
-    "test:ci": "JEST_JUNIT_OUTPUT=../../test-results/rect-components-unit.xml jest --ci --reporters=default --reporters=jest-junit",
     "watch": "webpack --config webpack/webpack.dev.js --watch"
   },
   "peerDependencies": {
@@ -54,7 +52,6 @@
     "@storybook/react": "^4.1.13",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.1.0",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^1.0.1",
     "css-loader": "^2.1.0",
@@ -69,8 +66,6 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.12.4",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.1.0",
-    "jest-junit": "^6.3.0",
     "lint-staged": "^8.1.4",
     "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
@@ -103,19 +98,5 @@
   },
   "lint-staged": {
     "*.@(js)": "eslint"
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "setupFiles": [
-      "./tests/setupTests.js"
-    ],
-    "testMatch": [
-      "**/?(*.)(spec|test).js?(x)"
-    ],
-    "moduleNameMapper": {
-      "^.+.(css|sass|scss)$": "identity-obj-proxy"
-    }
   }
 }

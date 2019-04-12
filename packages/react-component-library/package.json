@@ -33,8 +33,7 @@
     "lint-staged": "lint-staged",
     "prepublishOnly": "npm run build",
     "storybook": "start-storybook -p 6006",
-    "test": "jest",
-    "test:ci": "JEST_JUNIT_OUTPUT=../../test-results/rect-components-unit.xml jest --ci --reporters=default --reporters=jest-junit",
+    "test": "jest --silent --no-cache",
     "watch": "webpack --config webpack/webpack.dev.js --watch"
   },
   "peerDependencies": {

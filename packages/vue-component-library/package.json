@@ -35,9 +35,7 @@
     "prepublishOnly": "NODE_ENV=production npm run build",
     "storybook": "start-storybook -s ./static -p 3001",
     "svg": "vsvg -s ./static/assets/icons -t ./src/icons",
-    "test": "jest --silent --no-cache",
-    "test:ci": "JEST_JUNIT_OUTPUT=../../test-results/vue-components-unit.xml jest --ci --reporters=default --reporters=jest-junit",
-    "test:watch": "jest --silent --watch"
+    "test": "jest --silent --no-cache"
   },
   "dependencies": {
     "uuid": "^3.3.2",
