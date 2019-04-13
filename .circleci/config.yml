@@ -21,62 +21,68 @@ executors:
       - image: circleci/node:10.15.3
 
 jobs:
+  security_audit:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run: yarn audit
   lint_css-framework:
     executor: node
     steps:
       - checkout
       - dependencies
-      - run: mkdir -p test-results/stylelint
-      - run: yarn --silent stylelint --custom-formatter './node_modules/stylelint-junit-formatter/index.js' ./packages/css-framework/index.scss > test-results/stylelint/results.xml
+      - run: mkdir -p packages/css-framework/test-results/stylelint
+      - run: yarn --cwd packages/css-framework --silent stylelint --custom-formatter '../../node_modules/stylelint-junit-formatter/index.js' ./index.scss > packages/css-framework/test-results/stylelint/results.xml
       - store_test_results:
-          path: test-results
+          path: packages/css-framework/test-results/stylelint/test-results
       - store_artifacts:
-          path: test-results
+          path: packages/css-framework/test-results/stylelint/test-results
   lint_react-component-library:
     executor: node
     steps:
       - checkout
       - dependencies
-      - run: mkdir -p test-results/eslint
+      - run: mkdir -p packages/react-component-library/test-results/eslint
       - run:
           name: Lint
           environment:
             ESLINT_JUNIT_OUTPUT: test-results/eslint/react-component-results.xml
-          command: yarn eslint -f ./node_modules/eslint-junit/index.js packages/react-component-library/src
+          command: yarn --cwd packages/react-component-library eslint -f ../../node_modules/eslint-junit/index.js ./src
       - store_test_results:
-          path: test-results
+          path: packages/react-component-library/test-results
       - store_artifacts:
-          path: test-results
+          path: packages/react-component-library/test-results
   lint_storybook-react-input-state:
     executor: node
     steps:
       - checkout
       - dependencies
-      - run: mkdir -p test-results/eslint
+      - run: mkdir -p packages/storybook-react-input-state/test-results/eslint
       - run:
           name: Lint
           environment:
             ESLINT_JUNIT_OUTPUT: test-results/eslint/storybook-react-input-state-results.xml
-          command: yarn eslint -f ./node_modules/eslint-junit/index.js packages/storybook-react-input-state/src
+          command: yarn --cwd packages/storybook-react-input-state eslint -f ../../node_modules/eslint-junit/index.js ./src
       - store_test_results:
-          path: test-results
+          path: packages/storybook-react-input-state/test-results
       - store_artifacts:
-          path: test-results
+          path: packages/storybook-react-input-state/test-results
   lint_vue-component-library:
     executor: node
     steps:
       - checkout
       - dependencies
-      - run: mkdir -p test-results/eslint
+      - run: mkdir -p packages/vue-component-library/test-results/eslint
       - run:
           name: Lint
           environment:
             ESLINT_JUNIT_OUTPUT: test-results/eslint/vue-component-results.xml
-          command: yarn eslint -f ./node_modules/eslint-junit/index.js packages/vue-component-library/src
+          command: yarn --cwd packages/vue-component-library eslint -f ../../node_modules/eslint-junit/index.js ./src
       - store_test_results:
-          path: test-results
+          path: packages/vue-component-library/test-results
       - store_artifacts:
-          path: test-results
+          path: packages/vue-component-library/test-results
   test_react-component-library:
     executor: node
     steps:
@@ -124,6 +130,7 @@ workflows:
   version: 2
   build_and_test:
     jobs:
+      - security_audit
       - lint_css-framework
       - lint_react-component-library
       - lint_storybook-react-input-state
