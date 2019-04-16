@@ -92,11 +92,15 @@ jobs:
           name: Jest
           environment:
             JEST_JUNIT_OUTPUT: test-results/jest/react-component-results.xml
-          command: yarn --cwd packages/react-component-library jest --ci --silent --no-cache --reporters=default --reporters=jest-junit
+          command: yarn --cwd packages/react-component-library jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
       - store_test_results:
           path: packages/react-component-library/test-results
       - store_artifacts:
           path: packages/react-component-library/test-results
+      - persist_to_workspace:
+          root: packages
+          paths:
+            - react-component-library/coverage
   test_storybook-react-input-state:
     executor: node
     steps:
@@ -106,11 +110,15 @@ jobs:
           name: Jest
           environment:
             JEST_JUNIT_OUTPUT: test-results/jest/storybook-react-input-state-results.xml
-          command: yarn --cwd packages/storybook-react-input-state jest --ci --silent --no-cache --reporters=default --reporters=jest-junit
+          command: yarn --cwd packages/storybook-react-input-state jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
       - store_test_results:
           path: packages/storybook-react-input-state/test-results
       - store_artifacts:
           path: packages/storybook-react-input-state/test-results
+      - persist_to_workspace:
+          root: packages
+          paths:
+            - storybook-react-input-state/coverage
   test_vue-component-library:
     executor: node
     steps:
@@ -120,12 +128,45 @@ jobs:
           name: Jest
           environment:
             JEST_JUNIT_OUTPUT: test-results/jest/vue-component-results.xml
-          command: yarn --cwd packages/vue-component-library jest --ci --silent --no-cache --reporters=default --reporters=jest-junit
+          command: yarn --cwd packages/vue-component-library jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
       - store_test_results:
           path: packages/vue-component-library/test-results
       - store_artifacts:
           path: packages/vue-component-library/test-results
-
+      - persist_to_workspace:
+          root: packages
+          paths:
+            - vue-component-library/coverage
+  code_climate:
+    executor: node
+    steps:
+      - checkout
+      - attach_workspace:
+          at: workspace
+      - run:
+          name: Download Code Climate tool
+          command: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > /tmp/cc-test-reporter
+      - run: chmod +x /tmp/cc-test-reporter
+      - run:
+          name: Convert react results to cc format
+          working_directory: ~/project
+          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.react-component-library.json workspace/react-component-library/coverage/lcov.info
+      - run:
+          name: Convert React storybook input state results to cc format
+          working_directory: ~/project
+          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.storybook-react-input-state.json workspace/storybook-react-input-state/coverage/lcov.info
+      - run:
+          name: Convert vue results to cc format
+          working_directory: ~/project
+          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.vue-component-library.json workspace/vue-component-library/coverage/lcov.info
+      - run:
+          name: Combine coverage results
+          working_directory: ~/project
+          command: /tmp/cc-test-reporter sum-coverage workspace/codeclimate.*.json -p 3 -o workspace/coverage.json
+      - run:
+          name: Upload CC coverage
+          working_directory: ~/project
+          command: /tmp/cc-test-reporter upload-coverage -i workspace/coverage.json
 workflows:
   version: 2
   build_and_test:
@@ -144,3 +185,8 @@ workflows:
       - test_vue-component-library:
           requires:
             - lint_vue-component-library
+      - code_climate:
+          requires:
+            - test_react-component-library
+            - test_storybook-react-input-state
+            - test_vue-component-library
