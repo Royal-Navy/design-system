@@ -167,6 +167,66 @@ jobs:
           name: Upload CC coverage
           working_directory: ~/project
           command: /tmp/cc-test-reporter upload-coverage -i workspace/coverage.json
+  publish_documentation:
+    executor: node
+    steps:
+      - checkout
+      - run:
+          name: Authenticate NPM
+          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          working_directory: packages/documentation
+          command: npm publish --registry https://$NPM_REGISTRY
+  publish_storybook-react-input-state:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Authenticate NPM
+          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          working_directory: packages/storybook-react-input-state
+          command: npm publish --registry https://$NPM_REGISTRY
+  publish_css-framework:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Authenticate NPM
+          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          working_directory: packages/css-framework
+          command: npm publish --registry https://$NPM_REGISTRY
+  publish_react-component-library:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Authenticate NPM
+          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          working_directory: packages/react-component-library
+          command: npm publish --registry https://$NPM_REGISTRY
+  publish_vue-component-library:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Authenticate NPM
+          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          working_directory: packages/vue-component-library
+          command: npm publish --registry https://$NPM_REGISTRY
+
 workflows:
   version: 2
   build_and_test:
@@ -190,3 +250,34 @@ workflows:
             - test_react-component-library
             - test_storybook-react-input-state
             - test_vue-component-library
+      - publish_documentation
+      - publish_storybook-react-input-state:
+          requires:
+            - test_storybook-react-input-state
+          filters:
+            branches:
+              only:
+                - master
+      - publish_css-framework:
+          requires:
+            - lint_css-framework
+          filters:
+            branches:
+              only:
+                - master
+      - publish_react-component-library:
+          requires:
+            - test_react-component-library
+            - publish_css-framework
+          filters:
+            branches:
+              only:
+                - master
+      - publish_vue-component-library:
+          requires:
+            - test_vue-component-library
+            - publish_css-framework
+          filters:
+            branches:
+              only:
+                - master
