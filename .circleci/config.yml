@@ -250,7 +250,11 @@ workflows:
             - test_react-component-library
             - test_storybook-react-input-state
             - test_vue-component-library
-      - publish_documentation
+      - publish_documentation:
+          filters:
+            branches:
+              only:
+                - master
       - publish_storybook-react-input-state:
           requires:
             - test_storybook-react-input-state
