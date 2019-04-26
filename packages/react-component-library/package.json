@@ -33,8 +33,7 @@
     "lint-staged": "lint-staged",
     "prepublishOnly": "npm run build",
     "storybook": "start-storybook -p 6006",
-    "test": "jest",
-    "test:ci": "JEST_JUNIT_OUTPUT=../../test-results/rect-components-unit.xml jest --ci --reporters=default --reporters=jest-junit",
+    "test": "jest --silent --no-cache",
     "watch": "webpack --config webpack/webpack.dev.js --watch"
   },
   "peerDependencies": {
@@ -74,6 +73,7 @@
     "eslint": "^5.15.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-junit": "^1.0.1",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.12.4",

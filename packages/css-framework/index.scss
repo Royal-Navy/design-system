@@ -1,40 +1,39 @@
-@import 'src/config';
+@import "src/config";
 
 // Functions
-@import 'src/abstracts/functions/map-deep-get';
-@import 'src/abstracts/functions/non-destructive-map-merge';
-@import 'src/abstracts/functions/color';
-@import 'src/abstracts/functions/spacing';
-@import 'src/abstracts/functions/spacing';
-@import 'src/abstracts/functions/typography';
-
+@import "src/abstracts/functions/map-deep-get";
+@import "src/abstracts/functions/non-destructive-map-merge";
+@import "src/abstracts/functions/color";
+@import "src/abstracts/functions/spacing";
+@import "src/abstracts/functions/spacing";
+@import "src/abstracts/functions/typography";
 
 // Contexts
-@import 'src/contexts/light';
+@import "src/contexts/light";
 
 // import Variables
-@import 'src/vars/breakpoints';
-@import 'src/vars/colors';
-@import 'src/vars/spacing';
-@import 'src/vars/typography';
-@import 'src/vars/state';
-@import 'src/vars/zindex';
+@import "src/vars/breakpoints";
+@import "src/vars/colors";
+@import "src/vars/spacing";
+@import "src/vars/typography";
+@import "src/vars/state";
+@import "src/vars/zindex";
 
 // Mixins
-@import 'src/abstracts/mixins/breakpoint';
-@import 'src/abstracts/mixins/clearfix';
-@import 'src/abstracts/mixins/cover';
-@import 'src/abstracts/mixins/hover';
-@import 'src/abstracts/mixins/pseudo';
-@import 'src/abstracts/mixins/shadows';
-@import 'src/abstracts/mixins/truncate';
-@import 'src/abstracts/mixins/typography';
-@import 'src/abstracts/mixins/zindex';
+@import "src/abstracts/mixins/breakpoint";
+@import "src/abstracts/mixins/clearfix";
+@import "src/abstracts/mixins/cover";
+@import "src/abstracts/mixins/hover";
+@import "src/abstracts/mixins/pseudo";
+@import "src/abstracts/mixins/shadows";
+@import "src/abstracts/mixins/truncate";
+@import "src/abstracts/mixins/typography";
+@import "src/abstracts/mixins/zindex";
 
 // Base
-@import 'src/base/normalize';
-@import 'src/base/box-sizing';
-@import 'src/base/fonts';
+@import "src/base/normalize";
+@import "src/base/box-sizing";
+@import "src/base/fonts";
 
 // Components
 @import 'src/components/alert';
@@ -63,16 +62,16 @@
 @import 'src/components/transfer';
 
 // Objects
-@import 'src/objects/media';
-@import 'src/objects/wrapper';
+@import "src/objects/media";
+@import "src/objects/wrapper";
 
 // Helpers
-@import 'src/helpers/clearfix';
-@import 'src/helpers/flex';
-@import 'src/helpers/position';
-@import 'src/helpers/shadows';
-@import 'src/helpers/sizing';
-@import 'src/helpers/spacing';
-@import 'src/helpers/shadows';
-@import 'src/helpers/typography';
-@import 'src/helpers/visibility';
+@import "src/helpers/clearfix";
+@import "src/helpers/flex";
+@import "src/helpers/position";
+@import "src/helpers/shadows";
+@import "src/helpers/sizing";
+@import "src/helpers/spacing";
+@import "src/helpers/shadows";
+@import "src/helpers/typography";
+@import "src/helpers/visibility";

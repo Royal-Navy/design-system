@@ -1,101 +1,287 @@
-defaults: &defaults
-  docker:
-    - image: circleci/node:10.15.2
-  working_directory: ~/repo
+version: 2.1
 
-version: 2
+commands:
+  dependencies:
+    description: 'Load dependency cache, get dependencies and update cache'
+    steps:
+      - restore_cache:
+          keys:
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v1-{{ .Branch }}-
+            - yarn-packages-v1-
+      - run: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - ~/.cache/yarn
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
+executors:
+  node:
+    docker:
+      - image: circleci/node:10.15.3
 
 jobs:
-  build:
-    <<: *defaults
-    environment:
-      NODE_ENV: development
+  security_audit:
+    executor: node
     steps:
       - checkout
-
-      - run:
-          name: Install
-          command: yarn install
-
+      - dependencies
+      - run: yarn audit
+  lint_css-framework:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run: mkdir -p packages/css-framework/test-results/stylelint
+      - run: yarn --cwd packages/css-framework --silent stylelint --custom-formatter '../../node_modules/stylelint-junit-formatter/index.js' ./index.scss > packages/css-framework/test-results/stylelint/results.xml
+      - store_test_results:
+          path: packages/css-framework/test-results/stylelint/test-results
+      - store_artifacts:
+          path: packages/css-framework/test-results/stylelint/test-results
+  lint_react-component-library:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run: mkdir -p packages/react-component-library/test-results/eslint
       - run:
           name: Lint
-          command: yarn run lint
-
-      - run:
-          name: Run Tests
-          command: yarn run test:ci
-
+          environment:
+            ESLINT_JUNIT_OUTPUT: test-results/eslint/react-component-results.xml
+          command: yarn --cwd packages/react-component-library eslint -f ../../node_modules/eslint-junit/index.js ./src
       - store_test_results:
-          path: test-results
-  build-react-storybook:
-    <<: *defaults
+          path: packages/react-component-library/test-results
+      - store_artifacts:
+          path: packages/react-component-library/test-results
+  lint_storybook-react-input-state:
+    executor: node
     steps:
       - checkout
+      - dependencies
+      - run: mkdir -p packages/storybook-react-input-state/test-results/eslint
       - run:
-          name: Build storybook
-          command: |
-            cd packages/react-component-library
-            yarn install
-            yarn run build-storybook-prod
+          name: Lint
+          environment:
+            ESLINT_JUNIT_OUTPUT: test-results/eslint/storybook-react-input-state-results.xml
+          command: yarn --cwd packages/storybook-react-input-state eslint -f ../../node_modules/eslint-junit/index.js ./src
+      - store_test_results:
+          path: packages/storybook-react-input-state/test-results
+      - store_artifacts:
+          path: packages/storybook-react-input-state/test-results
+  lint_vue-component-library:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run: mkdir -p packages/vue-component-library/test-results/eslint
+      - run:
+          name: Lint
+          environment:
+            ESLINT_JUNIT_OUTPUT: test-results/eslint/vue-component-results.xml
+          command: yarn --cwd packages/vue-component-library eslint -f ../../node_modules/eslint-junit/index.js ./src
+      - store_test_results:
+          path: packages/vue-component-library/test-results
+      - store_artifacts:
+          path: packages/vue-component-library/test-results
+  test_react-component-library:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Jest
+          environment:
+            JEST_JUNIT_OUTPUT: test-results/jest/react-component-results.xml
+          command: yarn --cwd packages/react-component-library jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
+      - store_test_results:
+          path: packages/react-component-library/test-results
+      - store_artifacts:
+          path: packages/react-component-library/test-results
       - persist_to_workspace:
-          root: ~/repo
-          paths: 
-            - packages/react-component-library/public
-  deploy-react-storybook:
-    <<: *defaults
-    steps:
-      - checkout:
-          path: ~/repo
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          name: Install Firebase tools
-          command: cd packages/react-component-library && yarn add firebase-tools
-      - run:
-          name: Deploy to Firebase
-          command: cd packages/react-component-library && ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_SB_REACT
-  build-vue-storybook:
-    <<: *defaults
+          root: packages
+          paths:
+            - react-component-library/coverage
+  test_storybook-react-input-state:
+    executor: node
     steps:
       - checkout
+      - dependencies
+      - run:
+          name: Jest
+          environment:
+            JEST_JUNIT_OUTPUT: test-results/jest/storybook-react-input-state-results.xml
+          command: yarn --cwd packages/storybook-react-input-state jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
+      - store_test_results:
+          path: packages/storybook-react-input-state/test-results
+      - store_artifacts:
+          path: packages/storybook-react-input-state/test-results
+      - persist_to_workspace:
+          root: packages
+          paths:
+            - storybook-react-input-state/coverage
+  test_vue-component-library:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Jest
+          environment:
+            JEST_JUNIT_OUTPUT: test-results/jest/vue-component-results.xml
+          command: yarn --cwd packages/vue-component-library jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
+      - store_test_results:
+          path: packages/vue-component-library/test-results
+      - store_artifacts:
+          path: packages/vue-component-library/test-results
+      - persist_to_workspace:
+          root: packages
+          paths:
+            - vue-component-library/coverage
+  code_climate:
+    executor: node
+    steps:
+      - checkout
+      - attach_workspace:
+          at: workspace
+      - run:
+          name: Download Code Climate tool
+          command: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > /tmp/cc-test-reporter
+      - run: chmod +x /tmp/cc-test-reporter
+      - run:
+          name: Convert react results to cc format
+          working_directory: ~/project
+          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.react-component-library.json workspace/react-component-library/coverage/lcov.info
+      - run:
+          name: Convert React storybook input state results to cc format
+          working_directory: ~/project
+          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.storybook-react-input-state.json workspace/storybook-react-input-state/coverage/lcov.info
+      - run:
+          name: Convert vue results to cc format
+          working_directory: ~/project
+          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.vue-component-library.json workspace/vue-component-library/coverage/lcov.info
+      - run:
+          name: Combine coverage results
+          working_directory: ~/project
+          command: /tmp/cc-test-reporter sum-coverage workspace/codeclimate.*.json -p 3 -o workspace/coverage.json
+      - run:
+          name: Upload CC coverage
+          working_directory: ~/project
+          command: /tmp/cc-test-reporter upload-coverage -i workspace/coverage.json
+  publish_documentation:
+    executor: node
+    steps:
+      - checkout
+      - run:
+          name: Authenticate NPM
+          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          working_directory: packages/documentation
+          command: npm publish --registry https://$NPM_REGISTRY
+  publish_storybook-react-input-state:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Authenticate NPM
+          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          working_directory: packages/storybook-react-input-state
+          command: npm publish --registry https://$NPM_REGISTRY
+  publish_css-framework:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Authenticate NPM
+          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          working_directory: packages/css-framework
+          command: npm publish --registry https://$NPM_REGISTRY
+  publish_react-component-library:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Authenticate NPM
+          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          working_directory: packages/react-component-library
+          command: npm publish --registry https://$NPM_REGISTRY
+  publish_vue-component-library:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Authenticate NPM
+          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          working_directory: packages/vue-component-library
+          command: npm publish --registry https://$NPM_REGISTRY
 
-      - run:
-          name: Build storybook
-          command: |
-            cd packages/vue-component-library
-            yarn install
-            yarn run build-storybook-prod
-      - persist_to_workspace:
-          root: ~/repo
-          paths: 
-            - node_modules
-            - .static_storybook
-deploy-vue-storybook:
-    <<: *defaults
-    steps:
-      - checkout:
-          path: ~/repo
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          name: Deploy Master to Firebase
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_SB_VUE
 workflows:
   version: 2
-  build-and-deploy:
+  build_and_test:
     jobs:
-      - build-react-storybook
-      - deploy-react-storybook:
+      - security_audit
+      - lint_css-framework
+      - lint_react-component-library
+      - lint_storybook-react-input-state
+      - lint_vue-component-library
+      - test_react-component-library:
           requires:
-            - build-react-storybook
+            - lint_react-component-library
+      - test_storybook-react-input-state:
+          requires:
+            - lint_storybook-react-input-state
+      - test_vue-component-library:
+          requires:
+            - lint_vue-component-library
+      - code_climate:
+          requires:
+            - test_react-component-library
+            - test_storybook-react-input-state
+            - test_vue-component-library
+      - publish_documentation:
           filters:
             branches:
-              only: master
-      # Vue not ready yet 
-      # - build-vue-storybook
-      # - deploy-vue-storybook:
-      #     requires:
-      #       - build-vue-storybook
-      #     filters:
-      #       branches:
-      #         only: master
+              only:
+                - master
+      - publish_storybook-react-input-state:
+          requires:
+            - test_storybook-react-input-state
+          filters:
+            branches:
+              only:
+                - master
+      - publish_css-framework:
+          requires:
+            - lint_css-framework
+          filters:
+            branches:
+              only:
+                - master
+      - publish_react-component-library:
+          requires:
+            - test_react-component-library
+            - publish_css-framework
+          filters:
+            branches:
+              only:
+                - master
+      - publish_vue-component-library:
+          requires:
+            - test_vue-component-library
+            - publish_css-framework
+          filters:
+            branches:
+              only:
+                - master
