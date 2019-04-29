@@ -20,10 +20,11 @@ export default {
   methods: {
     move (item, side) {
       if (item.checked === true) {
+        // eslint-disable-next-line no-param-reassign
         item.list = side
       }
+      // eslint-disable-next-line no-param-reassign
       item.checked = false
-
       this.$emit('moved', this.listData)
     },
 
