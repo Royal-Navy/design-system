@@ -66,7 +66,7 @@ describe('RnTransfer.vue', () => {
   it('Moves items from the right list to the left list', () => {
     wrapper.find('.column-right > ul > li > label > input[name="portsmouth"]').setChecked()
     wrapper.find('.transfer-buttons > .left').trigger('click')
-    expect(wrapper.find('.column-left > ul').findAll('li').length).toBe(4)
+    expect(wrapper.emitted().moved).toBeTruthy()
   })
 })
 
