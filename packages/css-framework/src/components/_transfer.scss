@@ -1,27 +1,45 @@
 .rn-transfer {
-  .column-left,
-  .column-right {
+  .panel {
     width: 40%;
     float: left;
     border: 1px solid #e0e8ed;
     color: #012159;
-    label {
-      span {
-        display: block;
-        padding: 10px;
-        margin-bottom: 1px;
-        &:hover {
-          background: #e9f8ff;
-        }
+
+    &__list {
+      margin: 0;
+      list-style: none;
+      padding-left: 0;
+      height: 250px;
+      overflow-y: auto;
+    }
+    &__header {
+      display: block;
+      font-size: 20px;
+      padding: 20px 10px;
+      font-weight: normal;
+      margin: 0;
+      background-color: rgba(#324E68, 0.2);
+      border-bottom: 1px solid #e0e8ed;
+    }
+  }
+
+  .item-label {
+    &__location {
+      display: block;
+      padding: 10px;
+      margin-bottom: 1px;
+      &:hover {
+        background: #e9f8ff;
       }
-      input {
-        display: none;
-        &:checked + span {
-          background: #e9f8ff;
-        }
+    }
+    &__input {
+      display: none;
+      &:checked + span {
+        background: #e9f8ff;
       }
     }
   }
+
   .transfer-buttons {
     width: 10%;
     float: left;
@@ -31,8 +49,8 @@
       display: block;
       text-align: center;
       border: 1px solid #e0e8ed;
-      background-color: rgba(#324E68, .8);
-      color: #fff;
+      background-color: rgba(#324E68, 0.8);
+      color: #ffffff;
       padding: 10px;
       margin: 10px;
       &:hover {
@@ -41,19 +59,5 @@
       }
     }
   }
-  ul {
-    margin: 0;
-    list-style: none;
-    padding-left: 0;
-    height: 250px;
-    overflow-y: auto;
-  }
-  h1 {
-    font-size: 20px;
-    padding: 20px 10px;
-    font-weight: normal;
-    margin: 0;
-    background-color: rgba(#324E68, .2);
-    border-bottom: 1px solid #e0e8ed;
-  }
+  
 }

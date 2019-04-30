@@ -1,12 +1,12 @@
 <template lang="html">
   <div class="rn-transfer">
-    <div class="column-left"> 
-      <h1 v-if="leftHeader">{{leftHeader}}</h1>
-      <ul aria-label="checkbox-group">
+    <div class="panel"> 
+      <span class="panel__header" role="heading" v-if="leftHeader">{{leftHeader}}</span>
+      <ul class="panel__list" aria-label="checkbox-group">
         <li v-for="(item) in leftList" :key="item.id">
-          <label>
-            <input type="checkbox" :name="item.id" :value="item.location" @click="item.checked = true"/>
-            <span>{{item.location}}</span>
+          <label class="item-label">
+            <input class="item-label__input" type="checkbox" :name="item.id" :value="item.location" @click="item.checked = true"/>
+            <span class="item-label__location">{{item.location}}</span>
           </label>
         </li>
       </ul>
@@ -27,13 +27,13 @@
 </svg>
 </span>
     </div>
-    <div class="column-right">
-      <h1 v-if="rightHeader">{{rightHeader}}</h1>
-      <ul aria-label="checkbox-group">
+    <div class="panel">
+      <span class="panel__header" role="heading" v-if="rightHeader">{{rightHeader}}</span>
+      <ul class="panel__list" aria-label="checkbox-group">
         <li v-for="(item) in rightList" :key="item.id">
-          <label>
-            <input type="checkbox" :name="item.id" :value="item.location" @click="item.checked = true"/>
-            <span>{{item.location}}</span>
+          <label class="item-label">
+            <input class="item-label__input" type="checkbox" :name="item.id" :value="item.location" @click="item.checked = true"/>
+            <span class="item-label__location">{{item.location}}</span>
           </label>
         </li>
       </ul>
