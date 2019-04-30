@@ -1,15 +1,17 @@
 .rn-transfer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
   .panel {
-    width: 40%;
-    float: left;
     border: 1px solid #e0e8ed;
     color: #012159;
-
+    flex-grow: 2;
     &__list {
       margin: 0;
       list-style: none;
       padding-left: 0;
-      height: 250px;
+      height: 100%;
       overflow-y: auto;
     }
     &__header {
@@ -41,17 +43,19 @@
   }
 
   .transfer-buttons {
-    width: 10%;
-    float: left;
-    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
 
-    .left, .right {
+    &__button {
       display: block;
       text-align: center;
       border: 1px solid #e0e8ed;
       background-color: rgba(#324E68, 0.8);
       color: #ffffff;
-      padding: 10px;
+      padding: 10px 15px;
       margin: 10px;
       &:hover {
         cursor: pointer;
@@ -59,5 +63,4 @@
       }
     }
   }
-  
 }

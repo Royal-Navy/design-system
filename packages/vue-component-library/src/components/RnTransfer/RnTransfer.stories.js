@@ -68,6 +68,6 @@ storiesOf('Transfer', module)
       }
     },
     template: `
-      <rn-transfer :listData="listData" leftHeader="Left header" rightHeader="Right header" style="max-width: 600px;"></rn-transfer>
+      <rn-transfer :listData="listData" leftHeader="Left header" rightHeader="Right header" style="max-width: 600px;height: 300px;"></rn-transfer>
     `,
   }))
