@@ -35,9 +35,9 @@ jobs:
       - run: mkdir -p packages/css-framework/test-results/stylelint
       - run: yarn --cwd packages/css-framework --silent stylelint --custom-formatter '../../node_modules/stylelint-junit-formatter/index.js' ./index.scss > packages/css-framework/test-results/stylelint/results.xml
       - store_test_results:
-          path: packages/css-framework/test-results/stylelint/test-results
+          path: packages/css-framework/test-results/stylelint
       - store_artifacts:
-          path: packages/css-framework/test-results/stylelint/test-results
+          path: packages/css-framework/test-results/stylelint
   lint_react-component-library:
     executor: node
     steps:
