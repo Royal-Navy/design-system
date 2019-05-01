@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RnTransfer.vue snapshot: has same HTML structure 1`] = `
+<div class="rn-transfer">
+  <div class="panel left"><span role="heading" class="panel__header">This is a test title</span>
+    <ul aria-label="checkbox-group" class="panel__list">
+      <li><label class="item-label"><input type="checkbox" name="stfaith" value="St Faith" class="item-label__input"> <span class="item-label__location">St Faith</span></label></li>
+      <li><label class="item-label"><input type="checkbox" name="gosport" value="Gosport" class="item-label__input"> <span class="item-label__location">Gosport</span></label></li>
+      <li><label class="item-label"><input type="checkbox" name="southampton" value="Southampton" class="item-label__input"> <span class="item-label__location">Southampton</span></label></li>
+    </ul>
+  </div>
+  <div class="transfer-buttons"><span class="transfer-buttons__button to_left"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10"><g fill="#fff" fill-rule="evenodd" transform="translate(0 .199)"><polygon points="10.548 9.095 6 4.548 10.548 0 11.969 1.421 8.842 4.548 11.969 7.674" transform="rotate(0 8.984 4.548)"></polygon> <polygon points="4.548 9.095 0 4.548 4.548 0 5.969 1.421 2.842 4.548 5.969 7.674" transform="rotate(0 2.984 4.548)"></polygon></g></svg></span> <span class="transfer-buttons__button to_right"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10"><g fill="#fff" fill-rule="evenodd" transform="translate(0 .199)"><polygon points="10.548 9.095 6 4.548 10.548 0 11.969 1.421 8.842 4.548 11.969 7.674" transform="rotate(180 8.984 4.548)"></polygon> <polygon points="4.548 9.095 0 4.548 4.548 0 5.969 1.421 2.842 4.548 5.969 7.674" transform="rotate(180 2.984 4.548)"></polygon></g></svg></span></div>
+  <div class="panel right"><span role="heading" class="panel__header">This is a test title</span>
+    <ul aria-label="checkbox-group" class="panel__list">
+      <li><label class="item-label"><input type="checkbox" name="portsmouth" value="Portsmouth" class="item-label__input"> <span class="item-label__location">Portsmouth</span></label></li>
+    </ul>
+  </div>
+</div>
+`;

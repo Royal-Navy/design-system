@@ -38,6 +38,7 @@
     "test": "jest --silent --no-cache"
   },
   "dependencies": {
+    "sinon": "^7.3.1",
     "uuid": "^3.3.2",
     "vue-svgicon": "^3.2.5"
   },

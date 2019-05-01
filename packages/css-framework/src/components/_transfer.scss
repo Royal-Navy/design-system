@@ -1,0 +1,67 @@
+.rn-transfer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+  .panel {
+    border: spacing(px) solid color(neutral, 00);
+    color: color(primary, 900);
+    background-color: color(neutral, 00);
+    flex-grow: 2;
+    &__list {
+      margin: 0;
+      list-style: none;
+      padding-left: 0;
+      height: 100%;
+      overflow-y: auto;
+    }
+    &__header {
+      display: block;
+      @include font-size(base);
+      padding: spacing(4) spacing(3);
+      font-weight: normal;
+      margin: 0;
+      background-color: color(neutral, 300);
+      border-bottom: spacing(px) solid color(neutral, 00);
+    }
+  }
+
+  .item-label {
+    &__location {
+      display: block;
+      padding: spacing(3);
+      margin: spacing(1);
+      &:hover {
+        background: color(primary, 100);
+      }
+    }
+    &__input {
+      display: none;
+      &:checked + span {
+        background: color(primary, 100);
+      }
+    }
+  }
+
+  .transfer-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+
+    &__button {
+      display: block;
+      text-align: center;
+      border: spacing(px) solid color(neutral, white);
+      background-color: color(neutral, 500);
+      color: color(neutral, white);
+      padding: spacing(2) spacing(3);
+      margin: spacing(3);
+      &:hover {
+        cursor: pointer;
+        background-color: color(neutral, 700);
+      }
+    }
+  }
+}
