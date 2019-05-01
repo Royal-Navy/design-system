@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 
 import RnToggle from '@/src/components/RnToggle/index.vue'
 
-describe.only('RnToggle.vue', () => {
+describe('RnToggle.vue', () => {
   let wrapper
 
   describe('when the component is called with a value indicating false', () => {

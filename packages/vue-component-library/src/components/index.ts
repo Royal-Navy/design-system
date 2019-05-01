@@ -16,6 +16,7 @@ import RnNav from './RnNav/index.vue'
 import RnProgress from './RnProgress/index.vue'
 import RnRadios from './RnRadios/index.vue'
 import RnTable from './RnTable/index.vue'
+import RnToggle from './RnToggle/index.vue'
 
 const Components = {
   RnAlert,
@@ -36,6 +37,7 @@ const Components = {
   RnProgress,
   RnRadios,
   RnTable,
+  RnToggle,
 }
 
 export default Components
