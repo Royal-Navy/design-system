@@ -20,7 +20,6 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'import/extensions': 0,
-    'object-shorthand' : 0,
   },
   settings: {
     'import/resolver': {

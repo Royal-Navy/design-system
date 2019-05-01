@@ -7,25 +7,30 @@ export default {
     rightHeader: String
   },
 
+  data: () => ({
+    listDataMutable: []
+  }),
+  created () { this.listDataMutable = this.listData },
+  
   computed: {
     leftList () {
-      return this.listData.filter(item => item.list === 'left')
+      return this.listDataMutable.filter(item => item.list === 'left')
     },
 
     rightList () {
-      return this.listData.filter(item => item.list === 'right')
+      return this.listDataMutable.filter(item => item.list === 'right')
     }
   },
 
   methods: {
     move (item, side) {
-      if (item.checked === true) {
-        // eslint-disable-next-line no-param-reassign
-        item.list = side
-      }
-      // eslint-disable-next-line no-param-reassign
-      item.checked = false
+      const itemCopy = item
+    
+      if (itemCopy.checked) itemCopy.list = side
+      itemCopy.checked = false   
       this.$emit('moved', this.listData)
+    
+      return itemCopy
     },
 
     to_left () {
