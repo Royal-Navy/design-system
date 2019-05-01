@@ -52,20 +52,20 @@ describe('RnTransfer.vue', () => {
     })
   })
   it('Displays a left Header', () => {
-    expect(wrapper.find('.column-left > h1').text()).toBe('This is a test title')
+    expect(wrapper.find('.panel.left > .panel__header').text()).toBe('This is a test title')
   })
   it('Displays a right Header', () => {
-    expect(wrapper.find('.column-right > h1').text()).toBe('This is a test title')
+    expect(wrapper.find('.panel.right > .panel__header').text()).toBe('This is a test title')
   })
   it('Has 3 items in the left column', () => {
-    expect(wrapper.find('.column-left > ul').findAll('li').length).toBe(3)
+    expect(wrapper.find('.panel.left > ul').findAll('li').length).toBe(3)
   })
   it('Has 1 item in the right column', () => {
-    expect(wrapper.find('.column-right > ul').findAll('li').length).toBe(1)
+    expect(wrapper.find('.panel.right > ul').findAll('li').length).toBe(1)
   })
   it('Moves items from the right list to the left list', () => {
-    wrapper.find('.column-right > ul > li > label > input[name="portsmouth"]').setChecked()
-    wrapper.find('.transfer-buttons > .left').trigger('click')
+    wrapper.find('.panel.right > ul > li > label > input[name="portsmouth"]').setChecked()
+    wrapper.find('.transfer-buttons > .to_left').trigger('click')
     expect(wrapper.emitted().moved).toBeTruthy()
   })
 })
