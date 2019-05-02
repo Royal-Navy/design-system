@@ -83,12 +83,14 @@ $dropdown-btn-sizes: (
     overflow-y: scroll;
   }
 
-  &__option {
+  &__option,
+  &__link {
     cursor: pointer;
-    @include font-size(xs);    
+    @include font-size(xs);
     padding: spacing(2) spacing(3);
     display: flex;
     justify-content: space-between;
+    text-decoration: none;
     &:hover {
       color: color(neutral, 800);
       background-color: color(neutral, 000);

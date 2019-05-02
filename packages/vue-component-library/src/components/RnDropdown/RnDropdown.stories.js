@@ -51,3 +51,17 @@ stories.add('With helper', () => ({
   },
   template: `<rn-dropdown :options="options" label="Select Option" v-model="month"/>`,
 }))
+
+stories.add('Links', () => ({
+  components: { RnDropdown },
+  data() {
+    return {
+      options: [
+        { href: 'https://www.apple.com', label: 'Apple' },
+        { href: 'https://www.microsoft.com', label: 'Microsoft' },
+        { href: 'https://www.ubuntu.com', label: 'Ubuntu' },
+      ],
+    }
+  },
+  template: `<rn-dropdown label="Select Option" :options="options" />`,
+}))
