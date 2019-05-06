@@ -1,10 +1,6 @@
 export default {
   name: 'RnDropdown',
   props: {
-    helper: {
-      type: String,
-      required: false,
-    },
     label: {
       type: String,
       required: false,
@@ -12,6 +8,7 @@ export default {
     options: {
       type: Array,
       required: true,
+      default: [],
     },
     value: {
       type: String,
@@ -28,7 +25,7 @@ export default {
       return `rn-dropdown ${this.size} ${this.open ? 'is-open' : ''}`
     },
     formattedOptions() {
-      const { open, options } = this
+      const { options } = this
 
       if (options.length > 0 && typeof options[0] === 'string') {
         return options.map(value => ({
@@ -40,6 +37,10 @@ export default {
       return options
     },
     selectedOptionLabel() {
+      if (this.linkOptions) {
+        return this.label || 'Select option'
+      }
+
       const { formattedOptions, label, value } = this
       const selectedOption = formattedOptions.find(
         option => option.value === value
@@ -54,6 +55,9 @@ export default {
       }
 
       return selectedOption.label
+    },
+    linkOptions() {
+      return this.options && this.options.length > 0 && this.options[0].href
     },
   },
 
