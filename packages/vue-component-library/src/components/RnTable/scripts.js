@@ -16,32 +16,25 @@ export default {
     this.tableDataMutable = this.tableData 
   },
   methods: {
+    sort_type (order, next) {
+      this.sortOrder = order
+      this.sortNext = next
+    },
     sort_column (index) {
       if (!this.sortable) return false
       this.idxSorted = index
       switch (this.sortNext) {
         case 'asc':
-          this.sortOrder = 'asc'
-          this.sortNext = 'desc'
-          this.tableDataMutable = [...this.tableData].sort((a, b) => {
-            if (a[index] < b[index]) return -1;
-            if (a[index] > b[index]) return 1;
-            return 0;
-          })
+          this.sort_type('asc', 'desc')
+          this.tableDataMutable = [...this.tableData].sort((a, b) => (a[index] > b[index]) ? -1 : 1)
           return this.tableDataMutable
         case 'desc':
-        this.sortOrder = 'desc'
-          this.sortNext = 'unsorted'
-          this.tableDataMutable = [...this.tableData].sort((a, b) => {
-            if (a[index] > b[index]) return -1;
-            if (a[index] < b[index]) return 1;
-            return 0;
-          })
+        this.sort_type('desc', 'unsorted')
+          this.tableDataMutable = [...this.tableData].sort((a, b) => (a[index] < b[index]) ? -1 : 1)
           return this.tableDataMutable
         default:
         case 'unsorted' :
-          this.sortOrder = 'unsorted'
-          this.sortNext = 'asc'
+          this.sort_type('unsorted', 'asc')
           this.tableDataMutable = this.tableData
           return this.tableDataMutable
       }
