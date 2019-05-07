@@ -23,22 +23,21 @@ export default {
     sort_column (index) {
       if (!this.sortable) return false
       this.idxSorted = index
-      if (this.sortNext === 'asc') {
-        this.sort_type('asc', 'desc')
-        this.tableDataMutable = [...this.tableData].sort((a, b) => (a[index] > b[index]) ? -1 : 1)
-        return this.tableDataMutable
-      }
-      if (this.sortNext === 'desc') {
+      switch (this.sortNext) {
+        case 'asc':
+          this.sort_type('asc', 'desc')
+          this.tableDataMutable = [...this.tableData].sort((a, b) => (a[index] > b[index]) ? -1 : 1)
+          return this.tableDataMutable
+        case 'desc':
         this.sort_type('desc', 'unsorted')
-        this.tableDataMutable = [...this.tableData].sort((a, b) => (a[index] < b[index]) ? -1 : 1)
-        return this.tableDataMutable
+          this.tableDataMutable = [...this.tableData].sort((a, b) => (a[index] < b[index]) ? -1 : 1)
+          return this.tableDataMutable
+        default:
+        case 'unsorted' :
+          this.sort_type('unsorted', 'asc')
+          this.tableDataMutable = this.tableData
+          return this.tableDataMutable
       }
-      if (this.sortNext === 'unsorted') {
-        this.sort_type('unsorted', 'asc')
-        this.tableDataMutable = this.tableData
-        return this.tableDataMutable
-      }
-      return false
     },
   }
 }
