@@ -24,7 +24,7 @@
   }
 
   &__arrow {
-    margin-left: 10px;
+    margin-left: spacing(2);
     &--down {
       transform: rotate(180deg);
       margin-left: -3px;
