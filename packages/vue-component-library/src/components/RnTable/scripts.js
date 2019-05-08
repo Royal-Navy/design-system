@@ -17,9 +17,12 @@ export default {
   },
   computed: {
     sorted () {
-      if (this.sortOrder === 'asc') this.tableDataMutable = [...this.tableData].sort((a, b) => (a[this.idxSorted] > b[this.idxSorted]) ? -1 : 1)
-      else if (this.sortOrder === 'desc') this.tableDataMutable = [...this.tableData].sort((a, b) => (a[this.idxSorted] < b[this.idxSorted]) ? -1 : 1)
-      else this.tableDataMutable = this.tableData
+      const compare = (a, b) => (this.sortOrder === 'asc') 
+        ? a[this.idxSorted] > b[this.idxSorted] 
+        : a[this.idxSorted] < b[this.idxSorted]
+      this.tableDataMutable = (this.sortOrder !== 'unsorted') 
+        ? [...this.tableData].sort((a, b) => (compare(a, b, this.sortOrder)) ? -1 : 1) 
+        : this.tableDataMutable = this.tableData
       return this.tableDataMutable
     }
   },
