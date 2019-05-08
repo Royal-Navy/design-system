@@ -170,4 +170,61 @@ describe('RnDropdown.vue', () => {
       })
     })
   })
+
+  describe('when dropdown is created with links', () => {
+    beforeEach(() => {
+      wrapper = shallowMount(RnDropdown, {
+        propsData: {
+          options: [
+            { href: '1', label: 'Link 1' },
+            { href: '2', label: 'Link 2' },
+          ],
+        },
+      })
+    })
+
+    it('should render a dropdown with a default label', () => {
+      const label = wrapper.find('.rn-dropdown__label')
+      expect(label.text()).toContain('Select option')
+    })
+
+    it('should hide the links', () => {
+      const linkElements = wrapper.findAll(
+        '.rn-dropdown__sheet .rn-dropdown__link'
+      )
+      expect(linkElements).toHaveLength(0)
+    })
+
+    describe('and the user clicks on the dropdown', () => {
+      beforeEach(() => {
+        wrapper.find('.rn-dropdown__button').trigger('click')
+      })
+
+      it('should render a list of links', () => {
+        const linkElements = wrapper.findAll(
+          '.rn-dropdown__sheet .rn-dropdown__link'
+        )
+        expect(linkElements).toHaveLength(2)
+      })
+    })
+  })
+
+  describe('when dropdown is created with links and a label', () => {
+    beforeEach(() => {
+      wrapper = shallowMount(RnDropdown, {
+        propsData: {
+          label: 'Pick site',
+          options: [
+            { href: '1', label: 'Link 1' },
+            { href: '2', label: 'Link 2' },
+          ],
+        },
+      })
+    })
+
+    it('should render a dropdown with the given label', () => {
+      const label = wrapper.find('.rn-dropdown__label')
+      expect(label.text()).toContain('Pick site')
+    })
+  })
 })
