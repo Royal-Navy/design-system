@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in tableDataMutable" :key="index">
+        <tr v-for="(item, index) in sorted" :key="index">
           <td v-for="(val,valIndex) in item" :key="valIndex">{{ val }}</td>
         </tr>
       </tbody>
