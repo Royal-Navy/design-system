@@ -9,7 +9,7 @@ module.exports = {
     libraryTarget: 'commonjs2',
     path: path.resolve(__dirname, '..', 'dist'),
   },
-  plugins: [new CleanWebpackPlugin(['dist'])],
+  plugins: [new CleanWebpackPlugin()],
   module: {
     rules: [
       {
