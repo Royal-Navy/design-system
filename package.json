@@ -4,6 +4,7 @@
   "private": true,
   "workspaces": [
     "packages/css-framework",
+    "packages/docs-site",
     "packages/eslint-config-react",
     "packages/html-component-library",
     "packages/html-storybook",
@@ -43,9 +44,9 @@
   },
   "scripts": {
     "build": "cd packages/storybook-react-input-state && yarn build && cd ../react-component-library && yarn build && cd ../vue-component-library && yarn build",
-    "lint": "concurrently \"yarn --cwd packages/css-framework lint\" \"yarn --cwd packages/react-component-library lint\" \"yarn --cwd packages/storybook-react-input-state lint\" \"yarn --cwd packages/vue-component-library lint\"",
+    "lint": "concurrently \"yarn --cwd packages/css-framework lint\" \"yarn --cwd packages/react-component-library lint\" \"yarn --cwd packages/storybook-react-input-state lint\" \"yarn --cwd packages/vue-component-library lint\" \"yarn --cwd packages/docs-site lint\"",
     "lint-staged": "concurrently \"yarn --cwd packages/css-framework lint-staged\" \"yarn --cwd packages/react-component-library lint-staged\" \"yarn --cwd packages/storybook-react-input-state lint-staged\" \"yarn --cwd packages/vue-component-library lint-staged\"",
-    "test": "concurrently \"yarn --cwd packages/react-component-library test\" \"yarn --cwd packages/storybook-react-input-state test\" \"yarn --cwd packages/vue-component-library test\"",
+    "test": "concurrently \"yarn --cwd packages/react-component-library test\" \"yarn --cwd packages/storybook-react-input-state test\" \"yarn --cwd packages/vue-component-library test\" \"yarn --cwd packages/docs-site test\"",
     "version": "node ./scripts/syncversion.js"
   }
 }
