@@ -23,7 +23,7 @@ const PostArticle = ({ postData, className, children }) => {
       'info-box': InfoBox,
       'grid-container': GridContainer,
       'content-box': ContentBox,
-      'swatch': Swatch,
+      swatch: Swatch,
     },
   }).Compiler
 

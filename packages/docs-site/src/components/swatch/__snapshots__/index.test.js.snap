@@ -6,7 +6,11 @@ exports[`Swatch renders correctly 1`] = `
 >
   <div
     className="swatch-block"
-    style="test:test"
+    style={
+      Object {
+        "test": "test",
+      }
+    }
   />
   <h1
     className="label"

@@ -31,7 +31,7 @@ exports[`Header renders correctly 1`] = `
         <span
           className="site-title__pkg"
         >
-          0.1.0
+          0.1.1
         </span>
         <span
           className="site-title__beta"
