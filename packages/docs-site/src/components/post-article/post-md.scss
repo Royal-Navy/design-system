@@ -1,0 +1,211 @@
+@mixin reduce-margin {
+  + h1, + h2, + h3,
+  + h4, + h5, + h6 {
+    margin-top: 40px;
+  }
+}
+
+.post-md {
+  > div {
+    > *:first-child:not(.note-block) {
+      margin-top: 0;
+      border-top: none;
+      padding-top: 0;
+    }
+    > .note-block {
+      padding-top: 40px;
+      > *:first-child {
+        margin-top: 0;
+        border-top: none;
+        padding-top: 0;
+      }
+    }
+  }
+
+  .note-block {
+    padding: 40px;
+  }
+
+
+  hr {
+    margin: 80px 0;
+    border: none;
+    height: 1px;
+    background-color: #edf0f4;
+    + h1 {
+      border-top: none;
+      padding-top: 0;
+    }
+  }
+  
+  h1 {
+    border-top: 1px solid #edf0f4;
+    color: #36404a;
+    font: {
+      size: 32px;
+      weight: 700;      
+    }
+    margin-top: 80px;
+    margin-bottom: 20px;
+    padding-top: 60px;
+    @include reduce-margin;
+  }
+
+
+  h2 {
+    color: #36404a;
+    font: {
+      size: 24px;
+      weight: 700;      
+    }
+    margin-top: 80px;
+    margin-bottom: 20px;
+    @include reduce-margin;
+  }
+
+  h3, h4 {
+    color: #36404a;
+    font: {
+      size: 20px;
+      weight: 700;      
+    }
+    margin-top: 80px;
+    margin-bottom: 20px;
+    @include reduce-margin;
+  }
+
+  a {
+    color: #4b92d1;
+    font-weight: 600;
+    transition: color 0.3s;
+    &:hover {
+      color: #36404a;
+    }
+  }
+  
+  ul,
+  ol {
+    padding-left: 20px;
+    font-size: 16px;
+    color: #6D8691;
+    list-style: inside;
+    li {
+      text-transform: capitalize;
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  p {
+    font: {
+      size: 17px;
+      weight: 400;
+    }
+    color: #6D8691;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  // Needs refactoring when we can ditch the unclassed `<div>` wrapper
+  code {
+    color: #c86767;
+    letter-spacing: -0.8px;
+    font: {
+      size: 15px;
+    }
+  }
+
+  pre {
+    background: white;
+    border: 1px solid #DCE5ED;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07);
+    border-radius: 2px;
+    padding: 30px 20px;
+    margin: 40px 0 80px 0;
+    overflow-x: scroll;
+    code {
+      color: #6c777d;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+    
+  }
+
+  table {
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+    border: 1px solid #DCE5ED;
+    border-radius: 3px;
+    margin: 40px 0;  
+    thead {
+      box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+      border-bottom: 1px solid #DCE5ED;
+      background-color: #f7fbfd;
+      th {
+        padding: 16px 20px;
+        border-left: 1px solid #DCE5ED;
+        &:first-child {
+          border-left: none;
+        }
+        font: {
+          size: 14px;
+          weight: 600;
+        }
+        color: #464f56;
+      }
+    }
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: #f7fbfd;
+        }
+      }
+      td {
+        border-left: 1px solid #dbe5ed;
+        padding: 12px 20px;
+        &:first-child {
+          border-left: none;
+        }
+        font: {
+          size: 14px;
+          weight: 500;
+        }
+        color: #6d8791;
+        code {
+          margin-right: 10px;
+          font: {
+            size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .gatsby-highlight {
+    + table {
+      margin-top: -60px;
+    }
+    .language-scss {
+      color: #4037bf;
+    }
+    .tag,
+    .selector {
+      color: #5d9dd6;
+    }
+    .punctuation {
+      color: #475358;
+    }
+    .property,
+    .attr-name {
+      color: #9951b9;
+    }
+
+    .keyword {
+      color: #ea4856;
+    }
+
+  }
+  
+}

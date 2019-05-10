@@ -1,0 +1,39 @@
+.sidebar {
+  width: 20%;
+  padding: {
+    top: 100px;
+    bottom: 100px;
+  }
+  
+  &__title {
+    font: {
+      size: 22px;
+      weight: 600;
+    }
+    color: #464f56;
+    text-transform: capitalize;
+    margin: {
+      top: 40px;
+      bottom: 20px;
+    }
+  }
+
+  &__link {
+    color: #727c84;
+    font: {
+      size: 16px;
+      weight: 500;
+    }
+    line-height: 1.5;
+    transition: color 0.3s;
+    margin-bottom: 10px;
+    display: block;
+    padding-right: 20px;
+    &:hover {
+      color: #4b92d1;
+    }
+    &.active {
+      color: #4b92d1;
+    }
+  }  
+}

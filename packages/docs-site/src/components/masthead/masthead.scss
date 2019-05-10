@@ -1,0 +1,39 @@
+.masthead {
+  padding-top: 80px;
+  background-color: white;
+  &__content {
+    padding: 200px 0 220px 0;
+  }
+  &.large {
+    .masthead__content {
+      padding-bottom: 300px;
+    }
+  }
+  &__context {
+    font: {
+      size: 18px;
+      weight: 700;
+    }
+    text-transform: uppercase;
+    color: #97a3b0;
+    padding-left: 6px;
+  }
+  &__title {
+    color: #36404a;
+    font: {
+      size: 100px;
+      weight: 700;
+    }
+    letter-spacing: -2px;
+  }
+  &__description {
+    padding-left: 6px;
+    margin-top: 10px;
+    font: {
+      size: 20px;
+      weight: 400;
+    }
+    color: #5b6976;
+    max-width: 50%;
+  }
+}

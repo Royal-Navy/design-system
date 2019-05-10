@@ -1,0 +1,21 @@
+{
+  "projects": {
+    "docs-site": "standards"
+  },
+  "targets": {
+    "docs-site": {
+      "hosting": {
+        "docs-site": [
+          "standards-a3d9b"
+        ]
+      }
+    },
+    "standards": {
+      "hosting": {
+        "docs-site": [
+          "standards-a3d9b"
+        ]
+      }
+    }
+  }
+}

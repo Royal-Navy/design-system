@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Info Box renders correctly 1`] = `
+<a
+  className="info-box  link"
+  href={null}
+>
+  Content goes here
+</a>
+`;

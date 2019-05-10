@@ -1,0 +1,49 @@
+.four-oh-four {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 80px;
+  &__title {
+    color: #36404a;
+    font: {
+      size: 100px;
+      weight: 700;
+    }
+    letter-spacing: -2px;
+  }
+
+  &__content {
+    margin-top: 20px;
+    max-width: 50%;
+    p {
+      color: #6d8791;
+      font: {
+        weight: 500;
+        size: 16px;
+      }
+      a {
+        color: #4b92d1;
+        transition: color 0.3s;
+        &:hover {
+          color: #1d476d;
+        }
+      }
+    }
+  }
+
+  &__home {
+    display: inline-block;
+    background: #4b92d1;
+    border-radius: 3px;
+    color: white;
+    text-align: center;
+    margin-top: 40px;
+    font: {
+      size: 16px;
+      weight: 500;
+    }
+    line-height: 1;
+    padding: 16px 40px;
+  }
+}
