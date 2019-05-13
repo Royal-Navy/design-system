@@ -11,15 +11,18 @@ module.exports = {
     path: path.resolve(__dirname, '..', 'dist'),
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(),
     new StyleLintPlugin({
       configFile: '../css-framework/.stylelintrc',
       context: 'src',
       failOnError: false,
-      files: ['../../css-framework/src/*.scss', '../../css-framework/src/**/*.scss'],
+      files: [
+        '../../css-framework/src/*.scss',
+        '../../css-framework/src/**/*.scss',
+      ],
       quiet: false,
-      syntax: 'scss'
-    })
+      syntax: 'scss',
+    }),
   ],
   module: {
     rules: [
