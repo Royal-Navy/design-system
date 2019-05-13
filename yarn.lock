@@ -16403,6 +16403,13 @@ stylehacks@^4.0.0:
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
 
+stylelint-junit-formatter@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/stylelint-junit-formatter/-/stylelint-junit-formatter-0.2.1.tgz#8cddde6b3d3a93189f5b3b1b419dcf3c338038ab"
+  integrity sha512-C1n8dBpqMwUeJGmyL8tGVB1DKQISnEMhynzCzo38kTpjXybxLLYPrblbm41q5fEHwbaLjE5bPhZpZyMoHaJhIQ==
+  dependencies:
+    xmlbuilder "^10.0.0"
+
 stylelint-webpack-plugin@^0.10.5:
   version "0.10.5"
   resolved "https://registry.yarnpkg.com/stylelint-webpack-plugin/-/stylelint-webpack-plugin-0.10.5.tgz#0b6e0d373ff5e03baa8197ebe0f2625981bd266b"
@@ -18175,6 +18182,11 @@ xml@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/xml/-/xml-1.0.1.tgz#78ba72020029c5bc87b8a81a3cfcd74b4a2fc1e5"
   integrity sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=
+
+xmlbuilder@^10.0.0:
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-10.1.1.tgz#8cae6688cc9b38d850b7c8d3c0a4161dcaf475b0"
+  integrity sha512-OyzrcFLL/nb6fMGHbiRDuPup9ljBycsdCypwuyg5AAHvyWzGfChJpCXMG88AGTIMFhGZ9RccFN1e6lhg3hkwKg==
 
 xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
   version "4.0.1"

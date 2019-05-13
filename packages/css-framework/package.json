@@ -33,6 +33,7 @@
   "devDependencies": {
     "lint-staged": "^8.1.6",
     "sass": "^1.20.1",
-    "stylelint": "^10.0.1"
+    "stylelint": "^10.0.1",
+    "stylelint-junit-formatter": "^0.2.1"
   }
 }
