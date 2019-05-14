@@ -73,7 +73,7 @@
   "scripts": {
     "build": "yarn update-docs && gatsby build",
     "develop": "yarn update-docs && gatsby develop",
-    "consolidate-component-docs": "",
+    "ccd": "node ./consolidate-component-docs.js",
     "update-docs": "rimraf src/library && cp -R ../documentation/library src/ && cp -R src/local-library/* src/library/ && yarn consolidate-component-docs",
     "watch" : "",
     "start": "yarn update-docs && yarn develop",
