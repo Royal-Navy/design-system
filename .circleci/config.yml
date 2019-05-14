@@ -250,7 +250,7 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace/packages/docs-site
       - firebase-deploy/deploy:
-          token: $FIREBASE_DEPLOY_TOKEN
+          token: $FIREBASE_AUTH_TOKEN
           alias: staging
   deploy_docs_site_production:
     executor: node
@@ -258,7 +258,7 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace/packages/docs-site
       - firebase-deploy/deploy:
-          token: $FIREBASE_DEPLOY_TOKEN
+          token: $FIREBASE_AUTH_TOKEN
           alias: production
 
 workflows:
