@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content Box renders correctly 1`] = `
+<section
+  className="content-box "
+>
+  Content goes here
+</section>
+`;

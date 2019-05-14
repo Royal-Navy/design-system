@@ -1,0 +1,35 @@
+.post-article {
+  background: white;
+  width: 80%;
+  border-left: 1px solid #dbe5ed;
+
+  &.landing {
+    background: unset;
+    border-left: unset;
+  }
+
+  &__copy {
+    padding: 100px 0 100px 80px;
+    @media only screen and (min-width: 1360px) {
+      padding: 100px;
+    }
+  }
+
+  &__content {
+    display: flex;
+  }
+
+  &__links {
+    display: none;
+    @media only screen and (min-width: 1360px) {
+      width: 220px;
+    }
+  }
+
+  &__copy {
+    width: 100%;
+    @media only screen and (min-width: 1360px) {
+      width: calc(100% - 220px);
+    }
+  }
+}

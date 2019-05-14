@@ -1,0 +1,108 @@
+// Sensible defaults
+@import "../../helpers/css/fonts.css";
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #f2f5f8;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+code[class*="language-"], pre[class*="language-"] {
+  font: {
+    family: "Source Code Pro", Georgia, monospace;
+    weight: 600;
+  }
+}
+
+p {
+  font: {
+    size: 17px;
+    weight: 400;
+  }
+  color: #6D8691;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+h1 { 
+  font-size: $header-level-1;
+  font-weight: 600;
+}
+h2 { 
+  font-size: $header-level-2;
+  font-weight: 400;
+}
+h3 { 
+  font-size: $header-level-3;
+  font-weight: 400;
+}
+
+h4 { 
+  font-size: $header-level-4;
+  font-weight: 400;
+}
+
+.container {
+  padding: 0 80px;
+  margin: 0 auto;
+  max-width: 1600px;
+}
+
+
+// This should be moved to a button component at some point
+.button {
+  display: inline-block;
+  background: #4b92d1;
+  border-radius: 3px;
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+  font: {
+    size: 16px;
+    weight: 500;
+  }
+  line-height: 1;
+  padding: 16px 40px;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #1d4466;
+  }
+}
+
+
+.breadcrumb-bar {
+  height: 80px;
+  background: white;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07);
+}
+
+.swatch {
+  display: inline-block;
+  margin-right: 10px;
+  &__block {
+    width: 40px;
+    height: 40px;
+    border-radius: 3px;
+  }
+  &__label {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 5px;
+    font: {
+      size: 12px;
+      weight: 500;      
+    }
+    color: #6d8791;
+  }
+}

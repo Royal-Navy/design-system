@@ -1,0 +1,13 @@
+
+.icon-list ul {
+  overflow: hidden;
+  clear:both;
+  margin-bottom: 20px;
+}
+
+.icon-list li {
+  width: 60px;
+  height: auto;
+  float: left;
+  list-style: none;
+}

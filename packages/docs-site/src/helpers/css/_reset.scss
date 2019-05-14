@@ -1,0 +1,108 @@
+
+/* Alex Foxleigh's CSS Reset (based on YUI2) */
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &:before,
+  &:after {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+table {
+  border-collapse:collapse;
+  border-spacing: 0;
+}
+fieldset,
+img {
+  border:0;
+  outline:0;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style:normal;
+  font-weight:normal;
+}
+ol,
+ul {
+  list-style:none;
+}
+caption,
+th {
+  text-align:left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size:100%;
+  font-weight:normal;
+}
+q:before,
+q:after {
+  content:"";
+}
+a {
+  text-decoration:none;
+  outline: 0;
+}
+abbr,
+acronym {
+  border:0;
+}
+header,
+article,
+section,
+nav,
+figure,
+aside,
+hgroup,
+footer {
+  display:block;
+} // Allow HTML5 elements in older browsers
+body,
+html {
+  height:100%;
+  margin: 0;
+  padding: 0;
+}
+html,
+html a {
+  -webkit-font-smoothing: antialiased;
+}
+select::-ms-expand {
+  display: none;
+} // Remove default drop down style in IE
+html {
+  // Reset font size to 10px
+  font-size: 62.5%;
+}
+body {
+  min-height: 100%;
+}
+strong {
+  font-weight: bold;
+}
+p em {
+  font-style: italic;
+} /* Any text inside a paragraph should be formatted normally */
+
+input, button {
+  border: 0;
+}

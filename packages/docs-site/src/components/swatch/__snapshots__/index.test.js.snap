@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Swatch renders correctly 1`] = `
+<div
+  className="swatch"
+>
+  <div
+    className="swatch-block"
+    style={
+      Object {
+        "test": "test",
+      }
+    }
+  />
+  <h1
+    className="label"
+  >
+    test
+  </h1>
+</div>
+`;

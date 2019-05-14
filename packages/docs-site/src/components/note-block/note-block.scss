@@ -1,0 +1,49 @@
+.note-block {
+
+  background-color: #edf8ff;
+  border-radius: 3px;
+  border: 1px solid #c1e2ff;
+
+  h1, h2, h3 {
+    font: {
+      size: 20px;
+      weight: 600;
+    }
+    margin-bottom: 14px;
+    color: #1e4764;
+  }
+
+  p {
+    color: #2376a0;
+    font: {
+      size: 16px;
+      weight: 500;
+    }
+  }
+
+  a {
+    color: #0a4766;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  &.warning {
+    background-color: #fdfbe1;
+    border: 1px solid #f7e87a;
+
+    h1, h2, h3 {
+      color: #3d2e13;
+    }
+
+    p {
+      color: #907018;
+    }
+
+    a {
+      color: #775e31;
+    }
+  }
+}
