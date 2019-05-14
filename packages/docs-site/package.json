@@ -71,10 +71,12 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "npm run update-docs && gatsby build",
-    "develop": "npm run update-docs && gatsby develop",
-    "update-docs": "rimraf src/library && cp -R ../documentation/library src/ && cp -R src/local-library/* src/library/",
-    "start": "npm run update-docs && npm run develop",
+    "build": "yarn update-docs && gatsby build",
+    "develop": "yarn update-docs && gatsby develop",
+    "consolidate-component-docs": "",
+    "update-docs": "rimraf src/library && cp -R ../documentation/library src/ && cp -R src/local-library/* src/library/ && yarn consolidate-component-docs",
+    "watch" : "",
+    "start": "yarn update-docs && yarn develop",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src --fix",
     "test": "jest"
