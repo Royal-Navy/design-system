@@ -229,34 +229,43 @@ jobs:
           name: Publish package
           working_directory: packages/vue-component-library
           command: npm publish --registry https://$NPM_REGISTRY
-  build_docs_site:
+  build_docs-site:
     executor: node
+    working_directory: ~/standards-toolkit
     steps:
       - checkout
       - dependencies
+      - attach_workspace:
+          at: ~/standards-toolkit
       - run:
           name: Build site
           working_directory: packages/docs-site
           command: npm run build
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: .
           paths:
             - packages/docs-site/public
             - packages/docs-site/firebase.json
             - packages/docs-site/.firebaserc
   deploy_docs_site_staging:
     executor: node
+    working_directory: ~/standards-toolkit/packages/docs-site
     steps:
+      - checkout:
+          path: ~/standards-toolkit
       - attach_workspace:
-          at: /tmp/workspace/packages/docs-site
+          at: ~/standards-toolkit
       - firebase-deploy/deploy:
           token: $FIREBASE_AUTH_TOKEN
           alias: staging
   deploy_docs_site_production:
     executor: node
+    working_directory: ~/standards-toolkit/packages/docs-site
     steps:
+      - checkout:
+          path: ~/standards-toolkit
       - attach_workspace:
-          at: /tmp/workspace/packages/docs-site
+          at: ~/standards-toolkit
       - firebase-deploy/deploy:
           token: $FIREBASE_AUTH_TOKEN
           alias: production
@@ -319,7 +328,7 @@ workflows:
             branches:
               only:
                 - master
-      - build_docs_site:
+      - build_docs-site:
           filters:
             branches:
               only:
@@ -327,7 +336,7 @@ workflows:
                 - master
       - deploy_docs_site_staging:
           requires:
-            - build_docs_site
+            - build_docs-site
           filters:
             branches:
               only:
@@ -338,7 +347,7 @@ workflows:
             - publish_css-framework
             - publish_react-component-library
             - publish_vue-component-library
-            - build_docs_site
+            - build_docs-site
           filters:
             branches:
               only:
