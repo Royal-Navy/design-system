@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  firebase-deploy: cloudliner/firebase-deploy@0.0.2
+  firebase-deploy: azdevs/firebase-deploy@1.0.0
 
 commands:
   dependencies:
