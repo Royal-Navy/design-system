@@ -28,7 +28,12 @@ module.exports = (baseConfig, env, defaultConfig) => {
             ],
           },
         },
-        'sass-loader',
+        {
+          loader: 'sass-loader',
+          options: {
+            implementation: require('sass'),
+          },
+        },
       ],
     },
     {
