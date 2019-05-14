@@ -45,7 +45,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.7.1",
     "jest-dom": "^3.1.1",
-    "node-sass": "^4.11.0",
+    "sass": "^1.20.1",
     "normalize-scss": "^7.0.1",
     "prettier": "^1.16.4",
     "prismjs": "^1.15.0",
@@ -64,7 +64,6 @@
     "uuid": "^3.3.2"
   },
   "resolutions": {
-    "node-sass/**/tar" : "4.4.8",
     "firebase-tools/**/lodash" : "4.17.11"
   },
   "keywords": [
