@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  firebase-deploy: cloudliner/firebase-deploy@0.0.2
+
 commands:
   dependencies:
     description: 'Load dependency cache, get dependencies and update cache'
@@ -226,6 +229,37 @@ jobs:
           name: Publish package
           working_directory: packages/vue-component-library
           command: npm publish --registry https://$NPM_REGISTRY
+  build_docs_site:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Build site
+          working_directory: packages/docs-site
+          command: npm run build
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - packages/docs-site/public
+            - packages/docs-site/firebase.json
+            - packages/docs-site/.firebaserc
+  deploy_docs_site_staging:
+    executor: node
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace/packages/docs-site
+      - firebase-deploy/deploy:
+          token: $FIREBASE_DEPLOY_TOKEN
+          alias: staging
+  deploy_docs_site_production:
+    executor: node
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace/packages/docs-site
+      - firebase-deploy/deploy:
+          token: $FIREBASE_DEPLOY_TOKEN
+          alias: production
 
 workflows:
   version: 2
@@ -281,6 +315,30 @@ workflows:
           requires:
             - test_vue-component-library
             - publish_css-framework
+          filters:
+            branches:
+              only:
+                - master
+      - build_docs_site:
+          filters:
+            branches:
+              only:
+                - develop
+                - master
+      - deploy_docs_site_staging:
+          requires:
+            - build_docs_site
+          filters:
+            branches:
+              only:
+                - develop
+      - deploy_docs_site_prod:
+          requires:
+            - publish_documentation
+            - publish_css-framework
+            - publish_react-component-library
+            - publish_vue-component-library
+            - build_docs_site
           filters:
             branches:
               only:
