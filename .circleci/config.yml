@@ -332,7 +332,7 @@ workflows:
             branches:
               only:
                 - develop
-      - deploy_docs_site_prod:
+      - deploy_docs_site_production:
           requires:
             - publish_documentation
             - publish_css-framework
