@@ -1,19 +1,20 @@
 {
   "projects": {
-    "docs-site": "standards"
+    "production": "standards",
+    "staging": "standards-staging"
   },
   "targets": {
-    "docs-site": {
+    "standards": {
       "hosting": {
         "docs-site": [
           "standards-a3d9b"
         ]
       }
     },
-    "standards": {
+    "standards-staging": {
       "hosting": {
         "docs-site": [
-          "standards-a3d9b"
+          "standards-staging"
         ]
       }
     }
