@@ -26,7 +26,7 @@
       breakpoint: 1600px,
       baseFontSize: 118%,
     ),
-  ) !global;
+  );
 
   // Set the context colours
   // Todo - Review colour uses and remove neutral 00
@@ -129,7 +129,7 @@
       800: #245c40,
       900: #1f4a35,
     ),
-  ) !global;
+  );
 
   // State Mapping
 
@@ -154,7 +154,7 @@
       default: color(success, 500),
       faded: color(success, 200),
     ),
-  ) !global;
+  );
 
   // Spacing
 
@@ -200,14 +200,14 @@
     ),
     px: 1px,
     full: 100%,
-  ) !global;
+  );
 
   $__shadows: (
     0: 0 0 0 transparent,
     1: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
     2: 0 6px 14px 0 rgba(0, 0, 0, 0.16),
     3: 0 12px 28px 0 rgba(0, 0, 0, 0.26),
-  ) !global;
+  );
 
   // Typography
   $__typography: (
@@ -222,7 +222,7 @@
     xs: 0.75rem,
     xxs: 0.625rem,
     xxxs: 0.5rem,
-  ) !global;
+  );
 
   // Z Index Levels
   $__zIndex: (
@@ -233,5 +233,5 @@
     header: 5000,
     footer: 4000,
     body: 0,
-  ) !global;
+  );
 }
