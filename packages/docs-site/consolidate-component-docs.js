@@ -11,6 +11,7 @@ const resolve = require('path').resolve
 const join = require('path').join
 const matter = require('gray-matter')
 const chalk = require('chalk')
+const rimraf = require('rimraf')
 
 // A list of packages to check
 const packages = [
@@ -31,13 +32,13 @@ const packages = [
   },
 ]
 
-// Check a folder exists for the current package and create one if not
+// Ensure that the package docs folder is a freshly generated copy
 const packageDocsFolder = join('src/generated-library/pages/develop/components/')
-if (!fs.existsSync(packageDocsFolder)) {
-  fs.mkdirSync(packageDocsFolder, { recursive: true }, (err) => {
-    if (err) throw err
-  })
-}
+rimraf.sync(packageDocsFolder)
+fs.mkdirSync(packageDocsFolder, { recursive: true }, (err) => {
+  if (err) throw err
+})
+
 
 // Convert a string to kebab-case
 const kebab = (text) => text.toString()
@@ -47,7 +48,7 @@ const kebab = (text) => text.toString()
     .replace(/^-+/, '')             // Trim - from start of text
     .replace(/-+$/, '');            // Trim - from end of text
 
-// Process each package and find components within those packages
+// Process each package in 'packages' and look for components
 packages.forEach((pkg) => {
   console.group(`🔍 Scanning ${chalk.blue(pkg.name + ' library')} for components`)
   const componentsFolder = resolve(__dirname, '../' + pkg.source + pkg.componentPath )
@@ -62,13 +63,28 @@ packages.forEach((pkg) => {
         if (file.match(/README.md/gi)) {
           // Readme file find, move to docs folder
           console.group(`⚙️  Generating ${chalk.yellow(component)} docs...`)
+          const filePath = resolve(componentFolder, file)
           
-          const fileContent = fs.readFileSync(resolve(componentFolder, file), 'utf8')
-          const componentName = kebab(matter(fileContent).data.title)
+          // Read the file contents
+          const fileContent = matter(fs.readFileSync(filePath, 'utf8'))
 
-          fs.copyFileSync(resolve(componentFolder, file), join(packageDocsFolder, componentName + '.md'), (err) => {
-            if (err) throw err
-          })
+          // Extract component friendly name from document
+          const componentName = kebab(fileContent.data.title)
+
+          const docsPath = join(packageDocsFolder, componentName + '.md')
+
+          // Check to see if a component with this name already exists
+          if (!fs.existsSync(docsPath)) {
+            // Doesn't exist. Create one using the 'componentName' variable and populate it with the source content
+            fs.writeFileSync(docsPath, `## ${pkg.name} example`), (err) => {
+              if (err) throw err
+            }
+            fs.appendFileSync(docsPath, fileContent.content, 'utf8')
+          } else {
+            const pageContent = '\n## ' + pkg.name + ' example \n' + fileContent.content
+            // Already exists, take the source content and append it to existing version
+            fs.appendFileSync(docsPath, pageContent, 'utf8')
+          }
 
           console.log(chalk.green(` ✓ Done`))
           console.groupEnd()
