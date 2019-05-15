@@ -3,7 +3,7 @@ title: Patterns
 description:
 tags: public
 pageClass: ''
-template:
+template: withsidebar
 ---
 
 ## Patterns

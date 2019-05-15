@@ -3,7 +3,7 @@ title: NELSON API Documentation
 description:
 tags: public
 pageClass: ''
-template:
+template: withsidebar
 ---
 
 ## NELSON API Documentation
