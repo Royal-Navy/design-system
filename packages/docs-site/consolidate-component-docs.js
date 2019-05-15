@@ -17,31 +17,32 @@ const chalk = require('chalk')
 const packages = [
   {
     source: 'vue-component-library',
-    name: 'vue',
+    name: 'Vue',
     componentPath: '/src/components'
   },
   {
     source: 'react-component-library',
-    name: 'react',
+    name: 'React',
     componentPath: '/src/components'
   },
   {
     source: 'html-storybook',
-    name: 'html',
+    name: 'HTML',
     componentPath: '/src/components'
   },
 ]
 
+const packageDocsFolder = join('src/generated-library/pages/develop/components/')
+// Check a folder exists for the current package and create one if not
+if (!fs.existsSync(packageDocsFolder)) {
+  fs.mkdirSync(packageDocsFolder, { recursive: true }, (err) => {
+    if (err) throw err
+  })
+}
+
 packages.forEach((pkg) => {
   console.group(`🔍 Scanning ${chalk.blue(pkg.name + ' library')} for components`)
-  const packageDocsFolder = join('src/generated-library/pages/develop/components/')
   const componentsFolder = resolve(__dirname, '../' + pkg.source + pkg.componentPath )
-  // Check a folder exists for the current package and create one if not
-  if (!fs.existsSync(packageDocsFolder)) {
-    fs.mkdirSync(packageDocsFolder, { recursive: true }, (err) => {
-      if (err) throw err
-    })
-  }
   const components = fs.readdirSync(componentsFolder)
   components.map((component) => {
     const componentFolder = join(componentsFolder, component)
