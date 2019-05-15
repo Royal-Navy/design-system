@@ -1,4 +1,4 @@
-# Closes issue: #[Insert the GH issue number that this PR fixes, if it isn't meant to close a ticket, delete this line]
+## Related Jira issue: #[issueid]
 
 ## Overview
 
