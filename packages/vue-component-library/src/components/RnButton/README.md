@@ -69,6 +69,24 @@ Adding a class of `.block` to a button will make it take up 100% of its parent's
 
 Adding a class of `.disabled` to a button will prevent the button from being clicked and visually fade it out. This is also available through the `:disabled` pseudo class.
 
+## Button Groups
+
+Buttons groups are a handy way to combine multiple buttons together. They are great for action toolbars or pagination.
+
+### Usage
+
+To combine multiple buttons together into a group, simply wrap them in a button group container.
+
+```html
+  <div class="rn-btn-group">
+    <button className="rn-btn--primary" type="button">
+      Button
+    </button>
+    <button className="rn-btn--primary" type="button">
+      Button
+    </button>
+  </div>
+```
 
 #### Storybook
 
