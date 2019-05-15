@@ -5,7 +5,7 @@ tags: public
 pageClass: ''
 context: ''
 status: ''
-template: withsidebar
+template: nosidebar
 ---
 
 ## Home

@@ -3,7 +3,7 @@ title: Prototyping
 description: ''
 tags: public
 pageClass: ''
-template: withsidebar
+template: nosidebar
 ---
 
 ## Prototyping

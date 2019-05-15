@@ -3,7 +3,7 @@ title: Components
 description: ''
 tags: public
 pageClass: ''
-template: withsidebar
+template: nosidebar
 ---
 
 ## Components

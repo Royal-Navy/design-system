@@ -3,7 +3,7 @@ title: About the design system
 description: ''
 tags: public
 pageClass: ''
-template: withsidebar
+template: nosidebar
 ---
 
 ## About the design system

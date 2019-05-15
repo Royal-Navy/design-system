@@ -3,7 +3,7 @@ title: Development
 description: ''
 tags: public
 pageClass: ''
-template: withsidebar
+template: nosidebar
 ---
 
 ## Development

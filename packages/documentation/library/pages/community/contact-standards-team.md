@@ -3,7 +3,7 @@ title: Contact standards team
 description: ''
 tags: public
 pageClass: ''
-template: withsidebar
+template: nosidebar
 ---
 
 ## Contact standards team

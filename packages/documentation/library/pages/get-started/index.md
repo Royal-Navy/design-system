@@ -3,7 +3,7 @@ title: Get started
 description: ''
 tags: public
 pageClass: ''
-template: withsidebar
+template: nosidebar
 ---
 
 ## Get started
