@@ -9,6 +9,9 @@
 const fs = require('fs')
 const resolve = require('path').resolve
 const join = require('path').join
+const matter = require('gray-matter')
+const slugify = require('slugify')
+const chalk = require('chalk')
 
 // A list of packages to check
 const packages = [
@@ -30,8 +33,8 @@ const packages = [
 ]
 
 packages.forEach((pkg) => {
-  console.group(`Scanning ${pkg.name} for components`)
-  const packageDocsFolder = join('src/generated-library/pages/develop/' + pkg.name)
+  console.group(`🔍 Scanning ${chalk.blue(pkg.name + ' library')} for components`)
+  const packageDocsFolder = join('src/generated-library/pages/develop/')
   const componentsFolder = resolve(__dirname, '../' + pkg.source + pkg.componentPath )
   // Check a folder exists for the current package and create one if not
   if (!fs.existsSync(packageDocsFolder)) {
@@ -49,10 +52,15 @@ packages.forEach((pkg) => {
         // Look for readme files
         if (file.match(/README.md/gi)) {
           // Readme file find, move to docs folder
-          console.log(`Readme found in ${component}, moving to ${packageDocsFolder}`)
-          fs.copyFileSync(resolve(componentFolder, file), join(packageDocsFolder, component + '.md'), (err) => {
+          console.group(`⚙️  Generating ${chalk.yellow(component)} docs...`)
+          const fileContent = fs.readFileSync(resolve(componentFolder, file), 'utf8')
+          const componentName = slugify(matter(fileContent).data.title)
+          fs.copyFileSync(resolve(componentFolder, file), join(packageDocsFolder, componentName + '.md'), (err) => {
             if (err) throw err
           })
+
+          console.log(chalk.green(` ✓ Done`))
+          console.groupEnd()
         }
       })
     }
