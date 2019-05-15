@@ -34,7 +34,7 @@ const packages = [
 
 packages.forEach((pkg) => {
   console.group(`🔍 Scanning ${chalk.blue(pkg.name + ' library')} for components`)
-  const packageDocsFolder = join('src/generated-library/pages/develop/')
+  const packageDocsFolder = join('src/generated-library/pages/develop/components/')
   const componentsFolder = resolve(__dirname, '../' + pkg.source + pkg.componentPath )
   // Check a folder exists for the current package and create one if not
   if (!fs.existsSync(packageDocsFolder)) {

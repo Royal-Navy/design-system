@@ -77,7 +77,7 @@
     "build": "yarn update-docs && gatsby build",
     "develop": "yarn update-docs && gatsby develop",
     "ccd": "node ./consolidate-component-docs.js",
-    "update-docs": "rimraf src/library && cp -R ../documentation/library src/ && cp -R src/local-library/* src/library/ && yarn consolidate-component-docs",
+    "update-docs": "rimraf src/library && yarn ccd && cp -R ../documentation/library src/ && cp -R src/local-library/* src/library/ && cp -R src/generated-library/* src/library/",
     "watch": "",
     "start": "yarn update-docs && yarn develop",
     "format": "prettier --write \"src/**/*.js\"",
