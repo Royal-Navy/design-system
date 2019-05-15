@@ -1,11 +1,9 @@
 ---
-title: Home
+title: Styles
 description: ''
 tags: public
 pageClass: ''
-context: ''
-status: ''
 template: nosidebar
 ---
 
-## Home
+## Styles

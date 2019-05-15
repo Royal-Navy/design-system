@@ -1,11 +1,9 @@
 ---
-title: Home
+title: Prototyping
 description: ''
 tags: public
 pageClass: ''
-context: ''
-status: ''
 template: nosidebar
 ---
 
-## Home
+## Prototyping
