@@ -1,12 +1,6 @@
 ---
 title: Dialogs
 description: Dialogs are an easy way to get validation from the user.
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import RnDialog from '@NELSON/RnDialog'
 ---
 
 # Overview

@@ -1,12 +1,6 @@
 ---
 title: Alerts
 description: Alerts provide an easy to deliver messages to the user.
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import RnAlert from '@NELSON/Icons'
 ---
 
 # Overview

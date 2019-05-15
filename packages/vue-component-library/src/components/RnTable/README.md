@@ -1,12 +1,6 @@
 ---
 title: Tables
 description: Tables display tabular data
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import { ICON_NAME } from '@NELSON/Icons'
 ---
 
 # Basic Example

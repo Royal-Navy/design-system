@@ -1,12 +1,6 @@
 ---
 title: Inputs
 description: The NELSON Component Libary provides basic styled inputs and textareas
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import { ICON_NAME } from '@NELSON/Icons'
 ---
 
 # Basic Example

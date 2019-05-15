@@ -1,12 +1,6 @@
 ---
 title: Progress Bars
 description: Progress bars are a percentage based representation of data.
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import RnProgress from '@NELSON/RnProgress'
 ---
 
 # Overview

@@ -1,12 +1,6 @@
 ---
 title: Icons
 description: NELSON provides the Ionicons icons out of the box.
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import RnAlert from '@NELSON/Icons'
 ---
 
 # Basic Example

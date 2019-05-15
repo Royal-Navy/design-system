@@ -1,12 +1,6 @@
 ---
 title: Lists
 description: Lists are a great way to display grouped items.
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import { ICON_NAME } from '@NELSON/Icons'
 ---
 
 # Basic Example

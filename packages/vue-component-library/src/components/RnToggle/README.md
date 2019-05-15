@@ -1,10 +1,6 @@
 ---
 title: Toggle
 description: A switch like component with a true or false state, can be used in forms or standalone.
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
 ---
 
 # Overview

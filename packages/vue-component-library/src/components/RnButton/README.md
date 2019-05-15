@@ -1,12 +1,6 @@
 ---
 title: Buttons
 description: Buttons are one of the foundational elements of any application.
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import RnButton from '@NELSON/RnButton'
 ---
 
 # Overview

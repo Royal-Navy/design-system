@@ -1,12 +1,6 @@
 ---
 title: Badges
 description: Badges are used for counts and labelling.
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import RnAlert from '@NELSON/Icons'
 ---
 
 # Overview

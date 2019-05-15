@@ -1,12 +1,6 @@
 ---
 title: Modals
 description: Modals are empty components that cover the user's screen.
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import { ICON_NAME } from '@NELSON/Icons'
 ---
 
 # Basic Example

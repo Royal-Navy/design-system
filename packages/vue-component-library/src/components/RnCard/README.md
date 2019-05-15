@@ -1,12 +1,6 @@
 ---
 title: Cards
 description: Cards provide a way to wrap and contain groups of components.
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import RnAlert from '@NELSON/Icons'
 ---
 
 

@@ -1,10 +1,6 @@
 ---
 title: Transfer
 description: A component which allows you to transfer items from one panel to another
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
 ---
 
 # Overview

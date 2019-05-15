@@ -1,12 +1,6 @@
 ---
 title: Dropdowns
 description: Dropdowns hide multiple options behind a concise button UI.
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import { RNDropdown } from '@RoyalNavy/react-component-library'
 ---
 
 ## Overview

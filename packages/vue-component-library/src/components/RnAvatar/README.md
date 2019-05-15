@@ -1,12 +1,6 @@
 ---
 title: Avatars
 description: Avatars are a great way to highlight to the user 
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import RnAlert from '@NELSON/Icons'
 ---
 
 # Basic Example

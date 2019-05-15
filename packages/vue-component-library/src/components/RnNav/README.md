@@ -1,12 +1,6 @@
 ---
 title: Navs
 description: Documentation and examples of how to use NELSON navs
-audience: public
-pageClasses: ''
-context: 'Component Library'
-template: withsidebar
-usageExampleType: javascript
-usageExample: Import { ICON_NAME } from '@NELSON/Icons'
 ---
 
 # Overview
