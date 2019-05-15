@@ -7,44 +7,42 @@ $animation-timing: 0.3s;
 $btn-sizes: (
   small: (
     font-size: font-size(xxs),
-    padding: spacing(2) spacing(3)
+    padding: spacing(2) spacing(3),
   ),
   regular: (
     font-size: font-size(xs),
-    padding: spacing(3) spacing(4)
+    padding: spacing(3) spacing(4),
   ),
   large: (
     font-size: font-size(s),
-    padding: spacing(3) spacing(5)
-  )
+    padding: spacing(3) spacing(5),
+  ),
 );
 
 $btn-states: (
   neutral: (
     color: color("neutral", 800),
-    background: color("neutral", 700)
+    background: color("neutral", 700),
   ),
   primary: (
     color: color("primary", 700),
-    background: color("primary", 400)
+    background: color("primary", 400),
   ),
   danger: (
     color: color("danger", 700),
-    background: color("danger", 400)
+    background: color("danger", 400),
   ),
   warning: (
     color: color("warning", 700),
-    background: color("warning", 400)
+    background: color("warning", 400),
   ),
   success: (
     color: color("success", 700),
-    background: color("success", 500)
-  )
+    background: color("success", 500),
+  ),
 );
 
-
 .rn-btn {
-
   border-radius: $btn-border-radius;
   border: 1px solid transparent;
   cursor: pointer;
@@ -68,14 +66,13 @@ $btn-states: (
   &--primary,
   &--secondary,
   &--tertiary {
-    @extend .rn-btn;    
+    @extend .rn-btn;
   }
- 
-    
+
   &--primary {
     color: color(neutral, white);
     @each $state, $variation in $btn-states {
-      &.#{$state} {        
+      &.#{$state} {
         background: map-get($variation, "background");
         @include hover {
           background-color: darken(map-get($variation, "background"), 10);
@@ -100,9 +97,9 @@ $btn-states: (
     @each $state, $variation in $btn-states {
       &.#{$state} {
         background-color: transparent;
-        color: map-get($variation, "color");        
+        color: map-get($variation, "color");
         @include hover {
-          background-color: color(neutral, 50);
+          background-color: color(neutral, 000);
           border: 1px solid color(neutral, 100);
         }
       }
@@ -132,9 +129,7 @@ $btn-states: (
     pointer-events: none;
     opacity: $btn-disabled-opacity;
   }
-  
 }
-
 
 // Specificity overrides
 input[type="submit"],

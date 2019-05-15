@@ -4,9 +4,9 @@
   justify-content: space-between;
   height: 100%;
   .panel {
-    border: spacing(px) solid color(neutral, 00);
+    border: spacing(px) solid color(neutral, 000);
     color: color(primary, 900);
-    background-color: color(neutral, 00);
+    background-color: color(neutral, 000);
     flex-grow: 2;
     &__list {
       margin: 0;
@@ -22,7 +22,7 @@
       font-weight: normal;
       margin: 0;
       background-color: color(neutral, 300);
-      border-bottom: spacing(px) solid color(neutral, 00);
+      border-bottom: spacing(px) solid color(neutral, 000);
     }
   }
 
