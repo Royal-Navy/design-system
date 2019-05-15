@@ -1,6 +1,6 @@
 ---
 title: Development
-description:
+description: ''
 tags: public
 pageClass: ''
 template: withsidebar

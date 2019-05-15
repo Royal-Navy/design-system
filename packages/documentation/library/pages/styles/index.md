@@ -1,6 +1,6 @@
 ---
 title: Styles
-description:
+description: ''
 tags: public
 pageClass: ''
 template: withsidebar

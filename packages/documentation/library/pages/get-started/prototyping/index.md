@@ -1,6 +1,6 @@
 ---
 title: Prototyping
-description:
+description: ''
 tags: public
 pageClass: ''
 template: withsidebar

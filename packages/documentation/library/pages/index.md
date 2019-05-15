@@ -1,8 +1,10 @@
 ---
 title: Home
-description:
+description: ''
 tags: public
 pageClass: ''
+context: ''
+status: ''
 template: withsidebar
 ---
 

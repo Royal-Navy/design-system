@@ -1,6 +1,6 @@
 ---
 title: About the design system
-description:
+description: ''
 tags: public
 pageClass: ''
 template: withsidebar
