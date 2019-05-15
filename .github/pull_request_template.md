@@ -25,6 +25,6 @@
 
 [If the work is UI related then paste a screenshot of the update here.]
 
-## Developer Notes
+## Developer notes
 
 [Sometimes, extra notes are needed to add clarity to a PR, add them here]
