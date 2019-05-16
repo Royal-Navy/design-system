@@ -3,7 +3,7 @@ title: Standards roadmap
 description: ''
 tags: public
 pageClass: ''
-template: nosidebar
+template: default
 ---
 
 ## Standards roadmap

@@ -13,9 +13,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   // Register templates
   const templateRegister = {
-    nosidebar: path.resolve('src/templates/nosidebar.js'),
-    withsidebar: path.resolve('src/templates/withsidebar.js'),
-    landing: path.resolve('src/templates/landing.js'),
+    default: path.resolve('src/templates/default.js'),
   }
 
   return graphql(`
