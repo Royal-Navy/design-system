@@ -3,7 +3,7 @@ title: Styles
 description: ''
 tags: public
 pageClass: ''
-template: nosidebar
+template: default
 ---
 
 ## Styles
