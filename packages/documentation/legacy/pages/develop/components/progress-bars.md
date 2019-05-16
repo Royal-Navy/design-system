@@ -1,0 +1,58 @@
+---
+title: Progress Bars
+description: Progress bars are a percentage based representation of data.
+audience: public
+pageClasses: ''
+context: 'Component Library'
+template: withsidebar
+usageExampleType: javascript
+usageExample: Import RnProgress from '@NELSON/RnProgress'
+---
+
+# Overview
+
+Progress Bars are built with two html elements, and not with the HTML5 `<progress>` tag. This provides more control over animation and the ability to label the component.
+
+## Basic Usage
+
+Here is the Progress Bar in its basic form. To change the width of the Progress Bar, change the inline style on the `.rn-progress__bar` element.
+
+```html
+  <div class="rn-progress">
+    <div className="rn-progress__bar" style="width: 40%"></div>
+  </div>
+```
+
+## State
+
+The Progress Bar is available in the following states: `neutral`, `primary`, `success`, `warning`, and `danger`. Add a class to the `.rn-progress` element to change the state. By default, the `neutral` state is applied.
+
+```html
+  <div class="rn-progress danger">
+    <div className="rn-progress__bar" style="width: 40%"></div>
+  </div>
+```
+
+## Sizing
+
+Progress Bars can be given a sizing class to change their height. The classes `.small` and `.large` are available to adjust the component.
+
+```html
+  <div class="rn-progress large">
+    <div className="rn-progress__bar" style="width: 40%"></div>
+  </div>
+```
+
+## Labels
+
+Labels can be added to `.large` components, providing immediate feedback to the user. Labels should not be used with the `.small` or `default` progress bars, as the text would be too small to be legible. To create a label, add the text to the `.rn-progress__bar` container.
+
+```html
+  <div class="rn-progress neutral large">
+    <div className="rn-progress__bar" style="width: 40%">40%</div>
+  </div>
+```
+
+#### Storybook
+
+To view all the variations of this component, including interactive examples, please visit our [Storybook](https://react-storybook.royalnavy.io/?selectedKind=Progress&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel&show-info=0&source=0).

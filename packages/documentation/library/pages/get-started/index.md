@@ -1,11 +1,9 @@
 ---
-title: Home
+title: Get started
 description: ''
 tags: public
 pageClass: ''
-context: ''
-status: ''
 template: nosidebar
 ---
 
-## Home
+## Get started

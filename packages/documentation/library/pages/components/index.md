@@ -1,11 +1,9 @@
 ---
-title: Home
+title: Components
 description: ''
 tags: public
 pageClass: ''
-context: ''
-status: ''
 template: nosidebar
 ---
 
-## Home
+## Components

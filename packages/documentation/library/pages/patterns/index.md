@@ -1,11 +1,9 @@
 ---
-title: Home
+title: Patterns
 description: ''
 tags: public
 pageClass: ''
-context: ''
-status: ''
 template: nosidebar
 ---
 
-## Home
+## Patterns

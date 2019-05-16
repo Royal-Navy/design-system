@@ -1,11 +1,9 @@
 ---
-title: Home
+title: About the design system
 description: ''
 tags: public
 pageClass: ''
-context: ''
-status: ''
 template: nosidebar
 ---
 
-## Home
+## About the design system

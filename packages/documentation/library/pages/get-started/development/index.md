@@ -1,11 +1,9 @@
 ---
-title: Home
+title: Development
 description: ''
 tags: public
 pageClass: ''
-context: ''
-status: ''
 template: nosidebar
 ---
 
-## Home
+## Development

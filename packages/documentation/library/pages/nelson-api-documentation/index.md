@@ -1,11 +1,9 @@
 ---
-title: Home
+title: NELSON API Documentation
 description: ''
 tags: public
 pageClass: ''
-context: ''
-status: ''
 template: nosidebar
 ---
 
-## Home
+## NELSON API Documentation
