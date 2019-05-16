@@ -32,8 +32,11 @@ const packages = [
   },
 ]
 
-// Ensure that the package docs folder is a freshly generated copy
+
+const originalDocsFolder = join('src/library/pages/develop/components/')
 const packageDocsFolder = join('src/generated-library/pages/develop/components/')
+
+// Ensure that the package docs folder is a freshly generated copy
 rimraf.sync(packageDocsFolder)
 fs.mkdirSync(packageDocsFolder, { recursive: true }, (err) => {
   if (err) throw err
@@ -53,6 +56,29 @@ packages.forEach((pkg) => {
   console.group(`🔍 Scanning ${chalk.blue(pkg.name + ' library')} for components`)
   const componentsFolder = resolve(__dirname, '../' + pkg.source + pkg.componentPath )
   const components = fs.readdirSync(componentsFolder)
+
+  
+  /**
+   * injectInFile
+   * Injects content into any 'framework-tabs' component it finds on a page.
+   * @param {String} originalFilePath : The path to the library file which is to be updated
+   * @param {Object} injectedData : The data to inject into the original file.
+   */
+  const injectInFile = (originalFilePath, injectedData) => {
+    fs.readFile(originalFilePath, 'utf8', (err, data) => {
+      if (err) throw err
+      const fileContent = matter(data).content
+      // Look for the 'framework-tabs' component
+      const regex = new RegExp(/<\s*framework-tabs[ exclude="]*([a-zA-Z, ]*)["]*[?^>]*><\s*\/\s*framework-tabs>|<framework-tabs\/>/m)
+      const match = fileContent.match(regex)
+      // If the framework tabs component lists any exclusions, put them in an array for later
+      const exclusions = (match) ? match[1].split(',') : null
+      const newFileContent = data.replace(regex, '<test-string>')
+
+      fs.writeFileSync(originalFilePath, newFileContent, 'utf8')
+    })  
+  }
+
   components.map((component) => {
     const componentFolder = join(componentsFolder, component)
     // Only process directories
@@ -73,15 +99,17 @@ packages.forEach((pkg) => {
 
           const docsPath = join(packageDocsFolder, componentName + '.md')
 
+          injectInFile(join(originalDocsFolder, componentName + '.md'))
+
           // Check to see if a component with this name already exists
           if (!fs.existsSync(docsPath)) {
             // Doesn't exist. Create one using the 'componentName' variable and populate it with the source content
-            fs.writeFileSync(docsPath, `## ${pkg.name} example`), (err) => {
+            fs.writeFileSync(docsPath, `<implementation type="${pkg.name}">\n\n## ${pkg.name} example\n`), (err) => {
               if (err) throw err
             }
-            fs.appendFileSync(docsPath, fileContent.content, 'utf8')
+            fs.appendFileSync(docsPath, `${fileContent.content} \n</implementation>\n\n`, 'utf8')
           } else {
-            const pageContent = '\n## ' + pkg.name + ' example \n' + fileContent.content
+            const pageContent = `<implementation type="${pkg.name}">\n\n## ${pkg.name} example\n ${fileContent.content} \n</implementation>\n\n`
             // Already exists, take the source content and append it to existing version
             fs.appendFileSync(docsPath, pageContent, 'utf8')
           }
