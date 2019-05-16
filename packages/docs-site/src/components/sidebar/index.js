@@ -24,8 +24,30 @@ const Sidebar = () => (
       }
     `}
     render={data => {
+      const {
+        allMarkdownRemark: { edges: pages },
+      } = data
+
       return (
         <nav>
+          <ul>
+            {pages.map(page => {
+              const {
+                node: {
+                  fields: { slug = '#' },
+                  frontmatter: { title = 'undefined' },
+                },
+              } = page
+
+              return (
+                <li key={slug}>
+                  <a href={slug}>
+                    <span>{title}</span>
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
           <pre>{JSON.stringify(data, undefined, 2)}</pre>
         </nav>
       )
