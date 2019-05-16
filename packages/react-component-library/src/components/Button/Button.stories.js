@@ -10,118 +10,26 @@ const stories = storiesOf('Button', module)
 
 stories.addDecorator(withKnobs)
 
-stories.add('Primary', () => (
+stories.add('Default (Solid)', () => (
   <div>
-    <Button
-      onClick={action('clicked')}
-      type={text('Type', 'primary')}
-      state={text('State', 'neutral')}
-      size={text('Size', 'large')}
-    >
-      {text('Button Text', 'Button')}
+    <Button onClick={action('Clicked primary')} state="primary">
+      {text('Primary text', 'Primary')}
     </Button>
-    <Button
-      onClick={action('clicked')}
-      type={text('Type', 'primary')}
-      state={text('State', 'neutral')}
-      size={text('size', 'regular')}
-    >
-      {text('Button Text', 'Button')}
+    <Button onClick={action('Clicked secondary')} state="secondary">
+      {text('Secondary text', 'Secondary')}
     </Button>
-    <Button
-      onClick={action('clicked')}
-      type={text('Type', 'primary')}
-      state={text('State', 'neutral')}
-      size={text('size', 'small')}
-    >
-      {text('Button Text', 'Button')}
+    <Button onClick={action('Clicked tertiary')} state="tertiary">
+      {text('Tertiary text', 'Tertiary')}
     </Button>
-  </div>
-))
+    <Button onClick={action('Clicked danger')} state="danger">
+      {text('Danger text', 'Danger')}
+    </Button>
+    <Button onClick={action('Clicked warning')} state="warning">
+      {text('Warning text', 'Warning')}
+    </Button>
 
-stories.add('Secondary', () => (
-  <div>
-    <Button
-      onClick={action('clicked')}
-      type={text('Type', 'secondary')}
-      state={text('State', 'neutral')}
-      size={text('Size', 'large')}
-    >
-      {text('Button Text', 'Button')}
-    </Button>
-    <Button
-      onClick={action('clicked')}
-      type={text('Type', 'secondary')}
-      state={text('State', 'neutral')}
-      size={text('size', 'regular')}
-    >
-      {text('Button Text', 'Button')}
-    </Button>
-    <Button
-      onClick={action('clicked')}
-      type={text('Type', 'secondary')}
-      state={text('State', 'neutral')}
-      size={text('size', 'small')}
-    >
-      {text('Button Text', 'Button')}
-    </Button>
-  </div>
-))
-
-stories.add('Tertiary', () => (
-  <div>
-    <Button
-      onClick={action('clicked')}
-      type={text('Type', 'tertiary')}
-      state={text('State', 'danger')}
-      size={text('Size', 'large')}
-    >
-      {text('Button Text', 'Button')}
-    </Button>
-    <Button
-      onClick={action('clicked')}
-      type={text('Type', 'tertiary')}
-      state={text('State', 'danger')}
-      size={text('size', 'regular')}
-    >
-      {text('Button Text', 'Button')}
-    </Button>
-    <Button
-      onClick={action('clicked')}
-      type={text('Type', 'tertiary')}
-      state={text('State', 'danger')}
-      size={text('size', 'small')}
-    >
-      {text('Button Text', 'Button')}
-    </Button>
-  </div>
-))
-
-stories.add('Groups', () => (
-  <div className="rn-btn-group">
-    <Button
-      onClick={action('clicked')}
-      type={text('Type', 'primary')}
-      state={text('State', 'neutral')}
-      size={text('Size', 'regular')}
-    >
-      {text('Button Text', 'Button')}
-    </Button>
-    <Button
-      onClick={action('clicked')}
-      type={text('Type', 'primary')}
-      state={text('State', 'neutral')}
-      size={text('size', 'regular')}
-    >
-      {text('Button Text', 'Button')}
-    </Button>
-    <Button
-      onClick={action('clicked')}
-      type={text('Type', 'primary')}
-      state={text('State', 'neutral')}
-      size={text('size', 'regular')}
-    >
-      {text('Button Text', 'Button')}
+    <Button onClick={action('Clicked success')} state="success">
+      {text('Success text', 'Success')}
     </Button>
   </div>
 ))

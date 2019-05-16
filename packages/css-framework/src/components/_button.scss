@@ -4,143 +4,91 @@ $btn-disabled-opacity: 0.4;
 $btn-block-spacing-y: 1rem;
 $animation-timing: 0.3s;
 
-$btn-sizes: (
-  small: (
-    font-size: font-size(xxs),
-    padding: spacing(2) spacing(3),
-  ),
-  regular: (
-    font-size: font-size(xs),
-    padding: spacing(3) spacing(4),
-  ),
-  large: (
-    font-size: font-size(s),
-    padding: spacing(3) spacing(5),
-  ),
-);
-
-$btn-states: (
-  neutral: (
-    color: color("neutral", 800),
-    background: color("neutral", 700),
-  ),
-  primary: (
-    color: color("primary", 700),
-    background: color("primary", 400),
-  ),
-  danger: (
-    color: color("danger", 700),
-    background: color("danger", 400),
-  ),
-  warning: (
-    color: color("warning", 700),
-    background: color("warning", 400),
-  ),
-  success: (
-    color: color("success", 700),
-    background: color("success", 500),
-  ),
-);
-
 .rn-btn {
-  border-radius: $btn-border-radius;
-  border: 1px solid transparent;
-  cursor: pointer;
   display: inline-block;
+  color: color(primary, 900);
+  background-color: color(neutral, white);
+  border: 1px solid transparent;
+  border-radius: $btn-border-radius;
+  margin: spacing(1);
+  padding: spacing(3) spacing(4);
+  font-size: font-size(xs);
   font-weight: $btn-font-weight;
   line-height: 1;
   text-align: center;
   vertical-align: middle;
+  cursor: pointer;
   user-select: none;
   transition: all $animation-timing;
 
-  @include hover {
+  &:hover {
     text-decoration: none;
+    background-color: darken(color(neutral, white), 10);
   }
 
   &:focus,
   &.focus {
     outline: 0;
   }
+}
 
-  &--primary,
-  &--secondary,
-  &--tertiary {
-    @extend .rn-btn;
-  }
+.rn-btn.rn-btn--primary {
+  color: color(neutral, white);
+  background: color(primary, 900);
 
-  &--primary {
-    color: color(neutral, white);
-    @each $state, $variation in $btn-states {
-      &.#{$state} {
-        background: map-get($variation, "background");
-        @include hover {
-          background-color: darken(map-get($variation, "background"), 10);
-        }
-      }
-    }
-  }
-
-  &--secondary {
-    @each $state, $variation in $btn-states {
-      &.#{$state} {
-        background-color: color(neutral, 000);
-        color: map-get($variation, "color");
-        @include hover {
-          background-color: color(neutral, 100);
-        }
-      }
-    }
-  }
-
-  &--tertiary {
-    @each $state, $variation in $btn-states {
-      &.#{$state} {
-        background-color: transparent;
-        color: map-get($variation, "color");
-        @include hover {
-          background-color: color(neutral, 000);
-          border: 1px solid color(neutral, 100);
-        }
-      }
-    }
-  }
-
-  // Providing default sizing
-  font-size: map-deep-get($btn-sizes, "regular", "font-size");
-  padding: map-deep-get($btn-sizes, "regular", "padding");
-
-  @each $size, $values in $btn-sizes {
-    &.#{$size} {
-      font-size: map-get($values, "font-size");
-      padding: map-get($values, "padding");
-    }
-  }
-
-  &.block {
-    width: 100%;
-    + .rn-btn.block {
-      margin-top: $btn-block-spacing-y;
-    }
-  }
-
-  &.disabled,
-  &:disabled {
-    pointer-events: none;
-    opacity: $btn-disabled-opacity;
+  &:hover {
+    background-color: darken(color(primary, 900), 10);
   }
 }
 
-// Specificity overrides
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-  &.rn-btn.block {
-    width: 100%;
+.rn-btn.rn-btn--secondary {
+  color: color(primary, 900);
+  background: color(neutral, 100);
+
+  &:hover {
+    background-color: darken(color(neutral, 100), 10);
   }
 }
 
-a.rn-btn.disabled,
-fieldset:disabled a.btn {
+.rn-btn.rn-btn--danger {
+  color: color(neutral, white);
+  background: color(danger, 600);
+
+  @include hover {
+    background-color: darken(color(danger, 700), 10);
+  }
+}
+
+.rn-btn.rn-btn--warning {
+  color: color(neutral, white);
+  background: color(warning, 600);
+
+  @include hover {
+    background-color: darken(color(warning, 600), 10);
+  }
+}
+
+.rn-btn.rn-btn--success {
+  color: color(neutral, white);
+  background: color(success, 700);
+
+  @include hover {
+    background-color: darken(color(success, 700), 10);
+  }
+}
+
+.rn-btn.rn-btn--small {
+  font-size: font-size(xxs);
+  padding: spacing(2) spacing(3);
+}
+
+.rtn-btn.rtn-btn--large {
+  font-size: font-size(s);
+  padding: spacing(3) spacing(5);
+}
+
+.rn-btn.disabled,
+.rtn-btn:disabled,
+fieldset:disabled a.rn-btn {
   pointer-events: none;
 }
