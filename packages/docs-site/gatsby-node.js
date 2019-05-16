@@ -5,13 +5,11 @@
  */
 
 const path = require('path')
-
 const { createFilePath } = require('gatsby-source-filesystem')
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
-  // Register templates
   const templateRegister = {
     default: path.resolve('src/templates/default.js'),
   }
@@ -37,10 +35,10 @@ exports.createPages = ({ actions, graphql }) => {
     }
     return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       // Use a template if specified in mardown frontmatter,
-      // otherwise use the article template by default
+      // otherwise use the default template
       const component = node.frontmatter.template
         ? templateRegister[node.frontmatter.template]
-        : templateRegister.nosidebar
+        : templateRegister.default
 
       createPage({
         path: node.fields.slug,
@@ -55,6 +53,7 @@ exports.createPages = ({ actions, graphql }) => {
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
+
   // Add slug to MarkdownRemark node
   if (node.internal.type === 'MarkdownRemark') {
     const slug = createFilePath({ node, getNode, basePath: 'library' })
