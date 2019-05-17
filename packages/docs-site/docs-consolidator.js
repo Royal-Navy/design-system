@@ -53,6 +53,7 @@ const returnFinalData = (data, componentData) => {
   // Look for the 'framework-tabs' component
   const regex = new RegExp(/(<\s*framework-tabs[ exclude="]*([a-zA-Z, ]*)["]*[?^>]*>)(<\s*\/\s*framework-tabs>)/m)
   const match = matter(data).content.match(regex)
+  if(!match) return data
   // If the framework tabs component lists any exclusions, put them in an array for later
   const docs = componentData.map(cd => {
     if (exclusions(match).includes(cd.package.toLowerCase())) return
@@ -125,7 +126,7 @@ const allComponents = packageLoop()
 rimraf.sync(libraryDocsFolder)
 fs.copy(originalDocsFolder, libraryDocsFolder, err => {
   if (err) throw err
-  const docsPath = join(libraryDocsFolder, '/pages/develop/components')
+  const docsPath = join(libraryDocsFolder, '/pages/components')
   fs.readdirSync(docsPath).forEach(doc => {
     if (doc.match(/.md/gi)) {
       const docName = doc.replace('.md', '')
