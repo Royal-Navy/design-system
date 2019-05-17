@@ -131,7 +131,7 @@ fs.copy(originalDocsFolder, libraryDocsFolder, err => {
     if (doc.match(/.md/gi)) {
       const docName = doc.replace('.md', '')
       const currentComponent = allComponents.filter(component => {
-        if (component.component.toLowerCase() === docName.toLowerCase()) return component
+        if (component.component.toLowerCase() === matter(fs.readFileSync(resolve(docsPath, doc))).data.title.toLowerCase()) return component
       })
       injectInFile(join(docsPath, doc), currentComponent)
       console.log(chalk.green(` ✓ Proccessing of ${doc}, complete.`))

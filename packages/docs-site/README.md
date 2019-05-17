@@ -63,7 +63,7 @@ The consolidator builds up a page structure for the site inside `./src/library/p
 2. The component folder of any package specified in the `packages` array of `package.json` in this package
 3. The `./src/local-library` folder of this package
 
-The consolidator copies all pages it finds in #1 and then loops through the contents of `/develop/components`. It then loops through all of the packages from #2 and looks for a `README.md` (case insensitive) file in every component of that package. It reads the file and checks the frontmatter title to see if it matches the filename (case insensitive) of any of the documentation files. 
+The consolidator copies all pages it finds in #1 and then loops through the contents of `/develop/components`. It then loops through all of the packages from #2 and looks for a `README.md` (case insensitive) file in every component of that package. It reads the file and checks the frontmatter title to see if it matches the frontmatter title (case insensitive) of any of the documentation files. 
 
 If so then it looks within the documentation file for the first instance of a `<framework-tabs>` tags. It then creates a new `<implementation>` tag inside that tag for each package which has a matching component. (Components can be excluded from docs via use of an `exclude` parameter e.g. `<framework-tabs exclude="react, vue">` will make the script ignore any react and vue components that match the doc).
 
