@@ -47,6 +47,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.7.1",
     "jest-dom": "^3.1.1",
+    "merge-dirs": "^0.2.1",
     "node-fs-extra": "^0.8.2",
     "normalize-scss": "^7.0.1",
     "prettier": "^1.16.4",
@@ -74,12 +75,11 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "yarn update-docs && gatsby build",
-    "develop": "yarn update-docs && gatsby develop",
-    "ccd": "node ./consolidate-component-docs.js",
-    "update-docs": "rimraf src/library && yarn ccd && cp -R ../documentation/library src/ && cp -R src/local-library/* src/library/ && cp -R src/generated-library/* src/library/",
+    "build": "yarn consolidate-docs && gatsby build",
+    "develop": "gatsby develop",
+    "consolidate-docs": "node ./docs-consolidator.js",
     "watch": "",
-    "start": "yarn update-docs && yarn develop",
+    "start": "yarn consolidate-docs && yarn develop",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src --fix",
     "test": "jest"
@@ -96,5 +96,22 @@
   },
   "bugs": {
     "url": "https://github.com/Royal-Navy/royalnavy.io/issues"
-  }
+  },
+  "packages": [
+    {
+      "source": "vue-component-library",
+      "name": "Vue",
+      "componentPath": "/src/components"
+    },
+    {
+      "source": "react-component-library",
+      "name": "React",
+      "componentPath": "/src/components"
+    },
+    {
+      "source": "html-storybook",
+      "name": "HTML",
+      "componentPath": "/src/components"
+    }
+  ]
 }

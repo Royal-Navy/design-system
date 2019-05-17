@@ -1,5 +1,5 @@
 ---
-title: Avatars
+title: Avatar
 description: Avatars are a great way to highlight to the user 
 ---
 

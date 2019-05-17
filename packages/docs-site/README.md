@@ -51,6 +51,24 @@ If you want a new component to be available to the markdown renderer, it needs t
   }).Compiler?
 ```
 
+### Using the Docs Consolidator
+
+The consolidator runs automatically every time you run `yarn build` or `yarn start`. Or you can run it manually by running `yarn consolidate-docs`. If you want to start the project without the consolidator, you can run `yarn develop`.
+
+#### How the consolidator works
+
+The consolidator builds up a page structure for the site inside `./src/library/pages` It takes the content from the following places in the following order:
+
+1. The `/library/pages` folder in the `documentation` package
+2. The component folder of any package specified in the `packages` array of `package.json` in this package
+3. The `./src/local-library` folder of this package
+
+The consolidator copies all pages it finds in #1 and then loops through the contents of `/develop/components`. It then loops through all of the packages from #2 and looks for a `README.md` (case insensitive) file in every component of that package. It reads the file and checks the frontmatter title to see if it matches the filename (case insensitive) of any of the documentation files. 
+
+If so then it looks within the documentation file for the first instance of a `<framework-tabs>` tags. It then creates a new `<implementation>` tag inside that tag for each package which has a matching component. (Components can be excluded from docs via use of an `exclude` parameter e.g. `<framework-tabs exclude="react, vue">` will make the script ignore any react and vue components that match the doc).
+
+Finally it will copy any files from `.src/local-library/pages` over the top of any matching files in `./src/library/pages`, this is a destructive overwrite as the purpose of this folder is that it's a dominant source specifically for overriding documents. Note: It's not possible to consolidate `local-library` docs at this present moment in time.
+
 ## Contacting the standards team
 
 If you are having any problems running this repository, you can either raise an [issue](https://github.com/Royal-Navy/royalnavy.io/issues) or email us at [standards@royalnavy.io](standards@royalnavy.io).
