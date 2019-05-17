@@ -9,8 +9,8 @@ import './sidebar.scss'
  *
  * TODO: Add recursion for multi-level heirarchy.
  *
- * @param {Array} pages
- * @returns {Array}
+ * @param {array} pages
+ * @returns {array}
  */
 function nest(pages) {
   // Start with all of the top level pages
@@ -23,10 +23,10 @@ function nest(pages) {
 
   // Nest children that match parent slug
   function nestChildren(parents) {
-    return parents.map(item => {
+    return parents.map(parent => {
       const children = pages.filter(page => {
         const { slug } = page.node.fields
-        const { slug: parentSlug } = item.node.fields.slug
+        const { slug: parentSlug } = parent.node.fields
 
         return (
           slug.includes(parentSlug) && slug !== parentSlug && parentSlug !== '/'
@@ -34,13 +34,43 @@ function nest(pages) {
       })
 
       return {
-        ...item,
+        ...parent,
         children,
       }
     })
   }
 
   return nestChildren(topLevel)
+}
+
+/**
+ * Recursively render a nested list using JSX.
+ *
+ * @param {array} pages
+ */
+function renderList(pages) {
+  return (
+    <ul>
+      {pages.map(page => {
+        const { slug } = page.node.fields
+        const { title } = page.node.frontmatter
+        let subMenu
+
+        if (page.children && page.children.length > 0) {
+          subMenu = renderList(page.children)
+        }
+
+        return (
+          <li key={slug}>
+            <a href={slug}>
+              <span>{title}</span>
+            </a>
+            {subMenu}
+          </li>
+        )
+      })}
+    </ul>
+  )
 }
 
 const Sidebar = () => (
@@ -72,26 +102,8 @@ const Sidebar = () => (
 
       return (
         <nav>
-          <ul>
-            {nested.map(page => {
-              const {
-                node: {
-                  fields: { slug = '#' },
-                  frontmatter: { title = 'undefined' },
-                },
-              } = page
-
-              return (
-                <li key={slug}>
-                  <a href={slug}>
-                    <span>{title}</span>
-                  </a>
-                  {}
-                </li>
-              )
-            })}
-          </ul>
-          <pre>{JSON.stringify(data, undefined, 2)}</pre>
+          {renderList(nested)}
+          <pre>{JSON.stringify(nested, undefined, 2)}</pre>
         </nav>
       )
     }}
