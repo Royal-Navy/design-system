@@ -5,25 +5,18 @@ import rehypeReact from 'rehype-react'
 import './post-article.scss'
 import './post-md.scss'
 
-// Import components
-import NoteBlock from '../note-block'
-import InfoBox from '../info-box'
-import GridContainer from '../grid-container'
 import ContentBox from '../content-box'
-import Swatch from '../swatch'
+// ...
 
 const PostArticle = ({ postData, className, children }) => {
-  // Register any components which are to be available in this template via markdown
+  // Register components which are referenced in markdown
 
   // eslint-disable-next-line new-cap
   const renderAst = new rehypeReact({
     createElement: React.createElement,
     components: {
-      'note-block': NoteBlock,
-      'info-box': InfoBox,
-      'grid-container': GridContainer,
       'content-box': ContentBox,
-      swatch: Swatch,
+      // ...
     },
   }).Compiler
 
