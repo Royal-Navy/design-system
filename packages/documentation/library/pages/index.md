@@ -6,6 +6,7 @@ pageClass: ''
 context: ''
 status: ''
 template: default
+index: 0
 ---
 
 ## Home

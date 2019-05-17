@@ -1,5 +1,6 @@
 import { StaticQuery, graphql } from 'gatsby'
 import React from 'react'
+import sortBy from 'lodash/sortBy'
 
 import './sidebar.scss'
 
@@ -7,20 +8,12 @@ import './sidebar.scss'
  * Take a flat array of pages and recursively transform
  * into a nested data structure based on URL structure.
  *
- * TODO: Add recursion for multi-level heirarchy.
+ * TODO: Implement recursion for multi-level heirarchy.
  *
  * @param {array} pages
  * @returns {array}
  */
 function nestByURLStructure(pages) {
-  // Start with all of the top level pages
-  const topLevel = pages.filter(page => {
-    const { slug } = page.node.fields
-    const matches = (slug.match(/\//g) || []).length
-
-    return [1, 2].includes(matches)
-  })
-
   // Nest children that match parent slug
   function nest(parents) {
     return parents.map(parent => {
@@ -40,13 +33,25 @@ function nestByURLStructure(pages) {
     })
   }
 
-  return nest(topLevel)
+  // Start with all of the top level pages
+  const topLevel = pages.filter(page => {
+    const { slug } = page.node.fields
+    const matches = (slug.match(/\//g) || []).length
+
+    return [1, 2].includes(matches)
+  })
+
+  // Sort pages based on `index` frontmatter
+  const topLevelSorted = sortBy(topLevel, 'node.frontmatter.index')
+
+  return nest(topLevelSorted)
 }
 
 /**
  * Recursively render a nested list using JSX.
  *
  * @param {array} pages
+ * @returns {jsx}
  */
 function renderList(pages) {
   return (
@@ -54,6 +59,7 @@ function renderList(pages) {
       {pages.map(page => {
         const { slug } = page.node.fields
         const { title } = page.node.frontmatter
+
         let subMenu
 
         if (page.children && page.children.length > 0) {
@@ -87,6 +93,7 @@ const Sidebar = () => (
               frontmatter {
                 title
                 status
+                index
               }
             }
           }
