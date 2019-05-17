@@ -4,42 +4,43 @@ import React from 'react'
 import './sidebar.scss'
 
 /**
- * Take a flat array of pages and recursively transform into
- * a nested data structure based on the URL structure.
+ * Take a flat array of pages and recursively transform
+ * into a nested data structure based on URL structure.
  *
- * TODO: Refactor and add recursion for multi-level heirarchy.
+ * TODO: Add recursion for multi-level heirarchy.
  *
  * @param {Array} pages
- * @returns {Array} nested
+ * @returns {Array}
  */
-// eslint-disable-next-line func-names
-const nestPages = function(pages) {
-  const parents = pages.filter(page => {
+function nest(pages) {
+  // Start with all of the top level pages
+  const topLevel = pages.filter(page => {
     const { slug } = page.node.fields
     const matches = (slug.match(/\//g) || []).length
 
     return [1, 2].includes(matches)
   })
 
-  // eslint-disable-next-line no-restricted-syntax
-  for (const [i, v] of parents.entries()) {
-    // eslint-disable-next-line no-loop-func
-    const children = pages.filter(item => {
-      const { slug } = item.node.fields
-      const { slug: parentSlug } = v.node.fields.slug
+  // Nest children that match parent slug
+  function nestChildren(parents) {
+    return parents.map(item => {
+      const children = pages.filter(page => {
+        const { slug } = page.node.fields
+        const { slug: parentSlug } = item.node.fields.slug
 
-      return (
-        slug.includes(parentSlug) && slug !== parentSlug && parentSlug !== '/'
-      )
+        return (
+          slug.includes(parentSlug) && slug !== parentSlug && parentSlug !== '/'
+        )
+      })
+
+      return {
+        ...item,
+        children,
+      }
     })
-
-    parents[i] = {
-      ...v,
-      children,
-    }
   }
 
-  return parents
+  return nestChildren(topLevel)
 }
 
 const Sidebar = () => (
@@ -67,7 +68,7 @@ const Sidebar = () => (
         allMarkdownRemark: { edges: pages },
       } = data
 
-      const nested = nestPages(pages)
+      const nested = nest(pages)
 
       return (
         <nav>
