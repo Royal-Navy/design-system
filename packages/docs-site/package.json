@@ -68,7 +68,7 @@
     "uuid": "^3.3.2"
   },
   "resolutions": {
-    "firebase-tools/**/lodash": "4.17.11"
+    "**/**/lodash": "4.17.11"
   },
   "keywords": [
     "gatsby"
