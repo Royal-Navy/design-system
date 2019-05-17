@@ -12,7 +12,7 @@ import './sidebar.scss'
  * @param {array} pages
  * @returns {array}
  */
-function nest(pages) {
+function nestByURLStructure(pages) {
   // Start with all of the top level pages
   const topLevel = pages.filter(page => {
     const { slug } = page.node.fields
@@ -22,7 +22,7 @@ function nest(pages) {
   })
 
   // Nest children that match parent slug
-  function nestChildren(parents) {
+  function nest(parents) {
     return parents.map(parent => {
       const children = pages.filter(page => {
         const { slug } = page.node.fields
@@ -40,7 +40,7 @@ function nest(pages) {
     })
   }
 
-  return nestChildren(topLevel)
+  return nest(topLevel)
 }
 
 /**
@@ -98,7 +98,7 @@ const Sidebar = () => (
         allMarkdownRemark: { edges: pages },
       } = data
 
-      const nested = nest(pages)
+      const nested = nestByURLStructure(pages)
 
       return (
         <nav>
