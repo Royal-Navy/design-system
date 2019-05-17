@@ -47,7 +47,6 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.7.1",
     "jest-dom": "^3.1.1",
-    "merge-dirs": "^0.2.1",
     "node-fs-extra": "^0.8.2",
     "normalize-scss": "^7.0.1",
     "prettier": "^1.16.4",
@@ -68,7 +67,7 @@
     "uuid": "^3.3.2"
   },
   "resolutions": {
-    "**/**/lodash": "4.17.11"
+    "firebase-tools/**/lodash": "4.17.11"
   },
   "keywords": [
     "gatsby"

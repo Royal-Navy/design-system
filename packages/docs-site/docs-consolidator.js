@@ -8,22 +8,20 @@
  **/
 
 const fs = require('fs-extra')
-const resolve = require('path').resolve
-const join = require('path').join
+const { resolve } = require('path')
+const { join } = require('path')
 const matter = require('gray-matter')
 const chalk = require('chalk')
 const rimraf = require('rimraf')
-const mergedirs = require('merge-dirs').default
+const { execSync } = require('child_process')
 const package = require('./package.json')
 
 // A list of packages to check
 const packages = package.packages
 
 // The original docs from the 'documentation' package
-const originalDocsFolder = resolve(__dirname, '../documentation/library/pages')
-// The original docs from this packages 'local-library' folder (overrides documentation package docs)
-const localDocsFolder = resolve(__dirname, './src/local-library/pages')
-const libraryDocsFolder = resolve(__dirname, './src/library/pages')
+const originalDocsFolder = resolve(__dirname, '../documentation/library')
+const libraryDocsFolder = resolve(__dirname, './src/library')
 const packageDocsFolder = 'src/generated-library/pages/develop/components/'
 
 // Ensure that the package docs folder is a freshly generated copy
@@ -127,7 +125,7 @@ const allComponents = packageLoop()
 rimraf.sync(libraryDocsFolder)
 fs.copy(originalDocsFolder, libraryDocsFolder, err => {
   if (err) throw err
-  const docsPath = join(libraryDocsFolder, '/develop/components')
+  const docsPath = join(libraryDocsFolder, '/pages/develop/components')
   fs.readdirSync(docsPath).forEach(doc => {
     if (doc.match(/.md/gi)) {
       const docName = doc.replace('.md', '')
@@ -140,5 +138,5 @@ fs.copy(originalDocsFolder, libraryDocsFolder, err => {
   })
 })
 
-// Merge all docs from the local-library folder into the main library, anything placed in here will overwrite anything above
-mergedirs(localDocsFolder, libraryDocsFolder, 'overwrite')
+// Merge all pages from the local-library folder into the main library, anything placed in here will overwrite anything above
+execSync(`cp -R  ${resolve(__dirname, './src/local-library/')} ${libraryDocsFolder}/`)
