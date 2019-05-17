@@ -22,7 +22,7 @@ const packages = package.packages
 // The original docs from the 'documentation' package
 const originalDocsFolder = resolve(__dirname, '../documentation/library')
 const libraryDocsFolder = resolve(__dirname, './src/library')
-const packageDocsFolder = 'src/generated-library/pages/develop/components/'
+const packageDocsFolder = 'src/generated-library/pages/components/'
 
 // Ensure that the package docs folder is a freshly generated copy
 rimraf.sync(packageDocsFolder)
