@@ -1,11 +1,7 @@
 ---
-title: Progress Bars
+title: Progress
 description: Progress bars are a percentage based representation of data.
 ---
-
-# Overview
-
-Progress Bars are built with two html elements, and not with the HTML5 `<progress>` tag. This provides more control over animation and the ability to label the component.
 
 ## Basic Usage
 
@@ -46,7 +42,3 @@ Labels can be added to `.large` components, providing immediate feedback to the 
     <div className="rn-progress__bar" style="width: 40%">40%</div>
   </div>
 ```
-
-#### Storybook
-
-To view all the variations of this component, including interactive examples, please visit our [Storybook](https://react-storybook.royalnavy.io/?selectedKind=Progress&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel&show-info=0&source=0).

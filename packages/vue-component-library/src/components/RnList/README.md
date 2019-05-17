@@ -1,5 +1,5 @@
 ---
-title: Lists
+title: List
 description: Lists are a great way to display grouped items.
 ---
 
@@ -23,8 +23,3 @@ Prop Name     | Value      | Required
 **listItems** | `{Array}`  | false
 
 An array of list items can be passe to an `rn-list` component, or you can mantually write out each list item instead.
-
-
-#### Storybook
-
-To view all the variations of this component, including interactive examples, please visit our [Storybook](https://react-storybook.royalnavy.io/?selectedKind=List&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel&show-info=0&source=0).

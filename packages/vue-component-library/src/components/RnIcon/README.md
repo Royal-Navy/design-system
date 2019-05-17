@@ -1,5 +1,5 @@
 ---
-title: Icons
+title: Icon
 description: NELSON provides the Ionicons icons out of the box.
 ---
 
@@ -16,7 +16,3 @@ Prop Name     | Value      | Required
 **name**      | `{String}` | true
 
 a full list of our icons can be found in our [Icon Library](/icon-library).
-
-#### Storybook
-
-To view all the variations of this component, including interactive examples, please visit our [Storybook]().
