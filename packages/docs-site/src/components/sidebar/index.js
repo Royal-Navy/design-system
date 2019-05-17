@@ -110,7 +110,7 @@ const Sidebar = () => (
       return (
         <nav>
           {renderList(nested)}
-          <pre>{JSON.stringify(nested, undefined, 2)}</pre>
+          <pre>{JSON.stringify(nested, null, 2)}</pre>
         </nav>
       )
     }}
