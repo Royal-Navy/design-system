@@ -33,3 +33,35 @@ stories.add('Default (Solid)', () => (
     </Button>
   </div>
 ))
+
+stories.add('Outline', () => (
+  <div>
+    <Button onClick={action('Clicked primary')} state="primary" type="outline">
+      {text('Primary text', 'Primary')}
+    </Button>
+    <Button
+      onClick={action('Clicked secondary')}
+      state="secondary"
+      type="outline"
+    >
+      {text('Secondary text', 'Secondary')}
+    </Button>
+    <Button
+      onClick={action('Clicked tertiary')}
+      state="tertiary"
+      type="outline"
+    >
+      {text('Tertiary text', 'Tertiary')}
+    </Button>
+    <Button onClick={action('Clicked danger')} state="danger" type="outline">
+      {text('Danger text', 'Danger')}
+    </Button>
+    <Button onClick={action('Clicked warning')} state="warning" type="outline">
+      {text('Warning text', 'Warning')}
+    </Button>
+
+    <Button onClick={action('Clicked success')} state="success" type="outline">
+      {text('Success text', 'Success')}
+    </Button>
+  </div>
+))

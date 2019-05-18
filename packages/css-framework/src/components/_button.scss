@@ -32,12 +32,22 @@ $animation-timing: 0.3s;
   }
 }
 
+/* Solid */
 .rn-btn.rn-btn--primary {
   color: color(neutral, white);
   background: color(primary, 900);
 
   &:hover {
     background-color: darken(color(primary, 900), 10);
+  }
+}
+
+.rn-btn.rn-btn--secondary {
+  color: color(primary, 900);
+  background: color(neutral, 100);
+
+  &:hover {
+    background-color: darken(color(neutral, 100), 10);
   }
 }
 
@@ -74,6 +84,76 @@ $animation-timing: 0.3s;
 
   @include hover {
     background-color: darken(color(success, 700), 10);
+  }
+}
+
+.rn-btn.rn-btn--small {
+  font-size: font-size(xxs);
+  padding: spacing(2) spacing(3);
+}
+
+.rtn-btn.rtn-btn--large {
+  font-size: font-size(s);
+  padding: spacing(3) spacing(5);
+}
+
+/* Outline */
+.rn-btn.rn-btn--outline {
+  border: 2px solid color(neutral, white);
+
+  &:hover {
+    background: color(neutral, white);
+    border: 2px solid darken(color(neutral, white), 10);
+  }
+}
+
+.rn-btn.rn-btn--outline.rn-btn--primary {
+  background: color(neutral, white);
+  border: 2px solid color(primary, 900);
+  color: color(primary, 900);
+
+  &:hover {
+    background-color: darken(color(neutral, white), 10);
+  }
+}
+
+.rn-btn.rn-btn--outline.rn-btn--secondary {
+  background: color(neutral, white);
+  border: 2px solid color(neutral, 100);
+  color: color(primary, 900);
+
+  &:hover {
+    background-color: darken(color(neutral, white), 10);
+  }
+}
+
+.rn-btn.rn-btn--outline.rn-btn--danger {
+  background: color(neutral, white);
+  border: 2px solid color(danger, 600);
+  color: color(danger, 600);
+
+  &:hover {
+    background-color: darken(color(neutral, white), 10);
+  }
+}
+
+.rn-btn.rn-btn--outline.rn-btn--warning {
+  background: color(neutral, white);
+  border: 2px solid color(warning, 600);
+  color: color(warning, 600);
+
+  &:hover {
+    background-color: darken(color(neutral, white), 10);
+  }
+}
+
+.rn-btn.rn-btn--outline.rn-btn--success {
+  background: color(neutral, white);
+  border: 2px solid color(success, 700);
+  color: color(success, 700);
+
+  @include hover {
+    background-color: darken(color(neutral, white), 10);
   }
 }
 
