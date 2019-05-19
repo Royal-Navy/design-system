@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Button = ({ children, className, onClick, size, state, type }) => (
+const Button = ({ children, className, onClick, size, state, variation }) => (
   <button
-    className={`rn-btn rn-btn--${type} rn-btn--${state} rn-btn--${size} ${className}`}
+    className={`rn-btn rn-btn--${variation}-${state} ${
+      size ? `rn-btn-${size}` : ''
+    } ${className}`}
     type="button"
     onClick={onClick}
   >
@@ -27,16 +29,16 @@ Button.propTypes = {
   /** Sets the state of the button, can be one of 'neutral', 'primary', 'secondary', 'warning', 'success' or 'danger' */
   state: PropTypes.string,
 
-  /** Sets the button type, can be one of 'solid', 'outline' */
-  type: PropTypes.string,
+  /** Sets the button style, can be one of 'solid', 'outline' or 'plain' */
+  variation: PropTypes.string,
 }
 
 Button.defaultProps = {
   className: '',
   onClick: () => {},
   size: 'regular',
-  type: 'solid',
   state: 'neutral',
+  variation: 'solid',
 }
 
 export default Button

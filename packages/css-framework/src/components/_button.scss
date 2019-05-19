@@ -3,6 +3,63 @@ $btn-font-weight: 600;
 $btn-disabled-opacity: 0.4;
 $btn-block-spacing-y: 1rem;
 $animation-timing: 0.3s;
+$btn-focus-width: 0.2rem;
+
+$btn-states: (
+  primary: (
+    color: color(primary, 900),
+  ),
+  secondary: (
+    color: color(neutral, 100),
+    text-color: color(primary, 900),
+    outline-text-color: color(primary, 900),
+    outline-text-color-hover: color(primary, 900),
+  ),
+  danger: (
+    color: color(danger, 600),
+  ),
+  warning: (
+    color: color(warning, 600),
+  ),
+  success: (
+    color: color(success, 700),
+  ),
+);
+
+@mixin outlineButton(
+  $color,
+  $text-color,
+  $text-color-hover,
+) {
+  color: $text-color;
+  border: 2px solid $color;
+
+  &:hover,
+  &:active {
+    color: $text-color-hover;
+    background: $color;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 $btn-focus-width rgba($color, 0.5);
+  }
+}
+
+@mixin solidButton(
+  $color,
+  $text-color,
+) {
+  color: $text-color;
+  background: $color;
+
+  &:hover {
+    background-color: darken($color, 10);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 $btn-focus-width rgba($color, 0.5);
+  }
+}
 
 .rn-btn {
   display: inline-block;
@@ -32,128 +89,20 @@ $animation-timing: 0.3s;
   }
 }
 
-/* Solid */
-.rn-btn.rn-btn--primary {
-  color: color(neutral, white);
-  background: color(primary, 900);
-
-  &:hover {
-    background-color: darken(color(primary, 900), 10);
+@each $state, $variation in $btn-states {
+  .rn-btn.rn-btn--solid-#{$state} {
+    @include solidButton(
+      $color: map-get($variation, "color"),
+      $text-color: map-get-default($variation, "text-color", color(neutral, white)),
+    );
   }
-}
 
-.rn-btn.rn-btn--secondary {
-  color: color(primary, 900);
-  background: color(neutral, 100);
-
-  &:hover {
-    background-color: darken(color(neutral, 100), 10);
-  }
-}
-
-.rn-btn.rn-btn--secondary {
-  color: color(primary, 900);
-  background: color(neutral, 100);
-
-  &:hover {
-    background-color: darken(color(neutral, 100), 10);
-  }
-}
-
-.rn-btn.rn-btn--danger {
-  color: color(neutral, white);
-  background: color(danger, 600);
-
-  @include hover {
-    background-color: darken(color(danger, 700), 10);
-  }
-}
-
-.rn-btn.rn-btn--warning {
-  color: color(neutral, white);
-  background: color(warning, 600);
-
-  @include hover {
-    background-color: darken(color(warning, 600), 10);
-  }
-}
-
-.rn-btn.rn-btn--success {
-  color: color(neutral, white);
-  background: color(success, 700);
-
-  @include hover {
-    background-color: darken(color(success, 700), 10);
-  }
-}
-
-.rn-btn.rn-btn--small {
-  font-size: font-size(xxs);
-  padding: spacing(2) spacing(3);
-}
-
-.rtn-btn.rtn-btn--large {
-  font-size: font-size(s);
-  padding: spacing(3) spacing(5);
-}
-
-/* Outline */
-.rn-btn.rn-btn--outline {
-  border: 2px solid color(neutral, white);
-
-  &:hover {
-    background: color(neutral, white);
-    border: 2px solid darken(color(neutral, white), 10);
-  }
-}
-
-.rn-btn.rn-btn--outline.rn-btn--primary {
-  background: color(neutral, white);
-  border: 2px solid color(primary, 900);
-  color: color(primary, 900);
-
-  &:hover {
-    background-color: darken(color(neutral, white), 10);
-  }
-}
-
-.rn-btn.rn-btn--outline.rn-btn--secondary {
-  background: color(neutral, white);
-  border: 2px solid color(neutral, 100);
-  color: color(primary, 900);
-
-  &:hover {
-    background-color: darken(color(neutral, white), 10);
-  }
-}
-
-.rn-btn.rn-btn--outline.rn-btn--danger {
-  background: color(neutral, white);
-  border: 2px solid color(danger, 600);
-  color: color(danger, 600);
-
-  &:hover {
-    background-color: darken(color(neutral, white), 10);
-  }
-}
-
-.rn-btn.rn-btn--outline.rn-btn--warning {
-  background: color(neutral, white);
-  border: 2px solid color(warning, 600);
-  color: color(warning, 600);
-
-  &:hover {
-    background-color: darken(color(neutral, white), 10);
-  }
-}
-
-.rn-btn.rn-btn--outline.rn-btn--success {
-  background: color(neutral, white);
-  border: 2px solid color(success, 700);
-  color: color(success, 700);
-
-  @include hover {
-    background-color: darken(color(neutral, white), 10);
+  .rn-btn.rn-btn--outline-#{$state} {
+    @include outlineButton(
+      $color: map-get($variation, "color"),
+      $text-color: map-get-default($variation, "outline-text-color", color(primary, 900)),
+      $text-color-hover: map-get-default($variation, "outline-text-color-hover", color(neutral, white)),
+    );
   }
 }
 
