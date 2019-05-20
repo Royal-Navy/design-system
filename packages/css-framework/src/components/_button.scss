@@ -26,7 +26,25 @@ $btn-states: (
   ),
 );
 
-@mixin outlineButton(
+@mixin plain-button(
+  $color,
+  $text-color,
+  $text-color-hover,
+) {
+  color: $text-color;
+
+  &:active,
+  &.is-active {
+    border: 2px solid $color;
+  }
+
+
+  &:focus {
+    box-shadow: 0 0 0 $btn-focus-width rgba($color, 0.5);
+  }
+}
+
+@mixin outline-button(
   $color,
   $text-color,
   $text-color-hover,
@@ -35,7 +53,8 @@ $btn-states: (
   border: 2px solid $color;
 
   &:hover,
-  &:active {
+  &:active,
+  &.is-active {
     color: $text-color-hover;
     background: $color;
   }
@@ -45,14 +64,16 @@ $btn-states: (
   }
 }
 
-@mixin solidButton(
+@mixin solid-button(
   $color,
   $text-color,
 ) {
   color: $text-color;
   background: $color;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &.is-active {
     background-color: darken($color, 10);
   }
 
@@ -91,16 +112,24 @@ $btn-states: (
 
 @each $state, $variation in $btn-states {
   .rn-btn.rn-btn--solid-#{$state} {
-    @include solidButton(
+    @include solid-button(
       $color: map-get($variation, "color"),
       $text-color: map-get-default($variation, "text-color", color(neutral, white)),
     );
   }
 
   .rn-btn.rn-btn--outline-#{$state} {
-    @include outlineButton(
+    @include outline-button(
       $color: map-get($variation, "color"),
-      $text-color: map-get-default($variation, "outline-text-color", color(primary, 900)),
+      $text-color: map-get-default($variation, "text-color", map-get($variation, "color")),
+      $text-color-hover: map-get-default($variation, "outline-text-color-hover", color(neutral, white)),
+    );
+  }
+
+  .rn-btn.rn-btn--plain-#{$state} {
+    @include plain-button(
+      $color: map-get($variation, "color"),
+      $text-color: map-get-default($variation, "outline-text-color", map-get($variation, "color")),
       $text-color-hover: map-get-default($variation, "outline-text-color-hover", color(neutral, white)),
     );
   }

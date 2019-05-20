@@ -81,3 +81,56 @@ stories.add('Outline', () => (
     </Button>
   </div>
 ))
+
+stories.add('Plain', () => (
+  <div>
+    <Button
+      onClick={action('Clicked primary')}
+      state="primary"
+      variation="plain"
+    >
+      {text('Primary text', 'Primary')}
+    </Button>
+    <Button
+      onClick={action('Clicked secondary')}
+      state="secondary"
+      variation="plain"
+    >
+      {text('Secondary text', 'Secondary')}
+    </Button>
+    <Button
+      onClick={action('Clicked tertiary')}
+      state="tertiary"
+      variation="plain"
+    >
+      {text('Tertiary text', 'Tertiary')}
+    </Button>
+    <Button onClick={action('Clicked danger')} state="danger" variation="plain">
+      {text('Danger text', 'Danger')}
+    </Button>
+    <Button
+      onClick={action('Clicked warning')}
+      state="warning"
+      variation="plain"
+    >
+      {text('Warning text', 'Warning')}
+    </Button>
+
+    <Button
+      onClick={action('Clicked success')}
+      state="success"
+      variation="plain"
+    >
+      {text('Success text', 'Success')}
+    </Button>
+    <hr />
+    <Button
+      onClick={action('Clicked primary')}
+      state="primary"
+      variation="plain"
+      className="is-active"
+    >
+      {text('Primary text', 'Active Primary')}
+    </Button>
+  </div>
+))
