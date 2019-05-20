@@ -43,12 +43,13 @@ a record.
 
 ### Size 
 
-<img src="images/button-size.png" width="256" />
+<img src="images/button-size.png" width="361" />
 
 ```
 <Button onClick={action} state="primary" size="small">Small</Button>
 <Button onClick={action} state="primary" size="regular">Regular</Button>
 <Button onClick={action} state="primary" size="large">Large</Button>
+<Button onClick={action} state="primary" size="xlarge">xLarge</Button>
 ```
 
 ## Properties
@@ -59,7 +60,7 @@ a record.
 | className | String         | False    |         | Custom css class to add to the button element
 | icon      | Node           | False    |         | Icon to display to the right of text in the button. Accepts any Node but ideally would be an image or svg tag                       
 | onClick   | Func: ()=>void | True     |         | Function to call when a user clicks on a button
-| size      | String         | False    | regular | (small/regular/large) The size for the button
+| size      | String         | False    | regular | (small/regular/large/xlarge) The size for the button
 | variant   | String         | False    | teriary | (primary/secondary/tertiary) The style of button
 | color     | String         | False    |         | (danger) An alternative color style to use, danger is the only alternative currently supported                                                                                       
 

@@ -78,6 +78,11 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn.rn-btn--large {
+  font-size: font-size(s);
+  padding: spacing(3) spacing(5);
+}
+
+.rn-btn.rn-btn--xlarge {
   font-size: font-size(m);
   padding: spacing(3) spacing(5);
 }
