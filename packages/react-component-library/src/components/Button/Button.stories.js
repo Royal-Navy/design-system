@@ -44,163 +44,113 @@ const TriangleUp = () => (
 
 stories.addDecorator(withKnobs)
 
-stories.add('Default (Solid)', () => (
+stories.add('Styles', () => (
   <div>
-    <Button onClick={action('Clicked primary')} state="primary">
+    <Button onClick={action('Clicked primary')} variant="primary">
       {text('Primary text', 'Primary')}
     </Button>
-    <Button onClick={action('Clicked secondary')} state="secondary">
+    <Button onClick={action('Clicked secondary')} variant="secondary">
       {text('Secondary text', 'Secondary')}
     </Button>
-    <Button onClick={action('Clicked tertiary')} state="tertiary">
+    <Button onClick={action('Clicked tertiary')} variant="tertiary">
       {text('Tertiary text', 'Tertiary')}
     </Button>
-    <Button onClick={action('Clicked danger')} state="danger">
-      {text('Danger text', 'Danger')}
-    </Button>
-    <Button onClick={action('Clicked warning')} state="warning">
-      {text('Warning text', 'Warning')}
-    </Button>
-
-    <Button onClick={action('Clicked success')} state="success">
-      {text('Success text', 'Success')}
-    </Button>
-  </div>
-))
-
-stories.add('Outline', () => (
-  <div>
+    <br />
     <Button
       onClick={action('Clicked primary')}
-      state="primary"
-      variation="outline"
+      variant="primary"
+      color="danger"
     >
       {text('Primary text', 'Primary')}
     </Button>
     <Button
       onClick={action('Clicked secondary')}
-      state="secondary"
-      variation="outline"
+      variant="secondary"
+      color="danger"
     >
       {text('Secondary text', 'Secondary')}
     </Button>
     <Button
       onClick={action('Clicked tertiary')}
-      state="tertiary"
-      variation="outline"
+      variant="tertiary"
+      color="danger"
     >
       {text('Tertiary text', 'Tertiary')}
-    </Button>
-    <Button
-      onClick={action('Clicked danger')}
-      state="danger"
-      variation="outline"
-    >
-      {text('Danger text', 'Danger')}
-    </Button>
-    <Button
-      onClick={action('Clicked warning')}
-      state="warning"
-      variation="outline"
-    >
-      {text('Warning text', 'Warning')}
-    </Button>
-
-    <Button
-      onClick={action('Clicked success')}
-      state="success"
-      variation="outline"
-    >
-      {text('Success text', 'Success')}
-    </Button>
-  </div>
-))
-
-stories.add('Plain', () => (
-  <div>
-    <Button
-      onClick={action('Clicked primary')}
-      state="primary"
-      variation="plain"
-    >
-      {text('Primary text', 'Primary')}
-    </Button>
-    <Button
-      onClick={action('Clicked secondary')}
-      state="secondary"
-      variation="plain"
-    >
-      {text('Secondary text', 'Secondary')}
-    </Button>
-    <Button
-      onClick={action('Clicked tertiary')}
-      state="tertiary"
-      variation="plain"
-    >
-      {text('Tertiary text', 'Tertiary')}
-    </Button>
-    <Button onClick={action('Clicked danger')} state="danger" variation="plain">
-      {text('Danger text', 'Danger')}
-    </Button>
-    <Button
-      onClick={action('Clicked warning')}
-      state="warning"
-      variation="plain"
-    >
-      {text('Warning text', 'Warning')}
-    </Button>
-
-    <Button
-      onClick={action('Clicked success')}
-      state="success"
-      variation="plain"
-    >
-      {text('Success text', 'Success')}
-    </Button>
-    <hr />
-    <Button
-      onClick={action('Clicked primary')}
-      state="primary"
-      variation="plain"
-      className="is-active"
-    >
-      {text('Primary text', 'Active Primary')}
     </Button>
   </div>
 ))
 
 stories.add('Icon', () => (
   <div>
-    <Button
-      onClick={action('Clicked primary')}
-      state="primary"
-      variation="plain"
-      icon={<TriangleDown />}
-    >
-      {text('Primary text', 'Primary')}
+    <Button onClick={action('Clicked primary')} icon={<TriangleDown />}>
+      closed
     </Button>
-    <Button
-      className="is-active"
-      onClick={action('Clicked primary')}
-      state="primary"
-      variation="plain"
-      icon={<TriangleUp />}
-    >
-      {text('Primary text', 'Primary active')}
+    <Button onClick={action('Clicked primary')} icon={<TriangleUp />}>
+      Open
     </Button>
   </div>
 ))
 
 stories.add('Sizes', () => (
   <div>
-    <Button onClick={action('Clicked primary')} state="primary" size="small">
-      Small
-    </Button>
-    <Button onClick={action('Clicked primary')} state="primary" size="regular">
-      Regular
-    </Button>
-    <Button onClick={action('Clicked primary')} state="primary" size="large">
-      Large
-    </Button>
+    <p>
+      <Button
+        onClick={action('Clicked primary')}
+        variant="primary"
+        size="small"
+      >
+        Small
+      </Button>
+      <Button
+        onClick={action('Clicked primary')}
+        variant="primary"
+        size="regular"
+      >
+        Regular
+      </Button>
+      <Button
+        onClick={action('Clicked primary')}
+        variant="primary"
+        size="large"
+      >
+        Large
+      </Button>
+    </p>
+
+    <p>
+      <Button
+        onClick={action('Clicked primary')}
+        variant="secondary"
+        size="small"
+      >
+        Small
+      </Button>
+      <Button
+        onClick={action('Clicked primary')}
+        variant="secondary"
+        size="regular"
+      >
+        Regular
+      </Button>
+      <Button
+        onClick={action('Clicked primary')}
+        variant="secondary"
+        size="large"
+      >
+        Large
+      </Button>
+    </p>
+
+    <p>
+      <Button onClick={action('Clicked primary')} size="small">
+        Small
+      </Button>
+      <Button onClick={action('Clicked primary')} size="regular">
+        Regular
+      </Button>
+      <Button onClick={action('Clicked primary')} size="large">
+        Large
+      </Button>
+    </p>
   </div>
 ))
