@@ -1,7 +1,5 @@
-const path = require('path')
-
-module.exports = (baseConfig, env, defaultConfig) => {
-  defaultConfig.module.rules.push(
+module.exports = ({ config }) => {
+  config.module.rules.push(
     {
       test: /\.(scss|css)$/,
       use: [
@@ -46,7 +44,7 @@ module.exports = (baseConfig, env, defaultConfig) => {
     }
   )
 
-  defaultConfig.resolve.extensions.push('.ts', '.tsx')
+  config.resolve.extensions.push('.ts', '.tsx')
 
-  return defaultConfig
+  return config
 }
