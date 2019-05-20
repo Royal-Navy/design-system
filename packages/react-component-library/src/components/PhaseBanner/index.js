@@ -4,14 +4,12 @@ import PropTypes from 'prop-types'
 import Badge from '../Badge'
 
 const PhaseBanner = ({ phase, html }) => (
-  <PhaseBanner>
-    <div className={`rn-phase-banner rn-phase-banner--phase-${phase}`}>
-      <Badge size="small" state="primary" type="solid">
-        {phase}
-      </Badge>
-      <span dangerouslySetInnerHTML={html} />
-    </div>
-  </PhaseBanner>
+  <div className={`rn-phase-banner rn-phase-banner--phase-${phase}`}>
+    <Badge size="small" state="primary" type="solid">
+      {phase}
+    </Badge>
+    <span dangerouslySetInnerHTML={{ __html: html }} />
+  </div>
 )
 
 PhaseBanner.propTypes = {
