@@ -110,6 +110,10 @@ $btn-states: (
   }
 }
 
+.rn-btn__icon {
+  margin-left: spacing(2)
+}
+
 @each $state, $variation in $btn-states {
   .rn-btn.rn-btn--solid-#{$state} {
     @include solid-button(

@@ -1,7 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Button = ({ children, className, onClick, size, state, variation }) => (
+const Button = ({
+  children,
+  className,
+  icon,
+  onClick,
+  size,
+  state,
+  variation,
+}) => (
   <button
     className={`rn-btn rn-btn--${variation}-${state} ${
       size ? `rn-btn-${size}` : ''
@@ -10,6 +18,7 @@ const Button = ({ children, className, onClick, size, state, variation }) => (
     onClick={onClick}
   >
     {children}
+    {icon && <span className="rn-btn__icon">{icon}</span>}
   </button>
 )
 
@@ -19,6 +28,8 @@ Button.propTypes = {
 
   /** Allows a custom class name to be specified */
   className: PropTypes.string,
+
+  icon: PropTypes.node,
 
   /** Determines the action to perform when the button is clicked */
   onClick: PropTypes.func,
@@ -35,6 +46,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   className: '',
+  icon: null,
   onClick: () => {},
   size: 'regular',
   state: 'neutral',
