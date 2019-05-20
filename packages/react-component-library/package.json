@@ -37,8 +37,7 @@
     "watch": "webpack --config webpack/webpack.dev.js --watch"
   },
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": "^16.8.6"
   },
   "dependencies": {
     "react-autosuggest": "^9.4.3"
@@ -48,25 +47,19 @@
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
-    "@emotion/core": "^10.0.10",
-    "@emotion/styled": "^10.0.11",
     "@royalnavy/css-framework": "0.1.1",
     "@royalnavy/storybook-react-input-state": "0.1.1",
     "@storybook/addon-actions": "^5.0.11",
-    "@storybook/addon-info": "^5.0.11",
     "@storybook/addon-knobs": "^5.0.11",
     "@storybook/addon-links": "^5.0.11",
     "@storybook/addons": "^5.0.11",
     "@storybook/react": "^5.0.11",
-    "@storybook/theming": "^5.0.11",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.5",
-    "babel-plugin-react-docgen": "^3.1.0",
     "clean-webpack-plugin": "^2.0.2",
     "css-loader": "^2.1.1",
-    "emotion-theming": "^10.0.10",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "enzyme-to-json": "^3.3.5",
@@ -86,7 +79,9 @@
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.6.0",
     "prop-types": "^15.7.2",
+    "react": "^16.8.6",
     "react-datepicker": "^2.5.0",
+    "react-dom": "^16.8.6",
     "regenerator-runtime": "^0.13.2",
     "sass": "^1.20.1",
     "sass-loader": "^7.1.0",
