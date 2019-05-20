@@ -11,9 +11,7 @@ const Button = ({
   variation,
 }) => (
   <button
-    className={`rn-btn rn-btn--${variation}-${state} ${
-      size ? `rn-btn-${size}` : ''
-    } ${className}`}
+    className={`rn-btn rn-btn--${variation} rn-btn--${state} rn-btn--${size} ${className}`}
     type="button"
     onClick={onClick}
   >

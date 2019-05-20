@@ -115,14 +115,14 @@ $btn-states: (
 }
 
 @each $state, $variation in $btn-states {
-  .rn-btn.rn-btn--solid-#{$state} {
+  .rn-btn.rn-btn--solid.rn-btn--#{$state} {
     @include solid-button(
       $color: map-get($variation, "color"),
       $text-color: map-get-default($variation, "text-color", color(neutral, white)),
     );
   }
 
-  .rn-btn.rn-btn--outline-#{$state} {
+  .rn-btn.rn-btn--outline.rn-btn--#{$state} {
     @include outline-button(
       $color: map-get($variation, "color"),
       $text-color: map-get-default($variation, "text-color", map-get($variation, "color")),
@@ -130,7 +130,7 @@ $btn-states: (
     );
   }
 
-  .rn-btn.rn-btn--plain-#{$state} {
+  .rn-btn.rn-btn--plain.rn-btn--#{$state} {
     @include plain-button(
       $color: map-get($variation, "color"),
       $text-color: map-get-default($variation, "outline-text-color", map-get($variation, "color")),
@@ -144,8 +144,8 @@ $btn-states: (
   padding: spacing(2) spacing(3);
 }
 
-.rtn-btn.rtn-btn--large {
-  font-size: font-size(s);
+.rn-btn.rn-btn--large {
+  font-size: font-size(m);
   padding: spacing(3) spacing(5);
 }
 
