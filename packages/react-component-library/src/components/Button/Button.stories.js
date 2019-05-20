@@ -190,3 +190,17 @@ stories.add('Icon', () => (
     </Button>
   </div>
 ))
+
+stories.add('Sizes', () => (
+  <div>
+    <Button onClick={action('Clicked primary')} state="primary" size="small">
+      Small
+    </Button>
+    <Button onClick={action('Clicked primary')} state="primary" size="regular">
+      Regular
+    </Button>
+    <Button onClick={action('Clicked primary')} state="primary" size="large">
+      Large
+    </Button>
+  </div>
+))
