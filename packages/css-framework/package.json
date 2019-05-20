@@ -22,31 +22,18 @@
     "src"
   ],
   "scripts": {
-    "start": "webpack-dev-server --history-api-fallback --inline --progress",
-    "build": "node-sass index.scss dist/style.css",
+    "build": "sass --style=compressed index.scss dist/styles.css",
     "lint": "stylelint ./index.scss",
     "lint-staged": "lint-staged",
-    "prepare": "npm run build"
+    "watch": "sass --watch index.scss dist/styles.css"
   },
   "lint-staged": {
     "*.@(scss)": "stylelint"
   },
   "devDependencies": {
-    "bootstrap": "^4.3.1",
-    "css-loader": "^2.1.0",
-    "file-loader": "^3.0.1",
-    "html-webpack-plugin": "^3.2.0",
-    "lint-staged": "^8.1.4",
-    "node-sass": "^4.11.0",
-    "postcss-loader": "^3.0.0",
-    "resolve-url-loader": "^3.0.1",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "stylelint": "^9.10.1",
-    "stylelint-junit-formatter": "^0.2.1",
-    "stylelint-webpack-plugin": "^0.10.5",
-    "webpack": "^4.29.5",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.0"
+    "lint-staged": "^8.1.6",
+    "sass": "^1.20.1",
+    "stylelint": "^10.0.1",
+    "stylelint-junit-formatter": "^0.2.1"
   }
 }

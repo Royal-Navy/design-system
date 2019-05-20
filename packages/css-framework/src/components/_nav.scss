@@ -10,7 +10,7 @@
       text-align: center;
     }
   }
-  
+
   &__item {
     color: color(neutral, 700);
     transition: all 0.3s;
@@ -39,6 +39,6 @@
     &.disabled {
       color: color(neutral, 400);
       pointer-events: none;
-    } 
-  } 
+    }
+  }
 }
