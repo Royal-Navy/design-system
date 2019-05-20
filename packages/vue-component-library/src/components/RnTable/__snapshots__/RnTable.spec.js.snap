@@ -4,8 +4,16 @@ exports[`RnTable.vue snapshot: has same HTML structure 1`] = `
 <table class="rn-table">
   <thead>
     <tr>
-      <th>Fruit Name</th>
-      <th>Quantity</th>
+      <th class="sort-none">
+        Fruit Name
+        <!---->
+        <!---->
+      </th>
+      <th class="sort-none">
+        Quantity
+        <!---->
+        <!---->
+      </th>
     </tr>
   </thead>
   <tbody>
