@@ -9,7 +9,7 @@ const PhaseBanner = ({ phase, html }) => (
       {phase}
     </Badge>
     <span
-      className="rn-phase-banner__text"
+      className="container rn-phase-banner__text"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   </div>

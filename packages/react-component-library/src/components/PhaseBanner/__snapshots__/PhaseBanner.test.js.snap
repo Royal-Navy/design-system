@@ -1,24 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PhaseBanner text should render correctly render the AutoSuggest component 1`] = `
-<PhaseBanner
-  html="This is a new service, <a href=\\"\\">Your feedback</a> will help to improve it"
-  phase="alpha"
+<div
+  className="rn-phase-banner rn-phase-banner--alpha"
 >
-  <div
-    className="rn-phase-banner rn-phase-banner--phase-alpha"
+  <Badge
+    size="small"
+    state="primary"
+    type="solid"
+    variation=""
   >
-    <Badge
-      size="small"
-      state="primary"
-      type="solid"
-      variation=""
-    >
-      alpha
-    </Badge>
-    <span
-      dangerouslySetInnerHTML="This is a new service, <a href=\\"\\">Your feedback</a> will help to improve it"
-    />
-  </div>
-</PhaseBanner>
+    alpha
+  </Badge>
+  <span
+    className="container rn-phase-banner__text"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "This is a new service, <a href=\\"\\">Your feedback</a> will help to improve it",
+      }
+    }
+  />
+</div>
 `;
