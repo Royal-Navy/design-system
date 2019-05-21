@@ -1,0 +1,25 @@
+.rn-phase-banner {
+  display: block;
+  background-color: color(primary, 100);
+  padding: spacing(2) spacing(6);
+  &--alpha {
+    display: block;
+  }
+
+  &--beta {
+    display: block;
+  }
+
+  &__text {
+    display: inline-block;
+    margin-left: spacing(1);
+    font-size: font-size(xs);
+    a {
+      color: color(neutral, black);
+    }
+  }
+
+  .rn-badge--solid {
+    text-transform: capitalize;
+  }
+}
