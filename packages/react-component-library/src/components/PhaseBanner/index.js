@@ -16,8 +16,7 @@ const PhaseBanner = ({ phase, html }) => (
 )
 
 PhaseBanner.propTypes = {
-  /** The phase the banner is in: Can be anything but specific
-   * classes are applied to 'alpha' and 'beta'. */
+  /** The phase the banner is in */
   phase: PropTypes.string,
   /** The html to display with the banner */
   html: PropTypes.string,
