@@ -13,7 +13,10 @@ const Button = ({
   <button
     className={`rn-btn rn-btn--${variant} rn-btn--${color} rn-btn--${size} ${className}`}
     type="button"
-    onClick={onClick}
+    onClick={e => {
+      e.currentTarget.blur()
+      onClick(e)
+    }}
   >
     {children}
     {icon && <span className="rn-btn__icon">{icon}</span>}
