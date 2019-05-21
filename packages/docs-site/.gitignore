@@ -5,3 +5,4 @@ public/
 .firebase/
 .cache
 src/library/**/*
+generated-library/
