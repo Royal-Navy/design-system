@@ -5,13 +5,15 @@ import Badge from '../Badge'
 
 const PhaseBanner = ({ phase, html }) => (
   <div className={`rn-phase-banner rn-phase-banner--${phase}`}>
-    <Badge size="small" state="primary" type="solid">
-      {phase}
-    </Badge>
-    <span
-      className="container rn-phase-banner__text"
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
+    <div className="container">
+      <Badge size="small" state="primary" type="solid">
+        {phase}
+      </Badge>
+      <span
+        className="rn-phase-banner__text"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+    </div>
   </div>
 )
 
