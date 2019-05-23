@@ -14,12 +14,24 @@ describe('Button', () => {
     })
 
     describe('and a user clicks on the button', () => {
+      let event
+
       beforeEach(() => {
-        component.simulate('click')
+        event = {
+          currentTarget: {
+            blur: jest.fn(),
+          },
+        }
+
+        component.simulate('click', event)
       })
 
       it('should call the handler when the button is clicked', () => {
         expect(onClick).toBeCalled()
+      })
+
+      it('should blur the button so it does not remain active', () => {
+        expect(event.currentTarget.blur).toBeCalled()
       })
     })
   })
