@@ -6,7 +6,10 @@ import PhaseBanner from './index'
 const stories = storiesOf('PhaseBanner', module)
 
 stories.add('Default', () => <PhaseBanner />)
-stories.add('Beta', () => <PhaseBanner phase="beta" />)
+stories.add('Custom phase tag', () => <PhaseBanner phase="beta" />)
+stories.add('Custom link', () => <PhaseBanner link="/my-custom-link" />)
 stories.add('Custom text', () => (
-  <PhaseBanner html="Custom html can go here. <strong>This part is in bold!</strong>" />
+  <PhaseBanner>
+    Custom html can go here. <strong>This part is in bold!</strong>
+  </PhaseBanner>
 ))
