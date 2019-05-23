@@ -17,12 +17,15 @@ exports[`PhaseBanner text should render correctly render the AutoSuggest compone
     </Badge>
     <span
       className="rn-phase-banner__text"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "This is a new service, <a href=\\"\\">Your feedback</a> will help to improve it",
-        }
-      }
-    />
+    >
+      This is a new service, 
+      <a
+        href="/feedback"
+      >
+        Your feedback
+      </a>
+       will help to improve it
+    </span>
   </div>
 </div>
 `;
