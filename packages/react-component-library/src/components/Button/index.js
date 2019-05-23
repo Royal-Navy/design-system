@@ -11,7 +11,9 @@ const Button = ({
   variant,
 }) => (
   <button
-    className={`rn-btn rn-btn--${variant} rn-btn--${color} rn-btn--${size} ${className}`}
+    className={`rn-btn rn-btn--${variant} ${
+      color ? `rn-btn--${color}` : ''
+    } rn-btn--${size} ${className}`}
     type="button"
     onClick={e => {
       e.currentTarget.blur()
