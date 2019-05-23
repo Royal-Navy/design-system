@@ -11,6 +11,7 @@ $__states: null;
 
 // Functions
 @import "src/abstracts/functions/map-deep-get";
+@import "src/abstracts/functions/map-get-default";
 @import "src/abstracts/functions/non-destructive-map-merge";
 @import "src/abstracts/functions/color";
 @import "src/abstracts/functions/spacing";
