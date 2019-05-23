@@ -1,33 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import uuid from 'uuid'
 
-const NavItem = navItem => (
-  <a className="rn-nav__item" href={navItem.url}>
-    {navItem.label}
-  </a>
-)
+import NavItem from './NavItem'
 
-const Nav = ({ navItems, orientation }) => (
-  <nav className={`rn-nav ${orientation}`}>{navItems.map(NavItem)}</nav>
+const Nav = ({ className, navItems, orientation, size }) => (
+  <nav className={`rn-nav rn-nav--${orientation} rn-nav--${size} ${className}`}>
+    {navItems.map(item => (
+      <NavItem key={uuid()} {...item} />
+    ))}
+  </nav>
 )
 
 Nav.propTypes = {
-  /** The links to use within the nav, specified as an object with two items:
-   * 'url': The link the nav item should go to,
-   * 'label' : The text the nav item should display
-   */
+  className: PropTypes.string,
   navItems: PropTypes.arrayOf(
     PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
+      component: PropTypes.func,
+      label: PropTypes.string,
     })
   ).isRequired,
-  /** The type of navigation to use, can be one of 'horizontal' or 'vertical */
   orientation: PropTypes.string,
+  size: PropTypes.string,
 }
 
 Nav.defaultProps = {
+  className: '',
   orientation: 'vertical',
+  size: 'medium',
 }
 
 export default Nav
