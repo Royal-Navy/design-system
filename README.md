@@ -41,3 +41,10 @@ The top level project is configured to use Git commit hooks to lint all files wh
 ## Prettier
 
 The top level package file is configured with a set of Prettier options to insist on consistent code formatting throughout all packages.
+
+
+<hr/>
+<p>
+With special thanks to <br/>
+<a href="https://www.browserstack.com/"><img src="images/Browserstack-logo.svg" width="300" height="65" alt="Browserstack"></a>
+</p>
