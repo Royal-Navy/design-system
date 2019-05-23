@@ -3,31 +3,37 @@ import PropTypes from 'prop-types'
 
 import Badge from '../Badge'
 
-const PhaseBanner = ({ phase, html }) => (
+const PhaseBanner = ({ phase, children, link }) => (
   <div className={`rn-phase-banner rn-phase-banner--${phase}`}>
     <div className="container">
       <Badge size="small" state="primary" type="solid">
         {phase}
       </Badge>
-      <span
-        className="rn-phase-banner__text"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <span className="rn-phase-banner__text">
+        {children || (
+          <>
+            This is a new service, <a href={link}>Your feedback</a> will help to
+            improve it
+          </>
+        )}
+      </span>
     </div>
   </div>
 )
 
 PhaseBanner.propTypes = {
   /** The phase the banner is in */
-  phase: PropTypes.string,
+  phase: PropTypes.node,
   /** The html to display with the banner */
-  html: PropTypes.string,
+  children: PropTypes.string,
+  /** The link to use for the default html */
+  link: PropTypes.string,
 }
 
 PhaseBanner.defaultProps = {
   phase: 'alpha',
-  html:
-    'This is a new service, <a href="">Your feedback</a> will help to improve it',
+  children: null,
+  link: '/feedback',
 }
 
 export default PhaseBanner
