@@ -48,6 +48,7 @@ $badge-states: (
   border-radius: $badge-border-radius;
   font-weight: 700;
   display: inline-block;
+  vertical-align: middle;
 
   @each $state, $variation in $badge-states {
     &.#{$state} {
