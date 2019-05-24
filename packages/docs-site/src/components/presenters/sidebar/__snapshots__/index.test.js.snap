@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar snapshot: has same HTML structure 1`] = `
+<nav>
+  <ul>
+    <li>
+      <a
+        href="/"
+      >
+        <span>
+          Home
+        </span>
+      </a>
+    </li>
+  </ul>
+  <pre>
+    [
+  {
+    "node": {
+      "id": "bc54746a-2d34-534b-bdd8-86c1d13d95bb",
+      "fields": {
+        "slug": "/"
+      },
+      "frontmatter": {
+        "title": "Home",
+        "status": "",
+        "index": 0
+      }
+    },
+    "children": []
+  }
+]
+  </pre>
+</nav>
+`;
