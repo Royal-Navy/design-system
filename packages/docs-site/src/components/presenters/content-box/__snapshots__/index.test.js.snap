@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Content Box renders correctly 1`] = `
+exports[`ContentBox snapshot: has same HTML structure 1`] = `
 <section
   className="content-box "
 >

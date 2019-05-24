@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Nelson Design System`,
-    description: `The Nelson Design Dystem docs site.`,
+    description: `The Nelson Design Dystem documentation site.`,
     author: `NELSON Standards`,
   },
   plugins: [
@@ -11,7 +11,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        implementation: require("sass"),
+        implementation: require('sass'),
       },
     },
     {

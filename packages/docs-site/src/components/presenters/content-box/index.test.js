@@ -5,8 +5,8 @@ import ContentBox from './index'
 
 /* eslint-disable react/no-children-prop */
 
-describe('Content Box', () => {
-  it('renders correctly', () => {
+describe('ContentBox', () => {
+  it('snapshot: has same HTML structure', () => {
     const tree = renderer
       .create(<ContentBox children={['Content goes here']} />)
       .toJSON()
