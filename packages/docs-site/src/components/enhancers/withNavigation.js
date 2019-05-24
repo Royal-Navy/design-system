@@ -2,6 +2,8 @@ import { StaticQuery, graphql } from 'gatsby'
 import React from 'react'
 import sortBy from 'lodash/sortBy'
 
+const tree = []
+
 /**
  * Recursively add nodes to tree structure based on slug match.
  *
@@ -14,6 +16,11 @@ function addToTree(node, treeNodes) {
     const { slug: treeSlug } = treeNode.node.fields
 
     if (slug.includes(`${treeSlug}/`)) {
+      const index = tree.findIndex(item => item.node.fields.slug === slug)
+
+      // eslint-disable-next-line no-param-reassign
+      treeNodes = treeNodes.splice(0, index)
+
       addToTree(node, treeNode.children)
     }
   })
@@ -50,8 +57,6 @@ function stripTrailingSlash(nodes) {
  * @return {array}
  */
 function nestByURLStructure(nodes) {
-  const tree = []
-
   const sanitizedNodes = stripTrailingSlash(
     sortBy(nodes, 'node.frontmatter.index')
   )
@@ -60,12 +65,7 @@ function nestByURLStructure(nodes) {
     addToTree(node, tree)
   })
 
-  const topLevelCount = nodes.filter(node => {
-    const { slug } = node.node.fields
-    return (slug.match(/\//g) || []).length === 1
-  }).length
-
-  return tree.slice(0, topLevelCount)
+  return tree
 }
 
 const withNavigation = BaseComponent => props => (
