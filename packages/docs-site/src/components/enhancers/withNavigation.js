@@ -61,7 +61,7 @@ function nestByURLStructure(nodes) {
   })
 
   const topLevelCount = nodes.filter(node => {
-    const { slug } = node.node.fields.slug
+    const { slug } = node.node.fields
     return (slug.match(/\//g) || []).length === 1
   }).length
 
