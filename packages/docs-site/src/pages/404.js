@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 
 import './css/404.scss'
 
-import Layout from '../components/layout'
+import Layout from '../components/presenters/layout'
 
 export default function Template() {
   return (

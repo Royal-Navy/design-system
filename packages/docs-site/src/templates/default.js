@@ -3,12 +3,16 @@ import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
-import Layout from '../components/layout'
-import Sidebar from '../components/sidebar'
-import PostArticle from '../components/post-article'
+import Layout from '../components/presenters/layout'
+import Sidebar from '../components/presenters/sidebar'
+import PostArticle from '../components/presenters/post-article'
+
+import withNavigation from '../components/enhancers/withNavigation'
+
+const NavigationSidebar = withNavigation(Sidebar)
 
 export const pageQuery = graphql`
-  query NoSideBarByPath($slug: String!) {
+  query PageBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       htmlAst
       frontmatter {
@@ -25,7 +29,7 @@ export default function Template({ data }) {
     <Layout className="">
       <Helmet title={`${post.frontmatter.title} | NELSON Standards`} />
       <PostArticle postData={post} />
-      <Sidebar />
+      <NavigationSidebar />
     </Layout>
   )
 }

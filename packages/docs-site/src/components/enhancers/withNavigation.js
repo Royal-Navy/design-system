@@ -2,8 +2,6 @@ import { StaticQuery, graphql } from 'gatsby'
 import React from 'react'
 import sortBy from 'lodash/sortBy'
 
-import './sidebar.scss'
-
 /**
  * Take a flat array of pages and recursively transform
  * into a nested data structure based on URL structure.
@@ -47,42 +45,10 @@ function nestByURLStructure(pages) {
   return nest(topLevelSorted)
 }
 
-/**
- * Recursively render a nested list using JSX.
- *
- * @param {array} pages
- * @returns {jsx}
- */
-function renderList(pages) {
-  return (
-    <ul>
-      {pages.map(page => {
-        const { slug } = page.node.fields
-        const { title } = page.node.frontmatter
-
-        let subMenu
-
-        if (page.children && page.children.length > 0) {
-          subMenu = renderList(page.children)
-        }
-
-        return (
-          <li key={slug}>
-            <a href={slug}>
-              <span>{title}</span>
-            </a>
-            {subMenu}
-          </li>
-        )
-      })}
-    </ul>
-  )
-}
-
-const Sidebar = () => (
+const withNavigation = BaseComponent => props => (
   <StaticQuery
     query={graphql`
-      query Sidebar {
+      query Navigation {
         allMarkdownRemark {
           edges {
             node {
@@ -107,22 +73,9 @@ const Sidebar = () => (
 
       const nested = nestByURLStructure(pages)
 
-      return (
-        <nav>
-          {renderList(nested)}
-          <pre>{JSON.stringify(nested, null, 2)}</pre>
-        </nav>
-      )
+      return <BaseComponent {...props} navigation={nested} />
     }}
   />
 )
 
-Sidebar.propTypes = {
-  //
-}
-
-Sidebar.defaultProps = {
-  //
-}
-
-export default Sidebar
+export default withNavigation
