@@ -13,10 +13,7 @@
     "babel-jest": "^24.1.0",
     "babel-plugin-styled-components": "^1.10.0",
     "babel-preset-gatsby": "^0.1.7",
-<<<<<<< HEAD
     "chalk": "^2.4.2",
-=======
->>>>>>> Sort pages by frontmatter `index`
     "cross-env": "5.0.5",
     "eslint": "^5.13.0",
     "eslint-config-airbnb": "^17.1.0",
