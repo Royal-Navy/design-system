@@ -28,7 +28,7 @@ function addToTree(node, treeNodes) {
  * Strip trailing slash from all slugs, excluding the root node.
  *
  * @param {array} nodes
- * @returns {object} mutatedNode
+ * @return {object}
  */
 function stripTrailingSlash(nodes) {
   return nodes.map(node => {
@@ -47,7 +47,7 @@ function stripTrailingSlash(nodes) {
  * into a nested data structure based on URL structure.
  *
  * @param {array} nodes
- * @returns {array} tree
+ * @return {array}
  */
 function nestByURLStructure(nodes) {
   const tree = []
