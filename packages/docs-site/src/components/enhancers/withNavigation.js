@@ -2,7 +2,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import React from 'react'
 import sortBy from 'lodash/sortBy'
 
-const tree = []
+let tree = []
 
 /**
  * Recursively add nodes to tree structure based on slug match.
@@ -57,6 +57,8 @@ function stripTrailingSlash(nodes) {
  * @return {array}
  */
 function nestByURLStructure(nodes) {
+  tree = []
+
   const sanitizedNodes = stripTrailingSlash(
     sortBy(nodes, 'node.frontmatter.index')
   )
