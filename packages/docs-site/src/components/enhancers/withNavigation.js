@@ -13,9 +13,9 @@ let tree = []
 function addToTree(node, treeNodes) {
   treeNodes.forEach(treeNode => {
     const { slug } = node.node.fields
-    const { slug: treeSlug } = treeNode.node.fields
+    const { slug: parentSlug } = treeNode.node.fields
 
-    if (slug.includes(`${treeSlug}/`)) {
+    if (slug.includes(`${parentSlug}/`)) {
       const index = tree.findIndex(item => item.node.fields.slug === slug)
 
       // eslint-disable-next-line no-param-reassign
@@ -40,8 +40,8 @@ function addToTree(node, treeNodes) {
 function stripTrailingSlash(nodes) {
   return nodes.map(node => {
     const { slug } = node.node.fields
-
     const mutatedNode = node
+
     mutatedNode.node.fields.slug =
       slug.endsWith('/') && slug !== '/' ? slug.slice(0, -1) : slug
 
