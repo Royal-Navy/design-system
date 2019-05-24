@@ -60,7 +60,12 @@ function nestByURLStructure(nodes) {
     addToTree(node, tree)
   })
 
-  return tree
+  const topLevelCount = nodes.filter(node => {
+    const { slug } = node.node.fields.slug
+    return (slug.match(/\//g) || []).length === 1
+  }).length
+
+  return tree.slice(0, topLevelCount)
 }
 
 const withNavigation = BaseComponent => props => (
