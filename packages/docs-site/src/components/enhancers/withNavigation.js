@@ -42,8 +42,9 @@ function stripTrailingSlash(nodes) {
     const { slug } = node.node.fields
     const mutatedNode = node
 
-    mutatedNode.node.fields.slug =
-      slug.endsWith('/') && slug !== '/' ? slug.slice(0, -1) : slug
+    if (slug.endsWith('/') && slug !== '/') {
+      mutatedNode.node.fields.slug = slug.slice(0, -1)
+    }
 
     return mutatedNode
   })
