@@ -2,40 +2,11 @@ import { StaticQuery, graphql } from 'gatsby'
 import React from 'react'
 import sortBy from 'lodash/sortBy'
 
-let tree = []
-
-/**
- * Recursively add nodes to tree structure based on slug match.
- *
- * @param {object} node
- * @param {array} treeNodes
- */
-function addToTree(node, treeNodes) {
-  treeNodes.forEach(treeNode => {
-    const { slug } = node.node.fields
-    const { slug: parentSlug } = treeNode.node.fields
-
-    if (slug.includes(`${parentSlug}/`)) {
-      const index = tree.findIndex(item => item.node.fields.slug === slug)
-
-      // eslint-disable-next-line no-param-reassign
-      treeNodes = treeNodes.splice(0, index)
-
-      addToTree(node, treeNode.children)
-    }
-  })
-
-  treeNodes.push({
-    ...node,
-    children: [],
-  })
-}
-
 /**
  * Strip trailing slash from all slugs, excluding the root node.
  *
  * @param {array} nodes
- * @return {object}
+ * @returns {object}
  */
 function stripTrailingSlash(nodes) {
   return nodes.map(node => {
@@ -55,20 +26,38 @@ function stripTrailingSlash(nodes) {
  * into a nested data structure based on URL structure.
  *
  * @param {array} nodes
- * @return {array}
+ * @returns {array}
  */
 function nestByURLStructure(nodes) {
-  tree = []
+  const tree = []
 
-  const sanitizedNodes = stripTrailingSlash(
-    sortBy(nodes, 'node.frontmatter.index')
-  )
+  function addToTree(node, parents) {
+    const { slug } = node.node.fields
 
-  sanitizedNodes.forEach(node => {
+    parents.forEach(parentNode => {
+      const { slug: parentSlug } = parentNode.node.fields
+
+      if (slug.includes(`${parentSlug}/`)) {
+        const index = parents.findIndex(item => item.node.fields.slug === slug)
+
+        // eslint-disable-next-line no-param-reassign
+        parents = parents.splice(0, index)
+
+        addToTree(node, parentNode.children)
+      }
+    })
+
+    parents.push({
+      ...node,
+      children: [],
+    })
+  }
+
+  stripTrailingSlash(nodes).forEach(node => {
     addToTree(node, tree)
   })
 
-  return tree
+  return sortBy(tree, 'node.frontmatter.index')
 }
 
 const withNavigation = BaseComponent => props => (
