@@ -1,0 +1,13 @@
+{
+  "hosting": [
+    {
+      "target": "react-storybook",
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    }
+  ]
+}

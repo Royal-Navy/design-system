@@ -56,12 +56,11 @@ a record.
 
 | Name      | Type           | Required | Default | Description                                                                                   
 | --------- | -------------- | -------- | ------- | -----------
-| children  | ReactNode      | True     |         | The content to place in the button, typically text   
-| className | string         | False    |         | Custom css class to add to the button element
-| color     | string         | False    |         | (danger) An alternative color style to use, danger is the only alternative currently supported      
-| icon      | ReactNode      | False    |         | Icon to display to the right of text in the button. Accepts any Node but ideally would be an image or svg tag                       
-| onClick   | (event: React.SyntheticEvent):void | True     |         | Function to call when a user clicks on a button
-| size      | string         | False    | regular | (small/regular/large/xlarge) The size for the button
-| variant   | string         | False    | teriary | (primary/secondary/tertiary) The style of button
-                                                                                 
+| children  | Node or String | True     |         | The content to place in the button, typically text   
+| className | String         | False    |         | Custom css class to add to the button element
+| icon      | Node           | False    |         | Icon to display to the right of text in the button. Accepts any Node but ideally would be an image or svg tag                       
+| onClick   | Func: ()=>void | True     |         | Function to call when a user clicks on a button
+| size      | String         | False    | regular | (small/regular/large/xlarge) The size for the button
+| variant   | String         | False    | teriary | (primary/secondary/tertiary) The style of button
+| color     | String         | False    |         | (danger) An alternative color style to use, danger is the only alternative currently supported                                                                                       
 
