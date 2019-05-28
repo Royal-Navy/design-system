@@ -9,6 +9,7 @@
     "packages/html-component-library",
     "packages/html-storybook",
     "packages/react-component-library",
+    "packages/react-component-library-ts",
     "packages/storybook-react-input-state",
     "packages/vue-component-library"
   ],
