@@ -3,46 +3,61 @@ import React from 'react'
 import sortBy from 'lodash/sortBy'
 
 /**
+ * Strip trailing slash from all slugs, excluding the root node.
+ *
+ * @param {array} nodes
+ * @returns {object}
+ */
+function stripTrailingSlash(nodes) {
+  return nodes.map(node => {
+    const { slug } = node.node.fields
+    const mutatedNode = node
+
+    if (slug.endsWith('/') && slug !== '/') {
+      mutatedNode.node.fields.slug = slug.slice(0, -1)
+    }
+
+    return mutatedNode
+  })
+}
+
+/**
  * Take a flat array of pages and recursively transform
  * into a nested data structure based on URL structure.
  *
- * TODO: Implement recursion for multi-level heirarchy.
- *
- * @param {array} pages
+ * @param {array} nodes
  * @returns {array}
  */
-function nestByURLStructure(pages) {
-  // Nest children that match parent slug
-  function nest(parents) {
-    return parents.map(parent => {
-      const children = pages.filter(page => {
-        const { slug } = page.node.fields
-        const { slug: parentSlug } = parent.node.fields
+function nestByURLStructure(nodes) {
+  const tree = []
 
-        return (
-          slug.includes(parentSlug) && slug !== parentSlug && parentSlug !== '/'
-        )
-      })
+  function addToTree(node, parents) {
+    const { slug } = node.node.fields
 
-      return {
-        ...parent,
-        children,
+    parents.forEach(parentNode => {
+      const { slug: parentSlug } = parentNode.node.fields
+
+      if (slug.includes(`${parentSlug}/`)) {
+        const index = parents.findIndex(item => item.node.fields.slug === slug)
+
+        // eslint-disable-next-line no-param-reassign
+        parents = parents.splice(0, index)
+
+        addToTree(node, parentNode.children)
       }
+    })
+
+    parents.push({
+      ...node,
+      children: [],
     })
   }
 
-  // Start with all of the top level pages
-  const topLevel = pages.filter(page => {
-    const { slug } = page.node.fields
-    const matches = (slug.match(/\//g) || []).length
-
-    return [1, 2].includes(matches)
+  stripTrailingSlash(nodes).forEach(node => {
+    addToTree(node, tree)
   })
 
-  // Sort pages based on `index` frontmatter
-  const topLevelSorted = sortBy(topLevel, 'node.frontmatter.index')
-
-  return nest(topLevelSorted)
+  return sortBy(tree, 'node.frontmatter.index')
 }
 
 const withNavigation = BaseComponent => props => (
