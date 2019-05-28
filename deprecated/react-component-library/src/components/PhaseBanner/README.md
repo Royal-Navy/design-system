@@ -25,7 +25,7 @@ The banner should be used directly underneath the main site header, before the c
 
 | Name      | Type           | Required | Default | Description                                                                                   
 | --------- | -------------- | -------- | ------- | -----------
-| phase     | String         | False    | `alpha` | (alpha/beta) Text to display in the phase banner badge
+| phase     | String         | False    | `alpha` | Text to display in the phase banner badge
 | link      | String         | False    | `/feedback`, | The link to use with the default message
 | children  | Node           | False    | `This is a new service, <a href="">Your feedback</a> will help to improve it`, | HTML to display in the phase banner body
 
