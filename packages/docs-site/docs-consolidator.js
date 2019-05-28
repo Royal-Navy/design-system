@@ -2,7 +2,7 @@
 
 /**
  * Consolidate component docs
- * This script finds all README.md contained within an 
+ * This script finds all README.md contained within an
  * `src/components` folder within the specified packages
  * and consolidates the contents into one file within the gatsby library.
  **/
@@ -25,20 +25,30 @@ const libraryDocsFolder = resolve(__dirname, './src/library')
 const packageDocsFolder = 'src/generated-library/pages/components/'
 
 // Ensure that the package docs folder is a freshly generated copy
-rimraf.sync(packageDocsFolder)
-fs.mkdirSync(packageDocsFolder, { recursive: true })
+rimraf.sync(packageDocsFolder) // deletes old folder
+fs.mkdirSync(packageDocsFolder, { recursive: true }) // Creates new tree structure
 
-// Convert a string to kebab-case
-const kebab = text => text
+/**
+ * kebab
+ * Takes a string, converts it to kebab-case and returns it.
+ * @param {String} text: The string to convert
+ */
+const kebab = text =>
+  text
     .toString()
-    .replace(/\s+/g, '-')           // Replace spaces with -
-    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-    .replace(/^-+/, '')             // Trim - from start of text
-    .replace(/-+$/, '');            // Trim - from end of text
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, '') // Trim - from end of text
 
-// Takes a string of exclusions and returns a normalised array.
-const exclusions = match => match[2]
+/**
+ * exclusions
+ * Takes a string of exclusions and returns a normalised array.
+ * @param {String} match: A comma-seperated list of packages to exclude from processing.
+ */
+const exclusions = match =>
+  match[2]
     .toLowerCase()
     .replace(' ', '')
     .split(',')
@@ -51,16 +61,22 @@ const exclusions = match => match[2]
  */
 const returnFinalData = (data, componentData) => {
   // Look for the 'framework-tabs' component
-  const regex = new RegExp(/(<\s*framework-tabs[ exclude="]*([a-zA-Z, ]*)["]*[?^>]*>)(<\s*\/\s*framework-tabs>)/m)
+  const regex = new RegExp(
+    /(<\s*framework-tabs[ exclude="]*([a-zA-Z, ]*)["]*[?^>]*>)(<\s*\/\s*framework-tabs>)/m
+  )
   const match = matter(data).content.match(regex)
-  if(!match) return data
+  if (!match) return data
   // If the framework tabs component lists any exclusions, put them in an array for later
-  const docs = componentData.map(cd => {
-    if (exclusions(match).includes(cd.package.toLowerCase())) return
-    return `\n<implementation type="${cd.package}">\n${cd.content}\n</implementation>\n`
-  }).join('')
+  const docs = componentData
+    .map(cd => {
+      if (exclusions(match).includes(cd.package.toLowerCase())) return
+      return `\n<implementation type="${cd.package}">\n${
+        cd.content
+      }\n</implementation>\n`
+    })
+    .join('')
   return data.replace(regex, match[1] + docs + match[3])
-} 
+}
 
 /**
  * injectInFile
@@ -71,15 +87,20 @@ const returnFinalData = (data, componentData) => {
 const injectInFile = (originalFilePath, componentData) => {
   fs.readFile(originalFilePath, 'utf8', (err, data) => {
     if (err) throw err
-    fs.writeFileSync(originalFilePath, returnFinalData(data, componentData), 'utf8')
-  })  
+    fs.writeFileSync(
+      originalFilePath,
+      returnFinalData(data, componentData),
+      'utf8'
+    )
+  })
 }
+
 // All components from the componentLoop should be collected in this array
 const accumulatedData = []
 
 /**
  * componentLoop
- * Loops through all components within the specified package and 
+ * Loops through all components within the specified package and
  * adds the contents of their README.md files to an array
  * @param {String} componentsFolder : The path to the components folder of the package
  * @param {String} package : The name of the package
@@ -93,52 +114,84 @@ const componentLoop = (componentsFolder, package) => {
     if (!fs.lstatSync(componentFolder).isDirectory()) return
     return fs.readdirSync(componentFolder).forEach(file => {
       // Look for readme files
-      if (file.match(/README.md/gi)) { 
+      if (file.match(/README.md/gi)) {
         // Read the file contents
-        const fileContent = matter(fs.readFileSync(resolve(componentFolder, file), 'utf8'))
+        const fileContent = matter(
+          fs.readFileSync(resolve(componentFolder, file), 'utf8')
+        )
         console.group(`⚙️  Generating ${chalk.yellow(component)} docs...`)
         accumulatedData.push({
           package,
           component: kebab(fileContent.data.title),
-          content: fileContent.content
+          content: fileContent.content,
         })
         console.log(chalk.green(` ✓ Done`))
-        console.groupEnd()          
+        console.groupEnd()
       }
     })
   })
 }
 
-// Loops through all packages to find components and returns the final array ready for processing
+/**
+ * packageLoop
+ * Loops through all packages to find components and returns the final array ready for processing
+ */
 const packageLoop = () => {
   packages.forEach(pkg => {
-    console.group(`🔍 Scanning ${chalk.blue(pkg.name + ' library')} for components`)
-    const componentsFolder = resolve(__dirname, '../' + pkg.source + pkg.componentPath )
+    console.group(
+      `🔍 Scanning ${chalk.blue(pkg.name + ' library')} for components`
+    )
+    const componentsFolder = resolve(
+      __dirname,
+      '../' + pkg.source + pkg.componentPath
+    )
     componentLoop(componentsFolder, pkg.name)
     console.groupEnd()
   })
   return accumulatedData
 }
 
+// Store the results of the packageLoop in this array
 const allComponents = packageLoop()
 
-// Finds the current component within the matchDocs function
-const currentComponent = (thisFile) => allComponents.filter(component => (component.component.toLowerCase() === matter(fs.readFileSync(thisFile)).data.title.toLowerCase()) ? component : false
-)
+/**
+ * readComponent
+ * Looks at a path and returns the title name from that files frontmatter tags
+ * @param {String} thisFile: The path to the component it should be matching
+ */
+const readComponent = thisFile =>
+  allComponents.filter(component =>
+    component.component.toLowerCase() ===
+    matter(fs.readFileSync(thisFile)).data.title.toLowerCase()
+      ? component
+      : false
+  )
 
-// Builds an output to display in the console when a doc has been processed
-const logOutputBuilder = (prefix, doc) => {
-  const logOutput = (prefix) ? `${prefix}/${doc}` : doc
-  return console.log(chalk.green(` ✓ Proccessing of ${chalk.blue(logOutput)}, complete.`))
+/**
+ * logOutputBuilder
+ * Builds an output to display in the console when a doc has been processed
+ * @param {String} prefix: The subfolder that the current component readme is in (defaults to false if no prefix is provided)
+ * @param {String} doc: The filename of the current component readme
+ */
+const logOutputBuilder = (doc, prefix) => {
+  const logOutput = prefix ? `${prefix}/${doc}` : doc
+  return console.log(
+    chalk.green(` ✓ Proccessing of ${chalk.blue(logOutput)}, complete.`)
+  )
 }
-
-// Proccesses all files found in the folderloop and if they are a markdown file they proccess them, 
-// if they are a directory then run folderloop again inside that directory.
+/**
+ * matchDocs
+ * Proccesses all files found in the folderloop and if they are a markdown file they proccess them,
+ * if they are a directory then run folderloop again inside that directory.
+ * @param {String} docsPath: The full path to the docs folder
+ * @param {String} doc: The filename of the current readme file
+ * @param {String} prefix The subfolder that the current component readme is in (defaults to false if no prefix is provided)
+ */
 const matchDocs = (docsPath, doc, prefix) => {
   const thisFile = join(docsPath, doc)
   if (doc.match(/.md/gi)) {
     injectInFile(thisFile, currentComponent(thisFile))
-    logOutputBuilder(prefix, doc)
+    logOutputBuilder(doc, prefix)
   } else {
     if (fs.lstatSync(thisFile).isDirectory()) {
       return folderLoop(thisFile, doc)
@@ -146,8 +199,16 @@ const matchDocs = (docsPath, doc, prefix) => {
   }
 }
 
-// Loops through folders to find docs
-const folderLoop = (docsPath, prefix) => fs.readdirSync(docsPath).forEach(doc => matchDocs(docsPath, doc, prefix))
+
+/**
+ * folderLoop
+ * Loops through the component docs folder and reads the files and 
+ * then passes the results to matchDocs
+ * @param {*} docsPath The full path to the docs folder
+ * @param {*} prefix The subfolder that the current component readme is in (defaults to false if no prefix is provided)
+ */
+const folderLoop = (docsPath, prefix) =>
+  fs.readdirSync(docsPath).forEach(doc => matchDocs(docsPath, doc, prefix))
 
 // Copy all docs from 'documentation' package to gatsby's 'library' folder (delete old version if exists) and processes finalised files
 rimraf.sync(libraryDocsFolder)
@@ -158,4 +219,6 @@ fs.copy(originalDocsFolder, libraryDocsFolder, err => {
 })
 
 // Merge all pages from the local-library folder into the main library, anything placed in here will overwrite anything above
-execSync(`cp -R  ${resolve(__dirname, './src/local-library/')} ${libraryDocsFolder}/`)
+execSync(
+  `cp -R  ${resolve(__dirname, './src/local-library/')} ${libraryDocsFolder}/`
+)
