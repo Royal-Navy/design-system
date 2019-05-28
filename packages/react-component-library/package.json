@@ -88,16 +88,12 @@
     "webpack-cli": "^3.3.2",
     "webpack-merge": "^4.2.1"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 10",
+    "not op_mini all",
+    "ie 11",
+    "chrome >= 38"
+  ]
 }
