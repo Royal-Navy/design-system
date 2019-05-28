@@ -122,21 +122,29 @@ const packageLoop = () => {
 
 const allComponents = packageLoop()
 
+const folderLoop = (docsPath, prefix) => {
+  return fs.readdirSync(docsPath).forEach(doc => {
+    const thisFile = join(docsPath, doc)
+    if (doc.match(/.md/gi)) {
+      const currentComponent = allComponents.filter(component => {
+        if (component.component.toLowerCase() === matter(fs.readFileSync(resolve(docsPath, doc))).data.title.toLowerCase()) return component
+      })
+      injectInFile(thisFile, currentComponent)
+      const logOutput = (prefix) ? `${prefix}/${doc}` : doc
+      console.log(chalk.green(` ✓ Proccessing of ${logOutput}, complete.`))
+    } else {
+      if (fs.lstatSync(thisFile).isDirectory()) {
+        folderLoop(thisFile, doc)
+      }
+    }
+  })
+}
 // Copy all docs from 'documentation' package to gatsby's 'library' folder (delete old version if exists) and processes finalised files
 rimraf.sync(libraryDocsFolder)
 fs.copy(originalDocsFolder, libraryDocsFolder, err => {
   if (err) throw err
   const docsPath = join(libraryDocsFolder, '/pages/components')
-  fs.readdirSync(docsPath).forEach(doc => {
-    if (doc.match(/.md/gi)) {
-      const docName = doc.replace('.md', '')
-      const currentComponent = allComponents.filter(component => {
-        if (component.component.toLowerCase() === matter(fs.readFileSync(resolve(docsPath, doc))).data.title.toLowerCase()) return component
-      })
-      injectInFile(join(docsPath, doc), currentComponent)
-      console.log(chalk.green(` ✓ Proccessing of ${doc}, complete.`))
-    }
-  })
+  folderLoop(docsPath)
 })
 
 // Merge all pages from the local-library folder into the main library, anything placed in here will overwrite anything above
