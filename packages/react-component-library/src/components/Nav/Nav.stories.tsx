@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react'
 import { withKnobs } from '@storybook/addon-knobs'
 
 import { TriangleDown, TriangleUp } from '../../icons'
+import CustomLink from '../CustomLink'
 import Button from '../Button'
 import Nav from './index'
 
@@ -62,18 +63,6 @@ stories.add('Sizes', () => (
     <Nav navItems={navItems} orientation="vertical" size="xlarge" />
   </div>
 ))
-
-interface CustomLink {
-  className?: string
-  to: string
-  label: string
-}
-
-const CustomLink: React.FC<CustomLink> = ({ className, to, label }) => (
-  <div className={className}>
-    <a href={to}>{label}</a>
-  </div>
-)
 
 const customNavItems = [
   {
