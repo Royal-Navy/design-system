@@ -122,23 +122,29 @@ const packageLoop = () => {
 
 const allComponents = packageLoop()
 
+const currentComponent = (thisFile) => allComponents.filter(component => {
+  return (component.component.toLowerCase() === matter(fs.readFileSync(thisFile)).data.title.toLowerCase()) ? component : false
+})
+
+const matchDocs = (docsPath, doc, prefix) => {
+  const thisFile = join(docsPath, doc)
+  if (doc.match(/.md/gi)) {
+    injectInFile(thisFile, currentComponent(thisFile))
+    const logOutput = (prefix) ? `${prefix}/${doc}` : doc
+    return console.log(chalk.green(` ✓ Proccessing of ${logOutput}, complete.`))
+  } else {
+    if (fs.lstatSync(thisFile).isDirectory()) {
+      return folderLoop(thisFile, doc)
+    }
+  }
+}
+
 const folderLoop = (docsPath, prefix) => {
   return fs.readdirSync(docsPath).forEach(doc => {
-    const thisFile = join(docsPath, doc)
-    if (doc.match(/.md/gi)) {
-      const currentComponent = allComponents.filter(component => {
-        if (component.component.toLowerCase() === matter(fs.readFileSync(resolve(docsPath, doc))).data.title.toLowerCase()) return component
-      })
-      injectInFile(thisFile, currentComponent)
-      const logOutput = (prefix) ? `${prefix}/${doc}` : doc
-      console.log(chalk.green(` ✓ Proccessing of ${logOutput}, complete.`))
-    } else {
-      if (fs.lstatSync(thisFile).isDirectory()) {
-        folderLoop(thisFile, doc)
-      }
-    }
+    matchDocs(docsPath, doc, prefix)
   })
 }
+
 // Copy all docs from 'documentation' package to gatsby's 'library' folder (delete old version if exists) and processes finalised files
 rimraf.sync(libraryDocsFolder)
 fs.copy(originalDocsFolder, libraryDocsFolder, err => {
