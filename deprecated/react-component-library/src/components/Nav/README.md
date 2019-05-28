@@ -61,10 +61,10 @@ const navItems = [
 
 | Name        | Type           | Required | Default  | Description
 | ---------   | -------------- | -------- | -------  | -----------
-| className   | string         | False    |          | Optional extra css class to attach to the wrapper element
-| navItems    | Array<any>     | True     |          | An array of navigation items using the format described below |
-| orientation | string (horizontal/vertical)| False    | vertical | The direction to display the items.  |
-| size        | string (small/regular/large/xlarge) | False    | regular  | The font size for items  |
+| className   | String         | False    |          | Optional extra css class to attach to the wrapper element
+| navItems    | [NavItem]      | True     |          | An array of navigation items using the format described below |
+| orientation | String         | False    | vertical | The direction to display the items |
+| size        | String         | False    | regular  | The font size for items |
 
 ### NavItem
 
@@ -76,7 +76,7 @@ requires a 'to' property. The label property is used as the child of the render 
 
 | Name        | Type            | Required | Default  | Description
 | ---------   | --------------- | -------- | -------  | -----------
-| Component   | ReactNode       | False    | Link     | By default          |
+| Component   | React Component | False    | Link     | By default          |
 | label       | string          | True     |          | The text to display |
 
 ### Link
@@ -85,6 +85,6 @@ The default NavItem render component. Renders a link.
 
 | Name        | Type           | Required | Default  | Description
 | ---------   | -------------- | -------- | -------  | -----------
-| active      | boolean        | False    | false    | Set to true for the currently active navigation item |
+| active      | bool           | False    | false    | Set to true for the currently active navigation item |
 | label       | string         | True     |          | The text to display |
 | url         | string         | True     |          | The url to send the browser to |

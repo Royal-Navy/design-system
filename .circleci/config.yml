@@ -45,16 +45,16 @@ jobs:
     steps:
       - checkout
       - dependencies
-      - run: mkdir -p packages/react-component-library-ts/test-results/eslint
+      - run: mkdir -p packages/react-component-library/test-results/eslint
       - run:
           name: Lint
           environment:
             ESLINT_JUNIT_OUTPUT: test-results/eslint/react-component-results.xml
-          command: yarn --cwd packages/react-component-library-ts eslint -f ../../node_modules/eslint-junit/index.js src/* --ext .js --ext .jsx --ext .ts --ext .tsx
+          command: yarn --cwd packages/react-component-library eslint -f ../../node_modules/eslint-junit/index.js src/* --ext .js --ext .jsx --ext .ts --ext .tsx
       - store_test_results:
-          path: packages/react-component-library-ts/test-results
+          path: packages/react-component-library/test-results
       - store_artifacts:
-          path: packages/react-component-library-ts/test-results
+          path: packages/react-component-library/test-results
   lint_storybook-react-input-state:
     executor: node
     steps:
@@ -94,15 +94,15 @@ jobs:
           name: Jest
           environment:
             JEST_JUNIT_OUTPUT: test-results/jest/react-component-results.xml
-          command: yarn --cwd packages/react-component-library-ts jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
+          command: yarn --cwd packages/react-component-library jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
       - store_test_results:
-          path: packages/react-component-library-ts/test-results
+          path: packages/react-component-library/test-results
       - store_artifacts:
-          path: packages/react-component-library-ts/test-results
+          path: packages/react-component-library/test-results
       - persist_to_workspace:
           root: packages
           paths:
-            - react-component-library-ts/coverage
+            - react-component-library/coverage
   test_storybook-react-input-state:
     executor: node
     steps:
@@ -152,7 +152,7 @@ jobs:
       - run:
           name: Convert react results to cc format
           working_directory: ~/project
-          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.react-component-library.json workspace/react-component-library-ts/coverage/lcov.info
+          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.react-component-library.json workspace/react-component-library/coverage/lcov.info
       - run:
           name: Convert React storybook input state results to cc format
           working_directory: ~/project
@@ -214,7 +214,7 @@ jobs:
           command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
       - run:
           name: Publish package
-          working_directory: packages/react-component-library-ts
+          working_directory: packages/react-component-library
           command: npm publish --registry https://$NPM_REGISTRY
   publish_vue-component-library:
     executor: node
