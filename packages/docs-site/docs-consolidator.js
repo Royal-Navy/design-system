@@ -13,6 +13,7 @@ const { join } = require('path')
 const matter = require('gray-matter')
 const chalk = require('chalk')
 const rimraf = require('rimraf')
+const {kebabCase} = require('lodash')
 const { execSync } = require('child_process')
 const package = require('./package.json')
 
@@ -27,20 +28,6 @@ const packageDocsFolder = 'src/generated-library/pages/components/'
 // Ensure that the package docs folder is a freshly generated copy
 rimraf.sync(packageDocsFolder) // deletes old folder
 fs.mkdirSync(packageDocsFolder, { recursive: true }) // Creates new tree structure
-
-/**
- * kebab
- * Takes a string, converts it to kebab-case and returns it.
- * @param {String} text: The string to convert
- */
-const kebab = text =>
-  text
-    .toString()
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-    .replace(/\-\-+/g, '-') // Replace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, '') // Trim - from end of text
 
 /**
  * exclusions
@@ -122,7 +109,7 @@ const componentLoop = (componentsFolder, package) => {
         console.group(`⚙️  Generating ${chalk.yellow(component)} docs...`)
         accumulatedData.push({
           package,
-          component: kebab(fileContent.data.title),
+          component: kebabCase(fileContent.data.title),
           content: fileContent.content,
         })
         console.log(chalk.green(` ✓ Done`))
