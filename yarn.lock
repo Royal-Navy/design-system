@@ -2011,7 +2011,7 @@
     merge-deep "^3.0.2"
     svgo "^1.2.1"
 
-"@svgr/webpack@^4.0.3":
+"@svgr/webpack@^4.0.3", "@svgr/webpack@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@svgr/webpack/-/webpack-4.2.0.tgz#b7cdef42ae671a27ed4cfe118a0f2da7f4e9ebed"
   integrity sha512-sm3UUJHmRlqEg8w8bjUT+FAMf5lkgCydxotEapinpd10kzrpQP++Qd+bmuepE3hsIUU68BO24vgQALQ92qBZEw==
