@@ -190,7 +190,7 @@ const logOutputBuilder = (doc, prefix) => {
 const matchDocs = (docsPath, doc, prefix) => {
   const thisFile = join(docsPath, doc)
   if (doc.match(/.md/gi)) {
-    injectInFile(thisFile, currentComponent(thisFile))
+    injectInFile(thisFile, readComponent(thisFile))
     logOutputBuilder(doc, prefix)
   } else {
     if (fs.lstatSync(thisFile).isDirectory()) {
