@@ -204,8 +204,8 @@ const matchDocs = (docsPath, doc, prefix) => {
  * folderLoop
  * Loops through the component docs folder and reads the files and 
  * then passes the results to matchDocs
- * @param {*} docsPath The full path to the docs folder
- * @param {*} prefix The subfolder that the current component readme is in (defaults to false if no prefix is provided)
+ * @param {String} docsPath The full path to the docs folder
+ * @param {String} prefix The subfolder that the current component readme is in (defaults to false if no prefix is provided)
  */
 const folderLoop = (docsPath, prefix) =>
   fs.readdirSync(docsPath).forEach(doc => matchDocs(docsPath, doc, prefix))
