@@ -122,16 +122,23 @@ const packageLoop = () => {
 
 const allComponents = packageLoop()
 
-const currentComponent = (thisFile) => allComponents.filter(component => {
-  return (component.component.toLowerCase() === matter(fs.readFileSync(thisFile)).data.title.toLowerCase()) ? component : false
-})
+// Finds the current component within the matchDocs function
+const currentComponent = (thisFile) => allComponents.filter(component => (component.component.toLowerCase() === matter(fs.readFileSync(thisFile)).data.title.toLowerCase()) ? component : false
+)
 
+// Builds an output to display in the console when a doc has been processed
+const logOutputBuilder = (prefix, doc) => {
+  const logOutput = (prefix) ? `${prefix}/${doc}` : doc
+  return console.log(chalk.green(` ✓ Proccessing of ${chalk.blue(logOutput)}, complete.`))
+}
+
+// Proccesses all files found in the folderloop and if they are a markdown file they proccess them, 
+// if they are a directory then run folderloop again inside that directory.
 const matchDocs = (docsPath, doc, prefix) => {
   const thisFile = join(docsPath, doc)
   if (doc.match(/.md/gi)) {
     injectInFile(thisFile, currentComponent(thisFile))
-    const logOutput = (prefix) ? `${prefix}/${doc}` : doc
-    return console.log(chalk.green(` ✓ Proccessing of ${logOutput}, complete.`))
+    logOutputBuilder(prefix, doc)
   } else {
     if (fs.lstatSync(thisFile).isDirectory()) {
       return folderLoop(thisFile, doc)
@@ -139,11 +146,8 @@ const matchDocs = (docsPath, doc, prefix) => {
   }
 }
 
-const folderLoop = (docsPath, prefix) => {
-  return fs.readdirSync(docsPath).forEach(doc => {
-    matchDocs(docsPath, doc, prefix)
-  })
-}
+// Loops through folders to find docs
+const folderLoop = (docsPath, prefix) => fs.readdirSync(docsPath).forEach(doc => matchDocs(docsPath, doc, prefix))
 
 // Copy all docs from 'documentation' package to gatsby's 'library' folder (delete old version if exists) and processes finalised files
 rimraf.sync(libraryDocsFolder)
