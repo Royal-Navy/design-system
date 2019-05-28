@@ -5,7 +5,7 @@
  * This script finds all README.md contained within an
  * `src/components` folder within the specified packages
  * and consolidates the contents into one file within the gatsby library.
- **/
+ */
 
 const fs = require('fs-extra')
 const { resolve } = require('path')
