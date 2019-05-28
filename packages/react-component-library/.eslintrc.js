@@ -1,22 +1,41 @@
 module.exports = {
-  extends: ['airbnb', '../../.eslintrc.js'],
-  parser: 'babel-eslint',
+  env: {
+    browser: true,
+    jest: true,
+    es6: true,
+  },
+  extends: [
+    'airbnb',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'prettier/@typescript-eslint',
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: './tsconfig.json',
+  },
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
+    camelCase: 0,
+    'import/no-extraneous-dependencies': 0,
+    'import/no-unresolved': 0,
+    'import/prefer-default-export': 0,
     'jsx-a11y/label-has-for': 0,
-    'jsx-a11y/label-has-associated-control': 0,
+    'prefer-destructuring': 0,
+    'prettier/prettier': 0,
     'react/destructuring-assignment': 0,
     'react/jsx-filename-extension': [
       1,
-      {
-        extensions: ['.js'],
-      },
+      { extensions: ['.js', '.jsx', '.tsx'] },
     ],
     'react/jsx-one-expression-per-line': 0,
+    'react/prop-types': 0,
+    '@typescript-eslint/explicit-function-return-type': 0,
   },
   settings: {
     'import/resolver': {
-      webpack: {
-        config: 'webpack/webpack.dev.js',
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
   },
