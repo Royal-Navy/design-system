@@ -1,3 +1,5 @@
+@import "../library";
+
 .rn-autosuggest {
   max-width: 600px;
   position: relative;
@@ -46,7 +48,7 @@
 
 .rn-autosuggest__suggestion {
   cursor: pointer;
-  @include font-size(xs);    
+  @include font-size(xs);
   padding: spacing(2) spacing(3);
   display: flex;
   justify-content: space-between;

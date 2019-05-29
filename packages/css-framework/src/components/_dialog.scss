@@ -1,14 +1,16 @@
+@import "../library";
+
 $dialog-states: (
-  neutral: (    
+  neutral: (
     border: color("neutral", 700)
   ),
-  danger: (    
+  danger: (
     border: color("danger", 400)
   ),
-  warning: (    
+  warning: (
     border: color("warning", 400)
   ),
-  success: (    
+  success: (
     border: color("success", 600)
   )
 );
@@ -20,13 +22,13 @@ $dialog-states: (
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  
+
+
   .window {
     @include shadow(1);
     border-top: 4px solid map-deep-get($dialog-states, "neutral", "border");
     max-width: 600px;
-    
+
     .content {
       padding: spacing(8);
       .title {
@@ -49,7 +51,7 @@ $dialog-states: (
       text-align: right;
       background-color: color(neutral, 000);
       padding: spacing(4);
-    }    
+    }
   }
   @each $state, $variation in $dialog-states {
     &.#{$state} {

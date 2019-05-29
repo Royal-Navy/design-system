@@ -1,11 +1,13 @@
-.rn-masthead {  
+@import "../library";
+
+.rn-masthead {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   @include shadow(1);
   @include z-index(header);
-  
+
   &__head {
     background: color(neutral, white);
     border-bottom: 1px solid color(neutral, 000);
@@ -14,7 +16,7 @@
     justify-content: space-between;
     align-items: center;
   }
-  
+
   &__title {
     margin: 0 0 0 spacing(2);
     color: color(neutral, 700);

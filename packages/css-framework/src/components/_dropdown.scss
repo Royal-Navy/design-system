@@ -1,4 +1,4 @@
-
+@import "../library";
 
 $dropdown-btn-sizes: (
   small: (
@@ -46,7 +46,7 @@ $dropdown-btn-sizes: (
     transition: all 0.3s;
   }
 
-  
+
 
   &.is-open {
     .rn-dropdown__button {

@@ -1,6 +1,8 @@
+@import "../library";
+
 .rn-check {
   &__label {
-    display: inline-block;    
+    display: inline-block;
     vertical-align: center;
     @include font-size(s);
     color: color(neutral, 600);
@@ -16,7 +18,7 @@
 .rn-check__legend {
   @include font-size(xs);
   @include cover;
-  color: color(neutral, 700);  
+  color: color(neutral, 700);
   padding: 0 spacing(1);
 }
 
