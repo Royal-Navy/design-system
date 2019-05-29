@@ -3,6 +3,8 @@ import uuid from 'uuid'
 
 import LinkItem from './LinkItem'
 
+import '@royalnavy/css-framework/src/components/_links.scss'
+
 interface LinksProps {
   className?: string
   links: any[]

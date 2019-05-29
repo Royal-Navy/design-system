@@ -2,6 +2,8 @@ import React, { Fragment } from 'react'
 
 import Badge from '../Badge'
 
+import '@royalnavy/css-framework/src/components/_phase-banner.scss'
+
 interface PhaseBannerProps {
   phase?: 'alpha' | 'beta'
   link?: string

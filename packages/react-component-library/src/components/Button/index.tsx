@@ -1,5 +1,7 @@
 import React from 'react'
 
+import '@royalnavy/css-framework/src/components/_button.scss'
+
 interface ButtonProps {
   className?: string
   color?: 'danger'

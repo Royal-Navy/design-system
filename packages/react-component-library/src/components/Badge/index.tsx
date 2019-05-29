@@ -1,5 +1,7 @@
 import React from 'react'
 
+import '@royalnavy/css-framework/src/components/_badge.scss'
+
 interface BadgeProps {
   color?: 'neutral' | 'primary' | 'danger' | 'warning' | 'success'
   colorVariant?: 'solid' | 'faded'
