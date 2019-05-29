@@ -1,6 +1,11 @@
 module.exports = {
   css: {
     loaderOptions: {
+      postcss: {
+        options: {
+          plugins: ['autoprefixer'],
+        },
+      },
       sass: {
         resources: [
           './_config.scss',
