@@ -1,3 +1,5 @@
+import '@royalnavy/css-framework/src/components/_badge.scss'
+
 export default {
   name: 'RnBadge',
 

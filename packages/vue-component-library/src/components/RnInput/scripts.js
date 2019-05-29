@@ -1,5 +1,7 @@
 import uuid from 'uuid'
 
+import '@royalnavy/css-framework/src/components/_input.scss'
+
 export default {
   name: 'RnInput',
   props: {

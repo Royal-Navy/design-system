@@ -1,3 +1,5 @@
+import '@royalnavy/css-framework/src/components/_progress.scss'
+
 export default {
   name: 'RnProgress',
   props: {

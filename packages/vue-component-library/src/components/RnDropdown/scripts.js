@@ -1,3 +1,5 @@
+import '@royalnavy/css-framework/src/components/_dropdown.scss'
+
 export default {
   name: 'RnDropdown',
   props: {

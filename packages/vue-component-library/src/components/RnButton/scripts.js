@@ -1,5 +1,7 @@
 import RnIcon from '../RnIcon/index.vue'
 
+import '@royalnavy/css-framework/src/components/_button.scss'
+
 export default {
   name: 'RnButton',
   props: {

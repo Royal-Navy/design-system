@@ -1,6 +1,8 @@
 import RnButton from '../RnButton/index.vue'
 import RnCard from '../RnCard/index.vue'
 
+import '@royalnavy/css-framework/src/components/_alert.scss'
+
 export default {
   name: 'RnAlert',
   components: {

@@ -1,44 +1,48 @@
+import '@royalnavy/css-framework/src/components/_transfer.scss'
+
 export default {
   name: 'RnTransfer',
 
   props: {
     listData: !Array,
     leftHeader: String,
-    rightHeader: String
+    rightHeader: String,
   },
 
   data: () => ({
-    listDataMutable: []
+    listDataMutable: [],
   }),
-  created () { this.listDataMutable = this.listData },
-  
+  created() {
+    this.listDataMutable = this.listData
+  },
+
   computed: {
-    leftList () {
+    leftList() {
       return this.listDataMutable.filter(item => item.list === 'left')
     },
 
-    rightList () {
+    rightList() {
       return this.listDataMutable.filter(item => item.list === 'right')
-    }
+    },
   },
 
   methods: {
-    move (item, side) {
+    move(item, side) {
       const itemCopy = item
-    
+
       if (itemCopy.checked) itemCopy.list = side
-      itemCopy.checked = false   
+      itemCopy.checked = false
       this.$emit('moved', this.listData)
-    
+
       return itemCopy
     },
 
-    to_left () {
+    to_left() {
       this.rightList.map(item => this.move(item, 'left'))
     },
 
-    to_right () {
+    to_right() {
       this.leftList.map(item => this.move(item, 'right'))
-    }
-  }
+    },
+  },
 }

@@ -1,3 +1,5 @@
+import '@royalnavy/css-framework/src/components/_nav.scss'
+
 export default {
   name: 'RnNavigation',
   props: {

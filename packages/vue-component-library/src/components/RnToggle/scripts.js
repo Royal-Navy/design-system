@@ -1,3 +1,5 @@
+import '@royalnavy/css-framework/src/components/_toggle.scss'
+
 export default {
   name: 'rn-toggle',
 

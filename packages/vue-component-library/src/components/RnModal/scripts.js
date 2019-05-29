@@ -1,6 +1,8 @@
 import RnButton from '../RnButton/index.vue'
 import RnCard from '../RnCard/index.vue'
 
+import '@royalnavy/css-framework/src/components/_modal.scss'
+
 export default {
   name: 'RnModal',
   components: {

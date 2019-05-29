@@ -1,3 +1,5 @@
+import '@royalnavy/css-framework/src/components/_checkbox.scss'
+
 export default {
   props: {
     legend: String,
