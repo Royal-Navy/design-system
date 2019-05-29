@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
+import '@royalnavy/css-framework/index.scss'
+
 import Layout from '../components/presenters/layout'
 import Sidebar from '../components/presenters/sidebar'
 import PostArticle from '../components/presenters/post-article'
