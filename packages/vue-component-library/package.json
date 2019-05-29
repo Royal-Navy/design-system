@@ -78,6 +78,7 @@
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-vue": "^5.2.2",
     "husky": "^2.2.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "jest-environment-jsdom-global": "^1.2.0",
     "jest-haste-map": "^24.8.0",
@@ -137,7 +138,9 @@
       "json"
     ],
     "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/$1"
+      "^@/(.*)$": "<rootDir>/$1",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/__mocks__/fileMock.js",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
     "transform": {
       "^.+\\.js$": "<rootDir>/../../node_modules/babel-jest",
