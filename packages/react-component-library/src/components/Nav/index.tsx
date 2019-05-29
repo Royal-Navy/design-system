@@ -3,7 +3,7 @@ import uuid from 'uuid'
 
 import NavItem from './NavItem'
 
-// import '@royalnavy/css-framework/src/components/_nav.scss'
+import '@royalnavy/css-framework/src/components/_nav.scss'
 
 interface NavProps {
   className?: string

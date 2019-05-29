@@ -1,5 +1,10 @@
 @import "../library";
 
+$nav-item-border-radius: 3px;
+$nav-item-focus-width: 0.2rem;
+$nav-item-font-weight: 500;
+$animation-timing: 0.3s;
+
 .rn-nav {
   display: flex;
   flex-direction: column;
@@ -8,11 +13,11 @@
 .rn-nav__item {
   display: inline-block;
   color: color(neutral, 700);
-  border-radius: $btn-border-radius;
+  border-radius: $nav-item-border-radius;
   outline: 0;
   padding: spacing(3) spacing(4);
   font-size: font-size(xs);
-  font-weight: $btn-font-weight;
+  font-weight: $nav-item-font-weight;
   line-height: 1;
   text-decoration: none;
   vertical-align: middle;
@@ -26,7 +31,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+    box-shadow: 0 0 0 $nav-item-focus-width rgba(color(primary, 700) , 0.5);
   }
 
   &.is-active {
