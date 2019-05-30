@@ -1509,13 +1509,6 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
-"@royalnavy/react-component-library@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@royalnavy/react-component-library/-/react-component-library-0.1.1.tgz#053743a52dbfba738acd1ba0ce2f8cd36c543394"
-  integrity sha512-veuFtgLiFqq80A2aefvHriGNQ3YrHgRkLaDUKFPMeZvFqg/5tbW8E8Iz+tv3OVROV6gGGFt7TwQHo00xEfb67w==
-  dependencies:
-    react-autosuggest "^9.4.3"
-
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"

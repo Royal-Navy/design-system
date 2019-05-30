@@ -6,17 +6,6 @@
   padding: spacing(6) spacing(8);
 }
 
-.hero-banner__button {
-  display: inline-block;
-  background-color: color(neutral, white);
-  color: color(primary, 800);
-  padding: spacing(3) spacing(6);
-  border-radius: 3px;
-  text-align: center;
-  margin-bottom: spacing(4);
-  text-decoration: none;
-}
-
 .hero-banner__main {
   width: 50%;
   @media only screen and (max-width: 1000px) {
