@@ -14,8 +14,8 @@ function renderMenu(navItems: any[]) {
   return (
     <ul className="rn-nav__list">
       {navItems.map(item => {
-        const hasChildren = item.children && item.children.length > 0
-        let subMenu
+        const hasChildren: boolean = item.children && item.children.length > 0
+        let subMenu: object | undefined
 
         if (hasChildren) {
           subMenu = renderMenu(item.children)
