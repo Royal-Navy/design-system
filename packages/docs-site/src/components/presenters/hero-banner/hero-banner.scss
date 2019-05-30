@@ -1,0 +1,44 @@
+.hero-banner {
+  background-color: #274776;
+  color: #E7F6FF;
+  padding: 30px 40px;
+}
+
+.hero-banner__button {
+  display: inline-block;
+  background-color: #fff;
+  color: #324e68;
+  padding: 10px 30px;
+  border-radius: 3px;
+  text-align: center;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.hero-banner__main {
+  width: 50%;
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+  }
+} 
+
+ .hero-banner__title {
+  color: #fff;
+  font-size: 45px;
+}
+.hero-banner__link {
+  color: #E7F6FF;
+  &:hover {
+    color: #fff;
+  }
+}
+
+.hero-banner__text {
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+.hero-banner__rule {
+  border: 0;
+  height: 1px;
+  background-color: #3d5983;
+}
