@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav Given the nav is supplied navItems prop and navItems is a flat collection of 5 items snapshot: has same HTML structure 1`] = `
+<nav
+  className="rn-nav rn-nav--vertical rn-nav--regular "
+>
+  <ul
+    className="rn-nav__list"
+  >
+    <li
+      className="rn-nav__list-item "
+    >
+      <a
+        className="rn-nav__item"
+        href="http://testurl.test"
+      >
+        Styles
+      </a>
+    </li>
+    <li
+      className="rn-nav__list-item "
+    >
+      <a
+        className="rn-nav__item"
+        href="http://testurl.test"
+      >
+        Components
+      </a>
+    </li>
+    <li
+      className="rn-nav__list-item "
+    >
+      <a
+        className="rn-nav__item is-active"
+        href="http://testurl.test"
+      >
+        Patterns
+      </a>
+    </li>
+    <li
+      className="rn-nav__list-item "
+    >
+      <a
+        className="rn-nav__item"
+        href="http://testurl.test"
+      >
+        Community
+      </a>
+    </li>
+    <li
+      className="rn-nav__list-item "
+    >
+      <a
+        className="rn-nav__item"
+        href="http://testurl.test"
+      >
+        About
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
