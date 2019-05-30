@@ -22,7 +22,10 @@ function renderMenu(navItems: any[]) {
         }
 
         return (
-          <li key={uuid()} className={`rn-nav__list-item ${hasChildren ? 'has-children' : ''}`}>
+          <li
+            key={uuid()}
+            className={`rn-nav__list-item ${hasChildren ? 'has-children' : ''}`}
+          >
             <NavItem {...item} />
             {subMenu}
           </li>
