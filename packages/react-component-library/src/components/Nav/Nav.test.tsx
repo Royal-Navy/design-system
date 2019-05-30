@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
-import renderer from 'react-test-renderer'
+import toJson from 'enzyme-to-json';
 
 import Nav from './index'
 
@@ -59,10 +59,8 @@ describe('Nav', () => {
       })
 
       it('snapshot: has same HTML structure', () => {
-        const tree = renderer
-          .create(<Nav navItems={navItems} orientation="vertical"></Nav>)
-          .toJSON();
-        expect(tree).toMatchSnapshot();
+        const wrapper = shallow(<Nav navItems={navItems} orientation="vertical"></Nav>)
+        expect(toJson(wrapper)).toMatchSnapshot()
       })
     })
 

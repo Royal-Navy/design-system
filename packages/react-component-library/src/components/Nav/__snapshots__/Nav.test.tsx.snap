@@ -9,53 +9,49 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
   >
     <li
       className="rn-nav__list-item "
+      key="1"
     >
-      <a
-        className="rn-nav__item"
+      <NavItem
         href="http://testurl.test"
-      >
-        Styles
-      </a>
+        label="Styles"
+      />
     </li>
     <li
       className="rn-nav__list-item "
+      key="1"
     >
-      <a
-        className="rn-nav__item"
+      <NavItem
         href="http://testurl.test"
-      >
-        Components
-      </a>
+        label="Components"
+      />
     </li>
     <li
       className="rn-nav__list-item "
+      key="1"
     >
-      <a
-        className="rn-nav__item is-active"
+      <NavItem
+        active={true}
         href="http://testurl.test"
-      >
-        Patterns
-      </a>
+        label="Patterns"
+      />
     </li>
     <li
       className="rn-nav__list-item "
+      key="1"
     >
-      <a
-        className="rn-nav__item"
+      <NavItem
         href="http://testurl.test"
-      >
-        Community
-      </a>
+        label="Community"
+      />
     </li>
     <li
       className="rn-nav__list-item "
+      key="1"
     >
-      <a
-        className="rn-nav__item"
+      <NavItem
         href="http://testurl.test"
-      >
-        About
-      </a>
+        label="About"
+      />
     </li>
   </ul>
 </nav>
