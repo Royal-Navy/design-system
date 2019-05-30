@@ -1,0 +1,4 @@
+exclude_patterns:
+- "dist/"
+- "**/node_modules/"
+- "*.test.tsx"
