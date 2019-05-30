@@ -1,17 +1,19 @@
+@import "@royalnavy/css-framework/index.scss";
+
 .hero-banner {
-  background-color: #274776;
-  color: #E7F6FF;
-  padding: 30px 40px;
+  background-color: color(primary, 800);
+  color: color(neutral, 100);
+  padding: spacing(6) spacing(8);
 }
 
 .hero-banner__button {
   display: inline-block;
-  background-color: #fff;
-  color: #324e68;
-  padding: 10px 30px;
+  background-color: color(neutral, white);
+  color: color(primary, 800);
+  padding: spacing(3) spacing(6);
   border-radius: 3px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: spacing(4);
   text-decoration: none;
 }
 
@@ -23,22 +25,22 @@
 } 
 
  .hero-banner__title {
-  color: #fff;
-  font-size: 45px;
+  color: color(neutral, white);
+  @include font-size(display-l);
 }
 .hero-banner__link {
   color: #E7F6FF;
   &:hover {
-    color: #fff;
+    color: color(neutral, white);
   }
 }
 
 .hero-banner__text {
   line-height: 1.6;
-  margin-bottom: 30px;
+  margin-bottom: spacing(5);
 }
 .hero-banner__rule {
   border: 0;
-  height: 1px;
-  background-color: #3d5983;
+  height: spacing(px);
+  background-color: color(neutral, 300);
 }
