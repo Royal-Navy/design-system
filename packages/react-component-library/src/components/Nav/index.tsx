@@ -14,14 +14,15 @@ function renderMenu(navItems: any[]) {
   return (
     <ul className="rn-nav__list">
       {navItems.map(item => {
+        const hasChildren = item.children && item.children.length > 0
         let subMenu
 
-        if (item.children && item.children.length > 0) {
+        if (hasChildren) {
           subMenu = renderMenu(item.children)
         }
 
         return (
-          <li key={uuid()} className="rn-nav__list-item">
+          <li key={uuid()} className={`rn-nav__list-item ${hasChildren ? 'has-children' : ''}`}>
             <NavItem key={uuid()} {...item} />
             {subMenu}
           </li>
