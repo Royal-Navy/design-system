@@ -1,0 +1,77 @@
+@import "@royalnavy/css-framework";
+
+$border-radius: 4px;
+$head-line-height: calc(50px - 2rem);
+$body-line-height: calc(64px - 2rem);
+
+.sketch-widget {
+  border: 1px solid #dae2ec;
+  color: #253b5b;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 2px 0 rgba(000, 000, 000, .15);
+}
+
+.sketch-widget__head {
+  display: flex;
+  flex-flow: column;
+  background-color: #f0f4f8;
+  padding: spacing(4);
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+}
+
+.sketch-widget__title {
+  line-height: $head-line-height;
+  margin-bottom: spacing(4);
+}
+
+.sketch-widget__link {
+  line-height: $head-line-height;
+  color: #3a8fdd;
+  text-decoration: none;
+
+  svg {
+    height: 15px;
+    vertical-align: top;
+    margin-right: spacing(2);
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@include breakpoint("s") {
+  .sketch-widget__head {
+    flex-flow: initial;
+    height: 50px;
+  }
+
+  .sketch-widget__title {
+    margin-bottom: initial;
+  }
+
+  .sketch-widget__link {
+    margin-left: auto;
+  }
+}
+
+.sketch-widget__body {
+  display: flex;
+  background-color: #fff;
+  height: 64px;
+  padding: spacing(4);
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+.sketch-widget__sketch-logo {
+  height: $body-line-height;
+  margin-right: spacing(2);
+}
+
+.sketch-widget__name {
+  line-height: $body-line-height;
+  font-weight: 600;
+  white-space: nowrap;
+}
