@@ -10,6 +10,31 @@ interface NavProps {
   size?: 'small' | 'regular' | 'large' | 'xlarge'
 }
 
+function renderMenu(navItems: any[]) {
+  return (
+    <ul className="rn-nav__list">
+      {navItems.map(item => {
+        const hasChildren: boolean = item.children && item.children.length > 0
+        let subMenu: object | undefined
+
+        if (hasChildren) {
+          subMenu = renderMenu(item.children)
+        }
+
+        return (
+          <li
+            key={uuid()}
+            className={`rn-nav__list-item ${hasChildren ? 'has-children' : ''}`}
+          >
+            <NavItem {...item} />
+            {subMenu}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
 const Nav: React.FC<NavProps> = ({
   className = '',
   navItems,
@@ -17,9 +42,7 @@ const Nav: React.FC<NavProps> = ({
   size = 'regular',
 }) => (
   <nav className={`rn-nav rn-nav--${orientation} rn-nav--${size} ${className}`}>
-    {navItems.map(item => (
-      <NavItem key={uuid()} {...item} />
-    ))}
+    {renderMenu(navItems)}
   </nav>
 )
 
