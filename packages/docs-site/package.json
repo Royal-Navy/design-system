@@ -8,6 +8,7 @@
   "author": "NELSON Standards <standards@royalnavy.io>",
   "dependencies": {
     "@babel/core": "^7.2.2",
+    "@royalnavy/css-framework": "0.1.1",
     "@royalnavy/eslint-config-react": "0.1.1",
     "@royalnavy/react-component-library": "1.0.0",
     "@testing-library/react": "^8.0.1",
@@ -49,8 +50,8 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.7.1",
     "jest-dom": "^3.1.1",
-    "node-fs-extra": "^0.8.2",
     "lodash": "^4.17.11",
+    "node-fs-extra": "^0.8.2",
     "normalize-scss": "^7.0.1",
     "prettier": "^1.16.4",
     "prismjs": "^1.15.0",
