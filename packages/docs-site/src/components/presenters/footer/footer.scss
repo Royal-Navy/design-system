@@ -1,0 +1,46 @@
+@import "@royalnavy/css-framework";
+
+.rn-footer {
+  background: color(primary, 800);
+  padding: spacing(6) spacing(6);
+}
+
+@include breakpoint("s") {
+  .rn-footer {
+    padding: spacing(6) spacing(10);
+  }
+}
+
+.rn-footer,
+.rn-footer a {
+  color: color(neutral, 100);
+  border-color: color(neutral, 100);
+}
+
+.rn-footer__meta {
+  display: flex;
+  flex-direction: column;
+}
+
+@include breakpoint("s") {
+  .rn-footer__meta {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.rn-footer__message,
+.rn-footer__copyright {
+  font-size: font-size(xs);
+  line-height: 1.5;
+  margin: spacing(1) 0;
+}
+
+.rn-footer__copyright {
+  white-space: nowrap;
+}
+
+.rn-footer__divider {
+  border:0;
+  border-bottom: 1px solid rgba(255,255,255, 0.1);
+}
