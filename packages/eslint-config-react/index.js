@@ -19,5 +19,6 @@ module.exports = {
         extensions: ['.js'],
       },
     ],
+    'react/jsx-one-expression-per-line': 0,
   },
 }
