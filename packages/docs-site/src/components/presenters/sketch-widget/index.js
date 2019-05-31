@@ -6,7 +6,7 @@ import './sketch-widget.scss'
 import SketchLogo from './sketch-logo.svg'
 import DownloadIcon from './download-icon.svg'
 
-const SketchWidget = ({ name, url }) => {
+const SketchWidget = ({ name, href }) => {
   return (
     <article className="sketch-widget">
       <div className="sketch-widget__head">
@@ -14,7 +14,7 @@ const SketchWidget = ({ name, url }) => {
 
         <a
           className="sketch-widget__link"
-          href={url}
+          href={href}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -24,7 +24,9 @@ const SketchWidget = ({ name, url }) => {
       </div>
       <div className="sketch-widget__body">
         <SketchLogo className="sketch-widget__sketch-logo" />
-        <span className="sketch-widget__name">{name}</span>
+        <span data-testid="name" className="sketch-widget__name">
+          {name}
+        </span>
       </div>
     </article>
   )
@@ -32,12 +34,12 @@ const SketchWidget = ({ name, url }) => {
 
 SketchWidget.propTypes = {
   name: PropTypes.string,
-  url: PropTypes.string,
+  href: PropTypes.string,
 }
 
 SketchWidget.defaultProps = {
-  name: '-',
-  url: '#',
+  name: 'Component name undefined',
+  href: '#',
 }
 
 export default SketchWidget
