@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import './sketch-widget.scss'
 
 import SketchLogo from './sketch-logo.svg'
+import DownloadIcon from './download-icon.svg'
 
 const SketchWidget = ({ name, url }) => {
   return (
@@ -17,6 +18,7 @@ const SketchWidget = ({ name, url }) => {
           target="_blank"
           rel="noopener noreferrer"
         >
+          <DownloadIcon />
           Download Sketch toolkit
         </a>
       </div>
