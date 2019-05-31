@@ -36,7 +36,35 @@ const navItems = [
   },
 ]
 
-stories.add('Vertical', () => <Nav navItems={navItems} />)
+const navItemsWithChildren = [
+  {
+    href: 'http://testurl.test',
+    label: 'Parent',
+    children: [
+      {
+        href: 'http://testurl.test',
+        label: 'Child 1',
+      },
+      {
+        href: 'http://testurl.test',
+        label: 'Child 2',
+        children: [
+          {
+            href: 'http://testurl.test',
+            label: 'Child 1',
+          },
+          {
+            href: 'http://testurl.test',
+            label: 'Child 2'
+          },
+        ]
+      },
+    ]
+  },
+  ...navItems
+]
+
+stories.add('Vertical', () => <Nav navItems={navItemsWithChildren} />)
 
 stories.add('Horizontal', () => (
   <Nav navItems={navItems} orientation="horizontal" />
