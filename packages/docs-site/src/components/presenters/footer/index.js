@@ -13,7 +13,7 @@ const Footer = ({ children, links }) => (
     <Links links={links} size="small" />
     <hr className="rn-footer__divider" />
     <div className="rn-footer__meta">
-      <p className="rn-footer__message">
+      <p data-testid="message" className="rn-footer__message">
         {children || (
           <Fragment>
             All content is available under the{' '}
