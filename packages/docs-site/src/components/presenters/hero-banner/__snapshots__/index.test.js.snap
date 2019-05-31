@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`HeroBanner snapshot: has same HTML structure 1`] = `
-<section
-  className="hero-banner "
->
-  Content goes here
-</section>
-`;
