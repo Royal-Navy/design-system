@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import './sketch-widget.scss'
 
+import SketchLogo from './sketch-logo.svg'
+
 const SketchWidget = ({ name, url }) => {
   return (
     <article className="sketch-widget">
@@ -18,7 +20,10 @@ const SketchWidget = ({ name, url }) => {
           Download Sketch toolkit
         </a>
       </div>
-      <div className="sketch-widget__body">{name}</div>
+      <div className="sketch-widget__body">
+        <SketchLogo className="sketch-widget__sketch-logo" />
+        <span className="sketch-widget__name">{name}</span>
+      </div>
     </article>
   )
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 394 356" xmlns="http://www.w3.org/2000/svg">
+<title>Sketch_Logo</title>
+<desc>Created with Sketch.</desc>
+<g fill="none" fill-rule="evenodd">
+<g fill-rule="nonzero">
+<polygon points="85.79 11.715 196.6 0 307.42 11.715 393.21 126.88 196.6 355.82 0 126.88" fill="#FDB300"/>
+<g transform="translate(0 126.88)">
+<polygon points="79.634 0 196.6 228.94 0 0" fill="#EA6C00"/>
+<polygon transform="translate(294.9 114.47) scale(-1 1) translate(-294.9 -114.47)" points="276.24 0 393.21 228.94 196.6 0" fill="#EA6C00"/>
+<polygon points="79.634 0 313.57 0 196.6 228.94" fill="#FDAD00"/>
+</g>
+<polygon points="196.6 0 85.79 11.715 79.634 126.88" fill="#FDD231"/>
+<polygon transform="translate(255.09 63.44) scale(-1 1) translate(-255.09 -63.44)" points="313.57 0 202.76 11.715 196.6 126.88" fill="#FDD231"/>
+<polygon transform="translate(350.31 69.298) scale(-1 1) translate(-350.31 -69.298)" points="307.41 126.88 393.21 11.715 387.05 126.88" fill="#FDAD00"/>
+<polygon points="0 126.88 85.79 11.715 79.634 126.88" fill="#FDAD00"/>
+<polygon points="196.6 0 79.634 126.88 313.57 126.88" fill="#FEEEB7"/>
+</g>
+</g>
+</svg>
