@@ -1,30 +1,28 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { render } from '@testing-library/react'
 
 import Sidebar from './index'
 
-/* eslint-disable react/no-children-prop */
-
 const navigation = [
   {
-    node: {
-      id: 'bc54746a-2d34-534b-bdd8-86c1d13d95bb',
-      fields: {
-        slug: '/',
-      },
-      frontmatter: {
-        title: 'Home',
-        status: '',
-        index: 0,
-      },
-    },
+    href: '',
+    label: 'Home',
     children: [],
   },
 ]
 
 describe('Sidebar', () => {
-  it('snapshot: has same HTML structure', () => {
-    const tree = renderer.create(<Sidebar navigation={navigation} />).toJSON()
-    expect(tree).toMatchSnapshot()
+  let sidebar
+
+  describe('when the footer is generated with title and navigation props', () => {
+    beforeEach(() => {
+      sidebar = render(
+        <Sidebar navigation={navigation} title="Example title" />
+      )
+    })
+
+    it('should display the title', () => {
+      expect(sidebar.getByTestId('title')).toHaveTextContent('Example title')
+    })
   })
 })

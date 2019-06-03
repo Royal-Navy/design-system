@@ -7,7 +7,11 @@ import { Nav } from '@royalnavy/react-component-library'
 
 const Sidebar = ({ navigation, title }) => (
   <aside className="sidebar">
-    {title && <span className="sidebar__title">{title}</span>}
+    {title && (
+      <span data-testid="title" className="sidebar__title">
+        {title}
+      </span>
+    )}
     <Nav navItems={navigation} orientation="vertical" size="large" />
   </aside>
 )
