@@ -1,3 +1,44 @@
+@import '@royalnavy/css-framework';
+
+$border-radius: 4px;
+
 .sidebar {
+  background-color: #f0f4f8;
+  padding: spacing(10);
+
+  display: none;
+}
+
+@include breakpoint("m") {
+  .sidebar {
+    display: block;
+  }
+}
+
+.sidebar .rn-nav__item {
+  color: #253b5b;
+}
+
+.sidebar .rn-nav__list-item.has-children .rn-nav__list {
+  // display: none;
+}
+
+.sidebar .rn-nav__list-item.has-children {
+  background-color: #d2dbe5;
+  border: 1px solid #979797;
+  border-radius: $border-radius;
+}
+
+.sidebar .rn-nav__list-item.has-children > .rn-nav__item {
+  background-color: #274776;
+  color: #fff;
+  border-radius: $border-radius;
+}
+
+.sidebar .rn-nav__list .rn-nav__list {
+  padding: initial;
+}
+
+.sidebar .rn-nav__list .rn-nav__list .rn-nav__list {
   //
 }
