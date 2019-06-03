@@ -3,51 +3,27 @@ import PropTypes from 'prop-types'
 
 import './sidebar.scss'
 
-/**
- * Recursively render a nested list using JSX.
- *
- * @param {array} pages
- * @returns {jsx}
- */
-function renderList(pages) {
-  return (
-    <ul>
-      {pages.map(page => {
-        const { slug } = page.node.fields
-        const { title } = page.node.frontmatter
+import { Nav } from '@royalnavy/react-component-library'
 
-        let subMenu
-
-        if (page.children && page.children.length > 0) {
-          subMenu = renderList(page.children)
-        }
-
-        return (
-          <li key={slug}>
-            <a href={slug}>
-              <span>{title}</span>
-            </a>
-            {subMenu}
-          </li>
-        )
-      })}
-    </ul>
-  )
-}
-
-const Sidebar = ({ navigation }) => (
-  <nav>
-    {renderList(navigation)}
-    <pre>{JSON.stringify(navigation, null, 2)}</pre>
-  </nav>
+const Sidebar = ({ navigation, title }) => (
+  <aside className="sidebar">
+    {title && (
+      <span data-testid="title" className="sidebar__title">
+        {title}
+      </span>
+    )}
+    <Nav navItems={navigation} orientation="vertical" size="large" />
+  </aside>
 )
 
 Sidebar.propTypes = {
   navigation: PropTypes.instanceOf(Array),
+  title: PropTypes.string,
 }
 
 Sidebar.defaultProps = {
   navigation: [],
+  title: '',
 }
 
 export default Sidebar
