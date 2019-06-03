@@ -60,11 +60,13 @@ function nestByURLStructure(nodes) {
     })
   }
 
-  restructureNodes(nodes).forEach(node => {
+  const sorted = sortBy(nodes, 'node.frontmatter.index')
+
+  restructureNodes(sorted).forEach(node => {
     addToTree(node, tree)
   })
 
-  return sortBy(tree, 'node.frontmatter.index')
+  return tree
 }
 
 const withNavigation = BaseComponent => props => (
