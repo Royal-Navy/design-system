@@ -25,7 +25,7 @@
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/"
   },
   "lint-staged": {
-    "*.@(js)": "eslint"
+    "*.@(js|jsx|ts|tsx)": "eslint"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
