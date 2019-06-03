@@ -1,4 +1,5 @@
 module.exports = {
   testMatch: ['**/?(*.)(spec|test).ts?(x)'],
-  setupFiles: ['./jest/setupTests.ts'],
+  setupFiles: ['<rootDir>/jest/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest/setupAfterEnv.ts'],
 }
