@@ -239,7 +239,7 @@ jobs:
       - run:
           name: Build site
           working_directory: packages/docs-site
-          command: npm run build
+          command: yarn build
       - persist_to_workspace:
           root: .
           paths:
