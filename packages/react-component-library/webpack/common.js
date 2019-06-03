@@ -2,6 +2,7 @@
 const { resolve } = require('path')
 
 module.exports = {
+  target: 'node',
   entry: ['./index.ts'],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
