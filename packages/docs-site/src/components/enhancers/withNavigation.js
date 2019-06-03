@@ -3,21 +3,28 @@ import React from 'react'
 import sortBy from 'lodash/sortBy'
 
 /**
- * Strip trailing slash from all slugs, excluding the root node.
+ * Strip trailing slash from a URI, excluding a root node.
  *
  * @param {array} nodes
- * @returns {object}
+ * @returns {string}
  */
-function stripTrailingSlash(nodes) {
+function stripTrailingSlash(href) {
+  return href.endsWith('/') && href !== '/' ? href.slice(0, -1) : href
+}
+
+/**
+ * Restructure nodes into something that can be more
+ * easily consumed by the application.
+ *
+ * @param {array} nodes
+ * @returns {array}
+ */
+function restructureNodes(nodes) {
   return nodes.map(node => {
-    const { slug } = node.node.fields
-    const mutatedNode = node
-
-    if (slug.endsWith('/') && slug !== '/') {
-      mutatedNode.node.fields.slug = slug.slice(0, -1)
+    return {
+      href: stripTrailingSlash(node.node.fields.slug),
+      label: node.node.frontmatter.title,
     }
-
-    return mutatedNode
   })
 }
 
@@ -32,13 +39,13 @@ function nestByURLStructure(nodes) {
   const tree = []
 
   function addToTree(node, parents) {
-    const { slug } = node.node.fields
+    const { href } = node
 
     parents.forEach(parentNode => {
-      const { slug: parentSlug } = parentNode.node.fields
+      const { href: parentHref } = parentNode
 
-      if (slug.includes(`${parentSlug}/`)) {
-        const index = parents.findIndex(item => item.node.fields.slug === slug)
+      if (href.includes(`${parentHref}/`)) {
+        const index = parents.findIndex(item => item.href === href)
 
         // eslint-disable-next-line no-param-reassign
         parents = parents.splice(0, index)
@@ -53,7 +60,7 @@ function nestByURLStructure(nodes) {
     })
   }
 
-  stripTrailingSlash(nodes).forEach(node => {
+  restructureNodes(nodes).forEach(node => {
     addToTree(node, tree)
   })
 
