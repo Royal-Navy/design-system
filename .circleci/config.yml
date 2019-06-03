@@ -237,6 +237,9 @@ jobs:
       - attach_workspace:
           at: ~/standards-toolkit
       - run:
+          name: Build local dependencies
+          command: yarn build
+      - run:
           name: Build site
           working_directory: packages/docs-site
           command: yarn build
