@@ -14,7 +14,7 @@ const navigation = [
 describe('Sidebar', () => {
   let sidebar
 
-  describe('when the footer is generated with title and navigation props', () => {
+  describe('when the sidebar is generated with title and navigation props', () => {
     beforeEach(() => {
       sidebar = render(
         <Sidebar navigation={navigation} title="Example title" />
