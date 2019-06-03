@@ -5,7 +5,7 @@ import sortBy from 'lodash/sortBy'
 /**
  * Strip trailing slash from a URI, excluding a root node.
  *
- * @param {array} nodes
+ * @param {string} href
  * @returns {string}
  */
 function stripTrailingSlash(href) {
