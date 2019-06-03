@@ -11,7 +11,7 @@ import Layout from '../components/presenters/layout'
 import PostArticle from '../components/presenters/post-article'
 import Sidebar from '../components/presenters/sidebar'
 
-const NavigationSidebar = withNavigation(Sidebar)
+const SidebarWithNavigation = withNavigation(Sidebar)
 
 export const pageQuery = graphql`
   query PageBySlug($slug: String!) {
@@ -31,7 +31,7 @@ export default function Template({ data }) {
     <Layout className="">
       <Helmet title={`${post.frontmatter.title} | NELSON Standards`} />
       <PostArticle postData={post} />
-      <NavigationSidebar />
+      <SidebarWithNavigation />
       <Footer />
     </Layout>
   )
