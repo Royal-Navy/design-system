@@ -31,7 +31,7 @@ export default function Template({ data }) {
     <Layout className="">
       <Helmet title={`${post.frontmatter.title} | NELSON Standards`} />
       <PostArticle postData={post} />
-      <SidebarWithNavigation />
+      <SidebarWithNavigation title="Example sidebar" />
       <Footer />
     </Layout>
   )

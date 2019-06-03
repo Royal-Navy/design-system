@@ -1,6 +1,7 @@
 @import '@royalnavy/css-framework';
 
 $border-radius: 4px;
+$text-color: #253b5b;
 
 .sidebar {
   background-color: #f0f4f8;
@@ -15,12 +16,18 @@ $border-radius: 4px;
   }
 }
 
-.sidebar .rn-nav__item {
-  color: #253b5b;
+.sidebar__title {
+  display: block;
+  padding-bottom: spacing(8);
+  margin-bottom: spacing(8);
+  border-bottom: 1px dashed #8c8c8c;
+  font-size: font-size('s');
+  font-weight: 600;
+  color: $text-color;
 }
 
-.sidebar .rn-nav__list-item.has-children .rn-nav__list {
-  // display: none;
+.sidebar .rn-nav__item {
+  color: $text-color;
 }
 
 .sidebar .rn-nav__list-item.has-children {
@@ -37,8 +44,4 @@ $border-radius: 4px;
 
 .sidebar .rn-nav__list .rn-nav__list {
   padding: initial;
-}
-
-.sidebar .rn-nav__list .rn-nav__list .rn-nav__list {
-  //
 }
