@@ -16,14 +16,7 @@ const CodeHighlighter = ({ example, source, language }) => {
 
   return (
     <article className="code-highlighter">
-      <div className="code-highlighter__head">
-        {example}
-        Pariatur cillum deserunt ex labore adipisicing ad eu minim consequat
-        proident voluptate. Officia consectetur minim irure excepteur tempor ea
-        mollit. Velit in sint consectetur adipisicing. Lorem nostrud anim
-        pariatur aliqua excepteur minim commodo nostrud laboris enim tempor do
-        irure.
-      </div>
+      <div className="code-highlighter__head">{example}</div>
       <div className="code-highlighter__body">
         <button type="button" className="code-highlighter__copy">
           <CopyIcon />
