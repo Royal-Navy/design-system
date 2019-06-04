@@ -1,19 +1,18 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import './code-highlighter.scss'
-
-import hljs from 'highlight.js/lib/highlight'
+import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
-import javascript from 'highlight.js/lib/languages/javascript'
 
-hljs.registerLanguage('javascript', javascript)
+import './code-highlighter.scss'
 
 const CodeHighlighter = ({ example, source, language }) => {
   useEffect(() => {
-    document.querySelectorAll('pre code').forEach(block => {
-      hljs.highlightBlock(block)
-    })
+    setTimeout(() => {
+      document.querySelectorAll('pre code').forEach(block => {
+        hljs.highlightBlock(block)
+      })
+    }, 0)
   }, [])
 
   return (
@@ -25,7 +24,7 @@ const CodeHighlighter = ({ example, source, language }) => {
         </button>
         <div className="code-highlighter__source">
           <pre className={language}>
-            <code>{source}</code>
+            <code>{`${source}`}</code>
           </pre>
         </div>
       </div>
@@ -41,7 +40,7 @@ CodeHighlighter.propTypes = {
 
 CodeHighlighter.defaultProps = {
   example: '',
-  source: '',
+  source: '// No source to display',
   language: 'javascript',
 }
 
