@@ -47,6 +47,7 @@
     "gatsby-transformer-remark": "^2.2.4",
     "gatsby-transformer-sharp": "^2.1.13",
     "gray-matter": "^4.0.2",
+    "highlight.js": "^9.15.8",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.7.1",
     "jest-dom": "^3.1.1",
