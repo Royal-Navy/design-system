@@ -115,5 +115,8 @@
       "name": "HTML",
       "componentPath": "/src/components"
     }
-  ]
+  ],
+  "devDependencies": {
+    "jsdom": "^15.1.1"
+  }
 }
