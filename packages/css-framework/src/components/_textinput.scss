@@ -60,7 +60,7 @@
 
 .rn-textinput--has-focus .rn-textinput__label,
 .rn-textinput--has-content .rn-textinput__label {
-  transform: translate(spacing(3), spacing(1)) scale(0.8);
+  transform: translate(spacing(3), 6px) scale(0.8);
 }
 
 .rn-textinput__input {
