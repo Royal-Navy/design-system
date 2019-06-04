@@ -1,19 +1,37 @@
-.code-highlighter {
+@import '@royalnavy/css-framework';
+@import "theme";
 
+$border-radius: 8px;
+
+.code-highlighter {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #768999;
+  border-radius: $border-radius;
+  background-color: #fff;
+  color: #273b5b;
+  overflow: hidden;
 }
 
 .code-highlighter__head {
-
+  padding: spacing(4);
 }
 
 .code-highlighter__body {
-
+  position: relative;
+  background-color: #0a141b;
 }
 
 .code-highlighter__source {
-
+  background-color: inherit;
 }
 
 .code-highlighter__copy {
-
+  position: absolute;
+  top: spacing(4);
+  right: spacing(4);
+  border: none;
+  background: none;
+  color: #fff;
+  font-size: font-size(s);
 }
