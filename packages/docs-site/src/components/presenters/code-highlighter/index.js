@@ -7,6 +7,8 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
 import './code-highlighter.scss'
 
+import CopyIcon from './copy-icon.svg'
+
 const CodeHighlighter = ({ example, source, language }) => {
   useEffect(() => {
     Prism.highlightAll()
@@ -24,6 +26,7 @@ const CodeHighlighter = ({ example, source, language }) => {
       </div>
       <div className="code-highlighter__body">
         <button type="button" className="code-highlighter__copy">
+          <CopyIcon />
           Copy code
         </button>
         <div className="code-highlighter__source">
