@@ -1,30 +1,31 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-
-import hljs from 'highlight.js'
-import 'highlight.js/styles/github.css'
+import Prism from 'prismjs'
 
 import './code-highlighter.scss'
 
 const CodeHighlighter = ({ example, source, language }) => {
   useEffect(() => {
-    setTimeout(() => {
-      document.querySelectorAll('pre code').forEach(block => {
-        hljs.highlightBlock(block)
-      })
-    }, 0)
+    Prism.highlightAll()
   }, [])
 
   return (
     <article className="code-highlighter">
-      <div className="code-highlighter__head">{example}</div>
+      <div className="code-highlighter__head">
+        {example}
+        Pariatur cillum deserunt ex labore adipisicing ad eu minim consequat
+        proident voluptate. Officia consectetur minim irure excepteur tempor ea
+        mollit. Velit in sint consectetur adipisicing. Lorem nostrud anim
+        pariatur aliqua excepteur minim commodo nostrud laboris enim tempor do
+        irure.
+      </div>
       <div className="code-highlighter__body">
         <button type="button" className="code-highlighter__copy">
           Copy code
         </button>
         <div className="code-highlighter__source">
-          <pre className={language}>
-            <code>{`${source}`}</code>
+          <pre>
+            <code className={`language-${language}`}>{`${source}`}</code>
           </pre>
         </div>
       </div>
