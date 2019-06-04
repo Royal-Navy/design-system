@@ -1,4 +1,5 @@
+import Search from './Search'
 import TriangleUp from './TriangleUp'
 import TriangleDown from './TriangleDown'
 
-export { TriangleDown, TriangleUp }
+export { Search, TriangleDown, TriangleUp }
