@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import Prism from 'prismjs'
@@ -14,14 +14,34 @@ const CodeHighlighter = ({ example, source, language }) => {
     Prism.highlightAll()
   }, [])
 
+  const [copyLabel, setCopyLabel] = useState('Copy code')
+
+  function copyToClipboard() {
+    const textarea = document.createElement('textarea')
+
+    textarea.innerText = source
+    document.body.appendChild(textarea)
+    textarea.select()
+    document.execCommand('copy')
+    textarea.remove()
+
+    setCopyLabel('Code copied')
+  }
+
   return (
     <article className="code-highlighter">
       <div className="code-highlighter__head">{example}</div>
       <div className="code-highlighter__body">
-        <button type="button" className="code-highlighter__copy">
-          <CopyIcon />
-          Copy code
-        </button>
+        {document.queryCommandSupported('copy') && (
+          <button
+            type="button"
+            onClick={copyToClipboard}
+            className="code-highlighter__copy"
+          >
+            <CopyIcon />
+            {copyLabel}
+          </button>
+        )}
         <div className="code-highlighter__source">
           <pre className="line-numbers">
             <code className={`language-${language}`}>{`${source}`}</code>
