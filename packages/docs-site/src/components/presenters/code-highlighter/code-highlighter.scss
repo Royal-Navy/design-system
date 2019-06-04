@@ -27,6 +27,7 @@ $border-radius-button: 4px;
 
 .code-highlighter__source {
   background-color: inherit;
+  font-size: font-size(s);
 
   pre {
     overflow: hidden;
@@ -57,8 +58,8 @@ $border-radius-button: 4px;
 }
 
 .code-highlighter .line-numbers-rows {
-  padding: 2em 0;
-  margin-top: -2em;
+  padding: 2.5em 0;
+  margin-top: -2.5em;
   border: initial;
   background-color: #343b41;
   text-shadow: none;
@@ -66,6 +67,5 @@ $border-radius-button: 4px;
   span::before {
     color: #fff;
     padding-right: 1.4em;
-    font-size: font-size(s);
   }
 }
