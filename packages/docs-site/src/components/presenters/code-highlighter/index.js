@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
+
 import Prism from 'prismjs'
+import 'prismjs/plugins/line-numbers/prism-line-numbers'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
 import './code-highlighter.scss'
 
@@ -24,7 +27,7 @@ const CodeHighlighter = ({ example, source, language }) => {
           Copy code
         </button>
         <div className="code-highlighter__source">
-          <pre>
+          <pre className="line-numbers">
             <code className={`language-${language}`}>{`${source}`}</code>
           </pre>
         </div>
