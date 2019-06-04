@@ -30,13 +30,16 @@ const CodeHighlighter = ({ example, source, language }) => {
 
   return (
     <article className="code-highlighter">
-      <div className="code-highlighter__head">{example}</div>
+      <div className="code-highlighter__head" data-testid="example">
+        {example}
+      </div>
       <div className="code-highlighter__body">
         {document.queryCommandSupported('copy') && (
           <button
             type="button"
             onClick={copyToClipboard}
             className="code-highlighter__copy"
+            data-testid="copy"
           >
             <CopyIcon />
             {copyLabel}
@@ -53,13 +56,13 @@ const CodeHighlighter = ({ example, source, language }) => {
 }
 
 CodeHighlighter.propTypes = {
-  example: PropTypes.string,
+  example: PropTypes.instanceOf(Object),
   source: PropTypes.string,
   language: PropTypes.string,
 }
 
 CodeHighlighter.defaultProps = {
-  example: '',
+  example: {},
   source: '// No source to display',
   language: 'javascript',
 }

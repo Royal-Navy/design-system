@@ -34,6 +34,7 @@ export default function Template({ data }) {
       <PostArticle postData={post} />
       <CodeHighlighter
         language="javascript"
+        example={<h1>This is some example JSX</h1>}
         source="function restructureNodes(nodes) { return nodes.map(node => {}) }"
       />
       <SidebarWithNavigation title="Example sidebar" />
