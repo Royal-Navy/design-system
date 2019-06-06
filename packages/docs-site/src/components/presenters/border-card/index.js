@@ -9,10 +9,14 @@ const BorderCard = ({ title, text, linkText, linkHref }) => {
   return (
     <article className="border-card">
       <header className="border-card__head">
-        <span className="border-card__title">{title}</span>
+        <span className="border-card__title" data-testid="title">
+          {title}
+        </span>
       </header>
       <section className="border-card__body">
-        <p className="border-card__text">{text}</p>
+        <p className="border-card__text" data-testid="text">
+          {text}
+        </p>
         {linkHref && linkText && (
           <a className="border-card__link" href={linkHref}>
             {linkText}
