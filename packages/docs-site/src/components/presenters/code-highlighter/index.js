@@ -30,10 +30,10 @@ const CodeHighlighter = ({ example, source, language }) => {
 
   return (
     <article className="code-highlighter">
-      <div className="code-highlighter__head" data-testid="example">
+      <header className="code-highlighter__head" data-testid="example">
         {example}
-      </div>
-      <div className="code-highlighter__body">
+      </header>
+      <section className="code-highlighter__body">
         {document.queryCommandSupported('copy') && (
           <button
             type="button"
@@ -50,7 +50,7 @@ const CodeHighlighter = ({ example, source, language }) => {
             <code className={`language-${language}`}>{`${source}`}</code>
           </pre>
         </div>
-      </div>
+      </section>
     </article>
   )
 }
