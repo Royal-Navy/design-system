@@ -1,15 +1,15 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import BorderCard from './index'
+import TextCard from './index'
 
-describe('BorderCard', () => {
-  let bordercard
+describe('TextCard', () => {
+  let textcard
 
-  describe('when the BorderCard is generated with name, text, linkText and linkHref props', () => {
+  describe('when the TextCard is generated with name, text, linkText and linkHref props', () => {
     beforeEach(() => {
-      bordercard = render(
-        <BorderCard
+      textcard = render(
+        <TextCard
           title="Example card"
           text="Example text"
           linkText="Example link"
@@ -19,16 +19,16 @@ describe('BorderCard', () => {
     })
 
     it('should link to provided uri', () => {
-      const link = bordercard.getByText('Example link')
+      const link = textcard.getByText('Example link')
       expect(link.getAttribute('href')).toContain('http://test.url')
     })
 
     it('should display the component name', () => {
-      expect(bordercard.getByTestId('title')).toHaveTextContent('Example card')
+      expect(textcard.getByTestId('title')).toHaveTextContent('Example card')
     })
 
     it('should display the component name', () => {
-      expect(bordercard.getByTestId('text')).toHaveTextContent('Example text')
+      expect(textcard.getByTestId('text')).toHaveTextContent('Example text')
     })
   })
 })

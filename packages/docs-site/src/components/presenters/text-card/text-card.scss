@@ -1,0 +1,80 @@
+@import "@royalnavy/css-framework";
+
+$border-radius: 4px;
+$border-color: #dae2ec;
+$card-background-color: #f0f4f8;
+
+.text-card {
+  display: flex;
+  flex-direction: column;
+  color: #253b5b;
+
+  margin: 2em;
+}
+
+.text-card__head {
+  background-color: transparent;
+  padding: spacing(4) spacing(4) 0;
+  font-size: font-size(xl);
+  font-weight: 600;
+}
+
+.text-card__body {
+  padding: 0 spacing(4) spacing(4);
+}
+
+.text-card__body {
+  font-size: font-size(s);
+}
+
+.text-card__text {
+  font-size: font-size(s);
+}
+
+.text-card__link {
+  text-decoration: none;
+  font-weight: 600;
+  color: inherit;
+
+  svg {
+    height: 12px;
+    margin-left: spacing(2);
+  }
+}
+
+.text-card--border {
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 2px 0 rgba(000, 000, 000, .15);
+}
+
+.text-card--border .text-card__head {
+  padding: spacing(4);
+  background-color: $card-background-color;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  font-size: font-size(s);
+  font-weight: normal;
+}
+
+.text-card--coloured {
+  background-color: $card-background-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+}
+
+.text-card--coloured .text-card__head {
+  display: flex;
+  flex-flow: column;
+  font-size: font-size(m);
+}
+
+.text-card--coloured .text-card__text {
+  margin-bottom: 0;
+}
+
+.text-card--coloured .text-card__meta {
+  margin-bottom: spacing(2);
+  font-size: font-size(s);
+  color: #698098;
+}
