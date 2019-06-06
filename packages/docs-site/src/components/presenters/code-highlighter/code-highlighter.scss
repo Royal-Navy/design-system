@@ -9,7 +9,7 @@ $border-radius-button: 4px;
   flex-direction: column;
   border: 2px solid #768999;
   border-radius: $border-radius;
-  background-color: #fff;
+  background-color: color(neutral,white);
   color: #273b5b;
   overflow: hidden;
 }
@@ -42,7 +42,7 @@ $border-radius-button: 4px;
   border: none;
   border-radius: $border-radius-button;
   background: none;
-  color: #fff;
+  color: color(neutral,white);
   font-size: font-size(s);
   z-index: 1;
 
@@ -65,7 +65,7 @@ $border-radius-button: 4px;
   text-shadow: none;
 
   span::before {
-    color: #fff;
+    color: color(neutral,white);
     padding-right: 1.25em;
   }
 }
