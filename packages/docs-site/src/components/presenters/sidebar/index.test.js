@@ -25,4 +25,21 @@ describe('Sidebar', () => {
       expect(sidebar.getByTestId('title')).toHaveTextContent('Example title')
     })
   })
+
+  describe('when the sidebar is called with a custom class', () => {
+    beforeEach(() => {
+      sidebar = render(
+        <Sidebar
+          className="test"
+          navigation={navigation}
+          title="Example title"
+        />
+      )
+    })
+
+    it('should add the class name to the wrapper element', () => {
+      expect(sidebar.getByTestId('wrapper')).toHaveClass('test')
+      expect(sidebar.getByTestId('wrapper')).toHaveClass('sidebar')
+    })
+  })
 })

@@ -1,20 +1,26 @@
 .rn-phase-banner {
   background-color: color(primary, 100);
-  padding: spacing(1) 0;
+  padding: spacing(2);
+}
+
+.rn-phase-banner__container {
+  padding: 0;
+  margin: 0 auto;
+  max-width: $navy-content-width;
 }
 
 .rn-phase-banner__text {
   display: inline-block;
-  margin-left: spacing(1);
   font-size: font-size(xs);
+  vertical-align: text-bottom
 }
 
 .rn-phase-banner__text a {
   color: color(neutral, black);
 }
 
-.rn-phase-banner .rn-badge--solid {
+.rn-phase-banner .rn-badge {
+  margin: 0;
   text-transform: capitalize;
+  margin-right: spacing(1);
 }
-
-
