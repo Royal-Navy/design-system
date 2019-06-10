@@ -34,6 +34,7 @@ const Card = ({
             className={`card__image card__image--position-${imagePosition}`}
             src={imageSrc}
             alt={title}
+            data-testid="image"
           />
         )}
 
