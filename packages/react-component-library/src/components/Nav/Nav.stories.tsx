@@ -3,10 +3,12 @@ import React, { useState } from 'react'
 import { storiesOf } from '@storybook/react'
 import { withKnobs } from '@storybook/addon-knobs'
 
-import { TriangleDown, TriangleUp } from '../../icons'
+import Icons from '../../icons'
 import CustomLink from '../CustomLink'
 import Button from '../Button'
 import Nav from './index'
+
+const { TriangleDown, TriangleUp } = Icons
 
 const stories = storiesOf('Nav', module)
 
@@ -55,13 +57,13 @@ const navItemsWithChildren = [
           },
           {
             href: 'http://testurl.test',
-            label: 'Child 2'
+            label: 'Child 2',
           },
-        ]
+        ],
       },
-    ]
+    ],
   },
-  ...navItems
+  ...navItems,
 ]
 
 stories.add('Vertical', () => <Nav navItems={navItemsWithChildren} />)

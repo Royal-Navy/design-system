@@ -2,12 +2,21 @@
 
 .rn-footer {
   background: color(primary, 800);
-  padding: spacing(6) spacing(6);
+}
+
+.rn-footer > div {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: spacing(4);
 }
 
 @include breakpoint("s") {
   .rn-footer {
     padding: spacing(6) spacing(10);
+  }
+
+  .rn-footer > div {
+    padding: 0;
   }
 }
 

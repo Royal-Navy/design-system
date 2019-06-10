@@ -19,7 +19,7 @@ $text-color: #253b5b;
 .sidebar__title {
   display: block;
   padding-bottom: spacing(8);
-  margin-bottom: spacing(8);
+  margin-bottom: spacing(4);
   border-bottom: 1px dashed #8c8c8c;
   font-size: font-size('s');
   font-weight: 600;
@@ -28,11 +28,11 @@ $text-color: #253b5b;
 
 .sidebar .rn-nav__item {
   color: $text-color;
+  padding: spacing(3);
 }
 
 .sidebar .rn-nav__list-item.has-children {
   background-color: #d2dbe5;
-  border: 1px solid #979797;
   border-radius: $border-radius;
 }
 
@@ -43,5 +43,13 @@ $text-color: #253b5b;
 }
 
 .sidebar .rn-nav__list .rn-nav__list {
-  padding: initial;
+  padding: spacing(2);
+}
+
+.sidebar .rn-nav__list-item + .rn-nav__list-item {
+  margin-top: spacing(2);
+}
+
+.sidebar .rn-nav__list .rn-nav__list .rn-nav__list-item + .rn-nav__list-item {
+  margin-top: unset;
 }
