@@ -54,12 +54,12 @@ const Card = ({
 }
 
 Card.propTypes = {
-  type: PropTypes.string,
+  type: PropTypes.oneOf(['borderless', 'border', 'coloured']),
   title: PropTypes.string,
   meta: PropTypes.string,
   text: PropTypes.string,
   imageSrc: PropTypes.string,
-  imagePosition: PropTypes.string,
+  imagePosition: PropTypes.oneOf(['left', 'right']),
   linkText: PropTypes.string,
   linkHref: PropTypes.string,
 }
