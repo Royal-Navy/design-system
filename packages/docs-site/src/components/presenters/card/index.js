@@ -1,31 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './text-card.scss'
+import './card.scss'
 
 import ArrowRightIcon from './arrow-right-icon.svg'
 
-const TextCard = ({ type, title, meta, text, linkText, linkHref }) => {
+const Card = ({ type, title, meta, text, linkText, linkHref }) => {
   return (
-    <article className={`text-card text-card--${type}`}>
-      <header className="text-card__head">
+    <article className={`card card--${type}`}>
+      <header className="card__head">
         {meta && type === 'coloured' && (
-          <span className="text-card__meta" data-testid="meta">
+          <span className="card__meta" data-testid="meta">
             {meta}
           </span>
         )}
 
-        <span className="text-card__title" data-testid="title">
+        <span className="card__title" data-testid="title">
           {title}
         </span>
       </header>
-      <section className="text-card__body">
-        <p className="text-card__text" data-testid="text">
+      <section className="card__body">
+        <p className="card__text" data-testid="text">
           {text}
         </p>
 
         {linkHref && linkText && type !== 'coloured' && (
-          <a className="text-card__link" href={linkHref}>
+          <a className="card__link" href={linkHref}>
             {linkText}
             <ArrowRightIcon />
           </a>
@@ -35,7 +35,7 @@ const TextCard = ({ type, title, meta, text, linkText, linkHref }) => {
   )
 }
 
-TextCard.propTypes = {
+Card.propTypes = {
   type: PropTypes.string,
   title: PropTypes.string,
   meta: PropTypes.string,
@@ -44,7 +44,7 @@ TextCard.propTypes = {
   linkHref: PropTypes.string,
 }
 
-TextCard.defaultProps = {
+Card.defaultProps = {
   type: 'borderless',
   title: '',
   meta: '',
@@ -53,4 +53,4 @@ TextCard.defaultProps = {
   linkHref: '#',
 }
 
-export default TextCard
+export default Card
