@@ -9,7 +9,7 @@ import DownloadIcon from './download-icon.svg'
 const SketchWidget = ({ name, href }) => {
   return (
     <article className="sketch-widget">
-      <div className="sketch-widget__head">
+      <header className="sketch-widget__head">
         <span className="sketch-widget__title">Name in Sketch toolkit</span>
 
         <a
@@ -21,13 +21,13 @@ const SketchWidget = ({ name, href }) => {
           <DownloadIcon />
           Download Sketch toolkit
         </a>
-      </div>
-      <div className="sketch-widget__body">
+      </header>
+      <section className="sketch-widget__body">
         <SketchLogo className="sketch-widget__sketch-logo" />
         <span data-testid="name" className="sketch-widget__name">
           {name}
         </span>
-      </div>
+      </section>
     </article>
   )
 }
