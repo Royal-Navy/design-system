@@ -5,7 +5,16 @@ import './card.scss'
 
 import ArrowRightIcon from './arrow-right-icon.svg'
 
-const Card = ({ type, title, meta, text, linkText, linkHref }) => {
+const Card = ({
+  type,
+  title,
+  meta,
+  text,
+  imageSrc,
+  imagePosition,
+  linkText,
+  linkHref,
+}) => {
   return (
     <article className={`card card--${type}`}>
       <header className="card__head">
@@ -20,6 +29,14 @@ const Card = ({ type, title, meta, text, linkText, linkHref }) => {
         </span>
       </header>
       <section className="card__body">
+        {imageSrc && type === 'borderless' && (
+          <img
+            className={`card__image card__image--position-${imagePosition}`}
+            src={imageSrc}
+            alt={title}
+          />
+        )}
+
         <p className="card__text" data-testid="text">
           {text}
         </p>
@@ -40,6 +57,8 @@ Card.propTypes = {
   title: PropTypes.string,
   meta: PropTypes.string,
   text: PropTypes.string,
+  imageSrc: PropTypes.string,
+  imagePosition: PropTypes.string,
   linkText: PropTypes.string,
   linkHref: PropTypes.string,
 }
@@ -49,6 +68,8 @@ Card.defaultProps = {
   title: '',
   meta: '',
   text: '',
+  imageSrc: '',
+  imagePosition: 'left',
   linkText: '',
   linkHref: '#',
 }

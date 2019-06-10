@@ -19,10 +19,30 @@ $card-background-color: #f0f4f8;
 
 .card__body {
   padding: 0 spacing(4) spacing(4);
+  font-size: font-size(s);
 }
 
-.card__body {
-  font-size: font-size(s);
+.card__image {
+  display: block;
+  width: 100%;
+  margin-top: spacing(4);
+}
+
+@include breakpoint('s') {
+  .card__image {
+    max-width: 25%;
+    min-width: 10rem;
+  }
+
+  .card__image--position-left {
+    float: left;
+    margin: spacing(4) spacing(4) 0 0;
+  }
+
+  .card__image--position-right {
+    float: right;
+    margin: spacing(4) 0 0 spacing(4);
+  }
 }
 
 .card__text {
