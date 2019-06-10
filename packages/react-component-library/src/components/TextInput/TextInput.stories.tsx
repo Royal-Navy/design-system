@@ -4,9 +4,11 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import * as yup from 'yup'
 
-import { Search } from '../../icons'
+import Icons from '../../icons'
 import Button from '../Button'
 import TextInput from './index'
+
+const { Search } = Icons
 
 const stories = storiesOf('TextInput', module)
 
