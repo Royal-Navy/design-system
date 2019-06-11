@@ -34,7 +34,7 @@ const CodeHighlighter = ({ example, source, language }) => {
         {example}
       </header>
       <section className="code-highlighter__body">
-        {document.queryCommandSupported('copy') && (
+        {document && document.queryCommandSupported('copy') && (
           <button
             type="button"
             onClick={copyToClipboard}
