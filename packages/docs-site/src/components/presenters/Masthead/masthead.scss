@@ -1,0 +1,70 @@
+@import "@royalnavy/css-framework";
+
+$gutter: spacing(3);
+
+.masthead__container {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  max-width: $navy-content-width;
+  margin: $gutter auto;
+  padding: 0 $gutter;
+}
+
+.masthead__logo {
+  width: 280px;
+  margin-bottom: spacing(2);
+}
+
+.masthead__search {
+  display: flex;
+  flex-direction: row;
+  margin: spacing(1) 0;
+}
+
+.masthead__search .rn-textinput {
+  margin: 0;
+}
+
+.masthead__search .rn-btn {
+  margin: 0 0 0 $gutter;
+}
+
+.masthead .rn-nav {
+  display: none;
+}
+
+.masthead .rn-nav.is-open {
+  display: block;
+}
+
+@include breakpoint("s") {
+  .masthead__container {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .masthead__logo {
+    width: 405px;
+    margin-bottom: 0;
+  }
+
+  .masthead__search {
+    margin: 0;
+  }
+
+  .masthead__search .rn-btn {
+    display: none;
+  }
+
+  .masthead .rn-nav {
+    display: block;
+    margin-left: -1rem;
+  }
+
+  .masthead .rn-nav__list-item {
+    display: inline-block;
+    width: auto;
+  }
+}
