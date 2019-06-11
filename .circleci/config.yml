@@ -228,6 +228,27 @@ jobs:
           name: Publish package
           working_directory: packages/vue-component-library
           command: npm publish --registry https://$NPM_REGISTRY
+  test_docs-site:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Build local dependencies
+          command: yarn build
+      - run:
+          name: Jest
+          environment:
+            JEST_JUNIT_OUTPUT: test-results/jest/docs-site-results.xml
+          command: yarn --cwd packages/docs-site jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
+      - store_test_results:
+          path: packages/docs-site/test-results
+      - store_artifacts:
+          path: packages/docs-site/test-results
+      - persist_to_workspace:
+          root: packages
+          paths:
+            - docs-site/coverage
   build_docs-site:
     executor: node
     working_directory: ~/standards-toolkit
@@ -330,12 +351,14 @@ workflows:
             branches:
               only:
                 - master
+      - test_docs-site:
+          requires:
+            - test_react-component-library
+            - test_storybook-react-input-state
+            - test_vue-component-library
       - build_docs-site:
-          filters:
-            branches:
-              only:
-                - develop
-                - master
+          requires:
+            - test_docs-site
       - deploy_docs_site_staging:
           requires:
             - build_docs-site
