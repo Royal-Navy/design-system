@@ -13,7 +13,7 @@ const PhaseBanner: React.FC<PhaseBannerProps> = ({
   link = '/feedback',
 }) => (
   <div className={`rn-phase-banner rn-phase-banner--${phase}`}>
-    <div className="container">
+    <div className="rn-phase-banner__container">
       <Badge size="small" color="primary">
         {phase}
       </Badge>

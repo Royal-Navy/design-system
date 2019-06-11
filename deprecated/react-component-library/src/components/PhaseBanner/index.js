@@ -5,7 +5,7 @@ import Badge from '../Badge'
 
 const PhaseBanner = ({ phase, children, link }) => (
   <div className={`rn-phase-banner rn-phase-banner--${phase}`}>
-    <div className="container">
+    <div className="rn-phase-banner__container">
       <Badge size="small" state="primary" type="solid">
         {phase}
       </Badge>
