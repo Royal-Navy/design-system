@@ -10,7 +10,9 @@ import Footer from '../components/presenters/footer'
 import Layout from '../components/presenters/layout'
 import PostArticle from '../components/presenters/post-article'
 import Sidebar from '../components/presenters/sidebar'
-import CodeHighlighter from '../components/presenters/code-highlighter'
+import MastHead from '../components/presenters/Masthead'
+
+import './default.scss'
 
 const SidebarWithNavigation = withNavigation(Sidebar)
 
@@ -29,15 +31,16 @@ export default function Template({ data }) {
   const { markdownRemark: post } = data
 
   return (
-    <Layout className="">
+    <Layout>
       <Helmet title={`${post.frontmatter.title} | NELSON Standards`} />
-      <PostArticle postData={post} />
-      <CodeHighlighter
-        language="javascript"
-        example={<h1>This is some example JSX</h1>}
-        source="function restructureNodes(nodes) { return nodes.map(node => {}) }"
-      />
-      <SidebarWithNavigation title="Example sidebar" />
+      <MastHead />
+      <main className="main">
+        <PostArticle postData={post} />
+        <SidebarWithNavigation
+          className="aside aside--primary"
+          title="Example sidebar"
+        />
+      </main>
       <Footer />
     </Layout>
   )

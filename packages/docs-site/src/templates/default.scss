@@ -1,0 +1,50 @@
+@import "@royalnavy/css-framework";
+
+.main {
+  display: flex;
+  flex-flow: column;
+  padding: 0;
+  margin: 0 spacing(3);
+}
+
+.aside {
+  display: none;
+}
+
+@include breakpoint("s") {
+  .main {
+    box-sizing: content-box;
+    flex-flow: row wrap;
+    max-width: $navy-content-width;
+    margin: spacing(3) auto;
+    padding: 0 spacing(3);
+  }
+
+  .post-article {
+    margin: 0;
+    order: 2;
+    flex-grow: 1;
+  }
+
+  .aside {
+    display: block;
+    flex: 1 auto;
+    max-width: 240px;
+  }
+
+  .aside--primary {
+    order: 1;
+    margin-right: spacing(5);
+  }
+
+  .aside--secondary {
+    margin-left: spacing(5);
+    order: 3;
+  }
+}
+
+@include breakpoint("l") {
+  .aside {
+    max-width: 320px;
+  }
+}

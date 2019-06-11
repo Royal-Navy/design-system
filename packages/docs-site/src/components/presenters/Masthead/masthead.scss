@@ -4,8 +4,6 @@ $gutter: spacing(3);
 
 .masthead__container {
   box-sizing: content-box;
-  display: flex;
-  flex-direction: column;
   max-width: $navy-content-width;
   margin: $gutter auto;
   padding: 0 $gutter;
@@ -13,7 +11,7 @@ $gutter: spacing(3);
 
 .masthead__logo {
   width: 280px;
-  margin-bottom: spacing(2);
+  margin-bottom: spacing(1);
 }
 
 .masthead__search {
@@ -30,16 +28,17 @@ $gutter: spacing(3);
   margin: 0 0 0 $gutter;
 }
 
-.masthead .rn-nav {
+.masthead__nav {
   display: none;
 }
 
-.masthead .rn-nav.is-open {
+.masthead__nav.is-open {
   display: block;
 }
 
 @include breakpoint("s") {
   .masthead__container {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;

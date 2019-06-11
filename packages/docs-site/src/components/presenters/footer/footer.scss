@@ -5,19 +5,9 @@
 }
 
 .rn-footer > div {
-  max-width: 1280px;
+  max-width: $navy-content-width;
   margin: 0 auto;
-  padding: spacing(4);
-}
-
-@include breakpoint("s") {
-  .rn-footer {
-    padding: spacing(6) spacing(10);
-  }
-
-  .rn-footer > div {
-    padding: 0;
-  }
+  padding: spacing(5) spacing(3);
 }
 
 .rn-footer,

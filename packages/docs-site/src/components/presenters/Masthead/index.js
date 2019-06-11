@@ -79,12 +79,12 @@ const MastHead = () => {
         </Formik>
       </div>
       <PhaseBanner className="masthead__phasebanner" />
-      <div className="masthead__container">
-        <Nav
-          className={open ? 'is-open' : 'is-closed'}
-          orientation="horizontal"
-          navItems={navItems}
-        />
+      <div
+        className={`masthead__container masthead__nav ${
+          open ? 'is-open' : 'is-closed'
+        }`}
+      >
+        <Nav orientation="horizontal" navItems={navItems} />
       </div>
     </div>
   )
