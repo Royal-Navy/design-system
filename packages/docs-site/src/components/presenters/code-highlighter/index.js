@@ -34,17 +34,18 @@ const CodeHighlighter = ({ example, source, language }) => {
         {example}
       </header>
       <section className="code-highlighter__body">
-        {document && document.queryCommandSupported('copy') && (
-          <button
-            type="button"
-            onClick={copyToClipboard}
-            className="code-highlighter__copy"
-            data-testid="copy"
-          >
-            <CopyIcon />
-            {copyLabel}
-          </button>
-        )}
+        {typeof document !== 'undefined' &&
+          document.queryCommandSupported('copy') && (
+            <button
+              type="button"
+              onClick={copyToClipboard}
+              className="code-highlighter__copy"
+              data-testid="copy"
+            >
+              <CopyIcon />
+              {copyLabel}
+            </button>
+          )}
         <div className="code-highlighter__source">
           <pre className="line-numbers">
             <code className={`language-${language}`}>{`${source}`}</code>
