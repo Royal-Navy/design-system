@@ -19,6 +19,7 @@ $gutter: spacing(3);
 .masthead__search {
   display: flex;
   flex-direction: row;
+  margin: spacing(1) 0;
 }
 
 .masthead__search .rn-textinput {
@@ -47,6 +48,10 @@ $gutter: spacing(3);
   .masthead__logo {
     width: 405px;
     margin-bottom: 0;
+  }
+
+  .masthead__search {
+    margin: 0;
   }
 
   .masthead__search .rn-btn {
