@@ -54,7 +54,7 @@
     "node-fs-extra": "^0.8.2",
     "normalize-scss": "^7.0.1",
     "prettier": "^1.16.4",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.16.0",
     "prop-types": "^15.7.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
@@ -115,5 +115,8 @@
       "name": "HTML",
       "componentPath": "/src/components"
     }
-  ]
+  ],
+  "devDependencies": {
+    "jsdom": "^15.1.1"
+  }
 }

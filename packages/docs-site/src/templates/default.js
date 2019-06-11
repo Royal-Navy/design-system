@@ -10,6 +10,7 @@ import Footer from '../components/presenters/footer'
 import Layout from '../components/presenters/layout'
 import PostArticle from '../components/presenters/post-article'
 import Sidebar from '../components/presenters/sidebar'
+import CodeHighlighter from '../components/presenters/code-highlighter'
 
 const SidebarWithNavigation = withNavigation(Sidebar)
 
@@ -31,6 +32,11 @@ export default function Template({ data }) {
     <Layout className="">
       <Helmet title={`${post.frontmatter.title} | NELSON Standards`} />
       <PostArticle postData={post} />
+      <CodeHighlighter
+        language="javascript"
+        example={<h1>This is some example JSX</h1>}
+        source="function restructureNodes(nodes) { return nodes.map(node => {}) }"
+      />
       <SidebarWithNavigation title="Example sidebar" />
       <Footer />
     </Layout>
