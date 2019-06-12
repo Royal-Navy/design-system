@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
+import '../helpers/css/fonts.css'
+
 import '@royalnavy/css-framework/index.scss'
 
 import withNavigation from '../components/enhancers/withNavigation'
