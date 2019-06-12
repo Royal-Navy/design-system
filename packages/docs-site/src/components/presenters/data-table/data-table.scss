@@ -19,6 +19,14 @@ $border-color: #ddd;
   display: none;
 }
 
+.data-table__heading {
+  white-space: nowrap;
+}
+
+.data-table__btn-sort {
+  border: none;
+}
+
 .data-table__row {
   display: block;
   padding: spacing(2);
