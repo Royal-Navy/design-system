@@ -10,9 +10,10 @@ function headings(data) {
   return data.length > 1 ? Object.keys(data[0]) : []
 }
 
-const DataTable = ({ data }) => {
+const DataTable = ({ data, caption }) => {
   return (
     <table className="data-table">
+      <caption className="data-table__caption">{caption}</caption>
       <TableHead headings={headings(data)} />
       <TableBody rows={data} />
     </table>
@@ -21,10 +22,12 @@ const DataTable = ({ data }) => {
 
 DataTable.propTypes = {
   data: PropTypes.instanceOf(Array),
+  caption: PropTypes.string,
 }
 
 DataTable.defaultProps = {
   data: [],
+  caption: '',
 }
 
 export default DataTable

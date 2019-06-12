@@ -1,24 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import uuid from 'uuid'
 
 import TableRow from './table-row'
 
-const TableBody = ({ data }) => {
+const TableBody = ({ rows }) => {
   return (
     <tbody className="data-table__body">
-      {data.map(row => {
-        return <TableRow cells={row} />
+      {rows.map(row => {
+        return <TableRow key={uuid()} cells={row} />
       })}
     </tbody>
   )
 }
 
 TableBody.propTypes = {
-  data: PropTypes.instanceOf(Array),
+  rows: PropTypes.instanceOf(Array),
 }
 
 TableBody.defaultProps = {
-  data: [],
+  rows: [],
 }
 
 export default TableBody

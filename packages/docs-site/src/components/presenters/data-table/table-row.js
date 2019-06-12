@@ -6,8 +6,8 @@ import TableCell from './table-cell'
 const TableRow = ({ cells }) => {
   return (
     <tr className="data-table__row">
-      {cells.map(cell => {
-        return <TableCell content={cell} />
+      {Object.values(cells).map((value, key) => {
+        return <TableCell column={key} content={value} />
       })}
     </tr>
   )
