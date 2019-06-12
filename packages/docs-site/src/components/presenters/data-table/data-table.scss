@@ -1,14 +1,22 @@
 @import "@royalnavy/css-framework";
 
-.data-table {
+$border-color: #ddd;
 
+.data-table {
+  margin: -1px;
+  padding: 0;
+  border: none;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.data-table__caption {
+  padding: 1em 0;
+  caption-side: top;
+  text-align: left;
 }
 
 .data-table__head {
-
-}
-
-.data-table__heading {
 
 }
 
@@ -17,9 +25,50 @@
 }
 
 .data-table__row {
+  display: block;
+  padding: .35em;
+  background-color: #f8f8f8;
+  border: 1px solid $border-color;
+  border-bottom: 3px solid $border-color;
+}
 
+.data-table__heading,
+.data-table__cell {
+  padding: .625em;
+  text-align: center;
 }
 
 .data-table__cell {
+  display: block;
+  border-bottom: 1px solid $border-color;
 
+  &::before {
+    content: attr(data-column);
+    float: left;
+  }
+}
+
+@include breakpoint("m") {
+  .data-table {
+    table-layout: fixed;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+  }
+
+  .data-table__row {
+    display: table-row;
+    border: 1px solid $border-color;
+  }
+
+  .data-table__cell {
+    display: table-cell;
+    border-bottom: unset;
+
+    &::before {
+      display: none;
+    }
+  }
 }
