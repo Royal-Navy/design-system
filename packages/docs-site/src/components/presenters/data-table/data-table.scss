@@ -1,40 +1,36 @@
 @import "@royalnavy/css-framework";
 
+$background-color: #f8f8f8;
 $border-color: #ddd;
 
 .data-table {
-  margin: -1px;
-  padding: 0;
   border: none;
-  clip: rect(0 0 0 0);
   overflow: hidden;
 }
 
 .data-table__caption {
-  padding: 1em 0;
+  padding: spacing(4) 0;
   caption-side: top;
   text-align: left;
+  white-space: nowrap;
 }
 
 .data-table__head {
-
-}
-
-.data-table__body {
-
+  display: none;
 }
 
 .data-table__row {
   display: block;
-  padding: .35em;
-  background-color: #f8f8f8;
+  padding: spacing(2);
+  margin-bottom: spacing(2);
+  background-color: $background-color;
   border: 1px solid $border-color;
   border-bottom: 3px solid $border-color;
 }
 
 .data-table__heading,
 .data-table__cell {
-  padding: .625em;
+  padding: spacing(4);
   text-align: center;
 }
 
@@ -45,21 +41,25 @@ $border-color: #ddd;
   &::before {
     content: attr(data-column);
     float: left;
+    font-weight: 700;
   }
 }
 
 @include breakpoint("m") {
   .data-table {
     table-layout: fixed;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    min-width: 20rem;
     border: 1px solid #ccc;
     border-collapse: collapse;
   }
 
+  .data-table__head {
+    display: table-header-group;
+  }
+
   .data-table__row {
     display: table-row;
+    margin-bottom: unset;
     border: 1px solid $border-color;
   }
 
