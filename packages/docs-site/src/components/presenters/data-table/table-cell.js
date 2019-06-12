@@ -11,7 +11,7 @@ const TableCell = ({ column, content }) => {
 
 TableCell.propTypes = {
   column: PropTypes.string.isRequired,
-  content: PropTypes.string,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }
 
 TableCell.defaultProps = {
