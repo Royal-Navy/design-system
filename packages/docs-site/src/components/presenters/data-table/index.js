@@ -13,7 +13,7 @@ function headings(data) {
 const DataTable = ({ data, caption }) => {
   return (
     <table className="data-table">
-      <caption className="data-table__caption">{caption}</caption>
+      {caption && <caption className="data-table__caption">{caption}</caption>}
       <TableHead headings={headings(data)} />
       <TableBody rows={data} />
     </table>
