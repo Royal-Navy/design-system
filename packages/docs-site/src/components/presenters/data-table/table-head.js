@@ -17,6 +17,7 @@ const TableHead = ({ headings, onClickHeading }) => {
                 type="button"
                 data-column={heading}
                 onClick={onClickHeading}
+                data-testid={`sort-${heading}`}
               >
                 <DownArrowIcon />
               </button>
@@ -29,8 +30,8 @@ const TableHead = ({ headings, onClickHeading }) => {
 }
 
 TableHead.propTypes = {
-  headings: PropTypes.instanceOf(Array),
-  onClickHeading: PropTypes.instanceOf(Function),
+  headings: PropTypes.arrayOf(PropTypes.string),
+  onClickHeading: PropTypes.func,
 }
 
 TableHead.defaultProps = {
