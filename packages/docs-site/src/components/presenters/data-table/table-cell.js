@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const TableCell = ({ column, content }) => {
   return (
     <td data-column={column} className="data-table__cell">
-      {content}
+      {content || 'n/a'}
     </td>
   )
 }
@@ -15,7 +15,7 @@ TableCell.propTypes = {
 }
 
 TableCell.defaultProps = {
-  content: '',
+  content: 'n/a',
 }
 
 export default TableCell
