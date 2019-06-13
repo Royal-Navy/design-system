@@ -1,14 +1,4 @@
 @font-face {
-  font-family: 'Source Code Pro';
-  src: local('Source Code Pro Semibold'),
-        local('SourceCodePro-Semibold'),
-        url('../fonts/source-code-pro-v9-latin-600.woff2') format('woff2'),
-        url('../fonts/source-code-pro-v9-latin-600.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'Lato';
   src: local('Lato Regular'), local('Lato-Regular'),
       url('../fonts/Lato-Regular.woff2') format('woff2'),
