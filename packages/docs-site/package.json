@@ -69,9 +69,6 @@
     "stylelint-junit-formatter": "^0.2.1",
     "uuid": "^3.3.2"
   },
-  "resolutions": {
-    "firebase-tools/**/lodash": "4.17.11"
-  },
   "keywords": [
     "gatsby"
   ],
