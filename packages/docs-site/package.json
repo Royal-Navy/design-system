@@ -27,7 +27,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.12.4",
-    "firebase-tools": "^6.6.0",
+    "firebase-tools": "^7.0.0",
     "gatsby": "^2.0.119",
     "gatsby-image": "^2.0.29",
     "gatsby-plugin-catch-links": "^2.0.10",
