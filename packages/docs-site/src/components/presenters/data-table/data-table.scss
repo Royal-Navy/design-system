@@ -15,10 +15,11 @@ $text-color: #748999;
 
 .data-table__caption {
   caption-side: top;
-  padding: spacing(4) 0;
+  padding: spacing(4) 0 spacing(6);
   text-align: left;
   color: $heading-color;
   font-weight: 700;
+  font-size: font-size(l);
 }
 
 .data-table__head {
@@ -107,6 +108,7 @@ $text-color: #748999;
     border-bottom: unset;
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
+    font-size: font-size(s);
   }
 
   .data-table__head {
