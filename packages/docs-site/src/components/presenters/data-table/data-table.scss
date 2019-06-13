@@ -6,7 +6,8 @@ $border-radius: 4px;
 $heading-color: #3e5667;
 $text-color: #748999;
 
-.data-table {
+.data-table__table {
+  width: 100%;
   border: none;
   font-size: font-size(s);
   color: $text-color;
@@ -100,9 +101,12 @@ $text-color: #748999;
 
 @include breakpoint("m") {
   .data-table {
-    table-layout: fixed;
+    box-shadow: 0 2px 2px 0 rgba(000, 000, 000, 0.05);
+  }
+
+  .data-table__table {
     min-width: 20rem;
-    border: 1px solid $border-color;
+    table-layout: fixed;
     border-collapse: collapse;
   }
 
@@ -110,8 +114,7 @@ $text-color: #748999;
     padding: spacing(4) spacing(6);
     border: 1px solid $border-color;
     border-bottom: unset;
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
+    border-radius: $border-radius $border-radius 0 0;
     font-size: font-size(s);
   }
 
@@ -133,12 +136,14 @@ $text-color: #748999;
     }
   }
 
+  .data-table__row:last-of-type,
   .data-table__row {
     display: table-row;
     margin-bottom: unset;
     border: 1px solid $border-color;
   }
 
+  .data-table__cell:first-of-type,
   .data-table__cell {
     display: table-cell;
     vertical-align: top;
@@ -147,7 +152,6 @@ $text-color: #748999;
     border-bottom: unset;
 
     &:first-of-type {
-      padding: spacing(4) spacing(6);
       font-size: font-size(s);
       color: $heading-color;
     }
