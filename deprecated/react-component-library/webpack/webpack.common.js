@@ -1,5 +1,5 @@
 /* eslint global-require: 0 */
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const path = require('path')
 
