@@ -1,4 +1,12 @@
 @font-face {
+  font-family: 'Roboto Mono';
+  src: local('RobotoMono-Regular'), local('RobotoMono-Regular'),
+      url('../fonts/RobotoMono-Regular.ttf') format('ttf');
+      font-weight: normal;
+      font-style: normal;
+}
+
+@font-face {
   font-family: 'Lato';
   src: local('Lato Regular'), local('Lato-Regular'),
       url('../fonts/Lato-Regular.woff2') format('woff2'),

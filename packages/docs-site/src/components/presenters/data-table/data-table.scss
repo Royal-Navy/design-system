@@ -8,7 +8,6 @@ $text-color: #748999;
 
 .data-table {
   border: none;
-  overflow: hidden;
   font-size: font-size(s);
   color: $text-color;
 }
@@ -68,7 +67,7 @@ $text-color: #748999;
   &::before {
     content: attr(data-column);
     display: inline-block;
-    width: 8rem;
+    width: 10rem;
     padding: spacing(4);
     margin-right: spacing(4);
     border-right: 1px solid $border-color;
@@ -81,11 +80,16 @@ $text-color: #748999;
     padding: 0 0 spacing(4) 0;
     border: none;
     font-size: font-size(m);
-    font-weight: 700;
 
     &::before {
       display: none;
     }
+  }
+
+  &:nth-child(1) span,
+  &:nth-child(3) span,
+  &:nth-child(4) span {
+    font-family: 'Roboto Mono', monospace;
   }
 
   &:last-of-type {
@@ -145,6 +149,7 @@ $text-color: #748999;
     &:first-of-type {
       padding: spacing(4) spacing(6);
       font-size: font-size(s);
+      color: $heading-color;
     }
 
     &::before {

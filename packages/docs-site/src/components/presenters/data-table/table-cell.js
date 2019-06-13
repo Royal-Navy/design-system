@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const TableCell = ({ column, content }) => {
   return (
     <td data-column={column} className="data-table__cell">
-      {content || 'n/a'}
+      <span>{content || 'n/a'}</span>
     </td>
   )
 }
