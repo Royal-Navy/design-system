@@ -3,7 +3,7 @@ import { useStaticQuery } from 'gatsby'
 import mockNavData from '../../jest/data/mockNavData'
 import usePrimaryNavData from './usePrimaryNavData'
 
-describe.only('usePrimaryNavData', () => {
+describe('usePrimaryNavData', () => {
   let result
 
   beforeEach(() => {
