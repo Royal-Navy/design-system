@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 
 import Sidebar from './index'
 
-const navigation = [
+const navItems = [
   {
     href: '',
     label: 'Home',
@@ -16,9 +16,7 @@ describe('Sidebar', () => {
 
   describe('when the sidebar is generated with title and navigation props', () => {
     beforeEach(() => {
-      sidebar = render(
-        <Sidebar navigation={navigation} title="Example title" />
-      )
+      sidebar = render(<Sidebar navItems={navItems} title="Example title" />)
     })
 
     it('should display the title', () => {
@@ -29,11 +27,7 @@ describe('Sidebar', () => {
   describe('when the sidebar is called with a custom class', () => {
     beforeEach(() => {
       sidebar = render(
-        <Sidebar
-          className="test"
-          navigation={navigation}
-          title="Example title"
-        />
+        <Sidebar className="test" navItems={navItems} title="Example title" />
       )
     })
 
