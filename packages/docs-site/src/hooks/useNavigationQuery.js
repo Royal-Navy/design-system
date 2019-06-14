@@ -1,6 +1,6 @@
-import { graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 
-const NavigationQuery = graphql`
+const QUERY = graphql`
   query Navigation {
     allMarkdownRemark {
       edges {
@@ -20,4 +20,12 @@ const NavigationQuery = graphql`
   }
 `
 
-export default NavigationQuery
+const useNavigationQuery = () => {
+  const {
+    allMarkdownRemark: { edges: pages },
+  } = useStaticQuery(QUERY)
+
+  return pages
+}
+
+export default useNavigationQuery

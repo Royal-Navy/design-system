@@ -1,9 +1,8 @@
-import { useStaticQuery } from 'gatsby'
 import sortBy from 'lodash/sortBy'
 import startsWith from 'lodash/startsWith'
 
 import { nestByURLStructure, stripTrailingSlash } from '../utils/nav'
-import NavigationQuery from './NavigationQuery'
+import useNavigationQuery from './useNavigationQuery'
 
 const useSecondaryNavData = location => {
   const checkActive = item => ({
@@ -12,9 +11,7 @@ const useSecondaryNavData = location => {
       stripTrailingSlash(item.href) === stripTrailingSlash(location.pathname),
   })
 
-  const {
-    allMarkdownRemark: { edges: pages },
-  } = useStaticQuery(NavigationQuery)
+  const pages = useNavigationQuery()
 
   const section = nestByURLStructure(pages).find(
     edge => edge.href.length > 1 && startsWith(location.pathname, edge.href)

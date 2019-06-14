@@ -1,13 +1,10 @@
-import { useStaticQuery } from 'gatsby'
 import startsWith from 'lodash/startsWith'
 
 import { nestByURLStructure, stripLeadingSlash } from '../utils/nav'
-import NavigationQuery from './NavigationQuery'
+import useNavigationQuery from './useNavigationQuery'
 
 const usePrimaryNavData = location => {
-  const {
-    allMarkdownRemark: { edges: pages },
-  } = useStaticQuery(NavigationQuery)
+  const pages = useNavigationQuery()
 
   const nested = nestByURLStructure(pages)
   const parsedCurrentLocation = stripLeadingSlash(location.pathname)
