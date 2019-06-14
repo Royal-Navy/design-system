@@ -1,12 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby'
 import startsWith from 'lodash/startsWith'
 
-import {
-  nestByURLStructure,
-  stripLeadingSlash,
-  stripTrailingSlash,
-} from '../utils/nav'
-import { isForXStatement } from '@babel/types'
+import { nestByURLStructure, stripLeadingSlash } from '../utils/nav'
 
 const QUERY = graphql`
   query PrimaryNavigation {
