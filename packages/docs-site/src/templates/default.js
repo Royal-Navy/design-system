@@ -13,6 +13,7 @@ import Layout from '../components/presenters/layout'
 import PostArticle from '../components/presenters/post-article'
 import Sidebar from '../components/presenters/sidebar'
 import MastHead from '../components/presenters/Masthead'
+import usePrimaryNavData from '../hooks/usePrimaryNavData'
 
 import './default.scss'
 
@@ -29,13 +30,14 @@ export const pageQuery = graphql`
   }
 `
 
-export default function Template({ data }) {
+export default function Template({ data, location }) {
+  const primaryNavData = usePrimaryNavData(location)
   const { markdownRemark: post } = data
 
   return (
     <Layout>
       <Helmet title={`${post.frontmatter.title} | NELSON Standards`} />
-      <MastHead />
+      <MastHead navItems={primaryNavData} />
       <main className="main">
         <PostArticle postData={post} />
         <SidebarWithNavigation
@@ -50,4 +52,5 @@ export default function Template({ data }) {
 
 Template.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
 }

@@ -1,3 +1,5 @@
+import { Form, Field, Formik } from 'formik'
+import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import {
   Button,
@@ -5,7 +7,6 @@ import {
   PhaseBanner,
   Icons,
 } from '@royalnavy/react-component-library'
-import { Form, Field, Formik } from 'formik'
 
 import TextInput from '../TextInput'
 import SiteLogo from './images/site-logo.svg'
@@ -14,10 +15,11 @@ import './masthead.scss'
 
 const { Search, TriangleDown, TriangleUp } = Icons
 
-const MastHead = () => {
+const MastHead = ({ navItems }) => {
   const [open, setOpen] = useState(false)
 
   const initialValues = { search: '' }
+  const hasNavItems = navItems.length > 0
 
   const onSubmit = term => {
     console.log('Do a thing:', term)
@@ -26,34 +28,6 @@ const MastHead = () => {
   const toggle = () => {
     setOpen(!open)
   }
-
-  const navItems = [
-    {
-      href: '1',
-      label: 'Get started',
-    },
-    {
-      href: '1',
-      label: 'Styles',
-    },
-    {
-      active: true,
-      href: '1',
-      label: 'Components',
-    },
-    {
-      href: '1',
-      label: 'Patterns',
-    },
-    {
-      href: '1',
-      label: 'Community',
-    },
-    {
-      href: '1',
-      label: 'About',
-    },
-  ]
 
   return (
     <div className="masthead">
@@ -69,25 +43,45 @@ const MastHead = () => {
               placeholder="search"
             />
 
-            <Button
-              onClick={toggle}
-              icon={open ? <TriangleDown /> : <TriangleUp />}
-            >
-              Menu
-            </Button>
+            {hasNavItems && (
+              <Button
+                data-testid="primary-nav-button"
+                onClick={toggle}
+                icon={open ? <TriangleDown /> : <TriangleUp />}
+              >
+                Menu
+              </Button>
+            )}
           </Form>
         </Formik>
       </div>
       <PhaseBanner className="masthead__phasebanner" />
-      <div
-        className={`masthead__container masthead__nav ${
-          open ? 'is-open' : 'is-closed'
-        }`}
-      >
-        <Nav orientation="horizontal" navItems={navItems} />
-      </div>
+      {hasNavItems && (
+        <div
+          data-testid="primary-nav"
+          className={`masthead__container masthead__nav ${
+            open ? 'is-open' : 'is-closed'
+          }`}
+        >
+          <Nav orientation="horizontal" navItems={navItems} />
+        </div>
+      )}
     </div>
   )
+}
+
+MastHead.propTypes = {
+  navItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      active: PropTypes.boolean,
+      href: PropTypes.string,
+      label: PropTypes.string,
+    })
+  ),
+}
+
+MastHead.defaultProps = {
+  navItems: [],
 }
 
 export default MastHead
