@@ -23,8 +23,7 @@ const DataTable = ({ data, caption }) => {
   )
 
   return (
-    <div className="data-table">
-      <table className="data-table__table">
+      <table className="data-table">
         {caption && (
           <caption className="data-table__caption" data-testid="caption">
             {caption}
@@ -36,7 +35,6 @@ const DataTable = ({ data, caption }) => {
         />
         <TableBody rows={tableData} />
       </table>
-    </div>
   )
 }
 

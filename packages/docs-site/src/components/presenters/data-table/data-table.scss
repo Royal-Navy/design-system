@@ -6,7 +6,7 @@ $border-radius: 4px;
 $heading-color: #3e5667;
 $text-color: #748999;
 
-.data-table__table {
+.data-table {
   width: 100%;
   border: none;
   font-size: font-size(s);
@@ -60,7 +60,8 @@ $text-color: #748999;
 }
 
 .data-table__cell {
-  display: block;
+  display: flex;
+  align-items: center;
   padding: 0 spacing(4) 0 0;
   border: 1px solid $border-color;
   border-bottom: none;
@@ -68,7 +69,7 @@ $text-color: #748999;
   &::before {
     content: attr(data-column);
     display: inline-block;
-    width: 10rem;
+    flex: 0 0 10rem;
     padding: spacing(4);
     margin-right: spacing(4);
     border-right: 1px solid $border-color;
@@ -87,6 +88,7 @@ $text-color: #748999;
     }
   }
 
+
   &:nth-child(1) span,
   &:nth-child(3) span,
   &:nth-child(4) span {
@@ -100,21 +102,82 @@ $text-color: #748999;
 }
 
 @include breakpoint("m") {
-  .data-table {
-    box-shadow: 0 2px 2px 0 rgba(000, 000, 000, 0.05);
-  }
 
-  .data-table__table {
+  .data-table {
     min-width: 20rem;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px 0 rgba(000, 000, 000, 0.05);
+    
+    
+    // Table border logic
+    //
+    // Defining all table border & border-radius logic within 
+    // the .data-table class. We have to target the last table
+    // rows and cells, with all border logic being set on the 
+    // table cells themselves, rather than the rows/table.
+   
+    tr {
+      
+      th, td {
+        border-right: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+      }
+
+      th {
+        border-top: 1px solid $border-color;
+        &:first-child {
+          border-top-left-radius: 4px;
+        }
+        &:last-child {
+          border-top-right-radius: 4px;
+        }
+      }
+
+      td {
+        &:first-child {
+          border-right: 1px solid $border-color;
+          border-bottom: 1px solid $border-color;
+        }
+      }
+
+      th:first-child, td:first-child {
+        border-left: 1px solid $border-color;
+      }
+
+      // Target the last table row and set the 
+      // border radius on the first and last element
+      &:last-child {
+        td:first-child {
+          border-bottom-left-radius: 6px;
+        }
+        td:last-child {
+          border-bottom-right-radius: 6px;
+        }
+      }
+    }
+
+    // If there's a caption present, we want to unset the 
+    // border radius at the top of the table so it sits
+    // flush with the caption. The caption itself then takes
+    // over responsibility for the top border radius.
+    &__caption {
+      border: 1px solid $border-color;
+      border-bottom: unset;
+      border-radius: $border-radius $border-radius 0 0;
+      + thead th {
+        &:first-child, 
+        &:last-child {
+          border-radius: unset;
+        }
+      }
+    }
   }
 
   .data-table__caption {
-    padding: spacing(4) spacing(6);
-    border: 1px solid $border-color;
-    border-bottom: unset;
-    border-radius: $border-radius $border-radius 0 0;
-    font-size: font-size(s);
+    padding: spacing(4) spacing(6);    
+    font-size: font-size(s);    
   }
 
   .data-table__head {
@@ -123,7 +186,6 @@ $text-color: #748999;
 
   .data-table__heading {
     padding: spacing(4) spacing(6);
-    border: 1px solid $border-color;
   }
 
   .data-table__btn-sort {
@@ -139,7 +201,6 @@ $text-color: #748999;
   .data-table__row {
     display: table-row;
     margin-bottom: unset;
-    border: 1px solid $border-color;
   }
 
   .data-table__cell:first-of-type,
@@ -147,8 +208,7 @@ $text-color: #748999;
     display: table-cell;
     vertical-align: top;
     padding: spacing(4) spacing(6);
-    border: 1px solid $border-color;
-    border-bottom: unset;
+    border: unset;
 
     &:first-of-type {
       font-size: font-size(s);
