@@ -1,4 +1,4 @@
-$active-border-color: #2a77C7;
+$active-border-color: color(primary, 600);
 
 .rn-tab-set {
   display: flex;
@@ -6,7 +6,7 @@ $active-border-color: #2a77C7;
 }
 
 .rn-tab-set__head {
-  border-bottom: 1px solid #e2e9ee;
+  border-bottom: 1px solid color(neutral, 100);
 }
 
 .rn-tab-set__tabs {
