@@ -17,7 +17,6 @@ $active-border-color: #2a77C7;
 
 .rn-tab-set__tab-item {
   display: inline-block;
-
   border-bottom: 4px solid transparent;
   color: #748999;
 
@@ -33,6 +32,7 @@ $active-border-color: #2a77C7;
   border: none;
   font-size: font-size(xs);
   font-weight: 700;
+  color: inherit;
   text-align: center;
 }
 
