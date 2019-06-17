@@ -19,6 +19,7 @@
     "build": "concurrently \"webpack -p --config=webpack/prod.js\" \"yarn types\"",
     "dev": "concurrently \"webpack --watch --config=webpack/dev.js\" \"yarn types --watch\"",
     "lint": "eslint src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
+    "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
     "storybook": "start-storybook -p 6006",
     "test": "jest",
     "test:watch": "jest --watch",

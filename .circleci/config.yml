@@ -50,7 +50,7 @@ jobs:
           name: Lint
           environment:
             ESLINT_JUNIT_OUTPUT: test-results/eslint/react-component-results.xml
-          command: yarn --cwd packages/react-component-library eslint -f ../../node_modules/eslint-junit/index.js src/* --ext .js --ext .jsx --ext .ts --ext .tsx
+          command: yarn --cwd packages/react-component-library lint:ci
       - store_test_results:
           path: packages/react-component-library/test-results
       - store_artifacts:
