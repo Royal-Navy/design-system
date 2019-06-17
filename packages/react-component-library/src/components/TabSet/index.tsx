@@ -20,7 +20,6 @@ const TabSet: React.FC<TabSetProps> = ({ className = '', tabs }) => {
               return (
                 <li
                   key={uuid()}
-                  data-tab-id={index}
                   className={`rn-tab-set__tab-item ${
                     index === activeTab ? 'is-active' : ''
                   }`}
@@ -46,7 +45,6 @@ const TabSet: React.FC<TabSetProps> = ({ className = '', tabs }) => {
           return (
             <div
               key={uuid()}
-              data-tab-id={index}
               className={`rn-tab-set__content ${
                 index === activeTab ? 'is-active' : ''
               }`}
