@@ -81,7 +81,8 @@
     "watch": "",
     "start": "yarn consolidate-docs && yarn develop",
     "format": "prettier --write \"src/**/*.js\"",
-    "lint": "eslint src --fix",
+    "lint": "eslint src",
+    "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src",
     "test": "jest"
   },
   "browserslist": [

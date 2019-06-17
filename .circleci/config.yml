@@ -55,6 +55,21 @@ jobs:
           path: packages/react-component-library/test-results
       - store_artifacts:
           path: packages/react-component-library/test-results
+  lint_docs_site:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run: mkdir -p packages/docs-site/test-results/eslint
+      - run:
+          name: Lint
+          environment:
+            ESLINT_JUNIT_OUTPUT: test-results/eslint/docs-site-results.xml
+          command: yarn --cwd packages/docs-site lint:ci
+      - store_test_results:
+          path: packages/docs-site/test-results
+      - store_artifacts:
+          path: packages/docs-site/test-results
   lint_storybook-react-input-state:
     executor: node
     steps:
@@ -302,6 +317,7 @@ workflows:
       - lint_react-component-library
       - lint_storybook-react-input-state
       - lint_vue-component-library
+      - lint_docs_site
       - test_react-component-library:
           requires:
             - lint_react-component-library
