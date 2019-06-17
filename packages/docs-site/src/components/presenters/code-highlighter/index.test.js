@@ -28,7 +28,7 @@ describe('CodeHighlighter', () => {
     })
 
     it('should check that browser copy functionality is supported', () => {
-      expect(queryCommandSupported).toBeCalledWith('copy')
+      expect(queryCommandSupported).toHaveBeenCalledWith('copy')
     })
   })
 })
