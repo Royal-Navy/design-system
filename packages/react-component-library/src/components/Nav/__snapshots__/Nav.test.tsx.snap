@@ -9,7 +9,7 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
   >
     <li
       className="rn-nav__list-item "
-      key="1"
+      key="6"
     >
       <NavItem
         href="http://testurl.test"
@@ -18,7 +18,7 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
     </li>
     <li
       className="rn-nav__list-item "
-      key="1"
+      key="7"
     >
       <NavItem
         href="http://testurl.test"
@@ -27,7 +27,7 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
     </li>
     <li
       className="rn-nav__list-item "
-      key="1"
+      key="8"
     >
       <NavItem
         active={true}
@@ -37,7 +37,7 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
     </li>
     <li
       className="rn-nav__list-item "
-      key="1"
+      key="9"
     >
       <NavItem
         href="http://testurl.test"
@@ -46,7 +46,7 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
     </li>
     <li
       className="rn-nav__list-item "
-      key="1"
+      key="10"
     >
       <NavItem
         href="http://testurl.test"
