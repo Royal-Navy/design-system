@@ -23,11 +23,11 @@ describe('Card', () => {
       expect(link.getAttribute('href')).toContain('http://test.url')
     })
 
-    it('should display the component name', () => {
+    it('should display the component title', () => {
       expect(card.getByTestId('title')).toHaveTextContent('Example card')
     })
 
-    it('should display the component name', () => {
+    it('should display the component body text', () => {
       expect(card.getByTestId('text')).toHaveTextContent('Example text')
     })
 
