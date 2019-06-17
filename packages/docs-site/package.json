@@ -50,6 +50,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.7.1",
     "jest-dom": "^3.1.1",
+    "lint-staged": "^8.2.1",
     "lodash": "^4.17.11",
     "node-fs-extra": "^0.8.2",
     "normalize-scss": "^7.0.1",
@@ -116,5 +117,8 @@
   "devDependencies": {
     "formik": "^1.5.7",
     "jsdom": "^15.1.1"
+  },
+  "lint-staged": {
+    "*.@(js|jsx|ts|tsx)": "eslint"
   }
 }

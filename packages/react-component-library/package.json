@@ -79,7 +79,7 @@
     "image-webpack-loader": "^4.6.0",
     "jest": "^24.8.0",
     "jest-junit": "^6.4.0",
-    "lint-staged": "^8.1.7",
+    "lint-staged": "^8.2.1",
     "prettier": "^1.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
