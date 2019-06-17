@@ -27,11 +27,11 @@ describe('Button', () => {
       })
 
       it('should call the handler when the button is clicked', () => {
-        expect(onClick).toBeCalled()
+        expect(onClick).toHaveBeenCalled()
       })
 
       it('should blur the button so it does not remain active', () => {
-        expect(event.currentTarget.blur).toBeCalled()
+        expect(event.currentTarget.blur).toHaveBeenCalled()
       })
     })
   })
