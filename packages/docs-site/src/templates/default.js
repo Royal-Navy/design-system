@@ -7,17 +7,14 @@ import '../helpers/css/fonts.css'
 
 import '@royalnavy/css-framework/index.scss'
 
-import withNavigation from '../components/enhancers/withNavigation'
 import Footer from '../components/presenters/footer'
 import Layout from '../components/presenters/layout'
 import PostArticle from '../components/presenters/post-article'
 import Sidebar from '../components/presenters/sidebar'
 import MastHead from '../components/presenters/Masthead'
-import usePrimaryNavData from '../hooks/usePrimaryNavData'
+import { usePrimaryNavData, useSecondaryNavData } from '../hooks'
 
 import './default.scss'
-
-const SidebarWithNavigation = withNavigation(Sidebar)
 
 export const pageQuery = graphql`
   query PageBySlug($slug: String!) {
@@ -32,7 +29,9 @@ export const pageQuery = graphql`
 
 export default function Template({ data, location }) {
   const primaryNavData = usePrimaryNavData(location)
+  const secondaryNavData = useSecondaryNavData(location)
   const { markdownRemark: post } = data
+  const hasSecondaryNav = secondaryNavData && secondaryNavData.length > 0
 
   return (
     <Layout>
@@ -40,10 +39,12 @@ export default function Template({ data, location }) {
       <MastHead navItems={primaryNavData} />
       <main className="main">
         <PostArticle postData={post} />
-        <SidebarWithNavigation
-          className="aside aside--primary"
-          title="Example sidebar"
-        />
+        {hasSecondaryNav && (
+          <Sidebar
+            className="aside aside--primary"
+            navItems={secondaryNavData}
+          />
+        )}
       </main>
       <Footer />
     </Layout>
