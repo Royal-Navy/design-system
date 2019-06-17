@@ -5,25 +5,31 @@ import './sidebar.scss'
 
 import { Nav } from '@royalnavy/react-component-library'
 
-const Sidebar = ({ className, navigation, title }) => (
+const Sidebar = ({ className, navItems, title }) => (
   <aside data-testid="wrapper" className={`sidebar ${className}`}>
-    {title && (
+    {title && title.length > 0 && (
       <span data-testid="title" className="sidebar__title">
         {title}
       </span>
     )}
-    <Nav navItems={navigation} orientation="vertical" size="large" />
+    <Nav navItems={navItems} orientation="vertical" size="large" />
   </aside>
 )
 
 Sidebar.propTypes = {
   className: PropTypes.string,
-  navigation: PropTypes.instanceOf(Array),
+  navItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      active: PropTypes.boolean,
+      href: PropTypes.string,
+      label: PropTypes.string,
+    })
+  ),
   title: PropTypes.string,
 }
 
 Sidebar.defaultProps = {
-  navigation: [],
+  navItems: [],
   title: '',
   className: '',
 }
