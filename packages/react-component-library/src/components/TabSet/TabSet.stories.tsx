@@ -17,5 +17,3 @@ const tabData = [
 const stories = storiesOf('TabSet', module)
 
 stories.add('Default', () => <TabSet tabs={tabData} />)
-
-stories.add('With JSX content', () => <TabSet tabs={tabData} />)
