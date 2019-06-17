@@ -24,10 +24,12 @@ const TabSet: React.FC<TabSetProps> = ({ className = '', tabs }) => {
                   className={`rn-tab-set__tab-item ${
                     index === activeTab ? 'is-active' : ''
                   }`}
+                  data-testid="tab"
                 >
                   <button
                     className="rn-tab-set__tab"
                     onClick={() => setActiveTab(index)}
+                    data-testid={`select-tab-${index}`}
                   >
                     {title}
                   </button>
@@ -48,6 +50,7 @@ const TabSet: React.FC<TabSetProps> = ({ className = '', tabs }) => {
               className={`rn-tab-set__content ${
                 index === activeTab ? 'is-active' : ''
               }`}
+              data-testid="content"
             >
               {content}
             </div>
