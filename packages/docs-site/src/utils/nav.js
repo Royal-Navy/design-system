@@ -1,5 +1,3 @@
-import { StaticQuery, graphql } from 'gatsby'
-import React from 'react'
 import sortBy from 'lodash/sortBy'
 
 /**
@@ -8,8 +6,18 @@ import sortBy from 'lodash/sortBy'
  * @param {string} href
  * @returns {string}
  */
-function stripTrailingSlash(href) {
+export function stripTrailingSlash(href) {
   return href.endsWith('/') && href !== '/' ? href.slice(0, -1) : href
+}
+
+/**
+ * Strip leading slash from a URI, excluding a root node.
+ *
+ * @param {string} href
+ * @returns {string}
+ */
+export function stripLeadingSlash(href) {
+  return href.charAt(0) === '/' ? href.substring(1) : href
 }
 
 /**
@@ -19,7 +27,7 @@ function stripTrailingSlash(href) {
  * @param {array} nodes
  * @returns {array}
  */
-function restructureNodes(nodes) {
+export function restructureNodes(nodes) {
   return nodes.map(node => {
     return {
       href: stripTrailingSlash(node.node.fields.slug),
@@ -35,7 +43,7 @@ function restructureNodes(nodes) {
  * @param {array} nodes
  * @returns {array}
  */
-function nestByURLStructure(nodes) {
+export function nestByURLStructure(nodes) {
   const tree = []
 
   function addToTree(node, parents) {
@@ -68,38 +76,3 @@ function nestByURLStructure(nodes) {
 
   return tree
 }
-
-const withNavigation = BaseComponent => props => (
-  <StaticQuery
-    query={graphql`
-      query Navigation {
-        allMarkdownRemark {
-          edges {
-            node {
-              id
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                status
-                index
-              }
-            }
-          }
-        }
-      }
-    `}
-    render={data => {
-      const {
-        allMarkdownRemark: { edges: pages },
-      } = data
-
-      const nested = nestByURLStructure(pages)
-
-      return <BaseComponent {...props} navigation={nested} />
-    }}
-  />
-)
-
-export default withNavigation

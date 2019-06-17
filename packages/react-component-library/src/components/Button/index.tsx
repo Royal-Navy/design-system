@@ -3,6 +3,7 @@ import React from 'react'
 interface ButtonProps {
   className?: string
   color?: 'danger'
+  testId?: string
   icon?: React.ReactNode
   onClick?: (event: React.SyntheticEvent) => void
   size?: 'small' | 'regular' | 'large' | 'xlarge'
@@ -19,6 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   size,
   type = 'button',
   variant,
+  ...rest
 }) => (
   <button
     className={`rn-btn rn-btn--${variant} ${
@@ -29,6 +31,7 @@ const Button: React.FC<ButtonProps> = ({
       e.currentTarget.blur()
       onClick(e)
     }}
+    {...rest}
   >
     {children}
     {icon && <span className="rn-btn__icon">{icon}</span>}
