@@ -23,18 +23,18 @@ const DataTable = ({ data, caption }) => {
   )
 
   return (
-      <table className="data-table">
-        {caption && (
-          <caption className="data-table__caption" data-testid="caption">
-            {caption}
-          </caption>
-        )}
-        <TableHead
-          headings={extractHeadings(tableData)}
-          onClickHeading={sortByColumn}
-        />
-        <TableBody rows={tableData} />
-      </table>
+    <table className="data-table">
+      {caption && (
+        <caption className="data-table__caption" data-testid="caption">
+          {caption}
+        </caption>
+      )}
+      <TableHead
+        headings={extractHeadings(tableData)}
+        onClickHeading={sortByColumn}
+      />
+      <TableBody rows={tableData} />
+    </table>
   )
 }
 

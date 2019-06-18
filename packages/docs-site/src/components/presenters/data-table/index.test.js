@@ -88,7 +88,7 @@ describe('TableHead', () => {
       })
 
       it('should invoke the sortByColumn callback', () => {
-        expect(sortByColumn).toBeCalled()
+        expect(sortByColumn).toHaveBeenCalled()
       })
     })
   })
