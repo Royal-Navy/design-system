@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, RenderResult } from '@testing-library/react'
 
 import TabSet from './index'
 
@@ -15,7 +15,7 @@ const tabData: any[] = [
 ]
 
 describe('TabSet', () => {
-  let tabset: any
+  let tabset: RenderResult
   let onChangeCallback: () => void
 
   describe('when the TabSet is generated with tabs and onChangeCallback props', () => {
