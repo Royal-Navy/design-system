@@ -16,4 +16,11 @@ const tabData = [
 
 const stories = storiesOf('TabSet', module)
 
-stories.add('Default', () => <TabSet tabs={tabData} />)
+stories.add('Default', () => (
+  <TabSet
+    tabs={tabData}
+    onChangeCallback={(id, name) => {
+      console.log(id, name)
+    }}
+  />
+))

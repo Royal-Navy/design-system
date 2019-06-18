@@ -16,10 +16,15 @@ const tabData: any[] = [
 
 describe('TabSet', () => {
   let tabset: any
+  let onChangeCallback: () => void
 
-  describe('when the TabSet is generated with tabs prop', () => {
+  describe('when the TabSet is generated with tabs and onChangeCallback props', () => {
+    onChangeCallback = jest.fn()
+
     beforeEach(() => {
-      tabset = render(<TabSet tabs={tabData} />)
+      tabset = render(
+        <TabSet tabs={tabData} onChangeCallback={onChangeCallback} />
+      )
     })
 
     it('should output the correct number of tabs', () => {
@@ -44,6 +49,10 @@ describe('TabSet', () => {
         expect(
           tabset.getAllByTestId('tab')[0].classList.contains('is-active')
         ).toBe(true)
+      })
+
+      it('should invoke the onChangeCallback function', () => {
+        expect(onChangeCallback).toHaveBeenCalled()
       })
     })
   })

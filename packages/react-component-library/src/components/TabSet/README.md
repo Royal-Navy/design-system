@@ -22,7 +22,7 @@ const tabs = [
   },
 ]
 
-<TabSet tabs={tabs} />
+<TabSet tabs={tabs} onChangeCallback={(id, name) => { console.log(id, name) }} />
 ```
 
 ## Properties
@@ -31,5 +31,6 @@ const tabs = [
 | Name        | Type           | Required | Default  | Description
 | ---------   | -------------- | -------- | -------  | -----------
 | className   | string         | False    |          | Optional extra css class to attach to the wrapper element
-| tabs        | Array<any>     | True     |          | An array of tab names and asssociated content |
+| tabs        | Array<any>     | True     |          | An array of tab names and asssociated content
+| onChangeCallback | Function<any>     | False     |          | A callback function invoked when the active tab is changed |
 
