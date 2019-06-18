@@ -30,6 +30,7 @@ describe('TabSet', () => {
     it('should output the correct number of tabs', () => {
       expect(tabset.queryAllByTestId('tab').length).toEqual(2)
     })
+
     it('should output the correct number of content panels', () => {
       expect(tabset.queryAllByTestId('content').length).toEqual(2)
     })
