@@ -150,7 +150,7 @@ $text-color: #748999;
       // border radius on the first and last element
       &:last-child {
         td:first-child {
-          border-bottom-left-radius: 6px;
+          border-bottom-left-radius: $border-radius;
         }
         td:last-child {
           border-bottom-right-radius: $border-radius;
