@@ -4,7 +4,7 @@ import uuid from 'uuid'
 interface TabSetProps {
   className?: string
   tabs: any[]
-  onChangeCallback: (id: number, title: string) => void
+  onChangeCallback?: (id: number, title: string) => void
 }
 
 const TabSet: React.FC<TabSetProps> = ({
