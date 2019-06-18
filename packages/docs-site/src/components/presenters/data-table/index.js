@@ -8,7 +8,7 @@ import TableHead from './table-head'
 import TableBody from './table-body'
 
 function extractHeadings(data) {
-  return data.length > 1 ? Object.keys(data[0]) : []
+  return data.length >= 1 ? Object.keys(data[0]) : []
 }
 
 const DataTable = ({ data, caption }) => {
