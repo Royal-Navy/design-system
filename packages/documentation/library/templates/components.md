@@ -6,52 +6,158 @@ pageClasses: ''
 template: withsidebar
 ---
 
-# Introduction
+# Component Title
+Introduction paragraph to the component.
 
-Introduce the component here. State what it is used for and any other information relating to the component.
+[ Image / interactive example of Component ]
 
-## Basic Example
+## Usage
+The usage section is a bullet pointed list of scenarios the component should be used in.
 
-The basic example shows the component in it's basic form. If the component has state variation (e.g. Success, Danger etc), then show these here.
-Do not include other modifiers - they should have their own dedicated section below this example.
+<DocsTabs>
+<Tab title=“Design”>
 
-<div class="example">
-  <button class="rn-button neutral">Button</button>
-</div>
-```html
-  <button class="rn-button neutral">Button</button>
+# Design
+Introduction to the design section.
+
+## Anatomy
+The Anatomy is the breakdown of the component.
+
+[ Image breaking down the component’s anatomy ]
+
+Each part of the component in the image should be labelled with a number. Underneath, create a list of each of the labeled items, explaining what they are. This list should also indicate to the reader whenever an item is an optional include.
+
+Any specific notes on a part of the anatomy breakdown should be included here. This includes dos and don’ts with accompanying image examples.
+
+## Sizing & Spacing
+Much like the Anatomy section, the Sizing & Spacing section should be a breakdown of the construction of the component. Red line guides should be added to the component, showing the spacing between the different anatomy parts.
+
+## States (if applicable) 
+This section covers all the different component states including its default state, hover, active, and disabled.
+[ Image / interactive example of component states ]
+
+## Hierarchy & Placement
+This section covers how a component should sit within an application’s hierarchy. It also provides insight as when to use the different variations listed below.
+
+---
+
+### Variation [ Repeatable Section ] 
+Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
+
+[ Image / interactive example of Component ]
+
+#### Usage
+
+#### Anatomy
+[ Image breaking down the component’s anatomy ]
+
+### Sizing & Spacing
+[ Image of component with red guide lines overlaid ]
+
+### States (if applicable)
+[ Image / interactive example of component states ]
+
+### Hierarchy & Placement
+
+---
+
+### Adornments [ Repeatable Section ]
+Include any component adornments here. Much like the variations section above, this section is repeatable.
+
+[ Image / interactive example of Component ]
+
+#### Usage
+
+#### Anatomy
+[ Image breaking down the component’s anatomy ]
+
+### Sizing & Spacing
+[ Image of component with red guide lines overlaid ]
+
+### States (if applicable)
+[ Image / interactive example of component states ]
+
+</Tab>
+
+<Tab title=“Develop”>
+
+# Develop
+Introduction to the development section.
+
+## Installation
+To install the COMPONENT_NAME component, first install the Standards Component Library via `npm`.
+
+```
+    npm install @royalnavy/react-component-library
 ```
 
-## Class Modifiers [REPEATABLE]
+Then inside your project, explicitly import the component you need:
 
-Repeat this section to show other classes that are available to the component - you may show size variations, for example. Always ensure an example and code block of the class being demonstrated are included.
+```
+    import { ComponentName } from '@royalnavy/react-component-library'`
+```
 
-<div class="example">
-  <button class="rn-button neutral small">Button</button>
-</div>
-```html
-  <button class="rn-button neutral small">Button</button>
+## Basic Usage
+
+```
+    Basic HTML for the component is placed here.
 ```
 
 ---
 
-# React
+### Variation [ Repeatable ] 
+Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
 
-Show how to import the React component, and the html to implement it.
+### Usage
 
-```js
-  @import RNButton from '@Royal-navy/React/RNButton';
-  <RNButton state="">Button</RNButton>
+```
+    Code block for differing HTML
 ```
 
-## Props
+# Properties
+This section contains specific properties for the component.
 
-Prop Name    | Value           | Required
------------- | --------------- | --------
-**initials** | `{String}`      | false
-**size**     | `small` `large` | false
+| Name      | Type   | Required | Default  | Description  |
+-----------------------------------------------------------
+| className | String | True     |          |              |
+
+---
+
+### Adornment [ Repeatable ]
+Much like the design section, the Adornment block is a repeatable section, outlining any Adornments a component may have and how to apply them.
+
+[ Image / interactive example of Component ]
+
+#### Usage
+
+```
+    Code block for Adornment
+```
+
+# Properties
+This section contains specific properties for the adornment.
+
+| Name         | Type    | Required  | Default  | Description  |
+----------------------------------------------------------------
+| className    | String  | True      |          |              |
+
+---
+
+## Style Hooks
+
+The following CSS classes are used to style the COMPONENT_NAME component. Use these classes to hook into the component if you need to override specific properties.
+
+| CSS Class  | Required  | Description      |
+---------------------------------------------
+| .class     | True      | The main styles  |
 
 
-## Storybook
+# Properties
+This section contains all available props for the component.
 
-To view all the variations of this component, including interactive examples, please visit our [Storybook]().
+| Name       | Type     | Required  | Default  | Description  |
+---------------------------------------------------------------
+| className  | String   | True      |          |              |
+
+</Tab>
+</DocsTabs>
