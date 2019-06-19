@@ -1,3 +1,5 @@
+const sass = require('sass')
+
 module.exports = {
   siteMetadata: {
     title: `Nelson Design System`,
@@ -5,13 +7,14 @@ module.exports = {
     author: `NELSON Standards`,
   },
   plugins: [
+    `gatsby-mdx`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
     'gatsby-plugin-react-svg',
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        implementation: require('sass'),
+        implementation: sass,
       },
     },
     {
