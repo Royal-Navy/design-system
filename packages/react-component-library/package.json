@@ -17,6 +17,8 @@
   "license": "MIT",
   "scripts": {
     "build": "concurrently \"webpack -p --config=webpack/prod.js\" \"yarn types\"",
+    "build:dev": "concurrently \"webpack -p --config=webpack/dev.js\" \"yarn types\"",
+    "build:analyze": "concurrently \"webpack -p --config=webpack/analyze.js\" \"yarn types\"",
     "dev": "concurrently \"webpack --watch --config=webpack/dev.js\" \"yarn types --watch\"",
     "lint": "eslint src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
     "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
@@ -90,6 +92,7 @@
     "style-loader": "^0.23.1",
     "typescript": "^3.4.5",
     "webpack": "^4.31.0",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.2",
     "webpack-merge": "^4.2.1",
     "yup": "^0.27.0"
@@ -101,5 +104,8 @@
     "not op_mini all",
     "ie 11",
     "chrome >= 38"
+  ],
+  "files": [
+    "dist"
   ]
 }

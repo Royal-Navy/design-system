@@ -1,6 +1,8 @@
 // production config
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { resolve } = require('path')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 const merge = require('webpack-merge')
 
 const commonConfig = require('./common')
@@ -13,7 +15,7 @@ module.exports = merge(commonConfig, {
     libraryTarget: 'commonjs2',
   },
   devtool: 'source-map',
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [new CleanWebpackPlugin(), new BundleAnalyzerPlugin()],
   externals: {
     react: {
       root: 'React',
