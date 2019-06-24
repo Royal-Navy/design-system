@@ -62,7 +62,7 @@ const navItems = [
 | Name        | Type           | Required | Default  | Description
 | ---------   | -------------- | -------- | -------  | -----------
 | className   | string         | False    |          | Optional extra css class to attach to the wrapper element
-| navItems    | Array<any>     | True     |          | An array of navigation items using the format described below |
+| navItems    | Array\<any\>     | True     |          | An array of navigation items using the format described below |
 | orientation | string (horizontal/vertical)| False    | vertical | The direction to display the items.  |
 | size        | string (small/regular/large/xlarge) | False    | regular  | The font size for items  |
 
