@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import {
   Button,
+  Icons,
   Nav,
   PhaseBanner,
-  Icons,
+  TextInput,
 } from '@royalnavy/react-component-library'
 
-import TextInput from '../TextInput'
 import SiteLogo from './images/site-logo.svg'
 
 import './masthead.scss'

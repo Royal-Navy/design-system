@@ -9,9 +9,22 @@ module.exports = merge(commonConfig, {
   output: {
     filename: 'index.js',
     path: resolve(__dirname, '../dist'),
-    libraryTarget: 'umd',
-    library: 'navycomponents',
-    umdNamedDefine: true,
+    libraryTarget: 'commonjs2',
   },
   devtool: 'cheap-module-eval-source-map',
+  externals: {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react',
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+      umd: 'react-dom',
+    },
+  },
 })
