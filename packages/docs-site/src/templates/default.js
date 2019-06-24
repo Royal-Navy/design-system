@@ -1,19 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
+import { Masthead } from '@royalnavy/react-component-library'
 import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Helmet } from 'react-helmet'
 
 import '../helpers/css/fonts.css'
 import '@royalnavy/css-framework/index.scss'
 
 import './default.scss'
 
-import Layout from '../components/presenters/layout'
-import MastHead from '../components/presenters/Masthead'
-import Sidebar from '../components/presenters/sidebar'
-import PostArticle from '../components/presenters/post-article'
 import Footer from '../components/presenters/footer'
-
+import Layout from '../components/presenters/layout'
+import PostArticle from '../components/presenters/post-article'
+import Sidebar from '../components/presenters/sidebar'
 import { usePrimaryNavData, useSecondaryNavData } from '../hooks'
 
 export const pageQuery = graphql`
@@ -38,7 +37,7 @@ const PageTemplate = ({ data: { mdx }, location }) => {
   return (
     <Layout>
       <Helmet title={`${mdx.frontmatter.title} | NELSON // Standards`} />
-      <MastHead navItems={primaryNavData} />
+      <Masthead navItems={primaryNavData} phase="alpha" title="STANDARDS" />
       <main className="main">
         <PostArticle mdx={mdx.code.body} />
         {hasSecondaryNav && (
