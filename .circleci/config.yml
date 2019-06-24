@@ -249,8 +249,8 @@ jobs:
       - checkout
       - dependencies
       - run:
-          name: Build local dependencies
-          command: yarn build
+          name: Build React Components
+          command: yarn --cwd packages/react-component-library build:dev
       - run:
           name: Jest
           environment:
