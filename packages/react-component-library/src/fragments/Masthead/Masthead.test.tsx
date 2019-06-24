@@ -1,10 +1,11 @@
+import 'jest-dom/extend-expect'
 import React from 'react'
-import { render, getByText } from '@testing-library/react'
+import { render, getByText, RenderResult } from '@testing-library/react'
 
 import Masthead from './index'
 
 describe('Masthead', () => {
-  let wrapper
+  let wrapper: RenderResult
 
   describe('Given the masthead is called with navigaton items', () => {
     beforeEach(() => {
@@ -52,6 +53,10 @@ describe('Masthead', () => {
     it('should include a menu button to show/hide the nav items', () => {
       expect(wrapper.getByTestId('primary-nav-button')).toBeInTheDocument()
     })
+
+    it('should not include a title', () => {
+      expect(wrapper.queryByTestId('title')).not.toBeInTheDocument()
+    })
   })
 
   describe('Given the Masthead is called with no navigation items', () => {
@@ -65,6 +70,17 @@ describe('Masthead', () => {
 
     it('should not include the menu button', () => {
       expect(wrapper.queryByTestId('primary-nav-button')).toBeNull()
+    })
+  })
+
+  describe('Given a title is past into the masthead', () => {
+    beforeEach(() => {
+      wrapper = render(<Masthead title="Test Title" />)
+    })
+
+    it('should include a title in the markup', () => {
+      expect(wrapper.queryByTestId('title')).toBeInTheDocument()
+      expect(wrapper.queryByTestId('title')).toHaveTextContent('Test Title')
     })
   })
 })
