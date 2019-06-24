@@ -3,10 +3,9 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, text } from '@storybook/addon-knobs'
 
-import Icons from '../../icons'
+import { TriangleDown, TriangleUp } from '../../icons'
 import Button from './index'
 
-const { TriangleDown, TriangleUp } = Icons
 const stories = storiesOf('Button', module)
 
 stories.addDecorator(withKnobs)
