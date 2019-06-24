@@ -7,7 +7,6 @@ module.exports = {
     author: `NELSON Standards`,
   },
   plugins: [
-    `gatsby-mdx`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
     'gatsby-plugin-react-svg',
@@ -67,25 +66,12 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: `gatsby-mdx`,
       options: {
-        gfm: true,
-        plugins: [
-          'gatsby-remark-attr',
-          'gatsby-remark-component',
-          'gatsby-remark-prismjs',
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 720,
-              linkImagesToOriginal: false,
-              quality: 90,
-            },
-          },
-        ],
+        extensions: [`.mdx`, `.md`],
+        defaultLayouts: {
+          default: require.resolve('./src/templates/default.js'),
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
