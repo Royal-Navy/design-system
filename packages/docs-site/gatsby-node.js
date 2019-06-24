@@ -16,9 +16,10 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allMdx(limit: 1000) {
         edges {
           node {
+            id
             fields {
               slug
             }
@@ -33,9 +34,8 @@ exports.createPages = ({ actions, graphql }) => {
     if (result.errors) {
       return Promise.reject(result.errors)
     }
-    return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      // Use a template if specified in mardown frontmatter,
-      // otherwise use the default template
+
+    return result.data.allMdx.edges.forEach(({ node }) => {
       const component = node.frontmatter.template
         ? templateRegister[node.frontmatter.template]
         : templateRegister.default
@@ -44,7 +44,7 @@ exports.createPages = ({ actions, graphql }) => {
         path: node.fields.slug,
         component,
         context: {
-          slug: node.fields.slug,
+          id: node.id,
         },
       })
     })
@@ -54,9 +54,9 @@ exports.createPages = ({ actions, graphql }) => {
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
-  // Add slug to MarkdownRemark node
-  if (node.internal.type === 'MarkdownRemark') {
+  if (node.internal.type === 'Mdx') {
     const slug = createFilePath({ node, getNode, basePath: 'library' })
+
     createNodeField({
       node,
       name: 'slug',

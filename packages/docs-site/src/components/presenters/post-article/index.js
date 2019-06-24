@@ -1,30 +1,15 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import rehypeReact from 'rehype-react'
+import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 
 import './post-article.scss'
-import './post-md.scss'
 
-import ContentBox from '../content-box'
-// ...
-
-const PostArticle = ({ postData, className, children }) => {
-  // Register components which are referenced in markdown
-
-  // eslint-disable-next-line new-cap
-  const renderAst = new rehypeReact({
-    createElement: React.createElement,
-    components: {
-      'content-box': ContentBox,
-      // ...
-    },
-  }).Compiler
-
+const PostArticle = ({ mdx, className, children }) => {
   return (
     <article className={`post-article ${className}`}>
       <div className="post-article__content">
         <div className="post-article__copy post-md">
-          {postData && renderAst(postData.htmlAst)}
+          <MDXRenderer>{mdx}</MDXRenderer>
         </div>
         <nav className="post-article__links" />
       </div>
@@ -35,13 +20,12 @@ const PostArticle = ({ postData, className, children }) => {
 
 PostArticle.propTypes = {
   className: PropTypes.string,
-  postData: PropTypes.instanceOf(Object),
+  mdx: PropTypes.instanceOf(Object).isRequired,
   children: PropTypes.instanceOf(Array),
 }
 
 PostArticle.defaultProps = {
   className: '',
-  postData: {},
   children: [],
 }
 
