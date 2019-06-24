@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 const QUERY = graphql`
   query Navigation {
-    allMarkdownRemark {
+    allMdx {
       edges {
         node {
           id
@@ -22,7 +22,7 @@ const QUERY = graphql`
 
 const useNavigationQuery = () => {
   const {
-    allMarkdownRemark: { edges: pages },
+    allMdx: { edges: pages },
   } = useStaticQuery(QUERY)
 
   return pages
