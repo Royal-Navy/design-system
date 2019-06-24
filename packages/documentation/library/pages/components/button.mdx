@@ -5,13 +5,14 @@ audience: public
 pageClasses: ''
 ---
 
-Button provide methods for users to take action in an interface. They are placed throughout you UI and often serve as the main action of a component.
+The Button Component provides methods for users to take action in an interface. They are placed throughout your UI and often serve as the main action of a component.
 
-[ Image / interactive example of Component ]
+![The Button Component](../../images/components/button/component.svg)
 
 ## Usage
 The usage section is a bullet pointed list of scenarios the component should be used in.
 
+---
 
 # Design
 Buttons are available in 3 variants - [Primary](#primary), [Secondary](#secondary), and [Tertiary](#tertiary). These variants allow you to establish [hierarchy](#hierarchy) in your interfaces.
@@ -19,7 +20,7 @@ Buttons are available in 3 variants - [Primary](#primary), [Secondary](#secondar
 ## Anatomy
 The Anatomy is the breakdown of the component.
 
-[ Image breaking down the component’s anatomy ]
+![Button Component anatomy](../../images/components/button/anatomy.svg)
 
 1. **Container**. The container element wraps the component.
 2. **Label**. Labels describe the button action to the user. If text is not used, an icon should be used in its place.
@@ -36,47 +37,49 @@ Establishing visual hierarchy in your UI is important as it helps the user under
 
 ### Primary Button
 
-![Primary Button]()
+![Primary Button](../../images/components/button/primary.svg)
 
 #### Usage
 The Primary Button is responsible for the most important action of a particular page.
 
-### States (if applicable)
+#### States
 Like all variations of the Button component, the Primary Button has 3 states - default, hover, and focus.
 ![Primary Button States](../../images/components/button/primary-states.svg)
 
-### Hierarchy & Placement
+#### Hierarchy & Placement
 Try to avoid using multiple Primary Buttons in the same piece of UI - this can confuse the user as to what the main action is. If you need multiple actions, decide which action is the most important/often used and make this your Primary Button. All other actions should take the form of Secondary or Tertiary Buttons.
 ![Primary Button Hierarchy](../../images/components/button/primary-hierarchy.svg)
+
 ---
 
 ### Secondary Button
-
-[ Image / interactive example of Component ]
+![Secondary Button](../../images/components/button/secondary.svg)
 
 #### Usage
-The Primary Button is responsible for the most important action of a particular page.
+The Secondary Button is a supportive action for a Primary Button. Whilst not serving as the main action of a section of UI, their role is to offer additional actions for a user.
 
-### States (if applicable)
-[ Image / interactive example of component states ]
+#### States
+![Secondary Button States](../../images/components/button/secondary-states.svg)
 
 ### Hierarchy & Placement
-Try to avoid using multiple Primary Buttons in the same piece of UI - this can confuse the user as to what the main action is. If you need multiple actions, decide which action is the most important/often used and make this your Primary Button. All other actions should take the form of Secondary or Tertiary Buttons.
+You can use multiple Secondary Buttons in the same section of UI. Their unobtrusive nature allows them to sit out of the main focus for the user, but still be present enough for the user to interact with.
 
 ---
 
 ### Tertiary Button
-
 The Tertiary Button is a text styled button that has no border or background.
+![Tertiary Button](../../images/components/button/tertiary.svg)
 
 #### Usage
-For de-emphasised actions, 
+Tertiary Buttons are unobtrusive actions that should support Primary or Sectionday Buttons. They should not be the main focus of the UI, but should still be easily discoverable by the user. They are best suited to things like Cancel buttons, where the goal is to allow the user to exit a primary or secondary action decision.
 
-### States (if applicable)
-[ Image / interactive example of component states ]
+#### States
+Like all other buttons, Tertiary Buttons have 3 main interactive states:
+![Tertiary Button States](../../images/components/button/tertiary-states.svg)
 
-### Hierarchy & Placement
-
+#### Hierarchy & Placement
+Try to avoid using multiple Tertiary Buttons next to each other. Their supportive role is best used to undo a Primary or Secondary action.
+![Tertiary Button Hierarchy](../../images/components/button/tertiary-hierarchy.svg)
 
 
 # Develop
