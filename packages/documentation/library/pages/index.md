@@ -10,19 +10,19 @@ index: 0
 ---
 
 <!-- Phase banner -->
-This is a new service – your [feedback](/contact) will help us to improve it.
+This is a new service – see our [Roadmap](/roadmap) for what's coming next.
 
 <!-- Hero banner -->
 # Design your application using NELSON styles and components
 
-Use this design system to make your application or service compliant with NELSON standards. Use the Standard to save time and deliver a consistent experience for Royal Navy users.
+Use this design system to build applications and services for the Royal Navy. The design system includes guidance, a component library and prototyping tools. Use these resources to save time and give users a consistent experience that meets the NELSON Service Standard.
 
 [Get started](/get-started)
 
 Are you a Navy Product Owner or Stakeholder? [Find out how Standards relates to you](/about-the-design-system).
 
 <!-- Styles card -->
-Make your service look like NELSON with guides for applying colour, typography and spacing.
+Make your service look like it's for the Royal Navy with guides for applying colour, typography and spacing.
 [View styles](/styles)
 
 <!-- Components card -->
@@ -33,9 +33,9 @@ Save time with reusable, accessible components for forms, navigation, cards and 
 
 <!-- Update card -->
 10th July 2019
-### Standards v1.00 released
-This initial launch includes the new Standards website providing ‘get started’ guides for designers and developers, styling and component usage guidelines, and information about Standards for Navy stakeholders. Please [get in touch](/contact) with us if you have any feedback.
+### Standards v1.0.0 released
+This launch includes the new Standards website providing ‘get started’ guides for designers and developers, styling and component usage guidelines, and information about Standards for Royal Navy stakeholders. Please [get in touch](/contact) if you have any feedback.
 
-## Contact the team
-Contact the team to understand more about Standards, request a new component or if you have a question. 
+## Contact us
+Contact the NELSON Standards team to understand more about design in the Royal Navy, request a new component or for questions and feedback. 
 [Contact](/contact)
