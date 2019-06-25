@@ -7,7 +7,7 @@ The `Breadcrumbs` component accepts an array of links, including the current
 page title and href. Like the Nav component the Breadcrumbs component will
 render regular links by default, but if you pass a `Component` property with
 a link you can specify the component to render it and send the properties it
-needs, such as a Gatsby `Link` componet that will require `to` intead of `href`.
+needs, such as a Gatsby `Link` component that will require `to` instead of `href`.
 
 ## Examples
 
