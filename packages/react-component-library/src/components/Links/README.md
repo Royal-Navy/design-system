@@ -79,7 +79,7 @@ const footerLinks = [
 
 The properties required for a link item depend on the component that will render it. If no component is passed in with
 the item then a default 'Link'component will be used to render the link. Any properties in the link props wil be passed to the
-render component. One example of an alternative nav item render componet would be a React Router Link component, this 
+render component. One example of an alternative nav item render component would be a React Router Link component, this 
 requires a 'to' property. The label property is used as the child of the render component.
 
 | Name        | Type            | Required | Default  | Description

@@ -7,10 +7,10 @@ interface LinkProps {
 
 const Link: React.FC<LinkProps> = ({
   children,
-  className = 'rn-links__link',
+  className = 'rn-link',
   href,
 }) => (
-  <a className={className} href={href}>
+  <a className={className} href={href} data-testid="link">
     {children}
   </a>
 )
