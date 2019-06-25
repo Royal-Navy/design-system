@@ -13,12 +13,13 @@ const { join } = require('path')
 const matter = require('gray-matter')
 const chalk = require('chalk')
 const rimraf = require('rimraf')
-const {kebabCase} = require('lodash')
+const { kebabCase } = require('lodash')
 const { execSync } = require('child_process')
-const package = require('./package.json')
+const manifest = require('./package.json')
+const { convertToMDX } = require('./readme-preparser')
 
 // A list of packages to check
-const packages = package.packages
+const { packages } = manifest
 
 // The original docs from the 'documentation' package
 const originalDocsFolder = resolve(__dirname, '../documentation/library')
@@ -57,9 +58,7 @@ const returnFinalData = (data, componentData) => {
   const docs = componentData
     .map(cd => {
       if (exclusions(match).includes(cd.package.toLowerCase())) return
-      return `\n<implementation type="${cd.package}">\n${
-        cd.content
-      }\n</implementation>\n`
+      return `\n<implementation type="${cd.package}">\n${cd.content}\n</implementation>\n`
     })
     .join('')
   return data.replace(regex, match[1] + docs + match[3])
@@ -92,7 +91,6 @@ const accumulatedData = []
  * @param {String} componentsFolder : The path to the components folder of the package
  * @param {String} package : The name of the package
  */
-
 const componentLoop = (componentsFolder, package) => {
   const components = fs.readdirSync(componentsFolder)
   return components.forEach(component => {
@@ -106,11 +104,14 @@ const componentLoop = (componentsFolder, package) => {
         const fileContent = matter(
           fs.readFileSync(resolve(componentFolder, file), 'utf8')
         )
+
+        const mdx = convertToMDX(fileContent.content)
+
         console.group(`⚙️  Generating ${chalk.yellow(component)} docs...`)
         accumulatedData.push({
           package,
           component: kebabCase(fileContent.data.title),
-          content: fileContent.content,
+          content: mdx,
         })
         console.log(chalk.green(` ✓ Done`))
         console.groupEnd()
@@ -186,10 +187,9 @@ const matchDocs = (docsPath, doc, prefix) => {
   }
 }
 
-
 /**
  * folderLoop
- * Loops through the component docs folder and reads the files and 
+ * Loops through the component docs folder and reads the files and
  * then passes the results to matchDocs
  * @param {String} docsPath The full path to the docs folder
  * @param {String} prefix The subfolder that the current component readme is in (defaults to false if no prefix is provided)
