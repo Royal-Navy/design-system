@@ -3,8 +3,6 @@
 .main {
   display: flex;
   flex-flow: column;
-  padding: 0;
-  margin: 0 spacing(3);
 }
 
 .aside {
@@ -13,11 +11,7 @@
 
 @include breakpoint("s") {
   .main {
-    box-sizing: content-box;
     flex-flow: row wrap;
-    max-width: $navy-content-width;
-    margin: spacing(3) auto;
-    padding: 0 spacing(3);
   }
 
   .post-article {
