@@ -10,6 +10,7 @@ const ReactDOMServer = require('react-dom/server')
  * @returns {array}
  */
 function transformTableData(children) {
+  return [] // debug
   return children
 }
 
@@ -18,8 +19,8 @@ const compile = marksy({
   elements: {
     code({ language, code }) {
       return createElement('CodeHighlighter', {
-        example: code,
-        source: code,
+        example: escape(code),
+        source: escape(code),
         language: language || 'javascript',
       })
     },

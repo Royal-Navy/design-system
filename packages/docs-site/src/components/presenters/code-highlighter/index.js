@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
@@ -31,7 +32,7 @@ const CodeHighlighter = ({ example, source, language }) => {
   return (
     <article className="code-highlighter">
       <header className="code-highlighter__head" data-testid="example">
-        {example}
+        <div dangerouslySetInnerHTML={{ __html: unescape(example) }} />
       </header>
       <section className="code-highlighter__body">
         {typeof document !== 'undefined' &&
@@ -48,7 +49,7 @@ const CodeHighlighter = ({ example, source, language }) => {
           )}
         <div className="code-highlighter__source">
           <pre className="line-numbers">
-            <code className={`language-${language}`}>{`${source}`}</code>
+            <code className={`language-${language}`}>{unescape(source)}</code>
           </pre>
         </div>
       </section>
