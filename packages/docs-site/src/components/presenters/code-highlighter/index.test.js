@@ -15,7 +15,7 @@ describe('CodeHighlighter', () => {
       codehighlighter = render(
         <CodeHighlighter
           language="javascript"
-          example={<h1>This is some example JSX</h1>}
+          example="This is some example JSX"
           source="function restructureNodes(nodes) { return nodes.map(node => {}) }"
         />
       )
