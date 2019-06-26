@@ -12,12 +12,12 @@ function extractHeadings(data) {
 }
 
 const DataTable = ({ data, caption }) => {
-  const [tableData, setTableData] = useState(data)
+  const [tableData, setTableData] = useState(JSON.parse(unescape(data)))
 
   const sortByColumn = useCallback(
     e => {
       const column = e.target.getAttribute('data-column')
-      setTableData(sortBy(data, column))
+      setTableData(sortBy(JSON.parse(unescape(data)), column))
     },
     [tableData]
   )
