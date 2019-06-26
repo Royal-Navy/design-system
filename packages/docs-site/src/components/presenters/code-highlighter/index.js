@@ -20,7 +20,7 @@ const CodeHighlighter = ({ example, source, language }) => {
   function copyToClipboard() {
     const textarea = document.createElement('textarea')
 
-    textarea.innerText = unescape(source)
+    textarea.innerText = atob(source)
     document.body.appendChild(textarea)
     textarea.select()
     document.execCommand('copy')
@@ -32,7 +32,7 @@ const CodeHighlighter = ({ example, source, language }) => {
   return (
     <article className="code-highlighter">
       <header className="code-highlighter__head" data-testid="example">
-        <div dangerouslySetInnerHTML={{ __html: unescape(example) }} />
+        <div dangerouslySetInnerHTML={{ __html: atob(example) }} />
       </header>
       <section className="code-highlighter__body">
         {typeof document !== 'undefined' &&
@@ -49,7 +49,7 @@ const CodeHighlighter = ({ example, source, language }) => {
           )}
         <div className="code-highlighter__source">
           <pre className="line-numbers">
-            <code className={`language-${language}`}>{unescape(source)}</code>
+            <code className={`language-${language}`}>{atob(source)}</code>
           </pre>
         </div>
       </section>
