@@ -7,9 +7,10 @@ import TableRow from './table-row'
 const TableBody = ({ rows }) => {
   return (
     <tbody className="data-table__body">
-      {rows.map(row => {
-        return <TableRow key={uuid()} cells={row} />
-      })}
+      {rows.length >= 1 &&
+        rows.map(row => {
+          return <TableRow key={uuid()} cells={row} />
+        })}
     </tbody>
   )
 }
