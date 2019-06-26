@@ -1,5 +1,5 @@
 export default {
-  allMarkdownRemark: {
+  allMdx: {
     edges: [
       {
         node: {
