@@ -36,8 +36,6 @@ function encodeProp(string) {
 /**
  * Generates a compiler to create an MDX version of a `README.md`
  *
- * TODO: Use JSX instead of createElement and transpile at runtime
- *
  * @param {string} markdown
  * @param {object} options
  * @returns {function}
