@@ -17,17 +17,19 @@ in the form of a pill.
 <img src="images/badge-solid.png" width="367" />
 
 ```
-<Badge color="neutral" colorVariant="faded">Neutral</Badge>
-<Badge color="primary" colorVariant="faded">Primary</Badge>
-<Badge color="danger" colorVariant="faded">Danger</Badge>
-<Badge color="warning" colorVariant="faded">Warning</Badge>
-<Badge color="success" colorVariant="faded">Success</Badge>
+<Fragment>
+  <Badge color="neutral" colorVariant="faded">Neutral</Badge>
+  <Badge color="primary" colorVariant="faded">Primary</Badge>
+  <Badge color="danger" colorVariant="faded">Danger</Badge>
+  <Badge color="warning" colorVariant="faded">Warning</Badge>
+  <Badge color="success" colorVariant="faded">Success</Badge>
 
-<Badge color="neutral" colorVariant="solid">Neutral</Badge>
-<Badge color="primary" colorVariant="solid">Primary</Badge>
-<Badge color="danger" colorVariant="solid">Danger</Badge>
-<Badge color="warning" colorVariant="solid">Warning</Badge>
-<Badge color="success" colorVariant="solid">Success</Badge>
+  <Badge color="neutral" colorVariant="solid">Neutral</Badge>
+  <Badge color="primary" colorVariant="solid">Primary</Badge>
+  <Badge color="danger" colorVariant="solid">Danger</Badge>
+  <Badge color="warning" colorVariant="solid">Warning</Badge>
+  <Badge color="success" colorVariant="solid">Success</Badge>
+</Fragment>
 ```
 
 <hr/>
@@ -38,10 +40,12 @@ in the form of a pill.
 <img src="images/badge-sizes.png" width="309" />
 
 ```
-<Badge colorVariant="faded" size="small">Small</Badge>
-<Badge colorVariant="faded" size="regular">Neutral</Badge>
-<Badge colorVariant="faded" size="large">Large</Badge>
-<Badge colorVariant="faded" size="xlarge">xLarge</Badge>
+<Fragment>
+  <Badge colorVariant="faded" size="small">Small</Badge>
+  <Badge colorVariant="faded" size="regular">Neutral</Badge>
+  <Badge colorVariant="faded" size="large">Large</Badge>
+  <Badge colorVariant="faded" size="xlarge">xLarge</Badge>
+</Fragment>
 ```
 
 <hr/>
@@ -50,11 +54,13 @@ in the form of a pill.
 <img src="images/badge-pills.png" width="374" />
 
 ```
-<Badge color="neutral" variant="pill">Neutral</Badge>
-<Badge color="primary" variant="pill">Primary</Badge>
-<Badge color="danger" variant="pill">Danger</Badge>
-<Badge color="warning" variant="pill">Warning</Badge>
-<Badge color="success" variant="pill">Success</Badge>
+<Fragment>
+  <Badge color="neutral" variant="pill">Neutral</Badge>
+  <Badge color="primary" variant="pill">Primary</Badge>
+  <Badge color="danger" variant="pill">Danger</Badge>
+  <Badge color="warning" variant="pill">Warning</Badge>
+  <Badge color="success" variant="pill">Success</Badge>
+</Fragment>
 ```
 
 <hr/>
