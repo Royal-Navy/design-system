@@ -1,7 +1,12 @@
 const { marksy } = require('marksy')
 const { getTables } = require('mdtable2json')
 const ReactDOMServer = require('react-dom/server')
+
+const babel = require('@babel/core')
+const React = require('react')
 const { createElement } = require('react')
+
+const action = () => {}
 
 /**
  * Transform table markdown AST (rows and cells) into data
@@ -44,11 +49,23 @@ function compile(markdown, options) {
     createElement,
     elements: {
       code({ language, code }) {
-        return createElement('CodeHighlighter', {
-          example: encodeProp(code),
-          source: encodeProp(code),
-          language: language || 'javascript',
+        let children = babel.transform(code, {
+          plugins: ['@babel/plugin-transform-react-jsx'],
+        }).code
+
+        children = children.replace(/(?<=createElement\().*?(?=, )/g, match => {
+          return `'${match}'`
         })
+
+        return createElement(
+          'CodeHighlighter',
+          {
+            source: encodeProp(code),
+            language: language || 'javascript',
+          },
+          // eslint-disable-next-line no-eval
+          eval(children)
+        )
       },
       table() {
         return createElement('DataTable', {

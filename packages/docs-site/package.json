@@ -102,11 +102,6 @@
       "source": "react-component-library",
       "name": "React",
       "componentPath": "/src/components"
-    },
-    {
-      "source": "vue-component-library",
-      "name": "Vue",
-      "componentPath": "/src/components"
     }
   ],
   "devDependencies": {
