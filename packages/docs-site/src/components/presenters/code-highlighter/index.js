@@ -20,7 +20,7 @@ const CodeHighlighter = ({ example, source, language }) => {
   function copyToClipboard() {
     const textarea = document.createElement('textarea')
 
-    textarea.innerText = source
+    textarea.innerText = unescape(source)
     document.body.appendChild(textarea)
     textarea.select()
     document.execCommand('copy')
