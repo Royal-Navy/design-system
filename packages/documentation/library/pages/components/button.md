@@ -5,6 +5,7 @@ audience: public
 pageClasses: ''
 ---
 
+<<<<<<< HEAD
 The Button Component gives users a way to take action in an interface. They are placed throughout UIs and often serve as the main action in a component.
 
 ![The Button Component](../../images/components/button/component.svg)
@@ -161,6 +162,16 @@ This section contains all available props for the component.
 | Name       | Type     | Required  | Default  | Description  |
 ---------------------------------------------------------------
 | className  | String   | True      |          |              |
+=======
+<!--
+Imports are relative from within the docs-site codebase (post-import).
+Imports must be included below any Front Matter.
+-->
+import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import DataTable from '../../../components/presenters/data-table'
+
+# Overview
+>>>>>>> Add imports for presentational components
 
 
 
