@@ -3,12 +3,10 @@ import React, { useState } from 'react'
 import { storiesOf } from '@storybook/react'
 import { withKnobs } from '@storybook/addon-knobs'
 
-import Icons from '../../icons'
+import { TriangleDown, TriangleUp } from '../../icons'
 import CustomLink from '../CustomLink'
 import Button from '../Button'
 import Nav from './index'
-
-const { TriangleDown, TriangleUp } = Icons
 
 const stories = storiesOf('Nav', module)
 
