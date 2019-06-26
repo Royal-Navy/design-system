@@ -31,7 +31,7 @@ const MastHead = ({ navItems }) => {
 
   return (
     <div className="masthead">
-      <div className="masthead__container rn-pagecontainer">
+      <div className="masthead__container rn-container">
         <SiteLogo className="masthead__logo" />
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           <Form className="masthead__search">
@@ -59,7 +59,7 @@ const MastHead = ({ navItems }) => {
       {hasNavItems && (
         <div
           data-testid="primary-nav"
-          className={`rn-pagecontainer masthead__nav ${
+          className={`rn-container masthead__nav ${
             open ? 'is-open' : 'is-closed'
           }`}
         >
