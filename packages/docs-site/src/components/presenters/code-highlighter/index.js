@@ -58,7 +58,7 @@ const CodeHighlighter = ({ example, source, language }) => {
 }
 
 CodeHighlighter.propTypes = {
-  example: PropTypes.instanceOf(Object),
+  example: PropTypes.string,
   source: PropTypes.string,
   language: PropTypes.string,
 }
