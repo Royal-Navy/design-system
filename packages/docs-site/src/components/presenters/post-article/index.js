@@ -20,7 +20,7 @@ const PostArticle = ({ mdx, className, children }) => {
 
 PostArticle.propTypes = {
   className: PropTypes.string,
-  mdx: PropTypes.instanceOf(Object).isRequired,
+  mdx: PropTypes.string.isRequired,
   children: PropTypes.instanceOf(Array),
 }
 
