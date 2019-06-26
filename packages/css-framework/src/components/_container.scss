@@ -1,24 +1,39 @@
 .rn-container {
-  padding-left: 40px;
-  padding-right: 40px;
+  max-width: $navy-content-width;
+  margin: 0 auto;
+  padding: spacing(3);
 
-  &.flush {
+  &.rn-container--flush {
+    padding: 0;
+  }
+
+  &.rn-container--flush-horizontal {
     padding-left: 0;
     padding-right: 0;
   }
 
-  &.small {
-    padding-left: 20px;
-    padding-right: 20px;
+  &.rn-container--flush-vertical {
+    padding-bottom: 0;
+    padding-top: 0;
   }
 
-  &.large {
-    padding-left: 80px;
-    padding-right: 80px;
+  &.rn-container--small {
+    padding: spacing(2);
   }
 
-  &.centred {
-    max-width: 1600px;
-    margin: 0 auto;
+  &.rn-container--large {
+    padding: spacing(5);
+  }
+}
+
+.rn-pagecontainer {
+  max-width: $navy-content-width;
+  margin: 0 auto;
+  padding: spacing(3);
+}
+
+@include breakpoint("s") {
+  .rn-pagecontainer {
+    padding: spacing(3) 0;
   }
 }
