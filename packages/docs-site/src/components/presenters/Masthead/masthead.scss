@@ -1,14 +1,5 @@
 @import "@royalnavy/css-framework";
 
-$gutter: spacing(3);
-
-.masthead__container {
-  box-sizing: content-box;
-  max-width: $navy-content-width;
-  margin: $gutter auto;
-  padding: 0 $gutter;
-}
-
 .masthead__logo {
   width: 280px;
   margin-bottom: spacing(1);
@@ -25,7 +16,7 @@ $gutter: spacing(3);
 }
 
 .masthead__search .rn-btn {
-  margin: 0 0 0 $gutter;
+  margin: 0 0 0 spacing(3);
 }
 
 .masthead__nav {
@@ -57,9 +48,8 @@ $gutter: spacing(3);
     display: none;
   }
 
-  .masthead .rn-nav {
+  .masthead__nav {
     display: block;
-    margin-left: -1rem;
   }
 
   .masthead .rn-nav__list-item {
