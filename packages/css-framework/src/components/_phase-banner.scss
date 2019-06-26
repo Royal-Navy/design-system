@@ -2,6 +2,11 @@
   background-color: color(primary, 100);
 }
 
+.rn-phase-banner__container {
+  padding-top: spacing(2);
+  padding-bottom: spacing(2);
+}
+
 .rn-phase-banner__text {
   display: inline-block;
   font-size: font-size(xs);
