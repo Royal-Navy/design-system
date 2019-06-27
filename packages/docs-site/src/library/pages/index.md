@@ -9,17 +9,13 @@ template: default
 index: 0
 ---
 
-<!-- Phase banner -->
-This is a new service – see our [Roadmap](/about-the-design-system/roadmap) for what's coming next.
+import HeroBanner from '../../components/presenters/hero-banner'
 
-<!-- Hero banner -->
-# Design your application using NELSON styles and components
-
-Use this design system to build applications and services for the Royal Navy. The website includes guidance, a component library and prototyping tools. Use these to save time and give users a consistent experience that meets the NELSON Standard.
-
-[Get started](/get-started)
-
-Are you a Navy Product Owner or Stakeholder? [Find out how Standards relates to you](/about-the-design-system).
+<HeroBanner 
+  title="Design your application using NELSON styles and components" text="Use this design system to build applications and services for the Royal Navy. The website includes guidance, a component library and prototyping tools. Use these to save time and give users a consistent experience that meets the NELSON Standard." 
+  ctaText="Get started" 
+  ctaLink="/get-started"
+/>
 
 <!-- Styles card -->
 Make your service look like it's for the Royal Navy with guides for applying colour, typography and spacing.
