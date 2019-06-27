@@ -75,7 +75,7 @@
     "build": "yarn consolidate-docs && gatsby build",
     "develop": "gatsby develop",
     "consolidate-docs": "node ./docs-consolidator.js",
-    "watch": "",
+    "consolidate-docs:watch": "nodemon -e md,mdx --watch ../documentation/library ./docs-consolidator.js",
     "start": "yarn consolidate-docs && yarn develop",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src",
@@ -113,6 +113,7 @@
     }
   ],
   "devDependencies": {
+    "nodemon": "^1.19.1",
     "formik": "^1.5.7",
     "jsdom": "^15.1.1"
   },
