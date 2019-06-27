@@ -55,7 +55,15 @@ const MastHead = ({ navItems }) => {
           </Form>
         </Formik>
       </div>
-      <PhaseBanner className="masthead__phasebanner" />
+      <PhaseBanner className="masthead__phasebanner">
+        <span>
+          Are you a Navy Product Owner or Stakeholder?{' '}
+          <a href="/about-the-design-system">
+            Find out how Standards relates to you
+          </a>
+          .
+        </span>
+      </PhaseBanner>
       {hasNavItems && (
         <div
           data-testid="primary-nav"
