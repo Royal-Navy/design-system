@@ -60,6 +60,12 @@ $card-background-color: #f0f4f8;
   }
 }
 
+.card--borderless .card__body,
+.card--borderless .card__head {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .card--border {
   border: 1px solid $border-color;
   border-radius: $border-radius;
