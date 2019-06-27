@@ -38,13 +38,23 @@ import Card from '../../components/presenters/card'
   />
 </section>
 
-## Latest updates
+<section class="h_mt-8 h_mb-8">
+  <h2>Latest updates</h2>
 
-<!-- Update card -->
-10th July 2019
-### Standards v1.0.0 released
-This launch includes the new Standards website providing ‘get started’ guides for designers and developers, styling and component usage guidelines, and information about Standards for Royal Navy stakeholders. Please [get in touch](/contact) if you have any feedback.
+  <Card 
+    type="coloured" 
+    title="Standards v1.0.0 released" 
+    meta="10th July 2019"
+    text={<span>This launch includes the new Standards website providing 'get started' guides for designers and developers, styling and component usage guidelines, and information about Standards for Royal Navy stakeholders. Please <a href="/contact">get in touch</a> if you have any feedback.</span>}
+  />
+</section>
 
-## Contact us
-Contact the NELSON Standards team to find out more about design in the Royal Navy, request a new component, ask questions and give feedback.
-[Contact](/contact)
+<section class="h_mt-8 h_mb-8">
+  <Card 
+    type="borderless" 
+    title="Contact us" 
+    text="Contact the NELSON Standards team to find out more about design in the Royal Navy, request a new component, ask questions and give feedback." 
+    linkText="Contact" 
+    linkHref="/contact" 
+  />
+</section>
