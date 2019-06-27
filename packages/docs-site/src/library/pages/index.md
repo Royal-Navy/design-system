@@ -10,6 +10,7 @@ index: 0
 ---
 
 import HeroBanner from '../../components/presenters/hero-banner'
+import Card from '../../components/presenters/card'
 
 <HeroBanner 
   title="Design your application using NELSON styles and components" text="Use this design system to build applications and services for the Royal Navy. The website includes guidance, a component library and prototyping tools. Use these to save time and give users a consistent experience that meets the NELSON Standard." 
@@ -17,13 +18,21 @@ import HeroBanner from '../../components/presenters/hero-banner'
   ctaLink="/get-started"
 />
 
-<!-- Styles card -->
-Make your service look like it's for the Royal Navy with guides for applying colour, typography and spacing.
-[View styles](/styles)
+<Card 
+  type="border" 
+  title="Styles" 
+  text="Make your service look like it's for the Royal Navy with guides for applying colour, typography and spacing." 
+  linkText="View styles" 
+  linkHref="/styles" 
+/>
 
-<!-- Components card -->
-Save time with reusable, accessible components for forms, navigation, cards and more.
-[View styles](/components)
+<Card 
+  type="border" 
+  title="Components" 
+  text="Save time with reusable, accessible components for forms, navigation, cards and more." 
+  linkText="View components" 
+  linkHref="/components" 
+/>
 
 ## Latest updates
 
