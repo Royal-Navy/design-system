@@ -1,12 +1,11 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 const { marksy } = require('marksy')
 const { getTables } = require('mdtable2json')
-const ReactDOMServer = require('react-dom/server')
-
 const babel = require('@babel/core')
 const React = require('react')
 const { createElement } = require('react')
-
-const action = () => {}
+const ReactDOMServer = require('react-dom/server')
 
 /**
  * Transform table markdown AST (rows and cells) into data
@@ -51,9 +50,10 @@ function compile(markdown, options) {
           plugins: ['@babel/plugin-transform-react-jsx'],
         }).code
 
-        children = children.replace(/(?<=createElement\().*?(?=, )/g, match => {
-          return `'${match}'`
-        })
+        children = children.replace(
+          /(?<=createElement\().*?(?=, )/g,
+          match => `'${match}'`
+        )
 
         return createElement(
           'CodeHighlighter',
