@@ -21,14 +21,13 @@ a record.
 <img src="images/button-variants.png" width="311" />
 
 ```
-<Fragment>
-  <Button onClick={action} variant="primary">Primary</Button>
-  <Button onClick={action} variant="secondary">Secondary</Button>
-  <Button onClick={action} variant="tertiary">Tertiary</Button>
-  <Button onClick={action} variant="primary" color="danger">Primary</Button>
-  <Button onClick={action} variant="secondary" color="danger">Secondary</Button>
-  <Button onClick={action} variant="tertiary" color="danger">Tertiary</Button>
-</Fragment>
+<Button onClick={action} variant="primary">Primary</Button>
+<Button onClick={action} variant="secondary">Secondary</Button>
+<Button onClick={action} variant="tertiary">Tertiary</Button>
+
+<Button onClick={action} variant="primary" color="danger">Primary</Button>
+<Button onClick={action} variant="secondary" color="danger">Secondary</Button>
+<Button onClick={action} variant="tertiary" color="danger">Tertiary</Button>
 ```
 
 <hr/>
@@ -38,10 +37,8 @@ a record.
 <img src="images/button-icon.png" width="207" />
 
 ```
-<Fragment>
-  <Button onClick={action} icon={<TriangleDown />}>Closed</Button>
-  <Button onClick={action} icon={<TriangleUp />}>Open</Button>
-</Fragment>
+<Button onClick={action} icon={<TriangleDown />}>Closed</Button>
+<Button onClick={action} icon={<TriangleUp />}>Open</Button>
 ```
 
 ### Size 
@@ -49,12 +46,10 @@ a record.
 <img src="images/button-size.png" width="361" />
 
 ```
-<Fragment>
-  <Button onClick={action} state="primary" size="small">Small</Button>
-  <Button onClick={action} state="primary" size="regular">Regular</Button>
-  <Button onClick={action} state="primary" size="large">Large</Button>
-  <Button onClick={action} state="primary" size="xlarge">xLarge</Button>
-</Fragment>
+<Button onClick={action} state="primary" size="small">Small</Button>
+<Button onClick={action} state="primary" size="regular">Regular</Button>
+<Button onClick={action} state="primary" size="large">Large</Button>
+<Button onClick={action} state="primary" size="xlarge">xLarge</Button>
 ```
 
 ## Properties
