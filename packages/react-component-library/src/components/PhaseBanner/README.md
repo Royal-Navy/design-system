@@ -11,11 +11,13 @@ The banner should be used directly underneath the main site header, before the c
 
 <img src="images/phase-banner-example.gif" width="664" />
 
-```html
-<PhaseBanner />
-<PhaseBanner link="/my-custom-page" />
-<PhaseBanner phase="beta"/>
-<PhaseBanner>Custom html can go here. <strong>This part is in bold!</strong><PhaseBanner/>
+```
+<Fragment>
+  <PhaseBanner />
+  <PhaseBanner link="/my-custom-page" />
+  <PhaseBanner phase="beta" />
+  <PhaseBanner>Custom html can go here.</PhaseBanner>
+</Fragment>
 ```
 
 <hr/>

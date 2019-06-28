@@ -14,14 +14,14 @@ The TextInput component can be used on it's own in a regular form, if you use th
 <img src="images/input-examples.png" style="width: 490px"/>
 
 ```
-  <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+  <Formik initialValues={[]} onSubmit={(x) => { console.log(x) }} validationSchema={[]}>
     <Form>
-      <Field className="rn-textinput--is-valid" name="colour" component={TextInput} label="My Label" />
-      <Field name="name" component={TextInput} label="Name" />
-      <Field name="city" component={TextInput} label="City" />
-      <Field name="hero" component={TextInput} endAdornment={<Search />} label="Hero" />
-      <Field name="fruit" component={TextInput} startAdornment={<Search />} label="Fruit" />
-      <Field name="search" component={TextInput} placeholder="search" />
+      <Field className="rn-textinput--is-valid" name="colour" component={<TextInput />} label="My Label" />
+      <Field name="name" component={<TextInput />} label="Name" />
+      <Field name="city" component={<TextInput />} label="City" />
+      <Field name="hero" component={<TextInput />} endAdornment={<Search />} label="Hero" />
+      <Field name="fruit" component={<TextInput />} startAdornment={<Search />} label="Fruit" />
+      <Field name="search" component={<TextInput />} placeholder="search" />
     </Form>
   </Formik>
 ```

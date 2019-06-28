@@ -16,54 +16,59 @@ the remaining properties.
 <img src="images/links.png" width="312px" />
 
 ```
-const footerLinks = [
-  {
-    href: '/privacy',
-    label: 'Privacy policy',
-  },
-  {
-    href: '/contact',
-    label: 'Contact',
-  },
-  {
-    href: '/feedback',
-    label: 'Feedback',
-  },
-]
+<Fragment>
+  <Links size="small" links={[
+    {
+      href: '/privacy',
+      label: 'Privacy policy',
+    },
+    {
+      href: '/contact',
+      label: 'Contact',
+    },
+    {
+      href: '/feedback',
+      label: 'Feedback',
+    },
+  ]} />
 
-Small
-<br />
-<Links size="small" links={links} />
-<hr />
-Regular
-<br />
-<Links links={links} />
+  <Links links={[
+    {
+      href: '/privacy',
+      label: 'Privacy policy',
+    },
+    {
+      href: '/contact',
+      label: 'Contact',
+    },
+    {
+      href: '/feedback',
+      label: 'Feedback',
+    },
+  ]} />
+</Fragment>
 ```
 
 
 ### Custom render component
 ```
-import Link from 'react-router-dom'
-
-const footerLinks = [
+<Links links={[
   {
-    Component: Link,
+    Component: 'Link',
     to: '/privacy',
     label: 'Privacy policy',
   },
   {
-    Component: Link,
+    Component: 'Link',
     to: '/contact',
     label: 'Contact',
   },
   {
-    Component: Link,
+    Component: 'Link',
     to: '/feedback',
     label: 'Feedback',
   },
-]
-
-<Links links={footerLinks} />
+]} />
 ```
 
 ## Properties

@@ -11,7 +11,7 @@ The `TabSet` component allows the user to switch between different sets of relat
 <img src="images/tabset.png" />
 
 ```
-const tabs = [
+<TabSet tabs={[
   {
     name: 'Example Tab 1',
     label: 'This is some example tab 1 content',
@@ -20,9 +20,7 @@ const tabs = [
     href: 'Example Tab 2',
     label: 'This is some example tab 2 content',
   },
-]
-
-<TabSet tabs={tabs} onChangeCallback={(id, name) => { console.log(id, name) }} />
+]} onChangeCallback={(id, name) => { console.log(id, name) }} />
 ```
 
 ## Properties

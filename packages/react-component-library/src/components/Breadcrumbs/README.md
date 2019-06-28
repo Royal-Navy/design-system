@@ -14,7 +14,7 @@ needs, such as a Gatsby `Link` component that will require `to` instead of `href
 <img src="images/breadcrumbs.png" width="262px" />
 
 ```
-const links = [
+<Breadcrumbs links={[
   {
     href: '/',
     label: 'Home',
@@ -27,9 +27,7 @@ const links = [
     href: '/components/breadcrumb',
     label: 'Breadcrumb',
   },
-]
-
-<Breadcrumbs links={links} />
+]} />
 ```
 
 ## Properties

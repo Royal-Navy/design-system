@@ -21,13 +21,15 @@ a record.
 <img src="images/button-variants.png" width="311" />
 
 ```
-<Button onClick={action} variant="primary">Primary</Button>
-<Button onClick={action} variant="secondary">Secondary</Button>
-<Button onClick={action} variant="tertiary">Tertiary</Button>
+<Fragment>
+  <Button onClick={() => {}} variant="primary">Primary</Button>
+  <Button onClick={() => {}} variant="secondary">Secondary</Button>
+  <Button onClick={() => {}} variant="tertiary">Tertiary</Button>
 
-<Button onClick={action} variant="primary" color="danger">Primary</Button>
-<Button onClick={action} variant="secondary" color="danger">Secondary</Button>
-<Button onClick={action} variant="tertiary" color="danger">Tertiary</Button>
+  <Button onClick={() => {}} variant="primary" color="danger">Primary</Button>
+  <Button onClick={() => {}} variant="secondary" color="danger">Secondary</Button>
+  <Button onClick={() => {}} variant="tertiary" color="danger">Tertiary</Button>
+</Fragment>
 ```
 
 <hr/>
@@ -37,8 +39,10 @@ a record.
 <img src="images/button-icon.png" width="207" />
 
 ```
-<Button onClick={action} icon={<TriangleDown />}>Closed</Button>
-<Button onClick={action} icon={<TriangleUp />}>Open</Button>
+<Fragment>
+  <Button onClick={() => {}} icon={<TriangleDown />}>Closed</Button>
+  <Button onClick={() => {}} icon={<TriangleUp />}>Open</Button>
+</Fragment>
 ```
 
 ### Size 
@@ -46,10 +50,12 @@ a record.
 <img src="images/button-size.png" width="361" />
 
 ```
-<Button onClick={action} state="primary" size="small">Small</Button>
-<Button onClick={action} state="primary" size="regular">Regular</Button>
-<Button onClick={action} state="primary" size="large">Large</Button>
-<Button onClick={action} state="primary" size="xlarge">xLarge</Button>
+<Fragment>
+  <Button onClick={() => {}} state="primary" size="small">Small</Button>
+  <Button onClick={() => {}} state="primary" size="regular">Regular</Button>
+  <Button onClick={() => {}} state="primary" size="large">Large</Button>
+  <Button onClick={() => {}} state="primary" size="xlarge">xLarge</Button>
+</Fragment>
 ```
 
 ## Properties

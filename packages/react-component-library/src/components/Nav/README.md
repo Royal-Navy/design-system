@@ -33,27 +33,59 @@ a react router link.
 </div>
 
 ```
-const navItems = [
-  {url: 'http://testurl.test',label: 'Styles'},
-  {url: 'http://testurl.test',label: 'Components'},
-  {url: 'http://testurl.test',label: 'Patterns',active: true},
-  {url: 'http://testurl.test',label: 'Community'},
-  {url: 'http://testurl.test',label: 'About'},
-]
+<Fragment>
+  <Nav orientation="vertical" items={[
+    {url: 'http://testurl.test',label: 'Styles'},
+    {url: 'http://testurl.test',label: 'Components'},
+    {url: 'http://testurl.test',label: 'Patterns',active: true},
+    {url: 'http://testurl.test',label: 'Community'},
+    {url: 'http://testurl.test',label: 'About'},
+  ]}/>
 
-<Nav orientation="vertical" items={navItems}/>
-
-<Nav orientation="horizontal" items={navItems}/>
+  <Nav orientation="horizontal" items={[
+    {url: 'http://testurl.test',label: 'Styles'},
+    {url: 'http://testurl.test',label: 'Components'},
+    {url: 'http://testurl.test',label: 'Patterns',active: true},
+    {url: 'http://testurl.test',label: 'Community'},
+    {url: 'http://testurl.test',label: 'About'},
+  ]}/>
+</Fragment>
 ```
 
 ### Sizes
 <img src="images/nav-sizes.png" width="675" />
 
 ```
-<Nav orientation="horizontal" items={navItems} size="small/>
-<Nav orientation="horizontal" items={navItems} size="regular"/>
-<Nav orientation="horizontal" items={navItems} size="large"/>
-<Nav orientation="horizontal" items={navItems} size="xlarge"/>
+<Fragment>
+    <Nav orientation="horizontal" items={[
+    {url: 'http://testurl.test',label: 'Styles'},
+    {url: 'http://testurl.test',label: 'Components'},
+    {url: 'http://testurl.test',label: 'Patterns',active: true},
+    {url: 'http://testurl.test',label: 'Community'},
+    {url: 'http://testurl.test',label: 'About'},
+  ]} size="small" />
+    <Nav orientation="horizontal" items={[
+    {url: 'http://testurl.test',label: 'Styles'},
+    {url: 'http://testurl.test',label: 'Components'},
+    {url: 'http://testurl.test',label: 'Patterns',active: true},
+    {url: 'http://testurl.test',label: 'Community'},
+    {url: 'http://testurl.test',label: 'About'},
+  ]} size="regular" />
+    <Nav orientation="horizontal" items={[
+    {url: 'http://testurl.test',label: 'Styles'},
+    {url: 'http://testurl.test',label: 'Components'},
+    {url: 'http://testurl.test',label: 'Patterns',active: true},
+    {url: 'http://testurl.test',label: 'Community'},
+    {url: 'http://testurl.test',label: 'About'},
+  ]} size="large" />
+    <Nav orientation="horizontal" items={[
+    {url: 'http://testurl.test',label: 'Styles'},
+    {url: 'http://testurl.test',label: 'Components'},
+    {url: 'http://testurl.test',label: 'Patterns',active: true},
+    {url: 'http://testurl.test',label: 'Community'},
+    {url: 'http://testurl.test',label: 'About'},
+  ]} size="xlarge" />
+</Fragment>
 ```
 
 ## Properties
