@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent, RenderResult } from '@testing-library/react'
 
 import TabSet from './index'
-import Tab from './tab'
+import Tab from './Tab'
 
 const tabData: any[] = [
   {

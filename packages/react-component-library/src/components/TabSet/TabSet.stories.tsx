@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import TabSet from './index'
-import Tab from './tab'
+import Tab from './Tab'
 
 const stories = storiesOf('TabSet', module)
 
