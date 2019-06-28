@@ -2,25 +2,21 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import TabSet from './index'
-
-const tabData = [
-  {
-    title: 'Example Tab 1',
-    content: 'This is some example tab 1 content',
-  },
-  {
-    title: 'Example Tab 2',
-    content: 'This is some example tab 2 content',
-  },
-]
+import Tab from './tab'
 
 const stories = storiesOf('TabSet', module)
 
 stories.add('Default', () => (
   <TabSet
-    tabs={tabData}
     onChangeCallback={(id, name) => {
       console.log(id, name)
     }}
-  />
+  >
+    <Tab title="Example Tab 1">
+      <p>This is some example tab 1 content</p>
+    </Tab>
+    <Tab title="Example Tab 2">
+      <p>This is some example tab 2 content</p>
+    </Tab>
+  </TabSet>
 ))

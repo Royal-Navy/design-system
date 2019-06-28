@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, Children } from 'react'
 import uuid from 'uuid'
 
 interface TabSetProps {
   className?: string
-  tabs: any[]
+  children?: any
   onChangeCallback?: (id: number, title: string) => void
 }
 
 const TabSet: React.FC<TabSetProps> = ({
   className = '',
-  tabs,
+  children,
   onChangeCallback,
 }) => {
   const [activeTab, setActiveTab] = useState(0)
@@ -27,8 +27,8 @@ const TabSet: React.FC<TabSetProps> = ({
       <header className="rn-tab-set__head">
         <nav>
           <ol className="rn-tab-set__tabs">
-            {tabs.map((tab, index) => {
-              const { title } = tab
+            {Children.map(children, ({ props }, index: number) => {
+              const { title } = props
 
               return (
                 <li
@@ -51,25 +51,21 @@ const TabSet: React.FC<TabSetProps> = ({
           </ol>
         </nav>
       </header>
-      {tabs.length >= 1 && Object.keys(tabs[0]).includes('content') && (
-        <div className="rn-tab-set__body">
-          {tabs.map((tab, index) => {
-            const { content } = tab
-
-            return (
-              <div
-                key={uuid()}
-                className={`rn-tab-set__content ${
-                  index === activeTab ? 'is-active' : ''
-                }`}
-                data-testid="content"
-              >
-                {content}
-              </div>
-            )
-          })}
-        </div>
-      )}
+      <div className="rn-tab-set__body">
+        {Children.map(children, (Child: any, index: number) => {
+          return (
+            <div
+              key={uuid()}
+              className={`rn-tab-set__content ${
+                index === activeTab ? 'is-active' : ''
+              }`}
+              data-testid="content"
+            >
+              {Child}
+            </div>
+          )
+        })}
+      </div>
     </article>
   )
 }
