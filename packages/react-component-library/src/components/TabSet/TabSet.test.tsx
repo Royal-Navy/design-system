@@ -4,17 +4,6 @@ import { render, fireEvent, RenderResult } from '@testing-library/react'
 import TabSet from './index'
 import Tab from './Tab'
 
-const tabData: any[] = [
-  {
-    name: 'Example Tab 1',
-    content: 'This is some example tab 1 content',
-  },
-  {
-    name: 'Example Tab 2',
-    content: 'This is some example tab 2 content',
-  },
-]
-
 describe('TabSet', () => {
   let tabset: RenderResult
   let onChangeCallback: () => void
