@@ -6,6 +6,8 @@ pageClasses: ''
 template: withsidebar
 ---
 
+import { TabSet, Tab } from '@royalnavy/react-component-library'
+
 # Component Title
 Introduction paragraph to the component.
 
@@ -14,150 +16,150 @@ Introduction paragraph to the component.
 ## Usage
 The usage section is a bullet pointed list of scenarios the component should be used in.
 
-<DocsTabs>
-<Tab title=“Design”>
+<TabSet>
+  <Tab title="Design">
 
-# Design
-Introduction to the design section.
+  # Design
+  Introduction to the design section.
 
-## Anatomy
-The Anatomy is the breakdown of the component.
+  ## Anatomy
+  The Anatomy is the breakdown of the component.
 
-[ Image breaking down the component’s anatomy ]
+  [ Image breaking down the component’s anatomy ]
 
-Each part of the component in the image should be labelled with a number. Underneath, create a list of each of the labeled items, explaining what they are. This list should also indicate to the reader whenever an item is an optional include.
+  Each part of the component in the image should be labelled with a number. Underneath, create a list of each of the labeled items, explaining what they are. This list should also indicate to the reader whenever an item is an optional include.
 
-Any specific notes on a part of the anatomy breakdown should be included here. This includes dos and don’ts with accompanying image examples.
+  Any specific notes on a part of the anatomy breakdown should be included here. This includes dos and don’ts with accompanying image examples.
 
-## Sizing & Spacing
-Much like the Anatomy section, the Sizing & Spacing section should be a breakdown of the construction of the component. Red line guides should be added to the component, showing the spacing between the different anatomy parts.
+  ## Sizing & Spacing
+  Much like the Anatomy section, the Sizing & Spacing section should be a breakdown of the construction of the component. Red line guides should be added to the component, showing the spacing between the different anatomy parts.
 
-## States (if applicable) 
-This section covers all the different component states including its default state, hover, active, and disabled.
-[ Image / interactive example of component states ]
+  ## States (if applicable) 
+  This section covers all the different component states including its default state, hover, active, and disabled.
+  [ Image / interactive example of component states ]
 
-## Hierarchy & Placement
-This section covers how a component should sit within an application’s hierarchy. It also provides insight as when to use the different variations listed below.
+  ## Hierarchy & Placement
+  This section covers how a component should sit within an application’s hierarchy. It also provides insight as when to use the different variations listed below.
 
----
+  ---
 
-### Variation [ Repeatable Section ] 
-Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
+  ### Variation [ Repeatable Section ] 
+  Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
 
-[ Image / interactive example of Component ]
+  [ Image / interactive example of Component ]
 
-#### Usage
+  #### Usage
 
-#### Anatomy
-[ Image breaking down the component’s anatomy ]
+  #### Anatomy
+  [ Image breaking down the component’s anatomy ]
 
-### Sizing & Spacing
-[ Image of component with red guide lines overlaid ]
+  ### Sizing & Spacing
+  [ Image of component with red guide lines overlaid ]
 
-### States (if applicable)
-[ Image / interactive example of component states ]
+  ### States (if applicable)
+  [ Image / interactive example of component states ]
 
-### Hierarchy & Placement
+  ### Hierarchy & Placement
 
----
+  ---
 
-### Adornments [ Repeatable Section ]
-Include any component adornments here. Much like the variations section above, this section is repeatable.
+  ### Adornments [ Repeatable Section ]
+  Include any component adornments here. Much like the variations section above, this section is repeatable.
 
-[ Image / interactive example of Component ]
+  [ Image / interactive example of Component ]
 
-#### Usage
+  #### Usage
 
-#### Anatomy
-[ Image breaking down the component’s anatomy ]
+  #### Anatomy
+  [ Image breaking down the component’s anatomy ]
 
-### Sizing & Spacing
-[ Image of component with red guide lines overlaid ]
+  ### Sizing & Spacing
+  [ Image of component with red guide lines overlaid ]
 
-### States (if applicable)
-[ Image / interactive example of component states ]
+  ### States (if applicable)
+  [ Image / interactive example of component states ]
 
-</Tab>
+  </Tab>
 
-<Tab title=“Develop”>
+  <Tab title="Develop">
 
-# Develop
-Introduction to the development section.
+  # Develop
+  Introduction to the development section.
 
-## Installation
-To install the COMPONENT_NAME component, first install the Standards Component Library via `npm`.
+  ## Installation
+  To install the COMPONENT_NAME component, first install the Standards Component Library via `npm`.
 
-```
-    npm install @royalnavy/react-component-library
-```
+  ```
+      npm install @royalnavy/react-component-library
+  ```
 
-Then inside your project, explicitly import the component you need:
+  Then inside your project, explicitly import the component you need:
 
-```
-    import { ComponentName } from '@royalnavy/react-component-library'`
-```
+  ```
+      import { ComponentName } from '@royalnavy/react-component-library'`
+  ```
 
-## Basic Usage
+  ## Basic Usage
 
-```
-    Basic HTML for the component is placed here.
-```
+  ```
+      Basic HTML for the component is placed here.
+  ```
 
----
+  ---
 
-### Variation [ Repeatable ] 
-Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
+  ### Variation [ Repeatable ] 
+  Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
 
-### Usage
+  ### Usage
 
-```
-    Code block for differing HTML
-```
+  ```
+      Code block for differing HTML
+  ```
 
-# Properties
-This section contains specific properties for the component.
+  # Properties
+  This section contains specific properties for the component.
 
-| Name      | Type   | Required | Default  | Description  |
------------------------------------------------------------
-| className | String | True     |          |              |
+  | Name      | Type   | Required | Default  | Description  |
+  -----------------------------------------------------------
+  | className | String | True     |          |              |
 
----
+  ---
 
-### Adornment [ Repeatable ]
-Much like the design section, the Adornment block is a repeatable section, outlining any Adornments a component may have and how to apply them.
+  ### Adornment [ Repeatable ]
+  Much like the design section, the Adornment block is a repeatable section, outlining any Adornments a component may have and how to apply them.
 
-[ Image / interactive example of Component ]
+  [ Image / interactive example of Component ]
 
-#### Usage
+  #### Usage
 
-```
-    Code block for Adornment
-```
+  ```
+      Code block for Adornment
+  ```
 
-# Properties
-This section contains specific properties for the adornment.
+  # Properties
+  This section contains specific properties for the adornment.
 
-| Name         | Type    | Required  | Default  | Description  |
-----------------------------------------------------------------
-| className    | String  | True      |          |              |
+  | Name         | Type    | Required  | Default  | Description  |
+  ----------------------------------------------------------------
+  | className    | String  | True      |          |              |
 
----
+  ---
 
-## Style Hooks
+  ## Style Hooks
 
-The following CSS classes are used to style the COMPONENT_NAME component. Use these classes to hook into the component if you need to override specific properties.
+  The following CSS classes are used to style the COMPONENT_NAME component. Use these classes to hook into the component if you need to override specific properties.
 
-| CSS Class  | Required  | Description      |
----------------------------------------------
-| .class     | True      | The main styles  |
+  | CSS Class  | Required  | Description      |
+  ---------------------------------------------
+  | .class     | True      | The main styles  |
 
 
-# Properties
-This section contains all available props for the component.
+  # Properties
+  This section contains all available props for the component.
 
-| Name       | Type     | Required  | Default  | Description  |
----------------------------------------------------------------
-| className  | String   | True      |          |              |
+  | Name       | Type     | Required  | Default  | Description  |
+  ---------------------------------------------------------------
+  | className  | String   | True      |          |              |
 
-</Tab>
-</DocsTabs>
+  </Tab>
+</TabSet>
