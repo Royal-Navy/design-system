@@ -166,6 +166,16 @@ The usage section is a bullet pointed list of scenarios the component should be 
   </Tab>
 </TabSet>
 
+<!-- Example TabSet, Tab Usage -->
+<TabSet>
+  <Tab title="Example Tab 1">
+    <p>This is some example tab 1 content</p>
+  </Tab>
+  <Tab title="Example Tab 2">
+    <p>This is some example tab 2 content</p>
+  </Tab>
+</TabSet>
+
 <!-- Example CodeHighlighter Usage -->
 <CodeHighlighter source="(function() { console.log('This is some source code')})()" language="javascript">
   <h1>This is some live example JSX</h1>
