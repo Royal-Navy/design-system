@@ -18,14 +18,14 @@ import Card from '../../components/presenters/card'
   ctaLink="/get-started"
 />
 
-<section class="h_f h_f-align-start h_mt-8 h_mb-8">
+<section class="m:h_f m:h_f-align-start h_mt-8 m:h_mb-8">
   <Card 
     type="border" 
     title="Styles" 
     text="Make your service look like it's for the Royal Navy with guides for applying colour, typography and spacing." 
     linkText="View styles" 
     linkHref="/styles"
-    className="h_f-1 h_mr-4"
+    className="m:h_f-1 m:h_mr-4"
   />
 
   <Card 
@@ -34,7 +34,7 @@ import Card from '../../components/presenters/card'
     text="Save time with reusable, accessible components for forms, navigation, cards and more." 
     linkText="View components" 
     linkHref="/components" 
-    className="h_f-1  h_ml-4"
+    className="m:h_f-1  m:h_ml-4 h_mt-8 m:h_mt-0"
   />
 </section>
 
