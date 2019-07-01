@@ -7,6 +7,8 @@ template: withsidebar
 ---
 
 import { TabSet, Tab } from '@royalnavy/react-component-library'
+import DataTable from '../../../components/presenters/data-table'
+import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 # Component Title
 Introduction paragraph to the component.
@@ -163,3 +165,51 @@ The usage section is a bullet pointed list of scenarios the component should be 
 
   </Tab>
 </TabSet>
+
+<!-- Example TabSet, Tab Usage -->
+<TabSet>
+  <Tab title="Example Tab 1">
+    <p>This is some example tab 1 content</p>
+  </Tab>
+  <Tab title="Example Tab 2">
+    <p>This is some example tab 2 content</p>
+  </Tab>
+</TabSet>
+
+<!-- Example CodeHighlighter Usage -->
+<CodeHighlighter source="(function() { console.log('This is some source code')})()" language="javascript">
+  <!-- Add imports to the top of this file -->
+  <h1>This is some live example JSX</h1>
+</CodeHighlighter>
+
+<!-- Example DataTable Usage -->
+<DataTable caption="Props" data={[
+  {
+    'Prop Name': 'id',
+    Type: 'String',
+    Required: 'false',
+    Default: '',
+    Description: 'ID attribute attached to the wrapper element',
+  },
+  {
+    'Prop Name': 'placeholder',
+    Type: 'String',
+    Required: 'true',
+    Default: '',
+    Description: 'A message to show in the input when there is no value',
+  },
+  {
+    'Prop Name': 'type',
+    Type: 'String',
+    Required: 'false',
+    Default: 'text',
+    Description: 'The required input attribute',
+  },
+  {
+    'Prop Name': 'onChange',
+    Type: 'func(value)',
+    Required: 'true',
+    Default: 'null',
+    Description: 'A callback function to inform of any changes to the value',
+  },
+]} />
