@@ -2,7 +2,6 @@
 
 .main {
   display: flex;
-  flex-flow: column;
 }
 
 .aside {
@@ -10,10 +9,6 @@
 }
 
 @include breakpoint("s") {
-  .main {
-    flex-flow: row wrap;
-  }
-
   .post-article {
     margin: 0;
     order: 2;
@@ -22,8 +17,7 @@
 
   .aside {
     display: block;
-    flex: 1 auto;
-    max-width: 240px;
+    flex: 0 0 180px;
   }
 
   .aside--primary {
@@ -39,6 +33,6 @@
 
 @include breakpoint("l") {
   .aside {
-    max-width: 320px;
+    flex: 0 0 320px;
   }
 }
