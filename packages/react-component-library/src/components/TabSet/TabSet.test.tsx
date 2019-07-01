@@ -2,17 +2,7 @@ import React from 'react'
 import { render, fireEvent, RenderResult } from '@testing-library/react'
 
 import TabSet from './index'
-
-const tabData: any[] = [
-  {
-    name: 'Example Tab 1',
-    content: 'This is some example tab 1 content',
-  },
-  {
-    name: 'Example Tab 2',
-    content: 'This is some example tab 2 content',
-  },
-]
+import Tab from './Tab'
 
 describe('TabSet', () => {
   let tabset: RenderResult
@@ -23,7 +13,14 @@ describe('TabSet', () => {
 
     beforeEach(() => {
       tabset = render(
-        <TabSet tabs={tabData} onChangeCallback={onChangeCallback} />
+        <TabSet onChangeCallback={onChangeCallback}>
+          <Tab title="Example Tab 1">
+            <p>This is some example tab 1 content</p>
+          </Tab>
+          <Tab title="Example Tab 2">
+            <p>This is some example tab 2 content</p>
+          </Tab>
+        </TabSet>
       )
     })
 
