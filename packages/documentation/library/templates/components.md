@@ -21,10 +21,10 @@ The usage section is a bullet pointed list of scenarios the component should be 
 <TabSet>
   <Tab title="Design">
 
-  # Design
+  ## Design
   Introduction to the design section.
 
-  ## Anatomy
+  ### Anatomy
   The Anatomy is the breakdown of the component.
 
   [ Image breaking down the component’s anatomy ]
@@ -33,17 +33,15 @@ The usage section is a bullet pointed list of scenarios the component should be 
 
   Any specific notes on a part of the anatomy breakdown should be included here. This includes dos and don’ts with accompanying image examples.
 
-  ## Sizing & Spacing
+  ### Sizing & Spacing
   Much like the Anatomy section, the Sizing & Spacing section should be a breakdown of the construction of the component. Red line guides should be added to the component, showing the spacing between the different anatomy parts.
 
-  ## States (if applicable) 
+  ### States (if applicable) 
   This section covers all the different component states including its default state, hover, active, and disabled.
   [ Image / interactive example of component states ]
 
-  ## Hierarchy & Placement
+  ### Hierarchy & Placement
   This section covers how a component should sit within an application’s hierarchy. It also provides insight as when to use the different variations listed below.
-
-  ---
 
   ### Variation [ Repeatable Section ] 
   Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
@@ -55,15 +53,13 @@ The usage section is a bullet pointed list of scenarios the component should be 
   #### Anatomy
   [ Image breaking down the component’s anatomy ]
 
-  ### Sizing & Spacing
+  #### Sizing & Spacing
   [ Image of component with red guide lines overlaid ]
 
-  ### States (if applicable)
+  #### States (if applicable)
   [ Image / interactive example of component states ]
 
-  ### Hierarchy & Placement
-
-  ---
+  #### Hierarchy & Placement
 
   ### Adornments [ Repeatable Section ]
   Include any component adornments here. Much like the variations section above, this section is repeatable.
@@ -85,50 +81,35 @@ The usage section is a bullet pointed list of scenarios the component should be 
 
   <Tab title="Develop">
 
-  # Develop
+  ## Develop
   Introduction to the development section.
 
-  ## Installation
-  To install the COMPONENT_NAME component, first install the Standards Component Library via `npm`.
-
-  ```
-      npm install @royalnavy/react-component-library
-  ```
-
-  Then inside your project, explicitly import the component you need:
+  ### Basic Usage
 
   ```
       import { ComponentName } from '@royalnavy/react-component-library'`
-  ```
-
-  ## Basic Usage
-
-  ```
+      
       Basic HTML for the component is placed here.
   ```
-
-  ---
 
   ### Variation [ Repeatable ] 
   Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
 
-  ### Usage
+  #### Usage
 
   ```
       Code block for differing HTML
   ```
 
-  # Properties
+  ### Properties
   This section contains specific properties for the component.
 
-  | Name      | Type   | Required | Default  | Description  |
-  -----------------------------------------------------------
-  | className | String | True     |          |              |
+    | Name      | Type   | Required | Default  | Description  |
+    -----------------------------------------------------------
+    | className | String | True     |          |              |
 
-  ---
-
-  ### Adornment [ Repeatable ]
-  Much like the design section, the Adornment block is a repeatable section, outlining any Adornments a component may have and how to apply them.
+  ### Adornment
+  Much like the design section, the Adornment block is a section, outlining any Adornments a component may have and how to apply them.
 
   [ Image / interactive example of Component ]
 
@@ -138,30 +119,12 @@ The usage section is a bullet pointed list of scenarios the component should be 
       Code block for Adornment
   ```
 
-  # Properties
+  #### Properties
   This section contains specific properties for the adornment.
 
-  | Name         | Type    | Required  | Default  | Description  |
-  ----------------------------------------------------------------
-  | className    | String  | True      |          |              |
-
-  ---
-
-  ## Style Hooks
-
-  The following CSS classes are used to style the COMPONENT_NAME component. Use these classes to hook into the component if you need to override specific properties.
-
-  | CSS Class  | Required  | Description      |
-  ---------------------------------------------
-  | .class     | True      | The main styles  |
-
-
-  # Properties
-  This section contains all available props for the component.
-
-  | Name       | Type     | Required  | Default  | Description  |
-  ---------------------------------------------------------------
-  | className  | String   | True      |          |              |
+    | Name         | Type    | Required  | Default  | Description  |
+    ----------------------------------------------------------------
+    | className    | String  | True      |          |              |
 
   </Tab>
 </TabSet>
