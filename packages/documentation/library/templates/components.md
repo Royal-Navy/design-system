@@ -178,6 +178,7 @@ The usage section is a bullet pointed list of scenarios the component should be 
 
 <!-- Example CodeHighlighter Usage -->
 <CodeHighlighter source="(function() { console.log('This is some source code')})()" language="javascript">
+  <!-- Add imports to the top of this file -->
   <h1>This is some live example JSX</h1>
 </CodeHighlighter>
 
