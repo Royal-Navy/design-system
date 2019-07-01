@@ -17,7 +17,7 @@ Introduction paragraph to the component.
 The usage section is a bullet pointed list of scenarios the component should be used in.
 
 <TabSet>
-  <Tab title=“Design”>
+  <Tab title="Design">
 
   # Design
   Introduction to the design section.
@@ -81,7 +81,7 @@ The usage section is a bullet pointed list of scenarios the component should be 
 
   </Tab>
 
-  <Tab title=“Develop”>
+  <Tab title="Develop">
 
   # Develop
   Introduction to the development section.
