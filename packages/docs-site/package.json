@@ -74,7 +74,8 @@
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src",
     "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src",
-    "test": "jest"
+    "test": "jest",
+    "cache:clear": "rm -rf ./cache"
   },
   "browserslist": [
     ">0.2%",
