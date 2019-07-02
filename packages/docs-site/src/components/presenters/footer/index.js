@@ -9,7 +9,7 @@ import MonoLogo from './logo.svg'
 
 const Footer = ({ children, links }) => (
   <div className="rn-footer">
-    <div>
+    <div className="rn-container">
       <MonoLogo />
       <Links links={links} size="small" />
       <hr className="rn-footer__divider" />

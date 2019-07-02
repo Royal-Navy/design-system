@@ -39,11 +39,11 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn--primary {
-  background: color(primary, 700);
+  background: color(primary, 600);
   color: color(neutral, white);
 
   &:hover {
-    background: color(primary, 900);
+    background: color(primary, 800);
   }
 }
 

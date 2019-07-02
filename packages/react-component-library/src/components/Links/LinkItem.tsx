@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Link from './Link'
+import Link from '../Link'
 
 const LinkItem: React.FC<any> = ({ Component = Link, label, ...rest }) => (
   <li className="rn-links__item">

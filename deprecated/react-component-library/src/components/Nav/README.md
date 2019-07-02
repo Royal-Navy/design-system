@@ -70,7 +70,7 @@ const navItems = [
 
 The properties required for a nav item depend on the component that will render the item. If no component is passed in with
 the item then the 'Link'component will be used to render the nav item. Any properties in the nav item wil be passed to the
-render component. One example of an alternative nav item render componet would be a React Router Link component, this 
+render component. One example of an alternative nav item render component would be a React Router Link component, this 
 requires a 'to' property. The label property is used as the child of the render component. By default a className of 
 'rn-btn--item' is passed to the component.
 

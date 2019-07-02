@@ -1,6 +1,5 @@
 /* stylelint-disable */
-
-.#{$helper-ns}f {
+@mixin flexSharedStyles {
   display: flex !important;
 
   // Direction
@@ -52,6 +51,18 @@
   &-1 {
     flex: 1 !important;
   }
+}
 
-
+@each $_breakpoint, $_breakpoint-val in $__breakpoints {
+  @if $_breakpoint == 'root' {
+    .#{$helper-ns}f {
+      @include flexSharedStyles;      
+    }
+  } @else {
+    @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
+      .#{$_breakpoint}\:#{$helper-ns}f {        
+          @include flexSharedStyles;
+      }
+    }
+  }
 }

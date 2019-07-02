@@ -31,7 +31,7 @@ const MastHead = ({ navItems }) => {
 
   return (
     <div className="masthead">
-      <div className="masthead__container">
+      <div className="masthead__container rn-container">
         <SiteLogo className="masthead__logo" />
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           <Form className="masthead__search">
@@ -55,11 +55,19 @@ const MastHead = ({ navItems }) => {
           </Form>
         </Formik>
       </div>
-      <PhaseBanner className="masthead__phasebanner" />
+      <PhaseBanner className="masthead__phasebanner">
+        <span>
+          Are you a Navy Product Owner or Stakeholder?{' '}
+          <a href="/about-the-design-system">
+            Find out how Standards relates to you
+          </a>
+          .
+        </span>
+      </PhaseBanner>
       {hasNavItems && (
         <div
           data-testid="primary-nav"
-          className={`masthead__container masthead__nav ${
+          className={`rn-container masthead__nav ${
             open ? 'is-open' : 'is-closed'
           }`}
         >

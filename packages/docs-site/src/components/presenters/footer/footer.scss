@@ -1,13 +1,10 @@
 @import "@royalnavy/css-framework";
 
 .rn-footer {
+  margin-top: spacing(5);
   background: color(primary, 800);
-}
-
-.rn-footer > div {
-  max-width: $navy-content-width;
-  margin: 0 auto;
-  padding: spacing(5) spacing(3);
+  padding-top: spacing(3);
+  padding-bottom: spacing(3);
 }
 
 .rn-footer,

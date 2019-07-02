@@ -39,7 +39,7 @@ const PageTemplate = ({ data: { mdx }, location }) => {
     <Layout>
       <Helmet title={`${mdx.frontmatter.title} | NELSON // Standards`} />
       <MastHead navItems={primaryNavData} />
-      <main className="main">
+      <main className="main rn-container">
         <PostArticle mdx={mdx.code.body} />
         {hasSecondaryNav && (
           <Sidebar
