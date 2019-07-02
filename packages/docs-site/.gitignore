@@ -4,5 +4,4 @@ git_modules/
 public/
 .firebase/
 .cache
-src/library/**/*
 generated-library/

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="727" height="179">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M1.5.5h725v143H1.5z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="173">The Tertiary Button.</tspan>
+    </text>
+    <text fill="#2A77C7" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" transform="translate(277 63)">
+      <tspan x="36.2" y="15">Tertiary Button</tspan>
+    </text>
+  </g>
+</svg>
