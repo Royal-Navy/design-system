@@ -1,12 +1,9 @@
 @import "@royalnavy/css-framework";
 
-.masthead {
-  margin-bottom: spacing(5);
-}
 
 .masthead__container {
-  margin-top: spacing(3);
-  margin-bottom: spacing(3);
+  padding-top: spacing(3);
+  padding-bottom: spacing(3); 
 }
 
 .masthead__logo {
@@ -14,6 +11,17 @@
   height: auto;
   margin-bottom: spacing(1);
   overflow: visible;
+  @include breakpoint("s") {
+    width: 340px;
+    height: auto;
+    margin-bottom: 0;
+  }
+
+  @include breakpoint("m") {
+    width: 405px;
+    height: 39px;
+    margin-bottom: 0;
+  }
 }
 
 .masthead__search {
@@ -32,8 +40,8 @@
 
 .masthead__nav {
   display: none;
-  margin-top: spacing(3);
-  margin-bottom: spacing(3);
+  padding-top: spacing(3);
+  padding-bottom: spacing(3);
 }
 
 .masthead__nav.is-open {
@@ -46,14 +54,9 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-items: center;
   }
-
-  .masthead__logo {
-    width: 405px;
-    height: 39px;
-    margin-bottom: 0;
-  }
-
+  
   .masthead__search {
     margin: 0;
   }

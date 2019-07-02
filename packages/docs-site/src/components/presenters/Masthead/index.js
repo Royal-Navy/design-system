@@ -47,7 +47,7 @@ const MastHead = ({ navItems }) => {
               <Button
                 data-testid="primary-nav-button"
                 onClick={toggle}
-                icon={open ? <TriangleDown /> : <TriangleUp />}
+                icon={open ? <TriangleUp /> : <TriangleDown />}
               >
                 Menu
               </Button>
@@ -66,7 +66,7 @@ const MastHead = ({ navItems }) => {
       </PhaseBanner>
       {hasNavItems && (
         <div
-          data-testid="primary-nav"
+          data-testid="primary-nav s:h_mt-4"
           className={`rn-container masthead__nav ${
             open ? 'is-open' : 'is-closed'
           }`}
