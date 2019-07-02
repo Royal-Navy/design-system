@@ -6,6 +6,32 @@
   "description": "The documentation site for royalnavy.io",
   "version": "0.1.1",
   "author": "NELSON Standards <standards@royalnavy.io>",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"src/**/*.js\"",
+    "lint": "eslint src",
+    "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src",
+    "test": "jest",
+    "cache:clear": "rm -rf ./cache"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Royal-Navy/standards-toolkit"
+  },
+  "bugs": {
+    "url": "https://github.com/Royal-Navy/standards-toolkit/issues"
+  },
+  "lint-staged": {
+    "*.@(js|jsx|ts|tsx)": "eslint"
+  },
   "dependencies": {
     "@mdx-js/mdx": "^1.0.0-rc.4",
     "@mdx-js/react": "^1.0.0-rc.5",
@@ -33,7 +59,8 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-helmet": "^5.2.0",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -60,37 +87,7 @@
     "lint-staged": "^8.2.1",
     "prettier": "^1.16.4",
     "sass": "^1.20.1",
-    "styled-components": "^4.3.2",
     "stylelint": "^10.1.0",
     "stylelint-junit-formatter": "^0.2.1"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"src/**/*.js\"",
-    "lint": "eslint src",
-    "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src",
-    "test": "jest",
-    "cache:clear": "rm -rf ./cache"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Royal-Navy/royalnavy.io"
-  },
-  "bugs": {
-    "url": "https://github.com/Royal-Navy/royalnavy.io/issues"
-  },
-  "lint-staged": {
-    "*.@(js|jsx|ts|tsx)": "eslint"
   }
 }
