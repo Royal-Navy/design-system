@@ -1,10 +1,9 @@
 ---
-title: About the design system
+title: Contact
 description: ''
 tags: public
 pageClass: ''
 template: default
-index: 6
 ---
 
-## About the design system
+## Contact
