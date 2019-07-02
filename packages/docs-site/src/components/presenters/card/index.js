@@ -14,9 +14,10 @@ const Card = ({
   imagePosition,
   linkText,
   linkHref,
+  className,
 }) => {
   return (
-    <article className={`card card--${type}`}>
+    <article className={`card card--${type} ${className}`}>
       <header className="card__head">
         {meta && type === 'coloured' && (
           <span className="card__meta" data-testid="meta">
@@ -62,6 +63,7 @@ Card.propTypes = {
   imagePosition: PropTypes.oneOf(['left', 'right']),
   linkText: PropTypes.string,
   linkHref: PropTypes.string,
+  className: PropTypes.string,
 }
 
 Card.defaultProps = {
@@ -73,6 +75,7 @@ Card.defaultProps = {
   imagePosition: 'left',
   linkText: '',
   linkHref: '#',
+  className: '',
 }
 
 export default Card
