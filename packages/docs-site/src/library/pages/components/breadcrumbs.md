@@ -1,9 +1,11 @@
 ---
 title: Breadcrumbs
 description: The Breadcrumb component is a navigational item
-audience: public
-pageClasses: ''
 ---
+
+import { Breadcrumbs, Tab, TabSet } from '@royalnavy/react-component-library'
+import DataTable from '../../../components/presenters/data-table'
+import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 The Breadcrumb component is a navigational item that allows users to quickly ascend a page tree.
 
@@ -14,9 +16,11 @@ The Breadcrumb component should sit at the top of the viewport. Visit the Design
 
 ---
 
-# Design
+<TabSet>
 
-## Anatomy
+<Tab title="Design">
+ 
+ ## Anatomy
 ![Breadcrumb component anatomy](../../images/components/breadcrumb/anatomy.svg)
 
 1. **Parent Link**. The parent link is a clickable action that will navigate the user to the parent page.
@@ -32,88 +36,119 @@ When hovering on a breadcrumb, the active link will change to the primary colour
 ## Hierarchy & Placement
 There should only be one Breadcrumb component per page. It should be situated at the top of the viewport and be easily accessible for the user. The component is a top level navigational used to help the user navigate whole pages, rather than a subset section inside another component.
 
----
-
-# Develop
-Introduction to the development section.
-
-## Installation
-To install the COMPONENT_NAME component, first install the Standards Component Library via `npm`.
-
-```
-    npm install @royalnavy/react-component-library
-```
-
-Then inside your project, explicitly import the component you need:
-
-```
-    import { ComponentName } from '@royalnavy/react-component-library'`
-```
-
-## Basic Usage
-
-```
-    Basic HTML for the component is placed here.
-```
-
----
-
-### Variation [ Repeatable ] 
-Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
-
-### Usage
-
-```
-    Code block for differing HTML
-```
-
-# Properties
-This section contains specific properties for the component.
-
-| Name      | Type   | Required | Default  | Description  |
------------------------------------------------------------
-| className | String | True     |          |              |
-
----
-
-### Adornment [ Repeatable ]
-Much like the design section, the Adornment block is a repeatable section, outlining any Adornments a component may have and how to apply them.
-
-[ Image / interactive example of Component ]
-
-#### Usage
-
-```
-    Code block for Adornment
-```
-
-# Properties
-This section contains specific properties for the adornment.
-
- | Name         | Type    | Required  | Default  | Description  |
-----------------------------------------------------------------
-| className    | String  | True      |          |              |
-
----
-
-## Style Hooks
-
-The following CSS classes are used to style the COMPONENT_NAME component. Use these classes to hook into the component if you need to override specific properties.
-
-| CSS Class  | Required  | Description      |
----------------------------------------------
-| .class     | True      | The main styles  |
+</Tab>
 
 
-# Properties
-This section contains all available props for the component.
+<Tab title="Develop">
+The `Breadcrumbs` component accepts an array of links, including the current page title and href. Like the Nav component the Breadcrumbs component will render regular links by default, but if you pass a `Component` property with a link you can specify the component to render it and send the properties it needs, such as a Gatsby `Link` component that will require `to` instead of `href`.
 
- | Name       | Type     | Required  | Default  | Description  |
----------------------------------------------------------------
-| className  | String   | True      |          |              |
+### Basic Usage
+By default simply passing a `label` and `href` will cause a regular anchor tag to be rendered for a Breadcrumb.
+
+<CodeHighlighter source={`const links = [
+  {
+    href: '/',
+    label: 'Home',
+  },
+  {
+    href: '/components',
+    label: 'Components',
+  },
+  {
+    href: '/components/breadcrumb',
+    label: 'Breadcrumb',
+  },
+]
+
+<Breadcrumbs links={links} />`} language="javascript">
+  <Breadcrumbs links={[
+  {
+    href: '/',
+    label: 'Home',
+  },
+  {
+    href: '/components',
+    label: 'Components',
+  },
+  {
+    href: '/components/breadcrumb',
+    label: 'Breadcrumb',
+  },
+]} />
+</CodeHighlighter>
+
+### Usage with React Router
+More often than not an application will use a library such as `React Router` to generate links between sections of a site, in this case you can specify the `Component` that will render the link, along with the properties it needs. In this example the `Link` component will be generated with the label as it's child.
+
+<CodeHighlighter source={`import {Link} from "react-router-dom"\n\nconst links = [
+    to: '/',
+    label: 'Home',
+    Component: Link
+  },
+  {
+    to: '/components',
+    label: 'Components',
+    Component: Link
+  },
+  {
+    to: '/components/breadcrumb',
+    label: 'Breadcrumb',
+    Component: Link
+  },
+]
+\n
+<Breadcrumbs links={links} />`} language="javascript">
+  <Breadcrumbs links={[
+  {
+    href: '/',
+    label: 'Home',
+  },
+  {
+    href: '/components',
+    label: 'Components',
+  },
+  {
+    href: '/components/breadcrumb',
+    label: 'Breadcrumb',
+  },
+]} />
+</CodeHighlighter>
+
+### Properties
+<DataTable caption="Breadcrumb" data={[
+  {
+    Name: 'Component',
+    Type: 'React.Component',
+    Required: 'False',
+    Default: 'Link (<a href>)',
+    Description: 'A react component to surround the label and passed all properties',
+  },
+  {
+    Name: 'label',
+    Type: 'string ',
+    Required: 'False',
+    Default: 'neutral',
+    Description: 'The label for this part of the Breadcrumb hierarchy',
+  },
+]} />
 
 
+<DataTable caption="Breadcrumbs" data={[
+  {
+    Name: 'className',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'Optional additional css class to associate with the component wrapper',
+  },
+  {
+    Name: 'links',
+    Type: 'Breadcrumb[] ',
+    Required: 'True',
+    Default: '',
+    Description: 'An array of objects that must least contain a label. If no custom component is provided then provide a href, otherwise provide the Component and the associated property to create a link',
+  },
+]} />
 
-#### Storybook
-
- To view all the variations of this component, including interactive examples, please visit our [Storybook](https://react-storybook.royalnavy.io/?selectedKind=buttons&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel&show-info=0&source=0).
+</Tab>
+</TabSet>
