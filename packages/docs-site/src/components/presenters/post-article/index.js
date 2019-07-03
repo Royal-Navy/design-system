@@ -12,7 +12,7 @@ const PostArticle = ({ mdx, className }) => {
 
 PostArticle.propTypes = {
   className: PropTypes.string,
-  mdx: PropTypes.instanceOf(Object).isRequired,
+  mdx: PropTypes.string.isRequired,
 }
 
 PostArticle.defaultProps = {
