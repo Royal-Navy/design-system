@@ -87,4 +87,4 @@ The default NavItem render component. Renders a link.
 | ---------   | -------------- | -------- | -------  | -----------
 | active      | boolean        | False    | false    | Set to true for the currently active navigation item |
 | label       | string         | True     |          | The text to display |
-| url         | string         | True     |          | The url to send the browser to |
+| href        | string         | True     |          | The url to send the browser to |
