@@ -1,6 +1,6 @@
 ---
 title: Nav
-description: A horizontal or vertial navigatio component that supports nesting
+description: A horizontal or vertical navigation component that supports nesting
 ---
 
 import { Nav, Tab, TabSet } from '@royalnavy/react-component-library'
