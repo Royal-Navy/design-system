@@ -1,14 +1,15 @@
 ---
-title: Phase Banner
-description:  A simple banner to indicate the phase of the project.
+title: Links
+description: A simple list of links listed inline separated by a pipe
 ---
-import { PhaseBanner, Tab, TabSet } from '@royalnavy/react-component-library'
+
+import { Links, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 
 # Links
-A simple banner to indicate the phase of the project.
+A simple list of links listed inline separated by a pipe
 
 ## Usage
 
@@ -76,44 +77,117 @@ A simple banner to indicate the phase of the project.
 
 
 <Tab title="Develop">
-The banner should be used directly underneath the main site header, before the content begins. If used with no props then it will look exactly like the example image below (linking to /feedback), however it can be customized to with any text or link that is required.
+The `Links` component renders a list of links inline with a pipe separator, this is most useful for
+situations like a page footer with links to give feedback or look at the privacy policy.
+
+Like the Nav component the Links component accepts an array of items. If no Component is specified
+for an item then a regular `A` tag is used, otherwise the Component passed will be rendered with
+the remaining properties.
 
 ### Basic Usage
 By default simply passing a `label` and `href` will cause a regular anchor tag to be rendered for a Breadcrumb.
 
-<CodeHighlighter source={`<PhaseBanner />`} language="javascript">
- <PhaseBanner />
+<CodeHighlighter source={`const links=[
+  {
+    href: '/privacy',
+    label: 'Privacy',
+  },
+  {
+    href: '/contact',
+    label: 'Contact',
+  },
+  {
+    href: '/feedback',
+    label: 'Feedback',
+  },
+]\n
+<Links links={links} />`} language="javascript">
+  <Links links={[
+  {
+    href: '/privacy',
+    label: 'Privacy',
+  },
+  {
+    href: '/contact',
+    label: 'Contact',
+  },
+  {
+    href: '/feedback',
+    label: 'Feedback',
+  },
+]} />
 </CodeHighlighter>
 
-### Alternative text
-You can pass custom markup to appear by including it as a child of the component.
+### Usage with React Router
+More often than not an application will use a library such as `React Router` to generate links between sections of a site, in this case you can specify the `Component` that will render the link, along with the properties it needs. In this example the `Link` component will be generated with the label as it's child.
 
-<CodeHighlighter source={`<PhaseBanner>Custom html can go here. <strong>This part is in bold!</strong><PhaseBanner/>`} language="javascript">
-  <PhaseBanner>Custom html can go here. <strong>This part is in bold!</strong></PhaseBanner>
+<CodeHighlighter source={`import {Link} from "react-router-dom"\n\nconst links = [
+  {
+    to: '/privacy',
+    label: 'Privacy',
+    Component: Link
+  },
+  {
+    to: '/contact',
+    label: 'Contact',
+    Component: Link
+  },
+  {
+    to: '/feedback',
+    label: 'Feedback',
+    component: Link
+  },
+]\n
+<Links links={links} />`} language="javascript">
+  <Links links={[
+  {
+    href: '/privacy',
+    label: 'Privacy',
+  },
+  {
+    href: '/contact',
+    label: 'Contact',
+  },
+  {
+    href: '/feedback',
+    label: 'Feedback',
+  },
+]} />
 </CodeHighlighter>
 
 ### Properties
 <DataTable caption="Link" data={[
   {
-    Name: 'phase',
-    Type: 'string (alpha/beta)',
+    Name: 'Component',
+    Type: 'React.Component',
     Required: 'False',
-    Default: 'alpha',
-    Description: 'Text to display in the phase banner badge',
+    Default: 'Link (<a href>)',
+    Description: 'A react component to surround the label and passed all properties',
   },
   {
-    Name: 'link',
+    Name: 'label',
     Type: 'string ',
     Required: 'False',
-    Default: '/feedback',
-    Description: 'The url to use with the default message',
+    Default: 'neutral',
+    Description: 'The text for the link',
+  },
+]} />
+
+
+<DataTable caption="Links" data={[
+  {
+    Name: 'className',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'Optional additional css class to associate with the component wrapper',
   },
   {
-    Name: 'children',
-    Type: 'React.Element',
-    Required: 'False',
-    Default: 'This is a new service, <a href=\"link\">Your feedback</a> will help to improve it',
-    Description: 'HTML to display in the phase banner body',
+    Name: 'links',
+    Type: 'Link[] ',
+    Required: 'True',
+    Default: '',
+    Description: 'An array of objects that must least contain a label. If no custom component is provided then provide a href, otherwise provide the Component and the associated property to create a link',
   },
 ]} />
 

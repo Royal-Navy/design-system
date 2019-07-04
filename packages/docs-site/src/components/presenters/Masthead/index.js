@@ -1,4 +1,3 @@
-import { Form, Field, Formik } from 'formik'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import {
@@ -6,24 +5,18 @@ import {
   Icons,
   Nav,
   PhaseBanner,
-  TextInput,
 } from '@royalnavy/react-component-library'
 
 import SiteLogo from './images/site-logo.svg'
 
 import './masthead.scss'
 
-const { Search, TriangleDown, TriangleUp } = Icons
+const { TriangleDown, TriangleUp } = Icons
 
 const MastHead = ({ navItems }) => {
   const [open, setOpen] = useState(false)
 
-  const initialValues = { search: '' }
   const hasNavItems = navItems.length > 0
-
-  const onSubmit = term => {
-    console.log('Do a thing:', term)
-  }
 
   const toggle = () => {
     setOpen(!open)
@@ -33,27 +26,18 @@ const MastHead = ({ navItems }) => {
     <div className="masthead">
       <div className="masthead__container rn-container">
         <SiteLogo className="masthead__logo" />
-        <Formik initialValues={initialValues} onSubmit={onSubmit}>
-          <Form className="masthead__search">
-            <Field
-              component={TextInput}
-              endAdornment={<Search />}
-              id="searcbar"
-              name="search"
-              placeholder="search"
-            />
 
-            {hasNavItems && (
-              <Button
-                data-testid="primary-nav-button"
-                onClick={toggle}
-                icon={open ? <TriangleDown /> : <TriangleUp />}
-              >
-                Menu
-              </Button>
-            )}
-          </Form>
-        </Formik>
+        {hasNavItems && (
+          <Button
+            className="masthead__button"
+            data-testid="primary-nav-button"
+            onClick={toggle}
+            icon={open ? <TriangleDown /> : <TriangleUp />}
+            variant="secondary"
+          >
+            Menu
+          </Button>
+        )}
       </div>
       <PhaseBanner className="masthead__phasebanner">
         <span>

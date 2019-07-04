@@ -6,7 +6,7 @@ import Masthead from './index'
 describe('Masthead', () => {
   let wrapper
 
-  describe('Given the masthead is called with navigaton items', () => {
+  describe('Given the masthead is called with navigation items', () => {
     beforeEach(() => {
       const navItems = [
         {

@@ -5,29 +5,15 @@
 }
 
 .masthead__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: spacing(3);
   margin-bottom: spacing(3);
 }
 
-.masthead__logo {
-  width: 280px;
-  height: auto;
-  margin-bottom: spacing(1);
-  overflow: visible;
-}
-
-.masthead__search {
-  display: flex;
-  flex-direction: row;
-  margin: spacing(1) 0;
-}
-
-.masthead__search .rn-textinput {
-  margin: 0;
-}
-
-.masthead__search .rn-btn {
-  margin: 0 0 0 spacing(3);
+.masthead .masthead__button {
+  margin-left: spacing(3);
 }
 
 .masthead__nav {
@@ -42,10 +28,7 @@
 
 @include breakpoint("s") {
   .masthead__container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: block;
   }
 
   .masthead__logo {
@@ -54,11 +37,7 @@
     margin-bottom: 0;
   }
 
-  .masthead__search {
-    margin: 0;
-  }
-
-  .masthead__search .rn-btn {
+  .masthead .masthead__button {
     display: none;
   }
 

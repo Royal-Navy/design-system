@@ -40,24 +40,24 @@ end of a field:
 
 | Name       | Type                        | Required | Default | Description                                     
 | ---------- | --------------------------- | -------- | ------- | -----------
-| name       | string                      | false    |         | An optiona css class name to add to the component wrapper |
-| value      | string                      | false    | false   | Mark the field as disabled/inactive |
-| onChange   | (React.SyntheticEvent):void | false    |         | 
-| onBlur     | (React.SyntheticEvent):void | false    |         |
+| name       | string                      | true     |         | The field name  |
+| value      | string                      | false    |         | The field value |
+| onChange   | (React.SyntheticEvent):void | false    |         | A function called when field value changes |
+| onBlur     | (React.SyntheticEvent):void | false    |         | A function called when the field looses focus |
 
 
 ### FormProps
 
 | Name       | Type                 | Required | Default | Description                                     
 | ---------- | -------------------- | -------- | ------- | -----------
-| errors     | { string: string }   | false    | {}      | A hashmap using the field name as a key and the errror message associated with it |
+| errors     | { string: string }   | false    | {}      | A hashmap using the field name as a key and the error message associated with it |
 | touched    | { string: boolean }  | false    | {}      | A hashmap using the field name as a key and indicating if it has been touched or not |
 
 ### TextInput 
 
 | Name            | Type            | Required | Default | Description                                     
 | --------------- | --------------- | -------- | ------- | -----------
-| className       | string          | false    |         | An optiona css class name to add to the component wrapper |
+| className       | string          | false    |         | An optional css class name to add to the component wrapper |
 | disabled        | boolean         | false    | false   | Mark the field as disabled/inactive |
 | endAdornment    | React.ReactNode | false    |         | An optional component to display at the end of a field, such as a search svg |
 | field           | FieldProps      | true     |         | A field object either manually send to the component or sent from Formik |
