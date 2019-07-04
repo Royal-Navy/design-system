@@ -1,9 +1,9 @@
 ---
-title: Installation & Quick Start
+title: Installation & quick start
 description: ''
 ---
 
-## Installation & Quick Start
+## Installation & quick start
 
 To install and save to your projects package.json dependencies, run:
 
@@ -15,7 +15,7 @@ npm install @royalnavy/css-framework @royalnavy/react-component-library
 yarn add @royalnavy/css-framework @royalnavy/react-component-library
 ```
 
-### Quick Start
+### Quick start
 
 Here's a quick example application to get you started:
 
