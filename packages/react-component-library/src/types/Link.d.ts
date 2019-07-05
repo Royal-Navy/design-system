@@ -1,9 +1,9 @@
 interface AnchorType extends ComponentWithClass {
-  href: string
+  href?: string
 }
 
 interface LinkType extends ComponentWithClass {
-  to: string
+  to?: string
 }
 
 type LinkTypes = AnchorType | LinkType
