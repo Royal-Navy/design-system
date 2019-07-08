@@ -323,7 +323,7 @@ Nav supports rendering navigation in 4 different sizes
   },
   {
     Name: 'active',
-    Type: 'boolean;,
+    Type: 'boolean',
     Required: 'False',
     Default: 'False',
     Description: 'Is this the current active link?'
