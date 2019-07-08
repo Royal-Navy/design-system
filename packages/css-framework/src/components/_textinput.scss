@@ -75,10 +75,6 @@
   font-size: font-size(s);
 }
 
-.rn-textinput--no-label .rn-textinput__input {
-  padding: spacing(3);
-}
-
 .rn-textinput__input:focus {
   outline: 0;
 }
@@ -102,6 +98,12 @@
   flex-direction: column;
   text-align: center;
   padding: spacing(3);
+}
+
+.rn-textinput--no-label .rn-textinput__input,
+.rn-textinput--no-label .rn-textinput__start-adornment ,
+.rn-textinput--no-label .rn-textinput__end-adornment {
+  padding: spacing(2);
 }
 
 .rn-textinput__start-adornment {
