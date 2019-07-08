@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import uuid from 'uuid'
 
+import Button from '../Button'
+
 interface PaginationProps {
   onChangeCallback?: (
     currentPage: number,
@@ -36,6 +38,19 @@ const Pagination: React.FC<PaginationProps> = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(total / pageSize)
+
+  const handlePageChange = (page: number) => {
+    if (![BUMP_LEFT, BUMP_RIGHT].includes(page.toString())) {
+      setCurrentPage(page)
+    }
+  }
+
+  const handlePrevious = () => {
+    setCurrentPage(currentPage - 1)
+  }
+  const handleNext = () => {
+    setCurrentPage(currentPage + 1)
+  }
 
   const pageNumbers = () => {
     /**
@@ -92,15 +107,36 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className="pagination">
       <ol className="pagination__list">
-        <li className="pagination__item">Prev</li>
-        {pageNumbers().map(item => {
+        <li className="pagination__item">
+          <button className="pagination__button" onClick={handlePrevious}>
+            Prev
+          </button>
+        </li>
+        {pageNumbers().map(page => {
+          if ([BUMP_LEFT, BUMP_RIGHT].includes(page)) {
+            return <li className="pagination__item">{page}</li>
+          }
+
           return (
             <li key={uuid()} className="pagination__item">
-              {item}
+              <button
+                className={`pagination__button ${
+                  page === currentPage ? 'is-active' : ''
+                }`}
+                onClick={() => {
+                  handlePageChange(page)
+                }}
+              >
+                {page}
+              </button>
             </li>
           )
         })}
-        <li className="pagination__item">Next</li>
+        <li className="pagination__item">
+          <button className="pagination__button" onClick={handleNext}>
+            Next
+          </button>
+        </li>
       </ol>
     </div>
   )

@@ -11,6 +11,6 @@ stories.add('Default', () => (
       console.log(...args)
     }}
     pageSize={10}
-    total={100}
+    total={1000}
   />
 ))
