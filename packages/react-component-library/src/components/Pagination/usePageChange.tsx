@@ -1,14 +1,7 @@
 import { useState } from 'react'
 
-/**
- * PAGE_NEIGHBOURS: how many neighbour pages to display at one time
- */
 export const PAGE_NEIGHBOURS = 1
 
-/**
- * BUMP_LEFT: string used to represent additional nodes to the left
- * BUMP_RIGHT: string used to represent additional nodes to the right
- */
 export const BUMP_LEFT = '...'
 export const BUMP_RIGHT = BUMP_LEFT
 
@@ -20,7 +13,7 @@ export const usePageChange = (
   const [currentPage, setCurrentPage] = useState(initialPage)
 
   /**
-   * Helper to generate an array of integers
+   * Helper to generate an array of integers based on provided range
    */
   function range(from: number, to: number, step: number = 1): number[] {
     let i = from
@@ -53,14 +46,9 @@ export const usePageChange = (
   }
 
   /**
-   * Returns an array of page numbers to be used to render display
-   * for the end user
+   * Returns an array of page numbers used to render pagination
    */
   function pageNumbers() {
-    /**
-     * totalNumbers: the total page numbers to show on the control
-     * totalBlocks: totalNumbers + 2 to cover for LEFT_BUMP & RIGHT_BUMP
-     */
     const totalNumbers = PAGE_NEIGHBOURS * 2 + 3
     const totalBlocks = totalNumbers + 2
 
@@ -70,11 +58,6 @@ export const usePageChange = (
 
       let pages: any[] = range(startPage, endPage)
 
-      /**
-       * hasLeftSpill: has hidden pages to the left
-       * hasRightSpill: has hidden pages to the right
-       * spillOffset: number of hidden pages either to the left or to the right
-       */
       const hasLeftSpill = startPage > 2
       const hasRightSpill = totalPages - endPage > 1
       const spillOffset = totalNumbers - (pages.length + 1)
