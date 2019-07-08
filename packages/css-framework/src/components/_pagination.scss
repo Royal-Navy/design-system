@@ -1,7 +1,7 @@
-$primary-color: #253744;
-$secondary-color: #748999;
-$secondary-color-hover: #3a8fdd;
-$tertiary-color: #e2e9ee;
+$primary-color: color(primary, 900);
+$secondary-color: color(neutral, 300);
+$secondary-color-hover: color(primary, 500);
+$tertiary-color: color(neutral, 100);
 $active-color: $primary-color;
 $border-radius: 4px;
 $animation-timing: 0.3s;
