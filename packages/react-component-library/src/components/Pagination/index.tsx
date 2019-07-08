@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import uuid from 'uuid'
 
-import Button from '../Button'
-
 interface PaginationProps {
   onChangeCallback?: (
     currentPage: number,
@@ -40,16 +38,19 @@ const Pagination: React.FC<PaginationProps> = ({
   const [totalPages, setTotalPages] = useState(total / pageSize)
 
   const handlePageChange = (page: number) => {
-    if (![BUMP_LEFT, BUMP_RIGHT].includes(page.toString())) {
-      setCurrentPage(page)
-    }
+    setCurrentPage(page)
   }
 
   const handlePrevious = () => {
-    setCurrentPage(currentPage - 1)
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1)
+    }
   }
+
   const handleNext = () => {
-    setCurrentPage(currentPage + 1)
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1)
+    }
   }
 
   const pageNumbers = () => {
