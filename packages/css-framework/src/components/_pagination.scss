@@ -16,13 +16,19 @@ $border-radius: 4px;
   &:first-of-type,
   &:last-of-type {
     .pagination__button {
+      padding: spacing(2) spacing(5);
       color: $secondary-color;
+      background-color: transparent;
       border: 1px solid $secondary-color;
 
-      &:hover {
-        background-color: transparent;
+      &:hover:not([disabled]) {
         color: $secondary-color-hover;
         border-color: $secondary-color-hover;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
       }
     }
   }

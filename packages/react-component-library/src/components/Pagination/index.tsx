@@ -35,7 +35,7 @@ const Pagination: React.FC<PaginationProps> = ({
   total,
 }) => {
   const [currentPage, setCurrentPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(total / pageSize)
+  const totalPages = total / pageSize
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
@@ -109,7 +109,11 @@ const Pagination: React.FC<PaginationProps> = ({
     <div className="pagination">
       <ol className="pagination__list">
         <li className="pagination__item">
-          <button className="pagination__button" onClick={handlePrevious}>
+          <button
+            disabled={currentPage === 1}
+            className="pagination__button"
+            onClick={handlePrevious}
+          >
             Prev
           </button>
         </li>
@@ -134,7 +138,11 @@ const Pagination: React.FC<PaginationProps> = ({
           )
         })}
         <li className="pagination__item">
-          <button className="pagination__button" onClick={handleNext}>
+          <button
+            disabled={currentPage === totalPages}
+            className="pagination__button"
+            onClick={handleNext}
+          >
             Next
           </button>
         </li>
