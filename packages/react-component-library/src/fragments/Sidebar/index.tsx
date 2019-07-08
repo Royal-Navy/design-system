@@ -12,7 +12,7 @@ interface SidebarProps {
   NotificationsPopoverContent?: JSX.Element
   unreadNotification?: boolean
   user?: UserLinkType
-  LinkComponent?: React.ComponentType
+  LinkComponent?: any
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
