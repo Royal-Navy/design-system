@@ -4,6 +4,8 @@ $secondary-color-hover: #3a8fdd;
 $tertiary-color: #e2e9ee;
 $active-color: $primary-color;
 $border-radius: 4px;
+$animation-timing: 0.3s;
+$btn-focus-width: 0.2rem;
 
 .pagination__list {
   list-style-type: none;
@@ -20,10 +22,15 @@ $border-radius: 4px;
       color: $secondary-color;
       background-color: transparent;
       border: 1px solid $secondary-color;
+      box-shadow: 0 1px 2px 0 rgba(000, 000, 000, 0.15);
 
       &:hover:not([disabled]) {
         color: $secondary-color-hover;
         border-color: $secondary-color-hover;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
       }
 
       &:disabled {
@@ -42,9 +49,15 @@ $border-radius: 4px;
   border: 1px solid transparent;
   border-radius: $border-radius;
   text-transform: uppercase;
+  outline: none;
+  transition: all $animation-timing;
 
   &:hover {
     background-color: $tertiary-color;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
   }
 
   &.is-active {

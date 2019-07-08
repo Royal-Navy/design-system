@@ -15,7 +15,7 @@ interface PaginationProps {
 const PAGE_NEIGHBOURS = 1
 
 const BUMP_LEFT = '...'
-const BUMP_RIGHT = '...'
+const BUMP_RIGHT = BUMP_LEFT
 
 const range = (from: number, to: number, step: number = 1): any[] => {
   let i = from
