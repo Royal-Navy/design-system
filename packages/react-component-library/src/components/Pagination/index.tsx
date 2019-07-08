@@ -24,7 +24,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className="pagination">
       <ol className="pagination__list">
-        <li className="pagination__item">
+        <li key={uuid()} className="pagination__item">
           <button
             disabled={currentPage === 1}
             className="pagination__button"
@@ -37,11 +37,15 @@ const Pagination: React.FC<PaginationProps> = ({
         </li>
         {pageNumbers().map((page: string | number) => {
           if ([BUMP_LEFT, BUMP_RIGHT].includes(String(page))) {
-            return <li className="pagination__item">{page}</li>
+            return (
+              <li key={uuid()} className="pagination__item">
+                {page}
+              </li>
+            )
           }
 
           return (
-            <li key={uuid()} className="pagination__item">
+            <li key={uuid()} className="pagination__item" data-testid="page">
               <button
                 className={`pagination__button ${
                   page === currentPage ? 'is-active' : ''
@@ -49,13 +53,14 @@ const Pagination: React.FC<PaginationProps> = ({
                 onClick={() => {
                   changePage(page)
                 }}
+                data-testid={`select-page-${page}`}
               >
                 {page}
               </button>
             </li>
           )
         })}
-        <li className="pagination__item">
+        <li key={uuid()} className="pagination__item">
           <button
             disabled={currentPage === totalPages}
             className="pagination__button"
