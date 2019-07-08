@@ -16,7 +16,7 @@ $border-radius: 4px;
   &:first-of-type,
   &:last-of-type {
     .pagination__button {
-      padding: spacing(2) spacing(5);
+      padding: spacing(2) spacing(4);
       color: $secondary-color;
       background-color: transparent;
       border: 1px solid $secondary-color;

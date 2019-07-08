@@ -114,7 +114,7 @@ const Pagination: React.FC<PaginationProps> = ({
             className="pagination__button"
             onClick={handlePrevious}
           >
-            Prev
+            &#x25c0;&nbsp;Prev
           </button>
         </li>
         {pageNumbers().map(page => {
@@ -143,7 +143,7 @@ const Pagination: React.FC<PaginationProps> = ({
             className="pagination__button"
             onClick={handleNext}
           >
-            Next
+            Next&nbsp;&#x25b6;
           </button>
         </li>
       </ol>
