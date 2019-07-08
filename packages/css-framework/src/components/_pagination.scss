@@ -1,8 +1,48 @@
+$primary-color: #253744;
+$secondary-color: #748999;
+$secondary-color-hover: #3a8fdd;
+$tertiary-color: #e2e9ee;
+$active-color: $primary-color;
+$border-radius: 4px;
+
 .pagination__list {
   list-style-type: none;
 }
 
 .pagination__item {
-  padding: spacing(4);
+  padding: spacing(1);
   display: inline-block;
+
+  &:first-of-type,
+  &:last-of-type {
+    .pagination__button {
+      color: $secondary-color;
+      border: 1px solid $secondary-color;
+
+      &:hover {
+        background-color: transparent;
+        color: $secondary-color-hover;
+        border-color: $secondary-color-hover;
+      }
+    }
+  }
+}
+
+.pagination__button {
+  padding: spacing(2) spacing(3);
+  background: none;
+  font-weight: 700;
+  color: $primary-color;
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: $tertiary-color;
+  }
+
+  &.is-active {
+    background-color: $active-color;
+    color: color(neutral, white);
+  }
 }
