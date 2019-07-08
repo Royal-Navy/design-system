@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { Popover } from '../../components'
 import { Bell } from '../../icons'
@@ -19,6 +19,20 @@ const NotificationSidePanel: React.FC<NotificationSidePanelProps> = ({
   const hasNotifications = children !== null
   const [showNotifications, setShowNotifications] = useState(false)
   const [notificationPos, setNotificationPos] = useState(0)
+  const node = useRef()
+
+  function documentClick(e: Event) {
+    // workaround for undefined error in typescript
+    const current = node.current || {
+      contains: (target: any): boolean => target === null,
+    }
+
+    if (current.contains(e.target)) {
+      return
+    }
+
+    setShowNotifications(false)
+  }
 
   function toggleNotifications(e: React.SyntheticEvent) {
     const element: any = e.currentTarget
@@ -30,8 +44,16 @@ const NotificationSidePanel: React.FC<NotificationSidePanelProps> = ({
     setShowNotifications(!showNotifications)
   }
 
+  useEffect(() => {
+    document.addEventListener('mousedown', documentClick)
+
+    return () => {
+      document.removeEventListener('mousedown', documentClick)
+    }
+  }, [])
+
   return (
-    <>
+    <div ref={node}>
       <button
         className={`rn-notification-side__button ${className}`}
         onClick={toggleNotifications}
@@ -58,7 +80,7 @@ const NotificationSidePanel: React.FC<NotificationSidePanelProps> = ({
           {children}
         </Popover>
       )}
-    </>
+    </div>
   )
 }
 
