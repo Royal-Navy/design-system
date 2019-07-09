@@ -94,8 +94,7 @@ You can pass custom markup to appear by including it as a child of the component
 
 ### Properties
 <DataTable caption="Link" data={[
-
-    {
+  {
     Name: 'children',
     Type: 'React.Element',
     Required: 'False',
@@ -104,12 +103,12 @@ You can pass custom markup to appear by including it as a child of the component
   },
   {
     Name: 'link',
-    Type: 'String ',
+    Type: 'String',
     Required: 'False',
     Default: '/feedback',
     Description: 'The url to use with the default message',
   },
-    {
+  {
     Name: 'phase',
     Type: 'String (alpha/beta)',
     Required: 'False',
