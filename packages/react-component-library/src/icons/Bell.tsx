@@ -22,4 +22,6 @@ const Bell: React.FC<ComponentWithClass> = ({ className = '' }) => (
   </svg>
 )
 
+Bell.displayName = 'BellIcon'
+
 export default Bell

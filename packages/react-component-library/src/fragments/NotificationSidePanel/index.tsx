@@ -84,4 +84,6 @@ const NotificationSidePanel: React.FC<NotificationSidePanelProps> = ({
   )
 }
 
+NotificationSidePanel.displayName = 'NotificationSidePanel'
+
 export default NotificationSidePanel

@@ -83,4 +83,6 @@ const Sidebar: React.FC<SidebarProps> = ({
   )
 }
 
+Sidebar.displayName = 'Sidebar'
+
 export default Sidebar

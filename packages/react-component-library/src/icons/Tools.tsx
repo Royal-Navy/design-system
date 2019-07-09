@@ -13,4 +13,6 @@ const Tools: React.FC = () => (
   </svg>
 )
 
+Tools.displayName = 'ToolsIcon'
+
 export default Tools
