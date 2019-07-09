@@ -1,6 +1,6 @@
 ---
 title: Nav
-description: Navigation components to buid vertial and horizontal menus
+description: Navigation components to build vertical and horizontal menus
 ---
 
 ## Types and usage
@@ -59,24 +59,24 @@ const navItems = [
 ## Properties
 ### Nav
 
-| Name        | Type           | Required | Default  | Description
-| ---------   | -------------- | -------- | -------  | -----------
-| className   | string         | False    |          | Optional extra css class to attach to the wrapper element
-| navItems    | Array\<any\>     | True     |          | An array of navigation items using the format described below |
-| orientation | string (horizontal/vertical)| False    | vertical | The direction to display the items.  |
-| size        | string (small/regular/large/xlarge) | False    | regular  | The font size for items  |
+| Name          | Type           | Required | Default  | Description
+| ---------     | -------------- | -------- | -------  | -----------
+| className     | string         | False    |          | Optional extra css class to attach to the wrapper element
+| LinkComponent | ReactComponent | False    | Link     | The component to render the link          |
+| navItems      | Array\<any\>   | True     |          | An array of navigation items using the format described below |
+| orientation   | string (horizontal/vertical)| False    | vertical | The direction to display the items.  |
+| size          | string (small/regular/large/xlarge) | False    | regular  | The font size for items  |
 
 ### NavItem
 
 The properties required for a nav item depend on the component that will render the item. If no component is passed in with
-the item then the 'Link'component will be used to render the nav item. Any properties in the nav item wil be passed to the
+the item then the 'Link' component will be used to render the nav item. Any properties in the nav item wil be passed to the
 render component. One example of an alternative nav item render component would be a React Router Link component, this 
 requires a 'to' property. The label property is used as the child of the render component. By default a className of 
 'rn-nav__item' is passed to the component.
 
 | Name        | Type            | Required | Default  | Description
 | ---------   | --------------- | -------- | -------  | -----------
-| Component   | ReactNode       | False    | Link     | By default          |
 | label       | string          | True     |          | The text to display |
 
 ### Link
@@ -86,5 +86,5 @@ The default NavItem render component. Renders a link.
 | Name        | Type           | Required | Default  | Description
 | ---------   | -------------- | -------- | -------  | -----------
 | active      | boolean        | False    | false    | Set to true for the currently active navigation item |
-| label       | string         | True     |          | The text to display |
+| children    | ReactNode      | True     |          | The content to display inside the link |
 | href        | string         | True     |          | The url to send the browser to |
