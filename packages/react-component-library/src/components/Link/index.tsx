@@ -1,14 +1,9 @@
 import React from 'react'
 
-interface LinkProps {
-  className?: string
-  href: string
-}
-
-const Link: React.FC<LinkProps> = ({
+const Link: React.FC<AnchorType> = ({
   children,
   className = 'rn-link',
-  href,
+  href = '#',
 }) => (
   <a className={className} href={href} data-testid="link">
     {children}
