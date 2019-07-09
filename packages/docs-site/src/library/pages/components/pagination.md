@@ -1,15 +1,15 @@
 ---
-title: Tab Set
-description: Displays multiple content areas, which can be viewed by selecting the respective tab.
+title: Pagination
+description: Navigate between muitple pages of records.
 ---
 
-import { Tab, TabSet } from '@royalnavy/react-component-library'
+import { Pagination } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 
-# Tab Set
-Displays multiple content areas, which can be viewed by selecting the respective tab.
+# Pagination
+The Pagination component allows an end user to navigate between pages of records.
 
 ## Usage
 
@@ -76,54 +76,47 @@ Displays multiple content areas, which can be viewed by selecting the respective
   </Tab>
 
 <Tab title="Develop">
-The TabSet (and companion Tab) component allows the user to switch between different sets of related content within a single page.
+The Pagination component allows an end user to navigate between pages of records.
 
 ### Basic Usage
-<CodeHighlighter source={`<TabSet>
-  <Tab title="Example Tab 1">
-    <p>This is some example tab 1 content</p>
-  </Tab>
-  <Tab title="Example Tab 2">
-    <p>This is some example tab 2 content</p>
-  </Tab>
-</TabSet>
-`} language="javascript">
-  <TabSet>
-    <Tab title="Example Tab 1">
-      <p>This is some example tab 1 content</p>
-    </Tab>
-    <Tab title="Example Tab 2">
-      <p>This is some example tab 2 content</p>
-    </Tab>
-  </TabSet>
+<CodeHighlighter source={`<Pagination
+  onChangeCallback={(currentPage, totalPages) => {
+    console.log(currentPage, totalPages)
+  }}
+  pageSize={10}
+  total={1000}
+/>`} language="javascript">
+  <Pagination
+    onChangeCallback={(currentPage, totalPages) => {
+      console.log(currentPage, totalPages)
+    }}
+    pageSize={10}
+    total={1000}
+  />
 </CodeHighlighter>
 
-### TabSet Properties
+### Pagination Properties
 <DataTable data={[
   {
-    Name: 'children',
-    Type: 'ReactNode[]',
-    Required: 'True',
+    Name: 'onChangeCallback',
+    Type: 'Function<any>',
+    Required: 'False',
     Default: '',
-    Description: 'A Tab to include within the TabSet. Must be a Tab component',
-  }
-]} />
-
-### Tab Properties
-<DataTable data={[
-  {
-    Name: 'title',
-    Type: 'string',
-    Required: 'True',
-    Default: '',
-    Description: 'The title to be used for this Tab within the TabSet',
+    Description: 'A callback function invoked when the current page is changed',
   },
   {
-    Name: 'children',
-    Type: 'ReactNode[]',
+    Name: 'pageSize',
+    Type: 'Number',
+    Required: 'False',
+    Default: '10',
+    Description: 'The number of records to display per page',
+  },
+  {
+    Name: 'total',
+    Type: 'Number',
     Required: 'True',
     Default: '',
-    Description: 'The content to place in the Tab. Any JSX is valid',
+    Description: 'The total number of records to paginate',
   }
 ]} />
 
