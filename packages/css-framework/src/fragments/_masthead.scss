@@ -1,7 +1,4 @@
 .rn-masthead {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: color(neutral, white);
   padding: spacing(2) spacing(4);
   font-size: font-size(s);
@@ -12,6 +9,7 @@
 .rn-masthead__service-name {
   display: flex;
   align-items: center;
+  margin-bottom: spacing(2);
 }
 
 .rn-masthead__title {
@@ -21,4 +19,17 @@
 
 .rn-masthead .rn-textinput {
   margin: 0;
+}
+
+@include breakpoint("s") {
+  .rn-masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  .rn-masthead__service-name {
+    margin-bottom: 0;
+  }
 }
