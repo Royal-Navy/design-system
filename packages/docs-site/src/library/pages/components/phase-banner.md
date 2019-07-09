@@ -95,26 +95,33 @@ You can pass custom markup to appear by including it as a child of the component
 ### Properties
 <DataTable caption="Link" data={[
   {
-    Name: 'phase',
-    Type: 'string (alpha/beta)',
-    Required: 'False',
-    Default: 'alpha',
-    Description: 'Text to display in the phase banner badge',
-  },
-  {
-    Name: 'link',
-    Type: 'string ',
-    Required: 'False',
-    Default: '/feedback',
-    Description: 'The url to use with the default message',
-  },
-  {
     Name: 'children',
     Type: 'React.Element',
     Required: 'False',
     Default: 'This is a new service, <a href=\"link\">Your feedback</a> will help to improve it',
     Description: 'HTML to display in the phase banner body',
   },
+  {
+    Name: 'link',
+    Type: 'String',
+    Required: 'False',
+    Default: '/feedback',
+    Description: 'The url to use with the default message',
+  },
+  {
+    Name: 'phase',
+    Type: 'String (alpha/beta)',
+    Required: 'False',
+    Default: 'alpha',
+    Description: 'Text to display in the phase banner badge',
+  },
+  {
+    Name: 'fullWidth',
+    Type: 'Boolean',
+    Required: 'False',
+    Default: 'False',
+    Description: 'Set to true if used in a full width app with a sidebar and full width masthead. Leave false if using in a container width restricted layout.'
+  }
 ]} />
 
 </Tab>
