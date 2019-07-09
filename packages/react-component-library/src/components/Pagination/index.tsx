@@ -13,7 +13,7 @@ const Pagination: React.FC<PaginationProps> = ({
   pageSize,
   total,
 }) => {
-  const totalPages = total / pageSize
+  const totalPages = Math.ceil(total / pageSize)
 
   const [currentPage, changePage, pageNumbers] = usePageChange(
     1,
@@ -31,6 +31,7 @@ const Pagination: React.FC<PaginationProps> = ({
             onClick={() => {
               changePage('previous')
             }}
+            data-testid="button-previous"
           >
             &#x25c0;&nbsp;Prev
           </button>
@@ -67,6 +68,7 @@ const Pagination: React.FC<PaginationProps> = ({
             onClick={() => {
               changePage('next')
             }}
+            data-testid="button-next"
           >
             Next&nbsp;&#x25b6;
           </button>
