@@ -70,4 +70,6 @@ const TabSet: React.FC<TabSetProps> = ({
   )
 }
 
+TabSet.displayName = 'TabSet'
+
 export default TabSet

@@ -10,4 +10,6 @@ const Graph: React.FC = () => (
   </svg>
 )
 
+Graph.displayName = 'GraphIcon'
+
 export default Graph
