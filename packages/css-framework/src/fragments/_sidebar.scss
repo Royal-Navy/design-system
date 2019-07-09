@@ -65,13 +65,13 @@ body.has-sidebar {
 .rn-sidebar__top .rn-sidebar__nav-label {
   color: color(neutral, 200);
   text-decoration: none;
-  margin-left: 10px;
+  margin-left: -4px;
   opacity: 0;
 }
 
 .rn-sidebar__top .rn-sidebar__nav-link {
-  padding-top: spacing(4);
-  padding-bottom: spacing(4);
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
   width:$bar-width-open;
   border-left: $border solid transparent;
 
