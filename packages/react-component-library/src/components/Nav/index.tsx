@@ -55,4 +55,6 @@ const Nav: React.FC<NavProps> = ({
   </nav>
 )
 
+Nav.displayName = 'Nav'
+
 export default Nav

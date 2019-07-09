@@ -23,4 +23,6 @@ const Search: React.FC = () => (
   </svg>
 )
 
+Search.displayName = 'SearchIcon'
+
 export default Search

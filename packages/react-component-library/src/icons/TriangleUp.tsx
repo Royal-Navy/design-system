@@ -16,4 +16,6 @@ const TriangleUp: React.FC = () => (
   </svg>
 )
 
+TriangleUp.displayName = 'TriangleUpIcon'
+
 export default TriangleUp

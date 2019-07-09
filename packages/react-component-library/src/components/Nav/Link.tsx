@@ -15,4 +15,6 @@ const Link: React.FC<LinkProps> = ({
   </a>
 )
 
+Link.displayName = 'Link'
+
 export default Link

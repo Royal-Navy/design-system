@@ -29,4 +29,6 @@ const PhaseBanner: React.FC<PhaseBannerProps> = ({
   </div>
 )
 
+PhaseBanner.displayName = 'PhaseBanner'
+
 export default PhaseBanner
