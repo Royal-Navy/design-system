@@ -7,6 +7,52 @@ describe('Pagination', () => {
   let pagination: RenderResult
   let onChangeCallback: () => void
 
+  describe('when the Pagination is generated with only 2 records and pageSize is 10', () => {
+    onChangeCallback = jest.fn()
+
+    beforeEach(() => {
+      pagination = render(
+        <Pagination
+          onChangeCallback={onChangeCallback}
+          pageSize={10}
+          total={2}
+        />
+      )
+    })
+
+    it('should output a single page', () => {
+      expect(pagination.queryAllByTestId('page').length).toEqual(1)
+    })
+
+    it('should disable both the left and right buttons', () => {
+      expect(
+        pagination.getByTestId('button-previous').hasAttribute('disabled')
+      ).toBeTruthy()
+
+      expect(
+        pagination.getByTestId('button-next').hasAttribute('disabled')
+      ).toBeTruthy()
+    })
+  })
+
+  describe('when the Pagination is generated with 20 records and pageSize is 10', () => {
+    onChangeCallback = jest.fn()
+
+    beforeEach(() => {
+      pagination = render(
+        <Pagination
+          onChangeCallback={onChangeCallback}
+          pageSize={10}
+          total={20}
+        />
+      )
+    })
+
+    it('should output the correct number of pages', () => {
+      expect(pagination.queryAllByTestId('page').length).toEqual(2)
+    })
+  })
+
   describe('when the Pagination is generated with pageSize, total and onChangeCallback props', () => {
     onChangeCallback = jest.fn()
 
