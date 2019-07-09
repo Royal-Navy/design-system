@@ -6,6 +6,7 @@ import Button from './components/Button'
 import Links from './components/Links'
 import Nav from './components/Nav'
 import NotificationSidePanel from './fragments/NotificationSidePanel'
+import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
 import Popover from './components/Popover'
 import Sidebar from './fragments/Sidebar'
@@ -22,6 +23,7 @@ export {
   Links,
   Nav,
   NotificationSidePanel,
+  Pagination,
   PhaseBanner,
   Popover,
   Sidebar,
