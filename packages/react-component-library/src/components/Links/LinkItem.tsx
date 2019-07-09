@@ -10,4 +10,6 @@ const LinkItem: React.FC<any> = ({ Component = Link, label, ...rest }) => (
   </li>
 )
 
+LinkItem.displayName = 'LinkItem'
+
 export default LinkItem

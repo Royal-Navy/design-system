@@ -23,4 +23,6 @@ const Badge: React.FC<BadgeProps> = ({
   </span>
 )
 
+Badge.displayName = 'Badge'
+
 export default Badge
