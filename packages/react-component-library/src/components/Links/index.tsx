@@ -21,4 +21,6 @@ const Links: React.FC<LinksProps> = ({
   </ul>
 )
 
+Links.displayName = 'Links'
+
 export default Links

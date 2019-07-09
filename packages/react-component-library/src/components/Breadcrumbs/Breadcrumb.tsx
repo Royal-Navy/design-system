@@ -26,4 +26,6 @@ const Breadcrumb: React.FC<any> = ({
   )
 }
 
+Breadcrumb.displayName = 'Breadcrumb'
+
 export default Breadcrumb

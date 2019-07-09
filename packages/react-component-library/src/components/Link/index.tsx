@@ -10,4 +10,6 @@ const Link: React.FC<AnchorType> = ({
   </a>
 )
 
+Link.displayName = 'Link'
+
 export default Link
