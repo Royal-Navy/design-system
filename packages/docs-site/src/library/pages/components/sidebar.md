@@ -228,7 +228,7 @@ const navData: NavItemAnchorType[] = [
     Type: 'Element',
     Required: 'False',
     Default: '',
-    Description: 'An optional image to display to the left of the label. Always visible.',
+    Description: 'An optional image to display to the left of the label. Always visible. Must be 18 x 16',
   },
   {
     Name: 'label',
@@ -259,7 +259,7 @@ const navData: NavItemAnchorType[] = [
     Type: 'Element',
     Required: 'False',
     Default: '',
-    Description: 'An optional image to display to the left of the label. Always visible.',
+    Description: 'An optional image to display to the left of the label. Always visible. Must be 18 x 16',
   },
   {
     Name: 'label',

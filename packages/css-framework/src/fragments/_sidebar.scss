@@ -35,8 +35,9 @@ body.has-sidebar {
 }
 
 .rn-sidebar__nav-icon {
-  text-align: center;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: $bar-width - $border;
 }
 
@@ -72,8 +73,10 @@ body.has-sidebar {
 .rn-sidebar__top .rn-sidebar__nav-link {
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
-  width:$bar-width-open;
+  width: $bar-width-open;
   border-left: $border solid transparent;
+  display: flex;
+  flex-direction: row;
 
   &:hover, &:focus {
     background: color(neutral, 700);
@@ -88,8 +91,8 @@ body.has-sidebar {
 
 
 .rn-sidebar__bottom .rn-sidebar__nav-link {
-  padding-top: spacing(3);
-  padding-bottom: spacing(3);
+  padding-top: spacing(2);
+  padding-bottom: spacing(2);
   width: $bar-width;
   cursor: pointer;
 }
