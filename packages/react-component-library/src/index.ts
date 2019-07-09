@@ -4,6 +4,7 @@ import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
 import Button from './components/Button'
 import Links from './components/Links'
+import Masthead from './fragments/Masthead'
 import Nav from './components/Nav'
 import NotificationSidePanel from './fragments/NotificationSidePanel'
 import PhaseBanner from './components/PhaseBanner'
@@ -20,6 +21,7 @@ export {
   Button,
   Icons,
   Links,
+  Masthead,
   Nav,
   NotificationSidePanel,
   PhaseBanner,

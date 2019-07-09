@@ -1,0 +1,24 @@
+.rn-masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: color(neutral, white);
+  padding: spacing(2) spacing(4);
+  font-size: font-size(s);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.33);
+  min-height: 52.94px;
+}
+
+.rn-masthead__service-name {
+  display: flex;
+  align-items: center;
+}
+
+.rn-masthead__title {
+  display: inline-block;
+  margin-left: spacing(2);
+}
+
+.rn-masthead .rn-textinput {
+  margin: 0;
+}
