@@ -66,6 +66,7 @@ $__states: null;
 @import "src/components/listitem";
 @import "src/components/modal";
 @import "src/components/nav";
+@import "src/components/popover";
 @import "src/components/progress";
 @import "src/components/phase-banner";
 @import "src/components/sidenav";
@@ -89,3 +90,7 @@ $__states: null;
 @import "src/helpers/shadows";
 @import "src/helpers/typography";
 @import "src/helpers/visibility";
+
+// Fragments
+@import "src/fragments/notification-side-panel";
+@import "src/fragments/sidebar";

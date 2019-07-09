@@ -1,0 +1,140 @@
+$bar-width: 60px;
+$bar-width-open: 180px;
+$border: 4px;
+
+body.has-sidebar {
+  padding-left: $bar-width;
+}
+
+.rn-sidebar {
+  height: 100%;
+  width: $bar-width;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: color(neutral, 600);
+  color: color(neutral, white);
+}
+
+.rn-sidebar__nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rn-sidebar__nav-link {
+  display: block;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    outline: none;
+  }
+}
+
+.rn-sidebar__nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $bar-width - $border;
+}
+
+.rn-iconfill {
+  fill: color(neutral, 200);
+}
+
+
+
+.rn-sidebar__nav-link.is-active .rn-sidebar__nav-label {
+  color: color(neutral, white);
+}
+
+.rn-sidebar__nav-link.is-active .rn-iconfill {
+  fill: color(neutral, white);
+}
+
+
+
+.rn-sidebar__top {
+  padding-bottom: 100px;
+  width: $bar-width;
+  overflow: hidden;
+}
+
+.rn-sidebar__top .rn-sidebar__nav-label {
+  color: color(neutral, 200);
+  text-decoration: none;
+  margin-left: -4px;
+  opacity: 0;
+}
+
+.rn-sidebar__top .rn-sidebar__nav-link {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  width: $bar-width-open;
+  border-left: $border solid transparent;
+  display: flex;
+  flex-direction: row;
+
+  &:hover, &:focus {
+    background: color(neutral, 700);
+  }
+}
+
+.rn-sidebar__top .rn-sidebar__nav-link.is-active {
+  border-left: $border solid color(primary, 400);
+  background: color(neutral, 700);
+}
+
+
+
+.rn-sidebar__bottom .rn-sidebar__nav-link {
+  padding-top: spacing(2);
+  padding-bottom: spacing(2);
+  width: $bar-width;
+  cursor: pointer;
+}
+
+.rn-sidebar__bottom .rn-sidebar__nav-link .rn-sidebar__nav-label {
+  background: color(neutral, white);
+}
+
+.rn-sidebar__bottom .rn-sidebar__nav-link .rn-iconfill {
+  fill: color(neutral, white);
+}
+
+.rn-sidebar__bottom .rn-sidebar__nav-link:hover .rn-sidebar__nav-label {
+  background: color(primary, 400);
+  color: color(neutral, white);
+}
+
+.rn-sidebar__bottom .rn-sidebar__nav-link:hover .rn-iconfill {
+  fill: color(primary,400);
+}
+
+.rn-sidebar .rn-sidebar__avatar {
+  margin: 0 15px;
+}
+
+// When the sidebar opens
+
+.rn-sidebar.is-open,
+.rn-sidebar.is-open .rn-sidebar__top {
+  width: $bar-width-open;
+}
+
+.rn-sidebar.is-open .rn-sidebar__nav-label {
+  opacity: 1;
+}
+
+
+
+// Animations
+
+.rn-sidebar,
+.rn-sidebar__top,
+.rn-sidebar__top .rn-sidebar__nav-label {
+  transition: all 0.2s;
+}

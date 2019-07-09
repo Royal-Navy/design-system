@@ -1,24 +1,27 @@
 import React from 'react'
 import uuid from 'uuid'
 
-import NavItem from './NavItem'
+import Link from './Link'
 
 interface NavProps {
   className?: string
+  LinkComponent?: any
   navItems: any[]
   orientation?: 'vertical' | 'horizontal'
   size?: 'small' | 'regular' | 'large' | 'xlarge'
 }
 
-function renderMenu(navItems: any[]) {
+function renderMenu(LinkComponent: any, navItems: any[]) {
   return (
     <ul className="rn-nav__list">
       {navItems.map(item => {
-        const hasChildren: boolean = item.children && item.children.length > 0
+        const { active, children, label } = item
+
+        const hasChildren: boolean = children && children.length > 0
         let subMenu: object | undefined
 
         if (hasChildren) {
-          subMenu = renderMenu(item.children)
+          subMenu = renderMenu(LinkComponent, children)
         }
 
         return (
@@ -26,7 +29,12 @@ function renderMenu(navItems: any[]) {
             key={uuid()}
             className={`rn-nav__list-item ${hasChildren ? 'has-children' : ''}`}
           >
-            <NavItem {...item} />
+            <LinkComponent
+              className={`rn-nav__item ${active ? 'is-active' : ''}`}
+              {...item}
+            >
+              {label}
+            </LinkComponent>
             {subMenu}
           </li>
         )
@@ -37,12 +45,13 @@ function renderMenu(navItems: any[]) {
 
 const Nav: React.FC<NavProps> = ({
   className = '',
+  LinkComponent = Link,
   navItems,
   orientation = 'vertical',
   size = 'regular',
 }) => (
   <nav className={`rn-nav rn-nav--${orientation} rn-nav--${size} ${className}`}>
-    {renderMenu(navItems)}
+    {renderMenu(LinkComponent, navItems)}
   </nav>
 )
 

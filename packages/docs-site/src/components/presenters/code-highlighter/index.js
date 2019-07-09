@@ -30,9 +30,11 @@ const CodeHighlighter = ({ source, language, children }) => {
 
   return (
     <article className="code-highlighter">
-      <header className="code-highlighter__head" data-testid="example">
-        {children}
-      </header>
+      {children && (
+        <header className="code-highlighter__head" data-testid="example">
+          {children}
+        </header>
+      )}
       <section className="code-highlighter__body">
         {typeof document !== 'undefined' &&
           document.queryCommandSupported('copy') && (

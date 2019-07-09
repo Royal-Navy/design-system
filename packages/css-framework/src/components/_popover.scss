@@ -1,0 +1,18 @@
+.rn-popover {
+  background: color(neutral, 700);
+  position: absolute;
+  border-radius: 5px;
+  padding: spacing(4);
+}
+
+.rn-popover:before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  bottom: 20px;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-right: 7px solid color(neutral, 700);
+  border-bottom: 7px solid transparent;
+}

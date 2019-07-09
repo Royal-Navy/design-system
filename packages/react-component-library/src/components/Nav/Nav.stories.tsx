@@ -94,28 +94,23 @@ stories.add('Sizes', () => (
 
 const customNavItems = [
   {
-    Component: CustomLink,
     to: 'http://testurl.test',
     label: 'Styles',
   },
   {
-    Component: CustomLink,
     to: 'http://testurl.test',
     label: 'Components',
   },
   {
-    Component: CustomLink,
     to: 'http://testurl.test',
     label: 'Patterns',
     active: true,
   },
   {
-    Component: CustomLink,
     to: 'http://testurl.test',
     label: 'Community',
   },
   {
-    Component: CustomLink,
     to: 'http://testurl.test',
     label: 'About',
   },
@@ -139,7 +134,13 @@ const PrimaryNav = () => {
       >
         Menu
       </Button>
-      {open && <Nav navItems={navItems} orientation="horizontal" />}
+      {open && (
+        <Nav
+          navItems={navItems}
+          LinkComponent={CustomLink}
+          orientation="horizontal"
+        />
+      )}
     </div>
   )
 }
