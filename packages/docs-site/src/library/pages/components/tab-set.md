@@ -1,79 +1,78 @@
 ---
 title: Tab Set
-description: Displays multiple content areas, which can be viewed by selecting the respective tab.
+description: The Tab Set displays multiple content areas, which can be viewed by selecting the respective tab.
 ---
 
 import { Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import Component from '../../images/components/tabset/component.svg'
+import Anatomy from '../../images/components/tabset/anatomy.svg'
+import States from '../../images/components/tabset/states.svg'
+import ScrollableComponent from '../../images/components/tabset/scrollable-component.svg'
+import ScrollableAnatomy from '../../images/components/tabset/scrollable-anatomy.svg'
+import ScrollableStates from '../../images/components/tabset/scrollable-states.svg'
+
 
 
 # Tab Set
-Displays multiple content areas, which can be viewed by selecting the respective tab.
+The Tab Set displays multiple content areas, which can be viewed by selecting the respective tab.
+
+<Component />
 
 ## Usage
+The Tab Set component is used to separate content that exists at the same level of hierarchy. It provides easy navigation between these sections.
 
 <TabSet>
 
 <Tab title="Design">
 
-  ## Design
-  Introduction to the design section.
+The Tab Set component comes in 2 distinct varieties - the default Tab Set and the [Scrollable Tab Set](#scrollable-tabs).
 
-  ### Anatomy
-  The Anatomy is the breakdown of the component.
+### Anatomy
 
-  [ Image breaking down the component’s anatomy ]
+<Anatomy />
 
-  Each part of the component in the image should be labelled with a number. Underneath, create a list of each of the labeled items, explaining what they are. This list should also indicate to the reader whenever an item is an optional include.
+1. **Active Tab**. This show the user the currently selected tab.
+2. **Inactive Tab**. This is the default look for an unselected tab.
+3. **Container**. The container wraps the component.
 
-  Any specific notes on a part of the anatomy breakdown should be included here. This includes dos and don’ts with accompanying image examples.
+### Sizing & Spacing
+The Tab Set component is available in one size. The tabs can accept text, icons, or a combination of both. Ensure the tab text is kept concise - it should clearly describe the content it contains.
 
-  ### Sizing & Spacing
-  Much like the Anatomy section, the Sizing & Spacing section should be a breakdown of the construction of the component. Red line guides should be added to the component, showing the spacing between the different anatomy parts.
+### States
+The Tab Set component has 3 states - default, hover, and active.
+<States />
 
-  ### States (if applicable) 
-  This section covers all the different component states including its default state, hover, active, and disabled.
-  [ Image / interactive example of component states ]
+### Hierarchy & Placement
+Tab Sets are used to separate content of the same hierachy. They should therefore not be nested within each other. If you require child content to be separated, this should be added to a new subpage, rather than a subset of the Tab Set.
 
-  ### Hierarchy & Placement
-  This section covers how a component should sit within an application’s hierarchy. It also provides insight as when to use the different variations listed below.
+### Scrollable Tabs
+Scrollable Tabs are a variation of the Tab Set component, specifically designed for navigating dates.
+<ScrollableComponent />
+  
+#### Usage
+Scrollable tabs are used for date ranges, where the number of dates often exceeds the horizontal width of the Tab Set. 
 
-  ### Variation [ Repeatable Section ] 
-  Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
+#### Anatomy
+<ScrollableAnatomy />
+1. **Active Tab**. This show the user the currently selected tab.
+2. **Inactive Tab**. This is the default look for an unselected tab.
+3. **Container**. The container wraps the component.
+3. **Scroll Buttons**. The Scroll Buttons navigate the tabs, moving the date incrementally by a single value on each click.
 
-  [ Image / interactive example of Component ]
+#### Sizing & Spacing
+The Scrollable Tab Set component is available in one size. The tabs display a date and cannot be customised to accept free text - the only variation allowed is the overall date range (e.g. hour, day, week, or month).
 
-  #### Usage
+#### States (if applicable)
+Much like the default Tab Set component, the Scrollable Tab Set has 3 states - default, hover, and active.
+<ScrollableStates />
 
-  #### Anatomy
-  [ Image breaking down the component’s anatomy ]
+#### Hierarchy & Placement
+The Scrollable Tab Set is a top level navigational component, so therefore it should not be nested inside any other scrollable Tab Set component.
 
-  #### Sizing & Spacing
-  [ Image of component with red guide lines overlaid ]
 
-  #### States (if applicable)
-  [ Image / interactive example of component states ]
-
-  #### Hierarchy & Placement
-
-  ### Adornments [ Repeatable Section ]
-  Include any component adornments here. Much like the variations section above, this section is repeatable.
-
-  [ Image / interactive example of Component ]
-
-  #### Usage
-
-  #### Anatomy
-  [ Image breaking down the component’s anatomy ]
-
-  ### Sizing & Spacing
-  [ Image of component with red guide lines overlaid ]
-
-  ### States (if applicable)
-  [ Image / interactive example of component states ]
-
-  </Tab>
+</Tab>
 
 <Tab title="Develop">
 The TabSet (and companion Tab) component allows the user to switch between different sets of related content within a single page.
