@@ -1,13 +1,4 @@
 .rn-avatar {
-  display: block;
-  position: relative;
-  margin: 0;
-
-  border: none;
-  background: transparent;
-}
-
-.rn-avatar__label {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,5 +8,10 @@
   background: color(neutral, white);
   color: color(neutral, 600);
   font-size: 12px;
+  text-decoration: none;
+}
 
+.rn-avatar.rn-avatar--dark {
+  background: color(neutral, 400);
+  color: color(neutral, white);
 }
