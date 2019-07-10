@@ -1,0 +1,24 @@
+.rn-notification-side__button {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: spacing(3) spacing(5);
+  border: none;
+  background: transparent;
+}
+
+.rn-notification-side__icon {
+  height: 21px;
+  width: 16px;
+}
+
+.rn-notification-side__indicator {
+  position: absolute;
+  top: spacing(1);
+  left: 36px;
+}
+
+.rn-notification-side__indicator > * {
+  fill: color(primary, 300);
+}
+

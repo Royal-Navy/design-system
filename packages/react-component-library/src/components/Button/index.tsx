@@ -38,4 +38,6 @@ const Button: React.FC<ButtonProps> = ({
   </button>
 )
 
+Button.displayName = 'Button'
+
 export default Button

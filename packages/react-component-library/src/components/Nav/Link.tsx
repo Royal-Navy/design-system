@@ -1,21 +1,20 @@
 import React from 'react'
 
 interface LinkProps {
-  active?: boolean
   className?: string
   href: string
-  label: string
 }
 
 const Link: React.FC<LinkProps> = ({
-  active = false,
+  children,
   className = 'rn-nav__item',
   href,
-  label,
 }) => (
-  <a className={`${className}${active ? ' is-active' : ''}`} href={href}>
-    {label}
+  <a className={className} href={href}>
+    {children}
   </a>
 )
+
+Link.displayName = 'Link'
 
 export default Link
