@@ -33,7 +33,7 @@ export interface InputProps {
     | 'week'
 }
 
-const Input: React.FC<InputProps> = props => {
+const TextInput: React.FC<InputProps> = props => {
   const {
     className = '',
     disabled = false,
@@ -131,4 +131,6 @@ const Input: React.FC<InputProps> = props => {
   )
 }
 
-export default Input
+TextInput.displayName = 'TextInput'
+
+export default TextInput

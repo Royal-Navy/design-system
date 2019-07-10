@@ -105,7 +105,7 @@ The TabSet (and companion Tab) component allows the user to switch between diffe
     Type: 'ReactNode[]',
     Required: 'True',
     Default: '',
-    Description: 'A Tab to include within the TabSet. Must be a Tab component.',
+    Description: 'A Tab to include within the TabSet. Must be a Tab component',
   }
 ]} />
 
@@ -116,14 +116,14 @@ The TabSet (and companion Tab) component allows the user to switch between diffe
     Type: 'string',
     Required: 'True',
     Default: '',
-    Description: 'The title to be used for this Tab within the TabSet.',
+    Description: 'The title to be used for this Tab within the TabSet',
   },
   {
     Name: 'children',
     Type: 'ReactNode[]',
     Required: 'True',
     Default: '',
-    Description: 'The content to place in the Tab. Any JSX is valid.',
+    Description: 'The content to place in the Tab. Any JSX is valid',
   }
 ]} />
 

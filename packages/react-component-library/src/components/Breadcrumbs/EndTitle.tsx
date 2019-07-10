@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Link: React.FC = ({ children }) => (
+const EndTitle: React.FC = ({ children }) => (
   <span className="rn-breadcrumbs__title" data-testid="end-title">
     {children}
   </span>
 )
 
-export default Link
+EndTitle.displayName = 'EndTitle'
+
+export default EndTitle

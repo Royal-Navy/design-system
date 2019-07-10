@@ -3,17 +3,19 @@ import React, { Fragment } from 'react'
 import Badge from '../Badge'
 
 interface PhaseBannerProps {
-  phase?: 'alpha' | 'beta'
+  fullWidth?: boolean
   link?: string
+  phase?: 'alpha' | 'beta'
 }
 
 const PhaseBanner: React.FC<PhaseBannerProps> = ({
-  phase = 'alpha',
   children,
+  fullWidth = false,
   link = '/feedback',
+  phase = 'alpha',
 }) => (
   <div className={`rn-phase-banner rn-phase-banner--${phase}`}>
-    <div className="rn-container rn-phase-banner__container">
+    <div className={!fullWidth ? 'rn-container' : 'rn-phase-banner__container'}>
       <Badge size="small" color="primary">
         {phase}
       </Badge>
@@ -28,5 +30,7 @@ const PhaseBanner: React.FC<PhaseBannerProps> = ({
     </div>
   </div>
 )
+
+PhaseBanner.displayName = 'PhaseBanner'
 
 export default PhaseBanner
