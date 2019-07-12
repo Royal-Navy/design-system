@@ -5,7 +5,7 @@ description: ''
 
 ## Development
 
-The Standards Toolkit provides a multi-framework, responsive component library and SASS framework; built to help developers create standards compliant web applications for the Royal Navy.
+The Standards Toolkit provides a multi-framework, responsive component library and SASS framework. It's built to help developers build web applications that meet the Royal Navy's service standards.
 
 ### Latest release & versioning
 
@@ -25,7 +25,7 @@ Please refer to the [component demo pages](/components) to see live examples, co
 
 ### Browser support
 
-The Standards Toolkit currently supports all major evergreen browsers.
+The Standards Toolkit currently supports all major self updating browsers (like Chrome, Firefox, Edge, Safari, Opera).
 
 ### Contributing & issues
 
