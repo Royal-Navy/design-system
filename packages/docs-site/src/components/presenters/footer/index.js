@@ -1,7 +1,7 @@
-import { Links } from '@royalnavy/react-component-library'
-import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
+
+import Links from '../Links'
 
 import './footer.scss'
 
@@ -11,7 +11,7 @@ const Footer = ({ children, links }) => (
   <div className="rn-footer">
     <div className="rn-container">
       <MonoLogo />
-      <Links links={links} size="small" />
+      <Links links={links} />
       <hr className="rn-footer__divider" />
       <div className="rn-footer__meta">
         <p data-testid="message" className="rn-footer__message">
@@ -40,7 +40,7 @@ Footer.propTypes = {
   links: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      href: PropTypes.string,
+      to: PropTypes.string,
     })
   ),
 }
@@ -49,17 +49,14 @@ Footer.defaultProps = {
   children: null,
   links: [
     {
-      Component: Link,
       label: 'Privacy policy',
       to: '/privacy',
     },
     {
-      Component: Link,
       label: 'Contact',
       to: '/contact',
     },
     {
-      Component: Link,
       label: 'Feedback',
       to: '/feedback',
     },

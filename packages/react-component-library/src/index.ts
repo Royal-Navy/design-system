@@ -3,7 +3,6 @@ import Avatar from './components/Avatar'
 import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
 import Button from './components/Button'
-import Links from './components/Links'
 import Nav from './components/Nav'
 import NotificationSidePanel from './fragments/NotificationSidePanel'
 import Pagination from './components/Pagination'
@@ -20,7 +19,6 @@ export {
   Breadcrumbs,
   Button,
   Icons,
-  Links,
   Nav,
   NotificationSidePanel,
   Pagination,
