@@ -89,7 +89,7 @@ The url provided to a navigation link will be used as the 'to' property of a rea
 
 The `Nav` component renders links in either a horizontal or vertical layout. Horizontal nav will switch to vertical when displayed on mobile.
 
-The `Nav` component accepts an array of links. By default a link expects a `label` and `href` and render an anchor tag. If using the component in an application that uses a library like `react-router-dom` the items prop can pass the properties it needs such as `to`. When using a custom component to render the link you need to pass that component to the Nav using the `LinkComponent` property.
+The `Nav` component accepts an array of links. By default a link expects a `label` and `href` and render an anchor tag. If using the component with a library like `react-router-dom` the component can accept a `LinkComponent` to render a link and the associated required properties must be stored in each `navItem`.
 
 ### Basic Usage - Vertical
 <CodeHighlighter source={`const navItems=[
@@ -158,7 +158,7 @@ The `Nav` component accepts an array of links. By default a link expects a `labe
 </CodeHighlighter>
 
 ### Usage with React Router
-More often than not an application will use a library such as `React Router` to generate links between sections of a site, in this case you can specify the `Component` that will render the link, along with the properties it needs. In this example the `Link` component will be generated with the label as it's child.
+More often than not an application will use a library such as `React Router` to generate links between sections of a site, in this case you can specify the `LinkComponent` that will render the link, along with the properties it needs. In this example the `Link` component will be rendered with the label as it's child.
 
 <CodeHighlighter source={`import {Link} from "react-router-dom"\n\nconst navItems=[
   {
@@ -294,7 +294,7 @@ Nav supports rendering navigation in 4 different sizes
     Type: 'NavItem[] ',
     Required: 'True',
     Default: '',
-    Description: 'An array of objects that must least contain a label. If no custom component is provided then provide a href, otherwise provide the Component and the associated property to create a link',
+    Description: 'An array of objects that must least contain a label. If no custom component is provided then provide a href, otherwise provide the the required property associated with the LinkComponent',
   },
   {
     Name: 'orientation',
