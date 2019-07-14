@@ -7,6 +7,7 @@ import Nav from './Nav'
 import PhaseBanner from './PhaseBanner'
 import Popover from './Popover'
 import TabSet from './TabSet'
+import TabNav from './TabNav'
 import Tab from './TabSet/Tab'
 import TextInput from './TextInput'
 
@@ -20,6 +21,7 @@ export {
   PhaseBanner,
   Popover,
   Tab,
+  TabNav,
   TabSet,
   TextInput,
 }
