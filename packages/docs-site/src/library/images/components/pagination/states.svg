@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="726" height="227">
+  <defs>
+    <path id="b" d="M2.15 0h68.7C72.04 0 73 .9 73 2v24c0 1.1-.96 2-2.15 2H2.15C.96 28 0 27.1 0 26V2C0 .9.96 0 2.15 0z"/>
+    <filter id="a" width="113.7%" height="135.7%" x="-6.8%" y="-14.3%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0747104458 0"/>
+    </filter>
+    <path id="d" d="M2.15 0h68.7C72.04 0 73 .9 73 2v24c0 1.1-.96 2-2.15 2H2.15C.96 28 0 27.1 0 26V2C0 .9.96 0 2.15 0z"/>
+    <filter id="c" width="113.7%" height="135.7%" x="-6.8%" y="-14.3%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0747104458 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v191H.5z"/>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="194.21" y="70">Page Action States</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="157.69" y="133">Prev/Next Button States</tspan>
+    </text>
+    <g transform="translate(339 114)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <path fill="#FFF" stroke="#B8C7D2" stroke-linejoin="square" d="M2.15.5C1.23.5.5 1.18.5 2v24c0 .82.73 1.5 1.65 1.5h68.7c.92 0 1.65-.68 1.65-1.5V2c0-.82-.73-1.5-1.65-1.5H2.15z"/>
+    </g>
+    <path fill="#748999" d="M394.64 129.16l-4.52 3.1a.5.5 0 0 1-.78-.41v-7.03a.5.5 0 0 1 .78-.41l4.52 3.1a1 1 0 0 1 0 1.65z"/>
+    <path fill="#748999" fill-rule="nonzero" d="M363.2 124.52v7.98h-.85a.75.75 0 0 1-.33-.06.79.79 0 0 1-.25-.22l-3.98-5.06a9.18 9.18 0 0 1 .03.73v4.61h-1.45v-7.98h1.04l.14.05c.04.02.08.04.11.08.04.03.08.07.12.13l4 5.08a8.35 8.35 0 0 1-.04-.78v-4.56h1.46zm3.34 1.3v2.04h2.66v1.25h-2.67v2.1h3.43v1.29h-5.09v-7.98h5.09v1.3h-3.43zm11.3 6.68h-1.65a.41.41 0 0 1-.27-.08.65.65 0 0 1-.16-.2l-1.73-2.93a5.95 5.95 0 0 0-.1.22l-1.65 2.71c-.05.07-.1.14-.17.2a.36.36 0 0 1-.24.08h-1.54l2.61-4.1-2.51-3.88h1.65c.1 0 .19.01.24.04.05.03.1.08.14.15l1.71 2.82a2.8 2.8 0 0 1 .14-.28l1.54-2.52c.05-.07.1-.12.15-.16a.35.35 0 0 1 .2-.05h1.57l-2.53 3.8 2.6 4.18zm6.47-6.65h-2.33v6.65h-1.66v-6.65H378v-1.33h6.32v1.33z"/>
+    <g transform="translate(430 114)">
+      <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+      <path fill="#FFF" stroke="#58AAE9" stroke-linejoin="square" d="M2.15.5C1.23.5.5 1.18.5 2v24c0 .82.73 1.5 1.65 1.5h68.7c.92 0 1.65-.68 1.65-1.5V2c0-.82-.73-1.5-1.65-1.5H2.15z"/>
+    </g>
+    <path fill="#3A8FDD" d="M485.64 129.16l-4.52 3.1a.5.5 0 0 1-.78-.41v-7.03a.5.5 0 0 1 .78-.41l4.52 3.1a1 1 0 0 1 0 1.65z"/>
+    <path fill="#2A77C7" fill-rule="nonzero" d="M454.2 124.52v7.98h-.85a.75.75 0 0 1-.33-.06.79.79 0 0 1-.25-.22l-3.98-5.06a9.18 9.18 0 0 1 .03.73v4.61h-1.45v-7.98h1.04l.14.05c.04.02.08.04.11.08.04.03.08.07.12.13l4 5.08a8.35 8.35 0 0 1-.04-.78v-4.56h1.46zm3.34 1.3v2.04h2.66v1.25h-2.67v2.1h3.43v1.29h-5.09v-7.98h5.09v1.3h-3.43zm11.3 6.68h-1.65a.41.41 0 0 1-.27-.08.65.65 0 0 1-.16-.2l-1.73-2.93a5.95 5.95 0 0 0-.1.22l-1.65 2.71c-.05.07-.1.14-.17.2a.36.36 0 0 1-.24.08h-1.54l2.61-4.1-2.51-3.88h1.65c.1 0 .19.01.24.04.05.03.1.08.14.15l1.71 2.82a2.8 2.8 0 0 1 .14-.28l1.54-2.52c.05-.07.1-.12.15-.16a.35.35 0 0 1 .2-.05h1.57l-2.53 3.8 2.6 4.18zm6.47-6.65h-2.33v6.65h-1.66v-6.65H469v-1.33h6.32v1.33z"/>
+    <path fill="#3E5667" fill-rule="nonzero" d="M361.19 67.7V69h-5.6v-1.3h2.05v-5.9c0-.23 0-.47.02-.72l-1.46 1.22a.6.6 0 0 1-.25.12.6.6 0 0 1-.42-.07.4.4 0 0 1-.13-.11l-.54-.75 3.08-2.63h1.43v8.84h1.81z"/>
+    <rect width="28" height="28" x="406" y="50" fill="#E2E9EE" rx="3"/>
+    <path fill="#233745" fill-rule="nonzero" d="M423.19 67.7V69h-5.6v-1.3h2.05v-5.9c0-.23 0-.47.02-.72l-1.46 1.22a.6.6 0 0 1-.25.12.6.6 0 0 1-.42-.07.4.4 0 0 1-.13-.11l-.54-.75 3.08-2.63h1.43v8.84h1.81z"/>
+    <rect width="28" height="28" x="468" y="50" fill="#233745" rx="3"/>
+    <path fill="#FFF" fill-rule="nonzero" d="M485.19 67.7V69h-5.6v-1.3h2.05v-5.9c0-.23 0-.47.02-.72l-1.46 1.22a.6.6 0 0 1-.25.12.6.6 0 0 1-.42-.07.4.4 0 0 1-.13-.11l-.54-.75 3.08-2.63h1.43v8.84h1.81z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="221">Text Pagination component states.</tspan>
+    </text>
+  </g>
+</svg>
