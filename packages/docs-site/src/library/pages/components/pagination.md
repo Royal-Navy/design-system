@@ -9,7 +9,7 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 import Component from '../../images/components/pagination/component.svg'
 import Anatomy from '../../images/components/pagination/anatomy.svg'
-import State from '../../images/components/pagination/state.svg'
+import States from '../../images/components/pagination/states.svg'
 
 # Pagination
 The Pagination component shows a series of related content split across multiple pages. It allows an end user to navigate between these pages of records.
@@ -33,7 +33,7 @@ The Pagination component is best used for large lists and tables.
 The Pagination component is of fixed size. 
 
 ### States (if applicable) 
-<State />
+<States />
 
 The subcomponents of the Pagination component have multiple different states. The Page Action buttons have default, hover, and active states, whereas the Prev/Next buttons have default and hover.
 
