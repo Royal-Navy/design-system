@@ -7,29 +7,47 @@ interface PopoverProps {
   right?: number
   bottom?: number
   top?: number
+  position?:
+    | 'left_bottom'
+    | 'left_top'
+    | 'right_bottom'
+    | 'right_top'
+    | 'top_left'
+    | 'top_right'
+    | 'bottom_left'
+    | 'bottom_right'
+  scheme?: 'light' | 'dark'
 }
 
 const Popover: React.FC<PopoverProps> = ({
+  bottom,
   children,
   height,
-  width,
   left,
+  position,
   right,
+  scheme = 'dark',
   top,
-  bottom,
+  width,
 }) => {
   const style = {
-    height,
-    width,
-    top,
     bottom,
+    height,
     left,
     right,
+    top,
+    width,
   }
 
   return (
-    <div className="rn-popover" style={style}>
-      {children}
+    <div
+      className={`rn-popover
+      ${position ? `rn-popover--${position}` : ''}
+      rn-popover--${scheme}
+    `}
+      style={style}
+    >
+      <div className="rn-popover__content">{children}</div>
     </div>
   )
 }
