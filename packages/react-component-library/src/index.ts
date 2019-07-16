@@ -10,6 +10,7 @@ import PhaseBanner from './components/PhaseBanner'
 import Popover from './components/Popover'
 import Sidebar from './fragments/Sidebar'
 import Tab from './components/TabSet/Tab'
+import TabNav from './components/TabNav'
 import TabSet from './components/TabSet'
 import TextInput from './components/TextInput'
 
@@ -26,6 +27,7 @@ export {
   Popover,
   Sidebar,
   Tab,
+  TabNav,
   TabSet,
   TextInput,
 }
