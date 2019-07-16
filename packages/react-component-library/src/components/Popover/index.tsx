@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface PopoverProps {
+interface PopoverProps extends PositionType {
   height?: number
   width?: number
   left?: number
