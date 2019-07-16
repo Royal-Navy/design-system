@@ -1,83 +1,46 @@
 ---
-title: Breadcrumb
-description: Navigation aid to navigate back to a higher level and indicate location in site
+title: Breadcrumbs
+description: The Breadcrumb component is a navigational item
 ---
 
 import { Breadcrumbs, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
+The Breadcrumb component is a navigational item that allows users to quickly ascend a page tree.
 
-# Breadcrumbs
-Navigation aid to navigate back to a higher level and indicate location in site
+![The Breadcrumb Component](../../images/components/breadcrumb/component.svg)
 
 ## Usage
+The Breadcrumb component should sit at the top of the viewport. Visit the Design [Hierarchy & Placement](#hierarchy) section for more information.
+
+---
 
 <TabSet>
 
 <Tab title="Design">
+ 
+ ## Anatomy
+![Breadcrumb component anatomy](../../images/components/breadcrumb/anatomy.svg)
 
-  ## Design
-  Introduction to the design section.
+1. **Parent Link**. The parent link is a clickable action that will navigate the user to the parent page.
+2. **Current Page Label**. The current page is a label displaying the current page title. It is not clickable.
 
-  ### Anatomy
-  The Anatomy is the breakdown of the component.
+## Sizing & Spacing
+The Breadcrumb component has one standard text size. Be careful with horizontal placement, as the breadcrumb can take up a large amount of screen space displaying all the parent links.
 
-  [ Image breaking down the component’s anatomy ]
+## States
+![Breadcrumb component states](../../images/components/breadcrumb/states.svg)
+When hovering on a breadcrumb, the active link will change to the primary colour. Every child to the right of the hovered link will fade to help indicate the target page to the user. 
 
-  Each part of the component in the image should be labelled with a number. Underneath, create a list of each of the labeled items, explaining what they are. This list should also indicate to the reader whenever an item is an optional include.
+## Hierarchy & Placement
+There should only be one Breadcrumb component per page. It should sit at the top of the viewport and be easily accessible for the user. The component is a top level navigational item used to help the user navigate whole pages, rather than a subset section inside another component.
 
-  Any specific notes on a part of the anatomy breakdown should be included here. This includes dos and don’ts with accompanying image examples.
-
-  ### Sizing & Spacing
-  Much like the Anatomy section, the Sizing & Spacing section should be a breakdown of the construction of the component. Red line guides should be added to the component, showing the spacing between the different anatomy parts.
-
-  ### States (if applicable) 
-  This section covers all the different component states including its default state, hover, active, and disabled.
-  [ Image / interactive example of component states ]
-
-  ### Hierarchy & Placement
-  This section covers how a component should sit within an application’s hierarchy. It also provides insight as when to use the different variations listed below.
-
-  ### Variation [ Repeatable Section ] 
-  Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
-
-  [ Image / interactive example of Component ]
-
-  #### Usage
-
-  #### Anatomy
-  [ Image breaking down the component’s anatomy ]
-
-  #### Sizing & Spacing
-  [ Image of component with red guide lines overlaid ]
-
-  #### States (if applicable)
-  [ Image / interactive example of component states ]
-
-  #### Hierarchy & Placement
-
-  ### Adornments [ Repeatable Section ]
-  Include any component adornments here. Much like the variations section above, this section is repeatable.
-
-  [ Image / interactive example of Component ]
-
-  #### Usage
-
-  #### Anatomy
-  [ Image breaking down the component’s anatomy ]
-
-  ### Sizing & Spacing
-  [ Image of component with red guide lines overlaid ]
-
-  ### States (if applicable)
-  [ Image / interactive example of component states ]
-
-  </Tab>
+</Tab>
 
 
 <Tab title="Develop">
-The `Breadcrumbs` component accepts an array of links, including the current page title and href. Like the Nav component the Breadcrumbs component will render regular links by default, but if you pass a `Component` property with a link you can specify the component to render it and send the properties it needs, such as a Gatsby `Link` component that will require `to` instead of `href`.
+The `Breadcrumbs` component accepts an array of links, including the current page title and href. Like the Nav component the Breadcrumbs component will render regular links by default. However, if you pass a `Component` property with a link you can specify the component to render it and send the properties it needs, such as a Gatsby `Link` component that will require `to` instead of `href`.
 
 ### Basic Usage
 By default simply passing a `label` and `href` will cause a regular anchor tag to be rendered for a Breadcrumb.
@@ -115,7 +78,7 @@ By default simply passing a `label` and `href` will cause a regular anchor tag t
 </CodeHighlighter>
 
 ### Usage with React Router
-More often than not an application will use a library such as `React Router` to generate links between sections of a site, in this case you can specify the `Component` that will render the link, along with the properties it needs. In this example the `Link` component will be generated with the label as it's child.
+Applications will often use a library such as `React Router` to generate links between sections of a site. In this case you can specify the `Component` that will render the link, along with the properties it needs. In this example the `Link` component will be generated with the label as its child.
 
 <CodeHighlighter source={`import {Link} from "react-router-dom"\n\nconst links = [
     to: '/',
