@@ -22,12 +22,12 @@ const Pagination: React.FC<PaginationProps> = ({
   )
 
   return (
-    <div className="pagination">
-      <ol className="pagination__list">
-        <li key={uuid()} className="pagination__item">
+    <div className="rn-pagination">
+      <ol className="rn-pagination__list">
+        <li key={uuid()} className="rn-pagination__item">
           <button
             disabled={currentPage === 1}
-            className="pagination__button"
+            className="rn-pagination__button"
             onClick={() => {
               changePage('previous')
             }}
@@ -39,16 +39,16 @@ const Pagination: React.FC<PaginationProps> = ({
         {pageNumbers().map((page: string | number) => {
           if ([BUMP_LEFT, BUMP_RIGHT].includes(String(page))) {
             return (
-              <li key={uuid()} className="pagination__item">
+              <li key={uuid()} className="rn-pagination__item">
                 {page}
               </li>
             )
           }
 
           return (
-            <li key={uuid()} className="pagination__item" data-testid="page">
+            <li key={uuid()} className="rn-pagination__item" data-testid="page">
               <button
-                className={`pagination__button ${
+                className={`rn-pagination__button ${
                   page === currentPage ? 'is-active' : ''
                 }`}
                 onClick={() => {
@@ -61,10 +61,10 @@ const Pagination: React.FC<PaginationProps> = ({
             </li>
           )
         })}
-        <li key={uuid()} className="pagination__item">
+        <li key={uuid()} className="rn-pagination__item">
           <button
             disabled={currentPage === totalPages}
-            className="pagination__button"
+            className="rn-pagination__button"
             onClick={() => {
               changePage('next')
             }}
@@ -77,5 +77,7 @@ const Pagination: React.FC<PaginationProps> = ({
     </div>
   )
 }
+
+Pagination.displayName = 'Pagination'
 
 export default Pagination
