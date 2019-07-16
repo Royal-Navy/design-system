@@ -6,74 +6,55 @@ description: Badges are one of the foundational elements of any application.
 import { Badge, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import Component from '../../images/components/badge/component.svg'
+import Anatomy from '../../images/components/badge/anatomy.svg'
+import Sizes from '../../images/components/badge/sizes.svg'
+import States from '../../images/components/badge/states.svg'
+import Pill from '../../images/components/badge/pill.svg'
+import PillStates from '../../images/components/badge/pill-states.svg'
 
 
 # Badge
-A visual indicator useful for status information or meta data associated with an element
+A visual indicator useful for status information or meta data associated with an element.
+<Component />
 
 ## Usage
 
 <TabSet>
 
 <Tab title="Design">
+  
+The Badge component is an indicator component that displays information to the user. It comes in two varieties - the default, rectangular Badge, and the [Pill variation](#pill).
 
-  ## Design
-  Introduction to the design section.
+### Anatomy
+<Anatomy />
 
-  ### Anatomy
-  The Anatomy is the breakdown of the component.
+1. **Label**. Labels describe the Badge to the user. If text is not used, an icon should be used in its place.
+2. **Container**. The container element wraps the component.
 
-  [ Image breaking down the component’s anatomy ]
+### Sizing & Spacing
+<Sizes />
+The Badge component is available in 4 sizes - small, regular, large and xLarge.
 
-  Each part of the component in the image should be labelled with a number. Underneath, create a list of each of the labeled items, explaining what they are. This list should also indicate to the reader whenever an item is an optional include.
+### States (if applicable)   
+<States />
+The Badge component has 5 states available to use - Neutral, Primary, Success, Warning, and Danger. The badge component does not have any interaction, so there are no hover/active states available.
 
-  Any specific notes on a part of the anatomy breakdown should be included here. This includes dos and don’ts with accompanying image examples.
+### Hierarchy & Placement
+Try to avoid mixing states and sizes, as this can become confusing for the user.
 
-  ### Sizing & Spacing
-  Much like the Anatomy section, the Sizing & Spacing section should be a breakdown of the construction of the component. Red line guides should be added to the component, showing the spacing between the different anatomy parts.
+### Pill
+<Pill />
+The Pill Badge is a variation of the Badge component.
 
-  ### States (if applicable) 
-  This section covers all the different component states including its default state, hover, active, and disabled.
-  [ Image / interactive example of component states ]
+#### Usage
+The Pill Badge is used predominantly to act as a counter, displaying integer numbers (e.g. as a notification badge).
 
-  ### Hierarchy & Placement
-  This section covers how a component should sit within an application’s hierarchy. It also provides insight as when to use the different variations listed below.
+#### States (if applicable)
+<PillStates />
+The Pill Badge component is also available in 5 states - Neutral, Primary, Success, Warning, and Danger.
 
-  ### Variation [ Repeatable Section ] 
-  Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
-
-  [ Image / interactive example of Component ]
-
-  #### Usage
-
-  #### Anatomy
-  [ Image breaking down the component’s anatomy ]
-
-  #### Sizing & Spacing
-  [ Image of component with red guide lines overlaid ]
-
-  #### States (if applicable)
-  [ Image / interactive example of component states ]
-
-  #### Hierarchy & Placement
-
-  ### Adornments [ Repeatable Section ]
-  Include any component adornments here. Much like the variations section above, this section is repeatable.
-
-  [ Image / interactive example of Component ]
-
-  #### Usage
-
-  #### Anatomy
-  [ Image breaking down the component’s anatomy ]
-
-  ### Sizing & Spacing
-  [ Image of component with red guide lines overlaid ]
-
-  ### States (if applicable)
-  [ Image / interactive example of component states ]
-
-  </Tab>
+</Tab>
 
 
 <Tab title="Develop">
