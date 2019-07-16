@@ -32,30 +32,4 @@ describe('Footer', () => {
       )
     })
   })
-
-  describe('when the footer is generated with custom content', () => {
-    beforeEach(() => {
-      const customLinks = [
-        {
-          label: 'Shop',
-          href: '/shop',
-        },
-      ]
-
-      footer = render(<Footer links={customLinks}>Test Message</Footer>)
-    })
-
-    it('should use the custom link', () => {
-      const customLink = footer.getByText('Shop')
-      expect(customLink.getAttribute('href')).toContain('/shop')
-    })
-
-    it('should not render the default links', () => {
-      expect(footer.queryByText('Contact')).toBeNull()
-    })
-
-    it('should use the custom message', () => {
-      expect(footer.getByTestId('message')).toHaveTextContent('Test Message')
-    })
-  })
 })
