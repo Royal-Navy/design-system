@@ -89,7 +89,7 @@ The url provided to a navigation link will be used as the 'to' property of a rea
 
 The `Nav` component renders links in either a horizontal or vertical layout. Horizontal nav will switch to vertical when displayed on mobile.
 
-The `Nav` component accepts an array of links. By default a link expects a `label` and `href` and render an anchor tag. If using the component in an application that uses a library like `react-router-dom` the items prop can pass a component to be responsible for rendering the link and pass the properties it needs such as `to`.
+The `Nav` component accepts an array of links. By default a link expects a `label` and `href` and render an anchor tag. If using the component with a library like `react-router-dom` the component can accept a `LinkComponent` to render a link and the associated required properties must be stored in each `navItem`.
 
 ### Basic Usage - Vertical
 <CodeHighlighter source={`const navItems=[
@@ -158,27 +158,24 @@ The `Nav` component accepts an array of links. By default a link expects a `labe
 </CodeHighlighter>
 
 ### Usage with React Router
-More often than not an application will use a library such as `React Router` to generate links between sections of a site, in this case you can specify the `Component` that will render the link, along with the properties it needs. In this example the `Link` component will be generated with the label as it's child.
+More often than not an application will use a library such as `React Router` to generate links between sections of a site, in this case you can specify the `LinkComponent` that will render the link, along with the properties it needs. In this example the `Link` component will be rendered with the label as it's child.
 
 <CodeHighlighter source={`import {Link} from "react-router-dom"\n\nconst navItems=[
   {
     to: '/',
     label: 'Home',
-    Component: Link
   },
   {
     to: '/components',
     label: 'Components',
-    Component: Link
   },
   {
     to: '/design',
     label: 'Design',
-    Component: Link
   },
 ]
 \n
-<Nav navItems={navItems}/>`} language="javascript">
+<Nav LinkComponent={Link} navItems={navItems}/>`} language="javascript">
   <Nav navItems={[
   {
     href: '/',
@@ -285,12 +282,19 @@ Nav supports rendering navigation in 4 different sizes
     Default: '',
     Description: 'Optional additional css class to associate with the component wrapper',
   },
+    {
+    Name: 'LinkComponent',
+    Type: 'React.ReactNode',
+    Required: 'False',
+    Default: 'Link',
+    Description: 'The React component to render links, defaults to a regular anchor using Link',
+  },
   {
     Name: 'navItems',
     Type: 'NavItem[] ',
     Required: 'True',
     Default: '',
-    Description: 'An array of objects that must least contain a label. If no custom component is provided then provide a href, otherwise provide the Component and the associated property to create a link',
+    Description: 'An array of objects that must least contain a label. If no custom component is provided then provide a href, otherwise provide the the required property associated with the LinkComponent',
   },
   {
     Name: 'orientation',
@@ -311,35 +315,28 @@ Nav supports rendering navigation in 4 different sizes
 
 <DataTable caption="NavItem" data={[
   {
-    Name: 'Component',
-    Type: 'React.ReactNode',
-    Required: 'False',
-    Default: 'Link',
-    Description: 'The React component to render the link, defaults to a regular anchor using Link',
-  },
-  {
     Name: 'label',
     Type: 'string',
     Required: 'True',
     Default: '',
     Description: 'The text for the link',
   },
-]} />
-
-<DataTable caption="Link" data={[
   {
     Name: 'active',
     Type: 'boolean',
     Required: 'False',
-    Default: 'false',
-    Description: 'Set to true for the currently active navigation item',
-  },
+    Default: 'False',
+    Description: 'Is this the current active link?'
+  }
+]} />
+
+<DataTable caption="Link" data={[
   {
-    Name: 'label',
-    Type: 'string',
+    Name: 'children',
+    Type: 'string|React.ReactNode',
     Required: 'True',
     Default: '',
-    Description: 'The text for the link',
+    Description: 'The content for the link',
   },
   {
     Name: 'href',

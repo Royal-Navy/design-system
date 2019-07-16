@@ -9,4 +9,6 @@ const Tab: React.FC<TabProps> = ({ title, children }) => {
   return <>{children}</>
 }
 
+Tab.displayName = 'Tab'
+
 export default Tab

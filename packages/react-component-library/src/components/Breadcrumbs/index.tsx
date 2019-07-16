@@ -21,4 +21,6 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ className = '', links }) => (
   </ul>
 )
 
+Breadcrumbs.displayName = 'Breadcrumbs'
+
 export default Breadcrumbs
