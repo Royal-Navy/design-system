@@ -7,73 +7,40 @@ import { Pagination, TabSet, Tab } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
+import Component from '../../images/components/pagination/component.svg'
+import Anatomy from '../../images/components/pagination/anatomy.svg'
+import States from '../../images/components/pagination/states.svg'
 
 # Pagination
-The Pagination component allows an end user to navigate between pages of records.
+The Pagination component shows a series of related content split across multiple pages. It allows an end user to navigate between these pages of records.
+<Component />
 
 ## Usage
+The Pagination component is best used for large lists and tables.
 
 <TabSet>
 
 <Tab title="Design">
 
-  ## Design
-  Introduction to the design section.
+### Anatomy
+<Anatomy />
 
-  ### Anatomy
-  The Anatomy is the breakdown of the component.
+1. **Page Action**. The Page Action allows the user to quickly jump to a specific page of records.
+2. **Prev/Next**. The Prev and Next buttons move the page number by +/-1.
 
-  [ Image breaking down the component’s anatomy ]
 
-  Each part of the component in the image should be labelled with a number. Underneath, create a list of each of the labeled items, explaining what they are. This list should also indicate to the reader whenever an item is an optional include.
+### Sizing & Spacing
+The Pagination component is of fixed size. 
 
-  Any specific notes on a part of the anatomy breakdown should be included here. This includes dos and don’ts with accompanying image examples.
+### States (if applicable) 
+<States />
 
-  ### Sizing & Spacing
-  Much like the Anatomy section, the Sizing & Spacing section should be a breakdown of the construction of the component. Red line guides should be added to the component, showing the spacing between the different anatomy parts.
+The subcomponents of the Pagination component have multiple different states. The Page Action buttons have default, hover, and active states, whereas the Prev/Next buttons have default and hover.
 
-  ### States (if applicable) 
-  This section covers all the different component states including its default state, hover, active, and disabled.
-  [ Image / interactive example of component states ]
+### Hierarchy & Placement
+The Pagination component should be placed above and below a table or list, aligned to the right hand side. Do not nest the Pagination component. If another level is required, direct the user to a new page.
 
-  ### Hierarchy & Placement
-  This section covers how a component should sit within an application’s hierarchy. It also provides insight as when to use the different variations listed below.
-
-  ### Variation [ Repeatable Section ] 
-  Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
-
-  [ Image / interactive example of Component ]
-
-  #### Usage
-
-  #### Anatomy
-  [ Image breaking down the component’s anatomy ]
-
-  #### Sizing & Spacing
-  [ Image of component with red guide lines overlaid ]
-
-  #### States (if applicable)
-  [ Image / interactive example of component states ]
-
-  #### Hierarchy & Placement
-
-  ### Adornments [ Repeatable Section ]
-  Include any component adornments here. Much like the variations section above, this section is repeatable.
-
-  [ Image / interactive example of Component ]
-
-  #### Usage
-
-  #### Anatomy
-  [ Image breaking down the component’s anatomy ]
-
-  ### Sizing & Spacing
-  [ Image of component with red guide lines overlaid ]
-
-  ### States (if applicable)
-  [ Image / interactive example of component states ]
-
-  </Tab>
+</Tab>
 
 <Tab title="Develop">
 The Pagination component allows an end user to navigate between pages of records.
