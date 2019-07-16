@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="726" height="213">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v177H.5z"/>
+    <g transform="translate(160 47)">
+      <rect width="66" height="22" fill="#3E5667" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">NEUTRAL</tspan>
+      </text>
+    </g>
+    <g transform="translate(415 47)">
+      <rect width="70" height="22" fill="#CF9328" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">WARNING</tspan>
+      </text>
+    </g>
+    <g transform="translate(331 47)">
+      <rect width="64" height="22" fill="#60B255" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">SUCCESS</tspan>
+      </text>
+    </g>
+    <g transform="translate(505 47)">
+      <rect width="62" height="22" fill="#F44949" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">DANGER</tspan>
+      </text>
+    </g>
+    <g transform="translate(246 47)">
+      <rect width="65" height="22" fill="#3A8FDD" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">PRIMARY</tspan>
+      </text>
+    </g>
+    <g transform="translate(160 89)">
+      <rect width="66" height="22" fill="#E2E9EE" rx="3"/>
+      <text fill="#3E5667" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">NEUTRAL</tspan>
+      </text>
+    </g>
+    <g transform="translate(415 89)">
+      <rect width="70" height="22" fill="#FEFBB8" rx="3"/>
+      <text fill="#AE6D1D" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">WARNING</tspan>
+      </text>
+    </g>
+    <g transform="translate(331 89)">
+      <rect width="64" height="22" fill="#E5FFD9" rx="3"/>
+      <text fill="#479442" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">SUCCESS</tspan>
+      </text>
+    </g>
+    <g transform="translate(505 89)">
+      <rect width="62" height="22" fill="#FEEAEC" rx="3"/>
+      <text fill="#BE2B2B" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">DANGER</tspan>
+      </text>
+    </g>
+    <g transform="translate(246 89)">
+      <rect width="65" height="22" fill="#DEF4FF" rx="3"/>
+      <text fill="#2661A7" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">PRIMARY</tspan>
+      </text>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="207">The Badge Component.</tspan>
+    </text>
+  </g>
+</svg>

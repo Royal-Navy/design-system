@@ -74,8 +74,10 @@ const NotificationSidePanel: React.FC<NotificationSidePanelProps> = ({
       {showNotifications && (
         <Popover
           width={POPOVER_WIDTH}
-          left={BAR_WIDTH - 8}
+          left={BAR_WIDTH + 2}
           bottom={notificationPos}
+          position="left_bottom"
+          scheme="dark"
         >
           {children}
         </Popover>
