@@ -3,7 +3,7 @@ title: Pagination
 description: Navigate between muitple pages of records.
 ---
 
-import { Pagination } from '@royalnavy/react-component-library'
+import { Pagination, TabSet, Tab } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
