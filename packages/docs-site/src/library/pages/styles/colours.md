@@ -9,6 +9,8 @@ index: 2
 
 import Swatch from '../../../components/presenters/swatch'
 
+# Colours
+
 A consistent and well named colour system provides a strong basis for all Standards Toolkit applications. We have provided several base colours and modifier shades that allow you to design and build a variety of user interfaces (UIs) whilst maintaining consistency across the platform.
 
 ## Default Colour Palette
