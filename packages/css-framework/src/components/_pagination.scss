@@ -7,19 +7,19 @@ $border-radius: 4px;
 $animation-timing: 0.3s;
 $btn-focus-width: 0.2rem;
 
-.pagination__list {
+.rn-pagination__list {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-.pagination__item {
+.rn-pagination__item {
   padding: spacing(1);
   display: inline-block;
 
   &:first-of-type,
   &:last-of-type {
-    .pagination__button {
+    .rn-pagination__button {
       padding: spacing(2) spacing(4);
       color: $secondary-color;
       background-color: transparent;
@@ -43,7 +43,7 @@ $btn-focus-width: 0.2rem;
   }
 }
 
-.pagination__button {
+.rn-pagination__button {
   padding: spacing(2) spacing(3);
   background: none;
   font-weight: 700;
