@@ -90,7 +90,7 @@ describe('Pagination', () => {
       })
 
       it('should invoke the onChangeCallback function', () => {
-        expect(onChangeCallback).toHaveBeenCalled()
+        expect(onChangeCallback).toHaveBeenCalledWith(5, 100)
       })
     })
   })
