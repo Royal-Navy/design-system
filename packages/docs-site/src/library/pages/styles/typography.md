@@ -78,7 +78,7 @@ For example, adding a class of `.h_text-xl` would result in the following:
   margin-top: 1.5rem;
 ```
 
-To use the helper classes in conjunction with media queries, add the required breakpoint to the helper class:
+To use the helper classes in conjunction with [media queries](/styles/breakpoints), add the required breakpoint to the helper class:
 
 ```scss
   .md:h_text-xl

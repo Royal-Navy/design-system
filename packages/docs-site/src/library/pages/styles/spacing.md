@@ -131,3 +131,9 @@ For example, adding a class of `.h_mt-10` would result in the following:
 ```css
   margin-top: 2.5rem;
 ```
+
+To use the helper classes in conjunction with [media queries](/styles/breakpoints), add the required breakpoint to the helper class:
+
+```scss
+  .md:h_mt-10
+```
