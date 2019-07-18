@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="727" height="208">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M1.5.5h725v174H1.5z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(206 64)">
+      <tspan x="70" y="14">Ships</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(206 64)">
+      <tspan x="136" y="14">Reports</tspan>
+    </text>
+    <text fill="#1C2D39" font-family="Lato-Heavy, Lato" font-size="14" font-weight="600" transform="translate(206 64)">
+      <tspan x="215" y="14">22nd April 2019</tspan>
+    </text>
+    <path fill="#748999" d="M327.1 74l-2.72-2.72a1.05 1.05 0 1 1 1.48-1.49l3.47 3.47a1.05 1.05 0 0 1 0 1.48l-3.47 3.47a1.05 1.05 0 1 1-1.48-1.49L327.1 74z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(206 64)">
+      <tspan x="0" y="14">Home</tspan>
+    </text>
+    <path fill="#748999" d="M259.1 74l-2.72-2.72a1.05 1.05 0 1 1 1.48-1.49l3.47 3.47a1.05 1.05 0 0 1 0 1.48l-3.47 3.47a1.05 1.05 0 1 1-1.48-1.49L259.1 74zM405.1 74l-2.72-2.72a1.05 1.05 0 1 1 1.48-1.49l3.47 3.47a1.05 1.05 0 0 1 0 1.48l-3.47 3.47a1.05 1.05 0 1 1-1.48-1.49L405.1 74z"/>
+    <g>
+      <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(206 94)">
+        <tspan x="70" y="14">Ships</tspan>
+      </text>
+      <text fill="#3A8FDD" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(206 94)">
+        <tspan x="136" y="14">Reports</tspan>
+      </text>
+      <text fill="#1C2D39" font-family="Lato-Heavy, Lato" font-size="14" font-weight="600" opacity=".2" transform="translate(206 94)">
+        <tspan x="215" y="14">22nd April 2019</tspan>
+      </text>
+      <path fill="#748999" d="M327.1 104l-2.72-2.72a1.05 1.05 0 1 1 1.48-1.49l3.47 3.47a1.05 1.05 0 0 1 0 1.48l-3.47 3.47a1.05 1.05 0 1 1-1.48-1.49l2.72-2.72z"/>
+      <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(206 94)">
+        <tspan x="0" y="14">Home</tspan>
+      </text>
+      <path fill="#748999" d="M259.1 104l-2.72-2.72a1.05 1.05 0 1 1 1.48-1.49l3.47 3.47a1.05 1.05 0 0 1 0 1.48l-3.47 3.47a1.05 1.05 0 1 1-1.48-1.49l2.72-2.72z"/>
+      <path fill="#748999" d="M405.1 104l-2.72-2.72a1.05 1.05 0 1 1 1.48-1.49l3.47 3.47a1.05 1.05 0 0 1 0 1.48l-3.47 3.47a1.05 1.05 0 1 1-1.48-1.49l2.72-2.72z" opacity=".3"/>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="204">The Breadcrumb States.</tspan>
+    </text>
+  </g>
+</svg>

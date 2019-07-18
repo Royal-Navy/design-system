@@ -32,16 +32,20 @@ export const usePageChange = (
    * the provided onChangeCallback callback (if it is provided)
    */
   function changePage(page: string | number): void {
+    let selected
+
     if (page === 'previous' && currentPage > 1) {
-      setCurrentPage(currentPage - 1)
+      selected = currentPage - 1
     } else if (page === 'next' && currentPage !== totalPages) {
-      setCurrentPage(currentPage + 1)
+      selected = currentPage + 1
     } else {
-      setCurrentPage(Number(page))
+      selected = Number(page)
     }
 
+    setCurrentPage(selected)
+
     if (typeof onChangeCallback === 'function') {
-      onChangeCallback(currentPage, totalPages)
+      onChangeCallback(selected, totalPages)
     }
   }
 

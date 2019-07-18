@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="726" height="213">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v177H.5z"/>
+    <g transform="translate(223 67)">
+      <rect width="281" height="45" x="-.5" y="-.5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="14" y="36">Your name</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+        <tspan x="14" y="18">First Name (optional)</tspan>
+      </text>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="207">The Text Input component.</tspan>
+    </text>
+  </g>
+</svg>
