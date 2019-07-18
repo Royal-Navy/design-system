@@ -1,0 +1,13 @@
+@import '@royalnavy/css-framework';
+
+.page-not-found {
+  a {
+    color: color(primary, 900);
+  }
+
+  hr {
+    border: none;
+    border-bottom: 1px solid color(neutral, 100);
+    margin: spacing(8) 0;
+  }
+}
