@@ -1,31 +1,49 @@
 import PropTypes from 'prop-types'
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import './hero-banner.scss'
 
-const HeroBanner = ({ children, className, title, text, ctaLink, ctaText }) => (
+const HeroBanner = ({
+  children,
+  className,
+  title,
+  text,
+  ctaLink,
+  ctaText,
+  footnote,
+}) => (
   <section className={`hero-banner ${className}`} data-testid="hero-banner">
     {children || (
-      <Fragment>
+      <>
         <div className="hero-banner__main">
-          <h1 className="hero-banner__title" data-testid="hero-banner-title">
-            {title}
-          </h1>
-          <p className="hero-banner__text" data-testid="hero-banner-text">
-            {text}
-          </p>
-          <a className="rn-btn" href={ctaLink} data-testid="hero-banner-cta">
-            {ctaText}
-          </a>
+          {title && (
+            <h1 className="hero-banner__title" data-testid="hero-banner-title">
+              {title}
+            </h1>
+          )}
+          {text && (
+            <p className="hero-banner__text" data-testid="hero-banner-text">
+              {text}
+            </p>
+          )}
+          {ctaText && ctaLink && (
+            <a className="rn-btn" href={ctaLink} data-testid="hero-banner-cta">
+              {ctaText}
+            </a>
+          )}
         </div>
-        <hr className="hero-banner__rule" />
-        <p className="hero-banner__stakeholder-message">
-          Are you a Navy Product Owner or Stakeholder{' '}
-          <a className="hero-banner__link" href="/about-the-design-system">
-            Find out how Standards relates to you.
-          </a>{' '}
-        </p>
-      </Fragment>
+        {footnote && (
+          <>
+            <hr className="hero-banner__rule" />
+            <p className="hero-banner__stakeholder-message">
+              Are you a Navy Product Owner or Stakeholder{' '}
+              <a className="hero-banner__link" href="/about-the-design-system">
+                Find out how Standards relates to you.
+              </a>{' '}
+            </p>
+          </>
+        )}
+      </>
     )}
   </section>
 )
@@ -37,6 +55,7 @@ HeroBanner.propTypes = {
   text: PropTypes.string,
   ctaLink: PropTypes.string,
   ctaText: PropTypes.string,
+  footnote: PropTypes.bool,
 }
 
 HeroBanner.defaultProps = {
@@ -46,6 +65,7 @@ HeroBanner.defaultProps = {
   text: null,
   ctaLink: null,
   ctaText: null,
+  footnote: true,
 }
 
 export default HeroBanner
