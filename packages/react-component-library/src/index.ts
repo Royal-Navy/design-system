@@ -4,7 +4,6 @@ import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
 import Button from './components/Button'
 import Nav from './components/Nav'
-import NotificationSidePanel from './fragments/NotificationSidePanel'
 import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
 import Popover from './components/Popover'
@@ -21,7 +20,6 @@ export {
   Button,
   Icons,
   Nav,
-  NotificationSidePanel,
   Pagination,
   PhaseBanner,
   Popover,

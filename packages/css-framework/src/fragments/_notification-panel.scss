@@ -1,0 +1,39 @@
+.rn-notification-panel__button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+  line-height: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4px;
+  padding: 5px;
+  position: relative;
+}
+
+.rn-notification-panel__icon {
+  height: 21px;
+  width: 16px;
+}
+
+.rn-notification-panel__indicator {
+  left: 65%;
+  position: absolute;
+  top: 0;
+}
+
+.rn-notification-panel__indicator > * {
+  fill: color(primary, 400);
+}
+
+.rn-notification-panel--dark .rn-iconfill {
+  fill: color(neutral, white);
+
+  &:hover {
+    fill: color(primary,400);
+  }
+}
+
+.rn-notification-panel--light .rn-iconfill {
+  fill: color(neutral, 400);
+}
