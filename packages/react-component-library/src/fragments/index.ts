@@ -1,4 +1,4 @@
-import NotificationSidePanel from './NotificationSidePanel'
+import NotificationPanel from './NotificationPanel'
 import Sidebar from './Sidebar'
 
-export { NotificationSidePanel, Sidebar }
+export { NotificationPanel, Sidebar }
