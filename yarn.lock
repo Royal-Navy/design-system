@@ -7019,11 +7019,6 @@ date-fns@^1.23.0, date-fns@^1.27.2:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
 
-date-fns@^v2.0.0-beta.1:
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.0.0-beta.2.tgz#ccd556df832ef761baa88c600f53d2e829245999"
-  integrity sha512-4cicZF707RNerr3/Q3CcdLo+3OHMCfrRXE7h5iFgn7AMvX07sqKLxSf8Yp+WJW5bvKr2cy9/PkctXLv4iFtOaA==
-
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
@@ -7897,7 +7892,7 @@ envinfo@^5.8.1:
   resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-5.12.1.tgz#83068c33e0972eb657d6bc69a6df30badefb46ef"
   integrity sha512-pwdo0/G3CIkQ0y6PCXq4RdkvId2elvtPCJMG0konqlrfkWQbf1DWeH9K2b/cvu2YgGvPPTOnonZxXM1gikFu1w==
 
-enzyme-adapter-react-16@^1.12.1, enzyme-adapter-react-16@^1.13.1, enzyme-adapter-react-16@^1.9.1:
+enzyme-adapter-react-16@^1.12.1, enzyme-adapter-react-16@^1.13.1:
   version "1.14.0"
   resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.14.0.tgz#204722b769172bcf096cb250d33e6795c1f1858f"
   integrity sha512-7PcOF7pb4hJUvjY7oAuPGpq3BmlCig3kxXGi2kFx0YzJHppqX1K8IIV9skT1IirxXlu8W7bneKi+oQ10QRnhcA==
@@ -8336,7 +8331,7 @@ eslint@^4.19.1:
     table "4.0.2"
     text-table "~0.2.0"
 
-eslint@^5.13.0, eslint@^5.15.0, eslint@^5.16.0, eslint@^5.6.0:
+eslint@^5.13.0, eslint@^5.16.0, eslint@^5.6.0:
   version "5.16.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.16.0.tgz#a1e3ac1aae4a3fbd8296fcf8f7ab7314cbb6abea"
   integrity sha512-S3Rz11i7c8AA5JPv7xAH+dOyq/Cu/VXHiHXBPOU1k/JAM5dXqQPt3qcrhpHSorXmrpu2g0gkIBVXAqCpzfoZIg==
@@ -15679,11 +15674,6 @@ oauth-sign@~0.9.0:
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
   integrity sha512-fexhUFFPTGV8ybAtSIGbV6gOkSv8UtRbDBnAyLQw4QPKkgNlsH2ByPGtMUqdWkos6YCRmAqViwgZrJc/mRDzZQ==
 
-object-assign@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-3.0.0.tgz#9bedd5ca0897949bca47e7ff408062d549f587f2"
-  integrity sha1-m+3VygiXlJvKR+f/QIBi1Un1h/I=
-
 object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
@@ -17898,11 +17888,6 @@ ramda@0.21.0, ramda@^0.21.0:
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.21.0.tgz#a001abedb3ff61077d4ff1d577d44de77e8d0a35"
   integrity sha1-oAGr7bP/YQd9T/HVd9RN536NCjU=
 
-ramda@^0.25.0:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
-  integrity sha512-GXpfrYVPwx3K7RQ6aYT8KPS8XViSXUVJT1ONhoKPE9VAleW42YE+U+8VEyGWt41EnEQW7gwecYJriTI0pKoecQ==
-
 randexp@0.4.6:
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/randexp/-/randexp-0.4.6.tgz#e986ad5e5e31dae13ddd6f7b3019aa7c87f60ca3"
@@ -17983,24 +17968,6 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7, rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-autosuggest@^9.4.3:
-  version "9.4.3"
-  resolved "https://registry.yarnpkg.com/react-autosuggest/-/react-autosuggest-9.4.3.tgz#eb46852422a48144ab9f39fb5470319222f26c7c"
-  integrity sha512-wFbp5QpgFQRfw9cwKvcgLR8theikOUkv8PFsuLYqI2PUgVlx186Cz8MYt5bLxculi+jxGGUUVt+h0esaBZZouw==
-  dependencies:
-    prop-types "^15.5.10"
-    react-autowhatever "^10.1.2"
-    shallow-equal "^1.0.0"
-
-react-autowhatever@^10.1.2:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/react-autowhatever/-/react-autowhatever-10.2.0.tgz#bdd07bf19ddf78acdb8ce7ae162ac13b646874ab"
-  integrity sha512-dqHH4uqiJldPMbL8hl/i2HV4E8FMTDEdVlOIbRqYnJi0kTpWseF9fJslk/KS9pGDnm80JkYzVI+nzFjnOG/u+g==
-  dependencies:
-    prop-types "^15.5.8"
-    react-themeable "^1.1.0"
-    section-iterator "^2.0.0"
-
 react-clientside-effect@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-clientside-effect/-/react-clientside-effect-1.2.1.tgz#feb81abe9531061d4987941c15a00f2b3d0b6071"
@@ -18019,17 +17986,6 @@ react-color@^2.17.0:
     prop-types "^15.5.10"
     reactcss "^1.2.0"
     tinycolor2 "^1.4.1"
-
-react-datepicker@^2.5.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-2.8.0.tgz#d93423a2abe9eeef8d3eaa7ff437f31be8a3a2f5"
-  integrity sha512-TL9YemykqK77hq1LRGIWbLFpHvNfSb8yZr3q1zk5XTGdSLsVtZ6mlXby3zuGwi8sL0+h9SEnNaqK8IeOl0R2iQ==
-  dependencies:
-    classnames "^2.2.5"
-    date-fns "^v2.0.0-beta.1"
-    prop-types "^15.6.0"
-    react-onclickoutside "^6.7.1"
-    react-popper "^1.0.2"
 
 react-dev-utils@^4.2.3:
   version "4.2.3"
@@ -18210,11 +18166,6 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-onclickoutside@^6.7.1:
-  version "6.8.0"
-  resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.8.0.tgz#9f91b5b3ed59f4d9e43fd71620dc200773a4d569"
-  integrity sha512-5Q4Rn7QLEoh7WIe66KFvYIpWJ49GeHoygP1/EtJyZjXKgrWH19Tf0Ty3lWyQzrEEDyLOwUvvmBFSE3dcDdvagA==
-
 react-popper-tooltip@^2.8.3:
   version "2.8.3"
   resolved "https://registry.yarnpkg.com/react-popper-tooltip/-/react-popper-tooltip-2.8.3.tgz#1c63e7473a96362bd93be6c94fa404470a265197"
@@ -18223,7 +18174,7 @@ react-popper-tooltip@^2.8.3:
     "@babel/runtime" "^7.4.5"
     react-popper "^1.3.3"
 
-react-popper@^1.0.2, react-popper@^1.3.3:
+react-popper@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/react-popper/-/react-popper-1.3.3.tgz#2c6cef7515a991256b4f0536cd4bdcb58a7b6af6"
   integrity sha512-ynMZBPkXONPc5K4P5yFWgZx5JGAUIP3pGGLNs58cfAPgK67olx7fmLp+AdpZ0+GoQ+ieFDa/z4cdV6u7sioH6w==
@@ -18305,13 +18256,6 @@ react-textarea-autosize@^7.1.0:
   dependencies:
     "@babel/runtime" "^7.1.2"
     prop-types "^15.6.0"
-
-react-themeable@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-themeable/-/react-themeable-1.1.0.tgz#7d4466dd9b2b5fa75058727825e9f152ba379a0e"
-  integrity sha1-fURm3ZsrX6dQWHJ4JenxUro3mg4=
-  dependencies:
-    object-assign "^3.0.0"
 
 react-transition-group@^2.2.1:
   version "2.9.0"
@@ -19359,11 +19303,6 @@ scroll-behavior@^0.9.9:
     dom-helpers "^3.2.1"
     invariant "^2.2.2"
 
-section-iterator@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/section-iterator/-/section-iterator-2.0.0.tgz#bf444d7afeeb94ad43c39ad2fb26151627ccba2a"
-  integrity sha1-v0RNev7rlK1Dw5rS+yYVFifMuio=
-
 section-matter@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/section-matter/-/section-matter-1.0.0.tgz#e9041953506780ec01d59f292a19c7b850b84167"
@@ -19563,7 +19502,7 @@ shallow-compare@^1.2.2:
   resolved "https://registry.yarnpkg.com/shallow-compare/-/shallow-compare-1.2.2.tgz#fa4794627bf455a47c4f56881d8a6132d581ffdb"
   integrity sha512-LUMFi+RppPlrHzbqmFnINTrazo0lPNwhcgzuAXVVcfy/mqPDrQmHAyz5bvV0gDAuRFrk804V0HpQ6u9sZ0tBeg==
 
-shallow-equal@^1.0.0, shallow-equal@^1.1.0:
+shallow-equal@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/shallow-equal/-/shallow-equal-1.2.0.tgz#fd828d2029ff4e19569db7e19e535e94e2d1f5cc"
   integrity sha512-Z21pVxR4cXsfwpMKMhCEIO1PCi5sp7KEp+CmOpBQ+E8GpHwKOw2sEzk7sgblM3d/j4z4gakoWEoPcjK0VJQogA==
@@ -20489,16 +20428,6 @@ stylelint-junit-formatter@^0.2.1:
   integrity sha512-C1n8dBpqMwUeJGmyL8tGVB1DKQISnEMhynzCzo38kTpjXybxLLYPrblbm41q5fEHwbaLjE5bPhZpZyMoHaJhIQ==
   dependencies:
     xmlbuilder "^10.0.0"
-
-stylelint-webpack-plugin@^0.10.5:
-  version "0.10.5"
-  resolved "https://registry.yarnpkg.com/stylelint-webpack-plugin/-/stylelint-webpack-plugin-0.10.5.tgz#0b6e0d373ff5e03baa8197ebe0f2625981bd266b"
-  integrity sha512-jtYx3aJ2qDMvBMswe5NRPTO7kJgAKafc6GilAkWDp/ewoAmnoxA6TsYMnIPtLECRLwXevaCPvlh2JEUMGZCoUQ==
-  dependencies:
-    arrify "^1.0.1"
-    micromatch "^3.1.8"
-    object-assign "^4.1.0"
-    ramda "^0.25.0"
 
 stylelint@^10.0.1, stylelint@^10.1.0:
   version "10.1.0"
