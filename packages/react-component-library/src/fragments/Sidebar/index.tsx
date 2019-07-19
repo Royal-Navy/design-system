@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { Avatar, Link } from '../../components'
-import NotificationSidePanel from '../NotificationSidePanel'
+import NotificationPanel from '../NotificationPanel'
 
 interface UserLinkType {
   initials: string
@@ -70,12 +70,9 @@ const Sidebar: React.FC<SidebarProps> = ({
 
       <div className="rn-sidebar__bottom">
         {NotificationsPopoverContent && (
-          <NotificationSidePanel
-            className="rn-sidebar__nav-link"
-            unreadNotification={unreadNotification}
-          >
+          <NotificationPanel unreadNotification={unreadNotification}>
             {NotificationsPopoverContent}
-          </NotificationSidePanel>
+          </NotificationPanel>
         )}
         {userElement}
       </div>

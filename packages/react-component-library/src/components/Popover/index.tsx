@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface PopoverProps {
+interface PopoverProps extends PositionType {
   height?: number
   width?: number
   left?: number
@@ -45,6 +45,7 @@ const Popover: React.FC<PopoverProps> = ({
       ${position ? `rn-popover--${position}` : ''}
       rn-popover--${scheme}
     `}
+      data-testid="popover"
       style={style}
     >
       <div className="rn-popover__content">{children}</div>
