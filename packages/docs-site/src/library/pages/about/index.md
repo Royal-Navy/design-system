@@ -27,7 +27,7 @@ The Standards toolkit provides visual templates and code samples enabling the ra
 
 Royal Navy users of NELSON systems have a consistent experience when switching between applications. This reduces the need to learn new systems and reduces training times. Guidance around each component and pattern ensures that design elements always have a consistent behaviour, for example, a red button would always indicate a destructive action such as ‘delete’.
 
-##How do Standards align with Royal Navy principles?
+## How do Standards align with Royal Navy principles?
 NELSON Standards are routed in Navy doctrine and align with its core values. By maintaining a disciplined approach to design and development of Applications and respecting the Standard we ensure that end-users are well equipped to perform their role, and can work to the best of their abilities.
 
 Using the Standard correctly enables the integrity of software to be maintained. NELSON Applications are characterised by their design based on end-user needs, consistent and predictable behaviour and high quality user experiences. Costs are reduced as designers and developers do not need to start over with new codebases and visual language for every project.
