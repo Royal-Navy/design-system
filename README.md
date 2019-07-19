@@ -1,18 +1,55 @@
-# Royal Navy - Programme Nelson Component Library
+# Royal Navy - NELSON [Standards Toolkit](https://docs.royalnavy.io/)
 
-The Nelson component library is a multi framework front-end component library built to allow developers to create web based applications for the Royal Navy.
+[![CircleCI](https://circleci.com/gh/Royal-Navy/standards-toolkit/tree/develop.svg?style=svg)](https://circleci.com/gh/Royal-Navy/standards-toolkit/tree/develop) [![GitHub release](https://img.shields.io/github/release/royal-navy/standards-toolkit.svg)](https://github.com/Royal-Navy/standards-toolkit/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/standards-toolkit/blob/master/LICENSE)
 
-This project contains the source for a number of packages that contain templates for popular front-end frameworks and the sass/css associated with them for all other html applications.
+The Standards Toolkit provides a multi-framework, responsive component library and SASS framework. It's built to help developers build web applications that meet the Royal Navy's service standards.
 
-## Getting Started
+## Latest release & versioning
 
-If you are using the library from an application that uses the component library as a dependency, then install the relavant library using npm, This repo produces:
-- `royalnavy@react-component-library`
-- `royalnavy@vue-component-library`
-- `royalnavy@css-framework`
-- `royalnavy@storybook-react-input-state`
+We adhere to [semantic versioning](https://semver.org/). Version [1.0.0](https://github.com/Royal-Navy/standards-toolkit/releases/tag/1.0.0) is the current stable release.
 
-If you are developing code in this library then check it out from Github and run `yarn add` from the top level folder, this will in turn install dependencies in all the package sub folders.
+## Supported technologies
+
+The following view layer libraries are currently supported:
+
+- React
+
+## Component usage guidelines
+
+Please refer to the [component demo pages](/components) to see live examples, code snippets and details on how to cosume each of the components.
+
+## Installation & quick start
+
+To install and save to your projects package.json dependencies, run:
+
+```
+// with npm
+npm install @royalnavy/css-framework @royalnavy/react-component-library
+
+// ...or with yarn
+yarn add @royalnavy/css-framework @royalnavy/react-component-library
+```
+
+### Quick start
+
+Here's a quick example application to get you started:
+
+```
+import React from 'react'
+import ReactDOM from 'react-dom'
+import '@royalnavy/css-framework/dist/style.css'
+import { Button } from '@royalnavy/react-component-library'
+
+function App() {
+  return (
+    <Button variant="primary">
+      Hello, World!
+    </Button>
+  )
+}
+
+ReactDOM.render(<App />, document.querySelector('#app'))
+```
 
 ## Monorepo layout and package management
 
@@ -42,9 +79,10 @@ The top level project is configured to use Git commit hooks to lint all files wh
 
 The top level package file is configured with a set of Prettier options to insist on consistent code formatting throughout all packages.
 
+## Browser support
 
-<hr/>
-<p>
-With special thanks to <br/>
-<a href="https://www.browserstack.com/"><img src="images/Browserstack-logo.svg" width="300" height="65" alt="Browserstack"></a>
-</p>
+The Standards Toolkit currently supports all major evergreen browsers.
+
+## Licensing
+
+The Royal-Navy/standards-toolkit is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/standards-toolkit/blob/develop/LICENSE).
