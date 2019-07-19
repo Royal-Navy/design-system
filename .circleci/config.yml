@@ -316,7 +316,7 @@ workflows:
       - lint_css-framework
       - lint_react-component-library
       - lint_storybook-react-input-state
-      - lint_vue-component-library
+      # - lint_vue-component-library
       - lint_docs_site
       - test_react-component-library:
           requires:
@@ -324,14 +324,14 @@ workflows:
       - test_storybook-react-input-state:
           requires:
             - lint_storybook-react-input-state
-      - test_vue-component-library:
-          requires:
-            - lint_vue-component-library
+      # - test_vue-component-library:
+      #     requires:
+      #       - lint_vue-component-library
       - code_climate:
           requires:
             - test_react-component-library
             - test_storybook-react-input-state
-            - test_vue-component-library
+            # - test_vue-component-library
       - publish_documentation:
           filters:
             branches:
@@ -359,19 +359,19 @@ workflows:
             branches:
               only:
                 - master
-      - publish_vue-component-library:
-          requires:
-            - test_vue-component-library
-            - publish_css-framework
-          filters:
-            branches:
-              only:
-                - master
+      # - publish_vue-component-library:
+      #     requires:
+      #       - test_vue-component-library
+      #       - publish_css-framework
+      #    filters:
+      #      branches:
+      #        only:
+      #          - master
       - test_docs-site:
           requires:
             - test_react-component-library
             - test_storybook-react-input-state
-            - test_vue-component-library
+            # - test_vue-component-library
       - build_docs-site:
           requires:
             - test_docs-site
@@ -387,7 +387,7 @@ workflows:
             - publish_documentation
             - publish_css-framework
             - publish_react-component-library
-            - publish_vue-component-library
+            # - publish_vue-component-library
             - build_docs-site
           filters:
             branches:
