@@ -34,7 +34,7 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 
 Here's a quick example application to get you started:
 
-```
+```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
 import '@royalnavy/css-framework/dist/style.css'
