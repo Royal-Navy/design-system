@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface BadgeProps {
+interface BadgeProps extends ComponentWithClass {
   color?: 'neutral' | 'primary' | 'danger' | 'warning' | 'success'
   colorVariant?: 'solid' | 'faded'
   size?: 'small' | 'regular' | 'large' | 'xlarge'
@@ -9,6 +9,7 @@ interface BadgeProps {
 
 const Badge: React.FC<BadgeProps> = ({
   children,
+  className = '',
   color = 'neutral',
   colorVariant = 'solid',
   size = 'regular',
@@ -17,7 +18,7 @@ const Badge: React.FC<BadgeProps> = ({
   <span
     className={`rn-badge rn-badge--${color} rn-badge--${colorVariant} rn-badge--${size} ${
       variant ? `rn-badge--${variant}` : ''
-    }`}
+    } ${className}`}
   >
     {children}
   </span>

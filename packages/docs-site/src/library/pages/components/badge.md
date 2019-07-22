@@ -143,6 +143,13 @@ source={`<Badge color="neutral" variant="pill">Neutral</Badge>
     Description: 'The content to place in the button, typically text',
   },
   {
+    Name: 'className',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'Custom css class to add to the badge element',
+  },
+  {
     Name: 'color',
     Type: 'string (neutral / primary / danger / warning / success)',
     Required: 'False',
