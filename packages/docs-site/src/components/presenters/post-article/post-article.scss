@@ -1,0 +1,51 @@
+@import "@royalnavy/css-framework";
+
+$background-color: color(neutral, white);
+$border-color: #e9eef1;
+$border-radius: 4px;
+$heading-color: #3e5667;
+$text-color: #748999;
+
+// Scoping all tag styles to the Post Article
+.standard-table {
+  table {
+    width: 100%;
+    font-size: font-size(s);
+    color: $text-color;
+    margin: spacing(8) 0;
+    border: 1px solid $border-color;
+    code {
+      margin-right: 5px;
+    }
+  }
+
+  thead {
+    text-align: left;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: $heading-color;
+  }
+
+  td,
+  th {
+    padding: spacing(4);
+    border-bottom: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+    background-color: $background-color;
+    &:last-child {
+      border-right: 0;
+    }
+  }
+  tr:last-child td {
+    border-bottom: 0;
+  }
+}
+
+code {
+  background-color: color(neutral, 100);
+  color: color(neutral, 600);
+  border-radius: 3px;
+  font-size: font-size(xs);
+  font-weight: 500;
+  padding: 2px spacing(2);
+}

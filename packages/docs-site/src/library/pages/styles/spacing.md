@@ -103,13 +103,15 @@ The CSS Frameworks Spacing Variables are available in Utility Class form, allowi
 
 Both margin and padding can be set via helper classes. The class syntax follows the following pattern:
 
-```scss
-  .h_[Property][Direction?]-[Size]
-```
+<CodeHighlighter 
+source={`.h_[Property][Direction?]-[Size]`} language="scss"
+/>
+
+<div class="standard-table">
 
 Property     | Direction  | Size
 ------------ | ---------- | -----------
-`m` margin   | ` ` all    | `1` 0.25rem
+`m` margin   | all        | `1` 0.25rem
 `p` padding  | `t` top    | `2` 0.5rem
 &nbsp;       | `r` right  | `3` 0.75rem
 &nbsp;       | `b` bottom | `4` 1rem
@@ -125,9 +127,17 @@ Property     | Direction  | Size
 &nbsp;       |            | `px` 1px
 &nbsp;       |            | `full` 100%
 
+</div>
+
 For example, adding a class of `.h_mt-10` would result in the following:
 
+<CodeHighlighter 
+source={`margin-top: 2.5rem;`} language="scss"
+/>
 
-```css
-  margin-top: 2.5rem;
-```
+
+To use the helper classes in conjunction with [media queries](/styles/breakpoints), add the required breakpoint to the helper class:
+
+<CodeHighlighter 
+source={`.md:h_mt-10`} language="scss"
+/>
