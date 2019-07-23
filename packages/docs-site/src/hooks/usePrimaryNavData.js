@@ -28,6 +28,15 @@ const usePrimaryNavData = location => {
         (parsedLink.length === 0 && parsedCurrentLocation.length === 0) ||
         (parsedLink.length > 0 && startsWith(parsedCurrentLocation, parsedLink))
 
+      if (children && children.length >= 1) {
+        children.push({
+          index: 0,
+          label: `${label} overview`,
+          active: false,
+          href,
+        })
+      }
+
       return {
         active,
         href,
@@ -37,7 +46,7 @@ const usePrimaryNavData = location => {
     })
     .map(({ active, children, href, label }) => ({
       active,
-      children: sortBy(children.map(checkActive), 'label'),
+      children: sortBy(children.map(checkActive), ['index', 'label']),
       href,
       label,
     }))

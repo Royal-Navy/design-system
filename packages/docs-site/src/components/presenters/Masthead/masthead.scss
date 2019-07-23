@@ -25,11 +25,20 @@
 .masthead__nav .rn-nav .rn-nav__list-item {
   padding-bottom: spacing(1);
   text-align: left !important;
-  border-bottom: 1px solid color(neutral, 700);
+  border-bottom: 1px solid color(primary, 800);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 }
 
 .masthead__nav .rn-nav .rn-nav__item {
   font-size: font-size(m) !important;
+  color: color(primary, 800);
+
+  &.is-active {
+    color: color(neutral, white);
+  }
 }
 
 .masthead__nav .rn-nav .rn-nav__list .rn-nav__list .rn-nav__list-item {
@@ -40,12 +49,13 @@
   margin-top: spacing(1);
 }
 
-.masthead__nav .rn-nav__list .rn-nav__list {
-  padding: 0;
-}
-
 .masthead__nav .rn-nav__list .rn-nav__list .rn-nav__item {
+  color: color(primary, 800) !important;
   font-size: font-size(s) !important;
+
+  &.is-active {
+    color: color(neutral, white) !important;
+  }
 }
 
 // .rn-nav__list-item .has-children & .is-open
@@ -61,12 +71,21 @@
 // immediate children & .has-children <a />.is-active
 .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list-item.has-children > .rn-nav__item.is-active {
   background-color: transparent;
-  color: color(neutral, 700);
+  color: color(primary, 800);
 }
 
 // nested children <a />
 .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list .rn-nav__list-item .rn-nav__item {
   pointer-events: all;
+}
+
+// "[...]overview"
+.masthead__nav .rn-nav > .rn-nav__list .rn-nav__list .rn-nav__list-item:first-of-type {
+  border-bottom: 1px dashed color(neutral, 200);
+}
+
+.masthead__nav .rn-nav > .rn-nav__list .rn-nav__list .rn-nav__list .rn-nav__list-item:first-of-type {
+  border-bottom: none;
 }
 
 @include breakpoint("s") {
