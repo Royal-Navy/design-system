@@ -26,6 +26,29 @@
   display: block;
 }
 
+.masthead__nav .rn-nav .rn-nav__list-item {
+  text-align: left !important;
+}
+
+.masthead__nav .rn-nav__list .rn-nav__list {
+  padding: 0;
+}
+
+// .rn-nav__list-item .has-children & .is-open
+.masthead__nav.is-open .rn-nav .rn-nav__list .rn-nav__list-item.has-children.is-open .rn-nav__list {
+  display: block;
+}
+
+// immediate children & .has-children <a />
+.masthead__nav .rn-nav > .rn-nav__list .rn-nav__list-item.has-children .rn-nav__item {
+  pointer-events: none;
+}
+
+// nested children <a />
+.masthead__nav .rn-nav > .rn-nav__list .rn-nav__list .rn-nav__list-item .rn-nav__item {
+  pointer-events: all;
+}
+
 @include breakpoint("s") {
   .masthead__container {
     display: block;
@@ -48,5 +71,15 @@
   .masthead .rn-nav__list-item {
     display: inline-block;
     width: auto;
+  }
+
+  // hide all children above mobile
+  .masthead__nav .rn-nav .rn-nav__list .rn-nav__list {
+    display: none !important;
+  }
+
+  // ensure all top level anchors work
+  .masthead__nav .rn-nav__item {
+    pointer-events: all !important;
   }
 }

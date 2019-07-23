@@ -9,7 +9,7 @@ const usePrimaryNavData = location => {
   const nested = nestByURLStructure(pages)
   const parsedCurrentLocation = stripLeadingSlash(location.pathname)
 
-  return nested.map(({ href, label }) => {
+  return nested.map(({ href, label, children }) => {
     const parsedLink = stripLeadingSlash(href)
     const active =
       (parsedLink.length === 0 && parsedCurrentLocation.length === 0) ||
@@ -19,6 +19,7 @@ const usePrimaryNavData = location => {
       active,
       href,
       label,
+      children,
     }
   })
 }
