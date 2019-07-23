@@ -28,12 +28,14 @@ export function stripLeadingSlash(href) {
  * @returns {array}
  */
 export function restructureNodes(nodes) {
-  return nodes.map(node => {
-    return {
-      href: stripTrailingSlash(node.node.fields.slug),
-      label: node.node.frontmatter.title,
-    }
-  })
+  return nodes
+    .map(node => {
+      return {
+        href: stripTrailingSlash(node.node.fields.slug),
+        label: node.node.frontmatter.title,
+      }
+    })
+    .filter(node => node.href !== '/')
 }
 
 /**
