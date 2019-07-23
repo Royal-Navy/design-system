@@ -1,9 +1,5 @@
 @import "@royalnavy/css-framework";
 
-.masthead {
-  margin-bottom: spacing(5);
-}
-
 .masthead__container {
   display: flex;
   justify-content: space-between;
@@ -33,7 +29,6 @@
 }
 
 .masthead__nav .rn-nav .rn-nav__item {
-  font-weight: 600;
   font-size: font-size(m) !important;
 }
 
@@ -96,7 +91,7 @@
 
   .masthead__nav .rn-nav .rn-nav__item {
     font-weight: normal;
-    font-size: font-size(xs) !important;
+    font-size: font-size(s) !important;
   }
 
   // hide all children above mobile
