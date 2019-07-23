@@ -7,6 +7,8 @@ import { Breadcrumbs, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
+# Overview
+
 The Breadcrumb component is a navigational item that allows users to quickly ascend a page tree.
 
 ![The Breadcrumb Component](../../images/components/breadcrumb/component.svg)

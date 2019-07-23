@@ -15,7 +15,7 @@ import ScrollableStates from '../../images/components/tabset/scrollable-states.s
 
 
 
-# Tab Set
+# Overview
 The Tab Set displays multiple content areas, which can be viewed by selecting the respective tab.
 
 <Component />

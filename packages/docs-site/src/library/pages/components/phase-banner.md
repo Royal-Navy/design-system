@@ -9,7 +9,8 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import Component from '../../images/components/phase-banner/component.svg'
 import Anatomy from '../../images/components/phase-banner/anatomy.svg'
 
-# Phase Banner
+# Overview
+
 The Phase Banner is an indicator that sits at the top of your application. It communicates the current phase of the project to show it is still being worked on.
 <Component />
 

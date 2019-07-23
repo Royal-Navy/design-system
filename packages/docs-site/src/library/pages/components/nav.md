@@ -8,7 +8,7 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 
-# Nav
+# Overview
 
 The Nav component is built to provide a list of navigation links to help people move around a website or application. Navigation links can either be listed vertically or horizontally. Horizontal links will change to vertical on tablet and mobile devices.
 

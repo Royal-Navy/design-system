@@ -11,7 +11,8 @@ import Component from '../../images/components/pagination/component.svg'
 import Anatomy from '../../images/components/pagination/anatomy.svg'
 import States from '../../images/components/pagination/states.svg'
 
-# Pagination
+# Overview
+
 The Pagination component shows a series of related content split across multiple pages. It allows an end user to navigate between these pages of records.
 <Component />
 

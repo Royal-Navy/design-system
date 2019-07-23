@@ -17,10 +17,13 @@ import Tertiary from '../../images/components/button/tertiary.svg'
 import TertiaryStates from '../../images/components/button/tertiary-states.svg'
 import TertiaryHierarchy from '../../images/components/button/tertiary-hierarchy.svg'
 
-# Button
+# Overview
+
 The Button Component gives users a way to take action in an interface. They are placed throughout UIs and often serve as the main action in a component.
 
 <Component />
+
+![Component]('images/components/button/component.svg')
 
 ## Usage
 The usage section is a bullet pointed list of scenarios the component should be used in.
@@ -100,6 +103,7 @@ Avoid using multiple Tertiary Buttons next to each other. Their supportive role 
 </Tab>
 
 <Tab title="Develop">
+
 Buttons are implemented as a simple component that as a minimum expects its main content (label) to be passed in as a child element along with the action to carry out when the button is clicked. Additional properties allow more custom styling of the button.
 
 ### Basic Usage

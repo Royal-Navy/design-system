@@ -8,7 +8,7 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 
-# Sidebar 
+# Overview
 An application Sidebar using icons and indicators on the left of the screen
 
 ## Usage
