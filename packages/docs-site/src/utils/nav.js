@@ -22,7 +22,7 @@ export function stripLeadingSlash(href) {
 
 /**
  * Restructure nodes into something that can be more
- * easily consumed by the application.
+ * easily consumed by the application (+ filter root).
  *
  * @param {array} nodes
  * @returns {array}
