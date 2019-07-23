@@ -1,5 +1,9 @@
 @import "@royalnavy/css-framework";
 
+.masthead {
+  margin-bottom: spacing(3);
+}
+
 .masthead__container {
   display: flex;
   justify-content: space-between;
@@ -23,9 +27,10 @@
 }
 
 .masthead__nav .rn-nav .rn-nav__list-item {
-  padding-bottom: spacing(1);
+  padding: 0;
+  margin: 0;
   text-align: left !important;
-  border-bottom: 1px solid color(primary, 800);
+  border-bottom: 1px solid color(neutral, 200);
 
   &:last-of-type {
     border-bottom: none;
@@ -35,8 +40,11 @@
 .masthead__nav .rn-nav .rn-nav__item {
   font-size: font-size(m) !important;
   color: color(primary, 800);
+  border-radius: 0;
+  font-weight: 600;
 
   &.is-active {
+    background-color: color(primary, 800);
     color: color(neutral, white);
   }
 }
@@ -47,11 +55,14 @@
 
 .masthead__nav .rn-nav__list .rn-nav__list {
   margin-top: spacing(1);
+  margin-bottom: spacing(4);
+  padding: 0 spacing(6);
 }
 
 .masthead__nav .rn-nav__list .rn-nav__list .rn-nav__item {
   color: color(primary, 800) !important;
   font-size: font-size(s) !important;
+  border-radius: 4px;
 
   &.is-active {
     color: color(neutral, white) !important;
@@ -81,14 +92,29 @@
 
 // "[...]overview"
 .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list .rn-nav__list-item:first-of-type {
+  padding-bottom: spacing(4);
+  margin-bottom: spacing(4);
   border-bottom: 1px dashed color(neutral, 200);
 }
 
+// third level
+.masthead__nav .rn-nav__list .rn-nav__list .rn-nav__list {
+  margin: 0;
+  padding: 0;
+}
+
+// third level - first child
 .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list .rn-nav__list .rn-nav__list-item:first-of-type {
+  padding-bottom: 0;
+  margin-bottom: 0;
   border-bottom: none;
 }
 
 @include breakpoint("s") {
+  .masthead {
+    margin-bottom: 0;
+  }
+
   .masthead__container {
     display: block;
   }
@@ -114,9 +140,11 @@
     padding-bottom: 0 !important;
   }
 
-  .masthead__nav .rn-nav .rn-nav__item {
-    font-weight: normal;
+  .masthead__nav .rn-nav .rn-nav__list .rn-nav__list-item .rn-nav__item {
     font-size: font-size(s) !important;
+    pointer-events: all !important;
+    border-radius: 4px;
+    font-weight: 600;
   }
 
   // hide all children above mobile
@@ -124,14 +152,9 @@
     display: none !important;
   }
 
-  // ensure all top level anchors work
-  .masthead__nav .rn-nav__item {
-    pointer-events: all !important;
-  }
-
   // immediate children & .has-children <a />.is-active
   .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list-item.has-children > .rn-nav__item.is-active {
-    background-color: color(primary, 700);
+    background-color: color(primary, 800);
     color: color(neutral, white);
   }
 }
