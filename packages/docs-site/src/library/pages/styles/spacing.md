@@ -4,7 +4,6 @@ description: How we handle spacing and sizing in the Standards Toolkit
 tags: public
 pageClass: ''
 template: default
-index: 2
 ---
 
 import DataTable from '../../../components/presenters/data-table'
