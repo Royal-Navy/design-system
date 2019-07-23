@@ -25,7 +25,7 @@
 .masthead__nav .rn-nav .rn-nav__list-item {
   padding-bottom: spacing(1);
   text-align: left !important;
-  border-bottom: 1px solid color(primary, 900);
+  border-bottom: 1px solid color(neutral, 700);
 }
 
 .masthead__nav .rn-nav .rn-nav__item {
@@ -56,6 +56,12 @@
 // immediate children & .has-children <a />
 .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list-item.has-children .rn-nav__item {
   pointer-events: none;
+}
+
+// immediate children & .has-children <a />.is-active
+.masthead__nav .rn-nav > .rn-nav__list .rn-nav__list-item.has-children > .rn-nav__item.is-active {
+  background-color: transparent;
+  color: color(neutral, 700);
 }
 
 // nested children <a />
@@ -102,5 +108,11 @@
   // ensure all top level anchors work
   .masthead__nav .rn-nav__item {
     pointer-events: all !important;
+  }
+
+  // immediate children & .has-children <a />.is-active
+  .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list-item.has-children > .rn-nav__item.is-active {
+    background-color: color(primary, 700);
+    color: color(neutral, white);
   }
 }
