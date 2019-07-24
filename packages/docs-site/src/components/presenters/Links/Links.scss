@@ -16,9 +16,12 @@
   position: relative;
   &::after {
     content: "•";
-    color: color(primary, 700);
+    color: color(neutral, white);
     position: absolute;
-    right: -5px;
+    right: -4.5px;
+    top: 4px;
+    font-size: font-size(xxs);
+    opacity: 0.5;
   }
   &:last-child::after {
     content: "";
