@@ -6,7 +6,7 @@ header: true
 
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 
-## Installation & quick start
+## Installation
 
 To install and save to your projects package.json dependencies, run:
 

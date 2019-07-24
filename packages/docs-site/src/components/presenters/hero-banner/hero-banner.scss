@@ -3,12 +3,12 @@
 .hero-banner {
   background-color: color(primary, 800);
   color: color(neutral, 100);
-  padding: 0 spacing(10);
+  margin-bottom: spacing(10);
 }
 
 .hero-banner__main {
   width: 100%;
-  padding: spacing(10) 0 spacing(6) 0;
+  padding: spacing(12) 0 spacing(12) 0;
 
   @media only screen and (min-width: 1000px) {
     width: 50%;
@@ -22,10 +22,11 @@
 }
 
 .hero-banner__link {
-  color: #E7F6FF;
-
+  color: white;
+  margin-left: spacing(2);
+  display: inline-block;
   &:hover {
-    color: color(neutral, white);
+    color: white;
   }
 }
 
@@ -40,6 +41,10 @@
   height: spacing(px);
   background-color: color(primary, 700);
   margin: 0;
+}
+
+.hero-banner__stakeholder {
+  background-color: color(primary, 900);
 }
 
 .hero-banner__stakeholder-message {

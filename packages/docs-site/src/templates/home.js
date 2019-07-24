@@ -13,15 +13,12 @@ import MastHead from '../components/presenters/Masthead'
 import Sidebar from '../components/presenters/sidebar'
 import PostArticle from '../components/presenters/post-article'
 import Footer from '../components/presenters/footer'
+import HeroBanner from '../components/presenters/hero-banner'
 
 import { usePrimaryNavData, useSecondaryNavData } from '../hooks'
 
-import favicon16 from '../library/images/favicons/favicon-16x16.png'
-import favicon32 from '../library/images/favicons/favicon-32x32.png'
-import favicon96 from '../library/images/favicons/favicon-96x96.png'
-
 export const pageQuery = graphql`
-  query PageQuery($id: String) {
+  query HomePageQuery($id: String) {
     mdx(id: { eq: $id }) {
       id
       frontmatter {
@@ -36,36 +33,21 @@ export const pageQuery = graphql`
   }
 `
 
-const PageTemplate = ({ data: { mdx }, location }) => {
+const HomeTemplate = ({ data: { mdx }, location }) => {
   const primaryNavData = usePrimaryNavData(location)
   const secondaryNavData = useSecondaryNavData(location)
   const hasSecondaryNav = secondaryNavData && secondaryNavData.length > 0
 
   return (
     <Layout>
-      <Helmet
-        title={`${mdx.frontmatter.title} | NELSON Standards`}
-        link={[
-          {
-            rel: 'icon',
-            type: 'image/png',
-            sizes: '16x16',
-            href: `${favicon16}`,
-          },
-          {
-            rel: 'icon',
-            type: 'image/png',
-            sizes: '32x32',
-            href: `${favicon32}`,
-          },
-          {
-            rel: 'shortcut icon',
-            type: 'image/png',
-            href: `${favicon96}`,
-          },
-        ]}
-      />
+      <Helmet title={`${mdx.frontmatter.title} | NELSON // Standards`} />
       <MastHead navItems={primaryNavData} />
+      <HeroBanner
+        title="Design your application using NELSON styles and components"
+        text="Use this design system to build applications and services for the Royal Navy. The website includes guidance, a component library and prototyping tools. Use these to save time and give users a consistent experience that meets the NELSON Standard."
+        ctaText="Get started"
+        ctaLink="/get-started"
+      />
       <main className="main rn-container">
         <PostArticle
           title={mdx.frontmatter.title}
@@ -85,9 +67,9 @@ const PageTemplate = ({ data: { mdx }, location }) => {
   )
 }
 
-PageTemplate.propTypes = {
+HomeTemplate.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
   location: PropTypes.instanceOf(Object).isRequired,
 }
 
-export default PageTemplate
+export default HomeTemplate
