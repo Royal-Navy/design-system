@@ -4,14 +4,21 @@ import Link from '../Link'
 import Separator from './images/separator.svg'
 import EndTitle from './EndTitle'
 
-const Breadcrumb: React.FC<any> = ({
-  Component = Link,
+interface BreadcrumbProps {
+  first?: boolean
+  label: string
+  last?: boolean
+  LinkComponent?: LinkTypes
+}
+
+const Breadcrumb: React.FC<BreadcrumbProps> = ({
   first,
   label,
   last,
+  LinkComponent = Link,
   ...rest
 }) => {
-  const ComponentToUse = last ? EndTitle : Component
+  const ComponentToUse: LinkTypes | EndTitle = last ? EndTitle : LinkComponent
   return (
     <li data-testid="breadcrumb" className="rn-breadcrumbs__breadcrumb">
       {!first && (

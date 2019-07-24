@@ -14,7 +14,7 @@ needs, such as a Gatsby `Link` component that will require `to` instead of `href
 <img src="images/breadcrumbs.png" width="262px" />
 
 ```
-const links = [
+const navItems = [
   {
     href: '/',
     label: 'Home',
@@ -29,7 +29,7 @@ const links = [
   },
 ]
 
-<Breadcrumbs links={links} />
+<Breadcrumbs navItems={navItems} />
 ```
 
 ## Properties
@@ -39,7 +39,8 @@ const links = [
 | Name        | Type           | Required | Default  | Description
 | ---------   | -------------- | -------- | -------  | -----------
 | className   | string         | False    |          | Optional extra css class to attach to the wrapper element
-| links       | Array<any>     | True     |          | An array of link items using the format described below |
+| navItems    | Array<any>     | True     |          | An array of link items using the format described below |
+| LinkComponent | LinkTypes    | False    | Link     | The component to render the link          |
 
 
 ### Breadcrumb
@@ -52,5 +53,4 @@ an alternative item render component would be a React Router Link, this requires
 
 | Name        | Type            | Required | Default  | Description
 | ---------   | --------------- | -------- | -------  | -----------
-| Component   | ReactNode       | False    | Link     | By default          |
 | label       | string          | True     |          | The text to display |

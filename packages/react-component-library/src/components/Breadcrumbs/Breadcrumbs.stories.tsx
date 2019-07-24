@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 
 import Breadcrumbs from './index'
 
-const links = [
+const navItems = [
   {
     href: '/',
     label: 'Home',
@@ -20,4 +20,4 @@ const links = [
 
 const stories = storiesOf('Breadcrumbs', module)
 
-stories.add('Default', () => <Breadcrumbs links={links} />)
+stories.add('Default', () => <Breadcrumbs navItems={navItems} />)

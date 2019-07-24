@@ -5,12 +5,12 @@ import { render, RenderResult } from '@testing-library/react'
 import Breadcrumbs from './index'
 
 describe('Breadcrumbs', () => {
-  let links: any[]
+  let navItems: any[]
   let wrapper: RenderResult
 
   describe('When called with regular links', () => {
     beforeEach(() => {
-      links = [
+      navItems = [
         {
           href: 'http://testurl.test',
           label: 'Home',
@@ -33,7 +33,7 @@ describe('Breadcrumbs', () => {
         },
       ]
 
-      wrapper = render(<Breadcrumbs links={links} />)
+      wrapper = render(<Breadcrumbs navItems={navItems} />)
     })
 
     it('should render a list of breadcrumbs', () => {

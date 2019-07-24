@@ -48,7 +48,8 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
             label="Styles"
           >
             <a
-              className="rn-nav__item "
+              className="rn-link rn-nav__item "
+              data-testid="link"
               href="http://testurl.test"
             >
               Styles
@@ -69,7 +70,8 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
             label="Components"
           >
             <a
-              className="rn-nav__item "
+              className="rn-link rn-nav__item "
+              data-testid="link"
               href="http://testurl.test"
             >
               Components
@@ -91,7 +93,8 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
             label="Patterns"
           >
             <a
-              className="rn-nav__item is-active"
+              className="rn-link rn-nav__item is-active"
+              data-testid="link"
               href="http://testurl.test"
             >
               Patterns
@@ -112,7 +115,8 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
             label="Community"
           >
             <a
-              className="rn-nav__item "
+              className="rn-link rn-nav__item "
+              data-testid="link"
               href="http://testurl.test"
             >
               Community
@@ -133,7 +137,8 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
             label="About"
           >
             <a
-              className="rn-nav__item "
+              className="rn-link rn-nav__item "
+              data-testid="link"
               href="http://testurl.test"
             >
               About
