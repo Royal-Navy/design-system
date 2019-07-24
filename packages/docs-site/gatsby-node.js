@@ -12,6 +12,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   const templateRegister = {
     default: path.resolve('src/templates/default.js'),
+    home: path.resolve('src/templates/home.js'),
   }
 
   return graphql(`
