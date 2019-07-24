@@ -115,8 +115,12 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
   color: color(altwarning, 400);
 }
 
+.token.rule {
+  color: color(altprimary, 300);
+}
+
 .token.atrule {
-  color: hsl(218, 22%, 55%); /* #7587A6 */
+  color: color(neutral, 200);
 }
 
 .token.regex,
