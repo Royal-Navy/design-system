@@ -17,6 +17,7 @@ body.has-sidebar {
   left: 0;
   background: color(neutral, 600);
   color: color(neutral, white);
+  z-index: 700;
 }
 
 .rn-sidebar__nav {
