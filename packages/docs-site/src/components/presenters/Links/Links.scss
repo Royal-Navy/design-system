@@ -3,16 +3,26 @@
 .rn-links {
   display: flex;
   flex-direction: row;
-  margin: spacing(3) 0;
   padding: 0;
   list-style: none;
+  margin: spacing(2) 0 0 0;
 }
 
 .rn-links__item {
   display: inline-block;
-  padding: 0 spacing(2);
-  border-left: 2px solid;
+  padding: 0 spacing(4);  
   font-size: font-size(s);
+  margin-bottom: 0;
+  position: relative;
+  &::after {
+    content: "•";
+    color: color(primary, 700);
+    position: absolute;
+    right: -5px;
+  }
+  &:last-child::after {
+    content: "";
+  }
 }
 
 .rn-links__item:first-child {

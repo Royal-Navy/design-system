@@ -10,9 +10,10 @@ import MonoLogo from './logo.svg'
 const Footer = ({ children, links }) => (
   <div className="rn-footer">
     <div className="rn-container">
-      <MonoLogo />
-      <Links links={links} />
-      <hr className="rn-footer__divider" />
+      <div className="rn-footer__content">
+        <MonoLogo />
+        <Links links={links} />
+      </div>
       <div className="rn-footer__meta">
         <p data-testid="message" className="rn-footer__message">
           {children || (
