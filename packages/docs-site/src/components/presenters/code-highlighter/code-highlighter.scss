@@ -6,7 +6,7 @@ $border-radius-button: 3px;
 
 .code-highlighter {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   color: #273b5b;
   overflow: hidden;
   margin: spacing(4) 0 spacing(6) 0;
@@ -31,12 +31,12 @@ $border-radius-button: 3px;
 
 .code-highlighter__source {
   background-color: inherit;
-  font-size: font-size(s);  
+  font-size: font-size(s);
 
   pre {
     overflow: hidden;
     position: relative;
-  }  
+  }
 }
 
 .code-highlighter__copy {
@@ -79,4 +79,8 @@ $border-radius-button: 3px;
     font-weight: 300;
     font-size: font-size(s);
   }
+}
+
+.code-highlighter code {
+  padding-left: 0;
 }
