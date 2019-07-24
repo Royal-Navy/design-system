@@ -1,8 +1,8 @@
 import React from 'react'
 import uuid from 'uuid'
 
+import Link from '../Link'
 import NavItem from './NavItem'
-import Link from './Link'
 
 interface NavProps {
   className?: string
