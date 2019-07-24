@@ -23,17 +23,23 @@ $body-line-height: calc(64px - 2rem);
 .sketch-widget__title {
   line-height: $head-line-height;
   margin-bottom: spacing(4);
+  font-size: font-size(s);
 }
 
 .sketch-widget__link {
   line-height: $head-line-height;
   color: #3a8fdd;
   text-decoration: none;
+  font-size: font-size(s);
 
   svg {
     height: 15px;
     vertical-align: top;
     margin-right: spacing(2);
+    // hack to get specificity to work
+    .post-article & {
+      margin-top: 0;
+    }
   }
 
   &:hover {
@@ -68,6 +74,9 @@ $body-line-height: calc(64px - 2rem);
 .sketch-widget__sketch-logo {
   height: $body-line-height;
   margin-right: spacing(2);
+  .post-article & {
+    margin-top: 0;
+  }
 }
 
 .sketch-widget__name {
