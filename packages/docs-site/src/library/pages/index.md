@@ -5,19 +5,12 @@ tags: public
 pageClass: ''
 context: ''
 status: ''
-template: default
+template: home
 index: 0
 header: false
 ---
 
-import HeroBanner from '../../components/presenters/hero-banner'
 import Card from '../../components/presenters/card'
-
-<HeroBanner 
-  title="Design your application using NELSON styles and components" text="Use this design system to build applications and services for the Royal Navy. The website includes guidance, a component library and prototyping tools. Use these to save time and give users a consistent experience that meets the NELSON Standard." 
-  ctaText="Get started" 
-  ctaLink="/get-started"
-/>
 
 <section class="m:h_f m:h_f-align-start h_mt-8 m:h_mb-8">
   <Card 
