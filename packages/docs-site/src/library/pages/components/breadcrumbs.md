@@ -45,7 +45,7 @@ The `Breadcrumbs` component accepts an array of links, including the current pag
 ### Basic Usage
 By default simply passing a `label` and `href` will cause a regular anchor tag to be rendered for a Breadcrumb.
 
-<CodeHighlighter source={`const links = [
+<CodeHighlighter source={`const navItems = [
   {
     href: '/',
     label: 'Home',
@@ -60,8 +60,8 @@ By default simply passing a `label` and `href` will cause a regular anchor tag t
   },
 ]
 
-<Breadcrumbs links={links} />`} language="javascript">
-  <Breadcrumbs links={[
+<Breadcrumbs navItems={navItems} />`} language="javascript">
+  <Breadcrumbs navItems={[
   {
     href: '/',
     label: 'Home',
@@ -80,25 +80,22 @@ By default simply passing a `label` and `href` will cause a regular anchor tag t
 ### Usage with React Router
 Applications will often use a library such as `React Router` to generate links between sections of a site. In this case you can specify the `Component` that will render the link, along with the properties it needs. In this example the `Link` component will be generated with the label as its child.
 
-<CodeHighlighter source={`import {Link} from "react-router-dom"\n\nconst links = [
+<CodeHighlighter source={`import {Link} from "react-router-dom"\n\nconst navItems = [
     to: '/',
     label: 'Home',
-    Component: Link
   },
   {
     to: '/components',
     label: 'Components',
-    Component: Link
   },
   {
     to: '/components/breadcrumb',
     label: 'Breadcrumb',
-    Component: Link
   },
 ]
 \n
-<Breadcrumbs links={links} />`} language="javascript">
-  <Breadcrumbs links={[
+<Breadcrumbs navItems={navItems} LinkComponent={Link}/>`} language="javascript">
+  <Breadcrumbs navItems={[
   {
     href: '/',
     label: 'Home',
@@ -116,13 +113,6 @@ Applications will often use a library such as `React Router` to generate links b
 
 ### Properties
 <DataTable caption="Breadcrumb" data={[
-  {
-    Name: 'Component',
-    Type: 'React.Component',
-    Required: 'False',
-    Default: 'Link (<a href>)',
-    Description: 'A react component to surround the label and passed all properties',
-  },
   {
     Name: 'label',
     Type: 'string ',
@@ -142,7 +132,14 @@ Applications will often use a library such as `React Router` to generate links b
     Description: 'Optional additional css class to associate with the component wrapper',
   },
   {
-    Name: 'links',
+    Name: 'LinkComponent',
+    Type: 'React.ReactNode',
+    Required: 'False',
+    Default: 'Link',
+    Description: 'The React component to render links, defaults to a regular anchor using Link',
+  },
+  {
+    Name: 'navItems',
     Type: 'Breadcrumb[] ',
     Required: 'True',
     Default: '',
