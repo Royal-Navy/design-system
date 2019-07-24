@@ -41,6 +41,7 @@
   transition: all $animation-timing;
 
   &:hover {
+    text-decoration: none;
     background-color: color(neutral, 100);
     color: color(primary, 900);
   }
