@@ -19,7 +19,7 @@ describe('Card', () => {
     })
 
     it('should link to provided uri', () => {
-      const link = card.getByText('Example link')
+      const link = card.getByTestId('root-element')
       expect(link.getAttribute('href')).toContain('http://test.url')
     })
 

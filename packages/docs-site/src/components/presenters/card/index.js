@@ -19,7 +19,11 @@ const Card = ({
   const Element = linkHref ? 'a' : 'article'
 
   return (
-    <Element className={`card card--${type} ${className}`} href={linkHref}>
+    <Element
+      className={`card card--${type} ${className}`}
+      href={linkHref}
+      data-testid="root-element"
+    >
       <header className="card__head">
         {meta && type === 'coloured' && (
           <span className="card__meta" data-testid="meta">
