@@ -86,6 +86,11 @@ a {
   color: color(primary, 600);
   text-decoration: none;
   font-weight: 600;
+  // transition: color 0.2s;
+  &:hover {
+    color: color(primary, 900);
+    text-decoration: underline;
+  }
 }
 
 pre {
