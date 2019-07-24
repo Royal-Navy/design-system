@@ -16,6 +16,10 @@ import Footer from '../components/presenters/footer'
 
 import { usePrimaryNavData, useSecondaryNavData } from '../hooks'
 
+import favicon16 from '../library/images/favicons/favicon-16x16.png'
+import favicon32 from '../library/images/favicons/favicon-32x32.png'
+import favicon96 from '../library/images/favicons/favicon-96x96.png'
+
 export const pageQuery = graphql`
   query PageQuery($id: String) {
     mdx(id: { eq: $id }) {
@@ -39,7 +43,28 @@ const PageTemplate = ({ data: { mdx }, location }) => {
 
   return (
     <Layout>
-      <Helmet title={`${mdx.frontmatter.title} | NELSON // Standards`} />
+      <Helmet
+        title={`${mdx.frontmatter.title} | NELSON Standards`}
+        link={[
+          {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '16x16',
+            href: `${favicon16}`,
+          },
+          {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '32x32',
+            href: `${favicon32}`,
+          },
+          {
+            rel: 'shortcut icon',
+            type: 'image/png',
+            href: `${favicon96}`,
+          },
+        ]}
+      />
       <MastHead navItems={primaryNavData} />
       <main className="main rn-container">
         <PostArticle
