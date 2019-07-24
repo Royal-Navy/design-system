@@ -6,22 +6,26 @@ description: The Breadcrumb component is a navigational item
 import { Breadcrumbs, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../components/presenters/sketch-widget'
+import BreadcrumbComponent from '../../images/components/breadcrumbs/component.svg'
+import BreadcrumbAnatomy from '../../images/components/breadcrumbs/anatomy.svg'
+import BreadcrumbStates from '../../images/components/breadcrumbs/states.svg'
 
 The Breadcrumb component is a navigational item that allows users to quickly ascend a page tree.
 
-![The Breadcrumb Component](../../images/components/breadcrumb/component.svg)
+<BreadcrumbComponent />
 
 ## Usage
 The Breadcrumb component should sit at the top of the viewport. Visit the Design [Hierarchy & Placement](#hierarchy) section for more information.
 
----
-
 <TabSet>
 
 <Tab title="Design">
- 
- ## Anatomy
-![Breadcrumb component anatomy](../../images/components/breadcrumb/anatomy.svg)
+
+<SketchWidget name="Breadcrumbs" href="/standards-toolkit.sketch" />
+
+## Anatomy
+<BreadcrumbAnatomy />
 
 1. **Parent Link**. The parent link is a clickable action that will navigate the user to the parent page.
 2. **Current Page Label**. The current page is a label displaying the current page title. It is not clickable.
@@ -30,7 +34,8 @@ The Breadcrumb component should sit at the top of the viewport. Visit the Design
 The Breadcrumb component has one standard text size. Be careful with horizontal placement, as the breadcrumb can take up a large amount of screen space displaying all the parent links.
 
 ## States
-![Breadcrumb component states](../../images/components/breadcrumb/states.svg)
+<BreadcrumbStates />
+
 When hovering on a breadcrumb, the active link will change to the primary colour. Every child to the right of the hovered link will fade to help indicate the target page to the user. 
 
 ## Hierarchy & Placement
@@ -121,8 +126,7 @@ Applications will often use a library such as `React Router` to generate links b
     Description: 'The label for this part of the Breadcrumb hierarchy',
   },
 ]} />
-
-
+<br />
 <DataTable caption="Breadcrumbs" data={[
   {
     Name: 'className',

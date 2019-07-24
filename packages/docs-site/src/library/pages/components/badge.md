@@ -6,38 +6,44 @@ description: Badges are one of the foundational elements of any application.
 import { Badge, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
-import Component from '../../images/components/badge/component.svg'
-import Anatomy from '../../images/components/badge/anatomy.svg'
-import Sizes from '../../images/components/badge/sizes.svg'
-import States from '../../images/components/badge/states.svg'
+import SketchWidget from '../../../components/presenters/sketch-widget'
+import BadgeComponent from '../../images/components/badge/component.svg'
+import BadgeAnatomy from '../../images/components/badge/anatomy.svg'
+import BadgeSizes from '../../images/components/badge/sizes.svg'
+import BadgeStates from '../../images/components/badge/states.svg'
 import Pill from '../../images/components/badge/pill.svg'
 import PillStates from '../../images/components/badge/pill-states.svg'
 
 
 # Badge
 A visual indicator useful for status information or meta data associated with an element.
-<Component />
+<BadgeComponent />
 
 ## Usage
 
 <TabSet>
 
 <Tab title="Design">
-  
+
+<SketchWidget name="Badge" href="/standards-toolkit.sketch" />
+
+
 The Badge component is an indicator component that displays information to the user. It comes in two varieties - the default, rectangular Badge, and the [Pill variation](#pill).
 
 ### Anatomy
-<Anatomy />
+<BadgeAnatomy />
 
 1. **Label**. Labels describe the Badge to the user. If text is not used, an icon should be used in its place.
 2. **Container**. The container element wraps the component.
 
 ### Sizing & Spacing
-<Sizes />
+<BadgeSizes />
+
 The Badge component is available in 4 sizes - small, regular, large and xLarge.
 
 ### States (if applicable)   
-<States />
+<BadgeStates />
+
 The Badge component has 5 states available to use - Neutral, Primary, Success, Warning, and Danger. The badge component does not have any interaction, so there are no hover/active states available.
 
 ### Hierarchy & Placement
@@ -45,6 +51,7 @@ Try to avoid mixing states and sizes, as this can become confusing for the user.
 
 ### Pill
 <Pill />
+
 The Pill Badge is a variation of the Badge component.
 
 #### Usage
@@ -52,6 +59,7 @@ The Pill Badge is used predominantly to act as a counter, displaying integer num
 
 #### States (if applicable)
 <PillStates />
+
 The Pill Badge component is also available in 5 states - Neutral, Primary, Success, Warning, and Danger.
 
 </Tab>
