@@ -7,7 +7,9 @@
 .rn-phase-banner__text {
   display: inline-block;
   font-size: font-size(xs);
-  vertical-align: text-bottom
+  vertical-align: middle;
+  margin-left: spacing(2);
+  color: color(neutral, 800);
 }
 
 .rn-phase-banner__text a {
