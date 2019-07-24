@@ -13,6 +13,7 @@
 .rn-nav__list-item {
   width: 100%;
   display: block;
+  margin-bottom: 0;
 }
 
 .rn-nav.rn-nav--horizontal .rn-nav__list-item {
@@ -40,6 +41,7 @@
   transition: all $animation-timing;
 
   &:hover {
+    text-decoration: none;
     background-color: color(neutral, 100);
     color: color(primary, 900);
   }

@@ -4,6 +4,7 @@ description: ''
 tags: public
 pageClass: ''
 template: default
+header: true
 ---
 
 import DataTable from '../../../components/presenters/data-table'
@@ -59,7 +60,7 @@ source={`@mixin breakpoint('s') {
 // Result
 @media only screen and (min-width: 576px) {
   // Styles here
-}`} language="scss"
+}`} language="css"
 />
 
 
@@ -70,5 +71,5 @@ Breakpoints are also available for each helper class the toolkit provides. Simpl
 <CodeHighlighter 
 source={`.md:h_mt-4
 .lg:h-mt-10
-`} language="scss"
+`} language="css"
 />

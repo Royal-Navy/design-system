@@ -1,6 +1,7 @@
 ---
 title: Installation & quick start
 description: ''
+header: true
 ---
 
 ## Installation & quick start

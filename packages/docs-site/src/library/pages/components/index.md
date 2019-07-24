@@ -5,9 +5,11 @@ tags: public
 pageClass: ''
 template: default
 index: 3
+header: true
 ---
 
-# Components
+# Overview
+
 Components are reusable User Interface (UI) elements like buttons, text inputs or headers. They are a modular foundation for designing and developing applications and services. Their design is based on defined NELSON [styles](/styles).
 
 Components can be used in many design patterns and contexts. For example, a button could be used to submit information or progress to a subsequent screen.

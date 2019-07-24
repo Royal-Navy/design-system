@@ -7,6 +7,7 @@ context: ''
 status: ''
 template: default
 index: 0
+header: false
 ---
 
 import HeroBanner from '../../components/presenters/hero-banner'

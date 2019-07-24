@@ -1,6 +1,7 @@
 ---
 title: Sidebar
-description: An application sidebar using icons and indicators on the left of the screen
+description: An application sidebar using icons and indicators on the left of the screen.
+header: true
 ---
 
 import { Icons, Sidebar, Tab, TabSet } from '@royalnavy/react-component-library'
@@ -8,7 +9,7 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-# Sidebar 
+# Overview
 An application Sidebar using icons and indicators on the left of the screen
 
 ## Usage

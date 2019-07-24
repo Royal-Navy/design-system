@@ -1,6 +1,7 @@
 ---
 title: Badge
 description: Badges are one of the foundational elements of any application.
+header: true
 ---
 
 import { Badge, Tab, TabSet } from '@royalnavy/react-component-library'
@@ -15,7 +16,7 @@ import Pill from '../../images/components/badge/pill.svg'
 import PillStates from '../../images/components/badge/pill-states.svg'
 
 
-# Badge
+# Overview
 A visual indicator useful for status information or meta data associated with an element.
 <BadgeComponent />
 

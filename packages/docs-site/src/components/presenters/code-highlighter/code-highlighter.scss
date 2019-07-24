@@ -1,28 +1,32 @@
 @import '@royalnavy/css-framework';
 @import 'theme';
 
-$border-radius: 8px;
-$border-radius-button: 4px;
+$border-radius: 4px;
+$border-radius-button: 3px;
 
 .code-highlighter {
   display: flex;
   flex-direction: column;
-  border: 2px solid #768999;
-  border-radius: $border-radius;
-  background-color: color(neutral,white);
   color: #273b5b;
   overflow: hidden;
+  margin: spacing(4) 0 spacing(6) 0;
 }
 
 .code-highlighter__head {
   padding: spacing(4);
   max-height: 20rem;
   overflow: scroll;
+  background-color: color(neutral, white);
+  margin-bottom: spacing(2);
+  border-radius: $border-radius;
+  border: 1px solid color(neutral, 100);
 }
 
 .code-highlighter__body {
+  border-radius: $border-radius;
   position: relative;
-  background-color: #0a141b;
+  background-color: color(neutral, 700);
+  overflow: hidden;
 }
 
 .code-highlighter__source {
@@ -31,6 +35,7 @@ $border-radius-button: 4px;
 
   pre {
     overflow: hidden;
+    position: relative;
   }
 }
 
@@ -49,6 +54,9 @@ $border-radius-button: 4px;
   svg {
     width: 12px;
     margin-right: spacing(2);
+    .post-article & {
+      margin-top: 0;
+    }
   }
 
   &:focus {
@@ -58,14 +66,21 @@ $border-radius-button: 4px;
 }
 
 .code-highlighter .line-numbers-rows {
-  padding: 2.5em 0;
-  margin-top: -2.5em;
   border: initial;
-  background-color: #343b41;
+  background-color: color(neutral, 600);
   text-shadow: none;
+  left: 0;
+  padding: spacing(6) 0;
+  margin-top: 0;
 
   span::before {
-    color: color(neutral,white);
-    padding-right: 1.25em;
+    text-align: right;
+    color: color(neutral, 200);
+    font-weight: 300;
+    font-size: font-size(s);
   }
+}
+
+.code-highlighter code {
+  padding-left: 0;
 }

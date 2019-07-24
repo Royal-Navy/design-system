@@ -1,6 +1,7 @@
 ---
 title: Input
 description: Text inputs let users enter and edit text.
+header: true
 ---
 
 import { Links, Tab, TabSet, TextInput } from '@royalnavy/react-component-library'

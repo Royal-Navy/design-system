@@ -1,6 +1,7 @@
 ---
 title: Button
 description: Buttons are one of the foundational elements of any application.
+header: true
 ---
 
 import { Button, Icons, Tab, TabSet } from '@royalnavy/react-component-library'
@@ -18,7 +19,8 @@ import ButtonTertiary from '../../images/components/button/tertiary.svg'
 import ButtonTertiaryStates from '../../images/components/button/tertiary-states.svg'
 import ButtonTertiaryHierarchy from '../../images/components/button/tertiary-hierarchy.svg'
 
-# Button
+# Overview
+
 The Button Component gives users a way to take action in an interface. They are placed throughout UIs and often serve as the main action in a component.
 
 <ButtonComponent />
@@ -103,9 +105,11 @@ Avoid using multiple Tertiary Buttons next to each other. Their supportive role 
 </Tab>
 
 <Tab title="Develop">
+
 Buttons are implemented as a simple component that as a minimum expects its main content (label) to be passed in as a child element along with the action to carry out when the button is clicked. Additional properties allow more custom styling of the button.
 
 ### Basic Usage
+
 <CodeHighlighter source="<Button onClick={onClickHandler}>Click me</Button>" language="javascript">
   <Button onClick={() => {}}>Click me</Button>
 </CodeHighlighter>

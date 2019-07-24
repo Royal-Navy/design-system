@@ -4,6 +4,7 @@ description: 'Using colour within a Standard Toolkit application'
 tags: public
 pageClass: ''
 template: default
+header: true
 ---
 
 import Swatch from '../../../components/presenters/swatch'
@@ -143,5 +144,5 @@ source={`color: color(neutral, 500);
 border: 1px solid color(danger, 300);
 // Result
 color: #627d98;
-border: 1px solid #f36968;`} language="scss"
+border: 1px solid #f36968;`} language="css"
 />

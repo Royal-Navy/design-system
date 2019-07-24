@@ -36,6 +36,15 @@ $text-color: #748999;
 .data-table__btn-sort {
   border: none;
   display: none;
+  svg {
+    // I don't like this hack, and it will
+    // need a rewrite in the future, however
+    // for the time being, it's a cheaper
+    // way of tackling specificity.
+    .post-article & {
+      margin-top: 0;
+    }
+  }
 }
 
 .data-table__row {

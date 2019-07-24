@@ -11,7 +11,7 @@
   src: local('Lato Regular'), local('Lato-Regular'),
       url('../fonts/Lato-Regular.woff2') format('woff2'),
       url('../fonts/Lato-Regular.woff') format('woff');
-      font-weight: normal;
+      font-weight: 300;
       font-style: normal;
 }
 
@@ -20,7 +20,7 @@
   src: local('Lato Italic'), local('Lato-Italic'),
       url('../fonts/Lato-Italic.woff2') format('woff2'),
       url('../fonts/Lato-Italic.woff') format('woff');
-  font-weight: normal;
+  font-weight: 300;
   font-style: italic;
 }
 
@@ -65,6 +65,6 @@
   src: local('Lato Bold'), local('Lato-Bold'),
       url('../fonts/Lato-Bold.woff2') format('woff2'),
       url('../fonts/Lato-Bold.woff') format('woff');
-  font-weight: bold;
+  font-weight: 700;
   font-style: normal;
 }

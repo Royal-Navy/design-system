@@ -1,6 +1,7 @@
 ---
 title: Tab Set
 description: The Tab Set displays multiple content areas, which can be viewed by selecting the respective tab.
+header: true
 ---
 
 import { Tab, TabSet } from '@royalnavy/react-component-library'
@@ -14,7 +15,7 @@ import TabSetScrollableComponent from '../../images/components/tabset/scrollable
 import TabSetScrollableAnatomy from '../../images/components/tabset/scrollable-anatomy.svg'
 import TabSetScrollableStates from '../../images/components/tabset/scrollable-states.svg'
 
-# Tab Set
+# Overview
 The Tab Set displays multiple content areas, which can be viewed by selecting the respective tab.
 
 <TabSetComponent />

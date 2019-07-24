@@ -1,6 +1,7 @@
 ---
 title: Learning resources
 description: ''
+header: true
 ---
 
 ## Learning resources

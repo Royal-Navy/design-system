@@ -1,6 +1,7 @@
 ---
 title: Pagination
 description: Navigate between muitple pages of records.
+header: true
 ---
 
 import { Pagination, TabSet, Tab } from '@royalnavy/react-component-library'
@@ -11,7 +12,8 @@ import PaginationComponent from '../../images/components/pagination/component.sv
 import PaginationAnatomy from '../../images/components/pagination/anatomy.svg'
 import PaginationStates from '../../images/components/pagination/states.svg'
 
-# Pagination
+# Overview
+
 The Pagination component shows a series of related content split across multiple pages. It allows an end user to navigate between these pages of records.
 <PaginationComponent />
 

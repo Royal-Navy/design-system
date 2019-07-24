@@ -1,6 +1,7 @@
 ---
 title: Nav
 description: A horizontal or vertical navigation component that supports nesting
+header: true
 ---
 
 import { Nav, Tab, TabSet } from '@royalnavy/react-component-library'
@@ -9,7 +10,7 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
 
-# Nav
+# Overview
 
 The Nav component is built to provide a list of navigation links to help people move around a website or application. Navigation links can either be listed vertically or horizontally. Horizontal links will change to vertical on tablet and mobile devices.
 

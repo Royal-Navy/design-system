@@ -1,6 +1,7 @@
 ---
 title: Breadcrumbs
 description: The Breadcrumb component is a navigational item
+header: true
 ---
 
 import { Breadcrumbs, Tab, TabSet } from '@royalnavy/react-component-library'
@@ -10,6 +11,8 @@ import SketchWidget from '../../../components/presenters/sketch-widget'
 import BreadcrumbComponent from '../../images/components/breadcrumbs/component.svg'
 import BreadcrumbAnatomy from '../../images/components/breadcrumbs/anatomy.svg'
 import BreadcrumbStates from '../../images/components/breadcrumbs/states.svg'
+
+# Overview
 
 The Breadcrumb component is a navigational item that allows users to quickly ascend a page tree.
 
@@ -45,6 +48,7 @@ There should only be one Breadcrumb component per page. It should sit at the top
 
 
 <Tab title="Develop">
+
 The `Breadcrumbs` component accepts an array of links, including the current page title and href. Like the Nav component the Breadcrumbs component will render regular links by default. However, if you pass a `Component` property with a link you can specify the component to render it and send the properties it needs, such as a Gatsby `Link` component that will require `to` instead of `href`.
 
 ### Basic Usage

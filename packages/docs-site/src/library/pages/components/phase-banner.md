@@ -1,6 +1,7 @@
 ---
 title: Phase Banner
 description:  A simple banner to indicate the phase of the project.
+header: true
 ---
 
 import { PaseBanner, Tab, TabSet } from '@royalnavy/react-component-library'
@@ -10,7 +11,8 @@ import SketchWidget from '../../../components/presenters/sketch-widget'
 import PhaseBannerComponent from '../../images/components/phase-banner/component.svg'
 import PhaseBannerAnatomy from '../../images/components/phase-banner/anatomy.svg'
 
-# Phase Banner
+# Overview
+
 The Phase Banner is an indicator that sits at the top of your application. It communicates the current phase of the project to show it is still being worked on.
 <PhaseBannerComponent />
 
@@ -29,11 +31,11 @@ The Phase Banner is an indicator that sits at the top of your application. It co
   2. **Phase Message**. Accompanying message to provide additional information to the user
   3. **Container** The container is a wrapper that stretches to 100% of the viewport.
 
-  ### Sizing & Spacing
-  The phase banner is a full width component - it is designed to stretch to the size of the viewport. Try to keep the Phase Message concise however.
+### Sizing & Spacing
+The phase banner is a full width component - it is designed to stretch to the size of the viewport. Try to keep the Phase Message concise however.
 
-  ### Hierarchy & Placement
-  There should be only one Phase Banner per page. It's placement should be at the top of the viewport, underneath the main Masthead.
+### Hierarchy & Placement
+There should be only one Phase Banner per page. It's placement should be at the top of the viewport, underneath the main Masthead.
 
 </Tab>
 

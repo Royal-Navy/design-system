@@ -1,11 +1,10 @@
 ---
 title: Design
-description: ''
+description: 'Start designing with the Standards Toolkit, an open source design system from the Royal Navy.'
+header: true
 ---
 
-## Design
-
-Start designing with the Standards Toolkit, an open source design system from the Royal Navy. This guide will lead you through our Sketch toolkit and the components we support.
+This guide will lead you through our Sketch toolkit and the components we support.
 
 ## Sketch
 The Standards Toolkit components are available in our Sketch file. This file contains all of our components, as well as layout ideas application examples. Download the <a href="/standards-toolkit.sketch" download>Sketch Toolkit</a>
