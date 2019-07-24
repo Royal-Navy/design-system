@@ -1,14 +1,12 @@
 ---
 title: About
-description: ''
+description: About the design system
 tags: public
 pageClass: ''
 template: default
 index: 6
 header: true
 ---
-
-# About the design system
 
 ## What are NELSON Standards?
 NELSON Standards are a set of rules that save designers and developers time when creating new applications for the Royal Navy. They ensure familiarity is maintained between applications, providing Royal Navy personnel with a consistent user experience.
