@@ -8,7 +8,7 @@ import { Links, Tab, TabSet, TextInput } from '@royalnavy/react-component-librar
 import Field from '../../../../components/containers/Field'
 import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
-import SketchWidget from '../../../components/presenters/sketch-widget'
+import SketchWidget from '../../../../components/presenters/sketch-widget'
 
 import InputComponent from '../../../images/components/forms/input/component.svg'
 import InputAnatomy from '../../../images/components/forms/input/anatomy.svg'
