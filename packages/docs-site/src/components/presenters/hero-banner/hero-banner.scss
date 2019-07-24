@@ -1,33 +1,37 @@
-@import "@royalnavy/css-framework/index.scss";
+@import "@royalnavy/css-framework";
 
 .hero-banner {
-  background-color: color(primary, 800);
+  background: color(primary, 800);
   color: color(neutral, 100);
   padding: spacing(6) spacing(8);
 }
 
 .hero-banner__main {
   width: 100%;
+
   @media only screen and (min-width: 1000px) {
     width: 50%;
   }
-} 
+}
 
- .hero-banner__title {
+.hero-banner__title {
   color: color(neutral, white);
   @include font-size(display-l);
 }
+
 .hero-banner__link {
   color: #E7F6FF;
+
   &:hover {
     color: color(neutral, white);
   }
 }
- 
+
 .hero-banner__text {
   line-height: 1.6;
   margin-bottom: spacing(5);
 }
+
 .hero-banner__rule {
   border: 0;
   height: spacing(px);
