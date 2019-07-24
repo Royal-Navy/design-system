@@ -17,15 +17,19 @@
 }
 
 .rn-footer__meta {
+  background: color(primary, 900);
+}
+
+.rn-footer__meta .rn-container {
   display: flex;
   flex-direction: column;
-  padding: spacing(4) 0;
-  color: color(neutral, white);
-  border-top: 1px solid color(primary, 700);
+  padding-top: spacing(4);
+  padding-bottom: spacing(4);
+  color: color(neutral, white);  
 }
 
 @include breakpoint("s") {
-  .rn-footer__meta {
+  .rn-footer__meta .rn-container {
     flex-direction: row;
     justify-content: space-between;
   }

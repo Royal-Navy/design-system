@@ -14,7 +14,9 @@ const Footer = ({ children, links }) => (
         <MonoLogo />
         <Links links={links} />
       </div>
-      <div className="rn-footer__meta">
+    </div>
+    <div className="rn-footer__meta">
+      <div className="rn-container">
         <p data-testid="message" className="rn-footer__message">
           {children || (
             <Fragment>
