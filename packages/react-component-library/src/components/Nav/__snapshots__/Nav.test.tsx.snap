@@ -1,73 +1,152 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Nav Given the nav is supplied navItems prop and navItems is a flat collection of 5 items snapshot: has same HTML structure 1`] = `
-<nav
-  className="rn-nav rn-nav--vertical rn-nav--regular "
+<Nav
+  navItems={
+    Array [
+      Object {
+        "href": "http://testurl.test",
+        "label": "Styles",
+      },
+      Object {
+        "href": "http://testurl.test",
+        "label": "Components",
+      },
+      Object {
+        "active": true,
+        "href": "http://testurl.test",
+        "label": "Patterns",
+      },
+      Object {
+        "href": "http://testurl.test",
+        "label": "Community",
+      },
+      Object {
+        "href": "http://testurl.test",
+        "label": "About",
+      },
+    ]
+  }
+  orientation="vertical"
 >
-  <ul
-    className="rn-nav__list"
+  <nav
+    className="rn-nav rn-nav--vertical rn-nav--regular "
   >
-    <li
-      className="rn-nav__list-item "
-      key="6"
+    <ul
+      className="rn-nav__list"
     >
-      <Link
-        className="rn-nav__item "
-        href="http://testurl.test"
-        label="Styles"
+      <NavItem
+        key="6"
       >
-        Styles
-      </Link>
-    </li>
-    <li
-      className="rn-nav__list-item "
-      key="7"
-    >
-      <Link
-        className="rn-nav__item "
-        href="http://testurl.test"
-        label="Components"
+        <li
+          className="rn-nav__list-item  "
+          onClick={[Function]}
+        >
+          <Link
+            className="rn-nav__item "
+            href="http://testurl.test"
+            label="Styles"
+          >
+            <a
+              className="rn-link rn-nav__item "
+              data-testid="link"
+              href="http://testurl.test"
+            >
+              Styles
+            </a>
+          </Link>
+        </li>
+      </NavItem>
+      <NavItem
+        key="7"
       >
-        Components
-      </Link>
-    </li>
-    <li
-      className="rn-nav__list-item "
-      key="8"
-    >
-      <Link
-        active={true}
-        className="rn-nav__item is-active"
-        href="http://testurl.test"
-        label="Patterns"
+        <li
+          className="rn-nav__list-item  "
+          onClick={[Function]}
+        >
+          <Link
+            className="rn-nav__item "
+            href="http://testurl.test"
+            label="Components"
+          >
+            <a
+              className="rn-link rn-nav__item "
+              data-testid="link"
+              href="http://testurl.test"
+            >
+              Components
+            </a>
+          </Link>
+        </li>
+      </NavItem>
+      <NavItem
+        key="8"
       >
-        Patterns
-      </Link>
-    </li>
-    <li
-      className="rn-nav__list-item "
-      key="9"
-    >
-      <Link
-        className="rn-nav__item "
-        href="http://testurl.test"
-        label="Community"
+        <li
+          className="rn-nav__list-item  "
+          onClick={[Function]}
+        >
+          <Link
+            active={true}
+            className="rn-nav__item is-active"
+            href="http://testurl.test"
+            label="Patterns"
+          >
+            <a
+              className="rn-link rn-nav__item is-active"
+              data-testid="link"
+              href="http://testurl.test"
+            >
+              Patterns
+            </a>
+          </Link>
+        </li>
+      </NavItem>
+      <NavItem
+        key="9"
       >
-        Community
-      </Link>
-    </li>
-    <li
-      className="rn-nav__list-item "
-      key="10"
-    >
-      <Link
-        className="rn-nav__item "
-        href="http://testurl.test"
-        label="About"
+        <li
+          className="rn-nav__list-item  "
+          onClick={[Function]}
+        >
+          <Link
+            className="rn-nav__item "
+            href="http://testurl.test"
+            label="Community"
+          >
+            <a
+              className="rn-link rn-nav__item "
+              data-testid="link"
+              href="http://testurl.test"
+            >
+              Community
+            </a>
+          </Link>
+        </li>
+      </NavItem>
+      <NavItem
+        key="10"
       >
-        About
-      </Link>
-    </li>
-  </ul>
-</nav>
+        <li
+          className="rn-nav__list-item  "
+          onClick={[Function]}
+        >
+          <Link
+            className="rn-nav__item "
+            href="http://testurl.test"
+            label="About"
+          >
+            <a
+              className="rn-link rn-nav__item "
+              data-testid="link"
+              href="http://testurl.test"
+            >
+              About
+            </a>
+          </Link>
+        </li>
+      </NavItem>
+    </ul>
+  </nav>
+</Nav>
 `;

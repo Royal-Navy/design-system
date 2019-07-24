@@ -7,26 +7,28 @@ header: true
 import { Breadcrumbs, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../components/presenters/sketch-widget'
+import BreadcrumbComponent from '../../images/components/breadcrumbs/component.svg'
+import BreadcrumbAnatomy from '../../images/components/breadcrumbs/anatomy.svg'
+import BreadcrumbStates from '../../images/components/breadcrumbs/states.svg'
 
 # Overview
 
 The Breadcrumb component is a navigational item that allows users to quickly ascend a page tree.
 
-![The Breadcrumb Component](../../images/components/breadcrumb/component.svg)
+<BreadcrumbComponent />
 
 ## Usage
 The Breadcrumb component should sit at the top of the viewport. Visit the Design [Hierarchy & Placement](#hierarchy) section for more information.
 
----
-
 <TabSet>
 
 <Tab title="Design">
- 
+
+<SketchWidget name="Breadcrumbs" href="/standards-toolkit.sketch" />
 
 ## Anatomy
-
-![Breadcrumb component anatomy](../../images/components/breadcrumb/anatomy.svg)
+<BreadcrumbAnatomy />
 
 1. **Parent Link**. The parent link is a clickable action that will navigate the user to the parent page.
 2. **Current Page Label**. The current page is a label displaying the current page title. It is not clickable.
@@ -35,7 +37,8 @@ The Breadcrumb component should sit at the top of the viewport. Visit the Design
 The Breadcrumb component has one standard text size. Be careful with horizontal placement, as the breadcrumb can take up a large amount of screen space displaying all the parent links.
 
 ## States
-![Breadcrumb component states](../../images/components/breadcrumb/states.svg)
+<BreadcrumbStates />
+
 When hovering on a breadcrumb, the active link will change to the primary colour. Every child to the right of the hovered link will fade to help indicate the target page to the user. 
 
 ## Hierarchy & Placement
@@ -51,7 +54,7 @@ The `Breadcrumbs` component accepts an array of links, including the current pag
 ### Basic Usage
 By default simply passing a `label` and `href` will cause a regular anchor tag to be rendered for a Breadcrumb.
 
-<CodeHighlighter source={`const links = [
+<CodeHighlighter source={`const navItems = [
   {
     href: '/',
     label: 'Home',
@@ -66,8 +69,8 @@ By default simply passing a `label` and `href` will cause a regular anchor tag t
   },
 ]
 
-<Breadcrumbs links={links} />`} language="javascript">
-  <Breadcrumbs links={[
+<Breadcrumbs navItems={navItems} />`} language="javascript">
+  <Breadcrumbs navItems={[
   {
     href: '/',
     label: 'Home',
@@ -86,25 +89,22 @@ By default simply passing a `label` and `href` will cause a regular anchor tag t
 ### Usage with React Router
 Applications will often use a library such as `React Router` to generate links between sections of a site. In this case you can specify the `Component` that will render the link, along with the properties it needs. In this example the `Link` component will be generated with the label as its child.
 
-<CodeHighlighter source={`import {Link} from "react-router-dom"\n\nconst links = [
+<CodeHighlighter source={`import {Link} from "react-router-dom"\n\nconst navItems = [
     to: '/',
     label: 'Home',
-    Component: Link
   },
   {
     to: '/components',
     label: 'Components',
-    Component: Link
   },
   {
     to: '/components/breadcrumb',
     label: 'Breadcrumb',
-    Component: Link
   },
 ]
 \n
-<Breadcrumbs links={links} />`} language="javascript">
-  <Breadcrumbs links={[
+<Breadcrumbs navItems={navItems} LinkComponent={Link}/>`} language="javascript">
+  <Breadcrumbs navItems={[
   {
     href: '/',
     label: 'Home',
@@ -123,13 +123,6 @@ Applications will often use a library such as `React Router` to generate links b
 ### Properties
 <DataTable caption="Breadcrumb" data={[
   {
-    Name: 'Component',
-    Type: 'React.Component',
-    Required: 'False',
-    Default: 'Link (<a href>)',
-    Description: 'A react component to surround the label and passed all properties',
-  },
-  {
     Name: 'label',
     Type: 'string ',
     Required: 'False',
@@ -137,8 +130,7 @@ Applications will often use a library such as `React Router` to generate links b
     Description: 'The label for this part of the Breadcrumb hierarchy',
   },
 ]} />
-
-
+<br />
 <DataTable caption="Breadcrumbs" data={[
   {
     Name: 'className',
@@ -148,7 +140,14 @@ Applications will often use a library such as `React Router` to generate links b
     Description: 'Optional additional css class to associate with the component wrapper',
   },
   {
-    Name: 'links',
+    Name: 'LinkComponent',
+    Type: 'React.ReactNode',
+    Required: 'False',
+    Default: 'Link',
+    Description: 'The React component to render links, defaults to a regular anchor using Link',
+  },
+  {
+    Name: 'navItems',
     Type: 'Breadcrumb[] ',
     Required: 'True',
     Default: '',

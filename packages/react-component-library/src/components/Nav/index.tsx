@@ -1,7 +1,8 @@
 import React from 'react'
 import uuid from 'uuid'
 
-import Link from './Link'
+import Link from '../Link'
+import NavItem from './NavItem'
 
 interface NavProps {
   className?: string
@@ -25,10 +26,7 @@ function renderMenu(LinkComponent: any, navItems: any[]) {
         }
 
         return (
-          <li
-            key={uuid()}
-            className={`rn-nav__list-item ${hasChildren ? 'has-children' : ''}`}
-          >
+          <NavItem key={uuid()} hasChildren={hasChildren}>
             <LinkComponent
               className={`rn-nav__item ${active ? 'is-active' : ''}`}
               {...item}
@@ -36,7 +34,7 @@ function renderMenu(LinkComponent: any, navItems: any[]) {
               {label}
             </LinkComponent>
             {subMenu}
-          </li>
+          </NavItem>
         )
       })}
     </ul>

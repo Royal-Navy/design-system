@@ -14,47 +14,47 @@ stories.addDecorator(withKnobs)
 
 const navItems = [
   {
-    href: 'http://testurl.test',
+    href: '#',
     label: 'Styles',
   },
   {
-    href: 'http://testurl.test',
+    href: '#',
     label: 'Components',
   },
   {
-    href: 'http://testurl.test',
+    href: '#',
     label: 'Patterns',
     active: true,
   },
   {
-    href: 'http://testurl.test',
+    href: '#',
     label: 'Community',
   },
   {
-    href: 'http://testurl.test',
+    href: '#',
     label: 'About',
   },
 ]
 
 const navItemsWithChildren = [
   {
-    href: 'http://testurl.test',
+    href: '#',
     label: 'Parent',
     children: [
       {
-        href: 'http://testurl.test',
+        href: '#',
         label: 'Child 1',
       },
       {
-        href: 'http://testurl.test',
+        href: '#',
         label: 'Child 2',
         children: [
           {
-            href: 'http://testurl.test',
+            href: '#',
             label: 'Child 1',
           },
           {
-            href: 'http://testurl.test',
+            href: '#',
             label: 'Child 2',
           },
         ],
@@ -94,24 +94,24 @@ stories.add('Sizes', () => (
 
 const customNavItems = [
   {
-    to: 'http://testurl.test',
+    to: '#',
     label: 'Styles',
   },
   {
-    to: 'http://testurl.test',
+    to: '#',
     label: 'Components',
   },
   {
-    to: 'http://testurl.test',
+    to: '#',
     label: 'Patterns',
     active: true,
   },
   {
-    to: 'http://testurl.test',
+    to: '#',
     label: 'Community',
   },
   {
-    to: 'http://testurl.test',
+    to: '#',
     label: 'About',
   },
 ]

@@ -7,7 +7,7 @@ header: true
 import { Icons, Sidebar, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
-
+import SketchWidget from '../../../components/presenters/sketch-widget'
 
 # Overview
 An application Sidebar using icons and indicators on the left of the screen
@@ -17,6 +17,8 @@ An application Sidebar using icons and indicators on the left of the screen
 <TabSet>
 
 <Tab title="Design">
+
+<SketchWidget name="Sidebar" href="/standards-toolkit.sketch" />
 
   ## Design
   Introduction to the design section.
@@ -214,8 +216,7 @@ const navData: NavItemAnchorType[] = [
     Description: 'A custom component to render links in the sidebar. If nothing is passed a component requiring a href will be used and will render an anchor tag. If using a library such as React Router then the `Link` component from that library should be passed as a property.',
   },
 ]} />
-
-
+<br />
 <DataTable caption="NavItemAnchorType" data={[
   {
     Name: 'active',
@@ -246,7 +247,7 @@ const navData: NavItemAnchorType[] = [
     Description: 'The url to send the user to',
   },
 ]} />
-
+<br />
 <DataTable caption="NavItemLinkType" data={[
   {
     Name: 'active',

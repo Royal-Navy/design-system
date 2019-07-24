@@ -8,16 +8,17 @@ import { Links, Tab, TabSet, TextInput } from '@royalnavy/react-component-librar
 import Field from '../../../../components/containers/Field'
 import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import Component from '../../../images/components/forms/input/component.svg'
-import Anatomy from '../../../images/components/forms/input/anatomy.svg'
-import States from '../../../images/components/forms/input/states.svg'
-import PreComponent from '../../../images/components/forms/input/pre-post.svg'
-import PreAnatomy from '../../../images/components/forms/input/pre-anatomy.svg'
+import InputComponent from '../../../images/components/forms/input/component.svg'
+import InputAnatomy from '../../../images/components/forms/input/anatomy.svg'
+import InputStates from '../../../images/components/forms/input/states.svg'
+import InputPreComponent from '../../../images/components/forms/input/pre-post.svg'
+import InputPreAnatomy from '../../../images/components/forms/input/pre-anatomy.svg'
 
 # Input
 Text inputs let users enter and edit text.
-<Component />
+<InputComponent />
 
 ## Usage
 The Text Input should be used to let the user enter a single line of text. It typically appears in forms and modals. If you require the user to enter multi-line content, then the [Textarea component](/forms/textarea) should be used instead.
@@ -26,11 +27,13 @@ The Text Input should be used to let the user enter a single line of text. It ty
 
 <Tab title="Design">
 
+<SketchWidget name="Input" href="/standards-toolkit.sketch" />
+
 ## Design
 The Text Input should stand out and be easily discoverable by users. The text label should be concise, effectively communicating to the user the type of input required.
 
 ### Anatomy
-<Anatomy />
+<InputAnatomy />
 
 1. **Label**. The Label should be used to describe to the user what the desired input should be. Every field should have a text label. The label should always be visible on all inputs, excluding search bars.
 2. **User Input**. The User Input is the text the user has entered into the Text Input.
@@ -40,7 +43,7 @@ The Text Input should stand out and be easily discoverable by users. The text la
 The Text Input is available in 1 standard size. It has been created in relation to other form elements to ensure consistency.
 
 ### States
-<States />
+<InputStates />
 
 The Text Input has 3 states - default, active, and filled.
 
@@ -48,13 +51,13 @@ The Text Input has 3 states - default, active, and filled.
 
 ### Pre & Post Fix Labels
 The Fix Labels are used for adding additional information to an input. They can be either icons or text.
-<PreComponent />
+<InputPreComponent />
 
 #### Usage
 The labels should accompany the main input label. They should be additive, and not the main focus of the Text Input.
 
 #### Anatomy
-<PreAnatomy />
+<InputPreAnatomy />
 
 1. **Container**. The Container wraps the Pre and Post fixed Labels
 2. **Content**. The Content can be either text or an icon.
@@ -66,7 +69,6 @@ The Pre and Post fixes don’t have any inherit sizes themselves. As they are ad
 Only Pre and Post fix should be used on each input.
 
 </Tab>
-
 
 <Tab title="Develop">
 
@@ -145,8 +147,7 @@ end of a field:
     Description: 'Called when the field looses focus',
   },
 ]} />
-
-
+<br />
 <DataTable caption="FormProps" data={[
   {
     Name: 'errors',
@@ -163,7 +164,7 @@ end of a field:
     Description: 'A hashmap using the field name as a key and indicating if it has been touched or not',
   },
 ]} />
-
+<br />
 <DataTable caption="TextInput" data={[
   {
     Name: 'className',

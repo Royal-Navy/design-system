@@ -7,6 +7,7 @@ header: true
 import { Nav, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../components/presenters/sketch-widget'
 
 
 # Overview
@@ -26,6 +27,8 @@ The url provided to a navigation link will be used as the 'to' property of a rea
 <TabSet>
 
 <Tab title="Design">
+
+<SketchWidget name="Nav" href="/standards-toolkit.sketch" />
 
   ## Design
   Introduction to the design section.
@@ -312,8 +315,7 @@ Nav supports rendering navigation in 4 different sizes
     Description: 'The font size for items',
   },
 ]} />
-
-
+<br />
 <DataTable caption="NavItem" data={[
   {
     Name: 'label',
@@ -330,7 +332,7 @@ Nav supports rendering navigation in 4 different sizes
     Description: 'Is this the current active link?'
   }
 ]} />
-
+<br />
 <DataTable caption="Link" data={[
   {
     Name: 'children',

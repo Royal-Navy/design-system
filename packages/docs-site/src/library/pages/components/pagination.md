@@ -7,15 +7,15 @@ header: true
 import { Pagination, TabSet, Tab } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
-
-import Component from '../../images/components/pagination/component.svg'
-import Anatomy from '../../images/components/pagination/anatomy.svg'
-import States from '../../images/components/pagination/states.svg'
+import SketchWidget from '../../../components/presenters/sketch-widget'
+import PaginationComponent from '../../images/components/pagination/component.svg'
+import PaginationAnatomy from '../../images/components/pagination/anatomy.svg'
+import PaginationStates from '../../images/components/pagination/states.svg'
 
 # Overview
 
 The Pagination component shows a series of related content split across multiple pages. It allows an end user to navigate between these pages of records.
-<Component />
+<PaginationComponent />
 
 ## Usage
 The Pagination component is best used for large lists and tables.
@@ -24,8 +24,10 @@ The Pagination component is best used for large lists and tables.
 
 <Tab title="Design">
 
+<SketchWidget name="Pagination" href="/standards-toolkit.sketch" />
+
 ### Anatomy
-<Anatomy />
+<PaginationAnatomy />
 
 1. **Page Action**. The Page Action allows the user to quickly jump to a specific page of records.
 2. **Prev/Next**. The Prev and Next buttons move the page number by +/-1.
@@ -35,7 +37,7 @@ The Pagination component is best used for large lists and tables.
 The Pagination component is of fixed size. 
 
 ### States (if applicable) 
-<States />
+<PaginationStates />
 
 The subcomponents of the Pagination component have multiple different states. The Page Action buttons have default, hover, and active states, whereas the Prev/Next buttons have default and hover.
 

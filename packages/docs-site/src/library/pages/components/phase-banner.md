@@ -7,13 +7,14 @@ header: true
 import { PaseBanner, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
-import Component from '../../images/components/phase-banner/component.svg'
-import Anatomy from '../../images/components/phase-banner/anatomy.svg'
+import SketchWidget from '../../../components/presenters/sketch-widget'
+import PhaseBannerComponent from '../../images/components/phase-banner/component.svg'
+import PhaseBannerAnatomy from '../../images/components/phase-banner/anatomy.svg'
 
 # Overview
 
 The Phase Banner is an indicator that sits at the top of your application. It communicates the current phase of the project to show it is still being worked on.
-<Component />
+<PhaseBannerComponent />
 
 ## Usage
 
@@ -21,13 +22,14 @@ The Phase Banner is an indicator that sits at the top of your application. It co
 
 <Tab title="Design">
 
-### Anatomy
+<SketchWidget name="PhaseBanner" href="/standards-toolkit.sketch" />
 
-<Anatomy />
-
-1. **Phase Badge**. The Phase Badge indicates the current phase to the user.
-2. **Phase Message**. Accompanying message to provide additional information to the user
-3. **Container** The container is a wrapper that stretches to 100% of the viewport.
+  ### Anatomy
+  <PhaseBannerAnatomy />
+  
+  1. **Phase Badge**. The Phase Badge indicates the current phase to the user.
+  2. **Phase Message**. Accompanying message to provide additional information to the user
+  3. **Container** The container is a wrapper that stretches to 100% of the viewport.
 
 ### Sizing & Spacing
 The phase banner is a full width component - it is designed to stretch to the size of the viewport. Try to keep the Phase Message concise however.
