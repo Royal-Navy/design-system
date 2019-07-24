@@ -35,6 +35,18 @@ $text-color: #748999;
     margin: 0;
   }
 
+  svg {
+    // margin: spacing(6) 0 spacing(12) 0;
+    // width: 100%;
+    // height: auto;
+    margin-top: spacing(4);
+  
+    + ul, + ol {
+      margin-left: 16px;
+      padding-left: 0;
+    }
+  }
+
 }
 
 h1, h2, h3,
@@ -64,16 +76,7 @@ hr {
   margin: spacing(8) 0;
 }
 
-svg {
-  // margin: spacing(6) 0 spacing(12) 0;
-  // width: 100%;
-  // height: auto;
 
-  + ul, + ol {
-    margin-left: 16px;
-    padding-left: 0;
-  }
-}
 
 a {
   color: color(primary, 600);

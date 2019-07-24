@@ -25,8 +25,6 @@ The Button Component gives users a way to take action in an interface. They are 
 
 <ButtonComponent />
 
-![Component]('images/components/button/component.svg')
-
 ## Usage
 The usage section is a bullet pointed list of scenarios the component should be used in.
 
