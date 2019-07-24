@@ -4,7 +4,6 @@ description: 'Using colour within a Standard Toolkit application'
 tags: public
 pageClass: ''
 template: default
-index: 2
 ---
 
 import Swatch from '../../../components/presenters/swatch'

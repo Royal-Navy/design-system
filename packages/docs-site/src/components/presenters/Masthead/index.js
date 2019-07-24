@@ -25,7 +25,9 @@ const MastHead = ({ navItems }) => {
   return (
     <div className="masthead">
       <div className="masthead__container rn-container">
-        <SiteLogo className="masthead__logo" />
+        <a href="/">
+          <SiteLogo className="masthead__logo" />
+        </a>
 
         {hasNavItems && (
           <Button
