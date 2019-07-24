@@ -1,6 +1,6 @@
 ---
 title: Design
-description: 'Start designing with the Standards Toolkit, an open source design system from the Royal Navy.'
+description: 'Start designing with the Standards Toolkit, a design system from the Royal Navy'
 header: true
 ---
 
