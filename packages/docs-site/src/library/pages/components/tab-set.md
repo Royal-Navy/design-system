@@ -52,11 +52,13 @@ Tab Sets are used to separate content of the same hierachy. They should therefor
 Scrollable Tabs are a variation of the Tab Set component, specifically designed for navigating dates.
 <ScrollableComponent />
   
+
 #### Usage
 Scrollable tabs are used for date ranges, where the number of dates often exceeds the horizontal width of the Tab Set. 
 
 #### Anatomy
 <ScrollableAnatomy />
+
 1. **Active Tab**. This show the user the currently selected tab.
 2. **Inactive Tab**. This is the default look for an unselected tab.
 3. **Container**. The container wraps the component.

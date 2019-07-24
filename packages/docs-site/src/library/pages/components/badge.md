@@ -25,6 +25,7 @@ A visual indicator useful for status information or meta data associated with an
 
 <Tab title="Design">
   
+
 The Badge component is an indicator component that displays information to the user. It comes in two varieties - the default, rectangular Badge, and the [Pill variation](#pill).
 
 ### Anatomy
@@ -35,10 +36,12 @@ The Badge component is an indicator component that displays information to the u
 
 ### Sizing & Spacing
 <Sizes />
+
 The Badge component is available in 4 sizes - small, regular, large and xLarge.
 
 ### States (if applicable)   
 <States />
+
 The Badge component has 5 states available to use - Neutral, Primary, Success, Warning, and Danger. The badge component does not have any interaction, so there are no hover/active states available.
 
 ### Hierarchy & Placement
@@ -46,6 +49,7 @@ Try to avoid mixing states and sizes, as this can become confusing for the user.
 
 ### Pill
 <Pill />
+
 The Pill Badge is a variation of the Badge component.
 
 #### Usage
@@ -53,6 +57,7 @@ The Pill Badge is used predominantly to act as a counter, displaying integer num
 
 #### States (if applicable)
 <PillStates />
+
 The Pill Badge component is also available in 5 states - Neutral, Primary, Success, Warning, and Danger.
 
 </Tab>

@@ -23,7 +23,9 @@ The Breadcrumb component should sit at the top of the viewport. Visit the Design
 
 <Tab title="Design">
  
- ## Anatomy
+
+## Anatomy
+
 ![Breadcrumb component anatomy](../../images/components/breadcrumb/anatomy.svg)
 
 1. **Parent Link**. The parent link is a clickable action that will navigate the user to the parent page.
