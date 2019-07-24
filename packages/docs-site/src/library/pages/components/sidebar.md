@@ -213,8 +213,7 @@ const navData: NavItemAnchorType[] = [
     Description: 'A custom component to render links in the sidebar. If nothing is passed a component requiring a href will be used and will render an anchor tag. If using a library such as React Router then the `Link` component from that library should be passed as a property.',
   },
 ]} />
-
-
+<br />
 <DataTable caption="NavItemAnchorType" data={[
   {
     Name: 'active',
@@ -245,7 +244,7 @@ const navData: NavItemAnchorType[] = [
     Description: 'The url to send the user to',
   },
 ]} />
-
+<br />
 <DataTable caption="NavItemLinkType" data={[
   {
     Name: 'active',

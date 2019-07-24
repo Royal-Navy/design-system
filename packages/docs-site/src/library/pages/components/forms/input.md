@@ -143,8 +143,7 @@ end of a field:
     Description: 'Called when the field looses focus',
   },
 ]} />
-
-
+<br />
 <DataTable caption="FormProps" data={[
   {
     Name: 'errors',
@@ -161,7 +160,7 @@ end of a field:
     Description: 'A hashmap using the field name as a key and indicating if it has been touched or not',
   },
 ]} />
-
+<br />
 <DataTable caption="TextInput" data={[
   {
     Name: 'className',

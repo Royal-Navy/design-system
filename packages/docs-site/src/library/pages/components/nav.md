@@ -311,8 +311,7 @@ Nav supports rendering navigation in 4 different sizes
     Description: 'The font size for items',
   },
 ]} />
-
-
+<br />
 <DataTable caption="NavItem" data={[
   {
     Name: 'label',
@@ -329,7 +328,7 @@ Nav supports rendering navigation in 4 different sizes
     Description: 'Is this the current active link?'
   }
 ]} />
-
+<br />
 <DataTable caption="Link" data={[
   {
     Name: 'children',

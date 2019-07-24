@@ -22,8 +22,8 @@ The Breadcrumb component should sit at the top of the viewport. Visit the Design
 <TabSet>
 
 <Tab title="Design">
- 
- ## Anatomy
+
+## Anatomy
 <BreadcrumbAnatomy />
 
 1. **Parent Link**. The parent link is a clickable action that will navigate the user to the parent page.
@@ -135,8 +135,7 @@ Applications will often use a library such as `React Router` to generate links b
     Description: 'The label for this part of the Breadcrumb hierarchy',
   },
 ]} />
-
-
+<br />
 <DataTable caption="Breadcrumbs" data={[
   {
     Name: 'className',
