@@ -4,6 +4,8 @@ description: ''
 header: true
 ---
 
+import CodeHighlighter from '../../../../components/presenters/code-highlighter'
+
 ## Installation & quick start
 
 To install and save to your projects package.json dependencies, run:
@@ -20,19 +22,18 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 
 Here's a quick example application to get you started:
 
-```
-import React from 'react'
+<CodeHighlighter 
+source={`import React from 'react'
 import ReactDOM from 'react-dom'
 import '@royalnavy/css-framework/dist/style.css'
 import { Button } from '@royalnavy/react-component-library'
-
-function App() {
+\nfunction App() {
   return (
     <Button variant="primary">
       Hello, World!
     </Button>
   )
 }
-
-ReactDOM.render(<App />, document.querySelector('#app'))
-```
+\nReactDOM.render(<App />, document.querySelector('#app'))`}
+language="javascript"
+/>
