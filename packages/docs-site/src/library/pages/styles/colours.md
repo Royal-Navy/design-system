@@ -144,5 +144,5 @@ source={`color: color(neutral, 500);
 border: 1px solid color(danger, 300);
 // Result
 color: #627d98;
-border: 1px solid #f36968;`} language="scss"
+border: 1px solid #f36968;`} language="css"
 />

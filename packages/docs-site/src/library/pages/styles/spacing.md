@@ -4,7 +4,6 @@ description: How we handle spacing and sizing in the Standards Toolkit
 tags: public
 pageClass: ''
 template: default
-index: 2
 header: true
 ---
 
@@ -95,7 +94,7 @@ To help use the spacing scale, there is a handy SCSS function provided: `spacing
 <CodeHighlighter 
 source={`padding: spacing(4);
 // Result
-padding: 1rem;`} language="scss"
+padding: 1rem;`} language="css"
 />
 
 #### Helpers
@@ -105,7 +104,7 @@ The CSS Frameworks Spacing Variables are available in Utility Class form, allowi
 Both margin and padding can be set via helper classes. The class syntax follows the following pattern:
 
 <CodeHighlighter 
-source={`.h_[Property][Direction?]-[Size]`} language="scss"
+source={`.h_[Property][Direction?]-[Size]`} language="css"
 />
 
 <div class="standard-table">
@@ -133,12 +132,12 @@ Property     | Direction  | Size
 For example, adding a class of `.h_mt-10` would result in the following:
 
 <CodeHighlighter 
-source={`margin-top: 2.5rem;`} language="scss"
+source={`margin-top: 2.5rem;`} language="css"
 />
 
 
 To use the helper classes in conjunction with [media queries](/styles/breakpoints), add the required breakpoint to the helper class:
 
 <CodeHighlighter 
-source={`.md:h_mt-10`} language="scss"
+source={`.md:h_mt-10`} language="css"
 />

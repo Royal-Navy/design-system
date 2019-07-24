@@ -85,7 +85,7 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 .token.boolean,
 .token.number,
 .token.deleted {
-  color: hsl(14, 58%, 55%); /* #CF6A4C */
+  color: color(altwarning, 400);
 }
 
 .token.keyword,
@@ -109,6 +109,10 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 .token.variable,
 .token.inserted {
   color: color(primary, 300);
+}
+
+.token.function {
+  color: color(altwarning, 400);
 }
 
 .token.atrule {

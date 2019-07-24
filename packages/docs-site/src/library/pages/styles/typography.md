@@ -4,7 +4,6 @@ description: ''
 tags: public
 pageClass: ''
 template: default
-index: 2
 header: true
 ---
 
@@ -25,7 +24,7 @@ Cantarell,
 Fira Sans,
 Droid Sans,
 Helvetica Neue,
-sans-serif;`} language="scss"
+sans-serif;`} language="css"
 />
 
 ## Typography Scale
@@ -86,7 +85,7 @@ To reference typography sizes within your styles, use the `font-size()` mixin. T
 <CodeHighlighter 
 source={`@include font-size(base);
 // returns
-font-size: 1rem;`} language="scss"
+font-size: 1rem;`} language="css"
 />
 
 
@@ -96,7 +95,7 @@ The CSS Framework's Typography variables are available in Utility Class form, al
 The class syntax follows the following pattern:
 
 <CodeHighlighter 
-source={`.h_[Property]-[Size]`} language="scss"
+source={`.h_[Property]-[Size]`} language="css"
 />
 
 <DataTable className="h_mt-4" data={[
@@ -150,13 +149,13 @@ source={`.h_[Property]-[Size]`} language="scss"
 For example, adding a class of `.h_text-xl` would result in the following:
 
 <CodeHighlighter 
-source={`margin-top: 1.5rem;`} language="scss"
+source={`margin-top: 1.5rem;`} language="css"
 />
 
 To use the helper classes in conjunction with [media queries](/styles/breakpoints), add the required breakpoint to the helper class:
 
 <CodeHighlighter 
-source={`.md:h_text-xl`} language="scss"
+source={`.md:h_text-xl`} language="css"
 />
 
 
