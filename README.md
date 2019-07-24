@@ -51,7 +51,7 @@ function App() {
 ReactDOM.render(<App />, document.querySelector('#app'))
 ```
 
-## Monorepo layout and package management
+## Monorepo & package management
 
 >This repository uses [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) to manage it's dependencies and inter-dependencies between the packages within it.
 >
