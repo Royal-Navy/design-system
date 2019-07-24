@@ -4,8 +4,6 @@ description: ''
 header: true
 ---
 
-## SASS/CSS Framework
-
 The @royalnavy/css-framework package provides both a compiled version of the component CSS and helper classes in thier entirety and also the source SASS.
 
 The source SASS can be used independently of the component library package, allowing you to make use of included functions and mixins.
@@ -91,9 +89,6 @@ Occasionally, a group alone won't be enough to ensure a correct z-axis stack. An
   z-index: 7132;
 }
 ```
-
-## Spacing
-[ WIP ]
 
 ## Breakpoints
 

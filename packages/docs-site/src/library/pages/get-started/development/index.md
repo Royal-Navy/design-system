@@ -1,18 +1,14 @@
 ---
 title: Development
-description: ''
+description: 'A multi-framework, responsive component library and SASS framework'
 header: true
 ---
-
-## Development
-
-The Standards Toolkit provides a multi-framework, responsive component library and SASS framework. It's built to help developers build web applications that meet the Royal Navy's service standards.
 
 ### Latest release & versioning
 
 We adhere to [semantic versioning](https://semver.org/).
 
-Version [0.1.0](https://github.com/Royal-Navy/standards-toolkit/releases/tag/0.1.0) is the current stable release.
+Version [1.0.0](https://github.com/Royal-Navy/standards-toolkit/releases/tag/1.0.0) is the current stable release.
 
 ### Supported technologies
 

@@ -4,8 +4,6 @@ description: ''
 header: true
 ---
 
-## Learning resources
-
 We have curated a collection of learning resources to help you to get up to speed with a variety of web technologies that are foundational to the Standards Toolkit. 
 
 These resources will help you gain the fundemental knowledge needed to successfully consume the Nelson Standards component library and SASS framework and to develop modern web applications.
