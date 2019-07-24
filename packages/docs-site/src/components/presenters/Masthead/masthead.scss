@@ -114,7 +114,7 @@
 .masthead__logo {
   margin-bottom: 0;
   margin-top: 0;
-  width: 310px;
+  width: 210px;
 }
 
 @include breakpoint("s") {
@@ -128,7 +128,7 @@
 
   .masthead__logo {
     width: 405px;
-    height: 52px;
+    // height: 52px;
     margin-bottom: 0;
     margin-top: 0;
   }
