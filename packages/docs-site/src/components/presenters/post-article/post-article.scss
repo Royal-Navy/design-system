@@ -35,9 +35,9 @@ $text-color: #748999;
     margin: 0;
   }
 
-  svg {
+  > svg {
     // margin: spacing(6) 0 spacing(12) 0;
-    // width: 100%;
+    width: 100%;
     // height: auto;
     margin-top: spacing(4);
 
