@@ -54,6 +54,9 @@ $border-radius-button: 3px;
   svg {
     width: 12px;
     margin-right: spacing(2);
+    .post-article & {
+      margin-top: 0;
+    }
   }
 
   &:focus {
