@@ -7,6 +7,7 @@ import { Links, Tab, TabSet, TextInput } from '@royalnavy/react-component-librar
 import Field from '../../../../components/containers/Field'
 import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../components/presenters/sketch-widget'
 
 import InputComponent from '../../../images/components/forms/input/component.svg'
 import InputAnatomy from '../../../images/components/forms/input/anatomy.svg'
@@ -24,6 +25,8 @@ The Text Input should be used to let the user enter a single line of text. It ty
 <TabSet>
 
 <Tab title="Design">
+
+<SketchWidget name="Input" href="/standards-toolkit.sketch" />
 
 ## Design
 The Text Input should stand out and be easily discoverable by users. The text label should be concise, effectively communicating to the user the type of input required.

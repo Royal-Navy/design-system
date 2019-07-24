@@ -6,6 +6,7 @@ description:  A simple banner to indicate the phase of the project.
 import { PaseBanner, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../components/presenters/sketch-widget'
 import PhaseBannerComponent from '../../images/components/phase-banner/component.svg'
 import PhaseBannerAnatomy from '../../images/components/phase-banner/anatomy.svg'
 
@@ -18,6 +19,8 @@ The Phase Banner is an indicator that sits at the top of your application. It co
 <TabSet>
 
 <Tab title="Design">
+
+<SketchWidget name="PhaseBanner" href="/standards-toolkit.sketch" />
 
   ### Anatomy
   <PhaseBannerAnatomy />

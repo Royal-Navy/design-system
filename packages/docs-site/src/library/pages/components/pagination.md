@@ -6,7 +6,7 @@ description: Navigate between muitple pages of records.
 import { Pagination, TabSet, Tab } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
-
+import SketchWidget from '../../../components/presenters/sketch-widget'
 import PaginationComponent from '../../images/components/pagination/component.svg'
 import PaginationAnatomy from '../../images/components/pagination/anatomy.svg'
 import PaginationStates from '../../images/components/pagination/states.svg'
@@ -21,6 +21,8 @@ The Pagination component is best used for large lists and tables.
 <TabSet>
 
 <Tab title="Design">
+
+<SketchWidget name="Pagination" href="/standards-toolkit.sketch" />
 
 ### Anatomy
 <PaginationAnatomy />

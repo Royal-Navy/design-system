@@ -6,6 +6,7 @@ description: Badges are one of the foundational elements of any application.
 import { Badge, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../components/presenters/sketch-widget'
 import BadgeComponent from '../../images/components/badge/component.svg'
 import BadgeAnatomy from '../../images/components/badge/anatomy.svg'
 import BadgeSizes from '../../images/components/badge/sizes.svg'
@@ -23,7 +24,10 @@ A visual indicator useful for status information or meta data associated with an
 <TabSet>
 
 <Tab title="Design">
-  
+
+<SketchWidget name="Badge" href="/standards-toolkit.sketch" />
+
+
 The Badge component is an indicator component that displays information to the user. It comes in two varieties - the default, rectangular Badge, and the [Pill variation](#pill).
 
 ### Anatomy

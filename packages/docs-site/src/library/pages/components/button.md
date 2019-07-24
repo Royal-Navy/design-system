@@ -6,6 +6,7 @@ description: Buttons are one of the foundational elements of any application.
 import { Button, Icons, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../components/presenters/sketch-widget'
 import ButtonComponent from '../../images/components/button/component.svg'
 import ButtonAnatomy from '../../images/components/button/anatomy.svg'
 import ButtonPrimary from '../../images/components/button/primary.svg'
@@ -27,6 +28,8 @@ The usage section is a bullet pointed list of scenarios the component should be 
 
 <TabSet>
   <Tab title="Design">
+
+<SketchWidget name="Button" href="/standards-toolkit.sketch" />
 
 Buttons are available in 3 variants - [Primary](#primary), [Secondary](#secondary), and [Tertiary](#tertiary). These variants allow designers to establish [hierarchy](#hierarchy) in interfaces.
 

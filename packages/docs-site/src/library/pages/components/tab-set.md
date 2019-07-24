@@ -6,14 +6,13 @@ description: The Tab Set displays multiple content areas, which can be viewed by
 import { Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../components/presenters/sketch-widget'
 import TabSetComponent from '../../images/components/tabset/component.svg'
 import TabSetAnatomy from '../../images/components/tabset/anatomy.svg'
 import TabSetStates from '../../images/components/tabset/states.svg'
 import TabSetScrollableComponent from '../../images/components/tabset/scrollable-component.svg'
 import TabSetScrollableAnatomy from '../../images/components/tabset/scrollable-anatomy.svg'
 import TabSetScrollableStates from '../../images/components/tabset/scrollable-states.svg'
-
-
 
 # Tab Set
 The Tab Set displays multiple content areas, which can be viewed by selecting the respective tab.
@@ -26,6 +25,8 @@ The Tab Set component is used to separate content that exists at the same level 
 <TabSet>
 
 <Tab title="Design">
+
+<SketchWidget name="TabSet" href="/standards-toolkit.sketch" />
 
 The Tab Set component comes in 2 distinct varieties - the default Tab Set and the [Scrollable Tab Set](#scrollable-tabs).
 

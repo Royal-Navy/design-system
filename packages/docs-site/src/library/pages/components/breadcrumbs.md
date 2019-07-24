@@ -6,6 +6,7 @@ description: The Breadcrumb component is a navigational item
 import { Breadcrumbs, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../components/presenters/sketch-widget'
 import BreadcrumbComponent from '../../images/components/breadcrumbs/component.svg'
 import BreadcrumbAnatomy from '../../images/components/breadcrumbs/anatomy.svg'
 import BreadcrumbStates from '../../images/components/breadcrumbs/states.svg'
@@ -17,11 +18,11 @@ The Breadcrumb component is a navigational item that allows users to quickly asc
 ## Usage
 The Breadcrumb component should sit at the top of the viewport. Visit the Design [Hierarchy & Placement](#hierarchy) section for more information.
 
----
-
 <TabSet>
 
 <Tab title="Design">
+
+<SketchWidget name="Breadcrumbs" href="/standards-toolkit.sketch" />
 
 ## Anatomy
 <BreadcrumbAnatomy />
