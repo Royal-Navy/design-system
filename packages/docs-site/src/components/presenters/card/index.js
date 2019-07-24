@@ -16,8 +16,10 @@ const Card = ({
   linkHref,
   className,
 }) => {
+  const Element = linkHref ? 'a' : 'article'
+
   return (
-    <article className={`card card--${type} ${className}`}>
+    <Element className={`card card--${type} ${className}`} href={linkHref}>
       <header className="card__head">
         {meta && type === 'coloured' && (
           <span className="card__meta" data-testid="meta">
@@ -44,13 +46,13 @@ const Card = ({
         </p>
 
         {linkHref && linkText && type !== 'coloured' && (
-          <a className="card__link" href={linkHref}>
+          <span className="card__link">
             {linkText}
             <ArrowRightIcon />
-          </a>
+          </span>
         )}
       </section>
-    </article>
+    </Element>
   )
 }
 
@@ -74,7 +76,7 @@ Card.defaultProps = {
   imageSrc: '',
   imagePosition: 'left',
   linkText: '',
-  linkHref: '#',
+  linkHref: null,
   className: '',
 }
 
