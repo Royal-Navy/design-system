@@ -23,10 +23,10 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 Here's a quick example application to get you started:
 
 <CodeHighlighter 
-source={`import React from 'react'
-import ReactDOM from 'react-dom'
-import '@royalnavy/css-framework/dist/style.css'
-import { Button } from '@royalnavy/react-component-library'
+source={`i${''}mport React from 'react'
+i${''}mport ReactDOM from 'react-dom'
+i${''}mport '@royalnavy/css-framework/dist/style.css'
+i${''}mport { Button } from '@royalnavy/react-component-library'
 \nfunction App() {
   return (
     <Button variant="primary">
