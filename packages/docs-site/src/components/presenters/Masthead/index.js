@@ -43,11 +43,8 @@ const MastHead = ({ navItems }) => {
       </div>
       <PhaseBanner className="masthead__phasebanner">
         <span>
-          Are you a Navy Product Owner or Stakeholder?{' '}
-          <a href="/about-the-design-system">
-            Find out how Standards relates to you
-          </a>
-          .
+          This is a new service - <a href="/contact">your feedback</a> will help
+          us to improve it.
         </span>
       </PhaseBanner>
       {hasNavItems && (
