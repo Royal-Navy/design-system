@@ -5,6 +5,7 @@ tags: public
 pageClass: ''
 template: default
 index: 2
+header: true
 ---
 
 import DataTable from '../../../components/presenters/data-table'

@@ -5,6 +5,7 @@ tags: public
 pageClass: ''
 template: default
 index: 6
+header: true
 ---
 
 # About the design system

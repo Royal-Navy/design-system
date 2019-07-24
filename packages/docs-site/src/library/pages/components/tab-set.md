@@ -1,6 +1,7 @@
 ---
 title: Tab Set
 description: The Tab Set displays multiple content areas, which can be viewed by selecting the respective tab.
+header: true
 ---
 
 import { Tab, TabSet } from '@royalnavy/react-component-library'

@@ -1,6 +1,7 @@
 ---
 title: Badge
 description: Badges are one of the foundational elements of any application.
+header: true
 ---
 
 import { Badge, Tab, TabSet } from '@royalnavy/react-component-library'

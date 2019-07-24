@@ -4,6 +4,7 @@ description: [Component Description]
 audience: public
 pageClasses: ''
 template: withsidebar
+header: true
 ---
 
 import { TabSet, Tab } from '@royalnavy/react-component-library'

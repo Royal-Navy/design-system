@@ -1,6 +1,7 @@
 ---
 title: Phase Banner
 description:  A simple banner to indicate the phase of the project.
+header: true
 ---
 
 import { PaseBanner, Tab, TabSet } from '@royalnavy/react-component-library'

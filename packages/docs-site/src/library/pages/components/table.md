@@ -1,6 +1,7 @@
 ---
 title: Table
-description: Tables display tabular data
+description: Tables display tabular data.
+header: true
 ---
 
 <framework-tabs></framework-tabs>

@@ -1,6 +1,7 @@
 ---
 title: Design
 description: 'Start designing with the Standards Toolkit, an open source design system from the Royal Navy.'
+header: true
 ---
 
 This guide will lead you through our Sketch toolkit and the components we support.

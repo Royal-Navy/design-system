@@ -23,6 +23,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
+        header
       }
       code {
         body
@@ -45,6 +46,7 @@ const PageTemplate = ({ data: { mdx }, location }) => {
           title={mdx.frontmatter.title}
           description={mdx.frontmatter.description}
           mdx={mdx.code.body}
+          header={mdx.frontmatter.header}
         />
         {hasSecondaryNav && (
           <Sidebar

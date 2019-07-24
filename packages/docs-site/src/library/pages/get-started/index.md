@@ -5,6 +5,7 @@ tags: public
 pageClass: ''
 template: default
 index: 1
+header: true
 ---
 
 # Get started

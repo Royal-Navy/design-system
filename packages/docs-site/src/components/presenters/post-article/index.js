@@ -4,13 +4,15 @@ import React from 'react'
 
 import './post-article.scss'
 
-const PostArticle = ({ mdx, className, title, description }) => {
+const PostArticle = ({ mdx, className, title, description, header }) => {
   return (
     <article className={`post-article ${className}`}>
-      <div className="post-article__header">
-        <h1 className="post-article__title">{title}</h1>
-        <p className="post-article__lede">{description}</p>
-      </div>
+      {header && (
+        <div className="post-article__header">
+          <h1 className="post-article__title">{title}</h1>
+          <p className="post-article__lede">{description}</p>
+        </div>
+      )}
       <MDXRenderer>{mdx}</MDXRenderer>
     </article>
   )
@@ -18,6 +20,7 @@ const PostArticle = ({ mdx, className, title, description }) => {
 
 PostArticle.propTypes = {
   className: PropTypes.string,
+  header: PropTypes.string,
   mdx: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -25,6 +28,7 @@ PostArticle.propTypes = {
 
 PostArticle.defaultProps = {
   className: '',
+  header: true,
 }
 
 export default PostArticle

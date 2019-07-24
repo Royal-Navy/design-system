@@ -1,6 +1,7 @@
 ---
 title: Dialog
 description: Dialogs are an easy way to get validation from the user.
+header: true
 ---
 
 # Overview

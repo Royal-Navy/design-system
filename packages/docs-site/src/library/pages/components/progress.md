@@ -1,6 +1,7 @@
 ---
 title: Progress
 description: Progress bars are a percentage based representation of data.
+header: true
 ---
 
 # Overview

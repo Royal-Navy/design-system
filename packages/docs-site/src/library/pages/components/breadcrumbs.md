@@ -1,6 +1,7 @@
 ---
 title: Breadcrumbs
 description: The Breadcrumb component is a navigational item
+header: true
 ---
 
 import { Breadcrumbs, Tab, TabSet } from '@royalnavy/react-component-library'

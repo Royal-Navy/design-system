@@ -1,6 +1,7 @@
 ---
 title: Sidebar
-description: An application sidebar using icons and indicators on the left of the screen
+description: An application sidebar using icons and indicators on the left of the screen.
+header: true
 ---
 
 import { Icons, Sidebar, Tab, TabSet } from '@royalnavy/react-component-library'

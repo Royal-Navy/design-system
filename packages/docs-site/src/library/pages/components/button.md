@@ -1,6 +1,7 @@
 ---
 title: Button
 description: Buttons are one of the foundational elements of any application.
+header: true
 ---
 
 import { Button, Icons, Tab, TabSet } from '@royalnavy/react-component-library'
