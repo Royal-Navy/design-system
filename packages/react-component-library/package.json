@@ -44,7 +44,7 @@
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
-    "@royalnavy/css-framework": "0.1.1",
+    "@royalnavy/css-framework": "1.0.0",
     "@storybook/addon-actions": "^5.0.11",
     "@storybook/addon-knobs": "^5.0.11",
     "@storybook/addon-links": "^5.0.11",
