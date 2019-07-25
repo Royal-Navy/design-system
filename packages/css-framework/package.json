@@ -25,7 +25,8 @@
     "build": "sass --style=compressed index.scss dist/styles.css",
     "lint": "stylelint ./index.scss",
     "lint-staged": "lint-staged",
-    "watch": "sass --watch index.scss dist/styles.css"
+    "watch": "sass --watch index.scss dist/styles.css",
+    "prepare": "yarn build"
   },
   "lint-staged": {
     "*.@(scss)": "stylelint"

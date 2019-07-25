@@ -30,7 +30,8 @@
     "storybook": "start-storybook -p 6006",
     "test": "jest",
     "test:watch": "jest --watch",
-    "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/"
+    "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/",
+    "prepare": "yarn build"
   },
   "lint-staged": {
     "*.@(js|jsx|ts|tsx)": "eslint"

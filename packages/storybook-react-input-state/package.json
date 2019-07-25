@@ -28,10 +28,10 @@
     "lint": "eslint src",
     "lint-staged": "lint-staged",
     "postinstall": "yarn build",
-    "prepublish": "yarn build",
     "storybook": "start-storybook -p 6006",
     "release": "release-it",
-    "test": "jest --silent --no-cache"
+    "test": "jest --silent --no-cache",
+    "prepare": "yarn build"
   },
   "peerDependencies": {
     "react": "^16.8.6",
