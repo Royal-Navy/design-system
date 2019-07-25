@@ -1,6 +1,6 @@
 {
   "name": "nelson-frontend-component-library",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "private": true,
   "workspaces": [
     "packages/css-framework",
