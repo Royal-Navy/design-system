@@ -2,6 +2,9 @@
   "name": "@royalnavy/storybook-react-input-state",
   "description": "State wrapper for form components in react storybook stories",
   "version": "0.1.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/bundle.js",
   "keywords": [
     "storybook",
@@ -18,9 +21,6 @@
   "homepage": "https://github.com/Royal-Navy/nelson-frontend-component-library",
   "bugs": {
     "url": "https://github.com/Royal-Navy/nelson-frontend-component-library/issues"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "scripts": {
     "build": "webpack --config webpack/webpack.prod.js",
