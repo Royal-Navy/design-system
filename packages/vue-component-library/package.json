@@ -2,6 +2,9 @@
   "name": "@royalnavy/vue-component-library",
   "description": "A collection of react components and helpers to assist in building applications for the Royal Navy",
   "version": "0.1.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "vue",
     "components"
@@ -22,10 +25,6 @@
   "files": [
     "dist"
   ],
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "vue-cli-service build --target lib --name bundle ./src/index.ts",
     "build-storybook": "build-storybook",

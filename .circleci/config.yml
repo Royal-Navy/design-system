@@ -184,17 +184,6 @@ jobs:
           name: Upload CC coverage
           working_directory: ~/project
           command: /tmp/cc-test-reporter upload-coverage -i workspace/coverage.json
-  publish_documentation:
-    executor: node
-    steps:
-      - checkout
-      - run:
-          name: Authenticate NPM
-          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-      - run:
-          name: Publish package
-          working_directory: packages/documentation
-          command: npm publish --registry https://$NPM_REGISTRY
   publish_storybook-react-input-state:
     executor: node
     steps:
@@ -332,11 +321,6 @@ workflows:
             - test_react-component-library
             - test_storybook-react-input-state
             - test_vue-component-library
-      - publish_documentation:
-          filters:
-            branches:
-              only:
-                - master
       - publish_storybook-react-input-state:
           requires:
             - test_storybook-react-input-state
@@ -359,14 +343,14 @@ workflows:
             branches:
               only:
                 - master
-      - publish_vue-component-library:
-          requires:
-            - test_vue-component-library
-            - publish_css-framework
-          filters:
-            branches:
-              only:
-                - master
+      # - publish_vue-component-library:
+      #     requires:
+      #       - test_vue-component-library
+      #       - publish_css-framework
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
       - test_docs-site:
           requires:
             - test_react-component-library
@@ -384,10 +368,9 @@ workflows:
                 - develop
       - deploy_docs_site_production:
           requires:
-            - publish_documentation
             - publish_css-framework
             - publish_react-component-library
-            - publish_vue-component-library
+            # - publish_vue-component-library
             - build_docs-site
           filters:
             branches:
