@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/vue-component-library",
   "description": "A collection of react components and helpers to assist in building applications for the Royal Navy",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "publishConfig": {
     "access": "public"
   },
@@ -104,7 +104,7 @@
     "webpack-stream": "^5.2.1"
   },
   "peerDependencies": {
-    "@royalnavy/css-framework": "0.1.1",
+    "@royalnavy/css-framework": "1.0.0",
     "vue": "^2.6.10"
   },
   "resolutions": {
