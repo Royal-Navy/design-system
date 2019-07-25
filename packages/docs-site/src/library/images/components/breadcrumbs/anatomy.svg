@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 727 258">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M1.5.5h725v222H1.5z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(205 103)">
+      <tspan x="70" y="14">Ships</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(205 103)">
+      <tspan x="136" y="14">Reports</tspan>
+    </text>
+    <text fill="#1C2D39" font-family="Lato-Heavy, Lato" font-size="14" font-weight="600" transform="translate(205 103)">
+      <tspan x="215" y="14">22nd April 2019</tspan>
+    </text>
+    <path fill="#748999" d="M326.1 113l-2.72-2.72a1.05 1.05 0 1 1 1.48-1.49l3.47 3.47a1.05 1.05 0 0 1 0 1.48l-3.47 3.47a1.05 1.05 0 1 1-1.48-1.49l2.72-2.72z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(205 103)">
+      <tspan x="0" y="14">Home</tspan>
+    </text>
+    <path fill="#748999" d="M258.1 113l-2.72-2.72a1.05 1.05 0 1 1 1.48-1.49l3.47 3.47a1.05 1.05 0 0 1 0 1.48l-3.47 3.47a1.05 1.05 0 1 1-1.48-1.49l2.72-2.72zM404.1 113l-2.72-2.72a1.05 1.05 0 1 1 1.48-1.49l3.47 3.47a1.05 1.05 0 0 1 0 1.48l-3.47 3.47a1.05 1.05 0 1 1-1.48-1.49l2.72-2.72z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="252">Anatomy of the Breadcrumb component.</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+.rn-toggle {
+  display: inline-block;
+  color: color(neutral, 600);
+  @include font-size(s);
+  vertical-align: center;
+  cursor: pointer;
+}
+
+.rn-toggle__input {
+  display: none;
+}
+
+.rn-toggle__track {
+  display: inline-block;
+  position: relative;
+  height: 10px;
+  width: 21px;
+  background: color(neutral, 100);
+  border: 1px solid color(neutral, 300);
+  border-radius: 5px;
+}
+
+.rn-toggle.is-disabled .rn-toggle__track {
+  opacity: 0.5;
+}
+
+.rn-toggle__switch {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  height: 12px;
+  width: 12px;
+  background: color("neutral", 600);
+  border-radius: 6px;
+  transition: 0.2s linear;
+}
+
+.rn-toggle.is-checked .rn-toggle__switch {
+  background: color("primary", 400);
+  left: 9px;
+}

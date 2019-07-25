@@ -1,44 +1,93 @@
-.rn-nav {
+.rn-nav__list {
   display: flex;
-  &.vertical {
-    flex-direction: column;
-  }
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
-  &.stretch {
-    .rn-nav__item {
-      flex: 1;
-      text-align: center;
-    }
-  }
-  
-  &__item {
-    color: color(neutral, 700);
-    transition: all 0.3s;
-    @include font-size(xs);
+.rn-nav__list .rn-nav__list {
+  padding-left: spacing(4);
+}
+
+.rn-nav__list-item {
+  width: 100%;
+  display: block;
+  margin-bottom: 0;
+}
+
+.rn-nav.rn-nav--horizontal .rn-nav__list-item {
+  text-align: center;
+}
+
+.rn-nav.rn-nav--horizontal .rn-nav__list .rn-nav__list {
+  display: none;
+}
+
+.rn-nav__item {
+  display: inline-block;
+  width: 100%;
+  color: color(neutral, 700);
+  border-radius: $btn-border-radius;
+  outline: 0;
+  padding: spacing(3) spacing(4);
+  font-size: font-size(xs);
+  font-weight: $btn-font-weight;
+  line-height: 1;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  transition: all $animation-timing;
+
+  &:hover {
     text-decoration: none;
-    padding: spacing(2) spacing(4);
-    border-radius: 4px;
-    &:hover {
-      background-color: color(neutral, 000);
-      color: color(primary, 800);
-    }
+    background-color: color(neutral, 100);
+    color: color(primary, 900);
+  }
 
-    .horizontal & + & {
-      margin-left: spacing(1);
-    }
+  &:focus {
+    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+  }
 
-    .vertical & + & {
-      margin-top: spacing(1);
-    }
+  &.is-active {
+    background-color: color(primary, 700);
+    color: color(neutral, white);
+  }
 
-    &.active {
-      background-color: color(primary, 500);
-      color: color(neutral, white);
-    }
+  &.is-disabled {
+    color: color(neutral, 400);
+    pointer-events: none;
+  }
+}
 
-    &.disabled {
-      color: color(neutral, 400);
-      pointer-events: none;
-    } 
-  } 
+.rn-nav__list-item + .rn-nav__list-item {
+  margin-top: spacing(1);
+}
+
+@include breakpoint("s") {
+  .rn-nav.rn-nav--horizontal .rn-nav__list {
+    flex-direction: row;
+  }
+
+  .rn-nav.rn-nav--horizontal .rn-nav__list-item + .rn-nav__list-item {
+    margin-top: 0;
+    margin-left: spacing(1);
+  }
+}
+
+.rn-nav.rn-nav--small .rn-nav__item {
+  @include font-size(xxs);
+}
+
+.rn-nav.rn-nav--regular .rn-nav__item {
+  @include font-size(xs);
+}
+
+.rn-nav.rn-nav--large .rn-nav__item {
+  @include font-size(s);
+}
+
+.rn-nav.rn-nav--xlarge .rn-nav__item {
+  @include font-size(m);
 }

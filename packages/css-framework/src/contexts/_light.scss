@@ -1,190 +1,240 @@
-
 // Check to see if this context is enabled
 @if $navy--context == "light" {
-  
   // Breakpoints
   $__breakpoints: (
     root: (
       breakpoint: 0,
-      baseFontSize: 100%
+      baseFontSize: 100%,
     ),
     s: (
       breakpoint: 576px,
-      baseFontSize: 103%
+      baseFontSize: 103%,
     ),
     m: (
       breakpoint: 768px,
-      baseFontSize: 106%
+      baseFontSize: 106%,
     ),
     l: (
-      breakpoint: 992px,
-      baseFontSize: 109%
+      breakpoint: 1024px,
+      baseFontSize: 106%,
     ),
     xl: (
       breakpoint: 1200px,
-      baseFontSize: 112%
+      baseFontSize: 112%,
     ),
     xxl: (
       breakpoint: 1400px,
-      baseFontSize: 115%
+      baseFontSize: 115%,
     ),
     xxxl: (
       breakpoint: 1600px,
-      baseFontSize: 118%
-    )
-  ) !global;
-
+      baseFontSize: 118%,
+    ),
+  );
 
   // Set the context colours
   $__colors: (
-    neutral: (      
+    neutral: (
       white: #ffffff,
-      50:    #f7f9fb,
-      000:   #f0f4f8,
-      100:   #dae2ec,
-      200:   #bcccdc,
-      300:   #9eb3c8,
-      400:   #829ab1,
-      500:   #627d98,
-      600:   #496582,
-      700:   #324e68,
-      800:   #253b53,
-      900:   #102a43,
-      black: #091826
+      000: #f8fafc,
+      100: #e2e9ee,
+      200: #b8c7d2,
+      300: #748999,
+      400: #3e5667,
+      500: #233745,
+      600: #1c2d39,
+      700: #12202b,
+      800: #0c1720,
+      900: #0a141b,
+      black: #0a141b,
     ),
     primary: (
-      000: #e6f6ff,
-      100: #bbe3ff,
-      200: #7cc4fa,
-      300: #48a3f3,
-      400: #2286eb,
-      500: #0a67d2,
-      600: #0552b5,
-      700: #03449e,
-      800: #01337d,
-      900: #012159
+      000: #ecf8ff,
+      100: #ddf4ff,
+      200: #b7dff7,
+      300: #85c6f2,
+      400: #58aae9,
+      500: #3a8fdd,
+      600: #2a77c7,
+      700: #2661a7,
+      800: #274776,
+      900: #253b5b,
+    ),
+    altprimary: (
+      000: #e8f2ff,
+      100: #deebff,
+      200: #bbd5fe,
+      300: #99b7f9,
+      400: #7392f3,
+      500: #5b73e6,
+      600: #4e5cd3,
+      700: #4248b6,
+      800: #3b3985,
+      900: #343160,
     ),
     danger: (
-      000: #fef1f2,
-      100: #ffbdbd,
-      200: #ff9b9a,
-      300: #f76b6a,
-      400: #ef4e4d,
-      500: #e12d38,
-      600: #d01224,
-      700: #ab091f,
-      800: #8a041a,
-      900: #610315
+      000: #fff3f4,
+      100: #feeaec,
+      200: #fed1d1,
+      300: #fea9a9,
+      400: #fc7576,
+      500: #f44949,
+      600: #e13637,
+      700: #be2b2b,
+      800: #902727,
+      900: #692524,
     ),
     warning: (
-      000: #fffef4,
-      100: #fffbdb,
-      200: #fcf4ac,
-      300: #f5e473,
-      400: #edcb29,
-      500: #f2b449,
-      600: #ce892d,
-      700: #a46926,
-      800: #81491e,
-      900: #6b3012
+      000: #ffffee,
+      100: #fffddc,
+      200: #fefbb8,
+      300: #faed7e,
+      400: #f5db54,
+      500: #e8c242,
+      600: #cf9328,
+      700: #ae6d1d,
+      800: #8c4f17,
+      900: #693a12,
+    ),
+    altwarning: (
+      000: #f9f3ff,
+      100: #f2e9ff,
+      200: #e5d3fd,
+      300: #d0b5f9,
+      400: #ad89f1,
+      500: #936fe8,
+      600: #744fd0,
+      700: #603fb8,
+      800: #4b358f,
+      900: #3b2d6e,
     ),
     success: (
-      000: #f3ffeb,
-      100: #e1ffce,
-      200: #c6fcb0,
-      300: #9ff290,
-      400: #7ade72,
-      500: #54c758,
-      600: #3daf41,
-      700: #329c48,
-      800: #196929,
-      900: #10531e
-    )
-  ) !global;
-
+      000: #f4ffef,
+      100: #e5ffd9,
+      200: #c6f3b5,
+      300: #abe39b,
+      400: #8fd57f,
+      500: #76c767,
+      600: #60b255,
+      700: #479442,
+      800: #3b6f33,
+      900: #3b612c,
+    ),
+    altsuccess: (
+      000: #eefff2,
+      100: #dfffe9,
+      200: #bff4cf,
+      300: #8fe2ab,
+      400: #5dcd86,
+      500: #3fb26d,
+      600: #31975e,
+      700: #297a4f,
+      800: #245c40,
+      900: #1f4a35,
+    ),
+  );
 
   // State Mapping
 
   $states: (
     neutral: (
       default: color(neutral, 500),
-      faded:  color(neutral, 200)
+      faded: color(neutral, 200),
     ),
     primary: (
       default: color(primary, 500),
-      faded:  color(primary, 200)
+      faded: color(primary, 200),
     ),
     danger: (
       default: color(danger, 500),
-      faded:  color(danger, 200)
+      faded: color(danger, 200),
     ),
     warning: (
       default: color(warning, 500),
-      faded:  color(warning, 200)
+      faded: color(warning, 200),
     ),
     success: (
       default: color(success, 500),
-      faded:  color(success, 200)
-    )
-  ) !global;
-
-  
+      faded: color(success, 200),
+    ),
+  );
 
   // Spacing
 
   $__spacer: 1rem;
   $__spacing: (
-    0:  0,
-    1:  ($__spacer * 0.25),
-    2:  ($__spacer * 0.5),
-    3:  ($__spacer * 0.75),
-    4:  $__spacer,
-    5:  ($__spacer * 1.25),
-    6:  ($__spacer * 1.5),
-    8:  ($__spacer * 2),
-    10: ($__spacer * 2.5),
-    12: ($__spacer * 3),
-    16: ($__spacer * 4),
-    20: ($__spacer * 5),
-    24: ($__spacer * 6),
-    32: ($__spacer * 8),
+    0: 0,
+    1: (
+      $__spacer * 0.25,
+    ),
+    2: (
+      $__spacer * 0.5,
+    ),
+    3: (
+      $__spacer * 0.75,
+    ),
+    4: $__spacer,
+    5: (
+      $__spacer * 1.25,
+    ),
+    6: (
+      $__spacer * 1.5,
+    ),
+    8: (
+      $__spacer * 2,
+    ),
+    10: (
+      $__spacer * 2.5,
+    ),
+    12: (
+      $__spacer * 3,
+    ),
+    16: (
+      $__spacer * 4,
+    ),
+    20: (
+      $__spacer * 5,
+    ),
+    24: (
+      $__spacer * 6,
+    ),
+    32: (
+      $__spacer * 8,
+    ),
     px: 1px,
-    full: 100%
-  ) !global;
+    full: 100%,
+  );
 
   $__shadows: (
     0: 0 0 0 transparent,
     1: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
     2: 0 6px 14px 0 rgba(0, 0, 0, 0.16),
-    3: 0 12px 28px 0 rgba(0, 0, 0, 0.26)
-  ) !global;
+    3: 0 12px 28px 0 rgba(0, 0, 0, 0.26),
+  );
 
   // Typography
   $__typography: (
     display-xl: 3rem,
-    display-l:  2.25rem,
-    display:    1.875rem,
-    xl:         1.5rem,
-    l:          1.25rem,
-    m:          1.125rem,
-    base:       1rem,
-    s:          0.875rem,
-    xs:         0.75rem,
-    xxs:        0.625rem,
-    xxxs:       0.5rem
-  ) !global;
+    display-l: 2.25rem,
+    display: 1.875rem,
+    xl: 1.5rem,
+    l: 1.25rem,
+    m: 1.125rem,
+    base: 1rem,
+    s: 0.875rem,
+    xs: 0.75rem,
+    xxs: 0.625rem,
+    xxxs: 0.5rem,
+  );
 
   // Z Index Levels
   $__zIndex: (
-    dialog:   9000,
-    modal:    8000,
-    overlay:  7000,
+    dialog: 9000,
+    modal: 8000,
+    overlay: 7000,
     dropdown: 6000,
-    header:   5000,
-    footer:   4000,
-    body:     0
-  ) !global;
-
+    header: 5000,
+    footer: 4000,
+    body: 0,
+  );
 }
-
-

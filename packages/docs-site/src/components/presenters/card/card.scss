@@ -1,0 +1,108 @@
+@import "@royalnavy/css-framework";
+
+$border-radius: 4px;
+$border-color: #dae2ec;
+$card-background-color: #f0f4f8;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  color: #253b5b;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.card__head {
+  background-color: transparent;
+  padding: spacing(4) spacing(4) 0;
+  font-size: font-size(xl);
+  font-weight: 600;
+}
+
+.card__body {
+  padding: 0 spacing(4) spacing(4);
+  font-size: font-size(s);
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+  margin-top: spacing(4);
+}
+
+@include breakpoint('s') {
+  .card__image {
+    max-width: 25%;
+    min-width: 10rem;
+  }
+
+  .card__image--position-left {
+    float: left;
+    margin: spacing(4) spacing(4) 0 0;
+  }
+
+  .card__image--position-right {
+    float: right;
+    margin: spacing(4) 0 0 spacing(4);
+  }
+}
+
+.card__text {
+  font-size: font-size(s);
+}
+
+.card__link {
+  text-decoration: none;
+  font-weight: 600;
+  color: inherit;
+
+  svg {
+    height: 12px;
+    margin-left: spacing(2);
+  }
+}
+
+.card--borderless .card__body,
+.card--borderless .card__head {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.card--border {
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 2px 0 rgba(000, 000, 000, .15);
+}
+
+.card--border .card__head {
+  padding: spacing(4);
+  background-color: $card-background-color;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  font-size: font-size(s);
+  font-weight: normal;
+}
+
+.card--coloured {
+  background-color: $card-background-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+}
+
+.card--coloured .card__head {
+  display: flex;
+  flex-flow: column;
+  font-size: font-size(m);
+}
+
+.card--coloured .card__text {
+  margin-bottom: 0;
+}
+
+.card--coloured .card__meta {
+  margin-bottom: spacing(2);
+  font-size: font-size(s);
+  color: #698098;
+}

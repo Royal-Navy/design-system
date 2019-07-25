@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RnButton.vue snapshot: has same HTML structure 1`] = `
-<button class="rn-button + undefined"><span></span>
+<button class="rn-btn--primary "><span></span>
   <!----></button>
 `;

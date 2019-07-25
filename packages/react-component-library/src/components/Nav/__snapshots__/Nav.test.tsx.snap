@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav Given the nav is supplied navItems prop and navItems is a flat collection of 5 items snapshot: has same HTML structure 1`] = `
+<Nav
+  navItems={
+    Array [
+      Object {
+        "href": "http://testurl.test",
+        "label": "Styles",
+      },
+      Object {
+        "href": "http://testurl.test",
+        "label": "Components",
+      },
+      Object {
+        "active": true,
+        "href": "http://testurl.test",
+        "label": "Patterns",
+      },
+      Object {
+        "href": "http://testurl.test",
+        "label": "Community",
+      },
+      Object {
+        "href": "http://testurl.test",
+        "label": "About",
+      },
+    ]
+  }
+  orientation="vertical"
+>
+  <nav
+    className="rn-nav rn-nav--vertical rn-nav--regular "
+  >
+    <ul
+      className="rn-nav__list"
+    >
+      <NavItem
+        key="6"
+      >
+        <li
+          className="rn-nav__list-item  "
+          onClick={[Function]}
+        >
+          <Link
+            className="rn-nav__item "
+            href="http://testurl.test"
+            label="Styles"
+          >
+            <a
+              className="rn-link rn-nav__item "
+              data-testid="link"
+              href="http://testurl.test"
+            >
+              Styles
+            </a>
+          </Link>
+        </li>
+      </NavItem>
+      <NavItem
+        key="7"
+      >
+        <li
+          className="rn-nav__list-item  "
+          onClick={[Function]}
+        >
+          <Link
+            className="rn-nav__item "
+            href="http://testurl.test"
+            label="Components"
+          >
+            <a
+              className="rn-link rn-nav__item "
+              data-testid="link"
+              href="http://testurl.test"
+            >
+              Components
+            </a>
+          </Link>
+        </li>
+      </NavItem>
+      <NavItem
+        key="8"
+      >
+        <li
+          className="rn-nav__list-item  "
+          onClick={[Function]}
+        >
+          <Link
+            active={true}
+            className="rn-nav__item is-active"
+            href="http://testurl.test"
+            label="Patterns"
+          >
+            <a
+              className="rn-link rn-nav__item is-active"
+              data-testid="link"
+              href="http://testurl.test"
+            >
+              Patterns
+            </a>
+          </Link>
+        </li>
+      </NavItem>
+      <NavItem
+        key="9"
+      >
+        <li
+          className="rn-nav__list-item  "
+          onClick={[Function]}
+        >
+          <Link
+            className="rn-nav__item "
+            href="http://testurl.test"
+            label="Community"
+          >
+            <a
+              className="rn-link rn-nav__item "
+              data-testid="link"
+              href="http://testurl.test"
+            >
+              Community
+            </a>
+          </Link>
+        </li>
+      </NavItem>
+      <NavItem
+        key="10"
+      >
+        <li
+          className="rn-nav__list-item  "
+          onClick={[Function]}
+        >
+          <Link
+            className="rn-nav__item "
+            href="http://testurl.test"
+            label="About"
+          >
+            <a
+              className="rn-link rn-nav__item "
+              data-testid="link"
+              href="http://testurl.test"
+            >
+              About
+            </a>
+          </Link>
+        </li>
+      </NavItem>
+    </ul>
+  </nav>
+</Nav>
+`;

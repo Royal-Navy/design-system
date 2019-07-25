@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 727 179">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M1.5.5h725v143H1.5z"/>
+    <text fill="#3E5667" font-family="Helvetica" font-size="15">
+      <tspan x="0" y="173">The Button Component.</tspan>
+    </text>
+    <g transform="translate(141 50)">
+      <rect width="134" height="44" fill="#2A77C7" rx="3"/>
+      <text fill="#FFF" font-family="Helvetica" font-size="15">
+        <tspan x="43.23" y="28"> Button</tspan>
+      </text>
+    </g>
+    <g transform="translate(315 50)">
+      <rect width="135" height="45" x="-.5" y="-.5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      <text fill="#233745" font-family="Helvetica" font-size="15">
+        <tspan x="43.23" y="28"> Button</tspan>
+      </text>
+    </g>
+    <g transform="translate(459 50)">
+      <rect width="134" height="44" fill="#FFF" rx="3"/>
+      <text fill="#3A8FDD" font-family="Helvetica" font-size="15">
+        <tspan x="43.23" y="28"> Button</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

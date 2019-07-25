@@ -10,9 +10,20 @@
 **************************************************************************/
 
 
-@each $_shortname, $_value in $__typography {
-  .#{$helper_ns}text-#{$_shortname} {
-    font-size: $_value !important;
+
+@each $_breakpoint, $_breakpoint-val in $__breakpoints {
+  @each $_shortname, $_value in $__typography {
+    @if $_breakpoint == 'root' {
+      .#{$helper_ns}text-#{$_shortname} {
+        font-size: $_value !important;
+      }
+    } @else {
+      @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
+        .#{$_breakpoint}\:#{$helper_ns}text-#{$_shortname} {
+          font-size: $_value !important;
+        }
+      }
+    }
   }
 }
 
@@ -24,7 +35,7 @@
 
 **************************************************************************/
 
-.#{$helper_ns}text {
+@mixin textSharedStyles {
   &-left {
     text-align: left !important;
   }
@@ -33,5 +44,19 @@
   }
   &-right {
     text-align: right !important;
+  }
+}
+
+@each $_breakpoint, $_breakpoint-val in $__breakpoints {
+  @if $_breakpoint == 'root' {
+    .#{$helper-ns}text {
+      @include textSharedStyles;
+    }
+  } @else {
+    @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
+      .#{$_breakpoint}\:#{$helper-ns}text {
+          @include textSharedStyles;
+      }
+    }
   }
 }

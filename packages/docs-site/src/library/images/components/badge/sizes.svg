@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 726 148">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v121H.5z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="142">Badge component Sizes.</tspan>
+    </text>
+    <g transform="translate(268 47)">
+      <rect width="65" height="22" fill="#3A8FDD" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10.16" y="15">REGULAR</tspan>
+      </text>
+    </g>
+    <g transform="translate(207 48)">
+      <rect width="51" height="21" fill="#3A8FDD" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9" font-weight="600">
+        <tspan x="10.88" y="14">SMALL</tspan>
+      </text>
+    </g>
+    <g transform="translate(341 44)">
+      <rect width="70" height="27" fill="#3A8FDD" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="13" font-weight="600">
+        <tspan x="14.38" y="18">LARGE</tspan>
+      </text>
+    </g>
+    <g transform="translate(421 40)">
+      <rect width="91" height="33" fill="#3A8FDD" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="14" font-weight="600">
+        <tspan x="19.24" y="21.5">XLARGE</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

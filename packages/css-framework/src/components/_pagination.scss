@@ -1,0 +1,69 @@
+$primary-color: color(primary, 900);
+$secondary-color: color(neutral, 300);
+$secondary-color-hover: color(primary, 500);
+$tertiary-color: color(neutral, 100);
+$active-color: $primary-color;
+$border-radius: 4px;
+$animation-timing: 0.3s;
+$btn-focus-width: 0.2rem;
+
+.rn-pagination__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.rn-pagination__item {
+  padding: spacing(1);
+  display: inline-block;
+
+  &:first-of-type,
+  &:last-of-type {
+    .rn-pagination__button {
+      padding: spacing(2) spacing(4);
+      color: $secondary-color;
+      background-color: transparent;
+      border: 1px solid $secondary-color;
+      box-shadow: 0 1px 2px 0 rgba(000, 000, 000, 0.15);
+
+      &:hover:not([disabled]) {
+        color: $secondary-color-hover;
+        border-color: $secondary-color-hover;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.rn-pagination__button {
+  padding: spacing(2) spacing(3);
+  background: none;
+  font-weight: 700;
+  color: $primary-color;
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  text-transform: uppercase;
+  outline: none;
+  transition: all $animation-timing;
+
+  &:hover {
+    background-color: $tertiary-color;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+  }
+
+  &.is-active {
+    background-color: $active-color;
+    color: color(neutral, white);
+  }
+}

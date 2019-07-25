@@ -1,18 +1,18 @@
-import RnCard from '../RnCard/index.vue'
-
 export default {
   name: 'RnDropdown',
-  components: {
-    RnCard,
-  },
-
   props: {
+    label: {
+      type: String,
+      required: false,
+    },
     options: {
       type: Array,
+      required: true,
       default: [],
     },
     value: {
       type: String,
+      required: false,
     },
   },
 
@@ -21,6 +21,9 @@ export default {
   }),
 
   computed: {
+    styles() {
+      return `rn-dropdown ${this.size} ${this.open ? 'is-open' : ''}`
+    },
     formattedOptions() {
       const { options } = this
 
@@ -34,14 +37,27 @@ export default {
       return options
     },
     selectedOptionLabel() {
-      const { formattedOptions, value } = this
+      if (this.linkOptions) {
+        return this.label || 'Select option'
+      }
+
+      const { formattedOptions, label, value } = this
       const selectedOption = formattedOptions.find(
         option => option.value === value
       )
-      const label = selectedOption
-        ? selectedOption.label
-        : formattedOptions[0].label
-      return label
+
+      if (!selectedOption && label && label.length > 0) {
+        return label
+      }
+
+      if (!selectedOption) {
+        return formattedOptions[0].label
+      }
+
+      return selectedOption.label
+    },
+    linkOptions() {
+      return this.options && this.options.length > 0 && this.options[0].href
     },
   },
 

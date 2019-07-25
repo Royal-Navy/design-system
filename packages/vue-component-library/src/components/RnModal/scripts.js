@@ -8,7 +8,7 @@ export default {
     RnButton,
   },
   data: () => ({
-    open: false,
+    isOpen: false,
   }),
   props: {
     title: String,
@@ -25,17 +25,5 @@ export default {
       default: 'OK',
     },
     error: Boolean,
-  },
-  methods: {
-    close() {
-      this.open = false
-      this.$emit('close')
-    },
-    clickCancel() {
-      this.$emit('cancel')
-    },
-    clickAction() {
-      this.$emit('action')
-    },
   },
 }

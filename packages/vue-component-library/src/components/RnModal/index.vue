@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="rn-modal" v-bind:class="{ error: error }">
+  <div class="rn-modal" :class="{ error: error }">
     <div class="window">
       <div class="header" v-if="title">
         <h4 class="title">{{ title }}</h4>
@@ -9,11 +9,11 @@
       </div>
       <div class="footer">
         <template v-if="!hideCancel">
-          <rn-button class="secondary h_mr-2" type="link" @click="clickCancel">Cancel</rn-button>
+          <rn-button id="cancel-button" class="secondary h_mr-2" type="link" @click="$emit('close')">Cancel</rn-button>
         </template>
         <template v-if="!hideAction">
-          <rn-button v-if="error" type="error" @click="clickAction">{{ actionButtonText }}</rn-button>
-          <rn-button v-else @click="clickAction">{{ actionButtonText }}</rn-button>
+          <rn-button id="error-button" v-if="error" type="error" @click="$emit('clickAction')">{{ actionButtonText }}</rn-button>
+          <rn-button id="action-button" state="neutral regular" v-else @click="$emit('clickAction')">{{ actionButtonText }}</rn-button>
         </template>
       </div>
     </div>

@@ -1,0 +1,38 @@
+@import "@royalnavy/css-framework";
+
+.main {
+  display: flex;
+}
+
+.aside {
+  display: none;
+}
+
+@include breakpoint("s") {
+  .post-article {
+    margin: 0;
+    order: 2;
+    flex-grow: 1;
+  }
+
+  .aside {
+    display: block;
+    flex: 0 0 180px;
+  }
+
+  .aside--primary {
+    order: 1;
+    margin-right: spacing(12);
+  }
+
+  .aside--secondary {
+    margin-left: spacing(12);
+    order: 3;
+  }
+}
+
+@include breakpoint("l") {
+  .aside {
+    flex: 0 0 320px;
+  }
+}

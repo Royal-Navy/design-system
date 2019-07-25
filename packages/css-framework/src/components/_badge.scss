@@ -1,4 +1,5 @@
-$badge-border-radius: 2px;
+$badge-border-radius: 3px;
+$badge-font-weight: 700;
 
 $badge-sizes: (
   small: (
@@ -11,6 +12,10 @@ $badge-sizes: (
   ),
   large: (
     font-size: font-size(s),
+    padding: spacing(1) spacing(3)
+  ),
+  xlarge: (
+    font-size: font-size(m),
     padding: spacing(1) spacing(3)
   )
 );
@@ -40,17 +45,17 @@ $badge-states: (
     color: color("success", 800),
     solid: color("success", 600),
     faded: color("success", 100)
-  )  
+  )
 );
 
 .rn-badge {
-  
-  border-radius: $badge-border-radius;
-  font-weight: 700;
   display: inline-block;
+  border-radius: $badge-border-radius;
+  font-weight: $badge-font-weight;
+  vertical-align: middle;
 
   @each $state, $variation in $badge-states {
-    &.#{$state} {
+    &.rn-badge--#{$state} {
       color: color(neutral, white);
       background: map-get($variation, "solid");
     }
@@ -59,7 +64,7 @@ $badge-states: (
   &--solid {
     @extend .rn-badge;
     @each $state, $variation in $badge-states {
-      &.#{$state} {
+      &.rn-badge--#{$state} {
         color: color(neutral, white);
         background: map-get($variation, "solid");
       }
@@ -69,7 +74,7 @@ $badge-states: (
   &--faded {
     @extend .rn-badge;
     @each $state, $variation in $badge-states {
-      &.#{$state} {
+      &.rn-badge--#{$state} {
         color: map-get($variation, "color");
         background: map-get($variation, "faded");
       }
@@ -77,14 +82,14 @@ $badge-states: (
   }
 
   @each $size, $values in $badge-sizes {
-    &.#{$size} {
+    &.rn-badge--#{$size} {
       font-size: map-get($values, "font-size");
       padding: map-get($values, "padding");
     }
   }
 
 
-  &.pill {
+  &.rn-badge--pill {
     border-radius: 100px;
   }
 }

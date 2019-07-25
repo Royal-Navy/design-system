@@ -1,0 +1,151 @@
+@import "@royalnavy/css-framework";
+
+$background-color: color(neutral, white);
+$border-color: #e9eef1;
+$border-radius: 4px;
+$heading-color: #3e5667;
+$text-color: #748999;
+
+
+// Scoping all tag styles to the Post Article
+.post-article {
+  // No matter the last element, ensure it does not
+  // have a margin at the bottom of the post article
+  // content.
+  padding-bottom: spacing(8);
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__header {
+    border-bottom: 1px solid color(neutral, 100);
+    padding-top: spacing(6);
+    padding-bottom: spacing(8);
+    margin-bottom: spacing(8);
+  }
+
+  &__title {
+    font-size: font-size(display-l);
+    margin: 0 0 5px 0;
+  }
+
+  &__lede {
+    font-size: font-size(m);
+    font-weight: 300;
+    margin: 0;
+  }
+
+  > svg {
+    width: 100%;
+    margin-top: spacing(4);
+
+    + ul, + ol {
+      margin-left: 16px;
+      padding-left: 0;
+    }
+  }
+
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+  color: color(neutral, 500);
+  margin-top: spacing(8);
+  margin-bottom: spacing(1);
+
+  + .data-table {
+    margin-top: spacing(4);
+  }
+}
+
+p, li {
+  font-size: font-size(s);
+  color: color(neutral, 400);
+  line-height: 1.5;
+}
+
+li {
+  margin-bottom: spacing(2);
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+hr {
+  height: 1px;
+  border: none;
+  background-color: color(neutral, 100);
+  margin: spacing(8) 0;
+}
+
+
+
+a {
+  color: color(primary, 600);
+  text-decoration: none;
+  font-weight: 600;
+  // transition: color 0.2s;
+  &:hover {
+    color: color(primary, 900);
+    text-decoration: underline;
+  }
+}
+
+pre {
+  width: 100%;
+  background-color: color(neutral, 700);
+  padding: spacing(6) spacing(8);
+  border-radius: 3px;
+  > code {
+    padding-left: 0;
+    color: color(neutral, 000);
+    background-color: unset;
+    font-size: font-size(s);
+  }
+}
+
+
+
+
+.standard-table {
+  table {
+    width: 100%;
+    font-size: font-size(s);
+    color: $text-color;
+    margin: spacing(8) 0;
+    border: 1px solid $border-color;
+    code {
+      margin-right: 5px;
+    }
+  }
+
+  thead {
+    text-align: left;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: $heading-color;
+  }
+
+  td,
+  th {
+    padding: spacing(4);
+    border-bottom: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+    background-color: $background-color;
+    &:last-child {
+      border-right: 0;
+    }
+  }
+  tr:last-child td {
+    border-bottom: 0;
+  }
+}
+
+code {
+  background-color: color(neutral, 100);
+  color: color(neutral, 600);
+  border-radius: 3px;
+  font-size: font-size(xs);
+  font-weight: 500;
+  padding: 2px spacing(2);
+}

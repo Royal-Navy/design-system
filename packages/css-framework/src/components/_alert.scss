@@ -1,41 +1,41 @@
 $alert-states: (
   neutral: (
-    background: color("neutral", 50),
-    border:     color("neutral", 100),
-    copy:       color("neutral", 600),
-    title:      color("neutral", 900)
+    background: color("neutral", 000),
+    border: color("neutral", 100),
+    copy: color("neutral", 600),
+    title: color("neutral", 900),
   ),
   primary: (
     background: color("primary", 000),
-    border:     color("primary", 100),
-    copy:       color("primary", 800),
-    title:      color("primary", 900)
+    border: color("primary", 100),
+    copy: color("primary", 800),
+    title: color("primary", 900),
   ),
   danger: (
     background: color("danger", 000),
-    border:     color("danger", 100),
-    copy:       color("danger", 800),
-    title:      color("danger", 900)
+    border: color("danger", 100),
+    copy: color("danger", 800),
+    title: color("danger", 900),
   ),
   warning: (
     background: color("warning", 100),
-    border:     color("warning", 300),
-    copy:       color("warning", 800),
-    title:      color("warning", 900)
+    border: color("warning", 300),
+    copy: color("warning", 800),
+    title: color("warning", 900),
   ),
   success: (
     background: color("success", 000),
-    border:     color("success", 200),
-    copy:       color("success", 800),
-    title:      color("success", 900)
-  )
+    border: color("success", 200),
+    copy: color("success", 800),
+    title: color("success", 900),
+  ),
 );
 
 .rn-alert {
-
+  position: relative;
   border-radius: 4px;
-  padding: spacing(4) spacing(5);
   max-width: 600px;
+  padding: spacing(4) spacing(5);
 
   &__title {
     @include font-size(s);
@@ -46,8 +46,26 @@ $alert-states: (
     margin: 0;
   }
 
+  opacity: 0;
+
+  &.open {
+    opacity: 100;
+  }
+
+  .content {
+    p {
+      line-height: 1.6;
+    }
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+  }
+
   @each $state, $variation in $alert-states {
-    &.#{$state} {      
+    &.#{$state} {
       background: map-get($variation, "background");
       border: 1px solid map-get($variation, "border");
       .rn-alert {
@@ -57,7 +75,7 @@ $alert-states: (
         &__message {
           color: map-get($variation, "copy");
         }
-      }      
+      }
     }
   }
 
@@ -79,6 +97,4 @@ $alert-states: (
   &__close {
     display: none;
   }
-
-
 }

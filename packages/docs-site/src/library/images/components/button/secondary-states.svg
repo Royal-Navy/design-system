@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 727 179">
+  <defs>
+    <rect id="b" width="134" height="44" rx="3"/>
+    <filter id="a" width="117.9%" height="154.5%" x="-9%" y="-27.3%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="4" result="shadowSpreadOuter1"/>
+      <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feColorMatrix in="shadowOffsetOuter1" values="0 0 0 0 0.164705882 0 0 0 0 0.466666667 0 0 0 0 0.780392157 0 0 0 0.5 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M1.5.5h725v143H1.5z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="173">The Secondary Button States.</tspan>
+    </text>
+    <g transform="translate(141 50)">
+      <rect width="135" height="45" x="-.5" y="-.5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="42.23" y="28">Default</tspan>
+      </text>
+    </g>
+    <g transform="translate(295 50)">
+      <rect width="134" height="44" fill="#E2E9EE" rx="3"/>
+      <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="46.38" y="28">Hover</tspan>
+      </text>
+    </g>
+    <g transform="translate(449 50)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <use fill="#E2E9EE" xlink:href="#b"/>
+    </g>
+    <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" transform="translate(449 50)">
+      <tspan x="45.76" y="28">Active</tspan>
+    </text>
+  </g>
+</svg>

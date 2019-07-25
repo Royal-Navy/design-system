@@ -1,9 +1,10 @@
 {
   "name": "nelson-frontend-component-library",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "private": true,
   "workspaces": [
     "packages/css-framework",
+    "packages/docs-site",
     "packages/eslint-config-react",
     "packages/react-component-library",
     "packages/storybook-react-input-state",
@@ -13,10 +14,14 @@
     "node": ">=10.13.0 <11"
   },
   "devDependencies": {
-    "eslint-config-prettier": "^4.1.0",
+    "concurrently": "^4.1.0",
+    "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "husky": "^1.3.1",
-    "prettier": "^1.16.4"
+    "husky": "^2.2.0",
+    "prettier": "^1.17.0"
+  },
+  "resolutions": {
+    "husky/cosmiconfig/js-yaml": "^3.13.1"
   },
   "prettier": {
     "bracketSpacing": true,
@@ -37,10 +42,9 @@
   },
   "scripts": {
     "build": "cd packages/storybook-react-input-state && yarn build && cd ../react-component-library && yarn build && cd ../vue-component-library && yarn build",
-    "lint": "cd packages/storybook-react-input-state && yarn lint  && cd ../react-component-library && yarn lint  && cd ../vue-component-library && yarn lint",
-    "lint-staged": "cd packages/storybook-react-input-state && yarn lint-staged && cd ../react-component-library && yarn lint-staged && cd ../vue-component-library && yarn lint-staged",
-    "test": "cd packages/storybook-react-input-state && yarn test && cd ../react-component-library && yarn test && cd ../vue-component-library && yarn test",
-    "test:ci": "cd packages/storybook-react-input-state && yarn test:ci && cd ../react-component-library && yarn test:ci && cd ../vue-component-library && yarn test:ci",
+    "lint": "concurrently \"yarn --cwd packages/css-framework lint\" \"yarn --cwd packages/react-component-library lint\" \"yarn --cwd packages/storybook-react-input-state lint\" \"yarn --cwd packages/vue-component-library lint\" \"yarn --cwd packages/docs-site lint\"",
+    "lint-staged": "concurrently \"yarn --cwd packages/css-framework lint-staged\" \"yarn --cwd packages/react-component-library lint-staged\" \"yarn --cwd packages/storybook-react-input-state lint-staged\" \"yarn --cwd packages/vue-component-library lint-staged\" \"yarn --cwd packages/docs-site lint-staged\"",
+    "test": "concurrently \"yarn --cwd packages/react-component-library test\" \"yarn --cwd packages/storybook-react-input-state test\" \"yarn --cwd packages/vue-component-library test\" \"yarn --cwd packages/docs-site test\"",
     "version": "node ./scripts/syncversion.js"
   }
 }

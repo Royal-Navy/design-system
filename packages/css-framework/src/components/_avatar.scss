@@ -1,28 +1,21 @@
-// .rn-avatar {
-//   // background-color: color(50, navy);
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   border-radius: 2px;
-//   width: spacing(8);
-//   height: spacing(8);
-//   // color: color(10);
-//   @include font-size(s);
-//   font-weight: 700;
-//   line-height: 1;
-//   text-transform: uppercase;
+.rn-avatar {
+  display: block;
+  position: relative;
+  margin: 0;
 
-//   &.small {
-//     width: spacing(6);
-//     height: spacing(6);
-//     @include font-size(xs);
-//     font-weight: 700;
-//   }
+  border: none;
+  background: transparent;
+}
 
-//   &.large {
-//     width: spacing(10);
-//     height: spacing(10);
-//     @include font-size(base);
-//     font-weight: 700;
-//   }
-// }
+.rn-avatar__label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  background: color(neutral, white);
+  color: color(neutral, 600);
+  font-size: 12px;
+
+}

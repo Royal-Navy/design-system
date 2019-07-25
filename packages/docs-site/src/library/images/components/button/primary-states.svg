@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 446 52">
+  <defs>
+    <rect id="b" width="134" height="44" rx="3"/>
+    <filter id="a" width="109%" height="127.3%" x="-4.5%" y="-13.6%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="shadowSpreadOuter1"/>
+      <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feColorMatrix in="shadowOffsetOuter1" values="0 0 0 0 0.22745098 0 0 0 0 0.560784314 0 0 0 0 0.866666667 0 0 0 0.503933566 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(0 4)">
+      <rect width="134" height="44" fill="#2A77C7" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="42.23" y="28">Default</tspan>
+      </text>
+    </g>
+    <g transform="translate(154 4)">
+      <rect width="134" height="44" fill="#274776" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="46.38" y="28">Hover</tspan>
+      </text>
+    </g>
+    <g transform="translate(308 4)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <use fill="#274776" xlink:href="#b"/>
+    </g>
+    <text fill="#FFF" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" transform="translate(308 4)">
+      <tspan x="45.76" y="28">Active</tspan>
+    </text>
+  </g>
+</svg>

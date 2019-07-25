@@ -22,4 +22,28 @@
     padding: spacing(3) spacing(2);
     color: color(neutral, 600);
   }
+
+  &__arrow {
+    margin-left: spacing(2);
+    &--down {
+      transform: rotate(180deg);
+      margin-left: -3px;
+    }
+    opacity: 0.4;
+  }
+
+  .sorted {
+    &.sort-asc .rn-table__arrow--down {
+      opacity: 1;
+    }
+    &.sort-desc .rn-table__arrow--up {
+      opacity: 1;
+    }
+  }
+
+  &.sortable {
+    th {
+      cursor: pointer;
+    }
+  }
 }

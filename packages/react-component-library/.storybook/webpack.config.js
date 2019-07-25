@@ -1,39 +1,8 @@
-const common = require('../webpack/webpack.common')
+const commonConfig = require('../webpack/common')
+const merge = require('webpack-merge')
 
-module.exports = {
-  plugins: common.plugins,
-  module: {
-    rules: [
-      ...common.module.rules,
-      {
-        test: /\.(scss|css)$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: false,
-              importLoaders: 2,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: () => [
-                require('postcss-flexbugs-fixes'),
-                require('postcss-preset-env')({
-                  autoprefixer: {
-                    flexbox: 'no-2009',
-                  },
-                  stage: 3,
-                }),
-              ],
-            },
-          },
-          'sass-loader',
-        ],
-      },
-    ],
-  },
-}
+module.exports = merge(commonConfig, {
+  mode: 'development',
+  devtool: 'cheap-module-eval-source-map',
+  target: 'web',
+})

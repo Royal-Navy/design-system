@@ -1,0 +1,13 @@
+{
+  "hosting": [
+    {
+      "target": "docs-site",
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    }
+  ]
+}

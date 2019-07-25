@@ -1,0 +1,54 @@
+@import "@royalnavy/css-framework";
+
+.hero-banner {
+  background-color: color(primary, 800);
+  color: color(neutral, 100);
+  margin-bottom: spacing(10);
+}
+
+.hero-banner__main {
+  width: 100%;
+  padding: spacing(12) 0 spacing(12) 0;
+
+  @media only screen and (min-width: 1000px) {
+    width: 50%;
+  }
+}
+
+.hero-banner__title {
+  color: color(neutral, white);
+  @include font-size(display-l);
+  margin: 0;
+}
+
+.hero-banner__link {
+  color: white;
+  margin-left: spacing(2);
+  display: inline-block;
+  &:hover {
+    color: white;
+  }
+}
+
+.hero-banner__text {
+  line-height: 1.6;
+  margin-bottom: spacing(5);
+  color: color(primary, 100);
+}
+
+.hero-banner__rule {
+  border: 0;
+  height: spacing(px);
+  background-color: color(primary, 700);
+  margin: 0;
+}
+
+.hero-banner__stakeholder {
+  background-color: color(primary, 900);
+}
+
+.hero-banner__stakeholder-message {
+  margin: 0;
+  color: color(primary, 100);
+  padding: spacing(5) 0;
+}

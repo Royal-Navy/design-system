@@ -14,7 +14,7 @@
     "media-feature-name-no-unknown": true,
     "no-empty-source": true,
     "no-extra-semicolons": true,
-    "unit-blacklist": ["em"],        
+    "unit-blacklist": ["em"],
     "property-no-vendor-prefix": true,
     "declaration-no-important": true,
     "declaration-property-unit-whitelist": {
@@ -28,7 +28,11 @@
     "string-quotes": "double",
     "property-case": "lower",
     "declaration-colon-space-before": "never",
-    "block-closing-brace-newline-after": "always",
+    "block-closing-brace-newline-after": [
+      "always",{
+        "ignoreAtRules": ["if", "else"]
+      }
+    ],
     "block-opening-brace-space-before": "always",
     "selector-attribute-brackets-space-inside": "never",
     "selector-attribute-operator-space-after": "never",
@@ -48,6 +52,6 @@
     "at-rule-name-space-after": "always",
     "at-rule-semicolon-space-before": "never",
     "indentation": 2,
-    "linebreaks": "unix"   
+    "linebreaks": "unix"
   }
 }
