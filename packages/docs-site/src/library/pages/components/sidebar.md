@@ -8,11 +8,18 @@ import { Icons, Sidebar, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
+import SidebarComponent from '../../images/components/sidebar/component.svg'
+import SidebarAnatomy from '../../images/components/sidebar/anatomy.svg'
+import SidebarStates from '../../images/components/sidebar/states.svg'
 
 # Overview
-An application Sidebar using icons and indicators on the left of the screen
+The Sidebar component is a main navigational item for a NELSON Standards application. It is fixed to the left hand of the screen and extends the full height of the browser. This component stays in place whilst the application scrolls, ensuring top navigational items are always within the user's reach.
+
+<SidebarComponent />
 
 ## Usage
+Only one Sidebar component should be used per page. It should contain your top level navigational items, not sub-navigational items/actions for a single page.
+
 
 <TabSet>
 
@@ -20,61 +27,25 @@ An application Sidebar using icons and indicators on the left of the screen
 
 <SketchWidget name="Sidebar" href="/standards-toolkit.sketch" />
 
-  ## Design
-  Introduction to the design section.
-
   ### Anatomy
-  The Anatomy is the breakdown of the component.
+  <SidebarAnatomy />
 
-  [ Image breaking down the component’s anatomy ]
+  The sidebar component has two main sections - the main navigational area at the top of the bar, and the fixed area at the bottom of the bar.
 
-  Each part of the component in the image should be labelled with a number. Underneath, create a list of each of the labeled items, explaining what they are. This list should also indicate to the reader whenever an item is an optional include.
+  1. **Container**. The container is of fixed width and places the component on the left hand edge of the application.
+  2. **App Nav**. The App Nav section contains navigational items for the current application. This can be customised to meet the application's requirements.
+  3. **Indicators**. The Indicator sections are fixed throughout all NELSON applications. This section (optionally) contains a profile button and a notification sheet.
+  
+### Sizing & Spacing
+The Sidebar is only available in 1 size. As this is a top level component, customisation is limited (outside of link destinations).
 
-  Any specific notes on a part of the anatomy breakdown should be included here. This includes dos and don’ts with accompanying image examples.
+### States
+<SidebarStates />
 
-  ### Sizing & Spacing
-  Much like the Anatomy section, the Sizing & Spacing section should be a breakdown of the construction of the component. Red line guides should be added to the component, showing the spacing between the different anatomy parts.
+The sidebar has two states - collapsed and expanded. By default, the sidebar is collapsed to the left of the screen. Hovering on any of the App Nav link icons will expand the sidebar to show the associated labels.
 
-  ### States (if applicable) 
-  This section covers all the different component states including its default state, hover, active, and disabled.
-  [ Image / interactive example of component states ]
-
-  ### Hierarchy & Placement
-  This section covers how a component should sit within an application’s hierarchy. It also provides insight as when to use the different variations listed below.
-
-  ### Variation [ Repeatable Section ] 
-  Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
-
-  [ Image / interactive example of Component ]
-
-  #### Usage
-
-  #### Anatomy
-  [ Image breaking down the component’s anatomy ]
-
-  #### Sizing & Spacing
-  [ Image of component with red guide lines overlaid ]
-
-  #### States (if applicable)
-  [ Image / interactive example of component states ]
-
-  #### Hierarchy & Placement
-
-  ### Adornments [ Repeatable Section ]
-  Include any component adornments here. Much like the variations section above, this section is repeatable.
-
-  [ Image / interactive example of Component ]
-
-  #### Usage
-
-  #### Anatomy
-  [ Image breaking down the component’s anatomy ]
-
-  ### Sizing & Spacing
-  [ Image of component with red guide lines overlaid ]
-
-  ### States (if applicable)
-  [ Image / interactive example of component states ]
+### Hierarchy & Placement
+As the Sidebar is a top level component, only one should be used per application. It is fixed to the left hand edge of the application.
 
 </Tab>
 
