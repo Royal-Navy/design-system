@@ -343,14 +343,14 @@ workflows:
             branches:
               only:
                 - master
-      - publish_vue-component-library:
-          requires:
-            - test_vue-component-library
-            - publish_css-framework
-          filters:
-            branches:
-              only:
-                - master
+      # - publish_vue-component-library:
+      #     requires:
+      #       - test_vue-component-library
+      #       - publish_css-framework
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
       - test_docs-site:
           requires:
             - test_react-component-library
@@ -370,7 +370,7 @@ workflows:
           requires:
             - publish_css-framework
             - publish_react-component-library
-            - publish_vue-component-library
+            # - publish_vue-component-library
             - build_docs-site
           filters:
             branches:
