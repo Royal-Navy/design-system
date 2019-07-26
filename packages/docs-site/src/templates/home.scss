@@ -1,0 +1,59 @@
+@import "@royalnavy/css-framework";
+
+.home--info {
+  border-top: 1px dotted color(neutral, 200);
+  padding: spacing(10) 0;
+}
+
+.home__title {
+  font-size: font-size(xl);
+  margin-bottom: spacing(8);
+}
+
+.home--updates {
+  padding: spacing(4);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  .card__title {
+    font-size: font-size(l);
+  }
+
+  .card__text {
+    font: {
+      size: font-size(s);
+      weight: 300;
+    }
+    line-height: 1.5;
+  }
+
+  
+}
+
+.home--contact {
+  margin-top: spacing(6);
+  padding: spacing(4);
+  @include breakpoint('m') {
+    margin-top: 0;
+    padding: spacing(4) spacing(8) spacing(4) spacing(12);
+  }
+  .card__title {
+    font-size: font-size(l);
+    transition: color 0.2s;
+  }
+
+  svg {
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    .card__title {
+      color: color(primary, 500);
+    }
+    .card__link {
+      svg {
+        transform: translateX(10px);
+        fill: color(primary, 500);
+      }
+    } 
+  }
+}
