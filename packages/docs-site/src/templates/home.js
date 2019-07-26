@@ -6,7 +6,7 @@ import { graphql } from 'gatsby'
 import '../helpers/css/fonts.css'
 import '@royalnavy/css-framework/index.scss'
 
-import './default.scss'
+import './home.scss'
 
 import Layout from '../components/presenters/layout'
 import MastHead from '../components/presenters/Masthead'
