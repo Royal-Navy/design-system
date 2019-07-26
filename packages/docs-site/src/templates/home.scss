@@ -45,15 +45,5 @@
     transition: all 0.2s;
   }
 
-  &:hover {
-    .card__title {
-      color: color(primary, 500);
-    }
-    .card__link {
-      svg {
-        transform: translateX(10px);
-        fill: color(primary, 500);
-      }
-    } 
-  }
+  
 }
