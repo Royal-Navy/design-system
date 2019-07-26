@@ -196,6 +196,18 @@ jobs:
           name: Publish package
           working_directory: packages/storybook-react-input-state
           command: npm publish --registry https://$NPM_REGISTRY
+  publish_eslint-config-react:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Authenticate NPM
+          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          working_directory: packages/eslint-config-react
+          command: npm publish --registry https://$NPM_REGISTRY
   publish_css-framework:
     executor: node
     steps:
@@ -324,6 +336,11 @@ workflows:
       - publish_storybook-react-input-state:
           requires:
             - test_storybook-react-input-state
+          filters:
+            branches:
+              only:
+                - master
+      - publish_eslint-config-react:
           filters:
             branches:
               only:
