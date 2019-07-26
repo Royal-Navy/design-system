@@ -17,8 +17,9 @@ export function getNotificationPositionOnRight(
   elementWindow: any = window
 ): PositionType {
   const elemRect = element.getBoundingClientRect()
-  const bottom = elementWindow.innerHeight - elemRect.bottom - 8
-  const left = elemRect.left + elemRect.width + 18
+  const bottom =
+    elementWindow.innerHeight - elemRect.bottom - 8 + window.scrollY
+  const left = elemRect.left + elemRect.width + 18 + window.scrollX
 
   return { bottom, left }
 }
@@ -28,8 +29,9 @@ export function getNotificationPositionBelow(
 ): PositionType {
   const elemRect = element.getBoundingClientRect()
 
-  const left = elemRect.left - POPOVER_WIDTH + elemRect.width + 20
-  const top = elemRect.bottom + 12
+  const left =
+    elemRect.left - POPOVER_WIDTH + elemRect.width + 20 + +window.scrollX
+  const top = elemRect.bottom + 12 + window.scrollY
 
   return { left, top }
 }
