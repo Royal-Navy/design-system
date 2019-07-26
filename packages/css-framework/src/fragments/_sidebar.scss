@@ -93,11 +93,12 @@ body.has-sidebar {
 }
 
 
-
+.rn-sidebar__bottom {
+  width: $bar-width;
+}
 .rn-sidebar__bottom .rn-sidebar__nav-link {
   padding-top: spacing(2);
   padding-bottom: spacing(2);
-  width: $bar-width;
   cursor: pointer;
 }
 
