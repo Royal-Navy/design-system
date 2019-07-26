@@ -15,7 +15,7 @@ const Layout = ({ children, className }) => (
         }
       }
     `}
-    render={() => <div className={className}>{children}</div>}
+    render={() => <div className={`layout ${className}`}>{children}</div>}
   />
 )
 

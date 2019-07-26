@@ -2,14 +2,15 @@
 
 .masthead {
   margin-bottom: spacing(3);
+  background: white;
 }
 
 .masthead__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: spacing(3);
-  margin-bottom: spacing(3);
+  padding-top: spacing(3);
+  padding-bottom: spacing(3);
 }
 
 .masthead .masthead__button {
@@ -18,8 +19,8 @@
 
 .masthead__nav {
   display: none;
-  margin-top: spacing(3);
-  margin-bottom: spacing(3);
+  padding-top: spacing(3);
+  padding-bottom: spacing(3);
 }
 
 .masthead__nav.is-open {
