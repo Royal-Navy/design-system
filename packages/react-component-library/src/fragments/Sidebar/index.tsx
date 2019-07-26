@@ -3,16 +3,12 @@ import React, { useState } from 'react'
 import { Avatar, Link } from '../../components'
 import NotificationPanel from '../NotificationPanel'
 
-interface UserLinkType {
-  initials: string
-}
-
 interface SidebarProps {
+  LinkComponent?: any
   navItems: NavItemTypes[]
   NotificationsPopoverContent?: JSX.Element
   unreadNotification?: boolean
-  user?: UserLinkType
-  LinkComponent?: any
+  user?: UserType
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
@@ -24,7 +20,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const [open, setOpen] = useState()
 
-  const renderUserLink = ({ initials, ...rest }: UserLinkType): JSX.Element => (
+  const renderUserLink = ({ initials, ...rest }: UserType): JSX.Element => (
     <LinkComponent className="rn-sidebar__nav-link" {...rest}>
       <Avatar
         className="rn-sidebar__avatar rn-sidebar__nav-label"

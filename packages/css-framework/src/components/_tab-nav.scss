@@ -18,6 +18,7 @@ $btn-focus-width: 0.2rem;
 .rn-tab-nav__item {
   border-bottom: 4px solid transparent;
   color: color(neutral, 300);
+  margin-bottom: 0;
   text-align: center;
 
   &.is-active {

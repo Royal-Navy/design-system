@@ -1,0 +1,3 @@
+interface UserType {
+  initials: string
+}
