@@ -39,7 +39,7 @@ const Radio: React.FC<RadioProps> = ({
         type="radio"
         name={name}
         value={value}
-        checked={!!value}
+        checked={value === id}
         onChange={onChange}
         onBlur={onBlur}
         disabled={disabled}

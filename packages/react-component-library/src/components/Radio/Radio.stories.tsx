@@ -9,19 +9,24 @@ import Radio from './index'
 const stories = storiesOf('Radio', module)
 
 interface Data {
-  example: boolean
+  example: string
 }
 
 const initialValues: Data = {
-  example: false,
+  example: 'option2',
 }
 
 const onSubmit = (data: Data): void => {
   action(`Form Submit ${JSON.stringify(data)}`)
 }
 
+const onChange = (event: React.SyntheticEvent): void => {
+  const target = event.currentTarget
+  initialValues.example = target.id
+}
+
 const validationSchema = yup.object().shape({
-  example: yup.boolean(),
+  example: yup.string(),
 })
 
 stories.add('Formik', () => (
@@ -32,10 +37,28 @@ stories.add('Formik', () => (
   >
     <Form>
       <Field
-        className="rn-textinput--is-valid"
+        className="rn-radio--is-valid"
+        id="option1"
         name="example"
         component={Radio}
         label="My Label"
+        onChange={onChange}
+      />
+      <Field
+        className="rn-radio--is-valid"
+        id="option2"
+        name="example"
+        component={Radio}
+        label="My Label"
+        onChange={onChange}
+      />
+      <Field
+        className="rn-radio--is-valid"
+        id="option3"
+        name="example"
+        component={Radio}
+        label="My Label"
+        onChange={onChange}
       />
     </Form>
   </Formik>
