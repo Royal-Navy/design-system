@@ -68,3 +68,9 @@ $btn-focus-width: 0.1rem;
   background: color(primary, 600);
   border: 3px solid color(neutral, white);
 }
+
+.rn-radio__invalid-feedback {
+  color: color(danger, 600);
+  margin: spacing(2) spacing(3);
+  font-size: font-size(s);
+}
