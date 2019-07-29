@@ -13,7 +13,7 @@ interface Data {
 }
 
 const initialValues: Data = {
-  example: 'option2',
+  example: 'option1',
 }
 
 const onSubmit = (data: Data): void => {
@@ -41,7 +41,7 @@ stories.add('Formik', () => (
         id="option1"
         name="example"
         component={Radio}
-        label="My Label"
+        label="My Label 1"
         onChange={onChange}
       />
       <Field
@@ -49,7 +49,7 @@ stories.add('Formik', () => (
         id="option2"
         name="example"
         component={Radio}
-        label="My Label"
+        label="My Label 2"
         onChange={onChange}
       />
       <Field
@@ -57,7 +57,7 @@ stories.add('Formik', () => (
         id="option3"
         name="example"
         component={Radio}
-        label="My Label"
+        label="My Label 3"
         onChange={onChange}
       />
     </Form>
