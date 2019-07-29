@@ -10,6 +10,11 @@ $btn-focus-width: 0.1rem;
   user-select: none;
 }
 
+.rn-radio__outer-wrapper {
+  display: inline-flex;
+  flex-direction: row;
+}
+
 .rn-radio__label {
   color: color(neutral, 400);
 }

@@ -31,23 +31,25 @@ const Radio: React.FC<RadioProps> = ({
 
   return (
     <div className={classes} data-testid="container">
-      <label className="rn-radio__label" htmlFor={id} data-testid="label">
-        <input
-          id={id}
-          className="rn-radio__radio"
-          type="radio"
-          name={name}
-          value={value}
-          checked={value === id}
-          onChange={onChange}
-          onBlur={onBlur}
-          disabled={disabled}
-          {...rest}
-          data-testid="radio"
-        />
-        <span className="rn-radio__checkmark" />
-        {label}
-      </label>
+      <div className="rn-radio__outer-wrapper">
+        <label className="rn-radio__label" htmlFor={id} data-testid="label">
+          <input
+            id={id}
+            className="rn-radio__radio"
+            type="radio"
+            name={name}
+            value={value}
+            checked={value === id}
+            onChange={onChange}
+            onBlur={onBlur}
+            disabled={disabled}
+            {...rest}
+            data-testid="radio"
+          />
+          <span className="rn-radio__checkmark" />
+          {label}
+        </label>
+      </div>
       {hasError && (
         <div className="rn-radio__invalid-feedback" data-testid="error">
           {errors[name]}
