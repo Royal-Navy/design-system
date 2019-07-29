@@ -1,0 +1,70 @@
+$btn-focus-width: 0.1rem;
+
+.rn-radio {
+  display: block;
+  position: relative;
+  padding-left: spacing(8);
+  margin-bottom: spacing(2);
+  cursor: pointer;
+  font-size: font-size(m);
+  user-select: none;
+}
+
+.rn-radio__label {
+  color: color(neutral, 400);
+}
+
+.rn-radio .rn-radio__radio {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.rn-radio__checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: color(neutral, white);
+  border-radius: 999px;
+  border: 2px solid color(neutral, 200);
+}
+
+/* Active state, add blue outline */
+.rn-radio input:active ~ .rn-radio__checkmark {
+  border: 2px solid color(primary, 500);
+  outline: none;
+  box-shadow: 0 0 0 $btn-focus-width color(primary, 500);
+}
+
+/* Checked state, add a blue border */
+.rn-radio input:checked ~ .rn-radio__checkmark {
+  background-color: color(neutral, white);
+  border: 4px solid color(primary, 600);
+}
+
+/* Create the indicator, hidden when not checked */
+.rn-radio__checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator when checked */
+.rn-radio input:checked ~ .rn-radio__checkmark:after {
+  display: block;
+}
+
+/* Style the indicator */
+.rn-radio .rn-radio__checkmark:after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: color(primary, 600);
+  border: 3px solid color(neutral, white);
+}
