@@ -1,3 +1,4 @@
+$animation-timing: 0.3s;
 $btn-focus-width: 0.1rem;
 
 .rn-radio {
@@ -43,6 +44,7 @@ $btn-focus-width: 0.1rem;
   border: 2px solid color(primary, 500);
   outline: none;
   box-shadow: 0 0 0 $btn-focus-width color(primary, 500);
+  transition: all $animation-timing;
 }
 
 /* Checked state, add a blue border */
