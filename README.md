@@ -4,9 +4,9 @@
 
 The Standards Toolkit provides a multi-framework, responsive component library and SASS framework. It's built to help developers build web applications that meet the Royal Navy's service standards.
 
-## Latest release & versioning
+## Releases & versioning
 
-We adhere to [semantic versioning](https://semver.org/). Version [1.0.1](https://github.com/Royal-Navy/standards-toolkit/releases/tag/1.0.1) is the current stable release.
+All packages are published to the [NPM registry](https://www.npmjs.com/search?q=%40royalnavy) and we adhere to [semantic versioning](https://semver.org/).
 
 ## Supported technologies
 
