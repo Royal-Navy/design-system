@@ -8,7 +8,9 @@ import { Nav, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
-
+import NavComponent from '../../images/components/nav/component.svg'
+import NavAnatomy from '../../images/components/nav/anatomy.svg'
+import NavStates from '../../images/components/nav/states.svg'
 
 # Overview
 
@@ -21,6 +23,8 @@ In some cases navigation can be combined with other elements. One example of thi
 The component provides styling for focus, active and hover. The styles for navigation items is near identical to buttons, to keep a consistent look and feel.
 
 The url provided to a navigation link will be used as the 'to' property of a react router link.
+<NavComponent />
+
 
 ## Usage
 
@@ -30,61 +34,23 @@ The url provided to a navigation link will be used as the 'to' property of a rea
 
 <SketchWidget name="Nav" href="/standards-toolkit.sketch" />
 
-  ## Design
-  Introduction to the design section.
+  ### Anatomy  
 
-  ### Anatomy
-  The Anatomy is the breakdown of the component.
+  <NavAnatomy />
 
-  [ Image breaking down the component’s anatomy ]
+1. **Container**. The Nav component is wrapped in an invisible container. This allows it to be placed inside larger composite components, without breaking their visual look.
+2. **Link**. The Nav links can either be applied vertically or horizontally. These will automatically switch to vertical on Mobile devices to ensure they fit on the screen.
 
-  Each part of the component in the image should be labelled with a number. Underneath, create a list of each of the labeled items, explaining what they are. This list should also indicate to the reader whenever an item is an optional include.
+### States
 
-  Any specific notes on a part of the anatomy breakdown should be included here. This includes dos and don’ts with accompanying image examples.
+<NavStates />
 
-  ### Sizing & Spacing
-  Much like the Anatomy section, the Sizing & Spacing section should be a breakdown of the construction of the component. Red line guides should be added to the component, showing the spacing between the different anatomy parts.
+The Nav Links have 3 states - Default, Hover, and Active.
 
-  ### States (if applicable) 
-  This section covers all the different component states including its default state, hover, active, and disabled.
-  [ Image / interactive example of component states ]
+### Hierarchy & Placement
+The Nav component can be used to link to both top level pages and subpages. Try to keep all the links in the same navigation at the same page level. This makes the mental model of your application structure easier to process for the user.
 
-  ### Hierarchy & Placement
-  This section covers how a component should sit within an application’s hierarchy. It also provides insight as when to use the different variations listed below.
 
-  ### Variation [ Repeatable Section ] 
-  Introduction to the component variation. For each sub heading, outline any differences between the default component and this variation. 
-
-  [ Image / interactive example of Component ]
-
-  #### Usage
-
-  #### Anatomy
-  [ Image breaking down the component’s anatomy ]
-
-  #### Sizing & Spacing
-  [ Image of component with red guide lines overlaid ]
-
-  #### States (if applicable)
-  [ Image / interactive example of component states ]
-
-  #### Hierarchy & Placement
-
-  ### Adornments [ Repeatable Section ]
-  Include any component adornments here. Much like the variations section above, this section is repeatable.
-
-  [ Image / interactive example of Component ]
-
-  #### Usage
-
-  #### Anatomy
-  [ Image breaking down the component’s anatomy ]
-
-  ### Sizing & Spacing
-  [ Image of component with red guide lines overlaid ]
-
-  ### States (if applicable)
-  [ Image / interactive example of component states ]
 
   </Tab>
 
