@@ -1,0 +1,12 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "version": "1.0.1",
+  "npmClient": "yarn",
+  "command": {
+    "publish": {
+      "message": "publish npm packages by lerna [ci skip]"
+    }
+  }
+}

@@ -1,15 +1,15 @@
-# Definition of Done
+# Definition of done
 
 > A pull request for a component must contain a fully tested, documented and finished component in a state it can be shared with partner developers.
 
 ## Requirements
 
 - [ ] Visual and behavioural requirements clearly documented in Jira ticket.
-- [ ] Pull request refers to jira ticket.
+- [ ] Pull request refers to Jira ticket.
 
 ## Documentation
 
-- [ ] Markdown documentation in RoyalNavy.io package based on [component documentation template](../packages/documentation/library/templates/components.md).
+- [ ] MDX documentation in docs-site.
 
 ## Styles
 
@@ -20,7 +20,7 @@
 - [ ] Provides evidence of testing with Chromium 38.
 - [ ] Visually renders to meet visual requirements defined in requirements.
 
-## Javascript Component
+## Javascript component
 
 - [ ] React/Vue Javascript renders semantic HTML
 - [ ] Does not produce errors in the browser console.
