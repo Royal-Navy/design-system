@@ -16,7 +16,7 @@ The following view layer libraries are currently supported:
 
 ## Component usage guidelines
 
-Please refer to the [component demo pages](https://docs.royalnavy.io/components) to see live examples, code snippets and details on how to cosume each of the components.
+Please refer to the [component demo pages](https://docs.royalnavy.io/components) to see live examples, code snippets and details on how best to consume each of the components.
 
 ## Installation & quick start
 
