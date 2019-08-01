@@ -14,7 +14,6 @@
     "node": ">=10.13.0 <11"
   },
   "devDependencies": {
-    "concurrently": "^4.1.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^2.2.0",
@@ -42,9 +41,9 @@
     }
   },
   "scripts": {
-    "build": "cd packages/storybook-react-input-state && yarn build && cd ../react-component-library && yarn build && cd ../vue-component-library && yarn build",
-    "lint": "concurrently \"yarn --cwd packages/css-framework lint\" \"yarn --cwd packages/react-component-library lint\" \"yarn --cwd packages/storybook-react-input-state lint\" \"yarn --cwd packages/vue-component-library lint\" \"yarn --cwd packages/docs-site lint\"",
-    "lint-staged": "concurrently \"yarn --cwd packages/css-framework lint-staged\" \"yarn --cwd packages/react-component-library lint-staged\" \"yarn --cwd packages/storybook-react-input-state lint-staged\" \"yarn --cwd packages/vue-component-library lint-staged\" \"yarn --cwd packages/docs-site lint-staged\"",
-    "test": "concurrently \"yarn --cwd packages/react-component-library test\" \"yarn --cwd packages/storybook-react-input-state test\" \"yarn --cwd packages/vue-component-library test\" \"yarn --cwd packages/docs-site test\""
+    "build": "lerna run --parallel build",
+    "lint": "lerna run --parallel lint",
+    "lint-staged": "lerna run --parallel lint-staged",
+    "test": "lerna run --parallel test"
   }
 }
