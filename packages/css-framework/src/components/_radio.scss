@@ -1,4 +1,4 @@
-$animation-timing: 0.3s;
+$animation-timing: 0.2s;
 $btn-focus-width: 0.1rem;
 
 .rn-radio {
@@ -40,6 +40,7 @@ $btn-focus-width: 0.1rem;
 }
 
 /* Active state, light blue outline */
+.rn-radio input:hover ~ .rn-radio__checkmark,
 .rn-radio input:active ~ .rn-radio__checkmark {
   border: 1px solid color(primary, 500);
   outline: none;
