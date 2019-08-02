@@ -18,6 +18,9 @@ body.has-sidebar {
   background: color(neutral, 600);
   color: color(neutral, white);
   z-index: 700;
+
+  // Mobile browsers include their navbar in the height so a bottom aligned element needs to be moved up
+  padding-bottom: 30px;
 }
 
 .rn-sidebar__nav {
@@ -90,11 +93,12 @@ body.has-sidebar {
 }
 
 
-
+.rn-sidebar__bottom {
+  width: $bar-width;
+}
 .rn-sidebar__bottom .rn-sidebar__nav-link {
   padding-top: spacing(2);
   padding-bottom: spacing(2);
-  width: $bar-width;
   cursor: pointer;
 }
 

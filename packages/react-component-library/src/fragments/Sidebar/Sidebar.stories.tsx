@@ -28,7 +28,7 @@ const stories = storiesOf('Sidebar', module)
 
 const navData: NavItemAnchorType[] = [
   {
-    href: '/',
+    href: '#',
     Image: House,
     label: 'Home',
   },
