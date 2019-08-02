@@ -1,11 +1,11 @@
 $animation-timing: 0.2s;
-$btn-focus-width: 0.1rem;
+$btn-focus-width: 1px;
 
 .rn-checkbox {
   display: block;
   position: relative;
-  padding-left: spacing(5);
-  margin-bottom: spacing(2);
+  padding-left: spacing(6);
+  margin-bottom: spacing(3);
   cursor: pointer;
   font-size: font-size(s);
   user-select: none;
@@ -32,13 +32,14 @@ $btn-focus-width: 0.1rem;
   position: absolute;
   top: 1px;
   left: 0;
-  height: 16px;
-  width: 16px;
+  height: 18px;
+  width: 18px;
   background-color: color(neutral, white);
   border: 1px solid color(neutral, 200);
+  border-radius: 4px;
 }
 
-/* Active state, light blue outline */
+/* Hover state, light blue outline */
 .rn-checkbox input:hover ~ .rn-checkbox__checkmark,
 .rn-checkbox input:active ~ .rn-checkbox__checkmark {
   border: 1px solid color(primary, 500);
@@ -47,11 +48,11 @@ $btn-focus-width: 0.1rem;
   transition: all $animation-timing;
 }
 
-/* Checked state, blue border */
+/* Checked state, solid blue */
 .rn-checkbox input:checked ~ .rn-checkbox__checkmark {
-  background-color: color(neutral, white);
-  border: 1px solid color(primary, 500);
-  box-shadow: 0 0 0 $btn-focus-width color(primary, 500);
+  background-color: color(primary, 600);
+  border: 1px solid color(primary, 600);
+  text-align: center;
 }
 
 .rn-checkbox__checkmark:after {
@@ -64,14 +65,17 @@ $btn-focus-width: 0.1rem;
   display: block;
 }
 
-/* Checkmark, blue dot */
+/* Checkmark, white tick */
 .rn-checkbox .rn-checkbox__checkmark:after {
+  content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOC44MjIgMGMxLjA1LS4wMjcgMS41NzQgMS4zMDQuODI3IDIuMDhMNC4yOTggNy43NGEuODMuODMgMCAwIDEtMS4yMDcgMEwuMzc2IDQuODU1Qy0uNzUyIDMuNzE4LjkxNCAxLjk1NiAxLjk5IDMuMTQ5bDEuNTA4IDEuNTk1Yy4xMDUuMTEuMjg4LjExLjQwNyAwbDQuMTMtNC4zN0ExLjEgMS4xIDAgMCAxIDguODIzIDB6IiBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  line-height: 1;
   background: color(primary, 600);
-  border: 3px solid color(neutral, white);
+  color: color(neutral, white);
+  border-radius: 2px;
 }
 
 .rn-checkbox__invalid-feedback {
