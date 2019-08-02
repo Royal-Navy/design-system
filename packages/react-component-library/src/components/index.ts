@@ -2,6 +2,7 @@ import Avatar from './Avatar'
 import Badge from './Badge'
 import Breadcrumbs from './Breadcrumbs'
 import Button from './Button'
+import Checkbox from './Checkbox'
 import Link from './Link'
 import Nav from './Nav'
 import PhaseBanner from './PhaseBanner'
@@ -16,6 +17,7 @@ export {
   Badge,
   Breadcrumbs,
   Button,
+  Checkbox,
   Link,
   Nav,
   PhaseBanner,
