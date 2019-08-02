@@ -4,11 +4,9 @@ description: 'A multi-framework, responsive component library and SASS framework
 header: true
 ---
 
-### Latest release & versioning
+### Releases & versioning
 
-We adhere to [semantic versioning](https://semver.org/).
-
-Version [1.0.0](https://github.com/Royal-Navy/standards-toolkit/releases/tag/1.0.0) is the current stable release.
+All packages are published to the [NPM registry](https://www.npmjs.com/search?q=%40royalnavy) and we adhere to [semantic versioning](https://semver.org/).
 
 ### Supported technologies
 
