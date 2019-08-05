@@ -22,14 +22,6 @@ const onSubmit = (data: Data): void => {
   action(`Form Submit ${JSON.stringify(data)}`)
 }
 
-const onChange = (event: React.SyntheticEvent): void => {
-  const target = event.currentTarget
-  const name = target.getAttribute('name')
-  const isSet = target.getAttribute('value') === 'true'
-
-  initialValues[name] = !isSet
-}
-
 const validationSchema = yup.object().shape({
   example: yup.string(),
 })
@@ -46,21 +38,18 @@ stories.add('Formik', () => (
         name="example1"
         component={Checkbox}
         label="My Label 1"
-        onChange={onChange}
       />
       <Field
         className="rn-checkbox--is-valid"
         name="example2"
         component={Checkbox}
         label="My Label 2"
-        onChange={onChange}
       />
       <Field
         className="rn-checkbox--is-valid"
         name="example3"
         component={Checkbox}
         label="My Label 3"
-        onChange={onChange}
       />
     </Form>
   </Formik>
