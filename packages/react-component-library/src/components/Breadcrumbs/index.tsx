@@ -5,7 +5,7 @@ import Link from '../Link'
 import Breadcrumb from './Breadcrumb'
 
 interface BreadcrumbsProps extends ComponentWithClass {
-  LinkComponent?: LinkTypes
+  LinkComponent?: any
   navItems: any[]
 }
 
