@@ -10,13 +10,17 @@ import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
 
+import CheckboxComponent from '../../../images/components/forms/checkbox/component.svg'
+import CheckboxAnatomy from '../../../images/components/forms/checkbox/anatomy.svg'
+import CheckboxStates from '../../../images/components/forms/checkbox/states.svg'
+
 # Checkbox
 Checkboxes let users select multiple options at once.
 
-<RadioComponent />
+<CheckboxComponent />
 
 ## Usage
-The Radio component allows the active selection of one input at a time. It typically appears in forms and modals. If you require the user to select multiple options, then the [Checkbox component](/forms/checkbox) should be used instead.
+The checkbox component allows the active selection of one or more input values at a time. It typically appears in forms and modals. If you require the user to select a single option from a series of items, then the [Radio Button component](/forms/radio) should be used instead.
 
 
 <TabSet>
@@ -24,6 +28,18 @@ The Radio component allows the active selection of one input at a time. It typic
 <Tab title="Design">
 
 <SketchWidget name="Checkbox" href="/standards-toolkit.sketch" />
+
+### Anatomy
+<CheckboxAnatomy />
+
+1. **Checkbox Button**. The checkbox Button is a single value toggle 
+2. **Label**. The Label is used to provide context to the Checkbox Button. It is however an optional property.
+
+
+### States
+<CheckboxStates />
+
+The Checkbox Button has 3 available states - Default, Hover/Active, and Checked.
 
 </Tab>
 
