@@ -8,7 +8,7 @@ interface BreadcrumbProps {
   first?: boolean
   label: string
   last?: boolean
-  LinkComponent?: LinkTypes
+  LinkComponent?: any
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({
