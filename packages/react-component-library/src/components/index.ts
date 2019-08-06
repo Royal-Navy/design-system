@@ -1,3 +1,4 @@
+// Components
 import Avatar from './Avatar'
 import Badge from './Badge'
 import Breadcrumbs from './Breadcrumbs'
@@ -10,6 +11,9 @@ import TabSet from './TabSet'
 import TabNav from './TabNav'
 import Tab from './TabSet/Tab'
 import TextInput from './TextInput'
+
+// Enhancers
+import withFormik from '../enhancers/withFormik'
 
 export {
   Avatar,
@@ -24,4 +28,6 @@ export {
   TabNav,
   TabSet,
   TextInput,
+
+  withFormik
 }
