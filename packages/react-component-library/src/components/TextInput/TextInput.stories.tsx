@@ -40,11 +40,20 @@ stories.add('Formik', () => (
       <Field
         className="rn-textinput--is-valid"
         name="colour"
-        component={TextInput}
         label="My Label"
+        render={({ field, form: { touched, errors } }: any) => (
+          <div>
+            <TextInput {...field} />
+            {touched[field.name] && errors[field.name] && (
+              <div className="rn-textinput__invalid-feedback">
+                {errors[field.name]}
+              </div>
+            )}
+          </div>
+        )}
       />
 
-      <Field name="name" component={TextInput} label="Name" />
+      {/* <Field name="name" component={TextInput} label="Name" />
       <Field name="city" component={TextInput} label="City" />
       <Field
         name="hero"
@@ -63,7 +72,7 @@ stories.add('Formik', () => (
         component={TextInput}
         placeholder="search"
         endAdornment={<Search />}
-      />
+      /> */}
       <Button variant="secondary" onClick={onCancel}>
         Cancel
       </Button>
