@@ -5,7 +5,7 @@ export interface InputProps {
   className?: string
   disabled?: boolean
   endAdornment?: React.ReactNode
-  value: string
+  value?: string
   name: string
   onChange?: (event: React.SyntheticEvent) => void
   onBlur?: (event: React.SyntheticEvent) => void

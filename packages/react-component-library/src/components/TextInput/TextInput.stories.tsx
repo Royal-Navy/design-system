@@ -12,6 +12,19 @@ import useFormik from '../../enhancers/useFormik'
 
 const stories = storiesOf('TextInput', module)
 
+stories.add('Vanilla', () => (
+  <Form>
+    <TextInput
+      className="rn-textinput--is-valid"
+      name="colour"
+      label="My Label"
+    />
+    <TextInput name="name" label="Name" />
+    <TextInput name="hero" label="Hero" startAdornment={<Search />} />
+    <TextInput name="fruit" label="Fruit" endAdornment={<Search />} />
+  </Form>
+))
+
 interface Data {
   colour: string
 }
