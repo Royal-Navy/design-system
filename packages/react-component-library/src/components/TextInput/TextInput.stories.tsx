@@ -8,6 +8,8 @@ import { Search } from '../../icons'
 import Button from '../Button'
 import TextInput from './index'
 
+import useFormik from '../../enhancers/useFormik'
+
 const stories = storiesOf('TextInput', module)
 
 interface Data {
@@ -30,6 +32,8 @@ const validationSchema = yup.object().shape({
   city: yup.string().required('Hey, enter a city!'),
 })
 
+const FormikTextInput = useFormik(TextInput)
+
 stories.add('Formik', () => (
   <Formik
     initialValues={initialValues}
@@ -41,38 +45,28 @@ stories.add('Formik', () => (
         className="rn-textinput--is-valid"
         name="colour"
         label="My Label"
-        render={({ field, form: { touched, errors } }: any) => (
-          <div>
-            <TextInput {...field} />
-            {touched[field.name] && errors[field.name] && (
-              <div className="rn-textinput__invalid-feedback">
-                {errors[field.name]}
-              </div>
-            )}
-          </div>
-        )}
+        component={FormikTextInput}
       />
-
-      {/* <Field name="name" component={TextInput} label="Name" />
-      <Field name="city" component={TextInput} label="City" />
+      <Field name="name" label="Name" component={FormikTextInput} />
+      <Field name="city" component={FormikTextInput} label="City" />
       <Field
         name="hero"
-        component={TextInput}
+        component={FormikTextInput}
         label="Hero"
         endAdornment={<Search />}
       />
       <Field
         name="fruit"
-        component={TextInput}
+        component={FormikTextInput}
         label="Fruit"
         startAdornment={<Search />}
       />
       <Field
         name="search"
-        component={TextInput}
+        component={FormikTextInput}
         placeholder="search"
         endAdornment={<Search />}
-      /> */}
+      />
       <Button variant="secondary" onClick={onCancel}>
         Cancel
       </Button>
