@@ -16,7 +16,7 @@ const useFormik = (FormComponent: React.FC<any>) => ({
   <div>
     <FormComponent {...field} {...props} />
     {touched[field.name] && errors[field.name] && (
-      <div className="rn-textinput__invalid-feedback">{errors[field.name]}</div>
+      <div className="rn-form__invalid-feedback">{errors[field.name]}</div>
     )}
   </div>
 )

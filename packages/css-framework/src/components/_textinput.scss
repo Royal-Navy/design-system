@@ -83,18 +83,6 @@
   outline: 0;
 }
 
-.rn-textinput__invalid-feedback {
-  color: color(neutral, 300);
-  margin: spacing(2) spacing(3);
-  font-size: font-size(s);
-}
-
-.rn-textinput__invalid-feedback {
-  color: color(danger, 600);
-  margin: spacing(2) spacing(3);
-  font-size: font-size(s);
-}
-
 .rn-textinput__start-adornment,
 .rn-textinput__end-adornment {
   display: flex;
