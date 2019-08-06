@@ -13,7 +13,7 @@ const withFormik = (FormComponent: React.FC<any>) => ({
   form: { touched, errors },
   ...props
 }: FormikProps) => {
-  const hasError = touched[name] && errors[name]
+  const hasError = touched[field.name] && errors[field.name]
 
   return (
     <>
