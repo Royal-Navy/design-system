@@ -56,9 +56,9 @@ const TextInput: React.FC<InputProps> = props => {
   const hasLabel = label && label.length
 
   const classes = `rn-textinput
-    ${focus ? 'rn-textinput--has-focus' : ''}
-    ${hasContent ? 'rn-textinput--has-content' : ''}
-    ${!hasLabel ? 'rn-textinput--no-label' : ''}
+    ${focus ? 'has-focus' : ''}
+    ${hasContent ? 'has-content' : ''}
+    ${!hasLabel ? 'no-label' : ''}
     ${className}
   `
 
