@@ -93,7 +93,7 @@ const TextInput: React.FC<InputProps> = props => {
             </label>
           )}
           <input
-            className={`rn-textinput__input`}
+            className="rn-textinput__input"
             data-testid="input"
             disabled={disabled}
             id={id}
