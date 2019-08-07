@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import uuid from 'uuid'
 
-import FieldProps from '../../types/FieldProps'
-import FormProps from '../../types/FormProps'
-
 export interface InputProps {
   className?: string
   disabled?: boolean
   endAdornment?: React.ReactNode
-  field: FieldProps
+  value?: string
+  name: string
+  onChange?: (event: React.SyntheticEvent) => void
+  onBlur?: (event: React.SyntheticEvent) => void
   footnote?: string
-  form: FormProps
   id?: string
   label?: string
   placeholder?: string
@@ -38,9 +37,11 @@ const TextInput: React.FC<InputProps> = props => {
     className = '',
     disabled = false,
     endAdornment,
-    field: { value, name, onChange, onBlur },
+    value,
+    name,
+    onChange,
+    onBlur,
     footnote,
-    form: { errors = {}, touched = {} },
     id = uuid(),
     label,
     placeholder = '',
@@ -52,14 +53,12 @@ const TextInput: React.FC<InputProps> = props => {
   const [focus, setFocus] = useState(false)
 
   const hasContent = value && value.length
-  const hasError = touched[name] && errors[name]
   const hasLabel = label && label.length
 
   const classes = `rn-textinput
-    ${focus ? 'rn-textinput--has-focus' : ''}
-    ${hasContent ? 'rn-textinput--has-content' : ''}
-    ${hasError ? 'rn-textinput--is-invalid' : ''}
-    ${!hasLabel ? 'rn-textinput--no-label' : ''}
+    ${focus ? 'has-focus' : ''}
+    ${hasContent ? 'has-content' : ''}
+    ${!hasLabel ? 'no-label' : ''}
     ${className}
   `
 
@@ -94,7 +93,7 @@ const TextInput: React.FC<InputProps> = props => {
             </label>
           )}
           <input
-            className={`rn-textinput__input ${hasError ? 'is-invalid' : ''}`}
+            className="rn-textinput__input"
             data-testid="input"
             disabled={disabled}
             id={id}
@@ -121,11 +120,6 @@ const TextInput: React.FC<InputProps> = props => {
         <small className="rn-textinput__footnote" data-testid="footnote">
           {footnote}
         </small>
-      )}
-      {hasError && (
-        <div className="rn-textinput__invalid-feedback" data-testid="error">
-          {errors[name]}
-        </div>
       )}
     </div>
   )
