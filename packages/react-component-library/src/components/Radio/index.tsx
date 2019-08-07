@@ -1,16 +1,15 @@
 import React from 'react'
 import uuid from 'uuid'
 
-import FieldProps from '../../types/FieldProps'
-import FormProps from '../../types/FormProps'
-
 interface RadioProps {
   className?: string
   id?: string
   label: string
   disabled?: boolean
-  field: FieldProps
-  form: FormProps
+  name: string
+  value?: string
+  onChange?: (event: React.SyntheticEvent) => void
+  onBlur?: (event: React.SyntheticEvent) => void
 }
 
 const Radio: React.FC<RadioProps> = ({
@@ -18,19 +17,14 @@ const Radio: React.FC<RadioProps> = ({
   id = uuid(),
   label,
   disabled = false,
-  field: { value, name, onChange, onBlur },
-  form: { errors = {}, touched = {} },
+  value,
+  name,
+  onChange,
+  onBlur,
   ...rest
 }) => {
-  const hasError = touched[name] && errors[name]
-
-  const classes = `rn-radio
-    ${hasError ? 'rn-radio--is-invalid' : ''}
-    ${className}
-  `
-
   return (
-    <div className={classes} data-testid="container">
+    <div className={`rn-radio ${className}`} data-testid="container">
       <div className="rn-radio__outer-wrapper">
         <label className="rn-radio__label" htmlFor={id} data-testid="label">
           <input
@@ -39,7 +33,6 @@ const Radio: React.FC<RadioProps> = ({
             type="radio"
             name={name}
             value={value}
-            checked={value === id}
             onChange={onChange}
             onBlur={onBlur}
             disabled={disabled}
@@ -50,11 +43,6 @@ const Radio: React.FC<RadioProps> = ({
           {label}
         </label>
       </div>
-      {hasError && (
-        <div className="rn-radio__invalid-feedback" data-testid="error">
-          {errors[name]}
-        </div>
-      )}
     </div>
   )
 }

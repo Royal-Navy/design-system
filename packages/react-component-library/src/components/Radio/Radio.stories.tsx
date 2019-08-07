@@ -4,9 +4,18 @@ import { storiesOf } from '@storybook/react'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
+import withFormik from '../../enhancers/withFormik'
 import Radio from './index'
 
 const stories = storiesOf('Radio', module)
+
+stories.add('Vanilla', () => (
+  <Form>
+    <Radio name="example" value="" label="My Label 1" />
+    <Radio name="example" label="My Label 2" />
+    <Radio name="example" label="My Label 3" />
+  </Form>
+))
 
 interface Data {
   example: string
@@ -20,14 +29,11 @@ const onSubmit = (data: Data): void => {
   action(`Form Submit ${JSON.stringify(data)}`)
 }
 
-const onChange = (event: React.SyntheticEvent): void => {
-  const target = event.currentTarget
-  initialValues.example = target.id
-}
-
 const validationSchema = yup.object().shape({
   example: yup.string(),
 })
+
+const FormikRadio = withFormik(Radio)
 
 stories.add('Formik', () => (
   <Formik
@@ -40,25 +46,22 @@ stories.add('Formik', () => (
         className="rn-radio--is-valid"
         id="option1"
         name="example"
-        component={Radio}
+        component={FormikRadio}
         label="My Label 1"
-        onChange={onChange}
       />
       <Field
         className="rn-radio--is-valid"
         id="option2"
         name="example"
-        component={Radio}
+        component={FormikRadio}
         label="My Label 2"
-        onChange={onChange}
       />
       <Field
         className="rn-radio--is-valid"
         id="option3"
         name="example"
-        component={Radio}
+        component={FormikRadio}
         label="My Label 3"
-        onChange={onChange}
       />
     </Form>
   </Formik>

@@ -2,6 +2,7 @@ import 'jest-dom/extend-expect'
 import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
+import withFormik from '../../enhancers/withFormik'
 import FieldProps from '../../types/FieldProps'
 import FormProps from '../../types/FormProps'
 import Radio from './index'
@@ -40,7 +41,14 @@ describe('Radio', () => {
         beforeEach(() => {
           field.value = 'option1'
 
-          radio = render(<Radio field={field} form={form} label={label} />)
+          radio = render(
+            <Radio
+              name={field.name}
+              value={field.value}
+              onChange={field.onChange}
+              label={label}
+            />
+          )
         })
 
         it('should render a field with a label', () => {
@@ -68,7 +76,9 @@ describe('Radio', () => {
       beforeEach(() => {
         form.touched = {}
 
-        radio = render(<Radio field={field} form={form} label={label} />)
+        const FormikRadio = withFormik(Radio)
+
+        radio = render(<FormikRadio field={field} form={form} />)
       })
 
       it('should not indicate the field has an error', () => {
@@ -82,7 +92,9 @@ describe('Radio', () => {
       beforeEach(() => {
         form.touched.colour = true
 
-        radio = render(<Radio field={field} form={form} label={label} />)
+        const FormikRadio = withFormik(Radio)
+
+        radio = render(<FormikRadio field={field} form={form} />)
       })
 
       it('should indicate the field has an error', () => {
@@ -96,7 +108,13 @@ describe('Radio', () => {
   describe('when an additional class it provided', () => {
     beforeEach(() => {
       radio = render(
-        <Radio className="test" field={field} form={form} label={label} />
+        <Radio
+          className="test"
+          name={field.name}
+          value={field.value}
+          onChange={field.onChange}
+          label={label}
+        />
       )
     })
 
@@ -108,7 +126,13 @@ describe('Radio', () => {
   describe('when an id is provided', () => {
     beforeEach(() => {
       radio = render(
-        <Radio id="test" field={field} form={form} label={label} />
+        <Radio
+          id="test"
+          name={field.name}
+          value={field.value}
+          onChange={field.onChange}
+          label={label}
+        />
       )
     })
 
