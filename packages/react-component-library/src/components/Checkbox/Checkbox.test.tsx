@@ -2,6 +2,7 @@ import 'jest-dom/extend-expect'
 import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
+import withFormik from '../../enhancers/withFormik'
 import FieldProps from '../../types/FieldProps'
 import FormProps from '../../types/FormProps'
 import Checkbox from './index'
@@ -41,7 +42,12 @@ describe('Checkbox', () => {
           field.value = 'false'
 
           checkbox = render(
-            <Checkbox field={field} form={form} label={label} />
+            <Checkbox
+              name={field.name}
+              value={field.value}
+              label={label}
+              onChange={field.onChange}
+            />
           )
         })
 
@@ -70,12 +76,14 @@ describe('Checkbox', () => {
       beforeEach(() => {
         form.touched = {}
 
-        checkbox = render(<Checkbox field={field} form={form} label={label} />)
+        const FormikCheckbox = withFormik(Checkbox)
+
+        checkbox = render(<FormikCheckbox field={field} form={form} />)
       })
 
       it('should not indicate the field has an error', () => {
         expect(checkbox.queryByTestId('container')).not.toHaveClass(
-          'rn-checkbox--is-invalid'
+          'is-invalid'
         )
       })
     })
@@ -84,13 +92,13 @@ describe('Checkbox', () => {
       beforeEach(() => {
         form.touched.example1 = true
 
-        checkbox = render(<Checkbox field={field} form={form} label={label} />)
+        const FormikCheckbox = withFormik(Checkbox)
+
+        checkbox = render(<FormikCheckbox field={field} form={form} />)
       })
 
       it('should indicate the field has an error', () => {
-        expect(checkbox.queryByTestId('container')).toHaveClass(
-          'rn-checkbox--is-invalid'
-        )
+        expect(checkbox.queryByTestId('container')).toHaveClass('is-invalid')
       })
     })
   })
@@ -98,7 +106,13 @@ describe('Checkbox', () => {
   describe('when an additional class it provided', () => {
     beforeEach(() => {
       checkbox = render(
-        <Checkbox className="test" field={field} form={form} label={label} />
+        <Checkbox
+          className="test"
+          name={field.name}
+          value={field.value}
+          label={label}
+          onChange={field.onChange}
+        />
       )
     })
 
@@ -110,7 +124,13 @@ describe('Checkbox', () => {
   describe('when an id is provided', () => {
     beforeEach(() => {
       checkbox = render(
-        <Checkbox id="test" field={field} form={form} label={label} />
+        <Checkbox
+          id="test"
+          name={field.name}
+          value={field.value}
+          label={label}
+          onChange={field.onChange}
+        />
       )
     })
 
