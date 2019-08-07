@@ -11,7 +11,7 @@ const stories = storiesOf('Checkbox', module)
 
 stories.add('Vanilla', () => (
   <Form>
-    <Checkbox name="example1" label="My Label 1" value={true} checked />
+    <Checkbox name="example1" label="My Label 1" value checked />
     <Checkbox name="example2" label="My Label 2" />
     <Checkbox name="example3" label="My Label 3" />
   </Form>

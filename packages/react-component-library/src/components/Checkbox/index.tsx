@@ -6,7 +6,7 @@ interface CheckboxProps {
   id?: string
   label: string
   disabled?: boolean
-  value?: string | boolean
+  value?: string
   name: string
   checked?: boolean
   onChange?: (event: React.SyntheticEvent) => void
