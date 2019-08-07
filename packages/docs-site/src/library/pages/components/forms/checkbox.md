@@ -50,17 +50,12 @@ The `Checkbox` component allows the active selection of an arbitrary amount of o
 The Checkbox component can be used on it's own in a regular form, if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
 
 ### Example with Formik
-<CodeHighlighter source={`<Formik initialValues={initialValues} onSubmit={onSubmit}>
-
+<CodeHighlighter source={`<Checkbox name="example1" label="My Label 1" value="true" checked />`} language="javascript">
   <Form>
-    <Field name="example1" component={Checkbox} label="My Label 1" />
-    <Field name="example2" component={Checkbox} label="My Label 2" />
+    <Checkbox name="example1" label="My Label 1" value="true" checked />
+    <Checkbox name="example2" label="My Label 2" />
+    <Checkbox name="example3" label="My Label 3" />
   </Form>
-</Formik>`} language="javascript">
-  <div>
-      <Field className="rn-radio--is-valid" name="example1" value="true" component={Checkbox} label="My Label 1" />
-      <Field className="rn-radio--is-valid" name="example2" value="false" component={Checkbox} label="My Label 2" />
-  </div>
 </CodeHighlighter>
 
 ### Properties
