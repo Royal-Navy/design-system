@@ -2,6 +2,7 @@ import 'jest-dom/extend-expect'
 import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
+import withFormik from '../../enhancers/withFormik'
 import FieldProps from '../../types/FieldProps'
 import FormProps from '../../types/FormProps'
 import TextInput from './index'
@@ -41,7 +42,12 @@ describe('TextInput', () => {
           field.value = 'Green'
 
           textInput = render(
-            <TextInput field={field} form={form} label={label} />
+            <TextInput
+              value={field.value}
+              name={field.name}
+              onChange={field.onChange}
+              label={label}
+            />
           )
         })
 
@@ -51,7 +57,7 @@ describe('TextInput', () => {
 
         it('should indicate that the field has content so the field is shrunk', () => {
           expect(textInput.queryByTestId('container')).toHaveClass(
-            'rn-textinput--has-content'
+            'has-content'
           )
         })
 
@@ -67,7 +73,12 @@ describe('TextInput', () => {
     describe('and the field has no label but a placeholder', () => {
       beforeEach(() => {
         textInput = render(
-          <TextInput field={field} form={form} placeholder="Search" />
+          <TextInput
+            value={field.value}
+            name={field.name}
+            onChange={field.onChange}
+            placeholder="Search"
+          />
         )
       })
 
@@ -76,9 +87,7 @@ describe('TextInput', () => {
       })
 
       it('should adjust the styles to signify there is no label', () => {
-        expect(textInput.queryByTestId('container')).toHaveClass(
-          'rn-textinput--no-label'
-        )
+        expect(textInput.queryByTestId('container')).toHaveClass('no-label')
       })
 
       it('should include the placeholder in the field', () => {
@@ -90,7 +99,7 @@ describe('TextInput', () => {
     })
   })
 
-  describe('when a field has an error', () => {
+  describe('when a Formik enhanced field has an error', () => {
     beforeEach(() => {
       form.errors = {
         colour: 'Something bad',
@@ -101,14 +110,14 @@ describe('TextInput', () => {
       beforeEach(() => {
         form.touched = {}
 
-        textInput = render(
-          <TextInput field={field} form={form} label={label} />
-        )
+        const FormikTextInput = withFormik(TextInput)
+
+        textInput = render(<FormikTextInput field={field} form={form} />)
       })
 
       it('should not indicate the field has an error', () => {
         expect(textInput.queryByTestId('container')).not.toHaveClass(
-          'rn-textinput--is-invalid'
+          'is-invalid'
         )
       })
     })
@@ -117,15 +126,13 @@ describe('TextInput', () => {
       beforeEach(() => {
         form.touched.colour = true
 
-        textInput = render(
-          <TextInput field={field} form={form} label={label} />
-        )
+        const FormikTextInput = withFormik(TextInput)
+
+        textInput = render(<FormikTextInput field={field} form={form} />)
       })
 
       it('should indicate the field has an error', () => {
-        expect(textInput.queryByTestId('container')).toHaveClass(
-          'rn-textinput--is-invalid'
-        )
+        expect(textInput.queryByTestId('container')).toHaveClass('is-invalid')
       })
     })
   })
@@ -133,7 +140,13 @@ describe('TextInput', () => {
   describe('when an additional class it provided', () => {
     beforeEach(() => {
       textInput = render(
-        <TextInput className="test" field={field} form={form} label={label} />
+        <TextInput
+          className="test"
+          value={field.value}
+          name={field.name}
+          onChange={field.onChange}
+          label={label}
+        />
       )
     })
 
@@ -145,7 +158,13 @@ describe('TextInput', () => {
   describe('when an id is provided', () => {
     beforeEach(() => {
       textInput = render(
-        <TextInput id="test" field={field} form={form} label={label} />
+        <TextInput
+          id="test"
+          value={field.value}
+          name={field.name}
+          onChange={field.onChange}
+          label={label}
+        />
       )
     })
 
@@ -162,8 +181,9 @@ describe('TextInput', () => {
     beforeEach(() => {
       textInput = render(
         <TextInput
-          field={field}
-          form={form}
+          value={field.value}
+          name={field.name}
+          onChange={field.onChange}
           placeholder="Search"
           startAdornment={<span>test1234</span>}
         />
@@ -184,8 +204,9 @@ describe('TextInput', () => {
     beforeEach(() => {
       textInput = render(
         <TextInput
-          field={field}
-          form={form}
+          value={field.value}
+          name={field.name}
+          onChange={field.onChange}
           placeholder="Search"
           endAdornment={<span>test4321</span>}
         />
