@@ -5,7 +5,6 @@ header: true
 ---
 
 import { Tab, TabSet, Radio } from '@royalnavy/react-component-library'
-import Field from '../../../../components/containers/Field'
 import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
@@ -53,17 +52,12 @@ The `Radio` component allows the active selection of one input at a time. The in
 The Radio component can be used on it's own in a regular form, if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
 
 ### Example with Formik
-<CodeHighlighter source={`<Formik initialValues={initialValues} onSubmit={onSubmit}>
-
+<CodeHighlighter source={`<Radio name="example" value="" label="My Label 1" />`} language="javascript">
   <Form>
-    <Field name="example" id="option1" component={Radio} label="My Label 1" />
-    <Field name="example" id="option2" component={Radio} label="My Label 2" />
+    <Radio name="example" value="" label="My Label 1" />
+    <Radio name="example" label="My Label 2" />
+    <Radio name="example" label="My Label 3" />
   </Form>
-</Formik>`} language="javascript">
-  <div>
-      <Field className="rn-radio--is-valid" name="example" id="option1" value="option1" component={Radio} label="My Label 1" />
-      <Field className="rn-radio--is-valid" name="example" id="option2" value="option1" component={Radio} label="My Label 2" />
-  </div>
 </CodeHighlighter>
 
 ### Properties
