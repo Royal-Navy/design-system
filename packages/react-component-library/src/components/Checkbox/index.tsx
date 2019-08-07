@@ -1,16 +1,16 @@
 import React from 'react'
 import uuid from 'uuid'
 
-import FieldProps from '../../types/FieldProps'
-import FormProps from '../../types/FormProps'
-
 interface CheckboxProps {
   className?: string
   id?: string
   label: string
   disabled?: boolean
-  field: FieldProps
-  form: FormProps
+  value?: string | boolean
+  name: string
+  checked?: boolean
+  onChange?: (event: React.SyntheticEvent) => void
+  onBlur?: (event: React.SyntheticEvent) => void
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
@@ -18,19 +18,15 @@ const Checkbox: React.FC<CheckboxProps> = ({
   id = uuid(),
   label,
   disabled = false,
-  field: { value, name, onChange, onBlur },
-  form: { errors = {}, touched = {} },
+  value,
+  name,
+  checked = false,
+  onChange,
+  onBlur,
   ...rest
 }) => {
-  const hasError = touched[name] && errors[name]
-
-  const classes = `rn-checkbox
-    ${hasError ? 'rn-checkbox--is-invalid' : ''}
-    ${className}
-  `
-
   return (
-    <div className={classes} data-testid="container">
+    <div className={`rn-checkbox ${className}`} data-testid="container">
       <div className="rn-checkbox__outer-wrapper">
         <label className="rn-checkbox__label" htmlFor={id} data-testid="label">
           <input
@@ -39,7 +35,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
             type="checkbox"
             name={name}
             value={value}
-            checked={!!value}
+            checked={checked}
             onChange={onChange}
             onBlur={onBlur}
             disabled={disabled}
@@ -50,11 +46,6 @@ const Checkbox: React.FC<CheckboxProps> = ({
           {label}
         </label>
       </div>
-      {hasError && (
-        <div className="rn-checkbox__invalid-feedback" data-testid="error">
-          {errors[name]}
-        </div>
-      )}
     </div>
   )
 }
