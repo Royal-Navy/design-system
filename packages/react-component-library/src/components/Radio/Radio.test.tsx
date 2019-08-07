@@ -82,9 +82,7 @@ describe('Radio', () => {
       })
 
       it('should not indicate the field has an error', () => {
-        expect(radio.queryByTestId('container')).not.toHaveClass(
-          'rn-radio--is-invalid'
-        )
+        expect(radio.queryByTestId('container')).not.toHaveClass('is-invalid')
       })
     })
 
@@ -98,9 +96,7 @@ describe('Radio', () => {
       })
 
       it('should indicate the field has an error', () => {
-        expect(radio.queryByTestId('container')).toHaveClass(
-          'rn-radio--is-invalid'
-        )
+        expect(radio.queryByTestId('container')).toHaveClass('is-invalid')
       })
     })
   })
