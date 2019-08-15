@@ -59,10 +59,6 @@ Footer.defaultProps = {
       label: 'Contact',
       to: '/contact',
     },
-    {
-      label: 'Feedback',
-      to: '/feedback',
-    },
   ],
 }
 
