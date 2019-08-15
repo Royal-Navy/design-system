@@ -21,11 +21,6 @@ describe('Footer', () => {
       expect(privacyLink.getAttribute('href')).toContain('/contact')
     })
 
-    it('should provide a feedback link', () => {
-      const privacyLink = footer.getByText('Feedback')
-      expect(privacyLink.getAttribute('href')).toContain('/feedback')
-    })
-
     it('should explain the licence for the project', () => {
       expect(footer.getByTestId('message')).toHaveTextContent(
         'All content is available under the Apache 2.0 licence, except where otherwise stated'
