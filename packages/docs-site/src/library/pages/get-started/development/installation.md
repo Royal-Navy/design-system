@@ -25,7 +25,7 @@ Here's a quick example application to get you started:
 <CodeHighlighter 
 source={`i${''}mport React from 'react'
 i${''}mport ReactDOM from 'react-dom'
-i${''}mport '@royalnavy/css-framework/dist/style.css'
+i${''}mport '@royalnavy/css-framework/dist/styles.css'
 i${''}mport { Button } from '@royalnavy/react-component-library'
 \nfunction App() {
   return (
