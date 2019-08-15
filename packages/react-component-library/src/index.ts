@@ -3,6 +3,7 @@ import Avatar from './components/Avatar'
 import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
 import Button from './components/Button'
+import Checkbox from './components/Checkbox'
 import Nav from './components/Nav'
 import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
@@ -18,6 +19,7 @@ export {
   Badge,
   Breadcrumbs,
   Button,
+  Checkbox,
   Icons,
   Nav,
   Pagination,
