@@ -28,6 +28,7 @@
     "lint": "eslint src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
     "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
     "storybook": "start-storybook -p 6006",
+    "storybook:static": "build-storybook -c .storybook -o .static_storybook",
     "test": "jest",
     "test:watch": "jest --watch",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/",
