@@ -45,7 +45,7 @@
     "lint": "lerna run --parallel lint",
     "lint-staged": "lerna run --parallel lint-staged",
     "test": "lerna run --parallel test",
-    "lerna:version": "lerna version --tag-version-prefix=''",
-    "storybook:static": "lerna run --parallel storybook:static"
+    "storybook:static": "lerna run --parallel storybook:static",
+    "lerna:version": "lerna version --tag-version-prefix=''"
   }
 }
