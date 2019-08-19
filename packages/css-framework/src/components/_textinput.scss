@@ -20,18 +20,18 @@
     box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.rn-textinput--has-focus .rn-textinput__outer-wrapper {
+.rn-textinput.has-focus .rn-textinput__outer-wrapper {
   box-shadow: 0 0 0 1px color(primary, 600);
   border: 1px solid color(primary, 600);
   background: color(neutral, white);
 }
 
-.rn-textinput.rn-textinput--is-invalid .rn-textinput__outer-wrapper {
+.rn-textinput.is-invalid .rn-textinput__outer-wrapper {
   border-color: color(danger, 600);
   box-shadow: 0 0 0 1px color(danger, 600);
 }
 
-.rn-textinput.rn-textinput--is-valid .rn-textinput__outer-wrapper {
+.rn-textinput.is-valid .rn-textinput__outer-wrapper {
   border-color: color(success, 700);
   box-shadow: 0 0 0 1px color(success, 700);
 }
@@ -58,8 +58,8 @@
   font-size: font-size(s);
 }
 
-.rn-textinput--has-focus .rn-textinput__label,
-.rn-textinput--has-content .rn-textinput__label {
+.rn-textinput.has-focus .rn-textinput__label,
+.rn-textinput.has-content .rn-textinput__label {
   transform: translate(spacing(3), 6px) scale(0.8);
 }
 
@@ -81,18 +81,6 @@
 
 .rn-textinput__input:focus {
   outline: 0;
-}
-
-.rn-textinput__invalid-feedback {
-  color: color(neutral, 300);
-  margin: spacing(2) spacing(3);
-  font-size: font-size(s);
-}
-
-.rn-textinput__invalid-feedback {
-  color: color(danger, 600);
-  margin: spacing(2) spacing(3);
-  font-size: font-size(s);
 }
 
 .rn-textinput__start-adornment,

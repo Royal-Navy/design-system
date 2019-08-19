@@ -264,7 +264,7 @@ Nav supports rendering navigation in 4 different sizes
     Type: 'NavItem[] ',
     Required: 'True',
     Default: '',
-    Description: 'An array of objects that must least contain a label. If no custom component is provided then provide a href, otherwise provide the the required property associated with the LinkComponent',
+    Description: 'An array of objects that must at least contain a label. If no custom component is provided then provide a href, otherwise provide the required property associated with the LinkComponent',
   },
   {
     Name: 'orientation',

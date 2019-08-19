@@ -39,6 +39,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       {...rest}
       key={label}
       className={`rn-sidebar__nav-link${active ? ' is-active' : ''}`}
+      onClick={() => setOpen(false)}
     >
       <span className="rn-sidebar__nav-icon">{Image && <Image />}</span>
       <span className="rn-sidebar__nav-label">{label}</span>
