@@ -1,6 +1,6 @@
 # Royal Navy - NELSON [Standards Toolkit](https://docs.royalnavy.io/)
 
-[![CircleCI](https://circleci.com/gh/Royal-Navy/standards-toolkit/tree/develop.svg?style=svg)](https://circleci.com/gh/Royal-Navy/standards-toolkit/tree/develop) [![GitHub release](https://img.shields.io/github/release/royal-navy/standards-toolkit.svg)](https://github.com/Royal-Navy/standards-toolkit/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/standards-toolkit/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+[![CircleCI](https://circleci.com/gh/Royal-Navy/standards-toolkit/tree/develop.svg?style=svg)](https://circleci.com/gh/Royal-Navy/standards-toolkit/tree/develop) [![Netlify Status](https://api.netlify.com/api/v1/badges/54568c8f-b862-47f9-9a97-99448020057d/deploy-status)](https://app.netlify.com/sites/gracious-keller-4b81ed/deploys) [![GitHub release](https://img.shields.io/github/release/royal-navy/standards-toolkit.svg)](https://github.com/Royal-Navy/standards-toolkit/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/standards-toolkit/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
 The Standards Toolkit provides a multi-framework, responsive component library and SASS framework. It's built to help developers build web applications that meet the Royal Navy's service standards.
 
