@@ -53,7 +53,7 @@ By default simply passing a `label` and `href` will cause a regular anchor tag t
 ### Alternative text
 You can pass custom markup to appear by including it as a child of the component.
 
-<CodeHighlighter source={`<PhaseBanner>Custom html can go here. <strong>This part is in bold!</strong><PhaseBanner/>`} language="javascript">
+<CodeHighlighter source={`<PhaseBanner>Custom html can go here. <strong>This part is in bold!</strong></PhaseBanner>`} language="javascript">
   <PhaseBanner>Custom html can go here. <strong>This part is in bold!</strong></PhaseBanner>
 </CodeHighlighter>
 
