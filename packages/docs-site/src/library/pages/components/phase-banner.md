@@ -24,12 +24,12 @@ The Phase Banner is an indicator that sits at the top of your application. It co
 
 <SketchWidget name="PhaseBanner" href="/standards-toolkit.sketch" />
 
-  ### Anatomy
-  <PhaseBannerAnatomy />
-  
-  1. **Phase Badge**. The Phase Badge indicates the current phase to the user.
-  2. **Phase Message**. Accompanying message to provide additional information to the user
-  3. **Container** The container is a wrapper that stretches to 100% of the viewport.
+### Anatomy
+<PhaseBannerAnatomy />
+
+1. **Phase Badge**. The Phase Badge indicates the current phase to the user.
+2. **Phase Message**. Accompanying message to provide additional information to the user
+3. **Container** The container is a wrapper that stretches to 100% of the viewport.
 
 ### Sizing & Spacing
 The phase banner is a full width component - it is designed to stretch to the size of the viewport. Try to keep the Phase Message concise however.
@@ -53,7 +53,9 @@ By default simply passing a `label` and `href` will cause a regular anchor tag t
 ### Alternative text
 You can pass custom markup to appear by including it as a child of the component.
 
-<CodeHighlighter source={`<PhaseBanner>Custom html can go here. <strong>This part is in bold!</strong><PhaseBanner/>`} language="javascript">
+<CodeHighlighter source={`<PhaseBanner>
+  Custom html can go here. <strong>This part is in bold!</strong>
+</PhaseBanner>`} language="javascript">
   <PhaseBanner>Custom html can go here. <strong>This part is in bold!</strong></PhaseBanner>
 </CodeHighlighter>
 

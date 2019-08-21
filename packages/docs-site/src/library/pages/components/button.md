@@ -119,12 +119,12 @@ A button can be one of 3 variants to indicate it's importance and role on a page
 
 <CodeHighlighter 
 source={`<Button onClick={action} variant="primary">Primary</Button>
-<Button onClick{action} variant="secondary">Secondary</Button>
-<Button onClick{action} variant="tertiary">Tertiary</Button>
+<Button onClick={action} variant="secondary">Secondary</Button>
+<Button onClick={action} variant="tertiary">Tertiary</Button>
 
 <Button onClick={action} variant="primary" color="danger">Primary</Button>
-<Button onClick{action} variant="secondary" color="danger">Secondary</Button>
-<Button onClick{action} variant="tertiary" color="danger">Tertiary</Button>
+<Button onClick={action} variant="secondary" color="danger">Secondary</Button>
+<Button onClick={action} variant="tertiary" color="danger">Tertiary</Button>
 `} language="javascript"
 >
   <p>
