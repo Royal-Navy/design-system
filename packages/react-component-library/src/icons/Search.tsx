@@ -9,7 +9,10 @@ const Search: React.FC = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-      <g transform="translate(-1693.000000, -148.000000)" fill="#748999">
+      <g
+        transform="translate(-1693.000000, -148.000000)"
+        className="rn-iconfill"
+      >
         <g id="Group-18" transform="translate(1429.000000, 135.000000)">
           <g id="Group-17">
             <path
