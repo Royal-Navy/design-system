@@ -21,7 +21,8 @@
     "prettier": "^1.17.0"
   },
   "resolutions": {
-    "husky/cosmiconfig/js-yaml": "^3.13.1"
+    "husky/cosmiconfig/js-yaml": "^3.13.1",
+    "gatsby/eslint/eslint-utils": "1.4.2"
   },
   "prettier": {
     "bracketSpacing": true,
