@@ -18,7 +18,8 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
   LinkComponent = Link,
   ...rest
 }) => {
-  const ComponentToUse: LinkTypes | EndTitle = last ? EndTitle : LinkComponent
+  const ComponentToUse: any = last ? EndTitle : LinkComponent
+
   return (
     <li data-testid="breadcrumb" className="rn-breadcrumbs__breadcrumb">
       {!first && (
