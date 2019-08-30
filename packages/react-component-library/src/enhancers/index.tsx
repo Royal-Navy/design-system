@@ -1,4 +1,4 @@
-import Components from '../components'
+import * as Components from '../components'
 import withFormik from './withFormik'
 
 const Formik: object = {
