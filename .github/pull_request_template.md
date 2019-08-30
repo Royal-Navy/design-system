@@ -1,4 +1,6 @@
-## Related Jira issue: #[issueid]
+## Related issue
+
+#[issueid]
 
 ## Overview
 
