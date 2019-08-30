@@ -1,7 +1,4 @@
-import TextInput from '../components/TextInput'
-import Checkbox from '../components/Checkbox'
-import Radio from '../components/Radio'
-
+import { TextInput, Checkbox, Radio } from '../components'
 import withFormik from './withFormik'
 
 const Formik: object = {
