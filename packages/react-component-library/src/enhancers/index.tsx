@@ -6,8 +6,8 @@ const Formik: object = {
   // ...
 }
 
-Object.keys(Components).map((key: string) => {
+for (let key of Object.keys(Components)) {
   Formik[key] = withFormik(Components[key])
-})
+}
 
 export { Formik, withFormik }
