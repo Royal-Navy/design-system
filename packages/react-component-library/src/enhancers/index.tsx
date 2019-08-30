@@ -6,7 +6,7 @@ const Formik: object = {
   // ...
 }
 
-for (let key of Object.keys(Components)) {
+for (const key of Object.keys(Components)) {
   Formik[key] = withFormik(Components[key])
 }
 
