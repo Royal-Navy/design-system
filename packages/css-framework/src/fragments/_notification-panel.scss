@@ -4,9 +4,7 @@
   cursor: pointer;
   display: block;
   line-height: 0;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 4px;
+  margin: 0 auto;
   padding: 5px;
   position: relative;
 }
@@ -17,9 +15,10 @@
 }
 
 .rn-notification-panel__indicator {
-  left: 65%;
   position: absolute;
-  top: 0;
+  top: 50%;
+  margin-right: -14px;
+  margin-top: -14px;
 }
 
 .rn-notification-panel--dark .rn-iconfill {
@@ -78,26 +77,26 @@
   opacity: 0;
 }
 
+.rn-notification-enter {
+  opacity: 0;
+}
+
+.rn-notification-enter.rn-notification-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.rn-notification-leave {
+  opacity: 1;
+}
+
+.rn-notification-leave.rn-notification-leave-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
 @include breakpoint("s") {
   .rn-notification-panel__header {
     display: none;
-  }
-
-  .rn-notification-enter {
-    opacity: 0;
-  }
-
-  .rn-notification-enter.rn-notification-enter-active {
-    opacity: 1;
-    transition: opacity 100ms;
-  }
-
-  .rn-notification-leave {
-    opacity: 1;
-  }
-
-  .rn-notification-leave.rn-notification-leave-active {
-    opacity: 0;
-    transition: opacity 100ms;
   }
 }
