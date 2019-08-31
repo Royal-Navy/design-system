@@ -57,7 +57,7 @@ describe('NotificationPanel', () => {
     describe('when the user clicks on the notification button', () => {
       let blurSpy: jest.Mock
 
-      beforeEach(() => {
+      beforeEach(done => {
         const button = wrapper.getByTestId('notification-button')
         blurSpy = jest.fn()
         button.blur = blurSpy
@@ -69,6 +69,10 @@ describe('NotificationPanel', () => {
             cancelable: true,
           })
         )
+
+        setTimeout(() => {
+          done()
+        }, 500)
       })
 
       it('should show the notification content', () => {
@@ -84,7 +88,7 @@ describe('NotificationPanel', () => {
       })
 
       describe('when the user clicks on the button again', () => {
-        beforeEach(() => {
+        beforeEach(done => {
           fireEvent(
             wrapper.getByTestId('notification-button'),
             new MouseEvent('click', {
@@ -92,6 +96,10 @@ describe('NotificationPanel', () => {
               cancelable: true,
             })
           )
+
+          setTimeout(() => {
+            done()
+          }, 500)
         })
 
         it('should not show the notification content', () => {
@@ -100,7 +108,7 @@ describe('NotificationPanel', () => {
       })
 
       describe('when the user clicks elsewhere on the page', () => {
-        beforeEach(() => {
+        beforeEach(done => {
           fireEvent(
             document,
             new MouseEvent('mousedown', {
@@ -108,6 +116,10 @@ describe('NotificationPanel', () => {
               cancelable: true,
             })
           )
+
+          setTimeout(() => {
+            done()
+          }, 500)
         })
 
         it('should not show the notification content', () => {
@@ -116,7 +128,7 @@ describe('NotificationPanel', () => {
       })
 
       describe('when the user clicks within the notification content area', () => {
-        beforeEach(() => {
+        beforeEach(done => {
           fireEvent(
             wrapper.getByTestId('content'),
             new MouseEvent('click', {
@@ -124,6 +136,10 @@ describe('NotificationPanel', () => {
               cancelable: true,
             })
           )
+
+          setTimeout(() => {
+            done()
+          }, 500)
         })
 
         it('should continue to show the notification content', () => {
@@ -297,8 +313,8 @@ describe('NotificationPanel', () => {
     })
 
     it('should calculate the position to be below the element', () => {
-      expect(result).toHaveProperty('top', 212)
-      expect(result).toHaveProperty('left', 605)
+      expect(result).toHaveProperty('top', 203)
+      expect(result).toHaveProperty('left', 590)
     })
   })
 })

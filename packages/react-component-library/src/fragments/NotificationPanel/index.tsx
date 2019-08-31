@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import { Popover } from '../../components'
 import { Bell } from '../../icons'
@@ -18,8 +19,8 @@ export function getNotificationPositionOnRight(
 ): PositionType {
   const elemRect = element.getBoundingClientRect()
   const bottom =
-    elementWindow.innerHeight - elemRect.bottom - 8 + window.scrollY
-  const left = elemRect.left + elemRect.width + 18 + window.scrollX
+    elementWindow.innerHeight - elemRect.bottom - 8 + window.pageYOffset
+  const left = elemRect.left + elemRect.width + 18 + window.pageXOffset
 
   return { bottom, left }
 }
@@ -30,8 +31,8 @@ export function getNotificationPositionBelow(
   const elemRect = element.getBoundingClientRect()
 
   const left =
-    elemRect.left - POPOVER_WIDTH + elemRect.width + 20 + +window.scrollX
-  const top = elemRect.bottom + 12 + window.scrollY
+    elemRect.left - POPOVER_WIDTH + elemRect.width + window.pageXOffset + 5
+  const top = elemRect.bottom + 3 + window.pageYOffset
 
   return { left, top }
 }
@@ -91,7 +92,7 @@ const NotificationPanel: React.FC<NotificationPanelProps> = ({
 
   return (
     <div
-      className={`rn-notification-panel--${scheme} ${className}`}
+      className={`rn-notification-panel rn-notification-panel--${scheme} ${className}`}
       ref={node}
       data-testid="notification-panel"
     >
@@ -114,16 +115,37 @@ const NotificationPanel: React.FC<NotificationPanelProps> = ({
           </svg>
         )}
       </button>
-      {showNotifications && (
-        <Popover
-          {...notificationPosition}
-          position={notificationArrowPosition}
-          scheme={scheme}
-          width={POPOVER_WIDTH}
-        >
-          {children}
-        </Popover>
-      )}
+      <ReactCSSTransitionGroup
+        className="rn-notification__transition-wrapper"
+        transitionName="rn-notification"
+        transitionEnterTimeout={100}
+        transitionLeaveTimeout={100}
+      >
+        {showNotifications && (
+          <Popover
+            {...notificationPosition}
+            position={notificationArrowPosition}
+            scheme={scheme}
+            width={POPOVER_WIDTH}
+          >
+            <>
+              <header className="rn-notification-panel__header">
+                <h2 className="rn-notification-panel__heading">
+                  Notifications
+                </h2>
+                <button
+                  type="button"
+                  onClick={() => setShowNotifications(false)}
+                  className="rn-notification-panel__close"
+                >
+                  <strong>X</strong> Close
+                </button>
+              </header>
+              {children}
+            </>
+          </Popover>
+        )}
+      </ReactCSSTransitionGroup>
     </div>
   )
 }
