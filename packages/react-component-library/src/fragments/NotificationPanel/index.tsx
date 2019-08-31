@@ -5,8 +5,11 @@ import { Popover } from '../../components'
 import { Bell } from '../../icons'
 
 export interface NotificationPanelProps {
+  buttonClassName?: string
   className?: string
   notificationPlacement?: 'right' | 'below'
+  onShow?: () => void
+  onHide?: () => void
   scheme?: 'dark' | 'light'
   unreadNotification?: boolean
 }
@@ -38,9 +41,12 @@ export function getNotificationPositionBelow(
 }
 
 const NotificationPanel: React.FC<NotificationPanelProps> = ({
+  buttonClassName = '',
   children,
   className = '',
   notificationPlacement = 'right',
+  onShow,
+  onHide,
   scheme = 'dark',
   unreadNotification = false,
 }) => {
@@ -74,7 +80,13 @@ const NotificationPanel: React.FC<NotificationPanelProps> = ({
         : getNotificationPositionBelow(element)
 
     setNotificationPosition(position)
-    setShowNotifications(!showNotifications)
+
+    const newShowState = !showNotifications
+
+    if (newShowState === true && onShow) onShow()
+    if (newShowState === false && onHide) onHide()
+
+    setShowNotifications(newShowState)
   }
 
   useEffect(() => {
@@ -97,7 +109,7 @@ const NotificationPanel: React.FC<NotificationPanelProps> = ({
       data-testid="notification-panel"
     >
       <button
-        className="rn-notification-panel__button"
+        className={`rn-notification-panel__button ${buttonClassName}`}
         data-testid="notification-button"
         onClick={toggleNotifications}
         type="button"
@@ -118,8 +130,8 @@ const NotificationPanel: React.FC<NotificationPanelProps> = ({
       <ReactCSSTransitionGroup
         className="rn-notification__transition-wrapper"
         transitionName="rn-notification"
-        transitionEnterTimeout={100}
-        transitionLeaveTimeout={100}
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={300}
       >
         {showNotifications && (
           <Popover
