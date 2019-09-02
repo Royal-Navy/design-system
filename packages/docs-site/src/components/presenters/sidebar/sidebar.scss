@@ -50,7 +50,7 @@
 
   & > .sidebar__toggle {
     display: inline-block;
-    transform: rotate(180deg);
+    transform: translateY(2px) translateX(-6px);
     cursor: pointer;
 
     &::before {
