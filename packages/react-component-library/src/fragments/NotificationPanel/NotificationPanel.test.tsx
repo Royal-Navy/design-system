@@ -20,6 +20,8 @@ describe('NotificationPanel', () => {
     globalAny.document = dom.window.document
     globalAny.window = dom.window
     props = {}
+    props.onShow = jest.fn()
+    props.onHide = jest.fn()
   })
 
   describe('When there is no notification content', () => {
@@ -87,6 +89,10 @@ describe('NotificationPanel', () => {
         expect(blurSpy).toHaveBeenCalled()
       })
 
+      it('should notify the parent the notification is visible', () => {
+        expect(props.onShow).toBeCalled()
+      })
+
       describe('when the user clicks on the button again', () => {
         beforeEach(done => {
           fireEvent(
@@ -104,6 +110,10 @@ describe('NotificationPanel', () => {
 
         it('should not show the notification content', () => {
           expect(wrapper.queryByTestId('popover')).toBeNull()
+        })
+
+        it('should notify the parent the notification was hidden', () => {
+          expect(props.onHide).toBeCalled()
         })
       })
 
