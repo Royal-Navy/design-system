@@ -1,12 +1,7 @@
 @import '@royalnavy/css-framework';
 
-$border-radius: 4px;
-$text-color: #253b5b;
-
 .sidebar {
-  background-color: #f0f4f8;
   padding: spacing(3);
-
   display: none;
 }
 
@@ -18,28 +13,45 @@ $text-color: #253b5b;
 
 .sidebar__title {
   display: block;
-  padding-bottom: spacing(8);
-  margin-bottom: spacing(4);
-  border-bottom: 1px dashed #8c8c8c;
-  font-size: font-size('s');
+  padding-bottom: spacing(3);
+  font-size: font-size('m');
   font-weight: 600;
-  color: $text-color;
+  color: color(primary, 900);
 }
 
 .sidebar .rn-nav__item {
-  color: $text-color;
-  padding: spacing(3);
+  display: inline-block;
+  width: auto;
+  color: color(neutral, 400);
+  padding: spacing(2) spacing(3);
+
+  &.is-active {
+    background-color: color(primary, 800);
+  }
 }
 
 .sidebar .rn-nav__list-item.has-children {
-  background-color: #d2dbe5;
-  border-radius: $border-radius;
+  & > .rn-nav__list {
+    display: none;
+    padding: 0 0 0 spacing(4);
+  }
+
+  &.is-open > .rn-nav__list {
+    display: block;
+  }
+}
+
+.sidebar .rn-nav__list-item.has-children .rn-nav__item {
+  margin: spacing(1) 0;
 }
 
 .sidebar .rn-nav__list-item.has-children > .rn-nav__item {
-  background-color: #274776;
-  color: #fff;
-  border-radius: $border-radius;
+  font-size: font-size('m');
+  color: color(primary, 900);
+
+  &.is-active {
+    color: color(neutral, white);
+  }
 }
 
 .sidebar .rn-nav__list .rn-nav__list {
