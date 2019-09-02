@@ -1,7 +1,13 @@
 import React from 'react'
 
 const Logo: React.FC<ComponentWithClass> = ({ className = '' }) => (
-  <svg className={className} width="21" height="19" viewBox="0 0 21 19">
+  <svg
+    className={className}
+    width="21"
+    height="19"
+    viewBox="0 0 21 19"
+    data-testid="logo"
+  >
     <defs>
       <path
         id="app-name-a"
