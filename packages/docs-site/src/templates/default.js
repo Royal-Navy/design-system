@@ -40,6 +40,8 @@ const PageTemplate = ({ data: { mdx }, location }) => {
   const primaryNavData = usePrimaryNavData(location)
   const secondaryNavData = useSecondaryNavData(location)
   const hasSecondaryNav = secondaryNavData && secondaryNavData.length > 0
+  const activeTopLevel = primaryNavData.find(item => item.active)
+  const sidebarTitle = (activeTopLevel && activeTopLevel.label) || ''
 
   return (
     <Layout>
@@ -77,6 +79,7 @@ const PageTemplate = ({ data: { mdx }, location }) => {
           <Sidebar
             className="aside aside--primary"
             navItems={secondaryNavData}
+            title={sidebarTitle}
           />
         )}
       </main>
