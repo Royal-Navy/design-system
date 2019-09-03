@@ -78,11 +78,6 @@
   &.is-active {
     background: none;
   }
-
-  &:hover {
-    background: color(primary, 300);
-    color: color(neutral, white);
-  }
 }
 
 .sidebar .rn-nav__list .rn-nav__list {
