@@ -58,6 +58,7 @@
       width: 12px;
       height: 7px;
       margin-left: spacing(2);
+      transform: translateY(-2px);
     }
   }
 
@@ -73,7 +74,6 @@
 .sidebar .rn-nav__list-item.has-children > .rn-nav__item {
   font-size: font-size('m');
   color: color(primary, 900);
-  pointer-events: none;
 
   &.is-active {
     background: none;
