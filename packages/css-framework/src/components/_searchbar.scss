@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   background-color: color(neutral, 400);
-  height: 60px;
+  height: 59px;
   z-index: 999;
 
   .rn-textinput {
@@ -89,10 +89,6 @@
 }
 
 @include breakpoint("s") {
-  .rn-searchbar__form {
-    height: 62px;
-  }
-
   .rn-searchbar .rn-textinput__input {
     font-size: font-size(s);
   }
