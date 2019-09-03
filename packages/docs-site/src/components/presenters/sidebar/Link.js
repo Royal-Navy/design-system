@@ -3,17 +3,14 @@ import PropTypes from 'prop-types'
 
 const Link = ({ children, className = '', href, ...rest }) => {
   return (
-    <>
-      <a
-        className={`rn-link ${className}`}
-        href={href}
-        data-testid="link"
-        {...rest}
-      >
-        {children}
-      </a>
-      {children && <button type="button" className="sidebar__toggle" />}
-    </>
+    <a
+      className={`rn-link ${className}`}
+      href={href}
+      data-testid="link"
+      {...rest}
+    >
+      {children}
+    </a>
   )
 }
 
