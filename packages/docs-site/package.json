@@ -4,7 +4,7 @@
     "node": "10.x"
   },
   "description": "The documentation site for royalnavy.io",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "author": "NELSON Standards <standards@royalnavy.io>",
   "license": "MIT",
   "scripts": {
@@ -35,8 +35,8 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.0.0-rc.4",
     "@mdx-js/react": "^1.0.0-rc.5",
-    "@royalnavy/css-framework": "^1.1.2",
-    "@royalnavy/react-component-library": "^1.1.2",
+    "@royalnavy/css-framework": "^1.2.0",
+    "@royalnavy/react-component-library": "^1.2.0",
     "change-case": "^3.1.0",
     "formik": "^1.5.7",
     "gatsby": "^2.13.21",
@@ -67,7 +67,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
-    "@royalnavy/eslint-config-react": "^1.1.2",
+    "@royalnavy/eslint-config-react": "^1.2.0",
     "@testing-library/react": "^8.0.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.1.0",
