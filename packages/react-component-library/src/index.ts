@@ -4,6 +4,7 @@ import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
 import Button from './components/Button'
 import Checkbox from './components/Checkbox'
+import { Masthead } from './fragments/Masthead'
 import Nav from './components/Nav'
 import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
@@ -26,6 +27,7 @@ export {
   Breadcrumbs,
   Button,
   Checkbox,
+  Masthead,
   Nav,
   Pagination,
   PhaseBanner,

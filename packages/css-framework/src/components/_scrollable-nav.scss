@@ -1,0 +1,45 @@
+$btn-focus-width: 0.2rem;
+
+.rn-scrollable-nav {
+  background: color(neutral, white);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid color(neutral, 100);
+}
+
+.rn-scrollable-nav__items {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rn-scrollable-nav__link {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 0 spacing(1);
+  padding: 0 spacing(4);
+  height: 58px;
+  font-size: font-size(s);
+  color: color(neutral, 300);
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  cursor: pointer;
+
+  &:focus {
+    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+  }
+}
+
+.rn-scrollable-nav__item.is-active .rn-scrollable-nav__link {
+  color: color(neutral, 500);
+  font-weight: bold;
+  border-bottom: 4px solid color(primary, 600);
+}
+
+.rn-scrollable-nav__scroll-container {
+  -webkit-overflow-scrolling: touch;
+}

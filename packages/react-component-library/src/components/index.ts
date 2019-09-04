@@ -8,8 +8,10 @@ import Nav from './Nav'
 import Pagination from './Pagination'
 import PhaseBanner from './PhaseBanner'
 import Popover from './Popover'
-import Sidebar from '../fragments/Sidebar'
 import Radio from './Radio'
+import { ScrollableNav } from './ScrollableNav'
+import { Searchbar } from './Searchbar'
+import Sidebar from '../fragments/Sidebar'
 import Tab from './TabSet/Tab'
 import TabSet from './TabSet'
 import TabNav from './TabNav'
@@ -27,6 +29,8 @@ export {
   PhaseBanner,
   Popover,
   Radio,
+  ScrollableNav,
+  Searchbar,
   Sidebar,
   Tab,
   TabSet,
