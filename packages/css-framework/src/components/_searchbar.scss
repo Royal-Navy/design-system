@@ -15,11 +15,11 @@
 }
 
 .rn-searchbar__form {
+  @include z-index(overlay);
   display: flex;
   align-items: center;
   background-color: color(neutral, 400);
   height: 59px;
-  z-index: 999;
 
   .rn-textinput {
     margin: 0;
@@ -71,7 +71,6 @@
 .rn-searchbar-enter.rn-searchbar-enter-active {
   opacity: 1;
   transition: opacity 300ms;
-  z-index:999;
 }
 
 .rn-searchbar-leave {
