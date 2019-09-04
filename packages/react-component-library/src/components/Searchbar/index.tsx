@@ -1,17 +1,11 @@
-import React, { useEffect, useRef } from 'react'
-import { Form, Field, Formik } from 'formik'
+import React, { useEffect, useRef, useState } from 'react'
 
-import withFormik from '../../enhancers/withFormik'
 import TextInput from '../TextInput'
 import { RightArrow } from '../../icons'
-
-const FormikTextInput = withFormik(TextInput)
 
 interface SearchFormType {
   term: string
 }
-
-const initialValues: SearchFormType = { term: '' }
 
 export interface SearchbarProps {
   className?: string
@@ -31,8 +25,10 @@ export const Searchbar: React.FC<SearchbarProps> = ({
   ...rest
 }) => {
   const searchBoxRef = useRef()
+  const [term, setTerm] = useState('')
 
-  const onSubmit = ({ term }: SearchFormType) => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
     onSearch(term)
   }
 
@@ -61,30 +57,34 @@ export const Searchbar: React.FC<SearchbarProps> = ({
   }, [])
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      <div
-        ref={searchBoxRef}
-        className={`rn-searchbar ${className}`}
-        {...rest}
-        data-testid="searchbar"
+    <div
+      ref={searchBoxRef}
+      className={`rn-searchbar ${className}`}
+      {...rest}
+      data-testid="searchbar"
+    >
+      <form
+        className="rn-searchbar__form"
+        data-testid="searchbar-form"
+        onSubmit={onSubmit}
       >
-        <Form className="rn-searchbar__form" data-testid="searchbar-form">
-          <Field
-            component={FormikTextInput}
-            id="term"
-            name="term"
-            onBlur={() => {}}
-            placeholder={searchPlaceholder}
-          />
-          <button
-            type="submit"
-            className="rn-searchbar__submit-button"
-            data-testid="searchbar-submit-button"
-          >
-            <RightArrow />
-          </button>
-        </Form>
-      </div>
-    </Formik>
+        <TextInput
+          id="term"
+          name="term"
+          onChange={event => {
+            setTerm(event.target.value)
+          }}
+          placeholder={searchPlaceholder}
+          value={term}
+        />
+        <button
+          type="submit"
+          className="rn-searchbar__submit-button"
+          data-testid="searchbar-submit-button"
+        >
+          <RightArrow />
+        </button>
+      </form>
+    </div>
   )
 }
