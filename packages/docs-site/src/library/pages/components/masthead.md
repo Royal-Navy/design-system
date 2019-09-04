@@ -7,10 +7,15 @@ header: true
 import { Icons, Masthead, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import MastheadComponent from '../../images/components/masthead/component.svg'
+import MastheadAnatomy from '../../images/components/masthead/anatomy.svg'
+import MastheadStates from '../../images/components/masthead/states.svg'
 
 
 # Overview
-The Masthead is a simple section at the top of the page that allows the developer to communicate the service logo, name and offer a search bar.
+The Masthead is a simple section at the top of the page that allows the developer to communicate the service logo, user profile, notifications, and offer a search bar.
+
+<MastheadComponent />
 
 ## Usage
 
@@ -18,8 +23,23 @@ The Masthead is a simple section at the top of the page that allows the develope
 
 <Tab title="Design">
 
-  ## Design
-  TBD.
+  <SketchWidget name="Masthead" href="/standards-toolkit.sketch" />
+
+  The Masthead component is a main navigational component that resides at the top of an application. It is fixed in place and has a higher stacking order than the rest of the page, so content will flow underneath it on scroll. There should only be one Masthead component per page.
+
+  ### Anatomy
+
+  <MastheadAnatomy />
+
+  1. **Container**. The Masthead Container wraps the entire masthead and ensures it stays pinned to the top of the viewport.
+  2. **Search**. The Search button triggers the appearance of the Search Bar. When clicked, the page links in the header
+  3. **Notifications**. The Notification icon displays to the user when they have an unread notification. Clicking on the icon will display the Notification Sheet.
+  4. **Profile**. The Profile button links to the User's profile, including settings.
+  5. **App Nav**. The App Nav works similarly to the [Tabset](/components/tab-set/), allowing the user to quickly navigate between multiple application pages.
+
+  ### States
+  Aside from the active page links (an example of these states is shown in the [Tabset Docs](/components/tab-set/)), the Masthead component only has two states. When the Search button is clicked in the top row of the masthead, the page links are replaced with a full width search bar. Clicking on the Search button again will hide the bar.
+  <MastheadStates />
 
 </Tab>
 
