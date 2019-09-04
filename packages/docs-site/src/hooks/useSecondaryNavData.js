@@ -23,16 +23,45 @@ const useSecondaryNavData = location => {
 
   const { children: sectionNavItems } = section
 
-  const navItems = sectionNavItems
+  let navItems = sectionNavItems
     .map(checkActive)
     .map(({ active, children, href, label }) => ({
       active,
-      children: sortBy(children.map(checkActive), 'label'),
+      children: sortBy(children.map(checkActive), ['index', 'label']),
       href,
       label,
     }))
+    .map(({ active, href, label, children }) => {
+      if (children && children.length >= 1) {
+        children.unshift(
+          checkActive({
+            index: 0,
+            label: 'Overview',
+            href,
+          })
+        )
+      }
 
-  return sortBy(navItems, 'label')
+      return {
+        active,
+        href,
+        label,
+        children,
+      }
+    })
+
+  navItems = sortBy(navItems, ['index', 'label'])
+
+  navItems.unshift(
+    checkActive({
+      index: 0,
+      href: section.href,
+      label: 'Overview',
+      children: [],
+    })
+  )
+
+  return navItems
 }
 
 export default useSecondaryNavData

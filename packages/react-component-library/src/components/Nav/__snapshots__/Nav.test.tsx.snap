@@ -39,7 +39,11 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
         key="6"
       >
         <li
-          className="rn-nav__list-item  "
+          className="
+    rn-nav__list-item
+    
+    
+  "
           onClick={[Function]}
         >
           <Link
@@ -62,7 +66,11 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
         key="7"
       >
         <li
-          className="rn-nav__list-item  "
+          className="
+    rn-nav__list-item
+    
+    
+  "
           onClick={[Function]}
         >
           <Link
@@ -85,7 +93,11 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
         key="8"
       >
         <li
-          className="rn-nav__list-item  "
+          className="
+    rn-nav__list-item
+    
+    is-open
+  "
           onClick={[Function]}
         >
           <Link
@@ -110,7 +122,11 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
         key="9"
       >
         <li
-          className="rn-nav__list-item  "
+          className="
+    rn-nav__list-item
+    
+    
+  "
           onClick={[Function]}
         >
           <Link
@@ -133,7 +149,11 @@ exports[`Nav Given the nav is supplied navItems prop and navItems is a flat coll
         key="10"
       >
         <li
-          className="rn-nav__list-item  "
+          className="
+    rn-nav__list-item
+    
+    
+  "
           onClick={[Function]}
         >
           <Link

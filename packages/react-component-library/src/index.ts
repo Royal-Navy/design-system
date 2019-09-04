@@ -1,4 +1,4 @@
-import * as Icons from './icons'
+// Components
 import Avatar from './components/Avatar'
 import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
@@ -14,13 +14,18 @@ import Tab from './components/TabSet/Tab'
 import TabSet from './components/TabSet'
 import TextInput from './components/TextInput'
 
+// Icons
+import * as Icons from './icons'
+
+// Enhanced & Enhancers
+import { Formik, withFormik } from './enhancers'
+
 export {
   Avatar,
   Badge,
   Breadcrumbs,
   Button,
   Checkbox,
-  Icons,
   Nav,
   Pagination,
   PhaseBanner,
@@ -30,4 +35,9 @@ export {
   Tab,
   TabSet,
   TextInput,
+
+  Icons,
+
+  Formik,
+  withFormik
 }
