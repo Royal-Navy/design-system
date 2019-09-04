@@ -7,8 +7,8 @@ export interface InputProps {
   endAdornment?: React.ReactNode
   value?: string
   name: string
-  onChange?: (event: React.SyntheticEvent) => void
-  onBlur?: (event: React.SyntheticEvent) => void
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onBlur?: (event: React.FormEvent<Element>) => void
   footnote?: string
   id?: string
   label?: string
@@ -40,7 +40,7 @@ const TextInput: React.FC<InputProps> = props => {
     value,
     name,
     onChange,
-    onBlur,
+    onBlur = () => {},
     footnote,
     id = uuid(),
     label,
@@ -66,7 +66,7 @@ const TextInput: React.FC<InputProps> = props => {
     setFocus(true)
   }
 
-  const onLocalBlur = (event: React.SyntheticEvent) => {
+  const onLocalBlur = (event: React.FormEvent) => {
     setFocus(false)
     onBlur(event)
   }
