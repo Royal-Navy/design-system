@@ -19199,6 +19199,11 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7, rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-children-utilities@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-children-utilities/-/react-children-utilities-1.3.1.tgz#fe8c13ea7cc6ceb3c45907865e71b30aeb10e906"
+  integrity sha512-2u24HWf0IJlgpbDncAKHr/3ud0afj0UGp8RSQv+qSxKlWqs5+s8JOu4gNMagEtGVVVKm2fi7vlikdbAR52VklA==
+
 react-clientside-effect@^1.2.0:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/react-clientside-effect/-/react-clientside-effect-1.2.2.tgz#6212fb0e07b204e714581dd51992603d1accc837"
