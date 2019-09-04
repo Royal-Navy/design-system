@@ -69,6 +69,7 @@ export const Searchbar: React.FC<SearchbarProps> = ({
         onSubmit={onSubmit}
       >
         <TextInput
+          autoFocus
           id="term"
           name="term"
           onChange={event => {

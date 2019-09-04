@@ -1,7 +1,7 @@
 import 'jest-dom/extend-expect'
 import { JSDOM } from 'jsdom'
 import React from 'react'
-import { fireEvent, render, RenderResult, wait } from '@testing-library/react'
+import { fireEvent, render, RenderResult } from '@testing-library/react'
 
 import { Searchbar, SearchbarProps } from './index'
 
@@ -42,6 +42,10 @@ describe('Searchbar', () => {
 
   it('should render a search bar', () => {
     expect(wrapper.queryByTestId('searchbar-form')).toBeInTheDocument()
+  })
+
+  it('should indicate that the search field has focus', () => {
+    expect(wrapper.queryByTestId('input')).toHaveFocus()
   })
 
   describe('when the user clicks somewhere on the page', () => {
