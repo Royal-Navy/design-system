@@ -34,20 +34,21 @@ describe('useSecondaryNavData', () => {
     })
 
     it('should return nested items for sub sections', () => {
-      expect(result).toHaveLength(2)
+      expect(result).toHaveLength(3)
 
       expect(result[0]).toStrictEqual({
-        active: false,
+        active: true,
         children: [],
-        href: '/get-started/development',
-        label: 'Development',
+        href: '/get-started',
+        index: 0,
+        label: 'Overview',
       })
 
       expect(result[1]).toStrictEqual({
         active: false,
         children: [],
-        href: '/get-started/prototyping',
-        label: 'Prototyping',
+        href: '/get-started/development',
+        label: 'Development',
       })
     })
   })
@@ -62,20 +63,21 @@ describe('useSecondaryNavData', () => {
     })
 
     it('should return nested items for sub sections', () => {
-      expect(result).toHaveLength(2)
+      expect(result).toHaveLength(3)
 
       expect(result[0]).toStrictEqual({
+        active: false,
+        children: [],
+        href: '/get-started',
+        index: 0,
+        label: 'Overview',
+      })
+
+      expect(result[1]).toStrictEqual({
         active: true,
         children: [],
         href: '/get-started/development',
         label: 'Development',
-      })
-
-      expect(result[1]).toStrictEqual({
-        active: false,
-        children: [],
-        href: '/get-started/prototyping',
-        label: 'Prototyping',
       })
     })
   })
@@ -90,20 +92,21 @@ describe('useSecondaryNavData', () => {
     })
 
     it('should return nested items for sub sections', () => {
-      expect(result).toHaveLength(2)
+      expect(result).toHaveLength(3)
 
       expect(result[0]).toStrictEqual({
+        active: false,
+        children: [],
+        href: '/get-started',
+        index: 0,
+        label: 'Overview',
+      })
+
+      expect(result[1]).toStrictEqual({
         active: true,
         children: [],
         href: '/get-started/development',
         label: 'Development',
-      })
-
-      expect(result[1]).toStrictEqual({
-        active: false,
-        children: [],
-        href: '/get-started/prototyping',
-        label: 'Prototyping',
       })
     })
   })
@@ -118,23 +121,23 @@ describe('useSecondaryNavData', () => {
     })
 
     it('should return items for section', () => {
-      expect(result).toHaveLength(15)
+      expect(result).toHaveLength(16)
     })
 
     it('should return nested items within a section', () => {
       const forms = result.find(item => item.label === 'Forms')
-      expect(forms.children).toHaveLength(3)
+      expect(forms.children).toHaveLength(4)
     })
 
     it('should sort the items', () => {
-      expect(result[0].label).toEqual('Alert')
-      expect(result[14].label).toEqual('Table')
+      expect(result[0].label).toEqual('Overview')
+      expect(result[14].label).toEqual('Progress')
     })
 
     it('should sort the sub children', () => {
       const { children } = result.find(item => item.label === 'Forms')
-      expect(children[0].label).toEqual('Input')
-      expect(children[2].label).toEqual('Transfer')
+      expect(children[0].label).toEqual('Overview')
+      expect(children[2].label).toEqual('Toggle')
     })
   })
 
@@ -149,7 +152,7 @@ describe('useSecondaryNavData', () => {
 
     it('should mark the input page as active', () => {
       const { children } = result.find(item => item.label === 'Forms')
-      expect(children[0].active).toEqual(true)
+      expect(children[1].active).toEqual(true)
     })
 
     it('should not mark the forms page as active', () => {

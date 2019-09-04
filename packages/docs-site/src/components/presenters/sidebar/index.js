@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './sidebar.scss'
-
 import { Nav } from '@royalnavy/react-component-library'
+import Link from './Link'
+
+import './sidebar.scss'
 
 const Sidebar = ({ className, navItems, title }) => (
   <aside data-testid="wrapper" className={`sidebar ${className}`}>
@@ -12,7 +13,12 @@ const Sidebar = ({ className, navItems, title }) => (
         {title}
       </span>
     )}
-    <Nav navItems={navItems} orientation="vertical" size="large" />
+    <Nav
+      navItems={navItems}
+      orientation="vertical"
+      size="large"
+      LinkComponent={Link}
+    />
   </aside>
 )
 
