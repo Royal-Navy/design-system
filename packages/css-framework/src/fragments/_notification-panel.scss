@@ -4,9 +4,7 @@
   cursor: pointer;
   display: block;
   line-height: 0;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 4px;
+  margin: 0 auto;
   padding: 5px;
   position: relative;
 }
@@ -17,13 +15,10 @@
 }
 
 .rn-notification-panel__indicator {
-  left: 65%;
   position: absolute;
-  top: 0;
-}
-
-.rn-notification-panel__indicator > * {
-  fill: color(primary, 400);
+  top: 50%;
+  margin-right: -14px;
+  margin-top: -14px;
 }
 
 .rn-notification-panel--dark .rn-iconfill {
@@ -34,6 +29,74 @@
   }
 }
 
+.rn-notification-panel__indicator > * {
+  fill: color(primary, 400);
+}
+
+.rn-notification-panel--light .rn-notification-panel__indicator > * {
+  fill: color(primary, 600);
+}
+
 .rn-notification-panel--light .rn-iconfill {
   fill: color(neutral, 400);
+}
+
+.rn-notification__transition-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+}
+
+.rn-notification-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: spacing(3) 0;
+  border-bottom: 1px solid color(neutral, 100);
+  margin: 0;
+}
+
+.rn-notification-panel__heading {
+  font-weight: normal;
+  font-size: font-size(m);
+  color: color(neutral, 500);
+  margin: 0;
+  padding: 0 spacing(3);
+}
+
+.rn-notification-panel__close {
+  font-size: font-size(xs);
+  color: color(neutral, 300);
+  background: color(neutral, white);
+  border: none;
+}
+
+.rn-notification-leave {
+  opacity: 0;
+}
+
+.rn-notification-enter {
+  opacity: 0;
+}
+
+.rn-notification-enter.rn-notification-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.rn-notification-leave {
+  opacity: 1;
+}
+
+.rn-notification-leave.rn-notification-leave-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+@include breakpoint("s") {
+  .rn-notification-panel__header {
+    display: none;
+  }
 }
