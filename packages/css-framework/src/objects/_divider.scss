@@ -1,0 +1,14 @@
+// Default styling for the HR
+hr {
+  height: 1px;
+  width: 100%;
+  background-color: color(neutral, 100);  
+}
+
+// Reversing the width & height for vertical orientation
+hr.vertical {
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  width: 1px;
+}
