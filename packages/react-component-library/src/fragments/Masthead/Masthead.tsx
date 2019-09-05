@@ -54,6 +54,11 @@ export const Masthead: React.FC<MastheadProps> = ({
     setShowSearch(!showSearch)
   }
 
+  const submitSearch = (term: string) => {
+    onSearch(term)
+    setShowSearch(false)
+  }
+
   return (
     <div
       className={classNames('rn-masthead', {
@@ -126,7 +131,7 @@ export const Masthead: React.FC<MastheadProps> = ({
       >
         {onSearch && showSearch && (
           <Searchbar
-            onSearch={onSearch}
+            onSearch={submitSearch}
             searchButton={searchButtonRef}
             searchPlaceholder={searchPlaceholder}
             setShowSearch={setShowSearch}
