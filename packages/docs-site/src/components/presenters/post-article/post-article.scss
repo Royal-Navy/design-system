@@ -35,16 +35,6 @@ $text-color: #748999;
     margin: 0;
   }
 
-  svg {
-    width: 100%;
-    margin-top: spacing(4);
-
-    + ul, + ol {
-      margin-left: 16px;
-      padding-left: 0;
-    }
-  }
-
 }
 
 h1, h2, h3,
