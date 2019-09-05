@@ -52,6 +52,7 @@
     "@storybook/addons": "^5.1.11",
     "@storybook/react": "^5.1.11",
     "@svgr/webpack": "^4.3.2",
+    "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.4",
     "@types/classnames": "^2.2.9",
     "@types/enzyme": "^3.10.3",

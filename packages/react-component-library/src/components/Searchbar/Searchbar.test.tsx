@@ -1,6 +1,6 @@
-import 'jest-dom/extend-expect'
 import { JSDOM } from 'jsdom'
 import React from 'react'
+import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 
 import { Searchbar, SearchbarProps } from './index'
