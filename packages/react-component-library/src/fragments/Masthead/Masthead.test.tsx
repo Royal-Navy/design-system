@@ -115,18 +115,28 @@ describe('Masthead', () => {
           )
         })
 
-        it('should use the onSearch method passed to the masthead to search', async () => {
-          const searchbarForm = wrapper.queryByTestId('searchbar-form')
+        describe('when the user submits a search', () => {
+          beforeEach(async () => {
+            const searchbarForm = wrapper.queryByTestId('searchbar-form')
 
-          fireEvent(
-            searchbarForm,
-            new Event('submit', {
-              bubbles: true,
-              cancelable: true,
-            })
-          )
+            fireEvent(
+              searchbarForm,
+              new Event('submit', {
+                bubbles: true,
+                cancelable: true,
+              })
+            )
+          })
 
-          await wait(() => expect(props.onSearch).toHaveBeenCalledTimes(1))
+          it('should use the onSearch method passed to the masthead to search', async () => {
+            await wait(() => expect(props.onSearch).toHaveBeenCalledTimes(1))
+          })
+
+          it('should hide the searchbar from view', async () => {
+            await wait(() =>
+              expect(wrapper.queryByTestId('searchbar')).toBeNull()
+            )
+          })
         })
 
         describe('and the user clicks on the search button again', () => {

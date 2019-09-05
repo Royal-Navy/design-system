@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import uuid from 'uuid'
 
 export interface InputProps {
+  autoFocus?: boolean
   className?: string
   disabled?: boolean
   endAdornment?: React.ReactNode
