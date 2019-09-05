@@ -15,7 +15,7 @@ export const usePageChange = (
   /**
    * Helper to generate an array of integers based on provided range
    */
-  function range(from: number, to: number, step: number = 1): number[] {
+  function range(from: number, to: number, step = 1): number[] {
     let i = from
     const array = []
 
