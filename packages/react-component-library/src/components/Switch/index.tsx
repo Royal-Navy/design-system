@@ -1,36 +1,50 @@
-import React, { Children, useState } from 'react'
+import React, { useState } from 'react'
+
+interface Option {
+  name: string
+  value: string
+}
 
 interface SwitchProps {
   label: string
   className?: string
-  onChange?: (active: number) => void
-  options: []
+  onChange?: (previous: Option, active: Option) => void
+  options: Option[]
 }
 
 const Switch: React.FC<SwitchProps> = ({
   label = '',
   className = '',
-  onChange = active => {},
+  onChange = (previous, active) => {},
   options = [],
 }) => {
   const [active, setActive] = useState(null)
 
+  function getOption(name: string) {
+    return options.find(item => item.name === name)
+  }
+
   return (
-    <label className={`rn-switch ${className}`}>
+    <fieldset className={`rn-switch ${className}`}>
+      <legend className="rn-switch__label">{label}</legend>
       <div className="rn-switch__container">
-        {options.map(item => (
-          <button
-            className={`rn-switch__btn ${active === id ? 'is-active' : ''}`}
+        {options.map(({ name, value }) => (
+          <input
+            data-name={name}
+            value={value}
+            type="radio"
+            className={`rn-switch__option ${
+              active === name ? 'is-active' : ''
+            }`}
             onClick={() => {
-              //
+              const previous = active
+              setActive(name)
+              onChange(getOption(previous), getOption(name))
             }}
-          >
-            Example
-          </button>
+          />
         ))}
       </div>
-      <span className="rn-switch__label">{label}</span>
-    </label>
+    </fieldset>
   )
 }
 
