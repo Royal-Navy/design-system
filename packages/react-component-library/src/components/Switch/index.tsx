@@ -1,6 +1,7 @@
 import React from 'react'
 import { useMediaQuery } from 'react-responsive'
 
+import { SwitchType } from '../../types/Switch'
 import Switch from './Switch'
 
 const ResponsiveSwitch: React.FC<SwitchType> = props => {

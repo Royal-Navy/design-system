@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import { SwitchType } from '../../types/Switch'
+
 const Switch: React.FC<SwitchType> = ({
   label = '',
   className = '',
