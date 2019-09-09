@@ -32,3 +32,25 @@ stories.add('Responsive', () => (
     }}
   />
 ))
+
+stories.add('Small', () => (
+  <Switch
+    label="Example label"
+    options={options}
+    onChange={(previous, active) => {
+      console.log(previous, active)
+    }}
+    size="small"
+  />
+))
+
+stories.add('Large', () => (
+  <Switch
+    label="Example label"
+    options={options}
+    onChange={(previous, active) => {
+      console.log(previous, active)
+    }}
+    size="large"
+  />
+))

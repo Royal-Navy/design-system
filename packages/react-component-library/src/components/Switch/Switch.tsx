@@ -8,6 +8,7 @@ const Switch: React.FC<SwitchType> = ({
   className = '',
   onChange = (previous, active) => {},
   options = [],
+  size = 'regular',
 }) => {
   const [active, setActive] = useState(null)
   const id = uuid()
@@ -17,7 +18,7 @@ const Switch: React.FC<SwitchType> = ({
   }
 
   return (
-    <fieldset className={`rn-switch ${className}`}>
+    <fieldset className={`rn-switch rn-switch--${size} ${className}`}>
       <legend className="rn-switch__legend">{label}</legend>
       <div className="rn-switch__container">
         {options.map(({ name, value }) => (

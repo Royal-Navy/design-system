@@ -19,9 +19,10 @@ describe('Switch', () => {
       label = 'Example label'
       onChange = jest.fn()
       options = [
-        { name: 'Example 1', value: '1' },
-        { name: 'Example 2', value: '2' },
-        { name: 'Example 3', value: '3' },
+        { name: 'Day', value: '1' },
+        { name: 'Week', value: '2' },
+        { name: 'Month', value: '3' },
+        { name: 'Year', value: '4' },
       ]
     })
 

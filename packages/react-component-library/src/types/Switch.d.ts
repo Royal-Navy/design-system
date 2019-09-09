@@ -8,4 +8,5 @@ export interface SwitchType {
   className?: string
   onChange?: (previous: OptionType, active: OptionType) => void
   options: OptionType[]
+  size?: string
 }

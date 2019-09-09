@@ -9,10 +9,23 @@ $active-color: color(primary, 600);
   border: none;
   padding: 0;
   margin: 0;
+  font-size: font-size(s);
+}
+
+.rn-switch--small {
+  font-size: font-size(xs);
+
+  .rn-switch__option::before {
+    padding: spacing(2) spacing(3);
+  }
+}
+
+.rn-switch--large {
+  font-size: font-size(m);
 }
 
 .rn-switch__legend {
-  font-size: font-size(xs);
+  font-size: inherit;
   color: color(neutral, 300);
   margin-bottom: spacing(2);
 }
@@ -48,7 +61,7 @@ $elements: 5;
     height: auto;
     padding: spacing(2) spacing(4);
     line-height: 1;
-    font-size: font-size(xs);
+    font-size: inherit;
     color: color(neutral, 400);
     border: 1px solid $border-color;
     border-right: none;
@@ -61,20 +74,6 @@ $elements: 5;
       border-color: $background-color;
       box-shadow: 0 0 0 1px $active-color;
       background-color: $active-background-color;
-    }
-
-    &:first-of-type {
-      &::before {
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-      }
-    }
-
-    &:last-of-type {
-      &::before {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
     }
   }
 
@@ -89,7 +88,9 @@ $elements: 5;
       background-color: $active-background-color;
       font-weight: 600;
     }
+  }
 
+  &:hover, &.is-active {
     &:first-of-type {
       &::before {
         border-bottom-right-radius: 0;
