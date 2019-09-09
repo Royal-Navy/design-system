@@ -6,6 +6,6 @@ interface OptionType {
 interface SwitchType {
   label: string
   className?: string
-  onChange?: (previous: Option, active: Option) => void
+  onChange?: (previous: OptionType, active: OptionType) => void
   options: OptionType[]
 }
