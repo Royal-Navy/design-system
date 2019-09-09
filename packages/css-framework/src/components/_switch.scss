@@ -1,5 +1,5 @@
 $border-radius: 2px;
-$background-color: color(neutral, 100);
+$background-color: color(neutral, 0);
 $border-color: color(neutral, 200);
 $active-background-color: color(neutral, white);
 $active-color: color(primary, 600);
@@ -9,11 +9,11 @@ $active-color: color(primary, 600);
   border: none;
   padding: 0;
   margin: 0;
-  font-size: font-size(s);
+  font-size: font-size(xs);
 }
 
 .rn-switch--small {
-  font-size: font-size(xs);
+  font-size: font-size(xxs);
 
   .rn-switch__option::before {
     padding: spacing(2) spacing(3);
@@ -21,7 +21,7 @@ $active-color: color(primary, 600);
 }
 
 .rn-switch--large {
-  font-size: font-size(m);
+  font-size: font-size(s);
 }
 
 .rn-switch__legend {
@@ -60,7 +60,6 @@ $elements: 5;
     width: auto;
     height: auto;
     padding: spacing(2) spacing(4);
-    line-height: 1;
     font-size: inherit;
     color: color(neutral, 400);
     border: 1px solid $border-color;
