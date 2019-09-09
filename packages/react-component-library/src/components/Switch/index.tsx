@@ -1,54 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useMediaQuery } from 'react-responsive'
 
-interface Option {
-  name: string
-  value: string
-}
+import Switch from './Switch'
 
-interface SwitchProps {
-  label: string
-  className?: string
-  onChange?: (previous: Option, active: Option) => void
-  options: Option[]
-}
+interface ResponsiveSwitchProps extends SwitchType {}
 
-const Switch: React.FC<SwitchProps> = ({
-  label = '',
-  className = '',
-  onChange = (previous, active) => {},
-  options = [],
-}) => {
-  const [active, setActive] = useState(null)
-
-  function getOption(name: string) {
-    return options.find(item => item.name === name)
-  }
+const ResponsiveSwitch: React.FC<ResponsiveSwitchProps> = props => {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-device-width: 1224px)',
+  })
 
   return (
-    <fieldset className={`rn-switch ${className}`}>
-      <legend className="rn-switch__label">{label}</legend>
-      <div className="rn-switch__container">
-        {options.map(({ name, value }) => (
-          <input
-            name={label}
-            data-name={name}
-            value={value}
-            type="radio"
-            className={`rn-switch__option ${
-              active === name ? 'is-active' : ''
-            }`}
-            onClick={() => {
-              const previous = active
-              setActive(name)
-              onChange(getOption(previous), getOption(name))
-            }}
-          />
-        ))}
-      </div>
-    </fieldset>
+    <div className="rn-responsive-switch">
+      {isDesktopOrLaptop && <Switch {...props} />}
+      {!isDesktopOrLaptop && '<Select {...props} /> // Placeholder'}
+    </div>
   )
 }
 
-Switch.displayName = 'Switch'
+ResponsiveSwitch.displayName = 'ResponsiveSwitch'
 
-export default Switch
+export default ResponsiveSwitch
