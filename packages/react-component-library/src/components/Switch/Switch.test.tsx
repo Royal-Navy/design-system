@@ -16,7 +16,7 @@ describe('Switch', () => {
 
   describe('when the component is provided label, onChange and options props', () => {
     beforeEach(() => {
-      label = 'Example label'
+      label = 'Date Range'
       onChange = jest.fn()
       options = [
         { name: 'Day', value: '1' },

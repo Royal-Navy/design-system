@@ -15,7 +15,7 @@ const options = [
 
 stories.add('Default', () => (
   <Switch
-    label="Example label"
+    label="Date Range"
     options={options}
     onChange={(previous, active) => {
       console.log(previous, active)
@@ -25,7 +25,7 @@ stories.add('Default', () => (
 
 stories.add('Responsive', () => (
   <ResponsiveSwitch
-    label="Example label"
+    label="Date Range"
     options={options}
     onChange={(previous, active) => {
       console.log(previous, active)
@@ -35,7 +35,7 @@ stories.add('Responsive', () => (
 
 stories.add('Small', () => (
   <Switch
-    label="Example label"
+    label="Date Range"
     options={options}
     onChange={(previous, active) => {
       console.log(previous, active)
@@ -46,7 +46,7 @@ stories.add('Small', () => (
 
 stories.add('Large', () => (
   <Switch
-    label="Example label"
+    label="Date Range"
     options={options}
     onChange={(previous, active) => {
       console.log(previous, active)

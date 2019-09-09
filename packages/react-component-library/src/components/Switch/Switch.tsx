@@ -23,6 +23,7 @@ const Switch: React.FC<SwitchType> = ({
       <div className="rn-switch__container">
         {options.map(({ name, value }) => (
           <label
+            key={uuid()}
             className={`rn-switch__option ${
               active === name ? 'is-active' : ''
             }`}
