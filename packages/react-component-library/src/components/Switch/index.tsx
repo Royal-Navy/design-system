@@ -10,8 +10,13 @@ const ResponsiveSwitch: React.FC<ResponsiveSwitchProps> = props => {
     query: '(min-device-width: 1224px)',
   })
 
+  const classes = `
+    rn-responsive-switch
+    ${isDesktopOrLaptop ? 'is-desktop' : 'is-mobile'}
+  `
+
   return (
-    <div className="rn-responsive-switch">
+    <div className={classes}>
       {isDesktopOrLaptop && <Switch {...props} />}
       {!isDesktopOrLaptop && '<Select {...props} /> // Placeholder'}
     </div>
