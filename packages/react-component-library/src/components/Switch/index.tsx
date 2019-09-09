@@ -3,9 +3,7 @@ import { useMediaQuery } from 'react-responsive'
 
 import Switch from './Switch'
 
-interface ResponsiveSwitchProps extends SwitchType {}
-
-const ResponsiveSwitch: React.FC<ResponsiveSwitchProps> = props => {
+const ResponsiveSwitch: React.FC<SwitchType> = props => {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-device-width: 1224px)',
   })

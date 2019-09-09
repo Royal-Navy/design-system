@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 
-interface SwitchProps extends SwitchType {}
-
-const Switch: React.FC<SwitchProps> = ({
+const Switch: React.FC<SwitchType> = ({
   label = '',
   className = '',
   onChange = (previous, active) => {},
