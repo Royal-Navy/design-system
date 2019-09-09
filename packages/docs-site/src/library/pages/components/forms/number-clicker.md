@@ -5,12 +5,13 @@ header: true
 ---
 
 import { Icons, Tab, TabSet } from '@royalnavy/react-component-library'
-import DataTable from '../../../components/presenters/data-table'
-import CodeHighlighter from '../../../components/presenters/code-highlighter'
-import SketchWidget from '../../../components/presenters/sketch-widget'
-import NumberClickerComponent from '../../images/components/number-clicker/component.svg'
-import NumberClickerAnatomy from '../../images/components/number-clicker/anatomy.svg'
-import NumberClickerStates from '../../images/components/number-clicker/states.svg'
+import DataTable from '../../../../components/presenters/data-table'
+import CodeHighlighter from '../../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../../components/presenters/sketch-widget'
+import NumberClickerComponent from '../../../images/components/forms/number-clicker/component.svg'
+import NumberClickerAnatomy from '../../../images/components/forms/number-clicker/anatomy.svg'
+import NumberClickerStates from '../../../images/components/forms/number-clicker/states.svg'
+import NumberClickerButtonStates from '../../../images/components/forms/number-clicker/button-states.svg'
 
 # Overview
 The Number Clicker is an Number Input component - it only accepts numbers and can be stepped with the additional arrows.
@@ -45,6 +46,7 @@ The Number Clicker is only available in 1 size. It has been created in relation 
 
 The Number Clicker has two states - Default and Focused.
 
+<NumberClickerButtonStates />
 
 The Directional Buttons also have state. Clicking on the up arrow will increase the entered value, and clicking the down arrow will decrease the value.
 
