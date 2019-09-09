@@ -11,6 +11,7 @@ import SketchWidget from '../../../components/presenters/sketch-widget'
 import TooltipComponent from '../../images/components/tooltip/component.svg'
 import TooltipAnatomy from '../../images/components/tooltip/anatomy.svg'
 import TooltipStates from '../../images/components/tooltip/states.svg'
+import TooltipVariations from '../../images/components/tooltip/variations.svg'
 
 # Overview
 The Tooltip is a small component that can display text information to the user, hidden under a tap or a hover.
@@ -33,6 +34,8 @@ The tooltip should be used wherever including extra detail would be beneficial t
 
   1. **Information Icon**. The Information Icon is the only visible part of the Tooltip icon in its default state.
   2. **Tooltip Item**. The Tooltip Item floats above the Information Icon 
+  3. **Tooltip Title (Optional)**. Add a Title to accompany the main Tooltip Body.
+  4. **Tooltip Message**. The Tooltip Message contains the main content of the tootip. This section is required, unlike the title.
 
   
 ### Sizing & Spacing
@@ -47,7 +50,9 @@ The Tooltip has two states - Default and Hovered/Tapped (mobile). By default, th
 There is no hard limit to the number of Tooltips that can be added to a page, however, try to use them sparingly.
 
 ### Variations
-You can set the direction of the tooltip to be either the Top, Right, Left, or Bottom.
+
+<TooltipVariations />
+The Tooltip comes in two variations - with and without the Tooltip Title. You can also set the direction of the tooltip to be either the Top, Right, Left, or Bottom.
 
 </Tab>
 
