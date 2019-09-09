@@ -16,23 +16,27 @@ const Switch: React.FC<SwitchType> = ({
 
   return (
     <fieldset className={`rn-switch ${className}`}>
-      <legend className="rn-switch__label">{label}</legend>
+      <legend className="rn-switch__legend">{label}</legend>
       <div className="rn-switch__container">
         {options.map(({ name, value }) => (
-          <input
-            name={label}
-            data-name={name}
-            value={value}
-            type="radio"
+          <label
             className={`rn-switch__option ${
               active === name ? 'is-active' : ''
             }`}
-            onClick={() => {
-              const previous = active
-              setActive(name)
-              onChange(getOption(previous), getOption(name))
-            }}
-          />
+            data-name={name}
+          >
+            <input
+              name={label}
+              value={value}
+              type="radio"
+              className="rn-switch__radio"
+              onClick={() => {
+                const previous = active
+                setActive(name)
+                onChange(getOption(previous), getOption(name))
+              }}
+            />
+          </label>
         ))}
       </div>
     </fieldset>
