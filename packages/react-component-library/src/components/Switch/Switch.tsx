@@ -19,7 +19,7 @@ const Switch: React.FC<SwitchType> = ({
 
   return (
     <fieldset className={`rn-switch rn-switch--${size} ${className}`}>
-      <legend className="rn-switch__legend">{label}</legend>
+      {label && <legend className="rn-switch__legend">{label}</legend>}
       <div className="rn-switch__container">
         {options.map(({ name, value }) => (
           <label
@@ -32,7 +32,7 @@ const Switch: React.FC<SwitchType> = ({
           >
             <input
               id={`switch-${id}-${name}`}
-              name={label}
+              name={label || id}
               value={value}
               type="radio"
               className="rn-switch__radio"

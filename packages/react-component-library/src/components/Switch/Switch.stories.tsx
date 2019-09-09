@@ -23,6 +23,15 @@ stories.add('Default', () => (
   />
 ))
 
+stories.add('No legend', () => (
+  <Switch
+    options={options}
+    onChange={(previous, active) => {
+      console.log(previous, active)
+    }}
+  />
+))
+
 stories.add('Responsive', () => (
   <ResponsiveSwitch
     label="Date Range"
