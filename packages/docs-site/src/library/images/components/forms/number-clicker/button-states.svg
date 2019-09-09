@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="726" height="201">
+  <defs>
+    <rect id="b" width="41" height="22" x="1" rx="2"/>
+    <filter id="a" width="151.2%" height="195.5%" x="-25.6%" y="-38.6%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="shadowSpreadOuter1"/>
+      <feOffset dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="shadowSpreadOuter2"/>
+      <feOffset in="shadowSpreadOuter2" result="shadowOffsetOuter2"/>
+      <feComposite in="shadowOffsetOuter2" in2="SourceAlpha" operator="out" result="shadowOffsetOuter2"/>
+      <feColorMatrix in="shadowOffsetOuter2" result="shadowMatrixOuter2" values="0 0 0 0 0.10876479 0 0 0 0 0.458586931 0 0 0 0 0.799237311 0 0 0 1 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="shadowMatrixOuter2"/>
+      </feMerge>
+    </filter>
+    <filter id="c" width="168.4%" height="161.9%" x="-34.2%" y="-31%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1"/>
+      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v167H.5z"/>
+    <g transform="translate(239 92)">
+      <rect width="267" height="45" x="-.5" y=".5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      <path fill="#E2E9EE" d="M224 1h1v44h-1z"/>
+      <g transform="translate(224)">
+        <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+        <rect width="42" height="23" x=".5" y="-.5" fill="#FFF" stroke="#2A77C7" rx="2"/>
+      </g>
+      <path fill="#748999" d="M244.63 37.45l-3.21-5.7a.5.5 0 0 1 .43-.75h7.3a.5.5 0 0 1 .43.75l-3.2 5.7a1 1 0 0 1-1.75 0z"/>
+      <path fill="#3E5667" d="M246.37 8.55l3.21 5.7a.5.5 0 0 1-.43.75h-7.3a.5.5 0 0 1-.43-.75l3.2-5.7a1 1 0 0 1 1.75 0z"/>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="12" y="29">Label</tspan>
+      </text>
+    </g>
+    <g filter="url(#c)" transform="translate(490 105)">
+      <path fill="#FFF" d="M5.07 1.3h5.06v3.89h5.07v1.29h2.53v1.3H19v6.48h-1.27v2.59h-1.26v3.89h-2.54v-1.3h-1.26v1.3H6.33v-2.59H5.07v-1.3H3.8v-1.29H2.53v-2.6H1.27v-1.29H0v-2.6h1.27V7.78H3.8v1.29h1.27z"/>
+      <path fill="#000" d="M17.73 12.96H19v1.3h-1.27zM17.73 10.37H19v1.3h-1.27zM17.73 11.67H19v1.29h-1.27z"/>
+      <path fill="#000" d="M17.73 9.07H19v1.3h-1.27zM17.73 7.78H19v1.29h-1.27zM16.47 14.26h1.26v1.3h-1.26zM16.47 15.56h1.26v1.29h-1.26zM16.47 6.48h1.26v1.3h-1.26zM15.2 18.15h1.27v1.29H15.2zM15.2 19.44h1.27v1.3H15.2z"/>
+      <path fill="#000" d="M15.2 16.85h1.27v1.3H15.2zM15.2 6.48h1.27v1.3H15.2zM15.2 7.78h1.27v1.29H15.2zM13.93 19.44h1.27v1.3h-1.27zM13.93 14.26h1.27v1.3h-1.27zM13.93 15.56h1.27v1.29h-1.27z"/>
+      <path fill="#000" d="M13.93 12.96h1.27v1.3h-1.27zM13.93 11.67h1.27v1.29h-1.27zM13.93 5.19h1.27v1.29h-1.27zM12.67 18.15h1.26v1.29h-1.26zM12.67 6.48h1.26v1.3h-1.26zM12.67 5.19h1.26v1.29h-1.26zM12.67 7.78h1.26v1.29h-1.26zM11.4 19.44h1.27v1.3H11.4zM11.4 14.26h1.27v1.3H11.4zM11.4 15.56h1.27v1.29H11.4z"/>
+      <path fill="#000" d="M11.4 12.96h1.27v1.3H11.4zM11.4 11.67h1.27v1.29H11.4zM11.4 5.19h1.27v1.29H11.4zM10.13 19.44h1.27v1.3h-1.27zM10.13 5.19h1.27v1.29h-1.27zM8.87 19.44h1.26v1.3H8.87zM8.87 14.26h1.26v1.3H8.87zM8.87 15.56h1.26v1.29H8.87z"/>
+      <path fill="#000" d="M8.87 12.96h1.26v1.3H8.87zM8.87 11.67h1.26v1.29H8.87zM8.87 6.48h1.26v1.3H8.87zM8.87 3.89h1.26v1.3H8.87zM8.87 5.19h1.26v1.29H8.87zM8.87 7.78h1.26v1.29H8.87zM8.87 2.59h1.26v1.3H8.87zM8.87 1.3h1.26v1.29H8.87zM7.6 19.44h1.27v1.3H7.6zM7.6 0h1.27v1.3H7.6zM6.33 18.15H7.6v1.29H6.33zM6.33 19.44H7.6v1.3H6.33zM6.33 0H7.6v1.3H6.33zM5.07 16.85h1.26v1.3H5.07zM5.07 10.37h1.26v1.3H5.07zM5.07 6.48h1.26v1.3H5.07zM5.07 3.89h1.26v1.3H5.07zM5.07 5.19h1.26v1.29H5.07z"/>
+      <path fill="#000" d="M5.07 9.07h1.26v1.3H5.07zM5.07 7.78h1.26v1.29H5.07zM5.07 2.59h1.26v1.3H5.07zM5.07 1.3h1.26v1.29H5.07zM3.8 15.56h1.27v1.29H3.8zM3.8 9.07h1.27v1.3H3.8zM2.53 14.26H3.8v1.3H2.53z"/>
+      <path fill="#000" d="M2.53 12.96H3.8v1.3H2.53zM2.53 7.78H3.8v1.29H2.53zM1.27 11.67h1.26v1.29H1.27z"/>
+      <path fill="#000" d="M1.27 7.78h1.26v1.29H1.27zM0 10.37h1.27v1.3H0z"/>
+      <path fill="#000" d="M0 9.07h1.27v1.3H0z"/>
+    </g>
+    <g transform="translate(239 28)">
+      <rect width="271" height="45" x="-.5" y="-.5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      <path fill="#E2E9EE" d="M228 0h1v44h-1zM229 21.5h41v1h-41z"/>
+      <path fill="#748999" d="M248.63 36.45l-3.21-5.7a.5.5 0 0 1 .43-.75h7.3a.5.5 0 0 1 .43.75l-3.2 5.7a1 1 0 0 1-1.75 0zM250.37 7.55l3.21 5.7a.5.5 0 0 1-.43.75h-7.3a.5.5 0 0 1-.43-.75l3.2-5.7a1 1 0 0 1 1.75 0z"/>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="12" y="28">Label</tspan>
+      </text>
+    </g>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="168.56" y="56">Default</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="175.05" y="120">Active</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="197">Number Clicker Directional Button States.</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 726 213">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v177H.5z"/>
+    <g transform="translate(228 67)">
+      <rect width="271" height="45" x="-.5" y="-.5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      <path fill="#E2E9EE" d="M228 0h1v44h-1zM229 21.5h41v1h-41z"/>
+      <path fill="#748999" d="M248.63 36.45l-3.21-5.7a.5.5 0 0 1 .43-.75h7.3a.5.5 0 0 1 .43.75l-3.2 5.7a1 1 0 0 1-1.75 0zM250.37 7.55l3.21 5.7a.5.5 0 0 1-.43.75h-7.3a.5.5 0 0 1-.43-.75l3.2-5.7a1 1 0 0 1 1.75 0z"/>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="12" y="28">Label</tspan>
+      </text>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="207">The Number Clicker component.</tspan>
+    </text>
+  </g>
+</svg>
