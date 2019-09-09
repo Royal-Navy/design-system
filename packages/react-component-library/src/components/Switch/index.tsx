@@ -30,6 +30,7 @@ const Switch: React.FC<SwitchProps> = ({
       <div className="rn-switch__container">
         {options.map(({ name, value }) => (
           <input
+            name={label}
             data-name={name}
             value={value}
             type="radio"
