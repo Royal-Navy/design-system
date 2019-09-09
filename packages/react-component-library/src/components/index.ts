@@ -12,6 +12,8 @@ import Radio from './Radio'
 import { ScrollableNav } from './ScrollableNav'
 import { Searchbar } from './Searchbar'
 import Sidebar from '../fragments/Sidebar'
+import Switch from './Switch/Switch'
+import ResponsiveSwitch from './Switch'
 import Tab from './TabSet/Tab'
 import TabSet from './TabSet'
 import TabNav from './TabNav'
@@ -32,6 +34,8 @@ export {
   ScrollableNav,
   Searchbar,
   Sidebar,
+  Switch,
+  ResponsiveSwitch,
   Tab,
   TabSet,
   TabNav,

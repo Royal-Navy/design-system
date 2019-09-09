@@ -10,6 +10,8 @@ import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
 import Popover from './components/Popover'
 import Sidebar from './fragments/Sidebar'
+import Switch from './components/Switch/Switch'
+import ResponsiveSwitch from './components/Switch'
 import Radio from './components/Radio'
 import Tab from './components/TabSet/Tab'
 import TabSet from './components/TabSet'
@@ -32,6 +34,8 @@ export {
   Pagination,
   PhaseBanner,
   Popover,
+  Switch,
+  ResponsiveSwitch,
   Radio,
   Sidebar,
   Tab,
