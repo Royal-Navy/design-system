@@ -1,4 +1,5 @@
 import React from 'react'
+// @ts-ignore
 import { useMediaQuery } from 'react-responsive'
 
 import { SwitchType } from '../../types/Switch'

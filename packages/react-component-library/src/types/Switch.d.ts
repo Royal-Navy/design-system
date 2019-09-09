@@ -4,7 +4,7 @@ export interface OptionType {
 }
 
 export interface SwitchType {
-  label: string
+  label?: string
   className?: string
   onChange?: (previous: OptionType, active: OptionType) => void
   options: OptionType[]
