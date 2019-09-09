@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import uuid from 'uuid'
 
 import { SwitchType } from '../../types/Switch'
 
@@ -9,6 +10,7 @@ const Switch: React.FC<SwitchType> = ({
   options = [],
 }) => {
   const [active, setActive] = useState(null)
+  const id = uuid()
 
   function getOption(name: string) {
     return options.find(item => item.name === name)
@@ -24,8 +26,10 @@ const Switch: React.FC<SwitchType> = ({
               active === name ? 'is-active' : ''
             }`}
             data-name={name}
+            htmlFor={`switch-${id}-${name}`}
           >
             <input
+              id={`switch-${id}-${name}`}
               name={label}
               value={value}
               type="radio"
