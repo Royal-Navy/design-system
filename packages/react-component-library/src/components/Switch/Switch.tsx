@@ -18,8 +18,15 @@ const Switch: React.FC<SwitchType> = ({
   }
 
   return (
-    <fieldset className={`rn-switch rn-switch--${size} ${className}`}>
-      {label && <legend className="rn-switch__legend">{label}</legend>}
+    <fieldset
+      className={`rn-switch rn-switch--${size} ${className}`}
+      data-testid="wrapper"
+    >
+      {label && (
+        <legend className="rn-switch__legend" data-testid="legend">
+          {label}
+        </legend>
+      )}
       <div className="rn-switch__container">
         {options.map(({ name, value }) => (
           <label
@@ -29,6 +36,7 @@ const Switch: React.FC<SwitchType> = ({
             }`}
             data-name={name}
             htmlFor={`switch-${id}-${name}`}
+            data-testid="option"
           >
             <input
               id={`switch-${id}-${name}`}
