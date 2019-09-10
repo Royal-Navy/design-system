@@ -21,7 +21,12 @@ export const Select: React.FC<SelectProps> = ({
   value,
 }) => {
   const onSelectChange = (option: any) => {
-    onChange(option.value)
+    console.log('==', option)
+    if (option && option.value !== undefined) {
+      onChange(option.value)
+    } else {
+      onChange(null)
+    }
   }
 
   const selectedOption = options.find(option => option.value === value)
@@ -36,6 +41,7 @@ export const Select: React.FC<SelectProps> = ({
         Option,
         SingleValue,
       }}
+      isClearable
       name={name}
       onChange={onSelectChange}
       options={options}

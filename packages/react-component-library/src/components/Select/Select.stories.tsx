@@ -23,14 +23,3 @@ stories.add('Default', () => (
     />
   </div>
 ))
-
-stories.add('With initial value', () => (
-  <div style={{ margin: 50 }}>
-    <Select
-      options={options}
-      label="Hello"
-      onChange={value => console.log(value)}
-      value="vanilla"
-    />
-  </div>
-))
