@@ -1,11 +1,8 @@
-import 'jest-dom/extend-expect'
-import { JSDOM } from 'jsdom'
 import React from 'react'
+import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult, wait } from '@testing-library/react'
 
 import { Masthead, MastheadProps } from './Masthead'
-
-const globalAny: any = global
 
 describe('Masthead', () => {
   let wrapper: RenderResult
