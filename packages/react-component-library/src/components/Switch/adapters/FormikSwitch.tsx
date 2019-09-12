@@ -48,9 +48,8 @@ const FormikSwitch: React.FC<FormikSwitchProps> = props => {
 
   const hasError: boolean = touched[name] && errors[name]
 
-  const Component: ResponsiveSwitch | Switch = responsive
-    ? ResponsiveSwitch
-    : Switch
+  // TODO: Unsure of the correct type to use
+  const ComponentToUse: any = responsive ? ResponsiveSwitch : Switch
 
   function handleChange(previous: OptionType, active: OptionType) {
     setFieldValue(name, `${active.name}:${active.value}`)
@@ -59,7 +58,7 @@ const FormikSwitch: React.FC<FormikSwitchProps> = props => {
 
   return (
     <>
-      <Component
+      <ComponentToUse
         {...props}
         label={name}
         options={setActive(options, value)}
