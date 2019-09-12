@@ -20,8 +20,11 @@ import TextInput from './components/TextInput'
 // Icons
 import * as Icons from './icons'
 
-// Enhanced & Enhancers
-import { Formik, withFormik } from './enhancers'
+// Formik components (enhanced)
+import { Formik } from './components/Formik'
+
+// Enhancers
+import withFormik from './enhancers/withFormik'
 
 export {
   Avatar,
@@ -45,5 +48,6 @@ export {
   Icons,
 
   Formik,
+
   withFormik
 }
