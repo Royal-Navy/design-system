@@ -38,11 +38,11 @@ const Switch: React.FC<SwitchType> = ({
               active === name ? 'is-active' : ''
             }`}
             data-name={name}
-            htmlFor={`switch-${id}-${name}`}
+            htmlFor={`${id}-${name}`}
             data-testid="option"
           >
             <input
-              id={`switch-${id}-${name}`}
+              id={`${id}-${name}`}
               name={label || id}
               value={value}
               type="radio"
