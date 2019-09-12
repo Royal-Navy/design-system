@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import uuid from 'uuid'
 
-import { SwitchType } from '../../types/Switch'
+import { SwitchType, OptionType } from '../../types/Switch'
 
 const Switch: React.FC<SwitchType> = ({
   label = '',
@@ -10,7 +10,10 @@ const Switch: React.FC<SwitchType> = ({
   options = [],
   size = 'regular',
 }) => {
-  const [active, setActive] = useState(null)
+  let initial: OptionType | string = options.find(item => item.active)
+  initial = (initial && initial.name) || null
+
+  const [active, setActive] = useState(initial)
   const id = uuid()
 
   function getOption(name: string) {

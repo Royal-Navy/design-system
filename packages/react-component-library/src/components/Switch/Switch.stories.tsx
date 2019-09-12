@@ -1,8 +1,13 @@
 import React from 'react'
+import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 
+import { Field, Formik, Form } from 'formik'
+
+import { OptionType } from '../../types/Switch'
 import Switch from './Switch'
 import ResponsiveSwitch from './index'
+import FormikSwitch from './adapters/FormikSwitch'
 
 const stories = storiesOf('Switch', module)
 
@@ -62,4 +67,32 @@ stories.add('Large', () => (
     }}
     size="large"
   />
+))
+
+interface Data {
+  'Date Range': string
+}
+
+const initialValues: Data = {
+  'Date Range': 'Month:3',
+}
+
+const onSubmit = (data: Data): void => {
+  action(`Form Submit ${JSON.stringify(data)}`)
+}
+
+stories.add('Formik', () => (
+  <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Form>
+      <Field
+        name="Date Range"
+        component={FormikSwitch}
+        options={options}
+        responsive={true}
+        onChange={(previous: OptionType, active: OptionType) => {
+          console.log(previous, active)
+        }}
+      />
+    </Form>
+  </Formik>
 ))
