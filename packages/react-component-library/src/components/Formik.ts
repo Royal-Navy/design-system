@@ -1,5 +1,5 @@
-import { TextInput, Checkbox, Radio } from '../components'
-import FormikSwitch from '../components/Switch/adapters/FormikSwitch'
+import { TextInput, Checkbox, Radio } from '.'
+import FormikSwitch from './Switch/adapters/FormikSwitch'
 import withFormik from '../enhancers/withFormik'
 
 /**
