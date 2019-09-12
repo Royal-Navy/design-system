@@ -88,7 +88,7 @@ stories.add('Formik', () => (
         name="Date Range"
         component={FormikSwitch}
         options={options}
-        responsive={true}
+        responsive
         onChange={(previous: OptionType, active: OptionType) => {
           console.log(previous, active)
         }}

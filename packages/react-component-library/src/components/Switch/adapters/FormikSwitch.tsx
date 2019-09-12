@@ -39,7 +39,7 @@ const FormikSwitch: React.FC<FormikSwitch> = props => {
     form: { touched, errors },
     formik: {
       setFieldValue,
-      values: { [name]: active },
+      values: { [name]: value },
     },
     responsive,
     options,
@@ -62,7 +62,7 @@ const FormikSwitch: React.FC<FormikSwitch> = props => {
       <Component
         {...props}
         label={name}
-        options={setActive(options, active)}
+        options={setActive(options, value)}
         onChange={handleChange}
         className={hasError ? 'is-invalid' : ''}
       />
