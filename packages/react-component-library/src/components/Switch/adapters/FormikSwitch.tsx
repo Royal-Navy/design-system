@@ -8,7 +8,7 @@ import { OptionType, SwitchType } from '../../../types/Switch'
 import ResponsiveSwitch from '../index'
 import Switch from '../Switch'
 
-interface FormikSwitch extends SwitchType {
+interface FormikSwitchProps extends SwitchType {
   field: FieldProps
   form: FormProps
   formik: FormikProps<any>
@@ -33,7 +33,7 @@ function setActive(options: OptionType[], active: string) {
   })
 }
 
-const FormikSwitch: React.FC<FormikSwitch> = props => {
+const FormikSwitch: React.FC<FormikSwitchProps> = props => {
   const {
     field: { name },
     form: { touched, errors },
