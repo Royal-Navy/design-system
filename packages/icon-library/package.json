@@ -11,13 +11,30 @@
     "dist"
   ],
   "scripts": {
-    "build": "svgr -d dist/ src/assets/**/",
+    "build": "run-s svgr build:ts types",
+    "build:ts": "webpack -p --config=webpack/prod.js",
+    "svgr": "rm -rf src/icons; svgr --ext tsx -d src/icons src/assets/**/",
+    "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/",
     "prepare": "yarn build"
   },
   "dependencies": {
     "react": "^16.9.0"
   },
   "devDependencies": {
-    "@svgr/cli": "^4.3.2"
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "@svgr/cli": "^4.3.2",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-wildcard": "^5.0.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "npm-run-all": "^4.1.5",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.6.3",
+    "webpack": "^4.40.1",
+    "webpack-cli": "^3.3.8",
+    "webpack-merge": "^4.2.2"
   }
 }
