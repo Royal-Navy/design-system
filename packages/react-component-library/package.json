@@ -16,8 +16,8 @@
   ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "author": "Nelson",
-  "license": "MIT",
+  "author": "NELSON",
+  "license": "Apache-2.0",
   "scripts": {
     "analyze": "webpack -p --config=webpack/analyze.js",
     "build": "run-s build:ts types",
