@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="keyboard-tab-a" d="M7.72666666,4.93999998 L10.1133333,7.33333333 L0.666666621,7.33333333 L0.666666621,8.66666667 L10.1133333,8.66666667 L7.72,11.06 L8.66666662,12 L12.6666666,7.99999997 L8.66666662,3.99999997 L7.72666666,4.93999998 Z M13.3333334,3.99999997 L13.3333334,12 L14.6666667,12 L14.6666667,3.99999997 L13.3333334,3.99999997 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="keyboard-tab-b" fill="#fff">
+      <use xlink:href="#keyboard-tab-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#keyboard-tab-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

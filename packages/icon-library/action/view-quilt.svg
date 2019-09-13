@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="view-quilt-a" d="M6.66666666,12 L10,12 L10,8 L6.66666666,8 L6.66666666,12 Z M2.66666663,12 L5.99999999,12 L5.99999999,3.3333333 L2.66666663,3.3333333 L2.66666663,12 Z M10.6666667,12 L14,12 L14,8 L10.6666667,8 L10.6666667,12 Z M6.66666666,3.3333333 L6.66666666,7.3333333 L14,7.3333333 L14,3.3333333 L6.66666666,3.3333333 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="view-quilt-b" fill="#fff">
+      <use xlink:href="#view-quilt-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#view-quilt-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

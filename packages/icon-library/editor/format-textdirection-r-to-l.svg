@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="format-textdirection-r-to-l-a" d="M6.22222221,6.22222221 L6.22222221,10.6666667 L8,10.6666667 L8,1.77777774 L8.88888889,1.77777774 L8.88888889,10.6666667 L10.6666667,10.6666667 L10.6666667,1.77777774 L11.5555555,1.77777774 L11.5555555,0.888888844 L6.22222221,0.888888844 C4.74666665,0.888888844 3.55555553,2.07999996 3.55555553,3.55555553 C3.55555553,5.03111109 4.74666665,6.22222221 6.22222221,6.22222221 Z M4.44444442,16.0000001 L4.44444442,14.2222223 L14.2222223,14.2222223 L14.2222223,12.4444445 L4.44444442,12.4444445 L4.44444442,10.6666667 L1.77777774,13.3333334 L4.44444442,16.0000001 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="format-textdirection-r-to-l-b" fill="#fff">
+      <use xlink:href="#format-textdirection-r-to-l-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#format-textdirection-r-to-l-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

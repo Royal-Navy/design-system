@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="filter-hdr-a" d="M9.33333334,3.99999997 L6.83333333,7.33333333 L8.73333334,9.86666668 L7.66666662,10.6666667 C6.53999999,9.16666667 4.66666662,6.66666666 4.66666662,6.66666666 L0.666666621,12 L15.3333334,12 L9.33333334,3.99999997 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="filter-hdr-b" fill="#fff">
+      <use xlink:href="#filter-hdr-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#filter-hdr-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="swap-vert-a" d="M10.6666667,11.34 L10.6666667,6.66666666 L9.33333333,6.66666666 L9.33333333,11.34 L7.33333333,11.34 L10,14 L12.6666667,11.34 L10.6666667,11.34 L10.6666667,11.34 Z M5.99999999,1.99999996 L3.3333333,4.65999998 L5.3333333,4.65999998 L5.3333333,9.33333334 L6.66666666,9.33333334 L6.66666666,4.65999998 L8.66666667,4.65999998 L5.99999999,1.99999996 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="swap-vert-b" fill="#fff">
+      <use xlink:href="#swap-vert-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#swap-vert-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

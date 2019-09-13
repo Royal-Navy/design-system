@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="volume-mute-a" points="4.444 6.222 4.444 9.778 7.111 9.778 10.667 13.333 10.667 2.667 7.111 6.222"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="volume-mute-b" fill="#fff">
+      <use xlink:href="#volume-mute-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#volume-mute-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

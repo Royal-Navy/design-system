@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="eject-a" d="M3.3333333,11.3333334 L12.6666667,11.3333334 L12.6666667,12.6666667 L3.3333333,12.6666667 L3.3333333,11.3333334 Z M8,3.3333333 L3.55333331,10 L12.4466667,10 L8,3.3333333 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="eject-b" fill="#fff">
+      <use xlink:href="#eject-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#eject-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

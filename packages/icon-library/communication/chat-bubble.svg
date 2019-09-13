@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="chat-bubble-a" d="M13.3333333,1.33333329 L2.66666663,1.33333329 C1.9333333,1.33333329 1.33333329,1.9333333 1.33333329,2.66666663 L1.33333329,14.6666667 L3.99999997,12 L13.3333333,12 C14.0666667,12 14.6666667,11.4 14.6666667,10.6666667 L14.6666667,2.66666663 C14.6666667,1.9333333 14.0666667,1.33333329 13.3333333,1.33333329 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="chat-bubble-b" fill="#fff">
+      <use xlink:href="#chat-bubble-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#chat-bubble-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>
