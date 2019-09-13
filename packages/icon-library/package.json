@@ -6,5 +6,18 @@
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "svgr -d dist/ src/assets/**/",
+    "prepare": "yarn build"
+  },
+  "dependencies": {
+    "react": "^16.9.0"
+  },
+  "devDependencies": {
+    "@svgr/cli": "^4.3.2"
   }
 }
