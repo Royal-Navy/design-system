@@ -8,7 +8,7 @@ import { SingleValue } from './SingleValue'
 export interface SelectProps {
   label?: string
   name?: string
-  onChange: (value: string) => void
+  onChange?: (event: any) => void
   options: SelectOptionWithBadgeType[]
   value?: string
 }
@@ -21,12 +21,15 @@ export const Select: React.FC<SelectProps> = ({
   value,
 }) => {
   const onSelectChange = (option: any) => {
-    console.log('==', option)
-    if (option && option.value !== undefined) {
-      onChange(option.value)
-    } else {
-      onChange(null)
-    }
+    const selectedValue =
+      option && option.value !== undefined ? option.value : null
+
+    onChange({
+      target: {
+        name,
+        value: selectedValue,
+      },
+    })
   }
 
   const selectedOption = options.find(option => option.value === value)
@@ -50,3 +53,5 @@ export const Select: React.FC<SelectProps> = ({
     />
   )
 }
+
+Select.displayName = 'Select'
