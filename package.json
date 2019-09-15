@@ -6,6 +6,7 @@
     "packages/css-framework",
     "packages/docs-site",
     "packages/eslint-config-react",
+    "packages/reactapp",
     "packages/react-component-library",
     "packages/storybook-react-input-state",
     "packages/vue-component-library"
