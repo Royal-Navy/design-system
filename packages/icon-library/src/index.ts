@@ -1,7 +1,6 @@
-// import * as Icons from './icons'
-
-import SvgAccessAlarm from './icons/AccessAlarm'
+// @ts-ignore
+import * as Icons from './icons/*'
 
 export {
-  SvgAccessAlarm
+  Icons
 }
