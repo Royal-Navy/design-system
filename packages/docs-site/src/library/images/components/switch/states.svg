@@ -1,0 +1,49 @@
+<svg viewBox="0 0 726 201" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="427" y="74" width="88" height="44" rx="3"></rect>
+        <filter x="-13.1%" y="-21.6%" width="126.1%" height="152.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter2"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter2" result="shadowOffsetOuter2"></feOffset>
+            <feComposite in="shadowOffsetOuter2" in2="SourceAlpha" operator="out" result="shadowOffsetOuter2"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.10876479   0 0 0 0 0.458586931   0 0 0 0 0.799237311  0 0 0 1 0" type="matrix" in="shadowOffsetOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Docs-Images" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Number-Clicker" transform="translate(-200.000000, -725.000000)">
+            <g id="Group-33" transform="translate(200.000000, 725.000000)">
+                <rect id="Rectangle" stroke="#B8C7D2" fill="#FFFFFF" x="0.5" y="0.5" width="725" height="167"></rect>
+                <g id="Rectangle">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <rect stroke="#2A77C7" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="426.5" y="73.5" width="89" height="45" rx="3"></rect>
+                </g>
+                <text id="Week" font-family="Lato-Bold, Lato" font-size="15" font-weight="bold" line-spacing="20" fill="#3E5667">
+                    <tspan x="451.09875" y="101">Week</tspan>
+                </text>
+                <g id="Group-2" transform="translate(188.000000, 74.000000)">
+                    <rect id="Rectangle" stroke="#B8C7D2" fill="#F8FAFC" x="-0.5" y="-0.5" width="89" height="45" rx="3"></rect>
+                    <text id="Week" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500" line-spacing="20" fill="#3E5667">
+                        <tspan x="24.29375" y="27">Week</tspan>
+                    </text>
+                </g>
+                <text id="Unselected" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745">
+                    <tspan x="197.626" y="56">Unselected</tspan>
+                </text>
+                <text id="Selected" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745">
+                    <tspan x="444.4665" y="56">Selected</tspan>
+                </text>
+                <text id="The-Switch-states." font-family="Lato-Medium, Lato" font-size="15" font-weight="400" line-spacing="24" fill="#3E5667">
+                    <tspan x="0" y="197">The Switch states.</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
