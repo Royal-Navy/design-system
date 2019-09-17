@@ -5,9 +5,9 @@ A collection of SVG icons for use in Royal Navy web application development.
 This package exposes SVG icons wrapped in React components. It also includes the associated type definitions for these components.
 
 ```javascript
-import { SvgHome } from '@royalnavy/icon-library'
+import { IconHome } from '@royalnavy/icon-library'
 
-// <SvgHome />
+// <IconHome />
 ```
 
 ## Contribution
