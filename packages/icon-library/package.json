@@ -11,9 +11,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "run-s svgr build:ts types",
+    "build": "run-s svgr exports build:ts types",
     "build:ts": "webpack -p --config=webpack/prod.js",
     "svgr": "rm -rf src/icons; svgr --ext tsx -d src/icons src/assets/**/",
+    "exports": "./generate-exports.sh",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/",
     "prepare": "yarn build"
   },
