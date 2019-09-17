@@ -10,9 +10,13 @@ import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
 
+import SelectComponent from '../../../images/components/forms/select/component.svg'
+import SelectAnatomy from '../../../images/components/forms/select/anatomy.svg'
+import SelectStates from '../../../images/components/forms/select/states.svg'
+
 # Select
 A form component used to allow the user to pick a value from a list
-<InputComponent />
+<SelectComponent />
 
 ## Usage
 The Select input is useful when the user needs to select an option from a long list, typically more than 7 options. Users can click on a control to let the list drop down and the user can then scroll through the list
@@ -22,10 +26,24 @@ and pick the desired option. Alternatively the control lets a user select the fi
 
 <Tab title="Design">
 
-<SketchWidget name="Select" href="/standards-toolkit.sketch" />
+<SketchWidget name="Select" href="/standards-toolkit.sketch" /> 
 
-## Design
-TBD
+### Anatomy
+
+<SelectAnatomy />
+
+1. **Container**. The Container wraps the entire component. When the Select is focused, the sheet expands from the bottom of the Select, covering any content immediately below the Select component.
+2. **Label**. The label provides context to the options available in the Select.
+3. **Value**. The Value is the currently selected Item from the Sheet.
+4. **Sheet**. By default, the Sheet is hidden. When the Select is in a focused state, the Sheet will appear with the list of Select items available. It can only display a maximum of 5 items before it scrolls.
+5. **Item**. An Item in the Sheet can be selected by the user. When the user clicks on the item, the sheet collapses and changes the Value to the selected Item.
+6. **Item Active**. When the user opens the Sheet again, the last selected Item will be highlighted.
+
+### States
+
+<SelectStates />
+
+The Select component and the Select Item sub component both have two states - Default and Active.
 
 </Tab>
 
