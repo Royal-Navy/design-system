@@ -11,7 +11,7 @@ import { IconHome } from '@royalnavy/icon-library'
 ```
 
 ## Contribution
-Simply add an SVG icon to `src/icons/**/` and run `yarn build` to generate the consumable artefacts.
+Simply add an SVG icon to `src/assets/**/` and run `yarn build` to generate the consumable artefacts.
 
 ## Licence
 This icon library is an extension of the Google [Material design icons](https://github.com/google/material-design-icons).
