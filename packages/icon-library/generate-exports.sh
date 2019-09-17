@@ -9,8 +9,8 @@ IFS=$'\n\t'
 for file in src/icons/*; do
   filename=$(basename -- "$file")
   filename_no_ext=${filename%%.*}
-  exports+="${filename_no_ext}, "
-  echo "import ${filename_no_ext} from './icons/${filename_no_ext}'" >> src/index.ts
+  exports+="Icon${filename_no_ext}, "
+  echo "import Icon${filename_no_ext} from './icons/${filename_no_ext}'" >> src/index.ts
 done
 
 cat <<EOF >>src/index.ts
