@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="check-a" points="5.876 10.569 3.111 7.804 2.169 8.747 5.876 12.444 13.831 4.489 12.889 3.556"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="check-b" fill="#fff">
+      <use xlink:href="#check-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#check-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="skip-next-a" d="M3.99999997,12 L9.66666668,7.99999997 L3.99999997,3.99999997 L3.99999997,12 Z M10.6666667,3.99999997 L10.6666667,12 L12,12 L12,3.99999997 L10.6666667,3.99999997 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="skip-next-b" fill="#fff">
+      <use xlink:href="#skip-next-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#skip-next-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

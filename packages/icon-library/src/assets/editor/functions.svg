@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="functions-a" points="12.444 1.778 3.556 1.778 3.556 3.378 8.444 8 3.556 12.622 3.556 14.222 12.444 14.222 12.444 12.444 6.311 12.444 10.667 8 6.311 3.556 12.444 3.556"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="functions-b" fill="#fff">
+      <use xlink:href="#functions-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#functions-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

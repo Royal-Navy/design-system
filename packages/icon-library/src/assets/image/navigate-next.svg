@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="navigate-next-a" points="6.667 4 5.727 4.94 8.78 8 5.727 11.06 6.667 12 10.667 8"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="navigate-next-b" fill="#fff">
+      <use xlink:href="#navigate-next-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#navigate-next-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

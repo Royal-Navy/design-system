@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="unfold-less-a" d="M4.9422222,12.8355556 L5.88444443,13.7777778 L8,11.6622222 L10.1155556,13.7777778 L11.0577778,12.8355556 L8,9.77777779 L4.9422222,12.8355556 Z M11.0577778,3.16444441 L10.1155556,2.22222219 L8,4.33777775 L5.88444443,2.22222219 L4.9422222,3.16444441 L8,6.22222219 L11.0577778,3.16444441 L11.0577778,3.16444441 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="unfold-less-b" fill="#fff">
+      <use xlink:href="#unfold-less-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#unfold-less-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

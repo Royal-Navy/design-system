@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="crop-portrait-a" d="M11.3333333,1.99999996 L4.66666665,1.99999996 C3.93333331,1.99999996 3.3333333,2.59999997 3.3333333,3.3333333 L3.3333333,12.6666667 C3.3333333,13.4 3.93333331,14 4.66666665,14 L11.3333333,14 C12.0666667,14 12.6666667,13.4 12.6666667,12.6666667 L12.6666667,3.3333333 C12.6666667,2.59999997 12.0666667,1.99999996 11.3333333,1.99999996 Z M11.3333334,12.6666667 L4.66666665,12.6666667 L4.66666665,3.3333333 L11.3333334,3.3333333 L11.3333334,12.6666667 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="crop-portrait-b" fill="#fff">
+      <use xlink:href="#crop-portrait-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#crop-portrait-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

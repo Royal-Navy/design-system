@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="format-italic-a" points="6.222 1.778 6.222 3.556 8.516 3.556 5.262 10.667 2.667 10.667 2.667 12.444 9.778 12.444 9.778 10.667 7.484 10.667 10.738 3.556 13.333 3.556 13.333 1.778"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="format-italic-b" fill="#fff">
+      <use xlink:href="#format-italic-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#format-italic-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>
