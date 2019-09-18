@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="first-page-a" d="M12.2733334,11.06 L9.21333334,7.99999997 L12.2733334,4.93999998 L11.3333333,3.99999997 L7.33333333,7.99999997 L11.3333333,12 L12.2733334,11.06 Z M3.99999998,3.99999997 L5.33333332,3.99999997 L5.33333332,12 L3.99999998,12 L3.99999998,3.99999997 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="first-page-b" fill="#fff">
+      <use xlink:href="#first-page-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#first-page-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

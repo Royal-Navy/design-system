@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="keyboard-arrow-left-a" points="10.273 10.727 7.22 7.667 10.273 4.607 9.333 3.667 5.333 7.667 9.333 11.667"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="keyboard-arrow-left-b" fill="#fff">
+      <use xlink:href="#keyboard-arrow-left-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#keyboard-arrow-left-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

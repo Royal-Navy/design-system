@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="file-upload-a" d="M5.99999999,10.6666667 L10,10.6666667 L10,6.66666666 L12.6666667,6.66666666 L8,1.99999996 L3.3333333,6.66666666 L5.99999999,6.66666666 L5.99999999,10.6666667 Z M3.3333333,12 L12.6666667,12 L12.6666667,13.3333334 L3.3333333,13.3333334 L3.3333333,12 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="file-upload-b" fill="#fff">
+      <use xlink:href="#file-upload-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#file-upload-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

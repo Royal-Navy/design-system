@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="near-me-a" points="14 2 2 7.02 2 7.673 6.56 9.44 8.32 14 8.973 14"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="near-me-b" fill="#fff">
+      <use xlink:href="#near-me-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#near-me-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

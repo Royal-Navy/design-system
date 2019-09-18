@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="format-line-spacing-a" d="M8,13.3333334 L16,13.3333334 L16,11.5555556 L8,11.5555556 L8,13.3333334 Z M8,2.66666663 L8,4.44444442 L16,4.44444442 L16,2.66666663 L8,2.66666663 Z M6.66666666,4.44444442 L3.55555553,1.33333329 L0.444444397,4.44444442 L2.66666663,4.44444442 L2.66666663,11.5555556 L0.444444397,11.5555556 L3.55555553,14.6666667 L6.66666666,11.5555556 L4.4444444,11.5555556 L4.4444444,4.44444442 L6.66666666,4.44444442 Z M8,8.88888889 L16,8.88888889 L16,7.11111111 L8,7.11111111 L8,8.88888889 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="format-line-spacing-b" fill="#fff">
+      <use xlink:href="#format-line-spacing-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#format-line-spacing-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

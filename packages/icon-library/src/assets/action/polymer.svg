@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="polymer-a" points="12.667 2.667 10 2.667 4.74 11.087 3 8 6 2.667 3.333 2.667 .333 8 3.333 13.333 6 13.333 11.26 4.913 13 8 10 13.333 12.667 13.333 15.667 8"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="polymer-b" fill="#fff">
+      <use xlink:href="#polymer-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#polymer-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>
