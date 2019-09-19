@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="change-history-a" d="M8,5.17999998 L12.26,12 L3.73999997,12 L8,5.17999998 L8,5.17999998 Z M8,2.66666663 L1.33333329,13.3333334 L14.6666667,13.3333334 L8,2.66666663 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="change-history-b" fill="#fff">
+      <use xlink:href="#change-history-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#change-history-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

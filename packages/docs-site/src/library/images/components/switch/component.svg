@@ -1,0 +1,79 @@
+<svg viewBox="0 0 726 213" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M3,-10 L75,-10 L75,34 L3,34 C1.34314575,34 2.02906125e-16,32.6568542 0,31 L0,-7 C-2.02906125e-16,-8.65685425 1.34314575,-10 3,-10 Z" id="path-1"></path>
+        <filter x="-15.3%" y="-21.6%" width="130.7%" height="152.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter2"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter2" result="shadowOffsetOuter2"></feOffset>
+            <feComposite in="shadowOffsetOuter2" in2="SourceAlpha" operator="out" result="shadowOffsetOuter2"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.10876479   0 0 0 0 0.458586931   0 0 0 0 0.799237311  0 0 0 1 0" type="matrix" in="shadowOffsetOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Docs-Images" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Number-Clicker" transform="translate(-200.000000, -158.000000)">
+            <g id="Group-33" transform="translate(200.000000, 158.000000)">
+                <rect id="Rectangle" stroke="#B8C7D2" fill="#FFFFFF" x="0.5" y="0.5" width="725" height="177"></rect>
+                <g id="Group-22" transform="translate(36.000000, 99.000000)">
+                    <g id="Group-7" transform="translate(166.000000, 0.000000)">
+                        <path d="M-0.5,-0.5 L90,-0.5 C91.9329966,-0.5 93.5,1.06700338 93.5,3 L93.5,41 C93.5,42.9329966 91.9329966,44.5 90,44.5 L-0.5,44.5 L-0.5,-0.5 Z" id="Rectangle" stroke="#B8C7D2" fill="#F8FAFC"></path>
+                        <path d="M92.5,-0.5 L169,-0.5 C170.932997,-0.5 172.5,1.06700338 172.5,3 L172.5,41 C172.5,42.9329966 170.932997,44.5 169,44.5 L92.5,44.5 L92.5,-0.5 Z" id="Rectangle" stroke="#B8C7D2" fill="#F8FAFC"></path>
+                        <text id="Month" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" line-spacing="20" fill="#3E5667">
+                            <tspan x="24.13125" y="27">Month</tspan>
+                        </text>
+                        <text id="Year" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" line-spacing="20" fill="#3E5667">
+                            <tspan x="117.30875" y="27">Year</tspan>
+                        </text>
+                    </g>
+                    <g id="Group-7" transform="translate(77.000000, 0.000000)">
+                        <rect id="Rectangle" stroke="#B8C7D2" fill="#F8FAFC" x="-0.5" y="-0.5" width="89" height="45"></rect>
+                        <text id="Week" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500" line-spacing="20" fill="#3E5667">
+                            <tspan x="24.29375" y="27">Week</tspan>
+                        </text>
+                    </g>
+                    <g id="Group-7" transform="translate(0.000000, 10.000000)">
+                        <g id="Rectangle">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <path stroke="#2A77C7" stroke-width="1" d="M3,-10.5 L75.5,-10.5 L75.5,34.5 L3,34.5 C1.06700338,34.5 -0.5,32.9329966 -0.5,31 L-0.5,-7 C-0.5,-8.93299662 1.06700338,-10.5 3,-10.5 Z" fill="#FFFFFF" fill-rule="evenodd"></path>
+                        </g>
+                        <text id="Day" font-family="Lato-Bold, Lato" font-size="15" font-weight="bold" line-spacing="20" fill="#3E5667">
+                            <tspan x="24.03375" y="17">Day</tspan>
+                        </text>
+                    </g>
+                </g>
+                <text id="Date-Range" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" fill="#748999">
+                    <tspan x="34" y="83">Date Range</tspan>
+                </text>
+                <g id="Group-21" transform="translate(404.000000, 99.000000)">
+                    <rect id="Rectangle" stroke="#B8C7D2" fill="#FFFFFF" x="-0.5" y="-0.5" width="281" height="45" rx="3"></rect>
+                    <text id="Day" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" fill="#253B53">
+                        <tspan x="12" y="36">Day</tspan>
+                    </text>
+                    <text id="Date-Range" font-family="Lato-Medium, Lato" font-size="12" font-weight="400" fill="#748999">
+                        <tspan x="12" y="18">Date Range</tspan>
+                    </text>
+                    <g id="Group" transform="translate(239.000000, 9.000000)">
+                        <rect id="Rectangle" fill="#E2E9EE" x="0" y="0" width="1" height="26"></rect>
+                        <path d="M21.3240419,11.1986064 L25.4615057,17.2167356 C25.6179483,17.4442885 25.5603021,17.7555783 25.3327492,17.912021 C25.2494,17.9693235 25.1506315,18 25.0494848,18 L15.9505152,18 C15.6743729,18 15.4505152,17.7761424 15.4505152,17.5 C15.4505152,17.3988532 15.4811917,17.3000848 15.5384943,17.2167356 L19.6759581,11.1986064 C19.9888433,10.7435006 20.611423,10.6282081 21.0665288,10.9410933 C21.1674048,11.0104456 21.2546897,11.0977304 21.3240419,11.1986064 Z" id="Triangle" fill="#B8C7D2" transform="translate(20.500000, 14.000000) rotate(180.000000) translate(-20.500000, -14.000000) "></path>
+                    </g>
+                </g>
+                <text id="Mobile-(Select-Compo" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" fill="#233745">
+                    <tspan x="401" y="47">Mobile (Select Component)</tspan>
+                </text>
+                <text id="Desktop" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" fill="#233745">
+                    <tspan x="32" y="47">Desktop</tspan>
+                </text>
+                <text id="The-Switch-component" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" line-spacing="24" fill="#3E5667">
+                    <tspan x="0" y="207">The Switch component.</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

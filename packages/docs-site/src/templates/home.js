@@ -26,9 +26,7 @@ export const pageQuery = graphql`
         description
         header
       }
-      code {
-        body
-      }
+      body
     }
   }
 `
@@ -52,7 +50,7 @@ const HomeTemplate = ({ data: { mdx }, location }) => {
         <PostArticle
           title={mdx.frontmatter.title}
           description={mdx.frontmatter.description}
-          mdx={mdx.code.body}
+          mdx={mdx.body}
           header={mdx.frontmatter.header}
         />
         {hasSecondaryNav && (

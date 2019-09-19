@@ -19,6 +19,7 @@ const Badge: React.FC<BadgeProps> = ({
     className={`rn-badge rn-badge--${color} rn-badge--${colorVariant} rn-badge--${size} ${
       variant ? `rn-badge--${variant}` : ''
     } ${className}`}
+    data-testid="badge"
   >
     {children}
   </span>

@@ -7,21 +7,6 @@ import { Component, cloneElement } from 'react'
 import Store from './Store'
 
 class State extends Component {
-  static propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ]),
-    store: PropTypes.object,
-  }
-
-  static defaultProps = {
-    children: [],
-    store: new Store({}),
-  }
-
-  static displayName = 'State'
-
   constructor(props) {
     super(props)
     this.store = this.props.store
@@ -72,5 +57,20 @@ class State extends Component {
     )
   }
 }
+
+State.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+  store: PropTypes.object,
+}
+
+State.defaultProps = {
+  children: [],
+  store: new Store({}),
+}
+
+State.displayName = 'State'
 
 export default State

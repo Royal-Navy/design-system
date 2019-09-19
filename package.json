@@ -1,11 +1,13 @@
 {
   "name": "nelson-frontend-component-library",
-  "version": "1.0.1",
+  "version": "1.2.1",
   "private": true,
   "workspaces": [
     "packages/css-framework",
     "packages/docs-site",
     "packages/eslint-config-react",
+    "packages/icon-library",
+    "packages/reactapp",
     "packages/react-component-library",
     "packages/storybook-react-input-state",
     "packages/vue-component-library"

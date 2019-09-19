@@ -72,7 +72,9 @@ $__states: null;
 @import "src/components/radio";
 @import "src/components/scrollable-nav";
 @import "src/components/searchbar";
+@import "src/components/select";
 @import "src/components/sidenav";
+@import "src/components/switch";
 @import "src/components/table";
 @import "src/components/tab-nav";
 @import "src/components/tab-set";
@@ -81,6 +83,8 @@ $__states: null;
 @import "src/components/transfer";
 
 // Objects
+@import "src/objects/divider";
+@import "src/objects/hyperlink";
 @import "src/objects/media";
 @import "src/objects/wrapper";
 

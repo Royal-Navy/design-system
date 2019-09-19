@@ -31,7 +31,9 @@ module.exports = {
       { extensions: ['.js', '.jsx', '.tsx'] },
     ],
     'react/jsx-one-expression-per-line': 0,
+    'react/jsx-props-no-spreading': 0,
     'react/prop-types': 0,
+    '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
   },
   settings: {

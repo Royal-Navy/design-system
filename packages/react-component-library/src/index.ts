@@ -9,7 +9,10 @@ import Nav from './components/Nav'
 import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
 import Popover from './components/Popover'
+import { Select } from './components/Select'
 import Sidebar from './fragments/Sidebar'
+import Switch from './components/Switch/Switch'
+import ResponsiveSwitch from './components/Switch'
 import Radio from './components/Radio'
 import Tab from './components/TabSet/Tab'
 import TabSet from './components/TabSet'
@@ -18,8 +21,11 @@ import TextInput from './components/TextInput'
 // Icons
 import * as Icons from './icons'
 
-// Enhanced & Enhancers
-import { Formik, withFormik } from './enhancers'
+// Formik components (enhanced)
+import { Formik } from './components/Formik'
+
+// Enhancers
+import withFormik from './enhancers/withFormik'
 
 export {
   Avatar,
@@ -32,7 +38,10 @@ export {
   Pagination,
   PhaseBanner,
   Popover,
+  Switch,
+  ResponsiveSwitch,
   Radio,
+  Select,
   Sidebar,
   Tab,
   TabSet,
@@ -41,5 +50,6 @@ export {
   Icons,
 
   Formik,
+
   withFormik
 }

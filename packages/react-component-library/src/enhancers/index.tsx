@@ -1,4 +1,4 @@
-import { TextInput, Checkbox, Radio } from '../components'
+import { TextInput, Checkbox, Radio, Select } from '../components'
 import withFormik from './withFormik'
 
 const Formik: object = {
@@ -6,6 +6,7 @@ const Formik: object = {
   TextInput,
   Checkbox,
   Radio,
+  Select,
   // ...
 }
 

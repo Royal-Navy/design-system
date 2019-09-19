@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="view-carousel-a" d="M4.66666665,12.6666666 L11.3333334,12.6666666 L11.3333334,2.66666663 L4.66666665,2.66666663 L4.66666665,12.6666666 Z M1.33333329,11.3333334 L3.99999997,11.3333334 L3.99999997,3.99999997 L1.33333329,3.99999997 L1.33333329,11.3333334 Z M12,3.99999997 L12,11.3333334 L14.6666667,11.3333334 L14.6666667,3.99999997 L12,3.99999997 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="view-carousel-b" fill="#fff">
+      <use xlink:href="#view-carousel-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#view-carousel-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>
