@@ -48,7 +48,6 @@ const FormikSwitch: React.FC<FormikSwitchProps> = props => {
 
   const hasError: boolean = touched[name] && errors[name]
 
-  // TODO: Unsure of the correct type to use
   const ComponentToUse: any = responsive ? ResponsiveSwitch : Switch
 
   function handleChange(previous: OptionType, active: OptionType) {
