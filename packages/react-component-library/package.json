@@ -123,12 +123,14 @@
     "dist"
   ],
   "dependencies": {
+    "@types/react-responsive": "^3.0.3",
     "@royalnavy/css-framework": "^1.2.1",
     "@royalnavy/icon-library": "^1.2.1",
     "classnames": "^2.2.6",
     "react-addons-css-transition-group": "^15.6.2",
     "react-children-utilities": "^1.3.1",
     "react-indiana-drag-scroll": "^1.3.0",
+    "react-responsive": "^8.0.1",
     "react-select": "^3.0.4"
   }
 }

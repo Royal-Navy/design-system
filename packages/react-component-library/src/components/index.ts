@@ -13,6 +13,8 @@ import { ScrollableNav } from './ScrollableNav'
 import { Searchbar } from './Searchbar'
 import { Select } from './Select'
 import Sidebar from '../fragments/Sidebar'
+import Switch from './Switch/Switch'
+import ResponsiveSwitch from './Switch'
 import Tab from './TabSet/Tab'
 import TabSet from './TabSet'
 import TabNav from './TabNav'
@@ -34,6 +36,8 @@ export {
   Searchbar,
   Select,
   Sidebar,
+  Switch,
+  ResponsiveSwitch,
   Tab,
   TabSet,
   TabNav,
