@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactSelect from 'react-select'
 
+import { DropdownIndicator } from './DropdownIndicator'
 import { Input } from './Input'
 import { Option, SelectOptionWithBadgeType } from './Option'
 import { SingleValue } from './SingleValue'
@@ -40,6 +41,7 @@ export const Select: React.FC<SelectProps> = ({
       className="rn-select"
       classNamePrefix="rn-select"
       components={{
+        DropdownIndicator,
         Input,
         Option,
         SingleValue,
