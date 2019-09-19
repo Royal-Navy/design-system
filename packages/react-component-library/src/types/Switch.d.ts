@@ -8,7 +8,7 @@ export interface SwitchType {
   value: string
   label?: string
   className?: string
-  onChange?: (previous: OptionType, active: OptionType) => void
+  onChange?: (event: any) => void
   options: OptionType[]
   size?: string
 }

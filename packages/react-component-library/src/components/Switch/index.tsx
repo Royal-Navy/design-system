@@ -4,8 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 
 import { SwitchType } from '../../types/Switch'
 import Switch from './Switch'
-
-// import Select from '../Select'
+import { Select } from '../Select'
 
 const ResponsiveSwitch: React.FC<SwitchType> = props => {
   /**
@@ -30,7 +29,7 @@ const ResponsiveSwitch: React.FC<SwitchType> = props => {
   return (
     <div className={classes}>
       {isDesktopOrLaptop && <Switch {...props} />}
-      {/* {!isDesktopOrLaptop && <Select {...props} />} */}
+      {!isDesktopOrLaptop && <Select {...props} />}
     </div>
   )
 }

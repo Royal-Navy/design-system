@@ -4,12 +4,12 @@ import uuid from 'uuid'
 import { SwitchType, OptionType } from '../../types/Switch'
 
 const Switch: React.FC<SwitchType> = ({
-  name = '',
-  value = '',
-  label = '',
-  className = '',
-  onChange = (previous, active) => {},
+  label,
+  name,
+  onChange,
   options = [],
+  value,
+  className,
   size = 'regular',
 }) => {
   let initial: OptionType | string = options.find(item => item.value === value)
@@ -50,10 +50,9 @@ const Switch: React.FC<SwitchType> = ({
               value={optionValue}
               type="radio"
               className="rn-switch__radio"
-              onClick={() => {
-                const previous = active
+              onClick={event => {
                 setActive(optionLabel)
-                onChange(getOption(previous), getOption(optionLabel))
+                onChange(event)
               }}
             />
           </label>

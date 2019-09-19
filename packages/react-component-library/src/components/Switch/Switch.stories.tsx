@@ -24,8 +24,8 @@ stories.add('Default', () => (
     value=""
     label="Date Range"
     options={options}
-    onChange={(previous, active) => {
-      console.log(previous, active)
+    onChange={event => {
+      console.log(event)
     }}
   />
 ))
@@ -35,8 +35,8 @@ stories.add('No legend', () => (
     name="example-switch-field"
     value=""
     options={options}
-    onChange={(previous, active) => {
-      console.log(previous, active)
+    onChange={event => {
+      console.log(event)
     }}
   />
 ))
@@ -47,8 +47,8 @@ stories.add('Responsive', () => (
     value=""
     label="Date Range"
     options={options}
-    onChange={(previous, active) => {
-      console.log(previous, active)
+    onChange={event => {
+      console.log(event)
     }}
   />
 ))
@@ -59,8 +59,8 @@ stories.add('Small', () => (
     value=""
     label="Date Range"
     options={options}
-    onChange={(previous, active) => {
-      console.log(previous, active)
+    onChange={event => {
+      console.log(event)
     }}
     size="small"
   />
@@ -72,8 +72,8 @@ stories.add('Large', () => (
     value=""
     label="Date Range"
     options={options}
-    onChange={(previous, active) => {
-      console.log(previous, active)
+    onChange={event => {
+      console.log(event)
     }}
     size="large"
   />
@@ -105,9 +105,9 @@ stories.add('Formik', () => (
             label="Date Range"
             component={FormikSwitch}
             options={options}
-            onChange={(previous: OptionType, active: OptionType) => {
-              setFieldValue('example-switch-field', active.value)
-              console.log(previous, active)
+            onChange={(event: any) => {
+              setFieldValue('example-switch-field', event.target.value)
+              console.log(event)
             }}
           />
         </Form>
