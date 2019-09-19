@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="arrow-upward-a" points="2.667 8 3.607 8.94 7.333 5.22 7.333 13.333 8.667 13.333 8.667 5.22 12.387 8.947 13.333 8 8 2.667"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="arrow-upward-b" fill="#fff">
+      <use xlink:href="#arrow-upward-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#arrow-upward-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

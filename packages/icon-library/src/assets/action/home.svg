@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="home-a" points="6.667 13.333 6.667 9.333 9.333 9.333 9.333 13.333 12.667 13.333 12.667 8 14.667 8 8 2 1.333 8 3.333 8 3.333 13.333"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="home-b" fill="#fff">
+      <use xlink:href="#home-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#home-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

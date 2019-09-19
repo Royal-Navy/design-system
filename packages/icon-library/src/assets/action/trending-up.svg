@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="trending-up-a" points="10.667 4 12.193 5.527 8.94 8.78 6.273 6.113 1.333 11.06 2.273 12 6.273 8 8.94 10.667 13.14 6.473 14.667 8 14.667 4"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="trending-up-b" fill="#fff">
+      <use xlink:href="#trending-up-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#trending-up-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

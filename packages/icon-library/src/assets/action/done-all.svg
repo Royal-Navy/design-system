@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="done-all-a" d="M12,4.66666665 L11.06,3.72666664 L6.83333333,7.95333333 L7.77333333,8.89333334 L12,4.66666665 Z M14.8266667,3.72666664 L7.77333333,10.78 L4.98666665,8 L4.04666664,8.94000001 L7.77333333,12.6666667 L15.7733334,4.66666665 L14.8266667,3.72666664 Z M0.273333285,8.94000001 L3.99999998,12.6666667 L4.93999998,11.7266667 L1.21999996,8 L0.273333285,8.94000001 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="done-all-b" fill="#fff">
+      <use xlink:href="#done-all-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#done-all-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

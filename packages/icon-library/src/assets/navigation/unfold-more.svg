@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="unfold-more-a" d="M8,3.6622222 L10.1155556,5.77777774 L11.0577778,4.83555554 L8,1.77777774 L4.9422222,4.83555554 L5.88444443,5.77777774 L8,3.6622222 Z M8,12.3377778 L5.88444443,10.2222222 L4.9422222,11.1644445 L8,14.2222222 L11.0577778,11.1644445 L10.1155556,10.2222222 L8,12.3377778 L8,12.3377778 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="unfold-more-b" fill="#fff">
+      <use xlink:href="#unfold-more-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#unfold-more-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

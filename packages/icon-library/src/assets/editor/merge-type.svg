@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="merge-type-a" d="M8,1.33333329 L4.88888887,4.44444442 L7.11111111,4.44444442 L7.11111111,8.52444445 L2.66666663,12.9688889 L3.91999997,14.2222223 L8.88888889,9.25333334 L8.88888889,4.44444442 L11.1111111,4.44444442 L8,1.33333329 Z M10.6666667,10.3022222 L9.41333334,11.5555556 L12.08,14.2222223 L13.3333334,12.9688889 L10.6666667,10.3022222 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="merge-type-b" fill="#fff">
+      <use xlink:href="#merge-type-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#merge-type-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

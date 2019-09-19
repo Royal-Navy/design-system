@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <circle id="brightness-1-a" cx="8" cy="8" r="6.667"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="brightness-1-b" fill="#fff">
+      <use xlink:href="#brightness-1-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#brightness-1-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

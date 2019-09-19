@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="done-a" points="6 10.8 3.2 8 2.267 8.933 6 12.667 14 4.667 13.067 3.733"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="done-b" fill="#fff">
+      <use xlink:href="#done-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#done-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

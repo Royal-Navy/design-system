@@ -244,6 +244,18 @@ jobs:
           name: Publish package
           working_directory: packages/vue-component-library
           command: npm publish --registry https://$NPM_REGISTRY
+  publish_icon-library:
+    executor: node
+    steps:
+      - checkout
+      - dependencies
+      - run:
+          name: Authenticate NPM
+          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          working_directory: packages/icon-library
+          command: npm publish --registry https://$NPM_REGISTRY
   test_docs-site:
     executor: node
     steps:
@@ -345,6 +357,11 @@ workflows:
             branches:
               only:
                 - master
+      - publish_icon-library:
+          filters:
+            branches:
+              only:
+                - master
       - publish_css-framework:
           requires:
             - lint_css-framework
@@ -356,6 +373,7 @@ workflows:
           requires:
             - test_react-component-library
             - publish_css-framework
+            - publish_icon-library
           filters:
             branches:
               only:

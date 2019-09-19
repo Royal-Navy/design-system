@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="format-quote-a" d="M8.88888889,4.44444442 L8.88888889,8.88888889 L11.3333334,8.88888889 L9.77777779,11.5555556 L11.7777778,11.5555556 L13.3333334,8.88888889 L13.3333334,4.44444442 L8.88888889,4.44444442 Z M2.66666663,8.88888889 L5.11111109,8.88888889 L3.55555553,11.5555556 L5.55555554,11.5555556 L7.11111111,8.88888889 L7.11111111,4.44444442 L2.66666663,4.44444442 L2.66666663,8.88888889 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="format-quote-b" fill="#fff">
+      <use xlink:href="#format-quote-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#format-quote-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>
