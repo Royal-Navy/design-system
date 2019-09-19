@@ -17,7 +17,7 @@ const ResponsiveSwitch: React.FC<SwitchType> = props => {
    * - xxl: 1400px
    */
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-device-width: 992px)',
+    query: '(min-device-width: 768px)',
   })
 
   const classes = `
