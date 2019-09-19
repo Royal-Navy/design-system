@@ -9,6 +9,7 @@ import Nav from './components/Nav'
 import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
 import Popover from './components/Popover'
+import { Select } from './components/Select'
 import Sidebar from './fragments/Sidebar'
 import Radio from './components/Radio'
 import Tab from './components/TabSet/Tab'
@@ -33,6 +34,7 @@ export {
   PhaseBanner,
   Popover,
   Radio,
+  Select,
   Sidebar,
   Tab,
   TabSet,
