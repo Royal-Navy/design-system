@@ -11,6 +11,7 @@ import Popover from './Popover'
 import Radio from './Radio'
 import { ScrollableNav } from './ScrollableNav'
 import { Searchbar } from './Searchbar'
+import { Select } from './Select'
 import Sidebar from '../fragments/Sidebar'
 import Switch from './Switch/Switch'
 import ResponsiveSwitch from './Switch'
@@ -33,6 +34,7 @@ export {
   Radio,
   ScrollableNav,
   Searchbar,
+  Select,
   Sidebar,
   Switch,
   ResponsiveSwitch,

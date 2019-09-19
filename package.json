@@ -7,6 +7,7 @@
     "packages/docs-site",
     "packages/eslint-config-react",
     "packages/icon-library",
+    "packages/reactapp",
     "packages/react-component-library",
     "packages/storybook-react-input-state",
     "packages/vue-component-library"

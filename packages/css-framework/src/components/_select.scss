@@ -1,0 +1,113 @@
+.rn-select {
+  .rn-select__control--is-focused,
+  .rn-select__control:hover {
+    border-color: color(primary, 600);
+    box-shadow: 0 0 0 1px color(primary, 600);
+  }
+
+  .rn-select__value-container {
+    padding: 0;
+  }
+
+  .rn-select__control--menu-is-open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 0;
+  }
+
+  .rn-select__menu {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow:
+      -1px 1px 0 0 color(primary, 600),
+      1px 1px 0 0 color(primary, 600);
+    border: 1px solid color(primary, 600);
+    border-top: 0;
+  }
+
+  .rn-select__menu-list {
+    padding-left: spacing(1);
+    padding-right: spacing(1);
+  }
+
+  .rn-select__option {
+    border-radius: 4px;
+    color: color(neutral, 500);
+  }
+
+  .rn-select__option--is-focused {
+    background-color: color(neutral, 100);
+    color: color(neutral, 500);
+  }
+
+  .rn-select__option--is-selected {
+    background-color: color(primary, 600);
+    color: color(neutral, white);
+  }
+
+  .rn-select__input-container {
+    position: relative;
+  }
+
+  .rn-select__input-container > * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .rn-select__input,
+  .rn-select__single-value {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: spacing(5) spacing(3) spacing(1);
+    border: 0;
+    background: none;
+    -webkit-tap-highlight-color: transparent;
+    font-size: font-size(s);
+  }
+
+  .rn-select__single-value {
+    padding-right: 50px;
+    overflow: visible;
+  }
+
+  .rn-select__single-value .rn-select__badge {
+    display: inline-block;
+    bottom: spacing(1);
+  }
+
+  .rn-select__label {
+    display: block;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: top left;
+    transform: translate(spacing(3), spacing(3)) scale(1);
+    transition:
+      color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+      transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    pointer-events: none;
+    color: color(neutral, 300);
+    font-size: font-size(s);
+    white-space: nowrap;
+  }
+
+  .rn-select__badge {
+    font-size: font-size(xxs);
+    padding: spacing(1) spacing(2);
+    background-color: color(neutral, 500);
+    display: inline-block;
+    border-radius: 100px;
+    color: color(neutral, white);
+    margin-left: spacing(1);
+    position: absolute;
+  }
+
+  .rn-select__control--is-focused .rn-select__label,
+  .rn-select__value-container--has-value .rn-select__label {
+    transform: translate(spacing(3), 6px) scale(0.8);
+  }
+}

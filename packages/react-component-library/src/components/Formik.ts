@@ -1,4 +1,4 @@
-import { TextInput, Checkbox, Radio, Switch } from '.'
+import { TextInput, Checkbox, Radio, Select, Switch } from '.'
 import withFormik from '../enhancers/withFormik'
 
 /**
@@ -8,6 +8,7 @@ const EnhancedPrimitives: object = {
   TextInput,
   Checkbox,
   Radio,
+  Select,
   Switch,
   // ...
 }
