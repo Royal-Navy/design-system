@@ -15,6 +15,11 @@
     border-bottom: 0;
   }
 
+  .rn-select__dropdown-indicator {
+    padding-left: (40px - 11px)/2;
+    padding-right: (40px - 11px)/2;
+  }
+
   .rn-select__menu {
     margin-top: 0;
     border-top-left-radius: 0;
