@@ -113,5 +113,5 @@ stories.add('Formik', () => (
         </Form>
       )
     }}
-  ></Formik>
+  />
 ))

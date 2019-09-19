@@ -19,8 +19,8 @@ const Switch: React.FC<SwitchType> = ({
 
   const id = uuid()
 
-  function getOption(name: string) {
-    return options.find(item => item.label === name)
+  function getOption(optionLabel: string) {
+    return options.find(item => item.label === optionLabel)
   }
 
   return (
@@ -34,26 +34,26 @@ const Switch: React.FC<SwitchType> = ({
         </legend>
       )}
       <div className="rn-switch__container">
-        {options.map(({ label, value }) => (
+        {options.map(({ label: optionLabel, value: optionValue }) => (
           <label
             key={uuid()}
             className={`rn-switch__option ${
-              active === label ? 'is-active' : ''
+              active === optionLabel ? 'is-active' : ''
             }`}
-            data-label={label}
-            htmlFor={`${id}-${label}`}
+            data-label={optionLabel}
+            htmlFor={`${id}-${optionLabel}`}
             data-testid="option"
           >
             <input
-              id={`${id}-${label}`}
+              id={`${id}-${optionLabel}`}
               name={name || id}
-              value={value}
+              value={optionValue}
               type="radio"
               className="rn-switch__radio"
               onClick={() => {
                 const previous = active
-                setActive(label)
-                onChange(getOption(previous), getOption(label))
+                setActive(optionLabel)
+                onChange(getOption(previous), getOption(optionLabel))
               }}
             />
           </label>
