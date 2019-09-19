@@ -55,11 +55,13 @@ The Switch component can be used wherever a Radio selection is needed. It can be
 
 ### Basic Usage
 <CodeHighlighter source={`const options = [
-  { name: 'Day', value: '1' },
-  { name: 'Week', value: '2' },
-  { name: 'Month', value: '3' },
-  { name: 'Year', value: '4' },
+  { label: 'Day', value: '1' },
+  { label: 'Week', value: '2' },
+  { label: 'Month', value: '3' },
+  { label: 'Year', value: '4' },
 ]\n\n<Switch
+  name="example-switch-field"
+  value=""
   label="Date Range"
   options={options}
   onChange={(previous, active) => {
@@ -68,12 +70,14 @@ The Switch component can be used wherever a Radio selection is needed. It can be
 />
 `} language="javascript">
   <Switch
+    name="example-switch-field"
+    value=""
     label="Date Range"
     options={[
-      { name: 'Day', value: '1' },
-      { name: 'Week', value: '2' },
-      { name: 'Month', value: '3' },
-      { name: 'Year', value: '4' },
+      { label: 'Day', value: '1' },
+      { label: 'Week', value: '2' },
+      { label: 'Month', value: '3' },
+      { label: 'Year', value: '4' },
     ]}
     onChange={(previous, active) => {
       console.log(previous, active)
@@ -91,8 +95,22 @@ The Switch component can be used wherever a Radio selection is needed. It can be
     Description: 'The label to display at the top of the component',
   },
   {
+    Name: 'name',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'The name attribute assigned to the form input',
+  },
+  {
+    Name: 'value',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'The current active value associated with field',
+  },
+  {
     Name: 'options',
-    Type: 'Option[]',
+    Type: 'OptionType[]',
     Required: 'True',
     Default: '',
     Description: 'The option values that can be selected from',
