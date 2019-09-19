@@ -3,23 +3,25 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 
 import { Field, Formik, Form } from 'formik'
+import useFormik from '../../enhancers/withFormik'
 
 import { OptionType } from '../../types/Switch'
 import Switch from './Switch'
 import ResponsiveSwitch from './index'
-import FormikSwitch from './adapters/FormikSwitch'
 
 const stories = storiesOf('Switch', module)
 
 const options = [
-  { name: 'Day', value: '1' },
-  { name: 'Week', value: '2' },
-  { name: 'Month', value: '3' },
-  { name: 'Year', value: '4' },
+  { label: 'Day', value: '1' },
+  { label: 'Week', value: '2' },
+  { label: 'Month', value: '3' },
+  { label: 'Year', value: '4' },
 ]
 
 stories.add('Default', () => (
   <Switch
+    name="example-switch-field"
+    value=""
     label="Date Range"
     options={options}
     onChange={(previous, active) => {
@@ -30,6 +32,8 @@ stories.add('Default', () => (
 
 stories.add('No legend', () => (
   <Switch
+    name="example-switch-field"
+    value=""
     options={options}
     onChange={(previous, active) => {
       console.log(previous, active)
@@ -39,6 +43,8 @@ stories.add('No legend', () => (
 
 stories.add('Responsive', () => (
   <ResponsiveSwitch
+    name="example-switch-field"
+    value=""
     label="Date Range"
     options={options}
     onChange={(previous, active) => {
@@ -49,6 +55,8 @@ stories.add('Responsive', () => (
 
 stories.add('Small', () => (
   <Switch
+    name="example-switch-field"
+    value=""
     label="Date Range"
     options={options}
     onChange={(previous, active) => {
@@ -60,6 +68,8 @@ stories.add('Small', () => (
 
 stories.add('Large', () => (
   <Switch
+    name="example-switch-field"
+    value=""
     label="Date Range"
     options={options}
     onChange={(previous, active) => {
@@ -70,29 +80,38 @@ stories.add('Large', () => (
 ))
 
 interface Data {
-  'Date Range': string
+  'example-switch-field': string
 }
 
 const initialValues: Data = {
-  'Date Range': 'Month:3',
+  'example-switch-field': '3',
 }
 
 const onSubmit = (data: Data): void => {
   action(`Form Submit ${JSON.stringify(data)}`)
 }
 
+const FormikSwitch = useFormik(ResponsiveSwitch)
+
 stories.add('Formik', () => (
-  <Formik initialValues={initialValues} onSubmit={onSubmit}>
-    <Form>
-      <Field
-        name="Date Range"
-        component={FormikSwitch}
-        options={options}
-        responsive
-        onChange={(previous: OptionType, active: OptionType) => {
-          console.log(previous, active)
-        }}
-      />
-    </Form>
-  </Formik>
+  <Formik
+    initialValues={initialValues}
+    onSubmit={onSubmit}
+    render={({ setFieldValue }) => {
+      return (
+        <Form>
+          <Field
+            name="example-switch-field"
+            label="Date Range"
+            component={FormikSwitch}
+            options={options}
+            onChange={(previous: OptionType, active: OptionType) => {
+              setFieldValue('example-switch-field', active.value)
+              console.log(previous, active)
+            }}
+          />
+        </Form>
+      )
+    }}
+  ></Formik>
 ))

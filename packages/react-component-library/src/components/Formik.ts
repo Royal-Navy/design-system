@@ -1,5 +1,4 @@
-import { TextInput, Checkbox, Radio } from '.'
-import FormikSwitch from './Switch/adapters/FormikSwitch'
+import { TextInput, Checkbox, Radio, Switch } from '.'
 import withFormik from '../enhancers/withFormik'
 
 /**
@@ -9,6 +8,7 @@ const EnhancedPrimitives: object = {
   TextInput,
   Checkbox,
   Radio,
+  Switch,
   // ...
 }
 
@@ -20,7 +20,6 @@ Object.keys(EnhancedPrimitives).forEach(key => {
  * Enhanced custom components (via adapters)
  */
 const EnhancedCustomComponents: object = {
-  Switch: FormikSwitch
   // ...
 }
 

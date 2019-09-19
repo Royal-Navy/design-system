@@ -8,6 +8,8 @@ import ResponsiveSwitch from './index'
 import Switch from './Switch'
 
 describe('Switch', () => {
+  let name: string
+  let value: string
   let label: string
   let className: string
   let onChange: (previous: OptionType, active: OptionType) => void
@@ -17,17 +19,26 @@ describe('Switch', () => {
 
   describe('when the component is provided onChange callback and options', () => {
     beforeEach(() => {
+      name = 'example-switch-field'
+      value = '3'
       onChange = jest.fn()
       options = [
-        { name: 'Day', value: '1' },
-        { name: 'Week', value: '2' },
-        { name: 'Month', value: '3' },
-        { name: 'Year', value: '4' },
+        { label: 'Day', value: '1' },
+        { label: 'Week', value: '2' },
+        { label: 'Month', value: '3' },
+        { label: 'Year', value: '4' },
       ]
     })
 
     it('renders without the legend', () => {
-      component = render(<Switch onChange={onChange} options={options} />)
+      component = render(
+        <Switch
+          name={name}
+          value={value}
+          onChange={onChange}
+          options={options}
+        />
+      )
 
       expect(component.queryByTestId('legend')).toBeNull()
     })
@@ -48,6 +59,8 @@ describe('Switch', () => {
 
             component = render(
               <Switch
+                name={name}
+                value={value}
                 label={label}
                 onChange={onChange}
                 options={options}
@@ -87,7 +100,7 @@ describe('Switch', () => {
             })
 
             it('invokes the onChange callback with correct arguments', () => {
-              expect(onChange).toHaveBeenCalledWith(undefined, options[0])
+              expect(onChange).toHaveBeenCalledWith(options[2], options[0])
             })
           })
         })

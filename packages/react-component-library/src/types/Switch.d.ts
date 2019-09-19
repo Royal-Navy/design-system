@@ -1,10 +1,11 @@
 export interface OptionType {
-  name: string
+  label: string
   value: string
-  active?: boolean
 }
 
 export interface SwitchType {
+  name: string
+  value: string
   label?: string
   className?: string
   onChange?: (previous: OptionType, active: OptionType) => void

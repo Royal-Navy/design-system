@@ -4,20 +4,23 @@ import uuid from 'uuid'
 import { SwitchType, OptionType } from '../../types/Switch'
 
 const Switch: React.FC<SwitchType> = ({
+  name = '',
+  value = '',
   label = '',
   className = '',
   onChange = (previous, active) => {},
   options = [],
   size = 'regular',
 }) => {
-  let initial: OptionType | string = options.find(item => item.active)
-  initial = (initial && initial.name) || null
+  let initial: OptionType | string = options.find(item => item.value === value)
+  initial = (initial && initial.label) || null
 
   const [active, setActive] = useState(initial)
+
   const id = uuid()
 
   function getOption(name: string) {
-    return options.find(item => item.name === name)
+    return options.find(item => item.label === name)
   }
 
   return (
@@ -31,26 +34,26 @@ const Switch: React.FC<SwitchType> = ({
         </legend>
       )}
       <div className="rn-switch__container">
-        {options.map(({ name, value }) => (
+        {options.map(({ label, value }) => (
           <label
             key={uuid()}
             className={`rn-switch__option ${
-              active === name ? 'is-active' : ''
+              active === label ? 'is-active' : ''
             }`}
-            data-name={name}
-            htmlFor={`${id}-${name}`}
+            data-label={label}
+            htmlFor={`${id}-${label}`}
             data-testid="option"
           >
             <input
-              id={`${id}-${name}`}
-              name={label || id}
+              id={`${id}-${label}`}
+              name={name || id}
               value={value}
               type="radio"
               className="rn-switch__radio"
               onClick={() => {
                 const previous = active
-                setActive(name)
-                onChange(getOption(previous), getOption(name))
+                setActive(label)
+                onChange(getOption(previous), getOption(label))
               }}
             />
           </label>

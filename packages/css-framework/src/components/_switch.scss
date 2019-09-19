@@ -55,7 +55,7 @@ $elements: 5;
   }
 
   &::before {
-    content: attr(data-name);
+    content: attr(data-label);
     display: inline-block;
     width: auto;
     height: auto;

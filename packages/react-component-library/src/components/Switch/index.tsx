@@ -5,6 +5,8 @@ import { useMediaQuery } from 'react-responsive'
 import { SwitchType } from '../../types/Switch'
 import Switch from './Switch'
 
+// import Select from '../Select'
+
 const ResponsiveSwitch: React.FC<SwitchType> = props => {
   /**
    * https://github.com/Royal-Navy/standards-toolkit/tree/develop/packages/css-framework#breakpoints
@@ -28,7 +30,7 @@ const ResponsiveSwitch: React.FC<SwitchType> = props => {
   return (
     <div className={classes}>
       {isDesktopOrLaptop && <Switch {...props} />}
-      {!isDesktopOrLaptop && '<Select {...props} /> // Placeholder'}
+      {/* {!isDesktopOrLaptop && <Select {...props} />} */}
     </div>
   )
 }
