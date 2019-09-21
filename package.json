@@ -44,7 +44,7 @@
     }
   },
   "scripts": {
-    "build": "lerna run --parallel build",
+    "build": "lerna run --stream --concurrency 1 build",
     "lint": "lerna run --parallel lint",
     "lint-staged": "lerna run --parallel lint-staged",
     "test": "lerna run --parallel test",
