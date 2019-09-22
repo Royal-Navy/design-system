@@ -8,14 +8,14 @@
   "author": "NELSON",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "gatsby build",
+    "build": "rm -rf ./.cache && gatsby build",
     "develop": "gatsby develop",
     "develop:clean": "rm -rf .cache && gatsby develop",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src",
     "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src",
     "test": "jest",
-    "cache:clear": "rm -rf ./cache"
+    "cache:clear": "rm -rf ./.cache"
   },
   "browserslist": [
     ">0.2%",

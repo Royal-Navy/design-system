@@ -10,6 +10,7 @@
   "files": [
     "dist"
   ],
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "run-s svgr exports build:ts types",
     "build:ts": "webpack -p --config=webpack/prod.js",
