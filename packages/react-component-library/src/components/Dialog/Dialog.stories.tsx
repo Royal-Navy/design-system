@@ -6,7 +6,7 @@ import { ButtonProps } from '../Button'
 
 const stories = storiesOf('Dialog', module)
 
-stories.add('Dialog', () => {
+stories.add('Default', () => {
   return (
     <Dialog
       title="Dialog Title"
@@ -17,6 +17,22 @@ stories.add('Dialog', () => {
       onCancel={event => {
         console.log('onCancel')
       }}
+    ></Dialog>
+  )
+})
+
+stories.add('Danger', () => {
+  return (
+    <Dialog
+      title="Dialog Title"
+      description="Dialog description."
+      onConfirm={event => {
+        console.log('onConfirm')
+      }}
+      onCancel={event => {
+        console.log('onCancel')
+      }}
+      danger={true}
     ></Dialog>
   )
 })

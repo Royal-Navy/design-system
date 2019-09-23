@@ -17,21 +17,24 @@ export const Dialog: React.FC<DialogProps> = ({
   onConfirm,
   onCancel,
 }) => {
-  const primaryButton: ButtonProps = {
+  const confirmButton: ButtonProps = {
     onClick: onConfirm,
     children: 'Confirm',
+    variant: 'primary',
+    color: danger ? 'danger' : undefined,
   }
 
-  const secondaryButton: ButtonProps = {
+  const cancelButton: ButtonProps = {
     onClick: onCancel,
     children: 'Cancel',
+    variant: 'tertiary',
   }
 
   return (
     <Modal
       className={`rn-dialog ${danger ? 'rn-dialog--danger' : ''}`}
-      primaryButton={primaryButton}
-      secondaryButton={secondaryButton}
+      primaryButton={confirmButton}
+      secondaryButton={cancelButton}
     >
       <span className="rn-dialog__title">{title}</span>
       <p className="rn-dialog__description">{description}</p>
