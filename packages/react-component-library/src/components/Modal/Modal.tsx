@@ -25,12 +25,14 @@ export const Modal: React.FC<ModalProps> = ({
   tertiaryButton,
   title,
 }) => {
-  primaryButton.icon = <RightArrow />
+  if (primaryButton) {
+    primaryButton.icon = <RightArrow />
+  }
 
   return (
     <div className={`rn-modal ${className}`}>
       <article className="rn-modal__main">
-        {(title || onClose) && <Header title={title} onClose={onClose} />}
+        {title && <Header title={title} onClose={onClose} />}
         <section className="rn-modal__body">{children}</section>
         {(primaryButton || secondaryButton || tertiaryButton) && (
           <Footer

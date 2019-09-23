@@ -6,22 +6,22 @@ import { ButtonProps } from '../Button'
 
 const stories = storiesOf('Modal', module)
 
-stories.add('Modal', () => {
-  const primaryButton: ButtonProps = {
-    onClick: event => console.log('primary'),
-    children: 'Next',
-  }
+const primaryButton: ButtonProps = {
+  onClick: event => console.log('primary'),
+  children: 'Next',
+}
 
-  const secondaryButton: ButtonProps = {
-    onClick: event => console.log('secondary'),
-    children: 'Cancel',
-  }
+const secondaryButton: ButtonProps = {
+  onClick: event => console.log('secondary'),
+  children: 'Cancel',
+}
 
-  const tertiaryButton: ButtonProps = {
-    onClick: event => console.log('tertiary'),
-    children: 'Back',
-  }
+const tertiaryButton: ButtonProps = {
+  onClick: event => console.log('tertiary'),
+  children: 'Back',
+}
 
+stories.add('Default', () => {
   return (
     <Modal
       title="Modal Header"
@@ -30,6 +30,27 @@ stories.add('Modal', () => {
       tertiaryButton={tertiaryButton}
       onClose={() => console.log('close')}
     >
+      <pre>// Arbitrary JSX content</pre>
+    </Modal>
+  )
+})
+
+stories.add('No header', () => {
+  return (
+    <Modal
+      primaryButton={primaryButton}
+      secondaryButton={secondaryButton}
+      tertiaryButton={tertiaryButton}
+      onClose={() => console.log('close')}
+    >
+      <pre>// Arbitrary JSX content</pre>
+    </Modal>
+  )
+})
+
+stories.add('No buttons', () => {
+  return (
+    <Modal title="Modal Header" onClose={() => console.log('close')}>
       <pre>// Arbitrary JSX content</pre>
     </Modal>
   )
