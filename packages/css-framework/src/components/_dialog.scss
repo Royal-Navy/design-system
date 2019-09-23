@@ -1,15 +1,23 @@
 .rn-dialog {
+  .rn-modal__main {
+    padding: spacing(4);
+  }
 
+  .rn-modal__footer {
+    padding: spacing(4) 0 0 0;
+  }
 }
 
 .rn-dialog--danger {
-
+  //
 }
 
 .rn-dialog__title {
-
+  font-size: font-size(m);
+  color: color(neutral, 600);
 }
 
 .rn-dialog__description {
-
+  font-size: font-size(s);
+  color: color(neutral, 400);
 }

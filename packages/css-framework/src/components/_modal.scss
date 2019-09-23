@@ -24,9 +24,9 @@
 }
 
 .rn-modal__title {
-  @include font-size(m);
   display: inline-block;
-  font-weight: bold;
+  font-size: font-size(m);
+  color: color(neutral, 600);
 }
 
 .rn-modal__close-button {
