@@ -30,7 +30,7 @@ stories.add('Default', () => {
       tertiaryButton={tertiaryButton}
       onClose={() => console.log('close')}
     >
-      <pre>// Arbitrary JSX content</pre>
+      <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
     </Modal>
   )
 })
@@ -43,7 +43,7 @@ stories.add('No header', () => {
       tertiaryButton={tertiaryButton}
       onClose={() => console.log('close')}
     >
-      <pre>// Arbitrary JSX content</pre>
+      <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
     </Modal>
   )
 })
@@ -51,7 +51,7 @@ stories.add('No header', () => {
 stories.add('No buttons', () => {
   return (
     <Modal title="Modal Header" onClose={() => console.log('close')}>
-      <pre>// Arbitrary JSX content</pre>
+      <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
     </Modal>
   )
 })
