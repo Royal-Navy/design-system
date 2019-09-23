@@ -2,7 +2,6 @@ import { storiesOf } from '@storybook/react'
 import React from 'react'
 
 import { Dialog } from './index'
-import { ButtonProps } from '../Button'
 
 const stories = storiesOf('Dialog', module)
 
