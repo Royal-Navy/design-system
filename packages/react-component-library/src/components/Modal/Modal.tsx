@@ -6,11 +6,11 @@ import { Footer } from './Footer'
 
 export interface ModalProps extends ComponentWithClass {
   children?: any
-  onClose: (event: React.SyntheticEvent) => void
+  onClose?: (event: React.SyntheticEvent) => void
   primaryButton?: ButtonProps
   secondaryButton?: ButtonProps
   tertiaryButton?: ButtonProps
-  title: string
+  title?: string
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -23,13 +23,15 @@ export const Modal: React.FC<ModalProps> = ({
 }) => (
   <div className="rn-modal">
     <article className="rn-modal__main">
-      <Header title={title} onClose={onClose} />
+      {(title || onClose) && <Header title={title} onClose={onClose} />}
       <section className="rn-modal__body">{children}</section>
-      <Footer
-        primaryButton={primaryButton}
-        secondaryButton={secondaryButton}
-        tertiaryButton={tertiaryButton}
-      />
+      {(primaryButton || secondaryButton || tertiaryButton) && (
+        <Footer
+          primaryButton={primaryButton}
+          secondaryButton={secondaryButton}
+          tertiaryButton={tertiaryButton}
+        />
+      )}
     </article>
   </div>
 )
