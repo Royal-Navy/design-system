@@ -74,6 +74,8 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn__icon {
+  display: inline-block;
+  vertical-align: middle;
   margin-left: spacing(2)
 }
 
