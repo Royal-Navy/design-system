@@ -1,9 +1,11 @@
 import Avatar from './Avatar'
 import Badge from './Badge'
 import Breadcrumbs from './Breadcrumbs'
-import Button from './Button'
+import { Button } from './Button'
 import Checkbox from './Checkbox'
+import { Dialog } from './Dialog'
 import Link from './Link'
+import { Modal } from './Modal'
 import Nav from './Nav'
 import Pagination from './Pagination'
 import PhaseBanner from './PhaseBanner'
@@ -26,7 +28,9 @@ export {
   Breadcrumbs,
   Button,
   Checkbox,
+  Dialog,
   Link,
+  Modal,
   Nav,
   Pagination,
   PhaseBanner,
