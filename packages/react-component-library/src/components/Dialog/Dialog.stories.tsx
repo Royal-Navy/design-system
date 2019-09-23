@@ -17,6 +17,7 @@ stories.add('Default', () => {
       onCancel={event => {
         console.log('onCancel')
       }}
+      isOpen={true}
     ></Dialog>
   )
 })
@@ -33,6 +34,7 @@ stories.add('Danger', () => {
         console.log('onCancel')
       }}
       danger={true}
+      isOpen={true}
     ></Dialog>
   )
 })

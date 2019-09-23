@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ButtonProps } from '../Button'
 
 import { Header } from './Header'
@@ -14,17 +14,26 @@ export interface ModalProps extends ComponentWithClass {
   secondaryButton?: ButtonProps
   tertiaryButton?: ButtonProps
   title?: string
+  isOpen?: boolean
 }
 
 export const Modal: React.FC<ModalProps> = ({
-  className,
+  className = '',
   children,
   onClose,
   primaryButton,
   secondaryButton,
   tertiaryButton,
   title,
+  isOpen = false,
 }) => {
+  const [open, setOpen] = useState(isOpen)
+
+  function handleOnClose(event: React.SyntheticEvent) {
+    setOpen(false)
+    onClose(event)
+  }
+
   if (primaryButton) {
     primaryButton.icon = (
       <span className="rn-modal__btn-icon">
@@ -33,10 +42,16 @@ export const Modal: React.FC<ModalProps> = ({
     )
   }
 
+  const classes = `
+    rn-modal
+    ${open ? 'is-open' : 'is-closed'}
+    ${className}
+  `
+
   return (
-    <div className={`rn-modal ${className}`}>
+    <div className={classes}>
       <article className="rn-modal__main">
-        {title && <Header title={title} onClose={onClose} />}
+        {title && <Header title={title} onClose={handleOnClose} />}
         <section className="rn-modal__body">{children}</section>
         {(primaryButton || secondaryButton || tertiaryButton) && (
           <Footer

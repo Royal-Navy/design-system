@@ -8,17 +8,17 @@ const stories = storiesOf('Modal', module)
 
 const primaryButton: ButtonProps = {
   onClick: event => console.log('primary'),
-  children: 'Next',
+  children: 'Primary',
 }
 
 const secondaryButton: ButtonProps = {
   onClick: event => console.log('secondary'),
-  children: 'Cancel',
+  children: 'Secondary',
 }
 
 const tertiaryButton: ButtonProps = {
   onClick: event => console.log('tertiary'),
-  children: 'Back',
+  children: 'Tertiary',
 }
 
 stories.add('Default', () => {
@@ -29,6 +29,7 @@ stories.add('Default', () => {
       secondaryButton={secondaryButton}
       tertiaryButton={tertiaryButton}
       onClose={() => console.log('close')}
+      isOpen={true}
     >
       <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
     </Modal>
@@ -42,6 +43,7 @@ stories.add('No header', () => {
       secondaryButton={secondaryButton}
       tertiaryButton={tertiaryButton}
       onClose={() => console.log('close')}
+      isOpen={true}
     >
       <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
     </Modal>
@@ -50,7 +52,11 @@ stories.add('No header', () => {
 
 stories.add('No buttons', () => {
   return (
-    <Modal title="Modal Header" onClose={() => console.log('close')}>
+    <Modal
+      title="Modal Header"
+      onClose={() => console.log('close')}
+      isOpen={true}
+    >
       <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
     </Modal>
   )

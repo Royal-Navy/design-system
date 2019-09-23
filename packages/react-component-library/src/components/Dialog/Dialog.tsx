@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal } from '../Modal'
 import { ButtonProps } from '../Button'
 
@@ -8,6 +8,7 @@ export interface DialogProps {
   danger?: boolean
   onConfirm?: (event: React.SyntheticEvent) => void
   onCancel?: (event: React.SyntheticEvent) => void
+  isOpen?: boolean
 }
 
 export const Dialog: React.FC<DialogProps> = ({
@@ -16,7 +17,11 @@ export const Dialog: React.FC<DialogProps> = ({
   danger = false,
   onConfirm,
   onCancel,
+  isOpen = false,
+  ...rest
 }) => {
+  const [open, setOpen] = useState(isOpen)
+
   const confirmButton: ButtonProps = {
     onClick: onConfirm,
     children: 'Confirm',
@@ -25,7 +30,10 @@ export const Dialog: React.FC<DialogProps> = ({
   }
 
   const cancelButton: ButtonProps = {
-    onClick: onCancel,
+    onClick: (event: React.SyntheticEvent) => {
+      setOpen(false)
+      onCancel(event)
+    },
     children: 'Cancel',
     variant: 'tertiary',
   }
@@ -35,6 +43,8 @@ export const Dialog: React.FC<DialogProps> = ({
       className={`rn-dialog ${danger ? 'rn-dialog--danger' : ''}`}
       primaryButton={confirmButton}
       secondaryButton={cancelButton}
+      isOpen={open}
+      {...rest}
     >
       <span className="rn-dialog__title">{title}</span>
       <p className="rn-dialog__description">{description}</p>
