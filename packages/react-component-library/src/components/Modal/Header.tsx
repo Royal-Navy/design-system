@@ -7,12 +7,13 @@ export interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ title, onClose }) => {
   return (
-    <header className="rn-modal__header">
+    <header className="rn-modal__header" data-testid="header">
       <span className="rn-modal__title">{title}</span>
       <button
         className="rn-modal__close-button"
         type="button"
         onClick={onClose}
+        data-testid="close-button"
       >
         &times;
       </button>

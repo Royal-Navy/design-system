@@ -13,7 +13,7 @@ export const Footer: React.FC<FooterProps> = ({
   tertiaryButton,
 }) => {
   return (
-    <footer className="rn-modal__footer">
+    <footer className="rn-modal__footer" data-testid="footer">
       {tertiaryButton && (
         <Button
           className="rn-modal__tertiary-button"

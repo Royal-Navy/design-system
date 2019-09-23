@@ -49,7 +49,7 @@ export const Modal: React.FC<ModalProps> = ({
   `
 
   return (
-    <div className={classes}>
+    <div className={classes} data-testid="wrapper">
       <article className="rn-modal__main">
         {title && <Header title={title} onClose={handleOnClose} />}
         <section className="rn-modal__body">{children}</section>
