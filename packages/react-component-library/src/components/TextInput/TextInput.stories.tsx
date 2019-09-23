@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react'
 import * as yup from 'yup'
 
 import { Search } from '../../icons'
-import Button from '../Button'
+import { Button } from '../Button'
 import TextInput from './index'
 
 import withFormik from '../../enhancers/withFormik'

@@ -24,13 +24,13 @@ stories.add('Modal', () => {
 
   return (
     <Modal
-      title="This is a thing"
+      title="Modal Header"
       primaryButton={primaryButton}
       secondaryButton={secondaryButton}
       tertiaryButton={tertiaryButton}
       onClose={() => console.log('close')}
     >
-      This is a test
+      Example modal content.
     </Modal>
   )
 })

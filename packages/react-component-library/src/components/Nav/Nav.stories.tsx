@@ -5,7 +5,7 @@ import { withKnobs } from '@storybook/addon-knobs'
 
 import { TriangleDown, TriangleUp } from '../../icons'
 import CustomLink from '../CustomLink'
-import Button from '../Button'
+import { Button } from '../Button'
 import Nav from './index'
 
 const stories = storiesOf('Nav', module)
