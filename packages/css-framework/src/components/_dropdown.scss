@@ -8,6 +8,10 @@ $offset: $outer + $border-thick;
     border-color: color(neutral, 200);
   }
 
+  .rn-dropdown__placeholder {
+    color: color(neutral, 500);
+  }
+
   .rn-dropdown__control--is-focused {
     border-color: color(primary, 600);
     box-shadow: 0 0 0 1px color(primary, 600);
