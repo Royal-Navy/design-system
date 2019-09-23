@@ -5,6 +5,7 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 
 export interface ModalProps extends ComponentWithClass {
+  className?: string
   children?: any
   onClose?: (event: React.SyntheticEvent) => void
   primaryButton?: ButtonProps
@@ -14,6 +15,7 @@ export interface ModalProps extends ComponentWithClass {
 }
 
 export const Modal: React.FC<ModalProps> = ({
+  className,
   children,
   onClose,
   primaryButton,
@@ -21,7 +23,7 @@ export const Modal: React.FC<ModalProps> = ({
   tertiaryButton,
   title,
 }) => (
-  <div className="rn-modal">
+  <div className={`rn-modal ${className}`}>
     <article className="rn-modal__main">
       {(title || onClose) && <Header title={title} onClose={onClose} />}
       <section className="rn-modal__body">{children}</section>
