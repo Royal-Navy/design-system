@@ -64,7 +64,7 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn--danger.rn-btn--primary {
-  background: color(danger, 600);
+  background: color(danger, 500);
   color: color(neutral, white);
 
   &:hover {
@@ -73,7 +73,15 @@ $btn-focus-width: 0.2rem;
   }
 }
 
+.rn-btn__text {
+  vertical-align: middle;
+}
+
 .rn-btn__icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: middle;
   margin-left: spacing(2)
 }
 

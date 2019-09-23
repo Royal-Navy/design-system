@@ -1,63 +1,27 @@
-$dialog-states: (
-  neutral: (    
-    border: color("neutral", 700)
-  ),
-  danger: (    
-    border: color("danger", 400)
-  ),
-  warning: (    
-    border: color("warning", 400)
-  ),
-  success: (    
-    border: color("success", 600)
-  )
-);
-
-
 .rn-dialog {
-  @include cover;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  
-  .window {
-    @include shadow(1);
-    border-top: 4px solid map-deep-get($dialog-states, "neutral", "border");
-    max-width: 600px;
-    
-    .content {
-      padding: spacing(8);
-      .title {
-        color: color(neutral, 800);
-        @include font-size(m);
-        margin: 0 0 spacing(3) 0;
-      }
-      p {
-        @include font-size(s);
-        color: color(neutral, 600);
-        font-weight: 400;
-        line-height: 1.6;
-        margin: 0;
-        + * {
-          margin-top: spacing(2);
-        }
-      }
-    }
-    .footer {
-      text-align: right;
-      background-color: color(neutral, 000);
-      padding: spacing(4);
-    }    
+  .rn-modal__main {
+    padding: spacing(4);
   }
-  @each $state, $variation in $dialog-states {
-    &.#{$state} {
-      .window {
-        border-top: 4px solid map-get($variation, "border");
-      }
-    }
+
+  .rn-modal__footer {
+    padding: spacing(4) 0 0 0;
+    margin-top: spacing(8);
   }
 }
 
+.rn-dialog--danger {
+  //
+}
 
+.rn-dialog__title {
+  display: inline-block;
+  padding: spacing(2) 0 0 spacing(2);
+  font-size: font-size(m);
+  color: color(neutral, 500);
+}
+
+.rn-dialog__description {
+  padding-left: spacing(2);
+  font-size: font-size(s);
+  color: color(neutral, 400);
+}

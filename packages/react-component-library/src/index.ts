@@ -2,7 +2,7 @@
 import Avatar from './components/Avatar'
 import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
-import Button from './components/Button'
+import { Button } from './components/Button'
 import Checkbox from './components/Checkbox'
 import { Masthead } from './fragments/Masthead'
 import Nav from './components/Nav'
