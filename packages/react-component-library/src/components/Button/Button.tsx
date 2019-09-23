@@ -34,7 +34,7 @@ export const Button: React.FC<ButtonProps> = ({
     }}
     {...rest}
   >
-    <span>{children}</span>
+    <span className="rn-btn__text">{children}</span>
     {icon && <span className="rn-btn__icon">{icon}</span>}
   </button>
 )

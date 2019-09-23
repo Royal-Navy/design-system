@@ -4,7 +4,7 @@ import { ButtonProps } from '../Button'
 import { Header } from './Header'
 import { Footer } from './Footer'
 
-import { RightArrow } from '../../icons'
+import { IconButtonConfirm } from '@royalnavy/icon-library'
 
 export interface ModalProps extends ComponentWithClass {
   className?: string
@@ -26,7 +26,11 @@ export const Modal: React.FC<ModalProps> = ({
   title,
 }) => {
   if (primaryButton) {
-    primaryButton.icon = <RightArrow />
+    primaryButton.icon = (
+      <span className="rn-modal__btn-icon">
+        <IconButtonConfirm />
+      </span>
+    )
   }
 
   return (

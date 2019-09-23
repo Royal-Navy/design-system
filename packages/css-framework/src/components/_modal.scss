@@ -71,3 +71,20 @@
   border-bottom: 1px solid color(neutral, 100);
   margin: 0;
 }
+
+.rn-modal__btn-icon {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  width: 1.3rem;
+  height: 1.3rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  text-align: center;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 1px);
+    transform: translate(-50%, -50%);
+  }
+}
