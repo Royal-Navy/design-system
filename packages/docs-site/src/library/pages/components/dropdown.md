@@ -14,7 +14,6 @@ import SketchWidget from '../../../components/presenters/sketch-widget'
 
 # Dropdown
 A component to show a list of actions.
-<SelectComponent />
 
 ## Usage
 The Dropdown input is useful when the user needs to select an option from a long list, typically more than 7 options. Users can click on a control to let the list drop down and the user can then scroll through the list
