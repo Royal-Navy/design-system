@@ -30,7 +30,7 @@ stories.add('Modal', () => {
       tertiaryButton={tertiaryButton}
       onClose={() => console.log('close')}
     >
-      Example modal content.
+      <pre>// Arbitrary JSX content</pre>
     </Modal>
   )
 })
