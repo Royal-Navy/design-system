@@ -61,3 +61,11 @@ stories.add('No buttons', () => {
     </Modal>
   )
 })
+
+stories.add('Blank', () => {
+  return (
+    <Modal isOpen={true}>
+      <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
+    </Modal>
+  )
+})
