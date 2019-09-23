@@ -1,6 +1,6 @@
 import React from 'react'
-import { IconVisibility, IconVisibilityOff } from '@royalnavy/icon-library'
 
+import { Visibility, VisibilityOff } from '../../icons'
 import { DropdownOption } from './DropdownOption'
 
 export const DropdownLabel: React.FC<DropdownOption> = ({
@@ -29,12 +29,12 @@ export const DropdownLabel: React.FC<DropdownOption> = ({
       </span>
       {hidden && (
         <span data-testid="rn-dropdownlabel__iconinvisible">
-          <IconVisibilityOff className="rn-dropdownlabel__end-adornment" />
+          <VisibilityOff className="rn-dropdownlabel__end-adornment" />
         </span>
       )}
       {visible && (
         <span data-testid="rn-dropdownlabel__iconvisible">
-          <IconVisibility className="is-active rn-dropdownlabel__end-adornment" />
+          <Visibility className="is-active rn-dropdownlabel__end-adornment" />
         </span>
       )}
       {RightContent && (
