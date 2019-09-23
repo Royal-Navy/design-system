@@ -6,20 +6,24 @@ export interface DialogProps {
   title?: string
   description?: string
   danger?: boolean
+  onConfirm?: (event: React.SyntheticEvent) => void
+  onCancel?: (event: React.SyntheticEvent) => void
 }
 
 export const Dialog: React.FC<DialogProps> = ({
   title,
   description,
   danger = false,
+  onConfirm,
+  onCancel,
 }) => {
   const primaryButton: ButtonProps = {
-    onClick: event => console.log('primary'),
+    onClick: onConfirm,
     children: 'Confirm',
   }
 
   const secondaryButton: ButtonProps = {
-    onClick: event => console.log('secondary'),
+    onClick: onCancel,
     children: 'Cancel',
   }
 
