@@ -1,14 +1,14 @@
 import React from 'react'
-import { IconAcUnit, IconExitToApp } from '@royalnavy/icon-library'
 import { storiesOf } from '@storybook/react'
 
+import { Bell, Tools } from '../../icons'
 import { Dropdown } from './Dropdown'
 
 const stories = storiesOf('Dropdown', module)
 
 const hotkey5 = () => (
   <>
-    <IconExitToApp /> 5
+    <Tools /> 5
   </>
 )
 
@@ -34,7 +34,7 @@ const scrollOptions = [
 
 const iconOptions = options.map(option => ({
   ...option,
-  icon: IconAcUnit,
+  icon: Bell,
 }))
 
 stories.add('Default', () => (

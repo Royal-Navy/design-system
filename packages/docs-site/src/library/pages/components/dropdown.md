@@ -5,12 +5,13 @@ header: true
 ---
 
 import { Links, Tab, TabSet, Dropdown } from '@royalnavy/react-component-library'
-import { IconAcUnit } from '@royalnavy/icon-library'
 import Field from '../../../components/containers/Field'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import RightContent from '../../../components/presenters/right-content'
 import SketchWidget from '../../../components/presenters/sketch-widget'
+
+import IconAcUnit from '../../images/components/dropdown/acunit.svg'
 
 # Dropdown
 A component to show a list of actions.
