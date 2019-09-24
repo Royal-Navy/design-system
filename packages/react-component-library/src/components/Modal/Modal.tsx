@@ -28,15 +28,15 @@ export const Modal: React.FC<ModalProps> = ({
   isOpen = false,
 }) => {
   const [open, setOpen] = useState(isOpen)
-  const dangerButton = primaryButton
+  const mutatedPrimaryButton = primaryButton
 
   function handleOnClose(event: React.SyntheticEvent) {
     setOpen(false)
     onClose(event)
   }
 
-  if (dangerButton) {
-    dangerButton.icon = (
+  if (mutatedPrimaryButton) {
+    mutatedPrimaryButton.icon = (
       <span className="rn-modal__btn-icon">
         <IconButtonConfirm />
       </span>
@@ -58,7 +58,7 @@ export const Modal: React.FC<ModalProps> = ({
         </section>
         {(primaryButton || secondaryButton || tertiaryButton) && (
           <Footer
-            primaryButton={dangerButton}
+            primaryButton={mutatedPrimaryButton}
             secondaryButton={secondaryButton}
             tertiaryButton={tertiaryButton}
           />
