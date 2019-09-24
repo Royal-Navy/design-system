@@ -39,12 +39,16 @@ export const Dialog: React.FC<DialogProps> = ({
       secondaryButton={cancelButton}
       {...rest}
     >
-      <span className="rn-dialog__title" data-testid="title">
-        {title}
-      </span>
-      <p className="rn-dialog__description" data-testid="description">
-        {description}
-      </p>
+      {title && (
+        <span className="rn-dialog__title" data-testid="title">
+          {title}
+        </span>
+      )}
+      {description && (
+        <p className="rn-dialog__description" data-testid="description">
+          {description}
+        </p>
+      )}
     </Modal>
   )
 }
