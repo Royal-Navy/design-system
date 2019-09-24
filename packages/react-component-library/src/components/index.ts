@@ -6,6 +6,7 @@ import Checkbox from './Checkbox'
 import { Dropdown } from './Dropdown'
 import Link from './Link'
 import Nav from './Nav'
+import { NumberInput } from './NumberInput'
 import Pagination from './Pagination'
 import PhaseBanner from './PhaseBanner'
 import Popover from './Popover'
@@ -30,6 +31,7 @@ export {
   Dropdown,
   Link,
   Nav,
+  NumberInput,
   Pagination,
   PhaseBanner,
   Popover,
