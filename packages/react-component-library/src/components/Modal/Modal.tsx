@@ -52,7 +52,9 @@ export const Modal: React.FC<ModalProps> = ({
     <div className={classes} data-testid="wrapper">
       <article className="rn-modal__main">
         {title && <Header title={title} onClose={handleOnClose} />}
-        <section className="rn-modal__body">{children}</section>
+        <section className="rn-modal__body" data-testid="body">
+          {children}
+        </section>
         {(primaryButton || secondaryButton || tertiaryButton) && (
           <Footer
             primaryButton={primaryButton}

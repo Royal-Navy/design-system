@@ -20,6 +20,7 @@ export const Footer: React.FC<FooterProps> = ({
           type="button"
           variant="secondary"
           {...tertiaryButton}
+          data-testid="btn-tertiary"
         />
       )}
       {secondaryButton && (
@@ -28,6 +29,7 @@ export const Footer: React.FC<FooterProps> = ({
           type="button"
           variant="secondary"
           {...secondaryButton}
+          data-testid="btn-secondary"
         />
       )}
       {primaryButton && (
@@ -36,6 +38,7 @@ export const Footer: React.FC<FooterProps> = ({
           type="button"
           variant="primary"
           {...primaryButton}
+          data-testid="btn-primary"
         />
       )}
     </footer>
