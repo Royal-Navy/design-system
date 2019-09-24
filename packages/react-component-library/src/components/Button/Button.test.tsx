@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
 
-import Button from './index'
+import { Button } from './index'
 
 describe('Button', () => {
   describe('Given a button is created with a listener for onClick', () => {
