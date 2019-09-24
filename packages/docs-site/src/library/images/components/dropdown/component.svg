@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 726 213">
+  <defs>
+    <path id="a" d="M8 12.36L3.07 8.54 2 9.38l6 4.67 6-4.67-1.09-.85L8 12.36zm0-1.7l4.9-3.81L14 6 8 1.33 2 6l1.09.85L8 10.67z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v177H.5z"/>
+    <g transform="translate(386 72)">
+      <rect width="281" height="45" x="-.5" y="-.5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="36" y="28">Dropdown</tspan>
+      </text>
+      <g transform="translate(12 14)">
+        <mask id="b" fill="#fff">
+          <use xlink:href="#a"/>
+        </mask>
+        <g fill="#233745" mask="url(#b)">
+          <path d="M0 0h16v16H0z"/>
+        </g>
+      </g>
+      <path fill="#B8C7D2" d="M259.68 25.8l-4.14-6.02a.5.5 0 0 1 .41-.78h9.1a.5.5 0 0 1 .41.78l-4.14 6.02a1 1 0 0 1-1.64 0z"/>
+    </g>
+    <g transform="translate(60 72)">
+      <rect width="281" height="45" x="-.5" y="-.5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="14" y="28">Dropdown</tspan>
+      </text>
+      <path fill="#B8C7D2" d="M259.68 25.8l-4.14-6.02a.5.5 0 0 1 .41-.78h9.1a.5.5 0 0 1 .41.78l-4.14 6.02a1 1 0 0 1-1.64 0z"/>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="207">The Dropdown component.</tspan>
+    </text>
+  </g>
+</svg>
