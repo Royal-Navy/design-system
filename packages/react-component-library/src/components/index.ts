@@ -4,6 +4,7 @@ import Breadcrumbs from './Breadcrumbs'
 import { Button } from './Button'
 import Checkbox from './Checkbox'
 import { Dialog } from './Dialog'
+import { Dropdown } from './Dropdown'
 import Link from './Link'
 import { Modal } from './Modal'
 import Nav from './Nav'
@@ -29,6 +30,7 @@ export {
   Button,
   Checkbox,
   Dialog,
+  Dropdown,
   Link,
   Modal,
   Nav,
