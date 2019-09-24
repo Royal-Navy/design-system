@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
+import { IconButtonConfirm } from '@royalnavy/icon-library'
+
 import { ButtonProps } from '../Button'
 
 import { Header } from './Header'
 import { Footer } from './Footer'
-
-import { IconButtonConfirm } from '@royalnavy/icon-library'
 
 export interface ModalProps extends ComponentWithClass {
   className?: string
@@ -28,14 +28,15 @@ export const Modal: React.FC<ModalProps> = ({
   isOpen = false,
 }) => {
   const [open, setOpen] = useState(isOpen)
+  const dangerButton = primaryButton
 
   function handleOnClose(event: React.SyntheticEvent) {
     setOpen(false)
     onClose(event)
   }
 
-  if (primaryButton) {
-    primaryButton.icon = (
+  if (dangerButton) {
+    dangerButton.icon = (
       <span className="rn-modal__btn-icon">
         <IconButtonConfirm />
       </span>
@@ -57,7 +58,7 @@ export const Modal: React.FC<ModalProps> = ({
         </section>
         {(primaryButton || secondaryButton || tertiaryButton) && (
           <Footer
-            primaryButton={primaryButton}
+            primaryButton={dangerButton}
             secondaryButton={secondaryButton}
             tertiaryButton={tertiaryButton}
           />
