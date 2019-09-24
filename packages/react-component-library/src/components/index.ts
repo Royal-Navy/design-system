@@ -3,6 +3,7 @@ import Badge from './Badge'
 import Breadcrumbs from './Breadcrumbs'
 import Button from './Button'
 import Checkbox from './Checkbox'
+import { Dropdown } from './Dropdown'
 import Link from './Link'
 import Nav from './Nav'
 import Pagination from './Pagination'
@@ -26,6 +27,7 @@ export {
   Breadcrumbs,
   Button,
   Checkbox,
+  Dropdown,
   Link,
   Nav,
   Pagination,
