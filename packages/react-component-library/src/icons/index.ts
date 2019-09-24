@@ -7,6 +7,8 @@ import Search from './Search'
 import Tools from './Tools'
 import TriangleUp from './TriangleUp'
 import TriangleDown from './TriangleDown'
+import Visibility from './Visibility'
+import VisibilityOff from './VisibilityOff'
 
 export {
   Bell,
@@ -18,4 +20,6 @@ export {
   Tools,
   TriangleDown,
   TriangleUp,
+  Visibility,
+  VisibilityOff,
 }
