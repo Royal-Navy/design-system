@@ -30,7 +30,7 @@ describe('Modal', () => {
             onConfirm={onConfirm}
             onCancel={onCancel}
             isOpen={isOpen}
-          ></Dialog>
+          />
         )
       })
 
@@ -91,8 +91,8 @@ describe('Modal', () => {
           onConfirm={onConfirm}
           onCancel={onCancel}
           isOpen={isOpen}
-          danger={true}
-        ></Dialog>
+          danger
+        />
       )
     })
 
