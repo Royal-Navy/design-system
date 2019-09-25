@@ -1,6 +1,6 @@
 import React from 'react'
 
-export interface ButtonProps {
+export interface ButtonProps extends ComponentWithClass {
   children?: string
   className?: string
   color?: 'danger'
