@@ -16,6 +16,7 @@
   ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "sideEffects": false,
   "author": "NELSON",
   "license": "Apache-2.0",
   "scripts": {
@@ -29,8 +30,8 @@
     "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
     "storybook": "start-storybook -p 6006",
     "storybook:static": "build-storybook -c .storybook -o .static_storybook",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "NODE_ENV=test jest",
+    "test:watch": "NODE_ENV=test jest --watch",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/",
     "prepare": "yarn build"
   },
@@ -42,6 +43,7 @@
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
