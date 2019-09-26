@@ -7,6 +7,7 @@ import Checkbox from './components/Checkbox'
 import { Dropdown } from './components/Dropdown'
 import { Masthead } from './fragments/Masthead'
 import Nav from './components/Nav'
+import { NumberInput } from './components/NumberInput'
 import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
 import Popover from './components/Popover'
@@ -37,6 +38,7 @@ export {
   Dropdown,
   Masthead,
   Nav,
+  NumberInput,
   Pagination,
   PhaseBanner,
   Popover,

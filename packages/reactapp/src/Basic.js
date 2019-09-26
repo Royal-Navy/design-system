@@ -23,8 +23,8 @@ export const Basic = () => {
   }
 
   return (
-    <div>
-      <h1>Anywhere in your app!</h1>
+    <div style={{ maxWidth: 400, padding: 50 }}>
+      <h1>Select Form</h1>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {({ handleSubmit, isSubmitting }) => (
           <form onSubmit={handleSubmit}>
