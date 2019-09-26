@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 726 261">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v227H.5z"/>
+    <g transform="translate(239 92)">
+      <rect width="271" height="45" x="-.5" y="-.5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      <path fill="#E2E9EE" d="M228 0h1v44h-1zM229 21.5h41v1h-41z"/>
+      <path fill="#748999" d="M248.63 36.45l-3.21-5.7a.5.5 0 0 1 .43-.75h7.3a.5.5 0 0 1 .43.75l-3.2 5.7a1 1 0 0 1-1.75 0zM250.37 7.55l3.21 5.7a.5.5 0 0 1-.43.75h-7.3a.5.5 0 0 1-.43-.75l3.2-5.7a1 1 0 0 1 1.75 0z"/>
+      <rect width="229" height="46" x="-1" y="-1" fill="#FFF" stroke="#3A8FDD" stroke-width="2" rx="3"/>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="12" y="36">Value</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+        <tspan x="12" y="18">Label</tspan>
+      </text>
+    </g>
+    <g transform="translate(239 156)">
+      <rect width="271" height="45" x="-.5" y="-.5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      <path fill="#748999" d="M207.13 14a8.13 8.13 0 1 1 .03 16.27 8.13 8.13 0 0 1-.03-16.27zm0 6.72l1.75-1.75c.4-.4 1.03-.4 1.42 0a1 1 0 0 1 .01 1.4l-1.75 1.76 1.74 1.74a1.01 1.01 0 0 1-1.43 1.44l-1.74-1.75-1.75 1.75a1 1 0 0 1-1.42 0c-.39-.4-.39-1.04 0-1.43l1.76-1.75-1.76-1.76a1 1 0 1 1 1.41-1.4l1.76 1.75z"/>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="12" y="36">Value</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+        <tspan x="12" y="18">Label</tspan>
+      </text>
+      <path fill="#E2E9EE" d="M228 0h1v44h-1zM229 21.5h41v1h-41z"/>
+      <path fill="#748999" d="M248.63 36.45l-3.21-5.7a.5.5 0 0 1 .43-.75h7.3a.5.5 0 0 1 .43.75l-3.2 5.7a1 1 0 0 1-1.75 0zM250.37 7.55l3.21 5.7a.5.5 0 0 1-.43.75h-7.3a.5.5 0 0 1-.43-.75l3.2-5.7a1 1 0 0 1 1.75 0z"/>
+    </g>
+    <g transform="translate(239 28)">
+      <rect width="271" height="45" x="-.5" y="-.5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      <path fill="#E2E9EE" d="M228 0h1v44h-1zM229 21.5h41v1h-41z"/>
+      <path fill="#748999" d="M248.63 36.45l-3.21-5.7a.5.5 0 0 1 .43-.75h7.3a.5.5 0 0 1 .43.75l-3.2 5.7a1 1 0 0 1-1.75 0zM250.37 7.55l3.21 5.7a.5.5 0 0 1-.43.75h-7.3a.5.5 0 0 1-.43-.75l3.2-5.7a1 1 0 0 1 1.75 0z"/>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="12" y="28">Label</tspan>
+      </text>
+    </g>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="174.49" y="56">Empty</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="175.05" y="120">Active</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="181.25" y="184">Filled</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="257">Number Input states.</tspan>
+    </text>
+  </g>
+</svg>

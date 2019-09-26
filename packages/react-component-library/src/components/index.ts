@@ -8,6 +8,7 @@ import { Dropdown } from './Dropdown'
 import Link from './Link'
 import { Modal } from './Modal'
 import Nav from './Nav'
+import { NumberInput } from './NumberInput'
 import Pagination from './Pagination'
 import PhaseBanner from './PhaseBanner'
 import Popover from './Popover'
@@ -34,6 +35,7 @@ export {
   Link,
   Modal,
   Nav,
+  NumberInput,
   Pagination,
   PhaseBanner,
   Popover,
