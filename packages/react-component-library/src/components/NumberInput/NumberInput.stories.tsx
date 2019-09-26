@@ -3,7 +3,7 @@ import { Field, Formik, Form } from 'formik'
 import React from 'react'
 
 import withFormik from '../../enhancers/withFormik'
-import Button from '../Button'
+import { Button } from '../Button'
 import { NumberInput } from './NumberInput'
 
 const stories = storiesOf('Number Input', module)
