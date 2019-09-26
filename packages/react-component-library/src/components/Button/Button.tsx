@@ -2,8 +2,6 @@ import React from 'react'
 import classNames from 'classnames'
 
 export interface ButtonProps extends ComponentWithClass {
-  children?: string
-  className?: string
   color?: 'danger'
   testId?: string
   icon?: React.ReactNode
