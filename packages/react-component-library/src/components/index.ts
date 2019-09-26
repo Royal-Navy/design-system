@@ -1,7 +1,7 @@
 import Avatar from './Avatar'
 import Badge from './Badge'
 import Breadcrumbs from './Breadcrumbs'
-import Button from './Button'
+import { Button } from './Button'
 import Checkbox from './Checkbox'
 import { Dropdown } from './Dropdown'
 import Link from './Link'
