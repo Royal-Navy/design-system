@@ -41,15 +41,15 @@ describe('Modal', () => {
       })
 
       it('should apply the `is-open` class', () => {
-        expect(wrapper.queryByTestId('wrapper')).toHaveClass('is-open')
+        expect(wrapper.queryByTestId('rn-modal-wrapper')).toHaveClass('is-open')
       })
 
       it('should not render the Header component', () => {
-        expect(wrapper.queryByTestId('header')).toBeNull()
+        expect(wrapper.queryByTestId('rn-modal-header')).toBeNull()
       })
 
       it('should not render the Footer component', () => {
-        expect(wrapper.queryByTestId('footer')).toBeNull()
+        expect(wrapper.queryByTestId('rn-modal-footer')).toBeNull()
       })
     })
   })
@@ -70,11 +70,11 @@ describe('Modal', () => {
         )
       })
       it('should render the Header component', () => {
-        expect(wrapper.queryByTestId('header')).not.toBeNull()
+        expect(wrapper.queryByTestId('rn-modal-header')).not.toBeNull()
       })
 
       it('should render the child JSX', () => {
-        expect(wrapper.queryByTestId('body')).toHaveTextContent(
+        expect(wrapper.queryByTestId('rn-modal-body')).toHaveTextContent(
           'Example child JSX'
         )
       })
@@ -82,7 +82,7 @@ describe('Modal', () => {
       describe('and the close button is clicked', () => {
         beforeEach(() => {
           fireEvent(
-            wrapper.getByTestId('close-button'),
+            wrapper.getByTestId('rn-modal-close-button'),
             new MouseEvent('click', {
               bubbles: true,
               cancelable: true,
@@ -94,7 +94,9 @@ describe('Modal', () => {
         })
 
         it('should apply the `is-closed` stateful class', () => {
-          expect(wrapper.queryByTestId('wrapper')).toHaveClass('is-closed')
+          expect(wrapper.queryByTestId('rn-modal-wrapper')).toHaveClass(
+            'is-closed'
+          )
         })
       })
 
@@ -115,29 +117,29 @@ describe('Modal', () => {
         })
 
         it('should render the Footer component', () => {
-          expect(wrapper.queryByTestId('footer')).not.toBeNull()
+          expect(wrapper.queryByTestId('rn-modal-footer')).not.toBeNull()
         })
 
         it('should render all the buttons', () => {
-          expect(wrapper.queryByTestId('btn-primary')).not.toBeNull()
-          expect(wrapper.queryByTestId('btn-secondary')).not.toBeNull()
-          expect(wrapper.queryByTestId('btn-tertiary')).not.toBeNull()
+          expect(wrapper.queryByTestId('rn-modal-btn-primary')).not.toBeNull()
+          expect(wrapper.queryByTestId('rn-modal-btn-secondary')).not.toBeNull()
+          expect(wrapper.queryByTestId('rn-modal-btn-tertiary')).not.toBeNull()
         })
 
         it('should render primary button as primary variant', () => {
-          expect(wrapper.queryByTestId('btn-primary')).toHaveClass(
+          expect(wrapper.queryByTestId('rn-modal-btn-primary')).toHaveClass(
             'rn-btn--primary'
           )
         })
 
         it('should render secondary button as secondary variant', () => {
-          expect(wrapper.queryByTestId('btn-secondary')).toHaveClass(
+          expect(wrapper.queryByTestId('rn-modal-btn-secondary')).toHaveClass(
             'rn-btn--secondary'
           )
         })
 
         it('should render tertiary button as secondary variant', () => {
-          expect(wrapper.queryByTestId('btn-tertiary')).toHaveClass(
+          expect(wrapper.queryByTestId('rn-modal-btn-tertiary')).toHaveClass(
             'rn-btn--secondary'
           )
         })

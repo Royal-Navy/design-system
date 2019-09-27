@@ -47,12 +47,15 @@ export const Dialog: React.FC<DialogProps> = ({
       {...rest}
     >
       {title && (
-        <span className="rn-dialog__title" data-testid="title">
+        <span className="rn-dialog__title" data-testid="rn-dialog-title">
           {title}
         </span>
       )}
       {description && (
-        <p className="rn-dialog__description" data-testid="description">
+        <p
+          className="rn-dialog__description"
+          data-testid="rn-dialog-description"
+        >
           {description}
         </p>
       )}

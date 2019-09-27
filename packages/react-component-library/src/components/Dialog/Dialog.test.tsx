@@ -35,23 +35,27 @@ describe('Modal', () => {
       })
 
       it('should render the title', () => {
-        expect(wrapper.queryByTestId('title')).toHaveTextContent(title)
-      })
-
-      it('should render the description', () => {
-        expect(wrapper.queryByTestId('description')).toHaveTextContent(
-          description
+        expect(wrapper.queryByTestId('rn-dialog-title')).toHaveTextContent(
+          title
         )
       })
 
+      it('should render the description', () => {
+        expect(
+          wrapper.queryByTestId('rn-dialog-description')
+        ).toHaveTextContent(description)
+      })
+
       it('should apply the `rn-dialog` class', () => {
-        expect(wrapper.queryByTestId('wrapper')).toHaveClass('rn-dialog')
+        expect(wrapper.queryByTestId('rn-modal-wrapper')).toHaveClass(
+          'rn-dialog'
+        )
       })
 
       describe('and the primary button is clicked', () => {
         beforeEach(() => {
           fireEvent(
-            wrapper.getByTestId('btn-primary'),
+            wrapper.getByTestId('rn-modal-btn-primary'),
             new MouseEvent('click', {
               bubbles: true,
               cancelable: true,
@@ -67,7 +71,7 @@ describe('Modal', () => {
       describe('and the secondary button is clicked', () => {
         beforeEach(() => {
           fireEvent(
-            wrapper.getByTestId('btn-secondary'),
+            wrapper.getByTestId('rn-modal-btn-secondary'),
             new MouseEvent('click', {
               bubbles: true,
               cancelable: true,
@@ -97,11 +101,15 @@ describe('Modal', () => {
     })
 
     it('should apply the correct modifier class to the wrapper', () => {
-      expect(wrapper.queryByTestId('wrapper')).toHaveClass('rn-dialog--danger')
+      expect(wrapper.queryByTestId('rn-modal-wrapper')).toHaveClass(
+        'rn-dialog--danger'
+      )
     })
 
     it('should apply the correct modifier to the primary button', () => {
-      expect(wrapper.queryByTestId('btn-primary')).toHaveClass('rn-btn--danger')
+      expect(wrapper.queryByTestId('rn-modal-btn-primary')).toHaveClass(
+        'rn-btn--danger'
+      )
     })
   })
 })
