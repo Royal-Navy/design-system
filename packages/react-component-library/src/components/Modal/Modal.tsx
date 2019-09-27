@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import classNames from 'classnames'
 import { IconButtonConfirm } from '@royalnavy/icon-library'
 
 import { ButtonProps } from '../Button'
@@ -7,7 +8,6 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 
 export interface ModalProps extends ComponentWithClass {
-  className?: string
   children?: any
   onClose?: (event: React.SyntheticEvent) => void
   primaryButton?: ButtonProps
@@ -43,11 +43,11 @@ export const Modal: React.FC<ModalProps> = ({
     )
   }
 
-  const classes = `
-    rn-modal
-    ${open ? 'is-open' : 'is-closed'}
-    ${className}
-  `
+  const classes = classNames(className, {
+    'rn-modal': true,
+    'is-open': open,
+    'is-closed': !open,
+  })
 
   return (
     <div className={classes} data-testid="wrapper">

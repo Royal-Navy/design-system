@@ -1,8 +1,9 @@
 import React from 'react'
+import classNames from 'classnames'
 import { Modal } from '../Modal'
 import { ButtonProps } from '../Button'
 
-export interface DialogProps {
+export interface DialogProps extends ComponentWithClass {
   title?: string
   description?: string
   danger?: boolean
@@ -12,6 +13,7 @@ export interface DialogProps {
 }
 
 export const Dialog: React.FC<DialogProps> = ({
+  className = '',
   title,
   description,
   danger = false,
@@ -32,9 +34,14 @@ export const Dialog: React.FC<DialogProps> = ({
     variant: 'tertiary',
   }
 
+  const classes = classNames(className, {
+    'rn-dialog': true,
+    'rn-dialog--danger': danger,
+  })
+
   return (
     <Modal
-      className={`rn-dialog ${danger ? 'rn-dialog--danger' : ''}`}
+      className={classes}
       primaryButton={confirmButton}
       secondaryButton={cancelButton}
       {...rest}
