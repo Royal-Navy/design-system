@@ -6,6 +6,7 @@ import { Button } from './components/Button'
 import Checkbox from './components/Checkbox'
 import { Dropdown } from './components/Dropdown'
 import { Masthead } from './fragments/Masthead'
+import { Modal } from './components/Modal'
 import Nav from './components/Nav'
 import { NumberInput } from './components/NumberInput'
 import Pagination from './components/Pagination'
@@ -37,6 +38,7 @@ export {
   Checkbox,
   Dropdown,
   Masthead,
+  Modal,
   Nav,
   NumberInput,
   Pagination,
