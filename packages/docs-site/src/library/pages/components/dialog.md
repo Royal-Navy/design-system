@@ -9,6 +9,9 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
+import DialogComponent from '../../images/components/dialog/component.svg'
+import DialogAnatomy from '../../images/components/dialog/anatomy.svg'
+
 # Overview
 
 Dialog creates a new context that disables the main window but keeps it visible, with the modal window as a child window in front of it. Users must interact with the dialog window before they can return to the parent application. 
@@ -26,8 +29,9 @@ As the Dialog is displayed full screen, it focuses the user's attention and requ
 
 ### Anatomy
 
-1. **Container**. This wraps the entire component, adding a z-index to ensure the Dialog stacks above the entire app.
-2. **Backdrop**. The Backdrop covers the application with a dark, transparent background. This draws focus to the main Dialog Window.
+<DialogAnatomy />
+
+1. **Container**. This wraps the entire component, adding a z-index to ensure the Dialog stacks above the entire app. This Container also serves as a backdrop that covers the application with a dark, transparent background. This draws focus to the main Dialog Window.
 3. **Dialog Window**. This is the main focus of the Dialog component. Add content here to inform the user or ask them to perform an action.
 4. **Dialog Footer**. Provides a Primary or Danger button. Can also house an optional Cancel button.
 
