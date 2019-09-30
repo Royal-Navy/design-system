@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 726 425">
+  <defs>
+    <filter id="a" width="103.2%" height="105.7%" x="-1.6%" y="-2.4%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="shadowSpreadOuter1"/>
+      <feOffset dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.138958698 0"/>
+    </filter>
+    <filter id="c" width="110.1%" height="127.9%" x="-5%" y="-11.6%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="shadowSpreadOuter1"/>
+      <feOffset dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0995137675 0"/>
+    </filter>
+    <rect id="b" width="370" height="212" x="0" y="0" rx="3"/>
+    <rect id="d" width="119" height="43" x="0" y="0" rx="3"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g>
+      <path fill="#F8FAFC" stroke="#B8C7D2" d="M.5.5h725v382H.5z"/>
+      <path fill="#B8C7D2" d="M139 183h40v1h-40z"/>
+      <g transform="translate(178 74)">
+        <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+        <rect width="371" height="213" x="-.5" y="-.5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      </g>
+      <path fill="#FFF" d="M181 74h364a3 3 0 013 3v63H178V77a3 3 0 013-3z"/>
+      <path fill="#E2E9EE" d="M178 139h370v1H178z"/>
+      <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="18" font-weight="500" transform="translate(178 74)">
+        <tspan x="24" y="42">Modal Header</tspan>
+      </text>
+      <g transform="translate(500 95)">
+        <circle cx="12" cy="12" r="12" fill="#F8FAFC"/>
+        <path fill="#3E5667" d="M16.24 7.76c.34.33.34.87 0 1.21L13.21 12l3.03 3.03a.86.86 0 01-1.21 1.21L12 13.21l-3.03 3.03a.86.86 0 01-1.21-1.21L10.79 12 7.76 8.97a.86.86 0 011.21-1.21L12 10.79l3.03-3.03a.86.86 0 011.21 0z"/>
+      </g>
+      <path fill="#FFF" d="M178 210h370v71.99a4 4 0 01-4.01 4l-362-.98a4 4 0 01-3.99-4V210z"/>
+      <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500" transform="translate(299.23 227)">
+        <tspan x="41.41" y="27">Cancel</tspan>
+      </text>
+      <g transform="translate(413 227)">
+        <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+        <rect width="120" height="44" x="-.5" y="-.5" fill="#2A77C7" stroke="#2A77C7" rx="3"/>
+      </g>
+      <g transform="translate(498 237.5)">
+        <circle cx="11" cy="11" r="11" fill="#2661A7"/>
+        <path fill="#FFF" d="M10.74 7.71l3.39 3.39a.3.3 0 010 .42l-3.39 3.39a.94.94 0 01-1.33-1.34l2.26-2.26-2.26-2.26a.94.94 0 011.33-1.34z"/>
+      </g>
+      <text fill="#FFF" font-family="Lato-Semibold, Lato" font-size="16" font-weight="500" transform="translate(413 227)">
+        <tspan x="16" y="27">Confirm</tspan>
+      </text>
+      <path fill="#E2E9EE" d="M178 210h370v1H178z"/>
+      <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500">
+        <tspan x="69" y="49">Container</tspan>
+      </text>
+      <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500">
+        <tspan x="288" y="59">Modal Header</tspan>
+      </text>
+      <g>
+        <g transform="translate(41 34)">
+          <rect width="19.2" height="18.4" fill="#3E5667" rx="9.2"/>
+          <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+            <tspan x="6.82" y="12.2">1</tspan>
+          </text>
+        </g>
+      </g>
+      <path fill="#B8C7D2" d="M403 59.5h1v40h-1z"/>
+      <g>
+        <g transform="translate(394 44)">
+          <rect width="19.2" height="18.4" fill="#3E5667" rx="9.2"/>
+          <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+            <tspan x="6.82" y="12.2">3</tspan>
+          </text>
+        </g>
+      </g>
+      <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500">
+        <tspan x="16" y="189">Modal Window</tspan>
+      </text>
+      <g>
+        <g transform="translate(127 174)">
+          <rect width="19.2" height="18.4" fill="#3E5667" rx="9.2"/>
+          <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+            <tspan x="6.82" y="12.2">2</tspan>
+          </text>
+        </g>
+      </g>
+      <circle cx="403.5" cy="101" r="3" fill="#3E5667"/>
+      <path fill="#B8C7D2" d="M363 279.5h1v40h-1z"/>
+      <circle cx="363.5" cy="279" r="3" fill="#3E5667"/>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500">
+      <tspan x="0" y="422">The Dialog Anatomy.</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500">
+      <tspan x="256" y="331">Modal Footer</tspan>
+    </text>
+    <g transform="translate(354 317)">
+      <rect width="19.2" height="18.4" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="6.82" y="12.2">4</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

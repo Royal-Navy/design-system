@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 726 480">
+  <defs>
+    <filter id="a" width="101.2%" height="102.1%" x="-.6%" y="-.8%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius=".8" result="shadowSpreadOuter1"/>
+      <feOffset dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.138958698 0"/>
+    </filter>
+    <filter id="c" width="106.4%" height="125%" x="-3.2%" y="-9.6%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius=".8" result="shadowSpreadOuter1"/>
+      <feOffset dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0995137675 0"/>
+    </filter>
+    <rect id="b" width="693" height="410" x="0" y="0" rx="2.4"/>
+    <rect id="d" width="135.2" height="34.4" x="0" y="0" rx="2.4"/>
+    <path id="e" d="M10.67 2.13H2.13c-.59 0-1.06.48-1.06 1.07v6.4c0 .6.47 1.07 1.06 1.07h8.54c.59 0 1.06-.48 1.06-1.07V3.2c0-.6-.47-1.07-1.06-1.07zm0 7.47H2.13V6.4h8.54v3.2zm0-5.33H2.13V3.2h8.54v1.07z"/>
+    <path id="g" d="M6.4 5.69c1.18 0 2.13-.95 2.13-2.13S7.58 1.42 6.4 1.42a2.13 2.13 0 100 4.27zm0 1.42c-1.66 0-4.98.83-4.98 2.49v1.78h9.96V9.6c0-1.66-3.32-2.49-4.98-2.49z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#F8FAFC" stroke="#B8C7D2" d="M.5.5h725v444H.5z"/>
+    <g transform="translate(17 17)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <rect width="693.8" height="410.8" x="-.4" y="-.4" fill="#FFF" stroke="#B8C7D2" stroke-width=".8" rx="2.4"/>
+    </g>
+    <path fill="#FFF" d="M17 365.8h692.8v57.6a3.2 3.2 0 01-3.2 3.2l-686.4-.8a3.2 3.2 0 01-3.2-3.2v-56.8z"/>
+    <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="12" font-weight="500" transform="translate(481.8 379.4)">
+      <tspan x="22.11" y="22.4">Cancel</tspan>
+    </text>
+    <g transform="translate(561.8 379.4)">
+      <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+      <rect width="136" height="35.2" x="-.4" y="-.4" fill="#2A77C7" stroke="#2A77C7" stroke-width=".8" rx="2.4"/>
+    </g>
+    <g transform="translate(669.8 387.8)">
+      <circle cx="8.8" cy="8.8" r="8.8" fill="#2661A7"/>
+      <path fill="#FFF" d="M8.6 6.17l2.7 2.7c.1.1.1.25 0 .35l-2.7 2.7a.75.75 0 01-1.07-1.06l1.8-1.81-1.8-1.81a.75.75 0 011.06-1.07z"/>
+    </g>
+    <text fill="#FFF" font-family="Lato-Semibold, Lato" font-size="12.8" font-weight="500" transform="translate(561.8 379.4)">
+      <tspan x="12" y="21.8">Add Subscriber</tspan>
+    </text>
+    <path fill="#E2E9EE" d="M17 365.8h692.8v1H17z"/>
+    <g transform="translate(49 202.6)">
+      <rect width="133.8" height="36" x="-.4" y="-.4" fill="#FFF" stroke="#B8C7D2" stroke-width=".8" rx="2.4"/>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+        <tspan x="9.6" y="28.8">Charli</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="9.6" font-weight="400">
+        <tspan x="9.6" y="13.8">First Name</tspan>
+      </text>
+    </g>
+    <path fill="#F8FAFC" d="M19.4 17h688a2.4 2.4 0 012.4 2.4v151.2H17V19.4a2.4 2.4 0 012.4-2.4z"/>
+    <g transform="translate(49 250.6)">
+      <rect width="282.8" height="36" x="-.4" y="-.4" fill="#FFF" stroke="#B8C7D2" stroke-width=".8" rx="2.4"/>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+        <tspan x="9.6" y="28.8">charli.roberts@mod.gov.uk</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="9.6" font-weight="400">
+        <tspan x="9.6" y="13.8">Email</tspan>
+      </text>
+    </g>
+    <g transform="translate(197.8 202.6)">
+      <rect width="133.8" height="36" x="-.4" y="-.4" fill="#FFF" stroke="#B8C7D2" stroke-width=".8" rx="2.4"/>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+        <tspan x="9.6" y="28.8">Roberts</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="9.6" font-weight="400">
+        <tspan x="9.6" y="13.8">Last Name</tspan>
+      </text>
+    </g>
+    <g transform="translate(577 298.6)">
+      <rect width="101.8" height="36" x="-.4" y="-.4" fill="#FFF" stroke="#B8C7D2" stroke-width=".8" rx="2.4"/>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+        <tspan x="9.6" y="28.8">11 / 09 / 19</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="9.6" font-weight="400">
+        <tspan x="9.6" y="13.8">Start Date</tspan>
+      </text>
+    </g>
+    <g transform="translate(49 298.6)">
+      <rect width="133.8" height="36" x="-.4" y="-.4" fill="#FFF" stroke="#B8C7D2" stroke-width=".8" rx="2.4"/>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+        <tspan x="9.6" y="28.8">0778 9548 372</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="9.6" font-weight="400">
+        <tspan x="9.6" y="13.8">Contact Number</tspan>
+      </text>
+    </g>
+    <g transform="translate(197.8 298.6)">
+      <rect width="133.8" height="36" x="-.4" y="-.4" fill="#FFF" stroke="#B8C7D2" stroke-width=".8" rx="2.4"/>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+        <tspan x="9.6" y="28.8">@charli</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="9.6" font-weight="400">
+        <tspan x="9.6" y="13.8">Slack Username</tspan>
+      </text>
+    </g>
+    <g transform="translate(395.4 202.6)">
+      <rect width="284" height="36" x="-.4" y="-.4" fill="#FFF" stroke="#B8C7D2" stroke-width=".8" rx="2.4"/>
+      <path fill="#748999" d="M232.9 11.2a6.5 6.5 0 11.03 13.02 6.5 6.5 0 01-.02-13.02zm0 5.37l1.4-1.4a.81.81 0 011.15 0 .8.8 0 010 1.13l-1.4 1.4 1.4 1.4a.81.81 0 01-1.15 1.14l-1.4-1.4-1.4 1.4a.8.8 0 01-1.13 0 .81.81 0 010-1.14l1.4-1.4-1.4-1.4a.8.8 0 111.13-1.13l1.4 1.4z"/>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+        <tspan x="9.6" y="28.8">£4</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="9.6" font-weight="400">
+        <tspan x="9.6" y="13.8">Subscription</tspan>
+      </text>
+      <path fill="#E2E9EE" d="M249.6 0h1v35.2h-1z"/>
+      <path fill="#E2E9EE" d="M250.4 17.2h32.8v1h-32.8z"/>
+      <path fill="#748999" d="M266.1 29.16l-2.56-4.56a.4.4 0 01.35-.6h5.83a.4.4 0 01.35.6l-2.57 4.56a.8.8 0 01-1.4 0zM267.5 6.04l2.57 4.56a.4.4 0 01-.35.6h-5.83a.4.4 0 01-.35-.6l2.57-4.56a.8.8 0 011.39 0z"/>
+    </g>
+    <text fill="#1C2D39" font-family="Lato-Semibold, Lato" font-size="17.6" font-weight="500" transform="translate(17 17)">
+      <tspan x="32" y="81">Personal Information</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="12.8" font-weight="400" transform="translate(17 17)">
+      <tspan x="32" y="102.6">Enter the Subscriber’s name and contact </tspan> <tspan x="32" y="120.2">information.</tspan>
+    </text>
+    <text fill="#1C2D39" font-family="Lato-Semibold, Lato" font-size="17.6" font-weight="500" transform="translate(17 17)">
+      <tspan x="379.2" y="81">Subscription Details</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="12.8" font-weight="400" transform="translate(17 17)">
+      <tspan x="379.2" y="102.6">Manage the size and frequency of the </tspan> <tspan x="379.2" y="120.2">Subscriber’s payments.</tspan>
+    </text>
+    <g>
+      <rect width="281.6" height="36" x=".4" y=".4" fill="#FFF" stroke="#B8C7D2" stroke-width=".8" rx="2.4" transform="translate(395.4 249.8)"/>
+      <path fill="#FFF" stroke="#B8C7D2" stroke-width=".8" d="M535.92 250.2h71.06v36h-71.06z"/>
+      <text fill="#748999" font-family="Lato-Semibold, Lato" font-size="11.2" font-weight="500" transform="translate(535.52 249.8)">
+        <tspan x="12.02" y="22.2">Bi-weekly</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Semibold, Lato" font-size="11.2" font-weight="500" transform="translate(614.2 261)">
+        <tspan x="7.53" y="11">Monthly</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Semibold, Lato" font-size="11.2" font-weight="500" transform="translate(395.4 261)">
+        <tspan x="22.54" y="11">Daily</tspan>
+      </text>
+      <g>
+        <path fill="#3A8FDD" stroke="#2A77C7" stroke-width=".8" d="M465.5 250.2h71.06v36H465.5z"/>
+        <text fill="#FFF" font-family="Lato-Semibold, Lato" font-size="11.2" font-weight="500" transform="translate(465.1 249.8)">
+          <tspan x="17.98" y="22.2">Weekly</tspan>
+        </text>
+      </g>
+    </g>
+    <g transform="translate(396.2 42.6)">
+      <circle cx="12.8" cy="12.8" r="12.8" fill="#3A8FDD"/>
+      <g transform="translate(6.4 6.4)">
+        <mask id="f" fill="#fff">
+          <use xlink:href="#e"/>
+        </mask>
+        <g fill="#FFF" mask="url(#f)">
+          <path d="M0 0h12.8v10.4H0z"/>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(49 42.6)">
+      <circle cx="12.8" cy="12.8" r="12.8" fill="#3A8FDD"/>
+      <g transform="translate(6.4 6.4)">
+        <mask id="h" fill="#fff">
+          <use xlink:href="#g"/>
+        </mask>
+        <g fill="#FFF" mask="url(#h)">
+          <path d="M0 0h12.8v10.4H0z"/>
+        </g>
+      </g>
+    </g>
+    <path fill="#E2E9EE" d="M362.6 202.6h1v131.2h-1z"/>
+    <g transform="translate(396.2 298.6)">
+      <rect width="165.6" height="36" x="-.4" y="-.4" fill="#FFF" stroke="#B8C7D2" stroke-width=".8" rx="2.4"/>
+      <text fill="#1C2D39" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+        <tspan x="11.2" y="28.8">Direct Debit</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="9.6" font-weight="400">
+        <tspan x="11.2" y="13.8">Payment Type</tspan>
+      </text>
+      <path fill="#E2E9EE" d="M130.4 7.2h1V28h-1z"/>
+      <path fill="#B8C7D2" d="M146.14 20.64l-3.3-4.81a.4.4 0 01.32-.63h7.28a.4.4 0 01.33.63l-3.31 4.81a.8.8 0 01-1.32 0z"/>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500">
+      <tspan x="1" y="477">Combining Forms with Modals.</tspan>
+    </text>
+  </g>
+</svg>
