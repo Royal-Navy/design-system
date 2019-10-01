@@ -15,6 +15,11 @@
     border-bottom: 0;
   }
 
+  .rn-select__dropdown-indicator {
+    padding-left: (40px - 11px)/2;
+    padding-right: (40px - 11px)/2;
+  }
+
   .rn-select__menu {
     margin-top: 0;
     border-top-left-radius: 0;
@@ -109,5 +114,28 @@
   .rn-select__control--is-focused .rn-select__label,
   .rn-select__value-container--has-value .rn-select__label {
     transform: translate(spacing(3), 6px) scale(0.8);
+  }
+
+  .rn-arrow__fill {
+    fill: color(neutral, 200);
+  }
+
+  .rn-arrow {
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transform: translateY(1px);
+
+    .rn-arrow__fill {
+      transition: fill 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    }
+  }
+
+  .rn-select__control--menu-is-open {
+    .rn-arrow {
+      transform: rotate(180deg) translateY(1px);
+    }
+
+    .rn-arrow__fill {
+      fill: color(primary, 600);
+    }
   }
 }

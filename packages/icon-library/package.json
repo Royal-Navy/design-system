@@ -1,6 +1,6 @@
 {
   "name": "@royalnavy/icon-library",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "main": "dist/index.js",
   "author": "NELSON",
   "license": "Apache-2.0",
@@ -10,6 +10,8 @@
   "files": [
     "dist"
   ],
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "build": "run-s svgr exports build:ts types",
     "build:ts": "webpack -p --config=webpack/prod.js",

@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { withKnobs, text } from '@storybook/addon-knobs'
 
 import { TriangleDown, TriangleUp } from '../../icons'
-import Button from './index'
+import { Button } from './index'
 
 const stories = storiesOf('Button', module)
 

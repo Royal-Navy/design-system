@@ -1,5 +1,5 @@
 ---
-title: Input
+title: Text Input
 description: Text inputs let users enter and edit text.
 header: true
 ---
