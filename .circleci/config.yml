@@ -272,7 +272,7 @@ jobs:
           command: yarn --cwd packages/icon-library build
       - run:
           name: Build React Components
-          command: yarn --cwd packages/react-component-library build:dev
+          command: yarn --cwd packages/react-component-library build
       - run:
           name: Jest
           environment:
@@ -299,7 +299,7 @@ jobs:
           command: yarn --cwd packages/icon-library build
       - run:
           name: Build React Components
-          command: yarn --cwd packages/react-component-library build:dev
+          command: yarn --cwd packages/react-component-library build
       - run:
           name: Build site
           working_directory: packages/docs-site
