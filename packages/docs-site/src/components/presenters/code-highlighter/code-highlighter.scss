@@ -13,6 +13,7 @@ $border-radius-button: 3px;
 }
 
 .code-highlighter__head {
+  position: relative;
   padding: spacing(4);
   max-height: 20rem;
   overflow: scroll;

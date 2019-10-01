@@ -4,8 +4,10 @@ import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
 import { Button } from './components/Button'
 import Checkbox from './components/Checkbox'
+import { Dialog } from './components/Dialog'
 import { Dropdown } from './components/Dropdown'
 import { Masthead } from './fragments/Masthead'
+import { Modal } from './components/Modal'
 import Nav from './components/Nav'
 import { NumberInput } from './components/NumberInput'
 import Pagination from './components/Pagination'
@@ -35,8 +37,10 @@ export {
   Breadcrumbs,
   Button,
   Checkbox,
+  Dialog,
   Dropdown,
   Masthead,
+  Modal,
   Nav,
   NumberInput,
   Pagination,
