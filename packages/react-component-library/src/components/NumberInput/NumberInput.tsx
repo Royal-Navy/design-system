@@ -6,6 +6,7 @@ export interface NumberInputProps {
   autoFocus?: boolean
   className?: string
   disabled?: boolean
+  errorMessage?: string
   footnote?: string
   id?: string
   label?: string
@@ -48,6 +49,7 @@ export function calculateNewValue({
 export const NumberInput: React.FC<NumberInputProps> = ({
   className,
   disabled = false,
+  errorMessage,
   footnote,
   id = uuid(),
   label,
@@ -205,6 +207,11 @@ export const NumberInput: React.FC<NumberInputProps> = ({
         >
           {footnote}
         </small>
+      )}
+      {errorMessage && (
+        <div className="rn-form__invalid-feedback" data-testid="error">
+          {errorMessage}
+        </div>
       )}
     </div>
   )

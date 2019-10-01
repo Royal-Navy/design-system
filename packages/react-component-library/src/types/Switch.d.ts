@@ -6,11 +6,12 @@ export interface OptionType {
 }
 
 export interface SwitchType {
-  name: string
-  value: string
-  label?: string
   className?: string
-  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
+  errorMessage?: string
+  label?: string
+  name: string
   options: OptionType[]
   size?: string
+  value: string
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
 }

@@ -2,27 +2,29 @@ import React from 'react'
 import uuid from 'uuid'
 
 interface CheckboxProps {
+  checked?: boolean
   className?: string
+  disabled?: boolean
+  errorMessage?: string
   id?: string
   label: string
-  disabled?: boolean
-  value?: string
   name: string
-  checked?: boolean
+  value?: string
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
   onBlur?: (event: React.FormEvent<HTMLInputElement>) => void
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
+  checked = false,
   className = '',
+  disabled = false,
+  errorMessage,
   id = uuid(),
   label,
-  disabled = false,
-  value,
   name,
-  checked = false,
-  onChange,
   onBlur,
+  onChange,
+  value,
   ...rest
 }) => {
   return (
@@ -46,6 +48,11 @@ const Checkbox: React.FC<CheckboxProps> = ({
           {label}
         </label>
       </div>
+      {errorMessage && (
+        <div className="rn-form__invalid-feedback" data-testid="error">
+          {errorMessage}
+        </div>
+      )}
     </div>
   )
 }

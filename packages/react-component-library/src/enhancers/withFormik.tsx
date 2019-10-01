@@ -20,6 +20,7 @@ const withFormik = (FormComponent: React.FC<any>) => ({
   const formComponentClassNames = classNames(className, {
     'is-invalid': hasError,
   })
+  const errorMessage = hasError ? errors[field.name] : undefined
 
   return (
     <>
@@ -27,12 +28,8 @@ const withFormik = (FormComponent: React.FC<any>) => ({
         {...field}
         {...props}
         className={formComponentClassNames}
+        errorMessage={errorMessage}
       />
-      {hasError && (
-        <div className="rn-form__invalid-feedback" data-testid="error">
-          {errors[field.name]}
-        </div>
-      )}
     </>
   )
 }

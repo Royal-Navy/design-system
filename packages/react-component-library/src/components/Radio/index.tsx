@@ -3,9 +3,10 @@ import uuid from 'uuid'
 
 interface RadioProps {
   className?: string
+  disabled?: boolean
+  errorMessage?: string
   id?: string
   label: string
-  disabled?: boolean
   name: string
   value?: string
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
@@ -14,13 +15,14 @@ interface RadioProps {
 
 const Radio: React.FC<RadioProps> = ({
   className = '',
+  disabled = false,
+  errorMessage,
   id = uuid(),
   label,
-  disabled = false,
-  value,
   name,
-  onChange,
   onBlur,
+  onChange,
+  value,
   ...rest
 }) => {
   return (
@@ -43,6 +45,11 @@ const Radio: React.FC<RadioProps> = ({
           {label}
         </label>
       </div>
+      {errorMessage && (
+        <div className="rn-form__invalid-feedback" data-testid="error">
+          {errorMessage}
+        </div>
+      )}
     </div>
   )
 }

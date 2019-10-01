@@ -6,6 +6,7 @@ export interface InputProps {
   className?: string
   disabled?: boolean
   endAdornment?: React.ReactNode
+  errorMessage?: string
   value?: string
   name: string
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -38,6 +39,7 @@ const TextInput: React.FC<InputProps> = props => {
     className = '',
     disabled = false,
     endAdornment,
+    errorMessage,
     value,
     name,
     onChange,
@@ -121,6 +123,11 @@ const TextInput: React.FC<InputProps> = props => {
         <small className="rn-textinput__footnote" data-testid="footnote">
           {footnote}
         </small>
+      )}
+      {errorMessage && (
+        <div className="rn-form__invalid-feedback" data-testid="error">
+          {errorMessage}
+        </div>
       )}
     </div>
   )
