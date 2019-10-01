@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/react-component-library",
   "description": "A collection of react components and helpers to assist in building applications for the Royal Navy",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "publishConfig": {
     "access": "public"
   },
@@ -125,8 +125,8 @@
     "dist"
   ],
   "dependencies": {
-    "@royalnavy/css-framework": "^1.3.0",
-    "@royalnavy/icon-library": "^1.3.0",
+    "@royalnavy/css-framework": "^1.4.0",
+    "@royalnavy/icon-library": "^1.4.0",
     "@types/react-responsive": "^3.0.3",
     "classnames": "^2.2.6",
     "react-addons-css-transition-group": "^15.6.2",
