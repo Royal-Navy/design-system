@@ -46,7 +46,7 @@ import Card from '../../components/presenters/card'
   <Card
     type="borderless" 
     title="Contact us" 
-    text="Contact the NELSON Standards team to find out more about design in the Royal Navy, request a new component, ask questions and give feedback." 
+    text="Contact the NELSON Standards team to find out more about design in the Royal Navy. Request a new component, ask questions and give feedback." 
     linkText="Contact" 
     linkHref="/contact"
     className="m:h_f-1 home--contact"
