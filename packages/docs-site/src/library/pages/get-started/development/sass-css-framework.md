@@ -4,7 +4,7 @@ description: ''
 header: true
 ---
 
-The @royalnavy/css-framework package provides both a compiled version of the component CSS and helper classes in thier entirety and also the source SASS.
+The @royalnavy/css-framework package provides a compiled version of the component CSS, the helper classes and the source SASS.
 
 The source SASS can be used independently of the component library package, allowing you to make use of included functions and mixins.
 
@@ -56,7 +56,7 @@ In the example above, we are updating the `text 00` value to `#FF0000` (red) and
 
 ## Helpers
 
-Several different helpers are provided by this framework. This is to ensure consistency when building applications, and to hopefully mitigate any UI bugs that could occour by leaking styles.
+Several different helpers are provided by this framework. This is to ensure consistency when building applications and mitigate any UI bugs that could occur by leaking styles.
 
 ## z-index
 
@@ -67,7 +67,7 @@ z-index can be set via a mixin named z-index:
 @include z-index( [GROUP] )
 ```
 
-The provided z index groups are as follows, in order of highest to lowest level:
+The provided z-index groups are as follows in order of highest to lowest level:
 ```
 - modal
 - overlay
@@ -77,7 +77,7 @@ The provided z index groups are as follows, in order of highest to lowest level:
 - body
 ```
 
-Occasionally, a group alone won't be enough to ensure a correct z-axis stack. An optional modifier value can be added to the z-index mixin, which will be added to the groups z-index. This optional modifier has a range of `1 - 999`. Anything exceeding this will be ignored, and the base z-index for the group will be returned.
+An optional modifier value can be added to the z-index mixin, which will be added to the group’s z-index. This optional modifier has a range of `1-999`. Anything exceeding this will be ignored and the base z-index for the group will be returned.
 
 ```
 .foo {
@@ -92,7 +92,8 @@ Occasionally, a group alone won't be enough to ensure a correct z-axis stack. An
 
 ## Breakpoints
 
-NELSON applications are built Mobile First. A number of breakpoints are provided by default, and also tie into the Spacing helper classes & variables:
+Nelson applications are built Mobile First. A number of breakpoints are provided by default and also tie into the Spacing helper classes and variables:
+
 ```
 - root: 0px
 - s: 576px
