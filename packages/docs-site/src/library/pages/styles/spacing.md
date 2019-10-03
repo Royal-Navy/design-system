@@ -20,7 +20,7 @@ Sometimes interfaces (particularly dashboards, or data heavy components) need to
 
 ## The Spacing Scale
 
-By reducing application spacing to a predetermined scale, it is easy to ensure all elements & components are spaced in proportion to each other, rather than with arbitrary values.
+By reducing application spacing to a predetermined scale, it is easy to ensure all elements and components are spaced in proportion to each other, rather than with arbitrary values.
 
 The spacing scale, much like the typography scale, doesn't increase in a linear fashion. This is because as elements get positioned further apart, the difference between adjacent values would become less noticeable.
 
@@ -99,9 +99,9 @@ padding: 1rem;`} language="css"
 
 #### Helpers
 
-The CSS Frameworks Spacing Variables are available in Utility Class form, allowing components to be quickly positioned and manipulated without having to jump into the CSS. All helper classes are prefixed with the namespace `.h_`. This is to prevent them clashing with any custom styles you may author.
+The CSS Frameworks Spacing Variables are available in Utility Class form, allowing components to be quickly positioned and manipulated without having to jump into the CSS. All helper classes are prefixed with the namespace `.h_`. This is to prevent them clashing with any custom styles you author.
 
-Both margin and padding can be set via helper classes. The class syntax follows the following pattern:
+Both margin and padding can be set via helper classes. The class syntax follows this pattern:
 
 <CodeHighlighter 
 source={`.h_[Property][Direction?]-[Size]`} language="css"
