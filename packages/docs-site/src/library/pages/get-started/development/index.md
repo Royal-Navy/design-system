@@ -10,17 +10,17 @@ All packages are published to the [NPM registry](https://www.npmjs.com/search?q=
 
 ### Supported technologies
 
-The following view layer libraries are currently supported:
+The following 'view layer libraries' are currently supported:
 
 - React
 
 ### Component usage guidelines
 
-Please refer to the [component demo pages](/components) to see live examples, code snippets and details on how to cosume each of the components.
+Please refer to the [component demo-pages](/components) to see live examples, code snippets with details on how to consume each of the components.
 
 ### Browser support
 
-The Standards Toolkit currently supports all major self updating browsers (like Chrome, Firefox, Edge, Safari, Opera).
+The Standards Toolkit currently supports all major self-updating browsers such as: Chrome, Firefox, Edge, Safari, and Opera.
 
 ### Contributing & issues
 
