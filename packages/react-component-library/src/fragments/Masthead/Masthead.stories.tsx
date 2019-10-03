@@ -1,5 +1,6 @@
-import React from 'react'
+import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
+import React from 'react'
 
 import { Masthead } from './index'
 
@@ -48,7 +49,7 @@ const CustomLogo = () => (
 
 stories.add('With search', () => (
   <Masthead
-    onSearch={term => console.log(`Search for: ${term}`)}
+    onSearch={action('onSearch')}
     searchPlaceholder="Search..."
     title="Test"
   />
@@ -60,7 +61,7 @@ const popoverContent = <NotificationsPopoverContent />
 stories.add('With search and Avatar', () => (
   <div>
     <Masthead
-      onSearch={term => console.log(`Search for: ${term}`)}
+      onSearch={action('onSearch')}
       searchPlaceholder="Search..."
       title="Test"
       user={user}
@@ -107,7 +108,7 @@ stories.add('all but navigation', () => (
   <Masthead
     homeLink={homeLink}
     NotificationsPopoverContent={popoverContent}
-    onSearch={term => console.log(`Search for: ${term}`)}
+    onSearch={action('onSearch')}
     searchPlaceholder="Search"
     title="Test"
     unreadNotification
@@ -120,7 +121,7 @@ stories.add('With navigation', () => (
     homeLink={homeLink}
     navItems={navItems}
     NotificationsPopoverContent={popoverContent}
-    onSearch={term => console.log(`Search for: ${term}`)}
+    onSearch={action('onSearch')}
     searchPlaceholder="Search"
     title="Test"
     unreadNotification

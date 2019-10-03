@@ -1,5 +1,6 @@
-import React from 'react'
+import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
+import React from 'react'
 
 import { Bell, Tools } from '../../icons'
 import { Dropdown } from './Dropdown'
@@ -42,7 +43,7 @@ stories.add('Default', () => (
     <Dropdown
       options={options}
       label="Layers"
-      onSelect={value => console.log(value)}
+      onSelect={action('onSelect')}
     />
   </div>
 ))
@@ -52,7 +53,7 @@ stories.add('Icons', () => (
     <Dropdown
       options={iconOptions}
       label="Layers"
-      onSelect={value => console.log(value)}
+      onSelect={action('onSelect')}
     />
   </div>
 ))
@@ -62,7 +63,7 @@ stories.add('Scroll', () => (
     <Dropdown
       options={scrollOptions}
       label="Layers"
-      onSelect={value => console.log(value)}
+      onSelect={action('onSelect')}
     />
   </div>
 ))

@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 
@@ -7,17 +8,17 @@ import { ButtonProps } from '../Button'
 const stories = storiesOf('Modal', module)
 
 const primaryButton: ButtonProps = {
-  onClick: event => console.log('primary'),
+  onClick: action('Clicked primary'),
   children: 'Primary',
 }
 
 const secondaryButton: ButtonProps = {
-  onClick: event => console.log('secondary'),
+  onClick: action('Clicked secondary'),
   children: 'Secondary',
 }
 
 const tertiaryButton: ButtonProps = {
-  onClick: event => console.log('tertiary'),
+  onClick: action('Clicked tertiary'),
   children: 'Tertiary',
 }
 
@@ -28,7 +29,7 @@ stories.add('Default', () => {
       primaryButton={primaryButton}
       secondaryButton={secondaryButton}
       tertiaryButton={tertiaryButton}
-      onClose={() => console.log('close')}
+      onClose={action('onClose')}
       isOpen
     >
       <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
@@ -42,7 +43,7 @@ stories.add('No header', () => {
       primaryButton={primaryButton}
       secondaryButton={secondaryButton}
       tertiaryButton={tertiaryButton}
-      onClose={() => console.log('close')}
+      onClose={action('onClose')}
       isOpen
     >
       <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
@@ -52,7 +53,7 @@ stories.add('No header', () => {
 
 stories.add('No buttons', () => {
   return (
-    <Modal title="Modal Header" onClose={() => console.log('close')} isOpen>
+    <Modal title="Modal Header" onClose={action('onClose')} isOpen>
       <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
     </Modal>
   )

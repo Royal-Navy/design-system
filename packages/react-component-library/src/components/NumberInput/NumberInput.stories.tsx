@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import { Field, Formik, Form } from 'formik'
 import React from 'react'
@@ -18,24 +19,16 @@ const initialValues: Data = {
   gold: 1,
 }
 
-const onSubmit = (data: Data): void => {
-  console.log(`Form Submit ${JSON.stringify(data)}`)
-}
-
-const onCancel = () => {
-  console.log('Cancel')
-}
-
 const FormikNumberInput = withFormik(NumberInput)
 
 stories.add('Vanilla', () => (
   <div style={{ margin: 50 }}>
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik initialValues={initialValues} onSubmit={action('onSubmit')}>
       <Form>
         <Field component={FormikNumberInput} name="gold" label="Gold bars" />
         <Field component={FormikNumberInput} name="age" label="Age" />
 
-        <Button variant="secondary" onClick={onCancel}>
+        <Button variant="secondary" onClick={action('Cancel')}>
           Cancel
         </Button>
         <Button type="submit" variant="primary">
