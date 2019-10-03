@@ -40,12 +40,12 @@ The Badge component is an indicator component that displays information to the u
 ### Sizing & Spacing
 <BadgeSizes />
 
-The Badge component is available in 4 sizes - small, regular, large and xLarge.
+The Badge component is available in four sizes - small, regular, large and xLarge.
 
-### States (if applicable)   
+### States 
 <BadgeStates />
 
-The Badge component has 5 states available to use - Neutral, Primary, Success, Warning, and Danger. The badge component does not have any interaction, so there are no hover/active states available.
+The Badge component has five available states to use - Neutral, Primary, Success, Warning, and Danger. The badge component does not have any interaction, so there are no 'hover/active' states available.
 
 ### Hierarchy & Placement
 Try to avoid mixing states and sizes, as this can become confusing for the user.
@@ -109,7 +109,7 @@ source={`<Badge color="neutral" colorVariant="faded">Neutral</Badge>
 </CodeHighlighter>
 
 ### Sizes
-Badges can be rendered in 4 different size variants.
+Badges can be rendered in four different size variants.
 
 <CodeHighlighter source={`<Badge colorVariant="faded" size="small">Small</Badge>
 <Badge colorVariant="faded" size="regular">Neutral</Badge>

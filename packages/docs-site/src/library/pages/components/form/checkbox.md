@@ -32,8 +32,8 @@ The checkbox component allows the active selection of one or more input values a
 ### Anatomy
 <CheckboxAnatomy />
 
-1. **Checkbox Button**. The checkbox Button is a single value toggle 
-2. **Label**. The Label is used to provide context to the Checkbox Button. It is however an optional property.
+1. **Checkbox Button**. The checkbox is a single value toggle.
+2. **Label (Optional)**. Used to provide context to the Checkbox Button. It is however an optional property.
 
 
 ### States

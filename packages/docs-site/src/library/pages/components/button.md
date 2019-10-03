@@ -38,9 +38,9 @@ Buttons are available in 3 variants - [Primary](#primary), [Secondary](#secondar
 ### Anatomy
 <ButtonAnatomy />
 
-1. **Container**. The container element wraps the component.
-2. **Label**. Labels describe the button action to the user. If text is not used, an icon should be used in its place.
-3. **Icon** (optional). The button component can optionally have icons placed either to the left or right of the label. No more than 1 icon should be used per button.
+1. **Container**. This element wraps the component.
+2. **Label**. A label describes the button action to the user. If text is not used, an icon should be used in its place.
+3. **Icon (optional)**. The button component can optionally have icons placed either to the left or right of the label. No more than 1 icon should be used per button.
 
 ### Sizing & Spacing
 The Button component comes in 4 sizes - small, regular, large, and xLarge.
@@ -49,7 +49,7 @@ By default, you should use the regular button - this has been designed to fit th
 For forms, the Large button has been created so it sits at the same height as the [textInput](/components/textInput) component. The small and xLarge buttons are available for specific use cases where the primary/large buttons are unsuitable.
 
 ### Hierarchy & Placement
-Creating visual hierarchy in your UI is important as it helps the user understand the main actions of your page or component. The Primary, Secondary, and Tertiary buttons have different application use cases, so be sure to read the following sections to understand when to use these variations.
+Creating visual hierarchy in your user interface (UI) is important as it helps the user to understand the main actions of your page. The Primary, Secondary, and Tertiary buttons have different application use cases, so be sure to read the following sections to understand when to use these variations.
 
 ---
 
@@ -66,7 +66,7 @@ Like all variations of the Button component, the Primary Button has 3 states - d
 <ButtonPrimaryStates />
 
 #### Hierarchy & Placement
-Avoid using multiple Primary Buttons in the same piece of UI. This can make the main action unclear and confuse users. If you need multiple actions, decide which action is the most important one and make this your Primary Button. All other actions should use Secondary or Tertiary Buttons.
+Avoid using multiple Primary Buttons in the same block of user interface (UI). This can make the main action unclear and confuse users. If you need multiple actions, decide which action is the most important one and make this your Primary Button. All other actions should use Secondary or Tertiary Buttons.
 
 <ButtonPrimaryHierarchy />
 
@@ -76,13 +76,13 @@ Avoid using multiple Primary Buttons in the same piece of UI. This can make the 
 <ButtonSecondary />
 
 #### Usage
-The Secondary Button is a supportive action for a Primary Button. They are not the main action of a section of UI. Their role is to offer users additional actions
+The Secondary Button is a supportive action for a Primary Button. They are not the main action of a section of UI. Their role is to offer users additional actions.
 
 #### States
 <ButtonSecondaryStates />
 
 #### Hierarchy & Placement
-You can use multiple Secondary Buttons in the same section of UI. Their unobtrusive nature means they are unlikely to be the main focus for users. However, they are still be present enough for the user to interact with them.
+You can use multiple Secondary Buttons in the same section of UI. Their unobtrusive nature means they are unlikely to be the main focus for users. However, they are still present enough for the user to interact with them.
 
 ---
 

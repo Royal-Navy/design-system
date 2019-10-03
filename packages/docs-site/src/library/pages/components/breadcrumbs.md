@@ -49,7 +49,7 @@ There should only be one Breadcrumb component per page. It should sit at the top
 
 <Tab title="Develop">
 
-The `Breadcrumbs` component accepts an array of links, including the current page title and href. Like the Nav component the Breadcrumbs component will render regular links by default. However, if you pass a `Component` property with a link you can specify the component to render it and send the properties it needs, such as a Gatsby `Link` component that will require `to` instead of `href`.
+The `Breadcrumbs` component accepts an array of links, including the current page title and `href`. Like the Nav component the Breadcrumbs component will render regular links by default. However, if you pass a `Component` property with a link you can specify the component to render it and send the properties it needs, such as a Gatsby `Link` component that will require `to` instead of `href`.
 
 ### Basic Usage
 By default simply passing a `label` and `href` will cause a regular anchor tag to be rendered for a Breadcrumb.
@@ -151,7 +151,7 @@ Applications will often use a library such as `React Router` to generate links b
     Type: 'Breadcrumb[] ',
     Required: 'True',
     Default: '',
-    Description: 'An array of objects that must least contain a label. If no custom component is provided then provide a href, otherwise provide the Component and the associated property to create a link',
+    Description: 'An array of objects that must at least contain a label. If no custom component is provided then provide an href, otherwise provide the Component and the associated property to create a link.',
   },
 ]} />
 

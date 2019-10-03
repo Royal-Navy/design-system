@@ -13,8 +13,7 @@ import RadioComponent from '../../../images/components/forms/radio/component.svg
 import RadioAnatomy from '../../../images/components/forms/radio/anatomy.svg'
 import RadioStates from '../../../images/components/forms/radio/states.svg'
 
-# Input
-Radios let users select one option at a time.
+# Overview
 
 <RadioComponent />
 
@@ -33,7 +32,7 @@ The Radio component allows the active selection of one input at a time. It typic
 <RadioAnatomy />
 
 1. **Radio Button**. The Radio Button is a single value toggle 
-2. **Label**. The Label is used to provide context to the Radio Button. It is however an optional property.
+2. **Label (Optional)**. Used to provide context to the Radio Button. It is however an optional property.
 
 
 ### States
@@ -61,9 +60,7 @@ The Radio component can be used on it's own in a regular form, if you use the co
 </CodeHighlighter>
 
 ### Properties
-The `Radio` component accepts the standard field properties as defined by Formik but is also
-responsible for rendering an optional field label and any information or error messages associated 
-with the field:
+The Radio component accepts the standard field properties as defined by Formik. It is also responsible for rendering an optional field label, including any information or error messages associated with the field. 
 
 <DataTable caption="FieldProps" data={[
   {
@@ -92,7 +89,7 @@ with the field:
     Type: '(React.SyntheticEvent):void',
     Required: 'True',
     Default: '',
-    Description: 'Called when the field looses focus',
+    Description: 'Called when the field loses focus',
   },
 ]} />
 <br />
