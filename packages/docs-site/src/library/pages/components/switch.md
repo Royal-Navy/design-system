@@ -14,7 +14,6 @@ import SwitchAnatomy from '../../images/components/switch/anatomy.svg'
 import SwitchStates from '../../images/components/switch/states.svg'
 
 # Overview
-Switch lets users select a value from a number of options.
 
 <SwitchComponent />
 
@@ -31,7 +30,7 @@ With regards to behaviour, a switch can be thought of like a radio field, allowi
 
 <SwitchAnatomy />
 
-1. **Container**. The Container wraps the Switch component. On Mobile, this transforms into a Select component, changing the visual appearance of the side by side options.
+1. **Container**. This wraps the Switch component. On Mobile, this transforms into a Select component, changing the visual appearance of the side by side options.
 2. **Selected Item**. The Selected value has a blue border around it to signify to the user the selected option.
 3. **Unselected Item**. This is the default look of the Switch item.
 4. **Label (Optional)**. A label can be provided to describe the function of the Switch component.

@@ -38,19 +38,17 @@ The url provided to a navigation link will be used as the 'to' property of a rea
 
   <NavAnatomy />
 
-1. **Container**. The Nav component is wrapped in an invisible container. This allows it to be placed inside larger composite components, without breaking their visual look.
+1. **Container**. The Nav component is wrapped in an invisible container. This allows it to be placed inside larger composite components without breaking their visual look.
 2. **Link**. The Nav links can either be applied vertically or horizontally. These will automatically switch to vertical on Mobile devices to ensure they fit on the screen.
 
 ### States
 
 <NavStates />
 
-The Nav Links have 3 states - Default, Hover, and Active.
+The Nav Links have three states - Default, Hover, and Active.
 
 ### Hierarchy & Placement
 The Nav component can be used to link to both top level pages and subpages. Try to keep all the links in the same navigation at the same page level. This makes the mental model of your application structure easier to process for the user.
-
-
 
   </Tab>
 
@@ -59,7 +57,7 @@ The Nav component can be used to link to both top level pages and subpages. Try 
 
 The `Nav` component renders links in either a horizontal or vertical layout. Horizontal nav will switch to vertical when displayed on mobile.
 
-The `Nav` component accepts an array of links. By default a link expects a `label` and `href` and render an anchor tag. If using the component with a library like `react-router-dom` the component can accept a `LinkComponent` to render a link and the associated required properties must be stored in each `navItem`.
+The `Nav` component accepts an array of links. By default a link expects a `label` and `href` and renders an anchor tag. If using the component with a library like `react-router-dom` the component can accept a `LinkComponent` to render a link and the associated required properties must be stored in each `navItem`.
 
 ### Basic Usage - Vertical
 <CodeHighlighter source={`const navItems=[
@@ -128,7 +126,7 @@ The `Nav` component accepts an array of links. By default a link expects a `labe
 </CodeHighlighter>
 
 ### Usage with React Router
-More often than not an application will use a library such as `React Router` to generate links between sections of a site, in this case you can specify the `LinkComponent` that will render the link, along with the properties it needs. In this example the `Link` component will be rendered with the label as it's child.
+More often than not an application will use a library such as `React Router` to generate links between sections of a site. In this case you can specify the `LinkComponent` that will render the link, along with the properties it needs. In this example the `Link` component will be rendered with the label as it's child.
 
 <CodeHighlighter source={`import {Link} from "react-router-dom"\n\nconst navItems=[
   {
@@ -164,7 +162,7 @@ More often than not an application will use a library such as `React Router` to 
 
 ### Sizes
 
-Nav supports rendering navigation in 4 different sizes
+Nav supports rendering navigation in four different sizes.
 
 <CodeHighlighter source={`const navItems = [
   {
@@ -250,21 +248,21 @@ Nav supports rendering navigation in 4 different sizes
     Type: 'string',
     Required: 'False',
     Default: '',
-    Description: 'Optional additional css class to associate with the component wrapper',
+    Description: 'Optional additional css class to associate with the component wrapper.',
   },
     {
     Name: 'LinkComponent',
     Type: 'React.ReactNode',
     Required: 'False',
     Default: 'Link',
-    Description: 'The React component to render links, defaults to a regular anchor using Link',
+    Description: 'The React component to render links. Defaults to a regular anchor using Link.',
   },
   {
     Name: 'navItems',
     Type: 'NavItem[] ',
     Required: 'True',
     Default: '',
-    Description: 'An array of objects that must at least contain a label. If no custom component is provided then provide a href, otherwise provide the required property associated with the LinkComponent',
+    Description: 'If no custom component is provided then provide a href or the required property associated with the LinkComponent.',
   },
   {
     Name: 'orientation',
@@ -278,7 +276,7 @@ Nav supports rendering navigation in 4 different sizes
     Type: 'string (small / regular / large / xlarge)',
     Required: 'False',
     Default: 'regular',
-    Description: 'The font size for items',
+    Description: 'The font size for items.',
   },
 ]} />
 <br />
@@ -288,7 +286,7 @@ Nav supports rendering navigation in 4 different sizes
     Type: 'string',
     Required: 'True',
     Default: '',
-    Description: 'The text for the link',
+    Description: 'The text for the link.',
   },
   {
     Name: 'active',
@@ -305,14 +303,14 @@ Nav supports rendering navigation in 4 different sizes
     Type: 'string|React.ReactNode',
     Required: 'True',
     Default: '',
-    Description: 'The content for the link',
+    Description: 'The content for the link.',
   },
   {
     Name: 'href',
     Type: 'string',
     Required: 'True',
     Default: '',
-    Description: 'The url to send the browser to',
+    Description: 'The url to send the browser to.',
   },
 ]} />
 
