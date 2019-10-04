@@ -13,7 +13,7 @@ import SidebarAnatomy from '../../images/components/sidebar/anatomy.svg'
 import SidebarStates from '../../images/components/sidebar/states.svg'
 
 # Overview
-The Sidebar component is a main navigational item for a NELSON Standards application. It is fixed to the left hand-of the screen and extends the full height of the browser. This component stays in place whilst the application scrolls, ensuring top navigational items are always within the user's reach.
+The Sidebar component is a main navigational item for a NELSON Standards application. It is fixed to the left-hand of the screen and extends the full height of the browser. This component stays in place whilst the application scrolls, ensuring top navigational items are always within the user's reach.
 
 <SidebarComponent />
 
