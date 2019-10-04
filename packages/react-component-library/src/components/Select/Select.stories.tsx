@@ -1,5 +1,6 @@
-import React from 'react'
+import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
+import React from 'react'
 
 import { Select } from './index'
 
@@ -19,7 +20,7 @@ stories.add('Default', () => (
     <Select
       options={options}
       label="Hello"
-      onChange={value => console.log(value)}
+      onChange={action('onChange')}
     />
   </div>
 ))
