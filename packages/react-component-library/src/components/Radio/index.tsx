@@ -8,8 +8,8 @@ interface RadioProps {
   disabled?: boolean
   name: string
   value?: string
-  onChange?: (event: React.SyntheticEvent) => void
-  onBlur?: (event: React.SyntheticEvent) => void
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
+  onBlur?: (event: React.FormEvent<HTMLInputElement>) => void
 }
 
 const Radio: React.FC<RadioProps> = ({
