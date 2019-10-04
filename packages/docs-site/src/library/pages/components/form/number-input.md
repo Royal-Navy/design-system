@@ -44,7 +44,7 @@ The Number Input is only available in 1 size. It has been created in relation to
 ### States
 <NumberClickerStates />
 
-The Number Input has two states - Default and Focused.
+The Number Input has two states - `Default` and `Focused`.
 
 <NumberClickerButtonStates />
 

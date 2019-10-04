@@ -37,9 +37,9 @@ The Masthead is a simple section at the top of the page that allows the develope
   4. **Profile**. This button links to the User's profile, including settings.
   5. **App Nav**. Works similarly to the [Tabset](/components/tab-set/), allowing the user to quickly navigate between multiple application pages.
 
-  ### States
-  Aside from the active page links (an example of these states is shown in the [Tabset Docs](/components/tab-set/)), the Masthead component only has two states. When the Search button is clicked in the top row of the Masthead, the page links are replaced with a full width search bar. Clicking on the Search button again will hide the bar.
-  <MastheadStates />
+### States
+Aside from the active page links (an example of these states is shown in the [Tabset Docs](/components/tab-set/)), the Masthead component only has two states. When the Search button is clicked in the top row of the Masthead, the page links are replaced with a full width search bar. Clicking on the Search button again will hide the bar.
+<MastheadStates />
 
 </Tab>
 

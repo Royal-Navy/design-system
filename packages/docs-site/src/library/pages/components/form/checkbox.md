@@ -39,7 +39,7 @@ The checkbox component allows the active selection of one or more input values a
 ### States
 <CheckboxStates />
 
-The Checkbox Button has 3 available states - Default, Hover/Active, and Checked.
+The Checkbox Button has 3 available states - `Default`, `Hover`/`Active`, and `Checked`.
 
 </Tab>
 

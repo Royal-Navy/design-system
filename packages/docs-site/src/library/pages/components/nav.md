@@ -45,7 +45,7 @@ The url provided to a navigation link will be used as the 'to' property of a rea
 
 <NavStates />
 
-The Nav Links have three states - Default, Hover, and Active.
+The Nav Links have three states - `default`, `hover`, and `active`.
 
 ### Hierarchy & Placement
 The Nav component can be used to link to both top level pages and subpages. Try to keep all the links in the same navigation at the same page level. This makes the mental model of your application structure easier to process for the user.

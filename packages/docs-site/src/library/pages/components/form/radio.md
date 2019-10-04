@@ -39,7 +39,7 @@ The Radio component allows the active selection of one input at a time. It typic
 
 <RadioStates />
 
-The Radio Button has 3 available states - Default, Hover/Active, and Checked.
+The Radio Button has 3 available states - `Default`, `Hover`/`Active`, and `Checked`.
 
 
 </Tab>

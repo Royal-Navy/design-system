@@ -58,10 +58,10 @@ The Pill Badge is a variation of the Badge component.
 #### Usage
 The Pill Badge is used predominantly to act as a counter, displaying integer numbers (e.g. as a notification badge).
 
-#### States (if applicable)
+#### States
 <PillStates />
 
-The Pill Badge component is also available in 5 states - Neutral, Primary, Success, Warning, and Danger.
+The Pill Badge component is also available in 5 states - `Neutral`, `Primary`, `Success`, `Warning`, and `Danger`.
 
 </Tab>
 

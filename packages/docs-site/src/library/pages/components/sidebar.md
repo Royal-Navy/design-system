@@ -42,7 +42,7 @@ The Sidebar is only available in one size. As this is a top-level component, cus
 ### States
 <SidebarStates />
 
-The sidebar has two states - collapsed and expanded. By default, the sidebar is collapsed to the left of the screen. Hovering on any of the App Nav link icons will expand the sidebar to show the associated labels.
+The sidebar has two states - `collapsed` and `expanded`. By default, the sidebar is collapsed to the left of the screen. Hovering on any of the App Nav link icons will expand the sidebar to show the associated labels.
 
 ### Hierarchy & Placement
 As the Sidebar is a top-level component, only one should be used per application. It is fixed to the left-hand edge of the application.

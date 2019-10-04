@@ -34,12 +34,12 @@ The Breadcrumb component should sit at the top of the viewport. Visit the Design
 2. **Current Page Label**. The current page is a label displaying the current page title. It is not clickable.
 
 ## Sizing & Spacing
-The Breadcrumb component has one standard text size. Be careful with horizontal placement, as the breadcrumb can take up a large amount of screen space displaying all the parent links.
+The Breadcrumb component has one standard text size. Be careful with horizontal placement, as the Breadcrumb can take up a large amount of screen space displaying all the parent links.
 
 ## States
 <BreadcrumbStates />
 
-When hovering on a breadcrumb, the active link will change to the primary colour. Every child to the right of the hovered link will fade to help indicate the target page to the user. 
+When hovering on a Breadcrumb, the active link will change to the primary colour. Every child to the right of the hovered link will fade to help indicate the target page to the user. 
 
 ## Hierarchy & Placement
 There should only be one Breadcrumb component per page. It should sit at the top of the viewport and be easily accessible for the user. The component is a top level navigational item used to help the user navigate whole pages, rather than a subset section inside another component.
@@ -49,7 +49,7 @@ There should only be one Breadcrumb component per page. It should sit at the top
 
 <Tab title="Develop">
 
-The `Breadcrumbs` component accepts an array of links, including the current page title and `href`. Like the Nav component the Breadcrumbs component will render regular links by default. However, if you pass a `Component` property with a link you can specify the component to render it and send the properties it needs, such as a Gatsby `Link` component that will require `to` instead of `href`.
+The Breadcrumbs component accepts an array of links, including the current page title and `href`. Like the Nav component the Breadcrumbs component will render regular links by default. However, if you pass a Component property with a link you can specify the component to render it and send the properties it needs, such as a Gatsby `Link` component that will require `to` instead of `href`.
 
 ### Basic Usage
 By default simply passing a `label` and `href` will cause a regular anchor tag to be rendered for a Breadcrumb.

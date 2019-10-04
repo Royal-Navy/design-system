@@ -61,7 +61,7 @@ Creating visual hierarchy in your user interface (UI) is important as it helps t
 The Primary Button is responsible for the most important action of a particular page.
 
 #### States
-Like all variations of the Button component, the Primary Button has 3 states - default, hover, and focus.
+Like all variations of the Button component, the Primary Button has 3 states - `default`, `hover`, and `focus`.
 
 <ButtonPrimaryStates />
 

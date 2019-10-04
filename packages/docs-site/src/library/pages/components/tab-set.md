@@ -42,7 +42,7 @@ The Tab Set component comes in two distinct varieties - the default Tab Set and 
 The Tab Set component is available in one size. The tabs can accept text, icons, or a combination of both. Ensure the tab text is kept concise - it should clearly describe the content it contains.
 
 ### States
-The Tab Set component has three states - default, hover, and active.
+The Tab Set component has three states - `default`, `hover`, and `active`.
 <TabSetStates />
 
 ### Hierarchy & Placement

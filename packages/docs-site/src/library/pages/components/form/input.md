@@ -45,7 +45,7 @@ The Text Input is available in one standard size. It has been created in relatio
 ### States
 <InputStates />
 
-The Text Input has three states - default, active, and filled.
+The Text Input has three states - `default`, `active`, and `filled`.
 
 ---
 

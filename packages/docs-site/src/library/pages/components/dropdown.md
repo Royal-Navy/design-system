@@ -51,7 +51,7 @@ The Dropdown sheet that appears is always a custom sheet that can contain multip
 
 <DropdownStates />
 
-The Dropdown component has two states - Default and Active. The Dropdown Item also has two states - Default and Hover. The Item does not have an active state as the user is not selecting a value but clicking an action like they would a standard (Secondary) button.
+The Dropdown component has two states - `default` and `active`. The Dropdown Item also has two states - Default and Hover. The Item does not have an active state as the user is not selecting a value but clicking an action like they would a standard (Secondary) button.
 
 ### Sizing & Spacing
 The Dropdown comes in one size. It has been sized to match Inputs and Regular Buttons correctly. The Width of the Dropdown is dynamic and can be set on each instance. The Sheet will also adapt to the content inside of itself, ensuring content is always correctly sized and presented. 

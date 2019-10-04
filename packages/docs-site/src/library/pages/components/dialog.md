@@ -36,7 +36,7 @@ As the Dialog is displayed full screen, it focuses the user's attention and requ
 3. **Dialog Footer**. Provides a Primary or Danger button. Can also house an optional Cancel button.
 
 ### States
-The Dialog component has two states - hidden and active. By default, including the dialog component in an application page won't render it. Triggering the component will cause it to fade in over all application content.
+The Dialog component has two states - `hidden` and `active`. By default, including the dialog component in an application page won't render it. Triggering the component will cause it to fade in over all application content.
 
 
 ### Hierarchy & Placement
