@@ -105,7 +105,7 @@ Aside from the active page links (an example of these states is shown in the [Ta
     Name: 'homeLink',
     Type: 'LinkTypes',
     Required: 'True',
-    Description: 'An object typically containing a to or href property to indicate the property LinkComponent to send the user back to the homepage for the service.',
+    Description: 'An object typically containing a `to` or `href` property to indicate the property LinkComponent to send the user back to the homepage for the service.',
   },
   {
     Name: 'LinkComponent',
@@ -159,7 +159,7 @@ Aside from the active page links (an example of these states is shown in the [Ta
     Name: 'user',
     Type: 'UserType',
     Required: 'False',
-    Description: ' If your application has a user profile page, pass in the user object to add their initials to the Avatar sub-component. This Avatar provides a link to the User’s profile.',
+    Description: 'If your application has a user profile page, pass in the user object to add their initials to the Avatar sub-component. This Avatar provides a link to the User’s profile.',
   },
 ]} />
 <br />
