@@ -9,7 +9,7 @@ import { SingleValue } from './SingleValue'
 export interface SelectProps {
   label?: string
   name?: string
-  onChange?: (event: any) => void
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
   options: SelectOptionWithBadgeType[]
   value?: string
 }

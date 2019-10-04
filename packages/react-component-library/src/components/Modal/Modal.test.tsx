@@ -23,7 +23,7 @@ const tertiaryButton: ButtonProps = {
 describe('Modal', () => {
   let wrapper: RenderResult
   let title: string
-  let onClose: (event: any) => void
+  let onClose: (event: React.FormEvent<HTMLInputElement>) => void
   let isOpen: boolean
 
   beforeEach(() => {

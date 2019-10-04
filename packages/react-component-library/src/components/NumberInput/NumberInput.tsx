@@ -13,7 +13,7 @@ export interface NumberInputProps {
   min?: number
   name: string
   onBlur?: (event: React.FormEvent<Element>) => void
-  onChange: (event: any) => void
+  onChange: (event: React.FormEvent<HTMLInputElement>) => void
   placeholder?: string
   step?: number
   value?: number
@@ -78,7 +78,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
     })
   }
 
-  const inputChange = (event: React.SyntheticEvent) => {
+  const inputChange = (event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault()
     const target = event.currentTarget as HTMLInputElement
     const newValue = calculateNewValue({

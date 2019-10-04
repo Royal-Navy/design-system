@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FormEvent } from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
 
 import { Button } from './index'
@@ -6,7 +6,7 @@ import { Button } from './index'
 describe('Button', () => {
   describe('Given a button is created with a listener for onClick', () => {
     let component: ShallowWrapper
-    let onClick: (event: React.SyntheticEvent) => void
+    let onClick: (event: FormEvent<HTMLInputElement>) => void
 
     beforeEach(() => {
       onClick = jest.fn()

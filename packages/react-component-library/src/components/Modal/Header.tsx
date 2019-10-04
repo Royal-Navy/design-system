@@ -2,7 +2,7 @@ import React from 'react'
 
 export interface HeaderProps {
   title?: string
-  onClose?: (event: React.SyntheticEvent) => void
+  onClose?: (event: React.FormEvent<HTMLInputElement>) => void
 }
 
 export const Header: React.FC<HeaderProps> = ({ title, onClose }) => {

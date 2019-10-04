@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FormEvent } from 'react'
 import classNames from 'classnames'
 
 export interface ButtonProps extends ComponentWithClass {
@@ -6,7 +6,7 @@ export interface ButtonProps extends ComponentWithClass {
   color?: 'danger'
   testId?: string
   icon?: React.ReactNode
-  onClick?: (event: React.SyntheticEvent) => void
+  onClick?: (event: FormEvent<HTMLInputElement>) => void
   size?: 'small' | 'regular' | 'large' | 'xlarge'
   type?: 'button' | 'submit'
   variant?: 'primary' | 'secondary' | 'tertiary'

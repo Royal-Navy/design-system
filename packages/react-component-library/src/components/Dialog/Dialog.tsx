@@ -7,8 +7,8 @@ export interface DialogProps extends ComponentWithClass {
   title?: string
   description?: string
   danger?: boolean
-  onConfirm?: (event: React.SyntheticEvent) => void
-  onCancel?: (event: React.SyntheticEvent) => void
+  onConfirm?: (event: React.FormEvent<HTMLInputElement>) => void
+  onCancel?: (event: React.FormEvent<HTMLInputElement>) => void
   isOpen?: boolean
 }
 
