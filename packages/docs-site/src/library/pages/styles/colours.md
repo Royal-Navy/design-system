@@ -12,7 +12,7 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 # Colours
 
-A consistent and well-named colour system provides a strong basis for all Standards Toolkit applications. We have provided several base colours and modifier shades that allow you to design and build a variety of user interfaces (UIs) whilst maintaining consistency across the platform.
+A consistent and well-named colour system provides a strong basis for all **Standards Toolkit** applications. We have provided several base colours and modifier shades that allow you to design and build a variety of User Interfaces (UIs) whilst maintaining consistency across the platform.
 
 ## Default Colour Palette
 
@@ -39,7 +39,7 @@ Neutral shades provide the base of Standards Toolkit applications. They should b
 
 The Primary shades are mostly used to indicate the main action of a component. By default, use the Primary shades instead of the named state colours (Success, Warning, or Danger) for the majority of actions.
 
-Another use for the Primary Palette is for the components that need to stand out from their neutral background palette. Styling an Alert component with the Primary palette will get the user’s attention but it will not have any of the associated connotations that the Success/Warning/Danger has.
+Another use for the Primary palette is for the components that need to stand out from their neutral background palette. Styling an Alert component with the Primary palette will get the user’s attention but it will not have any of the associated connotations that the Success/Warning/Danger has.
 
 <Swatch color="#253b5b" label="900" />
 <Swatch color="#274776" label="800" />

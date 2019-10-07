@@ -1,6 +1,6 @@
 ---
 title: Spacing
-description: How we handle spacing and sizing in the Standards Toolkit
+description: How we handle Spacing and sizing in the Standards Toolkit
 tags: public
 pageClass: ''
 template: default
@@ -12,17 +12,17 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 # Spacing
 
-Spacing is a key (and often overlooked) aspect of ensuring your application is easy to read and understand. Too little whitespace will cause components to become visually cramped, decreasing readability. The general rule is to start with whitespace that is too large for an element, and then decrease it until it is at an appropriate size. It is far better to have too much whitespace than too little.
+Spacing is a key (and often overlooked) aspect of ensuring your application is easy to read and understand. Too little whitespace will cause components to become visually cramped, therefore decreasing readability. The general rule is to start with whitespace that is too large for an element and then decrease it until it is at an appropriate size. It is far better to have too much whitespace than too little.
 
 #### Dense UI
 
-Sometimes interfaces (particularly dashboards, or data heavy components) need to have a more condensed UI to ensure all information is presented to the user. This is a tradeoff with readability, so try to use this sparingly.
+Sometimes interfaces (particularly dashboards or data heavy components) need to have a more condensed UI to ensure all information is presented to the user. This is a tradeoff with readability, so try to use this sparingly.
 
 ## The Spacing Scale
 
-By reducing application spacing to a predetermined scale, it is easy to ensure all elements and components are spaced in proportion to each other, rather than with arbitrary values.
+By reducing application Spacing to a predetermined scale, it is easy to ensure all elements and components are spaced in proportion to each other, rather than with arbitrary values.
 
-The spacing scale, much like the typography scale, doesn't increase in a linear fashion. This is because as elements get positioned further apart, the difference between adjacent values would become less noticeable.
+The Spacing scale, much like the typography scale, doesn't increase in a linear fashion. This is because as elements get positioned further apart, the difference between adjacent values becomes less noticeable.
 
 <DataTable data={[
   {
@@ -89,10 +89,10 @@ The spacing scale, much like the typography scale, doesn't increase in a linear 
 
 #### Using the Spacing Scale
 
-To help use the spacing scale, there is a handy SCSS function provided: `spacing()`. This function accepts one parameter, the Scale value:
+To help use the Spacing scale, there is a handy SCSS function provided: `spacing()`. This function accepts one parameter, the Scale value:
 
 <CodeHighlighter 
-source={`padding: spacing(4);
+source={`padding: Spacing(4);
 // Result
 padding: 1rem;`} language="css"
 />

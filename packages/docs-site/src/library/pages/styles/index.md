@@ -9,8 +9,8 @@ header: true
 ---
 
 # Overview
-Styles align your application or service to the Royal Navy’s look and feel. These are the foundations of design for all of the [components](/components), patterns and are a  key feature of the Nelson Design System.
+Styles align your application or service to the Royal Navy’s look and feel. These are the foundations of design for all of the [components](/components) and patterns and are a key feature of the **NELSON Toolkit**.
 
-The styling specifications includes elements like [colour](/styles/colours), [typography](/styles/typography) and [spacing](/styles/spacing). If you need to create a new component or pattern you must follow the NELSON style guidelines.
+The styling specifications includes elements like [colour](/styles/colours), [typography](/styles/typography) and [spacing](/styles/spacing). If you need to create a new component or pattern you must follow the **NELSON** style guidelines.
 
 Styles should be used to fill in the gaps around existing components and patterns. For example, you should apply the spacing rules to each element that is added to a design.
