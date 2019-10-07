@@ -60,8 +60,8 @@ describe('Searchbar', () => {
     })
 
     it('should hide the searchbar', () => {
-      expect(props.setShowSearch).toBeCalledTimes(1)
-      expect(props.setShowSearch).toBeCalledWith(false)
+      expect(props.setShowSearch).toHaveBeenCalledTimes(1)
+      expect(props.setShowSearch).toHaveBeenCalledWith(false)
     })
   })
 

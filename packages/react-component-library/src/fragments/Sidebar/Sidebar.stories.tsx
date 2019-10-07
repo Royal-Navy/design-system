@@ -18,12 +18,6 @@ const NotificationsPopoverContent: React.FC = () => {
   )
 }
 
-const UserLink: React.FC = ({ children, ...rest }) => (
-  <Link href="/user" {...rest}>
-    {children}
-  </Link>
-)
-
 const stories = storiesOf('Sidebar', module)
 
 const navData: NavItemAnchorType[] = [
