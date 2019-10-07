@@ -7,7 +7,7 @@ index: 5
 
 # Overview
 
-Forms are an important part of almost all applications. Making sure they are displayed and behave consistently is a key principle behind the 'Nelson Standards' component library.
+Forms are an important part of almost all applications. Making sure they are displayed and behave consistently is a key principle behind the **NELSON Standards** component library.
 
 The component library has support for regular React JS forms and also forms constructed using Formik. Support for `Redux Forms` will be added to a future release.
 
@@ -84,11 +84,11 @@ Building forms can result in large amounts of boilerplate/repetitive code and fo
 
 Formik promises a toolkit to build forms 'without the tears', though it is not always as simple as it promises. Formik is responsible for managing the forms state, triggering events integrating with a validation library.
 
-When using Formik, the initial values for a form are passed into it and the developer specifies the form layout including the fields that should be displayed. For each field the name property must be provided and Formik is responsible for assigning the associated value.
+When using Formik, the initial values for a form are passed into it and the developer specifies the form layout including the fields that should be displayed. For each field, the name property must be provided and Formik is responsible for assigning the associated value.
 
-Formik includes a 'Field' component that by default will render a regular textinput and accepts a 'component' property that is responsible for rendering the field. The component library uses this feature to integrate with Formik. It exposes a Formik version of all of the component library form components on an object named 'Formik'.
+Formik includes a 'Field' component that by default will render a regular textinput and accepts a 'component' property that is responsible for rendering the field. The component library uses this feature to integrate with Formik. It exposes a Formik version of all of the component library form components, on an object named 'Formik'.
 
-Below is a version of the earlier form example but uses Formik and the Nelson Standards Toolkit:
+Below is a version of the earlier form example but uses Formik and the **NELSON Standards Toolkit**:
 
 ```
 import { Formik, Form } from 'formik'
