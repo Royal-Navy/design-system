@@ -33,13 +33,13 @@ The checkbox component allows the active selection of one or more input values a
 <CheckboxAnatomy />
 
 1. **Checkbox Button**. The checkbox is a single value toggle.
-2. **Label (Optional)**. Used to provide context to the Checkbox Button. It is however an optional property.
+2. **Label (Optional)**. Used to provide context to the Checkbox Button.
 
 
 ### States
 <CheckboxStates />
 
-The Checkbox Button has 3 available states - `Default`, `Hover`/`Active`, and `Checked`.
+The Checkbox Button has three available states - `Default`, `Hover`/`Active`, and `Checked`.
 
 </Tab>
 
@@ -90,7 +90,7 @@ with the field:
     Type: '(React.SyntheticEvent):void',
     Required: 'True',
     Default: '',
-    Description: 'Called when the field looses focus',
+    Description: 'Called when the field loses focus',
   },
 ]} />
 <br />

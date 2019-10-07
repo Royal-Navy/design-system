@@ -72,9 +72,9 @@ Only Pre and Post fix should be used on each input.
 
 <Tab title="Develop">
 
-The `TextInput` component can be used for any text/number based input within a form. The initial release for this component has been written to work with <a href="https://jaredpalmer.com/formik/">Formik</a> though a Redux Forms variation will follow.
+The `TextInput` component can be used for any text/number based input within a form. The initial release for this component has been written to work with <a href="https://jaredpalmer.com/formik/">Formik</a>, though a Redux Forms variation will follow.
 
-The TextInput component can be used on it's own in a regular form, if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
+The TextInput component can be used on its own in a regular form if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
 
 ### Example with Formik
 <CodeHighlighter source={`<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
@@ -144,7 +144,7 @@ end of a field:
     Type: '(React.SyntheticEvent):void',
     Required: 'True',
     Default: '',
-    Description: 'Called when the field looses focus',
+    Description: 'Called when the field loses focus',
   },
 ]} />
 <br />
@@ -185,7 +185,7 @@ end of a field:
     Type: 'React.ReactNode',
     Required: 'False',
     Default: '',
-    Description: 'An optional component to display at the end of a field, such as a search svg',
+    Description: 'An optional component to display at the end of a field, such as a search SVG',
   },
   {
     Name: 'field',
@@ -220,7 +220,7 @@ end of a field:
     Type: 'React.ReactNode',
     Required: 'False',
     Default: '',
-    Description: 'An optional component to display at the start of a field, such as a search svg',
+    Description: 'An optional component to display at the start of a field, such as a search SVG',
   },
   {
     Name: 'type',

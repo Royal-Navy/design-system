@@ -18,9 +18,9 @@ The Nav component is built to provide a list of navigation links to help people 
 
 Navigation can also be created in different sizes.
 
-In some cases navigation can be combined with other elements. One example of this is a site in which uses a large horizontal navigation as it's primary navigation method and then hides that navigation when it switches to vertical.
+In some cases navigation can be combined with other elements. One example of this is a site which uses a large horizontal navigation as its primary navigation method and then hides that navigation when it switches to vertical.
 
-The component provides styling for focus, active and hover. The styles for navigation items is near identical to buttons, to keep a consistent look and feel.
+The component provides styling for focus, active and hover. The styles for navigation items is nearly identical to Buttons, to keep a consistent look and feel.
 
 The url provided to a navigation link will be used as the 'to' property of a react router link.
 <NavComponent />
@@ -48,7 +48,7 @@ The url provided to a navigation link will be used as the 'to' property of a rea
 The Nav Links have three states - `default`, `hover`, and `active`.
 
 ### Hierarchy & Placement
-The Nav component can be used to link to both top level pages and subpages. Try to keep all the links in the same navigation at the same page level. This makes the mental model of your application structure easier to process for the user.
+The Nav component can be used to link to both top level pages and sub-pages. Try to keep all the links in the same navigation at the same page level. This makes the mental model of your application structure easier to process for the user.
 
   </Tab>
 
@@ -126,7 +126,7 @@ The `Nav` component accepts an array of links. By default a link expects a `labe
 </CodeHighlighter>
 
 ### Usage with React Router
-More often than not an application will use a library such as `React Router` to generate links between sections of a site. In this case you can specify the `LinkComponent` that will render the link, along with the properties it needs. In this example the `Link` component will be rendered with the label as it's child.
+More often than not, an application will use a library such as `React Router` to generate links between sections of a site. In this case you can specify the `LinkComponent` that will render the link, along with the properties it needs. In this example the `Link` component will be rendered with the label as its child.
 
 <CodeHighlighter source={`import {Link} from "react-router-dom"\n\nconst navItems=[
   {

@@ -18,7 +18,7 @@ import SwitchStates from '../../images/components/switch/states.svg'
 <SwitchComponent />
 
 ## Usage
-With regards to behaviour, a switch can be thought of like a radio field, allowing a single choice from a small number of options. The different between a switch and radio is presentation, a switch looks similar to a button group. Try to limit the number of items that appear in the Switch. This prevents the Switch breaking on smaller screens and doesn't overwhelm the user with the number of options available. If you require the user to pick an item from a number of options, the [Select Component](/components/select) may be a better approach.
+With regards to behaviour, a switch can be thought of like a radio field, allowing a single choice from a small number of options. The difference between a switch and radio is presentation - a switch looks similar to a button group. Try to limit the number of items that appear in the Switch. This prevents the Switch breaking on smaller screens and doesn't overwhelm the user with the number of options available. If you require the user to pick an item from a number of options, the [Select Component](/components/select) may be a better approach.
 
 <TabSet>
 
@@ -30,7 +30,7 @@ With regards to behaviour, a switch can be thought of like a radio field, allowi
 
 <SwitchAnatomy />
 
-1. **Container**. This wraps the Switch component. On Mobile, this transforms into a Select component, changing the visual appearance of the side by side options.
+1. **Container**. This wraps the Switch component. On Mobile, this transforms into a Select component, changing the visual appearance of the side-by-side options.
 2. **Selected Item**. The Selected value has a blue border around it to signify to the user the selected option.
 3. **Unselected Item**. This is the default look of the Switch item.
 4. **Label (Optional)**. A label can be provided to describe the function of the Switch component.

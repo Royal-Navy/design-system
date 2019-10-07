@@ -19,8 +19,7 @@ A form component used to allow the user to pick a value from a list
 <SelectComponent />
 
 ## Usage
-The Select input is useful when the user needs to select an option from a long list, typically more than 7 options. Users can click on a control to let the list drop down and the user can then scroll through the list
-and pick the desired option. Alternatively the control lets a user select the field and start typing and the list of options will appear and is filtered by the value the user has typed.
+The Select input is useful when the user needs to select an option from a long list, typically more than seven options. Users can click on a control to let the list drop down and the user can then scroll through and pick the desired option. Alternatively the control lets a user select the field and start typing and the list of options will appear and is filtered by the value the user has typed.
 
 <TabSet>
 
@@ -35,7 +34,7 @@ and pick the desired option. Alternatively the control lets a user select the fi
 1. **Container**. The Container wraps the entire component. When the Select is focused, the sheet expands from the bottom of the Select, covering any content immediately below the Select component.
 2. **Label**. The label provides context to the options available in the Select.
 3. **Value**. The Value is the currently selected Item from the Sheet.
-4. **Sheet**. By default, the Sheet is hidden. When the Select is in a focused state, the Sheet will appear with the list of Select items available. It can only display a maximum of 5 items before it scrolls.
+4. **Sheet**. By default, the Sheet is hidden. When the Select is in a focused state, the Sheet will appear with the list of Select items available. It can only display a maximum of five items before it scrolls.
 5. **Item**. An Item in the Sheet can be selected by the user. When the user clicks on the item, the sheet collapses and changes the Value to the selected Item.
 6. **Item Active**. When the user opens the Sheet again, the last selected Item will be highlighted.
 
@@ -51,7 +50,7 @@ The Select component and the Select Item sub component both have two states - De
 
 The `Select` component can be used to allow the user to pick a value from a predefined list. The list of `Options` must provide a value and associated label, much like a traditional HTML Select element, though an additional `badge` property can be used to enhance the component if there is a need to display meta data such as a count.
 
-The component works much like other form components, a value property contains the current form field value, changes are send to an `onChange` property and name and label properties must also be provided.
+The component works much like other form components, a value property contains the current form field value, changes are sent to an `onChange` property and name and label properties must also be provided.
 
 Note that the `Select` component only currently supports string values.
 

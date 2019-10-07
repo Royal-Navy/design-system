@@ -32,14 +32,14 @@ The Radio component allows the active selection of one input at a time. It typic
 <RadioAnatomy />
 
 1. **Radio Button**. The Radio Button is a single value toggle 
-2. **Label (Optional)**. Used to provide context to the Radio Button. It is however an optional property.
+2. **Label (Optional)**. Used to provide context to the Radio Button.
 
 
 ### States
 
 <RadioStates />
 
-The Radio Button has 3 available states - `Default`, `Hover`/`Active`, and `Checked`.
+The Radio Button has three available states - `Default`, `Hover`/`Active`, and `Checked`.
 
 
 </Tab>
@@ -48,7 +48,7 @@ The Radio Button has 3 available states - `Default`, `Hover`/`Active`, and `Chec
 
 The `Radio` component allows the active selection of one input at a time. The initial release for this component has been written to work with <a href="https://jaredpalmer.com/formik/">Formik</a> though a Redux Forms variation will follow.
 
-The Radio component can be used on it's own in a regular form, if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
+The Radio component can be used on its own in a regular form, if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
 
 ### Example with Formik
 <CodeHighlighter source={`<Radio name="example" value="" label="My Label 1" />`} language="javascript">

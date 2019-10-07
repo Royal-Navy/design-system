@@ -42,7 +42,7 @@ The Pagination component is of fixed size.
 Multiple sub-components of the Pagination component have many different states. The Page Action buttons have `default`, `hover`, and `active` states, whereas the Prev/Next buttons have default and hover.
 
 ### Hierarchy & Placement
-The Pagination component should be placed above and below a table or list and aligned to the right-hand side. Do not nest the Pagination component. If another level is required direct the user to a new page.
+The Pagination component should be placed above and below a table or list and aligned to the right-hand side. Do not nest the Pagination component. If another level is required, direct the user to a new page.
 
 </Tab>
 

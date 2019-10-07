@@ -31,8 +31,8 @@ The Masthead is a simple section at the top of the page that allows the develope
 
   <MastheadAnatomy />
 
-  1. **Container**. The Masthead Container wraps the entire masthead and ensures it stays pinned to the top of the viewport.
-  2. **Search**. This button triggers the appearance of the Search Bar. When clicked, the page links in the header
+  1. **Container**. The Masthead Container wraps the entire Masthead and ensures it stays pinned to the top of the viewport.
+  2. **Search**. This button triggers the appearance of the Search Bar. When clicked, the page links in the Header.
   3. **Notifications**. This icon displays to the user when they have an unread notification. Clicking on the icon will display the Notification Sheet.
   4. **Profile**. This button links to the User's profile, including settings.
   5. **App Nav**. Works similarly to the [Tabset](/components/tab-set/), allowing the user to quickly navigate between multiple application pages.
@@ -123,13 +123,13 @@ Aside from the active page links (an example of these states is shown in the [Ta
     Name: 'navItems',
     Type: 'NavItem[] ',
     Required: 'True',
-    Description: 'An array of objects that must least contain a label. If no custom component is provided then provide a href, otherwise provide the the required property associated with the LinkComponent',
+    Description: 'An array of objects that must at least contain a label. If no custom component is provided then provide a href, otherwise provide the required property associated with the LinkComponent',
   },
   {
     Name: 'NotificationsPopoverContent',
     Type: 'Element ',
     Required: 'False',
-    Description: 'If a notification bell should be displayed and a popover with notification content then this property contains the content to show in that popover. Ideally this would contain recent notifications with indication as to if they have been read or not and a link to read them and view others.',
+    Description: 'This property contains the content for the Notifications Popover. Ideally this would contain recent notifications, including read status, and a link to read them.',
   },
   {
     Name: 'onSearch',
@@ -159,7 +159,7 @@ Aside from the active page links (an example of these states is shown in the [Ta
     Name: 'user',
     Type: 'UserType',
     Required: 'False',
-    Description: 'If your application has a user profile page, pass in the user object to add their initials to the Avatar sub-component. This Avatar provides a link to the User’s profile.',
+    Description: 'If your application has a User Profile page, pass in the User object to add their initials to the Avatar sub-component. This Avatar provides a link to the User’s profile.',
   },
 ]} />
 <br />
@@ -193,7 +193,7 @@ Aside from the active page links (an example of these states is shown in the [Ta
     Type: 'string',
     Required: 'True',
     Default: '',
-    Description: "A url to send the user to if they wish to see the user's profile.",
+    Description: "A url to send the user to, if they wish to see their profile.",
   },
 ]} />
 </Tab>

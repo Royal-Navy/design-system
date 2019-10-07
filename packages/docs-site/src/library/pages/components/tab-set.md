@@ -46,7 +46,7 @@ The Tab Set component has three states - `default`, `hover`, and `active`.
 <TabSetStates />
 
 ### Hierarchy & Placement
-Tab Sets are used to separate content of the same hierachy. They should therefore not be nested within each other. If you require child content to be separated, this should be added to a new subpage, rather than a subset of the Tab Set.
+Tab Sets are used to separate content of the same hierarchy. They should therefore not be nested within each other. If you require child content to be separated, this should be added to a new sub-page, rather than a subset of the Tab Set.
 
 ### Scrollable Tabs
 Scrollable Tabs are a variation of the Tab Set component, specifically designed for navigating dates.
@@ -67,8 +67,8 @@ Scrollable tabs are used for date ranges, where the number of dates often exceed
 #### Sizing & Spacing
 The Scrollable Tab Set component is available in one size. The tabs display a date and cannot be customised to accept free text - the only variation allowed is the overall date range (e.g. hour, day, week, or month).
 
-#### States (if applicable)
-Much like the default Tab Set component, the Scrollable Tab Set has 3 states - default, hover, and active.
+#### States
+Much like the default Tab Set component, the Scrollable Tab Set has three states - default, hover, and active.
 <TabSetScrollableStates />
 
 #### Hierarchy & Placement
