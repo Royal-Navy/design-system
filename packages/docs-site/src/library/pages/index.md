@@ -39,7 +39,7 @@ import Card from '../../components/presenters/card'
     type="coloured" 
     title="Standards v1.0.0 released" 
     meta="25th July 2019"
-    text={<span>This launch includes the new Standards website providing 'get started' guides for designers and developers, styling and component usage guidelines, and information about Standards for Royal Navy stakeholders. Please <a href="/contact">get in touch</a> if you have any feedback.</span>}
+    text={<span>This launch includes the new <strong>Standards</strong> website providing <strong>'get started'</strong> guides for designers and developers, styling and component usage guidelines, and information about <strong>Standards</strong> for Royal Navy stakeholders. Please <a href="/contact">get in touch</a> if you have any feedback.</span>}
     className="m:h_f-1 home--updates"
   />
 
