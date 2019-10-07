@@ -16,11 +16,11 @@ The following 'view layer libraries' are currently supported:
 
 ### Component usage guidelines
 
-Please refer to the [component demo-pages](/components) to see live examples, code snippets with details on how to consume each of the components.
+Please refer to the [component demo-pages](/components) to see live examples and code snippets with details on how to consume each of the components.
 
 ### Browser support
 
-The Standards Toolkit currently supports all major self-updating browsers such as: Chrome, Firefox, Edge, Safari, and Opera.
+The **Standards Toolkit** currently supports all major self-updating browsers such as: Chrome, Firefox, Edge, Safari, and Opera.
 
 ### Contributing & issues
 

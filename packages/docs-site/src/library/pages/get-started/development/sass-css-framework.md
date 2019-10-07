@@ -10,9 +10,9 @@ The source SASS can be used independently of the component library package, allo
 
 ### Context
 
-Environment is a huge factor in deciding how we display NELSON applications, therefore it is important to provide the correct context for your app.
+Environment is a huge factor in deciding how we display NELSON applications, therefore it is important to provide the correct Context for your app.
 
-By default, the Context provided is `light`. The full list of available contexts are listed below:
+By default, the Context provided is `light`. The full list of available Contexts are listed below:
 ```
 - Light
 - Dark [UNAVAILABLE]
@@ -22,7 +22,7 @@ By default, the Context provided is `light`. The full list of available contexts
 
 ### Retrieving values from a Context
 
-To retrieve a colour from the context map, a `color()` function is provided.
+To retrieve a colour from the Context map, a `color()` function is provided.
 ```
 color( [NAMESPACE] , [SHADE] , [STATE?] )
 // Examples
@@ -92,7 +92,7 @@ An optional modifier value can be added to the z-index mixin, which will be adde
 
 ## Breakpoints
 
-Nelson applications are built Mobile First. A number of breakpoints are provided by default and also tie into the Spacing helper classes and variables:
+**NELSON** applications are built Mobile First. A number of breakpoints are provided by default and also tie into the Spacing helper classes and variables:
 
 ```
 - root: 0px
