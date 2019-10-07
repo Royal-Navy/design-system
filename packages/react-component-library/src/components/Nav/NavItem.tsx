@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState, isValidElement } from 'react'
+import React, { useState } from 'react'
 import Children from 'react-children-utilities'
 
 interface NavItemProps {

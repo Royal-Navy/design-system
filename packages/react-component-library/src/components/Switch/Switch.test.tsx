@@ -4,7 +4,6 @@ import { render, fireEvent, RenderResult } from '@testing-library/react'
 
 import { OptionType } from '../../types/Switch'
 
-import ResponsiveSwitch from './index'
 import Switch from './Switch'
 
 describe('Switch', () => {
@@ -109,6 +108,3 @@ describe('Switch', () => {
   })
 })
 
-describe('ResponsiveSwitch', () => {
-  //
-})

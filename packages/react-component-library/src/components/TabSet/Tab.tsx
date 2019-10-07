@@ -5,7 +5,7 @@ interface TabProps {
   children?: any
 }
 
-const Tab: React.FC<TabProps> = ({ title, children }) => {
+const Tab: React.FC<TabProps> = ({ children }) => {
   return <>{children}</>
 }
 
