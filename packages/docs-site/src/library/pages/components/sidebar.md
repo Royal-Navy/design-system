@@ -52,7 +52,7 @@ As the Sidebar is a top-level component, only one should be used per application
 
 <Tab title="Develop">
 
-The `Sidebar` is a fragment, made up of multiple components combined to render a bar down the left of the screen with two main sections. The Top Navigation part and the Bottom Application part should indicate the current user, with a link to their profile and an optional notifications button. The notification button can indicate if there are any unread notifications and toggle the display of recent ones.
+The `Sidebar` is a fragment, made up of multiple components combined to render a bar down the left of the screen with two main sections - The App Nav and the Indicators. The Indicators should display the current user's Avatar, with a link to their profile and an optional notifications button. The notification button can indicate if there are any unread notifications and toggle the display of recent ones.
 
 The sidebar must be able to integrate with a number of different routing frameworks, as such it cannot simply rely on using an anchor tag to navigate. For this reason, the a `LinkComponent` component must be passed in as a property to the `Sidebar`. If no component is provided, a regular anchor will be used and will expect a href property in each of the navItems.
 
