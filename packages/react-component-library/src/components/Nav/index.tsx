@@ -49,7 +49,10 @@ const Nav: React.FC<NavProps> = ({
   orientation = 'vertical',
   size = 'regular',
 }) => (
-  <nav className={`rn-nav rn-nav--${orientation} rn-nav--${size} ${className}`}>
+  <nav
+    className={`rn-nav rn-nav--${orientation} rn-nav--${size} ${className}`}
+    data-testid="nav"
+  >
     {renderMenu(LinkComponent, navItems)}
   </nav>
 )
