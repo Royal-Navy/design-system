@@ -14,16 +14,15 @@ describe('Button', () => {
     })
 
     describe('and a user clicks on the button', () => {
-      let event: any
+      let blurSpy: jest.SpyInstance
 
       beforeEach(() => {
-        event = {
+        blurSpy = jest.fn()
+        component.simulate('click', {
           currentTarget: {
-            blur: jest.fn(),
+            blur: blurSpy,
           },
-        }
-
-        component.simulate('click', event)
+        })
       })
 
       it('should call the handler when the button is clicked', () => {
@@ -31,7 +30,7 @@ describe('Button', () => {
       })
 
       it('should blur the button so it does not remain active', () => {
-        expect(event.currentTarget.blur).toHaveBeenCalled()
+        expect(blurSpy).toHaveBeenCalled()
       })
     })
   })
