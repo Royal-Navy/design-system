@@ -4,7 +4,7 @@ description: The Tooltip displays extra information when hovered or tapped on.
 header: true
 ---
 
-import { Icons, Tab, TabSet } from '@royalnavy/react-component-library'
+import { Icons, Tab, TabSet, Tooltip } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
@@ -35,7 +35,7 @@ The tooltip should be used wherever including extra detail would be beneficial t
   1. **Information Icon**. The Information Icon is the only visible part of the Tooltip icon in its default state.
   2. **Tooltip Item**. The Tooltip Item floats above the Information Icon 
   3. **Tooltip Title (Optional)**. Add a Title to accompany the main Tooltip Body.
-  4. **Tooltip Message**. The Tooltip Message contains the main content of the tootip. This section is required, unlike the title.
+  4. **Tooltip Message**. The Tooltip Message contains the main content of the tooltip. This section is required, unlike the title.
 
   
 ### Sizing & Spacing
@@ -59,5 +59,98 @@ The Tooltip comes in two variations - with and without the Tooltip Title. You ca
 
 <Tab title="Develop">
 
+When a developer wants to show a tooltip they must calculate the position for it to be displayed at and render a Tooltip element with the position information and a message, plus an optional title.
+
+### Basic Usage
+<CodeHighlighter source={`<Tooltip
+  top={50}
+  left={50}
+  position="top"
+>
+  Tooltip message
+</Tooltip>
+  
+<Tooltip
+  top={50}
+  left={250}
+  width={180}
+  position="right"
+  title="Tooltip title"
+>
+  Tooltip message...
+</Tooltip>`} language="javascript">
+  <div style="position: relative; height: 200px;">
+    <Tooltip
+      top={50}
+      left={50}
+      position="above"
+    >
+      Tooltip message...
+    </Tooltip>
+
+  <Tooltip
+    top={50}
+    left={250}
+    width={180}
+    position="right"
+    title="Tooltip title"
+  >
+    Tooltip message...
+  </Tooltip>
+  </div>
+</CodeHighlighter>
+
+### Tooltip Properties
+<DataTable data={[
+  {
+    Name: 'bottom',
+    Type: 'number',
+    Required: 'False',
+    Default: '',
+    Description: 'The bottom style property in pixels',
+  },
+  {
+    Name: 'children',
+    Type: 'ReactNode',
+    Required: 'True',
+    Default: '',
+    Description: 'The message to display in the Tooltip',
+  },
+  {
+    Name: 'id',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'An optional id attribute value assigned to the component to be used in conjunction with `aria-describedby`',
+  },
+  {
+    Name: 'position',
+    Type: 'above|below|left|right',
+    Required: 'True',
+    Default: '',
+    Description: 'The position the Tooltip displays relative to the element it is associated with',
+  },
+  {
+    Name: 'right',
+    Type: 'number',
+    Required: 'False',
+    Default: '',
+    Description: 'The right style property in pixels',
+  },
+  {
+    Name: 'top',
+    Type: 'number',
+    Required: 'False',
+    Default: '',
+    Description: 'The top style property in pixels',
+  },
+  {
+    Name: 'width',
+    Type: 'number',
+    Required: 'False',
+    Default: '',
+    Description: 'The width style property in pixels',
+  },
+]} />
 </Tab>
 </TabSet>
