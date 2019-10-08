@@ -94,8 +94,8 @@ stories.add('Formik', () => (
             label="Date Range"
             component={FormikSwitch}
             options={options}
-            onChange={(event: any) => {
-              setFieldValue('example-switch-field', event.target.value)
+            onChange={(event: React.FormEvent<HTMLInputElement>) => {
+              setFieldValue('example-switch-field', event.currentTarget.value)
               action('onChange')(event)
             }}
           />

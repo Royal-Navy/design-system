@@ -11,7 +11,7 @@ describe('Switch', () => {
   let value: string
   let label: string
   let className: string
-  let onChange: (event: any) => void
+  let onChange: (event: React.FormEvent<HTMLInputElement>) => void
   let options: OptionType[]
   let size: string
   let component: RenderResult
