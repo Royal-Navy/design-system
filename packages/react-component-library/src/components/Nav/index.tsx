@@ -29,7 +29,6 @@ function renderMenu(LinkComponent: any, navItems: any[]) {
           <NavItem key={uuid()} hasChildren={hasChildren}>
             <LinkComponent
               className={`rn-nav__item ${active ? 'is-active' : ''}`}
-              hasChildren={hasChildren}
               {...item}
             >
               {label}
