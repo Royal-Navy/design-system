@@ -14,7 +14,7 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 Spacing is a key (and often overlooked) aspect of ensuring your application is easy to read and understand. Too little whitespace will cause components to become visually cramped, therefore decreasing readability. The general rule is to start with whitespace that is too large for an element and then decrease it until it is at an appropriate size. It is far better to have too much whitespace than too little.
 
-#### Dense UI
+#### Dense User Interfaces
 
 Sometimes interfaces (particularly dashboards or data heavy components) need to have a more condensed UI to ensure all information is presented to the user. This is a tradeoff with readability, so try to use this sparingly.
 
@@ -22,7 +22,7 @@ Sometimes interfaces (particularly dashboards or data heavy components) need to 
 
 By reducing application Spacing to a predetermined scale, it is easy to ensure all elements and components are spaced in proportion to each other, rather than with arbitrary values.
 
-The Spacing scale, much like the typography scale, doesn't increase in a linear fashion. This is because as elements get positioned further apart, the difference between adjacent values becomes less noticeable.
+The Spacing scale, much like the Typography scale, doesn't increase in a linear fashion. This is because as elements get positioned further apart, the difference between adjacent values becomes less noticeable.
 
 <DataTable data={[
   {
