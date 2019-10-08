@@ -98,7 +98,7 @@ The class syntax follows the following pattern:
 source={`.h_[Property]-[Size]`} language="css"
 />
 
-<DataTable className="h_mt-4" data={[
+<DataTable className="h_mt-8" data={[
   {
     Property: 'text-',
     Size: 'xs',
@@ -159,7 +159,7 @@ source={`.md:h_text-xl`} language="css"
 />
 
 
-<DataTable className="h_mt-4" data={[
+<DataTable className="h_mt-8" data={[
   {
     Property: 'text-',
     Size: 'xs',
