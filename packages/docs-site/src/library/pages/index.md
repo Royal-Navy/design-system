@@ -28,7 +28,7 @@ import Card from '../../components/presenters/card'
     text="Save time with reusable, accessible components for forms, navigation, cards and more." 
     linkText="View components" 
     linkHref="/components" 
-    className="m:h_f-1 m:h_ml-8 h_mt-12 m:h_mt-12"
+    className="m:h_f-1 m:h_ml-8 h_mt-12 m:h_mt-0"
   />
 </section>
 
