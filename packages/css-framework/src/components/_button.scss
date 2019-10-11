@@ -13,9 +13,9 @@ $btn-focus-width: 0.2rem;
   background-color: color(neutral, white);
   border: 1px solid transparent;
   border-radius: $btn-border-radius;
-  margin: spacing(1) 0;
+  margin: spacing(2) 0;
   outline: 0;
-  padding: spacing(3) spacing(4);
+  padding: spacing(6) spacing(8);
   font-size: font-size(xs);
   font-weight: $btn-font-weight;
   line-height: 1;
@@ -37,7 +37,7 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn + .rn-btn {
-  margin-left: spacing(2);
+  margin-left: spacing(4);
 }
 
 .rn-btn--primary {
@@ -76,22 +76,22 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn__icon {
-  margin-left: spacing(2)
+  margin-left: spacing(4)
 }
 
 .rn-btn.rn-btn--small {
   font-size: font-size(xxs);
-  padding: spacing(2) spacing(3);
+  padding: spacing(4) spacing(6);
 }
 
 .rn-btn.rn-btn--large {
   font-size: font-size(s);
-  padding: spacing(3) spacing(5);
+  padding: spacing(6) spacing(10);
 }
 
 .rn-btn.rn-btn--xlarge {
   font-size: font-size(m);
-  padding: spacing(3) spacing(5);
+  padding: spacing(6) spacing(10);
 }
 
 .rn-btn.disabled,

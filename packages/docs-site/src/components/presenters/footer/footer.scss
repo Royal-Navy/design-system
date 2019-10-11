@@ -1,13 +1,13 @@
 @import "@royalnavy/css-framework";
 
 .rn-footer {
-  margin-top: spacing(5);
+  margin-top: spacing(10);
   background: color(primary, 800);
   padding: 0;  
 }
 
 .rn-footer__content {
-  padding: spacing(8) 0;
+  padding: spacing(12) 0;
 }
 
 .rn-footer,
@@ -23,8 +23,8 @@
 .rn-footer__meta .rn-container {
   display: flex;
   flex-direction: column;
-  padding-top: spacing(4);
-  padding-bottom: spacing(4);
+  padding-top: spacing(8);
+  padding-bottom: spacing(8);
   color: color(neutral, white);  
 }
 
@@ -39,7 +39,7 @@
 .rn-footer__copyright {
   font-size: font-size(xs);
   line-height: 1.5;
-  margin: spacing(1) 0;
+  margin: spacing(2) 0;
   color: color(neutral, 100);
   a {
     color: color(neutral, white);

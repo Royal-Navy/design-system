@@ -18,7 +18,7 @@
     &__header {
       display: block;
       @include font-size(base);
-      padding: spacing(4) spacing(3);
+      padding: spacing(8) spacing(6);
       font-weight: normal;
       margin: 0;
       background-color: color(neutral, 300);
@@ -29,8 +29,8 @@
   .item-label {
     &__location {
       display: block;
-      padding: spacing(3);
-      margin: spacing(1);
+      padding: spacing(6);
+      margin: spacing(2);
       &:hover {
         background: color(primary, 100);
       }
@@ -56,8 +56,8 @@
       border: spacing(px) solid color(neutral, white);
       background-color: color(neutral, 500);
       color: color(neutral, white);
-      padding: spacing(2) spacing(3);
-      margin: spacing(3);
+      padding: spacing(4) spacing(6);
+      margin: spacing(6);
       &:hover {
         cursor: pointer;
         background-color: color(neutral, 700);
