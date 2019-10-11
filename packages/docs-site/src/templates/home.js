@@ -38,7 +38,7 @@ const HomeTemplate = ({ data: { mdx }, location }) => {
 
   return (
     <Layout>
-      <Helmet title={`${mdx.frontmatter.title} | NELSON // Standards`} />
+      <Helmet title={`${mdx.frontmatter.title} | NELSON Standards`} />
       <MastHead navItems={primaryNavData} />
       <HeroBanner
         title="Build your application using NELSON styles and components"
