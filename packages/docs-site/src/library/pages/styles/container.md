@@ -12,7 +12,7 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 # Container
 
-The container CSS class wraps all your main application content:
+The container CSS class wraps all of your main application content:
 
 <CodeHighlighter 
 source={`<div class="rn-container">
@@ -22,7 +22,7 @@ source={`<div class="rn-container">
 
 ## Available Sizing
 
-The container class has 3 different variations. The default class has a padding of `0.75rem`. The Standards Toolkit also provides a small container with padding of `0.5rem`:
+The container class has three different variations. The default class has a padding of `0.75rem`. The Standards Toolkit also provides a small container with padding of `0.5rem`:
 
 <CodeHighlighter 
 source={`<div class="rn-container--large">
@@ -30,7 +30,7 @@ source={`<div class="rn-container--large">
 </div>`} language="html"
 />
 
-And a large container that has a padding of `1.25rem`:
+A large container that has a padding of `1.25rem`:
 
 <CodeHighlighter 
 source={`<div class="rn-container--small">
