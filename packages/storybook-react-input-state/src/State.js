@@ -1,4 +1,3 @@
-/* eslint react/forbid-prop-types: 0 */
 import castArray from 'lodash/castArray'
 import get from 'lodash/get'
 import PropTypes from 'prop-types'
@@ -7,16 +6,18 @@ import { Component, cloneElement } from 'react'
 import Store from './Store'
 
 class State extends Component {
-  constructor(props) {
+  constructor({ store, ...props }) {
     super(props)
-    this.store = this.props.store
+    this.store = store
   }
 
   componentDidMount() {
     this.subscription = this.store.subscribe(state => this.setState(state))
     const mutation = {}
 
-    castArray(this.props.children).forEach(child => {
+    const { children } = this.props
+
+    castArray(children).forEach(child => {
       const { name, value } = child.props
       mutation[name] = value
     })
@@ -52,7 +53,8 @@ class State extends Component {
   }
 
   render() {
-    return castArray(this.props.children).map((child, index) =>
+    const { children } = this.props
+    return castArray(children).map((child, index) =>
       this.cloneWithName(child, index)
     )
   }
@@ -63,6 +65,7 @@ State.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  // eslint-disable-next-line react/forbid-prop-types
   store: PropTypes.object,
 }
 

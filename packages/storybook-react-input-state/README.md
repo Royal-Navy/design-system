@@ -1,6 +1,6 @@
 # @royalnavy/storybook-react-input-state
 
-This Storybook JS component allows you to create storybooks that present functional **Form** components that would normally need some kind of stateful container. So if you created a functional input component you can try it out by simplying wrapping it in this component. So how easy is it to use? This easy:
+This Storybook JS component allows you to create storybooks that present functional **Form** components that would normally need some kind of stateful container. So if you created a functional input component you can try it out by simply wrapping it in this component. So how easy is it to use? This easy:
 
 ```
 <State>
