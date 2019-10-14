@@ -32,7 +32,7 @@ The tooltip should be used wherever including extra detail would be beneficial t
 
   The Tooltip component has two main sections - the main navigational area at the top of the bar, and the fixed area at the bottom of the bar.
 
-  1. **Information Icon**. The Information Icon is the only visible part of the Tooltip icon in its default state.
+  1. **Trigger**. This is the element that is interacted with to display the Tooltip. In this instance, the trigger is placed on an Information Icon.
   2. **Tooltip Item**. The Tooltip Item floats above the Information Icon 
   3. **Tooltip Title (Optional)**. Add a Title to accompany the main Tooltip Body.
   4. **Tooltip Message**. The Tooltip Message contains the main content of the tooltip. This section is required, unlike the title.
