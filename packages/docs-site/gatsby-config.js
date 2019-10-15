@@ -19,7 +19,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass-resources`,
       options: {
-        resources: [`${__dirname}/src/helpers/css/_variables.scss`],
+        resources: [`${__dirname}/src/utilities/css/_variables.scss`],
       },
     },
     {

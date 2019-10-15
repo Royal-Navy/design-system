@@ -97,11 +97,11 @@ source={`padding: Spacing(4);
 padding: 1rem;`} language="css"
 />
 
-#### Helpers
+#### Utility Classes
 
-The CSS Frameworks Spacing Variables are available in Utility Class form, allowing components to be quickly positioned and manipulated without having to jump into the CSS. All helper classes are prefixed with the namespace `.h_`. This is to prevent them clashing with any custom styles you author.
+The CSS Frameworks Spacing Variables are available in Utility Class form, allowing components to be quickly positioned and manipulated without having to jump into the CSS. All Utility classes are prefixed with the namespace `.h_`. This is to prevent them clashing with any custom styles you author.
 
-Both margin and padding can be set via helper classes. The class syntax follows this pattern:
+Both margin and padding can be set via Utility classes. The class syntax follows this pattern:
 
 <CodeHighlighter 
 source={`.h_[Property][Direction?]-[Size]`} language="css"
@@ -136,7 +136,7 @@ source={`margin-top: 2.5rem;`} language="css"
 />
 
 
-To use the helper classes in conjunction with [media queries](/styles/breakpoints), add the required breakpoint to the helper class:
+To use the Utility classes in conjunction with [media queries](/styles/breakpoints), add the required breakpoint to the Utility class:
 
 <CodeHighlighter 
 source={`.md:h_mt-10`} language="css"

@@ -64,9 +64,9 @@ source={`@mixin breakpoint('s') {
 />
 
 
-# Helper Classes
+# Utility classes
 
-The **Toolkit** provides Breakpoints for each helper class. Simply prepend a helper class with a breakpoint size.
+The **Toolkit** provides Breakpoints for each Utility class. Simply pre-pend a Utility class with a breakpoint size.
 
 <CodeHighlighter 
 source={`.md:h_mt-4

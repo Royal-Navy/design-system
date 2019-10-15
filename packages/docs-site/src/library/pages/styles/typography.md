@@ -89,8 +89,9 @@ font-size: 1rem;`} language="css"
 />
 
 
-# CSS Helpers
-The CSS Framework's Typography variables are available in Utility Class form, allowing the standard font sizes to be overridden. All helper classes are prefixed with the namespace `.h_`. This is to prevent them clashing with any custom styles you author.
+# Utility Classes
+
+The CSS Framework's Typography variables are available in Utility Class form, allowing the standard font sizes to be overridden. All Utility classes are prefixed with the namespace `.h_`. This is to prevent them clashing with any custom styles you author.
 
 The class syntax follows this pattern:
 
@@ -152,7 +153,7 @@ For example, adding a class of `.h_text-xl` would result in the following:
 source={`margin-top: 1.5rem;`} language="css"
 />
 
-To use the helper classes with [media queries](/styles/breakpoints), add the required breakpoint it:
+To use the Utility classes with [media queries](/styles/breakpoints), add the required breakpoint it:
 
 <CodeHighlighter 
 source={`.md:h_text-xl`} language="css"

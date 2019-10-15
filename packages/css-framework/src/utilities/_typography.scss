@@ -2,10 +2,10 @@
 
 /**************************************************************************
 
-    Font Size Helpers
+    Font Size Utilities
     =================
 
-    Generates helper classes for font size.
+    Generates Utility classes for font size.
 
 **************************************************************************/
 
@@ -14,12 +14,12 @@
 @each $_breakpoint, $_breakpoint-val in $__breakpoints {
   @each $_shortname, $_value in $__typography {
     @if $_breakpoint == 'root' {
-      .#{$helper_ns}text-#{$_shortname} {
+      .#{$utility-ns}text-#{$_shortname} {
         font-size: $_value !important;
       }
     } @else {
       @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
-        .#{$_breakpoint}\:#{$helper_ns}text-#{$_shortname} {
+        .#{$_breakpoint}\:#{$utility-ns}text-#{$_shortname} {
           font-size: $_value !important;
         }
       }
@@ -31,7 +31,7 @@
 
 /**************************************************************************
 
-    Text Aligning Helpers
+    Text Aligning Utilities
 
 **************************************************************************/
 
@@ -49,12 +49,12 @@
 
 @each $_breakpoint, $_breakpoint-val in $__breakpoints {
   @if $_breakpoint == 'root' {
-    .#{$helper-ns}text {
+    .#{$utility-ns}text {
       @include textSharedStyles;
     }
   } @else {
     @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
-      .#{$_breakpoint}\:#{$helper-ns}text {
+      .#{$_breakpoint}\:#{$utility-ns}text {
           @include textSharedStyles;
       }
     }
