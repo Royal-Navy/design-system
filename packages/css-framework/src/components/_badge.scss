@@ -1,28 +1,28 @@
 $badge-border-radius: 3px;
-$badge-font-weight: 700;
+$badge-font-weight: 600;
 
 $badge-sizes: (
   small: (
+    font-size: font-size(xxxs),
+    padding: spacing(1) spacing(3)
+  ),
+  regular: (
     font-size: font-size(xxs),
     padding: spacing(1) spacing(2)
   ),
-  regular: (
-    font-size: font-size(xs),
-    padding: spacing(1) spacing(2)
-  ),
   large: (
-    font-size: font-size(s),
+    font-size: font-size(xs),
     padding: spacing(1) spacing(3)
   ),
   xlarge: (
-    font-size: font-size(m),
+    font-size: font-size(s),
     padding: spacing(1) spacing(3)
   )
 );
 
 $badge-states: (
   neutral: (
-    color: color("neutral", 900),
+    color: color("neutral", 400),
     solid: color("neutral", 500),
     faded: color("neutral", 100)
   ),
@@ -32,17 +32,17 @@ $badge-states: (
     faded: color("primary", 100)
   ),
   danger: (
-    color: color("danger", 800),
+    color: color("danger", 700),
     solid: color("danger", 500),
     faded: color("danger", 100)
   ),
   warning: (
-    color: color("warning", 800),
+    color: color("warning", 700),
     solid: color("warning", 600),
     faded: color("warning", 200)
   ),
   success: (
-    color: color("success", 800),
+    color: color("success", 700),
     solid: color("success", 600),
     faded: color("success", 100)
   )
@@ -53,6 +53,8 @@ $badge-states: (
   border-radius: $badge-border-radius;
   font-weight: $badge-font-weight;
   vertical-align: middle;
+  text-transform: uppercase;
+  line-height: 1;
 
   @each $state, $variation in $badge-states {
     &.rn-badge--#{$state} {
@@ -91,5 +93,12 @@ $badge-states: (
 
   &.rn-badge--pill {
     border-radius: 100px;
+  
+    @each $size, $values in $badge-sizes {
+      &.rn-badge--#{$size} {
+        font-size: map-get($values, "font-size");
+        padding: map-get($values, "padding");
+      }
+    }
   }
 }
