@@ -16,20 +16,22 @@ function getKey(prefix: string, id: string) {
 }
 
 export const Table: React.FC<TableProps> = ({ data, children }) => (
-  <table className="rn-table">
-    <thead>
-      <tr>{children}</tr>
-    </thead>
-    <tbody>
-      {data.map((row: RowProps) => (
-        <tr key={getKey(`table-row`, row.id)}>
-          {children.map(({ props }) => (
-            <td key={getKey(`table-cell-${props.field}`, row.id)}>
-              {row[props.field]}
-            </td>
-          ))}
-        </tr>
-      ))}
-    </tbody>
-  </table>
+  <div className="rn-table__wrapper">
+    <table className="rn-table">
+      <thead>
+        <tr>{children}</tr>
+      </thead>
+      <tbody>
+        {data.map((row: RowProps) => (
+          <tr key={getKey(`table-row`, row.id)}>
+            {children.map(({ props }) => (
+              <td key={getKey(`table-cell-${props.field}`, row.id)}>
+                {row[props.field]}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 )

@@ -39,8 +39,13 @@ describe('Table', () => {
       )
     })
 
+    it('should style the table wrapper', () => {
+      const tableWrapper = wrapper.container.firstElementChild
+      expect(tableWrapper.classList).toContain('rn-table__wrapper')
+    })
+
     it('should style the table', () => {
-      const table = wrapper.container.firstElementChild
+      const table = wrapper.container.firstElementChild.firstElementChild
       expect(table.classList).toContain('rn-table')
     })
 
