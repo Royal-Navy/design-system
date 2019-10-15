@@ -127,7 +127,7 @@ When a developer wants to show a tooltip they must calculate the position for it
     Name: 'position',
     Type: 'above|below|left|right',
     Required: 'True',
-    Default: '',
+    Default: 'above',
     Description: 'The position the Tooltip displays relative to the element it is associated with',
   },
   {

@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import React from 'react'
 
 export interface TooltipProps extends PositionType {
@@ -12,7 +13,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   children,
   id = '',
   left,
-  position,
+  position = 'above',
   right,
   title,
   top,
@@ -26,11 +27,14 @@ export const Tooltip: React.FC<TooltipProps> = ({
     width,
   }
 
+  const tooltipClassNames = classNames(
+    ['rn-tooltip',
+    `rn-tooltip--${position}`
+  ])
+
   return (
     <div
-      className={`rn-tooltip
-      ${position ? `rn-tooltip--${position}` : ''}
-    `}
+      className={tooltipClassNames}
       data-testid="tooltip"
       id={id}
       role="tooltip"
