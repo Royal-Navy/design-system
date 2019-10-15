@@ -19,6 +19,7 @@ import Switch from './components/Switch/Switch'
 import ResponsiveSwitch from './components/Switch'
 import Radio from './components/Radio'
 import Tab from './components/TabSet/Tab'
+import { Table, Column } from './components/Table'
 import TabSet from './components/TabSet'
 import TextInput from './components/TextInput'
 import { Tooltip } from './components/Tooltip'
@@ -38,6 +39,7 @@ export {
   Breadcrumbs,
   Button,
   Checkbox,
+  Column,
   Dialog,
   Dropdown,
   Masthead,
@@ -53,6 +55,7 @@ export {
   Select,
   Sidebar,
   Tab,
+  Table,
   TabSet,
   TextInput,
   Tooltip,
