@@ -9,8 +9,7 @@
     "packages/icon-library",
     "packages/reactapp",
     "packages/react-component-library",
-    "packages/storybook-react-input-state",
-    "packages/vue-component-library"
+    "packages/storybook-react-input-state"
   ],
   "engines": {
     "node": ">=10.13.0 <11"
