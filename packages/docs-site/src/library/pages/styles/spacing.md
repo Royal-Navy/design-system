@@ -99,12 +99,12 @@ padding: 1rem;`} language="css"
 
 #### Utility Classes
 
-The CSS Frameworks Spacing Variables are available in Utility Class form, allowing components to be quickly positioned and manipulated without having to jump into the CSS. All Utility classes are prefixed with the namespace `.h_`. This is to prevent them clashing with any custom styles you author.
+The CSS Frameworks Spacing Variables are available in Utility Class form, allowing components to be quickly positioned and manipulated without having to jump into the CSS. All Utility classes are prefixed with the namespace `.rn_`. This is to prevent them clashing with any custom styles you author.
 
 Both margin and padding can be set via Utility classes. The class syntax follows this pattern:
 
 <CodeHighlighter 
-source={`.h_[Property][Direction?]-[Size]`} language="css"
+source={`.rn_[Property][Direction?]-[Size]`} language="css"
 />
 
 <div class="standard-table">
@@ -129,7 +129,7 @@ Property     | Direction  | Size
 
 </div>
 
-For example, adding a class of `.h_mt-10` would result in the following:
+For example, adding a class of `.rn_mt-10` would result in the following:
 
 <CodeHighlighter 
 source={`margin-top: 2.5rem;`} language="css"
@@ -139,5 +139,5 @@ source={`margin-top: 2.5rem;`} language="css"
 To use the Utility classes in conjunction with [media queries](/styles/breakpoints), add the required breakpoint to the Utility class:
 
 <CodeHighlighter 
-source={`.md:h_mt-10`} language="css"
+source={`.md:rn_mt-10`} language="css"
 />

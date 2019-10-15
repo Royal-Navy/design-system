@@ -91,15 +91,15 @@ font-size: 1rem;`} language="css"
 
 # Utility Classes
 
-The CSS Framework's Typography variables are available in Utility Class form, allowing the standard font sizes to be overridden. All Utility classes are prefixed with the namespace `.h_`. This is to prevent them clashing with any custom styles you author.
+The CSS Framework's Typography variables are available in Utility Class form, allowing the standard font sizes to be overridden. All Utility classes are prefixed with the namespace `.rn_`. This is to prevent them clashing with any custom styles you author.
 
 The class syntax follows this pattern:
 
 <CodeHighlighter 
-source={`.h_[Property]-[Size]`} language="css"
+source={`.rn_[Property]-[Size]`} language="css"
 />
 
-<DataTable className="h_mt-4" data={[
+<DataTable className="rn_mt-4" data={[
   {
     Property: 'text-',
     Size: 'xs',
@@ -147,7 +147,7 @@ source={`.h_[Property]-[Size]`} language="css"
   }
 ]} />
 
-For example, adding a class of `.h_text-xl` would result in the following:
+For example, adding a class of `.rn_text-xl` would result in the following:
 
 <CodeHighlighter 
 source={`margin-top: 1.5rem;`} language="css"
@@ -156,11 +156,11 @@ source={`margin-top: 1.5rem;`} language="css"
 To use the Utility classes with [media queries](/styles/breakpoints), add the required breakpoint it:
 
 <CodeHighlighter 
-source={`.md:h_text-xl`} language="css"
+source={`.md:rn_text-xl`} language="css"
 />
 
 
-<DataTable className="h_mt-4" data={[
+<DataTable className="rn_mt-4" data={[
   {
     Property: 'text-',
     Size: 'xs',
