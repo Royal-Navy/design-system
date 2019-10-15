@@ -1,7 +1,7 @@
 $border-radius: 2px;
 $background-color: color(neutral, 0);
 $border-color: color(neutral, 200);
-$active-background-color: color(neutral, white);
+$active-background-color: color(primary, 500);
 $active-color: color(primary, 600);
 
 .rn-switch {
@@ -36,16 +36,7 @@ $active-color: color(primary, 600);
 
 // Handle active state border overlap
 // NOTE: A Switch with more than 5 children probably shouldn't be a Switch
-$elements: 5;
-@for $i from 0 to $elements {
-  .rn-switch__option:nth-child(#{$i + 1}) {
-    z-index: $elements - $i;
 
-    &:hover {
-      z-index: $elements + 1;
-    }
-  }
-}
 
 .rn-switch__option {
   cursor: pointer;
@@ -54,68 +45,44 @@ $elements: 5;
     display: none;
   }
 
-  &::before {
-    content: attr(data-label);
-    display: inline-block;
-    width: auto;
-    height: auto;
-    padding: spacing(2) spacing(4);
-    font-size: inherit;
-    color: color(neutral, 400);
-    border: 1px solid $border-color;
-    border-right: none;
-    background-color: $background-color;
+  margin-right: -1px;
+  &:first-child {
+    border-radius: 3px 0 0 3px;
+  }
+  &:last-child {
+    border-radius: 0 3px 3px 0;
+    margin-right: 0; 
   }
 
-  &:hover {
-    &::before {
-      border-radius: $border-radius;
-      border-color: $background-color;
-      box-shadow: 0 0 0 1px $active-color;
-      background-color: $active-background-color;
-    }
-  }
+  
 
+  display: inline-block;
+  width: auto;
+  height: auto;
+  padding: spacing(2) spacing(4);
+  font-size: inherit;
+  color: color(neutral, 400);
+  border: 1px solid $border-color;
+  background-color: $background-color;
+  position: relative;
+  z-index: 0;
+  transition: all 0.3s;
+  
+  &:hover,
   &.is-active {
-    z-index: $elements + 2;
-
-    &::before {
-      border: 1px solid $border-color;
-      border-radius: $border-radius;
-      border-color: $active-background-color;
-      box-shadow: 0 0 0 2px $active-color;
+    z-index: 1;
+    border: 1px solid $active-color;
+    color: white;
+  }
+  
+  &:hover {
+    background-color: color(primary, 600);
+  }
+  
+  &.is-active {
+    background-color: $active-background-color;
+    &:hover {
       background-color: $active-background-color;
-    }
-  }
-
-  &:hover, &.is-active {
-    &:first-of-type {
-      &::before {
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-      }
-    }
-
-    &:last-of-type {
-      &::before {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-    }
-  }
-
-  &:first-of-type {
-    &::before {
-      border-top-left-radius: $border-radius;
-      border-bottom-left-radius: $border-radius;
-    }
-  }
-
-  &:last-of-type {
-    &::before {
-      border-right: 1px solid $border-color;
-      border-top-right-radius: $border-radius;
-      border-bottom-right-radius: $border-radius;
     }
   }
 }

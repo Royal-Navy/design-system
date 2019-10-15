@@ -36,10 +36,10 @@ const Switch: React.FC<SwitchType> = ({
             className={`rn-switch__option ${
               active === optionLabel ? 'is-active' : ''
             }`}
-            data-label={optionLabel}
             htmlFor={`${id}-${optionLabel}`}
             data-testid="option"
           >
+            {optionLabel}
             <input
               id={`${id}-${optionLabel}`}
               name={name || id}
