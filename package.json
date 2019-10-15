@@ -17,6 +17,7 @@
   "devDependencies": {
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^3.0.0",
     "lerna": "^3.16.4",
     "prettier": "^1.17.0"
   },
@@ -42,5 +43,10 @@
     "test": "lerna run --parallel test",
     "storybook:static": "lerna run --parallel storybook:static",
     "lerna:version": "lerna version --tag-version-prefix=''"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lerna run --parallel lint-staged"
+    }
   }
 }
