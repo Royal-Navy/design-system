@@ -17,12 +17,10 @@
   "devDependencies": {
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "husky": "^2.2.0",
     "lerna": "^3.16.4",
     "prettier": "^1.17.0"
   },
   "resolutions": {
-    "husky/cosmiconfig/js-yaml": "^3.13.1",
     "gatsby/eslint/eslint-utils": "1.4.2"
   },
   "prettier": {
@@ -37,11 +35,6 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint-staged"
-    }
-  },
   "scripts": {
     "build": "lerna run --stream --concurrency 1 build",
     "lint": "lerna run --parallel lint",
