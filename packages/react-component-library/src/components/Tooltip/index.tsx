@@ -27,9 +27,9 @@ export const Tooltip: React.FC<TooltipProps> = ({
     width,
   }
 
-  const tooltipClassNames = classNames(
-    ['rn-tooltip',
-    `rn-tooltip--${position}`
+  const tooltipClassNames = classNames([
+    'rn-tooltip',
+    `rn-tooltip--${position}`,
   ])
 
   return (
@@ -41,7 +41,11 @@ export const Tooltip: React.FC<TooltipProps> = ({
       style={style}
     >
       <div className="rn-tooltip__content">
-        {title && <div className="rn-tooltip__title">{title}</div>}
+        {title && (
+          <div data-testid="tooltip-title" className="rn-tooltip__title">
+            {title}
+          </div>
+        )}
         <div className="rn-tooltip__message">{children}</div>
       </div>
     </div>
