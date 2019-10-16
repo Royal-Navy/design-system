@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 
-import '../utilities/css/fonts.css'
+import '../helpers/css/fonts.css'
 import '@royalnavy/css-framework/index.scss'
 
 import './home.scss'

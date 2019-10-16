@@ -2,7 +2,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import '../utilities/css/fonts.css'
+import '../helpers/css/fonts.css'
 import '@royalnavy/css-framework/index.scss'
 
 import '../templates/default.scss'
