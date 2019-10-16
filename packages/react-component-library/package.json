@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/react-component-library",
   "description": "A collection of react components and helpers to assist in building applications for the Royal Navy",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "publishConfig": {
     "access": "public"
   },
@@ -21,19 +21,20 @@
   "license": "Apache-2.0",
   "scripts": {
     "analyze": "webpack -p --config=webpack/analyze.js",
-    "build": "run-s build:ts types",
     "build:dev": "run-s build:ts:dev types",
-    "build:ts": "webpack -p --config=webpack/prod.js",
     "build:ts:dev": "webpack -p --config=webpack/dev.js",
+    "build:ts": "webpack -p --config=webpack/prod.js",
+    "build": "run-s build:ts types",
     "dev": "concurrently \"webpack --watch --config=webpack/dev.js\" \"yarn types --watch\"",
-    "lint": "eslint src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
+    "lint-staged": "lint-staged",
     "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
-    "storybook": "start-storybook -p 6006",
+    "lint": "eslint src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
+    "prepare": "yarn build",
     "storybook:static": "build-storybook -c .storybook -o .static_storybook",
-    "test": "NODE_ENV=test jest",
+    "storybook": "start-storybook -p 6006",
     "test:watch": "NODE_ENV=test jest --watch",
-    "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/",
-    "prepare": "yarn build"
+    "test": "NODE_ENV=test jest",
+    "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/"
   },
   "lint-staged": {
     "*.@(js|jsx|ts|tsx)": "eslint"
@@ -125,8 +126,8 @@
     "dist"
   ],
   "dependencies": {
-    "@royalnavy/css-framework": "^1.4.0",
-    "@royalnavy/icon-library": "^1.4.0",
+    "@royalnavy/css-framework": "^1.5.0",
+    "@royalnavy/icon-library": "^1.5.0",
     "@types/react-responsive": "^3.0.3",
     "classnames": "^2.2.6",
     "react-addons-css-transition-group": "^15.6.2",

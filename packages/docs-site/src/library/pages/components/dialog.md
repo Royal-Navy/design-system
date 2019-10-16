@@ -16,7 +16,7 @@ import DialogAnatomy from '../../images/components/dialog/anatomy.svg'
 
 Dialog creates a new context that disables the main window but keeps it visible, with the modal window as a child window in front of it. Users must interact with the dialog window before they can return to the parent application. 
 
-The Dialog component is a full screen component used to inform the user of a particular task. It can be used to simply pass important information or to ask for a decision from the user. For a more general purpose window to capture the user's focus, use the [Modal component](/components/modal) instead.
+The Dialog component is a full screen component used to inform the user of a particular task. It can be used to simply pass on important information or to ask for a decision from the user. For a more general purpose window to capture the user's focus, use the [Modal component](/components/modal) instead.
 
 <DialogComponent />
 
@@ -36,7 +36,7 @@ As the Dialog is displayed full screen, it focuses the user's attention and requ
 3. **Dialog Footer**. Provides a Primary or Danger button. Can also house an optional Cancel button.
 
 ### States
-The Dialog component has two states - hidden and active. By default, including the dialog component in an application page won't render it. Triggering the component will cause it to fade in over all application content.
+The Dialog component has two states - `hidden` and `active`. By default, including the dialog component in an application page won't render it. Triggering the component will cause it to fade in, over all application content.
 
 
 ### Hierarchy & Placement

@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`RnAvatar.vue snapshot: has same HTML structure 1`] = `<div class="rn-avatar default"><span class="initials">zt</span></div>`;

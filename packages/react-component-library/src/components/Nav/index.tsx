@@ -29,7 +29,6 @@ function renderMenu(LinkComponent: any, navItems: any[]) {
           <NavItem key={uuid()} hasChildren={hasChildren}>
             <LinkComponent
               className={`rn-nav__item ${active ? 'is-active' : ''}`}
-              hasChildren={hasChildren}
               {...item}
             >
               {label}
@@ -49,7 +48,10 @@ const Nav: React.FC<NavProps> = ({
   orientation = 'vertical',
   size = 'regular',
 }) => (
-  <nav className={`rn-nav rn-nav--${orientation} rn-nav--${size} ${className}`}>
+  <nav
+    className={`rn-nav rn-nav--${orientation} rn-nav--${size} ${className}`}
+    data-testid="nav"
+  >
     {renderMenu(LinkComponent, navItems)}
   </nav>
 )

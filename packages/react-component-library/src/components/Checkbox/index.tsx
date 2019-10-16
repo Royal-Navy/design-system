@@ -9,8 +9,8 @@ interface CheckboxProps {
   value?: string
   name: string
   checked?: boolean
-  onChange?: (event: React.SyntheticEvent) => void
-  onBlur?: (event: React.SyntheticEvent) => void
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
+  onBlur?: (event: React.FormEvent<HTMLInputElement>) => void
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({

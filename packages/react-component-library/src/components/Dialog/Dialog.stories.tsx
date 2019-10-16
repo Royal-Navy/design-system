@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 
@@ -10,12 +11,8 @@ stories.add('Default', () => {
     <Dialog
       title="Dialog Title"
       description="Dialog description."
-      onConfirm={event => {
-        console.log('onConfirm')
-      }}
-      onCancel={event => {
-        console.log('onCancel')
-      }}
+      onConfirm={action('onConfirm')}
+      onCancel={action('onCancel')}
       isOpen
     />
   )
@@ -26,12 +23,8 @@ stories.add('Danger', () => {
     <Dialog
       title="Dialog Title"
       description="Dialog description."
-      onConfirm={event => {
-        console.log('onConfirm')
-      }}
-      onCancel={event => {
-        console.log('onCancel')
-      }}
+      onConfirm={action('onConfirm')}
+      onCancel={action('onCancel')}
       danger
       isOpen
     />

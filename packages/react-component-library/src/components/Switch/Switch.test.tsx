@@ -4,7 +4,6 @@ import { render, fireEvent, RenderResult } from '@testing-library/react'
 
 import { OptionType } from '../../types/Switch'
 
-import ResponsiveSwitch from './index'
 import Switch from './Switch'
 
 describe('Switch', () => {
@@ -12,7 +11,7 @@ describe('Switch', () => {
   let value: string
   let label: string
   let className: string
-  let onChange: (event: any) => void
+  let onChange: (event: React.FormEvent<HTMLInputElement>) => void
   let options: OptionType[]
   let size: string
   let component: RenderResult
@@ -109,6 +108,3 @@ describe('Switch', () => {
   })
 })
 
-describe('ResponsiveSwitch', () => {
-  //
-})

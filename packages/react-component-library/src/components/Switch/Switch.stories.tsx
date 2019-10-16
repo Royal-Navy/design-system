@@ -5,7 +5,6 @@ import { storiesOf } from '@storybook/react'
 import { Field, Formik, Form } from 'formik'
 import useFormik from '../../enhancers/withFormik'
 
-import { OptionType } from '../../types/Switch'
 import Switch from './Switch'
 import ResponsiveSwitch from './index'
 
@@ -24,9 +23,7 @@ stories.add('Default', () => (
     value=""
     label="Date Range"
     options={options}
-    onChange={event => {
-      console.log(event)
-    }}
+    onChange={action('onChange')}
   />
 ))
 
@@ -35,9 +32,7 @@ stories.add('No legend', () => (
     name="example-switch-field"
     value=""
     options={options}
-    onChange={event => {
-      console.log(event)
-    }}
+    onChange={action('onChange')}
   />
 ))
 
@@ -47,9 +42,7 @@ stories.add('Responsive', () => (
     value=""
     label="Date Range"
     options={options}
-    onChange={event => {
-      console.log(event)
-    }}
+    onChange={action('onChange')}
   />
 ))
 
@@ -59,9 +52,7 @@ stories.add('Small', () => (
     value=""
     label="Date Range"
     options={options}
-    onChange={event => {
-      console.log(event)
-    }}
+    onChange={action('onChange')}
     size="small"
   />
 ))
@@ -72,9 +63,7 @@ stories.add('Large', () => (
     value=""
     label="Date Range"
     options={options}
-    onChange={event => {
-      console.log(event)
-    }}
+    onChange={action('onChange')}
     size="large"
   />
 ))
@@ -105,9 +94,9 @@ stories.add('Formik', () => (
             label="Date Range"
             component={FormikSwitch}
             options={options}
-            onChange={(event: any) => {
-              setFieldValue('example-switch-field', event.target.value)
-              console.log(event)
+            onChange={(event: React.FormEvent<HTMLInputElement>) => {
+              setFieldValue('example-switch-field', event.currentTarget.value)
+              action('onChange')(event)
             }}
           />
         </Form>

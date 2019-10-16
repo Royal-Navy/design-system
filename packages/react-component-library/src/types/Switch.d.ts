@@ -1,3 +1,5 @@
+import React from 'react'
+
 export interface OptionType {
   label: string
   value: string
@@ -8,7 +10,7 @@ export interface SwitchType {
   value: string
   label?: string
   className?: string
-  onChange?: (event: any) => void
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
   options: OptionType[]
   size?: string
 }

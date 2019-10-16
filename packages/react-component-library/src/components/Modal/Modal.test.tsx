@@ -6,24 +6,24 @@ import { ButtonProps } from '../Button'
 import { Modal } from './Modal'
 
 const primaryButton: ButtonProps = {
-  onClick: event => console.log('primary'),
+  onClick: jest.fn(),
   children: 'Primary',
 }
 
 const secondaryButton: ButtonProps = {
-  onClick: event => console.log('secondary'),
+  onClick: jest.fn(),
   children: 'Secondary',
 }
 
 const tertiaryButton: ButtonProps = {
-  onClick: event => console.log('tertiary'),
+  onClick: jest.fn(),
   children: 'Tertiary',
 }
 
 describe('Modal', () => {
   let wrapper: RenderResult
   let title: string
-  let onClose: (event: any) => void
+  let onClose: (event: React.FormEvent<HTMLButtonElement>) => void
   let isOpen: boolean
 
   beforeEach(() => {

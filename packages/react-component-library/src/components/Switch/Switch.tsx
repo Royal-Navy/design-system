@@ -19,10 +19,6 @@ const Switch: React.FC<SwitchType> = ({
 
   const id = uuid()
 
-  function getOption(optionLabel: string) {
-    return options.find(item => item.label === optionLabel)
-  }
-
   return (
     <fieldset
       className={`rn-switch rn-switch--${size} ${className}`}
