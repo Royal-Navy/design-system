@@ -10,7 +10,7 @@ header: true
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
-All Standards Toolkit applications are set in [Lato](http://www.latofonts.com/). We also provide the System Font Stack as a fallback to Lato in case a system doesn't support it:
+All **Standards Toolkit** applications are set in [Lato](http://www.latofonts.com/). We also provide the System Font Stack as a fallback to Lato in case a system doesn't support it:
 
 <CodeHighlighter 
 source={`system-ui,
@@ -89,16 +89,17 @@ font-size: 1rem;`} language="css"
 />
 
 
-# CSS Helpers
-The CSS Framework's Typography variables are available in Utility Class form, allowing the standard font sizes to be overridden. All helper classes are prefixed with the namespace `.h_`. This is to prevent them clashing with any custom styles you may author.
+# Utility Classes
 
-The class syntax follows the following pattern:
+The CSS Framework's Typography variables are available in Utility Class form, allowing the standard font sizes to be overridden. All Utility classes are prefixed with the namespace `.rn_`. This is to prevent them clashing with any custom styles you author.
+
+The class syntax follows this pattern:
 
 <CodeHighlighter 
-source={`.h_[Property]-[Size]`} language="css"
+source={`.rn_[Property]-[Size]`} language="css"
 />
 
-<DataTable className="h_mt-8" data={[
+<DataTable className="rn_mt-8" data={[
   {
     Property: 'text-',
     Size: 'xs',
@@ -146,20 +147,20 @@ source={`.h_[Property]-[Size]`} language="css"
   }
 ]} />
 
-For example, adding a class of `.h_text-xl` would result in the following:
+For example, adding a class of `.rn_text-xl` would result in the following:
 
 <CodeHighlighter 
 source={`margin-top: 1.5rem;`} language="css"
 />
 
-To use the helper classes in conjunction with [media queries](/styles/breakpoints), add the required breakpoint to the helper class:
+To use the Utility classes with [media queries](/styles/breakpoints), add the required breakpoint it:
 
 <CodeHighlighter 
-source={`.md:h_text-xl`} language="css"
+source={`.md:rn_text-xl`} language="css"
 />
 
 
-<DataTable className="h_mt-8" data={[
+<DataTable className="rn_mt-8" data={[
   {
     Property: 'text-',
     Size: 'xs',

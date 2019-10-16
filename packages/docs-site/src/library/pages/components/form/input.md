@@ -16,8 +16,8 @@ import InputStates from '../../../images/components/forms/input/states.svg'
 import InputPreComponent from '../../../images/components/forms/input/pre-post.svg'
 import InputPreAnatomy from '../../../images/components/forms/input/pre-anatomy.svg'
 
-# Input
-Text inputs let users enter and edit text.
+# Overview
+
 <InputComponent />
 
 ## Usage
@@ -35,17 +35,17 @@ The Text Input should stand out and be easily discoverable by users. The text la
 ### Anatomy
 <InputAnatomy />
 
-1. **Label**. The Label should be used to describe to the user what the desired input should be. Every field should have a text label. The label should always be visible on all inputs, excluding search bars.
-2. **User Input**. The User Input is the text the user has entered into the Text Input.
-3. **Container**. The Container wraps the entire component.
+1. **Label**. Should be used to describe to the user what the desired input should be. Every field should have a text label. The label should always be visible on all inputs, excluding search bars.
+2. **User Input**. This is the text the user has entered into the Text Input.
+3. **Container**. Wraps the entire component.
 
 ### Sizing & Spacing
-The Text Input is available in 1 standard size. It has been created in relation to other form elements to ensure consistency.
+The Text Input is available in one standard size. It has been created in relation to other form elements to ensure consistency.
 
 ### States
 <InputStates />
 
-The Text Input has 3 states - default, active, and filled.
+The Text Input has three states - `default`, `active`, and `filled`.
 
 ---
 
@@ -54,13 +54,13 @@ The Fix Labels are used for adding additional information to an input. They can 
 <InputPreComponent />
 
 #### Usage
-The labels should accompany the main input label. They should be additive, and not the main focus of the Text Input.
+The labels should accompany the main input label. They should not be the main focus of the Text Input.
 
 #### Anatomy
 <InputPreAnatomy />
 
-1. **Container**. The Container wraps the Pre and Post fixed Labels
-2. **Content**. The Content can be either text or an icon.
+1. **Container**. Wraps the Pre and Post fixed Labels
+2. **Content**. Can be either text or an icon.
 
 ### Sizing & Spacing
 The Pre and Post fixes don’t have any inherit sizes themselves. As they are additions to the Text Input component, they are sized according to the input.
@@ -72,9 +72,9 @@ Only Pre and Post fix should be used on each input.
 
 <Tab title="Develop">
 
-The `TextInput` component can be used for any text/number based input within a form. The initial release for this component has been written to work with <a href="https://jaredpalmer.com/formik/">Formik</a> though a Redux Forms variation will follow.
+The `TextInput` component can be used for any text/number based input within a form. The initial release for this component has been written to work with <a href="https://jaredpalmer.com/formik/">Formik</a>, though a Redux Forms variation will follow.
 
-The TextInput component can be used on it's own in a regular form, if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
+The TextInput component can be used on its own in a regular form if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
 
 ### Example with Formik
 <CodeHighlighter source={`<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
@@ -144,7 +144,7 @@ end of a field:
     Type: '(React.SyntheticEvent):void',
     Required: 'True',
     Default: '',
-    Description: 'Called when the field looses focus',
+    Description: 'Called when the field loses focus',
   },
 ]} />
 <br />
@@ -185,7 +185,7 @@ end of a field:
     Type: 'React.ReactNode',
     Required: 'False',
     Default: '',
-    Description: 'An optional component to display at the end of a field, such as a search svg',
+    Description: 'An optional component to display at the end of a field, such as a search SVG',
   },
   {
     Name: 'field',
@@ -220,7 +220,7 @@ end of a field:
     Type: 'React.ReactNode',
     Required: 'False',
     Default: '',
-    Description: 'An optional component to display at the start of a field, such as a search svg',
+    Description: 'An optional component to display at the start of a field, such as a search SVG',
   },
   {
     Name: 'type',

@@ -8,8 +8,8 @@ describe('Modal', () => {
   let wrapper: RenderResult
   let title: string
   let description: string
-  let onConfirm: (event: any) => void
-  let onCancel: (event: any) => void
+  let onConfirm: (event: React.FormEvent<HTMLButtonElement>) => void
+  let onCancel: (event: React.FormEvent<HTMLButtonElement>) => void
   let isOpen: boolean
 
   beforeEach(() => {

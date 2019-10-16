@@ -31,22 +31,20 @@ The Masthead is a simple section at the top of the page that allows the develope
 
   <MastheadAnatomy />
 
-  1. **Container**. The Masthead Container wraps the entire masthead and ensures it stays pinned to the top of the viewport.
-  2. **Search**. The Search button triggers the appearance of the Search Bar. When clicked, the page links in the header
-  3. **Notifications**. The Notification icon displays to the user when they have an unread notification. Clicking on the icon will display the Notification Sheet.
-  4. **Profile**. The Profile button links to the User's profile, including settings.
-  5. **App Nav**. The App Nav works similarly to the [Tabset](/components/tab-set/), allowing the user to quickly navigate between multiple application pages.
+  1. **Container**. The Masthead Container wraps the entire Masthead and ensures it stays pinned to the top of the viewport.
+  2. **Search**. This button triggers the appearance of the Search Bar. When clicked, the page links in the Header.
+  3. **Notifications**. This icon displays to the user when they have an unread notification. Clicking on the icon will display the Notification Sheet.
+  4. **Profile**. This button links to the User's profile, including settings.
+  5. **App Nav**. Works similarly to the [Tabset](/components/tab-set/), allowing the user to quickly navigate between multiple application pages.
 
-  ### States
-  Aside from the active page links (an example of these states is shown in the [Tabset Docs](/components/tab-set/)), the Masthead component only has two states. When the Search button is clicked in the top row of the masthead, the page links are replaced with a full width search bar. Clicking on the Search button again will hide the bar.
-  <MastheadStates />
+### States
+Aside from the active page links (an example of these states is shown in the [Tabset Docs](/components/tab-set/)), the Masthead component only has two states. When the Search button is clicked in the top row of the Masthead, the page links are replaced with a full width search bar. Clicking on the Search button again will hide the bar.
+<MastheadStates />
 
 </Tab>
 
 
 <Tab title="Develop">
-
-The masthead is a simple header section for a website that 
 
 ### Basic
 <CodeHighlighter source={`<Masthead homeLink={{href:'/'}} title="Test" />`} language="javascript">
@@ -107,13 +105,13 @@ The masthead is a simple header section for a website that
     Name: 'homeLink',
     Type: 'LinkTypes',
     Required: 'True',
-    Description: 'An object typically containing a to or href property to indicate the property to use in the LinkComponent to send the user back to the homepage for the service.',
+    Description: 'An object typically containing a `to` or `href` property to indicate the property LinkComponent to send the user back to the homepage for the service.',
   },
   {
     Name: 'LinkComponent',
     Type: 'Component',
     Required: 'False',
-    Description: 'A custom component to render links in the Masthead. If nothing is passed a component requiring a href will be used and will render an anchor tag. If using a library such as React Router then the `Link` component from that library should be passed as a property.',
+    Description: 'A custom component to render links in the Masthead. If nothing is passed a component requiring a href will be used and will render an anchor tag. If using a library such as React Router, than the ‘Link’ component from that library should be passed as a property.',
   },
   {
     Name: 'Logo',
@@ -125,25 +123,25 @@ The masthead is a simple header section for a website that
     Name: 'navItems',
     Type: 'NavItem[] ',
     Required: 'True',
-    Description: 'An array of objects that must least contain a label. If no custom component is provided then provide a href, otherwise provide the the required property associated with the LinkComponent',
+    Description: 'An array of objects that must at least contain a label. If no custom component is provided then provide a href, otherwise provide the required property associated with the LinkComponent',
   },
   {
     Name: 'NotificationsPopoverContent',
     Type: 'Element ',
     Required: 'False',
-    Description: 'If a notification bell should be displayed and a popover with notification content then this property contains the content to show in that popover. Ideally this would contain recent notifications with indication as to if they have been read or not and a link to read them and view others.',
+    Description: 'This property contains the content for the Notifications Popover. Ideally this would contain recent notifications, including read status, and a link to read them.',
   },
   {
     Name: 'onSearch',
     Type: '(term: string) => void',
     Required: 'False',
-    Description: 'If a search function is provided the searchbox is shown and the function called on submission',
+    Description: 'If a search function is provided the searchbox is shown and the function called on submission.',
   },
   {
     Name: 'searchPlaceholder',
     Type: 'String',
     Required: 'False',
-    Description: 'Provide a placeholder attribute for the search text input if desired',
+    Description: 'Provide a placeholder attribute for the search text input if desired.',
   },
   {
     Name: 'title',
@@ -161,7 +159,7 @@ The masthead is a simple header section for a website that
     Name: 'user',
     Type: 'UserType',
     Required: 'False',
-    Description: 'If there is a user profile page then pass in a user object detailing the users initials to display a link to profile',
+    Description: 'If your application has a User Profile page, pass in the User object to add their initials to the Avatar sub-component. This Avatar provides a link to the User’s profile.',
   },
 ]} />
 <br />
@@ -171,7 +169,7 @@ The masthead is a simple header section for a website that
     Type: 'string',
     Required: 'True',
     Default: '',
-    Description: 'The text for the link',
+    Description: 'The text for the link.',
   },
   {
     Name: 'active',
@@ -195,7 +193,7 @@ The masthead is a simple header section for a website that
     Type: 'string',
     Required: 'True',
     Default: '',
-    Description: 'A url to send the user to if they wish to see the users profile',
+    Description: "A url to send the user to, if they wish to see their profile.",
   },
 ]} />
 </Tab>

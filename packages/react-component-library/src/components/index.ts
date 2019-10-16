@@ -23,6 +23,7 @@ import Tab from './TabSet/Tab'
 import TabSet from './TabSet'
 import TabNav from './TabNav'
 import TextInput from './TextInput'
+import { Tooltip } from './Tooltip'
 
 export {
   Avatar,
@@ -50,4 +51,5 @@ export {
   TabSet,
   TabNav,
   TextInput,
+  Tooltip,
 }

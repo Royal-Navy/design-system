@@ -1,0 +1,62 @@
+/* stylelint-disable */
+
+/**************************************************************************
+
+    Font Size Utilities
+    =================
+
+    Generates Utility classes for font size.
+
+**************************************************************************/
+
+
+
+@each $_breakpoint, $_breakpoint-val in $__breakpoints {
+  @each $_shortname, $_value in $__typography {
+    @if $_breakpoint == 'root' {
+      .#{$utility-ns}text-#{$_shortname} {
+        font-size: $_value !important;
+      }
+    } @else {
+      @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
+        .#{$_breakpoint}\:#{$utility-ns}text-#{$_shortname} {
+          font-size: $_value !important;
+        }
+      }
+    }
+  }
+}
+
+
+
+/**************************************************************************
+
+    Text Aligning Utilities
+
+**************************************************************************/
+
+@mixin textSharedStyles {
+  &-left {
+    text-align: left !important;
+  }
+  &-center {
+    text-align: center !important;
+  }
+  &-right {
+    text-align: right !important;
+  }
+}
+
+@each $_breakpoint, $_breakpoint-val in $__breakpoints {
+  @if $_breakpoint == 'root' {
+    .#{$utility-ns}text {
+      @include textSharedStyles;
+    }
+  } @else {
+    @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
+      .#{$_breakpoint}\:#{$utility-ns}text {
+          @include textSharedStyles;
+      }
+    }
+  }
+}

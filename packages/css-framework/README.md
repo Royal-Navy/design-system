@@ -51,13 +51,13 @@ In the example above, we are updating the `text 00` value to `#FF0000` (red) and
 
 ---
 
-# Helpers
+# Utility classes
 
-Several different helpers are provided by this framework. This is to ensure consistency when building applications, and to hopefully mitigate any UI bugs that could occour by leaking styles.
+Several different Utility classes are provided by this framework. This is to ensure consistency when building applications, and to hopefully mitigate any UI bugs that could occur by leaking styles.
 
 ## z-index
 
-To ensure correct z-axis stacking in NELSON applications, a z-index helper is provided.
+To ensure correct z-axis stacking in NELSON applications, a z-index Utility class is provided.
 
 z-index can be set via a mixin named z-index:
 ```
@@ -92,7 +92,7 @@ Occasionally, a group alone won't be enough to ensure a correct z-axis stack. An
 
 ## Breakpoints
 
-NELSON applications are built Mobile First. A number of breakpoints are provided by default, and also tie into the Spacing helper classes & variables:
+NELSON applications are built Mobile First. A number of breakpoints are provided by default, and also tie into the Spacing Utility classes & variables:
 ```
 - root: 0px
 - s: 576px

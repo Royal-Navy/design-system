@@ -12,7 +12,7 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 # Breakpoints
 
-The Standards Toolkit provides default breakpoint sizes to use in your applications.
+The **Standards Toolkit** provides default breakpoint sizes to use in your applications.
 
 <DataTable data={[
   {
@@ -51,7 +51,7 @@ The Standards Toolkit has two methods available for using the default breakpoint
 
 ## Inside your SCSS
 
-To use breakpoints inside your CSS, the Standards Toolkit provides mixins to help:
+To use breakpoints inside your SCSS, the **Standards Toolkit** provides mixins to help:
 
 <CodeHighlighter 
 source={`@mixin breakpoint('s') {
@@ -64,12 +64,12 @@ source={`@mixin breakpoint('s') {
 />
 
 
-# Helper Classes
+# Utility classes
 
-Breakpoints are also available for each helper class the toolkit provides. Simple prepend a helper class with the breakpoint size you require to use them:
+The **Toolkit** provides Breakpoints for each Utility class. Simply pre-pend a Utility class with a breakpoint size.
 
 <CodeHighlighter 
-source={`.md:h_mt-4
-.lg:h-mt-10
+source={`.md:rn_mt-4
+.lg:rn_mt-10
 `} language="css"
 />

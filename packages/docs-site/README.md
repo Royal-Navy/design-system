@@ -14,7 +14,7 @@ The codebase for the royalnavy.io site. It is based on [GatsbyJs](https://www.ga
 
 ### Step one: Installation
 
-In a command line application, simply run `npm install`. This will go and find all therem required dependencies and install them.
+In a command line application, simply run `npm install`. This will go and find all the required dependencies and install them.
 
 > **Note:**  
  This currently contains package dependencies from GitHub.   These may take some time to install and will reside in a  `git_modules` folder. Do not delete this folder.

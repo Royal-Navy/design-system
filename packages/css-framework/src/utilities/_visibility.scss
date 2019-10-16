@@ -1,0 +1,30 @@
+/* stylelint-disable */
+
+// Visibility Utility
+
+@mixin visibilitySharedStyles {
+  &visible {
+    visibility: visible !important;
+  }
+  &hidden {
+    visibility: hidden !important;
+  }
+  &none {
+    display: none !important;
+  }
+}
+
+
+@each $_breakpoint, $_breakpoint-val in $__breakpoints {
+  @if $_breakpoint == 'root' {
+    .#{$utility-ns} {
+      @include visibilitySharedStyles;
+    }
+  } @else {
+    @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
+      .#{$_breakpoint}\:#{$utility-ns} {        
+          @include visibilitySharedStyles;
+      }
+    }
+  }
+}

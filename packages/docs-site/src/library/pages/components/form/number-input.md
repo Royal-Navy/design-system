@@ -33,18 +33,18 @@ The Number Input allows the user to step between predetermined values. They can 
   <NumberClickerAnatomy /> 
 
   1. **Label**. The Label should be used to describe to the user what the desired input should be. Every field should have a text label. The label should always be visible on all inputs, excluding search bars.
-  2. **User Input**. The main area the user enters a value.
+  2. **User Input**. The main area in which the user enters a value.
   3. **Directional Buttons**. The Directional buttons step between predetermined values.
   4. **Container**. The Container wraps the entire component.
 
   
 ### Sizing & Spacing
-The Number Input is only available in 1 size. It has been created in relation to other inputs, so will line up correctly in forms.
+The Number Input is only available in one size. It has been created in relation to other inputs, so it will line up correctly in forms.
 
 ### States
 <NumberClickerStates />
 
-The Number Input has two states - Default and Focused.
+The Number Input has two states - `Default` and `Focused`.
 
 <NumberClickerButtonStates />
 
@@ -219,7 +219,7 @@ The NumberInput can be used in conjunction with `withFormik` to allow it to be u
     Type: 'number',
     Required: 'False',
     Default: '1',
-    Description: 'The number to increase/decrease a number when the buttons are clicked. Note that user can still enter a number that does not conform to this step so this should be used in conjuction with validation rules',
+    Description: 'The number to increase/decrease a number when the buttons are clicked. Note that user can still enter a number that does not conform to this step, so this should be used in conjunction with validation rules',
   },
   {
     Name: 'value',

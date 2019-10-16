@@ -1,0 +1,26 @@
+/* stylelint-disable */
+// Sizing Utility
+$axes: (
+  width: w,
+  height: h
+);
+
+// Build Spacing Utility Classes
+
+@each $_breakpoint, $_breakpoint-val in $__breakpoints {
+  @each $_size, $_multiplier in $__spacing {
+    @each $_axis, $_axis-shortname in $axes {
+      @if $_breakpoint == 'root' {
+        .#{$utility-ns}#{$_axis-shortname}-#{$_size} {
+          #{$_axis}: $_multiplier !important;
+        }
+      } @else {
+        @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
+          .#{$_breakpoint}\:#{$utility-ns}#{$_axis-shortname}-#{$_size} {
+            #{$_axis}: $_multiplier !important;
+          }
+        }
+      }
+    }
+  }
+}

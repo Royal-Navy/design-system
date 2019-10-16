@@ -23,56 +23,52 @@
     "url": "https://github.com/Royal-Navy/nelson-frontend-component-library/issues"
   },
   "scripts": {
-    "build": "webpack --config webpack/webpack.prod.js",
+    "build": "webpack",
     "build-storybook": "build-storybook",
     "lint": "eslint src",
     "lint-staged": "lint-staged",
-    "postinstall": "yarn build",
     "storybook": "start-storybook -p 6006",
-    "release": "release-it",
-    "test": "jest --silent --no-cache",
-    "prepare": "yarn build"
+    "test": "jest --silent --no-cache"
   },
   "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react": "^16.9.0 | ^16.10.0",
+    "react-dom": "^16.9.0 | ^16.10.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "prop-types": "^15.7.2",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "@storybook/react": "^5.1.11",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@storybook/react": "^5.2.3",
+    "@testing-library/jest-dom": "^4.1.2",
+    "@testing-library/react": "^9.3.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "enzyme-to-json": "^3.4.0",
-    "eslint": "^6.3.0",
+    "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.2.0",
-    "eslint-junit": "^1.0.1",
+    "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.2",
-    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.14.3",
-    "husky": "^3.0.5",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
     "jest-junit": "^8.0.0",
-    "lint-staged": "^9.2.5",
-    "lodash": "^4.17.15",
-    "npm-check": "^5.9.0",
+    "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
-    "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "release-it": "^12.3.6",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7",
-    "webpack-merge": "^4.2.2"
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "source-map-loader": "^0.2.4",
+    "webpack": "^4.41.1",
+    "webpack-cli": "^3.3.9"
   },
   "babel": {
     "presets": [
@@ -80,7 +76,7 @@
       "@babel/preset-react"
     ],
     "plugins": [
-      "@babel/plugin-proposal-class-properties"
+      "@babel/proposal-class-properties"
     ]
   },
   "eslintConfig": {
@@ -97,29 +93,7 @@
     "plugins": [
       "prettier"
     ],
-    "parser": "babel-eslint",
-    "rules": {
-      "import/no-extraneous-dependencies": 0,
-      "jsx-a11y/label-has-for": 0,
-      "jsx-a11y/label-has-associated-control": 0,
-      "react/destructuring-assignment": 0,
-      "react/jsx-filename-extension": [
-        1,
-        {
-          "extensions": [
-            ".js"
-          ]
-        }
-      ],
-      "react/jsx-one-expression-per-line": 0
-    },
-    "settings": {
-      "import/resolver": {
-        "webpack": {
-          "config": "webpack/webpack.dev.js"
-        }
-      }
-    }
+    "parser": "babel-eslint"
   },
   "prettier": {
     "bracketSpacing": true,
@@ -130,18 +104,7 @@
   "lint-staged": {
     "*.@(js)": "eslint"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint-staged"
-    }
-  },
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "setupFiles": [
-      "./tests/setup-tests.js"
-    ],
     "testMatch": [
       "**/?(*.)(spec|test).js?(x)"
     ]

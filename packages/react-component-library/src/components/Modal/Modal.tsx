@@ -9,7 +9,7 @@ import { Footer } from './Footer'
 
 export interface ModalProps extends ComponentWithClass {
   children?: any
-  onClose?: (event: React.SyntheticEvent) => void
+  onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
   primaryButton?: ButtonProps
   secondaryButton?: ButtonProps
   tertiaryButton?: ButtonProps
@@ -30,7 +30,7 @@ export const Modal: React.FC<ModalProps> = ({
   const [open, setOpen] = useState(isOpen)
   const mutatedPrimaryButton = primaryButton
 
-  function handleOnClose(event: React.SyntheticEvent) {
+  function handleOnClose(event: React.FormEvent<HTMLButtonElement>) {
     setOpen(false)
     onClose(event)
   }

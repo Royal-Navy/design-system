@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`RnBadge.vue snapshot: has same HTML structure 1`] = `<span class="rn-badge default"></span>`;
