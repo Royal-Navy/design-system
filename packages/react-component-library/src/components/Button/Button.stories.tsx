@@ -81,13 +81,6 @@ stories.add('Sizes', () => (
       >
         Large
       </Button>
-      <Button
-        onClick={action('Clicked primary')}
-        variant="primary"
-        size="xlarge"
-      >
-        xLarge
-      </Button>
     </p>
 
     <p>
