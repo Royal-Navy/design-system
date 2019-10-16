@@ -28,7 +28,7 @@
   color: color(neutral, white);  
 }
 
-@include breakpoint("s") {
+@include breakpoint("xs") {
   .rn-footer__meta .rn-container {
     flex-direction: row;
     justify-content: space-between;

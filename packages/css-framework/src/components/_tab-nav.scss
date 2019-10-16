@@ -44,7 +44,7 @@ $btn-focus-width: 0.2rem;
 }
 
 
-@include breakpoint("s") {
+@include breakpoint("xs") {
   .rn-tab-nav {
     display: flex;
     flex-flow: column;

@@ -54,7 +54,7 @@ The Standards Toolkit has two methods available for using the default breakpoint
 To use breakpoints inside your SCSS, the **Standards Toolkit** provides mixins to help:
 
 <CodeHighlighter 
-source={`@mixin breakpoint('s') {
+source={`@mixin breakpoint('xs') {
   // Styles here
 }
 // Result

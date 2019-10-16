@@ -109,7 +109,7 @@ $text-color: #748999;
   }
 }
 
-@include breakpoint("m") {
+@include breakpoint("s") {
   .data-table {
     min-width: 20rem;
     border-collapse: separate;

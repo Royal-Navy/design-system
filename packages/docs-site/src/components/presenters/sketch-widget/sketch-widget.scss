@@ -47,7 +47,7 @@ $body-line-height: calc(64px - 2rem);
   }
 }
 
-@include breakpoint("s") {
+@include breakpoint("xs") {
   .sketch-widget__head {
     flex-flow: initial;
     height: 50px;

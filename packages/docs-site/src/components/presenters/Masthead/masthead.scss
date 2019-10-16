@@ -118,7 +118,7 @@
   width: 210px;
 }
 
-@include breakpoint("s") {
+@include breakpoint("xs") {
   .masthead {
     margin-bottom: 0;
   }

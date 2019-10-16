@@ -95,7 +95,7 @@
   transition: opacity 300ms;
 }
 
-@include breakpoint("s") {
+@include breakpoint("xs") {
   .rn-notification-panel__header {
     display: none;
   }

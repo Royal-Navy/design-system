@@ -35,7 +35,7 @@ a.rn-popover__footer-link {
 }
 
 
-@include breakpoint("s") {
+@include breakpoint("xs") {
   .rn-popover {
     position: absolute;
   }

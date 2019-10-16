@@ -8,7 +8,7 @@
   display: none;
 }
 
-@include breakpoint("s") {
+@include breakpoint("xs") {
   .post-article {
     margin: 0;
     order: 2;
@@ -31,7 +31,7 @@
   }
 }
 
-@include breakpoint("l") {
+@include breakpoint("m") {
   .aside {
     flex: 0 0 320px;
   }

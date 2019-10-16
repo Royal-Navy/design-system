@@ -65,7 +65,7 @@
   margin-top: spacing(2);
 }
 
-@include breakpoint("s") {
+@include breakpoint("xs") {
   .rn-nav.rn-nav--horizontal .rn-nav__list {
     flex-direction: row;
   }

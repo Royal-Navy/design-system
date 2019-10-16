@@ -32,7 +32,7 @@
 .home--contact {
   margin-top: spacing(11);
   padding: spacing(8);
-  @include breakpoint('m') {
+  @include breakpoint('s') {
     margin-top: 0;
     padding: spacing(8) spacing(12) spacing(8) spacing(14);
   }
