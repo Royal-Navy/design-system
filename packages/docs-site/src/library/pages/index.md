@@ -12,14 +12,14 @@ header: false
 
 import Card from '../../components/presenters/card'
 
-<section class="m:h_f m:h_f-align-start h_mt-8 m:h_mb-16">
+<section class="m:rn_f m:rn_f-align-start rn_mt-8 m:rn_mb-16">
   <Card 
     type="border" 
     title="Styles" 
     text="Make your service look like it's for the Royal Navy with guides for applying colour, typography and spacing." 
     linkText="View styles" 
     linkHref="/styles"
-    className="m:h_f-1 m:h_mr-4"
+    className="m:rn_f-1 m:rn_mr-4"
   />
 
   <Card 
@@ -28,19 +28,19 @@ import Card from '../../components/presenters/card'
     text="Save time with reusable, accessible components for forms, navigation, cards and more." 
     linkText="View components" 
     linkHref="/components" 
-    className="m:h_f-1  m:h_ml-4 h_mt-8 m:h_mt-0"
+    className="m:rn_f-1  m:rn_ml-4 rn_mt-8 m:rn_mt-0"
   />
 </section>
 
 <section class="home--info">
   <h2 class="home__title">Latest updates</h2>
-  <div class="m:h_f m:h_f-align-start">
+  <div class="m:rn_f m:rn_f-align-start">
   <Card 
     type="coloured" 
     title="Standards v1.0.0 released" 
     meta="25th July 2019"
     text={<span>This launch includes the new <strong>Standards</strong> website providing <strong>'get started'</strong> guides for designers and developers, styling and component usage guidelines, and information about <strong>Standards</strong> for Royal Navy stakeholders. Please <a href="/contact">get in touch</a> if you have any feedback.</span>}
-    className="m:h_f-1 home--updates"
+    className="m:rn_f-1 home--updates"
   />
 
   <Card
@@ -49,7 +49,7 @@ import Card from '../../components/presenters/card'
     text={<span>Contact the <strong>NELSON Standards</strong> team to find out more about design in the Royal Navy. Request a new component, ask questions and give feedback."</span>}
     linkText="Contact" 
     linkHref="/contact"
-    className="m:h_f-1 home--contact"
+    className="m:rn_f-1 home--contact"
   />
   </div>
 </section>

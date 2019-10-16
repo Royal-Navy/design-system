@@ -90,16 +90,16 @@ $__states: null;
 @import "src/objects/media";
 @import "src/objects/wrapper";
 
-// Helpers
-@import "src/helpers/clearfix";
-@import "src/helpers/flex";
-@import "src/helpers/position";
-@import "src/helpers/shadows";
-@import "src/helpers/sizing";
-@import "src/helpers/spacing";
-@import "src/helpers/shadows";
-@import "src/helpers/typography";
-@import "src/helpers/visibility";
+// Utilities
+@import "src/utilities/clearfix";
+@import "src/utilities/flex";
+@import "src/utilities/position";
+@import "src/utilities/shadows";
+@import "src/utilities/sizing";
+@import "src/utilities/spacing";
+@import "src/utilities/shadows";
+@import "src/utilities/typography";
+@import "src/utilities/visibility";
 
 // Fragments
 @import "src/fragments/form";

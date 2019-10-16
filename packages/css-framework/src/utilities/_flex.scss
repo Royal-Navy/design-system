@@ -55,12 +55,12 @@
 
 @each $_breakpoint, $_breakpoint-val in $__breakpoints {
   @if $_breakpoint == 'root' {
-    .#{$helper-ns}f {
+    .#{$utility-ns}f {
       @include flexSharedStyles;      
     }
   } @else {
     @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
-      .#{$_breakpoint}\:#{$helper-ns}f {        
+      .#{$_breakpoint}\:#{$utility-ns}f {        
           @include flexSharedStyles;
       }
     }

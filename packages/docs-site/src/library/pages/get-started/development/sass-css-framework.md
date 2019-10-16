@@ -4,7 +4,7 @@ description: ''
 header: true
 ---
 
-The @royalnavy/css-framework package provides a compiled version of the component CSS, the helper classes and the source SASS.
+The @royalnavy/css-framework package provides a compiled version of the component CSS, the Utility classes and the source SASS.
 
 The source SASS can be used independently of the component library package, allowing you to make use of included functions and mixins.
 
@@ -54,13 +54,13 @@ In the example above, we are updating the `text 00` value to `#FF0000` (red) and
 
 ---
 
-## Helpers
+## Utility Classes
 
-Several different helpers are provided by this framework. This is to ensure consistency when building applications and mitigate any UI bugs that could occur by leaking styles.
+Several different Utility classes are provided by this framework. This is to ensure consistency when building applications and mitigate any UI bugs that could occur by leaking styles.
 
 ## z-index
 
-To ensure correct z-axis stacking in NELSON applications, a z-index helper is provided.
+To ensure correct z-axis stacking in NELSON applications, a z-index Utility class is provided.
 
 z-index can be set via a mixin named z-index:
 ```
@@ -92,7 +92,7 @@ An optional modifier value can be added to the z-index mixin, which will be adde
 
 ## Breakpoints
 
-**NELSON** applications are built Mobile First. A number of breakpoints are provided by default and also tie into the Spacing helper classes and variables:
+**NELSON** applications are built Mobile First. A number of breakpoints are provided by default and also tie into the Spacing Utility classes and variables:
 
 ```
 - root: 0px
