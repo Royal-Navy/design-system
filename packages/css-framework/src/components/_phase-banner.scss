@@ -1,14 +1,14 @@
 .rn-phase-banner {
   background-color: color(primary, 100);
-  padding-top: spacing(2);
-  padding-bottom: spacing(2);
+  padding-top: spacing(4);
+  padding-bottom: spacing(4);
 }
 
 .rn-phase-banner__text {
   display: inline-block;
   font-size: font-size(xs);
   vertical-align: middle;
-  margin-left: spacing(2);
+  margin-left: spacing(4);
   color: color(neutral, 800);
 }
 
@@ -20,5 +20,5 @@
 .rn-phase-banner .rn-badge {
   margin: 0;
   text-transform: capitalize;
-  margin-right: spacing(1);
+  margin-right: spacing(2);
 }

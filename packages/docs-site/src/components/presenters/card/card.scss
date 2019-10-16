@@ -30,7 +30,7 @@ $card-background-color: #f0f4f8;
 
 .card__head {
   background-color: transparent;
-  padding: spacing(6) spacing(6) 0;
+  padding: spacing(11) spacing(11) 0;
   font-size: font-size(xl);
   font-weight: 600;
 }
@@ -41,14 +41,14 @@ $card-background-color: #f0f4f8;
 
 
 .card__body {
-  padding: spacing(2) spacing(6) spacing(6);
+  padding: spacing(4) spacing(11) spacing(11);
   font-size: font-size(s);
 }
 
 .card__image {
   display: block;
   width: 100%;
-  margin-top: spacing(4);
+  margin-top: spacing(8);
 }
 
 @include breakpoint('s') {
@@ -64,12 +64,12 @@ $card-background-color: #f0f4f8;
 
   .card__image--position-left {
     float: left;
-    margin: spacing(4) spacing(4) 0 0;
+    margin: spacing(8) spacing(8) 0 0;
   }
 
   .card__image--position-right {
     float: right;
-    margin: spacing(4) 0 0 spacing(4);
+    margin: spacing(8) 0 0 spacing(8);
   }
 }
 
@@ -85,7 +85,7 @@ $card-background-color: #f0f4f8;
 
   svg {
     height: 12px;
-    margin-left: spacing(2);
+    margin-left: spacing(4);
   }
 }
 
@@ -102,7 +102,7 @@ $card-background-color: #f0f4f8;
 }
 
 .card--border .card__head {
-  padding: spacing(4) spacing(6);
+  padding: spacing(8) spacing(11);
   background-color: $card-background-color;
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
@@ -128,7 +128,7 @@ $card-background-color: #f0f4f8;
 }
 
 .card--coloured .card__meta {
-  margin-bottom: spacing(2);
+  margin-bottom: spacing(4);
   font-size: font-size(s);
   color: #698098;
 }

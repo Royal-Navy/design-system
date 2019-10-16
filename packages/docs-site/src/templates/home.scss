@@ -2,16 +2,16 @@
 
 .home--info {
   border-top: 1px dotted color(neutral, 200);
-  padding: spacing(10) 0;
+  padding: spacing(13) 0;
 }
 
 .home__title {
   font-size: font-size(xl);
-  margin-bottom: spacing(8);
+  margin-bottom: spacing(12);
 }
 
 .home--updates {
-  padding: spacing(4);
+  padding: spacing(8);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 
   .card__title {
@@ -30,11 +30,11 @@
 }
 
 .home--contact {
-  margin-top: spacing(6);
-  padding: spacing(4);
+  margin-top: spacing(11);
+  padding: spacing(8);
   @include breakpoint('m') {
     margin-top: 0;
-    padding: spacing(4) spacing(8) spacing(4) spacing(12);
+    padding: spacing(8) spacing(12) spacing(8) spacing(14);
   }
   .card__title {
     font-size: font-size(l);

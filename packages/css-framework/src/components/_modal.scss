@@ -32,7 +32,7 @@
 .rn-modal__header {
   display: flex;
   justify-content: space-between;
-  padding: spacing(6);
+  padding: spacing(11);
   border-bottom: 1px solid color(neutral, 100);
 }
 
@@ -56,12 +56,12 @@
 }
 
 .rn-modal .rn-modal__container {
-  padding: spacing(4) spacing(4);
+  padding: spacing(8) spacing(8);
 }
 
 .rn-modal__footer {
   display: flex;
-  padding: spacing(4);
+  padding: spacing(8);
   border-top: 1px solid color(neutral, 100);
 }
 
@@ -76,7 +76,7 @@
 }
 
 .rn-modal .rn-btn.rn-modal__primary-button {
-  margin-left: spacing(2);
+  margin-left: spacing(4);
 }
 
 .rn-modal__divider {

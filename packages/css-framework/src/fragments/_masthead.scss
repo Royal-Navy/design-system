@@ -19,7 +19,7 @@ $masthead-main-height: 58px;
   font-weight: bold;
   align-items: center;
   text-decoration: none;
-  margin-left: spacing(5);
+  margin-left: spacing(10);
   cursor: pointer;
 
   &:hover {
@@ -31,7 +31,7 @@ $masthead-main-height: 58px;
   }
 
   .rn-masthead__title {
-    margin-left: spacing(2);
+    margin-left: spacing(4);
   }
 }
 

@@ -15,7 +15,7 @@ $text-color: #748999;
 
 .data-table__caption {
   caption-side: top;
-  padding: spacing(4) 0 spacing(6);
+  padding: spacing(8) 0 spacing(11);
   text-align: left;
   color: $heading-color;
   font-weight: 700;
@@ -49,7 +49,7 @@ $text-color: #748999;
 
 .data-table__row {
   display: block;
-  padding: spacing(8) 0;
+  padding: spacing(12) 0;
   border-bottom: 1px dashed $border-color;
   background-color: $background-color;
 
@@ -65,13 +65,13 @@ $text-color: #748999;
 
 .data-table__heading,
 .data-table__cell {
-  padding: spacing(4);
+  padding: spacing(8);
 }
 
 .data-table__cell {
   display: flex;
   align-items: center;
-  padding: 0 spacing(4) 0 0;
+  padding: 0 spacing(8) 0 0;
   border: 1px solid $border-color;
   border-bottom: none;
 
@@ -79,8 +79,8 @@ $text-color: #748999;
     content: attr(data-column);
     display: inline-block;
     flex: 0 0 10rem;
-    padding: spacing(4);
-    margin-right: spacing(4);
+    padding: spacing(8);
+    margin-right: spacing(8);
     border-right: 1px solid $border-color;
     font-weight: 700;
     color: $heading-color;
@@ -88,7 +88,7 @@ $text-color: #748999;
   }
 
   &:first-of-type {
-    padding: 0 0 spacing(4) 0;
+    padding: 0 0 spacing(8) 0;
     border: none;
     font-size: font-size(m);
 

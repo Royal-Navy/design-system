@@ -1,7 +1,7 @@
 @import "@royalnavy/css-framework";
 
 .masthead {
-  margin-bottom: spacing(3);
+  margin-bottom: spacing(6);
   background: white;
 }
 
@@ -9,18 +9,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: spacing(3);
-  padding-bottom: spacing(3);
+  padding-top: spacing(6);
+  padding-bottom: spacing(6);
 }
 
 .masthead .masthead__button {
-  margin-left: spacing(3);
+  margin-left: spacing(6);
 }
 
 .masthead__nav {
   display: none;
-  padding-top: spacing(3);
-  padding-bottom: spacing(3);
+  padding-top: spacing(6);
+  padding-bottom: spacing(6);
 }
 
 .masthead__nav.is-open {
@@ -55,9 +55,9 @@
 }
 
 .masthead__nav .rn-nav__list .rn-nav__list {
-  margin-top: spacing(1);
-  margin-bottom: spacing(4);
-  padding: 0 spacing(6);
+  margin-top: spacing(2);
+  margin-bottom: spacing(8);
+  padding: 0 spacing(11);
 }
 
 .masthead__nav .rn-nav__list .rn-nav__list .rn-nav__item {
@@ -93,8 +93,8 @@
 
 // "[...]overview"
 .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list .rn-nav__list-item:first-of-type {
-  padding-bottom: spacing(4);
-  margin-bottom: spacing(4);
+  padding-bottom: spacing(8);
+  margin-bottom: spacing(8);
   border-bottom: 1px dashed color(neutral, 200);
 }
 

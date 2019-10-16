@@ -5,7 +5,7 @@
 
 .rn-autosuggest__input {
   width: 100%;
-  padding: spacing(3);
+  padding: spacing(6);
   border-radius: 3px;
   @include font-size(s);
   border: 1px solid color(neutral, 400);
@@ -31,7 +31,7 @@
   border: 1px solid color(neutral, 200);
   background-color: color(neutral, white);
   border-radius: 5px;
-  padding: spacing(1) 0;
+  padding: spacing(2) 0;
   min-width: 160px;
   opacity: 0;
   transform: translate3d(0, -10px, 0);
@@ -47,7 +47,7 @@
 .rn-autosuggest__suggestion {
   cursor: pointer;
   @include font-size(xs);    
-  padding: spacing(2) spacing(3);
+  padding: spacing(4) spacing(6);
   display: flex;
   justify-content: space-between;
   color: color(neutral, 800);

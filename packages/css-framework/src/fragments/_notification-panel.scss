@@ -53,7 +53,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: spacing(3) 0;
+  padding: spacing(6) 0;
   border-bottom: 1px solid color(neutral, 100);
   margin: 0;
 }
@@ -63,7 +63,7 @@
   font-size: font-size(m);
   color: color(neutral, 500);
   margin: 0;
-  padding: 0 spacing(3);
+  padding: 0 spacing(6);
 }
 
 .rn-notification-panel__close {

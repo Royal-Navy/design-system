@@ -99,7 +99,7 @@ The class syntax follows this pattern:
 source={`.rn_[Property]-[Size]`} language="css"
 />
 
-<DataTable className="rn_mt-4" data={[
+<DataTable className="rn_mt-8" data={[
   {
     Property: 'text-',
     Size: 'xs',
@@ -160,7 +160,7 @@ source={`.md:rn_text-xl`} language="css"
 />
 
 
-<DataTable className="rn_mt-4" data={[
+<DataTable className="rn_mt-8" data={[
   {
     Property: 'text-',
     Size: 'xs',

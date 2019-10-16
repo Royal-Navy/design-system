@@ -160,46 +160,87 @@
   );
 
   // Spacing
-
+  // Set to 16px by default
   $__spacer: 1rem;
   $__spacing: (
     0: 0,
     1: (
-      $__spacer * 0.25,
+      // 2px
+      $__spacer * 0.125,
     ),
     2: (
-      $__spacer * 0.5,
+      // 4px
+      $__spacer * 0.25,
     ),
     3: (
-      $__spacer * 0.75,
+      // 6px
+      $__spacer * 0.375,
     ),
-    4: $__spacer,
+    4: (
+      // 8px
+      $__spacer * 0.5,
+    ),
     5: (
-      $__spacer * 1.25,
+      // 10px
+      $__spacer * 0.625,
     ),
     6: (
-      $__spacer * 1.5,
+      // 12px
+      $__spacer * 0.75,
     ),
-    8: (
-      $__spacer * 2,
+    7: (
+      // 14px
+      $__spacer * 0.875,
+    ),
+    // 16px
+    8: $__spacer,
+    9: (
+      // 18px
+      $__spacer * 1.125,
     ),
     10: (
-      $__spacer * 2.5,
+      // 20px 
+      $__spacer * 1.25,
     ),
+    11: (
+      // 24px
+      $__spacer * 1.5,
+    ),    
     12: (
+      // 32px
+      $__spacer * 2,
+    ),    
+    13: (
+      // 40px
+      $__spacer * 2.5,
+    ),    
+    14: (
+      // 48px
       $__spacer * 3,
-    ),
-    16: (
+    ),    
+    15: (
+      // 64px
       $__spacer * 4,
     ),
-    20: (
+    16: (
+      // 80px
       $__spacer * 5,
     ),
-    24: (
+    17: (
+      // 96px
       $__spacer * 6,
     ),
-    32: (
+    18: (
+      // 112px
+      $__spacer * 7,
+    ),
+    19: (
+      // 128px
       $__spacer * 8,
+    ),
+    20: (
+      // 144px
+      $__spacer * 9,
     ),
     px: 1px,
     full: 100%,
@@ -214,17 +255,28 @@
 
   // Typography
   $__typography: (
-    display-xl: 3rem,
-    display-l: 2.25rem,
-    display: 1.875rem,
-    xl: 1.5rem,
-    l: 1.25rem,
-    m: 1.125rem,
-    base: 1rem,
-    s: 0.875rem,
-    xs: 0.75rem,
-    xxs: 0.625rem,
+    // 8px
     xxxs: 0.5rem,
+    // 10px
+    xxs: 0.625rem,
+    // 12
+    xs: 0.75rem,
+    // 14px
+    s: 0.875rem,
+    // 16px
+    base: 1rem,
+    // 18px
+    m: 1.125rem,
+    // 20px
+    l: 1.25rem,
+    // 24px
+    xl: 1.5rem,
+    // 30px
+    display: 1.875rem,
+    // 36px
+    display-l: 2.25rem,
+    // 48px
+    display-xl: 3rem,
   );
 
   // Z Index Levels

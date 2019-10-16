@@ -8,18 +8,18 @@
 
   &__header {
     background-color: color(neutral, black);
-    padding: spacing(4) 0;
+    padding: spacing(8) 0;
   }
 
   &__nav {
-    padding: spacing(4) 0;
+    padding: spacing(8) 0;
   }
 
   &__link {
     display: block;
     @include font-size(s);
     font-weight: 400;
-    padding: spacing(2) spacing(5);
+    padding: spacing(4) spacing(10);
     color: color(neutral, 200);
     text-decoration: none;
   }
