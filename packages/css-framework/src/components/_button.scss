@@ -13,10 +13,9 @@ $btn-focus-width: 0.2rem;
   background-color: color(neutral, white);
   border: 1px solid transparent;
   border-radius: $btn-border-radius;
-  margin: spacing(2) 0;
   outline: 0;
-  padding: spacing(6) spacing(8);
-  font-size: font-size(xs);
+  padding: spacing(7) spacing(8);
+  font-size: font-size(base);
   font-weight: $btn-font-weight;
   line-height: 1;
   text-align: center;
@@ -25,6 +24,7 @@ $btn-focus-width: 0.2rem;
   user-select: none;
   transition: all $animation-timing;
   text-decoration: none;
+  white-space: nowrap;
 
   &:hover {
     text-decoration: none;
@@ -80,16 +80,18 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn.rn-btn--small {
-  font-size: font-size(xxs);
-  padding: spacing(4) spacing(6);
+  line-height: 1.1;
+  font-size: font-size(s);
+  padding: spacing(5) spacing(6);
 }
 
 .rn-btn.rn-btn--large {
-  font-size: font-size(s);
-  padding: spacing(6) spacing(10);
+  line-height: 0.9;
+  font-size: font-size(xl);
+  padding: spacing(7) spacing(10);
 }
 
-.rn-btn.rn-btn--xlarge {
+.rn-btn.rn-btn--xlarge {  
   font-size: font-size(m);
   padding: spacing(6) spacing(10);
 }
