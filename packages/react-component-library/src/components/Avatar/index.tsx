@@ -1,17 +1,25 @@
+import classNames from 'classnames'
 import React from 'react'
 
-interface AvatarProps {
+export interface AvatarProps {
   className?: string
   dark?: boolean
   initials: string
+  light?: boolean
 }
 
-const Avatar: React.FC<AvatarProps> = ({ className, dark, initials }) => (
-  <span className={`rn-avatar ${className} ${dark ? 'rn-avatar--dark' : ''}`}>
-    {initials}
-  </span>
-)
+export const Avatar: React.FC<AvatarProps> = ({
+  className,
+  dark,
+  initials,
+  light,
+}) => {
+  const classes = classNames('rn-avatar', className, {
+    'rn-avatar--dark': dark,
+    'rn-avatar--light': light,
+  })
+
+  return <span className={classes}>{initials}</span>
+}
 
 Avatar.displayName = 'Avatar'
-
-export default Avatar
