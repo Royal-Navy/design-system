@@ -1,5 +1,5 @@
 // Components
-import Avatar from './components/Avatar'
+import { Avatar } from './components/Avatar'
 import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
 import { Button } from './components/Button'
@@ -21,6 +21,7 @@ import Radio from './components/Radio'
 import Tab from './components/TabSet/Tab'
 import TabSet from './components/TabSet'
 import TextInput from './components/TextInput'
+import { Tooltip } from './components/Tooltip'
 
 // Icons
 import * as Icons from './icons'
@@ -54,10 +55,8 @@ export {
   Tab,
   TabSet,
   TextInput,
-
+  Tooltip,
   Icons,
-
   Formik,
-
-  withFormik
+  withFormik,
 }

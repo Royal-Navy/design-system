@@ -37,6 +37,10 @@ $btn-focus-width: 0.2rem;
   &:focus {    
     box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
   }
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .rn-scrollable-nav__item.is-active .rn-scrollable-nav__link {

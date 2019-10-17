@@ -4,7 +4,7 @@ description:  A simple banner to indicate the phase of the project.
 header: true
 ---
 
-import { PaseBanner, Tab, TabSet } from '@royalnavy/react-component-library'
+import { PhaseBanner, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'

@@ -5,7 +5,7 @@ orbs:
 
 commands:
   dependencies:
-    description: "Load dependency cache, get dependencies and update cache"
+    description: 'Load dependency cache, get dependencies and update cache'
     steps:
       - restore_cache:
           keys:
@@ -85,21 +85,6 @@ jobs:
           path: packages/storybook-react-input-state/test-results
       - store_artifacts:
           path: packages/storybook-react-input-state/test-results
-  lint_vue-component-library:
-    executor: node
-    steps:
-      - checkout
-      - dependencies
-      - run: mkdir -p packages/vue-component-library/test-results/eslint
-      - run:
-          name: Lint
-          environment:
-            ESLINT_JUNIT_OUTPUT: test-results/eslint/vue-component-results.xml
-          command: yarn --cwd packages/vue-component-library eslint -f ../../node_modules/eslint-junit/index.js ./src
-      - store_test_results:
-          path: packages/vue-component-library/test-results
-      - store_artifacts:
-          path: packages/vue-component-library/test-results
   test_react-component-library:
     executor: node
     steps:
@@ -139,24 +124,6 @@ jobs:
           root: packages
           paths:
             - storybook-react-input-state/coverage
-  test_vue-component-library:
-    executor: node
-    steps:
-      - checkout
-      - dependencies
-      - run:
-          name: Jest
-          environment:
-            JEST_JUNIT_OUTPUT: test-results/jest/vue-component-results.xml
-          command: yarn --cwd packages/vue-component-library jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
-      - store_test_results:
-          path: packages/vue-component-library/test-results
-      - store_artifacts:
-          path: packages/vue-component-library/test-results
-      - persist_to_workspace:
-          root: packages
-          paths:
-            - vue-component-library/coverage
   code_climate:
     executor: node
     steps:
@@ -176,13 +143,9 @@ jobs:
           working_directory: ~/project
           command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.storybook-react-input-state.json workspace/storybook-react-input-state/coverage/lcov.info
       - run:
-          name: Convert vue results to cc format
-          working_directory: ~/project
-          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.vue-component-library.json workspace/vue-component-library/coverage/lcov.info
-      - run:
           name: Combine coverage results
           working_directory: ~/project
-          command: /tmp/cc-test-reporter sum-coverage workspace/codeclimate.*.json -p 3 -o workspace/coverage.json
+          command: /tmp/cc-test-reporter sum-coverage workspace/codeclimate.*.json -p 2 -o workspace/coverage.json
       - run:
           name: Upload CC coverage
           working_directory: ~/project
@@ -237,18 +200,6 @@ jobs:
       - run:
           name: Publish package
           working_directory: packages/react-component-library
-          command: npm publish --registry https://$NPM_REGISTRY
-  publish_vue-component-library:
-    executor: node
-    steps:
-      - checkout
-      - dependencies
-      - run:
-          name: Authenticate NPM
-          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-      - run:
-          name: Publish package
-          working_directory: packages/vue-component-library
           command: npm publish --registry https://$NPM_REGISTRY
   publish_icon-library:
     executor: node
@@ -341,7 +292,6 @@ workflows:
       - lint_css-framework
       - lint_react-component-library
       - lint_storybook-react-input-state
-      - lint_vue-component-library
       - lint_docs_site
       - test_react-component-library:
           requires:
@@ -349,14 +299,10 @@ workflows:
       - test_storybook-react-input-state:
           requires:
             - lint_storybook-react-input-state
-      - test_vue-component-library:
-          requires:
-            - lint_vue-component-library
       - code_climate:
           requires:
             - test_react-component-library
             - test_storybook-react-input-state
-            - test_vue-component-library
       - publish_storybook-react-input-state:
           requires:
             - test_storybook-react-input-state
@@ -390,19 +336,10 @@ workflows:
             branches:
               only:
                 - master
-      # - publish_vue-component-library:
-      #     requires:
-      #       - test_vue-component-library
-      #       - publish_css-framework
-      #     filters:
-      #       branches:
-      #         only:
-      #           - master
       - test_docs-site:
           requires:
             - test_react-component-library
             - test_storybook-react-input-state
-            - test_vue-component-library
       - build_docs-site:
           requires:
             - test_docs-site
@@ -415,9 +352,6 @@ workflows:
                 - develop
       - deploy_docs_site_production:
           requires:
-            # - publish_css-framework
-            # - publish_react-component-library
-            # - publish_vue-component-library
             - build_docs-site
           filters:
             branches:
