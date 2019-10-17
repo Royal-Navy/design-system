@@ -4,8 +4,8 @@ description: Text inputs let users enter and edit text.
 header: true
 ---
 
-import { Links, Tab, TabSet, TextInput } from '@royalnavy/react-component-library'
-import Field from '../../../../components/containers/Field'
+import { Links, Tab, TabSet, Formik as FormComponents} from '@royalnavy/react-component-library'
+import { Field, Formik, Form } from 'formik'
 import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
@@ -88,11 +88,12 @@ The TextInput component can be used on its own in a regular form if you use the 
   <Field name="search" component={TextInput} placeholder="search" />
 </Form>
 </Formik>`} language="javascript">
-  <div>
-      <Field className="rn-textinput--is-valid" name="colour" component={TextInput} label="My Label" />
+  <Formik initialValues={{name: '', city: '', hero: '', fruit: '', search: ''}} onSubmit={() => {}}> 
+  <Form>fred
+      <Field className="rn-textinput--is-valid" name="colour" component={FormComponents.TextInput} label="My Label" />
       <Field 
         name="name" 
-        component={TextInput} 
+        component={FormComponents.TextInput} 
         label="Name" 
         form={{
           errors: {
@@ -103,11 +104,12 @@ The TextInput component can be used on its own in a regular form if you use the 
           }
         }}
         />
-      <Field name="city" component={TextInput} label="City" />
-      <Field name="hero" component={TextInput} endAdornment={<Icons.Search />} label="Hero" />
-      <Field name="fruit" component={TextInput} startAdornment={<Icons.Search />} label="Fruit" />
-      <Field name="search" component={TextInput} placeholder="search" />
-  </div>
+      <Field name="city" component={FormComponents.TextInput} label="City" />
+      <Field name="hero" component={FormComponents.TextInput} endAdornment={<Icons.Search />} label="Hero" />
+      <Field name="fruit" component={FormComponents.TextInput} startAdornment={<Icons.Search />} label="Fruit" />
+      <Field name="search" component={FormComponents.TextInput} placeholder="search" />
+      </Form>
+  </Formik>
 </CodeHighlighter>
 
 
