@@ -29,7 +29,11 @@ $btn-focus-width: 0.2rem;
   border-bottom: 4px solid transparent;
   cursor: pointer;
 
-  &:focus {
+  &:hover {
+    border-bottom: 4px solid color(primary, 600);
+    text-decoration: none;
+  }
+  &:focus {    
     box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
   }
 
