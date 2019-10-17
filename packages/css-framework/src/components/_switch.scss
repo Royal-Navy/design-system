@@ -1,8 +1,8 @@
-$border-radius: 2px;
-$background-color: color(neutral, 0);
-$border-color: color(neutral, 200);
-$active-background-color: color(primary, 500);
-$active-color: color(primary, 600);
+$switch-border-radius: 2px;
+$switch-background-color: color(neutral, 0);
+$switch-border-color: color(neutral, 200);
+$switch-active-background-color: color(primary, 500);
+$switch-active-color: color(primary, 600);
 
 .rn-switch {
   display: flex;
@@ -67,8 +67,8 @@ $active-color: color(primary, 600);
   padding: spacing(2) spacing(4);
   font-size: inherit;
   color: color(neutral, 400);
-  border: 1px solid $border-color;
-  background-color: $background-color;
+  border: 1px solid $switch-border-color;
+  background-color: $switch-background-color;
   position: relative;
   z-index: 0;
   transition: all 0.3s;
@@ -76,7 +76,7 @@ $active-color: color(primary, 600);
   &:hover,
   &.is-active {
     z-index: 1;
-    border: 1px solid $active-color;
+    border: 1px solid $switch-active-color;
     color: white;
   }
   
@@ -85,9 +85,9 @@ $active-color: color(primary, 600);
   }
   
   &.is-active {
-    background-color: $active-background-color;
+    background-color: $switch-active-background-color;
     &:hover {
-      background-color: $active-background-color;
+      background-color: $switch-active-background-color;
     }
   }
 }
