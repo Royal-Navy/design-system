@@ -85,6 +85,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
     "firebase-tools": "^7.3.1",
+    "formik": "^1.5.8",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "jsdom": "^15.1.1",
