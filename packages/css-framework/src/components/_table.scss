@@ -8,6 +8,10 @@
     @include font-size(xs);
     text-transform: uppercase;
     padding: spacing(4) spacing(2);
+
+    &.is-sortable {
+      cursor: pointer;
+    }
   }
   thead {
     border-bottom: 2px solid color(neutral, 100);
@@ -39,12 +43,6 @@
     }
     &.sort-desc .rn-table__arrow--up {
       opacity: 1;
-    }
-  }
-
-  &.sortable {
-    th {
-      cursor: pointer;
     }
   }
 }
