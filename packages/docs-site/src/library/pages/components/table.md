@@ -65,7 +65,7 @@ Whilst there is no restriction on the number of Table instances that can be used
   },
 ]\n
 <Table data={data}>
-  <Column field="first">First</Column>
+  <Column field="first" sortable>First</Column>
   <Column field="second">Second</Column>
   <Column field="third">Third</Column>
 </Table>
@@ -117,6 +117,13 @@ Whilst there is no restriction on the number of Table instances that can be used
     Required: 'True',
     Default: '',
     Description: 'Name of the field to be presented in the cell.',
+  },
+  {
+    Name: 'sortable',
+    Type: 'boolean',
+    Required: 'False',
+    Default: '',
+    Description: 'If specified then the column will be sortable.',
   },
   {
     Name: 'children',
