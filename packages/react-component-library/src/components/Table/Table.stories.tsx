@@ -73,3 +73,41 @@ stories.add('Arbitrary cell content', () => {
     </Table>
   )
 })
+
+stories.add('Sortable', () => {
+  const tableDataMock = [
+    {
+      id: 'a',
+      first: 'Row 1 cell 1',
+      second: 'Row 1 cell 2',
+      third: 'Row 1 cell 3',
+    },
+    {
+      id: 'b',
+      first: 'Row 2 cell 1',
+      second: 'Row 2 cell 2',
+      third: 'Row 2 cell 3',
+    },
+    {
+      id: 'c',
+      first: 'Row 3 cell 1',
+      second: 'Row 3 cell 2',
+      third: 'Row 3 cell 3',
+    },
+  ]
+
+  return (
+    <Table data={tableDataMock}>
+      <Column field="first" sortable>
+        First column
+      </Column>
+      <Column field="second" sortable>
+        Second column
+      </Column>
+      <Column field="third" sortable>
+        Third column
+      </Column>
+    </Table>
+  )
+})
+
