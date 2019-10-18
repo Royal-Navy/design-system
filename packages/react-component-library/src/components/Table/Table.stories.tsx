@@ -1,6 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
+import Badge from '../Badge'
 import { Table, Column } from './index'
 
 const stories = storiesOf('Table', module)
@@ -47,6 +48,28 @@ stories.add('Default', () => {
       <Column field="eighth">Eighth column</Column>
       <Column field="ninth">Ninth column</Column>
       <Column field="tenth">Tenth column</Column>
+    </Table>
+  )
+})
+
+stories.add('Arbitrary cell content', () => {
+  const tableDataMock = [
+    {
+      id: 'a',
+      first: 'Row 1 cell 1',
+      second: <Badge color="success">Online</Badge>,
+    },
+    {
+      id: 'b',
+      first: 'Row 2 cell 1',
+      second: <Badge color="danger">Offline</Badge>,
+    },
+  ]
+
+  return (
+    <Table data={tableDataMock}>
+      <Column field="first">First column</Column>
+      <Column field="second">Status</Column>
     </Table>
   )
 })
