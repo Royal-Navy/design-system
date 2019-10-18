@@ -71,6 +71,26 @@ Whilst there is no restriction on the number of Table instances that can be used
 </Table>
 `} language="javascript" />
 
+### Basic Usage with Aribtrary Cell Content
+<CodeHighlighter source={`const data = [
+  {
+    id: 'a',
+    first: 'a1',
+    second: <Badge color="success">Online</Badge>,
+  },
+  {
+    id: 'b',
+    first: 'b1',
+    second: <Badge color="danger">Offline</Badge>,
+  },
+]\n
+<Table data={data}>
+  <Column field="first">First</Column>
+  <Column field="second">Second</Column>
+  <Column field="third">Third</Column>
+</Table>
+`} language="javascript" />
+
 ### Table Properties
 <DataTable data={[
   {
@@ -78,7 +98,7 @@ Whilst there is no restriction on the number of Table instances that can be used
     Type: '{ id: string }[]',
     Required: 'True',
     Default: '',
-    Description: 'An array of objects for presenting as rows.',
+    Description: 'An array of objects for presenting as rows. Each object has fields which can either be a string or an arbitrary component such as a Badge.',
   },
   {
     Name: 'children',
