@@ -22,7 +22,6 @@
   "scripts": {
     "analyze": "webpack -p --config=webpack/analyze.js",
     "build:dev": "run-s build:ts:dev types",
-    "build:ts:dev": "webpack -p --config=webpack/dev.js",
     "build:ts": "webpack -p --config=webpack/prod.js",
     "build": "run-s build:ts types",
     "dev": "concurrently \"webpack --watch --config=webpack/dev.js\" \"yarn types --watch\"",
@@ -32,8 +31,8 @@
     "prepare": "yarn build",
     "storybook:static": "build-storybook -c .storybook -o .static_storybook",
     "storybook": "start-storybook -p 6006",
-    "test:watch": "NODE_ENV=test jest --watch",
-    "test": "NODE_ENV=test jest",
+    "test:watch": "jest --watch",
+    "test": "jest",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/"
   },
   "lint-staged": {
