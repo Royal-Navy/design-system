@@ -13,15 +13,17 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "run-s svgr exports build:ts types",
+    "build": "run-s clean svgr exports build:ts types",
     "build:ts": "webpack -p --config=webpack/prod.js",
-    "svgr": "rm -rf src/icons; svgr --ext tsx -d src/icons src/assets/**/",
-    "exports": "./generate-exports.sh",
+    "clean": "rimraf src/icons",
+    "svgr": "svgr --ext tsx -d src/icons src/assets/**/",
+    "exports": "node generate-exports.js",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/",
     "prepare": "yarn build"
   },
   "dependencies": {
-    "react": "^16.9.0"
+    "react": "^16.9.0",
+    "rimraf": "^3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
