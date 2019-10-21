@@ -109,7 +109,7 @@ const MyForm = () => (
       validationSchema={ColorSchema}
     >
       <Form>
-        <TextInput label="Colour" name="colour" />
+        <Field component={TextInput} label="Colour" name="colour" />
       </Form>
     </form>
   )
