@@ -21,6 +21,7 @@ import Radio from './components/Radio'
 import Tab from './components/TabSet/Tab'
 import { Table, Column } from './components/Table'
 import TabSet from './components/TabSet'
+import { TextArea } from './components/TextArea'
 import TextInput from './components/TextInput'
 import { Tooltip } from './components/Tooltip'
 
@@ -57,6 +58,7 @@ export {
   Tab,
   Table,
   TabSet,
+  TextArea,
   TextInput,
   Tooltip,
   Icons,

@@ -22,6 +22,7 @@ import ResponsiveSwitch from './Switch'
 import Tab from './TabSet/Tab'
 import TabSet from './TabSet'
 import TabNav from './TabNav'
+import { TextArea } from './TextArea'
 import TextInput from './TextInput'
 import { Tooltip } from './Tooltip'
 
@@ -50,6 +51,7 @@ export {
   Tab,
   TabSet,
   TabNav,
+  TextArea,
   TextInput,
   Tooltip,
 }
