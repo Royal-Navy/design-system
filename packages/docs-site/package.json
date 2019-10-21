@@ -8,14 +8,15 @@
   "author": "NELSON",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "rm -rf ./.cache && gatsby build",
-    "develop": "gatsby develop",
-    "develop:clean": "rm -rf ./.cache && gatsby develop",
+    "build": "run-s cache:clear gatsby:build",
+    "develop": "run-s cache:clear gatsby:develop",
     "format": "prettier --write \"src/**/*.js\"",
+    "gatsby:build": "gatsby build",
+    "gatsby:develop": "gatsby develop",
     "lint": "eslint src",
     "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src",
     "test": "jest",
-    "cache:clear": "rm -rf ./.cache"
+    "cache:clear": "rimraf ./.cache"
   },
   "browserslist": [
     ">0.2%",
@@ -92,6 +93,8 @@
     "lint-staged": "^9.2.5",
     "prettier": "^1.18.2",
     "react-test-renderer": "^16.10.2",
+    "rimraf": "^3.0.0",
+    "run-all": "^1.0.1",
     "sass": "^1.22.10",
     "stylelint": "^10.1.0",
     "stylelint-junit-formatter": "^0.2.2"
