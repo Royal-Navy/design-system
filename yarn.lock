@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@babel/cli@^7.5.5", "@babel/cli@^7.6.0":
+"@babel/cli@^7.5.5", "@babel/cli@^7.6.4":
   version "7.6.4"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.6.4.tgz#9b35a4e15fa7d8f487418aaa8229c8b0bc815f20"
   integrity sha512-tqrDyvPryBM6xjIyKKUwr3s8CzmmYidwgdswd7Uc/Cv0ogZcuS1TYQTLx/eWKP3UbJ6JxZAiYlBZabXm/rtRsQ==
@@ -86,7 +86,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@>=7.2.2", "@babel/core@^7.0.0", "@babel/core@^7.1.0", "@babel/core@^7.4.5", "@babel/core@^7.5.4", "@babel/core@^7.5.5", "@babel/core@^7.6.0", "@babel/core@^7.6.4":
+"@babel/core@>=7.2.2", "@babel/core@^7.0.0", "@babel/core@^7.1.0", "@babel/core@^7.4.5", "@babel/core@^7.5.4", "@babel/core@^7.5.5", "@babel/core@^7.6.4":
   version "7.6.4"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.6.4.tgz#6ebd9fe00925f6c3e177bb726a188b5f578088ff"
   integrity sha512-Rm0HGw101GY8FTzpWSyRbki/jzq+/PkNQJ+nSulrdY6gFGOsNseCqD6KHRYe2E+EdzuBdr2pxCp6s4Uk6eJ+XQ==
@@ -854,7 +854,7 @@
     js-levenshtein "^1.1.3"
     semver "^5.5.0"
 
-"@babel/preset-env@^7.4.5", "@babel/preset-env@^7.5.5", "@babel/preset-env@^7.6.0", "@babel/preset-env@^7.6.3":
+"@babel/preset-env@^7.4.5", "@babel/preset-env@^7.5.5", "@babel/preset-env@^7.6.3":
   version "7.6.3"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.6.3.tgz#9e1bf05a2e2d687036d24c40e4639dc46cef2271"
   integrity sha512-CWQkn7EVnwzlOdR5NOm2+pfgSNEZmvGjOhlCHBDq0J8/EStr+G+FvPEiz9B56dR6MoiUFjXhfE4hjLoAKKJtIQ==
@@ -2885,7 +2885,7 @@
     "@svgr/babel-plugin-transform-react-native-svg" "^4.2.0"
     "@svgr/babel-plugin-transform-svg-component" "^4.2.0"
 
-"@svgr/cli@^4.3.2":
+"@svgr/cli@^4.3.3":
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/@svgr/cli/-/cli-4.3.3.tgz#90b3acd1e1067b73a4dd6a768eea86d0dccf975c"
   integrity sha512-FHsb9+2zMy9XZgEBFEh+1iofE0TBQn7OnJ9JF/2YimdyE93u2/j1p1K71+rJQ0GWKy96aSSbFWkRVR1i3zATOQ==
@@ -20689,7 +20689,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.4.5, typescript@^3.6.3:
+typescript@^3.4.5, typescript@^3.6.4:
   version "3.6.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.4.tgz#b18752bb3792bc1a0281335f7f6ebf1bbfc5b91d"
   integrity sha512-unoCll1+l+YK4i4F8f22TaNVPRHcD9PA3yCuZ8g5e0qGqlVlJ/8FSateOLLSagn+Yg5+ZwuPkL8LFUc0Jcvksg==
@@ -21397,7 +21397,7 @@ webpack-bundle-analyzer@^3.4.1:
     opener "^1.5.1"
     ws "^6.0.0"
 
-webpack-cli@^3.3.7, webpack-cli@^3.3.8, webpack-cli@^3.3.9:
+webpack-cli@^3.3.7, webpack-cli@^3.3.9:
   version "3.3.9"
   resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-3.3.9.tgz#79c27e71f94b7fe324d594ab64a8e396b9daa91a"
   integrity sha512-xwnSxWl8nZtBl/AFJCOn9pG7s5CYUYdZxmmukv+fAHLcBIHM36dImfpQg3WfShZXeArkWlf6QRw24Klcsv8a5A==
@@ -21584,7 +21584,7 @@ webpack@4.39.1:
     watchpack "^1.6.0"
     webpack-sources "^1.4.1"
 
-webpack@^4.0.0, webpack@^4.33.0, webpack@^4.38.0, webpack@^4.39.3, webpack@^4.40.1, webpack@^4.41.1, webpack@~4.41.1:
+webpack@^4.0.0, webpack@^4.33.0, webpack@^4.38.0, webpack@^4.39.3, webpack@^4.41.1, webpack@^4.41.2, webpack@~4.41.1:
   version "4.41.2"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.41.2.tgz#c34ec76daa3a8468c9b61a50336d8e3303dce74e"
   integrity sha512-Zhw69edTGfbz9/8JJoyRQ/pq8FYUoY0diOXqW0T6yhgdhCv6wr0hra5DwwWexNRns2Z2+gsnrNcbe9hbGBgk/A==
