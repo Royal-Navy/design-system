@@ -2,6 +2,7 @@ import '@testing-library/jest-dom/extend-expect'
 import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
+import Badge from '../Badge'
 import { Column, Table } from './index'
 
 describe('Table', () => {
@@ -67,6 +68,35 @@ describe('Table', () => {
     it('should render TD for data cells', () => {
       const firstDataCell = wrapper.getByText('a1')
       expect(firstDataCell.tagName).toEqual('TD')
+    })
+  })
+
+  describe('when a cell contains arbitrary cell content', () => {
+    beforeEach(() => {
+      const tableDataMock = [
+        {
+          id: 'a',
+          first: 'a1',
+          second: <Badge>a2</Badge>,
+        },
+        {
+          id: 'b',
+          first: 'b1',
+          second: <Badge>b2</Badge>,
+        },
+      ]
+
+      wrapper = render(
+        <Table data={tableDataMock}>
+          <Column field="first">First</Column>
+          <Column field="second">Second</Column>
+        </Table>
+      )
+    })
+
+    it('should render the arbitrary cell content', () => {
+      const firstDataCell = wrapper.getByText('a2')
+      expect(firstDataCell.tagName).toEqual('SPAN')
     })
   })
 })
