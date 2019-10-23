@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="perm-scan-wifi-a" d="M7.99999995,1.99999996 C4.63333331,1.99999996 2.09999996,3.2333333 -5.00000006e-08,4.81999998 L7.99999995,14.6666667 L15.9999999,4.83333331 C13.9,3.24666664 11.3666667,1.99999996 7.99999995,1.99999996 Z M8.66666667,10.6666667 L7.33333333,10.6666667 L7.33333333,6.66666666 L8.66666667,6.66666666 L8.66666667,10.6666667 Z M7.33333333,5.33333332 L7.33333333,3.99999998 L8.66666667,3.99999998 L8.66666667,5.33333332 L7.33333333,5.33333332 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="perm-scan-wifi-b" fill="#fff">
+      <use xlink:href="#perm-scan-wifi-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#perm-scan-wifi-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

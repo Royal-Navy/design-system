@@ -1,0 +1,93 @@
+$switch-border-radius: 2px;
+$switch-background-color: color(neutral, 0);
+$switch-border-color: color(neutral, 200);
+$switch-active-background-color: color(primary, 500);
+$switch-active-color: color(primary, 600);
+
+.rn-switch {
+  display: flex;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: font-size(xs);
+  position: relative;
+}
+
+.rn-switch--small {
+  font-size: font-size(xxs);
+
+  .rn-switch__option::before {
+    padding: spacing(2) spacing(3);
+  }
+}
+
+.rn-switch--large {
+  font-size: font-size(s);
+  .rn-switch__option {
+    padding: spacing(3) spacing(4);
+  }
+}
+
+.rn-switch__legend {
+  font-size: inherit;
+  color: color(neutral, 300);
+  margin-bottom: spacing(2);
+}
+
+.rn-switch__container {
+  display: flex;
+}
+
+// Handle active state border overlap
+// NOTE: A Switch with more than 5 children probably shouldn't be a Switch
+
+
+.rn-switch__option {
+  cursor: pointer;
+
+  .rn-switch__radio {
+    display: none;
+  }
+
+  margin-right: -1px;
+  &:first-child {
+    border-radius: 3px 0 0 3px;
+  }
+  &:last-child {
+    border-radius: 0 3px 3px 0;
+    margin-right: 0; 
+  }
+
+  
+
+  display: inline-block;
+  width: auto;
+  height: auto;
+  line-height: 1;
+  padding: spacing(2) spacing(4);
+  font-size: inherit;
+  color: color(neutral, 400);
+  border: 1px solid $switch-border-color;
+  background-color: $switch-background-color;
+  position: relative;
+  z-index: 0;
+  transition: all 0.3s;
+  
+  &:hover,
+  &.is-active {
+    z-index: 1;
+    border: 1px solid $switch-active-color;
+    color: white;
+  }
+  
+  &:hover {
+    background-color: color(primary, 600);
+  }
+  
+  &.is-active {
+    background-color: $switch-active-background-color;
+    &:hover {
+      background-color: $switch-active-background-color;
+    }
+  }
+}

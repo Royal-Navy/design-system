@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="pause-circle-filled-a" d="M8,1.33333329 C4.31999998,1.33333329 1.33333329,4.31999998 1.33333329,8 C1.33333329,11.68 4.31999998,14.6666667 8,14.6666667 C11.68,14.6666667 14.6666667,11.68 14.6666667,8 C14.6666667,4.31999998 11.68,1.33333329 8,1.33333329 Z M7.33333333,10.6666667 L5.99999999,10.6666667 L5.99999999,5.33333332 L7.33333333,5.33333332 L7.33333333,10.6666667 Z M10,10.6666667 L8.66666667,10.6666667 L8.66666667,5.33333332 L10,5.33333332 L10,10.6666667 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="pause-circle-filled-b" fill="#fff">
+      <use xlink:href="#pause-circle-filled-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#pause-circle-filled-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

@@ -1,9 +1,25 @@
 @import "@royalnavy/css-framework";
 
 body {
-  background-color: color(primary, 900);  
+  background-color: color(primary, 900);
 }
 
 .layout {
-  background: white;  
+  background: white;
+}
+
+.docs-site-example-modal.rn-modal,
+.docs-site-example-dialog.rn-modal {
+  position: absolute;
+
+  .rn-modal__main {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.code-highlighter--modal .code-highlighter__head,
+.code-highlighter--dialog .code-highlighter__head {
+  height: 20rem;
 }

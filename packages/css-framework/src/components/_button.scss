@@ -6,7 +6,9 @@ $animation-timing: 0.3s;
 $btn-focus-width: 0.2rem;
 
 .rn-btn {
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
   color: color(neutral, 500);
   background-color: color(neutral, white);
   border: 1px solid transparent;
@@ -14,7 +16,7 @@ $btn-focus-width: 0.2rem;
   margin: spacing(1) 0;
   outline: 0;
   padding: spacing(3) spacing(4);
-  font-size: font-size(xs);
+  font-size: font-size(s);
   font-weight: $btn-font-weight;
   line-height: 1;
   text-align: center;
@@ -48,14 +50,14 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn--secondary {
-  border: 1px solid color(neutral, 100);
+  border: 1px solid color(neutral, 200);
 }
 
 .rn-btn--danger {
-  color: color(danger, 800);
+  color: color(danger, 600);
 
   &:hover {
-    color: color(danger, 800);
+    color: color(danger, 600);
   }
 
   &:focus {
@@ -64,7 +66,7 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn--danger.rn-btn--primary {
-  background: color(danger, 600);
+  background: color(danger, 500);
   color: color(neutral, white);
 
   &:hover {
@@ -78,7 +80,7 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn.rn-btn--small {
-  font-size: font-size(xxs);
+  font-size: font-size(xs);
   padding: spacing(2) spacing(3);
 }
 

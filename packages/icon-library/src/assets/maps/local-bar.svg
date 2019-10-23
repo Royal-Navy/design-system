@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="local-bar-a" d="M14,3.3333333 L14,1.99999996 L1.99999996,1.99999996 L1.99999996,3.3333333 L7.33333333,9.33333334 L7.33333333,12.6666667 L3.99999996,12.6666667 L3.99999996,14 L12,14 L12,12.6666667 L8.66666667,12.6666667 L8.66666667,9.33333334 L14,3.3333333 Z M4.95333331,4.66666665 L3.77333331,3.3333333 L12.2333334,3.3333333 L11.0466667,4.66666665 L4.95333331,4.66666665 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="local-bar-b" fill="#fff">
+      <use xlink:href="#local-bar-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#local-bar-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

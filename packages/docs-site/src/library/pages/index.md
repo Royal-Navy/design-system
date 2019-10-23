@@ -39,14 +39,14 @@ import Card from '../../components/presenters/card'
     type="coloured" 
     title="Standards v1.0.0 released" 
     meta="25th July 2019"
-    text={<span>This launch includes the new Standards website providing 'get started' guides for designers and developers, styling and component usage guidelines, and information about Standards for Royal Navy stakeholders. Please <a href="/contact">get in touch</a> if you have any feedback.</span>}
+    text={<span>This launch includes the new <strong>Standards</strong> website providing <strong>'get started'</strong> guides for designers and developers, styling and component usage guidelines, and information about <strong>Standards</strong> for Royal Navy stakeholders. Please <a href="/contact">get in touch</a> if you have any feedback.</span>}
     className="m:h_f-1 home--updates"
   />
 
   <Card
     type="borderless" 
     title="Contact us" 
-    text="Contact the NELSON Standards team to find out more about design in the Royal Navy, request a new component, ask questions and give feedback." 
+    text={<span>Contact the <strong>NELSON Standards</strong> team to find out more about design in the Royal Navy. Request a new component, ask questions and give feedback."</span>}
     linkText="Contact" 
     linkHref="/contact"
     className="m:h_f-1 home--contact"

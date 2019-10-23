@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="signal-wifi-2-bar-a" d="M8,14.2133334 L12.4533334,8.66666667 C12.2311111,8.49777778 10.5333333,7.11111111 8,7.11111111 C5.46666665,7.11111111 3.76888886,8.49777778 3.53777775,8.66666667 L7.99111111,14.2133334 L8,14.2222223 L8,14.2133334 L7.99111111,14.2133334 L0.16888884,4.47111109 C0.471111064,4.23999998 3.48444442,1.77777774 8,1.77777774 C12.5155556,1.77777774 15.5288889,4.23999998 15.8311112,4.47111109 L8.00888889,14.2133334 L8,14.2133334 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="signal-wifi-2-bar-b" fill="#fff">
+      <use xlink:href="#signal-wifi-2-bar-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#signal-wifi-2-bar-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

@@ -16,7 +16,6 @@ import TabSetScrollableAnatomy from '../../images/components/tabset/scrollable-a
 import TabSetScrollableStates from '../../images/components/tabset/scrollable-states.svg'
 
 # Overview
-The Tab Set displays multiple content areas, which can be viewed by selecting the respective tab.
 
 <TabSetComponent />
 
@@ -29,13 +28,13 @@ The Tab Set component is used to separate content that exists at the same level 
 
 <SketchWidget name="TabSet" href="/standards-toolkit.sketch" />
 
-The Tab Set component comes in 2 distinct varieties - the default Tab Set and the [Scrollable Tab Set](#scrollable-tabs).
+The Tab Set component comes in two distinct varieties - the default Tab Set and the [Scrollable Tab Set](#scrollable-tabs).
 
 ### Anatomy
 
 <TabSetAnatomy />
 
-1. **Active Tab**. This show the user the currently selected tab.
+1. **Active Tab**. This shows the user the currently selected tab.
 2. **Inactive Tab**. This is the default look for an unselected tab.
 3. **Container**. The container wraps the component.
 
@@ -43,11 +42,11 @@ The Tab Set component comes in 2 distinct varieties - the default Tab Set and th
 The Tab Set component is available in one size. The tabs can accept text, icons, or a combination of both. Ensure the tab text is kept concise - it should clearly describe the content it contains.
 
 ### States
-The Tab Set component has 3 states - default, hover, and active.
+The Tab Set component has three states - `default`, `hover`, and `active`.
 <TabSetStates />
 
 ### Hierarchy & Placement
-Tab Sets are used to separate content of the same hierachy. They should therefore not be nested within each other. If you require child content to be separated, this should be added to a new subpage, rather than a subset of the Tab Set.
+Tab Sets are used to separate content of the same hierarchy. They should therefore not be nested within each other. If you require child content to be separated, this should be added to a new sub-page, rather than a subset of the Tab Set.
 
 ### Scrollable Tabs
 Scrollable Tabs are a variation of the Tab Set component, specifically designed for navigating dates.
@@ -60,7 +59,7 @@ Scrollable tabs are used for date ranges, where the number of dates often exceed
 #### Anatomy
 <TabSetScrollableAnatomy />
 
-1. **Active Tab**. This show the user the currently selected tab.
+1. **Active Tab**. This shows the user the currently selected tab.
 2. **Inactive Tab**. This is the default look for an unselected tab.
 3. **Container**. The container wraps the component.
 3. **Scroll Buttons**. The Scroll Buttons navigate the tabs, moving the date incrementally by a single value on each click.
@@ -68,8 +67,8 @@ Scrollable tabs are used for date ranges, where the number of dates often exceed
 #### Sizing & Spacing
 The Scrollable Tab Set component is available in one size. The tabs display a date and cannot be customised to accept free text - the only variation allowed is the overall date range (e.g. hour, day, week, or month).
 
-#### States (if applicable)
-Much like the default Tab Set component, the Scrollable Tab Set has 3 states - default, hover, and active.
+#### States
+Much like the default Tab Set component, the Scrollable Tab Set has three states - default, hover, and active.
 <TabSetScrollableStates />
 
 #### Hierarchy & Placement

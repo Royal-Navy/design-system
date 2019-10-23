@@ -1,0 +1,98 @@
+<svg viewBox="0 0 726 233" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M198,71 L270,71 L270,115 L198,115 C196.343146,115 195,113.656854 195,112 L195,74 C195,72.3431458 196.343146,71 198,71 Z" id="path-1"></path>
+        <filter x="-15.3%" y="-21.6%" width="130.7%" height="152.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter2"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter2" result="shadowOffsetOuter2"></feOffset>
+            <feComposite in="shadowOffsetOuter2" in2="SourceAlpha" operator="out" result="shadowOffsetOuter2"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.10876479   0 0 0 0 0.458586931   0 0 0 0 0.799237311  0 0 0 1 0" type="matrix" in="shadowOffsetOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Docs-Images" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Number-Clicker" transform="translate(-200.000000, -421.000000)">
+            <g id="Group-3" transform="translate(200.000000, 421.000000)">
+                <g id="Group-33">
+                    <rect id="Rectangle" stroke="#B8C7D2" fill="#FFFFFF" x="0.5" y="0.5" width="725" height="197"></rect>
+                    <text id="Container" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745">
+                        <tspan x="68.889" y="96">Container</tspan>
+                    </text>
+                    <rect id="Rectangle" fill="#B8C7D2" x="149.5" y="91" width="31" height="1"></rect>
+                    <rect id="Rectangle" fill="#3E5667" x="140.5" y="82" width="19.2" height="18.4" rx="9.2"></rect>
+                    <text id="1" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600" fill="#FFFFFF">
+                        <tspan x="147.316" y="94.2">1</tspan>
+                    </text>
+                    <circle id="Oval" fill="#3E5667" cx="181.5" cy="91.5" r="3"></circle>
+                    <text id="Label-(optional)" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745">
+                        <tspan x="317.9665" y="55">Label (optional)</tspan>
+                    </text>
+                    <rect id="Rectangle" fill="#B8C7D2" x="269.5" y="50" width="31" height="1"></rect>
+                    <rect id="Rectangle" fill="#3E5667" x="290.5" y="41" width="19.2" height="18.4" rx="9.2"></rect>
+                    <text id="4" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600" fill="#FFFFFF">
+                        <tspan x="297.316" y="53.2">4</tspan>
+                    </text>
+                    <circle id="Oval" fill="#3E5667" cx="269.5" cy="50.5" r="3"></circle>
+                    <rect id="Rectangle" stroke="#B8C7D2" fill="#F8FAFC" x="360.5" y="70.5" width="94" height="45"></rect>
+                    <path d="M453.5,70.5 L530,70.5 C531.932997,70.5 533.5,72.0670034 533.5,74 L533.5,112 C533.5,113.932997 531.932997,115.5 530,115.5 L453.5,115.5 L453.5,70.5 Z" id="Rectangle" stroke="#B8C7D2" fill="#F8FAFC"></path>
+                    <text id="Month" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" line-spacing="20" fill="#3E5667">
+                        <tspan x="385.13125" y="98">Month</tspan>
+                    </text>
+                    <text id="Year" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" line-spacing="20" fill="#3E5667">
+                        <tspan x="478.30875" y="98">Year</tspan>
+                    </text>
+                    <rect id="Rectangle" stroke="#B8C7D2" fill="#F8FAFC" x="271.5" y="70.5" width="89" height="45"></rect>
+                    <text id="Week" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500" line-spacing="20" fill="#3E5667">
+                        <tspan x="296.29375" y="98">Week</tspan>
+                    </text>
+                    <g id="Rectangle">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <path stroke="#2A77C7" stroke-width="1" d="M198,70.5 L270.5,70.5 L270.5,115.5 L198,115.5 C196.067003,115.5 194.5,113.932997 194.5,112 L194.5,74 C194.5,72.0670034 196.067003,70.5 198,70.5 Z" fill="#FFFFFF" fill-rule="evenodd"></path>
+                    </g>
+                    <text id="Day" font-family="Lato-Bold, Lato" font-size="15" font-weight="bold" line-spacing="20" fill="#3E5667">
+                        <tspan x="219.03375" y="98">Day</tspan>
+                    </text>
+                    <text id="Date-Range" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" fill="#748999">
+                        <tspan x="193" y="55">Date Range</tspan>
+                    </text>
+                    <text id="Anatomy-of-the-Switc" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" line-spacing="24" fill="#3E5667">
+                        <tspan x="0" y="227">Anatomy of the Switch component.</tspan>
+                    </text>
+                </g>
+                <g id="Group-30" transform="translate(117.000000, 115.000000)">
+                    <text id="Selected-Item" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745">
+                        <tspan x="0.615" y="39">Selected Item</tspan>
+                    </text>
+                    <rect id="Rectangle" fill="#B8C7D2" x="105" y="0" width="1" height="39"></rect>
+                    <g id="Group-11" transform="translate(96.000000, 25.000000)">
+                        <rect id="Rectangle" fill="#3E5667" x="0" y="-1.13686838e-13" width="19.2" height="18.4" rx="9.2"></rect>
+                        <text id="2" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600" fill="#FFFFFF">
+                            <tspan x="6.816" y="12.2">2</tspan>
+                        </text>
+                    </g>
+                </g>
+                <circle id="Oval" fill="#3E5667" cx="223" cy="116" r="3"></circle>
+                <g id="Group-30" transform="translate(370.000000, 115.000000)">
+                    <text id="Unselected-Item" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745">
+                        <tspan x="0.2745" y="39">Unselected Item</tspan>
+                    </text>
+                    <rect id="Rectangle" fill="#B8C7D2" x="122" y="0" width="1" height="39"></rect>
+                    <g id="Group-11" transform="translate(113.000000, 25.000000)">
+                        <rect id="Rectangle" fill="#3E5667" x="0" y="-1.13686838e-13" width="19.2" height="18.4" rx="9.2"></rect>
+                        <text id="3" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600" fill="#FFFFFF">
+                            <tspan x="6.816" y="12.2">3</tspan>
+                        </text>
+                    </g>
+                </g>
+                <circle id="Oval" fill="#3E5667" cx="493" cy="116" r="3"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

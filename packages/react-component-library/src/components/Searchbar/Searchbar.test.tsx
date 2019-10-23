@@ -1,6 +1,6 @@
-import 'jest-dom/extend-expect'
 import { JSDOM } from 'jsdom'
 import React from 'react'
+import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 
 import { Searchbar, SearchbarProps } from './index'
@@ -60,8 +60,8 @@ describe('Searchbar', () => {
     })
 
     it('should hide the searchbar', () => {
-      expect(props.setShowSearch).toBeCalledTimes(1)
-      expect(props.setShowSearch).toBeCalledWith(false)
+      expect(props.setShowSearch).toHaveBeenCalledTimes(1)
+      expect(props.setShowSearch).toHaveBeenCalledWith(false)
     })
   })
 

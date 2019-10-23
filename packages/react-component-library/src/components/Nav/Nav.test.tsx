@@ -1,132 +1,172 @@
 import React from 'react'
-import { mount, ReactWrapper } from 'enzyme'
-import toJson from 'enzyme-to-json'
+import { render, RenderResult } from '@testing-library/react'
 
 import Nav from './index'
 
 describe('Nav', () => {
-  let component: ReactWrapper
-  let navItems: any[]
-  let navItemsWithChildren: any[]
+  let wrapper: RenderResult
+  const navItemsMock = [
+    {
+      href: 'http://test.com/1',
+      label: 'Nav 1',
+    },
+    {
+      href: 'http://test.com/2',
+      label: 'Nav 2',
+      active: true,
+    },
+    {
+      href: 'http://test.com/3',
+      label: 'Nav 3',
+    },
+  ]
 
-  describe('Given the nav is supplied navItems prop', () => {
+  describe('when there is a flat collection of three items', () => {
     beforeEach(() => {
-      navItems = [
-        {
-          href: 'http://testurl.test',
-          label: 'Styles',
-        },
-        {
-          href: 'http://testurl.test',
-          label: 'Components',
-        },
-        {
-          href: 'http://testurl.test',
-          label: 'Patterns',
-          active: true,
-        },
-        {
-          href: 'http://testurl.test',
-          label: 'Community',
-        },
-        {
-          href: 'http://testurl.test',
-          label: 'About',
-        },
-      ]
-
-      navItemsWithChildren = [
-        ...navItems,
-        {
-          href: 'http://testurl.test',
-          label: 'Parent',
-          children: [
-            {
-              href: 'http://testurl.test',
-              label: 'Child 1',
-            },
-            {
-              href: 'http://testurl.test',
-              label: 'Child 2',
-            },
-          ],
-        },
-      ]
+      wrapper = render(<Nav navItems={navItemsMock} />)
     })
 
-    describe('and navItems is a flat collection of 5 items', () => {
-      it('should render the correct number of list items', () => {
-        component = mount(<Nav navItems={navItems} />)
-        expect(component.find('.rn-nav__list-item').length).toEqual(5)
-      })
-
-      it('snapshot: has same HTML structure', () => {
-        const wrapper = mount(
-          <Nav navItems={navItems} orientation="vertical" />
-        )
-        expect(toJson(wrapper)).toMatchSnapshot()
-      })
+    it('should default the orientation to vertical', () => {
+      expect(wrapper.getByTestId('nav').classList).toContain('rn-nav--vertical')
     })
 
-    describe('and navItems is a nested collection of 5 items with children', () => {
-      it('should render the correct number of list items', () => {
-        component = mount(<Nav navItems={navItemsWithChildren} />)
-        expect(component.find('.rn-nav__list-item').length).toEqual(8)
+    it('should default the size to regular', () => {
+      expect(wrapper.getByTestId('nav').classList).toContain('rn-nav--regular')
+    })
+
+    it('should render three items', () => {
+      const navItems = wrapper.queryAllByTestId('nav-item')
+      expect(navItems).toHaveLength(3)
+    })
+
+    it('should set the second item to active', () => {
+      const secondNavItem = wrapper.getByText('Nav 2')
+      expect(secondNavItem.className).toContain('is-active')
+    })
+
+    it('should not set the items to open', () => {
+      expect(wrapper.getAllByTestId('nav-item')[0].classList).not.toContain('is-open')
+      expect(wrapper.getAllByTestId('nav-item')[1].classList).not.toContain('is-open')
+      expect(wrapper.getAllByTestId('nav-item')[2].classList).not.toContain('is-open')
+    })
+
+    describe('when the second item is clicked', () => {
+      beforeEach(() => {
+        const secondNavItem = wrapper.getByText('Nav 2')
+        secondNavItem.click()
+      })
+
+      it('should not set the second item to open', () => {
+        expect(wrapper.getAllByTestId('nav-item')[1].classList).not.toContain('is-open')
       })
     })
   })
 
-  describe('Given the nav is supplied orientation prop', () => {
-    describe('and the value of the prop is vertical', () => {
-      it('should apply the appropriate modifier class', () => {
-        component = mount(<Nav navItems={navItems} orientation="vertical" />)
-        expect(component.find('.rn-nav').hasClass('rn-nav--vertical')).toBe(
-          true
-        )
-      })
+  describe('when there is a collection of three items and the first has an active child', () => {
+    beforeEach(() => {
+      const navItemsWithChildrenMock = [
+        {
+          href: 'http://test.com/1',
+          label: 'Parent 1',
+          children: [
+            {
+              href: 'http://test.com/1.1',
+              label: 'Child 1',
+            },
+            {
+              href: 'http://test.com/1.2',
+              label: 'Child 2',
+              active: true,
+            },
+          ],
+        },
+        {
+          href: 'http://test.com/2',
+          label: 'Nav 2',
+        },
+        {
+          href: 'http://test.com/3',
+          label: 'Nav 3',
+        },
+      ]
+
+      wrapper = render(<Nav navItems={navItemsWithChildrenMock} />)
     })
 
-    describe('and the value of the prop is horizontal', () => {
-      it('should apply the appropriate modifier class', () => {
-        component = mount(<Nav navItems={navItems} orientation="horizontal" />)
-        expect(component.find('.rn-nav').hasClass('rn-nav--horizontal')).toBe(
-          true
-        )
-      })
+    it('should set the first item to open', async () => {
+      expect(wrapper.getAllByTestId('nav-item')[0].classList).toContain('is-open')
+    })
+  })
+
+  describe('when there is a collection of three items and the first has inactive children', () => {
+    beforeEach(() => {
+      const navItemsWithChildrenMock = [
+        {
+          href: 'http://test.com/1',
+          label: 'Parent 1',
+          children: [
+            {
+              href: 'http://test.com/1.1',
+              label: 'Child 1',
+            },
+            {
+              href: 'http://test.com/1.2',
+              label: 'Child 2',
+            },
+          ],
+        },
+        {
+          href: 'http://test.com/2',
+          label: 'Nav 2',
+        },
+        {
+          href: 'http://test.com/3',
+          label: 'Nav 3',
+        },
+      ]
+
+      wrapper = render(<Nav navItems={navItemsWithChildrenMock} />)
     })
 
-    describe('Given the nav is supplied size prop', () => {
-      describe('and the value of the prop is small', () => {
-        it('should apply the appropriate modifier class', () => {
-          component = mount(<Nav navItems={navItems} size="small" />)
-          expect(component.find('.rn-nav').hasClass('rn-nav--small')).toBe(true)
-        })
+    it('should not set the first item to open', async () => {
+      expect(wrapper.getAllByTestId('nav-item')[0].classList).not.toContain('is-open')
+    })
+
+    describe('when the first item is clicked', () => {
+      beforeEach(() => {
+        const firstNavItem = wrapper.getByText('Parent 1')
+        firstNavItem.click()
       })
 
-      describe('and the value of the prop is regular', () => {
-        it('should apply the appropriate modifier class', () => {
-          component = mount(<Nav navItems={navItems} size="regular" />)
-          expect(component.find('.rn-nav').hasClass('rn-nav--regular')).toBe(
-            true
-          )
-        })
+      it('should set the first item to open', async () => {
+        expect(wrapper.getAllByTestId('nav-item')[0].classList).toContain('is-open')
       })
+    })
+  })
 
-      describe('and the value of the prop is large', () => {
-        it('should apply the appropriate modifier class', () => {
-          component = mount(<Nav navItems={navItems} size="large" />)
-          expect(component.find('.rn-nav').hasClass('rn-nav--large')).toBe(true)
-        })
-      })
+  describe('when the orientation is specified', () => {
+    it.each`
+      orientation      | expected
+      ${'vertical'}    | ${'rn-nav--vertical'}
+      ${'horizontal'}  | ${'rn-nav--horizontal'}
+    `('sets the modifier when the orientation is $orientation', ({ orientation, expected }) => {
+      wrapper = render(<Nav navItems={navItemsMock} orientation={orientation} />)
 
-      describe('and the value of the prop is xlarge', () => {
-        it('should apply the appropriate modifier class', () => {
-          component = mount(<Nav navItems={navItems} size="xlarge" />)
-          expect(component.find('.rn-nav').hasClass('rn-nav--xlarge')).toBe(
-            true
-          )
-        })
-      })
+      expect(wrapper.getByTestId('nav').classList).toContain(expected)
+    })
+  })
+
+  describe('when the size is specified', () => {
+    it.each`
+      size         | expected
+      ${'small'}   | ${'rn-nav--small'}
+      ${'regular'} | ${'rn-nav--regular'}
+      ${'large'}   | ${'rn-nav--large'}
+      ${'xlarge'}  | ${'rn-nav--xlarge'}
+    `('sets the modifier when the size is $size', ({ size, expected }) => {
+      wrapper = render(<Nav navItems={navItemsMock} size={size} />)
+
+      expect(wrapper.getByTestId('nav').classList).toContain(expected)
     })
   })
 })

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="school-a" d="M3.3333333,8.78666667 L3.3333333,11.4533334 L8,14 L12.6666667,11.4533334 L12.6666667,8.78666667 L8,11.3333334 L3.3333333,8.78666667 Z M8,1.99999996 L0.666666621,5.99999996 L8,9.99999996 L14,6.72666666 L14,11.3333334 L15.3333334,11.3333334 L15.3333334,5.99999996 L8,1.99999996 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="school-b" fill="#fff">
+      <use xlink:href="#school-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#school-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

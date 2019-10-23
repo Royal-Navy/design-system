@@ -1,6 +1,6 @@
-import 'jest-dom/extend-expect'
 import { JSDOM } from 'jsdom'
 import React from 'react'
+import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 
 import NotificationPanel, {
@@ -90,7 +90,7 @@ describe('NotificationPanel', () => {
       })
 
       it('should notify the parent the notification is visible', () => {
-        expect(props.onShow).toBeCalled()
+        expect(props.onShow).toHaveBeenCalled()
       })
 
       describe('when the user clicks on the button again', () => {
@@ -113,7 +113,7 @@ describe('NotificationPanel', () => {
         })
 
         it('should notify the parent the notification was hidden', () => {
-          expect(props.onHide).toBeCalled()
+          expect(props.onHide).toHaveBeenCalled()
         })
       })
 

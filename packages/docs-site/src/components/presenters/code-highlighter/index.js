@@ -9,7 +9,7 @@ import './code-highlighter.scss'
 
 import CopyIcon from './copy-icon.svg'
 
-const CodeHighlighter = ({ source, language, children }) => {
+const CodeHighlighter = ({ className, source, language, children }) => {
   useEffect(() => {
     Prism.highlightAll()
   }, [])
@@ -29,7 +29,7 @@ const CodeHighlighter = ({ source, language, children }) => {
   }
 
   return (
-    <article className="code-highlighter">
+    <article className={`code-highlighter ${className}`}>
       {children && (
         <header className="code-highlighter__head" data-testid="example">
           {children}
@@ -59,12 +59,14 @@ const CodeHighlighter = ({ source, language, children }) => {
 }
 
 CodeHighlighter.propTypes = {
+  className: PropTypes.string,
   source: PropTypes.string,
   language: PropTypes.string,
   children: PropTypes.node.isRequired,
 }
 
 CodeHighlighter.defaultProps = {
+  className: '',
   source: '// No source to display',
   language: 'javascript',
 }

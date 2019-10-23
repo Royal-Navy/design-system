@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`RnInput.vue snapshot: has same HTML structure 1`] = `<div user="Fred" class="rn-inputBlock"><input id="1234" type="text" name="user" value="" class="input"> <label for="1234" class="inputLabel"><span class="inputLabelInner">My Label</span></label></div>`;

@@ -1,14 +1,15 @@
 {
   "name": "nelson-frontend-component-library",
-  "version": "1.0.1",
+  "version": "1.2.1",
   "private": true,
   "workspaces": [
     "packages/css-framework",
     "packages/docs-site",
     "packages/eslint-config-react",
+    "packages/icon-library",
+    "packages/reactapp",
     "packages/react-component-library",
-    "packages/storybook-react-input-state",
-    "packages/vue-component-library"
+    "packages/storybook-react-input-state"
   ],
   "engines": {
     "node": ">=10.13.0 <11"
@@ -16,12 +17,11 @@
   "devDependencies": {
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "husky": "^2.2.0",
-    "lerna": "^3.16.4",
+    "husky": "^3.0.0",
+    "lerna": "^3.18.2",
     "prettier": "^1.17.0"
   },
   "resolutions": {
-    "husky/cosmiconfig/js-yaml": "^3.13.1",
     "gatsby/eslint/eslint-utils": "1.4.2"
   },
   "prettier": {
@@ -36,17 +36,17 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint-staged"
-    }
-  },
   "scripts": {
-    "build": "lerna run --parallel build",
+    "build": "lerna run --stream --concurrency 1 build",
     "lint": "lerna run --parallel lint",
     "lint-staged": "lerna run --parallel lint-staged",
     "test": "lerna run --parallel test",
     "storybook:static": "lerna run --parallel storybook:static",
     "lerna:version": "lerna version --tag-version-prefix=''"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lerna run --parallel lint-staged"
+    }
   }
 }

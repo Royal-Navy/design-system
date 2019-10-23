@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import Badge from '../Badge'
 
@@ -21,10 +21,10 @@ const PhaseBanner: React.FC<PhaseBannerProps> = ({
       </Badge>
       <span className="rn-phase-banner__text">
         {children || (
-          <Fragment>
+          <>
             This is a new service, <a href={link}>Your feedback</a> will help to
             improve it
-          </Fragment>
+          </>
         )}
       </span>
     </div>

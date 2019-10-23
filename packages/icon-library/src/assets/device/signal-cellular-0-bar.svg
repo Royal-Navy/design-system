@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <polygon id="signal-cellular-0-bar-a" points=".889 14.222 14.222 14.222 14.222 .889"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="signal-cellular-0-bar-b" fill="#fff">
+      <use xlink:href="#signal-cellular-0-bar-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#signal-cellular-0-bar-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

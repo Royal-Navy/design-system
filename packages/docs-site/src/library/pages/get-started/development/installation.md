@@ -8,7 +8,7 @@ import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 
 ## Installation
 
-To install and save to your projects package.json dependencies, run:
+To install and save to your project's package.json dependencies, run:
 
 ```
 // with npm
@@ -20,7 +20,7 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 
 ### Quick start
 
-Here's a quick example application to get you started:
+Here's a quick example of an application to get you started:
 
 <CodeHighlighter 
 source={`i${''}mport React from 'react'

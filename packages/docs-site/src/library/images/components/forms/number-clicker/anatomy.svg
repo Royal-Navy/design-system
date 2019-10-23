@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 726 213">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v177H.5z"/>
+    <g transform="translate(232 60)">
+      <rect width="271" height="45" x="-.5" y="-.5" fill="#FFF" stroke="#B8C7D2" rx="3"/>
+      <path fill="#E2E9EE" d="M228 0h1v44h-1zM229 21.5h41v1h-41z"/>
+      <path fill="#748999" d="M248.63 36.45l-3.21-5.7a.5.5 0 0 1 .43-.75h7.3a.5.5 0 0 1 .43.75l-3.2 5.7a1 1 0 0 1-1.75 0zM250.37 7.55l3.21 5.7a.5.5 0 0 1-.43.75h-7.3a.5.5 0 0 1-.43-.75l3.2-5.7a1 1 0 0 1 1.75 0z"/>
+      <text fill="#748999" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="12" y="28">Label</tspan>
+      </text>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="207">Anatomy of the Number Input component.</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" transform="translate(107 66)">
+      <tspan x=".5" y="14">Label</tspan>
+    </text>
+    <path fill="#B8C7D2" d="M159 75h71v1h-71z"/>
+    <g transform="translate(150 66)">
+      <rect width="19.2" height="18.4" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="6.82" y="12.2">1</tspan>
+      </text>
+    </g>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" transform="translate(166 93)">
+      <tspan x=".34" y="39">User Input</tspan>
+    </text>
+    <path fill="#B8C7D2" d="M251 93h1v39h-1z"/>
+    <g transform="translate(242 118)">
+      <rect width="19.2" height="18.4" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="6.82" y="12.2">2</tspan>
+      </text>
+    </g>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" transform="translate(503 38)">
+      <tspan x="64.66" y="14">Directional Buttons</tspan>
+    </text>
+    <path fill="#B8C7D2" d="M548 47h1v40h-1z"/>
+    <path fill="#B8C7D2" d="M503 86h46v1h-46z"/>
+    <g transform="translate(539 38)">
+      <rect width="19.2" height="18.4" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="6.82" y="12.2">3</tspan>
+      </text>
+    </g>
+    <circle cx="231" cy="75.5" r="3" fill="#3E5667"/>
+    <circle cx="251.5" cy="95" r="3" fill="#3E5667"/>
+    <g>
+      <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" transform="translate(321 103)">
+        <tspan x=".39" y="39">Container</tspan>
+      </text>
+      <path fill="#B8C7D2" d="M401 103h1v39h-1z"/>
+      <g transform="translate(392 128)">
+        <rect width="19.2" height="18.4" fill="#3E5667" rx="9.2"/>
+        <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+          <tspan x="6.82" y="12.2">4</tspan>
+        </text>
+      </g>
+    </g>
+    <circle cx="401.5" cy="105" r="3" fill="#3E5667"/>
+    <circle cx="503" cy="86.5" r="3" fill="#3E5667"/>
+  </g>
+</svg>

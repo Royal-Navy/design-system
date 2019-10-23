@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <path id="dehaze-a" d="M1.33333329,10.3333333 L1.33333329,11.6666667 L14.6666667,11.6666667 L14.6666667,10.3333333 L1.33333329,10.3333333 Z M1.33333329,6.99999999 L1.33333329,8.33333334 L14.6666667,8.33333334 L14.6666667,6.99999999 L1.33333329,6.99999999 Z M1.33333329,3.66666664 L1.33333329,4.99999998 L14.6666667,4.99999998 L14.6666667,3.66666664 L1.33333329,3.66666664 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="dehaze-b" fill="#fff">
+      <use xlink:href="#dehaze-a"/>
+    </mask>
+    <g fill="CurrentColor" mask="url(#dehaze-b)">
+      <rect width="16" height="16"/>
+    </g>
+  </g>
+</svg>

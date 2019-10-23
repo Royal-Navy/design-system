@@ -1,0 +1,186 @@
+<svg viewBox="0 0 726 312" viewBox="0 0 726 312" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M221.566252,0.288681333 L225.35,4.028 L237,4.02883158 C238.656854,4.02883158 240,5.37197733 240,7.02883158 L240,93.8802999 C240,95.5371542 238.656854,96.8802999 237,96.8802999 L3,96.8802999 C1.34314575,96.8802999 6.46995335e-16,95.5371542 0,93.8802999 L0,7.02883158 C2.41183085e-16,5.37197733 1.34314575,4.02883158 3,4.02883158 L216.376,4.028 L220.160513,0.288681333 C220.550048,-0.0962271109 221.176717,-0.0962271109 221.566252,0.288681333 Z" id="path-1"></path>
+        <filter x="-11.7%" y="-24.8%" width="123.3%" height="157.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="4" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.103583916 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter2"></feMorphology>
+            <feOffset dx="0" dy="1" in="shadowSpreadOuter2" result="shadowOffsetOuter2"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter2" in2="SourceAlpha" operator="out" result="shadowBlurOuter2"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.102573208 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+        <path d="M8,4.66666665 C9.83999998,4.66666665 11.3333334,6.15999999 11.3333334,7.99999997 C11.3333334,8.43333334 11.2466667,8.84000001 11.0933334,9.22000001 L13.04,11.1666667 C14.0466667,10.3266667 14.84,9.24000001 15.3266667,7.99999997 C14.1733334,5.07333332 11.3266667,2.99999997 7.99333333,2.99999997 C7.05999999,2.99999997 6.16666666,3.16666664 5.33999998,3.46666664 L6.77999999,4.90666665 C7.15999999,4.75333331 7.56666666,4.66666665 8,4.66666665 Z M1.33333329,2.84666663 L2.8533333,4.36666664 L3.15999997,4.67333331 C2.0533333,5.53333332 1.18666662,6.67999999 0.666666621,7.99999996 C1.81999996,10.9266667 4.66666662,13 8,13 C9.03333334,13 10.02,12.8 10.92,12.44 L11.2,12.72 L13.1533334,14.6666667 L14,13.82 L2.17999996,1.99999996 L1.33333329,2.84666663 Z M5.01999998,6.53333332 L6.05333332,7.56666666 C6.01999999,7.70666666 5.99999999,7.85333333 5.99999999,8 C5.99999999,9.10666667 6.89333333,10 8,10 C8.14666667,10 8.29333334,9.98000001 8.43333334,9.94666668 L9.46666668,10.98 C9.02000001,11.2 8.52666667,11.3333334 8,11.3333334 C6.15999999,11.3333334 4.66666665,9.84000001 4.66666665,8 C4.66666665,7.47333333 4.79999998,6.97999999 5.01999998,6.53333332 L5.01999998,6.53333332 Z M7.89333333,6.01333332 L9.99333335,8.11333333 L10.0066667,8.00666665 C10.0066667,6.89999999 9.11333334,6.00666665 8.00666667,6.00666665 L7.89333333,6.01333332 Z" id="path-3"></path>
+        <polygon id="path-5" points="14.6666667 7.33333333 11.8866667 7.33333333 14.0466667 5.17333332 13.1066667 4.22666664 10 7.33333333 8.66666667 7.33333333 8.66666667 5.99999999 11.7733334 2.8933333 10.8266667 1.9533333 8.66666667 4.11333331 8.66666667 1.33333329 7.33333333 1.33333329 7.33333333 4.11333331 5.17333332 1.9533333 4.22666664 2.8933333 7.33333333 5.99999999 7.33333333 7.33333333 5.99999999 7.33333333 2.8933333 4.22666664 1.9533333 5.17333332 4.11333331 7.33333333 1.33333329 7.33333333 1.33333329 8.66666667 4.11333331 8.66666667 1.9533333 10.8266667 2.8933333 11.7733334 5.99999999 8.66666667 7.33333333 8.66666667 7.33333333 10 4.22666664 13.1066667 5.17333332 14.0466667 7.33333333 11.8866667 7.33333333 14.6666667 8.66666667 14.6666667 8.66666667 11.8866667 10.8266667 14.0466667 11.7733334 13.1066667 8.66666667 10 8.66666667 8.66666667 10 8.66666667 13.1066667 11.7733334 14.0466667 10.8266667 11.8866667 8.66666667 14.6666667 8.66666667"></polygon>
+        <polygon id="path-7" points="14.6666667 7.33333333 11.8866667 7.33333333 14.0466667 5.17333332 13.1066667 4.22666664 10 7.33333333 8.66666667 7.33333333 8.66666667 5.99999999 11.7733334 2.8933333 10.8266667 1.9533333 8.66666667 4.11333331 8.66666667 1.33333329 7.33333333 1.33333329 7.33333333 4.11333331 5.17333332 1.9533333 4.22666664 2.8933333 7.33333333 5.99999999 7.33333333 7.33333333 5.99999999 7.33333333 2.8933333 4.22666664 1.9533333 5.17333332 4.11333331 7.33333333 1.33333329 7.33333333 1.33333329 8.66666667 4.11333331 8.66666667 1.9533333 10.8266667 2.8933333 11.7733334 5.99999999 8.66666667 7.33333333 8.66666667 7.33333333 10 4.22666664 13.1066667 5.17333332 14.0466667 7.33333333 11.8866667 7.33333333 14.6666667 8.66666667 14.6666667 8.66666667 11.8866667 10.8266667 14.0466667 11.7733334 13.1066667 8.66666667 10 8.66666667 8.66666667 10 8.66666667 13.1066667 11.7733334 14.0466667 10.8266667 11.8866667 8.66666667 14.6666667 8.66666667"></polygon>
+        <filter x="-34.2%" y="-31.0%" width="168.4%" height="161.9%" filterUnits="objectBoundingBox" id="filter-9">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Docs-Images" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dropdown" transform="translate(-200.000000, -875.000000)">
+            <g id="Group-33" transform="translate(200.000000, 875.000000)">
+                <rect id="Rectangle" stroke="#B8C7D2" fill="#FFFFFF" x="0.5" y="0.5" width="725" height="274"></rect>
+                <g id="Dropdown/Sheet/Background" transform="translate(415.000000, 134.000000)">
+                    <g>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <path stroke="#2A77C7" stroke-width="2" d="M225.760788,3.02802932 L237,3.02883158 C239.209139,3.02883158 241,4.81969258 241,7.02883158 L241,93.8802999 C241,96.0894389 239.209139,97.8802999 237,97.8802999 L3,97.8802999 C0.790861001,97.8802999 -1,96.0894389 -1,93.8802999 L-1,7.02883158 C-1,4.81969258 0.790861001,3.02883158 2.9999961,3.02883158 L215.965299,3.0280016 L219.457643,-0.422637334 C220.236714,-1.19245422 221.490051,-1.19245422 222.269122,-0.422637334 L222.269171,-0.422589027 L225.760788,3.02802932 Z" fill="#FFFFFF" fill-rule="evenodd"></path>
+                    </g>
+                </g>
+                <g id="Dropdown/Sheet/Item/Icon/Hidden" transform="translate(415.000000, 147.000000)">
+                    <g id="Dropdown/Sheet/Item/Icon/Visible">
+                        <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="240" height="34"></rect>
+                        <g id="Icons/Action/visibility-off" transform="translate(210.000000, 9.000000)">
+                            <mask id="mask-4" fill="white">
+                                <use xlink:href="#path-3"></use>
+                            </mask>
+                            <g id="Icons/Action/ic_visibility_off_24px" fill-rule="nonzero"></g>
+                            <g id="_/Swatch/Neutral" mask="url(#mask-4)" fill="#233745" fill-rule="evenodd">
+                                <rect id="Icons/_/Swatch/Default" x="0" y="0" width="16" height="16"></rect>
+                            </g>
+                        </g>
+                        <text id="Dropdown-Item" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#3E5667">
+                            <tspan x="36" y="22">Dropdown Item</tspan>
+                        </text>
+                        <g id="Icons/Places/ac-unit" transform="translate(12.000000, 9.000000)">
+                            <mask id="mask-6" fill="white">
+                                <use xlink:href="#path-5"></use>
+                            </mask>
+                            <g id="Icons/Places/ic_ac_unit_24px" fill-rule="nonzero"></g>
+                            <g id="_/Swatch/Neutral" mask="url(#mask-6)" fill="#233745" fill-rule="evenodd">
+                                <rect id="Icons/_/Swatch/Default" x="0" y="0" width="16" height="16"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+                <rect id="Rectangle" fill="#E2E9EE" x="420" y="183" width="230" height="39" rx="4"></rect>
+                <text id="Dropdown-Item" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#3E5667">
+                    <tspan x="451" y="208">Dropdown Item</tspan>
+                </text>
+                <g id="Icons/Places/ac-unit" transform="translate(427.000000, 195.000000)">
+                    <mask id="mask-8" fill="white">
+                        <use xlink:href="#path-7"></use>
+                    </mask>
+                    <g id="Icons/Places/ic_ac_unit_24px" fill-rule="nonzero"></g>
+                    <g id="_/Swatch/Neutral" mask="url(#mask-8)" fill="#233745" fill-rule="evenodd">
+                        <rect id="Icons/_/Swatch/Default" x="0" y="0" width="16" height="16"></rect>
+                    </g>
+                </g>
+                <g id="Dropdown/Default/Active" transform="translate(375.000000, 73.000000)">
+                    <g id="Dropdown/Active">
+                        <g id="Group" transform="translate(254.000000, 19.000000)"></g>
+                        <rect id="Rectangle" stroke="#2A77C7" stroke-width="2" fill="#FFFFFF" x="-1" y="-1" width="282" height="46" rx="3"></rect>
+                        <text id="Dropdown-Label" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" fill="#253B53">
+                            <tspan x="14" y="28">Dropdown Label</tspan>
+                        </text>
+                        <path d="M261.324042,19.1986064 L265.461506,25.2167356 C265.617948,25.4442885 265.560302,25.7555783 265.332749,25.912021 C265.2494,25.9693235 265.150632,26 265.049485,26 L255.950515,26 C255.674373,26 255.450515,25.7761424 255.450515,25.5 C255.450515,25.3988532 255.481192,25.3000848 255.538494,25.2167356 L259.675958,19.1986064 C259.988843,18.7435006 260.611423,18.6282081 261.066529,18.9410933 C261.167405,19.0104456 261.25469,19.0977304 261.324042,19.1986064 Z" id="Arrow" fill="#2A77C7"></path>
+                    </g>
+                </g>
+                <g id="Dropdown/Default/Inactive" transform="translate(69.000000, 73.000000)">
+                    <rect id="Rectangle" stroke="#B8C7D2" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="-0.5" y="-0.5" width="281" height="45" rx="3"></rect>
+                    <text id="Dropdown-Label" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" fill="#253B53">
+                        <tspan x="14" y="28">Dropdown</tspan>
+                    </text>
+                    <path d="M259.675958,25.8013936 L255.538494,19.7832644 C255.382052,19.5557115 255.439698,19.2444217 255.667251,19.087979 C255.7506,19.0306765 255.849368,19 255.950515,19 L265.049485,19 C265.325627,19 265.549485,19.2238576 265.549485,19.5 C265.549485,19.6011468 265.518808,19.6999152 265.461506,19.7832644 L261.324042,25.8013936 C261.011157,26.2564994 260.388577,26.3717919 259.933471,26.0589067 C259.832595,25.9895544 259.74531,25.9022696 259.675958,25.8013936 Z" id="Arrow" fill="#B8C7D2" fill-rule="evenodd"></path>
+                </g>
+                <text id="Default" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745">
+                    <tspan x="70" y="56">Default</tspan>
+                </text>
+                <text id="Item-(Hover)" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745">
+                    <tspan x="322" y="209">Item (Hover)</tspan>
+                </text>
+                <text id="Item-(Default)" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745">
+                    <tspan x="318" y="170">Item (Default)</tspan>
+                </text>
+                <text id="Active" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745">
+                    <tspan x="375" y="54">Active</tspan>
+                </text>
+                <g id="Group-66" filter="url(#filter-9)" transform="translate(593.000000, 198.000000)">
+                    <polygon id="Fill-56" fill="#FFFFFF" points="5.06666667 1.26666667 10.1333333 1.26666667 10.1333333 5.06666667 15.2 5.06666667 15.2 6.33333333 17.7333333 6.33333333 17.7333333 7.6 19 7.6 19 13.9333333 17.7333333 13.9333333 17.7333333 16.4666667 16.4666667 16.4666667 16.4666667 20.2666667 13.9333333 20.2666667 13.9333333 19 12.6666667 19 12.6666667 20.2666667 6.33333333 20.2666667 6.3335498 17.7333333 5.06666667 17.7333333 5.06666667 16.4666667 3.8 16.4666667 3.8 15.2 2.53333333 15.2 2.53333333 12.6666667 1.26666667 12.6666667 1.26666667 11.4 0 11.4 2.48682932e-13 8.86666667 1.26666667 8.86666667 1.26666667 7.6 3.8 7.6 3.8 8.86666667 5.06666667 8.86666667"></polygon>
+                    <polygon id="Fill-1" fill="#000000" points="17.7333333 12.6666667 19 12.6666667 19 13.9333333 17.7333333 13.9333333"></polygon>
+                    <polygon id="Fill-2" fill="#000000" points="17.7333333 10.1333333 19 10.1333333 19 11.4 17.7333333 11.4"></polygon>
+                    <polygon id="Fill-3" fill="#000000" points="17.7333333 11.4 19 11.4 19 12.6666667 17.7333333 12.6666667"></polygon>
+                    <polygon id="Fill-4" fill="#000000" points="17.7333333 8.86666667 19 8.86666667 19 10.1333333 17.7333333 10.1333333"></polygon>
+                    <polygon id="Fill-5" fill="#000000" points="17.7333333 7.6 19 7.6 19 8.86666667 17.7333333 8.86666667"></polygon>
+                    <polygon id="Fill-6" fill="#000000" points="16.4666667 13.9333333 17.7333333 13.9333333 17.7333333 15.2 16.4666667 15.2"></polygon>
+                    <polygon id="Fill-7" fill="#000000" points="16.4666667 15.2 17.7333333 15.2 17.7333333 16.4666667 16.4666667 16.4666667"></polygon>
+                    <polygon id="Fill-8" fill="#000000" points="16.4666667 6.33333333 17.7333333 6.33333333 17.7333333 7.6 16.4666667 7.6"></polygon>
+                    <polygon id="Fill-9" fill="#000000" points="15.2 17.7333333 16.4666667 17.7333333 16.4666667 19 15.2 19"></polygon>
+                    <polygon id="Fill-10" fill="#000000" points="15.2 19 16.4666667 19 16.4666667 20.2666667 15.2 20.2666667"></polygon>
+                    <polygon id="Fill-11" fill="#000000" points="15.2 16.4666667 16.4666667 16.4666667 16.4666667 17.7333333 15.2 17.7333333"></polygon>
+                    <polygon id="Fill-12" fill="#000000" points="15.2 6.33333333 16.4666667 6.33333333 16.4666667 7.6 15.2 7.6"></polygon>
+                    <polygon id="Fill-13" fill="#000000" points="15.2 7.6 16.4666667 7.6 16.4666667 8.86666667 15.2 8.86666667"></polygon>
+                    <polygon id="Fill-14" fill="#000000" points="13.9333333 19 15.2 19 15.2 20.2666667 13.9333333 20.2666667"></polygon>
+                    <polygon id="Fill-15" fill="#000000" points="13.9333333 13.9333333 15.2 13.9333333 15.2 15.2 13.9333333 15.2"></polygon>
+                    <polygon id="Fill-16" fill="#000000" points="13.9333333 15.2 15.2 15.2 15.2 16.4666667 13.9333333 16.4666667"></polygon>
+                    <polygon id="Fill-17" fill="#000000" points="13.9333333 12.6666667 15.2 12.6666667 15.2 13.9333333 13.9333333 13.9333333"></polygon>
+                    <polygon id="Fill-18" fill="#000000" points="13.9333333 11.4 15.2 11.4 15.2 12.6666667 13.9333333 12.6666667"></polygon>
+                    <polygon id="Fill-19" fill="#000000" points="13.9333333 5.06666667 15.2 5.06666667 15.2 6.33333333 13.9333333 6.33333333"></polygon>
+                    <polygon id="Fill-20" fill="#000000" points="12.6666667 17.7333333 13.9333333 17.7333333 13.9333333 19 12.6666667 19"></polygon>
+                    <polygon id="Fill-21" fill="#000000" points="12.6666667 6.33333333 13.9333333 6.33333333 13.9333333 7.6 12.6666667 7.6"></polygon>
+                    <polygon id="Fill-22" fill="#000000" points="12.6666667 5.06666667 13.9333333 5.06666667 13.9333333 6.33333333 12.6666667 6.33333333"></polygon>
+                    <polygon id="Fill-23" fill="#000000" points="12.6666667 7.6 13.9333333 7.6 13.9333333 8.86666667 12.6666667 8.86666667"></polygon>
+                    <polygon id="Fill-24" fill="#000000" points="11.4 19 12.6666667 19 12.6666667 20.2666667 11.4 20.2666667"></polygon>
+                    <polygon id="Fill-25" fill="#000000" points="11.4 13.9333333 12.6666667 13.9333333 12.6666667 15.2 11.4 15.2"></polygon>
+                    <polygon id="Fill-26" fill="#000000" points="11.4 15.2 12.6666667 15.2 12.6666667 16.4666667 11.4 16.4666667"></polygon>
+                    <polygon id="Fill-27" fill="#000000" points="11.4 12.6666667 12.6666667 12.6666667 12.6666667 13.9333333 11.4 13.9333333"></polygon>
+                    <polygon id="Fill-28" fill="#000000" points="11.4 11.4 12.6666667 11.4 12.6666667 12.6666667 11.4 12.6666667"></polygon>
+                    <polygon id="Fill-29" fill="#000000" points="11.4 5.06666667 12.6666667 5.06666667 12.6666667 6.33333333 11.4 6.33333333"></polygon>
+                    <polygon id="Fill-30" fill="#000000" points="10.1333333 19 11.4 19 11.4 20.2666667 10.1333333 20.2666667"></polygon>
+                    <polygon id="Fill-31" fill="#000000" points="10.1333333 5.06666667 11.4 5.06666667 11.4 6.33333333 10.1333333 6.33333333"></polygon>
+                    <polygon id="Fill-32" fill="#000000" points="8.86666667 19 10.1333333 19 10.1333333 20.2666667 8.86666667 20.2666667"></polygon>
+                    <polygon id="Fill-33" fill="#000000" points="8.86666667 13.9333333 10.1333333 13.9333333 10.1333333 15.2 8.86666667 15.2"></polygon>
+                    <polygon id="Fill-34" fill="#000000" points="8.86666667 15.2 10.1333333 15.2 10.1333333 16.4666667 8.86666667 16.4666667"></polygon>
+                    <polygon id="Fill-35" fill="#000000" points="8.86666667 12.6666667 10.1333333 12.6666667 10.1333333 13.9333333 8.86666667 13.9333333"></polygon>
+                    <polygon id="Fill-36" fill="#000000" points="8.86666667 11.4 10.1333333 11.4 10.1333333 12.6666667 8.86666667 12.6666667"></polygon>
+                    <polygon id="Fill-37" fill="#000000" points="8.86666667 6.33333333 10.1333333 6.33333333 10.1333333 7.6 8.86666667 7.6"></polygon>
+                    <polygon id="Fill-38" fill="#000000" points="8.86666667 3.8 10.1333333 3.8 10.1333333 5.06666667 8.86666667 5.06666667"></polygon>
+                    <polygon id="Fill-39" fill="#000000" points="8.86666667 5.06666667 10.1333333 5.06666667 10.1333333 6.33333333 8.86666667 6.33333333"></polygon>
+                    <polygon id="Fill-40" fill="#000000" points="8.86666667 7.6 10.1333333 7.6 10.1333333 8.86666667 8.86666667 8.86666667"></polygon>
+                    <polygon id="Fill-41" fill="#000000" points="8.86666667 2.53333333 10.1333333 2.53333333 10.1333333 3.8 8.86666667 3.8"></polygon>
+                    <polygon id="Fill-42" fill="#000000" points="8.86666667 1.26666667 10.1333333 1.26666667 10.1333333 2.53333333 8.86666667 2.53333333"></polygon>
+                    <polygon id="Fill-43" fill="#000000" points="7.6 19 8.86666667 19 8.86666667 20.2666667 7.6 20.2666667"></polygon>
+                    <polygon id="Fill-44" fill="#000000" points="7.6 0 8.86666667 0 8.86666667 1.26666667 7.6 1.26666667"></polygon>
+                    <polygon id="Fill-45" fill="#000000" points="6.33333333 17.7333333 7.6 17.7333333 7.6 19 6.33333333 19"></polygon>
+                    <polygon id="Fill-46" fill="#000000" points="6.33333333 19 7.6 19 7.6 20.2666667 6.33333333 20.2666667"></polygon>
+                    <polygon id="Fill-47" fill="#000000" points="6.33333333 -7.21644966e-15 7.6 -7.21644966e-15 7.6 1.26666667 6.33333333 1.26666667"></polygon>
+                    <polygon id="Fill-48" fill="#000000" points="5.06666667 16.4666667 6.33333333 16.4666667 6.33333333 17.7333333 5.06666667 17.7333333"></polygon>
+                    <polygon id="Fill-49" fill="#000000" points="5.06666667 10.1333333 6.33333333 10.1333333 6.33333333 11.4 5.06666667 11.4"></polygon>
+                    <polygon id="Fill-50" fill="#000000" points="5.06666667 6.33333333 6.33333333 6.33333333 6.33333333 7.6 5.06666667 7.6"></polygon>
+                    <polygon id="Fill-51" fill="#000000" points="5.06666667 3.8 6.33333333 3.8 6.33333333 5.06666667 5.06666667 5.06666667"></polygon>
+                    <polygon id="Fill-52" fill="#000000" points="5.06666667 5.06666667 6.33333333 5.06666667 6.33333333 6.33333333 5.06666667 6.33333333"></polygon>
+                    <polygon id="Fill-53" fill="#000000" points="5.06666667 8.86666667 6.33333333 8.86666667 6.33333333 10.1333333 5.06666667 10.1333333"></polygon>
+                    <polygon id="Fill-54" fill="#000000" points="5.06666667 7.6 6.33333333 7.6 6.33333333 8.86666667 5.06666667 8.86666667"></polygon>
+                    <polygon id="Fill-55" fill="#000000" points="5.06666667 2.53333333 6.33333333 2.53333333 6.33333333 3.8 5.06666667 3.8"></polygon>
+                    <polygon id="Fill-56" fill="#000000" points="5.06666667 1.26666667 6.33333333 1.26666667 6.33333333 2.53333333 5.06666667 2.53333333"></polygon>
+                    <polygon id="Fill-57" fill="#000000" points="3.8 15.2 5.06666667 15.2 5.06666667 16.4666667 3.8 16.4666667"></polygon>
+                    <polygon id="Fill-58" fill="#000000" points="3.8 8.86666667 5.06666667 8.86666667 5.06666667 10.1333333 3.8 10.1333333"></polygon>
+                    <polygon id="Fill-59" fill="#000000" points="2.53333333 13.9333333 3.8 13.9333333 3.8 15.2 2.53333333 15.2"></polygon>
+                    <polygon id="Fill-60" fill="#000000" points="2.53333333 12.6666667 3.8 12.6666667 3.8 13.9333333 2.53333333 13.9333333"></polygon>
+                    <polygon id="Fill-61" fill="#000000" points="2.53333333 7.6 3.8 7.6 3.8 8.86666667 2.53333333 8.86666667"></polygon>
+                    <polygon id="Fill-62" fill="#000000" points="1.26666667 11.4 2.53333333 11.4 2.53333333 12.6666667 1.26666667 12.6666667"></polygon>
+                    <polygon id="Fill-63" fill="#000000" points="1.26666667 7.6 2.53333333 7.6 2.53333333 8.86666667 1.26666667 8.86666667"></polygon>
+                    <polygon id="Fill-64" fill="#000000" points="-1.21458399e-13 10.1333333 1.26666667 10.1333333 1.26666667 11.4 -1.21458399e-13 11.4"></polygon>
+                    <polygon id="Fill-65" fill="#000000" points="-1.21458399e-13 8.86666667 1.26666667 8.86666667 1.26666667 10.1333333 -1.21458399e-13 10.1333333"></polygon>
+                </g>
+                <text id="The-Dropdown-states." font-family="Lato-Medium, Lato" font-size="15" font-weight="400" line-spacing="24" fill="#3E5667">
+                    <tspan x="0" y="306">The Dropdown states.</tspan>
+                </text>
+                <g id="Group-21" transform="translate(82.000000, 81.000000)"></g>
+            </g>
+        </g>
+    </g>
+</svg>

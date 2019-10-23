@@ -65,6 +65,7 @@ $__states: null;
 @import "src/components/listitem";
 @import "src/components/modal";
 @import "src/components/nav";
+@import "src/components/numberinput";
 @import "src/components/pagination";
 @import "src/components/popover";
 @import "src/components/progress";
@@ -72,13 +73,17 @@ $__states: null;
 @import "src/components/radio";
 @import "src/components/scrollable-nav";
 @import "src/components/searchbar";
+@import "src/components/select";
 @import "src/components/sidenav";
+@import "src/components/switch";
 @import "src/components/table";
 @import "src/components/tab-nav";
 @import "src/components/tab-set";
 @import "src/components/textinput";
 @import "src/components/toggle";
+@import "src/components/tooltip";
 @import "src/components/transfer";
+@import "src/components/textarea";
 
 // Objects
 @import "src/objects/divider";

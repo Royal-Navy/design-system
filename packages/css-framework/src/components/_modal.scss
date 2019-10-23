@@ -1,54 +1,106 @@
 .rn-modal {
-  @include cover;
-  @include cover;
-  @include font-size(s);
-  @include shadow(1);
-  @include z-index(dialog);
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 1px solid color(neutral, 300);
-  border-radius: 3px;
-  display: flex;
-  padding: spacing(8);
+  @include z-index(modal);
   position: fixed;
-  opacity: 0;
-  pointer-events: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
 
-
-  &.open {
-    opacity: 100;
-    pointer-events: auto;
+  &.is-closed {
+    display: none;
   }
 
-  .window {
-    background-color: color(neutral, white);
-    margin: auto;
-    width: 90vw;
-    @include breakpoint(s) {
-      width: 80vw;
-    }
-    @include breakpoint(m) {
-      width: 70vw;
-    }
+  &.is-open {
+    display: block;
   }
+}
 
-  .header {
-    padding: spacing(6) spacing(8);
-    border-bottom: 1px solid color(neutral, 100);
+.rn-modal__main {
+  @include shadow(2);
+  border: 1px solid color(neutral, 200);
+  border-radius: 5px;
+  background: color(neutral, white);  
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 90%;
+  @include breakpoint(m) {
+    width: 100%;
+    max-width: 700px;
   }
+}
 
-  .content {
-    padding: spacing(4) spacing(8);
+.rn-modal__header {
+  display: flex;
+  justify-content: space-between;
+  padding: spacing(6);
+  border-bottom: 1px solid color(neutral, 100);
+}
+
+.rn-modal__title {
+  display: inline-block;
+  font-size: font-size(m);
+  color: color(neutral, 500);
+}
+
+.rn-modal__close-button {
+  background: color(neutral, 000);
+  border-radius: 50%;
+  border: 1px transparent;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background: color(neutral, 100);
+    outline: 0;
   }
+}
 
-  .footer {
-    background-color: color(neutral, 000);
-    padding: spacing(4) spacing(4);
-    border-top: 1px solid color(neutral, 100);
-    display: flex;
-    justify-content: flex-end;
+.rn-modal .rn-modal__container {
+  padding: spacing(4) spacing(4);
+}
 
-    > :last-child {
-      margin-left: 8px;
-    }
+.rn-modal__footer {
+  display: flex;
+  padding: spacing(4);
+  border-top: 1px solid color(neutral, 100);
+}
+
+.rn-modal .rn-btn.rn-modal__primary-button,
+.rn-modal .rn-btn.rn-modal__secondary-button,
+.rn-modal .rn-btn.rn-modal__tertiary-button {
+  margin: 0;
+}
+
+.rn-modal .rn-btn.rn-modal__secondary-button {
+  margin-left: auto;
+}
+
+.rn-modal .rn-btn.rn-modal__primary-button {
+  margin-left: spacing(2);
+}
+
+.rn-modal__divider {
+  border: 0;
+  border-bottom: 1px solid color(neutral, 100);
+  margin: 0;
+}
+
+.rn-modal__btn-icon {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  text-align: center;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
