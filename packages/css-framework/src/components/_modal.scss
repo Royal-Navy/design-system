@@ -38,13 +38,13 @@
 
 .rn-modal__title {
   display: inline-block;
-  font-size: font-size(m);
+  font-size: font-size(l);
   color: color(neutral, 500);
 }
 
 .rn-modal__close-button {
   background: color(neutral, 000);
-  border-radius: 50%;
+  border-radius: 500px;
   border: 1px transparent;
   cursor: pointer;
 
@@ -88,7 +88,7 @@
 .rn-modal__btn-icon {
   position: relative;
   display: inline-block;
-  border-radius: 50%;
+  border-radius: 500px;
   width: 1rem;
   height: 1rem;
   background-color: rgba(0, 0, 0, 0.25);
