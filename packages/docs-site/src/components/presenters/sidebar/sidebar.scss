@@ -14,7 +14,7 @@
 .sidebar__title {
   display: block;
   padding-bottom: spacing(6);
-  font-size: font-size('s');
+  font-size: font-size(base);
   font-weight: 600;
   color: color(primary, 900);
 }
@@ -72,7 +72,7 @@
 }
 
 .sidebar .rn-nav__list-item.has-children > .rn-nav__item {
-  font-size: font-size('m');
+  font-size: font-size(l);
   color: color(primary, 900);
 
   &.is-active {
