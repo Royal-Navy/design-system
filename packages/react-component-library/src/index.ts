@@ -1,5 +1,5 @@
 // Components
-import Avatar from './components/Avatar'
+import { Avatar } from './components/Avatar'
 import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
 import { Button } from './components/Button'
@@ -19,7 +19,9 @@ import Switch from './components/Switch/Switch'
 import ResponsiveSwitch from './components/Switch'
 import Radio from './components/Radio'
 import Tab from './components/TabSet/Tab'
+import { Table, Column } from './components/Table'
 import TabSet from './components/TabSet'
+import { TextArea } from './components/TextArea'
 import TextInput from './components/TextInput'
 import { Tooltip } from './components/Tooltip'
 
@@ -38,6 +40,7 @@ export {
   Breadcrumbs,
   Button,
   Checkbox,
+  Column,
   Dialog,
   Dropdown,
   Masthead,
@@ -53,7 +56,9 @@ export {
   Select,
   Sidebar,
   Tab,
+  Table,
   TabSet,
+  TextArea,
   TextInput,
   Tooltip,
   Icons,
