@@ -39,7 +39,7 @@
 }
 
 .masthead__nav .rn-nav .rn-nav__item {
-  font-size: font-size(m) !important;
+  font-size: font-size(l) !important;
   color: color(primary, 800);
   border-radius: 0;
   font-weight: 600;
@@ -62,7 +62,7 @@
 
 .masthead__nav .rn-nav__list .rn-nav__list .rn-nav__item {
   color: color(primary, 800) !important;
-  font-size: font-size(s) !important;
+  font-size: font-size(base) !important;
   border-radius: 4px;
 
   &.is-active {
@@ -149,7 +149,7 @@
   }
 
   .masthead__nav .rn-nav .rn-nav__list .rn-nav__list-item .rn-nav__item {
-    font-size: font-size(s) !important;
+    font-size: font-size(base) !important;
     pointer-events: all !important;
     border-radius: 4px;
     font-weight: 600;
