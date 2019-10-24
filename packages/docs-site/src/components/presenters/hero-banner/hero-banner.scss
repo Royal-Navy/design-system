@@ -17,7 +17,7 @@
 
 .hero-banner__title {
   color: color(neutral, white);
-  @include font-size(display-l);
+  font-size: font-size(display-l);
   margin: 0;
   line-height: 1.3;
 }
