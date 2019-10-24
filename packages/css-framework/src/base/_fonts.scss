@@ -37,35 +37,35 @@ html {
 
 h1,
 .rn-h1 {
-  @include font-size(xl);
+  @include font-size(xxl);
 }
 
 h2,
 .rn-h2 {
-  @include font-size(l);
+  @include font-size(xl);
 }
 
 h3,
 .rn-h3 {
-  @include font-size(m);
+  @include font-size(l);
 }
 
 h4,
 .rn-h4 {
-  @include font-size(base);
+  @include font-size(m);
 }
 
 h5,
 .rn-h5 {
-  @include font-size(s);
+  @include font-size(base);
 }
 
 h6,
 .rn-h6 {
-  @include font-size(xs);
+  @include font-size(s);
 }
 
 p,
 .rn-p {
-  @include font-size(s);  
+  @include font-size(base);  
 }
