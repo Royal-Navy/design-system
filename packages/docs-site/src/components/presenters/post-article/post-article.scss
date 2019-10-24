@@ -30,7 +30,7 @@ $text-color: #748999;
   }
 
   &__lede {
-    font-size: font-size(m);
+    font-size: font-size(l);
     font-weight: 300;
     margin: 0;
   }
@@ -59,7 +59,7 @@ h4, h5, h6 {
 }
 
 p, li {
-  font-size: font-size(s);
+  font-size: font-size(base);
   color: color(neutral, 400);
   line-height: 1.5;
 }
@@ -100,7 +100,7 @@ pre {
     padding-left: 0;
     color: color(neutral, 000);
     background-color: unset;
-    font-size: font-size(s);
+    font-size: font-size(base);
   }
 }
 
@@ -110,7 +110,7 @@ pre {
 .standard-table {
   table {
     width: 100%;
-    font-size: font-size(s);
+    font-size: font-size(base);
     color: $text-color;
     margin: spacing(12) 0;
     border: 1px solid $border-color;
@@ -145,7 +145,7 @@ code {
   background-color: color(neutral, 100);
   color: color(neutral, 600);
   border-radius: 3px;
-  font-size: font-size(xs);
+  font-size: font-size(s);
   font-weight: 500;
   padding: 2px spacing(4);
 }
