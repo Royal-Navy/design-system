@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/storybook-react-input-state",
   "description": "State wrapper for form components in react storybook stories",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "publishConfig": {
     "access": "public"
   },
