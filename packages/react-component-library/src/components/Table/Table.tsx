@@ -17,13 +17,14 @@ function getKey(prefix: string, id: string) {
 }
 
 export const Table: React.FC<TableProps> = ({ data, children }) => {
-  const { tableData, sortTableData } = useTableData(data)
+  const { tableData, sortTableData, sortField, sortOrder } = useTableData(data)
 
   const childrenWithSort = React.Children.map(
     children,
     (child: React.ReactElement<ColumnProps>) =>
       React.cloneElement(child, {
         ...child.props,
+        sortOrder: sortField === child.props.field ? sortOrder : null,
         onSortClick: sortTableData,
       })
   )

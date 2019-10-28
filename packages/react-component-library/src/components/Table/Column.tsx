@@ -1,5 +1,13 @@
 import React from 'react'
 import classNames from 'classnames'
+import get from 'lodash/get'
+import {
+  IconSortAscending,
+  IconSortDescending,
+  IconSortUnsorted,
+} from '@royalnavy/icon-library'
+
+import { ASCENDING, DESCENDING } from './constants'
 
 export interface ColumnProps {
   field: string
@@ -9,18 +17,26 @@ export interface ColumnProps {
   children: string
 }
 
+const icons = {
+  [ASCENDING]: <IconSortAscending data-testid="ascending" />,
+  [DESCENDING]: <IconSortDescending data-testid="descending" />,
+}
+
+function getIcon(sortable: boolean, sortOrder: string) {
+  return sortable
+    ? get(icons, sortOrder) || <IconSortUnsorted data-testid="unsorted" />
+    : null
+}
+
 export const Column: React.FC<ColumnProps> = ({
   field,
   sortable,
   onSortClick,
+  sortOrder,
   children,
 }) => {
-<<<<<<< HEAD
-  const className = classNames({ sortable })
-=======
   const className = classNames({ 'is-sortable': sortable })
   const icon = getIcon(sortable, sortOrder)
->>>>>>> e5644b30... fixup! Add ability to sort table data
 
   function onClick() {
     if (sortable) {
@@ -31,6 +47,7 @@ export const Column: React.FC<ColumnProps> = ({
   return (
     <th className={className} onClick={onClick}>
       {children}
+      {icon}
     </th>
   )
 }

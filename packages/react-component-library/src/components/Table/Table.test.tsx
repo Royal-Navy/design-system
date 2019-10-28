@@ -100,7 +100,6 @@ describe('Table', () => {
     })
   })
 
-
   describe('when columns are sortable', () => {
     beforeEach(() => {
       const tableDataMock = [
@@ -144,9 +143,21 @@ describe('Table', () => {
       expect(wrapper.getByText('Second').classList).not.toContain('sortable')
     })
 
+    it('should have sort icons', () => {
+      expect(wrapper.queryAllByTestId('unsorted').length).toEqual(2)
+      expect(wrapper.queryAllByTestId('descending').length).toEqual(0)
+      expect(wrapper.queryAllByTestId('ascending').length).toEqual(0)
+    })
+
     describe('when the second cell header is clicked', () => {
       beforeEach(() => {
         wrapper.getByText('Second').click()
+      })
+
+      it('should have sort icons', () => {
+        expect(wrapper.queryAllByTestId('unsorted').length).toEqual(2)
+        expect(wrapper.queryAllByTestId('descending').length).toEqual(0)
+        expect(wrapper.queryAllByTestId('ascending').length).toEqual(0)
       })
 
       it('should not change the order of the rows', () => {
@@ -163,6 +174,12 @@ describe('Table', () => {
         wrapper.getByText('First').click()
       })
 
+      it('should have sort icons', () => {
+        expect(wrapper.queryAllByTestId('unsorted').length).toEqual(1)
+        expect(wrapper.queryAllByTestId('descending').length).toEqual(1)
+        expect(wrapper.queryAllByTestId('ascending').length).toEqual(0)
+      })
+
       it('should sort the data in descending order of the first column', () => {
         const rows = wrapper.getByText('a1').parentElement.parentElement
           .children
@@ -176,6 +193,12 @@ describe('Table', () => {
           wrapper.getByText('First').click()
         })
 
+        it('should have sort icons', () => {
+          expect(wrapper.queryAllByTestId('unsorted').length).toEqual(1)
+          expect(wrapper.queryAllByTestId('descending').length).toEqual(0)
+          expect(wrapper.queryAllByTestId('ascending').length).toEqual(1)
+        })
+
         it('should sort the data in ascending order of the first column', () => {
           const rows = wrapper.getByText('a1').parentElement.parentElement
             .children
@@ -187,6 +210,12 @@ describe('Table', () => {
         describe('when the first cell header is clicked for the third time', () => {
           beforeEach(() => {
             wrapper.getByText('First').click()
+          })
+
+          it('should have sort icons', () => {
+            expect(wrapper.queryAllByTestId('unsorted').length).toEqual(2)
+            expect(wrapper.queryAllByTestId('descending').length).toEqual(0)
+            expect(wrapper.queryAllByTestId('ascending').length).toEqual(0)
           })
 
           it('should unsort the data in the first column', () => {
@@ -204,6 +233,12 @@ describe('Table', () => {
       beforeEach(() => {
         wrapper.getByText('First').click()
         wrapper.getByText('Third').click()
+      })
+
+      it('should have sort icons', () => {
+        expect(wrapper.queryAllByTestId('unsorted').length).toEqual(1)
+        expect(wrapper.queryAllByTestId('descending').length).toEqual(1)
+        expect(wrapper.queryAllByTestId('ascending').length).toEqual(0)
       })
 
       it('should sort the data in descending order of the third column', () => {

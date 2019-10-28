@@ -1,6 +1,6 @@
 .rn-table {
   border-collapse: collapse;
-  table-layout: auto;
+  table-layout: fixed;
   width: 100%;
   th {
     font-weight: bold;
@@ -11,6 +11,14 @@
 
     &.is-sortable {
       cursor: pointer;
+    }
+
+    & svg {
+      position: relative;
+      left: spacing(1);
+      top: 2px;
+      width: spacing(3);
+      height: spacing(3);
     }
   }
   thead {
