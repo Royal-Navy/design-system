@@ -9,7 +9,7 @@ module.exports = merge(commonConfig, {
   mode: 'production',
   output: {
     filename: 'index.js',
-    path: resolve(__dirname, '../dist'),
+    path: resolve(__dirname, '../dist/cjs'),
     libraryTarget: 'commonjs2',
   },
   devtool: 'source-map',

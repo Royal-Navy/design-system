@@ -1,7 +1,8 @@
 {
   "name": "@royalnavy/icon-library",
-  "version": "1.6.0",
-  "main": "dist/index.js",
+  "version": "1.6.1",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
   "author": "NELSON",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -10,14 +11,15 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "run-s svgr exports build:ts types",
-    "build:ts": "webpack -p --config=webpack/prod.js",
+    "build": "run-s svgr exports build:es build:cjs types",
+    "build:es": "NODE_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\"",
+    "build:cjs": "NODE_ENV=cjs webpack -p --config=webpack/prod.js",
     "svgr": "rm -rf src/icons; svgr --ext tsx -d src/icons src/assets/**/",
     "exports": "./generate-exports.sh",
-    "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/",
+    "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/types",
     "prepare": "yarn build"
   },
   "dependencies": {
