@@ -1,4 +1,3 @@
-
 .rn-btn-group {
   .rn-btn {
     border-radius: 0;
@@ -12,6 +11,13 @@
 
     &:last-child {
       border-radius: 0 3px 3px 0;
+    }
+
+    &:hover,
+    &:focus {
+      background: color(primary, 600);
+      color: color(neutral, white);
+      box-shadow: none;
     }
   }
 

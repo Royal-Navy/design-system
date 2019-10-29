@@ -36,7 +36,7 @@ The usage section is a bullet pointed list of scenarios the component should be 
 
 <Tab title="Develop">
 
-A ButtonGroup is a simple wrapper component that is designed to group buttons together into a common component. The ButtonGroup component itself accept no properties, only content which should consist of a collection of buttons.
+A ButtonGroup accepts an array of button items that provide a label and value for each button. The component then generates a collection of buttons, grouped together, styled similar to a secondary button with a primary hover.
 
 ### Basic Usage
 
@@ -54,250 +54,174 @@ A ButtonGroup is a simple wrapper component that is designed to group buttons to
 The ButtonGroup can be used to contain any variation of button.
 
 <CodeHighlighter 
-source={`<ButtonGroup>
-<Button onClick={action} variant="primary">Primary</Button>
-<Button onClick={action} variant="secondary">Secondary</Button>
-<Button onClick={action} variant="tertiary">Tertiary</Button>
-
-<Button onClick={action} variant="primary" color="danger">Primary</Button>
-<Button onClick={action} variant="secondary" color="danger">Secondary</Button>
-<Button onClick={action} variant="tertiary" color="danger">Tertiary</Button>
-</ButtonGroup>
+source={`<ButtonGroup
+      items={[
+        {
+          value: 1,
+          label: 'One',
+        },
+        {
+          value: 2,
+          label: 'Two',
+        },
+        {
+          disabled: true,
+          value: 3,
+          label: 'Three',
+        },
+      ]}
+      name="sizer"
+      onClick={()=>{}}')}
+      size="regular"
+    />
 `} language="javascript"
 >
-  <ButtonGroup>
-    <Button onClick={()=>{}} variant="primary">Primary</Button>
-    <Button onClick={()=>{}} variant="secondary">Secondary</Button>
-    <Button onClick={()=>{}} variant="tertiary">Tertiary</Button>
-  </ButtonGroup>
-  <ButtonGroup>
-    <Button onClick={()=>{}} variant="primary" color="danger">Primary</Button>
-    <Button onClick={()=>{}} variant="secondary" color="danger">Secondary</Button>
-    <Button onClick={()=>{}} variant="tertiary" color="danger">Tertiary</Button>
-  </ButtonGroup>
+  <ButtonGroup
+      items={[
+        {
+          value: 1,
+          label: 'One',
+        },
+        {
+          value: 2,
+          label: 'Two',
+        },
+        {
+          disabled: true,
+          value: 3,
+          label: 'Three',
+        },
+      ]}
+      name="sizer"
+      onClick={action('Click button group')}
+      size="regular"
+    />
 </CodeHighlighter>
 
-### Sizes
-Buttons can be rendered in four different size variants.
-
-<CodeHighlighter source={`<ButtonGroup>
-  <Button
-    onClick={()=>{}}
-    variant="primary"
-    size="small"
-  >
-    Primary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="secondary"
-    color="danger"
-    size="small"
-  >
-    Secondary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="tertiary"
-    size="small"
-  >
-    Tertiary
-  </Button>
-</ButtonGroup>
-
-<ButtonGroup>
-  <Button
-    onClick={()=>{}}
-    variant="primary"
-    size="regular"
-  >
-    Primary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="secondary"
-    color="danger"
-    size="regular"
-  >
-    Secondary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="tertiary"
-    size="regular"
-  >
-    Tertiary
-  </Button>
-</ButtonGroup>
-
-<ButtonGroup>
-  <Button
-    onClick={()=>{}}
-    variant="primary"
-    size="large"
-  >
-    Primary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="secondary"
-    color="danger"
-    size="large"
-  >
-    Secondary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="tertiary"
-    size="large"
-  >
-    Tertiary
-  </Button>
-</ButtonGroup>
-
-<ButtonGroup>
-  <Button
-    onClick={()=>{}}
-    variant="primary"
-    size="xlarge"
-  >
-    Primary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="secondary"
-    color="danger"
-    size="xlarge"
-  >
-    Secondary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="tertiary"
-    size="xlarge"
-  >
-    Tertiary
-  </Button>
-</ButtonGroup>
-`} language="javascript"
->
-<ButtonGroup>
-  <Button
-    onClick={()=>{}}
-    variant="primary"
-    size="small"
-  >
-    Primary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="secondary"
-    color="danger"
-    size="small"
-  >
-    Secondary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="tertiary"
-    size="small"
-  >
-    Tertiary
-  </Button>
-</ButtonGroup>
-
-<ButtonGroup>
-  <Button
-    onClick={()=>{}}
-    variant="primary"
-    size="regular"
-  >
-    Primary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="secondary"
-    color="danger"
-    size="regular"
-  >
-    Secondary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="tertiary"
-    size="regular"
-  >
-    Tertiary
-  </Button>
-</ButtonGroup>
-
-<ButtonGroup>
-  <Button
-    onClick={()=>{}}
-    variant="primary"
-    size="large"
-  >
-    Primary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="secondary"
-    color="danger"
-    size="large"
-  >
-    Secondary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="tertiary"
-    size="large"
-  >
-    Tertiary
-  </Button>
-</ButtonGroup>
-
-<ButtonGroup>
-  <Button
-    onClick={()=>{}}
-    variant="primary"
-    size="xlarge"
-  >
-    Primary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="secondary"
-    color="danger"
-    size="xlarge"
-  >
-    Secondary
-  </Button>
-  <Button
-    onClick={()=>{}}
-    variant="tertiary"
-    size="xlarge"
-  >
-    Tertiary
-  </Button>
-</ButtonGroup>
-</CodeHighlighter>
 
 
 ### Icons
 Icons can be added to a button and currently can only be shown to the right of the label. Icons should take the form of an SVG component.
 
+
 <CodeHighlighter 
-source={`<ButtonGroup>
-<Button onClick={action} icon={<TriangleDown />}>Closed</Button>
-<Button onClick={action} icon={<TriangleUp />}>Open</Button>
-</ButtonGroup>
+source={`
+<ButtonGroup
+  items={[
+    {
+      value: 1,
+      label: 'One',
+    },
+    {
+      value: 2,
+      label: 'Two',
+      icon={<TriangleUp />}>
+    },
+    {
+      disabled: true,
+      value: 3,
+      label: 'Three',
+    },
+  ]}
+  name="sizer"
+  onClick={action('Click button group')}
+  size="regular"
+/>
 `} language="javascript"
 >
-<ButtonGroup>
-  <Button onClick={()=>{}} icon={<Icons.TriangleDown />}>Closed</Button>
-  <Button onClick={()=>{}} icon={<Icons.TriangleUp />}>Open</Button>
-</ButtonGroup>
+<ButtonGroup
+  items={[
+    {
+      value: 1,
+      label: 'One',
+    },
+    {
+      value: 2,
+      label: 'Two',
+      icon={<TriangleUp />}>
+    },
+    {
+      disabled: true,
+      value: 3,
+      label: 'Three',
+    },
+  ]}
+  name="sizer"
+  onClick={action('Click button group')}
+  size="regular"
+/>
 </CodeHighlighter>
 
+
+### Properties
+<DataTable caption="ButtonGroupItem" data={[
+  {
+    Name: 'disabled',
+    Type: 'boolean,
+    Required: 'False',
+    Default: false,
+    Description: 'Mark the button as disabled/inactive',
+  },
+  {
+    Name: 'icon',
+    Type: 'ReactNode',
+    Required: 'False',
+    Default: '',
+    Description: 'Icon to display to the right of text in the button. Accepts any Node but ideally would be an image or svg tag',
+  },
+  {
+    Name: 'label',
+    Type: 'string',
+    Required: 'True',
+    Default: '',
+    Description: 'The label to display in the button',
+  },
+    {
+    Name: 'value',
+    Type: 'string',
+    Required: 'True',
+    Default: '',
+    Description: '',
+  },
+  ]}  
+/>
+
+<DataTable caption="ButtonGroup" data={[
+  {
+    Name: 'className',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'Custom css class to add to the button element',
+  },
+  {
+    Name: 'items',
+    Type: 'ButtonGroupItem[]',
+    Required: 'True',
+    Default: '',
+    Description: 'Details of the buttons to display in the group',
+  },
+  {
+    Name: 'name',
+    Type: 'string',
+    Required: 'True',
+    Default: '',
+    Description: 'A name to be included in a call to onClick. Allows 1 handler to handle multiple button groups',
+  },
+  {
+    Name: 'onClick',
+    Type: '(event):void',
+    Required: 'True',
+    Default: '',
+    Description: 'Calls the function in a similar manner to an input onChange. Sends an object with a target containing a name and value',
+  },
+  {
+    Name: 'size',
+    Type: 'string (small/regular/large/xlarge)',
+    Required: 'False',
+    Default: 'regular',
+    Description: 'The size for the button',
+  },
+]} />
 </Tab>
 </TabSet>
