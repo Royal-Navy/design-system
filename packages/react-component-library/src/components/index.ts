@@ -2,6 +2,7 @@ import { Avatar } from './Avatar'
 import Badge from './Badge'
 import Breadcrumbs from './Breadcrumbs'
 import { Button } from './Button'
+import { ButtonGroup } from './ButtonGroup'
 import Checkbox from './Checkbox'
 import { Dialog } from './Dialog'
 import { Dropdown } from './Dropdown'
@@ -31,6 +32,7 @@ export {
   Badge,
   Breadcrumbs,
   Button,
+  ButtonGroup,
   Checkbox,
   Dialog,
   Dropdown,

@@ -3,6 +3,7 @@ import { Avatar } from './components/Avatar'
 import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
 import { Button } from './components/Button'
+import { ButtonGroup } from './components/ButtonGroup'
 import Checkbox from './components/Checkbox'
 import { Dialog } from './components/Dialog'
 import { Dropdown } from './components/Dropdown'
@@ -39,6 +40,7 @@ export {
   Badge,
   Breadcrumbs,
   Button,
+  ButtonGroup,
   Checkbox,
   Column,
   Dialog,
