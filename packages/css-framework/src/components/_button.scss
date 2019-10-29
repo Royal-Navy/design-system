@@ -99,3 +99,11 @@ $btn-focus-width: 0.2rem;
 fieldset:disabled a.rn-btn {
   pointer-events: none;
 }
+
+.rn-btn.rn-btn--disabled,
+.rn-btn.rn-btn--disabled:hover,
+.rn-btn.rn-btn--disabled:focus {
+  background: color(neutral, 000);
+  color: color(neutral, 500);
+  cursor: not-allowed;
+}
