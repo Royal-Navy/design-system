@@ -1,49 +1,21 @@
-$btn-group-states: (
-  neutral: (
-    color: color("neutral", 800),
-    background: color("neutral", 700)
-  ),
-  primary: (
-    color: color("primary", 700),
-    background: color("primary", 400)
-  ),
-  danger: (
-    color: color("danger", 700),
-    background: color("danger", 400)
-  ),
-  warning: (
-    color: color("warning", 700),
-    background: color("warning", 400)
-  ),
-  success: (
-    color: color("success", 700),
-    background: color("success", 500)
-  )
-);
-
 
 .rn-btn-group {
   .rn-btn {
     border-radius: 0;
     border: 1px solid color(neutral, 100);
     border-left: none;
-    @each $state, $variation in $btn-group-states {
-      &.#{$state} {                
-        background: color(neutral, white);
-        color: color(neutral, 500);
-        @include hover {
-          background-color: map-get($variation, "background");
-          border-color: map-get($variation, "background");
-          color: color(neutral, white);
-        }
-      }
-    }
+
     &:first-child {
       border-radius: 3px 0 0 3px;
-      border: 1px solid color(neutral, 100);  
+      border: 1px solid color(neutral, 100);
     }
+
     &:last-child {
       border-radius: 0 3px 3px 0;
     }
+  }
+
+  .rn-btn + .rn-btn {
+    margin-left: 0;
   }
 }
