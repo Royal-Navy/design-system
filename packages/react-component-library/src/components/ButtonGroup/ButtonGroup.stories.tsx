@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { withKnobs } from '@storybook/addon-knobs'
 
 import { ButtonGroup } from '../index'
+import { Visibility } from '../../icons'
 
 const stories = storiesOf('Button group', module)
 
@@ -14,21 +15,19 @@ stories.add('Default', () => (
     <ButtonGroup
       items={[
         {
-          value: 1,
           label: 'One',
+          onClick: () => action('Click One'),
         },
         {
-          value: 2,
           label: 'Two',
+          onClick: () => action('Click Two'),
         },
         {
           disabled: true,
-          value: 3,
           label: 'Three',
+          icon: <Visibility />,
         },
       ]}
-      name="sizer"
-      onClick={action('Click button group')}
       size="regular"
     />
   </>
