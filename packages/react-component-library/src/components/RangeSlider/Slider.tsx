@@ -14,13 +14,17 @@ import { Handle, Track, Tick } from './index'
 
 interface RangeSliderProps extends Omit<SliderProps, 'children'> {
   hasLabels?: boolean
+  tracksLeft?: boolean
+  tracksRight?: boolean
 }
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
   className,
   children,
   domain,
-  hasLabels = false,
+  hasLabels,
+  tracksLeft = false,
+  tracksRight = false,
   ...rest
 }) => {
   const classes = classNames('rn-rangeslider', className, {
@@ -52,7 +56,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
           </div>
         )}
       </Handles>
-      <Tracks>
+      <Tracks left={tracksLeft} right={tracksRight}>
         {({ tracks, getTrackProps }) => (
           <div className="rn-rangeslider__tracks">
             {tracks.map(({ id, source, target }) => (

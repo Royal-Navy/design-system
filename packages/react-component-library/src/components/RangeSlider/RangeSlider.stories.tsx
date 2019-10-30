@@ -22,7 +22,7 @@ stories.add('Stepped', () => (
     domain={[0, 40]}
     step={10}
     mode={1}
-    values={[10]}
+    values={[20]}
     onChange={action('onChange')}
     onUpdate={action('onUpdate')}
     tickCount={4}
@@ -46,9 +46,10 @@ stories.add('With labels', () => (
     domain={[0, 40]}
     step={2}
     mode={1}
-    values={[10]}
+    values={[20]}
     onChange={action('onChange')}
     onUpdate={action('onUpdate')}
+    tracksLeft
     hasLabels
   />
 ))
@@ -58,9 +59,10 @@ stories.add('Reversed scale', () => (
     domain={[0, 40]}
     step={2}
     mode={1}
-    values={[10]}
+    values={[20]}
     onChange={action('onChange')}
     onUpdate={action('onUpdate')}
+    tracksLeft
     hasLabels
     tickCount={20}
     reversed
@@ -72,9 +74,10 @@ stories.add('Disabled', () => (
     domain={[0, 40]}
     step={10}
     mode={1}
-    values={[10]}
+    values={[20]}
     onChange={action('onChange')}
     onUpdate={action('onUpdate')}
+    tracksLeft
     disabled
   />
 ))
