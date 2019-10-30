@@ -27,6 +27,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   tracksLeft = false,
   tracksRight = false,
   tickCount = 10,
+  reversed,
   values,
   onUpdate,
   ...rest
@@ -39,7 +40,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   }
 
   const classes = classNames('rn-rangeslider', className, {
-    //
+    'is-reversed': reversed,
   })
 
   return (

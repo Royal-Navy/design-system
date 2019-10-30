@@ -63,7 +63,7 @@ stories.add('Reversed scale', () => (
     values={[20]}
     onChange={action('onChange')}
     onUpdate={action('onUpdate')}
-    tracksLeft
+    tracksRight
     hasLabels
     tickCount={20}
     reversed
