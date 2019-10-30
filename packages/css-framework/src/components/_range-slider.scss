@@ -79,7 +79,11 @@ $range-slider-handle-colour: color(primary, 400);
   width: 2px;
   height: 12px;
   transform: translateY(-50%);
-  background-color: $range-slider-track-colour;
+  background-color: $range-slider-bg-colour;
+
+  &.is-active {
+    background-color: $range-slider-track-colour;
+  }
 }
 
 .rn-rangeslider__label {

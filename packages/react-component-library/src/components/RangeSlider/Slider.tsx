@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classNames from 'classnames'
 
 import {
@@ -21,15 +21,23 @@ interface RangeSliderProps extends Omit<SliderProps, 'children'> {
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
   className,
-  children,
   domain,
   step,
   hasLabels,
   tracksLeft = false,
   tracksRight = false,
   tickCount = 10,
+  values,
+  onUpdate,
   ...rest
 }) => {
+  const [sliderValues, setSliderValues] = useState(values)
+
+  const onUpdateHandler = (newValues: ReadonlyArray<number>) => {
+    setSliderValues(newValues)
+    onUpdate(newValues)
+  }
+
   const classes = classNames('rn-rangeslider', className, {
     //
   })

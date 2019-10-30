@@ -5,13 +5,24 @@ interface TickProps {
   tick: SliderItem
   count: number
   hasLabels?: boolean
+  values: ReadonlyArray<number>
+  domain: ReadonlyArray<number>
 }
 
-export const Tick: React.FC<TickProps> = ({ tick, count, hasLabels }) => {
+export const Tick: React.FC<TickProps> = ({
+  tick,
+  count,
+  hasLabels,
+  values,
+  domain,
+}) => {
+  const tickValue = (domain[1] / 100) * tick.percent
+  const active = values[0] >= tickValue
+
   return (
     <div>
       <div
-        className="rn-rangeslider__tick"
+        className={`rn-rangeslider__tick ${active ? 'is-active' : ''}`}
         style={{ left: `${tick.percent}%` }}
       />
       {hasLabels && (
