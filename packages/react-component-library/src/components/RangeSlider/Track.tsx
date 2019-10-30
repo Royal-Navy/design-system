@@ -18,6 +18,7 @@ export const Track: React.FC<TrackProps> = ({
         width: `${target.percent - source.percent}%`,
       }}
       {...getTrackProps()}
+      data-testid="rangeslider-track"
     />
   )
 }

@@ -27,7 +27,7 @@ export const Tick: React.FC<TickProps> = ({
   if (values.length > 1) active = false
 
   return (
-    <div>
+    <div data-testid="rangeslider-tick">
       <div
         className={`rn-rangeslider__tick ${active ? 'is-active' : ''}`}
         style={{ left: `${tick.percent}%` }}
@@ -40,6 +40,7 @@ export const Tick: React.FC<TickProps> = ({
             width: `${100 / count}%`,
             left: `${tick.percent}%`,
           }}
+          data-testid="rangeslider-label"
         >
           {tick.value}
         </span>

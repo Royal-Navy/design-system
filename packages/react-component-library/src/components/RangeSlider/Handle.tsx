@@ -23,6 +23,7 @@ export const Handle: React.FC<HandleProps> = ({
         className="rn-rangeslider__handle-outer"
         style={{ left: `${percent}%` }}
         {...getHandleProps(id)}
+        data-testid="rangeslider-handle"
       />
       <div
         role="slider"
