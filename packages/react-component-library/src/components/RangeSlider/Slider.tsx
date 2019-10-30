@@ -12,13 +12,15 @@ import {
 
 import { Handle, Track, Tick } from './index'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface RangeSliderProps extends Omit<SliderProps, 'children'> {}
+interface RangeSliderProps extends Omit<SliderProps, 'children'> {
+  hasLabels?: boolean
+}
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
   className,
   children,
   domain,
+  hasLabels = false,
   ...rest
 }) => {
   const classes = classNames('rn-rangeslider', className, {
@@ -69,7 +71,12 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         {({ ticks }) => (
           <div className="rn-rangeslider__ticks">
             {ticks.map(tick => (
-              <Tick key={tick.id} tick={tick} count={ticks.length} />
+              <Tick
+                key={tick.id}
+                tick={tick}
+                count={ticks.length}
+                hasLabels={hasLabels}
+              />
             ))}
           </div>
         )}
