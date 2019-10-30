@@ -51,6 +51,7 @@ stories.add('With labels', () => (
     onUpdate={action('onUpdate')}
     tracksLeft
     hasLabels
+    tickCount={20}
   />
 ))
 
