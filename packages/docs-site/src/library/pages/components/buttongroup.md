@@ -4,7 +4,7 @@ description: A collection of buttons commonly used to select an option
 header: true
 ---
 
-import { Button,ButtonGroup,  Icons, Tab, TabSet } from '@royalnavy/react-component-library'
+import { Button,ButtonGroup, Icons, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
@@ -40,115 +40,124 @@ A ButtonGroup accepts an array of button items that provide a label and value fo
 
 ### Basic Usage
 
-<CodeHighlighter source="<ButtonGroup>
-<Button onClick={onClickHandler}>Click me</Button>
-<Button onClick={onClickHandler}>Or me</Button>
-</ButtonGroup>" language="javascript">
-<ButtonGroup>
-  <Button onClick={() => {}}>Click me</Button>
-  <Button onClick={() => {}}>Or me</Button>
-</ButtonGroup>
-</CodeHighlighter>
-
-### Variants
-The ButtonGroup can be used to contain any variation of button.
-
-<CodeHighlighter 
-source={`<ButtonGroup
-      items={[
-        {
-          value: 1,
-          label: 'One',
-        },
-        {
-          value: 2,
-          label: 'Two',
-        },
-        {
-          disabled: true,
-          value: 3,
-          label: 'Three',
-        },
-      ]}
-      name="sizer"
-      onClick={()=>{}}')}
-      size="regular"
-    />
-`} language="javascript"
->
-  <ButtonGroup
-      items={[
-        {
-          value: 1,
-          label: 'One',
-        },
-        {
-          value: 2,
-          label: 'Two',
-        },
-        {
-          disabled: true,
-          value: 3,
-          label: 'Three',
-        },
-      ]}
-      name="sizer"
-      onClick={action('Click button group')}
-      size="regular"
-    />
-</CodeHighlighter>
-
-
-
-### Icons
-Icons can be added to a button and currently can only be shown to the right of the label. Icons should take the form of an SVG component.
-
-
-<CodeHighlighter 
-source={`
-<ButtonGroup
+<CodeHighlighter source="const items = [{ label: 'One', onClick: onClick }, ...]
+...
+<ButtonGroup items={items}/>" language="javascript"><ButtonGroup
   items={[
     {
-      value: 1,
       label: 'One',
+      onClick: () => {},
     },
     {
-      value: 2,
       label: 'Two',
-      icon={<TriangleUp />}>
+      onClick: () => {},
     },
     {
       disabled: true,
-      value: 3,
       label: 'Three',
     },
   ]}
-  name="sizer"
-  onClick={action('Click button group')}
+/>
+</CodeHighlighter>
+
+### Sizes
+
+<CodeHighlighter source={`const items = [{ label: 'One', onClick: onClick }, ...]
+...
+<ButtonGroup items={items} size="small" />
+<ButtonGroup items={items} size="regular" />
+<ButtonGroup items={items} size="large" />
+<ButtonGroup items={items} size="x-large" />`} language="javascript"><ButtonGroup
+  items={[
+    {
+      label: 'One',
+      onClick: () => {},
+    },
+    {
+      label: 'Two',
+      onClick: () => {},
+    },
+    {
+      disabled: true,
+      label: 'Three',
+    },
+  ]}
+  size="small"
+/>
+<ButtonGroup
+  items={[
+    {
+      label: 'One',
+      onClick: () => {},
+    },
+    {
+      label: 'Two',
+      onClick: () => {},
+    },
+    {
+      disabled: true,
+      label: 'Three',
+    },
+  ]}
   size="regular"
 />
-`} language="javascript"
->
 <ButtonGroup
   items={[
     {
-      value: 1,
       label: 'One',
+      onClick: () => {},
     },
     {
-      value: 2,
       label: 'Two',
-      icon={<TriangleUp />}>
+      onClick: () => {},
     },
     {
       disabled: true,
-      value: 3,
       label: 'Three',
     },
   ]}
-  name="sizer"
-  onClick={action('Click button group')}
-  size="regular"
+  size="large"
+/>
+<ButtonGroup
+  items={[
+    {
+      label: 'One',
+      onClick: () => {},
+    },
+    {
+      label: 'Two',
+      onClick: () => {},
+    },
+    {
+      disabled: true,
+      label: 'Three',
+    },
+  ]}
+  size="xlarge"
+/>
+</CodeHighlighter>
+
+# Icons 
+<CodeHighlighter source="const items = [{ label: 'One', onClick: onClick, icon: <VisibilityOff /> }, ...]
+...
+<ButtonGroup items={items}/>" language="javascript"><ButtonGroup
+  items={[
+    {
+      label: 'One',
+      onClick: () => {},
+      icon: <Icons.VisibilityOff />,
+    },
+    {
+      label: 'Two',
+      onClick: () => {},
+      icon: <Icons.Visibility />,
+    },
+    {
+      disabled: true,
+      label: 'Three',
+      icon: <Icons.VisibilityOff />,
+    },
+  ]}
 />
 </CodeHighlighter>
 
@@ -157,7 +166,7 @@ source={`
 <DataTable caption="ButtonGroupItem" data={[
   {
     Name: 'disabled',
-    Type: 'boolean,
+    Type: 'boolean',
     Required: 'False',
     Default: false,
     Description: 'Mark the button as disabled/inactive',
@@ -177,11 +186,11 @@ source={`
     Description: 'The label to display in the button',
   },
     {
-    Name: 'value',
-    Type: 'string',
-    Required: 'True',
+    Name: 'onClick',
+    Type: '(FormEvent<HTMLButtonElement>):void',
+    Required: 'False',
     Default: '',
-    Description: '',
+    Description: 'The function to call when a user clicks on the button generated for the item',
   },
   ]}  
 />
@@ -200,20 +209,6 @@ source={`
     Required: 'True',
     Default: '',
     Description: 'Details of the buttons to display in the group',
-  },
-  {
-    Name: 'name',
-    Type: 'string',
-    Required: 'True',
-    Default: '',
-    Description: 'A name to be included in a call to onClick. Allows 1 handler to handle multiple button groups',
-  },
-  {
-    Name: 'onClick',
-    Type: '(event):void',
-    Required: 'True',
-    Default: '',
-    Description: 'Calls the function in a similar manner to an input onChange. Sends an object with a target containing a name and value',
   },
   {
     Name: 'size',
