@@ -17,6 +17,8 @@ interface RangeSliderProps extends Omit<SliderProps, 'children'> {
   tracksLeft?: boolean
   tracksRight?: boolean
   tickCount?: number
+  IconLeft?: React.ElementType
+  IconRight?: React.ElementType
 }
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
@@ -27,6 +29,8 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   tracksLeft = false,
   tracksRight = false,
   tickCount = 10,
+  IconLeft,
+  IconRight,
   reversed,
   values,
   onUpdate,

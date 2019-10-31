@@ -2,6 +2,7 @@ import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 
+import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
 import { RangeSlider } from './index'
 
 const stories = storiesOf('RangeSlider', module)
@@ -38,6 +39,21 @@ stories.add('Multiple handles', () => (
     values={[10, 30]}
     onChange={action('onChange')}
     onUpdate={action('onUpdate')}
+  />
+))
+
+stories.add('With icons', () => (
+  <RangeSlider
+    domain={[0, 40]}
+    step={10}
+    mode={1}
+    values={[20]}
+    onChange={action('onChange')}
+    onUpdate={action('onUpdate')}
+    tickCount={4}
+    tracksLeft
+    IconLeft={IconBrightnessLow}
+    IconRight={IconBrightnessHigh}
   />
 ))
 
