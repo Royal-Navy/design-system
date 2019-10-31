@@ -18,10 +18,10 @@ export const Tick: React.FC<TickProps> = ({
   domain,
   reversed,
 }) => {
-  const percent = reversed ? 100 - tick.percent : tick.percent // Invert if reversed
-  const tickValue = (domain[1] / 100) * percent
+  const percent: number = reversed ? 100 - tick.percent : tick.percent // Invert if reversed
+  const tickValue: number = (domain[1] / 100) * percent
 
-  let active = values[0] >= tickValue
+  let active: boolean = values[0] >= tickValue
 
   // TODO: Need to figure out logic for multiple values (handles)
   if (values.length > 1) active = false

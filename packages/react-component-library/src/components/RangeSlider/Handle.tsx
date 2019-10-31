@@ -15,7 +15,7 @@ export const Handle: React.FC<HandleProps> = ({
   handle: { id, value, percent },
   getHandleProps,
 }) => {
-  const active = activeHandleID === id
+  const active: boolean = activeHandleID === id
 
   return (
     <>

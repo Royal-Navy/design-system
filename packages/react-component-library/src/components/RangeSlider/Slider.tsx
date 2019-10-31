@@ -34,7 +34,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
 }) => {
   const [sliderValues, setSliderValues] = useState(values)
 
-  const onUpdateHandler = (newValues: ReadonlyArray<number>) => {
+  const onUpdateHandler = (newValues: ReadonlyArray<number>): void => {
     setSliderValues(newValues)
     onUpdate(newValues)
   }
