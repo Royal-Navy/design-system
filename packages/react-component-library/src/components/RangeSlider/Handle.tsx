@@ -32,6 +32,7 @@ export const Handle: React.FC<HandleProps> = ({
         aria-valuenow={value}
         className={`rn-rangeslider__handle-inner ${active ? 'is-active' : ''}`}
         style={{ left: `${percent}%` }}
+        data-value={Math.floor(value)}
       />
     </>
   )
