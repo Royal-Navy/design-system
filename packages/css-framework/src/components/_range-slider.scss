@@ -1,6 +1,6 @@
-$range-slider-bg-colour: color(neutral, 200);
-$range-slider-track-colour: color(primary, 400);
-$range-slider-handle-colour: color(primary, 400);
+$range-slider-bg-colour: color(neutral, 100);
+$range-slider-track-colour: color(primary, 500);
+$range-slider-handle-colour: color(primary, 500);
 
 .rn-rangeslider {
   display: inline-flex;
@@ -9,8 +9,18 @@ $range-slider-handle-colour: color(primary, 400);
 
   > div {
     position: relative;
-    width: calc(100% - 2px);
+    width: 100%;
     height: 40px;
+  }
+
+  &.is-disabled {
+    opacity: 0.5;
+
+    .rn-rangeslider__handle-outer,
+    .rn-rangeslider__rail-outer,
+    .rn-rangeslider__track {
+      cursor: not-allowed;
+    }
   }
 }
 
@@ -68,16 +78,19 @@ $range-slider-handle-colour: color(primary, 400);
   z-index: 2;
   width: 14px;
   height: 14px;
+  margin-left: 1px;
   border-radius: 9999px;
   background-color: $range-slider-handle-colour;
+  text-align: center;
 
+  &:hover,
   &.is-active {
-    box-shadow: 0px 0px 0px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 0px 7px rgba(color(primary, 200), 0.5);
 
     &::after {
       content: attr(data-value);
       position: absolute;
-      transform: translate(0, -175%);
+      transform: translate(-50%, -175%);
       font-size: font-size(xs);
       color: color(neutral, 600);
     }

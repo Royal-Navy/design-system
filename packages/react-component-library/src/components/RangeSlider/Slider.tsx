@@ -19,6 +19,7 @@ interface RangeSliderProps extends Omit<SliderProps, 'children'> {
   tickCount?: number
   IconLeft?: React.ElementType
   IconRight?: React.ElementType
+  disabled?: boolean
 }
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
@@ -32,6 +33,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   IconLeft,
   IconRight,
   reversed,
+  disabled,
   values,
   onUpdate,
   ...rest
@@ -45,6 +47,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
 
   const classes = classNames('rn-rangeslider', className, {
     'is-reversed': reversed,
+    'is-disabled': disabled,
   })
 
   return (
