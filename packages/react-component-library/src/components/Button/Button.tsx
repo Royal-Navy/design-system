@@ -35,6 +35,7 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       className={classes}
       disabled={disabled}
+      data-testid="rn-button"
       type={type}
       onClick={e => {
         e.currentTarget.blur()

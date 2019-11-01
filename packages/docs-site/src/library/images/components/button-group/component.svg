@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 727 179">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M1.5.5h725v143H1.5z"/>
+    <path fill="#FFF" stroke="#B8C7D2" d="M210 49.5h101.5v45H210a3.5 3.5 0 01-3.5-3.5V53a3.5 3.5 0 013.5-3.5z"/>
+    <text fill="#233745" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(207 50)">
+      <tspan x="39.55" y="28">Day</tspan>
+    </text>
+    <path fill="#F8FAFC" stroke="#B8C7D2" d="M414.5 49.5H516a3.5 3.5 0 013.5 3.5v38a3.5 3.5 0 01-3.5 3.5H414.5v-45z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(415 50)">
+      <tspan x="31.12" y="28">Month</tspan>
+    </text>
+    <g>
+      <path fill="#3A8FDD" stroke="#2A77C7" d="M310.5 49.5h105v45h-105z"/>
+      <text fill="#FFF" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(311 50)">
+        <tspan x="33.71" y="28">Week</tspan>
+      </text>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="173">The Button Group Component.</tspan>
+    </text>
+  </g>
+</svg>
