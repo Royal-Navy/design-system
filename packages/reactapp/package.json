@@ -7,10 +7,10 @@
     "@royalnavy/react-component-library": "^1.6.1",
     "formik": "^1.5.8",
     "node-sass": "npm:sass",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
-    "sass": "^1.23.0"
+    "sass": "^1.23.3"
   },
   "scripts": {
     "start": "react-scripts start",

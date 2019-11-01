@@ -23,7 +23,7 @@
     "prepare": "yarn build"
   },
   "dependencies": {
-    "react": "^16.10.2"
+    "react": "^16.11.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
@@ -38,7 +38,7 @@
     "source-map-loader": "^0.2.4",
     "typescript": "^3.6.4",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9",
+    "webpack-cli": "^3.3.10",
     "webpack-merge": "^4.2.2"
   }
 }
