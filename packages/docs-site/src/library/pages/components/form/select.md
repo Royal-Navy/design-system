@@ -4,8 +4,8 @@ description: A form component used to allow the user to pick a value from a list
 header: true
 ---
 
-import { Links, Tab, TabSet, Select } from '@royalnavy/react-component-library'
-import Field from '../../../../components/containers/Field'
+import { Links, Tab, TabSet, Formik as FormComponents} from '@royalnavy/react-component-library'
+import { Field, Formik, Form } from 'formik'
 import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
@@ -55,18 +55,41 @@ The component works much like other form components, a value property contains t
 Note that the `Select` component only currently supports string values.
 
 ### Example with Formik
-<CodeHighlighter source={`<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-
+<CodeHighlighter source={`<Formik 
+  initialValues={initialValues} 
+  onSubmit={onSubmit} 
+  validationSchema={validationSchema}
+>
 <Form>
-  <Field name="colour" component={Select} label="Ball colour" options={options} />
-
+  <Field 
+    name="colour" 
+    component={Select} 
+    label="Ball colour" 
+    options={options} 
+  />
 </Form>
 </Formik>`} language="javascript">
-  <div style="height: 200px">
-      <Field name="colour" onChange={(value) => console.log(value)} component={Select} label="Ball color" options={[{label: 'Red', value:'red'},{label: 'Blue', value:'blue'},{label: 'Green', value: 'green', badge: 100 }]} />
-  </div>
+<div style="height: 200px">
+<Formik 
+  initialValues={{ color: 'red' }} 
+  onSubmit={() => {}} 
+>
+<Form>
+  <Field 
+    name="colour" 
+    component={FormComponents.Select}
+    label="Ball colour" 
+    options={[
+      { value: 'chocolate', label: 'Chocolate', badge: 100 },
+      { value: 'chozbun', label: 'Chozo Bun', badge: 21 },
+      { value: 'melon', label: 'Melon', badge: 321 },
+      { value: 'strawberry', label: 'Strawberry', badge: 200 },
+    ]} 
+  />
+</Form>
+</Formik>
+</div>
 </CodeHighlighter>
-
 
 ### Properties
 The `Select` component accepts the standard field properties and is also
