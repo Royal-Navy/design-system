@@ -19,7 +19,7 @@ The Table component is used to display tabular data. Each row is presented in th
 <TableComponent />
 
 ## Usage
-The Table component is best used to compare information in rows and columns. It organises data, making it easier for users to interpret by looking for patterns and insights.
+The Table component is best used to compare information in rows and columns. It organises data, making it easier for users to interpret by looking for patterns and insights. By default, the Table simply renders data passed to it, however it can be enhanced to include features such as Column Sorting.
 
 <TabSet>
 <Tab title="Design">
@@ -32,6 +32,7 @@ The Table component is best used to compare information in rows and columns. It 
 1. **Table Container**. Wraps the entire Table component. By default it has no border styles, ensuring it sits flush with its immediate parent.
 2. **Table Header**. Contains the column titles.
 3. **Table Column**. Each Table Column contains data for each Table Row.
+4. **Column Sorting (Optional)**. The Table Column can optionally have sorting applied to it, giving the user the ability to reorder the columns.
 
 ### Sizing & Spacing
 The Table component adapts to the data and content placed inside of it. By default, the Table will extend the full width of its parent.
