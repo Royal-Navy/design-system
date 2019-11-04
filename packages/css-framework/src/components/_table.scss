@@ -1,6 +1,6 @@
 .rn-table {
   border-collapse: collapse;
-  table-layout: auto;
+  table-layout: fixed;
   width: 100%;
   th {
     font-weight: bold;
@@ -8,6 +8,18 @@
     @include font-size(xs);
     text-transform: uppercase;
     padding: spacing(4) spacing(2);
+
+    &.is-sortable {
+      cursor: pointer;
+    }
+
+    & svg {
+      position: relative;
+      left: spacing(1);
+      top: 2px;
+      width: spacing(3);
+      height: spacing(3);
+    }
   }
   thead {
     border-bottom: 2px solid color(neutral, 100);
@@ -39,12 +51,6 @@
     }
     &.sort-desc .rn-table__arrow--up {
       opacity: 1;
-    }
-  }
-
-  &.sortable {
-    th {
-      cursor: pointer;
     }
   }
 }

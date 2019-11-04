@@ -1,1 +1,96 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 727 369"><g fill="none" fill-rule="evenodd"><path stroke="#B8C7D2" fill="#FFF" d="M1.5.5h725v336H1.5z"/><path fill="#B8C7D2" d="M46 56h1v40h-1z"/><circle fill="#3E5667" cx="46.5" cy="98" r="3"/><path fill="#B8C7D2" d="M332 47h1v40h-1z"/><circle fill="#3E5667" cx="332.5" cy="85" r="3"/><path fill="#B8C7D2" d="M115 245h1v40h-1z"/><circle fill="#3E5667" cx="115.5" cy="244" r="3"/><text font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745"><tspan x="66.389" y="53">Container</tspan></text><text font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745"><tspan x="347.3535" y="54">Table Header</tspan></text><text font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" fill="#233745"><tspan x="133.195" y="292">Table Column</tspan></text><rect fill="#3E5667" x="37" y="38" width="19.2" height="18.4" rx="9.2"/><rect fill="#3E5667" x="323" y="39" width="19.2" height="18.4" rx="9.2"/><rect fill="#3E5667" x="106" y="277" width="19.2" height="18.4" rx="9.2"/><text font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600" fill="#FFF"><tspan x="43.816" y="50.2">1</tspan></text><text font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600" fill="#FFF"><tspan x="329.816" y="51.2">2</tspan></text><text font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600" fill="#FFF"><tspan x="112.816" y="289.2">3</tspan></text><path fill="#E2E9EE" d="M69 129h590v2H69z"/><text font-family="Lato-Bold, Lato" font-size="14" font-weight="bold" fill="#233745" transform="translate(69 96)"><tspan x="11" y="14">FIRST COLUMN</tspan></text><text font-family="Lato-Medium, Lato" font-size="14" font-weight="400" fill="#3E5667" transform="translate(69 96)"><tspan x="11" y="57">Row 1 Cell 1</tspan></text><text font-family="Lato-Bold, Lato" font-size="14" font-weight="bold" fill="#233745" transform="translate(69 96)"><tspan x="222" y="14">SECOND COLUMN</tspan></text><text font-family="Lato-Bold, Lato" font-size="14" font-weight="bold" fill="#233745" transform="translate(69 96)"><tspan x="446" y="14">THIRD COLUMN</tspan></text><text font-family="Lato-Medium, Lato" font-size="14" font-weight="400" fill="#3E5667" transform="translate(69 96)"><tspan x="222" y="57">Row 1 Cell 2</tspan></text><g fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400"><text transform="translate(518 139)"><tspan x="0" y="14">Row 1 Cell 3</tspan></text><text transform="translate(518 139)"><tspan x="0" y="48">Row 2 Cell 3</tspan></text><text transform="translate(518 139)"><tspan x="0" y="82">Row 3 Cell 3</tspan></text></g><path fill="#E2E9EE" d="M69 164h590v1H69z"/><text font-family="Lato-Medium, Lato" font-size="14" font-weight="400" fill="#3E5667" transform="translate(69 96)"><tspan x="11" y="91">Row 2 Cell 1</tspan></text><text font-family="Lato-Medium, Lato" font-size="14" font-weight="400" fill="#3E5667" transform="translate(69 96)"><tspan x="222" y="91">Row 2 Cell 2</tspan></text><path fill="#E2E9EE" d="M69 198h590v1H69z"/><text font-family="Lato-Medium, Lato" font-size="14" font-weight="400" fill="#3E5667" transform="translate(69 96)"><tspan x="11" y="125">Row 3 Cell 1</tspan></text><text font-family="Lato-Medium, Lato" font-size="14" font-weight="400" fill="#3E5667" transform="translate(69 96)"><tspan x="222" y="125">Row 3 Cell 2</tspan></text><path fill="#E2E9EE" d="M69 232h590v1H69z"/><text font-family="Lato-Semibold, Lato" font-size="15" font-weight="500" fill="#3E5667"><tspan x=".5" y="366">The Table Anatomy.</tspan></text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 727 369">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M1.5.5h725v336H1.5z"/>
+    <path fill="#3E5667" d="M199.34 107.63l-3.75 3.74a.4.4 0 01-.56 0l-3.75-3.74a.4.4 0 010-.57l.78-.78a.4.4 0 01.57 0l2.68 2.68 2.68-2.68a.4.4 0 01.57 0l.78.78a.4.4 0 010 .57z"/>
+    <path fill="#B8C7D2" d="M191.28 102.03l3.75-3.75a.4.4 0 01.56 0l3.75 3.75a.4.4 0 010 .56l-.78.78a.4.4 0 01-.57 0l-2.68-2.68-2.68 2.68a.4.4 0 01-.57 0l-.78-.78a.4.4 0 010-.56z"/>
+    <g fill="#B8C7D2">
+      <path d="M430.34 107.63l-3.75 3.74a.4.4 0 01-.56 0l-3.75-3.74a.4.4 0 010-.57l.78-.78a.4.4 0 01.57 0l2.68 2.68 2.68-2.68a.4.4 0 01.57 0l.78.78a.4.4 0 010 .57z"/>
+      <path d="M422.28 102.03l3.75-3.75a.4.4 0 01.56 0l3.75 3.75a.4.4 0 010 .56l-.78.78a.4.4 0 01-.57 0l-2.68-2.68-2.68 2.68a.4.4 0 01-.57 0l-.78-.78a.4.4 0 010-.56z"/>
+    </g>
+    <g fill="#B8C7D2">
+      <path d="M639.34 107.63l-3.75 3.74a.4.4 0 01-.56 0l-3.75-3.74a.4.4 0 010-.57l.78-.78a.4.4 0 01.57 0l2.68 2.68 2.68-2.68a.4.4 0 01.57 0l.78.78a.4.4 0 010 .57z"/>
+      <path d="M631.28 102.03l3.75-3.75a.4.4 0 01.56 0l3.75 3.75a.4.4 0 010 .56l-.78.78a.4.4 0 01-.57 0l-2.68-2.68-2.68 2.68a.4.4 0 01-.57 0l-.78-.78a.4.4 0 010-.56z"/>
+    </g>
+    <path fill="#B8C7D2" d="M46 56h1v40h-1z"/>
+    <circle cx="46.5" cy="98" r="3" fill="#3E5667"/>
+    <path fill="#B8C7D2" d="M532 47h1v40h-1z"/>
+    <circle cx="532.5" cy="85" r="3" fill="#3E5667"/>
+    <path fill="#B8C7D2" d="M115 245h1v40h-1z"/>
+    <circle cx="115.5" cy="244" r="3" fill="#3E5667"/>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="66.39" y="53">Container</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="547.35" y="54">Table Header</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="133.19" y="292">Table Column</tspan>
+    </text>
+    <rect width="19.2" height="18.4" x="37" y="38" fill="#3E5667" rx="9.2"/>
+    <rect width="19.2" height="18.4" x="523" y="39" fill="#3E5667" rx="9.2"/>
+    <rect width="19.2" height="18.4" x="106" y="277" fill="#3E5667" rx="9.2"/>
+    <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+      <tspan x="43.82" y="50.2">1</tspan>
+    </text>
+    <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+      <tspan x="529.82" y="51.2">2</tspan>
+    </text>
+    <path fill="#B8C7D2" d="M195 55h1v40h-1z"/>
+    <circle cx="195.5" cy="93" r="3" fill="#3E5667"/>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="209.16" y="61">Column Sorting (Optional)</tspan>
+    </text>
+    <rect width="19.2" height="18.4" x="186" y="47" fill="#3E5667" rx="9.2"/>
+    <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+      <tspan x="192.82" y="59.2">4</tspan>
+    </text>
+    <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+      <tspan x="112.82" y="289.2">3</tspan>
+    </text>
+    <path fill="#E2E9EE" d="M69 129h590v2H69z"/>
+    <text fill="#233745" font-family="Lato-Bold, Lato" font-size="14" font-weight="bold" transform="translate(69 96)">
+      <tspan x="11" y="14">FIRST COLUMN</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(69 96)">
+      <tspan x="11" y="57">Row 1 Cell 1</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Bold, Lato" font-size="14" font-weight="bold" transform="translate(69 96)">
+      <tspan x="222" y="14">SECOND COLUMN</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Bold, Lato" font-size="14" font-weight="bold" transform="translate(69 96)">
+      <tspan x="446" y="14">THIRD COLUMN</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(69 96)">
+      <tspan x="222" y="57">Row 1 Cell 2</tspan>
+    </text>
+    <g fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400">
+      <text transform="translate(518 139)">
+        <tspan x="0" y="14">Row 1 Cell 3</tspan>
+      </text>
+      <text transform="translate(518 139)">
+        <tspan x="0" y="48">Row 2 Cell 3</tspan>
+      </text>
+      <text transform="translate(518 139)">
+        <tspan x="0" y="82">Row 3 Cell 3</tspan>
+      </text>
+    </g>
+    <path fill="#E2E9EE" d="M69 164h590v1H69z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(69 96)">
+      <tspan x="11" y="91">Row 2 Cell 1</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(69 96)">
+      <tspan x="222" y="91">Row 2 Cell 2</tspan>
+    </text>
+    <path fill="#E2E9EE" d="M69 198h590v1H69z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(69 96)">
+      <tspan x="11" y="125">Row 3 Cell 1</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(69 96)">
+      <tspan x="222" y="125">Row 3 Cell 2</tspan>
+    </text>
+    <path fill="#E2E9EE" d="M69 232h590v1H69z"/>
+    <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500">
+      <tspan x=".5" y="366">The Table Anatomy.</tspan>
+    </text>
+  </g>
+</svg>
