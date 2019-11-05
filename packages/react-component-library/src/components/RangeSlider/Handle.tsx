@@ -8,7 +8,6 @@ interface HandleProps {
   getHandleProps: GetHandleProps
 }
 
-/* eslint-disable jsx-a11y/control-has-associated-label */
 export const Handle: React.FC<HandleProps> = ({
   activeHandleID,
   domain: [min, max],
@@ -18,25 +17,20 @@ export const Handle: React.FC<HandleProps> = ({
   const active: boolean = activeHandleID === id
 
   return (
-    <>
-      <div
-        className="rn-rangeslider__handle-outer"
-        style={{ left: `${percent}%` }}
-        {...getHandleProps(id)}
-        data-testid="rangeslider-handle"
-      />
-      <div
-        role="slider"
-        aria-valuemin={min}
-        aria-valuemax={max}
-        aria-valuenow={value}
-        className={`rn-rangeslider__handle-inner ${active ? 'is-active' : ''}`}
-        style={{ left: `${percent}%` }}
-        data-value={Math.floor(value)}
-      />
-    </>
+    <button
+      role="slider"
+      aria-valuemin={min}
+      aria-valuemax={max}
+      aria-valuenow={value}
+      className={`rn-rangeslider__handle ${active ? 'is-active' : ''}`}
+      style={{
+        left: `${percent}%`,
+      }}
+      {...getHandleProps(id)}
+      data-value={Math.floor(value)}
+      data-testid="rangeslider-handle"
+    />
   )
 }
-/* eslint-disable jsx-a11y/control-has-associated-label */
 
 Handle.displayName = 'Handle'
