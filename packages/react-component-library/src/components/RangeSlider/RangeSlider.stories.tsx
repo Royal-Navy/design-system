@@ -39,6 +39,7 @@ stories.add('Multiple handles', () => (
     values={[10, 30]}
     onChange={action('onChange')}
     onUpdate={action('onUpdate')}
+    tickCount={4}
   />
 ))
 

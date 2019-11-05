@@ -10,6 +10,16 @@ interface TickProps {
   reversed?: boolean
 }
 
+function isActive(values: ReadonlyArray<number>, tickValue: number): boolean {
+  const valuesBelow = values.some(item => item <= tickValue)
+  const valuesAbove = values.some(item => item >= tickValue)
+
+  const belowSingleHandle = values.length === 1 && values[0] >= tickValue
+  const betweenMultipleHandles = valuesBelow && valuesAbove
+
+  return belowSingleHandle || betweenMultipleHandles
+}
+
 export const Tick: React.FC<TickProps> = ({
   tick,
   count,
@@ -18,13 +28,9 @@ export const Tick: React.FC<TickProps> = ({
   domain,
   reversed,
 }) => {
-  const percent: number = reversed ? 100 - tick.percent : tick.percent // Invert if reversed
+  const percent: number = reversed ? 100 - tick.percent : tick.percent // invert if reversed
   const tickValue: number = (domain[1] / 100) * percent
-
-  let active: boolean = values[0] >= tickValue
-
-  // TODO: Need to figure out logic for multiple values (handles)
-  if (values.length > 1) active = false
+  const active: boolean = isActive(values, tickValue)
 
   return (
     <div data-testid="rangeslider-tick">
