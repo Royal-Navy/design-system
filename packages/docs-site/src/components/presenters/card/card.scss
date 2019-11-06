@@ -17,12 +17,12 @@ $card-background-color: #f0f4f8;
 
   
     .card__title {
-      color: color(primary, 500);
+      color: color("primary", "500");
     }
     .card__link {
       svg {
         transform: translateX(10px);
-        fill: color(primary, 500);
+        fill: color("primary", "500");
       }
     } 
   }
