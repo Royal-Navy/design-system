@@ -17,16 +17,16 @@ $border-radius-button: 3px;
   padding: spacing(8);
   max-height: 20rem;
   overflow: scroll;
-  background-color: color(neutral, white);
+  background-color: color("neutral", "white");
   margin-bottom: spacing(4);
   border-radius: $border-radius;
-  border: 1px solid color(neutral, 100);
+  border: 1px solid color("neutral", "100");
 }
 
 .code-highlighter__body {
   border-radius: $border-radius;
   position: relative;
-  background-color: color(neutral, 700);
+  background-color: color("neutral", "700");
   overflow: hidden;
 }
 
@@ -48,7 +48,7 @@ $border-radius-button: 3px;
   border: none;
   border-radius: $border-radius-button;
   background: none;
-  color: color(neutral,white);
+  color: color("neutral","white");
   font-size: font-size(s);
   z-index: 1;
 
@@ -68,7 +68,7 @@ $border-radius-button: 3px;
 
 .code-highlighter .line-numbers-rows {
   border: initial;
-  background-color: color(neutral, 600);
+  background-color: color("neutral", "600");
   text-shadow: none;
   left: 0;
   padding: spacing(11) 0;
@@ -76,7 +76,7 @@ $border-radius-button: 3px;
 
   span::before {
     text-align: right;
-    color: color(neutral, 200);
+    color: color("neutral", "200");
     font-weight: 300;
     font-size: font-size(s);
   }
