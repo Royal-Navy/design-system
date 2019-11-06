@@ -12,13 +12,13 @@
 
 .rn-breadcrumbs__link {
   display: inline-block;
-  color: color(neutral, 400);
+  color: color("neutral", "400");
   font-weight: 400;
   text-decoration: none;
 }
 
 .rn-breadcrumbs__link:hover {
-  color: color(primary, 500);
+  color: color("primary", "500");
 }
 
 .rn-breadcrumbs__breadcrumb:hover ~ .rn-breadcrumbs__breadcrumb {
