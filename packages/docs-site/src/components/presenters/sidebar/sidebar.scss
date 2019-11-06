@@ -16,7 +16,7 @@
   padding-bottom: spacing(6);
   font-size: font-size('m');
   font-weight: 600;
-  color: color(primary, 900);
+  color: color("primary", "900");
 }
 
 .sidebar__toggle {
@@ -28,11 +28,11 @@
 .sidebar .rn-nav__item {
   display: inline-block;
   width: auto;
-  color: color(neutral, 400);
+  color: color("neutral", "400");
   padding: spacing(4) spacing(6);
 
   &.is-active {
-    background-color: color(primary, 800);
+    background-color: color("primary", "800");
   }
 }
 
@@ -73,7 +73,7 @@
 
 .sidebar .rn-nav__list-item.has-children > .rn-nav__item {
   font-size: font-size('m');
-  color: color(primary, 900);
+  color: color("primary", "900");
 
   &.is-active {
     background: none;
