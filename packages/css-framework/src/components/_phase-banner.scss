@@ -1,5 +1,5 @@
 .rn-phase-banner {
-  background-color: color(primary, 100);
+  background-color: color("primary", "100");
   padding-top: spacing(4);
   padding-bottom: spacing(4);
 }
@@ -9,11 +9,11 @@
   font-size: font-size(xs);
   vertical-align: middle;
   margin-left: spacing(4);
-  color: color(neutral, 800);
+  color: color("neutral", "800");
 }
 
 .rn-phase-banner__text a {
-  color: color(neutral, black);
+  color: color("neutral", "black");
   text-decoration: underline;
 }
 
