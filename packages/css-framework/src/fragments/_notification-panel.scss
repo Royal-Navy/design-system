@@ -101,6 +101,37 @@
   }
 }
 
+.rn-notifications {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rn-notifications__view-all {
+  font-size: font-size(xs);
+  display: block;
+  text-align: right;
+  margin-right: spacing(3);
+  margin-bottom: spacing(3);
+  color: color(primary, 300);
+
+  svg {
+    position: relative;
+    top: 4px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    svg {
+      transform: translate3d(4px, 0, 0);
+      transition: 0.2s;
+    }
+  }
+}
+
 .rn-notifications-item-wrapper {
   a,
   a:hover {
