@@ -1,6 +1,6 @@
 @import "@royalnavy/css-framework";
 
-$background-color: color(neutral, white);
+$background-color: color("neutral", "white");
 $border-color: #e9eef1;
 $border-radius: 4px;
 $heading-color: #3e5667;
@@ -18,7 +18,7 @@ $text-color: #748999;
   }
 
   &__header {
-    border-bottom: 1px solid color(neutral, 100);
+    border-bottom: 1px solid color("neutral", "100");
     padding-top: spacing(11);
     padding-bottom: spacing(12);
     margin-bottom: spacing(12);
@@ -49,7 +49,7 @@ $text-color: #748999;
 
 h1, h2, h3,
 h4, h5, h6 {
-  color: color(neutral, 500);
+  color: color("neutral", "500");
   margin-top: spacing(12);
   margin-bottom: spacing(2);
 
@@ -60,7 +60,7 @@ h4, h5, h6 {
 
 p, li {
   font-size: font-size(s);
-  color: color(neutral, 400);
+  color: color("neutral", "400");
   line-height: 1.5;
 }
 
@@ -74,31 +74,31 @@ li {
 hr {
   height: 1px;
   border: none;
-  background-color: color(neutral, 100);
+  background-color: color("neutral", "100");
   margin: spacing(12) 0;
 }
 
 
 
 a {
-  color: color(primary, 600);
+  color: color("primary", "600");
   text-decoration: none;
   font-weight: 600;
   // transition: color 0.2s;
   &:hover {
-    color: color(primary, 900);
+    color: color("primary", "900");
     text-decoration: underline;
   }
 }
 
 pre {
   width: 100%;
-  background-color: color(neutral, 700);
+  background-color: color("neutral", "700");
   padding: spacing(11) spacing(12);
   border-radius: 3px;
   > code {
     padding-left: 0;
-    color: color(neutral, 000);
+    color: color("neutral", "000");
     background-color: unset;
     font-size: font-size(s);
   }
@@ -142,8 +142,8 @@ pre {
 }
 
 code {
-  background-color: color(neutral, 100);
-  color: color(neutral, 600);
+  background-color: color("neutral", "100");
+  color: color("neutral", "600");
   border-radius: 3px;
   font-size: font-size(xs);
   font-weight: 500;
