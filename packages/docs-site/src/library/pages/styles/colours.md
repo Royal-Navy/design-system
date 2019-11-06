@@ -140,8 +140,8 @@ State colours are used to improve the semantics of particular Actions. These pal
 To reference colours and their shades, we have provided a `color()` function. This function takes two values, `color` and `shade`.
 
 <CodeHighlighter 
-source={`color: color(neutral, 500);
-border: 1px solid color(danger, 300);
+source={`color: color("neutral", "500");
+border: 1px solid color("danger", "300");
 // Result
 color: #627d98;
 border: 1px solid #f36968;`} language="css"
