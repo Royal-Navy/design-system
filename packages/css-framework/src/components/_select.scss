@@ -1,8 +1,8 @@
 .rn-select {
   .rn-select__control--is-focused,
   .rn-select__control:hover {
-    border-color: color(primary, 600);
-    box-shadow: 0 0 0 1px color(primary, 600);
+    border-color: color("primary", "600");
+    box-shadow: 0 0 0 1px color("primary", "600");
   }
 
   .rn-select__value-container {
@@ -25,9 +25,9 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     box-shadow:
-      -1px 1px 0 0 color(primary, 600),
-      1px 1px 0 0 color(primary, 600);
-    border: 1px solid color(primary, 600);
+      -1px 1px 0 0 color("primary", "600"),
+      1px 1px 0 0 color("primary", "600");
+    border: 1px solid color("primary", "600");
     border-top: 0;
   }
 
@@ -38,17 +38,17 @@
 
   .rn-select__option {
     border-radius: 4px;
-    color: color(neutral, 500);
+    color: color("neutral", "500");
   }
 
   .rn-select__option--is-focused {
-    background-color: color(neutral, 100);
-    color: color(neutral, 500);
+    background-color: color("neutral", "100");
+    color: color("neutral", "500");
   }
 
   .rn-select__option--is-selected {
-    background-color: color(primary, 600);
-    color: color(neutral, white);
+    background-color: color("primary", "600");
+    color: color("neutral", "white");
   }
 
   .rn-select__input-container {
@@ -95,7 +95,7 @@
       color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
       transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     pointer-events: none;
-    color: color(neutral, 300);
+    color: color("neutral", "300");
     font-size: font-size(s);
     white-space: nowrap;
   }
@@ -103,10 +103,10 @@
   .rn-select__badge {
     font-size: font-size(xxs);
     padding: spacing(2) spacing(4);
-    background-color: color(neutral, 500);
+    background-color: color("neutral", "500");
     display: inline-block;
     border-radius: 100px;
-    color: color(neutral, white);
+    color: color("neutral", "white");
     margin-left: spacing(2);
     position: absolute;
   }
@@ -117,7 +117,7 @@
   }
 
   .rn-arrow__fill {
-    fill: color(neutral, 200);
+    fill: color("neutral", "200");
   }
 
   .rn-arrow {
@@ -135,7 +135,7 @@
     }
 
     .rn-arrow__fill {
-      fill: color(primary, 600);
+      fill: color("primary", "600");
     }
   }
 }
