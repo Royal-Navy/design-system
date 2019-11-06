@@ -24,7 +24,7 @@ pre[class*="language-"] {
 
 pre[class*="language-"],
 :not(pre) > code[class*="language-"] {
-  background: color(neutral, 700);
+  background: color("neutral", "700");
 }
 
 /* Code blocks */
@@ -85,7 +85,7 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 .token.boolean,
 .token.number,
 .token.deleted {
-  color: color(altwarning, 400);
+  color: color("altwarning", "400");
 }
 
 .token.keyword,
@@ -108,19 +108,19 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 .style .token.string,
 .token.variable,
 .token.inserted {
-  color: color(primary, 300);
+  color: color("primary", "300");
 }
 
 .token.function {
-  color: color(altwarning, 400);
+  color: color("altwarning", "400");
 }
 
 .token.rule {
-  color: color(altprimary, 300);
+  color: color("altprimary", "300");
 }
 
 .token.atrule {
-  color: color(neutral, 200);
+  color: color("neutral", "200");
 }
 
 .token.regex,
