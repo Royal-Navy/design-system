@@ -1,8 +1,7 @@
 import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
-import { Notifications } from './Notifications'
-import { Notification } from './Notification'
+import { Notification, Notifications } from '.'
 
 const MOCK_NOTIFICATION = (
   <Notification

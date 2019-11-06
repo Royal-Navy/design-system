@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconKeyboardArrowRight } from '@royalnavy/icon-library'
 
-import { NotificationProps } from './Notification'
+import { NotificationProps } from '.'
 
 export interface NotificationsProps {
   href: string
@@ -13,7 +13,7 @@ export const Notifications: React.FC<NotificationsProps> = ({
   children,
 }) => (
   <>
-    <ol className="rn-notifications">{children}</ol>
+    <ol className="rn-notifications" data-testid="notifications">{children}</ol>
     <span className="rn-notifications__view-all">
       <a href={href}>
         View all notifications

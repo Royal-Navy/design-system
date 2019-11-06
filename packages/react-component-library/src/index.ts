@@ -10,6 +10,7 @@ import { Dropdown } from './components/Dropdown'
 import { Masthead } from './fragments/Masthead'
 import { Modal } from './components/Modal'
 import Nav from './components/Nav'
+import { Notification, Notifications } from './fragments/NotificationPanel'
 import { NumberInput } from './components/NumberInput'
 import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
@@ -48,6 +49,8 @@ export {
   Masthead,
   Modal,
   Nav,
+  Notification,
+  Notifications,
   NumberInput,
   Pagination,
   PhaseBanner,

@@ -21,24 +21,14 @@
   margin-top: -14px;
 }
 
-.rn-notification-panel--dark .rn-iconfill {
-  fill: color(neutral, white);
-
+.rn-notification-panel .rn-iconfill {
   &:hover {
-    fill: color(primary,400);
+    fill: color(primary, 400);
   }
 }
 
 .rn-notification-panel__indicator > * {
   fill: color(primary, 400);
-}
-
-.rn-notification-panel--light .rn-notification-panel__indicator > * {
-  fill: color(primary, 600);
-}
-
-.rn-notification-panel--light .rn-iconfill {
-  fill: color(neutral, 400);
 }
 
 .rn-notification__transition-wrapper {
