@@ -81,7 +81,7 @@ $alert-states: (
 
   &--event {
     border-radius: 3px;
-    background: color("neutral", 700);
+    background: color("neutral", "700");
     border: none;
     padding: spacing(6) spacing(8);
     .rn-alert {
@@ -89,7 +89,7 @@ $alert-states: (
         display: none;
       }
       &__message {
-        color: color("neutral", 000);
+        color: color("neutral", "000");
       }
     }
   }
