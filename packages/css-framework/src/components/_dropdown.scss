@@ -5,16 +5,16 @@ $offset: $outer + $border-thick;
 
 .rn-dropdown {
   .rn-dropdown__control {
-    border-color: color(neutral, 200);
+    border-color: color("neutral", "200");
   }
 
   .rn-dropdown__placeholder {
-    color: color(neutral, 500);
+    color: color("neutral", "500");
   }
 
   .rn-dropdown__control--is-focused {
-    border-color: color(primary, 600);
-    box-shadow: 0 0 0 1px color(primary, 600);
+    border-color: color("primary", "600");
+    box-shadow: 0 0 0 1px color("primary", "600");
   }
 
   .rn-dropdown__dropdown-indicator {
@@ -34,7 +34,7 @@ $offset: $outer + $border-thick;
   }
 
   .rn-dropdown__menu-list {
-    border: 2px solid color(primary, 600);
+    border: 2px solid color("primary", "600");
     border-radius: 4px;
     padding: spacing(2);
   }
@@ -43,7 +43,7 @@ $offset: $outer + $border-thick;
     display: block;
     border-style: solid;
     border-width: 0 7px 7px;
-    border-color: color(primary, 600) transparent;
+    border-color: color("primary", "600") transparent;
     position: absolute;
     top: -7px;
     left: 95%;
@@ -57,7 +57,7 @@ $offset: $outer + $border-thick;
     display: block;
     border-style: solid;
     border-width: 0 6px 6px;
-    border-color: color(neutral, white) transparent;
+    border-color: color("neutral", "white") transparent;
     position: absolute;
     top: -4px;
     left: 95%;
@@ -70,7 +70,7 @@ $offset: $outer + $border-thick;
   .rn-dropdown__option,
   .rn-dropdown__option--is-selected,
   .rn-dropdown__option--is-focused {
-    color: color(neutral, 500);
+    color: color("neutral", "500");
   }
 
   .rn-dropdownlabel.is-disabled {
@@ -83,12 +83,12 @@ $offset: $outer + $border-thick;
   }
 
   .rn-dropdown__option--is-selected {
-    background-color: color(neutral, white);
+    background-color: color("neutral", "white");
   }
 
   .rn-dropdown__option--is-focused ,
   .rn-dropdown__option--is-focused.rn-dropdown__option--is-selected {
-    background-color: color(neutral, 100);
+    background-color: color("neutral", "100");
   }
 
   .rn-dropdown__single-value .rn-dropdownlabel .rn-dropdownlabel__end-adornment {
@@ -111,7 +111,7 @@ $offset: $outer + $border-thick;
   }
 
   .rn-arrow__fill {
-    fill: color(neutral, 200);
+    fill: color("neutral", "200");
   }
 
   .rn-arrow {
@@ -129,7 +129,7 @@ $offset: $outer + $border-thick;
     }
 
     .rn-arrow__fill {
-      fill: color(primary, 600);
+      fill: color("primary", "600");
     }
   }
 }
