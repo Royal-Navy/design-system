@@ -8,12 +8,12 @@
   padding: spacing(6);
   border-radius: 3px;
   @include font-size(s);
-  border: 1px solid color(neutral, 400);
+  border: 1px solid color("neutral", "400");
   transition: all 0.2s;
   outline: none;
   &:focus {
-    border: 1px solid color(primary, 400);
-    box-shadow: 0 0 0 1px color(primary, 400);
+    border: 1px solid color("primary", "400");
+    box-shadow: 0 0 0 1px color("primary", "400");
   }
 
   &.open {
@@ -28,8 +28,8 @@
   @include shadow(1);
   top: calc(100% + 8px);
   position: absolute;
-  border: 1px solid color(neutral, 200);
-  background-color: color(neutral, white);
+  border: 1px solid color("neutral", "200");
+  background-color: color("neutral", "white");
   border-radius: 5px;
   padding: spacing(2) 0;
   min-width: 160px;
@@ -50,11 +50,11 @@
   padding: spacing(4) spacing(6);
   display: flex;
   justify-content: space-between;
-  color: color(neutral, 800);
+  color: color("neutral", "800");
   font-weight: 500;
   &:hover {
-    color: color(neutral, 800);
-    background-color: color(neutral, 000);
+    color: color("neutral", "800");
+    background-color: color("neutral", "000");
   }
   &--highlighted {
     background: skyblue
