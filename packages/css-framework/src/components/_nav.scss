@@ -27,7 +27,7 @@
 .rn-nav__item {
   display: inline-block;
   width: 100%;
-  color: color(neutral, 700);
+  color: color("neutral", "700");
   border-radius: $btn-border-radius;
   outline: 0;
   padding: spacing(6) spacing(8);
@@ -42,21 +42,21 @@
 
   &:hover {
     text-decoration: none;
-    background-color: color(neutral, 100);
-    color: color(primary, 900);
+    background-color: color("neutral", "100");
+    color: color("primary", "900");
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(color("primary", "700") , 0.5);
   }
 
   &.is-active {
-    background-color: color(primary, 700);
-    color: color(neutral, white);
+    background-color: color("primary", "700");
+    color: color("neutral", "white");
   }
 
   &.is-disabled {
-    color: color(neutral, 400);
+    color: color("neutral", "400");
     pointer-events: none;
   }
 }
