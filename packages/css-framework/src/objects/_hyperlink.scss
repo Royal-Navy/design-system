@@ -1,6 +1,6 @@
 // Hyperlinks are default styles for `<a>` tags
 a {
-  color: color(primary, 500);
+  color: color("primary", "500");
   text-decoration: none;
 }
 
