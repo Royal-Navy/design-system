@@ -1,9 +1,9 @@
 $progress-states: (
-  neutral: color("neutral", 700),
-  primary: color("primary", 400),
-  danger:  color("danger", 400),
-  warning: color("warning", 400),
-  success: color("success", 500)
+  neutral: color("neutral", "700"),
+  primary: color("primary", "400"),
+  danger:  color("danger", "400"),
+  warning: color("warning", "400"),
+  success: color("success", "500")
 );
 
 .rn-progress {  
@@ -43,7 +43,7 @@ $progress-states: (
     position: absolute;
     top: 0;
     text-align: center;    
-    color: color(neutral, white);
+    color: color("neutral", "white");
     @include font-size(xxs);
     display: flex;
     align-items: center;
