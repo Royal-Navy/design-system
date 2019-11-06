@@ -16,7 +16,7 @@ $btn-focus-width: 1px;
 }
 
 .rn-checkbox__label {
-  color: color(neutral, 400);
+  color: color("neutral", "400");
 }
 
 .rn-checkbox .rn-checkbox__checkbox {
@@ -33,24 +33,24 @@ $btn-focus-width: 1px;
   left: 0;
   height: 18px;
   width: 18px;
-  background-color: color(neutral, white);
-  border: 1px solid color(neutral, 200);
+  background-color: color("neutral", "white");
+  border: 1px solid color("neutral", "200");
   border-radius: 4px;
 }
 
 /* Hover state, light blue outline */
 .rn-checkbox input:hover ~ .rn-checkbox__checkmark,
 .rn-checkbox input:active ~ .rn-checkbox__checkmark {
-  border: 1px solid color(primary, 500);
+  border: 1px solid color("primary", "500");
   outline: none;
-  box-shadow: 0 0 0 $btn-focus-width color(primary, 500);
+  box-shadow: 0 0 0 $btn-focus-width color("primary", "500");
   transition: all $animation-timing;
 }
 
 /* Checked state, solid blue */
 .rn-checkbox input:checked ~ .rn-checkbox__checkmark {
-  background-color: color(primary, 600);
-  border: 1px solid color(primary, 600);
+  background-color: color("primary", "600");
+  border: 1px solid color("primary", "600");
   text-align: center;
 }
 
@@ -73,12 +73,12 @@ $btn-focus-width: 1px;
   width: 100%;
   height: 100%;
   line-height: 1;
-  color: color(neutral, white);
+  color: color("neutral", "white");
   border-radius: 2px;
 }
 
 .rn-checkbox__invalid-feedback {
-  color: color(danger, 600);
+  color: color("danger", "600");
   margin: spacing(4) spacing(6);
   font-size: font-size(s);
 }
