@@ -1,4 +1,4 @@
-$active-border-color: color(primary, 600);
+$active-border-color: color("primary", "600");
 $btn-focus-width: 0.2rem;
 
 .rn-tab-set {
@@ -7,7 +7,7 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-tab-set__head {
-  border-bottom: 1px solid color(neutral, 100);
+  border-bottom: 1px solid color("neutral", "100");
 }
 
 .rn-tab-set__tabs {
@@ -38,7 +38,7 @@ $btn-focus-width: 0.2rem;
   text-align: center;
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(color("primary", "700") , 0.5);
   }
 }
 
