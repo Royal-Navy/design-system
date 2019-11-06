@@ -9,8 +9,8 @@ $btn-focus-width: 0.2rem;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  color: color(neutral, 500);
-  background-color: color(neutral, white);
+  color: color("neutral", "500");
+  background-color: color("neutral", "white");
   border: 1px solid transparent;
   border-radius: $btn-border-radius;
   margin: spacing(2) 0;
@@ -28,11 +28,11 @@ $btn-focus-width: 0.2rem;
 
   &:hover {
     text-decoration: none;
-    background-color: color(neutral, 100);
+    background-color: color("neutral", "100");
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(color("primary", "700") , 0.5);
   }
 }
 
@@ -41,37 +41,37 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn--primary {
-  background: color(primary, 600);
-  color: color(neutral, white);
+  background: color("primary", "600");
+  color: color("neutral", "white");
 
   &:hover {
-    background: color(primary, 800);
+    background: color("primary", "800");
   }
 }
 
 .rn-btn--secondary {
-  border: 1px solid color(neutral, 100);
+  border: 1px solid color("neutral", "100");
 }
 
 .rn-btn--danger {
-  color: color(danger, 800);
+  color: color("danger", "800");
 
   &:hover {
-    color: color(danger, 800);
+    color: color("danger", "800");
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(danger, 800) , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(color("danger", "800"), 0.5);
   }
 }
 
 .rn-btn--danger.rn-btn--primary {
-  background: color(danger, 500);
-  color: color(neutral, white);
+  background: color("danger", "500");
+  color: color("neutral", "white");
 
   &:hover {
-    background: color(danger, 800);
-    color: color(neutral, white);
+    background: color("danger", "800");
+    color: color("neutral", "white");
   }
 }
 
