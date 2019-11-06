@@ -1,7 +1,7 @@
-$primary-color: color(primary, 900);
-$secondary-color: color(neutral, 300);
-$secondary-color-hover: color(primary, 500);
-$tertiary-color: color(neutral, 100);
+$primary-color: color("primary", "900");
+$secondary-color: color("neutral", "300");
+$secondary-color-hover: color("primary", "500");
+$tertiary-color: color("neutral", "100");
 $active-color: $primary-color;
 $border-radius: 4px;
 $animation-timing: 0.3s;
@@ -32,7 +32,7 @@ $btn-focus-width: 0.2rem;
       }
 
       &:focus {
-        box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+        box-shadow: 0 0 0 $btn-focus-width rgba(color("primary", "700") , 0.5);
       }
 
       &:disabled {
@@ -59,11 +59,11 @@ $btn-focus-width: 0.2rem;
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(color("primary", "700") , 0.5);
   }
 
   &.is-active {
     background-color: $active-color;
-    color: color(neutral, white);
+    color: color("neutral", "white");
   }
 }
