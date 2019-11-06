@@ -22,23 +22,23 @@
 }
 
 .rn-notification-panel--dark .rn-iconfill {
-  fill: color(neutral, white);
+  fill: color("neutral", "white");
 
   &:hover {
-    fill: color(primary,400);
+    fill: color("primary", "400");
   }
 }
 
 .rn-notification-panel__indicator > * {
-  fill: color(primary, 400);
+  fill: color("primary", "400");
 }
 
 .rn-notification-panel--light .rn-notification-panel__indicator > * {
-  fill: color(primary, 600);
+  fill: color("primary", "600");
 }
 
 .rn-notification-panel--light .rn-iconfill {
-  fill: color(neutral, 400);
+  fill: color("neutral", "400");
 }
 
 .rn-notification__transition-wrapper {
@@ -54,22 +54,22 @@
   justify-content: space-between;
   align-items: center;
   padding: spacing(6) 0;
-  border-bottom: 1px solid color(neutral, 100);
+  border-bottom: 1px solid color("neutral", "100");
   margin: 0;
 }
 
 .rn-notification-panel__heading {
   font-weight: normal;
   font-size: font-size(m);
-  color: color(neutral, 500);
+  color: color("neutral", "500");
   margin: 0;
   padding: 0 spacing(6);
 }
 
 .rn-notification-panel__close {
   font-size: font-size(xs);
-  color: color(neutral, 300);
-  background: color(neutral, white);
+  color: color("neutral", "300");
+  background: color("neutral", "white");
   border: none;
 }
 
