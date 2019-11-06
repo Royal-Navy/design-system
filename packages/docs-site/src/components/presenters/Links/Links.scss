@@ -16,7 +16,7 @@
   position: relative;
   &::after {
     content: "•";
-    color: color(neutral, white);
+    color: color("neutral", "white");
     position: absolute;
     right: -4.5px;
     top: 4px;
