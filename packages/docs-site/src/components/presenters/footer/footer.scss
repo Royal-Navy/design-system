@@ -2,7 +2,7 @@
 
 .rn-footer {
   margin-top: spacing(10);
-  background: color(primary, 800);
+  background: color("primary", "800");
   padding: 0;  
 }
 
@@ -12,12 +12,12 @@
 
 .rn-footer,
 .rn-footer a {
-  color: color(neutral, 100);
-  border-color: color(neutral, 100);
+  color: color("neutral", "100");
+  border-color: color("neutral", "100");
 }
 
 .rn-footer__meta {
-  background: color(primary, 900);
+  background: color("primary", "900");
 }
 
 .rn-footer__meta .rn-container {
@@ -25,7 +25,7 @@
   flex-direction: column;
   padding-top: spacing(8);
   padding-bottom: spacing(8);
-  color: color(neutral, white);  
+  color: color("neutral", "white");  
 }
 
 @include breakpoint("s") {
@@ -40,9 +40,9 @@
   font-size: font-size(xs);
   line-height: 1.5;
   margin: spacing(2) 0;
-  color: color(neutral, 100);
+  color: color("neutral", "100");
   a {
-    color: color(neutral, white);
+    color: color("neutral", "white");
     text-decoration: underline;
   }
 }
