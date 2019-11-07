@@ -9,11 +9,11 @@ $active-color: color("primary", "600");
   border: none;
   padding: 0;
   margin: 0;
-  font-size: font-size(xs);
+  font-size: font-size("xs");
 }
 
 .rn-switch--small {
-  font-size: font-size(xxs);
+  font-size: font-size("xxs");
 
   .rn-switch__option::before {
     padding: spacing("4") spacing("6");
@@ -21,7 +21,7 @@ $active-color: color("primary", "600");
 }
 
 .rn-switch--large {
-  font-size: font-size(s);
+  font-size: font-size("s");
 }
 
 .rn-switch__legend {
