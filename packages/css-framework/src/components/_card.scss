@@ -11,7 +11,7 @@
 
   &__header {
     background-color: color("neutral", "000");
-    padding: spacing(8) spacing(11);
+    padding: spacing("8") spacing("11");
     border-bottom: 1px solid color("neutral", "100");
     @include font-size(s);
     color: color("neutral", "800");
@@ -19,7 +19,7 @@
   }
 
   &__body {
-    padding: spacing(8);
+    padding: spacing("8");
     & + & {
       border-top: 1px solid color("neutral", "100");
     }
@@ -33,7 +33,7 @@
   }
 
   .small {
-    padding: spacing(8) spacing(10);
+    padding: spacing("8") spacing("10");
 
     .title {
       @include font-size(base);
