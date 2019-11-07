@@ -1,6 +1,6 @@
 .rn-card {
   @include font-size(s);
-  @include shadow(1);
+  @include shadow("1");
   background-color: color("neutral", "white");
   border: 1px solid color("neutral", "100");
   border-radius: 3px;
