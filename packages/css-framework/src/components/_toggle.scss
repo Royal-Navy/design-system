@@ -1,7 +1,7 @@
 .rn-toggle {
   display: inline-block;
   color: color("neutral", "600");
-  @include font-size(s);
+  @include font-size("s");
   vertical-align: center;
   cursor: pointer;
 }
