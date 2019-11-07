@@ -17,7 +17,7 @@
 
   &__link {
     display: block;
-    @include font-size(s);
+    @include font-size("s");
     font-weight: 400;
     padding: spacing("4") spacing("10");
     color: color("neutral", "200");
