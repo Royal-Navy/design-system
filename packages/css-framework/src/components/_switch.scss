@@ -16,7 +16,7 @@ $active-color: color("primary", "600");
   font-size: font-size(xxs);
 
   .rn-switch__option::before {
-    padding: spacing(4) spacing(6);
+    padding: spacing("4") spacing("6");
   }
 }
 
@@ -27,7 +27,7 @@ $active-color: color("primary", "600");
 .rn-switch__legend {
   font-size: inherit;
   color: color("neutral", "300");
-  margin-bottom: spacing(4);
+  margin-bottom: spacing("4");
 }
 
 .rn-switch__container {
@@ -59,7 +59,7 @@ $elements: 5;
     display: inline-block;
     width: auto;
     height: auto;
-    padding: spacing(4) spacing(8);
+    padding: spacing("4") spacing("8");
     font-size: inherit;
     color: color("neutral", "400");
     border: 1px solid $border-color;
