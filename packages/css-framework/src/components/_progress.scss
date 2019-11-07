@@ -44,7 +44,7 @@ $progress-states: (
     top: 0;
     text-align: center;    
     color: color("neutral", "white");
-    @include font-size(xxs);
+    @include font-size("xxs");
     display: flex;
     align-items: center;
     justify-content: center;
