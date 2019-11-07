@@ -83,7 +83,7 @@ To reference typography sizes within your styles, use the `font-size()` mixin. T
 
 
 <CodeHighlighter 
-source={`@include font-size(base);
+source={`@include font-size("base");
 // returns
 font-size: 1rem;`} language="css"
 />
