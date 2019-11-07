@@ -11,4 +11,9 @@ module.exports = {
     export default ${componentName};
   `
   },
+  svgoConfig: {
+    plugins: {
+      removeViewBox: false,
+    },
+  },
 }

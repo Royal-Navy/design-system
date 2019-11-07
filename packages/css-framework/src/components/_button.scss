@@ -76,22 +76,46 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn__icon {
-  margin-left: spacing(2)
+  display: inline-flex;
+  align-items: center;
+  margin-left: spacing(2);
+}
+
+.rn-btn.rn-btn--regular {
+  .rn-btn__icon svg {
+    width: 15px;
+    height: 15px;
+  }
 }
 
 .rn-btn.rn-btn--small {
   font-size: font-size(xs);
   padding: spacing(2) spacing(3);
+
+  .rn-btn__icon svg {
+    width: 13px;
+    height: 13px;
+  }
 }
 
 .rn-btn.rn-btn--large {
   font-size: font-size(s);
   padding: spacing(3) spacing(5);
+
+  .rn-btn__icon svg {
+    width: 15px;
+    height: 15px;
+  }
 }
 
 .rn-btn.rn-btn--xlarge {
   font-size: font-size(m);
   padding: spacing(3) spacing(5);
+
+  .rn-btn__icon svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .rn-btn.disabled,
