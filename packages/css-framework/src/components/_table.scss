@@ -5,7 +5,7 @@
   th {
     font-weight: bold;
     text-align: left;
-    @include font-size(s);
+    @include font-size("s");
     padding: spacing("8") spacing("4");
   }
   thead {
@@ -18,7 +18,7 @@
     }
   }
   td {
-    @include font-size(s);
+    @include font-size("s");
     padding: spacing("6") spacing("3");
     color: color("neutral", "600");
   }
