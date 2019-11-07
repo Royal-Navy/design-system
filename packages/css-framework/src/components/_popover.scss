@@ -30,7 +30,7 @@ $offset: $outer + $borderThick;
 a.rn-popover__footer-link {
   text-decoration: none;
   color: color("neutral", "300");
-  font-size: font-size(xs);
+  font-size: font-size("xs");
   cursor: pointer;
 }
 
