@@ -17,7 +17,7 @@
 }
 
 .rn-modal__main {
-  @include shadow(2);
+  @include shadow("2");
   border: 1px solid color("neutral", "200");
   border-radius: 5px;
   min-width: 600px;
