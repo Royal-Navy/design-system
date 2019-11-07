@@ -9,7 +9,7 @@ $text-color: #748999;
 .data-table {
   width: 100%;
   border: none;
-  font-size: font-size(s);
+  font-size: font-size("s");
   color: $text-color;
 }
 
@@ -19,7 +19,7 @@ $text-color: #748999;
   text-align: left;
   color: $heading-color;
   font-weight: 700;
-  font-size: font-size(l);
+  font-size: font-size("l");
 }
 
 .data-table__head {
@@ -90,7 +90,7 @@ $text-color: #748999;
   &:first-of-type {
     padding: 0 0 spacing("8") 0;
     border: none;
-    font-size: font-size(m);
+    font-size: font-size("m");
 
     &::before {
       display: none;
@@ -183,7 +183,7 @@ $text-color: #748999;
 
   .data-table__caption {
     padding: spacing("4") spacing("6");
-    font-size: font-size(s);
+    font-size: font-size("s");
   }
 
   .data-table__head {
@@ -217,7 +217,7 @@ $text-color: #748999;
     border: unset;
 
     &:first-of-type {
-      font-size: font-size(s);
+      font-size: font-size("s");
       color: $heading-color;
     }
 
