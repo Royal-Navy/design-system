@@ -6,7 +6,7 @@ $btn-focus-width: 1px;
   position: relative;
   padding-left: spacing("11");
   margin-bottom: spacing("6");
-  font-size: font-size(s);
+  font-size: font-size("s");
   user-select: none;
 }
 
@@ -80,5 +80,5 @@ $btn-focus-width: 1px;
 .rn-checkbox__invalid-feedback {
   color: color("danger", "600");
   margin: spacing("4") spacing("6");
-  font-size: font-size(s);
+  font-size: font-size("s");
 }
