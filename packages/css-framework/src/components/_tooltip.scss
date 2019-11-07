@@ -15,7 +15,7 @@ $tooltipOffset: $tooltipOuter + $tooltipBorderThick;
 }
 
 .rn-tooltip__content {
-  @include z-index(modal);
+  @include z-index("modal");
   background: $tooltipDarkBackground;
   color: color("neutral", "white");
   border: $tooltipDarkBorder solid $tooltipBorderThick;
