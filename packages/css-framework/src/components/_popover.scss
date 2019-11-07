@@ -8,7 +8,7 @@ $outer: $inner + 1;
 $offset: $outer + $borderThick;
 
 .rn-popover__content {
-  @include z-index(modal);
+  @include z-index("modal");
   position: absolute;
   top: 0;
   left: 0;
