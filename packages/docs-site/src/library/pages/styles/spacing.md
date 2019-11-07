@@ -120,7 +120,7 @@ The Spacing Scale values, much like the Typography Scale values, doesn't increas
 To help use the Spacing scale, there is a handy SCSS function provided: `spacing()`. This function accepts one parameter, the Scale value:
 
 <CodeHighlighter 
-source={`padding: Spacing(4);
+source={`padding: Spacing("4");
 // Result
 padding: 0.5rem;`} language="css"
 />
