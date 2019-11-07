@@ -31,7 +31,7 @@
   border-radius: $btn-border-radius;
   outline: 0;
   padding: spacing("6") spacing("8");
-  font-size: font-size(xs);
+  font-size: font-size("xs");
   font-weight: $btn-font-weight;
   line-height: 1;
   text-decoration: none;
@@ -77,17 +77,17 @@
 }
 
 .rn-nav.rn-nav--small .rn-nav__item {
-  @include font-size(xxs);
+  @include font-size("xxs");
 }
 
 .rn-nav.rn-nav--regular .rn-nav__item {
-  @include font-size(xs);
+  @include font-size("xs");
 }
 
 .rn-nav.rn-nav--large .rn-nav__item {
-  @include font-size(s);
+  @include font-size("s");
 }
 
 .rn-nav.rn-nav--xlarge .rn-nav__item {
-  @include font-size(m);
+  @include font-size("m");
 }
