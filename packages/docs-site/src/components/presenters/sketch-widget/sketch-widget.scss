@@ -23,14 +23,14 @@ $body-line-height: calc(64px - 2rem);
 .sketch-widget__title {
   line-height: $head-line-height;
   margin-bottom: spacing("8");
-  font-size: font-size(s);
+  font-size: font-size("s");
 }
 
 .sketch-widget__link {
   line-height: $head-line-height;
   color: #3a8fdd;
   text-decoration: none;
-  font-size: font-size(s);
+  font-size: font-size("s");
 
   svg {
     height: 15px;
