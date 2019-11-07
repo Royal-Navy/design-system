@@ -6,7 +6,7 @@
 
 .rn-phase-banner__text {
   display: inline-block;
-  font-size: font-size(xs);
+  font-size: font-size("xs");
   vertical-align: middle;
   margin-left: spacing("4");
   color: color("neutral", "800");
