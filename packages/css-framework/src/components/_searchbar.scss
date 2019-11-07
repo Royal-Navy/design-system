@@ -84,11 +84,11 @@
 }
 
 .rn-searchbar .rn-textinput__input {
-  font-size: font-size(m);
+  font-size: font-size("m");
 }
 
 @include breakpoint("s") {
   .rn-searchbar .rn-textinput__input {
-    font-size: font-size(s);
+    font-size: font-size("s");
   }
 }
