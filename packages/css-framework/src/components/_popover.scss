@@ -20,7 +20,7 @@ $offset: $outer + $borderThick;
 }
 
 .rn-popover__footer {
-  padding: spacing(6);
+  padding: spacing("6");
   margin: 0;
   border-top: 1px solid color("neutral", "100");
   background-color: color("neutral", "000");
