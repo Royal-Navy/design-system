@@ -6,7 +6,7 @@
 }
 
 .home__title {
-  font-size: font-size(xl);
+  font-size: font-size("xl");
   margin-bottom: spacing("12");
 }
 
@@ -15,12 +15,12 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 
   .card__title {
-    font-size: font-size(l);
+    font-size: font-size("l");
   }
 
   .card__text {
     font: {
-      size: font-size(s);
+      size: font-size("s");
       weight: 300;
     }
     line-height: 1.5;
@@ -37,7 +37,7 @@
     padding: spacing("8") spacing("12") spacing("8") spacing("14");
   }
   .card__title {
-    font-size: font-size(l);
+    font-size: font-size("l");
     transition: color 0.2s;
   }
 
