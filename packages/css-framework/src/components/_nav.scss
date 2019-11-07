@@ -7,7 +7,7 @@
 }
 
 .rn-nav__list .rn-nav__list {
-  padding-left: spacing(8);
+  padding-left: spacing("8");
 }
 
 .rn-nav__list-item {
@@ -30,7 +30,7 @@
   color: color("neutral", "700");
   border-radius: $btn-border-radius;
   outline: 0;
-  padding: spacing(6) spacing(8);
+  padding: spacing("6") spacing("8");
   font-size: font-size(xs);
   font-weight: $btn-font-weight;
   line-height: 1;
@@ -62,7 +62,7 @@
 }
 
 .rn-nav__list-item + .rn-nav__list-item {
-  margin-top: spacing(2);
+  margin-top: spacing("2");
 }
 
 @include breakpoint("s") {
@@ -72,7 +72,7 @@
 
   .rn-nav.rn-nav--horizontal .rn-nav__list-item + .rn-nav__list-item {
     margin-top: 0;
-    margin-left: spacing(2);
+    margin-left: spacing("2");
   }
 }
 
