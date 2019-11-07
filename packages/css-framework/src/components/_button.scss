@@ -16,7 +16,7 @@ $btn-focus-width: 0.2rem;
   margin: spacing("2") 0;
   outline: 0;
   padding: spacing("6") spacing("8");
-  font-size: font-size(xs);
+  font-size: font-size("xs");
   font-weight: $btn-font-weight;
   line-height: 1;
   text-align: center;
@@ -80,17 +80,17 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-btn.rn-btn--small {
-  font-size: font-size(xxs);
+  font-size: font-size("xxs");
   padding: spacing("4") spacing("6");
 }
 
 .rn-btn.rn-btn--large {
-  font-size: font-size(s);
+  font-size: font-size("s");
   padding: spacing("6") spacing("10");
 }
 
 .rn-btn.rn-btn--xlarge {
-  font-size: font-size(m);
+  font-size: font-size("m");
   padding: spacing("6") spacing("10");
 }
 
