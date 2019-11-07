@@ -15,14 +15,14 @@ $body-line-height: calc(64px - 2rem);
   display: flex;
   flex-flow: column;
   background-color: #f0f4f8;
-  padding: spacing(8);
+  padding: spacing("8");
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
 }
 
 .sketch-widget__title {
   line-height: $head-line-height;
-  margin-bottom: spacing(8);
+  margin-bottom: spacing("8");
   font-size: font-size(s);
 }
 
@@ -35,7 +35,7 @@ $body-line-height: calc(64px - 2rem);
   svg {
     height: 15px;
     vertical-align: top;
-    margin-right: spacing(4);
+    margin-right: spacing("4");
     // hack to get specificity to work
     .post-article & {
       margin-top: 0;
@@ -66,14 +66,14 @@ $body-line-height: calc(64px - 2rem);
   display: flex;
   background-color: #fff;
   height: 64px;
-  padding: spacing(8);
+  padding: spacing("8");
   border-bottom-left-radius: $border-radius;
   border-bottom-right-radius: $border-radius;
 }
 
 .sketch-widget__sketch-logo {
   height: $body-line-height;
-  margin-right: spacing(4);
+  margin-right: spacing("4");
   .post-article & {
     margin-top: 0;
   }
