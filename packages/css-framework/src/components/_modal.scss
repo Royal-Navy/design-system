@@ -1,5 +1,5 @@
 .rn-modal {
-  @include z-index(modal);
+  @include z-index("modal");
   position: fixed;
   top: 0;
   right: 0;
