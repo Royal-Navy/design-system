@@ -12,16 +12,16 @@ $text-color: #748999;
   // No matter the last element, ensure it does not
   // have a margin at the bottom of the post article
   // content.
-  padding-bottom: spacing(12);
+  padding-bottom: spacing("12");
   &:last-child {
     margin-bottom: 0;
   }
 
   &__header {
     border-bottom: 1px solid color("neutral", "100");
-    padding-top: spacing(11);
-    padding-bottom: spacing(12);
-    margin-bottom: spacing(12);
+    padding-top: spacing("11");
+    padding-bottom: spacing("12");
+    margin-bottom: spacing("12");
   }
 
   &__title {
@@ -37,7 +37,7 @@ $text-color: #748999;
 
   > svg {
     width: 100%;
-    margin-top: spacing(8);
+    margin-top: spacing("8");
 
     + ul, + ol {
       margin-left: 16px;
@@ -50,11 +50,11 @@ $text-color: #748999;
 h1, h2, h3,
 h4, h5, h6 {
   color: color("neutral", "500");
-  margin-top: spacing(12);
-  margin-bottom: spacing(2);
+  margin-top: spacing("12");
+  margin-bottom: spacing("2");
 
   + .data-table {
-    margin-top: spacing(8);
+    margin-top: spacing("8");
   }
 }
 
@@ -65,7 +65,7 @@ p, li {
 }
 
 li {
-  margin-bottom: spacing(4);
+  margin-bottom: spacing("4");
   &:last-child {
     margin-bottom: 0;
   }
@@ -75,7 +75,7 @@ hr {
   height: 1px;
   border: none;
   background-color: color("neutral", "100");
-  margin: spacing(12) 0;
+  margin: spacing("12") 0;
 }
 
 
@@ -94,7 +94,7 @@ a {
 pre {
   width: 100%;
   background-color: color("neutral", "700");
-  padding: spacing(11) spacing(12);
+  padding: spacing("11") spacing("12");
   border-radius: 3px;
   > code {
     padding-left: 0;
@@ -112,7 +112,7 @@ pre {
     width: 100%;
     font-size: font-size(s);
     color: $text-color;
-    margin: spacing(12) 0;
+    margin: spacing("12") 0;
     border: 1px solid $border-color;
     code {
       margin-right: 5px;
@@ -128,7 +128,7 @@ pre {
 
   td,
   th {
-    padding: spacing(8);
+    padding: spacing("8");
     border-bottom: 1px solid $border-color;
     border-right: 1px solid $border-color;
     background-color: $background-color;
@@ -147,5 +147,5 @@ code {
   border-radius: 3px;
   font-size: font-size(xs);
   font-weight: 500;
-  padding: 2px spacing(4);
+  padding: 2px spacing("4");
 }
