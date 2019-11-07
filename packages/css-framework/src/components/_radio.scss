@@ -7,7 +7,7 @@ $btn-focus-width: 0.1rem;
   padding-left: spacing("10");
   margin-bottom: spacing("4");
   cursor: pointer;
-  font-size: font-size(s);
+  font-size: font-size("s");
   user-select: none;
 }
 
@@ -79,5 +79,5 @@ $btn-focus-width: 0.1rem;
 .rn-radio__invalid-feedback {
   color: color("danger", "600");
   margin: spacing("4") spacing("6");
-  font-size: font-size(s);
+  font-size: font-size("s");
 }
