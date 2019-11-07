@@ -2,7 +2,7 @@ code[class*="language-"],
 pre[class*="language-"] {
   color: white;
   background: none;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   font-size: font-size(s);
   text-align: left;
   white-space: pre;
@@ -15,7 +15,7 @@ pre[class*="language-"] {
   hyphens: none;
 
   &.line-numbers {
-    padding: spacing(11) spacing(12) spacing(11) 3.5rem;
+    padding: spacing("11") spacing("12") spacing("11") 3.5rem;
     > code {
       position: static;
     }
