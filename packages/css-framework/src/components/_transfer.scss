@@ -4,7 +4,7 @@
   justify-content: space-between;
   height: 100%;
   .panel {
-    border: spacing(px) solid color("neutral", "000");
+    border: spacing("px") solid color("neutral", "000");
     color: color("primary", "900");
     background-color: color("neutral", "000");
     flex-grow: 2;
@@ -18,19 +18,19 @@
     &__header {
       display: block;
       @include font-size(base);
-      padding: spacing(8) spacing(6);
+      padding: spacing("8") spacing("6");
       font-weight: normal;
       margin: 0;
       background-color: color("neutral", "300");
-      border-bottom: spacing(px) solid color("neutral", "000");
+      border-bottom: spacing("px") solid color("neutral", "000");
     }
   }
 
   .item-label {
     &__location {
       display: block;
-      padding: spacing(6);
-      margin: spacing(2);
+      padding: spacing("6");
+      margin: spacing("2");
       &:hover {
         background: color("primary", "100");
       }
@@ -53,14 +53,14 @@
     &__button {
       display: block;
       text-align: center;
-      border: spacing(px) solid color("neutral", "white");
+      border: spacing("px") solid color("neutral", "white");
       background-color: color("neutral", "500");
       color: color("neutral", "white");
-      padding: spacing(4) spacing(6);
-      margin: spacing(6);
+      padding: spacing("4") spacing("6");
+      margin: spacing("6");
       &:hover {
         cursor: pointer;
-        background-color: color("neutral", 700);
+        background-color: color("neutral", "700");
       }
     }
   }
