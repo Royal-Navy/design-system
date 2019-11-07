@@ -27,7 +27,7 @@ $offset: $outer + $border-thick;
   }
 
   .rn-dropdown__menu {
-    @include shadow(1);
+    @include shadow("1");
     top: 102%;
     margin: spacing("6") 0 0 5%;
     width: 95%;
