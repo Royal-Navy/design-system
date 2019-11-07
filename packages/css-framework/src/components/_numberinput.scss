@@ -65,7 +65,7 @@
     transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   pointer-events: none;
   color: color("neutral", "300");
-  font-size: font-size(s);
+  font-size: font-size("s");
 }
 
 .rn-numberinput.has-focus .rn-numberinput__label,
@@ -82,7 +82,7 @@
   border: 0;
   background: none;
   -webkit-tap-highlight-color: transparent;
-  font-size: font-size(s);
+  font-size: font-size("s");
 }
 
 .rn-numberinput--no-label .rn-numberinput__input {
