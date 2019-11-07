@@ -25,7 +25,7 @@
 }
 
 .rn-autosuggest__suggestions {
-  @include shadow(1);
+  @include shadow("1");
   top: calc(100% + 8px);
   position: absolute;
   border: 1px solid color("neutral", "200");
