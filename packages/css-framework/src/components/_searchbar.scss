@@ -7,7 +7,7 @@
 }
 
 .rn-searchbar {
-  @include z-index(dropdown);
+  @include z-index("dropdown");
   display: block;
   margin-top: -1px;
   position: absolute;
@@ -15,7 +15,7 @@
 }
 
 .rn-searchbar__form {
-  @include z-index(overlay);
+  @include z-index("overlay");
   display: flex;
   align-items: center;
   background-color: color("neutral", "400");
