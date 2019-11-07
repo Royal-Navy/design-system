@@ -1,8 +1,8 @@
 $border-radius: 2px;
-$background-color: color(neutral, 0);
-$border-color: color(neutral, 200);
-$active-background-color: color(neutral, white);
-$active-color: color(primary, 600);
+$background-color: color("neutral", "0");
+$border-color: color("neutral", "200");
+$active-background-color: color("neutral", "white");
+$active-color: color("primary", "600");
 
 .rn-switch {
   display: flex;
@@ -26,7 +26,7 @@ $active-color: color(primary, 600);
 
 .rn-switch__legend {
   font-size: inherit;
-  color: color(neutral, 300);
+  color: color("neutral", "300");
   margin-bottom: spacing(4);
 }
 
@@ -61,7 +61,7 @@ $elements: 5;
     height: auto;
     padding: spacing(4) spacing(8);
     font-size: inherit;
-    color: color(neutral, 400);
+    color: color("neutral", "400");
     border: 1px solid $border-color;
     border-right: none;
     background-color: $background-color;

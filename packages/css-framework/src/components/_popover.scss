@@ -58,7 +58,7 @@ a.rn-popover__footer-link {
   .rn-popover--dark .rn-popover__content {
     background: $darkBackground;
     border: $darkBorder solid $borderThick;
-    color: color(neutral, white);
+    color: color("neutral", "white");
   }
 
   .rn-popover__content:before {

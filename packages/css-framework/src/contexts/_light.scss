@@ -138,24 +138,24 @@
 
   $states: (
     "neutral": (
-      "default": color(neutral, 500),
-      "faded": color(neutral, 200),
+      "default": color("neutral", "500"),
+      "faded": color("neutral", "200"),
     ),
     "primary": (
-      "default": color(primary, 500),
-      "faded": color(primary, 200),
+      "default": color("primary", "500"),
+      "faded": color("primary", "200"),
     ),
     "danger": (
-      "default": color(danger, 500),
-      "faded": color(danger, 200),
+      "default": color("danger", "500"),
+      "faded": color("danger", "200"),
     ),
     "warning": (
-      "default": color(warning, 500),
-      "faded": color(warning, 200),
+      "default": color("warning", "500"),
+      "faded": color("warning", "200"),
     ),
     "success": (
-      "default": color(success, 500),
-      "faded": color(success, 200),
+      "default": color("success", "500"),
+      "faded": color("success", "200"),
     ),
   );
 
