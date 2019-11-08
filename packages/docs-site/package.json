@@ -1,7 +1,7 @@
 {
   "name": "royalnavy.io",
   "engines": {
-    "node": "10.x"
+    "node": ">=10.13.0 <13"
   },
   "description": "The documentation site for royalnavy.io",
   "version": "1.6.1",
