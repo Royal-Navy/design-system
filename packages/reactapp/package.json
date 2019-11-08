@@ -6,7 +6,7 @@
     "@royalnavy/css-framework": "^1.6.1",
     "@royalnavy/react-component-library": "^1.6.1",
     "formik": "^2.0.3",
-    "node-sass": "npm:sass",
+    "node-sass": "4.13.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
