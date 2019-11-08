@@ -3,24 +3,24 @@
   left: 0;
   top: 0;
   bottom: 0;
-  background-color: color(neutral, 900);
+  background-color: color("neutral", "900");
   min-width: 200px;
 
   &__header {
-    background-color: color(neutral, black);
-    padding: spacing(8) 0;
+    background-color: color("neutral", "black");
+    padding: spacing("8") 0;
   }
 
   &__nav {
-    padding: spacing(8) 0;
+    padding: spacing("8") 0;
   }
 
   &__link {
     display: block;
-    @include font-size(s);
+    @include font-size("s");
     font-weight: 400;
-    padding: spacing(4) spacing(10);
-    color: color(neutral, 200);
+    padding: spacing("4") spacing("10");
+    color: color("neutral", "200");
     text-decoration: none;
   }
 }

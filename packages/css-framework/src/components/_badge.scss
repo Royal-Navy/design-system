@@ -3,48 +3,48 @@ $badge-font-weight: 700;
 
 $badge-sizes: (
   small: (
-    font-size: font-size(xxs),
-    padding: spacing(2) spacing(4)
+    font-size: font-size("xxs"),
+    padding: spacing("2") spacing("4")
   ),
   regular: (
-    font-size: font-size(xs),
-    padding: spacing(2) spacing(4)
+    font-size: font-size("xs"),
+    padding: spacing("2") spacing("4")
   ),
   large: (
-    font-size: font-size(s),
-    padding: spacing(2) spacing(6)
+    font-size: font-size("s"),
+    padding: spacing("2") spacing("6")
   ),
   xlarge: (
-    font-size: font-size(m),
-    padding: spacing(2) spacing(6)
+    font-size: font-size("m"),
+    padding: spacing("2") spacing("6")
   )
 );
 
 $badge-states: (
   neutral: (
-    color: color("neutral", 900),
-    solid: color("neutral", 500),
-    faded: color("neutral", 100)
+    color: color("neutral", "900"),
+    solid: color("neutral", "500"),
+    faded: color("neutral", "100")
   ),
   primary: (
-    color: color("primary", 700),
-    solid: color("primary", 500),
-    faded: color("primary", 100)
+    color: color("primary", "700"),
+    solid: color("primary", "500"),
+    faded: color("primary", "100")
   ),
   danger: (
-    color: color("danger", 800),
-    solid: color("danger", 500),
-    faded: color("danger", 100)
+    color: color("danger", "800"),
+    solid: color("danger", "500"),
+    faded: color("danger", "100")
   ),
   warning: (
-    color: color("warning", 800),
-    solid: color("warning", 600),
-    faded: color("warning", 200)
+    color: color("warning", "800"),
+    solid: color("warning", "600"),
+    faded: color("warning", "200")
   ),
   success: (
-    color: color("success", 800),
-    solid: color("success", 600),
-    faded: color("success", 100)
+    color: color("success", "800"),
+    solid: color("success", "600"),
+    faded: color("success", "100")
   )
 );
 
@@ -56,7 +56,7 @@ $badge-states: (
 
   @each $state, $variation in $badge-states {
     &.rn-badge--#{$state} {
-      color: color(neutral, white);
+      color: color("neutral", "white");
       background: map-get($variation, "solid");
     }
   }
@@ -65,7 +65,7 @@ $badge-states: (
     @extend .rn-badge;
     @each $state, $variation in $badge-states {
       &.rn-badge--#{$state} {
-        color: color(neutral, white);
+        color: color("neutral", "white");
         background: map-get($variation, "solid");
       }
     }

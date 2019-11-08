@@ -5,26 +5,26 @@
   th {
     font-weight: bold;
     text-align: left;
-    @include font-size(s);
-    padding: spacing(8) spacing(4);
+    @include font-size("s");
+    padding: spacing("8") spacing("4");
   }
   thead {
-    border-bottom: 2px solid color(neutral, 100);
+    border-bottom: 2px solid color("neutral", "100");
   }
   tr {
-    border-bottom: 1px solid color(neutral, 100);
+    border-bottom: 1px solid color("neutral", "100");
     &:last-child {
       border-bottom: none;
     }
   }
   td {
-    @include font-size(s);
-    padding: spacing(6) spacing(3);
-    color: color(neutral, 600);
+    @include font-size("s");
+    padding: spacing("6") spacing("3");
+    color: color("neutral", "600");
   }
 
   &__arrow {
-    margin-left: spacing(3);
+    margin-left: spacing("3");
     &--down {
       transform: rotate(180deg);
       margin-left: -3px;

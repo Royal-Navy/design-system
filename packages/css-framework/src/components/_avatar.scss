@@ -5,13 +5,13 @@
   height: 30px;
   width: 30px;
   border-radius: 15px;
-  background: color(neutral, white);
-  color: color(neutral, 600);
+  background: color("neutral", "white");
+  color: color("neutral", "600");
   font-size: 12px;
   text-decoration: none;
 }
 
 .rn-avatar.rn-avatar--dark {
-  background: color(neutral, 400);
-  color: color(neutral, white);
+  background: color("neutral", "400");
+  color: color("neutral", "white");
 }

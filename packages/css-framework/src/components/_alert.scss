@@ -1,33 +1,33 @@
 $alert-states: (
   neutral: (
-    background: color("neutral", 000),
-    border: color("neutral", 100),
-    copy: color("neutral", 600),
-    title: color("neutral", 900),
+    background: color("neutral", "000"),
+    border: color("neutral", "100"),
+    copy: color("neutral", "600"),
+    title: color("neutral", "900"),
   ),
   primary: (
-    background: color("primary", 000),
-    border: color("primary", 100),
-    copy: color("primary", 800),
-    title: color("primary", 900),
+    background: color("primary", "000"),
+    border: color("primary", "100"),
+    copy: color("primary", "800"),
+    title: color("primary", "900"),
   ),
   danger: (
-    background: color("danger", 000),
-    border: color("danger", 100),
-    copy: color("danger", 800),
-    title: color("danger", 900),
+    background: color("danger", "000"),
+    border: color("danger", "100"),
+    copy: color("danger", "800"),
+    title: color("danger", "900"),
   ),
   warning: (
-    background: color("warning", 100),
-    border: color("warning", 300),
-    copy: color("warning", 800),
-    title: color("warning", 900),
+    background: color("warning", "100"),
+    border: color("warning", "300"),
+    copy: color("warning", "800"),
+    title: color("warning", "900"),
   ),
   success: (
-    background: color("success", 000),
-    border: color("success", 200),
-    copy: color("success", 800),
-    title: color("success", 900),
+    background: color("success", "000"),
+    border: color("success", "200"),
+    copy: color("success", "800"),
+    title: color("success", "900"),
   ),
 );
 
@@ -35,14 +35,14 @@ $alert-states: (
   position: relative;
   border-radius: 4px;
   max-width: 600px;
-  padding: spacing(8) spacing(10);
+  padding: spacing("8") spacing("10");
 
   &__title {
-    @include font-size(s);
-    margin: 0 0 spacing(2) 0;
+    @include font-size("s");
+    margin: 0 0 spacing("2") 0;
   }
   &__message {
-    @include font-size(xs);
+    @include font-size("xs");
     margin: 0;
   }
 
@@ -81,15 +81,15 @@ $alert-states: (
 
   &--event {
     border-radius: 3px;
-    background: color("neutral", 700);
+    background: color("neutral", "700");
     border: none;
-    padding: spacing(6) spacing(8);
+    padding: spacing("6") spacing("8");
     .rn-alert {
       &__title {
         display: none;
       }
       &__message {
-        color: color("neutral", 000);
+        color: color("neutral", "000");
       }
     }
   }

@@ -9,30 +9,30 @@ $border-radius-button: 3px;
   flex-direction: column;
   color: #273b5b;
   overflow: hidden;
-  margin: spacing(8) 0 spacing(11) 0;
+  margin: spacing("8") 0 spacing("11") 0;
 }
 
 .code-highlighter__head {
   position: relative;
-  padding: spacing(8);
+  padding: spacing("8");
   max-height: 20rem;
   overflow: scroll;
-  background-color: color(neutral, white);
-  margin-bottom: spacing(4);
+  background-color: color("neutral", "white");
+  margin-bottom: spacing("4");
   border-radius: $border-radius;
-  border: 1px solid color(neutral, 100);
+  border: 1px solid color("neutral", "100");
 }
 
 .code-highlighter__body {
   border-radius: $border-radius;
   position: relative;
-  background-color: color(neutral, 700);
+  background-color: color("neutral", "700");
   overflow: hidden;
 }
 
 .code-highlighter__source {
   background-color: inherit;
-  font-size: font-size(s);
+  font-size: font-size("s");
 
   pre {
     overflow: hidden;
@@ -42,19 +42,19 @@ $border-radius-button: 3px;
 
 .code-highlighter__copy {
   position: absolute;
-  top: spacing(4);
-  right: spacing(4);
-  padding: spacing(4);
+  top: spacing("4");
+  right: spacing("4");
+  padding: spacing("4");
   border: none;
   border-radius: $border-radius-button;
   background: none;
-  color: color(neutral,white);
-  font-size: font-size(s);
+  color: color("neutral","white");
+  font-size: font-size("s");
   z-index: 1;
 
   svg {
     width: 12px;
-    margin-right: spacing(4);
+    margin-right: spacing("4");
     .post-article & {
       margin-top: 0;
     }
@@ -68,17 +68,17 @@ $border-radius-button: 3px;
 
 .code-highlighter .line-numbers-rows {
   border: initial;
-  background-color: color(neutral, 600);
+  background-color: color("neutral", "600");
   text-shadow: none;
   left: 0;
-  padding: spacing(11) 0;
+  padding: spacing("11") 0;
   margin-top: 0;
 
   span::before {
     text-align: right;
-    color: color(neutral, 200);
+    color: color("neutral", "200");
     font-weight: 300;
-    font-size: font-size(s);
+    font-size: font-size("s");
   }
 }
 

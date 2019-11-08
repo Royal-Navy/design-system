@@ -22,11 +22,11 @@
 
   .aside--primary {
     order: 1;
-    margin-right: spacing(14);
+    margin-right: spacing("14");
   }
 
   .aside--secondary {
-    margin-left: spacing(14);
+    margin-left: spacing("14");
     order: 3;
   }
 }

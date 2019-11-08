@@ -1,6 +1,6 @@
 @import "@royalnavy/css-framework";
 
-$background-color: color(neutral, white);
+$background-color: color("neutral", "white");
 $border-color: #e9eef1;
 $border-radius: 4px;
 $heading-color: #3e5667;
@@ -12,32 +12,32 @@ $text-color: #748999;
   // No matter the last element, ensure it does not
   // have a margin at the bottom of the post article
   // content.
-  padding-bottom: spacing(12);
+  padding-bottom: spacing("12");
   &:last-child {
     margin-bottom: 0;
   }
 
   &__header {
-    border-bottom: 1px solid color(neutral, 100);
-    padding-top: spacing(11);
-    padding-bottom: spacing(12);
-    margin-bottom: spacing(12);
+    border-bottom: 1px solid color("neutral", "100");
+    padding-top: spacing("11");
+    padding-bottom: spacing("12");
+    margin-bottom: spacing("12");
   }
 
   &__title {
-    font-size: font-size(display-l);
+    font-size: font-size("display-l");
     margin: 0 0 5px 0;
   }
 
   &__lede {
-    font-size: font-size(m);
+    font-size: font-size("m");
     font-weight: 300;
     margin: 0;
   }
 
   > svg {
     width: 100%;
-    margin-top: spacing(8);
+    margin-top: spacing("8");
 
     + ul, + ol {
       margin-left: 16px;
@@ -49,23 +49,23 @@ $text-color: #748999;
 
 h1, h2, h3,
 h4, h5, h6 {
-  color: color(neutral, 500);
-  margin-top: spacing(12);
-  margin-bottom: spacing(2);
+  color: color("neutral", "500");
+  margin-top: spacing("12");
+  margin-bottom: spacing("2");
 
   + .data-table {
-    margin-top: spacing(8);
+    margin-top: spacing("8");
   }
 }
 
 p, li {
-  font-size: font-size(s);
-  color: color(neutral, 400);
+  font-size: font-size("s");
+  color: color("neutral", "400");
   line-height: 1.5;
 }
 
 li {
-  margin-bottom: spacing(4);
+  margin-bottom: spacing("4");
   &:last-child {
     margin-bottom: 0;
   }
@@ -74,33 +74,33 @@ li {
 hr {
   height: 1px;
   border: none;
-  background-color: color(neutral, 100);
-  margin: spacing(12) 0;
+  background-color: color("neutral", "100");
+  margin: spacing("12") 0;
 }
 
 
 
 a {
-  color: color(primary, 600);
+  color: color("primary", "600");
   text-decoration: none;
   font-weight: 600;
   // transition: color 0.2s;
   &:hover {
-    color: color(primary, 900);
+    color: color("primary", "900");
     text-decoration: underline;
   }
 }
 
 pre {
   width: 100%;
-  background-color: color(neutral, 700);
-  padding: spacing(11) spacing(12);
+  background-color: color("neutral", "700");
+  padding: spacing("11") spacing("12");
   border-radius: 3px;
   > code {
     padding-left: 0;
-    color: color(neutral, 000);
+    color: color("neutral", "000");
     background-color: unset;
-    font-size: font-size(s);
+    font-size: font-size("s");
   }
 }
 
@@ -110,9 +110,9 @@ pre {
 .standard-table {
   table {
     width: 100%;
-    font-size: font-size(s);
+    font-size: font-size("s");
     color: $text-color;
-    margin: spacing(12) 0;
+    margin: spacing("12") 0;
     border: 1px solid $border-color;
     code {
       margin-right: 5px;
@@ -128,7 +128,7 @@ pre {
 
   td,
   th {
-    padding: spacing(8);
+    padding: spacing("8");
     border-bottom: 1px solid $border-color;
     border-right: 1px solid $border-color;
     background-color: $background-color;
@@ -142,10 +142,10 @@ pre {
 }
 
 code {
-  background-color: color(neutral, 100);
-  color: color(neutral, 600);
+  background-color: color("neutral", "100");
+  color: color("neutral", "600");
   border-radius: 3px;
-  font-size: font-size(xs);
+  font-size: font-size("xs");
   font-weight: 500;
-  padding: 2px spacing(4);
+  padding: 2px spacing("4");
 }

@@ -4,10 +4,10 @@ $btn-focus-width: 0.1rem;
 .rn-radio {
   display: block;
   position: relative;
-  padding-left: spacing(10);
-  margin-bottom: spacing(4);
+  padding-left: spacing("10");
+  margin-bottom: spacing("4");
   cursor: pointer;
-  font-size: font-size(s);
+  font-size: font-size("s");
   user-select: none;
 }
 
@@ -17,7 +17,7 @@ $btn-focus-width: 0.1rem;
 }
 
 .rn-radio__label {
-  color: color(neutral, 400);
+  color: color("neutral", "400");
 }
 
 .rn-radio .rn-radio__radio {
@@ -34,25 +34,25 @@ $btn-focus-width: 0.1rem;
   left: 0;
   height: 16px;
   width: 16px;
-  background-color: color(neutral, white);
+  background-color: color("neutral", "white");
   border-radius: 999px;
-  border: 1px solid color(neutral, 200);
+  border: 1px solid color("neutral", "200");
 }
 
 /* Active state, light blue outline */
 .rn-radio input:hover ~ .rn-radio__checkmark,
 .rn-radio input:active ~ .rn-radio__checkmark {
-  border: 1px solid color(primary, 500);
+  border: 1px solid color("primary", "500");
   outline: none;
-  box-shadow: 0 0 0 $btn-focus-width color(primary, 500);
+  box-shadow: 0 0 0 $btn-focus-width color("primary", "500");
   transition: all $animation-timing;
 }
 
 /* Checked state, blue border */
 .rn-radio input:checked ~ .rn-radio__checkmark {
-  background-color: color(neutral, white);
-  border: 1px solid color(primary, 500);
-  box-shadow: 0 0 0 $btn-focus-width color(primary, 500);
+  background-color: color("neutral", "white");
+  border: 1px solid color("primary", "500");
+  box-shadow: 0 0 0 $btn-focus-width color("primary", "500");
 }
 
 .rn-radio__checkmark:after {
@@ -72,12 +72,12 @@ $btn-focus-width: 0.1rem;
   width: 100%;
   height: 100%;
   border-radius: 999px;
-  background: color(primary, 600);
-  border: 3px solid color(neutral, white);
+  background: color("primary", "600");
+  border: 3px solid color("neutral", "white");
 }
 
 .rn-radio__invalid-feedback {
-  color: color(danger, 600);
-  margin: spacing(4) spacing(6);
-  font-size: font-size(s);
+  color: color("danger", "600");
+  margin: spacing("4") spacing("6");
+  font-size: font-size("s");
 }
