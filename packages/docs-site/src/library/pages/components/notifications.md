@@ -54,5 +54,98 @@ The Notification Sheet should only be used in the Sidebar or Masthead.
 
 <Tab title="Develop">
 
+### Basic Usage
+<CodeHighlighter source={`<Notifications href="notifications">
+  <Notification
+    href="notifications/1"
+    name="Thomas Stephens"
+    action="added a new comment to your"
+    on="review"
+    when={new Date('2019-11-05T10:57:00.000Z')}
+    description="A long description that will be shortened"
+  />
+  <Notification
+    href="notifications/2"
+    name="Thomas Stephens"
+    action="added a new comment to your"
+    on="review"
+    when={new Date('2019-11-04T10:23:00.000Z')}
+    description="A long description that will be shortened again"
+  />
+</Notifications>
+`} language="javascript" />
+
+### Notifications Properties
+<DataTable data={[
+  {
+    Name: 'href',
+    Type: 'string',
+    Required: 'True',
+    Default: '',
+    Description: 'For linking to a list of all notifications.',
+  },
+  {
+    Name: 'children',
+    Type: 'React.ReactElement<NotificationProps>[]',
+    Required: 'True',
+    Default: '',
+    Description: 'An array of notifications.',
+  },
+]} />
+
+### Notification Properties
+<DataTable data={[
+  {
+    Name: 'href',
+    Type: 'string',
+    Required: 'True',
+    Default: '',
+    Description: 'For linking to the notification.',
+  },
+  {
+    Name: 'name',
+    Type: 'string',
+    Required: 'True',
+    Default: '',
+    Description: 'Name of the person who did the action.',
+  },
+  {
+    Name: 'read',
+    Type: 'boolean',
+    Required: 'False',
+    Default: 'False',
+    Description: 'Shows the read indicator next to the notification. If the notification has been read then the value needs to be set to True.',
+  },
+  {
+    Name: 'action',
+    Type: 'string',
+    Required: 'True',
+    Default: '',
+    Description: 'What the person specified with Name did.',
+  },
+  {
+    Name: 'on',
+    Type: 'string',
+    Required: 'True',
+    Default: '',
+    Description: 'The object the person acted on.',
+  },
+  {
+    Name: 'when',
+    Type: 'Date',
+    Required: 'True',
+    Default: '',
+    Description: 'Date that the action happened.',
+  },
+  {
+    Name: 'description',
+    Type: 'string',
+    Required: 'True',
+    Default: '',
+    Description: 'More information about the notification which will be shortened.',
+  },
+]} />
+
 </Tab>
+
 </TabSet>
