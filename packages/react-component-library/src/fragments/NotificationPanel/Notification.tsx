@@ -55,8 +55,8 @@ export const Notification: React.FC<NotificationProps> = ({
               <Avatar initials={getInitials(name)} dark />
               {!read && (
                 <span
-                  className="rn-notifications-item__not-read"
-                  data-testid="not-read"
+                  className="rn-notification-panel__not-read rn-notification-panel__not-read--notification-item"
+                  data-testid="not-read-item"
                 />
               )}
             </div>

@@ -50,7 +50,7 @@ describe('Notification', () => {
     })
 
     it('should render the not-read indicator', () => {
-      expect(wrapper.getByTestId('not-read')).toBeTruthy()
+      expect(wrapper.getByTestId('not-read-item')).toBeTruthy()
     })
 
     it('should render the name', () => {

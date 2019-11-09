@@ -14,21 +14,28 @@
   width: 16px;
 }
 
-.rn-notification-panel__indicator {
+.rn-notification-panel__not-read {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 4px;
+  background: color(primary, 400);
   position: absolute;
-  top: 50%;
-  margin-right: -14px;
-  margin-top: -14px;
+  top: 14px;
+  right: 12px;
+  border: 0;
+
+  &--notification-item {
+    border: 1px solid color(neutral, 700);
+    top: 0;
+    right: 0;
+  }
 }
 
 .rn-notification-panel .rn-iconfill {
   &:hover {
     fill: color(primary, 400);
   }
-}
-
-.rn-notification-panel__indicator > * {
-  fill: color(primary, 400);
 }
 
 .rn-notification__transition-wrapper {
@@ -149,18 +156,6 @@
 
 .rn-notifications-item__avatar {
   position: relative;
-}
-
-.rn-notifications-item__not-read {
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  border-radius: 4px;
-  border: 1px solid color(neutral, 700);
-  background: color(primary, 400);
-  position: absolute;
-  top: 0;
-  right: 0;
 }
 
 .rn-notifications-item__content {

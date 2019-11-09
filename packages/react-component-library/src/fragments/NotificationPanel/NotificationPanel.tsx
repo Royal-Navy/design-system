@@ -114,15 +114,10 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
       >
         <Bell className="rn-notification-panel__icon" />
         {unreadNotification && (
-          <svg
-            data-testid="notification-indicator"
-            className="rn-notification-panel__indicator"
-            width="9px"
-            height="9px"
-            viewBox="0 0 9 9"
-          >
-            <circle cx="4.5" cy="4.5" r="4.5" />
-          </svg>
+          <span
+            className="rn-notification-panel__not-read"
+            data-testid="not-read"
+          />
         )}
       </button>
       <ReactCSSTransitionGroup
