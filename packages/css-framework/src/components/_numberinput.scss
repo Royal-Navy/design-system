@@ -23,10 +23,10 @@
 .rn-numberinput.has-focus .rn-numberinput__input-wrapper {
   border-radius: 4px;
   box-shadow:
-    2px 2px 0 0 color("primary", "600"),
-    -2px -2px 0 0 color("primary", "600"),
-    2px -2px 0 0 color("primary", "600"),
-    -2px 2px 0 0 color("primary", "600");
+    2px 2px 0 0 color("action", "600"),
+    -2px -2px 0 0 color("action", "600"),
+    2px -2px 0 0 color("action", "600"),
+    -2px 2px 0 0 color("action", "600");
 }
 
 .rn-numberinput.is-invalid .rn-numberinput__input-wrapper {
@@ -125,10 +125,10 @@
   &:focus {
     border-radius: 4px;
     box-shadow:
-      2px 2px 0 0 color("primary", "600"),
-      -2px -2px 0 0 color("primary", "600"),
-      2px -2px 0 0 color("primary", "600"),
-      -2px 2px 0 0 color("primary", "600");
+      2px 2px 0 0 color("action", "600"),
+      -2px -2px 0 0 color("action", "600"),
+      2px -2px 0 0 color("action", "600"),
+      -2px 2px 0 0 color("action", "600");
   }
 }
 

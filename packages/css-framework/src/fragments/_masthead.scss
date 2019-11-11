@@ -15,7 +15,7 @@ $masthead-main-height: 58px;
 .rn-masthead__service-name {
   display: flex;
   height: $masthead-main-height;
-  color: color("primary", "900");
+  color: color("action", "900");
   font-weight: bold;
   align-items: center;
   text-decoration: none;
@@ -27,7 +27,7 @@ $masthead-main-height: 58px;
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color("primary", "700") , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
   }
 
   .rn-masthead__title {
@@ -54,7 +54,7 @@ $masthead-main-height: 58px;
   transition: background-color 300ms;
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color("primary", "700") , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
   }
 
   .rn-iconfill {

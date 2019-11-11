@@ -6,10 +6,10 @@ $alert-states: (
     title: color("neutral", "900"),
   ),
   primary: (
-    background: color("primary", "000"),
-    border: color("primary", "100"),
-    copy: color("primary", "800"),
-    title: color("primary", "900"),
+    background: color("action", "000"),
+    border: color("action", "100"),
+    copy: color("action", "800"),
+    title: color("action", "900"),
   ),
   danger: (
     background: color("danger", "000"),

@@ -25,16 +25,16 @@
   fill: color("neutral", "white");
 
   &:hover {
-    fill: color("primary", "400");
+    fill: color("action", "400");
   }
 }
 
 .rn-notification-panel__indicator > * {
-  fill: color("primary", "400");
+  fill: color("action", "400");
 }
 
 .rn-notification-panel--light .rn-notification-panel__indicator > * {
-  fill: color("primary", "600");
+  fill: color("action", "600");
 }
 
 .rn-notification-panel--light .rn-iconfill {

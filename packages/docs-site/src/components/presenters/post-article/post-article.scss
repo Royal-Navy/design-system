@@ -81,12 +81,12 @@ hr {
 
 
 a {
-  color: color("primary", "600");
+  color: color("action", "600");
   text-decoration: none;
   font-weight: 600;
   // transition: color 0.2s;
   &:hover {
-    color: color("primary", "900");
+    color: color("action", "900");
     text-decoration: underline;
   }
 }
