@@ -3,11 +3,12 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 
-import NotificationPanel, {
+import {
+  NotificationPanel,
   getNotificationPositionBelow,
   getNotificationPositionOnRight,
   NotificationPanelProps,
-} from './index'
+} from '.'
 
 const globalAny: any = global
 
@@ -28,7 +29,6 @@ describe('NotificationPanel', () => {
     beforeEach(() => {
       props = {
         notificationPlacement: 'right',
-        scheme: 'dark',
       }
 
       wrapper = render(<NotificationPanel {...props} />)
@@ -196,21 +196,14 @@ describe('NotificationPanel', () => {
     })
   })
 
-  describe('when the notification panel needs to be dark and show the notification popover on its right', () => {
+  describe('when the notification panel needs to show the notification popover on its right', () => {
     beforeEach(() => {
       props.notificationPlacement = 'right'
-      props.scheme = 'dark'
 
       wrapper = render(
         <NotificationPanel {...props}>
           <p data-testid="content">Test content</p>
         </NotificationPanel>
-      )
-    })
-
-    it('should render a dark notification panel', () => {
-      expect(wrapper.getByTestId('notification-panel').classList).toContain(
-        'rn-notification-panel--dark'
       )
     })
 
@@ -239,21 +232,14 @@ describe('NotificationPanel', () => {
     })
   })
 
-  describe('when the notification panel needs to be light and show the notification popover below it', () => {
+  describe('when the notification panel needs to show the notification popover below it', () => {
     beforeEach(() => {
       props.notificationPlacement = 'below'
-      props.scheme = 'light'
 
       wrapper = render(
         <NotificationPanel {...props}>
           <p data-testid="content">Test content</p>
         </NotificationPanel>
-      )
-    })
-
-    it('should render a dark notification panel', () => {
-      expect(wrapper.getByTestId('notification-panel').classList).toContain(
-        'rn-notification-panel--light'
       )
     })
 
@@ -271,12 +257,6 @@ describe('NotificationPanel', () => {
       it('should show the notification content on the right of the button', () => {
         expect(wrapper.getByTestId('popover').classList).toContain(
           'rn-popover--top_right'
-        )
-      })
-
-      it('should show the notication content using the dark theme', () => {
-        expect(wrapper.getByTestId('popover').classList).toContain(
-          'rn-popover--light'
         )
       })
     })

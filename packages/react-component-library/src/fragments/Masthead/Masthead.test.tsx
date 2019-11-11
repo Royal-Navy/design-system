@@ -3,6 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult, wait } from '@testing-library/react'
 
 import { Masthead, MastheadProps } from './Masthead'
+import { Notification, Notifications } from '../NotificationPanel'
 
 describe('Masthead', () => {
   let wrapper: RenderResult
@@ -166,11 +167,24 @@ describe('Masthead', () => {
 
     describe('and notifications', () => {
       beforeEach(() => {
-        const notificationContent = (
-          <p data-testid="masthead-notification-content">Test</p>
+        const notification = (
+          <Notification
+            href="notifications/1"
+            name="Thomas Stephens"
+            action="added a new comment to your"
+            on="review"
+            when={new Date('2019-11-05T10:57:00.000Z')}
+            description="A long description that will be shortened"
+          />
         )
 
-        props.NotificationsPopoverContent = notificationContent
+        props.notifications = (
+          <Notifications href="notifications">
+            {notification}
+            {notification}
+          </Notifications>
+        )
+
         props.unreadNotification = false
 
         wrapper = render(<Masthead {...props} />)
@@ -199,9 +213,7 @@ describe('Masthead', () => {
 
         it('should include the notification content sent to it', async () => {
           await wait(() =>
-            expect(
-              wrapper.getByTestId('masthead-notification-content')
-            ).toBeInTheDocument()
+            expect(wrapper.getByTestId('notifications')).toBeInTheDocument()
           )
         })
 
@@ -215,9 +227,7 @@ describe('Masthead', () => {
           beforeEach(async () => {
             const button = wrapper.queryByTestId('notification-button')
 
-            await wait(() =>
-              wrapper.getByTestId('masthead-notification-content')
-            )
+            await wait(() => wrapper.getByTestId('notifications'))
 
             fireEvent(
               button,
