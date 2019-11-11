@@ -33,25 +33,26 @@ $btn-focus-width: 0.2rem;
     box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
   }
 
+  &__icon {
+    margin-left: spacing("4");
+  }
+
   
   // States
   &--primary {
 
-    &.action {
-      background: color("action", "500");
-      color: color("neutral", "white");
+    background: color("action", "600");
+    color: color("neutral", "white");
 
-      &:hover {
-        background: color("danger", "800");
-        color: color("neutral", "white");
-      }
-      
-      &:focus {
-        box-shadow: 0 0 0 $btn-focus-width rgba(color("danger", "800"), 0.5);
-      }
+    &:hover {
+      background: color("action", "800");
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 $btn-focus-width rgba(color("danger", "800"), 0.5);
     }
     
-    &.danger {
+    &.rn-btn--danger {
       background: color("danger", "500");
       color: color("neutral", "white");
 
@@ -69,9 +70,23 @@ $btn-focus-width: 0.2rem;
 
   &--secondary {
     border: 1px solid color("neutral", "100");
+
+    &.rn-btn--danger {
+      color: color("danger", "800");
+    
+      &:hover {
+        color: color("danger", "800");
+      }
+    
+      &:focus {
+        box-shadow: 0 0 0 $btn-focus-width rgba(color("danger", "800"), 0.5);
+      }
+    }
   }
 
-  &--tertiary {}
+  &--tertiary {
+    border: none;
+  }
 
 
   // Sizes
@@ -90,61 +105,10 @@ $btn-focus-width: 0.2rem;
     padding: spacing("6") spacing("10");
   }
 
+
 }
 
-.rn-btn--primary {
-  background: color("action", "600");
-  color: color("neutral", "white");
 
-  &:hover {
-    background: color("action", "800");
-  }
-}
-
-.rn-btn--secondary {
-  border: 1px solid color("neutral", "100");
-}
-
-.rn-btn--danger {
-  color: color("danger", "800");
-
-  &:hover {
-    color: color("danger", "800");
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color("danger", "800"), 0.5);
-  }
-}
-
-.rn-btn--danger.rn-btn--primary {
-  background: color("danger", "500");
-  color: color("neutral", "white");
-
-  &:hover {
-    background: color("danger", "800");
-    color: color("neutral", "white");
-  }
-}
-
-.rn-btn__icon {
-  margin-left: spacing("4")
-}
-
-.rn-btn.rn-btn--small {
-  font-size: font-size("xxs");
-  padding: spacing("4") spacing("6");
-}
-
-.rn-btn.rn-btn--large {
-  font-size: font-size("s");
-  padding: spacing("6") spacing("10");
-}
-
-.rn-btn.rn-btn--xlarge {
-  font-size: font-size("m");
-  padding: spacing("6") spacing("10");
-}
 
 .rn-btn.disabled,
 .rtn-btn:disabled,
