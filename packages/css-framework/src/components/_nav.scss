@@ -28,11 +28,11 @@
   display: inline-block;
   width: 100%;
   color: color("neutral", "700");
-  border-radius: $btn-border-radius;
+  border-radius: 3px;
   outline: 0;
   padding: spacing("6") spacing("8");
   font-size: font-size("xs");
-  font-weight: $btn-font-weight;
+  font-weight: 500;
   line-height: 1;
   text-decoration: none;
   vertical-align: middle;
@@ -47,7 +47,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(color("action", "700") , 0.5);
   }
 
   &.is-active {

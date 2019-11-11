@@ -7,28 +7,28 @@
         <tspan x="12" y="15">NEUTRAL</tspan>
       </text>
     </g>
-    <g transform="translate(413 47)">
+    <g transform="translate(407 47)">
       <rect width="74" height="22" fill="#CF9328" rx="11"/>
       <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
         <tspan x="12" y="15">WARNING</tspan>
       </text>
     </g>
-    <g transform="translate(329 47)">
+    <g transform="translate(323 47)">
       <rect width="68" height="22" fill="#60B255" rx="11"/>
       <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
         <tspan x="12" y="15">SUCCESS</tspan>
       </text>
     </g>
-    <g transform="translate(503 47)">
+    <g transform="translate(497 47)">
       <rect width="66" height="22" fill="#F44949" rx="11"/>
       <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
         <tspan x="12" y="15">DANGER</tspan>
       </text>
     </g>
     <g transform="translate(244 47)">
-      <rect width="69" height="22" fill="#3A8FDD" rx="11"/>
+      <rect width="63" height="22" fill="#3A8FDD" rx="11"/>
       <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
-        <tspan x="12" y="15">PRIMARY</tspan>
+        <tspan x="12" y="15">ACTION</tspan>
       </text>
     </g>
     <g transform="translate(158 89)">
@@ -37,28 +37,28 @@
         <tspan x="12" y="15">NEUTRAL</tspan>
       </text>
     </g>
-    <g transform="translate(413 89)">
+    <g transform="translate(407 89)">
       <rect width="74" height="22" fill="#FEFBB8" rx="11"/>
       <text fill="#AE6D1D" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
         <tspan x="12" y="15">WARNING</tspan>
       </text>
     </g>
-    <g transform="translate(329 89)">
+    <g transform="translate(323 89)">
       <rect width="68" height="22" fill="#E5FFD9" rx="11"/>
       <text fill="#479442" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
         <tspan x="12" y="15">SUCCESS</tspan>
       </text>
     </g>
-    <g transform="translate(503 89)">
+    <g transform="translate(497 89)">
       <rect width="66" height="22" fill="#FEEAEC" rx="11"/>
       <text fill="#BE2B2B" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
         <tspan x="12" y="15">DANGER</tspan>
       </text>
     </g>
     <g transform="translate(244 89)">
-      <rect width="69" height="22" fill="#DEF4FF" rx="11"/>
+      <rect width="63" height="22" fill="#DEF4FF" rx="11"/>
       <text fill="#2661A7" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
-        <tspan x="12" y="15">PRIMARY</tspan>
+        <tspan x="12" y="15">ACTION</tspan>
       </text>
     </g>
     <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">

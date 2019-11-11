@@ -16,7 +16,7 @@ const PhaseBanner: React.FC<PhaseBannerProps> = ({
 }) => (
   <div className={`rn-phase-banner rn-phase-banner--${phase}`}>
     <div className={!fullWidth ? 'rn-container' : 'rn-phase-banner__container'}>
-      <Badge size="small" color="primary">
+      <Badge size="small" color="action">
         {phase}
       </Badge>
       <span className="rn-phase-banner__text">
