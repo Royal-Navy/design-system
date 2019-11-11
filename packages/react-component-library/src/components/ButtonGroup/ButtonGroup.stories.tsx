@@ -3,8 +3,9 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { withKnobs } from '@storybook/addon-knobs'
 
+import { IconBrightnessLow } from '@royalnavy/icon-library'
+
 import { ButtonGroup } from '../index'
-import { Visibility } from '../../icons'
 
 const stories = storiesOf('Button group', module)
 
@@ -25,7 +26,7 @@ stories.add('Default', () => (
         {
           disabled: true,
           label: 'Three',
-          icon: <Visibility />,
+          icon: <IconBrightnessLow />,
         },
       ]}
       size="regular"

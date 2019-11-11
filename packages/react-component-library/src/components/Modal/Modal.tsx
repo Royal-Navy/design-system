@@ -36,11 +36,7 @@ export const Modal: React.FC<ModalProps> = ({
   }
 
   if (mutatedPrimaryButton) {
-    mutatedPrimaryButton.icon = (
-      <span className="rn-modal__btn-icon">
-        <IconButtonConfirm />
-      </span>
-    )
+    mutatedPrimaryButton.icon = <IconButtonConfirm />
   }
 
   const classes = classNames(className, {
