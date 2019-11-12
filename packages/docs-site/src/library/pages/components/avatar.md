@@ -2,6 +2,7 @@
 title: Avatar
 description: Avatars are simple UI elements that display a user's initials.
 header: true
+draft: false
 ---
 
 import { Avatar, Tab, TabSet } from '@royalnavy/react-component-library'
