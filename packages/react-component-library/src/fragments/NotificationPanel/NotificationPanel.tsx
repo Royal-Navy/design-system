@@ -75,21 +75,7 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
             position={notificationArrowPosition}
             width={POPOVER_WIDTH}
           >
-            <>
-              <header className="rn-notification-panel__header">
-                <h2 className="rn-notification-panel__heading">
-                  Notifications
-                </h2>
-                <button
-                  type="button"
-                  onClick={toggleNotifications}
-                  className="rn-notification-panel__close"
-                >
-                  <strong>X</strong> Close
-                </button>
-              </header>
-              {children}
-            </>
+            {children}
           </Popover>
         )}
       </ReactCSSTransitionGroup>

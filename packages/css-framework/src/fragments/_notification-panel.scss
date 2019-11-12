@@ -46,30 +46,6 @@
   background: white;
 }
 
-.rn-notification-panel__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: spacing(3) 0;
-  border-bottom: 1px solid color(neutral, 100);
-  margin: 0;
-}
-
-.rn-notification-panel__heading {
-  font-weight: normal;
-  font-size: font-size(m);
-  color: color(neutral, 500);
-  margin: 0;
-  padding: 0 spacing(3);
-}
-
-.rn-notification-panel__close {
-  font-size: font-size(xs);
-  color: color(neutral, 300);
-  background: color(neutral, white);
-  border: none;
-}
-
 .rn-notification-leave {
   opacity: 0;
 }
