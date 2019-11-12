@@ -2,24 +2,48 @@
   position: fixed;
   top: 0;
   right: 0;
+  width: 280px;
+  height: 100%;
+  @include z-index(overlay);
+  overflow: hidden;
+  background-color: color(neutral, white);
+  box-shadow: inset 1px 0px 0px 0px rgb(226, 233, 238), -1px 0px 3px 0px rgba(0, 0, 0, 0.04);
 
-  display: none;
+  margin-right: -280px;
+  transition: ease-in-out margin-right 0.3s;
 
   &.is-open {
-    display: block;
+    margin-right: 0;
+    transition: ease-in-out margin-right 0.3s;
   }
 }
 
 .rn-drawer__inner {
   position: relative;
+  width: 100%;
 }
 
 .rn-drawer__content {
-  //
+  height: 100%;
+  overflow-y: scroll;
+  padding: spacing(4);
+
+  & > h1 {
+    margin-top: 0;
+  }
 }
 
 .rn-drawer__close {
   position: absolute;
   top: spacing(2);
   right: spacing(2);
+  border: none;
+  font-size: font-size(l);
+  color: color(neutral, 300);
+  background-color: color(neutral, white);
+
+  &:hover {
+    color: color(neutral, 500);
+    cursor: pointer;
+  }
 }
