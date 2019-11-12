@@ -27,12 +27,18 @@ export const Drawer: React.FC<DrawerProps> = ({
   }
 
   return (
-    <div className={classes}>
+    <div className={classes} data-testid="drawer-wrapper">
       <div className="rn-drawer__inner">
-        <button className="rn-drawer__close" onClick={handleClick}>
+        <button
+          className="rn-drawer__close"
+          onClick={handleClick}
+          data-testid="drawer-close"
+        >
           &times;
         </button>
-        <div className="rn-drawer__content">{children}</div>
+        <div className="rn-drawer__content" data-testid="drawer-content">
+          {children}
+        </div>
       </div>
     </div>
   )
