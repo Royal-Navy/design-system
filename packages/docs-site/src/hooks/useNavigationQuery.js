@@ -13,6 +13,7 @@ const QUERY = graphql`
             title
             status
             index
+            draft
           }
         }
       }
