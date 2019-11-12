@@ -85,7 +85,7 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 .token.boolean,
 .token.number,
 .token.deleted {
-  color: color("altwarning", "400");
+  color: color("supa", "400");
 }
 
 .token.keyword,
@@ -108,15 +108,15 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 .style .token.string,
 .token.variable,
 .token.inserted {
-  color: color("primary", "300");
+  color: color("action", "300");
 }
 
 .token.function {
-  color: color("altwarning", "400");
+  color: color("supa", "400");
 }
 
 .token.rule {
-  color: color("altprimary", "300");
+  color: color("supb", "300");
 }
 
 .token.atrule {

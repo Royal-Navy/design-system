@@ -26,10 +26,10 @@ $badge-states: (
     solid: color("neutral", "500"),
     faded: color("neutral", "100")
   ),
-  primary: (
-    color: color("primary", "700"),
-    solid: color("primary", "500"),
-    faded: color("primary", "100")
+  action: (
+    color: color("action", "700"),
+    solid: color("action", "500"),
+    faded: color("action", "100")
   ),
   danger: (
     color: color("danger", "800"),

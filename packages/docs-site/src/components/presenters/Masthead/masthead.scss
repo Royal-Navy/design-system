@@ -40,12 +40,12 @@
 
 .masthead__nav .rn-nav .rn-nav__item {
   font-size: font-size("m") !important;
-  color: color("primary", "800");
+  color: color("action", "800");
   border-radius: 0;
   font-weight: 600;
 
   &.is-active {
-    background-color: color("primary", "800");
+    background-color: color("action", "800");
     color: color("neutral", "white");
   }
 }
@@ -61,7 +61,7 @@
 }
 
 .masthead__nav .rn-nav__list .rn-nav__list .rn-nav__item {
-  color: color("primary", "800") !important;
+  color: color("action", "800") !important;
   font-size: font-size("s") !important;
   border-radius: 4px;
 
@@ -83,7 +83,7 @@
 // immediate children & .has-children <a />.is-active
 .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list-item.has-children > .rn-nav__item.is-active {
   background-color: transparent;
-  color: color("primary", "800");
+  color: color("action", "800");
 }
 
 // nested children <a />
@@ -162,7 +162,7 @@
 
   // immediate children & .has-children <a />.is-active
   .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list-item.has-children > .rn-nav__item.is-active {
-    background-color: color("primary", "800");
+    background-color: color("action", "800");
     color: color("neutral", "white");
   }
 }

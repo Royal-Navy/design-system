@@ -88,7 +88,7 @@ body.has-sidebar {
 }
 
 .rn-sidebar__top .rn-sidebar__nav-link.is-active {
-  border-left: $border solid color("primary", "400");
+  border-left: $border solid color("action", "400");
   background: color("neutral", "700");
 }
 
@@ -111,12 +111,12 @@ body.has-sidebar {
 }
 
 .rn-sidebar__bottom .rn-sidebar__nav-link:hover .rn-sidebar__nav-label {
-  background: color("primary", "400");
+  background: color("action", "400");
   color: color("neutral", "white");
 }
 
 .rn-sidebar__bottom .rn-sidebar__nav-link:hover .rn-iconfill {
-  fill: color("primary", "400");
+  fill: color("action", "400");
 }
 
 .rn-sidebar .rn-sidebar__avatar {

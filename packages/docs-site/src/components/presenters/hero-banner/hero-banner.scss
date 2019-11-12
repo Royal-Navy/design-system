@@ -1,7 +1,7 @@
 @import "@royalnavy/css-framework";
 
 .hero-banner {
-  background-color: color("primary", "800");
+  background-color: color("action", "800");
   color: color("neutral", "100");
   margin-bottom: spacing("13");
 }
@@ -34,7 +34,7 @@
 .hero-banner__text {
   line-height: 1.6;
   margin-bottom: spacing("11");
-  color: color("primary", "100");
+  color: color("action", "100");
   max-width: 540px;
   margin-top: spacing("8");
 }
@@ -42,16 +42,16 @@
 .hero-banner__rule {
   border: 0;
   height: spacing("px");
-  background-color: color("primary", "700");
+  background-color: color("action", "700");
   margin: 0;
 }
 
 .hero-banner__stakeholder {
-  background-color: color("primary", "900");
+  background-color: color("action", "900");
 }
 
 .hero-banner__stakeholder-message {
   margin: 0;
-  color: color("primary", "100");
+  color: color("action", "100");
   padding: spacing("10") 0;
 }

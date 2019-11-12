@@ -42,17 +42,17 @@ $btn-focus-width: 0.1rem;
 /* Active state, light blue outline */
 .rn-radio input:hover ~ .rn-radio__checkmark,
 .rn-radio input:active ~ .rn-radio__checkmark {
-  border: 1px solid color("primary", "500");
+  border: 1px solid color("action", "500");
   outline: none;
-  box-shadow: 0 0 0 $btn-focus-width color("primary", "500");
+  box-shadow: 0 0 0 $btn-focus-width color("action", "500");
   transition: all $animation-timing;
 }
 
 /* Checked state, blue border */
 .rn-radio input:checked ~ .rn-radio__checkmark {
   background-color: color("neutral", "white");
-  border: 1px solid color("primary", "500");
-  box-shadow: 0 0 0 $btn-focus-width color("primary", "500");
+  border: 1px solid color("action", "500");
+  box-shadow: 0 0 0 $btn-focus-width color("action", "500");
 }
 
 .rn-radio__checkmark:after {
@@ -72,7 +72,7 @@ $btn-focus-width: 0.1rem;
   width: 100%;
   height: 100%;
   border-radius: 999px;
-  background: color("primary", "600");
+  background: color("action", "600");
   border: 3px solid color("neutral", "white");
 }
 

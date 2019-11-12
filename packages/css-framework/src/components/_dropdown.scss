@@ -13,8 +13,8 @@ $offset: $outer + $border-thick;
   }
 
   .rn-dropdown__control--is-focused {
-    border-color: color("primary", "600");
-    box-shadow: 0 0 0 1px color("primary", "600");
+    border-color: color("action", "600");
+    box-shadow: 0 0 0 1px color("action", "600");
   }
 
   .rn-dropdown__dropdown-indicator {
@@ -34,7 +34,7 @@ $offset: $outer + $border-thick;
   }
 
   .rn-dropdown__menu-list {
-    border: 2px solid color("primary", "600");
+    border: 2px solid color("action", "600");
     border-radius: 4px;
     padding: spacing("2");
   }
@@ -43,7 +43,7 @@ $offset: $outer + $border-thick;
     display: block;
     border-style: solid;
     border-width: 0 7px 7px;
-    border-color: color("primary", "600") transparent;
+    border-color: color("action", "600") transparent;
     position: absolute;
     top: -7px;
     left: 95%;
@@ -129,7 +129,7 @@ $offset: $outer + $border-thick;
     }
 
     .rn-arrow__fill {
-      fill: color("primary", "600");
+      fill: color("action", "600");
     }
   }
 }

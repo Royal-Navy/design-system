@@ -1,4 +1,4 @@
-$active-border-color: color("primary", "600");
+$active-border-color: color("action", "600");
 $btn-focus-width: 0.2rem;
 
 .rn-tab-nav {
@@ -39,7 +39,7 @@ $btn-focus-width: 0.2rem;
   text-decoration: none;
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color("primary", "700") , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
   }
 }
 

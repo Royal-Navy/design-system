@@ -80,13 +80,13 @@ Badges can be rendered using a variety of colours combined with an instruction t
 
 <CodeHighlighter 
 source={`<Badge color="neutral" colorVariant="faded">Neutral</Badge>
-<Badge color="primary" colorVariant="faded">Primary</Badge>
+<Badge color="action" colorVariant="faded">Primary</Badge>
 <Badge color="danger" colorVariant="faded">Danger</Badge>
 <Badge color="warning" colorVariant="faded">Warning</Badge>
 <Badge color="success" colorVariant="faded">Success</Badge>
 
 <Badge color="neutral" colorVariant="solid">Neutral</Badge>
-<Badge color="primary" colorVariant="solid">Primary</Badge>
+<Badge color="action" colorVariant="solid">Primary</Badge>
 <Badge color="danger" colorVariant="solid">Danger</Badge>
 <Badge color="warning" colorVariant="solid">Warning</Badge>
 <Badge color="success" colorVariant="solid">Success</Badge>
@@ -94,14 +94,14 @@ source={`<Badge color="neutral" colorVariant="faded">Neutral</Badge>
 >
   <p>
     <Badge color="neutral" colorVariant="faded">Neutral</Badge>
-    <Badge color="primary" colorVariant="faded">Primary</Badge>
+    <Badge color="action" colorVariant="faded">Primary</Badge>
     <Badge color="danger" colorVariant="faded">Danger</Badge>
     <Badge color="warning" colorVariant="faded">Warning</Badge>
     <Badge color="success" colorVariant="faded">Success</Badge>
   </p>
   <p>
     <Badge color="neutral" colorVariant="solid">Neutral</Badge>
-    <Badge color="primary" colorVariant="solid">Primary</Badge>
+    <Badge color="action" colorVariant="solid">Primary</Badge>
     <Badge color="danger" colorVariant="solid">Danger</Badge>
     <Badge color="warning" colorVariant="solid">Warning</Badge>
     <Badge color="success" colorVariant="solid">Success</Badge>
@@ -129,14 +129,14 @@ Icons can be added to a button and currently can only be shown to the right of t
 
 <CodeHighlighter 
 source={`<Badge color="neutral" variant="pill">Neutral</Badge>
-<Badge color="primary" variant="pill">Primary</Badge>
+<Badge color="action" variant="pill">Primary</Badge>
 <Badge color="danger" variant="pill">Danger</Badge>
 <Badge color="warning" variant="pill">Warning</Badge>
 <Badge color="success" variant="pill">Success</Badge>
 `} language="javascript"
 >
   <Badge color="neutral" variant="pill">Neutral</Badge>
-  <Badge color="primary" variant="pill">Primary</Badge>
+  <Badge color="action" variant="pill">Primary</Badge>
   <Badge color="danger" variant="pill">Danger</Badge>
   <Badge color="warning" variant="pill">Warning</Badge>
   <Badge color="success" variant="pill">Success</Badge>
@@ -160,7 +160,7 @@ source={`<Badge color="neutral" variant="pill">Neutral</Badge>
   },
   {
     Name: 'color',
-    Type: 'string (neutral / primary / danger / warning / success)',
+    Type: 'string (neutral / action / danger / warning / success)',
     Required: 'False',
     Default: 'neutral',
     Description: 'The colour for the badge',

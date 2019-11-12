@@ -12,8 +12,8 @@
   transition: all 0.2s;
   outline: none;
   &:focus {
-    border: 1px solid color("primary", "400");
-    box-shadow: 0 0 0 1px color("primary", "400");
+    border: 1px solid color("action", "400");
+    box-shadow: 0 0 0 1px color("action", "400");
   }
 
   &.open {

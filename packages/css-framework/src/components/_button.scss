@@ -1,5 +1,4 @@
 $btn-border-radius: 3px;
-$btn-font-weight: 500;
 $btn-disabled-opacity: 0.4;
 $btn-block-spacing-y: 1rem;
 $animation-timing: 0.3s;
@@ -12,12 +11,11 @@ $btn-focus-width: 0.2rem;
   color: color("neutral", "500");
   background-color: color("neutral", "white");
   border: 1px solid transparent;
-  border-radius: $btn-border-radius;
-  margin: spacing("2") 0;
+  border-radius: $btn-border-radius;  
   outline: 0;
   padding: spacing("6") spacing("8");
   font-size: font-size("xs");
-  font-weight: $btn-font-weight;
+  font-weight: 500;
   line-height: 1;
   text-align: center;
   vertical-align: middle;
@@ -32,67 +30,85 @@ $btn-focus-width: 0.2rem;
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color("primary", "700") , 0.5);
-  }
-}
-
-.rn-btn + .rn-btn {
-  margin-left: spacing("4");
-}
-
-.rn-btn--primary {
-  background: color("primary", "600");
-  color: color("neutral", "white");
-
-  &:hover {
-    background: color("primary", "800");
-  }
-}
-
-.rn-btn--secondary {
-  border: 1px solid color("neutral", "100");
-}
-
-.rn-btn--danger {
-  color: color("danger", "800");
-
-  &:hover {
-    color: color("danger", "800");
+    box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
   }
 
-  &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color("danger", "800"), 0.5);
+  &__icon {
+    margin-left: spacing("4");
   }
-}
 
-.rn-btn--danger.rn-btn--primary {
-  background: color("danger", "500");
-  color: color("neutral", "white");
+  
+  // States
+  &--primary {
 
-  &:hover {
-    background: color("danger", "800");
+    background: color("action", "600");
     color: color("neutral", "white");
+
+    &:hover {
+      background: color("action", "800");
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 $btn-focus-width rgba(color("danger", "800"), 0.5);
+    }
+    
+    &.rn-btn--danger {
+      background: color("danger", "500");
+      color: color("neutral", "white");
+
+      &:hover {
+        background: color("danger", "800");
+        color: color("neutral", "white");
+      }
+      
+      &:focus {
+        box-shadow: 0 0 0 $btn-focus-width rgba(color("danger", "800"), 0.5);
+      }
+    }
+
   }
+
+  &--secondary {
+    border: 1px solid color("neutral", "100");
+
+    &.rn-btn--danger {
+      color: color("danger", "800");
+    
+      &:hover {
+        color: color("danger", "800");
+      }
+    
+      &:focus {
+        box-shadow: 0 0 0 $btn-focus-width rgba(color("danger", "800"), 0.5);
+      }
+    }
+  }
+
+  &--tertiary {
+    border: none;
+  }
+
+
+  // Sizes
+  &--small {
+    font-size: font-size("xxs");
+    padding: spacing("4") spacing("6");
+  }
+  
+  &--large {
+    font-size: font-size("s");
+    padding: spacing("6") spacing("10");
+  }
+  
+  &--xlarge {
+    font-size: font-size("m");
+    padding: spacing("6") spacing("10");
+  }
+
+
 }
 
-.rn-btn__icon {
-  margin-left: spacing("4")
-}
 
-.rn-btn.rn-btn--small {
-  font-size: font-size("xxs");
-  padding: spacing("4") spacing("6");
-}
-
-.rn-btn.rn-btn--large {
-  font-size: font-size("s");
-  padding: spacing("6") spacing("10");
-}
-
-.rn-btn.rn-btn--xlarge {
-  font-size: font-size("m");
-  padding: spacing("6") spacing("10");
-}
 
 .rn-btn.disabled,
 .rtn-btn:disabled,
