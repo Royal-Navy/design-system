@@ -174,7 +174,7 @@ describe('NotificationPanel', () => {
 
       it('should show the unread notification', () => {
         expect(
-          wrapper.getByTestId('notification-indicator')
+          wrapper.getByTestId('not-read')
         ).toBeInTheDocument()
       })
     })

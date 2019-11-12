@@ -257,7 +257,7 @@ describe('Masthead', () => {
 
         it('should include an unread notification indicator', () => {
           expect(
-            wrapper.queryByTestId('notification-indicator')
+            wrapper.queryByTestId('not-read')
           ).toBeInTheDocument()
         })
       })
