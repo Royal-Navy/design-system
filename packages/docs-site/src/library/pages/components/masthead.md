@@ -7,6 +7,7 @@ header: true
 import { Icons, Masthead, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../components/presenters/sketch-widget'
 import MastheadComponent from '../../images/components/masthead/component.svg'
 import MastheadAnatomy from '../../images/components/masthead/anatomy.svg'
 import MastheadStates from '../../images/components/masthead/states.svg'
