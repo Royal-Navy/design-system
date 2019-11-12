@@ -1,7 +1,6 @@
-const ASCENDING = 'asc'
-const DESCENDING = 'desc'
-
-export {
-  ASCENDING,
-  DESCENDING,
+enum SORT_ORDER {
+  ASCENDING = 'asc',
+  DESCENDING = 'desc',
 }
+
+export { SORT_ORDER }

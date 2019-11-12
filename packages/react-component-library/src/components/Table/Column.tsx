@@ -7,7 +7,7 @@ import {
   IconSortUnsorted,
 } from '@royalnavy/icon-library'
 
-import { ASCENDING, DESCENDING } from './constants'
+import { SORT_ORDER } from './constants'
 
 export interface ColumnProps {
   field: string
@@ -17,15 +17,21 @@ export interface ColumnProps {
   children: string
 }
 
-const icons = {
-  [ASCENDING]: <IconSortAscending data-testid="ascending" />,
-  [DESCENDING]: <IconSortDescending data-testid="descending" />,
+const SORT_ORDER_ICONS_MAP = {
+  [SORT_ORDER.ASCENDING]: <IconSortAscending data-testid="ascending" />,
+  [SORT_ORDER.DESCENDING]: <IconSortDescending data-testid="descending" />,
 }
 
 function getIcon(sortable: boolean, sortOrder: string) {
-  return sortable
-    ? get(icons, sortOrder) || <IconSortUnsorted data-testid="unsorted" />
-    : null
+  if (!sortable) {
+    return null
+  }
+
+  return (
+    get(SORT_ORDER_ICONS_MAP, sortOrder) || (
+      <IconSortUnsorted data-testid="unsorted" />
+    )
+  )
 }
 
 export const Column: React.FC<ColumnProps> = ({
