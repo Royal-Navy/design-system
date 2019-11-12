@@ -49,6 +49,18 @@ $btn-focus-width: 0.2rem;
 .rn-tab-set__content {
   display: none;
 
+  // Fix to ensure the first level SVGs in a content document have appropriate
+  // padding underneath their headings.
+  > svg {
+    width: 100%;
+    margin-top: spacing(4);
+
+    + ul, + ol {
+      margin-left: 16px;
+      padding-left: 0;
+    }
+  }
+
   &.is-active {
     display: block;
   }

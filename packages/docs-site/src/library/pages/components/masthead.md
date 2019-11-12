@@ -7,6 +7,7 @@ header: true
 import { Icons, Masthead, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import SketchWidget from '../../../components/presenters/sketch-widget'
 import MastheadComponent from '../../images/components/masthead/component.svg'
 import MastheadAnatomy from '../../images/components/masthead/anatomy.svg'
 import MastheadStates from '../../images/components/masthead/states.svg'
@@ -75,7 +76,7 @@ Aside from the active page links (an example of these states is shown in the [Ta
     { label: 'Components', href: '/components', },
     { label: 'About', href: '/about', },
   ]}
-  NotificationsPopoverContent={notificationContent}
+  notifications={notifications}
   onSearch={onSearch} 
   searchPlaceholder="Search" 
   title="Test" 
@@ -90,7 +91,7 @@ Aside from the active page links (an example of these states is shown in the [Ta
       { label: 'Components', href: '/components' },
       { label: 'About', href: '/about', },
     ]}
-    NotificationsPopoverContent={(<p>Notification popover content</p>)}
+    notifications={null}
     onSearch={term => console.log(`Search for: ${term}`)}
     searchPlaceholder="Search"
     title="Test"
@@ -126,10 +127,10 @@ Aside from the active page links (an example of these states is shown in the [Ta
     Description: 'An array of objects that must at least contain a label. If no custom component is provided then provide a href, otherwise provide the required property associated with the LinkComponent',
   },
   {
-    Name: 'NotificationsPopoverContent',
-    Type: 'Element ',
+    Name: 'notifications',
+    Type: 'React.ReactElement<NotificationsProps>',
     Required: 'False',
-    Description: 'This property contains the content for the Notifications Popover. Ideally this would contain recent notifications, including read status, and a link to read them.',
+    Description: 'This property contains the content for the Notifications Popover. These are recent notifications, including read status, and a link to read them.',
   },
   {
     Name: 'onSearch',

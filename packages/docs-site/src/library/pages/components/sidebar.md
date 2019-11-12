@@ -62,7 +62,7 @@ The bottom half of the Sidebar has two optional items, the notification indicato
 
 If the application wishes to display the user's name in the form of their initials, then an object must be provided to the `user` property. This must include an `initials` property and a url property expected by the `LinkComponent`, e.g. 'to'.
 
-If notifications are supported by an application, the Notification section will display an Icon. This can be used to toggle the display of the Notification Popover. The host application is responsible for generating the markup and styles used within the Notification Popover.
+If notifications are supported by an application, the Notification section will display an Icon. This can be used to toggle the display of the Notification Popover.
 
 ### Sidebar without Notifications
 A simple sidebar with no notification section, simply showing the current user and using the default Link component so, a regular anchor tag is used. 
@@ -114,11 +114,29 @@ const navData: NavItemAnchorType[] = [
     label: 'Tools',
   },
 ]\n
-const popoverContent = <PopoverContent notifications={notifications} />\n
  <Sidebar 
    user={user} 
    navItems={navData} 
-   NotificationsPopoverContent={popoverContent}
+   notifications={(
+     <Notifications href="notifications">
+       <Notification
+         href="notifications/1"
+         name="Thomas Stephens"
+         action="added a new comment to your"
+         on="review"
+         when={new Date('2019-11-05T10:57:00.000Z')}
+         description="A long description that will be shortened"
+       />
+       <Notification
+         href="notifications/2"
+         name="Thomas Stephens"
+         action="added a new comment to your"
+         on="review"
+         when={new Date('2019-11-04T10:23:00.000Z')}
+         description="A long description that will be shortened again"
+       />
+     </Notifications>
+   )}
    unreadNotification
 />
 `} language="javascript" />
@@ -159,11 +177,11 @@ const navData: NavItemAnchorType[] = [
     Description: 'An array of nav item objects with an image and a label. Requires a property for the link',
   },
   {
-    Name: 'NotificationsPopoverContent',
-    Type: 'Element ',
+    Name: 'notifications',
+    Type: 'React.ReactElement<NotificationsProps>',
     Required: 'False',
     Default: '',
-    Description: "This property contains the content that populates the Notification Popover. This should contain recent notifications, whether they've been read or not, and a link to read them.",
+    Description: "This property contains the content for the Notifications Popover. These are recent notifications, including read status, and a link to read them.",
   },
     {
     Name: 'unreadNotification',

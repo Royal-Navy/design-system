@@ -4,8 +4,8 @@ description: Text inputs let users enter and edit text.
 header: true
 ---
 
-import { Links, Tab, TabSet, TextInput } from '@royalnavy/react-component-library'
-import Field from '../../../../components/containers/Field'
+import { Links, Tab, TabSet, Formik as FormComponents} from '@royalnavy/react-component-library'
+import { Field, Formik, Form } from 'formik'
 import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
@@ -71,13 +71,14 @@ Only Pre and Post fix should be used on each input.
 </Tab>
 
 <Tab title="Develop">
-
-The `TextInput` component can be used for any text/number based input within a form. The initial release for this component has been written to work with <a href="https://jaredpalmer.com/formik/">Formik</a>, though a Redux Forms variation will follow.
-
-The TextInput component can be used on its own in a regular form if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
+The `TextInput` component is used to capture and display text value within a form. The basic component can be used with a handler to control state or an enhanced `Formik` version can be used with in Formik forms.
 
 ### Example with Formik
-<CodeHighlighter source={`<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+<CodeHighlighter source={`import { Field, Formik, Form } from 'formik'
+import { Formik as FormComponents} from '@royalnavy/react-component-library'
+const { TextInput } from FormComponents
+...
+<Formik initialValues={initialValues} onSubmit={onSubmit}>
 
 <Form>
   <Field className="rn-textinput--is-valid" name="colour" component={TextInput} label="My Label" />
@@ -88,11 +89,12 @@ The TextInput component can be used on its own in a regular form if you use the 
   <Field name="search" component={TextInput} placeholder="search" />
 </Form>
 </Formik>`} language="javascript">
-  <div>
-      <Field className="rn-textinput--is-valid" name="colour" component={TextInput} label="My Label" />
+  <Formik initialValues={{name: '', city: '', hero: '', fruit: '', search: ''}} onSubmit={() => {}}> 
+  <Form>
+      <Field className="rn-textinput--is-valid" name="colour" component={FormComponents.TextInput} label="My Label" />
       <Field 
         name="name" 
-        component={TextInput} 
+        component={FormComponents.TextInput} 
         label="Name" 
         form={{
           errors: {
@@ -103,69 +105,28 @@ The TextInput component can be used on its own in a regular form if you use the 
           }
         }}
         />
-      <Field name="city" component={TextInput} label="City" />
-      <Field name="hero" component={TextInput} endAdornment={<Icons.Search />} label="Hero" />
-      <Field name="fruit" component={TextInput} startAdornment={<Icons.Search />} label="Fruit" />
-      <Field name="search" component={TextInput} placeholder="search" />
-  </div>
+      <Field name="city" component={FormComponents.TextInput} label="City" />
+      <Field name="hero" component={FormComponents.TextInput} endAdornment={<Icons.Search />} label="Hero" />
+      <Field name="fruit" component={FormComponents.TextInput} startAdornment={<Icons.Search />} label="Fruit" />
+      <Field name="search" component={FormComponents.TextInput} placeholder="search" />
+      </Form>
+  </Formik>
 </CodeHighlighter>
 
 
 ### Properties
-The `TextInput` component accepts the standard field properties as defined by Formik but is also
-responsible for rendering an optional field label and any information or error messages associated 
-with the field. The component can also render 'Adornments'. An Adornment is a visual item at the start or
-end of a field:
+The `TextInput` component renders an input element with the value passed to it. The field itself does not handle state, this is achieved by passing both the current value for the field and an `onChange` function. This function is called with a new value when a user interacts with the field, it is up to that function to update the state and pass the new value to display back to the TextInput. This is described in more detail in the [form overview](/components/form).
 
-<DataTable caption="FieldProps" data={[
-  {
-    Name: 'name',
-    Type: 'string',
-    Required: 'False',
-    Default: '',
-    Description: 'The field name',
-  },
-  {
-    Name: 'value',
-    Type: 'string',
-    Required: 'False',
-    Default: '',
-    Description: 'The field current value',
-  },
-   {
-    Name: 'onChange',
-    Type: '(React.SyntheticEvent):void',
-    Required: 'True',
-    Default: '',
-    Description: 'Called when the field value changes',
-  },
-  {
-    Name: 'onBlur',
-    Type: '(React.SyntheticEvent):void',
-    Required: 'True',
-    Default: '',
-    Description: 'Called when the field loses focus',
-  },
-]} />
-<br />
-<DataTable caption="FormProps" data={[
-  {
-    Name: 'errors',
-    Type: '{ string: string }',
-    Required: 'False',
-    Default: '{}',
-    Description: 'A hashmap using the field name as a key and the error message associated with it',
-  },
-  {
-    Name: 'touched',
-    Type: '{ string: boolean }',
-    Required: 'False',
-    Default: '{}',
-    Description: 'A hashmap using the field name as a key and indicating if it has been touched or not',
-  },
-]} />
-<br />
+An enhanced version of the field is also exported that is compatible with Formik.
+
 <DataTable caption="TextInput" data={[
+  {
+    Name: 'autoFocus',
+    Type: 'boolean',
+    Required: 'False',
+    Default: '',
+    Description: 'Mark the field with the autofocus property causing the browser to focus on the field when the page loads.',
+  },
   {
     Name: 'className',
     Type: 'string',
@@ -188,11 +149,11 @@ end of a field:
     Description: 'An optional component to display at the end of a field, such as a search SVG',
   },
   {
-    Name: 'field',
-    Type: 'FieldProps',
-    Required: 'True',
+    Name: 'footnote',
+    Type: 'string',
+    Required: 'False',
     Default: '',
-    Description: 'Can be manually provided or sent from Formik. Indicates any errors and which fields have been touched',
+    Description: 'A message to display below the field'
   },
   {
     Name: 'id',
@@ -207,6 +168,27 @@ end of a field:
     Required: 'False',
     Default: '',
     Description: 'Ideally a field should include a label to help the user understand what the field is for and help screen readers',
+  },
+  {
+    Name: 'name',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'The field name',
+  },
+  {
+    Name: 'onBlur',
+    Type: 'React.FormEvent<Element>',
+    Required: 'True',
+    Default: '',
+    Description: 'Called when the field loses focus',
+  },
+  {
+    Name: 'onChange',
+    Type: 'React.ChangeEvent <HTMLTextAreaElement>',
+    Required: 'True',
+    Default: '',
+    Description: 'Called when the field value changes',
   },
   {
     Name: 'placeholder',
@@ -228,6 +210,13 @@ end of a field:
     Required: 'False',
     Default: 'text',
     Description: 'The field type if it is not a standard text field',
+  },
+  {
+    Name: 'value',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'The field current value',
   },
 ]} />
 

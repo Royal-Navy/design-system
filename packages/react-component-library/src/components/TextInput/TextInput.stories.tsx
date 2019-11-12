@@ -1,7 +1,8 @@
-import { Field, Formik, Form } from 'formik'
-import React from 'react'
+import State from '@royalnavy/storybook-react-input-state'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
+import { Field, Formik, Form } from 'formik'
+import React from 'react'
 import * as yup from 'yup'
 
 import { Search } from '../../icons'
@@ -13,12 +14,14 @@ import withFormik from '../../enhancers/withFormik'
 const stories = storiesOf('TextInput', module)
 
 stories.add('Vanilla', () => (
-  <Form>
-    <TextInput className="is-valid" name="colour" label="My Label" />
-    <TextInput name="name" label="Name" />
-    <TextInput name="hero" label="Hero" startAdornment={<Search />} />
-    <TextInput name="fruit" label="Fruit" endAdornment={<Search />} />
-  </Form>
+  <form>
+    <State>
+      <TextInput className="is-valid" name="colour" label="My Label" />
+      <TextInput name="name" label="Name" />
+      <TextInput name="hero" label="Hero" startAdornment={<Search />} />
+      <TextInput name="fruit" label="Fruit" endAdornment={<Search />} />
+    </State>
+  </form>
 ))
 
 interface Data {

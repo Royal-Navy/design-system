@@ -1,12 +1,25 @@
 .rn-table {
   border-collapse: collapse;
-  table-layout: auto;
+  table-layout: fixed;
   width: 100%;
   th {
     font-weight: bold;
     text-align: left;
-    @include font-size("s");
-    padding: spacing("8") spacing("4");
+    @include font-size("xs");
+    text-transform: uppercase;
+    padding: spacing("4") spacing("2");
+
+    &.is-sortable {
+      cursor: pointer;
+    }
+
+    & svg {
+      position: relative;
+      left: spacing("1");
+      top: 2px;
+      width: spacing("3");
+      height: spacing("3");
+    }
   }
   thead {
     border-bottom: 2px solid color("neutral", "100");
@@ -18,9 +31,9 @@
     }
   }
   td {
-    @include font-size("s");
-    padding: spacing("6") spacing("3");
-    color: color("neutral", "600");
+    @include font-size("xs");
+    padding: spacing("2") spacing("2");
+    color: color("neutral", "500");
   }
 
   &__arrow {
@@ -40,10 +53,9 @@
       opacity: 1;
     }
   }
+}
 
-  &.sortable {
-    th {
-      cursor: pointer;
-    }
-  }
+.rn-table__wrapper {
+  overflow: scroll;
+  overflow-y: hidden;
 }

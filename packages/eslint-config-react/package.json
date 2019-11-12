@@ -1,26 +1,26 @@
 {
   "name": "@royalnavy/eslint-config-react",
-  "version": "1.4.0",
+  "version": "1.6.1",
   "publishConfig": {
     "access": "public"
   },
   "engines": {
-    "node": ">=10.13.0 <11"
+    "node": ">=10.13.0 <13"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.2.0",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.13.0",
-    "lint-staged": "^8.2.1",
-    "prettier": "^1.17.0"
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2"
   },
   "peerDependencies": {
-    "eslint": "^5.16.0",
-    "prettier": "^1.17.0"
+    "eslint": "^6.6.1",
+    "prettier": "^1.18.2"
   },
   "browserslist": [
     ">0.2%",

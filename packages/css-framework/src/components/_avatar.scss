@@ -8,10 +8,17 @@
   background: color("neutral", "white");
   color: color("neutral", "600");
   font-size: 12px;
+  font-weight: bold;
   text-decoration: none;
 }
 
 .rn-avatar.rn-avatar--dark {
   background: color("neutral", "400");
   color: color("neutral", "white");
+}
+
+.rn-avatar:hover {
+  background: color(primary, 500);
+  color: color(neutral, white);
+  cursor: pointer;
 }

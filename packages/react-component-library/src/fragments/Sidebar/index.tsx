@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
 import { Avatar, Link } from '../../components'
-import NotificationPanel from '../NotificationPanel'
+import { NotificationPanel, NotificationsProps } from '../NotificationPanel'
 
 interface SidebarProps {
   LinkComponent?: any
   navItems: NavItemTypes[]
-  NotificationsPopoverContent?: JSX.Element
+  notifications?: React.ReactElement<NotificationsProps>
   unreadNotification?: boolean
   user?: UserType
 }
@@ -14,7 +14,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({
   LinkComponent = Link,
   navItems,
-  NotificationsPopoverContent,
+  notifications,
   unreadNotification = false,
   user,
 }) => {
@@ -66,9 +66,9 @@ const Sidebar: React.FC<SidebarProps> = ({
       </nav>
 
       <div className="rn-sidebar__bottom">
-        {NotificationsPopoverContent && (
+        {notifications && (
           <NotificationPanel unreadNotification={unreadNotification}>
-            {NotificationsPopoverContent}
+            {notifications}
           </NotificationPanel>
         )}
         {userElement}

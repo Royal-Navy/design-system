@@ -2,6 +2,7 @@
 
 NOTE: Fix problems by moving forward (roll a new release with a fix).
 
+- [ ] Check and update dependencies
 - [ ] Create and push new release branch from `develop`, using the convention `release/*.*.*` ([Semver](https://semver.org/))
 - [ ] Run `yarn lerna:version` (updates package version, linked dependency versions, tags and pushes to remote)
 - [ ] Add draft release notes to GitHub and link to tag

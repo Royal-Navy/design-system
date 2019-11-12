@@ -1,5 +1,5 @@
 $badge-border-radius: 3px;
-$badge-font-weight: 700;
+$badge-font-weight: 600;
 
 $badge-sizes: (
   small: (
@@ -53,6 +53,8 @@ $badge-states: (
   border-radius: $badge-border-radius;
   font-weight: $badge-font-weight;
   vertical-align: middle;
+  text-transform: uppercase;
+  line-height: 1;
 
   @each $state, $variation in $badge-states {
     &.rn-badge--#{$state} {
@@ -91,5 +93,12 @@ $badge-states: (
 
   &.rn-badge--pill {
     border-radius: 100px;
+  
+    @each $size, $values in $badge-sizes {
+      &.rn-badge--#{$size} {
+        font-size: map-get($values, "font-size");
+        padding: map-get($values, "padding");
+      }
+    }
   }
 }
