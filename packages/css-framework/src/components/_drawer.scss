@@ -1,0 +1,25 @@
+.rn-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  display: none;
+
+  &.is-open {
+    display: block;
+  }
+}
+
+.rn-drawer__inner {
+  position: relative;
+}
+
+.rn-drawer__content {
+  //
+}
+
+.rn-drawer__close {
+  position: absolute;
+  top: spacing(2);
+  right: spacing(2);
+}
