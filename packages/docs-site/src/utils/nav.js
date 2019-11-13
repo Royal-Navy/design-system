@@ -22,20 +22,30 @@ export function stripLeadingSlash(href) {
 
 /**
  * Restructure nodes into something that can be more
- * easily consumed by the application (+ filter root).
+ * easily consumed by the application.
  *
  * @param {array} nodes
  * @returns {array}
  */
 export function restructureNodes(nodes) {
+  return nodes.map(node => {
+    return {
+      href: stripTrailingSlash(node.node.fields.slug),
+      label: node.node.frontmatter.title,
+    }
+  })
+}
+
+/**
+ * Filter nodes that should not display in the navigation.
+ *
+ * @param {array} nodes
+ * @returns {array}
+ */
+export function filterNodes(nodes) {
   return nodes
-    .map(node => {
-      return {
-        href: stripTrailingSlash(node.node.fields.slug),
-        label: node.node.frontmatter.title,
-      }
-    })
-    .filter(node => node.href !== '/')
+    .filter(node => stripTrailingSlash(node.node.fields.slug) !== '/')
+    .filter(node => !node.node.frontmatter.draft)
 }
 
 /**
@@ -72,7 +82,7 @@ export function nestByURLStructure(nodes) {
 
   const sorted = sortBy(nodes, 'node.frontmatter.index')
 
-  restructureNodes(sorted).forEach(node => {
+  restructureNodes(filterNodes(sorted)).forEach(node => {
     addToTree(node, tree)
   })
 

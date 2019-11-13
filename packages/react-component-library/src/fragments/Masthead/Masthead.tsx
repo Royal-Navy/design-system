@@ -4,15 +4,15 @@ import classNames from 'classnames'
 
 import { Link, Searchbar, ScrollableNav } from '../../components'
 import { Logo as DefaultLogo, Search as SearchIcon } from '../../icons'
-import { NotificationPanel } from '..'
 import { UserLink } from './UserLink'
+import { NotificationPanel, NotificationsProps } from '../NotificationPanel'
 
 export interface MastheadProps {
   homeLink?: LinkTypes
   LinkComponent?: any
   Logo?: React.ComponentType
   navItems?: NavItemTypes[]
-  NotificationsPopoverContent?: JSX.Element
+  notifications?: React.ReactElement<NotificationsProps>
   onSearch?: (term: string) => void
   searchPlaceholder?: string
   title: string
@@ -25,7 +25,7 @@ export const Masthead: React.FC<MastheadProps> = ({
   LinkComponent = Link,
   Logo = DefaultLogo,
   navItems,
-  NotificationsPopoverContent,
+  notifications,
   onSearch,
   searchPlaceholder = '',
   title,
@@ -98,7 +98,7 @@ export const Masthead: React.FC<MastheadProps> = ({
             </>
           )}
 
-          {NotificationsPopoverContent && (
+          {notifications && (
             <NotificationPanel
               buttonClassName="rn-masthead__option"
               className="rn-masthead__notification"
@@ -106,10 +106,9 @@ export const Masthead: React.FC<MastheadProps> = ({
               notificationPlacement="below"
               onHide={() => setShowNotifications(false)}
               onShow={() => setShowNotifications(true)}
-              scheme="light"
               unreadNotification={unreadNotification}
             >
-              {NotificationsPopoverContent}
+              {notifications}
             </NotificationPanel>
           )}
 

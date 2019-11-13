@@ -1,16 +1,16 @@
 {
   "name": "@royalnavy/eslint-config-react",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "publishConfig": {
     "access": "public"
   },
   "engines": {
-    "node": ">=10.13.0 <11"
+    "node": ">=10.13.0 <13"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
+    "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.4.0",
+    "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.1",
@@ -19,7 +19,7 @@
     "prettier": "^1.18.2"
   },
   "peerDependencies": {
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.1",
     "prettier": "^1.18.2"
   },
   "browserslist": [

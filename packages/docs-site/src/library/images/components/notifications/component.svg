@@ -1,0 +1,128 @@
+<svg viewBox="0 0 726 482" viewBox="0 0 726 482" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M5.11575959,285.380436 C5.03901699,285.365261 4.96643717,285.332192 4.9041705,285.283354 L0.515338079,281.841012 C0.0807766895,281.500168 0.00480398646,280.871578 0.345648297,280.437016 C0.395194925,280.373846 0.452168323,280.316873 0.515338079,280.267326 L4.9041705,276.824985 C4.96831165,276.774677 5.04090692,276.742529 5.11575959,276.727795 L5.11575959,3 C5.11575959,1.34314575 6.45890534,3.04359188e-16 8.11575959,0 L330.554168,0 C332.211022,-3.12075852e-14 333.554168,1.34314575 333.554168,3 L333.554168,298 C333.554168,299.656854 332.211022,301 330.554168,301 L8.11575959,301 C6.45890534,301 5.11575959,299.656854 5.11575959,298 L5.11575959,285.380436 Z" id="path-1"></path>
+        <filter x="-3.3%" y="-3.0%" width="106.6%" height="107.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0790264423 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Docs-Images" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Notification" transform="translate(-201.000000, -116.000000)">
+            <g id="Group-4" transform="translate(201.000000, 116.000000)">
+                <g id="Group-33">
+                    <rect id="Rectangle" stroke="#B8C7D2" fill="#FFFFFF" x="0.5" y="0.5" width="725" height="449"></rect>
+                    <g id="Notifications/Badge/Light" transform="translate(163.000000, 323.000000)">
+                        <g>
+                            <rect id="BG" fill="#FFFFFF" x="0" y="0" width="60" height="60"></rect>
+                            <g id="Badge" transform="translate(22.000000, 19.000000)">
+                                <path d="M5.33269,19.6707112 L10.6663317,19.6707112 C10.6663317,21.143463 9.47226264,22.337532 7.99951084,22.337532 C6.52675903,22.337532 5.33269,21.143463 5.33269,19.6707112 Z M8.10628367,1.00296539 C7.55808532,0.973016992 7.02028756,1.1709451 6.62183119,1.54986367 C6.22337483,1.9274855 5.99809514,2.45354925 5.99939521,3.00308101 L5.99939521,4.00313883 C4.8274608,4.41722943 3.8143689,5.18550718 3.09689409,6.19986582 C2.38071935,7.21555787 1.99656381,8.42786128 1.99916396,9.67006642 L1.99916396,11.3368294 C1.99916396,12.3967907 1.57857298,13.4137828 0.828529623,14.1638262 L0.552473665,14.4398822 C-0.0100588547,15.0037148 -0.158500769,15.8592309 0.17875206,16.5806392 C0.510801256,17.2590785 1.20484471,17.6835697 1.9587883,17.6705356 L14.1131576,17.6705356 C15.1548845,17.6705356 16,16.8254201 16,15.7836932 L16,15.700355 C16,15.2510957 15.8385307,14.8149038 15.5468405,14.4737175 L14.9634734,13.8070122 C14.3384373,13.0791035 13.9972842,12.1493497 13.9998844,11.1896609 L13.9998844,9.67003976 C14.0024879,8.42776794 13.6183623,7.21546453 12.9021543,6.19983915 C12.1846794,5.18544717 11.1715875,4.41716943 9.99965313,4.00311216 L9.99965313,3.11632756 C10.0230911,2.02383107 9.19490661,1.09927762 8.10631034,1.00293872 L8.10628367,1.00296539 Z" id="Bell" fill="#233745"></path>
+                                <circle id="Notification" stroke="#FFFFFF" stroke-width="2" fill="#85C6F2" cx="16" cy="4" r="5"></circle>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="Notifications/Sheet" transform="translate(223.000000, 70.000000)">
+                        <g>
+                            <g id="Notification-BG">
+                                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                                <path stroke="#12202B" stroke-width="1" d="M4.61575959,285.692183 C4.60897823,285.687136 4.60225572,285.682 4.59559389,285.676775 L0.20676147,282.234434 C-0.445080614,281.723167 -0.559039668,280.780282 -0.0477732027,280.12844 C0.02654674,280.033685 0.112006837,279.948225 0.20676147,279.873905 L4.59559389,276.431564 C4.60226025,276.426335 4.60898272,276.421198 4.61575959,276.416152 L4.61575959,3 C4.61575959,1.06700338 6.18276296,-0.5 8.11575959,-0.5 L330.554168,-0.5 C332.487165,-0.5 334.054168,1.06700338 334.054168,3 L334.054168,298 C334.054168,299.932997 332.487165,301.5 330.554168,301.5 L8.11575959,301.5 C6.18276296,301.5 4.61575959,299.932997 4.61575959,298 L4.61575959,285.692183 Z" fill="#12202B" fill-rule="evenodd"></path>
+                            </g>
+                            <g id="Notification-Link" transform="translate(175.554168, 272.000000)" fill="#B8C7D2">
+                                <polygon id="Fill-1" transform="translate(139.656250, 10.047619) rotate(180.000000) translate(-139.656250, -10.047619) " points="141.047619 14.0952381 137 10.047619 141.047619 6 142.3125 7.26488095 139.529762 10.047619 142.3125 12.8303571"></polygon>
+                                <text id="View-all-notificatio" font-family="Lato-Medium, Lato" font-size="14" font-weight="400">
+                                    <tspan x="0" y="14">View all notifications</tspan>
+                                </text>
+                            </g>
+                            <g id="Notification-Item" transform="translate(20.554168, 16.000000)">
+                                <text id="Thomas-Stephens-adde" font-family="Lato-Bold, Lato" font-size="14" font-weight="bold" line-spacing="17">
+                                    <tspan x="42" y="14" fill="#F8FAFC">Thomas Stephens</tspan>
+                                    <tspan x="152.46" y="14" fill="#748999"> </tspan>
+                                    <tspan x="155.862" y="14" font-family="Lato-Medium, Lato" font-weight="400" fill="#B8C7D2">added a new </tspan>
+                                    <tspan x="42" y="31" font-family="Lato-Medium, Lato" font-weight="400" fill="#B8C7D2">comment to your</tspan>
+                                    <tspan x="148.407" y="31" font-family="Lato-Medium, Lato" font-weight="400" fill="#748999"> </tspan>
+                                    <tspan x="151.942" y="31" fill="#F8FAFC">review</tspan>
+                                    <tspan x="194.299" y="31" font-family="Lato-Medium, Lato" font-weight="400" fill="#748999">    Just now</tspan>
+                                </text>
+                                <text id="Description" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" line-spacing="16" fill="#748999">
+                                    <tspan x="42" y="54">Praesent commodo cursus magna, vel…</tspan>
+                                </text>
+                                <g id="Notification" transform="translate(0.000000, 1.000000)">
+                                    <g id="Avatar/Dark" transform="translate(0.000000, 1.000000)">
+                                        <g>
+                                            <circle id="BG" fill="#3E5667" cx="15" cy="15" r="15"></circle>
+                                            <text id="Label" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" fill="#FFFFFF">
+                                                <tspan x="8.109" y="20">TS</tspan>
+                                            </text>
+                                        </g>
+                                    </g>
+                                    <circle id="Notification-Badge" stroke="#12202B" stroke-width="2" fill="#85C6F2" cx="27.5" cy="4.5" r="4.5"></circle>
+                                </g>
+                                <circle id="Divider" fill="#3E5667" cx="202" cy="27" r="2"></circle>
+                                <rect id="Divider" fill="#1C2D39" x="1" y="70" width="296" height="1"></rect>
+                            </g>
+                            <g id="Notification-Item" transform="translate(20.554168, 103.000000)">
+                                <text id="Thomas-Stephens-adde" font-family="Lato-Bold, Lato" font-size="14" font-weight="bold" line-spacing="17">
+                                    <tspan x="42" y="14" fill="#F8FAFC">Thomas Stephens</tspan>
+                                    <tspan x="152.46" y="14" fill="#748999"> </tspan>
+                                    <tspan x="155.862" y="14" font-family="Lato-Medium, Lato" font-weight="400" fill="#B8C7D2">added a new </tspan>
+                                    <tspan x="42" y="31" font-family="Lato-Medium, Lato" font-weight="400" fill="#B8C7D2">comment to your</tspan>
+                                    <tspan x="148.407" y="31" font-family="Lato-Medium, Lato" font-weight="400" fill="#748999"> </tspan>
+                                    <tspan x="151.942" y="31" fill="#F8FAFC">review</tspan>
+                                    <tspan x="194.299" y="31" font-family="Lato-Medium, Lato" font-weight="400" fill="#748999">    Just now</tspan>
+                                </text>
+                                <text id="Description" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" line-spacing="16" fill="#748999">
+                                    <tspan x="42" y="54">Praesent commodo cursus magna, vel…</tspan>
+                                </text>
+                                <g id="Notification" transform="translate(0.000000, 1.000000)">
+                                    <g id="Avatar/Dark" transform="translate(0.000000, 1.000000)">
+                                        <g>
+                                            <circle id="BG" fill="#3E5667" cx="15" cy="15" r="15"></circle>
+                                            <text id="Label" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" fill="#FFFFFF">
+                                                <tspan x="8.109" y="20">TS</tspan>
+                                            </text>
+                                        </g>
+                                    </g>
+                                    <circle id="Notification-Badge" stroke="#12202B" stroke-width="2" fill="#85C6F2" cx="27.5" cy="4.5" r="4.5"></circle>
+                                </g>
+                                <circle id="Divider" fill="#3E5667" cx="202" cy="27" r="2"></circle>
+                                <rect id="Divider" fill="#1C2D39" x="1" y="70" width="296" height="1"></rect>
+                            </g>
+                            <g id="Notification-Item" transform="translate(20.554168, 190.000000)">
+                                <text id="Thomas-Stephens-adde" font-family="Lato-Bold, Lato" font-size="14" font-weight="bold" line-spacing="17">
+                                    <tspan x="42" y="14" fill="#F8FAFC">Thomas Stephens</tspan>
+                                    <tspan x="152.46" y="14" fill="#748999"> </tspan>
+                                    <tspan x="155.862" y="14" font-family="Lato-Medium, Lato" font-weight="400" fill="#B8C7D2">added a new </tspan>
+                                    <tspan x="42" y="31" font-family="Lato-Medium, Lato" font-weight="400" fill="#B8C7D2">comment to your</tspan>
+                                    <tspan x="148.407" y="31" font-family="Lato-Medium, Lato" font-weight="400" fill="#748999"> </tspan>
+                                    <tspan x="151.942" y="31" fill="#F8FAFC">review</tspan>
+                                    <tspan x="194.299" y="31" font-family="Lato-Medium, Lato" font-weight="400" fill="#748999">    Just now</tspan>
+                                </text>
+                                <text id="Description" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" line-spacing="16" fill="#748999">
+                                    <tspan x="42" y="54">Praesent commodo cursus magna, vel…</tspan>
+                                </text>
+                                <g id="Notification" transform="translate(0.000000, 1.000000)">
+                                    <g id="Avatar/Dark" transform="translate(0.000000, 1.000000)">
+                                        <g>
+                                            <circle id="BG" fill="#3E5667" cx="15" cy="15" r="15"></circle>
+                                            <text id="Label" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" fill="#FFFFFF">
+                                                <tspan x="8.109" y="20">TS</tspan>
+                                            </text>
+                                        </g>
+                                    </g>
+                                    <circle id="Notification-Badge" stroke="#12202B" stroke-width="2" fill="#85C6F2" cx="27.5" cy="4.5" r="4.5"></circle>
+                                </g>
+                                <circle id="Divider" fill="#3E5667" cx="202" cy="27" r="2"></circle>
+                                <rect id="Divider" fill="#1C2D39" x="1" y="70" width="296" height="1"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+                <text id="The-Notification-com" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500" fill="#3E5667">
+                    <tspan x="0" y="479">The Notification component.</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

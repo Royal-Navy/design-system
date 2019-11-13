@@ -14,31 +14,28 @@
   width: 16px;
 }
 
-.rn-notification-panel__indicator {
+.rn-notification-panel__not-read {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 4px;
+  background: color(primary, 400);
   position: absolute;
-  top: 50%;
-  margin-right: -14px;
-  margin-top: -14px;
-}
+  top: 14px;
+  right: 12px;
+  border: 0;
 
-.rn-notification-panel--dark .rn-iconfill {
-  fill: color(neutral, white);
-
-  &:hover {
-    fill: color(primary,400);
+  &--notification-item {
+    border: 1px solid color(neutral, 700);
+    top: 0;
+    right: 0;
   }
 }
 
-.rn-notification-panel__indicator > * {
-  fill: color(primary, 400);
-}
-
-.rn-notification-panel--light .rn-notification-panel__indicator > * {
-  fill: color(primary, 600);
-}
-
-.rn-notification-panel--light .rn-iconfill {
-  fill: color(neutral, 400);
+.rn-notification-panel .rn-iconfill {
+  &:hover {
+    fill: color(primary, 400);
+  }
 }
 
 .rn-notification__transition-wrapper {
@@ -100,3 +97,90 @@
     display: none;
   }
 }
+
+.rn-notifications {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rn-notifications__view-all {
+  font-size: font-size(xs);
+  display: block;
+  text-align: right;
+  margin-right: spacing(3);
+  margin-bottom: spacing(3);
+  color: color(primary, 300);
+
+  svg {
+    position: relative;
+    top: 4px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    svg {
+      transform: translate3d(4px, 0, 0);
+      transition: 0.2s;
+    }
+  }
+}
+
+.rn-notifications-item-wrapper {
+  a,
+  a:hover {
+    color: color(neutral, 300);
+    text-decoration: none;
+  }
+
+  &:hover {
+    .rn-avatar {
+      background: color(primary, 500);
+    }
+
+    .rn-notifications-item__content-strong {
+      color: color(primary, 500);
+    }
+  }
+}
+
+.rn-notifications-item {
+  display: flex;
+  border-bottom: 1px solid color(neutral, 600);
+  margin: spacing(3);
+  padding-bottom: spacing(3);
+}
+
+.rn-notifications-item__avatar {
+  position: relative;
+}
+
+.rn-notifications-item__content {
+  margin-left: spacing(3);
+  font-size: font-size(xs);
+  line-height: 1.3;
+}
+
+.rn-notifications-item__content-strong {
+  font-weight: bold;
+  color: color(neutral, 000);
+}
+
+.rn-notifications-item__content-circle {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background: color(neutral, 300);
+  margin: 0 4px 2px 4px;
+}
+
+.rn-notifications-item__content-description {
+  color: color(neutral, 300);
+  margin-top: spacing(1);
+}
+
+

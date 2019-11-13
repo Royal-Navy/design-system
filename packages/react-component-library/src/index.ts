@@ -3,12 +3,14 @@ import { Avatar } from './components/Avatar'
 import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
 import { Button } from './components/Button'
+import { ButtonGroup } from './components/ButtonGroup'
 import Checkbox from './components/Checkbox'
 import { Dialog } from './components/Dialog'
 import { Dropdown } from './components/Dropdown'
 import { Masthead } from './fragments/Masthead'
 import { Modal } from './components/Modal'
 import Nav from './components/Nav'
+import { Notification, Notifications } from './fragments/NotificationPanel'
 import { NumberInput } from './components/NumberInput'
 import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
@@ -16,6 +18,7 @@ import Popover from './components/Popover'
 import { Select } from './components/Select'
 import Sidebar from './fragments/Sidebar'
 import Switch from './components/Switch/Switch'
+import { RangeSlider } from './components/RangeSlider'
 import ResponsiveSwitch from './components/Switch'
 import Radio from './components/Radio'
 import Tab from './components/TabSet/Tab'
@@ -39,6 +42,7 @@ export {
   Badge,
   Breadcrumbs,
   Button,
+  ButtonGroup,
   Checkbox,
   Column,
   Dialog,
@@ -46,11 +50,14 @@ export {
   Masthead,
   Modal,
   Nav,
+  Notification,
+  Notifications,
   NumberInput,
   Pagination,
   PhaseBanner,
   Popover,
   Switch,
+  RangeSlider,
   ResponsiveSwitch,
   Radio,
   Select,

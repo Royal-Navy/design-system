@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, text } from '@storybook/addon-knobs'
 
-import { TriangleDown, TriangleUp } from '../../icons'
+import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
 import { Button } from './index'
 
 const stories = storiesOf('Button', module)
@@ -48,11 +48,19 @@ stories.add('Styles', () => (
 
 stories.add('Icon', () => (
   <div>
-    <Button onClick={action('Clicked primary')} icon={<TriangleDown />}>
-      closed
+    <Button
+      variant="primary"
+      onClick={action('Clicked primary')}
+      icon={<IconBrightnessLow />}
+    >
+      Decrease Brightness
     </Button>
-    <Button onClick={action('Clicked primary')} icon={<TriangleUp />}>
-      Open
+    <Button
+      variant="primary"
+      onClick={action('Clicked primary')}
+      icon={<IconBrightnessHigh />}
+    >
+      Increase Brightness
     </Button>
   </div>
 ))

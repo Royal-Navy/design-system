@@ -2,6 +2,7 @@ import { Avatar } from './Avatar'
 import Badge from './Badge'
 import Breadcrumbs from './Breadcrumbs'
 import { Button } from './Button'
+import { ButtonGroup } from './ButtonGroup'
 import Checkbox from './Checkbox'
 import { Dialog } from './Dialog'
 import { Dropdown } from './Dropdown'
@@ -18,6 +19,7 @@ import { Searchbar } from './Searchbar'
 import { Select } from './Select'
 import Sidebar from '../fragments/Sidebar'
 import Switch from './Switch/Switch'
+import { RangeSlider } from './RangeSlider'
 import ResponsiveSwitch from './Switch'
 import Tab from './TabSet/Tab'
 import TabSet from './TabSet'
@@ -31,6 +33,7 @@ export {
   Badge,
   Breadcrumbs,
   Button,
+  ButtonGroup,
   Checkbox,
   Dialog,
   Dropdown,
@@ -47,6 +50,7 @@ export {
   Select,
   Sidebar,
   Switch,
+  RangeSlider,
   ResponsiveSwitch,
   Tab,
   TabSet,
