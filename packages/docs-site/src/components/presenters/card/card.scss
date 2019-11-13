@@ -42,7 +42,7 @@ $card-background-color: #f0f4f8;
 
 .card__body {
   padding: spacing("4") spacing("11") spacing("11");
-  font-size: font-size("m");
+  font-size: font-size("base");
 }
 
 .card__image {
@@ -74,7 +74,7 @@ $card-background-color: #f0f4f8;
 }
 
 .card__text {
-  font-size: font-size("m");
+  font-size: font-size("base");
   font-weight: 300;
 }
 

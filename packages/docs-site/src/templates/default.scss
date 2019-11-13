@@ -5,13 +5,6 @@ body {
   p {
     font-size: font-size("m");
   }
-  
-  .rn-container {    
-    @include breakpoint("m") {
-      padding-left: spacing("18");
-      padding-right: spacing("18");
-    }
-  }
 }
 
 
