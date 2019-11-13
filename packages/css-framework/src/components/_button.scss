@@ -93,7 +93,7 @@ $btn-focus-width: 0.2rem;
   &__icon {
     display: inline-flex;
     align-items: center;
-    margin-left: spacing(2);
+    margin-left: spacing("2");
   }
 
   // Sizes
@@ -138,7 +138,7 @@ fieldset:disabled a.rn-btn {
 .rn-btn.rn-btn--disabled,
 .rn-btn.rn-btn--disabled:hover,
 .rn-btn.rn-btn--disabled:focus {
-  background: color(neutral, 000);
-  color: color(neutral, 500);
+  background: color("neutral", "000");
+  color: color("neutral", "500");
   cursor: not-allowed;
 }

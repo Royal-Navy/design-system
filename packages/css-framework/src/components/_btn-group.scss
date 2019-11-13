@@ -45,32 +45,32 @@ $btn-group-states: (
 
     &:last-child {
       border-radius: 0 3px 3px 0;
-      border-right: 1px solid color(neutral, 100);
+      border-right: 1px solid color("neutral", "100");
     }
 
     &:hover,
     &:focus {
-      background: color(primary, 600);
-      color: color(neutral, white);
-      border-color: color(primary, 500);
+      background: color("action", "600");
+      color: color("neutral", "white");
+      border-color: color("action", "500");
       box-shadow: none;
     }
 
     &:hover + .rn-btn,
     &:focus + .rn-btn {
-      border-left: 1px solid color(primary, 500);
+      border-left: 1px solid color("action", "500");
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
 
     &.rn-btn--disabled:hover,
     &.rn-btn--disabled:focus {
-      border-color: color(neutral, 100);
+      border-color: color("neutral", "100");
     }
 
     &.rn-btn--disabled:hover + .rn-btn,
     &.rn-btn--disabled:focus + .rn-btn {
-      border-left: 1px solid color(neutral, 100);
+      border-left: 1px solid color("neutral", "100");
     }
   }
 

@@ -19,14 +19,14 @@
   width: 9px;
   height: 9px;
   border-radius: 4px;
-  background: color(primary, 400);
+  background: color("action", "400");
   position: absolute;
   top: 14px;
   right: 12px;
   border: 0;
 
   &--notification-item {
-    border: 1px solid color(neutral, 700);
+    border: 1px solid color("neutral", "700");
     top: 0;
     right: 0;
   }
@@ -121,12 +121,12 @@
 }
 
 .rn-notifications__view-all {
-  font-size: font-size(xs);
+  font-size: font-size("xs");
   display: block;
   text-align: right;
-  margin-right: spacing(3);
-  margin-bottom: spacing(3);
-  color: color(primary, 300);
+  margin-right: spacing("3");
+  margin-bottom: spacing("3");
+  color: color("action", "300");
 
   svg {
     position: relative;
@@ -148,26 +148,26 @@
 .rn-notifications-item-wrapper {
   a,
   a:hover {
-    color: color(neutral, 300);
+    color: color("neutral", "300");
     text-decoration: none;
   }
 
   &:hover {
     .rn-avatar {
-      background: color(primary, 500);
+      background: color("action", "500");
     }
 
     .rn-notifications-item__content-strong {
-      color: color(primary, 500);
+      color: color("action", "500");
     }
   }
 }
 
 .rn-notifications-item {
   display: flex;
-  border-bottom: 1px solid color(neutral, 600);
-  margin: spacing(3);
-  padding-bottom: spacing(3);
+  border-bottom: 1px solid color("neutral", "600");
+  margin: spacing("3");
+  padding-bottom: spacing("3");
 }
 
 .rn-notifications-item__avatar {
@@ -175,14 +175,14 @@
 }
 
 .rn-notifications-item__content {
-  margin-left: spacing(3);
-  font-size: font-size(xs);
+  margin-left: spacing("3");
+  font-size: font-size("xs");
   line-height: 1.3;
 }
 
 .rn-notifications-item__content-strong {
   font-weight: bold;
-  color: color(neutral, 000);
+  color: color("neutral", "000");
 }
 
 .rn-notifications-item__content-circle {
@@ -190,13 +190,13 @@
   width: 4px;
   height: 4px;
   border-radius: 2px;
-  background: color(neutral, 300);
+  background: color("neutral", "300");
   margin: 0 4px 2px 4px;
 }
 
 .rn-notifications-item__content-description {
-  color: color(neutral, 300);
-  margin-top: spacing(1);
+  color: color("neutral", "300");
+  margin-top: spacing("1");
 }
 
 

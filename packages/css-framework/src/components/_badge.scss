@@ -86,14 +86,13 @@ $badge-states: (
   @each $size, $values in $badge-sizes {
     &.rn-badge--#{$size} {
       font-size: map-get($values, "font-size");
-      font-weight: map-get($values, "font-weight");
-      line-height: map-get($values, "line-height");
+      padding: map-get($values, "padding");
     }
   }
 
 
   &.rn-badge--pill {
-    padding: spacing(3) spacing(5);
+    padding: spacing("3") spacing("5");
     border-radius: 100px;
   
     @each $size, $values in $badge-sizes {
