@@ -1,5 +1,5 @@
-$tooltipDarkBackground: color(neutral, 700);
-$tooltipDarkBorder: color(neutral, 700);
+$tooltipDarkBackground: color("neutral", "700");
+$tooltipDarkBorder: color("neutral", "700");
 $tooltipBorderThick: 2px;
 $tooltipInner: 8px;
 $tooltipOuter: $tooltipInner + 1;
@@ -10,17 +10,17 @@ $tooltipOffset: $tooltipOuter + $tooltipBorderThick;
 }
 
 .rn-tooltip__message {
-  font-size: font-size(base);
-  color: color(neutral, 100);
+  font-size: font-size("base");
+  color: color("neutral", "100");
 }
 
 .rn-tooltip__content {
-  @include z-index(modal);
+  @include z-index("modal");
   background: $tooltipDarkBackground;
-  color: color(neutral, white);
+  color: color("neutral", "white");
   border: $tooltipDarkBorder solid $tooltipBorderThick;
   border-radius: 5px;
-  padding: spacing(3);
+  padding: spacing("3");
   position: relative;
   top: auto;
   left: auto;
@@ -29,7 +29,7 @@ $tooltipOffset: $tooltipOuter + $tooltipBorderThick;
 }
 
 .rn-tooltip__title {
-  padding-bottom: spacing(1);
+  padding-bottom: spacing("1");
 }
 
 .rn-tooltip__content:before {

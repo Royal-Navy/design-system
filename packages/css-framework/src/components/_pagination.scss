@@ -1,8 +1,8 @@
-$primary-color: color(primary, 900);
-$secondary-color: color(neutral, 300);
-$secondary-color-hover: color(primary, 500);
-$tertiary-color: color(neutral, 100);
-$active-color: $primary-color;
+$action-color: color("action", "900");
+$secondary-color: color("neutral", "300");
+$secondary-color-hover: color("action", "500");
+$tertiary-color: color("neutral", "100");
+$active-color: $action-color;
 $border-radius: 4px;
 $animation-timing: 0.3s;
 $btn-focus-width: 0.2rem;
@@ -14,13 +14,13 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-pagination__item {
-  padding: spacing(2);
+  padding: spacing("2");
   display: inline-block;
 
   &:first-of-type,
   &:last-of-type {
     .rn-pagination__button {
-      padding: spacing(4) spacing(8);
+      padding: spacing("4") spacing("8");
       color: $secondary-color;
       background-color: transparent;
       border: 1px solid $secondary-color;
@@ -32,7 +32,7 @@ $btn-focus-width: 0.2rem;
       }
 
       &:focus {
-        box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+        box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
       }
 
       &:disabled {
@@ -44,10 +44,10 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-pagination__button {
-  padding: spacing(4) spacing(6);
+  padding: spacing("4") spacing("6");
   background: none;
   font-weight: 700;
-  color: $primary-color;
+  color: $action-color;
   border: 1px solid transparent;
   border-radius: $border-radius;
   text-transform: uppercase;
@@ -59,11 +59,11 @@ $btn-focus-width: 0.2rem;
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
   }
 
   &.is-active {
     background-color: $active-color;
-    color: color(neutral, white);
+    color: color("neutral", "white");
   }
 }

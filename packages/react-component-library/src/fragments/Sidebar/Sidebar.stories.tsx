@@ -4,19 +4,37 @@ import { storiesOf } from '@storybook/react'
 import Link from '../../components/Link'
 import Sidebar from './index'
 import { Graph, House, Tools } from '../../icons'
+import { Notification, Notifications } from '../NotificationPanel'
 
-const NotificationsPopoverContent: React.FC = () => {
-  return (
-    <div>
-      <ul className="rn-list">
-        <li>Message one</li>
-        <li>Message Two</li>
-      </ul>
-      <hr />
-      <a href="more">more &gt;</a>
-    </div>
-  )
-}
+const notifications = [
+  {
+    href: 'notifications/1',
+    name: 'Thomas Stephens',
+    action: 'added a new comment to your',
+    on: 'review',
+    when: new Date('2019-11-05T14:25:02.178Z'),
+    description:
+      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
+  },
+  {
+    href: 'notifications/2',
+    name: 'Thomas Stephens',
+    action: 'added a new comment to your',
+    on: 'review',
+    when: new Date('2019-11-01T14:25:02.178Z'),
+    description:
+      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
+  },
+  {
+    href: 'notifications/3',
+    name: 'Thomas Stephens',
+    action: 'added a new comment to your',
+    on: 'review',
+    when: new Date('2019-11-01T14:25:02.178Z'),
+    description:
+      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
+  },
+]
 
 const stories = storiesOf('Sidebar', module)
 
@@ -40,12 +58,17 @@ const navData: NavItemAnchorType[] = [
 ]
 
 const user = { initials: 'XT', href: '/userprofile' }
-const popoverContent = <NotificationsPopoverContent />
 
 stories.add('With notifications', () => (
   <Sidebar
     navItems={navData}
-    NotificationsPopoverContent={popoverContent}
+    notifications={(
+      <Notifications href="notifications">
+        {notifications.map(notification => (
+          <Notification {...notification} />
+        ))}
+      </Notifications>
+    )}
     unreadNotification
     user={user}
   />
@@ -55,7 +78,13 @@ stories.add('No notifications', () => (
   <Sidebar
     user={user}
     navItems={navData}
-    NotificationsPopoverContent={popoverContent}
+    notifications={(
+      <Notifications href="notifications">
+        {notifications.map(notification => (
+          <Notification {...notification} />
+        ))}
+      </Notifications>
+    )}
   />
 ))
 
@@ -67,7 +96,13 @@ stories.add('With custom Link component', () => (
   <Sidebar
     LinkComponent={Link}
     navItems={navData}
-    NotificationsPopoverContent={popoverContent}
+    notifications={(
+      <Notifications href="notifications">
+        {notifications.map(notification => (
+          <Notification {...notification} />
+        ))}
+      </Notifications>
+    )}
     unreadNotification
     user={user}
   />

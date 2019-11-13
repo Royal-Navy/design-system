@@ -1,7 +1,7 @@
 @import '@royalnavy/css-framework';
 
 .sidebar {
-  padding: spacing(6);
+  padding: spacing("6");
   display: none;
 }
 
@@ -13,10 +13,15 @@
 
 .sidebar__title {
   display: block;
+<<<<<<< HEAD
   padding-bottom: spacing(6);
   font-size: font-size(l);
+=======
+  padding-bottom: spacing("6");
+  font-size: font-size("m");
+>>>>>>> v2-dev
   font-weight: 600;
-  color: color(primary, 900);
+  color: color("action", "900");
 }
 
 .sidebar__toggle {
@@ -28,11 +33,11 @@
 .sidebar .rn-nav__item {
   display: inline-block;
   width: auto;
-  color: color(neutral, 400);
-  padding: spacing(4) spacing(6);
+  color: color("neutral", "400");
+  padding: spacing("4") spacing("6");
 
   &.is-active {
-    background-color: color(primary, 800);
+    background-color: color("action", "800");
   }
 }
 
@@ -41,7 +46,7 @@
 
   & > .rn-nav__list {
     display: none;
-    padding: 0 0 0 spacing(8);
+    padding: 0 0 0 spacing("8");
   }
 
   &.is-open > .rn-nav__list {
@@ -57,7 +62,7 @@
       content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg version='1.1' viewBox='0 0 12 9' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EFill 1%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg transform='translate(-243 -768)' fill='%233E5667'%3E%3Cg transform='translate(174 560)'%3E%3Cpath transform='translate(75.192 212.47) scale(1 -1) rotate(180) translate(-75.192 -212.47)' d='m80.601 210.77l-5.4081 5.4081-5.4081-5.4081c-0.45931-0.45931-0.45931-1.204 0-1.6633l1.248e-4 -1.25e-4c0.45948-0.45934 1.2043-0.4593 1.6637 7.9e-5l3.7443 3.7439 3.7443-3.7439c0.45943-0.45938 1.2043-0.45942 1.6637-7.9e-5 0.45938 0.45924 0.45949 1.2039 2.495e-4 1.6633-4.16e-5 4.2e-5 -8.32e-5 8.4e-5 -1.247e-4 1.25e-4z'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
       width: 12px;
       height: 7px;
-      margin-left: spacing(4);
+      margin-left: spacing("4");
       transform: translateY(-2px);
     }
   }
@@ -68,12 +73,12 @@
 }
 
 .sidebar .rn-nav__list-item.has-children .rn-nav__item {
-  margin: spacing(2) 0;
+  margin: spacing("2") 0;
 }
 
 .sidebar .rn-nav__list-item.has-children > .rn-nav__item {
-  font-size: font-size(l);
-  color: color(primary, 900);
+  font-size: font-size("l");
+  color: color("action", "900");
 
   &.is-active {
     background: none;
@@ -81,11 +86,11 @@
 }
 
 .sidebar .rn-nav__list .rn-nav__list {
-  padding: spacing(4);
+  padding: spacing("4");
 }
 
 .sidebar .rn-nav__list-item + .rn-nav__list-item {
-  margin-top: spacing(4);
+  margin-top: spacing("4");
 }
 
 .sidebar .rn-nav__list .rn-nav__list .rn-nav__list-item + .rn-nav__list-item {

@@ -1,8 +1,8 @@
 .rn-card {
-  @include font-size(base);
-  @include shadow(1);
-  background-color: color(neutral, white);
-  border: 1px solid color(neutral, 100);
+  @include font-size("base");
+  @include shadow("1");
+  background-color: color("neutral", "white");
+  border: 1px solid color("neutral", "100");
   border-radius: 3px;
 
   > *:first-child {
@@ -10,22 +10,22 @@
   }
 
   &__header {
-    background-color: color(neutral, 000);
-    padding: spacing(8) spacing(11);
-    border-bottom: 1px solid color(neutral, 100);
-    @include font-size(base);
-    color: color(neutral, 800);
+    background-color: color("neutral", "000");
+    padding: spacing("8") spacing("11");
+    border-bottom: 1px solid color("neutral", "100");
+    @include font-size("base");
+    color: color("neutral", "800");
     margin: 0;
   }
 
   &__body {
-    padding: spacing(8);
+    padding: spacing("8");
     & + & {
-      border-top: 1px solid color(neutral, 100);
+      border-top: 1px solid color("neutral", "100");
     }
     p {
-      @include font-size(base);
-      color: color(neutral, 600);
+      @include font-size("base");
+      color: color("neutral", "600");
       font-weight: 400;
       line-height: 1.6;
       margin: 0;
@@ -33,10 +33,10 @@
   }
 
   .small {
-    padding: spacing(8) spacing(10);
+    padding: spacing("8") spacing("10");
 
     .title {
-      @include font-size(m);
+      @include font-size("m");
     }
   }
 }

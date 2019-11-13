@@ -35,24 +35,11 @@ Neutral shades provide the base of Standards Toolkit applications. They should b
 <Swatch color="#f8fafc" label="000" />
 <Swatch color="#FFFFFF" label="white" />
 
-#### Primary
+#### Action
 
-The Primary shades are mostly used to indicate the main action of a component. By default, use the Primary shades instead of the named state colours (Success, Warning, or Danger) for the majority of actions.
+The Action shades are mostly used to indicate the main action of a component. By default, use the Action shades instead of the named state colours (Success, Warning, or Danger) for the majority of actions.
 
-Another use for the Primary palette is for the components that need to stand out from their neutral background palette. Styling an Alert component with the Primary palette will get the user’s attention but it will not have any of the associated connotations that the Success/Warning/Danger has.
-
-<Swatch color="#253b5b" label="900" />
-<Swatch color="#274776" label="800" />
-<Swatch color="#2661a7" label="700" />
-<Swatch color="#2a77c7" label="600" />
-<Swatch color="#3a8fdd" label="500" />
-<Swatch color="#58aae9" label="400" />
-<Swatch color="#85c6f2" label="300" />
-<Swatch color="#b7dff7" label="200" />
-<Swatch color="#ddf4ff" label="100" />
-<Swatch color="#ecf8ff" label="100" />
-
-#### Alt Primary
+Another use for the Action palette is for the components that need to stand out from their neutral background palette. Styling an Alert component with the Action palette will get the user’s attention but it will not have any of the associated connotations that the Success/Warning/Danger has.
 
 <Swatch color="#253b5b" label="900" />
 <Swatch color="#274776" label="800" />
@@ -82,19 +69,6 @@ State colours are used to improve the semantics of particular Actions. These pal
 <Swatch color="#e5ffd9" label="100" />
 <Swatch color="#f4ffef" label="000" />
 
-#### Alt Success
-
-<Swatch color="#1f4a35" label="900" />
-<Swatch color="#245c40" label="800" />
-<Swatch color="#297a4f" label="700" />
-<Swatch color="#31975e" label="600" />
-<Swatch color="#3fb26d" label="500" />
-<Swatch color="#5dcd86" label="400" />
-<Swatch color="#8fe2ab" label="300" />
-<Swatch color="#bff4cf" label="200" />
-<Swatch color="#dfffe9" label="100" />
-<Swatch color="#eefff2" label="000" />
-
 #### Warning
 
 <Swatch color="#693a12" label="900" />
@@ -107,19 +81,6 @@ State colours are used to improve the semantics of particular Actions. These pal
 <Swatch color="#fefbb8" label="200" />
 <Swatch color="#fffddc" label="100" />
 <Swatch color="#ffffee" label="000" />
-
-#### Alt Warning
-
-<Swatch color="#3b2d6e" label="900" />
-<Swatch color="#4b358f" label="800" />
-<Swatch color="#603fb8" label="700" />
-<Swatch color="#744fd0" label="600" />
-<Swatch color="#936fe8" label="500" />
-<Swatch color="#ad89f1" label="400" />
-<Swatch color="#d0b5f9" label="300" />
-<Swatch color="#e5d3fd" label="200" />
-<Swatch color="#f2e9ff" label="100" />
-<Swatch color="#f9f3ff" label="000" />
 
 ### Danger
 
@@ -135,13 +96,97 @@ State colours are used to improve the semantics of particular Actions. These pal
 <Swatch color="#fff3f4" label="000" />
 
 
+
+### Supplementary colours
+As the name describes, Supplementary colours are there to _supplement_ the main colour palette. They can be used for categories and data visualation for example, but don't have any state associated with them.
+
+#### Sup A
+
+<Swatch color="#343160" label="900" />
+<Swatch color="#3b3985" label="800" />
+<Swatch color="#4248b6" label="700" />
+<Swatch color="#7392f3" label="400" />
+<Swatch color="#5b73e6" label="500" />
+<Swatch color="#4e5cd3" label="600" />
+<Swatch color="#99b7f9" label="300" />
+<Swatch color="#bbd5fe" label="200" />
+<Swatch color="#deebff" label="100" />
+<Swatch color="#e8f2ff" label="000" />
+
+#### Sup B
+
+<Swatch color="#3b2d6e" label="900" />
+<Swatch color="#4b358f" label="800" />
+<Swatch color="#603fb8" label="700" />
+<Swatch color="#744fd0" label="600" />
+<Swatch color="#936fe8" label="500" />
+<Swatch color="#ad89f1" label="400" />
+<Swatch color="#d0b5f9" label="300" />
+<Swatch color="#e5d3fd" label="200" />
+<Swatch color="#f2e9ff" label="100" />
+<Swatch color="#f9f3ff" label="000" />
+
+
+#### Sup C
+
+<Swatch color="#6c2d6e" label="900" />
+<Swatch color="#8c358f" label="800" />
+<Swatch color="#b43fb8" label="700" />
+<Swatch color="#cc4fd0" label="600" />
+<Swatch color="#e46fe8" label="500" />
+<Swatch color="#ee89f1" label="400" />
+<Swatch color="#f7b5f9" label="300" />
+<Swatch color="#fcd3fd" label="200" />
+<Swatch color="#fee9ff" label="100" />
+<Swatch color="#fff3ff" label="000" />
+
+#### Sup D
+
+<Swatch color="#6c2d6e" label="900" />
+<Swatch color="#8c358f" label="800" />
+<Swatch color="#b43fb8" label="700" />
+<Swatch color="#cc4fd0" label="600" />
+<Swatch color="#e46fe8" label="500" />
+<Swatch color="#ee89f1" label="400" />
+<Swatch color="#f7b5f9" label="300" />
+<Swatch color="#fcd3fd" label="200" />
+<Swatch color="#fee9ff" label="100" />
+<Swatch color="#fff3ff" label="000" />
+
+#### Sup E
+
+<Swatch color="#853a0c" label="900" />
+<Swatch color="#9d4712" label="800" />
+<Swatch color="#c25c1d" label="700" />
+<Swatch color="#e0712c" label="600" />
+<Swatch color="#f48b49" label="500" />
+<Swatch color="#fca975" label="400" />
+<Swatch color="#fecaa9" label="300" />
+<Swatch color="#fee2d1" label="200" />
+<Swatch color="#fef2ea" label="100" />
+<Swatch color="#fff8f3" label="000" />
+
+#### Sup F
+
+<Swatch color="#1f4a35" label="900" />
+<Swatch color="#245c40" label="800" />
+<Swatch color="#297a4f" label="700" />
+<Swatch color="#31975e" label="600" />
+<Swatch color="#3fb26d" label="500" />
+<Swatch color="#5dcd86" label="400" />
+<Swatch color="#8fe2ab" label="300" />
+<Swatch color="#bff4cf" label="200" />
+<Swatch color="#dfffe9" label="100" />
+<Swatch color="#eefff2" label="000" />
+
+
 ## Using Colours
 
 To reference colours and their shades, we have provided a `color()` function. This function takes two values, `color` and `shade`.
 
 <CodeHighlighter 
-source={`color: color(neutral, 500);
-border: 1px solid color(danger, 300);
+source={`color: color("neutral", "500");
+border: 1px solid color("danger", "300");
 // Result
 color: #627d98;
 border: 1px solid #f36968;`} language="css"

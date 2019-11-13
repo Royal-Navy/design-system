@@ -33,7 +33,7 @@ The usage section is a bullet pointed list of scenarios the component should be 
 
 <SketchWidget name="Button" href="/standards-toolkit.sketch" />
 
-Buttons are available in four variants - [Primary](#primary), [Secondary](#secondary), and [Tertiary](#tertiary). These variants allow designers to establish [hierarchy](#hierarchy) in interfaces.
+Buttons are available in three variants - [Primary](#primary), [Secondary](#secondary), and [Tertiary](#tertiary). These variants allow designers to establish [hierarchy](#hierarchy) in interfaces.
 
 ### Anatomy
 <ButtonAnatomy />
@@ -186,7 +186,14 @@ source={`<Button onClick={action} icon={<TriangleDown />}>Closed</Button>
     Type: 'string (danger)',
     Required: 'False',
     Default: '',
-    Description: ' An alternative color style to use, danger is the only alternative currently supported',
+    Description: 'An alternative color style to use, danger is the only alternative currently supported',
+  },
+  {
+    Name: 'disabled',
+    Type: 'boolean',
+    Required: 'False',
+    Default: false,
+    Description: 'Mark the button as disabled/inactive',
   },
   {
     Name: 'icon',

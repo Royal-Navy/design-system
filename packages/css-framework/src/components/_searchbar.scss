@@ -1,13 +1,13 @@
 .rn-searchbar__btn.is-active {
-  background-color: color(neutral, 400);
+  background-color: color("neutral", "400");
 
   .rn-iconfill {
-    fill: color(neutral, white);
+    fill: color("neutral", "white");
   }
 }
 
 .rn-searchbar {
-  @include z-index(dropdown);
+  @include z-index("dropdown");
   display: block;
   margin-top: -1px;
   position: absolute;
@@ -15,10 +15,10 @@
 }
 
 .rn-searchbar__form {
-  @include z-index(overlay);
+  @include z-index("overlay");
   display: flex;
   align-items: center;
-  background-color: color(neutral, 400);
+  background-color: color("neutral", "400");
   height: 59px;
 
   .rn-textinput {
@@ -36,13 +36,13 @@
   }
 
   .rn-textinput__input {
-    padding: spacing(8);
-    color: color(neutral, white);
+    padding: spacing("8");
+    color: color("neutral", "white");
     background-color: transparent;
     border: 0;
 
     &::placeholder {
-      color: color(neutral, white);
+      color: color("neutral", "white");
     }
   }
 }
@@ -51,14 +51,14 @@
   display: inline-block;
   border: 0;
   height: 36px;
-  background: color(neutral, 300);
+  background: color("neutral", "300");
   border-radius: 3px;
-  margin: 0 spacing(6);
+  margin: 0 spacing("6");
   text-align: center;
   padding: 0 13.5px;
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
     outline: 0;
   }
 
@@ -84,11 +84,11 @@
 }
 
 .rn-searchbar .rn-textinput__input {
-  font-size: font-size(m);
+  font-size: font-size("m");
 }
 
 @include breakpoint("xs") {
   .rn-searchbar .rn-textinput__input {
-    font-size: font-size(s);
+    font-size: font-size("s");
   }
 }

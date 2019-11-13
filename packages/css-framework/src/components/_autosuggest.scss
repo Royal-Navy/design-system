@@ -5,15 +5,15 @@
 
 .rn-autosuggest__input {
   width: 100%;
-  padding: spacing(6);
+  padding: spacing("6");
   border-radius: 3px;
-  @include font-size(base);
-  border: 1px solid color(neutral, 400);
+  @include font-size("base");
+  border: 1px solid color("neutral", "400");
   transition: all 0.2s;
   outline: none;
   &:focus {
-    border: 1px solid color(primary, 400);
-    box-shadow: 0 0 0 1px color(primary, 400);
+    border: 1px solid color("action", "400");
+    box-shadow: 0 0 0 1px color("action", "400");
   }
 
   &.open {
@@ -25,13 +25,13 @@
 }
 
 .rn-autosuggest__suggestions {
-  @include shadow(1);
+  @include shadow("1");
   top: calc(100% + 8px);
   position: absolute;
-  border: 1px solid color(neutral, 200);
-  background-color: color(neutral, white);
+  border: 1px solid color("neutral", "200");
+  background-color: color("neutral", "white");
   border-radius: 5px;
-  padding: spacing(2) 0;
+  padding: spacing("2") 0;
   min-width: 160px;
   opacity: 0;
   transform: translate3d(0, -10px, 0);
@@ -46,15 +46,15 @@
 
 .rn-autosuggest__suggestion {
   cursor: pointer;
-  @include font-size(s);    
-  padding: spacing(4) spacing(6);
+  @include font-size("s");    
+  padding: spacing("4") spacing("6");
   display: flex;
   justify-content: space-between;
-  color: color(neutral, 800);
+  color: color("neutral", "800");
   font-weight: 500;
   &:hover {
-    color: color(neutral, 800);
-    background-color: color(neutral, 000);
+    color: color("neutral", "800");
+    background-color: color("neutral", "000");
   }
   &--highlighted {
     background: skyblue

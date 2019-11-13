@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import Links from '../Links'
 
@@ -19,13 +19,13 @@ const Footer = ({ children, links }) => (
       <div className="rn-container">
         <p data-testid="message" className="rn-footer__message">
           {children || (
-            <Fragment>
+            <>
               All content is available under the{' '}
               <a href="https://www.apache.org/licenses/LICENSE-2.0.html">
                 Apache 2.0 licence
               </a>
               , except where otherwise stated.
-            </Fragment>
+            </>
           )}
         </p>
         <p className="rn-footer__copyright">&copy; Crown copyright</p>

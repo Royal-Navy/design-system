@@ -26,6 +26,7 @@ exports.createPages = ({ actions, graphql }) => {
             }
             frontmatter {
               template
+              draft
             }
           }
         }
@@ -37,6 +38,8 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     return result.data.allMdx.edges.forEach(({ node }) => {
+      if (node.frontmatter.draft) return
+
       const component = node.frontmatter.template
         ? templateRegister[node.frontmatter.template]
         : templateRegister.default

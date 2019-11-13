@@ -17,12 +17,12 @@ $card-background-color: #f0f4f8;
 
   
     .card__title {
-      color: color(primary, 500);
+      color: color("action", "500");
     }
     .card__link {
       svg {
         transform: translateX(10px);
-        fill: color(primary, 500);
+        fill: color("action", "500");
       }
     } 
   }
@@ -30,8 +30,8 @@ $card-background-color: #f0f4f8;
 
 .card__head {
   background-color: transparent;
-  padding: spacing(11) spacing(11) 0;
-  font-size: font-size(xxl);
+  padding: spacing("11") spacing("11") 0;
+  font-size: font-size("xxl");
   font-weight: 600;
 }
 
@@ -41,20 +41,20 @@ $card-background-color: #f0f4f8;
 
 
 .card__body {
-  padding: spacing(4) spacing(11) spacing(11);
-  font-size: font-size(m);
+  padding: spacing("4") spacing("11") spacing("11");
+  font-size: font-size("m");
 }
 
 .card__image {
   display: block;
   width: 100%;
-  margin-top: spacing(8);
+  margin-top: spacing("8");
 }
 
 @include breakpoint('xs') {
 
   .card__title {
-    font-size: font-size(l);
+    font-size: font-size("l");
     font-weight: 500;
   }
   .card__image {
@@ -64,17 +64,17 @@ $card-background-color: #f0f4f8;
 
   .card__image--position-left {
     float: left;
-    margin: spacing(8) spacing(8) 0 0;
+    margin: spacing("8") spacing("8") 0 0;
   }
 
   .card__image--position-right {
     float: right;
-    margin: spacing(8) 0 0 spacing(8);
+    margin: spacing("8") 0 0 spacing("8");
   }
 }
 
 .card__text {
-  font-size: font-size(m);
+  font-size: font-size("m");
   font-weight: 300;
 }
 
@@ -85,7 +85,7 @@ $card-background-color: #f0f4f8;
 
   svg {
     height: 12px;
-    margin-left: spacing(4);
+    margin-left: spacing("4");
   }
 }
 
@@ -102,11 +102,11 @@ $card-background-color: #f0f4f8;
 }
 
 .card--border .card__head {
-  padding: spacing(8) spacing(11);
+  padding: spacing("8") spacing("11");
   background-color: $card-background-color;
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
-  font-size: font-size(base);
+  font-size: font-size("base");
   font-weight: normal;
 }
 
@@ -120,7 +120,7 @@ $card-background-color: #f0f4f8;
 .card--coloured .card__head {
   display: flex;
   flex-flow: column;
-  font-size: font-size(l);
+  font-size: font-size("l");
 }
 
 .card--coloured .card__text {
@@ -128,7 +128,7 @@ $card-background-color: #f0f4f8;
 }
 
 .card--coloured .card__meta {
-  margin-bottom: spacing(4);
-  font-size: font-size(base);
+  margin-bottom: spacing("4");
+  font-size: font-size("base");
   color: #698098;
 }

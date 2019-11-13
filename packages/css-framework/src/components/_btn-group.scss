@@ -1,23 +1,23 @@
 $btn-group-states: (
   neutral: (
-    color: color("neutral", 800),
-    background: color("neutral", 700)
+    color: color("neutral", "800"),
+    background: color("neutral", "700")
   ),
-  primary: (
-    color: color("primary", 700),
-    background: color("primary", 400)
+  action: (
+    color: color("action", "700"),
+    background: color("action", "400")
   ),
   danger: (
-    color: color("danger", 700),
-    background: color("danger", 400)
+    color: color("danger", "700"),
+    background: color("danger", "400")
   ),
   warning: (
-    color: color("warning", 700),
-    background: color("warning", 400)
+    color: color("warning", "700"),
+    background: color("warning", "400")
   ),
   success: (
-    color: color("success", 700),
-    background: color("success", 500)
+    color: color("success", "700"),
+    background: color("success", "500")
   )
 );
 
@@ -25,25 +25,56 @@ $btn-group-states: (
 .rn-btn-group {
   .rn-btn {
     border-radius: 0;
-    border: 1px solid color(neutral, 100);
+    border: 1px solid color("neutral", "100");
     border-left: none;
     @each $state, $variation in $btn-group-states {
       &.#{$state} {                
-        background: color(neutral, white);
-        color: color(neutral, 500);
+        background: color("neutral", "white");
+        color: color("neutral", "500");
         @include hover {
           background-color: map-get($variation, "background");
           border-color: map-get($variation, "background");
-          color: color(neutral, white);
+          color: color("neutral", "white");
         }
       }
     }
     &:first-child {
       border-radius: 3px 0 0 3px;
-      border: 1px solid color(neutral, 100);  
+      border: 1px solid color("neutral", "100");  
     }
+
     &:last-child {
       border-radius: 0 3px 3px 0;
+      border-right: 1px solid color(neutral, 100);
     }
+
+    &:hover,
+    &:focus {
+      background: color(primary, 600);
+      color: color(neutral, white);
+      border-color: color(primary, 500);
+      box-shadow: none;
+    }
+
+    &:hover + .rn-btn,
+    &:focus + .rn-btn {
+      border-left: 1px solid color(primary, 500);
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &.rn-btn--disabled:hover,
+    &.rn-btn--disabled:focus {
+      border-color: color(neutral, 100);
+    }
+
+    &.rn-btn--disabled:hover + .rn-btn,
+    &.rn-btn--disabled:focus + .rn-btn {
+      border-left: 1px solid color(neutral, 100);
+    }
+  }
+
+  .rn-btn + .rn-btn {
+    margin-left: 0;
   }
 }

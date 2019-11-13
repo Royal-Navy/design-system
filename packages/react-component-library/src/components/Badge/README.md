@@ -18,13 +18,13 @@ in the form of a pill.
 
 ```
 <Badge color="neutral" colorVariant="faded">Neutral</Badge>
-<Badge color="primary" colorVariant="faded">Primary</Badge>
+<Badge color="action" colorVariant="faded">Action</Badge>
 <Badge color="danger" colorVariant="faded">Danger</Badge>
 <Badge color="warning" colorVariant="faded">Warning</Badge>
 <Badge color="success" colorVariant="faded">Success</Badge>
 
 <Badge color="neutral" colorVariant="solid">Neutral</Badge>
-<Badge color="primary" colorVariant="solid">Primary</Badge>
+<Badge color="action" colorVariant="solid">Action</Badge>
 <Badge color="danger" colorVariant="solid">Danger</Badge>
 <Badge color="warning" colorVariant="solid">Warning</Badge>
 <Badge color="success" colorVariant="solid">Success</Badge>
@@ -51,7 +51,7 @@ in the form of a pill.
 
 ```
 <Badge color="neutral" variant="pill">Neutral</Badge>
-<Badge color="primary" variant="pill">Primary</Badge>
+<Badge color="action" variant="pill">Action</Badge>
 <Badge color="danger" variant="pill">Danger</Badge>
 <Badge color="warning" variant="pill">Warning</Badge>
 <Badge color="success" variant="pill">Success</Badge>
@@ -64,7 +64,7 @@ in the form of a pill.
 | Name      | Type           | Required | Default | Description                                                                                   
 | --------- | -------------- | -------- | ------- | -----------
 | children  | ReactNode      | True     |         | The content to place in the button, typically text   
-| color     | string         | False    | neutral | (neutral/primary/danger/warning/success) The colour for the badge
+| color     | string         | False    | neutral | (neutral/action/danger/warning/success) The colour for the badge
 | colorVariant | string      | False    | sold    | (solid/neutral) The colour style for the button
 | size      | string         | False    | regular | (small/regular/large/xlarge) The size for the badge
 | variant   | string         | False    | teriary | (pill) The style variation

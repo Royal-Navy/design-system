@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 727 239">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M1.5.5h725v203H1.5z"/>
+    <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="346" y="170">Buttons</tspan>
+    </text>
+    <path fill="#FFF" stroke="#B8C7D2" d="M210 79.5h101.5v45H210a3.5 3.5 0 01-3.5-3.5V83a3.5 3.5 0 013.5-3.5z"/>
+    <text fill="#233745" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(207 80)">
+      <tspan x="39.55" y="28">Day</tspan>
+    </text>
+    <path fill="#F8FAFC" stroke="#B8C7D2" d="M414.5 79.5H516a3.5 3.5 0 013.5 3.5v38a3.5 3.5 0 01-3.5 3.5H414.5v-45z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(415 80)">
+      <tspan x="31.12" y="28">Month</tspan>
+    </text>
+    <g>
+      <path fill="#3A8FDD" stroke="#2A77C7" d="M310.5 79.5h105v45h-105z"/>
+      <text fill="#FFF" font-family="Lato-Medium, Lato" font-size="14" font-weight="400" transform="translate(311 80)">
+        <tspan x="33.71" y="28">Week</tspan>
+      </text>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="233">The Button Group Anatomy.</tspan>
+    </text>
+    <g transform="translate(151 39)">
+      <path fill="#B8C7D2" d="M9 18h1v45H9z"/>
+      <path fill="#B8C7D2" d="M9 62h44v1H9z"/>
+      <rect width="19.2" height="18.4" y="1" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="6.82" y="13.2">1</tspan>
+      </text>
+      <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="29.5" y="15">Container</tspan>
+      </text>
+      <circle cx="55" cy="62.5" r="3" fill="#3E5667"/>
+    </g>
+    <g transform="rotate(90 172.5 294.5)">
+      <path fill="#B8C7D2" d="M15 3.5h1v205h-1z"/>
+      <path fill="#B8C7D2" d="M3 2.5h13v1H3z"/>
+      <circle cx="3" cy="3" r="3" fill="#3E5667"/>
+      <path fill="#B8C7D2" d="M3 207.5h13v1H3z"/>
+      <circle cx="3" cy="208" r="3" fill="#3E5667"/>
+      <path fill="#B8C7D2" d="M3 103.5h27v1H3z"/>
+      <circle cx="3" cy="104" r="3" fill="#3E5667"/>
+    </g>
+    <g>
+      <g transform="translate(322 156)">
+        <rect width="19.2" height="18.4" fill="#3E5667" rx="9.2"/>
+        <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+          <tspan x="6.82" y="12.2">2</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

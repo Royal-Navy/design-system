@@ -1,5 +1,15 @@
 import { Masthead } from './Masthead'
-import NotificationPanel from './NotificationPanel'
+import {
+  Notification,
+  NotificationPanel,
+  Notifications,
+} from './NotificationPanel'
 import Sidebar from './Sidebar'
 
-export { Masthead, NotificationPanel, Sidebar }
+export {
+  Masthead,
+  Notification,
+  NotificationPanel,
+  Notifications,
+  Sidebar,
+}

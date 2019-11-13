@@ -1,7 +1,7 @@
 @import "@royalnavy/css-framework";
 
 .masthead {
-  margin-bottom: spacing(6);
+  margin-bottom: spacing("6");
   background: white;
 }
 
@@ -9,18 +9,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: spacing(6);
-  padding-bottom: spacing(6);
+  padding-top: spacing("6");
+  padding-bottom: spacing("6");
 }
 
 .masthead .masthead__button {
-  margin-left: spacing(6);
+  margin-left: spacing("6");
 }
 
 .masthead__nav {
   display: none;
-  padding-top: spacing(6);
-  padding-bottom: spacing(6);
+  padding-top: spacing("6");
+  padding-bottom: spacing("6");
 }
 
 .masthead__nav.is-open {
@@ -31,7 +31,7 @@
   padding: 0;
   margin: 0;
   text-align: left !important;
-  border-bottom: 1px solid color(neutral, 200);
+  border-bottom: 1px solid color("neutral", "200");
 
   &:last-of-type {
     border-bottom: none;
@@ -39,14 +39,14 @@
 }
 
 .masthead__nav .rn-nav .rn-nav__item {
-  font-size: font-size(l) !important;
-  color: color(primary, 800);
+  font-size: font-size("l") !important;
+  color: color("action", "800");
   border-radius: 0;
   font-weight: 600;
 
   &.is-active {
-    background-color: color(primary, 800);
-    color: color(neutral, white);
+    background-color: color("action", "800");
+    color: color("neutral", "white");
   }
 }
 
@@ -55,18 +55,18 @@
 }
 
 .masthead__nav .rn-nav__list .rn-nav__list {
-  margin-top: spacing(2);
-  margin-bottom: spacing(8);
-  padding: 0 spacing(11);
+  margin-top: spacing("2");
+  margin-bottom: spacing("8");
+  padding: 0 spacing("11");
 }
 
 .masthead__nav .rn-nav__list .rn-nav__list .rn-nav__item {
-  color: color(primary, 800) !important;
-  font-size: font-size(base) !important;
+  color: color("action", "800") !important;
+  font-size: font-size("base") !important;
   border-radius: 4px;
 
   &.is-active {
-    color: color(neutral, white) !important;
+    color: color("neutral", "white") !important;
   }
 }
 
@@ -83,7 +83,7 @@
 // immediate children & .has-children <a />.is-active
 .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list-item.has-children > .rn-nav__item.is-active {
   background-color: transparent;
-  color: color(primary, 800);
+  color: color("action", "800");
 }
 
 // nested children <a />
@@ -93,9 +93,9 @@
 
 // "[...]overview"
 .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list .rn-nav__list-item:first-of-type {
-  padding-bottom: spacing(8);
-  margin-bottom: spacing(8);
-  border-bottom: 1px dashed color(neutral, 200);
+  padding-bottom: spacing("8");
+  margin-bottom: spacing("8");
+  border-bottom: 1px dashed color("neutral", "200");
 }
 
 // third level
@@ -149,7 +149,7 @@
   }
 
   .masthead__nav .rn-nav .rn-nav__list .rn-nav__list-item .rn-nav__item {
-    font-size: font-size(base) !important;
+    font-size: font-size("base") !important;
     pointer-events: all !important;
     border-radius: 4px;
     font-weight: 600;
@@ -162,7 +162,7 @@
 
   // immediate children & .has-children <a />.is-active
   .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list-item.has-children > .rn-nav__item.is-active {
-    background-color: color(primary, 800);
-    color: color(neutral, white);
+    background-color: color("action", "800");
+    color: color("neutral", "white");
   }
 }

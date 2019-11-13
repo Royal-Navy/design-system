@@ -1,24 +1,24 @@
 .rn-phase-banner {
-  background-color: color(primary, 100);
-  padding-top: spacing(4);
-  padding-bottom: spacing(4);
+  background-color: color("action", "100");
+  padding-top: spacing("4");
+  padding-bottom: spacing("4");
 }
 
 .rn-phase-banner__text {
   display: inline-block;
-  font-size: font-size(s);
+  font-size: font-size("s");
   vertical-align: middle;
-  margin-left: spacing(4);
-  color: color(neutral, 800);
+  margin-left: spacing("4");
+  color: color("neutral", "800");
 }
 
 .rn-phase-banner__text a {
-  color: color(neutral, black);
+  color: color("neutral", "black");
   text-decoration: underline;
 }
 
 .rn-phase-banner .rn-badge {
   margin: 0;
   text-transform: capitalize;
-  margin-right: spacing(2);
+  margin-right: spacing("2");
 }

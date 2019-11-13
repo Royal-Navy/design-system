@@ -3,24 +3,39 @@ import { storiesOf } from '@storybook/react'
 import React from 'react'
 
 import { Masthead } from './index'
+import { Notification, Notifications } from '../NotificationPanel'
 
 const stories = storiesOf('Masthead', module)
 
-const NotificationsPopoverContent: React.FC = () => {
-  return (
-    <>
-      <ul className="rn-list">
-        <li>Message one</li>
-        <li>Message Two</li>
-      </ul>
-      <div className="rn-popover__footer">
-        <a className="rn-popover__footer-link" href="more">
-          View all notifications &gt;
-        </a>
-      </div>
-    </>
-  )
-}
+const notifications = [
+  {
+    href: 'notifications/1',
+    name: 'Thomas Stephens',
+    action: 'added a new comment to your',
+    on: 'review',
+    when: new Date('2019-11-05T14:25:02.178Z'),
+    description:
+      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
+  },
+  {
+    href: 'notifications/2',
+    name: 'Thomas Stephens',
+    action: 'added a new comment to your',
+    on: 'review',
+    when: new Date('2019-11-01T14:25:02.178Z'),
+    description:
+      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
+  },
+  {
+    href: 'notifications/3',
+    name: 'Thomas Stephens',
+    action: 'added a new comment to your',
+    on: 'review',
+    when: new Date('2019-11-01T14:25:02.178Z'),
+    description:
+      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
+  },
+]
 
 const homeLink: AnchorType = {
   href: '/',
@@ -56,7 +71,6 @@ stories.add('With search', () => (
 ))
 
 const user = { initials: 'XT', href: '/userprofile' }
-const popoverContent = <NotificationsPopoverContent />
 
 stories.add('With search and Avatar', () => (
   <div>
@@ -65,7 +79,7 @@ stories.add('With search and Avatar', () => (
       searchPlaceholder="Search..."
       title="Test"
       user={user}
-      NotificationsPopoverContent={popoverContent}
+      notifications={null}
       unreadNotification
     />
     <p>More text below to check the dropdown appears below</p>
@@ -107,7 +121,13 @@ const navItems: NavItemAnchorType[] = [
 stories.add('all but navigation', () => (
   <Masthead
     homeLink={homeLink}
-    NotificationsPopoverContent={popoverContent}
+    notifications={(
+      <Notifications href="notifications">
+        {notifications.map(notification => (
+          <Notification {...notification} />
+        ))}
+      </Notifications>
+    )}
     onSearch={action('onSearch')}
     searchPlaceholder="Search"
     title="Test"
@@ -120,7 +140,13 @@ stories.add('With navigation', () => (
   <Masthead
     homeLink={homeLink}
     navItems={navItems}
-    NotificationsPopoverContent={popoverContent}
+    notifications={(
+      <Notifications href="notifications">
+        {notifications.map(notification => (
+          <Notification {...notification} />
+        ))}
+      </Notifications>
+    )}
     onSearch={action('onSearch')}
     searchPlaceholder="Search"
     title="Test"

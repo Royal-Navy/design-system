@@ -2,12 +2,12 @@
 
 .page-not-found {
   a {
-    color: color(primary, 900);
+    color: color("action", "900");
   }
 
   hr {
     border: none;
-    border-bottom: 1px solid color(neutral, 100);
-    margin: spacing(12) 0;
+    border-bottom: 1px solid color("neutral", "100");
+    margin: spacing("12") 0;
   }
 }
