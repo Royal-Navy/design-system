@@ -1,15 +1,15 @@
 @import "@royalnavy/css-framework";
 
 body {
-  font-size: font-size(m);
+  font-size: font-size("m");
   p {
-    font-size: font-size(m);
+    font-size: font-size("m");
   }
   
   .rn-container {    
     @include breakpoint("m") {
-      padding-left: spacing(18);
-      padding-right: spacing(18);
+      padding-left: spacing("18");
+      padding-right: spacing("18");
     }
   }
 }
@@ -49,6 +49,6 @@ body {
 
 @include breakpoint("m") {
   .aside {
-    flex: 0 0 180px;
+    flex: 0 0 320px;
   }
 }

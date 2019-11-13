@@ -26,7 +26,7 @@
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   width: 90%;
-  @include breakpoint(m) {
+  @include breakpoint("s") {
     width: 100%;
     max-width: 700px;
   }

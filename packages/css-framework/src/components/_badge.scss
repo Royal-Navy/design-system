@@ -3,19 +3,19 @@ $badge-font-weight: 600;
 
 $badge-sizes: (
   small: (
-    font-size: font-size("xs"),
+    font-size: font-size("xxs"),
     padding: spacing("2") spacing("4")
   ),
   regular: (
-    font-size: font-size("s"),
+    font-size: font-size("xs"),
     padding: spacing("2") spacing("4")
   ),
   large: (
-    font-size: font-size("base"),
+    font-size: font-size("s"),
     padding: spacing("2") spacing("6")
   ),
   xlarge: (
-    font-size: font-size("m"),
+    font-size: font-size("base"),
     padding: spacing("2") spacing("6")
   )
 );
