@@ -1,260 +1,213 @@
-import { JSDOM } from 'jsdom'
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, render, RenderResult } from '@testing-library/react'
+import {
+  fireEvent,
+  render,
+  RenderResult,
+  waitForElement,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
 
 import {
+  Notification,
+  NOTIFICATION_PLACEMENT,
   NotificationPanel,
-  getNotificationPositionBelow,
-  getNotificationPositionOnRight,
-  NotificationPanelProps,
+  Notifications,
 } from '.'
 
-const globalAny: any = global
+const MOCK_NOTIFICATION = (
+  <Notification
+    href="notifications/1"
+    name="Thomas Stephens"
+    action="added a new comment to your"
+    on="review"
+    when={new Date('2019-11-05T10:57:00.000Z')}
+    description="A long description that will be shortened"
+  />
+)
 
 describe('NotificationPanel', () => {
   let wrapper: RenderResult
-  let props: NotificationPanelProps
+  let onShowSpy: jest.SpyInstance
+  let onHideSpy: jest.SpyInstance
 
-  beforeEach(() => {
-    const dom = new JSDOM()
-    globalAny.document = dom.window.document
-    globalAny.window = dom.window
-    props = {}
-    props.onShow = jest.fn()
-    props.onHide = jest.fn()
-  })
-
-  describe('When there is no notification content', () => {
+  describe('when all props are specified, "notificationPlacement" is right', () => {
     beforeEach(() => {
-      props = {
-        notificationPlacement: 'right',
+      const props = {
+        onHide: () => {},
+        onShow: () => {},
       }
 
-      wrapper = render(<NotificationPanel {...props} />)
-    })
+      onShowSpy = jest.spyOn(props, 'onShow')
+      onHideSpy = jest.spyOn(props, 'onHide')
 
-    it('should not render a notification panel', () => {
-      expect(wrapper.queryByTestId('notification-panel')).toBeNull()
-    })
-  })
-
-  describe('when there is notification content to show', () => {
-    beforeEach(() => {
       wrapper = render(
-        <NotificationPanel {...props}>
-          <p data-testid="content">Test content</p>
+        <NotificationPanel
+          buttonClassName="button-class"
+          className="class"
+          unreadNotification
+          notificationPlacement={NOTIFICATION_PLACEMENT.RIGHT}
+          {...props}
+        >
+          <Notifications href="notifications">
+            {MOCK_NOTIFICATION}
+            {MOCK_NOTIFICATION}
+          </Notifications>
         </NotificationPanel>
       )
     })
 
-    it('should render a notification panel', () => {
-      expect(wrapper.getByTestId('notification-panel')).toBeInTheDocument()
+    it('should set the button class name', () => {
+      expect(wrapper.getByTestId('notification-button').classList).toContain(
+        'button-class'
+      )
     })
 
-    it('should not initially show the notification content', () => {
-      expect(wrapper.queryByTestId('popover')).toBeNull()
+    it('should not show the notifications', () => {
+      expect(wrapper.queryAllByText('Thomas Stephens')).toHaveLength(0)
     })
 
-    describe('when the user clicks on the notification button', () => {
-      let blurSpy: jest.Mock
+    it('should set the class name', () => {
+      expect(wrapper.getByTestId('notification-panel').classList).toContain(
+        'class'
+      )
+    })
 
-      beforeEach(done => {
+    it('should set the not read indicator', () => {
+      expect(wrapper.getByTestId('not-read')).toBeInTheDocument()
+    })
+
+    describe('when the notification button is clicked', () => {
+      let blurSpy: jest.SpyInstance
+
+      beforeEach(() => {
         const button = wrapper.getByTestId('notification-button')
-        blurSpy = jest.fn()
-        button.blur = blurSpy
+        blurSpy = jest.spyOn(button, 'blur')
 
-        fireEvent(
-          button,
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-          })
+        button.click()
+
+        return waitForElement(() => wrapper.queryAllByText('Thomas Stephens'))
+      })
+
+      it('should blur the button', () => {
+        expect(blurSpy).toHaveBeenCalledTimes(1)
+      })
+
+      it('should show the notifications', () => {
+        expect(wrapper.queryAllByText('Thomas Stephens')).toHaveLength(2)
+      })
+
+      it('should show the notifications on the right', () => {
+        expect(wrapper.getByTestId('popover').classList).toContain(
+          'rn-popover--left_bottom'
         )
+      })
+
+      it('should call the onShow callback', () => {
+        expect(onShowSpy).toHaveBeenCalledTimes(1)
+      })
+
+      describe('when the notification button is clicked again', () => {
+        beforeEach(() => {
+          wrapper.getByTestId('notification-button').click()
+
+          return waitForElementToBeRemoved(() =>
+            wrapper.queryAllByText('Thomas Stephens')
+          )
+        })
+
+        it('should hide the notifications', () => {
+          expect(wrapper.queryAllByText('Thomas Stephens')).toHaveLength(0)
+        })
+
+        it('should call the onHide callback', () => {
+          expect(onHideSpy).toHaveBeenCalledTimes(1)
+        })
+      })
+    })
+
+    describe('when the notifications are shown and then the notification area is clicked', () => {
+      beforeEach(async done => {
+        wrapper.getByTestId('notification-button').click()
+
+        await waitForElement(() => wrapper.queryAllByText('Thomas Stephens'))
+
+        wrapper.getByText('View all notifications').parentElement.click()
 
         setTimeout(() => {
           done()
         }, 500)
       })
 
-      it('should show the notification content', () => {
-        const popover = wrapper.getByTestId('popover')
-        expect(popover).toBeInTheDocument()
-        expect(popover).toContainHTML(
-          '<p data-testid="content">Test content</p>'
-        )
-      })
-
-      it('should blur the notification button', () => {
-        expect(blurSpy).toHaveBeenCalled()
-      })
-
-      it('should notify the parent the notification is visible', () => {
-        expect(props.onShow).toHaveBeenCalled()
-      })
-
-      describe('when the user clicks on the button again', () => {
-        beforeEach(done => {
-          fireEvent(
-            wrapper.getByTestId('notification-button'),
-            new MouseEvent('click', {
-              bubbles: true,
-              cancelable: true,
-            })
-          )
-
-          setTimeout(() => {
-            done()
-          }, 500)
-        })
-
-        it('should not show the notification content', () => {
-          expect(wrapper.queryByTestId('popover')).toBeNull()
-        })
-
-        it('should notify the parent the notification was hidden', () => {
-          expect(props.onHide).toHaveBeenCalled()
-        })
-      })
-
-      describe('when the user clicks elsewhere on the page', () => {
-        beforeEach(done => {
-          fireEvent(
-            document,
-            new MouseEvent('mousedown', {
-              bubbles: true,
-              cancelable: true,
-            })
-          )
-
-          setTimeout(() => {
-            done()
-          }, 500)
-        })
-
-        it('should not show the notification content', () => {
-          expect(wrapper.queryByTestId('popover')).toBeNull()
-        })
-      })
-
-      describe('when the user clicks within the notification content area', () => {
-        beforeEach(done => {
-          fireEvent(
-            wrapper.getByTestId('content'),
-            new MouseEvent('click', {
-              bubbles: true,
-              cancelable: true,
-            })
-          )
-
-          setTimeout(() => {
-            done()
-          }, 500)
-        })
-
-        it('should continue to show the notification content', () => {
-          const popover = wrapper.getByTestId('popover')
-          expect(popover).toBeInTheDocument()
-          expect(popover).toContainHTML(
-            '<p data-testid="content">Test content</p>'
-          )
-        })
-      })
-    })
-
-    describe('and there are unread notifications', () => {
-      beforeEach(() => {
-        props.unreadNotification = true
-        wrapper = render(
-          <NotificationPanel {...props}>
-            <p data-testid="content">Test content</p>
-          </NotificationPanel>
-        )
-      })
-
-      it('should show the unread notification', () => {
-        expect(
-          wrapper.getByTestId('not-read')
-        ).toBeInTheDocument()
-      })
-    })
-
-    describe('and there are no unread notifications', () => {
-      beforeEach(() => {
-        props.unreadNotification = false
-
-        wrapper = render(
-          <NotificationPanel {...props}>
-            <p data-testid="content">Test content</p>
-          </NotificationPanel>
-        )
-      })
-
-      it('should not show the unread notification', () => {
-        expect(wrapper.queryByTestId('notification-indicator')).toBeNull()
+      it('should continue to show the notifications', () => {
+        expect(wrapper.queryAllByText('Thomas Stephens')).toHaveLength(2)
       })
     })
   })
 
-  describe('when the notification panel needs to show the notification popover on its right', () => {
+  describe('when optional properties are not specified', () => {
     beforeEach(() => {
-      props.notificationPlacement = 'right'
-
       wrapper = render(
-        <NotificationPanel {...props}>
-          <p data-testid="content">Test content</p>
+        <NotificationPanel>
+          <Notifications href="notifications">
+            {MOCK_NOTIFICATION}
+            {MOCK_NOTIFICATION}
+          </Notifications>
         </NotificationPanel>
       )
     })
 
-    describe('when the user clicks on the notification button', () => {
+    it('should not set the button class name', () => {
+      expect(
+        wrapper.getByTestId('notification-button').classList
+      ).not.toContain('button-class')
+    })
+
+    it('should not set the class name', () => {
+      expect(wrapper.getByTestId('notification-panel').classList).not.toContain(
+        'class'
+      )
+    })
+
+    it('should not set the not read indicator', () => {
+      expect(wrapper.queryAllByTestId('notification-indicator')).toHaveLength(0)
+    })
+
+    describe('when the notification button is clicked', () => {
       beforeEach(() => {
-        fireEvent(
-          wrapper.getByTestId('notification-button'),
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-          })
-        )
+        wrapper.getByTestId('notification-button').click()
+
+        return waitForElement(() => wrapper.queryAllByText('Thomas Stephens'))
       })
 
-      it('should show the notification content on the right of the button', () => {
+      it('should default to showing notifications on the right', () => {
         expect(wrapper.getByTestId('popover').classList).toContain(
           'rn-popover--left_bottom'
         )
       })
-
-      it('should show the notication content using the dark theme', () => {
-        expect(wrapper.getByTestId('popover').classList).toContain(
-          'rn-popover--dark'
-        )
-      })
     })
   })
 
-  describe('when the notification panel needs to show the notification popover below it', () => {
+  describe('when "notificationPlacement" is specified as below', () => {
     beforeEach(() => {
-      props.notificationPlacement = 'below'
-
       wrapper = render(
-        <NotificationPanel {...props}>
-          <p data-testid="content">Test content</p>
+        <NotificationPanel notificationPlacement={NOTIFICATION_PLACEMENT.BELOW}>
+          <Notifications href="notifications">
+            {MOCK_NOTIFICATION}
+            {MOCK_NOTIFICATION}
+          </Notifications>
         </NotificationPanel>
       )
     })
 
-    describe('when the user clicks on the notification button', () => {
+    describe('when the notification button is clicked', () => {
       beforeEach(() => {
-        fireEvent(
-          wrapper.getByTestId('notification-button'),
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-          })
-        )
+        wrapper.getByTestId('notification-button').click()
+
+        return waitForElement(() => wrapper.queryAllByText('Thomas Stephens'))
       })
 
-      it('should show the notification content on the right of the button', () => {
+      it('should default to showing notifications on the right', () => {
         expect(wrapper.getByTestId('popover').classList).toContain(
           'rn-popover--top_right'
         )
@@ -262,49 +215,39 @@ describe('NotificationPanel', () => {
     })
   })
 
-  describe('getNotificationPositionOnRight', () => {
-    let result: PositionType
+  describe('when the notifications are shown and then outside the notification area is clicked', () => {
+    beforeEach(async () => {
+      wrapper = render(
+        <div>
+          <p data-testid="outside">Some text outside</p>
+          <NotificationPanel>
+            <Notifications href="notifications">
+              {MOCK_NOTIFICATION}
+              {MOCK_NOTIFICATION}
+            </Notifications>
+          </NotificationPanel>
+        </div>
+      )
 
-    beforeEach(() => {
-      const element = {
-        getBoundingClientRect: () => ({
-          bottom: 10,
-          left: 100,
-          width: 200,
-        }),
-      }
+      wrapper.getByTestId('notification-button').click()
 
-      const fakeWindow = {
-        innerHeight: 1000,
-      }
+      await waitForElement(() => wrapper.queryAllByText('Thomas Stephens'))
 
-      result = getNotificationPositionOnRight(element, fakeWindow)
+      fireEvent(
+        document,
+        new MouseEvent('mousedown', {
+          bubbles: true,
+          cancelable: true,
+        })
+      )
+
+      return waitForElementToBeRemoved(() =>
+        wrapper.queryAllByText('Thomas Stephens')
+      )
     })
 
-    it('should calculate the position to be to the right of the element', () => {
-      expect(result).toHaveProperty('bottom', 982)
-      expect(result).toHaveProperty('left', 318)
-    })
-  })
-
-  describe('getNotificationPositionBelow', () => {
-    let result: PositionType
-
-    beforeEach(() => {
-      const element = {
-        getBoundingClientRect: () => ({
-          bottom: 200,
-          left: 900,
-          width: 20,
-        }),
-      }
-
-      result = getNotificationPositionBelow(element)
-    })
-
-    it('should calculate the position to be below the element', () => {
-      expect(result).toHaveProperty('top', 203)
-      expect(result).toHaveProperty('left', 590)
+    it('should hide the notifications', () => {
+      expect(wrapper.queryAllByText('Thomas Stephens')).toHaveLength(0)
     })
   })
 })
