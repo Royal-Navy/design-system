@@ -19,6 +19,7 @@ import { Searchbar } from './Searchbar'
 import { Select } from './Select'
 import Sidebar from '../fragments/Sidebar'
 import Switch from './Switch/Switch'
+import { RangeSlider } from './RangeSlider'
 import ResponsiveSwitch from './Switch'
 import Tab from './TabSet/Tab'
 import TabSet from './TabSet'
@@ -49,6 +50,7 @@ export {
   Select,
   Sidebar,
   Switch,
+  RangeSlider,
   ResponsiveSwitch,
   Tab,
   TabSet,

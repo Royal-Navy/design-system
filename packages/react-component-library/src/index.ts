@@ -18,6 +18,7 @@ import Popover from './components/Popover'
 import { Select } from './components/Select'
 import Sidebar from './fragments/Sidebar'
 import Switch from './components/Switch/Switch'
+import { RangeSlider } from './components/RangeSlider'
 import ResponsiveSwitch from './components/Switch'
 import Radio from './components/Radio'
 import Tab from './components/TabSet/Tab'
@@ -56,6 +57,7 @@ export {
   PhaseBanner,
   Popover,
   Switch,
+  RangeSlider,
   ResponsiveSwitch,
   Radio,
   Select,
