@@ -12,6 +12,10 @@ describe('Alert', () => {
       wrapper = render(<Alert>Description</Alert>)
     })
 
+    it('should render the close button', () => {
+      expect(wrapper.getByTestId('close')).toBeInTheDocument()
+    })
+
     it('should not render the header', () => {
       expect(wrapper.queryAllByTestId('header')).toHaveLength(0)
     })
@@ -28,6 +32,16 @@ describe('Alert', () => {
       expect(wrapper.getByTestId('content-description')).toHaveTextContent(
         'Description'
       )
+    })
+
+    describe('when the close button is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('close').click()
+      })
+
+      it('should hide the alert', () => {
+        expect(wrapper.queryAllByTestId('alert')).toHaveLength(0)
+      })
     })
   })
 
@@ -71,6 +85,26 @@ describe('Alert', () => {
 
       it('should render the info icon', () => {
         expect(wrapper.getByTestId('icon-info')).toBeInTheDocument()
+      })
+    })
+  })
+
+  describe('when the onClose callback is specified', () => {
+    let onCloseSpy: (event: React.FormEvent<HTMLButtonElement>) => void
+
+    beforeEach(() => {
+      onCloseSpy = jest.fn()
+
+      wrapper = render(<Alert onClose={onCloseSpy}>Description</Alert>)
+    })
+
+    describe('when the close button is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('close').click()
+      })
+
+      it('should call the callback once', () => {
+        expect(onCloseSpy).toBeCalledTimes(1)
       })
     })
   })

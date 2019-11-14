@@ -21,6 +21,20 @@
   font-weight: bold;
 }
 
+.rn-alert__close {
+  position: absolute;
+  top: spacing(1);
+  right: spacing(1);
+  border: none;
+  font-size: font-size(l);
+  color: color("primary", 500);
+  background-color: color("primary", 000);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .rn-alert__content {
   display: flex;
 }
