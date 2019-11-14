@@ -166,7 +166,7 @@ source={`margin-top: 1.5rem;`} language="css"
 To use the Utility classes with [media queries](/styles/breakpoints), add the required breakpoint it:
 
 <CodeHighlighter 
-source={`.md:rn_text-xl`} language="css"
+source={`.m:rn_text-xl`} language="css"
 />
 
 
