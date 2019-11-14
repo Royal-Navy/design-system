@@ -14,7 +14,7 @@ $btn-focus-width: 0.2rem;
   border-radius: $btn-border-radius;  
   outline: 0;
   padding: spacing("6") spacing("8");
-  font-size: font-size("xs");
+  font-size: font-size("base");
   font-weight: 500;
   line-height: 1;
   text-align: center;
@@ -23,6 +23,7 @@ $btn-focus-width: 0.2rem;
   user-select: none;
   transition: all $animation-timing;
   text-decoration: none;
+  white-space: nowrap;
 
   &:hover {
     text-decoration: none;
@@ -32,11 +33,6 @@ $btn-focus-width: 0.2rem;
   &:focus {
     box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
   }
-
-  &__icon {
-    margin-left: spacing("4");
-  }
-
   
   // States
   &--primary {
@@ -92,12 +88,12 @@ $btn-focus-width: 0.2rem;
   &__icon {
     display: inline-flex;
     align-items: center;
-    margin-left: spacing(2);
+    margin-left: spacing("4");
   }
 
   // Sizes
   &--small {
-    font-size: font-size("xxs");
+    font-size: font-size("s");
     padding: spacing("4") spacing("6");
     .rn-btn__icon svg {
       width: 13px;
@@ -106,7 +102,7 @@ $btn-focus-width: 0.2rem;
   }
   
   &--large {
-    font-size: font-size("s");
+    font-size: font-size("base");
     padding: spacing("6") spacing("10");
     .rn-btn__icon svg {
       width: 15px;
@@ -115,7 +111,7 @@ $btn-focus-width: 0.2rem;
   }
   
   &--xlarge {
-    font-size: font-size("m");
+    font-size: font-size("l");
     padding: spacing("6") spacing("10");
     .rn-btn__icon svg {
       width: 20px;
@@ -137,7 +133,7 @@ fieldset:disabled a.rn-btn {
 .rn-btn.rn-btn--disabled,
 .rn-btn.rn-btn--disabled:hover,
 .rn-btn.rn-btn--disabled:focus {
-  background: color(neutral, 000);
-  color: color(neutral, 500);
+  background: color("neutral", "000");
+  color: color("neutral", "500");
   cursor: not-allowed;
 }

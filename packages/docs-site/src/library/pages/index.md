@@ -12,14 +12,14 @@ header: false
 
 import Card from '../../components/presenters/card'
 
-<section class="m:rn_f m:rn_f-align-start rn_mt-12 m:rn_mb-15">
+<section class="s:rn_f s:rn_f-align-start rn_mt-12 s:rn_mb-15">
   <Card 
     type="border" 
     title="Styles" 
     text="Make your service look like it's for the Royal Navy with guides for applying colour, typography and spacing." 
     linkText="View styles" 
     linkHref="/styles"
-    className="m:rn_f-1 m:rn_mr-8"
+    className="s:rn_f-1 s:rn_mr-8"
   />
 
   <Card 
@@ -28,13 +28,13 @@ import Card from '../../components/presenters/card'
     text="Save time with reusable, accessible components for forms, navigation, cards and more." 
     linkText="View components" 
     linkHref="/components" 
-    className="m:rn_f-1 m:rn_ml-8 rn_mt-12 m:rn_mt-0"
+    className="s:rn_f-1 s:rn_ml-8 rn_mt-12 s:rn_mt-0"
   />
 </section>
 
 <section class="home--info">
   <h2 class="home__title">Latest updates</h2>
-  <div class="m:rn_f m:rn_f-align-start">
+  <div class="s:rn_f s:rn_f-align-start">
   <Card 
     type="coloured" 
     title="Standards v1.0.0 released" 

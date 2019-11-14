@@ -15,7 +15,7 @@ $badge-sizes: (
     padding: spacing("2") spacing("6")
   ),
   xlarge: (
-    font-size: font-size("m"),
+    font-size: font-size("base"),
     padding: spacing("2") spacing("6")
   )
 );
@@ -50,8 +50,8 @@ $badge-states: (
 
 .rn-badge {
   display: inline-block;
-  border-radius: $badge-border-radius;
-  font-weight: $badge-font-weight;
+  border-radius: 3px;
+  font-weight: 700;
   vertical-align: middle;
   text-transform: uppercase;
   line-height: 1;
@@ -92,6 +92,7 @@ $badge-states: (
 
 
   &.rn-badge--pill {
+    padding: spacing("3") spacing("5");
     border-radius: 100px;
   
     @each $size, $values in $badge-sizes {

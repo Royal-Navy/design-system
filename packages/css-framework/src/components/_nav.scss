@@ -31,7 +31,7 @@
   border-radius: 3px;
   outline: 0;
   padding: spacing("6") spacing("8");
-  font-size: font-size("xs");
+  font-size: font-size("s");
   font-weight: 500;
   line-height: 1;
   text-decoration: none;
@@ -65,7 +65,7 @@
   margin-top: spacing("2");
 }
 
-@include breakpoint("s") {
+@include breakpoint("xs") {
   .rn-nav.rn-nav--horizontal .rn-nav__list {
     flex-direction: row;
   }
@@ -77,17 +77,17 @@
 }
 
 .rn-nav.rn-nav--small .rn-nav__item {
-  @include font-size("xxs");
-}
-
-.rn-nav.rn-nav--regular .rn-nav__item {
   @include font-size("xs");
 }
 
-.rn-nav.rn-nav--large .rn-nav__item {
+.rn-nav.rn-nav--regular .rn-nav__item {
   @include font-size("s");
 }
 
+.rn-nav.rn-nav--large .rn-nav__item {
+  @include font-size("base");
+}
+
 .rn-nav.rn-nav--xlarge .rn-nav__item {
-  @include font-size("m");
+  @include font-size("l");
 }

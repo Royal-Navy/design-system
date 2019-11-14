@@ -18,7 +18,7 @@
 }
 
 .rn-avatar:hover {
-  background: color(primary, 500);
-  color: color(neutral, white);
+  background: color("action", "500");
+  color: color("neutral", "white");
   cursor: pointer;
 }

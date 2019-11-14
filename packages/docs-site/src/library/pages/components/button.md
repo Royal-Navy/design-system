@@ -140,18 +140,16 @@ source={`<Button onClick={action} variant="primary">Primary</Button>
 </CodeHighlighter>
 
 ### Sizes
-Buttons can be rendered in four different size variants.
+Buttons can be rendered in three different size variants.
 
 <CodeHighlighter source={`<Button onClick={action} variant="primary" size="small">Small</Button>
 <Button onClick={action} variant="primary" size="regular">Regular</Button>
 <Button onClick={action} variant="primary" size="large">Large</Button>
-<Button onClick={action} variant="primary" size="xlarge">xLarge</Button>
 `} language="javascript"
 >
   <Button onClick={()=>{}} variant="primary" size="small">Small</Button>
   <Button onClick={()=>{}} variant="primary" size="regular">Regular</Button>
   <Button onClick={()=>{}} variant="primary" size="large">Large</Button>
-  <Button onClick={()=>{}} variant="primary" size="xlarge">xLarge</Button>
 </CodeHighlighter>
 
 
@@ -213,7 +211,7 @@ source={`<Button onClick={action} icon={<TriangleDown />}>Closed</Button>
   },
   {
     Name: 'size',
-    Type: 'string (small/regular/large/xlarge)',
+    Type: 'string (small/regular/large)',
     Required: 'False',
     Default: 'regular',
     Description: 'The size for the button',

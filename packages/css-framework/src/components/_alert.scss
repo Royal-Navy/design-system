@@ -38,11 +38,11 @@ $alert-states: (
   padding: spacing("8") spacing("10");
 
   &__title {
-    @include font-size("s");
+    @include font-size("base");
     margin: 0 0 spacing("2") 0;
   }
   &__message {
-    @include font-size("xs");
+    @include font-size("s");
     margin: 0;
   }
 

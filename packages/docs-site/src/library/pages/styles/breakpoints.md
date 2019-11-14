@@ -20,27 +20,27 @@ The **Standards Toolkit** provides default breakpoint sizes to use in your appli
     Breakpoint: '0'
   },
   {
-    Size: 's',
+    Size: 'xs',
     Breakpoint: '576px'
   },
   {
-    Size: 'm',
+    Size: 's',
     Breakpoint: '768px'
   },
   {
-    Size: 'l',
+    Size: 'm',
     Breakpoint: '1024px'
   },
   {
-    Size: 'xl',
+    Size: 'l',
     Breakpoint: '1200px'
   },
   {
-    Size: 'xxl',
+    Size: 'xl',
     Breakpoint: '1400px'
   },
   {
-    Size: 'xxxl',
+    Size: 'xxl',
     Breakpoint: '1600px'
   }
 ]} />
@@ -54,7 +54,7 @@ The Standards Toolkit has two methods available for using the default breakpoint
 To use breakpoints inside your SCSS, the **Standards Toolkit** provides mixins to help:
 
 <CodeHighlighter 
-source={`@mixin breakpoint('s') {
+source={`@mixin breakpoint('xs') {
   // Styles here
 }
 // Result
@@ -69,7 +69,7 @@ source={`@mixin breakpoint('s') {
 The **Toolkit** provides Breakpoints for each Utility class. Simply pre-pend a Utility class with a breakpoint size.
 
 <CodeHighlighter 
-source={`.md:rn_mt-4
-.lg:rn_mt-10
+source={`.m:rn_mt-4
+.l:rn_mt-10
 `} language="css"
 />

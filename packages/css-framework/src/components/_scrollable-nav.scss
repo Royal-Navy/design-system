@@ -20,7 +20,7 @@ $btn-focus-width: 0.2rem;
   margin: 0 spacing("2");
   padding: 0 spacing("8");
   height: 58px;
-  font-size: font-size("s");
+  font-size: font-size("base");
   color: color("neutral", "300");
   text-align: center;
   text-decoration: none;
@@ -30,11 +30,11 @@ $btn-focus-width: 0.2rem;
   cursor: pointer;
 
   &:hover {
-    border-bottom: 4px solid color("primary", "600");
+    border-bottom: 4px solid color("action", "600");
     text-decoration: none;
   }
   &:focus {    
-    box-shadow: 0 0 0 $btn-focus-width rgba(color("primary", "700") , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
   }
 }
 

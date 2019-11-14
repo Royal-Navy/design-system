@@ -51,13 +51,16 @@ describe('Button', () => {
 
   describe('when the size is specified', () => {
     it.each`
-      size          | expected
-      ${'small'}    | ${'rn-btn--small'}
-      ${'regular'}  | ${'rn-btn--regular'}
-      ${'large'}    | ${'rn-btn--large'}
-      ${'xlarge'}   | ${'rn-btn--xlarge'}
+      size         | expected
+      ${'small'}   | ${'rn-btn--small'}
+      ${'regular'} | ${'rn-btn--regular'}
+      ${'large'}   | ${'rn-btn--large'}
     `('styles the button when the size is $size', ({ size, expected }) => {
-      wrapper = render(<Button onClick={onClickSpy} size={size}>Click me</Button>)
+      wrapper = render(
+        <Button onClick={onClickSpy} size={size}>
+          Click me
+        </Button>
+      )
       button = wrapper.getByText('Click me').parentElement
 
       expect(button.classList).toContain(expected)
@@ -70,7 +73,11 @@ describe('Button', () => {
       ${'button'} | ${'button'}
       ${'submit'} | ${'submit'}
     `('should set the type attribute to $type', ({ type, expected }) => {
-      wrapper = render(<Button onClick={onClickSpy} type={type}>Click me</Button>)
+      wrapper = render(
+        <Button onClick={onClickSpy} type={type}>
+          Click me
+        </Button>
+      )
       button = wrapper.getByText('Click me').parentElement
 
       expect(button).toHaveAttribute('type', expected)
@@ -83,11 +90,18 @@ describe('Button', () => {
       ${'primary'}   | ${'rn-btn--primary'}
       ${'secondary'} | ${'rn-btn--secondary'}
       ${'tertiary'}  | ${'rn-btn--tertiary'}
-    `('styles the button when the variant is $variant', ({ variant, expected }) => {
-      wrapper = render(<Button onClick={onClickSpy} variant={variant}>Click me</Button>)
-      button = wrapper.getByText('Click me').parentElement
+    `(
+      'styles the button when the variant is $variant',
+      ({ variant, expected }) => {
+        wrapper = render(
+          <Button onClick={onClickSpy} variant={variant}>
+            Click me
+          </Button>
+        )
+        button = wrapper.getByText('Click me').parentElement
 
-      expect(button.classList).toContain(expected)
-    })
+        expect(button.classList).toContain(expected)
+      }
+    )
   })
 })

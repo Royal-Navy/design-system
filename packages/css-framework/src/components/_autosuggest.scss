@@ -7,7 +7,7 @@
   width: 100%;
   padding: spacing("6");
   border-radius: 3px;
-  @include font-size("s");
+  @include font-size("base");
   border: 1px solid color("neutral", "400");
   transition: all 0.2s;
   outline: none;
@@ -46,7 +46,7 @@
 
 .rn-autosuggest__suggestion {
   cursor: pointer;
-  @include font-size("xs");    
+  @include font-size("s");    
   padding: spacing("4") spacing("6");
   display: flex;
   justify-content: space-between;

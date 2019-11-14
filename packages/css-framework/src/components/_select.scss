@@ -70,7 +70,7 @@
     border: 0;
     background: none;
     -webkit-tap-highlight-color: transparent;
-    font-size: font-size("s");
+    font-size: font-size("base");
   }
 
   .rn-select__single-value {
@@ -96,12 +96,12 @@
       transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     pointer-events: none;
     color: color("neutral", "300");
-    font-size: font-size("s");
+    font-size: font-size("base");
     white-space: nowrap;
   }
 
   .rn-select__badge {
-    font-size: font-size("xxs");
+    font-size: font-size("xs");
     padding: spacing("2") spacing("4");
     background-color: color("neutral", "500");
     display: inline-block;

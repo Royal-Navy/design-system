@@ -6,29 +6,29 @@
       "breakpoint": 0,
       "baseFontSize": 100%,
     ),
-    "s": (
+    "xs": (
       "breakpoint": 576px,
-      "baseFontSize": 103%,
+      "baseFontSize": 94%,
+    ),
+    "s": (
+      "breakpoint": 768px,
+      "baseFontSize": 96%,
     ),
     "m": (
-      "breakpoint": 768px,
-      "baseFontSize": 106%,
+      "breakpoint": 1024px,
+      "baseFontSize": 98%,
     ),
     "l": (
-      "breakpoint": 1024px,
-      "baseFontSize": 106%,
+      "breakpoint": 1200px,
+      "baseFontSize": 100%,
     ),
     "xl": (
-      "breakpoint": 1200px,
-      "baseFontSize": 112%,
+      "breakpoint": 1400px,
+      "baseFontSize": 103%,
     ),
     "xxl": (
-      "breakpoint": 1400px,
-      "baseFontSize": 115%,
-    ),
-    "xxxl": (
       "breakpoint": 1600px,
-      "baseFontSize": 118%,
+      "baseFontSize": 106%,
     ),
   );
 
@@ -292,21 +292,21 @@
   // Typography
   $__typography: (
     // 8px
-    "xxxs": 0.5rem,
+    "xxs": 0.5rem,
     // 10px
-    "xxs": 0.625rem,
+    "xs": 0.625rem,
     // 12
-    "xs": 0.75rem,
+    "s": 0.75rem,
     // 14px
-    "s": 0.875rem,
+    "base": 0.875rem,
     // 16px
-    "base": 1rem,
+    "m": 1rem,
     // 18px
-    "m": 1.125rem,
+    "l": 1.125rem,
     // 20px
-    "l": 1.25rem,
+    "xl": 1.25rem,
     // 24px
-    "xl": 1.5rem,
+    "xxl": 1.5rem,
     // 30px
     "display": 1.875rem,
     // 36px

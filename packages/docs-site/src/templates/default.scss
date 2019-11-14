@@ -1,5 +1,13 @@
 @import "@royalnavy/css-framework";
 
+body {
+  font-size: font-size("m");
+  p {
+    font-size: font-size("m");
+  }
+}
+
+
 .main {
   display: flex;
 }
@@ -8,7 +16,8 @@
   display: none;
 }
 
-@include breakpoint("s") {
+
+@include breakpoint("xs") {
   .post-article {
     margin: 0;
     order: 2;
@@ -31,7 +40,7 @@
   }
 }
 
-@include breakpoint("l") {
+@include breakpoint("m") {
   .aside {
     flex: 0 0 320px;
   }

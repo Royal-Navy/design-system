@@ -1,20 +1,20 @@
-$border-radius: 2px;
-$background-color: color("neutral", "000");
-$border-color: color("neutral", "200");
-$active-background-color: color("neutral", "white");
-$active-color: color("action", "600");
+$switch-border-radius: 2px;
+$switch-background-color: color("neutral", "000");
+$switch-border-color: color("neutral", "200");
+$switch-active-background-color: color("neutral", "white");
+$switch-active-color: color("action", "600");
 
 .rn-switch {
   display: flex;
   border: none;
   padding: 0;
   margin: 0;
-  font-size: font-size("xs");
+  font-size: font-size("s");
   position: relative;
 }
 
 .rn-switch--small {
-  font-size: font-size("xxs");
+  font-size: font-size("xs");
 
   .rn-switch__option::before {
     padding: spacing("4") spacing("6");
@@ -22,7 +22,7 @@ $active-color: color("action", "600");
 }
 
 .rn-switch--large {
-  font-size: font-size("s");
+  font-size: font-size("base");
   .rn-switch__option {
     padding: spacing("3") spacing("4");
   }
@@ -81,7 +81,7 @@ $active-color: color("action", "600");
   }
   
   &:hover {
-    background-color: color("primary", "600");
+    background-color: color("action", "600");
   }
   
   &.is-active {

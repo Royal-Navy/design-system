@@ -10,7 +10,7 @@ $tooltipOffset: $tooltipOuter + $tooltipBorderThick;
 }
 
 .rn-tooltip__message {
-  font-size: font-size("s");
+  font-size: font-size("base");
   color: color("neutral", "100");
 }
 

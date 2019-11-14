@@ -31,7 +31,7 @@ $card-background-color: #f0f4f8;
 .card__head {
   background-color: transparent;
   padding: spacing("11") spacing("11") 0;
-  font-size: font-size("xl");
+  font-size: font-size("xxl");
   font-weight: 600;
 }
 
@@ -42,7 +42,7 @@ $card-background-color: #f0f4f8;
 
 .card__body {
   padding: spacing("4") spacing("11") spacing("11");
-  font-size: font-size("s");
+  font-size: font-size("base");
 }
 
 .card__image {
@@ -51,10 +51,10 @@ $card-background-color: #f0f4f8;
   margin-top: spacing("8");
 }
 
-@include breakpoint("s") {
+@include breakpoint("xs") {
 
   .card__title {
-    font-size: font-size("m");
+    font-size: font-size("l");
     font-weight: 500;
   }
   .card__image {
@@ -74,7 +74,7 @@ $card-background-color: #f0f4f8;
 }
 
 .card__text {
-  font-size: font-size("s");
+  font-size: font-size("base");
   font-weight: 300;
 }
 
@@ -106,7 +106,7 @@ $card-background-color: #f0f4f8;
   background-color: $card-background-color;
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
-  font-size: font-size("s");
+  font-size: font-size("base");
   font-weight: normal;
 }
 
@@ -120,7 +120,7 @@ $card-background-color: #f0f4f8;
 .card--coloured .card__head {
   display: flex;
   flex-flow: column;
-  font-size: font-size("m");
+  font-size: font-size("l");
 }
 
 .card--coloured .card__text {
@@ -129,6 +129,6 @@ $card-background-color: #f0f4f8;
 
 .card--coloured .card__meta {
   margin-bottom: spacing("4");
-  font-size: font-size("s");
+  font-size: font-size("base");
   color: #698098;
 }

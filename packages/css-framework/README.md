@@ -94,11 +94,12 @@ Occasionally, a group alone won't be enough to ensure a correct z-axis stack. An
 NELSON applications are built Mobile First. A number of breakpoints are provided by default, and also tie into the Spacing Utility classes & variables:
 ```
 - root: 0px
-- s: 576px
-- m: 768px
-- l: 992px
-- xl: 1200px
-- xxl: 1400px
+- xs: 576px
+- s: 768px
+- m: 1024px
+- l: 1200px
+- xl: 1400px
+- xxl: 1600px
 ```
 To use these breakpoints in a media query:
 ```
@@ -109,7 +110,7 @@ To use these breakpoints in a media query:
 }
 
 // Result
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 768px) {
   .foo {
     color: red;
   }
