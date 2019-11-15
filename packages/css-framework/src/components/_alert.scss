@@ -1,7 +1,13 @@
+$_alert-background-colour: color("primary", 000);
+$_alert-border-colour: color("primary", 500);
+$_alert-title-colour: color("primary", 800);
+$_alert-close-colour: color("primary", 500);
+$_alert-description-colour: color("primary", 600);
+
 .rn-alert {
-  background-color: color("primary", 000);
+  background-color: $_alert-background-colour;
   border-radius: 0px 4px 4px 0px;
-  border-left: 4px solid color("primary", 500);
+  border-left: 4px solid $_alert-border-colour;
   padding: 16px;
 }
 
@@ -13,12 +19,12 @@
 .rn-alert__icon {
   display: inline-flex;
   align-items: center;
-  color: color("primary", 800);
+  color: $_alert-title-colour;
   padding-right: 6px;
 }
 
 .rn-alert__title {
-  color: color("primary", 800);
+  color: $_alert-title-colour;
   font-size: font-size(s);
   font-weight: bold;
 }
@@ -29,8 +35,8 @@
   right: spacing(1);
   border: none;
   font-size: font-size(l);
-  color: color("primary", 500);
-  background-color: color("primary", 000);
+  color: $_alert-close-colour;
+  background-color: $_alert-background-colour;
 
   &:hover {
     cursor: pointer;
@@ -43,6 +49,6 @@
 }
 
 .rn-alert__description {
-  color: color("primary", 600);
+  color: $_alert-description-colour;
   font-size: font-size(xs);
 }
