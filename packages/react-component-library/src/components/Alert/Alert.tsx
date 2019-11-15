@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { IconInfo, IconErrorOutline, IconCheckBox } from '@royalnavy/icon-library'
+import {
+  IconInfo,
+  IconErrorOutline,
+  IconCheckBox,
+  IconWarning,
+} from '@royalnavy/icon-library'
 import classNames from 'classnames'
 
 import { ALERT_VARIANT } from './constants'
@@ -9,7 +14,12 @@ const VARIANT_ICON_MAP = {
     <IconErrorOutline data-testid={`icon-${ALERT_VARIANT.DANGER}`} />
   ),
   [ALERT_VARIANT.INFO]: <IconInfo data-testid={`icon-${ALERT_VARIANT.INFO}`} />,
-  [ALERT_VARIANT.SUCCESS]: <IconCheckBox data-testid={`icon-${ALERT_VARIANT.SUCCESS}`} />,
+  [ALERT_VARIANT.SUCCESS]: (
+    <IconCheckBox data-testid={`icon-${ALERT_VARIANT.SUCCESS}`} />
+  ),
+  [ALERT_VARIANT.WARNING]: (
+    <IconWarning data-testid={`icon-${ALERT_VARIANT.WARNING}`} />
+  ),
 }
 
 interface AlertProps {
@@ -20,6 +30,7 @@ interface AlertProps {
     | ALERT_VARIANT.DANGER
     | ALERT_VARIANT.INFO
     | ALERT_VARIANT.SUCCESS
+    | ALERT_VARIANT.WARNING
 }
 
 export const Alert: React.FC<AlertProps> = ({
@@ -43,10 +54,7 @@ export const Alert: React.FC<AlertProps> = ({
     'rn-alert__close',
     `rn-alert__close--${variant}`
   )
-  const iconClasses = classNames(
-    'rn-alert__icon',
-    `rn-alert__icon--${variant}`
-  )
+  const iconClasses = classNames('rn-alert__icon', `rn-alert__icon--${variant}`)
   const titleClasses = classNames(
     'rn-alert__title',
     `rn-alert__title--${variant}`
@@ -82,10 +90,7 @@ export const Alert: React.FC<AlertProps> = ({
               {VARIANT_ICON_MAP[variant]}
             </div>
           )}
-          <div
-            className={descriptionClasses}
-            data-testid="content-description"
-          >
+          <div className={descriptionClasses} data-testid="content-description">
             {children}
           </div>
         </div>

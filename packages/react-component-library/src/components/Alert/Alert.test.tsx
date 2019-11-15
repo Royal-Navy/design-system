@@ -173,6 +173,38 @@ describe('Alert', () => {
         expect(wrapper.getByTestId('icon-success')).toBeInTheDocument()
       })
     })
+
+    describe('when the variant is `WARNING`', () => {
+      beforeEach(() => {
+        wrapper = render(
+          <Alert title="Title" variant={ALERT_VARIANT.WARNING}>
+            Description
+          </Alert>
+        )
+      })
+
+      it('should use the `warning` modifiers', () => {
+        expect(wrapper.getByTestId('alert').classList).toContain(
+          'rn-alert--warning'
+        )
+        expect(wrapper.getByTestId('close').classList).toContain(
+          'rn-alert__close--warning'
+        )
+        expect(wrapper.getByTestId('header-icon').classList).toContain(
+          'rn-alert__icon--warning'
+        )
+        expect(wrapper.getByTestId('header-title').classList).toContain(
+          'rn-alert__title--warning'
+        )
+        expect(wrapper.getByTestId('content-description').classList).toContain(
+          'rn-alert__description--warning'
+        )
+      })
+
+      it('should render the warning icon', () => {
+        expect(wrapper.getByTestId('icon-warning')).toBeInTheDocument()
+      })
+    })
   })
 
   describe('when the onClose callback is specified', () => {
