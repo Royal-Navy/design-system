@@ -24,3 +24,11 @@ stories.add('Danger', () => {
     </Alert>
   )
 })
+
+stories.add('Success', () => {
+  return (
+    <Alert title={TITLE} variant={ALERT_VARIANT.SUCCESS}>
+      {DESCRIPTION}
+    </Alert>
+  )
+})

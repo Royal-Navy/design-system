@@ -11,6 +11,13 @@ $_danger-alert-title-colour: color("danger", 800);
 $_danger-alert-close-colour: color("danger", 500);
 $_danger-alert-description-colour: color("danger", 600);
 
+// Success
+$_success-alert-background-colour: color("success", 000);
+$_success-alert-border-colour: color("success", 500);
+$_success-alert-title-colour: color("success", 800);
+$_success-alert-close-colour: color("success", 500);
+$_success-alert-description-colour: color("success", 600);
+
 .rn-alert {
   background-color: $_alert-background-colour;
   border-radius: 0px 4px 4px 0px;
@@ -20,6 +27,11 @@ $_danger-alert-description-colour: color("danger", 600);
   &--danger {
     background-color: $_danger-alert-background-colour;
     border-left-color: $_danger-alert-border-colour;
+  }
+
+  &--success {
+    background-color: $_success-alert-background-colour;
+    border-left-color: $_success-alert-border-colour;
   }
 }
 
@@ -37,6 +49,10 @@ $_danger-alert-description-colour: color("danger", 600);
   &--danger {
     color: $_danger-alert-title-colour;
   }
+
+  &--success {
+    color: $_success-alert-title-colour;
+  }
 }
 
 .rn-alert__title {
@@ -46,6 +62,10 @@ $_danger-alert-description-colour: color("danger", 600);
 
   &--danger {
     color: $_danger-alert-title-colour;
+  }
+
+  &--success {
+    color: $_success-alert-title-colour;
   }
 }
 
@@ -66,6 +86,11 @@ $_danger-alert-description-colour: color("danger", 600);
     color: $_danger-alert-close-colour;
     background-color: $_danger-alert-background-colour;
   }
+
+  &--success {
+    color: $_success-alert-close-colour;
+    background-color: $_success-alert-background-colour;
+  }
 }
 
 .rn-alert__content {
@@ -79,5 +104,9 @@ $_danger-alert-description-colour: color("danger", 600);
 
   &--danger {
     color: $_danger-alert-description-colour;
+  }
+
+  &--success {
+    color: $_success-alert-description-colour;
   }
 }

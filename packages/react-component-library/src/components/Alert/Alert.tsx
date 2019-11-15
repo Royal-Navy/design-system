@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { IconInfo, IconErrorOutline } from '@royalnavy/icon-library'
+import { IconInfo, IconErrorOutline, IconCheckBox } from '@royalnavy/icon-library'
 import classNames from 'classnames'
 
 import { ALERT_VARIANT } from './constants'
@@ -9,6 +9,7 @@ const VARIANT_ICON_MAP = {
     <IconErrorOutline data-testid={`icon-${ALERT_VARIANT.DANGER}`} />
   ),
   [ALERT_VARIANT.INFO]: <IconInfo data-testid={`icon-${ALERT_VARIANT.INFO}`} />,
+  [ALERT_VARIANT.SUCCESS]: <IconCheckBox data-testid={`icon-${ALERT_VARIANT.SUCCESS}`} />,
 }
 
 interface AlertProps {
@@ -18,6 +19,7 @@ interface AlertProps {
   variant?:
     | ALERT_VARIANT.DANGER
     | ALERT_VARIANT.INFO
+    | ALERT_VARIANT.SUCCESS
 }
 
 export const Alert: React.FC<AlertProps> = ({
