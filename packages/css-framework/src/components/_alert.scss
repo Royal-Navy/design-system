@@ -11,6 +11,8 @@
 }
 
 .rn-alert__icon {
+  display: inline-flex;
+  align-items: center;
   color: color("primary", 800);
   padding-right: 6px;
 }
@@ -36,7 +38,8 @@
 }
 
 .rn-alert__content {
-  display: flex;
+  display: inline-flex;
+  align-items: center;
 }
 
 .rn-alert__description {
