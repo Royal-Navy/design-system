@@ -1,100 +1,48 @@
-$alert-states: (
-  neutral: (
-    background: color("neutral", 000),
-    border: color("neutral", 100),
-    copy: color("neutral", 600),
-    title: color("neutral", 900),
-  ),
-  primary: (
-    background: color("primary", 000),
-    border: color("primary", 100),
-    copy: color("primary", 800),
-    title: color("primary", 900),
-  ),
-  danger: (
-    background: color("danger", 000),
-    border: color("danger", 100),
-    copy: color("danger", 800),
-    title: color("danger", 900),
-  ),
-  warning: (
-    background: color("warning", 100),
-    border: color("warning", 300),
-    copy: color("warning", 800),
-    title: color("warning", 900),
-  ),
-  success: (
-    background: color("success", 000),
-    border: color("success", 200),
-    copy: color("success", 800),
-    title: color("success", 900),
-  ),
-);
-
 .rn-alert {
-  position: relative;
-  border-radius: 4px;
-  max-width: 600px;
-  padding: spacing(4) spacing(5);
+  background-color: color("primary", 000);
+  border-radius: 0px 4px 4px 0px;
+  border-left: 4px solid color("primary", 500);
+  padding: 16px;
+}
 
-  &__title {
-    @include font-size(s);
-    margin: 0 0 spacing(1) 0;
-  }
-  &__message {
-    @include font-size(xs);
-    margin: 0;
-  }
+.rn-alert__header {
+  display: flex;
+  margin-bottom: spacing(1);
+}
 
-  opacity: 0;
+.rn-alert__icon {
+  display: inline-flex;
+  align-items: center;
+  color: color("primary", 800);
+  padding-right: 6px;
+}
 
-  &.open {
-    opacity: 100;
-  }
+.rn-alert__title {
+  color: color("primary", 800);
+  font-size: font-size(s);
+  font-weight: bold;
+}
 
-  .content {
-    p {
-      line-height: 1.6;
-    }
-  }
+.rn-alert__close {
+  position: absolute;
+  top: spacing(1);
+  right: spacing(1);
+  border: none;
+  font-size: font-size(l);
+  color: color("primary", 500);
+  background-color: color("primary", 000);
 
-  .close {
-    position: absolute;
-    top: 15px;
-    right: 10px;
+  &:hover {
+    cursor: pointer;
   }
+}
 
-  @each $state, $variation in $alert-states {
-    &.#{$state} {
-      background: map-get($variation, "background");
-      border: 1px solid map-get($variation, "border");
-      .rn-alert {
-        &__title {
-          color: map-get($variation, "title");
-        }
-        &__message {
-          color: map-get($variation, "copy");
-        }
-      }
-    }
-  }
+.rn-alert__content {
+  display: inline-flex;
+  align-items: center;
+}
 
-  &--event {
-    border-radius: 3px;
-    background: color("neutral", 700);
-    border: none;
-    padding: spacing(3) spacing(4);
-    .rn-alert {
-      &__title {
-        display: none;
-      }
-      &__message {
-        color: color("neutral", 000);
-      }
-    }
-  }
-
-  &__close {
-    display: none;
-  }
+.rn-alert__description {
+  color: color("primary", 600);
+  font-size: font-size(xs);
 }
