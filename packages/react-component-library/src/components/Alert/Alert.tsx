@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
-import { IconInfo } from '@royalnavy/icon-library'
+import { IconInfo, IconErrorOutline } from '@royalnavy/icon-library'
+import classNames from 'classnames'
 
 import { ALERT_VARIANT } from './constants'
 
 const VARIANT_ICON_MAP = {
+  [ALERT_VARIANT.DANGER]: (
+    <IconErrorOutline data-testid={`icon-${ALERT_VARIANT.DANGER}`} />
+  ),
   [ALERT_VARIANT.INFO]: <IconInfo data-testid={`icon-${ALERT_VARIANT.INFO}`} />,
 }
 
@@ -11,7 +15,9 @@ interface AlertProps {
   children: string
   onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
   title?: string
-  variant?: ALERT_VARIANT.INFO
+  variant?:
+    | ALERT_VARIANT.DANGER
+    | ALERT_VARIANT.INFO
 }
 
 export const Alert: React.FC<AlertProps> = ({
@@ -30,11 +36,29 @@ export const Alert: React.FC<AlertProps> = ({
     }
   }
 
+  const classes = classNames('rn-alert', `rn-alert--${variant}`)
+  const closeClasses = classNames(
+    'rn-alert__close',
+    `rn-alert__close--${variant}`
+  )
+  const iconClasses = classNames(
+    'rn-alert__icon',
+    `rn-alert__icon--${variant}`
+  )
+  const titleClasses = classNames(
+    'rn-alert__title',
+    `rn-alert__title--${variant}`
+  )
+  const descriptionClasses = classNames(
+    'rn-alert__description',
+    `rn-alert__description--${variant}`
+  )
+
   return (
     !closed && (
-      <div className="rn-alert" data-testid="alert">
+      <div className={classes} data-testid="alert">
         <button
-          className="rn-alert__close"
+          className={closeClasses}
           onClick={handleClick}
           data-testid="close"
         >
@@ -42,10 +66,10 @@ export const Alert: React.FC<AlertProps> = ({
         </button>
         {title && (
           <div className="rn-alert__header" data-testid="header">
-            <div className="rn-alert__icon" data-testid="header-icon">
+            <div className={iconClasses} data-testid="header-icon">
               {VARIANT_ICON_MAP[variant]}
             </div>
-            <div className="rn-alert__title" data-testid="header-title">
+            <div className={titleClasses} data-testid="header-title">
               {title}
             </div>
           </div>
@@ -57,7 +81,7 @@ export const Alert: React.FC<AlertProps> = ({
             </div>
           )}
           <div
-            className="rn-alert__description"
+            className={descriptionClasses}
             data-testid="content-description"
           >
             {children}

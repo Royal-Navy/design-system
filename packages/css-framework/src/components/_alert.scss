@@ -4,11 +4,23 @@ $_alert-title-colour: color("primary", 800);
 $_alert-close-colour: color("primary", 500);
 $_alert-description-colour: color("primary", 600);
 
+// Danger
+$_danger-alert-background-colour: color("danger", 000);
+$_danger-alert-border-colour: color("danger", 500);
+$_danger-alert-title-colour: color("danger", 800);
+$_danger-alert-close-colour: color("danger", 500);
+$_danger-alert-description-colour: color("danger", 600);
+
 .rn-alert {
   background-color: $_alert-background-colour;
   border-radius: 0px 4px 4px 0px;
   border-left: 4px solid $_alert-border-colour;
   padding: 16px;
+
+  &--danger {
+    background-color: $_danger-alert-background-colour;
+    border-left-color: $_danger-alert-border-colour;
+  }
 }
 
 .rn-alert__header {
@@ -21,12 +33,20 @@ $_alert-description-colour: color("primary", 600);
   align-items: center;
   color: $_alert-title-colour;
   padding-right: 6px;
+
+  &--danger {
+    color: $_danger-alert-title-colour;
+  }
 }
 
 .rn-alert__title {
   color: $_alert-title-colour;
   font-size: font-size(s);
   font-weight: bold;
+
+  &--danger {
+    color: $_danger-alert-title-colour;
+  }
 }
 
 .rn-alert__close {
@@ -41,6 +61,11 @@ $_alert-description-colour: color("primary", 600);
   &:hover {
     cursor: pointer;
   }
+
+  &--danger {
+    color: $_danger-alert-close-colour;
+    background-color: $_danger-alert-background-colour;
+  }
 }
 
 .rn-alert__content {
@@ -51,4 +76,8 @@ $_alert-description-colour: color("primary", 600);
 .rn-alert__description {
   color: $_alert-description-colour;
   font-size: font-size(xs);
+
+  &--danger {
+    color: $_danger-alert-description-colour;
+  }
 }
