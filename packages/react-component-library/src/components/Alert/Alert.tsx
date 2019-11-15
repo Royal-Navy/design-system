@@ -86,7 +86,7 @@ export const Alert: React.FC<AlertProps> = ({
         )}
         <div className="rn-alert__content" data-testid="content">
           {!title && (
-            <div className="rn-alert__icon" data-testid="content-icon">
+            <div className={iconClasses} data-testid="content-icon">
               {VARIANT_ICON_MAP[variant]}
             </div>
           )}
