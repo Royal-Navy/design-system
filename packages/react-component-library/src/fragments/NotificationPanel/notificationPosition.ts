@@ -19,8 +19,8 @@ export const calculate = {
     const elemRect = element.getBoundingClientRect()
 
     const left =
-      elemRect.left - POPOVER_WIDTH + elemRect.width + window.pageXOffset + 5
-    const top = elemRect.bottom + 3 + window.pageYOffset
+      elemRect.left - POPOVER_WIDTH + elemRect.width + window.pageXOffset - 6
+    const top = elemRect.bottom + window.pageYOffset
 
     return { left, top }
   },
