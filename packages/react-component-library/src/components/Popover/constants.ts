@@ -1,0 +1,5 @@
+const POPOVER_CLOSE_DELAY = 1000
+
+export {
+  POPOVER_CLOSE_DELAY
+}
