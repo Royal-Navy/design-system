@@ -1,6 +1,6 @@
 ---
 title: Alert
-description: The Alert  
+description: Alerts are a great way to provide contextual feedback to a user.
 header: true
 ---
 
@@ -9,10 +9,13 @@ import { TabSet, Tab } from '@royalnavy/react-component-library'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import DataTable from '../../../components/presenters/data-table'
 
+import AlertComponent from '../../images/components/alert/component.svg'
+import AlertAnatomy from '../../images/components/alert/anatomy.svg'
+import AlertStates from '../../images/components/alert/states.svg'
 
 
 # Overview
-Alerts are a great way to provide contextual feedback to a user.
+<AlertComponent />
 
 ## Usage
 The usage of the Alert component is derived from the context it will be placed in. There are four Alert variations - info, success, warning, and danger. By default, the Info Alert should be used, with the stateful Alerts being placed to either confirm an action or inform the user that the action may be dangerous (e.g. deleting data).
@@ -21,6 +24,8 @@ The usage of the Alert component is derived from the context it will be placed i
 <Tab title="Design">
 
 ### Anatomy
+
+<AlertAnatomy />
 
 1. **Container**. This wraps the component. By default, it extends the full width of its parent.
 2. **Title (Optional)**. This can be added to the Alert when the Description alone is not sufficient enough.
@@ -34,6 +39,9 @@ The Alert is only available in one size. It can, however, grow vertically depend
 Alerts should generally be placed above the content in which they are referring to.
 
 ### States
+
+<AlertStates />
+
 The Alert Component has four states - info, success, warning, and danger.
 
 ### Variations
