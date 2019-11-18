@@ -67,7 +67,12 @@ export const FloatingBox = forwardRef(
         style={style}
         data-testid="floating-box"
       >
-        <div className="rn-floating-box__content">{children}</div>
+        <div
+          className="rn-floating-box__content"
+          data-testid="floating-box-content"
+        >
+          {children}
+        </div>
       </div>
     )
   }
