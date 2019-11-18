@@ -1,3 +1,4 @@
+import { Alert, ALERT_VARIANT } from './Alert'
 import { Avatar } from './Avatar'
 import Badge from './Badge'
 import Breadcrumbs from './Breadcrumbs'
@@ -29,6 +30,8 @@ import TextInput from './TextInput'
 import { Tooltip } from './Tooltip'
 
 export {
+  Alert,
+  ALERT_VARIANT,
   Avatar,
   Badge,
   Breadcrumbs,
