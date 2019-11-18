@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Alert } from './index'
+import { Alert, ALERT_VARIANT } from './index'
 
 const stories = storiesOf('Alert', module)
 
@@ -15,4 +15,28 @@ stories.add('Default', () => {
 
 stories.add('Without title', () => {
   return <Alert>{DESCRIPTION}</Alert>
+})
+
+stories.add('Danger', () => {
+  return (
+    <Alert title={TITLE} variant={ALERT_VARIANT.DANGER}>
+      {DESCRIPTION}
+    </Alert>
+  )
+})
+
+stories.add('Success', () => {
+  return (
+    <Alert title={TITLE} variant={ALERT_VARIANT.SUCCESS}>
+      {DESCRIPTION}
+    </Alert>
+  )
+})
+
+stories.add('Warning', () => {
+  return (
+    <Alert title={TITLE} variant={ALERT_VARIANT.WARNING}>
+      {DESCRIPTION}
+    </Alert>
+  )
 })
