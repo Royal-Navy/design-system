@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 727 285">
+  <defs>
+    <filter id="b" width="101.1%" height="105.6%" x="-.5%" y="-2.8%" filterUnits="objectBoundingBox">
+      <feOffset dx="6" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+      <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0.22745098 0 0 0 0 0.560784314 0 0 0 0 0.866666667 0 0 0 1 0"/>
+    </filter>
+    <path id="a" d="M87 70h550a4 4 0 014 4v100a4 4 0 01-4 4H87V70z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(-201 -435)">
+    <path fill="#FFF" stroke="#B8C7D2" d="M202.5 435.5h725v247h-725z"/>
+    <g transform="translate(201 435)">
+      <use fill="#ECF8FF" xlink:href="#a"/>
+      <use fill="#000" filter="url(#b)" xlink:href="#a"/>
+    </g>
+    <path fill="#3A8FDD" d="M822.85 526l2.77 2.77a1.3 1.3 0 01-1.85 1.85l-2.77-2.77-2.77 2.77a1.3 1.3 0 01-1.85-1.85l2.77-2.77-2.77-2.77a1.3 1.3 0 011.85-1.85l2.77 2.77 2.77-2.77a1.3 1.3 0 011.85 1.85l-2.77 2.77z"/>
+    <text fill="#274776" font-family="Lato-Bold, Lato" font-size="16" font-weight="bold" transform="translate(201 435)">
+      <tspan x="134" y="108">Alert Title</tspan>
+    </text>
+    <text fill="#2A77C7" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" transform="translate(201 435)">
+      <tspan x="113" y="130">This is the alert description. It provides context to the user, bringing attention to </tspan> <tspan x="113" y="151">information that needs to be consumed.</tspan>
+    </text>
+    <path fill="#274776" fill-rule="nonzero" d="M321 528a8 8 0 100 16 8 8 0 000-16zm.8 12h-1.6v-4.8h1.6v4.8zm0-6.4h-1.6V532h1.6v1.6z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" transform="translate(201 435)">
+      <tspan x="0" y="279">The Alert Component.</tspan>
+    </text>
+    <path fill="#B8C7D2" d="M570.5 487h1v17h-1z"/>
+    <rect width="19.2" height="19.2" x="561.5" y="470" fill="#3E5667" rx="9.6"/>
+    <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+      <tspan x="568.32" y="483">1</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="587.5" y="484">Container</tspan>
+    </text>
+    <circle cx="571" cy="505" r="3" fill="#3E5667"/>
+    <path fill="#B8C7D2" d="M400.5 590h1v57h-1z"/>
+    <rect width="19.2" height="19.2" x="391.5" y="631" fill="#3E5667" rx="9.6"/>
+    <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+      <tspan x="398.32" y="644">3</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="417.5" y="645">Description</tspan>
+    </text>
+    <circle cx="401" cy="588" r="3" fill="#3E5667"/>
+    <path fill="#B8C7D2" d="M390.5 487h1v40h-1z"/>
+    <rect width="19.2" height="19.2" x="381.5" y="470" fill="#3E5667" rx="9.6"/>
+    <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+      <tspan x="388.32" y="483">2</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="407.5" y="484">Title</tspan>
+    </text>
+    <circle cx="391" cy="525" r="3" fill="#3E5667"/>
+    <path fill="#B8C7D2" d="M320.5 487h1v40h-1z"/>
+    <rect width="19.2" height="19.2" x="311.5" y="470" fill="#3E5667" rx="9.6"/>
+    <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+      <tspan x="318.32" y="483">4</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="277.5" y="484">Icon</tspan>
+    </text>
+    <circle cx="321" cy="525" r="3" fill="#3E5667"/>
+  </g>
+</svg>
