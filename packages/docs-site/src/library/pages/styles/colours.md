@@ -50,7 +50,7 @@ Another use for the Primary palette is for the components that need to stand out
 <Swatch color="#85c6f2" label="300" />
 <Swatch color="#b7dff7" label="200" />
 <Swatch color="#ddf4ff" label="100" />
-<Swatch color="#ecf8ff" label="100" />
+<Swatch color="#ecf8ff" label="000" />
 
 #### Alt Primary
 
@@ -63,7 +63,7 @@ Another use for the Primary palette is for the components that need to stand out
 <Swatch color="#85c6f2" label="300" />
 <Swatch color="#b7dff7" label="200" />
 <Swatch color="#ddf4ff" label="100" />
-<Swatch color="#ecf8ff" label="100" />
+<Swatch color="#ecf8ff" label="000" />
 
 ### State Colours
 
