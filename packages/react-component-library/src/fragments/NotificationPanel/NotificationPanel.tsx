@@ -74,6 +74,7 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
             {...notificationPosition}
             position={notificationArrowPosition}
             width={POPOVER_WIDTH}
+            scheme="dark"
           >
             {children}
           </Popover>
