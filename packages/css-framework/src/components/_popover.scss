@@ -2,10 +2,23 @@ $lightBackground: color(neutral, white);
 $lightBorder: color(neutral, 100);
 $darkBackground: color(neutral, 700);
 $darkBorder: color(neutral, 700);
-$borderThick: 2px;
-$inner: 8px;
-$outer: $inner + 1;
+$borderThick: 1px;
+$inner: 5px;
+$outer: $inner;
 $offset: $outer + $borderThick;
+
+.rn-popover--on-hover {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: linear opacity 0.3s;
+
+  &.is-visible {
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+  }
+}
 
 .rn-popover__content {
   @include z-index(modal);
@@ -17,6 +30,7 @@ $offset: $outer + $borderThick;
   width: 100%;
   margin: 0;
   padding: 0;
+  box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.12);
 }
 
 .rn-popover__footer {
@@ -47,7 +61,7 @@ a.rn-popover__footer-link {
     height: auto;
     width: auto;
     padding: 0;
-    border-radius: 5px;
+    border-radius: 3px;
   }
 
   .rn-popover--light .rn-popover__content {
@@ -204,25 +218,27 @@ a.rn-popover__footer-link {
   .rn-popover--left_bottom .rn-popover__content:after,
   .rn-popover--right_bottom .rn-popover__content:before,
   .rn-popover--right_bottom .rn-popover__content:after {
-    top: 80%;
+    top: unset;
+    bottom: 1rem;
   }
 
   .rn-popover--left_top .rn-popover__content:before,
   .rn-popover--left_top .rn-popover__content:after,
   .rn-popover--right_top .rn-popover__content:before,
   .rn-popover--right_top .rn-popover__content:after {
-    top: 20%;
+    top: 1rem;
   }
   .rn-popover--top_left .rn-popover__content:before,
   .rn-popover--top_left .rn-popover__content:after,
   .rn-popover--bottom_left .rn-popover__content:before,
   .rn-popover--bottom_left .rn-popover__content:after {
-    left: 10%;
+    left: 1rem;
   }
   .rn-popover--top_right .rn-popover__content:before,
   .rn-popover--top_right .rn-popover__content:after,
   .rn-popover--bottom_right .rn-popover__content:before,
   .rn-popover--bottom_right .rn-popover__content:after {
-    left: 90%;
+    left: unset;
+    right: 1rem;
   }
 }
