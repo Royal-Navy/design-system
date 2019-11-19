@@ -1,4 +1,5 @@
 // Components
+import { Alert, ALERT_VARIANT } from './components/Alert'
 import { Avatar } from './components/Avatar'
 import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
@@ -39,6 +40,8 @@ import { Formik } from './components/Formik'
 import withFormik from './enhancers/withFormik'
 
 export {
+  Alert,
+  ALERT_VARIANT,
   Avatar,
   Badge,
   Breadcrumbs,

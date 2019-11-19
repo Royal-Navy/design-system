@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="726px" height="605px" viewBox="0 0 726 605" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>Group 33</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,0 L550,0 C552.209139,-4.05812251e-16 554,1.790861 554,4 L554,104 C554,106.209139 552.209139,108 550,108 L0,108 L0,108 L0,0 Z" id="path-1"></path>
+        <filter x="-0.5%" y="-2.8%" width="101.1%" height="105.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="6" dy="0" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.461992157   0 0 0 0 0.780392157   0 0 0 0 0.405803922  0 0 0 1 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <path d="M0,0 L550,0 C552.209139,-4.05812251e-16 554,1.790861 554,4 L554,104 C554,106.209139 552.209139,108 550,108 L0,108 L0,108 L0,0 Z" id="path-3"></path>
+        <filter x="-0.5%" y="-2.8%" width="101.1%" height="105.6%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="6" dy="0" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.811764706   0 0 0 0 0.576470588   0 0 0 0 0.156862745  0 0 0 1 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <path d="M0,0 L550,0 C552.209139,-4.05812251e-16 554,1.790861 554,4 L554,104 C554,106.209139 552.209139,108 550,108 L0,108 L0,108 L0,0 Z" id="path-5"></path>
+        <filter x="-0.5%" y="-2.8%" width="101.1%" height="105.6%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="6" dy="0" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.956862745   0 0 0 0 0.287058824   0 0 0 0 0.287058824  0 0 0 1 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <path d="M0,0 L550,0 C552.209139,-4.05812251e-16 554,1.790861 554,4 L554,104 C554,106.209139 552.209139,108 550,108 L0,108 L0,108 L0,0 Z" id="path-7"></path>
+        <filter x="-0.5%" y="-2.8%" width="101.1%" height="105.6%" filterUnits="objectBoundingBox" id="filter-8">
+            <feOffset dx="6" dy="0" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.22745098   0 0 0 0 0.560784314   0 0 0 0 0.866666667  0 0 0 1 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Docs-Images" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Alerts" transform="translate(-205.000000, -774.000000)">
+            <g id="Group-33" transform="translate(205.000000, 774.000000)">
+                <rect id="Rectangle" stroke="#B8C7D2" fill="#FFFFFF" x="0.5" y="0.5" width="725" height="559"></rect>
+                <g id="Group-2" transform="translate(83.000000, 164.000000)">
+                    <g id="Rectangle">
+                        <use fill="#F4FFEF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M534.84699,21 L537.617476,23.7704855 C538.127508,24.2805178 538.127508,25.1074435 537.617476,25.6174758 C537.107443,26.1275081 536.280518,26.1275081 535.770485,25.6174758 L533,22.8469903 L530.229515,25.6174758 C529.719482,26.1275081 528.892557,26.1275081 528.382524,25.6174758 C527.872492,25.1074435 527.872492,24.2805178 528.382524,23.7704855 L531.15301,21 L528.382524,18.2295145 C527.872492,17.7194822 527.872492,16.8925565 528.382524,16.3825242 C528.892557,15.8724919 529.719482,15.8724919 530.229515,16.3825242 L533,19.1530097 L535.770485,16.3825242 C536.280518,15.8724919 537.107443,15.8724919 537.617476,16.3825242 C538.127508,16.8925565 538.127508,17.7194822 537.617476,18.2295145 L534.84699,21 Z" id="Path" fill="#479442"></path>
+                    <text id="Success-Alert" font-family="Lato-Bold, Lato" font-size="16" font-weight="bold" fill="#3B612C">
+                        <tspan x="50" y="38">Success Alert</tspan>
+                    </text>
+                    <text id="This-is-the-alert-de" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" line-spacing="21" fill="#479442">
+                        <tspan x="26" y="60">This is the alert description. It provides context to the user, bringing attention to </tspan>
+                        <tspan x="26" y="81">information that needs to be consumed.</tspan>
+                    </text>
+                    <path d="M38.4444444,25 L27.5555556,25 C26.6922222,25 26,25.7 26,26.5555556 L26,37.4444444 C26,38.3 26.6922222,39 27.5555556,39 L38.4444444,39 C39.3077778,39 40,38.3 40,37.4444444 L40,26.5555556 C40,25.7 39.3077778,25 38.4444444,25 Z M31.4444444,35.8888889 L27.5555556,32 L28.6522222,30.9033333 L31.4444444,33.6877778 L37.3477778,27.7844444 L38.4444444,28.8888889 L31.4444444,35.8888889 Z" id="Icons/Toggle/ic_check_box_24px" fill="#3B6F33" fill-rule="nonzero"></path>
+                </g>
+                <g id="Group-4" transform="translate(83.000000, 288.000000)">
+                    <g id="Rectangle">
+                        <use fill="#FFFFEE" fill-rule="evenodd" xlink:href="#path-3"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                    </g>
+                    <path d="M534.84699,21 L537.617476,23.7704855 C538.127508,24.2805178 538.127508,25.1074435 537.617476,25.6174758 C537.107443,26.1275081 536.280518,26.1275081 535.770485,25.6174758 L533,22.8469903 L530.229515,25.6174758 C529.719482,26.1275081 528.892557,26.1275081 528.382524,25.6174758 C527.872492,25.1074435 527.872492,24.2805178 528.382524,23.7704855 L531.15301,21 L528.382524,18.2295145 C527.872492,17.7194822 527.872492,16.8925565 528.382524,16.3825242 C528.892557,15.8724919 529.719482,15.8724919 530.229515,16.3825242 L533,19.1530097 L535.770485,16.3825242 C536.280518,15.8724919 537.107443,15.8724919 537.617476,16.3825242 C538.127508,16.8925565 538.127508,17.7194822 537.617476,18.2295145 L534.84699,21 Z" id="Path" fill="#CF9328"></path>
+                    <text id="Warning-Alert" font-family="Lato-Bold, Lato" font-size="16" font-weight="bold" fill="#8C4F17">
+                        <tspan x="53" y="38">Warning Alert</tspan>
+                    </text>
+                    <text id="This-is-the-alert-de" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" line-spacing="21" fill="#AE6D1D">
+                        <tspan x="26" y="60">This is the alert description. It provides context to the user, bringing attention to </tspan>
+                        <tspan x="26" y="81">information that needs to be consumed.</tspan>
+                    </text>
+                    <path d="M26,39 L43,39 L34.5,24 L26,39 Z M35.2727273,36.6315789 L33.7272727,36.6315789 L33.7272727,35.0526316 L35.2727273,35.0526316 L35.2727273,36.6315789 Z M35.2727273,33.4736842 L33.7272727,33.4736842 L33.7272727,30.3157895 L35.2727273,30.3157895 L35.2727273,33.4736842 Z" id="Icons/Action/ic_report_problem_24px" fill="#8C4F17" fill-rule="nonzero"></path>
+                </g>
+                <g id="Group-5" transform="translate(83.000000, 412.000000)">
+                    <g id="Rectangle">
+                        <use fill="#FFF3F4" fill-rule="evenodd" xlink:href="#path-5"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                    </g>
+                    <path d="M534.84699,21 L537.617476,23.7704855 C538.127508,24.2805178 538.127508,25.1074435 537.617476,25.6174758 C537.107443,26.1275081 536.280518,26.1275081 535.770485,25.6174758 L533,22.8469903 L530.229515,25.6174758 C529.719482,26.1275081 528.892557,26.1275081 528.382524,25.6174758 C527.872492,25.1074435 527.872492,24.2805178 528.382524,23.7704855 L531.15301,21 L528.382524,18.2295145 C527.872492,17.7194822 527.872492,16.8925565 528.382524,16.3825242 C528.892557,15.8724919 529.719482,15.8724919 530.229515,16.3825242 L533,19.1530097 L535.770485,16.3825242 C536.280518,15.8724919 537.107443,15.8724919 537.617476,16.3825242 C538.127508,16.8925565 538.127508,17.7194822 537.617476,18.2295145 L534.84699,21 Z" id="Path" fill="#BE2B2B"></path>
+                    <text id="Danger-Alert" font-family="Lato-Bold, Lato" font-size="16" font-weight="bold" fill="#902727">
+                        <tspan x="46" y="38">Danger Alert</tspan>
+                    </text>
+                    <text id="This-is-the-alert-de" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" line-spacing="21" fill="#E13637">
+                        <tspan x="26" y="60">This is the alert description. It provides context to the user, bringing attention to </tspan>
+                        <tspan x="26" y="81">information that needs to be consumed.</tspan>
+                    </text>
+                    <path d="M31.75,33.75 L33.25,33.75 L33.25,35.25 L31.75,35.25 L31.75,33.75 Z M31.75,27.75 L33.25,27.75 L33.25,32.25 L31.75,32.25 L31.75,27.75 Z M32.4925,24 C28.3525,24 25,27.36 25,31.5 C25,35.64 28.3525,39 32.4925,39 C36.64,39 40,35.64 40,31.5 C40,27.36 36.64,24 32.4925,24 Z M32.5,37.5 C29.185,37.5 26.5,34.815 26.5,31.5 C26.5,28.185 29.185,25.5 32.5,25.5 C35.815,25.5 38.5,28.185 38.5,31.5 C38.5,34.815 35.815,37.5 32.5,37.5 Z" id="Icons/Alert/ic_error_outline_24px" fill="#902727" fill-rule="nonzero"></path>
+                </g>
+                <g id="Group-3" transform="translate(83.000000, 40.000000)">
+                    <g id="Rectangle">
+                        <use fill="#ECF8FF" fill-rule="evenodd" xlink:href="#path-7"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7"></use>
+                    </g>
+                    <path d="M534.84699,21 L537.617476,23.7704855 C538.127508,24.2805178 538.127508,25.1074435 537.617476,25.6174758 C537.107443,26.1275081 536.280518,26.1275081 535.770485,25.6174758 L533,22.8469903 L530.229515,25.6174758 C529.719482,26.1275081 528.892557,26.1275081 528.382524,25.6174758 C527.872492,25.1074435 527.872492,24.2805178 528.382524,23.7704855 L531.15301,21 L528.382524,18.2295145 C527.872492,17.7194822 527.872492,16.8925565 528.382524,16.3825242 C528.892557,15.8724919 529.719482,15.8724919 530.229515,16.3825242 L533,19.1530097 L535.770485,16.3825242 C536.280518,15.8724919 537.107443,15.8724919 537.617476,16.3825242 C538.127508,16.8925565 538.127508,17.7194822 537.617476,18.2295145 L534.84699,21 Z" id="Path" fill="#3A8FDD"></path>
+                    <text id="Info-Alert" font-family="Lato-Bold, Lato" font-size="16" font-weight="bold" fill="#274776">
+                        <tspan x="47" y="38">Info Alert</tspan>
+                    </text>
+                    <text id="This-is-the-alert-de" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" line-spacing="21" fill="#2A77C7">
+                        <tspan x="26" y="60">This is the alert description. It provides context to the user, bringing attention to </tspan>
+                        <tspan x="26" y="81">information that needs to be consumed.</tspan>
+                    </text>
+                    <path d="M33,23 C28.584,23 25,26.584 25,31 C25,35.416 28.584,39 33,39 C37.416,39 41,35.416 41,31 C41,26.584 37.416,23 33,23 Z M33.8,35 L32.2,35 L32.2,30.2 L33.8,30.2 L33.8,35 Z M33.8,28.6 L32.2,28.6 L32.2,27 L33.8,27 L33.8,28.6 Z" id="Icons/Action/ic_info_24px" fill="#274776" fill-rule="nonzero"></path>
+                </g>
+                <text id="The-Alert-Component." font-family="Lato-Medium, Lato" font-size="15" font-weight="400" line-spacing="24" fill="#3E5667">
+                    <tspan x="0" y="599">The Alert Component.</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
