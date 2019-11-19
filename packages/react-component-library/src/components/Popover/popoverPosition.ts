@@ -1,7 +1,7 @@
-import { POPOVER_PLACEMENT } from './constants'
+import { FLOATING_BOX_PLACEMENT } from '../../primitives/FloatingBox'
 
 export const calculate = {
-  [POPOVER_PLACEMENT.ABOVE]: (
+  [FLOATING_BOX_PLACEMENT.ABOVE]: (
     target: Element | any,
     popover: Element | any
   ) => {
@@ -13,7 +13,7 @@ export const calculate = {
 
     return { left, top }
   },
-  [POPOVER_PLACEMENT.BELOW]: (
+  [FLOATING_BOX_PLACEMENT.BELOW]: (
     target: Element | any,
   ) => {
     const targetRect = target.getBoundingClientRect()
@@ -23,13 +23,13 @@ export const calculate = {
 
     return { left, top }
   },
-  [POPOVER_PLACEMENT.LEFT]: (
+  [FLOATING_BOX_PLACEMENT.LEFT]: (
     target: Element | any,
     popover: Element | any
   ) => {
     //
   },
-  [POPOVER_PLACEMENT.RIGHT]: (
+  [FLOATING_BOX_PLACEMENT.RIGHT]: (
     target: Element | any,
     popover: Element | any
   ) => {

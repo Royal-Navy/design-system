@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import classNames from 'classnames'
 
 import {
   NOTIFICATION_PLACEMENT,
   NOTIFICATION_PLACEMENT_ARROW_POSITION_MAP,
-  POPOVER_WIDTH,
+  NOTIFICATION_CONTAINER_WIDTH,
 } from './constants'
 
-import { Popover } from '../../components'
+import { FloatingBox } from '../../primitives/FloatingBox'
 import { Bell } from '../../icons'
 import { useNotificationPanel } from './useNotificationPanel'
 import { NotificationsProps } from './Notifications'
@@ -43,6 +44,14 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
     node,
   } = useNotificationPanel(notificationPlacement, onShow, onHide)
 
+  const containerClasses = classNames(
+    'rn-notification-panel__container',
+    'rn-notification-panel__container--dark',
+    {
+      [`rn-notification-panel__container--${notificationArrowPosition}`]: true,
+    }
+  )
+
   return (
     <div
       className={`rn-notification-panel ${className}`}
@@ -70,14 +79,13 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
         transitionLeaveTimeout={300}
       >
         {showNotifications && (
-          <Popover
+          <FloatingBox
+            className={containerClasses}
             {...notificationPosition}
-            position={notificationArrowPosition}
-            width={POPOVER_WIDTH}
-            scheme="dark"
+            width={NOTIFICATION_CONTAINER_WIDTH}
           >
             {children}
-          </Popover>
+          </FloatingBox>
         )}
       </ReactCSSTransitionGroup>
     </div>

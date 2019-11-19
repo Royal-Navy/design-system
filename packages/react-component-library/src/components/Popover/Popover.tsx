@@ -1,74 +1,95 @@
-import React, { forwardRef } from 'react'
+import React, { useState, useRef } from 'react'
 import classNames from 'classnames'
 
-import { POPOVER_ARROW_POSITION, POPOVER_SCHEME } from './constants'
+import { POPOVER_SCHEME, POPOVER_CLOSE_DELAY } from './constants'
 
-export interface PopoverProps extends PositionType, ComponentWithClass {
-  height?: number
-  width?: number
-  left?: number
-  right?: number
-  bottom?: number
-  top?: number
-  position?:
-    | POPOVER_ARROW_POSITION.LEFT_BOTTOM
-    | POPOVER_ARROW_POSITION.LEFT_TOP
-    | POPOVER_ARROW_POSITION.RIGHT_BOTTOM
-    | POPOVER_ARROW_POSITION.RIGHT_TOP
-    | POPOVER_ARROW_POSITION.TOP_LEFT
-    | POPOVER_ARROW_POSITION.TOP_RIGHT
-    | POPOVER_ARROW_POSITION.BOTTOM_LEFT
-    | POPOVER_ARROW_POSITION.BOTTOM_RIGHT
+import {
+  FloatingBox,
+  FloatingBoxProps,
+  FLOATING_BOX_PLACEMENT,
+  FLOATING_BOX_PLACEMENT_ARROW_POSITION_MAP,
+} from '../../primitives/FloatingBox'
+
+import { calculate } from './popoverPosition'
+
+interface PopoverProps
+  extends Omit<FloatingBoxProps, 'onMouseEnter' | 'onMouseLeave'> {
+  children: React.ReactElement
+  popoverJSX: React.ReactElement
   scheme?: POPOVER_SCHEME.LIGHT | POPOVER_SCHEME.DARK
-  onMouseEnter?: (e: React.MouseEvent) => void
-  onMouseLeave?: (e: React.MouseEvent) => void
-  children?: React.ReactElement
+  placement:
+    | FLOATING_BOX_PLACEMENT.ABOVE
+    | FLOATING_BOX_PLACEMENT.BELOW
+    | FLOATING_BOX_PLACEMENT.LEFT
+    | FLOATING_BOX_PLACEMENT.RIGHT
 }
 
-export const Popover = forwardRef(
-  (props: PopoverProps, ref?: React.Ref<HTMLDivElement>) => {
-    const {
-      className,
-      bottom,
-      children,
-      height,
-      left,
-      position = POPOVER_ARROW_POSITION.LEFT_BOTTOM,
-      right,
-      scheme = POPOVER_SCHEME.LIGHT,
-      top,
-      width,
-      onMouseEnter,
-      onMouseLeave,
-    } = props
+export const Popover: React.FC<PopoverProps> = ({
+  children,
+  popoverJSX,
+  scheme = POPOVER_SCHEME.LIGHT,
+  placement = FLOATING_BOX_PLACEMENT.BELOW,
+  ...rest
+}) => {
+  const [position, setPosition] = useState(null)
+  const [isVisible, setIsVisible] = useState(false)
 
-    const style = {
-      bottom,
-      height,
-      left,
-      right,
-      top,
-      width,
+  const timerRef = useRef(null)
+  const popoverRef = useRef(null)
+
+  const arrowPosition = FLOATING_BOX_PLACEMENT_ARROW_POSITION_MAP[placement]
+
+  const classes = classNames('rn-popover', {
+    [`rn-popover--${scheme}`]: true,
+    [`rn-popover--${arrowPosition}`]: true,
+    'is-visible': isVisible,
+  })
+
+  function handleOnMouseEnter(e: React.MouseEvent) {
+    if (timerRef.current !== null) {
+      clearTimeout(timerRef.current)
     }
 
-    const classes = classNames('rn-popover', className, {
-      [`rn-popover--${position}`]: true,
-      [`rn-popover--${scheme}`]: true,
-    })
+    if (position === null) {
+      const element: Element = e.currentTarget
+      setPosition(calculate[placement](element, popoverRef))
+    }
 
-    return (
-      <div
-        ref={ref}
-        className={classes}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        style={style}
-        data-testid="popover"
-      >
-        <div className="rn-popover__content">{children}</div>
-      </div>
-    )
+    setIsVisible(true)
   }
-)
+
+  function handleOnMouseLeave(_: React.MouseEvent) {
+    timerRef.current = setTimeout(() => {
+      timerRef.current = null
+      setIsVisible(false)
+    }, POPOVER_CLOSE_DELAY)
+  }
+
+  function renderTarget() {
+    return React.Children.map(children, (item: React.ReactElement) =>
+      React.cloneElement(item, {
+        onMouseEnter: handleOnMouseEnter,
+        onMouseLeave: handleOnMouseLeave,
+      })
+    )[0]
+  }
+
+  return (
+    <>
+      {renderTarget()}
+      <FloatingBox
+        ref={popoverRef}
+        className={classes}
+        onMouseEnter={handleOnMouseEnter}
+        onMouseLeave={handleOnMouseLeave}
+        position={arrowPosition}
+        {...position}
+        {...rest}
+      >
+        {popoverJSX}
+      </FloatingBox>
+    </>
+  )
+}
 
 Popover.displayName = 'Popover'

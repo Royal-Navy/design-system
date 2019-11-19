@@ -1,3 +1,235 @@
+$notification-panel-light-background: color(neutral, white);
+$notification-panel-light-border: color(neutral, 100);
+$notification-panel-dark-background: color(neutral, 700);
+$notification-panel-dark-border: color(neutral, 700);
+$notification-panel-border-thickness: 1px;
+$notification-panel-inner: 5px;
+$notification-panel-outer: $notification-panel-inner;
+$notification-panel-offset: $notification-panel-outer + $notification-panel-border-thickness;
+
+.rn-notification-panel__container .rn-floating-box__content {
+  @include z-index(modal);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: color(neutral, white);
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.12);
+}
+
+.rn-notification-panel__container .rn-notification-panel__footer {
+  padding: spacing(3);
+  margin: 0;
+  border-top: 1px solid color(neutral, 100);
+  background-color: color(neutral, 000);
+  text-align: right;
+}
+
+.rn-notification-panel__container a.rn-notification-panel__footer-link {
+  text-decoration: none;
+  color: color(neutral, 300);
+  font-size: font-size(xs);
+  cursor: pointer;
+}
+
+
+@include breakpoint("s") {
+  .rn-notification-panel__container {
+    position: absolute;
+  }
+
+  .rn-notification-panel__container .rn-floating-box__content {
+    position: relative;
+    top: auto;
+    left: auto;
+    height: auto;
+    width: auto;
+    padding: 0;
+    border-radius: 3px;
+  }
+
+  .rn-notification-panel__container--light .rn-floating-box__content {
+    background: $notification-panel-light-background;
+    border: $notification-panel-light-border solid $notification-panel-border-thickness;
+  }
+
+  .rn-notification-panel__container--dark .rn-floating-box__content {
+    background: $notification-panel-dark-background;
+    border: $notification-panel-dark-border solid $notification-panel-border-thickness;
+    color: color(neutral, white);
+  }
+
+  .rn-notification-panel__container .rn-floating-box__content:before {
+    border-style: solid;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    z-index: 0;
+  }
+
+  .rn-notification-panel__container .rn-floating-box__content:after {
+    border-style: solid;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    z-index: 1;
+  }
+
+  .rn-notification-panel__container--top_left .rn-floating-box__content:before,
+  .rn-notification-panel__container--top_right .rn-floating-box__content:before {
+    border-width: 0 $notification-panel-outer $notification-panel-outer;
+    margin-left: -$notification-panel-outer;
+    top: -$notification-panel-offset;
+  }
+  .rn-notification-panel__container--top_left.rn-notification-panel__container--light .rn-floating-box__content:before,
+  .rn-notification-panel__container--top_right.rn-notification-panel__container--light .rn-floating-box__content:before {
+    border-color: $notification-panel-light-border transparent;
+  }
+  .rn-notification-panel__container--top_left.rn-notification-panel__container--dark .rn-floating-box__content:before,
+  .rn-notification-panel__container--top_right.rn-notification-panel__container--dark .rn-floating-box__content:before {
+    border-color: $notification-panel-dark-border transparent;
+  }
+  .rn-notification-panel__container--top_left .rn-floating-box__content:after,
+  .rn-notification-panel__container--top_right .rn-floating-box__content:after {
+    border-width: 0 $notification-panel-inner $notification-panel-inner;
+    margin-left: -$notification-panel-inner;
+    top: -$notification-panel-inner;
+  }
+  .rn-notification-panel__container--top_left.rn-notification-panel__container--light .rn-floating-box__content:after,
+  .rn-notification-panel__container--top_right.rn-notification-panel__container--light .rn-floating-box__content:after {
+    border-color: $notification-panel-light-background transparent;
+  }
+  .rn-notification-panel__container--top_left.rn-notification-panel__container--dark .rn-floating-box__content:after,
+  .rn-notification-panel__container--top_right.rn-notification-panel__container--dark .rn-floating-box__content:after {
+    border-color: $notification-panel-dark-background transparent;
+  }
+
+
+  .rn-notification-panel__container--right_top .rn-floating-box__content:before,
+  .rn-notification-panel__container--right_bottom .rn-floating-box__content:before {
+    border-width: $notification-panel-outer 0 $notification-panel-outer $notification-panel-outer;
+    right: -$notification-panel-offset;
+    margin-top: -$notification-panel-outer;
+  }
+  .rn-notification-panel__container--right_top.rn-notification-panel__container--light .rn-floating-box__content:before,
+  .rn-notification-panel__container--right_bottom.rn-notification-panel__container--light .rn-floating-box__content:before {
+    border-color: transparent $notification-panel-light-border;
+  }
+  .rn-notification-panel__container--right_top.rn-notification-panel__container--dark .rn-floating-box__content:before,
+  .rn-notification-panel__container--right_bottom.rn-notification-panel__container--dark .rn-floating-box__content:before {
+    border-color: transparent $notification-panel-dark-border;
+  }
+  .rn-notification-panel__container--right_top .rn-floating-box__content:after,
+  .rn-notification-panel__container--right_bottom .rn-floating-box__content:after {
+    border-width: $notification-panel-inner 0 $notification-panel-inner $notification-panel-inner;
+    right: -$notification-panel-inner;
+    margin-top: -$notification-panel-inner;
+
+  }
+  .rn-notification-panel__container--right_top.rn-notification-panel__container--light .rn-floating-box__content:after,
+  .rn-notification-panel__container--right_bottom.rn-notification-panel__container--light .rn-floating-box__content:after {
+    border-color: transparent $notification-panel-light-background;
+  }
+  .rn-notification-panel__container--right_top.rn-notification-panel__container--dark .rn-floating-box__content:after,
+  .rn-notification-panel__container--right_bottom.rn-notification-panel__container--dark .rn-floating-box__content:after {
+    border-color: transparent $notification-panel-dark-background;
+  }
+
+
+  .rn-notification-panel__container--bottom_right .rn-floating-box__content:before,
+  .rn-notification-panel__container--bottom_left .rn-floating-box__content:before {
+    border-width: $notification-panel-inner $notification-panel-inner 0;
+    bottom: -$notification-panel-inner - $notification-panel-border-thickness;
+    margin-left: -$notification-panel-outer;
+  }
+  .rn-notification-panel__container--bottom_right.rn-notification-panel__container--light .rn-floating-box__content:before,
+  .rn-notification-panel__container--bottom_left.rn-notification-panel__container--light .rn-floating-box__content:before {
+    border-color: $notification-panel-light-border transparent;
+  }
+  .rn-notification-panel__container--bottom_right.rn-notification-panel__container--dark .rn-floating-box__content:before,
+  .rn-notification-panel__container--bottom_left.rn-notification-panel__container--dark .rn-floating-box__content:before {
+    border-color: $notification-panel-dark-border transparent;
+  }
+  .rn-notification-panel__container--bottom_right .rn-floating-box__content:after,
+  .rn-notification-panel__container--bottom_left .rn-floating-box__content:after {
+    border-width: $notification-panel-inner $notification-panel-inner 0;
+    bottom: -$notification-panel-inner;
+    margin-left: -$notification-panel-outer;
+  }
+  .rn-notification-panel__container--bottom_right.rn-notification-panel__container--light .rn-floating-box__content:after,
+  .rn-notification-panel__container--bottom_left.rn-notification-panel__container--light .rn-floating-box__content:after {
+    border-color: $notification-panel-light-background transparent;
+  }
+  .rn-notification-panel__container--bottom_right.rn-notification-panel__container--dark .rn-floating-box__content:after,
+  .rn-notification-panel__container--bottom_left.rn-notification-panel__container--dark .rn-floating-box__content:after {
+    border-color: $notification-panel-dark-background transparent;
+  }
+
+
+  .rn-notification-panel__container--left_bottom .rn-floating-box__content:before,
+  .rn-notification-panel__container--left_top .rn-floating-box__content:before {
+    border-width: $notification-panel-outer $notification-panel-outer $notification-panel-outer 0;
+    left: -$notification-panel-offset;
+    margin-top: -$notification-panel-outer;
+  }
+  .rn-notification-panel__container--left_bottom.rn-notification-panel__container--light .rn-floating-box__content:before,
+  .rn-notification-panel__container--left_top.rn-notification-panel__container--light .rn-floating-box__content:before {
+    border-color: transparent $notification-panel-light-border;
+  }
+  .rn-notification-panel__container--left_bottom.rn-notification-panel__container--dark .rn-floating-box__content:before,
+  .rn-notification-panel__container--left_top.rn-notification-panel__container--dark .rn-floating-box__content:before {
+    border-color: transparent $notification-panel-dark-border;
+  }
+  .rn-notification-panel__container--left_bottom .rn-floating-box__content:after,
+  .rn-notification-panel__container--left_top .rn-floating-box__content:after {
+    border-width: $notification-panel-inner $notification-panel-inner $notification-panel-inner 0;
+    left: -$notification-panel-inner;
+    margin-top: -$notification-panel-inner;
+  }
+  .rn-notification-panel__container--left_bottom.rn-notification-panel__container--light .rn-floating-box__content:after,
+  .rn-notification-panel__container--left_top.rn-notification-panel__container--light .rn-floating-box__content:after {
+    border-color: transparent $notification-panel-light-background;
+  }
+  .rn-notification-panel__container--left_bottom.rn-notification-panel__container--dark .rn-floating-box__content:after,
+  .rn-notification-panel__container--left_top.rn-notification-panel__container--dark .rn-floating-box__content:after {
+    border-color: transparent $notification-panel-dark-background;
+  }
+
+
+  .rn-notification-panel__container--left_bottom .rn-floating-box__content:before,
+  .rn-notification-panel__container--left_bottom .rn-floating-box__content:after,
+  .rn-notification-panel__container--right_bottom .rn-floating-box__content:before,
+  .rn-notification-panel__container--right_bottom .rn-floating-box__content:after {
+    top: unset;
+    bottom: 1rem;
+  }
+
+  .rn-notification-panel__container--left_top .rn-floating-box__content:before,
+  .rn-notification-panel__container--left_top .rn-floating-box__content:after,
+  .rn-notification-panel__container--right_top .rn-floating-box__content:before,
+  .rn-notification-panel__container--right_top .rn-floating-box__content:after {
+    top: 1rem;
+  }
+  .rn-notification-panel__container--top_left .rn-floating-box__content:before,
+  .rn-notification-panel__container--top_left .rn-floating-box__content:after,
+  .rn-notification-panel__container--bottom_left .rn-floating-box__content:before,
+  .rn-notification-panel__container--bottom_left .rn-floating-box__content:after {
+    left: 1rem;
+  }
+  .rn-notification-panel__container--top_right .rn-floating-box__content:before,
+  .rn-notification-panel__container--top_right .rn-floating-box__content:after,
+  .rn-notification-panel__container--bottom_right .rn-floating-box__content:before,
+  .rn-notification-panel__container--bottom_right .rn-floating-box__content:after {
+    left: unset;
+    right: 1rem;
+  }
+}
+
 .rn-notification-panel__button {
   background: transparent;
   border: none;

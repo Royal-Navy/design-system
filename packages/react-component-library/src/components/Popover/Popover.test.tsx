@@ -9,7 +9,7 @@ describe('Popover', () => {
   beforeEach(() => {
     wrapper = render(
       <Popover>
-        <pre>Arbitraty JSX content</pre>
+        <pre>Arbitrary JSX content</pre>
       </Popover>
     )
   })

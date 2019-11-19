@@ -1,0 +1,24 @@
+.rn-floating-box__content {
+  @include z-index(modal);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@include breakpoint("s") {
+  .rn-floating-box {
+    position: absolute;
+  }
+
+  .rn-floating-box__content {
+    position: relative;
+    top: auto;
+    left: auto;
+    height: auto;
+    width: auto;
+  }
+}
