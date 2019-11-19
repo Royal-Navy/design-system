@@ -5,6 +5,7 @@ import { Button } from './Button'
 import { ButtonGroup } from './ButtonGroup'
 import Checkbox from './Checkbox'
 import { Dialog } from './Dialog'
+import { Drawer } from './Drawer'
 import { Dropdown } from './Dropdown'
 import Link from './Link'
 import { Modal } from './Modal'
@@ -36,6 +37,7 @@ export {
   ButtonGroup,
   Checkbox,
   Dialog,
+  Drawer,
   Dropdown,
   Link,
   Modal,

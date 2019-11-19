@@ -6,6 +6,7 @@ import { Button } from './components/Button'
 import { ButtonGroup } from './components/ButtonGroup'
 import Checkbox from './components/Checkbox'
 import { Dialog } from './components/Dialog'
+import { Drawer } from './components/Drawer'
 import { Dropdown } from './components/Dropdown'
 import { Masthead } from './fragments/Masthead'
 import { Modal } from './components/Modal'
@@ -46,6 +47,7 @@ export {
   Checkbox,
   Column,
   Dialog,
+  Drawer,
   Dropdown,
   Masthead,
   Modal,
