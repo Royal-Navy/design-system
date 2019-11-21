@@ -22,7 +22,8 @@
     "prettier": "^1.19.1"
   },
   "resolutions": {
-    "**/**/handlebars": "^4.5.3"
+    "**/**/handlebars": "^4.5.3",
+    "**/**/mem": "^4.0.0"
   },
   "prettier": {
     "bracketSpacing": true,
