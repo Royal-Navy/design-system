@@ -1,7 +1,12 @@
+/* stylelint-disable */
 // Check to see if this context is enabled
-@if $navy--context == "light" {
-  // Breakpoints
-  $__breakpoints: (
+@use "../config";
+@use "defaults";
+
+
+@if config.$context == "light" {  
+  // Breakpoints  
+  defaults.$breakpoints: (
     "root": (
       "breakpoint": 0,
       "baseFontSize": 100%,
@@ -31,9 +36,9 @@
       "baseFontSize": 106%,
     ),
   );
-
+  
   // Set the context colours
-  $__colors: (
+  defaults.$colors: (
     "neutral": (
       "black": #0a141b,
       "900": #0a141b,
@@ -172,117 +177,117 @@
 
   // State Mapping
 
-  $states: (
-    "neutral": (
-      "default": color("neutral", "500"),
-      "faded": color("neutral", "200"),
-    ),
-    "action": (
-      "default": color("action", "500"),
-      "faded": color("action", "200"),
-    ),
-    "danger": (
-      "default": color("danger", "500"),
-      "faded": color("danger", "200"),
-    ),
-    "warning": (
-      "default": color("warning", "500"),
-      "faded": color("warning", "200"),
-    ),
-    "success": (
-      "default": color("success", "500"),
-      "faded": color("success", "200"),
-    ),
-  );
+  // defaults.$states: (
+  //   "neutral": (
+  //     "default": color("neutral", "500"),
+  //     "faded": color("neutral", "200"),
+  //   ),
+  //   "action": (
+  //     "default": color("action", "500"),
+  //     "faded": color("action", "200"),
+  //   ),
+  //   "danger": (
+  //     "default": color("danger", "500"),
+  //     "faded": color("danger", "200"),
+  //   ),
+  //   "warning": (
+  //     "default": color("warning", "500"),
+  //     "faded": color("warning", "200"),
+  //   ),
+  //   "success": (
+  //     "default": color("success", "500"),
+  //     "faded": color("success", "200"),
+  //   ),
+  // );
 
   // Spacing
   // Set to 16px by default
-  $__spacer: 1rem;
-  $__spacing: (
+  $_spacer: 1rem;
+  defaults.$spacing: (
     "0": 0,
     "1": (
       // 2px
-      $__spacer * 0.125,
+      $_spacer * 0.125,
     ),
     "2": (
       // 4px
-      $__spacer * 0.25,
+      $_spacer * 0.25,
     ),
     "3": (
       // 6px
-      $__spacer * 0.375,
+      $_spacer * 0.375,
     ),
     "4": (
       // 8px
-      $__spacer * 0.5,
+      $_spacer * 0.5,
     ),
     "5": (
       // 10px
-      $__spacer * 0.625,
+      $_spacer * 0.625,
     ),
     "6": (
       // 12px
-      $__spacer * 0.75,
+      $_spacer * 0.75,
     ),
     "7": (
       // 14px
-      $__spacer * 0.875,
+      $_spacer * 0.875,
     ),
     // 16px
-    "8": $__spacer,
+    "8": $_spacer,
     "9": (
       // 18px
-      $__spacer * 1.125,
+      $_spacer * 1.125,
     ),
     "10": (
       // 20px 
-      $__spacer * 1.25,
+      $_spacer * 1.25,
     ),
     "11": (
       // 24px
-      $__spacer * 1.5,
+      $_spacer * 1.5,
     ),    
     "12": (
       // 32px
-      $__spacer * 2,
+      $_spacer * 2,
     ),    
     "13": (
       // 40px
-      $__spacer * 2.5,
+      $_spacer * 2.5,
     ),    
     "14": (
       // 48px
-      $__spacer * 3,
+      $_spacer * 3,
     ),    
     "15": (
       // 64px
-      $__spacer * 4,
+      $_spacer * 4,
     ),
     "16": (
       // 80px
-      $__spacer * 5,
+      $_spacer * 5,
     ),
     "17": (
       // 96px
-      $__spacer * 6,
+      $_spacer * 6,
     ),
     "18": (
       // 112px
-      $__spacer * 7,
+      $_spacer * 7,
     ),
     "19": (
       // 128px
-      $__spacer * 8,
+      $_spacer * 8,
     ),
     "20": (
       // 144px
-      $__spacer * 9,
+      $_spacer * 9,
     ),
     "px": 1px,
     "full": 100%,
   );
 
-  $__shadows: (
+  defaults.$shadows: (
     "0": 0 0 0 transparent,
     "1": 0 1px 3px 0 rgba(0, 0, 0, 0.1),
     "2": 0 6px 14px 0 rgba(0, 0, 0, 0.16),
@@ -290,7 +295,7 @@
   );
 
   // Typography
-  $__typography: (
+  defaults.$typography: (
     // 8px
     "xxs": 0.5rem,
     // 10px
@@ -316,7 +321,7 @@
   );
 
   // Z Index Levels
-  $__zIndex: (
+  defaults.$zIndex: (
     "dialog": 9000,
     "modal": 8000,
     "overlay": 7000,

@@ -3,14 +3,17 @@
         Build Base Font Size
 
 *****************************************************/
-
+@use "sass:map";
+@use "../vars";
+@use "../config";
+@use "../abstracts/functions/map-deep-get";
 
 // Local variable to check loop position
 $x: 0;
 html {
-  @each $_bp, $_baseFontSize in $__breakpoints {
-    $_fontSize: map-deep-get($__breakpoints, $_bp, "baseFontSize");
-    $_width: #{map-deep-get($__breakpoints, $_bp, "breakpoint")};
+  @each $_bp, $_baseFontSize in vars.$breakpoints {
+    $_fontSize: map-deep-get(vars.$breakpoints, $_bp, "baseFontSize");
+    $_width: #{map-deep-get(vars.$breakpoints, $_bp, "breakpoint")};
     @if $x == 0 {
       font-size: $_fontSize;
     }
@@ -22,7 +25,7 @@ html {
     $x: $x + 1;
   }
 
-  font-family: $navy--font-family,
+  font-family: config.$font-family,
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
