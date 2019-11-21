@@ -1,8 +1,7 @@
 import React from 'react'
 import { render, fireEvent, RenderResult } from '@testing-library/react'
 
-import TabSet from './index'
-import Tab from './Tab'
+import { TabSet, Tab } from '.'
 
 describe('TabSet', () => {
   let tabset: RenderResult

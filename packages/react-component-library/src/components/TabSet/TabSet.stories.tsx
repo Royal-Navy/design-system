@@ -2,8 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 
-import TabSet from './index'
-import Tab from './Tab'
+import { Tab, TabSet } from '.'
 
 const stories = storiesOf('TabSet', module)
 
