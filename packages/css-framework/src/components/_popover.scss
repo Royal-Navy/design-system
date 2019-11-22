@@ -1,11 +1,9 @@
 .rn-popover {
-  visibility: hidden;
   pointer-events: none;
   opacity: 0;
   transition: linear opacity 0.3s;
 
   &.is-visible {
-    visibility: visible;
     pointer-events: all;
     opacity: 1;
   }

@@ -1,17 +1,18 @@
 import React, { useState, useRef } from 'react'
 import classNames from 'classnames'
+import TetherComponent from 'react-tether'
 
-import { POPOVER_CLOSE_DELAY } from './constants'
+import {
+  POPOVER_CLOSE_DELAY,
+  POPOVER_PLACEMENT,
+  POPOVER_PLACEMENTS,
+} from './constants'
 
 import {
   FloatingBox,
   FloatingBoxProps,
   FLOATING_BOX_SCHEME,
-  FLOATING_BOX_PLACEMENT,
-  FLOATING_BOX_PLACEMENT_ARROW_POSITION_MAP,
 } from '../../primitives/FloatingBox'
-
-import { calculate } from './popoverPosition'
 
 interface PopoverProps
   extends Omit<FloatingBoxProps, 'onMouseEnter' | 'onMouseLeave'> {
@@ -19,10 +20,10 @@ interface PopoverProps
   content: React.ReactElement
   scheme?: FLOATING_BOX_SCHEME.LIGHT | FLOATING_BOX_SCHEME.DARK
   placement:
-    | FLOATING_BOX_PLACEMENT.ABOVE
-    | FLOATING_BOX_PLACEMENT.BELOW
-    | FLOATING_BOX_PLACEMENT.LEFT
-    | FLOATING_BOX_PLACEMENT.RIGHT
+    | POPOVER_PLACEMENT.ABOVE
+    | POPOVER_PLACEMENT.BELOW
+    | POPOVER_PLACEMENT.LEFT
+    | POPOVER_PLACEMENT.RIGHT
 }
 
 export const Popover: React.FC<PopoverProps> = ({
@@ -30,29 +31,20 @@ export const Popover: React.FC<PopoverProps> = ({
   children,
   content,
   scheme = FLOATING_BOX_SCHEME.LIGHT,
-  placement = FLOATING_BOX_PLACEMENT.BELOW,
+  placement = POPOVER_PLACEMENT.BELOW,
   ...rest
 }) => {
-  const [position, setPosition] = useState(null)
   const [isVisible, setIsVisible] = useState(false)
-
   const timerRef = useRef(null)
-  const popoverRef = useRef(null)
-
-  const arrowPosition = FLOATING_BOX_PLACEMENT_ARROW_POSITION_MAP[placement]
+  const PLACEMENTS = POPOVER_PLACEMENTS[placement]
 
   const classes = classNames('rn-popover', className, {
     'is-visible': isVisible,
   })
 
-  function handleOnMouseEnter(e: React.MouseEvent) {
+  function handleOnMouseEnter(_: React.MouseEvent) {
     if (timerRef.current !== null) {
       clearTimeout(timerRef.current)
-    }
-
-    if (position === null) {
-      const element: Element = e.currentTarget
-      setPosition(calculate[placement](element, popoverRef.current))
     }
 
     setIsVisible(true)
@@ -70,20 +62,28 @@ export const Popover: React.FC<PopoverProps> = ({
       React.cloneElement(item, {
         onMouseEnter: handleOnMouseEnter,
         onMouseLeave: handleOnMouseLeave,
+        ref,
       })
     )[0]
   }
 
+  /**
+   * Waiting for PR to be merged in offending package to fix type error.
+   * Using createElement allows us to avoid the type error.
+   *
+   * https://github.com/danreeves/react-tether/issues/218
+   * https://github.com/Microsoft/TypeScript/issues/27552
+   */
   return (
     <>
-      {/* https://github.com/Microsoft/TypeScript/issues/27552#issuecomment-495830020
+      {/*
       // @ts-ignore */}
-      <TetherComponent
-        offset={PLACEMENTS.OFFSET}
-        attachment={PLACEMENTS.ATTACHMENT}
-        targetAttachment={PLACEMENTS.TARGET_ATTACHMENT}
-        renderTarget={ref => renderTarget(ref)}
-        renderElement={ref => (
+      {React.createElement(TetherComponent, {
+        offset: PLACEMENTS.OFFSET,
+        attachment: PLACEMENTS.ATTACHMENT,
+        targetAttachment: PLACEMENTS.TARGET_ATTACHMENT,
+        renderTarget: (ref: any) => renderTarget(ref),
+        renderElement: (ref: any) => (
           <FloatingBox
             ref={ref}
             className={classes}
@@ -95,8 +95,8 @@ export const Popover: React.FC<PopoverProps> = ({
           >
             {content}
           </FloatingBox>
-        )}
-      />
+        ),
+      })}
     </>
   )
 }

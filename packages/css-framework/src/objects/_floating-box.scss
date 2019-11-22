@@ -8,7 +8,6 @@ $_floating-box-outer: $_floating-box-inner;
 $_floating-box-offset: $_floating-box-outer + $_floating-box-border-thickness;
 
 .rn-floating-box__content {
-  @include z-index(modal);
   position: absolute;
   top: 0;
   left: 0;
@@ -35,10 +34,9 @@ a.rn-floating-box__footer-link {
   cursor: pointer;
 }
 
-
 @include breakpoint("s") {
   .rn-floating-box {
-    position: absolute;
+    @include z-index(modal);
   }
 
   .rn-floating-box__content {
@@ -206,26 +204,26 @@ a.rn-floating-box__footer-link {
   .rn-floating-box--right_bottom .rn-floating-box__content:before,
   .rn-floating-box--right_bottom .rn-floating-box__content:after {
     top: unset;
-    bottom: 1rem;
+    bottom: 15px;
   }
 
   .rn-floating-box--left_top .rn-floating-box__content:before,
   .rn-floating-box--left_top .rn-floating-box__content:after,
   .rn-floating-box--right_top .rn-floating-box__content:before,
   .rn-floating-box--right_top .rn-floating-box__content:after {
-    top: 1rem;
+    top: 15px;
   }
   .rn-floating-box--top_left .rn-floating-box__content:before,
   .rn-floating-box--top_left .rn-floating-box__content:after,
   .rn-floating-box--bottom_left .rn-floating-box__content:before,
   .rn-floating-box--bottom_left .rn-floating-box__content:after {
-    left: 1rem;
+    left: 15px;
   }
   .rn-floating-box--top_right .rn-floating-box__content:before,
   .rn-floating-box--top_right .rn-floating-box__content:after,
   .rn-floating-box--bottom_right .rn-floating-box__content:before,
   .rn-floating-box--bottom_right .rn-floating-box__content:after {
     left: unset;
-    right: 1rem;
+    right: 15px;
   }
 }

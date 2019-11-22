@@ -1,10 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import {
-  FLOATING_BOX_SCHEME,
-  FLOATING_BOX_PLACEMENT,
-} from '../../primitives/FloatingBox'
+import { POPOVER_PLACEMENT } from './constants'
+import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 
 import { Popover } from '.'
 
@@ -29,7 +27,7 @@ stories.add('Default', () => (
 
 stories.add('Dark', () => (
   <Popover
-    placement={FLOATING_BOX_PLACEMENT.BELOW}
+    placement={POPOVER_PLACEMENT.BELOW}
     scheme={FLOATING_BOX_SCHEME.DARK}
     content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
   >

@@ -26,7 +26,7 @@ export interface FloatingBoxProps extends PositionType, ComponentWithClass {
 }
 
 export const FloatingBox = forwardRef(
-  (props: FloatingBoxProps, ref?: React.Ref<HTMLDivElement>) => {
+  (props: FloatingBoxProps, ref?: React.Ref<any>) => {
     const {
       className,
       width,

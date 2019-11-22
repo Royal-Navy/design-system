@@ -10,11 +10,8 @@ import {
 } from '@testing-library/react'
 
 import { Popover } from '.'
-
-import {
-  FLOATING_BOX_PLACEMENT,
-  FLOATING_BOX_SCHEME,
-} from '../../primitives/FloatingBox'
+import { POPOVER_PLACEMENT } from './constants'
+import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 
 describe('Popover', () => {
   let wrapper: RenderResult
