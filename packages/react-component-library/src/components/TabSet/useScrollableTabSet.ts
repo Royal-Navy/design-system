@@ -16,25 +16,18 @@ export function useScrollableTabSet(items: React.ReactElement<TabProps>[]) {
       const nextTab = change(currentScrollToTab)
       const nextTabExists = nextTab > -1 && nextTab < items.length
       if (nextTabExists) {
-        const currentScrollPosition = tabsRef.current.scrollLeft
-        const newScrollPosition =
+        const currentPosition = tabsRef.current.scrollLeft
+        const newPosition =
           itemsRef.current[nextTab].offsetLeft - tabsRef.current.offsetLeft
 
-        tabsRef.current.scrollTo(newScrollPosition, 0)
+        tabsRef.current.scrollTo(newPosition, 0)
 
-        const isScrollPositionTheSame =
-          currentScrollPosition === tabsRef.current.scrollLeft
+        const isPositionTheSame = currentPosition === tabsRef.current.scrollLeft
 
-        if (!isScrollPositionTheSame) {
-          setCurrentScrollToTab(nextTab)
-        }
+        if (!isPositionTheSame) setCurrentScrollToTab(nextTab)
       }
     }
   }
 
-  return {
-    itemsRef,
-    tabsRef,
-    updateCurrentScrollToTab,
-  }
+  return { itemsRef, tabsRef, updateCurrentScrollToTab }
 }
