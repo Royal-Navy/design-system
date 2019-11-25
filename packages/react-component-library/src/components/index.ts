@@ -1,3 +1,4 @@
+import { Alert, ALERT_VARIANT } from './Alert'
 import { Avatar } from './Avatar'
 import Badge from './Badge'
 import Breadcrumbs from './Breadcrumbs'
@@ -5,6 +6,7 @@ import { Button } from './Button'
 import { ButtonGroup } from './ButtonGroup'
 import Checkbox from './Checkbox'
 import { Dialog } from './Dialog'
+import { Drawer } from './Drawer'
 import { Dropdown } from './Dropdown'
 import Link from './Link'
 import { Modal } from './Modal'
@@ -21,14 +23,15 @@ import Sidebar from '../fragments/Sidebar'
 import Switch from './Switch/Switch'
 import { RangeSlider } from './RangeSlider'
 import ResponsiveSwitch from './Switch'
-import Tab from './TabSet/Tab'
-import TabSet from './TabSet'
+import { Tab, TabSet } from './TabSet'
 import TabNav from './TabNav'
 import { TextArea } from './TextArea'
 import TextInput from './TextInput'
 import { Tooltip } from './Tooltip'
 
 export {
+  Alert,
+  ALERT_VARIANT,
   Avatar,
   Badge,
   Breadcrumbs,
@@ -36,6 +39,7 @@ export {
   ButtonGroup,
   Checkbox,
   Dialog,
+  Drawer,
   Dropdown,
   Link,
   Modal,

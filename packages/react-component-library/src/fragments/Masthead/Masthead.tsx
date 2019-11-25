@@ -5,7 +5,11 @@ import classNames from 'classnames'
 import { Link, Searchbar, ScrollableNav } from '../../components'
 import { Logo as DefaultLogo, Search as SearchIcon } from '../../icons'
 import { UserLink } from './UserLink'
-import { NotificationPanel, NotificationsProps } from '../NotificationPanel'
+import {
+  NotificationPanel,
+  NotificationsProps,
+  NOTIFICATION_PLACEMENT,
+} from '../NotificationPanel'
 
 export interface MastheadProps {
   homeLink?: LinkTypes
@@ -103,7 +107,7 @@ export const Masthead: React.FC<MastheadProps> = ({
               buttonClassName="rn-masthead__option"
               className="rn-masthead__notification"
               data-testid="masthead-notifications"
-              notificationPlacement="below"
+              notificationPlacement={NOTIFICATION_PLACEMENT.BELOW}
               onHide={() => setShowNotifications(false)}
               onShow={() => setShowNotifications(true)}
               unreadNotification={unreadNotification}

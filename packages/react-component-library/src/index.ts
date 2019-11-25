@@ -1,4 +1,5 @@
 // Components
+import { Alert, ALERT_VARIANT } from './components/Alert'
 import { Avatar } from './components/Avatar'
 import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
@@ -6,6 +7,7 @@ import { Button } from './components/Button'
 import { ButtonGroup } from './components/ButtonGroup'
 import Checkbox from './components/Checkbox'
 import { Dialog } from './components/Dialog'
+import { Drawer } from './components/Drawer'
 import { Dropdown } from './components/Dropdown'
 import { Masthead } from './fragments/Masthead'
 import { Modal } from './components/Modal'
@@ -21,9 +23,8 @@ import Switch from './components/Switch/Switch'
 import { RangeSlider } from './components/RangeSlider'
 import ResponsiveSwitch from './components/Switch'
 import Radio from './components/Radio'
-import Tab from './components/TabSet/Tab'
 import { Table, Column } from './components/Table'
-import TabSet from './components/TabSet'
+import { Tab, TabSet } from './components/TabSet'
 import { TextArea } from './components/TextArea'
 import TextInput from './components/TextInput'
 import { Tooltip } from './components/Tooltip'
@@ -38,6 +39,8 @@ import { Formik } from './components/Formik'
 import withFormik from './enhancers/withFormik'
 
 export {
+  Alert,
+  ALERT_VARIANT,
   Avatar,
   Badge,
   Breadcrumbs,
@@ -46,6 +49,7 @@ export {
   Checkbox,
   Column,
   Dialog,
+  Drawer,
   Dropdown,
   Masthead,
   Modal,

@@ -1,16 +1,16 @@
 {
   "name": "reactapp",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "private": true,
   "dependencies": {
-    "@royalnavy/css-framework": "^1.7.0",
-    "@royalnavy/react-component-library": "^1.7.0",
-    "formik": "^2.0.3",
+    "@royalnavy/css-framework": "^1.8.0",
+    "@royalnavy/react-component-library": "^1.8.0",
+    "formik": "^2.0.5",
     "node-sass": "4.13.0",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-scripts": "3.2.0",
-    "sass": "^1.23.3"
+    "sass": "^1.23.7"
   },
   "scripts": {
     "start": "react-scripts start",
