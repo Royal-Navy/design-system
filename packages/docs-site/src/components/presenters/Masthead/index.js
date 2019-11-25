@@ -9,8 +9,6 @@ import {
 
 import SiteLogo from './images/site-logo.svg'
 
-import './masthead.scss'
-
 const { TriangleDown, TriangleUp } = Icons
 
 const MastHead = ({ navItems }) => {

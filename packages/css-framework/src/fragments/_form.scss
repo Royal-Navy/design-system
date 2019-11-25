@@ -1,5 +1,7 @@
+@use "../abstracts/functions" as f;
+
 .rn-form__invalid-feedback {
-  color: color("danger", "600");
-  margin: spacing("4") spacing("6");
-  font-size: font-size("base");
+  color: f.color("danger", "600");
+  margin: f.spacing("4") f.spacing("6");
+  font-size: f.font-size("base");
 }

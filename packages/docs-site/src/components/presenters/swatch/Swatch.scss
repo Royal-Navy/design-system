@@ -1,3 +1,5 @@
+@use "@royalnavy/css-framework" as rn;
+
 .swatch-container {
   display: inline-block;  
   margin-right: 20px;
@@ -12,7 +14,7 @@
 
 .swatch-label {
   text-align: center;
-  font-size: font-size("s");
+  font-size: rn.font-size("s");
   width: 100%;
   display: block;
   margin-top: 10px;

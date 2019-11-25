@@ -10,15 +10,16 @@ $font-family: "lato" !default;
 $context:     "light" !default;
 
 // Contexts
-$breakpoints: null !default;
-$colors:      null !default;
-$spacing:     null !default;
-$shadows:     null !default;
-$typography:  null !default;
-$zIndex:      null !default;
+$breakpoints: () !default;
+$colors:      () !default;
+$spacing:     () !default;
+$shadows:     () !default;
+$typography:  () !default;
+$zindex:      () !default;
 
 
 // Utility Namespace
 $utility-ns: "rn_";
 
 $content-width: 1280px;
+$animation-timing: 0.3s;

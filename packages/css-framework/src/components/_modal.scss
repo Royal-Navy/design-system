@@ -1,5 +1,8 @@
+@use "../abstracts/functions" as f;
+@use "../abstracts/mixins" as m;
+
 .rn-modal {
-  @include z-index("modal");
+  @include m.z-index("modal");
   position: fixed;
   top: 0;
   right: 0;
@@ -15,18 +18,18 @@
     display: block;
   }
 }
-
 .rn-modal__main {
-  @include shadow("2");
-  border: 1px solid color("neutral", "200");
+
+  @include m.shadow("2");
+  border: 1px solid f.color("neutral", "200");
   border-radius: 5px;
-  background: color("neutral", "white");
+  background: f.color("neutral", "white");
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   width: 90%;
-  @include breakpoint("s") {
+  @include m.breakpoint("s") {
     width: 100%;
     max-width: 700px;
   }
@@ -35,37 +38,37 @@
 .rn-modal__header {
   display: flex;
   justify-content: space-between;
-  padding: spacing("11");
-  border-bottom: 1px solid color("neutral", "100");
+  padding: f.spacing("11");
+  border-bottom: 1px solid f.color("neutral", "100");
 }
 
 .rn-modal__title {
   display: inline-block;
-  font-size: font-size("l");
-  color: color("neutral", "500");
+  font-size: f.font-size("l");
+  color: f.color("neutral", "500");
 }
 
 .rn-modal__close-button {
-  background: color("neutral", "000");
+  background: f.color("neutral", "000");
   border-radius: 1000px;
   border: 1px transparent;
   cursor: pointer;
 
   &:hover,
   &:focus {
-    background: color("neutral", "100");
+    background: f.color("neutral", "100");
     outline: 0;
   }
 }
 
 .rn-modal .rn-modal__container {
-  padding: spacing("8") spacing("8");
+  padding: f.spacing("8") f.spacing("8");
 }
 
 .rn-modal__footer {
   display: flex;
-  padding: spacing("8");
-  border-top: 1px solid color("neutral", "100");
+  padding: f.spacing("8");
+  border-top: 1px solid f.color("neutral", "100");
 }
 
 .rn-modal .rn-btn.rn-modal__primary-button,
@@ -79,11 +82,11 @@
 }
 
 .rn-modal .rn-btn.rn-modal__primary-button {
-  margin-left: spacing("4");
+  margin-left: f.spacing("4");
 }
 
 .rn-modal__divider {
   border: 0;
-  border-bottom: 1px solid color("neutral", "100");
+  border-bottom: 1px solid f.color("neutral", "100");
   margin: 0;
 }

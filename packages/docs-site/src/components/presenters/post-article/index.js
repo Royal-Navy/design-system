@@ -2,8 +2,6 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import './post-article.scss'
-
 const PostArticle = ({ mdx, className, title, description, header }) => {
   return (
     <article className={`post-article ${className}`}>

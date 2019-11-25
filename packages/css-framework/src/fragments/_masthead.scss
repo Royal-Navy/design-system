@@ -1,27 +1,29 @@
+@use "../abstracts/functions" as f;
+
 $masthead-main-height: 58px;
 
 .rn-masthead {
   width: 100%;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1 );
-  background-color: color("neutral", "white");
+  background-color: f.color("neutral", "white");
 }
 
 .rn-masthead__main {
   display: flex;
   justify-content: space-between;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1 );
-  border-bottom: 1px solid color("neutral", "100");
+  border-bottom: 1px solid f.color("neutral", "100");
 }
 
 .rn-masthead__service-name {
   display: flex;
   height: $masthead-main-height;
-  color: color("action", "900");
+  color: f.color("action", "900");
   font-weight: bold;
   align-items: center;
   text-decoration: none;
-  margin-left: spacing("10");
+  margin-left: f.spacing("10");
   cursor: pointer;
 
   &:hover {
@@ -29,11 +31,11 @@ $masthead-main-height: 58px;
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(f.color("action", "700") , 0.5);
   }
 
   .rn-masthead__title {
-    margin-left: spacing("4");
+    margin-left: f.spacing("4");
   }
 }
 
@@ -50,17 +52,17 @@ $masthead-main-height: 58px;
   margin: 0;
 
   text-decoration: none;
-  background-color: color("neutral", "white");
+  background-color: f.color("neutral", "white");
   border: none;
   cursor: pointer;
   transition: background-color 300ms;
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color("action", "700") , 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(f.color("action", "700") , 0.5);
   }
 
   .rn-iconfill {
-    fill: color("neutral", "400");
+    fill: f.color("neutral", "400");
   }
 }
 
@@ -69,7 +71,7 @@ $masthead-main-height: 58px;
   width: 2px;
 
   > * {
-    stroke: color("neutral", "100");
+    stroke: f.color("neutral", "100");
     stroke-width: 2px;
   }
 }

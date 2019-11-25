@@ -8,11 +8,12 @@
 
 **************************************************************************/
 @use "sass:map";
+@use "../functions/map-deep-get" as *;
 @use "../../vars";
 
 @mixin breakpoint($bp) {
   @if map.has-key(vars.$breakpoints, $bp) {
-    $_width: #{map.deep-get(vars.$breakpoints, $bp, "breakpoint")};
+    $_width: #{map-deep-get(vars.$breakpoints, $bp, "breakpoint")};
     @media only screen and (min-width: #{$_width}) {
       @content;
     }

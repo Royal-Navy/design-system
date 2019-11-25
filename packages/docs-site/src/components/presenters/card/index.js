@@ -1,8 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import './card.scss'
-
 import ArrowRightIcon from './arrow-right-icon.svg'
 
 const Card = ({

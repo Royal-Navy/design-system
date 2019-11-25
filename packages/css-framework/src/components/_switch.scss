@@ -1,37 +1,39 @@
+@use "../abstracts/functions" as f;
+
 $switch-border-radius: 2px;
-$switch-background-color: color("neutral", "000");
-$switch-border-color: color("neutral", "200");
-$switch-active-background-color: color("neutral", "white");
-$switch-active-color: color("action", "600");
+$switch-background-color: f.color("neutral", "000");
+$switch-border-color: f.color("neutral", "200");
+$switch-active-background-color: f.color("neutral", "white");
+$switch-active-color: f.color("action", "600");
 
 .rn-switch {
   display: flex;
   border: none;
   padding: 0;
   margin: 0;
-  font-size: font-size("s");
+  font-size: f.font-size("s");
   position: relative;
 }
 
 .rn-switch--small {
-  font-size: font-size("xs");
+  font-size: f.font-size("xs");
 
   .rn-switch__option::before {
-    padding: spacing("4") spacing("6");
+    padding: f.spacing("4") f.spacing("6");
   }
 }
 
 .rn-switch--large {
-  font-size: font-size("base");
+  font-size: f.font-size("base");
   .rn-switch__option {
-    padding: spacing("3") spacing("4");
+    padding: f.spacing("3") f.spacing("4");
   }
 }
 
 .rn-switch__legend {
   font-size: inherit;
-  color: color("neutral", "300");
-  margin-bottom: spacing("4");
+  color: f.color("neutral", "300");
+  margin-bottom: f.spacing("4");
 }
 
 .rn-switch__container {
@@ -64,9 +66,9 @@ $switch-active-color: color("action", "600");
   width: auto;
   height: auto;
   line-height: 1;
-  padding: spacing("2") spacing("4");
+  padding: f.spacing("2") f.spacing("4");
   font-size: inherit;
-  color: color("neutral", "400");
+  color: f.color("neutral", "400");
   border: 1px solid $switch-border-color;
   background-color: $switch-background-color;
   position: relative;
@@ -81,7 +83,7 @@ $switch-active-color: color("action", "600");
   }
   
   &:hover {
-    background-color: color("action", "600");
+    background-color: f.color("action", "600");
   }
   
   &.is-active {

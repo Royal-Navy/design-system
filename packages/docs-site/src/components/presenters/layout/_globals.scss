@@ -1,7 +1,7 @@
-@import "@royalnavy/css-framework";
+@use "@royalnavy/css-framework" as rn;
 
 body {
-  background-color: color("action", "900");
+  background-color: rn.color("action", "900");
 }
 
 .layout {

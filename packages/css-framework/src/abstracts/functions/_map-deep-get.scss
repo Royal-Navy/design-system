@@ -6,10 +6,7 @@
 @use "sass:map";
 
 @function map-deep-get($map, $keys...) {
-  // @warn "Map: #{$map}";
-  @warn "Keys: #{$keys}";
   @each $key in $keys {
-    @warn "#{$key}";
     $map: map.get($map, $key);
   }
   @return $map;

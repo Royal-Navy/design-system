@@ -5,8 +5,6 @@ import Prism from 'prismjs'
 import 'prismjs/plugins/line-numbers/prism-line-numbers'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
-import './code-highlighter.scss'
-
 import CopyIcon from './copy-icon.svg'
 
 const CodeHighlighter = ({ className, source, language, children }) => {

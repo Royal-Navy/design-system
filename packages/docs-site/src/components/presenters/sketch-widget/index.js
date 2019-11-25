@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './sketch-widget.scss'
-
 import SketchLogo from './sketch-logo.svg'
 import DownloadIcon from './download-icon.svg'
 

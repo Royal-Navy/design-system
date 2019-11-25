@@ -1,33 +1,37 @@
+@use "sass:map";
+@use "../abstracts/mixins" as m;
+@use "../abstracts/functions" as f;
+
 $alert-states: (
   neutral: (
-    background: color("neutral", "000"),
-    border: color("neutral", "100"),
-    copy: color("neutral", "600"),
-    title: color("neutral", "900"),
+    background: f.color("neutral", "000"),
+    border: f.color("neutral", "100"),
+    copy: f.color("neutral", "600"),
+    title: f.color("neutral", "900"),
   ),
   action: (
-    background: color("action", "000"),
-    border: color("action", "100"),
-    copy: color("action", "800"),
-    title: color("action", "900"),
+    background: f.color("action", "000"),
+    border: f.color("action", "100"),
+    copy: f.color("action", "800"),
+    title: f.color("action", "900"),
   ),
   danger: (
-    background: color("danger", "000"),
-    border: color("danger", "100"),
-    copy: color("danger", "800"),
-    title: color("danger", "900"),
+    background: f.color("danger", "000"),
+    border: f.color("danger", "100"),
+    copy: f.color("danger", "800"),
+    title: f.color("danger", "900"),
   ),
   warning: (
-    background: color("warning", "100"),
-    border: color("warning", "300"),
-    copy: color("warning", "800"),
-    title: color("warning", "900"),
+    background: f.color("warning", "100"),
+    border: f.color("warning", "300"),
+    copy: f.color("warning", "800"),
+    title: f.color("warning", "900"),
   ),
   success: (
-    background: color("success", "000"),
-    border: color("success", "200"),
-    copy: color("success", "800"),
-    title: color("success", "900"),
+    background: f.color("success", "000"),
+    border: f.color("success", "200"),
+    copy: f.color("success", "800"),
+    title: f.color("success", "900"),
   ),
 );
 
@@ -35,14 +39,14 @@ $alert-states: (
   position: relative;
   border-radius: 4px;
   max-width: 600px;
-  padding: spacing("8") spacing("10");
+  padding: f.spacing("8") f.spacing("10");
 
   &__title {
-    @include font-size("base");
-    margin: 0 0 spacing("2") 0;
+    @include m.font-size("base");
+    margin: 0 0 f.spacing("2") 0;
   }
   &__message {
-    @include font-size("s");
+    @include m.font-size("s");
     margin: 0;
   }
 
@@ -66,14 +70,14 @@ $alert-states: (
 
   @each $state, $variation in $alert-states {
     &.#{$state} {
-      background: map-get($variation, "background");
-      border: 1px solid map-get($variation, "border");
+      background: map.get($variation, "background");
+      border: 1px solid map.get($variation, "border");
       .rn-alert {
         &__title {
-          color: map-get($variation, "title");
+          color: map.get($variation, "title");
         }
         &__message {
-          color: map-get($variation, "copy");
+          color: map.get($variation, "copy");
         }
       }
     }
@@ -81,15 +85,15 @@ $alert-states: (
 
   &--event {
     border-radius: 3px;
-    background: color("neutral", "700");
+    background: f.color("neutral", "700");
     border: none;
-    padding: spacing("6") spacing("8");
+    padding: f.spacing("6") f.spacing("8");
     .rn-alert {
       &__title {
         display: none;
       }
       &__message {
-        color: color("neutral", "000");
+        color: f.color("neutral", "000");
       }
     }
   }

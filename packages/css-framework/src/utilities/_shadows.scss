@@ -1,16 +1,20 @@
+@use "sass:map";
+@use "../config";
+@use "../vars";
+
 /* stylelint-disable */
 // Shadows Utility
 
 
-@each $_breakpoint, $_breakpoint-val in $__breakpoints {
-  @each $_size, $_shadow in $__shadows {
+@each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
+  @each $_size, $_shadow in vars.$shadows {
     @if $_breakpoint == 'root' {
-      .#{$utility-ns}-shadow-#{$_size} {
+      .#{config.$utility-ns}-shadow-#{$_size} {
         box-shadow: #{$_shadow} !important;
       }
     } @else {
-      @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
-        .#{$_breakpoint}\:#{$utility-ns}shadow-#{$_size} {        
+      @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
+        .#{$_breakpoint}\:#{config.$utility-ns}shadow-#{$_size} {        
             box-shadow: #{$_shadow} !important;
         }
       }
