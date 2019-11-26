@@ -123,6 +123,7 @@
     "dist"
   ],
   "dependencies": {
+    "@datepicker-react/hooks": "^2.1.4",
     "@royalnavy/css-framework": "^1.10.0",
     "@royalnavy/icon-library": "^1.10.0",
     "@types/react-responsive": "^8.0.2",
