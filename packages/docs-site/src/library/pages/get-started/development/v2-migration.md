@@ -4,15 +4,17 @@ description: 'This guide will show you how to upgrade your codebase to work with
 header: true
 ---
 
-The Standards Toolkit v2 is a major refactor of the CSS Framework. v2 introduces a number of under-the-hood tweaks that improve both its performance and accuracy to the Sketch Toolkit.
+The Standards Toolkit v2 is a major refactor of the CSS Framework. It introduces a number of under-the-hood tweaks that improve both its performance and accuracy to the Sketch Toolkit.
 
 # SCSS Modules
-The Standards Toolkit v2 has been ported to [SASS Modules](http://sass.logdown.com/posts/7858341-the-module-system-is-launched). This provides the ability to namespace all Standards Toolkit functions & mixins, scopes all variables locally to the file they are declared in, and keeps the outputted file size down as `@use` only includes the imported file once across the entire project.
+The Standards Toolkit v2 has been ported to [SASS Modules](http://sass.logdown.com/posts/7858341-the-module-system-is-launched). This provides the ability to namespace all Standards Toolkit functions & mixins, scope all variables locally to the file they are declared in, and keep the outputted file size down as `@use` only includes the imported file once across the entire project.
 
 - All instances of `@import “@royalnavy/css-framework”` should be replaced with `@use “@royalnavy/css-framework” as rn`. Whilst the `rn` namespace is optional, we recommend using this as it will prevent the Standards Toolkit CSS Framework from clashing with any other SCSS files that may be imported into the project. 
-**Note:** you should only define one entry point for your SCSS - import this into your main application `.js` file. Try to avoid importing SCSS files into individual components.
+**Note:** you should only define one entry point for your SCSS - import this into your main application `.js` file. Try to avoid importing SCSS files into individual `js` component files.
 - Alternative, the CSS Framework can be imported as `@use “@royalnavy/css-framework” as *`. This will add all functions and mixins to the global scope, meaning you don’t have to namespace your function calls.
 - Every file that requires any mixins or functions from the CSS Framework should individually call `@use “@royalnavy/css-framework” as rn`. Unlike the `@import` syntax, `@use` ensures the imported file is only compiled once, rather than every time it is imported. This prevents duplicate styles and should cut down your outputted CSS’s file size.
+
+To gain an understanding of the CSS Framework's architecture, use [this PDF](/css-framework-architecture.pdf) as a reference.
 
 # Functions & Mixins
 - All functions and mixins now use quotes for their arguments.
@@ -21,11 +23,13 @@ The Standards Toolkit v2 has been ported to [SASS Modules](http://sass.logdown.c
 # Colours
 The colour palette has been expanded to include an extra colours, under the namespace “supplementary” (`sup`). v2 also renames several of the colours to improve consistency. Because of this, several functions will need to be updated with their new argument values.
 
-- `primary` colour has been renamed `action`. This better describes the colour’s main usage. All `color(“primary”, …)`function calls should be updated to `color(“action”, …)`.
+- `primary` colour has been renamed `action` - this better describes the colour’s main usage. 
 - `alt primary` has been renamed to `supa`.
 - `alt success` has been renamed to `supf`.
 - `alt warning` has been renamed to `supb`.
 - Additional colours `supb`, `supc`, `supd`, and `supe`  have been added.
+
+All renamed colours should have their function calls updated to the new names.
 
 # Spacing
  The Standards Toolkit supplies pre-determined spacing values to maintain consistency across all our applications and to ensure the designs from the Sketch library correlate with our code output.
@@ -63,6 +67,8 @@ In `v2`, the Spacing scale has been updated as follows:
 
 </div>
 
+You will need to update your `rn.spacing()` functions with the new, updated values.
+
 \* Note: As the Spacing Scale is sized in `rems`, this is the assumed value based on an html `font-size` of `100%` (`16px` default `font-size` for Browsers).
 
 # Typography
@@ -88,6 +94,8 @@ In `v2`, the Spacing scale has been updated as follows:
 
 </div>
 
+You will need to update your `rn.font-size()` functions & mixins with the new, updated values.
+
 
 # Breakpoints
 - Normalises Breakpoint scale so  `font-size: 100%`  has a value of `16px` at the `1200px - 1400px` breakpoint.
@@ -108,9 +116,55 @@ In `v2`, the Spacing scale has been updated as follows:
 
 </div>
 
+You will need to update your `@include breakpoint()` mixins with the new, updated values.
+
 
 # Helpers
 - `helper` classes have been renamed to `utility`in v2. This is to better align the Standards Toolkit with the industry standard of “Utility classes”, which better describe their function, rather than “Helper classes”.
 - Utility class namespace has been updated with `.rn_` to be more consistent with the `.rn-` component namespace.
 
+All instances of the utility classes that use the old `.h_` syntax will need to be updated to `.rn_`. Alternatively, you can set the `$utility-ns` value back to `h_` when you initialise the project. See below for more details.
+
 # Overriding the Toolkit
+
+With the new module system, it is easier than ever to override values provided by the Standards Toolkit. When `@use`-ing the CSS Framework, you can assign the provided variables your own values to override any that exist in the Context. The variables that can be overridden are:
+
+```
+// Fonts
+$font-size:   16px !default;
+$font-family: "lato" !default;
+
+// Choose Context
+$context: "light" !default;
+
+// Adjust Context values
+$breakpoints: () !default;
+$colors:      () !default;
+$spacing:     () !default;
+$shadows:     () !default;
+$typography:  () !default;
+$zindex:      () !default;
+
+
+// Utility Namespace
+$utility-ns: "rn_";
+
+// General Housekeeping
+$content-width: 1280px;
+$animation-timing: 0.3s;
+```
+
+To override any of these variables in the CSS Framework, use the `with ()` syntax:
+
+```
+@use "@royalnavy/css-framework" as rn with (
+  $utiliy-ns: "h_",
+  $colors: (
+    "neutral": (
+      "500": #FF0000
+    )
+  )
+);
+```
+
+This will merge the values provided inside `with ()` with the default context variables.
