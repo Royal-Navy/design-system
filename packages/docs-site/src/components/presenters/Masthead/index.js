@@ -8,8 +8,6 @@ import {
   PhaseBanner,
 } from '@royalnavy/react-component-library'
 
-// import { ArrowForward } from '@royalnavy/icon-library'
-
 import SiteLogo from './images/site-logo.svg'
 
 const { TriangleDown, TriangleUp } = Icons
