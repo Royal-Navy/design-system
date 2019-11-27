@@ -1,26 +1,26 @@
-@import "@royalnavy/css-framework";
+@use "@royalnavy/css-framework" as rn;
 
 .rn-links {
   display: flex;
   flex-direction: row;
   padding: 0;
   list-style: none;
-  margin: spacing("4") 0 0 0;
+  margin: rn.spacing("4") 0 0 0;
 }
 
 .rn-links__item {
   display: inline-block;
-  padding: 0 spacing("8");  
-  font-size: font-size("base");
+  padding: 0 rn.spacing("8");  
+  font-size: rn.font-size("base");
   margin-bottom: 0;
   position: relative;
   &::after {
     content: "•";
-    color: color("neutral", "white");
+    color: rn.color("neutral", "white");
     position: absolute;
     right: -4.5px;
     top: 4px;
-    font-size: font-size("xs");
+    font-size: rn.font-size("xs");
     opacity: 0.5;
   }
   &:last-child::after {

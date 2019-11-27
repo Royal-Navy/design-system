@@ -1,17 +1,20 @@
+@use "../config";
+@use "../abstracts/functions" as f;
+
 .rn-container {
-  max-width: $navy-content-width;
+  max-width: config.$content-width;
   margin-left: auto;
   margin-right: auto;
-  padding-left: spacing("12");
-  padding-right: spacing("12");
+  padding-left: f.spacing("12");
+  padding-right: f.spacing("12");
 
   &.rn-container--small {
-    padding-left: spacing("12");
-    padding-right: spacing("12");
+    padding-left: f.spacing("12");
+    padding-right: f.spacing("12");
   }
 
   &.rn-container--large {
-    padding-left: spacing("13");
-    padding-right: spacing("13");
+    padding-left: f.spacing("13");
+    padding-right: f.spacing("13");
   }
 }

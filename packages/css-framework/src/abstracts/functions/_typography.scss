@@ -1,10 +1,13 @@
+@use "sass:map";
+@use "../../vars";
+
 @function font-size($size) {
 
   // By Default, assume the font-size doesn't exist
   $value: false;
 
-  @if map-has-key($__typography, $size) {
-    $value: map-get($__typography, $size);    
+  @if map.has-key(vars.$typography, $size) {
+    $value: map.get(vars.$typography, $size);    
   }
 
   @else {

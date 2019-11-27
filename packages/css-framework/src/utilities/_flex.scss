@@ -1,3 +1,7 @@
+@use "sass:map";
+@use "../vars";
+@use "../config";
+
 /* stylelint-disable */
 @mixin flexSharedStyles {
   display: flex !important;
@@ -53,14 +57,14 @@
   }
 }
 
-@each $_breakpoint, $_breakpoint-val in $__breakpoints {
+@each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
   @if $_breakpoint == 'root' {
-    .#{$utility-ns}f {
+    .#{config.$utility-ns}f {
       @include flexSharedStyles;      
     }
   } @else {
-    @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
-      .#{$_breakpoint}\:#{$utility-ns}f {        
+    @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
+      .#{$_breakpoint}\:#{config.$utility-ns}f {        
           @include flexSharedStyles;
       }
     }

@@ -2,8 +2,6 @@ import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import sortBy from 'lodash/sortBy'
 
-import './data-table.scss'
-
 import TableHead from './table-head'
 import TableBody from './table-body'
 

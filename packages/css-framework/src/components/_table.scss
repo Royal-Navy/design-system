@@ -1,3 +1,6 @@
+@use "../abstracts/functions" as f;
+@use "../abstracts/mixins" as m;
+
 .rn-table {
   border-collapse: collapse;
   table-layout: fixed;
@@ -5,9 +8,9 @@
   th {
     font-weight: bold;
     text-align: left;
-    @include font-size("s");
+    @include m.font-size("s");
     text-transform: uppercase;
-    padding: spacing("8") spacing("4");
+    padding: f.spacing("8") f.spacing("4");
 
     &.is-sortable {
       cursor: pointer;
@@ -15,29 +18,29 @@
 
     & svg {
       position: relative;
-      left: spacing("2");
+      left: f.spacing("2");
       top: 2px;
-      width: spacing("6");
-      height: spacing("6");
+      width: f.spacing("6");
+      height: f.spacing("6");
     }
   }
   thead {
-    border-bottom: 2px solid color("neutral", "100");
+    border-bottom: 2px solid f.color("neutral", "100");
   }
   tr {
-    border-bottom: 1px solid color("neutral", "100");
+    border-bottom: 1px solid f.color("neutral", "100");
     &:last-child {
       border-bottom: none;
     }
   }
   td {
-    @include font-size("s");
-    padding: spacing("4") spacing("4");
-    color: color("neutral", "500");
+    @include m.font-size("s");
+    padding: f.spacing("4") f.spacing("4");
+    color: f.color("neutral", "500");
   }
 
   &__arrow {
-    margin-left: spacing("3");
+    margin-left: f.spacing("3");
     &--down {
       transform: rotate(180deg);
       margin-left: -3px;

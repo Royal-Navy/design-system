@@ -1,18 +1,21 @@
-$lightBackground: color("neutral", "white");
-$lightBorder: color("neutral", "100");
-$darkBackground: color("neutral", "700");
-$darkBorder: color("neutral", "700");
+@use "../abstracts/mixins" as m;
+@use "../abstracts/functions" as f;
+
+$lightBackground: f.color("neutral", "white");
+$lightBorder: f.color("neutral", "100");
+$darkBackground: f.color("neutral", "700");
+$darkBorder: f.color("neutral", "700");
 $borderThick: 2px;
 $inner: 8px;
 $outer: $inner + 1;
 $offset: $outer + $borderThick;
 
 .rn-popover__content {
-  @include z-index("modal");
+  @include m.z-index("modal");
   position: absolute;
   top: 0;
   left: 0;
-  background: color("neutral", "white");
+  background: f.color("neutral", "white");
   height: 100vh;
   width: 100%;
   margin: 0;
@@ -20,22 +23,22 @@ $offset: $outer + $borderThick;
 }
 
 .rn-popover__footer {
-  padding: spacing("6");
+  padding: f.spacing("6");
   margin: 0;
-  border-top: 1px solid color("neutral", "100");
-  background-color: color("neutral", "000");
+  border-top: 1px solid f.color("neutral", "100");
+  background-color: f.color("neutral", "000");
   text-align: right;
 }
 
 a.rn-popover__footer-link {
   text-decoration: none;
-  color: color("neutral", "300");
-  font-size: font-size("s");
+  color: f.color("neutral", "300");
+  font-size: f.font-size("s");
   cursor: pointer;
 }
 
 
-@include breakpoint("xs") {
+@include m.breakpoint("xs") {
   .rn-popover {
     position: absolute;
   }
@@ -58,7 +61,7 @@ a.rn-popover__footer-link {
   .rn-popover--dark .rn-popover__content {
     background: $darkBackground;
     border: $darkBorder solid $borderThick;
-    color: color("neutral", "white");
+    color: f.color("neutral", "white");
   }
 
   .rn-popover__content:before {

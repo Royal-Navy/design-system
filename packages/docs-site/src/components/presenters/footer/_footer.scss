@@ -1,0 +1,52 @@
+@use "@royalnavy/css-framework" as rn;
+
+.rn-footer {
+  margin-top: rn.spacing("10");
+  background: rn.color("action", "800");
+  padding: 0;  
+}
+
+.rn-footer__content {
+  padding: rn.spacing("12") 0;
+}
+
+.rn-footer,
+.rn-footer a {
+  color: rn.color("neutral", "100");
+  border-color: rn.color("neutral", "100");
+}
+
+.rn-footer__meta {
+  background: rn.color("action", "900");
+}
+
+.rn-footer__meta .rn-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: rn.spacing("8");
+  padding-bottom: rn.spacing("8");
+  color: rn.color("neutral", "white");  
+}
+
+@include rn.breakpoint("xs") {
+  .rn-footer__meta .rn-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.rn-footer__message,
+.rn-footer__copyright {
+  font-size: rn.font-size("s");
+  line-height: 1.5;
+  margin: rn.spacing("2") 0;
+  color: rn.color("neutral", "100");
+  a {
+    color: rn.color("neutral", "white");
+    text-decoration: underline;
+  }
+}
+
+.rn-footer__copyright {
+  white-space: nowrap;
+}

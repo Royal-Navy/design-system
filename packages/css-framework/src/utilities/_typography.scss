@@ -1,4 +1,7 @@
 /* stylelint-disable */
+@use "sass:map";
+@use "../config";
+@use "../vars";
 
 /**************************************************************************
 
@@ -11,15 +14,15 @@
 
 
 
-@each $_breakpoint, $_breakpoint-val in $__breakpoints {
-  @each $_shortname, $_value in $__typography {
+@each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
+  @each $_shortname, $_value in vars.$typography {
     @if $_breakpoint == 'root' {
-      .#{$utility-ns}text-#{$_shortname} {
+      .#{config.$utility-ns}text-#{$_shortname} {
         font-size: $_value !important;
       }
     } @else {
-      @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
-        .#{$_breakpoint}\:#{$utility-ns}text-#{$_shortname} {
+      @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
+        .#{$_breakpoint}\:#{config.$utility-ns}text-#{$_shortname} {
           font-size: $_value !important;
         }
       }
@@ -47,14 +50,14 @@
   }
 }
 
-@each $_breakpoint, $_breakpoint-val in $__breakpoints {
+@each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
   @if $_breakpoint == 'root' {
-    .#{$utility-ns}text {
+    .#{config.$utility-ns}text {
       @include textSharedStyles;
     }
   } @else {
     @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
-      .#{$_breakpoint}\:#{$utility-ns}text {
+      .#{$_breakpoint}\:#{config.$utility-ns}text {
           @include textSharedStyles;
       }
     }

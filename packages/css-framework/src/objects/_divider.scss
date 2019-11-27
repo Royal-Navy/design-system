@@ -1,8 +1,11 @@
+@use "../abstracts/functions" as f;
+
+
 // Default styling for the HR
 hr {
   height: 1px;
   width: 100%;
-  background-color: color("neutral", "100");  
+  background-color: f.color("neutral", "100");  
 }
 
 // Reversing the width & height for vertical orientation

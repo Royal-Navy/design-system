@@ -1,0 +1,13 @@
+@use "@royalnavy/css-framework" as rn;
+
+.page-not-found {
+  a {
+    color: rn.color("action", "900");
+  }
+
+  hr {
+    border: none;
+    border-bottom: 1px solid rn.color("neutral", "100");
+    margin: rn.spacing("12") 0;
+  }
+}

@@ -1,3 +1,5 @@
+@use "../abstracts/functions" as f;
+
 $bar-width: 60px;
 $bar-width-open: 180px;
 $border: 4px;
@@ -15,8 +17,8 @@ body.has-sidebar {
   flex-direction: column;
   top: 0;
   left: 0;
-  background: color("neutral", "600");
-  color: color("neutral", "white");
+  background: f.color("neutral", "600");
+  color: f.color("neutral", "white");
   z-index: 700;
 
   // Mobile browsers include their navbar in the height so a bottom aligned element needs to be moved up
@@ -46,17 +48,17 @@ body.has-sidebar {
 }
 
 .rn-iconfill {
-  fill: color("neutral", "200");
+  fill: f.color("neutral", "200");
 }
 
 
 
 .rn-sidebar__nav-link.is-active .rn-sidebar__nav-label {
-  color: color("neutral", "white");
+  color: f.color("neutral", "white");
 }
 
 .rn-sidebar__nav-link.is-active .rn-iconfill {
-  fill: color("neutral", "white");
+  fill: f.color("neutral", "white");
 }
 
 
@@ -68,7 +70,7 @@ body.has-sidebar {
 }
 
 .rn-sidebar__top .rn-sidebar__nav-label {
-  color: color("neutral", "200");
+  color: f.color("neutral", "200");
   text-decoration: none;
   margin-left: -4px;
   opacity: 0;
@@ -83,13 +85,13 @@ body.has-sidebar {
   flex-direction: row;
 
   &:hover, &:focus {
-    background: color("neutral", "700");
+    background: f.color("neutral", "700");
   }
 }
 
 .rn-sidebar__top .rn-sidebar__nav-link.is-active {
-  border-left: $border solid color("action", "400");
-  background: color("neutral", "700");
+  border-left: $border solid f.color("action", "400");
+  background: f.color("neutral", "700");
 }
 
 
@@ -103,20 +105,20 @@ body.has-sidebar {
 }
 
 .rn-sidebar__bottom .rn-sidebar__nav-link .rn-sidebar__nav-label {
-  background: color("neutral", "white");
+  background: f.color("neutral", "white");
 }
 
 .rn-sidebar__bottom .rn-sidebar__nav-link .rn-iconfill {
-  fill: color("neutral", "white");
+  fill: f.color("neutral", "white");
 }
 
 .rn-sidebar__bottom .rn-sidebar__nav-link:hover .rn-sidebar__nav-label {
-  background: color("action", "400");
-  color: color("neutral", "white");
+  background: f.color("action", "400");
+  color: f.color("neutral", "white");
 }
 
 .rn-sidebar__bottom .rn-sidebar__nav-link:hover .rn-iconfill {
-  fill: color("action", "400");
+  fill: f.color("action", "400");
 }
 
 .rn-sidebar .rn-sidebar__avatar {

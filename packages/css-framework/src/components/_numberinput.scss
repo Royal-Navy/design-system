@@ -1,8 +1,10 @@
+@use "../abstracts/functions" as f;
+
 .rn-numberinput {
   display: inline-flex;
   flex-direction: column;
   position: relative;
-  margin: spacing("6") 0;
+  margin: f.spacing("6") 0;
   padding: 0;
   border: 0;
   vertical-align: top;
@@ -12,8 +14,8 @@
 .rn-numberinput__outer-wrapper {
   display: inline-flex;
   flex-direction: row;
-  background-color: color("neutral", "white");
-  border: 1px solid color("neutral", "200");
+  background-color: f.color("neutral", "white");
+  border: 1px solid f.color("neutral", "200");
   border-radius: 4px;
   transition:
     border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
@@ -23,28 +25,28 @@
 .rn-numberinput.has-focus .rn-numberinput__input-wrapper {
   border-radius: 4px;
   box-shadow:
-    2px 2px 0 0 color("action", "600"),
-    -2px -2px 0 0 color("action", "600"),
-    2px -2px 0 0 color("action", "600"),
-    -2px 2px 0 0 color("action", "600");
+    2px 2px 0 0 f.color("action", "600"),
+    -2px -2px 0 0 f.color("action", "600"),
+    2px -2px 0 0 f.color("action", "600"),
+    -2px 2px 0 0 f.color("action", "600");
 }
 
 .rn-numberinput.is-invalid .rn-numberinput__input-wrapper {
   border-radius: 4px;
   box-shadow:
-    2px 2px 0 0 color("danger", "600"),
-    -2px -2px 0 0 color("danger", "600"),
-    2px -2px 0 0 color("danger", "600"),
-    -2px 2px 0 0 color("danger", "600");
+    2px 2px 0 0 f.color("danger", "600"),
+    -2px -2px 0 0 f.color("danger", "600"),
+    2px -2px 0 0 f.color("danger", "600"),
+    -2px 2px 0 0 f.color("danger", "600");
 }
 
 .rn-numberinput.is-valid .rn-numberinput__input-wrapper {
   border-radius: 4px;
   box-shadow:
-    2px 2px 0 0 color("success", "700"),
-    -2px -2px 0 0 color("success", "700"),
-    2px -2px 0 0 color("success", "700"),
-    -2px 2px 0 0 color("success", "700");
+    2px 2px 0 0 f.color("success", "700"),
+    -2px -2px 0 0 f.color("success", "700"),
+    2px -2px 0 0 f.color("success", "700"),
+    -2px 2px 0 0 f.color("success", "700");
 }
 
 .rn-numberinput__input-wrapper {
@@ -59,18 +61,18 @@
   top: 0;
   left: 0;
   transform-origin: top left;
-  transform: translate(spacing("6"), spacing("6")) scale(1);
+  transform: translate(f.spacing("6"), f.spacing("6")) scale(1);
   transition:
     color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
     transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   pointer-events: none;
-  color: color("neutral", "300");
-  font-size: font-size("base");
+  color: f.color("neutral", "300");
+  font-size: f.font-size("base");
 }
 
 .rn-numberinput.has-focus .rn-numberinput__label,
 .rn-numberinput.has-content .rn-numberinput__label {
-  transform: translate(spacing("6"), 6px) scale(0.8);
+  transform: translate(f.spacing("6"), 6px) scale(0.8);
 }
 
 .rn-numberinput__input {
@@ -78,15 +80,15 @@
   box-sizing: border-box;
   width: 100%;
   margin: 0;
-  padding: spacing("10") spacing("6") spacing("2");
+  padding: f.spacing("10") f.spacing("6") f.spacing("2");
   border: 0;
   background: none;
   -webkit-tap-highlight-color: transparent;
-  font-size: font-size("base");
+  font-size: f.font-size("base");
 }
 
 .rn-numberinput--no-label .rn-numberinput__input {
-  padding: spacing("6");
+  padding: f.spacing("6");
 }
 
 .rn-numberinput__input:focus {
@@ -102,7 +104,7 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  border-left: 1px solid color("neutral", "100");
+  border-left: 1px solid f.color("neutral", "100");
 }
 
 .rn-numberinput__increase,
@@ -125,15 +127,15 @@
   &:focus {
     border-radius: 4px;
     box-shadow:
-      2px 2px 0 0 color("action", "600"),
-      -2px -2px 0 0 color("action", "600"),
-      2px -2px 0 0 color("action", "600"),
-      -2px 2px 0 0 color("action", "600");
+      2px 2px 0 0 f.color("action", "600"),
+      -2px -2px 0 0 f.color("action", "600"),
+      2px -2px 0 0 f.color("action", "600"),
+      -2px 2px 0 0 f.color("action", "600");
   }
 }
 
 .rn-numberinput__decrease {
-  border-top: 1px solid color("neutral", "100");
+  border-top: 1px solid f.color("neutral", "100");
 
   &:focus {
     border-color: transparent;

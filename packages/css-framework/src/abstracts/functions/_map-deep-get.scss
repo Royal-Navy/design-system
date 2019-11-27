@@ -3,9 +3,11 @@
 // @param {Arglist} $keys - Key chain
 // @return {*} - Desired Value
 
+@use "sass:map";
+
 @function map-deep-get($map, $keys...) {
   @each $key in $keys {
-    $map: map-get($map, $key);
+    $map: map.get($map, $key);
   }
   @return $map;
 }

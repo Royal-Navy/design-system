@@ -1,109 +1,92 @@
-// Globals
-$__colors: null;
-$__zIndex: null;
-$__typography: null;
-$__spacing: null;
-$__shadows: null;
-$__breakpoints: null;
-$__states: null;
+// Forward the config so the consumer can set the variables
+// when importing the framework.
+@forward "src/config";
 
-@import "src/config";
+// Expose functions.
+// We only forward the functions we want the consumer to
+// interact with.
+@forward "src/abstracts/functions/color";
+@forward "src/abstracts/functions/spacing";
+@forward "src/abstracts/functions/typography";
 
-// Functions
-@import "src/abstracts/functions/map-deep-get";
-@import "src/abstracts/functions/map-get-default";
-@import "src/abstracts/functions/non-destructive-map-merge";
-@import "src/abstracts/functions/color";
-@import "src/abstracts/functions/spacing";
-@import "src/abstracts/functions/spacing";
-@import "src/abstracts/functions/typography";
+// Expose Mixins
+// Again, we only forward the mixins we want the consumer
+// to interact with.
+@forward "src/abstracts/mixins/breakpoint";
+@forward "src/abstracts/mixins/clearfix";
+@forward "src/abstracts/mixins/cover";
+@forward "src/abstracts/mixins/hover";
+@forward "src/abstracts/mixins/pseudo";
+@forward "src/abstracts/mixins/shadows";
+@forward "src/abstracts/mixins/truncate";
+@forward "src/abstracts/mixins/typography";
+@forward "src/abstracts/mixins/zindex";
 
-// Contexts
-@import "src/contexts/light";
+// Base Styles
 
-// import Variables
-@import "src/vars/breakpoints";
-@import "src/vars/colors";
-@import "src/vars/spacing";
-@import "src/vars/typography";
-@import "src/vars/state";
-@import "src/vars/zindex";
+@use "src/base/normalize";
+@use "src/base/box-sizing";
+@use "src/base/fonts";
 
-// Mixins
-@import "src/abstracts/mixins/breakpoint";
-@import "src/abstracts/mixins/clearfix";
-@import "src/abstracts/mixins/cover";
-@import "src/abstracts/mixins/hover";
-@import "src/abstracts/mixins/pseudo";
-@import "src/abstracts/mixins/shadows";
-@import "src/abstracts/mixins/truncate";
-@import "src/abstracts/mixins/typography";
-@import "src/abstracts/mixins/zindex";
-
-// Base
-@import "src/base/normalize";
-@import "src/base/box-sizing";
-@import "src/base/fonts";
 
 // Components
-@import "src/components/alert";
-@import "src/components/avatar";
-@import "src/components/autosuggest";
-@import "src/components/badge";
-@import "src/components/breadcrumbs";
-@import "src/components/btn-group";
-@import "src/components/button";
-@import "src/components/card";
-@import "src/components/carditem";
-@import "src/components/checkbox";
-@import "src/components/container";
-@import "src/components/dialog";
-@import "src/components/dropdown";
-@import "src/components/icon";
-@import "src/components/layout";
-@import "src/components/list";
-@import "src/components/listitem";
-@import "src/components/modal";
-@import "src/components/nav";
-@import "src/components/numberinput";
-@import "src/components/pagination";
-@import "src/components/popover";
-@import "src/components/progress";
-@import "src/components/phase-banner";
-@import "src/components/radio";
-@import "src/components/scrollable-nav";
-@import "src/components/searchbar";
-@import "src/components/select";
-@import "src/components/sidenav";
-@import "src/components/switch";
-@import "src/components/table";
-@import "src/components/tab-nav";
-@import "src/components/tab-set";
-@import "src/components/textinput";
-@import "src/components/toggle";
-@import "src/components/tooltip";
-@import "src/components/transfer";
-@import "src/components/textarea";
+@use "src/components/alert";
+@use "src/components/avatar";
+@use "src/components/autosuggest";
+@use "src/components/badge";
+@use "src/components/breadcrumbs";
+@use "src/components/btn-group";
+@use "src/components/button";
+@use "src/components/card";
+@use "src/components/carditem";
+@use "src/components/checkbox";
+@use "src/components/container";
+@use "src/components/dialog";
+@use "src/components/dropdown";
+@use "src/components/icon";
+@use "src/components/layout";
+@use "src/components/list";
+@use "src/components/listitem";
+@use "src/components/modal";
+@use "src/components/nav";
+@use "src/components/numberinput";
+@use "src/components/pagination";
+@use "src/components/popover";
+@use "src/components/progress";
+@use "src/components/phase-banner";
+@use "src/components/radio";
+@use "src/components/scrollable-nav";
+@use "src/components/searchbar";
+@use "src/components/select";
+@use "src/components/sidenav";
+@use "src/components/switch";
+@use "src/components/table";
+@use "src/components/tab-nav";
+@use "src/components/tab-set";
+@use "src/components/textinput";
+@use "src/components/toggle";
+@use "src/components/tooltip";
+@use "src/components/transfer";
+@use "src/components/textarea";
 
 // Objects
-@import "src/objects/divider";
-@import "src/objects/hyperlink";
-@import "src/objects/media";
-@import "src/objects/wrapper";
+@use "src/objects/divider";
+@use "src/objects/hyperlink";
+@use "src/objects/media";
+@use "src/objects/wrapper";
 
-// Utilities
-@import "src/utilities/clearfix";
-@import "src/utilities/flex";
-@import "src/utilities/position";
-@import "src/utilities/shadows";
-@import "src/utilities/sizing";
-@import "src/utilities/spacing";
-@import "src/utilities/shadows";
-@import "src/utilities/typography";
-@import "src/utilities/visibility";
+// Helpers
+@use "src/utilities/clearfix";
+@use "src/utilities/flex";
+@use "src/utilities/position";
+@use "src/utilities/shadows";
+@use "src/utilities/sizing";
+@use "src/utilities/spacing";
+@use "src/utilities/typography";
+@use "src/utilities/visibility";
 
 // Fragments
-@import "src/fragments/form";
-@import "src/fragments/masthead";
-@import "src/fragments/notification-panel";
-@import "src/fragments/sidebar";
+@use "src/fragments/form";
+@use "src/fragments/masthead";
+@use "src/fragments/notification-panel";
+@use "src/fragments/sidebar";

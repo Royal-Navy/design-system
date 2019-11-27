@@ -1,9 +1,13 @@
+@use "sass:map";
+@use "../abstracts/functions" as f;
+@use "../abstracts/mixins" as m;
+
 $progress-states: (
-  neutral: color("neutral", "700"),
-  action: color("action", "400"),
-  danger:  color("danger", "400"),
-  warning: color("warning", "400"),
-  success: color("success", "500")
+  neutral: f.color("neutral", "700"),
+  action: f.color("action", "400"),
+  danger:  f.color("danger", "400"),
+  warning: f.color("warning", "400"),
+  success: f.color("success", "500")
 );
 
 .rn-progress {  
@@ -32,7 +36,7 @@ $progress-states: (
   }
   
   &__bar {
-    background-color: map-get($progress-states, "neutral");
+    background-color: map.get($progress-states, "neutral");
     // Border radius far exceeds height of container to ensure
     // borders are rounded correctly
     border-radius: 100px;
@@ -43,8 +47,8 @@ $progress-states: (
     position: absolute;
     top: 0;
     text-align: center;    
-    color: color("neutral", "white");
-    @include font-size("xs");
+    color: f.color("neutral", "white");
+    @include m.font-size("xs");
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import './Swatch.scss'
-
 const Swatch = ({ color, label }) => (
   <div className="swatch-container">
     <div className="swatch" style={{ backgroundColor: color }} />
