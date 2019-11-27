@@ -9,6 +9,7 @@ $text-color: #748999;
 
 // Scoping all tag styles to the Post Article
 .post-article {
+  max-width: 100%;
   // No matter the last element, ensure it does not
   // have a margin at the bottom of the post article
   // content.
@@ -59,7 +60,7 @@ h4, h5, h6 {
 }
 
 p, li {
-  font-size: rn.font-size("base");
+  font-size: rn.font-size("m");
   color: rn.color("neutral", "400");
   line-height: 1.5;
 }
@@ -108,7 +109,10 @@ pre {
 
 
 .standard-table {
+  max-width: 100%;
+  overflow-x: scroll;
   table {
+    table-layout: auto;
     width: 100%;
     font-size: rn.font-size("base");
     color: $text-color;
@@ -128,7 +132,7 @@ pre {
 
   td,
   th {
-    padding: rn.spacing("8");
+    padding: rn.spacing("6");
     border-bottom: 1px solid $border-color;
     border-right: 1px solid $border-color;
     background-color: $background-color;

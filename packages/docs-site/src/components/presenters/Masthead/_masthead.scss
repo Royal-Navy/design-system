@@ -5,6 +5,33 @@
   background: white;
 }
 
+.masthead__banner {
+  display: block;
+  background-color: rn.color("action", "500");
+  padding: rn.spacing("6") 0;
+  color: rn.color("neutral", "white");
+  font-size: rn.font-size("base");
+  font-weight: 400;
+  transition: background-color 0.3s;
+  text-align: center;
+  @include rn.breakpoint("xs") {
+    text-align: left;
+  }
+  &:hover {
+    background-color: rn.color("action", "700");
+    text-decoration: none;
+    color: rn.color("neutral", "white");
+  }
+  strong {
+    display: block;
+    @include rn.breakpoint("xs") {
+      margin-left: rn.spacing("4");
+      display: inline-block;
+    }
+  }
+
+}
+
 .masthead__container {
   display: flex;
   justify-content: space-between;
