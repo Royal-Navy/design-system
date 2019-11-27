@@ -9,6 +9,7 @@ $text-color: #748999;
 
 // Scoping all tag styles to the Post Article
 .post-article {
+  max-width: 100%;
   // No matter the last element, ensure it does not
   // have a margin at the bottom of the post article
   // content.
@@ -108,7 +109,10 @@ pre {
 
 
 .standard-table {
+  max-width: 100%;
+  overflow-x: scroll;
   table {
+    table-layout: auto;
     width: 100%;
     font-size: rn.font-size("base");
     color: $text-color;
