@@ -2,6 +2,27 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { TabProps } from './Tab'
 
+function hasTab(tabIndex: number, itemsRef: Array<HTMLLIElement>) {
+  return tabIndex > -1 && tabIndex < itemsRef.length
+}
+
+function scrollTo(element: HTMLDivElement, left: number) {
+  return new Promise(resolve => {
+    function onScroll() {
+      if (element.scrollLeft === left) {
+        element.removeEventListener('scroll', onScroll)
+        resolve()
+      }
+    }
+    element.addEventListener('scroll', onScroll)
+    onScroll()
+    element.scrollTo({
+      left,
+      behavior: 'smooth',
+    })
+  })
+}
+
 export function useScrollableTabSet(items: React.ReactElement<TabProps>[]) {
   const [currentScrollToTab, setCurrentScrollToTab] = useState(0)
   const itemsRef = useRef<Array<HTMLLIElement>>([])
@@ -11,23 +32,23 @@ export function useScrollableTabSet(items: React.ReactElement<TabProps>[]) {
     itemsRef.current = itemsRef.current.slice(0, items.length)
   }, [items])
 
-  function updateCurrentScrollToTab(change: (currentTab: number) => number) {
-    return () => {
+  function scrollToNextTab(change: (currentTab: number) => number) {
+    return async () => {
       const nextTab = change(currentScrollToTab)
-      const nextTabExists = nextTab > -1 && nextTab < items.length
-      if (nextTabExists) {
+
+      if (hasTab(nextTab, itemsRef.current)) {
         const currentPosition = tabsRef.current.scrollLeft
         const newPosition =
           itemsRef.current[nextTab].offsetLeft - tabsRef.current.offsetLeft
 
-        tabsRef.current.scrollTo(newPosition, 0)
+        await scrollTo(tabsRef.current, newPosition).then(() => {
+          const isPositionTheSame = currentPosition === tabsRef.current.scrollLeft
 
-        const isPositionTheSame = currentPosition === tabsRef.current.scrollLeft
-
-        if (!isPositionTheSame) setCurrentScrollToTab(nextTab)
+          if (!isPositionTheSame) setCurrentScrollToTab(nextTab)
+        })
       }
     }
   }
 
-  return { itemsRef, tabsRef, updateCurrentScrollToTab }
+  return { itemsRef, tabsRef, scrollToNextTab }
 }

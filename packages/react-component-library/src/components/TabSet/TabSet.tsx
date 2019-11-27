@@ -1,7 +1,7 @@
-import React, { useState, Children } from 'react'
+import React, { Children, useState } from 'react'
 import classNames from 'classnames'
 
-import { TabProps, TabContent, TabItem } from '.'
+import { TabContent, TabItem, TabProps } from '.'
 import { ScrollButton } from './ScrollButton'
 import { useScrollableTabSet } from './useScrollableTabSet'
 import { SCROLL_DIRECTION } from './constants'
@@ -20,9 +20,7 @@ export const TabSet: React.FC<TabSetProps> = ({
   scrollable,
 }) => {
   const [activeTab, setActiveTab] = useState(0)
-  const { updateCurrentScrollToTab, tabsRef, itemsRef } = useScrollableTabSet(
-    children
-  )
+  const { scrollToNextTab, tabsRef, itemsRef } = useScrollableTabSet(children)
 
   function handleClick(index: number) {
     setActiveTab(index)
@@ -42,9 +40,7 @@ export const TabSet: React.FC<TabSetProps> = ({
         {scrollable && (
           <ScrollButton
             direction={SCROLL_DIRECTION.LEFT}
-            onClick={updateCurrentScrollToTab(
-              currentTabIndex => currentTabIndex - 1
-            )}
+            onClick={scrollToNextTab(currentTabIndex => currentTabIndex - 1)}
           />
         )}
         <div
@@ -72,9 +68,7 @@ export const TabSet: React.FC<TabSetProps> = ({
         {scrollable && (
           <ScrollButton
             direction={SCROLL_DIRECTION.RIGHT}
-            onClick={updateCurrentScrollToTab(
-              currentTabIndex => currentTabIndex + 1
-            )}
+            onClick={scrollToNextTab(currentTabIndex => currentTabIndex + 1)}
           />
         )}
       </header>
