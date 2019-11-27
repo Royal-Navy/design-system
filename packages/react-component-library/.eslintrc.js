@@ -35,6 +35,7 @@ module.exports = {
     'react/prop-types': 0,
     '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
+    'no-else-return': ['error', { allowElseIf: true }],
   },
   settings: {
     'import/resolver': {
