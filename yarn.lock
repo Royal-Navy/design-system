@@ -10891,7 +10891,7 @@ handle-thing@^2.0.0:
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.0.tgz#0e039695ff50c93fc288557d696f3c1dc6776754"
   integrity sha512-d4sze1JNC454Wdo2fkuyzCr6aHcbL6PGGuFAz0Li/NcOm1tCHGnWDRmJP85dh9IhQErTc2svWFEX5xHIOo//kQ==
 
-handlebars@^4.1.2, handlebars@^4.4.0, handlebars@^4.5.3:
+handlebars@^4.1.2, handlebars@^4.4.0:
   version "4.5.3"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.5.3.tgz#5cf75bd8714f7605713511a56be7c349becb0482"
   integrity sha512-3yPecJoJHK/4c6aZhSvxOyG4vJKDshV36VHp0iVCDVh7o9w2vwi3NSnL2MMPj3YdduqaBcu7cGbggJQM0br9xA==
@@ -14464,7 +14464,14 @@ media-typer@0.3.0:
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
 
-mem@^1.1.0, mem@^4.0.0:
+mem@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/mem/-/mem-1.1.0.tgz#5edd52b485ca1d900fe64895505399a0dfa45f76"
+  integrity sha1-Xt1StIXKHZAP5kiVUFOZoN+kX3Y=
+  dependencies:
+    mimic-fn "^1.0.0"
+
+mem@^4.0.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/mem/-/mem-4.3.0.tgz#461af497bc4ae09608cdb2e60eefb69bff744178"
   integrity sha512-qX2bG48pTqYRVmDB37rn/6PT7LcR8T7oAX3bf99u1Tt1nzxYfxkgqDwUwolPlXweM0XzBOBFzSx4kfp7KP1s/w==
@@ -18175,6 +18182,14 @@ react-test-renderer@^16.12.0:
     react-is "^16.8.6"
     scheduler "^0.18.0"
 
+react-tether@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/react-tether/-/react-tether-2.0.5.tgz#7432bff7276963f5902b1c7695bfc95cc9f1bd07"
+  integrity sha512-59Uh5h5Y31ehhAfAsEHZ0VBIwckvXVICIO/zevSaJQ1yexWaw/ug87FRhqRcQhKJrrR+zxsOZQZ6C8CbBNcjcw==
+  dependencies:
+    prop-types "^15.6.2"
+    tether "^1.4.5"
+
 react-textarea-autosize@^7.1.0:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-7.1.2.tgz#70fdb333ef86bcca72717e25e623e90c336e2cda"
@@ -20905,6 +20920,11 @@ test-exclude@^5.2.3:
     minimatch "^3.0.4"
     read-pkg-up "^4.0.0"
     require-main-filename "^2.0.0"
+
+tether@^1.4.5:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/tether/-/tether-1.4.7.tgz#d56a818590d8fe72e387f77a67f93ab96d8e1fb2"
+  integrity sha512-Z0J1aExjoFU8pybVkQAo/vD2wfSO63r+XOPfWQMC5qtf1bI7IWqNk4MiyBcgvvnY8kqnY06dVdvwTK2S3PU/Fw==
 
 text-extensions@^1.0.0:
   version "1.9.0"

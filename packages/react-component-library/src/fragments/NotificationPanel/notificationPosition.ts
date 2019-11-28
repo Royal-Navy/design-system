@@ -1,4 +1,4 @@
-import { NOTIFICATION_PLACEMENT, POPOVER_WIDTH } from './constants'
+import { NOTIFICATION_PLACEMENT, NOTIFICATION_CONTAINER_WIDTH } from './constants'
 
 export const calculate = {
   [NOTIFICATION_PLACEMENT.RIGHT]: (
@@ -19,8 +19,8 @@ export const calculate = {
     const elemRect = element.getBoundingClientRect()
 
     const left =
-      elemRect.left - POPOVER_WIDTH + elemRect.width + window.pageXOffset + 5
-    const top = elemRect.bottom + 3 + window.pageYOffset
+      elemRect.left - NOTIFICATION_CONTAINER_WIDTH + elemRect.width + window.pageXOffset - 6
+    const top = elemRect.bottom + window.pageYOffset
 
     return { left, top }
   },

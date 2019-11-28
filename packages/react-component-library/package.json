@@ -133,6 +133,7 @@
     "react-compound-slider": "^2.4.0",
     "react-indiana-drag-scroll": "^1.5.2",
     "react-responsive": "^8.0.1",
-    "react-select": "^3.0.8"
+    "react-select": "^3.0.8",
+    "react-tether": "^2.0.5"
   }
 }

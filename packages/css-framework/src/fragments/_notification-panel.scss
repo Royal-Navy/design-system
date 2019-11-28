@@ -1,3 +1,7 @@
+.rn-notification-panel__container {
+  position: absolute;
+}
+
 .rn-notification-panel__button {
   background: transparent;
   border: none;
@@ -158,5 +162,3 @@
   color: color(neutral, 300);
   margin-top: spacing(1);
 }
-
-
