@@ -4,10 +4,69 @@ $btn-focus-width: 0.2rem;
 .rn-tab-set {
   display: flex;
   flex-flow: column;
+
+  &.is-scrollable {
+    .rn-tab-set__navigation {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .rn-tab-set__head {
+      display: flex;
+      flex-direction: row;
+      padding-bottom: spacing(2);
+    }
+
+    .rn-tab-set__tab-item {
+      padding-left: spacing(1);
+    }
+
+    .rn-tab-set__tab-item:last-child {
+      padding-right: spacing(1);
+    }
+
+    .rn-tab-set__tab {
+      border: none;
+      height: spacing(10);
+      padding: 0 spacing(8);
+      border-radius: 6px;
+      background-color: color("neutral", 100);
+
+      &.is-active {
+        background-color: color("primary", 300);
+        color: color("neutral", 000)
+      }
+    }
+  }
 }
 
 .rn-tab-set__head {
   border-bottom: 1px solid color(neutral, 100);
+}
+
+.rn-tab-set__scroll {
+  width: spacing(6);
+  height: spacing(12);
+  background: color("neutral", white);
+  border: 1px solid color("neutral", 100);
+  border-radius: 3px;
+  color: color("neutral", 300);
+  cursor: pointer;
+
+  & > svg {
+    position: relative;
+    right: 2px;
+    top: 2px;
+  }
+}
+
+.rn-tab-set__scroll--left {
+  margin-right: spacing(1);
+}
+
+.rn-tab-set__scroll--right {
+  margin-left: spacing(1);
 }
 
 .rn-tab-set__tabs {
@@ -18,27 +77,30 @@ $btn-focus-width: 0.2rem;
 
 .rn-tab-set__tab-item {
   display: inline-block;
-  border-bottom: 4px solid transparent;
-  color: #748999;
-  margin-bottom: 0;
-
-  &.is-active {
-    color: #3e5667;
-    border-color: $active-border-color;
-  }
+  margin-top: spacing(1);
 }
 
 .rn-tab-set__tab {
-  margin: 0 spacing(1);
-  padding: spacing(4) spacing(8);
-  border: none;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
   font-size: font-size(xs);
   font-weight: 700;
-  color: inherit;
-  text-align: center;
+  color: color("neutral", 300);
+
+  // default
+  border: none;
+  border-bottom: 4px solid transparent;
+  padding: spacing(4) spacing(8);
 
   &:focus {
     box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+  }
+
+  &.is-active {
+    color: color("neutral", 400);
+    border-color: $active-border-color;
   }
 }
 
