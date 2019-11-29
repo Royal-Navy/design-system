@@ -19,6 +19,7 @@ $btn-focus-width: 0.2rem;
     }
 
     .rn-tab-set__tab-item {
+      width: 100%;
       padding-left: spacing(1);
     }
 
@@ -27,9 +28,10 @@ $btn-focus-width: 0.2rem;
     }
 
     .rn-tab-set__tab {
+      width: 100%;
       border: none;
       height: spacing(10);
-      padding: 0 spacing(8);
+      padding: unset;
       border-radius: 6px;
       background-color: color("neutral", 100);
 
@@ -43,6 +45,20 @@ $btn-focus-width: 0.2rem;
 
 .rn-tab-set__head {
   border-bottom: 1px solid color(neutral, 100);
+
+  &.is-scrollable {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: spacing(2);
+  }
+}
+
+.rn-tab-set__navigation {
+  &.is-scrollable {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 }
 
 .rn-tab-set__scroll {
@@ -53,12 +69,10 @@ $btn-focus-width: 0.2rem;
   border-radius: 3px;
   color: color("neutral", 300);
   cursor: pointer;
-
-  & > svg {
-    position: relative;
-    right: 2px;
-    top: 2px;
-  }
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: unset;
 }
 
 .rn-tab-set__scroll--left {
@@ -94,6 +108,10 @@ $btn-focus-width: 0.2rem;
   border-bottom: 4px solid transparent;
   padding: spacing(4) spacing(8);
 
+  & > div {
+    margin: 0 auto;
+  }
+
   &:focus {
     box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
   }
@@ -125,5 +143,20 @@ $btn-focus-width: 0.2rem;
 
   &.is-active {
     display: block;
+  }
+}
+
+@include breakpoint("m") {
+  .rn-tab-set {
+    &.is-scrollable {
+      .rn-tab-set__tab-item {
+        width: auto;
+      }
+
+      .rn-tab-set__tab {
+        width: auto;
+        padding: 0 spacing(8);
+      }
+    }
   }
 }
