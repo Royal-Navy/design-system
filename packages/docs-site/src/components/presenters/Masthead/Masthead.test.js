@@ -2,6 +2,7 @@ import React from 'react'
 import { render, getByText } from '@testing-library/react'
 
 import Masthead from './index'
+import packageJson from '../../../../package'
 
 describe('Masthead', () => {
   let wrapper
@@ -25,6 +26,17 @@ describe('Masthead', () => {
       ]
 
       wrapper = render(<Masthead navItems={navItems} />)
+    })
+
+    it('should render a versions badge', () => {
+      expect(wrapper.getByText(`v${packageJson.version}`)).toBeInTheDocument()
+    })
+
+    it('should link the versions badge to the versions page', () => {
+      const versionBadge = wrapper.getByText(`v${packageJson.version}`)
+      expect(versionBadge.parentElement.getAttribute('href')).toEqual(
+        '/versions'
+      )
     })
 
     it('should render a navigation section', () => {
