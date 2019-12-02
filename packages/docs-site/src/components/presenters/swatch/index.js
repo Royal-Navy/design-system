@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const Swatch = ({ color, name, hex, theme }) => (
-  <div className={'swatch ' + theme} style={{ backgroundColor: color }}>
+const Swatch = ({ color, name, theme }) => (
+  <div className={`swatch ${theme}`} style={{ backgroundColor: color }}>
     <span className="swatch-label">{name}</span>
     <span className="swatch-label">{color}</span>
   </div>
@@ -11,7 +11,6 @@ const Swatch = ({ color, name, hex, theme }) => (
 Swatch.propTypes = {
   color: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  hex: PropTypes.string.isRequired,
   theme: PropTypes.string,
 }
 

@@ -25,9 +25,12 @@ const MastHead = ({ navItems }) => {
 
   return (
     <div className="masthead">
-      <Link to="/get-started/development/v2-migration" className="masthead__banner">
+      <Link
+        to="/get-started/development/v2-migration"
+        className="masthead__banner"
+      >
         <div className="rn-container">
-          There's a new version of the Standards Toolkit.
+          There&apos;s a new version of the Standards Toolkit.
           <strong>Read the migration docs.</strong>
         </div>
       </Link>
