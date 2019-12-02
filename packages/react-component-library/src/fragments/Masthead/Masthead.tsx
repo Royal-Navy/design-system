@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import classNames from 'classnames'
 
-import { Link, Searchbar, ScrollableNav } from '../../components'
+import { Link, Searchbar, ScrollableNav, Badge } from '../../components'
 import { Logo as DefaultLogo, Search as SearchIcon } from '../../icons'
 import { UserLink } from './UserLink'
 import {
@@ -22,6 +22,8 @@ export interface MastheadProps {
   title: string
   unreadNotification?: boolean
   user?: UserType
+  version?: string
+  versionLink?: LinkTypes
 }
 
 export const Masthead: React.FC<MastheadProps> = ({
@@ -35,6 +37,8 @@ export const Masthead: React.FC<MastheadProps> = ({
   title,
   unreadNotification,
   user,
+  version,
+  versionLink,
 }) => {
   const [showSearch, setShowSearch] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
@@ -82,6 +86,16 @@ export const Masthead: React.FC<MastheadProps> = ({
             {title}
           </span>
         </LinkComponent>
+
+        {version && (
+          <div className="rn-masthead__version">
+            <LinkComponent {...versionLink} data-testid="version">
+              <Badge color="primary" className="rn-badge--no-text-transform">
+                {version}
+              </Badge>
+            </LinkComponent>
+          </div>
+        )}
 
         <div className="rn-masthead__options">
           {onSearch && (

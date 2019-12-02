@@ -36,6 +36,13 @@ $masthead-main-height: 58px;
   }
 }
 
+.rn-masthead__version {
+  flex-grow: 1;
+  display: inline-flex;
+  align-items: center;
+  margin-left: spacing(4);
+}
+
 .rn-masthead__options {
   display: flex;
 }

@@ -31,6 +31,11 @@ describe('Masthead', () => {
         expect(serviceNameElement.textContent).toEqual('Test masthead')
       })
 
+      it('should render the version', () => {
+        expect(wrapper.queryByTestId('version')).toBeNull()
+        expect(wrapper.queryByText('v2.0.0')).toBeNull()
+      })
+
       it('should render a default icon', () => {
         expect(wrapper.getByTestId('logo')).toBeInTheDocument()
       })
@@ -281,6 +286,20 @@ describe('Masthead', () => {
         expect(wrapper.queryByTestId('scrollable-nav')).toContainHTML(
           'test nav item'
         )
+      })
+    })
+
+    describe('and a version', () => {
+      beforeEach(() => {
+        props.version = 'v2.0.0'
+        props.versionLink = { href: '/versions' }
+
+        wrapper = render(<Masthead {...props} />)
+      })
+
+      it('should render the version', () => {
+        expect(wrapper.queryByTestId('version')).toBeInTheDocument()
+        expect(wrapper.queryByText('v2.0.0')).toBeInTheDocument()
       })
     })
   })

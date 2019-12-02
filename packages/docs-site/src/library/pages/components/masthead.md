@@ -82,6 +82,8 @@ Aside from the active page links (an example of these states is shown in the [Ta
   title="Test" 
   unreadNotification={true}
   user={{ initials: 'XT', href: '/userprofile' }}
+  version="v2.0.0"                   
+  versionLink={{href:'/versions'}}   
 />`} language="javascript">
   <Masthead
     homeLink={{href:'/'}}
@@ -91,12 +93,14 @@ Aside from the active page links (an example of these states is shown in the [Ta
       { label: 'Components', href: '/components' },
       { label: 'About', href: '/about', },
     ]}
-    notifications={null}
+    notificatiosns={null}
     onSearch={term => console.log(`Search for: ${term}`)}
     searchPlaceholder="Search"
     title="Test"
     unreadNotification={true}
     user={{ initials: 'XT', href: '/userprofile' }}
+    version="v2.0.0"
+    versionLink={{href:'/versions'}}
   />
 </CodeHighlighter>
 
@@ -105,7 +109,7 @@ Aside from the active page links (an example of these states is shown in the [Ta
   {
     Name: 'homeLink',
     Type: 'LinkTypes',
-    Required: 'True',
+    Required: 'False',
     Description: 'An object typically containing a `to` or `href` property to indicate the property LinkComponent to send the user back to the homepage for the service.',
   },
   {
@@ -123,7 +127,7 @@ Aside from the active page links (an example of these states is shown in the [Ta
   {
     Name: 'navItems',
     Type: 'NavItem[] ',
-    Required: 'True',
+    Required: 'False',
     Description: 'An array of objects that must at least contain a label. If no custom component is provided then provide a href, otherwise provide the required property associated with the LinkComponent',
   },
   {
@@ -161,6 +165,18 @@ Aside from the active page links (an example of these states is shown in the [Ta
     Type: 'UserType',
     Required: 'False',
     Description: 'If your application has a User Profile page, pass in the User object to add their initials to the Avatar sub-component. This Avatar provides a link to the User’s profile.',
+  },
+  {
+    Name: 'version',
+    Type: 'string',
+    Required: 'False',
+    Description: 'Version of the application.',
+  },
+  {
+    Name: 'versionLink',
+    Type: 'LinkTypes',
+    Required: 'False',
+    Description: 'An object typically containing a `to` or `href` property to indicate the property LinkComponent to send the user to when the version badge is clicked.',
   },
 ]} />
 <br />

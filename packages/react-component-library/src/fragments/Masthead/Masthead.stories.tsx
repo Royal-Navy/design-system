@@ -41,6 +41,10 @@ const homeLink: AnchorType = {
   href: '/',
 }
 
+const versionLink: AnchorType = {
+  href: '/versions',
+}
+
 const CustomLogo = () => (
   <svg width="21" height="19" viewBox="0 0 21 19">
     <defs>
@@ -133,6 +137,8 @@ stories.add('all but navigation', () => (
     title="Test"
     unreadNotification
     user={user}
+    version="v2.0.0"
+    versionLink={versionLink}
   />
 ))
 
@@ -152,5 +158,7 @@ stories.add('With navigation', () => (
     title="Test"
     unreadNotification
     user={user}
+    version="v2.0.0"
+    versionLink={versionLink}
   />
 ))

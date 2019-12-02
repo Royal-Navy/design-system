@@ -83,6 +83,10 @@ $badge-states: (
     }
   }
 
+  &--no-text-transform {
+    text-transform: none;
+  }
+
   @each $size, $values in $badge-sizes {
     &.rn-badge--#{$size} {
       font-size: map-get($values, "font-size");
