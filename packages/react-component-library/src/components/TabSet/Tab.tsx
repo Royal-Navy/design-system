@@ -1,14 +1,12 @@
 import React from 'react'
 
-interface TabProps {
-  title: string
-  children?: any
+export interface TabProps {
+  title: React.ReactElement | string
+  children: React.ReactElement | string
 }
 
-const Tab: React.FC<TabProps> = ({ children }) => {
+export const Tab: React.FC<TabProps> = ({ children }) => {
   return <>{children}</>
 }
 
 Tab.displayName = 'Tab'
-
-export default Tab

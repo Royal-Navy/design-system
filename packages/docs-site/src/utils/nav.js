@@ -46,6 +46,7 @@ export function filterNodes(nodes) {
   return nodes
     .filter(node => stripTrailingSlash(node.node.fields.slug) !== '/')
     .filter(node => !node.node.frontmatter.draft)
+    .filter(node => !node.node.frontmatter.excludeFromNavigation)
 }
 
 /**

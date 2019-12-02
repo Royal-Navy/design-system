@@ -145,13 +145,18 @@
   width: 210px;
 }
 
+.masthead__version {
+  flex-grow: 1;
+  margin-left: spacing(2);
+
+  .rn-badge {
+    text-transform: none !important;
+  }
+}
+
 @include rn.breakpoint("xs") {
   .masthead {
     margin-bottom: 0;
-  }
-
-  .masthead__container {
-    display: block;
   }
 
   .masthead__logo {

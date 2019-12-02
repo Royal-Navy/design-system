@@ -8,6 +8,7 @@ status: ''
 template: home
 index: 0
 header: false
+excludeFromNavigation: true
 ---
 
 import Card from '../../components/presenters/card'

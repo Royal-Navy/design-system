@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import TextInput from '../TextInput'
 import { RightArrow } from '../../icons'
-
-interface SearchFormType {
-  term: string
-}
+import { useDocumentClick } from '../../hooks'
 
 export interface SearchbarProps {
   className?: string
@@ -27,34 +24,16 @@ export const Searchbar: React.FC<SearchbarProps> = ({
   const searchBoxRef = useRef()
   const [term, setTerm] = useState('')
 
+  useDocumentClick(searchBoxRef, (event: Event) => {
+    if (!searchButton.current.contains(event.target)) {
+      setShowSearch(false)
+    }
+  })
+
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     onSearch(term)
   }
-
-  function documentClick(event: Event) {
-    // workaround for undefined error in typescript
-    const current = searchBoxRef.current || {
-      contains: (target: any): boolean => target === null,
-    }
-
-    if (
-      current.contains(event.target) ||
-      searchButton.current.contains(event.target)
-    ) {
-      return
-    }
-
-    setShowSearch(false)
-  }
-
-  useEffect(() => {
-    document.addEventListener('mousedown', documentClick)
-
-    return () => {
-      document.removeEventListener('mousedown', documentClick)
-    }
-  }, [])
 
   return (
     <div

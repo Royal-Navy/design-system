@@ -104,10 +104,31 @@ The TabSet (and companion Tab) component allows the user to switch between diffe
 <DataTable data={[
   {
     Name: 'children',
-    Type: 'ReactNode[]',
+    Type: 'React.ReactElement<TabProps>[]',
     Required: 'True',
     Default: '',
     Description: 'A Tab to include within the TabSet. Must be a Tab component',
+  },
+  {
+    Name: 'className',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'Additional CSS class to modify rn-tab-set',
+  },
+  {
+    Name: 'onChangeCallback',
+    Type: '(id: number) => void',
+    Required: 'False',
+    Default: '',
+    Description: 'Called when a tab is clicked.',
+  },
+  {
+    Name: 'scrollable',
+    Type: 'boolean',
+    Required: 'False',
+    Default: 'False',
+    Description: 'Adds ability to scroll through a large number of tabs.',
   }
 ]} />
 
@@ -115,14 +136,14 @@ The TabSet (and companion Tab) component allows the user to switch between diffe
 <DataTable data={[
   {
     Name: 'title',
-    Type: 'string',
+    Type: 'React.ReactElement | string',
     Required: 'True',
     Default: '',
     Description: 'The title to be used for this Tab within the TabSet',
   },
   {
     Name: 'children',
-    Type: 'ReactNode[]',
+    Type: 'React.ReactElement | string',
     Required: 'True',
     Default: '',
     Description: 'The content to place in the Tab. Any JSX is valid',

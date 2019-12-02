@@ -14,6 +14,7 @@ const QUERY = graphql`
             status
             index
             draft
+            excludeFromNavigation
           }
         }
       }

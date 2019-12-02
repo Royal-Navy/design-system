@@ -1,6 +1,10 @@
 @use "../abstracts/mixins" as m;
 @use "../abstracts/functions" as f;
 
+.rn-notification-panel__container {
+  position: absolute;
+}
+
 .rn-notification-panel__button {
   background: transparent;
   border: none;
@@ -54,7 +58,7 @@
 .rn-notification-panel--light .rn-iconfill {
   &:hover {
     fill: f.color("neutral", "400");
-  }  
+  }
 }
 
 .rn-notification__transition-wrapper {
@@ -63,30 +67,6 @@
   left: 0;
   width: 100%;
   background: white;
-}
-
-.rn-notification-panel__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: f.spacing("6") 0;
-  border-bottom: 1px solid f.color("neutral", "100");
-  margin: 0;
-}
-
-.rn-notification-panel__heading {
-  font-weight: normal;
-  font-size: f.font-size("l");
-  color: f.color("neutral", "500");
-  margin: 0;
-  padding: 0 f.spacing("6");
-}
-
-.rn-notification-panel__close {
-  font-size: f.font-size("s");
-  color: f.color("neutral", "300");
-  background: f.color("neutral", "white");
-  border: none;
 }
 
 .rn-notification-leave {
@@ -201,5 +181,3 @@
   color: f.color("neutral", "300");
   margin-top: f.spacing("2");
 }
-
-
