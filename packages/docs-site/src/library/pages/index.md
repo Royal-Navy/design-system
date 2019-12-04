@@ -12,6 +12,7 @@ excludeFromNavigation: true
 ---
 
 import Card from '../../components/presenters/card'
+import packageJson from '../../../package.json'
 
 <section class="m:h_f m:h_f-align-start h_mt-8 m:h_mb-16">
   <Card 
@@ -38,9 +39,8 @@ import Card from '../../components/presenters/card'
   <div class="m:h_f m:h_f-align-start">
   <Card 
     type="coloured" 
-    title="Standards v1.0.0 released" 
-    meta="25th July 2019"
-    text={<span>This launch includes the new <strong>Standards</strong> website providing <strong>'get started'</strong> guides for designers and developers, styling and component usage guidelines, and information about <strong>Standards</strong> for Royal Navy stakeholders. Please <a href="/contact">get in touch</a> if you have any feedback.</span>}
+    title={`Standards v${packageJson.version} released`}
+    text={<span>The latest release is on <a href="https://www.npmjs.com/package/@royalnavy/react-component-library">NPM</a> and the source is available on <a href="https://github.com/Royal-Navy/standards-toolkit">GitHub</a>. Please <a href="/contact">get in touch</a> if you have any feedback.</span>}
     className="m:h_f-1 home--updates"
   />
 
