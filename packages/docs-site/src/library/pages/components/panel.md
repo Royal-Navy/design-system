@@ -10,7 +10,7 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import DataTable from '../../../components/presenters/data-table'
 
 
-import PanelComponent from '../../images/components/panel/component.svg'
+import PanelComponent from '../../images/components/panel/Component'
 
 # Overview
 The panel component is a simple wrapper that visually separates content.

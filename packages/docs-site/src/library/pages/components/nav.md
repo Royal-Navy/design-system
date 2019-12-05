@@ -8,9 +8,10 @@ import { Nav, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
-import NavComponent from '../../images/components/nav/component.svg'
-import NavAnatomy from '../../images/components/nav/anatomy.svg'
-import NavStates from '../../images/components/nav/states.svg'
+
+import NavComponent from '../../images/components/nav/Component'
+import NavAnatomy from '../../images/components/nav/Anatomy'
+import NavStates from '../../images/components/nav/States'
 
 # Overview
 

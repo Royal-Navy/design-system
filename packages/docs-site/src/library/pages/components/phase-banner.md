@@ -8,8 +8,9 @@ import { PhaseBanner, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
-import PhaseBannerComponent from '../../images/components/phase-banner/component.svg'
-import PhaseBannerAnatomy from '../../images/components/phase-banner/anatomy.svg'
+
+import PhaseBannerComponent from '../../images/components/phase-banner/Component'
+import PhaseBannerAnatomy from '../../images/components/phase-banner/Anatomy'
 
 # Overview
 

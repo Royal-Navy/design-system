@@ -9,9 +9,9 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import ModalComponent from '../../images/components/modal/component.svg'
-import ModalUsage from '../../images/components/modal/usage.svg'
-import ModalAnatomy from '../../images/components/modal/anatomy.svg'
+import ModalComponent from '../../images/components/modal/Component'
+import ModalUsage from '../../images/components/modal/Usage'
+import ModalAnatomy from '../../images/components/modal/Anatomy'
 
 # Overview
 

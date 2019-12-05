@@ -9,10 +9,10 @@ import { Field, Formik, Form } from 'formik'
 import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
-import TextareaComponent from '../../../images/components/forms/textarea/component.svg'
-import TextareaAnatomy from '../../../images/components/forms/textarea/anatomy.svg'
-import TextareaStates from '../../../images/components/forms/textarea/states.svg'
-import TextareaVariations from '../../../images/components/forms/textarea/variations.svg'
+import TextareaComponent from '../../../images/components/forms/textarea/Component'
+import TextareaAnatomy from '../../../images/components/forms/textarea/Anatomy'
+import TextareaStates from '../../../images/components/forms/textarea/States'
+import TextareaVariations from '../../../images/components/forms/textarea/Variations'
 
 # Textarea
 The textarea component lets users enter and edit multiple lines of text.

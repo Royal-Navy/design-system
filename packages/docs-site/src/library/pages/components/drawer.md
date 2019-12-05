@@ -9,8 +9,8 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import DrawerComponent from '../../images/components/drawer/component.svg'
-import DrawerAnatomy from '../../images/components/drawer/anatomy.svg'
+import DrawerComponent from '../../images/components/drawer/Component'
+import DrawerAnatomy from '../../images/components/drawer/Anatomy'
 
 # Overview
 

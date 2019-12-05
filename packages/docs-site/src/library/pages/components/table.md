@@ -9,8 +9,8 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import TableComponent from '../../images/components/table/component.svg'
-import TableAnatomy from '../../images/components/table/anatomy.svg'
+import TableComponent from '../../images/components/table/Component'
+import TableAnatomy from '../../images/components/table/Anatomy'
 
 # Overview
 

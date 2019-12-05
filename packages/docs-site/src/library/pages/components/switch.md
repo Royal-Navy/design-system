@@ -9,9 +9,9 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import SwitchComponent from '../../images/components/switch/component.svg'
-import SwitchAnatomy from '../../images/components/switch/anatomy.svg'
-import SwitchStates from '../../images/components/switch/states.svg'
+import SwitchComponent from '../../images/components/switch/Component'
+import SwitchAnatomy from '../../images/components/switch/Anatomy'
+import SwitchStates from '../../images/components/switch/States'
 
 # Overview
 

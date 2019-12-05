@@ -9,8 +9,8 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import ButtonGroupComponent from '../../images/components/button-group/component.svg'
-import ButtonGroupAnatomy from '../../images/components/button-group/anatomy.svg'
+import ButtonGroupComponent from '../../images/components/button-group/Component'
+import ButtonGroupAnatomy from '../../images/components/button-group/Anatomy'
 
 
 # Overview
