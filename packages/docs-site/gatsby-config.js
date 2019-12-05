@@ -9,7 +9,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
-    'gatsby-plugin-react-svg',
     {
       resolve: `gatsby-plugin-sass`,
       options: {
