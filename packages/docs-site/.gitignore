@@ -5,3 +5,6 @@ public/
 .firebase/
 .cache
 generated-library/
+
+# SVGR components
+src/library/images/**/**.js

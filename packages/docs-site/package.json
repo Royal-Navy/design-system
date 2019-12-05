@@ -8,14 +8,17 @@
   "author": "NELSON",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "rm -rf ./.cache && gatsby build",
-    "develop": "gatsby develop",
-    "develop:clean": "rm -rf ./.cache && gatsby develop",
+    "build": "rm -rf ./.cache && yarn svgr && gatsby build",
+    "develop": "yarn svgr && gatsby develop",
+    "develop:clean": "rm -rf ./.cache && yarn svgr && gatsby develop",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src",
     "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src",
     "test": "jest",
-    "cache:clear": "rm -rf ./.cache"
+    "cache:clear": "rm -rf ./.cache",
+    "svgr": "yarn svgr:clear && yarn svgr:build",
+    "svgr:clear": "find src/library/images -name '*.js' -delete",
+    "svgr:build": "svgr -d src/library/images src/library/images"
   },
   "browserslist": [
     ">0.2%",
@@ -70,6 +73,7 @@
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@royalnavy/eslint-config-react": "^1.8.0",
+    "@svgr/cli": "^4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "babel-core": "^7.0.0-bridge.0",
