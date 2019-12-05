@@ -8,9 +8,9 @@
   "author": "NELSON",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "rm -rf ./.cache && yarn svgr && gatsby build",
+    "build": "yarn cache:clear && yarn svgr && gatsby build",
     "develop": "yarn svgr && gatsby develop",
-    "develop:clean": "rm -rf ./.cache && yarn svgr && gatsby develop",
+    "develop:clean": "yarn cache:clear && yarn svgr && gatsby develop",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src",
     "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src",
