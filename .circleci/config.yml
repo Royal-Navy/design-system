@@ -225,6 +225,9 @@ jobs:
           name: Build React Components
           command: yarn --cwd packages/react-component-library build
       - run:
+          name: Build site
+          command: yarn --cwd packages/docs-site build
+      - run:
           name: Jest
           environment:
             JEST_JUNIT_OUTPUT: test-results/jest/docs-site-results.xml

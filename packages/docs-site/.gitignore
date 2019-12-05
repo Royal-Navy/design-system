@@ -7,4 +7,5 @@ public/
 generated-library/
 
 # SVGR components
-src/library/images/**/**.js
+src/**/images/**.js
+src/**/images/**/**.js

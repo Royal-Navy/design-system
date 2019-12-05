@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import './sketch-widget.scss'
 
-import SketchLogo from './sketch-logo.svg'
-import DownloadIcon from './download-icon.svg'
+import SketchLogo from './images/SketchLogo'
+import DownloadIcon from './images/DownloadIcon'
 
 const SketchWidget = ({ name, href }) => {
   return (

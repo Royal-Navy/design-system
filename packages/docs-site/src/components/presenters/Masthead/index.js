@@ -9,7 +9,7 @@ import {
 } from '@royalnavy/react-component-library'
 
 import packageJson from '../../../../package'
-import SiteLogo from './images/site-logo.svg'
+import SiteLogo from './images/SiteLogo'
 
 import './masthead.scss'
 

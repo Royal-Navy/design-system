@@ -17,8 +17,8 @@
     "test": "jest",
     "cache:clear": "rm -rf ./.cache",
     "svgr": "yarn svgr:clear && yarn svgr:build",
-    "svgr:clear": "find src/library/images -name '*.js' -delete",
-    "svgr:build": "svgr -d src/library/images src/library/images"
+    "svgr:clear": "find src -regex '.*/images/.*.js' -delete",
+    "svgr:build": "svgr -d src src"
   },
   "browserslist": [
     ">0.2%",
