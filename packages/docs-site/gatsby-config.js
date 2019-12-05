@@ -23,20 +23,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-icon-parser`,
-      options: {
-        name: `icons`,
-        path: `${__dirname}/src/library/icons`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `icons`,
-        path: `${__dirname}/src/library/icons`,
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
