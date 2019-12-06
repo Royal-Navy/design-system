@@ -11,10 +11,10 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import RangeSliderComponent from '../../images/components/range-slider/component.svg'
-import RangeSliderAnatomy from '../../images/components/range-slider/anatomy.svg'
-import RangeSliderStates from '../../images/components/range-slider/states.svg'
-import RangeSliderVariations from '../../images/components/range-slider/variations.svg'
+import RangeSliderComponent from '../../images/components/range-slider/Component'
+import RangeSliderAnatomy from '../../images/components/range-slider/Anatomy'
+import RangeSliderStates from '../../images/components/range-slider/States'
+import RangeSliderVariations from '../../images/components/range-slider/Variations'
 
 # Overview
 

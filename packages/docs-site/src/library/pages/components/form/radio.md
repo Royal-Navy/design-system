@@ -9,9 +9,9 @@ import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
 
-import RadioComponent from '../../../images/components/forms/radio/component.svg'
-import RadioAnatomy from '../../../images/components/forms/radio/anatomy.svg'
-import RadioStates from '../../../images/components/forms/radio/states.svg'
+import RadioComponent from '../../../images/components/forms/radio/Component'
+import RadioAnatomy from '../../../images/components/forms/radio/Anatomy'
+import RadioStates from '../../../images/components/forms/radio/States'
 
 # Overview
 

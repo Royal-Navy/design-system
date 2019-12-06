@@ -5,7 +5,7 @@ import Links from '../Links'
 
 import './footer.scss'
 
-import MonoLogo from './logo.svg'
+import MonoLogo from './images/Logo'
 
 const Footer = ({ children, links }) => (
   <div className="rn-footer">

@@ -8,10 +8,11 @@ import { Icons, Tab, TabSet, Formik as FormikControls } from '@royalnavy/react-c
 import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
-import NumberClickerComponent from '../../../images/components/forms/number-clicker/component.svg'
-import NumberClickerAnatomy from '../../../images/components/forms/number-clicker/anatomy.svg'
-import NumberClickerStates from '../../../images/components/forms/number-clicker/states.svg'
-import NumberClickerButtonStates from '../../../images/components/forms/number-clicker/button-states.svg'
+
+import NumberClickerComponent from '../../../images/components/forms/number-clicker/Component'
+import NumberClickerAnatomy from '../../../images/components/forms/number-clicker/Anatomy'
+import NumberClickerStates from '../../../images/components/forms/number-clicker/States'
+import NumberClickerButtonStates from '../../../images/components/forms/number-clicker/ButtonStates'
 
 # Overview
 The Number Input component is a field input that only accepts numbers and can be stepped with the additional arrows.

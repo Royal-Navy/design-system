@@ -8,14 +8,17 @@
   "author": "NELSON",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "rm -rf ./.cache && gatsby build",
-    "develop": "gatsby develop",
-    "develop:clean": "rm -rf ./.cache && gatsby develop",
+    "build": "yarn cache:clear && yarn svgr && gatsby build",
+    "develop": "yarn svgr && gatsby develop",
+    "develop:clean": "yarn cache:clear && yarn svgr && gatsby develop",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src",
     "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src",
     "test": "jest",
-    "cache:clear": "rm -rf ./.cache"
+    "cache:clear": "rm -rf ./.cache",
+    "svgr": "yarn svgr:clear && yarn svgr:build",
+    "svgr:clear": "find src -regex '.*/images/.*.js' -delete",
+    "svgr:build": "svgr -d src src"
   },
   "browserslist": [
     ">0.2%",
@@ -48,7 +51,6 @@
     "gatsby-plugin-mdx": "^1.0.58",
     "gatsby-plugin-offline": "^3.0.25",
     "gatsby-plugin-react-helmet": "^3.1.16",
-    "gatsby-plugin-react-svg": "^2.1.2",
     "gatsby-plugin-sass": "^2.1.24",
     "gatsby-plugin-sass-resources": "^2.0.0",
     "gatsby-plugin-sharp": "^2.3.4",
@@ -70,6 +72,7 @@
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@royalnavy/eslint-config-react": "^1.8.0",
+    "@svgr/cli": "^4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "babel-core": "^7.0.0-bridge.0",
