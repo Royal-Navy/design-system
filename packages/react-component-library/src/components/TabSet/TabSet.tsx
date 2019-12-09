@@ -9,14 +9,14 @@ import { SCROLL_DIRECTION } from './constants'
 interface TabSetProps {
   className?: string
   children: React.ReactElement<TabProps>[]
-  onChangeCallback?: (id: number) => void
+  onChange?: (id: number) => void
   scrollable?: boolean
 }
 
 export const TabSet: React.FC<TabSetProps> = ({
   className = '',
   children,
-  onChangeCallback,
+  onChange,
   scrollable,
 }) => {
   const [activeTab, setActiveTab] = useState(0)
@@ -25,8 +25,8 @@ export const TabSet: React.FC<TabSetProps> = ({
   function handleClick(index: number) {
     setActiveTab(index)
 
-    if (onChangeCallback) {
-      onChangeCallback(index)
+    if (onChange) {
+      onChange(index)
     }
   }
 

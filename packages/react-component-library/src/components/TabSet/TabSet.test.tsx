@@ -18,12 +18,12 @@ describe('TabSet', () => {
       beforeEach(() => {
         const props = {
           className: 'rn-tab-set--modifier',
-          onChangeCallback: () => {
+          onChange: () => {
             return true
           },
         }
 
-        onChangeSpy = jest.spyOn(props, 'onChangeCallback')
+        onChangeSpy = jest.spyOn(props, 'onChange')
 
         wrapper = render(
           <TabSet {...props}>
@@ -58,7 +58,7 @@ describe('TabSet', () => {
           ).toContain('is-active')
         })
 
-        it('should invoke the onChangeCallback function', () => {
+        it('should invoke the onChange function', () => {
           expect(onChangeSpy).toHaveBeenCalledTimes(1)
           expect(onChangeSpy).toHaveBeenCalledWith(1)
         })
