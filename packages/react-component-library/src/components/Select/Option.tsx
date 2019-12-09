@@ -5,7 +5,7 @@ import { OptionProps } from 'react-select/src/components/Option'
 import Badge from '../Badge'
 
 export interface SelectOptionWithBadgeType {
-  badge?: string | number | undefined
+  badge?: string | number
   label: string
   value: string
 }
