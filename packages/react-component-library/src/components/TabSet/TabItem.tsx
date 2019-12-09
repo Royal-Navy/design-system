@@ -4,15 +4,15 @@ import classNames from 'classnames'
 interface TabItemProps {
   children: React.ReactElement | string
   index: number
-  active: boolean
+  isActive: boolean
   onClick: () => void
-  scrollable?: boolean
+  isScrollable?: boolean
 }
 
 export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
-  ({ children, index, active, onClick, scrollable }, ref) => {
+  ({ children, index, isActive, onClick, isScrollable }, ref) => {
     const tabClasses = classNames('rn-tab-set__tab', {
-      'is-active': active,
+      'is-active': isActive,
     })
 
     return (

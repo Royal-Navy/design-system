@@ -45,7 +45,7 @@ const navData: NavItemAnchorType[] = [
     label: 'Home',
   },
   {
-    active: true,
+    isActive: true,
     href: '/stats',
     Image: Graph,
     label: 'Stats',

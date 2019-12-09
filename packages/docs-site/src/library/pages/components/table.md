@@ -120,7 +120,7 @@ Whilst there is no restriction on the number of Table instances that can be used
     Description: 'Name of the field to be presented in the cell.',
   },
   {
-    Name: 'sortable',
+    Name: 'isSortable',
     Type: 'boolean',
     Required: 'False',
     Default: '',

@@ -20,7 +20,7 @@ export interface MastheadProps {
   onSearch?: (term: string) => void
   searchPlaceholder?: string
   title: string
-  unreadNotification?: boolean
+  hasUnreadNotification?: boolean
   user?: UserType
 }
 
@@ -33,7 +33,7 @@ export const Masthead: React.FC<MastheadProps> = ({
   onSearch,
   searchPlaceholder = '',
   title,
-  unreadNotification,
+  hasUnreadNotification,
   user,
 }) => {
   const [showSearch, setShowSearch] = useState(false)
@@ -110,7 +110,7 @@ export const Masthead: React.FC<MastheadProps> = ({
               notificationPlacement={NOTIFICATION_PLACEMENT.BELOW}
               onHide={() => setShowNotifications(false)}
               onShow={() => setShowNotifications(true)}
-              unreadNotification={unreadNotification}
+              hasUnreadNotification={hasUnreadNotification}
             >
               {notifications}
             </NotificationPanel>

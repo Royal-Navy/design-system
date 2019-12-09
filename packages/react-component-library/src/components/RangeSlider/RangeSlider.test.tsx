@@ -87,7 +87,7 @@ describe('RangeSlider', () => {
           domain={domain}
           values={values}
           step={step}
-          disabled
+          isDisabled
         />
       )
     })
@@ -107,7 +107,7 @@ describe('RangeSlider', () => {
           domain={domain}
           values={values}
           step={step}
-          reversed
+          isReversed
         />
       )
     })
@@ -152,7 +152,7 @@ describe('RangeSlider', () => {
           domain={domain}
           values={values}
           step={step}
-          reversed
+          isReversed
         />
       )
     })

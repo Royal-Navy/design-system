@@ -135,7 +135,7 @@ An enhanced version of the field is also exported that is compatible with Formik
     Description: 'Optional additional css class to associate with the component wrapper',
   },
   {
-    Name: 'disabled',
+    Name: 'isDisabled',
     Type: 'boolean',
     Required: 'False',
     Default: 'false',

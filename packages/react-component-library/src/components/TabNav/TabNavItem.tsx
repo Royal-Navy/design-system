@@ -8,12 +8,12 @@ interface TabNavItemProps {
 
 const TabNavItem: React.FC<TabNavItemProps> = ({
   LinkComponent,
-  navItem: { active, label, ...rest },
+  navItem: { isActive, label, ...rest },
 }) => (
   <li
     key={uuid()}
-    className={`rn-tab-nav__item ${active ? 'is-active' : ''}`}
-    data-testid={active ? 'tab-active' : 'tab'}
+    className={`rn-tab-nav__item ${isActive ? 'is-active' : ''}`}
+    data-testid={isActive ? 'tab-active' : 'tab'}
   >
     <LinkComponent className="rn-tab-nav__link" data-testid="tablink" {...rest}>
       {label}

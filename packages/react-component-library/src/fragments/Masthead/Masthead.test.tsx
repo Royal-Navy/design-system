@@ -185,7 +185,7 @@ describe('Masthead', () => {
           </Notifications>
         )
 
-        props.unreadNotification = false
+        props.hasUnreadNotification = false
 
         wrapper = render(<Masthead {...props} />)
       })
@@ -250,7 +250,7 @@ describe('Masthead', () => {
 
       describe('and unread notifications', () => {
         beforeEach(() => {
-          props.unreadNotification = true
+          props.hasUnreadNotification = true
 
           wrapper = render(<Masthead {...props} />)
         })
@@ -267,7 +267,7 @@ describe('Masthead', () => {
       beforeEach(() => {
         props.navItems = [
           {
-            active: false,
+            isActive: false,
             label: 'test nav item',
             href: '/',
           },

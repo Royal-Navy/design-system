@@ -124,7 +124,7 @@ describe('TabSet', () => {
 
     beforeEach(() => {
       wrapper = render(
-        <TabSet scrollable>
+        <TabSet isScrollable>
           <Tab title="Title 1">Content 1</Tab>
           <Tab title="Title 2">Content 2</Tab>
           <Tab title="Title 3">Content 3</Tab>

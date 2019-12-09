@@ -5,10 +5,10 @@ interface CheckboxProps {
   className?: string
   id?: string
   label: string
-  disabled?: boolean
+  isDisabled?: boolean
   value?: string
   name: string
-  checked?: boolean
+  isChecked?: boolean
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
   onBlur?: (event: React.FormEvent<HTMLInputElement>) => void
 }
@@ -17,10 +17,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
   className = '',
   id = uuid(),
   label,
-  disabled = false,
+  isDisabled = false,
   value,
   name,
-  checked = false,
+  isChecked = false,
   onChange,
   onBlur,
   ...rest
@@ -35,10 +35,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
             type="checkbox"
             name={name}
             value={value}
-            checked={checked}
+            checked={isChecked}
             onChange={onChange}
             onBlur={onBlur}
-            disabled={disabled}
+            disabled={isDisabled}
             {...rest}
             data-testid="checkbox"
           />

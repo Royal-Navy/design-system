@@ -10,14 +10,14 @@ interface TabSetProps {
   className?: string
   children: React.ReactElement<TabProps>[]
   onChangeCallback?: (id: number) => void
-  scrollable?: boolean
+  isScrollable?: boolean
 }
 
 export const TabSet: React.FC<TabSetProps> = ({
   className = '',
   children,
   onChangeCallback,
-  scrollable,
+  isScrollable,
 }) => {
   const [activeTab, setActiveTab] = useState(0)
   const { scrollToNextTab, tabsRef, itemsRef } = useScrollableTabSet(children)
@@ -31,13 +31,13 @@ export const TabSet: React.FC<TabSetProps> = ({
   }
 
   const articleClasses = classNames('rn-tab-set', className, {
-    'is-scrollable': scrollable,
+    'is-scrollable': isScrollable,
   })
 
   return (
     <article className={articleClasses} data-testid="tab-set">
       <header className="rn-tab-set__head">
-        {scrollable && (
+        {isScrollable && (
           <ScrollButton
             direction={SCROLL_DIRECTION.LEFT}
             onClick={scrollToNextTab(currentTabIndex => currentTabIndex - 1)}
@@ -52,9 +52,9 @@ export const TabSet: React.FC<TabSetProps> = ({
             {Children.map(children, ({ props }, index: number) => (
               <TabItem
                 onClick={() => handleClick(index)}
-                active={index === activeTab}
+                isActive={index === activeTab}
                 index={index}
-                scrollable={scrollable}
+                isScrollable={isScrollable}
                 ref={el => {
                   itemsRef.current[index] = el
                   return itemsRef.current[index]
@@ -65,7 +65,7 @@ export const TabSet: React.FC<TabSetProps> = ({
             ))}
           </ol>
         </div>
-        {scrollable && (
+        {isScrollable && (
           <ScrollButton
             direction={SCROLL_DIRECTION.RIGHT}
             onClick={scrollToNextTab(currentTabIndex => currentTabIndex + 1)}

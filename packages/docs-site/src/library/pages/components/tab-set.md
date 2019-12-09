@@ -124,7 +124,7 @@ The TabSet (and companion Tab) component allows the user to switch between diffe
     Description: 'Called when a tab is clicked.',
   },
   {
-    Name: 'scrollable',
+    Name: 'isScrollable',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',
