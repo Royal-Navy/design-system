@@ -6,19 +6,19 @@ import { DropdownOption } from './DropdownOption'
 export const DropdownLabel: React.FC<DropdownOption> = ({
   isDisabled = false,
   hidden = false,
-  icon: Icon,
+  icon,
   label,
-  rightContent: RightContent,
+  rightContent,
   visible = false,
 }) => {
   return (
     <div className={`rn-dropdownlabel ${isDisabled ? 'is-disabled' : ''}`}>
-      {Icon && (
+      {icon && (
         <span
           className="rn-dropdownlabel__start-adornment"
           data-testid="rn-dropdownlabel__start-adornment"
         >
-          <Icon />
+          {icon}
         </span>
       )}
       <span
@@ -37,12 +37,12 @@ export const DropdownLabel: React.FC<DropdownOption> = ({
           <Visibility className="is-active rn-dropdownlabel__end-adornment" />
         </span>
       )}
-      {RightContent && (
+      {rightContent && (
         <span
           className="rn-dropdownlabel__end-adornment"
           data-testid="rn-dropdownlabel__rightcontent"
         >
-          <RightContent />
+          {rightContent}
         </span>
       )}
     </div>
