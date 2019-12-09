@@ -98,16 +98,15 @@ stories.add('Sortable', () => {
 
   return (
     <Table data={tableDataMock}>
-      <TableColumn field="first" sortable>
+      <TableColumn field="first" isSortable>
         First column
       </TableColumn>
-      <TableColumn field="second" sortable>
+      <TableColumn field="second" isSortable>
         Second column
       </TableColumn>
-      <TableColumn field="third" sortable>
+      <TableColumn field="third" isSortable>
         Third column
       </TableColumn>
     </Table>
   )
 })
-

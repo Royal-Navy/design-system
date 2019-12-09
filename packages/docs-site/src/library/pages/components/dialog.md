@@ -141,7 +141,7 @@ Dialog is a child window that overlays the main parent window.
     Description: 'A callback function invoked when the dialog is cancelled',
   },
   {
-    Name: 'danger',
+    Name: 'isDanger',
     Type: 'boolean',
     Required: 'False',
     Default: '',

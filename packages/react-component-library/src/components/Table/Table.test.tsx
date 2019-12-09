@@ -125,11 +125,13 @@ describe('Table', () => {
 
       wrapper = render(
         <Table data={tableDataMock}>
-          <TableColumn field="first" sortable>
+          <TableColumn field="first" isSortable>
             First
           </TableColumn>
           <TableColumn field="second">Second</TableColumn>
-          <TableColumn field="third" sortable>Third</TableColumn>
+          <TableColumn field="third" isSortable>
+            Third
+          </TableColumn>
         </Table>
       )
     })

@@ -12,14 +12,15 @@ import {
 
 import { Handle, Track, Tick } from './index'
 
-interface RangeSliderProps extends Omit<SliderProps, 'children'> {
+interface RangeSliderProps extends Omit<SliderProps, 'children' | 'disabled' | 'reversed'> {
   hasLabels?: boolean
   tracksLeft?: boolean
   tracksRight?: boolean
   tickCount?: number
   IconLeft?: React.ElementType
   IconRight?: React.ElementType
-  disabled?: boolean
+  isDisabled?: boolean
+  isReversed?: boolean
 }
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
@@ -32,8 +33,8 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   tickCount = 10,
   IconLeft,
   IconRight,
-  reversed,
-  disabled,
+  isReversed,
+  isDisabled,
   values,
   onUpdate,
   ...rest
@@ -46,8 +47,8 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   }
 
   const classes = classNames('rn-rangeslider', className, {
-    'is-reversed': reversed,
-    'is-disabled': disabled,
+    'is-reversed': isReversed,
+    'is-disabled': isDisabled,
   })
 
   return (
@@ -60,8 +61,8 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
       )}
       <Slider
         domain={domain}
-        reversed={reversed}
-        disabled={disabled}
+        reversed={isReversed}
+        disabled={isDisabled}
         values={values}
         step={step}
         onUpdate={onUpdateHandler}
@@ -117,7 +118,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
                     hasLabels={hasLabels}
                     values={sliderValues}
                     domain={domain}
-                    reversed={reversed}
+                    isReversed={isReversed}
                   />
                 ))}
               </div>

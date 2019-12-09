@@ -84,7 +84,7 @@ You can pass custom markup to appear by including it as a child of the component
     Description: 'Text to display in the phase banner badge',
   },
   {
-    Name: 'fullWidth',
+    Name: 'isFullWidth',
     Type: 'Boolean',
     Required: 'False',
     Default: 'False',

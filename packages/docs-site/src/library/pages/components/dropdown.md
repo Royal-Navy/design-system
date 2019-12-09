@@ -143,7 +143,7 @@ An option can also be marked as inactive and is greyed out to show that to the u
     Description: 'A disabled option is displayed with slightly greyed out text and cannot be selected',
   },
   {
-    Name: 'hidden',
+    Name: 'isHidden',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',
@@ -178,7 +178,7 @@ An option can also be marked as inactive and is greyed out to show that to the u
     Description: 'The value that it used in the onSelect method to indicate the desired action',
   },
   {
-    Name: 'visible',
+    Name: 'isVisible',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',

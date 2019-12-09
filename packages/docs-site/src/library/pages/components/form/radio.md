@@ -119,7 +119,7 @@ The Radio component accepts the standard field properties as defined by Formik. 
     Description: 'Optional additional css class to associate with the component wrapper',
   },
   {
-    Name: 'disabled',
+    Name: 'isDisabled',
     Type: 'boolean',
     Required: 'False',
     Default: 'false',

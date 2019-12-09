@@ -9,7 +9,7 @@ const navItems: NavItemAnchorType[] = [
   {
     label: 'Thing 1',
     href: '/thing1',
-    active: true,
+    isActive: true,
   },
   {
     label: 'Thing 2',

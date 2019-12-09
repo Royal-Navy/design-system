@@ -111,7 +111,7 @@ The Notification Sheet should only be used in the Sidebar or Masthead.
     Description: 'Name of the person who did the action.',
   },
   {
-    Name: 'read',
+    Name: 'isRead',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',

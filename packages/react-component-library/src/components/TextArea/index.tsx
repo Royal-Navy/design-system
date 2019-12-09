@@ -7,7 +7,7 @@ import { useFocus } from '../../hooks/useFocus'
 export interface InputProps {
   autoFocus?: boolean
   className?: string
-  disabled?: boolean
+  isDisabled?: boolean
   footnote?: string
   id?: string
   label?: string
@@ -21,7 +21,7 @@ export interface InputProps {
 export const TextArea: React.FC<InputProps> = props => {
   const {
     className = '',
-    disabled = false,
+    isDisabled = false,
     footnote,
     id = uuid(),
     label,
@@ -58,7 +58,7 @@ export const TextArea: React.FC<InputProps> = props => {
         <textarea
           className="rn-textarea__input"
           data-testid="textarea-input"
-          disabled={disabled}
+          disabled={isDisabled}
           id={id}
           name={name}
           onBlur={onLocalBlur}

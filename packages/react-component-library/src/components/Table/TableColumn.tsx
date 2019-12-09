@@ -12,8 +12,8 @@ import { TABLE_SORT_ORDER } from './constants'
 export interface TableColumnProps {
   children: string
   field: string
+  isSortable?: boolean
   onSortClick?: (field: string) => void
-  sortable?: boolean
   sortOrder?: TABLE_SORT_ORDER.ASCENDING | TABLE_SORT_ORDER.DESCENDING
 }
 
@@ -36,16 +36,16 @@ function getIcon(sortable: boolean, sortOrder: string) {
 
 export const TableColumn: React.FC<TableColumnProps> = ({
   field,
-  sortable,
+  isSortable,
   onSortClick,
   sortOrder,
   children,
 }) => {
-  const className = classNames({ 'is-sortable': sortable })
-  const icon = getIcon(sortable, sortOrder)
+  const className = classNames({ 'is-sortable': isSortable })
+  const icon = getIcon(isSortable, sortOrder)
 
   function onClick() {
-    if (sortable) {
+    if (isSortable) {
       onSortClick(field)
     }
   }

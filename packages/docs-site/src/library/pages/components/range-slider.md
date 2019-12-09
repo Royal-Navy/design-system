@@ -315,14 +315,14 @@ Additional details about props can be found [here](https://sghall.github.io/reac
     Description: 'Display the scale at the bottom of the slider.',
   },
   {
-    Name: 'reversed',
+    Name: 'isReversed',
     Type: 'boolean',
     Required: 'False',
     Default: '',
     Description: 'Reverse the slider scale.',
   },
   {
-    Name: 'disabled',
+    Name: 'isDisabled',
     Type: 'boolean',
     Required: 'False',
     Default: '',

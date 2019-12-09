@@ -184,7 +184,7 @@ const navData: NavItemAnchorType[] = [
     Description: "This property contains the content for the Notifications Popover. These are recent notifications, including read status, and a link to read them.",
   },
     {
-    Name: 'unreadNotification',
+    Name: 'hasUnreadNotification',
     Type: 'boolean',
     Required: 'False',
     Default: 'false',
@@ -208,7 +208,7 @@ const navData: NavItemAnchorType[] = [
 <br />
 <DataTable caption="NavItemAnchorType" data={[
   {
-    Name: 'active',
+    Name: 'isActive',
     Type: 'boolean',
     Required: 'False',
     Default: 'false',
@@ -239,7 +239,7 @@ const navData: NavItemAnchorType[] = [
 <br />
 <DataTable caption="NavItemLinkType" data={[
   {
-    Name: 'active',
+    Name: 'isActive',
     Type: 'boolean',
     Required: 'False',
     Default: 'false',

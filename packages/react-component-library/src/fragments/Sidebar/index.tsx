@@ -30,7 +30,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   )
 
   const renderSidebarNavItem = ({
-    active = false,
+    isActive = false,
     Image,
     label,
     ...rest
@@ -38,7 +38,7 @@ const Sidebar: React.FC<SidebarProps> = ({
     <LinkComponent
       {...rest}
       key={label}
-      className={`rn-sidebar__nav-link${active ? ' is-active' : ''}`}
+      className={`rn-sidebar__nav-link${isActive ? ' is-active' : ''}`}
       onClick={() => setOpen(false)}
     >
       <span className="rn-sidebar__nav-icon">{Image && <Image />}</span>
@@ -67,7 +67,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
       <div className="rn-sidebar__bottom">
         {notifications && (
-          <NotificationPanel unreadNotification={unreadNotification}>
+          <NotificationPanel hasUnreadNotification={unreadNotification}>
             {notifications}
           </NotificationPanel>
         )}

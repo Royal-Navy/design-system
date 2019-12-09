@@ -290,7 +290,7 @@ Nav supports rendering navigation in four different sizes.
     Description: 'The text for the link.',
   },
   {
-    Name: 'active',
+    Name: 'isActive',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',

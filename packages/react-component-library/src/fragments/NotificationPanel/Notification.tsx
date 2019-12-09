@@ -8,7 +8,7 @@ import { Avatar, AVATAR_VARIANT } from '../../components/Avatar'
 export interface NotificationProps {
   href: string
   name: string
-  read?: boolean
+  isRead?: boolean
   action: string
   on: string
   when: Date
@@ -40,7 +40,7 @@ function formatWhen(when: Date) {
 export const Notification: React.FC<NotificationProps> = ({
   href,
   name,
-  read,
+  isRead,
   action,
   on,
   when,
@@ -53,7 +53,7 @@ export const Notification: React.FC<NotificationProps> = ({
           <div className="rn-notifications-item">
             <div className="rn-notifications-item__avatar">
               <Avatar initials={getInitials(name)} variant={AVATAR_VARIANT.DARK} />
-              {!read && (
+              {!isRead && (
                 <span
                   className="rn-notification-panel__not-read rn-notification-panel__not-read--notification-item"
                   data-testid="not-read-item"

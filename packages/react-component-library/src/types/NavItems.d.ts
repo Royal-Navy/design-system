@@ -1,5 +1,5 @@
 interface NavItemAbstractType {
-  active?: boolean
+  isActive?: boolean
   Image?: React.ComponentType
   label: string
 }
