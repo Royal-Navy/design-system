@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ColumnProps } from '.'
+import { TableColumnProps } from '.'
 import { useTableData } from './useTableData'
 
 export interface RowProps {
@@ -9,7 +9,7 @@ export interface RowProps {
 
 interface TableProps {
   data: RowProps[]
-  children: React.ReactElement<ColumnProps>[]
+  children: React.ReactElement<TableColumnProps>[]
 }
 
 function getKey(prefix: string, id: string) {
@@ -21,7 +21,7 @@ export const Table: React.FC<TableProps> = ({ data, children }) => {
 
   const childrenWithSort = React.Children.map(
     children,
-    (child: React.ReactElement<ColumnProps>) =>
+    (child: React.ReactElement<TableColumnProps>) =>
       React.cloneElement(child, {
         ...child.props,
         sortOrder: sortField === child.props.field ? sortOrder : null,

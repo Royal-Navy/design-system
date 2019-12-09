@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import Badge from '../Badge'
-import { Table, Column } from '.'
+import { Table, TableColumn } from '.'
 
 const stories = storiesOf('Table', module)
 
@@ -38,16 +38,16 @@ stories.add('Default', () => {
 
   return (
     <Table data={tableDataMock}>
-      <Column field="first">First column</Column>
-      <Column field="second">Second column</Column>
-      <Column field="third">Third column</Column>
-      <Column field="fourth">Fourth column</Column>
-      <Column field="fifth">Fifth column</Column>
-      <Column field="sixth">Sixth column</Column>
-      <Column field="seventh">Seventh column</Column>
-      <Column field="eighth">Eighth column</Column>
-      <Column field="ninth">Ninth column</Column>
-      <Column field="tenth">Tenth column</Column>
+      <TableColumn field="first">First column</TableColumn>
+      <TableColumn field="second">Second column</TableColumn>
+      <TableColumn field="third">Third column</TableColumn>
+      <TableColumn field="fourth">Fourth column</TableColumn>
+      <TableColumn field="fifth">Fifth column</TableColumn>
+      <TableColumn field="sixth">Sixth column</TableColumn>
+      <TableColumn field="seventh">Seventh column</TableColumn>
+      <TableColumn field="eighth">Eighth column</TableColumn>
+      <TableColumn field="ninth">Ninth column</TableColumn>
+      <TableColumn field="tenth">Tenth column</TableColumn>
     </Table>
   )
 })
@@ -68,8 +68,8 @@ stories.add('Arbitrary cell content', () => {
 
   return (
     <Table data={tableDataMock}>
-      <Column field="first">First column</Column>
-      <Column field="second">Status</Column>
+      <TableColumn field="first">First column</TableColumn>
+      <TableColumn field="second">Status</TableColumn>
     </Table>
   )
 })
@@ -98,15 +98,15 @@ stories.add('Sortable', () => {
 
   return (
     <Table data={tableDataMock}>
-      <Column field="first" sortable>
+      <TableColumn field="first" sortable>
         First column
-      </Column>
-      <Column field="second" sortable>
+      </TableColumn>
+      <TableColumn field="second" sortable>
         Second column
-      </Column>
-      <Column field="third" sortable>
+      </TableColumn>
+      <TableColumn field="third" sortable>
         Third column
-      </Column>
+      </TableColumn>
     </Table>
   )
 })
