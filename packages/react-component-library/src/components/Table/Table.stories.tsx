@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import Badge from '../Badge'
-import { Table, Column } from './index'
+import { Table, Column } from '.'
 
 const stories = storiesOf('Table', module)
 

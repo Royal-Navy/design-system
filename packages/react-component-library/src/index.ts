@@ -23,7 +23,7 @@ import Switch from './components/Switch/Switch'
 import { RangeSlider } from './components/RangeSlider'
 import ResponsiveSwitch from './components/Switch'
 import Radio from './components/Radio'
-import { Table, Column } from './components/Table'
+import { Table, Column, SORT_ORDER } from './components/Table'
 import { Tab, TabSet } from './components/TabSet'
 import { TextArea } from './components/TextArea'
 import TextInput from './components/TextInput'
@@ -67,6 +67,7 @@ export {
   Radio,
   Select,
   Sidebar,
+  SORT_ORDER,
   Tab,
   Table,
   TabSet,

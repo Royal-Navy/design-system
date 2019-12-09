@@ -113,11 +113,25 @@ Whilst there is no restriction on the number of Table instances that can be used
 ### Column Properties
 <DataTable data={[
   {
+    Name: 'children',
+    Type: 'string',
+    Required: 'True',
+    Default: '',
+    Description: 'Text to be presented in the column header cell.',
+  },
+  {
     Name: 'field',
     Type: 'string',
     Required: 'True',
     Default: '',
     Description: 'Name of the field to be presented in the cell.',
+  },
+  {
+    Name: 'onSortClick',
+    Type: '(field: string) => void',
+    Required: 'False',
+    Default: '',
+    Description: 'Called when the column sort is clicked.',
   },
   {
     Name: 'sortable',
@@ -127,11 +141,11 @@ Whilst there is no restriction on the number of Table instances that can be used
     Description: 'If specified then the column will be sortable.',
   },
   {
-    Name: 'children',
+    Name: 'sortOrder',
     Type: 'string',
-    Required: 'True',
+    Required: 'False',
     Default: '',
-    Description: 'Text to be presented in the column header cell.',
+    Description: 'Order the column will be sorted in `asc` or `desc`',
   },
 ]} />
 

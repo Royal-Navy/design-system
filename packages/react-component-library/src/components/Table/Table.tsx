@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ColumnProps } from './Column'
+import { ColumnProps } from '.'
 import { useTableData } from './useTableData'
 
 export interface RowProps {

@@ -3,7 +3,7 @@ import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
 import Badge from '../Badge'
-import { Column, Table } from './index'
+import { Column, Table } from '.'
 
 describe('Table', () => {
   let wrapper: RenderResult

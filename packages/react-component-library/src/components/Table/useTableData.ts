@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import orderBy from 'lodash/orderBy'
 
-import { SORT_ORDER } from './constants'
-import { RowProps } from './Table'
+import { RowProps, SORT_ORDER } from '.'
 
 function getNextSortOrder(
   currentSortOrder: SORT_ORDER.ASCENDING | SORT_ORDER.DESCENDING,

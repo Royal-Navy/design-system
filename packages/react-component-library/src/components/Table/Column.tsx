@@ -10,11 +10,11 @@ import {
 import { SORT_ORDER } from './constants'
 
 export interface ColumnProps {
-  field: string
-  sortable?: boolean
-  onSortClick?: (field: string) => void
-  sortOrder?: string
   children: string
+  field: string
+  onSortClick?: (field: string) => void
+  sortable?: boolean
+  sortOrder?: SORT_ORDER.ASCENDING | SORT_ORDER.DESCENDING
 }
 
 const SORT_ORDER_ICONS_MAP = {

@@ -24,6 +24,7 @@ import Switch from './Switch/Switch'
 import { RangeSlider } from './RangeSlider'
 import ResponsiveSwitch from './Switch'
 import { Tab, TabSet } from './TabSet'
+import { Table, Column, SORT_ORDER } from './Table'
 import TabNav from './TabNav'
 import { TextArea } from './TextArea'
 import TextInput from './TextInput'
@@ -39,6 +40,7 @@ export {
   Button,
   ButtonGroup,
   Checkbox,
+  Column,
   Dialog,
   Drawer,
   Dropdown,
@@ -54,10 +56,12 @@ export {
   Searchbar,
   Select,
   Sidebar,
+  SORT_ORDER,
   Switch,
   RangeSlider,
   ResponsiveSwitch,
   Tab,
+  Table,
   TabSet,
   TabNav,
   TextArea,
