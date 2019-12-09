@@ -1,6 +1,6 @@
 // Components
 import { Alert, ALERT_VARIANT } from './components/Alert'
-import { Avatar } from './components/Avatar'
+import { Avatar, AVATAR_VARIANT } from './components/Avatar'
 import Badge from './components/Badge'
 import Breadcrumbs from './components/Breadcrumbs'
 import { Button } from './components/Button'
@@ -42,6 +42,7 @@ export {
   Alert,
   ALERT_VARIANT,
   Avatar,
+  AVATAR_VARIANT,
   Badge,
   Breadcrumbs,
   Button,

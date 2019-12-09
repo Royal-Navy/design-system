@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Avatar, Link } from '../../components'
+import { Avatar, AVATAR_VARIANT, Link } from '../../components'
 
 interface UserLinkProps {
   className?: string
@@ -14,7 +14,7 @@ export const UserLink: React.FC<UserLinkProps> = ({
   user: { initials, ...rest },
 }) => (
   <LinkComponent className={className} {...rest} data-testid="userlink">
-    <Avatar initials={initials} dark />
+    <Avatar initials={initials} variant={AVATAR_VARIANT.DARK} />
   </LinkComponent>
 )
 
