@@ -24,7 +24,7 @@ stories.add('Default', () => (
           onClick: () => action('Click Two'),
         },
         {
-          disabled: true,
+          isDisabled: true,
           label: 'Three',
           icon: <IconBrightnessLow />,
         },

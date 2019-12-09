@@ -20,8 +20,8 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
         key={uuid()}
         LinkComponent={LinkComponent}
         {...link}
-        first={index === 0}
-        last={index === navItems.length - 1}
+        isFirst={index === 0}
+        isLast={index === navItems.length - 1}
       />
     ))}
   </ul>

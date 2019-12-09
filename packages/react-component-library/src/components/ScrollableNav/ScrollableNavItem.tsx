@@ -8,12 +8,12 @@ interface ScrollableNavItemProps {
 
 export const ScrollableNavItem: React.FC<ScrollableNavItemProps> = ({
   LinkComponent,
-  navItem: { active = false, label, ...rest },
+  navItem: { isActive = false, label, ...rest },
 }) => (
   <li
     key={uuid()}
-    className={`rn-scrollable-nav__item ${active ? 'is-active' : ''}`}
-    data-testid={active ? 'tab-active' : 'tab'}
+    className={`rn-scrollable-nav__item ${isActive ? 'is-active' : ''}`}
+    data-testid={isActive ? 'tab-active' : 'tab'}
   >
     <LinkComponent
       className="rn-scrollable-nav__link"

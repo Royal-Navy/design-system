@@ -192,7 +192,7 @@ source={`<Button onClick={action} icon={<TriangleDown />}>Closed</Button>
     Description: 'An alternative color style to use, danger is the only alternative currently supported',
   },
   {
-    Name: 'disabled',
+    Name: 'isDisabled',
     Type: 'boolean',
     Required: 'False',
     Default: false,

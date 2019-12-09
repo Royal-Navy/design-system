@@ -11,7 +11,7 @@ import { SORT_ORDER } from './constants'
 
 export interface ColumnProps {
   field: string
-  sortable?: boolean
+  isSortable?: boolean
   onSortClick?: (field: string) => void
   sortOrder?: string
   children: string
@@ -36,16 +36,16 @@ function getIcon(sortable: boolean, sortOrder: string) {
 
 export const Column: React.FC<ColumnProps> = ({
   field,
-  sortable,
+  isSortable,
   onSortClick,
   sortOrder,
   children,
 }) => {
-  const className = classNames({ 'is-sortable': sortable })
-  const icon = getIcon(sortable, sortOrder)
+  const className = classNames({ 'is-sortable': isSortable })
+  const icon = getIcon(isSortable, sortOrder)
 
   function onClick() {
-    if (sortable) {
+    if (isSortable) {
       onSortClick(field)
     }
   }

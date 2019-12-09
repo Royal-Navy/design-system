@@ -174,7 +174,7 @@ A ButtonGroup accepts an array of button items that provide a label and value fo
 ### Properties
 <DataTable caption="ButtonGroupItem" data={[
   {
-    Name: 'disabled',
+    Name: 'isDisabled',
     Type: 'boolean',
     Required: 'False',
     Default: false,

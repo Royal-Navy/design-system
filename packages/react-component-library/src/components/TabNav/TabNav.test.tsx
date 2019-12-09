@@ -18,7 +18,7 @@ describe('TabSet', () => {
         {
           label: 'Thing 2',
           href: '/thing2',
-          active: true,
+          isActive: true,
         },
         {
           label: 'Thing 2',
