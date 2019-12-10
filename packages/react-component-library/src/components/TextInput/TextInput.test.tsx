@@ -3,12 +3,12 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
 import withFormik from '../../enhancers/withFormik'
-import FieldProps from '../../types/FieldProps'
+import InputProps from '../../types/InputProps'
 import FormProps from '../../types/FormProps'
 import TextInput from './index'
 
 describe('TextInput', () => {
-  let field: FieldProps
+  let field: InputProps
   let form: FormProps
   let label = ''
   let textInput: RenderResult
@@ -18,7 +18,6 @@ describe('TextInput', () => {
       name: 'colour',
       value: '',
       onChange: jest.fn(),
-      onBlur: jest.fn(),
     }
 
     form = {
@@ -220,6 +219,35 @@ describe('TextInput', () => {
       expect(textInput.getByTestId('end-adornment')).toHaveTextContent(
         'test4321'
       )
+    })
+  })
+
+  describe('when the onBlur callback is provided', () => {
+    let onBlurSpy: jest.SpyInstance
+
+    beforeEach(() => {
+      field.onBlur = () => {
+        return true
+      }
+      onBlurSpy = jest.spyOn(field, 'onBlur')
+
+      textInput = render(
+        <div>
+          <TextInput {...field} />
+          <input type="text" data-testid="next-field" />
+        </div>
+      )
+    })
+
+    describe('when the text area loses focus', () => {
+      beforeEach(() => {
+        textInput.getByTestId('input').focus()
+        textInput.getByTestId('next-field').focus()
+      })
+
+      it('should call the onBlur callback once', () => {
+        expect(onBlurSpy).toHaveBeenCalledTimes(1)
+      })
     })
   })
 })

@@ -34,8 +34,8 @@ describe('NotificationPanel', () => {
   describe('when all props are specified, "notificationPlacement" is right', () => {
     beforeEach(() => {
       const props = {
-        onHide: () => {},
-        onShow: () => {},
+        onHide: () => { return true },
+        onShow: () => { return true },
       }
 
       onShowSpy = jest.spyOn(props, 'onShow')

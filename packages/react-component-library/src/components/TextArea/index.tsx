@@ -24,7 +24,7 @@ export const TextArea: React.FC<InputProps> = props => {
     id = uuid(),
     label,
     name,
-    onBlur = () => {},
+    onBlur,
     onChange,
     placeholder = '',
     value,
@@ -47,7 +47,10 @@ export const TextArea: React.FC<InputProps> = props => {
 
   const onLocalBlur = (event: React.FormEvent) => {
     setFocus(false)
-    onBlur(event)
+
+    if (onBlur) {
+      onBlur(event)
+    }
   }
 
   return (

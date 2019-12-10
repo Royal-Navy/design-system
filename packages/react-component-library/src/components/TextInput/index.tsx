@@ -41,7 +41,7 @@ const TextInput: React.FC<InputProps> = props => {
     value,
     name,
     onChange,
-    onBlur = () => {},
+    onBlur,
     footnote,
     id = uuid(),
     label,
@@ -69,7 +69,10 @@ const TextInput: React.FC<InputProps> = props => {
 
   const onLocalBlur = (event: React.FormEvent) => {
     setFocus(false)
-    onBlur(event)
+
+    if (onBlur) {
+      onBlur(event)
+    }
   }
 
   return (
