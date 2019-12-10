@@ -23,7 +23,8 @@
   },
   "resolutions": {
     "**/**/handlebars": "^4.5.3",
-    "**/**/mem": "^4.0.0"
+    "**/**/mem": "^4.0.0",
+    "**/**/terser-webpack-plugin": "^1.4.2"
   },
   "prettier": {
     "bracketSpacing": true,

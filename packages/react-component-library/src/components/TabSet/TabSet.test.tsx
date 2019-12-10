@@ -18,7 +18,9 @@ describe('TabSet', () => {
       beforeEach(() => {
         const props = {
           className: 'rn-tab-set--modifier',
-          onChangeCallback: () => {},
+          onChangeCallback: () => {
+            return true
+          },
         }
 
         onChangeSpy = jest.spyOn(props, 'onChangeCallback')
@@ -130,7 +132,9 @@ describe('TabSet', () => {
       )
 
       const tabs = wrapper.getByTestId('tabs')
-      tabs.scrollTo = () => {}
+      tabs.scrollTo = () => {
+        return true
+      }
 
       scrollToSpy = jest
         .spyOn(tabs, 'scrollTo')

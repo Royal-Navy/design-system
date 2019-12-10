@@ -208,7 +208,7 @@ source={`<Button onClick={action} icon={<TriangleDown />}>Closed</Button>
   {
     Name: 'onClick',
     Type: '(event: React.SyntheticEvent):void',
-    Required: 'True',
+    Required: 'False',
     Default: '',
     Description: 'Function to call when a user clicks on a button',
   },

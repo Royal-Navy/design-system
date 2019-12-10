@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import uuid from 'uuid'
 import classNames from 'classnames'
+
+import { useFocus } from '../../hooks/useFocus'
 
 export interface InputProps {
   autoFocus?: boolean
@@ -10,7 +12,7 @@ export interface InputProps {
   id?: string
   label?: string
   name: string
-  onBlur?: (event: React.FormEvent<Element>) => void
+  onBlur?: (event: React.FormEvent) => void
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
   placeholder?: string
   value?: string
@@ -24,31 +26,22 @@ export const TextArea: React.FC<InputProps> = props => {
     id = uuid(),
     label,
     name,
-    onBlur = () => {},
+    onBlur,
     onChange,
     placeholder = '',
     value,
     ...rest
   } = props
 
-  const [focus, setFocus] = useState(false)
+  const { focus, onLocalBlur, onFocus } = useFocus(onBlur)
   const hasContent = value && value.length
   const hasLabel = label && label.length
 
-  const classes = classNames('rn-textarea', className, {
+  const classes = classNames('rn-textinput', {
     'has-focus': focus,
     'has-content': hasContent,
     'no-label': !hasLabel,
-  })
-
-  const onFocus = () => {
-    setFocus(true)
-  }
-
-  const onLocalBlur = (event: React.FormEvent) => {
-    setFocus(false)
-    onBlur(event)
-  }
+  }, className)
 
   return (
     <div className={classes} data-testid="textarea-container">
