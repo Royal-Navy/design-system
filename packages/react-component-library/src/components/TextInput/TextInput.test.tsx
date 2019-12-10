@@ -3,12 +3,12 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
 import withFormik from '../../enhancers/withFormik'
-import InputProps from '../../types/InputProps'
+import FieldProps from '../../types/FieldProps'
 import FormProps from '../../types/FormProps'
 import TextInput from './index'
 
 describe('TextInput', () => {
-  let field: InputProps
+  let field: FieldProps
   let form: FormProps
   let label = ''
   let textInput: RenderResult
@@ -17,6 +17,7 @@ describe('TextInput', () => {
     field = {
       name: 'colour',
       value: '',
+      onBlur: null,
       onChange: jest.fn(),
     }
 
