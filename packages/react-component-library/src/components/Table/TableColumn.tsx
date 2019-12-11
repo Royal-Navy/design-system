@@ -7,19 +7,19 @@ import {
   IconSortUnsorted,
 } from '@royalnavy/icon-library'
 
-import { SORT_ORDER } from './constants'
+import { TABLE_SORT_ORDER } from './constants'
 
-export interface ColumnProps {
-  field: string
-  sortable?: boolean
-  onSortClick?: (field: string) => void
-  sortOrder?: string
+export interface TableColumnProps {
   children: string
+  field: string
+  onSortClick?: (field: string) => void
+  sortable?: boolean
+  sortOrder?: TABLE_SORT_ORDER.ASCENDING | TABLE_SORT_ORDER.DESCENDING
 }
 
 const SORT_ORDER_ICONS_MAP = {
-  [SORT_ORDER.ASCENDING]: <IconSortAscending data-testid="ascending" />,
-  [SORT_ORDER.DESCENDING]: <IconSortDescending data-testid="descending" />,
+  [TABLE_SORT_ORDER.ASCENDING]: <IconSortAscending data-testid="ascending" />,
+  [TABLE_SORT_ORDER.DESCENDING]: <IconSortDescending data-testid="descending" />,
 }
 
 function getIcon(sortable: boolean, sortOrder: string) {
@@ -34,7 +34,7 @@ function getIcon(sortable: boolean, sortOrder: string) {
   )
 }
 
-export const Column: React.FC<ColumnProps> = ({
+export const TableColumn: React.FC<TableColumnProps> = ({
   field,
   sortable,
   onSortClick,

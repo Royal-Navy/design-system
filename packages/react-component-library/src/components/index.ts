@@ -24,6 +24,7 @@ import Switch from './Switch/Switch'
 import { RangeSlider } from './RangeSlider'
 import ResponsiveSwitch from './Switch'
 import { Tab, TabSet } from './TabSet'
+import { Table, TableColumn, TABLE_SORT_ORDER } from './Table'
 import TabNav from './TabNav'
 import { TextArea } from './TextArea'
 import TextInput from './TextInput'
@@ -58,6 +59,9 @@ export {
   RangeSlider,
   ResponsiveSwitch,
   Tab,
+  Table,
+  TableColumn,
+  TABLE_SORT_ORDER,
   TabSet,
   TabNav,
   TextArea,

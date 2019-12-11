@@ -3,7 +3,7 @@ import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
 import Badge from '../Badge'
-import { Column, Table } from './index'
+import { TableColumn, Table } from '.'
 
 describe('Table', () => {
   let wrapper: RenderResult
@@ -33,9 +33,9 @@ describe('Table', () => {
 
       wrapper = render(
         <Table data={tableDataMock}>
-          <Column field="first">First</Column>
-          <Column field="second">Second</Column>
-          <Column field="third">Third</Column>
+          <TableColumn field="first">First</TableColumn>
+          <TableColumn field="second">Second</TableColumn>
+          <TableColumn field="third">Third</TableColumn>
         </Table>
       )
     })
@@ -88,8 +88,8 @@ describe('Table', () => {
 
       wrapper = render(
         <Table data={tableDataMock}>
-          <Column field="first">First</Column>
-          <Column field="second">Second</Column>
+          <TableColumn field="first">First</TableColumn>
+          <TableColumn field="second">Second</TableColumn>
         </Table>
       )
     })
@@ -125,11 +125,11 @@ describe('Table', () => {
 
       wrapper = render(
         <Table data={tableDataMock}>
-          <Column field="first" sortable>
+          <TableColumn field="first" sortable>
             First
-          </Column>
-          <Column field="second">Second</Column>
-          <Column field="third" sortable>Third</Column>
+          </TableColumn>
+          <TableColumn field="second">Second</TableColumn>
+          <TableColumn field="third" sortable>Third</TableColumn>
         </Table>
       )
     })

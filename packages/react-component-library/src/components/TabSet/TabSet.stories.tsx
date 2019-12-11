@@ -7,7 +7,7 @@ import { Tab, TabSet } from '.'
 const stories = storiesOf('TabSet', module)
 
 stories.add('Default', () => (
-  <TabSet onChangeCallback={action('onChangeCallback')}>
+  <TabSet onChange={action('onChange')}>
     <Tab title="Example Tab 1">
       <p>This is some example tab 1 content</p>
     </Tab>

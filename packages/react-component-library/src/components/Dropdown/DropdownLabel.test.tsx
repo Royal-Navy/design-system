@@ -173,7 +173,7 @@ describe('Dropdown Label', () => {
   describe('and the option indicates there is right aligned content', () => {
     beforeEach(() => {
       props.label = 'test'
-      props.rightContent = () => <p>right content</p>
+      props.rightContent = <p>right content</p>
       wrapper = render(<DropdownLabel {...props} />)
     })
 
