@@ -1,5 +1,5 @@
 import { Alert, ALERT_VARIANT } from './Alert'
-import { Avatar } from './Avatar'
+import { Avatar, AVATAR_VARIANT } from './Avatar'
 import Badge from './Badge'
 import Breadcrumbs from './Breadcrumbs'
 import { Button } from './Button'
@@ -33,6 +33,7 @@ export {
   Alert,
   ALERT_VARIANT,
   Avatar,
+  AVATAR_VARIANT,
   Badge,
   Breadcrumbs,
   Button,

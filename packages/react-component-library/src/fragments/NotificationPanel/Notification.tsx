@@ -3,7 +3,7 @@ import differenceInMinutes from 'date-fns/differenceInMinutes'
 import formatDistanceStrict from 'date-fns/formatDistanceStrict'
 import format from 'date-fns/format'
 
-import { Avatar } from '../../components/Avatar'
+import { Avatar, AVATAR_VARIANT } from '../../components/Avatar'
 
 export interface NotificationProps {
   href: string
@@ -52,7 +52,7 @@ export const Notification: React.FC<NotificationProps> = ({
         <a href={href}>
           <div className="rn-notifications-item">
             <div className="rn-notifications-item__avatar">
-              <Avatar initials={getInitials(name)} dark />
+              <Avatar initials={getInitials(name)} variant={AVATAR_VARIANT.DARK} />
               {!read && (
                 <span
                   className="rn-notification-panel__not-read rn-notification-panel__not-read--notification-item"
