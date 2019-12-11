@@ -35,7 +35,6 @@
     "react-dom": "^16.9.0 | ^16.10.0 | ^16.11.0"
   },
   "dependencies": {
-    "eslint-plugin-import": "2.18.2",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "uuid": "^3.3.3"
