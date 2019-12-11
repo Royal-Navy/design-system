@@ -43,8 +43,8 @@ describe('notificationPosition', () => {
     })
 
     it('should calculate the position to be below the element', () => {
-      expect(result).toHaveProperty('top', 203)
-      expect(result).toHaveProperty('left', 590)
+      expect(result).toHaveProperty('top', 200)
+      expect(result).toHaveProperty('left', 579)
     })
   })
 })

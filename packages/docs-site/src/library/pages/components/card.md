@@ -10,8 +10,8 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import CardComponent from '../../images/components/card/component.svg'
-import CardAnatomy from '../../images/components/card/anatomy.svg'
+import CardComponent from '../../images/components/card/Component'
+import CardAnatomy from '../../images/components/card/Anatomy'
 
 
 # Overview

@@ -10,9 +10,9 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import AvatarComponent from '../../images/components/avatar/component.svg'
-import AvatarAnatomy from '../../images/components/avatar/anatomy.svg'
-import AvatarStates from '../../images/components/avatar/states.svg'
+import AvatarComponent from '../../images/components/avatar/Component'
+import AvatarAnatomy from '../../images/components/avatar/Anatomy'
+import AvatarStates from '../../images/components/avatar/States'
 
 # Overview
 

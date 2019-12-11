@@ -10,9 +10,9 @@ import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
 
-import SelectComponent from '../../../images/components/forms/select/component.svg'
-import SelectAnatomy from '../../../images/components/forms/select/anatomy.svg'
-import SelectStates from '../../../images/components/forms/select/states.svg'
+import SelectComponent from '../../../images/components/forms/select/Component'
+import SelectAnatomy from '../../../images/components/forms/select/Anatomy'
+import SelectStates from '../../../images/components/forms/select/States'
 
 # Select
 A form component used to allow the user to pick a value from a list

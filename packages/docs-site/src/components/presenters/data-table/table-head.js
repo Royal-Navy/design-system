@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid'
 
-import DownArrowIcon from './down-arrow-icon.svg'
+import DownArrowIcon from './images/DownArrowIcon'
 
 const TableHead = ({ headings, onClickHeading }) => {
   return (

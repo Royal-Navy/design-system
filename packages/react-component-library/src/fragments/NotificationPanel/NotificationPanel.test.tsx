@@ -34,8 +34,8 @@ describe('NotificationPanel', () => {
   describe('when all props are specified, "notificationPlacement" is right', () => {
     beforeEach(() => {
       const props = {
-        onHide: () => {},
-        onShow: () => {},
+        onHide: () => { return true },
+        onShow: () => { return true },
       }
 
       onShowSpy = jest.spyOn(props, 'onShow')
@@ -98,8 +98,8 @@ describe('NotificationPanel', () => {
       })
 
       it('should show the notifications on the right', () => {
-        expect(wrapper.getByTestId('popover').classList).toContain(
-          'rn-popover--left_bottom'
+        expect(wrapper.getByTestId('floating-box').classList).toContain(
+          'rn-floating-box--left_bottom'
         )
       })
 
@@ -181,8 +181,8 @@ describe('NotificationPanel', () => {
       })
 
       it('should default to showing notifications on the right', () => {
-        expect(wrapper.getByTestId('popover').classList).toContain(
-          'rn-popover--left_bottom'
+        expect(wrapper.getByTestId('floating-box').classList).toContain(
+          'rn-floating-box--left_bottom'
         )
       })
     })
@@ -208,8 +208,8 @@ describe('NotificationPanel', () => {
       })
 
       it('should default to showing notifications on the right', () => {
-        expect(wrapper.getByTestId('popover').classList).toContain(
-          'rn-popover--top_right'
+        expect(wrapper.getByTestId('floating-box').classList).toContain(
+          'rn-floating-box--top_right'
         )
       })
     })

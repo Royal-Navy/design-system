@@ -8,9 +8,10 @@ import { Icons, Sidebar, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
-import NotificationComponent from '../../images/components/notifications/component.svg'
-import NotificationAnatomy from '../../images/components/notifications/anatomy.svg'
-import NotificationStates from '../../images/components/notifications/states.svg'
+
+import NotificationComponent from '../../images/components/notifications/Component'
+import NotificationAnatomy from '../../images/components/notifications/Anatomy'
+import NotificationStates from '../../images/components/notifications/States'
 
 # Overview
 The Notification Component provides an easy way to message the user when an action that is relevant to them happens within an application.

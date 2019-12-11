@@ -9,7 +9,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
-    'gatsby-plugin-react-svg',
     {
       resolve: `gatsby-plugin-sass`,
       options: {
@@ -20,27 +19,6 @@ module.exports = {
       resolve: `gatsby-plugin-sass-resources`,
       options: {
         resources: [`${__dirname}/src/helpers/css/_variables.scss`],
-      },
-    },
-    {
-      resolve: `gatsby-source-icon-parser`,
-      options: {
-        name: `icons`,
-        path: `${__dirname}/src/library/icons`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `icons`,
-        path: `${__dirname}/src/library/icons`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
       },
     },
     {

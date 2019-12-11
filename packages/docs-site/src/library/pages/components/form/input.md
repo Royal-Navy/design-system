@@ -10,11 +10,11 @@ import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
 
-import InputComponent from '../../../images/components/forms/input/component.svg'
-import InputAnatomy from '../../../images/components/forms/input/anatomy.svg'
-import InputStates from '../../../images/components/forms/input/states.svg'
-import InputPreComponent from '../../../images/components/forms/input/pre-post.svg'
-import InputPreAnatomy from '../../../images/components/forms/input/pre-anatomy.svg'
+import InputComponent from '../../../images/components/forms/input/Component'
+import InputAnatomy from '../../../images/components/forms/input/Anatomy'
+import InputStates from '../../../images/components/forms/input/States'
+import InputPreComponent from '../../../images/components/forms/input/PrePost'
+import InputPreAnatomy from '../../../images/components/forms/input/PreAnatomy'
 
 # Overview
 

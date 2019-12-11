@@ -17,8 +17,8 @@ describe('TextInput', () => {
     field = {
       name: 'colour',
       value: '',
+      onBlur: null,
       onChange: jest.fn(),
-      onBlur: jest.fn(),
     }
 
     form = {
@@ -220,6 +220,35 @@ describe('TextInput', () => {
       expect(textInput.getByTestId('end-adornment')).toHaveTextContent(
         'test4321'
       )
+    })
+  })
+
+  describe('when the onBlur callback is provided', () => {
+    let onBlurSpy: jest.SpyInstance
+
+    beforeEach(() => {
+      field.onBlur = () => {
+        return true
+      }
+      onBlurSpy = jest.spyOn(field, 'onBlur')
+
+      textInput = render(
+        <div>
+          <TextInput {...field} />
+          <input type="text" data-testid="next-field" />
+        </div>
+      )
+    })
+
+    describe('when the text area loses focus', () => {
+      beforeEach(() => {
+        textInput.getByTestId('input').focus()
+        textInput.getByTestId('next-field').focus()
+      })
+
+      it('should call the onBlur callback once', () => {
+        expect(onBlurSpy).toHaveBeenCalledTimes(1)
+      })
     })
   })
 })

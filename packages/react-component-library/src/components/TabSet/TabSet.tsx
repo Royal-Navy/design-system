@@ -1,44 +1,76 @@
-import React, { useState, Children } from 'react'
+import React, { Children, useState } from 'react'
+import classNames from 'classnames'
 
-import { TabProps, TabContent, TabItem } from '.'
+import { TabContent, TabItem, TabProps } from '.'
+import { ScrollButton } from './ScrollButton'
+import { useScrollableTabSet } from './useScrollableTabSet'
+import { SCROLL_DIRECTION } from './constants'
 
 interface TabSetProps {
   className?: string
-  children?: React.ReactElement<TabProps>[]
-  onChangeCallback?: (id: number, title: string) => void
+  children: React.ReactElement<TabProps>[]
+  onChangeCallback?: (id: number) => void
+  scrollable?: boolean
 }
 
 export const TabSet: React.FC<TabSetProps> = ({
   className = '',
   children,
   onChangeCallback,
+  scrollable,
 }) => {
   const [activeTab, setActiveTab] = useState(0)
+  const { scrollToNextTab, tabsRef, itemsRef } = useScrollableTabSet(children)
 
-  function handleClick(index: number, title: string) {
+  function handleClick(index: number) {
     setActiveTab(index)
 
     if (onChangeCallback) {
-      onChangeCallback(activeTab, title)
+      onChangeCallback(index)
     }
   }
 
+  const articleClasses = classNames('rn-tab-set', className, {
+    'is-scrollable': scrollable,
+  })
+
   return (
-    <article className={`rn-tab-set ${className}`}>
+    <article className={articleClasses} data-testid="tab-set">
       <header className="rn-tab-set__head">
-        <nav>
+        {scrollable && (
+          <ScrollButton
+            direction={SCROLL_DIRECTION.LEFT}
+            onClick={scrollToNextTab(currentTabIndex => currentTabIndex - 1)}
+          />
+        )}
+        <div
+          className="rn-tab-set__navigation"
+          ref={tabsRef}
+          data-testid="tabs"
+        >
           <ol className="rn-tab-set__tabs">
             {Children.map(children, ({ props }, index: number) => (
               <TabItem
-                onClick={() => handleClick(index, props.title)}
-                isActive={index === activeTab}
+                onClick={() => handleClick(index)}
+                active={index === activeTab}
                 index={index}
+                scrollable={scrollable}
+                ref={el => {
+                  itemsRef.current[index] = el
+                  return itemsRef.current[index]
+                }}
               >
                 {props.title}
               </TabItem>
             ))}
           </ol>
-        </nav>
+        </div>
+        {scrollable && (
+          <ScrollButton
+            direction={SCROLL_DIRECTION.RIGHT}
+            onClick={scrollToNextTab(currentTabIndex => currentTabIndex + 1)}
+          />
+        )}
       </header>
       <div className="rn-tab-set__body">
         {Children.map(

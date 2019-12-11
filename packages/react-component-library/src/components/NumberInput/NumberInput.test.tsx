@@ -12,7 +12,6 @@ describe('NumberInput', () => {
     props = {
       name: 'balloons',
       onChange: jest.fn(),
-      onBlur: jest.fn(),
     }
 
     wrapper = undefined
@@ -482,6 +481,28 @@ describe('NumberInput', () => {
         it('should indicate there is a new value', () => {
           expect(newValue).toEqual(3)
         })
+      })
+    })
+  })
+
+  describe('when the onBlur callback has been specified', () => {
+    let onBlurSpy: jest.SpyInstance
+
+    beforeEach(() => {
+      props.onBlur = () => { return true }
+      onBlurSpy = jest.spyOn(props, 'onBlur')
+
+      wrapper = render(<NumberInput {...props} />)
+    })
+
+    describe('when the number input loses focus', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('number-input-input').focus()
+        wrapper.getByTestId('number-input-increase').focus()
+      })
+
+      it('should call the onBlur callback once', () => {
+        expect(onBlurSpy).toHaveBeenCalledTimes(1)
       })
     })
   })

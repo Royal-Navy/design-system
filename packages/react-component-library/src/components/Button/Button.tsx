@@ -18,7 +18,7 @@ export const Button: React.FC<ButtonProps> = ({
   color,
   disabled,
   icon,
-  onClick = () => {},
+  onClick,
   size = 'regular',
   type = 'button',
   variant,
@@ -39,7 +39,10 @@ export const Button: React.FC<ButtonProps> = ({
       type={type}
       onClick={e => {
         e.currentTarget.blur()
-        onClick(e)
+
+        if (onClick) {
+          onClick(e)
+        }
       }}
       {...rest}
     >

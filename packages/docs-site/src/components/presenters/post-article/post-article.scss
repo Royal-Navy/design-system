@@ -17,6 +17,14 @@ $text-color: #748999;
     margin-bottom: 0;
   }
 
+  width: 100%;
+
+  @include breakpoint("s") {
+    // Temporary hack to ensure content doesn't
+    // stretch outside the container
+    width: 100px;
+  }
+
   &__header {
     border-bottom: 1px solid color(neutral, 100);
     padding-top: spacing(6);

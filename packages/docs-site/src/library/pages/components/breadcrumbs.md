@@ -8,9 +8,10 @@ import { Breadcrumbs, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
-import BreadcrumbComponent from '../../images/components/breadcrumbs/component.svg'
-import BreadcrumbAnatomy from '../../images/components/breadcrumbs/anatomy.svg'
-import BreadcrumbStates from '../../images/components/breadcrumbs/states.svg'
+
+import BreadcrumbComponent from '../../images/components/breadcrumbs/Component'
+import BreadcrumbAnatomy from '../../images/components/breadcrumbs/Anatomy'
+import BreadcrumbStates from '../../images/components/breadcrumbs/States'
 
 # Overview
 

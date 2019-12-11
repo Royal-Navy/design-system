@@ -1,0 +1,43 @@
+import { FLOATING_BOX_ARROW_POSITION } from '../../primitives/FloatingBox'
+
+enum POPOVER_PLACEMENT {
+  ABOVE = 'above',
+  BELOW = 'below',
+  LEFT = 'left',
+  RIGHT = 'right'
+}
+
+const POPOVER_PLACEMENTS = {
+  [POPOVER_PLACEMENT.ABOVE]: {
+    OFFSET: '8px 15px',
+    ATTACHMENT: 'bottom left',
+    TARGET_ATTACHMENT: 'top center',
+    ARROW_POSITION: FLOATING_BOX_ARROW_POSITION.BOTTOM_LEFT
+  },
+  [POPOVER_PLACEMENT.BELOW]: {
+    OFFSET: '-8px 15px',
+    ATTACHMENT: 'top left',
+    TARGET_ATTACHMENT: 'bottom center',
+    ARROW_POSITION: FLOATING_BOX_ARROW_POSITION.TOP_LEFT
+  },
+  [POPOVER_PLACEMENT.LEFT]: {
+    OFFSET: '5px 8px',
+    ATTACHMENT: 'bottom right',
+    TARGET_ATTACHMENT: 'bottom left',
+    ARROW_POSITION: FLOATING_BOX_ARROW_POSITION.RIGHT_BOTTOM
+  },
+  [POPOVER_PLACEMENT.RIGHT]: {
+    OFFSET: '5px -8px',
+    ATTACHMENT: 'bottom left',
+    TARGET_ATTACHMENT: 'bottom right',
+    ARROW_POSITION: FLOATING_BOX_ARROW_POSITION.LEFT_BOTTOM
+  }
+}
+
+const POPOVER_CLOSE_DELAY = 1000
+
+export {
+  POPOVER_PLACEMENT,
+  POPOVER_PLACEMENTS,
+  POPOVER_CLOSE_DELAY
+}

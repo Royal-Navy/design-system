@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import {
+  Badge,
   Button,
   Icons,
   Nav,
   PhaseBanner,
 } from '@royalnavy/react-component-library'
 
-import SiteLogo from './images/site-logo.svg'
+import packageJson from '../../../../package'
+import SiteLogo from './images/SiteLogo'
 
 import './masthead.scss'
 
@@ -28,6 +30,12 @@ const MastHead = ({ navItems }) => {
         <a href="/">
           <SiteLogo className="masthead__logo" />
         </a>
+
+        <div className="masthead__version">
+          <a href="/versions">
+            <Badge color="primary">v{packageJson.version}</Badge>
+          </a>
+        </div>
 
         {hasNavItems && (
           <Button

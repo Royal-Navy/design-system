@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React  from 'react'
 import uuid from 'uuid'
+import classNames from 'classnames'
+
+import { useFocus } from '../../hooks/useFocus'
 
 export interface InputProps {
   autoFocus?: boolean
@@ -9,7 +12,7 @@ export interface InputProps {
   value?: string
   name: string
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onBlur?: (event: React.FormEvent<Element>) => void
+  onBlur?: (event: React.FormEvent) => void
   footnote?: string
   id?: string
   label?: string
@@ -41,7 +44,7 @@ const TextInput: React.FC<InputProps> = props => {
     value,
     name,
     onChange,
-    onBlur = () => {},
+    onBlur,
     footnote,
     id = uuid(),
     label,
@@ -51,26 +54,15 @@ const TextInput: React.FC<InputProps> = props => {
     ...rest
   } = props
 
-  const [focus, setFocus] = useState(false)
-
+  const { focus, onLocalBlur, onFocus } = useFocus(onBlur)
   const hasContent = value && value.length
   const hasLabel = label && label.length
 
-  const classes = `rn-textinput
-    ${focus ? 'has-focus' : ''}
-    ${hasContent ? 'has-content' : ''}
-    ${!hasLabel ? 'no-label' : ''}
-    ${className}
-  `
-
-  const onFocus = () => {
-    setFocus(true)
-  }
-
-  const onLocalBlur = (event: React.FormEvent) => {
-    setFocus(false)
-    onBlur(event)
-  }
+  const classes = classNames('rn-textinput', {
+    'has-focus': focus,
+    'has-content': hasContent,
+    'no-label': !hasLabel,
+  }, className)
 
   return (
     <div className={classes} data-testid="container">

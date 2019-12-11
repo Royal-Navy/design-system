@@ -11,11 +11,11 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import RightContent from '../../../components/presenters/right-content'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import IconAcUnit from '../../images/components/dropdown/acunit.svg'
+import IconAcUnit from '../../images/components/dropdown/Acunit'
 
-import DropdownComponent from '../../images/components/dropdown/component.svg'
-import DropdownAnatomy from '../../images/components/dropdown/anatomy.svg'
-import DropdownStates from '../../images/components/dropdown/states.svg'
+import DropdownComponent from '../../images/components/dropdown/Component'
+import DropdownAnatomy from '../../images/components/dropdown/Anatomy'
+import DropdownStates from '../../images/components/dropdown/States'
 
 # Dropdown
 A component to show a list of actions.

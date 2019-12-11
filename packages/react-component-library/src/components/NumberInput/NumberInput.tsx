@@ -54,7 +54,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   max,
   min,
   name,
-  onBlur = () => {},
+  onBlur,
   onChange,
   placeholder = '',
   step = 1,
@@ -116,7 +116,10 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 
   const onLocalBlur = (event: React.FormEvent) => {
     setFocus(false)
-    onBlur(event)
+
+    if (onBlur) {
+      onBlur(event)
+    }
   }
 
   const EndAdornment = (

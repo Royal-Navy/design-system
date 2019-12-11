@@ -17,8 +17,8 @@ describe('TextArea', () => {
     field = {
       name: 'colour',
       value: '',
-      onChange: jest.fn(),
-      onBlur: jest.fn(),
+      onBlur: null,
+      onChange: jest.fn()
     }
 
     form = {
@@ -185,6 +185,35 @@ describe('TextArea', () => {
         'for',
         'test'
       )
+    })
+  })
+
+  describe('when the onBlur callback is provided', () => {
+    let onBlurSpy: jest.SpyInstance
+
+    beforeEach(() => {
+      field.onBlur = () => {
+        return true
+      }
+      onBlurSpy = jest.spyOn(field, 'onBlur')
+
+      textInput = render(
+        <div>
+          <TextArea {...field} />
+          <input type="text" data-testid="next-field" />
+        </div>
+      )
+    })
+
+    describe('when the text area loses focus', () => {
+      beforeEach(() => {
+        textInput.getByTestId('textarea-input').focus()
+        textInput.getByTestId('next-field').focus()
+      })
+
+      it('should call the onBlur callback once', () => {
+        expect(onBlurSpy).toHaveBeenCalledTimes(1)
+      })
     })
   })
 })

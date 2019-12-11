@@ -8,10 +8,11 @@ import { Icons, Tab, TabSet, Tooltip } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
-import TooltipComponent from '../../images/components/tooltip/component.svg'
-import TooltipAnatomy from '../../images/components/tooltip/anatomy.svg'
-import TooltipStates from '../../images/components/tooltip/states.svg'
-import TooltipVariations from '../../images/components/tooltip/variations.svg'
+
+import TooltipComponent from '../../images/components/tooltip/Component'
+import TooltipAnatomy from '../../images/components/tooltip/Anatomy'
+import TooltipStates from '../../images/components/tooltip/States'
+import TooltipVariations from '../../images/components/tooltip/Variations'
 
 # Overview
 The Tooltip is a small component that can display text information to the user, hidden under a tap or a hover.
