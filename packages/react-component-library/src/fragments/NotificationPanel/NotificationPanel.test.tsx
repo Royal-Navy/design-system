@@ -45,7 +45,7 @@ describe('NotificationPanel', () => {
         <NotificationPanel
           buttonClassName="button-class"
           className="class"
-          unreadNotification
+          hasUnreadNotification
           notificationPlacement={NOTIFICATION_PLACEMENT.RIGHT}
           {...props}
         >

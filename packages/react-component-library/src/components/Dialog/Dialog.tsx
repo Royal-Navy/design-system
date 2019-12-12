@@ -6,7 +6,7 @@ import { ButtonProps } from '../Button'
 export interface DialogProps extends ComponentWithClass {
   title?: string
   description?: string
-  danger?: boolean
+  isDanger?: boolean
   onConfirm?: (event: React.FormEvent<HTMLButtonElement>) => void
   onCancel?: (event: React.FormEvent<HTMLButtonElement>) => void
   isOpen?: boolean
@@ -16,7 +16,7 @@ export const Dialog: React.FC<DialogProps> = ({
   className = '',
   title,
   description,
-  danger = false,
+  isDanger = false,
   onConfirm,
   onCancel,
   ...rest
@@ -25,7 +25,7 @@ export const Dialog: React.FC<DialogProps> = ({
     onClick: onConfirm,
     children: 'Confirm',
     variant: 'primary',
-    color: danger ? 'danger' : undefined,
+    color: isDanger ? 'danger' : undefined,
   }
 
   const cancelButton: ButtonProps = {
@@ -36,7 +36,7 @@ export const Dialog: React.FC<DialogProps> = ({
 
   const classes = classNames(className, {
     'rn-dialog': true,
-    'rn-dialog--danger': danger,
+    'rn-dialog--danger': isDanger,
   })
 
   return (

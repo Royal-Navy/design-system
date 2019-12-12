@@ -25,7 +25,7 @@ stories.add('Danger', () => {
       description="Dialog description."
       onConfirm={action('onConfirm')}
       onCancel={action('onCancel')}
-      danger
+      isDanger
       isOpen
     />
   )

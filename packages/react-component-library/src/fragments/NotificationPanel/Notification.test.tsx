@@ -143,7 +143,7 @@ describe('Notification', () => {
         <Notification
           href="notifications/1"
           name="Thomas Stephens"
-          read
+          isRead
           action="added a new comment to your"
           on="review"
           when={new Date('2019-11-05T10:57:00.000Z')}

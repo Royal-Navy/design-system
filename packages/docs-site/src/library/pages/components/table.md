@@ -134,7 +134,7 @@ Whilst there is no restriction on the number of Table instances that can be used
     Description: 'Called when the column sort is clicked.',
   },
   {
-    Name: 'sortable',
+    Name: 'isSortable',
     Type: 'boolean',
     Required: 'False',
     Default: '',

@@ -5,24 +5,24 @@ import Separator from './images/separator.svg'
 import EndTitle from './EndTitle'
 
 interface BreadcrumbProps {
-  first?: boolean
+  isFirst?: boolean
   label: string
-  last?: boolean
+  isLast?: boolean
   LinkComponent?: any
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({
-  first,
+  isFirst,
   label,
-  last,
+  isLast,
   LinkComponent = Link,
   ...rest
 }) => {
-  const ComponentToUse: any = last ? EndTitle : LinkComponent
+  const ComponentToUse: any = isLast ? EndTitle : LinkComponent
 
   return (
     <li data-testid="breadcrumb" className="rn-breadcrumbs__breadcrumb">
-      {!first && (
+      {!isFirst && (
         <span data-testid="separator" className="rn-breadcrumbs__seperator">
           <Separator />
         </span>

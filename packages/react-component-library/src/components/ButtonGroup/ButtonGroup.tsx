@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { Button } from '../Button'
 
 export interface ButtonGroupItem {
-  disabled?: boolean
+  isDisabled?: boolean
   icon?: React.ReactNode
   label: string
   onClick?: (event: FormEvent<HTMLButtonElement>) => void
@@ -27,9 +27,9 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
 
   return (
     <div className={classes} data-testid="rn-buttongroup">
-      {items.map(({ disabled, icon, label, onClick }) => (
+      {items.map(({ isDisabled, icon, label, onClick }) => (
         <Button
-          disabled={disabled}
+          isDisabled={isDisabled}
           icon={icon}
           key={label}
           onClick={onClick}

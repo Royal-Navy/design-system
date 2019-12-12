@@ -5,7 +5,7 @@ interface RadioProps {
   className?: string
   id?: string
   label: string
-  disabled?: boolean
+  isDisabled?: boolean
   name: string
   value?: string
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
@@ -16,7 +16,7 @@ const Radio: React.FC<RadioProps> = ({
   className = '',
   id = uuid(),
   label,
-  disabled = false,
+  isDisabled = false,
   value,
   name,
   onChange,
@@ -35,7 +35,7 @@ const Radio: React.FC<RadioProps> = ({
             value={value}
             onChange={onChange}
             onBlur={onBlur}
-            disabled={disabled}
+            disabled={isDisabled}
             {...rest}
             data-testid="radio"
           />

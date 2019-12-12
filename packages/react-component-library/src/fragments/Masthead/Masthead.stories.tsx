@@ -80,7 +80,7 @@ stories.add('With search and Avatar', () => (
       title="Test"
       user={user}
       notifications={null}
-      unreadNotification
+      hasUnreadNotification
     />
     <p>More text below to check the dropdown appears below</p>
   </div>
@@ -94,7 +94,7 @@ const navItems: NavItemAnchorType[] = [
   {
     label: 'Home',
     href: '/',
-    active: true,
+    isActive: true,
   },
   {
     label: 'Ships',
@@ -131,7 +131,7 @@ stories.add('all but navigation', () => (
     onSearch={action('onSearch')}
     searchPlaceholder="Search"
     title="Test"
-    unreadNotification
+    hasUnreadNotification
     user={user}
   />
 ))
@@ -150,7 +150,7 @@ stories.add('With navigation', () => (
     onSearch={action('onSearch')}
     searchPlaceholder="Search"
     title="Test"
-    unreadNotification
+    hasUnreadNotification
     user={user}
   />
 ))

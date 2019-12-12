@@ -151,7 +151,7 @@ Aside from the active page links (an example of these states is shown in the [Ta
     Description: 'A service name that will be displayed next to the logo',
   },
   {
-    Name: 'unreadNotification',
+    Name: 'hasUnreadNotification',
     Type: 'boolean',
     Required: 'False',
     Description: 'If there are unread notifications then this will cause a small blue indicator to be displayed to alert the user.',
@@ -173,7 +173,7 @@ Aside from the active page links (an example of these states is shown in the [Ta
     Description: 'The text for the link.',
   },
   {
-    Name: 'active',
+    Name: 'isActive',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',
