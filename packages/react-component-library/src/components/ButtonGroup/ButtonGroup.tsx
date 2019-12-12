@@ -23,6 +23,12 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
       {React.Children.map(
         children,
         (child: React.ReactElement<ButtonGroupItemProps>) => {
+          if (child.props.size) {
+            console.warn(
+              'Prop `size` on `ButtonGroupItem` will be replaced by `size` from `ButtonGroup`'
+            )
+          }
+
           return React.cloneElement(child, {
             ...child.props,
             size,
