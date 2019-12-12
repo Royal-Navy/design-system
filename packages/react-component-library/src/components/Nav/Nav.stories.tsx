@@ -5,120 +5,91 @@ import { withKnobs } from '@storybook/addon-knobs'
 
 import { TriangleDown, TriangleUp } from '../../icons'
 import CustomLink from '../CustomLink'
-import { Button } from '../Button'
-import Nav from './index'
+import { Button, Link } from '../index'
+import { Nav, NavItem } from '.'
 
 const stories = storiesOf('Nav', module)
 
 stories.addDecorator(withKnobs)
 
 const navItems = [
-  {
-    href: '#',
-    label: 'Styles',
-  },
-  {
-    href: '#',
-    label: 'Components',
-  },
-  {
-    href: '#',
-    label: 'Patterns',
-    active: true,
-  },
-  {
-    href: '#',
-    label: 'Community',
-  },
-  {
-    href: '#',
-    label: 'About',
-  },
+  <NavItem link={<Link href="#styles">Styles</Link>} />,
+  <NavItem link={<Link href="#components">Components</Link>} />,
+  <NavItem link={<Link href="#patterns">Patterns</Link>} />,
+  <NavItem link={<Link href="#community">Community</Link>} />,
+  <NavItem link={<Link href="#about">About</Link>} />,
 ]
 
 const navItemsWithChildren = [
-  {
-    href: '#',
-    label: 'Parent',
-    children: [
-      {
-        href: '#',
-        label: 'Child 1',
-      },
-      {
-        href: '#',
-        label: 'Child 2',
-        children: [
-          {
-            href: '#',
-            label: 'Child 1',
-          },
-          {
-            href: '#',
-            label: 'Child 2',
-          },
-        ],
-      },
-    ],
-  },
+  <NavItem label="Parent">
+    <NavItem label="Child 1" />
+    <NavItem label="Child 2">
+      <NavItem link={<Link href="#child2a">Child 2 A</Link>} />
+      <NavItem link={<Link href="#child2b">Child 2 B</Link>} />
+    </NavItem>
+  </NavItem>,
   ...navItems,
 ]
 
-stories.add('Vertical', () => <Nav navItems={navItemsWithChildren} />)
-
-stories.add('Horizontal', () => (
-  <Nav navItems={navItems} orientation="horizontal" />
+// Horizontal
+stories.add('Horizontal', () => <Nav orientation="horizontal">{navItems}</Nav>)
+stories.add('Horizontal small', () => (
+  <Nav orientation="horizontal" size="small">
+    {navItems}
+  </Nav>
+))
+stories.add('Horizontal large', () => (
+  <Nav orientation="horizontal" size="large">
+    {navItems}
+  </Nav>
+))
+stories.add('Horizontal xlarge', () => (
+  <Nav orientation="horizontal" size="xlarge">
+    {navItems}
+  </Nav>
 ))
 
-stories.add('Sizes', () => (
-  <div>
-    <Nav navItems={navItems} orientation="horizontal" size="small" />
-    <br />
-    <Nav navItems={navItems} orientation="horizontal" />
-    <br />
-    <Nav navItems={navItems} orientation="horizontal" size="large" />
-    <br />
-    <Nav navItems={navItems} orientation="horizontal" size="xlarge" />
-
-    <hr />
-
-    <Nav navItems={navItems} orientation="vertical" size="small" />
-    <br />
-    <Nav navItems={navItems} orientation="vertical" />
-    <br />
-    <Nav navItems={navItems} orientation="vertical" size="large" />
-    <br />
-    <Nav navItems={navItems} orientation="vertical" size="xlarge" />
-  </div>
+// Vertical
+stories.add('Vertical', () => <Nav>{navItemsWithChildren}</Nav>)
+stories.add('Vertical small', () => (
+  <Nav size="small">{navItemsWithChildren}</Nav>
+))
+stories.add('Vertical large', () => (
+  <Nav size="large">{navItemsWithChildren}</Nav>
+))
+stories.add('Vertical xlarge', () => (
+  <Nav size="xlarge">{navItemsWithChildren}</Nav>
+))
+stories.add('Vertical nested active child', () => (
+  <Nav>
+    <NavItem label="Parent">
+      <NavItem label="Child 1" />
+      <NavItem label="Child 2">
+        <NavItem link={<Link href="#child2a">Child 2 A</Link>} />
+        <NavItem link={<Link href="#child2b">Child 2 B</Link>} isActive />
+      </NavItem>
+    </NavItem>
+    {navItems[0]}
+    {navItems[1]}
+    {navItems[2]}
+    {navItems[3]}
+    {navItems[4]}
+  </Nav>
 ))
 
-const customNavItems = [
-  {
-    to: '#',
-    label: 'Styles',
-  },
-  {
-    to: '#',
-    label: 'Components',
-  },
-  {
-    to: '#',
-    label: 'Patterns',
-    active: true,
-  },
-  {
-    to: '#',
-    label: 'Community',
-  },
-  {
-    to: '#',
-    label: 'About',
-  },
-]
+// Custom
+stories.add('Custom', () => (
+  <Nav>
+    <NavItem link={<CustomLink to="#styles">Styles</CustomLink>} />
+    <NavItem link={<CustomLink to="#components">Components</CustomLink>} />
+    <NavItem link={<CustomLink to="#patterns">Patterns</CustomLink>} isActive />
+    <NavItem link={<CustomLink to="#community">Community</CustomLink>} />
+    <NavItem link={<CustomLink to="#about">About</CustomLink>} />
+  </Nav>
+))
 
-stories.add('Custom Item', () => <Nav navItems={customNavItems} />)
-
-const PrimaryNav = () => {
+// Primary
+stories.add('Primary navigation', () => {
   const [open, setOpen] = useState(true)
 
   const toggle = () => {
@@ -135,14 +106,19 @@ const PrimaryNav = () => {
         Menu
       </Button>
       {open && (
-        <Nav
-          navItems={navItems}
-          LinkComponent={CustomLink}
-          orientation="horizontal"
-        />
+        <Nav orientation="horizontal">
+          <NavItem link={<CustomLink to="#styles">Styles</CustomLink>} />
+          <NavItem
+            link={<CustomLink to="#components">Components</CustomLink>}
+          />
+          <NavItem
+            link={<CustomLink to="#patterns">Patterns</CustomLink>}
+            isActive
+          />
+          <NavItem link={<CustomLink to="#community">Community</CustomLink>} />
+          <NavItem link={<CustomLink to="#about">About</CustomLink>} />
+        </Nav>
       )}
     </div>
   )
-}
-
-stories.add('Primary Navigation', () => <PrimaryNav />)
+})

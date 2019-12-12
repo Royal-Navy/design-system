@@ -12,8 +12,16 @@
 
 .rn-nav__list-item {
   width: 100%;
-  display: block;
   margin-bottom: 0;
+  > ul {
+    display: none;
+  }
+
+  &.is-open {
+    > ul {
+      display: block;
+    }
+  }
 }
 
 .rn-nav.rn-nav--horizontal .rn-nav__list-item {

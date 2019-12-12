@@ -1,29 +1,24 @@
 import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
-import Nav from './index'
+import { Nav, NavItem } from '.'
+import { Link } from '../index'
 
 describe('Nav', () => {
   let wrapper: RenderResult
-  const navItemsMock = [
-    {
-      href: 'http://test.com/1',
-      label: 'Nav 1',
-    },
-    {
-      href: 'http://test.com/2',
-      label: 'Nav 2',
-      active: true,
-    },
-    {
-      href: 'http://test.com/3',
-      label: 'Nav 3',
-    },
-  ]
 
   describe('when there is a flat collection of three items', () => {
     beforeEach(() => {
-      wrapper = render(<Nav navItems={navItemsMock} />)
+      wrapper = render(
+        <Nav>
+          <NavItem link={<Link href="http://test.com/1">Nav 1</Link>} />
+          <NavItem
+            link={<Link href="http://test.com/2">Nav 2</Link>}
+            isActive
+          />
+          <NavItem link={<Link href="http://test.com/3">Nav 3</Link>} />
+        </Nav>
+      )
     })
 
     it('should default the orientation to vertical', () => {
@@ -45,9 +40,15 @@ describe('Nav', () => {
     })
 
     it('should not set the items to open', () => {
-      expect(wrapper.getAllByTestId('nav-item')[0].classList).not.toContain('is-open')
-      expect(wrapper.getAllByTestId('nav-item')[1].classList).not.toContain('is-open')
-      expect(wrapper.getAllByTestId('nav-item')[2].classList).not.toContain('is-open')
+      expect(wrapper.getAllByTestId('nav-item')[0].classList).not.toContain(
+        'is-open'
+      )
+      expect(wrapper.getAllByTestId('nav-item')[1].classList).not.toContain(
+        'is-open'
+      )
+      expect(wrapper.getAllByTestId('nav-item')[2].classList).not.toContain(
+        'is-open'
+      )
     })
 
     describe('when the second item is clicked', () => {
@@ -57,79 +58,55 @@ describe('Nav', () => {
       })
 
       it('should not set the second item to open', () => {
-        expect(wrapper.getAllByTestId('nav-item')[1].classList).not.toContain('is-open')
+        expect(wrapper.getAllByTestId('nav-item')[1].classList).not.toContain(
+          'is-open'
+        )
       })
     })
   })
 
   describe('when there is a collection of three items and the first has an active child', () => {
     beforeEach(() => {
-      const navItemsWithChildrenMock = [
-        {
-          href: 'http://test.com/1',
-          label: 'Parent 1',
-          children: [
-            {
-              href: 'http://test.com/1.1',
-              label: 'Child 1',
-            },
-            {
-              href: 'http://test.com/1.2',
-              label: 'Child 2',
-              active: true,
-            },
-          ],
-        },
-        {
-          href: 'http://test.com/2',
-          label: 'Nav 2',
-        },
-        {
-          href: 'http://test.com/3',
-          label: 'Nav 3',
-        },
-      ]
-
-      wrapper = render(<Nav navItems={navItemsWithChildrenMock} />)
+      wrapper = render(
+        <Nav>
+          <NavItem label="Parent 1">
+            <NavItem link={<Link href="http://test.com/1.1">Child 1</Link>} />
+            <NavItem
+              link={<Link href="http://test.com/1.2">Child 2</Link>}
+              isActive
+            />
+          </NavItem>
+          <NavItem link={<Link href="http://test.com/2">Nav 2</Link>} />
+          <NavItem link={<Link href="http://test.com/3">Nav 3</Link>} />
+        </Nav>
+      )
     })
 
     it('should set the first item to open', async () => {
-      expect(wrapper.getAllByTestId('nav-item')[0].classList).toContain('is-open')
+      expect(wrapper.getAllByTestId('nav-item')[0].classList).toContain(
+        'is-open'
+      )
     })
   })
 
   describe('when there is a collection of three items and the first has inactive children', () => {
     beforeEach(() => {
-      const navItemsWithChildrenMock = [
-        {
-          href: 'http://test.com/1',
-          label: 'Parent 1',
-          children: [
-            {
-              href: 'http://test.com/1.1',
-              label: 'Child 1',
-            },
-            {
-              href: 'http://test.com/1.2',
-              label: 'Child 2',
-            },
-          ],
-        },
-        {
-          href: 'http://test.com/2',
-          label: 'Nav 2',
-        },
-        {
-          href: 'http://test.com/3',
-          label: 'Nav 3',
-        },
-      ]
-
-      wrapper = render(<Nav navItems={navItemsWithChildrenMock} />)
+      wrapper = render(
+        <Nav>
+          <NavItem label="Parent 1">
+            <NavItem link={<Link href="http://test.com/1.1">Child 1</Link>} />
+            <NavItem link={<Link href="http://test.com/1.2">Child 2</Link>} />
+          </NavItem>
+          <NavItem link={<Link href="http://test.com/2">Nav 2</Link>} />
+          <NavItem link={<Link href="http://test.com/3">Nav 3</Link>} />
+        </Nav>
+      )
     })
 
     it('should not set the first item to open', async () => {
-      expect(wrapper.getAllByTestId('nav-item')[0].classList).not.toContain('is-open')
+      expect(wrapper.getAllByTestId('nav-item')[0].classList).not.toContain(
+        'is-open'
+      )
     })
 
     describe('when the first item is clicked', () => {
@@ -139,21 +116,32 @@ describe('Nav', () => {
       })
 
       it('should set the first item to open', async () => {
-        expect(wrapper.getAllByTestId('nav-item')[0].classList).toContain('is-open')
+        expect(wrapper.getAllByTestId('nav-item')[0].classList).toContain(
+          'is-open'
+        )
       })
     })
   })
 
   describe('when the orientation is specified', () => {
     it.each`
-      orientation      | expected
-      ${'vertical'}    | ${'rn-nav--vertical'}
-      ${'horizontal'}  | ${'rn-nav--horizontal'}
-    `('sets the modifier when the orientation is $orientation', ({ orientation, expected }) => {
-      wrapper = render(<Nav navItems={navItemsMock} orientation={orientation} />)
+      orientation     | expected
+      ${'vertical'}   | ${'rn-nav--vertical'}
+      ${'horizontal'} | ${'rn-nav--horizontal'}
+    `(
+      'sets the modifier when the orientation is $orientation',
+      ({ orientation, expected }) => {
+        wrapper = render(
+          <Nav orientation={orientation}>
+            <NavItem link={<Link href="http://test.com/1">Nav 1</Link>} />
+            <NavItem link={<Link href="http://test.com/2">Nav 2</Link>} />
+            <NavItem link={<Link href="http://test.com/3">Nav 3</Link>} />
+          </Nav>
+        )
 
-      expect(wrapper.getByTestId('nav').classList).toContain(expected)
-    })
+        expect(wrapper.getByTestId('nav').classList).toContain(expected)
+      }
+    )
   })
 
   describe('when the size is specified', () => {
@@ -164,7 +152,13 @@ describe('Nav', () => {
       ${'large'}   | ${'rn-nav--large'}
       ${'xlarge'}  | ${'rn-nav--xlarge'}
     `('sets the modifier when the size is $size', ({ size, expected }) => {
-      wrapper = render(<Nav navItems={navItemsMock} size={size} />)
+      wrapper = render(
+        <Nav size={size}>
+          <NavItem link={<Link href="http://test.com/1">Nav 1</Link>} />
+          <NavItem link={<Link href="http://test.com/2">Nav 2</Link>} />
+          <NavItem link={<Link href="http://test.com/3">Nav 3</Link>} />
+        </Nav>
+      )
 
       expect(wrapper.getByTestId('nav').classList).toContain(expected)
     })
