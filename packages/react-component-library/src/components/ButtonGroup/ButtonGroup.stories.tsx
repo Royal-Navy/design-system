@@ -20,3 +20,33 @@ stories.add('Default', () => (
     </ButtonGroupItem>
   </ButtonGroup>
 ))
+
+stories.add('Small', () => (
+  <ButtonGroup size="small">
+    <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
+    <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
+    <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>
+      Three
+    </ButtonGroupItem>
+  </ButtonGroup>
+))
+
+stories.add('Large', () => (
+  <ButtonGroup size="large">
+    <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
+    <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
+    <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>
+      Three
+    </ButtonGroupItem>
+  </ButtonGroup>
+))
+
+stories.add('XLarge', () => (
+  <ButtonGroup size="xlarge">
+    <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
+    <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
+    <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>
+      Three
+    </ButtonGroupItem>
+  </ButtonGroup>
+))
