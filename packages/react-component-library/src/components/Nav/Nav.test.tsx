@@ -2,9 +2,11 @@ import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
 import Nav from './index'
+import packageJson from '../../../package.json'
 
 describe('Nav', () => {
   let wrapper: RenderResult
+  let consoleWarnSpy: jest.SpyInstance
   const navItemsMock = [
     {
       href: 'http://test.com/1',
@@ -23,7 +25,15 @@ describe('Nav', () => {
 
   describe('when there is a flat collection of three items', () => {
     beforeEach(() => {
+      consoleWarnSpy = jest.spyOn(global.console, 'warn')
       wrapper = render(<Nav navItems={navItemsMock} />)
+    })
+
+    it('should warn the consumer that the component is deprecated', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        `Component \`Nav\` is deprecated in ${packageJson.name}`
+      )
     })
 
     it('should default the orientation to vertical', () => {
