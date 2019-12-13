@@ -1,24 +1,17 @@
-import React, { FormEvent } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 
-import { Button } from '../Button'
-
-export interface ButtonGroupItem {
-  isDisabled?: boolean
-  icon?: React.ReactNode
-  label: string
-  onClick?: (event: FormEvent<HTMLButtonElement>) => void
-}
+import { ButtonGroupItemProps } from '.'
 
 export interface ButtonGroupProps {
+  children: React.ReactElement<ButtonGroupItemProps>[]
   className?: string
-  items: ButtonGroupItem[]
   size?: 'small' | 'regular' | 'large' | 'xlarge'
 }
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
+  children,
   className,
-  items,
   size = 'regular',
 }) => {
   const classes = classNames('rn-btn-group', className, {
@@ -27,19 +20,21 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
 
   return (
     <div className={classes} data-testid="rn-buttongroup">
-      {items.map(({ isDisabled, icon, label, onClick }) => (
-        <Button
-          isDisabled={isDisabled}
-          icon={icon}
-          key={label}
-          onClick={onClick}
-          size={size}
-          type="button"
-          variant="secondary"
-        >
-          {label}
-        </Button>
-      ))}
+      {React.Children.map(
+        children,
+        (child: React.ReactElement<ButtonGroupItemProps>) => {
+          if (child.props.size) {
+            console.warn(
+              'Prop `size` on `ButtonGroupItem` will be replaced by `size` from `ButtonGroup`'
+            )
+          }
+
+          return React.cloneElement(child, {
+            ...child.props,
+            size,
+          })
+        }
+      )}
     </div>
   )
 }

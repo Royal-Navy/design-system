@@ -3,7 +3,7 @@ import { Avatar, AVATAR_VARIANT } from './Avatar'
 import Badge from './Badge'
 import Breadcrumbs from './Breadcrumbs'
 import { Button } from './Button'
-import { ButtonGroup } from './ButtonGroup'
+import { ButtonGroup, ButtonGroupItem } from './ButtonGroup'
 import Checkbox from './Checkbox'
 import { Dialog } from './Dialog'
 import { Drawer } from './Drawer'
@@ -39,6 +39,7 @@ export {
   Breadcrumbs,
   Button,
   ButtonGroup,
+  ButtonGroupItem,
   Checkbox,
   Dialog,
   Drawer,
