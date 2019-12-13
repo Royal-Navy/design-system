@@ -1,23 +1,15 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import Breadcrumbs from './index'
-
-const navItems = [
-  {
-    href: '/',
-    label: 'Home',
-  },
-  {
-    href: '/components',
-    label: 'Components',
-  },
-  {
-    href: '/components/breadcrumb',
-    label: 'Breadcrumb',
-  },
-]
+import { Breadcrumbs, BreadcrumbsItem  } from '.'
+import { Link } from '../index'
 
 const stories = storiesOf('Breadcrumbs', module)
 
-stories.add('Default', () => <Breadcrumbs navItems={navItems} />)
+stories.add('Default', () => (
+  <Breadcrumbs>
+    <BreadcrumbsItem link={<Link href="/">Home</Link>} />
+    <BreadcrumbsItem link={<Link href="/components">Components</Link>} />
+    <BreadcrumbsItem link={<Link href="/components/breadcrumb">Breadcrumb</Link>} />
+  </Breadcrumbs>
+))
