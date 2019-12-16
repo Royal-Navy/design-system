@@ -2,43 +2,33 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
-import Breadcrumbs from './index'
+import { Breadcrumbs, BreadcrumbsItem  } from '.'
+import { Link } from '../index'
 
 describe('Breadcrumbs', () => {
-  let navItems: any[]
   let wrapper: RenderResult
 
   describe('When called with regular links', () => {
     beforeEach(() => {
-      navItems = [
-        {
-          href: 'http://testurl.test',
-          label: 'Home',
-        },
-        {
-          href: 'http://testurl.test',
-          label: 'Ships',
-        },
-        {
-          href: 'http://testurl.test',
-          label: 'Reports',
-        },
-        {
-          href: 'http://testurl.test',
-          label: 'Reports',
-        },
-        {
-          href: 'http://testurl.test',
-          label: '22nd April 2019',
-        },
-      ]
-
-      wrapper = render(<Breadcrumbs navItems={navItems} />)
+      wrapper = render(
+        <Breadcrumbs>
+          <BreadcrumbsItem link={<Link href="#home">Home</Link>} />
+          <BreadcrumbsItem link={<Link href="#ships">Ships</Link>} />
+          <BreadcrumbsItem link={<Link href="#reports">Reports</Link>} />
+          <BreadcrumbsItem link={<Link href="#stuff">Stuff</Link>} />
+          <BreadcrumbsItem link={<Link href="#22">22nd April 2019</Link>} />
+        </Breadcrumbs>
+      )
     })
 
     it('should render a list of breadcrumbs', () => {
       const linkElements = wrapper.queryAllByTestId('breadcrumb')
       expect(linkElements).toHaveLength(5)
+    })
+
+    it('should render four separators', () => {
+      const linkElements = wrapper.queryAllByTestId('separator')
+      expect(linkElements).toHaveLength(4)
     })
 
     it('should render the first 4 links as anchors', () => {

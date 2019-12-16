@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Link: React.FC<AnchorType> = ({
+export const Link: React.FC<AnchorType> = ({
   children,
   className = '',
   href,
@@ -17,5 +17,3 @@ const Link: React.FC<AnchorType> = ({
 )
 
 Link.displayName = 'Link'
-
-export default Link

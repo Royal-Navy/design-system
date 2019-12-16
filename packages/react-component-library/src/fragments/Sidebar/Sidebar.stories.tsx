@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import Link from '../../components/Link'
+import { Link } from '../../components'
 import Sidebar from './index'
 import { Graph, House, Tools } from '../../icons'
 import { Notification, Notifications } from '../NotificationPanel'

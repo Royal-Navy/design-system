@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Link from '../Link'
+import { Link } from '../index'
 import TabNavItem from './TabNavItem'
 
 interface TabNavProps {

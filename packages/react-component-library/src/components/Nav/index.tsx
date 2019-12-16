@@ -1,7 +1,7 @@
 import React from 'react'
 import uuid from 'uuid'
 
-import Link from '../Link'
+import { Link } from '../index'
 import NavItem from './NavItem'
 import packageJson from '../../../package.json'
 

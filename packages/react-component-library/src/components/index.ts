@@ -1,14 +1,14 @@
 import { Alert, ALERT_VARIANT } from './Alert'
 import { Avatar, AVATAR_VARIANT } from './Avatar'
 import Badge from './Badge'
-import Breadcrumbs from './Breadcrumbs'
+import { BreadcrumbsItem, Breadcrumbs } from './Breadcrumbs'
 import { Button } from './Button'
 import { ButtonGroup, ButtonGroupItem } from './ButtonGroup'
 import Checkbox from './Checkbox'
 import { Dialog } from './Dialog'
 import { Drawer } from './Drawer'
 import { Dropdown } from './Dropdown'
-import Link from './Link'
+import { Link } from './Link'
 import { Modal } from './Modal'
 import Nav from './Nav'
 import { NumberInput } from './NumberInput'
@@ -36,6 +36,7 @@ export {
   Avatar,
   AVATAR_VARIANT,
   Badge,
+  BreadcrumbsItem,
   Breadcrumbs,
   Button,
   ButtonGroup,

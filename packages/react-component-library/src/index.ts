@@ -2,13 +2,14 @@
 import { Alert, ALERT_VARIANT } from './components/Alert'
 import { Avatar, AVATAR_VARIANT } from './components/Avatar'
 import Badge from './components/Badge'
-import Breadcrumbs from './components/Breadcrumbs'
+import { BreadcrumbsItem, Breadcrumbs } from './components/Breadcrumbs'
 import { Button } from './components/Button'
 import { ButtonGroup, ButtonGroupItem } from './components/ButtonGroup'
 import Checkbox from './components/Checkbox'
 import { Dialog } from './components/Dialog'
 import { Drawer } from './components/Drawer'
 import { Dropdown } from './components/Dropdown'
+import { Link } from './components/Link'
 import { Masthead } from './fragments/Masthead'
 import { Modal } from './components/Modal'
 import Nav from './components/Nav'
@@ -44,6 +45,7 @@ export {
   Avatar,
   AVATAR_VARIANT,
   Badge,
+  BreadcrumbsItem,
   Breadcrumbs,
   Button,
   ButtonGroup,
@@ -52,6 +54,7 @@ export {
   Dialog,
   Drawer,
   Dropdown,
+  Link,
   Masthead,
   Modal,
   Nav,
