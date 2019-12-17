@@ -3,39 +3,10 @@ import { storiesOf } from '@storybook/react'
 import React from 'react'
 
 import { Masthead } from './index'
+import { Link } from '../../components'
 import { Notification, Notifications } from '../NotificationPanel'
 
 const stories = storiesOf('Masthead', module)
-
-const notifications = [
-  {
-    href: 'notifications/1',
-    name: 'Thomas Stephens',
-    action: 'added a new comment to your',
-    on: 'review',
-    when: new Date('2019-11-05T14:25:02.178Z'),
-    description:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
-  },
-  {
-    href: 'notifications/2',
-    name: 'Thomas Stephens',
-    action: 'added a new comment to your',
-    on: 'review',
-    when: new Date('2019-11-01T14:25:02.178Z'),
-    description:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
-  },
-  {
-    href: 'notifications/3',
-    name: 'Thomas Stephens',
-    action: 'added a new comment to your',
-    on: 'review',
-    when: new Date('2019-11-01T14:25:02.178Z'),
-    description:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
-  },
-]
 
 const homeLink: AnchorType = {
   href: '/',
@@ -122,10 +93,31 @@ stories.add('all but navigation', () => (
   <Masthead
     homeLink={homeLink}
     notifications={(
-      <Notifications href="notifications">
-        {notifications.map(notification => (
-          <Notification {...notification} />
-        ))}
+      <Notifications link={<Link href="notifications" />}>
+        <Notification
+          link={<Link href="notifications/1" />}
+          name="Thomas Stephens"
+          action="added a new comment to your"
+          on="review"
+          when={new Date('2019-11-05T14:25:02.178Z')}
+          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+        />
+        <Notification
+          link={<Link href="notifications/2" />}
+          name="Thomas Stephens"
+          action="added a new comment to your"
+          on="review"
+          when={new Date('2019-11-01T14:25:02.178Z')}
+          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+        />
+        <Notification
+          link={<Link href="notifications/3" />}
+          name="Thomas Stephens"
+          action="added a new comment to your"
+          on="review"
+          when={new Date('2019-11-01T14:25:02.178Z')}
+          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+        />
       </Notifications>
     )}
     onSearch={action('onSearch')}
@@ -141,10 +133,31 @@ stories.add('With navigation', () => (
     homeLink={homeLink}
     navItems={navItems}
     notifications={(
-      <Notifications href="notifications">
-        {notifications.map(notification => (
-          <Notification {...notification} />
-        ))}
+      <Notifications link={<Link href="notifications" />}>
+        <Notification
+          link={<Link href="notifications/1" />}
+          name="Thomas Stephens"
+          action="added a new comment to your"
+          on="review"
+          when={new Date('2019-11-05T14:25:02.178Z')}
+          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+        />
+        <Notification
+          link={<Link href="notifications/2" />}
+          name="Thomas Stephens"
+          action="added a new comment to your"
+          on="review"
+          when={new Date('2019-11-01T14:25:02.178Z')}
+          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+        />
+        <Notification
+          link={<Link href="notifications/3" />}
+          name="Thomas Stephens"
+          action="added a new comment to your"
+          on="review"
+          when={new Date('2019-11-01T14:25:02.178Z')}
+          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+        />
       </Notifications>
     )}
     onSearch={action('onSearch')}
