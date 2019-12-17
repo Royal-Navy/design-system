@@ -68,7 +68,7 @@ If notifications are supported by an application, the Notification section will 
 A simple sidebar with no notification section, simply showing the current user and using the default Link component so, a regular anchor tag is used. 
 
 <CodeHighlighter source={`import { Link } from 'react-router-dom'\n
-const user = { initials: 'XT', href: '/userprofile' }\n
+const user = { initials: 'XT', href: '/user-profile' }\n
 const navData: NavItemAnchorType[] = [
   {
     to: '/',
@@ -95,7 +95,7 @@ const navData: NavItemAnchorType[] = [
 This sidebar example indicates that the application supports notifications and that there are pending notifications to see.
 
 <CodeHighlighter source={`import { Link } from 'react-router-dom'\n
-const user = { initials: 'XT', href: '/userprofile' }\n
+const user = { initials: 'XT', href: '/user-profile' }\n
 const navData: NavItemAnchorType[] = [
   {
     to: '/',
@@ -145,7 +145,7 @@ const navData: NavItemAnchorType[] = [
 A simple sidebar with no notification section using the React Router Link component.
 
 <CodeHighlighter source={`import { Link } from 'react-router-dom'\n
-const user = { initials: 'XT', to: '/userprofile' }\n
+const user = { initials: 'XT', to: '/user-profile' }\n
 const navData: NavItemAnchorType[] = [
   {
     to: '/',
