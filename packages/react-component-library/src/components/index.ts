@@ -25,7 +25,7 @@ import { RangeSlider } from './RangeSlider'
 import ResponsiveSwitch from './Switch'
 import { Tab, TabSet } from './TabSet'
 import { Table, TableColumn, TABLE_SORT_ORDER } from './Table'
-import TabNav from './TabNav'
+import { TabNav, TabNavItem } from './TabNav'
 import { TextArea } from './TextArea'
 import TextInput from './TextInput'
 import { Tooltip } from './Tooltip'
@@ -66,6 +66,7 @@ export {
   TABLE_SORT_ORDER,
   TabSet,
   TabNav,
+  TabNavItem,
   TextArea,
   TextInput,
   Tooltip,

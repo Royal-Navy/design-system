@@ -1,24 +1,15 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import TabNav from './index'
+import { Link } from '../index'
+import { TabNav, TabNavItem } from '.'
 
 const stories = storiesOf('TabNav', module)
 
-const navItems: NavItemAnchorType[] = [
-  {
-    label: 'Thing 1',
-    href: '/thing1',
-    isActive: true,
-  },
-  {
-    label: 'Thing 2',
-    href: '/thing2',
-  },
-  {
-    label: 'Thing 2',
-    href: '/thing2',
-  },
-]
-
-stories.add('Default', () => <TabNav navItems={navItems} />)
+stories.add('Default', () => (
+  <TabNav>
+    <TabNavItem link={<Link href="/thing1">Thing 1</Link>} isActive />
+    <TabNavItem link={<Link href="/thing2">Thing 2</Link>} />
+    <TabNavItem link={<Link href="/thing3">Thing 3</Link>} />
+  </TabNav>
+))
