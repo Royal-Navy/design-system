@@ -52,14 +52,14 @@ The Pagination component allows an end user to navigate between pages of records
 
 ### Basic Usage
 <CodeHighlighter source={`<Pagination
-  onChangeCallback={(currentPage, totalPages) => {
+  onChange={(currentPage, totalPages) => {
     console.log(currentPage, totalPages)
   }}
   pageSize={10}
   total={1000}
 />`} language="javascript">
   <Pagination
-    onChangeCallback={(currentPage, totalPages) => {
+    onChange={(currentPage, totalPages) => {
       console.log(currentPage, totalPages)
     }}
     pageSize={10}
@@ -70,7 +70,7 @@ The Pagination component allows an end user to navigate between pages of records
 ### Pagination Properties
 <DataTable data={[
   {
-    Name: 'onChangeCallback',
+    Name: 'onChange',
     Type: 'Function<any>',
     Required: 'False',
     Default: '',

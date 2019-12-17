@@ -65,7 +65,7 @@ describe('TabSet', () => {
       })
     })
 
-    describe('when the onChangeCallback is not provided', () => {
+    describe('when the onChange is not provided', () => {
       beforeEach(() => {
         wrapper = render(
           <TabSet>

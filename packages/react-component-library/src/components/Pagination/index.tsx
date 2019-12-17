@@ -3,13 +3,13 @@ import uuid from 'uuid'
 import { usePageChange, BUMP_LEFT, BUMP_RIGHT } from './usePageChange'
 
 interface PaginationProps {
-  onChangeCallback?: (currentPage: number, totalPages: number) => void
+  onChange?: (currentPage: number, totalPages: number) => void
   pageSize: number
   total: number
 }
 
 const Pagination: React.FC<PaginationProps> = ({
-  onChangeCallback,
+  onChange,
   pageSize,
   total,
 }) => {
@@ -18,7 +18,7 @@ const Pagination: React.FC<PaginationProps> = ({
   const [currentPage, changePage, pageNumbers] = usePageChange(
     1,
     totalPages,
-    onChangeCallback
+    onChange
   )
 
   return (
