@@ -144,3 +144,22 @@
   border-color: transparent;
 }
 
+.rn-numberinput__start-adornment {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: spacing(3);
+  order: 0;
+  background-color: color(neutral, 000);
+  border-right: 1px solid color(neutral, 200);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  color: color(neutral, 300);
+  font-weight: 600;
+  line-height: 1;
+
+  > svg {
+    color: color(neutral, 300);
+  }
+}
