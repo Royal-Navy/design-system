@@ -48,6 +48,20 @@ describe('NumberInput', () => {
       })
     })
 
+    describe('and the field has a startAdornment', () => {
+      beforeEach(() => {
+        props.value = 1
+        props.startAdornment = 'Example'
+        wrapper = render(<NumberInput {...props} />)
+      })
+
+      it('should render the text', () => {
+        expect(
+          wrapper.getByTestId('number-input-start-adornment')
+        ).toHaveTextContent('Example')
+      })
+    })
+
     describe('and the field has no value', () => {
       beforeEach(() => {
         wrapper = render(<NumberInput {...props} />)

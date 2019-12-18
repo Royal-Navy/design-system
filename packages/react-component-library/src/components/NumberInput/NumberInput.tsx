@@ -17,6 +17,7 @@ export interface NumberInputProps {
   placeholder?: string
   step?: number
   value?: number
+  startAdornment?: React.ReactNode | string
 }
 
 interface CalculateNewValue {
@@ -59,6 +60,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   placeholder = '',
   step = 1,
   value,
+  startAdornment,
   ...rest
 }) => {
   const inputRef = useRef(null)
@@ -170,6 +172,14 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   return (
     <div className={classes} data-testid="number-input-container">
       <div className="rn-numberinput__outer-wrapper">
+        {startAdornment && (
+          <div
+            className="rn-numberinput__start-adornment"
+            data-testid="number-input-start-adornment"
+          >
+            {startAdornment}
+          </div>
+        )}
         <div
           className="rn-numberinput__input-wrapper"
           data-testid="number-input-wrapper"
