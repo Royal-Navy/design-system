@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { EndTitle } from '.'
 import Separator from './images/separator.svg'
@@ -6,10 +6,10 @@ import Separator from './images/separator.svg'
 export interface BreadcrumbsItemProps {
   isFirst?: boolean
   isLast?: boolean
-  link: React.ReactElement
+  link: React.ReactElement<LinkTypes>
 }
 
-export const BreadcrumbsItem : React.FC<BreadcrumbsItemProps> = ({
+export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
   isFirst,
   isLast,
   link,
@@ -21,9 +21,13 @@ export const BreadcrumbsItem : React.FC<BreadcrumbsItemProps> = ({
           <Separator />
         </span>
       )}
-      {isLast ? <EndTitle>{link.props.children}</EndTitle> : link}
+      {isLast ? (
+        <EndTitle>{(link as ReactElement).props.children}</EndTitle>
+      ) : (
+        link
+      )}
     </li>
   )
 }
 
-BreadcrumbsItem .displayName = 'BreadcrumbsItem '
+BreadcrumbsItem.displayName = 'BreadcrumbsItem '
