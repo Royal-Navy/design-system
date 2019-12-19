@@ -2,6 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult, wait } from '@testing-library/react'
 
+import { Link } from '../../index'
 import { Masthead, MastheadProps } from './Masthead'
 import { Notification, Notifications } from '../NotificationPanel'
 
@@ -169,7 +170,7 @@ describe('Masthead', () => {
       beforeEach(() => {
         const notification = (
           <Notification
-            href="notifications/1"
+            link={<Link href="notifications/1" />}
             name="Thomas Stephens"
             action="added a new comment to your"
             on="review"
@@ -179,7 +180,7 @@ describe('Masthead', () => {
         )
 
         props.notifications = (
-          <Notifications href="notifications">
+          <Notifications link={<Link href="notifications" />}>
             {notification}
             {notification}
           </Notifications>

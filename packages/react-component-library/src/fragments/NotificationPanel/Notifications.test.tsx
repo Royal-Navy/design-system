@@ -2,10 +2,11 @@ import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
 import { Notification, Notifications } from '.'
+import { Link } from '../../components'
 
 const MOCK_NOTIFICATION = (
   <Notification
-    href="notifications/1"
+    link={<Link href="notifications/1" />}
     name="Thomas Stephens"
     action="added a new comment to your"
     on="review"
@@ -20,7 +21,7 @@ describe('Notifications', () => {
 
     beforeEach(() => {
       wrapper = render(
-        <Notifications href="notifications">
+        <Notifications link={<Link href="notifications" />}>
           {MOCK_NOTIFICATION}
           {MOCK_NOTIFICATION}
         </Notifications>
