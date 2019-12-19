@@ -8,7 +8,7 @@ export const BUMP_RIGHT = BUMP_LEFT
 export const usePageChange = (
   initialPage: number,
   totalPages: number,
-  onChangeCallback?: (currentPage: number, totalPages: number) => void
+  onChange?: (currentPage: number, totalPages: number) => void
 ): [number, (page: string | number) => void, () => any[]] => {
   const [currentPage, setCurrentPage] = useState(initialPage)
 
@@ -29,7 +29,7 @@ export const usePageChange = (
 
   /**
    * Change the page by setting the relevant state and invoking
-   * the provided onChangeCallback callback (if it is provided)
+   * the provided onChange callback (if it is provided)
    */
   function changePage(page: string | number): void {
     let selected
@@ -44,8 +44,8 @@ export const usePageChange = (
 
     setCurrentPage(selected)
 
-    if (typeof onChangeCallback === 'function') {
-      onChangeCallback(selected, totalPages)
+    if (typeof onChange === 'function') {
+      onChange(selected, totalPages)
     }
   }
 
