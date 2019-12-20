@@ -2,38 +2,58 @@ import React, { useRef, useState } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import classNames from 'classnames'
 
-import { Link, Searchbar, ScrollableNav } from '../../components'
+import { Searchbar } from '../../components'
 import { Logo as DefaultLogo, Search as SearchIcon } from '../../icons'
-import { UserLink } from './UserLink'
+import { MastheadUserProps } from './MastheadUser'
+import { Nav } from '../../types/Nav'
 import {
+  NOTIFICATION_PLACEMENT,
   NotificationPanel,
   NotificationsProps,
-  NOTIFICATION_PLACEMENT,
 } from '../NotificationPanel'
 
 export interface MastheadProps {
-  homeLink?: LinkTypes
-  LinkComponent?: any
+  hasUnreadNotification?: boolean
+  homeLink?: React.ReactElement<LinkTypes>
   Logo?: React.ComponentType
-  navItems?: NavItemTypes[]
+  nav?: React.ReactElement<Nav>
   notifications?: React.ReactElement<NotificationsProps>
   onSearch?: (term: string) => void
   searchPlaceholder?: string
   title: string
-  hasUnreadNotification?: boolean
-  user?: UserType
+  user?: React.ReactElement<MastheadUserProps>
+}
+
+function getServiceName(
+  homeLink: React.ReactElement<LinkTypes>,
+  Logo: React.ComponentType,
+  title: string
+) {
+  const link = homeLink || <span />
+
+  return React.cloneElement(link as React.ReactElement, {
+    ...link.props,
+    children: (
+      <>
+        <Logo />
+        <span className="rn-masthead__title" data-testid="masthead-servicename">
+          {title}
+        </span>
+      </>
+    ),
+    className: 'rn-masthead__service-name',
+  })
 }
 
 export const Masthead: React.FC<MastheadProps> = ({
+  hasUnreadNotification,
   homeLink,
-  LinkComponent = Link,
   Logo = DefaultLogo,
-  navItems,
+  nav,
   notifications,
   onSearch,
   searchPlaceholder = '',
   title,
-  hasUnreadNotification,
   user,
 }) => {
   const [showSearch, setShowSearch] = useState(false)
@@ -73,15 +93,7 @@ export const Masthead: React.FC<MastheadProps> = ({
       ref={mastheadContainerRef}
     >
       <div className="rn-masthead__main">
-        <LinkComponent {...homeLink} className="rn-masthead__service-name">
-          <Logo />
-          <span
-            className="rn-masthead__title"
-            data-testid="masthead-servicename"
-          >
-            {title}
-          </span>
-        </LinkComponent>
+        {getServiceName(homeLink, Logo, title)}
 
         <div className="rn-masthead__options">
           {onSearch && (
@@ -116,13 +128,7 @@ export const Masthead: React.FC<MastheadProps> = ({
             </NotificationPanel>
           )}
 
-          {user && (
-            <UserLink
-              className="rn-masthead__option"
-              LinkComponent={LinkComponent}
-              user={user}
-            />
-          )}
+          {user}
         </div>
       </div>
 
@@ -143,14 +149,7 @@ export const Masthead: React.FC<MastheadProps> = ({
         )}
       </ReactCSSTransitionGroup>
 
-      {navItems && (
-        <ScrollableNav
-          className="rn-masthead__nav"
-          navItems={navItems}
-          LinkComponent={LinkComponent}
-          data-testid="masthead-nav"
-        />
-      )}
+      {nav}
     </div>
   )
 }

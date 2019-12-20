@@ -1,27 +1,14 @@
 import React from 'react'
 import uuid from 'uuid'
+import { NavItem } from '../../types/Nav'
 
-interface ScrollableNavItemProps {
-  LinkComponent?: any
-  navItem: NavItemTypes
-}
-
-export const ScrollableNavItem: React.FC<ScrollableNavItemProps> = ({
-  LinkComponent,
-  navItem: { isActive = false, label, ...rest },
-}) => (
+export const ScrollableNavItem: React.FC<NavItem> = ({ isActive, link }) => (
   <li
     key={uuid()}
     className={`rn-scrollable-nav__item ${isActive ? 'is-active' : ''}`}
     data-testid={isActive ? 'tab-active' : 'tab'}
   >
-    <LinkComponent
-      className="rn-scrollable-nav__link"
-      data-testid="tablink"
-      {...rest}
-    >
-      {label}
-    </LinkComponent>
+    {link}
   </li>
 )
 

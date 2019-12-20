@@ -4,7 +4,7 @@ description: A top level section displayed at the top of the page
 header: true
 ---
 
-import { Icons, Masthead, Tab, TabSet } from '@royalnavy/react-component-library'
+import { Icons, Link, Masthead, MastheadNav, MastheadNavItem, MastheadUser, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
@@ -48,71 +48,99 @@ Aside from the active page links (an example of these states is shown in the [Ta
 <Tab title="Develop">
 
 ### Basic
-<CodeHighlighter source={`<Masthead homeLink={{href:'/'}} title="Test" />`} language="javascript">
-  <Masthead homeLink={{href:'/'}} title="Test" />
+<CodeHighlighter source={`<Masthead
+  homeLink={<Link href="/" />}
+  title="Test"
+/>`} language="javascript">
+<Masthead
+  homeLink={<Link href="/" />}
+  title="Test"
+/>
 </CodeHighlighter>
 
 ### Masthead with custom logo
-<CodeHighlighter source={`<Masthead homeLink={{href:'/'}} title="Test" Logo={CustomLogo} />`} language="javascript">
-<Masthead homeLink={{href:'/'}} title="Test" Logo={Icons.Bell} />
+<CodeHighlighter source={`<Masthead
+  homeLink={<Link href="/" />}
+  title="Test"
+  Logo={CustomLogo}
+/>`} language="javascript">
+<Masthead
+  homeLink={<Link href="/" />}
+  title="Test"
+  Logo={Icons.Bell}
+/>
 </CodeHighlighter>
 
 ### Masthead with search
-<CodeHighlighter source={`<Masthead homeLink={{href:'/'}} title="Test" onSearch={onSearch} searchPlaceholder="Search" />`} language="javascript">
-  <Masthead
-    homeLink={{href:'/'}}
-    onSearch={term => console.log(`Search for: ${term}`)}
-    searchPlaceholder="Search"
-    title="Test"
-  />
+<CodeHighlighter source={`<Masthead
+  homeLink={<Link href="/" />}
+  onSearch={() => { /* handle search */ }}
+  searchPlaceholder="Search"
+  title="test"
+/>`} language="javascript">
+<Masthead
+  homeLink={<Link href="/" />}
+  onSearch={() => { /* handle search */ }}
+  searchPlaceholder="Search"
+  title="test"
+/>
 </CodeHighlighter>
 
 ### Fully loaded
-<CodeHighlighter source={`<Masthead 
-  homeLink={{href:'/'}}
-  navItems={[
-    { label: 'Get started', href: '/get-started', active: true,},
-    { label: 'Styles', href: '/styles', },
-    { label: 'Components', href: '/components', },
-    { label: 'About', href: '/about', },
-  ]}
+<CodeHighlighter source={`<Masthead
+  homeLink={<Link href="/" />}
+  nav={(
+    <MastheadNav>
+      <MastheadNavItem link={<Link href="/home">Get started</Link>} isActive />
+      <MastheadNavItem link={<Link href="/styles">Styles</Link>} />
+      <MastheadNavItem link={<Link href="/components">Components</Link>} />
+      <MastheadNavItem link={<Link href="/about">About</Link>} />
+    </MastheadNav>
+  )}
   notifications={notifications}
-  onSearch={onSearch} 
-  searchPlaceholder="Search" 
-  title="Test" 
-  unreadNotification={true}
-  user={{ initials: 'XT', href: '/userprofile' }}
+  onSearch={() => { /* handle search */ }}
+  searchPlaceholder="Search"
+  title="Test"
+  hasUnreadNotification
+  user={
+    <MastheadUser initials="AT" link={<Link href="/user-profile" />} />
+  }
 />`} language="javascript">
-  <Masthead
-    homeLink={{href:'/'}}
-    navItems={[
-      { label: 'Get started', href: '/get-started', active:true, },
-      { label: 'Styles', href: '/styles', },
-      { label: 'Components', href: '/components' },
-      { label: 'About', href: '/about', },
-    ]}
-    notifications={null}
-    onSearch={term => console.log(`Search for: ${term}`)}
-    searchPlaceholder="Search"
-    title="Test"
-    unreadNotification={true}
-    user={{ initials: 'XT', href: '/userprofile' }}
-  />
+<Masthead
+  homeLink={<Link href="/" />}
+  nav={(
+    <MastheadNav>
+      <MastheadNavItem link={<Link href="/home">Get started</Link>} isActive />
+      <MastheadNavItem link={<Link href="/styles">Styles</Link>} />
+      <MastheadNavItem link={<Link href="/components">Components</Link>} />
+      <MastheadNavItem link={<Link href="/about">About</Link>} />
+    </MastheadNav>
+  )}
+  notifications={null}
+  onSearch={() => { /* handle search */ }}
+  searchPlaceholder="Search"
+  title="Test"
+  hasUnreadNotification
+  user={
+    <MastheadUser initials="AT" link={<Link href="/user-profile" />} />
+  }
+/>
 </CodeHighlighter>
 
 ### Properties
-<DataTable data={[
+<DataTable caption="MastHead" data={[
   {
-    Name: 'homeLink',
-    Type: 'LinkTypes',
-    Required: 'True',
-    Description: 'An object typically containing a `to` or `href` property to indicate the property LinkComponent to send the user back to the homepage for the service.',
+    Name: 'hasUnreadNotification',
+    Type: 'boolean',
+    Required: 'False',
+    Default: 'False',
+    Description: 'If there are unread notifications then this will cause a small blue indicator to be displayed to alert the user.',
   },
   {
-    Name: 'LinkComponent',
-    Type: 'Component',
+    Name: 'homeLink',
+    Type: 'React.ReactElement<LinkTypes>',
     Required: 'False',
-    Description: 'A custom component to render links in the Masthead. If nothing is passed a component requiring a href will be used and will render an anchor tag. If using a library such as React Router, than the ‘Link’ component from that library should be passed as a property.',
+    Description: 'A `Link` which will contain the `href` for sending the user back to home.',
   },
   {
     Name: 'Logo',
@@ -121,10 +149,10 @@ Aside from the active page links (an example of these states is shown in the [Ta
     Description: 'A 21x19 logo or if none is provided a default is used.',
   },
   {
-    Name: 'navItems',
-    Type: 'NavItem[] ',
-    Required: 'True',
-    Description: 'An array of objects that must at least contain a label. If no custom component is provided then provide a href, otherwise provide the required property associated with the LinkComponent',
+    Name: 'nav',
+    Type: 'React.ReactElement<ScrollableNavProps>',
+    Required: 'False',
+    Description: 'Navigation for the MastHead.',
   },
   {
     Name: 'notifications',
@@ -151,47 +179,51 @@ Aside from the active page links (an example of these states is shown in the [Ta
     Description: 'A service name that will be displayed next to the logo',
   },
   {
-    Name: 'hasUnreadNotification',
-    Type: 'boolean',
-    Required: 'False',
-    Description: 'If there are unread notifications then this will cause a small blue indicator to be displayed to alert the user.',
-  },
-  {
     Name: 'user',
-    Type: 'UserType',
+    Type: 'React.ReactElement<MastheadUserProps>',
     Required: 'False',
-    Description: 'If your application has a User Profile page, pass in the User object to add their initials to the Avatar sub-component. This Avatar provides a link to the User’s profile.',
+    Description: 'If your application has a User Profile page, specify a `MastheadUser` to add their initials to the Avatar sub-component. This Avatar provides a link to the User’s profile.',
   },
 ]} />
 <br />
-<DataTable caption="NavItem" data={[
+<DataTable caption="MastheadNav" data={[
   {
-    Name: 'label',
-    Type: 'string',
+    Name: 'children',
+    Type: 'React.ReactElement<ScrollableNavItemProps>[]',
     Required: 'True',
     Default: '',
-    Description: 'The text for the link.',
+    Description: 'Each child represents a nav item.',
   },
+]} />
+<br />
+<DataTable caption="MastheadNavItem" data={[
   {
     Name: 'isActive',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',
-    Description: 'Is this the current active link?'
-  }
+    Description: 'Is this the current active item?'
+  },
+  {
+    Name: 'link',
+    Type: 'React.ReactElement<LinkTypes>',
+    Required: 'True',
+    Default: '',
+    Description: 'The `Link` to be rendered.',
+  },
 ]} />
 <br />
-<DataTable caption="UserType" data={[
+<DataTable caption="MastheadUser" data={[
   {
     Name: 'initials',
     Type: 'string',
     Required: 'True',
     Default: '',
-    Description: '',
+    Description: 'Initials of the user.',
   },  
   {
-    Name: 'to or href',
-    Type: 'string',
+    Name: 'link',
+    Type: 'React.ReactElement<LinkTypes>',
     Required: 'True',
     Default: '',
     Description: "A url to send the user to, if they wish to see their profile.",
