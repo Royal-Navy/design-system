@@ -47,7 +47,7 @@ export const Notification: React.FC<NotificationProps> = ({
   description,
 }) => {
   return (
-    <li>
+    <li data-testid="notification">
       <div className="rn-notifications-item-wrapper">
         {React.cloneElement(link as ReactElement, {
           ...link.props,
