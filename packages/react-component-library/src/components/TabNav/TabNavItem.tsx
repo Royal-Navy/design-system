@@ -2,12 +2,9 @@ import React from 'react'
 import uuid from 'uuid'
 import classNames from 'classnames'
 
-export interface TabNavItemProps {
-  isActive?: boolean
-  link: React.ReactElement<LinkTypes>
-}
+import { NavItem } from '../../types/Nav'
 
-export const TabNavItem: React.FC<TabNavItemProps> = ({ isActive, link }) => {
+export const TabNavItem: React.FC<NavItem> = ({ isActive, link }) => {
   const classes = classNames('rn-tab-nav__item', { 'is-active': isActive })
 
   return (
