@@ -1,7 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import { BreadcrumbsItemProps } from '.'
+import { BreadcrumbsItem, BreadcrumbsItemProps } from '.'
+import { warnIfOverwriting } from '../../helpers'
 
 interface BreadcrumbsProps extends ComponentWithClass {
   children: React.ReactElement<BreadcrumbsItemProps>[]
@@ -16,12 +17,8 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   const mapped = React.Children.map(
     children,
     (child: React.ReactElement<BreadcrumbsItemProps>, index: number) => {
-      if (child.props.isFirst) {
-        console.warn('Prop `isFirst` on `Breadcrumb` will be overwritten')
-      }
-      if (child.props.isLast) {
-        console.warn('Prop `isLast` on `Breadcrumb` will be overwritten')
-      }
+      warnIfOverwriting(child.props, 'isFirst', BreadcrumbsItem.name)
+      warnIfOverwriting(child.props, 'isLast', BreadcrumbsItem.name)
 
       return React.cloneElement(child, {
         ...child.props,

@@ -215,4 +215,32 @@ describe('Sidebar', () => {
       })
     })
   })
+
+  describe('when specifying `onClick` of a nav item', () => {
+    let consoleWarnSpy: jest.SpyInstance
+
+    beforeEach(() => {
+      consoleWarnSpy = jest.spyOn(global.console, 'warn')
+
+      wrapper = render(
+        <Sidebar
+          nav={(
+            <SidebarNav>
+              <SidebarNavItem
+                link={<Link href="/">Home</Link>}
+                onClick={() => undefined}
+              />
+            </SidebarNav>
+          )}
+        />
+      )
+    })
+
+    it('should warn the consumer `onClick` will be overwritten', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'Prop `onClick` on `SidebarNavItem` will be overwritten'
+      )
+    })
+  })
 })

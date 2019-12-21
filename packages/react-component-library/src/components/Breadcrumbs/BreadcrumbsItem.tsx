@@ -30,4 +30,4 @@ export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
   )
 }
 
-BreadcrumbsItem.displayName = 'BreadcrumbsItem '
+BreadcrumbsItem.displayName = 'BreadcrumbsItem'

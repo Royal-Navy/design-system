@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { Nav } from '../../types/Nav'
-import { SidebarNavItemProps } from './SidebarNavItem'
+import { SidebarNavItem, SidebarNavItemProps } from '.'
+import { warnIfOverwriting } from '../../helpers'
 
 export interface SidebarNavProps extends Nav {
   onBlur?: () => void
@@ -15,9 +16,8 @@ function mapNavItem(
   navItem: React.ReactElement<SidebarNavItemProps>,
   onClick: () => void
 ) {
-  if (navItem.props.onClick) {
-    console.warn('Prop `onClick` on `SidebarNavItem` will be overwritten')
-  }
+  warnIfOverwriting(navItem.props, 'onClick', SidebarNavItem.name)
+
   return React.cloneElement(navItem, {
     ...navItem.props,
     onClick,

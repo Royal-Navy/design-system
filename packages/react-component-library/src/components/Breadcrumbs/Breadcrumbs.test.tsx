@@ -2,13 +2,13 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
-import { Breadcrumbs, BreadcrumbsItem  } from '.'
+import { Breadcrumbs, BreadcrumbsItem } from '.'
 import { Link } from '../index'
 
 describe('Breadcrumbs', () => {
   let wrapper: RenderResult
 
-  describe('When called with regular links', () => {
+  describe('when called with regular links', () => {
     beforeEach(() => {
       wrapper = render(
         <Breadcrumbs>
@@ -43,6 +43,37 @@ describe('Breadcrumbs', () => {
 
     it('should only include separators in for all but the first link', () => {
       expect(wrapper.queryAllByTestId('link')).toHaveLength(4)
+    })
+  })
+
+  describe('when `isFirst` and `isLast` are specified for items', () => {
+    let consoleWarnSpy: jest.SpyInstance
+
+    beforeEach(() => {
+      consoleWarnSpy = jest.spyOn(global.console, 'warn')
+
+      wrapper = render(
+        <Breadcrumbs>
+          <BreadcrumbsItem isFirst link={<Link href="#first">First</Link>} />
+          <BreadcrumbsItem isLast link={<Link href="#last">Last</Link>} />
+        </Breadcrumbs>
+      )
+    })
+
+    it('should warn the consumer twice about specifying props that will be overwritten', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledTimes(2)
+    })
+
+    it('should warn the consumer `isFirst` will be overwritten', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'Prop `isFirst` on `BreadcrumbsItem` will be overwritten'
+      )
+    })
+
+    it('should warn the consumer `isLast` will be overwritten', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'Prop `isLast` on `BreadcrumbsItem` will be overwritten'
+      )
     })
   })
 })
