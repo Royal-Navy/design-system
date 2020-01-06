@@ -16,7 +16,7 @@ import Pagination from './Pagination'
 import PhaseBanner from './PhaseBanner'
 import { Popover } from './Popover'
 import Radio from './Radio'
-import { ScrollableNav } from './ScrollableNav'
+import { ScrollableNav, ScrollableNavItem } from './ScrollableNav'
 import { Searchbar } from './Searchbar'
 import { Select } from './Select'
 import Sidebar from '../fragments/Sidebar'
@@ -54,6 +54,7 @@ export {
   Popover,
   Radio,
   ScrollableNav,
+  ScrollableNavItem,
   Searchbar,
   Select,
   Sidebar,

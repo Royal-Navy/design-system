@@ -10,7 +10,12 @@ import { Dialog } from './components/Dialog'
 import { Drawer } from './components/Drawer'
 import { Dropdown } from './components/Dropdown'
 import { Link } from './components/Link'
-import { Masthead } from './fragments/Masthead'
+import {
+  Masthead,
+  MastheadNav,
+  MastheadNavItem,
+  MastheadUser,
+} from './fragments/Masthead'
 import { Modal } from './components/Modal'
 import Nav from './components/Nav'
 import { Notification, Notifications } from './fragments/NotificationPanel'
@@ -56,6 +61,9 @@ export {
   Dropdown,
   Link,
   Masthead,
+  MastheadNav,
+  MastheadNavItem,
+  MastheadUser,
   Modal,
   Nav,
   Notification,
