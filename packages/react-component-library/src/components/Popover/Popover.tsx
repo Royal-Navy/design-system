@@ -68,7 +68,7 @@ export const Popover: React.FC<PopoverProps> = ({
   }
 
   /**
-   * Waiting for PR to be merged in offending package to fix type error.
+   * Type error in upstream Tether package. Fix submitted.
    * Using createElement allows us to avoid the type error.
    *
    * https://github.com/danreeves/react-tether/issues/218
