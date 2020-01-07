@@ -1,13 +1,8 @@
 import React from 'react'
 
-import { TabNavItemProps } from './TabNavItem'
+import { Nav } from '../../types/Nav'
 
-interface TabNavProps extends ComponentWithClass {
-  children: React.ReactElement<TabNavItemProps> | React.ReactElement<TabNavItemProps>[]
-  className?: string
-}
-
-export const TabNav: React.FC<TabNavProps> = ({ children, className }) => (
+export const TabNav: React.FC<Nav> = ({ children, className }) => (
   <nav className={`rn-tab-nav ${className}`}>
     <ol className="rn-tab-nav__tabs">{children}</ol>
   </nav>

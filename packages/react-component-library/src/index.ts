@@ -10,21 +10,13 @@ import { Dialog } from './components/Dialog'
 import { Drawer } from './components/Drawer'
 import { Dropdown } from './components/Dropdown'
 import { Link } from './components/Link'
-import {
-  Masthead,
-  MastheadNav,
-  MastheadNavItem,
-  MastheadUser,
-} from './fragments/Masthead'
 import { Modal } from './components/Modal'
 import Nav from './components/Nav'
-import { Notification, Notifications } from './fragments/NotificationPanel'
 import { NumberInput } from './components/NumberInput'
 import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
 import { Popover } from './components/Popover'
 import { Select } from './components/Select'
-import Sidebar from './fragments/Sidebar'
 import Switch from './components/Switch/Switch'
 import { RangeSlider } from './components/RangeSlider'
 import ResponsiveSwitch from './components/Switch'
@@ -34,6 +26,20 @@ import { Tab, TabSet } from './components/TabSet'
 import { TextArea } from './components/TextArea'
 import TextInput from './components/TextInput'
 import { Tooltip } from './components/Tooltip'
+
+// Fragments
+import {
+  Masthead,
+  MastheadNav,
+  MastheadNavItem,
+  MastheadUser,
+  Notification,
+  Notifications,
+  Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
+} from './fragments'
 
 // Icons
 import * as Icons from './icons'
@@ -78,6 +84,9 @@ export {
   Radio,
   Select,
   Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
   Tab,
   Table,
   TableColumn,

@@ -9,7 +9,12 @@ import {
   NotificationPanel,
   Notifications,
 } from './NotificationPanel'
-import Sidebar from './Sidebar'
+import {
+  Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
+} from './Sidebar'
 
 export {
   Masthead,
@@ -20,4 +25,7 @@ export {
   NotificationPanel,
   Notifications,
   Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
 }

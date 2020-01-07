@@ -19,7 +19,6 @@ import Radio from './Radio'
 import { ScrollableNav, ScrollableNavItem } from './ScrollableNav'
 import { Searchbar } from './Searchbar'
 import { Select } from './Select'
-import Sidebar from '../fragments/Sidebar'
 import Switch from './Switch/Switch'
 import { RangeSlider } from './RangeSlider'
 import ResponsiveSwitch from './Switch'
@@ -57,7 +56,6 @@ export {
   ScrollableNavItem,
   Searchbar,
   Select,
-  Sidebar,
   Switch,
   RangeSlider,
   ResponsiveSwitch,
