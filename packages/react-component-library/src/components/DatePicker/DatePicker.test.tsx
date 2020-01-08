@@ -59,6 +59,12 @@ describe('DatePicker', () => {
         wrapper.getByTestId('datepicker-input').focus()
       })
 
+      it('shows the month', () => {
+        expect(wrapper.getByTestId('datepicker-month-label').innerHTML).toBe(
+          'December 2019'
+        )
+      })
+
       it('displays the container', () => {
         expect(
           wrapper.getByTestId('datepicker-input-wrapper').classList
@@ -131,6 +137,11 @@ describe('DatePicker', () => {
 
           it('invokes the onChange callback', () => {
             expect(onChange).toHaveBeenCalledTimes(1)
+            expect(onChange).toHaveBeenCalledWith({
+              endDate: new Date('2019-12-01T00:00:00.000Z'),
+              focusedInput: null,
+              startDate: new Date('2019-12-01T00:00:00.000Z'),
+            })
           })
 
           it('does not hide the container', () => {
