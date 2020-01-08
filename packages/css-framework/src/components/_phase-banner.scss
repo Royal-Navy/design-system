@@ -1,24 +1,26 @@
+@use "../abstracts/functions" as f;
+
 .rn-phase-banner {
-  background-color: color(primary, 100);
-  padding-top: spacing(2);
-  padding-bottom: spacing(2);
+  background-color: f.color("action", "100");
+  padding-top: f.spacing("4");
+  padding-bottom: f.spacing("4");
 }
 
 .rn-phase-banner__text {
   display: inline-block;
-  font-size: font-size(xs);
+  font-size: f.font-size("s");
   vertical-align: middle;
-  margin-left: spacing(2);
-  color: color(neutral, 800);
+  margin-left: f.spacing("4");
+  color: f.color("neutral", "800");
 }
 
 .rn-phase-banner__text a {
-  color: color(neutral, black);
+  color: f.color("neutral", "black");
   text-decoration: underline;
 }
 
 .rn-phase-banner .rn-badge {
   margin: 0;
   text-transform: capitalize;
-  margin-right: spacing(1);
+  margin-right: f.spacing("2");
 }

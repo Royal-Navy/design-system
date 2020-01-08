@@ -1,6 +1,10 @@
-$range-slider-bg-colour: color(neutral, 100);
-$range-slider-track-colour: color(primary, 500);
-$range-slider-handle-colour: color(primary, 500);
+@use "../abstracts/functions" as f;
+@use "../abstracts/mixins" as m;
+
+
+$range-slider-bg-colour: f.color("neutral", "100");
+$range-slider-track-colour: f.color("action", "500");
+$range-slider-handle-colour: f.color("action", "500");
 
 .rn-rangeslider {
   display: inline-flex;
@@ -24,16 +28,16 @@ $range-slider-handle-colour: color(primary, 500);
 }
 
 .rn-rangeslider__icon {
-  color: color(neutral, 400);
+  color: f.color("neutral", "400");
   overflow: visible;
 }
 
 .rn-rangeslider__icon--left {
-  margin-right: spacing(2);
+  margin-right: f.spacing("2");
 }
 
 .rn-rangeslider__icon--right {
-  margin-left: spacing(2);
+  margin-left: f.spacing("2");
 }
 
 .rn-rangeslider__rail {
@@ -72,7 +76,7 @@ $range-slider-handle-colour: color(primary, 500);
   border-radius: 9999px;
   background-color: $range-slider-handle-colour;
   text-align: center;
-  box-shadow: 0px 0px 0px 0px rgba(color(primary, 200), 0.5);
+  box-shadow: 0px 0px 0px 0px rgba(f.color("action", "200"), 0.5);
   transition: box-shadow 0.15s ease-in-out;
   cursor: pointer;
 
@@ -80,14 +84,14 @@ $range-slider-handle-colour: color(primary, 500);
     content: attr(data-value);
     position: absolute;
     transform: translate(-50%, -225%);
-    font-size: font-size(xs);
-    color: color(neutral, 600);
+    font-size: f.font-size("xs");
+    color: f.color("neutral", "600");
     opacity: 0;
     transition: opacity 0.15s ease-in-out;
   }
 
   &.is-active, &:focus {
-    box-shadow: 0px 0px 0px 7px rgba(color(primary, 200), 0.5);
+    box-shadow: 0px 0px 0px 7px rgba(f.color("action", "200"), 0.5);
     outline: none;
 
     &::after {
@@ -129,7 +133,7 @@ $range-slider-handle-colour: color(primary, 500);
 .rn-rangeslider__label {
   position: absolute;
   margin-top: 22px;
-  font-size: font-size(xs);
-  color: color(neutral, 300);
+  font-size: f.font-size("xs");
+  color: f.color("neutral", "300");
   text-align: center;
 }

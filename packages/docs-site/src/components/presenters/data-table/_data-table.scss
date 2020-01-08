@@ -1,6 +1,6 @@
-@import "@royalnavy/css-framework";
+@use "@royalnavy/css-framework" as rn;
 
-$background-color: color(neutral, white);
+$background-color: rn.color("neutral", "white");
 $border-color: #e9eef1;
 $border-radius: 4px;
 $heading-color: #3e5667;
@@ -25,17 +25,17 @@ $text-color: #748999;
 .data-table {
   width: 100%;
   border: none;
-  font-size: font-size(s);
+  font-size: rn.font-size("base");
   color: $text-color;
 }
 
 .data-table__caption {
   caption-side: top;
-  padding: spacing(4) 0 spacing(6);
+  padding: rn.spacing("8") 0 rn.spacing("11");
   text-align: left;
   color: $heading-color;
   font-weight: 700;
-  font-size: font-size(l);
+  font-size: rn.font-size("xl");
 }
 
 .data-table__head {
@@ -65,7 +65,7 @@ $text-color: #748999;
 
 .data-table__row {
   display: block;
-  padding: spacing(8) 0;
+  padding: rn.spacing("12") 0;
   border-bottom: 1px dashed $border-color;
 
   &:first-of-type {
@@ -80,13 +80,13 @@ $text-color: #748999;
 
 .data-table__heading,
 .data-table__cell {
-  padding: spacing(4);
+  padding: rn.spacing("8");
 }
 
 .data-table__cell {
   display: flex;
   align-items: center;
-  padding: 0 spacing(4) 0 0;
+  padding: 0 rn.spacing("8") 0 0;
   border: 1px solid $border-color;
   border-bottom: none;
 
@@ -94,8 +94,8 @@ $text-color: #748999;
     content: attr(data-column);
     display: inline-block;
     flex: 0 0 10rem;
-    padding: spacing(4);
-    margin-right: spacing(4);
+    padding: rn.spacing("8");
+    margin-right: rn.spacing("8");
     border-right: 1px solid $border-color;
     font-weight: 700;
     color: $heading-color;
@@ -103,9 +103,9 @@ $text-color: #748999;
   }
 
   &:first-of-type {
-    padding: 0 0 spacing(4) 0;
+    padding: 0 0 rn.spacing("8") 0;
     border: none;
-    font-size: font-size(m);
+    font-size: rn.font-size("l");
 
     &::before {
       display: none;
@@ -124,7 +124,7 @@ $text-color: #748999;
   }
 }
 
-@include breakpoint("m") {
+@include rn.breakpoint("s") {
   .data-table {
     min-width: 20rem;
     border-collapse: separate;
@@ -197,8 +197,8 @@ $text-color: #748999;
   }
 
   .data-table__caption {
-    padding: spacing(4) spacing(6);
-    font-size: font-size(s);
+    padding: rn.spacing("4") rn.spacing("6");
+    font-size: rn.font-size("base");
   }
 
   .data-table__head {
@@ -206,7 +206,7 @@ $text-color: #748999;
   }
 
   .data-table__heading {
-    padding: spacing(4) spacing(6);
+    padding: rn.spacing("4") rn.spacing("6");
   }
 
   .data-table__btn-sort {
@@ -228,11 +228,11 @@ $text-color: #748999;
   .data-table__cell {
     display: table-cell;
     vertical-align: top;
-    padding: spacing(4) spacing(6);
+    padding: rn.spacing("4") rn.spacing("6");
     border: unset;
 
     &:first-of-type {
-      font-size: font-size(s);
+      font-size: rn.font-size("base");
       color: $heading-color;
     }
 

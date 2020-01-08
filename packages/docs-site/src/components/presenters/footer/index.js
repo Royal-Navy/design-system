@@ -2,9 +2,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import Links from '../Links'
-
-import './footer.scss'
-
 import MonoLogo from './images/Logo'
 
 const Footer = ({ children, links }) => (

@@ -1,10 +1,12 @@
-$primary-color: color(primary, 900);
-$secondary-color: color(neutral, 300);
-$secondary-color-hover: color(primary, 500);
-$tertiary-color: color(neutral, 100);
-$active-color: $primary-color;
+@use "../config";
+@use "../abstracts/functions" as f;
+
+$action-color: f.color("action", "900");
+$secondary-color: f.color("neutral", "300");
+$secondary-color-hover: f.color("action", "500");
+$tertiary-color: f.color("neutral", "100");
+$active-color: $action-color;
 $border-radius: 4px;
-$animation-timing: 0.3s;
 $btn-focus-width: 0.2rem;
 
 .rn-pagination__list {
@@ -14,13 +16,13 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-pagination__item {
-  padding: spacing(1);
+  padding: f.spacing("2");
   display: inline-block;
 
   &:first-of-type,
   &:last-of-type {
     .rn-pagination__button {
-      padding: spacing(2) spacing(4);
+      padding: f.spacing("4") f.spacing("8");
       color: $secondary-color;
       background-color: transparent;
       border: 1px solid $secondary-color;
@@ -32,7 +34,7 @@ $btn-focus-width: 0.2rem;
       }
 
       &:focus {
-        box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+        box-shadow: 0 0 0 $btn-focus-width rgba(f.color("action", "700") , 0.5);
       }
 
       &:disabled {
@@ -44,26 +46,26 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-pagination__button {
-  padding: spacing(2) spacing(3);
+  padding: f.spacing("4") f.spacing("6");
   background: none;
   font-weight: 700;
-  color: $primary-color;
+  color: $action-color;
   border: 1px solid transparent;
   border-radius: $border-radius;
   text-transform: uppercase;
   outline: none;
-  transition: all $animation-timing;
+  transition: all config.$animation-timing;
 
   &:hover {
     background-color: $tertiary-color;
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(f.color("action", "700") , 0.5);
   }
 
   &.is-active {
     background-color: $active-color;
-    color: color(neutral, white);
+    color: f.color("neutral", "white");
   }
 }

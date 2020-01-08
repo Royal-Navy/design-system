@@ -1,26 +1,53 @@
-@import "@royalnavy/css-framework";
+@use "@royalnavy/css-framework" as rn;
 
 .masthead {
-  margin-bottom: spacing(3);
+  margin-bottom: rn.spacing("6");
   background: white;
+}
+
+.masthead__banner {
+  display: block;
+  background-color: rn.color("action", "500");
+  padding: rn.spacing("6") 0;
+  color: rn.color("neutral", "white");
+  font-size: rn.font-size("base");
+  font-weight: 400;
+  transition: background-color 0.3s;
+  text-align: center;
+  @include rn.breakpoint("xs") {
+    text-align: left;
+  }
+  &:hover {
+    background-color: rn.color("action", "700");
+    text-decoration: none;
+    color: rn.color("neutral", "white");
+  }
+  strong {
+    display: block;
+    @include rn.breakpoint("xs") {
+      margin-left: rn.spacing("4");
+      display: inline-block;
+    }
+  }
+
 }
 
 .masthead__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: spacing(3);
-  padding-bottom: spacing(3);
+  padding-top: rn.spacing("6");
+  padding-bottom: rn.spacing("6");
 }
 
 .masthead .masthead__button {
-  margin-left: spacing(3);
+  margin-left: rn.spacing("6");
 }
 
 .masthead__nav {
   display: none;
-  padding-top: spacing(3);
-  padding-bottom: spacing(3);
+  padding-top: rn.spacing("6");
+  padding-bottom: rn.spacing("6");
 }
 
 .masthead__nav.is-open {
@@ -31,7 +58,7 @@
   padding: 0;
   margin: 0;
   text-align: left !important;
-  border-bottom: 1px solid color(neutral, 200);
+  border-bottom: 1px solid rn.color("neutral", "200");
 
   &:last-of-type {
     border-bottom: none;
@@ -39,14 +66,14 @@
 }
 
 .masthead__nav .rn-nav .rn-nav__item {
-  font-size: font-size(m) !important;
-  color: color(primary, 800);
+  font-size: rn.font-size("l") !important;
+  color: rn.color("action", "800");
   border-radius: 0;
   font-weight: 600;
 
   &.is-active {
-    background-color: color(primary, 800);
-    color: color(neutral, white);
+    background-color: rn.color("action", "800");
+    color: rn.color("neutral", "white");
   }
 }
 
@@ -55,18 +82,18 @@
 }
 
 .masthead__nav .rn-nav__list .rn-nav__list {
-  margin-top: spacing(1);
-  margin-bottom: spacing(4);
-  padding: 0 spacing(6);
+  margin-top: rn.spacing("2");
+  margin-bottom: rn.spacing("8");
+  padding: 0 rn.spacing("11");
 }
 
 .masthead__nav .rn-nav__list .rn-nav__list .rn-nav__item {
-  color: color(primary, 800) !important;
-  font-size: font-size(s) !important;
+  color: rn.color("action", "800") !important;
+  font-size: rn.font-size("base") !important;
   border-radius: 4px;
 
   &.is-active {
-    color: color(neutral, white) !important;
+    color: rn.color("neutral", "white") !important;
   }
 }
 
@@ -83,7 +110,7 @@
 // immediate children & .has-children <a />.is-active
 .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list-item.has-children > .rn-nav__item.is-active {
   background-color: transparent;
-  color: color(primary, 800);
+  color: rn.color("action", "800");
 }
 
 // nested children <a />
@@ -93,9 +120,9 @@
 
 // "[...]overview"
 .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list .rn-nav__list-item:first-of-type {
-  padding-bottom: spacing(4);
-  margin-bottom: spacing(4);
-  border-bottom: 1px dashed color(neutral, 200);
+  padding-bottom: rn.spacing("8");
+  margin-bottom: rn.spacing("8");
+  border-bottom: 1px dashed rn.color("neutral", "200");
 }
 
 // third level
@@ -156,7 +183,7 @@
   }
 }
 
-@include breakpoint("s") {
+@include rn.breakpoint("xs") {
   .masthead {
     margin-bottom: 0;
   }
@@ -183,7 +210,7 @@
   }
 
   .masthead__nav .rn-nav .rn-nav__list .rn-nav__list-item .rn-nav__item {
-    font-size: font-size(s) !important;
+    font-size: rn.font-size("base") !important;
     pointer-events: all !important;
     border-radius: 4px;
     font-weight: 600;
@@ -196,7 +223,7 @@
 
   // immediate children & .has-children <a />.is-active
   .masthead__nav .rn-nav > .rn-nav__list .rn-nav__list-item.has-children > .rn-nav__item.is-active {
-    background-color: color(primary, 800);
-    color: color(neutral, white);
+    background-color: rn.color("action", "800");
+    color: rn.color("neutral", "white");
   }
 }

@@ -1,122 +1,131 @@
+@use "../config";
+@use "../abstracts/mixins" as m;
+@use "../abstracts/functions" as f;
+
 $btn-border-radius: 3px;
-$btn-font-weight: 500;
 $btn-disabled-opacity: 0.4;
 $btn-block-spacing-y: 1rem;
-$animation-timing: 0.3s;
 $btn-focus-width: 0.2rem;
 
 .rn-btn {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  color: color(neutral, 500);
-  background-color: color(neutral, white);
+  color: f.color("neutral", "500");
+  background-color: f.color("neutral", "white");
   border: 1px solid transparent;
   border-radius: $btn-border-radius;
-  margin: spacing(1) 0;
   outline: 0;
-  padding: spacing(3) spacing(4);
-  font-size: font-size(s);
-  font-weight: $btn-font-weight;
+  padding: f.spacing("6") f.spacing("8");
+  font-size: f.font-size("base");
+  font-weight: 500;
   line-height: 1;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-  transition: all $animation-timing;
+  transition: all config.$animation-timing;
   text-decoration: none;
+  white-space: nowrap;
 
   &:hover {
     text-decoration: none;
-    background-color: color(neutral, 100);
+    background-color: f.color("neutral", "100");
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
-  }
-}
-
-.rn-btn + .rn-btn {
-  margin-left: spacing(2);
-}
-
-.rn-btn--primary {
-  background: color(primary, 600);
-  color: color(neutral, white);
-
-  &:hover {
-    background: color(primary, 800);
-  }
-}
-
-.rn-btn--secondary {
-  border: 1px solid color(neutral, 200);
-}
-
-.rn-btn--danger {
-  color: color(danger, 600);
-
-  &:hover {
-    color: color(danger, 600);
+    box-shadow: 0 0 0 $btn-focus-width rgba(f.color("action", "700") , 0.5);
   }
 
-  &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(danger, 800) , 0.5);
+  // States
+  &--primary {
+
+    background: f.color("action", "600");
+    color: f.color("neutral", "white");
+
+    &:hover {
+      background: f.color("action", "800");
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 $btn-focus-width rgba(f.color("danger", "800"), 0.5);
+    }
+
+    &.rn-btn--danger {
+      background: f.color("danger", "500");
+      color: f.color("neutral", "white");
+
+      &:hover {
+        background: f.color("danger", "800");
+        color: f.color("neutral", "white");
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 $btn-focus-width rgba(f.color("danger", "800"), 0.5);
+      }
+    }
+
   }
-}
 
-.rn-btn--danger.rn-btn--primary {
-  background: color(danger, 500);
-  color: color(neutral, white);
+  &--secondary {
+    border: 1px solid f.color("neutral", "100");
 
-  &:hover {
-    background: color(danger, 800);
-    color: color(neutral, white);
+    &.rn-btn--danger {
+      color: f.color("danger", "800");
+
+      &:hover {
+        color: f.color("danger", "800");
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 $btn-focus-width rgba(f.color("danger", "800"), 0.5);
+      }
+    }
   }
-}
 
-.rn-btn__icon {
-  display: inline-flex;
-  align-items: center;
-  margin-left: spacing(2);
-}
-
-.rn-btn.rn-btn--regular {
-  .rn-btn__icon svg {
-    width: 15px;
-    height: 15px;
+  &--tertiary {
+    border: none;
   }
-}
 
-.rn-btn.rn-btn--small {
-  font-size: font-size(xs);
-  padding: spacing(2) spacing(3);
-
-  .rn-btn__icon svg {
-    width: 13px;
-    height: 13px;
+  // Icon
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    margin-left: f.spacing("4");
   }
-}
 
-.rn-btn.rn-btn--large {
-  font-size: font-size(s);
-  padding: spacing(3) spacing(5);
-
-  .rn-btn__icon svg {
-    width: 15px;
-    height: 15px;
+  // Sizes
+  &--small {
+    font-size: f.font-size("s");
+    padding: f.spacing("4") f.spacing("6");
+    .rn-btn__icon svg {
+      width: 13px;
+      height: 13px;
+    }
   }
-}
 
-.rn-btn.rn-btn--xlarge {
-  font-size: font-size(m);
-  padding: spacing(3) spacing(5);
-
-  .rn-btn__icon svg {
-    width: 20px;
-    height: 20px;
+  &--large {
+    font-size: f.font-size("base");
+    padding: f.spacing("6") f.spacing("10");
+    .rn-btn__icon svg {
+      width: 15px;
+      height: 15px;
+    }
   }
+
+  &--xlarge {
+    font-size: f.font-size("l");
+    padding: f.spacing("6") f.spacing("10");
+    .rn-btn__icon svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+
 }
+
+
 
 .rn-btn.disabled,
 .rtn-btn:disabled,
@@ -127,7 +136,7 @@ fieldset:disabled a.rn-btn {
 .rn-btn.rn-btn--disabled,
 .rn-btn.rn-btn--disabled:hover,
 .rn-btn.rn-btn--disabled:focus {
-  background: color(neutral, 000);
-  color: color(neutral, 500);
+  background: f.color("neutral", "000");
+  color: f.color("neutral", "500");
   cursor: not-allowed;
 }

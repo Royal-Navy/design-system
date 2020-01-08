@@ -1,23 +1,25 @@
+@use "../abstracts/functions" as f;
+
 .rn-dialog {
   .rn-modal__main {
-    padding: spacing(4);
+    padding: f.spacing("8");
   }
 
   .rn-modal__footer {
-    padding: spacing(4) 0 0 0;
-    margin-top: spacing(8);
+    padding: f.spacing("8") 0 0 0;
+    margin-top: f.spacing("12");
   }
 }
 
 .rn-dialog__title {
   display: inline-block;
-  padding: spacing(2) 0 0 spacing(2);
-  font-size: font-size(m);
-  color: color(neutral, 500);
+  padding: f.spacing("4") 0 0 f.spacing("4");
+  font-size: f.font-size("l");
+  color: f.color("neutral", "500");
 }
 
 .rn-dialog__description {
-  padding-left: spacing(2);
-  font-size: font-size(s);
-  color: color(neutral, 400);
+  padding-left: f.spacing("4");
+  font-size: f.font-size("base");
+  color: f.color("neutral", "400");
 }

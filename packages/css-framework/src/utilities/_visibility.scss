@@ -1,6 +1,9 @@
 /* stylelint-disable */
+@use "sass:map";
+@use "../config";
+@use "../vars";
 
-// Visibility Helper
+// Visibility Utility
 
 @mixin visibilitySharedStyles {
   &visible {
@@ -15,14 +18,14 @@
 }
 
 
-@each $_breakpoint, $_breakpoint-val in $__breakpoints {
+@each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
   @if $_breakpoint == 'root' {
-    .#{$helper-ns} {
+    .#{config.$utility-ns} {
       @include visibilitySharedStyles;
     }
   } @else {
-    @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
-      .#{$_breakpoint}\:#{$helper-ns} {        
+    @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
+      .#{$_breakpoint}\:#{config.$utility-ns} {
           @include visibilitySharedStyles;
       }
     }

@@ -1,4 +1,7 @@
 /* stylelint-disable */
+@use "sass:map";
+@use "../config";
+@use "../vars";
 
 $rules: (
   margin: m,
@@ -12,18 +15,18 @@ $sides: (
   left: l
 );
 
-// Build Spacing Helper Classes
-@each $_breakpoint, $_breakpoint-val in $__breakpoints {
-  @each $_size, $_multiplier in $__spacing {
+// Build Spacing Utility Classes
+@each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
+  @each $_size, $_multiplier in vars.$spacing {
     @each $_rule, $_rule-shortname in $rules {
-      
-      @if $_breakpoint == 'root' {        
-        .#{$helper-ns}#{$_rule-shortname}-#{$_size} {        
+
+      @if $_breakpoint == 'root' {
+        .#{config.$utility-ns}#{$_rule-shortname}-#{$_size} {
             #{$_rule}: $_multiplier !important;
         }
       } @else {
-        .#{$_breakpoint}\:#{$helper-ns}#{$_rule-shortname}-#{$_size} {        
-          @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
+        .#{$_breakpoint}\:#{config.$utility-ns}#{$_rule-shortname}-#{$_size} {
+          @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
             #{$_rule}: $_multiplier !important;
           }
         }
@@ -33,12 +36,12 @@ $sides: (
     @each $_property, $_shortname in $sides {
       @each $_rule, $_rule-shortname in $rules {
 
-        @if $_breakpoint == 'root' {        
-          .#{$helper-ns}#{$_rule-shortname}#{$_shortname}-#{$_size} {
+        @if $_breakpoint == 'root' {
+          .#{config.$utility-ns}#{$_rule-shortname}#{$_shortname}-#{$_size} {
             #{$_rule}-#{$_property}: $_multiplier !important;
           }
         } @else {
-          .#{$_breakpoint}\:#{$helper-ns}#{$_rule-shortname}#{$_shortname}-#{$_size} {
+          .#{$_breakpoint}\:#{config.$utility-ns}#{$_rule-shortname}#{$_shortname}-#{$_size} {
             @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
               #{$_rule}-#{$_property}: $_multiplier !important;
             }

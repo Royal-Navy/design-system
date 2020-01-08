@@ -23,13 +23,12 @@ To retrieve a colour from the context map, a `color()` function is provided.
 ```
 color( [NAMESPACE] , [SHADE] , [STATE?] )
 // Examples
-color(text, 00, error)
-color(ui, 60)
+color("neutral", "000")
+color("action", "100")
 ```
 
-[NAMESPACE] - This namespace provides a way to group colours. The default theme provides values for both `text` and `ui`.
-[SHADE] - Shades exist between `00` and `100`. The default theme provides a different shade for every multiple of `20`.
-[STATE] - Optional. Allows you to quickly modify a color into a particular state, e.g. adding `error` will swap the default colour to the error equivalent.
+[NAMESPACE] - This namespace provides a way to group colours. 
+[SHADE] - Shades exist between `000` and `900`. The default theme provides a different shade for every multiple of `100`.
 
 
 ### Extending a Context
@@ -40,24 +39,24 @@ An example of this may be:
 
 ```
 $theme-extend: (
-  text: (
-    00: #FF0000
+  "neutral": (
+    "000": #FF0000
   ),
   data: (...)
 );
 ```
 
-In the example above, we are updating the `text 00` value to `#FF0000` (red) and adding a new type, `data`, with its own colour values.
+In the example above, we are updating the `neutral-000` value to `#FF0000` (red) and adding a new type, `data`, with its own colour values.
 
 ---
 
-# Helpers
+# Utility classes
 
-Several different helpers are provided by this framework. This is to ensure consistency when building applications, and to hopefully mitigate any UI bugs that could occour by leaking styles.
+Several different Utility classes are provided by this framework. This is to ensure consistency when building applications, and to hopefully mitigate any UI bugs that could occur by leaking styles.
 
 ## z-index
 
-To ensure correct z-axis stacking in NELSON applications, a z-index helper is provided.
+To ensure correct z-axis stacking in NELSON applications, a z-index Utility class is provided.
 
 z-index can be set via a mixin named z-index:
 ```
@@ -78,7 +77,7 @@ Occasionally, a group alone won't be enough to ensure a correct z-axis stack. An
 
 ```
 .foo {
-  @include z-index(modal, 132);
+  @include z-index("modal", 132);
 }
 
 // returns
@@ -92,25 +91,26 @@ Occasionally, a group alone won't be enough to ensure a correct z-axis stack. An
 
 ## Breakpoints
 
-NELSON applications are built Mobile First. A number of breakpoints are provided by default, and also tie into the Spacing helper classes & variables:
+NELSON applications are built Mobile First. A number of breakpoints are provided by default, and also tie into the Spacing Utility classes & variables:
 ```
 - root: 0px
-- s: 576px
-- m: 768px
-- l: 992px
-- xl: 1200px
-- xxl: 1400px
+- xs: 576px
+- s: 768px
+- m: 1024px
+- l: 1200px
+- xl: 1400px
+- xxl: 1600px
 ```
 To use these breakpoints in a media query:
 ```
-@include breakpoint('s') {
+@include breakpoint("s") {
   .foo {
     color: red;
   }
 }
 
 // Result
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 768px) {
   .foo {
     color: red;
   }

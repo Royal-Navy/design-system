@@ -1,9 +1,11 @@
+@use "@royalnavy/css-framework" as rn;
+
 code[class*="language-"],
 pre[class*="language-"] {
   color: white;
   background: none;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  font-size: font-size(s);
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: rn.font-size("base");
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -15,7 +17,7 @@ pre[class*="language-"] {
   hyphens: none;
 
   &.line-numbers {
-    padding: spacing(6) spacing(8) spacing(6) 3.5rem;
+    padding: rn.spacing("11") rn.spacing("12") rn.spacing("11") 3.5rem;
     > code {
       position: static;
     }
@@ -24,7 +26,7 @@ pre[class*="language-"] {
 
 pre[class*="language-"],
 :not(pre) > code[class*="language-"] {
-  background: color(neutral, 700);
+  background: rn.color("neutral", "700");
 }
 
 /* Code blocks */
@@ -85,7 +87,7 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 .token.boolean,
 .token.number,
 .token.deleted {
-  color: color(altwarning, 400);
+  color: rn.color("supa", "400");
 }
 
 .token.keyword,
@@ -108,19 +110,19 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 .style .token.string,
 .token.variable,
 .token.inserted {
-  color: color(primary, 300);
+  color: rn.color("action", "300");
 }
 
 .token.function {
-  color: color(altwarning, 400);
+  color: rn.color("supa", "400");
 }
 
 .token.rule {
-  color: color(altprimary, 300);
+  color: rn.color("supb", "300");
 }
 
 .token.atrule {
-  color: color(neutral, 200);
+  color: rn.color("neutral", "200");
 }
 
 .token.regex,

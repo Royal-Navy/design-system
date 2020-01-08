@@ -10,8 +10,8 @@ stories.add('Faded', () => (
     <Badge color="neutral" colorVariant="faded" size="regular">
       Neutral
     </Badge>
-    <Badge color="primary" colorVariant="faded" size="regular">
-      Primary
+    <Badge color="action" colorVariant="faded" size="regular">
+      Action
     </Badge>
     <Badge color="danger" colorVariant="faded" size="regular">
       Danger
@@ -30,8 +30,8 @@ stories.add('Solid', () => (
     <Badge color="neutral" colorVariant="solid" size="regular">
       Neutral
     </Badge>
-    <Badge color="primary" colorVariant="solid" size="regular">
-      Primary
+    <Badge color="action" colorVariant="solid" size="regular">
+      Action
     </Badge>
     <Badge color="danger" colorVariant="solid" size="regular">
       Danger
@@ -51,7 +51,7 @@ stories.add('Sizes', () => (
       Small
     </Badge>
     <Badge color="neutral" colorVariant="faded" size="regular">
-      Neutral
+      Regular
     </Badge>
     <Badge color="neutral" colorVariant="faded" size="large">
       Large
@@ -67,8 +67,8 @@ stories.add('Pills', () => (
     <Badge color="neutral" colorVariant="solid" size="regular" variant="pill">
       Neutral
     </Badge>
-    <Badge color="primary" colorVariant="solid" size="regular" variant="pill">
-      Primary
+    <Badge color="action" colorVariant="solid" size="regular" variant="pill">
+      Action
     </Badge>
     <Badge color="danger" colorVariant="solid" size="regular" variant="pill">
       danger

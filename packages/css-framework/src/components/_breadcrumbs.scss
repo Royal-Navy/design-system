@@ -1,6 +1,8 @@
+@use "../abstracts/functions" as f;
+
 .rn-breadcrumbs {
   display: block;
-  font-size: font-size(s);
+  font-size: f.font-size("base");
   margin: 0;
   padding: 0;
   list-style: none;
@@ -10,14 +12,14 @@
   display: inline-block;
 
   > a {
-    color: color(neutral, 400);
+    color: f.color("neutral", "400");
     font-weight: 400;
     text-decoration: none;
   }
 }
 
 .rn-breadcrumbs__link:hover {
-  color: color(primary, 500);
+  color: f.color("action", "500");
 }
 
 .rn-breadcrumbs__breadcrumb:hover ~ .rn-breadcrumbs__breadcrumb {
@@ -31,6 +33,5 @@
 
 .rn-breadcrumbs__separator {
   display: inline-block;
-  padding: 0 spacing(2);
+  padding: 0 f.spacing("4");
 }
-

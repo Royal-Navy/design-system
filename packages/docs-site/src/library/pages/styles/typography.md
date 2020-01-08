@@ -44,35 +44,35 @@ sans-serif;`} language="css"
     'Value': '1.875rem'
   },
   {
-    Size: 'xl',
+    Size: 'xxl',
     'Value': '1.5rem'
   },
   {
-    Size: 'l',
+    Size: 'xl',
     'Value': '1.25rem'
   },
   {
-    Size: 'm',
+    Size: 'l',
     'Value': '1.125rem'
   },
   {
-    Size: 'base',
+    Size: 'm',
     'Value': '1rem'
   },
   {
-    Size: 's',
+    Size: 'base',
     'Value': '0.875rem'
   },
   {
-    Size: 'xs',
+    Size: 's',
     'Value': '0.75rem'
   },
   {
-    Size: 'xxs',
+    Size: 'xs',
     'Value': '0.625rem'
   },
   {
-    Size: 'xxxs',
+    Size: 'xxs',
     'Value': '0.5rem'
   }
 ]} />
@@ -83,50 +83,61 @@ To reference typography sizes within your styles, use the `font-size()` mixin. T
 
 
 <CodeHighlighter 
-source={`@include font-size(base);
+source={`@include font-size("m");
 // returns
 font-size: 1rem;`} language="css"
 />
 
 
-# CSS Helpers
-The CSS Framework's Typography variables are available in Utility Class form, allowing the standard font sizes to be overridden. All helper classes are prefixed with the namespace `.h_`. This is to prevent them clashing with any custom styles you author.
+# Utility Classes
+
+The CSS Framework's Typography variables are available in Utility Class form, allowing the standard font sizes to be overridden. All Utility classes are prefixed with the namespace `.rn_`. This is to prevent them clashing with any custom styles you author.
 
 The class syntax follows this pattern:
 
 <CodeHighlighter 
-source={`.h_[Property]-[Size]`} language="css"
+source={`.rn_[Property]-[Size]`} language="css"
 />
 
-<DataTable className="h_mt-4" data={[
+<DataTable className="rn_mt-8" data={[
   {
     Property: 'text-',
+    Size: 'xxs',
+    Value: '0.5rem'
+  },
+  {
+    Property: '',
     Size: 'xs',
-    Value: '0.75rem'
+    Value: '0.625rem'
   },
   {
     Property: '',
     Size: 's',
-    Value: '0.875rem'
+    Value: '0.75rem'
   },
   {
     Property: '',
     Size: 'base',
-    Value: '1rem',
+    Value: '0.875rem'
   },
   {
     Property: '',
     Size: 'm',
-    Value: '1.125rem'
+    Value: '1rem',
   },
   {
     Property: '',
     Size: 'l',
-    Value: '1.25rem'
+    Value: '1.125rem'
   },
   {
     Property: '',
     Size: 'xl',
+    Value: '1.25rem'
+  },
+  {
+    Property: '',
+    Size: 'xxl',
     Value: '1.5rem'
   },
   {
@@ -146,20 +157,20 @@ source={`.h_[Property]-[Size]`} language="css"
   }
 ]} />
 
-For example, adding a class of `.h_text-xl` would result in the following:
+For example, adding a class of `.rn_text-xl` would result in the following:
 
 <CodeHighlighter 
 source={`margin-top: 1.5rem;`} language="css"
 />
 
-To use the helper classes with [media queries](/styles/breakpoints), add the required breakpoint it:
+To use the Utility classes with [media queries](/styles/breakpoints), add the required breakpoint it:
 
 <CodeHighlighter 
-source={`.md:h_text-xl`} language="css"
+source={`.m:rn_text-xl`} language="css"
 />
 
 
-<DataTable className="h_mt-4" data={[
+<DataTable className="rn_mt-8" data={[
   {
     Property: 'text-',
     Size: 'xs',

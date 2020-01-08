@@ -1,6 +1,8 @@
+@use "../abstracts/functions" as f;
+
 // Hyperlinks are default styles for `<a>` tags
 a {
-  color: color(primary, 500);
+  color: f.color("action", "500");
   text-decoration: none;
 }
 

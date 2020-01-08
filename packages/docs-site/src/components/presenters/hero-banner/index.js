@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import './hero-banner.scss'
-
 const HeroBanner = ({
   children,
   className,

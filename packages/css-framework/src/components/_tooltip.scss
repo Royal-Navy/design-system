@@ -1,5 +1,8 @@
-$tooltipDarkBackground: color(neutral, 700);
-$tooltipDarkBorder: color(neutral, 700);
+@use "../abstracts/functions" as f;
+@use "../abstracts/mixins" as m;
+
+$tooltipDarkBackground: f.color("neutral", "700");
+$tooltipDarkBorder: f.color("neutral", "700");
 $tooltipBorderThick: 2px;
 $tooltipInner: 8px;
 $tooltipOuter: $tooltipInner + 1;
@@ -10,17 +13,17 @@ $tooltipOffset: $tooltipOuter + $tooltipBorderThick;
 }
 
 .rn-tooltip__message {
-  font-size: font-size(s);
-  color: color(neutral, 100);
+  font-size: f.font-size("base");
+  color: f.color("neutral", "100");
 }
 
 .rn-tooltip__content {
-  @include z-index(modal);
+  @include m.z-index("modal");
   background: $tooltipDarkBackground;
-  color: color(neutral, white);
+  color: f.color("neutral", "white");
   border: $tooltipDarkBorder solid $tooltipBorderThick;
   border-radius: 5px;
-  padding: spacing(3);
+  padding: f.spacing("3");
   position: relative;
   top: auto;
   left: auto;
@@ -29,7 +32,7 @@ $tooltipOffset: $tooltipOuter + $tooltipBorderThick;
 }
 
 .rn-tooltip__title {
-  padding-bottom: spacing(1);
+  padding-bottom: f.spacing("1");
 }
 
 .rn-tooltip__content:before {

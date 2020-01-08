@@ -33,7 +33,7 @@ As the Dialog is displayed full screen, it focuses the user's attention and requ
 
 1. **Container**. This wraps the entire component, adding a z-index to ensure the Dialog stacks above the entire app. This Container also serves as a backdrop that covers the application with a dark, transparent background. This draws focus to the main Dialog Window.
 2. **Dialog Window**. This is the main focus of the Dialog component. Add content here to inform the user or ask them to perform an action.
-3. **Dialog Footer**. Provides a Primary or Danger button. Can also house an optional Cancel button.
+3. **Dialog Footer**. Provides a Action or Danger button. Can also house an optional Cancel button.
 
 ### States
 The Dialog component has two states - `hidden` and `active`. By default, including the dialog component in an application page won't render it. Triggering the component will cause it to fade in, over all application content.

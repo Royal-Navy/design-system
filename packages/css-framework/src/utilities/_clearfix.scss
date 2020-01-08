@@ -1,0 +1,6 @@
+@use "../abstracts/mixins" as m;
+@use "../config";
+
+.#{config.$utility-ns}cf {
+  @include m.clearfix;
+}

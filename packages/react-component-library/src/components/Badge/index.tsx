@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface BadgeProps extends ComponentWithClass {
-  color?: 'neutral' | 'primary' | 'danger' | 'warning' | 'success'
+  color?: 'neutral' | 'action' | 'danger' | 'warning' | 'success'
   colorVariant?: 'solid' | 'faded'
   size?: 'small' | 'regular' | 'large' | 'xlarge'
   variant?: 'pill'

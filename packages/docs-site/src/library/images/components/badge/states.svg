@@ -1,1 +1,38 @@
-<svg viewBox="0 0 726 193" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path stroke="#B8C7D2" fill="#FFF" d="M.5.5h725v157H.5z"/><g transform="translate(160 68)"><rect fill="#3E5667" width="66" height="22" rx="3"/><text font-family="Lato-Heavy, Lato" font-size="10" font-weight="600" fill="#FFF"><tspan x="10" y="15">NEUTRAL</tspan></text></g><g transform="translate(415 68)"><rect fill="#CF9328" width="70" height="22" rx="3"/><text font-family="Lato-Heavy, Lato" font-size="10" font-weight="600" fill="#FFF"><tspan x="10" y="15">WARNING</tspan></text></g><g transform="translate(331 68)"><rect fill="#60B255" width="64" height="22" rx="3"/><text font-family="Lato-Heavy, Lato" font-size="10" font-weight="600" fill="#FFF"><tspan x="10" y="15">SUCCESS</tspan></text></g><g transform="translate(505 68)"><rect fill="#F44949" width="62" height="22" rx="3"/><text font-family="Lato-Heavy, Lato" font-size="10" font-weight="600" fill="#FFF"><tspan x="10" y="15">DANGER</tspan></text></g><g transform="translate(246 68)"><rect fill="#3A8FDD" width="65" height="22" rx="3"/><text font-family="Lato-Heavy, Lato" font-size="10" font-weight="600" fill="#FFF"><tspan x="10" y="15">PRIMARY</tspan></text></g><text font-family="Lato-Medium, Lato" font-size="15" font-weight="400" fill="#3E5667"><tspan x="0" y="187">The Badge component States</tspan></text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 726 193">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v157H.5z"/>
+    <g transform="translate(160 68)">
+      <rect width="66" height="22" fill="#3E5667" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">NEUTRAL</tspan>
+      </text>
+    </g>
+    <g transform="translate(409 68)">
+      <rect width="70" height="22" fill="#CF9328" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">WARNING</tspan>
+      </text>
+    </g>
+    <g transform="translate(325 68)">
+      <rect width="64" height="22" fill="#60B255" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">SUCCESS</tspan>
+      </text>
+    </g>
+    <g transform="translate(499 68)">
+      <rect width="62" height="22" fill="#F44949" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">DANGER</tspan>
+      </text>
+    </g>
+    <g transform="translate(246 68)">
+      <rect width="59" height="22" fill="#3A8FDD" rx="3"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="10" font-weight="600">
+        <tspan x="10" y="15">ACTION</tspan>
+      </text>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="187">The Badge component States</tspan>
+    </text>
+  </g>
+</svg>

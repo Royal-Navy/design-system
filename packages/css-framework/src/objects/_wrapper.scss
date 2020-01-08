@@ -1,8 +1,10 @@
+@use "../abstracts/functions" as f;
+
 .container {
-  padding: 0 spacing(4);
+  padding: 0 f.spacing("8");
   margin: 0 auto;
   @media only screen and (min-width: 768px) {
-    padding: 0 spacing(8)
+    padding: 0 f.spacing("12")
   }
 }
 

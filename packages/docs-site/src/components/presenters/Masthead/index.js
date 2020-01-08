@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
+import { Link } from 'gatsby'
 import {
   Badge,
   Button,
@@ -10,8 +11,6 @@ import {
 
 import packageJson from '../../../../package'
 import SiteLogo from './images/SiteLogo'
-
-import './masthead.scss'
 
 const { TriangleDown, TriangleUp } = Icons
 
@@ -26,6 +25,15 @@ const MastHead = ({ navItems }) => {
 
   return (
     <div className="masthead">
+      <Link
+        to="/get-started/development/v2-migration"
+        className="masthead__banner"
+      >
+        <div className="rn-container">
+          There&apos;s a new version of the Standards Toolkit.
+          <strong>Read the migration docs.</strong>
+        </div>
+      </Link>
       <div className="masthead__container rn-container">
         <a href="/">
           <SiteLogo className="masthead__logo" />

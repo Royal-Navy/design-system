@@ -1,4 +1,4 @@
-@import "@royalnavy/css-framework";
+@use "@royalnavy/css-framework" as rn;
 
 $border-radius: 4px;
 $border-color: #dae2ec;
@@ -8,30 +8,30 @@ $card-background-color: #f0f4f8;
   display: flex;
   flex-direction: column;
   color: #253b5b;
-  
+
   svg {
     transition: transform 0.2s;
   }
   &:hover {
     text-decoration: none;
 
-  
+
     .card__title {
-      color: color(primary, 500);
+      color: rn.color("action", "500");
     }
     .card__link {
       svg {
         transform: translateX(10px);
-        fill: color(primary, 500);
+        fill: rn.color("action", "500");
       }
-    } 
+    }
   }
 }
 
 .card__head {
   background-color: transparent;
-  padding: spacing(6) spacing(6) 0;
-  font-size: font-size(xl);
+  padding: rn.spacing("11") rn.spacing("11") 0;
+  font-size: rn.font-size("xxl");
   font-weight: 600;
 }
 
@@ -41,20 +41,20 @@ $card-background-color: #f0f4f8;
 
 
 .card__body {
-  padding: spacing(2) spacing(6) spacing(6);
-  font-size: font-size(s);
+  padding: rn.spacing("4") rn.spacing("11") rn.spacing("11");
+  font-size: rn.font-size("base");
 }
 
 .card__image {
   display: block;
   width: 100%;
-  margin-top: spacing(4);
+  margin-top: rn.spacing("8");
 }
 
-@include breakpoint('s') {
+@include rn.breakpoint("xs") {
 
   .card__title {
-    font-size: font-size(m);
+    font-size: rn.font-size("l");
     font-weight: 500;
   }
   .card__image {
@@ -64,17 +64,17 @@ $card-background-color: #f0f4f8;
 
   .card__image--position-left {
     float: left;
-    margin: spacing(4) spacing(4) 0 0;
+    margin: rn.spacing("8") rn.spacing("8") 0 0;
   }
 
   .card__image--position-right {
     float: right;
-    margin: spacing(4) 0 0 spacing(4);
+    margin: rn.spacing("8") 0 0 rn.spacing("8");
   }
 }
 
 .card__text {
-  font-size: font-size(s);
+  font-size: rn.font-size("base");
   font-weight: 300;
 }
 
@@ -85,7 +85,7 @@ $card-background-color: #f0f4f8;
 
   svg {
     height: 12px;
-    margin-left: spacing(2);
+    margin-left: rn.spacing("4");
   }
 }
 
@@ -102,11 +102,11 @@ $card-background-color: #f0f4f8;
 }
 
 .card--border .card__head {
-  padding: spacing(4) spacing(6);
+  padding: rn.spacing("8") rn.spacing("11");
   background-color: $card-background-color;
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
-  font-size: font-size(s);
+  font-size: rn.font-size("base");
   font-weight: normal;
 }
 
@@ -120,7 +120,7 @@ $card-background-color: #f0f4f8;
 .card--coloured .card__head {
   display: flex;
   flex-flow: column;
-  font-size: font-size(m);
+  font-size: rn.font-size("l");
 }
 
 .card--coloured .card__text {
@@ -128,7 +128,7 @@ $card-background-color: #f0f4f8;
 }
 
 .card--coloured .card__meta {
-  margin-bottom: spacing(2);
-  font-size: font-size(s);
+  margin-bottom: rn.spacing("4");
+  font-size: rn.font-size("base");
   color: #698098;
 }
