@@ -9,6 +9,7 @@
   border: 0;
   vertical-align: top;
   width: 100%;
+  max-width: 20rem;
 }
 
 .rn-date-picker__outer-wrapper {
@@ -134,10 +135,24 @@
 
 .rn-date-picker__grid {
   display: grid;
-  grid-template-columns: repeat(attr(data-active-month-count), 300px);
-  grid-gap: 0 64px;
-  width: 246px;
+  grid-template-columns: repeat(1, 300px);
+  grid-gap: 0 f.spacing("4");
+  width: auto;
   margin: 1rem;
+}
+
+.rn-date-picker__grid--range {
+  grid-template-columns: repeat(2, 300px);
+}
+
+.rn-date-picker__range-seperator {
+  position: absolute;
+  top: f.spacing("4");
+  left: 50%;
+  transform: translateX(-50%);
+  color: f.color("neutral", "300");
+  width: 1rem;
+  height: 1rem;
 }
 
 .rn-date-picker__header {
@@ -148,6 +163,8 @@
 }
 
 .rn-date-picker__btn-nav {
+  position: absolute;
+  top: f.spacing("3");
   display: inline-flex;
   justify-content: center;
   width: 1.5rem;
@@ -157,6 +174,14 @@
   border-radius: 2px;
   color: f.color("neutral", "300");
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
+
+  &:first-of-type {
+    left: f.spacing("4");
+  }
+
+  &:last-of-type {
+    right: f.spacing("4");
+  }
 }
 
 .rn-date-picker__month-label {
@@ -165,7 +190,7 @@
   text-align: center;
   font-size: f.font-size("s");
   color: f.color("neutral", "400");
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .rn-date-picker__day-label-grid {
@@ -212,8 +237,8 @@
   }
 
   &.is-selected {
-    color: f.color("neutral", "white");
-    background-color: f.color("action", "600");
+    color: f.color("neutral", "400");
+    background-color: f.color("action", "100");
   }
 
   &.is-within-range {
