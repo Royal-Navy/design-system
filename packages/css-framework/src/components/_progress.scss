@@ -10,7 +10,7 @@ $progress-states: (
   success: f.color("success", "500")
 );
 
-.rn-progress {  
+.rn-progress {
   box-sizing: border-box;
   display: block;
   margin: 0;
@@ -18,23 +18,23 @@ $progress-states: (
   position: relative;
   overflow: hidden;
   height: 8px;
-  
+
   &.small {
     height: 4px;
   }
-  
+
   &.large {
     height: 16px;
   }
-  
+
   @each $state, $value in $progress-states {
-    &.#{$state} {    
+    &.#{$state} {
       .rn-progress__bar {
         background: $value;
       }
     }
   }
-  
+
   &__bar {
     background-color: map.get($progress-states, "neutral");
     // Border radius far exceeds height of container to ensure
@@ -46,7 +46,7 @@ $progress-states: (
     padding: 0;
     position: absolute;
     top: 0;
-    text-align: center;    
+    text-align: center;
     color: f.color("neutral", "white");
     @include m.font-size("xs");
     display: flex;
@@ -54,4 +54,3 @@ $progress-states: (
     justify-content: center;
   }
 }
-

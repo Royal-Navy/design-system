@@ -8,14 +8,14 @@ $card-background-color: #f0f4f8;
   display: flex;
   flex-direction: column;
   color: #253b5b;
-  
+
   svg {
     transition: transform 0.2s;
   }
   &:hover {
     text-decoration: none;
 
-  
+
     .card__title {
       color: rn.color("action", "500");
     }
@@ -24,7 +24,7 @@ $card-background-color: #f0f4f8;
         transform: translateX(10px);
         fill: rn.color("action", "500");
       }
-    } 
+    }
   }
 }
 

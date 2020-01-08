@@ -7,7 +7,7 @@
   $value: false;
 
   @if map.has-key(vars.$typography, $size) {
-    $value: map.get(vars.$typography, $size);    
+    $value: map.get(vars.$typography, $size);
   }
 
   @else {

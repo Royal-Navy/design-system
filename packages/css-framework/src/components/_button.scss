@@ -14,7 +14,7 @@ $btn-focus-width: 0.2rem;
   color: f.color("neutral", "500");
   background-color: f.color("neutral", "white");
   border: 1px solid transparent;
-  border-radius: $btn-border-radius;  
+  border-radius: $btn-border-radius;
   outline: 0;
   padding: f.spacing("6") f.spacing("8");
   font-size: f.font-size("base");
@@ -36,7 +36,7 @@ $btn-focus-width: 0.2rem;
   &:focus {
     box-shadow: 0 0 0 $btn-focus-width rgba(f.color("action", "700") , 0.5);
   }
-  
+
   // States
   &--primary {
 
@@ -50,7 +50,7 @@ $btn-focus-width: 0.2rem;
     &:focus {
       box-shadow: 0 0 0 $btn-focus-width rgba(f.color("danger", "800"), 0.5);
     }
-    
+
     &.rn-btn--danger {
       background: f.color("danger", "500");
       color: f.color("neutral", "white");
@@ -59,7 +59,7 @@ $btn-focus-width: 0.2rem;
         background: f.color("danger", "800");
         color: f.color("neutral", "white");
       }
-      
+
       &:focus {
         box-shadow: 0 0 0 $btn-focus-width rgba(f.color("danger", "800"), 0.5);
       }
@@ -72,11 +72,11 @@ $btn-focus-width: 0.2rem;
 
     &.rn-btn--danger {
       color: f.color("danger", "800");
-    
+
       &:hover {
         color: f.color("danger", "800");
       }
-    
+
       &:focus {
         box-shadow: 0 0 0 $btn-focus-width rgba(f.color("danger", "800"), 0.5);
       }
@@ -103,7 +103,7 @@ $btn-focus-width: 0.2rem;
       height: 13px;
     }
   }
-  
+
   &--large {
     font-size: f.font-size("base");
     padding: f.spacing("6") f.spacing("10");
@@ -112,7 +112,7 @@ $btn-focus-width: 0.2rem;
       height: 15px;
     }
   }
-  
+
   &--xlarge {
     font-size: f.font-size("l");
     padding: f.spacing("6") f.spacing("10");

@@ -96,7 +96,7 @@ $badge-states: (
   &.rn-badge--pill {
     padding: f.spacing("3") f.spacing("5");
     border-radius: 100px;
-  
+
     @each $size, $values in $badge-sizes {
       &.rn-badge--#{$size} {
         font-size: map.get($values, "font-size");

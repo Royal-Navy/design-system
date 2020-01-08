@@ -14,7 +14,7 @@
     @if map.has-key($_type, $shade) {
       $value: map.get($_type, $shade);
     }
-    
+
     @else {
       @error "Color Function: No match for #{$shade} in #{$type}";
     }

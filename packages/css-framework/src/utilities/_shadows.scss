@@ -14,7 +14,7 @@
       }
     } @else {
       @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
-        .#{$_breakpoint}\:#{config.$utility-ns}shadow-#{$_size} {        
+        .#{$_breakpoint}\:#{config.$utility-ns}shadow-#{$_size} {
             box-shadow: #{$_shadow} !important;
         }
       }

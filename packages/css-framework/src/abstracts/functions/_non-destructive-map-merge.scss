@@ -7,9 +7,9 @@
 
 @function non-destructive-map-merge($parent-map, $child-map) {
   $result: $parent-map;
-  
+
   @each $key, $value in $child-map {
-    
+
     @if (not map.has-key($result, $key))
       or (meta.type-of(map.get($result, $key)) != meta.type-of($value))
       or (not (meta.type-of(map.get($result, $key)) == map and meta.type-of($value) == map)) {
@@ -19,7 +19,7 @@
     @else {
       $result: map.merge($result, ($key: non-destructive-map-merge(map.get($result, $key), $value)));
     }
-    
+
   }
 
   @return $result;

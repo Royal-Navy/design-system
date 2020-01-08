@@ -49,7 +49,7 @@
 
 .rn-autosuggest__suggestion {
   cursor: pointer;
-  @include m.font-size("s");    
+  @include m.font-size("s");
   padding: f.spacing("4") f.spacing("6");
   display: flex;
   justify-content: space-between;

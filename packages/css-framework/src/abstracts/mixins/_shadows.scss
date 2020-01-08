@@ -14,7 +14,7 @@
   @if map.has-key(vars.$shadows, $size) {
     box-shadow: #{$inset} #{map.get(vars.$shadows, $size)};
   }
-  
+
   @else {
     @error "No shadow could be retrieved for #{$size}";
   }
