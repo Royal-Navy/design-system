@@ -5,7 +5,7 @@ import classNames from 'classnames'
 export interface NumberInputProps {
   autoFocus?: boolean
   className?: string
-  disabled?: boolean
+  isDisabled?: boolean
   footnote?: string
   id?: string
   label?: string
@@ -17,6 +17,7 @@ export interface NumberInputProps {
   placeholder?: string
   step?: number
   value?: number
+  startAdornment?: React.ReactNode | string
 }
 
 interface CalculateNewValue {
@@ -47,18 +48,19 @@ export function calculateNewValue({
 
 export const NumberInput: React.FC<NumberInputProps> = ({
   className,
-  disabled = false,
+  isDisabled = false,
   footnote,
   id = uuid(),
   label,
   max,
   min,
   name,
-  onBlur = () => {},
+  onBlur,
   onChange,
   placeholder = '',
   step = 1,
   value,
+  startAdornment,
   ...rest
 }) => {
   const inputRef = useRef(null)
@@ -116,7 +118,10 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 
   const onLocalBlur = (event: React.FormEvent) => {
     setFocus(false)
-    onBlur(event)
+
+    if (onBlur) {
+      onBlur(event)
+    }
   }
 
   const EndAdornment = (
@@ -167,6 +172,14 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   return (
     <div className={classes} data-testid="number-input-container">
       <div className="rn-numberinput__outer-wrapper">
+        {startAdornment && (
+          <div
+            className="rn-numberinput__start-adornment"
+            data-testid="number-input-start-adornment"
+          >
+            {startAdornment}
+          </div>
+        )}
         <div
           className="rn-numberinput__input-wrapper"
           data-testid="number-input-wrapper"
@@ -183,7 +196,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           <input
             className="rn-numberinput__input"
             data-testid="number-input-input"
-            disabled={disabled}
+            disabled={isDisabled}
             id={id}
             name={name}
             onBlur={onLocalBlur}

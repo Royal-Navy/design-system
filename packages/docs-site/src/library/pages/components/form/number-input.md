@@ -5,13 +5,15 @@ header: true
 ---
 import { Formik, Form, Field } from 'formik'
 import { Icons, Tab, TabSet, Formik as FormikControls } from '@royalnavy/react-component-library'
+import { IconBrightnessHigh } from '@royalnavy/icon-library'
 import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
-import NumberClickerComponent from '../../../images/components/forms/number-clicker/component.svg'
-import NumberClickerAnatomy from '../../../images/components/forms/number-clicker/anatomy.svg'
-import NumberClickerStates from '../../../images/components/forms/number-clicker/states.svg'
-import NumberClickerButtonStates from '../../../images/components/forms/number-clicker/button-states.svg'
+
+import NumberClickerComponent from '../../../images/components/forms/number-clicker/Component'
+import NumberClickerAnatomy from '../../../images/components/forms/number-clicker/Anatomy'
+import NumberClickerStates from '../../../images/components/forms/number-clicker/States'
+import NumberClickerButtonStates from '../../../images/components/forms/number-clicker/ButtonStates'
 
 # Overview
 The Number Input component is a field input that only accepts numbers and can be stepped with the additional arrows.
@@ -54,6 +56,7 @@ The Directional Buttons also have state. Clicking on the up arrow will increase 
 
 
 <Tab title="Develop">
+
 The `NumberInput` component acts like a regular input except that it only allows numbers to be entered and
 can use buttons to increase and decrease in increments, defaulted to 1.
 
@@ -86,6 +89,20 @@ The NumberInput can be used in conjunction with `withFormik` to allow it to be u
       name="guns"
       step={5}
     />
+    <Field
+      component={FormikControls.NumberInput}
+      label="Brightness"
+      name="brintness"
+      step={5}
+      startAdornment={<IconBrightnessHigh />}
+    />
+    <Field
+      component={FormikControls.NumberInput}
+      label="Speed"
+      name="speed"
+      step={5}
+      startAdornment="m/s"
+    />
   </Form>
 </Formik>
   `} language="javascript">
@@ -98,28 +115,41 @@ The NumberInput can be used in conjunction with `withFormik` to allow it to be u
             <Field
               className="is-valid"
               component={FormikControls.NumberInput}
-              label="Muskets"
+              label="Ships"
               max={10}
               min={1}
-              name="muskets"
+              name="ships"
             />
             <Field
               className="is-invalid"
               component={FormikControls.NumberInput}
-              label="Pistols"
-              name="pistols"
+              label="Aircraft"
+              name="aircraft"
             />
             <Field
               component={FormikControls.NumberInput}
-              label="Guns"
-              name="guns"
+              label="Cars"
+              name="cars"
               step={5}
+            />
+            <Field
+              component={FormikControls.NumberInput}
+              label="Brightness"
+              name="brintness"
+              step={5}
+              startAdornment={<IconBrightnessHigh />}
+            />
+            <Field
+              component={FormikControls.NumberInput}
+              label="Speed"
+              name="speed"
+              step={5}
+              startAdornment="m/s"
             />
           </Form>
         </Formik>
       </div>
 </CodeHighlighter>
-
 
 ### Properties
 <DataTable caption="NumberInput" data={[
@@ -138,7 +168,7 @@ The NumberInput can be used in conjunction with `withFormik` to allow it to be u
     Description: 'Optional additional css class to associate with the component wrapper',
   },
   {
-    Name: 'disabled',
+    Name: 'isDisabled',
     Type: 'boolean',
     Required: 'False',
     Default: 'false',
@@ -227,6 +257,13 @@ The NumberInput can be used in conjunction with `withFormik` to allow it to be u
     Required: 'False',
     Default: '',
     Description: 'The value to display',
+  },
+  {
+    Name: 'startAdornment',
+    Type: 'string | ReactNode',
+    Required: 'False',
+    Default: '',
+    Description: 'An adornment to add to the start of the input field.',
   },
 ]} />
 </Tab>

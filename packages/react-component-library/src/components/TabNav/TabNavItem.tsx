@@ -1,24 +1,19 @@
 import React from 'react'
 import uuid from 'uuid'
+import classNames from 'classnames'
 
-interface TabNavItemProps {
-  LinkComponent?: any
-  navItem: NavItemTypes
+import { NavItem } from '../../types/Nav'
+
+export const TabNavItem: React.FC<NavItem> = ({ isActive, link }) => {
+  const classes = classNames('rn-tab-nav__item', { 'is-active': isActive })
+
+  return (
+    <li
+      key={uuid()}
+      className={classes}
+      data-testid={isActive ? 'tab-active' : 'tab'}
+    >
+      {link}
+    </li>
+  )
 }
-
-const TabNavItem: React.FC<TabNavItemProps> = ({
-  LinkComponent,
-  navItem: { active, label, ...rest },
-}) => (
-  <li
-    key={uuid()}
-    className={`rn-tab-nav__item ${active ? 'is-active' : ''}`}
-    data-testid={active ? 'tab-active' : 'tab'}
-  >
-    <LinkComponent className="rn-tab-nav__link" data-testid="tablink" {...rest}>
-      {label}
-    </LinkComponent>
-  </li>
-)
-
-export default TabNavItem

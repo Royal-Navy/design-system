@@ -143,6 +143,35 @@
   margin-bottom: 0;
   margin-top: 0;
   width: 210px;
+
+  .site-logo_svg__home {
+    opacity: 0;
+    transition: 0.2s;
+    transform: translateY(10px);
+    transition-delay: 0s;
+  }
+  .site-logo_svg__team {
+    opacity: 1;
+    transition: 0.2s;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+  .site-logo_svg__logo:hover .site-logo_svg__team {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition-delay: 0s;
+  }
+  .site-logo_svg__logo:hover .site-logo_svg__home {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+  .site-logo_svg__left-arrow {
+    transition: 0.2s;
+  }
+  .site-logo_svg__logo:hover .site-logo_svg__left-arrow {
+    fill: #3a8fdd;
+  }
 }
 
 .masthead__version {

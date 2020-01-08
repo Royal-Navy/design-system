@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import differenceInMinutes from 'date-fns/differenceInMinutes'
 import formatDistanceStrict from 'date-fns/formatDistanceStrict'
 import format from 'date-fns/format'
 
-import { Avatar } from '../../components/Avatar'
+import { Avatar, AVATAR_VARIANT } from '../../components/Avatar'
 
 export interface NotificationProps {
-  href: string
+  link: React.ReactElement<LinkTypes>
   name: string
-  read?: boolean
+  isRead?: boolean
   action: string
   on: string
   when: Date
@@ -38,47 +38,53 @@ function formatWhen(when: Date) {
 }
 
 export const Notification: React.FC<NotificationProps> = ({
-  href,
+  link,
   name,
-  read,
+  isRead,
   action,
   on,
   when,
   description,
 }) => {
   return (
-    <li>
+    <li data-testid="notification">
       <div className="rn-notifications-item-wrapper">
-        <a href={href}>
-          <div className="rn-notifications-item">
-            <div className="rn-notifications-item__avatar">
-              <Avatar initials={getInitials(name)} dark />
-              {!read && (
-                <span
-                  className="rn-notification-panel__not-read rn-notification-panel__not-read--notification-item"
-                  data-testid="not-read-item"
+        {React.cloneElement(link as ReactElement, {
+          ...link.props,
+          children: (
+            <div className="rn-notifications-item">
+              <div className="rn-notifications-item__avatar">
+                <Avatar
+                  initials={getInitials(name)}
+                  variant={AVATAR_VARIANT.DARK}
                 />
-              )}
-            </div>
-            <div className="rn-notifications-item__content">
-              <span className="rn-notifications-item__content-strong">
-                {name}
-              </span>
-              {` ${action} `}
-              <span className="rn-notifications-item__content-strong">
-                {on}
-              </span>
-              <span
-                className="rn-notifications-item__content-circle"
-                data-testid="circle"
-              />
-              <span>{formatWhen(when)}</span>
-              <div className="rn-notifications-item__content-description">
-                {description.substring(0, 38)}...
+                {!isRead && (
+                  <span
+                    className="rn-notification-panel__not-read rn-notification-panel__not-read--notification-item"
+                    data-testid="not-read-item"
+                  />
+                )}
+              </div>
+              <div className="rn-notifications-item__content">
+                <span className="rn-notifications-item__content-strong">
+                  {name}
+                </span>
+                {` ${action} `}
+                <span className="rn-notifications-item__content-strong">
+                  {on}
+                </span>
+                <span
+                  className="rn-notifications-item__content-circle"
+                  data-testid="circle"
+                />
+                <span>{formatWhen(when)}</span>
+                <div className="rn-notifications-item__content-description">
+                  {description.substring(0, 38)}...
+                </div>
               </div>
             </div>
-          </div>
-        </a>
+          ),
+        })}
       </div>
     </li>
   )

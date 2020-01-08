@@ -11,11 +11,11 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import RightContent from '../../../components/presenters/right-content'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import IconAcUnit from '../../images/components/dropdown/acunit.svg'
+import IconAcUnit from '../../images/components/dropdown/Acunit'
 
-import DropdownComponent from '../../images/components/dropdown/component.svg'
-import DropdownAnatomy from '../../images/components/dropdown/anatomy.svg'
-import DropdownStates from '../../images/components/dropdown/states.svg'
+import DropdownComponent from '../../images/components/dropdown/Component'
+import DropdownAnatomy from '../../images/components/dropdown/Anatomy'
+import DropdownStates from '../../images/components/dropdown/States'
 
 # Dropdown
 A component to show a list of actions.
@@ -143,7 +143,7 @@ An option can also be marked as inactive and is greyed out to show that to the u
     Description: 'A disabled option is displayed with slightly greyed out text and cannot be selected',
   },
   {
-    Name: 'hidden',
+    Name: 'isHidden',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',
@@ -178,7 +178,7 @@ An option can also be marked as inactive and is greyed out to show that to the u
     Description: 'The value that it used in the onSelect method to indicate the desired action',
   },
   {
-    Name: 'visible',
+    Name: 'isVisible',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',

@@ -2,8 +2,11 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult, wait } from '@testing-library/react'
 
+import { Link } from '../../index'
 import { Masthead, MastheadProps } from './Masthead'
 import { Notification, Notifications } from '../NotificationPanel'
+import { MastheadUser } from './MastheadUser'
+import { MastheadNav, MastheadNavItem } from './MastheadNav'
 
 describe('Masthead', () => {
   let wrapper: RenderResult
@@ -55,17 +58,23 @@ describe('Masthead', () => {
 
     describe('and a user', () => {
       beforeEach(() => {
-        const user: UserType = {
-          initials: 'zt',
-        }
-
-        props.user = user
+        props.user = (
+          <MastheadUser initials="zt" link={<Link href="/user-profile" />} />
+        )
 
         wrapper = render(<Masthead {...props} />)
       })
 
-      it('should render the user link', () => {
-        expect(wrapper.queryByTestId('userlink')).toBeInTheDocument()
+      it('should render the avatar', () => {
+        expect(wrapper.getByText('zt')).toBeInTheDocument()
+      })
+
+      it('should link the avatar', () => {
+        const avatar = wrapper.getByText('zt')
+
+        expect(avatar.parentElement.getAttribute('href')).toEqual(
+          '/user-profile'
+        )
       })
     })
 
@@ -169,7 +178,7 @@ describe('Masthead', () => {
       beforeEach(() => {
         const notification = (
           <Notification
-            href="notifications/1"
+            link={<Link href="notifications/1" />}
             name="Thomas Stephens"
             action="added a new comment to your"
             on="review"
@@ -179,13 +188,13 @@ describe('Masthead', () => {
         )
 
         props.notifications = (
-          <Notifications href="notifications">
+          <Notifications link={<Link href="notifications" />}>
             {notification}
             {notification}
           </Notifications>
         )
 
-        props.unreadNotification = false
+        props.hasUnreadNotification = false
 
         wrapper = render(<Masthead {...props} />)
       })
@@ -250,37 +259,37 @@ describe('Masthead', () => {
 
       describe('and unread notifications', () => {
         beforeEach(() => {
-          props.unreadNotification = true
+          props.hasUnreadNotification = true
 
           wrapper = render(<Masthead {...props} />)
         })
 
         it('should include an unread notification indicator', () => {
-          expect(
-            wrapper.queryByTestId('not-read')
-          ).toBeInTheDocument()
+          expect(wrapper.queryByTestId('not-read')).toBeInTheDocument()
         })
       })
     })
 
     describe('and navigation', () => {
       beforeEach(() => {
-        props.navItems = [
-          {
-            active: false,
-            label: 'test nav item',
-            href: '/',
-          },
-        ]
+        props.nav = (
+          <MastheadNav>
+            <MastheadNavItem link={<Link href="/first">First</Link>} />
+            <MastheadNavItem link={<Link href="/second">Second</Link>} />
+          </MastheadNav>
+        )
 
         wrapper = render(<Masthead {...props} />)
       })
 
-      it('should render the nav items', () => {
-        expect(wrapper.queryByTestId('scrollable-nav')).toBeInTheDocument()
-        expect(wrapper.queryByTestId('scrollable-nav')).toContainHTML(
-          'test nav item'
-        )
+      it('should render the first nav item', () => {
+        const firstNavItem = wrapper.getByText('First')
+        expect(firstNavItem.getAttribute('href')).toEqual('/first')
+      })
+
+      it('should render the seconde nav item', () => {
+        const secondNavItem = wrapper.getByText('Second')
+        expect(secondNavItem.getAttribute('href')).toEqual('/second')
       })
     })
   })

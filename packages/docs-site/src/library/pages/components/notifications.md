@@ -4,13 +4,14 @@ description: A component to easily alert users to new notifications.
 header: true
 ---
 
-import { Icons, Sidebar, Tab, TabSet } from '@royalnavy/react-component-library'
+import { Link, Notification, Notifications, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
-import NotificationComponent from '../../images/components/notifications/component.svg'
-import NotificationAnatomy from '../../images/components/notifications/anatomy.svg'
-import NotificationStates from '../../images/components/notifications/states.svg'
+
+import NotificationComponent from '../../images/components/notifications/Component'
+import NotificationAnatomy from '../../images/components/notifications/Anatomy'
+import NotificationStates from '../../images/components/notifications/States'
 
 # Overview
 The Notification Component provides an easy way to message the user when an action that is relevant to them happens within an application.
@@ -73,13 +74,32 @@ The Notification Sheet should only be used in the Sidebar or Masthead.
     description="A long description that will be shortened again"
   />
 </Notifications>
-`} language="javascript" />
+`} language="javascript">
+<Notifications link={<Link href="notifications" />}>
+  <Notification
+    link={<Link href="notifications/1" />}
+    name="Thomas Stephens"
+    action="added a new comment to your"
+    on="review"
+    when={new Date('2019-11-05T10:57:00.000Z')}
+    description="A long description that will be shortened"
+  />
+  <Notification
+    link={<Link href="notifications/2" />}
+    name="Thomas Stephens"
+    action="added a new comment to your"
+    on="review"
+    when={new Date('2019-11-04T10:23:00.000Z')}
+    description="A long description that will be shortened again"
+  />
+</Notifications>
+</CodeHighlighter>
 
 ### Notifications Properties
 <DataTable data={[
   {
-    Name: 'href',
-    Type: 'string',
+    Name: 'link',
+    Type: 'React.ReactElement<LinkTypes>',
     Required: 'True',
     Default: '',
     Description: 'For linking to a list of all notifications.',
@@ -96,8 +116,8 @@ The Notification Sheet should only be used in the Sidebar or Masthead.
 ### Notification Properties
 <DataTable data={[
   {
-    Name: 'href',
-    Type: 'string',
+    Name: 'link',
+    Type: 'React.ReactElement<LinkTypes>',
     Required: 'True',
     Default: '',
     Description: 'For linking to the notification.',
@@ -110,7 +130,7 @@ The Notification Sheet should only be used in the Sidebar or Masthead.
     Description: 'Name of the person who did the action.',
   },
   {
-    Name: 'read',
+    Name: 'isRead',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',

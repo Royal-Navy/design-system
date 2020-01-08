@@ -5,14 +5,14 @@ header: true
 draft: false
 ---
 
-import { Avatar, Tab, TabSet } from '@royalnavy/react-component-library'
+import { Avatar, AVATAR_VARIANT, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import AvatarComponent from '../../images/components/avatar/component.svg'
-import AvatarAnatomy from '../../images/components/avatar/anatomy.svg'
-import AvatarStates from '../../images/components/avatar/states.svg'
+import AvatarComponent from '../../images/components/avatar/Component'
+import AvatarAnatomy from '../../images/components/avatar/Anatomy'
+import AvatarStates from '../../images/components/avatar/States'
 
 # Overview
 
@@ -51,12 +51,11 @@ The Avatar component is a simple component that displays the users initials with
 
 ### Basic Usage
 
-<CodeHighlighter source={`
-<Avatar light initials="RT"/>
-<Avatar dark initials="ST"/>
+<CodeHighlighter source={`<Avatar initials="RT" variant={AVATAR_VARIANT.DARK} />
+<Avatar initials="ST" variant={AVATAR_VARIANT.LIGHT} />
 `} language="javascript">
   <div style={{ background: '#A0A0A0', padding: 20 }}>
-    <p><Avatar light initials="RT"/>&nbsp;<Avatar dark initials="ST"/></p>
+    <p><Avatar initials="RT" variant={AVATAR_VARIANT.DARK} />&nbsp;<Avatar initials="ST" variant={AVATAR_VARIANT.LIGHT}/></p>
   </div>
 </CodeHighlighter>
 
@@ -71,13 +70,6 @@ The Avatar component is a simple component that displays the users initials with
     Description: 'Custom css class to add to the Avatar element',
   },
   {
-    Name: 'dark',
-    Type: 'boolean',
-    Required: 'False',
-    Default: '',
-    Description: 'Use the dark style of avatar',
-  },
-  {
     Name: 'initials',
     Type: 'string',
     Required: 'True',
@@ -85,11 +77,11 @@ The Avatar component is a simple component that displays the users initials with
     Description: 'The users initials, a maximum of 2 letters',
   },
   {
-    Name: 'light',
-    Type: 'boolean',
+    Name: 'variant',
+    Type: 'string',
     Required: 'False',
     Default: '',
-    Description: 'Use the light style of avatar',
+    Description: 'Variant of the avatar, can be `dark` or `light`.',
   },
 ]} />
 </Tab>

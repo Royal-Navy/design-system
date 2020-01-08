@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ArrowRightIcon from './arrow-right-icon.svg'
+import ArrowRightIcon from './images/ArrowRightIcon'
 
 const Card = ({
   type,

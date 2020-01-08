@@ -1,6 +1,6 @@
-enum SORT_ORDER {
+enum TABLE_SORT_ORDER {
   ASCENDING = 'asc',
   DESCENDING = 'desc',
 }
 
-export { SORT_ORDER }
+export { TABLE_SORT_ORDER }

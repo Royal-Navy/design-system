@@ -10,9 +10,9 @@ import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
 
-import CheckboxComponent from '../../../images/components/forms/checkbox/component.svg'
-import CheckboxAnatomy from '../../../images/components/forms/checkbox/anatomy.svg'
-import CheckboxStates from '../../../images/components/forms/checkbox/states.svg'
+import CheckboxComponent from '../../../images/components/forms/checkbox/Component'
+import CheckboxAnatomy from '../../../images/components/forms/checkbox/Anatomy'
+import CheckboxStates from '../../../images/components/forms/checkbox/States'
 
 # Checkbox
 Checkboxes let users select multiple options at once.
@@ -120,7 +120,7 @@ with the field:
     Description: 'Optional additional css class to associate with the component wrapper',
   },
   {
-    Name: 'disabled',
+    Name: 'isDisabled',
     Type: 'boolean',
     Required: 'False',
     Default: 'false',

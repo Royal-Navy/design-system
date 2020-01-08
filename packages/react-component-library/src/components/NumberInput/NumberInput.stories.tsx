@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import { Field, Formik, Form } from 'formik'
 import React from 'react'
-
+import { IconBrightnessHigh } from '@royalnavy/icon-library'
 import withFormik from '../../enhancers/withFormik'
 import { Button } from '../Button'
 import { NumberInput } from './NumberInput'
@@ -27,6 +27,7 @@ stories.add('Vanilla', () => (
       <Form>
         <Field component={FormikNumberInput} name="gold" label="Gold bars" />
         <Field component={FormikNumberInput} name="age" label="Age" />
+        <Field component={FormikNumberInput} name="age" label="Age" />
 
         <Button variant="secondary" onClick={action('Cancel')}>
           Cancel
@@ -37,4 +38,24 @@ stories.add('Vanilla', () => (
       </Form>
     </Formik>
   </div>
+))
+
+stories.add('With start adornment icon', () => (
+  <NumberInput
+    name="example-number-input"
+    label="Example"
+    value={1}
+    onChange={action('onChange')}
+    startAdornment={<IconBrightnessHigh />}
+  />
+))
+
+stories.add('With start adornment text', () => (
+  <NumberInput
+    name="example-number-input"
+    label="Example"
+    value={1}
+    onChange={action('onChange')}
+    startAdornment="Kts"
+  />
 ))

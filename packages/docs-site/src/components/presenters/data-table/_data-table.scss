@@ -6,6 +6,22 @@ $border-radius: 4px;
 $heading-color: #3e5667;
 $text-color: #748999;
 
+
+.data-table__container {
+  max-width: 100%;
+  overflow-x: scroll;
+  background-image:
+    linear-gradient(to right, white, white),
+    linear-gradient(to right, white, white),
+    linear-gradient(to right, rgba(0,0,0,.07), rgba(255,255,255,0)),
+    linear-gradient(to left, rgba(0,0,0,.07), rgba(255,255,255,0));
+  background-position: left center, right center, left center, right center;
+  background-repeat: no-repeat;
+  background-color: $background-color;
+  background-size: 40px 100%, 40px 100%, 20px 100%, 20px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
+
 .data-table {
   width: 100%;
   border: none;
@@ -51,7 +67,6 @@ $text-color: #748999;
   display: block;
   padding: rn.spacing("12") 0;
   border-bottom: 1px dashed $border-color;
-  background-color: $background-color;
 
   &:first-of-type {
     padding-top: 0;

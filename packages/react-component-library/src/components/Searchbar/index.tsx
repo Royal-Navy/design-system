@@ -9,7 +9,7 @@ export interface SearchbarProps {
   onSearch: (term: string) => void
   searchButton: any
   searchPlaceholder: string
-  setShowSearch: (visible: boolean) => void
+  setShowSearch: (isVisible: boolean) => void
   style?: object
 }
 

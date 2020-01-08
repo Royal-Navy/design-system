@@ -8,16 +8,17 @@ import { Button, Icons, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
-import ButtonComponent from '../../images/components/button/component.svg'
-import ButtonAnatomy from '../../images/components/button/anatomy.svg'
-import ButtonPrimary from '../../images/components/button/primary.svg'
-import ButtonPrimaryStates from '../../images/components/button/primary-states.svg'
-import ButtonPrimaryHierarchy from '../../images/components/button/primary-hierarchy.svg'
-import ButtonSecondary from '../../images/components/button/secondary.svg'
-import ButtonSecondaryStates from '../../images/components/button/secondary-states.svg'
-import ButtonTertiary from '../../images/components/button/tertiary.svg'
-import ButtonTertiaryStates from '../../images/components/button/tertiary-states.svg'
-import ButtonTertiaryHierarchy from '../../images/components/button/tertiary-hierarchy.svg'
+
+import ButtonComponent from '../../images/components/button/Component'
+import ButtonAnatomy from '../../images/components/button/Anatomy'
+import ButtonPrimary from '../../images/components/button/Primary'
+import ButtonPrimaryStates from '../../images/components/button/PrimaryStates'
+import ButtonPrimaryHierarchy from '../../images/components/button/PrimaryHierarchy'
+import ButtonSecondary from '../../images/components/button/Secondary'
+import ButtonSecondaryStates from '../../images/components/button/SecondaryStates'
+import ButtonTertiary from '../../images/components/button/Tertiary'
+import ButtonTertiaryStates from '../../images/components/button/TertiaryStates'
+import ButtonTertiaryHierarchy from '../../images/components/button/TertiaryHierarchy'
 
 # Overview
 
@@ -189,7 +190,7 @@ source={`<Button onClick={action} icon={<TriangleDown />}>Closed</Button>
     Description: 'An alternative color style to use, danger is the only alternative currently supported',
   },
   {
-    Name: 'disabled',
+    Name: 'isDisabled',
     Type: 'boolean',
     Required: 'False',
     Default: false,
@@ -205,7 +206,7 @@ source={`<Button onClick={action} icon={<TriangleDown />}>Closed</Button>
   {
     Name: 'onClick',
     Type: '(event: React.SyntheticEvent):void',
-    Required: 'True',
+    Required: 'False',
     Default: '',
     Description: 'Function to call when a user clicks on a button',
   },

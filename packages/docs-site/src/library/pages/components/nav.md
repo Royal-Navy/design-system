@@ -2,15 +2,17 @@
 title: Nav
 description: A horizontal or vertical navigation component that supports nesting
 header: true
+draft: true
 ---
 
 import { Nav, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
-import NavComponent from '../../images/components/nav/component.svg'
-import NavAnatomy from '../../images/components/nav/anatomy.svg'
-import NavStates from '../../images/components/nav/states.svg'
+
+import NavComponent from '../../images/components/nav/Component'
+import NavAnatomy from '../../images/components/nav/Anatomy'
+import NavStates from '../../images/components/nav/States'
 
 # Overview
 
@@ -289,7 +291,7 @@ Nav supports rendering navigation in four different sizes.
     Description: 'The text for the link.',
   },
   {
-    Name: 'active',
+    Name: 'isActive',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',

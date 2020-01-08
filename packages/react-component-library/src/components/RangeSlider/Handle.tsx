@@ -14,7 +14,7 @@ export const Handle: React.FC<HandleProps> = ({
   handle: { id, value, percent },
   getHandleProps,
 }) => {
-  const active: boolean = activeHandleID === id
+  const isActive: boolean = activeHandleID === id
 
   return (
     <button
@@ -22,7 +22,7 @@ export const Handle: React.FC<HandleProps> = ({
       aria-valuemin={min}
       aria-valuemax={max}
       aria-valuenow={value}
-      className={`rn-rangeslider__handle ${active ? 'is-active' : ''}`}
+      className={`rn-rangeslider__handle ${isActive ? 'is-active' : ''}`}
       style={{
         left: `${percent}%`,
       }}

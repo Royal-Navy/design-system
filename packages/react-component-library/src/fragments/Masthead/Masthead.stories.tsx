@@ -2,44 +2,12 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 
-import { Masthead } from './index'
+import { Link } from '../../components'
+import { Masthead, MastheadUser } from '.'
 import { Notification, Notifications } from '../NotificationPanel'
+import { MastheadNav, MastheadNavItem } from './MastheadNav'
 
 const stories = storiesOf('Masthead', module)
-
-const notifications = [
-  {
-    href: 'notifications/1',
-    name: 'Thomas Stephens',
-    action: 'added a new comment to your',
-    on: 'review',
-    when: new Date('2019-11-05T14:25:02.178Z'),
-    description:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
-  },
-  {
-    href: 'notifications/2',
-    name: 'Thomas Stephens',
-    action: 'added a new comment to your',
-    on: 'review',
-    when: new Date('2019-11-01T14:25:02.178Z'),
-    description:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
-  },
-  {
-    href: 'notifications/3',
-    name: 'Thomas Stephens',
-    action: 'added a new comment to your',
-    on: 'review',
-    when: new Date('2019-11-01T14:25:02.178Z'),
-    description:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
-  },
-]
-
-const homeLink: AnchorType = {
-  href: '/',
-}
 
 const CustomLogo = () => (
   <svg width="21" height="19" viewBox="0 0 21 19">
@@ -62,6 +30,37 @@ const CustomLogo = () => (
   </svg>
 )
 
+const user = <MastheadUser initials="AT" link={<Link href="/user-profile" />} />
+
+const notifications = (
+  <Notifications link={<Link href="notifications" />}>
+    <Notification
+      link={<Link href="notifications/1" />}
+      name="Thomas Stephens"
+      action="added a new comment to your"
+      on="review"
+      when={new Date('2019-11-05T14:25:02.178Z')}
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+    />
+    <Notification
+      link={<Link href="notifications/2" />}
+      name="Thomas Stephens"
+      action="added a new comment to your"
+      on="review"
+      when={new Date('2019-11-01T14:25:02.178Z')}
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+    />
+    <Notification
+      link={<Link href="notifications/3" />}
+      name="Thomas Stephens"
+      action="added a new comment to your"
+      on="review"
+      when={new Date('2019-11-01T14:25:02.178Z')}
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+    />
+  </Notifications>
+)
+
 stories.add('With search', () => (
   <Masthead
     onSearch={action('onSearch')}
@@ -69,8 +68,6 @@ stories.add('With search', () => (
     title="Test"
   />
 ))
-
-const user = { initials: 'XT', href: '/userprofile' }
 
 stories.add('With search and Avatar', () => (
   <div>
@@ -80,7 +77,7 @@ stories.add('With search and Avatar', () => (
       title="Test"
       user={user}
       notifications={null}
-      unreadNotification
+      hasUnreadNotification
     />
     <p>More text below to check the dropdown appears below</p>
   </div>
@@ -90,67 +87,37 @@ stories.add('Without search', () => <Masthead title="Test" />)
 
 stories.add('Custom logo', () => <Masthead title="Test" Logo={CustomLogo} />)
 
-const navItems: NavItemAnchorType[] = [
-  {
-    label: 'Home',
-    href: '/',
-    active: true,
-  },
-  {
-    label: 'Ships',
-    href: '/',
-  },
-  {
-    label: 'Reports',
-    href: '/',
-  },
-  {
-    label: 'Personnel',
-    href: '/',
-  },
-  {
-    label: 'Calendar',
-    href: '/',
-  },
-  {
-    label: 'Messages',
-    href: '/',
-  },
-]
-
 stories.add('all but navigation', () => (
   <Masthead
-    homeLink={homeLink}
-    notifications={(
-      <Notifications href="notifications">
-        {notifications.map(notification => (
-          <Notification {...notification} />
-        ))}
-      </Notifications>
-    )}
+    homeLink={<Link href="/" />}
+    notifications={notifications}
     onSearch={action('onSearch')}
     searchPlaceholder="Search"
     title="Test"
-    unreadNotification
+    hasUnreadNotification
     user={user}
   />
 ))
 
 stories.add('With navigation', () => (
   <Masthead
-    homeLink={homeLink}
-    navItems={navItems}
-    notifications={(
-      <Notifications href="notifications">
-        {notifications.map(notification => (
-          <Notification {...notification} />
-        ))}
-      </Notifications>
+    homeLink={<Link href="/" />}
+    nav={(
+      <MastheadNav>
+        <MastheadNavItem
+          link={<Link href="/home">Get started</Link>}
+          isActive
+        />
+        <MastheadNavItem link={<Link href="/styles">Styles</Link>} />
+        <MastheadNavItem link={<Link href="/components">Components</Link>} />
+        <MastheadNavItem link={<Link href="/about">About</Link>} />
+      </MastheadNav>
     )}
+    notifications={notifications}
     onSearch={action('onSearch')}
     searchPlaceholder="Search"
     title="Test"
-    unreadNotification
+    hasUnreadNotification
     user={user}
   />
 ))

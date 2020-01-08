@@ -1,109 +1,98 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import Link from '../../components/Link'
-import Sidebar from './index'
+import CustomLink from '../../components/CustomLink'
 import { Graph, House, Tools } from '../../icons'
+import { Link } from '../../components'
 import { Notification, Notifications } from '../NotificationPanel'
-
-const notifications = [
-  {
-    href: 'notifications/1',
-    name: 'Thomas Stephens',
-    action: 'added a new comment to your',
-    on: 'review',
-    when: new Date('2019-11-05T14:25:02.178Z'),
-    description:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
-  },
-  {
-    href: 'notifications/2',
-    name: 'Thomas Stephens',
-    action: 'added a new comment to your',
-    on: 'review',
-    when: new Date('2019-11-01T14:25:02.178Z'),
-    description:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
-  },
-  {
-    href: 'notifications/3',
-    name: 'Thomas Stephens',
-    action: 'added a new comment to your',
-    on: 'review',
-    when: new Date('2019-11-01T14:25:02.178Z'),
-    description:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores',
-  },
-]
+import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from '.'
 
 const stories = storiesOf('Sidebar', module)
 
-const navData: NavItemAnchorType[] = [
-  {
-    href: '#',
-    Image: House,
-    label: 'Home',
-  },
-  {
-    active: true,
-    href: '/stats',
-    Image: Graph,
-    label: 'Stats',
-  },
-  {
-    href: '/tools',
-    Image: Tools,
-    label: 'Tools',
-  },
-]
+const nav = (
+  <SidebarNav>
+    <SidebarNavItem Image={House} link={<Link href="/">Home</Link>} />
+    <SidebarNavItem
+      Image={Graph}
+      link={<Link href="/stats">Stats</Link>}
+      isActive
+    />
+    <SidebarNavItem Image={Tools} link={<Link href="/tools">Tools</Link>} />
+  </SidebarNav>
+)
 
-const user = { initials: 'XT', href: '/userprofile' }
+const user = <SidebarUser initials="XT" link={<Link href="/user-profile" />} />
 
 stories.add('With notifications', () => (
   <Sidebar
-    navItems={navData}
+    nav={nav}
     notifications={(
-      <Notifications href="notifications">
-        {notifications.map(notification => (
-          <Notification {...notification} />
-        ))}
+      <Notifications link={<Link href="notifications" />}>
+        <Notification
+          link={<Link href="notifications/1" />}
+          name="Thomas Stephens"
+          action="added a new comment to your"
+          on="review"
+          when={new Date('2019-11-05T14:25:02.178Z')}
+          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+        />
+        <Notification
+          link={<Link href="notifications/2" />}
+          name="Thomas Stephens"
+          action="added a new comment to your"
+          on="review"
+          when={new Date('2019-11-01T14:25:02.178Z')}
+          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+        />
+        <Notification
+          link={<Link href="notifications/3" />}
+          name="Thomas Stephens"
+          action="added a new comment to your"
+          on="review"
+          when={new Date('2019-11-01T14:25:02.178Z')}
+          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+        />
       </Notifications>
     )}
-    unreadNotification
+    hasUnreadNotification
     user={user}
   />
 ))
 
-stories.add('No notifications', () => (
-  <Sidebar
-    user={user}
-    navItems={navData}
-    notifications={(
-      <Notifications href="notifications">
-        {notifications.map(notification => (
-          <Notification {...notification} />
-        ))}
-      </Notifications>
-    )}
-  />
-))
-
-stories.add('Without notifications', () => (
-  <Sidebar user={user} navItems={navData} />
-))
+stories.add('Without notifications', () => <Sidebar nav={nav} user={user} />)
 
 stories.add('With custom Link component', () => (
   <Sidebar
-    LinkComponent={Link}
-    navItems={navData}
+    nav={nav}
     notifications={(
-      <Notifications href="notifications">
-        {notifications.map(notification => (
-          <Notification {...notification} />
-        ))}
+      <Notifications link={<CustomLink to="notifications" />}>
+        <Notification
+          link={<CustomLink to="notifications/1" />}
+          name="Thomas Stephens"
+          action="added a new comment to your"
+          on="review"
+          when={new Date('2019-11-05T14:25:02.178Z')}
+          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+        />
+        <Notification
+          link={<CustomLink to="notifications/2" />}
+          name="Thomas Stephens"
+          action="added a new comment to your"
+          on="review"
+          when={new Date('2019-11-01T14:25:02.178Z')}
+          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+        />
+        <Notification
+          link={<CustomLink to="notifications/3" />}
+          name="Thomas Stephens"
+          action="added a new comment to your"
+          on="review"
+          when={new Date('2019-11-01T14:25:02.178Z')}
+          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+        />
       </Notifications>
     )}
-    unreadNotification
+    hasUnreadNotification
     user={user}
   />
 ))

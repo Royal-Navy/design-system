@@ -9,9 +9,9 @@ import { TabSet, Tab } from '@royalnavy/react-component-library'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import DataTable from '../../../components/presenters/data-table'
 
-import AlertComponent from '../../images/components/alert/component.svg'
-import AlertAnatomy from '../../images/components/alert/anatomy.svg'
-import AlertStates from '../../images/components/alert/states.svg'
+import AlertComponent from '../../images/components/alert/Component'
+import AlertAnatomy from '../../images/components/alert/Anatomy'
+import AlertStates from '../../images/components/alert/States'
 
 
 # Overview

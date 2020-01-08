@@ -2,44 +2,37 @@ import '@testing-library/jest-dom/extend-expect'
 import React, { FormEvent } from 'react'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
-import { ButtonGroup, ButtonGroupProps } from './index'
+import { ButtonGroup, ButtonGroupItem } from './index'
 
 describe('ButtonGroup', () => {
   let wrapper: RenderResult
   let oneClickSpy: (event: FormEvent<HTMLButtonElement>) => void
   let twoClickSpy: (event: FormEvent<HTMLButtonElement>) => void
   let threeClickSpy: (event: FormEvent<HTMLButtonElement>) => void
-  let props: ButtonGroupProps
+  let consoleWarnSpy: jest.SpyInstance
 
   beforeEach(() => {
     oneClickSpy = jest.fn()
     twoClickSpy = jest.fn()
     threeClickSpy = jest.fn()
+    consoleWarnSpy = jest.spyOn(global.console, 'warn')
   })
 
   describe('default props', () => {
     beforeEach(() => {
-      const items = [
-        {
-          label: 'One',
-          onClick: oneClickSpy,
-        },
-        {
-          label: 'Two',
-          onClick: twoClickSpy,
-        },
-        {
-          disabled: true,
-          label: 'Three',
-          onClick: threeClickSpy,
-        },
-      ]
+      wrapper = render(
+        <ButtonGroup>
+          <ButtonGroupItem onClick={oneClickSpy}>One</ButtonGroupItem>
+          <ButtonGroupItem onClick={twoClickSpy}>Two</ButtonGroupItem>
+          <ButtonGroupItem onClick={threeClickSpy} isDisabled>
+            Three
+          </ButtonGroupItem>
+        </ButtonGroup>
+      )
+    })
 
-      props = {
-        items,
-      }
-
-      wrapper = render(<ButtonGroup {...props} />)
+    it('should not warn the consumer about specifying sizes for each item', () => {
+      expect(consoleWarnSpy).not.toHaveBeenCalled()
     })
 
     it('should render a button group wrapper', () => {
@@ -92,28 +85,15 @@ describe('ButtonGroup', () => {
 
   describe('provide custom className', () => {
     beforeEach(() => {
-      const items = [
-        {
-          label: 'One',
-          onClick: oneClickSpy,
-        },
-        {
-          label: 'Two',
-          onClick: twoClickSpy,
-        },
-        {
-          disabled: true,
-          label: 'Three',
-          onClick: threeClickSpy,
-        },
-      ]
-
-      props = {
-        className: 'Scooby',
-        items,
-      }
-
-      wrapper = render(<ButtonGroup {...props} />)
+      wrapper = render(
+        <ButtonGroup className="Scooby">
+          <ButtonGroupItem onClick={oneClickSpy}>One</ButtonGroupItem>
+          <ButtonGroupItem onClick={twoClickSpy}>Two</ButtonGroupItem>
+          <ButtonGroupItem onClick={threeClickSpy} isDisabled>
+            Three
+          </ButtonGroupItem>
+        </ButtonGroup>
+      )
     })
 
     it('should render a button group wrapper', () => {
@@ -129,31 +109,48 @@ describe('ButtonGroup', () => {
       ${'large'}   | ${'rn-btn--large'}
       ${'xlarge'}  | ${'rn-btn--xlarge'}
     `('styles the button when the size is $size', ({ size, expected }) => {
-      const items = [
-        {
-          label: 'One',
-          onClick: oneClickSpy,
-        },
-        {
-          label: 'Two',
-          onClick: twoClickSpy,
-        },
-        {
-          disabled: true,
-          label: 'Three',
-          onClick: threeClickSpy,
-        },
-      ]
-
-      props = {
-        items,
-        size,
-      }
-
-      wrapper = render(<ButtonGroup {...props} />)
+      wrapper = render(
+        <ButtonGroup size={size}>
+          <ButtonGroupItem onClick={oneClickSpy}>One</ButtonGroupItem>
+          <ButtonGroupItem onClick={twoClickSpy}>Two</ButtonGroupItem>
+          <ButtonGroupItem onClick={threeClickSpy} isDisabled>
+            Three
+          </ButtonGroupItem>
+        </ButtonGroup>
+      )
 
       const buttons = wrapper.getAllByTestId('rn-button')
       buttons.forEach(button => expect(button).toHaveClass(expected))
+    })
+  })
+
+  describe('when a different size is provided for each item', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <ButtonGroup size="regular">
+          <ButtonGroupItem onClick={oneClickSpy} size="small">
+            One
+          </ButtonGroupItem>
+          <ButtonGroupItem onClick={twoClickSpy} size="regular">
+            Two
+          </ButtonGroupItem>
+          <ButtonGroupItem onClick={threeClickSpy} isDisabled size="large">
+            Three
+          </ButtonGroupItem>
+        </ButtonGroup>
+      )
+    })
+
+    it('should warn the consumer about specifying sizes for each item', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledTimes(3)
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'Prop `size` on `ButtonGroupItem` will be replaced by `size` from `ButtonGroup`'
+      )
+    })
+
+    it('should set the button size to the same as the size specified by the parent', () => {
+      const buttons = wrapper.getAllByTestId('rn-button')
+      buttons.forEach(button => expect(button).toHaveClass('rn-btn--regular'))
     })
   })
 })

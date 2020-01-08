@@ -4,7 +4,7 @@ import classNames from 'classnames'
 export interface ButtonProps extends ComponentWithClass {
   children?: string
   color?: 'danger'
-  disabled?: boolean
+  isDisabled?: boolean
   icon?: React.ReactNode
   onClick?: (event: FormEvent<HTMLButtonElement>) => void
   size?: 'small' | 'regular' | 'large' | 'xlarge'
@@ -16,16 +16,16 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   className = '',
   color,
-  disabled,
+  isDisabled,
   icon,
-  onClick = () => {},
+  onClick,
   size = 'regular',
   type = 'button',
   variant,
   ...rest
 }) => {
   const classes = classNames('rn-btn', className, {
-    'rn-btn--disabled': disabled,
+    'rn-btn--disabled': isDisabled,
     [`rn-btn--${variant}`]: variant,
     [`rn-btn--${color}`]: color,
     [`rn-btn--${size}`]: size,
@@ -34,12 +34,15 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={classes}
-      disabled={disabled}
+      disabled={isDisabled}
       data-testid="rn-button"
       type={type}
       onClick={e => {
         e.currentTarget.blur()
-        onClick(e)
+
+        if (onClick) {
+          onClick(e)
+        }
       }}
       {...rest}
     >

@@ -4,13 +4,13 @@ description: An application sidebar with icons and indicators, fixed to the left
 header: true
 ---
 
-import { Icons, Sidebar, Tab, TabSet } from '@royalnavy/react-component-library'
+import { Icons, Link, Sidebar, SidebarNav, SidebarNavItem, SidebarUser, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
-import SidebarComponent from '../../images/components/sidebar/component.svg'
-import SidebarAnatomy from '../../images/components/sidebar/anatomy.svg'
-import SidebarStates from '../../images/components/sidebar/states.svg'
+import SidebarComponent from '../../images/components/sidebar/Component'
+import SidebarAnatomy from '../../images/components/sidebar/Anatomy'
+import SidebarStates from '../../images/components/sidebar/States'
 
 # Overview
 The Sidebar component is a main navigational item for a **NELSON Standards** application. It is fixed to the left-hand of the screen and extends the full height of the browser. This component stays in place whilst the application scrolls, ensuring top navigational items are always within the user's reach.
@@ -64,209 +64,180 @@ If the application wishes to display the user's name in the form of their initia
 
 If notifications are supported by an application, the Notification section will display an Icon. This can be used to toggle the display of the Notification Popover.
 
-### Sidebar without Notifications
+### Sidebar without notifications
 A simple sidebar with no notification section, simply showing the current user and using the default Link component so, a regular anchor tag is used. 
 
-<CodeHighlighter source={`import { Link } from 'react-router-dom'\n
-const user = { initials: 'XT', href: '/userprofile' }\n
-const navData: NavItemAnchorType[] = [
-  {
-    to: '/',
-    Image: Icons.House,
-    label: 'Home',
-  },
-  {
-    active: true,
-    to: '/stats',
-    Image: Icons.Graph,
-    label: 'Stats',
-  },
-  {
-    to: '/tools',
-    Image: Icons.Tools,
-    label: 'Tools',
-  },
-]\n
- <Sidebar user={user} navItems={navData} />
-`} language="javascript" />
-
+<CodeHighlighter source={`<Sidebar
+  nav={(
+    <SidebarNav>
+      <SidebarNavItem Image={Icons.House} link={<Link href="/">Home</Link>} />
+      <SidebarNavItem
+        Image={Icons.Graph}
+        link={<Link href="/stats">Stats</Link>}
+        isActive
+      />
+      <SidebarNavItem Image={Icons.Tools} link={<Link href="/tools">Tools</Link>} />
+    </SidebarNav>
+  )}
+  user={<SidebarUser initials="XT" link={<Link href="/user-profile" />} />}
+/>`} language="javascript" />
 
 ### Sidebar with notifications
 This sidebar example indicates that the application supports notifications and that there are pending notifications to see.
 
-<CodeHighlighter source={`import { Link } from 'react-router-dom'\n
-const user = { initials: 'XT', href: '/userprofile' }\n
-const navData: NavItemAnchorType[] = [
-  {
-    to: '/',
-    Image: Icons.House,
-    label: 'Home',
-  },
-  {
-    active: true,
-    to: '/stats',
-    Image: Icons.Graph,
-    label: 'Stats',
-  },
-  {
-    to: '/tools',
-    Image: Icons.Tools,
-    label: 'Tools',
-  },
-]\n
- <Sidebar 
-   user={user} 
-   navItems={navData} 
-   notifications={(
-     <Notifications href="notifications">
-       <Notification
-         href="notifications/1"
-         name="Thomas Stephens"
-         action="added a new comment to your"
-         on="review"
-         when={new Date('2019-11-05T10:57:00.000Z')}
-         description="A long description that will be shortened"
-       />
-       <Notification
-         href="notifications/2"
-         name="Thomas Stephens"
-         action="added a new comment to your"
-         on="review"
-         when={new Date('2019-11-04T10:23:00.000Z')}
-         description="A long description that will be shortened again"
-       />
-     </Notifications>
-   )}
-   unreadNotification
-/>
-`} language="javascript" />
+<CodeHighlighter source={`<Sidebar
+  nav={(
+    <SidebarNav>
+      <SidebarNavItem Image={Icons.House} link={<Link href="/">Home</Link>} />
+      <SidebarNavItem
+        Image={Icons.Graph}
+        link={<Link href="/stats">Stats</Link>}
+        isActive
+      />
+      <SidebarNavItem Image={Icons.Tools} link={<Link href="/tools">Tools</Link>} />
+    </SidebarNav>
+  )}
+  notifications={(
+    <Notifications link={<Link href="notifications" />}>
+      <Notification
+        link={<Link href="notifications/1" />}
+        name="Thomas Stephens"
+        action="added a new comment to your"
+        on="review"
+        when={new Date('2019-11-05T14:25:02.178Z')}
+        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+      />
+      <Notification
+        link={<Link href="notifications/2" />}
+        name="Thomas Stephens"
+        action="added a new comment to your"
+        on="review"
+        when={new Date('2019-11-01T14:25:02.178Z')}
+        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+      />
+      <Notification
+        link={<Link href="notifications/3" />}
+        name="Thomas Stephens"
+        action="added a new comment to your"
+        on="review"
+        when={new Date('2019-11-01T14:25:02.178Z')}
+        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+      />
+    </Notifications>
+  )}
+  hasUnreadNotification
+  user={<SidebarUser initials="XT" link={<Link href="/user-profile" />} />}
+/>`} language="javascript" />
 
 ### Sidebar with React Router link
 A simple sidebar with no notification section using the React Router Link component.
 
-<CodeHighlighter source={`import { Link } from 'react-router-dom'\n
-const user = { initials: 'XT', to: '/userprofile' }\n
-const navData: NavItemAnchorType[] = [
-  {
-    to: '/',
-    Image: Icons.House,
-    label: 'Home',
-  },
-  {
-    active: true,
-    to: '/stats',
-    Image: Icons.Graph,
-    label: 'Stats',
-  },
-  {
-    to: '/tools',
-    Image: Icons.Tools,
-    label: 'Tools',
-  },
-]\n
- <Sidebar user={user} navItems={navData} LinkComponent={Link} />
-`} language="javascript" />
+<CodeHighlighter source={`import { Link as ReactRouterLink } from 'react-router-dom'\n
+<Sidebar
+  nav={(
+    <SidebarNav>
+      <SidebarNavItem Image={Icons.House} link={<ReactRouterLink href="/">Home</ReactRouterLink>} />
+      <SidebarNavItem
+        Image={Icons.Graph}
+        link={<ReactRouterLink href="/stats">Stats</ReactRouterLink>}
+        isActive
+      />
+      <SidebarNavItem Image={Icons.Tools} link={<ReactRouterLink href="/tools">Tools</ReactRouterLink>} />
+    </SidebarNav>
+  )}
+  user={<SidebarUser initials="XT" link={<ReactRouterLink href="/user-profile" />} />}
+/>`} language="javascript" />
 
 ### Properties
 <DataTable caption="Sidebar" data={[
   {
-    Name: 'navItems',
-    Type: 'NavItemAnchorType | NavItemLinkType',
-    Required: 'True',
+    Name: 'hasUnreadNotification',
+    Type: 'boolean',
+    Required: 'False',
+    Default: 'false',
+    Description: 'If there is an unread notification then display indicator',
+  },
+  {
+    Name: 'nav',
+    Type: 'React.ReactElement<SidebarNavProps>',
+    Required: 'False',
     Default: '',
-    Description: 'An array of nav item objects with an image and a label. Requires a property for the link',
+    Description: 'Component prop for the navigation',
   },
   {
     Name: 'notifications',
     Type: 'React.ReactElement<NotificationsProps>',
     Required: 'False',
     Default: '',
-    Description: "This property contains the content for the Notifications Popover. These are recent notifications, including read status, and a link to read them.",
-  },
-    {
-    Name: 'unreadNotification',
-    Type: 'boolean',
-    Required: 'False',
-    Default: 'false',
-    Description: 'If there are unread notifications then this will cause a small blue indicator to be displayed to alert the user.',
+    Description: 'Component prop for the notifications.',
   },
   {
     Name: 'user',
-    Type: '{initials:string, to/href:string}',
+    Type: 'React.ReactElement<SidebarUserProps>',
     Required: 'False',
     Default: '',
-    Description: "If you wish to show a user profile link, an object must be passed in containing the user's initials and a property to send to the link component, such as `to` or `href`.",
-  },
-  {
-    Name: 'LinkComponent',
-    Type: 'Component',
-    Required: 'False',
-    Default: 'Default to an anchor tag requiring a href',
-    Description: 'A custom component to render links in the sidebar. If nothing is passed, a component requiring a href will be used and will render an anchor tag. If using a library such as React Router, then the `Link` component from that library should be passed as a property.',
+    Description: 'Component prop for display information about the current user',
   },
 ]} />
 <br />
-<DataTable caption="NavItemAnchorType" data={[
+<DataTable caption="SidebarNav" data={[
   {
-    Name: 'active',
-    Type: 'boolean',
-    Required: 'False',
-    Default: 'false',
-    Description: 'Indicate if the current nav item is active.',
-  },
-  {
-    Name: 'Image',
-    Type: 'Element',
-    Required: 'False',
-    Default: '',
-    Description: 'An optional image to display to the left of the label. Always visible. Must be 18 x 16.',
-  },
-  {
-    Name: 'label',
-    Type: 'string',
+    Name: 'children',
+    Type: 'React.ReactElement<NavItem> | React.ReactElement<NavItem>[]',
     Required: 'True',
     Default: '',
-    Description: 'The label to show in the nav, only visible when hovered over.',
-  },
-  {
-    Name: 'href',
-    Type: 'string',
-    Required: 'True',
-    Default: '',
-    Description: 'The url to send the user to.',
+    Description: 'An array of items for displaying in the navigation',
   },
 ]} />
 <br />
-<DataTable caption="NavItemLinkType" data={[
+<DataTable caption="SidebarNavItem" data={[
   {
-    Name: 'active',
+    Name: 'Image',
+    Type: 'React.ComponentType',
+    Required: 'False',
+    Default: '',
+    Description: 'Image to be displayed for the navigation item',
+  },
+  {
+    Name: 'isActive',
     Type: 'boolean',
     Required: 'False',
     Default: 'false',
-    Description: 'Indicate if the current nav item is active.',
+    Description: 'If the item is active then the is-active CSS class will be applied',
   },
   {
-    Name: 'Image',
-    Type: 'Element',
-    Required: 'False',
-    Default: '',
-    Description: 'An optional image to display to the left of the label. Always visible. Must be 18 x 16.',
-  },
-  {
-    Name: 'label',
-    Type: 'string',
+    Name: 'link',
+    Type: 'React.ReactElement<LinkTypes>',
     Required: 'True',
     Default: '',
-    Description: 'The label to show in the nav, only visible when hovered over.',
-  },
-  {
-    Name: 'to',
-    Type: 'string',
-    Required: 'True',
-    Default: '',
-    Description: 'The url to send the user to.',
+    Description: 'Link component for creating the link',
   },
 ]} />
+<br />
+<DataTable caption="SidebarUser" data={[
+  {
+    Name: 'className',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'For passing a CSS modifier',
+  },
+  {
+    Name: 'initials',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'Initials for the user to be displayed inside an avatar',
+  },
+  {
+    Name: 'link',
+    Type: 'React.ReactElement<LinkTypes>',
+    Required: 'False',
+    Default: '',
+    Description: 'Link component for creating the link',
+  },
+]} />
+<br />
 
 </Tab>
 </TabSet>

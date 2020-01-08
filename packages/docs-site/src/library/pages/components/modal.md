@@ -9,9 +9,9 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
-import ModalComponent from '../../images/components/modal/component.svg'
-import ModalUsage from '../../images/components/modal/usage.svg'
-import ModalAnatomy from '../../images/components/modal/anatomy.svg'
+import ModalComponent from '../../images/components/modal/Component'
+import ModalUsage from '../../images/components/modal/Usage'
+import ModalAnatomy from '../../images/components/modal/Anatomy'
 
 # Overview
 
@@ -96,11 +96,25 @@ Modal is a child window that overlays the main parent window.
     Description: 'Custom CSS class to add to the component',
   },
   {
-    Name: 'title',
-    Type: 'string',
+    Name: 'children',
+    Type: 'React.ReactNode',
     Required: 'False',
     Default: '',
-    Description: 'The title to display at the top of the modal',
+    Description: 'Content of the modal',
+  },
+  {
+    Name: 'isOpen',
+    Type: 'boolean',
+    Required: 'False',
+    Default: '',
+    Description: 'An attribute denoting the open / close state of the modal',
+  },
+  {
+    Name: 'onClose',
+    Type: 'Function<any>',
+    Required: 'False',
+    Default: '',
+    Description: 'A callback function invoked when the modal is closed',
   },
   {
     Name: 'primaryButton',
@@ -124,18 +138,11 @@ Modal is a child window that overlays the main parent window.
     Description: 'A collection of props specifying the look and behaviour of the tertiary button',
   },
   {
-    Name: 'onClose',
-    Type: 'Function<any>',
+    Name: 'title',
+    Type: 'string',
     Required: 'False',
     Default: '',
-    Description: 'A callback function invoked when the modal is closed',
-  },
-  {
-    Name: 'isOpen',
-    Type: 'boolean',
-    Required: 'False',
-    Default: '',
-    Description: 'An attribute denoting the open / close state of the modal',
+    Description: 'The title to display at the top of the modal',
   },
 ]} />
 

@@ -101,7 +101,7 @@ describe('Dropdown Label', () => {
   describe('and the option indicated a hidden element', () => {
     beforeEach(() => {
       props.label = 'test'
-      props.hidden = true
+      props.isHidden = true
       wrapper = render(<DropdownLabel {...props} />)
     })
 
@@ -136,7 +136,7 @@ describe('Dropdown Label', () => {
   describe('and the option indicated a visible element', () => {
     beforeEach(() => {
       props.label = 'test'
-      props.visible = true
+      props.isVisible = true
       wrapper = render(<DropdownLabel {...props} />)
     })
 
@@ -173,7 +173,7 @@ describe('Dropdown Label', () => {
   describe('and the option indicates there is right aligned content', () => {
     beforeEach(() => {
       props.label = 'test'
-      props.rightContent = () => <p>right content</p>
+      props.rightContent = <p>right content</p>
       wrapper = render(<DropdownLabel {...props} />)
     })
 

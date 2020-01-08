@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
+import { Link } from '../../components'
 import { Notification } from '.'
 
 const NOW = '2019-11-05T11:00:00.000Z'
@@ -23,7 +24,7 @@ describe('Notification', () => {
     beforeEach(() => {
       wrapper = render(
         <Notification
-          href="notifications/1"
+          link={<Link href="notifications/1" />}
           name="Thomas Stephens"
           action="added a new comment to your"
           on="review"
@@ -84,7 +85,7 @@ describe('Notification', () => {
     beforeEach(() => {
       wrapper = render(
         <Notification
-          href="notifications/1"
+          link={<Link href="notifications/1" />}
           name="Thomas Stephens"
           action="added a new comment to your"
           on="review"
@@ -103,7 +104,7 @@ describe('Notification', () => {
     beforeEach(() => {
       wrapper = render(
         <Notification
-          href="notifications/1"
+          link={<Link href="notifications/1" />}
           name="Thomas Stephens"
           action="added a new comment to your"
           on="review"
@@ -122,7 +123,7 @@ describe('Notification', () => {
     beforeEach(() => {
       wrapper = render(
         <Notification
-          href="notifications/1"
+          link={<Link href="notifications/1" />}
           name="Thomas Double-Barrelled"
           action="added a new comment to your"
           on="review"
@@ -141,9 +142,9 @@ describe('Notification', () => {
     beforeEach(() => {
       wrapper = render(
         <Notification
-          href="notifications/1"
+          link={<Link href="notifications/1" />}
           name="Thomas Stephens"
-          read
+          isRead
           action="added a new comment to your"
           on="review"
           when={new Date('2019-11-05T10:57:00.000Z')}

@@ -49,6 +49,27 @@ describe('Button', () => {
     })
   })
 
+  describe('when the onClick callback has not been specified', () => {
+    beforeEach(() => {
+      wrapper = render(<Button>Click me</Button>)
+      button = wrapper.getByText('Click me').parentElement
+    })
+
+    describe('when the button is clicked', () => {
+      beforeEach(() => {
+        fireEvent.click(button, {
+          target: {
+            blur: blurSpy,
+          },
+        })
+      })
+
+      it('should blur the button so it does not remain active', () => {
+        expect(blurSpy).toHaveBeenCalledTimes(1)
+      })
+    })
+  })
+
   describe('when the size is specified', () => {
     it.each`
       size         | expected

@@ -8,12 +8,13 @@ import { Badge, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
-import BadgeComponent from '../../images/components/badge/component.svg'
-import BadgeAnatomy from '../../images/components/badge/anatomy.svg'
-import BadgeSizes from '../../images/components/badge/sizes.svg'
-import BadgeStates from '../../images/components/badge/states.svg'
-import Pill from '../../images/components/badge/pill.svg'
-import PillStates from '../../images/components/badge/pill-states.svg'
+
+import BadgeComponent from '../../images/components/badge/Component'
+import BadgeAnatomy from '../../images/components/badge/Anatomy'
+import BadgeSizes from '../../images/components/badge/Sizes'
+import BadgeStates from '../../images/components/badge/States'
+import Pill from '../../images/components/badge/Pill'
+import PillStates from '../../images/components/badge/PillStates'
 
 
 # Overview

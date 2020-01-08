@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/css-framework",
   "description": "Foundational CSS Framework for Royal Navy components and applications.",
-  "version": "1.8.0",
+  "version": "1.10.0",
   "publishConfig": {
     "access": "public"
   },

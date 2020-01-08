@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import Links from '../Links'
-import MonoLogo from './logo.svg'
+import MonoLogo from './images/Logo'
 
 const Footer = ({ children, links }) => (
   <div className="rn-footer">

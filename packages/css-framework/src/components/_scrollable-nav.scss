@@ -15,7 +15,7 @@ $btn-focus-width: 0.2rem;
   margin: 0;
 }
 
-.rn-scrollable-nav__link {
+.rn-scrollable-nav__item > a {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -35,12 +35,13 @@ $btn-focus-width: 0.2rem;
     border-bottom: 4px solid f.color("action", "600");
     text-decoration: none;
   }
-  &:focus {    
-    box-shadow: 0 0 0 $btn-focus-width rgba(f.color("action", "700") , 0.5);
+
+  &:focus {
+    box-shadow: 0 0 0 $btn-focus-width rgba(f.color("action", "700"), 0.5);
   }
 }
 
-.rn-scrollable-nav__item.is-active .rn-scrollable-nav__link {
+.rn-scrollable-nav__item.is-active > a {
   color: f.color("neutral", "500");
   font-weight: bold;
   border-bottom: 4px solid f.color("action", "600");

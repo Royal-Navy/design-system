@@ -48,20 +48,6 @@ $btn-focus-width: 0.2rem;
 
 .rn-tab-set__head {
   border-bottom: 1px solid f.color("neutral", "100");
-
-  &.is-scrollable {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: f.spacing("2");
-  }
-}
-
-.rn-tab-set__navigation {
-  &.is-scrollable {
-    flex: 1;
-    white-space: nowrap;
-    overflow: hidden;
-  }
 }
 
 .rn-tab-set__scroll {

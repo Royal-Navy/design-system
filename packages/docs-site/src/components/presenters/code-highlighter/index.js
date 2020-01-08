@@ -4,8 +4,7 @@ import PropTypes from 'prop-types'
 import Prism from 'prismjs'
 import 'prismjs/plugins/line-numbers/prism-line-numbers'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
-
-import CopyIcon from './copy-icon.svg'
+import CopyIcon from './images/CopyIcon'
 
 const CodeHighlighter = ({ className, source, language, children }) => {
   useEffect(() => {

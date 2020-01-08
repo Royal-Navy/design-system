@@ -8,12 +8,12 @@ import { Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
-import TabSetComponent from '../../images/components/tabset/component.svg'
-import TabSetAnatomy from '../../images/components/tabset/anatomy.svg'
-import TabSetStates from '../../images/components/tabset/states.svg'
-import TabSetScrollableComponent from '../../images/components/tabset/scrollable-component.svg'
-import TabSetScrollableAnatomy from '../../images/components/tabset/scrollable-anatomy.svg'
-import TabSetScrollableStates from '../../images/components/tabset/scrollable-states.svg'
+import TabSetComponent from '../../images/components/tabset/Component'
+import TabSetAnatomy from '../../images/components/tabset/Anatomy'
+import TabSetStates from '../../images/components/tabset/States'
+import TabSetScrollableComponent from '../../images/components/tabset/ScrollableComponent'
+import TabSetScrollableAnatomy from '../../images/components/tabset/ScrollableAnatomy'
+import TabSetScrollableStates from '../../images/components/tabset/ScrollableStates'
 
 # Overview
 
@@ -117,14 +117,14 @@ The TabSet (and companion Tab) component allows the user to switch between diffe
     Description: 'Additional CSS class to modify rn-tab-set',
   },
   {
-    Name: 'onChangeCallback',
+    Name: 'onChange',
     Type: '(id: number) => void',
     Required: 'False',
     Default: '',
     Description: 'Called when a tab is clicked.',
   },
   {
-    Name: 'scrollable',
+    Name: 'isScrollable',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',
