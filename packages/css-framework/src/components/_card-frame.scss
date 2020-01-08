@@ -1,0 +1,7 @@
+@use "../abstracts/functions" as f;
+
+.rn-card-frame {
+  border-radius: 3px;
+  background-color: f.color("neutral", "white");
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
