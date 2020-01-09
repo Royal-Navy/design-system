@@ -2,8 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 
-import { DatePicker } from '.'
-import { DATEPICKER_PLACEMENT } from './constants'
+import { DatePicker, DATEPICKER_PLACEMENT } from '.'
 
 const stories = storiesOf('DatePicker', module)
 

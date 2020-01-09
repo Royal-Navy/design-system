@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react'
+
 import { TriangleDown } from '../../icons'
 
 export interface InputProps extends ComponentWithClass {

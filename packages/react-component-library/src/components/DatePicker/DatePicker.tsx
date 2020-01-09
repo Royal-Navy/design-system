@@ -22,7 +22,7 @@ import { Input } from './Input'
 import { Month } from './Month'
 import { NavButton } from './NavButton'
 import { useOpenClose } from './useOpenClose'
-import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from './constants'
+import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
 import { FloatingBox, FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 
 export interface StateObject {
