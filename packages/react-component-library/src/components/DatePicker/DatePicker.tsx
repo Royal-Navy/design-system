@@ -26,9 +26,9 @@ import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
 import { FloatingBox, FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 
 export interface StateObject {
-  startDate?: Date
   endDate?: Date
   focusedInput: FocusedInput
+  startDate?: Date
 }
 
 export interface DatePickerProps extends ComponentWithClass {
@@ -40,7 +40,7 @@ export interface DatePickerProps extends ComponentWithClass {
   name?: string
   onBlur?: (event: React.FormEvent) => void
   onChange?: (data: StateObject) => void
-  placement:
+  placement?:
     | typeof DATEPICKER_PLACEMENT.ABOVE
     | typeof DATEPICKER_PLACEMENT.BELOW
     | typeof DATEPICKER_PLACEMENT.LEFT
@@ -178,7 +178,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               value={transformDates(state.startDate, state.endDate)}
               onBlur={onBlur}
               onFocus={onFocus}
-              disabled={isDisabled}
+              isDisabled={isDisabled}
             />
           ),
           renderElement: (ref: React.RefObject<any>) => (

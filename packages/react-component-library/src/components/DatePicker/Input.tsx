@@ -10,11 +10,11 @@ export interface InputProps extends ComponentWithClass {
   value?: string
   onBlur?: (event: React.FormEvent<Element>) => void
   onFocus?: (event: React.FormEvent<Element>) => void
-  disabled?: boolean
+  isDisabled?: boolean
 }
 
 export const Input = forwardRef((props: InputProps, ref?: React.Ref<any>) => {
-  const { className, id, label, name, value, onBlur, onFocus, disabled } = props
+  const { className, id, label, name, value, onBlur, onFocus, isDisabled } = props
 
   return (
     <div className={className} ref={ref} data-testid="datepicker-input-wrapper">
@@ -35,7 +35,7 @@ export const Input = forwardRef((props: InputProps, ref?: React.Ref<any>) => {
             value={value}
             onBlur={onBlur}
             onFocus={onFocus}
-            disabled={disabled}
+            disabled={isDisabled}
             data-testid="datepicker-input"
           />
         </div>
