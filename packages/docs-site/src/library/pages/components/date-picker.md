@@ -1,0 +1,145 @@
+---
+title: Date Picker
+description: todo
+header: true
+---
+
+import { DatePicker, DATEPICKER_PLACEMENT, TabSet, Tab } from '@royalnavy/react-component-library'
+import CodeHighlighter from '../../../components/presenters/code-highlighter'
+import DataTable from '../../../components/presenters/data-table'
+
+# Overview
+todo
+
+## Usage
+todo
+
+<TabSet>
+<Tab title="Design">
+
+### Sizing & Spacing
+todo
+
+### Hierarchy & Placement
+todo
+
+</Tab>
+
+<Tab title="Develop">
+
+### Basic Usage
+<CodeHighlighter source={`<DatePicker
+  startDate={new Date('11/01/2018')}
+  onChange={() => { /* handle change */ }}
+  placement={DATEPICKER_PLACEMENT.BELOW}
+/>`} language="javascript">
+<DatePicker
+  startDate={new Date('11/01/2019')}
+  onChange={() => { /* handle change */ }}
+  placement={DATEPICKER_PLACEMENT.RIGHT}
+/>
+</CodeHighlighter>
+
+### Date Picker with Range Selection
+<CodeHighlighter source={`<DatePicker
+  onChange={() => { /* handle change */ }}
+  placement={DATEPICKER_PLACEMENT.BELOW}
+  isRange
+/>`} language="javascript">
+<DatePicker
+  onChange={() => { /* handle change */ }}
+  placement={DATEPICKER_PLACEMENT.RIGHT}
+  isRange
+/>
+</CodeHighlighter>
+
+### Date Picker Properties
+<DataTable data={[
+  {
+    Name: 'className',
+    Type: '',
+    Required: 'False',
+    Default: '',
+    Description: 'Custom CSS class to add to the date picker',
+  },
+  {
+    Name: 'isDisabled',
+    Type: '',
+    Required: 'False',
+    Default: 'False',
+    Description: 'If true then the input is disabled',
+  },
+  {
+    Name: 'endDate',
+    Type: '',
+    Required: 'False',
+    Default: '',
+    Description: 'Selects the specified date as the end date',
+  },
+  {
+    Name: 'id',
+    Type: '',
+    Required: 'False',
+    Default: 'uuid()',
+    Description: 'ID for the input',
+  },
+  {
+    Name: 'isRange',
+    Type: '',
+    Required: 'False',
+    Default: '',
+    Description: 'Specifies whether the date picker is a range selection implying that the user can select a start date and an end date',
+  },
+  {
+    Name: 'label',
+    Type: '',
+    Required: 'False',
+    Default: 'Select Date',
+    Description: 'Label for the date picker input',
+  },
+  {
+    Name: 'name',
+    Type: '',
+    Required: 'False',
+    Default: '',
+    Description: 'Name for the input',
+  },
+  {
+    Name: 'onBlur',
+    Type: '',
+    Required: 'False',
+    Default: '',
+    Description: 'Callback for when the input loses focus',
+  },
+  {
+    Name: 'onChange',
+    Type: '',
+    Required: 'False',
+    Default: '',
+    Description: 'Callback for when the start or end dates change',
+  },
+  {
+    Name: 'placement',
+    Type: '',
+    Required: 'False',
+    Default: 'DATEPICKER_PLACEMENT.BELOW',
+    Description: 'Position of the date picker',
+  },
+  {
+    Name: 'startDate',
+    Type: '',
+    Required: 'False',
+    Default: '',
+    Description: 'Selects the specified date as the start date',
+  },
+  {
+    Name: 'value',
+    Type: '',
+    Required: 'False',
+    Default: '',
+    Description: 'Value for the input',
+  },
+]} />
+
+</Tab>
+</TabSet>
