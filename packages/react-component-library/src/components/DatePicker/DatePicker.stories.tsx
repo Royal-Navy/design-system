@@ -16,3 +16,13 @@ stories.add('Default', () => {
     />
   )
 })
+
+stories.add('Range', () => {
+  return (
+    <DatePicker
+      onChange={action('onChange')}
+      placement={DATEPICKER_PLACEMENT.BELOW}
+      isRange
+    />
+  )
+})

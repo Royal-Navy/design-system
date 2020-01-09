@@ -1,7 +1,14 @@
 import React, { useState, useRef } from 'react'
+import differenceInMinutes from 'date-fns/differenceInMinutes'
 import uuid from 'uuid'
 import classNames from 'classnames'
 import TetherComponent from 'react-tether'
+
+import {
+  IconChevronLeft,
+  IconChevronRight,
+  IconArrowForward,
+} from '@royalnavy/icon-library'
 
 import {
   useDatepicker,
@@ -13,6 +20,7 @@ import DatepickerContext from './datepickerContext'
 
 import { Input } from './Input'
 import { Month } from './Month'
+import { NavButton } from './NavButton'
 import { useOpenClose } from './useOpenClose'
 import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from './constants'
 import { FloatingBox, FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
@@ -38,6 +46,19 @@ export interface DatePickerProps extends ComponentWithClass {
     | DATEPICKER_PLACEMENT.RIGHT
   startDate?: Date
   endDate?: Date
+  isRange?: boolean
+}
+
+function transformDates(startDate: Date, endDate: Date) {
+  if (startDate && endDate && differenceInMinutes(endDate, startDate) > 0) {
+    return `${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`
+  }
+
+  if (startDate) {
+    return startDate.toLocaleDateString()
+  }
+
+  return null
 }
 
 export const DatePicker: React.FC<DatePickerProps> = ({
@@ -52,6 +73,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   placement = DATEPICKER_PLACEMENT.BELOW,
   startDate,
   endDate,
+  isRange,
 }) => {
   const [state, setState] = useState<StateObject>({
     startDate,
@@ -62,7 +84,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   function handleDateChange(data: StateObject) {
     setState({
       ...data,
-      focusedInput: data.focusedInput || START_DATE
+      focusedInput: data.focusedInput || START_DATE,
     })
 
     if (onChange) {
@@ -90,8 +112,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     focusedInput: state.focusedInput,
     onDatesChange: handleDateChange,
     minBookingDays: 1,
-    exactMinBookingDays: true, // only allow selection of single day
-    numberOfMonths: 1, // 2 to enable range selection
+    exactMinBookingDays: !isRange, // truthy only allow single day
+    numberOfMonths: isRange ? 2 : 1, // 2 to enable range
   })
 
   const componentRef = useRef(null)
@@ -106,6 +128,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 
   const floatingBoxClasses = classNames('rn-date-picker__container', {
     'is-visible': isOpen,
+  })
+
+  const gridClasses = classNames('rn-date-picker__grid', {
+    'rn-date-picker__grid--range': isRange,
   })
 
   /**
@@ -143,7 +169,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               id={id}
               name={name}
               label={label}
-              value={state.startDate && state.startDate.toLocaleDateString()}
+              value={transformDates(state.startDate, state.endDate)}
               onBlur={onBlur}
               onFocus={onFocus}
               disabled={disabled}
@@ -156,21 +182,33 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               scheme={FLOATING_BOX_SCHEME.LIGHT}
               className={floatingBoxClasses}
             >
-              <div
-                className="rn-date-picker__grid"
-                data-active-month-count={activeMonths.length}
-              >
-                {activeMonths.map(month => (
-                  <Month
-                    key={`${month.year}-${month.month}`}
-                    year={month.year}
-                    month={month.month}
-                    firstDayOfWeek={firstDayOfWeek}
-                    goToPreviousMonths={goToPreviousMonths}
-                    goToNextMonths={goToNextMonths}
+              <>
+                <NavButton onClick={goToPreviousMonths}>
+                  <IconChevronLeft />
+                </NavButton>
+
+                {isRange && (
+                  <IconArrowForward
+                    className="rn-date-picker__range-seperator"
+                    data-testid="datepicker-range-separator"
                   />
-                ))}
-              </div>
+                )}
+
+                <NavButton onClick={goToNextMonths}>
+                  <IconChevronRight />
+                </NavButton>
+
+                <div className={gridClasses}>
+                  {activeMonths.map((month, index) => (
+                    <Month
+                      key={`${month.year}-${month.month}`}
+                      year={month.year}
+                      month={month.month}
+                      firstDayOfWeek={firstDayOfWeek}
+                    />
+                  ))}
+                </div>
+              </>
             </FloatingBox>
           ),
         })}
