@@ -41,7 +41,7 @@ import packageJson from '../../../package.json'
     type="coloured" 
     title={`Standards v${packageJson.version} released`}
     text={<span>The latest release is on <a href="https://www.npmjs.com/package/@royalnavy/react-component-library">NPM</a> and the source is available on <a href="https://github.com/Royal-Navy/standards-toolkit">GitHub</a>. Please <a href="/contact">get in touch</a> if you have any feedback.</span>}
-    className="m:h_f-1 home--updates"
+    className="s:rn_f-1 home--updates"
   />
 
   <Card
@@ -50,7 +50,7 @@ import packageJson from '../../../package.json'
     text={<span>Contact the <strong>NELSON Standards</strong> team to find out more about design in the Royal Navy. Request a new component, ask questions and give feedback."</span>}
     linkText="Contact" 
     linkHref="/contact"
-    className="m:rn_f-1 home--contact"
+    className="s:rn_f-1 home--contact"
   />
   </div>
 </section>
