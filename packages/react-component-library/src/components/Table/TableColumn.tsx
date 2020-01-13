@@ -51,7 +51,7 @@ export const TableColumn: React.FC<TableColumnProps> = ({
   }
 
   return (
-    <th className={className} onClick={onClick}>
+    <th className={className} onClick={onClick} data-testid="table-header">
       {children}
       {icon}
     </th>

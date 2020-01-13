@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom/extend-expect'
-import React from 'react'
-import { render, RenderResult } from '@testing-library/react'
+import React, { useState } from 'react'
+import { render, RenderResult, waitForElementToBeRemoved } from '@testing-library/react'
 
-import Badge from '../Badge'
+import { Badge, Button } from '..'
 import { TableColumn, Table } from '.'
 
 describe('Table', () => {
@@ -41,18 +41,15 @@ describe('Table', () => {
     })
 
     it('should style the table wrapper', () => {
-      const tableWrapper = wrapper.container.firstElementChild
-      expect(tableWrapper.classList).toContain('rn-table__wrapper')
+      expect(wrapper.getByTestId('table-wrapper').classList).toContain('rn-table__wrapper')
     })
 
     it('should style the table', () => {
-      const table = wrapper.container.firstElementChild.firstElementChild
-      expect(table.classList).toContain('rn-table')
+      expect(wrapper.getByTestId('table').classList).toContain('rn-table')
     })
 
     it('should render three table header cells', () => {
-      const headerCells = wrapper.getByText('First').parentElement.children
-      expect(headerCells).toHaveLength(3)
+      expect(wrapper.queryAllByTestId('table-header')).toHaveLength(3)
     })
 
     it('should render TH for header cells', () => {
@@ -61,8 +58,7 @@ describe('Table', () => {
     })
 
     it('should render three rows', () => {
-      const rows = wrapper.getByText('a1').parentElement.parentElement.children
-      expect(rows).toHaveLength(3)
+      expect(wrapper.queryAllByTestId('table-row')).toHaveLength(3)
     })
 
     it('should render TD for data cells', () => {
@@ -163,8 +159,7 @@ describe('Table', () => {
       })
 
       it('should not change the order of the rows', () => {
-        const rows = wrapper.getByText('a1').parentElement.parentElement
-          .children
+        const rows = wrapper.getAllByTestId('table-row')
         expect(rows[0].children[0].textContent).toEqual('b1')
         expect(rows[1].children[0].textContent).toEqual('a1')
         expect(rows[2].children[0].textContent).toEqual('c1')
@@ -183,8 +178,7 @@ describe('Table', () => {
       })
 
       it('should sort the data in descending order of the first column', () => {
-        const rows = wrapper.getByText('a1').parentElement.parentElement
-          .children
+        const rows = wrapper.getAllByTestId('table-row')
         expect(rows[0].children[0].textContent).toEqual('c1')
         expect(rows[1].children[0].textContent).toEqual('b1')
         expect(rows[2].children[0].textContent).toEqual('a1')
@@ -202,8 +196,7 @@ describe('Table', () => {
         })
 
         it('should sort the data in ascending order of the first column', () => {
-          const rows = wrapper.getByText('a1').parentElement.parentElement
-            .children
+          const rows = wrapper.getAllByTestId('table-row')
           expect(rows[0].children[0].textContent).toEqual('a1')
           expect(rows[1].children[0].textContent).toEqual('b1')
           expect(rows[2].children[0].textContent).toEqual('c1')
@@ -221,8 +214,7 @@ describe('Table', () => {
           })
 
           it('should unsort the data in the first column', () => {
-            const rows = wrapper.getByText('a1').parentElement.parentElement
-              .children
+            const rows = wrapper.getAllByTestId('table-row')
             expect(rows[0].children[0].textContent).toEqual('b1')
             expect(rows[1].children[0].textContent).toEqual('a1')
             expect(rows[2].children[0].textContent).toEqual('c1')
@@ -244,12 +236,65 @@ describe('Table', () => {
       })
 
       it('should sort the data in descending order of the third column', () => {
-        const rows = wrapper.getByText('a1').parentElement.parentElement
-          .children
+        const rows = wrapper.getAllByTestId('table-row')
         expect(rows[0].children[2].textContent).toEqual('c6')
         expect(rows[1].children[2].textContent).toEqual('c5')
         expect(rows[2].children[2].textContent).toEqual('c4')
       })
+    })
+  })
+
+  describe('when the data updates externally', () => {
+    beforeEach(() => {
+      const initialMock = [
+        {
+          id: 'a',
+          first: 'a1',
+          second: 'a2',
+          third: 'a3',
+        },
+        {
+          id: 'b',
+          first: 'b1',
+          second: 'b2',
+          third: 'b3',
+        },
+        {
+          id: 'c',
+          first: 'c1',
+          second: 'c2',
+          third: 'c3',
+        },
+      ]
+      const updatedMock = [initialMock[0], initialMock[1]]
+
+      const TableWithUpdate = () => {
+        const [tableData, updateTableData] = useState(initialMock)
+
+        return (
+          <>
+            <Button onClick={() => updateTableData(updatedMock)}>Update</Button>
+            <Table data={tableData}>
+              <TableColumn field="first">First</TableColumn>
+              <TableColumn field="second">Second</TableColumn>
+              <TableColumn field="third">Third</TableColumn>
+            </Table>
+          </>
+        )
+      }
+
+      wrapper = render(<TableWithUpdate />)
+
+      wrapper.getByText('Update').click()
+
+      return waitForElementToBeRemoved(() =>
+        wrapper.queryAllByText('c1')
+      )
+    })
+
+    it('should update the table data', () => {
+      const rows = wrapper.queryAllByTestId('table-row')
+      expect(rows).toHaveLength(2)
     })
   })
 })
