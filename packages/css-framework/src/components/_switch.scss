@@ -3,7 +3,7 @@
 $switch-border-radius: 2px;
 $switch-background-color: f.color("neutral", "000");
 $switch-border-color: f.color("neutral", "200");
-$switch-active-background-color: f.color("neutral", "white");
+$switch-active-background-color: f.color("action", "500");
 $switch-active-color: f.color("action", "600");
 
 .rn-switch {
@@ -11,22 +11,22 @@ $switch-active-color: f.color("action", "600");
   border: none;
   padding: 0;
   margin: 0;
-  font-size: f.font-size("s");
+  font-size: f.font-size("base");
   position: relative;
 }
 
 .rn-switch--small {
-  font-size: f.font-size("xs");
+  font-size: f.font-size("s");
 
   .rn-switch__option::before {
-    padding: f.spacing("4") f.spacing("6");
+    padding: f.spacing("8") f.spacing("11");
   }
 }
 
 .rn-switch--large {
-  font-size: f.font-size("base");
+  font-size: f.font-size("m");
   .rn-switch__option {
-    padding: f.spacing("3") f.spacing("4");
+    padding: f.spacing("6") f.spacing("8");
   }
 }
 
@@ -66,7 +66,7 @@ $switch-active-color: f.color("action", "600");
   width: auto;
   height: auto;
   line-height: 1;
-  padding: f.spacing("2") f.spacing("4");
+  padding: f.spacing("4") f.spacing("8");
   font-size: inherit;
   color: f.color("neutral", "400");
   border: 1px solid $switch-border-color;

@@ -78,7 +78,7 @@ You will need to update your `rn.spacing()` functions with the new, updated valu
 
 <div className="standard-table">
 
-| Updated Scale  | Current Scale | Computed Value (rems) |
+| Current Scale  | Updated Scale | Computed Value (rems) |
 |----------------|---------------|-----------------------|
 | `xxxs`         | `xxs`         | `0.5`                 |
 | `xxs`          | `xs`          | `0.625`               |
@@ -103,16 +103,15 @@ You will need to update your `rn.font-size()` functions & mixins with the new, u
 
 <div className="standard-table">
 
-| Breakpoint Scale  | Previous Font Size (%) | Updated Font Size (%) |
-|-------------------|------------------------|-----------------------|
-| `root`            | `100`                  | `92`                  |
-| `xs`              | `-`                    | `94`                  |
-| `s`               | `103`                  | `96`                  |
-| `m`               | `106`                  | `98`                  |
-| `l`               | `106`                  | `100`                 |
-| `xl`              | `112`                  | `103`                 |
-| `xxl`             | `115`                  | `106`                 |
-| `xxxl`            | `118`                  | `-`                   |
+| Current Scale | Updated Scale | Breakpoint Size (px) |
+|---------------|---------------|----------------------|
+| `root`        | `root`        | `0`                  |
+| `s`           | `xs`          | `576`                |
+| `m`           | `s`           | `768`                |
+| `l`           | `m`           | `1024`               |
+| `xl`          | `l`           | `1200`               |
+| `xxl`         | `xl`          | `1400`               |
+| `xxxl`        | `xxl`         | `1600`               |
 
 </div>
 
