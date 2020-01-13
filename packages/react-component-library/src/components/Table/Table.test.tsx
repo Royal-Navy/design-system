@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom/extend-expect'
-import React from 'react'
-import { render, RenderResult } from '@testing-library/react'
+import React, { useState } from 'react'
+import { render, RenderResult, waitForElementToBeRemoved } from '@testing-library/react'
 
-import Badge from '../Badge'
+import { Badge, Button } from '..'
 import { TableColumn, Table } from '.'
 
 describe('Table', () => {
@@ -241,6 +241,60 @@ describe('Table', () => {
         expect(rows[1].children[2].textContent).toEqual('c5')
         expect(rows[2].children[2].textContent).toEqual('c4')
       })
+    })
+  })
+
+  describe('when the data updates externally', () => {
+    beforeEach(() => {
+      const initialMock = [
+        {
+          id: 'a',
+          first: 'a1',
+          second: 'a2',
+          third: 'a3',
+        },
+        {
+          id: 'b',
+          first: 'b1',
+          second: 'b2',
+          third: 'b3',
+        },
+        {
+          id: 'c',
+          first: 'c1',
+          second: 'c2',
+          third: 'c3',
+        },
+      ]
+      const updatedMock = [initialMock[0], initialMock[1]]
+
+      const TableWithUpdate = () => {
+        const [tableData, updateTableData] = useState(initialMock)
+
+        return (
+          <>
+            <Button onClick={() => updateTableData(updatedMock)}>Update</Button>
+            <Table data={tableData}>
+              <TableColumn field="first">First</TableColumn>
+              <TableColumn field="second">Second</TableColumn>
+              <TableColumn field="third">Third</TableColumn>
+            </Table>
+          </>
+        )
+      }
+
+      wrapper = render(<TableWithUpdate />)
+
+      wrapper.getByText('Update').click()
+
+      return waitForElementToBeRemoved(() =>
+        wrapper.queryAllByText('c1')
+      )
+    })
+
+    it('should update the table data', () => {
+      const rows = wrapper.queryAllByTestId('table-row')
+      expect(rows).toHaveLength(2)
     })
   })
 })

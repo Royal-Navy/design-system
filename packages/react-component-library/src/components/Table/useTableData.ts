@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import orderBy from 'lodash/orderBy'
 
 import { RowProps, TABLE_SORT_ORDER } from '.'
@@ -36,6 +36,10 @@ export function useTableData(data: RowProps[]) {
     setSortField(field)
     setTableData(sorted)
   }
+
+  useEffect(() => {
+    setTableData(data)
+  }, [data])
 
   return {
     tableData,
