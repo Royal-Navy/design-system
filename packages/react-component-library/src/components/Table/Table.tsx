@@ -30,14 +30,14 @@ export const Table: React.FC<TableProps> = ({ data, children }) => {
   )
 
   return (
-    <div className="rn-table__wrapper">
-      <table className="rn-table">
+    <div className="rn-table__wrapper" data-testid="table-wrapper">
+      <table className="rn-table" data-testid="table">
         <thead>
           <tr>{childrenWithSort}</tr>
         </thead>
         <tbody>
           {tableData.map((row: RowProps) => (
-            <tr key={getKey(`table-row`, row.id)}>
+            <tr key={getKey(`table-row`, row.id)} data-testid="table-row">
               {children.map(({ props }) => (
                 <td key={getKey(`table-cell-${props.field}`, row.id)}>
                   {row[props.field]}
