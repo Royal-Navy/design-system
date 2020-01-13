@@ -4,9 +4,11 @@ description: 'This guide will show you how to upgrade your codebase to work with
 header: true
 ---
 
+# CSS Framework
+
 The Standards Toolkit v2 is a major refactor of the CSS Framework. It introduces a number of under-the-hood tweaks that improve both its performance and accuracy to the Sketch Toolkit.
 
-# SCSS Modules
+## SCSS Modules
 The Standards Toolkit v2 has been ported to [SASS Modules](http://sass.logdown.com/posts/7858341-the-module-system-is-launched). This provides the ability to namespace all Standards Toolkit functions & mixins, scope all variables locally to the file they are declared in, and keep the outputted file size down as `@use` only includes the imported file once across the entire project.
 
 
@@ -18,11 +20,12 @@ The Standards Toolkit v2 has been ported to [SASS Modules](http://sass.logdown.c
 
 To gain an understanding of the CSS Framework's architecture, use [this PDF](/css-framework-architecture.pdf) as a reference.
 
+
 # Functions & Mixins
 - All functions and mixins now use quotes for their arguments - be sure to update these function calls, otherwise your build will fail.
 - If you are using the `rn` namespace as outlined above, ensure all function & mixin calls are prepended with it (e.g. `rn.color(“neutral”, “500”)`.
 
-# Colours
+## Colours
 The colour palette has been expanded to include an extra colours, under the namespace “supplementary” (`sup`). v2 also renames several of the colours to improve consistency. Because of this, several functions will need to be updated with their new argument values.
 
 - `primary` colour has been renamed `action` - this better describes the colour’s main usage. 
@@ -72,14 +75,14 @@ You will need to update your `rn.spacing()` functions with the new, updated valu
 
 \* Note: As the Spacing Scale is sized in `rems`, this is the assumed value based on an html `font-size` of `100%` (`16px` default `font-size` for Browsers).
 
-# Typography
+## Typography
 
 - Makes the `base` scale position `0.875rem` (`14px` at body `font-size: 100%`). 
 - Balances the scale so that it runs `xxs` through `xxl`, rather than `xxxs` through `xl`.
 
 <div className="standard-table">
 
-| Updated Scale  | Current Scale | Computed Value (rems) |
+| Current Scale  | Updated Scale | Computed Value (rems) |
 |----------------|---------------|-----------------------|
 | `xxxs`         | `xxs`         | `0.5`                 |
 | `xxs`          | `xs`          | `0.625`               |
@@ -98,35 +101,34 @@ You will need to update your `rn.spacing()` functions with the new, updated valu
 You will need to update your `rn.font-size()` functions & mixins with the new, updated values.
 
 
-# Breakpoints
+## Breakpoints
 - Normalises Breakpoint scale so  `font-size: 100%`  has a value of `16px` at the `1200px - 1400px` breakpoint.
 - Removes the `xxxl` breakpoint and adds in the `xs` breakpoint. This bumps all scale positions down a breakpoint.
 
 <div className="standard-table">
 
-| Breakpoint Scale  | Previous Font Size (%) | Updated Font Size (%) |
-|-------------------|------------------------|-----------------------|
-| `root`            | `100`                  | `92`                  |
-| `xs`              | `-`                    | `94`                  |
-| `s`               | `103`                  | `96`                  |
-| `m`               | `106`                  | `98`                  |
-| `l`               | `106`                  | `100`                 |
-| `xl`              | `112`                  | `103`                 |
-| `xxl`             | `115`                  | `106`                 |
-| `xxxl`            | `118`                  | `-`                   |
+| Current Scale | Updated Scale | Breakpoint Size (px) |
+|---------------|---------------|----------------------|
+| `root`        | `root`        | `0`                  |
+| `s`           | `xs`          | `576`                |
+| `m`           | `s`           | `768`                |
+| `l`           | `m`           | `1024`               |
+| `xl`          | `l`           | `1200`               |
+| `xxl`         | `xl`          | `1400`               |
+| `xxxl`        | `xxl`         | `1600`               |
 
 </div>
 
 You will need to update your `@include breakpoint()` mixins with the new, updated values.
 
 
-# Helpers
+## Helpers
 - `helper` classes have been renamed to `utility`in v2. This is to better align the Standards Toolkit with the industry standard of “Utility classes”, which better describe their function, rather than “Helper classes”.
 - Utility class namespace has been updated with `.rn_` to be more consistent with the `.rn-` component namespace.
 
 All instances of the utility classes that use the old `.h_` syntax will need to be updated to `.rn_`. Alternatively, you can set the `$utility-ns` value back to `h_` when you initialise the project. See below for more details.
 
-# Overriding the Toolkit
+## Overriding the Toolkit
 
 With the new module system, it is easier than ever to override values provided by the Standards Toolkit. When `@use`-ing the CSS Framework, you can assign the provided variables your own values to override any that exist in the Context. The variables that can be overridden are:
 
@@ -169,3 +171,40 @@ To override any of these variables in the CSS Framework, use the `with ()` synta
 ```
 
 This will merge the values provided inside `with ()` with the default context variables.
+
+# React Components
+The interfaces for components have been updated.
+
+## Flag Props
+All boolean flags have been renamed so that they reflect a question that can be answered. As an example `active` is now `isActive`. Examples of other name prefixes are `can` and `has`.
+
+## Compound Components
+A compound component pattern has been adopted so that components are composed in a more flexible manner. This is an improvement for the developer as it further utilises the JSX interface. The big benefit is that it gives the developer an opportunity to customise components by swapping out sub components for custom implementations.
+
+From [React.js - Compound Components](https://medium.com/@Dane_s/react-js-compound-components-a6e54b5c9992):
+
+> A compound component is a type of component that manages the internal state of a feature while delegating control of the rendering to the place of implementation opposed to the point of declaration. They provide a way to shield feature specific logic from the rest of the app providing a clean and expressive API for consuming the component. Internally they are built to operate on a set of data that is passed in through children instead of props. Behind the scenes they make use of React’s lower level API such as React.children.map(), and React.cloneElement(). Using these methods, the component is able to express itself in such a way that promotes patterns of composition and extensibility.
+
+Note that a hybrid pattern is being used. In most instances the sub components will be passed using the `children` prop. If the component has multiple sub components then these are passed in as props. As TypeScript is being used this is a more type safe option, and it also aligns with the preferred approach demonstrated in the [React documentation](https://reactjs.org/docs/composition-vs-inheritance.html).
+
+## Affected components
+- [Avatar](/components/avatar)
+- [Breadcrumbs](/components/breadcrumbs)
+- [Button](/components/button)
+- [ButtonGroup](/components/buttongroup)
+- [Checkbox](/components/form/checkbox)
+- [Dialog](/components/dialog)
+- [Dropdown](/components/dropdown)
+- [Masthead](/components/masthead)
+- [Notifications](/components/notifications)
+- [NumberInput](/components/form/number-input)
+- [Pagination](/components/pagination)
+- [PhaseBanner](/components/phase-banner)
+- [Radio](/components/form/radio)
+- [RangeSlider](/components/range-slider)
+- [Sidebar](/components/sidebar)
+- [TabSet](/components/tab-set)
+- [Table](/components/table)
+- [TextArea](/components/textarea)
+- [TextInput](/components/form/input)
+

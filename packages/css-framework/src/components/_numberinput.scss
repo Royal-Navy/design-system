@@ -151,17 +151,18 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding: spacing(3);
+  padding: f.spacing("6");
   order: 0;
-  background-color: color(neutral, 000);
-  border-right: 1px solid color(neutral, 200);
+  background-color: f.color("neutral", "000");
+  border-right: 1px solid f.color("neutral", "200");
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-  color: color(neutral, 300);
+  color: f.color("neutral", "300");
   font-weight: 600;
   line-height: 1;
+  font-size: f.font-size("base");
 
   > svg {
-    color: color(neutral, 300);
+    color: f.color("neutral", "300");
   }
 }
