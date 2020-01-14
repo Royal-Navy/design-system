@@ -6,8 +6,25 @@
   padding: 0;
 }
 
-.rn-footer__content {
+.rn-footer .rn-container {
   padding: rn.spacing("12") 0;
+}
+
+.rn-footer__content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rn-footer__logo {
+  flex: 1;
+}
+
+.rn-footer__github {
+  path {
+    fill: rn.color("neutral", "100");
+  }
+  width: rn.spacing("12");
+  height: rn.spacing("12");
 }
 
 .rn-footer,

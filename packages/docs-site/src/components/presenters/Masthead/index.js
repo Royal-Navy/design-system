@@ -11,6 +11,7 @@ import {
 
 import packageJson from '../../../../package'
 import SiteLogo from './images/SiteLogo'
+import GithubLogo from '../images/GithubLogo'
 
 const { TriangleDown, TriangleUp } = Icons
 
@@ -45,6 +46,14 @@ const MastHead = ({ navItems }) => {
           </a>
         </div>
 
+        <a
+          href="https://github.com/Royal-Navy/standards-toolkit"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GithubLogo className="masthead__github" />
+        </a>
+
         {hasNavItems && (
           <Button
             className="masthead__button"
@@ -63,6 +72,7 @@ const MastHead = ({ navItems }) => {
           us to improve it.
         </span>
       </PhaseBanner>
+
       {hasNavItems && (
         <div
           data-testid="primary-nav"
