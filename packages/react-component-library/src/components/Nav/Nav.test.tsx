@@ -2,7 +2,6 @@ import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
 import Nav from './index'
-import packageJson from '../../../package.json'
 
 describe('Nav', () => {
   let wrapper: RenderResult
@@ -32,7 +31,7 @@ describe('Nav', () => {
     it('should warn the consumer that the component is deprecated', () => {
       expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        `Component \`Nav\` is deprecated in ${packageJson.name}`
+        `Component \`Nav\` is deprecated`
       )
     })
 
