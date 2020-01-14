@@ -1,7 +1,13 @@
 // Components
 import { Alert, ALERT_VARIANT } from './components/Alert'
 import { Avatar, AVATAR_VARIANT } from './components/Avatar'
-import Badge from './components/Badge'
+import {
+  Badge,
+  BADGE_COLOR,
+  BADGE_COLOR_VARIANT,
+  BADGE_SIZE,
+  BADGE_VARIANT,
+} from './components/Badge'
 import { BreadcrumbsItem, Breadcrumbs } from './components/Breadcrumbs'
 import { Button } from './components/Button'
 import { ButtonGroup, ButtonGroupItem } from './components/ButtonGroup'
@@ -57,6 +63,10 @@ export {
   Avatar,
   AVATAR_VARIANT,
   Badge,
+  BADGE_COLOR,
+  BADGE_COLOR_VARIANT,
+  BADGE_SIZE,
+  BADGE_VARIANT,
   BreadcrumbsItem,
   Breadcrumbs,
   Button,
