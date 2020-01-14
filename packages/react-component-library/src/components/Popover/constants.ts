@@ -1,11 +1,11 @@
 import { FLOATING_BOX_ARROW_POSITION } from '../../primitives/FloatingBox'
 
-enum POPOVER_PLACEMENT {
-  ABOVE = 'above',
-  BELOW = 'below',
-  LEFT = 'left',
-  RIGHT = 'right'
-}
+const POPOVER_PLACEMENT = {
+  ABOVE: 'above',
+  BELOW: 'below',
+  LEFT: 'left',
+  RIGHT: 'right'
+} as const
 
 const POPOVER_PLACEMENTS = {
   [POPOVER_PLACEMENT.ABOVE]: {

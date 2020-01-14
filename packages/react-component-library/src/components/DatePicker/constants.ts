@@ -1,11 +1,11 @@
 import { FLOATING_BOX_ARROW_POSITION } from '../../primitives/FloatingBox'
 
-enum DATEPICKER_PLACEMENT {
-  ABOVE = 'above',
-  BELOW = 'below',
-  LEFT = 'left',
-  RIGHT = 'right'
-}
+const DATEPICKER_PLACEMENT = {
+  ABOVE: 'above',
+  BELOW: 'below',
+  LEFT: 'left',
+  RIGHT: 'right'
+} as const
 
 const DATEPICKER_PLACEMENTS = {
   [DATEPICKER_PLACEMENT.ABOVE]: {

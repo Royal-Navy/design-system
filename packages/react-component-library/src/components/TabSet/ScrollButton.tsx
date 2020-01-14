@@ -8,7 +8,7 @@ import classNames from 'classnames'
 import { SCROLL_DIRECTION } from './constants'
 
 interface ScrollButtonProps {
-  direction: SCROLL_DIRECTION.LEFT | SCROLL_DIRECTION.RIGHT
+  direction: typeof SCROLL_DIRECTION.LEFT | typeof SCROLL_DIRECTION.RIGHT
   onClick: () => void
 }
 

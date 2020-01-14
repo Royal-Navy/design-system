@@ -27,10 +27,10 @@ interface AlertProps {
   onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
   title?: string
   variant?:
-    | ALERT_VARIANT.DANGER
-    | ALERT_VARIANT.INFO
-    | ALERT_VARIANT.SUCCESS
-    | ALERT_VARIANT.WARNING
+    | typeof ALERT_VARIANT.DANGER
+    | typeof ALERT_VARIANT.INFO
+    | typeof ALERT_VARIANT.SUCCESS
+    | typeof ALERT_VARIANT.WARNING
 }
 
 export const Alert: React.FC<AlertProps> = ({
