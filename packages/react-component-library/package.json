@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/react-component-library",
   "description": "A collection of react components and helpers to assist in building applications for the Royal Navy",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "publishConfig": {
     "access": "public"
   },
@@ -48,7 +48,7 @@
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
     "@babel/preset-typescript": "^7.7.4",
-    "@royalnavy/storybook-react-input-state": "^2.0.0-alpha.1",
+    "@royalnavy/storybook-react-input-state": "^2.0.0-alpha.2",
     "@storybook/addon-actions": "^5.2.8",
     "@storybook/addon-knobs": "^5.2.8",
     "@storybook/addon-links": "^5.2.8",
@@ -124,8 +124,8 @@
   ],
   "dependencies": {
     "@datepicker-react/hooks": "^2.1.4",
-    "@royalnavy/css-framework": "^2.0.0-alpha.1",
-    "@royalnavy/icon-library": "^2.0.0-alpha.1",
+    "@royalnavy/css-framework": "^2.0.0-alpha.2",
+    "@royalnavy/icon-library": "^2.0.0-alpha.2",
     "@types/react-responsive": "^8.0.2",
     "classnames": "^2.2.6",
     "date-fns": "^2.8.1",
