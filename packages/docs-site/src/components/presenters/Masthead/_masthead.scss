@@ -176,11 +176,19 @@
 
 .masthead__version {
   flex-grow: 1;
-  margin-left: spacing(2);
+  margin-left: rn.spacing("2");
 
   .rn-badge {
     text-transform: none !important;
   }
+}
+
+.masthead__github {
+  path {
+    fill: rn.color("neutral", "black");
+  }
+  width: rn.spacing("12");
+  height: rn.spacing("12");
 }
 
 @include rn.breakpoint("xs") {
