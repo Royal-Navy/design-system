@@ -1,25 +1,51 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import Badge from './index'
+import {
+  Badge,
+  BADGE_COLOR,
+  BADGE_COLOR_VARIANT,
+  BADGE_SIZE,
+  BADGE_VARIANT,
+} from '.'
 
 const stories = storiesOf('Badge', module)
 
 stories.add('Faded', () => (
   <div>
-    <Badge color="neutral" colorVariant="faded" size="regular">
+    <Badge
+      color={BADGE_COLOR.NEUTRAL}
+      colorVariant={BADGE_COLOR_VARIANT.FADED}
+      size={BADGE_SIZE.REGULAR}
+    >
       Neutral
     </Badge>
-    <Badge color="action" colorVariant="faded" size="regular">
+    <Badge
+      color={BADGE_COLOR.ACTION}
+      colorVariant={BADGE_COLOR_VARIANT.FADED}
+      size={BADGE_SIZE.REGULAR}
+    >
       Action
     </Badge>
-    <Badge color="danger" colorVariant="faded" size="regular">
+    <Badge
+      color={BADGE_COLOR.DANGER}
+      colorVariant={BADGE_COLOR_VARIANT.FADED}
+      size={BADGE_SIZE.REGULAR}
+    >
       Danger
     </Badge>
-    <Badge color="warning" colorVariant="faded" size="regular">
+    <Badge
+      color={BADGE_COLOR.WARNING}
+      colorVariant={BADGE_COLOR_VARIANT.FADED}
+      size={BADGE_SIZE.REGULAR}
+    >
       Warning
     </Badge>
-    <Badge color="success" colorVariant="faded" size="regular">
+    <Badge
+      color={BADGE_COLOR.SUCCESS}
+      colorVariant={BADGE_COLOR_VARIANT.FADED}
+      size={BADGE_SIZE.REGULAR}
+    >
       Success
     </Badge>
   </div>
@@ -27,19 +53,39 @@ stories.add('Faded', () => (
 
 stories.add('Solid', () => (
   <div>
-    <Badge color="neutral" colorVariant="solid" size="regular">
+    <Badge
+      color={BADGE_COLOR.NEUTRAL}
+      colorVariant={BADGE_COLOR_VARIANT.SOLID}
+      size={BADGE_SIZE.REGULAR}
+    >
       Neutral
     </Badge>
-    <Badge color="action" colorVariant="solid" size="regular">
+    <Badge
+      color={BADGE_COLOR.ACTION}
+      colorVariant={BADGE_COLOR_VARIANT.SOLID}
+      size={BADGE_SIZE.REGULAR}
+    >
       Action
     </Badge>
-    <Badge color="danger" colorVariant="solid" size="regular">
+    <Badge
+      color={BADGE_COLOR.DANGER}
+      colorVariant={BADGE_COLOR_VARIANT.SOLID}
+      size={BADGE_SIZE.REGULAR}
+    >
       Danger
     </Badge>
-    <Badge color="warning" colorVariant="solid" size="regular">
+    <Badge
+      color={BADGE_COLOR.WARNING}
+      colorVariant={BADGE_COLOR_VARIANT.SOLID}
+      size={BADGE_SIZE.REGULAR}
+    >
       Warning
     </Badge>
-    <Badge color="success" colorVariant="solid" size="regular">
+    <Badge
+      color={BADGE_COLOR.SUCCESS}
+      colorVariant={BADGE_COLOR_VARIANT.SOLID}
+      size={BADGE_SIZE.REGULAR}
+    >
       Success
     </Badge>
   </div>
@@ -47,37 +93,78 @@ stories.add('Solid', () => (
 
 stories.add('Sizes', () => (
   <div>
-    <Badge color="neutral" colorVariant="faded" size="small">
+    <Badge
+      color={BADGE_COLOR.NEUTRAL}
+      colorVariant={BADGE_COLOR_VARIANT.FADED}
+      size={BADGE_SIZE.SMALL}
+    >
       Small
     </Badge>
-    <Badge color="neutral" colorVariant="faded" size="regular">
+    <Badge
+      color={BADGE_COLOR.NEUTRAL}
+      colorVariant={BADGE_COLOR_VARIANT.FADED}
+      size={BADGE_SIZE.REGULAR}
+    >
       Regular
     </Badge>
-    <Badge color="neutral" colorVariant="faded" size="large">
+    <Badge
+      color={BADGE_COLOR.NEUTRAL}
+      colorVariant={BADGE_COLOR_VARIANT.FADED}
+      size={BADGE_SIZE.LARGE}
+    >
       Large
     </Badge>
-    <Badge color="neutral" colorVariant="faded" size="xlarge">
-      xLarge
+    <Badge
+      color={BADGE_COLOR.NEUTRAL}
+      colorVariant={BADGE_COLOR_VARIANT.FADED}
+      size={BADGE_SIZE.XLARGE}
+    >
+      XLarge
     </Badge>
   </div>
 ))
 
 stories.add('Pills', () => (
   <div>
-    <Badge color="neutral" colorVariant="solid" size="regular" variant="pill">
+    <Badge
+      color={BADGE_COLOR.NEUTRAL}
+      colorVariant={BADGE_COLOR_VARIANT.SOLID}
+      size={BADGE_SIZE.REGULAR}
+      variant={BADGE_VARIANT.PILL}
+    >
       Neutral
     </Badge>
-    <Badge color="action" colorVariant="solid" size="regular" variant="pill">
+    <Badge
+      color={BADGE_COLOR.ACTION}
+      colorVariant={BADGE_COLOR_VARIANT.SOLID}
+      size={BADGE_SIZE.REGULAR}
+      variant={BADGE_VARIANT.PILL}
+    >
       Action
     </Badge>
-    <Badge color="danger" colorVariant="solid" size="regular" variant="pill">
-      danger
+    <Badge
+      color={BADGE_COLOR.DANGER}
+      colorVariant={BADGE_COLOR_VARIANT.SOLID}
+      size={BADGE_SIZE.REGULAR}
+      variant={BADGE_VARIANT.PILL}
+    >
+      Danger
     </Badge>
-    <Badge color="warning" colorVariant="solid" size="regular" variant="pill">
-      warning
+    <Badge
+      color={BADGE_COLOR.WARNING}
+      colorVariant={BADGE_COLOR_VARIANT.SOLID}
+      size={BADGE_SIZE.REGULAR}
+      variant={BADGE_VARIANT.PILL}
+    >
+      Warning
     </Badge>
-    <Badge color="success" colorVariant="solid" size="regular" variant="pill">
-      success
+    <Badge
+      color={BADGE_COLOR.SUCCESS}
+      colorVariant={BADGE_COLOR_VARIANT.SOLID}
+      size={BADGE_SIZE.REGULAR}
+      variant={BADGE_VARIANT.PILL}
+    >
+      Success
     </Badge>
   </div>
 ))

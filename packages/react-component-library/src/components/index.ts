@@ -1,6 +1,12 @@
 import { Alert, ALERT_VARIANT } from './Alert'
 import { Avatar, AVATAR_VARIANT } from './Avatar'
-import Badge from './Badge'
+import {
+  Badge,
+  BADGE_COLOR,
+  BADGE_COLOR_VARIANT,
+  BADGE_SIZE,
+  BADGE_VARIANT,
+} from './Badge'
 import { BreadcrumbsItem, Breadcrumbs } from './Breadcrumbs'
 import { Button } from './Button'
 import { ButtonGroup, ButtonGroupItem } from './ButtonGroup'
@@ -36,6 +42,10 @@ export {
   Avatar,
   AVATAR_VARIANT,
   Badge,
+  BADGE_COLOR,
+  BADGE_COLOR_VARIANT,
+  BADGE_SIZE,
+  BADGE_VARIANT,
   BreadcrumbsItem,
   Breadcrumbs,
   Button,

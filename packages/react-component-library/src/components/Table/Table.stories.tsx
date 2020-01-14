@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import Badge from '../Badge'
+import { Badge, BADGE_COLOR } from '../Badge'
 import { Table, TableColumn } from '.'
 
 const stories = storiesOf('Table', module)
@@ -57,12 +57,12 @@ stories.add('Arbitrary cell content', () => {
     {
       id: 'a',
       first: 'Row 1 cell 1',
-      second: <Badge color="success">Online</Badge>,
+      second: <Badge color={BADGE_COLOR.SUCCESS}>Online</Badge>,
     },
     {
       id: 'b',
       first: 'Row 2 cell 1',
-      second: <Badge color="danger">Offline</Badge>,
+      second: <Badge color={BADGE_COLOR.DANGER}>Offline</Badge>,
     },
   ]
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Badge from '../Badge'
+import { Badge, BADGE_SIZE, BADGE_COLOR } from '../Badge'
 
 interface PhaseBannerProps {
   isFullWidth?: boolean
@@ -18,7 +18,7 @@ const PhaseBanner: React.FC<PhaseBannerProps> = ({
     <div
       className={!isFullWidth ? 'rn-container' : 'rn-phase-banner__container'}
     >
-      <Badge size="small" color="action">
+      <Badge size={BADGE_SIZE.SMALL} color={BADGE_COLOR.ACTION}>
         {phase}
       </Badge>
       <span className="rn-phase-banner__text">

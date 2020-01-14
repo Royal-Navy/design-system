@@ -2,7 +2,7 @@ import React from 'react'
 import { components } from 'react-select'
 import { SingleValueProps } from 'react-select/src/components/SingleValue'
 
-import Badge from '../Badge'
+import { Badge } from '../Badge'
 import { SelectOptionWithBadgeType } from './Option'
 
 export const SingleValue: React.FC<
