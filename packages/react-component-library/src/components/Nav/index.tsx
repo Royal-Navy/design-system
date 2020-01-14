@@ -3,7 +3,6 @@ import uuid from 'uuid'
 
 import { Link } from '../index'
 import NavItem from './NavItem'
-import packageJson from '../../../package.json'
 
 interface NavProps {
   className?: string
@@ -49,7 +48,7 @@ const Nav: React.FC<NavProps> = ({
   orientation = 'vertical',
   size = 'regular',
 }) => {
-  console.warn(`Component \`Nav\` is deprecated in ${packageJson.name}`)
+  console.warn(`Component \`Nav\` is deprecated`)
 
   return (
     <nav
