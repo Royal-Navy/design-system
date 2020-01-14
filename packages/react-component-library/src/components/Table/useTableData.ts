@@ -3,8 +3,12 @@ import orderBy from 'lodash/orderBy'
 
 import { RowProps, TABLE_SORT_ORDER } from '.'
 
+type sortType =
+  | typeof TABLE_SORT_ORDER.ASCENDING
+  | typeof TABLE_SORT_ORDER.DESCENDING
+
 function getNextSortOrder(
-  currentSortOrder: TABLE_SORT_ORDER.ASCENDING | TABLE_SORT_ORDER.DESCENDING,
+  currentSortOrder: sortType,
   hasSortFieldChanged: boolean
 ) {
   if (!currentSortOrder || hasSortFieldChanged) {
@@ -20,16 +24,12 @@ function getNextSortOrder(
 
 export function useTableData(data: RowProps[]) {
   const [tableData, setTableData] = useState(data)
-  const [sortOrder, setSortOrder] = useState<
-    TABLE_SORT_ORDER.ASCENDING | TABLE_SORT_ORDER.DESCENDING
-  >()
+  const [sortOrder, setSortOrder] = useState<sortType>()
   const [sortField, setSortField] = useState<string>()
 
   function sortTableData(field: string) {
     const hasSortFieldChanged = field !== sortField
-    const order:
-      | TABLE_SORT_ORDER.ASCENDING
-      | TABLE_SORT_ORDER.DESCENDING = getNextSortOrder(sortOrder, hasSortFieldChanged)
+    const order: sortType = getNextSortOrder(sortOrder, hasSortFieldChanged)
     const sorted = order ? orderBy(tableData, [field], [order]) : data
 
     setSortOrder(order)

@@ -17,8 +17,8 @@ export interface NotificationPanelProps {
   children: React.ReactElement<NotificationsProps>
   className?: string
   notificationPlacement?:
-    | NOTIFICATION_PLACEMENT.RIGHT
-    | NOTIFICATION_PLACEMENT.BELOW
+    | typeof NOTIFICATION_PLACEMENT.RIGHT
+    | typeof NOTIFICATION_PLACEMENT.BELOW
   onShow?: () => void
   onHide?: () => void
   hasUnreadNotification?: boolean

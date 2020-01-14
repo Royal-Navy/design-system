@@ -14,7 +14,7 @@ export interface TableColumnProps {
   field: string
   isSortable?: boolean
   onSortClick?: (field: string) => void
-  sortOrder?: TABLE_SORT_ORDER.ASCENDING | TABLE_SORT_ORDER.DESCENDING
+  sortOrder?: typeof TABLE_SORT_ORDER.ASCENDING | typeof TABLE_SORT_ORDER.DESCENDING
 }
 
 const SORT_ORDER_ICONS_MAP = {

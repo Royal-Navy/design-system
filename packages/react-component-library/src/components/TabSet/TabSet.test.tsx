@@ -115,7 +115,7 @@ describe('TabSet', () => {
     let scrollToSpy: jest.SpyInstance
 
     async function scroll(
-      direction: SCROLL_DIRECTION.LEFT | SCROLL_DIRECTION.RIGHT
+      direction: typeof SCROLL_DIRECTION.LEFT | typeof SCROLL_DIRECTION.RIGHT
     ) {
       wrapper.getByTestId(`scroll-${direction}`).click()
 

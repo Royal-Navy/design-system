@@ -6,7 +6,7 @@ import { AVATAR_VARIANT } from '.'
 export interface AvatarProps {
   className?: string
   initials: string
-  variant?: AVATAR_VARIANT.DARK | AVATAR_VARIANT.LIGHT
+  variant?: typeof AVATAR_VARIANT.DARK | typeof AVATAR_VARIANT.LIGHT
 }
 
 export const Avatar: React.FC<AvatarProps> = ({

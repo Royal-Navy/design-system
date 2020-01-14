@@ -1,12 +1,12 @@
-enum NOTIFICATION_ARROW_POSITION {
-  LEFT_BOTTOM = 'left_bottom',
-  TOP_RIGHT = 'top_right',
-}
+const NOTIFICATION_ARROW_POSITION = {
+  LEFT_BOTTOM: 'left_bottom',
+  TOP_RIGHT: 'top_right',
+} as const
 
-enum NOTIFICATION_PLACEMENT {
-  BELOW = 'below',
-  RIGHT = 'right',
-}
+const NOTIFICATION_PLACEMENT = {
+  BELOW: 'below',
+  RIGHT: 'right',
+} as const
 
 const NOTIFICATION_PLACEMENT_ARROW_POSITION_MAP = {
   [NOTIFICATION_PLACEMENT.BELOW]: NOTIFICATION_ARROW_POSITION.TOP_RIGHT,

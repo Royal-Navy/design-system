@@ -40,10 +40,10 @@ export interface DatePickerProps extends ComponentWithClass {
   onChange?: (data: StateObject) => void
   disabled?: boolean
   placement:
-    | DATEPICKER_PLACEMENT.ABOVE
-    | DATEPICKER_PLACEMENT.BELOW
-    | DATEPICKER_PLACEMENT.LEFT
-    | DATEPICKER_PLACEMENT.RIGHT
+    | typeof DATEPICKER_PLACEMENT.ABOVE
+    | typeof DATEPICKER_PLACEMENT.BELOW
+    | typeof DATEPICKER_PLACEMENT.LEFT
+    | typeof DATEPICKER_PLACEMENT.RIGHT
   startDate?: Date
   endDate?: Date
   isRange?: boolean
