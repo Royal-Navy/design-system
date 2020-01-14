@@ -7,7 +7,7 @@ import { useFocus } from '../../hooks/useFocus'
 export interface InputProps {
   autoFocus?: boolean
   className?: string
-  disabled?: boolean
+  isDisabled?: boolean
   endAdornment?: React.ReactNode
   value?: string
   name: string
@@ -39,7 +39,7 @@ export interface InputProps {
 const TextInput: React.FC<InputProps> = props => {
   const {
     className = '',
-    disabled = false,
+    isDisabled = false,
     endAdornment,
     value,
     name,
@@ -88,7 +88,7 @@ const TextInput: React.FC<InputProps> = props => {
           <input
             className="rn-textinput__input"
             data-testid="input"
-            disabled={disabled}
+            disabled={isDisabled}
             id={id}
             name={name}
             onBlur={onLocalBlur}

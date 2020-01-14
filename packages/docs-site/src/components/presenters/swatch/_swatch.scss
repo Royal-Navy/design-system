@@ -1,0 +1,32 @@
+@use "@royalnavy/css-framework" as rn;
+
+.swatch-container {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 100%;
+  margin-top: rn.spacing("10");
+}
+
+.swatch {
+  padding: rn.spacing("14") rn.spacing("4") rn.spacing("4") rn.spacing("4");
+  width: 25%;
+  @include rn.breakpoint("m") {
+    width: 20%;
+  }
+
+  color: rn.color("neutral", "600");
+
+  &.dark {
+    color: white;
+  }
+}
+
+.swatch-label {
+  font-size: rn.font-size("s");
+  font-weight: 500;
+  width: 100%;
+  display: block;
+  &:first-child {
+    margin-bottom: rn.spacing("2");
+  }
+}

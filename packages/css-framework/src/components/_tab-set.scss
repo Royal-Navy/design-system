@@ -1,4 +1,7 @@
-$active-border-color: color(primary, 600);
+@use "../abstracts/functions" as f;
+@use "../abstracts/mixins" as m;
+
+$active-border-color: f.color("action", "600");
 $btn-focus-width: 0.2rem;
 
 .rn-tab-set {
@@ -15,45 +18,45 @@ $btn-focus-width: 0.2rem;
     .rn-tab-set__head {
       display: flex;
       flex-direction: row;
-      padding-bottom: spacing(2);
+      padding-bottom: f.spacing("4");
     }
 
     .rn-tab-set__tab-item {
       width: 100%;
-      padding-left: spacing(1);
+      padding-left: f.spacing("2");
     }
 
     .rn-tab-set__tab-item:last-child {
-      padding-right: spacing(1);
+      padding-right: f.spacing("2");
     }
 
     .rn-tab-set__tab {
       width: 100%;
       border: none;
-      height: spacing(10);
+      height: f.spacing("13");
       padding: unset;
       border-radius: 6px;
-      background-color: color("neutral", 100);
+      background-color: f.color("neutral", "100");
 
       &.is-active {
-        background-color: color("primary", 300);
-        color: color("neutral", 000)
+        background-color: f.color("action", "300");
+        color: f.color("neutral", "000")
       }
     }
   }
 }
 
 .rn-tab-set__head {
-  border-bottom: 1px solid color(neutral, 100);
+  border-bottom: 1px solid f.color("neutral", "100");
 }
 
 .rn-tab-set__scroll {
-  width: spacing(6);
-  height: spacing(12);
-  background: color("neutral", white);
-  border: 1px solid color("neutral", 100);
+  width: f.spacing("11");
+  height: f.spacing("14");
+  background: f.color("neutral", "white");
+  border: 1px solid f.color("neutral", "100");
   border-radius: 3px;
-  color: color("neutral", 300);
+  color: f.color("neutral", "300");
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
@@ -62,11 +65,11 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-tab-set__scroll--left {
-  margin-right: spacing(1);
+  margin-right: f.spacing("2");
 }
 
 .rn-tab-set__scroll--right {
-  margin-left: spacing(1);
+  margin-left: f.spacing("2");
 }
 
 .rn-tab-set__tabs {
@@ -77,7 +80,7 @@ $btn-focus-width: 0.2rem;
 
 .rn-tab-set__tab-item {
   display: inline-block;
-  margin-top: spacing(1);
+  margin-top: f.spacing("2");
 }
 
 .rn-tab-set__tab {
@@ -85,31 +88,31 @@ $btn-focus-width: 0.2rem;
   align-items: center;
   text-align: center;
   cursor: pointer;
-  font-size: font-size(xs);
-  font-weight: 700;
-  color: color("neutral", 300);
+  font-size: f.font-size("base");
+  font-weight: 600;
+  color: f.color("neutral", "300");
 
   // default
   border: none;
   border-bottom: 4px solid transparent;
-  padding: spacing(4) spacing(8);
+  padding: f.spacing("8") f.spacing("12");
 
   & > div {
     margin: 0 auto;
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+    box-shadow: 0 0 0 $btn-focus-width rgba(f.color("action", "700") , 0.5);
   }
 
   &.is-active {
-    color: color("neutral", 400);
+    color: color("neutral", "400");
     border-color: $active-border-color;
   }
 }
 
 .rn-tab-set__body {
-  padding: spacing(4) 0;
+  padding: f.spacing("12") 0;
 }
 
 .rn-tab-set__content {
@@ -119,7 +122,7 @@ $btn-focus-width: 0.2rem;
   // padding underneath their headings.
   > svg {
     width: 100%;
-    margin-top: spacing(4);
+    margin-top: f.spacing("8");
 
     + ul, + ol {
       margin-left: 16px;
@@ -132,7 +135,7 @@ $btn-focus-width: 0.2rem;
   }
 }
 
-@include breakpoint("m") {
+@include m.breakpoint("m") {
   .rn-tab-set {
     &.is-scrollable {
       .rn-tab-set__tab-item {
@@ -141,7 +144,7 @@ $btn-focus-width: 0.2rem;
 
       .rn-tab-set__tab {
         width: auto;
-        padding: 0 spacing(8);
+        padding: 0 f.spacing("12");
       }
     }
   }

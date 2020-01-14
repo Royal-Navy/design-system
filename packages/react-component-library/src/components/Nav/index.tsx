@@ -1,7 +1,7 @@
 import React from 'react'
 import uuid from 'uuid'
 
-import Link from '../Link'
+import { Link } from '../index'
 import NavItem from './NavItem'
 
 interface NavProps {
@@ -47,14 +47,18 @@ const Nav: React.FC<NavProps> = ({
   navItems,
   orientation = 'vertical',
   size = 'regular',
-}) => (
-  <nav
-    className={`rn-nav rn-nav--${orientation} rn-nav--${size} ${className}`}
-    data-testid="nav"
-  >
-    {renderMenu(LinkComponent, navItems)}
-  </nav>
-)
+}) => {
+  console.warn(`Component \`Nav\` is deprecated`)
+
+  return (
+    <nav
+      className={`rn-nav rn-nav--${orientation} rn-nav--${size} ${className}`}
+      data-testid="nav"
+    >
+      {renderMenu(LinkComponent, navItems)}
+    </nav>
+  )
+}
 
 Nav.displayName = 'Nav'
 

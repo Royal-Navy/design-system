@@ -5,7 +5,7 @@ import classNames from 'classnames'
 export interface NumberInputProps {
   autoFocus?: boolean
   className?: string
-  disabled?: boolean
+  isDisabled?: boolean
   footnote?: string
   id?: string
   label?: string
@@ -48,7 +48,7 @@ export function calculateNewValue({
 
 export const NumberInput: React.FC<NumberInputProps> = ({
   className,
-  disabled = false,
+  isDisabled = false,
   footnote,
   id = uuid(),
   label,
@@ -196,7 +196,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           <input
             className="rn-numberinput__input"
             data-testid="number-input-input"
-            disabled={disabled}
+            disabled={isDisabled}
             id={id}
             name={name}
             onBlur={onLocalBlur}

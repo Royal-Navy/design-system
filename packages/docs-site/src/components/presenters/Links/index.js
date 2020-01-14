@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import uuid from 'uuid'
 
-import './Links.scss'
-
 const Links = ({ links }) => (
   <ul className="rn-links">
     {links.map(({ label, to }) => (

@@ -4,14 +4,14 @@ description: A collection of buttons commonly used to select an option
 header: true
 ---
 
-import { Button,ButtonGroup, Icons, Tab, TabSet } from '@royalnavy/react-component-library'
+import { IconFileDownload, IconAccessAlarm, IconAccessTime } from '@royalnavy/icon-library'
+import { ButtonGroup, ButtonGroupItem, Icons, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
 import ButtonGroupComponent from '../../images/components/button-group/Component'
 import ButtonGroupAnatomy from '../../images/components/button-group/Anatomy'
-
 
 # Overview
 
@@ -49,132 +49,110 @@ A ButtonGroup accepts an array of button items that provide a label and value fo
 
 ### Basic Usage
 
-<CodeHighlighter source="const items = [{ label: 'One', onClick: onClick }, ...]
-...
-<ButtonGroup items={items}/>" language="javascript"><ButtonGroup
-  items={[
-    {
-      label: 'One',
-      onClick: () => {},
-    },
-    {
-      label: 'Two',
-      onClick: () => {},
-    },
-    {
-      disabled: true,
-      label: 'Three',
-    },
-  ]}
-/>
+<CodeHighlighter source={`
+<ButtonGroup>
+  <ButtonGroupItem onClick={/* handle click */}>One</ButtonGroupItem>
+  <ButtonGroupItem>Two</ButtonGroupItem>
+  <ButtonGroupItem>Three</ButtonGroupItem>
+</ButtonGroup>
+`} language="javascript">
+<ButtonGroup>
+  <ButtonGroupItem onClick={() => alert('One clicked')}>One</ButtonGroupItem>
+  <ButtonGroupItem onClick={() => alert('One clicked')}>Two</ButtonGroupItem>
+  <ButtonGroupItem onClick={() => alert('One clicked')}>Three</ButtonGroupItem>
+</ButtonGroup>
 </CodeHighlighter>
 
 ### Sizes
 
-<CodeHighlighter source={`const items = [{ label: 'One', onClick: onClick }, ...]
-...
-<ButtonGroup items={items} size="small" />
-<ButtonGroup items={items} size="regular" />
-<ButtonGroup items={items} size="large" />
-<ButtonGroup items={items} size="x-large" />`} language="javascript"><ButtonGroup
-  items={[
-    {
-      label: 'One',
-      onClick: () => {},
-    },
-    {
-      label: 'Two',
-      onClick: () => {},
-    },
-    {
-      disabled: true,
-      label: 'Three',
-    },
-  ]}
-  size="small"
-/>
-<ButtonGroup
-  items={[
-    {
-      label: 'One',
-      onClick: () => {},
-    },
-    {
-      label: 'Two',
-      onClick: () => {},
-    },
-    {
-      disabled: true,
-      label: 'Three',
-    },
-  ]}
-  size="regular"
-/>
-<ButtonGroup
-  items={[
-    {
-      label: 'One',
-      onClick: () => {},
-    },
-    {
-      label: 'Two',
-      onClick: () => {},
-    },
-    {
-      disabled: true,
-      label: 'Three',
-    },
-  ]}
-  size="large"
-/>
-<ButtonGroup
-  items={[
-    {
-      label: 'One',
-      onClick: () => {},
-    },
-    {
-      label: 'Two',
-      onClick: () => {},
-    },
-    {
-      disabled: true,
-      label: 'Three',
-    },
-  ]}
-  size="xlarge"
-/>
+<CodeHighlighter source={`
+<ButtonGroup size="small">
+  /* items */
+</ButtonGroup>
+<ButtonGroup size="regular">
+  /* items */
+</ButtonGroup>
+<ButtonGroup size="large">
+  /* items */
+</ButtonGroup>
+<ButtonGroup size="xlarge">
+  /* items */
+</ButtonGroup>
+`} language="javascript">
+<ButtonGroup size="small">
+  <ButtonGroupItem>One</ButtonGroupItem>
+  <ButtonGroupItem>Two</ButtonGroupItem>
+  <ButtonGroupItem>Three</ButtonGroupItem>
+</ButtonGroup>
+<ButtonGroup size="regular">
+  <ButtonGroupItem>One</ButtonGroupItem>
+  <ButtonGroupItem>Two</ButtonGroupItem>
+  <ButtonGroupItem>Three</ButtonGroupItem>
+</ButtonGroup>
+<ButtonGroup size="large">
+  <ButtonGroupItem>One</ButtonGroupItem>
+  <ButtonGroupItem>Two</ButtonGroupItem>
+  <ButtonGroupItem>Three</ButtonGroupItem>
+</ButtonGroup>
+<ButtonGroup size="xlarge">
+  <ButtonGroupItem>One</ButtonGroupItem>
+  <ButtonGroupItem>Two</ButtonGroupItem>
+  <ButtonGroupItem>Three</ButtonGroupItem>
+</ButtonGroup>
 </CodeHighlighter>
 
 # Icons 
-<CodeHighlighter source="const items = [{ label: 'One', onClick: onClick, icon: <VisibilityOff /> }, ...]
-...
-<ButtonGroup items={items}/>" language="javascript"><ButtonGroup
-  items={[
-    {
-      label: 'One',
-      onClick: () => {},
-      icon: <Icons.VisibilityOff />,
-    },
-    {
-      label: 'Two',
-      onClick: () => {},
-      icon: <Icons.Visibility />,
-    },
-    {
-      disabled: true,
-      label: 'Three',
-      icon: <Icons.VisibilityOff />,
-    },
-  ]}
-/>
+
+<CodeHighlighter source={`
+<ButtonGroup>
+  <ButtonGroupItem icon={<IconFileDownload />}>One</ButtonGroupItem>
+  <ButtonGroupItem icon={<IconAccessAlarm />}>Two</ButtonGroupItem>
+  <ButtonGroupItem icon={<IconAccessTime />}>Three</ButtonGroupItem>
+</ButtonGroup>
+`} language="javascript">
+<ButtonGroup>
+  <ButtonGroupItem icon={<IconFileDownload />}>One</ButtonGroupItem>
+  <ButtonGroupItem icon={<IconAccessAlarm />}>Two</ButtonGroupItem>
+  <ButtonGroupItem icon={<IconAccessTime />}>Three</ButtonGroupItem>
+</ButtonGroup>
 </CodeHighlighter>
 
 
 ### Properties
+<DataTable caption="ButtonGroup" data={[
+  {
+    Name: 'children',
+    Type: 'React.ReactElement<ButtonGroupItemProps>[]',
+    Required: 'True',
+    Default: '',
+    Description: 'Buttons to be displayed in the group',
+  },
+  {
+    Name: 'className',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'Custom CSS class to add to the button group',
+  },
+  {
+    Name: 'size',
+    Type: 'string (small/regular/large/xlarge)',
+    Required: 'False',
+    Default: 'regular',
+    Description: 'The size for the buttons',
+  },
+]} />
+
 <DataTable caption="ButtonGroupItem" data={[
   {
-    Name: 'disabled',
+    Name: 'children',
+    Type: 'sting',
+    Required: 'True',
+    Default: '',
+    Description: 'Text to be displayed on the button',
+  },
+  {
+    Name: 'isDisabled',
     Type: 'boolean',
     Required: 'False',
     Default: false,
@@ -185,47 +163,17 @@ A ButtonGroup accepts an array of button items that provide a label and value fo
     Type: 'ReactNode',
     Required: 'False',
     Default: '',
-    Description: 'Icon to display to the right of text in the button. Accepts any Node but ideally would be an image or svg tag',
+    Description: 'Icon to display to the right of text in the button. Accepts any Node but ideally would be an image or SVG tag',
   },
   {
-    Name: 'label',
-    Type: 'string',
-    Required: 'True',
-    Default: '',
-    Description: 'The label to display in the button',
-  },
-    {
     Name: 'onClick',
     Type: '(FormEvent<HTMLButtonElement>):void',
     Required: 'False',
     Default: '',
     Description: 'The function to call when a user clicks on the button generated for the item',
   },
-  ]}  
-/>
-
-<DataTable caption="ButtonGroup" data={[
-  {
-    Name: 'className',
-    Type: 'string',
-    Required: 'False',
-    Default: '',
-    Description: 'Custom css class to add to the button element',
-  },
-  {
-    Name: 'items',
-    Type: 'ButtonGroupItem[]',
-    Required: 'True',
-    Default: '',
-    Description: 'Details of the buttons to display in the group',
-  },
-  {
-    Name: 'size',
-    Type: 'string (small/regular/large/xlarge)',
-    Required: 'False',
-    Default: 'regular',
-    Description: 'The size for the button',
-  },
 ]} />
+
+
 </Tab>
 </TabSet>

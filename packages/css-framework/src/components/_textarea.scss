@@ -1,3 +1,5 @@
+@use "../abstracts/functions" as f;
+
 .rn-textarea {
   display: inline-flex;
   flex-direction: column;
@@ -9,8 +11,8 @@
 }
 
 .rn-textarea__wrapper {
-  background-color: color(neutral, white);
-  border: 1px solid color(neutral, 200);
+  background-color: f.color("neutral", "white");
+  border: 1px solid f.color("neutral", "200");
   border-radius: 4px;
   transition:
     border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
@@ -19,19 +21,19 @@
 }
 
 .rn-textarea.has-focus .rn-textarea__wrapper {
-  box-shadow: 0 0 0 1px color(primary, 600);
-  border: 1px solid color(primary, 600);
-  background: color(neutral, white);
+  box-shadow: 0 0 0 1px f.color("action", "600");
+  border: 1px solid f.color("action", "600");
+  background: f.color("neutral", "white");
 }
 
 .rn-textarea.is-invalid .rn-textarea__wrapper {
-  border-color: color(danger, 600);
-  box-shadow: 0 0 0 1px color(danger, 600);
+  border-color: f.color("danger", "600");
+  box-shadow: 0 0 0 1px f.color("danger", "600");
 }
 
 .rn-textarea.is-valid .rn-textarea__wrapper {
-  border-color: color(success, 700);
-  box-shadow: 0 0 0 1px color(success, 700);
+  border-color: f.color("success", "700");
+  box-shadow: 0 0 0 1px f.color("success", "700");
 }
 
 
@@ -40,13 +42,13 @@
   z-index: 1;
   position: absolute;
   padding-top: 6px;
-  padding-left: spacing(3);
-  padding-bottom: spacing(1);
+  padding-left: f.spacing("6");
+  padding-bottom: f.spacing("2");
   right: 14px;
   left: 0;
   pointer-events: none;
-  color: color(neutral, 300);
-  font-size: font-size(xs);
+  color: f.color("neutral", "300");
+  font-size: f.font-size("s");
   background-color: white;
   border-radius: 3px 3px 0 0;
 }
@@ -54,7 +56,7 @@
 .rn-textarea__label-inner {
   display: inline-block;
   transform-origin: top left;
-  transform: translate(0, spacing(1)) scale(1.2);
+  transform: translate(0, f.spacing("2")) scale(1.2);
   transition:
     color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
     transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
@@ -70,10 +72,10 @@
   box-sizing: border-box;
   width: 100%;
   margin: 0;
-  padding: spacing(5) spacing(3) spacing(1);
+  padding: f.spacing("10") f.spacing("6") f.spacing("2");
   border: 0;
   background: none;
-  font-size: font-size(s);
+  font-size: f.font-size("base");
   resize: vertical;
   overflow: auto;
   min-height: 80px;
@@ -81,7 +83,7 @@
 }
 
 .rn-textarea--no-label .rn-textarea__input {
-  padding: spacing(3);
+  padding: f.spacing("6");
 }
 
 .rn-textarea__input:focus {

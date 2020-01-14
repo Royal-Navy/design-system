@@ -5,15 +5,15 @@ import Pagination from './index'
 
 describe('Pagination', () => {
   let pagination: RenderResult
-  let onChangeCallback: () => void
+  let onChangeSpy: () => void
 
   describe('when the Pagination is generated with only 2 records and pageSize is 10', () => {
-    onChangeCallback = jest.fn()
+    onChangeSpy = jest.fn()
 
     beforeEach(() => {
       pagination = render(
         <Pagination
-          onChangeCallback={onChangeCallback}
+          onChange={onChangeSpy}
           pageSize={10}
           total={2}
         />
@@ -36,12 +36,12 @@ describe('Pagination', () => {
   })
 
   describe('when the Pagination is generated with 20 records and pageSize is 10', () => {
-    onChangeCallback = jest.fn()
+    onChangeSpy = jest.fn()
 
     beforeEach(() => {
       pagination = render(
         <Pagination
-          onChangeCallback={onChangeCallback}
+          onChange={onChangeSpy}
           pageSize={10}
           total={20}
         />
@@ -53,13 +53,13 @@ describe('Pagination', () => {
     })
   })
 
-  describe('when the Pagination is generated with pageSize, total and onChangeCallback props', () => {
-    onChangeCallback = jest.fn()
+  describe('when the Pagination is generated with pageSize, total and onChange props', () => {
+    onChangeSpy = jest.fn()
 
     beforeEach(() => {
       pagination = render(
         <Pagination
-          onChangeCallback={onChangeCallback}
+          onChange={onChangeSpy}
           pageSize={10}
           total={1000}
         />
@@ -89,8 +89,8 @@ describe('Pagination', () => {
         ).toBe(true)
       })
 
-      it('should invoke the onChangeCallback function', () => {
-        expect(onChangeCallback).toHaveBeenCalledWith(5, 100)
+      it('should invoke the onChange function', () => {
+        expect(onChangeSpy).toHaveBeenCalledWith(5, 100)
       })
     })
   })

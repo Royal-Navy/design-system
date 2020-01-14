@@ -18,12 +18,12 @@ interface PopoverProps
   extends Omit<FloatingBoxProps, 'onMouseEnter' | 'onMouseLeave'> {
   children: React.ReactElement
   content: React.ReactElement
-  scheme?: FLOATING_BOX_SCHEME.LIGHT | FLOATING_BOX_SCHEME.DARK
+  scheme?: typeof FLOATING_BOX_SCHEME.LIGHT | typeof FLOATING_BOX_SCHEME.DARK
   placement:
-    | POPOVER_PLACEMENT.ABOVE
-    | POPOVER_PLACEMENT.BELOW
-    | POPOVER_PLACEMENT.LEFT
-    | POPOVER_PLACEMENT.RIGHT
+    | typeof POPOVER_PLACEMENT.ABOVE
+    | typeof POPOVER_PLACEMENT.BELOW
+    | typeof POPOVER_PLACEMENT.LEFT
+    | typeof POPOVER_PLACEMENT.RIGHT
 }
 
 export const Popover: React.FC<PopoverProps> = ({
@@ -68,7 +68,7 @@ export const Popover: React.FC<PopoverProps> = ({
   }
 
   /**
-   * Waiting for PR to be merged in offending package to fix type error.
+   * Type error in upstream Tether package. Fix submitted.
    * Using createElement allows us to avoid the type error.
    *
    * https://github.com/danreeves/react-tether/issues/218

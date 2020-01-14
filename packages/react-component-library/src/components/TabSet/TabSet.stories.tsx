@@ -7,7 +7,7 @@ import { Tab, TabSet } from '.'
 const stories = storiesOf('TabSet', module)
 
 stories.add('Default', () => (
-  <TabSet onChangeCallback={action('onChangeCallback')}>
+  <TabSet onChange={action('onChange')}>
     <Tab title="Example Tab 1">
       <p>This is some example tab 1 content</p>
     </Tab>
@@ -30,7 +30,7 @@ const TabTitle: React.FC<TabTitleProps> = ({ year, children }) => (
 )
 
 stories.add('Scrollable', () => (
-  <TabSet scrollable>
+  <TabSet isScrollable>
     <Tab title={<TabTitle year={2019}>01/02</TabTitle>}>
       <p>This is some example tab 1 content</p>
     </Tab>

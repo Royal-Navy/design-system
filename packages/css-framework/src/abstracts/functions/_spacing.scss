@@ -6,13 +6,14 @@
     When supplied with a size, the value is returned
 
 **************************************************************************/
-
+@use "sass:map";
+@use "../../vars";
 
 @function spacing($size) {
-  @if map-has-key($__spacing, $size) {
-    @return map-get($__spacing, $size);
+  @if map.has-key(vars.$spacing, $size) {
+    @return map.get(vars.$spacing, $size);
   }
-  
+
   @else {
     @error "No spacing value could be retrieved for #{$size}";
   }

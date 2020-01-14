@@ -1,8 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import Badge from '../Badge'
-import { Table, Column } from './index'
+import { Badge, BADGE_COLOR } from '../Badge'
+import { Table, TableColumn } from '.'
 
 const stories = storiesOf('Table', module)
 
@@ -38,16 +38,16 @@ stories.add('Default', () => {
 
   return (
     <Table data={tableDataMock}>
-      <Column field="first">First column</Column>
-      <Column field="second">Second column</Column>
-      <Column field="third">Third column</Column>
-      <Column field="fourth">Fourth column</Column>
-      <Column field="fifth">Fifth column</Column>
-      <Column field="sixth">Sixth column</Column>
-      <Column field="seventh">Seventh column</Column>
-      <Column field="eighth">Eighth column</Column>
-      <Column field="ninth">Ninth column</Column>
-      <Column field="tenth">Tenth column</Column>
+      <TableColumn field="first">First column</TableColumn>
+      <TableColumn field="second">Second column</TableColumn>
+      <TableColumn field="third">Third column</TableColumn>
+      <TableColumn field="fourth">Fourth column</TableColumn>
+      <TableColumn field="fifth">Fifth column</TableColumn>
+      <TableColumn field="sixth">Sixth column</TableColumn>
+      <TableColumn field="seventh">Seventh column</TableColumn>
+      <TableColumn field="eighth">Eighth column</TableColumn>
+      <TableColumn field="ninth">Ninth column</TableColumn>
+      <TableColumn field="tenth">Tenth column</TableColumn>
     </Table>
   )
 })
@@ -57,19 +57,19 @@ stories.add('Arbitrary cell content', () => {
     {
       id: 'a',
       first: 'Row 1 cell 1',
-      second: <Badge color="success">Online</Badge>,
+      second: <Badge color={BADGE_COLOR.SUCCESS}>Online</Badge>,
     },
     {
       id: 'b',
       first: 'Row 2 cell 1',
-      second: <Badge color="danger">Offline</Badge>,
+      second: <Badge color={BADGE_COLOR.DANGER}>Offline</Badge>,
     },
   ]
 
   return (
     <Table data={tableDataMock}>
-      <Column field="first">First column</Column>
-      <Column field="second">Status</Column>
+      <TableColumn field="first">First column</TableColumn>
+      <TableColumn field="second">Status</TableColumn>
     </Table>
   )
 })
@@ -98,16 +98,15 @@ stories.add('Sortable', () => {
 
   return (
     <Table data={tableDataMock}>
-      <Column field="first" sortable>
+      <TableColumn field="first" isSortable>
         First column
-      </Column>
-      <Column field="second" sortable>
+      </TableColumn>
+      <TableColumn field="second" isSortable>
         Second column
-      </Column>
-      <Column field="third" sortable>
+      </TableColumn>
+      <TableColumn field="third" isSortable>
         Third column
-      </Column>
+      </TableColumn>
     </Table>
   )
 })
-

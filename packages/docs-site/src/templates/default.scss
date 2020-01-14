@@ -1,4 +1,12 @@
-@import "@royalnavy/css-framework";
+@use "@royalnavy/css-framework" as rn;
+
+body {
+  font-size: rn.font-size("m");
+  p {
+    font-size: rn.font-size("m");
+  }
+}
+
 
 .main {
   display: flex;
@@ -8,7 +16,8 @@
   display: none;
 }
 
-@include breakpoint("s") {
+
+@include rn.breakpoint("xs") {
   .post-article {
     margin: 0;
     order: 2;
@@ -22,16 +31,16 @@
 
   .aside--primary {
     order: 1;
-    margin-right: spacing(12);
+    margin-right: rn.spacing("14");
   }
 
   .aside--secondary {
-    margin-left: spacing(12);
+    margin-left: rn.spacing("14");
     order: 3;
   }
 }
 
-@include breakpoint("l") {
+@include rn.breakpoint("m") {
   .aside {
     flex: 0 0 320px;
   }

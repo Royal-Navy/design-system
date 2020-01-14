@@ -17,11 +17,11 @@ export interface NotificationPanelProps {
   children: React.ReactElement<NotificationsProps>
   className?: string
   notificationPlacement?:
-    | NOTIFICATION_PLACEMENT.RIGHT
-    | NOTIFICATION_PLACEMENT.BELOW
+    | typeof NOTIFICATION_PLACEMENT.RIGHT
+    | typeof NOTIFICATION_PLACEMENT.BELOW
   onShow?: () => void
   onHide?: () => void
-  unreadNotification?: boolean
+  hasUnreadNotification?: boolean
 }
 
 export const NotificationPanel: React.FC<NotificationPanelProps> = ({
@@ -31,7 +31,7 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
   notificationPlacement = NOTIFICATION_PLACEMENT.RIGHT,
   onShow,
   onHide,
-  unreadNotification = false,
+  hasUnreadNotification = false,
 }) => {
   const notificationArrowPosition =
     NOTIFICATION_PLACEMENT_ARROW_POSITION_MAP[notificationPlacement]
@@ -56,7 +56,7 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
         type="button"
       >
         <Bell className="rn-notification-panel__icon" />
-        {unreadNotification && (
+        {hasUnreadNotification && (
           <span
             className="rn-notification-panel__not-read"
             data-testid="not-read"

@@ -1,7 +1,10 @@
-$_floating-box-light-background: color(neutral, white);
-$_floating-box-light-border: color(neutral, 100);
-$_floating-box-dark-background: color(neutral, 700);
-$_floating-box-dark-border: color(neutral, 700);
+@use "../abstracts/mixins" as m;
+@use "../abstracts/functions" as f;
+
+$_floating-box-light-background: f.color("neutral", "white");
+$_floating-box-light-border: f.color("neutral", "100");
+$_floating-box-dark-background: f.color("neutral", "700");
+$_floating-box-dark-border: f.color("neutral", "700");
 $_floating-box-border-thickness: 1px;
 $_floating-box-inner: 5px;
 $_floating-box-outer: $_floating-box-inner;
@@ -11,7 +14,7 @@ $_floating-box-offset: $_floating-box-outer + $_floating-box-border-thickness;
   position: absolute;
   top: 0;
   left: 0;
-  background: color(neutral, white);
+  background: f.color("neutral", "white");
   height: 100%;
   width: 100%;
   margin: 0;
@@ -20,23 +23,23 @@ $_floating-box-offset: $_floating-box-outer + $_floating-box-border-thickness;
 }
 
 .rn-floating-box__footer {
-  padding: spacing(3);
+  padding: f.spacing("3");
   margin: 0;
-  border-top: 1px solid color(neutral, 100);
-  background-color: color(neutral, 000);
+  border-top: 1px solid f.color("neutral", "100");
+  background-color: f.color("neutral", "000");
   text-align: right;
 }
 
 a.rn-floating-box__footer-link {
   text-decoration: none;
-  color: color(neutral, 300);
-  font-size: font-size(xs);
+  color: f.color("neutral", "300");
+  font-size: f.font-size("xs");
   cursor: pointer;
 }
 
-@include breakpoint("s") {
+@include m.breakpoint("xs") {
   .rn-floating-box {
-    @include z-index(modal);
+    @include m.z-index("modal");
   }
 
   .rn-floating-box__content {
@@ -57,7 +60,7 @@ a.rn-floating-box__footer-link {
   .rn-floating-box--dark .rn-floating-box__content {
     background: $_floating-box-dark-background;
     border: $_floating-box-dark-border solid $_floating-box-border-thickness;
-    color: color(neutral, white);
+    color: f.color("neutral", "white");
   }
 
   .rn-floating-box__content:before {

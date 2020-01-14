@@ -2,10 +2,10 @@ import React from 'react'
 import { components } from 'react-select'
 import { OptionProps } from 'react-select/src/components/Option'
 
-import Badge from '../Badge'
+import { Badge } from '../Badge'
 
 export interface SelectOptionWithBadgeType {
-  badge?: string | number | undefined
+  badge?: string | number
   label: string
   value: string
 }

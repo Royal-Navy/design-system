@@ -1,19 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import orderBy from 'lodash/orderBy'
 
-import { SORT_ORDER } from './constants'
-import { RowProps } from './Table'
+import { RowProps, TABLE_SORT_ORDER } from '.'
+
+type sortType =
+  | typeof TABLE_SORT_ORDER.ASCENDING
+  | typeof TABLE_SORT_ORDER.DESCENDING
 
 function getNextSortOrder(
-  currentSortOrder: SORT_ORDER.ASCENDING | SORT_ORDER.DESCENDING,
+  currentSortOrder: sortType,
   hasSortFieldChanged: boolean
 ) {
   if (!currentSortOrder || hasSortFieldChanged) {
-    return SORT_ORDER.DESCENDING
+    return TABLE_SORT_ORDER.DESCENDING
   }
 
-  if (currentSortOrder === SORT_ORDER.DESCENDING) {
-    return SORT_ORDER.ASCENDING
+  if (currentSortOrder === TABLE_SORT_ORDER.DESCENDING) {
+    return TABLE_SORT_ORDER.ASCENDING
   }
 
   return null
@@ -21,22 +24,22 @@ function getNextSortOrder(
 
 export function useTableData(data: RowProps[]) {
   const [tableData, setTableData] = useState(data)
-  const [sortOrder, setSortOrder] = useState<
-    SORT_ORDER.ASCENDING | SORT_ORDER.DESCENDING
-  >()
+  const [sortOrder, setSortOrder] = useState<sortType>()
   const [sortField, setSortField] = useState<string>()
 
   function sortTableData(field: string) {
     const hasSortFieldChanged = field !== sortField
-    const order:
-      | SORT_ORDER.ASCENDING
-      | SORT_ORDER.DESCENDING = getNextSortOrder(sortOrder, hasSortFieldChanged)
+    const order: sortType = getNextSortOrder(sortOrder, hasSortFieldChanged)
     const sorted = order ? orderBy(tableData, [field], [order]) : data
 
     setSortOrder(order)
     setSortField(field)
     setTableData(sorted)
   }
+
+  useEffect(() => {
+    setTableData(data)
+  }, [data])
 
   return {
     tableData,

@@ -1,33 +1,52 @@
 // Components
 import { Alert, ALERT_VARIANT } from './components/Alert'
-import { Avatar } from './components/Avatar'
-import Badge from './components/Badge'
-import Breadcrumbs from './components/Breadcrumbs'
+import { Avatar, AVATAR_VARIANT } from './components/Avatar'
+import {
+  Badge,
+  BADGE_COLOR,
+  BADGE_COLOR_VARIANT,
+  BADGE_SIZE,
+  BADGE_VARIANT,
+} from './components/Badge'
+import { BreadcrumbsItem, Breadcrumbs } from './components/Breadcrumbs'
 import { Button } from './components/Button'
-import { ButtonGroup } from './components/ButtonGroup'
+import { ButtonGroup, ButtonGroupItem } from './components/ButtonGroup'
 import Checkbox from './components/Checkbox'
+import { DatePicker } from './components/DatePicker'
 import { Dialog } from './components/Dialog'
 import { Drawer } from './components/Drawer'
 import { Dropdown } from './components/Dropdown'
-import { Masthead } from './fragments/Masthead'
+import { Link } from './components/Link'
 import { Modal } from './components/Modal'
 import Nav from './components/Nav'
-import { Notification, Notifications } from './fragments/NotificationPanel'
 import { NumberInput } from './components/NumberInput'
 import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
 import { Popover } from './components/Popover'
 import { Select } from './components/Select'
-import Sidebar from './fragments/Sidebar'
 import Switch from './components/Switch/Switch'
 import { RangeSlider } from './components/RangeSlider'
 import ResponsiveSwitch from './components/Switch'
 import Radio from './components/Radio'
-import { Table, Column } from './components/Table'
+import { Table, TableColumn, TABLE_SORT_ORDER } from './components/Table'
 import { Tab, TabSet } from './components/TabSet'
 import { TextArea } from './components/TextArea'
 import TextInput from './components/TextInput'
 import { Tooltip } from './components/Tooltip'
+
+// Fragments
+import {
+  Masthead,
+  MastheadNav,
+  MastheadNavItem,
+  MastheadUser,
+  Notification,
+  Notifications,
+  Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
+} from './fragments'
 
 // Icons
 import * as Icons from './icons'
@@ -42,16 +61,27 @@ export {
   Alert,
   ALERT_VARIANT,
   Avatar,
+  AVATAR_VARIANT,
   Badge,
+  BADGE_COLOR,
+  BADGE_COLOR_VARIANT,
+  BADGE_SIZE,
+  BADGE_VARIANT,
+  BreadcrumbsItem,
   Breadcrumbs,
   Button,
   ButtonGroup,
+  ButtonGroupItem,
   Checkbox,
-  Column,
+  DatePicker,
   Dialog,
   Drawer,
   Dropdown,
+  Link,
   Masthead,
+  MastheadNav,
+  MastheadNavItem,
+  MastheadUser,
   Modal,
   Nav,
   Notification,
@@ -66,8 +96,13 @@ export {
   Radio,
   Select,
   Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
   Tab,
   Table,
+  TableColumn,
+  TABLE_SORT_ORDER,
   TabSet,
   TextArea,
   TextInput,

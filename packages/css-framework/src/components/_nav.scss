@@ -1,3 +1,7 @@
+@use "../config";
+@use "../abstracts/functions" as f;
+@use "../abstracts/mixins" as m;
+
 .rn-nav__list {
   display: flex;
   flex-direction: column;
@@ -7,7 +11,7 @@
 }
 
 .rn-nav__list .rn-nav__list {
-  padding-left: spacing(4);
+  padding-left: f.spacing("8");
 }
 
 .rn-nav__list-item {
@@ -27,67 +31,67 @@
 .rn-nav__item {
   display: inline-block;
   width: 100%;
-  color: color(neutral, 700);
-  border-radius: $btn-border-radius;
+  color: f.color("neutral", "700");
+  border-radius: 3px;
   outline: 0;
-  padding: spacing(3) spacing(4);
-  font-size: font-size(xs);
-  font-weight: $btn-font-weight;
+  padding: f.spacing("6") f.spacing("8");
+  font-size: f.font-size("s");
+  font-weight: 500;
   line-height: 1;
   text-decoration: none;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-  transition: all $animation-timing;
+  transition: all config.$animation-timing;
 
   &:hover {
     text-decoration: none;
-    background-color: color(neutral, 100);
-    color: color(primary, 900);
+    background-color: f.color("neutral", "100");
+    color: f.color("action", "900");
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(color(primary, 700) , 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(f.color("action", "700") , 0.5);
   }
 
   &.is-active {
-    background-color: color(primary, 700);
-    color: color(neutral, white);
+    background-color: f.color("action", "700");
+    color: f.color("neutral", "white");
   }
 
   &.is-disabled {
-    color: color(neutral, 400);
+    color: f.color("neutral", "400");
     pointer-events: none;
   }
 }
 
 .rn-nav__list-item + .rn-nav__list-item {
-  margin-top: spacing(1);
+  margin-top: f.spacing("2");
 }
 
-@include breakpoint("s") {
+@include m.breakpoint("xs") {
   .rn-nav.rn-nav--horizontal .rn-nav__list {
     flex-direction: row;
   }
 
   .rn-nav.rn-nav--horizontal .rn-nav__list-item + .rn-nav__list-item {
     margin-top: 0;
-    margin-left: spacing(1);
+    margin-left: f.spacing("2");
   }
 }
 
 .rn-nav.rn-nav--small .rn-nav__item {
-  @include font-size(xxs);
+  @include m.font-size("xs");
 }
 
 .rn-nav.rn-nav--regular .rn-nav__item {
-  @include font-size(xs);
+  @include m.font-size("s");
 }
 
 .rn-nav.rn-nav--large .rn-nav__item {
-  @include font-size(s);
+  @include m.font-size("base");
 }
 
 .rn-nav.rn-nav--xlarge .rn-nav__item {
-  @include font-size(m);
+  @include m.font-size("l");
 }

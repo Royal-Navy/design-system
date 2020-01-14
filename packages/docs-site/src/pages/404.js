@@ -2,12 +2,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import '../helpers/css/fonts.css'
-import '@royalnavy/css-framework/index.scss'
-
-import '../templates/default.scss'
-import './css/404.scss'
-
 import Layout from '../components/presenters/layout'
 import MastHead from '../components/presenters/Masthead'
 import HeroBanner from '../components/presenters/hero-banner'

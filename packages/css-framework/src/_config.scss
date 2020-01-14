@@ -1,17 +1,25 @@
-$navy--font-size: 16px !default;
-$navy--font-family: "lato" !default;
-$navy--context: "light" !default;
+/*
+
+  These config variables can be overridden by the
+  consumer when they import the CSS Framework.
+
+*/
+
+$font-size:   16px !default;
+$font-family: "lato" !default;
+$context:     "light" !default;
 
 // Contexts
-$navy--breakpoints: () !default;
-$navy--colors: () !default;
-$navy--spacing: () !default;
-$navy--shadows: () !default;
-$navy--typography: () !default;
-$navy--zIndex: () !default;
+$breakpoints: () !default;
+$colors:      () !default;
+$spacing:     () !default;
+$shadows:     () !default;
+$typography:  () !default;
+$zindex:      () !default;
 
 
-// Helper Namespace
-$helper-ns: "h_";
+// Utility Namespace
+$utility-ns: "rn_";
 
-$navy-content-width: 1280px;
+$content-width: 1280px;
+$animation-timing: 0.3s;

@@ -8,4 +8,8 @@
 
 **************************************************************************/
 
-$__spacing: non-destructive-map-merge($__spacing, $navy--spacing);
+@use "../abstracts/functions/non-destructive-map-merge" as *;
+@use "../config";
+@use "../contexts" as context;
+
+$spacing: non-destructive-map-merge(context.$spacing, config.$spacing);

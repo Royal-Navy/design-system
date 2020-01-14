@@ -3,11 +3,6 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 
-import '../helpers/css/fonts.css'
-import '@royalnavy/css-framework/index.scss'
-
-import './default.scss'
-
 import Layout from '../components/presenters/layout'
 import MastHead from '../components/presenters/Masthead'
 import Sidebar from '../components/presenters/sidebar'

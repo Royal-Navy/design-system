@@ -1,29 +1,32 @@
-$_alert-background-colour: color("primary", 000);
-$_alert-border-colour: color("primary", 500);
-$_alert-title-colour: color("primary", 800);
-$_alert-close-colour: color("primary", 500);
-$_alert-description-colour: color("primary", 600);
+@use "../abstracts/mixins" as m;
+@use "../abstracts/functions" as f;
+
+$_alert-background-colour: f.color("action", "000");
+$_alert-border-colour: f.color("action", "500");
+$_alert-title-colour: f.color("action", "800");
+$_alert-close-colour: f.color("action", "500");
+$_alert-description-colour: f.color("action", "700");
 
 // Danger
-$_danger-alert-background-colour: color("danger", 000);
-$_danger-alert-border-colour: color("danger", 500);
-$_danger-alert-title-colour: color("danger", 800);
-$_danger-alert-close-colour: color("danger", 500);
-$_danger-alert-description-colour: color("danger", 600);
+$_danger-alert-background-colour: f.color("danger", "000");
+$_danger-alert-border-colour: f.color("danger", "500");
+$_danger-alert-title-colour: f.color("danger", "800");
+$_danger-alert-close-colour: f.color("danger", "500");
+$_danger-alert-description-colour: f.color("danger", "700");
 
 // Success
-$_success-alert-background-colour: color("success", 000);
-$_success-alert-border-colour: color("success", 500);
-$_success-alert-title-colour: color("success", 800);
-$_success-alert-close-colour: color("success", 500);
-$_success-alert-description-colour: color("success", 600);
+$_success-alert-background-colour: f.color("success", "000");
+$_success-alert-border-colour: f.color("success", "500");
+$_success-alert-title-colour: f.color("success", "900");
+$_success-alert-close-colour: f.color("success", "500");
+$_success-alert-description-colour: f.color("success", "800");
 
 // Warning
-$_warning-alert-background-colour: color("warning", 000);
-$_warning-alert-border-colour: color("warning", 500);
-$_warning-alert-title-colour: color("warning", 800);
-$_warning-alert-close-colour: color("warning", 500);
-$_warning-alert-description-colour: color("warning", 600);
+$_warning-alert-background-colour: f.color("warning", "000");
+$_warning-alert-border-colour: f.color("warning", "500");
+$_warning-alert-title-colour: f.color("warning", "900");
+$_warning-alert-close-colour: f.color("warning", "500");
+$_warning-alert-description-colour: f.color("warning", "800");
 
 .rn-alert {
   background-color: $_alert-background-colour;
@@ -49,14 +52,14 @@ $_warning-alert-description-colour: color("warning", 600);
 
 .rn-alert__header {
   display: flex;
-  margin-bottom: spacing(1);
+  margin-bottom: f.spacing("1");
 }
 
 .rn-alert__icon {
   display: inline-flex;
   align-items: center;
   color: $_alert-title-colour;
-  padding-right: 6px;
+  padding-right: f.spacing("3");
 
   &--danger {
     color: $_danger-alert-title-colour;
@@ -73,7 +76,7 @@ $_warning-alert-description-colour: color("warning", 600);
 
 .rn-alert__title {
   color: $_alert-title-colour;
-  font-size: font-size(s);
+  font-size: f.font-size("m");
   font-weight: bold;
 
   &--danger {
@@ -91,10 +94,10 @@ $_warning-alert-description-colour: color("warning", 600);
 
 .rn-alert__close {
   position: absolute;
-  top: spacing(1);
-  right: spacing(1);
+  top: f.spacing("1");
+  right: f.spacing("1");
   border: none;
-  font-size: font-size(l);
+  font-size: f.font-size("xl");
   color: $_alert-close-colour;
   background-color: $_alert-background-colour;
 
@@ -125,7 +128,7 @@ $_warning-alert-description-colour: color("warning", 600);
 
 .rn-alert__description {
   color: $_alert-description-colour;
-  font-size: font-size(xs);
+  font-size: f.font-size("base");
 
   &--danger {
     color: $_danger-alert-description-colour;

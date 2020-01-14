@@ -105,7 +105,7 @@ cause a re-render to take place with the updated value passed back to the field 
     Description: 'Optional additional css class to associate with the component wrapper',
   },
   {
-    Name: 'disabled',
+    Name: 'isDisabled',
     Type: 'boolean',
     Required: 'False',
     Default: 'false',

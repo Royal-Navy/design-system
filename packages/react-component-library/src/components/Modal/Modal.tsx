@@ -8,24 +8,24 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 
 export interface ModalProps extends ComponentWithClass {
-  children?: any
+  children?: React.ReactNode
+  isOpen?: boolean
   onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
   primaryButton?: ButtonProps
   secondaryButton?: ButtonProps
   tertiaryButton?: ButtonProps
   title?: string
-  isOpen?: boolean
 }
 
 export const Modal: React.FC<ModalProps> = ({
   className = '',
   children,
+  isOpen = false,
   onClose,
   primaryButton,
   secondaryButton,
   tertiaryButton,
   title,
-  isOpen = false,
 }) => {
   const [open, setOpen] = useState(isOpen)
   const mutatedPrimaryButton = primaryButton

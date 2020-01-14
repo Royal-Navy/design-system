@@ -1,0 +1,16 @@
+@use "sass:map";
+
+// Map Get with Default
+// @param {Map} $map - Map
+// @param {key} $key - Desired key to search for
+// @param {*} $default - Default value
+// @return {*} - Either the key requeted or the default provided
+@function map-get-default($map, $key, $default) {
+  $result: $default;
+
+  @if (map.has-key($map, $key)) {
+    $result: map.get($map, $key)
+  }
+
+  @return $result;
+}

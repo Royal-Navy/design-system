@@ -18,12 +18,12 @@ describe('TabSet', () => {
       beforeEach(() => {
         const props = {
           className: 'rn-tab-set--modifier',
-          onChangeCallback: () => {
+          onChange: () => {
             return true
           },
         }
 
-        onChangeSpy = jest.spyOn(props, 'onChangeCallback')
+        onChangeSpy = jest.spyOn(props, 'onChange')
 
         wrapper = render(
           <TabSet {...props}>
@@ -58,14 +58,14 @@ describe('TabSet', () => {
           ).toContain('is-active')
         })
 
-        it('should invoke the onChangeCallback function', () => {
+        it('should invoke the onChange function', () => {
           expect(onChangeSpy).toHaveBeenCalledTimes(1)
           expect(onChangeSpy).toHaveBeenCalledWith(1)
         })
       })
     })
 
-    describe('when the onChangeCallback is not provided', () => {
+    describe('when the onChange is not provided', () => {
       beforeEach(() => {
         wrapper = render(
           <TabSet>
@@ -115,7 +115,7 @@ describe('TabSet', () => {
     let scrollToSpy: jest.SpyInstance
 
     async function scroll(
-      direction: SCROLL_DIRECTION.LEFT | SCROLL_DIRECTION.RIGHT
+      direction: typeof SCROLL_DIRECTION.LEFT | typeof SCROLL_DIRECTION.RIGHT
     ) {
       wrapper.getByTestId(`scroll-${direction}`).click()
 
@@ -124,7 +124,7 @@ describe('TabSet', () => {
 
     beforeEach(() => {
       wrapper = render(
-        <TabSet scrollable>
+        <TabSet isScrollable>
           <Tab title="Title 1">Content 1</Tab>
           <Tab title="Title 2">Content 2</Tab>
           <Tab title="Title 3">Content 3</Tab>

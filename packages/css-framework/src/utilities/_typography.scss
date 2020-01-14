@@ -1,0 +1,65 @@
+/* stylelint-disable */
+@use "sass:map";
+@use "../config";
+@use "../vars";
+
+/**************************************************************************
+
+    Font Size Utilities
+    =================
+
+    Generates Utility classes for font size.
+
+**************************************************************************/
+
+
+
+@each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
+  @each $_shortname, $_value in vars.$typography {
+    @if $_breakpoint == 'root' {
+      .#{config.$utility-ns}text-#{$_shortname} {
+        font-size: $_value !important;
+      }
+    } @else {
+      @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
+        .#{$_breakpoint}\:#{config.$utility-ns}text-#{$_shortname} {
+          font-size: $_value !important;
+        }
+      }
+    }
+  }
+}
+
+
+
+/**************************************************************************
+
+    Text Aligning Utilities
+
+**************************************************************************/
+
+@mixin textSharedStyles {
+  &-left {
+    text-align: left !important;
+  }
+  &-center {
+    text-align: center !important;
+  }
+  &-right {
+    text-align: right !important;
+  }
+}
+
+@each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
+  @if $_breakpoint == 'root' {
+    .#{config.$utility-ns}text {
+      @include textSharedStyles;
+    }
+  } @else {
+    @media only screen and (min-width: map-get($_breakpoint-val, 'breakpoint')) {
+      .#{$_breakpoint}\:#{config.$utility-ns}text {
+          @include textSharedStyles;
+      }
+    }
+  }
+}

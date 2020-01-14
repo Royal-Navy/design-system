@@ -1,43 +1,43 @@
-@import "@royalnavy/css-framework";
+@use "@royalnavy/css-framework" as rn;
 
 .home--info {
-  border-top: 1px dotted color(neutral, 200);
-  padding: spacing(10) 0;
+  border-top: 1px dotted rn.color("neutral", "200");
+  padding: rn.spacing("13") 0;
 }
 
 .home__title {
-  font-size: font-size(xl);
-  margin-bottom: spacing(8);
+  font-size: rn.font-size("xxl");
+  margin-bottom: rn.spacing("12");
 }
 
 .home--updates {
-  padding: spacing(4);
+  padding: rn.spacing("8");
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 
   .card__title {
-    font-size: font-size(l);
+    font-size: rn.font-size("xl");
   }
 
   .card__text {
     font: {
-      size: font-size(s);
+      size: rn.font-size("base");
       weight: 300;
     }
     line-height: 1.5;
   }
 
-  
+
 }
 
 .home--contact {
-  margin-top: spacing(6);
-  padding: spacing(4);
-  @include breakpoint('m') {
+  margin-top: rn.spacing("11");
+  padding: rn.spacing("8");
+  @include rn.breakpoint("s") {
     margin-top: 0;
-    padding: spacing(4) spacing(8) spacing(4) spacing(12);
+    padding: rn.spacing("8") rn.spacing("12") rn.spacing("8") rn.spacing("14");
   }
   .card__title {
-    font-size: font-size(l);
+    font-size: rn.font-size("xl");
     transition: color 0.2s;
   }
 
@@ -45,5 +45,5 @@
     transition: all 0.2s;
   }
 
-  
+
 }

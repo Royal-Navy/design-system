@@ -1,7 +1,9 @@
+@use "../abstracts/functions" as f;
+
 .rn-btn-group {
   .rn-btn {
     border-radius: 0;
-    border: 1px solid color(neutral, 100);
+    border: 1px solid f.color("neutral", "100");
     border-right: none;
 
     &:first-child {
@@ -10,32 +12,32 @@
 
     &:last-child {
       border-radius: 0 3px 3px 0;
-      border-right: 1px solid color(neutral, 100);
+      border-right: 1px solid f.color("neutral", "100");
     }
 
     &:hover,
     &:focus {
-      background: color(primary, 600);
-      color: color(neutral, white);
-      border-color: color(primary, 500);
+      background: f.color("action", "600");
+      color: f.color("neutral", "white");
+      border-color: f.color("action", "500");
       box-shadow: none;
     }
 
     &:hover + .rn-btn,
     &:focus + .rn-btn {
-      border-left: 1px solid color(primary, 500);
+      border-left: 1px solid f.color("action", "500");
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
 
     &.rn-btn--disabled:hover,
     &.rn-btn--disabled:focus {
-      border-color: color(neutral, 100);
+      border-color: f.color("neutral", "100");
     }
 
     &.rn-btn--disabled:hover + .rn-btn,
     &.rn-btn--disabled:focus + .rn-btn {
-      border-left: 1px solid color(neutral, 100);
+      border-left: 1px solid f.color("neutral", "100");
     }
   }
 

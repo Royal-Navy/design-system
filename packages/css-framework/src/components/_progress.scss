@@ -1,12 +1,16 @@
+@use "sass:map";
+@use "../abstracts/functions" as f;
+@use "../abstracts/mixins" as m;
+
 $progress-states: (
-  neutral: color("neutral", 700),
-  primary: color("primary", 400),
-  danger:  color("danger", 400),
-  warning: color("warning", 400),
-  success: color("success", 500)
+  neutral: f.color("neutral", "700"),
+  action: f.color("action", "400"),
+  danger:  f.color("danger", "400"),
+  warning: f.color("warning", "400"),
+  success: f.color("success", "500")
 );
 
-.rn-progress {  
+.rn-progress {
   box-sizing: border-box;
   display: block;
   margin: 0;
@@ -14,25 +18,25 @@ $progress-states: (
   position: relative;
   overflow: hidden;
   height: 8px;
-  
+
   &.small {
     height: 4px;
   }
-  
+
   &.large {
     height: 16px;
   }
-  
+
   @each $state, $value in $progress-states {
-    &.#{$state} {    
+    &.#{$state} {
       .rn-progress__bar {
         background: $value;
       }
     }
   }
-  
+
   &__bar {
-    background-color: map-get($progress-states, "neutral");
+    background-color: map.get($progress-states, "neutral");
     // Border radius far exceeds height of container to ensure
     // borders are rounded correctly
     border-radius: 100px;
@@ -42,12 +46,11 @@ $progress-states: (
     padding: 0;
     position: absolute;
     top: 0;
-    text-align: center;    
-    color: color(neutral, white);
-    @include font-size(xxs);
+    text-align: center;
+    color: f.color("neutral", "white");
+    @include m.font-size("xs");
     display: flex;
     align-items: center;
     justify-content: center;
   }
 }
-

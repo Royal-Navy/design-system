@@ -168,7 +168,7 @@ The NumberInput can be used in conjunction with `withFormik` to allow it to be u
     Description: 'Optional additional css class to associate with the component wrapper',
   },
   {
-    Name: 'disabled',
+    Name: 'isDisabled',
     Type: 'boolean',
     Required: 'False',
     Default: 'false',

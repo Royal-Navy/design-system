@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
+import { Link } from 'gatsby'
 import {
   Badge,
   Button,
@@ -10,8 +11,7 @@ import {
 
 import packageJson from '../../../../package'
 import SiteLogo from './images/SiteLogo'
-
-import './masthead.scss'
+import GithubLogo from '../images/GithubLogo'
 
 const { TriangleDown, TriangleUp } = Icons
 
@@ -26,6 +26,15 @@ const MastHead = ({ navItems }) => {
 
   return (
     <div className="masthead">
+      <Link
+        to="/get-started/development/v2-migration"
+        className="masthead__banner"
+      >
+        <div className="rn-container">
+          There&apos;s a new version of the Standards Toolkit.
+          <strong>Read the migration docs.</strong>
+        </div>
+      </Link>
       <div className="masthead__container rn-container">
         <a href="/">
           <SiteLogo className="masthead__logo" />
@@ -33,9 +42,17 @@ const MastHead = ({ navItems }) => {
 
         <div className="masthead__version">
           <a href="/versions">
-            <Badge color="primary">v{packageJson.version}</Badge>
+            <Badge color="action">v{packageJson.version}</Badge>
           </a>
         </div>
+
+        <a
+          href="https://github.com/Royal-Navy/standards-toolkit"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GithubLogo className="masthead__github" />
+        </a>
 
         {hasNavItems && (
           <Button
@@ -55,6 +72,7 @@ const MastHead = ({ navItems }) => {
           us to improve it.
         </span>
       </PhaseBanner>
+
       {hasNavItems && (
         <div
           data-testid="primary-nav"

@@ -1,0 +1,23 @@
+@use "@royalnavy/css-framework" as rn;
+
+body {
+  background-color: rn.color("action", "900");
+}
+
+.layout {
+  background: white;
+}
+
+.docs-site-example-modal.rn-modal,
+.docs-site-example-dialog.rn-modal {
+  position: absolute;
+
+  .rn-modal__main {
+    position: absolute;
+  }
+}
+
+.code-highlighter--modal .code-highlighter__head,
+.code-highlighter--dialog .code-highlighter__head {
+  height: 20rem;
+}

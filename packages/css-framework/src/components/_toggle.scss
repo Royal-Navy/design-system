@@ -1,7 +1,10 @@
+@use "../abstracts/functions" as f;
+@use "../abstracts/mixins" as m;
+
 .rn-toggle {
   display: inline-block;
-  color: color(neutral, 600);
-  @include font-size(s);
+  color: f.color("neutral", "600");
+  @include m.font-size("base");
   vertical-align: center;
   cursor: pointer;
 }
@@ -15,8 +18,8 @@
   position: relative;
   height: 10px;
   width: 21px;
-  background: color(neutral, 100);
-  border: 1px solid color(neutral, 300);
+  background: f.color("neutral", "100");
+  border: 1px solid f.color("neutral", "300");
   border-radius: 5px;
 }
 
@@ -30,12 +33,12 @@
   left: -2px;
   height: 12px;
   width: 12px;
-  background: color("neutral", 600);
+  background: f.color("neutral", "600");
   border-radius: 6px;
   transition: 0.2s linear;
 }
 
 .rn-toggle.is-checked .rn-toggle__switch {
-  background: color("primary", 400);
+  background: f.color("action", "400");
   left: 9px;
 }

@@ -1,0 +1,40 @@
+@use "@royalnavy/css-framework" as rn;
+
+.rn-links {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  list-style: none;
+  margin: rn.spacing("4") 0 0 0;
+}
+
+.rn-links__item {
+  display: inline-block;
+  padding: 0 rn.spacing("8");  
+  font-size: rn.font-size("base");
+  margin-bottom: 0;
+  position: relative;
+  &::after {
+    content: "•";
+    color: rn.color("neutral", "white");
+    position: absolute;
+    right: -4.5px;
+    top: 4px;
+    font-size: rn.font-size("xs");
+    opacity: 0.5;
+  }
+  &:last-child::after {
+    content: "";
+  }
+}
+
+.rn-links__item:first-child {
+  border-left: 0;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.rn-links__link,
+.rn-links a {
+  text-decoration: none
+}

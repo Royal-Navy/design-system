@@ -1,240 +1,308 @@
+/* stylelint-disable */
 // Check to see if this context is enabled
-@if $navy--context == "light" {
+@use "../config";
+@use "defaults";
+
+
+@if config.$context == "light" {
   // Breakpoints
-  $__breakpoints: (
-    root: (
-      breakpoint: 0,
-      baseFontSize: 100%,
+  defaults.$breakpoints: (
+    "root": (
+      "breakpoint": 0,
+      "baseFontSize": 100%,
     ),
-    s: (
-      breakpoint: 576px,
-      baseFontSize: 103%,
+    "xs": (
+      "breakpoint": 576px,
+      "baseFontSize": 94%,
     ),
-    m: (
-      breakpoint: 768px,
-      baseFontSize: 106%,
+    "s": (
+      "breakpoint": 768px,
+      "baseFontSize": 96%,
     ),
-    l: (
-      breakpoint: 1024px,
-      baseFontSize: 106%,
+    "m": (
+      "breakpoint": 1024px,
+      "baseFontSize": 98%,
     ),
-    xl: (
-      breakpoint: 1200px,
-      baseFontSize: 112%,
+    "l": (
+      "breakpoint": 1200px,
+      "baseFontSize": 100%,
     ),
-    xxl: (
-      breakpoint: 1400px,
-      baseFontSize: 115%,
+    "xl": (
+      "breakpoint": 1400px,
+      "baseFontSize": 103%,
     ),
-    xxxl: (
-      breakpoint: 1600px,
-      baseFontSize: 118%,
+    "xxl": (
+      "breakpoint": 1600px,
+      "baseFontSize": 106%,
     ),
   );
 
   // Set the context colours
-  $__colors: (
-    neutral: (
-      white: #ffffff,
-      000: #f8fafc,
-      100: #e2e9ee,
-      200: #b8c7d2,
-      300: #748999,
-      400: #3e5667,
-      500: #233745,
-      600: #1c2d39,
-      700: #12202b,
-      800: #0c1720,
-      900: #0a141b,
-      black: #0a141b,
+  defaults.$colors: (
+    "neutral": (
+      "black": #0a141b,
+      "900": #0a141b,
+      "800": #0c1720,
+      "700": #12202b,
+      "600": #1c2d39,
+      "500": #233745,
+      "400": #3e5667,
+      "300": #748999,
+      "200": #b8c7d2,
+      "100": #e2e9ee,
+      "000": #f8fafc,
+      "white": #ffffff,
     ),
-    primary: (
-      000: #ecf8ff,
-      100: #ddf4ff,
-      200: #b7dff7,
-      300: #85c6f2,
-      400: #58aae9,
-      500: #3a8fdd,
-      600: #2a77c7,
-      700: #2661a7,
-      800: #274776,
-      900: #253b5b,
+    "action": (
+      "900": #253b5b,
+      "800": #274776,
+      "700": #2661a7,
+      "600": #2a77c7,
+      "500": #3a8fdd,
+      "400": #58aae9,
+      "300": #85c6f2,
+      "200": #b7dff7,
+      "100": #ddf4ff,
+      "000": #ecf8ff,
     ),
-    altprimary: (
-      000: #e8f2ff,
-      100: #deebff,
-      200: #bbd5fe,
-      300: #99b7f9,
-      400: #7392f3,
-      500: #5b73e6,
-      600: #4e5cd3,
-      700: #4248b6,
-      800: #3b3985,
-      900: #343160,
+    "supa": (
+      "900": #343160,
+      "800": #3b3985,
+      "700": #4248b6,
+      "400": #7392f3,
+      "500": #5b73e6,
+      "600": #4e5cd3,
+      "300": #99b7f9,
+      "200": #bbd5fe,
+      "100": #deebff,
+      "000": #e8f2ff,
     ),
-    danger: (
-      000: #fff3f4,
-      100: #feeaec,
-      200: #fed1d1,
-      300: #fea9a9,
-      400: #fc7576,
-      500: #f44949,
-      600: #e13637,
-      700: #be2b2b,
-      800: #902727,
-      900: #692524,
+    "supb": (
+      "900": #3b2d6e,
+      "800": #4b358f,
+      "700": #603fb8,
+      "600": #744fd0,
+      "500": #936fe8,
+      "400": #ad89f1,
+      "300": #d0b5f9,
+      "200": #e5d3fd,
+      "100": #f2e9ff,
+      "000": #f9f3ff,
     ),
-    warning: (
-      000: #ffffee,
-      100: #fffddc,
-      200: #fefbb8,
-      300: #faed7e,
-      400: #f5db54,
-      500: #e8c242,
-      600: #cf9328,
-      700: #ae6d1d,
-      800: #8c4f17,
-      900: #693a12,
+    "supc": (
+      "900": #6c2d6e,
+      "800": #8c358f,
+      "700": #b43fb8,
+      "600": #cc4fd0,
+      "500": #e46fe8,
+      "400": #ee89f1,
+      "300": #f7b5f9,
+      "200": #fcd3fd,
+      "100": #fee9ff,
+      "000": #fff3ff,
     ),
-    altwarning: (
-      000: #f9f3ff,
-      100: #f2e9ff,
-      200: #e5d3fd,
-      300: #d0b5f9,
-      400: #ad89f1,
-      500: #936fe8,
-      600: #744fd0,
-      700: #603fb8,
-      800: #4b358f,
-      900: #3b2d6e,
+    "supd": (
+      "900": #6c2d6e,
+      "800": #8c358f,
+      "700": #b43fb8,
+      "600": #cc4fd0,
+      "500": #e46fe8,
+      "400": #ee89f1,
+      "300": #f7b5f9,
+      "200": #fcd3fd,
+      "100": #fee9ff,
+      "000": #fff3ff,
     ),
-    success: (
-      000: #f4ffef,
-      100: #e5ffd9,
-      200: #c6f3b5,
-      300: #abe39b,
-      400: #8fd57f,
-      500: #76c767,
-      600: #60b255,
-      700: #479442,
-      800: #3b6f33,
-      900: #3b612c,
+    "danger": (
+      "900": #841c1b,
+      "800": #B22820,
+      "700": #d53228,
+      "600": #ec4138,
+      "500": #f45249,
+      "400": #fc7c75,
+      "300": #fea9a9,
+      "200": #fed1d1,
+      "100": #feeaec,
+      "000": #fff3f4,
     ),
-    altsuccess: (
-      000: #eefff2,
-      100: #dfffe9,
-      200: #bff4cf,
-      300: #8fe2ab,
-      400: #5dcd86,
-      500: #3fb26d,
-      600: #31975e,
-      700: #297a4f,
-      800: #245c40,
-      900: #1f4a35,
+    "supe": (
+      "900": #853a0c,
+      "800": #9d4712,
+      "700": #c25c1d,
+      "600": #e0712c,
+      "500": #f48b49,
+      "400": #fca975,
+      "300": #fecaa9,
+      "200": #fee2d1,
+      "100": #fef2ea,
+      "000": #fff8f3,
     ),
-  );
-
-  // State Mapping
-
-  $states: (
-    neutral: (
-      default: color(neutral, 500),
-      faded: color(neutral, 200),
+    "warning": (
+      "900": #804701,
+      "800": #9f5a06,
+      "700": #c3771a,
+      "600": #e8a224,
+      "500": #fab73d,
+      "400": #ffd062,
+      "300": #ffdf80,
+      "200": #feedb8,
+      "100": #fff6dc,
+      "000": #fffcee,
     ),
-    primary: (
-      default: color(primary, 500),
-      faded: color(primary, 200),
+    "success": (
+      "900": #3b612c,
+      "800": #3b6f33,
+      "700": #479442,
+      "600": #60b255,
+      "500": #76c767,
+      "400": #8fd57f,
+      "300": #abe39b,
+      "200": #c6f3b5,
+      "100": #e5ffd9,
+      "000": #f4ffef,
     ),
-    danger: (
-      default: color(danger, 500),
-      faded: color(danger, 200),
-    ),
-    warning: (
-      default: color(warning, 500),
-      faded: color(warning, 200),
-    ),
-    success: (
-      default: color(success, 500),
-      faded: color(success, 200),
+    "supf": (
+      "900": #1f4a35,
+      "800": #245c40,
+      "700": #297a4f,
+      "600": #31975e,
+      "500": #3fb26d,
+      "400": #5dcd86,
+      "300": #8fe2ab,
+      "200": #bff4cf,
+      "100": #dfffe9,
+      "000": #eefff2,
     ),
   );
 
   // Spacing
-
-  $__spacer: 1rem;
-  $__spacing: (
-    0: 0,
-    1: (
-      $__spacer * 0.25,
+  // Set to 16px by default
+  $_spacer: 1rem;
+  defaults.$spacing: (
+    "0": 0,
+    "1": (
+      // 2px
+      $_spacer * 0.125,
     ),
-    2: (
-      $__spacer * 0.5,
+    "2": (
+      // 4px
+      $_spacer * 0.25,
     ),
-    3: (
-      $__spacer * 0.75,
+    "3": (
+      // 6px
+      $_spacer * 0.375,
     ),
-    4: $__spacer,
-    5: (
-      $__spacer * 1.25,
+    "4": (
+      // 8px
+      $_spacer * 0.5,
     ),
-    6: (
-      $__spacer * 1.5,
+    "5": (
+      // 10px
+      $_spacer * 0.625,
     ),
-    8: (
-      $__spacer * 2,
+    "6": (
+      // 12px
+      $_spacer * 0.75,
     ),
-    10: (
-      $__spacer * 2.5,
+    "7": (
+      // 14px
+      $_spacer * 0.875,
     ),
-    12: (
-      $__spacer * 3,
+    // 16px
+    "8": $_spacer,
+    "9": (
+      // 18px
+      $_spacer * 1.125,
     ),
-    16: (
-      $__spacer * 4,
+    "10": (
+      // 20px
+      $_spacer * 1.25,
     ),
-    20: (
-      $__spacer * 5,
+    "11": (
+      // 24px
+      $_spacer * 1.5,
     ),
-    24: (
-      $__spacer * 6,
+    "12": (
+      // 32px
+      $_spacer * 2,
     ),
-    32: (
-      $__spacer * 8,
+    "13": (
+      // 40px
+      $_spacer * 2.5,
     ),
-    px: 1px,
-    full: 100%,
+    "14": (
+      // 48px
+      $_spacer * 3,
+    ),
+    "15": (
+      // 64px
+      $_spacer * 4,
+    ),
+    "16": (
+      // 80px
+      $_spacer * 5,
+    ),
+    "17": (
+      // 96px
+      $_spacer * 6,
+    ),
+    "18": (
+      // 112px
+      $_spacer * 7,
+    ),
+    "19": (
+      // 128px
+      $_spacer * 8,
+    ),
+    "20": (
+      // 144px
+      $_spacer * 9,
+    ),
+    "px": 1px,
+    "full": 100%,
   );
 
-  $__shadows: (
-    0: 0 0 0 transparent,
-    1: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    2: 0 6px 14px 0 rgba(0, 0, 0, 0.16),
-    3: 0 12px 28px 0 rgba(0, 0, 0, 0.26),
+  defaults.$shadows: (
+    "0": 0 0 0 transparent,
+    "1": 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    "2": 0 6px 14px 0 rgba(0, 0, 0, 0.16),
+    "3": 0 12px 28px 0 rgba(0, 0, 0, 0.26),
   );
 
   // Typography
-  $__typography: (
-    display-xl: 3rem,
-    display-l: 2.25rem,
-    display: 1.875rem,
-    xl: 1.5rem,
-    l: 1.25rem,
-    m: 1.125rem,
-    base: 1rem,
-    s: 0.875rem,
-    xs: 0.75rem,
-    xxs: 0.625rem,
-    xxxs: 0.5rem,
+  defaults.$typography: (
+    // 8px
+    "xxs": 0.5rem,
+    // 10px
+    "xs": 0.625rem,
+    // 12
+    "s": 0.75rem,
+    // 14px
+    "base": 0.875rem,
+    // 16px
+    "m": 1rem,
+    // 18px
+    "l": 1.125rem,
+    // 20px
+    "xl": 1.25rem,
+    // 24px
+    "xxl": 1.5rem,
+    // 30px
+    "display": 1.875rem,
+    // 36px
+    "display-l": 2.25rem,
+    // 48px
+    "display-xl": 3rem,
   );
 
   // Z Index Levels
-  $__zIndex: (
-    dialog: 9000,
-    modal: 8000,
-    overlay: 7000,
-    dropdown: 6000,
-    header: 5000,
-    footer: 4000,
-    body: 0,
+  defaults.$zindex: (
+    "dialog": 9000,
+    "modal": 8000,
+    "overlay": 7000,
+    "dropdown": 6000,
+    "header": 5000,
+    "footer": 4000,
+    "body": 0,
   );
 }

@@ -117,14 +117,14 @@ The TabSet (and companion Tab) component allows the user to switch between diffe
     Description: 'Additional CSS class to modify rn-tab-set',
   },
   {
-    Name: 'onChangeCallback',
+    Name: 'onChange',
     Type: '(id: number) => void',
     Required: 'False',
     Default: '',
     Description: 'Called when a tab is clicked.',
   },
   {
-    Name: 'scrollable',
+    Name: 'isScrollable',
     Type: 'boolean',
     Required: 'False',
     Default: 'False',

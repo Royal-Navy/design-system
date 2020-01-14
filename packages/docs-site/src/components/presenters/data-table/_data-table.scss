@@ -1,0 +1,243 @@
+@use "@royalnavy/css-framework" as rn;
+
+$background-color: rn.color("neutral", "white");
+$border-color: #e9eef1;
+$border-radius: 4px;
+$heading-color: #3e5667;
+$text-color: #748999;
+
+
+.data-table__container {
+  max-width: 100%;
+  overflow-x: scroll;
+  background-image:
+    linear-gradient(to right, white, white),
+    linear-gradient(to right, white, white),
+    linear-gradient(to right, rgba(0,0,0,.07), rgba(255,255,255,0)),
+    linear-gradient(to left, rgba(0,0,0,.07), rgba(255,255,255,0));
+  background-position: left center, right center, left center, right center;
+  background-repeat: no-repeat;
+  background-color: $background-color;
+  background-size: 40px 100%, 40px 100%, 20px 100%, 20px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
+
+.data-table {
+  width: 100%;
+  border: none;
+  font-size: rn.font-size("base");
+  color: $text-color;
+}
+
+.data-table__caption {
+  caption-side: top;
+  padding: rn.spacing("8") 0 rn.spacing("11");
+  text-align: left;
+  color: $heading-color;
+  font-weight: 700;
+  font-size: rn.font-size("xl");
+}
+
+.data-table__head {
+  display: none;
+}
+
+.data-table__heading {
+  text-align: left;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: $heading-color;
+}
+
+.data-table__btn-sort {
+  border: none;
+  display: none;
+  svg {
+    // I don't like this hack, and it will
+    // need a rewrite in the future, however
+    // for the time being, it's a cheaper
+    // way of tackling specificity.
+    .post-article & {
+      margin-top: 0;
+    }
+  }
+}
+
+.data-table__row {
+  display: block;
+  padding: rn.spacing("12") 0;
+  border-bottom: 1px dashed $border-color;
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+
+  &:last-of-type {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.data-table__heading,
+.data-table__cell {
+  padding: rn.spacing("8");
+}
+
+.data-table__cell {
+  display: flex;
+  align-items: center;
+  padding: 0 rn.spacing("8") 0 0;
+  border: 1px solid $border-color;
+  border-bottom: none;
+
+  &::before {
+    content: attr(data-column);
+    display: inline-block;
+    flex: 0 0 10rem;
+    padding: rn.spacing("8");
+    margin-right: rn.spacing("8");
+    border-right: 1px solid $border-color;
+    font-weight: 700;
+    color: $heading-color;
+    text-transform: uppercase;
+  }
+
+  &:first-of-type {
+    padding: 0 0 rn.spacing("8") 0;
+    border: none;
+    font-size: rn.font-size("l");
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &:nth-child(1) span,
+  &:nth-child(3) span,
+  &:nth-child(4) span {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  &:last-of-type {
+    border-bottom: 1px solid $border-color;
+    font-weight: 700;
+  }
+}
+
+@include rn.breakpoint("s") {
+  .data-table {
+    min-width: 20rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px 0 rgba(000, 000, 000, 0.05);
+
+    // Table border logic
+    //
+    // Defining all table border & border-radius logic within
+    // the .data-table class. We have to target the last table
+    // rows and cells, with all border logic being set on the
+    // table cells themselves, rather than the rows/table.
+
+    tr {
+
+      th, td {
+        border-right: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+      }
+
+      th {
+        border-top: 1px solid $border-color;
+        &:first-child {
+          border-top-left-radius: 4px;
+        }
+        &:last-child {
+          border-top-right-radius: 4px;
+        }
+      }
+
+      td {
+        &:first-child {
+          border-right: 1px solid $border-color;
+          border-bottom: 1px solid $border-color;
+        }
+      }
+
+      th:first-child, td:first-child {
+        border-left: 1px solid $border-color;
+      }
+
+      // Target the last table row and set the
+      // border radius on the first and last element
+      &:last-child {
+        td:first-child {
+          border-bottom-left-radius: $border-radius;
+        }
+        td:last-child {
+          border-bottom-right-radius: $border-radius;
+        }
+      }
+    }
+
+    // If there's a caption present, we want to unset the
+    // border radius at the top of the table so it sits
+    // flush with the caption. The caption itself then takes
+    // over responsibility for the top border radius.
+    &__caption {
+      border: 1px solid $border-color;
+      border-bottom: unset;
+      border-radius: $border-radius $border-radius 0 0;
+      + thead th {
+        &:first-child,
+        &:last-child {
+          border-radius: unset;
+        }
+      }
+    }
+  }
+
+  .data-table__caption {
+    padding: rn.spacing("4") rn.spacing("6");
+    font-size: rn.font-size("base");
+  }
+
+  .data-table__head {
+    display: table-header-group;
+  }
+
+  .data-table__heading {
+    padding: rn.spacing("4") rn.spacing("6");
+  }
+
+  .data-table__btn-sort {
+    display: inline-block;
+
+    svg {
+      width: 14px;
+      pointer-events: none;
+    }
+  }
+
+  .data-table__row:last-of-type,
+  .data-table__row {
+    display: table-row;
+    margin-bottom: unset;
+  }
+
+  .data-table__cell:first-of-type,
+  .data-table__cell {
+    display: table-cell;
+    vertical-align: top;
+    padding: rn.spacing("4") rn.spacing("6");
+    border: unset;
+
+    &:first-of-type {
+      font-size: rn.font-size("base");
+      color: $heading-color;
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+}

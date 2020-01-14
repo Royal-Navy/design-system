@@ -1,6 +1,6 @@
-enum SORT_ORDER {
-  ASCENDING = 'asc',
-  DESCENDING = 'desc',
-}
+const TABLE_SORT_ORDER = {
+  ASCENDING: 'asc',
+  DESCENDING: 'desc',
+} as const
 
-export { SORT_ORDER }
+export { TABLE_SORT_ORDER }

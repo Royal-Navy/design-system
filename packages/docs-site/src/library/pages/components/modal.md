@@ -39,7 +39,7 @@ Modals can be combined with [Forms](/components/forms/) to create flows that cap
 1. **Container**. This wraps the entire component, adding a z-index to ensure the Modal stacks above the entire app. This Container also serves as a backdrop that covers the application with a dark, transparent background. This draws focus to the main Modal Window.
 2. **Modal Window**. This is the main focus of the Modal component. Add content here to inform the user or ask them to perform an action.
 3. **Modal header**. Provides a space for a Modal title and close button.
-4. **Modal Footer**. Provides a Primary or Danger button. Can also house an optional Cancel button.
+4. **Modal Footer**. Provides a Action or Danger button. Can also house an optional Cancel button.
 
 ### States
 The Modal component has two states - `hidden` and `active`. By default, including the Modal component in an application page won't render it. Triggering the component will cause it to fade in, over all application content.
@@ -96,11 +96,25 @@ Modal is a child window that overlays the main parent window.
     Description: 'Custom CSS class to add to the component',
   },
   {
-    Name: 'title',
-    Type: 'string',
+    Name: 'children',
+    Type: 'React.ReactNode',
     Required: 'False',
     Default: '',
-    Description: 'The title to display at the top of the modal',
+    Description: 'Content of the modal',
+  },
+  {
+    Name: 'isOpen',
+    Type: 'boolean',
+    Required: 'False',
+    Default: '',
+    Description: 'An attribute denoting the open / close state of the modal',
+  },
+  {
+    Name: 'onClose',
+    Type: 'Function<any>',
+    Required: 'False',
+    Default: '',
+    Description: 'A callback function invoked when the modal is closed',
   },
   {
     Name: 'primaryButton',
@@ -124,18 +138,11 @@ Modal is a child window that overlays the main parent window.
     Description: 'A collection of props specifying the look and behaviour of the tertiary button',
   },
   {
-    Name: 'onClose',
-    Type: 'Function<any>',
+    Name: 'title',
+    Type: 'string',
     Required: 'False',
     Default: '',
-    Description: 'A callback function invoked when the modal is closed',
-  },
-  {
-    Name: 'isOpen',
-    Type: 'boolean',
-    Required: 'False',
-    Default: '',
-    Description: 'An attribute denoting the open / close state of the modal',
+    Description: 'The title to display at the top of the modal',
   },
 ]} />
 

@@ -7,11 +7,14 @@
 
 **************************************************************************/
 
+@use "sass:map";
+@use "../../vars";
+
 @mixin shadow($size, $inset: "") {
-  @if map-has-key($__shadows, $size) {
-    box-shadow: #{$inset} #{map-get($__shadows, $size)};
+  @if map.has-key(vars.$shadows, $size) {
+    box-shadow: #{$inset} #{map.get(vars.$shadows, $size)};
   }
-  
+
   @else {
     @error "No shadow could be retrieved for #{$size}";
   }

@@ -95,7 +95,7 @@ describe('Modal', () => {
           onConfirm={onConfirm}
           onCancel={onCancel}
           isOpen={isOpen}
-          danger
+          isDanger
         />
       )
     })

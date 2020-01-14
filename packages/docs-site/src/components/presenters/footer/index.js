@@ -2,19 +2,25 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import Links from '../Links'
-
-import './footer.scss'
-
 import MonoLogo from './images/Logo'
+import GithubLogo from '../images/GithubLogo'
 
 const Footer = ({ children, links }) => (
   <div className="rn-footer">
     <div className="rn-container">
       <div className="rn-footer__content">
-        <MonoLogo />
-        <Links links={links} />
+        <MonoLogo className="rn-footer__logo" />
+        <a
+          href="https://github.com/Royal-Navy/standards-toolkit"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GithubLogo className="rn-footer__github" />
+        </a>
       </div>
+      <Links links={links} />
     </div>
+
     <div className="rn-footer__meta">
       <div className="rn-container">
         <p data-testid="message" className="rn-footer__message">

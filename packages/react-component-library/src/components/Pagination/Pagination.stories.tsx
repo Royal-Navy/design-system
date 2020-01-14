@@ -8,7 +8,7 @@ const stories = storiesOf('Pagination', module)
 
 stories.add('Default', () => (
   <Pagination
-    onChangeCallback={action('onChangeCallback')}
+    onChange={action('onChange')}
     pageSize={10}
     total={1000}
   />

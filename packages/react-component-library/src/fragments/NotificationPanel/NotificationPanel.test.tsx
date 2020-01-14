@@ -8,6 +8,7 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react'
 
+import { Link } from '../../components'
 import {
   Notification,
   NOTIFICATION_PLACEMENT,
@@ -17,7 +18,7 @@ import {
 
 const MOCK_NOTIFICATION = (
   <Notification
-    href="notifications/1"
+    link={<Link href="notifications/1" />}
     name="Thomas Stephens"
     action="added a new comment to your"
     on="review"
@@ -34,8 +35,12 @@ describe('NotificationPanel', () => {
   describe('when all props are specified, "notificationPlacement" is right', () => {
     beforeEach(() => {
       const props = {
-        onHide: () => { return true },
-        onShow: () => { return true },
+        onHide: () => {
+          return true
+        },
+        onShow: () => {
+          return true
+        },
       }
 
       onShowSpy = jest.spyOn(props, 'onShow')
@@ -45,11 +50,11 @@ describe('NotificationPanel', () => {
         <NotificationPanel
           buttonClassName="button-class"
           className="class"
-          unreadNotification
+          hasUnreadNotification
           notificationPlacement={NOTIFICATION_PLACEMENT.RIGHT}
           {...props}
         >
-          <Notifications href="notifications">
+          <Notifications link={<Link href="notifications" />}>
             {MOCK_NOTIFICATION}
             {MOCK_NOTIFICATION}
           </Notifications>
@@ -149,7 +154,7 @@ describe('NotificationPanel', () => {
     beforeEach(() => {
       wrapper = render(
         <NotificationPanel>
-          <Notifications href="notifications">
+          <Notifications link={<Link href="notifications" />}>
             {MOCK_NOTIFICATION}
             {MOCK_NOTIFICATION}
           </Notifications>
@@ -192,7 +197,7 @@ describe('NotificationPanel', () => {
     beforeEach(() => {
       wrapper = render(
         <NotificationPanel notificationPlacement={NOTIFICATION_PLACEMENT.BELOW}>
-          <Notifications href="notifications">
+          <Notifications link={<Link href="notifications" />}>
             {MOCK_NOTIFICATION}
             {MOCK_NOTIFICATION}
           </Notifications>
@@ -221,7 +226,7 @@ describe('NotificationPanel', () => {
         <div>
           <p data-testid="outside">Some text outside</p>
           <NotificationPanel>
-            <Notifications href="notifications">
+            <Notifications link={<Link href="notifications" />}>
               {MOCK_NOTIFICATION}
               {MOCK_NOTIFICATION}
             </Notifications>

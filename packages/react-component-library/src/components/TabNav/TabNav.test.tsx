@@ -2,31 +2,21 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
-import TabNav from './index'
+import { Link } from '../index'
+import { TabNav, TabNavItem } from '.'
 
-describe('TabSet', () => {
+describe('TabNav', () => {
   let wrapper: RenderResult
-  let navItems: NavItemAnchorType[]
 
-  describe('when the TabSet is generated with tabs and onChangeCallback props', () => {
+  describe('with props', () => {
     beforeEach(() => {
-      navItems = [
-        {
-          label: 'Thing 1',
-          href: '/thing1',
-        },
-        {
-          label: 'Thing 2',
-          href: '/thing2',
-          active: true,
-        },
-        {
-          label: 'Thing 2',
-          href: '/thing2',
-        },
-      ]
-
-      wrapper = render(<TabNav navItems={navItems} />)
+      wrapper = render(
+        <TabNav>
+          <TabNavItem link={<Link href="/thing1">Thing 1</Link>} />
+          <TabNavItem link={<Link href="/thing2">Thing 2</Link>} isActive />
+          <TabNavItem link={<Link href="/thing3">Thing 3</Link>} />
+        </TabNav>
+      )
     })
 
     it('should output the correct number of regular tab links', () => {

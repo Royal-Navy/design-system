@@ -4,8 +4,6 @@ import PropTypes from 'prop-types'
 import { Nav } from '@royalnavy/react-component-library'
 import Link from './Link'
 
-import './sidebar.scss'
-
 const Sidebar = ({ className, navItems, title }) => (
   <aside data-testid="wrapper" className={`sidebar ${className}`}>
     {title && title.length > 0 && (

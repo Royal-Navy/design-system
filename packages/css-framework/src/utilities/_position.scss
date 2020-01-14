@@ -1,0 +1,37 @@
+@use "sass:map";
+@use "../config";
+@use "../vars";
+
+/* stylelint-disable */
+@mixin positionSharedStyles {
+  &static {
+    position: static !important;
+  }
+  &relative {
+    position: relative !important;
+  }
+  &absolute {
+    position: absolute !important;
+  }
+  &fixed {
+    position: fixed !important;
+  }
+  &sticky {
+    position: sticky !important;
+  }
+}
+
+
+@each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
+  @if $_breakpoint == 'root' {
+    .#{config.$utility-ns} {
+      @include positionSharedStyles;
+    }
+  } @else {
+    @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
+      .#{$_breakpoint}\:#{config.$utility-ns} {
+          @include positionSharedStyles;
+      }
+    }
+  }
+}
