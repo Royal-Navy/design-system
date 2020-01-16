@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 import { IconButtonConfirm } from '@royalnavy/icon-library'
 
 import { ButtonProps } from '../Button'
-
 import { Header } from './Header'
 import { Footer } from './Footer'
+import { useOpenClose } from './useOpenClose'
 
 export interface ModalProps extends ComponentWithClass {
   children?: React.ReactNode
@@ -18,43 +18,36 @@ export interface ModalProps extends ComponentWithClass {
 }
 
 export const Modal: React.FC<ModalProps> = ({
-  className = '',
+  className,
   children,
-  isOpen = false,
+  isOpen,
   onClose,
   primaryButton,
   secondaryButton,
   tertiaryButton,
   title,
 }) => {
-  const [open, setOpen] = useState(isOpen)
-  const mutatedPrimaryButton = primaryButton
-
-  function handleOnClose(event: React.FormEvent<HTMLButtonElement>) {
-    setOpen(false)
-    onClose(event)
-  }
-
-  if (mutatedPrimaryButton) {
-    mutatedPrimaryButton.icon = <IconButtonConfirm />
-  }
-
-  const classes = classNames(className, {
-    'rn-modal': true,
+  const { handleOnClose, open } = useOpenClose(isOpen, onClose)
+  const classes = classNames('rn-modal', {
     'is-open': open,
     'is-closed': !open,
-  })
+  }, className)
+
+  const primaryButtonWithIcon = primaryButton && {
+    ...primaryButton,
+    icon: <IconButtonConfirm data-testid="modal-primary-confirm" />,
+  }
 
   return (
-    <div className={classes} data-testid="rn-modal-wrapper">
+    <div className={classes} data-testid="modal-wrapper">
       <article className="rn-modal__main">
         {title && <Header title={title} onClose={handleOnClose} />}
-        <section className="rn-modal__body" data-testid="rn-modal-body">
+        <section className="rn-modal__body" data-testid="modal-body">
           {children}
         </section>
         {(primaryButton || secondaryButton || tertiaryButton) && (
           <Footer
-            primaryButton={mutatedPrimaryButton}
+            primaryButton={primaryButtonWithIcon}
             secondaryButton={secondaryButton}
             tertiaryButton={tertiaryButton}
           />
