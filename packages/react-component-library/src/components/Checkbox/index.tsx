@@ -1,32 +1,35 @@
 import React from 'react'
+import classNames from 'classnames'
 import uuid from 'uuid'
 
 interface CheckboxProps {
   className?: string
   id?: string
-  label: string
-  isDisabled?: boolean
-  value?: string
-  name: string
   isChecked?: boolean
-  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
+  isDisabled?: boolean
+  label: string
+  name: string
   onBlur?: (event: React.FormEvent<HTMLInputElement>) => void
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
+  value?: string
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
   className = '',
   id = uuid(),
+  isChecked,
+  isDisabled,
   label,
-  isDisabled = false,
-  value,
   name,
-  isChecked = false,
-  onChange,
   onBlur,
+  onChange,
+  value,
   ...rest
 }) => {
+  const classes = classNames('rn-checkbox', className)
+
   return (
-    <div className={`rn-checkbox ${className}`} data-testid="container">
+    <div className={classes} data-testid="container">
       <div className="rn-checkbox__outer-wrapper">
         <label className="rn-checkbox__label" htmlFor={id} data-testid="label">
           <input
@@ -35,7 +38,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
             type="checkbox"
             name={name}
             value={value}
-            checked={isChecked}
+            defaultChecked={isChecked}
             onChange={onChange}
             onBlur={onBlur}
             disabled={isDisabled}
