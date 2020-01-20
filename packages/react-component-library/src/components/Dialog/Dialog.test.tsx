@@ -47,7 +47,7 @@ describe('Modal', () => {
       })
 
       it('should apply the `rn-dialog` class', () => {
-        expect(wrapper.queryByTestId('rn-modal-wrapper')).toHaveClass(
+        expect(wrapper.queryByTestId('modal-wrapper')).toHaveClass(
           'rn-dialog'
         )
       })
@@ -55,7 +55,7 @@ describe('Modal', () => {
       describe('and the primary button is clicked', () => {
         beforeEach(() => {
           fireEvent(
-            wrapper.getByTestId('rn-modal-btn-primary'),
+            wrapper.getByTestId('modal-primary'),
             new MouseEvent('click', {
               bubbles: true,
               cancelable: true,
@@ -71,7 +71,7 @@ describe('Modal', () => {
       describe('and the secondary button is clicked', () => {
         beforeEach(() => {
           fireEvent(
-            wrapper.getByTestId('rn-modal-btn-secondary'),
+            wrapper.getByTestId('modal-secondary'),
             new MouseEvent('click', {
               bubbles: true,
               cancelable: true,
@@ -101,13 +101,13 @@ describe('Modal', () => {
     })
 
     it('should apply the correct modifier class to the wrapper', () => {
-      expect(wrapper.queryByTestId('rn-modal-wrapper')).toHaveClass(
+      expect(wrapper.queryByTestId('modal-wrapper')).toHaveClass(
         'rn-dialog--danger'
       )
     })
 
     it('should apply the correct modifier to the primary button', () => {
-      expect(wrapper.queryByTestId('rn-modal-btn-primary')).toHaveClass(
+      expect(wrapper.queryByTestId('modal-primary')).toHaveClass(
         'rn-btn--danger'
       )
     })
