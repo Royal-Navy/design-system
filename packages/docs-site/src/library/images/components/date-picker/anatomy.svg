@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 726 405">
+  <defs>
+    <filter id="a" width="117.6%" height="121.6%" x="-8.8%" y="-9.2%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="shadowSpreadOuter1"/>
+      <feOffset dy="4" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="8"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.103583916 0"/>
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="shadowSpreadOuter2"/>
+      <feOffset dy="1" in="shadowSpreadOuter2" result="shadowOffsetOuter2"/>
+      <feGaussianBlur in="shadowOffsetOuter2" result="shadowBlurOuter2" stdDeviation="1"/>
+      <feComposite in="shadowBlurOuter2" in2="SourceAlpha" operator="out" result="shadowBlurOuter2"/>
+      <feColorMatrix in="shadowBlurOuter2" result="shadowMatrixOuter2" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.102573208 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="shadowMatrixOuter2"/>
+      </feMerge>
+    </filter>
+    <filter id="c" width="135.7%" height="135.7%" x="-17.9%" y="-14.3%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0747104458 0"/>
+    </filter>
+    <filter id="e" width="135.7%" height="135.7%" x="-17.9%" y="-14.3%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0747104458 0"/>
+    </filter>
+    <rect id="d" width="28" height="28" x="0" y="0" rx="2"/>
+    <rect id="f" width="28" height="28" x="0" y="0" rx="2"/>
+    <path id="b" d="M274.2.74l3.93 3.88c.1.1.16.24.15.38H303a3 3 0 013 3v240a3 3 0 01-3 3H3a3 3 0 01-3-3V8a3 3 0 013-3h265.72a.5.5 0 01.15-.38L272.8.74a1 1 0 011.4 0z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g>
+      <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v372H.5z"/>
+      <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500">
+        <tspan x="102" y="92">Date Picker Input</tspan>
+      </text>
+      <path fill="#B8C7D2" d="M111 58h160v1H111z"/>
+      <rect width="19.2" height="18.4" x="102" y="49" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="108.82" y="61.2">1</tspan>
+      </text>
+      <circle cx="271.5" cy="58" r="3" fill="#3E5667"/>
+      <g transform="translate(270 86)">
+        <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+        <path fill="#FFF" stroke="#B8C7D2" d="M278.66 4.5H303a3.5 3.5 0 013.5 3.5v240a3.5 3.5 0 01-3.5 3.5H3A3.5 3.5 0 01-.5 248V8A3.5 3.5 0 013 4.5h265.34a1 1 0 01.17-.23l3.94-3.89a1.5 1.5 0 012.1 0l3.94 3.89a1 1 0 01.17.23z"/>
+      </g>
+      <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" transform="translate(270 86)">
+        <tspan x="98" y="40">September 2019</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(270 86)">
+        <tspan x="17.38" y="73">MON</tspan>
+      </text>
+      <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="23.04" y="102">27</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="26.52" y="134">3</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(270 86)">
+        <tspan x="61.41" y="73">TUE</tspan>
+      </text>
+      <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="64.04" y="102">28</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="67.52" y="134">4</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(270 86)">
+        <tspan x="100.07" y="73">WED</tspan>
+      </text>
+      <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="105.04" y="102">29</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="108.52" y="134">5</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(270 86)">
+        <tspan x="142.44" y="73">THU</tspan>
+      </text>
+      <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="146.04" y="102">30</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="149.52" y="134">6</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(270 86)">
+        <tspan x="186.47" y="73">FRI</tspan>
+      </text>
+      <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="187.04" y="102">31</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="190.52" y="134">7</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(270 86)">
+        <tspan x="225.78" y="73">SAT</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="231.52" y="102">1</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="231.52" y="134">8</tspan>
+      </text>
+      <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(270 86)">
+        <tspan x="265.69" y="73">SUN</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="272.52" y="102">2</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="272.52" y="134">9</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="23.04" y="166">10</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="64.04" y="166">11</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="105.04" y="166">12</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="146.04" y="166">13</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="228.04" y="166">15</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="269.04" y="166">16</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="23.04" y="198">17</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="64.04" y="198">18</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="105.04" y="198">19</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="146.04" y="198">20</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="187.04" y="198">21</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="228.04" y="198">22</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="269.04" y="198">23</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="23.04" y="230">24</tspan>
+      </text>
+      <path fill="#E2E9EE" d="M320 167h1v160h-1z"/>
+      <path fill="#E2E9EE" d="M280 167h1v160h-1z"/>
+      <path fill="#E2E9EE" d="M361 167h1v160h-1z"/>
+      <path fill="#E2E9EE" d="M402 167h1v160h-1z"/>
+      <path fill="#E2E9EE" d="M443 167h1v160h-1z"/>
+      <path fill="#E2E9EE" d="M484 167h1v160h-1z"/>
+      <path fill="#E2E9EE" d="M525 167h1v160h-1z"/>
+      <path fill="#E2E9EE" d="M565 167h1v160h-1z"/>
+      <path fill="#E2E9EE" d="M280 167h286v1H280z"/>
+      <path fill="#E2E9EE" d="M280 199h286v1H280z"/>
+      <path fill="#E2E9EE" d="M280 231h286v1H280z"/>
+      <path fill="#E2E9EE" d="M280 263h286v1H280z"/>
+      <path fill="#E2E9EE" d="M280 295h286v1H280z"/>
+      <path fill="#E2E9EE" d="M280 326h286v1H280z"/>
+      <path fill="#2A77C7" d="M443 231h42v33h-42z"/>
+      <text fill="#FFF" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="187.04" y="166">14</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="64.04" y="230">25</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="105.04" y="230">26</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="146.04" y="230">27</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="187.04" y="230">28</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="228.04" y="230">29</tspan>
+      </text>
+      <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(270 86)">
+        <tspan x="269.04" y="230">30</tspan>
+      </text>
+      <g transform="translate(320 106)">
+        <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+        <rect width="27" height="27" x=".5" y=".5" fill="#FFF" stroke="#B8C7D2" stroke-linejoin="square" rx="2"/>
+      </g>
+      <path fill="#748999" d="M330.92 119.41l4.51-3.1a.5.5 0 01.79.4v7.04a.5.5 0 01-.79.41l-4.51-3.1a1 1 0 010-1.65z"/>
+      <g>
+        <g transform="translate(499 106)">
+          <use fill="#000" filter="url(#e)" xlink:href="#f"/>
+          <rect width="27" height="27" x=".5" y=".5" fill="#FFF" stroke="#B8C7D2" stroke-linejoin="square" rx="2"/>
+        </g>
+        <path fill="#748999" d="M515.64 121.06l-4.52 3.1a.5.5 0 01-.78-.41v-7.03a.5.5 0 01.78-.41l4.52 3.1a1 1 0 010 1.65z"/>
+      </g>
+      <g transform="translate(284 36)">
+        <rect width="282" height="46" x="-1" y="-1" fill="#FFF" stroke="#2A77C7" stroke-width="2" rx="3"/>
+        <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+          <tspan x="14" y="36">14 / 09 / 2019</tspan>
+        </text>
+        <text fill="#748999" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+          <tspan x="14" y="18">Select Date</tspan>
+        </text>
+        <path fill="#E2E9EE" d="M239 9h1v26h-1z"/>
+        <path fill="#2A77C7" d="M260.32 19.2l4.14 6.02a.5.5 0 01-.41.78h-9.1a.5.5 0 01-.41-.78l4.14-6.02a1 1 0 011.64 0z"/>
+      </g>
+      <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500">
+        <tspan x="100" y="222">Calendar Widget</tspan>
+      </text>
+      <path fill="#B8C7D2" d="M109 188h160v1H109z"/>
+      <rect width="19.2" height="18.4" x="100" y="179" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="106.82" y="191.2">2</tspan>
+      </text>
+      <circle cx="269.5" cy="188" r="3" fill="#3E5667"/>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500">
+      <tspan x="0" y="402">The Date Picker anatomy.</tspan>
+    </text>
+  </g>
+</svg>

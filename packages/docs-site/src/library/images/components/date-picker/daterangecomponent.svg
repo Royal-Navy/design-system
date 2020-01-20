@@ -1,0 +1,352 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 727 363">
+  <defs>
+    <filter id="a" width="108.9%" height="121.6%" x="-4.5%" y="-9.2%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="shadowSpreadOuter1"/>
+      <feOffset dy="4" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="8"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.103583916 0"/>
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="shadowSpreadOuter2"/>
+      <feOffset dy="1" in="shadowSpreadOuter2" result="shadowOffsetOuter2"/>
+      <feGaussianBlur in="shadowOffsetOuter2" result="shadowBlurOuter2" stdDeviation="1"/>
+      <feComposite in="shadowBlurOuter2" in2="SourceAlpha" operator="out" result="shadowBlurOuter2"/>
+      <feColorMatrix in="shadowBlurOuter2" result="shadowMatrixOuter2" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.102573208 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="shadowMatrixOuter2"/>
+      </feMerge>
+    </filter>
+    <filter id="c" width="135.7%" height="135.7%" x="-17.9%" y="-14.3%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0747104458 0"/>
+    </filter>
+    <filter id="e" width="135.7%" height="135.7%" x="-17.9%" y="-14.3%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0747104458 0"/>
+    </filter>
+    <rect id="d" width="28" height="28" x="0" y="0" rx="2"/>
+    <rect id="f" width="28" height="28" x="0" y="0" rx="2"/>
+    <path id="b" d="M25.2.74l3.93 3.88c.1.1.16.24.15.38H603a3 3 0 013 3v240a3 3 0 01-3 3H3a3 3 0 01-3-3V8a3 3 0 013-3h16.72a.5.5 0 01.15-.38L23.8.74a1 1 0 011.4 0z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M1.5.5h725v317.91H1.5z"/>
+    <g transform="translate(61 34)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <path fill="#FFF" stroke="#B8C7D2" d="M29.66 4.5H603a3.5 3.5 0 013.5 3.5v240a3.5 3.5 0 01-3.5 3.5H3A3.5 3.5 0 01-.5 248V8A3.5 3.5 0 013 4.5h16.34a1 1 0 01.17-.23L23.45.38a1.5 1.5 0 012.1 0l3.94 3.89a1 1 0 01.17.23z"/>
+    </g>
+    <path fill="#748999" d="M370.14 67.4l-4.1-4.09a1 1 0 10-1.41 1.42l2.42 2.41H359a1 1 0 000 2h8.03l-2.4 2.4a1 1 0 001.42 1.42l4.09-4.09a1 1 0 00.3-.76 1 1 0 00-.3-.7z"/>
+    <path fill="#DDF4FF" d="M234 179h122v33H234z"/>
+    <path fill="#DDF4FF" d="M71 211h285v33H71z"/>
+    <path fill="#DDF4FF" d="M71 242h285v33H71z"/>
+    <path fill="#DDF4FF" d="M372 115h285v33H372z"/>
+    <path fill="#DDF4FF" d="M372 147h285v33H372z"/>
+    <path fill="#DDF4FF" d="M372 179h175v33H372z"/>
+    <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" transform="translate(61 34)">
+      <tspan x="98" y="40">September 2019</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="17.38" y="73">MON</tspan>
+    </text>
+    <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="23.04" y="102">27</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="26.52" y="134">3</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="61.41" y="73">TUE</tspan>
+    </text>
+    <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="64.04" y="102">28</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="67.52" y="134">4</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="100.07" y="73">WED</tspan>
+    </text>
+    <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="105.04" y="102">29</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="108.52" y="134">5</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="142.44" y="73">THU</tspan>
+    </text>
+    <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="146.04" y="102">30</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="149.52" y="134">6</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="186.47" y="73">FRI</tspan>
+    </text>
+    <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="187.04" y="102">31</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="190.52" y="134">7</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="225.78" y="73">SAT</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="231.52" y="102">1</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="231.52" y="134">8</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="265.69" y="73">SUN</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="272.52" y="102">2</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="272.52" y="134">9</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="23.04" y="166">10</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="64.04" y="166">11</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="105.04" y="166">12</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="146.04" y="166">13</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="228.04" y="166">15</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="269.04" y="166">16</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="23.04" y="198">17</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="64.04" y="198">18</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="105.04" y="198">19</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="146.04" y="198">20</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="187.04" y="198">21</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="228.04" y="198">22</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="269.04" y="198">23</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="23.04" y="230">24</tspan>
+    </text>
+    <path fill="#E2E9EE" d="M111 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M71 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M152 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M193 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M234 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M275 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M316 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M356 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M71 115h286v1H71z"/>
+    <path fill="#E2E9EE" d="M71 147h286v1H71z"/>
+    <path fill="#E2E9EE" d="M71 179h286v1H71z"/>
+    <path fill="#E2E9EE" d="M71 211h286v1H71z"/>
+    <path fill="#E2E9EE" d="M71 243h286v1H71z"/>
+    <path fill="#E2E9EE" d="M71 274h286v1H71z"/>
+    <path fill="#2A77C7" d="M234 179h42v33h-42z"/>
+    <text fill="#FFF" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="187.04" y="166">14</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="64.04" y="230">25</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="105.04" y="230">26</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="146.04" y="230">27</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="187.04" y="230">28</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="228.04" y="230">29</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="269.04" y="230">30</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Medium, Lato" font-size="15" font-weight="400" transform="translate(61 34)">
+      <tspan x="405" y="40">October 2019</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="317.38" y="73">MON</tspan>
+    </text>
+    <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="323.04" y="102">27</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="326.52" y="134">3</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="361.41" y="73">TUE</tspan>
+    </text>
+    <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="364.04" y="102">28</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="367.52" y="134">4</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="400.07" y="73">WED</tspan>
+    </text>
+    <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="405.04" y="102">29</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="408.52" y="134">5</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="442.44" y="73">THU</tspan>
+    </text>
+    <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="446.04" y="102">30</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="449.52" y="134">6</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="486.47" y="73">FRI</tspan>
+    </text>
+    <text fill="#B8C7D2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="487.04" y="102">31</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="490.52" y="134">7</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="525.78" y="73">SAT</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="531.52" y="102">1</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="531.52" y="134">8</tspan>
+    </text>
+    <text fill="#748999" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(61 34)">
+      <tspan x="565.69" y="73">SUN</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="572.52" y="102">2</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="572.52" y="134">9</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="323.04" y="166">10</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="364.04" y="166">11</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="405.04" y="166">12</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="446.04" y="166">13</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="528.04" y="166">15</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="569.04" y="166">16</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="323.04" y="198">17</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="364.04" y="198">18</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="405.04" y="198">19</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="446.04" y="198">20</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="487.04" y="198">21</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="528.04" y="198">22</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="569.04" y="198">23</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="323.04" y="230">24</tspan>
+    </text>
+    <path fill="#E2E9EE" d="M411 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M371 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M452 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M493 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M534 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M575 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M616 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M656 115h1v160h-1z"/>
+    <path fill="#E2E9EE" d="M371 115h286v1H371z"/>
+    <path fill="#E2E9EE" d="M371 147h286v1H371z"/>
+    <path fill="#E2E9EE" d="M371 179h286v1H371z"/>
+    <path fill="#E2E9EE" d="M371 211h286v1H371z"/>
+    <path fill="#E2E9EE" d="M371 243h286v1H371z"/>
+    <path fill="#E2E9EE" d="M371 274h286v1H371z"/>
+    <path fill="#2A77C7" d="M534 179h42v33h-42z"/>
+    <text fill="#FFF" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="487.04" y="166">14</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="364.04" y="230">25</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="405.04" y="230">26</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="446.04" y="230">27</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="487.04" y="230">28</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="528.04" y="230">29</tspan>
+    </text>
+    <text fill="#253B53" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" transform="translate(61 34)">
+      <tspan x="569.04" y="230">30</tspan>
+    </text>
+    <g transform="translate(72 54)">
+      <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+      <rect width="27" height="27" x=".5" y=".5" fill="#FFF" stroke="#B8C7D2" stroke-linejoin="square" rx="2"/>
+    </g>
+    <path fill="#748999" d="M82.92 67.41l4.51-3.1a.5.5 0 01.79.4v7.04a.5.5 0 01-.79.41l-4.51-3.1a1 1 0 010-1.65z"/>
+    <g>
+      <g transform="translate(628 54)">
+        <use fill="#000" filter="url(#e)" xlink:href="#f"/>
+        <rect width="27" height="27" x=".5" y=".5" fill="#FFF" stroke="#B8C7D2" stroke-linejoin="square" rx="2"/>
+      </g>
+      <path fill="#748999" d="M644.64 69.06l-4.52 3.1a.5.5 0 01-.78-.41v-7.03a.5.5 0 01.78-.41l4.52 3.1a1 1 0 010 1.65z"/>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500">
+      <tspan x=".5" y="359.41">The Date Picker with Range component.</tspan>
+    </text>
+  </g>
+</svg>
