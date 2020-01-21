@@ -17,6 +17,17 @@ stories.add('Default', () => {
   )
 })
 
+stories.add('Disabled', () => {
+  return (
+    <DatePicker
+      startDate={new Date('11/01/2018')}
+      onChange={action('onChange')}
+      placement={DATEPICKER_PLACEMENT.BELOW}
+      isDisabled
+    />
+  )
+})
+
 stories.add('Range', () => {
   return (
     <DatePicker

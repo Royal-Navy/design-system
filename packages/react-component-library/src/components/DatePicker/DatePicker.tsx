@@ -38,7 +38,6 @@ export interface DatePickerProps extends ComponentWithClass {
   label?: string
   onBlur?: (event: React.FormEvent) => void
   onChange?: (data: StateObject) => void
-  disabled?: boolean
   placement:
     | typeof DATEPICKER_PLACEMENT.ABOVE
     | typeof DATEPICKER_PLACEMENT.BELOW
@@ -47,6 +46,7 @@ export interface DatePickerProps extends ComponentWithClass {
   startDate?: Date
   endDate?: Date
   isRange?: boolean
+  isDisabled?: boolean
 }
 
 function transformDates(startDate: Date, endDate: Date) {
@@ -69,11 +69,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   label = 'Select Date',
   onBlur,
   onChange,
-  disabled,
   placement = DATEPICKER_PLACEMENT.BELOW,
   startDate,
   endDate,
   isRange,
+  isDisabled,
 }) => {
   const [state, setState] = useState<StateObject>({
     startDate,
@@ -124,6 +124,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   const classes = classNames('rn-date-picker', className, {
     'is-open': isOpen,
     'has-content': hasContent,
+    'is-disabled': isDisabled,
   })
 
   const floatingBoxClasses = classNames('rn-date-picker__container', {
@@ -172,7 +173,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               value={transformDates(state.startDate, state.endDate)}
               onBlur={onBlur}
               onFocus={onFocus}
-              disabled={disabled}
+              disabled={isDisabled}
             />
           ),
           renderElement: (ref: React.RefObject<any>) => (
