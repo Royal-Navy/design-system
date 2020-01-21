@@ -32,21 +32,21 @@ export interface StateObject {
 }
 
 export interface DatePickerProps extends ComponentWithClass {
+  endDate?: Date
   id?: string
-  name?: string
-  value?: string
+  isDisabled?: boolean
+  isRange?: boolean
   label?: string
+  name?: string
   onBlur?: (event: React.FormEvent) => void
   onChange?: (data: StateObject) => void
-  disabled?: boolean
   placement:
     | typeof DATEPICKER_PLACEMENT.ABOVE
     | typeof DATEPICKER_PLACEMENT.BELOW
     | typeof DATEPICKER_PLACEMENT.LEFT
     | typeof DATEPICKER_PLACEMENT.RIGHT
   startDate?: Date
-  endDate?: Date
-  isRange?: boolean
+  value?: string
 }
 
 function transformDates(startDate: Date, endDate: Date) {
@@ -63,17 +63,17 @@ function transformDates(startDate: Date, endDate: Date) {
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   className,
+  endDate,
   id = uuid(),
-  name,
-  value,
+  isDisabled,
+  isRange,
   label = 'Select Date',
+  name,
   onBlur,
   onChange,
-  disabled,
   placement = DATEPICKER_PLACEMENT.BELOW,
   startDate,
-  endDate,
-  isRange,
+  value,
 }) => {
   const [state, setState] = useState<StateObject>({
     startDate,
@@ -124,6 +124,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   const classes = classNames('rn-date-picker', className, {
     'is-open': isOpen,
     'has-content': hasContent,
+    'is-disabled': isDisabled,
   })
 
   const floatingBoxClasses = classNames('rn-date-picker__container', {
@@ -172,7 +173,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               value={transformDates(state.startDate, state.endDate)}
               onBlur={onBlur}
               onFocus={onFocus}
-              disabled={disabled}
+              disabled={isDisabled}
             />
           ),
           renderElement: (ref: React.RefObject<any>) => (
@@ -199,11 +200,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 </NavButton>
 
                 <div className={gridClasses}>
-                  {activeMonths.map((month, index) => (
+                  {activeMonths.map(({ month, year }) => (
                     <Month
-                      key={`${month.year}-${month.month}`}
-                      year={month.year}
-                      month={month.month}
+                      key={`${year}-${month}`}
+                      year={year}
+                      month={month}
                       firstDayOfWeek={firstDayOfWeek}
                     />
                   ))}
