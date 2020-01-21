@@ -1,12 +1,12 @@
 import React from 'react'
-import ReactSelect from 'react-select'
+import ReactSelect, { Props as ReactSelectProps } from 'react-select'
 
 import { DropdownIndicator } from './DropdownIndicator'
 import { Input } from './Input'
-import { Option, SelectOptionWithBadgeType } from './Option'
 import { SingleValue } from './SingleValue'
+import { Option, SelectOptionWithBadgeType } from './Option'
 
-export interface SelectProps {
+export interface SelectProps extends ReactSelectProps<any> {
   label?: string
   name?: string
   onChange?: (event: any) => void
@@ -20,6 +20,7 @@ export const Select: React.FC<SelectProps> = ({
   onChange,
   options,
   value,
+  ...rest
 }) => {
   const onSelectChange = (option: any) => {
     const selectedValue =
@@ -52,6 +53,7 @@ export const Select: React.FC<SelectProps> = ({
       options={options}
       placeholder={null}
       value={selectedOption}
+      {...rest}
     />
   )
 }
