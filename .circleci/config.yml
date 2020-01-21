@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  firebase-deploy: azdevs/firebase-deploy@1.0.0
-
 commands:
   dependencies:
     description: 'Load dependency cache, get dependencies and update cache'
@@ -187,52 +184,6 @@ jobs:
           root: packages
           paths:
             - docs-site/coverage
-  build_docs-site:
-    executor: node
-    working_directory: ~/standards-toolkit
-    steps:
-      - checkout
-      - dependencies
-      - attach_workspace:
-          at: ~/standards-toolkit
-      - run:
-          name: Build Icon Dependency
-          command: yarn --cwd packages/icon-library build
-      - run:
-          name: Build React Components
-          command: yarn --cwd packages/react-component-library build
-      - run:
-          name: Build site
-          working_directory: packages/docs-site
-          command: yarn build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - packages/docs-site/public
-            - packages/docs-site/firebase.json
-            - packages/docs-site/.firebaserc
-  deploy_docs_site_staging:
-    executor: node
-    working_directory: ~/standards-toolkit/packages/docs-site
-    steps:
-      - checkout:
-          path: ~/standards-toolkit
-      - attach_workspace:
-          at: ~/standards-toolkit
-      - firebase-deploy/deploy:
-          token: $FIREBASE_AUTH_TOKEN
-          alias: staging
-  deploy_docs_site_production:
-    executor: node
-    working_directory: ~/standards-toolkit/packages/docs-site
-    steps:
-      - checkout:
-          path: ~/standards-toolkit
-      - attach_workspace:
-          at: ~/standards-toolkit
-      - firebase-deploy/deploy:
-          token: $FIREBASE_AUTH_TOKEN
-          alias: production
 
 workflows:
   version: 2
@@ -277,20 +228,3 @@ workflows:
       - test_docs-site:
           requires:
             - test_react-component-library
-      - build_docs-site:
-          requires:
-            - test_docs-site
-      - deploy_docs_site_staging:
-          requires:
-            - build_docs-site
-          filters:
-            branches:
-              only:
-                - develop
-      - deploy_docs_site_production:
-          requires:
-            - build_docs-site
-          filters:
-            branches:
-              only:
-                - master
