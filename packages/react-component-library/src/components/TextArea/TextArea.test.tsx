@@ -113,9 +113,9 @@ describe('TextArea', () => {
       beforeEach(() => {
         form.touched = {}
 
-        const FormikTextInput = withFormik(TextArea)
+        const FormikTextArea = withFormik(TextArea)
 
-        textInput = render(<FormikTextInput field={field} form={form} />)
+        textInput = render(<FormikTextArea field={field} form={form} />)
       })
 
       it('should not indicate the field has an error', () => {
@@ -129,9 +129,9 @@ describe('TextArea', () => {
       beforeEach(() => {
         form.touched.colour = true
 
-        const FormikTextInput = withFormik(TextArea)
+        const FormikTextArea = withFormik(TextArea)
 
-        textInput = render(<FormikTextInput field={field} form={form} />)
+        textInput = render(<FormikTextArea field={field} form={form} />)
       })
 
       it('should indicate the field has an error', () => {

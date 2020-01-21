@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 
 import { Field, Formik, Form } from 'formik'
-import useFormik from '../../enhancers/withFormik'
+import withFormik from '../../enhancers/withFormik'
 
 import Switch from './Switch'
 import ResponsiveSwitch from './index'
@@ -68,39 +68,44 @@ stories.add('Large', () => (
   />
 ))
 
-interface Data {
-  'example-switch-field': string
-}
+stories.add('Formik', () => {
+  const SwitchForm = () => {
+    interface Data {
+      'example-switch-field': string
+    }
 
-const initialValues: Data = {
-  'example-switch-field': '3',
-}
+    const initialValues: Data = {
+      'example-switch-field': '3',
+    }
 
-const onSubmit = (data: Data): void => {
-  action(`Form Submit ${JSON.stringify(data)}`)
-}
+    const FormikSwitch = withFormik(ResponsiveSwitch)
 
-const FormikSwitch = useFormik(ResponsiveSwitch)
+    return (
+      <Formik
+        initialValues={initialValues}
+        onSubmit={action('Submitted')}
+        render={({ setFieldValue }) => {
+          return (
+            <Form>
+              <Field
+                name="example-switch-field"
+                label="Date Range"
+                component={FormikSwitch}
+                options={options}
+                onChange={(event: React.FormEvent<HTMLInputElement>) => {
+                  setFieldValue(
+                    'example-switch-field',
+                    event.currentTarget.value
+                  )
+                  action('onChange')(event)
+                }}
+              />
+            </Form>
+          )
+        }}
+      />
+    )
+  }
 
-stories.add('Formik', () => (
-  <Formik
-    initialValues={initialValues}
-    onSubmit={onSubmit}
-    render={({ setFieldValue }) => {
-      return (
-        <Form>
-          <Field
-            name="example-switch-field"
-            label="Date Range"
-            component={FormikSwitch}
-            options={options}
-            onChange={(event: React.FormEvent<HTMLInputElement>) => {
-              setFieldValue('example-switch-field', event.currentTarget.value)
-              action('onChange')(event)
-            }}
-          />
-        </Form>
-      )
-    }}
-  />
-))
+  return <SwitchForm />
+})

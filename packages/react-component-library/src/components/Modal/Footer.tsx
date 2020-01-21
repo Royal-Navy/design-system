@@ -13,14 +13,14 @@ export const Footer: React.FC<FooterProps> = ({
   tertiaryButton,
 }) => {
   return (
-    <footer className="rn-modal__footer" data-testid="rn-modal-footer">
+    <footer className="rn-modal__footer" data-testid="modal-footer">
       {tertiaryButton && (
         <Button
           className="rn-modal__tertiary-button"
           type="button"
           variant="secondary"
           {...tertiaryButton}
-          data-testid="rn-modal-btn-tertiary"
+          data-testid="modal-tertiary"
         />
       )}
       {secondaryButton && (
@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({
           type="button"
           variant="secondary"
           {...secondaryButton}
-          data-testid="rn-modal-btn-secondary"
+          data-testid="modal-secondary"
         />
       )}
       {primaryButton && (
@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({
           type="button"
           variant="primary"
           {...primaryButton}
-          data-testid="rn-modal-btn-primary"
+          data-testid="modal-primary"
         />
       )}
     </footer>

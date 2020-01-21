@@ -16,11 +16,18 @@ const options = [
 ]
 
 stories.add('Default', () => (
-  <div style={{ margin: 50 }}>
-    <Select
-      options={options}
-      label="Hello"
-      onChange={action('onChange')}
-    />
-  </div>
+  <Select
+    options={options}
+    label="Example Label"
+    onChange={action('onChange')}
+  />
+))
+
+stories.add('Disabled', () => (
+  <Select
+    options={options}
+    label="Example Label"
+    onChange={action('onChange')}
+    isDisabled
+  />
 ))

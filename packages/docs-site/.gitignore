@@ -2,7 +2,6 @@
 node_modules/
 git_modules/
 public/
-.firebase/
 .cache
 generated-library/
 

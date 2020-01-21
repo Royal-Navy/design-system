@@ -194,6 +194,26 @@ describe('DatePicker', () => {
     })
   })
 
+  describe('when isDisabled prop is provided', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <DatePicker placement={DATEPICKER_PLACEMENT.BELOW} isDisabled />
+      )
+    })
+
+    it('applies the `is-disabled` stateful class', () => {
+      expect(
+        wrapper.getByTestId('datepicker-input-wrapper').classList
+      ).toContain('is-disabled')
+    })
+
+    it('applies the disabled attribute to the input', () => {
+      expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
+        'disabled'
+      )
+    })
+  })
+
   describe('when selecting a date range', () => {
     beforeEach(() => {
       onChange = jest.fn()
