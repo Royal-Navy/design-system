@@ -70,21 +70,6 @@ jobs:
           path: packages/docs-site/test-results
       - store_artifacts:
           path: packages/docs-site/test-results
-  lint_storybook-react-input-state:
-    executor: node
-    steps:
-      - checkout
-      - dependencies
-      - run: mkdir -p packages/storybook-react-input-state/test-results/eslint
-      - run:
-          name: Lint
-          environment:
-            ESLINT_JUNIT_OUTPUT: test-results/eslint/storybook-react-input-state-results.xml
-          command: yarn --cwd packages/storybook-react-input-state eslint -f ../../node_modules/eslint-junit/index.js ./src
-      - store_test_results:
-          path: packages/storybook-react-input-state/test-results
-      - store_artifacts:
-          path: packages/storybook-react-input-state/test-results
   test_react-component-library:
     executor: node
     steps:
@@ -106,24 +91,6 @@ jobs:
           root: packages
           paths:
             - react-component-library/coverage
-  test_storybook-react-input-state:
-    executor: node
-    steps:
-      - checkout
-      - dependencies
-      - run:
-          name: Jest
-          environment:
-            JEST_JUNIT_OUTPUT: test-results/jest/storybook-react-input-state-results.xml
-          command: yarn --cwd packages/storybook-react-input-state jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
-      - store_test_results:
-          path: packages/storybook-react-input-state/test-results
-      - store_artifacts:
-          path: packages/storybook-react-input-state/test-results
-      - persist_to_workspace:
-          root: packages
-          paths:
-            - storybook-react-input-state/coverage
   code_climate:
     executor: node
     steps:
@@ -139,29 +106,9 @@ jobs:
           working_directory: ~/project
           command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.react-component-library.json workspace/react-component-library/coverage/lcov.info
       - run:
-          name: Convert React storybook input state results to cc format
-          working_directory: ~/project
-          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.storybook-react-input-state.json workspace/storybook-react-input-state/coverage/lcov.info
-      - run:
-          name: Combine coverage results
-          working_directory: ~/project
-          command: /tmp/cc-test-reporter sum-coverage workspace/codeclimate.*.json -p 2 -o workspace/coverage.json
-      - run:
           name: Upload CC coverage
           working_directory: ~/project
-          command: /tmp/cc-test-reporter upload-coverage -i workspace/coverage.json
-  publish_storybook-react-input-state:
-    executor: node
-    steps:
-      - checkout
-      - dependencies
-      - run:
-          name: Authenticate NPM
-          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-      - run:
-          name: Publish package
-          working_directory: packages/storybook-react-input-state
-          command: npm publish --registry https://$NPM_REGISTRY
+          command: /tmp/cc-test-reporter upload-coverage -i workspace/codeclimate.react-component-library.json
   publish_eslint-config-react:
     executor: node
     steps:
@@ -294,25 +241,13 @@ workflows:
       - security_audit
       - lint_css-framework
       - lint_react-component-library
-      - lint_storybook-react-input-state
       - lint_docs_site
       - test_react-component-library:
           requires:
             - lint_react-component-library
-      - test_storybook-react-input-state:
-          requires:
-            - lint_storybook-react-input-state
       - code_climate:
           requires:
             - test_react-component-library
-            - test_storybook-react-input-state
-      - publish_storybook-react-input-state:
-          requires:
-            - test_storybook-react-input-state
-          filters:
-            branches:
-              only:
-                - master
       - publish_eslint-config-react:
           filters:
             branches:
@@ -342,7 +277,6 @@ workflows:
       - test_docs-site:
           requires:
             - test_react-component-library
-            - test_storybook-react-input-state
       - build_docs-site:
           requires:
             - test_docs-site
