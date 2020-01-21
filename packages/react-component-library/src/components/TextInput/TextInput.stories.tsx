@@ -1,4 +1,3 @@
-import State from '@royalnavy/storybook-react-input-state'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import { Field, Formik, Form } from 'formik'

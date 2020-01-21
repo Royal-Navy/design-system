@@ -8,8 +8,7 @@
     "packages/eslint-config-react",
     "packages/icon-library",
     "packages/reactapp",
-    "packages/react-component-library",
-    "packages/storybook-react-input-state"
+    "packages/react-component-library"
   ],
   "engines": {
     "node": ">=10.13.0 <13"
