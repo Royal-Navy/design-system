@@ -19,6 +19,15 @@
   }
 }
 
+.rn-date-picker__tether {
+  z-index: 9999;
+  pointer-events: none;
+
+  &.is-visible {
+    pointer-events: all;
+  }
+}
+
 .rn-date-picker__outer-wrapper {
   display: inline-flex;
   flex-direction: row;

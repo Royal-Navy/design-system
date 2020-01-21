@@ -127,6 +127,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     'is-disabled': isDisabled,
   })
 
+  const tetherClasses = classNames('rn-date-picker__tether', {
+    'is-visible': isOpen,
+  })
+
   const floatingBoxClasses = classNames('rn-date-picker__container', {
     'is-visible': isOpen,
   })
@@ -163,6 +167,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           offset: PLACEMENTS.OFFSET,
           attachment: PLACEMENTS.ATTACHMENT,
           targetAttachment: PLACEMENTS.TARGET_ATTACHMENT,
+          className: tetherClasses,
           renderTarget: (ref: React.RefObject<any>) => (
             <Input
               ref={ref}
