@@ -1,5 +1,9 @@
 version: 2.1
 
+aliases:
+  - &docker
+    - image: circleci/node:12.13.0
+
 commands:
   dependencies:
     description: 'Load dependency cache, get dependencies and update cache'
@@ -15,19 +19,14 @@ commands:
             - ~/.cache/yarn
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
-executors:
-  node:
-    docker:
-      - image: circleci/node:12.13.0
-
 jobs:
   security_audit:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - run: yarn audit
   lint_css-framework:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
@@ -38,7 +37,7 @@ jobs:
       - store_artifacts:
           path: packages/css-framework/test-results/stylelint
   lint_react-component-library:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
@@ -53,7 +52,7 @@ jobs:
       - store_artifacts:
           path: packages/react-component-library/test-results
   lint_docs_site:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
@@ -68,7 +67,7 @@ jobs:
       - store_artifacts:
           path: packages/docs-site/test-results
   test_react-component-library:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
@@ -89,7 +88,7 @@ jobs:
           paths:
             - react-component-library/coverage
   code_climate:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - attach_workspace:
@@ -107,7 +106,7 @@ jobs:
           working_directory: ~/project
           command: /tmp/cc-test-reporter upload-coverage -i workspace/codeclimate.react-component-library.json
   publish_eslint-config-react:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
@@ -119,7 +118,7 @@ jobs:
           working_directory: packages/eslint-config-react
           command: npm publish --registry https://$NPM_REGISTRY
   publish_css-framework:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
@@ -131,7 +130,7 @@ jobs:
           working_directory: packages/css-framework
           command: npm publish --registry https://$NPM_REGISTRY
   publish_react-component-library:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
@@ -146,7 +145,7 @@ jobs:
           working_directory: packages/react-component-library
           command: npm publish --registry https://$NPM_REGISTRY
   publish_icon-library:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
@@ -158,7 +157,7 @@ jobs:
           working_directory: packages/icon-library
           command: npm publish --registry https://$NPM_REGISTRY
   test_docs-site:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
