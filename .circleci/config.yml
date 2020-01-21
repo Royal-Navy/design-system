@@ -1,8 +1,20 @@
 version: 2.1
 
 aliases:
+  - &authenticate_npm
+    run:
+      name: Authenticate NPM
+      command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+  - &build_icon_library
+    run:
+      name: Build Icon Library
+      command: yarn --cwd packages/icon-library build
   - &docker
-    - image: circleci/node:12.13.0
+      - image: circleci/node:12.13.0
+  - &publish_package
+    run:
+      name: Publish package
+      command: npm publish --registry https://$NPM_REGISTRY
 
 commands:
   dependencies:
@@ -71,9 +83,7 @@ jobs:
     steps:
       - checkout
       - dependencies
-      - run:
-          name: Build Icon Dependency
-          command: yarn --cwd packages/icon-library build
+      - *build_icon_library
       - run:
           name: Jest
           environment:
@@ -106,64 +116,44 @@ jobs:
           working_directory: ~/project
           command: /tmp/cc-test-reporter upload-coverage -i workspace/codeclimate.react-component-library.json
   publish_eslint-config-react:
+    working_directory: packages/eslint-config-react
     docker: *docker
     steps:
       - checkout
       - dependencies
-      - run:
-          name: Authenticate NPM
-          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-      - run:
-          name: Publish package
-          working_directory: packages/eslint-config-react
-          command: npm publish --registry https://$NPM_REGISTRY
+      - *authenticate_npm
+      - *publish_package
   publish_css-framework:
+    working_directory: packages/css-framework
     docker: *docker
     steps:
       - checkout
       - dependencies
-      - run:
-          name: Authenticate NPM
-          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-      - run:
-          name: Publish package
-          working_directory: packages/css-framework
-          command: npm publish --registry https://$NPM_REGISTRY
+      - *authenticate_npm
+      - *publish_package
   publish_react-component-library:
+    working_directory: packages/react-component-library
     docker: *docker
     steps:
       - checkout
       - dependencies
-      - run:
-          name: Build Icon Dependency
-          command: yarn --cwd packages/icon-library build
-      - run:
-          name: Authenticate NPM
-          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-      - run:
-          name: Publish package
-          working_directory: packages/react-component-library
-          command: npm publish --registry https://$NPM_REGISTRY
+      - *build_icon_library
+      - *authenticate_npm
+      - *publish_package
   publish_icon-library:
+    working_directory: packages/icon-library
     docker: *docker
     steps:
       - checkout
       - dependencies
-      - run:
-          name: Authenticate NPM
-          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-      - run:
-          name: Publish package
-          working_directory: packages/icon-library
-          command: npm publish --registry https://$NPM_REGISTRY
+      - *authenticate_npm
+      - *publish_package
   test_docs-site:
     docker: *docker
     steps:
       - checkout
       - dependencies
-      - run:
-          name: Build Icon Dependency
-          command: yarn --cwd packages/icon-library build
+      - *build_icon_library
       - run:
           name: Build React Components
           command: yarn --cwd packages/react-component-library build
