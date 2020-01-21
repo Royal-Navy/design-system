@@ -200,11 +200,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 </NavButton>
 
                 <div className={gridClasses}>
-                  {activeMonths.map((month, index) => (
+                  {activeMonths.map(({ month, year }) => (
                     <Month
-                      key={`${month.year}-${month.month}`}
-                      year={month.year}
-                      month={month.month}
+                      key={`${year}-${month}`}
+                      year={year}
+                      month={month}
                       firstDayOfWeek={firstDayOfWeek}
                     />
                   ))}
