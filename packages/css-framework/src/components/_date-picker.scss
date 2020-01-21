@@ -181,6 +181,7 @@
   border-radius: 2px;
   color: f.color("neutral", "300");
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
+  background-color: f.color("neutral", "white");
 
   &:first-of-type {
     left: f.spacing("8");
@@ -228,6 +229,7 @@
   font-size: f.font-size("s");
   font-weight: 600;
   color: f.color("neutral", "400");
+  background-color: f.color("neutral", "white");
 
   &:focus {
     outline: none;
