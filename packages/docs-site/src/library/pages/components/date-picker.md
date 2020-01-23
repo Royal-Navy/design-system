@@ -1,6 +1,6 @@
 ---
 title: Date Picker
-description: todo
+description: The Date Picker component lets the user pick a date from a calender dropdown widget.
 header: true
 ---
 
