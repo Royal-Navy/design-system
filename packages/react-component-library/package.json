@@ -14,17 +14,19 @@
     "starter",
     "boilerplate"
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "author": "NELSON",
   "license": "Apache-2.0",
   "scripts": {
     "analyze": "webpack -p --config=webpack/analyze.js",
+    "build": "run-s build:es build:cjs types",
+    "build:cjs": "NODE_ENV=cjs webpack -p --config=webpack/prod.js",
+    "build:es": "NODE_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\"",
     "build:dev": "run-s build:ts:dev types",
     "build:ts:dev": "webpack -p --config=webpack/dev.js",
-    "build:ts": "webpack -p --config=webpack/prod.js",
-    "build": "run-s build:ts types",
     "dev": "concurrently \"webpack --watch --config=webpack/dev.js\" \"yarn types --watch\"",
     "lint-staged": "lint-staged",
     "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
@@ -34,7 +36,7 @@
     "storybook": "start-storybook -p 6006",
     "test:watch": "NODE_ENV=test jest --watch",
     "test": "NODE_ENV=test jest",
-    "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/"
+    "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/types"
   },
   "lint-staged": {
     "*.@(js|jsx|ts|tsx)": "eslint"
