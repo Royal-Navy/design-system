@@ -2,7 +2,6 @@
 title: Popover
 description: Popover is a self-contained modal or dialogue that appears in context next to a trigger element.
 header: true
-draft: true
 ---
 
 import { Popover, Tab, TabSet } from '@royalnavy/react-component-library'
@@ -10,16 +9,32 @@ import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
 
+import PopoverComponent from '../../images/components/popover/Component'
+import PopoverAnatomy from '../../images/components/popover/Anatomy'
+
 # Overview
 
 A popover is a self-contained modal or dialogue that appears in context next to a trigger element. It contains more content than a tooltip, but is directly related to a trigger element in the same way as a tooltip.
 
-## Usage
+<PopoverComponent />
 
 <TabSet>
 <Tab title="Design">
 
   <SketchWidget name="Popover" href="/standards-toolkit.sketch" />
+
+  ### Anatomy
+
+  <PopoverAnatomy />
+
+  1. **Trigger**. This element triggers the Popover container to appear. It also anchors the Popover, so it will display beside the trigger.
+  2. **Popover container**. Much like the Card component, the Popover container accepts content and components. Its layout is dictated by the content it is displaying.
+
+  ### Sizing and Spacing
+  Whilst the size of the popover should be dictated by its content, try to limit the overall size of the component. It should be there to provide additional context, not as a way to inline functionality that should either be a standalone page, or an actual modal/dialog.
+
+  ### Hierarchy & Placement
+  Only one Popover can be active on a page at a time.
   
 </Tab>
 <Tab title="Develop">
