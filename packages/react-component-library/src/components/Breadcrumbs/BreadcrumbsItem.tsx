@@ -1,7 +1,8 @@
 import React, { ReactElement } from 'react'
 
+import { IconChevronRight } from '@royalnavy/icon-library'
+
 import { EndTitle } from '.'
-import Separator from './images/separator.svg'
 
 export interface BreadcrumbsItemProps {
   isFirst?: boolean
@@ -17,9 +18,10 @@ export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
   return (
     <li data-testid="breadcrumb" className="rn-breadcrumbs__breadcrumb">
       {!isFirst && (
-        <span data-testid="separator" className="rn-breadcrumbs__separator">
-          <Separator />
-        </span>
+        <IconChevronRight
+          data-testid="separator"
+          className="rn-breadcrumbs__separator"
+        />
       )}
       {isLast ? (
         <EndTitle>{(link as ReactElement).props.children}</EndTitle>

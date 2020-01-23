@@ -10,11 +10,16 @@
 
 .rn-breadcrumbs__breadcrumb {
   display: inline-block;
+  vertical-align: top;
 
   > a {
     color: f.color("neutral", "400");
     font-weight: 400;
     text-decoration: none;
+  }
+
+  span, a {
+    vertical-align: top;
   }
 }
 
@@ -33,5 +38,4 @@
 
 .rn-breadcrumbs__separator {
   display: inline-block;
-  padding: 0 f.spacing("4");
 }
