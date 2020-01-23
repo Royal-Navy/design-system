@@ -162,18 +162,6 @@ describe('NotificationPanel', () => {
       )
     })
 
-    it('should not set the button class name', () => {
-      expect(
-        wrapper.getByTestId('notification-button').classList
-      ).not.toContain('button-class')
-    })
-
-    it('should not set the class name', () => {
-      expect(wrapper.getByTestId('notification-panel').classList).not.toContain(
-        'class'
-      )
-    })
-
     it('should not set the not read indicator', () => {
       expect(wrapper.queryAllByTestId('notification-indicator')).toHaveLength(0)
     })

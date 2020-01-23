@@ -39,12 +39,6 @@ describe('RangeSlider', () => {
       expect(wrapper.queryAllByTestId('rangeslider-handle').length).toBe(1)
     })
 
-    it('should apply the correct classes', () => {
-      expect(wrapper.queryByTestId('rangeslider').classList).toContain(
-        'rn-rangeslider'
-      )
-    })
-
     it('should render correct number of ticks', () => {
       expect(wrapper.queryAllByTestId('rangeslider-tick').length).toBe(5)
     })
