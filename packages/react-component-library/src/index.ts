@@ -12,7 +12,7 @@ import { BreadcrumbsItem, Breadcrumbs } from './components/Breadcrumbs'
 import { Button } from './components/Button'
 import { ButtonGroup, ButtonGroupItem } from './components/ButtonGroup'
 import Checkbox from './components/Checkbox'
-import { DatePicker } from './components/DatePicker'
+import { DatePicker, DATEPICKER_PLACEMENT } from './components/DatePicker'
 import { Dialog } from './components/Dialog'
 import { Drawer } from './components/Drawer'
 import { Dropdown } from './components/Dropdown'
@@ -74,6 +74,7 @@ export {
   ButtonGroupItem,
   Checkbox,
   DatePicker,
+  DATEPICKER_PLACEMENT,
   Dialog,
   Drawer,
   Dropdown,

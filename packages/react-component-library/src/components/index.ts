@@ -11,7 +11,7 @@ import { BreadcrumbsItem, Breadcrumbs } from './Breadcrumbs'
 import { Button } from './Button'
 import { ButtonGroup, ButtonGroupItem } from './ButtonGroup'
 import Checkbox from './Checkbox'
-import { DatePicker } from './DatePicker'
+import { DatePicker, DATEPICKER_PLACEMENT } from './DatePicker'
 import { Dialog } from './Dialog'
 import { Drawer } from './Drawer'
 import { Dropdown } from './Dropdown'
@@ -53,6 +53,7 @@ export {
   ButtonGroupItem,
   Checkbox,
   DatePicker,
+  DATEPICKER_PLACEMENT,
   Dialog,
   Drawer,
   Dropdown,
