@@ -1,11 +1,5 @@
 {
   "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "modules": false
-      }
-    ],
     "@babel/preset-react",
     "@babel/typescript"
   ],
@@ -14,6 +8,23 @@
     "@babel/proposal-object-rest-spread"
   ],
   "env": {
+    "es": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": false
+          }
+        ]
+      ]
+    },
+    "cjs": {
+      "presets": [
+        [
+          "@babel/preset-env"
+        ]
+      ]
+    },
     "test": {
       "plugins": [
         "@babel/plugin-transform-modules-commonjs"
