@@ -115,6 +115,15 @@ jobs:
           name: Upload CC coverage
           working_directory: ~/project
           command: /tmp/cc-test-reporter upload-coverage -i workspace/codeclimate.react-component-library.json
+  test_visual_regression:
+    docker: *docker
+    steps:
+      - checkout
+      - dependencies
+      - *build_icon_library
+      - run:
+          name: Run visual regression tests
+          command: yarn --cwd packages/react-component-library chromatic --app-code=$CHROMATIC_APP_CODE
   publish_eslint-config-react:
     working_directory: packages/eslint-config-react
     docker: *docker
@@ -186,6 +195,9 @@ workflows:
           requires:
             - lint_react-component-library
       - code_climate:
+          requires:
+            - test_react-component-library
+      - test_visual_regression:
           requires:
             - test_react-component-library
       - publish_eslint-config-react:
