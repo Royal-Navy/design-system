@@ -59,7 +59,7 @@ describe('Popover', () => {
         )
       })
 
-      describe('and the user unhovers from the target element', () => {
+      describe.skip('and the user unhovers from the target element', () => {
         beforeEach(() => {
           fireEvent.mouseLeave(wrapper.getByText('Hover on me!'))
           jest.runAllTimers()
