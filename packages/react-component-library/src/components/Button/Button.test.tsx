@@ -21,11 +21,6 @@ describe('Button', () => {
       button = wrapper.getByText('Click me').parentElement
     })
 
-    it('should style the button', () => {
-      expect(button.classList).toContain('rn-btn')
-      expect(button.classList).toContain('rn-btn--regular')
-    })
-
     it('should default the type to "button"', () => {
       expect(button).toHaveAttribute('type', 'button')
     })
@@ -70,24 +65,6 @@ describe('Button', () => {
     })
   })
 
-  describe('when the size is specified', () => {
-    it.each`
-      size         | expected
-      ${'small'}   | ${'rn-btn--small'}
-      ${'regular'} | ${'rn-btn--regular'}
-      ${'large'}   | ${'rn-btn--large'}
-    `('styles the button when the size is $size', ({ size, expected }) => {
-      wrapper = render(
-        <Button onClick={onClickSpy} size={size}>
-          Click me
-        </Button>
-      )
-      button = wrapper.getByText('Click me').parentElement
-
-      expect(button.classList).toContain(expected)
-    })
-  })
-
   describe('when the type is specified', () => {
     it.each`
       type        | expected
@@ -103,26 +80,5 @@ describe('Button', () => {
 
       expect(button).toHaveAttribute('type', expected)
     })
-  })
-
-  describe('when the variant is specified', () => {
-    it.each`
-      variant        | expected
-      ${'primary'}   | ${'rn-btn--primary'}
-      ${'secondary'} | ${'rn-btn--secondary'}
-      ${'tertiary'}  | ${'rn-btn--tertiary'}
-    `(
-      'styles the button when the variant is $variant',
-      ({ variant, expected }) => {
-        wrapper = render(
-          <Button onClick={onClickSpy} variant={variant}>
-            Click me
-          </Button>
-        )
-        button = wrapper.getByText('Click me').parentElement
-
-        expect(button.classList).toContain(expected)
-      }
-    )
   })
 })

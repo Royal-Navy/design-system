@@ -40,14 +40,6 @@ describe('Table', () => {
       )
     })
 
-    it('should style the table wrapper', () => {
-      expect(wrapper.getByTestId('table-wrapper').classList).toContain('rn-table__wrapper')
-    })
-
-    it('should style the table', () => {
-      expect(wrapper.getByTestId('table').classList).toContain('rn-table')
-    })
-
     it('should render three table header cells', () => {
       expect(wrapper.queryAllByTestId('table-header')).toHaveLength(3)
     })
@@ -130,15 +122,6 @@ describe('Table', () => {
           </TableColumn>
         </Table>
       )
-    })
-
-    it('should give the sortable table headers the "sortable" class', () => {
-      expect(wrapper.getByText('First').classList).toContain('is-sortable')
-      expect(wrapper.getByText('Third').classList).toContain('is-sortable')
-    })
-
-    it('should not give the unsortable table headers the "sortable" class', () => {
-      expect(wrapper.getByText('Second').classList).not.toContain('sortable')
     })
 
     it('should have sort icons', () => {

@@ -53,12 +53,6 @@ describe('Popover', () => {
         )
       })
 
-      it('applies the class for the light colour scheme by default', () => {
-        expect(wrapper.getByTestId('floating-box').classList).toContain(
-          'rn-floating-box--light'
-        )
-      })
-
       describe.skip('and the user unhovers from the target element', () => {
         beforeEach(() => {
           fireEvent.mouseLeave(wrapper.getByText('Hover on me!'))
@@ -103,12 +97,6 @@ describe('Popover', () => {
               Hover on me!
             </div>
           </Popover>
-        )
-      })
-
-      it('applies the class for the dark colour scheme', () => {
-        expect(wrapper.getByTestId('floating-box').classList).toContain(
-          'rn-floating-box--dark'
         )
       })
     })

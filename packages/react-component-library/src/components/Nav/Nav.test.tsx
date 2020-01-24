@@ -35,14 +35,6 @@ describe('Nav', () => {
       )
     })
 
-    it('should default the orientation to vertical', () => {
-      expect(wrapper.getByTestId('nav').classList).toContain('rn-nav--vertical')
-    })
-
-    it('should default the size to regular', () => {
-      expect(wrapper.getByTestId('nav').classList).toContain('rn-nav--regular')
-    })
-
     it('should render three items', () => {
       const navItems = wrapper.queryAllByTestId('nav-item')
       expect(navItems).toHaveLength(3)
@@ -150,32 +142,6 @@ describe('Nav', () => {
       it('should set the first item to open', async () => {
         expect(wrapper.getAllByTestId('nav-item')[0].classList).toContain('is-open')
       })
-    })
-  })
-
-  describe('when the orientation is specified', () => {
-    it.each`
-      orientation      | expected
-      ${'vertical'}    | ${'rn-nav--vertical'}
-      ${'horizontal'}  | ${'rn-nav--horizontal'}
-    `('sets the modifier when the orientation is $orientation', ({ orientation, expected }) => {
-      wrapper = render(<Nav navItems={navItemsMock} orientation={orientation} />)
-
-      expect(wrapper.getByTestId('nav').classList).toContain(expected)
-    })
-  })
-
-  describe('when the size is specified', () => {
-    it.each`
-      size         | expected
-      ${'small'}   | ${'rn-nav--small'}
-      ${'regular'} | ${'rn-nav--regular'}
-      ${'large'}   | ${'rn-nav--large'}
-      ${'xlarge'}  | ${'rn-nav--xlarge'}
-    `('sets the modifier when the size is $size', ({ size, expected }) => {
-      wrapper = render(<Nav navItems={navItemsMock} size={size} />)
-
-      expect(wrapper.getByTestId('nav').classList).toContain(expected)
     })
   })
 })

@@ -98,24 +98,6 @@ describe('Alert', () => {
           )
         })
 
-        it('should use the `danger` modifiers', () => {
-          expect(wrapper.getByTestId('alert').classList).toContain(
-            'rn-alert--danger'
-          )
-          expect(wrapper.getByTestId('close').classList).toContain(
-            'rn-alert__close--danger'
-          )
-          expect(wrapper.getByTestId('header-icon').classList).toContain(
-            'rn-alert__icon--danger'
-          )
-          expect(wrapper.getByTestId('header-title').classList).toContain(
-            'rn-alert__title--danger'
-          )
-          expect(wrapper.getByTestId('content-description').classList).toContain(
-            'rn-alert__description--danger'
-          )
-        })
-
         it('should render the danger icon', () => {
           expect(wrapper.getByTestId('icon-danger')).toBeInTheDocument()
         })
@@ -127,12 +109,6 @@ describe('Alert', () => {
             <Alert variant={ALERT_VARIANT.DANGER}>
               Description
             </Alert>
-          )
-        })
-
-        it('should use the `danger` modifiers', () => {
-          expect(wrapper.getByTestId('content-icon').classList).toContain(
-            'rn-alert__icon--danger'
           )
         })
 
@@ -151,24 +127,6 @@ describe('Alert', () => {
         )
       })
 
-      it('should use the `success` modifiers', () => {
-        expect(wrapper.getByTestId('alert').classList).toContain(
-          'rn-alert--success'
-        )
-        expect(wrapper.getByTestId('close').classList).toContain(
-          'rn-alert__close--success'
-        )
-        expect(wrapper.getByTestId('header-icon').classList).toContain(
-          'rn-alert__icon--success'
-        )
-        expect(wrapper.getByTestId('header-title').classList).toContain(
-          'rn-alert__title--success'
-        )
-        expect(wrapper.getByTestId('content-description').classList).toContain(
-          'rn-alert__description--success'
-        )
-      })
-
       it('should render the success icon', () => {
         expect(wrapper.getByTestId('icon-success')).toBeInTheDocument()
       })
@@ -180,24 +138,6 @@ describe('Alert', () => {
           <Alert title="Title" variant={ALERT_VARIANT.WARNING}>
             Description
           </Alert>
-        )
-      })
-
-      it('should use the `warning` modifiers', () => {
-        expect(wrapper.getByTestId('alert').classList).toContain(
-          'rn-alert--warning'
-        )
-        expect(wrapper.getByTestId('close').classList).toContain(
-          'rn-alert__close--warning'
-        )
-        expect(wrapper.getByTestId('header-icon').classList).toContain(
-          'rn-alert__icon--warning'
-        )
-        expect(wrapper.getByTestId('header-title').classList).toContain(
-          'rn-alert__title--warning'
-        )
-        expect(wrapper.getByTestId('content-description').classList).toContain(
-          'rn-alert__description--warning'
         )
       })
 
