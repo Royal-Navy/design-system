@@ -8,21 +8,25 @@ import {
   BADGE_VARIANT,
 } from './constants'
 
+export type BadgeColorType =
+  | typeof BADGE_COLOR.ACTION
+  | typeof BADGE_COLOR.DANGER
+  | typeof BADGE_COLOR.NEUTRAL
+  | typeof BADGE_COLOR.SUCCESS
+  | typeof BADGE_COLOR.WARNING
+
+export type BadgeSizeType =
+  | typeof BADGE_SIZE.SMALL
+  | typeof BADGE_SIZE.REGULAR
+  | typeof BADGE_SIZE.LARGE
+  | typeof BADGE_SIZE.XLARGE
+
 interface BadgeProps extends ComponentWithClass {
-  color?:
-    | typeof BADGE_COLOR.ACTION
-    | typeof BADGE_COLOR.DANGER
-    | typeof BADGE_COLOR.NEUTRAL
-    | typeof BADGE_COLOR.SUCCESS
-    | typeof BADGE_COLOR.WARNING
+  color?: BadgeColorType
   colorVariant?:
     | typeof BADGE_COLOR_VARIANT.FADED
     | typeof BADGE_COLOR_VARIANT.SOLID
-  size?:
-    | typeof BADGE_SIZE.SMALL
-    | typeof BADGE_SIZE.REGULAR
-    | typeof BADGE_SIZE.LARGE
-    | typeof BADGE_SIZE.XLARGE
+  size?: BadgeSizeType
   variant?: typeof BADGE_VARIANT.PILL
 }
 
