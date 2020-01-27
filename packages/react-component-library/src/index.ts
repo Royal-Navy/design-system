@@ -9,7 +9,7 @@ import {
   BADGE_VARIANT,
 } from './components/Badge'
 import { BreadcrumbsItem, Breadcrumbs } from './components/Breadcrumbs'
-import { Button } from './components/Button'
+import { Button, BUTTON_SIZE } from './components/Button'
 import { ButtonGroup, ButtonGroupItem } from './components/ButtonGroup'
 import { CardFrame } from './components/CardFrame'
 import Checkbox from './components/Checkbox'
@@ -71,6 +71,7 @@ export {
   BreadcrumbsItem,
   Breadcrumbs,
   Button,
+  BUTTON_SIZE,
   ButtonGroup,
   ButtonGroupItem,
   CardFrame,

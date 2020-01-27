@@ -1,15 +1,28 @@
 import React, { FormEvent } from 'react'
 import classNames from 'classnames'
 
+import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT } from './constants'
+
+export type ButtonSizeType =
+  | typeof BUTTON_SIZE.SMALL
+  | typeof BUTTON_SIZE.REGULAR
+  | typeof BUTTON_SIZE.LARGE
+  | typeof BUTTON_SIZE.XLARGE
+
+export type ButtonVariantType =
+  | typeof BUTTON_VARIANT.PRIMARY
+  | typeof BUTTON_VARIANT.SECONDARY
+  | typeof BUTTON_VARIANT.TERTIARY
+
 export interface ButtonProps extends ComponentWithClass {
   children?: string
-  color?: 'danger'
+  color?: typeof BUTTON_COLOR.DANGER
   isDisabled?: boolean
   icon?: React.ReactNode
   onClick?: (event: FormEvent<HTMLButtonElement>) => void
-  size?: 'small' | 'regular' | 'large' | 'xlarge'
+  size?: ButtonSizeType
   type?: 'button' | 'submit'
-  variant?: 'primary' | 'secondary' | 'tertiary'
+  variant?: ButtonVariantType
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -19,7 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
   isDisabled,
   icon,
   onClick,
-  size = 'regular',
+  size = BUTTON_SIZE.REGULAR,
   type = 'button',
   variant,
   ...rest

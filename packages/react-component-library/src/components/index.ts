@@ -8,7 +8,7 @@ import {
   BADGE_VARIANT,
 } from './Badge'
 import { BreadcrumbsItem, Breadcrumbs } from './Breadcrumbs'
-import { Button } from './Button'
+import { Button, BUTTON_SIZE } from './Button'
 import { ButtonGroup, ButtonGroupItem } from './ButtonGroup'
 import { CardFrame } from './CardFrame'
 import Checkbox from './Checkbox'
@@ -50,6 +50,7 @@ export {
   BreadcrumbsItem,
   Breadcrumbs,
   Button,
+  BUTTON_SIZE,
   ButtonGroup,
   ButtonGroupItem,
   CardFrame,
