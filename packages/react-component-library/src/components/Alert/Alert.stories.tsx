@@ -5,9 +5,9 @@ import { withKnobs, text } from '@storybook/addon-knobs';
 import { Alert, ALERT_VARIANT } from './index'
 
 const stories = storiesOf('Alert', module)
-const dangerStories = storiesOf('Alert/Danger', module)
-const successStories = storiesOf('Alert/Success', module)
-const warningStories = storiesOf('Alert/Warning', module)
+const dangerStories = storiesOf('Alert/Examples/Danger', module)
+const successStories = storiesOf('Alert/Examples/Success', module)
+const warningStories = storiesOf('Alert/Examples/Warning', module)
 
 stories.addDecorator(withKnobs)
 
