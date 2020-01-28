@@ -1,0 +1,197 @@
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100;
+  src:
+    local('Lato Hairline '),
+    local('Lato-Hairline'),
+    url('./assets/Lato-Hairline.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100;
+  src:
+    local('Lato Hairline italic'),
+    local('Lato-Hairlineitalic'),
+    url('./assets/Lato-HairlineItalic.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200;
+  src:
+    local('Lato Thin '),
+    local('Lato-Thin'),
+    url('./assets/Lato-Thin.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200;
+  src:
+    local('Lato Thin italic'),
+    local('Lato-Thinitalic'),
+    url('./assets/Lato-ThinItalic.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src:
+    local('Lato Light '),
+    local('Lato-Light'),
+    url('./assets/Lato-Light.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300;
+  src:
+    local('Lato Light italic'),
+    local('Lato-Lightitalic'),
+    url('./assets/Lato-LightItalic.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src:
+    local('Lato Regular '),
+    local('Lato-Regular'),
+    url('./assets/Lato-Regular.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src:
+    local('Lato Regular italic'),
+    local('Lato-Regularitalic'),
+    url('./assets/Lato-Italic.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src:
+    local('Lato Medium '),
+    local('Lato-Medium'),
+    url('./assets/Lato-Medium.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 500;
+  src:
+    local('Lato Medium italic'),
+    local('Lato-Mediumitalic'),
+    url('./assets/Lato-MediumItalic.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src:
+    local('Lato Semibold '),
+    local('Lato-Semibold'),
+    url('./assets/Lato-Semibold.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 600;
+  src:
+    local('Lato Semibold italic'),
+    local('Lato-Semibolditalic'),
+    url('./assets/Lato-SemiboldItalic.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src:
+    local('Lato Bold '),
+    local('Lato-Bold'),
+    url('./assets/Lato-Bold.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src:
+    local('Lato Bold italic'),
+    local('Lato-Bolditalic'),
+    url('./assets/Lato-BoldItalic.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src:
+    local('Lato Heavy '),
+    local('Lato-Heavy'),
+    url('./assets/Lato-Heavy.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 800;
+  src:
+    local('Lato Heavy italic'),
+    local('Lato-Heavyitalic'),
+    url('./assets/Lato-HeavyItalic.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src:
+    local('Lato Black '),
+    local('Lato-Black'),
+    url('./assets/Lato-Black.ttf') format('ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 900;
+  src:
+    local('Lato Black italic'),
+    local('Lato-Blackitalic'),
+    url('./assets/Lato-BlackItalic.ttf') format('ttf')
+}

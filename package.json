@@ -1,13 +1,13 @@
 {
   "name": "nelson-standards-toolkit",
-  "version": "1.6.1",
   "private": true,
   "workspaces": [
     "packages/css-framework",
     "packages/docs-site",
     "packages/eslint-config-react",
     "packages/icon-library",
-    "packages/react-component-library"
+    "packages/react-component-library",
+    "packages/fonts"
   ],
   "engines": {
     "node": ">=10.13.0 <13"
