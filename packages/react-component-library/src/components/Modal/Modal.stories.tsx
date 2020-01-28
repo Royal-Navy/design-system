@@ -6,6 +6,7 @@ import { Modal } from './index'
 import { ButtonProps } from '../Button'
 
 const stories = storiesOf('Modal', module)
+const examples = storiesOf('Modal/Examples', module)
 
 const primaryButton: ButtonProps = {
   onClick: action('Clicked primary'),
@@ -37,7 +38,7 @@ stories.add('Default', () => {
   )
 })
 
-stories.add('No header', () => {
+examples.add('No header', () => {
   return (
     <Modal
       primaryButton={primaryButton}
@@ -51,7 +52,7 @@ stories.add('No header', () => {
   )
 })
 
-stories.add('No buttons', () => {
+examples.add('No buttons', () => {
   return (
     <Modal title="Modal Header" onClose={action('onClose')} isOpen>
       <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
@@ -59,7 +60,7 @@ stories.add('No buttons', () => {
   )
 })
 
-stories.add('Blank', () => {
+examples.add('Blank', () => {
   return (
     <Modal isOpen>
       <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>

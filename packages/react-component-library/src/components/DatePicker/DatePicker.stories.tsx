@@ -5,33 +5,46 @@ import React from 'react'
 import { DatePicker, DATEPICKER_PLACEMENT } from '.'
 
 const stories = storiesOf('DatePicker', module)
+const examples = storiesOf('DatePicker/Examples', module)
 
 stories.add('Default', () => {
   return (
     <DatePicker
       startDate={new Date('11/01/2018')}
+      onBlur={action('onBlur')}
       onChange={action('onChange')}
       placement={DATEPICKER_PLACEMENT.BELOW}
     />
   )
 })
 
-stories.add('Disabled', () => {
+examples.add('Custom label', () => {
   return (
     <DatePicker
       startDate={new Date('11/01/2018')}
+      onBlur={action('onBlur')}
       onChange={action('onChange')}
-      placement={DATEPICKER_PLACEMENT.BELOW}
+      label="Some other label"
+    />
+  )
+})
+
+examples.add('Disabled', () => {
+  return (
+    <DatePicker
+      startDate={new Date('11/01/2018')}
+      onBlur={action('onBlur')}
+      onChange={action('onChange')}
       isDisabled
     />
   )
 })
 
-stories.add('Range', () => {
+examples.add('Range', () => {
   return (
     <DatePicker
+      onBlur={action('onBlur')}
       onChange={action('onChange')}
-      placement={DATEPICKER_PLACEMENT.BELOW}
       isRange
     />
   )

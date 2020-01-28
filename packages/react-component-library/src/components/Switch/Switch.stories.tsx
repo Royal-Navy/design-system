@@ -9,6 +9,7 @@ import Switch from './Switch'
 import ResponsiveSwitch from './index'
 
 const stories = storiesOf('Switch', module)
+const examples = storiesOf('Switch/Examples', module)
 
 const options = [
   { label: 'Day', value: '1' },
@@ -20,36 +21,32 @@ const options = [
 stories.add('Default', () => (
   <Switch
     name="example-switch-field"
-    value=""
     label="Date Range"
     options={options}
     onChange={action('onChange')}
   />
 ))
 
-stories.add('No legend', () => (
+examples.add('No legend', () => (
   <Switch
     name="example-switch-field"
-    value=""
     options={options}
     onChange={action('onChange')}
   />
 ))
 
-stories.add('Responsive', () => (
+examples.add('Responsive', () => (
   <ResponsiveSwitch
     name="example-switch-field"
-    value=""
     label="Date Range"
     options={options}
     onChange={action('onChange')}
   />
 ))
 
-stories.add('Small', () => (
+examples.add('Small', () => (
   <Switch
     name="example-switch-field"
-    value=""
     label="Date Range"
     options={options}
     onChange={action('onChange')}
@@ -57,7 +54,7 @@ stories.add('Small', () => (
   />
 ))
 
-stories.add('Large', () => (
+examples.add('Large', () => (
   <Switch
     name="example-switch-field"
     value=""
@@ -68,7 +65,16 @@ stories.add('Large', () => (
   />
 ))
 
-stories.add('Formik', () => {
+examples.add('Selected value', () => (
+  <Switch
+    name="example-switch-field"
+    options={options}
+    onChange={action('onChange')}
+    value="2"
+  />
+))
+
+examples.add('Formik', () => {
   const SwitchForm = () => {
     interface Data {
       'example-switch-field': string
