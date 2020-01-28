@@ -38,11 +38,14 @@ export const Table: React.FC<TableProps> = ({ data, children }) => {
         <tbody>
           {tableData.map((row: RowProps) => (
             <tr key={getKey(`table-row`, row.id)} data-testid="table-row">
-              {children.map(({ props }) => (
-                <td key={getKey(`table-cell-${props.field}`, row.id)}>
-                  {row[props.field]}
-                </td>
-              ))}
+              {React.Children.map(
+                children,
+                (child: React.ReactElement<TableColumnProps>) => (
+                  <td key={getKey(`table-cell-${child.props.field}`, row.id)}>
+                    {row[child.props.field]}
+                  </td>
+                )
+              )}
             </tr>
           ))}
         </tbody>
