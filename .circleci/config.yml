@@ -157,6 +157,14 @@ jobs:
       - dependencies
       - *authenticate_npm
       - *publish_package
+  publish_fonts:
+    working_directory: packages/fonts
+    docker: *docker
+    steps:
+      - checkout
+      - dependencies
+      - *authenticate_npm
+      - *publish_package
   test_docs-site:
     docker: *docker
     steps:
@@ -210,6 +218,11 @@ workflows:
             branches:
               only:
                 - master
+      - publish_fonts:
+        filters:
+          branches:
+            only:
+              - master
       - publish_css-framework:
           requires:
             - lint_css-framework
