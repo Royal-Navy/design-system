@@ -50,9 +50,9 @@ The `Checkbox` component allows the active selection of an arbitrary amount of o
 The Checkbox component can be used on it's own in a regular form, if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
 
 ### Example with Formik
-<CodeHighlighter source={`<Checkbox name="example1" label="My Label 1" value="true" checked />`} language="javascript">
+<CodeHighlighter source={`<Checkbox name="example1" label="My Label 1" value="true" isChecked />`} language="javascript">
   <Form>
-    <Checkbox name="example1" label="My Label 1" value="true" checked />
+    <Checkbox name="example1" label="My Label 1" value="true" isChecked />
     <Checkbox name="example2" label="My Label 2" />
     <Checkbox name="example3" label="My Label 3" />
   </Form>
@@ -120,6 +120,20 @@ with the field:
     Description: 'Optional additional css class to associate with the component wrapper',
   },
   {
+    Name: 'id',
+    Type: 'string',
+    Required: 'False',
+    Default: 'unique id',
+    Description: 'Provide the ID for a field and tie it to its label. If one is not provided then a unique id will be created',
+  },
+  {
+    Name: 'isChecked',
+    Type: 'boolean',
+    Required: 'False',
+    Default: 'false',
+    Description: 'Whether the checkbox is checked or not.',
+  },
+  {
     Name: 'isDisabled',
     Type: 'boolean',
     Required: 'False',
@@ -132,13 +146,6 @@ with the field:
     Required: 'True',
     Default: '',
     Description: 'Can be manually provided or sent from Formik. Indicates any errors and which fields have been touched',
-  },
-  {
-    Name: 'id',
-    Type: 'string',
-    Required: 'False',
-    Default: 'unique id',
-    Description: 'Provide the ID for a field and tie it to its label. If one is not provided then a unique id will be created',
   },
   {
     Name: 'label',
