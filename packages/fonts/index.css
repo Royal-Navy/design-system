@@ -1,0 +1,119 @@
+/* lato-100normal - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100;
+  src:
+    local('Lato Thin '),
+    local('Lato-Thin'),
+    url('./assets/Lato-Thin.ttf') format('ttf')
+}
+
+/* lato-100italic - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100;
+  src:
+    local('Lato Thin italic'),
+    local('Lato-Thinitalic'),
+    url('./assets/Lato-ThinItalic.ttf') format('ttf')
+}
+
+/* lato-300normal - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src:
+    local('Lato Light '),
+    local('Lato-Light'),
+    url('./assets/Lato-Light.ttf') format('ttf')
+}
+
+/* lato-300italic - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300;
+  src:
+    local('Lato Light italic'),
+    local('Lato-Lightitalic'),
+    url('./assets/Lato-LightItalic.ttf') format('ttf')
+}
+
+/* lato-400normal - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src:
+    local('Lato Regular '),
+    local('Lato-Regular'),
+    url('./assets/Lato-Regular.ttf') format('ttf')
+}
+
+/* lato-400italic - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src:
+    local('Lato Regular italic'),
+    local('Lato-Regularitalic'),
+    url('./assets/Lato-Italic.ttf') format('ttf')
+}
+
+/* lato-700normal - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src:
+    local('Lato Bold '),
+    local('Lato-Bold'),
+    url('./assets/Lato-Bold.ttf') format('ttf')
+}
+
+/* lato-700italic - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src:
+    local('Lato Bold italic'),
+    local('Lato-Bolditalic'),
+    url('./assets/Lato-BoldItalic.ttf') format('ttf')
+}
+
+/* lato-900normal - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src:
+    local('Lato Black '),
+    local('Lato-Black'),
+    url('./assets/Lato-Black.ttf') format('ttf')
+}
+
+/* lato-900italic - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 900;
+  src:
+    local('Lato Black italic'),
+    local('Lato-Blackitalic'),
+    url('./assets/Lato-BlackItalic.ttf') format('ttf')
+}
