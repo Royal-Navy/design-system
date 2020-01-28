@@ -5,6 +5,7 @@ import React from 'react'
 import { Select } from './index'
 
 const stories = storiesOf('Select', module)
+const examples = storiesOf('Select/Examples', module)
 
 const options = [
   { value: 'chocolate', label: 'Chocolate', badge: 100 },
@@ -23,7 +24,7 @@ stories.add('Default', () => (
   />
 ))
 
-stories.add('Disabled', () => (
+examples.add('Disabled', () => (
   <Select
     options={options}
     label="Example Label"

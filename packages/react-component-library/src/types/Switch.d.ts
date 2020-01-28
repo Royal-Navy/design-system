@@ -7,7 +7,7 @@ export interface OptionType {
 
 export interface SwitchType {
   name: string
-  value: string
+  value?: string
   label?: string
   className?: string
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void

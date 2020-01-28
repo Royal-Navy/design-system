@@ -3,13 +3,19 @@ import { storiesOf } from '@storybook/react'
 
 import PhaseBanner from './index'
 
-const stories = storiesOf('PhaseBanner', module)
+const stories = storiesOf('Phase banner', module)
+const examples = storiesOf('Phase banner/Examples', module)
 
 stories.add('Default', () => <PhaseBanner />)
-stories.add('Custom phase tag', () => <PhaseBanner phase="beta" />)
-stories.add('Custom link', () => <PhaseBanner link="/my-custom-link" />)
-stories.add('Custom text', () => (
+
+examples.add('Beta', () => <PhaseBanner phase="beta" />)
+
+examples.add('Custom link', () => <PhaseBanner link="/my-custom-link" />)
+
+examples.add('Custom text', () => (
   <PhaseBanner>
     Custom html can go here. <strong>This part is in bold!</strong>
   </PhaseBanner>
 ))
+
+examples.add('Full width', () => <PhaseBanner isFullWidth />)
