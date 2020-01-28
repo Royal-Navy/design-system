@@ -219,10 +219,10 @@ workflows:
               only:
                 - master
       - publish_fonts:
-        filters:
-          branches:
-            only:
-              - master
+          filters:
+            branches:
+              only:
+                - master
       - publish_css-framework:
           requires:
             - lint_css-framework
