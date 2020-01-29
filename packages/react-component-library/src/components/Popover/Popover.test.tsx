@@ -4,8 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 
 import { render, RenderResult, fireEvent, wait } from '@testing-library/react'
 
-import { Popover } from '.'
-import { POPOVER_PLACEMENT } from './constants'
+import { Popover, POPOVER_PLACEMENT } from '.'
 
 const HOVER_ON_ME = 'Hover on me!'
 
