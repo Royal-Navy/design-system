@@ -1,10 +1,9 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { POPOVER_PLACEMENT } from './constants'
 import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 
-import { Popover } from '.'
+import { Popover, POPOVER_PLACEMENT } from '.'
 
 const stories = storiesOf('Popover', module)
 const examples = storiesOf('Popover/Examples', module)

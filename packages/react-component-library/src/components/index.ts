@@ -22,7 +22,7 @@ import Nav from './Nav'
 import { NumberInput } from './NumberInput'
 import Pagination from './Pagination'
 import PhaseBanner from './PhaseBanner'
-import { Popover } from './Popover'
+import { Popover, POPOVER_PLACEMENT } from './Popover'
 import Radio from './Radio'
 import { ScrollableNav, ScrollableNavItem } from './ScrollableNav'
 import { Searchbar } from './Searchbar'
@@ -67,6 +67,7 @@ export {
   Pagination,
   PhaseBanner,
   Popover,
+  POPOVER_PLACEMENT,
   Radio,
   ScrollableNav,
   ScrollableNavItem,
