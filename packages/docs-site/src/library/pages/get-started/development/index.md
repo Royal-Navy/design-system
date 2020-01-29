@@ -1,6 +1,6 @@
 ---
 title: Development
-description: 'A multi-framework, responsive component library and SASS framework'
+description: 'A responsive component library and SASS framework'
 header: true
 ---
 
