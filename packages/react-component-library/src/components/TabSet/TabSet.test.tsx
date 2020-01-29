@@ -88,6 +88,38 @@ describe('TabSet', () => {
       })
     })
 
+    describe('when the TabSet is wrapped in a form', () => {
+      let clickEventSpy: MouseEvent
+
+      beforeEach(() => {
+        wrapper = render(
+          <form>
+            <TabSet>
+              <Tab title="Title 1">Content 1</Tab>
+              <Tab title="Title 2">Content 2</Tab>
+            </TabSet>
+          </form>
+        )
+      })
+
+      describe('when the user clicks on a tab', () => {
+        beforeEach(() => {
+          clickEventSpy = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+
+          Object.assign(clickEventSpy, { preventDefault: jest.fn() })
+
+          fireEvent(wrapper.getByText('Title 2').parentElement, clickEventSpy)
+        })
+
+        it('should invoke preventDefault', () => {
+          expect(clickEventSpy.preventDefault).toHaveBeenCalledTimes(1)
+        })
+      })
+    })
+
     describe('when tabs contain elements', () => {
       beforeEach(() => {
         wrapper = render(
