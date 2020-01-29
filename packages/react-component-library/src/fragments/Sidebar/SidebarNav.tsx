@@ -31,21 +31,20 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({
   onItemClick,
   onMouseOut,
   onMouseOver,
-}) => {
-  const childrenAsArray = children as React.ReactElement<SidebarNavItemProps>[]
-
-  return (
-    <nav
-      className="rn-sidebar__top"
-      data-testid="sidebar-nav"
-      onBlur={onBlur}
-      onFocus={onFocus}
-      onMouseOut={onMouseOut}
-      onMouseOver={onMouseOver}
-    >
-      {React.Children.map(childrenAsArray, child => {
+}) => (
+  <nav
+    className="rn-sidebar__top"
+    data-testid="sidebar-nav"
+    onBlur={onBlur}
+    onFocus={onFocus}
+    onMouseOut={onMouseOut}
+    onMouseOver={onMouseOver}
+  >
+    {React.Children.map(
+      children,
+      (child: React.ReactElement<SidebarNavItemProps>) => {
         return mapNavItem(child, onItemClick)
-      })}
-    </nav>
-  )
-}
+      }
+    )}
+  </nav>
+)
