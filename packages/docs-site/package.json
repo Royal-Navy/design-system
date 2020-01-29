@@ -75,7 +75,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^24.9.0",
+    "babel-jest": "^25.1.0",
     "babel-plugin-styled-components": "^1.10.7",
     "babel-preset-gatsby": "^0.2.27",
     "eslint": "^6.8.0",
