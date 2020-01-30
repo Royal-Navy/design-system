@@ -2,7 +2,6 @@
 @use "../abstracts/mixins" as m;
 
 $active-border-color: f.color("action", "600");
-$btn-focus-width: 0.2rem;
 
 .rn-tab-set {
   display: flex;
@@ -102,7 +101,7 @@ $btn-focus-width: 0.2rem;
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(f.color("action", "700") , 0.5);
+    outline: none;
   }
 
   &.is-active {
@@ -118,8 +117,10 @@ $btn-focus-width: 0.2rem;
 .rn-tab-set__content {
   display: none;
 
-  // Fix to ensure the first level SVGs in a content document have appropriate
-  // padding underneath their headings.
+  /**
+   * Fix to ensure the first level SVGs in a content document
+   * have appropriate padding underneath their headings.
+   */
   > svg {
     width: 100%;
     margin-top: f.spacing("8");

@@ -1,0 +1,10 @@
+{
+  "name": "@royalnavy/fonts",
+  "version": "2.1.0",
+  "main": "index.css",
+  "author": "NELSON",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  }
+}

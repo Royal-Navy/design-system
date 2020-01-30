@@ -5,6 +5,7 @@ import React from 'react'
 import { Dialog } from './index'
 
 const stories = storiesOf('Dialog', module)
+const examples = storiesOf('Dialog/Examples', module)
 
 stories.add('Default', () => {
   return (
@@ -18,7 +19,7 @@ stories.add('Default', () => {
   )
 })
 
-stories.add('Danger', () => {
+examples.add('Danger', () => {
   return (
     <Dialog
       title="Dialog Title"

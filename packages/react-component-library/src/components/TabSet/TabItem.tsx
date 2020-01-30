@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, MouseEvent } from 'react'
 import classNames from 'classnames'
 
 interface TabItemProps {
@@ -10,14 +10,19 @@ interface TabItemProps {
 }
 
 export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
-  ({ children, index, isActive, onClick, isScrollable }, ref) => {
+  ({ children, isActive, onClick }, ref) => {
     const tabClasses = classNames('rn-tab-set__tab', {
       'is-active': isActive,
     })
 
+    function handleClick(e: MouseEvent<HTMLButtonElement>) {
+      e.preventDefault()
+      onClick()
+    }
+
     return (
       <li className="rn-tab-set__tab-item" data-testid="tab" ref={ref}>
-        <button className={tabClasses} onClick={onClick}>
+        <button className={tabClasses} onClick={handleClick}>
           <div>{children}</div>
         </button>
       </li>

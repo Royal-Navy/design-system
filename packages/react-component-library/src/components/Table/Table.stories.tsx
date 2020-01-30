@@ -5,6 +5,7 @@ import { Badge, BADGE_COLOR } from '../Badge'
 import { Table, TableColumn } from '.'
 
 const stories = storiesOf('Table', module)
+const examples = storiesOf('Table/Examples', module)
 
 stories.add('Default', () => {
   const tableDataMock = [
@@ -52,7 +53,7 @@ stories.add('Default', () => {
   )
 })
 
-stories.add('Arbitrary cell content', () => {
+examples.add('Arbitrary cell content', () => {
   const tableDataMock = [
     {
       id: 'a',
@@ -74,7 +75,7 @@ stories.add('Arbitrary cell content', () => {
   )
 })
 
-stories.add('Sortable', () => {
+examples.add('Sortable', () => {
   const tableDataMock = [
     {
       id: 'a',

@@ -9,10 +9,11 @@ import {
   BADGE_VARIANT,
 } from './components/Badge'
 import { BreadcrumbsItem, Breadcrumbs } from './components/Breadcrumbs'
-import { Button } from './components/Button'
+import { Button, BUTTON_SIZE } from './components/Button'
 import { ButtonGroup, ButtonGroupItem } from './components/ButtonGroup'
+import { CardFrame } from './components/CardFrame'
 import Checkbox from './components/Checkbox'
-import { DatePicker } from './components/DatePicker'
+import { DatePicker, DATEPICKER_PLACEMENT } from './components/DatePicker'
 import { Dialog } from './components/Dialog'
 import { Drawer } from './components/Drawer'
 import { Dropdown } from './components/Dropdown'
@@ -22,7 +23,7 @@ import Nav from './components/Nav'
 import { NumberInput } from './components/NumberInput'
 import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
-import { Popover } from './components/Popover'
+import { Popover, POPOVER_PLACEMENT } from './components/Popover'
 import { Select } from './components/Select'
 import Switch from './components/Switch/Switch'
 import { RangeSlider } from './components/RangeSlider'
@@ -70,10 +71,13 @@ export {
   BreadcrumbsItem,
   Breadcrumbs,
   Button,
+  BUTTON_SIZE,
   ButtonGroup,
   ButtonGroupItem,
+  CardFrame,
   Checkbox,
   DatePicker,
+  DATEPICKER_PLACEMENT,
   Dialog,
   Drawer,
   Dropdown,
@@ -90,6 +94,7 @@ export {
   Pagination,
   PhaseBanner,
   Popover,
+  POPOVER_PLACEMENT,
   Switch,
   RangeSlider,
   ResponsiveSwitch,

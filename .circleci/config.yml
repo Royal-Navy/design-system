@@ -1,5 +1,21 @@
 version: 2.1
 
+aliases:
+  - &authenticate_npm
+    run:
+      name: Authenticate NPM
+      command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+  - &build_icon_library
+    run:
+      name: Build Icon Library
+      command: yarn --cwd packages/icon-library build
+  - &docker
+      - image: circleci/node:12.13.0
+  - &publish_package
+    run:
+      name: Publish package
+      command: npm publish --registry https://$NPM_REGISTRY
+
 commands:
   dependencies:
     description: 'Load dependency cache, get dependencies and update cache'
@@ -15,19 +31,14 @@ commands:
             - ~/.cache/yarn
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
-executors:
-  node:
-    docker:
-      - image: circleci/node:12.13.0
-
 jobs:
   security_audit:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - run: yarn audit
   lint_css-framework:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
@@ -38,7 +49,7 @@ jobs:
       - store_artifacts:
           path: packages/css-framework/test-results/stylelint
   lint_react-component-library:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
@@ -53,7 +64,7 @@ jobs:
       - store_artifacts:
           path: packages/react-component-library/test-results
   lint_docs_site:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
@@ -68,13 +79,11 @@ jobs:
       - store_artifacts:
           path: packages/docs-site/test-results
   test_react-component-library:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
-      - run:
-          name: Build Icon Dependency
-          command: yarn --cwd packages/icon-library build
+      - *build_icon_library
       - run:
           name: Jest
           environment:
@@ -89,7 +98,7 @@ jobs:
           paths:
             - react-component-library/coverage
   code_climate:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - attach_workspace:
@@ -106,65 +115,62 @@ jobs:
           name: Upload CC coverage
           working_directory: ~/project
           command: /tmp/cc-test-reporter upload-coverage -i workspace/codeclimate.react-component-library.json
+  test_visual_regression:
+    docker: *docker
+    steps:
+      - checkout
+      - dependencies
+      - *build_icon_library
+      - run:
+          name: Run visual regression tests
+          command: yarn --cwd packages/react-component-library chromatic --app-code=$CHROMATIC_APP_CODE
   publish_eslint-config-react:
-    executor: node
+    working_directory: packages/eslint-config-react
+    docker: *docker
     steps:
       - checkout
       - dependencies
-      - run:
-          name: Authenticate NPM
-          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-      - run:
-          name: Publish package
-          working_directory: packages/eslint-config-react
-          command: npm publish --registry https://$NPM_REGISTRY
+      - *authenticate_npm
+      - *publish_package
   publish_css-framework:
-    executor: node
+    working_directory: packages/css-framework
+    docker: *docker
     steps:
       - checkout
       - dependencies
-      - run:
-          name: Authenticate NPM
-          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-      - run:
-          name: Publish package
-          working_directory: packages/css-framework
-          command: npm publish --registry https://$NPM_REGISTRY
+      - *authenticate_npm
+      - *publish_package
   publish_react-component-library:
-    executor: node
+    working_directory: packages/react-component-library
+    docker: *docker
     steps:
       - checkout
       - dependencies
-      - run:
-          name: Build Icon Dependency
-          command: yarn --cwd packages/icon-library build
-      - run:
-          name: Authenticate NPM
-          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-      - run:
-          name: Publish package
-          working_directory: packages/react-component-library
-          command: npm publish --registry https://$NPM_REGISTRY
+      - *build_icon_library
+      - *authenticate_npm
+      - *publish_package
   publish_icon-library:
-    executor: node
+    working_directory: packages/icon-library
+    docker: *docker
     steps:
       - checkout
       - dependencies
-      - run:
-          name: Authenticate NPM
-          command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-      - run:
-          name: Publish package
-          working_directory: packages/icon-library
-          command: npm publish --registry https://$NPM_REGISTRY
+      - *authenticate_npm
+      - *publish_package
+  publish_fonts:
+    working_directory: packages/fonts
+    docker: *docker
+    steps:
+      - checkout
+      - dependencies
+      - *authenticate_npm
+      - *publish_package
   test_docs-site:
-    executor: node
+    docker: *docker
     steps:
       - checkout
       - dependencies
-      - run:
-          name: Build Icon Dependency
-          command: yarn --cwd packages/icon-library build
+      - *build_icon_library
       - run:
           name: Build React Components
           command: yarn --cwd packages/react-component-library build
@@ -199,12 +205,20 @@ workflows:
       - code_climate:
           requires:
             - test_react-component-library
+      - test_visual_regression:
+          requires:
+            - test_react-component-library
       - publish_eslint-config-react:
           filters:
             branches:
               only:
                 - master
       - publish_icon-library:
+          filters:
+            branches:
+              only:
+                - master
+      - publish_fonts:
           filters:
             branches:
               only:

@@ -6,6 +6,7 @@ import { Bell, Tools } from '../../icons'
 import { Dropdown } from './Dropdown'
 
 const stories = storiesOf('Dropdown', module)
+const examples = storiesOf('Dropdown/Examples', module)
 
 const hotkey5 = () => (
   <>
@@ -39,31 +40,21 @@ const iconOptions = options.map(option => ({
 }))
 
 stories.add('Default', () => (
-  <div style={{ margin: 50 }}>
-    <Dropdown
-      options={options}
-      label="Layers"
-      onSelect={action('onSelect')}
-    />
-  </div>
+  <Dropdown options={options} label="Layers" onSelect={action('onSelect')} />
 ))
 
-stories.add('Icons', () => (
-  <div style={{ margin: 50 }}>
-    <Dropdown
-      options={iconOptions}
-      label="Layers"
-      onSelect={action('onSelect')}
-    />
-  </div>
+examples.add('Icons', () => (
+  <Dropdown
+    options={iconOptions}
+    label="Layers"
+    onSelect={action('onSelect')}
+  />
 ))
 
-stories.add('Scroll', () => (
-  <div style={{ margin: 50 }}>
-    <Dropdown
-      options={scrollOptions}
-      label="Layers"
-      onSelect={action('onSelect')}
-    />
-  </div>
+examples.add('Scroll', () => (
+  <Dropdown
+    options={scrollOptions}
+    label="Layers"
+    onSelect={action('onSelect')}
+  />
 ))

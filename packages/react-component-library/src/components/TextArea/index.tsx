@@ -1,20 +1,16 @@
-import React from 'react'
+import React, { TextareaHTMLAttributes } from 'react'
 import uuid from 'uuid'
 import classNames from 'classnames'
 
 import { useFocus } from '../../hooks/useFocus'
 
-export interface InputProps {
-  autoFocus?: boolean
-  className?: string
+export interface InputProps
+  extends TextareaHTMLAttributes<HTMLTextAreaElement>,
+    ComponentWithClass {
   isDisabled?: boolean
   footnote?: string
-  id?: string
   label?: string
-  name: string
   onBlur?: (event: React.FormEvent) => void
-  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
-  placeholder?: string
   value?: string
 }
 
@@ -37,11 +33,15 @@ export const TextArea: React.FC<InputProps> = props => {
   const hasContent = value && value.length
   const hasLabel = label && label.length
 
-  const classes = classNames('rn-textinput', {
-    'has-focus': focus,
-    'has-content': hasContent,
-    'no-label': !hasLabel,
-  }, className)
+  const classes = classNames(
+    'rn-textinput',
+    {
+      'has-focus': focus,
+      'has-content': hasContent,
+      'no-label': !hasLabel,
+    },
+    className
+  )
 
   return (
     <div className={classes} data-testid="textarea-container">

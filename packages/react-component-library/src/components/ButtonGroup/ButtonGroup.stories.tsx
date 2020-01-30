@@ -8,6 +8,7 @@ import { IconBrightnessLow } from '@royalnavy/icon-library'
 import { ButtonGroup, ButtonGroupItem } from '.'
 
 const stories = storiesOf('Button group', module)
+const examples = storiesOf('Button group/Examples', module)
 
 stories.addDecorator(withKnobs)
 
@@ -21,7 +22,7 @@ stories.add('Default', () => (
   </ButtonGroup>
 ))
 
-stories.add('Small', () => (
+examples.add('Small', () => (
   <ButtonGroup size="small">
     <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
     <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
@@ -31,7 +32,7 @@ stories.add('Small', () => (
   </ButtonGroup>
 ))
 
-stories.add('Large', () => (
+examples.add('Large', () => (
   <ButtonGroup size="large">
     <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
     <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
@@ -41,7 +42,7 @@ stories.add('Large', () => (
   </ButtonGroup>
 ))
 
-stories.add('XLarge', () => (
+examples.add('XLarge', () => (
   <ButtonGroup size="xlarge">
     <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
     <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>

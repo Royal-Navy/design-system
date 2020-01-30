@@ -3,8 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
-import { DatePicker, StateObject } from './DatePicker'
-import { DATEPICKER_PLACEMENT } from './constants'
+import { DatePicker, DATEPICKER_PLACEMENT, StateObject } from '.'
 
 const NOW = '2019-12-05T11:00:00.000Z'
 

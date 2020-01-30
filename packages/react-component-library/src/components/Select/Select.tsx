@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactSelect, { Props as ReactSelectProps } from 'react-select'
+import classNames from 'classnames'
 
 import { DropdownIndicator } from './DropdownIndicator'
 import { Input } from './Input'
@@ -12,6 +13,7 @@ export interface SelectProps extends ReactSelectProps<any> {
   onChange?: (event: any) => void
   options: SelectOptionWithBadgeType[]
   value?: string
+  className?: string
 }
 
 export const Select: React.FC<SelectProps> = ({
@@ -20,6 +22,7 @@ export const Select: React.FC<SelectProps> = ({
   onChange,
   options,
   value,
+  className,
   ...rest
 }) => {
   const onSelectChange = (option: any) => {
@@ -36,10 +39,12 @@ export const Select: React.FC<SelectProps> = ({
 
   const selectedOption = options.find(option => option.value === value)
 
+  const classes = classNames('rn-select', className)
+
   return (
     <ReactSelect
       aria-label={label}
-      className="rn-select"
+      className={classes}
       classNamePrefix="rn-select"
       components={{
         DropdownIndicator,

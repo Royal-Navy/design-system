@@ -110,3 +110,9 @@ The Standards Toolkit currently supports all major evergreen browsers.
 ## Licensing
 
 The Royal-Navy/standards-toolkit is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/standards-toolkit/blob/develop/LICENSE).
+
+## Thanks
+
+<a href="https://www.chromaticqa.com/"><img src="https://cdn-images-1.medium.com/letterbox/147/36/50/50/1*oHHjTjInDOBxIuYHDY2gFA.png?source=logoAvatar-d7276495b101---37816ec27d7a" width="120"/></a>
+
+We use [Chromatic](https://www.chromaticqa.com/) for visual regression testing and it's great.

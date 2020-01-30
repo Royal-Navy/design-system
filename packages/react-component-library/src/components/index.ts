@@ -8,10 +8,11 @@ import {
   BADGE_VARIANT,
 } from './Badge'
 import { BreadcrumbsItem, Breadcrumbs } from './Breadcrumbs'
-import { Button } from './Button'
+import { Button, BUTTON_SIZE } from './Button'
 import { ButtonGroup, ButtonGroupItem } from './ButtonGroup'
+import { CardFrame } from './CardFrame'
 import Checkbox from './Checkbox'
-import { DatePicker } from './DatePicker'
+import { DatePicker, DATEPICKER_PLACEMENT } from './DatePicker'
 import { Dialog } from './Dialog'
 import { Drawer } from './Drawer'
 import { Dropdown } from './Dropdown'
@@ -21,7 +22,7 @@ import Nav from './Nav'
 import { NumberInput } from './NumberInput'
 import Pagination from './Pagination'
 import PhaseBanner from './PhaseBanner'
-import { Popover } from './Popover'
+import { Popover, POPOVER_PLACEMENT } from './Popover'
 import Radio from './Radio'
 import { ScrollableNav, ScrollableNavItem } from './ScrollableNav'
 import { Searchbar } from './Searchbar'
@@ -49,10 +50,13 @@ export {
   BreadcrumbsItem,
   Breadcrumbs,
   Button,
+  BUTTON_SIZE,
   ButtonGroup,
   ButtonGroupItem,
+  CardFrame,
   Checkbox,
   DatePicker,
+  DATEPICKER_PLACEMENT,
   Dialog,
   Drawer,
   Dropdown,
@@ -63,6 +67,7 @@ export {
   Pagination,
   PhaseBanner,
   Popover,
+  POPOVER_PLACEMENT,
   Radio,
   ScrollableNav,
   ScrollableNavItem,

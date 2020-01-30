@@ -6,6 +6,7 @@ import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
 import { RangeSlider } from './index'
 
 const stories = storiesOf('RangeSlider', module)
+const examples = storiesOf('RangeSlider/Examples', module)
 
 stories.add('Default', () => (
   <RangeSlider
@@ -18,7 +19,7 @@ stories.add('Default', () => (
   />
 ))
 
-stories.add('Stepped', () => (
+examples.add('Stepped', () => (
   <RangeSlider
     domain={[0, 40]}
     step={10}
@@ -31,7 +32,7 @@ stories.add('Stepped', () => (
   />
 ))
 
-stories.add('Multiple handles', () => (
+examples.add('Multiple handles', () => (
   <RangeSlider
     domain={[0, 40]}
     step={10}
@@ -43,7 +44,7 @@ stories.add('Multiple handles', () => (
   />
 ))
 
-stories.add('With icons', () => (
+examples.add('With icons', () => (
   <RangeSlider
     domain={[0, 40]}
     step={10}
@@ -58,7 +59,7 @@ stories.add('With icons', () => (
   />
 ))
 
-stories.add('With labels', () => (
+examples.add('With labels', () => (
   <RangeSlider
     domain={[0, 40]}
     step={2}
@@ -72,7 +73,7 @@ stories.add('With labels', () => (
   />
 ))
 
-stories.add('Reversed scale', () => (
+examples.add('Reversed scale', () => (
   <RangeSlider
     domain={[0, 40]}
     step={2}
@@ -87,7 +88,7 @@ stories.add('Reversed scale', () => (
   />
 ))
 
-stories.add('Disabled', () => (
+examples.add('Disabled', () => (
   <RangeSlider
     domain={[0, 40]}
     step={10}

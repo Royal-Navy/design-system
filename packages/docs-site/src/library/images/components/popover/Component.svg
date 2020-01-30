@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 726 334">
+  <defs>
+    <filter id="a" width="113.8%" height="122.2%" x="-6.9%" y="-9.4%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="shadowSpreadOuter1"/>
+      <feOffset dy="3" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="5.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0"/>
+    </filter>
+    <path id="b" d="M42.12.98L46.14 5H273a3 3 0 013 3v160a3 3 0 01-3 3H3a3 3 0 01-3-3V8a3 3 0 013-3h30.86L37.88.98a3 3 0 014.24 0z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v295H.5z"/>
+    <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="16" font-weight="500" transform="translate(225 38)">
+      <tspan x="0" y="16">Hover on me</tspan>
+    </text>
+    <g transform="translate(225 68)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <path fill="#FFF" stroke="#E2E9EE" d="M273 171.5H3A3.49 3.49 0 01-.5 168V8A3.49 3.49 0 013 4.5h30.65L37.53.63a3.49 3.49 0 014.94 0l3.88 3.87H273a3.49 3.49 0 013.5 3.5v160a3.49 3.49 0 01-3.5 3.5z"/>
+    </g>
+    <path stroke="#3E5667" stroke-dasharray="1" d="M225 58.63h91"/>
+    <text fill="#3E5667" font-family="Lato-Semibold, Lato" font-size="15" font-weight="500">
+      <tspan x="0" y="331">The Panel Component.</tspan>
+    </text>
+  </g>
+</svg>
