@@ -13,6 +13,8 @@
     "node": ">=10.13.0 <13"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.1",
@@ -47,7 +49,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lerna run --parallel lint-staged"
+      "pre-commit": "lerna run --parallel lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }
