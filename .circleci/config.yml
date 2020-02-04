@@ -125,45 +125,45 @@ jobs:
           name: Run visual regression tests
           command: yarn --cwd packages/react-component-library chromatic --app-code=$CHROMATIC_APP_CODE
   publish_eslint-config-react:
-    working_directory: packages/eslint-config-react
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *authenticate_npm
+      - run: cd packages/eslint-config-react
       - *publish_package
   publish_css-framework:
-    working_directory: packages/css-framework
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *authenticate_npm
+      - run: cd packages/css-framework
       - *publish_package
   publish_react-component-library:
-    working_directory: packages/react-component-library
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *build_icon_library
       - *authenticate_npm
+      - run: cd packages/react-component-library
       - *publish_package
   publish_icon-library:
-    working_directory: packages/icon-library
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *authenticate_npm
+      - run: cd packages/icon-library
       - *publish_package
   publish_fonts:
-    working_directory: packages/fonts
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *authenticate_npm
+      - run: cd packages/fonts
       - *publish_package
   test_docs-site:
     docker: *docker
