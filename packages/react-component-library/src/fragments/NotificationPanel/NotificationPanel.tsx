@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import {
   NOTIFICATION_PLACEMENT,
@@ -63,24 +63,26 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
           />
         )}
       </button>
-      <ReactCSSTransitionGroup
-        className="rn-notification__transition-wrapper"
-        transitionName="rn-notification"
-        transitionEnterTimeout={300}
-        transitionLeaveTimeout={300}
-      >
+
+      <TransitionGroup className="rn-notification__transition-wrapper">
         {showNotifications && (
-          <FloatingBox
-            className="rn-notification-panel__container"
-            {...notificationPosition}
-            width={NOTIFICATION_CONTAINER_WIDTH}
-            scheme="dark"
-            position={notificationArrowPosition}
+          <CSSTransition
+            classNames="rn-notification"
+            timeout={{ enter: 300, exit: 300 }}
           >
-            {children}
-          </FloatingBox>
+            <FloatingBox
+              className="rn-notification-panel__container"
+              {...notificationPosition}
+              width={NOTIFICATION_CONTAINER_WIDTH}
+              scheme="dark"
+              position={notificationArrowPosition}
+            >
+              {children}
+            </FloatingBox>
+          </CSSTransition>
         )}
-      </ReactCSSTransitionGroup>
+      </TransitionGroup>
+
     </div>
   )
 }

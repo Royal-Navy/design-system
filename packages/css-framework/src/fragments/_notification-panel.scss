@@ -69,10 +69,6 @@
   background: white;
 }
 
-.rn-notification-leave {
-  opacity: 0;
-}
-
 .rn-notification-enter {
   opacity: 0;
 }
@@ -82,11 +78,11 @@
   transition: opacity 300ms;
 }
 
-.rn-notification-leave {
+.rn-notification-exit {
   opacity: 1;
 }
 
-.rn-notification-leave.rn-notification-leave-active {
+.rn-notification-exit.rn-notification-exit-active {
   opacity: 0;
   transition: opacity 300ms;
 }

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import classNames from 'classnames'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import { Searchbar } from '../../components'
 import { Logo as DefaultLogo, Search as SearchIcon } from '../../icons'
@@ -132,22 +132,22 @@ export const Masthead: React.FC<MastheadProps> = ({
         </div>
       </div>
 
-      <ReactCSSTransitionGroup
-        className="rn-searchbar__overlay"
-        transitionName="rn-searchbar"
-        transitionEnterTimeout={300}
-        transitionLeaveTimeout={300}
-      >
+      <TransitionGroup>
         {onSearch && showSearch && (
-          <Searchbar
-            onSearch={submitSearch}
-            searchButton={searchButtonRef}
-            searchPlaceholder={searchPlaceholder}
-            setShowSearch={setShowSearch}
-            style={{ width: containerWidth }}
-          />
+          <CSSTransition
+            classNames="rn-searchbar"
+            timeout={{ enter: 300, exit: 300 }}
+          >
+            <Searchbar
+              onSearch={submitSearch}
+              searchButton={searchButtonRef}
+              searchPlaceholder={searchPlaceholder}
+              setShowSearch={setShowSearch}
+              style={{ width: containerWidth }}
+            />
+          </CSSTransition>
         )}
-      </ReactCSSTransitionGroup>
+      </TransitionGroup>
 
       {nav}
     </div>
