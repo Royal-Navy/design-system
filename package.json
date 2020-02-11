@@ -21,6 +21,7 @@
   },
   "resolutions": {
     "**/**/handlebars": "^4.5.3",
+    "**/**/@hapi/hoek": "^8.5.1",
     "**/**/mem": "^4.0.0",
     "**/**/terser-webpack-plugin": "^1.4.2"
   },
