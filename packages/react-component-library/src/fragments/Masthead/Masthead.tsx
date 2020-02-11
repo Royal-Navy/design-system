@@ -2,15 +2,16 @@ import React, { useRef, useState } from 'react'
 import classNames from 'classnames'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
-import { Searchbar } from '../../components'
 import { Logo as DefaultLogo, Search as SearchIcon } from '../../icons'
-import { MastheadUserProps } from './MastheadUser'
+import { MastheadUserProps } from '.'
 import { Nav } from '../../types/Nav'
 import {
   NOTIFICATION_PLACEMENT,
   NotificationPanel,
   NotificationsProps,
 } from '../NotificationPanel'
+import { Searchbar } from '../../components'
+import { useMastheadSearch } from './useMastheadSearch'
 
 export interface MastheadProps {
   hasUnreadNotification?: boolean
@@ -56,27 +57,30 @@ export const Masthead: React.FC<MastheadProps> = ({
   title,
   user,
 }) => {
-  const [showSearch, setShowSearch] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
   const searchButtonRef = useRef<HTMLButtonElement>(null)
-  const mastheadContainerRef = useRef<HTMLDivElement>(null)
-  const [containerWidth, setContainerWidth] = useState(0)
 
-  const toggleSearch = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    event.currentTarget.blur()
-    const newShowSearch = !showSearch
+  const {
+    containerWidth,
+    mastheadContainerRef,
+    setShowSearch,
+    showSearch,
+    toggleSearch,
+  } = useMastheadSearch()
 
-    // if opening the searchbar then get the container width and set that
-    // as the width of the searchbar so that it does not spill
-    // over to other parts of the page, such as the sidebar.
-    if (newShowSearch === true) {
-      setContainerWidth(mastheadContainerRef.current.offsetWidth)
+  const classes = classNames('rn-masthead', {
+    'rn-masthead--show-search': showSearch,
+    'rn-masthead--show-notifications': showNotifications,
+  })
+
+  const searchButtonClasses = classNames(
+    'rn-masthead__option',
+    'rn-searchbar__btn',
+    {
+      'is-active': showSearch,
+      'is-inactive': !showSearch,
     }
-
-    setShowSearch(!showSearch)
-  }
+  )
 
   const submitSearch = (term: string) => {
     onSearch(term)
@@ -84,14 +88,7 @@ export const Masthead: React.FC<MastheadProps> = ({
   }
 
   return (
-    <div
-      className={classNames('rn-masthead', {
-        'rn-masthead--show-search': showSearch,
-        'rn-masthead--show-notifications': showNotifications,
-      })}
-      data-testid="masthead"
-      ref={mastheadContainerRef}
-    >
+    <div className={classes} data-testid="masthead" ref={mastheadContainerRef}>
       <div className="rn-masthead__main">
         {getServiceName(homeLink, Logo, title)}
 
@@ -99,9 +96,7 @@ export const Masthead: React.FC<MastheadProps> = ({
           {onSearch && (
             <>
               <button
-                className={`rn-masthead__option rn-searchbar__btn ${
-                  showSearch ? 'is-active' : 'is-inactive'
-                }`}
+                className={searchButtonClasses}
                 onClick={toggleSearch}
                 ref={searchButtonRef}
                 data-testid="masthead-search-button"
