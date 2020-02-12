@@ -110,8 +110,8 @@ jobs:
       - run: chmod +x /tmp/cc-test-reporter
       - run:
           name: Convert react results to cc format
-          working_directory: ~/project
-          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.react-component-library.json workspace/react-component-library/coverage/lcov.info
+          working_directory: ~/project/packages/react-component-library
+          command: /tmp/cc-test-reporter format-coverage -t lcov -o ../../workspace/codeclimate.react-component-library.json ../../workspace/react-component-library/coverage/lcov.info
       - run:
           name: Upload CC coverage
           working_directory: ~/project
