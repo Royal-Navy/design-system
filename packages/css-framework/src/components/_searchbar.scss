@@ -76,12 +76,12 @@
   transition: opacity 300ms;
 }
 
-.rn-searchbar-leave {
+.rn-searchbar-exit {
   position: absolute;
   opacity: 1;
 }
 
-.rn-searchbar-leave.rn-searchbar-leave-active {
+.rn-searchbar-exit.rn-searchbar-exit-active {
   opacity: 0;
   transition: opacity 300ms;
 }
