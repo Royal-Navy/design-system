@@ -87,7 +87,8 @@ jobs:
       - run:
           name: Jest
           environment:
-            JEST_JUNIT_OUTPUT: test-results/jest/react-component-results.xml
+            JEST_JUNIT_OUTPUT_DIR: test-results/jest
+            JEST_JUNIT_OUTPUT_NAME: react-component-results.xml
           command: yarn --cwd packages/react-component-library jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
       - store_test_results:
           path: packages/react-component-library/test-results
@@ -109,8 +110,8 @@ jobs:
       - run: chmod +x /tmp/cc-test-reporter
       - run:
           name: Convert react results to cc format
-          working_directory: ~/project
-          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.react-component-library.json workspace/react-component-library/coverage/lcov.info
+          working_directory: ~/project/packages/react-component-library
+          command: /tmp/cc-test-reporter format-coverage -t lcov -o ../../workspace/codeclimate.react-component-library.json ../../workspace/react-component-library/coverage/lcov.info
       - run:
           name: Upload CC coverage
           working_directory: ~/project
@@ -180,7 +181,8 @@ jobs:
       - run:
           name: Jest
           environment:
-            JEST_JUNIT_OUTPUT: test-results/jest/docs-site-results.xml
+            JEST_JUNIT_OUTPUT_DIR: test-results/jest
+            JEST_JUNIT_OUTPUT_NAME: docs-site-results.xml
           command: yarn --cwd packages/docs-site jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
       - store_test_results:
           path: packages/docs-site/test-results
