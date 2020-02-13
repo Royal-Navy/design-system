@@ -63,3 +63,11 @@ stories.add('With start adornment text', () => (
     startAdornment="Kts"
   />
 ))
+
+stories.add('With hidden label', () => (
+  <NumberInput
+    name="example-number-input"
+    value={1}
+    onChange={action('onChange')}
+  />
+))

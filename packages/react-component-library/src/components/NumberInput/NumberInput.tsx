@@ -163,7 +163,6 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   const classes = classNames('rn-numberinput', className, {
     'has-focus': focus,
     'has-content': hasContent,
-    'no-label': !hasLabel,
   })
 
   const displayValue =
