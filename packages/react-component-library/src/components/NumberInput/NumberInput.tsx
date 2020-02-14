@@ -1,6 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import uuid from 'uuid'
 import classNames from 'classnames'
+
+import { useFocus } from './useFocus'
 
 export interface NumberInputProps {
   autoFocus?: boolean
@@ -64,12 +66,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   ...rest
 }) => {
   const inputRef = useRef(null)
-
-  const [focus, setFocus] = useState(false)
-
-  const onFocus = () => {
-    setFocus(true)
-  }
+  const { hasFocus, onInputBlur, onInputFocus } = useFocus(onBlur)
 
   const mutateValue = (newValue: number) => {
     onChange({
@@ -116,14 +113,6 @@ export const NumberInput: React.FC<NumberInputProps> = ({
     if (!min || newValue >= min) mutateValue(newValue)
   }
 
-  const onLocalBlur = (event: React.FormEvent) => {
-    setFocus(false)
-
-    if (onBlur) {
-      onBlur(event)
-    }
-  }
-
   const EndAdornment = (
     <div className="rn-numberinput__controls">
       <button
@@ -161,7 +150,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   const hasLabel = label && label.length
 
   const classes = classNames('rn-numberinput', className, {
-    'has-focus': focus,
+    'has-focus': hasFocus,
     'has-content': hasContent,
   })
 
@@ -198,9 +187,9 @@ export const NumberInput: React.FC<NumberInputProps> = ({
             disabled={isDisabled}
             id={id}
             name={name}
-            onBlur={onLocalBlur}
+            onBlur={onInputBlur}
             onChange={inputChange}
-            onFocus={onFocus}
+            onFocus={onInputFocus}
             placeholder={placeholder}
             ref={inputRef}
             type="text"
