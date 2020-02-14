@@ -6,6 +6,7 @@ import { EndAdornment } from './EndAdornment'
 import { Input } from './Input'
 import { StartAdornment } from './StartAdornment'
 import { useFocus } from './useFocus'
+import { Footnote } from './Footnote'
 
 export interface NumberInputProps {
   autoFocus?: boolean
@@ -106,14 +107,8 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           value={value}
         />
       </div>
-      {footnote && (
-        <small
-          className="rn-numberinput__footnote"
-          data-testid="number-input-footnote"
-        >
-          {footnote}
-        </small>
-      )}
+
+      <Footnote>{footnote}</Footnote>
     </div>
   )
 }
