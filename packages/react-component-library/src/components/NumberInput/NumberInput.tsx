@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import uuid from 'uuid'
 import classNames from 'classnames'
 
+import { StartAdornment } from './StartAdornment'
 import { useFocus } from './useFocus'
 
 export interface NumberInputProps {
@@ -160,14 +161,8 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   return (
     <div className={classes} data-testid="number-input-container">
       <div className="rn-numberinput__outer-wrapper">
-        {startAdornment && (
-          <div
-            className="rn-numberinput__start-adornment"
-            data-testid="number-input-start-adornment"
-          >
-            {startAdornment}
-          </div>
-        )}
+        <StartAdornment>{startAdornment}</StartAdornment>
+
         <div
           className="rn-numberinput__input-wrapper"
           data-testid="number-input-wrapper"
