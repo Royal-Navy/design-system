@@ -1,7 +1,8 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import uuid from 'uuid'
 import classNames from 'classnames'
 
+import { Input } from './Input'
 import { StartAdornment } from './StartAdornment'
 import { useFocus } from './useFocus'
 
@@ -66,28 +67,9 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   startAdornment,
   ...rest
 }) => {
-  const inputRef = useRef(null)
   const { hasFocus, onInputBlur, onInputFocus } = useFocus(onBlur)
 
   const mutateValue = (newValue: number) => {
-    onChange({
-      target: {
-        name,
-        value: newValue,
-      },
-    })
-  }
-
-  const inputChange = (event: React.SyntheticEvent) => {
-    event.preventDefault()
-    const target = event.currentTarget as HTMLInputElement
-    const newValue = calculateNewValue({
-      currentValue: value,
-      newInputValue: target.value,
-      min,
-      max,
-    })
-
     onChange({
       target: {
         name,
@@ -148,50 +130,32 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   )
 
   const hasContent = value !== null && value !== undefined
-  const hasLabel = label && label.length
 
   const classes = classNames('rn-numberinput', className, {
     'has-focus': hasFocus,
     'has-content': hasContent,
   })
 
-  const displayValue =
-    value === null || value === undefined || Number.isNaN(value) ? '' : value
-
   return (
     <div className={classes} data-testid="number-input-container">
       <div className="rn-numberinput__outer-wrapper">
         <StartAdornment>{startAdornment}</StartAdornment>
 
-        <div
-          className="rn-numberinput__input-wrapper"
-          data-testid="number-input-wrapper"
-        >
-          {hasLabel && (
-            <label
-              className="rn-numberinput__label"
-              data-testid="number-input-label"
-              htmlFor={id}
-            >
-              {label}
-            </label>
-          )}
-          <input
-            className="rn-numberinput__input"
-            data-testid="number-input-input"
-            disabled={isDisabled}
-            id={id}
-            name={name}
-            onBlur={onInputBlur}
-            onChange={inputChange}
-            onFocus={onInputFocus}
-            placeholder={placeholder}
-            ref={inputRef}
-            type="text"
-            value={displayValue}
-            {...rest}
-          />
-        </div>
+        <Input
+          isDisabled={isDisabled}
+          id={id}
+          label={label}
+          max={max}
+          min={min}
+          name={name}
+          onChange={onChange}
+          onInputBlur={onInputBlur}
+          onInputFocus={onInputFocus}
+          placeholder={placeholder}
+          value={value}
+          {...rest}
+        />
+
         {EndAdornment}
       </div>
       {footnote && (
