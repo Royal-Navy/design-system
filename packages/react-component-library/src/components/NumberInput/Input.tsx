@@ -1,16 +1,12 @@
-import React, { FormEvent, useRef } from 'react'
-
-import { calculateNewValue } from './NumberInput'
+import React, { useRef } from 'react'
 
 interface InputProps {
   isDisabled?: boolean
   id?: string
   label?: string
-  max?: number
-  min?: number
   name: string
-  onChange: (event: any) => void
-  onInputBlur: (event: FormEvent) => void
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onInputBlur: (event: React.FormEvent<HTMLInputElement>) => void
   onInputFocus: () => void
   placeholder?: string
   value?: number
@@ -20,8 +16,6 @@ export const Input: React.FC<InputProps> = ({
   isDisabled = false,
   id,
   label,
-  max,
-  min,
   name,
   onChange,
   onInputBlur,
@@ -34,24 +28,6 @@ export const Input: React.FC<InputProps> = ({
   const inputRef = useRef(null)
   const displayValue =
     value === null || value === undefined || Number.isNaN(value) ? '' : value
-
-  const onInputChange = (event: React.SyntheticEvent) => {
-    event.preventDefault()
-    const target = event.currentTarget as HTMLInputElement
-    const newValue = calculateNewValue({
-      currentValue: value,
-      newInputValue: target.value,
-      min,
-      max,
-    })
-
-    onChange({
-      target: {
-        name,
-        value: newValue,
-      },
-    })
-  }
 
   return (
     <div
@@ -74,7 +50,7 @@ export const Input: React.FC<InputProps> = ({
         id={id}
         name={name}
         onBlur={onInputBlur}
-        onChange={onInputChange}
+        onChange={onChange}
         onFocus={onInputFocus}
         placeholder={placeholder}
         ref={inputRef}
