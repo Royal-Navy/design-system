@@ -44,47 +44,8 @@ describe('Table', () => {
       expect(wrapper.queryAllByTestId('table-header')).toHaveLength(3)
     })
 
-    it('should render TH for header cells', () => {
-      const firstHeaderCell = wrapper.getByText('First')
-      expect(firstHeaderCell.tagName).toEqual('TH')
-    })
-
     it('should render three rows', () => {
       expect(wrapper.queryAllByTestId('table-row')).toHaveLength(3)
-    })
-
-    it('should render TD for data cells', () => {
-      const firstDataCell = wrapper.getByText('a1')
-      expect(firstDataCell.tagName).toEqual('TD')
-    })
-  })
-
-  describe('when a cell contains arbitrary cell content', () => {
-    beforeEach(() => {
-      const tableDataMock = [
-        {
-          id: 'a',
-          first: 'a1',
-          second: <Badge>a2</Badge>,
-        },
-        {
-          id: 'b',
-          first: 'b1',
-          second: <Badge>b2</Badge>,
-        },
-      ]
-
-      wrapper = render(
-        <Table data={tableDataMock}>
-          <TableColumn field="first">First</TableColumn>
-          <TableColumn field="second">Second</TableColumn>
-        </Table>
-      )
-    })
-
-    it('should render the arbitrary cell content', () => {
-      const firstDataCell = wrapper.getByText('a2')
-      expect(firstDataCell.tagName).toEqual('SPAN')
     })
   })
 
