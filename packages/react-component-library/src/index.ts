@@ -1,3 +1,6 @@
+// Hooks
+import { useToasts } from 'react-toast-notifications'
+
 // Components
 import { Alert, ALERT_VARIANT } from './components/Alert'
 import { Avatar, AVATAR_VARIANT } from './components/Avatar'
@@ -34,6 +37,7 @@ import { Tab, TabSet } from './components/TabSet'
 import { TextArea } from './components/TextArea'
 import TextInput from './components/TextInput'
 import { Tooltip } from './components/Tooltip'
+import { ToastProvider } from './components/Toast'
 
 // Fragments
 import {
@@ -112,6 +116,8 @@ export {
   TextArea,
   TextInput,
   Tooltip,
+  ToastProvider,
+  useToasts,
   Icons,
   Formik,
   withFormik,

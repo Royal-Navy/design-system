@@ -1,0 +1,83 @@
+@use "../abstracts/functions" as f;
+
+.rn-toast {
+  display: flex;
+  flex-direction: column;
+  padding: f.spacing("6");
+  border: 1px solid f.color("neutral", "100");
+  border-radius: 4px;
+  width: 340px;
+  margin-bottom: f.spacing("6");
+
+  div {
+    display: flex;
+
+    &:first-of-type {
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &:last-of-type {
+      flex-direction: column;
+    }
+  }
+}
+
+.rn-toast__label {
+  display: inline-flex;
+  align-items: center;
+  color: f.color("neutral", "500");
+  font-size: f.font-size("l");
+  font-weight: 600;
+
+  > svg {
+    margin-right: f.spacing("2");
+  }
+}
+
+.rn-toast__time {
+  color: f.color("neutral", "200");
+  font-style: italic;
+  font-size: f.font-size("m");
+  padding-top: f.spacing("2");
+}
+
+.rn-toast__description {
+  color: f.color("neutral", "300");
+  font-size: f.font-size("m");
+  padding-top: f.spacing("4");
+}
+
+.rn-toast__btn {
+  background: none;
+  border: none;
+  color: f.color("neutral", "300");
+  font-size: f.font-size("m");
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+}
+
+.rn-toast--success {
+  .rn-toast__label > svg {
+    color: f.color("success", "500");
+  }
+}
+
+.rn-toast--error {
+  .rn-toast__label > svg {
+    color: f.color("danger", "500");
+  }
+}
+
+.rn-toast--warning {
+  .rn-toast__label > svg {
+    color: f.color("warning", "500");
+  }
+}
+
+.rn-toast--info {
+  .rn-toast__label > svg {
+    color: f.color("action", "500");
+  }
+}

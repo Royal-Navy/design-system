@@ -35,6 +35,7 @@ import { Table, TableColumn, TABLE_SORT_ORDER } from './Table'
 import { TabNav, TabNavItem } from './TabNav'
 import { TextArea } from './TextArea'
 import TextInput from './TextInput'
+import { ToastProvider } from './Toast'
 import { Tooltip } from './Tooltip'
 
 export {
@@ -86,4 +87,5 @@ export {
   TextArea,
   TextInput,
   Tooltip,
+  ToastProvider
 }
