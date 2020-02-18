@@ -1,6 +1,12 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import uuid from 'uuid'
 import classNames from 'classnames'
+
+import { EndAdornment } from './EndAdornment'
+import { Input } from './Input'
+import { StartAdornment } from './StartAdornment'
+import { useFocus } from './useFocus'
+import { Footnote } from './Footnote'
 
 export interface NumberInputProps {
   autoFocus?: boolean
@@ -63,162 +69,46 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   startAdornment,
   ...rest
 }) => {
-  const inputRef = useRef(null)
-
-  const [focus, setFocus] = useState(false)
-
-  const onFocus = () => {
-    setFocus(true)
-  }
-
-  const mutateValue = (newValue: number) => {
-    onChange({
-      target: {
-        name,
-        value: newValue,
-      },
-    })
-  }
-
-  const inputChange = (event: React.SyntheticEvent) => {
-    event.preventDefault()
-    const target = event.currentTarget as HTMLInputElement
-    const newValue = calculateNewValue({
-      currentValue: value,
-      newInputValue: target.value,
-      min,
-      max,
-    })
-
-    onChange({
-      target: {
-        name,
-        value: newValue,
-      },
-    })
-  }
-
-  const clickIncrease = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const target = event.currentTarget
-    target.blur()
-
-    const newValue = value ? value + step : step
-    if (!max || newValue <= max) {
-      mutateValue(newValue)
-    }
-  }
-
-  const clickDecrease = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const target = event.currentTarget
-    target.blur()
-
-    const newValue = value ? value - step : -step
-    if (!min || newValue >= min) mutateValue(newValue)
-  }
-
-  const onLocalBlur = (event: React.FormEvent) => {
-    setFocus(false)
-
-    if (onBlur) {
-      onBlur(event)
-    }
-  }
-
-  const EndAdornment = (
-    <div className="rn-numberinput__controls">
-      <button
-        data-testid="number-input-increase"
-        type="button"
-        className="rn-numberinput__increase"
-        onClick={clickIncrease}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="7">
-          <path
-            fill="#6F798A"
-            fillRule="evenodd"
-            d="M5.66 4.49L9.19.95a1 1 0 1 1 1.42 1.41L6.36 6.61a1 1 0 0 1-1.41 0L.71 2.36A1 1 0 1 1 2.12.95l3.54 3.54z"
-          />
-        </svg>
-      </button>
-      <button
-        data-testid="number-input-decrease"
-        type="button"
-        className="rn-numberinput__decrease"
-        onClick={clickDecrease}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="7">
-          <path
-            fill="#6F798A"
-            fillRule="evenodd"
-            d="M5.66 4.49L9.19.95a1 1 0 1 1 1.42 1.41L6.36 6.61a1 1 0 0 1-1.41 0L.71 2.36A1 1 0 1 1 2.12.95l3.54 3.54z"
-          />
-        </svg>
-      </button>
-    </div>
-  )
+  const { hasFocus, onInputBlur, onInputFocus } = useFocus(onBlur)
 
   const hasContent = value !== null && value !== undefined
-  const hasLabel = label && label.length
 
   const classes = classNames('rn-numberinput', className, {
-    'has-focus': focus,
+    'has-focus': hasFocus,
     'has-content': hasContent,
-    'no-label': !hasLabel,
   })
-
-  const displayValue =
-    value === null || value === undefined || Number.isNaN(value) ? '' : value
 
   return (
     <div className={classes} data-testid="number-input-container">
       <div className="rn-numberinput__outer-wrapper">
-        {startAdornment && (
-          <div
-            className="rn-numberinput__start-adornment"
-            data-testid="number-input-start-adornment"
-          >
-            {startAdornment}
-          </div>
-        )}
-        <div
-          className="rn-numberinput__input-wrapper"
-          data-testid="number-input-wrapper"
-        >
-          {hasLabel && (
-            <label
-              className="rn-numberinput__label"
-              data-testid="number-input-label"
-              htmlFor={id}
-            >
-              {label}
-            </label>
-          )}
-          <input
-            className="rn-numberinput__input"
-            data-testid="number-input-input"
-            disabled={isDisabled}
-            id={id}
-            name={name}
-            onBlur={onLocalBlur}
-            onChange={inputChange}
-            onFocus={onFocus}
-            placeholder={placeholder}
-            ref={inputRef}
-            type="text"
-            value={displayValue}
-            {...rest}
-          />
-        </div>
-        {EndAdornment}
+        <StartAdornment>{startAdornment}</StartAdornment>
+
+        <Input
+          isDisabled={isDisabled}
+          id={id}
+          label={label}
+          max={max}
+          min={min}
+          name={name}
+          onChange={onChange}
+          onInputBlur={onInputBlur}
+          onInputFocus={onInputFocus}
+          placeholder={placeholder}
+          value={value}
+          {...rest}
+        />
+
+        <EndAdornment
+          max={max}
+          min={min}
+          name={name}
+          onChange={onChange}
+          step={step}
+          value={value}
+        />
       </div>
-      {footnote && (
-        <small
-          className="rn-numberinput__footnote"
-          data-testid="number-input-footnote"
-        >
-          {footnote}
-        </small>
-      )}
+
+      <Footnote>{footnote}</Footnote>
     </div>
   )
 }

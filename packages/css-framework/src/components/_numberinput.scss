@@ -80,15 +80,15 @@
   box-sizing: border-box;
   width: 100%;
   margin: 0;
-  padding: f.spacing("10") f.spacing("6") f.spacing("2");
+  padding: f.spacing("6");
   border: 0;
   background: none;
   -webkit-tap-highlight-color: transparent;
   font-size: f.font-size("base");
 }
 
-.rn-numberinput--no-label .rn-numberinput__input {
-  padding: f.spacing("6");
+.rn-numberinput__label + .rn-numberinput__input {
+  padding: f.spacing("10") f.spacing("6") f.spacing("2");
 }
 
 .rn-numberinput__input:focus {
