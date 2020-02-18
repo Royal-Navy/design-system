@@ -17,12 +17,18 @@ const withFormik = (FormComponent: React.FC<any>) => ({
   ...props
 }: FormikProps) => {
   const hasError = touched[field.name] && errors[field.name]
+
+  const formikWrapperClassNames = classNames(
+    'formik-form-component',
+    `formik-form-component--${FormComponent.displayName}`
+  )
+
   const formComponentClassNames = classNames(className, {
     'is-invalid': hasError,
   })
 
   return (
-    <>
+    <div className={formikWrapperClassNames}>
       <FormComponent
         {...field}
         {...props}
@@ -33,7 +39,7 @@ const withFormik = (FormComponent: React.FC<any>) => ({
           {errors[field.name]}
         </div>
       )}
-    </>
+    </div>
   )
 }
 
