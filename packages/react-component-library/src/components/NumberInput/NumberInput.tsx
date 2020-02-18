@@ -1,11 +1,14 @@
-import React from 'react'
-import uuid from 'uuid'
+import React, { FormEvent } from 'react'
 import classNames from 'classnames'
+import isFinite from 'lodash/isFinite'
+import isNil from 'lodash/isNil'
+import uuid from 'uuid'
 
 import { EndAdornment } from './EndAdornment'
 import { Input } from './Input'
 import { StartAdornment } from './StartAdornment'
 import { useFocus } from './useFocus'
+import { useValue } from './useValue'
 import { Footnote } from './Footnote'
 
 export interface NumberInputProps {
@@ -18,38 +21,12 @@ export interface NumberInputProps {
   max?: number
   min?: number
   name: string
-  onBlur?: (event: React.FormEvent<Element>) => void
+  onBlur?: (event: React.FormEvent) => void
   onChange: (event: any) => void
   placeholder?: string
   step?: number
   value?: number
   startAdornment?: React.ReactNode | string
-}
-
-interface CalculateNewValue {
-  currentValue?: number
-  newInputValue: string
-  max?: number
-  min?: number
-}
-
-export function calculateNewValue({
-  currentValue,
-  newInputValue = '',
-  max,
-  min,
-}: CalculateNewValue): number {
-  const newValue = newInputValue.length > 0 ? parseInt(newInputValue, 10) : null
-
-  if (
-    Number.isNaN(newValue) ||
-    (min && newValue < min) ||
-    (max && newValue > max)
-  ) {
-    return currentValue
-  }
-
-  return newValue
 }
 
 export const NumberInput: React.FC<NumberInputProps> = ({
@@ -70,13 +47,31 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   ...rest
 }) => {
   const { hasFocus, onInputBlur, onInputFocus } = useFocus(onBlur)
-
-  const hasContent = value !== null && value !== undefined
+  const {
+    displayValue,
+    setCommittedValueIfWithinRange,
+    setNextValue,
+  } = useValue(value)
 
   const classes = classNames('rn-numberinput', className, {
     'has-focus': hasFocus,
-    'has-content': hasContent,
+    'has-content': !isNil(displayValue),
   })
+
+  function onInputBlurSetCommittedValue(event: FormEvent<HTMLInputElement>) {
+    setNextValue(null)
+    const newValue = parseInt(event.currentTarget.value, 10)
+
+    setCommittedValueIfWithinRange(max, min, name, onChange)(event, newValue)
+    onInputBlur(event)
+  }
+
+  function onInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const newValue = parseInt(event.currentTarget.value, 10)
+    if (isFinite(newValue)) {
+      setNextValue(newValue)
+    }
+  }
 
   return (
     <div className={classes} data-testid="number-input-container">
@@ -84,27 +79,26 @@ export const NumberInput: React.FC<NumberInputProps> = ({
         <StartAdornment>{startAdornment}</StartAdornment>
 
         <Input
-          isDisabled={isDisabled}
           id={id}
+          isDisabled={isDisabled}
           label={label}
-          max={max}
-          min={min}
           name={name}
-          onChange={onChange}
-          onInputBlur={onInputBlur}
+          onChange={onInputChange}
+          onInputBlur={onInputBlurSetCommittedValue}
           onInputFocus={onInputFocus}
           placeholder={placeholder}
-          value={value}
+          value={displayValue}
           {...rest}
         />
 
         <EndAdornment
+          isDisabled={isDisabled}
           max={max}
           min={min}
           name={name}
-          onChange={onChange}
+          onClick={setCommittedValueIfWithinRange(max, min, name, onChange)}
           step={step}
-          value={value}
+          value={displayValue}
         />
       </div>
 

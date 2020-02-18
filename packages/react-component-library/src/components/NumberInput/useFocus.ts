@@ -1,9 +1,11 @@
-import { FormEvent, useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 
-export function useFocus(onBlur: (event: FormEvent) => void) {
+export function useFocus(
+  onBlur?: (event: React.FormEvent<HTMLInputElement>) => void
+) {
   const [hasFocus, setHasFocus] = useState(false)
 
-  const onInputBlur = (event: FormEvent) => {
+  const onInputBlur = (event: FormEvent<HTMLInputElement>) => {
     setHasFocus(false)
 
     if (onBlur) {
