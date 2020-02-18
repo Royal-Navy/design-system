@@ -15,6 +15,7 @@ import {
 
 export interface ToastProps extends BaseToastProps, ComponentWithClass {
   label?: string
+  dateTime?: Date
 }
 
 function getAppearanceIcon(appearance: string): React.ReactNode {
@@ -55,9 +56,10 @@ export const Toast: React.FC<ToastProps> = ({
   placement,
   transitionDuration,
   transitionState,
+  dateTime,
 }) => {
   const [time] = useState<string>(
-    new Date().toLocaleTimeString('en-GB', {
+    (dateTime || new Date()).toLocaleTimeString('en-GB', {
       hour: 'numeric',
       minute: 'numeric',
       hour12: true,

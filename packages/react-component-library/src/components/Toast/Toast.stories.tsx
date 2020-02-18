@@ -14,6 +14,7 @@ stories.addDecorator(withKnobs)
 
 const LABEL = 'Example label'
 const DESCRIPTION = 'This is an example toast message'
+const DATE_TIME = new Date('Tue, 18 Feb 2020 14:36:43 GMT')
 
 const ToastButton: React.FC<Options> = ({
   appearance = 'info',
@@ -72,6 +73,7 @@ stories.add('Component only', () => {
       transitionDuration={300}
       transitionState="entered"
       label={text('Label', LABEL)}
+      dateTime={DATE_TIME}
     >
       {text('Description', DESCRIPTION)}
     </Toast>
@@ -104,6 +106,7 @@ dangerStories.add('Component only', () => {
       transitionDuration={300}
       transitionState="entered"
       label={text('Label', LABEL)}
+      dateTime={DATE_TIME}
     >
       {text('Description', DESCRIPTION)}
     </Toast>
@@ -136,6 +139,7 @@ successStories.add('Component only', () => {
       transitionDuration={300}
       transitionState="entered"
       label={text('Label', LABEL)}
+      dateTime={DATE_TIME}
     >
       {text('Description', DESCRIPTION)}
     </Toast>
@@ -168,6 +172,7 @@ warningStories.add('Component only', () => {
       transitionDuration={300}
       transitionState="entered"
       label={text('Label', LABEL)}
+      dateTime={DATE_TIME}
     >
       {text('Description', DESCRIPTION)}
     </Toast>
