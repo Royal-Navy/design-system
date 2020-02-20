@@ -3,8 +3,7 @@ const lint = require('@commitlint/lint')
 
 const { rules } = require('../../commitlint.config')
 
-function getPrOptions() {
-  const prUrl = process.argv[2]
+function getPrOptions(prUrl) {
   const prUrlParts = prUrl.split('/')
 
   return {
@@ -29,20 +28,26 @@ function lintCommits(commits) {
 
 (async function runCommitLint() {
   try {
-    const prOptions = getPrOptions()
-    const prCommits = await getCommitsByPr(prOptions)
-    const lintResults = await lintCommits(prCommits)
+    if (process.argv[2]) {
+      const prOptions = getPrOptions(process.argv[2])
+      const prCommits = await getCommitsByPr(prOptions)
+      const lintResults = await lintCommits(prCommits)
 
-    const resultsWithErrors = lintResults.filter(result => !result.valid)
-    resultsWithErrors.forEach(({ errors, input }) => {
-      errors.forEach(error => {
-        console.error(
-          `Commit message \`${input}\` has error \`${error.message}\``
-        )
+      const lintErrors = lintResults.filter(result => !result.valid)
+      lintErrors.forEach(({ errors, input }) => {
+        errors.forEach(error => {
+          console.error(
+            `Commit message \`${input}\` has error \`${error.message}\``
+          )
+        })
       })
-    })
 
-    process.exit(resultsWithErrors.length ? 1 : 0)
+      if (lintErrors.length) {
+        process.exit(1)
+      }
+    }
+
+    process.exit(0)
   } catch (e) {
     console.error('Error running commitlint', e)
     process.exit(1)
