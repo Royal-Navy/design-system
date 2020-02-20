@@ -14,7 +14,7 @@ describe('CardFrame', () => {
     expect(wrapper.getByText('Content')).toBeTruthy()
   })
 
-  it('shoulder apply the injected custom class', () => {
+  it('should apply the injected custom class', () => {
     expect(wrapper.getByTestId('cardframe-wrapper').classList).toContain(
       'example-class'
     )
