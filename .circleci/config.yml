@@ -37,6 +37,12 @@ jobs:
     steps:
       - checkout
       - run: yarn audit
+  lint_commits:
+    docker: *docker
+    steps:
+      - checkout
+      - dependencies
+      - run: node ./scripts/commitlint $CIRCLE_PULL_REQUEST
   lint_css-framework:
     docker: *docker
     steps:
@@ -198,6 +204,7 @@ workflows:
   build_and_test:
     jobs:
       - security_audit
+      - lint_commits
       - lint_css-framework
       - lint_react-component-library
       - lint_docs_site
