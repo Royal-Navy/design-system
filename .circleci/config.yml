@@ -2,19 +2,15 @@ version: 2.1
 
 aliases:
   - &authenticate_npm
-    run:
-      name: Authenticate NPM
-      command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      run:
+        name: Authenticate NPM
+        command: echo "//$NPM_REGISTRY/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
   - &build_icon_library
-    run:
-      name: Build Icon Library
-      command: yarn --cwd packages/icon-library build
+      run:
+        name: Build Icon Library
+        command: yarn --cwd packages/icon-library build
   - &docker
       - image: circleci/node:12.13.0
-  - &publish_package
-    run:
-      name: Publish package
-      command: npm publish --registry https://$NPM_REGISTRY
 
 commands:
   dependencies:
@@ -30,6 +26,16 @@ commands:
           paths:
             - ~/.cache/yarn
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+  publish_package:
+    description: 'Publish an NPM package to a registry'
+    parameters:
+      tag:
+        type: string
+        description: 'The NPM dist-tag associated with the release'
+    steps:
+      - run:
+        name: Publish package
+        command: npm publish --registry https://$NPM_REGISTRY --tag << parameters.tag >>
 
 jobs:
   security_audit:
@@ -131,23 +137,27 @@ jobs:
       - run:
           name: Run visual regression tests
           command: yarn --cwd packages/react-component-library chromatic --app-code=$CHROMATIC_APP_CODE
-  publish_eslint-config-react:
+  publish_stable_eslint-config-react:
     docker: *docker
+    parameters:
+      tag: stable
     steps:
       - checkout
       - dependencies
       - *authenticate_npm
       - run: cd packages/eslint-config-react
-#      - *publish_package
-  publish_css-framework:
+      - publish_package:
+          tag: stable
+  publish_stable_css-framework:
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *authenticate_npm
       - run: cd packages/css-framework
-#      - *publish_package
-  publish_react-component-library:
+      - publish_package:
+          tag: stable
+  publish_stable_react-component-library:
     docker: *docker
     steps:
       - checkout
@@ -155,23 +165,26 @@ jobs:
       - *build_icon_library
       - *authenticate_npm
       - run: cd packages/react-component-library
-#      - *publish_package
-  publish_icon-library:
+      - publish_package:
+          tag: stable
+  publish_stable_icon-library:
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *authenticate_npm
       - run: cd packages/icon-library
-#      - *publish_package
-  publish_fonts:
+      - publish_package:
+          tag: stable
+  publish_stable_fonts:
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *authenticate_npm
       - run: cd packages/fonts
-#      - *publish_package
+      - publish_package:
+          tag: stable
   test_docs-site:
     docker: *docker
     steps:
@@ -217,37 +230,37 @@ workflows:
       - test_visual_regression:
           requires:
             - test_react-component-library
-      - publish_eslint-config-react:
+      - publish_stable_eslint-config-react:
           filters:
-            branches:
+            tags:
               only:
-                - master
-      - publish_icon-library:
+                - /^\d\.\d\.\d/
+      - publish_stable_icon-library:
           filters:
-            branches:
+            tags:
               only:
-                - master
-      - publish_fonts:
+                - /^\d\.\d\.\d/
+      - publish_stable_fonts:
           filters:
-            branches:
+            tags:
               only:
-                - master
-      - publish_css-framework:
+                - /^\d\.\d\.\d/
+      - publish_stable_css-framework:
           requires:
             - lint_css-framework
           filters:
-            branches:
+            tags:
               only:
-                - master
-      - publish_react-component-library:
+                - /^\d\.\d\.\d/
+      - publish_stable_react-component-library:
           requires:
             - test_react-component-library
-            - publish_css-framework
-            - publish_icon-library
+            - publish_stable_css-framework
+            - publish_stable_icon-library
           filters:
-            branches:
+            tags:
               only:
-                - master
+                - /^\d\.\d\.\d/
       - test_docs-site:
           requires:
             - test_react-component-library
