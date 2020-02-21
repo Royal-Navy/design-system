@@ -138,7 +138,7 @@ jobs:
       - dependencies
       - *authenticate_npm
       - run: cd packages/eslint-config-react
-      - *publish_package
+#      - *publish_package
   publish_css-framework:
     docker: *docker
     steps:
@@ -146,7 +146,7 @@ jobs:
       - dependencies
       - *authenticate_npm
       - run: cd packages/css-framework
-      - *publish_package
+#      - *publish_package
   publish_react-component-library:
     docker: *docker
     steps:
@@ -155,7 +155,7 @@ jobs:
       - *build_icon_library
       - *authenticate_npm
       - run: cd packages/react-component-library
-      - *publish_package
+#      - *publish_package
   publish_icon-library:
     docker: *docker
     steps:
@@ -163,7 +163,7 @@ jobs:
       - dependencies
       - *authenticate_npm
       - run: cd packages/icon-library
-      - *publish_package
+#      - *publish_package
   publish_fonts:
     docker: *docker
     steps:
@@ -171,7 +171,7 @@ jobs:
       - dependencies
       - *authenticate_npm
       - run: cd packages/fonts
-      - *publish_package
+#      - *publish_package
   test_docs-site:
     docker: *docker
     steps:
