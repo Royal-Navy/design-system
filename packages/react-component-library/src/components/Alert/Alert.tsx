@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import {
   IconInfo,
-  IconErrorOutline,
-  IconCheckBox,
+  IconError,
+  IconCheckCircle,
   IconWarning,
 } from '@royalnavy/icon-library'
 import classNames from 'classnames'
@@ -11,11 +11,11 @@ import { ALERT_VARIANT } from './constants'
 
 const VARIANT_ICON_MAP = {
   [ALERT_VARIANT.DANGER]: (
-    <IconErrorOutline data-testid={`icon-${ALERT_VARIANT.DANGER}`} />
+    <IconError data-testid={`icon-${ALERT_VARIANT.DANGER}`} />
   ),
   [ALERT_VARIANT.INFO]: <IconInfo data-testid={`icon-${ALERT_VARIANT.INFO}`} />,
   [ALERT_VARIANT.SUCCESS]: (
-    <IconCheckBox data-testid={`icon-${ALERT_VARIANT.SUCCESS}`} />
+    <IconCheckCircle data-testid={`icon-${ALERT_VARIANT.SUCCESS}`} />
   ),
   [ALERT_VARIANT.WARNING]: (
     <IconWarning data-testid={`icon-${ALERT_VARIANT.WARNING}`} />
@@ -55,10 +55,6 @@ export const Alert: React.FC<AlertProps> = ({
     `rn-alert__close--${variant}`
   )
   const iconClasses = classNames('rn-alert__icon', `rn-alert__icon--${variant}`)
-  const titleClasses = classNames(
-    'rn-alert__title',
-    `rn-alert__title--${variant}`
-  )
   const descriptionClasses = classNames(
     'rn-alert__description',
     `rn-alert__description--${variant}`
@@ -67,31 +63,26 @@ export const Alert: React.FC<AlertProps> = ({
   return (
     !closed && (
       <div className={classes} data-testid="alert">
-        <button
-          className={closeClasses}
-          onClick={handleClick}
-          data-testid="close"
-        >
-          &times;
-        </button>
-        {title && (
-          <div className="rn-alert__header" data-testid="header">
-            <div className={iconClasses} data-testid="header-icon">
-              {VARIANT_ICON_MAP[variant]}
-            </div>
-            <div className={titleClasses} data-testid="header-title">
-              {title}
-            </div>
-          </div>
-        )}
+        <div className={iconClasses} data-testid="state-icon">
+          {VARIANT_ICON_MAP[variant]}
+        </div>
         <div className="rn-alert__content" data-testid="content">
-          {!title && (
-            <div className={iconClasses} data-testid="content-icon">
-              {VARIANT_ICON_MAP[variant]}
-            </div>
+          {title && (
+            <h2 className="rn-alert__title" data-testid="content-title">
+              {title}
+            </h2>
           )}
-          <div className={descriptionClasses} data-testid="content-description">
+          <p className={descriptionClasses} data-testid="content-description">
             {children}
+          </p>
+          <div className="rn-alert__footer">
+            <button
+              className={closeClasses}
+              onClick={handleClick}
+              data-testid="close"
+            >
+              Dismiss
+            </button>
           </div>
         </div>
       </div>
