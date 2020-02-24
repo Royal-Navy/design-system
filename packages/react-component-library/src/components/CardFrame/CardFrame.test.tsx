@@ -7,16 +7,16 @@ describe('CardFrame', () => {
   let wrapper: RenderResult
 
   beforeEach(() => {
-    wrapper = render(
-      <CardFrame>Content</CardFrame>
-    )
-  })
-
-  it('should render the div', () => {
-    expect(wrapper.container.tagName).toEqual('DIV')
+    wrapper = render(<CardFrame className="example-class">Content</CardFrame>)
   })
 
   it('should render the content', () => {
     expect(wrapper.getByText('Content')).toBeTruthy()
+  })
+
+  it('should apply the injected custom class', () => {
+    expect(wrapper.getByTestId('cardframe-wrapper').classList).toContain(
+      'example-class'
+    )
   })
 })

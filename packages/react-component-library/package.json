@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/react-component-library",
   "description": "A collection of react components and helpers to assist in building applications for the Royal Navy",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "publishConfig": {
     "access": "public"
   },
@@ -65,11 +65,11 @@
     "@types/jest": "^25.1.0",
     "@types/jsdom": "^12.2.4",
     "@types/lodash": "^4.14.149",
-    "@types/node": "^12.12.25",
+    "@types/node": "^13.7.1",
     "@types/react": "^16.9.19",
-    "@types/react-addons-css-transition-group": "^15.0.5",
     "@types/react-dom": "^16.9.5",
     "@types/react-select": "^3.0.10",
+    "@types/react-transition-group": "^4.2.3",
     "@types/storybook__react": "^4.0.2",
     "@types/uuid": "^3.4.6",
     "@types/yup": "^0.26.28",
@@ -89,11 +89,11 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.0",
     "express": "^4.17.1",
-    "file-loader": "^4.3.0",
+    "file-loader": "^5.1.0",
     "formik": "^2.1.2",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^6.0.0",
-    "jest": "^24.9.0",
+    "jest": "^25.1.0",
     "jest-junit": "^9.0.0",
     "jsdom": "^16.0.1",
     "lint-staged": "^9.5.0",
@@ -128,17 +128,20 @@
   ],
   "dependencies": {
     "@datepicker-react/hooks": "^2.3.1",
-    "@royalnavy/css-framework": "^2.1.1",
-    "@royalnavy/icon-library": "^2.1.1",
+    "@royalnavy/css-framework": "^2.2.0",
+    "@royalnavy/fonts": "^2.2.0",
+    "@royalnavy/icon-library": "^2.2.0",
     "@types/react-responsive": "^8.0.2",
+    "@types/react-toast-notifications": "^2.4.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.9.0",
-    "react-addons-css-transition-group": "^15.6.2",
     "react-children-utilities": "^1.3.3",
     "react-compound-slider": "^2.5.0",
     "react-indiana-drag-scroll": "^1.5.5",
     "react-responsive": "^8.0.3",
     "react-select": "^3.0.8",
-    "react-tether": "^2.0.7"
+    "react-tether": "^2.0.7",
+    "react-toast-notifications": "^2.4.0",
+    "react-transition-group": "^4.3.0"
   }
 }

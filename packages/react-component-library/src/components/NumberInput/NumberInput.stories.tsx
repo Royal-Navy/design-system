@@ -9,8 +9,75 @@ import { NumberInput } from './NumberInput'
 import withFormik from '../../enhancers/withFormik'
 
 const stories = storiesOf('Number Input', module)
+const examples = storiesOf('Number Input/Examples', module)
 
-stories.add('Formik', () => {
+stories.add('Default', () => (
+  <NumberInput name="number-input" onChange={action('onChange')} />
+))
+
+examples.add('Disabled', () => (
+  <NumberInput isDisabled name="number-input" onChange={action('onChange')} />
+))
+
+examples.add('Footnote', () => (
+  <NumberInput
+    footnote="Footnote"
+    name="number-input"
+    onChange={action('onChange')}
+  />
+))
+
+examples.add('Label', () => (
+  <NumberInput
+    label="Label"
+    name="number-input"
+    onChange={action('onChange')}
+  />
+))
+
+examples.add('Label and value', () => (
+  <NumberInput
+    label="Label"
+    name="number-input"
+    onChange={action('onChange')}
+    value={10}
+  />
+))
+
+examples.add('Placeholder', () => (
+  <NumberInput
+    label="Label"
+    name="number-input"
+    onChange={action('onChange')}
+    placeholder="Placeholder"
+  />
+))
+
+examples.add('Start adornment icon', () => (
+  <NumberInput
+    name="example-number-input"
+    onChange={action('onChange')}
+    startAdornment={<IconBrightnessHigh />}
+  />
+))
+
+examples.add('Start adornment text', () => (
+  <NumberInput
+    name="example-number-input"
+    onChange={action('onChange')}
+    startAdornment="Kts"
+  />
+))
+
+examples.add('Value', () => (
+  <NumberInput
+    name="number-input"
+    onChange={action('onChange')}
+    value={10}
+  />
+))
+
+examples.add('Formik', () => {
   const NumberInputForm = () => {
     interface Data {
       age: number
@@ -43,23 +110,3 @@ stories.add('Formik', () => {
 
   return <NumberInputForm />
 })
-
-stories.add('With start adornment icon', () => (
-  <NumberInput
-    name="example-number-input"
-    label="Example"
-    value={1}
-    onChange={action('onChange')}
-    startAdornment={<IconBrightnessHigh />}
-  />
-))
-
-stories.add('With start adornment text', () => (
-  <NumberInput
-    name="example-number-input"
-    label="Example"
-    value={1}
-    onChange={action('onChange')}
-    startAdornment="Kts"
-  />
-))

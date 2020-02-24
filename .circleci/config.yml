@@ -37,6 +37,12 @@ jobs:
     steps:
       - checkout
       - run: yarn audit
+  lint_commits:
+    docker: *docker
+    steps:
+      - checkout
+      - dependencies
+      - run: node ./scripts/commitlint $CIRCLE_PULL_REQUEST
   lint_css-framework:
     docker: *docker
     steps:
@@ -87,7 +93,8 @@ jobs:
       - run:
           name: Jest
           environment:
-            JEST_JUNIT_OUTPUT: test-results/jest/react-component-results.xml
+            JEST_JUNIT_OUTPUT_DIR: test-results/jest
+            JEST_JUNIT_OUTPUT_NAME: react-component-results.xml
           command: yarn --cwd packages/react-component-library jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
       - store_test_results:
           path: packages/react-component-library/test-results
@@ -109,8 +116,8 @@ jobs:
       - run: chmod +x /tmp/cc-test-reporter
       - run:
           name: Convert react results to cc format
-          working_directory: ~/project
-          command: /tmp/cc-test-reporter format-coverage -t lcov -o workspace/codeclimate.react-component-library.json workspace/react-component-library/coverage/lcov.info
+          working_directory: ~/project/packages/react-component-library
+          command: /tmp/cc-test-reporter format-coverage -t lcov -o ../../workspace/codeclimate.react-component-library.json ../../workspace/react-component-library/coverage/lcov.info
       - run:
           name: Upload CC coverage
           working_directory: ~/project
@@ -125,45 +132,45 @@ jobs:
           name: Run visual regression tests
           command: yarn --cwd packages/react-component-library chromatic --app-code=$CHROMATIC_APP_CODE
   publish_eslint-config-react:
-    working_directory: packages/eslint-config-react
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *authenticate_npm
+      - run: cd packages/eslint-config-react
       - *publish_package
   publish_css-framework:
-    working_directory: packages/css-framework
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *authenticate_npm
+      - run: cd packages/css-framework
       - *publish_package
   publish_react-component-library:
-    working_directory: packages/react-component-library
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *build_icon_library
       - *authenticate_npm
+      - run: cd packages/react-component-library
       - *publish_package
   publish_icon-library:
-    working_directory: packages/icon-library
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *authenticate_npm
+      - run: cd packages/icon-library
       - *publish_package
   publish_fonts:
-    working_directory: packages/fonts
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *authenticate_npm
+      - run: cd packages/fonts
       - *publish_package
   test_docs-site:
     docker: *docker
@@ -180,7 +187,8 @@ jobs:
       - run:
           name: Jest
           environment:
-            JEST_JUNIT_OUTPUT: test-results/jest/docs-site-results.xml
+            JEST_JUNIT_OUTPUT_DIR: test-results/jest
+            JEST_JUNIT_OUTPUT_NAME: docs-site-results.xml
           command: yarn --cwd packages/docs-site jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
       - store_test_results:
           path: packages/docs-site/test-results
@@ -196,6 +204,7 @@ workflows:
   build_and_test:
     jobs:
       - security_audit
+      - lint_commits
       - lint_css-framework
       - lint_react-component-library
       - lint_docs_site

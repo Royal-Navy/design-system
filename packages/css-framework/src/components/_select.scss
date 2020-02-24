@@ -1,6 +1,8 @@
 @use "../abstracts/functions" as f;
 
 .rn-select {
+  margin: f.spacing("3") 0;
+
   .rn-select__control--is-focused,
   .rn-select__control:hover {
     border-color: f.color("action", "600");

@@ -33,14 +33,16 @@ stories.add('Formik', () => {
   const TextInputForm = () => {
     interface Data {
       colour: string
+      city: string
     }
 
     const initialValues: Data = {
       colour: 'Green',
+      city: '',
     }
 
     const validationSchema = yup.object().shape({
-      city: yup.string().required('Hey, enter a city!'),
+      city: yup.string().required('Something went wrong!'),
     })
 
     const FormikTextInput = withFormik(TextInput)
@@ -48,8 +50,10 @@ stories.add('Formik', () => {
     return (
       <Formik
         initialValues={initialValues}
-        onSubmit={action('Submitted')}
+        initialErrors={{ city: 'Something went wrong!' }}
+        initialTouched={{ city: true }}
         validationSchema={validationSchema}
+        onSubmit={action('Submit')}
       >
         <Form>
           <Field

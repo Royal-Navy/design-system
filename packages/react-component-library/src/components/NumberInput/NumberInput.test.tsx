@@ -1,522 +1,419 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, RenderResult } from '@testing-library/react'
+import { render, RenderResult, fireEvent, waitForElement } from '@testing-library/react'
 
-import { calculateNewValue, NumberInput, NumberInputProps } from './NumberInput'
+import { NumberInput } from './NumberInput'
 
 describe('NumberInput', () => {
-  let props: NumberInputProps
   let wrapper: RenderResult
+  let onChangeSpy: (event: any) => void
 
   beforeEach(() => {
-    props = {
-      name: 'balloons',
-      onChange: jest.fn(),
-    }
-
-    wrapper = undefined
+    onChangeSpy = jest.fn()
   })
 
-  describe('When the field has a label', () => {
+  describe('when minimal props', () => {
     beforeEach(() => {
-      props.label = 'Balloons'
+      wrapper = render(
+        <NumberInput name="number-input" onChange={onChangeSpy} />
+      )
     })
 
-    describe('and the field has a value', () => {
+    it('should not display a start adornment', () => {
+      expect(
+        wrapper.queryAllByTestId('number-input-start-adornment')
+      ).toHaveLength(0)
+    })
+
+    it('should not display a label', () => {
+      expect(wrapper.queryAllByTestId('number-input-label')).toHaveLength(0)
+    })
+
+    it('should not display a value', () => {
+      const input = wrapper.getByTestId(
+        'number-input-input'
+      ) as HTMLInputElement
+      expect(input.value).toEqual('')
+    })
+
+    it('should set the name attribute', () => {
+      expect(
+        wrapper.getByTestId('number-input-input').getAttribute('name')
+      ).toEqual('number-input')
+    })
+
+    it('should not display a footnote', () => {
+      expect(wrapper.queryAllByTestId('number-input-footnote')).toHaveLength(0)
+    })
+
+    describe('and the increase button is clicked', () => {
       beforeEach(() => {
-        props.value = 1
-        wrapper = render(<NumberInput {...props} />)
+        wrapper.getByTestId('number-input-increase').click()
       })
 
-      it('should render a field with a label', () => {
-        expect(wrapper.getByTestId('number-input-label')).toHaveTextContent(
-          'Balloons'
-        )
+      it('should increase the value by 1', () => {
+        const input = wrapper.getByTestId(
+          'number-input-input'
+        ) as HTMLInputElement
+        expect(input.value).toEqual('1')
       })
 
-      it('should indicate that the field has content so the label is shrunk', () => {
-        expect(wrapper.queryByTestId('number-input-container')).toHaveClass(
-          'has-content'
-        )
-      })
-
-      it('should populate the field value', () => {
-        expect(wrapper.queryByTestId('number-input-input')).toHaveAttribute(
-          'value',
-          '1'
-        )
-      })
-    })
-
-    describe('and the field has a startAdornment', () => {
-      beforeEach(() => {
-        props.value = 1
-        props.startAdornment = 'Example'
-        wrapper = render(<NumberInput {...props} />)
-      })
-
-      it('should render the text', () => {
-        expect(
-          wrapper.getByTestId('number-input-start-adornment')
-        ).toHaveTextContent('Example')
-      })
-    })
-
-    describe('and the field has no value', () => {
-      beforeEach(() => {
-        wrapper = render(<NumberInput {...props} />)
-      })
-
-      it('should render a field with a label', () => {
-        expect(wrapper.getByTestId('number-input-label')).toHaveTextContent(
-          'Balloons'
-        )
-      })
-
-      it('should indicate that the field has no content so the label is not', () => {
-        expect(wrapper.queryByTestId('number-input-container')).not.toHaveClass(
-          'has-content'
-        )
-      })
-
-      it('should render a field with an empty value', () => {
-        expect(wrapper.queryByTestId('number-input-input')).toHaveAttribute(
-          'value',
-          ''
-        )
-      })
-
-      describe('When the user focuses on the field', () => {
-        beforeEach(() => {
-          const input = wrapper.getByTestId('number-input-input')
-          input.focus()
-        })
-
-        it('should indicate that the field has content so the label is shrunk', () => {
-          expect(wrapper.queryByTestId('number-input-container')).toHaveClass(
-            'has-focus'
-          )
-        })
-      })
-    })
-
-    describe('and the field value is 0', () => {
-      beforeEach(() => {
-        props.value = 0
-        wrapper = render(<NumberInput {...props} />)
-      })
-
-      it('should populate the field value', () => {
-        expect(wrapper.queryByTestId('number-input-input')).toHaveAttribute(
-          'value',
-          '0'
-        )
-      })
-    })
-
-    describe('when an id is provided', () => {
-      beforeEach(() => {
-        props.id = 'myid'
-        wrapper = render(<NumberInput {...props} />)
-      })
-
-      it('should attach the id to the field', () => {
-        expect(wrapper.queryByTestId('number-input-input')).toHaveAttribute(
-          'id',
-          'myid'
-        )
-      })
-
-      it('should associate the label to the field with the custom id', () => {
-        expect(wrapper.queryByTestId('number-input-label')).toHaveAttribute(
-          'for',
-          'myid'
-        )
-      })
-    })
-  })
-
-  describe('When the field has no label', () => {
-    beforeEach(() => {
-      wrapper = render(<NumberInput {...props} />)
-    })
-
-    it('should not render a field with a label', () => {
-      expect(wrapper.queryByTestId('number-input-label')).toBeNull()
-    })
-  })
-
-  describe('when the user selects the increase value option', () => {
-    describe('and no maximum value has been set', () => {
-      beforeEach(() => {
-        props.value = 1
-        wrapper = render(<NumberInput {...props} />)
-        const button = wrapper.getByTestId('number-input-increase')
-        button.click()
-      })
-
-      it('should notify the parent the value has increased', () => {
-        expect(props.onChange).toHaveBeenCalledWith({
+      it('should call the onChange callback', () => {
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
+        expect(onChangeSpy).toHaveBeenCalledWith({
           target: {
-            name: 'balloons',
-            value: 2,
+            name: 'number-input',
+            value: 1,
           },
         })
       })
-    })
 
-    describe('and a maximum value bas been defined', () => {
-      beforeEach(() => {
-        props.max = 10
-      })
-
-      describe('and increasing the value would take it over the maximum', () => {
+      describe('and the decrease button is clicked', () => {
         beforeEach(() => {
-          props.value = 10
-          wrapper = render(<NumberInput {...props} />)
-          const button = wrapper.getByTestId('number-input-increase')
-          button.click()
+          wrapper.getByTestId('number-input-decrease').click()
         })
 
-        it('should not notify the parent the value has increased', () => {
-          expect(props.onChange).not.toHaveBeenCalled()
-        })
-      })
-
-      describe('and increasing the value would not take it over the maximum', () => {
-        beforeEach(() => {
-          props.value = 1
-          wrapper = render(<NumberInput {...props} />)
-          const button = wrapper.getByTestId('number-input-increase')
-          button.click()
+        it('should decrease the value by 1', () => {
+          const input = wrapper.getByTestId(
+            'number-input-input'
+          ) as HTMLInputElement
+          expect(input.value).toEqual('0')
         })
 
-        it('should not notify the parent the value has increased', () => {
-          expect(props.onChange).toHaveBeenCalledWith({
+        it('should call the onChange callback', () => {
+          expect(onChangeSpy).toHaveBeenCalledTimes(2)
+          expect(onChangeSpy).toHaveBeenCalledWith({
             target: {
-              name: 'balloons',
-              value: 2,
+              name: 'number-input',
+              value: 0,
             },
+          })
+        })
+
+        describe('and the decrease button is clicked', () => {
+          beforeEach(() => {
+            wrapper.getByTestId('number-input-decrease').click()
+          })
+
+          it('should decrease the value by 1', () => {
+            const input = wrapper.getByTestId(
+              'number-input-input'
+            ) as HTMLInputElement
+            expect(input.value).toEqual('-1')
+          })
+
+          it('should call the onChange callback', () => {
+            expect(onChangeSpy).toHaveBeenCalledTimes(3)
+            expect(onChangeSpy).toHaveBeenCalledWith({
+              target: {
+                name: 'number-input',
+                value: -1,
+              },
+            })
           })
         })
       })
     })
-
-    describe('and the step is provided', () => {
-      beforeEach(() => {
-        props.value = 5
-        props.step = 5
-        wrapper = render(<NumberInput {...props} />)
-        const button = wrapper.getByTestId('number-input-increase')
-        button.click()
-      })
-
-      it('should notify the parent the value has increased', () => {
-        expect(props.onChange).toHaveBeenCalledWith({
-          target: {
-            name: 'balloons',
-            value: 10,
-          },
-        })
-      })
-    })
   })
 
-  describe('when the user selects the decrease value option', () => {
-    describe('and no minimum value has been set', () => {
-      beforeEach(() => {
-        props.value = 1
-        wrapper = render(<NumberInput {...props} />)
-        const button = wrapper.getByTestId('number-input-decrease')
-        button.click()
-      })
-
-      it('should notify the parent the value has decreased', () => {
-        expect(props.onChange).toHaveBeenCalledWith({
-          target: {
-            name: 'balloons',
-            value: 0,
-          },
-        })
-      })
-    })
-
-    describe('and a minimum value bas been defined', () => {
-      beforeEach(() => {
-        props.min = 1
-      })
-
-      describe('and decreasing the value would take it under the minimum', () => {
-        beforeEach(() => {
-          props.value = 1
-          wrapper = render(<NumberInput {...props} />)
-          const button = wrapper.getByTestId('number-input-decrease')
-          button.click()
-        })
-
-        it('should not notify the parent the value has decreased', () => {
-          expect(props.onChange).not.toHaveBeenCalled()
-        })
-      })
-
-      describe('and decreasing the value would not take it below the minimum', () => {
-        beforeEach(() => {
-          props.value = 10
-          props.min = 3
-          wrapper = render(<NumberInput {...props} />)
-          const button = wrapper.getByTestId('number-input-decrease')
-          button.click()
-        })
-
-        it('should not notify the parent the value has increased', () => {
-          expect(props.onChange).toHaveBeenCalledWith({
-            target: {
-              name: 'balloons',
-              value: 9,
-            },
-          })
-        })
-      })
-    })
-
-    describe('and the step is provided', () => {
-      beforeEach(() => {
-        props.value = 10
-        props.step = 5
-        wrapper = render(<NumberInput {...props} />)
-        const button = wrapper.getByTestId('number-input-decrease')
-        button.click()
-      })
-
-      it('should notify the parent the value has increased', () => {
-        expect(props.onChange).toHaveBeenCalledWith({
-          target: {
-            name: 'balloons',
-            value: 5,
-          },
-        })
-      })
-    })
-  })
-
-  describe('when an additional class it provided', () => {
+  describe('when there is a footnote', () => {
     beforeEach(() => {
-      props.className = 'test-class'
-      wrapper = render(<NumberInput {...props} />)
+      wrapper = render(
+        <NumberInput
+          footnote="Footnote"
+          name="number-input"
+          onChange={onChangeSpy}
+        />
+      )
     })
 
-    it('should attach the class to the wrapper', () => {
-      expect(wrapper.queryByTestId('number-input-container')).toHaveClass(
-        'test-class'
+    it('should display the footnote', () => {
+      expect(wrapper.getByTestId('number-input-footnote').textContent).toEqual(
+        'Footnote'
       )
     })
   })
 
-  describe('calculate new value based on direct input', () => {
-    let currentValue: number | undefined
-    let newInputValue: string | undefined
-    let newValue: number | undefined
-    let max: number | undefined
-    let min: number | undefined
-
+  describe('when there is a label', () => {
     beforeEach(() => {
-      currentValue = undefined
-      max = undefined
-      min = undefined
-      newInputValue = undefined
-      newValue = undefined
+      wrapper = render(
+        <NumberInput label="Label" name="number-input" onChange={onChangeSpy} />
+      )
     })
 
-    describe('when there is an existing value', () => {
+    it('should display the footnote', () => {
+      expect(wrapper.getByTestId('number-input-label').textContent).toEqual(
+        'Label'
+      )
+    })
+  })
+
+  describe('when max and min are specified', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <>
+          <NumberInput
+            max={3}
+            min={0}
+            name="number-input"
+            onChange={onChangeSpy}
+          />
+          <input type="text" data-testid="next-field" />
+        </>
+      )
+    })
+
+    describe('and the increase button is clicked four times', () => {
       beforeEach(() => {
-        currentValue = 1
+        const increase = wrapper.getByTestId('number-input-increase')
+        increase.click()
+        increase.click()
+        increase.click()
+        increase.click()
       })
 
-      describe('and the user clears the field', () => {
-        beforeEach(() => {
-          newInputValue = ''
-          newValue = calculateNewValue({
-            currentValue,
-            max,
-            min,
-            newInputValue,
-          })
-        })
-
-        it('indicate the field value is empty', () => {
-          expect(newValue).toEqual(null)
-        })
+      it('should increase the value to the max 3', () => {
+        const input = wrapper.getByTestId(
+          'number-input-input'
+        ) as HTMLInputElement
+        expect(input.value).toEqual('3')
       })
 
-      describe('and the user enters a non-numeric character', () => {
+      describe('and the decrease button is clicked four times', () => {
         beforeEach(() => {
-          newInputValue = 'a'
-          newValue = calculateNewValue({
-            currentValue,
-            max,
-            min,
-            newInputValue,
-          })
+          const decrease = wrapper.getByTestId('number-input-decrease')
+          decrease.click()
+          decrease.click()
+          decrease.click()
+          decrease.click()
         })
 
-        it('should indicate the value should not be changed', () => {
-          expect(newValue).toEqual(1)
-        })
-      })
-
-      describe('and the user enters a new number', () => {
-        beforeEach(() => {
-          newInputValue = '12'
-          newValue = calculateNewValue({
-            currentValue,
-            max,
-            min,
-            newInputValue,
-          })
-        })
-
-        it('should indicate there is a new value', () => {
-          expect(newValue).toEqual(12)
-        })
-      })
-
-      describe('when there is a maximum number specified', () => {
-        beforeEach(() => {
-          currentValue = 10
-          max = 99
-        })
-
-        describe('and the user enters a valid value', () => {
-          beforeEach(() => {
-            newInputValue = '11'
-            newValue = calculateNewValue({
-              currentValue,
-              max,
-              min,
-              newInputValue,
-            })
-          })
-
-          it('should indicate the value should change', () => {
-            expect(newValue).toEqual(11)
-          })
-        })
-
-        describe('and the user enters a number bigger than the maximum', () => {
-          beforeEach(() => {
-            newInputValue = '100'
-            newValue = calculateNewValue({
-              currentValue,
-              max,
-              min,
-              newInputValue,
-            })
-          })
-
-          it('should indicate the value should not change', () => {
-            expect(newValue).toEqual(10)
-          })
-        })
-      })
-
-      describe('when there is a minimum number specified', () => {
-        beforeEach(() => {
-          currentValue = 10
-          min = 5
-        })
-
-        describe('and the user enters a valid value', () => {
-          beforeEach(() => {
-            newInputValue = '11'
-            newValue = calculateNewValue({
-              currentValue,
-              max,
-              min,
-              newInputValue,
-            })
-          })
-
-          it('should indicate the value should change', () => {
-            expect(newValue).toEqual(11)
-          })
-        })
-
-        describe('and the user enters a number smaller than the minimum', () => {
-          beforeEach(() => {
-            newInputValue = '1'
-            newValue = calculateNewValue({
-              currentValue,
-              max,
-              min,
-              newInputValue,
-            })
-          })
-
-          it('should indicate the value should not change', () => {
-            expect(newValue).toEqual(10)
-          })
+        it('should decrease the value to the min 0', () => {
+          const input = wrapper.getByTestId(
+            'number-input-input'
+          ) as HTMLInputElement
+          expect(input.value).toEqual('0')
         })
       })
     })
 
-    describe('when there is no existing value', () => {
+    describe('and the increase button is clicked once', () => {
       beforeEach(() => {
-        currentValue = null
+        const increase = wrapper.getByTestId('number-input-increase')
+        increase.click()
+
+        wrapper.getByTestId('number-input-input').focus()
       })
 
-      describe('and the user enters a non-numeric character', () => {
+      describe('and the user types an invalid character', () => {
         beforeEach(() => {
-          newInputValue = 'a'
-          newValue = calculateNewValue({
-            currentValue,
-            max,
-            min,
-            newInputValue,
+          fireEvent.change(wrapper.getByTestId('number-input-input'), {
+            target: {
+              value: 'a',
+            },
           })
         })
 
-        it('should indicate that the value should not be changed', () => {
-          expect(newValue).toEqual(null)
+        it('should not change the value', () => {
+          const input = wrapper.getByTestId(
+            'number-input-input'
+          ) as HTMLInputElement
+          expect(input.value).toEqual('1')
         })
       })
 
-      describe('and the user enters a new number', () => {
+      describe('and the user types a valid number', () => {
         beforeEach(() => {
-          newInputValue = '3'
-
-          newValue = calculateNewValue({
-            currentValue,
-            max,
-            min,
-            newInputValue,
+          fireEvent.change(wrapper.getByTestId('number-input-input'), {
+            target: {
+              value: '3',
+            },
           })
         })
 
-        it('should indicate there is a new value', () => {
-          expect(newValue).toEqual(3)
+        it('should change the value', () => {
+          const input = wrapper.getByTestId(
+            'number-input-input'
+          ) as HTMLInputElement
+          expect(input.value).toEqual('3')
+        })
+      })
+
+      describe('and the user types an number outside the max min range', () => {
+        beforeEach(() => {
+          fireEvent.change(wrapper.getByTestId('number-input-input'), {
+            target: {
+              value: '4',
+            },
+          })
+        })
+
+        it('should display the value', () => {
+          const input = wrapper.getByTestId(
+            'number-input-input'
+          ) as HTMLInputElement
+          expect(input.value).toEqual('4')
+        })
+
+        describe('and the number input loses focus', () => {
+          beforeEach(() => {
+            wrapper.getByTestId('next-field').focus()
+          })
+
+          it('should display the last valid value', () => {
+            const input = wrapper.getByTestId(
+              'number-input-input'
+            ) as HTMLInputElement
+            expect(input.value).toEqual('1')
+          })
         })
       })
     })
   })
 
-  describe('when the onBlur callback has been specified', () => {
-    let onBlurSpy: jest.SpyInstance
-
+  describe('when the step is specified', () => {
     beforeEach(() => {
-      props.onBlur = () => { return true }
-      onBlurSpy = jest.spyOn(props, 'onBlur')
-
-      wrapper = render(<NumberInput {...props} />)
+      wrapper = render(
+        <NumberInput name="number-input" step={3} onChange={onChangeSpy} />
+      )
     })
 
-    describe('when the number input loses focus', () => {
+    describe('and the increase button is clicked', () => {
       beforeEach(() => {
-        wrapper.getByTestId('number-input-input').focus()
-        wrapper.getByTestId('number-input-increase').focus()
+        const increase = wrapper.getByTestId('number-input-increase')
+        increase.click()
       })
 
-      it('should call the onBlur callback once', () => {
+      it('should increase the value to 3', () => {
+        const input = wrapper.getByTestId(
+          'number-input-input'
+        ) as HTMLInputElement
+        expect(input.value).toEqual('3')
+      })
+
+      describe('and the decrease button is clicked', () => {
+        beforeEach(() => {
+          const decrease = wrapper.getByTestId('number-input-decrease')
+          decrease.click()
+        })
+
+        it('should decrease the value to 0', () => {
+          const input = wrapper.getByTestId(
+            'number-input-input'
+          ) as HTMLInputElement
+          expect(input.value).toEqual('0')
+        })
+      })
+    })
+  })
+
+  describe('when the start adornment is specified', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <NumberInput
+          name="number-input"
+          startAdornment="Example"
+          onChange={onChangeSpy}
+        />
+      )
+    })
+
+    it('should render the text', () => {
+      expect(
+        wrapper.getByTestId('number-input-start-adornment')
+      ).toHaveTextContent('Example')
+    })
+  })
+
+  describe('when a CSS class name is specified', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <NumberInput
+          className="number-input__custom"
+          name="number-input"
+          onChange={onChangeSpy}
+        />
+      )
+    })
+
+    it('should add the CSS modifier', () => {
+      expect(wrapper.getByTestId('number-input-container').classList).toContain(
+        'number-input__custom'
+      )
+    })
+  })
+
+  describe('when an ID is specified', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <NumberInput
+          id="number-input-id"
+          label="Label"
+          name="number-input"
+          onChange={onChangeSpy}
+        />
+      )
+    })
+
+    it('should add the ID attribute', () => {
+      expect(
+        wrapper.getByTestId('number-input-input').getAttribute('id')
+      ).toEqual('number-input-id')
+    })
+
+    it('should associate the label with the field', () => {
+      expect(
+        wrapper.getByTestId('number-input-label').getAttribute('for')
+      ).toEqual('number-input-id')
+    })
+  })
+
+  describe('when the onBlur callback is specified', () => {
+    let onBlurSpy: (event: React.FormEvent) => void
+
+    beforeEach(() => {
+      onBlurSpy = jest.fn()
+
+      wrapper = render(
+        <>
+          <NumberInput
+            name="number-input"
+            onBlur={onBlurSpy}
+            onChange={onChangeSpy}
+          />
+          <input type="text" data-testid="next-field" />
+        </>
+      )
+    })
+
+    describe('and the number input loses focus', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('number-input-input').focus()
+        wrapper.getByTestId('next-field').focus()
+      })
+
+      it('should call the onBlur callback', () => {
         expect(onBlurSpy).toHaveBeenCalledTimes(1)
+      })
+    })
+  })
+
+  describe('when a label is specified', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <NumberInput label="Label" name="number-input" onChange={onChangeSpy} />
+      )
+    })
+
+    describe('and the user focuses on the field', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('number-input-input').focus()
+      })
+
+      it('the label should be shrunk', () => {
+        expect(
+          wrapper.getByTestId('number-input-container').classList
+        ).toContain('has-focus')
       })
     })
   })

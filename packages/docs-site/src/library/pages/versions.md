@@ -10,6 +10,10 @@ excludeFromNavigation: true
 
 # Versions
 
+## 2.2.0
+* [Release note](https://github.com/Royal-Navy/standards-toolkit/releases/tag/2.2.0)
+* [Documentation](https://325cb28e6e6b40218773abcfe6d2a3d0-standards.netlify.com)
+
 ## 2.1.0
 * [Release note](https://github.com/Royal-Navy/standards-toolkit/releases/tag/2.1.0)
 * [Documentation](https://ebf5eb666be243969b04063510ef36f5-standards.netlify.com)
