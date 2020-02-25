@@ -47,7 +47,7 @@
     "lint-staged": "lerna run --parallel lint-staged",
     "test": "lerna run --parallel test",
     "storybook:static": "lerna run --parallel storybook:static",
-    "lerna:version": "lerna version --force-publish=* --tag-version-prefix=''"
+    "lerna:version": "lerna version --force-publish=* --tag-version-prefix='' --conventional-commits --create-release github"
   },
   "husky": {
     "hooks": {
