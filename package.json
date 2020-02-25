@@ -47,7 +47,9 @@
     "lint-staged": "lerna run --parallel lint-staged",
     "test": "lerna run --parallel test",
     "storybook:static": "lerna run --parallel storybook:static",
-    "lerna:version": "lerna version --force-publish=* --tag-version-prefix='' --conventional-commits --create-release github"
+    "lerna:version": "yarn lerna:create-release && yarn lerna:fix-links",
+    "lerna:create-release": "lerna version --force-publish=* --tag-version-prefix='' --conventional-commits --create-release github",
+    "lerna:fix-links": "node ./scripts/release-notes/fix-links.js Royal-Navy standards-toolkit"
   },
   "husky": {
     "hooks": {
