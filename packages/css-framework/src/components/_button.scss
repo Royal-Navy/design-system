@@ -2,7 +2,7 @@
 @use "../abstracts/mixins" as m;
 @use "../abstracts/functions" as f;
 
-$btn-border-radius: 3px;
+$btn-border-radius: 4px;
 $btn-disabled-opacity: 0.4;
 $btn-block-spacing-y: 1rem;
 $btn-focus-width: 0.2rem;
@@ -11,15 +11,13 @@ $btn-focus-width: 0.2rem;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  color: f.color("neutral", "500");
-  background-color: f.color("neutral", "white");
   border: 1px solid transparent;
   border-radius: $btn-border-radius;
   outline: 0;
-  padding: f.spacing("6") f.spacing("8");
-  font-size: f.font-size("base");
+  padding: f.spacing("5") f.spacing("8") f.spacing("5") f.spacing("8");
+  font-size: f.font-size("m");
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.4;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -28,36 +26,63 @@ $btn-focus-width: 0.2rem;
   text-decoration: none;
   white-space: nowrap;
 
+  color: f.color("neutral", "white");
+  background-color: f.color("neutral", "200");
+  background-image: linear-gradient(to bottom, f.color("action", "400"), f.color("action", "500"));
+
   &:hover {
     text-decoration: none;
-    background-color: f.color("neutral", "100");
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
   }
 
   &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(f.color("action", "700") , 0.5);
+    border: 1px solid f.color("action", "500");
+    box-shadow: 0 0 0 $btn-focus-width rgba(f.color("action", "500"), 0.3);
+  }
+
+  &.rn-btn--danger:focus {
+    border: 1px solid f.color("danger", "500");
+    box-shadow: 0 0 0 $btn-focus-width rgba(f.color("danger", "500"), 0.3);
+  }
+
+  &__text {
+    position: relative;
+    z-index: 2;
   }
 
   // States
   &--primary {
 
-    background: f.color("action", "600");
+    background: linear-gradient(to bottom, f.color("action", "400"), f.color("action", "500"));
     color: f.color("neutral", "white");
-
-    &:hover {
-      background: f.color("action", "800");
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      left: -1px;
+      border-radius: $btn-border-radius;
+      background-color: rgba(255, 255, 255, 0);
+      z-index: 1;
+      transition: all config.$animation-timing ease-out;
     }
 
-    &:focus {
-      box-shadow: 0 0 0 $btn-focus-width rgba(f.color("danger", "800"), 0.5);
+    &:hover {
+      box-shadow: 0 1px 3px 0 rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.14);
+      &::before {
+        background-color: rgba(0, 0, 0, 0.15);
+      }
     }
 
     &.rn-btn--danger {
-      background: f.color("danger", "500");
+      background: linear-gradient(to bottom, f.color("danger", "500"), f.color("danger", "600"));
       color: f.color("neutral", "white");
 
       &:hover {
-        background: f.color("danger", "800");
-        color: f.color("neutral", "white");
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.14);
       }
 
       &:focus {
@@ -68,23 +93,65 @@ $btn-focus-width: 0.2rem;
   }
 
   &--secondary {
-    border: 1px solid f.color("neutral", "100");
+    border: 1px solid f.color("neutral", "200");
+    color: f.color("neutral", "400");
+    background-color: f.color("neutral", "white");
+    background-image: none;
 
     &.rn-btn--danger {
-      color: f.color("danger", "800");
 
       &:hover {
-        color: f.color("danger", "800");
+        color: f.color("danger", "600");
       }
 
       &:focus {
         box-shadow: 0 0 0 $btn-focus-width rgba(f.color("danger", "800"), 0.5);
       }
     }
+    &:hover {
+      background-color: f.color("neutral", "100");
+      color: f.color("neutral", "600");
+    }
   }
 
   &--tertiary {
-    border: none;
+    border: 1px solid transparent;
+    color: f.color("neutral", "400");
+    background-color: transparent;
+    background-image: none;
+    &.rn-btn--danger {
+      color: f.color("danger", "600");
+      .rn-btn__text {
+        &::after {
+          background: f.color("danger", "300");
+        }
+      }
+    }
+    &:hover {
+      transform: none;
+      box-shadow: none;
+      border: 1px solid f.color("neutral", "200");
+      .rn-btn__text::after {
+        transform: scale(0, 1);
+      }
+    }
+    .rn-btn__text {
+      position: relative;
+      z-index: 0;
+      &::after {
+        transition: transform config.$animation-timing;
+        transform-origin: 0 0;
+        bottom: 2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: f.color("neutral", "200");
+        content: "";
+        position: absolute;
+        border-radius: 5px;
+        z-index: -1;
+      }
+    }
   }
 
   // Icon
@@ -92,24 +159,21 @@ $btn-focus-width: 0.2rem;
     display: inline-flex;
     align-items: center;
     margin-left: f.spacing("4");
+    position: relative;
+    z-index: 2;
   }
 
   // Sizes
   &--small {
-    font-size: f.font-size("s");
-    padding: f.spacing("4") f.spacing("6");
-    .rn-btn__icon svg {
-      width: 13px;
-      height: 13px;
-    }
+    padding: f.spacing("3") f.spacing("5");
   }
 
   &--large {
-    font-size: f.font-size("base");
-    padding: f.spacing("6") f.spacing("10");
-    .rn-btn__icon svg {
-      width: 15px;
-      height: 15px;
+    padding: f.spacing("6") f.spacing("9");
+    font-size: f.font-size("l");
+    line-height: 1.45;
+    .rn-btn__text {
+      transform: translateY(-1px);
     }
   }
 
@@ -127,16 +191,22 @@ $btn-focus-width: 0.2rem;
 
 
 
-.rn-btn.disabled,
-.rtn-btn:disabled,
-fieldset:disabled a.rn-btn {
-  pointer-events: none;
-}
-
+fieldset:disabled a.rn-btn,
 .rn-btn.rn-btn--disabled,
+.rn-btn[disabled],
 .rn-btn.rn-btn--disabled:hover,
 .rn-btn.rn-btn--disabled:focus {
-  background: f.color("neutral", "000");
-  color: f.color("neutral", "500");
+  pointer-events: hover;
+  /* stylelint-disable */
+  // Disable style linting as we require the disabled state to
+  // always look disabled, regardless of its underlying type
+  background: f.color("neutral", "000") !important;
+  color: f.color("neutral", "200") !important;
+  border: 1px solid f.color("neutral", "100") !important;
+  /* stylelint-enable */
   cursor: not-allowed;
+  &:hover {
+    box-shadow: none;
+    transform: none;
+  }
 }
