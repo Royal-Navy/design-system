@@ -29,6 +29,9 @@ commands:
   publish_package:
     description: 'Publish an NPM package to a registry'
     parameters:
+      working_directory_name:
+          type: string
+          description: 'Name of package'
       tag:
           type: string
           default: latest
@@ -36,6 +39,7 @@ commands:
     steps:
       - run:
           name: Publish package
+          working_directory: packages/<< parameters.working_directory_name >>
           command: npm publish --registry https://$NPM_REGISTRY --tag << parameters.tag >>
 
 jobs:
@@ -144,8 +148,8 @@ jobs:
       - checkout
       - dependencies
       - *authenticate_npm
-      - run: cd packages/eslint-config-react
       - publish_package:
+          working_directory_name: eslint-config-react
           tag: stable
   publish_stable_css-framework:
     docker: *docker
@@ -153,8 +157,8 @@ jobs:
       - checkout
       - dependencies
       - *authenticate_npm
-      - run: cd packages/css-framework
       - publish_package:
+          working_directory_name: css-framework
           tag: stable
   publish_stable_react-component-library:
     docker: *docker
@@ -163,8 +167,8 @@ jobs:
       - dependencies
       - *build_icon_library
       - *authenticate_npm
-      - run: cd packages/react-component-library
       - publish_package:
+          working_directory_name: react-component-library
           tag: stable
   publish_stable_icon-library:
     docker: *docker
@@ -172,8 +176,8 @@ jobs:
       - checkout
       - dependencies
       - *authenticate_npm
-      - run: cd packages/icon-library
       - publish_package:
+          working_directory_name: icon-library
           tag: stable
   publish_stable_fonts:
     docker: *docker
@@ -181,8 +185,8 @@ jobs:
       - checkout
       - dependencies
       - *authenticate_npm
-      - run: cd packages/fonts
       - publish_package:
+          working_directory_name: fonts
           tag: stable
   test_docs-site:
     docker: *docker
