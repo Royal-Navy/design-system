@@ -5,7 +5,7 @@ import { BreadcrumbsItem, BreadcrumbsItemProps } from '.'
 import { warnIfOverwriting } from '../../helpers'
 
 interface BreadcrumbsProps extends ComponentWithClass {
-  children: React.ReactElement<BreadcrumbsItemProps>[]
+  children: React.ReactElement<BreadcrumbsItemProps> | React.ReactElement<BreadcrumbsItemProps>[]
 }
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
@@ -23,7 +23,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
       return React.cloneElement(child, {
         ...child.props,
         isFirst: index === 0,
-        isLast: index === children.length - 1,
+        isLast: !Array.isArray(children) || index === children.length - 1,
       })
     }
   )
