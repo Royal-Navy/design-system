@@ -4,6 +4,12 @@ const BADGE_COLOR = {
   NEUTRAL: 'neutral',
   SUCCESS: 'success',
   WARNING: 'warning',
+  SUPA: 'supa',
+  SUPB: 'supb',
+  SUPC: 'supc',
+  SUPD: 'supd',
+  SUPE: 'supe',
+  SUPF: 'supf',
 } as const
 
 const BADGE_COLOR_VARIANT = {
