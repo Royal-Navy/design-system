@@ -240,7 +240,7 @@ workflows:
                 - master
             tags:
               only:
-                - /^\d\.\d\.\d/
+                - /^\d\.\d\.0/
       - publish_stable_icon-library:
           filters:
             branches:
@@ -248,7 +248,7 @@ workflows:
                 - master
             tags:
               only:
-                - /^\d\.\d\.\d/
+                - /^\d\.\d\.0/
       - publish_stable_fonts:
           filters:
             branches:
@@ -256,7 +256,7 @@ workflows:
                 - master
             tags:
               only:
-                - /^\d\.\d\.\d/
+                - /^\d\.\d\.0/
       - publish_stable_css-framework:
           requires:
             - lint_css-framework
@@ -266,7 +266,7 @@ workflows:
                 - master
             tags:
               only:
-                - /^\d\.\d\.\d/
+                - /^\d\.\d\.0/
       - publish_stable_react-component-library:
           requires:
             - test_react-component-library
@@ -278,7 +278,7 @@ workflows:
                 - master
             tags:
               only:
-                - /^\d\.\d\.\d/
+                - /^\d\.\d\.0/
       - test_docs-site:
           requires:
             - test_react-component-library
