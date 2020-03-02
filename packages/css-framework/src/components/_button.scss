@@ -99,7 +99,7 @@ $btn-focus-width: 0.2rem;
     background-image: none;
 
     &.rn-btn--danger {
-
+      color: f.color("danger", "600");
       &:hover {
         color: f.color("danger", "600");
       }
