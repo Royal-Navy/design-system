@@ -26,6 +26,12 @@ const badgeColorTextMap = {
   [BADGE_COLOR.NEUTRAL]: 'Neutral',
   [BADGE_COLOR.SUCCESS]: 'Success',
   [BADGE_COLOR.WARNING]: 'Warning',
+  [BADGE_COLOR.SUPA]: 'Sup A',
+  [BADGE_COLOR.SUPB]: 'Sup B',
+  [BADGE_COLOR.SUPC]: 'Sup C',
+  [BADGE_COLOR.SUPD]: 'Sup D',
+  [BADGE_COLOR.SUPE]: 'Sup E',
+  [BADGE_COLOR.SUPF]: 'Sup F',
 }
 
 const badgeSizeTextMap = {
@@ -65,7 +71,7 @@ Object.keys(badgeSizeTextMap).forEach(key => {
   sizesExamples.add(badgeSizeTextMap[key], () => (
     <Badge
       color={BADGE_COLOR.NEUTRAL}
-      colorVariant={BADGE_COLOR_VARIANT.FADED}
+      colorVariant={BADGE_COLOR_VARIANT.SOLID}
       size={key as BadgeSizeType}
     >
       {badgeSizeTextMap[key]}
