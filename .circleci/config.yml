@@ -217,7 +217,7 @@ jobs:
 
 workflows:
   version: 2
-  build_and_test:
+  build_and_test_master:
     jobs:
       - security_audit
       - lint_commits
@@ -241,14 +241,6 @@ workflows:
             tags:
               only:
                 - /^\d\.\d\.0/
-      - publish_stable_eslint-config-react:
-          filters:
-            branches:
-              only:
-                - /^\d\.\d\.\d-hotfix/
-            tags:
-              only:
-                - /^\d\.\d\.\d/
       - publish_stable_icon-library:
           filters:
             branches:
@@ -257,33 +249,7 @@ workflows:
             tags:
               only:
                 - /^\d\.\d\.0/
-      - publish_stable_icon-library:
-          filters:
-            branches:
-              only:
-                - /^\d\.\d\.\d-hotfix/
-            tags:
-              only:
-                - /^\d\.\d\.\d/
       - publish_stable_fonts:
-          filters:
-            branches:
-              only:
-                - master
-            tags:
-              only:
-                - /^\d\.\d\.0/
-      - publish_stable_fonts:
-          filters:
-            branches:
-              only:
-                - /^\d\.\d\.\d-hotfix/
-            tags:
-              only:
-                - /^\d\.\d\.\d/
-      - publish_stable_css-framework:
-          requires:
-            - lint_css-framework
           filters:
             branches:
               only:
@@ -297,10 +263,10 @@ workflows:
           filters:
             branches:
               only:
-                - /^\d\.\d\.\d-hotfix/
+                - master
             tags:
               only:
-                - /^\d\.\d\.\d/
+                - /^\d\.\d\.0/
       - publish_stable_react-component-library:
           requires:
             - test_react-component-library
@@ -313,6 +279,59 @@ workflows:
             tags:
               only:
                 - /^\d\.\d\.0/
+      - test_docs-site:
+          requires:
+            - test_react-component-library
+  build_and_test_hotfix:
+    jobs:
+      - security_audit
+      - lint_commits
+      - lint_css-framework
+      - lint_react-component-library
+      - lint_docs_site
+      - test_react-component-library:
+          requires:
+            - lint_react-component-library
+      - code_climate:
+          requires:
+            - test_react-component-library
+      - test_visual_regression:
+          requires:
+            - test_react-component-library
+      - publish_stable_eslint-config-react:
+          filters:
+            branches:
+              only:
+                - /^\d\.\d\.\d-hotfix/
+            tags:
+              only:
+                - /^\d\.\d\.\d/
+      - publish_stable_icon-library:
+          filters:
+            branches:
+              only:
+                - /^\d\.\d\.\d-hotfix/
+            tags:
+              only:
+                - /^\d\.\d\.\d/
+      - publish_stable_fonts:
+          filters:
+            branches:
+              only:
+                - /^\d\.\d\.\d-hotfix/
+            tags:
+              only:
+                - /^\d\.\d\.\d/
+      - publish_stable_css-framework:
+          requires:
+            - lint_css-framework
+          filters:
+            branches:
+              only:
+                - /^\d\.\d\.\d-hotfix/
+            tags:
+              only:
+                - /^\d\.\d\.\d/
       - publish_stable_react-component-library:
           requires:
             - test_react-component-library
