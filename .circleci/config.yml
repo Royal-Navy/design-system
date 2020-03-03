@@ -217,13 +217,54 @@ jobs:
 
 workflows:
   version: 2
+  build_and_test_feature:
+    jobs:
+      - security_audit:
+          filters:
+            branches:
+              ignore:
+                - master
+                - /^\d\.\d\.\d-hotfix/
+      - lint_commits:
+          requires:
+            - security_audit
+      - lint_css-framework:
+          requires:
+            - security_audit
+      - lint_react-component-library:
+          requires:
+            - security_audit
+      - lint_docs_site:
+          requires:
+            - security_audit
+      - test_react-component-library:
+          requires:
+            - lint_react-component-library
+      - code_climate:
+          requires:
+            - test_react-component-library
+      - test_visual_regression:
+          requires:
+            - test_react-component-library
   build_and_test_master:
     jobs:
-      - security_audit
-      - lint_commits
-      - lint_css-framework
-      - lint_react-component-library
-      - lint_docs_site
+      - security_audit:
+          filters:
+            branches:
+              only:
+                - master
+      - lint_commits:
+          requires:
+            - security_audit
+      - lint_css-framework:
+          requires:
+            - security_audit
+      - lint_react-component-library:
+          requires:
+            - security_audit
+      - lint_docs_site:
+          requires:
+            - security_audit
       - test_react-component-library:
           requires:
             - lint_react-component-library
@@ -235,25 +276,16 @@ workflows:
             - test_react-component-library
       - publish_stable_eslint-config-react:
           filters:
-            branches:
-              only:
-                - master
             tags:
               only:
                 - /^\d\.\d\.0/
       - publish_stable_icon-library:
           filters:
-            branches:
-              only:
-                - master
             tags:
               only:
                 - /^\d\.\d\.0/
       - publish_stable_fonts:
           filters:
-            branches:
-              only:
-                - master
             tags:
               only:
                 - /^\d\.\d\.0/
@@ -261,9 +293,6 @@ workflows:
           requires:
             - lint_css-framework
           filters:
-            branches:
-              only:
-                - master
             tags:
               only:
                 - /^\d\.\d\.0/
@@ -273,9 +302,6 @@ workflows:
             - publish_stable_css-framework
             - publish_stable_icon-library
           filters:
-            branches:
-              only:
-                - master
             tags:
               only:
                 - /^\d\.\d\.0/
@@ -284,11 +310,23 @@ workflows:
             - test_react-component-library
   build_and_test_hotfix:
     jobs:
-      - security_audit
-      - lint_commits
-      - lint_css-framework
-      - lint_react-component-library
-      - lint_docs_site
+      - security_audit:
+          filters:
+            branches:
+              only:
+                - /^\d\.\d\.\d-hotfix/
+      - lint_commits:
+          requires:
+            - security_audit
+      - lint_css-framework:
+          requires:
+            - security_audit
+      - lint_react-component-library:
+          requires:
+            - security_audit
+      - lint_docs_site:
+          requires:
+            - security_audit
       - test_react-component-library:
           requires:
             - lint_react-component-library
@@ -300,25 +338,16 @@ workflows:
             - test_react-component-library
       - publish_stable_eslint-config-react:
           filters:
-            branches:
-              only:
-                - /^\d\.\d\.\d-hotfix/
             tags:
               only:
                 - /^\d\.\d\.\d/
       - publish_stable_icon-library:
           filters:
-            branches:
-              only:
-                - /^\d\.\d\.\d-hotfix/
             tags:
               only:
                 - /^\d\.\d\.\d/
       - publish_stable_fonts:
           filters:
-            branches:
-              only:
-                - /^\d\.\d\.\d-hotfix/
             tags:
               only:
                 - /^\d\.\d\.\d/
@@ -326,9 +355,6 @@ workflows:
           requires:
             - lint_css-framework
           filters:
-            branches:
-              only:
-                - /^\d\.\d\.\d-hotfix/
             tags:
               only:
                 - /^\d\.\d\.\d/
@@ -338,9 +364,6 @@ workflows:
             - publish_stable_css-framework
             - publish_stable_icon-library
           filters:
-            branches:
-              only:
-                - /^\d\.\d\.\d-hotfix/
             tags:
               only:
                 - /^\d\.\d\.\d/
