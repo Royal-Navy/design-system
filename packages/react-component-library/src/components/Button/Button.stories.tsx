@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, text } from '@storybook/addon-knobs'
 
-import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
+import { IconBrightnessLow } from '@royalnavy/icon-library'
 import { Button, ButtonSizeType } from './index'
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT } from './constants'
 
@@ -13,7 +13,10 @@ const variantExamples = storiesOf('Button/Examples/Variants', module)
 const dangerExamples = storiesOf('Button/Examples/Danger', module)
 const defaultSizeExamples = storiesOf('Button/Examples/Sizes/Default', module)
 const primarySizeExamples = storiesOf('Button/Examples/Sizes/Primary', module)
-const secondarySizeExamples = storiesOf('Button/Examples/Sizes/Secondary', module)
+const secondarySizeExamples = storiesOf(
+  'Button/Examples/Sizes/Secondary',
+  module
+)
 
 stories.addDecorator(withKnobs)
 
@@ -87,24 +90,14 @@ examples.add('Icons', () => (
       onClick={action('Decreasing brightness')}
       icon={<IconBrightnessLow />}
     >
-      Decrease Brightness
-    </Button>
-    <Button
-      variant="primary"
-      onClick={action('Increasing brightness')}
-      icon={<IconBrightnessHigh />}
-    >
-      Increase Brightness
+      Button
     </Button>
   </>
 ))
 
 Object.keys(buttonSizeTextMap).forEach(key => {
   defaultSizeExamples.add(buttonSizeTextMap[key], () => (
-    <Button
-      onClick={action('Clicked')}
-      size={key as ButtonSizeType}
-    >
+    <Button onClick={action('Clicked')} size={key as ButtonSizeType}>
       {text('Children', 'Default')}
     </Button>
   ))
