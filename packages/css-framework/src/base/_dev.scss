@@ -1,0 +1,8 @@
+@use "../config";
+
+@if config.$dev-mode == true {
+  // Adds padding to the storybook wrapper
+  .sb-show-main {
+    padding: 40px;
+  }
+}
