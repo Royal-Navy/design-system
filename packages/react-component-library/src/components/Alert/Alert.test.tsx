@@ -16,12 +16,12 @@ describe('Alert', () => {
       expect(wrapper.getByTestId('close')).toBeInTheDocument()
     })
 
-    it('should not render the header', () => {
-      expect(wrapper.queryAllByTestId('header')).toHaveLength(0)
+    it('should not render the content title', () => {
+      expect(wrapper.queryAllByTestId('content-title')).toHaveLength(0)
     })
 
-    it('should render the content icon', () => {
-      expect(wrapper.getByTestId('content-icon')).toBeInTheDocument()
+    it('should render the state icon', () => {
+      expect(wrapper.getByTestId('state-icon')).toBeInTheDocument()
     })
 
     it('should render the default info icon', () => {
@@ -50,20 +50,16 @@ describe('Alert', () => {
       wrapper = render(<Alert title="Title">Description</Alert>)
     })
 
-    it('should render the header icon', () => {
-      expect(wrapper.getByTestId('header-icon')).toBeInTheDocument()
+    it('should render the state icon', () => {
+      expect(wrapper.getByTestId('state-icon')).toBeInTheDocument()
     })
 
     it('should render the default info icon', () => {
       expect(wrapper.getByTestId('icon-info')).toBeInTheDocument()
     })
 
-    it('should render the header title', () => {
-      expect(wrapper.getByTestId('header-title')).toHaveTextContent('Title')
-    })
-
-    it('should not render the content icon', () => {
-      expect(wrapper.queryAllByTestId('content-icon')).toHaveLength(0)
+    it('should render the content title', () => {
+      expect(wrapper.getByTestId('content-title')).toHaveTextContent('Title')
     })
 
     it('should render the content description', () => {
@@ -106,9 +102,7 @@ describe('Alert', () => {
       describe('when the title is not specified', () => {
         beforeEach(() => {
           wrapper = render(
-            <Alert variant={ALERT_VARIANT.DANGER}>
-              Description
-            </Alert>
+            <Alert variant={ALERT_VARIANT.DANGER}>Description</Alert>
           )
         })
 

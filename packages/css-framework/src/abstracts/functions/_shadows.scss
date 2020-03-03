@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../../vars";
+
+@function shadows($size) {
+  @if map.has-key(vars.$shadows, $size) {
+    @return unquote(map.get(vars.$shadows, $size));
+  }
+
+  @else {
+    @error "No shadow value could be retrieved for #{$size}";
+  }
+}

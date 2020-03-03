@@ -130,7 +130,12 @@ jobs:
       - *build_icon_library
       - run:
           name: Run visual regression tests
-          command: yarn --cwd packages/react-component-library chromatic --app-code=$CHROMATIC_APP_CODE
+          command: |
+            if [ "${CIRCLE_BRANCH}" = "master" ]; then
+              yarn --cwd packages/react-component-library chromatic --app-code=$CHROMATIC_APP_CODE --auto-accept-changes
+            else
+              yarn --cwd packages/react-component-library chromatic --app-code=$CHROMATIC_APP_CODE
+            fi
   publish_eslint-config-react:
     docker: *docker
     steps:

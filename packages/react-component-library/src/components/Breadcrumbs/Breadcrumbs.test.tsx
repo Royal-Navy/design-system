@@ -76,4 +76,19 @@ describe('Breadcrumbs', () => {
       )
     })
   })
+
+  describe('when there is only one breadcrumb', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Breadcrumbs>
+          <BreadcrumbsItem link={<Link href="#home">Home</Link>} />
+        </Breadcrumbs>
+      )
+    })
+
+    it('should render one breadcrumb', () => {
+      const linkElements = wrapper.queryAllByTestId('breadcrumb')
+      expect(linkElements).toHaveLength(1)
+    })
+  })
 })

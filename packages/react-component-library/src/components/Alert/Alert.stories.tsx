@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs, text } from '@storybook/addon-knobs'
 
 import { Alert, ALERT_VARIANT } from './index'
 
@@ -16,7 +16,9 @@ const DESCRIPTION =
   'This is the alert description. It provides context to the user, bringing attention to information that needs to be consumed.'
 
 stories.add('Default', () => {
-  return <Alert title={text('Title', TITLE)}>{text('Children', DESCRIPTION)}</Alert>
+  return (
+    <Alert title={text('Title', TITLE)}>{text('Children', DESCRIPTION)}</Alert>
+  )
 })
 
 stories.add('Without title', () => {
@@ -32,11 +34,7 @@ dangerStories.add('With title', () => {
 })
 
 dangerStories.add('Without title', () => {
-  return (
-    <Alert variant={ALERT_VARIANT.DANGER}>
-      {DESCRIPTION}
-    </Alert>
-  )
+  return <Alert variant={ALERT_VARIANT.DANGER}>{DESCRIPTION}</Alert>
 })
 
 successStories.add('With title', () => {
@@ -48,11 +46,7 @@ successStories.add('With title', () => {
 })
 
 successStories.add('Without title', () => {
-  return (
-    <Alert variant={ALERT_VARIANT.SUCCESS}>
-      {DESCRIPTION}
-    </Alert>
-  )
+  return <Alert variant={ALERT_VARIANT.SUCCESS}>{DESCRIPTION}</Alert>
 })
 
 warningStories.add('With title', () => {
@@ -64,9 +58,5 @@ warningStories.add('With title', () => {
 })
 
 warningStories.add('Without title', () => {
-  return (
-    <Alert title={TITLE} variant={ALERT_VARIANT.WARNING}>
-      {DESCRIPTION}
-    </Alert>
-  )
+  return <Alert variant={ALERT_VARIANT.WARNING}>{DESCRIPTION}</Alert>
 })
