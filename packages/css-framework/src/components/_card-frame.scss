@@ -4,5 +4,6 @@
 .rn-card-frame {
   border-radius: 3px;
   background-color: f.color("neutral", "white");
+  border: 1px solid f.color("neutral", "100");
   @include m.shadow("1");
 }
