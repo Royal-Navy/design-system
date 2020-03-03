@@ -6,7 +6,7 @@ import {
   ScrollableNavItem,
 } from '../../components/ScrollableNav'
 
-export const MastheadNav: React.FC<Nav> = props => {
+export const MastheadNav: React.FC<Nav<NavItem>> = props => {
   return (
     <ScrollableNav {...props} className="rn-masthead__nav">
       {props.children}
