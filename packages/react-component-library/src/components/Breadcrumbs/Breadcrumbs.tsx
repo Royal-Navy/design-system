@@ -2,13 +2,10 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { BreadcrumbsItem, BreadcrumbsItemProps } from '.'
+import { Nav } from '../../types/Nav'
 import { warnIfOverwriting } from '../../helpers'
 
-interface BreadcrumbsProps extends ComponentWithClass {
-  children: React.ReactElement<BreadcrumbsItemProps> | React.ReactElement<BreadcrumbsItemProps>[]
-}
-
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
+export const Breadcrumbs: React.FC<Nav<BreadcrumbsItemProps>> = ({
   children,
   className,
 }) => {
