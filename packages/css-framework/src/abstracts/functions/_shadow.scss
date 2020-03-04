@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "../../vars";
 
-@function shadows($size) {
+@function shadow($size) {
   @if map.has-key(vars.$shadows, $size) {
     @return unquote(map.get(vars.$shadows, $size));
   }
