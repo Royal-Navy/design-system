@@ -6,11 +6,14 @@ $btn-focus-width: 0.1rem;
 .rn-radio {
   display: block;
   position: relative;
-  padding-left: f.spacing("10");
-  margin-bottom: f.spacing("4");
+  padding-left: f.spacing("11");
   cursor: pointer;
   font-size: f.font-size("base");
   user-select: none;
+  .rn-form & {
+    padding-top: f.spacing("6");
+    padding-bottom: f.spacing("6");
+  }
 }
 
 .rn-radio__outer-wrapper {
@@ -19,7 +22,8 @@ $btn-focus-width: 0.1rem;
 }
 
 .rn-radio__label {
-  color: f,color("neutral", "400");
+  color: f.color("neutral", "400");
+  padding: f.spacing("1") 0;
 }
 
 .rn-radio .rn-radio__radio {
@@ -32,8 +36,9 @@ $btn-focus-width: 0.1rem;
 
 .rn-radio__checkmark {
   position: absolute;
-  top: 1px;
+  top: 50%;
   left: 0;
+  transform: translateY(-50%);
   height: 16px;
   width: 16px;
   background-color: f.color("neutral", "white");
