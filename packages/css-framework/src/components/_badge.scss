@@ -43,90 +43,90 @@ $badge-states: (
   neutral: (
     solid-text:   f.color("neutral", "white"),
     solid-bg:     f.color("neutral", "500"),
-    solid-shadow: f.shadows("1"),
+    solid-shadow: f.shadow("1"),
     faded-text:   f.color("neutral", "400"),
     faded-bg:     f.color("neutral", "100"),
-    faded-shadow: f.shadows("0")
+    faded-shadow: f.shadow("0")
   ),
   action: (
     solid-text:   f.color("neutral", "white"),
     solid-bg:     f.color("action", "500"),
-    solid-shadow: f.shadows("1"),
+    solid-shadow: f.shadow("1"),
     faded-text:   f.color("action", "500"),
     faded-bg:     f.color("action", "100"),
-    faded-shadow: f.shadows("0")
+    faded-shadow: f.shadow("0")
   ),
   success: (
     solid-text:   f.color("neutral", "white"),
     solid-bg:     f.color("success", "600"),
-    solid-shadow: f.shadows("1"),
+    solid-shadow: f.shadow("1"),
     faded-text:   f.color("success", "700"),
     faded-bg:     f.color("success", "100"),
-    faded-shadow: f.shadows("0")
+    faded-shadow: f.shadow("0")
   ),
   warning: (
     solid-text:   f.color("warning", "800"),
     solid-bg:     f.color("warning", "300"),
-    solid-shadow: f.shadows("0"),
+    solid-shadow: f.shadow("0"),
     faded-text:   f.color("warning", "700"),
     faded-bg:     f.color("warning", "000"),
-    faded-shadow: f.shadows("0")
+    faded-shadow: f.shadow("0")
   ),
   danger: (
     solid-text:   f.color("neutral", "white"),
     solid-bg:     f.color("danger", "600"),
-    solid-shadow: f.shadows("1"),
+    solid-shadow: f.shadow("1"),
     faded-text:   f.color("danger", "600"),
     faded-bg:     f.color("danger", "100"),
-    faded-shadow: f.shadows("0")
+    faded-shadow: f.shadow("0")
   ),
   supa: (
     solid-text:   f.color("neutral", "white"),
     solid-bg:     f.color("supa", "500"),
-    solid-shadow: f.shadows("1"),
+    solid-shadow: f.shadow("1"),
     faded-text:   f.color("supa", "600"),
     faded-bg:     f.color("supa", "000"),
-    faded-shadow: f.shadows("0")
+    faded-shadow: f.shadow("0")
   ),
   supb: (
     solid-text:   f.color("neutral", "white"),
     solid-bg:     f.color("supb", "500"),
-    solid-shadow: f.shadows("1"),
+    solid-shadow: f.shadow("1"),
     faded-text:   f.color("supb", "600"),
     faded-bg:     f.color("supb", "100"),
-    faded-shadow: f.shadows("0")
+    faded-shadow: f.shadow("0")
   ),
   supc: (
     solid-text:   f.color("neutral", "white"),
     solid-bg:     f.color("supc", "500"),
-    solid-shadow: f.shadows("1"),
+    solid-shadow: f.shadow("1"),
     faded-text:   f.color("supc", "800"),
     faded-bg:     f.color("supc", "100"),
-    faded-shadow: f.shadows("0")
+    faded-shadow: f.shadow("0")
   ),
   supd: (
     solid-text:   f.color("neutral", "white"),
     solid-bg:     f.color("supd", "500"),
-    solid-shadow: f.shadows("1"),
+    solid-shadow: f.shadow("1"),
     faded-text:   f.color("supd", "700"),
     faded-bg:     f.color("supd", "100"),
-    faded-shadow: f.shadows("0")
+    faded-shadow: f.shadow("0")
   ),
   supe: (
     solid-text:   f.color("neutral", "white"),
     solid-bg:     f.color("supe", "600"),
-    solid-shadow: f.shadows("1"),
+    solid-shadow: f.shadow("1"),
     faded-text:   f.color("supe", "700"),
     faded-bg:     f.color("supe", "200"),
-    faded-shadow: f.shadows("0")
+    faded-shadow: f.shadow("0")
   ),
   supf: (
     solid-text:   f.color("neutral", "white"),
     solid-bg:     f.color("supf", "600"),
-    solid-shadow: f.shadows("1"),
+    solid-shadow: f.shadow("1"),
     faded-text:   f.color("supf", "700"),
     faded-bg:     f.color("supf", "200"),
-    faded-shadow: f.shadows("0")
+    faded-shadow: f.shadow("0")
   ),
 
 );
