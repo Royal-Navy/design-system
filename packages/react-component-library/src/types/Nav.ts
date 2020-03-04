@@ -1,7 +1,7 @@
 import React from 'react'
 
-export interface Nav extends ComponentWithClass {
-  children: React.ReactElement<NavItem> | React.ReactElement<NavItem>[]
+export interface Nav<T> extends ComponentWithClass {
+  children: React.ReactElement<T> | React.ReactElement<T>[]
 }
 
 export interface NavItem {

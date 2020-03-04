@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { Nav } from '../../types/Nav'
+import { Nav, NavItem } from '../../types/Nav'
 import { SidebarNavItem, SidebarNavItemProps } from '.'
 import { warnIfOverwriting } from '../../helpers'
 
-export interface SidebarNavProps extends Nav {
+export interface SidebarNavProps extends Nav<NavItem> {
   onBlur?: () => void
   onFocus?: () => void
   onItemClick?: () => void
