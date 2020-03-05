@@ -298,6 +298,8 @@ workflows:
           requires:
             - lint_commits
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only:
                 - /^\d\.\d\.0/
@@ -305,6 +307,8 @@ workflows:
           requires:
             - lint_commits
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only:
                 - /^\d\.\d\.0/
@@ -312,6 +316,8 @@ workflows:
           requires:
             - lint_commits
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only:
                 - /^\d\.\d\.0/
@@ -320,6 +326,8 @@ workflows:
             - lint_commits
             - lint_css-framework
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only:
                 - /^\d\.\d\.0/
@@ -329,6 +337,8 @@ workflows:
             - publish_stable_css-framework
             - publish_stable_icon-library
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only:
                 - /^\d\.\d\.0/
@@ -375,6 +385,8 @@ workflows:
           requires:
             - lint_commits
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only:
                 - /^\d\.\d\.\d/
@@ -382,6 +394,8 @@ workflows:
           requires:
             - lint_commits
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only:
                 - /^\d\.\d\.\d/
@@ -389,6 +403,8 @@ workflows:
           requires:
             - lint_commits
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only:
                 - /^\d\.\d\.\d/
@@ -397,6 +413,8 @@ workflows:
             - lint_commits
             - lint_css-framework
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only:
                 - /^\d\.\d\.\d/
@@ -406,6 +424,8 @@ workflows:
             - publish_stable_css-framework
             - publish_stable_icon-library
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only:
                 - /^\d\.\d\.\d/
