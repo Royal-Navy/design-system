@@ -148,8 +148,8 @@ jobs:
       - dependencies
       - *authenticate_npm
       - publish_package:
-          tag: stable
           working_directory: packages/eslint-config-react
+          tag: latest
   publish_stable_css-framework:
     docker: *docker
     steps:
@@ -157,8 +157,8 @@ jobs:
       - dependencies
       - *authenticate_npm
       - publish_package:
-          tag: stable
           working_directory: packages/css-framework
+          tag: latest
   publish_stable_react-component-library:
     docker: *docker
     steps:
@@ -167,8 +167,8 @@ jobs:
       - *build_icon_library
       - *authenticate_npm
       - publish_package:
-          tag: stable
           working_directory: packages/react-component-library
+          tag: latest
   publish_stable_icon-library:
     docker: *docker
     steps:
@@ -176,8 +176,8 @@ jobs:
       - dependencies
       - *authenticate_npm
       - publish_package:
-          tag: stable
           working_directory: packages/icon-library
+          tag: latest
   publish_stable_fonts:
     docker: *docker
     steps:
@@ -185,8 +185,8 @@ jobs:
       - dependencies
       - *authenticate_npm
       - publish_package:
-          tag: stable
           working_directory: packages/fonts
+          tag: latest
   test_docs-site:
     docker: *docker
     steps:
