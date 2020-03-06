@@ -2,85 +2,164 @@
 @use "../abstracts/mixins" as m;
 @use "../abstracts/functions" as f;
 
-$badge-border-radius: 3px;
-$badge-font-weight: 600;
+
+$badge: (
+  border-radius: 2px,
+  border-radius-pill: 100px
+);
 
 $badge-sizes: (
   small: (
-    font-size: f.font-size("xxs"),
-    padding: f.spacing("2") f.spacing("4")
+    font-size: f.font-size("s"),
+    font-weight: 700,
+    line-height: 1.4,
+    padding: f.spacing("1") f.spacing("2"),
+    padding-pill: f.spacing("1") f.spacing("3")
   ),
   regular: (
-    font-size: f.font-size("xs"),
-    padding: f.spacing("2") f.spacing("4")
+    font-size: f.font-size("base"),
+    font-weight: 600,
+    line-height: 1.3,
+    padding: f.spacing("1") f.spacing("2"),
+    padding-pill: f.spacing("1") f.spacing("4")
   ),
   large: (
-    font-size: f.font-size("s"),
-    padding: f.spacing("2") f.spacing("6")
+    font-size: f.font-size("base"),
+    font-weight: 600,
+    line-height: 1.3,
+    padding: f.spacing("2") f.spacing("3"),
+    padding-pill: f.spacing("2") f.spacing("4")
   ),
   xlarge: (
-    font-size: f.font-size("base"),
-    padding: f.spacing("2") f.spacing("6")
+    font-size: f.font-size("m"),
+    font-weight: 600,
+    line-height: 1.3,
+    padding: f.spacing("2") f.spacing("3"),
+    padding-pill: f.spacing("2") f.spacing("4")
   )
 );
 
 $badge-states: (
   neutral: (
-    color: f.color("neutral", "900"),
-    solid: f.color("neutral", "500"),
-    faded: f.color("neutral", "100")
+    solid-text:   f.color("neutral", "white"),
+    solid-bg:     f.color("neutral", "500"),
+    solid-shadow: f.shadow("1"),
+    faded-text:   f.color("neutral", "400"),
+    faded-bg:     f.color("neutral", "100"),
+    faded-shadow: f.shadow("0")
   ),
   action: (
-    color: f.color("action", "700"),
-    solid: f.color("action", "500"),
-    faded: f.color("action", "100")
-  ),
-  danger: (
-    color: f.color("danger", "800"),
-    solid: f.color("danger", "500"),
-    faded: f.color("danger", "100")
-  ),
-  warning: (
-    color: f.color("warning", "800"),
-    solid: f.color("warning", "600"),
-    faded: f.color("warning", "200")
+    solid-text:   f.color("neutral", "white"),
+    solid-bg:     f.color("action", "500"),
+    solid-shadow: f.shadow("1"),
+    faded-text:   f.color("action", "500"),
+    faded-bg:     f.color("action", "100"),
+    faded-shadow: f.shadow("0")
   ),
   success: (
-    color: f.color("success", "800"),
-    solid: f.color("success", "600"),
-    faded: f.color("success", "100")
-  )
+    solid-text:   f.color("neutral", "white"),
+    solid-bg:     f.color("success", "600"),
+    solid-shadow: f.shadow("1"),
+    faded-text:   f.color("success", "700"),
+    faded-bg:     f.color("success", "100"),
+    faded-shadow: f.shadow("0")
+  ),
+  warning: (
+    solid-text:   f.color("warning", "800"),
+    solid-bg:     f.color("warning", "300"),
+    solid-shadow: f.shadow("0"),
+    faded-text:   f.color("warning", "700"),
+    faded-bg:     f.color("warning", "000"),
+    faded-shadow: f.shadow("0")
+  ),
+  danger: (
+    solid-text:   f.color("neutral", "white"),
+    solid-bg:     f.color("danger", "600"),
+    solid-shadow: f.shadow("1"),
+    faded-text:   f.color("danger", "600"),
+    faded-bg:     f.color("danger", "100"),
+    faded-shadow: f.shadow("0")
+  ),
+  supa: (
+    solid-text:   f.color("neutral", "white"),
+    solid-bg:     f.color("supa", "500"),
+    solid-shadow: f.shadow("1"),
+    faded-text:   f.color("supa", "600"),
+    faded-bg:     f.color("supa", "000"),
+    faded-shadow: f.shadow("0")
+  ),
+  supb: (
+    solid-text:   f.color("neutral", "white"),
+    solid-bg:     f.color("supb", "500"),
+    solid-shadow: f.shadow("1"),
+    faded-text:   f.color("supb", "600"),
+    faded-bg:     f.color("supb", "100"),
+    faded-shadow: f.shadow("0")
+  ),
+  supc: (
+    solid-text:   f.color("neutral", "white"),
+    solid-bg:     f.color("supc", "500"),
+    solid-shadow: f.shadow("1"),
+    faded-text:   f.color("supc", "800"),
+    faded-bg:     f.color("supc", "100"),
+    faded-shadow: f.shadow("0")
+  ),
+  supd: (
+    solid-text:   f.color("neutral", "white"),
+    solid-bg:     f.color("supd", "500"),
+    solid-shadow: f.shadow("1"),
+    faded-text:   f.color("supd", "700"),
+    faded-bg:     f.color("supd", "100"),
+    faded-shadow: f.shadow("0")
+  ),
+  supe: (
+    solid-text:   f.color("neutral", "white"),
+    solid-bg:     f.color("supe", "600"),
+    solid-shadow: f.shadow("1"),
+    faded-text:   f.color("supe", "700"),
+    faded-bg:     f.color("supe", "200"),
+    faded-shadow: f.shadow("0")
+  ),
+  supf: (
+    solid-text:   f.color("neutral", "white"),
+    solid-bg:     f.color("supf", "600"),
+    solid-shadow: f.shadow("1"),
+    faded-text:   f.color("supf", "700"),
+    faded-bg:     f.color("supf", "200"),
+    faded-shadow: f.shadow("0")
+  ),
+
 );
 
 .rn-badge {
   display: inline-block;
-  border-radius: 3px;
-  font-weight: 700;
   vertical-align: middle;
-  text-transform: uppercase;
-  line-height: 1;
+  white-space: nowrap;
+  border-radius: map.get($badge, "border-radius");
+
+  // provide a default fallback for the `.rn-badge` class
+  padding: f.map-deep-get($badge-sizes, "regular", "padding");
+  font-size: f.map-deep-get($badge-sizes, "regular", "font-size");
+  font-weight: f.map-deep-get($badge-sizes, "regular", "font-weight");
+  line-height: f.map-deep-get($badge-sizes, "regular", "line-height");
+  background-color: f.map-deep-get($badge-states, "neutral", "solid-bg");
+  color: f.map-deep-get($badge-states, "neutral", "solid-text");
+  text-shadow: f.map-deep-get($badge-states, "neutral", "solid-shadow");
 
   @each $state, $variation in $badge-states {
     &.rn-badge--#{$state} {
-      color: f.color("neutral", "white");
-      background: map.get($variation, "solid");
-    }
-  }
-
-  &--solid {
-    @each $state, $variation in $badge-states {
-      &.rn-badge--#{$state} {
-        color: f.color("neutral", "white");
-        background: map.get($variation, "solid");
-      }
+      background-color: map.get($variation, "solid-bg");
+      color: map.get($variation, "solid-text");
+      text-shadow: map.get($variation, "solid-shadow");
     }
   }
 
   &--faded {
     @each $state, $variation in $badge-states {
       &.rn-badge--#{$state} {
-        color: map.get($variation, "color");
-        background: map.get($variation, "faded");
+        background-color: map.get($variation, "faded-bg");
+        color: map.get($variation, "faded-text");
+        text-shadow: map.get($variation, "faded-shadow");
       }
     }
   }
@@ -89,18 +168,20 @@ $badge-states: (
     &.rn-badge--#{$size} {
       font-size: map.get($values, "font-size");
       padding: map.get($values, "padding");
+      font-weight: map.get($values, "font-weight");
+      line-height: map.get($values, "line-height");
     }
   }
 
 
   &.rn-badge--pill {
-    padding: f.spacing("3") f.spacing("5");
-    border-radius: 100px;
+    padding: f.map-deep-get($badge-sizes, "regular", "padding-pill");
+    border-radius: map.get($badge, "border-radius-pill");
 
     @each $size, $values in $badge-sizes {
       &.rn-badge--#{$size} {
         font-size: map.get($values, "font-size");
-        padding: map.get($values, "padding");
+        padding: map.get($values, "padding-pill");
       }
     }
   }

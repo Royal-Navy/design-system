@@ -4,7 +4,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import { Logo as DefaultLogo, Search as SearchIcon } from '../../icons'
 import { MastheadUserProps } from '.'
-import { Nav } from '../../types/Nav'
+import { Nav, NavItem } from '../../types/Nav'
 import {
   NOTIFICATION_PLACEMENT,
   NotificationPanel,
@@ -17,7 +17,7 @@ export interface MastheadProps {
   hasUnreadNotification?: boolean
   homeLink?: React.ReactElement<LinkTypes>
   Logo?: React.ComponentType
-  nav?: React.ReactElement<Nav>
+  nav?: React.ReactElement<Nav<NavItem>>
   notifications?: React.ReactElement<NotificationsProps>
   onSearch?: (term: string) => void
   searchPlaceholder?: string

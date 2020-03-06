@@ -8,6 +8,7 @@
 @forward "src/abstracts/functions/color";
 @forward "src/abstracts/functions/spacing";
 @forward "src/abstracts/functions/typography";
+@forward "src/abstracts/functions/shadow";
 
 // Expose Mixins
 // Again, we only forward the mixins we want the consumer
@@ -17,7 +18,7 @@
 @forward "src/abstracts/mixins/cover";
 @forward "src/abstracts/mixins/hover";
 @forward "src/abstracts/mixins/pseudo";
-@forward "src/abstracts/mixins/shadows";
+@forward "src/abstracts/mixins/shadow";
 @forward "src/abstracts/mixins/truncate";
 @forward "src/abstracts/mixins/typography";
 @forward "src/abstracts/mixins/zindex";
@@ -27,6 +28,7 @@
 @use "src/base/normalize";
 @use "src/base/box-sizing";
 @use "src/base/fonts";
+@use "src/base/dev";
 
 
 // Components
@@ -37,7 +39,7 @@
 @use "src/components/breadcrumbs";
 @use "src/components/btn-group";
 @use "src/components/button";
-@use "src/components/card";
+@use "src/components/card-frame";
 @use "src/components/checkbox";
 @use "src/components/container";
 @use "src/components/date-picker";

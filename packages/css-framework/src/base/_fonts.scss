@@ -41,35 +41,43 @@ html {
 
 h1,
 .rn-h1 {
+  margin: 0;
   @include font-size("xxl");
 }
 
 h2,
 .rn-h2 {
+  margin: 0;
   @include font-size("xl");
 }
 
 h3,
 .rn-h3 {
+  margin: 0;
   @include font-size("l");
 }
 
 h4,
 .rn-h4 {
+  margin: 0;
   @include font-size("m");
 }
 
 h5,
 .rn-h5 {
+  margin: 0;
   @include font-size("base");
 }
 
 h6,
 .rn-h6 {
+  margin: 0;
   @include font-size("s");
 }
 
 p,
 .rn-p {
-  @include font-size("base");  
+  margin: 0;
+  @include font-size("base");
+  line-height: 1.5;
 }
