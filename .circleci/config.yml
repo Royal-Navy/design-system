@@ -29,9 +29,9 @@ commands:
   publish_package:
     description: 'Publish an NPM package to a registry'
     parameters:
-      working_directory_name:
+      working_directory:
           type: string
-          description: 'Name of package'
+          description: 'Directory of package'
       tag:
           type: string
           default: latest
@@ -39,8 +39,7 @@ commands:
     steps:
       - run:
           name: Publish package
-          working_directory: packages/<< parameters.working_directory_name >>
-          command: npm publish --registry https://$NPM_REGISTRY --tag << parameters.tag >>
+          command: node ./scripts/npm/publish.js https://$NPM_REGISTRY << parameters.tag >> << parameters.working_directory >>
 
 jobs:
   security_audit:
@@ -149,8 +148,8 @@ jobs:
       - dependencies
       - *authenticate_npm
       - publish_package:
-          working_directory_name: eslint-config-react
-          tag: stable
+          working_directory: packages/eslint-config-react
+          tag: latest
   publish_stable_css-framework:
     docker: *docker
     steps:
@@ -158,8 +157,8 @@ jobs:
       - dependencies
       - *authenticate_npm
       - publish_package:
-          working_directory_name: css-framework
-          tag: stable
+          working_directory: packages/css-framework
+          tag: latest
   publish_stable_react-component-library:
     docker: *docker
     steps:
@@ -168,8 +167,8 @@ jobs:
       - *build_icon_library
       - *authenticate_npm
       - publish_package:
-          working_directory_name: react-component-library
-          tag: stable
+          working_directory: packages/react-component-library
+          tag: latest
   publish_stable_icon-library:
     docker: *docker
     steps:
@@ -177,8 +176,8 @@ jobs:
       - dependencies
       - *authenticate_npm
       - publish_package:
-          working_directory_name: icon-library
-          tag: stable
+          working_directory: packages/icon-library
+          tag: latest
   publish_stable_fonts:
     docker: *docker
     steps:
@@ -186,8 +185,8 @@ jobs:
       - dependencies
       - *authenticate_npm
       - publish_package:
-          working_directory_name: fonts
-          tag: stable
+          working_directory: packages/fonts
+          tag: latest
   test_docs-site:
     docker: *docker
     steps:
@@ -265,112 +264,30 @@ workflows:
             branches:
               only:
                 - master
-      - lint_commits:
-          filters:
-            branches:
-              only:
-                - master
-      - lint_css-framework:
-          filters:
-            branches:
-              only:
-                - master
-      - lint_react-component-library:
-          filters:
-            branches:
-              only:
-                - master
-      - lint_docs_site:
-          filters:
-            branches:
-              only:
-                - master
-      - test_react-component-library:
-          requires:
-            - lint_react-component-library
-      - code_climate:
-          requires:
-            - test_react-component-library
-      - test_visual_regression:
-          requires:
-            - test_react-component-library
-      - publish_stable_eslint-config-react:
-          requires:
-            - lint_commits
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only:
-                - /^\d\.\d\.0/
-      - publish_stable_icon-library:
-          requires:
-            - lint_commits
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only:
-                - /^\d\.\d\.0/
-      - publish_stable_fonts:
-          requires:
-            - lint_commits
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only:
-                - /^\d\.\d\.0/
-      - publish_stable_css-framework:
-          requires:
-            - lint_commits
-            - lint_css-framework
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only:
-                - /^\d\.\d\.0/
-      - publish_stable_react-component-library:
-          requires:
-            - test_react-component-library
-            - publish_stable_css-framework
-            - publish_stable_icon-library
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only:
-                - /^\d\.\d\.0/
-      - test_docs-site:
-          requires:
-            - test_react-component-library
-  build_and_test_hotfix:
-    jobs:
-      - security_audit:
-          filters:
-            branches:
-              only:
                 - /^\d\.\d\.\d-hotfix/
       - lint_commits:
           filters:
             branches:
               only:
+                - master
                 - /^\d\.\d\.\d-hotfix/
       - lint_css-framework:
           filters:
             branches:
               only:
+                - master
                 - /^\d\.\d\.\d-hotfix/
       - lint_react-component-library:
           filters:
             branches:
               only:
+                - master
                 - /^\d\.\d\.\d-hotfix/
       - lint_docs_site:
           filters:
             branches:
               only:
+                - master
                 - /^\d\.\d\.\d-hotfix/
       - test_react-component-library:
           requires:
@@ -384,51 +301,21 @@ workflows:
       - publish_stable_eslint-config-react:
           requires:
             - lint_commits
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only:
-                - /^\d\.\d\.\d/
       - publish_stable_icon-library:
           requires:
             - lint_commits
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only:
-                - /^\d\.\d\.\d/
       - publish_stable_fonts:
           requires:
             - lint_commits
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only:
-                - /^\d\.\d\.\d/
       - publish_stable_css-framework:
           requires:
             - lint_commits
             - lint_css-framework
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only:
-                - /^\d\.\d\.\d/
       - publish_stable_react-component-library:
           requires:
             - test_react-component-library
             - publish_stable_css-framework
             - publish_stable_icon-library
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only:
-                - /^\d\.\d\.\d/
       - test_docs-site:
           requires:
             - test_react-component-library
