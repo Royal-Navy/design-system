@@ -141,7 +141,7 @@ jobs:
       - run:
           name: Run visual regression tests
           command: yarn --cwd packages/react-component-library chromatic --app-code=$CHROMATIC_APP_CODE
-  publish_stable_eslint-config-react:
+  publish_latest_eslint-config-react:
     docker: *docker
     steps:
       - checkout
@@ -150,7 +150,7 @@ jobs:
       - publish_package:
           working_directory: packages/eslint-config-react
           tag: latest
-  publish_stable_css-framework:
+  publish_latest_css-framework:
     docker: *docker
     steps:
       - checkout
@@ -159,7 +159,7 @@ jobs:
       - publish_package:
           working_directory: packages/css-framework
           tag: latest
-  publish_stable_react-component-library:
+  publish_latest_react-component-library:
     docker: *docker
     steps:
       - checkout
@@ -169,7 +169,7 @@ jobs:
       - publish_package:
           working_directory: packages/react-component-library
           tag: latest
-  publish_stable_icon-library:
+  publish_latest_icon-library:
     docker: *docker
     steps:
       - checkout
@@ -178,7 +178,7 @@ jobs:
       - publish_package:
           working_directory: packages/icon-library
           tag: latest
-  publish_stable_fonts:
+  publish_latest_fonts:
     docker: *docker
     steps:
       - checkout
@@ -274,26 +274,26 @@ workflows:
               only:
                 - master
                 - /^\d\.\d\.\d-hotfix/
-      - publish_stable_eslint-config-react:
+      - publish_latest_eslint-config-react:
           requires:
             - test_react-component-library
             - test_visual_regression
-      - publish_stable_icon-library:
+      - publish_latest_icon-library:
           requires:
             - test_react-component-library
             - test_visual_regression
-      - publish_stable_fonts:
+      - publish_latest_fonts:
           requires:
             - test_react-component-library
             - test_visual_regression
-      - publish_stable_css-framework:
+      - publish_latest_css-framework:
           requires:
             - test_react-component-library
             - test_visual_regression
-      - publish_stable_react-component-library:
+      - publish_latest_react-component-library:
           requires:
             - test_react-component-library
             - test_visual_regression
-            - publish_stable_css-framework
-            - publish_stable_fonts
-            - publish_stable_icon-library
+            - publish_latest_css-framework
+            - publish_latest_fonts
+            - publish_latest_icon-library
