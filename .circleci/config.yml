@@ -141,7 +141,7 @@ jobs:
       - run:
           name: Run visual regression tests
           command: yarn --cwd packages/react-component-library chromatic --app-code=$CHROMATIC_APP_CODE
-  publish_stable_eslint-config-react:
+  publish_latest_eslint-config-react:
     docker: *docker
     steps:
       - checkout
@@ -150,7 +150,7 @@ jobs:
       - publish_package:
           working_directory: packages/eslint-config-react
           tag: latest
-  publish_stable_css-framework:
+  publish_latest_css-framework:
     docker: *docker
     steps:
       - checkout
@@ -159,7 +159,7 @@ jobs:
       - publish_package:
           working_directory: packages/css-framework
           tag: latest
-  publish_stable_react-component-library:
+  publish_latest_react-component-library:
     docker: *docker
     steps:
       - checkout
@@ -169,7 +169,7 @@ jobs:
       - publish_package:
           working_directory: packages/react-component-library
           tag: latest
-  publish_stable_icon-library:
+  publish_latest_icon-library:
     docker: *docker
     steps:
       - checkout
@@ -178,7 +178,7 @@ jobs:
       - publish_package:
           working_directory: packages/icon-library
           tag: latest
-  publish_stable_fonts:
+  publish_latest_fonts:
     docker: *docker
     steps:
       - checkout
@@ -248,74 +248,52 @@ workflows:
               ignore:
                 - master
                 - /^\d\.\d\.\d-hotfix/
-      - test_react-component-library:
-          requires:
-            - lint_react-component-library
-      - code_climate:
-          requires:
-            - test_react-component-library
-      - test_visual_regression:
-          requires:
-            - test_react-component-library
-  build_and_test_master:
-    jobs:
-      - security_audit:
-          filters:
-            branches:
-              only:
-                - master
-                - /^\d\.\d\.\d-hotfix/
-      - lint_commits:
-          filters:
-            branches:
-              only:
-                - master
-                - /^\d\.\d\.\d-hotfix/
-      - lint_css-framework:
-          filters:
-            branches:
-              only:
-                - master
-                - /^\d\.\d\.\d-hotfix/
-      - lint_react-component-library:
-          filters:
-            branches:
-              only:
-                - master
-                - /^\d\.\d\.\d-hotfix/
-      - lint_docs_site:
-          filters:
-            branches:
-              only:
-                - master
-                - /^\d\.\d\.\d-hotfix/
-      - test_react-component-library:
-          requires:
-            - lint_react-component-library
-      - code_climate:
-          requires:
-            - test_react-component-library
-      - test_visual_regression:
-          requires:
-            - test_react-component-library
-      - publish_stable_eslint-config-react:
-          requires:
-            - lint_commits
-      - publish_stable_icon-library:
-          requires:
-            - lint_commits
-      - publish_stable_fonts:
-          requires:
-            - lint_commits
-      - publish_stable_css-framework:
-          requires:
-            - lint_commits
-            - lint_css-framework
-      - publish_stable_react-component-library:
-          requires:
-            - test_react-component-library
-            - publish_stable_css-framework
-            - publish_stable_icon-library
       - test_docs-site:
           requires:
+            - lint_docs_site
+      - test_react-component-library:
+          requires:
+            - lint_react-component-library
+      - code_climate:
+          requires:
             - test_react-component-library
+      - test_visual_regression:
+          requires:
+            - test_react-component-library
+  build_test_and_deploy:
+    jobs:
+      - test_react-component-library:
+          filters:
+            branches:
+              only:
+                - master
+                - /^\d\.\d\.\d-hotfix/
+      - test_visual_regression:
+          filters:
+            branches:
+              only:
+                - master
+                - /^\d\.\d\.\d-hotfix/
+      - publish_latest_eslint-config-react:
+          requires:
+            - test_react-component-library
+            - test_visual_regression
+      - publish_latest_icon-library:
+          requires:
+            - test_react-component-library
+            - test_visual_regression
+      - publish_latest_fonts:
+          requires:
+            - test_react-component-library
+            - test_visual_regression
+      - publish_latest_css-framework:
+          requires:
+            - test_react-component-library
+            - test_visual_regression
+      - publish_latest_react-component-library:
+          requires:
+            - test_react-component-library
+            - test_visual_regression
+            - publish_latest_css-framework
+            - publish_latest_fonts
+            - publish_latest_icon-library
