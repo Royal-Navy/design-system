@@ -248,6 +248,9 @@ workflows:
               ignore:
                 - master
                 - /^\d\.\d\.\d-hotfix/
+      - test_docs-site:
+          requires:
+            - lint_docs_site
       - test_react-component-library:
           requires:
             - lint_react-component-library
@@ -257,65 +260,40 @@ workflows:
       - test_visual_regression:
           requires:
             - test_react-component-library
-  build_and_test_master:
+  build_test_and_deploy:
     jobs:
-      - security_audit:
-          filters:
-            branches:
-              only:
-                - master
-                - /^\d\.\d\.\d-hotfix/
-      - lint_commits:
-          filters:
-            branches:
-              only:
-                - master
-                - /^\d\.\d\.\d-hotfix/
-      - lint_css-framework:
-          filters:
-            branches:
-              only:
-                - master
-                - /^\d\.\d\.\d-hotfix/
-      - lint_react-component-library:
-          filters:
-            branches:
-              only:
-                - master
-                - /^\d\.\d\.\d-hotfix/
-      - lint_docs_site:
-          filters:
-            branches:
-              only:
-                - master
-                - /^\d\.\d\.\d-hotfix/
       - test_react-component-library:
-          requires:
-            - lint_react-component-library
-      - code_climate:
-          requires:
-            - test_react-component-library
+          filters:
+            branches:
+              only:
+                - master
+                - /^\d\.\d\.\d-hotfix/
       - test_visual_regression:
-          requires:
-            - test_react-component-library
+          filters:
+            branches:
+              only:
+                - master
+                - /^\d\.\d\.\d-hotfix/
       - publish_stable_eslint-config-react:
           requires:
-            - lint_commits
+            - test_react-component-library
+            - test_visual_regression
       - publish_stable_icon-library:
           requires:
-            - lint_commits
+            - test_react-component-library
+            - test_visual_regression
       - publish_stable_fonts:
           requires:
-            - lint_commits
+            - test_react-component-library
+            - test_visual_regression
       - publish_stable_css-framework:
           requires:
-            - lint_commits
-            - lint_css-framework
+            - test_react-component-library
+            - test_visual_regression
       - publish_stable_react-component-library:
           requires:
             - test_react-component-library
+            - test_visual_regression
             - publish_stable_css-framework
+            - publish_stable_fonts
             - publish_stable_icon-library
-      - test_docs-site:
-          requires:
-            - test_react-component-library
