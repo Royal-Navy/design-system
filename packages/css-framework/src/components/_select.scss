@@ -1,12 +1,15 @@
 @use "../abstracts/functions" as f;
 
 .rn-select {
-  margin: f.spacing("3") 0;
+  position: relative;
 
   .rn-select__control--is-focused,
   .rn-select__control:hover {
     border-color: f.color("action", "600");
     box-shadow: 0 0 0 1px f.color("action", "600");
+    &.rn-select__control--menu-is-open {
+      border-bottom-color: transparent;
+    }
   }
 
   .rn-select__value-container {
@@ -16,7 +19,7 @@
   .rn-select__control--menu-is-open {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-bottom: 0;
+    border-bottom-color: transparent;
   }
 
   .rn-select__dropdown-indicator {
