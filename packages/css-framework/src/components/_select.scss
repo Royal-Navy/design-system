@@ -1,12 +1,14 @@
 @use "../abstracts/functions" as f;
 
 .rn-select {
-  position: relative;
+
 
   .rn-select__control {
     padding-top: f.spacing("px");
     padding-bottom: f.spacing("px");
     border: 1px solid f.color("neutral", "200");
+    position: relative;
+    z-index: 0;
   }
 
   .rn-select__control--is-focused,
@@ -161,6 +163,7 @@
   }
 
   .rn-select__control--menu-is-open {
+    z-index: 1;
     .rn-arrow {
       transform: rotate(180deg) translateY(1px);
     }
