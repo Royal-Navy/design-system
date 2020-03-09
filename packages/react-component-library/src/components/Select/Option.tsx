@@ -10,9 +10,9 @@ export interface SelectOptionWithBadgeType {
   value: string
 }
 
-export const Option: React.FC<
-  OptionProps<SelectOptionWithBadgeType>
-> = props => {
+export const Option: React.FC<OptionProps<
+  SelectOptionWithBadgeType
+>> = props => {
   const {
     data: { badge, label },
   } = props
@@ -20,7 +20,11 @@ export const Option: React.FC<
   return (
     <components.Option {...props} data-testid="select-option">
       <span data-testid="select-option-label">{label}</span>
-      {badge && <Badge className="rn-select__badge">{badge}</Badge>}
+      {badge && (
+        <Badge className="rn-select__badge rn_ml-3" size="small">
+          {badge}
+        </Badge>
+      )}
     </components.Option>
   )
 }
