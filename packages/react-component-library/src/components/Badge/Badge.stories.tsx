@@ -35,6 +35,7 @@ const badgeColorTextMap = {
 }
 
 const badgeSizeTextMap = {
+  [BADGE_SIZE.XSMALL]: 'XSmall',
   [BADGE_SIZE.SMALL]: 'Small',
   [BADGE_SIZE.REGULAR]: 'Regular',
   [BADGE_SIZE.LARGE]: 'Large',
