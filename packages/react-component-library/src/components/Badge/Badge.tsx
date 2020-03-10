@@ -16,6 +16,7 @@ export type BadgeColorType =
   | typeof BADGE_COLOR.WARNING
 
 export type BadgeSizeType =
+  | typeof BADGE_SIZE.XSMALL
   | typeof BADGE_SIZE.SMALL
   | typeof BADGE_SIZE.REGULAR
   | typeof BADGE_SIZE.LARGE

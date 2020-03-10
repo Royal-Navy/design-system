@@ -9,6 +9,13 @@ $badge: (
 );
 
 $badge-sizes: (
+  xsmall: (
+    font-size: f.font-size("xs"),
+    font-weight: 700,
+    line-height: 1.4,
+    padding: f.spacing("px") f.spacing("2"),
+    padding-pill: f.spacing("px") f.spacing("2")
+  ),
   small: (
     font-size: f.font-size("s"),
     font-weight: 700,

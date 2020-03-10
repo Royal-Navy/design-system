@@ -1,22 +1,34 @@
 @use "../abstracts/functions" as f;
 
 .rn-select {
-  margin: f.spacing("3") 0;
+
+
+  .rn-select__control {
+    padding-top: f.spacing("px");
+    padding-bottom: f.spacing("px");
+    border: 1px solid f.color("neutral", "200");
+    position: relative;
+    z-index: 0;
+  }
 
   .rn-select__control--is-focused,
   .rn-select__control:hover {
     border-color: f.color("action", "600");
-    box-shadow: 0 0 0 1px f.color("action", "600");
+    box-shadow: 0 0 0 1px f.color("action", "600"), 0 0 0 4px f.color("action", "100");
+    &.rn-select__control--menu-is-open {
+      border-bottom-color: transparent;
+    }
   }
 
   .rn-select__value-container {
     padding: 0;
   }
 
+
   .rn-select__control--menu-is-open {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-bottom: 0;
+    border-bottom-color: transparent;
   }
 
   .rn-select__dropdown-indicator {
@@ -24,15 +36,29 @@
     padding-right: (40px - 11px)/2;
   }
 
+  .rn-select__indicator-separator {
+    background-color: f.color("neutral", "100");
+  }
+
   .rn-select__menu {
-    margin-top: 0;
+    margin-top: -1px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    box-shadow:
-      -1px 1px 0 0 f.color("action", "600"),
-      1px 1px 0 0 f.color("action", "600");
+    box-shadow: 0 0 0 1px f.color("action", "600"),
+      -2px 2px 0 2px f.color("action", "100"),
+      2px 2px 0 2px f.color("action", "100");
     border: 1px solid f.color("action", "600");
     border-top: 0;
+    background:f.color("neutral", "white");
+    &::after {
+      position: absolute;
+      top: -1px;
+      right: 0;
+      left: 0;
+      height: 1px;
+      background: f.color("neutral", "white");
+      content: "";
+    }
   }
 
   .rn-select__menu-list {
@@ -41,8 +67,19 @@
   }
 
   .rn-select__option {
-    border-radius: 4px;
+    border-radius: 2px;
     color: f.color("neutral", "500");
+    display: flex;
+    align-items: center;
+    padding-top: f.spacing("4");
+    padding-bottom: f.spacing("4");
+    padding-left: f.spacing("4");
+    font-size: f.font-size("base");
+    font-weight: 500;
+    margin-top: f.spacing("2");
+    .rn-badge {
+      transform: translateY(1px);
+    }
   }
 
   .rn-select__option--is-focused {
@@ -80,11 +117,13 @@
   .rn-select__single-value {
     padding-right: 50px;
     overflow: visible;
+    padding-bottom: f.spacing("2");
   }
+
 
   .rn-select__single-value .rn-select__badge {
     display: inline-block;
-    bottom: f.spacing("2");
+    transform: translateY(-1px);
   }
 
   .rn-select__label {
@@ -104,20 +143,10 @@
     white-space: nowrap;
   }
 
-  .rn-select__badge {
-    font-size: f.font-size("xs");
-    padding: f.spacing("2") f.spacing("4");
-    background-color: f.color("neutral", "500");
-    display: inline-block;
-    border-radius: 100px;
-    color: f.color("neutral", "white");
-    margin-left: f.spacing("2");
-    position: absolute;
-  }
 
   .rn-select__control--is-focused .rn-select__label,
   .rn-select__value-container--has-value .rn-select__label {
-    transform: translate(f.spacing("6"), 6px) scale(0.8);
+    transform: translate(f.spacing("6"), 5px) scale(0.8);
   }
 
   .rn-arrow__fill {
@@ -134,6 +163,7 @@
   }
 
   .rn-select__control--menu-is-open {
+    z-index: 1;
     .rn-arrow {
       transform: rotate(180deg) translateY(1px);
     }

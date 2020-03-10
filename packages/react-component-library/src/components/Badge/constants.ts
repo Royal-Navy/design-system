@@ -18,9 +18,10 @@ const BADGE_COLOR_VARIANT = {
 } as const
 
 const BADGE_SIZE = {
-  LARGE: 'large',
+  XSMALL: 'xsmall',
   SMALL: 'small',
   REGULAR: 'regular',
+  LARGE: 'large',
   XLARGE: 'xlarge',
 } as const
 
