@@ -147,6 +147,22 @@ jobs:
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/fonts &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/icon-library &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/react-component-library
+  publish_next:
+    docker: *docker
+    steps:
+      - checkout
+      - dependencies
+      - *build_icon_library
+      - *authenticate_npm
+      - deploy: #deploy step is important to prevent triggering N builds
+          name: Publish next packages
+          command: >-
+            yarn lerna:prerelease --yes &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/css-framework &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/eslint-config-react &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/fonts &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/icon-library &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/react-component-library
   test_docs-site:
     docker: *docker
     steps:
@@ -225,6 +241,22 @@ workflows:
       - test_visual_regression:
           requires:
             - test_react-component-library
+  build_test_and_deploy_next:
+    jobs:
+      - test_react-component-library:
+          filters:
+            branches:
+              only:
+                - master
+      - test_visual_regression:
+          filters:
+            branches:
+              only:
+                - master
+      - publish_next:
+          requires:
+            - test_react-component-library
+            - test_visual_regression
   build_test_and_deploy_latest:
     jobs:
       - test_react-component-library:
