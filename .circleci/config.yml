@@ -26,20 +26,6 @@ commands:
           paths:
             - ~/.cache/yarn
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-  publish_package:
-    description: 'Publish an NPM package to a registry'
-    parameters:
-      working_directory:
-          type: string
-          description: 'Directory of package'
-      tag:
-          type: string
-          default: latest
-          description: 'The NPM dist-tag associated with the release'
-    steps:
-      - run:
-          name: Publish package
-          command: node ./scripts/npm/publish.js https://$NPM_REGISTRY << parameters.tag >> << parameters.working_directory >>
 
 jobs:
   security_audit:
@@ -146,52 +132,21 @@ jobs:
             else
               yarn --cwd packages/react-component-library chromatic --app-code=$CHROMATIC_APP_CODE
             fi
-  publish_latest_eslint-config-react:
-    docker: *docker
-    steps:
-      - checkout
-      - dependencies
-      - *authenticate_npm
-      - publish_package:
-          working_directory: packages/eslint-config-react
-          tag: latest
-  publish_latest_css-framework:
-    docker: *docker
-    steps:
-      - checkout
-      - dependencies
-      - *authenticate_npm
-      - publish_package:
-          working_directory: packages/css-framework
-          tag: latest
-  publish_latest_react-component-library:
+  publish_latest:
     docker: *docker
     steps:
       - checkout
       - dependencies
       - *build_icon_library
       - *authenticate_npm
-      - publish_package:
-          working_directory: packages/react-component-library
-          tag: latest
-  publish_latest_icon-library:
-    docker: *docker
-    steps:
-      - checkout
-      - dependencies
-      - *authenticate_npm
-      - publish_package:
-          working_directory: packages/icon-library
-          tag: latest
-  publish_latest_fonts:
-    docker: *docker
-    steps:
-      - checkout
-      - dependencies
-      - *authenticate_npm
-      - publish_package:
-          working_directory: packages/fonts
-          tag: latest
+      - deploy: #deploy step is important to prevent triggering N builds
+          name: Publish latest packages
+          command: >-
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/css-framework &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/eslint-config-react &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/fonts &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/icon-library &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/react-component-library
   test_docs-site:
     docker: *docker
     steps:
@@ -227,30 +182,35 @@ workflows:
           filters:
             branches:
               ignore:
+                - latest
                 - master
                 - /^\d\.\d\.\d-hotfix/
       - lint_commits:
           filters:
             branches:
               ignore:
+                - latest
                 - master
                 - /^\d\.\d\.\d-hotfix/
       - lint_css-framework:
           filters:
             branches:
               ignore:
+                - latest
                 - master
                 - /^\d\.\d\.\d-hotfix/
       - lint_react-component-library:
           filters:
             branches:
               ignore:
+                - latest
                 - master
                 - /^\d\.\d\.\d-hotfix/
       - lint_docs_site:
           filters:
             branches:
               ignore:
+                - latest
                 - master
                 - /^\d\.\d\.\d-hotfix/
       - test_docs-site:
@@ -265,40 +225,21 @@ workflows:
       - test_visual_regression:
           requires:
             - test_react-component-library
-  build_test_and_deploy:
+  build_test_and_deploy_latest:
     jobs:
       - test_react-component-library:
           filters:
             branches:
               only:
-                - master
+                - latest
                 - /^\d\.\d\.\d-hotfix/
       - test_visual_regression:
           filters:
             branches:
               only:
-                - master
+                - latest
                 - /^\d\.\d\.\d-hotfix/
-      - publish_latest_eslint-config-react:
+      - publish_latest:
           requires:
             - test_react-component-library
             - test_visual_regression
-      - publish_latest_icon-library:
-          requires:
-            - test_react-component-library
-            - test_visual_regression
-      - publish_latest_fonts:
-          requires:
-            - test_react-component-library
-            - test_visual_regression
-      - publish_latest_css-framework:
-          requires:
-            - test_react-component-library
-            - test_visual_regression
-      - publish_latest_react-component-library:
-          requires:
-            - test_react-component-library
-            - test_visual_regression
-            - publish_latest_css-framework
-            - publish_latest_fonts
-            - publish_latest_icon-library
