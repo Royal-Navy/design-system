@@ -3,6 +3,7 @@
 @use "../abstracts/functions" as f;
 
 $btn-border-radius: 4px;
+$btn-border-radius--small: 3px;
 $btn-disabled-opacity: 0.4;
 $btn-block-spacing-y: 1rem;
 $btn-focus-width: 0.2rem;
@@ -166,6 +167,8 @@ $btn-focus-width: 0.2rem;
   // Sizes
   &--small {
     padding: f.spacing("3") f.spacing("5");
+    border-radius: $btn-border-radius--small;
+    font-size: f.font-size("base");
   }
 
   &--large {
