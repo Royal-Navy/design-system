@@ -154,7 +154,7 @@
   grid-template-columns: repeat(1, 300px);
   grid-gap: 0 f.spacing("8");
   width: auto;
-  margin: 1rem;
+  padding: f.spacing("8") f.spacing("5") f.spacing("5") f.spacing("5");
 }
 
 .rn-date-picker__grid--range {
@@ -175,12 +175,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 0 f.spacing("8");
+  padding: f.spacing("2") 0 f.spacing("10");
 }
 
 .rn-date-picker__btn-nav {
   position: absolute;
-  top: f.spacing("6");
+  top: f.spacing("8");
   display: inline-flex;
   justify-content: center;
   width: 1.5rem;
