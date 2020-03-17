@@ -153,6 +153,13 @@ jobs:
       - checkout
       - dependencies
       - *build_icon_library
+      - run:
+          name: Configure Git
+          command: >-
+            git config user.email "${GH_EMAIL}" &&
+            git config user.name "${GH_NAME}" &&
+            git remote set-url origin https://${GH_TOKEN}@github.com/Royal-Navy/standards-toolkit.git &&
+            git checkout master
       - *authenticate_npm
       - deploy: #deploy step is important to prevent triggering N builds
           name: Publish next packages
