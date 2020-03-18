@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0-alpha.1](https://github.com/Royal-Navy/standards-toolkit/compare/2.3.0-alpha.0...2.3.0-alpha.1) (2020-03-18)
+
+
+### Bug Fixes
+
+* Use minimist 1.2.5 ([28b65c7](https://github.com/Royal-Navy/standards-toolkit/commit/28b65c7f755e0cc333d95d0ff95cb3cfbead6e4b))
+
+
+
+
+
 # [2.3.0-alpha.0](https://github.com/Royal-Navy/standards-toolkit/compare/2.2.1...2.3.0-alpha.0) (2020-03-17)
 
 
