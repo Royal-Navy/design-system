@@ -10,13 +10,13 @@
     - [Pull requests](#pull-requests)
         - [Fixups](#fixups)
         - [Squashing](#squashing)
+- [Prereleases](#prereleases)
 - [Hot fixing](#hot-fixing)
     - [Apply the fix to master in the first instance](#apply-the-fix-to-master-in-the-first-instance)
     - [Add the fix to the release](#add-the-fix-to-the-release)
-        - [Create the release branch](#create-the-release-branch)
         - [Cherry pick the fix](#cherry-pick-the-fix)
-    - [Release the fix](#release-the-fix)
-    - [Finally](#finally)
+        - [Release the fix](#release-the-fix)
+        - [Finally](#finally)
 
 ## Branching strategy
 The Standards Toolkit repository is using a trunk-based development branching strategy. All changes are merged directly into `master`. To have control over publishing of packages, `npm publish` is triggered only when a new version tag is merged into `master`. Branches are still used for the peer review process. When required, separate branches are maintained for fixes.
@@ -103,6 +103,9 @@ git checkout feature/<name>
 git rebase -i --autosquash origin/master
 ```
 
+### Prereleases
+Each `merge` to `master` publishes a prerelease to NPM. 
+
 ## Hot fixing
 If there is an issue (never happens :sunglasses:) then `master` is always fixed first as it is possible that another release from `master` could happen once the hot fix is live.
 
@@ -123,37 +126,30 @@ Make changes to the fix branch, `commit` and `push` to the remote repository. Op
 ### Add the fix to the release
 Once the fix is merged into `master` you are ready to add the fix to the release.
 
-#### Create the release branch
-The release branch needs to be created from the current live tag.
-```
-// checkout at live tag
-git checkout tags/<version-in-prod>
-
-// create a branch
-git checkout -b <version-in-prod>-hotfix
-
-// push the branch
-git push origin <version-in-prod>-hotfix
-```
-
 #### Cherry pick the fix
-The bug has been fixed on `master` and needs to be added to the release branch.
+The release branch will already exist from the previous `latest` release. This step is to apply the fix from `master` to the release branch.
 ```
-// work with the hotfix branch
-git checkout <version-in-prod>-hotfix
+// work with the release
+git checkout <major>.<minor>-latest
 
-// get the fix commit on master
+// apply the fix commit from master
 git cherry-pick <commit-hash>
 ```
 
-### Release the fix
+#### Release the fix
+The package numbers will need updating to trigger publishing of the packages.
 ```
-// work with the hotfix branch
-git checkout <version-in-prod>-hotfix
+// work with the release
+git checkout <major>.<minor>-latest
+
+// create a branch to increment version numbers
+git checkout <name-of-hot-fix>
 
 // create a version
 yarn lerna:version
 ```
 
-### Finally
+A PR will need to be opened to `merge` the package updates into the release branch which will then trigger the publishing of packages.
+
+#### Finally
 Once deployed successfully, open a PR to `merge` the `CHANGELOG` and `package.json` changes back into `master`.
