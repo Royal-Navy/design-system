@@ -205,37 +205,32 @@ workflows:
           filters:
             branches:
               ignore:
-                - latest
                 - master
-                - /^\d\.\d\.\d-hotfix/
+                - /^\d\.\d-latest/
       - lint_commits:
           filters:
             branches:
               ignore:
-                - latest
                 - master
-                - /^\d\.\d\.\d-hotfix/
+                - /^\d\.\d-latest/
       - lint_css-framework:
           filters:
             branches:
               ignore:
-                - latest
                 - master
-                - /^\d\.\d\.\d-hotfix/
+                - /^\d\.\d-latest/
       - lint_react-component-library:
           filters:
             branches:
               ignore:
-                - latest
                 - master
-                - /^\d\.\d\.\d-hotfix/
+                - /^\d\.\d-latest/
       - lint_docs_site:
           filters:
             branches:
               ignore:
-                - latest
                 - master
-                - /^\d\.\d\.\d-hotfix/
+                - /^\d\.\d-latest/
       - test_docs-site:
           requires:
             - lint_docs_site
@@ -270,14 +265,12 @@ workflows:
           filters:
             branches:
               only:
-                - latest
-                - /^\d\.\d\.\d-hotfix/
+                - /^\d\.\d-latest/
       - test_visual_regression:
           filters:
             branches:
               only:
-                - latest
-                - /^\d\.\d\.\d-hotfix/
+                - /^\d\.\d-latest/
       - publish_latest:
           requires:
             - test_react-component-library
