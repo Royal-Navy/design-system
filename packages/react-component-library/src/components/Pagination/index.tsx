@@ -1,5 +1,5 @@
 import React from 'react'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import { usePageChange, BUMP_LEFT, BUMP_RIGHT } from './usePageChange'
 
 interface PaginationProps {
@@ -24,7 +24,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className="rn-pagination">
       <ol className="rn-pagination__list">
-        <li key={uuid()} className="rn-pagination__item">
+        <li key={uuidv4()} className="rn-pagination__item">
           <button
             disabled={currentPage === 1}
             className="rn-pagination__button"
@@ -39,14 +39,14 @@ const Pagination: React.FC<PaginationProps> = ({
         {pageNumbers().map((page: string | number) => {
           if ([BUMP_LEFT, BUMP_RIGHT].includes(String(page))) {
             return (
-              <li key={uuid()} className="rn-pagination__item">
+              <li key={uuidv4()} className="rn-pagination__item">
                 {page}
               </li>
             )
           }
 
           return (
-            <li key={uuid()} className="rn-pagination__item" data-testid="page">
+            <li key={uuidv4()} className="rn-pagination__item" data-testid="page">
               <button
                 className={`rn-pagination__button ${
                   page === currentPage ? 'is-active' : ''
@@ -61,7 +61,7 @@ const Pagination: React.FC<PaginationProps> = ({
             </li>
           )
         })}
-        <li key={uuid()} className="rn-pagination__item">
+        <li key={uuidv4()} className="rn-pagination__item">
           <button
             disabled={currentPage === totalPages}
             className="rn-pagination__button"

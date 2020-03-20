@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 interface CheckboxProps {
   className?: string
@@ -16,7 +16,7 @@ interface CheckboxProps {
 
 const Checkbox: React.FC<CheckboxProps> = ({
   className = '',
-  id = uuid(),
+  id = uuidv4(),
   isChecked,
   isDisabled,
   label,

@@ -2,7 +2,7 @@ import React, { FormEvent } from 'react'
 import classNames from 'classnames'
 import isFinite from 'lodash/isFinite'
 import isNil from 'lodash/isNil'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 import { EndAdornment } from './EndAdornment'
 import { Input } from './Input'
@@ -33,7 +33,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   className,
   isDisabled = false,
   footnote,
-  id = uuid(),
+  id = uuidv4(),
   label,
   max,
   min,

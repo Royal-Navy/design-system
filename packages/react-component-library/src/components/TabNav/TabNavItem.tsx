@@ -1,5 +1,5 @@
 import React from 'react'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 
 import { NavItem } from '../../types/Nav'
@@ -9,7 +9,7 @@ export const TabNavItem: React.FC<NavItem> = ({ isActive, link }) => {
 
   return (
     <li
-      key={uuid()}
+      key={uuidv4()}
       className={classes}
       data-testid={isActive ? 'tab-active' : 'tab'}
     >

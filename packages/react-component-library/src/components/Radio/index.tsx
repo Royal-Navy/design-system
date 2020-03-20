@@ -1,5 +1,5 @@
 import React from 'react'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 interface RadioProps {
   className?: string
@@ -14,7 +14,7 @@ interface RadioProps {
 
 const Radio: React.FC<RadioProps> = ({
   className = '',
-  id = uuid(),
+  id = uuidv4(),
   label,
   isDisabled = false,
   value,

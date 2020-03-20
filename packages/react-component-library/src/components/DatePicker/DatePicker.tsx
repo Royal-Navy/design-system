@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import differenceInMinutes from 'date-fns/differenceInMinutes'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 import TetherComponent from 'react-tether'
 
@@ -64,7 +64,7 @@ function transformDates(startDate: Date, endDate: Date) {
 export const DatePicker: React.FC<DatePickerProps> = ({
   className,
   endDate,
-  id = uuid(),
+  id = uuidv4(),
   isDisabled,
   isRange,
   label = 'Select Date',
