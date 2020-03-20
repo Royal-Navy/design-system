@@ -1,16 +1,51 @@
 # React Component Library
 A collection of React JS components written for Royal Navy web applications.
 
-## Scripts
+## Installation
+The Royal Navy React Component Library is available as a npm package.
 
-| Script     | Description |
-| --------   | ----------- |
-| build      | Create a production ready library with type definitions |
-| dev        | Run the build process in dev mode so changes are auto compiled and type definitions regenerated |
-| lint       | Check code styles and look for simple errors |
-| storybook  | Used for development. Shows the storybook site and re-compiles when changes are made |
-| test       | Runs Jest tests one time |
-| test:watch | Runs Jest in watch mode while you are working on your code |
-| types      | Generate type definitions |
+```
+// npm
+npm install @royalnavy/react-component-library
 
+// yarn
+yarn add @royalnavy/react-component-library
+```
 
+If you want to install the prerelease then use the `@next` distribution tag.
+
+## Usage
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom'
+import '@royalnavy/css-framework/dist/style.css'
+import { Button } from '@royalnavy/react-component-library'
+
+function App() {
+  return (
+    <Button variant="primary">
+      Hello, World!
+    </Button>
+  )
+}
+
+ReactDOM.render(<App />, document.querySelector('#app'))
+```
+
+## Questions
+Standards Toolkit is maintained by a team at the Royal Navy. If you want to know more about Standards Toolkit, please email the [Design System team](mailto:standards@royalnavy.io).
+
+## Examples
+There is the [Coffee app](https://github.com/Royal-Navy/coffee) which contains examples of how to use the components.
+
+## Documentation
+The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using NELSON styles and components.
+
+## Contributing
+The [contributing guide](https://github.com/Royal-Navy/standards-toolkit/blob/master/docs/contributing.md) resources presents information about our development process. 
+
+## Changelog
+If you have recently updated then read the [release notes](https://github.com/Royal-Navy/standards-toolkit/releases)
+
+## License
+The Standards Toolkit is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/standards-toolkit/blob/master/LICENSE)
