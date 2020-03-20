@@ -1,51 +1,41 @@
-import React from 'react'
-import { IconKeyboardArrowDown } from '@royalnavy/icon-library'
-import { Badge } from '@royalnavy/react-component-library'
+import React, { useState } from 'react'
+import classNames from 'classnames'
 
-export interface ComponentProps extends ComponentWithClass {
-  //
+import { IconKeyboardArrowDown } from '@royalnavy/icon-library'
+import { DataListItemProps } from '.'
+
+export interface DataListProps extends ComponentWithClass {
+  children:
+    | React.ReactElement<DataListItemProps>
+    | React.ReactElement<DataListItemProps>[]
+  title: string
 }
-export const DataList: React.FC<ComponentProps> = () => {
+
+export const DataList: React.FC<DataListProps> = ({
+  className,
+  title,
+  children,
+}) => {
+  const [expanded, setExpanded] = useState()
+  const classes = classNames('rn-data-list', className)
+
   return (
-    <dl className="rn-data-list">
-      <button className="rn-data-list__header">
+    <dl className={classes} data-testid="data-list">
+      <button
+        className="rn-data-list__header"
+        onClick={() => setExpanded(!expanded)}
+        data-testid="data-list-header"
+      >
         <h2 className="rn-data-list__title">
-          Data List Title
-          <Badge className="rn-data-list__badge" size="small">
-            Item
-          </Badge>
+          {title}
         </h2>
         <span className="rn-data-list__action">
           <IconKeyboardArrowDown />
         </span>
       </button>
-      <div className="rn-data-list__sheet">
-        <div className="rn-data-list__item">
-          <dt className="rn-data-list__key">Name</dt>
-          <dd className="rn-data-list__value">Horatio Nelson</dd>
-        </div>
-        <div className="rn-data-list__item">
-          <dt className="rn-data-list__key">Age</dt>
-          <dd className="rn-data-list__value">44</dd>
-        </div>
-        <div className="rn-data-list__item">
-          <dt className="rn-data-list__key">Location</dt>
-          <dd className="rn-data-list__value">Portsmouth</dd>
-        </div>
-        <div className="rn-data-list__item">
-          <dt className="rn-data-list__key">Departure</dt>
-          <dd className="rn-data-list__value">2230</dd>
-        </div>
-        <div className="rn-data-list__item">
-          <dt className="rn-data-list__key">Water Temperature</dt>
-          <dd className="rn-data-list__value">25C</dd>
-        </div>
-        <div className="rn-data-list__item">
-          <dt className="rn-data-list__key">Wind Speed</dt>
-          <dd className="rn-data-list__value">8Kts</dd>
-        </div>
-      </div>
+      <div className="rn-data-list__sheet">{children}</div>
     </dl>
   )
 }
+
 DataList.displayName = 'DataList'

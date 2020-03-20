@@ -16,6 +16,7 @@ import { Button, BUTTON_SIZE } from './components/Button'
 import { ButtonGroup, ButtonGroupItem } from './components/ButtonGroup'
 import { CardFrame } from './components/CardFrame'
 import Checkbox from './components/Checkbox'
+import { DataList, DataListItem } from './components/DataList'
 import { DatePicker, DATEPICKER_PLACEMENT } from './components/DatePicker'
 import { Dialog } from './components/Dialog'
 import { Drawer } from './components/Drawer'
@@ -80,6 +81,8 @@ export {
   ButtonGroupItem,
   CardFrame,
   Checkbox,
+  DataList,
+  DataListItem,
   DatePicker,
   DATEPICKER_PLACEMENT,
   Dialog,
