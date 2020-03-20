@@ -1,3 +1,4 @@
+
 // Forward the config so the consumer can set the variables
 // when importing the framework.
 @forward "src/config";
@@ -42,6 +43,7 @@
 @use "src/components/card-frame";
 @use "src/components/checkbox";
 @use "src/components/container";
+@use "src/components/data-list";
 @use "src/components/date-picker";
 @use "src/components/dialog";
 @use "src/components/drawer";
