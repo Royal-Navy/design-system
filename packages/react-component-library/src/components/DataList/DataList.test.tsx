@@ -31,4 +31,34 @@ describe('DataList', () => {
       expect(linkElements).toHaveLength(3)
     })
   })
+
+  describe('when collapsible', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <DataList title="title" isCollapsible>
+          <DataListItem description="One">1</DataListItem>
+          <DataListItem description="Two">2</DataListItem>
+          <DataListItem description="Three">3</DataListItem>
+        </DataList>
+      )
+    })
+
+    it('should hide the items', () => {
+      expect(wrapper.queryByTestId('data-list').classList).not.toContain('is-expanded')
+    })
+
+    it('should render the badge', () => {
+      expect(wrapper.queryByTestId('badge')).toHaveTextContent('3')
+    })
+
+    describe('when the header is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('data-list-header').click()
+      })
+
+      it('should show the items', () => {
+        expect(wrapper.queryByTestId('data-list').classList).toContain('is-expanded')
+      })
+    })
+  })
 })
