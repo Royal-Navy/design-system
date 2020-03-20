@@ -10,5 +10,4 @@ update_configs:
       - "thyhjwb6"
 
     default_labels:
-      - "devops"
-      - "automation"
+      - "Type: Devops"
