@@ -49,9 +49,9 @@
     "lint-staged": "lerna run --parallel lint-staged",
     "test": "lerna run --parallel test",
     "storybook:static": "lerna run --parallel storybook:static",
-    "lerna:prerelease": "lerna version --force-publish=* --conventional-prerelease=* --tag-version-prefix='' --conventional-commits --no-changelog --amend",
-    "lerna:version": "yarn lerna:create-release && yarn lerna:fix-links",
-    "lerna:create-release": "lerna version --force-publish=* --tag-version-prefix='' --conventional-commits --conventional-graduate --create-release github",
+    "lerna:prerelease": "yarn lerna:run-version --conventional-prerelease=* --no-changelog -m \"chore(prerelease): %v [skip ci]\"",
+    "lerna:version": "yarn lerna:run-version --conventional-graduate --create-release github -m \"chore(release): %v\" && yarn lerna:fix-links",
+    "lerna:run-version": "lerna version --force-publish=* --conventional-commits --tag-version-prefix=''",
     "lerna:fix-links": "node ./scripts/release-notes/fix-links.js Royal-Navy standards-toolkit"
   },
   "husky": {
