@@ -1,5 +1,5 @@
 import React  from 'react'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 
 import { useFocus } from '../../hooks/useFocus'
@@ -46,7 +46,7 @@ const TextInput: React.FC<InputProps> = props => {
     onChange,
     onBlur,
     footnote,
-    id = uuid(),
+    id = uuidv4(),
     label,
     placeholder = '',
     startAdornment,

@@ -1,5 +1,5 @@
 import React, { TextareaHTMLAttributes } from 'react'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 
 import { useFocus } from '../../hooks/useFocus'
@@ -19,7 +19,7 @@ export const TextArea: React.FC<InputProps> = props => {
     className = '',
     isDisabled = false,
     footnote,
-    id = uuid(),
+    id = uuidv4(),
     label,
     name,
     onBlur,

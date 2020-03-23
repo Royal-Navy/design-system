@@ -1,5 +1,5 @@
 import React from 'react'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 import { Link } from '../index'
 import NavItem from './NavItem'
@@ -26,7 +26,7 @@ function renderMenu(LinkComponent: any, navItems: any[]) {
         }
 
         return (
-          <NavItem key={uuid()} hasChildren={hasChildren}>
+          <NavItem key={uuidv4()} hasChildren={hasChildren}>
             <LinkComponent
               className={`rn-nav__item ${active ? 'is-active' : ''}`}
               {...item}
