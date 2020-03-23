@@ -3329,10 +3329,10 @@
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-transform-svg-component/-/babel-plugin-transform-svg-component-4.2.0.tgz#5f1e2f886b2c85c67e76da42f0f6be1b1767b697"
   integrity sha512-hYfYuZhQPCBVotABsXKSCfel2slf/yvJY8heTVX1PCTaq/IgASq1IyxPPKJ0chWREEKewIU/JMSsIGBtK1KKxw==
 
-"@svgr/babel-plugin-transform-svg-component@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-transform-svg-component/-/babel-plugin-transform-svg-component-5.0.1.tgz#31c7c7ad82f12ae09df14bbf9e3ac42a694b0f98"
-  integrity sha512-TYJ5L0QJgWqeMnuc8GEVy2jorwj/jp7y/mGLPwJhNrvrtAuVN7wEvc/Dzi1o1krsKKN7h6WpW/w3AQ6Na7qYEw==
+"@svgr/babel-plugin-transform-svg-component@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-transform-svg-component/-/babel-plugin-transform-svg-component-5.3.0.tgz#a75ab70cba06c3cdd0a5b2de9ea81466e2ffdb06"
+  integrity sha512-x+XT8iqm81xRado8GLqDg5eUni8KbgTooqLvVZNUey2s8QBWXy7RbzJP6VX5WB9LgfbA7en6ka1/GfRUHyNhWg==
 
 "@svgr/babel-preset@^4.3.3":
   version "4.3.3"
@@ -3348,10 +3348,10 @@
     "@svgr/babel-plugin-transform-react-native-svg" "^4.2.0"
     "@svgr/babel-plugin-transform-svg-component" "^4.2.0"
 
-"@svgr/babel-preset@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@svgr/babel-preset/-/babel-preset-5.0.1.tgz#16aff48213b83573c2b438457c60a79dc4522e6b"
-  integrity sha512-V2u6rAHLD//0xu+p/Il6laOLfuU5ySpaU1t2HBBXsRp6G9GTTNpAjxUw0iRulfd56AoWcr2j+Fap/J1yz/cx0w==
+"@svgr/babel-preset@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@svgr/babel-preset/-/babel-preset-5.3.0.tgz#98f4c79b13b496fa55645b92448e59afd565f57b"
+  integrity sha512-VQPa3czStMhaDdOpGtzyVwWMZPbe437ocTGtXoa8R/iLTDYLD9BwyQLZZMPglKRBVaWJxqAVA8kbyFJQ9ahVdw==
   dependencies:
     "@svgr/babel-plugin-add-jsx-attribute" "^5.0.1"
     "@svgr/babel-plugin-remove-jsx-attribute" "^5.0.1"
@@ -3360,20 +3360,20 @@
     "@svgr/babel-plugin-svg-dynamic-title" "^5.0.1"
     "@svgr/babel-plugin-svg-em-dimensions" "^5.0.1"
     "@svgr/babel-plugin-transform-react-native-svg" "^5.0.1"
-    "@svgr/babel-plugin-transform-svg-component" "^5.0.1"
+    "@svgr/babel-plugin-transform-svg-component" "^5.3.0"
 
 "@svgr/cli@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@svgr/cli/-/cli-5.1.0.tgz#0658745a9d30b5f200349106bb29987f7b05db00"
-  integrity sha512-mdC+MK3LS3txNU7+iZz0+zVabcCgVzvnSqCzWzSuWX7f5cayHZsrJhQgavKqAuLRA3Jp9tZ4oF6b7Os7CVAk8w==
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@svgr/cli/-/cli-5.3.0.tgz#377cb63e3d633810b44e59d56eb1b68e1d1bb6ec"
+  integrity sha512-pQe/Rw8IHXUtx/3Iq8YNWchKoDcLEpMFdcu1SZl1Mc+UJV/Y9IPe1SDDyO+AdfIB+BMYnOLo9xhXyC+Ozhksxg==
   dependencies:
-    "@svgr/core" "^5.0.1"
-    "@svgr/plugin-jsx" "^5.0.1"
-    "@svgr/plugin-prettier" "^5.0.1"
-    "@svgr/plugin-svgo" "^5.1.0"
+    "@svgr/core" "^5.3.0"
+    "@svgr/plugin-jsx" "^5.3.0"
+    "@svgr/plugin-prettier" "^5.3.0"
+    "@svgr/plugin-svgo" "^5.3.0"
     camelcase "^5.3.1"
     chalk "^3.0.0"
-    commander "^4.0.1"
+    commander "^5.0.0"
     dashify "^2.0.0"
     glob "^7.1.4"
     output-file-sync "^2.0.1"
@@ -3387,12 +3387,12 @@
     camelcase "^5.3.1"
     cosmiconfig "^5.2.1"
 
-"@svgr/core@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@svgr/core/-/core-5.0.1.tgz#b7ec46665de21248b650fe94a2325a30b25569a9"
-  integrity sha512-F/HXJpKbN6Cab31ngiSFiUXYV9y+yiJaDaOZuc7Yqzc19+ncIrM+wSKoytjwcwc+Haj8gvEHsPqRX9L4yM1ftA==
+"@svgr/core@^5.0.1", "@svgr/core@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@svgr/core/-/core-5.3.0.tgz#fc49d29596daffd739528d76cf9de26ac0548094"
+  integrity sha512-ijUF5bLsK4xA0hmg9GEEeFC35LPYcIkONmQLCgjW3NDTf0eRBgCCm+ZZFdeDTYnkNeh+fFOfHEkv7U3tEbJnZQ==
   dependencies:
-    "@svgr/plugin-jsx" "^5.0.1"
+    "@svgr/plugin-jsx" "^5.3.0"
     camelcase "^5.3.1"
     cosmiconfig "^6.0.0"
 
@@ -3420,23 +3420,23 @@
     "@svgr/hast-util-to-babel-ast" "^4.3.2"
     svg-parser "^2.0.0"
 
-"@svgr/plugin-jsx@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@svgr/plugin-jsx/-/plugin-jsx-5.0.1.tgz#a60b20983bef86fc021554f365b88d88c45300ea"
-  integrity sha512-9mEinzosJshc/VdLqVkoBZQgs2d+ASbL61sX/2XCxcJ+/81KXdZcxmxSycJN37BvlM7F5fuj2ZF7IZwZ7ZOKaQ==
+"@svgr/plugin-jsx@^5.0.1", "@svgr/plugin-jsx@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@svgr/plugin-jsx/-/plugin-jsx-5.3.0.tgz#6452bc3adab0d6e83d211c49bd5d539f93c28ca8"
+  integrity sha512-duJFQ99ZvIXvxJmEhV/8GoKnPrAMOuK7k+lVyepRYHmR0BZr33RupjpApdleU29teXcJO5oMHYsviiHRCQcU9Q==
   dependencies:
     "@babel/core" "^7.7.5"
-    "@svgr/babel-preset" "^5.0.1"
+    "@svgr/babel-preset" "^5.3.0"
     "@svgr/hast-util-to-babel-ast" "^5.0.1"
     svg-parser "^2.0.2"
 
-"@svgr/plugin-prettier@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@svgr/plugin-prettier/-/plugin-prettier-5.0.1.tgz#4522e5d457c1b893b6ed19094ce9c95c7506b737"
-  integrity sha512-d74rQ7RQZ8bFsbgF9fGaWdMYkQtZK6NBbTqNfHTtqpvjjDG4+GKLFiXr0o8axwUcMoP2koTntCA7kxI4M6MvKg==
+"@svgr/plugin-prettier@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@svgr/plugin-prettier/-/plugin-prettier-5.3.0.tgz#4ae6395b7aa56473c789421d7fc6cf502877fd96"
+  integrity sha512-TyIgFuox1L+tm57cBC6CzTrQ/5Uw0cuuu+/NXv3zN84pOaugLHCoaF56raYL23SUqOQnUaxuJFEE8YvbXm/tJQ==
   dependencies:
     merge-deep "^3.0.2"
-    prettier "^1.17.1"
+    prettier "^2.0.1 || ^1.19.1"
 
 "@svgr/plugin-svgo@^4.3.1":
   version "4.3.1"
@@ -3447,10 +3447,10 @@
     merge-deep "^3.0.2"
     svgo "^1.2.2"
 
-"@svgr/plugin-svgo@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@svgr/plugin-svgo/-/plugin-svgo-5.1.0.tgz#6939223f90581cd503b42893e795d659dbd7f7c4"
-  integrity sha512-yj7e6F6nlMZyKe/uezrwS8ZJ6a/NRbQkuJV5yNdnottd9FiWQKG4mkLmb3YHas3rzfv5WBJHf1NU2p58/v01MA==
+"@svgr/plugin-svgo@^5.1.0", "@svgr/plugin-svgo@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@svgr/plugin-svgo/-/plugin-svgo-5.3.0.tgz#a33d45ecd64cb2c1adaab9196faddc10022552a7"
+  integrity sha512-rQw558t/pPPA/aWrazLDt3xIuxh9zDuUcQUeR8EO6yiYftkjT7My1MLPz1pha1LhkJCR1ug83fp+TPRYkV9EIQ==
   dependencies:
     cosmiconfig "^6.0.0"
     merge-deep "^3.0.2"
@@ -6468,6 +6468,11 @@ commander@^4.0.0, commander@^4.0.1:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.0.tgz#545983a0603fe425bc672d66c9e3c89c42121a83"
   integrity sha512-NIQrwvv9V39FHgGFm36+U9SMQzbiHvU79k+iADraJTpmrFFfx7Ds0IvDoAdZsDrknlkRk14OYoWXb57uTh7/sw==
+
+commander@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-5.0.0.tgz#dbf1909b49e5044f8fdaf0adc809f0c0722bdfd0"
+  integrity sha512-JrDGPAKjMGSP1G0DUoaceEJ3DZgAfr/q6X7FVk4+U5KxUSKviYGM2k6zWkfyyBHy5rAtzgYJFa1ro2O9PtoxwQ==
 
 commander@~2.19.0:
   version "2.19.0"
@@ -14363,25 +14368,10 @@ minimist-options@^4.0.1:
     arrify "^1.0.1"
     is-plain-obj "^1.1.0"
 
-minimist@0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
-  integrity sha1-hX/Kv8M5fSYluCKCYuhqp6ARsF0=
-
-minimist@1.1.x:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.1.3.tgz#3bedfd91a92d39016fcfaa1c681e8faa1a1efda8"
-  integrity sha1-O+39kaktOQFvz6ocaB6Pqhoe/ag=
-
-minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
-  integrity sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
-
-minimist@~0.0.1:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
-  integrity sha1-3j+YVD2/lggr5IrRoMfNqDYwHc8=
+minimist@0.0.8, minimist@1.1.x, minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.5, minimist@~0.0.1:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
+  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
 
 minipass@^2.3.5, minipass@^2.6.0, minipass@^2.8.6, minipass@^2.9.0:
   version "2.9.0"
@@ -16859,10 +16849,15 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^1.17.1, prettier@^1.19.1:
+prettier@^1.19.1:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
   integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
+
+"prettier@^2.0.1 || ^1.19.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.1.tgz#3f00ac71263be34684b2b2c8d7e7f63737592dac"
+  integrity sha512-piXGBcY1zoFOG0MvHpNE5reAGseLmaCRifQ/fmfF49BcYkInEs/naD/unxGNAeOKFA5+JxVrPyMvMlpzcd20UA==
 
 pretty-bytes@^5.1.0, pretty-bytes@^5.3.0:
   version "5.3.0"
