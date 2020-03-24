@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 import TableCell from './table-cell'
 
@@ -10,7 +10,7 @@ const TableRow = ({ cells }) => {
       {Object.values(cells).map((value, index) => {
         return (
           <TableCell
-            key={uuid()}
+            key={uuidv4()}
             column={Object.keys(cells)[index]}
             content={value}
           />

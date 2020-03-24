@@ -1,12 +1,12 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 const Links = ({ links }) => (
   <ul className="rn-links">
     {links.map(({ label, to }) => (
-      <li className="rn-links__item" key={uuid()}>
+      <li className="rn-links__item" key={uuidv4()}>
         <Link className="rn-links__link" to={to}>
           {label}
         </Link>

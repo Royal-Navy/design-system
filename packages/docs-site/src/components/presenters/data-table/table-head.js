@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 import DownArrowIcon from './images/DownArrowIcon'
 
@@ -10,7 +10,7 @@ const TableHead = ({ headings, onClickHeading }) => {
       <tr>
         {headings.map(heading => {
           return (
-            <th key={uuid()} scope="col" className="data-table__heading">
+            <th key={uuidv4()} scope="col" className="data-table__heading">
               {heading}
               <button
                 className="data-table__btn-sort"
