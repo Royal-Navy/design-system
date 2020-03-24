@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://thyhjwb6.github.com/Royal-Navy/standards-toolkit/compare/2.2.1...2.3.0) (2020-03-24)
+
+
+### Bug Fixes
+
+* Remove SVGR generated icon-library exports ([#723](https://thyhjwb6.github.com/Royal-Navy/standards-toolkit/issues/723)) ([335b8c4](https://thyhjwb6.github.com/Royal-Navy/standards-toolkit/commit/335b8c4c6bb88e3e633b8d8ab2e0a87e47957b68))
+
+
+
+
+
 ## [2.2.2](https://thyhjwb6.github.com/Royal-Navy/standards-toolkit/compare/2.2.1...2.2.2) (2020-03-12)
 
 
