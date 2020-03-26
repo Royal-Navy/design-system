@@ -42,7 +42,7 @@ There is the [Coffee app](https://github.com/Royal-Navy/coffee) which contains e
 The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using NELSON styles and components.
 
 ## Contributing
-The [contributing guide](https://github.com/Royal-Navy/standards-toolkit/blob/master/docs/contributing.md) resources presents information about our development process. 
+The [contributing guide](https://github.com/Royal-Navy/standards-toolkit/blob/master/docs/contributing.md) resource presents information about our development process. 
 
 ## Changelog
 If you have recently updated then read the [release notes](https://github.com/Royal-Navy/standards-toolkit/releases)
