@@ -4,6 +4,7 @@
   display: inline-flex;
   flex-direction: column;
   position: relative;
+  z-index: 0;
   margin: f.spacing("6") 0;
   padding: 0;
   border: 0;
