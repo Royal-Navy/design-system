@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 726 203">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v167H.5z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="197">Anatomy of the Progress Indicator component.</tspan>
+    </text>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" transform="translate(440 93)">
+      <tspan x="26.27" y="14">Loading label</tspan>
+    </text>
+    <g transform="translate(440 93)">
+      <rect width="19.2" height="18.4" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="6.82" y="12.2">2</tspan>
+      </text>
+    </g>
+    <text fill="#233745" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500" transform="translate(145 67)">
+      <tspan x=".48" y="14">Indicator Animation</tspan>
+    </text>
+    <g transform="translate(277 67)">
+      <rect width="19.2" height="18.4" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="6.82" y="12.2">1</tspan>
+      </text>
+    </g>
+    <path fill="#B8C7D2" d="M403 102h37v1h-37z"/>
+    <path fill="#B8C7D2" d="M296 76h37v1h-37z"/>
+    <circle cx="403" cy="102.5" r="3" fill="#3E5667"/>
+    <circle cx="336" cy="76.5" r="3" fill="#3E5667"/>
+    <g>
+      <text fill="#3E5667" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(338 96)">
+        <tspan x=".27" y="10">LOADING…</tspan>
+      </text>
+      <g transform="translate(350 64)">
+        <circle cx="12" cy="12" r="12"/>
+        <path fill="#B5C8D4" fill-rule="nonzero" d="M12 0a12 12 0 0112 12h-1.9A10.1 10.1 0 0012 1.9V0zM1.9 12A10.1 10.1 0 0012 22.1V24A12 12 0 010 12h1.9z"/>
+        <circle cx="12" cy="12" r="5.05" fill="#6F8A9B" fill-rule="nonzero"/>
+      </g>
+    </g>
+  </g>
+</svg>
