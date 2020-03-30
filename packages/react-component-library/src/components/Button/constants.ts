@@ -13,6 +13,11 @@ const BUTTON_VARIANT = {
 
 const BUTTON_COLOR = {
   DANGER: 'danger',
-}
+} as const
 
-export { BUTTON_SIZE, BUTTON_VARIANT, BUTTON_COLOR }
+const BUTTON_ICON_POSITION = {
+  LEFT: 'left',
+  RIGHT: 'right'
+} as const
+
+export { BUTTON_SIZE, BUTTON_VARIANT, BUTTON_COLOR, BUTTON_ICON_POSITION }
