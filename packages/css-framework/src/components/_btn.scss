@@ -190,6 +190,15 @@ $btn-focus-width: 0.2rem;
   }
 }
 
+.rn-btn--icon-left {
+  flex-direction: row-reverse;
+
+  .rn-btn__icon {
+    margin-left: unset;
+    margin-right: f.spacing("4");
+  }
+}
+
 fieldset:disabled a.rn-btn,
 .rn-btn.rn-btn--disabled,
 .rn-btn[disabled],

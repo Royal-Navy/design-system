@@ -204,6 +204,13 @@ source={`<Button onClick={action} icon={<TriangleDown />}>Closed</Button>
     Description: 'Icon to display to the right of text in the button. Accepts any Node but ideally would be an image or svg tag',
   },
   {
+    Name: 'iconPlacement',
+    Type: 'string (left/right)',
+    Required: 'False',
+    Default: 'right',
+    Description: 'This specifies which side of the button text the icon should be rendered',
+  },
+  {
     Name: 'onClick',
     Type: '(event: React.SyntheticEvent):void',
     Required: 'False',

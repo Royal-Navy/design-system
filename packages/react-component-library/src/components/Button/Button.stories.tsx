@@ -9,6 +9,7 @@ import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT } from './constants'
 
 const stories = storiesOf('Button', module)
 const examples = storiesOf('Button/Examples', module)
+const iconExamples = storiesOf('Button/Examples/Icon', module)
 const variantExamples = storiesOf('Button/Examples/Variants', module)
 const dangerExamples = storiesOf('Button/Examples/Danger', module)
 const defaultSizeExamples = storiesOf('Button/Examples/Sizes/Default', module)
@@ -83,12 +84,26 @@ dangerExamples.add('Tertiary', () => (
   </Button>
 ))
 
-examples.add('Icons', () => (
+iconExamples.add('Left', () => (
   <>
     <Button
       variant="primary"
       onClick={action('Decreasing brightness')}
       icon={<IconBrightnessLow />}
+      iconPosition="left"
+    >
+      Button
+    </Button>
+  </>
+))
+
+iconExamples.add('Right', () => (
+  <>
+    <Button
+      variant="primary"
+      onClick={action('Decreasing brightness')}
+      icon={<IconBrightnessLow />}
+      iconPosition="right"
     >
       Button
     </Button>
