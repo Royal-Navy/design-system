@@ -28,6 +28,7 @@ import { NumberInput } from './components/NumberInput'
 import Pagination from './components/Pagination'
 import PhaseBanner from './components/PhaseBanner'
 import { Popover, POPOVER_PLACEMENT } from './components/Popover'
+import { ProgressIndicator } from './components/ProgressIndicator'
 import { Select } from './components/Select'
 import Switch from './components/Switch/Switch'
 import { RangeSlider } from './components/RangeSlider'
@@ -102,6 +103,7 @@ export {
   PhaseBanner,
   Popover,
   POPOVER_PLACEMENT,
+  ProgressIndicator,
   Switch,
   RangeSlider,
   ResponsiveSwitch,

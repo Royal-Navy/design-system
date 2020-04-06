@@ -24,6 +24,7 @@ import { NumberInput } from './NumberInput'
 import Pagination from './Pagination'
 import PhaseBanner from './PhaseBanner'
 import { Popover, POPOVER_PLACEMENT } from './Popover'
+import { ProgressIndicator } from './ProgressIndicator'
 import Radio from './Radio'
 import { ScrollableNav, ScrollableNavItem } from './ScrollableNav'
 import { Searchbar } from './Searchbar'
@@ -72,6 +73,7 @@ export {
   PhaseBanner,
   Popover,
   POPOVER_PLACEMENT,
+  ProgressIndicator,
   Radio,
   ScrollableNav,
   ScrollableNavItem,

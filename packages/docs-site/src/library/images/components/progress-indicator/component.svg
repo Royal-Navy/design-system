@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 726 213">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" stroke="#B8C7D2" d="M.5.5h725v177H.5z"/>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="207">The Progress Indicator component </tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Bold, Lato" font-size="10" font-weight="bold" transform="translate(337 101)">
+      <tspan x=".27" y="10">LOADING…</tspan>
+    </text>
+    <g transform="translate(349 69)">
+      <circle cx="12" cy="12" r="12"/>
+      <path fill="#B5C8D4" fill-rule="nonzero" d="M12 0a12 12 0 0112 12h-1.9A10.1 10.1 0 0012 1.9V0zM1.9 12A10.1 10.1 0 0012 22.1V24A12 12 0 010 12h1.9z"/>
+      <circle cx="12" cy="12" r="5.05" fill="#6F8A9B" fill-rule="nonzero"/>
+    </g>
+  </g>
+</svg>
