@@ -5,5 +5,6 @@ module.exports = {
       '<rootDir>/jest/__mocks__/fileMock.js',
   },
   testMatch: ['**/?(*.)(spec|test).ts?(x)'],
-  setupFiles: ['<rootDir>/jest/setupTests.ts'],
+  setupFiles: ['<rootDir>/jest/setupTests.js'],
+  globalSetup: '<rootDir>/jest/globalSetup.js',
 }
