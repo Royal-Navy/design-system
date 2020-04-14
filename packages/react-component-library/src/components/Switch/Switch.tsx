@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import { getKey } from '../../helpers'
 
 import { SwitchType, OptionType } from '../../types/Switch'
 
@@ -32,7 +33,7 @@ const Switch: React.FC<SwitchType> = ({
       <div className="rn-switch__container">
         {options.map(({ label: optionLabel, value: optionValue }) => (
           <label
-            key={uuidv4()}
+            key={getKey('switch-option', label)}
             className={`rn-switch__option ${
               active === optionLabel ? 'is-active' : ''
             }`}
