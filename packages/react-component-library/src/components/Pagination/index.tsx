@@ -1,6 +1,6 @@
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid'
 import { usePageChange, BUMP_LEFT, BUMP_RIGHT } from './usePageChange'
+import { getKey } from '../../helpers'
 
 interface PaginationProps {
   onChange?: (currentPage: number, totalPages: number) => void
@@ -24,7 +24,10 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className="rn-pagination">
       <ol className="rn-pagination__list">
-        <li key={uuidv4()} className="rn-pagination__item">
+        <li
+          key={getKey('pagination-item', 'previous')}
+          className="rn-pagination__item"
+        >
           <button
             disabled={currentPage === 1}
             className="rn-pagination__button"
@@ -39,14 +42,21 @@ const Pagination: React.FC<PaginationProps> = ({
         {pageNumbers().map((page: string | number) => {
           if ([BUMP_LEFT, BUMP_RIGHT].includes(String(page))) {
             return (
-              <li key={uuidv4()} className="rn-pagination__item">
+              <li
+                key={getKey('pagination-item', page)}
+                className="rn-pagination__item"
+              >
                 {page}
               </li>
             )
           }
 
           return (
-            <li key={uuidv4()} className="rn-pagination__item" data-testid="page">
+            <li
+              key={getKey('pagination-item', page)}
+              className="rn-pagination__item"
+              data-testid="page"
+            >
               <button
                 className={`rn-pagination__button ${
                   page === currentPage ? 'is-active' : ''
@@ -61,7 +71,10 @@ const Pagination: React.FC<PaginationProps> = ({
             </li>
           )
         })}
-        <li key={uuidv4()} className="rn-pagination__item">
+        <li
+          key={getKey('pagination-item', 'next')}
+          className="rn-pagination__item"
+        >
           <button
             disabled={currentPage === totalPages}
             className="rn-pagination__button"

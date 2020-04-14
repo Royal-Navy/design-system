@@ -1,10 +1,10 @@
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import { getKey } from '../../helpers'
 import { NavItem } from '../../types/Nav'
 
 export const ScrollableNavItem: React.FC<NavItem> = ({ isActive, link }) => (
   <li
-    key={uuidv4()}
+    key={getKey('scrollable-nav-item', link.toString())}
     className={`rn-scrollable-nav__item ${isActive ? 'is-active' : ''}`}
     data-testid={isActive ? 'tab-active' : 'tab'}
   >
