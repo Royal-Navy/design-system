@@ -1,6 +1,6 @@
 {
   "name": "@royalnavy/icon-library",
-  "version": "2.4.0-alpha.15",
+  "version": "2.4.0-alpha.16",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "author": "NELSON",
