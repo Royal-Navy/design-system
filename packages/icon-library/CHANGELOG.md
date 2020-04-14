@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://thyhjwb6.github.com/Royal-Navy/standards-toolkit/compare/2.3.0...2.4.0) (2020-04-14)
+
+
+### Features
+
+* **icon library:** Update README ([86bfb3b](https://thyhjwb6.github.com/Royal-Navy/standards-toolkit/commit/86bfb3b2dac3a851724d4a2cb64bb8d90cdfe430))
+* **progress indicator:** Add default component ([0933b04](https://thyhjwb6.github.com/Royal-Navy/standards-toolkit/commit/0933b04d7b2bad947c1ab8a997e6407962e4961d))
+
+
+
+
+
 # [2.3.0](https://thyhjwb6.github.com/Royal-Navy/standards-toolkit/compare/2.2.1...2.3.0) (2020-03-24)
 
 
