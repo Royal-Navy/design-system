@@ -16,6 +16,9 @@
             "modules": false
           }
         ]
+      ],
+      "plugins": [
+        "babel-plugin-jsx-remove-data-test-id"
       ]
     },
     "cjs": {
@@ -23,6 +26,9 @@
         [
           "@babel/preset-env"
         ]
+      ],
+      "plugins": [
+        "babel-plugin-jsx-remove-data-test-id"
       ]
     },
     "test": {
