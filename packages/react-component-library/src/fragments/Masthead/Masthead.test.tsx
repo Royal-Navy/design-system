@@ -1,6 +1,12 @@
+// @ts-nocheck
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, render, RenderResult, wait } from '@testing-library/react'
+import {
+  fireEvent,
+  render,
+  RenderResult,
+  waitFor,
+} from '@testing-library/react'
 
 import { Link } from '../../index'
 import { Masthead, MastheadProps } from './Masthead'
@@ -136,11 +142,11 @@ describe('Masthead', () => {
           })
 
           it('should use the onSearch method passed to the masthead to search', async () => {
-            await wait(() => expect(props.onSearch).toHaveBeenCalledTimes(1))
+            await waitFor(() => expect(props.onSearch).toHaveBeenCalledTimes(1))
           })
 
           it('should hide the searchbar from view', async () => {
-            await wait(() =>
+            await waitFor(() =>
               expect(wrapper.queryByTestId('searchbar')).toBeNull()
             )
           })
@@ -221,7 +227,7 @@ describe('Masthead', () => {
         })
 
         it('should include the notification content sent to it', async () => {
-          await wait(() =>
+          await waitFor(() =>
             expect(wrapper.getByTestId('notifications')).toBeInTheDocument()
           )
         })
@@ -236,7 +242,7 @@ describe('Masthead', () => {
           beforeEach(async () => {
             const button = wrapper.queryByTestId('notification-button')
 
-            await wait(() => wrapper.getByTestId('notifications'))
+            await waitFor(() => wrapper.getByTestId('notifications'))
 
             fireEvent(
               button,
@@ -248,7 +254,7 @@ describe('Masthead', () => {
           })
 
           it('should remove the rule on the wrapper so mobile scrolling is enabled again', async () => {
-            await wait(() =>
+            await waitFor(() =>
               expect(wrapper.queryByTestId('masthead')).not.toHaveClass(
                 'rn-masthead--show-notifications'
               )

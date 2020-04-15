@@ -1,10 +1,11 @@
+// @ts-nocheck
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import {
   fireEvent,
   render,
   RenderResult,
-  waitForElement,
+  waitFor,
   waitForElementToBeRemoved,
 } from '@testing-library/react'
 
@@ -91,7 +92,7 @@ describe('NotificationPanel', () => {
 
         button.click()
 
-        return waitForElement(() => wrapper.queryAllByText('Thomas Stephens'))
+        return waitFor(() => wrapper.queryAllByText('Thomas Stephens'))
       })
 
       it('should blur the button', () => {
@@ -135,7 +136,7 @@ describe('NotificationPanel', () => {
       beforeEach(async done => {
         wrapper.getByTestId('notification-button').click()
 
-        await waitForElement(() => wrapper.queryAllByText('Thomas Stephens'))
+        await waitFor(() => wrapper.queryAllByText('Thomas Stephens'))
 
         wrapper.getByText('View all notifications').parentElement.click()
 
@@ -170,7 +171,7 @@ describe('NotificationPanel', () => {
       beforeEach(() => {
         wrapper.getByTestId('notification-button').click()
 
-        return waitForElement(() => wrapper.queryAllByText('Thomas Stephens'))
+        return waitFor(() => wrapper.queryAllByText('Thomas Stephens'))
       })
 
       it('should default to showing notifications on the right', () => {
@@ -197,7 +198,7 @@ describe('NotificationPanel', () => {
       beforeEach(() => {
         wrapper.getByTestId('notification-button').click()
 
-        return waitForElement(() => wrapper.queryAllByText('Thomas Stephens'))
+        return waitFor(() => wrapper.queryAllByText('Thomas Stephens'))
       })
 
       it('should default to showing notifications on the right', () => {
@@ -224,7 +225,7 @@ describe('NotificationPanel', () => {
 
       wrapper.getByTestId('notification-button').click()
 
-      await waitForElement(() => wrapper.queryAllByText('Thomas Stephens'))
+      await waitFor(() => wrapper.queryAllByText('Thomas Stephens'))
 
       fireEvent(
         document,
