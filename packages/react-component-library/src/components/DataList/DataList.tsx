@@ -19,7 +19,7 @@ export const DataList: React.FC<DataListProps> = ({
   title,
   children,
 }) => {
-  const [expanded, setExpanded] = useState()
+  const [expanded, setExpanded] = useState(false)
   const classes = classNames('rn-data-list', className, {
     'is-collapsible': isCollapsible,
     'is-expanded': expanded,
