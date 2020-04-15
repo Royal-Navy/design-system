@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/Royal-Navy/standards-toolkit/compare/2.3.0...2.4.0) (2020-04-14)
+
+
+### Bug Fixes
+
+* **date picker:** Scope label z-index to component instance ([a09ae5e](https://github.com/Royal-Navy/standards-toolkit/commit/a09ae5eeb8947336d146eecc476348ffeb90b9ec))
+
+
+### Features
+
+* **component library:** Add ability to place icon to left of button ([b1862d9](https://github.com/Royal-Navy/standards-toolkit/commit/b1862d954708efac4fa8f3cc1c4eb2a2982385ef))
+* **progress indicator:** Add default component ([0933b04](https://github.com/Royal-Navy/standards-toolkit/commit/0933b04d7b2bad947c1ab8a997e6407962e4961d))
+
+
+
+
+
 # [2.3.0](https://github.com/Royal-Navy/standards-toolkit/compare/2.2.1...2.3.0) (2020-03-24)
 
 
