@@ -1,10 +1,11 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import {
   render,
   RenderResult,
   fireEvent,
-  waitForElement,
+  waitFor,
 } from '@testing-library/react'
 
 import { Button, ButtonProps } from '../Button'
@@ -191,7 +192,7 @@ describe('Modal', () => {
         beforeEach(() => {
           wrapper.getByText('Show').click()
 
-          return waitForElement(() => wrapper.queryAllByText('Hide'))
+          return waitFor(() => wrapper.queryAllByText('Hide'))
         })
 
         it('should be open', () => {
@@ -205,7 +206,7 @@ describe('Modal', () => {
           beforeEach(() => {
             wrapper.getByText('Hide').click()
 
-            return waitForElement(() => wrapper.queryAllByText('Show'))
+            return waitFor(() => wrapper.queryAllByText('Show'))
           })
 
           it('should be closed again', () => {
