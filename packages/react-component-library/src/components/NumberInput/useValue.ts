@@ -19,7 +19,7 @@ function transformEvent(name: string, newValue: number) {
 
 export function useValue(value: number) {
   const [committedValue, setCommittedValue] = useState(value)
-  const [nextValue, setNextValue] = useState()
+  const [nextValue, setNextValue] = useState<number>()
 
   const displayValue = useMemo(() => {
     return nextValue || committedValue
