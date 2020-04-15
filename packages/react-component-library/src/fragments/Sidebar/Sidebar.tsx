@@ -17,7 +17,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   hasUnreadNotification,
   user,
 }) => {
-  const [open, setOpen] = useState()
+  const [open, setOpen] = useState(false)
   const classes = classNames('rn-sidebar', {
     'is-open': open,
   })
