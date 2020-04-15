@@ -263,17 +263,44 @@ workflows:
             - test_visual_regression
   build_test_and_deploy_latest:
     jobs:
+      - security_audit:
+          filters:
+            branches:
+              only:
+                - latest
+      - lint_commits:
+          filters:
+            branches:
+              only:
+                - latest
+      - lint_css-framework:
+          filters:
+            branches:
+              only:
+                - latest
+      - lint_react-component-library:
+          filters:
+            branches:
+              only:
+                - latest
+      - lint_docs_site:
+          filters:
+            branches:
+              only:
+                - latest
+      - test_docs-site:
+          requires:
+            - lint_docs_site
       - test_react-component-library:
-          filters:
-            branches:
-              only:
-                - latest
-      - test_visual_regression:
-          filters:
-            branches:
-              only:
-                - latest
-      - publish_latest:
+          requires:
+            - lint_react-component-library
+      - code_climate:
           requires:
             - test_react-component-library
+      - test_visual_regression:
+          requires:
+            - test_react-component-library
+      - publish_latest:
+          requires:
+            - code_climate
             - test_visual_regression
