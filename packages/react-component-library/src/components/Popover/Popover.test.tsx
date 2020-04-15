@@ -1,8 +1,13 @@
+// @ts-nocheck
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { renderToStaticMarkup } from 'react-dom/server'
-
-import { render, RenderResult, fireEvent, wait } from '@testing-library/react'
+import {
+  render,
+  RenderResult,
+  fireEvent,
+  waitFor,
+} from '@testing-library/react'
 
 import { Popover, POPOVER_PLACEMENT } from '.'
 
@@ -54,7 +59,7 @@ describe('Popover', () => {
         })
 
         it('to not be visible to the end user', async () => {
-          await wait(() => {
+          await waitFor(() => {
             expect(wrapper.getByTestId('floating-box').classList).not.toContain(
               'is-visible'
             )

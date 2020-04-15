@@ -1,6 +1,12 @@
+// @ts-nocheck
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, render, RenderResult, wait } from '@testing-library/react'
+import {
+  fireEvent,
+  render,
+  RenderResult,
+  waitFor,
+} from '@testing-library/react'
 
 import { Tab, TabSet } from '.'
 import { SCROLL_DIRECTION } from './constants'
@@ -151,7 +157,7 @@ describe('TabSet', () => {
     ) {
       wrapper.getByTestId(`scroll-${direction}`).click()
 
-      await wait(flushPromises)
+      await waitFor(flushPromises)
     }
 
     beforeEach(() => {
