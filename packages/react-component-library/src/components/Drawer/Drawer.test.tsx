@@ -1,8 +1,15 @@
-import React from 'react'
+// @ts-nocheck
+import React, { useState } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import '@testing-library/jest-dom/extend-expect'
-import { render, RenderResult, fireEvent } from '@testing-library/react'
+import {
+  render,
+  RenderResult,
+  fireEvent,
+  waitFor,
+} from '@testing-library/react'
 
+import { Button } from '../Button'
 import { Drawer } from '.'
 
 describe('Drawer', () => {
@@ -67,6 +74,67 @@ describe('Drawer', () => {
         expect(wrapper.getByTestId('drawer-wrapper').classList).not.toContain(
           'is-open'
         )
+      })
+    })
+  })
+
+  describe('when the state is being updated externally', () => {
+    describe('and the drawer is instantiated as closed', () => {
+      beforeEach(() => {
+        const DrawerWithUpdate = () => {
+          const [isOpen, setIsOpen] = useState(false)
+
+          return (
+            <>
+              <Button
+                onClick={() => {
+                  setIsOpen(!isOpen)
+                }}
+              >
+                {isOpen ? 'Hide' : 'Show'}
+              </Button>
+              <Drawer isOpen={isOpen} onClose={onCloseSpy}>
+                {children}
+              </Drawer>
+            </>
+          )
+        }
+
+        wrapper = render(<DrawerWithUpdate />)
+      })
+
+      it('should not contain the `is-open` class', () => {
+        expect(wrapper.getByTestId('drawer-wrapper').classList).not.toContain(
+          'is-open'
+        )
+      })
+
+      describe('and the button is clicked', () => {
+        beforeEach(() => {
+          wrapper.getByText('Show').click()
+
+          return waitFor(() => wrapper.queryAllByText('Hide'))
+        })
+
+        it('should contain the `is-open` class', () => {
+          expect(wrapper.getByTestId('drawer-wrapper').classList).toContain(
+            'is-open'
+          )
+        })
+
+        describe('and the button is clicked again', () => {
+          beforeEach(() => {
+            wrapper.getByText('Hide').click()
+
+            return waitFor(() => wrapper.queryAllByText('Show'))
+          })
+
+          it('should not contain the `is-open` class', () => {
+            expect(
+              wrapper.getByTestId('drawer-wrapper').classList
+            ).not.toContain('is-open')
+          })
+        })
       })
     })
   })

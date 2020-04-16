@@ -5,7 +5,7 @@ import { IconButtonConfirm } from '@royalnavy/icon-library'
 import { ButtonProps } from '../Button'
 import { Header } from './Header'
 import { Footer } from './Footer'
-import { useOpenClose } from './useOpenClose'
+import { useOpenClose } from '../../hooks/useOpenClose'
 
 export interface ModalProps extends ComponentWithClass {
   children?: React.ReactNode
