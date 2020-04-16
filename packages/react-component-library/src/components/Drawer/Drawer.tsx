@@ -1,37 +1,30 @@
-import React, { useState } from 'react'
+import React  from 'react'
 import classNames from 'classnames'
+import { useOpenClose } from '../../hooks/useOpenClose'
 
 interface DrawerProps extends ComponentWithClass {
   children?: React.ReactNode
-  onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
   isOpen?: boolean
+  onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
 }
 
 export const Drawer: React.FC<DrawerProps> = ({
   children,
   onClose,
-  isOpen = false,
+  isOpen,
 }) => {
-  const [drawerOpen, setDrawerOpen] = useState(isOpen)
+  const { handleOnClose, open } = useOpenClose(isOpen, onClose)
 
   const classes = classNames('rn-drawer', {
-    'is-open': drawerOpen,
+    'is-open': open,
   })
-
-  function handleClick(event: React.FormEvent<HTMLButtonElement>) {
-    setDrawerOpen(false)
-
-    if (onClose) {
-      onClose(event)
-    }
-  }
 
   return (
     <div className={classes} data-testid="drawer-wrapper">
       <div className="rn-drawer__inner">
         <button
           className="rn-drawer__close"
-          onClick={handleClick}
+          onClick={handleOnClose}
           data-testid="drawer-close"
         >
           &times;
