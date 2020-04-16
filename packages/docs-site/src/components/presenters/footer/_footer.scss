@@ -33,6 +33,13 @@
   border-color: rn.color("neutral", "100");
 }
 
+.rn-footer a {
+  &:hover {
+    text-decoration: underline;
+    color: rn.color("neutral", "white");
+  }
+}
+
 .rn-footer__meta {
   background: rn.color("action", "900");
 }
