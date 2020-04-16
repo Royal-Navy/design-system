@@ -31,7 +31,7 @@ export const Dialog: React.FC<DialogProps> = ({
   const cancelButton: ButtonProps = {
     onClick: onCancel,
     children: 'Cancel',
-    variant: 'tertiary',
+    variant: 'secondary',
   }
 
   const classes = classNames(className, {
@@ -43,22 +43,24 @@ export const Dialog: React.FC<DialogProps> = ({
     <Modal
       className={classes}
       primaryButton={confirmButton}
-      secondaryButton={cancelButton}
+      tertiaryButton={cancelButton}
       {...rest}
     >
-      {title && (
-        <span className="rn-dialog__title" data-testid="rn-dialog-title">
-          {title}
-        </span>
-      )}
-      {description && (
-        <p
-          className="rn-dialog__description"
-          data-testid="rn-dialog-description"
-        >
-          {description}
-        </p>
-      )}
+      <section className="rn-dialog__body" data-testid="dialog-body">
+        {title && (
+          <span className="rn-dialog__title" data-testid="rn-dialog-title">
+            {title}
+          </span>
+        )}
+        {description && (
+          <p
+            className="rn-dialog__description"
+            data-testid="rn-dialog-description"
+          >
+            {description}
+          </p>
+        )}
+      </section>
     </Modal>
   )
 }

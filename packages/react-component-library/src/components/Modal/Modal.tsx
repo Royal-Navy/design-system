@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { IconButtonConfirm } from '@royalnavy/icon-library'
+import { IconForward } from '@royalnavy/icon-library'
 
 import { ButtonProps } from '../Button'
 import { Header } from './Header'
@@ -28,14 +28,18 @@ export const Modal: React.FC<ModalProps> = ({
   title,
 }) => {
   const { handleOnClose, open } = useOpenClose(isOpen, onClose)
-  const classes = classNames('rn-modal', {
-    'is-open': open,
-    'is-closed': !open,
-  }, className)
+  const classes = classNames(
+    'rn-modal',
+    {
+      'is-open': open,
+      'is-closed': !open,
+    },
+    className
+  )
 
   const primaryButtonWithIcon = primaryButton && {
     ...primaryButton,
-    icon: <IconButtonConfirm data-testid="modal-primary-confirm" />,
+    icon: <IconForward data-testid="modal-primary-confirm" />,
   }
 
   return (

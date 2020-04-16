@@ -12,6 +12,7 @@ $btn-focus-width: 0.2rem;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   border: 1px solid transparent;
   border-radius: $btn-border-radius;
   outline: 0;
@@ -160,7 +161,7 @@ $btn-focus-width: 0.2rem;
 .rn-btn__icon {
   display: inline-flex;
   align-items: center;
-  margin-left: f.spacing("4");
+  margin-left: f.spacing("3");
   position: relative;
   z-index: 2;
 }
@@ -195,7 +196,7 @@ $btn-focus-width: 0.2rem;
 
   .rn-btn__icon {
     margin-left: unset;
-    margin-right: f.spacing("4");
+    margin-right: f.spacing("3");
   }
 }
 

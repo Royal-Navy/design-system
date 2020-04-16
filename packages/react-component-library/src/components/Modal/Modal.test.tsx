@@ -145,9 +145,9 @@ describe('Modal', () => {
           )
         })
 
-        it('should render tertiary button as secondary variant', () => {
+        it('should render tertiary button as tertiary variant', () => {
           expect(wrapper.queryByTestId('modal-tertiary')).toHaveClass(
-            'rn-btn--secondary'
+            'rn-btn--tertiary'
           )
         })
       })

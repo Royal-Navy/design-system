@@ -1,25 +1,64 @@
 @use "../abstracts/functions" as f;
+@use "../abstracts/mixins"as m;
 
 .rn-dialog {
   .rn-modal__main {
-    padding: f.spacing("8");
+    @include m.breakpoint("xs") {
+      width: 100%;
+      max-width: 480px;
+    }
   }
 
   .rn-modal__footer {
-    padding: f.spacing("8") 0 0 0;
-    margin-top: f.spacing("12");
+    .rn-btn {
+      display: block;
+      width: 100%;
+
+      &.rn-modal__primary-button {
+        margin-left: 0;
+      }
+
+      &.rn-modal__tertiary-button {
+        margin-top: f.spacing("4");
+        @include m.breakpoint("xs") {
+          margin-top: 0;
+        }
+      }
+
+      @include m.breakpoint("xs") {
+        width: auto;
+      }
+
+      .rn-btn__icon {
+        transform: translateY(2px);
+      }
+    }
+  }
+}
+
+.rn-dialog__body {
+  padding: f.spacing("8");
+
+  @include m.breakpoint("xs") {
+    padding: f.spacing("11") f.spacing("12");
   }
 }
 
 .rn-dialog__title {
-  display: inline-block;
-  padding: f.spacing("4") 0 0 f.spacing("4");
-  font-size: f.font-size("l");
-  color: f.color("neutral", "500");
+  display: block;
+  font-size: f.font-size("xl");
+  color: f.color("neutral", "700");
+  margin-bottom: f.spacing("4");
+  text-align: center;
+  @include m.breakpoint("xs") {
+    text-align: left;
+  }
 }
 
 .rn-dialog__description {
-  padding-left: f.spacing("4");
-  font-size: f.font-size("base");
+  font-size: f.font-size("m");
   color: f.color("neutral", "400");
+  @include m.breakpoint("s") {
+    font-size: f.font-size("base");
+  }
 }
