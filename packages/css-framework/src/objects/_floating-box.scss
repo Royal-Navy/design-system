@@ -2,7 +2,7 @@
 @use "../abstracts/functions" as f;
 
 $_floating-box-light-background: f.color("neutral", "white");
-$_floating-box-light-border: f.color("neutral", "200");
+$_floating-box-light-border: f.color("neutral", "100");
 $_floating-box-dark-background: f.color("neutral", "700");
 $_floating-box-dark-border: f.color("neutral", "700");
 $_floating-box-border-thickness: 1px;
