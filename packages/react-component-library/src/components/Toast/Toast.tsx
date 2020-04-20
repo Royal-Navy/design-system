@@ -80,11 +80,14 @@ export const Toast: React.FC<ToastProps> = ({
       }}
       data-testid="toast-wrapper"
     >
-      <div>
-        <span className="rn-toast__label">
-          {getAppearanceIcon(appearance)}
-          {label}
-        </span>
+      <div className="rn-toast__header">
+        <div className="rn-toast__title">
+          <span className="rn-toast__label">
+            {getAppearanceIcon(appearance)}
+            {label}
+          </span>
+          <span className="rn-toast__time">{time}</span>
+        </div>
         {onDismiss && (
           <button
             className="rn-toast__btn"
@@ -95,8 +98,7 @@ export const Toast: React.FC<ToastProps> = ({
           </button>
         )}
       </div>
-      <div>
-        <span className="rn-toast__time">{time}</span>
+      <div className="rn-toast__content">
         <span className="rn-toast__description">{children}</span>
       </div>
     </div>
