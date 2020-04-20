@@ -6,18 +6,23 @@ $active-border-color: f.color("action", "600");
 .rn-tab-set {
   display: flex;
   flex-flow: column;
+  background-color: f.color("neutral", "white");
 
   &.is-scrollable {
     .rn-tab-set__navigation {
       flex: 1;
       white-space: nowrap;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     .rn-tab-set__head {
       display: flex;
       flex-direction: row;
-      padding-bottom: f.spacing("4");
+      align-items: flex-end;
+      border-bottom: none;
+      position: relative;
+      z-index: 1;
+      margin-bottom: -1px;
     }
 
     .rn-tab-set__tab-item {
@@ -29,17 +34,28 @@ $active-border-color: f.color("action", "600");
       padding-right: f.spacing("2");
     }
 
+
+    .rn-tab-set__body {
+      border-top: 1px solid f.color("neutral", "200");
+    }
+
     .rn-tab-set__tab {
       width: 100%;
-      border: none;
-      height: f.spacing("13");
-      padding: unset;
-      border-radius: 6px;
-      background-color: f.color("neutral", "100");
+      padding: f.spacing("5") f.spacing("10");
+      border-radius: 4px 4px 0 0;
+      background-color: f.color("neutral", "000");
+      border: 1px solid f.color("neutral", "100");
+      border-bottom: none;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 0;
 
       &.is-active {
-        background-color: f.color("action", "300");
-        color: f.color("neutral", "000")
+        background-color: f.color("neutral", "white");
+        color: f.color("neutral", "000");
+        border: 1px solid f.color("neutral", "200");
+        border-bottom: 1px solid f.color("neutral", "white");
       }
     }
   }
@@ -50,8 +66,7 @@ $active-border-color: f.color("action", "600");
 }
 
 .rn-tab-set__scroll {
-  width: f.spacing("11");
-  height: f.spacing("14");
+  padding: f.spacing("6") f.spacing("2");
   background: f.color("neutral", "white");
   border: 1px solid f.color("neutral", "100");
   border-radius: 3px;
@@ -59,8 +74,7 @@ $active-border-color: f.color("action", "600");
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
-  align-items: center;
-  padding: unset;
+  align-self: flex-start;
 }
 
 .rn-tab-set__scroll--left {
@@ -79,7 +93,6 @@ $active-border-color: f.color("action", "600");
 
 .rn-tab-set__tab-item {
   display: inline-block;
-  margin-top: f.spacing("2");
 }
 
 .rn-tab-set__tab {
@@ -94,7 +107,7 @@ $active-border-color: f.color("action", "600");
   // default
   border: none;
   border-bottom: 4px solid transparent;
-  padding: f.spacing("8") f.spacing("12");
+  padding: f.spacing("10") f.spacing("6") f.spacing("9") f.spacing("6");
 
   & > div {
     margin: 0 auto;
@@ -105,7 +118,7 @@ $active-border-color: f.color("action", "600");
   }
 
   &.is-active {
-    color: color("neutral", "400");
+    color: f.color("neutral", "500");
     border-color: $active-border-color;
   }
 }
@@ -117,10 +130,8 @@ $active-border-color: f.color("action", "600");
 .rn-tab-set__content {
   display: none;
 
-  /**
-   * Fix to ensure the first level SVGs in a content document
-   * have appropriate padding underneath their headings.
-   */
+  // Fix to ensure the first level SVGs in a content document
+  // have appropriate padding underneath their headings.
   > svg {
     width: 100%;
     margin-top: f.spacing("8");
@@ -145,7 +156,6 @@ $active-border-color: f.color("action", "600");
 
       .rn-tab-set__tab {
         width: auto;
-        padding: 0 f.spacing("12");
       }
     }
   }
