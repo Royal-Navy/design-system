@@ -4,7 +4,7 @@
     "node": ">=10.13.0 <13"
   },
   "description": "The documentation site for royalnavy.io",
-  "version": "2.5.0-alpha.3",
+  "version": "2.5.0-alpha.4",
   "author": "NELSON",
   "license": "Apache-2.0",
   "scripts": {
@@ -39,9 +39,9 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.5.5",
     "@mdx-js/react": "^1.5.5",
-    "@royalnavy/css-framework": "^2.5.0-alpha.3",
-    "@royalnavy/icon-library": "^2.5.0-alpha.3",
-    "@royalnavy/react-component-library": "^2.5.0-alpha.3",
+    "@royalnavy/css-framework": "^2.5.0-alpha.4",
+    "@royalnavy/icon-library": "^2.5.0-alpha.4",
+    "@royalnavy/react-component-library": "^2.5.0-alpha.4",
     "change-case": "^3.1.0",
     "gatsby": "^2.19.5",
     "gatsby-image": "^2.2.39",
@@ -68,7 +68,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
-    "@royalnavy/eslint-config-react": "^2.5.0-alpha.3",
+    "@royalnavy/eslint-config-react": "^2.5.0-alpha.4",
     "@svgr/cli": "^5.1.0",
     "@testing-library/jest-dom": "^5.0.2",
     "@testing-library/react": "^10.0.2",
