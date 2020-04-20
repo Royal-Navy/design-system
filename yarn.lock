@@ -17276,9 +17276,9 @@ react-hotkeys@2.0.0:
     prop-types "^15.6.1"
 
 react-indiana-drag-scroll@^1.5.5:
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/react-indiana-drag-scroll/-/react-indiana-drag-scroll-1.5.5.tgz#0ec103da6b4e77e9c59fc407a68a0549b15b4204"
-  integrity sha512-XIAW+ggk+OtrGgSTbbgz9GyIKxq3Fh7KKc62BjZ/CZfmfZ25o89rHVDlkI0F2w1Va1fltr0pJqJcUMgQAMwp4A==
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/react-indiana-drag-scroll/-/react-indiana-drag-scroll-1.6.1.tgz#9b1838b03ae5eea38cf35fc1da22030cc1c061a1"
+  integrity sha512-wdeKLI42VJtcp+HEV9O9dxg2C6h9Yn8ot0DbxU8NiXvK3LMAXbqcTi+e5IBrBteI5Jt85jFUsvYcJqgkbNpDCA==
   dependencies:
     classnames "^2.2.6"
     debounce "^1.2.0"
