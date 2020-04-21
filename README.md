@@ -1,8 +1,8 @@
-# Royal Navy - NELSON [Standards Toolkit](https://docs.royalnavy.io/)
+# Royal Navy [Design System](https://docs.royalnavy.io/)
 
-[![CircleCI](https://circleci.com/gh/Royal-Navy/standards-toolkit/tree/master.svg?style=svg)](https://circleci.com/gh/Royal-Navy/standards-toolkit/tree/master) [![GitHub release](https://img.shields.io/github/release/royal-navy/standards-toolkit.svg)](https://github.com/Royal-Navy/standards-toolkit/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/standards-toolkit/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+[![CircleCI](https://circleci.com/gh/Royal-Navy/design-system/tree/master.svg?style=svg)](https://circleci.com/gh/Royal-Navy/design-system/tree/master) [![GitHub release](https://img.shields.io/github/release/royal-navy/design-system.svg)](https://github.com/Royal-Navy/design-system/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/design-system/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-The Standards Toolkit is made up of a responsive component library, icon library and SASS framework. It's here to help developers build web applications that meet the Royal Navy's service standards.
+The Royal Navy Design System is made up of a responsive component library, icon library and SASS framework. It's here to help developers build web applications that meet the Royal Navy's service standards.
 
 ## Releases & versioning
 
@@ -74,9 +74,9 @@ If you're an external contributor make sure to [fork this project first](https:/
 
 ### Clone repository
 ```
-git clone git@github.com:Royal-Navy/standards-toolkit.git # or clone your own fork
+git clone git@github.com:Royal-Navy/design-system.git # or clone your own fork
 
-cd standards-toolkit
+cd design-system
 ```
 
 ### Using nvm (optional)
@@ -109,7 +109,7 @@ The Standards Toolkit currently supports all major evergreen browsers.
 
 ## Licensing
 
-The Royal-Navy/standards-toolkit is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/standards-toolkit/blob/develop/LICENSE).
+The Royal-Navy/design-system is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/develop/LICENSE).
 
 ## Contributing
 Read the [contributing guidelines](docs/contributing.md).
