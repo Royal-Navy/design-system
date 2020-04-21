@@ -2,9 +2,9 @@ const sass = require('sass')
 
 module.exports = {
   siteMetadata: {
-    title: `Nelson Design System`,
-    description: `The Nelson Design Dystem documentation site.`,
-    author: `NELSON Standards`,
+    title: `Royal Navy Design System`,
+    description: `The Royal Navy Design System documentation site.`,
+    author: `Royal Navy`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

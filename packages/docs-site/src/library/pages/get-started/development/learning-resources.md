@@ -4,9 +4,9 @@ description: ''
 header: true
 ---
 
-We have curated a collection of learning resources to help you to get up to speed with a variety of web technologies that are foundational to the **Standards Toolkit**.
+We have curated a collection of learning resources to help you to get up to speed with a variety of web technologies that are foundational to the **Royal Navy Design System**.
 
-These resources will help you to gain the fundamental knowledge needed to successfully consume the **NELSON Standards** component library and SASS framework to develop modern web applications.
+These resources will help you to gain the fundamental knowledge needed to successfully consume the **Royal Navy Design System** to develop modern web applications.
 
 ### Key technologies
 

@@ -34,8 +34,8 @@ describe('usePrimaryNavData', () => {
       expect(result[3]).toHaveProperty('href', '/patterns')
       expect(result[3]).toHaveProperty('label', 'Patterns')
 
-      expect(result[4]).toHaveProperty('href', '/nelson-api-documentation')
-      expect(result[4]).toHaveProperty('label', 'NELSON API Documentation')
+      expect(result[4]).toHaveProperty('href', '/royal-navy-api-documentation')
+      expect(result[4]).toHaveProperty('label', 'Royal Navy API Documentation')
 
       expect(result[5]).toHaveProperty('href', '/about-the-design-system')
       expect(result[5]).toHaveProperty('label', 'About the design system')

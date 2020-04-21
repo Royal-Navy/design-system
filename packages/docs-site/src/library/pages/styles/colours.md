@@ -12,15 +12,15 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 # Colours
 
-A consistent and well-named colour system provides a strong basis for all **Standards Toolkit** applications. We have provided several base colours and modifier shades that allow you to design and build a variety of User Interfaces (UIs) whilst maintaining consistency across the platform.
+A consistent and well-named colour system provides a strong basis for all **Royal Navy Design System** applications. We have provided several base colours and modifier shades that allow you to design and build a variety of User Interfaces (UIs) whilst maintaining consistency across the platform.
 
 ## Default Colour Palette
 
-Out-of-the-box Standards Toolkit provides five base colours. We use functional names for colours, rather than their literal colour names (e.g. `red` or `blue`). This allows us to provide multiple different colour schemes for a variety of scenarios, whilst keeping them semantically correct.
+Out-of-the-box Royal Navy Design System provides five base colours. We use functional names for colours, rather than their literal colour names (e.g. `red` or `blue`). This allows us to provide multiple different colour schemes for a variety of scenarios, whilst keeping them semantically correct.
 
 #### Neutral
 
-Neutral shades provide the base of Standards Toolkit applications. They should be used to build UIs and mostly mostly serve as background, text colour, and border shades for the components. The majority of colours for an application will be from the Neutral Palette.
+Neutral shades provide the base of Royal Navy Design System applications. They should be used to build UIs and mostly mostly serve as background, text colour, and border shades for the components. The majority of colours for an application will be from the Neutral Palette.
 
 <div className="swatch-container">
   <Swatch color="#0a141b" name="900" theme="dark" />

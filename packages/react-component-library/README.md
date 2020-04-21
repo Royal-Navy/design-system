@@ -33,13 +33,13 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 ```
 
 ## Questions
-Standards Toolkit is maintained by a team at the Royal Navy. If you want to know more about Standards Toolkit, please email the [Design System team](mailto:standards@royalnavy.io).
+Royal Navy Design System is maintained by a team at the Royal Navy. If you want to know more about Royal Navy Design System, please email the [Design System team](mailto:standards@royalnavy.io).
 
 ## Examples
 There is the [Coffee app](https://github.com/Royal-Navy/coffee) which contains examples of how to use the components.
 
 ## Documentation
-The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using NELSON styles and components.
+The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Royal Navy Design System.
 
 ## Contributing
 The [contributing guide](https://github.com/Royal-Navy/standards-toolkit/blob/master/docs/contributing.md) resource presents information about our development process. 
@@ -48,4 +48,4 @@ The [contributing guide](https://github.com/Royal-Navy/standards-toolkit/blob/ma
 If you have recently updated then read the [release notes](https://github.com/Royal-Navy/standards-toolkit/releases)
 
 ## License
-The Standards Toolkit is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/standards-toolkit/blob/master/LICENSE)
+The Royal Navy Design System is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/standards-toolkit/blob/master/LICENSE)

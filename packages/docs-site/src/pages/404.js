@@ -17,7 +17,7 @@ export default function Template() {
 
   return (
     <Layout>
-      <Helmet title="Page not found | NELSON Standards" />
+      <Helmet title="Page not found | Royal Navy Design System" />
       <MastHead navItems={primaryNavData} />
       <main className="main rn-container">
         <article className="post-article page-not-found">

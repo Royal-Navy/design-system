@@ -1,5 +1,5 @@
 {
-  "name": "nelson-standards-toolkit",
+  "name": "royal-navy-design-system",
   "private": true,
   "workspaces": [
     "packages/css-framework",

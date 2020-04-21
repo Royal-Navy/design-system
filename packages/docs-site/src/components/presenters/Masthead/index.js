@@ -31,7 +31,7 @@ const MastHead = ({ navItems }) => {
         className="masthead__banner"
       >
         <div className="rn-container">
-          There&apos;s a new version of the Standards Toolkit.
+          There&apos;s a new version of the Royal Navy Design System.
           <strong>Read the migration docs.</strong>
         </div>
       </Link>

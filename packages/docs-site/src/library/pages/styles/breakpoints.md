@@ -12,7 +12,7 @@ import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 # Breakpoints
 
-The **Standards Toolkit** provides default breakpoint sizes to use in your applications.
+The **Royal Navy Design System** provides default breakpoint sizes to use in your applications.
 
 <DataTable data={[
   {
@@ -47,11 +47,11 @@ The **Standards Toolkit** provides default breakpoint sizes to use in your appli
 
 # Using Breakpoints
 
-The Standards Toolkit has two methods available for using the default breakpoints in your application.
+The Royal Navy Design System has two methods available for using the default breakpoints in your application.
 
 ## Inside your SCSS
 
-To use breakpoints inside your SCSS, the **Standards Toolkit** provides mixins to help:
+To use breakpoints inside your SCSS, the **Royal Navy Design System** provides mixins to help:
 
 <CodeHighlighter 
 source={`@mixin breakpoint('xs') {

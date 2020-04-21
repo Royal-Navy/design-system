@@ -1,4 +1,4 @@
-# Contributing to Standards Toolkit
+# Contributing to Royal Navy Design System
 - [Branching strategy](#branching-strategy)
 - [Adding a new feature](#adding-a-new-feature)
 - [Committing](#committing)
@@ -19,7 +19,7 @@
         - [Finally](#finally)
 
 ## Branching strategy
-The Standards Toolkit repository is using a trunk-based development branching strategy. All changes are merged directly into `master`. To have control over publishing of packages, `npm publish` is triggered only when a new version tag is merged into `master`. Branches are still used for the peer review process. When required, separate branches are maintained for fixes.
+The Royal Navy Design System repository is using a trunk-based development branching strategy. All changes are merged directly into `master`. To have control over publishing of packages, `npm publish` is triggered only when a new version tag is merged into `master`. Branches are still used for the peer review process. When required, separate branches are maintained for fixes.
 
 It is important that there are no breaking changes added to `master`. All changes are backwards compatible. If there is an opportunity to improve the code resulting in a breaking change then this can be discussed in an issue.
 

@@ -20,11 +20,11 @@ Please refer to the [component demo-pages](/components) to see live examples and
 
 ### Browser support
 
-The **Standards Toolkit** currently supports all major self-updating browsers such as: Chrome, Firefox, Edge, Safari, and Opera.
+The **Royal Navy Design System** currently supports all major self-updating browsers such as: Chrome, Firefox, Edge, Safari, and Opera.
 
 ### Contributing & issues
 
-If you would like to make a contribution or raise an issue with the Standards Toolkit, you can do so on [GitHub](https://github.com/Royal-Navy/standards-toolkit).
+If you would like to make a contribution or raise an issue with the Royal Navy Design System, you can do so on [GitHub](https://github.com/Royal-Navy/standards-toolkit).
 
 ### Licensing
 
