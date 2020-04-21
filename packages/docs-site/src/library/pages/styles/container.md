@@ -22,7 +22,7 @@ source={`<div class="rn-container">
 
 ## Available Sizing
 
-The container class has three different variations. The default class has a padding of `0.75rem`. The Standards Toolkit also provides a small container with padding of `0.5rem`:
+The container class has three different variations. The default class has a padding of `0.75rem`. The Royal Navy Design System also provides a small container with padding of `0.5rem`:
 
 <CodeHighlighter 
 source={`<div class="rn-container--large">

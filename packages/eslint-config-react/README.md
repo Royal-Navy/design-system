@@ -38,7 +38,7 @@ In your command line run `yarn lint` and if there are errors to fix, they will a
 Prettier allows for editor integration and can automatically fix any errors it can when you save the file. To enable this, visit https://prettier.io/docs/en/editors.html and check out the instructions for your specific editor.
 
 ## Questions
-Standards Toolkit is maintained by a team at the Royal Navy. If you want to know more about Standards Toolkit, please email the [Design System team](mailto:standards@royalnavy.io).
+Royal Navy Design System is maintained by a team at the Royal Navy. If you want to know more about Royal Navy Design System, please email the [Design System team](mailto:standards@royalnavy.io).
 
 ## Contributing
 The [contributing guide](https://github.com/Royal-Navy/standards-toolkit/blob/master/docs/contributing.md) resource presents information about our development process. 
@@ -47,4 +47,4 @@ The [contributing guide](https://github.com/Royal-Navy/standards-toolkit/blob/ma
 If you have recently updated then read the [release notes](https://github.com/Royal-Navy/standards-toolkit/releases)
 
 ## License
-The Standards Toolkit is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/standards-toolkit/blob/master/LICENSE)
+The Royal Navy Design System is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/standards-toolkit/blob/master/LICENSE)

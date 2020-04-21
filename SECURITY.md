@@ -1,11 +1,11 @@
 # Security Policy
 The Royal Navy Digital Standards Policy is to avoid leaving the ecosystem worse than we found it. Meaning we are not planning to introduce vulnerabilities into the ecosystem.
 
-The Royal Navy Digital Standards team takes security vulnerabilities in the Standards Toolkit seriously.  We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.
+The Royal Navy Digital Standards team takes security vulnerabilities in the Royal Navy Design System seriously.  We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.
 
 ## Supported Versions
 
-The below table details which versions of the Standards Toolkit are supported with bug fixes and security updates:
+The below table details which versions of the Royal Navy Design System are supported with bug fixes and security updates:
 
 | Version | Supported          |
 | ------- | ------------------ |

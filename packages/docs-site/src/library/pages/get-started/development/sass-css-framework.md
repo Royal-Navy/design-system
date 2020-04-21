@@ -67,4 +67,4 @@ In the example above, we are updating the `neutral: 000` value to `#FF0000` (red
 
 ## Utility Classes
 
-Several different Utility classes are provided by this framework. These classes provide a modular way to style components using the Standards Toolkit styles, without having to author any styles yourself.
+Several different Utility classes are provided by this framework. These classes provide a modular way to style components using the Royal Navy Design System styles, without having to author any styles yourself.

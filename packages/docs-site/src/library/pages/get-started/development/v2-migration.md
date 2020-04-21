@@ -1,19 +1,19 @@
 ---
-title: Migrating to Standards Toolkit v2
+title: Migrating to Royal Navy Design System v2
 description: 'This guide will show you how to upgrade your codebase to work with v2'
 header: true
 ---
 
 # CSS Framework
 
-The Standards Toolkit v2 is a major refactor of the CSS Framework. It introduces a number of under-the-hood tweaks that improve both its performance and accuracy to the Sketch Toolkit.
+The Royal Navy Design System v2 is a major refactor of the CSS Framework. It introduces a number of under-the-hood tweaks that improve both its performance and accuracy to the Sketch Toolkit.
 
 ## SCSS Modules
-The Standards Toolkit v2 has been ported to [SASS Modules](http://sass.logdown.com/posts/7858341-the-module-system-is-launched). This provides the ability to namespace all Standards Toolkit functions & mixins, scope all variables locally to the file they are declared in, and keep the outputted file size down as `@use` only includes the imported file once across the entire project.
+The Royal Navy Design System v2 has been ported to [SASS Modules](http://sass.logdown.com/posts/7858341-the-module-system-is-launched). This provides the ability to namespace all Royal Navy Design System functions & mixins, scope all variables locally to the file they are declared in, and keep the outputted file size down as `@use` only includes the imported file once across the entire project.
 
 
 - Your application should have a single entry-point for `scss`. The best way to achieve this is to create an `index.scss` file in the root of your project and `@use` every Sass file across your codebase. Then, import the `index.scss` file (and only this file) _once_ into your main JS entry-point - avoid importing SCSS files into individual `js` component files. At the top of your `index.scss` file, `@use` the Standards CSS framework, as noted below.
-- All instances of `@import "@royalnavy/css-framework"` should be replaced with `@use "@royalnavy/css-framework" as rn`. Whilst the `rn` namespace is optional, we recommend using this as it will prevent the Standards Toolkit CSS Framework from clashing with any other SCSS files that may be imported into the project. 
+- All instances of `@import "@royalnavy/css-framework"` should be replaced with `@use "@royalnavy/css-framework" as rn`. Whilst the `rn` namespace is optional, we recommend using this as it will prevent the Royal Navy Design System CSS Framework from clashing with any other SCSS files that may be imported into the project. 
 - Alternatively, the CSS Framework can be imported as `@use "@royalnavy/css-framework" as *`. This will add all functions and mixins to the global scope, meaning you don’t have to namespace your function calls.
 - Every file that requires any mixins or functions from the CSS Framework should individually call `@use “@royalnavy/css-framework” as rn`. Unlike the `@import` syntax, `@use` ensures the imported file is only compiled once, rather than every time it is imported. This prevents duplicate styles and should cut down your outputted CSS’s file size.
 - You must use the `sass` npm package, rather than `node-sass`. `sass` uses Dart under the hood, as apposed to Node. Dart is the primary implementation of the Sass language and currently is the only version to support Modules.
@@ -37,7 +37,7 @@ The colour palette has been expanded to include an extra colours, under the name
 All renamed colours should have their function calls updated to the new names.
 
 # Spacing
-The Standards Toolkit supplies pre-determined spacing values to maintain consistency across all our applications and to ensure the designs from the Sketch library correlate with our code output.
+The Royal Navy Design System supplies pre-determined spacing values to maintain consistency across all our applications and to ensure the designs from the Sketch library correlate with our code output.
 
 In `v2`, the Spacing scale has been updated as follows:
 
@@ -123,14 +123,14 @@ You will need to update your `@include breakpoint()` mixins with the new, update
 
 
 ## Helpers
-- `helper` classes have been renamed to `utility`in v2. This is to better align the Standards Toolkit with the industry standard of “Utility classes”, which better describe their function, rather than “Helper classes”.
+- `helper` classes have been renamed to `utility`in v2. This is to better align the Royal Navy Design System with the industry standard of “Utility classes”, which better describe their function, rather than “Helper classes”.
 - Utility class namespace has been updated with `.rn_` to be more consistent with the `.rn-` component namespace.
 
 All instances of the utility classes that use the old `.h_` syntax will need to be updated to `.rn_`. Alternatively, you can set the `$utility-ns` value back to `h_` when you initialise the project. See below for more details.
 
 ## Overriding the Toolkit
 
-With the new module system, it is easier than ever to override values provided by the Standards Toolkit. When `@use`-ing the CSS Framework, you can assign the provided variables your own values to override any that exist in the Context. The variables that can be overridden are:
+With the new module system, it is easier than ever to override values provided by the Royal Navy Design System. When `@use`-ing the CSS Framework, you can assign the provided variables your own values to override any that exist in the Context. The variables that can be overridden are:
 
 ```
 // Fonts

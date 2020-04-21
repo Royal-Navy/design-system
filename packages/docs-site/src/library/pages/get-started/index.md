@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: 'NELSON Standards are made for designers and developers.'
+description: 'The Royal Navy Design System is made for designers and developers.'
 tags: public
 pageClass: ''
 template: default

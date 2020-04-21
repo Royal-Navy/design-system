@@ -341,10 +341,10 @@ export default {
         node: {
           id: '0ab7b8f7-9f38-503c-9d7c-f1b47ea509ea',
           fields: {
-            slug: '/nelson-api-documentation/',
+            slug: '/royal-navy-api-documentation/',
           },
           frontmatter: {
-            title: 'NELSON API Documentation',
+            title: 'Royal Navy API Documentation',
             status: null,
             index: 5,
           },

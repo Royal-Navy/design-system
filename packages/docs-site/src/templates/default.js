@@ -39,7 +39,7 @@ const PageTemplate = ({ data: { mdx }, location }) => {
   return (
     <Layout>
       <Helmet
-        title={`${mdx.frontmatter.title} | NELSON Standards`}
+        title={`${mdx.frontmatter.title} | Royal Navy Design System`}
         link={[
           {
             rel: 'icon',

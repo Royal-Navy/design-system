@@ -47,7 +47,7 @@ import packageJson from '../../../package.json'
   <Card
     type="borderless" 
     title="Contact us" 
-    text={<span>Contact the <strong>NELSON Standards</strong> team to find out more about design in the Royal Navy. Request a new component, ask questions and give feedback."</span>}
+    text={<span>Contact the <strong>Royal Navy Design System</strong> team to find out more about design in the Royal Navy. Request a new component, ask questions and give feedback."</span>}
     linkText="Contact" 
     linkHref="/contact"
     className="s:rn_f-1 home--contact"

@@ -10,7 +10,7 @@ afterEach(cleanup)
 describe('HeroBanner', () => {
   const { getByTestId } = render(
     <HeroBanner
-      title="Design your application using NELSON styles, components and patterns"
+      title="Design your application using Royal Navy styles, components and patterns"
       text="Esse dolor eu fugiat anim cupidatat minim esse occaecat. Commodo aliquip elit quis proident excepteur est occaecat ea sunt dolor id commodo. Nisi occaecat irure mollit voluptate aliqua dolore cupidatat dolore officia. Ex sint esse do aliquip ut ullamco minim labore cupidatat excepteur consectetur anim dolor. Dolore ad Lorem deserunt aliqua Lorem excepteur."
       ctaLink="/test"
       ctaText="Get Started"
@@ -23,7 +23,7 @@ describe('HeroBanner', () => {
 
   test('Displays the correct title', () => {
     expect(title).toHaveTextContent(
-      'Design your application using NELSON styles, components and patterns'
+      'Design your application using Royal Navy styles, components and patterns'
     )
   })
 

@@ -1,13 +1,13 @@
 
 # CSS-Framework
 
-@roaylnavy/css-framework is the foundational CSS Framework that all NELSON applications are built on.
+@roaylnavy/css-framework is the foundational CSS Framework that all Royal Navy digital applications are built on.
 
 ---
 
 # Context
 
-Environment is a huge factor in deciding how we display NELSON applications, therefore it is important to provide the correct context for your app.
+Environment is a huge factor in deciding how we display Royal Navy digital applications, therefore it is important to provide the correct context for your app.
 
 By default, the Context provided is `light`. The full list of available contexts are listed below:
 ```
@@ -56,7 +56,7 @@ Several different Utility classes are provided by this framework. This is to ens
 
 ## z-index
 
-To ensure correct z-axis stacking in NELSON applications, a z-index Utility class is provided.
+To ensure correct z-axis stacking in Royal Navy digital applications, a z-index Utility class is provided.
 
 z-index can be set via a mixin named z-index:
 ```
@@ -91,7 +91,7 @@ Occasionally, a group alone won't be enough to ensure a correct z-axis stack. An
 
 ## Breakpoints
 
-NELSON applications are built Mobile First. A number of breakpoints are provided by default, and also tie into the Spacing Utility classes & variables:
+Royal Navy digital applications are built Mobile First. A number of breakpoints are provided by default, and also tie into the Spacing Utility classes & variables:
 ```
 - root: 0px
 - xs: 576px

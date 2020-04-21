@@ -2,7 +2,7 @@
   "name": "@royalnavy/fonts",
   "version": "2.5.0-alpha.7",
   "main": "index.css",
-  "author": "NELSON",
+  "author": "Royal Navy",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"

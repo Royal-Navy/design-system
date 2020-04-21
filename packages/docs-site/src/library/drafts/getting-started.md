@@ -1,6 +1,6 @@
 ---
 title: Getting started
-description: A quick start guide to get up and running with the NELSON toolkit.
+description: A quick start guide to get up and running with the Royal Navy Design System.
 tags: public
 pageClass: ''
 template: withsidebar
@@ -14,7 +14,7 @@ This guide assumes that you are familiar with the following technologies:
 - [NPM (Node Package Manager)](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/en/)
 - Basic terminal commands (Most commonly [Bash](https://www.gnu.org/software/bash/), [Zsh](https://www.zsh.org/) or Windows Command Prompt)
 
-It is worth taking time to familiarise yourself with these technologies, as they serve as the basis of the NELSON toolkit. If you head to the links above, you will be able to find tutorials and docs for most of the technologies on their site.
+It is worth taking time to familiarise yourself with these technologies, as they serve as the basis of the Royal Navy Design System. If you head to the links above, you will be able to find tutorials and docs for most of the technologies on their site.
 
 It also makes the assumption that you have already set up a basic node project and want to add the component library to it.
 

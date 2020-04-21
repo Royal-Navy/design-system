@@ -18,7 +18,7 @@
   "module": "dist/es/index.js",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
-  "author": "NELSON",
+  "author": "Royal Navy",
   "license": "Apache-2.0",
   "scripts": {
     "analyze": "webpack -p --config=webpack/analyze.js",

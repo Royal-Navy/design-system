@@ -1,6 +1,6 @@
 ---
 title: Spacing
-description: How we handle Spacing and sizing in the Standards Toolkit
+description: How we handle Spacing and sizing in the Royal Navy Design System
 tags: public
 pageClass: ''
 template: default
