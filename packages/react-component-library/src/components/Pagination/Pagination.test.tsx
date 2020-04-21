@@ -1,36 +1,35 @@
 import React from 'react'
+import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent, RenderResult } from '@testing-library/react'
 
 import Pagination from './index'
 
+afterEach(() => jest.clearAllMocks())
+
 describe('Pagination', () => {
-  let pagination: RenderResult
+  let wrapper: RenderResult
   let onChangeSpy: () => void
 
   describe('when the Pagination is generated with only 2 records and pageSize is 10', () => {
     onChangeSpy = jest.fn()
 
     beforeEach(() => {
-      pagination = render(
-        <Pagination
-          onChange={onChangeSpy}
-          pageSize={10}
-          total={2}
-        />
+      wrapper = render(
+        <Pagination onChange={onChangeSpy} pageSize={10} total={2} />
       )
     })
 
     it('should output a single page', () => {
-      expect(pagination.queryAllByTestId('page').length).toEqual(1)
+      expect(wrapper.queryAllByTestId('page')).toHaveLength(1)
     })
 
     it('should disable both the left and right buttons', () => {
       expect(
-        pagination.getByTestId('button-previous').hasAttribute('disabled')
+        wrapper.getByTestId('button-previous').hasAttribute('disabled')
       ).toBeTruthy()
 
       expect(
-        pagination.getByTestId('button-next').hasAttribute('disabled')
+        wrapper.getByTestId('button-next').hasAttribute('disabled')
       ).toBeTruthy()
     })
   })
@@ -39,17 +38,13 @@ describe('Pagination', () => {
     onChangeSpy = jest.fn()
 
     beforeEach(() => {
-      pagination = render(
-        <Pagination
-          onChange={onChangeSpy}
-          pageSize={10}
-          total={20}
-        />
+      wrapper = render(
+        <Pagination onChange={onChangeSpy} pageSize={10} total={20} />
       )
     })
 
     it('should output the correct number of pages', () => {
-      expect(pagination.queryAllByTestId('page').length).toEqual(2)
+      expect(wrapper.queryAllByTestId('page')).toHaveLength(2)
     })
   })
 
@@ -57,23 +52,62 @@ describe('Pagination', () => {
     onChangeSpy = jest.fn()
 
     beforeEach(() => {
-      pagination = render(
-        <Pagination
-          onChange={onChangeSpy}
-          pageSize={10}
-          total={1000}
-        />
+      wrapper = render(
+        <Pagination onChange={onChangeSpy} pageSize={10} total={1000} />
       )
     })
 
     it('should output the correct number of pages', () => {
-      expect(pagination.queryAllByTestId('page').length).toEqual(6)
+      expect(wrapper.queryAllByTestId('page')).toHaveLength(7)
     })
 
-    describe('when the user clicks on a page', () => {
+    describe('handle: (1) ... {5 6} [7] {8 9} (10)', () => {
       beforeEach(() => {
         fireEvent(
-          pagination.getByTestId('select-page-5'),
+          wrapper.getByTestId('select-page-100'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      })
+
+      it('should render the three dots in the correct place', () => {
+        expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('...')
+        expect(wrapper.queryAllByText('...')).toHaveLength(1)
+      })
+    })
+
+    describe('handle: (1) ... {4 5} [6] {7 8} ... (10)', () => {
+      beforeEach(() => {
+        fireEvent(
+          wrapper.getByTestId('select-page-4'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      })
+
+      it('should render the three dots in the correct places', () => {
+        expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('...')
+        expect(wrapper.getAllByTestId('page')[5]).toHaveTextContent('...')
+        expect(wrapper.queryAllByText('...')).toHaveLength(2)
+      })
+    })
+
+    describe('when the user clicks on the right button then the left button', () => {
+      beforeEach(() => {
+        fireEvent(
+          wrapper.getByTestId('button-next'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+
+        fireEvent(
+          wrapper.getByTestId('button-previous'),
           new MouseEvent('click', {
             bubbles: true,
             cancelable: true,
@@ -83,13 +117,58 @@ describe('Pagination', () => {
 
       it('should apply the `is-active` class to the appropriate page', () => {
         expect(
-          pagination
-            .getByTestId('select-page-5')
-            .classList.contains('is-active')
+          wrapper.getByTestId('select-page-1').classList.contains('is-active')
         ).toBe(true)
       })
 
       it('should invoke the onChange function', () => {
+        expect(onChangeSpy).toHaveBeenCalledTimes(2)
+        expect(onChangeSpy).toHaveBeenCalledWith(1, 100)
+      })
+    })
+
+    describe('when the user clicks on the right button', () => {
+      beforeEach(() => {
+        fireEvent(
+          wrapper.getByTestId('button-next'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      })
+
+      it('should apply the `is-active` class to the appropriate page', () => {
+        expect(
+          wrapper.getByTestId('select-page-2').classList.contains('is-active')
+        ).toBe(true)
+      })
+
+      it('should invoke the onChange function', () => {
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
+        expect(onChangeSpy).toHaveBeenCalledWith(2, 100)
+      })
+    })
+
+    describe('when the user clicks on a page', () => {
+      beforeEach(() => {
+        fireEvent(
+          wrapper.getByTestId('select-page-5'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      })
+
+      it('should apply the `is-active` class to the appropriate page', () => {
+        expect(
+          wrapper.getByTestId('select-page-5').classList.contains('is-active')
+        ).toBe(true)
+      })
+
+      it('should invoke the onChange function', () => {
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
         expect(onChangeSpy).toHaveBeenCalledWith(5, 100)
       })
     })
