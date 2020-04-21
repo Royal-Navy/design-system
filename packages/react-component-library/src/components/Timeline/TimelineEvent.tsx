@@ -5,14 +5,14 @@ import { format } from 'date-fns'
 import { DAY_WIDTH } from './constants'
 import { useTimelinePosition } from './hooks/useTimelinePosition'
 
-export interface EventProps extends ComponentWithClass {
+export interface TimelineEventProps extends ComponentWithClass {
   children?: string
   endDate: Date
   startDate: Date
   status?: string
 }
 
-export const Event: React.FC<EventProps> = ({
+export const TimelineEvent: React.FC<TimelineEventProps> = ({
   children,
   className,
   endDate,
@@ -37,7 +37,7 @@ export const Event: React.FC<EventProps> = ({
       style={{ left: `${offset * DAY_WIDTH}px` }}
       data-testid="timeline-event-wrapper"
     >
-      <span className="timeline__event-title" data-testid="event-title">
+      <span className="timeline__event-title" data-testid="timeline-event-title">
         {children || `Task ${format(new Date(startDate), 'dd/yyyy')}`}
       </span>
       <div
@@ -48,4 +48,4 @@ export const Event: React.FC<EventProps> = ({
   )
 }
 
-Event.displayName = 'Event'
+TimelineEvent.displayName = 'TimelineEvent'

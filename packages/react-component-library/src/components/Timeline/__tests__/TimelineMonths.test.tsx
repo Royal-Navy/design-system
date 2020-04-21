@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
 import { TimelineProvider } from '../context'
-import { Months } from '../Months'
+import { TimelineMonths } from '../TimelineMonths'
 
 describe('Months', () => {
   let wrapper: RenderResult
@@ -12,7 +12,7 @@ describe('Months', () => {
     beforeEach(() => {
       wrapper = render(
         <TimelineProvider startDate={new Date(2020, 3, 1)}>
-          <Months />
+          <TimelineMonths />
         </TimelineProvider>
       )
     })

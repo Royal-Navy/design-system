@@ -4,9 +4,9 @@ import { DAY_WIDTH } from './constants'
 import { TimelineContext } from './context'
 import { useTimelinePosition } from './hooks/useTimelinePosition'
 
-export type TodayMarkerProps = ComponentWithClass
+export type TimelineTodayMarkerProps = ComponentWithClass
 
-export const TodayMarker: React.FC<TodayMarkerProps> = () => {
+export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = () => {
   const {
     state: { today },
   } = useContext(TimelineContext)
@@ -19,9 +19,9 @@ export const TodayMarker: React.FC<TodayMarkerProps> = () => {
     <div
       className="timeline__today-marker"
       style={{ left: `${offset * DAY_WIDTH}px` }}
-      data-testid="today-marker"
+      data-testid="timeline-today-marker"
     />
   )
 }
 
-TodayMarker.displayName = 'TodayMarker'
+TimelineTodayMarker.displayName = 'TimelineTodayMarker'

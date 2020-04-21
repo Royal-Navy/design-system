@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { TimelineProvider } from './context'
-import { Side, TodayMarker, Months, Weeks, RowProps } from '.'
-import { RowsProps } from './Rows'
+import { TimelineSide, TimelineTodayMarker, TimelineMonths, TimelineWeeks, TimelineRowProps } from '.'
+import { TimelineRowsProps } from './TimelineRows'
 
 export interface TimelineProps extends ComponentWithClass {
-  children: React.ReactElement<RowsProps>
+  children: React.ReactElement<TimelineRowsProps>
   startDate?: Date
   today?: Date
 }
@@ -18,12 +18,12 @@ export const Timeline: React.FC<TimelineProps> = ({
   return (
     <TimelineProvider startDate={startDate} today={today}>
       <article className="timeline">
-        <Side>{children}</Side>
+        <TimelineSide>{children}</TimelineSide>
         <div className="timeline__inner">
           <header className="timeline__header">
-            <TodayMarker />
-            <Months />
-            <Weeks />
+            <TimelineTodayMarker />
+            <TimelineMonths />
+            <TimelineWeeks />
           </header>
           <main className="timeline__main">
             {children}

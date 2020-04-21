@@ -4,7 +4,7 @@ import { render, RenderResult, wait } from '@testing-library/react'
 
 import { TimelineProvider, TimelineContext } from '../context'
 import { TIMELINE_ACTIONS } from '../context/types'
-import { TodayMarker } from '../TodayMarker'
+import { TimelineTodayMarker } from '../TimelineTodayMarker'
 
 describe('TodayMarker', () => {
   let wrapper: RenderResult
@@ -13,13 +13,13 @@ describe('TodayMarker', () => {
     beforeEach(() => {
       wrapper = render(
         <TimelineProvider startDate={new Date(2020, 1, 1, 0, 0, 0)}>
-          <TodayMarker />
+          <TimelineTodayMarker />
         </TimelineProvider>
       )
     })
 
     it('renders the component', () => {
-      expect(wrapper.queryByTestId('today-marker')).toBeInTheDocument()
+      expect(wrapper.queryByTestId('timeline-today-marker')).toBeInTheDocument()
     })
   })
 
@@ -36,7 +36,7 @@ describe('TodayMarker', () => {
                 })
               }, 0)
 
-              return <TodayMarker />
+              return <TimelineTodayMarker />
             }}
           </TimelineContext.Consumer>
         </TimelineProvider>
@@ -45,7 +45,7 @@ describe('TodayMarker', () => {
 
     it('does not render the component', async () => {
       await wait(() => {
-        expect(wrapper.queryByTestId('today-marker')).not.toBeInTheDocument()
+        expect(wrapper.queryByTestId('timeline-today-marker')).not.toBeInTheDocument()
       })
     })
   })

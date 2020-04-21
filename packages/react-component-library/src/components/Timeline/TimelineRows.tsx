@@ -1,12 +1,12 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import { RowProps } from '.'
+import { TimelineRowProps } from '.'
 import { getKey } from './helpers'
 import { NO_DATA_MESSAGE } from './constants'
 
-export interface RowsProps extends ComponentWithClass {
-  children: React.ReactElement<RowProps> | React.ReactElement<RowProps>[]
+export interface TimelineRowsProps extends ComponentWithClass {
+  children: React.ReactElement<TimelineRowProps> | React.ReactElement<TimelineRowProps>[]
 }
 
 const noData = (
@@ -15,22 +15,24 @@ const noData = (
   </span>
 )
 
-export const Rows: React.FC<RowsProps> = ({ children, className }) => {
+export const TimelineRows: React.FC<TimelineRowsProps> = ({ children, className }) => {
   const classes = classNames('timeline__main', className)
   const childrenWithKey = React.Children.map(
     children,
-    (child: React.ReactElement<RowProps>, index: number) =>
+    (child: React.ReactElement<TimelineRowProps>, index: number) =>
       React.cloneElement(child, {
         ...child.props,
         key: getKey('timeline-row', index),
       })
   )
 
+  const hasChildren = childrenWithKey && childrenWithKey.length
+  
   return (
     <main className={classes}>
-      {childrenWithKey && childrenWithKey.length ? childrenWithKey : noData}
+      {hasChildren ? childrenWithKey : noData}
     </main>
   )
 }
 
-Rows.displayName = 'Rows'
+TimelineRows.displayName = 'Rows'

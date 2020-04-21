@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
-import { Event, Events, Row, Rows, Timeline } from '..'
+import { TimelineEvent, TimelineEvents, TimelineRow, TimelineRows, Timeline } from '..'
 
 const COMPLETED = 'COMPLETED'
 
@@ -13,7 +13,7 @@ describe('Timeline', () => {
     beforeEach(() => {
       wrapper = render(
         <Timeline>
-          <Rows>{}</Rows>
+          <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
     })
@@ -23,7 +23,7 @@ describe('Timeline', () => {
     })
 
     it('should not display any rows', () => {
-      expect(wrapper.queryAllByTestId('row')).toHaveLength(0)
+      expect(wrapper.queryAllByTestId('timeline-row')).toHaveLength(0)
     })
   })
 
@@ -31,41 +31,41 @@ describe('Timeline', () => {
     beforeEach(() => {
       wrapper = render(
         <Timeline startDate={new Date(2020, 3, 1)}>
-          <Rows>
-            <Row name="Row 1">
-              <Events>
-                <Event
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
                   startDate={new Date(2020, 3, 13)}
                   endDate={new Date(2020, 3, 18)}
                   status={COMPLETED}
                 >
                   Event 1
-                </Event>
-                <Event
+                </TimelineEvent>
+                <TimelineEvent
                   startDate={new Date(2020, 3, 20)}
                   endDate={new Date(2020, 3, 22)}
                 >
                   Event 2
-                </Event>
-              </Events>
-            </Row>
-            <Row name="Row 2">
-              <Events>
-                <Event
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+            <TimelineRow name="Row 2">
+              <TimelineEvents>
+                <TimelineEvent
                   startDate={new Date(2020, 3, 15)}
                   endDate={new Date(2020, 3, 20)}
                 >
                   Event 3
-                </Event>
-                <Event
+                </TimelineEvent>
+                <TimelineEvent
                   startDate={new Date(2020, 3, 22)}
                   endDate={new Date(2020, 3, 24)}
                 >
                   Event 4
-                </Event>
-              </Events>
-            </Row>
-          </Rows>
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
         </Timeline>
       )
     })
@@ -100,35 +100,35 @@ describe('Timeline', () => {
       console.log('starting')
 
       const EventWithinRange: React.FC = () => (
-        <Event
+        <TimelineEvent
           startDate={new Date(2020, 1, 1, 0, 0, 0)}
           endDate={new Date(2020, 1, 10, 0, 0, 0)}
           status={COMPLETED}
         >
           Event 1
-        </Event>
+        </TimelineEvent>
       )
 
       const EventOutsideRange: React.FC = () => (
-        <Event
+        <TimelineEvent
           startDate={new Date(2020, 6, 1, 0, 0, 0)}
           endDate={new Date(2020, 6, 10, 0, 0, 0)}
           status={COMPLETED}
         >
           Event 1
-        </Event>
+        </TimelineEvent>
       )
 
       wrapper = render(
         <Timeline startDate={new Date(2020, 1, 1, 0, 0, 0)}>
-          <Rows>
-            <Row name="Row 1">
-              <Events>
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
                 <EventWithinRange />
                 <EventOutsideRange />
-              </Events>
-            </Row>
-          </Rows>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
         </Timeline>
       )
 
