@@ -44,7 +44,7 @@ export const usePageChange = (
 
     setCurrentPage(selected)
 
-    if (typeof onChange === 'function') {
+    if (onChange) {
       onChange(selected, totalPages)
     }
   }

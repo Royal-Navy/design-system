@@ -7,9 +7,5 @@ import Pagination from './index'
 const stories = storiesOf('Pagination', module)
 
 stories.add('Default', () => (
-  <Pagination
-    onChange={action('onChange')}
-    pageSize={10}
-    total={1000}
-  />
+  <Pagination onChange={action('onChange')} pageSize={10} total={1000} />
 ))

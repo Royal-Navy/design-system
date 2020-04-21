@@ -45,6 +45,7 @@ const Pagination: React.FC<PaginationProps> = ({
               <li
                 key={getKey('pagination-item', page)}
                 className="rn-pagination__item"
+                data-testid="page"
               >
                 {page}
               </li>
