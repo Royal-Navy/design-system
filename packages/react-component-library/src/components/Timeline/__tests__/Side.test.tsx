@@ -9,18 +9,20 @@ import { dispatchSpy } from '../context/__mocks__'
 
 import { TimelineProvider } from '../context'
 import { TIMELINE_ACTIONS } from '../context/types'
+import { Event, Events, Row, Rows } from '..'
 
 jest.mock('../context')
 
 describe('Side', () => {
   let wrapper: RenderResult
-  let rowData: any[]
 
   describe('default props', () => {
     beforeEach(() => {
       wrapper = render(
         <TimelineProvider>
-          <Side rowData={[]} />
+          <Side>
+            <Rows>{}</Rows>
+          </Side>
         </TimelineProvider>
       )
     })
@@ -68,24 +70,44 @@ describe('Side', () => {
 
   describe('with rowData', () => {
     beforeEach(() => {
-      rowData = [
-        {
-          name: 'Example Row',
-          events: [
-            //
-          ],
-        },
-        {
-          name: 'Example Row',
-          events: [
-            //
-          ],
-        },
-      ]
-
       wrapper = render(
         <TimelineProvider>
-          <Side rowData={rowData} />
+          <Side>
+            <Rows>
+              <Row name="Row 1">
+                <Events>
+                  <Event
+                    startDate={new Date(2020, 3, 13)}
+                    endDate={new Date(2020, 3, 18)}
+                  >
+                    Event 1
+                  </Event>
+                  <Event
+                    startDate={new Date(2020, 3, 20)}
+                    endDate={new Date(2020, 3, 22)}
+                  >
+                    Event 2
+                  </Event>
+                </Events>
+              </Row>
+              <Row name="Row 2">
+                <Events>
+                  <Event
+                    startDate={new Date(2020, 3, 15)}
+                    endDate={new Date(2020, 3, 20)}
+                  >
+                    Event 3
+                  </Event>
+                  <Event
+                    startDate={new Date(2020, 3, 22)}
+                    endDate={new Date(2020, 3, 24)}
+                  >
+                    Event 4
+                  </Event>
+                </Events>
+              </Row>
+            </Rows>
+          </Side>
         </TimelineProvider>
       )
     })
