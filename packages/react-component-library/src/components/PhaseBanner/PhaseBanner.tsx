@@ -8,7 +8,7 @@ interface PhaseBannerProps {
   phase?: 'alpha' | 'beta'
 }
 
-const PhaseBanner: React.FC<PhaseBannerProps> = ({
+export const PhaseBanner: React.FC<PhaseBannerProps> = ({
   children,
   isFullWidth = false,
   link = '/feedback',
@@ -17,11 +17,15 @@ const PhaseBanner: React.FC<PhaseBannerProps> = ({
   <div className={`rn-phase-banner rn-phase-banner--${phase}`}>
     <div
       className={!isFullWidth ? 'rn-container' : 'rn-phase-banner__container'}
+      data-testid="phase-banner-wrapper"
     >
       <Badge size={BADGE_SIZE.SMALL} color={BADGE_COLOR.ACTION}>
         {phase}
       </Badge>
-      <span className="rn-phase-banner__text">
+      <span
+        className="rn-phase-banner__text"
+        data-testid="phase-banner-content"
+      >
         {children || (
           <>
             This is a new service, <a href={link}>Your feedback</a> will help to
@@ -34,5 +38,3 @@ const PhaseBanner: React.FC<PhaseBannerProps> = ({
 )
 
 PhaseBanner.displayName = 'PhaseBanner'
-
-export default PhaseBanner

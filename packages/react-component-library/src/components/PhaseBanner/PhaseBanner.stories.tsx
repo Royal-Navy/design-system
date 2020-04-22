@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import PhaseBanner from './index'
+import { PhaseBanner } from '.'
 
 const stories = storiesOf('Phase banner', module)
 const examples = storiesOf('Phase banner/Examples', module)
