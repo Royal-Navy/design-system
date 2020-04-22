@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://thyhjwb6.github.com/Royal-Navy/design-system/compare/2.4.0...2.5.0) (2020-04-22)
+
+
+### Bug Fixes
+
+* **data list:** Set initial expanded state ([417f56e](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/417f56e0fd9bcd0805c279ea6beedeeb12dc69a3))
+* **drawer:** Use useEffect to manage visibility ([efbeff4](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/efbeff4ea9fe9f25ba8235c232da793d1c027e4d))
+* **sidebar:** Set initial open state ([17977a3](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/17977a37b1284d539e21d3c16e166e04ffceaa67))
+
+
+### Features
+
+* **component library:** Implement Timeline ([59566fd](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/59566fdab7d20e0ab126873d8f0af5d2f6e1d5b2))
+
+
+
+
+
 # [2.4.0](https://thyhjwb6.github.com/Royal-Navy/standards-toolkit/compare/2.3.0...2.4.0) (2020-04-14)
 
 

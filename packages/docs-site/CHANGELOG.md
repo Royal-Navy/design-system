@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/Royal-Navy/standards-toolkit/compare/2.4.0...2.5.0) (2020-04-22)
+
+
+### Bug Fixes
+
+* **docs site:** change footer links hover state. fixes [#796](https://github.com/Royal-Navy/standards-toolkit/issues/796) ([a27113b](https://github.com/Royal-Navy/standards-toolkit/commit/a27113b670d12ccbd2ac226cc1ccf76059d099e8))
+
+
+
+
+
 # [2.4.0](https://github.com/Royal-Navy/standards-toolkit/compare/2.3.0...2.4.0) (2020-04-14)
 
 
