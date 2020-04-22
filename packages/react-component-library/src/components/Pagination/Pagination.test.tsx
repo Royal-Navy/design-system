@@ -20,7 +20,7 @@ describe('Pagination', () => {
     })
 
     it('should output a single page', () => {
-      expect(wrapper.queryAllByTestId('page').length).toBe(1)
+      expect(wrapper.queryAllByTestId('page')).toHaveLength(1)
     })
 
     it('should disable both the left and right buttons', () => {
@@ -44,7 +44,7 @@ describe('Pagination', () => {
     })
 
     it('should output the correct number of pages', () => {
-      expect(wrapper.queryAllByTestId('page').length).toBe(2)
+      expect(wrapper.queryAllByTestId('page')).toHaveLength(2)
     })
   })
 
@@ -58,7 +58,7 @@ describe('Pagination', () => {
     })
 
     it('should output the correct number of pages', () => {
-      expect(wrapper.queryAllByTestId('page').length).toBe(7)
+      expect(wrapper.queryAllByTestId('page')).toHaveLength(7)
     })
 
     describe('handle: (1) ... {5 6} [7] {8 9} (10)', () => {
