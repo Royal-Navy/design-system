@@ -1,4 +1,5 @@
 import React from 'react'
+import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent, RenderResult } from '@testing-library/react'
 
 import Pagination from './index'
@@ -70,8 +71,8 @@ describe('Pagination', () => {
       })
 
       it('should render the three dots in the correct place', () => {
-        expect(wrapper.getAllByTestId('page')[1].innerHTML).toContain('...')
-        expect(wrapper.queryAllByText('...').length).toBe(1)
+        expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('...')
+        expect(wrapper.queryAllByText('...')).toHaveLength(1)
       })
     })
 
@@ -87,9 +88,9 @@ describe('Pagination', () => {
       })
 
       it('should render the three dots in the correct places', () => {
-        expect(wrapper.getAllByTestId('page')[1].innerHTML).toContain('...')
-        expect(wrapper.getAllByTestId('page')[5].innerHTML).toContain('...')
-        expect(wrapper.queryAllByText('...').length).toBe(2)
+        expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('...')
+        expect(wrapper.getAllByTestId('page')[5]).toHaveTextContent('...')
+        expect(wrapper.queryAllByText('...')).toHaveLength(2)
       })
     })
 
