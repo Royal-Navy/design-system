@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/Royal-Navy/standards-toolkit/compare/2.4.0...2.5.0) (2020-04-22)
+
+
+### Bug Fixes
+
+* **date picker:** centres calendar previous and next arrows. Fixes [#654](https://github.com/Royal-Navy/standards-toolkit/issues/654) ([de5be3a](https://github.com/Royal-Navy/standards-toolkit/commit/de5be3a713a1f6305929b490394a22791a1d7ba4))
+* **toast:** add background colour to component. Fixes [#783](https://github.com/Royal-Navy/standards-toolkit/issues/783) ([a038cd1](https://github.com/Royal-Navy/standards-toolkit/commit/a038cd1cdafea2e8146ebdd10c4f4c253be19807))
+
+
+### Features
+
+* **component library:** Implement Timeline ([59566fd](https://github.com/Royal-Navy/standards-toolkit/commit/59566fdab7d20e0ab126873d8f0af5d2f6e1d5b2))
+* **popover:** Lighten border colour ([1632ba1](https://github.com/Royal-Navy/standards-toolkit/commit/1632ba17bb883b8ba70081f810748784258e6574))
+* **tab set:** Update Tab Set design ([4f2d66a](https://github.com/Royal-Navy/standards-toolkit/commit/4f2d66a9941aa547fa3eb8ae330c6ab60693c4c6))
+
+
+
+
+
 # [2.4.0](https://github.com/Royal-Navy/standards-toolkit/compare/2.3.0...2.4.0) (2020-04-14)
 
 

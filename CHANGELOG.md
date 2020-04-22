@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://thyhjwb6.github.com/Royal-Navy/design-system/compare/2.4.0...2.5.0) (2020-04-22)
+
+
+### Bug Fixes
+
+* **data list:** Set initial expanded state ([417f56e](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/417f56e0fd9bcd0805c279ea6beedeeb12dc69a3))
+* **date picker:** centres calendar previous and next arrows. Fixes [#654](https://thyhjwb6.github.com/Royal-Navy/design-system/issues/654) ([de5be3a](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/de5be3a713a1f6305929b490394a22791a1d7ba4))
+* **docs site:** change footer links hover state. fixes [#796](https://thyhjwb6.github.com/Royal-Navy/design-system/issues/796) ([a27113b](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/a27113b670d12ccbd2ac226cc1ccf76059d099e8))
+* **drawer:** Use useEffect to manage visibility ([efbeff4](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/efbeff4ea9fe9f25ba8235c232da793d1c027e4d))
+* **sidebar:** Set initial open state ([17977a3](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/17977a37b1284d539e21d3c16e166e04ffceaa67))
+* **toast:** add background colour to component. Fixes [#783](https://thyhjwb6.github.com/Royal-Navy/design-system/issues/783) ([a038cd1](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/a038cd1cdafea2e8146ebdd10c4f4c253be19807))
+
+
+### Features
+
+* **component library:** Implement Timeline ([59566fd](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/59566fdab7d20e0ab126873d8f0af5d2f6e1d5b2))
+* **popover:** Lighten border colour ([1632ba1](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/1632ba17bb883b8ba70081f810748784258e6574))
+* **tab set:** Update Tab Set design ([4f2d66a](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/4f2d66a9941aa547fa3eb8ae330c6ab60693c4c6))
+
+
+
+
+
 # [2.4.0](https://thyhjwb6.github.com/Royal-Navy/standards-toolkit/compare/2.3.0...2.4.0) (2020-04-14)
 
 
