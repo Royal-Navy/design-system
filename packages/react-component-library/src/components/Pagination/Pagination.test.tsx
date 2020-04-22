@@ -4,6 +4,8 @@ import { render, fireEvent, RenderResult } from '@testing-library/react'
 
 import Pagination from './index'
 
+afterEach(() => jest.clearAllMocks())
+
 describe('Pagination', () => {
   let wrapper: RenderResult
   let onChangeSpy: () => void
@@ -120,6 +122,7 @@ describe('Pagination', () => {
       })
 
       it('should invoke the onChange function', () => {
+        expect(onChangeSpy).toHaveBeenCalledTimes(2)
         expect(onChangeSpy).toHaveBeenCalledWith(1, 100)
       })
     })
@@ -142,6 +145,7 @@ describe('Pagination', () => {
       })
 
       it('should invoke the onChange function', () => {
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
         expect(onChangeSpy).toHaveBeenCalledWith(2, 100)
       })
     })
@@ -164,6 +168,7 @@ describe('Pagination', () => {
       })
 
       it('should invoke the onChange function', () => {
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
         expect(onChangeSpy).toHaveBeenCalledWith(5, 100)
       })
     })
