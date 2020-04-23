@@ -6,9 +6,9 @@ import { DAY_WIDTH, DATE_WEEK_FORMAT } from './constants'
 import { getKey, isOdd } from './helpers'
 import { TimelineContext } from './context'
 
-export type WeeksProps = ComponentWithClass
+export type TimelineWeeksProps = ComponentWithClass
 
-export const Weeks: React.FC<WeeksProps> = () => {
+export const TimelineWeeks: React.FC<TimelineWeeksProps> = () => {
   return (
     <div className="timeline__weeks">
       <TimelineContext.Consumer>
@@ -44,4 +44,4 @@ export const Weeks: React.FC<WeeksProps> = () => {
   )
 }
 
-Weeks.displayName = 'Weeks'
+TimelineWeeks.displayName = 'TimelineWeeks'

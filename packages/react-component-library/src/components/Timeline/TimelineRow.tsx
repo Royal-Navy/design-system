@@ -2,17 +2,17 @@ import React from 'react'
 import classNames from 'classnames'
 import { differenceInDays } from 'date-fns'
 
+import { DAY_WIDTH } from './constants'
+import { TimelineEventsProps } from '.'
 import { getKey, isOdd } from './helpers'
 import { TimelineContext } from './context'
-import { TimelineEvent } from './context/types'
-import { DAY_WIDTH } from './constants'
-import { Event } from '.'
 
-export interface RowProps extends ComponentWithClass {
-  events: TimelineEvent[]
+export interface TimelineRowProps extends ComponentWithClass {
+  children: React.ReactElement<TimelineEventsProps> | React.ReactElement<TimelineEventsProps>[]
+  name: string
 }
 
-const RowWeeks: React.FC = () => {
+const TimelineRowWeeks: React.FC = () => {
   return (
     <div className="timeline__row-weeks">
       <TimelineContext.Consumer>
@@ -43,32 +43,14 @@ const RowWeeks: React.FC = () => {
   )
 }
 
-const RowEvents: React.FC<RowProps> = ({ events }) => {
+export const TimelineRow: React.FC<TimelineRowProps> = ({ children, className }) => {
+  const classes = classNames('timeline__row', className)
   return (
-    <>
-      {events &&
-        events.map(({ startDate, endDate, status, title }, index) => {
-          return (
-            <Event
-              startDate={startDate}
-              endDate={endDate}
-              status={status}
-              key={getKey('timeline-event', index)}
-              title={title}
-            />
-          )
-        })}
-    </>
-  )
-}
-
-export const Row: React.FC<RowProps> = ({ events }) => {
-  return (
-    <div className="timeline__row">
-      <RowWeeks />
-      <RowEvents events={events} />
+    <div className={classes} data-testid="timeline-row">
+      <TimelineRowWeeks />
+      {children}
     </div>
   )
 }
 
-Row.displayName = 'Row'
+TimelineRow.displayName = 'TimelineRow'

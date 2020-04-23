@@ -1,47 +1,32 @@
 import React from 'react'
 
-import { getKey } from './helpers'
 import { TimelineProvider } from './context'
-
-import { NO_DATA_MESSAGE } from './constants'
-import { Side, Row, TodayMarker, Months, Weeks } from '.'
+import { TimelineSide, TimelineTodayMarker, TimelineMonths, TimelineWeeks, TimelineRowProps } from '.'
+import { TimelineRowsProps } from './TimelineRows'
 
 export interface TimelineProps extends ComponentWithClass {
-  rowData: any[]
+  children: React.ReactElement<TimelineRowsProps>
   startDate?: Date
   today?: Date
 }
 
 export const Timeline: React.FC<TimelineProps> = ({
-  rowData,
+  children,
   startDate,
   today,
 }) => {
-  const isEmpty = !rowData || rowData.length === 0
-
   return (
     <TimelineProvider startDate={startDate} today={today}>
       <article className="timeline">
-        <Side rowData={rowData} />
+        <TimelineSide>{children}</TimelineSide>
         <div className="timeline__inner">
           <header className="timeline__header">
-            <TodayMarker />
-            <Months />
-            <Weeks />
+            <TimelineTodayMarker />
+            <TimelineMonths />
+            <TimelineWeeks />
           </header>
           <main className="timeline__main">
-            {isEmpty && (
-              <span className="timeline__empty" data-testid="timeline-no-data">
-                {NO_DATA_MESSAGE}
-              </span>
-            )}
-
-            {rowData &&
-              rowData.map(({ events }, index) => {
-                return (
-                  <Row events={events} key={getKey('timeline-row', index)} />
-                )
-              })}
+            {children}
           </main>
         </div>
       </article>

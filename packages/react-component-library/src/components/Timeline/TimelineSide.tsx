@@ -5,12 +5,13 @@ import { Button } from '../Button'
 import { getKey } from './helpers'
 import { TimelineContext } from './context'
 import { TIMELINE_ACTIONS } from './context/types'
+import { TimelineRowProps, TimelineRowsProps } from '.'
 
-export interface SideProps extends ComponentWithClass {
-  rowData?: any[]
+export interface TimelineSideProps extends ComponentWithClass {
+  children: React.ReactElement<TimelineRowsProps>
 }
 
-const SideList: React.FC<SideProps> = ({ rowData }) => {
+const TimelineSideList: React.FC<TimelineSideProps> = ({ children }) => {
   return (
     <ol className="timeline__side-list">
       <li className="timeline__side-months">
@@ -19,23 +20,25 @@ const SideList: React.FC<SideProps> = ({ rowData }) => {
       <li className="timeline__side-weeks">
         <span className="timeline__side-title">Weeks</span>
       </li>
-      {rowData &&
-        rowData.map(({ name }, index) => {
+      {React.Children.map(
+        children.props.children,
+        (child: React.ReactElement<TimelineRowProps>, index: number) => {
           return (
             <li
               className="timeline__side-row"
               key={getKey('operation-side-row', index)}
-              data-testid="side-row"
+              data-testid="timeline-side-row"
             >
-              <span className="timeline__side-title">{name}</span>
+              <span className="timeline__side-title">{child.props.name}</span>
             </li>
           )
-        })}
+        }
+      )}
     </ol>
   )
 }
 
-export const Side: React.FC<SideProps> = ({ rowData }) => {
+export const TimelineSide: React.FC<TimelineSideProps> = ({ children }) => {
   return (
     <TimelineContext.Consumer>
       {({ dispatch }) => {
@@ -46,16 +49,16 @@ export const Side: React.FC<SideProps> = ({ rowData }) => {
                 variant="secondary"
                 icon={<IconChevronLeft />}
                 onClick={_ => dispatch({ type: TIMELINE_ACTIONS.GET_PREV })}
-                data-testid="side-button-left"
+                data-testid="timeline-side-button-left"
               />
               <Button
                 variant="secondary"
                 icon={<IconChevronRight />}
                 onClick={_ => dispatch({ type: TIMELINE_ACTIONS.GET_NEXT })}
-                data-testid="side-button-right"
+                data-testid="timeline-side-button-right"
               />
             </div>
-            <SideList rowData={rowData} />
+            <TimelineSideList>{children}</TimelineSideList>
           </aside>
         )
       }}
@@ -63,4 +66,4 @@ export const Side: React.FC<SideProps> = ({ rowData }) => {
   )
 }
 
-Side.displayName = 'Side'
+TimelineSide.displayName = 'Side'

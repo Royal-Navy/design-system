@@ -5,9 +5,9 @@ import { getKey } from './helpers'
 import { TimelineContext } from './context'
 import { DAY_WIDTH, DATE_MONTH_FORMAT } from './constants'
 
-export type MonthsProps = ComponentWithClass
+export type TimelineMonthsProps = ComponentWithClass
 
-export const Months: React.FC<MonthsProps> = () => {
+export const TimelineMonths: React.FC<TimelineMonthsProps> = () => {
   return (
     <TimelineContext.Consumer>
       {({ state: { months } }) => (
@@ -40,4 +40,4 @@ export const Months: React.FC<MonthsProps> = () => {
   )
 }
 
-Months.displayName = 'Months'
+TimelineMonths.displayName = 'TimelineMonths'
