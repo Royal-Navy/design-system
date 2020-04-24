@@ -97,8 +97,6 @@ describe('Timeline', () => {
 
   describe('when an event is outside the range', () => {
     beforeEach(() => {
-      console.log('starting')
-
       const EventWithinRange: React.FC = () => (
         <TimelineEvent
           startDate={new Date(2020, 1, 1, 0, 0, 0)}
