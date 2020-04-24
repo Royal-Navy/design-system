@@ -21,21 +21,24 @@ import {
   TimelineDay
 } from './types'
 
-// TODO: move start date out of this and return TimelineMonth[]
 export function getMonths(
   date: Date,
   state: TimelineState
-) {
+): {
+  startDate: Date,
+  months: TimelineMonth[]
+} {
   const { options: { range } } = state
 
   const months = Array.from({ length: range })
-    .map((_, monthIndex) => {
-      const month = getMonth(date)
-      const newDate = setMonth(date, month + monthIndex)
+    .map((_, index) => {
+      const monthIndex = getMonth(date) + index
+
+      const newDate = setMonth(date, monthIndex)
       const startDate = startOfMonth(newDate)
 
       return {
-        monthIndex: month + monthIndex,
+        monthIndex,
         startDate
       }
     })
@@ -97,7 +100,10 @@ export function getDays(
   return days
 }
 
-export function reducer(state: TimelineState, action: TimelineAction) {
+export function reducer(
+  state: TimelineState,
+  action: TimelineAction
+): TimelineState | never {
   switch (action.type) {
     case TIMELINE_ACTIONS.SET_DATE:
       return {
