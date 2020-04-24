@@ -20,6 +20,9 @@ const TimelineSideList: React.FC<TimelineSideProps> = ({ children }) => {
       <li className="timeline__side-weeks">
         <span className="timeline__side-title">Weeks</span>
       </li>
+      <li className="timeline__side-days">
+        <span className="timeline__side-title">Days</span>
+      </li>
       {React.Children.map(
         children.props.children,
         (child: React.ReactElement<TimelineRowProps>, index: number) => {

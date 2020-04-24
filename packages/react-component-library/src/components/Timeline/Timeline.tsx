@@ -1,7 +1,15 @@
 import React from 'react'
 
 import { TimelineProvider } from './context'
-import { TimelineSide, TimelineTodayMarker, TimelineMonths, TimelineWeeks, TimelineRowProps } from '.'
+
+import {
+  TimelineSide,
+  TimelineTodayMarker,
+  TimelineMonths,
+  TimelineWeeks,
+  TimelineDays,
+} from '.'
+
 import { TimelineRowsProps } from './TimelineRows'
 
 export interface TimelineProps extends ComponentWithClass {
@@ -24,10 +32,9 @@ export const Timeline: React.FC<TimelineProps> = ({
             <TimelineTodayMarker />
             <TimelineMonths />
             <TimelineWeeks />
+            <TimelineDays />
           </header>
-          <main className="timeline__main">
-            {children}
-          </main>
+          <main className="timeline__main">{children}</main>
         </div>
       </article>
     </TimelineProvider>
