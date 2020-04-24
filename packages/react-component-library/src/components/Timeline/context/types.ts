@@ -12,6 +12,11 @@ export type TimelineEvent = {
   status: string
 }
 
+export type TimelineDay = {
+  dayIndex: number
+  date: Date
+}
+
 export type TimelineWeek = {
   weekIndex: number
   startDate: Date
@@ -27,6 +32,7 @@ export type TimelineState = {
   startDate: null | Date
   months: TimelineMonth[]
   weeks: TimelineWeek[]
+  days: TimelineDay[]
   options: TimelineOptions
 }
 

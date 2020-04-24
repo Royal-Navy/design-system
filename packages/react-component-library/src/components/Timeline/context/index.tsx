@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react'
-import { getMonths, reducer, getWeeks } from './reducer'
+import { reducer, getMonths, getWeeks, getDays } from './reducer'
 
 import {
   TimelineState,
@@ -13,12 +13,17 @@ const initialState: TimelineState = {
   startDate: null,
   months: [],
   weeks: [],
+  days: [],
   options: {
     range: 3, // months
   },
 }
 
-function initialize(startDate: Date, today: Date, options: TimelineOptions) {
+function initialize(
+  startDate: Date,
+  today: Date,
+  options: TimelineOptions
+): TimelineState {
   const state = {
     ...initialState,
     today,
@@ -30,6 +35,7 @@ function initialize(startDate: Date, today: Date, options: TimelineOptions) {
     ...state,
     ...getMonths(startDate, state),
     weeks: getWeeks(startDate, state),
+    days: getDays(startDate, state),
   }
 }
 

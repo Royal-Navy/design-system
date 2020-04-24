@@ -4,7 +4,7 @@ $timeline-border-color: f.color("neutral", "100");
 $timeline-bg-color: f.color("neutral", "000");
 $timeline-alt-bg-color: f.color("neutral", "white");
 
-$day-width: 20px;
+$day-width: 30px;
 $week-width: $day-width * 7;
 
 .sb-show-main {
@@ -23,6 +23,7 @@ $week-width: $day-width * 7;
   margin-left: 16rem;
   border-bottom: 1px solid $timeline-border-color;
   border-right: 1px solid $timeline-border-color;
+  padding-bottom: f.spacing("4");
 }
 
 .timeline__header {
@@ -129,8 +130,13 @@ $week-width: $day-width * 7;
   height: 2.5rem;
 }
 
+.timeline__side-days {
+  height: 2.5rem;
+}
+
 .timeline__side-months,
-.timeline__side-weeks {
+.timeline__side-weeks,
+.timeline__side-days {
   .timeline__side-title {
     font-size: f.font-size("s");
     color: f.color("neutral", "400");
@@ -138,7 +144,7 @@ $week-width: $day-width * 7;
 }
 
 .timeline__side-row {
-  height: 5rem;
+  height: 4rem;
 
   .timeline__side-title {
     font-weight: 600;
@@ -194,11 +200,13 @@ $week-width: $day-width * 7;
   padding-left: f.spacing("8");
 }
 
-.timeline__weeks {
+.timeline__weeks,
+.timeline__days {
   white-space: nowrap;
 }
 
-.timeline__week {
+.timeline__week,
+.timeline__day {
   display: inline-flex;
   align-items: center;
   width: $week-width;
@@ -208,7 +216,8 @@ $week-width: $day-width * 7;
   border-bottom: 1px solid $timeline-border-color;
 }
 
-.timeline__week-title {
+.timeline__week-title,
+.timeline__day-title {
   font-weight: 600;
   font-size: f.font-size("m");
   color: f.color("neutral", "400");
@@ -225,9 +234,17 @@ $week-width: $day-width * 7;
   }
 }
 
+.timeline__day {
+  border-right: 1px solid f.color("neutral", "100");
+}
+
+.timeline__day-title {
+  font-size: f.font-size("xs");
+}
+
 .timeline__row {
   position: relative;
-  height: 5rem;
+  height: 4rem;
 }
 
 .timeline__row-weeks {

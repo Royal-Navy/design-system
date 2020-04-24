@@ -6,19 +6,50 @@ import {
   endOfMonth,
   differenceInWeeks,
   addWeeks,
-  startOfWeek
+  startOfWeek,
+  getDaysInMonth,
+  setDate,
+  getYear
 } from 'date-fns'
 
 import {
   TimelineState,
   TimelineAction,
-  TIMELINE_ACTIONS
+  TIMELINE_ACTIONS,
+  TimelineMonth,
+  TimelineWeek,
+  TimelineDay
 } from './types'
+
+// TODO: move start date out of this and return TimelineMonth[]
+export function getMonths(
+  date: Date,
+  state: TimelineState
+) {
+  const { options: { range } } = state
+
+  const months = Array.from({ length: range })
+    .map((_, monthIndex) => {
+      const month = getMonth(date)
+      const newDate = setMonth(date, month + monthIndex)
+      const startDate = startOfMonth(newDate)
+
+      return {
+        monthIndex: month + monthIndex,
+        startDate
+      }
+    })
+
+  return {
+    startDate: months[0].startDate,
+    months
+  }
+}
 
 export function getWeeks(
   date: Date,
   state: TimelineState
-) {
+): TimelineWeek[] {
   const { options: { range } } = state
 
   const month = getMonth(date)
@@ -44,28 +75,26 @@ export function getWeeks(
   return weeks
 }
 
-export function getMonths(
+export function getDays(
   date: Date,
   state: TimelineState
-) {
-  const { options: { range } } = state
+): TimelineDay[] {
+  const { months } = getMonths(date, state)
+  const year = getYear(date)
 
-  const months = Array.from({ length: range })
-    .map((_, monthIndex) => {
-      const month = getMonth(date)
-      const newDate = setMonth(date, month + monthIndex)
-      const startDate = startOfMonth(newDate)
+  const days = months.flatMap(({ monthIndex }) => {
+    const total = getDaysInMonth(new Date(year, monthIndex))
+    const arr = [...Array(total).keys()].map(i => i+1) // [1, ..., ~31]
 
+    return arr.map((day, dayIndex) => {
       return {
-        monthIndex: month + monthIndex,
-        startDate
+        dayIndex,
+        date: setDate(setMonth(date, monthIndex), day)
       }
     })
+  })
 
-  return {
-    startDate: months[0].startDate,
-    months
-  }
+  return days
 }
 
 export function reducer(state: TimelineState, action: TimelineAction) {
@@ -79,13 +108,15 @@ export function reducer(state: TimelineState, action: TimelineAction) {
       return {
         ...state,
         ...getMonths(addMonths(state.startDate, state.options.range), state),
-        weeks: getWeeks(addMonths(state.startDate, state.options.range), state)
+        weeks: getWeeks(addMonths(state.startDate, state.options.range), state),
+        days: getDays(addMonths(state.startDate, state.options.range), state)
       }
     case TIMELINE_ACTIONS.GET_PREV:
       return {
         ...state,
         ...getMonths(addMonths(state.startDate, -state.options.range), state),
-        weeks: getWeeks(addMonths(state.startDate, -state.options.range), state)
+        weeks: getWeeks(addMonths(state.startDate, -state.options.range), state),
+        days: getDays(addMonths(state.startDate, -state.options.range), state)
       }
     default:
       throw new Error('Unknown reducer action')
