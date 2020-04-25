@@ -53,12 +53,10 @@ export function getWeeks(
   date: Date,
   state: TimelineState
 ): TimelineWeek[] {
-  const { options: { range } } = state
+  const { months } = getMonths(date, state)
 
-  const month = getMonth(date)
-
-  const startDate = startOfMonth(date)
-  const endDate = endOfMonth(setMonth(date, (month + range - 1)))
+  const startDate = months[0].startDate
+  const endDate = endOfMonth(months[months.length - 1].startDate)
 
   const diffInWeeks = differenceInWeeks(endDate, startDate)
 
@@ -87,7 +85,7 @@ export function getDays(
 
   const days = months.flatMap(({ monthIndex }) => {
     const total = getDaysInMonth(new Date(year, monthIndex))
-    const arr = [...Array(total).keys()].map(i => i+1) // [1, ..., ~31]
+    const arr = [...Array(total).keys()].map(i => i + 1) // [1, ..., ~31]
 
     return arr.map((day, dayIndex) => {
       return {
