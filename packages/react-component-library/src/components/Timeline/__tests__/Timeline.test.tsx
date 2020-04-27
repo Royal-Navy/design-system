@@ -1,8 +1,15 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
+import { renderToStaticMarkup } from 'react-dom/server'
 
-import { TimelineEvent, TimelineEvents, TimelineRow, TimelineRows, Timeline } from '..'
+import {
+  TimelineEvent,
+  TimelineEvents,
+  TimelineRow,
+  TimelineRows,
+  Timeline,
+} from '..'
 
 const COMPLETED = 'COMPLETED'
 
@@ -97,8 +104,6 @@ describe('Timeline', () => {
 
   describe('when an event is outside the range', () => {
     beforeEach(() => {
-      console.log('starting')
-
       const EventWithinRange: React.FC = () => (
         <TimelineEvent
           startDate={new Date(2020, 1, 1, 0, 0, 0)}
@@ -131,11 +136,43 @@ describe('Timeline', () => {
           </TimelineRows>
         </Timeline>
       )
-
     })
 
     it('renders the correct number of events', () => {
       expect(wrapper.queryAllByTestId('timeline-event-wrapper')).toHaveLength(1)
+    })
+  })
+
+  describe('when an event has `render` specified', () => {
+    const CUSTOM_EVENT = <div>custom event</div>
+
+    beforeEach(() => {
+      const EventWithRender: React.FC = () => (
+        <TimelineEvent
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          endDate={new Date(2020, 1, 10, 0, 0, 0)}
+          status={COMPLETED}
+          render={() => CUSTOM_EVENT}
+        />
+      )
+
+      wrapper = render(
+        <Timeline startDate={new Date(2020, 1, 1, 0, 0, 0)}>
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <EventWithRender />
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the event as specified', () => {
+      expect(wrapper.getByTestId('timeline-event-wrapper').innerHTML).toEqual(
+        renderToStaticMarkup(CUSTOM_EVENT)
+      )
     })
   })
 })
