@@ -3,7 +3,7 @@ import { format, getDaysInMonth } from 'date-fns'
 
 import { getKey } from './helpers'
 import { TimelineContext } from './context'
-import { DAY_WIDTH, DATE_MONTH_FORMAT } from './constants'
+import { DEFAULTS, DATE_MONTH_FORMAT } from './constants'
 
 export type TimelineMonthsProps = ComponentWithClass
 
@@ -21,7 +21,7 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = () => {
                   className="timeline__month"
                   key={getKey('timeline-month', index)}
                   style={{
-                    width: `${days * DAY_WIDTH}px`,
+                    width: `${days * DEFAULTS.DAY_WIDTH}px`,
                   }}
                   data-testid="timeline-month"
                 >

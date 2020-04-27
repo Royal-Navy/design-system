@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { differenceInDays } from 'date-fns'
 
-import { DAY_WIDTH } from './constants'
+import { DEFAULTS } from './constants'
 import { TimelineEventsProps } from '.'
 import { getKey, isOdd } from './helpers'
 import { TimelineContext } from './context'
@@ -33,7 +33,7 @@ const TimelineRowWeeks: React.FC = () => {
               <div
                 className={classes}
                 key={getKey('timeline-row-week', index)}
-                style={{ marginLeft: `${offset * DAY_WIDTH}px` }}
+                style={{ marginLeft: `${offset * DEFAULTS.DAY_WIDTH}px` }}
               />
             )
           })

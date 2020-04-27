@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { format, differenceInDays } from 'date-fns'
 
-import { DAY_WIDTH, DATE_WEEK_FORMAT } from './constants'
+import { DEFAULTS, DATE_WEEK_FORMAT } from './constants'
 import { getKey, isOdd } from './helpers'
 import { TimelineContext } from './context'
 
@@ -29,7 +29,7 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = () => {
               <div
                 className={classes}
                 key={getKey('timeline-week', index)}
-                style={{ marginLeft: `${offset * DAY_WIDTH}px` }}
+                style={{ marginLeft: `${offset * DEFAULTS.DAY_WIDTH}px` }}
                 data-testid="timeline-week"
               >
                 <span className="timeline__week-title">

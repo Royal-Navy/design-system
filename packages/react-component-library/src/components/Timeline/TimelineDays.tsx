@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 
 import { getKey } from './helpers'
 import { TimelineContext } from './context'
-import { DAY_WIDTH, DATE_DAY_FORMAT } from './constants'
+import { DATE_DAY_FORMAT, DEFAULTS } from './constants'
 
 export type TimelineDaysProps = ComponentWithClass
 
@@ -19,7 +19,7 @@ export const TimelineDays: React.FC<TimelineDaysProps> = () => {
                   className="timeline__day"
                   key={getKey('timeline-day', index)}
                   style={{
-                    width: `${DAY_WIDTH}px`,
+                    width: `${DEFAULTS.DAY_WIDTH}px`,
                   }}
                   data-testid="timeline-day"
                 >

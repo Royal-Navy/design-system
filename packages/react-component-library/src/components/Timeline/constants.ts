@@ -1,7 +1,18 @@
-export const DAY_WIDTH = 30
+const DATE_DAY_FORMAT = 'dd'
+const DATE_MONTH_FORMAT = 'MMMM yyyy'
+const DATE_WEEK_FORMAT = 'dd/MM'
 
-export const DATE_MONTH_FORMAT = 'MMMM yyyy'
-export const DATE_WEEK_FORMAT = 'dd/MM'
-export const DATE_DAY_FORMAT = 'dd'
+const DEFAULTS = {
+  DAY_WIDTH: 30,
+  RANGE_IN_MONTHS: 3,
+} as const
 
-export const NO_DATA_MESSAGE = 'No data available'
+const NO_DATA_MESSAGE = 'No data available'
+
+export {
+  DATE_DAY_FORMAT,
+  DATE_MONTH_FORMAT,
+  DATE_WEEK_FORMAT,
+  DEFAULTS,
+  NO_DATA_MESSAGE,
+}
