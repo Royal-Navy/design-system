@@ -6,7 +6,7 @@ import { TimelineProvider, TimelineContext } from '../context'
 import { TIMELINE_ACTIONS } from '../context/types'
 import { TimelineTodayMarker } from '../TimelineTodayMarker'
 
-describe('TodayMarker', () => {
+describe('TimelineTodayMarker', () => {
   let wrapper: RenderResult
 
   describe('today is within range', () => {

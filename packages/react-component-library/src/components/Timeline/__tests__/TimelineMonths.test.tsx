@@ -5,7 +5,7 @@ import { render, RenderResult } from '@testing-library/react'
 import { TimelineProvider } from '../context'
 import { TimelineMonths } from '../TimelineMonths'
 
-describe('Months', () => {
+describe('TimelineMonths', () => {
   let wrapper: RenderResult
 
   describe('default props', () => {

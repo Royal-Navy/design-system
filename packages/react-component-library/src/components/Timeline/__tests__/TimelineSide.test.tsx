@@ -13,7 +13,7 @@ import { TimelineEvent, TimelineEvents, TimelineRow, TimelineRows } from '..'
 
 jest.mock('../context')
 
-describe('Side', () => {
+describe('TimelineSide', () => {
   let wrapper: RenderResult
 
   describe('default props', () => {
