@@ -42,7 +42,7 @@
     "@royalnavy/css-framework": "^2.6.0-alpha.4",
     "@royalnavy/icon-library": "^2.6.0-alpha.4",
     "@royalnavy/react-component-library": "^2.6.0-alpha.4",
-    "change-case": "^3.1.0",
+    "change-case": "^4.1.1",
     "gatsby": "^2.19.5",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-catch-links": "^2.1.24",
