@@ -1,7 +1,7 @@
 import { Dispatch } from 'react'
 
 export type TimelineOptions = {
-  range: number
+  rangeInMonths: number
 }
 
 export type TimelineEvent = {

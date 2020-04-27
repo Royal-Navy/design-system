@@ -12,21 +12,17 @@ describe('TimelineContext reducer', () => {
     let dates: {
       months: TimelineMonth[]
     }
-    const range = 3
+    const rangeInMonths = 3
 
     beforeEach(() => {
       dates = getMonths(
         new Date(2020, 3, 1, 0, 0, 0),
-        {
-          options: {
-            range
-          }
-        } as TimelineState
+        rangeInMonths,
       )
     })
 
     it('returns the correct number of months', () => {
-      expect(dates.months.length).toBe(range)
+      expect(dates.months.length).toBe(rangeInMonths)
     })
 
     it('returns the correct month start dates', () => {
@@ -43,16 +39,12 @@ describe('TimelineContext reducer', () => {
 
   describe('getWeeks', () => {
     let weeks: TimelineWeek[]
-    const range = 3
+    const rangeInMonths = 3
 
     beforeEach(() => {
       weeks = getWeeks(
         new Date(2020, 3, 1, 0, 0, 0),
-        {
-          options: {
-            range
-          }
-        } as TimelineState
+        rangeInMonths,
       )
     })
 
@@ -80,16 +72,12 @@ describe('TimelineContext reducer', () => {
 
   describe('getDays', () => {
     let days: TimelineDay[]
-    const range = 1
+    const rangeInMonths = 1
 
     beforeEach(() => {
       days = getDays(
         new Date(2020, 3, 1, 0, 0, 0),
-        {
-          options: {
-            range
-          }
-        } as TimelineState
+        rangeInMonths,
       )
     })
 
