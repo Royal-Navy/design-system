@@ -2,13 +2,14 @@ import React from 'react'
 import classNames from 'classnames'
 import { differenceInDays } from 'date-fns'
 
-import { DEFAULTS } from './constants'
 import { TimelineEventsProps } from '.'
-import { getKey, isOdd } from './helpers'
+import { formatPx, getKey, isOdd } from './helpers'
 import { TimelineContext } from './context'
 
 export interface TimelineRowProps extends ComponentWithClass {
-  children: React.ReactElement<TimelineEventsProps> | React.ReactElement<TimelineEventsProps>[]
+  children:
+    | React.ReactElement<TimelineEventsProps>
+    | React.ReactElement<TimelineEventsProps>[]
   name: string
 }
 
@@ -16,7 +17,7 @@ const TimelineRowWeeks: React.FC = () => {
   return (
     <div className="timeline__row-weeks">
       <TimelineContext.Consumer>
-        {({ state: { months, weeks } }) => {
+        {({ state: { months, weeks, options } }) => {
           return weeks.map(({ startDate }, index) => {
             const diff = differenceInDays(
               new Date(startDate),
@@ -33,7 +34,10 @@ const TimelineRowWeeks: React.FC = () => {
               <div
                 className={classes}
                 key={getKey('timeline-row-week', index)}
-                style={{ marginLeft: `${offset * DEFAULTS.DAY_WIDTH}px` }}
+                style={{
+                  marginLeft: formatPx(options.dayWidth, offset),
+                  width: formatPx(options.dayWidth, 7),
+                }}
               />
             )
           })
@@ -43,7 +47,10 @@ const TimelineRowWeeks: React.FC = () => {
   )
 }
 
-export const TimelineRow: React.FC<TimelineRowProps> = ({ children, className }) => {
+export const TimelineRow: React.FC<TimelineRowProps> = ({
+  children,
+  className,
+}) => {
   const classes = classNames('timeline__row', className)
   return (
     <div className={classes} data-testid="timeline-row">

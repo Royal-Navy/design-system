@@ -1,16 +1,16 @@
 import React from 'react'
 import { format, getDaysInMonth } from 'date-fns'
 
-import { getKey } from './helpers'
+import { formatPx, getKey } from './helpers'
 import { TimelineContext } from './context'
-import { DEFAULTS, DATE_MONTH_FORMAT } from './constants'
+import { DATE_MONTH_FORMAT } from './constants'
 
 export type TimelineMonthsProps = ComponentWithClass
 
 export const TimelineMonths: React.FC<TimelineMonthsProps> = () => {
   return (
     <TimelineContext.Consumer>
-      {({ state: { months } }) => (
+      {({ state: { months, options} }) => (
         <div className="timeline__months">
           {months &&
             months.map(({ startDate }, index) => {
@@ -21,7 +21,7 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = () => {
                   className="timeline__month"
                   key={getKey('timeline-month', index)}
                   style={{
-                    width: `${days * DEFAULTS.DAY_WIDTH}px`,
+                    width: formatPx(options.dayWidth, days),
                   }}
                   data-testid="timeline-month"
                 >

@@ -10,7 +10,7 @@ export type TimelineDaysProps = ComponentWithClass
 export const TimelineDays: React.FC<TimelineDaysProps> = () => {
   return (
     <TimelineContext.Consumer>
-      {({ state: { days } }) => (
+      {({ state: { days, options } }) => (
         <div className="timeline__days">
           {days &&
             days.map(({ date }, index) => {
@@ -19,7 +19,7 @@ export const TimelineDays: React.FC<TimelineDaysProps> = () => {
                   className="timeline__day"
                   key={getKey('timeline-day', index)}
                   style={{
-                    width: `${DEFAULTS.DAY_WIDTH}px`,
+                    width: `${options.dayWidth}px`,
                   }}
                   data-testid="timeline-day"
                 >

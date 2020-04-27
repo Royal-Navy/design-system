@@ -1,6 +1,7 @@
 import { Dispatch } from 'react'
 
 export type TimelineOptions = {
+  dayWidth: number,
   rangeInMonths: number
 }
 

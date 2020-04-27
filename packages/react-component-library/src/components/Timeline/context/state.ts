@@ -1,13 +1,10 @@
-import { DEFAULTS } from '../constants'
 import { getDays, getMonths, getWeeks } from './reducer'
 import { TimelineOptions, TimelineState } from './types'
 
 const initialState: TimelineState = {
   days: [],
   months: [],
-  options: {
-    rangeInMonths: DEFAULTS.RANGE_IN_MONTHS,
-  },
+  options: null,
   startDate: null,
   today: new Date(),
   weeks: [],

@@ -7,6 +7,7 @@ const state: TimelineState = {
   weeks: [],
   days: [],
   options: {
+    dayWidth: 30,
     rangeInMonths: 3,
   },
 }

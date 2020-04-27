@@ -2,7 +2,6 @@ import React from 'react'
 import classNames from 'classnames'
 import { format } from 'date-fns'
 
-import { DEFAULTS } from './constants'
 import { useTimelinePosition } from './hooks/useTimelinePosition'
 
 export interface TimelineEventWithRenderContentProps
@@ -26,7 +25,7 @@ export type TimelineEventProps =
   | TimelineEventWithRenderContentProps
   | TimelineEventWithChildrenProps
 
-function renderDefault(children: string, startDate: Date, width: number) {
+function renderDefault(children: string, startDate: Date, width: string) {
   return (
     <>
       <span
@@ -37,7 +36,7 @@ function renderDefault(children: string, startDate: Date, width: number) {
       </span>
       <div
         className="timeline__event-bar"
-        style={{ width: `${width * DEFAULTS.DAY_WIDTH}px` }}
+        style={{ width }}
       />
     </>
   )
@@ -66,7 +65,7 @@ export const TimelineEvent: React.FC<TimelineEventProps> = ({
   return (
     <div
       className={classes}
-      style={{ left: `${offset * DEFAULTS.DAY_WIDTH}px` }}
+      style={{ left: offset }}
       data-testid="timeline-event-wrapper"
     >
       {render ? render() : renderDefault(children, startDate, width)}

@@ -77,6 +77,33 @@ describe('Timeline', () => {
       )
     })
 
+    it('should display the today marker', () => {
+      expect(wrapper.queryByTestId('timeline-today-marker')).toBeInTheDocument()
+    })
+
+    it('renders the correct number of months', () => {
+      expect(wrapper.queryAllByTestId('timeline-month').length).toEqual(3)
+    })
+
+    it('renders the month title in correct format', () => {
+      expect(
+        wrapper.getAllByTestId('timeline-month-title')[0].innerHTML
+      ).toContain('April 2020')
+    })
+
+    it('renders the correct number of weeks', () => {
+      expect(wrapper.queryAllByTestId('timeline-week').length).toEqual(13)
+    })
+
+    it('applies the --alt modifier class to odd weeks', () => {
+      expect(wrapper.getAllByTestId('timeline-week')[1].classList).toContain(
+        'timeline__week--alt'
+      )
+      expect(wrapper.getAllByTestId('timeline-week')[3].classList).toContain(
+        'timeline__week--alt'
+      )
+    })
+
     it('does not display the no data message', () => {
       expect(wrapper.queryByTestId('timeline-no-data')).not.toBeInTheDocument()
     })
