@@ -9773,11 +9773,11 @@ gatsby-page-utils@^0.0.37:
     micromatch "^3.1.10"
 
 gatsby-plugin-catch-links@^2.1.24:
-  version "2.1.27"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-2.1.27.tgz#c89fdaa631a3618520f5b978522c35d1852d23a0"
-  integrity sha512-OOujJiiI0F0YtGUq5lDWNqjccBpn+5h253xgqHCaimyy25SUyL/ApL1CBY/mRuPCw+53JYQBpI8hTNAW77wnzA==
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-2.2.4.tgz#36852eccea4c7ac737370859b33107fc0865f343"
+  integrity sha512-3gIgdVcjaSiGa+qMRDEu1yLFK5qWNPf8+/0yjIKAX/3OLR1BQb8bLicOZ4cSQkGNUER6MlFG7ddCx45X4JDNOQ==
   dependencies:
-    "@babel/runtime" "^7.7.6"
+    "@babel/runtime" "^7.8.7"
     escape-string-regexp "^1.0.5"
 
 gatsby-plugin-manifest@^2.2.38:
