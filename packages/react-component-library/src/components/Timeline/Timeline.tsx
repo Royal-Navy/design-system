@@ -3,14 +3,13 @@ import React from 'react'
 import { TimelineProvider } from './context'
 
 import {
+  TimelineDays,
+  TimelineMonths,
+  TimelineRowsProps,
   TimelineSide,
   TimelineTodayMarker,
-  TimelineMonths,
   TimelineWeeks,
-  TimelineDays,
 } from '.'
-
-import { TimelineRowsProps } from './TimelineRows'
 
 export interface TimelineProps extends ComponentWithClass {
   children: React.ReactElement<TimelineRowsProps>
