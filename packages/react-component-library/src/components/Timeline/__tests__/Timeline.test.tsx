@@ -25,6 +25,10 @@ describe('Timeline', () => {
       )
     })
 
+    it('should display the today marker', () => {
+      expect(wrapper.queryByTestId('timeline-today-marker')).toBeInTheDocument()
+    })
+
     it('should display the no data message', () => {
       expect(wrapper.queryByTestId('timeline-no-data')).toBeInTheDocument()
     })
@@ -200,6 +204,35 @@ describe('Timeline', () => {
       expect(wrapper.getByTestId('timeline-event-wrapper').innerHTML).toEqual(
         renderToStaticMarkup(CUSTOM_EVENT)
       )
+    })
+  })
+
+  describe('when today is not within range', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 4, 1, 0, 0, 0)}
+        >
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 1, 1, 0, 0, 0)}
+                  endDate={new Date(2020, 1, 10, 0, 0, 0)}
+                  status={COMPLETED}
+                >
+                  Event
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should not display the today marker', () => {
+      expect(wrapper.queryAllByTestId('timeline-today-marker')).toHaveLength(0)
     })
   })
 })

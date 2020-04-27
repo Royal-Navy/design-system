@@ -39,14 +39,12 @@ export type TimelineState = {
 
 export enum TIMELINE_ACTIONS {
   GET_NEXT,
-  GET_PREV,
-  SET_DATE
+  GET_PREV
 }
 
 export type TimelineAction =
   | { type: TIMELINE_ACTIONS.GET_NEXT }
   | { type: TIMELINE_ACTIONS.GET_PREV }
-  | { type: TIMELINE_ACTIONS.SET_DATE, date: Date }
 
 export interface TimelineContextDefault {
   state: TimelineState
