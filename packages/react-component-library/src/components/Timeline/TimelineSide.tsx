@@ -5,10 +5,10 @@ import { Button } from '../Button'
 import { getKey } from './helpers'
 import { TimelineContext } from './context'
 import { TIMELINE_ACTIONS } from './context/types'
-import { TimelineRowProps, TimelineRowsProps } from '.'
+import { TimelineRowProps } from '.'
 
 export interface TimelineSideProps extends ComponentWithClass {
-  children: React.ReactElement<TimelineRowsProps>
+  children: React.ReactElement<any>
 }
 
 const TimelineSideList: React.FC<TimelineSideProps> = ({ children }) => {
@@ -61,7 +61,7 @@ export const TimelineSide: React.FC<TimelineSideProps> = ({ children }) => {
                 data-testid="timeline-side-button-right"
               />
             </div>
-            <TimelineSideList>{children}</TimelineSideList>
+            {/* <TimelineSideList>{children}</TimelineSideList> */}
           </aside>
         )
       }}

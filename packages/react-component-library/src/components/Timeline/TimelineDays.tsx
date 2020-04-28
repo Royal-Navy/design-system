@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 
 import { getKey } from './helpers'
 import { TimelineContext } from './context'
-import { DATE_DAY_FORMAT, DEFAULTS } from './constants'
+import { DATE_DAY_FORMAT } from './constants'
 
 export type TimelineDaysProps = ComponentWithClass
 
