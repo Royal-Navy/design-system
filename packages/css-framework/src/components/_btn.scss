@@ -56,7 +56,7 @@ $btn-focus-width: 0.2rem;
 // States
 .rn-btn--primary {
 
-  background: linear-gradient(to bottom, f.color("action", "400"), f.color("action", "500"));
+  background: linear-gradient(to bottom, f.color("action", "500"), f.color("action", "600"));
   color: f.color("neutral", "white");
   position: relative;
   &::before {
