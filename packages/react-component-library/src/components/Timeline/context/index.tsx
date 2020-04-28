@@ -1,43 +1,8 @@
 import React, { createContext, useReducer } from 'react'
-import { reducer, getMonths, getWeeks, getDays } from './reducer'
 
-import {
-  TimelineState,
-  TimelineOptions,
-  TimelineContextDefault,
-  TimelineProviderProps,
-} from './types'
-
-const initialState: TimelineState = {
-  today: new Date(),
-  startDate: null,
-  months: [],
-  weeks: [],
-  days: [],
-  options: {
-    range: 3, // months
-  },
-}
-
-function initialize(
-  startDate: Date,
-  today: Date,
-  options: TimelineOptions
-): TimelineState {
-  const state = {
-    ...initialState,
-    today,
-    startDate,
-    options: { ...initialState.options, ...options },
-  }
-
-  return {
-    ...state,
-    ...getMonths(startDate, state),
-    weeks: getWeeks(startDate, state),
-    days: getDays(startDate, state),
-  }
-}
+import { initialState, initialiseState } from './state'
+import { reducer } from './reducer'
+import { TimelineContextDefault, TimelineProviderProps } from './types'
 
 const timelineContextDefaults: TimelineContextDefault = {
   state: initialState,
@@ -53,7 +18,7 @@ export const TimelineProvider: React.FC<TimelineProviderProps> = ({
   options,
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState, () =>
-    initialize(startDate || new Date(), today || new Date(), options)
+    initialiseState(startDate, today, options)
   )
 
   return (

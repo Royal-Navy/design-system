@@ -25,6 +25,10 @@ describe('Timeline', () => {
       )
     })
 
+    it('should display the today marker', () => {
+      expect(wrapper.queryByTestId('timeline-today-marker')).toBeInTheDocument()
+    })
+
     it('should display the no data message', () => {
       expect(wrapper.queryByTestId('timeline-no-data')).toBeInTheDocument()
     })
@@ -74,6 +78,33 @@ describe('Timeline', () => {
             </TimelineRow>
           </TimelineRows>
         </Timeline>
+      )
+    })
+
+    it('should display the today marker', () => {
+      expect(wrapper.queryByTestId('timeline-today-marker')).toBeInTheDocument()
+    })
+
+    it('renders the correct number of months', () => {
+      expect(wrapper.queryAllByTestId('timeline-month').length).toEqual(3)
+    })
+
+    it('renders the month title in correct format', () => {
+      expect(
+        wrapper.getAllByTestId('timeline-month-title')[0].innerHTML
+      ).toContain('April 2020')
+    })
+
+    it('renders the correct number of weeks', () => {
+      expect(wrapper.queryAllByTestId('timeline-week').length).toEqual(13)
+    })
+
+    it('applies the --alt modifier class to odd weeks', () => {
+      expect(wrapper.getAllByTestId('timeline-week')[1].classList).toContain(
+        'timeline__week--alt'
+      )
+      expect(wrapper.getAllByTestId('timeline-week')[3].classList).toContain(
+        'timeline__week--alt'
       )
     })
 
@@ -173,6 +204,35 @@ describe('Timeline', () => {
       expect(wrapper.getByTestId('timeline-event-wrapper').innerHTML).toEqual(
         renderToStaticMarkup(CUSTOM_EVENT)
       )
+    })
+  })
+
+  describe('when today is not within range', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 4, 1, 0, 0, 0)}
+        >
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 1, 1, 0, 0, 0)}
+                  endDate={new Date(2020, 1, 10, 0, 0, 0)}
+                  status={COMPLETED}
+                >
+                  Event
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should not display the today marker', () => {
+      expect(wrapper.queryAllByTestId('timeline-today-marker')).toHaveLength(0)
     })
   })
 })

@@ -4,9 +4,6 @@ $timeline-border-color: f.color("neutral", "100");
 $timeline-bg-color: f.color("neutral", "000");
 $timeline-alt-bg-color: f.color("neutral", "white");
 
-$day-width: 30px;
-$week-width: $day-width * 7;
-
 .sb-show-main {
   padding: unset;
 }
@@ -209,7 +206,6 @@ $week-width: $day-width * 7;
 .timeline__day {
   display: inline-flex;
   align-items: center;
-  width: $week-width;
   height: 2.5rem;
   background-color: $timeline-bg-color;
   border-top: 1px solid $timeline-border-color;
@@ -257,7 +253,6 @@ $week-width: $day-width * 7;
 
 .timeline__row-week {
   display: inline-block;
-  width: $week-width;
   height: 6rem;
   background-color: $timeline-bg-color;
 
