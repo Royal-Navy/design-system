@@ -1,110 +1,105 @@
-import '@testing-library/jest-dom/extend-expect'
 import React from 'react'
-import { render, fireEvent, RenderResult } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import { render, RenderResult } from '@testing-library/react'
 
-import { OptionType } from '../../types/Switch'
-
-import Switch from './Switch'
+import { Switch } from './Switch'
 
 describe('Switch', () => {
-  let name: string
-  let value: string
-  let label: string
-  let className: string
-  let onChange: (event: React.FormEvent<HTMLInputElement>) => void
-  let options: OptionType[]
-  let size: string
-  let component: RenderResult
+  let wrapper: RenderResult
+  let onChangeSpy: (event: React.FormEvent<HTMLInputElement>) => void
 
-  describe('when the component is provided onChange callback and options', () => {
+  describe('when all props are specified', () => {
     beforeEach(() => {
-      name = 'example-switch-field'
-      value = '3'
-      onChange = jest.fn()
-      options = [
-        { label: 'Day', value: '1' },
-        { label: 'Week', value: '2' },
-        { label: 'Month', value: '3' },
-        { label: 'Year', value: '4' },
-      ]
-    })
+      onChangeSpy = jest.fn()
 
-    it('renders without the legend', () => {
-      component = render(
+      wrapper = render(
         <Switch
-          name={name}
-          value={value}
-          onChange={onChange}
-          options={options}
+          className="rn-switch--modifier"
+          label="Switch label"
+          name="switch-name"
+          onChange={onChangeSpy}
+          options={[
+            { label: 'Day', value: '1' },
+            { label: 'Week', value: '2' },
+            { label: 'Month', value: '3' },
+            { label: 'Year', value: '4' },
+          ]}
+          value="3"
         />
       )
-
-      expect(component.queryByTestId('legend')).toBeNull()
     })
 
-    describe('and has a label', () => {
+    it('should set the CSS modifier', () => {
+      expect(wrapper.getByTestId('switch-wrapper').classList).toContain(
+        'rn-switch--modifier'
+      )
+    })
+
+    it('should render the label', () => {
+      expect(wrapper.getByText('Switch label')).toBeInTheDocument()
+    })
+
+    it('should set the name', () => {
+      const switchInputs = wrapper.getAllByTestId('switch-input')
+      expect(switchInputs[0].getAttribute('name')).toEqual('switch-name')
+      expect(switchInputs[1].getAttribute('name')).toEqual('switch-name')
+      expect(switchInputs[2].getAttribute('name')).toEqual('switch-name')
+      expect(switchInputs[3].getAttribute('name')).toEqual('switch-name')
+    })
+
+    it('should render 4 options', () => {
+      expect(wrapper.getByText('Day')).toBeInTheDocument()
+      expect(wrapper.getByText('Week')).toBeInTheDocument()
+      expect(wrapper.getByText('Month')).toBeInTheDocument()
+      expect(wrapper.getByText('Year')).toBeInTheDocument()
+      expect(wrapper.getAllByTestId('switch-input')).toHaveLength(4)
+    })
+
+    it('should set the value', () => {
+      expect(wrapper.getByText('Month').classList).toContain('is-active')
+    })
+
+    describe('when the selected option is changed', () => {
       beforeEach(() => {
-        label = 'Date Range'
+        wrapper.getByText('Year').click()
       })
 
-      describe('and has a size', () => {
-        beforeEach(() => {
-          size = 'small'
-        })
+      it('should set the value', () => {
+        expect(wrapper.getByText('Year').classList).toContain('is-active')
+      })
 
-        describe('and has a customClass', () => {
-          beforeEach(() => {
-            className = 'test-class'
-
-            component = render(
-              <Switch
-                name={name}
-                value={value}
-                label={label}
-                onChange={onChange}
-                options={options}
-                size={size}
-                className={className}
-              />
-            )
-          })
-
-          it('renders with the legend', () => {
-            expect(component.getByTestId('legend')).toHaveTextContent(label)
-          })
-
-          it('renders correct number of options', () => {
-            expect(component.queryAllByTestId('option').length).toEqual(4)
-          })
-
-          it('outputs the correct size modifier class', () => {
-            expect(component.getByTestId('wrapper')).toHaveClass(
-              `rn-switch--${size}`
-            )
-          })
-
-          it('outputs the customClass', () => {
-            expect(component.getByTestId('wrapper')).toHaveClass(className)
-          })
-
-          describe('and the user clicks an option', () => {
-            beforeEach(() => {
-              fireEvent(
-                component.getAllByTestId('option')[0],
-                new MouseEvent('click', {
-                  bubbles: true,
-                  cancelable: true,
-                })
-              )
-            })
-
-            it('invokes the onChange callback with correct arguments', () => {
-              expect(onChange).toHaveBeenCalled()
-            })
-          })
-        })
+      it('should call the onClick callback', () => {
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
       })
     })
   })
-})
 
+  describe('when minimal props are specified', () => {
+    beforeEach(() => {
+      onChangeSpy = jest.fn()
+
+      wrapper = render(
+        <Switch
+          name="switch-name"
+          options={[
+            { label: 'Day', value: '1' },
+            { label: 'Week', value: '2' },
+            { label: 'Month', value: '3' },
+            { label: 'Year', value: '4' },
+          ]}
+        />
+      )
+    })
+
+    it('should not render the label', () => {
+      expect(wrapper.queryAllByTestId('switch-legend')).toHaveLength(0)
+    })
+
+    it('should not set the value', () => {
+      expect(wrapper.getByText('Day').classList).not.toContain('is-active')
+      expect(wrapper.getByText('Week').classList).not.toContain('is-active')
+      expect(wrapper.getByText('Month').classList).not.toContain('is-active')
+      expect(wrapper.getByText('Year').classList).not.toContain('is-active')
+    })
+  })
+})

@@ -5,8 +5,7 @@ import { storiesOf } from '@storybook/react'
 import { Field, Formik, Form } from 'formik'
 import withFormik from '../../enhancers/withFormik'
 
-import Switch from './Switch'
-import ResponsiveSwitch from './index'
+import { ResponsiveSwitch, Switch } from '.'
 
 const stories = storiesOf('Switch', module)
 const examples = storiesOf('Switch/Examples', module)
