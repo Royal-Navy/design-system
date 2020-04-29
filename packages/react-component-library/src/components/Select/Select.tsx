@@ -8,12 +8,12 @@ import { SingleValue } from './SingleValue'
 import { Option, SelectOptionWithBadgeType } from './Option'
 
 export interface SelectProps extends ReactSelectProps<any> {
+  className?: string
   label?: string
   name?: string
   onChange?: (event: any) => void
   options: SelectOptionWithBadgeType[]
   value?: string
-  className?: string
 }
 
 export const Select: React.FC<SelectProps> = ({
