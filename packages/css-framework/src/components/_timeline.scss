@@ -198,12 +198,13 @@ $timeline-alt-bg-color: f.color("neutral", "white");
 }
 
 .timeline__weeks,
-.timeline__days {
+.timeline__days,
+.timeline__days--renderDefault {
   white-space: nowrap;
 }
 
 .timeline__week,
-.timeline__day {
+.timeline__day--renderDefault {
   display: inline-flex;
   align-items: center;
   height: 2.5rem;
@@ -213,7 +214,7 @@ $timeline-alt-bg-color: f.color("neutral", "white");
 }
 
 .timeline__week-title,
-.timeline__day-title {
+.timeline__day-title--renderDefault {
   font-weight: 600;
   font-size: f.font-size("m");
   color: f.color("neutral", "400");
@@ -230,11 +231,11 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   }
 }
 
-.timeline__day {
+.timeline__day--renderDefault {
   border-right: 1px solid f.color("neutral", "100");
 }
 
-.timeline__day-title {
+.timeline__day-title--renderDefault {
   font-size: f.font-size("xs");
 }
 
