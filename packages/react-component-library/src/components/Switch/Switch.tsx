@@ -1,32 +1,36 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { getKey } from '../../helpers'
 
+import { getKey } from '../../helpers'
 import { SwitchType, OptionType } from '../../types/Switch'
 
-const Switch: React.FC<SwitchType> = ({
+function getActiveOption(options: OptionType[], value: string) {
+  const initial: OptionType | string = options.find(
+    item => item.value === value
+  )
+
+  return (initial && initial.label) || null
+}
+
+export const Switch: React.FC<SwitchType> = ({
+  className,
   label,
   name,
   onChange,
   options = [],
-  value,
-  className,
   size = 'regular',
+  value,
 }) => {
-  let initial: OptionType | string = options.find(item => item.value === value)
-  initial = (initial && initial.label) || null
-
-  const [active, setActive] = useState(initial)
-
+  const [active, setActive] = useState(getActiveOption(options, value))
   const id = uuidv4()
 
   return (
     <fieldset
       className={`rn-switch rn-switch--${size} ${className}`}
-      data-testid="wrapper"
+      data-testid="switch-wrapper"
     >
       {label && (
-        <legend className="rn-switch__legend" data-testid="legend">
+        <legend className="rn-switch__legend" data-testid="switch-legend">
           {label}
         </legend>
       )}
@@ -38,10 +42,11 @@ const Switch: React.FC<SwitchType> = ({
               active === optionLabel ? 'is-active' : ''
             }`}
             htmlFor={`${id}-${optionLabel}`}
-            data-testid="option"
+            data-testid="switch-option"
           >
             {optionLabel}
             <input
+              data-testid="switch-input"
               id={`${id}-${optionLabel}`}
               name={name || id}
               value={optionValue}
@@ -60,5 +65,3 @@ const Switch: React.FC<SwitchType> = ({
 }
 
 Switch.displayName = 'Switch'
-
-export default Switch
