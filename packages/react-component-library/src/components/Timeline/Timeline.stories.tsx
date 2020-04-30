@@ -88,11 +88,44 @@ stories.add('With custom days', () => {
   )
 })
 
+stories.add('With custom today marker', () => {
+  const CustomTodayMarker = (date: Date, offset: string) => {
+    return (
+      <span
+        className="rn_text-s"
+        style={{
+          position: 'absolute',
+          left: offset,
+          height: '100vh',
+          width: '2px',
+          background: 'black',
+          overflow: 'visible',
+          whiteSpace: 'nowrap',
+          textIndent: '1rem',
+        }}
+      >
+        {date.toString()}
+      </span>
+    )
+  }
+
+  return (
+    <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+      {/* <TimelineSide /> */}
+      <TimelineTodayMarker render={CustomTodayMarker} />
+      <TimelineMonths />
+      <TimelineWeeks />
+      <TimelineDays />
+      <TimelineRows>{}</TimelineRows>
+    </Timeline>
+  )
+})
+
 stories.add('With custom event content', () => {
   const render = (text: string) => {
     return () => (
       <div style={{ backgroundColor: 'black', color: 'white' }}>
-        <span className="rn_text-s">{text}</span>
+        <span>{text}</span>
       </div>
     )
   }

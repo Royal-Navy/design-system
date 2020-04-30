@@ -1,11 +1,35 @@
 import React, { useContext } from 'react'
+import classNames from 'classnames'
 
 import { TimelineContext } from './context'
 import { useTimelinePosition } from './hooks/useTimelinePosition'
 
-export type TimelineTodayMarkerProps = ComponentWithClass
+export interface TimelineTodayMarkerWithRenderContentProps
+  extends ComponentWithClass {
+  render: (today: Date, offset: string) => React.ReactNode
+}
 
-export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = () => {
+export interface TimelineTodayMarkerWithChildrenProps
+  extends ComponentWithClass {
+  render?: never
+}
+
+export type TimelineTodayMarkerProps =
+  | TimelineTodayMarkerWithRenderContentProps
+  | TimelineTodayMarkerWithChildrenProps
+
+function renderDefault(offset: string) {
+  const classes = classNames(
+    'timeline__today-marker',
+    'timeline__today-marker--renderDefault'
+  )
+
+  return <div style={{ left: offset }} className={classes} />
+}
+
+export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = ({
+  render,
+}) => {
   const {
     state: { today },
   } = useContext(TimelineContext)
@@ -15,11 +39,9 @@ export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = () => {
   if (isBeforeStart || isAfterEnd) return null
 
   return (
-    <div
-      className="timeline__today-marker"
-      style={{ left: offset }}
-      data-testid="timeline-today-marker"
-    />
+    <div data-testid="timeline-today-marker-wrapper">
+      {render ? render(today, offset) : renderDefault(offset)}
+    </div>
   )
 }
 
