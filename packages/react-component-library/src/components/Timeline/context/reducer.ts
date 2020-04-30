@@ -100,22 +100,22 @@ export function reducer(
   state: TimelineState,
   action: TimelineAction
 ): TimelineState | never {
-  const { startDate, options } = state
+  const { startDate, options: { rangeInMonths} } = state
 
   switch (action.type) {
     case TIMELINE_ACTIONS.GET_NEXT:
       return {
         ...state,
-        ...getMonths(addMonths(startDate, options.rangeInMonths), options.rangeInMonths),
-        weeks: getWeeks(addMonths(startDate, options.rangeInMonths), options.rangeInMonths),
-        days: getDays(addMonths(startDate, options.rangeInMonths), options.rangeInMonths)
+        ...getMonths(addMonths(startDate, rangeInMonths), rangeInMonths),
+        weeks: getWeeks(addMonths(startDate, rangeInMonths), rangeInMonths),
+        days: getDays(addMonths(startDate, rangeInMonths), rangeInMonths)
       }
     case TIMELINE_ACTIONS.GET_PREV:
       return {
         ...state,
-        ...getMonths(addMonths(startDate, -options.rangeInMonths), options.rangeInMonths),
-        weeks: getWeeks(addMonths(startDate, -options.rangeInMonths), options.rangeInMonths),
-        days: getDays(addMonths(startDate, -options.rangeInMonths), options.rangeInMonths)
+        ...getMonths(addMonths(startDate, -rangeInMonths), rangeInMonths),
+        weeks: getWeeks(addMonths(startDate, -rangeInMonths), rangeInMonths),
+        days: getDays(addMonths(startDate, -rangeInMonths), rangeInMonths)
       }
     default:
       throw new Error('Unknown reducer action')
