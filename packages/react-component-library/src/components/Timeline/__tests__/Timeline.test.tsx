@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, RenderResult } from '@testing-library/react'
+import { render, RenderResult, cleanup } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
 import {
@@ -34,7 +34,9 @@ describe('Timeline', () => {
     })
 
     it('should display the today marker', () => {
-      expect(wrapper.queryByTestId('timeline-today-marker')).toBeInTheDocument()
+      expect(
+        wrapper.queryByTestId('timeline-today-marker-wrapper')
+      ).toBeInTheDocument()
     })
 
     it('should display the no data message', () => {
@@ -94,7 +96,9 @@ describe('Timeline', () => {
     })
 
     it('should display the today marker', () => {
-      expect(wrapper.queryByTestId('timeline-today-marker')).toBeInTheDocument()
+      expect(
+        wrapper.queryByTestId('timeline-today-marker-wrapper')
+      ).toBeInTheDocument()
     })
 
     it('renders the correct number of months', () => {
@@ -267,6 +271,51 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when today marker has `render` specified', () => {
+    const CustomTodayMarker = ({
+      today,
+      offset,
+    }: {
+      today: Date
+      offset: string
+    }) => {
+      return (
+        <div>
+          {today.toString()} - {offset}
+        </div>
+      )
+    }
+
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 1, 7, 0, 0, 0)}
+        >
+          <TimelineTodayMarker
+            render={(today, offset) => (
+              <CustomTodayMarker today={today} offset={offset} />
+            )}
+          />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the today marker as specified', () => {
+      expect(
+        wrapper.getByTestId('timeline-today-marker-wrapper').innerHTML
+      ).toEqual(
+        renderToStaticMarkup(
+          <CustomTodayMarker
+            today={new Date(2020, 1, 7, 0, 0, 0)}
+            offset="180px"
+          />
+        )
+      )
+    })
+  })
+
   describe('when today is not within range', () => {
     beforeEach(() => {
       wrapper = render(
@@ -296,7 +345,9 @@ describe('Timeline', () => {
     })
 
     it('should not display the today marker', () => {
-      expect(wrapper.queryAllByTestId('timeline-today-marker')).toHaveLength(0)
+      expect(
+        wrapper.queryAllByTestId('timeline-today-marker-wrapper')
+      ).toHaveLength(0)
     })
   })
 })

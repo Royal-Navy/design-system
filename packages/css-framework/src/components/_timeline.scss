@@ -34,7 +34,7 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   min-height: 4rem;
 }
 
-.timeline__today-marker {
+.timeline__today-marker--renderDefault {
   position: absolute;
   top: 4rem;
   display: inline-block;
