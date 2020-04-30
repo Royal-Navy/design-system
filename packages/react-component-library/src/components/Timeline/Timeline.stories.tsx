@@ -1,5 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import { format } from 'date-fns'
 
 import {
   Timeline,
@@ -59,10 +60,38 @@ stories.add('With data', () => (
   </Timeline>
 ))
 
+stories.add('With custom days', () => {
+  const CustomTimelineDays = (index: number, dayWidth: number, date: Date) => {
+    return (
+      <span
+        style={{
+          display: 'inline-block',
+          width: `${dayWidth}px`,
+          backgroundColor: 'black',
+          color: 'white',
+        }}
+      >
+        {format(date, 'dd')}
+      </span>
+    )
+  }
+
+  return (
+    <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+      {/* <TimelineSide /> */}
+      <TimelineTodayMarker />
+      <TimelineMonths />
+      <TimelineWeeks />
+      <TimelineDays render={CustomTimelineDays} />
+      <TimelineRows>{}</TimelineRows>
+    </Timeline>
+  )
+})
+
 stories.add('With custom event content', () => {
   const render = (text: string) => {
     return () => (
-      <div style={{ backgroundColor: '#e5ffd9' }}>
+      <div style={{ backgroundColor: 'black', color: 'white' }}>
         <span className="rn_text-s">{text}</span>
       </div>
     )
@@ -81,7 +110,7 @@ stories.add('With custom event content', () => {
             <TimelineEvent
               startDate={new Date(2020, 3, 16)}
               endDate={new Date(2020, 3, 20)}
-              render={render('Custom event 1')}
+              render={render('Custom 1')}
             />
             <TimelineEvent
               startDate={new Date(2020, 3, 25)}
@@ -96,7 +125,7 @@ stories.add('With custom event content', () => {
             <TimelineEvent
               startDate={new Date(2020, 3, 15)}
               endDate={new Date(2020, 3, 19)}
-              render={render('Custom event 3')}
+              render={render('Custom 3')}
             />
             <TimelineEvent
               startDate={new Date(2020, 3, 22)}

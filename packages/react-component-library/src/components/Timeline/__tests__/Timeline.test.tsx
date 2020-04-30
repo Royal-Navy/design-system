@@ -190,6 +190,46 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when days has `render` specified', () => {
+    const CustomDay = ({
+      index,
+      dayWidth,
+      date,
+    }: {
+      index: number
+      dayWidth: number
+      date: Date
+    }) => {
+      return (
+        <span>
+          {date.toString()} - {index} - {dayWidth}
+        </span>
+      )
+    }
+
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 1, 7, 0, 0, 0)}
+        >
+          <TimelineDays
+            render={(index, dayWidth, date) => (
+              <CustomDay index={index} dayWidth={dayWidth} date={date} />
+            )}
+          />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the day dates as specified', () => {
+      expect(
+        wrapper.getAllByTestId('timeline-days')[0].firstChild.textContent
+      ).toEqual(`${new Date(2020, 1, 1, 0, 0, 0).toString()} - 0 - 30`)
+    })
+  })
+
   describe('when an event has `render` specified', () => {
     const CUSTOM_EVENT = <div>custom event</div>
 
