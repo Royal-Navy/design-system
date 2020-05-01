@@ -3,21 +3,66 @@ import React from 'react'
 import { TimelineProvider } from './context'
 
 import {
-  TimelineDays,
-  TimelineMonths,
-  TimelineRowsProps,
+  TimelineRootComponent,
+  TimelineHeadComponent,
+  TimelineBodyComponent,
+  TimelineComponent,
+} from './types'
+
+import {
   TimelineSide,
-  TimelineTodayMarker,
+  TimelineDays,
   TimelineWeeks,
+  TimelineMonths,
+  TimelineTodayMarker,
+  TimelineRows,
+  TimelineRowsProps,
+  TimelineTodayMarkerProps,
+  TimelineMonthsProps,
+  TimelineWeeksProps,
+  TimelineDaysProps,
+  TimelineSideProps,
 } from '.'
+
 import { TimelineOptions } from './context/types'
 import { DEFAULTS } from './constants'
 
+type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
+
+type timelineHeadChildrenType =
+  | React.ReactElement<TimelineTodayMarkerProps>
+  | React.ReactElement<TimelineMonthsProps>
+  | React.ReactElement<TimelineWeeksProps>
+  | React.ReactElement<TimelineDaysProps>
+
+type timelineBodyChildrenType = React.ReactElement<TimelineRowsProps>
+
+type timelineChildrenType =
+  | timelineRootChildrenType
+  | timelineHeadChildrenType
+  | timelineBodyChildrenType
+
 export interface TimelineProps extends ComponentWithClass {
-  children: React.ReactElement<TimelineRowsProps>
-  dayWidth?: number,
+  children: timelineChildrenType | timelineChildrenType[]
+  dayWidth?: number
   startDate?: Date
   today?: Date
+}
+
+function isComponentOf<T extends TimelineComponent>(
+  item: T,
+  names: string[]
+): item is T {
+  const typeName: string | null = (item as T)?.type?.name
+
+  return names.includes(typeName)
+}
+
+function extractChildrenOf<T>(
+  children: timelineChildrenType | timelineChildrenType[],
+  names: string[]
+) {
+  return (children as []).filter(child => isComponentOf(child, names))
 }
 
 export const Timeline: React.FC<TimelineProps> = ({
@@ -31,18 +76,28 @@ export const Timeline: React.FC<TimelineProps> = ({
     rangeInMonths: DEFAULTS.RANGE_IN_MONTHS,
   }
 
+  const rootChildren = extractChildrenOf<TimelineRootComponent>(children, [
+    TimelineSide.name,
+  ])
+
+  const headerChildren = extractChildrenOf<TimelineHeadComponent>(children, [
+    TimelineDays.name,
+    TimelineWeeks.name,
+    TimelineMonths.name,
+    TimelineTodayMarker.name,
+  ])
+
+  const bodyChildren = extractChildrenOf<TimelineBodyComponent>(children, [
+    TimelineRows.name,
+  ])
+
   return (
     <TimelineProvider startDate={startDate} today={today} options={options}>
       <article className="timeline">
-        <TimelineSide>{children}</TimelineSide>
+        {rootChildren}
         <div className="timeline__inner">
-          <header className="timeline__header">
-            <TimelineTodayMarker />
-            <TimelineMonths />
-            <TimelineWeeks />
-            <TimelineDays />
-          </header>
-          <main className="timeline__main">{children}</main>
+          <header className="timeline__header">{headerChildren}</header>
+          <main className="timeline__main">{bodyChildren}</main>
         </div>
       </article>
     </TimelineProvider>

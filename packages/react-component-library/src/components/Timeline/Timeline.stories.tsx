@@ -7,18 +7,33 @@ import {
   TimelineEvents,
   TimelineRow,
   TimelineRows,
+  TimelineTodayMarker,
+  TimelineMonths,
+  TimelineWeeks,
+  TimelineDays,
+  TimelineSide,
 } from '.'
 
 const stories = storiesOf('Timeline', module)
 
 stories.add('No data', () => (
   <Timeline>
+    {/* <TimelineSide /> */}
+    <TimelineTodayMarker />
+    <TimelineMonths />
+    <TimelineWeeks />
+    <TimelineDays />
     <TimelineRows>{}</TimelineRows>
   </Timeline>
 ))
 
 stories.add('With data', () => (
   <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+    {/* <TimelineSide /> */}
+    <TimelineTodayMarker />
+    <TimelineMonths />
+    <TimelineWeeks />
+    <TimelineDays />
     <TimelineRows>
       <TimelineRow name="Row 1">
         <TimelineEvents>
@@ -55,6 +70,11 @@ stories.add('With custom event content', () => {
 
   return (
     <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+      {/* <TimelineSide /> */}
+      <TimelineTodayMarker />
+      <TimelineMonths />
+      <TimelineWeeks />
+      <TimelineDays />
       <TimelineRows>
         <TimelineRow name="Row 1">
           <TimelineEvents>
@@ -98,6 +118,11 @@ stories.add('With custom day width', () => {
       today={new Date(2020, 3, 15)}
       dayWidth={75}
     >
+      {/* <TimelineSide /> */}
+      <TimelineTodayMarker />
+      <TimelineMonths />
+      <TimelineWeeks />
+      <TimelineDays />
       <TimelineRows>
         <TimelineRow name="Row 1">
           <TimelineEvents>
