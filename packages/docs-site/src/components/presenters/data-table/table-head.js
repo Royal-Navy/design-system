@@ -8,7 +8,7 @@ const TableHead = ({ headings, onClickHeading }) => {
   return (
     <thead className="data-table__head">
       <tr>
-        {headings.map(heading => {
+        {headings.map((heading) => {
           return (
             <th key={uuidv4()} scope="col" className="data-table__heading">
               {heading}

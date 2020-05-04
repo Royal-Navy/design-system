@@ -125,7 +125,7 @@ describe('useSecondaryNavData', () => {
     })
 
     it('should return nested items within a section', () => {
-      const forms = result.find(item => item.label === 'Forms')
+      const forms = result.find((item) => item.label === 'Forms')
       expect(forms.children).toHaveLength(4)
     })
 
@@ -135,7 +135,7 @@ describe('useSecondaryNavData', () => {
     })
 
     it('should sort the sub children', () => {
-      const { children } = result.find(item => item.label === 'Forms')
+      const { children } = result.find((item) => item.label === 'Forms')
       expect(children[0].label).toEqual('Overview')
       expect(children[2].label).toEqual('Toggle')
     })
@@ -151,12 +151,12 @@ describe('useSecondaryNavData', () => {
     })
 
     it('should mark the input page as active', () => {
-      const { children } = result.find(item => item.label === 'Forms')
+      const { children } = result.find((item) => item.label === 'Forms')
       expect(children[1].active).toEqual(true)
     })
 
     it('should not mark the forms page as active', () => {
-      const { active } = result.find(item => item.label === 'Forms')
+      const { active } = result.find((item) => item.label === 'Forms')
       expect(active).toEqual(false)
     })
   })

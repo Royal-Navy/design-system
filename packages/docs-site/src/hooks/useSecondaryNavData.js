@@ -4,8 +4,8 @@ import startsWith from 'lodash/startsWith'
 import { nestByURLStructure, stripTrailingSlash } from '../utils/nav'
 import useNavigationQuery from './useNavigationQuery'
 
-const useSecondaryNavData = location => {
-  const checkActive = item => ({
+const useSecondaryNavData = (location) => {
+  const checkActive = (item) => ({
     ...item,
     active:
       stripTrailingSlash(item.href) === stripTrailingSlash(location.pathname),
@@ -14,7 +14,7 @@ const useSecondaryNavData = location => {
   const pages = useNavigationQuery()
 
   const section = nestByURLStructure(pages).find(
-    edge => edge.href.length > 1 && startsWith(location.pathname, edge.href)
+    (edge) => edge.href.length > 1 && startsWith(location.pathname, edge.href)
   )
 
   if (!section) {

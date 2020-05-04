@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 const Field = ({ component: Component, name, form, ...rest }) => {
   const [value, setValue] = useState()
 
-  const onChange = e => {
+  const onChange = (e) => {
     setValue(e.target.value)
   }
 
