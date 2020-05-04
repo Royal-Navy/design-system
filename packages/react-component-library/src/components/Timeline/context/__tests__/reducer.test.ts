@@ -1,5 +1,5 @@
 import { getMonths, getWeeks, getDays } from '../reducer'
-import { TimelineState, TimelineMonth, TimelineWeek, TimelineDay } from '../types'
+import { TimelineMonth, TimelineWeek, TimelineDay } from '../types'
 
 describe('TimelineContext reducer', () => {
   describe('Timezones', () => {

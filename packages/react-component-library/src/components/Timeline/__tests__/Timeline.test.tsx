@@ -107,7 +107,7 @@ describe('Timeline', () => {
 
     it('renders the month title in correct format', () => {
       expect(
-        wrapper.getAllByTestId('timeline-month-title')[0].innerHTML
+        wrapper.getByTestId('timeline-months').firstChild.textContent
       ).toContain('April 2020')
     })
 
@@ -191,6 +191,53 @@ describe('Timeline', () => {
 
     it('renders the correct number of events', () => {
       expect(wrapper.queryAllByTestId('timeline-event-wrapper')).toHaveLength(1)
+    })
+  })
+
+  describe('when months has `render` specified', () => {
+    const CustomMonth = ({
+      index,
+      dayWidth,
+      daysTotal,
+      startDate,
+    }: {
+      index: number
+      dayWidth: number
+      daysTotal: number
+      startDate: Date
+    }) => {
+      return (
+        <span>
+          {startDate.toString()} - {index} - {dayWidth} - {daysTotal}
+        </span>
+      )
+    }
+
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 1, 7, 0, 0, 0)}
+        >
+          <TimelineMonths
+            render={(index, dayWidth, daysTotal, startDate) => (
+              <CustomMonth
+                index={index}
+                dayWidth={dayWidth}
+                daysTotal={daysTotal}
+                startDate={startDate}
+              />
+            )}
+          />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the day dates as specified', () => {
+      expect(
+        wrapper.getByTestId('timeline-months').firstChild.textContent
+      ).toEqual(`${new Date(2020, 1, 1, 0, 0, 0).toString()} - 0 - 30 - 29`)
     })
   })
 
