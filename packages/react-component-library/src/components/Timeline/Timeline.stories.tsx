@@ -19,7 +19,7 @@ const stories = storiesOf('Timeline', module)
 
 stories.add('No data', () => (
   <Timeline>
-    {/* <TimelineSide /> */}
+    <TimelineSide />
     <TimelineTodayMarker />
     <TimelineMonths />
     <TimelineWeeks />
@@ -30,7 +30,7 @@ stories.add('No data', () => (
 
 stories.add('With data', () => (
   <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
-    {/* <TimelineSide /> */}
+    <TimelineSide />
     <TimelineTodayMarker />
     <TimelineMonths />
     <TimelineWeeks />
@@ -85,7 +85,7 @@ stories.add('With custom months', () => {
 
   return (
     <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
-      {/* <TimelineSide /> */}
+      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths render={CustomTimelineMonth} />
       <TimelineWeeks />
@@ -125,7 +125,7 @@ stories.add('With custom weeks', () => {
 
   return (
     <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
-      {/* <TimelineSide /> */}
+      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
       <TimelineWeeks render={CustomTimelineWeek} />
@@ -153,7 +153,7 @@ stories.add('With custom days', () => {
 
   return (
     <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
-      {/* <TimelineSide /> */}
+      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
       <TimelineWeeks />
@@ -186,7 +186,7 @@ stories.add('With custom today marker', () => {
 
   return (
     <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
-      {/* <TimelineSide /> */}
+      <TimelineSide />
       <TimelineTodayMarker render={CustomTodayMarker} />
       <TimelineMonths />
       <TimelineWeeks />
@@ -207,7 +207,7 @@ stories.add('With custom event content', () => {
 
   return (
     <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
-      {/* <TimelineSide /> */}
+      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
       <TimelineWeeks />
@@ -255,7 +255,7 @@ stories.add('With custom day width', () => {
       today={new Date(2020, 3, 15)}
       dayWidth={75}
     >
-      {/* <TimelineSide /> */}
+      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
       <TimelineWeeks />
