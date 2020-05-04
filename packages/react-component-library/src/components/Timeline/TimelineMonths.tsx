@@ -36,8 +36,8 @@ function renderDefault(
   )
 
   const titleClasses = classNames(
-    'timeline__month--title',
-    'timeline__month--title--renderDefault'
+    'timeline__month-title',
+    'timeline__month-title--renderDefault'
   )
 
   return (
