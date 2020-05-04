@@ -95,6 +95,46 @@ stories.add('With custom months', () => {
   )
 })
 
+stories.add('With custom weeks', () => {
+  const CustomTimelineWeek = (
+    index: number,
+    isOddNumber: boolean,
+    offsetPx: string,
+    widthPx: string,
+    dayWidth: number,
+    daysTotal: number,
+    startDate: Date
+  ) => {
+    return (
+      <span
+        style={{
+          display: 'inline-block',
+          marginLeft: offsetPx,
+          width: widthPx,
+          backgroundColor: `${isOddNumber ? 'black' : 'white'}`,
+          color: `${isOddNumber ? 'white' : 'black'}`,
+          borderTop: '1px solid black',
+          borderBottom: '1px solid black',
+          paddingLeft: '.5rem',
+        }}
+      >
+        {format(startDate, 'dd/MM')}
+      </span>
+    )
+  }
+
+  return (
+    <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+      {/* <TimelineSide /> */}
+      <TimelineTodayMarker />
+      <TimelineMonths />
+      <TimelineWeeks render={CustomTimelineWeek} />
+      <TimelineDays />
+      <TimelineRows>{}</TimelineRows>
+    </Timeline>
+  )
+})
+
 stories.add('With custom days', () => {
   const CustomTimelineDays = (index: number, dayWidth: number, date: Date) => {
     return (
