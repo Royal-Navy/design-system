@@ -7,41 +7,39 @@ import { TimelineContext } from './context'
 import { TIMELINE_ACTIONS } from './context/types'
 import { TimelineRowProps } from '.'
 
-export interface TimelineSideProps extends ComponentWithClass {
-  children: React.ReactElement<any>
-}
+export type TimelineSideProps = ComponentWithClass
 
-const TimelineSideList: React.FC<TimelineSideProps> = ({ children }) => {
-  return (
-    <ol className="timeline__side-list">
-      <li className="timeline__side-months">
-        <span className="timeline__side-title">Months</span>
-      </li>
-      <li className="timeline__side-weeks">
-        <span className="timeline__side-title">Weeks</span>
-      </li>
-      <li className="timeline__side-days">
-        <span className="timeline__side-title">Days</span>
-      </li>
-      {React.Children.map(
-        children.props.children,
-        (child: React.ReactElement<TimelineRowProps>, index: number) => {
-          return (
-            <li
-              className="timeline__side-row"
-              key={getKey('operation-side-row', index)}
-              data-testid="timeline-side-row"
-            >
-              <span className="timeline__side-title">{child.props.name}</span>
-            </li>
-          )
-        }
-      )}
-    </ol>
-  )
-}
+// const TimelineSideList: React.FC<TimelineSideProps> = ({ children }) => {
+//   return (
+//     <ol className="timeline__side-list">
+//       <li className="timeline__side-months">
+//         <span className="timeline__side-title">Months</span>
+//       </li>
+//       <li className="timeline__side-weeks">
+//         <span className="timeline__side-title">Weeks</span>
+//       </li>
+//       <li className="timeline__side-days">
+//         <span className="timeline__side-title">Days</span>
+//       </li>
+//       {React.Children.map(
+//         children.props.children,
+//         (child: React.ReactElement<TimelineRowProps>, index: number) => {
+//           return (
+//             <li
+//               className="timeline__side-row"
+//               key={getKey('operation-side-row', index)}
+//               data-testid="timeline-side-row"
+//             >
+//               <span className="timeline__side-title">{child.props.name}</span>
+//             </li>
+//           )
+//         }
+//       )}
+//     </ol>
+//   )
+// }
 
-export const TimelineSide: React.FC<TimelineSideProps> = ({ children }) => {
+export const TimelineSide: React.FC<TimelineSideProps> = () => {
   return (
     <TimelineContext.Consumer>
       {({ dispatch }) => {
@@ -61,7 +59,6 @@ export const TimelineSide: React.FC<TimelineSideProps> = ({ children }) => {
                 data-testid="timeline-side-button-right"
               />
             </div>
-            {/* <TimelineSideList>{children}</TimelineSideList> */}
           </aside>
         )
       }}
