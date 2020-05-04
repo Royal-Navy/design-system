@@ -241,6 +241,73 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when weeks has `render` specified', () => {
+    const CustomWeek = ({
+      index,
+      isOddNumber,
+      offsetPx,
+      widthPx,
+      dayWidth,
+      daysTotal,
+      startDate,
+    }: {
+      index: number
+      isOddNumber: boolean
+      offsetPx: string
+      widthPx: string
+      dayWidth: number
+      daysTotal: number
+      startDate: Date
+    }) => {
+      return (
+        <span>
+          {startDate.toString()} - {index} - {isOddNumber.toString()} -{' '}
+          {offsetPx} - {widthPx} - {dayWidth} - {daysTotal}
+        </span>
+      )
+    }
+
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 1, 7, 0, 0, 0)}
+        >
+          <TimelineWeeks
+            render={(
+              index,
+              isOddNumber,
+              offsetPx,
+              widthPx,
+              dayWidth,
+              daysTotal,
+              startDate
+            ) => (
+              <CustomWeek
+                index={index}
+                isOddNumber={isOddNumber}
+                offsetPx={offsetPx}
+                widthPx={widthPx}
+                dayWidth={dayWidth}
+                daysTotal={daysTotal}
+                startDate={startDate}
+              />
+            )}
+          />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the day dates as specified', () => {
+      expect(
+        wrapper.getAllByTestId('timeline-weeks')[0].firstChild.textContent
+      ).toEqual(
+        'Mon Jan 27 2020 00:00:00 GMT+0000 (Coordinated Universal Time) - 0 - false - -150px - 210px - 30 - 7'
+      )
+    })
+  })
+
   describe('when days has `render` specified', () => {
     const CustomDay = ({
       index,

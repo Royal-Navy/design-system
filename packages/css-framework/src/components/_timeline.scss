@@ -199,12 +199,13 @@ $timeline-alt-bg-color: f.color("neutral", "white");
 }
 
 .timeline__weeks,
+.timeline__weeks--renderDefault,
 .timeline__days,
 .timeline__days--renderDefault {
   white-space: nowrap;
 }
 
-.timeline__week,
+.timeline__week--renderDefault,
 .timeline__day--renderDefault {
   display: inline-flex;
   align-items: center;
@@ -214,7 +215,7 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   border-bottom: 1px solid $timeline-border-color;
 }
 
-.timeline__week-title,
+.timeline__week-title--renderDefault,
 .timeline__day-title--renderDefault {
   font-weight: 600;
   font-size: f.font-size("m");

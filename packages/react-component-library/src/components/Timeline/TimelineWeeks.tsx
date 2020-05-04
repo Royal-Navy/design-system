@@ -6,40 +6,100 @@ import { DATE_WEEK_FORMAT } from './constants'
 import { formatPx, getKey, isOdd } from './helpers'
 import { TimelineContext } from './context'
 
-export type TimelineWeeksProps = ComponentWithClass
+export interface TimelineWeeksWithRenderContentProps
+  extends ComponentWithClass {
+  render: (
+    index: number,
+    isOddNumber: boolean,
+    offsetPx: string,
+    widthPx: string,
+    dayWidth: number,
+    daysTotal: number,
+    startDate: Date
+  ) => React.ReactNode
+}
 
-export const TimelineWeeks: React.FC<TimelineWeeksProps> = () => {
+export interface TimelineWeeksWithChildrenProps extends ComponentWithClass {
+  render?: never
+}
+
+export type TimelineWeeksProps =
+  | TimelineWeeksWithRenderContentProps
+  | TimelineWeeksWithChildrenProps
+
+function renderDefault(
+  index: number,
+  isOddNumber: boolean,
+  offsetPx: string,
+  widthPx: string,
+  dayWidth: number,
+  daysTotal: number,
+  startDate: Date
+) {
+  const wrapperClasses = classNames(
+    'timeline__week',
+    'timeline__week--renderDefault',
+    {
+      'timeline__week--alt': isOddNumber,
+    }
+  )
+
+  const titleClasses = classNames(
+    'timeline__week-title',
+    'timeline__week-title--renderDefault'
+  )
+
   return (
-    <div className="timeline__weeks">
+    <div
+      className={wrapperClasses}
+      key={getKey('timeline-week', index)}
+      style={{
+        marginLeft: offsetPx,
+        width: widthPx,
+      }}
+      data-testid="timeline-week"
+    >
+      <span className={titleClasses}>
+        {format(startDate, DATE_WEEK_FORMAT)}
+      </span>
+    </div>
+  )
+}
+
+export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
+  return (
+    <div className="timeline__weeks" data-testid="timeline-weeks">
       <TimelineContext.Consumer>
-        {({ state: { months, weeks, options } }) => {
+        {({
+          state: {
+            months,
+            weeks,
+            options: { dayWidth },
+          },
+        }) => {
           return weeks.map(({ startDate }, index) => {
             const diff = differenceInDays(
               new Date(startDate),
               new Date(months[0].startDate)
             )
 
-            const offset = diff < 0 ? -Math.abs(diff) : 0
+            const offsetPx = formatPx(dayWidth, diff < 0 ? -Math.abs(diff) : 0)
+            const widthPx = formatPx(dayWidth, 7)
 
-            const classes = classNames('timeline__week', {
-              'timeline__week--alt': isOdd(index),
-            })
+            const isOddNumber = isOdd(index)
 
-            return (
-              <div
-                className={classes}
-                key={getKey('timeline-week', index)}
-                style={{
-                  marginLeft: formatPx(options.dayWidth, offset),
-                  width: formatPx(options.dayWidth, 7),
-                }}
-                data-testid="timeline-week"
-              >
-                <span className="timeline__week-title">
-                  {format(startDate, DATE_WEEK_FORMAT)}
-                </span>
-              </div>
-            )
+            const args = [
+              index,
+              isOddNumber,
+              offsetPx,
+              widthPx,
+              dayWidth,
+              7,
+              startDate,
+            ]
+
+            // @ts-ignore
+            return render ? render(...args) : renderDefault(...args)
           })
         }}
       </TimelineContext.Consumer>
