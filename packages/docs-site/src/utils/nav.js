@@ -28,7 +28,7 @@ export function stripLeadingSlash(href) {
  * @returns {array}
  */
 export function restructureNodes(nodes) {
-  return nodes.map(node => {
+  return nodes.map((node) => {
     return {
       href: stripTrailingSlash(node.node.fields.slug),
       label: node.node.frontmatter.title,
@@ -44,9 +44,9 @@ export function restructureNodes(nodes) {
  */
 export function filterNodes(nodes) {
   return nodes
-    .filter(node => stripTrailingSlash(node.node.fields.slug) !== '/')
-    .filter(node => !node.node.frontmatter.draft)
-    .filter(node => !node.node.frontmatter.excludeFromNavigation)
+    .filter((node) => stripTrailingSlash(node.node.fields.slug) !== '/')
+    .filter((node) => !node.node.frontmatter.draft)
+    .filter((node) => !node.node.frontmatter.excludeFromNavigation)
 }
 
 /**
@@ -62,11 +62,11 @@ export function nestByURLStructure(nodes) {
   function addToTree(node, parents) {
     const { href } = node
 
-    parents.forEach(parentNode => {
+    parents.forEach((parentNode) => {
       const { href: parentHref } = parentNode
 
       if (href.includes(`${parentHref}/`)) {
-        const index = parents.findIndex(item => item.href === href)
+        const index = parents.findIndex((item) => item.href === href)
 
         // eslint-disable-next-line no-param-reassign
         parents = parents.splice(0, index)
@@ -83,7 +83,7 @@ export function nestByURLStructure(nodes) {
 
   const sorted = sortBy(nodes, 'node.frontmatter.index')
 
-  restructureNodes(filterNodes(sorted)).forEach(node => {
+  restructureNodes(filterNodes(sorted)).forEach((node) => {
     addToTree(node, tree)
   })
 

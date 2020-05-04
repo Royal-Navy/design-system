@@ -9,8 +9,8 @@ import {
 
 import useNavigationQuery from './useNavigationQuery'
 
-const usePrimaryNavData = location => {
-  const checkActive = item => ({
+const usePrimaryNavData = (location) => {
+  const checkActive = (item) => ({
     ...item,
     active:
       stripTrailingSlash(item.href) === stripTrailingSlash(location.pathname),

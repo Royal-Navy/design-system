@@ -13,7 +13,7 @@ const DataTable = ({ data, caption }) => {
   const [tableData, setTableData] = useState(data)
 
   const sortByColumn = useCallback(
-    e => {
+    (e) => {
       const column = e.target.getAttribute('data-column')
       setTableData(sortBy(data, column))
     },
