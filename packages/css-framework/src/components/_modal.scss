@@ -8,7 +8,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
 
   &.is-closed {
     display: none;
@@ -19,17 +19,21 @@
   }
 }
 .rn-modal__main {
-
   @include m.shadow("2");
   border: 1px solid f.color("neutral", "200");
-  border-radius: 5px;
   background: f.color("neutral", "white");
+  width: 100%;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
-  width: 90%;
-  @include m.breakpoint("s") {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px 8px 0 0;
+  @include m.breakpoint("xs") {
+    border-radius: 5px;
+    bottom: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
     width: 100%;
     max-width: 700px;
   }
@@ -66,23 +70,42 @@
 }
 
 .rn-modal__footer {
+  background-color: f.color("neutral", "white");
   display: flex;
+  width: 100%;
+  justify-content: space-between;
   padding: f.spacing("8");
+  flex-direction: column-reverse;
   border-top: 1px solid f.color("neutral", "100");
+  @include m.breakpoint("xs") {
+    flex-direction: row;
+  }
 }
 
-.rn-modal .rn-btn.rn-modal__primary-button,
-.rn-modal .rn-btn.rn-modal__secondary-button,
-.rn-modal .rn-btn.rn-modal__tertiary-button {
-  margin: 0;
+.rn-modal__btn-group {
+  display: flex;
+  flex-direction: column-reverse;
+  @include m.breakpoint("xs") {
+    flex-direction: row;
+  }
+
+  .rn-btn + .rn-btn {
+    margin-bottom: f.spacing("4");
+  }
 }
 
 .rn-modal .rn-btn.rn-modal__secondary-button {
-  margin-left: auto;
+  @include m.breakpoint("xs") {
+    margin-bottom: 0;
+    margin-left: auto;
+  }
 }
 
 .rn-modal .rn-btn.rn-modal__primary-button {
-  margin-left: f.spacing("4");
+  @include m.breakpoint("xs") {
+    margin-bottom: 0;
+    margin-left: f.spacing("4");
+  }
 }
 
 .rn-modal__divider {

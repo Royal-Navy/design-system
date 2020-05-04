@@ -47,9 +47,7 @@ describe('Modal', () => {
       })
 
       it('should apply the `rn-dialog` class', () => {
-        expect(wrapper.queryByTestId('modal-wrapper')).toHaveClass(
-          'rn-dialog'
-        )
+        expect(wrapper.queryByTestId('modal-wrapper')).toHaveClass('rn-dialog')
       })
 
       describe('and the primary button is clicked', () => {
@@ -68,10 +66,10 @@ describe('Modal', () => {
         })
       })
 
-      describe('and the secondary button is clicked', () => {
+      describe('and the tertiary button is clicked', () => {
         beforeEach(() => {
           fireEvent(
-            wrapper.getByTestId('modal-secondary'),
+            wrapper.getByTestId('modal-tertiary'),
             new MouseEvent('click', {
               bubbles: true,
               cancelable: true,
