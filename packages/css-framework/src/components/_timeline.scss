@@ -163,11 +163,12 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   padding: 0;
 }
 
-.timeline__months {
+.timeline__months,
+.timeline__months--renderDefault {
   white-space: nowrap;
 }
 
-.timeline__month {
+.timeline__month--renderDefault {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -190,7 +191,7 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   }
 }
 
-.timeline__month-title {
+.timeline__month-title--renderDefault {
   font-size: f.font-size("xl");
   font-weight: 600;
   color: f.color("neutral", "600");

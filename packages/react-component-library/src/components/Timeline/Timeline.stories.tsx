@@ -60,6 +60,41 @@ stories.add('With data', () => (
   </Timeline>
 ))
 
+stories.add('With custom months', () => {
+  const CustomTimelineMonth = (
+    index: number,
+    dayWidth: number,
+    daysTotal: number,
+    startDate: Date
+  ) => {
+    return (
+      <span
+        style={{
+          display: 'inline-block',
+          width: `${dayWidth * daysTotal}px`,
+          backgroundColor: 'black',
+          color: 'white',
+          borderLeft: '1px solid white',
+          paddingLeft: '.5rem',
+        }}
+      >
+        {format(startDate, 'MMMM yyyy')}
+      </span>
+    )
+  }
+
+  return (
+    <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+      {/* <TimelineSide /> */}
+      <TimelineTodayMarker />
+      <TimelineMonths render={CustomTimelineMonth} />
+      <TimelineWeeks />
+      <TimelineDays />
+      <TimelineRows>{}</TimelineRows>
+    </Timeline>
+  )
+})
+
 stories.add('With custom days', () => {
   const CustomTimelineDays = (index: number, dayWidth: number, date: Date) => {
     return (
