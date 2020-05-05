@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/Royal-Navy/standards-toolkit/compare/2.5.0...2.6.0) (2020-05-05)
+
+**Note:** Version bump only for package royalnavy.io
+
+
+
+
+
 # [2.5.0](https://github.com/Royal-Navy/standards-toolkit/compare/2.4.0...2.5.0) (2020-04-22)
 
 
