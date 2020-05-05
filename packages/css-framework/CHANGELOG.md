@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/Royal-Navy/standards-toolkit/compare/2.5.0...2.6.0) (2020-05-05)
+
+
+### Features
+
+* **button:** Darken primary background to improve contrast levels ([47d5f9c](https://github.com/Royal-Navy/standards-toolkit/commit/47d5f9c9c62347d570fcb1d73b9e167c8f9436b3))
+* **modal:** Add mobile dialog and modal versions ([849880a](https://github.com/Royal-Navy/standards-toolkit/commit/849880abf62c26e4e5281ade223772ce69d4857d))
+* **timeline:** Add ability to display days ([19e5931](https://github.com/Royal-Navy/standards-toolkit/commit/19e59311dd386eb5018bf106039260989ae59100))
+* **timeline:** Add ability to provide day width ([07c8aa5](https://github.com/Royal-Navy/standards-toolkit/commit/07c8aa5e0fde04f176764818c9fa250186cda2d8))
+* **timeline:** Implement TimelineDays render prop ([f075a14](https://github.com/Royal-Navy/standards-toolkit/commit/f075a14deef65bf56e94d03b296afaf5ea2bd2cd))
+* **timeline:** Implement TimelineMonths render prop ([60ea646](https://github.com/Royal-Navy/standards-toolkit/commit/60ea6462f4ef882c34ef9bec695feec719998b3f))
+* **timeline:** Implement TimelineTodayMarker render prop ([872a758](https://github.com/Royal-Navy/standards-toolkit/commit/872a7587a18cfb786d1c18461015c3f178d1cee9))
+* **toast:** Update design to match Sketch toolkit ([804a96d](https://github.com/Royal-Navy/standards-toolkit/commit/804a96df848f3cd20c7cf82249914ddcd54674c8))
+
+
+
+
+
 # [2.5.0](https://github.com/Royal-Navy/standards-toolkit/compare/2.4.0...2.5.0) (2020-04-22)
 
 
