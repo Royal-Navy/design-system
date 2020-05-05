@@ -15,8 +15,6 @@ import {
   Timeline,
 } from '..'
 
-const COMPLETED = 'COMPLETED'
-
 describe('Timeline', () => {
   let wrapper: RenderResult
 
@@ -62,7 +60,6 @@ describe('Timeline', () => {
                 <TimelineEvent
                   startDate={new Date(2020, 3, 13)}
                   endDate={new Date(2020, 3, 18)}
-                  status={COMPLETED}
                 >
                   Event 1
                 </TimelineEvent>
@@ -141,12 +138,6 @@ describe('Timeline', () => {
       expect(wrapper.getByText('Event 3')).toBeInTheDocument()
       expect(wrapper.getByText('Event 4')).toBeInTheDocument()
     })
-
-    it('should give the first event the correct modifier class based on status', () => {
-      expect(
-        wrapper.getAllByTestId('timeline-event-wrapper')[0].classList
-      ).toContain(`timeline__event--${COMPLETED.toLowerCase()}`)
-    })
   })
 
   describe('when an event is outside the range', () => {
@@ -155,7 +146,6 @@ describe('Timeline', () => {
         <TimelineEvent
           startDate={new Date(2020, 1, 1, 0, 0, 0)}
           endDate={new Date(2020, 1, 10, 0, 0, 0)}
-          status={COMPLETED}
         >
           Event 1
         </TimelineEvent>
@@ -165,7 +155,6 @@ describe('Timeline', () => {
         <TimelineEvent
           startDate={new Date(2020, 6, 1, 0, 0, 0)}
           endDate={new Date(2020, 6, 10, 0, 0, 0)}
-          status={COMPLETED}
         >
           Event 1
         </TimelineEvent>
@@ -392,7 +381,6 @@ describe('Timeline', () => {
                 <TimelineEvent
                   startDate={new Date(2020, 3, 13)}
                   endDate={new Date(2020, 3, 18)}
-                  status={COMPLETED}
                 >
                   Event 1
                 </TimelineEvent>
@@ -431,15 +419,47 @@ describe('Timeline', () => {
   })
 
   describe('when an event has `render` specified', () => {
-    const CUSTOM_EVENT = <div>custom event</div>
+    const CustomEvent = ({
+      children,
+      offsetPx,
+      widthPx,
+    }: {
+      children: React.ReactNode
+      offsetPx: string
+      widthPx: string
+    }) => {
+      return (
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            left: offsetPx,
+            width: widthPx,
+          }}
+        >
+          {children}
+        </div>
+      )
+    }
 
     beforeEach(() => {
       const EventWithRender: React.FC = () => (
         <TimelineEvent
-          startDate={new Date(2020, 1, 1, 0, 0, 0)}
-          endDate={new Date(2020, 1, 10, 0, 0, 0)}
-          status={COMPLETED}
-          render={() => CUSTOM_EVENT}
+          startDate={new Date(2020, 3, 16)}
+          endDate={new Date(2020, 3, 20)}
+          render={(
+            startDate: Date,
+            endDate: Date,
+            widthPx: string,
+            offsetPx: string
+          ) => {
+            return (
+              <CustomEvent widthPx={widthPx} offsetPx={offsetPx}>
+                Custom Event
+              </CustomEvent>
+            )
+          }}
         />
       )
 
@@ -461,9 +481,7 @@ describe('Timeline', () => {
     })
 
     it('should render the event as specified', () => {
-      expect(wrapper.getByTestId('timeline-event-wrapper').innerHTML).toBe(
-        renderToStaticMarkup(CUSTOM_EVENT)
-      )
+      expect(wrapper.queryByText('Custom Event')).toBeInTheDocument()
     })
   })
 
@@ -529,7 +547,6 @@ describe('Timeline', () => {
                 <TimelineEvent
                   startDate={new Date(2020, 1, 1, 0, 0, 0)}
                   endDate={new Date(2020, 1, 10, 0, 0, 0)}
-                  status={COMPLETED}
                 >
                   Event
                 </TimelineEvent>

@@ -261,7 +261,7 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   background-color: $timeline-alt-bg-color;
 }
 
-.timeline__event {
+.timeline__event--renderDefault {
   position: absolute;
   top: 50%;
   left: 0;
@@ -275,17 +275,17 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   z-index: 2;
 }
 
-.timeline__event--alt {
+.timeline__event--renderDefault.timeline__event--alt {
   background-color: $timeline-alt-bg-color;
 }
 
-.timeline__event-title {
+.timeline__event--renderDefault .timeline__event-title {
   font-size: f.font-size("s");
   color: f.color("neutral", "600");
   white-space: nowrap;
 }
 
-.timeline__event-bar {
+.timeline__event--renderDefault .timeline__event-bar {
   display: inline-block;
   background-color: f.color("success", "500");
   border-radius: 4px;
