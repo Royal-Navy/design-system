@@ -4,7 +4,7 @@ update_configs:
     directory: "/"
     update_schedule: "weekly"
     commit_message:
-      prefix: "chore"
+      prefix: "chore(dependencies)"
     default_reviewers:
       - "m7kvqbe1"
       - "thyhjwb6"
