@@ -177,6 +177,7 @@ stories.add('With custom today marker', () => {
           overflow: 'visible',
           whiteSpace: 'nowrap',
           textIndent: '1rem',
+          zIndex: 1,
         }}
       >
         {date.toString()}
