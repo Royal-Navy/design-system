@@ -102,7 +102,7 @@ describe('Timeline', () => {
     })
 
     it('renders the correct number of months', () => {
-      expect(wrapper.queryAllByTestId('timeline-month').length).toEqual(3)
+      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(3)
     })
 
     it('renders the month title in correct format', () => {
@@ -112,7 +112,7 @@ describe('Timeline', () => {
     })
 
     it('renders the correct number of weeks', () => {
-      expect(wrapper.queryAllByTestId('timeline-week').length).toEqual(13)
+      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(13)
     })
 
     it('applies the --alt modifier class to odd weeks', () => {
@@ -237,7 +237,7 @@ describe('Timeline', () => {
     it('should render the day dates as specified', () => {
       expect(
         wrapper.getByTestId('timeline-months').firstChild.textContent
-      ).toEqual(`${new Date(2020, 1, 1, 0, 0, 0).toString()} - 0 - 30 - 29`)
+      ).toBe(`${new Date(2020, 1, 1, 0, 0, 0).toString()} - 0 - 30 - 29`)
     })
   })
 
@@ -302,7 +302,7 @@ describe('Timeline', () => {
     it('should render the day dates as specified', () => {
       expect(
         wrapper.getAllByTestId('timeline-weeks')[0].firstChild.textContent
-      ).toEqual(
+      ).toBe(
         'Mon Jan 27 2020 00:00:00 GMT+0000 (Coordinated Universal Time) - 0 - false - -150px - 210px - 30 - 7'
       )
     })
@@ -344,7 +344,7 @@ describe('Timeline', () => {
     it('should render the day dates as specified', () => {
       expect(
         wrapper.getAllByTestId('timeline-days')[0].firstChild.textContent
-      ).toEqual(`${new Date(2020, 1, 1, 0, 0, 0).toString()} - 0 - 30`)
+      ).toBe(`${new Date(2020, 1, 1, 0, 0, 0).toString()} - 0 - 30`)
     })
   })
 
@@ -418,7 +418,9 @@ describe('Timeline', () => {
     })
 
     it('should render the correct number of columns', () => {
-      expect(wrapper.getByTestId('timeline-columns').childNodes.length).toBe(13)
+      expect(wrapper.getByTestId('timeline-columns').childNodes).toHaveLength(
+        13
+      )
     })
 
     it('should render the column content correctly', () => {
@@ -459,7 +461,7 @@ describe('Timeline', () => {
     })
 
     it('should render the event as specified', () => {
-      expect(wrapper.getByTestId('timeline-event-wrapper').innerHTML).toEqual(
+      expect(wrapper.getByTestId('timeline-event-wrapper').innerHTML).toBe(
         renderToStaticMarkup(CUSTOM_EVENT)
       )
     })
@@ -499,7 +501,7 @@ describe('Timeline', () => {
     it('should render the today marker as specified', () => {
       expect(
         wrapper.getByTestId('timeline-today-marker-wrapper').innerHTML
-      ).toEqual(
+      ).toBe(
         renderToStaticMarkup(
           <CustomTodayMarker
             today={new Date(2020, 1, 7, 0, 0, 0)}
