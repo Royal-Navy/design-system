@@ -225,7 +225,7 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   z-index: 2;
 }
 
-.timeline__week--alt {
+.timeline__week--renderDefault.timeline__week--alt {
   background-color: $timeline-alt-bg-color;
 
   .timeline__week-title {
@@ -246,7 +246,8 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   height: 4rem;
 }
 
-.timeline__row-weeks {
+.timeline__row-weeks,
+.timeline__row-weeks--renderDefault {
   position: absolute;
   top: 0;
   left: 0;
@@ -254,14 +255,14 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   white-space: nowrap;
 }
 
-.timeline__row-week {
+.timeline__row-week--renderDefault {
   display: inline-block;
-  height: 6rem;
+  height: 100vh;
   background-color: $timeline-bg-color;
+}
 
-  &--alt {
-    background-color: $timeline-alt-bg-color;
-  }
+.timeline__row-week--renderDefault.timeline__row-week--alt {
+  background-color: $timeline-alt-bg-color;
 }
 
 .timeline__event {

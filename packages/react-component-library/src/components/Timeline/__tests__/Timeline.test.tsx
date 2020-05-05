@@ -348,6 +348,86 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when rows has `renderColumns` specified', () => {
+    const CustomColumn = ({
+      index,
+      isOddNumber,
+      offsetPx,
+      widthPx,
+    }: {
+      index: number
+      isOddNumber: boolean
+      offsetPx: string
+      widthPx: string
+    }) => {
+      return (
+        <span>
+          {index} - {isOddNumber.toString()} - {offsetPx} - {widthPx}
+        </span>
+      )
+    }
+
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 1, 7, 0, 0, 0)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows
+            renderColumns={(index, isOddNumber, offsetPx, widthPx) => (
+              <CustomColumn
+                index={index}
+                isOddNumber={isOddNumber}
+                offsetPx={offsetPx}
+                widthPx={widthPx}
+              />
+            )}
+          >
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 13)}
+                  endDate={new Date(2020, 3, 18)}
+                  status={COMPLETED}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+            <TimelineRow name="Row 2">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 15)}
+                  endDate={new Date(2020, 3, 20)}
+                >
+                  Event 2
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the row column wrapper', () => {
+      expect(wrapper.getByTestId('timeline-columns')).toBeInTheDocument()
+    })
+
+    it('should render the correct number of columns', () => {
+      expect(wrapper.getByTestId('timeline-columns').childNodes.length).toBe(13)
+    })
+
+    it('should render the column content correctly', () => {
+      expect(
+        wrapper.getByTestId('timeline-columns').childNodes[0].textContent
+      ).toBe('0 - false - -150px - 210px')
+    })
+  })
+
   describe('when an event has `render` specified', () => {
     const CUSTOM_EVENT = <div>custom event</div>
 

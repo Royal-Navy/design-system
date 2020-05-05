@@ -163,6 +163,59 @@ stories.add('With custom days', () => {
   )
 })
 
+stories.add('With custom columns', () => {
+  const CustomTimelineColumn = (
+    index: number,
+    isOddNumber: boolean,
+    offsetPx: string,
+    widthPx: string
+  ) => {
+    return (
+      <div
+        style={{
+          display: 'inline-block',
+          width: widthPx,
+          marginLeft: offsetPx,
+          backgroundColor: `${isOddNumber ? 'black' : 'white'}`,
+          height: '100vh',
+        }}
+      />
+    )
+  }
+
+  return (
+    <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+      <TimelineSide />
+      <TimelineTodayMarker />
+      <TimelineMonths />
+      <TimelineWeeks />
+      <TimelineDays />
+      <TimelineRows renderColumns={CustomTimelineColumn}>
+        <TimelineRow name="Row 1">
+          <TimelineEvents>
+            <TimelineEvent
+              startDate={new Date(2020, 3, 14)}
+              endDate={new Date(2020, 3, 18)}
+            >
+              Event 1
+            </TimelineEvent>
+          </TimelineEvents>
+        </TimelineRow>
+        <TimelineRow name="Row 2">
+          <TimelineEvents>
+            <TimelineEvent
+              startDate={new Date(2020, 3, 3)}
+              endDate={new Date(2020, 3, 8)}
+            >
+              Event 2
+            </TimelineEvent>
+          </TimelineEvents>
+        </TimelineRow>
+      </TimelineRows>
+    </Timeline>
+  )
+})
+
 stories.add('With custom today marker', () => {
   const CustomTodayMarker = (date: Date, offset: string) => {
     return (
