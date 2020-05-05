@@ -284,10 +284,32 @@ stories.add('With custom columns', () => {
 })
 
 stories.add('With custom event content', () => {
-  const render = (text: string) => {
-    return () => (
-      <div style={{ backgroundColor: 'black', color: 'white' }}>
-        <span>{text}</span>
+  const CustomEvent = ({
+    children,
+    startDate,
+    endDate,
+    widthPx,
+    offsetPx,
+  }: {
+    children: React.ReactNode
+    startDate: Date
+    endDate: Date
+    widthPx: string
+    offsetPx: string
+  }) => {
+    return (
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          backgroundColor: 'black',
+          color: 'white',
+          marginLeft: offsetPx,
+          width: widthPx,
+        }}
+      >
+        {children}
       </div>
     )
   }
@@ -303,16 +325,47 @@ stories.add('With custom event content', () => {
         <TimelineRow name="Row 1">
           <TimelineEvents>
             <TimelineEvent
-              startDate={new Date(2020, 3, 16)}
-              endDate={new Date(2020, 3, 20)}
-              render={render('Custom 1')}
+              startDate={new Date(2020, 3, 6)}
+              endDate={new Date(2020, 3, 10)}
+              render={(
+                startDate: Date,
+                endDate: Date,
+                widthPx: string,
+                offsetPx: string
+              ) => {
+                return (
+                  <CustomEvent
+                    startDate={startDate}
+                    endDate={endDate}
+                    widthPx={widthPx}
+                    offsetPx={offsetPx}
+                  >
+                    Event 1
+                  </CustomEvent>
+                )
+              }}
             />
             <TimelineEvent
-              startDate={new Date(2020, 3, 25)}
-              endDate={new Date(2020, 3, 28)}
-            >
-              Event 2
-            </TimelineEvent>
+              startDate={new Date(2020, 3, 16)}
+              endDate={new Date(2020, 3, 20)}
+              render={(
+                startDate: Date,
+                endDate: Date,
+                widthPx: string,
+                offsetPx: string
+              ) => {
+                return (
+                  <CustomEvent
+                    startDate={startDate}
+                    endDate={endDate}
+                    widthPx={widthPx}
+                    offsetPx={offsetPx}
+                  >
+                    Event 2
+                  </CustomEvent>
+                )
+              }}
+            />
           </TimelineEvents>
         </TimelineRow>
         <TimelineRow name="Row 2">
@@ -320,8 +373,9 @@ stories.add('With custom event content', () => {
             <TimelineEvent
               startDate={new Date(2020, 3, 15)}
               endDate={new Date(2020, 3, 19)}
-              render={render('Custom 3')}
-            />
+            >
+              Event 3
+            </TimelineEvent>
             <TimelineEvent
               startDate={new Date(2020, 3, 22)}
               endDate={new Date(2020, 3, 24)}

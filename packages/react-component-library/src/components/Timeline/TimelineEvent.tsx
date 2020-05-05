@@ -8,9 +8,13 @@ export interface TimelineEventWithRenderContentProps
   extends ComponentWithClass {
   children?: never
   endDate: Date
-  render: () => React.ReactNode
+  render: (
+    endDate: Date,
+    startDate: Date,
+    widthPx: string,
+    offsetPx: string
+  ) => React.ReactNode
   startDate: Date
-  status?: string
 }
 
 export interface TimelineEventWithChildrenProps extends ComponentWithClass {
@@ -18,57 +22,56 @@ export interface TimelineEventWithChildrenProps extends ComponentWithClass {
   endDate: Date
   render?: never
   startDate: Date
-  status?: string
 }
 
 export type TimelineEventProps =
   | TimelineEventWithRenderContentProps
   | TimelineEventWithChildrenProps
 
-function renderDefault(children: string, startDate: Date, width: string) {
+function renderDefault(
+  children: string,
+  offsetPx: string,
+  startDate: Date,
+  widthPx: string
+) {
+  const classes = classNames(
+    'timeline__event',
+    'timeline__event--renderDefault'
+  )
+
   return (
-    <>
+    <div className={classes} style={{ left: offsetPx }}>
       <span
         className="timeline__event-title"
         data-testid="timeline-event-title"
       >
-        {children || `Task ${format(new Date(startDate), 'dd/yyyy')}`}
+        {children || `Task ${format(new Date(startDate), 'dd/mm/yyyy')}`}
       </span>
-      <div
-        className="timeline__event-bar"
-        style={{ width }}
-      />
-    </>
+      <div className="timeline__event-bar" style={{ width: widthPx }} />
+    </div>
   )
 }
 
 export const TimelineEvent: React.FC<TimelineEventProps> = ({
   children,
-  className,
   endDate,
   render,
   startDate,
-  status = '',
 }) => {
-  const { offset, width, isBeforeStart, isAfterEnd } = useTimelinePosition(
-    startDate,
-    endDate
-  )
+  const {
+    offset: offsetPx,
+    width: widthPx,
+    isBeforeStart,
+    isAfterEnd,
+  } = useTimelinePosition(startDate, endDate)
 
   if (isBeforeStart || isAfterEnd) return null
 
-  const classes = classNames('timeline__event', {
-    [`timeline__event--${status.toLowerCase()}`]: !!status,
-    className,
-  })
-
   return (
-    <div
-      className={classes}
-      style={{ left: offset }}
-      data-testid="timeline-event-wrapper"
-    >
-      {render ? render() : renderDefault(children, startDate, width)}
+    <div data-testid="timeline-event-wrapper">
+      {render
+        ? render(startDate, endDate, widthPx, offsetPx)
+        : renderDefault(children, offsetPx, startDate, widthPx)}
     </div>
   )
 }
