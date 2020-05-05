@@ -5,14 +5,6 @@ export type TimelineOptions = {
   rangeInMonths: number
 }
 
-export type TimelineEvent = {
-  id: string
-  title: string
-  startDate: Date
-  endDate: Date
-  status: string
-}
-
 export type TimelineDay = {
   dayIndex: number
   date: Date
@@ -56,5 +48,4 @@ export interface TimelineProviderProps {
   startDate?: Date
   today?: Date
   options?: TimelineOptions
-  events?: TimelineEvent[]
 }
