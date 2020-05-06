@@ -10,14 +10,13 @@ $timeline-alt-bg-color: f.color("neutral", "white");
 
 .timeline {
   position: relative;
-  min-height: 25rem;
+  display: flex;
   width: 100%;
 }
 
 .timeline__inner {
   overflow-y: hidden;
   overflow-x: auto;
-  margin-left: 16rem;
   border-bottom: 1px solid $timeline-border-color;
   border-right: 1px solid $timeline-border-color;
   padding-bottom: f.spacing("4");
@@ -64,12 +63,9 @@ $timeline-alt-bg-color: f.color("neutral", "white");
 
 .timeline__side {
   display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 16rem;
-  height: 100vh;
+  min-width: 16rem;
   background-color: f.color("neutral", "white");
+  border-bottom: 1px solid $timeline-border-color;
   border-right: 1px solid $timeline-border-color;
   box-shadow: inset 0px 0px 0px 0px $timeline-border-color, 5px 0px 5px 0px rgba(0, 0, 0, 0.04);
   z-index: 1;
