@@ -22,7 +22,7 @@ import { IconHome } from '@royalnavy/icon-library'
 ```
 
 ## Questions
-The Icon Library is maintained by a team at the Royal Navy. If you want to know more, please email the [Design System team](mailto:standards@royalnavy.io).
+The Icon Library is maintained by a team at the Royal Navy. If you want to know more, please email the [Design System team](mailto:design-system@royalnavy.io).
 
 ## Contributing
 Add an SVG icon to `src/assets/**/` and run `yarn build` to generate the consumable artefacts.

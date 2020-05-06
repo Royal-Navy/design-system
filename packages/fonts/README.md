@@ -26,7 +26,7 @@ import '@royalnavy/fonts'
 ```
 
 ## Questions
-The Fonts package is maintained by a team at the Royal Navy. If you want to know more, please email the [Design System team](mailto:standards@royalnavy.io).
+The Fonts package is maintained by a team at the Royal Navy. If you want to know more, please email the [Design System team](mailto:design-system@royalnavy.io).
 
 ## Contributing
 The [contributing guide](https://github.com/Royal-Navy/standards-toolkit/blob/master/docs/contributing.md) resource presents information about our development process. 

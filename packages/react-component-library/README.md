@@ -33,7 +33,7 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 ```
 
 ## Questions
-The Design System is maintained by a team at the Royal Navy. If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:standards@royalnavy.io).
+The Design System is maintained by a team at the Royal Navy. If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
 
 ## Examples
 There is the [Coffee app](https://github.com/Royal-Navy/coffee) which contains examples of how to use the components.

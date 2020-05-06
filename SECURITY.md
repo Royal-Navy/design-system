@@ -20,7 +20,7 @@ The below table details which versions of the Royal Navy Design System are suppo
 
 Please report vulnerabilities to us using the guidelines outlined below.
 
-To report a security issue, email standards@royalnavy.io include the word "SECURITY" in the subject line.
+To report a security issue, email design-system@royalnavy.io include the word "SECURITY" in the subject line.
 
 Please include:
 - Your name and affiliation (if any)
@@ -48,6 +48,6 @@ We will publish here any known security improvements we have not got to yet.  We
 
 
 ## Contact
-standards@royalnavy.io
+design-system@royalnavy.io
 
 Royal Navy Digital Standards security policy version 1.0.0
