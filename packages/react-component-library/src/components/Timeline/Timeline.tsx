@@ -15,6 +15,7 @@ import {
   TimelineWeeks,
   TimelineMonths,
   TimelineTodayMarker,
+  TimelineRowProps,
   TimelineRows,
   TimelineRowsProps,
   TimelineTodayMarkerProps,
@@ -65,6 +66,29 @@ function extractChildrenOf<T>(
   return (children as []).filter(child => isComponentOf(child, names))
 }
 
+function extractRowData(
+  rowGroups: timelineBodyChildrenType | timelineBodyChildrenType[]
+) {
+  return (rowGroups as []).map(
+    ({ props: { children } }: timelineBodyChildrenType) => {
+      let rows: any[] = []
+
+      if (children) {
+        rows = (children as []).map(
+          ({ props: { name } }: React.ReactElement<TimelineRowProps>) => ({
+            name,
+          })
+        )
+      }
+
+      return {
+        // ref, // Create refs to original components? Drag + Drop etc?
+        rows,
+      }
+    }
+  )
+}
+
 export const Timeline: React.FC<TimelineProps> = ({
   children,
   dayWidth = DEFAULTS.DAY_WIDTH,
@@ -76,27 +100,35 @@ export const Timeline: React.FC<TimelineProps> = ({
     rangeInMonths: DEFAULTS.RANGE_IN_MONTHS,
   }
 
-  const rootChildren = extractChildrenOf<TimelineRootComponent>(children, [
-    TimelineSide.name,
+  const bodyChildren = extractChildrenOf<TimelineBodyComponent>(children, [
+    TimelineRows.name,
   ])
 
-  const headerChildren = extractChildrenOf<TimelineHeadComponent>(children, [
+  const headChildren = extractChildrenOf<TimelineHeadComponent>(children, [
     TimelineDays.name,
     TimelineWeeks.name,
     TimelineMonths.name,
     TimelineTodayMarker.name,
   ])
 
-  const bodyChildren = extractChildrenOf<TimelineBodyComponent>(children, [
-    TimelineRows.name,
-  ])
+  const rootChildren = extractChildrenOf<TimelineRootComponent>(children, [
+    TimelineSide.name,
+  ]).map(child => {
+    if (isComponentOf(child, [TimelineSide.name])) {
+      return React.cloneElement(child, {
+        rowGroups: extractRowData(bodyChildren),
+      })
+    }
+
+    return child
+  })
 
   return (
     <TimelineProvider startDate={startDate} today={today} options={options}>
       <article className="timeline">
         {rootChildren}
         <div className="timeline__inner">
-          <header className="timeline__header">{headerChildren}</header>
+          <header className="timeline__header">{headChildren}</header>
           <main className="timeline__main">{bodyChildren}</main>
         </div>
       </article>
