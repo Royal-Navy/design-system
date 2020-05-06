@@ -76,4 +76,4 @@ Any file placed in this folder will be copied wholesale to the library folder po
 
 ## Contacting the standards team
 
-If you are having any problems running this repository, you can either raise an [issue](https://github.com/Royal-Navy/royalnavy.io/issues) or email us at [standards@royalnavy.io](standards@royalnavy.io).
+If you are having any problems running this repository, you can either raise an [issue](https://github.com/Royal-Navy/royalnavy.io/issues) or email us at [design-system@royalnavy.io](design-system@royalnavy.io).
