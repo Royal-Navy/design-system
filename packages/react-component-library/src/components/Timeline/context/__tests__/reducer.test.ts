@@ -49,7 +49,7 @@ describe('TimelineContext reducer', () => {
     })
 
     it('returns the correct number of weeks', () => {
-      expect(weeks.length).toBe(13)
+      expect(weeks.length).toBe(14)
     })
 
     it('returns the correct week start dates', () => {

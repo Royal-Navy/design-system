@@ -9,10 +9,13 @@ const DEFAULTS = {
 
 const NO_DATA_MESSAGE = 'No data available'
 
+const WEEK_START = 1 // Monday
+
 export {
   DATE_DAY_FORMAT,
   DATE_MONTH_FORMAT,
   DATE_WEEK_FORMAT,
   DEFAULTS,
   NO_DATA_MESSAGE,
+  WEEK_START
 }
