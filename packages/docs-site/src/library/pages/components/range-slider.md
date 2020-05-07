@@ -2,7 +2,6 @@
 title: Range Slider
 description: Range Slider allows the user to move a 'handle' to select a single value or range.
 header: true
-draft: true
 ---
 
 import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
