@@ -4,7 +4,7 @@ import {
   setMonth,
   startOfMonth,
   endOfMonth,
-  differenceInWeeks,
+  differenceInCalendarWeeks,
   addWeeks,
   startOfWeek,
   getDaysInMonth,
@@ -20,6 +20,10 @@ import {
   TimelineWeek,
   TimelineDay,
 } from './types'
+
+import {
+  WEEK_START
+} from '../constants'
 
 export function getMonths(
   date: Date,
@@ -56,13 +60,13 @@ export function getWeeks(
   const startDate = months[0].startDate
   const endDate = endOfMonth(months[months.length - 1].startDate)
 
-  const diffInWeeks = differenceInWeeks(endDate, startDate)
+  const diffInWeeks = differenceInCalendarWeeks(endDate, startDate)
 
   const weeks = Array.from({ length: diffInWeeks + 1 })
     .map((_, weekIndex) => {
       const weekStart = startOfWeek(
         addWeeks(startDate, weekIndex),
-        { weekStartsOn: 1 }
+        { weekStartsOn: WEEK_START }
       )
 
       return {

@@ -112,7 +112,7 @@ describe('Timeline', () => {
     })
 
     it('renders the correct number of weeks', () => {
-      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(13)
+      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(14)
     })
 
     it('applies the --alt modifier class to odd weeks', () => {
@@ -419,7 +419,7 @@ describe('Timeline', () => {
 
     it('should render the correct number of columns', () => {
       expect(wrapper.getByTestId('timeline-columns').childNodes).toHaveLength(
-        13
+        14
       )
     })
 
