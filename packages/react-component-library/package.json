@@ -74,7 +74,7 @@
     "@types/react-transition-group": "^4.2.3",
     "@types/testing-library__react": "^10.0.1",
     "@types/uuid": "^7.0.2",
-    "@types/yup": "^0.26.28",
+    "@types/yup": "^0.28.1",
     "@typescript-eslint/eslint-plugin": "^2.17.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-jsx-remove-data-test-id": "^2.1.3",
