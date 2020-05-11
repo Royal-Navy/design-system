@@ -4,6 +4,13 @@
   background-color: rn.color("action", "800");
   color: rn.color("neutral", "100");
   margin-bottom: rn.spacing("13");
+
+  a {
+    color: rn.color("neutral", "white");
+    &:hover {
+      color: rn.color("neutral", "white");
+    }
+  }
 }
 
 .hero-banner__main {
@@ -23,12 +30,8 @@
 }
 
 .hero-banner__link {
-  color: rn.color("neutral", "white");
   margin-left: rn.spacing("4");
   display: inline-block;
-  &:hover {
-    color: rn.color("neutral", "white");
-  }
 }
 
 .hero-banner__text {
