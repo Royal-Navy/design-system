@@ -93,3 +93,5 @@ export {
   Tooltip,
   ToastProvider
 }
+
+export * from './Timeline'

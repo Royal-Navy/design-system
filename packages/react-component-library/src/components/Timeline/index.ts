@@ -1,4 +1,5 @@
 export * from './context'
+export * from './hooks'
 export * from './TimelineEvent'
 export * from './TimelineEvents'
 export * from './TimelineRow'

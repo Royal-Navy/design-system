@@ -126,3 +126,5 @@ export {
   Formik,
   withFormik,
 }
+
+export * from './components/Timeline'
