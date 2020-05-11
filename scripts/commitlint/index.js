@@ -14,7 +14,9 @@ function getPrOptions(prUrl) {
 }
 
 function getCommitsByPr(options) {
-  const github = new Octokit()
+  const github = new Octokit({
+    auth: process.env.GH_TOKEN,
+  })
   return github.pulls.listCommits(options)
 }
 
