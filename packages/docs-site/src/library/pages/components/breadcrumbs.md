@@ -26,7 +26,7 @@ The BreadcrumbsItem  component should sit at the top of the viewport. Visit the 
 
 <Tab title="Design">
 
-<SketchWidget name="Breadcrumbs" href="/standards-toolkit.sketch" />
+<SketchWidget name="Breadcrumbs" href="/design-system.sketch" />
 
 ## Anatomy
 <BreadcrumbAnatomy />

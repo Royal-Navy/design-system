@@ -39,8 +39,8 @@ import packageJson from '../../../package.json'
   <div class="s:rn_f s:rn_f-align-start">
   <Card 
     type="coloured" 
-    title={`Standards v${packageJson.version} released`}
-    text={<span>The latest release is on <a href="https://www.npmjs.com/package/@royalnavy/react-component-library">NPM</a> and the source is available on <a href="https://github.com/Royal-Navy/standards-toolkit">GitHub</a>. Please <a href="/contact">get in touch</a> if you have any feedback.</span>}
+    title={`Design System v${packageJson.version} released`}
+    text={<span>The latest release is on <a href="https://www.npmjs.com/package/@royalnavy/react-component-library">NPM</a> and the source is available on <a href="https://github.com/Royal-Navy/design-system">GitHub</a>. Please <a href="/contact">get in touch</a> if you have any feedback.</span>}
     className="s:rn_f-1 home--updates"
   />
 

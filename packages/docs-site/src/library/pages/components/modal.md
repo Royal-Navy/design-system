@@ -30,7 +30,7 @@ Modals can be combined with [Forms](/components/forms/) to create flows that cap
 
 <Tab title="Design">
 
-<SketchWidget name="Modal" href="/standards-toolkit.sketch" />
+<SketchWidget name="Modal" href="/design-system.sketch" />
 
 ### Anatomy
 

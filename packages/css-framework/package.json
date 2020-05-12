@@ -12,9 +12,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Royal-Navy/standards-toolkit"
+    "url": "https://github.com/Royal-Navy/design-system"
   },
-  "homepage": "https://github.com/Royal-Navy/standards-toolkit/tree/develop/packages/css-framework#readme",
+  "homepage": "https://github.com/Royal-Navy/design-system/tree/develop/packages/css-framework#readme",
   "license": "MIT",
   "main": "index.scss",
   "files": [

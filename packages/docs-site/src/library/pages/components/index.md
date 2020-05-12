@@ -16,4 +16,4 @@ Components can be used in many design patterns and contexts. For example, a butt
 
 You can read the '[get started](/get-started)' guidance to find out more about how to use components to design and develop applications.
 
-The list of components available in the Royal Navy Design System is growing. If you think there is something missing or have a question please [contact the Standards team](/contact).
+The list of components available in the Royal Navy Design System is growing. If you think there is something missing or have a question please [contact the Design System Team](/contact).

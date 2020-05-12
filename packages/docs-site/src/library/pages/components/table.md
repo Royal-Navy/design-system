@@ -24,7 +24,7 @@ The Table component is best used to compare information in rows and columns. It 
 <TabSet>
 <Tab title="Design">
 
-<SketchWidget name="Table" href="/standards-toolkit.sketch" />
+<SketchWidget name="Table" href="/design-system.sketch" />
 
 ### Anatomy
 <TableAnatomy />

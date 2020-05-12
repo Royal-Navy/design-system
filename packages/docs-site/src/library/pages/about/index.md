@@ -18,7 +18,7 @@ The **Royal Navy Design System** is a set of rules that save designers and devel
 * **Patterns** - collections of components to describe how a user is presented with a simple workflow. For example, the form components making up a ‘sign in’ dialogue box.
 
 ## Why is the Design System useful?
-Having a pre-made library of styles, components and patterns reduces the barrier to entry when building new software. It saves designers and developers time as they do not need to create many common elements from scratch, and can re-use proven code. For example, the appearance and functional behaviour of a button is defined in the Standards.
+Having a pre-made library of styles, components and patterns reduces the barrier to entry when building new software. It saves designers and developers time as they do not need to create many common elements from scratch, and can re-use proven code. For example, the appearance and functional behaviour of a button is defined in the Design System.
 
 The **Royal Navy Design System** provides visual templates and code samples enabling the rapid delivery of design work and production ready code. This allows functional prototypes to be quickly tested with users and iterated frequently based on feedback.
 

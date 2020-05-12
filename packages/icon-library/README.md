@@ -27,10 +27,10 @@ The Icon Library is maintained by a team at the Royal Navy. If you want to know 
 ## Contributing
 Add an SVG icon to `src/assets/**/` and run `yarn build` to generate the consumable artefacts.
 
-The [contributing guide](https://github.com/Royal-Navy/standards-toolkit/blob/master/docs/contributing.md) resource presents information about our development process. 
+The [contributing guide](https://github.com/Royal-Navy/design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
 
 ## Changelog
-If you have recently updated then read the [release notes](https://github.com/Royal-Navy/standards-toolkit/releases)
+If you have recently updated then read the [release notes](https://github.com/Royal-Navy/design-system/releases)
 
 ## Roadmap
 The [Design System Roadmap Board](https://github.com/orgs/Royal-Navy/projects/5) contains the work that has been prioritised for the next 12 months.
@@ -38,4 +38,4 @@ The [Design System Roadmap Board](https://github.com/orgs/Royal-Navy/projects/5)
 ## License
 This icon library is an extension of the Google [Material design icons](https://github.com/google/material-design-icons).
 
-The Icon Library is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/standards-toolkit/blob/master/LICENSE)
+The Icon Library is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE)

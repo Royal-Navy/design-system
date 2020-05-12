@@ -11,7 +11,7 @@ const Footer = ({ children, links }) => (
       <div className="rn-footer__content">
         <MonoLogo className="rn-footer__logo" />
         <a
-          href="https://github.com/Royal-Navy/standards-toolkit"
+          href="https://github.com/Royal-Navy/design-system"
           target="_blank"
           rel="noopener noreferrer"
         >

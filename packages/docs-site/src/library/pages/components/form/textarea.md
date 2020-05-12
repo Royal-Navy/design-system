@@ -27,7 +27,7 @@ The Textarea component should be used to let users enter multiple lines of text.
 
 <Tab title="Design">
 
-<SketchWidget name="Textarea" href="/standards-toolkit.sketch" />
+<SketchWidget name="Textarea" href="/design-system.sketch" />
 
 The textarea should contain a concise message, communicating to the user the expected content. To ensure there is appropriate readability of the entered content, try to make the Textarea container stretch to the full width of its parent.
 

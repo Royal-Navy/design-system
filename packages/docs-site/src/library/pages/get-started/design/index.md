@@ -7,7 +7,7 @@ header: true
 This guide will lead you through our Sketch toolkit and the components we support.
 
 ## Sketch
-The Royal Navy Design System components are available in our Sketch file. This file contains all of our components as well as layout ideas examples of applications. Download the <a href="/standards-toolkit.sketch" download>Sketch Toolkit</a>
+The Royal Navy Design System components are available in our Sketch file. This file contains all of our components as well as layout ideas examples of applications. Download the <a href="/design-system.sketch" download>Sketch Toolkit</a>
 
 For rapid prototyping and wireframing, we recommend using [Balsamiq](https://balsamiq.com/).
 

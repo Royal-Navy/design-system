@@ -26,7 +26,7 @@ The tooltip should be used wherever including extra detail would be beneficial t
 
 <Tab title="Design">
 
-<SketchWidget name="Tooltip" href="/standards-toolkit.sketch" />
+<SketchWidget name="Tooltip" href="/design-system.sketch" />
 
   ### Anatomy
   <TooltipAnatomy />

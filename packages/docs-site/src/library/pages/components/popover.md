@@ -21,7 +21,7 @@ A popover is a self-contained modal or dialogue that appears in context next to 
 <TabSet>
 <Tab title="Design">
 
-  <SketchWidget name="Popover" href="/standards-toolkit.sketch" />
+  <SketchWidget name="Popover" href="/design-system.sketch" />
 
   ### Anatomy
 

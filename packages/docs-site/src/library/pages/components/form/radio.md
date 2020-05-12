@@ -25,7 +25,7 @@ The Radio component allows the active selection of one input at a time. It typic
 
 <Tab title="Design">
 
-<SketchWidget name="Radio" href="/standards-toolkit.sketch" />
+<SketchWidget name="Radio" href="/design-system.sketch" />
 
 ### Anatomy
 

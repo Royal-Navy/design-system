@@ -25,7 +25,7 @@ The Select input is useful when the user needs to select an option from a long l
 
 <Tab title="Design">
 
-<SketchWidget name="Select" href="/standards-toolkit.sketch" /> 
+<SketchWidget name="Select" href="/design-system.sketch" /> 
 
 ### Anatomy
 

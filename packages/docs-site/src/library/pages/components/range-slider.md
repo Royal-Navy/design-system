@@ -24,7 +24,7 @@ The Range Slider allows the user to move a 'handle' to select a single value or 
 <TabSet>
 <Tab title="Design">
 
-<SketchWidget name="RangeSlider" href="/standards-toolkit.sketch" />
+<SketchWidget name="RangeSlider" href="/design-system.sketch" />
 
     
   ### Anatomy

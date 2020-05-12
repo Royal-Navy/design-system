@@ -34,7 +34,7 @@ The url provided to a navigation link will be used as the 'to' property of a rea
 
 <Tab title="Design">
 
-<SketchWidget name="Nav" href="/standards-toolkit.sketch" />
+<SketchWidget name="Nav" href="/design-system.sketch" />
 
   ### Anatomy  
 

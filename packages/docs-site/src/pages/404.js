@@ -32,8 +32,8 @@ export default function Template() {
                   address.
                 </p>
                 <p>
-                  <a href="/contact">Contact the Standards team</a> if you
-                  beleive you are seeing this message error.
+                  <a href="/contact">Contact the Design System Team</a> if you
+                  believe you are seeing this message error.
                 </p>
                 <hr />
               </>

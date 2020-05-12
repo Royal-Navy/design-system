@@ -27,7 +27,7 @@ The Number Input allows the user to step between predetermined values. They can 
 
 <Tab title="Design">
 
-<SketchWidget name="NumberInput" href="/standards-toolkit.sketch" />
+<SketchWidget name="NumberInput" href="/design-system.sketch" />
 
   The Number Input should stand out and be easily discoverable by users. The text label should be concise, effectively communicating to the user the range or value required.
 

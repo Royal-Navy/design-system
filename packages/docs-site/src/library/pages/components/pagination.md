@@ -25,7 +25,7 @@ The Pagination component is best used for large lists and tables.
 
 <Tab title="Design">
 
-<SketchWidget name="Pagination" href="/standards-toolkit.sketch" />
+<SketchWidget name="Pagination" href="/design-system.sketch" />
 
 ### Anatomy
 <PaginationAnatomy />

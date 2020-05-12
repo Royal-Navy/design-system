@@ -25,7 +25,7 @@ Only one Sidebar component should be used per page. It should contain your top l
 
 <Tab title="Design">
 
-<SketchWidget name="Sidebar" href="/standards-toolkit.sketch" />
+<SketchWidget name="Sidebar" href="/design-system.sketch" />
 
   ### Anatomy
   <SidebarAnatomy />

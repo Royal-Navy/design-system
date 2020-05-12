@@ -28,7 +28,7 @@ The Dropdown input is useful when the user needs to select an option from a long
 
 <Tab title="Design">
 
-<SketchWidget name="Dropdown" href="/standards-toolkit.sketch" /> 
+<SketchWidget name="Dropdown" href="/design-system.sketch" /> 
 
 The Dropdown provides a method to hide multiple actions under a single click. They reduce the footprint for secondary actions that do not need to be ever-present in the interface. The Dropdown Label provides context to the grouping of these actions, however they all act independently of each other and do not update the Dropdown Label with the selected value.
 
