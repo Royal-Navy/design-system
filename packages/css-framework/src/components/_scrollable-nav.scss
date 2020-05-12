@@ -22,7 +22,7 @@ $btn-focus-width: 0.2rem;
   margin: 0 f.spacing("2");
   padding: 0 f.spacing("8");
   height: 58px;
-  font-size: font-size("base");
+  font-size: f.font-size("base");
   color: f.color("neutral", "300");
   text-align: center;
   text-decoration: none;
