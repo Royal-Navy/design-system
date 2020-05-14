@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://thyhjwb6.github.com/Royal-Navy/design-system/compare/2.6.0...2.7.0) (2020-05-14)
+
+
+### Bug Fixes
+
+* Replace references to "Standards" ([bebc5cd](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/bebc5cd920b0ae959185f4b754ddbf7fa1ad7d4f))
+* **masthead:** Decrease font size of navigation link ([66bd14a](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/66bd14a3d2b34711bc8df749ff38871eea0f32c5))
+* Move link colour ([f26ea47](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/f26ea47b3a94b75c0e8d78cfe9fc865cec423836))
+* update email address ([e568d5f](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/e568d5f0ec77e1cbb1ad77e43ce45859dbb00c0a))
+* Update license ([1eae374](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/1eae3744954e14f7badfc210850fecc98ac57a08))
+* **range slider:** Publish Range Slider docs ([72f3fcd](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/72f3fcd200979546dfd970be285f5b601a91cbfa))
+* **timeline:** Generate correct number of calendar weeks ([38c6999](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/38c699927aa880b825c20b1a2414eb55b284f568))
+* **timeline:** Set z-index for custom TodayMarker example ([713b9c5](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/713b9c5e30403b03a287cf2c85e25ce830bcbf55))
+
+
+### Features
+
+* **timeline:** Add TimelineRows render prop ([38d7ee3](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/38d7ee3fbbdc5affb3e125c9eba2341dd445b67f))
+* **timeline:** Enable sidebar in stories ([4990a3f](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/4990a3f50844e0401814439216e20f4853af8f68))
+* **timeline:** Expose Timeline to consumers ([0865d69](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/0865d69b3cc8fd81e3bd213b9e539c377cffa4d6))
+* **timeline:** Implement TimelineWeeks render prop ([fc0327e](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/fc0327eb9103798b3622ef98c626be246816d325))
+
+
+
+
+
 # [2.6.0](https://thyhjwb6.github.com/Royal-Navy/design-system/compare/2.5.0...2.6.0) (2020-05-05)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/Royal-Navy/design-system/compare/2.6.0...2.7.0) (2020-05-14)
+
+
+### Bug Fixes
+
+* Move link colour ([f26ea47](https://github.com/Royal-Navy/design-system/commit/f26ea47b3a94b75c0e8d78cfe9fc865cec423836))
+* Replace references to "Standards" ([bebc5cd](https://github.com/Royal-Navy/design-system/commit/bebc5cd920b0ae959185f4b754ddbf7fa1ad7d4f))
+* **range slider:** Publish Range Slider docs ([72f3fcd](https://github.com/Royal-Navy/design-system/commit/72f3fcd200979546dfd970be285f5b601a91cbfa))
+* update email address ([e568d5f](https://github.com/Royal-Navy/design-system/commit/e568d5f0ec77e1cbb1ad77e43ce45859dbb00c0a))
+
+
+
+
+
 # [2.6.0](https://github.com/Royal-Navy/design-system/compare/2.5.0...2.6.0) (2020-05-05)
 
 **Note:** Version bump only for package royalnavy.io
