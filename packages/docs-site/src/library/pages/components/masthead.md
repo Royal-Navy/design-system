@@ -24,7 +24,7 @@ The Masthead is a simple section at the top of the page that allows the develope
 
 <Tab title="Design">
 
-  <SketchWidget name="Masthead" href="/standards-toolkit.sketch" />
+  <SketchWidget name="Masthead" href="/design-system.sketch" />
 
   The Masthead component is a main navigational component that resides at the top of an application. It is fixed in place and has a higher stacking order than the rest of the page, so content will flow underneath it on scroll. There should only be one Masthead component per page.
 

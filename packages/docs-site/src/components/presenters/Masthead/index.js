@@ -47,7 +47,7 @@ const MastHead = ({ navItems }) => {
         </div>
 
         <a
-          href="https://github.com/Royal-Navy/standards-toolkit"
+          href="https://github.com/Royal-Navy/design-system"
           target="_blank"
           rel="noopener noreferrer"
         >

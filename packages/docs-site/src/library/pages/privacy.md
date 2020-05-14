@@ -11,11 +11,11 @@ excludeFromNavigation: true
 # Your Personal Data
 We ask you to submit personal information about yourself or your organisation (e.g. name and e-mail address) before you make comments or submit suggestions on this hub. This means that we are able to contact you to discuss your ideas further if we need to. In the future, we may offer services including e-mail updates, or request website feedback for which your supplied email address will be used as a contact. This will be communicated when such services become available. In some cases we may invite you to become more involved in the development of a proposal, for example through workshops or working groups but we will only do this if you have ticked the box to say that's ok.
 
-By entering your details in the fields requested, you help us to build up a picture of who is participating in the standards process; only your username will be published with your proposal on the hub. Any personal information you provide to us will only be used by us, our agents and service providers, and will not be disclosed unless we are obliged or permitted to by law to do so.
+By entering your details in the fields requested, you help us to build up a picture of who is participating in the Design System process; only your username will be published with your proposal on the hub. Any personal information you provide to us will only be used by us, our agents and service providers, and will not be disclosed unless we are obliged or permitted to by law to do so.
 
 If you post or send offensive, inappropriate or objectionable content anywhere on this site, we may use whatever information about you is available to us to stop such behaviour.
 
-If you choose to use such services as RSS feeds from this hub, the Standards Hub is not liable for any security invasions to your personal of professional IT equipment that arise from receiving our feeds, you should ensure you have appropriate security software set-up before subscribing to this service.
+If you choose to use such services as RSS feeds from this hub, the Design System hub is not liable for any security invasions to your personal of professional IT equipment that arise from receiving our feeds, you should ensure you have appropriate security software set-up before subscribing to this service.
 
 We will hold your personal information on our systems for as long as you use the service you have requested, and remove it in the event that the purpose has been met or when you no longer wish to continue your subscription.
 

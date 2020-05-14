@@ -26,7 +26,7 @@ The Tab Set component is used to separate content that exists at the same level 
 
 <Tab title="Design">
 
-<SketchWidget name="TabSet" href="/standards-toolkit.sketch" />
+<SketchWidget name="TabSet" href="/design-system.sketch" />
 
 The Tab Set component comes in two distinct varieties - the default Tab Set and the [Scrollable Tab Set](#scrollable-tabs).
 

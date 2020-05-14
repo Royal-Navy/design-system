@@ -25,7 +25,7 @@ The Drawer is used to show more details for a specific item in a list or table. 
 <TabSet>
 <Tab title="Design">
 
-  <SketchWidget name="Drawer" href="/standards-toolkit.sketch" />
+  <SketchWidget name="Drawer" href="/design-system.sketch" />
 
   
   ### Anatomy

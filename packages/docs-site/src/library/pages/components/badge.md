@@ -27,7 +27,7 @@ A visual indicator useful for status information or meta data associated with an
 
 <Tab title="Design">
 
-<SketchWidget name="Badge" href="/standards-toolkit.sketch" />
+<SketchWidget name="Badge" href="/design-system.sketch" />
 
 
 The Badge component is an indicator component that displays information to the user. It comes in two varieties - the default, rectangular Badge, and the [Pill variation](#pill).

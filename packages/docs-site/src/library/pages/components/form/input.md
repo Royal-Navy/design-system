@@ -27,7 +27,7 @@ The Text Input should be used to let the user enter a single line of text. It ty
 
 <Tab title="Design">
 
-<SketchWidget name="Input" href="/standards-toolkit.sketch" />
+<SketchWidget name="Input" href="/design-system.sketch" />
 
 ## Design
 The Text Input should stand out and be easily discoverable by users. The text label should be concise, effectively communicating to the user the type of input required.

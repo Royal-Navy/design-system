@@ -26,7 +26,7 @@ The Avatar component can either be displayed statically, or as a link. The Avata
 <TabSet>
 <Tab title="Design">
 
-  <SketchWidget name="Avatar" href="/standards-toolkit.sketch" />
+  <SketchWidget name="Avatar" href="/design-system.sketch" />
 
   ### Anatomy
 

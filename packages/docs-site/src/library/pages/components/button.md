@@ -32,7 +32,7 @@ The usage section is a bullet pointed list of scenarios the component should be 
 <TabSet>
   <Tab title="Design">
 
-<SketchWidget name="Button" href="/standards-toolkit.sketch" />
+<SketchWidget name="Button" href="/design-system.sketch" />
 
 Buttons are available in three variants - [Primary](#primary), [Secondary](#secondary), and [Tertiary](#tertiary). These variants allow designers to establish [hierarchy](#hierarchy) in interfaces.
 

@@ -24,8 +24,8 @@ The **Royal Navy Design System** currently supports all major self-updating brow
 
 ### Contributing & issues
 
-If you would like to make a contribution or raise an issue with the Royal Navy Design System, you can do so on [GitHub](https://github.com/Royal-Navy/standards-toolkit).
+If you would like to make a contribution or raise an issue with the Royal Navy Design System, you can do so on [GitHub](https://github.com/Royal-Navy/design-system).
 
 ### Licensing
 
-The Royal-Navy/standards-toolkit is licensed under the Apache License 2.0.
+The Royal-Navy/design-system is licensed under the Apache License 2.0.

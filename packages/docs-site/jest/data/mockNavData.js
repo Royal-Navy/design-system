@@ -19,10 +19,10 @@ export default {
         node: {
           id: 'ae12792e-9914-5db9-bd27-b248102feb0c',
           fields: {
-            slug: '/about-the-design-system/standards-roadmap/',
+            slug: '/about-the-design-system/design-system-roadmap/',
           },
           frontmatter: {
-            title: 'Standards roadmap',
+            title: 'Design System roadmap',
             status: null,
             index: null,
           },
@@ -201,10 +201,10 @@ export default {
         node: {
           id: '7eadfa65-db79-59da-bc68-19b8fc6d8bae',
           fields: {
-            slug: '/community/contact-standards-team/',
+            slug: '/community/contact-design-system-team/',
           },
           frontmatter: {
-            title: 'Contact standards team',
+            title: 'Contact Design System Team',
             status: null,
             index: null,
           },

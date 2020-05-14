@@ -25,7 +25,7 @@ Only one Notification component should be used per page. It should exist in a fi
 
 <Tab title="Design">
 
-<SketchWidget name="Notifications" href="/standards-toolkit.sketch" />
+<SketchWidget name="Notifications" href="/design-system.sketch" />
 
 ### Anatomy
 

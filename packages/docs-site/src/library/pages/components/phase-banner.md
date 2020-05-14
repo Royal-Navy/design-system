@@ -23,7 +23,7 @@ The Phase Banner is an indicator that sits at the top of your application. It co
 
 <Tab title="Design">
 
-<SketchWidget name="PhaseBanner" href="/standards-toolkit.sketch" />
+<SketchWidget name="PhaseBanner" href="/design-system.sketch" />
 
 ### Anatomy
 <PhaseBannerAnatomy />

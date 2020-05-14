@@ -25,7 +25,7 @@ The Button Group acts as a wrapper for multiple buttons. It removes the spacing 
 <TabSet>
   <Tab title="Design">
 
-<SketchWidget name="Button group" href="/standards-toolkit.sketch" />
+<SketchWidget name="Button group" href="/design-system.sketch" />
 
 ### Anatomy
 The Button Group by itself doesn't have any visual elements. The Group simply removes the spacing between buttons and makes them sit flush beside each other.

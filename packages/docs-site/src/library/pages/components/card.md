@@ -26,7 +26,7 @@ The Card component is a visual way of displaying information and actions. It can
 
 <Tab title="Design">
 
-<SketchWidget name="Card" href="/standards-toolkit.sketch" />
+<SketchWidget name="Card" href="/design-system.sketch" />
 
 ### Anatomy
 <CardAnatomy />

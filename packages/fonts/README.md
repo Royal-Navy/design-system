@@ -29,13 +29,13 @@ import '@royalnavy/fonts'
 The Fonts package is maintained by a team at the Royal Navy. If you want to know more, please email the [Design System team](mailto:design-system@royalnavy.io).
 
 ## Contributing
-The [contributing guide](https://github.com/Royal-Navy/standards-toolkit/blob/master/docs/contributing.md) resource presents information about our development process. 
+The [contributing guide](https://github.com/Royal-Navy/design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
 
 ## Changelog
-If you have recently updated then read the [release notes](https://github.com/Royal-Navy/standards-toolkit/releases)
+If you have recently updated then read the [release notes](https://github.com/Royal-Navy/design-system/releases)
 
 ## Roadmap
 The [Design System Roadmap Board](https://github.com/orgs/Royal-Navy/projects/5) contains the work that has been prioritised for the next 12 months.
 
 ## Licence
-The contained fonts are licensed under the [SIL OPEN FONT LICENSE Version 1.1](https://github.com/Royal-Navy/standards-toolkit/blob/develop/packages/fonts/LICENSE).
+The contained fonts are licensed under the [SIL OPEN FONT LICENSE Version 1.1](https://github.com/Royal-Navy/design-system/blob/develop/packages/fonts/LICENSE).

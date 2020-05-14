@@ -28,10 +28,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Royal-Navy/standards-toolkit"
+    "url": "https://github.com/Royal-Navy/design-system"
   },
   "bugs": {
-    "url": "https://github.com/Royal-Navy/standards-toolkit/issues"
+    "url": "https://github.com/Royal-Navy/design-system/issues"
   },
   "lint-staged": {
     "*.@(js|jsx|ts|tsx)": "eslint"

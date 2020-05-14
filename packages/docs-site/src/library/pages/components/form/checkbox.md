@@ -27,7 +27,7 @@ The checkbox component allows the active selection of one or more input values a
 
 <Tab title="Design">
 
-<SketchWidget name="Checkbox" href="/standards-toolkit.sketch" />
+<SketchWidget name="Checkbox" href="/design-system.sketch" />
 
 ### Anatomy
 <CheckboxAnatomy />

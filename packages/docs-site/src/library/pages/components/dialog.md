@@ -25,7 +25,7 @@ As the Dialog is displayed full screen, it focuses the user's attention and requ
 
 <TabSet>
 <Tab title="Design">
-<SketchWidget name="Dialog" href="/standards-toolkit.sketch" /> 
+<SketchWidget name="Dialog" href="/design-system.sketch" /> 
 
 ### Anatomy
 

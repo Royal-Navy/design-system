@@ -24,7 +24,7 @@ With regards to behaviour, a switch can be thought of like a radio field, allowi
 
 <Tab title="Design">
 
-<SketchWidget name="Switch" href="/standards-toolkit.sketch" />
+<SketchWidget name="Switch" href="/design-system.sketch" />
 
 ### Anatomy
 

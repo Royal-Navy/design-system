@@ -25,7 +25,7 @@ The Card Frame is a very simple component designed to wrap all cards.
 <TabSet>
 <Tab title="Design">
 
-<SketchWidget name="Card" href="/standards-toolkit.sketch" />
+<SketchWidget name="Card" href="/design-system.sketch" />
 
 ### Anatomy
 <CardAnatomy />
