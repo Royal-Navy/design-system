@@ -18,7 +18,9 @@
     "cache:clear": "rm -rf ./.cache",
     "svgr": "yarn svgr:clear && yarn svgr:build",
     "svgr:clear": "find src -regex '.*/images/.*.js' -delete",
-    "svgr:build": "svgr -d src src"
+    "svgr:build": "svgr -d src src",
+    "versions:update": "node ./scripts/versions/update.js",
+    "versions:commit": "./scripts/versions/commit.sh"
   },
   "browserslist": [
     ">0.2%",
