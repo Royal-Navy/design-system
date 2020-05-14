@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/Royal-Navy/design-system/compare/2.6.0...2.7.0) (2020-05-14)
+
+
+### Bug Fixes
+
+* Replace references to "Standards" ([bebc5cd](https://github.com/Royal-Navy/design-system/commit/bebc5cd920b0ae959185f4b754ddbf7fa1ad7d4f))
+* **masthead:** Decrease font size of navigation link ([66bd14a](https://github.com/Royal-Navy/design-system/commit/66bd14a3d2b34711bc8df749ff38871eea0f32c5))
+
+
+### Features
+
+* **timeline:** Add TimelineRows render prop ([38d7ee3](https://github.com/Royal-Navy/design-system/commit/38d7ee3fbbdc5affb3e125c9eba2341dd445b67f))
+* **timeline:** Implement TimelineWeeks render prop ([fc0327e](https://github.com/Royal-Navy/design-system/commit/fc0327eb9103798b3622ef98c626be246816d325))
+
+
+
+
+
 # [2.6.0](https://github.com/Royal-Navy/design-system/compare/2.5.0...2.6.0) (2020-05-05)
 
 
