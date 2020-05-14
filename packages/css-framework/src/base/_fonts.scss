@@ -75,8 +75,11 @@ h6,
   @include font-size("s");
 }
 
-p,
-.rn-p {
+
+// Ensure lists and paragraphs start at same default font size
+
+ol, ul, li,
+p, .rn-p {
   margin: 0;
   @include font-size("base");
   line-height: 1.5;

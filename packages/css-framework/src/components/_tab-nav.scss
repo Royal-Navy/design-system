@@ -22,6 +22,7 @@ $btn-focus-width: 0.2rem;
   color: f.color("neutral", "300");
   margin-bottom: 0;
   text-align: center;
+  line-height: 1;
 
   &.is-active {
     > a {
