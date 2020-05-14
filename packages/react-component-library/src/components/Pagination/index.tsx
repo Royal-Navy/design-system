@@ -1,4 +1,8 @@
 import React from 'react'
+import {
+  IconKeyboardArrowLeft,
+  IconKeyboardArrowRight,
+} from '@royalnavy/icon-library'
 import { usePageChange, BUMP_LEFT, BUMP_RIGHT } from './usePageChange'
 import { getKey } from '../../helpers'
 
@@ -36,7 +40,8 @@ const Pagination: React.FC<PaginationProps> = ({
             }}
             data-testid="button-previous"
           >
-            &#x25c0;&nbsp;Prev
+            <IconKeyboardArrowLeft />
+            Prev
           </button>
         </li>
         {pageNumbers().map((page: string | number) => {
@@ -84,7 +89,8 @@ const Pagination: React.FC<PaginationProps> = ({
             }}
             data-testid="button-next"
           >
-            Next&nbsp;&#x25b6;
+            Next
+            <IconKeyboardArrowRight />
           </button>
         </li>
       </ol>
