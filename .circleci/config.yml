@@ -167,7 +167,7 @@ jobs:
           command: >-
             git config user.email "${GH_EMAIL}" &&
             git config user.name "${GH_NAME}" &&
-            git remote set-url origin https://${GH_TOKEN}@github.com/Royal-Navy/standards-toolkit.git &&
+            git remote set-url origin https://${GH_TOKEN}@github.com/Royal-Navy/design-system.git &&
             git checkout master
       - *authenticate_npm
       - deploy: #deploy step is important to prevent triggering N builds
