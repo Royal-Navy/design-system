@@ -3696,10 +3696,10 @@
   resolved "https://registry.yarnpkg.com/@types/yoga-layout/-/yoga-layout-1.9.1.tgz#6c00e4a151a9a529397d580e2cf6f3947a42a928"
   integrity sha512-OpfgQXWLZn5Dl7mOd8dBNcV8NywXbYYoHjUpa64vJ/RQABaxMzJ5bVicKLGIvIiMnQPtPgKNgXb5jkv9fkOQtw==
 
-"@types/yup@^0.26.28":
-  version "0.26.37"
-  resolved "https://registry.yarnpkg.com/@types/yup/-/yup-0.26.37.tgz#7a52854ac602ba0dc969bebc960559f7464a1686"
-  integrity sha512-cDqR/ez4+iAVQYOwadXjKX4Dq1frtnDGV2GNVKj3aUVKVCKRvsr8esFk66j+LgeeJGmrMcBkkfCf3zk13MjV7A==
+"@types/yup@^0.28.1":
+  version "0.28.3"
+  resolved "https://registry.yarnpkg.com/@types/yup/-/yup-0.28.3.tgz#387c35f9a6a36b8d3561f6601eb4e72518b92899"
+  integrity sha512-0Sir2LxOmupF8HBUvpJoZghLmOqKfZsBk1GYlMwSIccLDDUoN04LHvo0KzDp9qxt1IKf9Fudpj35SrJ8VqetkQ==
 
 "@typescript-eslint/eslint-plugin@^2.17.0", "@typescript-eslint/eslint-plugin@^2.24.0":
   version "2.31.0"
@@ -6018,9 +6018,9 @@ chownr@^2.0.0:
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
 chromatic@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-4.0.2.tgz#78eb4ff9fcec1c7155329cbf9235196bd9a0e8c9"
-  integrity sha512-7Et2J6pPEyGqeBdzeDP5rCHyc9gH9VqyTY6pL1p59fxa6k3b+FWqrLA0RXFCk0R8btUKRXPun9a4tTu486G+ZQ==
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-4.0.3.tgz#3788bdb78b6323190dae2e9714dc0e5934926a45"
+  integrity sha512-TmtYAblzPxbEhH8vpQvL3aqQ/K2AkxraMliaIdORmOyVHmV4qM1aQHP2zPj4yTSdZ5/Tap5zOPW1xODrkQcI4Q==
   dependencies:
     "@babel/preset-react" "^7.9.4"
     "@babel/runtime" "^7.9.2"
@@ -6034,6 +6034,7 @@ chromatic@^4.0.2:
     enhanced-resolve "^4.1.1"
     env-ci "^5.0.2"
     esm "^3.2.25"
+    execa "^4.0.0"
     fake-tag "^2.0.0"
     fs-extra "^9.0.0"
     is-url "^1.2.4"
