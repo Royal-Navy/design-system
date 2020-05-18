@@ -1,18 +1,13 @@
 @use "../config";
 @use "../abstracts/functions" as f;
 
-$action-color: f.color("action", "900");
-$secondary-color: f.color("neutral", "300");
-$secondary-color-hover: f.color("action", "500");
-$tertiary-color: f.color("neutral", "100");
-$active-color: $action-color;
-$border-radius: 4px;
-$btn-focus-width: 0.2rem;
 
 .rn-pagination__list {
   margin: 0;
   padding: 0;
   list-style-type: none;
+  display: flex;
+  align-items: center;
 }
 
 .rn-pagination__item {
@@ -22,19 +17,15 @@ $btn-focus-width: 0.2rem;
   &:first-of-type,
   &:last-of-type {
     .rn-pagination__button {
-      padding: f.spacing("4") f.spacing("8");
-      color: $secondary-color;
+      display: flex;
+      align-items: center;
+      padding: f.spacing("4") f.spacing("5");
       background-color: transparent;
-      border: 1px solid $secondary-color;
-      box-shadow: 0 1px 2px 0 rgba(000, 000, 000, 0.15);
+      border: 1px solid f.color("neutral", "200");
 
       &:hover:not([disabled]) {
-        color: $secondary-color-hover;
-        border-color: $secondary-color-hover;
-      }
-
-      &:focus {
-        box-shadow: 0 0 0 $btn-focus-width rgba(f.color("action", "700") , 0.5);
+        color: f.color("neutral", "500");
+        background-color: f.color("neutral", "100");
       }
 
       &:disabled {
@@ -46,26 +37,25 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-pagination__button {
-  padding: f.spacing("4") f.spacing("6");
+  cursor: pointer;
+  padding: f.spacing("2") f.spacing("4");
   background: none;
-  font-weight: 700;
-  color: $action-color;
+  font-weight: 500;
+  font-size: f.font-size("base");
+  color: f.color("neutral", "400");
   border: 1px solid transparent;
-  border-radius: $border-radius;
-  text-transform: uppercase;
+  border-radius: 4px;
   outline: none;
   transition: all config.$animation-timing;
 
-  &:hover {
-    background-color: $tertiary-color;
-  }
 
-  &:focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba(f.color("action", "700") , 0.5);
+  &:hover {
+    background-color: f.color("neutral", "100");
+    color: f.color("neutral", "500");
   }
 
   &.is-active {
-    background-color: $active-color;
+    background-color: f.color("neutral", "400");
     color: f.color("neutral", "white");
   }
 }
