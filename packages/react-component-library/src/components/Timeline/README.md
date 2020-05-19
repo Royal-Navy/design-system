@@ -299,7 +299,7 @@ Through the use of clever composition and custom styling, it's possible to creat
       <td>Date | NULL</td>
       <td>False</td>
       <td>NULL</td>
-      <td>The start date of the event</td>
+      <td>The end date of the event</td>
     </tr>
   </tbody>
 </table>
