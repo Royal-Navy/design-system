@@ -89,7 +89,7 @@
     "eslint-plugin-react": "^7.18.0",
     "formik": "^2.1.2",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^25.1.0",
+    "jest": "^26.0.1",
     "jsdom": "^16.0.1",
     "lint-staged": "^9.5.0",
     "prettier": "^2.0.5",
