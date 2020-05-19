@@ -24,6 +24,7 @@
     "prettier": "^2.0.5"
   },
   "resolutions": {
+    "**/**/http-proxy": "^1.18.1",
     "**/**/minimist": "^1.2.5",
     "**/**/yargs-parser": "^18.1.3"
   },
