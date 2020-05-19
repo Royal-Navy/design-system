@@ -1,6 +1,8 @@
 # Royal Navy [Design System](https://docs.royalnavy.io/)
 
-[![CircleCI](https://circleci.com/gh/Royal-Navy/design-system/tree/master.svg?style=svg)](https://circleci.com/gh/Royal-Navy/design-system/tree/master) [![GitHub release](https://img.shields.io/github/release/royal-navy/design-system.svg)](https://github.com/Royal-Navy/design-system/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/design-system/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+[![CircleCI](https://circleci.com/gh/Royal-Navy/design-system/tree/master.svg?style=svg)](https://circleci.com/gh/Royal-Navy/design-system/tree/master) [![GitHub release](https://img.shields.io/github/release/royal-navy/design-system.svg)](https://github.com/Royal-Navy/design-system/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/design-system/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![codecov](https://codecov.io/gh/Royal-Navy/design-system/branch/master/graph/badge.svg)](https://codecov.io/gh/Royal-Navy/design-system)
+
+
 
 The Royal Navy Design System is made up of a responsive component library, icon library and SASS framework. It's here to help developers build web applications that meet the Royal Navy's service standards.
 

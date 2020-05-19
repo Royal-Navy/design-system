@@ -127,6 +127,16 @@ jobs:
           name: Upload CC coverage
           working_directory: ~/project
           command: /tmp/cc-test-reporter upload-coverage -i workspace/codeclimate.react-component-library.json
+  code_cov:
+    docker: *docker
+    steps:
+      - checkout
+      - attach_workspace:
+          at: workspace
+      - run: 
+          name: Upload Code coverage reports
+          working_directory: ~/project/packages/
+          command: bash <(curl -s https://codecov.io/bash)              
   test_visual_regression:
     docker: *docker
     steps:
@@ -251,6 +261,10 @@ workflows:
       - code_climate:
           requires:
             - test_react-component-library
+      - code_cov:
+          requires:
+            - test_react-component-library
+            - test_docs-site
       - test_visual_regression:
           requires:
             - test_react-component-library
