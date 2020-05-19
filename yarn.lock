@@ -6232,9 +6232,9 @@ chownr@^2.0.0:
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
 chromatic@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-4.0.2.tgz#78eb4ff9fcec1c7155329cbf9235196bd9a0e8c9"
-  integrity sha512-7Et2J6pPEyGqeBdzeDP5rCHyc9gH9VqyTY6pL1p59fxa6k3b+FWqrLA0RXFCk0R8btUKRXPun9a4tTu486G+ZQ==
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-4.0.3.tgz#3788bdb78b6323190dae2e9714dc0e5934926a45"
+  integrity sha512-TmtYAblzPxbEhH8vpQvL3aqQ/K2AkxraMliaIdORmOyVHmV4qM1aQHP2zPj4yTSdZ5/Tap5zOPW1xODrkQcI4Q==
   dependencies:
     "@babel/preset-react" "^7.9.4"
     "@babel/runtime" "^7.9.2"
@@ -6248,6 +6248,7 @@ chromatic@^4.0.2:
     enhanced-resolve "^4.1.1"
     env-ci "^5.0.2"
     esm "^3.2.25"
+    execa "^4.0.0"
     fake-tag "^2.0.0"
     fs-extra "^9.0.0"
     is-url "^1.2.4"
