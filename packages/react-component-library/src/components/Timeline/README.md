@@ -18,6 +18,8 @@ A collection of composable and presentation agnostic Compound Components, Hooks 
 - [Hooks](#hooks)
   - [useTimelinePosition](#usetimelineposition)
 - [Advanced Custom Layouts](#advanced-custom-layouts)
+- [Hook APIs](#hook-apis)
+  - [useTimelinePosition](#usetimelineposition)
 - [Component APIs](#component-apis)
   - [Timeline](#timeline)
   - [TimelineTodayMarker](#timelinetodaymarker)
