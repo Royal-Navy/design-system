@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Avatar, AVATAR_VARIANT, Link } from '../../components'
+import { Avatar, AVATAR_VARIANT, Link } from ".."
 
 interface UserLinkProps {
   className?: string

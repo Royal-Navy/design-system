@@ -1,9 +1,9 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import CustomLink from '../../components/CustomLink'
+import CustomLink from "../CustomLink"
 import { Graph, House, Tools } from '../../icons'
-import { Link } from '../../components'
+import { Link } from ".."
 import { Notification, Notifications } from '../NotificationPanel'
 import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from '.'
 

@@ -9,7 +9,7 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react'
 
-import { Link } from '../../components'
+import { Link } from ".."
 import {
   Notification,
   NOTIFICATION_PLACEMENT,

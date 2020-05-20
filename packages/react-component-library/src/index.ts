@@ -22,14 +22,17 @@ import { Dialog } from './components/Dialog'
 import { Drawer } from './components/Drawer'
 import { Dropdown } from './components/Dropdown'
 import { Link } from './components/Link'
+import { Masthead, MastheadNav, MastheadNavItem, MastheadUser } from './components/Masthead'
 import { Modal } from './components/Modal'
 import Nav from './components/Nav'
+import { Notification, Notifications } from './components/NotificationPanel'
 import { NumberInput } from './components/NumberInput'
 import Pagination from './components/Pagination'
 import { PhaseBanner } from './components/PhaseBanner'
 import { Popover, POPOVER_PLACEMENT } from './components/Popover'
 import { ProgressIndicator } from './components/ProgressIndicator'
 import { Select } from './components/Select'
+import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './components/Sidebar'
 import { ResponsiveSwitch, Switch } from './components/Switch'
 import { RangeSlider } from './components/RangeSlider'
 import Radio from './components/Radio'
@@ -39,20 +42,6 @@ import { TextArea } from './components/TextArea'
 import TextInput from './components/TextInput'
 import { Tooltip } from './components/Tooltip'
 import { ToastProvider } from './components/Toast'
-
-// Fragments
-import {
-  Masthead,
-  MastheadNav,
-  MastheadNavItem,
-  MastheadUser,
-  Notification,
-  Notifications,
-  Sidebar,
-  SidebarNav,
-  SidebarNavItem,
-  SidebarUser,
-} from './fragments'
 
 // Icons
 import * as Icons from './icons'

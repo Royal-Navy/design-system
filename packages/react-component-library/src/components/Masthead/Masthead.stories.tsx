@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 
-import { Link } from '../../components'
+import { Link } from ".."
 import { Masthead, MastheadUser } from '.'
 import { Notification, Notifications } from '../NotificationPanel'
 import { MastheadNav, MastheadNavItem } from './MastheadNav'

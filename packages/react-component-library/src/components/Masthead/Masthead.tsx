@@ -10,7 +10,7 @@ import {
   NotificationPanel,
   NotificationsProps,
 } from '../NotificationPanel'
-import { Searchbar } from '../../components'
+import { Searchbar } from ".."
 import { useMastheadSearch } from './useMastheadSearch'
 
 export interface MastheadProps {
