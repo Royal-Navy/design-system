@@ -1,12 +1,6 @@
 import { Alert, ALERT_VARIANT } from './Alert'
 import { Avatar, AVATAR_VARIANT } from './Avatar'
-import {
-  Badge,
-  BADGE_COLOR,
-  BADGE_COLOR_VARIANT,
-  BADGE_SIZE,
-  BADGE_VARIANT,
-} from './Badge'
+import { Badge, BADGE_COLOR, BADGE_COLOR_VARIANT, BADGE_SIZE, BADGE_VARIANT } from './Badge'
 import { BreadcrumbsItem, Breadcrumbs } from './Breadcrumbs'
 import { Button, BUTTON_SIZE } from './Button'
 import { ButtonGroup, ButtonGroupItem } from './ButtonGroup'
@@ -18,8 +12,10 @@ import { Dialog } from './Dialog'
 import { Drawer } from './Drawer'
 import { Dropdown } from './Dropdown'
 import { Link } from './Link'
+import { Masthead, MastheadNav, MastheadNavItem, MastheadUser } from './Masthead'
 import { Modal } from './Modal'
 import Nav from './Nav'
+import { Notification, NotificationPanel, Notifications } from './NotificationPanel'
 import { NumberInput } from './NumberInput'
 import Pagination from './Pagination'
 import { PhaseBanner } from './PhaseBanner'
@@ -29,6 +25,7 @@ import Radio from './Radio'
 import { ScrollableNav, ScrollableNavItem } from './ScrollableNav'
 import { Searchbar } from './Searchbar'
 import { Select } from './Select'
+import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './Sidebar'
 import { ResponsiveSwitch, Switch } from './Switch'
 import { RangeSlider } from './RangeSlider'
 import { Tab, TabSet } from './TabSet'
@@ -65,8 +62,15 @@ export {
   Drawer,
   Dropdown,
   Link,
+  Masthead,
+  MastheadNav,
+  MastheadNavItem,
+  MastheadUser,
   Modal,
   Nav,
+  Notification,
+  NotificationPanel,
+  Notifications,
   NumberInput,
   Pagination,
   PhaseBanner,
@@ -78,6 +82,10 @@ export {
   ScrollableNavItem,
   Searchbar,
   Select,
+  Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
   Switch,
   RangeSlider,
   ResponsiveSwitch,
@@ -91,7 +99,7 @@ export {
   TextArea,
   TextInput,
   Tooltip,
-  ToastProvider
+  ToastProvider,
 }
 
 export * from './Timeline'

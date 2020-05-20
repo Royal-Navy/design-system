@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import classNames from 'classnames'
 
-import { Avatar } from '../../components'
+import { Avatar } from ".."
 
 export interface SidebarUserProps extends ComponentWithClass {
   initials: string

@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 
-import { Avatar, AVATAR_VARIANT } from '../../components'
+import { Avatar, AVATAR_VARIANT } from ".."
 
 export interface MastheadUserProps extends ComponentWithClass {
   initials: string,
