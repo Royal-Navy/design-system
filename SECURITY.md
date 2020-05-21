@@ -41,6 +41,10 @@ The following are not in scope:
 volumetric vulnerabilities, for example overwhelming a service with a high volume of requests
 
 
+## Usage Recommendations
+We recommend following the OWASP [**guidance**](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_security_cheat_sheet.html) for developing secure Node.js applications
+
+
 ## Known Security Gaps & Future Enhancements
 We will publish here any known security improvements we have not got to yet.  We welcome contributions.
 
@@ -50,4 +54,4 @@ We will publish here any known security improvements we have not got to yet.  We
 ## Contact
 design-system@royalnavy.io
 
-Royal Navy Digital Standards security policy version 1.0.0
+Royal Navy Digital Standards security policy version 1.1.0
