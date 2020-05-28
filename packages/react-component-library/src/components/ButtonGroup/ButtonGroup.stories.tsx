@@ -6,6 +6,7 @@ import { withKnobs } from '@storybook/addon-knobs'
 import { IconBrightnessLow } from '@royalnavy/icon-library'
 
 import { ButtonGroup, ButtonGroupItem } from '.'
+import { BUTTON_SIZE } from '..'
 
 const stories = storiesOf('Button group', module)
 const examples = storiesOf('Button group/Examples', module)
@@ -23,7 +24,7 @@ stories.add('Default', () => (
 ))
 
 examples.add('Small', () => (
-  <ButtonGroup size="small">
+  <ButtonGroup size={BUTTON_SIZE.SMALL}>
     <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
     <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
     <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>
@@ -33,7 +34,7 @@ examples.add('Small', () => (
 ))
 
 examples.add('Large', () => (
-  <ButtonGroup size="large">
+  <ButtonGroup size={BUTTON_SIZE.LARGE}>
     <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
     <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
     <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>
@@ -43,7 +44,7 @@ examples.add('Large', () => (
 ))
 
 examples.add('XLarge', () => (
-  <ButtonGroup size="xlarge">
+  <ButtonGroup size={BUTTON_SIZE.XLARGE}>
     <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
     <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
     <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>

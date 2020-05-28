@@ -3,6 +3,7 @@ import React, { FormEvent } from 'react'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
 import { ButtonGroup, ButtonGroupItem } from './index'
+import { BUTTON_SIZE } from '..'
 
 describe('ButtonGroup', () => {
   let wrapper: RenderResult
@@ -104,14 +105,14 @@ describe('ButtonGroup', () => {
   describe('when a different size is provided for each item', () => {
     beforeEach(() => {
       wrapper = render(
-        <ButtonGroup size="regular">
-          <ButtonGroupItem onClick={oneClickSpy} size="small">
+        <ButtonGroup size={BUTTON_SIZE.REGULAR}>
+          <ButtonGroupItem onClick={oneClickSpy} size={BUTTON_SIZE.SMALL}>
             One
           </ButtonGroupItem>
-          <ButtonGroupItem onClick={twoClickSpy} size="regular">
+          <ButtonGroupItem onClick={twoClickSpy} size={BUTTON_SIZE.REGULAR}>
             Two
           </ButtonGroupItem>
-          <ButtonGroupItem onClick={threeClickSpy} isDisabled size="large">
+          <ButtonGroupItem onClick={threeClickSpy} isDisabled size={BUTTON_SIZE.LARGE}>
             Three
           </ButtonGroupItem>
         </ButtonGroup>
