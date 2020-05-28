@@ -59,8 +59,8 @@ type(scope?): subject
 
 #### Types
 - build
-- ci
 - chore
+- ci
 - docs
 - feat
 - fix
