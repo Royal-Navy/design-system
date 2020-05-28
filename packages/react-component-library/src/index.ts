@@ -33,7 +33,7 @@ import { Popover, POPOVER_PLACEMENT } from './components/Popover'
 import { ProgressIndicator } from './components/ProgressIndicator'
 import { Select } from './components/Select'
 import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './components/Sidebar'
-import { ResponsiveSwitch, Switch } from './components/Switch'
+import { ResponsiveSwitch, Switch, SWITCH_SIZE } from './components/Switch'
 import { RangeSlider } from './components/RangeSlider'
 import Radio from './components/Radio'
 import { Table, TableColumn, TABLE_SORT_ORDER } from './components/Table'
@@ -93,6 +93,7 @@ export {
   POPOVER_PLACEMENT,
   ProgressIndicator,
   Switch,
+  SWITCH_SIZE,
   RangeSlider,
   ResponsiveSwitch,
   Radio,

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { getKey } from '../../helpers'
+import { SWITCH_SIZE } from '.'
 
 function getActiveOption(options: SwitchOptionProps[], value: string) {
   const initial: SwitchOptionProps | string = options.find(
@@ -23,7 +24,10 @@ export interface SwitchProps {
   className?: string
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
   options: SwitchOptionProps[]
-  size?: string
+  size?:
+    | typeof SWITCH_SIZE.LARGE
+    | typeof SWITCH_SIZE.SMALL
+    | typeof SWITCH_SIZE.REGULAR
 }
 
 export const Switch: React.FC<SwitchProps> = ({
@@ -32,7 +36,7 @@ export const Switch: React.FC<SwitchProps> = ({
   name,
   onChange,
   options = [],
-  size = 'regular',
+  size = SWITCH_SIZE.REGULAR,
   value,
 }) => {
   const [active, setActive] = useState(getActiveOption(options, value))

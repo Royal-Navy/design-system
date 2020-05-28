@@ -26,7 +26,7 @@ import { ScrollableNav, ScrollableNavItem } from './ScrollableNav'
 import { Searchbar } from './Searchbar'
 import { Select } from './Select'
 import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './Sidebar'
-import { ResponsiveSwitch, Switch } from './Switch'
+import { ResponsiveSwitch, Switch, SWITCH_SIZE } from './Switch'
 import { RangeSlider } from './RangeSlider'
 import { Tab, TabSet } from './TabSet'
 import { Table, TableColumn, TABLE_SORT_ORDER } from './Table'
@@ -87,6 +87,7 @@ export {
   SidebarNavItem,
   SidebarUser,
   Switch,
+  SWITCH_SIZE,
   RangeSlider,
   ResponsiveSwitch,
   Tab,
