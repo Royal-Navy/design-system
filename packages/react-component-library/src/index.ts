@@ -40,7 +40,7 @@ import { Table, TableColumn, TABLE_SORT_ORDER } from './components/Table'
 import { Tab, TabSet } from './components/TabSet'
 import { TextArea } from './components/TextArea'
 import TextInput from './components/TextInput'
-import { Tooltip } from './components/Tooltip'
+import { Tooltip, TOOLTIP_POSITION } from './components/Tooltip'
 import { ToastProvider } from './components/Toast'
 
 // Icons
@@ -110,6 +110,7 @@ export {
   TextArea,
   TextInput,
   Tooltip,
+  TOOLTIP_POSITION,
   ToastProvider,
   useToasts,
   Icons,

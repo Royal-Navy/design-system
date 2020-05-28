@@ -34,7 +34,7 @@ import { TabNav, TabNavItem } from './TabNav'
 import { TextArea } from './TextArea'
 import TextInput from './TextInput'
 import { ToastProvider } from './Toast'
-import { Tooltip } from './Tooltip'
+import { Tooltip, TOOLTIP_POSITION } from './Tooltip'
 
 export {
   Alert,
@@ -100,6 +100,7 @@ export {
   TextArea,
   TextInput,
   Tooltip,
+  TOOLTIP_POSITION,
   ToastProvider,
 }
 

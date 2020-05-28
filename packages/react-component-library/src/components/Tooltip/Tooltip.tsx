@@ -1,9 +1,15 @@
-import classNames from 'classnames'
 import React from 'react'
+import classNames from 'classnames'
+
+import { TOOLTIP_POSITION } from '.'
 
 export interface TooltipProps extends PositionType {
   id?: string
-  position?: 'above' | 'below' | 'left' | 'right'
+  position?:
+    | typeof TOOLTIP_POSITION.ABOVE
+    | typeof TOOLTIP_POSITION.BELOW
+    | typeof TOOLTIP_POSITION.LEFT
+    | typeof TOOLTIP_POSITION.RIGHT
   title?: string
   width?: number
 }
@@ -13,7 +19,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   children,
   id = '',
   left,
-  position = 'above',
+  position = TOOLTIP_POSITION.ABOVE,
   right,
   title,
   top,
