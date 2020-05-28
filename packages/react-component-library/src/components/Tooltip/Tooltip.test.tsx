@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
-import { Tooltip, TooltipProps } from './index'
+import { Tooltip, TooltipProps } from '.'
 
 describe('Tooltip', () => {
   let wrapper: RenderResult

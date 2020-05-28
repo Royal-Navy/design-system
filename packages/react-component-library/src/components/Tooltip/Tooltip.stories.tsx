@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { text, withKnobs } from '@storybook/addon-knobs'
 
-import { Tooltip } from './index'
+import { Tooltip } from '.'
 
 const stories = storiesOf('Tooltip', module)
 const withTitleExamples = storiesOf('Tooltip/Examples/With title', module)
