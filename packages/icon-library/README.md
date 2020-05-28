@@ -18,8 +18,10 @@ If you want to install the prerelease then use the `@next` distribution tag.
 ```javascript
 import { IconHome } from '@royalnavy/icon-library'
 
-// <IconHome />
+// <IconHome size={16} />
 ```
+### Sizing
+The `size` prop sets the `width` and `height` attribute values of the wrapped SVG.
 
 ## Questions
 The Icon Library is maintained by a team at the Royal Navy. If you want to know more, please email the [Design System team](mailto:design-system@royalnavy.io).

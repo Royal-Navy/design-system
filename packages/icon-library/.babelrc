@@ -22,5 +22,26 @@
       ]
     }
   },
-  "plugins": []
+  "plugins": [
+    [
+      "@svgr/babel-plugin-add-jsx-attribute",
+      {
+        "elements": ["svg"],
+        "attributes": [
+          {
+            "name": "width",
+            "value": "size",
+            "spread": false,
+            "literal": true
+          },
+          {
+            "name": "height",
+            "value": "size",
+            "spread": false,
+            "literal": true
+          }
+        ]
+      }
+    ]
+  ]
 }
