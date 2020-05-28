@@ -2,17 +2,14 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
-import { Tooltip, TooltipProps } from './index'
+import { Tooltip, TOOLTIP_POSITION } from '.'
 
 describe('Tooltip', () => {
   let wrapper: RenderResult
-  let props: TooltipProps
 
   describe('When no default position is provided', () => {
     beforeEach(() => {
-      props = {}
-
-      wrapper = render(<Tooltip {...props} />)
+      wrapper = render(<Tooltip />)
     })
 
     it('should not include an id', () => {
@@ -30,11 +27,7 @@ describe('Tooltip', () => {
 
   describe('When a position relative to is provided', () => {
     beforeEach(() => {
-      props = {
-        position: 'below',
-      }
-
-      wrapper = render(<Tooltip {...props} />)
+      wrapper = render(<Tooltip position={TOOLTIP_POSITION.BELOW} />)
     })
 
     it('should set the position', () => {
@@ -44,11 +37,7 @@ describe('Tooltip', () => {
 
   describe('When an id is provided', () => {
     beforeEach(() => {
-      props = {
-        id: 'ID123',
-      }
-
-      wrapper = render(<Tooltip {...props} />)
+      wrapper = render(<Tooltip id="ID123" />)
     })
 
     it('should set the id', () => {
@@ -58,11 +47,7 @@ describe('Tooltip', () => {
 
   describe('When a title is provided', () => {
     beforeEach(() => {
-      props = {
-        title: 'Test Title',
-      }
-
-      wrapper = render(<Tooltip {...props} />)
+      wrapper = render(<Tooltip title="Test Title" />)
     })
 
     it('should display a title', () => {
@@ -72,12 +57,7 @@ describe('Tooltip', () => {
 
   describe('when a position it provided', () => {
     beforeEach(() => {
-      props = {
-        top: 100,
-        left: 200,
-      }
-
-      wrapper = render(<Tooltip {...props} />)
+      wrapper = render(<Tooltip top={100} left={200} />)
     })
 
     it('should include the position', () => {

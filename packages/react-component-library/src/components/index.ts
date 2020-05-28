@@ -26,7 +26,7 @@ import { ScrollableNav, ScrollableNavItem } from './ScrollableNav'
 import { Searchbar } from './Searchbar'
 import { Select } from './Select'
 import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './Sidebar'
-import { ResponsiveSwitch, Switch } from './Switch'
+import { ResponsiveSwitch, Switch, SWITCH_SIZE } from './Switch'
 import { RangeSlider } from './RangeSlider'
 import { Tab, TabSet } from './TabSet'
 import { Table, TableColumn, TABLE_SORT_ORDER } from './Table'
@@ -34,7 +34,7 @@ import { TabNav, TabNavItem } from './TabNav'
 import { TextArea } from './TextArea'
 import TextInput from './TextInput'
 import { ToastProvider } from './Toast'
-import { Tooltip } from './Tooltip'
+import { Tooltip, TOOLTIP_POSITION } from './Tooltip'
 
 export {
   Alert,
@@ -87,6 +87,7 @@ export {
   SidebarNavItem,
   SidebarUser,
   Switch,
+  SWITCH_SIZE,
   RangeSlider,
   ResponsiveSwitch,
   Tab,
@@ -99,6 +100,7 @@ export {
   TextArea,
   TextInput,
   Tooltip,
+  TOOLTIP_POSITION,
   ToastProvider,
 }
 

@@ -2,17 +2,22 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { ButtonGroupItemProps } from '.'
+import { BUTTON_SIZE } from '..'
 
 export interface ButtonGroupProps {
   children: React.ReactElement<ButtonGroupItemProps>[]
   className?: string
-  size?: 'small' | 'regular' | 'large' | 'xlarge'
+  size?:
+    | typeof BUTTON_SIZE.LARGE
+    | typeof BUTTON_SIZE.REGULAR
+    | typeof BUTTON_SIZE.SMALL
+    | typeof BUTTON_SIZE.XLARGE
 }
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   children,
   className,
-  size = 'regular',
+  size = BUTTON_SIZE.REGULAR,
 }) => {
   const classes = classNames('rn-btn-group', className, {
     [`rn-btn-group--${size}`]: size,

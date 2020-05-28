@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react'
 import { Field, Formik, Form } from 'formik'
 import withFormik from '../../enhancers/withFormik'
 
-import { ResponsiveSwitch, Switch } from '.'
+import { ResponsiveSwitch, Switch, SWITCH_SIZE } from '.'
 
 const stories = storiesOf('Switch', module)
 const examples = storiesOf('Switch/Examples', module)
@@ -49,7 +49,7 @@ examples.add('Small', () => (
     label="Date Range"
     options={options}
     onChange={action('onChange')}
-    size="small"
+    size={SWITCH_SIZE.SMALL}
   />
 ))
 
@@ -60,7 +60,7 @@ examples.add('Large', () => (
     label="Date Range"
     options={options}
     onChange={action('onChange')}
-    size="large"
+    size={SWITCH_SIZE.LARGE}
   />
 ))
 

@@ -1,12 +1,17 @@
 import React, { FormEvent } from 'react'
-import { Button } from '../Button'
+
+import { Button, BUTTON_SIZE } from '../Button'
 
 export interface ButtonGroupItemProps {
   children: string
   isDisabled?: boolean
   icon?: React.ReactNode
   onClick?: (event: FormEvent<HTMLButtonElement>) => void
-  size?: 'small' | 'regular' | 'large' | 'xlarge'
+  size?:
+    | typeof BUTTON_SIZE.LARGE
+    | typeof BUTTON_SIZE.REGULAR
+    | typeof BUTTON_SIZE.SMALL
+    | typeof BUTTON_SIZE.XLARGE
 }
 
 export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
