@@ -2,17 +2,31 @@ import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { getKey } from '../../helpers'
-import { SwitchType, OptionType } from '../../types/Switch'
 
-function getActiveOption(options: OptionType[], value: string) {
-  const initial: OptionType | string = options.find(
+function getActiveOption(options: SwitchOptionProps[], value: string) {
+  const initial: SwitchOptionProps | string = options.find(
     item => item.value === value
   )
 
   return (initial && initial.label) || null
 }
 
-export const Switch: React.FC<SwitchType> = ({
+export interface SwitchOptionProps {
+  label: string
+  value: string
+}
+
+export interface SwitchProps {
+  name: string
+  value?: string
+  label?: string
+  className?: string
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
+  options: SwitchOptionProps[]
+  size?: string
+}
+
+export const Switch: React.FC<SwitchProps> = ({
   className,
   label,
   name,
