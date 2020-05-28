@@ -9,7 +9,7 @@ export const ProgressIndicator: React.FC<ComponentWithClass> = ({
 
   return (
     <div className={classes} data-testid="progress-indicator">
-      <IconLoader data-testid="loader" />
+      <IconLoader size={40} data-testid="loader" />
       <span>Loading...</span>
     </div>
   )
