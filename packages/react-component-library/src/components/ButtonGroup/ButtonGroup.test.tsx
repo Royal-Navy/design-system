@@ -101,29 +101,6 @@ describe('ButtonGroup', () => {
     })
   })
 
-  describe('when the size is specified', () => {
-    it.each`
-      size         | expected
-      ${'small'}   | ${'rn-btn--small'}
-      ${'regular'} | ${'rn-btn--regular'}
-      ${'large'}   | ${'rn-btn--large'}
-      ${'xlarge'}  | ${'rn-btn--xlarge'}
-    `('styles the button when the size is $size', ({ size, expected }) => {
-      wrapper = render(
-        <ButtonGroup size={size}>
-          <ButtonGroupItem onClick={oneClickSpy}>One</ButtonGroupItem>
-          <ButtonGroupItem onClick={twoClickSpy}>Two</ButtonGroupItem>
-          <ButtonGroupItem onClick={threeClickSpy} isDisabled>
-            Three
-          </ButtonGroupItem>
-        </ButtonGroup>
-      )
-
-      const buttons = wrapper.getAllByTestId('rn-button')
-      buttons.forEach(button => expect(button).toHaveClass(expected))
-    })
-  })
-
   describe('when a different size is provided for each item', () => {
     beforeEach(() => {
       wrapper = render(
