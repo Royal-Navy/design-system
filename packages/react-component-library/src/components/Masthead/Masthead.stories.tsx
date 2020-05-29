@@ -102,7 +102,7 @@ stories.add('all but navigation', () => (
 stories.add('With navigation', () => (
   <Masthead
     homeLink={<Link href="/" />}
-    nav={
+    nav={(
       <MastheadNav>
         <MastheadNavItem
           link={<Link href="/home">Get started</Link>}
@@ -112,7 +112,7 @@ stories.add('With navigation', () => (
         <MastheadNavItem link={<Link href="/components">Components</Link>} />
         <MastheadNavItem link={<Link href="/about">About</Link>} />
       </MastheadNav>
-    }
+    )}
     notifications={notifications}
     onSearch={action('onSearch')}
     searchPlaceholder="Search"
