@@ -6,7 +6,7 @@ import { Switch } from './Switch'
 import { TextArea } from './TextArea'
 import { TextInput } from './TextInput'
 
-import withFormik from '../enhancers/withFormik'
+import { withFormik } from '../enhancers/withFormik'
 
 /**
  * Enhanced primitives
