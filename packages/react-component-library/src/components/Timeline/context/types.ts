@@ -29,14 +29,14 @@ export type TimelineState = {
   options: TimelineOptions
 }
 
-export enum TIMELINE_ACTIONS {
-  GET_NEXT,
-  GET_PREV
-}
+export const TIMELINE_ACTIONS = {
+  GET_NEXT: 'GET_NEXT',
+  GET_PREV: 'GET_PREV'
+} as const
 
 export type TimelineAction =
-  | { type: TIMELINE_ACTIONS.GET_NEXT }
-  | { type: TIMELINE_ACTIONS.GET_PREV }
+  | { type: typeof TIMELINE_ACTIONS.GET_NEXT }
+  | { type: typeof TIMELINE_ACTIONS.GET_PREV }
 
 export interface TimelineContextDefault {
   state: TimelineState
