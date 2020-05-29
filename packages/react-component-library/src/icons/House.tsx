@@ -1,6 +1,6 @@
 import React from 'react'
 
-const House: React.FC = () => (
+export const House: React.FC = () => (
   <svg width="18px" height="16px" viewBox="0 0 18 16" version="1.1">
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g
@@ -16,5 +16,3 @@ const House: React.FC = () => (
 )
 
 House.displayName = 'HouseIcon'
-
-export default House

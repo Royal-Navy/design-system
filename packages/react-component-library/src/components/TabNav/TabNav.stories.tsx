@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Link } from '../index'
+import { Link } from '../Link'
 import { TabNav, TabNavItem } from '.'
 
 const stories = storiesOf('TabNav', module)

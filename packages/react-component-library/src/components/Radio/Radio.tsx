@@ -12,7 +12,7 @@ interface RadioProps {
   onBlur?: (event: React.FormEvent<HTMLInputElement>) => void
 }
 
-const Radio: React.FC<RadioProps> = ({
+export const Radio: React.FC<RadioProps> = ({
   className = '',
   id = uuidv4(),
   label,
@@ -48,5 +48,3 @@ const Radio: React.FC<RadioProps> = ({
 }
 
 Radio.displayName = 'Radio'
-
-export default Radio

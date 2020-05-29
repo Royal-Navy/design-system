@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Bell: React.FC<ComponentWithClass> = ({ className = '' }) => (
+export const Bell: React.FC<ComponentWithClass> = ({ className = '' }) => (
   <svg
     className={className}
     width="16px"
@@ -23,5 +23,3 @@ const Bell: React.FC<ComponentWithClass> = ({ className = '' }) => (
 )
 
 Bell.displayName = 'BellIcon'
-
-export default Bell

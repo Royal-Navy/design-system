@@ -5,7 +5,7 @@ import { render, RenderResult } from '@testing-library/react'
 import withFormik from '../../enhancers/withFormik'
 import FieldProps from '../../types/FieldProps'
 import FormProps from '../../types/FormProps'
-import Checkbox from './index'
+import { Checkbox } from '.'
 
 describe('Checkbox', () => {
   let field: FieldProps

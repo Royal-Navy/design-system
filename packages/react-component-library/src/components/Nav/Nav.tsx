@@ -1,8 +1,8 @@
 import React from 'react'
 import { getKey } from '../../helpers'
 
-import { Link } from '../index'
-import NavItem from './NavItem'
+import { Link } from '../Link'
+import { NavItem } from './NavItem'
 
 interface NavProps {
   className?: string
@@ -15,7 +15,7 @@ interface NavProps {
 function renderMenu(LinkComponent: any, navItems: any[]) {
   return (
     <ul className="rn-nav__list">
-      {navItems.map(item => {
+      {navItems.map((item) => {
         const { active, children, label } = item
 
         const hasChildren: boolean = children && children.length > 0
@@ -41,7 +41,7 @@ function renderMenu(LinkComponent: any, navItems: any[]) {
   )
 }
 
-const Nav: React.FC<NavProps> = ({
+export const Nav: React.FC<NavProps> = ({
   className = '',
   LinkComponent = Link,
   navItems,
@@ -61,5 +61,3 @@ const Nav: React.FC<NavProps> = ({
 }
 
 Nav.displayName = 'Nav'
-
-export default Nav

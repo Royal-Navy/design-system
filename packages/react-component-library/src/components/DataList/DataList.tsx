@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import classNames from 'classnames'
 import { IconKeyboardArrowDown } from '@royalnavy/icon-library'
 
-import { Badge } from '..'
+import { Badge } from '../Badge'
 import { DataListItemProps } from '.'
 
 export interface DataListProps extends ComponentWithClass {

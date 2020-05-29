@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 
-import TextInput from '../TextInput'
+import { TextInput } from '../TextInput'
 import { RightArrow } from '../../icons'
 import { useDocumentClick } from '../../hooks'
 
@@ -51,7 +51,7 @@ export const Searchbar: React.FC<SearchbarProps> = ({
           autoFocus
           id="term"
           name="term"
-          onChange={event => {
+          onChange={(event) => {
             setTerm(event.target.value)
           }}
           placeholder={searchPlaceholder}
@@ -68,3 +68,5 @@ export const Searchbar: React.FC<SearchbarProps> = ({
     </div>
   )
 }
+
+Searchbar.displayName = 'Searchbar'

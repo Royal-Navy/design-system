@@ -25,3 +25,5 @@ export const RightArrow = () => (
     </g>
   </svg>
 )
+
+RightArrow.displayName = 'RightArrowIcon'

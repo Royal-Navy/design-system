@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TriangleUp: React.FC = () => (
+export const TriangleUp: React.FC = () => (
   <svg
     width="11px"
     height="8px"
@@ -19,5 +19,3 @@ const TriangleUp: React.FC = () => (
 )
 
 TriangleUp.displayName = 'TriangleUpIcon'
-
-export default TriangleUp

@@ -5,7 +5,7 @@ import { render, RenderResult } from '@testing-library/react'
 import withFormik from '../../enhancers/withFormik'
 import FieldProps from '../../types/FieldProps'
 import FormProps from '../../types/FormProps'
-import Radio from './index'
+import { Radio } from '.'
 
 describe('Radio', () => {
   let field: FieldProps

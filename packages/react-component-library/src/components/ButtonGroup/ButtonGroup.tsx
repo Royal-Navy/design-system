@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { ButtonGroupItemProps } from '.'
-import { BUTTON_SIZE } from '..'
+import { BUTTON_SIZE } from '../Button'
 
 export interface ButtonGroupProps {
   children: React.ReactElement<ButtonGroupItemProps>[]

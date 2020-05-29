@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Search: React.FC = () => (
+export const Search: React.FC = () => (
   <svg
     width="15px"
     height="15px"
@@ -27,5 +27,3 @@ const Search: React.FC = () => (
 )
 
 Search.displayName = 'SearchIcon'
-
-export default Search

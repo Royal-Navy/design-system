@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TriangleDown: React.FC = () => (
+export const TriangleDown: React.FC = () => (
   <svg
     className="rn-arrow"
     width="11px"
@@ -21,5 +21,3 @@ const TriangleDown: React.FC = () => (
 )
 
 TriangleDown.displayName = 'TriangleDownIcon'
-
-export default TriangleDown

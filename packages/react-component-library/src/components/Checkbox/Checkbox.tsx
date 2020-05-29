@@ -14,7 +14,7 @@ interface CheckboxProps {
   value?: string
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({
+export const Checkbox: React.FC<CheckboxProps> = ({
   className = '',
   id = uuidv4(),
   isChecked,
@@ -54,5 +54,3 @@ const Checkbox: React.FC<CheckboxProps> = ({
 }
 
 Checkbox.displayName = 'Checkbox'
-
-export default Checkbox

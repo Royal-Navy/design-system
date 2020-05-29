@@ -1,6 +1,6 @@
 import React, { SVGProps } from 'react'
 
-const VisibilityOff = (props: SVGProps<SVGSVGElement>) => (
+export const VisibilityOff = (props: SVGProps<SVGSVGElement>) => (
   <svg width={16} height={16} {...props}>
     <defs>
       <path
@@ -18,5 +18,3 @@ const VisibilityOff = (props: SVGProps<SVGSVGElement>) => (
     </g>
   </svg>
 )
-
-export default VisibilityOff
