@@ -1,10 +1,10 @@
-import React  from 'react'
+import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 
 import { useFocus } from '../../hooks/useFocus'
 
-export interface InputProps {
+export interface TextInputProps {
   autoFocus?: boolean
   className?: string
   isDisabled?: boolean
@@ -36,7 +36,7 @@ export interface InputProps {
     | 'week'
 }
 
-const TextInput: React.FC<InputProps> = props => {
+export const TextInput: React.FC<TextInputProps> = (props) => {
   const {
     className = '',
     isDisabled = false,
@@ -58,11 +58,15 @@ const TextInput: React.FC<InputProps> = props => {
   const hasContent = value && value.length
   const hasLabel = label && label.length
 
-  const classes = classNames('rn-textinput', {
-    'has-focus': focus,
-    'has-content': hasContent,
-    'no-label': !hasLabel,
-  }, className)
+  const classes = classNames(
+    'rn-textinput',
+    {
+      'has-focus': focus,
+      'has-content': hasContent,
+      'no-label': !hasLabel,
+    },
+    className
+  )
 
   return (
     <div className={classes} data-testid="container">
@@ -119,5 +123,3 @@ const TextInput: React.FC<InputProps> = props => {
 }
 
 TextInput.displayName = 'TextInput'
-
-export default TextInput
