@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import { useFocus } from '../../hooks/useFocus'
 
-export interface InputProps
+export interface TextAreaInputProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement>,
     ComponentWithClass {
   isDisabled?: boolean
@@ -14,7 +14,7 @@ export interface InputProps
   value?: string
 }
 
-export const TextArea: React.FC<InputProps> = props => {
+export const TextArea: React.FC<TextAreaInputProps> = (props) => {
   const {
     className = '',
     isDisabled = false,
