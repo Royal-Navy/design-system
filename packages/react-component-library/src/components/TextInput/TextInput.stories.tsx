@@ -6,7 +6,7 @@ import * as yup from 'yup'
 
 import { Search } from '../../icons'
 import { Button } from '../Button'
-import TextInput from './index'
+import { TextInput } from '.'
 
 import withFormik from '../../enhancers/withFormik'
 
@@ -15,7 +15,7 @@ const stories = storiesOf('TextInput', module)
 stories.add('Vanilla', () => {
   return (
     <form
-      onSubmit={e => {
+      onSubmit={(e) => {
         e.preventDefault()
         action('Submitted')(e)
       }}
