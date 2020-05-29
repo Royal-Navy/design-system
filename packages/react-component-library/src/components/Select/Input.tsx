@@ -1,12 +1,12 @@
 import React from 'react'
-import { components } from 'react-select'
-import { InputProps } from 'react-select/src/components/Input'
+import get from 'lodash/get'
+import { components, InputProps } from 'react-select'
 
 export interface SelectInputProps extends InputProps {
   id?: string
 }
 
-export const Input: React.FC<SelectInputProps> = props => (
+export const Input: React.FC<SelectInputProps> = (props) => (
   <div className="rn-select__input-container">
     {props['aria-label'] !== undefined && (
       <label
@@ -17,6 +17,13 @@ export const Input: React.FC<SelectInputProps> = props => (
         {props['aria-label']}
       </label>
     )}
-    <components.Input data-testid="react-select-vendor-input" {...props} />
+    <components.Input
+      data-testid={get(
+        props,
+        'selectProps.data-testid',
+        'react-select-vendor-input'
+      )}
+      {...props}
+    />
   </div>
 )

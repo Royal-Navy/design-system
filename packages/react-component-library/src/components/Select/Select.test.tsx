@@ -1,8 +1,21 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, RenderResult, fireEvent } from '@testing-library/react'
+import { fireEvent, render, RenderResult } from '@testing-library/react'
 
 import { Select } from '.'
+
+const options = [
+  {
+    badge: 'Badge 1',
+    label: 'Option 1',
+    value: '1',
+  },
+  {
+    badge: 'Badge 2',
+    label: 'Option 2',
+    value: '2',
+  },
+]
 
 describe('Select', () => {
   let wrapper: RenderResult
@@ -11,19 +24,6 @@ describe('Select', () => {
   describe('when provided with all props', () => {
     beforeEach(() => {
       onChangeSpy = jest.fn()
-
-      const options = [
-        {
-          badge: 'Badge 1',
-          label: 'Option 1',
-          value: '1',
-        },
-        {
-          badge: 'Badge 2',
-          label: 'Option 2',
-          value: '2',
-        },
-      ]
 
       wrapper = render(
         <Select
@@ -61,8 +61,9 @@ describe('Select', () => {
 
     describe('when the select is clicked', () => {
       beforeEach(() => {
-        fireEvent.focus(wrapper.container.querySelector('input'))
-        fireEvent.keyDown(wrapper.container.querySelector('input'), {
+        const input = wrapper.getByTestId('react-select-vendor-input')
+        fireEvent.focus(input)
+        fireEvent.keyDown(input, {
           key: 'ArrowDown',
           code: 40,
         })
@@ -84,6 +85,22 @@ describe('Select', () => {
           })
         })
       })
+    })
+  })
+
+  describe('when a downstream consumer provides a data-testid', () => {
+    beforeEach(() => {
+      wrapper = render(<Select options={options} data-testid="select-1" />)
+    })
+
+    it('should not find the input using the default `data-testid`', () => {
+      expect(
+        wrapper.queryAllByTestId('react-select-vendor-input')
+      ).toHaveLength(0)
+    })
+
+    it('should find the input using the new `data-testid`', () => {
+      expect(wrapper.getByTestId('select-1')).toBeInTheDocument()
     })
   })
 })
