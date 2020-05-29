@@ -5,7 +5,7 @@ import { render, RenderResult } from '@testing-library/react'
 import withFormik from '../../enhancers/withFormik'
 import FieldProps from '../../types/FieldProps'
 import FormProps from '../../types/FormProps'
-import { TextArea } from './index'
+import { TextArea } from '.'
 
 describe('TextArea', () => {
   let field: FieldProps
@@ -18,7 +18,7 @@ describe('TextArea', () => {
       name: 'colour',
       value: '',
       onBlur: null,
-      onChange: jest.fn()
+      onChange: jest.fn(),
     }
 
     form = {
