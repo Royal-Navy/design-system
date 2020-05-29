@@ -9,7 +9,7 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react'
 
-import { Link } from ".."
+import { Link } from '../Link'
 import {
   Notification,
   NOTIFICATION_PLACEMENT,
@@ -133,7 +133,7 @@ describe('NotificationPanel', () => {
     })
 
     describe('when the notifications are shown and then the notification area is clicked', () => {
-      beforeEach(async done => {
+      beforeEach(async (done) => {
         wrapper.getByTestId('notification-button').click()
 
         await waitFor(() => wrapper.queryAllByText('Thomas Stephens'))

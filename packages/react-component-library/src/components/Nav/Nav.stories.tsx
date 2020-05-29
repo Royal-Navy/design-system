@@ -4,9 +4,9 @@ import { storiesOf } from '@storybook/react'
 import { withKnobs } from '@storybook/addon-knobs'
 
 import { TriangleDown, TriangleUp } from '../../icons'
-import CustomLink from '../CustomLink'
+import { CustomLink } from '../CustomLink'
 import { Button } from '../Button'
-import Nav from './index'
+import { Nav } from '.'
 
 const stories = storiesOf('Nav', module)
 

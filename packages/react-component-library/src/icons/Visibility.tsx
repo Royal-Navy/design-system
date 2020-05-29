@@ -1,6 +1,6 @@
 import React, { SVGProps } from 'react'
 
-const Visibility = (props: SVGProps<SVGSVGElement>) => (
+export const Visibility = (props: SVGProps<SVGSVGElement>) => (
   <svg width={16} height={16} {...props}>
     <defs>
       <path
@@ -19,4 +19,4 @@ const Visibility = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-export default Visibility
+Visibility.displayName = 'VisibilityIcon'

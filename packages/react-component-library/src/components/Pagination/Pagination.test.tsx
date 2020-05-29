@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent, RenderResult } from '@testing-library/react'
 
-import Pagination from './index'
+import { Pagination } from '.'
 
 afterEach(() => jest.clearAllMocks())
 

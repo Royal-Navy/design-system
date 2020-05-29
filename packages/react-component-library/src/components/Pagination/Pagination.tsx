@@ -12,7 +12,7 @@ interface PaginationProps {
   total: number
 }
 
-const Pagination: React.FC<PaginationProps> = ({
+export const Pagination: React.FC<PaginationProps> = ({
   onChange,
   pageSize,
   total,
@@ -99,5 +99,3 @@ const Pagination: React.FC<PaginationProps> = ({
 }
 
 Pagination.displayName = 'Pagination'
-
-export default Pagination

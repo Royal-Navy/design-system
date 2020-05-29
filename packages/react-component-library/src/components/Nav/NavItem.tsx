@@ -8,7 +8,10 @@ interface NavItemProps {
   hasChildren: boolean
 }
 
-const NavItem: React.FC<NavItemProps> = ({ children, hasChildren = false }) => {
+export const NavItem: React.FC<NavItemProps> = ({
+  children,
+  hasChildren = false,
+}) => {
   // @ts-ignore
   const foundActive = !!Children.deepFind(children, ({ props }) => props.active)
   const [isOpen, setIsOpen] = useState(foundActive && hasChildren)
@@ -33,5 +36,3 @@ const NavItem: React.FC<NavItemProps> = ({ children, hasChildren = false }) => {
 }
 
 NavItem.displayName = 'NavItem'
-
-export default NavItem

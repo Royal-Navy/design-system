@@ -1,8 +1,12 @@
 import '@testing-library/jest-dom/extend-expect'
 import React, { useState } from 'react'
-import { render, RenderResult, waitForElementToBeRemoved } from '@testing-library/react'
+import {
+  render,
+  RenderResult,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
 
-import { Badge, Button } from '..'
+import { Button } from '../Button'
 import { TableColumn, Table } from '.'
 
 describe('Table', () => {
@@ -231,9 +235,7 @@ describe('Table', () => {
 
       wrapper.getByText('Update').click()
 
-      return waitForElementToBeRemoved(() =>
-        wrapper.queryAllByText('c1')
-      )
+      return waitForElementToBeRemoved(() => wrapper.queryAllByText('c1'))
     })
 
     it('should update the table data', () => {

@@ -6,7 +6,7 @@ import { withKnobs } from '@storybook/addon-knobs'
 import { IconBrightnessLow } from '@royalnavy/icon-library'
 
 import { ButtonGroup, ButtonGroupItem } from '.'
-import { BUTTON_SIZE } from '..'
+import { BUTTON_SIZE } from '../Button'
 
 const stories = storiesOf('Button group', module)
 const examples = storiesOf('Button group/Examples', module)

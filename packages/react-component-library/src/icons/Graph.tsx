@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Graph: React.FC = () => (
+export const Graph: React.FC = () => (
   <svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1">
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g transform="translate(-20.000000, -71.000000)" className="rn-iconfill">
@@ -11,5 +11,3 @@ const Graph: React.FC = () => (
 )
 
 Graph.displayName = 'GraphIcon'
-
-export default Graph

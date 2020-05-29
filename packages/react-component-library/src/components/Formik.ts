@@ -1,12 +1,11 @@
-import {
-  Checkbox,
-  NumberInput,
-  Radio,
-  Select,
-  Switch,
-  TextArea,
-  TextInput,
-} from '.'
+import { Checkbox } from './Checkbox'
+import { NumberInput } from './NumberInput'
+import { Radio } from './Radio'
+import { Select } from './Select'
+import { Switch } from './Switch'
+import { TextArea } from './TextArea'
+import { TextInput } from './TextInput'
+
 import withFormik from '../enhancers/withFormik'
 
 /**

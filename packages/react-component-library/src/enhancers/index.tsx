@@ -1,4 +1,8 @@
-import { TextInput, Checkbox, Radio, Select } from '../components'
+import { TextInput } from '../components/TextInput'
+import { Checkbox } from '../components/Checkbox'
+import { Radio } from '../components/Radio'
+import { Select } from '../components/Select'
+
 import withFormik from './withFormik'
 
 const Formik: object = {
@@ -10,7 +14,7 @@ const Formik: object = {
   // ...
 }
 
-Object.keys(Formik).forEach(key => {
+Object.keys(Formik).forEach((key) => {
   Formik[key] = withFormik(Formik[key])
 })
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Logo: React.FC<ComponentWithClass> = ({ className = '' }) => (
+export const Logo: React.FC<ComponentWithClass> = ({ className = '' }) => (
   <svg
     className={className}
     width="21"
@@ -28,5 +28,3 @@ const Logo: React.FC<ComponentWithClass> = ({ className = '' }) => (
 )
 
 Logo.displayName = 'LogoIcon'
-
-export default Logo

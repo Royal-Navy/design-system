@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
-import Nav from './index'
+import { Nav } from '.'
 
 describe('Nav', () => {
   let wrapper: RenderResult
@@ -46,9 +46,15 @@ describe('Nav', () => {
     })
 
     it('should not set the items to open', () => {
-      expect(wrapper.getAllByTestId('nav-item')[0].classList).not.toContain('is-open')
-      expect(wrapper.getAllByTestId('nav-item')[1].classList).not.toContain('is-open')
-      expect(wrapper.getAllByTestId('nav-item')[2].classList).not.toContain('is-open')
+      expect(wrapper.getAllByTestId('nav-item')[0].classList).not.toContain(
+        'is-open'
+      )
+      expect(wrapper.getAllByTestId('nav-item')[1].classList).not.toContain(
+        'is-open'
+      )
+      expect(wrapper.getAllByTestId('nav-item')[2].classList).not.toContain(
+        'is-open'
+      )
     })
 
     describe('when the second item is clicked', () => {
@@ -58,7 +64,9 @@ describe('Nav', () => {
       })
 
       it('should not set the second item to open', () => {
-        expect(wrapper.getAllByTestId('nav-item')[1].classList).not.toContain('is-open')
+        expect(wrapper.getAllByTestId('nav-item')[1].classList).not.toContain(
+          'is-open'
+        )
       })
     })
   })
@@ -95,7 +103,9 @@ describe('Nav', () => {
     })
 
     it('should set the first item to open', async () => {
-      expect(wrapper.getAllByTestId('nav-item')[0].classList).toContain('is-open')
+      expect(wrapper.getAllByTestId('nav-item')[0].classList).toContain(
+        'is-open'
+      )
     })
   })
 
@@ -130,7 +140,9 @@ describe('Nav', () => {
     })
 
     it('should not set the first item to open', async () => {
-      expect(wrapper.getAllByTestId('nav-item')[0].classList).not.toContain('is-open')
+      expect(wrapper.getAllByTestId('nav-item')[0].classList).not.toContain(
+        'is-open'
+      )
     })
 
     describe('when the first item is clicked', () => {
@@ -140,7 +152,9 @@ describe('Nav', () => {
       })
 
       it('should set the first item to open', async () => {
-        expect(wrapper.getAllByTestId('nav-item')[0].classList).toContain('is-open')
+        expect(wrapper.getAllByTestId('nav-item')[0].classList).toContain(
+          'is-open'
+        )
       })
     })
   })

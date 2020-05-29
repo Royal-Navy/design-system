@@ -2,8 +2,8 @@ import '@testing-library/jest-dom/extend-expect'
 import React, { FormEvent } from 'react'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
-import { ButtonGroup, ButtonGroupItem } from './index'
-import { BUTTON_SIZE } from '..'
+import { ButtonGroup, ButtonGroupItem } from '.'
+import { BUTTON_SIZE } from '../Button'
 
 describe('ButtonGroup', () => {
   let wrapper: RenderResult
@@ -46,17 +46,19 @@ describe('ButtonGroup', () => {
 
     it('should style the buttons as secondary buttons', () => {
       const buttons = wrapper.getAllByTestId('rn-button')
-      buttons.forEach(button => expect(button).toHaveClass('rn-btn--secondary'))
+      buttons.forEach((button) =>
+        expect(button).toHaveClass('rn-btn--secondary')
+      )
     })
 
     it('should set the default size', () => {
       const buttons = wrapper.getAllByTestId('rn-button')
-      buttons.forEach(button => expect(button).toHaveClass('rn-btn--regular'))
+      buttons.forEach((button) => expect(button).toHaveClass('rn-btn--regular'))
     })
 
     it('should default the type to "button"', () => {
       const buttons = wrapper.getAllByTestId('rn-button')
-      buttons.forEach(button =>
+      buttons.forEach((button) =>
         expect(button).toHaveAttribute('type', 'button')
       )
     })
@@ -112,7 +114,11 @@ describe('ButtonGroup', () => {
           <ButtonGroupItem onClick={twoClickSpy} size={BUTTON_SIZE.REGULAR}>
             Two
           </ButtonGroupItem>
-          <ButtonGroupItem onClick={threeClickSpy} isDisabled size={BUTTON_SIZE.LARGE}>
+          <ButtonGroupItem
+            onClick={threeClickSpy}
+            isDisabled
+            size={BUTTON_SIZE.LARGE}
+          >
             Three
           </ButtonGroupItem>
         </ButtonGroup>
@@ -128,7 +134,7 @@ describe('ButtonGroup', () => {
 
     it('should set the button size to the same as the size specified by the parent', () => {
       const buttons = wrapper.getAllByTestId('rn-button')
-      buttons.forEach(button => expect(button).toHaveClass('rn-btn--regular'))
+      buttons.forEach((button) => expect(button).toHaveClass('rn-btn--regular'))
     })
   })
 })

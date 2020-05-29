@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Tools: React.FC = () => (
+export const Tools: React.FC = () => (
   <svg width="18px" height="16px" viewBox="0 0 19 17" version="1.1">
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g transform="translate(-19.000000, -122.000000)" className="rn-iconfill">
@@ -14,5 +14,3 @@ const Tools: React.FC = () => (
 )
 
 Tools.displayName = 'ToolsIcon'
-
-export default Tools

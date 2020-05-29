@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 
-import { Link } from ".."
+import { Link } from '../Link'
 import { Masthead, MastheadUser } from '.'
 import { Notification, Notifications } from '../NotificationPanel'
 import { MastheadNav, MastheadNavItem } from './MastheadNav'
@@ -102,7 +102,7 @@ stories.add('all but navigation', () => (
 stories.add('With navigation', () => (
   <Masthead
     homeLink={<Link href="/" />}
-    nav={(
+    nav={
       <MastheadNav>
         <MastheadNavItem
           link={<Link href="/home">Get started</Link>}
@@ -112,7 +112,7 @@ stories.add('With navigation', () => (
         <MastheadNavItem link={<Link href="/components">Components</Link>} />
         <MastheadNavItem link={<Link href="/about">About</Link>} />
       </MastheadNav>
-    )}
+    }
     notifications={notifications}
     onSearch={action('onSearch')}
     searchPlaceholder="Search"

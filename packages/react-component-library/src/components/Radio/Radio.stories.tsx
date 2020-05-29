@@ -5,15 +5,14 @@ import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import withFormik from '../../enhancers/withFormik'
-import Radio from './index'
-import Checkbox from '../Checkbox'
+import { Radio } from '.'
 
 const stories = storiesOf('Radio', module)
 
 stories.add('Vanilla', () => {
   return (
     <form
-      onSubmit={e => {
+      onSubmit={(e) => {
         e.preventDefault()
         action('Submitted')(e)
       }}
@@ -42,7 +41,7 @@ stories.add('Formik', () => {
       example: yup.string(),
     })
 
-    const FormikRadio = withFormik(Checkbox)
+    const FormikRadio = withFormik(Radio)
 
     return (
       <Formik

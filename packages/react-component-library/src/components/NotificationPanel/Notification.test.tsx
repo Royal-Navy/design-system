@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
-import { Link } from ".."
+import { Link } from '../Link'
 import { Notification } from '.'
 
 const NOW = '2019-11-05T11:00:00.000Z'

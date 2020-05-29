@@ -2,7 +2,7 @@ import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
 import { Notification, Notifications } from '.'
-import { Link } from ".."
+import { Link } from '../Link'
 
 const MOCK_NOTIFICATION = (
   <Notification

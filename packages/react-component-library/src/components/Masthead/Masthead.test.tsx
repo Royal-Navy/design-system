@@ -8,7 +8,7 @@ import {
   waitFor,
 } from '@testing-library/react'
 
-import { Link } from '../../index'
+import { Link } from '../Link'
 import { Masthead, MastheadProps } from './Masthead'
 import { Notification, Notifications } from '../NotificationPanel'
 import { MastheadUser } from './MastheadUser'
@@ -102,7 +102,7 @@ describe('Masthead', () => {
       })
 
       describe('when the user clicks on the search option', () => {
-        beforeEach(done => {
+        beforeEach((done) => {
           const button = wrapper.queryByTestId('masthead-search-button')
 
           fireEvent(
@@ -153,7 +153,7 @@ describe('Masthead', () => {
         })
 
         describe('and the user clicks on the search button again', () => {
-          beforeEach(done => {
+          beforeEach((done) => {
             fireEvent(
               wrapper.queryByTestId('masthead-search-button'),
               new MouseEvent('click', {

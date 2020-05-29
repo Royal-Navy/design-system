@@ -5,14 +5,14 @@ import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import withFormik from '../../enhancers/withFormik'
-import Checkbox from './index'
+import { Checkbox } from '.'
 
 const stories = storiesOf('Checkbox', module)
 
 stories.add('Vanilla', () => {
   return (
     <form
-      onSubmit={e => {
+      onSubmit={(e) => {
         e.preventDefault()
         action('Submitted')(e)
       }}

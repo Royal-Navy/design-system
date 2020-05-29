@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 
-import Pagination from './index'
+import { Pagination } from '.'
 
 const stories = storiesOf('Pagination', module)
 
