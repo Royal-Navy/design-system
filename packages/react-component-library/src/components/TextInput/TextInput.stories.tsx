@@ -8,7 +8,7 @@ import { Search } from '../../icons'
 import { Button } from '../Button'
 import { TextInput } from '.'
 
-import withFormik from '../../enhancers/withFormik'
+import { withFormik } from '../../enhancers/withFormik'
 
 const stories = storiesOf('TextInput', module)
 

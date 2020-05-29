@@ -8,7 +8,7 @@ export { Icons, useToasts }
 export { Formik } from './components/Formik'
 
 // Enhancers
-// export * from './enhancers'
+export * from './enhancers'
 
 // Components
 export * from './components/Alert'

@@ -10,7 +10,7 @@ export interface FormikProps {
   form: FormProps
 }
 
-const withFormik = (FormComponent: React.FC<any>) => ({
+export const withFormik = (FormComponent: React.FC<any>) => ({
   field,
   form: { touched, errors },
   className,
@@ -42,5 +42,3 @@ const withFormik = (FormComponent: React.FC<any>) => ({
     </div>
   )
 }
-
-export default withFormik

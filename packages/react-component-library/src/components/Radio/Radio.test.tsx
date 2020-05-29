@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
-import withFormik from '../../enhancers/withFormik'
+import { withFormik } from '../../enhancers/withFormik'
 import FieldProps from '../../types/FieldProps'
 import FormProps from '../../types/FormProps'
 import { Radio } from '.'

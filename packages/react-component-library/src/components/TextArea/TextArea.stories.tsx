@@ -7,7 +7,7 @@ import * as yup from 'yup'
 import { Button } from '../Button'
 import { TextArea } from '.'
 
-import withFormik from '../../enhancers/withFormik'
+import { withFormik } from '../../enhancers/withFormik'
 
 const stories = storiesOf('TextArea', module)
 

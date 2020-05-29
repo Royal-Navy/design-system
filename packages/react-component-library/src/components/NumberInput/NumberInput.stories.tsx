@@ -6,7 +6,7 @@ import { IconBrightnessHigh } from '@royalnavy/icon-library'
 
 import { Button } from '../Button'
 import { NumberInput } from './NumberInput'
-import withFormik from '../../enhancers/withFormik'
+import { withFormik } from '../../enhancers/withFormik'
 
 const stories = storiesOf('Number Input', module)
 const examples = storiesOf('Number Input/Examples', module)
@@ -70,11 +70,7 @@ examples.add('Start adornment text', () => (
 ))
 
 examples.add('Value', () => (
-  <NumberInput
-    name="number-input"
-    onChange={action('onChange')}
-    value={10}
-  />
+  <NumberInput name="number-input" onChange={action('onChange')} value={10} />
 ))
 
 examples.add('Formik', () => {

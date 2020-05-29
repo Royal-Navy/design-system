@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
-import withFormik from '../../enhancers/withFormik'
+import { withFormik } from '../../enhancers/withFormik'
 import { Radio } from '.'
 
 const stories = storiesOf('Radio', module)
