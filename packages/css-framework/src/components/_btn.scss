@@ -9,6 +9,7 @@ $btn-block-spacing-y: 1rem;
 $btn-focus-width: 0.2rem;
 
 .rn-btn {
+  position: relative;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -29,13 +30,12 @@ $btn-focus-width: 0.2rem;
   white-space: nowrap;
 
   color: f.color("neutral", "white");
-  background-color: f.color("neutral", "200");
-  background-image: linear-gradient(to bottom, f.color("action", "400"), f.color("action", "500"));
+  background-color: f.color("action", "600");
 
   &:hover {
     text-decoration: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    background-color: f.color("action", "700");
   }
 
   &:focus {
@@ -49,43 +49,21 @@ $btn-focus-width: 0.2rem;
   }
 }
 
-.rn-btn__text {
-  position: relative;
-  z-index: 2;
-}
-
 // States
 .rn-btn--primary {
-
-  background: linear-gradient(to bottom, f.color("action", "500"), f.color("action", "600"));
   color: f.color("neutral", "white");
-  position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    right: -1px;
-    bottom: -1px;
-    left: -1px;
-    border-radius: $btn-border-radius;
-    background-color: rgba(255, 255, 255, 0);
-    z-index: 1;
-    transition: all config.$animation-timing ease-out;
-  }
+  background-color: f.color("action", "600");
 
   &:hover {
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.14);
-    &::before {
-      background-color: rgba(0, 0, 0, 0.15);
-    }
+    background-color: f.color("action", "700");
   }
 
   &.rn-btn--danger {
-    background: linear-gradient(to bottom, f.color("danger", "500"), f.color("danger", "600"));
+    background-color: f.color("danger", "700");
     color: f.color("neutral", "white");
 
     &:hover {
-      box-shadow: 0 1px 3px 0 rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.14);
+      background-color: f.color("danger", "800");
     }
 
     &:focus {
@@ -102,9 +80,9 @@ $btn-focus-width: 0.2rem;
   background-image: none;
 
   &.rn-btn--danger {
-    color: f.color("danger", "600");
+    color: f.color("danger", "700");
     &:hover {
-      color: f.color("danger", "600");
+      color: f.color("danger", "700");
     }
 
     &:focus {
@@ -112,7 +90,7 @@ $btn-focus-width: 0.2rem;
     }
   }
   &:hover {
-    background-color: f.color("neutral", "100");
+    background-color: f.color("neutral", "white");
     color: f.color("neutral", "600");
   }
 }
@@ -134,6 +112,7 @@ $btn-focus-width: 0.2rem;
     transform: none;
     box-shadow: none;
     border: 1px solid f.color("neutral", "200");
+    background-color: f.color("neutral", "white");
     .rn-btn__text::after {
       transform: scale(0, 1);
     }
@@ -162,8 +141,6 @@ $btn-focus-width: 0.2rem;
   display: inline-flex;
   align-items: center;
   margin-left: f.spacing("3");
-  position: relative;
-  z-index: 2;
 }
 
 // Sizes
