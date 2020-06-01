@@ -81,7 +81,12 @@ export const usePageChange = (
   const [pageNumbers, setPageNumbers] = useState([])
 
   function changePage(page: string | number): void {
-    setCurrentPage(Number(page))
+    const newPageNumber = Number(page)
+    setCurrentPage(newPageNumber)
+
+    if (onChange) {
+      onChange(newPageNumber, totalPages)
+    }
   }
 
   useEffect(() => {

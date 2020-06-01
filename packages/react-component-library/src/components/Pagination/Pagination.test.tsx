@@ -8,8 +8,14 @@ describe('Pagination', () => {
   let wrapper: RenderResult
 
   describe('when there is ten pages of data', () => {
+    let onChangeSpy: (currentPage: number, totalPages: number) => void
+
     beforeEach(() => {
-      wrapper = render(<Pagination pageSize={10} total={95} />)
+      onChangeSpy = jest.fn()
+
+      wrapper = render(
+        <Pagination pageSize={10} total={95} onChange={onChangeSpy} />
+      )
     })
 
     it('should render pages', () => {
@@ -44,6 +50,11 @@ describe('Pagination', () => {
             cancelable: true,
           })
         )
+      })
+
+      it('should call the onChange callback', () => {
+        expect(onChangeSpy).toHaveBeenCalledWith(5, 10)
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
       })
 
       it('should apply the `is-active` class to the appropriate page', () => {
@@ -87,6 +98,13 @@ describe('Pagination', () => {
           )
         })
 
+        it('should call the onChange callback', () => {
+          expect(onChangeSpy).toHaveBeenCalledWith(5, 10)
+          expect(onChangeSpy).toHaveBeenCalledWith(1, 10)
+          expect(onChangeSpy).toHaveBeenCalledWith(5, 10)
+          expect(onChangeSpy).toHaveBeenCalledTimes(3)
+        })
+
         it('should render pages', () => {
           expect(wrapper.getAllByTestId('page')[0]).toHaveTextContent('1')
           expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('...')
@@ -109,6 +127,11 @@ describe('Pagination', () => {
             cancelable: true,
           })
         )
+      })
+
+      it('should call the onChange callback', () => {
+        expect(onChangeSpy).toHaveBeenCalledWith(10, 10)
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
       })
 
       it('should apply the `is-active` class to the appropriate page', () => {
@@ -148,8 +171,15 @@ describe('Pagination', () => {
         )
       })
 
+      it('should call the onChange callback', () => {
+        expect(onChangeSpy).toHaveBeenCalledWith(2, 10)
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
+      })
+
       it('should apply the `is-active` class to the appropriate page', () => {
-        expect(wrapper.getByText('2').classList.contains('is-active')).toBe(true)
+        expect(wrapper.getByText('2').classList.contains('is-active')).toBe(
+          true
+        )
       })
 
       describe('and the `Prev` button is clicked', () => {
@@ -163,8 +193,16 @@ describe('Pagination', () => {
           )
         })
 
+        it('should call the onChange callback', () => {
+          expect(onChangeSpy).toHaveBeenCalledWith(2, 10)
+          expect(onChangeSpy).toHaveBeenCalledWith(1, 10)
+          expect(onChangeSpy).toHaveBeenCalledTimes(2)
+        })
+
         it('should apply the `is-active` class to the appropriate page', () => {
-          expect(wrapper.getByText('1').classList.contains('is-active')).toBe(true)
+          expect(wrapper.getByText('1').classList.contains('is-active')).toBe(
+            true
+          )
         })
       })
     })
