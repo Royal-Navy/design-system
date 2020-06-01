@@ -1,101 +1,98 @@
 import { useState } from 'react'
+import compact from 'lodash/compact'
 
-export const PAGE_NEIGHBOURS = 1
+export const ELLIPSIS = '...'
 
-export const BUMP_LEFT = '...'
-export const BUMP_RIGHT = BUMP_LEFT
+function getInbetweeners(currentPage: number, totalPages: number) {
+  if (totalPages > 1) {
+    const isCurrentlyInFirstFive = currentPage < 5
+    if (isCurrentlyInFirstFive) {
+      return [1, 2, 3, 4, 5].filter(
+        (pageNumber: number) => pageNumber <= totalPages
+      )
+    }
+
+    const isCurrentlyInLastFive = currentPage > totalPages - 4
+    if (isCurrentlyInLastFive) {
+      return [
+        totalPages - 4,
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      ]
+    }
+
+    const isCurrentlyInMiddle = currentPage > 4
+    if (isCurrentlyInMiddle) {
+      return [currentPage - 1, currentPage, currentPage + 1]
+    }
+  }
+
+  return []
+}
+
+function getEllipsis(inbetweeners: number[], when: () => boolean) {
+  return inbetweeners.length && when() ? ELLIPSIS : null
+}
+
+function getExcludedPageNumber(inbetweeners: number[], excluded: number) {
+  return inbetweeners.indexOf(excluded) === -1 ? excluded : null
+}
+
+function toKeyValueObject(pageNumber: number | string, key?: string) {
+  if (pageNumber) {
+    return {
+      key: key || `page_${pageNumber}`,
+      value: pageNumber,
+    }
+  }
+
+  return null
+}
+
+function getPageNumbers(currentPage: number, totalPages: number) {
+  const inbetweeners = getInbetweeners(currentPage, totalPages)
+  const firstPageNumber = getExcludedPageNumber(inbetweeners, 1)
+  const lastPageNumber =
+    totalPages === 1 ? null : getExcludedPageNumber(inbetweeners, totalPages)
+  const leftEllipsis = getEllipsis(inbetweeners, () => {
+    return inbetweeners[0] > 2
+  })
+  const rightEllipsis = getEllipsis(inbetweeners, () => {
+    return inbetweeners[inbetweeners.length - 1] < totalPages - 1
+  })
+
+  return compact([
+    toKeyValueObject(firstPageNumber),
+    toKeyValueObject(leftEllipsis, 'left_ellipsis'),
+    ...inbetweeners.map((inbetweener: number) => toKeyValueObject(inbetweener)),
+    toKeyValueObject(rightEllipsis, 'right_ellipsis'),
+    toKeyValueObject(lastPageNumber),
+  ])
+}
 
 export const usePageChange = (
   initialPage: number,
   totalPages: number,
   onChange?: (currentPage: number, totalPages: number) => void
-): [number, (page: string | number) => void, () => any[]] => {
+) => {
   const [currentPage, setCurrentPage] = useState(initialPage)
+  const [pageNumbers, setPageNumbers] = useState(
+    getPageNumbers(initialPage, totalPages)
+  )
 
-  /**
-   * Helper to generate an array of integers based on provided range
-   */
-  function range(from: number, to: number, step = 1): number[] {
-    let i = from
-    const array = []
-
-    while (i <= to) {
-      array.push(i)
-      i += step
-    }
-
-    return array
-  }
-
-  /**
-   * Change the page by setting the relevant state and invoking
-   * the provided onChange callback (if it is provided)
-   */
   function changePage(page: string | number): void {
-    let selected
-
-    if (page === 'previous' && currentPage > 1) {
-      selected = currentPage - 1
-    } else if (page === 'next' && currentPage !== totalPages) {
-      selected = currentPage + 1
-    } else {
-      selected = Number(page)
-    }
-
-    setCurrentPage(selected)
-
-    if (onChange) {
-      onChange(selected, totalPages)
-    }
+    const newPageNumber = Number(page)
+    setCurrentPage(newPageNumber)
+    setPageNumbers(getPageNumbers(newPageNumber, totalPages))
   }
 
-  /**
-   * Returns an array of page numbers used to render pagination
-   */
-  function pageNumbers() {
-    const totalNumbers = PAGE_NEIGHBOURS * 2 + 3
-    const totalBlocks = totalNumbers + 2
-
-    if (totalPages > totalBlocks) {
-      const startPage = Math.max(2, currentPage - PAGE_NEIGHBOURS)
-      const endPage = Math.min(totalPages - 1, currentPage + PAGE_NEIGHBOURS)
-
-      let pages: any[] = range(startPage, endPage)
-
-      const hasLeftSpill = startPage > 2
-      const hasRightSpill = totalPages - endPage > 1
-      const spillOffset = totalNumbers - (pages.length + 1)
-
-      switch (true) {
-        // handle: (1) ... {5 6} [7] {8 9} (10)
-        case hasLeftSpill && !hasRightSpill: {
-          const extraPages = range(startPage - spillOffset, startPage - 1)
-          pages = [BUMP_LEFT, ...extraPages, ...pages]
-          break
-        }
-
-        // handle: (1) {2 3} [4] {5 6} ... (10)
-        case !hasLeftSpill && hasRightSpill: {
-          const extraPages = range(endPage + 1, endPage + spillOffset)
-          pages = [...pages, ...extraPages, BUMP_RIGHT]
-          break
-        }
-
-        // handle: (1) ... {4 5} [6] {7 8} ... (10)
-        case hasLeftSpill && hasRightSpill:
-        default: {
-          pages = [BUMP_LEFT, ...pages, BUMP_RIGHT]
-          break
-        }
-      }
-
-      return [1, ...pages, totalPages]
-    }
-
-    return range(1, totalPages)
+  return {
+    changePage,
+    currentPage,
+    pageNumbers,
   }
-
-  return [currentPage, changePage, pageNumbers]
 }
 
 export default usePageChange
