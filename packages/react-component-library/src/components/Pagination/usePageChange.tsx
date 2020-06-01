@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import compact from 'lodash/compact'
 
 export const ELLIPSIS = '...'
@@ -78,15 +78,15 @@ export const usePageChange = (
   onChange?: (currentPage: number, totalPages: number) => void
 ) => {
   const [currentPage, setCurrentPage] = useState(initialPage)
-  const [pageNumbers, setPageNumbers] = useState(
-    getPageNumbers(initialPage, totalPages)
-  )
+  const [pageNumbers, setPageNumbers] = useState([])
 
   function changePage(page: string | number): void {
-    const newPageNumber = Number(page)
-    setCurrentPage(newPageNumber)
-    setPageNumbers(getPageNumbers(newPageNumber, totalPages))
+    setCurrentPage(Number(page))
   }
+
+  useEffect(() => {
+    setPageNumbers(getPageNumbers(currentPage, totalPages))
+  }, [currentPage])
 
   return {
     changePage,

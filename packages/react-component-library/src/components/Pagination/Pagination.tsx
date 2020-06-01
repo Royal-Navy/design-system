@@ -36,7 +36,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             disabled={currentPage === 1}
             className="rn-pagination__button"
             onClick={() => {
-              changePage('previous')
+              changePage(currentPage - 1)
             }}
             data-testid="page-previous"
           >
@@ -85,7 +85,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             disabled={currentPage === totalPages}
             className="rn-pagination__button"
             onClick={() => {
-              changePage('next')
+              changePage(currentPage + 1)
             }}
             data-testid="page-next"
           >

@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, RenderResult } from '@testing-library/react'
+import { render, RenderResult, fireEvent } from '@testing-library/react'
 
 import { Pagination } from '.'
 
@@ -37,7 +37,13 @@ describe('Pagination', () => {
 
     describe('and the current page is 5', () => {
       beforeEach(() => {
-        wrapper.getByText('5').click()
+        fireEvent(
+          wrapper.getByText('5'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
       })
 
       it('should apply the `is-active` class to the appropriate page', () => {
@@ -64,8 +70,21 @@ describe('Pagination', () => {
 
       describe('and the current page goes back to 1 and then 5 again', () => {
         beforeEach(() => {
-          wrapper.getByText('1').click()
-          wrapper.getByText('5').click()
+          fireEvent(
+            wrapper.getByText('1'),
+            new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
+
+          fireEvent(
+            wrapper.getByText('5'),
+            new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
         })
 
         it('should render pages', () => {
@@ -83,7 +102,13 @@ describe('Pagination', () => {
 
     describe('and the current page is 10', () => {
       beforeEach(() => {
-        wrapper.getByText('10').click()
+        fireEvent(
+          wrapper.getByText('10'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
       })
 
       it('should apply the `is-active` class to the appropriate page', () => {
@@ -109,6 +134,38 @@ describe('Pagination', () => {
 
       it('should disable the `Next` button', () => {
         expect(wrapper.getByText('Next')).toHaveAttribute('disabled', '')
+      })
+    })
+
+    describe('and the `Next` button is clicked', () => {
+      beforeEach(() => {
+        fireEvent(
+          wrapper.getByTestId('page-next'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      })
+
+      it('should apply the `is-active` class to the appropriate page', () => {
+        expect(wrapper.getByText('2').classList.contains('is-active')).toBe(true)
+      })
+
+      describe('and the `Prev` button is clicked', () => {
+        beforeEach(() => {
+          fireEvent(
+            wrapper.getByText('Prev'),
+            new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
+        })
+
+        it('should apply the `is-active` class to the appropriate page', () => {
+          expect(wrapper.getByText('1').classList.contains('is-active')).toBe(true)
+        })
       })
     })
   })
@@ -141,7 +198,13 @@ describe('Pagination', () => {
 
     describe('and the current page is 5', () => {
       beforeEach(() => {
-        wrapper.getByText('5').click()
+        fireEvent(
+          wrapper.getByText('5'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
       })
 
       it('should apply the `is-active` class to the appropriate page', () => {
