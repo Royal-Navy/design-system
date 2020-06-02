@@ -1,70 +1,50 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, fireEvent, RenderResult } from '@testing-library/react'
+import { render, RenderResult, fireEvent } from '@testing-library/react'
 
 import { Pagination } from '.'
 
-afterEach(() => jest.clearAllMocks())
-
 describe('Pagination', () => {
   let wrapper: RenderResult
-  let onChangeSpy: () => void
 
-  describe('when the Pagination is generated with only 2 records and pageSize is 10', () => {
-    onChangeSpy = jest.fn()
+  describe('when there is ten pages of data', () => {
+    let onChangeSpy: (currentPage: number, totalPages: number) => void
 
     beforeEach(() => {
+      onChangeSpy = jest.fn()
+
       wrapper = render(
-        <Pagination onChange={onChangeSpy} pageSize={10} total={2} />
+        <Pagination pageSize={10} total={95} onChange={onChangeSpy} />
       )
     })
 
-    it('should output a single page', () => {
-      expect(wrapper.queryAllByTestId('page')).toHaveLength(1)
+    it('should render pages', () => {
+      expect(wrapper.getAllByTestId('page')[0]).toHaveTextContent('1')
+      expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('2')
+      expect(wrapper.getAllByTestId('page')[2]).toHaveTextContent('3')
+      expect(wrapper.getAllByTestId('page')[3]).toHaveTextContent('4')
+      expect(wrapper.getAllByTestId('page')[4]).toHaveTextContent('5')
+      expect(wrapper.getAllByTestId('page')[5]).toHaveTextContent('...')
+      expect(wrapper.getAllByTestId('page')[6]).toHaveTextContent('10')
+      expect(wrapper.getAllByTestId('page')).toHaveLength(7)
     })
 
-    it('should disable both the left and right buttons', () => {
-      expect(
-        wrapper.getByTestId('button-previous').hasAttribute('disabled')
-      ).toBeTruthy()
-
-      expect(
-        wrapper.getByTestId('button-next').hasAttribute('disabled')
-      ).toBeTruthy()
-    })
-  })
-
-  describe('when the Pagination is generated with 20 records and pageSize is 10', () => {
-    onChangeSpy = jest.fn()
-
-    beforeEach(() => {
-      wrapper = render(
-        <Pagination onChange={onChangeSpy} pageSize={10} total={20} />
-      )
+    it('should apply the `is-active` class to the appropriate page', () => {
+      expect(wrapper.getByText('1').classList.contains('is-active')).toBe(true)
     })
 
-    it('should output the correct number of pages', () => {
-      expect(wrapper.queryAllByTestId('page')).toHaveLength(2)
-    })
-  })
-
-  describe('when the Pagination is generated with pageSize, total and onChange props', () => {
-    onChangeSpy = jest.fn()
-
-    beforeEach(() => {
-      wrapper = render(
-        <Pagination onChange={onChangeSpy} pageSize={10} total={1000} />
-      )
+    it('should disable the `Prev` button', () => {
+      expect(wrapper.getByText('Prev')).toHaveAttribute('disabled', '')
     })
 
-    it('should output the correct number of pages', () => {
-      expect(wrapper.queryAllByTestId('page')).toHaveLength(7)
+    it('should enable the `Next` button', () => {
+      expect(wrapper.getByText('Next')).not.toHaveAttribute('disabled')
     })
 
-    describe('handle: (1) ... {5 6} [7] {8 9} (10)', () => {
+    describe('and the current page is 5', () => {
       beforeEach(() => {
         fireEvent(
-          wrapper.getByTestId('select-page-100'),
+          wrapper.getByText('5'),
           new MouseEvent('click', {
             bubbles: true,
             cancelable: true,
@@ -72,42 +52,76 @@ describe('Pagination', () => {
         )
       })
 
-      it('should render the three dots in the correct place', () => {
-        expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('...')
-        expect(wrapper.queryAllByText('...')).toHaveLength(1)
+      it('should call the onChange callback', () => {
+        expect(onChangeSpy).toHaveBeenCalledWith(5, 10)
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
       })
-    })
 
-    describe('handle: (1) ... {4 5} [6] {7 8} ... (10)', () => {
-      beforeEach(() => {
-        fireEvent(
-          wrapper.getByTestId('select-page-4'),
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-          })
+      it('should apply the `is-active` class to the appropriate page', () => {
+        expect(wrapper.getByText('5').classList.contains('is-active')).toBe(
+          true
         )
       })
 
-      it('should render the three dots in the correct places', () => {
+      it('should render pages', () => {
+        expect(wrapper.getAllByTestId('page')[0]).toHaveTextContent('1')
         expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('...')
+        expect(wrapper.getAllByTestId('page')[2]).toHaveTextContent('4')
+        expect(wrapper.getAllByTestId('page')[3]).toHaveTextContent('5')
+        expect(wrapper.getAllByTestId('page')[4]).toHaveTextContent('6')
         expect(wrapper.getAllByTestId('page')[5]).toHaveTextContent('...')
-        expect(wrapper.queryAllByText('...')).toHaveLength(2)
+        expect(wrapper.getAllByTestId('page')[6]).toHaveTextContent('10')
+        expect(wrapper.getAllByTestId('page')).toHaveLength(7)
+      })
+
+      it('should enable the `Prev` and `Next` buttons', () => {
+        expect(wrapper.getByText('Prev')).not.toHaveAttribute('disabled')
+        expect(wrapper.getByText('Next')).not.toHaveAttribute('disabled')
+      })
+
+      describe('and the current page goes back to 1 and then 5 again', () => {
+        beforeEach(() => {
+          fireEvent(
+            wrapper.getByText('1'),
+            new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
+
+          fireEvent(
+            wrapper.getByText('5'),
+            new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
+        })
+
+        it('should call the onChange callback', () => {
+          expect(onChangeSpy).toHaveBeenCalledWith(5, 10)
+          expect(onChangeSpy).toHaveBeenCalledWith(1, 10)
+          expect(onChangeSpy).toHaveBeenCalledWith(5, 10)
+          expect(onChangeSpy).toHaveBeenCalledTimes(3)
+        })
+
+        it('should render pages', () => {
+          expect(wrapper.getAllByTestId('page')[0]).toHaveTextContent('1')
+          expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('...')
+          expect(wrapper.getAllByTestId('page')[2]).toHaveTextContent('4')
+          expect(wrapper.getAllByTestId('page')[3]).toHaveTextContent('5')
+          expect(wrapper.getAllByTestId('page')[4]).toHaveTextContent('6')
+          expect(wrapper.getAllByTestId('page')[5]).toHaveTextContent('...')
+          expect(wrapper.getAllByTestId('page')[6]).toHaveTextContent('10')
+          expect(wrapper.getAllByTestId('page')).toHaveLength(7)
+        })
       })
     })
 
-    describe('when the user clicks on the right button then the left button', () => {
+    describe('and the current page is 10', () => {
       beforeEach(() => {
         fireEvent(
-          wrapper.getByTestId('button-next'),
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-          })
-        )
-
-        fireEvent(
-          wrapper.getByTestId('button-previous'),
+          wrapper.getByText('10'),
           new MouseEvent('click', {
             bubbles: true,
             cancelable: true,
@@ -115,45 +129,115 @@ describe('Pagination', () => {
         )
       })
 
-      it('should apply the `is-active` class to the appropriate page', () => {
-        expect(
-          wrapper.getByTestId('select-page-1').classList.contains('is-active')
-        ).toBe(true)
-      })
-
-      it('should invoke the onChange function', () => {
-        expect(onChangeSpy).toHaveBeenCalledTimes(2)
-        expect(onChangeSpy).toHaveBeenCalledWith(1, 100)
-      })
-    })
-
-    describe('when the user clicks on the right button', () => {
-      beforeEach(() => {
-        fireEvent(
-          wrapper.getByTestId('button-next'),
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-          })
-        )
-      })
-
-      it('should apply the `is-active` class to the appropriate page', () => {
-        expect(
-          wrapper.getByTestId('select-page-2').classList.contains('is-active')
-        ).toBe(true)
-      })
-
-      it('should invoke the onChange function', () => {
+      it('should call the onChange callback', () => {
+        expect(onChangeSpy).toHaveBeenCalledWith(10, 10)
         expect(onChangeSpy).toHaveBeenCalledTimes(1)
-        expect(onChangeSpy).toHaveBeenCalledWith(2, 100)
+      })
+
+      it('should apply the `is-active` class to the appropriate page', () => {
+        expect(wrapper.getByText('10').classList.contains('is-active')).toBe(
+          true
+        )
+      })
+
+      it('should render pages', () => {
+        expect(wrapper.getAllByTestId('page')[0]).toHaveTextContent('1')
+        expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('...')
+        expect(wrapper.getAllByTestId('page')[2]).toHaveTextContent('6')
+        expect(wrapper.getAllByTestId('page')[3]).toHaveTextContent('7')
+        expect(wrapper.getAllByTestId('page')[4]).toHaveTextContent('8')
+        expect(wrapper.getAllByTestId('page')[5]).toHaveTextContent('9')
+        expect(wrapper.getAllByTestId('page')[6]).toHaveTextContent('10')
+        expect(wrapper.getAllByTestId('page')).toHaveLength(7)
+      })
+
+      it('should enable the `Prev` button', () => {
+        expect(wrapper.getByText('Prev')).not.toHaveAttribute('disabled')
+      })
+
+      it('should disable the `Next` button', () => {
+        expect(wrapper.getByText('Next')).toHaveAttribute('disabled', '')
       })
     })
 
-    describe('when the user clicks on a page', () => {
+    describe('and the `Next` button is clicked', () => {
       beforeEach(() => {
         fireEvent(
-          wrapper.getByTestId('select-page-5'),
+          wrapper.getByTestId('page-next'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      })
+
+      it('should call the onChange callback', () => {
+        expect(onChangeSpy).toHaveBeenCalledWith(2, 10)
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
+      })
+
+      it('should apply the `is-active` class to the appropriate page', () => {
+        expect(wrapper.getByText('2').classList.contains('is-active')).toBe(
+          true
+        )
+      })
+
+      describe('and the `Prev` button is clicked', () => {
+        beforeEach(() => {
+          fireEvent(
+            wrapper.getByText('Prev'),
+            new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
+        })
+
+        it('should call the onChange callback', () => {
+          expect(onChangeSpy).toHaveBeenCalledWith(2, 10)
+          expect(onChangeSpy).toHaveBeenCalledWith(1, 10)
+          expect(onChangeSpy).toHaveBeenCalledTimes(2)
+        })
+
+        it('should apply the `is-active` class to the appropriate page', () => {
+          expect(wrapper.getByText('1').classList.contains('is-active')).toBe(
+            true
+          )
+        })
+      })
+    })
+  })
+
+  describe('when there is five pages of data', () => {
+    beforeEach(() => {
+      wrapper = render(<Pagination pageSize={10} total={45} />)
+    })
+
+    it('should render pages', () => {
+      expect(wrapper.getAllByTestId('page')[0]).toHaveTextContent('1')
+      expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('2')
+      expect(wrapper.getAllByTestId('page')[2]).toHaveTextContent('3')
+      expect(wrapper.getAllByTestId('page')[3]).toHaveTextContent('4')
+      expect(wrapper.getAllByTestId('page')[4]).toHaveTextContent('5')
+      expect(wrapper.getAllByTestId('page')).toHaveLength(5)
+    })
+
+    it('should apply the `is-active` class to the appropriate page', () => {
+      expect(wrapper.getByText('1').classList.contains('is-active')).toBe(true)
+    })
+
+    it('should disable the `Prev` button', () => {
+      expect(wrapper.getByText('Prev')).toHaveAttribute('disabled', '')
+    })
+
+    it('should enable the `Next` button', () => {
+      expect(wrapper.getByText('Next')).not.toHaveAttribute('disabled')
+    })
+
+    describe('and the current page is 5', () => {
+      beforeEach(() => {
+        fireEvent(
+          wrapper.getByText('5'),
           new MouseEvent('click', {
             bubbles: true,
             cancelable: true,
@@ -162,15 +246,72 @@ describe('Pagination', () => {
       })
 
       it('should apply the `is-active` class to the appropriate page', () => {
-        expect(
-          wrapper.getByTestId('select-page-5').classList.contains('is-active')
-        ).toBe(true)
+        expect(wrapper.getByText('5').classList.contains('is-active')).toBe(
+          true
+        )
       })
 
-      it('should invoke the onChange function', () => {
-        expect(onChangeSpy).toHaveBeenCalledTimes(1)
-        expect(onChangeSpy).toHaveBeenCalledWith(5, 100)
+      it('should render pages', () => {
+        expect(wrapper.getAllByTestId('page')[0]).toHaveTextContent('1')
+        expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('2')
+        expect(wrapper.getAllByTestId('page')[2]).toHaveTextContent('3')
+        expect(wrapper.getAllByTestId('page')[3]).toHaveTextContent('4')
+        expect(wrapper.getAllByTestId('page')[4]).toHaveTextContent('5')
+        expect(wrapper.getAllByTestId('page')).toHaveLength(5)
       })
+
+      it('should enable the `Prev` button', () => {
+        expect(wrapper.getByText('Prev')).not.toHaveAttribute('disabled')
+      })
+
+      it('should enable the `Next` button', () => {
+        expect(wrapper.getByText('Next')).toHaveAttribute('disabled', '')
+      })
+    })
+  })
+
+  describe('when there is one page of data and the current page is 1', () => {
+    beforeEach(() => {
+      wrapper = render(<Pagination pageSize={10} total={2} />)
+    })
+
+    it('should render pages', () => {
+      expect(wrapper.getAllByTestId('page')[0]).toHaveTextContent('1')
+      expect(wrapper.getAllByTestId('page')).toHaveLength(1)
+    })
+
+    it('should apply the `is-active` class to the appropriate page', () => {
+      expect(wrapper.getByText('1').classList.contains('is-active')).toBe(true)
+    })
+
+    it('should disable both the `Prev` and `Next` buttons', () => {
+      expect(wrapper.getByText('Prev')).toHaveAttribute('disabled', '')
+      expect(wrapper.getByText('Next')).toHaveAttribute('disabled', '')
+    })
+  })
+
+  describe('when there are three pages of data and the current page is 1', () => {
+    beforeEach(() => {
+      wrapper = render(<Pagination pageSize={10} total={25} />)
+    })
+
+    it('should render pages', () => {
+      expect(wrapper.getAllByTestId('page')[0]).toHaveTextContent('1')
+      expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('2')
+      expect(wrapper.getAllByTestId('page')[2]).toHaveTextContent('3')
+      expect(wrapper.getAllByTestId('page')).toHaveLength(3)
+    })
+
+    it('should apply the `is-active` class to the appropriate page', () => {
+      expect(wrapper.getByText('1').classList.contains('is-active')).toBe(true)
+    })
+
+    it('should enable the `Prev` button', () => {
+      expect(wrapper.getByText('Prev')).toHaveAttribute('disabled', '')
+    })
+
+    it('should enable the `Next` button', () => {
+      expect(wrapper.getByText('Next')).not.toHaveAttribute('disabled')
     })
   })
 })
