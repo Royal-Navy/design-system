@@ -1,8 +1,8 @@
 # ESLint Config
-Provides a unified linting and formatting config for all Royal Navy Apps using [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/).
+This package provides the Royal Navy [ESLint](https://eslint.org/) configuration.
 
 ## Installation
-The Royal Navy ESLint config is available as a npm package.
+The Royal Navy ESLint config is available as an NPM package.
 
 ```
 // npm
@@ -12,7 +12,6 @@ npm install @royalnavy/eslint-config-react
 yarn add @royalnavy/eslint-config-react
 ```
 
-## Usage
 In the root of your project create the following files:
 
 _.eslintrc.js_
@@ -23,19 +22,13 @@ module.exports = {
 }
 ```
 
-_.pretter.config.js_
+_.prettier.config.js_	
 
-```js
-module.exports = require('@royalnavy/eslint-config-react/prettier.config')
+```js	
+module.exports = require('@royalnavy/eslint-config-react/prettier.config.js')
 ```
 
 If you want to install the prerelease then use the `@next` distribution tag.
-
-## Usage
-In your command line run `yarn lint` and if there are errors to fix, they will appear in the output.
-
-### Editor integration
-Prettier allows for editor integration and can automatically fix any errors it can when you save the file. To enable this, visit https://prettier.io/docs/en/editors.html and check out the instructions for your specific editor.
 
 ## Questions
 The ESLint config package is maintained by a team at the Royal Navy. If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).

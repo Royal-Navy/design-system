@@ -1,35 +1,31 @@
 {
   "name": "@royalnavy/eslint-config-react",
   "version": "2.8.0-alpha.29",
-  "publishConfig": {
-    "access": "public"
-  },
-  "engines": {
-    "node": ">=10.13.0 <13"
-  },
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.9.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.18.0",
-    "lint-staged": "^9.5.0",
-    "prettier": "^2.0.5"
-  },
-  "peerDependencies": {
-    "eslint": "^6.6.1",
-    "prettier": "^1.18.2"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "files": [
     "index.js",
     "prettier.config.js"
-  ]
+  ],
+  "author": "Royal Navy",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.9.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "prettier": "^2.0.5"
+  },
+  "peerDependencies": {
+    "eslint": "^5.16.0 || ^6.1.0",
+    "prettier": "^1.18.2"
+  }
 }
