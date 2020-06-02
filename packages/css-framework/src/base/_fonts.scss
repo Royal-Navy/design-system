@@ -26,17 +26,7 @@ html {
     $x: $x + 1;
   }
 
-  font-family: config.$font-family,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol";
+  font-family: config.$font-family;
 }
 
 h1,

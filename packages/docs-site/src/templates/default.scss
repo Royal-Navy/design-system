@@ -3,7 +3,11 @@
 body {
   font-size: rn.font-size("m");
   p {
+    font-weight: 400;
     font-size: rn.font-size("m");
+    + p {
+      margin-top: rn.spacing("10");
+    }
   }
 }
 

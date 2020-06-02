@@ -1,10 +1,24 @@
-@use "@royalnavy/css-framework" as rn;
+@use "@royalnavy/css-framework"as rn with (
+  $breakpoints: (
+    "xl": (
+      "baseFontSize": 100%,
+    ),
+    "xxl": (
+      "baseFontSize": 100%,
+    ),
+  ),
+  $typography: (
+    "code": 0.813rem
+  )
+);
+
 
 @use "helpers/css/variables";
 @use "helpers/css/fonts";
 
 @use "templates/default";
 @use "templates/home";
+@use "templates/framework";
 
 @use "pages/page-404";
 

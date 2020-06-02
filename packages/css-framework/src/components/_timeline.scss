@@ -12,6 +12,7 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   position: relative;
   display: flex;
   width: 100%;
+  background-color: f.color("neutral", "white");
 }
 
 .timeline__inner {
@@ -281,6 +282,7 @@ $timeline-alt-bg-color: f.color("neutral", "white");
 
 .timeline__event--renderDefault .timeline__event-title {
   font-size: f.font-size("s");
+  font-weight: 400;
   color: f.color("neutral", "600");
   white-space: nowrap;
 }
