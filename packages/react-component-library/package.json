@@ -135,6 +135,7 @@
     "@royalnavy/css-framework": "^2.9.0-alpha.0",
     "@royalnavy/fonts": "^2.9.0-alpha.0",
     "@royalnavy/icon-library": "^2.9.0-alpha.0",
+    "@royalnavy/eslint-config-react": "^2.9.0-alpha.0",
     "@types/react-responsive": "^8.0.2",
     "@types/react-toast-notifications": "^2.4.0",
     "classnames": "^2.2.6",
