@@ -74,7 +74,7 @@
     color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
     transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   pointer-events: none;
-  color: f.color("neutral", "300");
+  color: f.color("neutral", "400");
   font-size: f.font-size("base");
 }
 
@@ -223,7 +223,7 @@
   text-align: center;
   text-transform: uppercase;
   font-size: f.font-size("xs");
-  color: f.color("neutral", "300");
+  color: f.color("neutral", "400");
   font-weight: 600;
 }
 
