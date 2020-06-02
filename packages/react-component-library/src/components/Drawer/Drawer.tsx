@@ -1,5 +1,6 @@
-import React  from 'react'
+import React from 'react'
 import classNames from 'classnames'
+import { IconClose } from '@royalnavy/icon-library'
 import { useOpenClose } from '../../hooks/useOpenClose'
 
 interface DrawerProps extends ComponentWithClass {
@@ -26,8 +27,9 @@ export const Drawer: React.FC<DrawerProps> = ({
           className="rn-drawer__close"
           onClick={handleOnClose}
           data-testid="drawer-close"
+          aria-label="close"
         >
-          &times;
+          <IconClose />
         </button>
         <div className="rn-drawer__content" data-testid="drawer-content">
           {children}
