@@ -4,10 +4,12 @@ code[class*="language-"],
 pre[class*="language-"] {
   color: white;
   background: none;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  font-size: rn.font-size("base");
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  font-variant-ligatures: normal;
+  font-size: 14px;
   text-align: left;
   white-space: pre;
+  font-weight: 400;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
@@ -87,7 +89,7 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 .token.boolean,
 .token.number,
 .token.deleted {
-  color: rn.color("supa", "400");
+  color: rn.color("success", "400");
 }
 
 .token.keyword,
@@ -114,11 +116,11 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 }
 
 .token.function {
-  color: rn.color("supa", "400");
+  color: rn.color("danger", "400");
 }
 
 .token.rule {
-  color: rn.color("supb", "300");
+  color: rn.color("danger", "300");
 }
 
 .token.atrule {
@@ -132,7 +134,7 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 
 .token.important,
 .token.bold {
-  font-weight: bold;
+  font-weight: 500;
 }
 .token.italic {
   font-style: italic;

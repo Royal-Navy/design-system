@@ -20,8 +20,8 @@
 
   .card__text {
     font: {
-      size: rn.font-size("base");
-      weight: 300;
+      size: rn.font-size("m");
+      weight: 400;
     }
     line-height: 1.5;
   }
@@ -39,6 +39,10 @@
   .card__title {
     font-size: rn.font-size("xl");
     transition: color 0.2s;
+  }
+  font: {
+    size: rn.font-size("m");
+    weight: 400;
   }
 
   svg {

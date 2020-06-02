@@ -41,7 +41,7 @@ $card-background-color: #f0f4f8;
 
 
 .card__body {
-  padding: rn.spacing("4") rn.spacing("11") rn.spacing("11");
+  padding: rn.spacing("8") rn.spacing("12") rn.spacing("11");
   font-size: rn.font-size("base");
 }
 
@@ -74,8 +74,11 @@ $card-background-color: #f0f4f8;
 }
 
 .card__text {
-  font-size: rn.font-size("base");
-  font-weight: 300;
+  font: {
+    size: rn.font-size("m");
+    weight: 400;
+  }
+  margin-bottom: rn.spacing("8");
 }
 
 .card__link {
