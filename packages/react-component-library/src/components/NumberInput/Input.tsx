@@ -1,8 +1,10 @@
 import React, { useRef } from 'react'
+import classNames from 'classnames'
 
 interface InputProps {
   isDisabled?: boolean
   id?: string
+  isCondensed: boolean
   label?: string
   name: string
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -15,6 +17,7 @@ interface InputProps {
 export const Input: React.FC<InputProps> = ({
   isDisabled = false,
   id,
+  isCondensed,
   label,
   name,
   onChange,
@@ -28,6 +31,10 @@ export const Input: React.FC<InputProps> = ({
   const inputRef = useRef(null)
   const displayValue =
     value === null || value === undefined || Number.isNaN(value) ? '' : value
+
+  const inputClasses = classNames('rn-numberinput__input', {
+    'rn-numberinput__input--condensed': isCondensed,
+  })
 
   return (
     <div
@@ -44,7 +51,7 @@ export const Input: React.FC<InputProps> = ({
         </label>
       )}
       <input
-        className="rn-numberinput__input"
+        className={inputClasses}
         data-testid="number-input-input"
         disabled={isDisabled}
         id={id}

@@ -17,6 +17,7 @@ export interface NumberInputProps {
   isDisabled?: boolean
   footnote?: string
   id?: string
+  isCondensed?: boolean,
   label?: string
   max?: number
   min?: number
@@ -34,6 +35,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   isDisabled = false,
   footnote,
   id = uuidv4(),
+  isCondensed,
   label,
   max,
   min,
@@ -81,6 +83,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
         <Input
           id={id}
           isDisabled={isDisabled}
+          isCondensed={isCondensed}
           label={label}
           name={name}
           onChange={onInputChange}
@@ -92,6 +95,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
         />
 
         <EndAdornment
+          isCondensed={isCondensed}
           isDisabled={isDisabled}
           max={max}
           min={min}

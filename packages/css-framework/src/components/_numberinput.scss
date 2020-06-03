@@ -87,16 +87,16 @@
   font-size: f.font-size("base");
 }
 
+.rn-numberinput__input--condensed {
+  padding: f.spacing("3");
+}
+
 .rn-numberinput__label + .rn-numberinput__input {
   padding: f.spacing("10") f.spacing("6") f.spacing("2");
 }
 
 .rn-numberinput__input:focus {
   outline: 0;
-}
-
-.rn-numberinput__increase > svg {
-  transform: rotate(180deg);
 }
 
 .rn-numberinput__controls {
@@ -134,11 +134,31 @@
   }
 }
 
+.rn-numberinput__increase > svg {
+  transform: rotate(180deg);
+}
+
+.rn-numberinput__increase--condensed {
+  width: 36px;
+
+  & > svg {
+    transform: rotate(180deg) scale(0.7);
+  }
+}
+
 .rn-numberinput__decrease {
   border-top: 1px solid f.color("neutral", "100");
 
   &:focus {
     border-color: transparent;
+  }
+}
+
+.rn-numberinput__decrease--condensed {
+  width: 36px;
+
+  & > svg {
+    transform: scale(0.7);
   }
 }
 

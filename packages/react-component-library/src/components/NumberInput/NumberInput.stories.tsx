@@ -15,6 +15,10 @@ stories.add('Default', () => (
   <NumberInput name="number-input" onChange={action('onChange')} />
 ))
 
+examples.add('Condensed', () => (
+  <NumberInput isCondensed name="number-input" onChange={action('onChange')} />
+))
+
 examples.add('Disabled', () => (
   <NumberInput isDisabled name="number-input" onChange={action('onChange')} />
 ))
