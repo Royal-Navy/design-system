@@ -1,6 +1,6 @@
 {
   "name": "@royalnavy/eslint-config-react",
-  "version": "2.8.0-alpha.27",
+  "version": "2.8.0-alpha.28",
   "publishConfig": {
     "access": "public"
   },
