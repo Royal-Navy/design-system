@@ -36,7 +36,7 @@ TableHead.propTypes = {
 
 TableHead.defaultProps = {
   headings: [],
-  onClickHeading: () => {},
+  onClickHeading: () => null,
 }
 
 export default TableHead

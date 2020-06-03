@@ -8,7 +8,7 @@ const Field = ({ component: Component, name, form, ...rest }) => {
     setValue(e.target.value)
   }
 
-  const onBlur = () => {}
+  const onBlur = () => null
 
   const field = { value, onChange, onBlur, name }
   return <Component field={field} {...rest} form={form} />
