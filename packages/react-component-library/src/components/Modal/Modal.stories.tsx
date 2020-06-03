@@ -33,7 +33,7 @@ stories.add('Default', () => {
       onClose={action('onClose')}
       isOpen
     >
-      <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
+      <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
     </Modal>
   )
 })
@@ -47,7 +47,7 @@ examples.add('No header', () => {
       onClose={action('onClose')}
       isOpen
     >
-      <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
+      <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
     </Modal>
   )
 })
@@ -55,7 +55,7 @@ examples.add('No header', () => {
 examples.add('No buttons', () => {
   return (
     <Modal title="Modal Header" onClose={action('onClose')} isOpen>
-      <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
+      <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
     </Modal>
   )
 })
@@ -63,7 +63,7 @@ examples.add('No buttons', () => {
 examples.add('Blank', () => {
   return (
     <Modal isOpen>
-      <pre style={{ padding: '1rem' }}>// Arbitrary JSX content</pre>
+      <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
     </Modal>
   )
 })
