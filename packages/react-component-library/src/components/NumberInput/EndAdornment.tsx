@@ -4,6 +4,7 @@ import { EndAdornmentButton } from './EndAdornmentButton'
 import { END_ADORNMENT_TYPE } from './constants'
 
 interface EndAdornmentProps {
+  isCondensed: boolean
   isDisabled: boolean
   max?: number
   min?: number
@@ -14,6 +15,7 @@ interface EndAdornmentProps {
 }
 
 export const EndAdornment: React.FC<EndAdornmentProps> = ({
+  isCondensed,
   isDisabled,
   onClick,
   step,
@@ -32,11 +34,13 @@ export const EndAdornment: React.FC<EndAdornmentProps> = ({
   return (
     <div className="rn-numberinput__controls">
       <EndAdornmentButton
+        isCondensed={isCondensed}
         isDisabled={isDisabled}
         onClick={onButtonClick(() => (value || 0) + step)}
         type={END_ADORNMENT_TYPE.INCREASE}
       />
       <EndAdornmentButton
+        isCondensed={isCondensed}
         isDisabled={isDisabled}
         onClick={onButtonClick(() => (value || 0) - step)}
         type={END_ADORNMENT_TYPE.DECREASE}
