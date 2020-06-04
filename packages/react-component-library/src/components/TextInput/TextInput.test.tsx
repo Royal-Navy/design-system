@@ -115,6 +115,15 @@ describe('TextInput', () => {
         textInput = render(<FormikTextInput field={field} form={form} />)
       })
 
+      it('should not add the aria attributes', () => {
+        expect(textInput.getByTestId('input')).not.toHaveAttribute(
+          'aria-invalid'
+        )
+        expect(textInput.getByTestId('input')).not.toHaveAttribute(
+          'aria-describedBy'
+        )
+      })
+
       it('should not indicate the field has an error', () => {
         expect(textInput.queryByTestId('container')).not.toHaveClass(
           'is-invalid'
@@ -129,6 +138,17 @@ describe('TextInput', () => {
         const FormikTextInput = withFormik(TextInput)
 
         textInput = render(<FormikTextInput field={field} form={form} />)
+      })
+
+      it('should not add the aria attributes', () => {
+        expect(textInput.getByTestId('input')).toHaveAttribute(
+          'aria-invalid',
+          'true'
+        )
+        expect(textInput.getByTestId('input')).toHaveAttribute(
+          'aria-describedby',
+          'colour-error'
+        )
       })
 
       it('should indicate the field has an error', () => {
