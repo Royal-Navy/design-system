@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/Royal-Navy/design-system/compare/2.6.0...2.8.0) (2020-06-04)
+
+
+### Bug Fixes
+
+* **TabSet:** Explicitly set tab background ([4ab1dbe](https://github.com/Royal-Navy/design-system/commit/4ab1dbe8380a821679ee256568a80a378c9d4516))
+* **Typography:** Set <p>, <ol>, and <li> to the same size. Fixes [#456](https://github.com/Royal-Navy/design-system/issues/456) ([3c124cc](https://github.com/Royal-Navy/design-system/commit/3c124ccdbb53facbbe21323ccac79a21d108299d))
+* Replace references to "Standards" ([bebc5cd](https://github.com/Royal-Navy/design-system/commit/bebc5cd920b0ae959185f4b754ddbf7fa1ad7d4f))
+* **masthead:** Decrease font size of navigation link ([66bd14a](https://github.com/Royal-Navy/design-system/commit/66bd14a3d2b34711bc8df749ff38871eea0f32c5))
+
+
+### Features
+
+* **Alert:** Improve colour contrast to pass A11y checks ([f419c54](https://github.com/Royal-Navy/design-system/commit/f419c54259a13c5e194e5c04f0191634bd7faf3e))
+* **Badge:** Increase colour contrasts to pass a11y checks ([22601e9](https://github.com/Royal-Navy/design-system/commit/22601e9fe1352c9236468787b003cb9e32539a43))
+* **Button:** Remove gradient to improve a11y ([855fd0c](https://github.com/Royal-Navy/design-system/commit/855fd0c7348d110b27a84cd23704156b8a6cddf0))
+* **Date Picker:** Increase label colour contrast for a11y ([580e952](https://github.com/Royal-Navy/design-system/commit/580e9521eb3dbfb6be5de666c013237eb7a5477e))
+* **DocsSite:** Add Timeline framework docs ([3194f9d](https://github.com/Royal-Navy/design-system/commit/3194f9d657c1ea2e5e79732501231f355b1b27d5))
+* **Masthead:** Increase inactive tab contrast for a11y ([c2b68f5](https://github.com/Royal-Navy/design-system/commit/c2b68f52a42591b35091fc4b5d1041574eed7db5))
+* **Pagination:** Adjust pagination design to match Sketch file ([24f1d11](https://github.com/Royal-Navy/design-system/commit/24f1d112bf4c392ecf3ee5298c160a6edf9ac362))
+* **timeline:** Add TimelineRows render prop ([38d7ee3](https://github.com/Royal-Navy/design-system/commit/38d7ee3fbbdc5affb3e125c9eba2341dd445b67f))
+* **timeline:** Implement TimelineWeeks render prop ([fc0327e](https://github.com/Royal-Navy/design-system/commit/fc0327eb9103798b3622ef98c626be246816d325))
+
+
+
+
+
 # [2.7.0](https://github.com/Royal-Navy/design-system/compare/2.6.0...2.7.0) (2020-05-14)
 
 

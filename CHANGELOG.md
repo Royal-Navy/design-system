@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://m7kvqbe1.github.com/Royal-Navy/design-system/compare/2.6.0...2.8.0) (2020-06-04)
+
+
+### Bug Fixes
+
+* **masthead:** Decrease font size of navigation link ([66bd14a](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/66bd14a3d2b34711bc8df749ff38871eea0f32c5))
+* **Pagination:** Assign keys to page numbers ([e2cfb2c](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/e2cfb2c7963d8e0c4d5e288ec6602f801005b836))
+* **range slider:** Publish Range Slider docs ([72f3fcd](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/72f3fcd200979546dfd970be285f5b601a91cbfa))
+* **Security:** Update dependencies to reduce vulnerabilities ([32754b9](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/32754b95afe6953148913f18f8f76355388e9dae))
+* **Security:** Update dependencies to reduce vulnerabilities ([1206637](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/1206637919e526324f4ecde547f5129fadb4b115))
+* **Security:** Update dependencies to reduce vulnerabilities ([73a8a31](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/73a8a31bec6e29ba51c43e422dbf415eeea79cb9))
+* **Select:** Add ability to drill data-testid ([46aabf3](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/46aabf341798535dd0b09c3639694e824915d95d))
+* **TabSet:** Explicitly set tab background ([4ab1dbe](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/4ab1dbe8380a821679ee256568a80a378c9d4516))
+* **Timeline:** Export TIMELINE_ACTIONS ([926694d](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/926694d22d74b3ddbdf5b9e76ef46b920856148c))
+* **Typography:** Set <p>, <ol>, and <li> to the same size. Fixes [#456](https://m7kvqbe1.github.com/Royal-Navy/design-system/issues/456) ([3c124cc](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/3c124ccdbb53facbbe21323ccac79a21d108299d))
+* Move link colour ([f26ea47](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/f26ea47b3a94b75c0e8d78cfe9fc865cec423836))
+* Replace references to "Standards" ([bebc5cd](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/bebc5cd920b0ae959185f4b754ddbf7fa1ad7d4f))
+* Update license ([1eae374](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/1eae3744954e14f7badfc210850fecc98ac57a08))
+* **timeline:** Generate correct number of calendar weeks ([38c6999](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/38c699927aa880b825c20b1a2414eb55b284f568))
+* update email address ([e568d5f](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/e568d5f0ec77e1cbb1ad77e43ce45859dbb00c0a))
+* **timeline:** Set z-index for custom TodayMarker example ([713b9c5](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/713b9c5e30403b03a287cf2c85e25ce830bcbf55))
+
+
+### Features
+
+* **Alert:** Improve colour contrast to pass A11y checks ([f419c54](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/f419c54259a13c5e194e5c04f0191634bd7faf3e))
+* **Badge:** Increase colour contrasts to pass a11y checks ([22601e9](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/22601e9fe1352c9236468787b003cb9e32539a43))
+* **Button:** Remove gradient to improve a11y ([855fd0c](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/855fd0c7348d110b27a84cd23704156b8a6cddf0))
+* **ButtonGroup:** Reuse button size constant ([7f7ce6a](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/7f7ce6ad50234acfcbfa4ee0a6e21049daf277bd))
+* **Date Picker:** Increase label colour contrast for a11y ([580e952](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/580e9521eb3dbfb6be5de666c013237eb7a5477e))
+* **DocsSite:** Add Timeline framework docs ([3194f9d](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/3194f9d657c1ea2e5e79732501231f355b1b27d5))
+* **Drawer:** Replace unicode close icon for icon library SVG ([6412efd](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/6412efde696cc98c5c34c85831d2231526080baf))
+* **IconLibrary:** Add ability to set explicit size ([1adfd94](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/1adfd944345537c5622ed289cdbf95e8c8acf13b))
+* **Masthead:** Increase inactive tab contrast for a11y ([c2b68f5](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/c2b68f52a42591b35091fc4b5d1041574eed7db5))
+* **Pagination:** Adjust pagination design to match Sketch file ([24f1d11](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/24f1d112bf4c392ecf3ee5298c160a6edf9ac362))
+* **Sketch:** Update docs site version of Sketch Library ([285149e](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/285149ef5be494b33a3418d163b148270c586d42))
+* **Switch:** Add constants ([25bd4b8](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/25bd4b8ee883c357246d02bb445c7083632e03f1))
+* **timeline:** Add TimelineRows render prop ([38d7ee3](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/38d7ee3fbbdc5affb3e125c9eba2341dd445b67f))
+* **timeline:** Enable sidebar in stories ([4990a3f](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/4990a3f50844e0401814439216e20f4853af8f68))
+* **timeline:** Expose Timeline to consumers ([0865d69](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/0865d69b3cc8fd81e3bd213b9e539c377cffa4d6))
+* **timeline:** Implement TimelineWeeks render prop ([fc0327e](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/fc0327eb9103798b3622ef98c626be246816d325))
+* **Tooltip:** Add constants ([7d4b399](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/7d4b399a62296bca622ac719b45436da7b4c0d4d))
+
+
+
+
+
 # [2.7.0](https://thyhjwb6.github.com/Royal-Navy/design-system/compare/2.6.0...2.7.0) (2020-05-14)
 
 
