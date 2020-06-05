@@ -1,0 +1,10 @@
+node_modules
+build
+.cache
+.DS_Store
+.git
+.idea
+.vscode
+.sass-cache
+reports
+*.log

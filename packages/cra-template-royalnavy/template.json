@@ -1,0 +1,50 @@
+{
+  "package": {
+    "author": "Royal Navy",
+    "scripts": {
+      "codegen": "gql-gen --config codegen.yml",
+      "lint": "eslint src/* --ext .ts --ext .tsx"
+    },
+    "dependencies": {
+      "@apollo/react-hooks": "^3.1.3",
+      "apollo-boost": "^0.4.4",
+      "graphql": "^14.5.8",
+      "use-react-router": "^1.0.7",
+      "react-router-dom": "^5.1.2",
+      "@royalnavy/css-framework": "latest",
+      "@royalnavy/fonts": "latest",
+      "@royalnavy/icon-library": "latest",
+      "@royalnavy/react-component-library": "latest",
+      "@testing-library/jest-dom": "^5.5.0",
+      "@testing-library/react": "^10.0.4",
+      "@testing-library/user-event": "^10.1.0",
+      "typescript": "^3.8.0",
+      "node-sass": "npm:sass",
+      "sass": "^1.26.5",
+      "@graphql-codegen/cli": "^1.8.3",
+      "@graphql-codegen/typescript": "^1.8.3",
+      "@graphql-codegen/typescript-operations": "^1.8.3",
+      "@graphql-codegen/typescript-react-apollo": "^1.8.3",
+      "@royalnavy/eslint-config-react": "latest",
+      "@types/node": "^12.0.0",
+      "@types/react": "^16.9.0",
+      "@types/react-dom": "^16.9.0",
+      "@types/jest": "^25.0.0",
+      "@types/react-router-dom": "^5.1.2",
+      "ts-node": "^8.5.0"
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    },
+    "proxy": "http://localhost:8000"
+  }
+}
