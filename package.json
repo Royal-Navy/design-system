@@ -7,7 +7,8 @@
     "packages/eslint-config-react",
     "packages/icon-library",
     "packages/react-component-library",
-    "packages/fonts"
+    "packages/fonts",
+    "packages/cra-template-royalnavy"
   ],
   "engines": {
     "node": ">=10.13.0 <13"
