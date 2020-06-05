@@ -133,10 +133,10 @@ jobs:
       - checkout
       - attach_workspace:
           at: workspace
-      - run: 
+      - run:
           name: Upload Code coverage reports
           working_directory: ~/project/packages/
-          command: bash <(curl -s https://codecov.io/bash)              
+          command: bash <(curl -s https://codecov.io/bash)
   test_visual_regression:
     docker: *docker
     steps:
@@ -165,7 +165,8 @@ jobs:
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/eslint-config-react &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/fonts &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/icon-library &&
-            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/react-component-library
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/react-component-library &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/cra-template-royalnavy
   publish_next:
     docker: *docker
     steps:
@@ -190,7 +191,8 @@ jobs:
             node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/eslint-config-react &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/fonts &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/icon-library &&
-            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/react-component-library
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/react-component-library &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/cra-template-royalnavy
   test_docs-site:
     docker: *docker
     steps:
