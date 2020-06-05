@@ -60,6 +60,20 @@ examples.add('No buttons', () => {
   )
 })
 
+examples.add('No Tertiary Button', () => {
+  return (
+    <Modal
+      title="Modal Header"
+      primaryButton={primaryButton}
+      secondaryButton={secondaryButton}
+      onClose={action('onClose')}
+      isOpen
+    >
+      <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
+    </Modal>
+  )
+})
+
 examples.add('Blank', () => {
   return (
     <Modal isOpen>

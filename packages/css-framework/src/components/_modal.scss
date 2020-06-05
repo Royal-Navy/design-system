@@ -50,6 +50,7 @@
   display: inline-block;
   font-size: f.font-size("l");
   color: f.color("neutral", "500");
+  font-weight: 500;
 }
 
 .rn-modal__close-button {
@@ -72,14 +73,18 @@
 .rn-modal__footer {
   background-color: f.color("neutral", "white");
   display: flex;
+  justify-content: flex-end;
   width: 100%;
-  justify-content: space-between;
   padding: f.spacing("8");
   flex-direction: column-reverse;
   border-top: 1px solid f.color("neutral", "100");
   @include m.breakpoint("xs") {
     flex-direction: row;
   }
+}
+
+.rn-modal__footer--has-tertiary {
+  justify-content: space-between;
 }
 
 .rn-modal__btn-group {

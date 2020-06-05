@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import { Button, ButtonProps } from '../Button'
 
 export interface FooterProps {
@@ -12,8 +13,12 @@ export const Footer: React.FC<FooterProps> = ({
   secondaryButton,
   tertiaryButton,
 }) => {
+  const classes = classNames('rn-modal__footer', {
+    'rn-modal__footer--has-tertiary': tertiaryButton,
+  })
+
   return (
-    <footer className="rn-modal__footer" data-testid="modal-footer">
+    <footer className={classes} data-testid="modal-footer">
       {tertiaryButton && (
         <Button
           className="rn-modal__tertiary-button"
