@@ -45,6 +45,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'react/prop-types': 0,
     '@typescript-eslint/ban-ts-ignore': 0,
+    '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
     // https://github.com/benmosher/eslint-plugin-import/issues/1615
     'import/extensions': [

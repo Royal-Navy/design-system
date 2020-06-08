@@ -81,7 +81,7 @@
     "@types/testing-library__react": "^10.0.1",
     "@types/uuid": "^8.0.0",
     "@types/yup": "^0.29.2",
-    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/eslint-plugin": "^3.1.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-jsx-remove-data-test-id": "^2.1.3",
     "babel-polyfill": "^6.26.0",
