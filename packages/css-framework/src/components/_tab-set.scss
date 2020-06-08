@@ -53,7 +53,7 @@ $active-border-color: f.color("action", "600");
 
       &.is-active {
         background-color: f.color("neutral", "white");
-        color: f.color("neutral", "000");
+        color: f.color("neutral", "500");
         border: 1px solid f.color("neutral", "200");
         border-bottom: 1px solid f.color("neutral", "white");
       }
@@ -102,7 +102,7 @@ $active-border-color: f.color("action", "600");
   cursor: pointer;
   font-size: f.font-size("base");
   font-weight: 600;
-  color: f.color("neutral", "300");
+  color: f.color("neutral", "400");
   background-color: f.color("neutral", "white");
 
   // default
