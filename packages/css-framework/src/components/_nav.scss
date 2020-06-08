@@ -57,11 +57,18 @@
   &.is-active {
     background-color: f.color("action", "700");
     color: f.color("neutral", "white");
+    a {
+      color: f.color("neutral", "white");
+    }
   }
 
   &.is-disabled {
     color: f.color("neutral", "400");
     pointer-events: none;
+  }
+
+  a {
+    color: f.color("neutral", "400");
   }
 }
 
