@@ -6,6 +6,7 @@ import * as yup from 'yup'
 
 import { withFormik } from '../../enhancers/withFormik'
 import { Checkbox } from '.'
+import { FormikGroup } from '../FormikGroup'
 
 const stories = storiesOf('Checkbox', module)
 
@@ -68,6 +69,81 @@ stories.add('Formik', () => {
             component={FormikCheckbox}
             label="My Label 3"
           />
+          <button type="submit">Submit</button>
+        </Form>
+      </Formik>
+    )
+  }
+
+  return <CheckboxForm />
+})
+
+stories.add('Formik checkbox group', () => {
+  const CheckboxForm = () => {
+    interface Data {
+      [key: string]: string
+    }
+
+    const initialValues: Data = {
+      example: '',
+      exampleWithError: '',
+    }
+
+    const validationSchema = yup.object().shape({
+      example: yup.string().required('Field is required'),
+      exampleWithError: yup.string().required('Field is required'),
+    })
+
+    const FormikCheckbox = withFormik(Checkbox)
+
+    return (
+      <Formik
+        initialErrors={{ exampleWithError: 'Field is required' }}
+        initialValues={initialValues}
+        onSubmit={action('Submitted')}
+        validationSchema={validationSchema}
+      >
+        <Form>
+          <FormikGroup label="Select an option">
+            <Field
+              component={FormikCheckbox}
+              name="example"
+              label="Option 1"
+              value="1"
+            />
+            <Field
+              component={FormikCheckbox}
+              name="example"
+              label="Option 2"
+              value="2"
+            />
+            <Field
+              component={FormikCheckbox}
+              name="example"
+              label="Option 3"
+              value="3"
+            />
+          </FormikGroup>
+          <FormikGroup label="Select another option">
+            <Field
+              component={FormikCheckbox}
+              name="exampleWithError"
+              label="Another option 1"
+              value="1"
+            />
+            <Field
+              component={FormikCheckbox}
+              name="exampleWithError"
+              label="Another option 2"
+              value="2"
+            />
+            <Field
+              component={FormikCheckbox}
+              name="exampleWithError"
+              label="Another option 3"
+              value="3"
+            />
+          </FormikGroup>
           <button type="submit">Submit</button>
         </Form>
       </Formik>

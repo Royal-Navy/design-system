@@ -2,6 +2,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 interface RadioProps {
+  isChecked?: boolean,
   className?: string
   id?: string
   label: string
@@ -13,6 +14,7 @@ interface RadioProps {
 }
 
 export const Radio: React.FC<RadioProps> = ({
+  isChecked,
   className = '',
   id = uuidv4(),
   label,
@@ -28,6 +30,7 @@ export const Radio: React.FC<RadioProps> = ({
       <div className="rn-radio__outer-wrapper">
         <label className="rn-radio__label" htmlFor={id} data-testid="label">
           <input
+            defaultChecked={isChecked}
             id={id}
             className="rn-radio__radio"
             type="radio"
