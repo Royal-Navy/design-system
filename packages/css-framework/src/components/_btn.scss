@@ -101,7 +101,7 @@ $btn-focus-width: 0.2rem;
   background-color: transparent;
   background-image: none;
   &.rn-btn--danger {
-    color: f.color("danger", "600");
+    color: f.color("danger", "700");
     .rn-btn__text {
       &::after {
         background: f.color("danger", "300");
