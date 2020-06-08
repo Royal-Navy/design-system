@@ -19,14 +19,14 @@ $btn-focus-width: 0.2rem;
 }
 
 .rn-tab-nav__item {
-  color: f.color("neutral", "300");
+  color: f.color("neutral", "400");
   margin-bottom: 0;
   text-align: center;
   line-height: 1;
 
   &.is-active {
     > a {
-      color: f.color("neutral", "400");
+      color: f.color("neutral", "500");
       border-color: $active-border-color;
     }
   }

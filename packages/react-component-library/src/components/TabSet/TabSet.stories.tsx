@@ -24,8 +24,8 @@ interface TabTitleProps {
 
 const TabTitle: React.FC<TabTitleProps> = ({ year, children }) => (
   <>
-    <div style={{ fontSize: '14px', color: '#3e5667' }}>{children}</div>
-    <div style={{ fontSize: '12px', color: '#748999' }}>{year}</div>
+    <div style={{ fontSize: '14px' }}>{children}</div>
+    <div style={{ fontSize: '12px' }}>{year}</div>
   </>
 )
 
