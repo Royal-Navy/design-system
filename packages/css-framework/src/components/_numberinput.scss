@@ -59,7 +59,7 @@
   transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
     transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   pointer-events: none;
-  color: f.color("neutral", "300");
+  color: f.color("neutral", "400");
   font-size: f.font-size("base");
 }
 
@@ -168,7 +168,7 @@
   border-right: 1px solid f.color("neutral", "200");
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-  color: f.color("neutral", "300");
+  color: f.color("neutral", "400");
   font-weight: 600;
   line-height: 1;
   font-size: f.font-size("base");
