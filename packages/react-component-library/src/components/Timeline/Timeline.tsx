@@ -48,6 +48,7 @@ export interface TimelineProps extends ComponentWithClass {
   dayWidth?: number
   startDate?: Date
   today?: Date
+  range?: number
 }
 
 function isComponentOf<T extends TimelineComponent>(
@@ -63,7 +64,7 @@ function extractChildrenOf<T>(
   children: timelineChildrenType | timelineChildrenType[],
   names: string[]
 ) {
-  return (children as []).filter(child => isComponentOf(child, names))
+  return (children as []).filter((child) => isComponentOf(child, names))
 }
 
 function extractRowData(
@@ -94,10 +95,11 @@ export const Timeline: React.FC<TimelineProps> = ({
   dayWidth = DEFAULTS.DAY_WIDTH,
   startDate,
   today,
+  range,
 }) => {
   const options: TimelineOptions = {
     dayWidth,
-    rangeInMonths: DEFAULTS.RANGE_IN_MONTHS,
+    rangeInMonths: range || DEFAULTS.RANGE_IN_MONTHS,
   }
 
   const bodyChildren = extractChildrenOf<TimelineBodyComponent>(children, [
@@ -113,7 +115,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const rootChildren = extractChildrenOf<TimelineRootComponent>(children, [
     TimelineSide.name,
-  ]).map(child => {
+  ]).map((child) => {
     if (isComponentOf(child, [TimelineSide.name])) {
       return React.cloneElement(child, {
         rowGroups: extractRowData(bodyChildren),
