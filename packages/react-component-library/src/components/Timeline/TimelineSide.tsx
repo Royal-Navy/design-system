@@ -1,5 +1,6 @@
 import React from 'react'
 import { IconChevronRight, IconChevronLeft } from '@royalnavy/icon-library'
+import { startCase } from 'lodash'
 
 import { Button } from '../Button'
 import { getKey } from './helpers'
@@ -8,22 +9,28 @@ import { TIMELINE_ACTIONS } from './context/types'
 
 export interface TimelineSideProps extends ComponentWithClass {
   rowGroups?: any[]
+  headChildren?: any[]
 }
 
-const TimelineSideList: React.FC<TimelineSideProps> = ({ rowGroups }) => {
+const TimelineSideList: React.FC<TimelineSideProps> = ({
+  rowGroups,
+  headChildren,
+}) => {
   return (
     <ol className="timeline__side-list">
-      <li className="timeline__side-months">
-        <span className="timeline__side-title">Months</span>
-      </li>
-      <li className="timeline__side-weeks">
-        <span className="timeline__side-title">Weeks</span>
-      </li>
-      <li className="timeline__side-days">
-        <span className="timeline__side-title">Days</span>
-      </li>
+      {headChildren.map(({ type: { displayName } }) => {
+        const name = displayName.toLowerCase().substring('timeline'.length)
+
+        if (!['months', 'weeks', 'days'].includes(name)) return null
+
+        return (
+          <li className={`timeline__side-${name}`}>
+            <span className="timeline__side-title">{startCase(name)}</span>
+          </li>
+        )
+      })}
       {rowGroups
-        .flatMap(item => item.rows)
+        .flatMap((item) => item.rows)
         .map(({ name }, index) => {
           return (
             <li
@@ -39,7 +46,10 @@ const TimelineSideList: React.FC<TimelineSideProps> = ({ rowGroups }) => {
   )
 }
 
-export const TimelineSide: React.FC<TimelineSideProps> = ({ rowGroups }) => {
+export const TimelineSide: React.FC<TimelineSideProps> = ({
+  rowGroups,
+  headChildren,
+}) => {
   return (
     <TimelineContext.Consumer>
       {({ dispatch }) => {
@@ -49,17 +59,20 @@ export const TimelineSide: React.FC<TimelineSideProps> = ({ rowGroups }) => {
               <Button
                 variant="secondary"
                 icon={<IconChevronLeft />}
-                onClick={_ => dispatch({ type: TIMELINE_ACTIONS.GET_PREV })}
+                onClick={(_) => dispatch({ type: TIMELINE_ACTIONS.GET_PREV })}
                 data-testid="timeline-side-button-left"
               />
               <Button
                 variant="secondary"
                 icon={<IconChevronRight />}
-                onClick={_ => dispatch({ type: TIMELINE_ACTIONS.GET_NEXT })}
+                onClick={(_) => dispatch({ type: TIMELINE_ACTIONS.GET_NEXT })}
                 data-testid="timeline-side-button-right"
               />
             </div>
-            <TimelineSideList rowGroups={rowGroups} />
+            <TimelineSideList
+              rowGroups={rowGroups}
+              headChildren={headChildren}
+            />
           </aside>
         )
       }}
