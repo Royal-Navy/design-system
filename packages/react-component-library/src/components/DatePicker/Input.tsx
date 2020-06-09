@@ -14,7 +14,16 @@ export interface InputProps extends ComponentWithClass {
 }
 
 export const Input = forwardRef((props: InputProps, ref?: React.Ref<any>) => {
-  const { className, id, label, name, value, onBlur, onFocus, isDisabled } = props
+  const {
+    className,
+    id,
+    label,
+    name,
+    value,
+    onBlur,
+    onFocus,
+    isDisabled,
+  } = props
 
   return (
     <div className={className} ref={ref} data-testid="datepicker-input-wrapper">
@@ -37,6 +46,7 @@ export const Input = forwardRef((props: InputProps, ref?: React.Ref<any>) => {
             onFocus={onFocus}
             disabled={isDisabled}
             data-testid="datepicker-input"
+            readOnly
           />
         </div>
         <div className="rn-date-picker__end-adornment">
