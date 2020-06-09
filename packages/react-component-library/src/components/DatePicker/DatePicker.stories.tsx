@@ -6,6 +6,7 @@ import React from 'react'
 import { withFormik } from '../../enhancers/withFormik'
 import { DatePicker, DATEPICKER_PLACEMENT } from '.'
 
+import { TextInput } from '../TextInput'
 import { Button } from '../Button'
 
 const stories = storiesOf('DatePicker', module)
@@ -56,16 +57,24 @@ examples.add('Range', () => {
 
 const DatePickerForm = () => {
   interface Data {
+    foo: string
+    bar: string
     startDate: Date
     endDate: Date
   }
 
   const initialValues: Data = {
+    foo: '',
+    bar: '',
     startDate: new Date('01/01/2020'),
     endDate: new Date('01/05/2020'),
   }
 
+  const FormikTextInput = withFormik(TextInput)
   const FormikDatePicker = withFormik(DatePicker)
+
+  console.log(TextInput)
+  console.log(FormikTextInput)
 
   return (
     <Formik
@@ -74,6 +83,10 @@ const DatePickerForm = () => {
       render={({ setFieldValue }) => {
         return (
           <Form>
+            {/* Retains focus */}
+            <Field name="foo" label="Foo" component={TextInput} />
+            {/* Doesn't retain focus */}
+            <Field name="bar" label="Bar" component={FormikTextInput} />
             <Field
               name="date"
               label="Date"
