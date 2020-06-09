@@ -426,3 +426,41 @@ stories.add('With custom day width', () => {
     </Timeline>
   )
 })
+
+stories.add('With custom range', () => {
+  return (
+    <Timeline
+      startDate={new Date(2020, 4, 0)}
+      today={new Date(2020, 3, 15)}
+      range={6}
+    >
+      <TimelineSide />
+      <TimelineTodayMarker />
+      <TimelineMonths />
+      <TimelineWeeks />
+      <TimelineDays />
+      <TimelineRows>
+        <TimelineRow name="Row 1">
+          <TimelineEvents>
+            <TimelineEvent
+              startDate={new Date(2020, 3, 25)}
+              endDate={new Date(2020, 3, 28)}
+            >
+              Event 2
+            </TimelineEvent>
+          </TimelineEvents>
+        </TimelineRow>
+        <TimelineRow name="Row 2">
+          <TimelineEvents>
+            <TimelineEvent
+              startDate={new Date(2020, 3, 22)}
+              endDate={new Date(2020, 3, 24)}
+            >
+              Event 4
+            </TimelineEvent>
+          </TimelineEvents>
+        </TimelineRow>
+      </TimelineRows>
+    </Timeline>
+  )
+})
