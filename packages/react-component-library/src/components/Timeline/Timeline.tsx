@@ -119,6 +119,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     if (isComponentOf(child, [TimelineSide.name])) {
       return React.cloneElement(child, {
         rowGroups: extractRowData(bodyChildren),
+        headChildren,
       })
     }
 
