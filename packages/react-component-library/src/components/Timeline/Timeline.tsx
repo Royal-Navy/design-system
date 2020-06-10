@@ -75,7 +75,8 @@ function extractRowData(
       let rows: any[] = []
 
       if (children) {
-        rows = (children as []).map(
+        const items = Array.isArray(children) ? children : [children]
+        rows = items.map(
           ({ props: { name } }: React.ReactElement<TimelineRowProps>) => ({
             name,
           })
