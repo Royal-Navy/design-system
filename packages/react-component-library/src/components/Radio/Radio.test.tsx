@@ -81,8 +81,19 @@ describe('Radio', () => {
         radio = render(<FormikRadio field={field} form={form} />)
       })
 
+      it('should not add the aria attributes', () => {
+        expect(radio.getByTestId('radio')).not.toHaveAttribute('aria-invalid')
+        expect(radio.getByTestId('radio')).not.toHaveAttribute(
+          'aria-describedBy'
+        )
+      })
+
       it('should not indicate the field has an error', () => {
         expect(radio.queryByTestId('container')).not.toHaveClass('is-invalid')
+      })
+
+      it('should not show the error', () => {
+        expect(radio.queryAllByText('Something bad')).toHaveLength(0)
       })
     })
 
@@ -95,8 +106,17 @@ describe('Radio', () => {
         radio = render(<FormikRadio field={field} form={form} />)
       })
 
+      it('should add the aria attributes', () => {
+        expect(radio.getByTestId('radio')).toHaveAttribute('aria-invalid')
+        expect(radio.getByTestId('radio')).toHaveAttribute('aria-describedby')
+      })
+
       it('should indicate the field has an error', () => {
         expect(radio.queryByTestId('container')).toHaveClass('is-invalid')
+      })
+
+      it('should show the error', () => {
+        expect(radio.getByText('Something bad')).toBeInTheDocument()
       })
     })
   })

@@ -7,15 +7,14 @@ import { useFocus } from '../../hooks/useFocus'
 export interface TextInputProps {
   autoFocus?: boolean
   className?: string
-  isDisabled?: boolean
   endAdornment?: React.ReactNode
-  value?: string
-  name: string
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onBlur?: (event: React.FormEvent) => void
   footnote?: string
   id?: string
+  isDisabled?: boolean
   label?: string
+  name: string
+  onBlur?: (event: React.FormEvent) => void
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   placeholder?: string
   startAdornment?: React.ReactNode
   type?:
@@ -34,6 +33,7 @@ export interface TextInputProps {
     | 'time'
     | 'url'
     | 'week'
+  value?: string
 }
 
 export const TextInput: React.FC<TextInputProps> = (props) => {
@@ -72,20 +72,11 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     <div className={classes} data-testid="container">
       <div className="rn-textinput__outer-wrapper">
         {startAdornment && (
-          <div
-            className="rn-textinput__start-adornment"
-            data-testid="start-adornment"
-          >
-            {startAdornment}
-          </div>
+          <div className="rn-textinput__start-adornment">{startAdornment}</div>
         )}
         <div className="rn-textinput__input-wrapper" data-testid="inputwrapper">
           {hasLabel && (
-            <label
-              className="rn-textinput__label"
-              data-testid="label"
-              htmlFor={id}
-            >
+            <label className="rn-textinput__label" htmlFor={id}>
               {label}
             </label>
           )}
@@ -105,19 +96,10 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
           />
         </div>
         {endAdornment && (
-          <div
-            className="rn-textinput__end-adornment"
-            data-testid="end-adornment"
-          >
-            {endAdornment}
-          </div>
+          <div className="rn-textinput__end-adornment">{endAdornment}</div>
         )}
       </div>
-      {footnote && (
-        <small className="rn-textinput__footnote" data-testid="footnote">
-          {footnote}
-        </small>
-      )}
+      {footnote && <small className="rn-textinput__footnote">{footnote}</small>}
     </div>
   )
 }

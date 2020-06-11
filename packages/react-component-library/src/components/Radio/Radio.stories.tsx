@@ -1,11 +1,12 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
-import { Field, Formik, Form } from 'formik'
+import { Field, Form, Formik } from 'formik'
 import * as yup from 'yup'
 
-import { withFormik } from '../../enhancers/withFormik'
+import { FormikGroup } from '../FormikGroup/FormikGroup'
 import { Radio } from '.'
+import { withFormik } from '../../enhancers/withFormik'
 
 const stories = storiesOf('Radio', module)
 
@@ -25,20 +26,20 @@ stories.add('Vanilla', () => {
   )
 })
 
-stories.add('Formik', () => {
+stories.add('Formik radio group', () => {
   const RadiosForm = () => {
     interface Data {
-      [key: string]: boolean
+      [key: string]: string
     }
 
     const initialValues: Data = {
-      example1: true,
-      example2: false,
-      example3: false,
+      example: '',
+      exampleWithError: '',
     }
 
     const validationSchema = yup.object().shape({
-      example: yup.string(),
+      example: yup.string().required('Field is required'),
+      exampleWithError: yup.string().required('Field is required'),
     })
 
     const FormikRadio = withFormik(Radio)
@@ -50,27 +51,46 @@ stories.add('Formik', () => {
         validationSchema={validationSchema}
       >
         <Form>
-          <Field
-            className="rn-radio--is-valid"
-            id="option1"
-            name="example"
-            component={FormikRadio}
-            label="My Label 1"
-          />
-          <Field
-            className="rn-radio--is-valid"
-            id="option2"
-            name="example"
-            component={FormikRadio}
-            label="My Label 2"
-          />
-          <Field
-            className="rn-radio--is-valid"
-            id="option3"
-            name="example"
-            component={FormikRadio}
-            label="My Label 3"
-          />
+          <FormikGroup>
+            <Field
+              component={FormikRadio}
+              name="example"
+              label="Option 1"
+              value="1"
+            />
+            <Field
+              component={FormikRadio}
+              name="example"
+              label="Option 2"
+              value="2"
+            />
+            <Field
+              component={FormikRadio}
+              name="example"
+              label="Option 3"
+              value="3"
+            />
+          </FormikGroup>
+          <FormikGroup>
+            <Field
+              component={FormikRadio}
+              name="exampleWithError"
+              label="Another option 1"
+              value="1"
+            />
+            <Field
+              component={FormikRadio}
+              name="exampleWithError"
+              label="Another option 2"
+              value="2"
+            />
+            <Field
+              component={FormikRadio}
+              name="exampleWithError"
+              label="Another option 3"
+              value="3"
+            />
+          </FormikGroup>
           <button type="submit">Submit</button>
         </Form>
       </Formik>

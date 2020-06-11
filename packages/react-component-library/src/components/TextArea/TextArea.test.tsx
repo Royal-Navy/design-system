@@ -118,10 +118,23 @@ describe('TextArea', () => {
         textInput = render(<FormikTextArea field={field} form={form} />)
       })
 
+      it('should add the aria attributes', () => {
+        expect(textInput.getByTestId('textarea-input')).not.toHaveAttribute(
+          'aria-invalid'
+        )
+        expect(textInput.getByTestId('textarea-input')).not.toHaveAttribute(
+          'aria-describedby'
+        )
+      })
+
       it('should not indicate the field has an error', () => {
         expect(textInput.queryByTestId('textarea-container')).not.toHaveClass(
           'is-invalid'
         )
+      })
+
+      it('should not show the error', () => {
+        expect(textInput.queryAllByText('Something bad')).toHaveLength(0)
       })
     })
 
@@ -134,10 +147,23 @@ describe('TextArea', () => {
         textInput = render(<FormikTextArea field={field} form={form} />)
       })
 
+      it('should add the aria attributes', () => {
+        expect(textInput.getByTestId('textarea-input')).toHaveAttribute(
+          'aria-invalid'
+        )
+        expect(textInput.getByTestId('textarea-input')).toHaveAttribute(
+          'aria-describedby'
+        )
+      })
+
       it('should indicate the field has an error', () => {
         expect(textInput.queryByTestId('textarea-container')).toHaveClass(
           'is-invalid'
         )
+      })
+
+      it('should show the error', () => {
+        expect(textInput.getByText('Something bad')).toBeInTheDocument()
       })
     })
   })

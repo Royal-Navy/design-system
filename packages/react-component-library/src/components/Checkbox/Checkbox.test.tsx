@@ -2,10 +2,10 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
+import { Checkbox } from '.'
 import { withFormik } from '../../enhancers/withFormik'
 import FieldProps from '../../types/FieldProps'
 import FormProps from '../../types/FormProps'
-import { Checkbox } from '.'
 
 describe('Checkbox', () => {
   let field: FieldProps
@@ -81,10 +81,23 @@ describe('Checkbox', () => {
         checkbox = render(<FormikCheckbox field={field} form={form} />)
       })
 
+      it('should not add the aria attributes', () => {
+        expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute(
+          'aria-invalid'
+        )
+        expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute(
+          'aria-describedBy'
+        )
+      })
+
       it('should not indicate the field has an error', () => {
         expect(checkbox.queryByTestId('container')).not.toHaveClass(
           'is-invalid'
         )
+      })
+
+      it('should not show the error', () => {
+        expect(checkbox.queryAllByText('Something bad')).toHaveLength(0)
       })
     })
 
@@ -97,8 +110,22 @@ describe('Checkbox', () => {
         checkbox = render(<FormikCheckbox field={field} form={form} />)
       })
 
+      it('should add the aria attributes', () => {
+        expect(checkbox.getByTestId('checkbox')).toHaveAttribute(
+          'aria-invalid',
+          'true'
+        )
+        expect(checkbox.getByTestId('checkbox')).toHaveAttribute(
+          'aria-describedby'
+        )
+      })
+
       it('should indicate the field has an error', () => {
         expect(checkbox.queryByTestId('container')).toHaveClass('is-invalid')
+      })
+
+      it('should show the error', () => {
+        expect(checkbox.getByText('Something bad')).toBeInTheDocument()
       })
     })
   })

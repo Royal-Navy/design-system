@@ -51,9 +51,15 @@ The `Radio` component allows the active selection of one input at a time. The in
 The Radio component can be used on its own in a regular form, if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
 
 ### Example with Formik
-<CodeHighlighter source={`<Radio name="example" value="" label="My Label 1" />`} language="javascript">
+The use of `FormikGroup` means that if a validation error occurs, then the inputs are shown with the correct aria attributes and associated with a single error message.
+
+<CodeHighlighter source={`<FormikGroup>
+  <Radio name="example" label="My Label 1" />
+  <Radio name="example" label="My Label 2" />
+  <Radio name="example" label="My Label 3" />
+</FormikGroup>`} language="javascript">
   <Form>
-    <Radio name="example" value="" label="My Label 1" />
+    <Radio name="example" label="My Label 1" />
     <Radio name="example" label="My Label 2" />
     <Radio name="example" label="My Label 3" />
   </Form>
@@ -111,6 +117,13 @@ The Radio component accepts the standard field properties as defined by Formik. 
 ]} />
 <br />
 <DataTable caption="Radio" data={[
+  {
+    Name: 'isChecked',
+    Type: 'boolean',
+    Required: 'False',
+    Default: '',
+    Description: 'Optional to set the initial value of a radio field',
+  },
   {
     Name: 'className',
     Type: 'string',
