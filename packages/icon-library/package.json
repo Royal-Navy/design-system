@@ -13,6 +13,11 @@
   ],
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Royal-Navy/design-system.git",
+    "directory": "packages/icon-library"
+  },
   "scripts": {
     "build": "run-s svgr exports build:es build:cjs types",
     "build:es": "NODE_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\"",

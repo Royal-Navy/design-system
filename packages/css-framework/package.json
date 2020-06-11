@@ -12,7 +12,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Royal-Navy/design-system"
+    "url": "https://github.com/Royal-Navy/design-system.git",
+    "directory": "packages/css-framework"
   },
   "homepage": "https://github.com/Royal-Navy/design-system/tree/develop/packages/css-framework#readme",
   "license": "MIT",

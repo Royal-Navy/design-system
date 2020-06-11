@@ -32,7 +32,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Royal-Navy/design-system"
+    "url": "https://github.com/Royal-Navy/design-system.git",
+    "directory": "packages/docs-site"
   },
   "bugs": {
     "url": "https://github.com/Royal-Navy/design-system/issues"
