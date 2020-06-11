@@ -11,7 +11,7 @@ import { withFormik } from '../enhancers/withFormik'
 /**
  * Enhanced primitives
  */
-const EnhancedPrimitives: object = {
+const EnhancedPrimitives: Record<string, React.FC<any>> = {
   Checkbox,
   NumberInput,
   Radio,
@@ -29,14 +29,14 @@ Object.keys(EnhancedPrimitives).forEach(key => {
 /**
  * Enhanced custom components (via adapters)
  */
-const EnhancedCustomComponents: object = {
+const EnhancedCustomComponents: Record<string, React.FC<any>> = {
   // ...
 }
 
 /**
  * All enhanced form components
  */
-const Formik: object = {
+const Formik: Record<string, React.FC<any>> = {
   ...EnhancedPrimitives,
   ...EnhancedCustomComponents,
 }
