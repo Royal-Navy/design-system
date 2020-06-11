@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/Royal-Navy/design-system/compare/2.8.0...2.9.0) (2020-06-11)
+
+
+### Bug Fixes
+
+* **Modal:** Fix font weight and button alignment ([3581761](https://github.com/Royal-Navy/design-system/commit/35817619d48749a0b88ecb34c1ab8e82775f3124))
+* **Packages:** Update missing repository config ([6e7354d](https://github.com/Royal-Navy/design-system/commit/6e7354df7f007a4a050f5ecb27a3f204347bd322))
+* **Release:** Fix release notes ([b767180](https://github.com/Royal-Navy/design-system/commit/b7671803bd1e77c2900e1c3d8b144be0a645748e))
+
+
+### Features
+
+* **Button:** Increase Tertiary Danger button text to pass a11y ([475bedf](https://github.com/Royal-Navy/design-system/commit/475bedf799f111fe87f38b1f2653b420acc8eaef))
+* **Nav:** Add styles to counter bleeding global styles ([c043d26](https://github.com/Royal-Navy/design-system/commit/c043d26426d45c68f0232319ae8b8deae49864ca))
+* **Number Input:** Increase label contrast for a11y ([a6ede52](https://github.com/Royal-Navy/design-system/commit/a6ede5248c9431932f187c2cd85ebf61b0506280))
+* **NumberInput:** Add prop to condense component ([2beeb94](https://github.com/Royal-Navy/design-system/commit/2beeb94965fc3232a1a01e70054d209cc4ce16e6))
+* **Select:** Increase label contrast for a11y ([96e19b0](https://github.com/Royal-Navy/design-system/commit/96e19b0dc3f6ce82d3b1bb565295099dee304fba))
+* **Switch:** Add new design to improve a11y ([cb7ac88](https://github.com/Royal-Navy/design-system/commit/cb7ac8812e8902d13e0a30b6824b274575297390))
+* **Tab Set:** Fix colour contrast of inactive tabs for a11y ([6fb48e1](https://github.com/Royal-Navy/design-system/commit/6fb48e1eaad24b87c2899121abe9ced29b2caf8a))
+* **Text Input:** Increase label contrast for a11y ([a15da38](https://github.com/Royal-Navy/design-system/commit/a15da3859a8c098baf77539caecc52c138560574))
+* **Textarea:** Increase label contrast for a11y ([511407a](https://github.com/Royal-Navy/design-system/commit/511407a0670fbad4966c538c6fbea0568691709b))
+* **Toast:** Increase time and close button contrast for a11y ([1b41c76](https://github.com/Royal-Navy/design-system/commit/1b41c769a3e98ac16a17c9b79a8aef8b183ecdbd))
+
+
+
+
+
 # [2.8.0](https://github.com/Royal-Navy/design-system/compare/2.7.0...2.8.0) (2020-06-04)
 
 
