@@ -2,27 +2,27 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 interface RadioProps {
-  isChecked?: boolean,
   className?: string
   id?: string
-  label: string
+  isChecked?: boolean,
   isDisabled?: boolean
+  label: string
   name: string
-  value?: string
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
   onBlur?: (event: React.FormEvent<HTMLInputElement>) => void
+  value?: string
 }
 
 export const Radio: React.FC<RadioProps> = ({
-  isChecked,
   className = '',
   id = uuidv4(),
-  label,
+  isChecked,
   isDisabled = false,
-  value,
+  label,
   name,
   onChange,
   onBlur,
+  value,
   ...rest
 }) => {
   return (
