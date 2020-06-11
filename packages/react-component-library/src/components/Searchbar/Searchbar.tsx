@@ -10,7 +10,7 @@ export interface SearchbarProps {
   searchButton: any
   searchPlaceholder: string
   setShowSearch: (isVisible: boolean) => void
-  style?: object
+  style?: Record<string, unknown>
 }
 
 export const Searchbar: React.FC<SearchbarProps> = ({

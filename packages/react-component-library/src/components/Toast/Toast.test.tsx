@@ -11,9 +11,9 @@ import { Toast } from '.'
 
 describe('Toast', () => {
   let wrapper: RenderResult
-  let onDismissSpy: (id: string) => {}
-  let onMouseEnterSpy: () => {}
-  let onMouseLeaveSpy: () => {}
+  let onDismissSpy: (id: string) => void
+  let onMouseEnterSpy: () => void
+  let onMouseLeaveSpy: () => void
   const LABEL = 'Example label'
   const DESCRIPTION = 'This is an example toast message'
 

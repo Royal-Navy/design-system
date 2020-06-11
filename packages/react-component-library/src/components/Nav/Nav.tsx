@@ -19,7 +19,7 @@ function renderMenu(LinkComponent: any, navItems: any[]) {
         const { active, children, label } = item
 
         const hasChildren: boolean = children && children.length > 0
-        let subMenu: object | undefined
+        let subMenu: React.ReactNode | undefined
 
         if (hasChildren) {
           subMenu = renderMenu(LinkComponent, children)
