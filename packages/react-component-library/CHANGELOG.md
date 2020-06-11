@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/Royal-Navy/design-system/compare/2.8.0...2.9.0) (2020-06-11)
+
+
+### Bug Fixes
+
+* **DatePicker:** Set Input field to readOnly ([74ce275](https://github.com/Royal-Navy/design-system/commit/74ce2753e1aaf6a589737ca5fab2fdce5d0235ad))
+* **Modal:** Fix font weight and button alignment ([3581761](https://github.com/Royal-Navy/design-system/commit/35817619d48749a0b88ecb34c1ab8e82775f3124))
+* **Packages:** Update missing repository config ([6e7354d](https://github.com/Royal-Navy/design-system/commit/6e7354df7f007a4a050f5ecb27a3f204347bd322))
+* **ReactComponentLibrary:** Update types post lint config upgrade ([8c28712](https://github.com/Royal-Navy/design-system/commit/8c28712dea78d8708b2884903c2e8df11b5bc32e))
+* **Release:** Fix release notes ([b767180](https://github.com/Royal-Navy/design-system/commit/b7671803bd1e77c2900e1c3d8b144be0a645748e))
+* **Timeline:** Add missing `range` prop ([1631041](https://github.com/Royal-Navy/design-system/commit/163104135553ce6166262770f2b21508b46b0916))
+* **Timeline:** Cast to array if single row ([9b801d1](https://github.com/Royal-Navy/design-system/commit/9b801d1a85510de8e6e4791e63d05b861dcc3375))
+* **Timeline:** Conditionally render TimelineSide headings ([8a9f3ea](https://github.com/Royal-Navy/design-system/commit/8a9f3eab00ff3b7ce410baed5275c7ce1bf1bb16))
+
+
+### Features
+
+* **Accessibility:** Associate error with field ([3670229](https://github.com/Royal-Navy/design-system/commit/36702290e8813e2be2b94ea7b847f5661f9d5339))
+* **FormGroup:** Add ability to group fields ([8e9acbc](https://github.com/Royal-Navy/design-system/commit/8e9acbcf18dba933244b34bf9a4351d4f6bed1e6))
+* **NumberInput:** Add prop to condense component ([2beeb94](https://github.com/Royal-Navy/design-system/commit/2beeb94965fc3232a1a01e70054d209cc4ce16e6))
+* **Tab Set:** Fix colour contrast of inactive tabs for a11y ([6fb48e1](https://github.com/Royal-Navy/design-system/commit/6fb48e1eaad24b87c2899121abe9ced29b2caf8a))
+
+
+
+
+
 # [2.8.0](https://github.com/Royal-Navy/design-system/compare/2.7.0...2.8.0) (2020-06-04)
 
 
