@@ -3,25 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [2.8.0](https://m7kvqbe1.github.com/Royal-Navy/design-system/compare/2.6.0...2.8.0) (2020-06-04)
+# [2.8.0](https://github.com/Royal-Navy/design-system/compare/2.7.0...2.8.0) (2020-06-04)
+
+**Note:** Version bump only for package @royalnavy/eslint-config-react
+
+
+
+
+
+# [2.7.0](https://github.com/Royal-Navy/design-system/compare/2.6.0...2.7.0) (2020-05-14)
 
 
 ### Bug Fixes
 
-* Replace references to "Standards" ([bebc5cd](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/bebc5cd920b0ae959185f4b754ddbf7fa1ad7d4f))
-* update email address ([e568d5f](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/e568d5f0ec77e1cbb1ad77e43ce45859dbb00c0a))
-
-
-
-
-
-# [2.7.0](https://thyhjwb6.github.com/Royal-Navy/design-system/compare/2.6.0...2.7.0) (2020-05-14)
-
-
-### Bug Fixes
-
-* Replace references to "Standards" ([bebc5cd](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/bebc5cd920b0ae959185f4b754ddbf7fa1ad7d4f))
-* update email address ([e568d5f](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/e568d5f0ec77e1cbb1ad77e43ce45859dbb00c0a))
+* Replace references to "Standards" ([bebc5cd](https://github.com/Royal-Navy/design-system/commit/bebc5cd920b0ae959185f4b754ddbf7fa1ad7d4f))
+* update email address ([e568d5f](https://github.com/Royal-Navy/design-system/commit/e568d5f0ec77e1cbb1ad77e43ce45859dbb00c0a))
 
 
 

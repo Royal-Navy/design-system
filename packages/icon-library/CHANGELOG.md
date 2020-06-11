@@ -3,30 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [2.8.0](https://m7kvqbe1.github.com/Royal-Navy/design-system/compare/2.6.0...2.8.0) (2020-06-04)
-
-
-### Bug Fixes
-
-* Replace references to "Standards" ([bebc5cd](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/bebc5cd920b0ae959185f4b754ddbf7fa1ad7d4f))
-* update email address ([e568d5f](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/e568d5f0ec77e1cbb1ad77e43ce45859dbb00c0a))
+# [2.8.0](https://github.com/Royal-Navy/design-system/compare/2.7.0...2.8.0) (2020-06-04)
 
 
 ### Features
 
-* **IconLibrary:** Add ability to set explicit size ([1adfd94](https://m7kvqbe1.github.com/Royal-Navy/design-system/commit/1adfd944345537c5622ed289cdbf95e8c8acf13b))
+* **IconLibrary:** Add ability to set explicit size ([1adfd94](https://github.com/Royal-Navy/design-system/commit/1adfd944345537c5622ed289cdbf95e8c8acf13b))
 
 
 
 
 
-# [2.7.0](https://thyhjwb6.github.com/Royal-Navy/design-system/compare/2.6.0...2.7.0) (2020-05-14)
+# [2.7.0](https://github.com/Royal-Navy/design-system/compare/2.6.0...2.7.0) (2020-05-14)
 
 
 ### Bug Fixes
 
-* Replace references to "Standards" ([bebc5cd](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/bebc5cd920b0ae959185f4b754ddbf7fa1ad7d4f))
-* update email address ([e568d5f](https://thyhjwb6.github.com/Royal-Navy/design-system/commit/e568d5f0ec77e1cbb1ad77e43ce45859dbb00c0a))
+* Replace references to "Standards" ([bebc5cd](https://github.com/Royal-Navy/design-system/commit/bebc5cd920b0ae959185f4b754ddbf7fa1ad7d4f))
+* update email address ([e568d5f](https://github.com/Royal-Navy/design-system/commit/e568d5f0ec77e1cbb1ad77e43ce45859dbb00c0a))
 
 
 
