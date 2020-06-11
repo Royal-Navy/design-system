@@ -20,6 +20,11 @@
   "sideEffects": false,
   "author": "Royal Navy",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Royal-Navy/design-system.git",
+    "directory": "packages/react-component-library"
+  },
   "scripts": {
     "analyze": "webpack -p --config=webpack/analyze.js",
     "build": "run-s build:es build:cjs types",
