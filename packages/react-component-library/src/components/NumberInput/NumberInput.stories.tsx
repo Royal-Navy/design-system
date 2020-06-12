@@ -87,6 +87,16 @@ examples.add('Unit', () => (
   />
 ))
 
+examples.add('Unit before', () => (
+  <NumberInput
+    name="number-input"
+    onChange={action('onChange')}
+    value={1000}
+    unit="&pound;"
+    unitPosition={UNIT_POSITION.BEFORE}
+  />
+))
+
 examples.add('Formik', () => {
   const NumberInputForm = () => {
     interface Data {

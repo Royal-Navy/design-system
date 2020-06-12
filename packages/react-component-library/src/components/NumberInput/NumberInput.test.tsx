@@ -3,6 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
 import { NumberInput } from './NumberInput'
+import { UNIT_POSITION } from './constants'
 
 describe('NumberInput', () => {
   let wrapper: RenderResult
@@ -479,6 +480,101 @@ describe('NumberInput', () => {
               value: 1000,
             },
           })
+        })
+      })
+    })
+  })
+
+  describe('when there is a unit before', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <NumberInput
+          name="number-input"
+          onChange={onChangeSpy}
+          value={1000}
+          unit="&pound;"
+          unitPosition={UNIT_POSITION.BEFORE}
+        />
+      )
+    })
+
+    it('should set the value', () => {
+      const input = wrapper.getByTestId(
+        'number-input-input'
+      ) as HTMLInputElement
+      expect(input.value).toEqual('£ 1000')
+    })
+
+    describe('and the increase button is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('number-input-increase').click()
+      })
+
+      it('should increase the value by 1', () => {
+        const input = wrapper.getByTestId(
+          'number-input-input'
+        ) as HTMLInputElement
+        expect(input.value).toEqual('£ 1001')
+      })
+
+      it('should call the onChange callback', () => {
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
+        expect(onChangeSpy).toHaveBeenCalledWith({
+          target: {
+            name: 'number-input',
+            value: 1001,
+          },
+        })
+      })
+
+      describe('and the decrease button is clicked', () => {
+        beforeEach(() => {
+          wrapper.getByTestId('number-input-decrease').click()
+        })
+
+        it('should decrease the value by 1', () => {
+          const input = wrapper.getByTestId(
+            'number-input-input'
+          ) as HTMLInputElement
+          expect(input.value).toEqual('£ 1000')
+        })
+
+        it('should call the onChange callback', () => {
+          expect(onChangeSpy).toHaveBeenCalledTimes(2)
+          expect(onChangeSpy).toHaveBeenCalledWith({
+            target: {
+              name: 'number-input',
+              value: 1000,
+            },
+          })
+        })
+      })
+    })
+
+    describe('and the user focuses and then blurs the input', () => {
+      beforeEach(() => {
+        const input = wrapper.getByTestId(
+          'number-input-input'
+        ) as HTMLInputElement
+
+        fireEvent.focus(input)
+        fireEvent.blur(input)
+      })
+
+      it('should set the value to 1000', () => {
+        const input = wrapper.getByTestId(
+          'number-input-input'
+        ) as HTMLInputElement
+        expect(input.value).toEqual('£ 1000')
+      })
+
+      it('should call the onChange callback with 1000', () => {
+        expect(onChangeSpy).toHaveBeenCalledTimes(1)
+        expect(onChangeSpy).toHaveBeenCalledWith({
+          target: {
+            name: 'number-input',
+            value: 1000,
+          },
         })
       })
     })

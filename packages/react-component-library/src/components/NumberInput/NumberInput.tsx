@@ -1,7 +1,6 @@
 import React, { FormEvent } from 'react'
 import classNames from 'classnames'
-import isFinite from 'lodash/isFinite'
-import isNil from 'lodash/isNil'
+import { isFinite, isNil, without } from 'lodash'
 import { v4 as uuidv4 } from 'uuid'
 
 import { EndAdornment } from './EndAdornment'
@@ -12,7 +11,7 @@ import { useFocus } from './useFocus'
 import { useValue } from './useValue'
 import { UNIT_POSITION } from './constants'
 
-type UnitPosition = typeof UNIT_POSITION.AFTER
+type UnitPosition = typeof UNIT_POSITION.AFTER | typeof UNIT_POSITION.BEFORE
 
 export interface NumberInputProps {
   autoFocus?: boolean
@@ -45,14 +44,20 @@ function formatValue(
   }
 
   if (unit) {
-    return `${displayValue} ${unit}`
+    return unitPosition === UNIT_POSITION.AFTER
+      ? `${displayValue} ${unit}`
+      : `${unit} ${displayValue}`
   }
 
   return displayValue
 }
 
 function getNewValue(event: React.FormEvent<HTMLInputElement>, unit: string) {
-  return parseInt(event.currentTarget.value, 10)
+  const { value } = event.currentTarget
+  const valueParts = value.split(' ')
+  const valueWithoutUnit = without(valueParts, unit).join()
+
+  return parseInt(valueWithoutUnit, 10)
 }
 
 export const NumberInput: React.FC<NumberInputProps> = ({
