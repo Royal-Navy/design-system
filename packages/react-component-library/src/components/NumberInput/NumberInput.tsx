@@ -14,10 +14,10 @@ import { Footnote } from './Footnote'
 export interface NumberInputProps {
   autoFocus?: boolean
   className?: string
-  isDisabled?: boolean
   footnote?: string
   id?: string
-  isCondensed?: boolean,
+  isCondensed?: boolean
+  isDisabled?: boolean
   label?: string
   max?: number
   min?: number
@@ -25,17 +25,17 @@ export interface NumberInputProps {
   onBlur?: (event: React.FormEvent) => void
   onChange: (event: any) => void
   placeholder?: string
+  startAdornment?: React.ReactNode | string
   step?: number
   value?: number
-  startAdornment?: React.ReactNode | string
 }
 
 export const NumberInput: React.FC<NumberInputProps> = ({
   className,
-  isDisabled = false,
   footnote,
   id = uuidv4(),
   isCondensed,
+  isDisabled = false,
   label,
   max,
   min,
@@ -43,9 +43,9 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   onBlur,
   onChange,
   placeholder = '',
+  startAdornment,
   step = 1,
   value,
-  startAdornment,
   ...rest
 }) => {
   const { hasFocus, onInputBlur, onInputFocus } = useFocus(onBlur)
