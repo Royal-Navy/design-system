@@ -11,7 +11,7 @@ interface InputProps {
   onInputBlur: (event: React.FormEvent<HTMLInputElement>) => void
   onInputFocus: () => void
   placeholder?: string
-  value?: number
+  value?: number | string
 }
 
 export const Input: React.FC<InputProps> = ({

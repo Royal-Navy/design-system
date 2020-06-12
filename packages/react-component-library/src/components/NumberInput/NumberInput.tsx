@@ -5,11 +5,14 @@ import isNil from 'lodash/isNil'
 import { v4 as uuidv4 } from 'uuid'
 
 import { EndAdornment } from './EndAdornment'
+import { Footnote } from './Footnote'
 import { Input } from './Input'
 import { StartAdornment } from './StartAdornment'
 import { useFocus } from './useFocus'
 import { useValue } from './useValue'
-import { Footnote } from './Footnote'
+import { UNIT_POSITION } from './constants'
+
+type UnitPosition = typeof UNIT_POSITION.AFTER
 
 export interface NumberInputProps {
   autoFocus?: boolean
@@ -27,7 +30,29 @@ export interface NumberInputProps {
   placeholder?: string
   startAdornment?: React.ReactNode | string
   step?: number
+  unit?: string
+  unitPosition?: UnitPosition
   value?: number
+}
+
+function formatValue(
+  displayValue: number,
+  unit: string,
+  unitPosition: UnitPosition
+) {
+  if (isNil(displayValue)) {
+    return null
+  }
+
+  if (unit) {
+    return `${displayValue} ${unit}`
+  }
+
+  return displayValue
+}
+
+function getNewValue(event: React.FormEvent<HTMLInputElement>, unit: string) {
+  return parseInt(event.currentTarget.value, 10)
 }
 
 export const NumberInput: React.FC<NumberInputProps> = ({
@@ -45,6 +70,8 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   placeholder = '',
   startAdornment,
   step = 1,
+  unit,
+  unitPosition = UNIT_POSITION.AFTER,
   value,
   ...rest
 }) => {
@@ -62,14 +89,14 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 
   function onInputBlurSetCommittedValue(event: FormEvent<HTMLInputElement>) {
     setNextValue(null)
-    const newValue = parseInt(event.currentTarget.value, 10)
+    const newValue = getNewValue(event, unit)
 
     setCommittedValueIfWithinRange(max, min, name, onChange)(event, newValue)
     onInputBlur(event)
   }
 
   function onInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const newValue = parseInt(event.currentTarget.value, 10)
+    const newValue = getNewValue(event, unit)
     if (isFinite(newValue)) {
       setNextValue(newValue)
     }
@@ -90,7 +117,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           onInputBlur={onInputBlurSetCommittedValue}
           onInputFocus={onInputFocus}
           placeholder={placeholder}
-          value={displayValue}
+          value={formatValue(displayValue, unit, unitPosition)}
           {...rest}
         />
 
