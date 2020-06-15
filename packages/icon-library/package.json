@@ -24,7 +24,7 @@
     "build:cjs": "NODE_ENV=cjs webpack -p --config=webpack/prod.js",
     "svgr": "rm -rf src/icons; svgr --ext tsx -d src/icons src/assets/**/; rm src/icons/index.tsx",
     "exports": "./generate-exports.sh",
-    "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --isolatedMOdules false --allowJs false --outDir dist/types",
+    "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --allowJs false --outDir dist/types",
     "prepare": "yarn build"
   },
   "dependencies": {
