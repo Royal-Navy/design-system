@@ -10,9 +10,10 @@ import {
   Ticks,
 } from 'react-compound-slider'
 
-import { Handle, Track, Tick } from './index'
+import { Handle, Track, ThresholdTrack, Tick } from '.'
 
-interface RangeSliderProps extends Omit<SliderProps, 'children' | 'disabled' | 'reversed'> {
+interface RangeSliderProps
+  extends Omit<SliderProps, 'children' | 'disabled' | 'reversed'> {
   hasLabels?: boolean
   tracksLeft?: boolean
   tracksRight?: boolean
@@ -21,6 +22,7 @@ interface RangeSliderProps extends Omit<SliderProps, 'children' | 'disabled' | '
   IconRight?: React.ElementType
   isDisabled?: boolean
   isReversed?: boolean
+  thresholds?: number[]
 }
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
@@ -37,6 +39,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   isDisabled,
   values,
   onUpdate,
+  thresholds,
   ...rest
 }) => {
   const [sliderValues, setSliderValues] = useState(values)
@@ -79,7 +82,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         <Handles>
           {({ activeHandleID, handles, getHandleProps }) => (
             <div className="rn-rangeslider__handles">
-              {handles.map(handle => (
+              {handles.map((handle) => (
                 <Handle
                   key={handle.id}
                   handle={handle}
@@ -94,15 +97,30 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         <Tracks left={tracksLeft} right={tracksRight}>
           {({ tracks, getTrackProps }) => (
             <div className="rn-rangeslider__tracks">
-              {tracks.map(({ id, source, target }) => (
-                <Track
-                  id={id}
-                  key={id}
-                  source={source}
-                  target={target}
-                  getTrackProps={getTrackProps}
-                />
-              ))}
+              {tracks.map(({ id, source, target }) => {
+                if (thresholds) {
+                  return (
+                    <ThresholdTrack
+                      id={id}
+                      key={id}
+                      source={source}
+                      target={target}
+                      getTrackProps={getTrackProps}
+                      thresholds={thresholds}
+                    />
+                  )
+                }
+
+                return (
+                  <Track
+                    id={id}
+                    key={id}
+                    source={source}
+                    target={target}
+                    getTrackProps={getTrackProps}
+                  />
+                )
+              })}
             </div>
           )}
         </Tracks>
@@ -110,7 +128,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
           <Ticks count={tickCount}>
             {({ ticks }) => (
               <div className="rn-rangeslider__ticks">
-                {ticks.map(tick => (
+                {ticks.map((tick) => (
                   <Tick
                     key={tick.id}
                     tick={tick}

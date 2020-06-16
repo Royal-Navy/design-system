@@ -71,6 +71,50 @@ Range Slider allows the user to move a 'handle' to select a single value or rang
   />
 </CodeHighlighter>
 
+### Single Threshold
+
+<CodeHighlighter source={`<RangeSlider
+  domain={[0, 40]}
+  mode={1}
+  values={[20]}
+  onChange={() => {}}
+  onUpdate={() => {}}
+  tracksLeft
+  thresholds={[25]}
+/>`} language="javascript">
+  <RangeSlider
+    domain={[0, 40]}
+    mode={1}
+    values={[20]}
+    onChange={() => {}}
+    onUpdate={() => {}}
+    tracksLeft
+    thresholds={[25]}
+  />
+</CodeHighlighter>
+
+### Double Threshold
+
+<CodeHighlighter source={`<RangeSlider
+  domain={[0, 40]}
+  mode={1}
+  values={[20]}
+  onChange={() => {}}
+  onUpdate={() => {}}
+  tracksLeft
+  thresholds={[25, 50]}
+/>`} language="javascript">
+  <RangeSlider
+    domain={[0, 40]}
+    mode={1}
+    values={[20]}
+    onChange={() => {}}
+    onUpdate={() => {}}
+    tracksLeft
+    thresholds={[25, 50]}
+  />
+</CodeHighlighter>
+
 ### Stepped
 
 <CodeHighlighter source={`<RangeSlider
@@ -172,6 +216,7 @@ Range Slider allows the user to move a 'handle' to select a single value or rang
 </CodeHighlighter>
 
 ### Reversed scale
+
 <CodeHighlighter source={`<RangeSlider
   domain={[0, 40]}
   step={10}
@@ -263,6 +308,13 @@ Additional details about props can be found [here](https://sghall.github.io/reac
     Required: 'True',
     Default: '',
     Description: 'An array of numbers. You can supply one for a value slider, two for a range slider or more to create n-handled sliders. The values should correspond to valid step values in the domain. The numbers will be forced into the domain if they are two small or large.',
+  },
+  {
+    Name: 'thresholds',
+    Type: 'number[]',
+    Required: 'False',
+    Default: '',
+    Description: 'An array of user defined thresholds. This is a percentage value. You can specify up to two distinct thresholds. The first value represents the lower threshold and second the upper.',
   },
   {
     Name: 'onChange',

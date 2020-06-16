@@ -73,6 +73,49 @@ describe('RangeSlider', () => {
     })
   })
 
+  describe('single threshold', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <RangeSlider
+          mode={mode}
+          domain={domain}
+          values={values}
+          tracksLeft
+          thresholds={[10]}
+        />
+      )
+    })
+
+    it('renders the correct track chunks', () => {
+      expect(
+        wrapper.queryByTestId('rangeslider-chunk-below-first-threshold')
+      ).toBeInTheDocument()
+    })
+  })
+
+  describe('double threshold', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <RangeSlider
+          mode={mode}
+          domain={domain}
+          values={values}
+          tracksLeft
+          thresholds={[10, 15]}
+        />
+      )
+    })
+
+    it('renders the correct track chunks', () => {
+      expect(
+        wrapper.queryByTestId('rangeslider-chunk-below-first-threshold')
+      ).toBeInTheDocument()
+      expect(
+        wrapper.queryByTestId('rangeslider-chunk-between-thresholds')
+      ).toBeInTheDocument()
+    })
+  })
+
   describe('disabled', () => {
     beforeEach(() => {
       wrapper = render(

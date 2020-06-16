@@ -1,10 +1,12 @@
 @use "../abstracts/functions" as f;
 @use "../abstracts/mixins" as m;
 
-
 $range-slider-bg-colour: f.color("neutral", "100");
 $range-slider-track-colour: f.color("action", "500");
 $range-slider-handle-colour: f.color("action", "500");
+$range-slider-track-below-first-threshold: f.color("danger", "500");
+$range-slider-track-between-thresholds: f.color("warning", "500");
+$range-slider-above-thresholds: f.color("action", "500");
 
 .rn-rangeslider {
   display: inline-flex;
@@ -107,6 +109,18 @@ $range-slider-handle-colour: f.color("action", "500");
   z-index: 1;
   background-color: $range-slider-track-colour;
   cursor: pointer;
+}
+
+.rn-rangeslider__track--below-first-threshold {
+  background-color: $range-slider-track-below-first-threshold;
+}
+
+.rn-rangeslider__track--between-thresholds {
+  background-color: $range-slider-track-between-thresholds;
+}
+
+.rn-rangeslider__track--above-thresholds {
+  background-color: $range-slider-above-thresholds;
 }
 
 .rn-rangeslider__ticks {

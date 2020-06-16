@@ -32,6 +32,30 @@ examples.add('Stepped', () => (
   />
 ))
 
+examples.add('Single threshold', () => (
+  <RangeSlider
+    domain={[0, 40]}
+    mode={1}
+    values={[20]}
+    onChange={action('onChange')}
+    onUpdate={action('onUpdate')}
+    tracksLeft
+    thresholds={[40]}
+  />
+))
+
+examples.add('Double threshold', () => (
+  <RangeSlider
+    domain={[0, 40]}
+    mode={1}
+    values={[20]}
+    onChange={action('onChange')}
+    onUpdate={action('onUpdate')}
+    tracksLeft
+    thresholds={[40, 60]}
+  />
+))
+
 examples.add('Multiple handles', () => (
   <RangeSlider
     domain={[0, 40]}
