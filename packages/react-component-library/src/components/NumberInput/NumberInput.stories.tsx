@@ -7,6 +7,7 @@ import { IconBrightnessHigh } from '@royalnavy/icon-library'
 import { Button } from '../Button'
 import { NumberInput } from './NumberInput'
 import { withFormik } from '../../enhancers/withFormik'
+import { UNIT_POSITION } from './constants'
 
 const stories = storiesOf('Number Input', module)
 const examples = storiesOf('Number Input/Examples', module)
@@ -75,6 +76,25 @@ examples.add('Start adornment text', () => (
 
 examples.add('Value', () => (
   <NumberInput name="number-input" onChange={action('onChange')} value={10} />
+))
+
+examples.add('Unit', () => (
+  <NumberInput
+    name="number-input"
+    onChange={action('onChange')}
+    value={1000}
+    unit="m&sup3;"
+  />
+))
+
+examples.add('Unit before', () => (
+  <NumberInput
+    name="number-input"
+    onChange={action('onChange')}
+    value={1000}
+    unit="&pound;"
+    unitPosition={UNIT_POSITION.BEFORE}
+  />
 ))
 
 examples.add('Formik', () => {

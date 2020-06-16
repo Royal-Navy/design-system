@@ -3,4 +3,9 @@ const END_ADORNMENT_TYPE = {
   INCREASE: 'increase',
 } as const
 
-export { END_ADORNMENT_TYPE }
+const UNIT_POSITION = {
+  AFTER: 'after',
+  BEFORE: 'before',
+} as const
+
+export { END_ADORNMENT_TYPE, UNIT_POSITION }

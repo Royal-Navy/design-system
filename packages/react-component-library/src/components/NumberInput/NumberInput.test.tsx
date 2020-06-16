@@ -3,10 +3,32 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
 import { NumberInput } from './NumberInput'
+import { UNIT_POSITION } from './constants'
 
 describe('NumberInput', () => {
   let wrapper: RenderResult
   let onChangeSpy: (event: any) => void
+
+  function assertInputValue(expected: string) {
+    it('should set the new value', () => {
+      const input = wrapper.getByTestId(
+        'number-input-input'
+      ) as HTMLInputElement
+      expect(input.value).toEqual(expected)
+    })
+  }
+
+  function assertOnChangeCall(expected: number, expectedNumberOfTimes = 1) {
+    it('should call the onChange callback with the new value', () => {
+      expect(onChangeSpy).toHaveBeenCalledTimes(expectedNumberOfTimes)
+      expect(onChangeSpy).toHaveBeenCalledWith({
+        target: {
+          name: 'number-input',
+          value: expected,
+        },
+      })
+    })
+  }
 
   beforeEach(() => {
     onChangeSpy = jest.fn()
@@ -29,12 +51,7 @@ describe('NumberInput', () => {
       expect(wrapper.queryAllByTestId('number-input-label')).toHaveLength(0)
     })
 
-    it('should not display a value', () => {
-      const input = wrapper.getByTestId(
-        'number-input-input'
-      ) as HTMLInputElement
-      expect(input.value).toEqual('')
-    })
+    assertInputValue('')
 
     it('should set the name attribute', () => {
       expect(
@@ -51,66 +68,24 @@ describe('NumberInput', () => {
         wrapper.getByTestId('number-input-increase').click()
       })
 
-      it('should increase the value by 1', () => {
-        const input = wrapper.getByTestId(
-          'number-input-input'
-        ) as HTMLInputElement
-        expect(input.value).toEqual('1')
-      })
-
-      it('should call the onChange callback', () => {
-        expect(onChangeSpy).toHaveBeenCalledTimes(1)
-        expect(onChangeSpy).toHaveBeenCalledWith({
-          target: {
-            name: 'number-input',
-            value: 1,
-          },
-        })
-      })
+      assertInputValue('1')
+      assertOnChangeCall(1)
 
       describe('and the decrease button is clicked', () => {
         beforeEach(() => {
           wrapper.getByTestId('number-input-decrease').click()
         })
 
-        it('should decrease the value by 1', () => {
-          const input = wrapper.getByTestId(
-            'number-input-input'
-          ) as HTMLInputElement
-          expect(input.value).toEqual('0')
-        })
-
-        it('should call the onChange callback', () => {
-          expect(onChangeSpy).toHaveBeenCalledTimes(2)
-          expect(onChangeSpy).toHaveBeenCalledWith({
-            target: {
-              name: 'number-input',
-              value: 0,
-            },
-          })
-        })
+        assertInputValue('0')
+        assertOnChangeCall(0 ,2)
 
         describe('and the decrease button is clicked', () => {
           beforeEach(() => {
             wrapper.getByTestId('number-input-decrease').click()
           })
 
-          it('should decrease the value by 1', () => {
-            const input = wrapper.getByTestId(
-              'number-input-input'
-            ) as HTMLInputElement
-            expect(input.value).toEqual('-1')
-          })
-
-          it('should call the onChange callback', () => {
-            expect(onChangeSpy).toHaveBeenCalledTimes(3)
-            expect(onChangeSpy).toHaveBeenCalledWith({
-              target: {
-                name: 'number-input',
-                value: -1,
-              },
-            })
-          })
+          assertInputValue('-1')
+          assertOnChangeCall(-1, 3)
         })
       })
     })
@@ -172,12 +147,7 @@ describe('NumberInput', () => {
         increase.click()
       })
 
-      it('should increase the value to the max 3', () => {
-        const input = wrapper.getByTestId(
-          'number-input-input'
-        ) as HTMLInputElement
-        expect(input.value).toEqual('3')
-      })
+      assertInputValue('3')
 
       describe('and the decrease button is clicked four times', () => {
         beforeEach(() => {
@@ -188,12 +158,7 @@ describe('NumberInput', () => {
           decrease.click()
         })
 
-        it('should decrease the value to the min 0', () => {
-          const input = wrapper.getByTestId(
-            'number-input-input'
-          ) as HTMLInputElement
-          expect(input.value).toEqual('0')
-        })
+        assertInputValue('0')
       })
     })
 
@@ -214,12 +179,7 @@ describe('NumberInput', () => {
           })
         })
 
-        it('should not change the value', () => {
-          const input = wrapper.getByTestId(
-            'number-input-input'
-          ) as HTMLInputElement
-          expect(input.value).toEqual('1')
-        })
+        assertInputValue('1')
       })
 
       describe('and the user types a valid number', () => {
@@ -231,12 +191,7 @@ describe('NumberInput', () => {
           })
         })
 
-        it('should change the value', () => {
-          const input = wrapper.getByTestId(
-            'number-input-input'
-          ) as HTMLInputElement
-          expect(input.value).toEqual('3')
-        })
+        assertInputValue('3')
       })
 
       describe('and the user types an number outside the max min range', () => {
@@ -248,24 +203,14 @@ describe('NumberInput', () => {
           })
         })
 
-        it('should display the value', () => {
-          const input = wrapper.getByTestId(
-            'number-input-input'
-          ) as HTMLInputElement
-          expect(input.value).toEqual('4')
-        })
+        assertInputValue('4')
 
         describe('and the number input loses focus', () => {
           beforeEach(() => {
             wrapper.getByTestId('next-field').focus()
           })
 
-          it('should display the last valid value', () => {
-            const input = wrapper.getByTestId(
-              'number-input-input'
-            ) as HTMLInputElement
-            expect(input.value).toEqual('1')
-          })
+          assertInputValue('1')
         })
       })
     })
@@ -284,12 +229,7 @@ describe('NumberInput', () => {
         increase.click()
       })
 
-      it('should increase the value to 3', () => {
-        const input = wrapper.getByTestId(
-          'number-input-input'
-        ) as HTMLInputElement
-        expect(input.value).toEqual('3')
-      })
+      assertInputValue('3')
 
       describe('and the decrease button is clicked', () => {
         beforeEach(() => {
@@ -297,12 +237,7 @@ describe('NumberInput', () => {
           decrease.click()
         })
 
-        it('should decrease the value to 0', () => {
-          const input = wrapper.getByTestId(
-            'number-input-input'
-          ) as HTMLInputElement
-          expect(input.value).toEqual('0')
-        })
+        assertInputValue('0')
       })
     })
   })
@@ -415,6 +350,87 @@ describe('NumberInput', () => {
           wrapper.getByTestId('number-input-container').classList
         ).toContain('has-focus')
       })
+    })
+  })
+
+  describe('when there is a unit', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <NumberInput
+          name="number-input"
+          onChange={onChangeSpy}
+          value={1000}
+          unit="m"
+        />
+      )
+    })
+
+    assertInputValue('1000 m')
+
+    describe('and the increase button is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('number-input-increase').click()
+      })
+
+      assertInputValue('1001 m')
+      assertOnChangeCall(1001)
+    })
+
+    describe('and the decrease button is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('number-input-decrease').click()
+      })
+
+      assertInputValue('999 m')
+      assertOnChangeCall(999)
+    })
+  })
+
+  describe('when there is a unit before', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <NumberInput
+          name="number-input"
+          onChange={onChangeSpy}
+          value={1000}
+          unit="&pound;"
+          unitPosition={UNIT_POSITION.BEFORE}
+        />
+      )
+    })
+
+    assertInputValue('£ 1000')
+
+    describe('and the increase button is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('number-input-increase').click()
+      })
+
+      assertInputValue('£ 1001')
+      assertOnChangeCall(1001)
+    })
+
+    describe('and the decrease button is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('number-input-decrease').click()
+      })
+
+      assertInputValue('£ 999')
+      assertOnChangeCall(999)
+    })
+
+    describe('and the user focuses and then blurs the input', () => {
+      beforeEach(() => {
+        const input = wrapper.getByTestId(
+          'number-input-input'
+        ) as HTMLInputElement
+
+        fireEvent.focus(input)
+        fireEvent.blur(input)
+      })
+
+      assertInputValue('£ 1000')
+      assertOnChangeCall(1000)
     })
   })
 })
