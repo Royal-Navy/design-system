@@ -206,7 +206,7 @@ a.rn-floating-box__footer-link {
   .rn-floating-box--left_bottom .rn-floating-box__content:after,
   .rn-floating-box--right_bottom .rn-floating-box__content:before,
   .rn-floating-box--right_bottom .rn-floating-box__content:after {
-    top: unset;
+    top: auto;
     bottom: 15px;
   }
 
@@ -226,7 +226,7 @@ a.rn-floating-box__footer-link {
   .rn-floating-box--top_right .rn-floating-box__content:after,
   .rn-floating-box--bottom_right .rn-floating-box__content:before,
   .rn-floating-box--bottom_right .rn-floating-box__content:after {
-    left: unset;
+    left: auto;
     right: 15px;
   }
 }
