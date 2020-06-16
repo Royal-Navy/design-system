@@ -172,7 +172,7 @@ $btn-focus-width: 0.2rem;
   flex-direction: row-reverse;
 
   .rn-btn__icon {
-    margin-left: unset;
+    margin-left: 0;
     margin-right: f.spacing("3");
   }
 }
