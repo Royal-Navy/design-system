@@ -4,10 +4,6 @@ $timeline-border-color: f.color("neutral", "100");
 $timeline-bg-color: f.color("neutral", "000");
 $timeline-alt-bg-color: f.color("neutral", "white");
 
-.sb-show-main {
-  padding: unset;
-}
-
 .timeline {
   position: relative;
   display: flex;
