@@ -66,7 +66,7 @@ export const Day: React.FC<DayProps> = ({ dayLabel, date }) => {
       onMouseEnter={onMouseEnter}
       tabIndex={tabIndex}
       type="button"
-      ref={dayRef}
+      // ref={dayRef} https://github.com/tresko/react-datepicker/issues/91
       data-testid={`datepicker-day-${dayLabel}`}
     >
       {dayLabel}
