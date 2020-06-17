@@ -109,24 +109,6 @@ jobs:
           root: packages
           paths:
             - react-component-library/coverage
-  code_climate:
-    docker: *docker
-    steps:
-      - checkout
-      - attach_workspace:
-          at: workspace
-      - run:
-          name: Download Code Climate tool
-          command: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > /tmp/cc-test-reporter
-      - run: chmod +x /tmp/cc-test-reporter
-      - run:
-          name: Convert react results to cc format
-          working_directory: ~/project/packages/react-component-library
-          command: /tmp/cc-test-reporter format-coverage -t lcov -o ../../workspace/codeclimate.react-component-library.json ../../workspace/react-component-library/coverage/lcov.info
-      - run:
-          name: Upload CC coverage
-          working_directory: ~/project
-          command: /tmp/cc-test-reporter upload-coverage -i workspace/codeclimate.react-component-library.json
   code_cov:
     docker: *docker
     steps:
@@ -260,9 +242,6 @@ workflows:
       - test_react-component-library:
           requires:
             - lint_react-component-library
-      - code_climate:
-          requires:
-            - test_react-component-library
       - code_cov:
           requires:
             - test_react-component-library
@@ -272,7 +251,6 @@ workflows:
             - test_react-component-library
       - check_fixup_commits:
           requires:
-            - code_climate
             - test_visual_regression
   build_test_and_deploy_next:
     jobs:
@@ -328,13 +306,9 @@ workflows:
       - test_react-component-library:
           requires:
             - lint_react-component-library
-      - code_climate:
-          requires:
-            - test_react-component-library
       - test_visual_regression:
           requires:
             - test_react-component-library
       - publish_latest:
           requires:
-            - code_climate
             - test_visual_regression
