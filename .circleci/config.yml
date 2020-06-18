@@ -33,18 +33,13 @@ jobs:
     steps:
       - checkout
       - run: yarn audit
-  lint_commits:
+  check_commits:
     docker: *docker
     steps:
       - checkout
       - dependencies
       - run: node ./scripts/commitlint $CIRCLE_PULL_REQUEST
-  check_fixup_commits:
-    docker: *docker
-    steps:
-      - checkout
-      - dependencies
-      - run: node ./scripts/check-fixup $CIRCLE_PULL_REQUEST
+      - run: node ./scripts/check-fixup $CIRCLE_PULL_REQUEST      
   lint_css-framework:
     docker: *docker
     steps:
@@ -212,7 +207,7 @@ workflows:
               ignore:
                 - master
                 - latest
-      - lint_commits:
+      - check_commits:
           filters:
             branches:
               ignore:
@@ -249,9 +244,6 @@ workflows:
       - test_visual_regression:
           requires:
             - test_react-component-library
-      - check_fixup_commits:
-          requires:
-            - test_visual_regression
   build_test_and_deploy_next:
     jobs:
       - test_react-component-library:
@@ -275,12 +267,7 @@ workflows:
             branches:
               only:
                 - latest
-      - lint_commits:
-          filters:
-            branches:
-              only:
-                - latest
-      - check_fixup_commits:
+      - check_commits:
           filters:
             branches:
               only:
