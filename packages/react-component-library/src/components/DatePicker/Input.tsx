@@ -11,6 +11,8 @@ export interface InputProps extends ComponentWithClass {
   onBlur?: (event: React.FormEvent<Element>) => void
   onFocus?: (event: React.FormEvent<Element>) => void
   isDisabled?: boolean
+  isOpen: boolean
+  onClose?: () => void
 }
 
 export const Input = forwardRef((props: InputProps, ref?: React.Ref<any>) => {
@@ -23,6 +25,8 @@ export const Input = forwardRef((props: InputProps, ref?: React.Ref<any>) => {
     onBlur,
     onFocus,
     isDisabled,
+    isOpen,
+    onClose,
   } = props
 
   return (
@@ -49,10 +53,14 @@ export const Input = forwardRef((props: InputProps, ref?: React.Ref<any>) => {
             readOnly
           />
         </div>
-        <div className="rn-date-picker__end-adornment">
+        <button
+          className="rn-date-picker__end-adornment"
+          onClick={isOpen ? onClose : onFocus}
+          data-testid="datepicker-input-button"
+        >
           <div className="rn-date-picker__indicator-separator" />
           <TriangleDown />
-        </div>
+        </button>
       </div>
     </div>
   )

@@ -53,6 +53,38 @@ describe('DatePicker', () => {
       expect(wrapper.queryByTestId('datepicker-wrapper')).toBeInTheDocument()
     })
 
+    describe('when the end user clicks the open close button', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('datepicker-input-button').click()
+      })
+
+      it('displays the container', () => {
+        expect(
+          wrapper.getByTestId('datepicker-input-wrapper').classList
+        ).toContain('is-open')
+
+        expect(wrapper.getByTestId('floating-box').classList).toContain(
+          'is-visible'
+        )
+      })
+
+      describe('and the user clicks it again', () => {
+        beforeEach(() => {
+          wrapper.getByTestId('datepicker-input-button').click()
+        })
+
+        it('hides the container', () => {
+          expect(
+            wrapper.getByTestId('datepicker-input-wrapper').classList
+          ).not.toContain('is-open')
+
+          expect(wrapper.getByTestId('floating-box').classList).not.toContain(
+            'is-visible'
+          )
+        })
+      })
+    })
+
     describe('when the end user focuses on the Input', () => {
       beforeEach(() => {
         wrapper.getByTestId('datepicker-input').focus()
