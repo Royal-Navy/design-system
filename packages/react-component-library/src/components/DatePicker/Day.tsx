@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react'
+import React, { useContext } from 'react'
 import classNames from 'classnames'
 import { useDay } from '@datepicker-react/hooks'
 
@@ -10,8 +10,6 @@ export interface DayProps extends ComponentWithClass {
 }
 
 export const Day: React.FC<DayProps> = ({ dayLabel, date }) => {
-  const dayRef = useRef(null)
-
   const {
     focusedDate,
     isDateFocused,
@@ -44,7 +42,6 @@ export const Day: React.FC<DayProps> = ({ dayLabel, date }) => {
     onDateFocus,
     onDateSelect,
     onDateHover,
-    dayRef,
   })
 
   if (!dayLabel) {
@@ -66,7 +63,6 @@ export const Day: React.FC<DayProps> = ({ dayLabel, date }) => {
       onMouseEnter={onMouseEnter}
       tabIndex={tabIndex}
       type="button"
-      // ref={dayRef} https://github.com/tresko/react-datepicker/issues/91
       data-testid={`datepicker-day-${dayLabel}`}
     >
       {dayLabel}
