@@ -2,6 +2,6 @@
 
 .rn-form__invalid-feedback {
   color: f.color("danger", "600");
-  margin: f.spacing("4") f.spacing("6");
+  margin-bottom: f.spacing("4");
   font-size: f.font-size("base");
 }
