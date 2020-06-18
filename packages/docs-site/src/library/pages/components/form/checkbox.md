@@ -57,11 +57,11 @@ The use of `FormikGroup` means that if a validation error occurs, then the input
   <Checkbox name="example2" label="My Label 2" />
   <Checkbox name="example3" label="My Label 3" />
 </FormikGroup>`} language="javascript">
-  <Form>
+  <form>
     <Checkbox name="example1" label="My Label 1" value="true" isChecked />
     <Checkbox name="example2" label="My Label 2" />
     <Checkbox name="example3" label="My Label 3" />
-  </Form>
+  </form>
 </CodeHighlighter>
 
 ### Properties
