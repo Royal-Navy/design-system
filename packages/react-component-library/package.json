@@ -135,7 +135,7 @@
     "dist"
   ],
   "dependencies": {
-    "@datepicker-react/hooks": "^2.3.1",
+    "@datepicker-react/hooks": "^2.4.1",
     "@royalnavy/css-framework": "^2.10.0-alpha.9",
     "@royalnavy/eslint-config-react": "^2.10.0-alpha.9",
     "@royalnavy/fonts": "^2.10.0-alpha.9",
