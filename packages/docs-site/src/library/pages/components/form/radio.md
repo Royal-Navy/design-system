@@ -58,11 +58,11 @@ The use of `FormikGroup` means that if a validation error occurs, then the input
   <Radio name="example" label="My Label 2" />
   <Radio name="example" label="My Label 3" />
 </FormikGroup>`} language="javascript">
-  <Form>
+  <form>
     <Radio name="example" label="My Label 1" />
     <Radio name="example" label="My Label 2" />
     <Radio name="example" label="My Label 3" />
-  </Form>
+  </form>
 </CodeHighlighter>
 
 ### Properties
