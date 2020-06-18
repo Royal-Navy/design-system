@@ -26,8 +26,13 @@ export function useOpenClose(ref: React.RefObject<undefined>) {
     setIsOpen(true)
   }
 
+  function onClose() {
+    setIsOpen(false)
+  }
+
   return {
     isOpen,
     onFocus,
+    onClose
   }
 }

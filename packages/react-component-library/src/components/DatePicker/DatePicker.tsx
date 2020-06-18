@@ -117,7 +117,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   })
 
   const componentRef = useRef(null)
-  const { isOpen, onFocus } = useOpenClose(componentRef)
+  const { isOpen, onFocus, onClose } = useOpenClose(componentRef)
   const hasContent = (value && value.length) || state.startDate
   const PLACEMENTS = DATEPICKER_PLACEMENTS[placement]
 
@@ -179,6 +179,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               onBlur={onBlur}
               onFocus={onFocus}
               isDisabled={isDisabled}
+              isOpen={isOpen}
+              onClose={onClose}
             />
           ),
           renderElement: (ref: React.RefObject<any>) => (

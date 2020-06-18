@@ -105,6 +105,9 @@
   align-items: center;
   text-align: center;
   padding: f.spacing("4") f.spacing("8");
+  border: none;
+  background: transparent;
+  outline: none;
 }
 
 .rn-date-picker__end-adornment {
