@@ -81,4 +81,21 @@ describe('DismissibleBanner', () => {
       expect(wrapper.getByText('arbitrary content')).toBeInTheDocument()
     })
   })
+
+  describe('without checkbox', () => {
+    beforeEach(() => {
+      const props = {
+        children: 'content',
+        hasCheckbox: false,
+        title: 'title',
+        onDismiss: () => true,
+      }
+
+      wrapper = render(<DismissibleBanner {...props} />)
+    })
+
+    it("should not render the `Don't show this again` checkbox", () => {
+      expect(wrapper.queryAllByTestId('checkbox')).toHaveLength(0)
+    })
+  })
 })

@@ -25,3 +25,15 @@ examples.add('Arbitrary', () => {
     </DismissibleBanner>
   )
 })
+
+examples.add('Hide checkbox', () => {
+  return (
+    <DismissibleBanner
+      hasCheckbox={false}
+      onDismiss={action('onDismiss')}
+      title={TITLE}
+    >
+      {DESCRIPTION}
+    </DismissibleBanner>
+  )
+})

@@ -5,6 +5,7 @@ import { Button, BUTTON_SIZE, BUTTON_VARIANT } from '../Button'
 import { Checkbox } from '../Checkbox'
 
 interface DismissibleBannerWithTitleProps extends ComponentWithClass {
+  hasCheckbox?: boolean
   children: string
   onDismiss: (
     event: React.FormEvent<HTMLButtonElement>,
@@ -15,6 +16,7 @@ interface DismissibleBannerWithTitleProps extends ComponentWithClass {
 
 interface DismissibleBannerWithArbitraryContentProps
   extends ComponentWithClass {
+  hasCheckbox?: boolean
   children: React.ReactElement
   onDismiss: (
     event: React.FormEvent<HTMLButtonElement>,
@@ -28,6 +30,7 @@ type DismissibleBannerProps =
   | DismissibleBannerWithArbitraryContentProps
 
 export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
+  hasCheckbox = true,
   children,
   className,
   onDismiss,
@@ -63,12 +66,15 @@ export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
         {!title && children}
       </div>
       <div className="rn-dismissable-banner__footer">
-        <Checkbox
-          className="rn-checkbox--dontshow"
-          label="Don't show this again"
-          name="dimissablebanner-dontshow"
-          onChange={() => setCanShowAgain(!canShowAgain)}
-        />
+        {hasCheckbox && (
+          <Checkbox
+            className="rn-checkbox--dontshow"
+            label="Don't show this again"
+            name="dimissablebanner-dontshow"
+            onChange={() => setCanShowAgain(!canShowAgain)}
+          />
+        )}
+        {!hasCheckbox && <span />}
         <Button
           onClick={onButtonClick}
           size={BUTTON_SIZE.SMALL}
