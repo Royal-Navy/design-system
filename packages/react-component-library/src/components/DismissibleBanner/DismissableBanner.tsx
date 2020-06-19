@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { Button, BUTTON_SIZE, BUTTON_VARIANT } from '../Button'
 import { Checkbox } from '../Checkbox'
 
-interface DismissibleBannerProps extends ComponentWithClass {
+interface DismissibleBannerWithTitleProps extends ComponentWithClass {
   children: string
   onDismiss: (
     event: React.FormEvent<HTMLButtonElement>,
@@ -12,6 +12,20 @@ interface DismissibleBannerProps extends ComponentWithClass {
   ) => void
   title: string
 }
+
+interface DismissibleBannerWithArbitraryContentProps
+  extends ComponentWithClass {
+  children: React.ReactElement
+  onDismiss: (
+    event: React.FormEvent<HTMLButtonElement>,
+    canShowAgain: boolean
+  ) => void
+  title?: never
+}
+
+type DismissibleBannerProps =
+  | DismissibleBannerWithTitleProps
+  | DismissibleBannerWithArbitraryContentProps
 
 export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
   children,
@@ -30,18 +44,23 @@ export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
   return (
     <div className={classes} data-testid="dimissablebanner-wrapper">
       <div className="rn-dismissable-banner__content">
-        <h2
-          className="rn-dismissable-banner__title"
-          data-testid="dimissablebanner-title"
-        >
-          {title}
-        </h2>
-        <p
-          className="rn-dismissable-banner__description"
-          data-testid="dimissablebanner-description"
-        >
-          {children}
-        </p>
+        {title && (
+          <>
+            <h2
+              className="rn-dismissable-banner__title"
+              data-testid="dimissablebanner-title"
+            >
+              {title}
+            </h2>
+            <p
+              className="rn-dismissable-banner__description"
+              data-testid="dimissablebanner-description"
+            >
+              {children}
+            </p>
+          </>
+        )}
+        {!title && children}
       </div>
       <div className="rn-dismissable-banner__footer">
         <Checkbox

@@ -56,4 +56,29 @@ describe('DismissibleBanner', () => {
       })
     })
   })
+
+  describe('arbitrary content', () => {
+    beforeEach(() => {
+      const props = {
+        children: <div>arbitrary content</div>,
+        onDismiss: () => true,
+      }
+
+      wrapper = render(<DismissibleBanner {...props} />)
+    })
+
+    it('should render the title', () => {
+      expect(wrapper.queryAllByTestId('dimissablebanner-title')).toHaveLength(0)
+    })
+
+    it('should render the content', () => {
+      expect(
+        wrapper.queryAllByTestId('dimissablebanner-description')
+      ).toHaveLength(0)
+    })
+
+    it('should render the arbitrary content', () => {
+      expect(wrapper.getByText('arbitrary content')).toBeInTheDocument()
+    })
+  })
 })
