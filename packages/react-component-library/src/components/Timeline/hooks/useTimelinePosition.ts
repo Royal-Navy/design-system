@@ -18,7 +18,7 @@ function getWidth (
   return differenceInCalendarDays(
     new Date(endDate),
     new Date(startDate)
-  ) + 1 // End day === full day
+  )
 }
 
 function getOffset (
