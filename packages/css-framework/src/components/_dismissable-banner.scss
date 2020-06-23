@@ -1,0 +1,43 @@
+@use "../abstracts/mixins" as m;
+@use "../abstracts/functions" as f;
+
+.rn-checkbox--dontshow {
+  padding-top: f.spacing("3");
+  padding-bottom: f.spacing("3");
+}
+
+.rn-dismissable-banner {
+  background: f.color("neutral", "white");
+  border: f.spacing("px") solid f.color("neutral", "100");
+  border-radius: 4px;
+}
+
+.rn-dismissable-banner__description {
+  color: f.color("neutral", "400");
+  font-size: f.font-size("base");
+  font-weight: 400;
+}
+
+.rn-dismissable-banner__content {
+  padding: f.spacing("6");
+}
+
+.rn-dismissable-banner__description {
+  color: f.color("neutral", "400");
+  font-size: f.font-size("base");
+  font-weight: 400;
+}
+
+.rn-dismissable-banner__footer {
+  background: f.color("neutral", "000");
+  display: flex;
+  justify-content: space-between;
+  padding: f.spacing("4");
+}
+
+.rn-dismissable-banner__title {
+  color: f.color("neutral", "600");
+  font-size: f.font-size("l");
+  font-weight: bold;
+  margin-bottom: f.spacing("2");
+}
