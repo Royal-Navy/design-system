@@ -154,15 +154,18 @@
 }
 
 .rn-date-picker__grid {
-  display: grid;
-  grid-template-columns: repeat(1, 300px);
-  grid-gap: 0 f.spacing("8");
-  width: auto;
+  width: 280px;
+  display: flex;
   padding: f.spacing("8") f.spacing("5") f.spacing("5") f.spacing("5");
 }
 
 .rn-date-picker__grid--range {
-  grid-template-columns: repeat(2, 300px);
+  width: 570px;
+
+  div {
+    flex: 1;
+    margin-right: 10px;
+  }
 }
 
 .rn-date-picker__range-seperator {
@@ -216,12 +219,12 @@
 }
 
 .rn-date-picker__day-label-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  justify-content: center;
+  display: flex;
 }
 
 .rn-date-picker__day-label {
+  width: calc(100% / 7);
+
   padding: 0 f.spacing("2") f.spacing("4");
   text-align: center;
   text-transform: uppercase;
@@ -231,15 +234,17 @@
 }
 
 .rn-date-picker__day-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+
+  div, button {
+    width: calc(100% / 7);
+  }
 }
 
 .rn-date-picker__btn-day {
   padding: f.spacing("4");
   border: 1px solid f.color("neutral", "100");
-  margin: -1px 0 0 -1px;
   font-size: f.font-size("s");
   font-weight: 600;
   color: f.color("neutral", "400");
