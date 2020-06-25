@@ -29,7 +29,12 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     ref
   ) => {
     return (
-      <div className={`rn-radio ${className}`} data-testid="container">
+      <div
+        className={`rn-radio ${className}`}
+        data-testid="container"
+        role="radio"
+        aria-checked={isChecked}
+      >
         <div className="rn-radio__outer-wrapper">
           <label className="rn-radio__label" htmlFor={id} data-testid="label">
             <input
