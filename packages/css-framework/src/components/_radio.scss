@@ -1,7 +1,7 @@
 @use "../abstracts/functions" as f;
 
 $animation-timing: 0.2s;
-$btn-focus-width: 0.1rem;
+$radio-focus-width: 0.1rem;
 
 .rn-radio {
   display: block;
@@ -51,7 +51,7 @@ $btn-focus-width: 0.1rem;
 .rn-radio input:active ~ .rn-radio__checkmark {
   border: 1px solid f.color("action", "500");
   outline: none;
-  box-shadow: 0 0 0 $btn-focus-width f.color("action", "500");
+  box-shadow: 0 0 0 $radio-focus-width f.color("action", "500");
   transition: all $animation-timing;
 }
 
@@ -59,7 +59,7 @@ $btn-focus-width: 0.1rem;
 .rn-radio input:checked ~ .rn-radio__checkmark {
   background-color: f.color("neutral", "white");
   border: 1px solid f.color("action", "500");
-  box-shadow: 0 0 0 $btn-focus-width f.color("action", "500");
+  box-shadow: 0 0 0 $radio-focus-width f.color("action", "500");
 }
 
 .rn-radio__checkmark:after {
