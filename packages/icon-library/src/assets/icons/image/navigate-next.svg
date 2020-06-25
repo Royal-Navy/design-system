@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <polygon id="navigate-next-a" points="6.667 4 5.727 4.94 8.78 8 5.727 11.06 6.667 12 10.667 8"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="navigate-next-b" fill="#fff">
-      <use xlink:href="#navigate-next-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#navigate-next-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Image/navigate-next</title>
+    <defs>
+        <polygon id="path-1" points="6.66666666 3.99999998 5.72666665 4.93999998 8.78 8 5.72666665 11.06 6.66666666 12 10.6666667 8"></polygon>
+    </defs>
+    <g id="Icons/Image/navigate-next" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Image/ic_navigate_next_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

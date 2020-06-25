@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="signal-cellular-2-bar-a" d="M0.888888844,14.2222223 L14.2222223,0.888888844 L14.2222223,14.2222223 L0.888888844,14.2222223 Z M0.888888844,14.2222222 L8.88888884,14.2222222 L8.88888884,6.22222221 L0.888888844,14.2222222 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="signal-cellular-2-bar-b" fill="#fff">
-      <use xlink:href="#signal-cellular-2-bar-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#signal-cellular-2-bar-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Device/signal-cellular-2-bar</title>
+    <defs>
+        <path d="M0.888888844,14.2222223 L14.2222223,0.888888844 L14.2222223,14.2222223 L0.888888844,14.2222223 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Device/signal-cellular-2-bar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

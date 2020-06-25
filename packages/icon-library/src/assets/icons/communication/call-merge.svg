@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="call-merge-a" d="M11.3333334,13.6066667 L12.2733334,12.6666667 L10,10.3933333 L9.06000001,11.3333334 L11.3333334,13.6066667 Z M4.99999998,5.3333333 L7.33333333,5.3333333 L7.33333333,9.06000001 L3.72666664,12.6666667 L4.66666665,13.6066667 L8.66666667,9.60666668 L8.66666667,5.3333333 L11,5.3333333 L8,2.3333333 L4.99999998,5.3333333 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="call-merge-b" fill="#fff">
-      <use xlink:href="#call-merge-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#call-merge-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Communication/call-merge</title>
+    <defs>
+        <path d="M11.3333334,13.6066667 L12.2733334,12.6666667 L10,10.3933333 L9.06000001,11.3333334 L11.3333334,13.6066667 Z M4.99999998,5.3333333 L7.33333333,5.3333333 L7.33333333,9.06000001 L3.72666664,12.6666667 L4.66666665,13.6066667 L8.66666667,9.60666668 L8.66666667,5.3333333 L11,5.3333333 L8,2.3333333 L4.99999998,5.3333333 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Communication/call-merge" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Communication/ic_call_merge_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

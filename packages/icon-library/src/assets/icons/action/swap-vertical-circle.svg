@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="swap-vertical-circle-a" d="M8,1.33333329 C4.31999998,1.33333329 1.33333329,4.31999998 1.33333329,8 C1.33333329,11.68 4.31999998,14.6666667 8,14.6666667 C11.68,14.6666667 14.6666667,11.68 14.6666667,8 C14.6666667,4.31999998 11.68,1.33333329 8,1.33333329 Z M4.33333331,5.99999999 L6.66666666,3.66666664 L9.00000001,5.99999999 L7.33333331,5.99999999 L7.33333331,8.66666664 L5.99999999,8.66666664 L5.99999999,5.99999999 L4.33333331,5.99999999 Z M11.6666667,10 L9.33333334,12.3333333 L6.99999999,10 L8.66666667,10 L8.66666667,7.33333333 L9.99999999,7.33333333 L9.99999999,10 L11.6666667,10 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="swap-vertical-circle-b" fill="#fff">
-      <use xlink:href="#swap-vertical-circle-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#swap-vertical-circle-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/swap-vertical-circle</title>
+    <defs>
+        <path d="M8,1.33333329 C4.31999998,1.33333329 1.33333329,4.31999998 1.33333329,8 C1.33333329,11.68 4.31999998,14.6666667 8,14.6666667 C11.68,14.6666667 14.6666667,11.68 14.6666667,8 C14.6666667,4.31999998 11.68,1.33333329 8,1.33333329 Z M4.33333331,5.99999999 L6.66666666,3.66666664 L9.00000001,5.99999999 L7.33333331,5.99999999 L7.33333331,8.66666664 L5.99999999,8.66666664 L5.99999999,5.99999999 L4.33333331,5.99999999 Z M11.6666667,10 L9.33333334,12.3333333 L6.99999999,10 L8.66666667,10 L8.66666667,7.33333333 L9.99999999,7.33333333 L9.99999999,10 L11.6666667,10 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Action/swap-vertical-circle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_swap_vertical_circle_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

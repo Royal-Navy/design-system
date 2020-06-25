@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="flight-takeoff-a" d="M1.66666663,12.6666667 L14.3333334,12.6666667 L14.3333334,14 L1.66666663,14 L1.66666663,12.6666667 Z M14.7133334,6.42666666 C14.5733334,5.89333332 14.02,5.57333332 13.4866667,5.71999999 L9.94666668,6.66666666 L5.34666665,2.37999996 L4.05999998,2.71999997 L6.81999999,7.5 L3.50666664,8.38666667 L2.1933333,7.36 L1.22666662,7.62 L2.43999997,9.72666668 L2.9533333,10.6133333 L4.01999998,10.3266667 L7.56,9.37999996 L10.46,8.60666667 L14,7.66 C14.54,7.50666666 14.8533334,6.95999999 14.7133334,6.42666666 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="flight-takeoff-b" fill="#fff">
-      <use xlink:href="#flight-takeoff-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#flight-takeoff-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/flight-takeoff</title>
+    <defs>
+        <path d="M1.66666663,12.6666667 L14.3333334,12.6666667 L14.3333334,14 L1.66666663,14 L1.66666663,12.6666667 Z M14.7133334,6.42666666 C14.5733334,5.89333332 14.02,5.57333332 13.4866667,5.71999999 L9.94666668,6.66666666 L5.34666665,2.37999996 L4.05999998,2.71999997 L6.81999999,7.5 L3.50666664,8.38666667 L2.1933333,7.36 L1.22666662,7.62 L2.43999997,9.72666668 L2.9533333,10.6133333 L4.01999998,10.3266667 L7.56,9.37999996 L10.46,8.60666667 L14,7.66 C14.54,7.50666666 14.8533334,6.95999999 14.7133334,6.42666666 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Action/flight-takeoff" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_flight_takeoff_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

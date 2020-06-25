@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <polygon id="expand-less-a" points="8 5.333 4 9.333 4.942 10.276 8 7.218 11.058 10.276 12 9.333"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="expand-less-b" fill="#fff">
-      <use xlink:href="#expand-less-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#expand-less-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Navigation/expand-less</title>
+    <defs>
+        <polygon id="path-1" points="8 5.33333332 3.99999998 9.33333334 4.9422222 10.2755556 8 7.21777777 11.0577778 10.2755556 12 9.33333334"></polygon>
+    </defs>
+    <g id="Icons/Navigation/expand-less" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Navigation/ic_expand_less_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

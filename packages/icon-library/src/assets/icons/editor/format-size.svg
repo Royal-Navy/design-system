@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="format-size-a" d="M0.888888844,8 L3.55555553,8 L3.55555553,13.3333334 L5.33333332,13.3333334 L5.33333332,8 L8,8 L8,6.22222221 L0.888888844,6.22222221 L0.888888844,8 Z M6.22222221,2.66666663 L6.22222221,4.44444442 L9.77777779,4.44444442 L9.77777779,13.3333334 L11.5555556,13.3333334 L11.5555556,4.44444442 L15.1111112,4.44444442 L15.1111112,2.66666663 L6.22222221,2.66666663 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="format-size-b" fill="#fff">
-      <use xlink:href="#format-size-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#format-size-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Editor/format-size</title>
+    <defs>
+        <path d="M0.888888844,8 L3.55555553,8 L3.55555553,13.3333334 L5.33333332,13.3333334 L5.33333332,8 L8,8 L8,6.22222221 L0.888888844,6.22222221 L0.888888844,8 Z M6.22222221,2.66666663 L6.22222221,4.44444442 L9.77777779,4.44444442 L9.77777779,13.3333334 L11.5555556,13.3333334 L11.5555556,4.44444442 L15.1111112,4.44444442 L15.1111112,2.66666663 L6.22222221,2.66666663 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Editor/format-size" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Editor/ic_format_size_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

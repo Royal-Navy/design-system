@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="subject-a" d="M9.33333334,11.3333334 L2.66666663,11.3333334 L2.66666663,12.6666667 L9.33333334,12.6666667 L9.33333334,11.3333334 Z M13.3333334,5.99999999 L2.66666663,5.99999999 L2.66666663,7.33333333 L13.3333334,7.33333333 L13.3333334,5.99999999 Z M2.66666663,10 L13.3333334,10 L13.3333334,8.66666667 L2.66666663,8.66666667 L2.66666663,10 Z M2.66666663,3.3333333 L2.66666663,4.66666665 L13.3333334,4.66666665 L13.3333334,3.3333333 L2.66666663,3.3333333 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="subject-b" fill="#fff">
-      <use xlink:href="#subject-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#subject-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/subject</title>
+    <defs>
+        <path d="M9.33333334,11.3333334 L2.66666663,11.3333334 L2.66666663,12.6666667 L9.33333334,12.6666667 L9.33333334,11.3333334 Z M13.3333334,5.99999999 L2.66666663,5.99999999 L2.66666663,7.33333333 L13.3333334,7.33333333 L13.3333334,5.99999999 Z M2.66666663,10 L13.3333334,10 L13.3333334,8.66666667 L2.66666663,8.66666667 L2.66666663,10 Z M2.66666663,3.3333333 L2.66666663,4.66666665 L13.3333334,4.66666665 L13.3333334,3.3333333 L2.66666663,3.3333333 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Action/subject" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_subject_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

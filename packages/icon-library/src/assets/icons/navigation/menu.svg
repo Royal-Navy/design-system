@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="menu-a" d="M1.77777774,12 L14.2222223,12 L14.2222223,10.6666667 L1.77777774,10.6666667 L1.77777774,12 Z M1.77777774,8.44444445 L14.2222223,8.44444445 L14.2222223,7.11111111 L1.77777774,7.11111111 L1.77777774,8.44444445 Z M1.77777774,3.55555553 L1.77777774,4.88888887 L14.2222223,4.88888887 L14.2222223,3.55555553 L1.77777774,3.55555553 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="menu-b" fill="#fff">
-      <use xlink:href="#menu-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#menu-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Navigation/menu</title>
+    <defs>
+        <path d="M1.77777774,12 L14.2222223,12 L14.2222223,10.6666667 L1.77777774,10.6666667 L1.77777774,12 Z M1.77777774,8.44444445 L14.2222223,8.44444445 L14.2222223,7.11111111 L1.77777774,7.11111111 L1.77777774,8.44444445 Z M1.77777774,3.55555553 L1.77777774,4.88888887 L14.2222223,4.88888887 L14.2222223,3.55555553 L1.77777774,3.55555553 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Navigation/menu" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Navigation/ic_menu_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

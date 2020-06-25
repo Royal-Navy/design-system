@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="mode-comment-a" d="M15.1111112,2.66666663 C15.1111112,2.17777774 14.7111112,1.77777774 14.2222223,1.77777774 L1.77777774,1.77777774 C1.28888885,1.77777774 0.888888844,2.17777774 0.888888844,2.66666663 L0.888888844,12.4444445 C0.888888844,12.9333334 1.28888885,13.3333334 1.77777774,13.3333334 L12,13.3333334 L15.1111112,16.0000001 L15.1111112,2.66666663 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="mode-comment-b" fill="#fff">
-      <use xlink:href="#mode-comment-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#mode-comment-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Editor/mode-comment</title>
+    <defs>
+        <path d="M15.1111112,2.66666663 C15.1111112,2.17777774 14.7111112,1.77777774 14.2222223,1.77777774 L1.77777774,1.77777774 C1.28888885,1.77777774 0.888888844,2.17777774 0.888888844,2.66666663 L0.888888844,12.4444445 C0.888888844,12.9333334 1.28888885,13.3333334 1.77777774,13.3333334 L12,13.3333334 L15.1111112,16.0000001 L15.1111112,2.66666663 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Editor/mode-comment" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Editor/ic_mode_comment_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

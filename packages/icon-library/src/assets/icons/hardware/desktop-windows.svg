@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="desktop-windows-a" d="M14,1.33333329 L1.99999996,1.33333329 C1.26666662,1.33333329 0.666666621,1.9333333 0.666666621,2.66666663 L0.666666621,10.6666667 C0.666666621,11.4 1.26666662,12 1.99999996,12 L6.66666662,12 L6.66666662,13.3333333 L5.33333332,13.3333333 L5.33333332,14.6666667 L10.6666666,14.6666667 L10.6666666,13.3333333 L9.33333334,13.3333333 L9.33333334,12 L14,12 C14.7333334,12 15.3333334,11.4 15.3333334,10.6666667 L15.3333334,2.66666663 C15.3333334,1.9333333 14.7333334,1.33333329 14,1.33333329 Z M14,10.6666666 L1.99999996,10.6666666 L1.99999996,2.66666663 L14,2.66666663 L14,10.6666666 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="desktop-windows-b" fill="#fff">
-      <use xlink:href="#desktop-windows-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#desktop-windows-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Hardware/desktop-windows</title>
+    <defs>
+        <path d="M14,1.33333329 L1.99999996,1.33333329 C1.26666662,1.33333329 0.666666621,1.9333333 0.666666621,2.66666663 L0.666666621,10.6666667 C0.666666621,11.4 1.26666662,12 1.99999996,12 L6.66666662,12 L6.66666662,13.3333333 L5.33333332,13.3333333 L5.33333332,14.6666667 L10.6666666,14.6666667 L10.6666666,13.3333333 L9.33333334,13.3333333 L9.33333334,12 L14,12 C14.7333334,12 15.3333334,11.4 15.3333334,10.6666667 L15.3333334,2.66666663 C15.3333334,1.9333333 14.7333334,1.33333329 14,1.33333329 Z M14,10.6666666 L1.99999996,10.6666666 L1.99999996,2.66666663 L14,2.66666663 L14,10.6666666 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Hardware/desktop-windows" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Hardware/ic_desktop_windows_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

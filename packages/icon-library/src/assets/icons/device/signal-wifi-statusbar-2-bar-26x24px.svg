@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="signal-wifi-statusbar-2-bar-26x24px-a" d="M7.99692308,14.1476923 L7.99384615,14.1476923 L3.35384612,8.36307693 C3.35420461,8.36281733 3.35456958,8.36255235 3.35494103,8.362282 L0.25846149,4.50461536 C0.553846107,4.2830769 3.53230766,1.84615381 8,1.84615381 C12.4676923,1.84615381 15.4461539,4.2830769 15.7415385,4.50461536 L8.00615385,14.1476923 L8,14.1538462 L7.99692308,14.1476923 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="signal-wifi-statusbar-2-bar-26x24px-b" fill="#fff">
-      <use xlink:href="#signal-wifi-statusbar-2-bar-26x24px-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#signal-wifi-statusbar-2-bar-26x24px-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Device/signal-wifi-statusbar-2-bar-26x24px</title>
+    <defs>
+        <path d="M8,1.84615381 C12.4676923,1.84615381 15.4461539,4.2830769 15.7415385,4.50461536 L15.7415385,4.50461536 L8.00615385,14.1476923 L8,14.1538462 L7.99646149,14.1471538 L7.99384615,14.1476923 L3.35384612,8.36307693 C3.35410254,8.36289125 3.35436226,8.36270282 3.3546253,8.36251163 L0.25846149,4.50461536 C0.553846107,4.2830769 3.53230766,1.84615381 8,1.84615381 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Device/signal-wifi-statusbar-2-bar-26x24px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

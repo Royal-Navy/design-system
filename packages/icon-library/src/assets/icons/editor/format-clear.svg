@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="format-clear-a" d="M2.01777774,4.04444442 L6.60444444,8.62222223 L4.44444442,13.3333334 L6.66666666,13.3333334 L8.12444445,10.1511111 L12.2044445,14.2222223 L13.3333334,13.0933334 L3.15555553,2.90666663 L2.01777774,4.04444442 Z M5.17333332,2.66666663 L6.9511111,4.44444442 L8.51555556,4.44444442 L8.02666667,5.51999998 L9.54666668,7.03999999 L10.7377778,4.44444442 L14.2222223,4.44444442 L14.2222223,2.66666663 L5.17333332,2.66666663 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="format-clear-b" fill="#fff">
-      <use xlink:href="#format-clear-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#format-clear-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Editor/format-clear</title>
+    <defs>
+        <path d="M2.01777774,4.04444442 L6.60444444,8.62222223 L4.44444442,13.3333334 L6.66666666,13.3333334 L8.12444445,10.1511111 L12.2044445,14.2222223 L13.3333334,13.0933334 L3.15555553,2.90666663 L2.01777774,4.04444442 Z M5.17333332,2.66666663 L6.9511111,4.44444442 L8.51555556,4.44444442 L8.02666667,5.51999998 L9.54666668,7.03999999 L10.7377778,4.44444442 L14.2222223,4.44444442 L14.2222223,2.66666663 L5.17333332,2.66666663 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Editor/format-clear" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Editor/ic_format_clear_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

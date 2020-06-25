@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="local-hospital-a" d="M12.6666667,1.99999996 L3.3333333,1.99999996 C2.59999997,1.99999996 2.00666663,2.59999997 2.00666663,3.3333333 L1.99999996,12.6666667 C1.99999996,13.4 2.59999997,14 3.3333333,14 L12.6666667,14 C13.4,14 14,13.4 14,12.6666667 L14,3.3333333 C14,2.59999997 13.4,1.99999996 12.6666667,1.99999996 Z M12,9.33333334 L9.33333334,9.33333334 L9.33333334,12 L6.66666666,12 L6.66666666,9.33333334 L3.99999997,9.33333334 L3.99999997,6.66666666 L6.66666666,6.66666666 L6.66666666,3.99999997 L9.33333334,3.99999997 L9.33333334,6.66666666 L12,6.66666666 L12,9.33333334 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="local-hospital-b" fill="#fff">
-      <use xlink:href="#local-hospital-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#local-hospital-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Maps/local-hospital</title>
+    <defs>
+        <path d="M12.6666667,1.99999996 L3.3333333,1.99999996 C2.59999997,1.99999996 2.00666663,2.59999997 2.00666663,3.3333333 L1.99999996,12.6666667 C1.99999996,13.4 2.59999997,14 3.3333333,14 L12.6666667,14 C13.4,14 14,13.4 14,12.6666667 L14,3.3333333 C14,2.59999997 13.4,1.99999996 12.6666667,1.99999996 Z M12,9.33333334 L9.33333334,9.33333334 L9.33333334,12 L6.66666666,12 L6.66666666,9.33333334 L3.99999997,9.33333334 L3.99999997,6.66666666 L6.66666666,6.66666666 L6.66666666,3.99999997 L9.33333334,3.99999997 L9.33333334,6.66666666 L12,6.66666666 L12,9.33333334 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Maps/local-hospital" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Maps/ic_local_hospital_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

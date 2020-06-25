@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="pause-a" d="M3.99999997,12.6666667 L6.66666666,12.6666667 L6.66666666,3.3333333 L3.99999997,3.3333333 L3.99999997,12.6666667 Z M9.33333334,3.3333333 L9.33333334,12.6666667 L12,12.6666667 L12,3.3333333 L9.33333334,3.3333333 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="pause-b" fill="#fff">
-      <use xlink:href="#pause-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#pause-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/AV/pause</title>
+    <defs>
+        <path d="M3.99999998,12.6666667 L6.66666666,12.6666667 L6.66666666,3.3333333 L3.99999998,3.3333333 L3.99999998,12.6666667 Z M9.33333334,3.3333333 L9.33333334,12.6666667 L12,12.6666667 L12,3.3333333 L9.33333334,3.3333333 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/AV/pause" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/AV/ic_pause_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

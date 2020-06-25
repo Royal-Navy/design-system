@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <polygon id="stop-a" points="4 4 12 4 12 12 4 12"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="stop-b" fill="#fff">
-      <use xlink:href="#stop-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#stop-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/AV/stop</title>
+    <defs>
+        <polygon id="path-1" points="3.99999998 3.99999998 12 3.99999998 12 12 3.99999998 12"></polygon>
+    </defs>
+    <g id="Icons/AV/stop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/AV/ic_stop_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

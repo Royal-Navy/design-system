@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <polygon id="check-a" points="5.876 10.569 3.111 7.804 2.169 8.747 5.876 12.444 13.831 4.489 12.889 3.556"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="check-b" fill="#fff">
-      <use xlink:href="#check-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#check-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Navigation/check</title>
+    <defs>
+        <polygon id="path-1" points="5.87555554 10.5688889 3.11111108 7.80444444 2.16888885 8.74666667 5.87555554 12.4444445 13.8311111 4.48888887 12.8888889 3.55555553"></polygon>
+    </defs>
+    <g id="Icons/Navigation/check" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Navigation/ic_check_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

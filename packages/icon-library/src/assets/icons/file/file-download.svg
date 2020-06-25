@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="file-download-a" d="M12.6666667,5.99999996 L10,5.99999996 L10,1.99999996 L5.99999999,1.99999996 L5.99999999,5.99999996 L3.3333333,5.99999996 L8,10.6666667 L12.6666667,5.99999996 Z M3.3333333,12 L3.3333333,13.3333334 L12.6666667,13.3333334 L12.6666667,12 L3.3333333,12 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="file-download-b" fill="#fff">
-      <use xlink:href="#file-download-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#file-download-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/File/file-download</title>
+    <defs>
+        <path d="M12.6666667,5.99999996 L10,5.99999996 L10,1.99999996 L5.99999999,1.99999996 L5.99999999,5.99999996 L3.3333333,5.99999996 L8,10.6666667 L12.6666667,5.99999996 Z M3.3333333,12 L3.3333333,13.3333334 L12.6666667,13.3333334 L12.6666667,12 L3.3333333,12 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/File/file-download" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/File/ic_file_download_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

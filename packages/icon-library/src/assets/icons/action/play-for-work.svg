@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="play-for-work-a" d="M7.33333333,3.3333333 L7.33333333,7.05999999 L4.99999998,7.05999999 L7.99999998,10.06 L11,7.05999999 L8.66666667,7.05999999 L8.66666667,3.3333333 L7.33333333,3.3333333 Z M3.99999997,9.33333334 C3.99999997,11.54 5.79333332,13.3333333 7.99999997,13.3333333 C10.2066667,13.3333333 12,11.54 12,9.33333334 L10.6666667,9.33333334 C10.6666667,10.8066667 9.47333334,12 7.99999997,12 C6.52666666,12 5.33333332,10.8066667 5.33333332,9.33333334 L3.99999997,9.33333334 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="play-for-work-b" fill="#fff">
-      <use xlink:href="#play-for-work-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#play-for-work-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/play-for-work</title>
+    <defs>
+        <path d="M7.33333333,3.3333333 L7.33333333,7.05999999 L4.99999998,7.05999999 L7.99999998,10.06 L11,7.05999999 L8.66666667,7.05999999 L8.66666667,3.3333333 L7.33333333,3.3333333 Z M3.99999998,9.33333334 C3.99999998,11.54 5.79333332,13.3333333 7.99999997,13.3333333 C10.2066667,13.3333333 12,11.54 12,9.33333334 L10.6666667,9.33333334 C10.6666667,10.8066667 9.47333334,12 7.99999997,12 C6.52666666,12 5.33333332,10.8066667 5.33333332,9.33333334 L3.99999998,9.33333334 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Action/play-for-work" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_play_for_work_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

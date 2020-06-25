@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="gamepad-a" d="M9.99999999,4.99999998 L9.99999999,1.33333329 L5.99999999,1.33333329 L5.99999999,4.99999998 L7.99999999,6.99999999 L9.99999999,4.99999998 Z M4.99999998,5.99999999 L1.33333329,5.99999999 L1.33333329,9.99999999 L4.99999998,9.99999999 L6.99999999,7.99999999 L4.99999998,5.99999999 Z M5.99999999,11 L5.99999999,14.6666667 L9.99999999,14.6666667 L9.99999999,11 L7.99999999,9.00000001 L5.99999999,11 Z M11,5.99999999 L9.00000001,7.99999999 L11,9.99999999 L14.6666667,9.99999999 L14.6666667,5.99999999 L11,5.99999999 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="gamepad-b" fill="#fff">
-      <use xlink:href="#gamepad-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#gamepad-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Hardware/gamepad</title>
+    <defs>
+        <path d="M9.99999999,4.99999998 L9.99999999,1.33333329 L5.99999999,1.33333329 L5.99999999,4.99999998 L7.99999999,6.99999999 L9.99999999,4.99999998 Z M4.99999998,5.99999999 L1.33333329,5.99999999 L1.33333329,9.99999999 L4.99999998,9.99999999 L6.99999999,7.99999999 L4.99999998,5.99999999 Z M5.99999999,11 L5.99999999,14.6666667 L9.99999999,14.6666667 L9.99999999,11 L7.99999999,9.00000001 L5.99999999,11 Z M11,5.99999999 L9.00000001,7.99999999 L11,9.99999999 L14.6666667,9.99999999 L14.6666667,5.99999999 L11,5.99999999 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Hardware/gamepad" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Hardware/ic_gamepad_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <polygon id="expand-more-a" points="11.058 5.724 8 8.782 4.942 5.724 4 6.667 8 10.667 12 6.667"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="expand-more-b" fill="#fff">
-      <use xlink:href="#expand-more-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#expand-more-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Navigation/expand-more</title>
+    <defs>
+        <polygon id="path-1" points="11.0577778 5.72444443 8 8.78222223 4.9422222 5.72444443 3.99999998 6.66666666 8 10.6666667 12 6.66666666"></polygon>
+    </defs>
+    <g id="Icons/Navigation/expand-more" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Navigation/ic_expand_more_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>
