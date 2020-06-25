@@ -1,45 +1,37 @@
 ---
-title: Radio
-description: Radios let users select one option at a time.
+title: RadioCard
+description: RadioCards let users select one option at a time.
 header: true
+draft: true
 ---
 
-import { Tab, TabSet, Radio } from '@royalnavy/react-component-library'
+import { Tab, TabSet, RadioCard } from '@royalnavy/react-component-library'
 import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
 
-import RadioComponent from '../../../images/components/forms/radio/Component'
-import RadioAnatomy from '../../../images/components/forms/radio/Anatomy'
-import RadioStates from '../../../images/components/forms/radio/States'
-
 # Overview
 
-<RadioComponent />
+**todo**
 
 ## Usage
-The Radio component allows the active selection of one input at a time. It typically appears in forms and modals. If you require the user to select multiple options, then the [Checkbox component](/forms/checkbox) should be used instead.
+The RadioCard component allows the active selection of one input at a time. It typically appears in forms and modals. If you require the user to select multiple options, then the [CheckboxCard component](/forms/checkbox-card) should be used instead.
 
 
 <TabSet>
 
 <Tab title="Design">
 
-<SketchWidget name="Radio" href="/design-system.sketch" />
+<SketchWidget name="RadioCard" href="/design-system.sketch" />
 
 ### Anatomy
 
-<RadioAnatomy />
-
-1. **Radio Button**. The Radio Button is a single value toggle 
-2. **Label (Optional)**. Used to provide context to the Radio Button.
+**todo**
 
 
 ### States
 
-<RadioStates />
-
-The Radio Button has three available states - `Default`, `Hover`/`Active`, and `Checked`.
+**todo**
 
 
 </Tab>
@@ -54,14 +46,24 @@ The Radio component can be used on its own in a regular form, if you use the cor
 The use of `FormikGroup` means that if a validation error occurs, then the inputs are shown with the correct aria attributes and associated with a single error message.
 
 <CodeHighlighter source={`<FormikGroup>
-  <Radio name="example" label="My Label 1" />
-  <Radio name="example" label="My Label 2" />
-  <Radio name="example" label="My Label 3" />
+  <RadioCard name="example" title="My Label 1" />
+  <RadioCard name="example" title="My Label 2" />
 </FormikGroup>`} language="javascript">
   <form>
-    <Radio name="example" label="My Label 1" />
-    <Radio name="example" label="My Label 2" />
-    <Radio name="example" label="My Label 3" />
+    <RadioCard name="example" title="My Label 1" />
+    <RadioCard name="example" title="My Label 2" />
+  </form>
+</CodeHighlighter>
+
+### Description Variant
+
+<CodeHighlighter source={`<FormikGroup>
+  <RadioCard name="example" title="My Label 1" description="..." />
+  <RadioCard name="example" title="My Label 2" description="..." />
+</FormikGroup>`} language="javascript">
+  <form>
+    <RadioCard name="example" title="My Label 1" description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam." />
+    <RadioCard name="example" title="My Label 2" description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam." />
   </form>
 </CodeHighlighter>
 
@@ -153,11 +155,18 @@ The Radio component accepts the standard field properties as defined by Formik. 
     Description: 'Provide the ID for a field and tie it to its label. If one is not provided then a unique ID will be created',
   },
   {
-    Name: 'label',
+    Name: 'title',
     Type: 'string',
     Required: 'False',
     Default: '',
     Description: 'Ideally a field should include a label to help the user understand what the field is for and help screen readers',
+  },
+  {
+    Name: 'description',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'Include a short description to be displayed alongside the radio within the card',
   },
 ]} />
 
