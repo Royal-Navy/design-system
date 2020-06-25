@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="airline-seat-individual-suite-a" d="M4.66666663,8.66666665 C5.76666665,8.66666665 6.66666663,7.76666667 6.66666663,6.66666665 C6.66666663,5.56666665 5.76666665,4.66666665 4.66666663,4.66666665 C3.56666664,4.66666665 2.66666663,5.56666665 2.66666663,6.66666665 C2.66666663,7.76666667 3.56666664,8.66666665 4.66666663,8.66666665 Z M12.6666666,4.66666665 L7.33333333,4.66666665 L7.33333333,9.33333334 L1.99999996,9.33333334 L1.99999996,4.66666665 L0.666666621,4.66666665 L0.666666621,11.3333334 L15.3333334,11.3333334 L15.3333334,7.33333333 C15.3333334,5.85999999 14.14,4.66666665 12.6666666,4.66666665 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="airline-seat-individual-suite-b" fill="#fff">
-      <use xlink:href="#airline-seat-individual-suite-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#airline-seat-individual-suite-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Notification/airline-seat-individual-suite</title>
+    <defs>
+        <path d="M4.66666663,8.66666665 C5.76666665,8.66666665 6.66666663,7.76666667 6.66666663,6.66666665 C6.66666663,5.56666665 5.76666665,4.66666665 4.66666663,4.66666665 C3.56666664,4.66666665 2.66666663,5.56666665 2.66666663,6.66666665 C2.66666663,7.76666667 3.56666664,8.66666665 4.66666663,8.66666665 Z M12.6666666,4.66666665 L7.33333333,4.66666665 L7.33333333,9.33333334 L1.99999996,9.33333334 L1.99999996,4.66666665 L0.666666621,4.66666665 L0.666666621,11.3333334 L15.3333334,11.3333334 L15.3333334,7.33333333 C15.3333334,5.85999999 14.14,4.66666665 12.6666666,4.66666665 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Notification/airline-seat-individual-suite" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Notification/ic_airline_seat_individual_suite_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

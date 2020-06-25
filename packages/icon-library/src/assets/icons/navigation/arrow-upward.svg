@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <polygon id="arrow-upward-a" points="2.667 8 3.607 8.94 7.333 5.22 7.333 13.333 8.667 13.333 8.667 5.22 12.387 8.947 13.333 8 8 2.667"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="arrow-upward-b" fill="#fff">
-      <use xlink:href="#arrow-upward-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#arrow-upward-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Navigation/arrow-upward</title>
+    <defs>
+        <polygon id="path-1" points="2.66666663 8 3.60666664 8.94000001 7.33333333 5.21999998 7.33333333 13.3333334 8.66666667 13.3333334 8.66666667 5.21999998 12.3866667 8.94666667 13.3333334 8 8 2.66666663"></polygon>
+    </defs>
+    <g id="Icons/Navigation/arrow-upward" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Navigation/ic_arrow_upward_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

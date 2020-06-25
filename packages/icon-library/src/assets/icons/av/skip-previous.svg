@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="skip-previous-a" d="M3.99999997,3.99999997 L5.33333332,3.99999997 L5.33333332,12 L3.99999997,12 L3.99999997,3.99999997 Z M6.33333332,7.99999997 L12,12 L12,3.99999997 L6.33333332,7.99999997 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="skip-previous-b" fill="#fff">
-      <use xlink:href="#skip-previous-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#skip-previous-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/AV/skip-previous</title>
+    <defs>
+        <path d="M3.99999998,3.99999998 L5.33333332,3.99999998 L5.33333332,12 L3.99999998,12 L3.99999998,3.99999998 Z M6.33333332,7.99999997 L12,12 L12,3.99999998 L6.33333332,7.99999997 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/AV/skip-previous" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/AV/ic_skip_previous_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

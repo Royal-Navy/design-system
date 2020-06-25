@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="security-a" d="M7.99999996,0.666666621 L1.99999996,3.3333333 L1.99999996,7.33333333 C1.99999996,11.0333334 4.55999998,14.4933334 7.99999996,15.3333334 C11.44,14.4933334 14,11.0333334 14,7.33333333 L14,3.3333333 L7.99999996,0.666666621 Z M8,7.99333333 L12.6666667,7.99333333 C12.3133334,10.74 10.48,13.1866667 8,13.9533334 L8,8 L3.3333333,8 L3.3333333,4.19999998 L8,2.12666663 L8,7.99333333 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="security-b" fill="#fff">
-      <use xlink:href="#security-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#security-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Hardware/security</title>
+    <defs>
+        <path d="M7.99999996,0.666666621 L1.99999996,3.3333333 L1.99999996,7.33333333 C1.99999996,11.0333334 4.55999998,14.4933334 7.99999996,15.3333334 C11.44,14.4933334 14,11.0333334 14,7.33333333 L14,3.3333333 L7.99999996,0.666666621 Z M8,7.99333333 L12.6666667,7.99333333 C12.3133334,10.74 10.48,13.1866667 8,13.9533334 L8,8 L3.3333333,8 L3.3333333,4.19999998 L8,2.12666663 L8,7.99333333 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Hardware/security" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Hardware/ic_security_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

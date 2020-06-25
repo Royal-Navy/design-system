@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="cancel-a" d="M8,0.888888844 C4.07111109,0.888888844 0.888888844,4.07111109 0.888888844,8 C0.888888844,11.9288889 4.07111109,15.1111112 8,15.1111112 C11.9288889,15.1111112 15.1111112,11.9288889 15.1111112,8 C15.1111112,4.07111109 11.9288889,0.888888844 8,0.888888844 Z M11.5555556,10.5511111 L10.5511111,11.5555556 L8,9.00444445 L5.44888887,11.5555556 L4.44444442,10.5511111 L6.99555555,8 L4.44444442,5.44888887 L5.44888887,4.44444442 L8,6.99555555 L10.5511111,4.44444442 L11.5555556,5.44888887 L9.00444445,8 L11.5555556,10.5511111 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="cancel-b" fill="#fff">
-      <use xlink:href="#cancel-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#cancel-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Navigation/cancel</title>
+    <defs>
+        <path d="M8,0.888888844 C4.07111109,0.888888844 0.888888844,4.07111109 0.888888844,8 C0.888888844,11.9288889 4.07111109,15.1111112 8,15.1111112 C11.9288889,15.1111112 15.1111112,11.9288889 15.1111112,8 C15.1111112,4.07111109 11.9288889,0.888888844 8,0.888888844 Z M11.5555556,10.5511111 L10.5511111,11.5555556 L8,9.00444445 L5.44888887,11.5555556 L4.44444442,10.5511111 L6.99555555,8 L4.44444442,5.44888887 L5.44888887,4.44444442 L8,6.99555555 L10.5511111,4.44444442 L11.5555556,5.44888887 L9.00444445,8 L11.5555556,10.5511111 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Navigation/cancel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Navigation/ic_cancel_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <polygon id="close-a" points="12.916 4.027 11.973 3.084 8 7.058 4.027 3.084 3.084 4.027 7.058 8 3.084 11.973 4.027 12.916 8 8.942 11.973 12.916 12.916 11.973 8.942 8"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="close-b" fill="#fff">
-      <use xlink:href="#close-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#close-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Navigation/close</title>
+    <defs>
+        <polygon id="path-1" points="12.9155556 4.02666664 11.9733334 3.08444441 8 7.05777777 4.02666664 3.08444441 3.08444441 4.02666664 7.05777777 8 3.08444441 11.9733334 4.02666664 12.9155556 8 8.94222223 11.9733334 12.9155556 12.9155556 11.9733334 8.94222223 8"></polygon>
+    </defs>
+    <g id="Icons/Navigation/close" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Navigation/ic_close_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

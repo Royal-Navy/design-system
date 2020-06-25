@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <polygon id="trending-flat-a" points="14.667 8 12 5.333 12 7.333 2 7.333 2 8.667 12 8.667 12 10.667"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="trending-flat-b" fill="#fff">
-      <use xlink:href="#trending-flat-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#trending-flat-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/trending-flat</title>
+    <defs>
+        <polygon id="path-1" points="14.6666667 8 12 5.33333332 12 7.33333333 1.99999996 7.33333333 1.99999996 8.66666667 12 8.66666667 12 10.6666667"></polygon>
+    </defs>
+    <g id="Icons/Action/trending-flat" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_trending_flat_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

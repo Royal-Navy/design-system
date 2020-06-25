@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="details-a" d="M1.99999996,2.66666663 L7.99999996,13.3333334 L14,2.66666663 L1.99999996,2.66666663 Z M4.25333331,3.99999997 L11.7533333,3.99999997 L8,10.6666667 L4.25333331,3.99999997 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="details-b" fill="#fff">
-      <use xlink:href="#details-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#details-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Image/details</title>
+    <defs>
+        <path d="M1.99999996,2.66666663 L7.99999996,13.3333334 L14,2.66666663 L1.99999996,2.66666663 Z M4.25333331,3.99999998 L11.7533333,3.99999998 L8,10.6666667 L4.25333331,3.99999998 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Image/details" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Image/ic_details_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="view-headline-a" d="M2.66666663,10 L13.3333334,10 L13.3333334,8.66666667 L2.66666663,8.66666667 L2.66666663,10 Z M2.66666663,12.6666667 L13.3333334,12.6666667 L13.3333334,11.3333334 L2.66666663,11.3333334 L2.66666663,12.6666667 Z M2.66666663,7.33333333 L13.3333334,7.33333333 L13.3333334,5.99999999 L2.66666663,5.99999999 L2.66666663,7.33333333 Z M2.66666663,3.3333333 L2.66666663,4.66666665 L13.3333334,4.66666665 L13.3333334,3.3333333 L2.66666663,3.3333333 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="view-headline-b" fill="#fff">
-      <use xlink:href="#view-headline-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#view-headline-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/view-headline</title>
+    <defs>
+        <path d="M2.66666663,10 L13.3333334,10 L13.3333334,8.66666667 L2.66666663,8.66666667 L2.66666663,10 Z M2.66666663,12.6666667 L13.3333334,12.6666667 L13.3333334,11.3333334 L2.66666663,11.3333334 L2.66666663,12.6666667 Z M2.66666663,7.33333333 L13.3333334,7.33333333 L13.3333334,5.99999999 L2.66666663,5.99999999 L2.66666663,7.33333333 Z M2.66666663,3.3333333 L2.66666663,4.66666665 L13.3333334,4.66666665 L13.3333334,3.3333333 L2.66666663,3.3333333 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Action/view-headline" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_view_headline_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

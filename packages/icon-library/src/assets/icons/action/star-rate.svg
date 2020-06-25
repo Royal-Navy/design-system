@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <polygon id="star-rate-a" points="8 10.044 11.298 12.444 10.036 8.569 13.333 6.222 9.289 6.222 8 2.222 6.711 6.222 2.667 6.222 5.964 8.569 4.702 12.444"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="star-rate-b" fill="#fff">
-      <use xlink:href="#star-rate-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#star-rate-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/star-rate</title>
+    <defs>
+        <polygon id="path-1" points="8 10.0444445 11.2977778 12.4444445 10.0355556 8.56888889 13.3333334 6.22222221 9.2888889 6.22222221 8 2.22222219 6.7111111 6.22222221 2.66666663 6.22222221 5.96444443 8.56888889 4.7022222 12.4444445"></polygon>
+    </defs>
+    <g id="Icons/Action/star-rate" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_star_rate_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

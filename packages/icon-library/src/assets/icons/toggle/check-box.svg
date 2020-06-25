@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="check-box-a" d="M12.6666667,1.99999996 L3.3333333,1.99999996 C2.5933333,1.99999996 1.99999996,2.59999997 1.99999996,3.3333333 L1.99999996,12.6666667 C1.99999996,13.4 2.5933333,14 3.3333333,14 L12.6666667,14 C13.4066667,14 14,13.4 14,12.6666667 L14,3.3333333 C14,2.59999997 13.4066667,1.99999996 12.6666667,1.99999996 Z M6.66666666,11.3333334 L3.3333333,8 L4.27333331,7.05999999 L6.66666666,9.44666668 L11.7266667,4.38666664 L12.6666667,5.33333332 L6.66666666,11.3333334 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="check-box-b" fill="#fff">
-      <use xlink:href="#check-box-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#check-box-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Toggle/check-box</title>
+    <defs>
+        <path d="M12.6666667,1.99999996 L3.3333333,1.99999996 C2.5933333,1.99999996 1.99999996,2.59999997 1.99999996,3.3333333 L1.99999996,12.6666667 C1.99999996,13.4 2.5933333,14 3.3333333,14 L12.6666667,14 C13.4066667,14 14,13.4 14,12.6666667 L14,3.3333333 C14,2.59999997 13.4066667,1.99999996 12.6666667,1.99999996 Z M6.66666666,11.3333334 L3.3333333,8 L4.27333331,7.05999999 L6.66666666,9.44666668 L11.7266667,4.38666664 L12.6666667,5.33333332 L6.66666666,11.3333334 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Toggle/check-box" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Toggle/ic_check_box_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

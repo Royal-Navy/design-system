@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="label-a" d="M11.7533334,3.89333331 C11.5133334,3.55333331 11.1133334,3.3333333 10.6666667,3.3333333 L3.3333333,3.33999997 C2.59999997,3.33999997 1.99999996,3.93333331 1.99999996,4.66666665 L1.99999996,11.3333333 C1.99999996,12.0666667 2.59999997,12.66 3.3333333,12.66 L10.6666667,12.6666667 C11.1133334,12.6666667 11.5133334,12.4466667 11.7533334,12.1066667 L14.6666667,8 L11.7533334,3.89333331 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="label-b" fill="#fff">
-      <use xlink:href="#label-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#label-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/label</title>
+    <defs>
+        <path d="M11.7533334,3.89333331 C11.5133334,3.55333331 11.1133334,3.3333333 10.6666667,3.3333333 L3.3333333,3.33999997 C2.59999997,3.33999997 1.99999996,3.93333331 1.99999996,4.66666665 L1.99999996,11.3333333 C1.99999996,12.0666667 2.59999997,12.66 3.3333333,12.66 L10.6666667,12.6666667 C11.1133334,12.6666667 11.5133334,12.4466667 11.7533334,12.1066667 L14.6666667,8 L11.7533334,3.89333331 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Action/label" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_label_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="signal-wifi-statusbar-connected-no-internet-1-26x24px-a" d="M7.24630898,13.2102392 L4.51692306,9.81538463 C4.51777864,9.81472349 4.51868215,9.81402279 4.51963345,9.81328305 L0.25846149,4.50461536 C0.553846107,4.2830769 3.53230766,1.84615381 8,1.84615381 C12.4676923,1.84615381 15.4461539,4.2830769 15.7476924,4.50461536 L14.9169231,5.53846152 L12.3076923,5.53846152 L12.3076923,8.78769231 L8.00615385,14.1476923 L8,14.1538462 L7.99384615,14.1415385 L7.24630898,13.2102392 Z M13.5384616,14.1538462 L13.5384616,12.923077 L14.7692308,12.923077 L14.7692308,14.1538462 L13.5384616,14.1538462 Z M13.5384616,6.76923076 L14.7692308,6.76923076 L14.7692308,11.6923077 L13.5384616,11.6923077 L13.5384616,6.76923076 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="signal-wifi-statusbar-connected-no-internet-1-26x24px-b" fill="#fff">
-      <use xlink:href="#signal-wifi-statusbar-connected-no-internet-1-26x24px-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#signal-wifi-statusbar-connected-no-internet-1-26x24px-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Device/signal-wifi-statusbar-connected-no-internet-1-26x24px</title>
+    <defs>
+        <path d="M8,1.84615381 C12.4676923,1.84615381 15.4461539,4.2830769 15.7476924,4.50461536 L15.7476924,4.50461536 L14.9169231,5.53846152 L12.3076923,5.53846152 L12.3076923,8.78769231 L8.00615385,14.1476923 L8,14.1538462 L7.99384615,14.1415385 L7.31046149,13.2891538 L4.51692306,9.81538463 C4.51765884,9.81481606 4.51843007,9.81421824 4.51923666,9.81359148 L0.25846149,4.50461536 C0.553846107,4.2830769 3.53230766,1.84615381 8,1.84615381 Z M14.7692308,12.923077 L14.7692308,14.1538462 L13.5384616,14.1538462 L13.5384616,12.923077 L14.7692308,12.923077 Z M14.7692308,6.76923076 L14.7692308,11.6923077 L13.5384616,11.6923077 L13.5384616,6.76923076 L14.7692308,6.76923076 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Device/signal-wifi-statusbar-connected-no-internet-1-26x24px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

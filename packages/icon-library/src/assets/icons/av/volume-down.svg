@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="volume-down-a" d="M3.55555553,6.22222221 L3.55555553,9.77777779 L6.22222221,9.77777779 L9.77777779,13.3333334 L9.77777779,2.66666663 L6.22222221,6.22222221 L3.55555553,6.22222221 Z M11.5555556,5.33333332 L11.5555556,10.6666667 C12.5955556,10.2311111 13.3333334,9.20000001 13.3333334,8 C13.3333334,6.79999999 12.5955556,5.76888887 11.5555556,5.33333332 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="volume-down-b" fill="#fff">
-      <use xlink:href="#volume-down-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#volume-down-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/AV/volume-down</title>
+    <defs>
+        <path d="M3.55555553,6.22222221 L3.55555553,9.77777779 L6.22222221,9.77777779 L9.77777779,13.3333334 L9.77777779,2.66666663 L6.22222221,6.22222221 L3.55555553,6.22222221 Z M11.5555556,5.33333332 L11.5555556,10.6666667 C12.5955556,10.2311111 13.3333334,9.20000001 13.3333334,8 C13.3333334,6.79999999 12.5955556,5.76888887 11.5555556,5.33333332 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/AV/volume-down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/AV/ic_volume_down_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <polygon id="chevron-left-a" points="10.276 4.942 9.333 4 5.333 8 9.333 12 10.276 11.058 7.218 8"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="chevron-left-b" fill="#fff">
-      <use xlink:href="#chevron-left-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#chevron-left-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Navigation/chevron-left</title>
+    <defs>
+        <polygon id="path-1" points="10.2755556 4.9422222 9.33333334 3.99999998 5.33333332 8 9.33333334 12 10.2755556 11.0577778 7.21777777 8"></polygon>
+    </defs>
+    <g id="Icons/Navigation/chevron-left" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Navigation/ic_chevron_left_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

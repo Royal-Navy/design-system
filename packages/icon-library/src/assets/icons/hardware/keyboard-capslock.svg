@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="keyboard-capslock-a" d="M7.99999997,5.60666665 L11.06,8.66666667 L12,7.72666664 L7.99999997,3.72666664 L3.99999997,7.72666664 L4.93999998,8.66666667 L7.99999997,5.60666665 Z M3.99999997,12 L12,12 L12,10.6666667 L3.99999997,10.6666667 L3.99999997,12 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="keyboard-capslock-b" fill="#fff">
-      <use xlink:href="#keyboard-capslock-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#keyboard-capslock-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Hardware/keyboard-capslock</title>
+    <defs>
+        <path d="M7.99999997,5.60666665 L11.06,8.66666667 L12,7.72666664 L7.99999997,3.72666664 L3.99999998,7.72666664 L4.93999998,8.66666667 L7.99999997,5.60666665 Z M3.99999998,12 L12,12 L12,10.6666667 L3.99999998,10.6666667 L3.99999998,12 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Hardware/keyboard-capslock" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Hardware/ic_keyboard_capslock_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

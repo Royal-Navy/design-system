@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="fast-forward-a" d="M2.66666663,12 L8.33333334,7.99999997 L2.66666663,3.99999997 L2.66666663,12 Z M8.66666667,3.99999997 L8.66666667,12 L14.3333334,7.99999997 L8.66666667,3.99999997 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="fast-forward-b" fill="#fff">
-      <use xlink:href="#fast-forward-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#fast-forward-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/AV/fast-forward</title>
+    <defs>
+        <path d="M2.66666663,12 L8.33333334,7.99999997 L2.66666663,3.99999998 L2.66666663,12 Z M8.66666667,3.99999998 L8.66666667,12 L14.3333334,7.99999997 L8.66666667,3.99999998 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/AV/fast-forward" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/AV/ic_fast_forward_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>

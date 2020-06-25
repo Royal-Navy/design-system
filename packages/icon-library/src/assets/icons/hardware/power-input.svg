@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <path id="power-input-a" d="M1.33333329,5.99999999 L1.33333329,7.33333333 L14,7.33333333 L14,5.99999999 L1.33333329,5.99999999 Z M1.33333329,10 L4.66666665,10 L4.66666665,8.66666667 L1.33333329,8.66666667 L1.33333329,10 Z M5.99999999,10 L9.33333334,10 L9.33333334,8.66666667 L5.99999999,8.66666667 L5.99999999,10 Z M10.6666667,10 L14,10 L14,8.66666667 L10.6666667,8.66666667 L10.6666667,10 Z"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <mask id="power-input-b" fill="#fff">
-      <use xlink:href="#power-input-a"/>
-    </mask>
-    <g fill="CurrentColor" mask="url(#power-input-b)">
-      <rect width="16" height="16"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Hardware/power-input</title>
+    <defs>
+        <path d="M1.33333329,5.99999999 L1.33333329,7.33333333 L14,7.33333333 L14,5.99999999 L1.33333329,5.99999999 Z M1.33333329,10 L4.66666665,10 L4.66666665,8.66666667 L1.33333329,8.66666667 L1.33333329,10 Z M5.99999999,10 L9.33333334,10 L9.33333334,8.66666667 L5.99999999,8.66666667 L5.99999999,10 Z M10.6666667,10 L14,10 L14,8.66666667 L10.6666667,8.66666667 L10.6666667,10 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Hardware/power-input" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Hardware/ic_power_input_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
     </g>
-  </g>
 </svg>
