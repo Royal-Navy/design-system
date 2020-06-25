@@ -1,8 +1,8 @@
 @use "../abstracts/mixins" as m;
 @use "../abstracts/functions" as f;
 
-$-animation-timing: 0.2s;
-$btn-focus-width: 1px;
+$animation-timing: 0.2s;
+$checkbox-focus-width: 1px;
 
 .rn-checkbox {
   display: block;
@@ -51,8 +51,8 @@ $btn-focus-width: 1px;
 .rn-checkbox input:active ~ .rn-checkbox__checkmark {
   border: 1px solid f.color("action", "500");
   outline: none;
-  box-shadow: 0 0 0 $btn-focus-width f.color("action", "500");
-  transition: all $-animation-timing;
+  box-shadow: 0 0 0 $checkbox-focus-width f.color("action", "500");
+  transition: all $animation-timing;
 }
 
 /* Checked state, solid blue */
