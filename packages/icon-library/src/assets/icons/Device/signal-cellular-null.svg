@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Device/signal-cellular-null</title>
+    <defs>
+        <path d="M12.4444445,5.1822222 L12.4444445,12.4444445 L5.1822222,12.4444445 L12.4444445,5.1822222 L12.4444445,5.1822222 Z M14.2222223,0.888888844 L0.888888844,14.2222223 L14.2222223,14.2222223 L14.2222223,0.888888844 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Device/signal-cellular-null" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Device/ic_signal_cellular_null_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

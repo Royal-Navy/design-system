@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Editor/format-strikethrough</title>
+    <defs>
+        <path d="M7.11111111,13.3333334 L8.88888889,13.3333334 L8.88888889,9.77777779 L7.11111111,9.77777779 L7.11111111,13.3333334 Z M3.55555553,1.77777774 L3.55555553,3.55555553 L7.11111111,3.55555553 L7.11111111,6.22222221 L8.88888889,6.22222221 L8.88888889,3.55555553 L12.4444445,3.55555553 L12.4444445,1.77777774 L3.55555553,1.77777774 Z M2.66666663,8.88888889 L13.3333334,8.88888889 L13.3333334,7.11111111 L2.66666663,7.11111111 L2.66666663,8.88888889 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Editor/format-strikethrough" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Editor/ic_format_strikethrough_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Image/brightness-3</title>
+    <defs>
+        <path d="M5.99999998,1.33333329 C5.29999998,1.33333329 4.63333331,1.43999996 3.99999998,1.63999996 C6.70666666,2.48666663 8.66666667,5.01333331 8.66666667,8 C8.66666667,10.9866667 6.70666666,13.5133334 3.99999998,14.36 C4.63333331,14.56 5.29999998,14.6666667 5.99999998,14.6666667 C9.68000001,14.6666667 12.6666667,11.68 12.6666667,8 C12.6666667,4.31999998 9.68000001,1.33333329 5.99999998,1.33333329 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Image/brightness-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Image/ic_brightness_3_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

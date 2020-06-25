@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Editor/mode-edit</title>
+    <defs>
+        <path d="M1.77777774,11.4488889 L1.77777774,14.2222223 L4.55111109,14.2222223 L12.4444445,6.32888888 L9.67111112,3.55555553 L1.77777774,11.4488889 Z M14.8977778,3.88444442 C15.1911112,3.59111108 15.1911112,3.12888886 14.8977778,2.83555552 L13.1644445,1.10222218 C12.8711111,0.808888844 12.4088889,0.808888844 12.1155556,1.10222218 L10.6666667,2.55999997 L13.44,5.33333332 L14.8977778,3.88444442 L14.8977778,3.88444442 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Editor/mode-edit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Editor/ic_mode_edit_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

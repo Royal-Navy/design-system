@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Hardware/laptop-chromebook</title>
+    <defs>
+        <path d="M14.6666667,12 L14.6666667,1.99999996 L1.33333329,1.99999996 L1.33333329,12 L-5.00000006e-08,12 L-5.00000006e-08,13.3333334 L15.9999999,13.3333334 L15.9999999,12 L14.6666667,12 Z M9.33333334,12 L6.66666666,12 L6.66666666,11.3333334 L9.33333334,11.3333334 L9.33333334,12 Z M13.3333334,10 L2.66666663,10 L2.66666663,3.3333333 L13.3333334,3.3333333 L13.3333334,10 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Hardware/laptop-chromebook" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Hardware/ic_laptop_chromebook_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

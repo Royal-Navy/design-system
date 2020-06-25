@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/settings-ethernet</title>
+    <defs>
+        <path d="M5.17999998,4.50666664 L4.15333331,3.65333331 L0.54666662,8 L4.15333331,12.3466667 L5.17999998,11.4933334 L2.27999996,8 L5.17999998,4.50666664 Z M4.66666665,8.66666667 L5.99999999,8.66666667 L5.99999999,7.33333333 L4.66666665,7.33333333 L4.66666665,8.66666667 Z M11.3333334,7.33333333 L10,7.33333333 L10,8.66666667 L11.3333334,8.66666667 L11.3333334,7.33333333 Z M7.33333333,8.66666667 L8.66666667,8.66666667 L8.66666667,7.33333333 L7.33333333,7.33333333 L7.33333333,8.66666667 Z M11.8466667,3.65333331 L10.82,4.50666664 L13.72,8 L10.82,11.4933334 L11.8466667,12.3466667 L15.4533334,8 L11.8466667,3.65333331 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Action/settings-ethernet" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_settings_ethernet_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

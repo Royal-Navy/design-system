@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Navigation/arrow-back</title>
+    <defs>
+        <polygon id="path-1" points="13.3333334 7.33333333 5.21777776 7.33333333 8.94222223 3.60888886 8 2.66666663 2.66666663 8 8 13.3333334 8.94222223 12.3911111 5.21777776 8.66666667 13.3333334 8.66666667"></polygon>
+    </defs>
+    <g id="Icons/Navigation/arrow-back" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Navigation/ic_arrow_back_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

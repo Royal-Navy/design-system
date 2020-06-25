@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/flight-land</title>
+    <defs>
+        <path d="M1.66666663,12.6666667 L14.3333334,12.6666667 L14.3333334,14 L1.66666663,14 L1.66666663,12.6666667 Z M6.45333332,8.84666667 L9.35333334,9.62000001 L12.8933334,10.5666667 C13.4266667,10.7066667 13.9733334,10.3933333 14.12,9.86000001 C14.26,9.32666667 13.9466667,8.78 13.4133334,8.63333334 L9.87333335,7.68666666 L8.03333333,1.67333329 L6.74666666,1.33333329 L6.74666666,6.85333333 L3.4333333,5.96666665 L2.8133333,4.41999998 L1.84666663,4.15999998 L1.84666663,7.60666666 L2.9133333,7.89333333 L6.45333332,8.84666667 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Action/flight-land" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_flight_land_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

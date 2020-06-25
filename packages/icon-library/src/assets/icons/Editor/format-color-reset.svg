@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Editor/format-color-reset</title>
+    <defs>
+        <path d="M12.4444445,9.77777774 C12.4444445,6.81777777 8,1.77777774 8,1.77777774 C8,1.77777774 7.24444444,2.63999997 6.35555555,3.84888886 L12.4266667,9.92000001 L12.4444445,9.77777774 Z M3.15555553,2.90666663 L2.01777774,4.04444442 L4.58666665,6.61333332 C3.99111109,7.72444444 3.55555553,8.85333334 3.55555553,9.77777779 C3.55555553,12.2311111 5.54666665,14.2222223 8,14.2222223 C9.16444445,14.2222223 10.2133333,13.76 11.0133334,13.0311111 L13.0933334,15.1111112 L14.2222223,13.9822223 L3.15555553,2.90666663 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Editor/format-color-reset" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Editor/ic_format_color_reset_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

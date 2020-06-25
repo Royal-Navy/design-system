@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Alert/error</title>
+    <defs>
+        <path d="M8,0.915555511 C4.07111109,0.915555511 0.888888844,4.09777775 0.888888844,8.02666667 C0.888888844,11.9555556 4.07111109,15.1377778 8,15.1377778 C11.9288889,15.1377778 15.1111112,11.9555556 15.1111112,8.02666667 C15.1111112,4.09777775 11.9288889,0.915555511 8,0.915555511 Z M8.88888889,11.5555556 L7.11111111,11.5555556 L7.11111111,9.77777779 L8.88888889,9.77777779 L8.88888889,11.5555556 Z M8.88888889,8.88888889 L7.11111111,8.88888889 L7.11111111,4.44444442 L8.88888889,4.44444442 L8.88888889,8.88888889 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Alert/error" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Alert/ic_error_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Editor/format-list-bulleted</title>
+    <defs>
+        <path d="M6.22222221,8.88888889 L14.2222222,8.88888889 L14.2222222,7.11111111 L6.22222221,7.11111111 L6.22222221,8.88888889 Z M6.22222221,2.66666663 L6.22222221,4.44444442 L14.2222222,4.44444442 L14.2222222,2.66666663 L6.22222221,2.66666663 Z M6.22222221,13.3333334 L14.2222222,13.3333334 L14.2222222,11.5555556 L6.22222221,11.5555556 L6.22222221,13.3333334 Z M2.66666663,8.88888889 L4.44444442,8.88888889 L4.44444442,7.11111111 L2.66666663,7.11111111 L2.66666663,8.88888889 Z M2.66666663,2.66666663 L2.66666663,4.44444442 L4.44444442,4.44444442 L4.44444442,2.66666663 L2.66666663,2.66666663 Z M2.66666663,13.3333334 L4.44444442,13.3333334 L4.44444442,11.5555556 L2.66666663,11.5555556 L2.66666663,13.3333334 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Editor/format-list-bulleted" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Editor/ic_format_list_bulleted_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

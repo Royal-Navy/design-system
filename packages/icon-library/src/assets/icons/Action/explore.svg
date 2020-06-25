@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/explore</title>
+    <defs>
+        <path d="M8,7.26666666 C7.59333333,7.26666666 7.26666666,7.59333333 7.26666666,8 C7.26666666,8.40666667 7.59333333,8.73333334 8,8.73333334 C8.40666667,8.73333334 8.73333334,8.40666667 8.73333334,8 C8.73333334,7.59333333 8.40666667,7.26666666 8,7.26666666 Z M8,1.33333329 C4.31999998,1.33333329 1.33333329,4.31999998 1.33333329,8 C1.33333329,11.68 4.31999998,14.6666667 8,14.6666667 C11.68,14.6666667 14.6666667,11.68 14.6666667,8 C14.6666667,4.31999998 11.68,1.33333329 8,1.33333329 Z M9.46000001,9.46000001 L3.99999998,12 L6.53999999,6.53999999 L12,3.99999998 L9.46000001,9.46000001 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Action/explore" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_explore_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

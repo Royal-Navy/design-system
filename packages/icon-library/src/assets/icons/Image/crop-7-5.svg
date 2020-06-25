@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Image/crop-7-5</title>
+    <defs>
+        <path d="M12.6666667,4.66666665 L3.3333333,4.66666665 C2.59999997,4.66666665 1.99999996,5.26666665 1.99999996,5.99999999 L1.99999996,10 C1.99999996,10.7333334 2.59999997,11.3333334 3.3333333,11.3333334 L12.6666667,11.3333334 C13.4,11.3333334 14,10.7333334 14,10 L14,5.99999999 C14,5.26666665 13.4,4.66666665 12.6666667,4.66666665 Z M12.6666667,9.99999999 L3.3333333,9.99999999 L3.3333333,5.99999999 L12.6666667,5.99999999 L12.6666667,9.99999999 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Image/crop-7-5" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Image/ic_crop_7_5_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

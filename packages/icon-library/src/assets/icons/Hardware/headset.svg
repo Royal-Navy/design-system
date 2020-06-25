@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Hardware/headset</title>
+    <defs>
+        <path d="M7.99999996,0.666666621 C4.68666665,0.666666621 1.99999996,3.3533333 1.99999996,6.66666662 L1.99999996,11.3333334 C1.99999996,12.44 2.8933333,13.3333334 3.99999996,13.3333334 L5.99999996,13.3333334 L5.99999996,8 L3.3333333,8 L3.3333333,6.66666662 C3.3333333,4.08666664 5.41999998,1.99999996 7.99999996,1.99999996 C10.58,1.99999996 12.6666667,4.08666664 12.6666667,6.66666662 L12.6666667,8 L9.99999996,8 L9.99999996,13.3333334 L12,13.3333334 C13.1066667,13.3333334 14,12.44 14,11.3333334 L14,6.66666662 C14,3.3533333 11.3133334,0.666666621 7.99999996,0.666666621 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Hardware/headset" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Hardware/ic_headset_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

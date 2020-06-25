@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Editor/format-italic</title>
+    <defs>
+        <polygon id="path-1" points="6.22222221 1.77777774 6.22222221 3.55555553 8.51555556 3.55555553 5.26222221 10.6666667 2.66666663 10.6666667 2.66666663 12.4444445 9.77777779 12.4444445 9.77777779 10.6666667 7.48444444 10.6666667 10.7377778 3.55555553 13.3333334 3.55555553 13.3333334 1.77777774"></polygon>
+    </defs>
+    <g id="Icons/Editor/format-italic" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Editor/ic_format_italic_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

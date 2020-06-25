@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Device/brightness-auto</title>
+    <defs>
+        <path d="M7.23333333,8.43333334 L8.76666667,8.43333334 L8,5.99999999 L7.23333333,8.43333334 Z M13.3333334,5.79333332 L13.3333334,2.66666663 L10.2066667,2.66666663 L8,0.459999953 L5.79333332,2.66666663 L2.66666663,2.66666663 L2.66666663,5.79333332 L0.459999953,8 L2.66666663,10.2066667 L2.66666663,13.3333334 L5.79333332,13.3333334 L8,15.54 L10.2066667,13.3333334 L13.3333334,13.3333334 L13.3333334,10.2066667 L15.54,8 L13.3333334,5.79333332 Z M9.53333334,10.6666666 L9.06666667,9.33333334 L6.93333333,9.33333334 L6.46666666,10.6666666 L5.19999998,10.6666666 L7.33333333,4.66666665 L8.66666667,4.66666665 L10.8,10.6666666 L9.53333334,10.6666666 L9.53333334,10.6666666 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Device/brightness-auto" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Device/ic_brightness_auto_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Editor/insert-drive-file</title>
+    <defs>
+        <path d="M3.55555553,0.888888844 C3.06666664,0.888888844 2.67555552,1.28888885 2.67555552,1.77777774 L2.66666663,14.2222223 C2.66666663,14.7111112 3.05777775,15.1111112 3.55555553,15.1111112 L12.4444445,15.1111112 C12.9333334,15.1111112 13.3333334,14.7111112 13.3333334,14.2222223 L13.3333334,5.33333332 L8.88888889,0.888888844 L3.55555553,0.888888844 Z M8.88888889,5.33333332 L8.88888889,1.77777774 L12.4444445,5.33333332 L8.88888889,5.33333332 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Editor/insert-drive-file" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Editor/ic_insert_drive_file_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

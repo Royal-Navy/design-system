@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Content/reply</title>
+    <defs>
+        <path d="M6.66666666,5.99999999 L6.66666666,3.3333333 L1.99999996,8 L6.66666666,12.6666667 L6.66666666,9.93333335 C9.99999996,9.93333335 12.3333334,11 14,13.3333333 C13.3333334,10 11.3333334,6.66666666 6.66666666,5.99999999 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Content/reply" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Content/ic_reply_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

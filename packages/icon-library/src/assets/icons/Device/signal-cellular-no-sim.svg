@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Device/signal-cellular-no-sim</title>
+    <defs>
+        <path d="M12.66,3.3333333 C12.66,2.59999997 12.0666667,1.99999996 11.3333334,1.99999996 L6.66666666,1.99999996 L5.10666665,3.55999997 L12.6666667,11.12 L12.66,3.3333333 Z M2.4333333,2.58666663 L1.58666663,3.4333333 L3.3333333,5.17999998 L3.3333333,12.6666667 C3.3333333,13.4 3.93333331,14 4.66666665,14 L11.34,14 C11.5733334,14 11.7866667,13.9333334 11.98,13.8266667 L13.2333334,15.08 L14.08,14.2333334 L2.4333333,2.58666663 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Device/signal-cellular-no-sim" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Device/ic_signal_cellular_no_sim_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

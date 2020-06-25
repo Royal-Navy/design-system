@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Social/person</title>
+    <defs>
+        <path d="M8,7.11111111 C9.47555556,7.11111111 10.6577778,5.91999999 10.6577778,4.44444442 C10.6577778,2.96888886 9.47555556,1.77777774 8,1.77777774 C6.52444444,1.77777774 5.33333332,2.96888886 5.33333332,4.44444442 C5.33333332,5.91999999 6.52444444,7.11111111 8,7.11111111 Z M8,8.88888889 C5.92888888,8.88888889 1.77777774,9.9288889 1.77777774,12 L1.77777774,14.2222223 L14.2222223,14.2222223 L14.2222223,12 C14.2222223,9.9288889 10.0711111,8.88888889 8,8.88888889 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Social/person" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Social/ic_person_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

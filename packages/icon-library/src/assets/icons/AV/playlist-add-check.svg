@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/AV/playlist-add-check</title>
+    <defs>
+        <path d="M9.33333329,6.66666666 L1.33333329,6.66666666 L1.33333329,8 L9.33333329,8 L9.33333329,6.66666666 Z M9.33333329,3.99999997 L1.33333329,3.99999997 L1.33333329,5.33333332 L9.33333329,5.33333332 L9.33333329,3.99999997 Z M1.33333329,10.6666667 L6.66666666,10.6666667 L6.66666666,9.33333334 L1.33333329,9.33333334 L1.33333329,10.6666667 Z M14.3333334,7.66666666 L15.3333334,8.66666666 L10.6733334,13.3333334 L7.66666666,10.3333333 L8.66666666,9.33333334 L10.6733334,11.3333334 L14.3333334,7.66666666 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/AV/playlist-add-check" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/AV/ic_playlist_add_check_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

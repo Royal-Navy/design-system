@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/polymer</title>
+    <defs>
+        <polygon id="path-1" points="12.6666667 2.66666663 10 2.66666663 4.73999998 11.0866667 2.99999997 8 5.99999999 2.66666663 3.3333333 2.66666663 0.333333285 8 3.3333333 13.3333334 5.99999999 13.3333334 11.26 4.91333331 13 8 10 13.3333334 12.6666667 13.3333334 15.6666667 8"></polygon>
+    </defs>
+    <g id="Icons/Action/polymer" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_polymer_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

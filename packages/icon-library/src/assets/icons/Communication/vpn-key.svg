@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Communication/vpn-key</title>
+    <defs>
+        <path d="M8.43333334,6.66666666 C7.88666667,5.11333332 6.40666666,3.99999998 4.66666662,3.99999998 C2.45999997,3.99999998 0.666666621,5.79333332 0.666666621,7.99999997 C0.666666621,10.2066667 2.45999997,12 4.66666662,12 C6.40666666,12 7.88666667,10.8866667 8.43333334,9.33333334 L11.3333334,9.33333334 L11.3333334,12 L14,12 L14,9.33333334 L15.3333334,9.33333334 L15.3333334,6.66666666 L8.43333334,6.66666666 Z M4.66666665,9.33333334 C3.93333331,9.33333334 3.3333333,8.73333334 3.3333333,8 C3.3333333,7.26666666 3.93333331,6.66666666 4.66666665,6.66666666 C5.39999998,6.66666666 5.99999999,7.26666666 5.99999999,8 C5.99999999,8.73333334 5.39999998,9.33333334 4.66666665,9.33333334 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Communication/vpn-key" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Communication/ic_vpn_key_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

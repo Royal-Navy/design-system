@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Editor/border-color</title>
+    <defs>
+        <path d="M15.5789474,13.4736842 L15.5789474,16.0000001 L0.421052584,16.0000001 L0.421052584,13.4736842 L15.5789474,13.4736842 Z M9.2631579,3.04842102 L11.6884211,5.47368419 L5.37263156,11.7894737 L2.94736839,11.7894737 L2.94736839,9.36421053 L9.2631579,3.04842102 Z M11.3431579,0.959999956 C11.511579,0.791578902 11.7726316,0.791578902 11.9410527,0.959999956 L11.9410527,0.959999956 L13.7684211,2.78736839 C13.9368421,2.95578944 13.9368421,3.21684208 13.7684211,3.38526313 L13.7684211,3.38526313 L12.631579,4.53052629 L10.2063158,2.10526312 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Editor/border-color" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

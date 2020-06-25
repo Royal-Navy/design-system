@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Notification/priority-high-12px</title>
+    <defs>
+        <path d="M8,12 C8.73637967,12 9.33333334,12.5969537 9.33333334,13.3333334 C9.33333334,14.069713 8.73637967,14.6666667 8,14.6666667 C7.26362033,14.6666667 6.66666666,14.069713 6.66666666,13.3333334 C6.66666666,12.5969537 7.26362033,12 8,12 Z M9.33333334,2.66666663 L9.33333334,10.6666666 L6.66666666,10.6666666 L6.66666666,2.66666663 L9.33333334,2.66666663 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Notification/priority-high-12px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

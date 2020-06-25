@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Places/fitness-center</title>
+    <defs>
+        <polygon id="path-1" points="13.7133334 9.90666668 14.6666667 8.95333334 13.7133334 8 11.3333334 10.38 5.61999999 4.66666665 8 2.28666663 7.04666666 1.33333329 6.09333332 2.28666663 5.13999998 1.33333329 3.71333331 2.75999997 2.75999997 1.80666663 1.80666663 2.75999997 2.75999997 3.71333331 1.33333329 5.13999998 2.28666663 6.09333332 1.33333329 7.04666666 2.28666663 8 4.66666665 5.61999999 10.38 11.3333334 8 13.7133334 8.95333334 14.6666667 9.90666668 13.7133334 10.86 14.6666667 12.2866667 13.24 13.24 14.1933334 14.1933334 13.24 13.24 12.2866667 14.6666667 10.86"></polygon>
+    </defs>
+    <g id="Icons/Places/fitness-center" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Places/ic_fitness_center_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Action/view-column</title>
+    <defs>
+        <path d="M6.66666666,12 L10,12 L10,3.3333333 L6.66666666,3.3333333 L6.66666666,12 Z M2.66666663,12 L5.99999999,12 L5.99999999,3.3333333 L2.66666663,3.3333333 L2.66666663,12 Z M10.6666667,3.3333333 L10.6666667,12 L14,12 L14,3.3333333 L10.6666667,3.3333333 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Action/view-column" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Action/ic_view_column_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Hardware/keyboard-return</title>
+    <defs>
+        <polygon id="path-1" points="12.6666667 4.66666665 12.6666667 7.33333333 3.88666664 7.33333333 6.27333332 4.93999998 5.33333332 3.99999998 1.33333329 8 5.33333332 12 6.27333332 11.06 3.88666664 8.66666667 14 8.66666667 14 4.66666665"></polygon>
+    </defs>
+    <g id="Icons/Hardware/keyboard-return" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Hardware/ic_keyboard_return_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

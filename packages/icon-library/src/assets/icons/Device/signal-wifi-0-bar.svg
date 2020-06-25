@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Device/signal-wifi-0-bar</title>
+    <defs>
+        <path d="M8.00888889,14.2133334 L15.8311112,4.47111109 C15.5288889,4.23999998 12.5155556,1.77777774 8,1.77777774 C3.48444442,1.77777774 0.471111064,4.23999998 0.16888884,4.47111109 L7.99111111,14.2133334 L8.00888889,14.2133334 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Device/signal-wifi-0-bar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Device/ic_signal_wifi_0_bar_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>

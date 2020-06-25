@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/Editor/format-quote</title>
+    <defs>
+        <path d="M8.88888889,4.44444442 L8.88888889,8.88888889 L11.3333334,8.88888889 L9.77777779,11.5555556 L11.7777778,11.5555556 L13.3333334,8.88888889 L13.3333334,4.44444442 L8.88888889,4.44444442 Z M2.66666663,8.88888889 L5.11111109,8.88888889 L3.55555553,11.5555556 L5.55555554,11.5555556 L7.11111111,8.88888889 L7.11111111,4.44444442 L2.66666663,4.44444442 L2.66666663,8.88888889 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Editor/format-quote" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Icons/Editor/ic_format_quote_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>
