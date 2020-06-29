@@ -14,6 +14,7 @@ import { Searchbar } from '../Searchbar'
 import { useMastheadSearch } from './useMastheadSearch'
 
 export interface MastheadProps {
+  hasDefaultLogo?: boolean
   hasUnreadNotification?: boolean
   homeLink?: React.ReactElement<LinkTypes>
   Logo?: React.ComponentType
@@ -36,20 +37,23 @@ function getServiceName(
     ...link.props,
     children: (
       <>
-        <Logo />
+        {Logo && <Logo />}
         <span className="rn-masthead__title" data-testid="masthead-servicename">
           {title}
         </span>
       </>
     ),
-    className: 'rn-masthead__service-name',
+    className: classNames('rn-masthead__service-name', {
+      'rn-masthead__service--has-logo': Logo,
+    }),
   })
 }
 
 export const Masthead: React.FC<MastheadProps> = ({
+  hasDefaultLogo = true,
   hasUnreadNotification,
   homeLink,
-  Logo = DefaultLogo,
+  Logo,
   nav,
   notifications,
   onSearch,
@@ -67,6 +71,8 @@ export const Masthead: React.FC<MastheadProps> = ({
     showSearch,
     toggleSearch,
   } = useMastheadSearch()
+
+  const DisplayLogo = Logo ?? (hasDefaultLogo ? DefaultLogo : null)
 
   const classes = classNames('rn-masthead', {
     'rn-masthead--show-search': showSearch,
@@ -90,7 +96,7 @@ export const Masthead: React.FC<MastheadProps> = ({
   return (
     <div className={classes} data-testid="masthead" ref={mastheadContainerRef}>
       <div className="rn-masthead__main">
-        {getServiceName(homeLink, Logo, title)}
+        {getServiceName(homeLink, DisplayLogo, title)}
 
         <div className="rn-masthead__options">
           {onSearch && (

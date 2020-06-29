@@ -87,6 +87,28 @@ stories.add('Without search', () => <Masthead title="Test" />)
 
 stories.add('Custom logo', () => <Masthead title="Test" Logo={CustomLogo} />)
 
+stories.add('Without logo', () => (
+  <Masthead title="Test" hasDefaultLogo={false} />
+))
+
+stories.add('Without logo, with navigation', () => (
+  <Masthead
+    title="Test"
+    hasDefaultLogo={false}
+    nav={(
+      <MastheadNav>
+        <MastheadNavItem
+          link={<Link href="/home">Get started</Link>}
+          isActive
+        />
+        <MastheadNavItem link={<Link href="/styles">Styles</Link>} />
+        <MastheadNavItem link={<Link href="/components">Components</Link>} />
+        <MastheadNavItem link={<Link href="/about">About</Link>} />
+      </MastheadNav>
+    )}
+  />
+))
+
 stories.add('all but navigation', () => (
   <Masthead
     homeLink={<Link href="/" />}

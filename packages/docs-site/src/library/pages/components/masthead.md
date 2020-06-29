@@ -130,6 +130,13 @@ Aside from the active page links (an example of these states is shown in the [Ta
 ### Properties
 <DataTable caption="MastHead" data={[
   {
+    Name: 'hasDefaultLogo',
+    Type: 'boolean',
+    Required: 'False',
+    Default: 'True',
+    Description: 'If `true`, a default logo is used when `Logo` is not passed. If `false`, no logo is displayed when `Logo` is not passed.',
+  },
+  {
     Name: 'hasUnreadNotification',
     Type: 'boolean',
     Required: 'False',
@@ -140,48 +147,56 @@ Aside from the active page links (an example of these states is shown in the [Ta
     Name: 'homeLink',
     Type: 'React.ReactElement<LinkTypes>',
     Required: 'False',
+    Default: '',
     Description: 'A `Link` which will contain the `href` for sending the user back to home.',
   },
   {
     Name: 'Logo',
     Type: 'React. ComponentType',
     Required: 'False',
-    Description: 'A 21x19 logo or if none is provided a default is used.',
+    Default: '',
+    Description: 'A 21x19 logo. If no value is passed, the behaviour depends on the value of `hasDefaultLogo`.',
   },
   {
     Name: 'nav',
     Type: 'React.ReactElement<ScrollableNavProps>',
     Required: 'False',
+    Default: '',
     Description: 'Navigation for the MastHead.',
   },
   {
     Name: 'notifications',
     Type: 'React.ReactElement<NotificationsProps>',
     Required: 'False',
+    Default: '',
     Description: 'This property contains the content for the Notifications Popover. These are recent notifications, including read status, and a link to read them.',
   },
   {
     Name: 'onSearch',
     Type: '(term: string) => void',
     Required: 'False',
+    Default: '',
     Description: 'If a search function is provided the searchbox is shown and the function called on submission.',
   },
   {
     Name: 'searchPlaceholder',
     Type: 'String',
     Required: 'False',
+    Default: '',
     Description: 'Provide a placeholder attribute for the search text input if desired.',
   },
   {
     Name: 'title',
     Type: 'String',
     Required: 'True',
+    Default: '',
     Description: 'A service name that will be displayed next to the logo',
   },
   {
     Name: 'user',
     Type: 'React.ReactElement<MastheadUserProps>',
     Required: 'False',
+    Default: '',
     Description: 'If your application has a User Profile page, specify a `MastheadUser` to add their initials to the Avatar sub-component. This Avatar provides a link to the User’s profile.',
   },
 ]} />

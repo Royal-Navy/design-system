@@ -34,7 +34,7 @@ $masthead-main-height: 58px;
     box-shadow: 0 0 0 0.2rem rgba(f.color("action", "700") , 0.5);
   }
 
-  .rn-masthead__title {
+  &.rn-masthead__service--has-logo .rn-masthead__title {
     margin-left: f.spacing("4");
   }
 }
