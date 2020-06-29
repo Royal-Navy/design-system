@@ -10,10 +10,12 @@ import FormProps from '../../types/FormProps'
 describe('Checkbox', () => {
   let field: FieldProps
   let form: FormProps
-  let label = ''
+  let label: string
   let checkbox: RenderResult
 
   beforeEach(() => {
+    label = ''
+
     field = {
       name: 'example1',
       value: 'false',
@@ -27,106 +29,93 @@ describe('Checkbox', () => {
     }
   })
 
-  describe('when a field has no errors', () => {
+  describe('when a field has no errors, a label and a value', () => {
     beforeEach(() => {
-      form.errors = {}
+      label = 'My Label 1'
+      field.value = 'false'
+
+      checkbox = render(
+        <Checkbox
+          name={field.name}
+          value={field.value}
+          label={label}
+          onChange={field.onChange}
+        />
+      )
     })
 
-    describe('and the field has a label', () => {
-      beforeEach(() => {
-        label = 'My Label 1'
-      })
+    it('should render a field with a label', () => {
+      expect(checkbox.getByTestId('label')).toHaveTextContent('My Label 1')
+    })
 
-      describe('and the field has a value', () => {
-        beforeEach(() => {
-          field.value = 'false'
-
-          checkbox = render(
-            <Checkbox
-              name={field.name}
-              value={field.value}
-              label={label}
-              onChange={field.onChange}
-            />
-          )
-        })
-
-        it('should render a field with a label', () => {
-          expect(checkbox.getByTestId('label')).toHaveTextContent('My Label 1')
-        })
-
-        it('should populate the field value', () => {
-          expect(checkbox.queryByTestId('checkbox')).toHaveAttribute(
-            'value',
-            'false'
-          )
-        })
-      })
+    it('should populate the field value', () => {
+      expect(checkbox.queryByTestId('checkbox')).toHaveAttribute(
+        'value',
+        'false'
+      )
     })
   })
 
-  describe('when a field has an error', () => {
+  describe('when a field has an error and the form has not been touched', () => {
     beforeEach(() => {
       form.errors = {
         example1: 'Something bad',
       }
+
+      form.touched = {}
+
+      const FormikCheckbox = withFormik(Checkbox)
+
+      checkbox = render(<FormikCheckbox field={field} form={form} />)
     })
 
-    describe('and the form has not been touched', () => {
-      beforeEach(() => {
-        form.touched = {}
-
-        const FormikCheckbox = withFormik(Checkbox)
-
-        checkbox = render(<FormikCheckbox field={field} form={form} />)
-      })
-
-      it('should not add the aria attributes', () => {
-        expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute(
-          'aria-invalid'
-        )
-        expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute(
-          'aria-describedBy'
-        )
-      })
-
-      it('should not indicate the field has an error', () => {
-        expect(checkbox.queryByTestId('container')).not.toHaveClass(
-          'is-invalid'
-        )
-      })
-
-      it('should not show the error', () => {
-        expect(checkbox.queryAllByText('Something bad')).toHaveLength(0)
-      })
+    it('should not add the aria attributes', () => {
+      expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute(
+        'aria-invalid'
+      )
+      expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute(
+        'aria-describedBy'
+      )
     })
 
-    describe('and the form has been touched', () => {
-      beforeEach(() => {
-        form.touched.example1 = true
+    it('should not indicate the field has an error', () => {
+      expect(checkbox.queryByTestId('container')).not.toHaveClass('is-invalid')
+    })
 
-        const FormikCheckbox = withFormik(Checkbox)
+    it('should not show the error', () => {
+      expect(checkbox.queryAllByText('Something bad')).toHaveLength(0)
+    })
+  })
 
-        checkbox = render(<FormikCheckbox field={field} form={form} />)
-      })
+  describe('when a field has na error and the form has been touched', () => {
+    beforeEach(() => {
+      form.errors = {
+        example1: 'Something bad',
+      }
 
-      it('should add the aria attributes', () => {
-        expect(checkbox.getByTestId('checkbox')).toHaveAttribute(
-          'aria-invalid',
-          'true'
-        )
-        expect(checkbox.getByTestId('checkbox')).toHaveAttribute(
-          'aria-describedby'
-        )
-      })
+      form.touched.example1 = true
 
-      it('should indicate the field has an error', () => {
-        expect(checkbox.queryByTestId('container')).toHaveClass('is-invalid')
-      })
+      const FormikCheckbox = withFormik(Checkbox)
 
-      it('should show the error', () => {
-        expect(checkbox.getByText('Something bad')).toBeInTheDocument()
-      })
+      checkbox = render(<FormikCheckbox field={field} form={form} />)
+    })
+
+    it('should add the aria attributes', () => {
+      expect(checkbox.getByTestId('checkbox')).toHaveAttribute(
+        'aria-invalid',
+        'true'
+      )
+      expect(checkbox.getByTestId('checkbox')).toHaveAttribute(
+        'aria-describedby'
+      )
+    })
+
+    it('should indicate the field has an error', () => {
+      expect(checkbox.queryByTestId('container')).toHaveClass('is-invalid')
+    })
+
+    it('should show the error', () => {
+      expect(checkbox.getByText('Something bad')).toBeInTheDocument()
     })
   })
 
