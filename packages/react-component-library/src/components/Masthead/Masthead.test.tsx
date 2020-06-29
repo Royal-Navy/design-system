@@ -18,7 +18,7 @@ describe('Masthead', () => {
   let wrapper: RenderResult
   let props: MastheadProps
 
-  describe('When the title it provided', () => {
+  describe('When the title is provided', () => {
     beforeEach(() => {
       props = {
         title: 'Test masthead',
@@ -59,6 +59,18 @@ describe('Masthead', () => {
 
       it('should not render a user link', () => {
         expect(wrapper.queryByTestId('userlink')).toBeNull()
+      })
+    })
+
+    describe('and hasDefaultLogo is false', () => {
+      beforeEach(() => {
+        props.hasDefaultLogo = false
+
+        wrapper = render(<Masthead {...props} />)
+      })
+
+      it("doesn't render a logo", () => {
+        expect(wrapper.queryByTestId('logo')).toBeNull()
       })
     })
 
