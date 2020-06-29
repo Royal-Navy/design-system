@@ -10,10 +10,12 @@ import { Radio } from '.'
 describe('Radio', () => {
   let field: FieldProps
   let form: FormProps
-  let label = ''
+  let label: string
   let radio: RenderResult
 
   beforeEach(() => {
+    label = ''
+
     field = {
       name: 'colour',
       value: '',
@@ -27,97 +29,81 @@ describe('Radio', () => {
     }
   })
 
-  describe('when a field has no errors', () => {
+  describe('when the field has no errors, a label and a value', () => {
     beforeEach(() => {
-      form.errors = {}
+      label = 'My Label 1'
+      field.value = 'option1'
+
+      radio = render(
+        <Radio
+          name={field.name}
+          value={field.value}
+          onChange={field.onChange}
+          label={label}
+        />
+      )
     })
 
-    describe('and the field has a label', () => {
-      beforeEach(() => {
-        label = 'My Label 1'
-      })
+    it('should render a field with a label', () => {
+      expect(radio.getByTestId('label')).toHaveTextContent('My Label 1')
+    })
 
-      describe('and the field has a value', () => {
-        beforeEach(() => {
-          field.value = 'option1'
-
-          radio = render(
-            <Radio
-              name={field.name}
-              value={field.value}
-              onChange={field.onChange}
-              label={label}
-            />
-          )
-        })
-
-        it('should render a field with a label', () => {
-          expect(radio.getByTestId('label')).toHaveTextContent('My Label 1')
-        })
-
-        it('should populate the field value', () => {
-          expect(radio.queryByTestId('radio')).toHaveAttribute(
-            'value',
-            'option1'
-          )
-        })
-      })
+    it('should populate the field value', () => {
+      expect(radio.queryByTestId('radio')).toHaveAttribute('value', 'option1')
     })
   })
 
-  describe('when a field has an error', () => {
+  describe('when the field has an error and the form has not been touched', () => {
     beforeEach(() => {
       form.errors = {
         colour: 'Something bad',
       }
+
+      form.touched = {}
+
+      const FormikRadio = withFormik(Radio)
+
+      radio = render(<FormikRadio field={field} form={form} />)
     })
 
-    describe('and the form has not been touched', () => {
-      beforeEach(() => {
-        form.touched = {}
-
-        const FormikRadio = withFormik(Radio)
-
-        radio = render(<FormikRadio field={field} form={form} />)
-      })
-
-      it('should not add the aria attributes', () => {
-        expect(radio.getByTestId('radio')).not.toHaveAttribute('aria-invalid')
-        expect(radio.getByTestId('radio')).not.toHaveAttribute(
-          'aria-describedBy'
-        )
-      })
-
-      it('should not indicate the field has an error', () => {
-        expect(radio.queryByTestId('container')).not.toHaveClass('is-invalid')
-      })
-
-      it('should not show the error', () => {
-        expect(radio.queryAllByText('Something bad')).toHaveLength(0)
-      })
+    it('should not add the aria attributes', () => {
+      expect(radio.getByTestId('radio')).not.toHaveAttribute('aria-invalid')
+      expect(radio.getByTestId('radio')).not.toHaveAttribute('aria-describedBy')
     })
 
-    describe('and the form has been touched', () => {
-      beforeEach(() => {
-        form.touched.colour = true
+    it('should not indicate the field has an error', () => {
+      expect(radio.queryByTestId('container')).not.toHaveClass('is-invalid')
+    })
 
-        const FormikRadio = withFormik(Radio)
+    it('should not show the error', () => {
+      expect(radio.queryAllByText('Something bad')).toHaveLength(0)
+    })
+  })
 
-        radio = render(<FormikRadio field={field} form={form} />)
-      })
+  describe('when the field has an error and the form has been touched', () => {
+    beforeEach(() => {
+      form.errors = {
+        colour: 'Something bad',
+      }
 
-      it('should add the aria attributes', () => {
-        expect(radio.getByTestId('radio')).toHaveAttribute('aria-invalid')
-        expect(radio.getByTestId('radio')).toHaveAttribute('aria-describedby')
-      })
+      form.touched.colour = true
 
-      it('should indicate the field has an error', () => {
-        expect(radio.queryByTestId('container')).toHaveClass('is-invalid')
-      })
+      const FormikRadio = withFormik(Radio)
 
-      it('should show the error', () => {
-        expect(radio.getByText('Something bad')).toBeInTheDocument()
-      })
+      radio = render(<FormikRadio field={field} form={form} />)
+    })
+
+    it('should add the aria attributes', () => {
+      expect(radio.getByTestId('radio')).toHaveAttribute('aria-invalid')
+      expect(radio.getByTestId('radio')).toHaveAttribute('aria-describedby')
+    })
+
+    it('should indicate the field has an error', () => {
+      expect(radio.queryByTestId('container')).toHaveClass('is-invalid')
+    })
+
+    it('should show the error', () => {
+      expect(radio.getByText('Something bad')).toBeInTheDocument()
     })
   })
 
