@@ -73,6 +73,7 @@ export const MastheadUser: React.FC<MastheadUserProps> = ({
   link,
 }) => {
   if (link) {
+    console.warn('The `link` prop is deprecated')
     return <MastheadUserWithLink initials={initials} link={link} />
   }
 

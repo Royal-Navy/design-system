@@ -101,6 +101,13 @@ describe('Masthead', () => {
       wrapper = render(<Masthead {...props} />)
     })
 
+    it('should warn the consumer for using the deprecated `link` prop', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'The `link` prop is deprecated'
+      )
+    })
+
     it('should render the masthead', () => {
       expect(wrapper.getByTestId('masthead')).toBeInTheDocument()
     })
