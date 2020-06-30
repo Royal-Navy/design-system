@@ -5,14 +5,14 @@ $masthead-main-height: 58px;
 .rn-masthead {
   width: 100%;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1 );
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   background-color: f.color("neutral", "white");
 }
 
 .rn-masthead__main {
   display: flex;
   justify-content: space-between;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1 );
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid f.color("neutral", "100");
 }
 
@@ -31,7 +31,7 @@ $masthead-main-height: 58px;
   }
 
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba(f.color("action", "700") , 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(f.color("action", "700"), 0.5);
   }
 
   &.rn-masthead__service--has-logo .rn-masthead__title {
@@ -58,7 +58,7 @@ $masthead-main-height: 58px;
   transition: background-color 300ms;
 
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba(f.color("action", "700") , 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(f.color("action", "700"), 0.5);
   }
 
   .rn-iconfill {
