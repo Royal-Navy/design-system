@@ -24,7 +24,7 @@ describe('Sidebar', () => {
     })
 
     it('should not render the notifications', () => {
-      expect(wrapper.queryAllByTestId('notification-panel')).toHaveLength(0)
+      expect(wrapper.queryAllByTestId('notification-button')).toHaveLength(0)
     })
 
     it('should not render the user', () => {
@@ -83,7 +83,7 @@ describe('Sidebar', () => {
     })
 
     it('should render the notifications', () => {
-      expect(wrapper.getByTestId('notification-panel')).toBeInTheDocument()
+      expect(wrapper.getByTestId('notification-button')).toBeInTheDocument()
     })
 
     it('should render the user', () => {

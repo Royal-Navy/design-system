@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
 
-import { NotificationPanel, NotificationsProps } from '../NotificationPanel'
+import {
+  NOTIFICATION_CONTAINER_WIDTH,
+  NotificationsProps,
+} from '../NotificationPanel'
 import { SidebarNavProps, SidebarUserProps } from '.'
+import { Sheet } from '../TopLevelNavigation/Sheet'
+import { SheetButton } from '../TopLevelNavigation/SheetButton'
+import { Bell } from '../../icons'
 
 interface SidebarProps {
   hasUnreadNotification?: boolean
@@ -36,12 +42,24 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       <div className="rn-sidebar__bottom">
         {notifications && (
-          <NotificationPanel
-            data-testid="sidebar-notifications"
-            hasUnreadNotification={hasUnreadNotification}
+          <Sheet
+            button={(
+              <SheetButton
+                data-testid="notification-button"
+                icon={<Bell className="rn-sheet__icon" />}
+              >
+                {hasUnreadNotification && (
+                  <span
+                    className="rn-notification-panel__not-read"
+                    data-testid="not-read"
+                  />
+                )}
+              </SheetButton>
+            )}
+            width={NOTIFICATION_CONTAINER_WIDTH}
           >
             {notifications}
-          </NotificationPanel>
+          </Sheet>
         )}
         {user}
       </div>
