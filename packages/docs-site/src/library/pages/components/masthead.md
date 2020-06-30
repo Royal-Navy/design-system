@@ -4,7 +4,17 @@ description: A top level section displayed at the top of the page
 header: true
 ---
 
-import { Icons, Link, Masthead, MastheadNav, MastheadNavItem, MastheadUser, Tab, TabSet } from '@royalnavy/react-component-library'
+import {
+  Icons,
+  Link,
+  Masthead,
+  MastheadNav,
+  MastheadNavItem,
+  MastheadUser,
+  MastheadUserItem,
+  Tab,
+  TabSet,
+} from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
@@ -103,7 +113,12 @@ Aside from the active page links (an example of these states is shown in the [Ta
   title="Test"
   hasUnreadNotification
   user={
-    <MastheadUser initials="AT" link={<Link href="/user-profile" />} />
+    <MastheadUser initials="AB">
+      <MastheadUserItem link={<Link href="/profile">Profile</Link>} />
+      <MastheadUserItem link={<Link href="/settings">Settings</Link>} />
+      <MastheadUserItem link={<Link href="/support">Support</Link>} />
+      <MastheadUserItem link={<Link href="/logout">Logout</Link>} />
+    </MastheadUser>
   }
 />`} language="javascript">
 <Masthead
@@ -122,7 +137,12 @@ Aside from the active page links (an example of these states is shown in the [Ta
   title="Test"
   hasUnreadNotification
   user={
-    <MastheadUser initials="AT" link={<Link href="/user-profile" />} />
+    <MastheadUser initials="AB">
+      <MastheadUserItem link={<Link href="/profile">Profile</Link>} />
+      <MastheadUserItem link={<Link href="/settings">Settings</Link>} />
+      <MastheadUserItem link={<Link href="/support">Support</Link>} />
+      <MastheadUserItem link={<Link href="/logout">Logout</Link>} />
+    </MastheadUser>
   }
 />
 </CodeHighlighter>
