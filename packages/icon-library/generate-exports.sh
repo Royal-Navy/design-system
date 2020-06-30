@@ -11,3 +11,9 @@ for file in src/icons/*; do
   filename_no_ext=${filename%%.*}
   echo "export {default as Icon${filename_no_ext}} from './icons/${filename_no_ext}'" >> src/index.ts
 done
+
+for file in src/silhouettes/*; do
+  filename=$(basename -- "$file")
+  filename_no_ext=${filename%%.*}
+  echo "export {default as Silhouette${filename_no_ext}} from './silhouettes/${filename_no_ext}'" >> src/index.ts
+done

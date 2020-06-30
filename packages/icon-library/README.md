@@ -17,8 +17,10 @@ If you want to install the prerelease then use the `@next` distribution tag.
 ## Usage
 ```javascript
 import { IconHome } from '@royalnavy/icon-library'
+import { SilhouetteAircraftCarrier } from '@royalnavy/icon-library'
 
 // <IconHome size={16} />
+// <SilhouetteAircraftCarrier size={128} />
 ```
 ### Sizing
 The `size` prop sets the `width` and `height` attribute values of the wrapped SVG.
