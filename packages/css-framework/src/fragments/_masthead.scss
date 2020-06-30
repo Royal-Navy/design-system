@@ -80,3 +80,40 @@ $masthead-main-height: 58px;
 .rn-masthead--show-notifications .rn-scrollable-nav__scroll-container {
   -webkit-overflow-scrolling: auto;
 }
+
+.rn-masthead__user-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rn-masthead__user-item-wrapper {
+  a,
+  a:hover {
+    color: f.color("neutral", "white");
+    text-decoration: none;
+  }
+
+  &:hover {
+    .rn-masthead__user-item-icon,
+    .rn-masthead__user-item-text {
+      color: f.color("action", "500");
+    }
+  }
+}
+
+.rn-masthead__user-item {
+  display: flex;
+  border-bottom: 1px solid f.color("neutral", "500");
+  margin: f.spacing("4");
+  padding-bottom: f.spacing("2");
+}
+
+.rn-masthead__user-item-icon {
+  position: relative;
+  top: 2px;
+}
+
+.rn-masthead__user-item-text {
+  margin-left: f.spacing("4");
+}

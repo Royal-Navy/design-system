@@ -13,6 +13,7 @@ import { Masthead } from './Masthead'
 import { Notification, Notifications } from '../NotificationPanel'
 import { MastheadUser } from './MastheadUser'
 import { MastheadNav, MastheadNavItem } from './MastheadNav'
+import { MastheadUserItem } from './MastheadUserItem'
 
 describe('Masthead', () => {
   let wrapper: RenderResult
@@ -236,6 +237,89 @@ describe('Masthead', () => {
               'rn-masthead--show-notifications'
             )
           )
+        })
+      })
+    })
+  })
+
+  describe('when the avatar has links', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <>
+          <Masthead
+            title="title"
+            user={(
+              <MastheadUser initials="AB">
+                <MastheadUserItem link={<Link href="/profile">Profile</Link>} />
+                <MastheadUserItem
+                  link={<Link href="/settings">Settings</Link>}
+                />
+                <MastheadUserItem link={<Link href="/support">Support</Link>} />
+                <MastheadUserItem link={<Link href="/logout">Logout</Link>} />
+              </MastheadUser>
+            )}
+          />
+          <div>Other content</div>
+        </>
+      )
+    })
+
+    it('should add the avatar', () => {
+      expect(wrapper.getByText('AB')).toBeInTheDocument()
+    })
+
+    it('should not show the links', () => {
+      expect(wrapper.queryByText('Profile')).toBeNull()
+      expect(wrapper.queryByText('Settings')).toBeNull()
+      expect(wrapper.queryByText('Support')).toBeNull()
+      expect(wrapper.queryByText('Logout')).toBeNull()
+    })
+
+    describe('and the avatar is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByText('AB').click()
+      })
+
+      it('should show the links', () => {
+        expect(wrapper.getByText('Profile')).toBeInTheDocument()
+        expect(wrapper.getByText('Settings')).toBeInTheDocument()
+        expect(wrapper.getByText('Support')).toBeInTheDocument()
+        expect(wrapper.getByText('Logout')).toBeInTheDocument()
+      })
+
+      describe('and the avatar is clicked again', () => {
+        beforeEach(() => {
+          wrapper.getByText('AB').click()
+        })
+
+        it('should not show the links', () => {
+          return waitFor(() => {
+            expect(wrapper.queryByText('Profile')).toBeNull()
+            expect(wrapper.queryByText('Settings')).toBeNull()
+            expect(wrapper.queryByText('Support')).toBeNull()
+            expect(wrapper.queryByText('Logout')).toBeNull()
+          })
+        })
+      })
+
+      describe('and the elsewhere in the document is clicked', () => {
+        beforeEach(() => {
+          fireEvent(
+            document,
+            new MouseEvent('mousedown', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
+        })
+
+        it('should not show the links', () => {
+          return waitFor(() => {
+            expect(wrapper.queryByText('Profile')).toBeNull()
+            expect(wrapper.queryByText('Settings')).toBeNull()
+            expect(wrapper.queryByText('Support')).toBeNull()
+            expect(wrapper.queryByText('Logout')).toBeNull()
+          })
         })
       })
     })

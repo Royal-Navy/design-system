@@ -1,9 +1,15 @@
+import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
-import React from 'react'
+import {
+  IconChatBubble,
+  IconExitToApp,
+  IconPerson,
+  IconSettings,
+} from '@royalnavy/icon-library'
 
 import { Link } from '../Link'
-import { Masthead, MastheadUser } from '.'
+import { Masthead, MastheadUser, MastheadUserItem } from '.'
 import { Notification, Notifications } from '../NotificationPanel'
 import { MastheadNav, MastheadNavItem } from './MastheadNav'
 
@@ -81,6 +87,32 @@ stories.add('With search and Avatar', () => (
     />
     <p>More text below to check the dropdown appears below</p>
   </div>
+))
+
+stories.add('With avatar links', () => (
+  <Masthead
+    title="Test"
+    user={(
+      <MastheadUser initials="AB">
+        <MastheadUserItem
+          icon={<IconPerson />}
+          link={<Link href="/profile">Profile</Link>}
+        />
+        <MastheadUserItem
+          icon={<IconSettings />}
+          link={<Link href="/settings">Settings</Link>}
+        />
+        <MastheadUserItem
+          icon={<IconChatBubble />}
+          link={<Link href="/support">Support</Link>}
+        />
+        <MastheadUserItem
+          icon={<IconExitToApp />}
+          link={<Link href="/logout">Logout</Link>}
+        />
+      </MastheadUser>
+    )}
+  />
 ))
 
 stories.add('Without search', () => <Masthead title="Test" />)
