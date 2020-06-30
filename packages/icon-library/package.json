@@ -19,10 +19,11 @@
     "directory": "packages/icon-library"
   },
   "scripts": {
-    "build": "run-s svgr exports build:es build:cjs types",
+    "build": "run-s svgr-icons svgr-silhouettes exports build:es build:cjs types",
     "build:es": "NODE_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\"",
     "build:cjs": "NODE_ENV=cjs webpack -p --config=webpack/prod.js",
-    "svgr": "rm -rf src/icons; svgr --ext tsx -d src/icons src/assets/**/; rm src/icons/index.tsx",
+    "svgr-icons": "rm -rf src/icons; svgr --ext tsx -d src/icons src/assets/icons/**/; rm src/icons/index.tsx",
+    "svgr-silhouettes": "rm -rf src/silhouettes; svgr --ext tsx -d src/silhouettes src/assets/silhouettes/; rm src/silhouettes/index.tsx",
     "exports": "./generate-exports.sh",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --allowJs false --outDir dist/types",
     "prepare": "yarn build"

@@ -1,4 +1,5 @@
 node_modules/
 dist/
 src/icons/
+src/silhouettes/
 src/index.ts
