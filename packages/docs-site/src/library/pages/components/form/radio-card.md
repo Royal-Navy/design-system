@@ -1,6 +1,6 @@
 ---
-title: RadioCard
-description: RadioCards let users select one option at a time.
+title: Radio Card
+description: Radio Cards let users select one option at a time.
 header: true
 draft: true
 ---
@@ -15,7 +15,7 @@ import SketchWidget from '../../../../components/presenters/sketch-widget'
 **todo**
 
 ## Usage
-The RadioCard component allows the active selection of one input at a time. It typically appears in forms and modals. If you require the user to select multiple options, then the [CheckboxCard component](/forms/checkbox-card) should be used instead.
+The Radio Card component allows the active selection of one input at a time. It typically appears in forms and modals. If you require the user to select multiple options, then the [CheckboxCard component](/forms/checkbox-card) should be used instead.
 
 
 <TabSet>
@@ -40,7 +40,7 @@ The RadioCard component allows the active selection of one input at a time. It t
 
 The `Radio` component allows the active selection of one input at a time. The initial release for this component has been written to work with <a href="https://jaredpalmer.com/formik/">Formik</a> though a Redux Forms variation will follow.
 
-The Radio component can be used on its own in a regular form, if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
+The `Radio` component can be used on its own in a regular form, if you use the correct syntax, or used within a Formik form as the render component for a `Field`.
 
 ### Example with Formik
 The use of `FormikGroup` means that if a validation error occurs, then the inputs are shown with the correct aria attributes and associated with a single error message.
@@ -68,7 +68,7 @@ The use of `FormikGroup` means that if a validation error occurs, then the input
 </CodeHighlighter>
 
 ### Properties
-The Radio component accepts the standard field properties as defined by Formik. It is also responsible for rendering an optional field label, including any information or error messages associated with the field. 
+The `Radio` component accepts the standard field properties as defined by Formik. It is also responsible for rendering an optional field label, including any information or error messages associated with the field. 
 
 <DataTable caption="FieldProps" data={[
   {
