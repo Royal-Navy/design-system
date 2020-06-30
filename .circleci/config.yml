@@ -28,6 +28,16 @@ commands:
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
 jobs:
+  build_icon-library:
+    docker: *docker
+    steps:
+      - checkout
+      - dependencies
+      - *build_icon_library
+      - persist_to_workspace:
+          root: packages
+          paths:
+            - icon-library/dist
   security_audit:
     docker: *docker
     steps:
@@ -39,7 +49,7 @@ jobs:
       - checkout
       - dependencies
       - run: node ./scripts/commitlint $CIRCLE_PULL_REQUEST
-      - run: node ./scripts/check-fixup $CIRCLE_PULL_REQUEST      
+      - run: node ./scripts/check-fixup $CIRCLE_PULL_REQUEST
   lint_css-framework:
     docker: *docker
     steps:
@@ -89,7 +99,8 @@ jobs:
     steps:
       - checkout
       - dependencies
-      - *build_icon_library
+      - attach_workspace:
+          at: packages
       - run:
           name: Jest
           environment:
@@ -119,7 +130,8 @@ jobs:
     steps:
       - checkout
       - dependencies
-      - *build_icon_library
+      - attach_workspace:
+          at: packages
       - run:
           name: Run visual regression tests
           command: |
@@ -133,7 +145,8 @@ jobs:
     steps:
       - checkout
       - dependencies
-      - *build_icon_library
+      - attach_workspace:
+          at: packages
       - *authenticate_npm
       - deploy: #deploy step is important to prevent triggering N builds
           name: Publish latest packages
@@ -149,7 +162,8 @@ jobs:
     steps:
       - checkout
       - dependencies
-      - *build_icon_library
+      - attach_workspace:
+          at: packages
       - run:
           name: Configure Git
           command: >-
@@ -175,7 +189,8 @@ jobs:
     steps:
       - checkout
       - dependencies
-      - *build_icon_library
+      - attach_workspace:
+          at: packages
       - run:
           name: Build React Components
           command: yarn --cwd packages/react-component-library build
@@ -201,6 +216,12 @@ workflows:
   version: 2
   build_and_test_feature:
     jobs:
+      - build_icon-library:
+          filters:
+            branches:
+              ignore:
+                - master
+                - latest
       - security_audit:
           filters:
             branches:
@@ -234,9 +255,11 @@ workflows:
       - test_docs-site:
           requires:
             - lint_docs_site
+            - build_icon-library
       - test_react-component-library:
           requires:
             - lint_react-component-library
+            - build_icon-library
       - code_cov:
           requires:
             - test_react-component-library
@@ -244,14 +267,25 @@ workflows:
       - test_visual_regression:
           requires:
             - test_react-component-library
+            - build_icon-library
+
   build_test_and_deploy_next:
     jobs:
+      - build_icon-library:
+          filters:
+            branches:
+              only:
+                - master
       - test_react-component-library:
+          requires:
+            - build_icon-library
           filters:
             branches:
               only:
                 - master
       - test_visual_regression:
+          requires:
+            - build_icon-library
           filters:
             branches:
               only:
@@ -262,6 +296,11 @@ workflows:
             - test_visual_regression
   build_test_and_deploy_latest:
     jobs:
+      - build_icon-library:
+          filters:
+            branches:
+              only:
+                - latest
       - security_audit:
           filters:
             branches:
@@ -289,9 +328,11 @@ workflows:
                 - latest
       - test_docs-site:
           requires:
+            - build_icon-library
             - lint_docs_site
       - test_react-component-library:
           requires:
+            - build_icon-library
             - lint_react-component-library
       - test_visual_regression:
           requires:
