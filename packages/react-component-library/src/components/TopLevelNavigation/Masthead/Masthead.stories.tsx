@@ -8,8 +8,8 @@ import {
   IconSettings,
 } from '@royalnavy/icon-library'
 
-import { Link } from '../Link'
-import { Masthead, MastheadUser, MastheadUserItem } from '.'
+import { Link } from '../../Link'
+import { Masthead, MastheadUser, MastheadUserItem } from './index'
 import { Notification, Notifications } from '../NotificationPanel'
 import { MastheadNav, MastheadNavItem } from './MastheadNav'
 

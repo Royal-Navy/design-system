@@ -3,7 +3,7 @@ import differenceInMinutes from 'date-fns/differenceInMinutes'
 import formatDistanceStrict from 'date-fns/formatDistanceStrict'
 import format from 'date-fns/format'
 
-import { Avatar, AVATAR_VARIANT } from "../Avatar"
+import { Avatar, AVATAR_VARIANT } from "../../Avatar"
 
 export interface NotificationProps {
   link: React.ReactElement<LinkTypes>

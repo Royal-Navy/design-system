@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 
-import { Link } from '../Link'
-import { Notification } from '.'
+import { Link } from '../../Link'
+import { Notification } from './index'
 
 const NOW = '2019-11-05T11:00:00.000Z'
 

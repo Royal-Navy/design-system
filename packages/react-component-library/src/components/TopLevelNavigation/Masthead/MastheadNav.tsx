@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { Nav, NavItem } from '../../types/Nav'
+import { Nav, NavItem } from '../../../types/Nav'
 import {
   ScrollableNav,
   ScrollableNavItem,
-} from "../ScrollableNav"
+} from "../../ScrollableNav"
 
 export const MastheadNav: React.FC<Nav<NavItem>> = props => {
   return (

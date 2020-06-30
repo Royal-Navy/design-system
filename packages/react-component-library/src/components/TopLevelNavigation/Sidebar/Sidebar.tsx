@@ -5,10 +5,10 @@ import {
   NOTIFICATION_CONTAINER_WIDTH,
   NotificationsProps,
 } from '../NotificationPanel'
-import { SidebarNavProps, SidebarUserProps } from '.'
-import { Sheet } from '../TopLevelNavigation/Sheet'
-import { SheetButton } from '../TopLevelNavigation/SheetButton'
-import { Bell } from '../../icons'
+import { SidebarNavProps, SidebarUserProps } from './index'
+import { Sheet } from '../Sheet'
+import { SheetButton } from '../SheetButton'
+import { Bell } from '../../../icons'
 
 interface SidebarProps {
   hasUnreadNotification?: boolean

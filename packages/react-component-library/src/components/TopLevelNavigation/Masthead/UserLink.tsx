@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Avatar, AVATAR_VARIANT } from '../Avatar'
-import { Link } from '../Link'
+import { Avatar, AVATAR_VARIANT } from '../../Avatar'
+import { Link } from '../../Link'
 
 interface UserLinkProps {
   className?: string

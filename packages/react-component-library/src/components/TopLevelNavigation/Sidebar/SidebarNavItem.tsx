@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import { NavItem } from '../../types/Nav'
+import { NavItem } from '../../../types/Nav'
 
 export interface SidebarNavItemProps extends NavItem {
   Image?: React.ComponentType

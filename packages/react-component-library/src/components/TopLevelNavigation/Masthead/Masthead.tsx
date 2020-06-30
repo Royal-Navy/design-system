@@ -2,17 +2,17 @@ import React, { useRef, useState } from 'react'
 import classNames from 'classnames'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
-import { Bell, Logo as DefaultLogo, Search as SearchIcon } from '../../icons'
-import { MastheadUserProps } from '.'
-import { Nav, NavItem } from '../../types/Nav'
+import { Bell, Logo as DefaultLogo, Search as SearchIcon } from '../../../icons'
+import { MastheadUserProps } from './index'
+import { Nav, NavItem } from '../../../types/Nav'
 import {
   NOTIFICATION_CONTAINER_WIDTH,
   NotificationsProps,
 } from '../NotificationPanel'
 import { Searchbar } from '../Searchbar'
-import { SHEET_PLACEMENT } from '../TopLevelNavigation/constants'
-import { Sheet } from '../TopLevelNavigation/Sheet'
-import { SheetButton } from '../TopLevelNavigation/SheetButton'
+import { SHEET_PLACEMENT } from '../constants'
+import { Sheet } from '../Sheet'
+import { SheetButton } from '../SheetButton'
 import { useMastheadSearch } from './useMastheadSearch'
 
 export interface MastheadProps {

@@ -8,7 +8,7 @@ import {
   waitFor,
 } from '@testing-library/react'
 
-import { Link } from '../Link'
+import { Link } from '../../Link'
 import { Masthead } from './Masthead'
 import { Notification, Notifications } from '../NotificationPanel'
 import { MastheadUser } from './MastheadUser'

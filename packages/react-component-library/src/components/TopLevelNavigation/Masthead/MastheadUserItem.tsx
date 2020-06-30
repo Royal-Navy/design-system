@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { NavItem } from '../../types/Nav'
+import { NavItem } from '../../../types/Nav'
 
 export interface MastheadUserItemProps extends NavItem {
   icon: React.ReactNode

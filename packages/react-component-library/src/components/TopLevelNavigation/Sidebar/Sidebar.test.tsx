@@ -2,9 +2,9 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 
-import { Link } from "../Link"
-import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from '.'
-import { Graph, House, Tools } from '../../icons'
+import { Link } from "../../Link"
+import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './index'
+import { Graph, House, Tools } from '../../../icons'
 import { Notification, Notifications } from '../NotificationPanel'
 
 describe('Sidebar', () => {

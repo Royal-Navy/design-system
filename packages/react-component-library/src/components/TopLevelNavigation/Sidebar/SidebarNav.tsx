@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Nav, NavItem } from '../../types/Nav'
-import { SidebarNavItem, SidebarNavItemProps } from '.'
-import { warnIfOverwriting } from '../../helpers'
+import { Nav, NavItem } from '../../../types/Nav'
+import { SidebarNavItem, SidebarNavItemProps } from './index'
+import { warnIfOverwriting } from '../../../helpers'
 
 export interface SidebarNavProps extends Nav<NavItem> {
   onBlur?: () => void

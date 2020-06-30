@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 import React, { ReactElement } from 'react'
 
-import { Avatar, AVATAR_VARIANT } from '../Avatar'
+import { Avatar, AVATAR_VARIANT } from '../../Avatar'
 import { MastheadUserItemProps } from './MastheadUserItem'
-import { Nav } from '../../types/Nav'
-import { Sheet } from '../TopLevelNavigation/Sheet'
-import { SheetButton } from '../TopLevelNavigation/SheetButton'
-import { SHEET_PLACEMENT } from '../TopLevelNavigation/constants'
+import { Nav } from '../../../types/Nav'
+import { Sheet } from '../Sheet'
+import { SheetButton } from '../SheetButton'
+import { SHEET_PLACEMENT } from '../constants'
 
 const SHEET_WIDTH = 106
 

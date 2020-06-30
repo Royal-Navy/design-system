@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
 
-import { TextInput } from '../TextInput'
-import { RightArrow } from '../../icons'
-import { useDocumentClick } from '../../hooks'
+import { TextInput } from '../../TextInput'
+import { RightArrow } from '../../../icons'
+import { useDocumentClick } from '../../../hooks'
 
 export interface SearchbarProps {
   className?: string
