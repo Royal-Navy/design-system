@@ -42,6 +42,14 @@
           }
         ]
       }
+    ],
+    [
+      "@svgr/babel-plugin-replace-jsx-attribute-value",
+      {
+        "values": [
+          { "value": "#3E5667", "newValue": "CurrentColor" }
+        ]
+      }
     ]
   ]
 }
