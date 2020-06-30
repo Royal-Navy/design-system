@@ -139,10 +139,6 @@ describe('Masthead', () => {
       expect(wrapper.queryByTestId('searchbar')).toBeNull()
     })
 
-    it('should include the notification component', () => {
-      expect(wrapper.getByTestId('notification-panel')).toBeInTheDocument()
-    })
-
     it('should include an unread notification indicator', () => {
       expect(wrapper.queryByTestId('not-read')).toBeInTheDocument()
     })

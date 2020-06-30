@@ -2,15 +2,17 @@ import React, { useRef, useState } from 'react'
 import classNames from 'classnames'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
-import { Logo as DefaultLogo, Search as SearchIcon } from '../../icons'
+import { Bell, Logo as DefaultLogo, Search as SearchIcon } from '../../icons'
 import { MastheadUserProps } from '.'
 import { Nav, NavItem } from '../../types/Nav'
 import {
-  NOTIFICATION_PLACEMENT,
-  NotificationPanel,
+  NOTIFICATION_CONTAINER_WIDTH,
   NotificationsProps,
 } from '../NotificationPanel'
 import { Searchbar } from '../Searchbar'
+import { SHEET_PLACEMENT } from '../TopLevelNavigation/constants'
+import { Sheet } from '../TopLevelNavigation/Sheet'
+import { SheetButton } from '../TopLevelNavigation/SheetButton'
 import { useMastheadSearch } from './useMastheadSearch'
 
 export interface MastheadProps {
@@ -116,17 +118,29 @@ export const Masthead: React.FC<MastheadProps> = ({
           )}
 
           {notifications && (
-            <NotificationPanel
-              buttonClassName="rn-masthead__option"
+            <Sheet
+              button={(
+                <SheetButton
+                  className="rn-masthead__option"
+                  data-testid="notification-button"
+                  icon={<Bell className="rn-sheet__icon" />}
+                >
+                  {hasUnreadNotification && (
+                    <span
+                      className="rn-notification-panel__not-read"
+                      data-testid="not-read"
+                    />
+                  )}
+                </SheetButton>
+              )}
               className="rn-masthead__notification"
-              data-testid="masthead-notifications"
-              notificationPlacement={NOTIFICATION_PLACEMENT.BELOW}
+              placement={SHEET_PLACEMENT.BELOW}
+              width={NOTIFICATION_CONTAINER_WIDTH}
               onHide={() => setShowNotifications(false)}
               onShow={() => setShowNotifications(true)}
-              hasUnreadNotification={hasUnreadNotification}
             >
               {notifications}
-            </NotificationPanel>
+            </Sheet>
           )}
 
           {user}
