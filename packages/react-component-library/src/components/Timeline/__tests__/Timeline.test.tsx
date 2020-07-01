@@ -50,7 +50,10 @@ describe('Timeline', () => {
   describe('when data is provided', () => {
     beforeEach(() => {
       wrapper = render(
-        <Timeline startDate={new Date(2020, 3, 1)}>
+        <Timeline
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
           <TimelineTodayMarker />
           <TimelineMonths />
           <TimelineWeeks />
