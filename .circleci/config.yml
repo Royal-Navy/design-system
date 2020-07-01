@@ -193,7 +193,7 @@ jobs:
           command: >-
             yarn lerna:prerelease --yes --no-push &&
             git tag -d $(git describe --abbrev=0) &&
-            git push origin master &&
+            git push origin master
   test_docs-site:
     docker: *docker
     steps:
@@ -311,6 +311,7 @@ workflows:
           requires:
             - test_react-component-library
             - test_visual_regression
+            - commit_next
   build_test_and_deploy_latest:
     jobs:
       - build_icon-library:
