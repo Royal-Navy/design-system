@@ -141,18 +141,6 @@ stories.add('Without logo, with navigation', () => (
   />
 ))
 
-stories.add('all but navigation', () => (
-  <Masthead
-    homeLink={<Link href="/" />}
-    notifications={notifications}
-    onSearch={action('onSearch')}
-    searchPlaceholder="Search"
-    title="Test"
-    hasUnreadNotification
-    user={user}
-  />
-))
-
 stories.add('With navigation', () => (
   <Masthead
     homeLink={<Link href="/" />}
