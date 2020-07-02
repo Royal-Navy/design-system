@@ -10,9 +10,9 @@ import {
   NotificationsProps,
 } from '../NotificationPanel'
 import { Searchbar } from '../Searchbar'
-import { SHEET_PLACEMENT } from '../constants'
-import { Sheet } from '../Sheet'
-import { SheetButton } from '../SheetButton'
+import { SHEET_PLACEMENT } from '../Sheet/constants'
+import { Sheet } from '../Sheet/Sheet'
+import { SheetButton } from '../Sheet/SheetButton'
 import { useMastheadSearch } from './useMastheadSearch'
 
 export interface MastheadProps {

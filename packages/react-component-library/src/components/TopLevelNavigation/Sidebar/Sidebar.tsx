@@ -6,8 +6,8 @@ import {
   NotificationsProps,
 } from '../NotificationPanel'
 import { SidebarNavProps, SidebarUserProps } from './index'
-import { Sheet } from '../Sheet'
-import { SheetButton } from '../SheetButton'
+import { Sheet } from '../Sheet/Sheet'
+import { SheetButton } from '../Sheet/SheetButton'
 import { Bell } from '../../../icons'
 
 interface SidebarProps {

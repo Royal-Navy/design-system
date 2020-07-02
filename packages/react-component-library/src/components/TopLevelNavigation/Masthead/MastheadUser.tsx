@@ -4,9 +4,9 @@ import React, { ReactElement } from 'react'
 import { Avatar, AVATAR_VARIANT } from '../../Avatar'
 import { MastheadUserItemProps } from './MastheadUserItem'
 import { Nav } from '../../../types/Nav'
-import { Sheet } from '../Sheet'
-import { SheetButton } from '../SheetButton'
-import { SHEET_PLACEMENT } from '../constants'
+import { Sheet } from '../Sheet/Sheet'
+import { SheetButton } from '../Sheet/SheetButton'
+import { SHEET_PLACEMENT } from '../Sheet/constants'
 
 const SHEET_WIDTH = 106
 

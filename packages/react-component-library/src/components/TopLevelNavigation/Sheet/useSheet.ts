@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 
 import { calculate } from './sheetPosition'
-import { useDocumentClick } from '../../hooks'
+import { useDocumentClick } from '../../../hooks'
 
 function onShowSheetChange(
   showSheet: boolean,
