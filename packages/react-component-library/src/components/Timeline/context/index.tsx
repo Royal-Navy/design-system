@@ -14,11 +14,12 @@ export const TimelineContext = createContext(timelineContextDefaults)
 export const TimelineProvider: React.FC<TimelineProviderProps> = ({
   children,
   startDate,
+  endDate,
   today,
   options,
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState, () =>
-    initialiseState(startDate, today, options)
+    initialiseState(startDate, endDate, today, options)
   )
 
   return (

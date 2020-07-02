@@ -104,6 +104,27 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">
+      endDate
+    </h1>
+    <Badge color="supa" colorVariant="faded" size="small">Date</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>-</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">Bound the timeline by the specified start and end dates.</p>
+    </div>
+  </div>
+</div>
+
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
     <h1 className="rn-fw-api-title">today</h1>
     <Badge color="supa" colorVariant="faded" size="small">Date</Badge>
   </div>
@@ -526,6 +547,27 @@ Here you will find comprehensive API documentation for the Timeline Components.
     <div className="rn-fw-api-row">
       <div className="rn-fw-api-item">Description</div>
       <p className="rn-fw-api-value">A month will display either side of this start date.</p>
+    </div>
+  </div>
+</div>
+
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">
+      endDate
+    </h1>
+    <Badge color="supa" colorVariant="faded" size="small">Date</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>-</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">Bound the timeline by the specified start and end dates.</p>
     </div>
   </div>
 </div>

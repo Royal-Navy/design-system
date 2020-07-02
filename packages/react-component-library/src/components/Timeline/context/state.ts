@@ -1,4 +1,4 @@
-import { getDays, getMonths, getWeeks } from './reducer'
+import { getDays, getMonths, getWeeks, calcRange } from './reducer'
 import { TimelineOptions, TimelineState } from './types'
 
 const initialState: TimelineState = {
@@ -6,12 +6,14 @@ const initialState: TimelineState = {
   months: [],
   options: null,
   startDate: null,
+  endDate: null,
   today: new Date(),
   weeks: [],
 }
 
 function initialiseState(
   startDate: Date = new Date(),
+  endDate: Date,
   today: Date = new Date(),
   options: TimelineOptions
 ) {
@@ -19,14 +21,19 @@ function initialiseState(
     ...initialState,
     today,
     startDate,
+    endDate,
     options: { ...initialState.options, ...options },
   }
 
+  const range = endDate
+    ? calcRange(startDate, endDate)
+    : state.options.rangeInMonths
+
   return {
     ...state,
-    ...getMonths(startDate, state.options.rangeInMonths),
-    days: getDays(startDate, state.options.rangeInMonths),
-    weeks: getWeeks(startDate, state.options.rangeInMonths),
+    months: getMonths(startDate, range),
+    weeks: getWeeks(startDate, range),
+    days: getDays(startDate, range),
   }
 }
 

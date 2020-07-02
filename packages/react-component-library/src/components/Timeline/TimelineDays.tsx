@@ -1,5 +1,5 @@
 import React from 'react'
-import { format } from 'date-fns'
+import { format, isAfter } from 'date-fns'
 import classNames from 'classnames'
 
 import { withKey } from '../../helpers'
@@ -53,12 +53,15 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({ render }) => {
       {({
         state: {
           days,
+          endDate: timelineEndDate,
           options: { dayWidth },
         },
       }) => (
         <div className={classes} data-testid="timeline-days">
           {days &&
             days.map(({ date }, index) => {
+              if (isAfter(date, timelineEndDate)) return null
+
               const child = render
                 ? render(index, dayWidth, date)
                 : renderDefault(index, dayWidth, date)

@@ -637,4 +637,59 @@ describe('Timeline', () => {
       expect(wrapper.queryByText('Days')).not.toBeInTheDocument()
     })
   })
+
+  describe('when Timeline is initialized with a fixed endDate', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          endDate={new Date(2020, 1, 15, 0, 0, 0)}
+          today={new Date(2020, 4, 1, 0, 0, 0)}
+        >
+          <TimelineSide />
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 1, 1, 0, 0, 0)}
+                  endDate={new Date(2020, 1, 10, 0, 0, 0)}
+                >
+                  Event
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('applies the dynamic styles to the appropriate wrappers', () => {
+      expect(wrapper.getByTestId('timeline-inner')).toHaveStyle({
+        marginLeft: '0px',
+      })
+
+      expect(wrapper.getByTestId('timeline-columns')).toHaveStyle({
+        width: '450px',
+        overflow: 'hidden',
+      })
+
+      expect(wrapper.getByTestId('timeline-months')).toHaveStyle({
+        width: '450px',
+        overflow: 'hidden',
+      })
+
+      expect(wrapper.getByTestId('timeline-weeks')).toHaveStyle({
+        width: '450px',
+        overflow: 'hidden',
+      })
+    })
+
+    it('renders the correct number of days', () => {
+      expect(wrapper.queryAllByTestId('timeline-day-title')).toHaveLength(15)
+    })
+  })
 })

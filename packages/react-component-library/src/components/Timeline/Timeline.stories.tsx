@@ -18,7 +18,21 @@ import {
 const stories = storiesOf('Timeline', module)
 
 stories.add('No data', () => (
-  <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+  <Timeline startDate={new Date(2020, 0, 1)} today={new Date(2020, 0, 15)}>
+    <TimelineTodayMarker />
+    <TimelineMonths />
+    <TimelineWeeks />
+    <TimelineDays />
+    <TimelineRows>{}</TimelineRows>
+  </Timeline>
+))
+
+stories.add('Bound by fixed dates', () => (
+  <Timeline
+    startDate={new Date(2020, 0, 13)}
+    endDate={new Date(2020, 1, 15)}
+    today={new Date(2020, 0, 15)}
+  >
     <TimelineTodayMarker />
     <TimelineMonths />
     <TimelineWeeks />
@@ -28,7 +42,7 @@ stories.add('No data', () => (
 ))
 
 stories.add('With data', () => (
-  <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+  <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
     <TimelineTodayMarker />
     <TimelineMonths />
     <TimelineWeeks />
@@ -59,7 +73,7 @@ stories.add('With data', () => (
 ))
 
 stories.add('With sidebar', () => (
-  <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+  <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
     <TimelineSide />
     <TimelineTodayMarker />
     <TimelineMonths />
@@ -115,7 +129,7 @@ stories.add('With custom months', () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
       <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths render={CustomTimelineMonth} />
@@ -156,7 +170,7 @@ stories.add('With custom weeks', () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
       <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
@@ -185,7 +199,7 @@ stories.add('With custom days', () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
       <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
@@ -219,7 +233,7 @@ stories.add('With custom today marker', () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
       <TimelineSide />
       <TimelineTodayMarker render={CustomTodayMarker} />
       <TimelineMonths />
@@ -251,7 +265,7 @@ stories.add('With custom columns', () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
       <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
@@ -315,7 +329,7 @@ stories.add('With custom event content', () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 4, 0)} today={new Date(2020, 3, 15)}>
+    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
       <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
@@ -392,7 +406,7 @@ stories.add('With custom event content', () => {
 stories.add('With custom day width', () => {
   return (
     <Timeline
-      startDate={new Date(2020, 4, 0)}
+      startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
       dayWidth={75}
     >
@@ -430,7 +444,7 @@ stories.add('With custom day width', () => {
 stories.add('With custom range', () => {
   return (
     <Timeline
-      startDate={new Date(2020, 4, 0)}
+      startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
       range={6}
     >
