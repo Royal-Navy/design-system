@@ -116,4 +116,4 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
   )
 }
 
-TimelineRows.displayName = 'Rows'
+TimelineRows.displayName = 'TimelineRows'
