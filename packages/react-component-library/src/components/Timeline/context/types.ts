@@ -23,6 +23,7 @@ export type TimelineMonth = {
 export type TimelineState = {
   today: Date
   startDate: null | Date
+  endDate: null | Date
   months: TimelineMonth[]
   weeks: TimelineWeek[]
   days: TimelineDay[]
@@ -46,6 +47,7 @@ export interface TimelineContextDefault {
 export interface TimelineProviderProps {
   children?: React.ReactNode
   startDate?: Date
+  endDate?: Date
   today?: Date
   options?: TimelineOptions
 }

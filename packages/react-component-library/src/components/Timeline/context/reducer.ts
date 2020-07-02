@@ -1,10 +1,12 @@
 import {
   addMonths,
+  subMonths,
   getMonth,
   setMonth,
   startOfMonth,
   endOfMonth,
   differenceInCalendarWeeks,
+  differenceInCalendarMonths,
   addWeeks,
   startOfWeek,
   getDaysInMonth,
@@ -28,10 +30,7 @@ import {
 export function getMonths(
   date: Date,
   rangeInMonths: number
-): {
-  startDate: Date,
-  months: TimelineMonth[]
-} {
+): TimelineMonth[] {
   const months = Array.from({ length: rangeInMonths })
     .map((_, index) => {
       const monthIndex = getMonth(date) + index
@@ -45,17 +44,14 @@ export function getMonths(
       }
     })
 
-  return {
-    startDate: months[0].startDate,
-    months
-  }
+  return months
 }
 
 export function getWeeks(
   date: Date,
   rangeInMonths: number
 ): TimelineWeek[] {
-  const { months } = getMonths(date, rangeInMonths)
+  const months = getMonths(date, rangeInMonths)
 
   const startDate = months[0].startDate
   const endDate = endOfMonth(months[months.length - 1].startDate)
@@ -82,7 +78,7 @@ export function getDays(
   date: Date,
   rangeInMonths: number
 ): TimelineDay[] {
-  const { months } = getMonths(date, rangeInMonths)
+  const months = getMonths(date, rangeInMonths)
   const year = getYear(date)
 
   const days = months.flatMap(({ monthIndex }) => {
@@ -100,26 +96,40 @@ export function getDays(
   return days
 }
 
+export function calcRange(
+  startDate: Date,
+  endDate: Date
+): number {
+  return differenceInCalendarMonths(
+    startOfMonth(addMonths(endDate, 1)),
+    startOfMonth(startDate)
+  )
+}
+
 export function reducer(
   state: TimelineState,
   action: TimelineAction
 ): TimelineState | never {
-  const { startDate, options: { rangeInMonths} } = state
+  const { startDate, options: { rangeInMonths: range } } = state
 
   switch (action.type) {
     case TIMELINE_ACTIONS.GET_NEXT:
       return {
         ...state,
-        ...getMonths(addMonths(startDate, rangeInMonths), rangeInMonths),
-        weeks: getWeeks(addMonths(startDate, rangeInMonths), rangeInMonths),
-        days: getDays(addMonths(startDate, rangeInMonths), rangeInMonths)
+        startDate: addMonths(startDate, range),
+        endDate: null,
+        months: getMonths(addMonths(startDate, range), range),
+        weeks: getWeeks(addMonths(startDate, range), range),
+        days: getDays(addMonths(startDate, range), range)
       }
     case TIMELINE_ACTIONS.GET_PREV:
       return {
         ...state,
-        ...getMonths(addMonths(startDate, -rangeInMonths), rangeInMonths),
-        weeks: getWeeks(addMonths(startDate, -rangeInMonths), rangeInMonths),
-        days: getDays(addMonths(startDate, -rangeInMonths), rangeInMonths)
+        startDate: subMonths(startDate, range),
+        endDate: null,
+        months: getMonths(subMonths(startDate, range), range),
+        weeks: getWeeks(subMonths(startDate, range), range),
+        days: getDays(subMonths(startDate, range), range)
       }
     default:
       throw new Error('Unknown reducer action')

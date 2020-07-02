@@ -35,7 +35,14 @@ export function useTimelinePosition(
   startDate: Date,
   endDate: Date
 ) {
-  const { state: { months, options } } = useContext(TimelineContext)
+  const {
+    state: {
+      startDate: timelineStartDate,
+      endDate: timelineEndDate,
+      months,
+      options
+    }
+  } = useContext(TimelineContext)
 
   const timelineStart = new Date(months[0].startDate)
   const timelineEnd = new Date(endOfMonth(months[months.length - 1].startDate))

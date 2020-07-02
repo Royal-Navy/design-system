@@ -1,5 +1,5 @@
 import React from 'react'
-import { format, getDaysInMonth } from 'date-fns'
+import { format, getDaysInMonth, differenceInDays } from 'date-fns'
 import classNames from 'classnames'
 
 import { formatPx } from './helpers'
@@ -62,22 +62,39 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({ render }) => {
       {({
         state: {
           months,
+          endDate: timelineEndDate,
           options: { dayWidth },
         },
-      }) => (
-        <div className="timeline__months" data-testid="timeline-months">
-          {months &&
-            months.map(({ startDate }, index) => {
-              const daysTotal = getDaysInMonth(startDate)
+      }) => {
+        const wrapperStyles = timelineEndDate
+          ? {
+              width: formatPx(
+                dayWidth,
+                differenceInDays(timelineEndDate, months[0].startDate) + 1
+              ),
+              overflow: 'hidden',
+            }
+          : null
 
-              const child = render
-                ? render(index, dayWidth, daysTotal, startDate)
-                : renderDefault(index, dayWidth, daysTotal, startDate)
+        return (
+          <div
+            className="timeline__months"
+            data-testid="timeline-months"
+            style={wrapperStyles}
+          >
+            {months &&
+              months.map(({ startDate }, index) => {
+                const daysTotal = getDaysInMonth(startDate)
 
-              return withKey(child, 'timeline-month', startDate.toString())
-            })}
-        </div>
-      )}
+                const child = render
+                  ? render(index, dayWidth, daysTotal, startDate)
+                  : renderDefault(index, dayWidth, daysTotal, startDate)
+
+                return withKey(child, 'timeline-month', startDate.toString())
+              })}
+          </div>
+        )
+      }}
     </TimelineContext.Consumer>
   )
 }

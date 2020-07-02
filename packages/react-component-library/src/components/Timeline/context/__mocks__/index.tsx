@@ -3,6 +3,7 @@ import { TimelineState } from '../types'
 const state: TimelineState = {
   today: new Date(),
   startDate: new Date(),
+  endDate: null,
   months: [],
   weeks: [],
   days: [],

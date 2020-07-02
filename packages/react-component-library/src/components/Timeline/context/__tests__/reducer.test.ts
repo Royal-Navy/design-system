@@ -9,30 +9,28 @@ describe('TimelineContext reducer', () => {
   })
 
   describe('getMonths', () => {
-    let dates: {
-      months: TimelineMonth[]
-    }
+    let months: TimelineMonth[]
     const rangeInMonths = 3
 
     beforeEach(() => {
-      dates = getMonths(
+      months = getMonths(
         new Date(2020, 3, 1, 0, 0, 0),
         rangeInMonths,
       )
     })
 
     it('returns the correct number of months', () => {
-      expect(dates.months.length).toBe(rangeInMonths)
+      expect(months.length).toBe(rangeInMonths)
     })
 
     it('returns the correct month start dates', () => {
-      expect(dates.months[0].startDate)
+      expect(months[0].startDate)
         .toEqual(new Date('2020-04-01T00:00:00.000Z'))
 
-      expect(dates.months[1].startDate)
+      expect(months[1].startDate)
         .toEqual(new Date('2020-05-01T00:00:00.000Z'))
 
-      expect(dates.months[2].startDate)
+      expect(months[2].startDate)
         .toEqual(new Date('2020-06-01T00:00:00.000Z'))
     })
   })
