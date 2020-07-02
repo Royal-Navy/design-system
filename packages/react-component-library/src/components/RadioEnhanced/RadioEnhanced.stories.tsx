@@ -2,9 +2,9 @@ import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 
-import { RadioCard } from '.'
+import { RadioEnhanced } from '.'
 
-const stories = storiesOf('RadioCard', module)
+const stories = storiesOf('RadioEnhanced', module)
 
 stories.add('Default', () => {
   return (
@@ -23,10 +23,10 @@ stories.add('Default', () => {
           gap: '1px 1px',
         }}
       >
-        <RadioCard name="example" value="" title="My Label 1" />
-        <RadioCard name="example" value="" title="My Label 2" />
-        <RadioCard name="example" value="" title="My Label 3" />
-        <RadioCard name="example" value="" title="My Label 4" />
+        <RadioEnhanced name="example" value="" title="My Label 1" />
+        <RadioEnhanced name="example" value="" title="My Label 2" />
+        <RadioEnhanced name="example" value="" title="My Label 3" />
+        <RadioEnhanced name="example" value="" title="My Label 4" />
       </div>
     </form>
   )
@@ -49,25 +49,25 @@ stories.add('With description', () => {
           gap: '1px 1px',
         }}
       >
-        <RadioCard
+        <RadioEnhanced
           name="example"
           value=""
           title="My Label 1"
           description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
         />
-        <RadioCard
+        <RadioEnhanced
           name="example"
           value=""
           title="My Label 2"
           description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
         />
-        <RadioCard
+        <RadioEnhanced
           name="example"
           value=""
           title="My Label 3"
           description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
         />
-        <RadioCard
+        <RadioEnhanced
           name="example"
           value=""
           title="My Label 4"

@@ -3,7 +3,7 @@
 $animation-timing: 0.2s;
 $radio-focus-width: 0.1rem;
 
-.rn-radio-card {
+.rn-radio-enhanced {
   display: inline-flex;
   flex-direction: column;
   width: 22rem;
@@ -31,12 +31,12 @@ $radio-focus-width: 0.1rem;
   }
 }
 
-.rn-radio-card__description {
+.rn-radio-enhanced__description {
   color: f.color("neutral", "400");
   padding-top: f.spacing("4");
 }
 
-.rn-radio-card .rn-radio__label {
+.rn-radio-enhanced .rn-radio__label {
   font-size: f.font-size("m");
   color: f.color("neutral", "500");
 }
