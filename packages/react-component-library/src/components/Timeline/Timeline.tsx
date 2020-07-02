@@ -133,7 +133,7 @@ export const Timeline: React.FC<TimelineProps> = ({
         {rootChildren}
         <div className="timeline__inner">
           <header className="timeline__header">{headChildren}</header>
-          <main className="timeline__main">{bodyChildren}</main>
+          {bodyChildren}
         </div>
       </article>
     </TimelineProvider>
