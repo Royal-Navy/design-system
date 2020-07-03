@@ -16,7 +16,7 @@ function initialiseState(
   endDate: Date,
   today: Date = new Date(),
   options: TimelineOptions
-) {
+): TimelineState {
   const state = {
     ...initialState,
     today,
