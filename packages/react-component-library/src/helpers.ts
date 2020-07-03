@@ -1,5 +1,5 @@
-function getKey(prefix: string, index: string | number): string {
-  return `${prefix}-${index}`.replace(/\s/g, '')
+function getKey(prefix: string, suffix: string | number): string {
+  return `${prefix}-${suffix}`.replace(/\s/g, '')
 }
 
 function warnIfOverwriting<P>(
