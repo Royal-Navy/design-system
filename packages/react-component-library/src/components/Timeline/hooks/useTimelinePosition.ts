@@ -8,7 +8,6 @@ import {
 } from 'date-fns'
 
 import { TimelineContext } from '../context'
-
 import { formatPx } from '../helpers'
 
 function getWidth (
@@ -34,11 +33,14 @@ function getOffset (
 export function useTimelinePosition(
   startDate: Date,
   endDate: Date
-) {
+): {
+  width: string,
+  offset: string,
+  isBeforeStart: boolean,
+  isAfterEnd: boolean
+} {
   const {
     state: {
-      startDate: timelineStartDate,
-      endDate: timelineEndDate,
       months,
       options
     }
