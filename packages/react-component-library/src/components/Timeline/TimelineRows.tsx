@@ -4,7 +4,8 @@ import { differenceInDays } from 'date-fns'
 
 import { TimelineRowProps } from '.'
 import { TimelineContext } from './context'
-import { getKey, isOdd, formatPx } from './helpers'
+import { withKey } from '../../helpers'
+import { formatPx, isOdd } from './helpers'
 import { NO_DATA_MESSAGE } from './constants'
 
 export interface TimelineRowsProps extends ComponentWithClass {
@@ -16,7 +17,7 @@ export interface TimelineRowsProps extends ComponentWithClass {
     isOddNumber: boolean,
     offsetPx: string,
     widthPx: string
-  ) => React.ReactNode
+  ) => React.ReactElement
 }
 
 const noData = (
@@ -42,7 +43,6 @@ function renderDefaultColumns(
   return (
     <div
       className={classes}
-      key={getKey('timeline-row-week', index)}
       style={{
         marginLeft: offsetPx,
         width: widthPx,
@@ -51,21 +51,24 @@ function renderDefaultColumns(
   )
 }
 
+function isPopulated<T>(itemOrArray: T) {
+  if (!itemOrArray) {
+    return false
+  }
+
+  if (!Array.isArray(itemOrArray)) {
+    return true
+  }
+
+  return !!itemOrArray.length
+}
+
 export const TimelineRows: React.FC<TimelineRowsProps> = ({
   children,
   className,
   renderColumns,
 }) => {
-  const childrenWithKey = React.Children.map(
-    children,
-    (child: React.ReactElement<TimelineRowProps>, index: number) =>
-      React.cloneElement(child, {
-        ...child.props,
-        key: getKey('timeline-row', index),
-      })
-  )
-
-  const hasChildren = childrenWithKey && childrenWithKey.length
+  const hasChildren = isPopulated(children)
 
   const mainClasses = classNames('timeline__main', className, {
     'timeline__main--renderDefault': !renderColumns,
@@ -102,16 +105,18 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
 
                 const isOddNumber = isOdd(index)
 
-                return renderColumns
+                const column = renderColumns
                   ? renderColumns(index, isOddNumber, offsetPx, widthPx)
                   : renderDefaultColumns(index, isOddNumber, offsetPx, widthPx)
+
+                return withKey(column, 'timeline-column', startDate.toString())
               })
             }}
           </TimelineContext.Consumer>
         </div>
       )}
 
-      {hasChildren ? childrenWithKey : noData}
+      {hasChildren ? children : noData}
     </main>
   )
 }
