@@ -18,26 +18,27 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-packages-v1-{{ .Branch }}-
-            - yarn-packages-v1-
-      - run: yarn install
-      - save_cache:
-          paths:
-            - ~/.cache/yarn
-          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v2-{{ .Branch }}-
+            - yarn-packages-v2-
+      - run: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
+
 
 jobs:
   build_icon-library:
     docker: *docker
     steps:
       - checkout
-      - dependencies
+      - run: yarn install
       - *build_icon_library
-      - persist_to_workspace:
-          root: packages
+      - save_cache:
           paths:
-            - icon-library/dist
+            - ~/.cache/yarn
+          key: yarn-packages-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - persist_to_workspace:
+          root: /home/circleci/project
+          paths:
+            - .
   security_audit:
     docker: *docker
     steps:
@@ -46,8 +47,8 @@ jobs:
   check_commits:
     docker: *docker
     steps:
-      - checkout
-      - dependencies
+      - attach_workspace:
+          at: .
       - run: node ./scripts/commitlint $CIRCLE_PULL_REQUEST
       - run: node ./scripts/check-fixup $CIRCLE_PULL_REQUEST
   lint_css-framework:
@@ -97,10 +98,8 @@ jobs:
   test_react-component-library:
     docker: *docker
     steps:
-      - checkout
-      - dependencies
       - attach_workspace:
-          at: packages
+          at: .
       - run:
           name: Jest
           environment:
@@ -120,7 +119,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: workspace
+          at: packages
       - run:
           name: Upload Code coverage reports
           working_directory: ~/project/packages/
@@ -128,10 +127,8 @@ jobs:
   test_visual_regression:
     docker: *docker
     steps:
-      - checkout
-      - dependencies
       - attach_workspace:
-          at: packages
+          at: .
       - run:
           name: Run visual regression tests
           command: |
@@ -197,10 +194,8 @@ jobs:
   test_docs-site:
     docker: *docker
     steps:
-      - checkout
-      - dependencies
       - attach_workspace:
-          at: packages
+          at: .
       - run:
           name: Build React Components
           command: yarn --cwd packages/react-component-library build
@@ -233,12 +228,16 @@ workflows:
                 - master
                 - latest
       - security_audit:
+          requires:
+            - build_icon-library
           filters:
             branches:
               ignore:
                 - master
                 - latest
       - check_commits:
+          requires:
+            - build_icon-library
           filters:
             branches:
               ignore:
@@ -320,11 +319,15 @@ workflows:
               only:
                 - latest
       - security_audit:
+          requires:
+            - build_icon-library
           filters:
             branches:
               only:
                 - latest
       - check_commits:
+          requires:
+            - build_icon-library
           filters:
             branches:
               only:
