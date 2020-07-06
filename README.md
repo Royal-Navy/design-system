@@ -111,7 +111,7 @@ The Standards Toolkit currently supports all major evergreen browsers.
 
 ## Licensing
 
-The Royal-Navy/design-system is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/develop/LICENSE).
+The Royal-Navy/design-system is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE).
 
 ## Contributing
 Read the [contributing guidelines](docs/contributing.md).
