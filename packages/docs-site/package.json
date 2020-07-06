@@ -49,7 +49,7 @@
     "@royalnavy/icon-library": "^2.10.0-alpha.29",
     "@royalnavy/react-component-library": "^2.10.0-alpha.29",
     "change-case": "^4.1.1",
-    "firacode": "^4.0.0",
+    "firacode": "^5.2.0",
     "gatsby": "^2.19.5",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-catch-links": "^2.1.24",
