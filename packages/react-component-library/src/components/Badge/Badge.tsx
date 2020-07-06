@@ -38,6 +38,7 @@ export const Badge: React.FC<BadgeProps> = ({
   colorVariant = BADGE_COLOR_VARIANT.SOLID,
   size = BADGE_SIZE.REGULAR,
   variant,
+  ...rest
 }) => {
   const classes = classNames(
     'rn-badge',
@@ -49,7 +50,7 @@ export const Badge: React.FC<BadgeProps> = ({
   )
 
   return (
-    <span className={classes} data-testid="badge">
+    <span className={classes} data-testid="badge" {...rest}>
       {children}
     </span>
   )
