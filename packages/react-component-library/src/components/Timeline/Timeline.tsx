@@ -76,16 +76,13 @@ function extractRowData(
 ) {
   return (rowGroups as []).map(
     ({ props: { children } }: timelineBodyChildrenType) => {
-      let rows: any[] = []
-
-      if (children) {
-        const items = Array.isArray(children) ? children : [children]
-        rows = items.map(
+      const rows =
+        React.Children.map(
+          children,
           ({ props: { name } }: React.ReactElement<TimelineRowProps>) => ({
             name,
           })
-        )
-      }
+        ) || []
 
       return {
         // ref, // Create refs to original components? Drag + Drop etc?
