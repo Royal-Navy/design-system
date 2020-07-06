@@ -3,7 +3,8 @@ import classNames from 'classnames'
 import { format, differenceInDays } from 'date-fns'
 
 import { DATE_WEEK_FORMAT } from './constants'
-import { formatPx, getKey, isOdd } from './helpers'
+import { formatPx, isOdd } from './helpers'
+import { withKey } from '../../helpers'
 import { TimelineContext } from './context'
 
 export interface TimelineWeeksWithRenderContentProps
@@ -16,7 +17,7 @@ export interface TimelineWeeksWithRenderContentProps
     dayWidth: number,
     daysTotal: number,
     startDate: Date
-  ) => React.ReactNode
+  ) => React.ReactElement
 }
 
 export interface TimelineWeeksWithChildrenProps extends ComponentWithClass {
@@ -52,7 +53,6 @@ function renderDefault(
   return (
     <div
       className={wrapperClasses}
-      key={getKey('timeline-week', index)}
       style={{
         marginLeft: offsetPx,
         width: widthPx,
@@ -99,7 +99,9 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
             ]
 
             // @ts-ignore
-            return render ? render(...args) : renderDefault(...args)
+            const child = render ? render(...args) : renderDefault(...args)
+
+            return withKey(child, 'timeline-week', startDate.toString())
           })
         }}
       </TimelineContext.Consumer>

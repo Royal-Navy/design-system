@@ -3,7 +3,7 @@ import { IconChevronRight, IconChevronLeft } from '@royalnavy/icon-library'
 import { startCase } from 'lodash'
 
 import { Button } from '../Button'
-import { getKey } from './helpers'
+import { getKey } from '../../helpers'
 import { TimelineContext } from './context'
 import { TIMELINE_ACTIONS } from './context/types'
 
@@ -18,13 +18,14 @@ const TimelineSideList: React.FC<TimelineSideProps> = ({
 }) => {
   return (
     <ol className="timeline__side-list">
-      {headChildren.map(({ type: { displayName } }) => {
+      {headChildren.map(({ type: { displayName } }, index) => {
         const name = displayName.toLowerCase().substring('timeline'.length)
 
         if (!['months', 'weeks', 'days'].includes(name)) return null
 
+        const className = `timeline__side-${name}`
         return (
-          <li className={`timeline__side-${name}`}>
+          <li className={className} key={getKey(className, index)}>
             <span className="timeline__side-title">{startCase(name)}</span>
           </li>
         )

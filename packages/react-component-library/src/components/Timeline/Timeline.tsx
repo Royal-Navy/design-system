@@ -27,6 +27,7 @@ import {
 
 import { TimelineOptions } from './context/types'
 import { DEFAULTS } from './constants'
+import { getKey } from '../../helpers'
 
 type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
 
@@ -116,11 +117,12 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const rootChildren = extractChildrenOf<TimelineRootComponent>(children, [
     TimelineSide.name,
-  ]).map((child) => {
+  ]).map((child, index) => {
     if (isComponentOf(child, [TimelineSide.name])) {
       return React.cloneElement(child, {
         rowGroups: extractRowData(bodyChildren),
         headChildren,
+        key: getKey('root-component', index),
       })
     }
 
@@ -133,7 +135,7 @@ export const Timeline: React.FC<TimelineProps> = ({
         {rootChildren}
         <div className="timeline__inner">
           <header className="timeline__header">{headChildren}</header>
-          <main className="timeline__main">{bodyChildren}</main>
+          {bodyChildren}
         </div>
       </article>
     </TimelineProvider>

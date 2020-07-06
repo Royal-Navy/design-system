@@ -2,12 +2,12 @@ import React from 'react'
 import { format } from 'date-fns'
 import classNames from 'classnames'
 
-import { getKey } from './helpers'
+import { withKey } from '../../helpers'
 import { TimelineContext } from './context'
 import { DATE_DAY_FORMAT } from './constants'
 
 export interface TimelineDaysWithRenderContentProps {
-  render: (index: number, dayWidth: number, date: Date) => React.ReactNode
+  render: (index: number, dayWidth: number, date: Date) => React.ReactElement
 }
 
 export interface TimelineDaysWithChildrenProps {
@@ -32,7 +32,6 @@ function renderDefault(index: number, dayWidth: number, date: Date) {
   return (
     <div
       className={wrapperClasses}
-      key={getKey('timeline-day', index)}
       style={{
         width: `${dayWidth}px`,
       }}
@@ -60,9 +59,11 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({ render }) => {
         <div className={classes} data-testid="timeline-days">
           {days &&
             days.map(({ date }, index) => {
-              return render
+              const child = render
                 ? render(index, dayWidth, date)
                 : renderDefault(index, dayWidth, date)
+
+              return withKey(child, 'timeline-day', date.toString())
             })}
         </div>
       )}

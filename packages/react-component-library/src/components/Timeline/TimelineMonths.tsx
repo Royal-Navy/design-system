@@ -2,7 +2,8 @@ import React from 'react'
 import { format, getDaysInMonth } from 'date-fns'
 import classNames from 'classnames'
 
-import { formatPx, getKey } from './helpers'
+import { formatPx } from './helpers'
+import { withKey } from '../../helpers'
 import { TimelineContext } from './context'
 import { DATE_MONTH_FORMAT } from './constants'
 
@@ -13,7 +14,7 @@ export interface TimelineMonthsWithRenderContentProps
     dayWidth: number,
     daysTotal: number,
     startDate: Date
-  ) => React.ReactNode
+  ) => React.ReactElement
 }
 
 export interface TimelineMonthsWithChildrenProps extends ComponentWithClass {
@@ -29,7 +30,7 @@ function renderDefault(
   dayWidth: number,
   daysTotal: number,
   startDate: Date
-) {
+): React.ReactElement {
   const wrapperClasses = classNames(
     'timeline__month',
     'timeline__month--renderDefault'
@@ -43,7 +44,6 @@ function renderDefault(
   return (
     <div
       className={wrapperClasses}
-      key={getKey('timeline-month', index)}
       style={{
         width: formatPx(dayWidth, daysTotal),
       }}
@@ -70,9 +70,11 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({ render }) => {
             months.map(({ startDate }, index) => {
               const daysTotal = getDaysInMonth(startDate)
 
-              return render
+              const child = render
                 ? render(index, dayWidth, daysTotal, startDate)
                 : renderDefault(index, dayWidth, daysTotal, startDate)
+
+              return withKey(child, 'timeline-month', startDate.toString())
             })}
         </div>
       )}
