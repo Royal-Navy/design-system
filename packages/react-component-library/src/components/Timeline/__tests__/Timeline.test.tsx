@@ -692,4 +692,46 @@ describe('Timeline', () => {
       expect(wrapper.queryAllByTestId('timeline-day-title')).toHaveLength(15)
     })
   })
+
+  describe('when composed with a custom root child component', () => {
+    beforeEach(() => {
+      const CustomTimelineComponent = () => {
+        return (
+          <div data-testid="custom-timeline-component">
+            Custom Timeline Component
+          </div>
+        )
+      }
+
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 4, 1, 0, 0, 0)}
+        >
+          <CustomTimelineComponent />
+          <TimelineSide />
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 1, 1, 0, 0, 0)}
+                  endDate={new Date(2020, 1, 10, 0, 0, 0)}
+                >
+                  Event
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the custom component', () => {
+      expect(
+        wrapper.queryByTestId('custom-timeline-component')
+      ).toBeInTheDocument()
+    })
+  })
 })

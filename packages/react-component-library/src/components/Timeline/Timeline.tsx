@@ -2,13 +2,7 @@ import React from 'react'
 import { differenceInDays } from 'date-fns'
 
 import { TimelineProvider, TimelineContext } from './context'
-
-import {
-  TimelineRootComponent,
-  TimelineHeadComponent,
-  TimelineBodyComponent,
-  TimelineComponent,
-} from './types'
+import { TimelineComponent } from './types'
 
 import {
   TimelineSide,
@@ -64,11 +58,14 @@ function isComponentOf<T extends TimelineComponent>(
   return names.includes(typeName)
 }
 
-function extractChildrenOf<T>(
+function extractChildren(
   children: timelineChildrenType | timelineChildrenType[],
-  names: string[]
+  names: string[],
+  inverse?: boolean
 ) {
-  return (children as []).filter((child) => isComponentOf(child, names))
+  return (children as []).filter((child) => {
+    return inverse ? !isComponentOf(child, names) : isComponentOf(child, names)
+  })
 }
 
 function extractRowData(
@@ -105,20 +102,26 @@ export const Timeline: React.FC<TimelineProps> = ({
     rangeInMonths: range || DEFAULTS.RANGE_IN_MONTHS,
   }
 
-  const bodyChildren = extractChildrenOf<TimelineBodyComponent>(children, [
-    TimelineRows.name,
-  ])
+  const bodyChildren = extractChildren(children, [TimelineRows.name])
 
-  const headChildren = extractChildrenOf<TimelineHeadComponent>(children, [
+  const headChildren = extractChildren(children, [
     TimelineDays.name,
     TimelineWeeks.name,
     TimelineMonths.name,
     TimelineTodayMarker.name,
   ])
 
-  const rootChildren = extractChildrenOf<TimelineRootComponent>(children, [
-    TimelineSide.name,
-  ]).map((child, index) => {
+  const rootChildren = extractChildren(
+    children,
+    [
+      TimelineRows.name,
+      TimelineDays.name,
+      TimelineWeeks.name,
+      TimelineMonths.name,
+      TimelineTodayMarker.name,
+    ],
+    true
+  ).map((child, index) => {
     if (isComponentOf(child, [TimelineSide.name])) {
       return React.cloneElement(child, {
         rowGroups: extractRowData(bodyChildren),
