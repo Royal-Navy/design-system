@@ -10,6 +10,7 @@ import {
 import { List, ListItem } from '.'
 
 describe('List', () => {
+  let consoleWarnSpy: jest.SpyInstance
   let onClickSpy1: (event: React.MouseEvent<HTMLButtonElement>) => void
   let onClickSpy2: (event: React.MouseEvent<HTMLButtonElement>) => void
   let onClickSpy3: (event: React.MouseEvent<HTMLButtonElement>) => void
@@ -17,6 +18,8 @@ describe('List', () => {
 
   describe('default props', () => {
     beforeEach(() => {
+      consoleWarnSpy = jest.spyOn(global.console, 'warn')
+
       onClickSpy1 = jest.fn()
       onClickSpy2 = jest.fn()
       onClickSpy3 = jest.fn()
@@ -34,6 +37,10 @@ describe('List', () => {
           </ListItem>
         </List>
       )
+    })
+
+    it('should not call `console.warn`', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledTimes(0)
     })
 
     it('should render the tiles', () => {
@@ -155,6 +162,49 @@ describe('List', () => {
           ).not.toContain('is-inactive')
         })
       })
+    })
+  })
+
+  describe('when specify properties that will be overwritten', () => {
+
+    beforeEach(() => {
+      consoleWarnSpy = jest.spyOn(global.console, 'warn')
+
+      wrapper = render(
+        <List>
+          <ListItem
+            isActive
+            onClick={jest.fn()}
+            onMouseEnter={jest.fn()}
+            onMouseLeave={jest.fn()}
+            title="List item"
+          >
+            This is the description
+          </ListItem>
+        </List>
+      )
+    })
+
+    it('should call `console.warn` 4 times', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledTimes(3)
+    })
+
+    it('should warn the consumer `isActive` will be overwritten', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'Prop `isActive` on `ListItem` will be overwritten'
+      )
+    })
+
+    it('should warn the consumer `onMouseEnter` will be overwritten', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'Prop `onMouseEnter` on `ListItem` will be overwritten'
+      )
+    })
+
+    it('should warn the consumer `onMouseLeave` will be overwritten', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'Prop `onMouseLeave` on `ListItem` will be overwritten'
+      )
     })
   })
 })

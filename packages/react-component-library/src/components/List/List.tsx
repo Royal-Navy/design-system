@@ -3,6 +3,7 @@ import classNames from 'classnames'
 
 import { ListItem, ListItemProps } from './ListItem'
 import { useListItem } from './useListItem'
+import { warnIfOverwriting } from '../../helpers'
 
 interface ListProps extends ComponentWithClass {
   children:
@@ -18,6 +19,10 @@ export const List: React.FC<ListProps> = ({ children, className }) => {
   const mapped = React.Children.map(
     children,
     (child: React.ReactElement<ListItemProps>, index: number) => {
+      warnIfOverwriting(child.props, 'isActive', ListItem.name)
+      warnIfOverwriting(child.props, 'onMouseEnter', ListItem.name)
+      warnIfOverwriting(child.props, 'onMouseLeave', ListItem.name)
+
       return React.cloneElement(child, {
         isActive: isActive(index),
         onMouseEnter: () => setActiveIndex(index),
