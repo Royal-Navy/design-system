@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 717 239">
+  <defs>
+    <filter id="a" width="103.2%" height="107.4%" x="-1.6%" y="-2.9%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0375600962 0"/>
+    </filter>
+    <rect id="b" width="310" height="136" x="0" y="0" rx="4"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <rect width="715" height="199" x="1.5" y=".5" fill="#FFF" stroke="#B8C7D2"/>
+    <g transform="translate(204 32)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <rect width="310" height="136" fill="#FFF" rx="4"/>
+      <rect width="309" height="135" x=".5" y=".5" fill="none" stroke="#E2E9EE" rx="4"/>
+    </g>
+    <g transform="translate(228 58)">
+      <rect width="17" height="17" x="-.5" y="-.5" fill="none" stroke="#B8C7D2" rx="8.5"/>
+      <rect width="12" height="12" x="2" y="2" fill="#FFF" rx="6"/>
+    </g>
+    <text fill="#1C2D39" font-family="Lato-Medium, Lato" font-size="16" font-weight="400" transform="translate(204 32)">
+      <tspan x="50" y="40">Radio Enhanced</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="230">Custom content variation of the Radio Enhanced component.</tspan>
+    </text>
+  </g>
+</svg>

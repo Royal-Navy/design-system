@@ -6,9 +6,9 @@ import userEvent from '@testing-library/user-event'
 import { withFormik } from '../../enhancers/withFormik'
 import FieldProps from '../../types/FieldProps'
 import FormProps from '../../types/FormProps'
-import { RadioCard } from '.'
+import { RadioEnhanced } from '.'
 
-describe('RadioCard', () => {
+describe('RadioEnhanced', () => {
   let field: FieldProps
   let form: FormProps
   let label: string
@@ -36,7 +36,7 @@ describe('RadioCard', () => {
       field.value = 'option1'
 
       radio = render(
-        <RadioCard
+        <RadioEnhanced
           name={field.name}
           value={field.value}
           onChange={field.onChange}
@@ -48,7 +48,7 @@ describe('RadioCard', () => {
 
     it('should not output the description', () => {
       expect(
-        radio.queryByTestId('radiocard-description')
+        radio.queryByTestId('radioenhanced-description')
       ).not.toBeInTheDocument()
     })
 
@@ -67,7 +67,7 @@ describe('RadioCard', () => {
     describe('and the user clicks the component', () => {
       beforeEach(() => {
         fireEvent(
-          radio.getByTestId('radiocard-wrapper'),
+          radio.getByTestId('radioenhanced-wrapper'),
           new MouseEvent('click', {
             bubbles: true,
             cancelable: true,
@@ -83,7 +83,7 @@ describe('RadioCard', () => {
     describe('and the user keys to the component', () => {
       beforeEach(() => {
         userEvent.tab()
-        userEvent.type(radio.getByTestId('radiocard-wrapper'), '{enter}')
+        userEvent.type(radio.getByTestId('radioenhanced-wrapper'), '{enter}')
       })
 
       it('focusses the nested radio', () => {
@@ -101,9 +101,9 @@ describe('RadioCard', () => {
 
       form.touched = {}
 
-      const FormikRadioCard = withFormik(RadioCard)
+      const FormikRadioEnhanced = withFormik(RadioEnhanced)
 
-      radio = render(<FormikRadioCard field={field} form={form} />)
+      radio = render(<FormikRadioEnhanced field={field} form={form} />)
     })
 
     it('should not add the aria attributes', () => {
@@ -128,9 +128,9 @@ describe('RadioCard', () => {
 
       form.touched.colour = true
 
-      const FormikRadioCard = withFormik(RadioCard)
+      const FormikRadioEnhanced = withFormik(RadioEnhanced)
 
-      radio = render(<FormikRadioCard field={field} form={form} />)
+      radio = render(<FormikRadioEnhanced field={field} form={form} />)
     })
 
     it('should add the aria attributes', () => {
@@ -150,7 +150,7 @@ describe('RadioCard', () => {
   describe('when an additional class it provided', () => {
     beforeEach(() => {
       radio = render(
-        <RadioCard
+        <RadioEnhanced
           className="test"
           name={field.name}
           value={field.value}
@@ -168,7 +168,7 @@ describe('RadioCard', () => {
   describe('when an id is provided', () => {
     beforeEach(() => {
       radio = render(
-        <RadioCard
+        <RadioEnhanced
           id="test"
           name={field.name}
           value={field.value}
@@ -190,7 +190,7 @@ describe('RadioCard', () => {
   describe('when a description is provided', () => {
     beforeEach(() => {
       radio = render(
-        <RadioCard
+        <RadioEnhanced
           id="test"
           name={field.name}
           value={field.value}
@@ -202,7 +202,7 @@ describe('RadioCard', () => {
     })
 
     it('should output the description', () => {
-      expect(radio.getByTestId('radiocard-description').innerHTML).toEqual(
+      expect(radio.getByTestId('radioenhanced-description').innerHTML).toEqual(
         'Hello, World!'
       )
     })
