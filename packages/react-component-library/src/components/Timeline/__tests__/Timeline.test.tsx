@@ -628,6 +628,10 @@ describe('Timeline', () => {
       )
     })
 
+    it('renders the correct number of sidebar rows', () => {
+      expect(wrapper.queryAllByTestId('timeline-side-row')).toHaveLength(1)
+    })
+
     it('renders the sidebar month label', () => {
       expect(wrapper.queryByText('Months')).toBeInTheDocument()
     })
@@ -635,6 +639,27 @@ describe('Timeline', () => {
     it('does not render the sidebar weeks and days labels', () => {
       expect(wrapper.queryByText('Weeks')).not.toBeInTheDocument()
       expect(wrapper.queryByText('Days')).not.toBeInTheDocument()
+    })
+  })
+
+  describe('when TimelineSide is used with no row data', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 4, 1, 0, 0, 0)}
+          range={6}
+        >
+          <TimelineSide />
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('renders the correct number of sidebar rows', () => {
+      expect(wrapper.queryAllByTestId('timeline-side-row')).toHaveLength(0)
     })
   })
 
@@ -690,6 +715,48 @@ describe('Timeline', () => {
 
     it('renders the correct number of days', () => {
       expect(wrapper.queryAllByTestId('timeline-day-title')).toHaveLength(15)
+    })
+  })
+
+  describe('when composed with a custom root child component', () => {
+    beforeEach(() => {
+      const CustomTimelineComponent = () => {
+        return (
+          <div data-testid="custom-timeline-component">
+            Custom Timeline Component
+          </div>
+        )
+      }
+
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 4, 1, 0, 0, 0)}
+        >
+          <CustomTimelineComponent />
+          <TimelineSide />
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 1, 1, 0, 0, 0)}
+                  endDate={new Date(2020, 1, 10, 0, 0, 0)}
+                >
+                  Event
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the custom component', () => {
+      expect(
+        wrapper.queryByTestId('custom-timeline-component')
+      ).toBeInTheDocument()
     })
   })
 })
