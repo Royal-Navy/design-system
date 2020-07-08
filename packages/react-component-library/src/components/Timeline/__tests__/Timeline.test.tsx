@@ -628,6 +628,10 @@ describe('Timeline', () => {
       )
     })
 
+    it('renders the correct number of sidebar rows', () => {
+      expect(wrapper.queryAllByTestId('timeline-side-row')).toHaveLength(1)
+    })
+
     it('renders the sidebar month label', () => {
       expect(wrapper.queryByText('Months')).toBeInTheDocument()
     })
@@ -635,6 +639,27 @@ describe('Timeline', () => {
     it('does not render the sidebar weeks and days labels', () => {
       expect(wrapper.queryByText('Weeks')).not.toBeInTheDocument()
       expect(wrapper.queryByText('Days')).not.toBeInTheDocument()
+    })
+  })
+
+  describe('when TimelineSide is used with no row data', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 4, 1, 0, 0, 0)}
+          range={6}
+        >
+          <TimelineSide />
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('renders the correct number of sidebar rows', () => {
+      expect(wrapper.queryAllByTestId('timeline-side-row')).toHaveLength(0)
     })
   })
 
