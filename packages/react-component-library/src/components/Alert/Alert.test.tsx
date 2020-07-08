@@ -12,6 +12,10 @@ describe('Alert', () => {
       wrapper = render(<Alert>Description</Alert>)
     })
 
+    it('should set the `role` attribute to `alert`', () => {
+      expect(wrapper.getByTestId('alert')).toHaveAttribute('role', 'alert')
+    })
+
     it('should render the close button', () => {
       expect(wrapper.getByTestId('close')).toBeInTheDocument()
     })
@@ -50,8 +54,35 @@ describe('Alert', () => {
       wrapper = render(<Alert title="Title">Description</Alert>)
     })
 
+    it('should set the `aria-labelledby` attribute to the ID of the title', () => {
+      const titleId = wrapper.getByTestId('content-title').getAttribute('id')
+
+      expect(wrapper.getByTestId('alert')).toHaveAttribute(
+        'aria-labelledby',
+        titleId
+      )
+    })
+
+    it('should set the `aria-describedby` attribute to the ID of the content', () => {
+      const contentId = wrapper
+        .getByTestId('content-description')
+        .getAttribute('id')
+
+      expect(wrapper.getByTestId('alert')).toHaveAttribute(
+        'aria-describedby',
+        contentId
+      )
+    })
+
     it('should render the state icon', () => {
       expect(wrapper.getByTestId('state-icon')).toBeInTheDocument()
+    })
+
+    it('should set the `aria-hidden` attribute on the state icon', () => {
+      expect(wrapper.getByTestId('state-icon')).toHaveAttribute(
+        'aria-hidden',
+        'true'
+      )
     })
 
     it('should render the default info icon', () => {
