@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.9.0...2.10.0) (2020-07-09)
+
+
+### Bug Fixes
+
+* **Build:** Remove unused flag with typo ([f051716](https://github.com/Royal-Navy/design-system/commit/f051716738b041deb41f1ed595c73d6718f4956d))
+* **IconLibrary:** Replace fills with `CurrentColor` magic string ([42de734](https://github.com/Royal-Navy/design-system/commit/42de7343230b3764aa49944909e691d946ff68d4))
+* **IconLibrary:** Update icon source files ([f9cfb07](https://github.com/Royal-Navy/design-system/commit/f9cfb07db329c1ca877a093d5ed8f324b253e886))
+
+
+### Features
+
+* **IconLibrary:** Add silhouettes ([1792ffc](https://github.com/Royal-Navy/design-system/commit/1792ffc473f178bba5c7005a7b1feb6c81736391))
+* **IconLibrary:** Replace fills with `CurrentColor` magic string ([7518bcd](https://github.com/Royal-Navy/design-system/commit/7518bcdccaf40f0fd7697b7f175cb612f4cd3cb0))
+
+
+
+
+
 # [2.9.0](https://github.com/Royal-Navy/design-system/compare/2.8.0...2.9.0) (2020-06-11)
 
 

@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.9.0...2.10.0) (2020-07-09)
+
+
+### Bug Fixes
+
+* **DocsSite:** Reference to `Form` instead of `form` ([112f3c1](https://github.com/Royal-Navy/design-system/commit/112f3c19e48ef5cc01463bbd59807671a72f84f9))
+* **Fonts:** Improve browser coverage ([5159d1f](https://github.com/Royal-Navy/design-system/commit/5159d1f9ac00b7dc025a83eb4f0c789e03af1db2))
+* **IconLibrary:** Update icon source files ([f9cfb07](https://github.com/Royal-Navy/design-system/commit/f9cfb07db329c1ca877a093d5ed8f324b253e886))
+* **Security:** Resolve latest Lodash ([42cb150](https://github.com/Royal-Navy/design-system/commit/42cb1508e608d705939af9d7ae2392e049c63411))
+
+
+### Features
+
+* **CheckboxCard:** Implement base CheckboxCard ([8c4c33e](https://github.com/Royal-Navy/design-system/commit/8c4c33e6b68f67b0478e8b753b19495a0e24c147))
+* **Masthead:** Add ability to have no service logo ([d61a90e](https://github.com/Royal-Navy/design-system/commit/d61a90eb2cee7b1feac0db3e2c02859c7a64d180))
+* **RadioCard:** Implement base RadioCard ([1e32670](https://github.com/Royal-Navy/design-system/commit/1e32670f60d5dca4dab1f0d2be4b53471de66678))
+* **RangeSlider:** Add threshold functionality ([09e774d](https://github.com/Royal-Navy/design-system/commit/09e774dc559d668b4e957b9b158daea13080ce5c))
+* **Timeline:** Add ability to bound by two dates ([e9b67f4](https://github.com/Royal-Navy/design-system/commit/e9b67f4468e06e6d00a75141934bf705f462c35c))
+
+
+
+
+
 # [2.9.0](https://github.com/Royal-Navy/design-system/compare/2.8.0...2.9.0) (2020-06-11)
 
 

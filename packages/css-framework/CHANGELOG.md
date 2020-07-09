@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.9.0...2.10.0) (2020-07-09)
+
+
+### Bug Fixes
+
+* **Button:** Replace use of `unset` ([42abf7b](https://github.com/Royal-Navy/design-system/commit/42abf7bc0bb26a9e328207f73e0457e437106ba1))
+* **Checkbox:** Set explicit font-size for checkmark ([a0a5a96](https://github.com/Royal-Navy/design-system/commit/a0a5a9622e8e4989b9eb7c8721e0dbb482d906af))
+* **DataList:** Use `auto` over `unset` ([db4f524](https://github.com/Royal-Navy/design-system/commit/db4f524815b003065f6253789a48faaa23b2b9cb))
+* **DatePicker:** Make dropdown button open/close picker ([2c4d252](https://github.com/Royal-Navy/design-system/commit/2c4d25253e50e44e00495dae26101bb9c396a1c7))
+* **DatePicker:** Replace grid with flexbox ([da462b5](https://github.com/Royal-Navy/design-system/commit/da462b5fb2c02dbb710affc72ea98bb47e231e5e))
+* **FloatingBox:** Replace use of `unset` ([f21ff7c](https://github.com/Royal-Navy/design-system/commit/f21ff7cecbbb8edcd265d31bbd297b975e5defc8))
+* **TextInput:** Reduce error message spacing ([cd8a043](https://github.com/Royal-Navy/design-system/commit/cd8a043cf1c64b37e846928820d91c4ade14ec3c))
+
+
+### Features
+
+* **CheckboxCard:** Implement base CheckboxCard ([8c4c33e](https://github.com/Royal-Navy/design-system/commit/8c4c33e6b68f67b0478e8b753b19495a0e24c147))
+* **DismissableBanner:** Add default component ([86f9086](https://github.com/Royal-Navy/design-system/commit/86f908636f7e6ea44aef4e85b99d7fe9898b3b14))
+* **Masthead:** Add ability to have no service logo ([d61a90e](https://github.com/Royal-Navy/design-system/commit/d61a90eb2cee7b1feac0db3e2c02859c7a64d180))
+* **Masthead:** Add avatar links ([8a957ac](https://github.com/Royal-Navy/design-system/commit/8a957ac71f550d7ad977933dab6bcdbfedef6c38))
+* **RadioCard:** Implement base RadioCard ([1e32670](https://github.com/Royal-Navy/design-system/commit/1e32670f60d5dca4dab1f0d2be4b53471de66678))
+* **RangeSlider:** Add threshold functionality ([09e774d](https://github.com/Royal-Navy/design-system/commit/09e774dc559d668b4e957b9b158daea13080ce5c))
+* **RangeSlider:** Increase label contrast for a11y ([a29813c](https://github.com/Royal-Navy/design-system/commit/a29813c8074939d69635ad138d505b65fe090ba0))
+* **TopLevelNavigation:** Create sheet abstraction ([2f1ada7](https://github.com/Royal-Navy/design-system/commit/2f1ada73380b0c5787f79c4ffb981c25a5677fe7))
+
+
+
+
+
 # [2.9.0](https://github.com/Royal-Navy/design-system/compare/2.8.0...2.9.0) (2020-06-11)
 
 
