@@ -8,6 +8,7 @@ import {
 import classNames from 'classnames'
 
 import { ALERT_VARIANT } from './constants'
+import { getId } from '../../helpers'
 
 const VARIANT_ICON_MAP = {
   [ALERT_VARIANT.DANGER]: (
@@ -60,19 +61,40 @@ export const Alert: React.FC<AlertProps> = ({
     `rn-alert__description--${variant}`
   )
 
+  const titleId = getId('alert-title')
+  const descriptionId = getId('alert-description')
+
   return (
     !closed && (
-      <div className={classes} data-testid="alert">
-        <div className={iconClasses} data-testid="state-icon">
+      <div
+        aria-describedby={descriptionId}
+        aria-labelledby={titleId}
+        className={classes}
+        data-testid="alert"
+        role="alert"
+      >
+        <div
+          aria-hidden="true"
+          className={iconClasses}
+          data-testid="state-icon"
+        >
           {VARIANT_ICON_MAP[variant]}
         </div>
         <div className="rn-alert__content" data-testid="content">
           {title && (
-            <h2 className="rn-alert__title" data-testid="content-title">
+            <h2
+              className="rn-alert__title"
+              data-testid="content-title"
+              id={titleId}
+            >
               {title}
             </h2>
           )}
-          <p className={descriptionClasses} data-testid="content-description">
+          <p
+            className={descriptionClasses}
+            data-testid="content-description"
+            id={descriptionId}
+          >
             {children}
           </p>
           <div className="rn-alert__footer">

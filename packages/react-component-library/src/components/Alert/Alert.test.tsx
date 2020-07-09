@@ -12,6 +12,10 @@ describe('Alert', () => {
       wrapper = render(<Alert>Description</Alert>)
     })
 
+    it('should set the `role` attribute to `alert`', () => {
+      expect(wrapper.getByTestId('alert')).toHaveAttribute('role', 'alert')
+    })
+
     it('should render the close button', () => {
       expect(wrapper.getByTestId('close')).toBeInTheDocument()
     })
@@ -50,8 +54,35 @@ describe('Alert', () => {
       wrapper = render(<Alert title="Title">Description</Alert>)
     })
 
+    it('should set the `aria-labelledby` attribute to the ID of the title', () => {
+      const titleId = wrapper.getByTestId('content-title').getAttribute('id')
+
+      expect(wrapper.getByTestId('alert')).toHaveAttribute(
+        'aria-labelledby',
+        titleId
+      )
+    })
+
+    it('should set the `aria-describedby` attribute to the ID of the content', () => {
+      const contentId = wrapper
+        .getByTestId('content-description')
+        .getAttribute('id')
+
+      expect(wrapper.getByTestId('alert')).toHaveAttribute(
+        'aria-describedby',
+        contentId
+      )
+    })
+
     it('should render the state icon', () => {
       expect(wrapper.getByTestId('state-icon')).toBeInTheDocument()
+    })
+
+    it('should set the `aria-hidden` attribute on the state icon', () => {
+      expect(wrapper.getByTestId('state-icon')).toHaveAttribute(
+        'aria-hidden',
+        'true'
+      )
     })
 
     it('should render the default info icon', () => {
@@ -69,75 +100,21 @@ describe('Alert', () => {
     })
   })
 
-  describe('when the variant is specified', () => {
-    describe('when the variant is `INFO`', () => {
-      beforeEach(() => {
-        wrapper = render(
-          <Alert title="Title" variant={ALERT_VARIANT.INFO}>
-            Description
-          </Alert>
-        )
-      })
+  describe('when composing with different variants', () => {
+    it.each`
+      variant
+      ${ALERT_VARIANT.DANGER}
+      ${ALERT_VARIANT.INFO}
+      ${ALERT_VARIANT.SUCCESS}
+      ${ALERT_VARIANT.WARNING}
+    `('should render the $variant icon', ({ variant }) => {
+      wrapper = render(
+        <Alert title="Title" variant={variant}>
+          Description
+        </Alert>
+      )
 
-      it('should render the info icon', () => {
-        expect(wrapper.getByTestId('icon-info')).toBeInTheDocument()
-      })
-    })
-
-    describe('when the variant is `DANGER`', () => {
-      describe('when the title is specified', () => {
-        beforeEach(() => {
-          wrapper = render(
-            <Alert title="Title" variant={ALERT_VARIANT.DANGER}>
-              Description
-            </Alert>
-          )
-        })
-
-        it('should render the danger icon', () => {
-          expect(wrapper.getByTestId('icon-danger')).toBeInTheDocument()
-        })
-      })
-
-      describe('when the title is not specified', () => {
-        beforeEach(() => {
-          wrapper = render(
-            <Alert variant={ALERT_VARIANT.DANGER}>Description</Alert>
-          )
-        })
-
-        it('should render the danger icon', () => {
-          expect(wrapper.getByTestId('icon-danger')).toBeInTheDocument()
-        })
-      })
-    })
-
-    describe('when the variant is `SUCCESS`', () => {
-      beforeEach(() => {
-        wrapper = render(
-          <Alert title="Title" variant={ALERT_VARIANT.SUCCESS}>
-            Description
-          </Alert>
-        )
-      })
-
-      it('should render the success icon', () => {
-        expect(wrapper.getByTestId('icon-success')).toBeInTheDocument()
-      })
-    })
-
-    describe('when the variant is `WARNING`', () => {
-      beforeEach(() => {
-        wrapper = render(
-          <Alert title="Title" variant={ALERT_VARIANT.WARNING}>
-            Description
-          </Alert>
-        )
-      })
-
-      it('should render the warning icon', () => {
-        expect(wrapper.getByTestId('icon-warning')).toBeInTheDocument()
-      })
+      expect(wrapper.getByTestId(`icon-${variant}`)).toBeInTheDocument()
     })
   })
 
