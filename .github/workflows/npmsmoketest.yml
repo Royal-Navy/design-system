@@ -1,0 +1,102 @@
+name: NPM Smoke Test
+env:
+  LOCAL_REGISTRY: "http://0.0.0.0:4873"
+
+on:
+  pull_request:
+
+
+jobs:
+     npm_smoketest:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Git clone repository
+          uses: actions/checkout@v2
+          with:
+            path: main
+
+
+        - name: Install Verdaccio
+          run: |
+            sudo npm install -g verdaccio
+            sudo npm install -g verdaccio-auth-memory
+            sudo npm install -g verdaccio-memory
+            sudo npm install -g npm-auth-to-token
+
+
+        - name: Configure Verdaccio
+          run: |
+            cat <<EOF >config.yaml
+            auth:
+              auth-memory:
+                users:
+
+            store:
+              memory:
+                limit: 1000
+            ## we don't need any remote request
+            uplinks:
+            packages:
+              '@*/*':
+                access: \$all
+                publish: \$all
+              '**':
+                access: \$all
+                publish: \$all
+            middlewares:
+              audit:
+                enabled: true
+            max_body_size: 500mb
+            logs:
+             - {type: stdout, format: pretty, level: trace}
+            EOF
+
+            tmp_registry_log=`mktemp`
+            mkdir -p .config/verdaccio
+            cp --verbose config.yaml .config/verdaccio/config.yaml
+            nohup verdaccio --config .config/verdaccio/config.yaml &>$tmp_registry_log &
+
+
+        - name: Cache Node modules
+          uses: actions/cache@v2
+          with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+
+        - name: Publish packages
+          run  : |
+            cd main
+            yarn install
+            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/css-framework
+            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/eslint-config-react
+            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/fonts
+            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/icon-library
+            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/react-component-library
+
+
+        - name: Checkout test app
+          uses: actions/checkout@v2
+          with:
+            repository: Royal-Navy/coffee.git
+            Path: coffee
+            ref: master
+
+
+        - name: Build test app
+          run : |
+            cd coffee
+            yarn install
+            npm ls @royalnavy/react-component-library
+            yarn config set registry ${{env.LOCAL_REGISTRY}}
+            yarn add @royalnavy/css-framework
+            yarn add @royalnavy/icon-library
+            yarn add @royalnavy/react-component-library
+            npm ls @royalnavy/react-component-library
+
+
+        - name: Run test app
+          run : |
+            cd coffee
+            yarn build
