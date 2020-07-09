@@ -19,6 +19,7 @@ stories.add('Default', () => {
       onBlur={action('onBlur')}
       onChange={action('onChange')}
       placement={DATEPICKER_PLACEMENT.BELOW}
+      isOpen
     />
   )
 })
@@ -30,6 +31,7 @@ examples.add('Custom label', () => {
       onBlur={action('onBlur')}
       onChange={action('onChange')}
       label="Some other label"
+      isOpen
     />
   )
 })
@@ -51,6 +53,7 @@ examples.add('Range', () => {
       onBlur={action('onBlur')}
       onChange={action('onChange')}
       isRange
+      isOpen
     />
   )
 })
