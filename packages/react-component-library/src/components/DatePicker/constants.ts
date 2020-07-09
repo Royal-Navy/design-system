@@ -9,14 +9,14 @@ const DATEPICKER_PLACEMENT = {
 
 const DATEPICKER_PLACEMENTS = {
   [DATEPICKER_PLACEMENT.ABOVE]: {
-    OFFSET: '8px -75px',
-    ATTACHMENT: 'bottom right',
+    OFFSET: '8px 0px',
+    ATTACHMENT: 'bottom center',
     TARGET_ATTACHMENT: 'top center',
     ARROW_POSITION: FLOATING_BOX_ARROW_POSITION.BOTTOM_LEFT
   },
   [DATEPICKER_PLACEMENT.BELOW]: {
-    OFFSET: '-8px -75px',
-    ATTACHMENT: 'top right',
+    OFFSET: '-8px 0px',
+    ATTACHMENT: 'top center',
     TARGET_ATTACHMENT: 'bottom center',
     ARROW_POSITION: FLOATING_BOX_ARROW_POSITION.TOP_LEFT
   },
