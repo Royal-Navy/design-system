@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.9.0...2.10.0) (2020-07-09)
+
+
+### Bug Fixes
+
+* **Fonts:** Improve browser coverage ([5159d1f](https://github.com/Royal-Navy/design-system/commit/5159d1f9ac00b7dc025a83eb4f0c789e03af1db2))
+
+
+
+
+
 # [2.9.0](https://github.com/Royal-Navy/design-system/compare/2.8.0...2.9.0) (2020-06-11)
 
 
