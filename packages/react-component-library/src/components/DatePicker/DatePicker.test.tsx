@@ -357,4 +357,20 @@ describe('DatePicker', () => {
       })
     })
   })
+
+  describe('when the isOpen prop is provided', () => {
+    beforeEach(() => {
+      wrapper = render(<DatePicker isOpen />)
+    })
+
+    it('displays the picker as open on initial render', () => {
+      expect(
+        wrapper.getByTestId('datepicker-input-wrapper').classList
+      ).toContain('is-open')
+
+      expect(wrapper.getByTestId('floating-box').classList).toContain(
+        'is-visible'
+      )
+    })
+  })
 })

@@ -47,6 +47,7 @@ export interface DatePickerProps extends ComponentWithClass {
     | typeof DATEPICKER_PLACEMENT.RIGHT
   startDate?: Date
   value?: string
+  isOpen?: boolean
 }
 
 function transformDates(startDate: Date, endDate: Date) {
@@ -74,6 +75,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   placement = DATEPICKER_PLACEMENT.BELOW,
   startDate,
   value,
+  isOpen,
 }) => {
   const [state, setState] = useState<StateObject>({
     startDate,
@@ -117,22 +119,22 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   })
 
   const componentRef = useRef(null)
-  const { isOpen, onFocus, onClose } = useOpenClose(componentRef)
+  const { openState, onFocus, onClose } = useOpenClose(componentRef, isOpen)
   const hasContent = (value && value.length) || state.startDate
   const PLACEMENTS = DATEPICKER_PLACEMENTS[placement]
 
   const classes = classNames('rn-date-picker', className, {
-    'is-open': isOpen,
+    'is-open': openState,
     'has-content': hasContent,
     'is-disabled': isDisabled,
   })
 
   const tetherClasses = classNames('rn-date-picker__tether', {
-    'is-visible': isOpen,
+    'is-visible': openState,
   })
 
   const floatingBoxClasses = classNames('rn-date-picker__container', {
-    'is-visible': isOpen,
+    'is-visible': openState,
   })
 
   const gridClasses = classNames('rn-date-picker__grid', {
@@ -179,7 +181,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               onBlur={onBlur}
               onFocus={onFocus}
               isDisabled={isDisabled}
-              isOpen={isOpen}
+              isOpen={openState}
               onClose={onClose}
             />
           ),

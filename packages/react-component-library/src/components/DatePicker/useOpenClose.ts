@@ -11,27 +11,30 @@ function hasParentWithMatchingSelector(
   )
 }
 
-export function useOpenClose(ref: React.RefObject<undefined>) {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+export function useOpenClose(
+  ref: React.RefObject<undefined>,
+  isOpen?: boolean
+) {
+  const [openState, setOpenState] = useState<boolean>(isOpen)
 
   useDocumentClick(ref, (event: Event) => {
     const target = event.target as Node
 
     if (!hasParentWithMatchingSelector(target, '.rn-date-picker__container')) {
-      setIsOpen(false)
+      setOpenState(false)
     }
   })
 
   function onFocus() {
-    setIsOpen(true)
+    setOpenState(true)
   }
 
   function onClose() {
-    setIsOpen(false)
+    setOpenState(false)
   }
 
   return {
-    isOpen,
+    openState,
     onFocus,
     onClose
   }
