@@ -25,7 +25,15 @@ export const Breadcrumbs: React.FC<Nav<BreadcrumbsItemProps>> = ({
     }
   )
 
-  return <ul className={classes}>{mapped}</ul>
+  return (
+    <nav
+      className={classes}
+      aria-label="Breadcrumb"
+      data-testid="breadcrumb-wrapper"
+    >
+      <ol className="rn-breadcrumbs__list">{mapped}</ol>
+    </nav>
+  )
 }
 
 Breadcrumbs.displayName = 'Breadcrumbs'
