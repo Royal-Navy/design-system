@@ -3,23 +3,23 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import { CheckboxEnhanced } from '.'
 import { withFormik } from '../../enhancers/withFormik'
 import FieldProps from '../../types/FieldProps'
 import FormProps from '../../types/FormProps'
-import { RadioCard } from '.'
 
-describe('RadioCard', () => {
+describe('CheckboxEnhanced', () => {
   let field: FieldProps
   let form: FormProps
   let label: string
-  let radio: RenderResult
+  let checkbox: RenderResult
 
   beforeEach(() => {
     label = ''
 
     field = {
-      name: 'colour',
-      value: '',
+      name: 'example1',
+      value: 'false',
       onChange: jest.fn(),
       onBlur: jest.fn(),
     }
@@ -30,17 +30,17 @@ describe('RadioCard', () => {
     }
   })
 
-  describe('when the field has no errors, a label and a value', () => {
+  describe('when a field has no errors, a label and a value', () => {
     beforeEach(() => {
       label = 'My Label 1'
-      field.value = 'option1'
+      field.value = 'false'
 
-      radio = render(
-        <RadioCard
+      checkbox = render(
+        <CheckboxEnhanced
           name={field.name}
           value={field.value}
-          onChange={field.onChange}
           title={label}
+          onChange={field.onChange}
           tabIndex={0}
         />
       )
@@ -48,26 +48,29 @@ describe('RadioCard', () => {
 
     it('should not output the description', () => {
       expect(
-        radio.queryByTestId('radiocard-description')
+        checkbox.queryByTestId('checkboxenhanced-description')
       ).not.toBeInTheDocument()
     })
 
     it('should render a field with a label', () => {
-      expect(radio.getByTestId('label')).toHaveTextContent('My Label 1')
+      expect(checkbox.getByTestId('label')).toHaveTextContent('My Label 1')
     })
 
     it('should populate the field value', () => {
-      expect(radio.queryByTestId('radio')).toHaveAttribute('value', 'option1')
+      expect(checkbox.queryByTestId('checkbox')).toHaveAttribute(
+        'value',
+        'false'
+      )
     })
 
-    it('does not check the nested radio', () => {
-      expect(radio.getByTestId('radio')).not.toBeChecked()
+    it('does not check the nested checkbox', () => {
+      expect(checkbox.getByTestId('checkbox')).not.toBeChecked()
     })
 
     describe('and the user clicks the component', () => {
       beforeEach(() => {
         fireEvent(
-          radio.getByTestId('radiocard-wrapper'),
+          checkbox.getByTestId('checkboxenhanced-wrapper'),
           new MouseEvent('click', {
             bubbles: true,
             cancelable: true,
@@ -75,20 +78,23 @@ describe('RadioCard', () => {
         )
       })
 
-      it('checks the nested radio', () => {
-        expect(radio.getByTestId('radio')).toBeChecked()
+      it('checks the nested checkbox', () => {
+        expect(checkbox.getByTestId('checkbox')).toBeChecked()
       })
     })
 
     describe('and the user keys to the component', () => {
       beforeEach(() => {
         userEvent.tab()
-        userEvent.type(radio.getByTestId('radiocard-wrapper'), '{enter}')
+        userEvent.type(
+          checkbox.getByTestId('checkboxenhanced-wrapper'),
+          '{enter}'
+        )
       })
 
-      it('focusses the nested radio', () => {
-        expect(radio.getByTestId('radio')).toHaveFocus()
-        expect(radio.getByTestId('radio')).toBeChecked()
+      it('focusses the nested checkbox', () => {
+        expect(checkbox.getByTestId('checkbox')).toHaveFocus()
+        expect(checkbox.getByTestId('checkbox')).toBeChecked()
       })
     })
   })
@@ -96,101 +102,110 @@ describe('RadioCard', () => {
   describe('when a field has an error and the form has not been touched', () => {
     beforeEach(() => {
       form.errors = {
-        colour: 'Something bad',
+        example1: 'Something bad',
       }
 
       form.touched = {}
 
-      const FormikRadioCard = withFormik(RadioCard)
+      const FormikCheckboxEnhanced = withFormik(CheckboxEnhanced)
 
-      radio = render(<FormikRadioCard field={field} form={form} />)
+      checkbox = render(<FormikCheckboxEnhanced field={field} form={form} />)
     })
 
     it('should not add the aria attributes', () => {
-      expect(radio.getByTestId('radio')).not.toHaveAttribute('aria-invalid')
-      expect(radio.getByTestId('radio')).not.toHaveAttribute('aria-describedBy')
+      expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute(
+        'aria-invalid'
+      )
+      expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute(
+        'aria-describedBy'
+      )
     })
 
     it('should not indicate the field has an error', () => {
-      expect(radio.queryByTestId('container')).not.toHaveClass('is-invalid')
+      expect(checkbox.queryByTestId('container')).not.toHaveClass('is-invalid')
     })
 
     it('should not show the error', () => {
-      expect(radio.queryAllByText('Something bad')).toHaveLength(0)
+      expect(checkbox.queryAllByText('Something bad')).toHaveLength(0)
     })
   })
 
   describe('when a field has an error and the form has been touched', () => {
     beforeEach(() => {
       form.errors = {
-        colour: 'Something bad',
+        example1: 'Something bad',
       }
 
-      form.touched.colour = true
+      form.touched.example1 = true
 
-      const FormikRadioCard = withFormik(RadioCard)
+      const FormikCheckboxEnhanced = withFormik(CheckboxEnhanced)
 
-      radio = render(<FormikRadioCard field={field} form={form} />)
+      checkbox = render(<FormikCheckboxEnhanced field={field} form={form} />)
     })
 
     it('should add the aria attributes', () => {
-      expect(radio.getByTestId('radio')).toHaveAttribute('aria-invalid')
-      expect(radio.getByTestId('radio')).toHaveAttribute('aria-describedby')
+      expect(checkbox.getByTestId('checkbox')).toHaveAttribute(
+        'aria-invalid',
+        'true'
+      )
+      expect(checkbox.getByTestId('checkbox')).toHaveAttribute(
+        'aria-describedby'
+      )
     })
 
     it('should indicate the field has an error', () => {
-      expect(radio.queryByTestId('container')).toHaveClass('is-invalid')
+      expect(checkbox.queryByTestId('container')).toHaveClass('is-invalid')
     })
 
     it('should show the error', () => {
-      expect(radio.getByText('Something bad')).toBeInTheDocument()
+      expect(checkbox.getByText('Something bad')).toBeInTheDocument()
     })
   })
 
   describe('when an additional class it provided', () => {
     beforeEach(() => {
-      radio = render(
-        <RadioCard
+      checkbox = render(
+        <CheckboxEnhanced
           className="test"
           name={field.name}
           value={field.value}
-          onChange={field.onChange}
           title={label}
+          onChange={field.onChange}
         />
       )
     })
 
     it('should attach the class to the wrapper', () => {
-      expect(radio.queryByTestId('container')).toHaveClass('test')
+      expect(checkbox.queryByTestId('container')).toHaveClass('test')
     })
   })
 
   describe('when an id is provided', () => {
     beforeEach(() => {
-      radio = render(
-        <RadioCard
+      checkbox = render(
+        <CheckboxEnhanced
           id="test"
           name={field.name}
           value={field.value}
-          onChange={field.onChange}
           title={label}
+          onChange={field.onChange}
         />
       )
     })
 
     it('should attach the id to the field', () => {
-      expect(radio.queryByTestId('radio')).toHaveAttribute('id', 'test')
+      expect(checkbox.queryByTestId('checkbox')).toHaveAttribute('id', 'test')
     })
 
     it('should associate the label to the field with the custom id', () => {
-      expect(radio.queryByTestId('label')).toHaveAttribute('for', 'test')
+      expect(checkbox.queryByTestId('label')).toHaveAttribute('for', 'test')
     })
   })
 
   describe('when a description is provided', () => {
     beforeEach(() => {
-      radio = render(
-        <RadioCard
+      checkbox = render(
+        <CheckboxEnhanced
           id="test"
           name={field.name}
           value={field.value}
@@ -202,9 +217,9 @@ describe('RadioCard', () => {
     })
 
     it('should output the description', () => {
-      expect(radio.getByTestId('radiocard-description').innerHTML).toEqual(
-        'Hello, World!'
-      )
+      expect(
+        checkbox.getByTestId('checkboxenhanced-description').innerHTML
+      ).toEqual('Hello, World!')
     })
   })
 })

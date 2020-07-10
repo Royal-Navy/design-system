@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 727 436">
+  <defs>
+    <filter id="a" width="103.2%" height="107.4%" x="-1.6%" y="-2.9%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0375600962 0"/>
+    </filter>
+    <filter id="c" width="103.2%" height="107.4%" x="-1.6%" y="-2.9%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0375600962 0"/>
+    </filter>
+    <filter id="e" width="103.2%" height="107.4%" x="-1.6%" y="-2.9%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0375600962 0"/>
+    </filter>
+    <rect id="b" width="310" height="136" x="0" y="0" rx="4"/>
+    <rect id="d" width="310" height="136" x="0" y="0" rx="4"/>
+    <rect id="f" width="310" height="136" x="0" y="0" rx="4"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <rect width="725" height="395" x="1.5" y=".5" fill="#FFF" stroke="#B8C7D2"/>
+    <text fill="#1C2D39" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="167.7775" y="187">Default</tspan>
+    </text>
+    <text fill="#1C2D39" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="494.503" y="187">Hover/Active</tspan>
+    </text>
+    <text fill="#1C2D39" font-family="Lato-Semibold, Lato" font-size="14" font-weight="500">
+      <tspan x="164.0255" y="370">Checked</tspan>
+    </text>
+    <g transform="translate(36 29)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <rect width="310" height="136" fill="#FFF" rx="4"/>
+      <rect width="309" height="135" x=".5" y=".5" fill="none" stroke="#E2E9EE" rx="4"/>
+    </g>
+    <g transform="translate(60 55)">
+      <rect width="17" height="17" x="-.5" y="-.5" fill="none" stroke="#B8C7D2" rx="8.5"/>
+      <rect width="12" height="12" x="2" y="2" fill="#FFF" rx="6"/>
+    </g>
+    <text fill="#1C2D39" font-family="Lato-Medium, Lato" font-size="16" font-weight="400" transform="translate(36 29)">
+      <tspan x="50" y="40">Radio Enhanced</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Regular, Lato" font-size="14" transform="translate(36 29)">
+      <tspan x="24" y="67">Nullam id dolor id nibh ultricies vehicula ut </tspan> <tspan x="24" y="88">id elit. Cras mattis consectetur purus sit </tspan> <tspan x="24" y="109">amet fermentum etiam porta sem.</tspan>
+    </text>
+    <g>
+      <g transform="translate(36 212)">
+        <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+        <rect width="310" height="136" fill="#FFF" rx="4"/>
+        <rect width="309" height="135" x=".5" y=".5" fill="none" stroke="#E2E9EE" rx="4"/>
+      </g>
+      <g transform="translate(60 238)">
+        <rect width="17" height="17" x="-.5" y="-.5" fill="#2A77C7" stroke="#1B76CD" rx="8.5"/>
+        <rect width="12" height="12" x="2" y="2" fill="#FFF" rx="6"/>
+        <rect width="8" height="8" x="4" y="4" fill="#2A77C7" rx="4"/>
+      </g>
+      <text fill="#1C2D39" font-family="Lato-Medium, Lato" font-size="16" font-weight="400" transform="translate(36 212)">
+        <tspan x="50" y="40">Radio Enhanced</tspan>
+      </text>
+      <text fill="#3E5667" font-family="Lato-Regular, Lato" font-size="14" transform="translate(36 212)">
+        <tspan x="24" y="67">Nullam id dolor id nibh ultricies vehicula ut </tspan> <tspan x="24" y="88">id elit. Cras mattis consectetur purus sit </tspan> <tspan x="24" y="109">amet fermentum etiam porta sem.</tspan>
+      </text>
+    </g>
+    <g>
+      <g transform="translate(382 29)">
+        <use fill="#000" filter="url(#e)" xlink:href="#f"/>
+        <rect width="310" height="136" fill="#FFF" rx="4"/>
+        <rect width="314" height="140" x="-2" y="-2" fill="none" stroke="#58AAE9" stroke-width="4" opacity=".24932571" rx="4"/>
+        <rect width="309" height="135" x=".5" y=".5" fill="none" stroke="#58AAE9" rx="4"/>
+      </g>
+      <g transform="translate(406 55)">
+        <rect width="17" height="17" x="-.5" y="-.5" fill="none" stroke="#B8C7D2" rx="8.5"/>
+        <rect width="12" height="12" x="2" y="2" fill="#FFF" rx="6"/>
+      </g>
+      <text fill="#1C2D39" font-family="Lato-Medium, Lato" font-size="16" font-weight="400" transform="translate(382 29)">
+        <tspan x="50" y="40">Radio Enhanced</tspan>
+      </text>
+      <text fill="#3E5667" font-family="Lato-Regular, Lato" font-size="14" transform="translate(382 29)">
+        <tspan x="24" y="67">Nullam id dolor id nibh ultricies vehicula ut </tspan> <tspan x="24" y="88">id elit. Cras mattis consectetur purus sit </tspan> <tspan x="24" y="109">amet fermentum etiam porta sem.</tspan>
+      </text>
+    </g>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="427">Radio Enhanced component states.</tspan>
+    </text>
+  </g>
+</svg>

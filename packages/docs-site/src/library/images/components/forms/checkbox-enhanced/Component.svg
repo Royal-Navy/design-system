@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 727 229">
+  <defs>
+    <filter id="a" width="103.2%" height="107.4%" x="-1.6%" y="-2.9%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0375600962 0"/>
+    </filter>
+    <filter id="c" width="103.2%" height="107.4%" x="-1.6%" y="-2.9%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0375600962 0"/>
+    </filter>
+    <rect id="b" width="310" height="136" x="0" y="0" rx="4"/>
+    <rect id="d" width="310" height="136" x="0" y="0" rx="4"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <rect width="725" height="190" x="1.5" y=".5" fill="#FFF" stroke="#B8C7D2"/>
+    <g transform="translate(41 28)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <rect width="310" height="136" fill="#FFF" rx="4"/>
+      <rect width="309" height="135" x=".5" y=".5" fill="none" stroke="#E2E9EE" rx="4"/>
+      <rect width="17" height="17" x="23.5" y="25.5" fill="none" stroke="#B8C7D2" rx="3"/>
+      <text fill="#1C2D39" font-family="Lato-Medium, Lato" font-size="16" font-weight="400">
+        <tspan x="50" y="40">Checkbox Enhanced</tspan>
+      </text>
+    </g>
+    <g transform="translate(377 28)">
+      <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+      <rect width="310" height="136" fill="#FFF" rx="4"/>
+      <rect width="309" height="135" x=".5" y=".5" fill="none" stroke="#E2E9EE" rx="4"/>
+    </g>
+    <g transform="translate(400 53)">
+      <rect width="18" height="18" fill="#2A77C7" rx="3"/>
+      <path fill="#FFF" fill-rule="nonzero" d="M12.822 5c1.05-.027 1.574 1.304.827 2.08l-5.351 5.66c-.15679959.1660693-.37510317.2601862-.6035.2601862-.22839683 0-.44670041-.0941169-.6035-.2601862L4.376 9.855c-1.128-1.137.538-2.899 1.614-1.706l1.508 1.595c.105.11.288.11.407 0l4.13-4.37c.1999038-.22793101.4850173-.36325135.788-.374h-.001z"/>
+    </g>
+    <text fill="#1C2D39" font-family="Lato-Medium, Lato" font-size="16" font-weight="400" transform="translate(377 28)">
+      <tspan x="50" y="40">Checkbox Enhanced</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Regular, Lato" font-size="14">
+      <tspan x="65" y="95">Nullam id dolor id nibh ultricies vehicula ut </tspan> <tspan x="65" y="116">id elit. Cras mattis consectetur purus sit </tspan> <tspan x="65" y="137">amet fermentum etiam porta sem.</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Regular, Lato" font-size="14">
+      <tspan x="401" y="95">Nullam id dolor id nibh ultricies vehicula ut </tspan> <tspan x="401" y="116">id elit. Cras mattis consectetur purus sit </tspan> <tspan x="401" y="137">amet fermentum etiam porta sem.</tspan>
+    </text>
+    <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+      <tspan x="0" y="220">Checkbox Enhanced component.</tspan>
+    </text>
+  </g>
+</svg>

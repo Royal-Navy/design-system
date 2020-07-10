@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 717 289">
+  <defs>
+    <filter id="a" width="103.2%" height="107.4%" x="-1.6%" y="-2.9%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0375600962 0"/>
+    </filter>
+    <rect id="b" width="310" height="136" x="0" y="0" rx="4"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g>
+      <rect width="715" height="250" x="1.5" y=".5" fill="#FFF" stroke="#B8C7D2"/>
+      <g transform="translate(204 66)">
+        <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+        <rect width="310" height="136" fill="#FFF" rx="4"/>
+        <rect width="309" height="135" x=".5" y=".5" fill="none" stroke="#E2E9EE" rx="4"/>
+        <rect width="17" height="17" x="23.5" y="25.5" fill="none" stroke="#B8C7D2" rx="3"/>
+        <text fill="#1C2D39" font-family="Lato-Medium, Lato" font-size="16" font-weight="400">
+          <tspan x="50" y="40">Checkbox Enhanced</tspan>
+        </text>
+      </g>
+      <text fill="#3E5667" font-family="Lato-Regular, Lato" font-size="14">
+        <tspan x="228" y="133">Nullam id dolor id nibh ultricies vehicula ut </tspan> <tspan x="228" y="154">id elit. Cras mattis consectetur purus sit </tspan> <tspan x="228" y="175">amet fermentum etiam porta sem.</tspan>
+      </text>
+      <text fill="#3E5667" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="0" y="280">Anatomy of the Checkbox Enhanced component.</tspan>
+      </text>
+    </g>
+    <g transform="translate(249 42)">
+      <rect width="1" height="29" x="9" y="18" fill="#B8C7D2"/>
+      <rect width="19.2" height="18.4" y="1" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="6.816" y="13.2">3</tspan>
+      </text>
+      <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="25.5" y="15">Title</tspan>
+      </text>
+      <circle cx="10" cy="47" r="3" fill="#3E5667"/>
+    </g>
+    <g transform="translate(485 152)">
+      <rect width="60" height="1" x="4" y="10" fill="#B8C7D2"/>
+      <rect width="19.2" height="18.4" x="45" y="1" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="51.816" y="13.2">4</tspan>
+      </text>
+      <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x="74.5" y="15">Description</tspan>
+      </text>
+      <circle cx="3" cy="10" r="3" fill="#3E5667"/>
+    </g>
+    <g transform="translate(33 98)">
+      <rect width="145" height="1" x="11" y="23" fill="#B8C7D2"/>
+      <rect width="19.2" height="18.4" x="2" y="15" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="8.816" y="27.2">2</tspan>
+      </text>
+      <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x=".5" y="54">Checkbox</tspan>
+      </text>
+      <rect width="32" height="1" x="155" y="3" fill="#B8C7D2"/>
+      <rect width="1" height="21" x="155" y="3" fill="#B8C7D2"/>
+      <circle cx="190" cy="3" r="3" fill="#3E5667"/>
+    </g>
+    <g transform="translate(34 36)">
+      <rect width="152" height="1" x="15" y="34" fill="#B8C7D2"/>
+      <rect width="19.2" height="18.4" x="2" y="26" fill="#3E5667" rx="9.2"/>
+      <text fill="#FFF" font-family="Lato-Heavy, Lato" font-size="9.6" font-weight="600">
+        <tspan x="8.816" y="38.2">1</tspan>
+      </text>
+      <text fill="#233745" font-family="Lato-Medium, Lato" font-size="15" font-weight="400">
+        <tspan x=".5" y="15">Frame</tspan>
+      </text>
+      <circle cx="170" cy="34" r="3" fill="#3E5667"/>
+    </g>
+  </g>
+</svg>

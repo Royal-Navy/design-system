@@ -1,9 +1,9 @@
 @use "../abstracts/functions" as f;
 
 $animation-timing: 0.2s;
-$radio-focus-width: 0.1rem;
+$checkbox-focus-width: 0.1rem;
 
-.rn-radio-card {
+.rn-checkbox-enhanced {
   display: inline-flex;
   flex-direction: column;
   width: 22rem;
@@ -18,10 +18,10 @@ $radio-focus-width: 0.1rem;
     box-shadow: 0 0 0 3px f.color("action", "100");
     cursor: pointer;
 
-    .rn-radio input ~ .rn-radio__checkmark {
+    .rn-checkbox input ~ .rn-checkbox__checkmark {
       border: 1px solid f.color("action", "500");
       outline: none;
-      box-shadow: 0 0 0 $radio-focus-width f.color("action", "500");
+      box-shadow: 0 0 0 $checkbox-focus-width f.color("action", "500");
       transition: all $animation-timing;
     }
   }
@@ -31,12 +31,12 @@ $radio-focus-width: 0.1rem;
   }
 }
 
-.rn-radio-card__description {
+.rn-checkbox-enhanced__description {
   color: f.color("neutral", "400");
   padding-top: f.spacing("4");
 }
 
-.rn-radio-card .rn-radio__label {
+.rn-checkbox-enhanced .rn-checkbox__label {
   font-size: f.font-size("m");
   color: f.color("neutral", "500");
 }

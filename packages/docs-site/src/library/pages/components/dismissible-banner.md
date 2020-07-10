@@ -1,8 +1,7 @@
 ---
-title: Dismissable Banner
+title: Dismissible Banner
 description: todo
 header: true
-draft: true
 ---
 
 import { DismissibleBanner } from '@royalnavy/react-component-library'
@@ -11,30 +10,29 @@ import { TabSet, Tab } from '@royalnavy/react-component-library'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import DataTable from '../../../components/presenters/data-table'
 
+import DismissibleBannerComponent from '../../images/components/dismissible-banner/Component'
+import DismissibleBannerAnatomy from '../../images/components/dismissible-banner/Anatomy'
+
 # Overview
-todo
+The Dismissible Banner is a temporary banner that sits at the top of the page.
+
+<DismissibleBannerComponent />
 
 ## Usage
-todo
+The primary usage for the Dismissible Banner is to provide context and information to users, particularly for first time visitors. Once dismissed, it should remain hidden until its contents has been updated.
 
 <TabSet>
 <Tab title="Design">
 
 ### Anatomy
 
-todo
+<DismissibleBannerAnatomy />
 
 ### Sizing & Spacing
-todo
+This component comes in one size only. It can resize to the width of its parent, however the component's height is dictated by its contents.
 
 ### Hierarchy & Placement
-todo
-
-### States
-todo
-
-### Variations
-todo
+The Dismissible Banner should be placed at the top of the page content to ensure it is the first thing the user interacts with.
 
 </Tab>
 

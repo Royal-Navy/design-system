@@ -41,6 +41,9 @@ The Radio component allows the active selection of one input at a time. It typic
 
 The Radio Button has three available states - `Default`, `Hover`/`Active`, and `Checked`.
 
+# Enhanced Radio Button
+The Enhanced Radio Button component allows the active selection of one input at a time. It typically appears in forms and modals. If you require the user to select multiple options, then the [CheckboxCard component](/forms/checkbox-card) should be used instead.
+
 
 </Tab>
 
@@ -163,3 +166,4 @@ The Radio component accepts the standard field properties as defined by Formik. 
 
 </Tab>
 </TabSet>
+

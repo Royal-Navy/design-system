@@ -1,38 +1,56 @@
 ---
-title: Checkbox Card
-description: Checkbox Cards let users select multiple options at a time.
+title: Checkbox Enhanced
+description: An enhanced version of the Checkbox with space for custom content.
 header: true
-draft: true
 ---
 
-import { Tab, TabSet, CheckboxCard } from '@royalnavy/react-component-library'
+import { Tab, TabSet, CheckboxEnhanced } from '@royalnavy/react-component-library'
 import DataTable from '../../../../components/presenters/data-table'
 import CodeHighlighter from '../../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../../components/presenters/sketch-widget'
 
-# Overview
+import CheckboxEnhancedComponent from '../../../images/components/forms/checkbox-enhanced/Component'
+import CheckboxEnhancedAnatomy from '../../../images/components/forms/checkbox-enhanced/Anatomy'
+import CheckboxEnhancedStates from '../../../images/components/forms/checkbox-enhanced/States'
+import CheckboxEnhancedVariation from '../../../images/components/forms/checkbox-enhanced/Variation'
 
-**todo**
+# Overview
+The Checkbox has an enhanced version (`CheckboxEnhanced`) when a label isn’t sufficient by itself. This button provides a space for a description or custom content. It is wrapped in a frame to highlight its clickable region. 
+
+<CheckboxEnhancedComponent />
 
 ## Usage
-The Checkbox Card component allows the active selection of multiple inputs at a time. It typically appears in forms and modals. If you require the user to select single options, then the [RadioCard component](/forms/radio-card) should be used instead.
+The `CheckboxEnhanced` component allows the active selection of one input at a time. It typically appears in forms and modals. If you require the user to select single options, then the [RadioEnhanced component](/forms/radio-enhanced) should be used instead.
 
 
 <TabSet>
 
 <Tab title="Design">
 
-<SketchWidget name="CheckboxCard" href="/design-system.sketch" />
+<SketchWidget name="CheckboxEnhanced" href="/design-system.sketch" />
 
 ### Anatomy
 
-**todo**
+<CheckboxEnhancedAnatomy />
+
+1. **Frame**. Wraps the component, highlighting when hovered.
+1. **Checkbox**. A single value toggle.
+1. **Title**. Provides context to the Checkbox.
+2. **Description (Optional)**. Additional information.
 
 
 ### States
 
-**todo**
+<CheckboxEnhancedStates />
 
+The enhanced version of the Checkbox has three states - `Default`, `Hover`/`Active`, and `Checked`.
+
+
+### Variations
+
+<CheckboxEnhancedVariation />
+
+The Enhanced Checkbox has a variation where custom content can be added in place of its description. The Checkbox and Title must remain in the component so the user knows what to expect with its functionality.
 
 </Tab>
 
@@ -46,24 +64,24 @@ The `Checkbox` component can be used on its own in a regular form, if you use th
 The use of `FormikGroup` means that if a validation error occurs, then the inputs are shown with the correct aria attributes and associated with a single error message.
 
 <CodeHighlighter source={`<FormikGroup>
-  <CheckboxCard name="example" title="My Label 1" />
-  <CheckboxCard name="example" title="My Label 2" />
+  <CheckboxEnhanced name="example" title="My Label 1" />
+  <CheckboxEnhanced name="example" title="My Label 2" />
 </FormikGroup>`} language="javascript">
   <form>
-    <CheckboxCard name="example" title="My Label 1" />
-    <CheckboxCard name="example" title="My Label 2" />
+    <CheckboxEnhanced name="example" title="My Label 1" />
+    <CheckboxEnhanced name="example" title="My Label 2" />
   </form>
 </CodeHighlighter>
 
 ### Description Variant
 
 <CodeHighlighter source={`<FormikGroup>
-  <CheckboxCard name="example" title="My Label 1" description="..." />
-  <CheckboxCard name="example" title="My Label 2" description="..." />
+  <CheckboxEnhanced name="example" title="My Label 1" description="..." />
+  <CheckboxEnhanced name="example" title="My Label 2" description="..." />
 </FormikGroup>`} language="javascript">
   <form>
-    <CheckboxCard name="example" title="My Label 1" description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam." />
-    <CheckboxCard name="example" title="My Label 2" description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam." />
+    <CheckboxEnhanced name="example" title="My Label 1" description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam." />
+    <CheckboxEnhanced name="example" title="My Label 2" description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam." />
   </form>
 </CodeHighlighter>
 
@@ -166,9 +184,10 @@ The `Checkbox` component accepts the standard field properties as defined by For
     Type: 'string',
     Required: 'False',
     Default: '',
-    Description: 'Include a short description to be displayed alongside the checkbox within the card',
+    Description: 'Include a short description to be displayed alongside the checkbox within the frame',
   },
 ]} />
 
 </Tab>
 </TabSet>
+

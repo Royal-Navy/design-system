@@ -1,14 +1,14 @@
 import React, { useRef } from 'react'
 
-import { Checkbox, CheckboxProps } from '../Checkbox'
+import { Radio, RadioProps } from '../Radio'
 
-export interface CheckboxCardProps extends Omit<CheckboxProps, 'label'> {
+export interface RadioEnhancedProps extends Omit<RadioProps, 'label'> {
   description?: string
   tabIndex?: number
   title: string
 }
 
-export const CheckboxCard: React.FC<CheckboxCardProps> = ({
+export const RadioEnhanced: React.FC<RadioEnhancedProps> = ({
   description,
   isChecked,
   name,
@@ -29,14 +29,14 @@ export const CheckboxCard: React.FC<CheckboxCardProps> = ({
   return (
     <div
       aria-checked={isChecked}
-      className="rn-checkbox-card"
-      data-testid="checkboxcard-wrapper"
+      className="rn-radio-enhanced"
+      data-testid="radioenhanced-wrapper"
       onClick={handleClick}
       onKeyUp={handleKeyUp}
-      role="checkbox"
+      role="radio"
       tabIndex={tabIndex}
     >
-      <Checkbox
+      <Radio
         isChecked={isChecked}
         label={title}
         name={name}
@@ -45,8 +45,8 @@ export const CheckboxCard: React.FC<CheckboxCardProps> = ({
       />
       {description && (
         <p
-          className="rn-checkbox-card__description"
-          data-testid="checkboxcard-description"
+          className="rn-radio-enhanced__description"
+          data-testid="radioenhanced-description"
         >
           {description}
         </p>
@@ -55,4 +55,4 @@ export const CheckboxCard: React.FC<CheckboxCardProps> = ({
   )
 }
 
-CheckboxCard.displayName = 'CheckboxCard'
+RadioEnhanced.displayName = 'RadioEnhanced'

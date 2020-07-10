@@ -2,9 +2,9 @@ import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 
-import { CheckboxCard } from '.'
+import { RadioEnhanced } from '.'
 
-const stories = storiesOf('CheckboxCard', module)
+const stories = storiesOf('RadioEnhanced', module)
 
 stories.add('Default', () => {
   return (
@@ -23,15 +23,10 @@ stories.add('Default', () => {
           gap: '1px 1px',
         }}
       >
-        <CheckboxCard
-          name="example1"
-          title="My Label 1"
-          value="true"
-          isChecked
-        />
-        <CheckboxCard name="example2" title="My Label 2" />
-        <CheckboxCard name="example3" title="My Label 3" />
-        <CheckboxCard name="example4" title="My Label 4" />
+        <RadioEnhanced name="example" value="" title="My Label 1" />
+        <RadioEnhanced name="example" value="" title="My Label 2" />
+        <RadioEnhanced name="example" value="" title="My Label 3" />
+        <RadioEnhanced name="example" value="" title="My Label 4" />
       </div>
     </form>
   )
@@ -54,25 +49,27 @@ stories.add('With description', () => {
           gap: '1px 1px',
         }}
       >
-        <CheckboxCard
-          name="example1"
+        <RadioEnhanced
+          name="example"
+          value=""
           title="My Label 1"
-          value="true"
-          isChecked
           description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
         />
-        <CheckboxCard
-          name="example2"
+        <RadioEnhanced
+          name="example"
+          value=""
           title="My Label 2"
           description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
         />
-        <CheckboxCard
-          name="example3"
+        <RadioEnhanced
+          name="example"
+          value=""
           title="My Label 3"
           description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
         />
-        <CheckboxCard
-          name="example4"
+        <RadioEnhanced
+          name="example"
+          value=""
           title="My Label 4"
           description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
         />
