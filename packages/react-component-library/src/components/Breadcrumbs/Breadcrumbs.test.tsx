@@ -21,13 +21,33 @@ describe('Breadcrumbs', () => {
       )
     })
 
+    it('should set the `aria-label` attribute to `breadcrumb`', () => {
+      expect(wrapper.getByTestId('breadcrumb-wrapper')).toHaveAttribute(
+        'aria-label',
+        'Breadcrumb'
+      )
+    })
+
+    it('should apply the `aria-hidden` attribute to seperators', () => {
+      expect(wrapper.getAllByTestId('breadcrumb-separator')[0]).toHaveAttribute(
+        'aria-hidden'
+      )
+    })
+
+    it('should apply the `aria-current` attribute to the last crumb', () => {
+      expect(wrapper.getByTestId('breadcrumb-end-title')).toHaveAttribute(
+        'aria-current',
+        'page'
+      )
+    })
+
     it('should render a list of breadcrumbs', () => {
       const linkElements = wrapper.queryAllByTestId('breadcrumb')
       expect(linkElements).toHaveLength(5)
     })
 
     it('should render four separators', () => {
-      const linkElements = wrapper.queryAllByTestId('separator')
+      const linkElements = wrapper.queryAllByTestId('breadcrumb-separator')
       expect(linkElements).toHaveLength(4)
     })
 
@@ -37,7 +57,7 @@ describe('Breadcrumbs', () => {
     })
 
     it('should render the last link as a title', () => {
-      const endTitle = wrapper.getByTestId('end-title')
+      const endTitle = wrapper.getByTestId('breadcrumb-end-title')
       expect(endTitle).toBeInTheDocument()
     })
 

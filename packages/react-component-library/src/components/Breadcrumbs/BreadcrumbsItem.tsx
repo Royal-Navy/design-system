@@ -19,8 +19,9 @@ export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
     <li data-testid="breadcrumb" className="rn-breadcrumbs__breadcrumb">
       {!isFirst && (
         <IconChevronRight
-          data-testid="separator"
           className="rn-breadcrumbs__separator"
+          aria-hidden
+          data-testid="breadcrumb-separator"
         />
       )}
       {isLast ? (

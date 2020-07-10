@@ -1,7 +1,11 @@
 import React from 'react'
 
 export const EndTitle: React.FC = ({ children }) => (
-  <span className="rn-breadcrumbs__title" data-testid="end-title">
+  <span
+    className="rn-breadcrumbs__title"
+    aria-current="page"
+    data-testid="breadcrumb-end-title"
+  >
     {children}
   </span>
 )

@@ -1,7 +1,7 @@
 @use "../abstracts/functions" as f;
 @use "../config" as config;
 
-.rn-breadcrumbs {
+.rn-breadcrumbs__list {
   display: block;
   font-size: f.font-size("base");
   margin: 0;
