@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { TOOLTIP_POSITION } from '.'
 
 export interface TooltipProps extends PositionType {
+  children: React.ReactNode
   id?: string
   position?:
     | typeof TOOLTIP_POSITION.ABOVE
@@ -17,7 +18,7 @@ export interface TooltipProps extends PositionType {
 export const Tooltip: React.FC<TooltipProps> = ({
   bottom,
   children,
-  id = '',
+  id,
   left,
   position = TOOLTIP_POSITION.ABOVE,
   right,
@@ -33,25 +34,18 @@ export const Tooltip: React.FC<TooltipProps> = ({
     width,
   }
 
-  const tooltipClassNames = classNames([
-    'rn-tooltip',
-    `rn-tooltip--${position}`,
-  ])
+  const classes = classNames(['rn-tooltip', `rn-tooltip--${position}`])
 
   return (
     <div
-      className={tooltipClassNames}
+      className={classes}
       data-testid="tooltip"
       id={id}
       role="tooltip"
       style={style}
     >
       <div className="rn-tooltip__content">
-        {title && (
-          <div data-testid="tooltip-title" className="rn-tooltip__title">
-            {title}
-          </div>
-        )}
+        {title && <div className="rn-tooltip__title">{title}</div>}
         <div className="rn-tooltip__message">{children}</div>
       </div>
     </div>
