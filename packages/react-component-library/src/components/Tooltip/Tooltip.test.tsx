@@ -22,6 +22,27 @@ describe('Tooltip', () => {
       expect(wrapper.getByTestId('tooltip')).not.toHaveAttribute('id')
     })
 
+    it('should render the tooltip with an `aria-describedby` attribute', () => {
+      const contentId = wrapper
+        .getByTestId('tooltip-content')
+        .getAttribute('id')
+
+      expect(wrapper.getByTestId('tooltip')).toHaveAttribute(
+        'aria-describedby',
+        contentId
+      )
+    })
+
+    it('should render the tooltip without an `aria-labelledby` attribute', () => {
+      expect(wrapper.getByTestId('tooltip')).not.toHaveAttribute(
+        'aria-labelledby'
+      )
+    })
+
+    it('should render the tooltip with a `role` attribute', () => {
+      expect(wrapper.getByTestId('tooltip')).toHaveAttribute('role', 'tooltip')
+    })
+
     it('should render the tooltip without extra style', () => {
       expect(wrapper.getByTestId('tooltip')).not.toHaveAttribute('style')
     })
@@ -57,6 +78,30 @@ describe('Tooltip', () => {
 
     it('should render the tooltip with an `id` attribute', () => {
       expect(wrapper.getByTestId('tooltip')).toHaveAttribute('id', '123')
+    })
+
+    it('should render the tooltip with an `aria-describedby` attribute', () => {
+      const contentId = wrapper
+        .getByTestId('tooltip-content')
+        .getAttribute('id')
+
+      expect(wrapper.getByTestId('tooltip')).toHaveAttribute(
+        'aria-describedby',
+        contentId
+      )
+    })
+
+    it('should render the tooltip with an `aria-labelledby` attribute', () => {
+      const titleId = wrapper.getByText('title').getAttribute('id')
+
+      expect(wrapper.getByTestId('tooltip')).toHaveAttribute(
+        'aria-labelledby',
+        titleId
+      )
+    })
+
+    it('should render the tooltip with a `role` attribute', () => {
+      expect(wrapper.getByTestId('tooltip')).toHaveAttribute('role', 'tooltip')
     })
 
     it('should render the tooltip with extra style', () => {

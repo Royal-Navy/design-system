@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { TOOLTIP_POSITION } from '.'
+import { getId } from '../../helpers'
 
 export interface TooltipProps extends PositionType {
   children: React.ReactNode
@@ -36,8 +37,13 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
   const classes = classNames(['rn-tooltip', `rn-tooltip--${position}`])
 
+  const contentId = getId('tooltip-content')
+  const titleId = title ? getId('tooltip-title') : null
+
   return (
     <div
+      aria-describedby={contentId}
+      aria-labelledby={titleId}
       className={classes}
       data-testid="tooltip"
       id={id}
@@ -45,8 +51,18 @@ export const Tooltip: React.FC<TooltipProps> = ({
       style={style}
     >
       <div className="rn-tooltip__content">
-        {title && <div className="rn-tooltip__title">{title}</div>}
-        <div className="rn-tooltip__message">{children}</div>
+        {title && (
+          <div className="rn-tooltip__title" id={titleId}>
+            {title}
+          </div>
+        )}
+        <div
+          className="rn-tooltip__message"
+          data-testid="tooltip-content"
+          id={contentId}
+        >
+          {children}
+        </div>
       </div>
     </div>
   )
