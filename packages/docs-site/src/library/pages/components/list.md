@@ -82,7 +82,7 @@ todo
 <DataTable data={[
   {
     Name: 'children',
-    Type: 'string',
+    Type: 'string | string[]',
     Required: 'True',
     Default: '',
     Description: 'Text content of the item',

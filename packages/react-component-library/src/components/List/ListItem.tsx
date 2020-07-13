@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { IconChevronRight } from '@royalnavy/icon-library'
 
 export interface ListItemProps extends ComponentWithClass {
-  children: string
+  children: string | string[]
   isActive?: boolean
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void
