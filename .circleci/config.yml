@@ -114,7 +114,7 @@ jobs:
           root: packages
           paths:
             - react-component-library/coverage
-    code_climate:
+  code_climate:
     docker: *docker
     steps:
       - checkout
