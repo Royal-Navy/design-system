@@ -37,7 +37,7 @@ export interface ButtonProps extends ComponentWithClass {
 
 export const Button: React.FC<ButtonProps> = ({
   children,
-  className = '',
+  className,
   color,
   isDisabled,
   icon,
@@ -59,10 +59,10 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={classes}
+      data-testid="button"
       disabled={isDisabled}
-      data-testid="rn-button"
       type={type}
-      onClick={e => {
+      onClick={(e) => {
         e.currentTarget.blur()
 
         if (onClick) {
@@ -72,7 +72,11 @@ export const Button: React.FC<ButtonProps> = ({
       {...rest}
     >
       <span className="rn-btn__text">{children}</span>
-      {icon && <span className="rn-btn__icon">{icon}</span>}
+      {icon && (
+        <span aria-hidden className="rn-btn__icon" data-testid="button-icon">
+          {icon}
+        </span>
+      )}
     </button>
   )
 }
