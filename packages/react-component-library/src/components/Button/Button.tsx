@@ -73,7 +73,7 @@ export const Button: React.FC<ButtonProps> = ({
     >
       <span className="rn-btn__text">{children}</span>
       {icon && (
-        <span className="rn-btn__icon" data-testid="button-icon">
+        <span aria-hidden className="rn-btn__icon" data-testid="button-icon">
           {icon}
         </span>
       )}

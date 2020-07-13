@@ -1,5 +1,6 @@
 import React, { FormEvent } from 'react'
 import '@testing-library/jest-dom/extend-expect'
+import { IconBrightnessLow } from '@royalnavy/icon-library'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
 import { Button } from './index'
@@ -83,6 +84,23 @@ describe('Button', () => {
       button = wrapper.getByText('Click me').parentElement
 
       expect(button).toHaveAttribute('type', expected)
+    })
+  })
+
+  describe('when an icon is specified', () => {
+    beforeEach(() => {
+      wrapper = render(<Button icon={<IconBrightnessLow />}>Click me</Button>)
+    })
+
+    it('should render an icon', () => {
+      expect(wrapper.getByTestId('button-icon')).toBeInTheDocument()
+    })
+
+    it('should render the icon with an `aria-hidden` attribute', () => {
+      expect(wrapper.queryByTestId('button-icon')).toHaveAttribute(
+        'aria-hidden',
+        'true'
+      )
     })
   })
 })
