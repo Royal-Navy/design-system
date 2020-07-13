@@ -10,11 +10,20 @@ describe('NumberInput', () => {
   let onChangeSpy: (event: any) => void
 
   function assertInputValue(expected: string) {
-    it('should set the new value', () => {
+    it('should set the new value attribute', () => {
       const input = wrapper.getByTestId(
         'number-input-input'
       ) as HTMLInputElement
       expect(input.value).toEqual(expected)
+    })
+  }
+
+  function assertAriaValue(expected: number) {
+    it('should set the new `aria-valuenow` attribute', () => {
+      const container = wrapper.getByTestId(
+        'number-input-container'
+      ) as HTMLDivElement
+      expect(container).toHaveAttribute('aria-valuenow', `${expected}`)
     })
   }
 
@@ -38,6 +47,13 @@ describe('NumberInput', () => {
     beforeEach(() => {
       wrapper = render(
         <NumberInput name="number-input" onChange={onChangeSpy} />
+      )
+    })
+
+    it('should apply the correct `role` attribute', () => {
+      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+        'role',
+        'spinbutton'
       )
     })
 
@@ -77,7 +93,7 @@ describe('NumberInput', () => {
         })
 
         assertInputValue('0')
-        assertOnChangeCall(0 ,2)
+        assertOnChangeCall(0, 2)
 
         describe('and the decrease button is clicked', () => {
           beforeEach(() => {
@@ -135,6 +151,20 @@ describe('NumberInput', () => {
           />
           <input type="text" data-testid="next-field" />
         </>
+      )
+    })
+
+    it('should apply the correct `aria-valuemin` attribute', () => {
+      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+        'aria-valuemin',
+        '0'
+      )
+    })
+
+    it('should apply the correct `aria-valuemax` attribute', () => {
+      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+        'aria-valuemax',
+        '3'
       )
     })
 
@@ -366,6 +396,7 @@ describe('NumberInput', () => {
     })
 
     assertInputValue('1000 m')
+    assertAriaValue(1000)
 
     describe('and the increase button is clicked', () => {
       beforeEach(() => {
@@ -373,6 +404,7 @@ describe('NumberInput', () => {
       })
 
       assertInputValue('1001 m')
+      assertAriaValue(1001)
       assertOnChangeCall(1001)
     })
 
@@ -382,6 +414,7 @@ describe('NumberInput', () => {
       })
 
       assertInputValue('999 m')
+      assertAriaValue(999)
       assertOnChangeCall(999)
     })
   })
@@ -400,6 +433,7 @@ describe('NumberInput', () => {
     })
 
     assertInputValue('£ 1000')
+    assertAriaValue(1000)
 
     describe('and the increase button is clicked', () => {
       beforeEach(() => {
@@ -407,6 +441,7 @@ describe('NumberInput', () => {
       })
 
       assertInputValue('£ 1001')
+      assertAriaValue(1001)
       assertOnChangeCall(1001)
     })
 
@@ -416,6 +451,7 @@ describe('NumberInput', () => {
       })
 
       assertInputValue('£ 999')
+      assertAriaValue(999)
       assertOnChangeCall(999)
     })
 
@@ -430,6 +466,7 @@ describe('NumberInput', () => {
       })
 
       assertInputValue('£ 1000')
+      assertAriaValue(1000)
       assertOnChangeCall(1000)
     })
   })
