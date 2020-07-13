@@ -207,4 +207,23 @@ describe('List', () => {
       )
     })
   })
+
+  describe('when a list item has multiple children ', () => {
+    beforeEach(() => {
+      const extraItemText = 'extra text'
+      wrapper = render(
+        <List>
+          <ListItem onClick={jest.fn()} title="List item">
+            Main text: {extraItemText}
+          </ListItem>
+        </List>
+      )
+    })
+
+    it("renders the item's text", () => {
+      expect(wrapper.getAllByTestId('list-item')[0]).toHaveTextContent(
+        'Main text: extra text'
+      )
+    })
+  })
 })
