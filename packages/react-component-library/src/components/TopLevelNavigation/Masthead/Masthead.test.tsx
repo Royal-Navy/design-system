@@ -27,6 +27,13 @@ describe('Masthead', () => {
       expect(wrapper.getByTestId('masthead')).toBeInTheDocument()
     })
 
+    it('should set the masthead banner `role` attribute to `banner`', () => {
+      expect(wrapper.getByTestId('masthead-banner')).toHaveAttribute(
+        'role',
+        'banner'
+      )
+    })
+
     it('should render the service name', () => {
       expect(wrapper.getByTestId('masthead-servicename')).toHaveTextContent(
         'title'
@@ -35,6 +42,13 @@ describe('Masthead', () => {
 
     it('should render the default logo', () => {
       expect(wrapper.getByTestId('logo')).toBeInTheDocument()
+    })
+
+    it('should set the logo `role` to `presentation`', () => {
+      expect(wrapper.getByTestId('logo')).toHaveAttribute(
+        'role',
+        'presentation'
+      )
     })
 
     it('should not render the avatar', () => {
@@ -75,7 +89,7 @@ describe('Masthead', () => {
       const props = {
         hasUnreadNotification: true,
         homeLink: <Link href="/" />,
-        Logo: () => <svg data-testid="custom-logo" />,
+        Logo: ({ role }) => <svg data-testid="custom-logo" role={role} />,
         nav: (
           <MastheadNav>
             <MastheadNavItem link={<Link href="/first">First</Link>} />
@@ -112,6 +126,13 @@ describe('Masthead', () => {
       expect(wrapper.getByTestId('masthead')).toBeInTheDocument()
     })
 
+    it('should set the masthead banner `role` attribute to `banner`', () => {
+      expect(wrapper.getByTestId('masthead-banner')).toHaveAttribute(
+        'role',
+        'banner'
+      )
+    })
+
     it('should render the service name', () => {
       expect(wrapper.getByTestId('masthead-servicename')).toHaveTextContent(
         'title'
@@ -124,6 +145,13 @@ describe('Masthead', () => {
 
     it('should render the custom logo', () => {
       expect(wrapper.getByTestId('custom-logo')).toBeInTheDocument()
+    })
+
+    it('should set the logo `role` to `presentation`', () => {
+      expect(wrapper.getByTestId('custom-logo')).toHaveAttribute(
+        'role',
+        'presentation'
+      )
     })
 
     it('should render the avatar', () => {

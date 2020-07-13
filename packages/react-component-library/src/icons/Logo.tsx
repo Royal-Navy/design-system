@@ -1,12 +1,13 @@
 import React from 'react'
 
-export const Logo: React.FC<ComponentWithClass> = ({ className = '' }) => (
+export const Logo: React.FC<ComponentWithClass> = ({ className = '', ...rest }) => (
   <svg
     className={className}
     width="21"
     height="19"
     viewBox="0 0 21 19"
     data-testid="logo"
+    {...rest}
   >
     <defs>
       <path

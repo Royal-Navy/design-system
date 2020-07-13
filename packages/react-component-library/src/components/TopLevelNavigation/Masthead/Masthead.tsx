@@ -39,7 +39,10 @@ function getServiceName(
     ...link.props,
     children: (
       <>
-        {Logo && <Logo />}
+        {Logo &&
+          React.cloneElement(<Logo />, {
+            role: 'presentation',
+          })}
         <span className="rn-masthead__title" data-testid="masthead-servicename">
           {title}
         </span>
@@ -98,7 +101,9 @@ export const Masthead: React.FC<MastheadProps> = ({
   return (
     <div className={classes} data-testid="masthead" ref={mastheadContainerRef}>
       <div className="rn-masthead__main">
-        {getServiceName(homeLink, DisplayLogo, title)}
+        <div data-testid="masthead-banner" role="banner">
+          {getServiceName(homeLink, DisplayLogo, title)}
+        </div>
 
         <div className="rn-masthead__options">
           {onSearch && (
