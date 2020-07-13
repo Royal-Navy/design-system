@@ -13,6 +13,8 @@ import {
   IconCheckCircle,
 } from '@royalnavy/icon-library'
 
+import { getId } from '../../helpers'
+
 export interface ToastProps extends BaseToastProps, ComponentWithClass {
   label?: string
   dateTime?: Date
@@ -20,10 +22,10 @@ export interface ToastProps extends BaseToastProps, ComponentWithClass {
 
 function getAppearanceIcon(appearance: string): React.ReactNode {
   const appearanceIconMap = {
-    success: <IconCheckCircle />,
-    error: <IconError />,
-    warning: <IconWarning />,
-    info: <IconInfo />,
+    success: <IconCheckCircle aria-hidden data-testid="toast-icon" />,
+    error: <IconError aria-hidden data-testid="toast-icon" />,
+    warning: <IconWarning aria-hidden data-testid="toast-icon" />,
+    info: <IconInfo aria-hidden data-testid="toast-icon" />,
   }
 
   return appearanceIconMap[appearance] || appearanceIconMap.info
@@ -68,6 +70,9 @@ export const Toast: React.FC<ToastProps> = ({
 
   const classes = classNames('rn-toast', `rn-toast--${appearance}`)
 
+  const titleId = label ? getId('toast-title') : null
+  const descriptionId = children ? getId('toast-description') : null
+
   return (
     <div
       className={classes}
@@ -78,10 +83,13 @@ export const Toast: React.FC<ToastProps> = ({
         `,
         ...transitionStates(placement)[transitionState],
       }}
+      role="alert"
+      aria-labelledby={titleId}
+      aria-describedby={descriptionId}
       data-testid="toast-wrapper"
     >
       <div className="rn-toast__header">
-        <div className="rn-toast__title">
+        <div className="rn-toast__title" id={titleId} data-testid="toast-title">
           <span className="rn-toast__label">
             {getAppearanceIcon(appearance)}
             {label}
@@ -91,7 +99,7 @@ export const Toast: React.FC<ToastProps> = ({
         {onDismiss && (
           <button
             className="rn-toast__btn"
-            onClick={_ => onDismiss()}
+            onClick={(_) => onDismiss()}
             data-testid="toast-dismiss"
           >
             Dismiss
@@ -99,7 +107,13 @@ export const Toast: React.FC<ToastProps> = ({
         )}
       </div>
       <div className="rn-toast__content">
-        <span className="rn-toast__description">{children}</span>
+        <span
+          className="rn-toast__description"
+          id={descriptionId}
+          data-testid="toast-description"
+        >
+          {children}
+        </span>
       </div>
     </div>
   )
