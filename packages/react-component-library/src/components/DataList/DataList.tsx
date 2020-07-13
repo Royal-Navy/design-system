@@ -3,10 +3,11 @@ import classNames from 'classnames'
 import { IconKeyboardArrowDown } from '@royalnavy/icon-library'
 
 import { Badge } from '../Badge'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 import { DataListItemProps } from '.'
 import { getId } from '../../helpers'
 
-export interface DataListProps extends ComponentWithClass {
+export interface DataListProps extends PropsWithClassName {
   children:
     | React.ReactElement<DataListItemProps>
     | React.ReactElement<DataListItemProps>[]

@@ -6,8 +6,9 @@ import {
   getError,
   transformErrorToAriaAttributes,
 } from '../../enhancers'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
-interface FormikGroupProps extends ComponentWithClass {
+interface FormikGroupProps extends PropsWithClassName {
   children: React.ReactElement[]
   label?: string
 }

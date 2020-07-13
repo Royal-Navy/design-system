@@ -1,6 +1,8 @@
 import React from 'react'
 
-export const Logo: React.FC<ComponentWithClass> = ({ className = '', ...rest }) => (
+import { PropsWithClassName } from '../types/PropsWithClassName'
+
+export const Logo: React.FC<PropsWithClassName> = ({ className = '', ...rest }) => (
   <svg
     className={className}
     width="21"

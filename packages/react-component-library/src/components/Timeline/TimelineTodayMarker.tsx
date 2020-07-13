@@ -3,14 +3,15 @@ import classNames from 'classnames'
 
 import { TimelineContext } from './context'
 import { useTimelinePosition } from './hooks/useTimelinePosition'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
 export interface TimelineTodayMarkerWithRenderContentProps
-  extends ComponentWithClass {
+  extends PropsWithClassName {
   render: (today: Date, offset: string) => React.ReactNode
 }
 
 export interface TimelineTodayMarkerWithChildrenProps
-  extends ComponentWithClass {
+  extends PropsWithClassName {
   render?: never
 }
 

@@ -2,8 +2,9 @@ import React from 'react'
 import classNames from 'classnames'
 import { IconClose } from '@royalnavy/icon-library'
 import { useOpenClose } from '../../hooks/useOpenClose'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
-interface DrawerProps extends ComponentWithClass {
+interface DrawerProps extends PropsWithClassName {
   children?: React.ReactNode
   isOpen?: boolean
   onClose?: (event: React.FormEvent<HTMLButtonElement>) => void

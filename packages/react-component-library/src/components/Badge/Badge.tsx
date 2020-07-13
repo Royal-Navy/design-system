@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 import {
   BADGE_COLOR,
   BADGE_COLOR_VARIANT,
@@ -22,7 +23,7 @@ export type BadgeSizeType =
   | typeof BADGE_SIZE.LARGE
   | typeof BADGE_SIZE.XLARGE
 
-interface BadgeProps extends ComponentWithClass {
+interface BadgeProps extends PropsWithClassName {
   color?: BadgeColorType
   colorVariant?:
     | typeof BADGE_COLOR_VARIANT.FADED

@@ -6,8 +6,9 @@ import { Button } from '../Button'
 import { getKey } from '../../helpers'
 import { TimelineContext } from './context'
 import { TIMELINE_ACTIONS } from './context/types'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
-export interface TimelineSideProps extends ComponentWithClass {
+export interface TimelineSideProps extends PropsWithClassName {
   rowGroups?: any[]
   headChildren?: any[]
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 
-export const Bell: React.FC<ComponentWithClass> = ({ className = '' }) => (
+import { PropsWithClassName } from '../types/PropsWithClassName'
+
+export const Bell: React.FC<PropsWithClassName> = ({ className = '' }) => (
   <svg
     className={className}
     width="16px"

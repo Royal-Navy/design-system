@@ -2,9 +2,10 @@ import React, { useContext } from 'react'
 import classNames from 'classnames'
 import { useDay } from '@datepicker-react/hooks'
 
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 import DatepickerContext from './datepickerContext'
 
-export interface DayProps extends ComponentWithClass {
+export interface DayProps extends PropsWithClassName {
   dayLabel?: string
   date: Date
 }

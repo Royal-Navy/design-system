@@ -2,12 +2,14 @@ import React from 'react'
 import classNames from 'classnames'
 import { TrackItem, GetTrackProps } from 'react-compound-slider'
 
+import { PropsWithClassName } from '../../types/PropsWithClassName'
+
 interface ThresholdTrackProps extends TrackItem {
   getTrackProps: GetTrackProps
   thresholds?: number[]
 }
 
-interface ChunkProps extends ComponentWithClass {
+interface ChunkProps extends PropsWithClassName {
   left: number
   width: number
   maxWidth: number

@@ -24,6 +24,7 @@ import { NavButton } from './NavButton'
 import { useOpenClose } from './useOpenClose'
 import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
 import { FloatingBox, FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
 export interface StateObject {
   endDate?: Date
@@ -31,7 +32,7 @@ export interface StateObject {
   startDate?: Date
 }
 
-export interface DatePickerProps extends ComponentWithClass {
+export interface DatePickerProps extends PropsWithClassName {
   endDate?: Date
   id?: string
   isDisabled?: boolean

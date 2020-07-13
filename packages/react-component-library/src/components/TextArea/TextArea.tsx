@@ -3,10 +3,11 @@ import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 
 import { useFocus } from '../../hooks/useFocus'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
 export interface TextAreaInputProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement>,
-    ComponentWithClass {
+    PropsWithClassName {
   isDisabled?: boolean
   footnote?: string
   label?: string

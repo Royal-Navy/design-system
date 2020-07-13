@@ -2,8 +2,9 @@ import React, { ReactElement } from 'react'
 import classNames from 'classnames'
 
 import { Avatar } from '../../Avatar'
+import { PropsWithClassName } from '../../../types/PropsWithClassName'
 
-export interface SidebarUserProps extends ComponentWithClass {
+export interface SidebarUserProps extends PropsWithClassName {
   initials: string
   link: React.ReactElement<LinkTypes>
 }

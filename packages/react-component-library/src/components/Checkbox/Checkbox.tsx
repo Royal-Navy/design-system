@@ -2,7 +2,9 @@ import React, { forwardRef } from 'react'
 import classNames from 'classnames'
 import { v4 as uuidv4 } from 'uuid'
 
-export interface CheckboxProps extends ComponentWithClass {
+import { PropsWithClassName } from '../../types/PropsWithClassName'
+
+export interface CheckboxProps extends PropsWithClassName {
   id?: string
   isChecked?: boolean
   isDisabled?: boolean

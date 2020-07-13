@@ -2,8 +2,9 @@ import React from 'react'
 import { useMonth, FirstDayOfWeek } from '@datepicker-react/hooks'
 
 import { Day } from './Day'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
-export interface MonthProps extends ComponentWithClass {
+export interface MonthProps extends PropsWithClassName {
   year: number
   month: number
   firstDayOfWeek: FirstDayOfWeek

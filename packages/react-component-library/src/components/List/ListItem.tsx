@@ -2,8 +2,9 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { IconChevronRight } from '@royalnavy/icon-library'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
-export interface ListItemProps extends ComponentWithClass {
+export interface ListItemProps extends PropsWithClassName {
   children: string | string[]
   isActive?: boolean
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void

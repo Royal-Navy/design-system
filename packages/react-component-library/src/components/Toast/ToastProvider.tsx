@@ -6,10 +6,11 @@ import {
 } from 'react-toast-notifications'
 
 import { Toast } from '.'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
 export interface ToastProviderProps
   extends BaseToastProviderProps,
-    ComponentWithClass {
+    PropsWithClassName {
   //
 }
 

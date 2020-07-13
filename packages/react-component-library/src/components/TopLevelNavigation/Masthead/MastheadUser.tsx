@@ -4,6 +4,7 @@ import React, { ReactElement } from 'react'
 import { Avatar, AVATAR_VARIANT } from '../../Avatar'
 import { MastheadUserItemProps } from './MastheadUserItem'
 import { Nav } from '../../../types/Nav'
+import { PropsWithClassName } from '../../../types/PropsWithClassName'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
 import { SHEET_PLACEMENT } from '../Sheet/constants'
@@ -15,7 +16,7 @@ export interface MastheadUserWithItemsProps extends Nav<MastheadUserItemProps> {
   link?: never
 }
 
-export interface MastheadUserWithLinkProps extends ComponentWithClass {
+export interface MastheadUserWithLinkProps extends PropsWithClassName {
   children?: never
   initials: string
   link: React.ReactElement<LinkTypes>

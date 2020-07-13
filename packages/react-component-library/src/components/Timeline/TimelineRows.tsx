@@ -7,8 +7,9 @@ import { TimelineContext } from './context'
 import { withKey } from '../../helpers'
 import { formatPx, isOdd } from './helpers'
 import { NO_DATA_MESSAGE } from './constants'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
-export interface TimelineRowsProps extends ComponentWithClass {
+export interface TimelineRowsProps extends PropsWithClassName {
   children:
     | React.ReactElement<TimelineRowProps>
     | React.ReactElement<TimelineRowProps>[]

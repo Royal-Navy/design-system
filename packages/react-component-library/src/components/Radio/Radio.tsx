@@ -1,7 +1,9 @@
 import React, { forwardRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-export interface RadioProps extends ComponentWithClass {
+import { PropsWithClassName } from '../../types/PropsWithClassName'
+
+export interface RadioProps extends PropsWithClassName {
   id?: string
   isChecked?: boolean
   isDisabled?: boolean

@@ -7,8 +7,9 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 import { useOpenClose } from '../../hooks/useOpenClose'
 import { getId } from '../../helpers'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
-export interface ModalProps extends ComponentWithClass {
+export interface ModalProps extends PropsWithClassName {
   children?: React.ReactNode
   descriptionId?: string
   isOpen?: boolean

@@ -24,6 +24,7 @@ import { TimelineOptions } from './context/types'
 import { DEFAULTS } from './constants'
 import { getKey } from '../../helpers'
 import { formatPx } from './helpers'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
 type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
 
@@ -40,7 +41,7 @@ type timelineChildrenType =
   | timelineHeadChildrenType
   | timelineBodyChildrenType
 
-export interface TimelineProps extends ComponentWithClass {
+export interface TimelineProps extends PropsWithClassName {
   children: timelineChildrenType | timelineChildrenType[]
   dayWidth?: number
   startDate?: Date

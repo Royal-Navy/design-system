@@ -3,9 +3,10 @@ import classNames from 'classnames'
 import { format } from 'date-fns'
 
 import { useTimelinePosition } from './hooks/useTimelinePosition'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
 export interface TimelineEventWithRenderContentProps
-  extends ComponentWithClass {
+  extends PropsWithClassName {
   children?: never
   endDate: Date
   render: (
@@ -17,7 +18,7 @@ export interface TimelineEventWithRenderContentProps
   startDate: Date
 }
 
-export interface TimelineEventWithChildrenProps extends ComponentWithClass {
+export interface TimelineEventWithChildrenProps extends PropsWithClassName {
   children: string
   endDate: Date
   render?: never

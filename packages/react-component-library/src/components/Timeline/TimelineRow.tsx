@@ -1,9 +1,10 @@
 import React from 'react'
 import classNames from 'classnames'
 
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 import { TimelineEventsProps } from '.'
 
-export interface TimelineRowProps extends ComponentWithClass {
+export interface TimelineRowProps extends PropsWithClassName {
   children:
     | React.ReactElement<TimelineEventsProps>
     | React.ReactElement<TimelineEventsProps>[]

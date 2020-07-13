@@ -7,11 +7,12 @@ import {
 } from './constants'
 
 import { FloatingBox } from '../../../primitives/FloatingBox'
+import { PropsWithClassName } from '../../../types/PropsWithClassName'
 import { SheetButtonProps } from './SheetButton'
 import { useSheet } from './useSheet'
 import { getId } from '../../../helpers'
 
-export interface SheetProps extends ComponentWithClass {
+export interface SheetProps extends PropsWithClassName {
   button: React.ReactElement<SheetButtonProps>
   children: React.ReactElement
   placement?: typeof SHEET_PLACEMENT.RIGHT | typeof SHEET_PLACEMENT.BELOW

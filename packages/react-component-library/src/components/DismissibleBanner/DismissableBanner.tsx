@@ -3,8 +3,9 @@ import classNames from 'classnames'
 
 import { Button, BUTTON_SIZE, BUTTON_VARIANT } from '../Button'
 import { Checkbox } from '../Checkbox'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
-interface DismissibleBannerWithTitleProps extends ComponentWithClass {
+interface DismissibleBannerWithTitleProps extends PropsWithClassName {
   hasCheckbox?: boolean
   children: string
   onDismiss: (
@@ -15,7 +16,7 @@ interface DismissibleBannerWithTitleProps extends ComponentWithClass {
 }
 
 interface DismissibleBannerWithArbitraryContentProps
-  extends ComponentWithClass {
+  extends PropsWithClassName {
   hasCheckbox?: boolean
   children: React.ReactElement
   onDismiss: (

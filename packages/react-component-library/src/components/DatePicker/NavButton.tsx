@@ -1,6 +1,8 @@
 import React from 'react'
 
-export interface NavButtonProps extends ComponentWithClass {
+import { PropsWithClassName } from '../../types/PropsWithClassName'
+
+export interface NavButtonProps extends PropsWithClassName {
   children: React.ReactElement | string
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }

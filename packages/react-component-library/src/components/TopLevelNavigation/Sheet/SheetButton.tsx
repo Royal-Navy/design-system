@@ -1,7 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
 
-export interface SheetButtonProps extends ComponentWithClass {
+import { PropsWithClassName } from '../../../types/PropsWithClassName'
+
+export interface SheetButtonProps extends PropsWithClassName {
   children?: React.ReactElement
   icon: React.ReactElement
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void

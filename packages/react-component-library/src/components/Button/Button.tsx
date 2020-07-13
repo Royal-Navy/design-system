@@ -7,6 +7,7 @@ import {
   BUTTON_VARIANT,
   BUTTON_ICON_POSITION,
 } from './constants'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
 export type ButtonSizeType =
   | typeof BUTTON_SIZE.SMALL
@@ -23,7 +24,7 @@ export type ButtonIconPositionType =
   | typeof BUTTON_ICON_POSITION.LEFT
   | typeof BUTTON_ICON_POSITION.RIGHT
 
-export interface ButtonProps extends ComponentWithClass {
+export interface ButtonProps extends PropsWithClassName {
   children?: string
   color?: typeof BUTTON_COLOR.DANGER
   isDisabled?: boolean

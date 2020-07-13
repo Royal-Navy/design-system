@@ -1,7 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
 
-export const CardFrame: React.FC<ComponentWithClass> = ({
+import { PropsWithClassName } from '../../types/PropsWithClassName'
+
+export const CardFrame: React.FC<PropsWithClassName> = ({
   children,
   className,
 }) => {

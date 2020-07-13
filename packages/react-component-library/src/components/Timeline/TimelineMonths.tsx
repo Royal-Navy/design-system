@@ -4,11 +4,12 @@ import classNames from 'classnames'
 
 import { formatPx } from './helpers'
 import { withKey } from '../../helpers'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 import { TimelineContext } from './context'
 import { DATE_MONTH_FORMAT } from './constants'
 
 export interface TimelineMonthsWithRenderContentProps
-  extends ComponentWithClass {
+  extends PropsWithClassName {
   render: (
     index: number,
     dayWidth: number,
@@ -17,7 +18,7 @@ export interface TimelineMonthsWithRenderContentProps
   ) => React.ReactElement
 }
 
-export interface TimelineMonthsWithChildrenProps extends ComponentWithClass {
+export interface TimelineMonthsWithChildrenProps extends PropsWithClassName {
   render?: never
 }
 

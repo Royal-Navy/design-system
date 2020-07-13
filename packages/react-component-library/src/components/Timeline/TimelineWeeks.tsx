@@ -6,9 +6,10 @@ import { DATE_WEEK_FORMAT } from './constants'
 import { formatPx, isOdd } from './helpers'
 import { withKey } from '../../helpers'
 import { TimelineContext } from './context'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
 export interface TimelineWeeksWithRenderContentProps
-  extends ComponentWithClass {
+  extends PropsWithClassName {
   render: (
     index: number,
     isOddNumber: boolean,
@@ -20,7 +21,7 @@ export interface TimelineWeeksWithRenderContentProps
   ) => React.ReactElement
 }
 
-export interface TimelineWeeksWithChildrenProps extends ComponentWithClass {
+export interface TimelineWeeksWithChildrenProps extends PropsWithClassName {
   render?: never
 }
 

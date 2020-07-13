@@ -4,8 +4,9 @@ import classNames from 'classnames'
 import { ListItem, ListItemProps } from './ListItem'
 import { useListItem } from './useListItem'
 import { warnIfOverwriting } from '../../helpers'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
-interface ListProps extends ComponentWithClass {
+interface ListProps extends PropsWithClassName {
   children:
     | React.ReactElement<ListItemProps>
     | React.ReactElement<ListItemProps>[]

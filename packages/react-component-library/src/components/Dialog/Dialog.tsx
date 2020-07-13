@@ -4,8 +4,9 @@ import classNames from 'classnames'
 import { Modal } from '../Modal'
 import { ButtonProps } from '../Button'
 import { getId } from '../../helpers'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
-export interface DialogProps extends ComponentWithClass {
+export interface DialogProps extends PropsWithClassName {
   description?: string
   isDanger?: boolean
   isOpen?: boolean

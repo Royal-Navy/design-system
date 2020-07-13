@@ -1,8 +1,9 @@
 import React, { forwardRef } from 'react'
 
 import { TriangleDown } from '../../icons'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
-export interface InputProps extends ComponentWithClass {
+export interface InputProps extends PropsWithClassName {
   ref: React.Ref<any>
   id?: string
   label?: string

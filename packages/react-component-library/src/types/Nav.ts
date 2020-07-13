@@ -1,6 +1,8 @@
 import React from 'react'
 
-export interface Nav<T> extends ComponentWithClass {
+import { PropsWithClassName } from './PropsWithClassName'
+
+export interface Nav<T> extends PropsWithClassName {
   children: React.ReactElement<T> | React.ReactElement<T>[]
 }
 

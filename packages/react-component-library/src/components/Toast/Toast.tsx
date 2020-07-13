@@ -14,8 +14,9 @@ import {
 } from '@royalnavy/icon-library'
 
 import { getId } from '../../helpers'
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 
-export interface ToastProps extends BaseToastProps, ComponentWithClass {
+export interface ToastProps extends BaseToastProps, PropsWithClassName {
   label?: string
   dateTime?: Date
 }

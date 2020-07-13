@@ -1,9 +1,10 @@
 import React, { forwardRef } from 'react'
 import classNames from 'classnames'
 
+import { PropsWithClassName } from '../../types/PropsWithClassName'
 import { FLOATING_BOX_SCHEME, FLOATING_BOX_ARROW_POSITION } from './constants'
 
-export interface FloatingBoxProps extends PositionType, ComponentWithClass {
+export interface FloatingBoxProps extends PositionType, PropsWithClassName {
   width?: number
   height?: number
   top?: number
