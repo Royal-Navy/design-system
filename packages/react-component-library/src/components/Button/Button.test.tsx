@@ -1,5 +1,5 @@
-import '@testing-library/jest-dom/extend-expect'
 import React, { FormEvent } from 'react'
+import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
 import { Button } from './index'
@@ -23,6 +23,10 @@ describe('Button', () => {
 
     it('should default the type to "button"', () => {
       expect(button).toHaveAttribute('type', 'button')
+    })
+
+    it('should not render an icon', () => {
+      expect(wrapper.queryByTestId('button-icon')).toBeNull()
     })
 
     describe('when the button is clicked', () => {
