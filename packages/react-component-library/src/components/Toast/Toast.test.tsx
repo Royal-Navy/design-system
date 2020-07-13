@@ -1,11 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import {
-  render,
-  RenderResult,
-  fireEvent,
-  queryByText,
-} from '@testing-library/react'
+import { render, RenderResult, fireEvent } from '@testing-library/react'
 
 import { Toast } from '.'
 
@@ -39,6 +34,40 @@ describe('Toast', () => {
         >
           {DESCRIPTION}
         </Toast>
+      )
+    })
+
+    it('should set the `role` attribute to `alert`', () => {
+      expect(wrapper.getByTestId('toast-wrapper')).toHaveAttribute(
+        'role',
+        'alert'
+      )
+    })
+
+    it('should set the `aria-labelledby` attribute to the ID of the title', () => {
+      const titleId = wrapper.getByTestId('toast-title').getAttribute('id')
+
+      expect(wrapper.getByTestId('toast-wrapper')).toHaveAttribute(
+        'aria-labelledby',
+        titleId
+      )
+    })
+
+    it('should set the `aria-describedby` attribute to the ID of the content', () => {
+      const contentId = wrapper
+        .getByTestId('toast-description')
+        .getAttribute('id')
+
+      expect(wrapper.getByTestId('toast-wrapper')).toHaveAttribute(
+        'aria-describedby',
+        contentId
+      )
+    })
+
+    it('should set the `aria-hidden` attribute on the state icon', () => {
+      expect(wrapper.getByTestId('toast-icon')).toHaveAttribute(
+        'aria-hidden',
+        'true'
       )
     })
 
