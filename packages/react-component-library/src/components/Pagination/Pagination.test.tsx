@@ -18,6 +18,39 @@ describe('Pagination', () => {
       )
     })
 
+    it('should set the `aria-label` attribute correctly for the page buttons', () => {
+      expect(wrapper.getByTestId('select-page-1')).toHaveAttribute(
+        'aria-label',
+        'Page 1'
+      )
+    })
+
+    it('should set the `aria-label` attribute for the next button', () => {
+      expect(wrapper.getByTestId('page-next')).toHaveAttribute(
+        'aria-label',
+        'Next page'
+      )
+    })
+
+    it('should set the `aria-label` attribute for the previous button', () => {
+      expect(wrapper.getByTestId('page-previous')).toHaveAttribute(
+        'aria-label',
+        'Previous page'
+      )
+    })
+
+    it('should set the `aria-hidden` attribute on the icons', () => {
+      expect(wrapper.getByTestId('pagination-icon-prev')).toHaveAttribute(
+        'aria-hidden',
+        'true'
+      )
+
+      expect(wrapper.getByTestId('pagination-icon-next')).toHaveAttribute(
+        'aria-hidden',
+        'true'
+      )
+    })
+
     it('should render pages', () => {
       expect(wrapper.getAllByTestId('page')[0]).toHaveTextContent('1')
       expect(wrapper.getAllByTestId('page')[1]).toHaveTextContent('2')

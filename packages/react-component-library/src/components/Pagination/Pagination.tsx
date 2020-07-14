@@ -35,12 +35,14 @@ export const Pagination: React.FC<PaginationProps> = ({
           <button
             disabled={currentPage === 1}
             className="rn-pagination__button"
-            onClick={() => {
-              changePage(currentPage - 1)
-            }}
+            onClick={(_) => changePage(currentPage - 1)}
             data-testid="page-previous"
+            aria-label="Previous page"
           >
-            <IconKeyboardArrowLeft />
+            <IconKeyboardArrowLeft
+              aria-hidden
+              data-testid="pagination-icon-prev"
+            />
             Prev
           </button>
         </li>
@@ -48,7 +50,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           if (value === ELLIPSIS) {
             return (
               <li
-                key={getKey('pagination-item', key)}
+                key={getKey('pagination-item', `${key}${value}`)}
                 className="rn-pagination__item"
                 data-testid="page"
               >
@@ -59,7 +61,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
           return (
             <li
-              key={getKey('pagination-item', key)}
+              key={getKey('pagination-item', `${key}${value}`)}
               className="rn-pagination__item"
               data-testid="page"
             >
@@ -67,9 +69,8 @@ export const Pagination: React.FC<PaginationProps> = ({
                 className={`rn-pagination__button ${
                   value === currentPage ? 'is-active' : ''
                 }`}
-                onClick={() => {
-                  changePage(value)
-                }}
+                onClick={(_) => changePage(value)}
+                aria-label={`Page ${value}`}
                 data-testid={`select-page-${value}`}
               >
                 {value}
@@ -84,13 +85,15 @@ export const Pagination: React.FC<PaginationProps> = ({
           <button
             disabled={currentPage === totalPages}
             className="rn-pagination__button"
-            onClick={() => {
-              changePage(currentPage + 1)
-            }}
+            onClick={(_) => changePage(currentPage + 1)}
+            aria-label="Next page"
             data-testid="page-next"
           >
             Next
-            <IconKeyboardArrowRight />
+            <IconKeyboardArrowRight
+              aria-hidden
+              data-testid="pagination-icon-next"
+            />
           </button>
         </li>
       </ol>
