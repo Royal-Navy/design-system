@@ -1,15 +1,15 @@
 // LinkTypes is currently not exported, but to start exporting it would
 // introduce a breaking change.
-// PropsWithClassName is defined here to avoid needing to export LinkTypes.
-interface PropsWithClassName {
-  className?: string
-}
+// AnchorType and LinkType should be using PropsWithClassName, but importing it
+// means LinkTypes needs to be exported.
 
-interface AnchorType extends PropsWithClassName {
+interface AnchorType {
+  className?: string
   href: string
 }
 
-interface LinkType extends PropsWithClassName {
+interface LinkType {
+  className?: string
   to: string
 }
 
