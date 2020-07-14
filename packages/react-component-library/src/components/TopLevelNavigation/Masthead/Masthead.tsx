@@ -109,6 +109,8 @@ export const Masthead: React.FC<MastheadProps> = ({
           {onSearch && (
             <>
               <button
+                aria-expanded={showSearch}
+                aria-label="Show search"
                 className={searchButtonClasses}
                 onClick={toggleSearch}
                 ref={searchButtonRef}

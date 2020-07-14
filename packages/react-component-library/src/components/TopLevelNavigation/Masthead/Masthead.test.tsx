@@ -171,6 +171,20 @@ describe('Masthead', () => {
       ).toBeInTheDocument()
     })
 
+    it('should set the `aria-expanded` attribute on the search button to `false`', () => {
+      expect(wrapper.queryByTestId('masthead-search-button')).toHaveAttribute(
+        'aria-expanded',
+        'false'
+      )
+    })
+
+    it('should set the `aria-label` attribute on the search button to `Show search`', () => {
+      expect(wrapper.queryByTestId('masthead-search-button')).toHaveAttribute(
+        'aria-label',
+        'Show search'
+      )
+    })
+
     it('should not show the search bar', () => {
       expect(wrapper.queryByTestId('searchbar')).toBeNull()
     })
@@ -189,6 +203,13 @@ describe('Masthead', () => {
     describe('when the user clicks on the search option', () => {
       beforeEach(() => {
         wrapper.queryByTestId('masthead-search-button').click()
+      })
+
+      it('should set the `aria-expanded` attribute on the search button to `true`', () => {
+        expect(wrapper.queryByTestId('masthead-search-button')).toHaveAttribute(
+          'aria-expanded',
+          'true'
+        )
       })
 
       it('should show the search bar', () => {
@@ -283,7 +304,7 @@ describe('Masthead', () => {
         <>
           <Masthead
             title="title"
-            user={(
+            user={
               <MastheadUser initials="AB">
                 <MastheadUserItem link={<Link href="/profile">Profile</Link>} />
                 <MastheadUserItem
@@ -292,7 +313,7 @@ describe('Masthead', () => {
                 <MastheadUserItem link={<Link href="/support">Support</Link>} />
                 <MastheadUserItem link={<Link href="/logout">Logout</Link>} />
               </MastheadUser>
-            )}
+            }
           />
           <div>Other content</div>
         </>
