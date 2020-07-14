@@ -108,7 +108,15 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   }
 
   return (
-    <div className={classes} data-testid="number-input-container">
+    <div
+      className={classes}
+      data-testid="number-input-container"
+      role="spinbutton"
+      aria-valuemin={min}
+      aria-valuemax={max}
+      aria-valuenow={displayValue}
+      aria-valuetext={String(formatValue(displayValue, unit, unitPosition))}
+    >
       <div className="rn-numberinput__outer-wrapper">
         <StartAdornment>{startAdornment}</StartAdornment>
 
