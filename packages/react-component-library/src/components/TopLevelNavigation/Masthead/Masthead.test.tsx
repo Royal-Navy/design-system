@@ -189,6 +189,27 @@ describe('Masthead', () => {
       expect(wrapper.queryByTestId('searchbar')).toBeNull()
     })
 
+    it('should set the `aria-expanded` attribute on the notification button to `false`', () => {
+      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+        'aria-expanded',
+        'false'
+      )
+    })
+
+    it('should set the `aria-label` attribute on the notification button to `Show notifications`', () => {
+      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+        'aria-label',
+        'Show notifications'
+      )
+    })
+
+    it('should set the `aria-haspopup` attribute on the notification button to `true`', () => {
+      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+        'aria-haspopup',
+        'true'
+      )
+    })
+
     it('should include an unread notification indicator', () => {
       expect(wrapper.queryByTestId('not-read')).toBeInTheDocument()
     })
@@ -274,6 +295,24 @@ describe('Masthead', () => {
     describe('when the user opens the notifications', () => {
       beforeEach(() => {
         wrapper.queryByTestId('notification-button').click()
+      })
+
+      it('should set the `aria-expanded` attribute on the notification button to `true`', () => {
+        expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+          'aria-expanded',
+          'true'
+        )
+      })
+
+      it('should have set the `aria-owns` attribute on the notification button to the ID of the sheet', () => {
+        const sheetId = wrapper
+          .getByTestId('notifications-sheet')
+          .getAttribute('id')
+
+        expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+          'aria-owns',
+          sheetId
+        )
       })
 
       it('should set a rule on the wrapper so mobile scrolling is disabled', () => {

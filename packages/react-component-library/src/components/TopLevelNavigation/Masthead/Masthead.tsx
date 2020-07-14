@@ -128,6 +128,7 @@ export const Masthead: React.FC<MastheadProps> = ({
             <Sheet
               button={(
                 <SheetButton
+                  aria-label="Show notifications"
                   className="rn-masthead__option"
                   data-testid="notification-button"
                   icon={<Bell className="rn-sheet__icon" />}

@@ -4,17 +4,18 @@ import { IconKeyboardArrowRight } from '@royalnavy/icon-library'
 import { NotificationProps } from './index'
 
 export interface NotificationsProps {
-  link: React.ReactElement<LinkTypes>
   children:
     | React.ReactElement<NotificationProps>
     | React.ReactElement<NotificationProps>[]
+  link: React.ReactElement<LinkTypes>
 }
 
 export const Notifications: React.FC<NotificationsProps> = ({
-  link,
   children,
+  link,
+  ...rest
 }) => (
-  <>
+  <div data-testid="notifications-sheet" role="grid" {...rest}>
     <ol className="rn-notifications" data-testid="notifications">
       {children}
     </ol>
@@ -28,5 +29,5 @@ export const Notifications: React.FC<NotificationsProps> = ({
         ),
       })}
     </span>
-  </>
+  </div>
 )
