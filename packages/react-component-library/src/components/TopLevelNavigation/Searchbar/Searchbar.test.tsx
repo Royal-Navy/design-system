@@ -45,6 +45,13 @@ describe('Searchbar', () => {
       )
     })
 
+    it('should set the `aria-label` attribute to `Search` on the search button', () => {
+      expect(wrapper.queryByTestId('searchbar-submit-button')).toHaveAttribute(
+        'aria-label',
+        'Search'
+      )
+    })
+
     describe('and the user clicks inside the search field', () => {
       beforeEach(() => {
         fireEvent(

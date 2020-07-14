@@ -58,9 +58,10 @@ export const Searchbar: React.FC<SearchbarProps> = ({
           value={term}
         />
         <button
-          type="submit"
+          aria-label="Search"
           className="rn-searchbar__submit-button"
           data-testid="searchbar-submit-button"
+          type="submit"
         >
           <RightArrow />
         </button>

@@ -1,13 +1,15 @@
 import React from 'react'
 
-export const RightArrow = () => (
+export const RightArrow: React.FC = ({ children, ...rest }) => (
   <svg
+    data-testid="right-arrow-icon"
     width="11px"
     height="10px"
     viewBox="0 0 11 10"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
+    {...rest}
   >
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g
@@ -23,6 +25,7 @@ export const RightArrow = () => (
         </g>
       </g>
     </g>
+    {children}
   </svg>
 )
 
