@@ -1,101 +1,140 @@
-import { JSDOM } from 'jsdom'
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 
-import { Searchbar, SearchbarProps } from './index'
-
-const globalAny: any = global
+import { Searchbar } from './index'
 
 describe('Searchbar', () => {
+  let onSearchSpy: (term: string) => void
   let wrapper: RenderResult
-  let props: SearchbarProps
-  let searchButton
+  let setShowSearchSpy: (isVisible: boolean) => void
 
-  beforeEach(() => {
-    const dom = new JSDOM()
-    globalAny.document = dom.window.document
-    globalAny.window = dom.window
-
-    searchButton = {
-      current: {
-        contains: jest.fn().mockReturnValue(false),
-      },
-    }
-
-    props = {
-      onSearch: jest.fn(),
-      searchButton,
-      searchPlaceholder: 'placeholder',
-      setShowSearch: jest.fn(),
-    }
-
-    wrapper = render(
-      <div>
-        <button type="button" data-testid="test-button">
-          test
-        </button>
-        <Searchbar {...props} />
-      </div>
-    )
-  })
-
-  it('should render a search bar', () => {
-    expect(wrapper.queryByTestId('searchbar-form')).toBeInTheDocument()
-  })
-
-  it('should indicate that the search field has focus', () => {
-    expect(wrapper.queryByTestId('input')).toHaveFocus()
-  })
-
-  describe('when the user clicks somewhere on the page', () => {
+  describe('minimal props', () => {
     beforeEach(() => {
-      fireEvent(
-        document,
-        new MouseEvent('mousedown', {
-          bubbles: true,
-          cancelable: true,
-        })
+      onSearchSpy = jest.fn()
+      setShowSearchSpy = jest.fn()
+
+      const searchButton = {
+        current: {
+          contains: jest.fn().mockReturnValue(false),
+        },
+      }
+
+      wrapper = render(
+        <Searchbar
+          onSearch={onSearchSpy}
+          searchButton={searchButton}
+          searchPlaceholder="placeholder"
+          setShowSearch={setShowSearchSpy}
+        />
       )
     })
 
-    it('should hide the searchbar', () => {
-      expect(props.setShowSearch).toHaveBeenCalledTimes(1)
-      expect(props.setShowSearch).toHaveBeenCalledWith(false)
+    it('should render the search bar', () => {
+      expect(wrapper.getByTestId('searchbar')).toBeInTheDocument()
     })
-  })
 
-  describe('when then user clicks on the search open/close button', () => {
-    beforeEach(() => {
-      props.searchButton.current.contains.mockReturnValue(true)
+    it('should auto focus on the search field', () => {
+      expect(wrapper.getByTestId('input')).toHaveFocus()
+    })
 
-      fireEvent(
-        wrapper.queryByTestId('test-button'),
-        new MouseEvent('mousedown', {
-          bubbles: true,
-          cancelable: true,
-        })
+    it('should render the input with a placeholder', () => {
+      expect(wrapper.getByTestId('input')).toHaveAttribute(
+        'placeholder',
+        'placeholder'
       )
     })
 
-    it('should not try to hide the searchbar', () => {
-      expect(props.setShowSearch).not.toHaveBeenCalled()
+    describe('and the user clicks inside the search field', () => {
+      beforeEach(() => {
+        fireEvent(
+          wrapper.getByTestId('searchbar'),
+          new MouseEvent('mousedown', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      })
+
+      it('should not hide the searchbar', () => {
+        expect(setShowSearchSpy).not.toHaveBeenCalled()
+      })
+    })
+
+    describe('and the user clicks outside the search field', () => {
+      beforeEach(() => {
+        fireEvent(
+          document,
+          new MouseEvent('mousedown', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      })
+
+      it('should hide the searchbar', () => {
+        expect(setShowSearchSpy).toHaveBeenCalledTimes(1)
+        expect(setShowSearchSpy).toHaveBeenCalledWith(false)
+      })
+    })
+
+    describe('and the user enters a search term', () => {
+      beforeEach(() => {
+        fireEvent.change(wrapper.getByTestId('input'), {
+          target: {
+            value: 'A',
+          },
+        })
+      })
+
+      describe('and the form is submitted', () => {
+        beforeEach(() => {
+          wrapper.getByTestId('searchbar-submit-button').click()
+        })
+
+        it('should call the `onSearch` callback with the search term', () => {
+          expect(onSearchSpy).toHaveBeenCalledTimes(1)
+          expect(onSearchSpy).toHaveBeenCalledWith('A')
+        })
+      })
     })
   })
 
-  describe('when the user clicks in the searchbar', () => {
+  describe('when the user clicks the search button', () => {
     beforeEach(() => {
-      fireEvent(
-        wrapper.queryByTestId('searchbar-form'),
-        new MouseEvent('mousedown', {
-          bubbles: true,
-          cancelable: true,
-        })
+      const searchButton = {
+        current: {
+          contains: jest.fn().mockReturnValue(true),
+        },
+      }
+
+      wrapper = render(
+        <Searchbar
+          onSearch={onSearchSpy}
+          searchButton={searchButton}
+          searchPlaceholder="placeholder"
+          setShowSearch={setShowSearchSpy}
+        />
       )
     })
 
-    it('should not hide the searchbar', () => {
-      expect(props.setShowSearch).not.toHaveBeenCalled()
+    describe('and the user clicks the search open/close button', () => {
+      beforeEach(() => {
+        onSearchSpy = jest.fn()
+        setShowSearchSpy = jest.fn()
+
+        fireEvent(
+          document,
+          new MouseEvent('mousedown', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      })
+
+      it('should not hide the searchbar', () => {
+        expect(setShowSearchSpy).not.toHaveBeenCalled()
+      })
     })
   })
 })
