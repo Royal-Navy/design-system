@@ -78,8 +78,12 @@ describe('Sidebar', () => {
       )
     })
 
-    it('should render the nav', () => {
-      expect(wrapper.getByTestId('sidebar-nav')).toBeInTheDocument()
+    it('should set the `aria-hidden` attribute for each nav item image', () => {
+      const images = wrapper.getAllByTestId('sidebar-nav-item-image')
+
+      images.forEach((image) => {
+        expect(image).toHaveAttribute('aria-hidden', 'true')
+      })
     })
 
     it('should render the notifications', () => {

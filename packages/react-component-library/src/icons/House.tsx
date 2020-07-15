@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const House: React.FC = () => (
-  <svg width="18px" height="16px" viewBox="0 0 18 16" version="1.1">
+export const House: React.FC = ({ ...rest }) => (
+  <svg width="18px" height="16px" viewBox="0 0 18 16" version="1.1" {...rest}>
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g
         id="Fleet-status"

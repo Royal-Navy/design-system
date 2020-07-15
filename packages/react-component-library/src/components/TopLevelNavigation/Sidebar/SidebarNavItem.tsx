@@ -21,7 +21,9 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
     ...link.props,
     children: (
       <>
-        <span className="rn-sidebar__nav-icon">{Image && <Image />}</span>
+        <span className="rn-sidebar__nav-icon">
+          {Image && <Image aria-hidden data-testid="sidebar-nav-item-image" />}
+        </span>
         <span className="rn-sidebar__nav-label">
           {linkElement.props.children}
         </span>
