@@ -32,6 +32,13 @@ describe('ButtonGroup', () => {
       )
     })
 
+    it('should apply the `role` attribute', () => {
+      expect(wrapper.getByTestId('buttongroup')).toHaveAttribute(
+        'role',
+        'group'
+      )
+    })
+
     it('should not warn the consumer about specifying sizes for each item', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled()
     })
