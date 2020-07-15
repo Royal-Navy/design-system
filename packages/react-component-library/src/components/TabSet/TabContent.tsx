@@ -23,7 +23,7 @@ export const TabContent: React.FC<TabContentProps> = ({
       aria-labelledby={tabId}
       aria-hidden={!isActive}
       tabIndex={0}
-      data-testid="content"
+      data-testid="tab-set-content"
     >
       {children}
     </div>
