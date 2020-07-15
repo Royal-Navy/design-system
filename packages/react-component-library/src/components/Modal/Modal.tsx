@@ -6,6 +6,7 @@ import { ButtonProps } from '../Button'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { useOpenClose } from '../../hooks/useOpenClose'
+import { getId } from '../../helpers'
 
 export interface ModalProps extends ComponentWithClass {
   children?: React.ReactNode
@@ -42,11 +43,27 @@ export const Modal: React.FC<ModalProps> = ({
     icon: <IconForward data-testid="modal-primary-confirm" />,
   }
 
+  const titleId = getId('modal-title')
+  const descriptionId = getId('modal-description')
+
   return (
-    <div className={classes} data-testid="modal-wrapper">
+    <div
+      className={classes}
+      role="dialog"
+      aria-modal
+      aria-labelledby={titleId}
+      aria-describedby={descriptionId}
+      data-testid="modal-wrapper"
+    >
       <article className="rn-modal__main">
-        {title && <Header title={title} onClose={handleOnClose} />}
-        <section className="rn-modal__body" data-testid="modal-body">
+        {title && (
+          <Header titleId={titleId} title={title} onClose={handleOnClose} />
+        )}
+        <section
+          id={descriptionId}
+          className="rn-modal__body"
+          data-testid="modal-body"
+        >
           {children}
         </section>
         {(primaryButton || secondaryButton || tertiaryButton) && (
