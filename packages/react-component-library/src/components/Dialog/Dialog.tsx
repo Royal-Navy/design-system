@@ -36,10 +36,13 @@ export const Dialog: React.FC<DialogProps> = ({
     variant: 'secondary',
   }
 
-  const classes = classNames(className, {
-    'rn-dialog': true,
-    'rn-dialog--danger': isDanger,
-  })
+  const classes = classNames(
+    'rn-dialog',
+    {
+      'rn-dialog--danger': isDanger,
+    },
+    className
+  )
 
   const titleId = getId('dialog-title')
   const descriptionId = getId('dialog-description')
