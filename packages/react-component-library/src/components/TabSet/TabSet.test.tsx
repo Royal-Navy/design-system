@@ -12,7 +12,7 @@ import { Tab, TabSet } from '.'
 import { SCROLL_DIRECTION } from './constants'
 
 function flushPromises() {
-  return new Promise(resolve => setImmediate(resolve))
+  return new Promise((resolve) => setImmediate(resolve))
 }
 
 describe('TabSet', () => {
@@ -36,6 +36,20 @@ describe('TabSet', () => {
             <Tab title="Title 1">Content 1</Tab>
             <Tab title="Title 2">Content 2</Tab>
           </TabSet>
+        )
+      })
+
+      it('should apply the correct roles', () => {
+        expect(wrapper.getByTestId('tab-set-list')).toHaveAttribute(
+          'role',
+          'tablist'
+        )
+
+        expect(wrapper.getAllByTestId('tab')[0]).toHaveAttribute('role', 'tab')
+
+        expect(wrapper.getAllByTestId('content')[0]).toHaveAttribute(
+          'role',
+          'tabpanel'
         )
       })
 

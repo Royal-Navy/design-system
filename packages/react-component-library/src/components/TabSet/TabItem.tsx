@@ -21,7 +21,13 @@ export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
     }
 
     return (
-      <li className="rn-tab-set__tab-item" data-testid="tab" ref={ref}>
+      <li
+        className="rn-tab-set__tab-item"
+        data-testid="tab"
+        ref={ref}
+        role="tab"
+        aria-selected={!!isActive}
+      >
         <button className={tabClasses} onClick={handleClick}>
           <div>{children}</div>
         </button>

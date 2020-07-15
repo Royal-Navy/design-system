@@ -15,7 +15,7 @@ export const TabContent: React.FC<TabContentProps> = ({
   const classes = classNames('rn-tab-set__content', { 'is-active': isActive })
 
   return (
-    <div className={classes} data-testid="content">
+    <div className={classes} role="tabpanel" data-testid="content">
       {children}
     </div>
   )

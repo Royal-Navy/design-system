@@ -40,7 +40,7 @@ export const TabSet: React.FC<TabSetProps> = ({
         {isScrollable && (
           <ScrollButton
             direction={SCROLL_DIRECTION.LEFT}
-            onClick={scrollToNextTab(currentTabIndex => currentTabIndex - 1)}
+            onClick={scrollToNextTab((currentTabIndex) => currentTabIndex - 1)}
           />
         )}
         <div
@@ -48,14 +48,18 @@ export const TabSet: React.FC<TabSetProps> = ({
           ref={tabsRef}
           data-testid="tabs"
         >
-          <ol className="rn-tab-set__tabs">
+          <ol
+            className="rn-tab-set__tabs"
+            role="tablist"
+            data-testid="tab-set-list"
+          >
             {Children.map(children, ({ props }, index: number) => (
               <TabItem
                 onClick={() => handleClick(index)}
                 isActive={index === activeTab}
                 index={index}
                 isScrollable={isScrollable}
-                ref={el => {
+                ref={(el) => {
                   itemsRef.current[index] = el
                   return itemsRef.current[index]
                 }}
@@ -68,7 +72,7 @@ export const TabSet: React.FC<TabSetProps> = ({
         {isScrollable && (
           <ScrollButton
             direction={SCROLL_DIRECTION.RIGHT}
-            onClick={scrollToNextTab(currentTabIndex => currentTabIndex + 1)}
+            onClick={scrollToNextTab((currentTabIndex) => currentTabIndex + 1)}
           />
         )}
       </header>
