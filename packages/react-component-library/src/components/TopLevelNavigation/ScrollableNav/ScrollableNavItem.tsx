@@ -1,6 +1,6 @@
 import React from 'react'
-import { getKey } from '../../helpers'
-import { NavItem } from '../../types/Nav'
+import { getKey } from '../../../helpers'
+import { NavItem } from '../../../types/Nav'
 
 export const ScrollableNavItem: React.FC<NavItem> = ({ isActive, link }) => (
   <li

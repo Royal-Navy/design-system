@@ -1,7 +1,7 @@
 import React from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
 
-import { Nav, NavItem } from '../../types/Nav'
+import { Nav, NavItem } from '../../../types/Nav'
 
 export const ScrollableNav: React.FC<Nav<NavItem>> = ({
   children,
