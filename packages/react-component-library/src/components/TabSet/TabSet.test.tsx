@@ -238,6 +238,11 @@ describe('TabSet', () => {
       )
     })
 
+    it('should add the `aria-hidden` attribute', () => {
+      expect(wrapper.getByTestId('scroll-left')).toHaveAttribute('aria-hidden')
+      expect(wrapper.getByTestId('scroll-right')).toHaveAttribute('aria-hidden')
+    })
+
     it('should present a scroll left button', () => {
       expect(wrapper.getByTestId('scroll-left')).toBeInTheDocument()
     })
