@@ -40,7 +40,11 @@ function renderDefault(
   )
 
   return (
-    <div className={classes} style={{ left: offsetPx }}>
+    <div
+      className={classes}
+      style={{ left: offsetPx }}
+      data-testid="timeline-event"
+    >
       <span
         className="timeline__event-title"
         data-testid="timeline-event-title"

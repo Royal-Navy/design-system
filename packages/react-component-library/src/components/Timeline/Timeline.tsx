@@ -1,7 +1,6 @@
 import React from 'react'
-import { differenceInDays } from 'date-fns'
 
-import { TimelineProvider, TimelineContext } from './context'
+import { TimelineProvider } from './context'
 import { TimelineComponent } from './types'
 
 import {
@@ -23,7 +22,6 @@ import {
 import { TimelineOptions } from './context/types'
 import { DEFAULTS } from './constants'
 import { getKey } from '../../helpers'
-import { formatPx } from './helpers'
 
 type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
 
@@ -140,32 +138,13 @@ export const Timeline: React.FC<TimelineProps> = ({
       today={today}
       options={options}
     >
-      <TimelineContext.Consumer>
-        {({ state: { months } }) => {
-          const offset = endDate
-            ? formatPx(
-                dayWidth,
-                differenceInDays(months[0].startDate, startDate)
-              )
-            : null
-
-          return (
-            <article className="timeline">
-              {rootChildren}
-              <div
-                className="timeline__inner"
-                style={{
-                  marginLeft: offset,
-                }}
-                data-testid="timeline-inner"
-              >
-                <header className="timeline__header">{headChildren}</header>
-                {bodyChildren}
-              </div>
-            </article>
-          )
-        }}
-      </TimelineContext.Consumer>
+      <article className="timeline">
+        {rootChildren}
+        <div className="timeline__inner" data-testid="timeline-inner">
+          <header className="timeline__header">{headChildren}</header>
+          {bodyChildren}
+        </div>
+      </article>
     </TimelineProvider>
   )
 }

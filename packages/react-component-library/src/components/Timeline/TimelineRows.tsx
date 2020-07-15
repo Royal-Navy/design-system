@@ -1,12 +1,12 @@
 import React from 'react'
 import classNames from 'classnames'
-import { differenceInDays } from 'date-fns'
+import { differenceInDays, endOfWeek, max, min } from 'date-fns'
 
 import { TimelineRowProps } from '.'
 import { TimelineContext } from './context'
 import { withKey } from '../../helpers'
 import { formatPx, isOdd } from './helpers'
-import { NO_DATA_MESSAGE } from './constants'
+import { NO_DATA_MESSAGE, WEEK_START } from './constants'
 
 export interface TimelineRowsProps extends ComponentWithClass {
   children:
@@ -84,40 +84,30 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
         <TimelineContext.Consumer>
           {({
             state: {
-              months,
               weeks,
-              endDate: timelineEndDate,
+              days,
               options: { dayWidth },
             },
           }) => {
-            const wrapperStyles = timelineEndDate
-              ? {
-                  width: formatPx(
-                    dayWidth,
-                    differenceInDays(timelineEndDate, months[0].startDate) + 1
-                  ),
-                  overflow: 'hidden',
-                }
-              : null
-
             return (
               <div
                 className={rowClasses}
-                style={wrapperStyles}
                 data-testid="timeline-columns"
               >
                 {weeks.map(({ startDate }, index) => {
-                  const diff = differenceInDays(
-                    new Date(startDate),
-                    new Date(months[0].startDate)
+                  const lastDateDisplayed = min([
+                    endOfWeek(startDate, { weekStartsOn: WEEK_START }),
+                    days[days.length - 1].date,
+                  ])
+                  const offsetInDays = differenceInDays(
+                    startDate,
+                    max([startDate, days[0].date])
                   )
-
-                  const offsetPx = formatPx(
+                  const offsetPx = formatPx(dayWidth, offsetInDays)
+                  const widthPx = formatPx(
                     dayWidth,
-                    diff < 0 ? -Math.abs(diff) : 0
+                    differenceInDays(lastDateDisplayed, startDate) + 1
                   )
-
-                  const widthPx = formatPx(dayWidth, 7)
 
                   const isOddNumber = isOdd(index)
 

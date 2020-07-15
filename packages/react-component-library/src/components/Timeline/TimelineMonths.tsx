@@ -1,5 +1,5 @@
 import React from 'react'
-import { format, getDaysInMonth, differenceInDays } from 'date-fns'
+import { format, endOfMonth, differenceInDays, min, max } from 'date-fns'
 import classNames from 'classnames'
 
 import { formatPx } from './helpers'
@@ -61,30 +61,22 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({ render }) => {
     <TimelineContext.Consumer>
       {({
         state: {
+          days,
           months,
-          endDate: timelineEndDate,
           options: { dayWidth },
         },
       }) => {
-        const wrapperStyles = timelineEndDate
-          ? {
-              width: formatPx(
-                dayWidth,
-                differenceInDays(timelineEndDate, months[0].startDate) + 1
-              ),
-              overflow: 'hidden',
-            }
-          : null
-
         return (
-          <div
-            className="timeline__months"
-            data-testid="timeline-months"
-            style={wrapperStyles}
-          >
+          <div className="timeline__months" data-testid="timeline-months">
             {months &&
               months.map(({ startDate }, index) => {
-                const daysTotal = getDaysInMonth(startDate)
+                const firstDateDisplayed = max([startDate, days[0].date])
+                const lastDateDisplayed = min([
+                  endOfMonth(startDate),
+                  days[days.length - 1].date,
+                ])
+                const daysTotal =
+                  differenceInDays(lastDateDisplayed, firstDateDisplayed) + 1
 
                 const child = render
                   ? render(index, dayWidth, daysTotal, startDate)

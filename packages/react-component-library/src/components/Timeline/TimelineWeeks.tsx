@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import { format, differenceInDays, isAfter } from 'date-fns'
+import { format, differenceInDays, endOfWeek, max, min } from 'date-fns'
 
-import { DATE_WEEK_FORMAT } from './constants'
+import { DATE_WEEK_FORMAT, WEEK_START } from './constants'
 import { formatPx, isOdd } from './helpers'
 import { withKey } from '../../helpers'
 import { TimelineContext } from './context'
@@ -71,41 +71,26 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
     <TimelineContext.Consumer>
       {({
         state: {
-          months,
+          days,
           weeks,
-          endDate: timelineEndDate,
           options: { dayWidth },
         },
       }) => {
-        const wrapperStyles = timelineEndDate
-          ? {
-              width: formatPx(
-                dayWidth,
-                differenceInDays(timelineEndDate, months[0].startDate) + 1
-              ),
-              overflow: 'hidden',
-            }
-          : null
-
         return (
-          <div
-            className="timeline__weeks"
-            data-testid="timeline-weeks"
-            style={wrapperStyles}
-          >
+          <div className="timeline__weeks" data-testid="timeline-weeks">
             {weeks.map(({ startDate }, index) => {
-              if (isAfter(startDate, timelineEndDate)) return null
-
-              const diff = differenceInDays(
-                new Date(startDate),
-                new Date(months[0].startDate)
+              const lastDateDisplayed = min([
+                endOfWeek(startDate, { weekStartsOn: WEEK_START }),
+                days[days.length - 1].date,
+              ])
+              const daysTotal =
+                differenceInDays(lastDateDisplayed, startDate) + 1
+              const offsetInDays = differenceInDays(
+                startDate,
+                max([startDate, days[0].date])
               )
-
-              const offsetPx = formatPx(
-                dayWidth,
-                diff < 0 ? -Math.abs(diff) : 0
-              )
-              const widthPx = formatPx(dayWidth, 7)
+              const offsetPx = formatPx(dayWidth, offsetInDays)
+              const widthPx = formatPx(dayWidth, daysTotal)
 
               const isOddNumber = isOdd(index)
 
@@ -115,7 +100,7 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
                 offsetPx,
                 widthPx,
                 dayWidth,
-                7,
+                daysTotal,
                 startDate,
               ]
 
