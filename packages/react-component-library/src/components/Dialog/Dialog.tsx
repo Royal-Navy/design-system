@@ -1,7 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
+
 import { Modal } from '../Modal'
 import { ButtonProps } from '../Button'
+import { getId } from '../../helpers'
 
 export interface DialogProps extends ComponentWithClass {
   title?: string
@@ -39,8 +41,13 @@ export const Dialog: React.FC<DialogProps> = ({
     'rn-dialog--danger': isDanger,
   })
 
+  const titleId = getId('dialog-title')
+  const descriptionId = getId('dialog-description')
+
   return (
     <Modal
+      titleId={titleId}
+      descriptionId={descriptionId}
       className={classes}
       primaryButton={confirmButton}
       tertiaryButton={cancelButton}
@@ -48,7 +55,11 @@ export const Dialog: React.FC<DialogProps> = ({
     >
       <section className="rn-dialog__body" data-testid="dialog-body">
         {title && (
-          <span className="rn-dialog__title" data-testid="rn-dialog-title">
+          <span
+            id={titleId}
+            className="rn-dialog__title"
+            data-testid="rn-dialog-title"
+          >
             {title}
           </span>
         )}

@@ -34,6 +34,17 @@ describe('Modal', () => {
         )
       })
 
+      it('should set the `aria-labelledby` attribute to the ID of the title', () => {
+        const titleId = wrapper
+          .getByTestId('rn-dialog-title')
+          .getAttribute('id')
+
+        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+          'aria-labelledby',
+          titleId
+        )
+      })
+
       it('should render the title', () => {
         expect(wrapper.queryByTestId('rn-dialog-title')).toHaveTextContent(
           title
