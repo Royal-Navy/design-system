@@ -86,6 +86,27 @@ describe('Sidebar', () => {
       expect(wrapper.getByTestId('notification-button')).toBeInTheDocument()
     })
 
+    it('should set the `aria-expanded` attribute on the notification button to `false`', () => {
+      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+        'aria-expanded',
+        'false'
+      )
+    })
+
+    it('should set the `aria-label` attribute on the notification button to `Show notifications`', () => {
+      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+        'aria-label',
+        'Show notifications'
+      )
+    })
+
+    it('should set the `aria-haspopup` attribute on the notification button to `true`', () => {
+      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+        'aria-haspopup',
+        'true'
+      )
+    })
+
     it('should render the user', () => {
       expect(wrapper.getByTestId('sidebar-user')).toBeInTheDocument()
     })
