@@ -9,9 +9,14 @@ import {
 } from '@royalnavy/icon-library'
 
 import { Link } from '../../Link'
-import { Masthead, MastheadUser, MastheadUserItem } from './index'
+import {
+  Masthead,
+  MastheadNav,
+  MastheadNavItem,
+  MastheadUser,
+  MastheadUserItem,
+} from '.'
 import { Notification, Notifications } from '../NotificationPanel'
-import { MastheadNav, MastheadNavItem } from './MastheadNav'
 
 const stories = storiesOf('Masthead', module)
 

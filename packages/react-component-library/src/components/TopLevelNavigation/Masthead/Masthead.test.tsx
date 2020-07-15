@@ -9,11 +9,14 @@ import {
 } from '@testing-library/react'
 
 import { Link } from '../../Link'
-import { Masthead } from './Masthead'
+import {
+  Masthead,
+  MastheadNav,
+  MastheadNavItem,
+  MastheadUser,
+  MastheadUserItem,
+} from '.'
 import { Notification, Notifications } from '../NotificationPanel'
-import { MastheadUser } from './MastheadUser'
-import { MastheadNav, MastheadNavItem } from './MastheadNav'
-import { MastheadUserItem } from './MastheadUserItem'
 
 describe('Masthead', () => {
   let wrapper: RenderResult
@@ -64,7 +67,7 @@ describe('Masthead', () => {
     })
 
     it('should not render the nav', () => {
-      expect(wrapper.queryAllByTestId('scrollable-nav')).toHaveLength(0)
+      expect(wrapper.queryAllByTestId('masthead-nav')).toHaveLength(0)
     })
   })
 
