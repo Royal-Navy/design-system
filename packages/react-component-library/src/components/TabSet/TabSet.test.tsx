@@ -53,6 +53,26 @@ describe('TabSet', () => {
         )
       })
 
+      it('should set the `aria-labelledby` attribute to the ID of the tab', () => {
+        const tabId0 = wrapper
+          .getAllByTestId('tab')[0]
+          .getAttribute('aria-controls')
+
+        expect(wrapper.getAllByTestId('content')[0]).toHaveAttribute(
+          'aria-labelledby',
+          tabId0
+        )
+
+        const tabId1 = wrapper
+          .getAllByTestId('tab')[1]
+          .getAttribute('aria-controls')
+
+        expect(wrapper.getAllByTestId('content')[1]).toHaveAttribute(
+          'aria-labelledby',
+          tabId1
+        )
+      })
+
       it('should add the class name', () => {
         expect(wrapper.getByTestId('tab-set').classList).toContain(
           'rn-tab-set--modifier'

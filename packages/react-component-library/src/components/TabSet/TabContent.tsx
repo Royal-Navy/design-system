@@ -4,18 +4,25 @@ import classNames from 'classnames'
 import { TabProps } from '.'
 
 interface TabContentProps {
+  tabId: string
   isActive: boolean
   children: React.ReactElement<TabProps>
 }
 
 export const TabContent: React.FC<TabContentProps> = ({
+  tabId,
   isActive,
   children,
 }) => {
   const classes = classNames('rn-tab-set__content', { 'is-active': isActive })
 
   return (
-    <div className={classes} role="tabpanel" data-testid="content">
+    <div
+      className={classes}
+      role="tabpanel"
+      aria-labelledby={tabId}
+      data-testid="content"
+    >
       {children}
     </div>
   )

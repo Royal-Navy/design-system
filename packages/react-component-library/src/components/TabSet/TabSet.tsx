@@ -5,6 +5,7 @@ import { TabContent, TabItem, TabProps } from '.'
 import { ScrollButton } from './ScrollButton'
 import { useScrollableTabSet } from './useScrollableTabSet'
 import { SCROLL_DIRECTION } from './constants'
+import { getId } from '../../helpers'
 
 interface TabSetProps {
   className?: string
@@ -19,6 +20,10 @@ export const TabSet: React.FC<TabSetProps> = ({
   onChange,
   isScrollable,
 }) => {
+  const [tabIds] = useState(
+    Array.from({ length: children.length }).map(() => getId('tab-content'))
+  )
+
   const [activeTab, setActiveTab] = useState(0)
   const { scrollToNextTab, tabsRef, itemsRef } = useScrollableTabSet(children)
 
@@ -55,6 +60,7 @@ export const TabSet: React.FC<TabSetProps> = ({
           >
             {Children.map(children, ({ props }, index: number) => (
               <TabItem
+                tabId={tabIds[index]}
                 onClick={() => handleClick(index)}
                 isActive={index === activeTab}
                 index={index}
@@ -80,7 +86,9 @@ export const TabSet: React.FC<TabSetProps> = ({
         {Children.map(
           children,
           (child: React.ReactElement<TabProps>, index: number) => (
-            <TabContent isActive={index === activeTab}>{child}</TabContent>
+            <TabContent tabId={tabIds[index]} isActive={index === activeTab}>
+              {child}
+            </TabContent>
           )
         )}
       </div>
