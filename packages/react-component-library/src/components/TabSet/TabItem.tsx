@@ -29,6 +29,7 @@ export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
         role="tab"
         aria-controls={tabId}
         aria-selected={!!isActive}
+        tabIndex={!isActive ? -1 : 0}
       >
         <button className={tabClasses} onClick={handleClick}>
           <div>{children}</div>

@@ -87,6 +87,30 @@ describe('TabSet', () => {
         expect(wrapper.queryAllByTestId('content').length).toEqual(2)
       })
 
+      it('should set the `tabIndex` values correctly', () => {
+        expect(wrapper.getAllByTestId('tab')[0]).toHaveAttribute(
+          'tabIndex',
+          '0'
+        )
+
+        expect(wrapper.getAllByTestId('tab')[1]).toHaveAttribute(
+          'tabIndex',
+          '-1'
+        )
+      })
+
+      it('should set the `aria-hidden` attributes correctly', () => {
+        expect(wrapper.getAllByTestId('content')[0]).toHaveAttribute(
+          'aria-hidden',
+          'false'
+        )
+
+        expect(wrapper.getAllByTestId('content')[1]).toHaveAttribute(
+          'aria-hidden',
+          'true'
+        )
+      })
+
       describe('when the user clicks on a tab', () => {
         beforeEach(() => {
           wrapper.getByText('Title 2').click()
@@ -101,6 +125,30 @@ describe('TabSet', () => {
         it('should invoke the onChange function', () => {
           expect(onChangeSpy).toHaveBeenCalledTimes(1)
           expect(onChangeSpy).toHaveBeenCalledWith(1)
+        })
+
+        it('should set the first tab `tabIndex` to -1', () => {
+          expect(wrapper.getAllByTestId('tab')[0]).toHaveAttribute(
+            'tabIndex',
+            '-1'
+          )
+
+          expect(wrapper.getAllByTestId('tab')[1]).toHaveAttribute(
+            'tabIndex',
+            '0'
+          )
+        })
+
+        it('should set the `aria-hidden` attributes correctly', () => {
+          expect(wrapper.getAllByTestId('content')[0]).toHaveAttribute(
+            'aria-hidden',
+            'true'
+          )
+
+          expect(wrapper.getAllByTestId('content')[1]).toHaveAttribute(
+            'aria-hidden',
+            'false'
+          )
         })
       })
     })
