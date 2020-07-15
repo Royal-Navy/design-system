@@ -58,7 +58,7 @@ export const Dialog: React.FC<DialogProps> = ({
           <span
             id={titleId}
             className="rn-dialog__title"
-            data-testid="rn-dialog-title"
+            data-testid="dialog-title"
           >
             {title}
           </span>
@@ -66,7 +66,7 @@ export const Dialog: React.FC<DialogProps> = ({
         {description && (
           <p
             className="rn-dialog__description"
-            data-testid="rn-dialog-description"
+            data-testid="dialog-description"
           >
             {description}
           </p>
