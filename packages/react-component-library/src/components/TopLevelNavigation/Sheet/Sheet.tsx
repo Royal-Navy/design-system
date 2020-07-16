@@ -9,6 +9,7 @@ import {
 import { FloatingBox } from '../../../primitives/FloatingBox'
 import { SheetButtonProps } from './SheetButton'
 import { useSheet } from './useSheet'
+import { getId } from '../../../helpers'
 
 export interface SheetProps extends ComponentWithClass {
   button: React.ReactElement<SheetButtonProps>
@@ -37,10 +38,14 @@ export const Sheet: React.FC<SheetProps> = ({
     onHide
   )
 
+  const sheetId = getId('sheet')
+
   return (
     <div className={className} ref={ref} data-testid="sheet-panel">
-      {React.cloneElement(button, {
+      {React.cloneElement(button as React.ReactElement, {
         ...button.props,
+        'aria-expanded': showSheet,
+        'aria-owns': sheetId,
         onClick: toggleSheet,
       })}
 
@@ -54,7 +59,10 @@ export const Sheet: React.FC<SheetProps> = ({
               scheme="dark"
               position={arrowPosition}
             >
-              {children}
+              {React.cloneElement(children, {
+                'aria-expanded': showSheet,
+                id: sheetId,
+              })}
             </FloatingBox>
           </CSSTransition>
         )}

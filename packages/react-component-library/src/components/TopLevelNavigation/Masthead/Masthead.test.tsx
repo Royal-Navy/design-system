@@ -9,11 +9,14 @@ import {
 } from '@testing-library/react'
 
 import { Link } from '../../Link'
-import { Masthead } from './Masthead'
+import {
+  Masthead,
+  MastheadNav,
+  MastheadNavItem,
+  MastheadUser,
+  MastheadUserItem,
+} from '.'
 import { Notification, Notifications } from '../NotificationPanel'
-import { MastheadUser } from './MastheadUser'
-import { MastheadNav, MastheadNavItem } from './MastheadNav'
-import { MastheadUserItem } from './MastheadUserItem'
 
 describe('Masthead', () => {
   let wrapper: RenderResult
@@ -27,6 +30,13 @@ describe('Masthead', () => {
       expect(wrapper.getByTestId('masthead')).toBeInTheDocument()
     })
 
+    it('should set the masthead banner `role` attribute to `banner`', () => {
+      expect(wrapper.getByTestId('masthead-banner')).toHaveAttribute(
+        'role',
+        'banner'
+      )
+    })
+
     it('should render the service name', () => {
       expect(wrapper.getByTestId('masthead-servicename')).toHaveTextContent(
         'title'
@@ -35,6 +45,13 @@ describe('Masthead', () => {
 
     it('should render the default logo', () => {
       expect(wrapper.getByTestId('logo')).toBeInTheDocument()
+    })
+
+    it('should set the logo `role` to `presentation`', () => {
+      expect(wrapper.getByTestId('logo')).toHaveAttribute(
+        'role',
+        'presentation'
+      )
     })
 
     it('should not render the avatar', () => {
@@ -50,7 +67,7 @@ describe('Masthead', () => {
     })
 
     it('should not render the nav', () => {
-      expect(wrapper.queryAllByTestId('scrollable-nav')).toHaveLength(0)
+      expect(wrapper.queryAllByTestId('masthead-nav')).toHaveLength(0)
     })
   })
 
@@ -75,7 +92,7 @@ describe('Masthead', () => {
       const props = {
         hasUnreadNotification: true,
         homeLink: <Link href="/" />,
-        Logo: () => <svg data-testid="custom-logo" />,
+        Logo: ({ role }) => <svg data-testid="custom-logo" role={role} />,
         nav: (
           <MastheadNav>
             <MastheadNavItem link={<Link href="/first">First</Link>} />
@@ -112,6 +129,13 @@ describe('Masthead', () => {
       expect(wrapper.getByTestId('masthead')).toBeInTheDocument()
     })
 
+    it('should set the masthead banner `role` attribute to `banner`', () => {
+      expect(wrapper.getByTestId('masthead-banner')).toHaveAttribute(
+        'role',
+        'banner'
+      )
+    })
+
     it('should render the service name', () => {
       expect(wrapper.getByTestId('masthead-servicename')).toHaveTextContent(
         'title'
@@ -124,6 +148,13 @@ describe('Masthead', () => {
 
     it('should render the custom logo', () => {
       expect(wrapper.getByTestId('custom-logo')).toBeInTheDocument()
+    })
+
+    it('should set the logo `role` to `presentation`', () => {
+      expect(wrapper.getByTestId('custom-logo')).toHaveAttribute(
+        'role',
+        'presentation'
+      )
     })
 
     it('should render the avatar', () => {
@@ -143,12 +174,62 @@ describe('Masthead', () => {
       ).toBeInTheDocument()
     })
 
+    it('should set the `aria-expanded` attribute on the search button to `false`', () => {
+      expect(wrapper.queryByTestId('masthead-search-button')).toHaveAttribute(
+        'aria-expanded',
+        'false'
+      )
+    })
+
+    it('should set the `aria-label` attribute on the search button to `Show search`', () => {
+      expect(wrapper.queryByTestId('masthead-search-button')).toHaveAttribute(
+        'aria-label',
+        'Show search'
+      )
+    })
+
     it('should not show the search bar', () => {
       expect(wrapper.queryByTestId('searchbar')).toBeNull()
     })
 
+    it('should set the `aria-expanded` attribute on the notification button to `false`', () => {
+      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+        'aria-expanded',
+        'false'
+      )
+    })
+
+    it('should set the `aria-label` attribute on the notification button to `Show notifications`', () => {
+      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+        'aria-label',
+        'Show notifications'
+      )
+    })
+
+    it('should set the `aria-haspopup` attribute on the notification button to `true`', () => {
+      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+        'aria-haspopup',
+        'true'
+      )
+    })
+
     it('should include an unread notification indicator', () => {
       expect(wrapper.queryByTestId('not-read')).toBeInTheDocument()
+    })
+
+    it('should set the nav `role` to `menubar`', () => {
+      expect(wrapper.getByTestId('masthead-nav-list')).toHaveAttribute(
+        'role',
+        'menubar'
+      )
+    })
+
+    it('should set each nav list item `role` to `none`', () => {
+      const listItems = wrapper.getAllByTestId('masthead-nav-item')
+
+      listItems.forEach((listItem) => {
+        expect(listItem).toHaveAttribute('role', 'none')
+      })
     })
 
     it('should render the nav items', () => {
@@ -158,9 +239,21 @@ describe('Masthead', () => {
       )
     })
 
+    it('should set each nav item `role` to `menuitem`', () => {
+      expect(wrapper.getByText('First')).toHaveAttribute('role', 'menuitem')
+      expect(wrapper.getByText('Second')).toHaveAttribute('role', 'menuitem')
+    })
+
     describe('when the user clicks on the search option', () => {
       beforeEach(() => {
         wrapper.queryByTestId('masthead-search-button').click()
+      })
+
+      it('should set the `aria-expanded` attribute on the search button to `true`', () => {
+        expect(wrapper.queryByTestId('masthead-search-button')).toHaveAttribute(
+          'aria-expanded',
+          'true'
+        )
       })
 
       it('should show the search bar', () => {
@@ -225,6 +318,24 @@ describe('Masthead', () => {
     describe('when the user opens the notifications', () => {
       beforeEach(() => {
         wrapper.queryByTestId('notification-button').click()
+      })
+
+      it('should set the `aria-expanded` attribute on the notification button to `true`', () => {
+        expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+          'aria-expanded',
+          'true'
+        )
+      })
+
+      it('should have set the `aria-owns` attribute on the notification button to the ID of the sheet', () => {
+        const sheetId = wrapper
+          .getByTestId('notifications-sheet')
+          .getAttribute('id')
+
+        expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+          'aria-owns',
+          sheetId
+        )
       })
 
       it('should set a rule on the wrapper so mobile scrolling is disabled', () => {

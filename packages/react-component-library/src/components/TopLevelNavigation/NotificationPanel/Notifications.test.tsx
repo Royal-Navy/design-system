@@ -1,4 +1,5 @@
 import React from 'react'
+import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
 import { Notification, Notifications } from './index'
@@ -28,19 +29,46 @@ describe('Notifications', () => {
       )
     })
 
-    it('should render as an ordered list', () => {
-      const orderedList = wrapper.container.firstElementChild
-      expect(orderedList.tagName).toEqual('OL')
+    it('should set the `role` attribute on the notification sheet to `grid`', () => {
+      expect(wrapper.getByTestId('notifications-sheet')).toHaveAttribute(
+        'role',
+        'grid'
+      )
     })
 
     it('should render the items', () => {
-      const items = wrapper.container.firstElementChild.children
-      expect(items.length).toEqual(2)
+      const items = wrapper.getAllByTestId('notification')
+      expect(items).toHaveLength(2)
+    })
+
+    it('should set the `aria-describedby` attribute of each notification row to the ID of the description', () => {
+      const contentIds = wrapper
+        .getAllByTestId('notification-content')
+        .map((content) => content.getAttribute('id'))
+
+      const items = wrapper.getAllByTestId('notification-row')
+      items.forEach((item, i) => {
+        expect(item).toHaveAttribute('aria-describedby', contentIds[i])
+      })
+    })
+
+    it('should set the `role` attribute of each notification row to `row`', () => {
+      const items = wrapper.getAllByTestId('notification-row')
+      items.forEach((item) => {
+        expect(item).toHaveAttribute('role', 'row')
+      })
+    })
+
+    it('should set the `role` attribute of each notification content to `gridcell`', () => {
+      const items = wrapper.getAllByTestId('notification-content')
+      items.forEach((item) => {
+        expect(item).toHaveAttribute('role', 'gridcell')
+      })
     })
 
     it('should render a link to view all', () => {
       const viewAll = wrapper.getByText('View all notifications')
-      expect(viewAll.getAttribute('href')).toEqual('notifications')
+      expect(viewAll).toHaveAttribute('href', 'notifications')
     })
   })
 })

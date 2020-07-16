@@ -3,7 +3,8 @@ import differenceInMinutes from 'date-fns/differenceInMinutes'
 import formatDistanceStrict from 'date-fns/formatDistanceStrict'
 import format from 'date-fns/format'
 
-import { Avatar, AVATAR_VARIANT } from "../../Avatar"
+import { Avatar, AVATAR_VARIANT } from '../../Avatar'
+import { getId } from '../../../helpers'
 
 export interface NotificationProps {
   link: React.ReactElement<LinkTypes>
@@ -18,7 +19,7 @@ export interface NotificationProps {
 function getInitials(name: string) {
   return name
     .split(/[\s-]+/)
-    .map(namePart => namePart[0])
+    .map((namePart) => namePart[0])
     .join('')
 }
 
@@ -46,14 +47,21 @@ export const Notification: React.FC<NotificationProps> = ({
   when,
   description,
 }) => {
+  const contentId = getId('content')
+
   return (
     <li data-testid="notification">
       <div className="rn-notifications-item-wrapper">
         {React.cloneElement(link as ReactElement, {
           ...link.props,
           children: (
-            <div className="rn-notifications-item">
-              <div className="rn-notifications-item__avatar">
+            <div
+              aria-describedby={contentId}
+              className="rn-notifications-item"
+              data-testid="notification-row"
+              role="row"
+            >
+              <div className="rn-notifications-item__avatar" role="gridcell">
                 <Avatar
                   initials={getInitials(name)}
                   variant={AVATAR_VARIANT.DARK}
@@ -65,7 +73,12 @@ export const Notification: React.FC<NotificationProps> = ({
                   />
                 )}
               </div>
-              <div className="rn-notifications-item__content">
+              <div
+                className="rn-notifications-item__content"
+                data-testid="notification-content"
+                id={contentId}
+                role="gridcell"
+              >
                 <span className="rn-notifications-item__content-strong">
                   {name}
                 </span>

@@ -17,7 +17,13 @@ export const SheetButton: React.FC<SheetButtonProps> = ({
   const classes = classNames('rn-sheet__button', className)
 
   return (
-    <button className={classes} onClick={onClick} type="button" {...rest}>
+    <button
+      aria-haspopup
+      className={classes}
+      onClick={onClick}
+      type="button"
+      {...rest}
+    >
       {icon}
       {children}
     </button>
