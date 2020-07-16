@@ -24,7 +24,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   })
 
   return (
-    <div className={classes} data-testid="buttongroup">
+    <div className={classes} role="group" data-testid="buttongroup">
       {React.Children.map(
         children,
         (child: React.ReactElement<ButtonGroupItemProps>) => {
