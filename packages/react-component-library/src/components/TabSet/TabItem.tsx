@@ -2,6 +2,7 @@ import React, { forwardRef, MouseEvent } from 'react'
 import classNames from 'classnames'
 
 interface TabItemProps {
+  tabId: string
   children: React.ReactElement | string
   index: number
   isActive: boolean
@@ -10,7 +11,7 @@ interface TabItemProps {
 }
 
 export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
-  ({ children, isActive, onClick }, ref) => {
+  ({ tabId, children, isActive, onClick }, ref) => {
     const tabClasses = classNames('rn-tab-set__tab', {
       'is-active': isActive,
     })
@@ -21,7 +22,15 @@ export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
     }
 
     return (
-      <li className="rn-tab-set__tab-item" data-testid="tab" ref={ref}>
+      <li
+        className="rn-tab-set__tab-item"
+        ref={ref}
+        role="tab"
+        aria-controls={tabId}
+        aria-selected={!!isActive}
+        tabIndex={!isActive ? -1 : 0}
+        data-testid="tab-set-tab"
+      >
         <button className={tabClasses} onClick={handleClick}>
           <div>{children}</div>
         </button>

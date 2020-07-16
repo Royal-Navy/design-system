@@ -30,6 +30,7 @@ export const ScrollButton: React.FC<ScrollButtonProps> = ({
     <button
       className={classes}
       onClick={onClick}
+      aria-hidden
       data-testid={`scroll-${direction}`}
     >
       {SCROLL_DIRECTION_ICON_MAP[direction]}

@@ -12,7 +12,7 @@ import { Tab, TabSet } from '.'
 import { SCROLL_DIRECTION } from './constants'
 
 function flushPromises() {
-  return new Promise(resolve => setImmediate(resolve))
+  return new Promise((resolve) => setImmediate(resolve))
 }
 
 describe('TabSet', () => {
@@ -39,6 +39,43 @@ describe('TabSet', () => {
         )
       })
 
+      it('should apply the correct roles', () => {
+        expect(wrapper.getByTestId('tab-set-list')).toHaveAttribute(
+          'role',
+          'tablist'
+        )
+
+        expect(wrapper.getAllByTestId('tab-set-tab')[0]).toHaveAttribute(
+          'role',
+          'tab'
+        )
+
+        expect(wrapper.getAllByTestId('tab-set-content')[0]).toHaveAttribute(
+          'role',
+          'tabpanel'
+        )
+      })
+
+      it('should set the `aria-labelledby` attribute to the ID of the tab', () => {
+        const tabId0 = wrapper
+          .getAllByTestId('tab-set-tab')[0]
+          .getAttribute('aria-controls')
+
+        expect(wrapper.getAllByTestId('tab-set-content')[0]).toHaveAttribute(
+          'aria-labelledby',
+          tabId0
+        )
+
+        const tabId1 = wrapper
+          .getAllByTestId('tab-set-tab')[1]
+          .getAttribute('aria-controls')
+
+        expect(wrapper.getAllByTestId('tab-set-content')[1]).toHaveAttribute(
+          'aria-labelledby',
+          tabId1
+        )
+      })
+
       it('should add the class name', () => {
         expect(wrapper.getByTestId('tab-set').classList).toContain(
           'rn-tab-set--modifier'
@@ -46,11 +83,35 @@ describe('TabSet', () => {
       })
 
       it('should output the correct number of tabs', () => {
-        expect(wrapper.queryAllByTestId('tab').length).toEqual(2)
+        expect(wrapper.queryAllByTestId('tab-set-tab').length).toEqual(2)
       })
 
       it('should output the correct number of content panels', () => {
-        expect(wrapper.queryAllByTestId('content').length).toEqual(2)
+        expect(wrapper.queryAllByTestId('tab-set-content').length).toEqual(2)
+      })
+
+      it('should set the `tabIndex` values correctly', () => {
+        expect(wrapper.getAllByTestId('tab-set-tab')[0]).toHaveAttribute(
+          'tabIndex',
+          '0'
+        )
+
+        expect(wrapper.getAllByTestId('tab-set-tab')[1]).toHaveAttribute(
+          'tabIndex',
+          '-1'
+        )
+      })
+
+      it('should set the `aria-hidden` attributes correctly', () => {
+        expect(wrapper.getAllByTestId('tab-set-content')[0]).toHaveAttribute(
+          'aria-hidden',
+          'false'
+        )
+
+        expect(wrapper.getAllByTestId('tab-set-content')[1]).toHaveAttribute(
+          'aria-hidden',
+          'true'
+        )
       })
 
       describe('when the user clicks on a tab', () => {
@@ -67,6 +128,30 @@ describe('TabSet', () => {
         it('should invoke the onChange function', () => {
           expect(onChangeSpy).toHaveBeenCalledTimes(1)
           expect(onChangeSpy).toHaveBeenCalledWith(1)
+        })
+
+        it('should set the first tab `tabIndex` to -1', () => {
+          expect(wrapper.getAllByTestId('tab-set-tab')[0]).toHaveAttribute(
+            'tabIndex',
+            '-1'
+          )
+
+          expect(wrapper.getAllByTestId('tab-set-tab')[1]).toHaveAttribute(
+            'tabIndex',
+            '0'
+          )
+        })
+
+        it('should set the `aria-hidden` attributes correctly', () => {
+          expect(wrapper.getAllByTestId('tab-set-content')[0]).toHaveAttribute(
+            'aria-hidden',
+            'true'
+          )
+
+          expect(wrapper.getAllByTestId('tab-set-content')[1]).toHaveAttribute(
+            'aria-hidden',
+            'false'
+          )
         })
       })
     })
@@ -202,6 +287,11 @@ describe('TabSet', () => {
         'offsetLeft',
         { value: 350 }
       )
+    })
+
+    it('should add the `aria-hidden` attribute', () => {
+      expect(wrapper.getByTestId('scroll-left')).toHaveAttribute('aria-hidden')
+      expect(wrapper.getByTestId('scroll-right')).toHaveAttribute('aria-hidden')
     })
 
     it('should present a scroll left button', () => {
