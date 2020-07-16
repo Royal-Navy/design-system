@@ -6,21 +6,21 @@ import { ButtonProps } from '../Button'
 import { getId } from '../../helpers'
 
 export interface DialogProps extends ComponentWithClass {
-  title?: string
   description?: string
   isDanger?: boolean
-  onConfirm?: (event: React.FormEvent<HTMLButtonElement>) => void
-  onCancel?: (event: React.FormEvent<HTMLButtonElement>) => void
   isOpen?: boolean
+  onCancel?: (event: React.FormEvent<HTMLButtonElement>) => void
+  onConfirm?: (event: React.FormEvent<HTMLButtonElement>) => void
+  title?: string
 }
 
 export const Dialog: React.FC<DialogProps> = ({
   className = '',
-  title,
   description,
   isDanger = false,
-  onConfirm,
   onCancel,
+  onConfirm,
+  title,
   ...rest
 }) => {
   const confirmButton: ButtonProps = {
