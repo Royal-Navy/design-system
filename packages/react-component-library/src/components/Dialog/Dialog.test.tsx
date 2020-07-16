@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
-import { Dialog } from './Dialog'
+import { Dialog } from '.'
 
 describe('Modal', () => {
   let wrapper: RenderResult
@@ -34,20 +34,23 @@ describe('Modal', () => {
         )
       })
 
-      it('should render the title', () => {
-        expect(wrapper.queryByTestId('rn-dialog-title')).toHaveTextContent(
-          title
+      it('should set the `aria-labelledby` attribute to the ID of the title', () => {
+        const titleId = wrapper.getByTestId('dialog-title').getAttribute('id')
+
+        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+          'aria-labelledby',
+          titleId
         )
       })
 
-      it('should render the description', () => {
-        expect(
-          wrapper.queryByTestId('rn-dialog-description')
-        ).toHaveTextContent(description)
+      it('should render the title', () => {
+        expect(wrapper.getByTestId('dialog-title')).toHaveTextContent(title)
       })
 
-      it('should apply the `rn-dialog` class', () => {
-        expect(wrapper.queryByTestId('modal-wrapper')).toHaveClass('rn-dialog')
+      it('should render the description', () => {
+        expect(wrapper.getByTestId('dialog-description')).toHaveTextContent(
+          description
+        )
       })
 
       describe('and the primary button is clicked', () => {
@@ -81,33 +84,6 @@ describe('Modal', () => {
           expect(onCancel).toHaveBeenCalled()
         })
       })
-    })
-  })
-
-  describe('when props are provided for a danger dialog component', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <Dialog
-          title={title}
-          description={description}
-          onConfirm={onConfirm}
-          onCancel={onCancel}
-          isOpen={isOpen}
-          isDanger
-        />
-      )
-    })
-
-    it('should apply the correct modifier class to the wrapper', () => {
-      expect(wrapper.queryByTestId('modal-wrapper')).toHaveClass(
-        'rn-dialog--danger'
-      )
-    })
-
-    it('should apply the correct modifier to the primary button', () => {
-      expect(wrapper.queryByTestId('modal-primary')).toHaveClass(
-        'rn-btn--danger'
-      )
     })
   })
 })

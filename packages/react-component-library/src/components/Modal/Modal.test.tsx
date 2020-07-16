@@ -41,6 +41,31 @@ describe('Modal', () => {
         )
       })
 
+      it('should apply the `role` attribute', () => {
+        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+          'role',
+          'dialog'
+        )
+      })
+
+      it('should apply the `aria-modal` attribute', () => {
+        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+          'aria-modal',
+          'true'
+        )
+      })
+
+      it('should set the `aria-describedby` attribute to the ID of the content', () => {
+        const descriptionId = wrapper
+          .getByTestId('modal-body')
+          .getAttribute('id')
+
+        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+          'aria-describedby',
+          descriptionId
+        )
+      })
+
       it('should apply the `is-open` class', () => {
         expect(wrapper.queryByTestId('modal-wrapper')).toHaveClass('is-open')
       })
@@ -70,6 +95,18 @@ describe('Modal', () => {
           </Modal>
         )
       })
+
+      it('should set the `aria-labelledby` attribute to the ID of the title', () => {
+        const titleId = wrapper
+          .getByTestId('modal-header-text')
+          .getAttribute('id')
+
+        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+          'aria-labelledby',
+          titleId
+        )
+      })
+
       it('should render the Header component', () => {
         expect(wrapper.queryByTestId('modal-header')).toBeInTheDocument()
       })

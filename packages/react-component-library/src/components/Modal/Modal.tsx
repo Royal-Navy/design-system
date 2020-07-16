@@ -6,26 +6,31 @@ import { ButtonProps } from '../Button'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { useOpenClose } from '../../hooks/useOpenClose'
+import { getId } from '../../helpers'
 
 export interface ModalProps extends ComponentWithClass {
   children?: React.ReactNode
+  descriptionId?: string
   isOpen?: boolean
   onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
   primaryButton?: ButtonProps
   secondaryButton?: ButtonProps
   tertiaryButton?: ButtonProps
   title?: string
+  titleId?: string
 }
 
 export const Modal: React.FC<ModalProps> = ({
-  className,
   children,
+  className,
+  descriptionId = getId('modal-description'),
   isOpen,
   onClose,
   primaryButton,
   secondaryButton,
   tertiaryButton,
   title,
+  titleId = getId('modal-title'),
 }) => {
   const { handleOnClose, open } = useOpenClose(isOpen, onClose)
   const classes = classNames(
@@ -43,10 +48,23 @@ export const Modal: React.FC<ModalProps> = ({
   }
 
   return (
-    <div className={classes} data-testid="modal-wrapper">
+    <div
+      className={classes}
+      role="dialog"
+      aria-modal
+      aria-labelledby={titleId}
+      aria-describedby={descriptionId}
+      data-testid="modal-wrapper"
+    >
       <article className="rn-modal__main">
-        {title && <Header title={title} onClose={handleOnClose} />}
-        <section className="rn-modal__body" data-testid="modal-body">
+        {title && (
+          <Header titleId={titleId} title={title} onClose={handleOnClose} />
+        )}
+        <section
+          id={descriptionId}
+          className="rn-modal__body"
+          data-testid="modal-body"
+        >
           {children}
         </section>
         {(primaryButton || secondaryButton || tertiaryButton) && (
