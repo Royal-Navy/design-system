@@ -18,6 +18,24 @@ describe('DataList', () => {
       )
     })
 
+    it('should not set `aria-expanded` on the button', () => {
+      expect(wrapper.getByTestId('data-list-header')).not.toHaveAttribute(
+        'aria-expanded'
+      )
+    })
+
+    it('should not set `aria-label` on the button', () => {
+      expect(wrapper.getByTestId('data-list-header')).not.toHaveAttribute(
+        'aria-label'
+      )
+    })
+
+    it('should not set `aria-owns` on the button', () => {
+      expect(wrapper.getByTestId('data-list-header')).not.toHaveAttribute(
+        'aria-owns'
+      )
+    })
+
     it('should render the title', () => {
       expect(wrapper.queryByText('title')).toBeInTheDocument()
     })
@@ -43,12 +61,44 @@ describe('DataList', () => {
       )
     })
 
+    it('should set `aria-expanded` on the button to `false`', () => {
+      expect(wrapper.getByTestId('data-list-header')).toHaveAttribute(
+        'aria-expanded',
+        'false'
+      )
+    })
+
+    it('should set `aria-label` on the button to `Show data`', () => {
+      expect(wrapper.getByTestId('data-list-header')).toHaveAttribute(
+        'aria-label',
+        'Show data'
+      )
+    })
+
+    it('should set `aria-owns` on the button to the ID of the sheet', () => {
+      const sheetId = wrapper.getByTestId('data-list-sheet').getAttribute('id')
+
+      expect(wrapper.getByTestId('data-list-header')).toHaveAttribute(
+        'aria-owns',
+        sheetId
+      )
+    })
+
     it('should hide the items', () => {
-      expect(wrapper.queryByTestId('data-list').classList).not.toContain('is-expanded')
+      expect(wrapper.queryByTestId('data-list').classList).not.toContain(
+        'is-expanded'
+      )
     })
 
     it('should render the badge', () => {
       expect(wrapper.queryByTestId('badge')).toHaveTextContent('3')
+    })
+
+    it('should set the `aria-hidden` attribute on the icon to `true`', () => {
+      expect(wrapper.queryByTestId('arrow-down-icon')).toHaveAttribute(
+        'aria-hidden',
+        'true'
+      )
     })
 
     describe('when the header is clicked', () => {
@@ -56,8 +106,24 @@ describe('DataList', () => {
         wrapper.getByTestId('data-list-header').click()
       })
 
+      it('should set `aria-expanded` on the button to `true`', () => {
+        expect(wrapper.getByTestId('data-list-header')).toHaveAttribute(
+          'aria-expanded',
+          'true'
+        )
+      })
+
+      it('should set `aria-label` on the button to `Hide data`', () => {
+        expect(wrapper.getByTestId('data-list-header')).toHaveAttribute(
+          'aria-label',
+          'Hide data'
+        )
+      })
+
       it('should show the items', () => {
-        expect(wrapper.queryByTestId('data-list').classList).toContain('is-expanded')
+        expect(wrapper.queryByTestId('data-list').classList).toContain(
+          'is-expanded'
+        )
       })
     })
   })
