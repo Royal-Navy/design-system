@@ -1,12 +1,12 @@
 import React from 'react'
 
 export interface HeaderProps {
-  titleId: string
-  title?: string
   onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
+  title?: string
+  titleId: string
 }
 
-export const Header: React.FC<HeaderProps> = ({ titleId, title, onClose }) => {
+export const Header: React.FC<HeaderProps> = ({ onClose, title, titleId }) => {
   return (
     <header className="rn-modal__header" data-testid="modal-header">
       <span

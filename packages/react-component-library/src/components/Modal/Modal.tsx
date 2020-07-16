@@ -9,28 +9,28 @@ import { useOpenClose } from '../../hooks/useOpenClose'
 import { getId } from '../../helpers'
 
 export interface ModalProps extends ComponentWithClass {
-  titleId?: string
-  descriptionId?: string
   children?: React.ReactNode
+  descriptionId?: string
   isOpen?: boolean
   onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
   primaryButton?: ButtonProps
   secondaryButton?: ButtonProps
   tertiaryButton?: ButtonProps
   title?: string
+  titleId?: string
 }
 
 export const Modal: React.FC<ModalProps> = ({
-  titleId = getId('modal-title'),
-  descriptionId = getId('modal-description'),
-  className,
   children,
+  className,
+  descriptionId = getId('modal-description'),
   isOpen,
   onClose,
   primaryButton,
   secondaryButton,
   tertiaryButton,
   title,
+  titleId = getId('modal-title'),
 }) => {
   const { handleOnClose, open } = useOpenClose(isOpen, onClose)
   const classes = classNames(
