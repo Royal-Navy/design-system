@@ -45,6 +45,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <Sheet
             button={(
               <SheetButton
+                aria-label="Show notifications"
                 data-testid="notification-button"
                 icon={<Bell className="rn-sheet__icon" />}
               >

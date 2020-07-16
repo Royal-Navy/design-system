@@ -78,12 +78,37 @@ describe('Sidebar', () => {
       )
     })
 
-    it('should render the nav', () => {
-      expect(wrapper.getByTestId('sidebar-nav')).toBeInTheDocument()
+    it('should set the `aria-hidden` attribute for each nav item image', () => {
+      const images = wrapper.getAllByTestId('sidebar-nav-item-image')
+
+      images.forEach((image) => {
+        expect(image).toHaveAttribute('aria-hidden', 'true')
+      })
     })
 
     it('should render the notifications', () => {
       expect(wrapper.getByTestId('notification-button')).toBeInTheDocument()
+    })
+
+    it('should set the `aria-expanded` attribute on the notification button to `false`', () => {
+      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+        'aria-expanded',
+        'false'
+      )
+    })
+
+    it('should set the `aria-label` attribute on the notification button to `Show notifications`', () => {
+      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+        'aria-label',
+        'Show notifications'
+      )
+    })
+
+    it('should set the `aria-haspopup` attribute on the notification button to `true`', () => {
+      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
+        'aria-haspopup',
+        'true'
+      )
     })
 
     it('should render the user', () => {

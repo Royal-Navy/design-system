@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const Tools: React.FC = () => (
-  <svg width="18px" height="16px" viewBox="0 0 19 17" version="1.1">
+export const Tools: React.FC = ({ ...rest }) => (
+  <svg width="18px" height="16px" viewBox="0 0 19 17" version="1.1" {...rest}>
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g transform="translate(-19.000000, -122.000000)" className="rn-iconfill">
         <g transform="translate(19.536500, 122.000000)">
