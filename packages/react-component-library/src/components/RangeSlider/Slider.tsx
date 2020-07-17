@@ -58,6 +58,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
     <div className={classes} data-testid="rangeslider">
       {IconLeft && (
         <IconLeft
+          aria-hidden
           className="rn-rangeslider__icon rn-rangeslider__icon--left"
           data-testid="rangeslider-icon-left"
         />
@@ -146,6 +147,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
       </Slider>
       {IconRight && (
         <IconRight
+          aria-hidden
           className="rn-rangeslider__icon rn-rangeslider__icon--right"
           data-testid="rangeslider-icon-right"
         />
