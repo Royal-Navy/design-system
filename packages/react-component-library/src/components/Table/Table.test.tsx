@@ -44,8 +44,20 @@ describe('Table', () => {
       )
     })
 
+    it('should set the `role` attribute to `grid`', () => {
+      expect(wrapper.getByTestId('table')).toHaveAttribute('role', 'grid')
+    })
+
     it('should render three table header cells', () => {
       expect(wrapper.queryAllByTestId('table-header')).toHaveLength(3)
+    })
+
+    it('should not set an `aria-sort` attribute on any table header cells', () => {
+      const tableHeaderCells = wrapper.queryAllByTestId('table-header')
+
+      tableHeaderCells.forEach((tableHeaderCell) => {
+        expect(tableHeaderCell).not.toHaveAttribute('aria-sort')
+      })
     })
 
     it('should render three rows', () => {
@@ -95,6 +107,14 @@ describe('Table', () => {
       expect(wrapper.queryAllByTestId('ascending').length).toEqual(0)
     })
 
+    it('should set the `aria-sort` attribute on the table header cells', () => {
+      const tableHeaderCells = wrapper.queryAllByTestId('table-header')
+
+      expect(tableHeaderCells[0]).toHaveAttribute('aria-sort', 'none')
+      expect(tableHeaderCells[1]).not.toHaveAttribute('aria-sort')
+      expect(tableHeaderCells[2]).toHaveAttribute('aria-sort', 'none')
+    })
+
     describe('when the second cell header is clicked', () => {
       beforeEach(() => {
         wrapper.getByText('Second').click()
@@ -104,6 +124,14 @@ describe('Table', () => {
         expect(wrapper.queryAllByTestId('unsorted').length).toEqual(2)
         expect(wrapper.queryAllByTestId('descending').length).toEqual(0)
         expect(wrapper.queryAllByTestId('ascending').length).toEqual(0)
+      })
+
+      it('should set the `aria-sort` attribute on the table header cells', () => {
+        const tableHeaderCells = wrapper.queryAllByTestId('table-header')
+
+        expect(tableHeaderCells[0]).toHaveAttribute('aria-sort', 'none')
+        expect(tableHeaderCells[1]).not.toHaveAttribute('aria-sort')
+        expect(tableHeaderCells[2]).toHaveAttribute('aria-sort', 'none')
       })
 
       it('should not change the order of the rows', () => {
@@ -125,6 +153,14 @@ describe('Table', () => {
         expect(wrapper.queryAllByTestId('ascending').length).toEqual(0)
       })
 
+      it('should set the `aria-sort` attribute on the table header cells', () => {
+        const tableHeaderCells = wrapper.queryAllByTestId('table-header')
+
+        expect(tableHeaderCells[0]).toHaveAttribute('aria-sort', 'descending')
+        expect(tableHeaderCells[1]).not.toHaveAttribute('aria-sort')
+        expect(tableHeaderCells[2]).toHaveAttribute('aria-sort', 'none')
+      })
+
       it('should sort the data in descending order of the first column', () => {
         const rows = wrapper.getAllByTestId('table-row')
         expect(rows[0].children[0].textContent).toEqual('c1')
@@ -143,6 +179,14 @@ describe('Table', () => {
           expect(wrapper.queryAllByTestId('ascending').length).toEqual(1)
         })
 
+        it('should set the `aria-sort` attribute on the table header cells', () => {
+          const tableHeaderCells = wrapper.queryAllByTestId('table-header')
+
+          expect(tableHeaderCells[0]).toHaveAttribute('aria-sort', 'ascending')
+          expect(tableHeaderCells[1]).not.toHaveAttribute('aria-sort')
+          expect(tableHeaderCells[2]).toHaveAttribute('aria-sort', 'none')
+        })
+
         it('should sort the data in ascending order of the first column', () => {
           const rows = wrapper.getAllByTestId('table-row')
           expect(rows[0].children[0].textContent).toEqual('a1')
@@ -159,6 +203,14 @@ describe('Table', () => {
             expect(wrapper.queryAllByTestId('unsorted').length).toEqual(2)
             expect(wrapper.queryAllByTestId('descending').length).toEqual(0)
             expect(wrapper.queryAllByTestId('ascending').length).toEqual(0)
+          })
+
+          it('should set the `aria-sort` attribute on the table header cells', () => {
+            const tableHeaderCells = wrapper.queryAllByTestId('table-header')
+
+            expect(tableHeaderCells[0]).toHaveAttribute('aria-sort', 'none')
+            expect(tableHeaderCells[1]).not.toHaveAttribute('aria-sort')
+            expect(tableHeaderCells[2]).toHaveAttribute('aria-sort', 'none')
           })
 
           it('should unsort the data in the first column', () => {
@@ -181,6 +233,14 @@ describe('Table', () => {
         expect(wrapper.queryAllByTestId('unsorted').length).toEqual(1)
         expect(wrapper.queryAllByTestId('descending').length).toEqual(1)
         expect(wrapper.queryAllByTestId('ascending').length).toEqual(0)
+      })
+
+      it('should set the `aria-sort` attribute on the table header cells', () => {
+        const tableHeaderCells = wrapper.queryAllByTestId('table-header')
+
+        expect(tableHeaderCells[0]).toHaveAttribute('aria-sort', 'none')
+        expect(tableHeaderCells[1]).not.toHaveAttribute('aria-sort')
+        expect(tableHeaderCells[2]).toHaveAttribute('aria-sort', 'descending')
       })
 
       it('should sort the data in descending order of the third column', () => {
