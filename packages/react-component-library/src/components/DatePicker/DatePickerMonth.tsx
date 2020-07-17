@@ -1,9 +1,9 @@
 import React from 'react'
 import { useMonth, FirstDayOfWeek } from '@datepicker-react/hooks'
 
-import { Day } from './Day'
+import { DatePickerDay } from './DatePickerDay'
 
-export interface MonthProps extends ComponentWithClass {
+export interface DatePickerMonthProps extends ComponentWithClass {
   titleId: string
   year: number
   month: number
@@ -28,7 +28,7 @@ function getKey(prefix: string, id: string): string {
   return `${prefix}_${id}`
 }
 
-export const Month: React.FC<MonthProps> = ({
+export const DatePickerMonth: React.FC<DatePickerMonthProps> = ({
   titleId,
   year,
   month,
@@ -68,7 +68,7 @@ export const Month: React.FC<MonthProps> = ({
         {days.map((day, index) => {
           if (typeof day === 'object') {
             return (
-              <Day
+              <DatePickerDay
                 date={day.date}
                 key={day.date.toString()}
                 dayLabel={formatDayLabel(day.dayLabel)}
@@ -83,4 +83,4 @@ export const Month: React.FC<MonthProps> = ({
   )
 }
 
-Month.displayName = 'Month'
+DatePickerMonth.displayName = 'DatePickerMonth'

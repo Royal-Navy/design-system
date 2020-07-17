@@ -18,9 +18,9 @@ import {
 
 import DatepickerContext from './datepickerContext'
 
-import { Input } from './Input'
-import { Month } from './Month'
-import { NavButton } from './NavButton'
+import { DatePickerInput } from './DatePickerInput'
+import { DatePickerMonth } from './DatePickerMonth'
+import { DatePickerNavButton } from './DatePickerNavButton'
 import { useOpenClose } from './useOpenClose'
 import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
 import { FloatingBox, FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
@@ -174,7 +174,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           targetAttachment: PLACEMENTS.TARGET_ATTACHMENT,
           className: tetherClasses,
           renderTarget: (ref: React.RefObject<any>) => (
-            <Input
+            <DatePickerInput
               ref={ref}
               className={classes}
               id={id}
@@ -200,13 +200,13 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               aria-live="polite"
             >
               <>
-                <NavButton
+                <DatePickerNavButton
                   onClick={goToPreviousMonths}
                   aria-label="Previous month"
                   aria-live="polite"
                 >
                   <IconChevronLeft />
-                </NavButton>
+                </DatePickerNavButton>
 
                 {isRange && (
                   <IconArrowForward
@@ -215,17 +215,17 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                   />
                 )}
 
-                <NavButton
+                <DatePickerNavButton
                   onClick={goToNextMonths}
                   aria-label="Next month"
                   aria-live="polite"
                 >
                   <IconChevronRight />
-                </NavButton>
+                </DatePickerNavButton>
 
                 <div className={gridClasses}>
                   {activeMonths.map(({ month, year }) => (
-                    <Month
+                    <DatePickerMonth
                       titleId={titleId}
                       key={`${year}-${month}`}
                       year={year}

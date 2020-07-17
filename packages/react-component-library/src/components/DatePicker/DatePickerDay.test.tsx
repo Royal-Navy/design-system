@@ -1,11 +1,10 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-
 import { render, RenderResult } from '@testing-library/react'
 
-import { Day } from './Day'
+import { DatePickerDay } from './DatePickerDay'
 
-describe('Day', () => {
+describe('DatePickerDay', () => {
   let wrapper: RenderResult
   let dayLabel: string
   let date: Date
@@ -15,7 +14,7 @@ describe('Day', () => {
       dayLabel = '01'
       date = new Date()
 
-      wrapper = render(<Day dayLabel={dayLabel} date={date} />)
+      wrapper = render(<DatePickerDay dayLabel={dayLabel} date={date} />)
     })
 
     it('renders a button element with the correct inner text', () => {
@@ -27,7 +26,7 @@ describe('Day', () => {
     beforeEach(() => {
       date = new Date()
 
-      wrapper = render(<Day date={date} />)
+      wrapper = render(<DatePickerDay date={date} />)
     })
 
     it('renders an empty div', () => {

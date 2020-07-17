@@ -4,12 +4,15 @@ import { useDay } from '@datepicker-react/hooks'
 
 import DatepickerContext from './datepickerContext'
 
-export interface DayProps extends ComponentWithClass {
+export interface DatePickerDayProps extends ComponentWithClass {
   dayLabel?: string
   date: Date
 }
 
-export const Day: React.FC<DayProps> = ({ dayLabel, date }) => {
+export const DatePickerDay: React.FC<DatePickerDayProps> = ({
+  dayLabel,
+  date,
+}) => {
   const {
     focusedDate,
     isDateFocused,
@@ -72,4 +75,4 @@ export const Day: React.FC<DayProps> = ({ dayLabel, date }) => {
   )
 }
 
-Day.displayName = 'Day'
+DatePickerDay.displayName = 'DatePickerDay'

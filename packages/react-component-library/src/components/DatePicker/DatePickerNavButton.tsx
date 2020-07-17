@@ -1,11 +1,11 @@
 import React from 'react'
 
-export interface NavButtonProps extends ComponentWithClass {
+export interface DatePickerNavButtonProps extends ComponentWithClass {
   children: React.ReactElement | string
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export const NavButton: React.FC<NavButtonProps> = ({
+export const DatePickerNavButton: React.FC<DatePickerNavButtonProps> = ({
   children,
   onClick,
   ...rest
@@ -23,4 +23,4 @@ export const NavButton: React.FC<NavButtonProps> = ({
   )
 }
 
-NavButton.displayName = 'NavButton'
+DatePickerNavButton.displayName = 'DatePickerNavButton'
