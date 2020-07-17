@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react'
 import { TriangleDown } from '../../icons'
 
 export interface DatePickerInputProps extends ComponentWithClass {
-  ref: React.Ref<any>
+  ref: React.Ref<HTMLDivElement>
   id?: string
   label?: string
   name?: string
@@ -16,7 +16,7 @@ export interface DatePickerInputProps extends ComponentWithClass {
 }
 
 export const DatePickerInput = forwardRef(
-  (props: DatePickerInputProps, ref?: React.Ref<any>) => {
+  (props: DatePickerInputProps, ref?: React.Ref<HTMLDivElement>) => {
     const {
       className,
       id,
