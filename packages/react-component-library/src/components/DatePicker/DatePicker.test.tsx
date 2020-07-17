@@ -19,11 +19,18 @@ describe('DatePicker', () => {
   let onChange: (data: StateObject) => void
   let onBlur: (e: React.FormEvent) => void
   let dateSpy: jest.SpyInstance
+  let days: string[]
 
   beforeAll(() => {
     dateSpy = jest
       .spyOn(Date, 'now')
       .mockImplementation(() => new Date(NOW).valueOf())
+
+    function leadingZero(n: number): string {
+      return n > 9 ? `${n}` : `0${n}`
+    }
+
+    days = new Array(31).map((i) => leadingZero(i + 1)) // [01,02,...,31]
   })
 
   afterAll(() => {
@@ -98,8 +105,6 @@ describe('DatePicker', () => {
     })
 
     it('should set the `role` attribute for the Day buttons', () => {
-      const days = new Array(31)
-
       days.forEach((_, index) => {
         expect(
           wrapper.getByTestId(`datepicker-day-${index + 1}`)
@@ -108,8 +113,6 @@ describe('DatePicker', () => {
     })
 
     it('should set the `aria-selected` attribute for the day buttons', () => {
-      const days = new Array(31)
-
       days.forEach((_, index) => {
         expect(
           wrapper.getByTestId(`datepicker-day-${index + 1}`)
@@ -119,6 +122,18 @@ describe('DatePicker', () => {
 
     it('renders the component', () => {
       expect(wrapper.queryByTestId('datepicker-wrapper')).toBeInTheDocument()
+    })
+
+    it('renders the correct number of empty days', () => {
+      expect(wrapper.queryAllByTestId('datepicker-empty-day')).toHaveLength(6)
+    })
+
+    it('renders the correct sequence of days', () => {
+      days.forEach((day) => {
+        expect(
+          wrapper.queryByTestId(`datepicker-day-${day}`)
+        ).toBeInTheDocument()
+      })
     })
 
     describe('when the end user clicks the open close button', () => {

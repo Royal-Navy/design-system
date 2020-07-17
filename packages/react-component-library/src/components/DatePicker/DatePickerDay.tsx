@@ -47,10 +47,6 @@ export const DatePickerDay: React.FC<DatePickerDayProps> = ({
     onDateHover,
   })
 
-  if (!dayLabel) {
-    return <div data-testid="datepicker-empty-day" />
-  }
-
   const classes = classNames('rn-date-picker__btn-day', {
     'is-selected': isSelected,
     'is-selected-start-or-end': isSelectedStartOrEnd,

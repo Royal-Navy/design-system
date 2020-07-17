@@ -76,7 +76,12 @@ export const DatePickerMonth: React.FC<DatePickerMonthProps> = ({
             )
           }
 
-          return <div key={getKey('blank-day', index.toString())} />
+          return (
+            <div
+              key={getKey('blank-day', index.toString())}
+              data-testid="datepicker-empty-day"
+            />
+          )
         })}
       </div>
     </div>
