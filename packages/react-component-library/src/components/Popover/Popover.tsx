@@ -14,6 +14,8 @@ import {
   FLOATING_BOX_SCHEME,
 } from '../../primitives/FloatingBox'
 
+import { getId } from '../../helpers'
+
 interface PopoverProps
   extends Omit<FloatingBoxProps, 'onMouseEnter' | 'onMouseLeave'> {
   children: React.ReactElement
@@ -67,6 +69,8 @@ export const Popover: React.FC<PopoverProps> = ({
     )[0]
   }
 
+  const contentId = getId('popover-content')
+
   /**
    * Type error in upstream Tether package. Fix submitted.
    * Using createElement allows us to avoid the type error.
@@ -91,6 +95,8 @@ export const Popover: React.FC<PopoverProps> = ({
             onMouseLeave={handleOnMouseLeave}
             position={PLACEMENTS.ARROW_POSITION}
             scheme={scheme}
+            aria-describedby={contentId}
+            contentId={contentId}
             {...rest}
           >
             {content}
