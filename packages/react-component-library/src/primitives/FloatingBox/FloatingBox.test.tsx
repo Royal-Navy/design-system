@@ -42,6 +42,13 @@ describe('FloatingBox', () => {
       )
     })
 
+    it('applies the `role` attribute', () => {
+      expect(wrapper.getByTestId('floating-box')).toHaveAttribute(
+        'role',
+        'dialog'
+      )
+    })
+
     it('renders the box', () => {
       expect(wrapper.queryByTestId('floating-box')).toBeInTheDocument()
     })

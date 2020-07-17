@@ -70,6 +70,7 @@ export const FloatingBox = forwardRef(
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         style={style}
+        role="dialog"
         data-testid="floating-box"
         {...rest}
       >
