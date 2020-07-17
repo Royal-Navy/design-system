@@ -40,6 +40,7 @@ export const FloatingBox = forwardRef(
       onMouseEnter,
       onMouseLeave,
       children,
+      ...rest
     } = props
 
     const style = {
@@ -66,6 +67,7 @@ export const FloatingBox = forwardRef(
         onMouseLeave={onMouseLeave}
         style={style}
         data-testid="floating-box"
+        {...rest}
       >
         <div
           className="rn-floating-box__content"
