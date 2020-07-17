@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { FLOATING_BOX_SCHEME, FLOATING_BOX_ARROW_POSITION } from './constants'
 
 export interface FloatingBoxProps extends PositionType, ComponentWithClass {
+  role?: string
   width?: number
   height?: number
   top?: number
