@@ -44,6 +44,10 @@ describe('Table', () => {
       )
     })
 
+    it('should set the `role` attribute to `grid`', () => {
+      expect(wrapper.getByTestId('table')).toHaveAttribute('role', 'grid')
+    })
+
     it('should render three table header cells', () => {
       expect(wrapper.queryAllByTestId('table-header')).toHaveLength(3)
     })

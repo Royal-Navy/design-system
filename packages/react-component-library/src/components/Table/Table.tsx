@@ -31,7 +31,7 @@ export const Table: React.FC<TableProps> = ({ data, children }) => {
 
   return (
     <div className="rn-table__wrapper" data-testid="table-wrapper">
-      <table className="rn-table" data-testid="table">
+      <table className="rn-table" data-testid="table" role="grid">
         <thead>
           <tr>{childrenWithSort}</tr>
         </thead>
