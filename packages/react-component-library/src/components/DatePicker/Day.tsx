@@ -63,6 +63,8 @@ export const Day: React.FC<DayProps> = ({ dayLabel, date }) => {
       onMouseEnter={onMouseEnter}
       tabIndex={tabIndex}
       type="button"
+      role="option"
+      aria-selected={isSelected}
       data-testid={`datepicker-day-${dayLabel}`}
     >
       {dayLabel}

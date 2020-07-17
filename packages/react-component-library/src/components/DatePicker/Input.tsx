@@ -49,8 +49,9 @@ export const Input = forwardRef((props: InputProps, ref?: React.Ref<any>) => {
             onBlur={onBlur}
             onFocus={onFocus}
             disabled={isDisabled}
-            data-testid="datepicker-input"
             readOnly
+            aria-label="Choose date"
+            data-testid="datepicker-input"
           />
         </div>
         <button

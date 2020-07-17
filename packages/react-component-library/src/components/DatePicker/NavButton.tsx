@@ -5,13 +5,18 @@ export interface NavButtonProps extends ComponentWithClass {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export const NavButton: React.FC<NavButtonProps> = ({ children, onClick }) => {
+export const NavButton: React.FC<NavButtonProps> = ({
+  children,
+  onClick,
+  ...rest
+}) => {
   return (
     <button
       className="rn-date-picker__btn-nav"
       type="button"
       onClick={onClick}
       data-testid="datepicker-nav-button"
+      {...rest}
     >
       {children}
     </button>

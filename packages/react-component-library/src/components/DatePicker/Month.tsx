@@ -4,6 +4,7 @@ import { useMonth, FirstDayOfWeek } from '@datepicker-react/hooks'
 import { Day } from './Day'
 
 export interface MonthProps extends ComponentWithClass {
+  titleId: string
   year: number
   month: number
   firstDayOfWeek: FirstDayOfWeek
@@ -28,6 +29,7 @@ function getKey(prefix: string, id: string): string {
 }
 
 export const Month: React.FC<MonthProps> = ({
+  titleId,
   year,
   month,
   firstDayOfWeek,
@@ -42,6 +44,8 @@ export const Month: React.FC<MonthProps> = ({
     <div>
       <div className="rn-date-picker__header">
         <div
+          id={titleId}
+          aria-live="polite"
           className="rn-date-picker__month-label"
           data-testid="datepicker-month-label"
         >
@@ -49,13 +53,18 @@ export const Month: React.FC<MonthProps> = ({
         </div>
       </div>
       <div className="rn-date-picker__day-label-grid">
-        {weekdayLabels.map(dayLabel => (
+        {weekdayLabels.map((dayLabel) => (
           <div className="rn-date-picker__day-label" key={dayLabel}>
             {formatDayLabel(dayLabel)}
           </div>
         ))}
       </div>
-      <div className="rn-date-picker__day-grid">
+      <div
+        className="rn-date-picker__day-grid"
+        role="listbox"
+        aria-labelledby={titleId}
+        data-testid="datepicker-grid"
+      >
         {days.map((day, index) => {
           if (typeof day === 'object') {
             return (

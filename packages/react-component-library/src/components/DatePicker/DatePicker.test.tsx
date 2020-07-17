@@ -49,6 +49,74 @@ describe('DatePicker', () => {
       )
     })
 
+    it('applies the `aria-label` to the input', () => {
+      expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
+        'aria-label',
+        'Choose date'
+      )
+    })
+
+    it('should set the `aria-labelledby` attribute to the ID of the title', () => {
+      const titleId = wrapper
+        .getByTestId('datepicker-month-label')
+        .getAttribute('id')
+
+      expect(wrapper.getByTestId('datepicker-grid')).toHaveAttribute(
+        'aria-labelledby',
+        titleId
+      )
+
+      expect(wrapper.getByTestId('floating-box')).toHaveAttribute(
+        'aria-labelledby',
+        titleId
+      )
+    })
+
+    it('should set the `aria-label` and `aria-live` attributes for the buttons', () => {
+      expect(
+        wrapper.getAllByTestId('datepicker-nav-button')[0]
+      ).toHaveAttribute('aria-label', 'Previous month')
+
+      expect(
+        wrapper.getAllByTestId('datepicker-nav-button')[0]
+      ).toHaveAttribute('aria-live', 'polite')
+
+      expect(
+        wrapper.getAllByTestId('datepicker-nav-button')[1]
+      ).toHaveAttribute('aria-label', 'Next month')
+
+      expect(
+        wrapper.getAllByTestId('datepicker-nav-button')[1]
+      ).toHaveAttribute('aria-live', 'polite')
+    })
+
+    it('should set the `role` attribute for the Month grid', () => {
+      expect(wrapper.getByTestId('datepicker-grid')).toHaveAttribute(
+        'role',
+        'listbox'
+      )
+    })
+
+    it('should set the `role` attribute for the Day buttons', () => {
+      const days = new Array(31)
+
+      days.forEach((_, index) => {
+        expect(
+          wrapper.getByTestId(`datepicker-day-${index + 1}`)
+        ).toHaveAttribute('role', 'option')
+      })
+    })
+
+    it('should set the `aria-selected` attribute for the day buttons', () => {
+      const days = new Array(31)
+
+      days.forEach((_, index) => {
+        expect(
+          wrapper.getByTestId(`datepicker-day-${index + 1}`)
+        ).toHaveAttribute('aria-selected', 'false')
+      })
+    })
+
     it('renders the component', () => {
       expect(wrapper.queryByTestId('datepicker-wrapper')).toBeInTheDocument()
     })
@@ -188,6 +256,13 @@ describe('DatePicker', () => {
 
             expect(wrapper.getByTestId('floating-box').classList).toContain(
               'is-visible'
+            )
+          })
+
+          it('sets the `aria-selected` attribute', () => {
+            expect(wrapper.getByTestId(`datepicker-day-01`)).toHaveAttribute(
+              'aria-selected',
+              'true'
             )
           })
         })
