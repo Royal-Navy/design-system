@@ -3,6 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
+import { DEFAULTS } from '../constants'
 import {
   TimelineSide,
   TimelineTodayMarker,
@@ -667,8 +668,8 @@ describe('Timeline', () => {
     beforeEach(() => {
       wrapper = render(
         <Timeline
-          startDate={new Date(2020, 1, 1, 0, 0, 0)}
-          endDate={new Date(2020, 1, 15, 0, 0, 0)}
+          startDate={new Date(2020, 1, 6, 0, 0, 0)}
+          endDate={new Date(2020, 1, 22, 0, 0, 0)}
           today={new Date(2020, 4, 1, 0, 0, 0)}
         >
           <TimelineSide />
@@ -680,7 +681,7 @@ describe('Timeline', () => {
             <TimelineRow name="Row 1">
               <TimelineEvents>
                 <TimelineEvent
-                  startDate={new Date(2020, 1, 1, 0, 0, 0)}
+                  startDate={new Date(2020, 1, 7, 0, 0, 0)}
                   endDate={new Date(2020, 1, 10, 0, 0, 0)}
                 >
                   Event
@@ -692,29 +693,22 @@ describe('Timeline', () => {
       )
     })
 
-    it('applies the dynamic styles to the appropriate wrappers', () => {
-      expect(wrapper.getByTestId('timeline-inner')).toHaveStyle({
-        marginLeft: '0px',
-      })
+    it('renders the correct number of months', () => {
+      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(1)
+    })
 
-      expect(wrapper.getByTestId('timeline-columns')).toHaveStyle({
-        width: '450px',
-        overflow: 'hidden',
-      })
-
-      expect(wrapper.getByTestId('timeline-months')).toHaveStyle({
-        width: '450px',
-        overflow: 'hidden',
-      })
-
-      expect(wrapper.getByTestId('timeline-weeks')).toHaveStyle({
-        width: '450px',
-        overflow: 'hidden',
-      })
+    it('renders the correct number of weeks', () => {
+      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(3)
     })
 
     it('renders the correct number of days', () => {
-      expect(wrapper.queryAllByTestId('timeline-day-title')).toHaveLength(15)
+      expect(wrapper.queryAllByTestId('timeline-day-title')).toHaveLength(17)
+    })
+
+    it('positions the event correctly', () => {
+      expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
+        left: `${DEFAULTS.DAY_WIDTH}px`,
+      })
     })
   })
 

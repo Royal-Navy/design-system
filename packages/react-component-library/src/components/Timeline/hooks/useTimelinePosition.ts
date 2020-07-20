@@ -2,9 +2,8 @@ import { useContext } from 'react'
 
 import {
   differenceInCalendarDays,
-  endOfMonth,
   isBefore,
-  isAfter
+  isAfter,
 } from 'date-fns'
 
 import { TimelineContext } from '../context'
@@ -34,31 +33,34 @@ export function useTimelinePosition(
   startDate: Date,
   endDate: Date
 ): {
-  width: string,
-  offset: string,
-  isBeforeStart: boolean,
+  width: string
+  offset: string
+  isBeforeStart: boolean
   isAfterEnd: boolean
 } {
   const {
     state: {
-      months,
-      options
-    }
+      days,
+      options,
+    },
   } = useContext(TimelineContext)
 
-  const timelineStart = new Date(months[0].startDate)
-  const timelineEnd = new Date(endOfMonth(months[months.length - 1].startDate))
+  const firstDateDisplayed = days[0].date
+  const lastDateDisplayed = days[days.length - 1].date
 
-  const isBeforeStart = isBefore(new Date(startDate), timelineStart)
-  const isAfterEnd = isAfter(new Date(startDate), timelineEnd)
+  const isBeforeStart = isBefore(new Date(startDate), firstDateDisplayed)
+  const isAfterEnd = isAfter(new Date(startDate), lastDateDisplayed)
 
   const width = formatPx(options.dayWidth, getWidth(startDate, endDate))
-  const offset = formatPx(options.dayWidth, getOffset(startDate, timelineStart))
+  const offset = formatPx(
+    options.dayWidth,
+    getOffset(startDate, firstDateDisplayed)
+  )
 
   return {
     width,
     offset,
     isBeforeStart,
-    isAfterEnd
+    isAfterEnd,
   }
 }

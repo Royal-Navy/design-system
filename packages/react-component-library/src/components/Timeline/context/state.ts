@@ -1,4 +1,6 @@
-import { getDays, getMonths, getWeeks, calcRange } from './reducer'
+import { addMonths, endOfMonth, startOfMonth } from 'date-fns'
+
+import { buildCalendar } from './reducer'
 import { TimelineOptions, TimelineState } from './types'
 
 const initialState: TimelineState = {
@@ -25,15 +27,14 @@ function initialiseState(
     options: { ...initialState.options, ...options },
   }
 
-  const range = endDate
-    ? calcRange(startDate, endDate)
-    : state.options.rangeInMonths
+  const firstDateDisplayed = endDate ? startDate : startOfMonth(startDate)
+  const lastDateDisplayed =
+    endDate ??
+    endOfMonth(addMonths(firstDateDisplayed, state.options.rangeInMonths - 1))
 
   return {
     ...state,
-    months: getMonths(startDate, range),
-    weeks: getWeeks(startDate, range),
-    days: getDays(startDate, range),
+    ...buildCalendar(firstDateDisplayed, lastDateDisplayed),
   }
 }
 

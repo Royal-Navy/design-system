@@ -1,17 +1,10 @@
 import {
   addMonths,
   subMonths,
-  getMonth,
-  setMonth,
-  startOfMonth,
   endOfMonth,
-  differenceInCalendarWeeks,
-  differenceInCalendarMonths,
-  addWeeks,
-  startOfWeek,
-  getDaysInMonth,
-  setDate,
-  getYear,
+  eachDayOfInterval,
+  eachMonthOfInterval,
+  eachWeekOfInterval,
 } from 'date-fns'
 
 import {
@@ -23,113 +16,87 @@ import {
   TimelineDay,
 } from './types'
 
-import {
-  WEEK_START
-} from '../constants'
+import { WEEK_START } from '../constants'
 
-export function getMonths(
-  date: Date,
-  rangeInMonths: number
-): TimelineMonth[] {
-  const months = Array.from({ length: rangeInMonths })
-    .map((_, index) => {
-      const monthIndex = getMonth(date) + index
-
-      const newDate = setMonth(date, monthIndex)
-      const startDate = startOfMonth(newDate)
-
+export function getMonths(start: Date, end: Date): TimelineMonth[] {
+  const months = eachMonthOfInterval({ start, end }).map(
+    (date) => {
       return {
-        monthIndex,
-        startDate
+        monthIndex: date.getMonth(),
+        startDate: date,
       }
-    })
+    }
+  )
 
   return months
 }
 
-export function getWeeks(
-  date: Date,
-  rangeInMonths: number
-): TimelineWeek[] {
-  const months = getMonths(date, rangeInMonths)
-
-  const startDate = months[0].startDate
-  const endDate = endOfMonth(months[months.length - 1].startDate)
-
-  const diffInWeeks = differenceInCalendarWeeks(endDate, startDate)
-
-  const weeks = Array.from({ length: diffInWeeks + 1 })
-    .map((_, weekIndex) => {
-      const weekStart = startOfWeek(
-        addWeeks(startDate, weekIndex),
-        { weekStartsOn: WEEK_START }
-      )
-
+export function getWeeks(start: Date, end: Date): TimelineWeek[] {
+  const interval = { start, end }
+  const weeks = eachWeekOfInterval(interval, { weekStartsOn: WEEK_START }).map(
+    (date, weekIndex) => {
       return {
         weekIndex,
-        startDate: weekStart
+        startDate: date,
       }
-    })
+    }
+  )
 
   return weeks
 }
 
-export function getDays(
-  date: Date,
-  rangeInMonths: number
-): TimelineDay[] {
-  const months = getMonths(date, rangeInMonths)
-  const year = getYear(date)
-
-  const days = months.flatMap(({ monthIndex }) => {
-    const total = getDaysInMonth(new Date(year, monthIndex))
-    const arr = [...Array(total).keys()].map(i => i + 1) // [1, ..., ~31]
-
-    return arr.map((day, dayIndex) => {
+export function getDays(start: Date, end: Date): TimelineDay[] {
+  const days = eachDayOfInterval({ start, end }).map(
+    (date) => {
       return {
-        dayIndex,
-        date: setDate(setMonth(date, monthIndex), day)
+        dayIndex: date.getDate() - 1,
+        date,
       }
-    })
-  })
+    }
+  )
 
   return days
 }
 
-export function calcRange(
+export function buildCalendar(
   startDate: Date,
   endDate: Date
-): number {
-  return differenceInCalendarMonths(
-    startOfMonth(addMonths(endDate, 1)),
-    startOfMonth(startDate)
-  )
+): { months: TimelineMonth[]; weeks: TimelineWeek[]; days: TimelineDay[] } {
+  return {
+    months: getMonths(startDate, endDate),
+    weeks: getWeeks(startDate, endDate),
+    days: getDays(startDate, endDate),
+  }
 }
 
 export function reducer(
   state: TimelineState,
   action: TimelineAction
 ): TimelineState | never {
-  const { startDate, options: { rangeInMonths: range } } = state
+  const { months, options: { rangeInMonths: range } } = state
+  const firstMonthOfRange = months[0].startDate
+  const lastMonthOfRange = addMonths(months[0].startDate, range - 1)
 
   switch (action.type) {
     case TIMELINE_ACTIONS.GET_NEXT:
       return {
         ...state,
-        startDate: addMonths(startDate, range),
+        startDate: addMonths(firstMonthOfRange, range),
         endDate: null,
-        months: getMonths(addMonths(startDate, range), range),
-        weeks: getWeeks(addMonths(startDate, range), range),
-        days: getDays(addMonths(startDate, range), range)
+        ...buildCalendar(
+          addMonths(firstMonthOfRange, range),
+          endOfMonth(addMonths(lastMonthOfRange, range))
+        ),
       }
     case TIMELINE_ACTIONS.GET_PREV:
       return {
         ...state,
-        startDate: subMonths(startDate, range),
+        startDate: subMonths(firstMonthOfRange, range),
         endDate: null,
-        months: getMonths(subMonths(startDate, range), range),
-        weeks: getWeeks(subMonths(startDate, range), range),
-        days: getDays(subMonths(startDate, range), range)
+        ...buildCalendar(
+          subMonths(firstMonthOfRange, range),
+          endOfMonth(subMonths(lastMonthOfRange, range))
+        ),
       }
     default:
       throw new Error('Unknown reducer action')
