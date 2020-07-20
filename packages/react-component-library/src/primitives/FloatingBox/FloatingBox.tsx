@@ -2,9 +2,11 @@ import React, { forwardRef } from 'react'
 import classNames from 'classnames'
 
 import { FLOATING_BOX_SCHEME, FLOATING_BOX_ARROW_POSITION } from './constants'
+import { getId } from '../../helpers'
 
 export interface FloatingBoxProps extends PositionType, ComponentWithClass {
   role?: string
+  contentId?: string
   width?: number
   height?: number
   top?: number
@@ -29,6 +31,7 @@ export interface FloatingBoxProps extends PositionType, ComponentWithClass {
 export const FloatingBox = forwardRef(
   (props: FloatingBoxProps, ref?: React.Ref<any>) => {
     const {
+      contentId = getId('floating-box'),
       className,
       width,
       height,
@@ -67,11 +70,13 @@ export const FloatingBox = forwardRef(
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         style={style}
+        role="dialog"
         data-testid="floating-box"
         {...rest}
       >
         <div
           className="rn-floating-box__content"
+          id={contentId}
           data-testid="floating-box-content"
         >
           {children}

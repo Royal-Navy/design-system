@@ -36,6 +36,17 @@ describe('Popover', () => {
       )
     })
 
+    it('should set the `aria-describedby` attribute to the ID of the content', () => {
+      const contentId = wrapper
+        .getByTestId('floating-box-content')
+        .getAttribute('id')
+
+      expect(wrapper.getByTestId('floating-box')).toHaveAttribute(
+        'aria-describedby',
+        contentId
+      )
+    })
+
     describe('and the user hovers on the target element', () => {
       beforeEach(() => {
         fireEvent.mouseEnter(wrapper.getByText(HOVER_ON_ME))
