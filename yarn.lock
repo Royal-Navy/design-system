@@ -116,13 +116,6 @@
   dependencies:
     "@babel/types" "^7.10.4"
 
-"@babel/helper-builder-binary-assignment-operator-visitor@^7.10.1":
-  version "7.10.1"
-  resolved "https://registry.yarnpkg.com/@babel/helper-builder-binary-assignment-operator-visitor/-/helper-builder-binary-assignment-operator-visitor-7.10.1.tgz#0ec7d9be8174934532661f87783eb18d72290059"
-  integrity sha512-cQpVq48EkYxUU0xozpGCLla3wlkdRRqLWu1ksFMXA9CM5KQmyyRpSEsYXbao7JUkOw/tAaYKCaYyZq6HOFYtyw==
-  dependencies:
-    "@babel/types" "^7.10.4"
-
 "@babel/helper-builder-binary-assignment-operator-visitor@^7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/helper-builder-binary-assignment-operator-visitor/-/helper-builder-binary-assignment-operator-visitor-7.10.4.tgz#bb0b75f31bf98cbf9ff143c1ae578b87274ae1a3"
@@ -1434,6 +1427,15 @@
   dependencies:
     "@babel/helper-validator-identifier" "^7.10.1"
     lodash "^4.17.13"
+    to-fast-properties "^2.0.0"
+
+"@babel/types@^7.0.0", "@babel/types@^7.10.1", "@babel/types@^7.10.2", "@babel/types@^7.10.3", "@babel/types@^7.3.0", "@babel/types@^7.3.3", "@babel/types@^7.4.4", "@babel/types@^7.7.0", "@babel/types@^7.9.5", "@babel/types@^7.9.6":
+  version "7.10.5"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.10.5.tgz#d88ae7e2fde86bfbfe851d4d81afa70a997b5d15"
+  integrity sha512-ixV66KWfCI6GKoA/2H9v6bQdbfXEwwpOdQ8cRvb4F+eyvhlaHxWFMQB4+3d9QFJXZsiiiqVrewNV0DFEQpyT4Q==
+  dependencies:
+    "@babel/helper-validator-identifier" "^7.10.4"
+    lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
 "@babel/types@^7.10.4":
@@ -3111,9 +3113,9 @@
     unist-util-visit "2.0.2"
 
 "@mdx-js/react@^1.5.5", "@mdx-js/react@^1.6.5", "@mdx-js/react@^1.6.6":
-  version "1.6.6"
-  resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.6.tgz#71ece2a24261eed0e184c0ef9814fcb77b1a4aee"
-  integrity sha512-zOOdNreHUNSFQ0dg3wYYg9sOGg2csf7Sk8JGBigeBq+4Xk4LO0QdycGAmgKNfeme+SyBV5LBIPjt1NNsScyWEQ==
+  version "1.6.11"
+  resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.11.tgz#1796a22a06c404a4e82eb7300c25486ae14800d8"
+  integrity sha512-59qKdVmpxhGcQ7dJKQucKQHxXoS5A1U8x5IYJCitdGVwM6mXkCj1GYyb873oH4cRlxL8BhVHmGalkXTtLqV9Ag==
 
 "@mdx-js/runtime@^1.6.5":
   version "1.6.6"
