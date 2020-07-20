@@ -1,9 +1,10 @@
 import React from 'react'
 import { useMonth, FirstDayOfWeek } from '@datepicker-react/hooks'
 
-import { Day } from './Day'
+import { DatePickerDay } from './DatePickerDay'
 
-export interface MonthProps extends ComponentWithClass {
+export interface DatePickerMonthProps extends ComponentWithClass {
+  titleId: string
   year: number
   month: number
   firstDayOfWeek: FirstDayOfWeek
@@ -27,7 +28,8 @@ function getKey(prefix: string, id: string): string {
   return `${prefix}_${id}`
 }
 
-export const Month: React.FC<MonthProps> = ({
+export const DatePickerMonth: React.FC<DatePickerMonthProps> = ({
+  titleId,
   year,
   month,
   firstDayOfWeek,
@@ -42,6 +44,8 @@ export const Month: React.FC<MonthProps> = ({
     <div>
       <div className="rn-date-picker__header">
         <div
+          id={titleId}
+          aria-live="polite"
           className="rn-date-picker__month-label"
           data-testid="datepicker-month-label"
         >
@@ -49,17 +53,22 @@ export const Month: React.FC<MonthProps> = ({
         </div>
       </div>
       <div className="rn-date-picker__day-label-grid">
-        {weekdayLabels.map(dayLabel => (
+        {weekdayLabels.map((dayLabel) => (
           <div className="rn-date-picker__day-label" key={dayLabel}>
             {formatDayLabel(dayLabel)}
           </div>
         ))}
       </div>
-      <div className="rn-date-picker__day-grid">
+      <div
+        className="rn-date-picker__day-grid"
+        role="listbox"
+        aria-labelledby={titleId}
+        data-testid="datepicker-grid"
+      >
         {days.map((day, index) => {
           if (typeof day === 'object') {
             return (
-              <Day
+              <DatePickerDay
                 date={day.date}
                 key={day.date.toString()}
                 dayLabel={formatDayLabel(day.dayLabel)}
@@ -67,11 +76,16 @@ export const Month: React.FC<MonthProps> = ({
             )
           }
 
-          return <div key={getKey('blank-day', index.toString())} />
+          return (
+            <div
+              key={getKey('blank-day', index.toString())}
+              data-testid="datepicker-empty-day"
+            />
+          )
         })}
       </div>
     </div>
   )
 }
 
-Month.displayName = 'Month'
+DatePickerMonth.displayName = 'DatePickerMonth'

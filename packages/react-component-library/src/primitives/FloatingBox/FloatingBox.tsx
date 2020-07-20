@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { FLOATING_BOX_SCHEME, FLOATING_BOX_ARROW_POSITION } from './constants'
 
 export interface FloatingBoxProps extends PositionType, ComponentWithClass {
+  role?: string
   width?: number
   height?: number
   top?: number
@@ -40,6 +41,7 @@ export const FloatingBox = forwardRef(
       onMouseEnter,
       onMouseLeave,
       children,
+      ...rest
     } = props
 
     const style = {
@@ -66,6 +68,7 @@ export const FloatingBox = forwardRef(
         onMouseLeave={onMouseLeave}
         style={style}
         data-testid="floating-box"
+        {...rest}
       >
         <div
           className="rn-floating-box__content"

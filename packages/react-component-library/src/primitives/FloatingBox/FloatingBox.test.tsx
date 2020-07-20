@@ -21,9 +21,24 @@ describe('FloatingBox', () => {
           top={100}
           left={100}
           position={FLOATING_BOX_ARROW_POSITION.BOTTOM_RIGHT}
+          role="dialog"
+          aria-modal
         >
           {children}
         </FloatingBox>
+      )
+    })
+
+    it('applies the supplied `role`', () => {
+      expect(wrapper.queryByTestId('floating-box')).toHaveAttribute(
+        'role',
+        'dialog'
+      )
+    })
+
+    it('applies additional arbitrary props to wrapper', () => {
+      expect(wrapper.queryByTestId('floating-box')).toHaveAttribute(
+        'aria-modal'
       )
     })
 

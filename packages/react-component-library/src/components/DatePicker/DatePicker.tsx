@@ -18,12 +18,13 @@ import {
 
 import DatepickerContext from './datepickerContext'
 
-import { Input } from './Input'
-import { Month } from './Month'
-import { NavButton } from './NavButton'
+import { DatePickerInput } from './DatePickerInput'
+import { DatePickerMonth } from './DatePickerMonth'
+import { DatePickerNavButton } from './DatePickerNavButton'
 import { useOpenClose } from './useOpenClose'
 import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
 import { FloatingBox, FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
+import { getId } from '../../helpers'
 
 export interface StateObject {
   endDate?: Date
@@ -141,6 +142,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     'rn-date-picker__grid--range': isRange,
   })
 
+  const titleId = getId('datepicker-title')
+
   /**
    * Type error in upstream Tether package. Fix submitted.
    * Using createElement allows us to avoid the type error.
@@ -171,7 +174,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           targetAttachment: PLACEMENTS.TARGET_ATTACHMENT,
           className: tetherClasses,
           renderTarget: (ref: React.RefObject<any>) => (
-            <Input
+            <DatePickerInput
               ref={ref}
               className={classes}
               id={id}
@@ -191,11 +194,19 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               position={PLACEMENTS.ARROW_POSITION}
               scheme={FLOATING_BOX_SCHEME.LIGHT}
               className={floatingBoxClasses}
+              role="dialog"
+              aria-modal
+              aria-labelledby={titleId}
+              aria-live="polite"
             >
               <>
-                <NavButton onClick={goToPreviousMonths}>
+                <DatePickerNavButton
+                  onClick={goToPreviousMonths}
+                  aria-label="Previous month"
+                  aria-live="polite"
+                >
                   <IconChevronLeft />
-                </NavButton>
+                </DatePickerNavButton>
 
                 {isRange && (
                   <IconArrowForward
@@ -204,13 +215,18 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                   />
                 )}
 
-                <NavButton onClick={goToNextMonths}>
+                <DatePickerNavButton
+                  onClick={goToNextMonths}
+                  aria-label="Next month"
+                  aria-live="polite"
+                >
                   <IconChevronRight />
-                </NavButton>
+                </DatePickerNavButton>
 
                 <div className={gridClasses}>
                   {activeMonths.map(({ month, year }) => (
-                    <Month
+                    <DatePickerMonth
+                      titleId={titleId}
                       key={`${year}-${month}`}
                       year={year}
                       month={month}
