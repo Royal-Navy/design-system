@@ -6,7 +6,7 @@ import { SWITCH_SIZE } from '.'
 
 function getActiveOption(options: SwitchOptionProps[], value: string) {
   const initial: SwitchOptionProps | string = options.find(
-    item => item.value === value
+    (item) => item.value === value
   )
 
   return (initial && initial.label) || null
@@ -55,7 +55,7 @@ export const Switch: React.FC<SwitchProps> = ({
       <div className="rn-switch__container">
         {options.map(({ label: optionLabel, value: optionValue }) => (
           <label
-            key={getKey('switch-option', label)}
+            key={getKey('switch-option', optionLabel)}
             className={`rn-switch__option ${
               active === optionLabel ? 'is-active' : ''
             }`}
@@ -70,7 +70,7 @@ export const Switch: React.FC<SwitchProps> = ({
               value={optionValue}
               type="radio"
               className="rn-switch__radio"
-              onClick={event => {
+              onClick={(event) => {
                 setActive(optionLabel)
                 onChange(event)
               }}
