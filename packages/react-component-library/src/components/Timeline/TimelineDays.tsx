@@ -32,6 +32,7 @@ function renderDefault(index: number, dayWidth: number, date: Date) {
   return (
     <div
       className={wrapperClasses}
+      data-testid="timeline-day"
       style={{
         width: `${dayWidth}px`,
       }}

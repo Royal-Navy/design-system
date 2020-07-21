@@ -20,10 +20,13 @@ import {
 describe('Timeline', () => {
   let wrapper: RenderResult
 
-  describe('no data is provided', () => {
+  describe('when no data is provided', () => {
     beforeEach(() => {
       wrapper = render(
-        <Timeline>
+        <Timeline
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
           <TimelineTodayMarker />
           <TimelineMonths />
           <TimelineWeeks />
@@ -37,6 +40,26 @@ describe('Timeline', () => {
       expect(
         wrapper.queryByTestId('timeline-today-marker-wrapper')
       ).toBeInTheDocument()
+    })
+
+    it('renders the correct number of months', () => {
+      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(3)
+    })
+
+    it('renders the month title in correct format', () => {
+      const months = wrapper.queryAllByTestId('timeline-month')
+
+      expect(months[0]).toHaveTextContent('April 2020')
+      expect(months[1]).toHaveTextContent('May 2020')
+      expect(months[2]).toHaveTextContent('June 2020')
+    })
+
+    it('renders the correct number of weeks', () => {
+      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(14)
+    })
+
+    it('renders the correct number of days', () => {
+      expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(91)
     })
 
     it('should display the no data message', () => {
@@ -94,35 +117,6 @@ describe('Timeline', () => {
             </TimelineRow>
           </TimelineRows>
         </Timeline>
-      )
-    })
-
-    it('should display the today marker', () => {
-      expect(
-        wrapper.queryByTestId('timeline-today-marker-wrapper')
-      ).toBeInTheDocument()
-    })
-
-    it('renders the correct number of months', () => {
-      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(3)
-    })
-
-    it('renders the month title in correct format', () => {
-      expect(
-        wrapper.getByTestId('timeline-months').firstChild.textContent
-      ).toContain('April 2020')
-    })
-
-    it('renders the correct number of weeks', () => {
-      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(14)
-    })
-
-    it('applies the --alt modifier class to odd weeks', () => {
-      expect(wrapper.getAllByTestId('timeline-week')[1].classList).toContain(
-        'timeline__week--alt'
-      )
-      expect(wrapper.getAllByTestId('timeline-week')[3].classList).toContain(
-        'timeline__week--alt'
       )
     })
 
