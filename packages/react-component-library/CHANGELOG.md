@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/Royal-Navy/design-system/compare/2.10.0...2.11.0) (2020-07-21)
+
+
+### Bug Fixes
+
+* **Checkbox Enhanced:** Change name from Card to prevent confusion ([246476c](https://github.com/Royal-Navy/design-system/commit/246476c9d4cf44b5c62a4d3788f2285c226323e5))
+* **DatePicker:** Adjust picker placements ([0c2f3fd](https://github.com/Royal-Navy/design-system/commit/0c2f3fd69ae70476b8ab05768baeef6551be0695))
+* **List:** Correct type of ListItem children ([dd27590](https://github.com/Royal-Navy/design-system/commit/dd2759088bb9bd66112e380c9596469d24eed35d))
+* **Pagination:** Use distinct keys ([4fdcd82](https://github.com/Royal-Navy/design-system/commit/4fdcd82f0f541dda9175538b1df0ffdbf6f27a31))
+* **Radio Enhanced:** Change name from Card to prevent confusion ([1da32b3](https://github.com/Royal-Navy/design-system/commit/1da32b39113c482aa9b479ac41900fea519d5041))
+* **Switch:** minor error setting Switch option key ([21bc438](https://github.com/Royal-Navy/design-system/commit/21bc4389b024126357fc88878c89f115329e9611))
+* **Timeline:** Improve behaviour when bounding by start and end date ([025edbb](https://github.com/Royal-Navy/design-system/commit/025edbb121d120f0ce45a7dd502f136b5ceea615))
+
+
+### Features
+
+* **Breadcrumb:** Add aria attributes ([b5fe350](https://github.com/Royal-Navy/design-system/commit/b5fe3501f526f249d16863624a75b7314fca9758))
+* **Button:** Add `aria-hidden` to icon ([eda11d7](https://github.com/Royal-Navy/design-system/commit/eda11d7078890e8adb91bdcf75c91fe3e3b3c07c))
+* **ButtonGroup:** Add role attribute ([c2fa8a0](https://github.com/Royal-Navy/design-system/commit/c2fa8a06066dbfb6f4b625a991fb7299a6fcd99d))
+* **DataList:** Add aria attributes ([62faccd](https://github.com/Royal-Navy/design-system/commit/62faccd43750b9282c82a53e4b9ee0022972a3d4))
+* **DatePicker:** Add ability to set initial open state ([31b9d30](https://github.com/Royal-Navy/design-system/commit/31b9d309bce62a41524f3b4f211b97f779362029))
+* **DatePicker:** Add accessibility attributes ([1a3cb7a](https://github.com/Royal-Navy/design-system/commit/1a3cb7a59824f15db9529ac1ba2a4b34f117e4b6))
+* **Dialog:** Add accessibility attributes ([d358951](https://github.com/Royal-Navy/design-system/commit/d3589517b0b228904852e93529a61d209031589f))
+* **FloatingBox:** Add `role` to interface ([3f62804](https://github.com/Royal-Navy/design-system/commit/3f628045c777f3962da60a7d1416d6d35d5fca92))
+* **FloatingBox:** Add role attribute ([d122106](https://github.com/Royal-Navy/design-system/commit/d12210675364997e6c027c4a61fda5d23a30c5b6))
+* **FloatingBox:** Drill additional arbitrary props ([1f29a28](https://github.com/Royal-Navy/design-system/commit/1f29a2886a9bafbfcf6f522a5c185e9ee6e3b463))
+* **List:** Add basic component ([b30d8f0](https://github.com/Royal-Navy/design-system/commit/b30d8f03a14d56e5713b6b4d347db3062f88d116))
+* **List:** Show warning if overwriting props ([a1dde81](https://github.com/Royal-Navy/design-system/commit/a1dde812e260c90201d8f5f4c20743aa0815e062))
+* **Masthead:** Add accessibility for search ([10a8b32](https://github.com/Royal-Navy/design-system/commit/10a8b320b3e42a7e1b6f7d7bb6e424f6bc3e47a4))
+* **Masthead:** Add aria attributes to nav ([f6050c8](https://github.com/Royal-Navy/design-system/commit/f6050c8fe5c16e6503799a21bf361bea090ce88d))
+* **Masthead:** Add notifications a11y attributes ([2391e1b](https://github.com/Royal-Navy/design-system/commit/2391e1b47432d6b723639f56c7b81659c1382d4f))
+* **Masthead:** Add roles for accessibility ([074478a](https://github.com/Royal-Navy/design-system/commit/074478af7e6f6e211453b4d9c1323c898dcef81b))
+* **Modal:** Add accessibility attributes ([f7cdacc](https://github.com/Royal-Navy/design-system/commit/f7cdaccb23be77e052e268d6ed45cd5b12d27180))
+* **NumberInput:** Add aria attributes ([3d00867](https://github.com/Royal-Navy/design-system/commit/3d00867574fb6923f82395d12a6db1af5109f7da))
+* **Pagination:** Add aria attributes ([fdf7087](https://github.com/Royal-Navy/design-system/commit/fdf7087981b2dc94bd6d8a6463eaf36a3144e0ec))
+* **Popover:** Add aria attributes ([876f0bb](https://github.com/Royal-Navy/design-system/commit/876f0bbd12031b655556b2c9b0ce21a346ed9e33))
+* **Radio Enhanced:** Add documentation ([07ab6d0](https://github.com/Royal-Navy/design-system/commit/07ab6d007811d90106e8afa48833d8caa863ed68))
+* **RangeSlider:** Set `aria-hidden` on icons ([ac9be01](https://github.com/Royal-Navy/design-system/commit/ac9be01be26acbf5952f7001049b0c51f6cc9403))
+* **ScrollButton:** Add aria attributes ([c8f2d4d](https://github.com/Royal-Navy/design-system/commit/c8f2d4dfde2d6180249a52ee0a84dd0ab32b86a2))
+* **Searchbar:** Add attributes for search ([61b8b93](https://github.com/Royal-Navy/design-system/commit/61b8b9370f2092aed5848534b55ffccde3239e5a))
+* **Sidebar:** Add aria-hidden attribute to icons ([fbd32eb](https://github.com/Royal-Navy/design-system/commit/fbd32eb7849e37507a58c5e854cbb99ecfee2f33))
+* **Sidebar:** Add notification aria attributes ([8d61717](https://github.com/Royal-Navy/design-system/commit/8d61717b7b62e310023ded78b57c4e0b054c0b2a))
+* **Table:** Set `aria-sort` when sorting ([a284dc0](https://github.com/Royal-Navy/design-system/commit/a284dc0ff0da9fcec55bb4d3e4467ab75dd37b78))
+* **Table:** Set `role` to `grid` ([e61c11d](https://github.com/Royal-Navy/design-system/commit/e61c11df16a86beee6640aa7c2dcd49742713957))
+* **TabSet:** Add roles to components ([4e37b1d](https://github.com/Royal-Navy/design-system/commit/4e37b1d1f731929c940a2787ddacb321501d90fd))
+* **TabSet:** Apply unique aria IDs to tabs ([86ab25f](https://github.com/Royal-Navy/design-system/commit/86ab25fc2f4051cb1e376bb06924f20cb92931d3))
+* **TabSet:** Set `tabIndex` and `aria-hidden` based on active ([d6358db](https://github.com/Royal-Navy/design-system/commit/d6358db341b5700483107dd8d189430db097118a))
+* **Toast:** Add aria attributes ([4796b82](https://github.com/Royal-Navy/design-system/commit/4796b82373bd458135c16c88fcb928e1e3e2add8))
+* **Tooltip:** Add accessibility attributes ([3d15606](https://github.com/Royal-Navy/design-system/commit/3d15606820fb47a08acda168c4c3e2d8b277fe6d))
+
+
+
+
+
 # [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.9.0...2.10.0) (2020-07-09)
 
 
