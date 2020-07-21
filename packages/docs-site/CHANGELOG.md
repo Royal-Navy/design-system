@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/Royal-Navy/design-system/compare/2.10.0...2.11.0) (2020-07-21)
+
+
+### Bug Fixes
+
+* **Docsite:** Update contact email ([512bda3](https://github.com/Royal-Navy/design-system/commit/512bda32338dcda1db615bb3a09e530efe6731d7))
+* **List:** Correct type of ListItem children ([dd27590](https://github.com/Royal-Navy/design-system/commit/dd2759088bb9bd66112e380c9596469d24eed35d))
+
+
+### Features
+
+* **Checkbox Enhanced:** Add documentation ([1159d81](https://github.com/Royal-Navy/design-system/commit/1159d814a0e19ad85d50c79903582016094878c4))
+* **Dismissible Banner:** add design documentation ([fab03bb](https://github.com/Royal-Navy/design-system/commit/fab03bbb196ba51d29887f3daa385cfdecf2977d))
+* **Radio Enhanced:** Add documentation ([07ab6d0](https://github.com/Royal-Navy/design-system/commit/07ab6d007811d90106e8afa48833d8caa863ed68))
+
+
+
+
+
 # [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.9.0...2.10.0) (2020-07-09)
 
 
