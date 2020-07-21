@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/Royal-Navy/design-system/compare/2.10.0...2.11.0) (2020-07-21)
+
+
+### Bug Fixes
+
+* **Checkbox Enhanced:** Change name from Card to prevent confusion ([246476c](https://github.com/Royal-Navy/design-system/commit/246476c9d4cf44b5c62a4d3788f2285c226323e5))
+* **DatePicker:** Fix content overflow issue ([ed62878](https://github.com/Royal-Navy/design-system/commit/ed62878245b0fca28fa7599f09f18095f3124f95))
+* **Radio Enhanced:** Change name from Card to prevent confusion ([1da32b3](https://github.com/Royal-Navy/design-system/commit/1da32b39113c482aa9b479ac41900fea519d5041))
+
+
+### Features
+
+* **Breadcrumb:** Add aria attributes ([b5fe350](https://github.com/Royal-Navy/design-system/commit/b5fe3501f526f249d16863624a75b7314fca9758))
+* **List:** Add basic component ([b30d8f0](https://github.com/Royal-Navy/design-system/commit/b30d8f03a14d56e5713b6b4d347db3062f88d116))
+
+
+
+
+
 # [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.9.0...2.10.0) (2020-07-09)
 
 
