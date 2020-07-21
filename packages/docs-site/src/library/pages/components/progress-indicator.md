@@ -21,6 +21,12 @@ The Progress Indicator provides visual feedback to the user that an application 
 
 The Progress Indicator should be used when processing or retrieving data. It should be used to convey a delay in the loading of data, indicating a network request may be taking longer than usual to complete.
 
+### Accessibility
+
+Where a widget of content is in a loading state the `aria-busy` attribute should be applied. This attribute indicates an element is being modified.
+
+The default value of `aria-busy` is false for all elements. When `aria-busy` is true for an element, assistive technologies may ignore changes to content owned by that element and then process all changes made during the busy period as a single, atomic update when aria-busy becomes false.
+
 <TabSet>
 <Tab title="Design">
 
