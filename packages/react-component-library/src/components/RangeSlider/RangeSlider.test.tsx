@@ -174,8 +174,22 @@ describe('RangeSlider', () => {
       expect(wrapper.queryByTestId('rangeslider-icon-left')).not.toBeNull()
     })
 
+    it('should set the `aria-hidden` attribute to `true` for the left icon', () => {
+      expect(wrapper.queryByTestId('rangeslider-icon-left')).toHaveAttribute(
+        'aria-hidden',
+        'true'
+      )
+    })
+
     it('should render the Icon component right of the slider', () => {
       expect(wrapper.queryByTestId('rangeslider-icon-right')).not.toBeNull()
+    })
+
+    it('should set the `aria-hidden` attribute to `true` for the right icon', () => {
+      expect(wrapper.queryByTestId('rangeslider-icon-right')).toHaveAttribute(
+        'aria-hidden',
+        'true'
+      )
     })
   })
 
