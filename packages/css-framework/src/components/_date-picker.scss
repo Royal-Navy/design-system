@@ -161,8 +161,6 @@
   width: 570px;
 
   div {
-    flex: 1;
-
     &:first-of-type {
       padding-right: f.spacing("6");
     }
@@ -217,6 +215,7 @@
   font-size: f.font-size("base");
   color: f.color("neutral", "400");
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .rn-date-picker__day-label-grid {
