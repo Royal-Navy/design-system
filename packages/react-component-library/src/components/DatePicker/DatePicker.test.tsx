@@ -20,6 +20,7 @@ describe('DatePicker', () => {
   let onBlur: (e: React.FormEvent) => void
   let dateSpy: jest.SpyInstance
   let days: string[]
+  let onSubmitSpy: (e: React.FormEvent) => void
 
   beforeAll(() => {
     dateSpy = jest
@@ -461,6 +462,27 @@ describe('DatePicker', () => {
       expect(wrapper.getByTestId('floating-box').classList).toContain(
         'is-visible'
       )
+    })
+  })
+
+  describe('when the DatePicker is nested within a form', () => {
+    beforeEach(() => {
+      onSubmitSpy = jest.fn()
+      wrapper = render(
+        <form onSubmit={onSubmitSpy}>
+          <DatePicker />
+        </form>
+      )
+    })
+
+    describe('and the open/close button is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('datepicker-input-button').click()
+      })
+
+      it('does not submit the form', () => {
+        expect(onSubmitSpy).not.toHaveBeenCalled()
+      })
     })
   })
 })
