@@ -2,7 +2,11 @@ import React from 'react'
 import classNames from 'classnames'
 import { format, differenceInDays, endOfWeek, max, min } from 'date-fns'
 
-import { DATE_WEEK_FORMAT, WEEK_START } from './constants'
+import {
+  ACCESSIBLE_DATE_FORMAT,
+  DATE_WEEK_FORMAT,
+  WEEK_START,
+} from './constants'
 import { formatPx, isOdd } from './helpers'
 import { getKey } from '../../helpers'
 import { TimelineContext } from './context'
@@ -77,7 +81,11 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
         },
       }) => {
         return (
-          <div className="timeline__weeks" data-testid="timeline-weeks" role="row">
+          <div
+            className="timeline__weeks"
+            data-testid="timeline-weeks"
+            role="row"
+          >
             {weeks.map(({ startDate }, index) => {
               const lastDateDisplayed = min([
                 endOfWeek(startDate, { weekStartsOn: WEEK_START }),
@@ -106,7 +114,10 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
 
               // @ts-ignore
               const child = render ? render(...args) : renderDefault(...args)
-              const title = `Week beginning ${format(startDate, 'do MMMM y')}`
+              const title = `Week beginning ${format(
+                startDate,
+                ACCESSIBLE_DATE_FORMAT
+              )}`
 
               return React.cloneElement(child, {
                 title,
