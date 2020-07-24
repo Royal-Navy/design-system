@@ -100,7 +100,10 @@ describe('Timeline', () => {
     it('should set the `aria-label` on each week', () => {
       const week = wrapper.getAllByTestId('timeline-week')[0]
 
-      expect(week).toHaveAttribute('aria-label', 'Week beginning 30th March 2020')
+      expect(week).toHaveAttribute(
+        'aria-label',
+        'Week beginning 30th March 2020'
+      )
     })
 
     it('should set the `title` on each week', () => {
@@ -242,6 +245,24 @@ describe('Timeline', () => {
       expect(wrapper.getByText('Event 2')).toBeInTheDocument()
       expect(wrapper.getByText('Event 3')).toBeInTheDocument()
       expect(wrapper.getByText('Event 4')).toBeInTheDocument()
+    })
+
+    it('should set the `aria-label` on each event', () => {
+      const week = wrapper.getAllByTestId('timeline-event')[0]
+
+      expect(week).toHaveAttribute(
+        'aria-label',
+        'Event 1 begins on 13th April 2020 and ends on 18th April 2020'
+      )
+    })
+
+    it('should set the `title` on each week', () => {
+      const week = wrapper.getAllByTestId('timeline-event')[0]
+
+      expect(week).toHaveAttribute(
+        'title',
+        'Event 1 begins on 13th April 2020 and ends on 18th April 2020'
+      )
     })
   })
 
@@ -528,6 +549,7 @@ describe('Timeline', () => {
       children,
       offsetPx,
       widthPx,
+      ...rest
     }: {
       children: React.ReactNode
       offsetPx: string
@@ -535,6 +557,7 @@ describe('Timeline', () => {
     }) => {
       return (
         <div
+          data-testid="timeline-custom-event"
           style={{
             position: 'absolute',
             top: '50%',
@@ -542,6 +565,7 @@ describe('Timeline', () => {
             left: offsetPx,
             width: widthPx,
           }}
+          {...rest}
         >
           {children}
         </div>
@@ -587,6 +611,24 @@ describe('Timeline', () => {
 
     it('should render the event as specified', () => {
       expect(wrapper.queryByText('Custom Event')).toBeInTheDocument()
+    })
+
+    it('should set the `aria-label` on each event', () => {
+      const week = wrapper.getAllByTestId('timeline-custom-event')[0]
+
+      expect(week).toHaveAttribute(
+        'aria-label',
+        'Begins on 16th April 2020 and ends on 20th April 2020'
+      )
+    })
+
+    it('should set the `title` on each week', () => {
+      const week = wrapper.getAllByTestId('timeline-custom-event')[0]
+
+      expect(week).toHaveAttribute(
+        'title',
+        'Begins on 16th April 2020 and ends on 20th April 2020'
+      )
     })
   })
 

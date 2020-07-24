@@ -304,6 +304,7 @@ stories.add('With custom event content', () => {
     endDate,
     widthPx,
     offsetPx,
+    ...rest
   }: {
     children: React.ReactNode
     startDate: Date
@@ -322,6 +323,7 @@ stories.add('With custom event content', () => {
           marginLeft: offsetPx,
           width: widthPx,
         }}
+        {...rest}
       >
         {children}
       </div>

@@ -1,3 +1,5 @@
+const ACCESSIBLE_DATE_FORMAT = 'do MMMM y'
+
 const DATE_DAY_FORMAT = 'dd'
 const DATE_MONTH_FORMAT = 'MMMM yyyy'
 const DATE_WEEK_FORMAT = 'dd/MM'
@@ -12,6 +14,7 @@ const NO_DATA_MESSAGE = 'No data available'
 const WEEK_START = 1 // Monday
 
 export {
+  ACCESSIBLE_DATE_FORMAT,
   DATE_DAY_FORMAT,
   DATE_MONTH_FORMAT,
   DATE_WEEK_FORMAT,
