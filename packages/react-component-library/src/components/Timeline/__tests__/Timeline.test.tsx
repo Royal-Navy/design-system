@@ -36,17 +36,49 @@ describe('Timeline', () => {
       )
     })
 
+    it('should set the `role` attribute to `grid` on the timeline', () => {
+      expect(wrapper.getByTestId('timeline')).toHaveAttribute('role', 'grid')
+    })
+
+    it('should set the `role` attribute to `rowgroup` on the header', () => {
+      expect(wrapper.queryByTestId('timeline-header')).toHaveAttribute(
+        'role',
+        'rowgroup'
+      )
+    })
+
     it('should display the today marker', () => {
       expect(
         wrapper.queryByTestId('timeline-today-marker-wrapper')
       ).toBeInTheDocument()
     })
 
+    it('should set the `role` attribute to `presentation` on the today marker', () => {
+      expect(
+        wrapper.queryByTestId('timeline-today-marker-wrapper')
+      ).toHaveAttribute('role', 'presentation')
+    })
+
+    it('should set the `role` attribute to `row` on the months', () => {
+      expect(wrapper.queryByTestId('timeline-months')).toHaveAttribute(
+        'role',
+        'row'
+      )
+    })
+
     it('renders the correct number of months', () => {
       expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(3)
     })
 
-    it('renders the month title in correct format', () => {
+    it('should set the `role` attribute to `columnheader` on each month', () => {
+      const months = wrapper.getAllByTestId('timeline-month')
+
+      months.forEach((month) =>
+        expect(month).toHaveAttribute('role', 'columnheader')
+      )
+    })
+
+    it('renders the month text in correct format', () => {
       const months = wrapper.queryAllByTestId('timeline-month')
 
       expect(months[0]).toHaveTextContent('April 2020')
@@ -54,12 +86,44 @@ describe('Timeline', () => {
       expect(months[2]).toHaveTextContent('June 2020')
     })
 
+    it('should set the `role` attribute to `row` on the weeks', () => {
+      expect(wrapper.queryByTestId('timeline-weeks')).toHaveAttribute(
+        'role',
+        'row'
+      )
+    })
+
     it('renders the correct number of weeks', () => {
       expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(14)
     })
 
+    it('should set the `role` attribute to `columnheader` on each week', () => {
+      const weeks = wrapper.getAllByTestId('timeline-week')
+
+      weeks.forEach((week) =>
+        expect(week).toHaveAttribute('role', 'columnheader')
+      )
+    })
+
+    it('should set the `role` attribute to `row` on the days', () => {
+      expect(wrapper.queryByTestId('timeline-days')).toHaveAttribute(
+        'role',
+        'row'
+      )
+    })
+
     it('renders the correct number of days', () => {
       expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(91)
+    })
+
+    it('should set the `role` attribute to `columnheader` on each day', () => {
+      const days = wrapper.getAllByTestId('timeline-day')
+
+      days.forEach((day) => expect(day).toHaveAttribute('role', 'columnheader'))
+    })
+
+    it('should not display the timeline columns', () => {
+      expect(wrapper.queryAllByTestId('timeline-columns')).toHaveLength(0)
     })
 
     it('should display the no data message', () => {
@@ -120,14 +184,44 @@ describe('Timeline', () => {
       )
     })
 
+    it('should display the timeline columns', () => {
+      expect(wrapper.getByTestId('timeline-columns')).toBeInTheDocument()
+    })
+
+    it('should set the `role` attribute to `presentation` on the timeline columns', () => {
+      expect(wrapper.getByTestId('timeline-columns')).toHaveAttribute(
+        'role',
+        'presentation'
+      )
+    })
+
     it('does not display the no data message', () => {
       expect(wrapper.queryByTestId('timeline-no-data')).not.toBeInTheDocument()
+    })
+
+    it('should set the `role` attribute to `rowgroup` on the rows group', () => {
+      expect(wrapper.queryByTestId('timeline-rows')).toHaveAttribute(
+        'role',
+        'rowgroup'
+      )
+    })
+
+    it('should set the `role` attribute to `row` on the rows', () => {
+      const rows = wrapper.queryAllByTestId('timeline-row')
+
+      rows.forEach((row) => expect(row).toHaveAttribute('role', 'row'))
     })
 
     it('should display 2 rows', () => {
       expect(wrapper.queryAllByTestId('timeline-row')).toHaveLength(2)
       // expect(wrapper.getByText('Row 1')).toBeInTheDocument()
       // expect(wrapper.getByText('Row 2')).toBeInTheDocument()
+    })
+
+    it('should set the `role` attribute to `cell` on the events', () => {
+      const events = wrapper.queryAllByTestId('timeline-event')
+
+      events.forEach((row) => expect(row).toHaveAttribute('role', 'cell'))
     })
 
     it('should display 4 events', () => {

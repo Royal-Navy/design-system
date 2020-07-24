@@ -138,13 +138,19 @@ export const Timeline: React.FC<TimelineProps> = ({
       today={today}
       options={options}
     >
-      <article className="timeline">
+      <div className="timeline" data-testid="timeline" role="grid">
         {rootChildren}
         <div className="timeline__inner" data-testid="timeline-inner">
-          <header className="timeline__header">{headChildren}</header>
+          <div
+            className="timeline__header"
+            data-testid="timeline-header"
+            role="rowgroup"
+          >
+            {headChildren}
+          </div>
           {bodyChildren}
         </div>
-      </article>
+      </div>
     </TimelineProvider>
   )
 }

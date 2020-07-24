@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { format } from 'date-fns'
 
 import { useTimelinePosition } from './hooks/useTimelinePosition'
+import { getKey } from '../../helpers'
 
 export interface TimelineEventWithRenderContentProps
   extends ComponentWithClass {
@@ -71,11 +72,15 @@ export const TimelineEvent: React.FC<TimelineEventProps> = ({
 
   if (isBeforeStart || isAfterEnd) return null
 
+  const event = render
+    ? render(startDate, endDate, widthPx, offsetPx)
+    : renderDefault(children, offsetPx, startDate, widthPx)
+
   return (
     <div data-testid="timeline-event-wrapper">
-      {render
-        ? render(startDate, endDate, widthPx, offsetPx)
-        : renderDefault(children, offsetPx, startDate, widthPx)}
+      {React.cloneElement(event as React.ReactElement, {
+        role: 'cell',
+      })}
     </div>
   )
 }

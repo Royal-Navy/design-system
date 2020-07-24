@@ -3,7 +3,7 @@ import { format, endOfMonth, differenceInDays, min, max } from 'date-fns'
 import classNames from 'classnames'
 
 import { formatPx } from './helpers'
-import { withKey } from '../../helpers'
+import { getKey } from '../../helpers'
 import { TimelineContext } from './context'
 import { DATE_MONTH_FORMAT } from './constants'
 
@@ -67,7 +67,7 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({ render }) => {
         },
       }) => {
         return (
-          <div className="timeline__months" data-testid="timeline-months">
+          <div className="timeline__months" data-testid="timeline-months" role="row">
             {months &&
               months.map(({ startDate }, index) => {
                 const firstDateDisplayed = max([startDate, days[0].date])
@@ -82,7 +82,10 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({ render }) => {
                   ? render(index, dayWidth, daysTotal, startDate)
                   : renderDefault(index, dayWidth, daysTotal, startDate)
 
-                return withKey(child, 'timeline-month', startDate.toString())
+                return React.cloneElement(child, {
+                  key: getKey('timeline-month', startDate.toString()),
+                  role: 'columnheader',
+                })
               })}
           </div>
         )
