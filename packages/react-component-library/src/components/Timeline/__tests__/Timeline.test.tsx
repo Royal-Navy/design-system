@@ -97,6 +97,18 @@ describe('Timeline', () => {
       expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(14)
     })
 
+    it('should set the `aria-label` on each week', () => {
+      const week = wrapper.getAllByTestId('timeline-week')[0]
+
+      expect(week).toHaveAttribute('aria-label', 'Week beginning 30th March 2020')
+    })
+
+    it('should set the `title` on each week', () => {
+      const week = wrapper.getAllByTestId('timeline-week')[0]
+
+      expect(week).toHaveAttribute('title', 'Week beginning 30th March 2020')
+    })
+
     it('should set the `role` attribute to `columnheader` on each week', () => {
       const weeks = wrapper.getAllByTestId('timeline-week')
 

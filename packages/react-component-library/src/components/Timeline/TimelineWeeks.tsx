@@ -106,8 +106,11 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
 
               // @ts-ignore
               const child = render ? render(...args) : renderDefault(...args)
+              const title = `Week beginning ${format(startDate, 'do MMMM y')}`
 
               return React.cloneElement(child, {
+                title,
+                'aria-label': title,
                 key: getKey('timeline-week', startDate.toString()),
                 role: 'columnheader',
               })
