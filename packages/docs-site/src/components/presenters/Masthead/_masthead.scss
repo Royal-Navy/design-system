@@ -38,6 +38,12 @@
   align-items: center;
   padding-top: rn.spacing("6");
   padding-bottom: rn.spacing("6");
+  padding-left: rn.spacing("2");
+  padding-right: rn.spacing("2");
+  @include rn.breakpoint("s") {
+    padding-left: rn.spacing("8");
+    padding-right: rn.spacing("8");
+  }
 }
 
 .masthead .masthead__button {
@@ -172,6 +178,7 @@
   .site-logo_svg__logo:hover .site-logo_svg__left-arrow {
     fill: #3a8fdd;
   }
+
 }
 
 .masthead__version {
