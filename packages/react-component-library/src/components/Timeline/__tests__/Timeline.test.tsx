@@ -229,8 +229,6 @@ describe('Timeline', () => {
 
     it('should display 2 rows', () => {
       expect(wrapper.queryAllByTestId('timeline-row')).toHaveLength(2)
-      // expect(wrapper.getByText('Row 1')).toBeInTheDocument()
-      // expect(wrapper.getByText('Row 2')).toBeInTheDocument()
     })
 
     it('should set the `role` attribute to `cell` on the events', () => {
