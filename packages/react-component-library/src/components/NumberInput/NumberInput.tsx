@@ -104,6 +104,12 @@ export const NumberInput: React.FC<NumberInputProps> = ({
     const newValue = getNewValue(event, unit)
     if (isFinite(newValue)) {
       setNextValue(newValue)
+      onChange({
+        target: {
+          name,
+          value: newValue,
+        },
+      })
     }
   }
 

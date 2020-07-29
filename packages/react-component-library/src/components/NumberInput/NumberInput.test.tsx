@@ -1,6 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, RenderResult, fireEvent } from '@testing-library/react'
+import { fireEvent, render, RenderResult } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { NumberInput } from './NumberInput'
 import { UNIT_POSITION } from './constants'
@@ -104,6 +105,20 @@ describe('NumberInput', () => {
           assertOnChangeCall(-1, 3)
         })
       })
+    })
+
+    describe('and the user types values', () => {
+      beforeEach(async () => {
+        const input = wrapper.getByTestId('number-input-input')
+
+        await userEvent.type(input, '1')
+        await userEvent.type(input, '2')
+        await userEvent.type(input, '3')
+      })
+
+      assertOnChangeCall(1, 3)
+      assertOnChangeCall(12, 3)
+      assertOnChangeCall(123, 3)
     })
   })
 
