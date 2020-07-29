@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/Royal-Navy/design-system/compare/2.11.0...2.12.0) (2020-07-29)
+
+
+### Bug Fixes
+
+* **DatePicker:** Add explicit button type ([ab56979](https://github.com/Royal-Navy/design-system/commit/ab5697992b8b99ddd8ebe3eaa22f6468c8d8222e))
+* **NumberInput:** Call `onChange` callback ([df0419e](https://github.com/Royal-Navy/design-system/commit/df0419e44ea8fdef723e3f7ebe294fbeca008981))
+* **Panel:** Add missing export ([78898d3](https://github.com/Royal-Navy/design-system/commit/78898d3a5576536c7c1e2104ab13124fe790a697))
+
+
+### Features
+
+* **Timeline:** Add `aria-label` to each week ([87c9186](https://github.com/Royal-Navy/design-system/commit/87c91863ea986657cdba68383dfa12f679b0d8e5))
+* **Timeline:** Add accessibility roles ([7fab444](https://github.com/Royal-Navy/design-system/commit/7fab4447eca1e8df6355e6e9b705e228dae6bb33))
+* **Timeline:** Add aria-label to event ([7421639](https://github.com/Royal-Navy/design-system/commit/7421639bdef7f09a372fc78600de25994b772b22))
+
+
+
+
+
 # [2.11.0](https://github.com/Royal-Navy/design-system/compare/2.10.0...2.11.0) (2020-07-21)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/Royal-Navy/design-system/compare/2.11.0...2.12.0) (2020-07-29)
+
+
+### Bug Fixes
+
+* **DatePicker:** Adjust grid flex styles ([7e051cc](https://github.com/Royal-Navy/design-system/commit/7e051ccae7869746d0df521bec8db68d34645171))
+* **DatePicker:** Prevent month titles from wrapping ([e9f78df](https://github.com/Royal-Navy/design-system/commit/e9f78df8e2fb864519e1ea0173a404c4ee386bff))
+
+
+
+
+
 # [2.11.0](https://github.com/Royal-Navy/design-system/compare/2.10.0...2.11.0) (2020-07-21)
 
 
