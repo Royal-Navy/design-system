@@ -3,6 +3,8 @@ import classNames from 'classnames'
 import { format } from 'date-fns'
 
 import { useTimelinePosition } from './hooks/useTimelinePosition'
+import { getKey } from '../../helpers'
+import { ACCESSIBLE_DATE_FORMAT } from './constants'
 
 export interface TimelineEventWithRenderContentProps
   extends ComponentWithClass {
@@ -56,6 +58,15 @@ function renderDefault(
   )
 }
 
+function getTitle(children: string, startDate: Date, endDate: Date) {
+  const start = children ? `${children} begins` : `Begins`
+
+  return `${start} on ${format(
+    startDate,
+    ACCESSIBLE_DATE_FORMAT
+  )} and ends on ${format(endDate, ACCESSIBLE_DATE_FORMAT)}`
+}
+
 export const TimelineEvent: React.FC<TimelineEventProps> = ({
   children,
   endDate,
@@ -71,11 +82,19 @@ export const TimelineEvent: React.FC<TimelineEventProps> = ({
 
   if (isBeforeStart || isAfterEnd) return null
 
+  const event = render
+    ? render(startDate, endDate, widthPx, offsetPx)
+    : renderDefault(children, offsetPx, startDate, widthPx)
+
+  const title = getTitle(children, startDate, endDate)
+
   return (
     <div data-testid="timeline-event-wrapper">
-      {render
-        ? render(startDate, endDate, widthPx, offsetPx)
-        : renderDefault(children, offsetPx, startDate, widthPx)}
+      {React.cloneElement(event as React.ReactElement, {
+        title,
+        'aria-label': title,
+        role: 'cell',
+      })}
     </div>
   )
 }

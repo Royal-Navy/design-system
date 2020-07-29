@@ -20,10 +20,13 @@ import {
 describe('Timeline', () => {
   let wrapper: RenderResult
 
-  describe('no data is provided', () => {
+  describe('when no data is provided', () => {
     beforeEach(() => {
       wrapper = render(
-        <Timeline>
+        <Timeline
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
           <TimelineTodayMarker />
           <TimelineMonths />
           <TimelineWeeks />
@@ -33,10 +36,109 @@ describe('Timeline', () => {
       )
     })
 
+    it('should set the `role` attribute to `grid` on the timeline', () => {
+      expect(wrapper.getByTestId('timeline')).toHaveAttribute('role', 'grid')
+    })
+
+    it('should set the `role` attribute to `rowgroup` on the header', () => {
+      expect(wrapper.queryByTestId('timeline-header')).toHaveAttribute(
+        'role',
+        'rowgroup'
+      )
+    })
+
     it('should display the today marker', () => {
       expect(
         wrapper.queryByTestId('timeline-today-marker-wrapper')
       ).toBeInTheDocument()
+    })
+
+    it('should set the `role` attribute to `presentation` on the today marker', () => {
+      expect(
+        wrapper.queryByTestId('timeline-today-marker-wrapper')
+      ).toHaveAttribute('role', 'presentation')
+    })
+
+    it('should set the `role` attribute to `row` on the months', () => {
+      expect(wrapper.queryByTestId('timeline-months')).toHaveAttribute(
+        'role',
+        'row'
+      )
+    })
+
+    it('renders the correct number of months', () => {
+      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(3)
+    })
+
+    it('should set the `role` attribute to `columnheader` on each month', () => {
+      const months = wrapper.getAllByTestId('timeline-month')
+
+      months.forEach((month) =>
+        expect(month).toHaveAttribute('role', 'columnheader')
+      )
+    })
+
+    it('renders the month text in correct format', () => {
+      const months = wrapper.queryAllByTestId('timeline-month')
+
+      expect(months[0]).toHaveTextContent('April 2020')
+      expect(months[1]).toHaveTextContent('May 2020')
+      expect(months[2]).toHaveTextContent('June 2020')
+    })
+
+    it('should set the `role` attribute to `row` on the weeks', () => {
+      expect(wrapper.queryByTestId('timeline-weeks')).toHaveAttribute(
+        'role',
+        'row'
+      )
+    })
+
+    it('renders the correct number of weeks', () => {
+      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(14)
+    })
+
+    it('should set the `aria-label` on each week', () => {
+      const week = wrapper.getAllByTestId('timeline-week')[0]
+
+      expect(week).toHaveAttribute(
+        'aria-label',
+        'Week beginning 30th March 2020'
+      )
+    })
+
+    it('should set the `title` on each week', () => {
+      const week = wrapper.getAllByTestId('timeline-week')[0]
+
+      expect(week).toHaveAttribute('title', 'Week beginning 30th March 2020')
+    })
+
+    it('should set the `role` attribute to `columnheader` on each week', () => {
+      const weeks = wrapper.getAllByTestId('timeline-week')
+
+      weeks.forEach((week) =>
+        expect(week).toHaveAttribute('role', 'columnheader')
+      )
+    })
+
+    it('should set the `role` attribute to `row` on the days', () => {
+      expect(wrapper.queryByTestId('timeline-days')).toHaveAttribute(
+        'role',
+        'row'
+      )
+    })
+
+    it('renders the correct number of days', () => {
+      expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(91)
+    })
+
+    it('should set the `role` attribute to `columnheader` on each day', () => {
+      const days = wrapper.getAllByTestId('timeline-day')
+
+      days.forEach((day) => expect(day).toHaveAttribute('role', 'columnheader'))
+    })
+
+    it('should not display the timeline columns', () => {
+      expect(wrapper.queryAllByTestId('timeline-columns')).toHaveLength(0)
     })
 
     it('should display the no data message', () => {
@@ -97,32 +199,14 @@ describe('Timeline', () => {
       )
     })
 
-    it('should display the today marker', () => {
-      expect(
-        wrapper.queryByTestId('timeline-today-marker-wrapper')
-      ).toBeInTheDocument()
+    it('should display the timeline columns', () => {
+      expect(wrapper.getByTestId('timeline-columns')).toBeInTheDocument()
     })
 
-    it('renders the correct number of months', () => {
-      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(3)
-    })
-
-    it('renders the month title in correct format', () => {
-      expect(
-        wrapper.getByTestId('timeline-months').firstChild.textContent
-      ).toContain('April 2020')
-    })
-
-    it('renders the correct number of weeks', () => {
-      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(14)
-    })
-
-    it('applies the --alt modifier class to odd weeks', () => {
-      expect(wrapper.getAllByTestId('timeline-week')[1].classList).toContain(
-        'timeline__week--alt'
-      )
-      expect(wrapper.getAllByTestId('timeline-week')[3].classList).toContain(
-        'timeline__week--alt'
+    it('should set the `role` attribute to `presentation` on the timeline columns', () => {
+      expect(wrapper.getByTestId('timeline-columns')).toHaveAttribute(
+        'role',
+        'presentation'
       )
     })
 
@@ -130,10 +214,27 @@ describe('Timeline', () => {
       expect(wrapper.queryByTestId('timeline-no-data')).not.toBeInTheDocument()
     })
 
+    it('should set the `role` attribute to `rowgroup` on the rows group', () => {
+      expect(wrapper.queryByTestId('timeline-rows')).toHaveAttribute(
+        'role',
+        'rowgroup'
+      )
+    })
+
+    it('should set the `role` attribute to `row` on the rows', () => {
+      const rows = wrapper.queryAllByTestId('timeline-row')
+
+      rows.forEach((row) => expect(row).toHaveAttribute('role', 'row'))
+    })
+
     it('should display 2 rows', () => {
       expect(wrapper.queryAllByTestId('timeline-row')).toHaveLength(2)
-      // expect(wrapper.getByText('Row 1')).toBeInTheDocument()
-      // expect(wrapper.getByText('Row 2')).toBeInTheDocument()
+    })
+
+    it('should set the `role` attribute to `cell` on the events', () => {
+      const events = wrapper.queryAllByTestId('timeline-event')
+
+      events.forEach((row) => expect(row).toHaveAttribute('role', 'cell'))
     })
 
     it('should display 4 events', () => {
@@ -142,6 +243,24 @@ describe('Timeline', () => {
       expect(wrapper.getByText('Event 2')).toBeInTheDocument()
       expect(wrapper.getByText('Event 3')).toBeInTheDocument()
       expect(wrapper.getByText('Event 4')).toBeInTheDocument()
+    })
+
+    it('should set the `aria-label` on each event', () => {
+      const week = wrapper.getAllByTestId('timeline-event')[0]
+
+      expect(week).toHaveAttribute(
+        'aria-label',
+        'Event 1 begins on 13th April 2020 and ends on 18th April 2020'
+      )
+    })
+
+    it('should set the `title` on each week', () => {
+      const week = wrapper.getAllByTestId('timeline-event')[0]
+
+      expect(week).toHaveAttribute(
+        'title',
+        'Event 1 begins on 13th April 2020 and ends on 18th April 2020'
+      )
     })
   })
 
@@ -428,6 +547,7 @@ describe('Timeline', () => {
       children,
       offsetPx,
       widthPx,
+      ...rest
     }: {
       children: React.ReactNode
       offsetPx: string
@@ -435,6 +555,7 @@ describe('Timeline', () => {
     }) => {
       return (
         <div
+          data-testid="timeline-custom-event"
           style={{
             position: 'absolute',
             top: '50%',
@@ -442,6 +563,7 @@ describe('Timeline', () => {
             left: offsetPx,
             width: widthPx,
           }}
+          {...rest}
         >
           {children}
         </div>
@@ -487,6 +609,24 @@ describe('Timeline', () => {
 
     it('should render the event as specified', () => {
       expect(wrapper.queryByText('Custom Event')).toBeInTheDocument()
+    })
+
+    it('should set the `aria-label` on each event', () => {
+      const week = wrapper.getAllByTestId('timeline-custom-event')[0]
+
+      expect(week).toHaveAttribute(
+        'aria-label',
+        'Begins on 16th April 2020 and ends on 20th April 2020'
+      )
+    })
+
+    it('should set the `title` on each week', () => {
+      const week = wrapper.getAllByTestId('timeline-custom-event')[0]
+
+      expect(week).toHaveAttribute(
+        'title',
+        'Begins on 16th April 2020 and ends on 20th April 2020'
+      )
     })
   })
 

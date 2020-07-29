@@ -79,7 +79,7 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
   })
 
   return (
-    <main className={mainClasses}>
+    <div className={mainClasses} data-testid="timeline-rows" role="rowgroup">
       {hasChildren && (
         <TimelineContext.Consumer>
           {({
@@ -93,6 +93,7 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
               <div
                 className={rowClasses}
                 data-testid="timeline-columns"
+                role="presentation"
               >
                 {weeks.map(({ startDate }, index) => {
                   const lastDateDisplayed = min([
@@ -133,7 +134,7 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
       )}
 
       {hasChildren ? children : noData}
-    </main>
+    </div>
   )
 }
 

@@ -17,7 +17,7 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
   const classes = classNames('timeline__row', className)
 
   return (
-    <div className={classes} data-testid="timeline-row">
+    <div className={classes} data-testid="timeline-row" role="row">
       {children}
     </div>
   )

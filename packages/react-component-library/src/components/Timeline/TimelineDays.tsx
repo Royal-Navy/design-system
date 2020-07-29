@@ -2,7 +2,7 @@ import React from 'react'
 import { format, isAfter } from 'date-fns'
 import classNames from 'classnames'
 
-import { withKey } from '../../helpers'
+import { getKey } from '../../helpers'
 import { TimelineContext } from './context'
 import { DATE_DAY_FORMAT } from './constants'
 
@@ -32,6 +32,7 @@ function renderDefault(index: number, dayWidth: number, date: Date) {
   return (
     <div
       className={wrapperClasses}
+      data-testid="timeline-day"
       style={{
         width: `${dayWidth}px`,
       }}
@@ -57,7 +58,7 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({ render }) => {
           options: { dayWidth },
         },
       }) => (
-        <div className={classes} data-testid="timeline-days">
+        <div className={classes} data-testid="timeline-days" role="row">
           {days &&
             days.map(({ date }, index) => {
               if (isAfter(date, timelineEndDate)) return null
@@ -66,7 +67,10 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({ render }) => {
                 ? render(index, dayWidth, date)
                 : renderDefault(index, dayWidth, date)
 
-              return withKey(child, 'timeline-day', date.toString())
+              return React.cloneElement(child, {
+                key: getKey('timeline-day', date.toString()),
+                role: 'columnheader',
+              })
             })}
         </div>
       )}
