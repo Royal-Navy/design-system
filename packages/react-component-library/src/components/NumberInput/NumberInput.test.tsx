@@ -1,10 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, render, RenderResult } from '@testing-library/react'
+import {
+  fireEvent,
+  render,
+  RenderResult,
+  waitFor,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { NumberInput } from './NumberInput'
 import { UNIT_POSITION } from './constants'
+
+const NumberInputContainer: React.FC = () => {
+  const [value, setValue] = useState(0)
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(parseInt(event.target.value, 10))
+  }
+
+  const onClick = () => {
+    const newValue = value + 1
+    setValue(newValue)
+  }
+
+  return (
+    <div>
+      <NumberInput name="number-input" onChange={onChange} value={value} />
+      <button data-testid="button" type="button" onClick={onClick}>
+        Click me
+      </button>
+    </div>
+  )
+}
 
 describe('NumberInput', () => {
   let wrapper: RenderResult
@@ -483,6 +510,23 @@ describe('NumberInput', () => {
       assertInputValue('£ 1000')
       assertAriaValue(1000)
       assertOnChangeCall(1000)
+    })
+  })
+
+  describe('when an external element affects the value', () => {
+    beforeEach(() => {
+      wrapper = render(<NumberInputContainer />)
+      wrapper.getByTestId('button').click()
+    })
+
+    it('should update the value in the field', async () => {
+      await waitFor(() => {
+        const input = wrapper.getByTestId(
+          'number-input-input'
+        ) as HTMLInputElement
+
+        expect(input.value).toEqual('1')
+      })
     })
   })
 })
