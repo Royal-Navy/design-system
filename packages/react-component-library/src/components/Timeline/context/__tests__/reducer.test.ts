@@ -1,5 +1,11 @@
-import { getMonths, getWeeks, getDays } from '../reducer'
-import { TimelineMonth, TimelineWeek, TimelineDay } from '../types'
+import { getMonths, getWeeks, getDays, reducer } from '../reducer'
+import {
+  TimelineMonth,
+  TimelineWeek,
+  TimelineDay,
+  TimelineState,
+  TimelineAction,
+} from '../types'
 
 describe('TimelineContext reducer', () => {
   describe('Timezones', () => {
@@ -115,6 +121,43 @@ describe('TimelineContext reducer', () => {
       ]
 
       expect(days).toEqual(expected)
+    })
+  })
+
+  describe('unknown action', () => {
+    let error: Error = null
+
+    beforeEach(() => {
+      const state: TimelineState = {
+        today: new Date(),
+        startDate: new Date(),
+        endDate: null,
+        months: [
+          {
+            monthIndex: 0,
+            startDate: new Date(2020, 3, 1, 0, 0, 0),
+          },
+        ],
+        weeks: [],
+        days: [],
+        options: {
+          dayWidth: 30,
+          rangeInMonths: 3,
+        },
+      }
+
+      // @ts-ignore
+      const action: TimelineAction = { type: 'UNKNOWN' }
+
+      try {
+        reducer(state, action)
+      } catch (e) {
+        error = e
+      }
+    })
+
+    it('should', () => {
+      expect(error.message).toEqual('Unknown reducer action')
     })
   })
 })
