@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import isNil from 'lodash/isNil'
 
 function isWithinRange(max: number, min: number, newValue: number) {
@@ -24,6 +24,10 @@ export function useValue(value: number) {
   const displayValue = useMemo(() => {
     return nextValue || committedValue
   }, [committedValue, nextValue])
+
+  useEffect(() => {
+    setCommittedValue(value)
+  }, [value])
 
   function setCommittedValueIfWithinRange(
     max: number,
