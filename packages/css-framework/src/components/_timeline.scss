@@ -14,8 +14,8 @@ $timeline-alt-bg-color: f.color("neutral", "white");
 .timeline__inner {
   overflow-y: hidden;
   overflow-x: auto;
-  border-bottom: 1px solid $timeline-border-color;
-  border-right: 1px solid $timeline-border-color;
+  border-bottom: f.spacing("px") solid $timeline-border-color;
+  border-right: f.spacing("px") solid $timeline-border-color;
   padding-bottom: f.spacing("4");
 }
 
@@ -34,7 +34,7 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   position: absolute;
   top: 4rem;
   display: inline-block;
-  width: 1px;
+  width: f.spacing("px");
   height: 100vh;
   background-color: f.color("danger", "500");
   z-index: 1;
@@ -179,7 +179,7 @@ $timeline-alt-bg-color: f.color("neutral", "white");
     display: inline-block;
     width: 1rem;
     height: 100vh;
-    border-right: 1px dashed f.color("neutral", "200");
+    border-right: f.spacing("px") dashed f.color("neutral", "200");
     z-index: 1;
   }
 }
@@ -204,8 +204,8 @@ $timeline-alt-bg-color: f.color("neutral", "white");
   align-items: center;
   height: 2.5rem;
   background-color: $timeline-bg-color;
-  border-top: 1px solid $timeline-border-color;
-  border-bottom: 1px solid $timeline-border-color;
+  border-top: f.spacing("px") solid $timeline-border-color;
+  border-bottom: f.spacing("px") solid $timeline-border-color;
 }
 
 .timeline__week-title--renderDefault,
@@ -227,7 +227,7 @@ $timeline-alt-bg-color: f.color("neutral", "white");
 }
 
 .timeline__day--renderDefault {
-  border-right: 1px solid f.color("neutral", "100");
+  border-right: f.spacing("px") solid f.color("neutral", "100");
 }
 
 .timeline__day-title--renderDefault {
