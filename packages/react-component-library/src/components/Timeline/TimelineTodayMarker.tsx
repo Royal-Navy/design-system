@@ -38,8 +38,14 @@ export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = ({
 
   if (isBeforeStart || isAfterEnd) return null
 
+  const wrapperClasses = classNames('timeline__today-marker-wrapper')
+
   return (
-    <div data-testid="timeline-today-marker-wrapper" role="presentation">
+    <div
+      className={wrapperClasses}
+      data-testid="timeline-today-marker-wrapper"
+      role="presentation"
+    >
       {render ? render(today, offset) : renderDefault(offset)}
     </div>
   )

@@ -1,18 +1,13 @@
 import React from 'react'
-import classNames from 'classnames'
-import { format, differenceInDays, endOfWeek, max, min } from 'date-fns'
 
-import {
-  ACCESSIBLE_DATE_FORMAT,
-  DATE_WEEK_FORMAT,
-  WEEK_START,
-} from './constants'
-import { formatPx, isOdd } from './helpers'
 import { getKey } from '../../helpers'
 import { TimelineContext } from './context'
+import { TimelineHeaderRow } from './TimelineHeaderRow'
+import { TimelineWeek } from './TimelineWeek'
 
 export interface TimelineWeeksWithRenderContentProps
   extends ComponentWithClass {
+  hasSide?: boolean
   render: (
     index: number,
     isOddNumber: boolean,
@@ -25,6 +20,7 @@ export interface TimelineWeeksWithRenderContentProps
 }
 
 export interface TimelineWeeksWithChildrenProps extends ComponentWithClass {
+  hasSide?: boolean
   render?: never
 }
 
@@ -32,45 +28,10 @@ export type TimelineWeeksProps =
   | TimelineWeeksWithRenderContentProps
   | TimelineWeeksWithChildrenProps
 
-function renderDefault(
-  index: number,
-  isOddNumber: boolean,
-  offsetPx: string,
-  widthPx: string,
-  dayWidth: number,
-  daysTotal: number,
-  startDate: Date
-) {
-  const wrapperClasses = classNames(
-    'timeline__week',
-    'timeline__week--renderDefault',
-    {
-      'timeline__week--alt': isOddNumber,
-    }
-  )
-
-  const titleClasses = classNames(
-    'timeline__week-title',
-    'timeline__week-title--renderDefault'
-  )
-
-  return (
-    <div
-      className={wrapperClasses}
-      style={{
-        marginLeft: offsetPx,
-        width: widthPx,
-      }}
-      data-testid="timeline-week"
-    >
-      <span className={titleClasses}>
-        {format(startDate, DATE_WEEK_FORMAT)}
-      </span>
-    </div>
-  )
-}
-
-export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
+export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({
+  hasSide,
+  render,
+}) => {
   return (
     <TimelineContext.Consumer>
       {({
@@ -79,56 +40,27 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
           weeks,
           options: { dayWidth },
         },
-      }) => {
-        return (
-          <div
-            className="timeline__weeks"
-            data-testid="timeline-weeks"
-            role="row"
-          >
-            {weeks.map(({ startDate }, index) => {
-              const lastDateDisplayed = min([
-                endOfWeek(startDate, { weekStartsOn: WEEK_START }),
-                days[days.length - 1].date,
-              ])
-              const daysTotal =
-                differenceInDays(lastDateDisplayed, startDate) + 1
-              const offsetInDays = differenceInDays(
-                startDate,
-                max([startDate, days[0].date])
-              )
-              const offsetPx = formatPx(dayWidth, offsetInDays)
-              const widthPx = formatPx(dayWidth, daysTotal)
-
-              const isOddNumber = isOdd(index)
-
-              const args = [
-                index,
-                isOddNumber,
-                offsetPx,
-                widthPx,
-                dayWidth,
-                daysTotal,
-                startDate,
-              ]
-
-              // @ts-ignore
-              const child = render ? render(...args) : renderDefault(...args)
-              const title = `Week beginning ${format(
-                startDate,
-                ACCESSIBLE_DATE_FORMAT
-              )}`
-
-              return React.cloneElement(child, {
-                title,
-                'aria-label': title,
-                key: getKey('timeline-week', startDate.toString()),
-                role: 'columnheader',
-              })
-            })}
+      }) => (
+        <TimelineHeaderRow
+          className="timeline__row--short"
+          data-testid="timeline-weeks"
+          hasSide={hasSide}
+          name="Weeks"
+        >
+          <div className="timeline__weeks">
+            {weeks.map(({ startDate }, index) => (
+              <TimelineWeek
+                days={days}
+                dayWidth={dayWidth}
+                index={index}
+                key={getKey('timeline-week', startDate.toString())}
+                render={render}
+                startDate={startDate}
+              />
+            ))}
           </div>
-        )
-      }}
+        </TimelineHeaderRow>
+      )}
     </TimelineContext.Consumer>
   )
 }
