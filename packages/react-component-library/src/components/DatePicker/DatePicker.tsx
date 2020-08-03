@@ -3,7 +3,7 @@ import differenceInMinutes from 'date-fns/differenceInMinutes'
 import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 import TetherComponent from 'react-tether'
-import DayPicker, { DateUtils } from 'react-day-picker'
+import DayPicker, { DateUtils, RangeModifier } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 
 import { DatePickerInput } from './DatePickerInput'
@@ -68,24 +68,23 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     to: endDate,
   })
 
-  const modifiers = { start: state.from, end: state.to }
-
-  function handleDateChange(data: StateObject) {
-    setState(data)
-
-    if (onChange) {
-      onChange(data)
-    }
-  }
+  const { from, to } = state
+  const modifiers = { start: from, end: to }
 
   function handleDayClick(day: any) {
-    const range = DateUtils.addDayToRange(day, state)
-    setState(range)
+    if (isRange) {
+      const range = DateUtils.addDayToRange(day, state as RangeModifier)
+      setState(range)
+    }
+
+    if (onChange) {
+      onChange(state)
+    }
   }
 
   const componentRef = useRef(null)
   const { openState, onFocus, onClose } = useOpenClose(componentRef, isOpen)
-  const hasContent = (value && value.length) || state.startDate
+  const hasContent = (value && value.length) || from
   const PLACEMENTS = DATEPICKER_PLACEMENTS[placement]
 
   const classes = classNames('rn-date-picker', className, {
@@ -131,7 +130,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             id={id}
             name={name}
             label={label}
-            value={transformDates(state.startDate, state.endDate)}
+            value={transformDates(from, to)}
             onBlur={onBlur}
             onFocus={onFocus}
             isDisabled={isDisabled}
