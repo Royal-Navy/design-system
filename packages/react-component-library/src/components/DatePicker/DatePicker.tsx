@@ -101,9 +101,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     'is-visible': openState,
   })
 
-  // const gridClasses = classNames('rn-date-picker__grid', {
-  //   'rn-date-picker__grid--range': isRange,
-  // })
+  const gridClasses = classNames('rn-date-picker__grid', {
+    'rn-date-picker__grid--range': isRange,
+  })
 
   const titleId = getId('datepicker-title')
 
@@ -123,7 +123,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         attachment: PLACEMENTS.ATTACHMENT,
         targetAttachment: PLACEMENTS.TARGET_ATTACHMENT,
         className: tetherClasses,
-        renderTarget: (ref: React.RefObject<any>) => (
+        renderTarget: (ref: React.RefObject<HTMLDivElement>) => (
           <DatePickerInput
             ref={ref}
             className={classes}
@@ -138,7 +138,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             onClose={onClose}
           />
         ),
-        renderElement: (ref: React.RefObject<any>) => (
+        renderElement: (ref: React.RefObject<HTMLDivElement>) => (
           <FloatingBox
             ref={ref}
             position={PLACEMENTS.ARROW_POSITION}
@@ -150,7 +150,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             aria-live="polite"
           >
             <DayPicker
-              className="Selectable"
+              className={gridClasses}
               numberOfMonths={isRange ? 2 : 1}
               selectedDays={[from, { from, to }]}
               modifiers={modifiers}
