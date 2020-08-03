@@ -3,6 +3,8 @@ import differenceInMinutes from 'date-fns/differenceInMinutes'
 import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 import TetherComponent from 'react-tether'
+import DayPicker, { DateUtils } from 'react-day-picker'
+import 'react-day-picker/lib/style.css'
 
 import { DatePickerInput } from './DatePickerInput'
 import { useOpenClose } from './useOpenClose'
@@ -11,8 +13,8 @@ import { FloatingBox, FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 import { getId } from '../../helpers'
 
 export interface StateObject {
-  endDate?: Date
-  startDate?: Date
+  from?: Date
+  to?: Date
 }
 
 export interface DatePickerProps extends ComponentWithClass {
@@ -62,18 +64,23 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   isOpen,
 }) => {
   const [state, setState] = useState<StateObject>({
-    startDate,
-    endDate,
+    from: startDate,
+    to: endDate,
   })
 
+  const modifiers = { start: state.from, end: state.to }
+
   function handleDateChange(data: StateObject) {
-    setState({
-      ...data,
-    })
+    setState(data)
 
     if (onChange) {
       onChange(data)
     }
+  }
+
+  function handleDayClick(day: any) {
+    const range = DateUtils.addDayToRange(day, state)
+    setState(range)
   }
 
   const componentRef = useRef(null)
@@ -143,7 +150,13 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             aria-labelledby={titleId}
             aria-live="polite"
           >
-            <>Hello, World!</>
+            <DayPicker
+              className="Selectable"
+              numberOfMonths={isRange ? 2 : 1}
+              selectedDays={[from, { from, to }]}
+              modifiers={modifiers}
+              onDayClick={handleDayClick}
+            />
           </FloatingBox>
         ),
       })}
