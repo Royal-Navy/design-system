@@ -151,131 +151,131 @@
   }
 }
 
-.rn-date-picker__grid {
-  width: 280px;
-  display: flex;
-  padding: f.spacing("8") f.spacing("5") f.spacing("5") f.spacing("5");
-}
+// .rn-date-picker__grid {
+//   width: 280px;
+//   display: flex;
+//   padding: f.spacing("8") f.spacing("5") f.spacing("5") f.spacing("5");
+// }
 
-.rn-date-picker__grid--range {
-  width: 570px;
+// .rn-date-picker__grid--range {
+//   width: 570px;
 
-  div {
-    &:first-of-type {
-      padding-right: f.spacing("6");
-    }
-  }
-}
+//   div {
+//     &:first-of-type {
+//       padding-right: f.spacing("6");
+//     }
+//   }
+// }
 
-.rn-date-picker__range-seperator {
-  position: absolute;
-  top: f.spacing("8");
-  left: 50%;
-  transform: translateX(-50%);
-  color: f.color("neutral", "300");
-  width: 1rem;
-  height: 1rem;
-}
+// .rn-date-picker__range-seperator {
+//   position: absolute;
+//   top: f.spacing("8");
+//   left: 50%;
+//   transform: translateX(-50%);
+//   color: f.color("neutral", "300");
+//   width: 1rem;
+//   height: 1rem;
+// }
 
-.rn-date-picker__header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: f.spacing("2") 0 f.spacing("10");
-}
+// .rn-date-picker__header {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: f.spacing("2") 0 f.spacing("10");
+// }
 
-.rn-date-picker__btn-nav {
-  position: absolute;
-  top: f.spacing("8");
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 0;
-  border: 1px solid f.color("neutral", "200");
-  border-radius: 2px;
-  color: f.color("neutral", "300");
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
-  background-color: f.color("neutral", "white");
+// .rn-date-picker__btn-nav {
+//   position: absolute;
+//   top: f.spacing("8");
+//   display: inline-flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 1.5rem;
+//   height: 1.5rem;
+//   padding: 0;
+//   border: 1px solid f.color("neutral", "200");
+//   border-radius: 2px;
+//   color: f.color("neutral", "300");
+//   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
+//   background-color: f.color("neutral", "white");
 
-  &:first-of-type {
-    left: f.spacing("8");
-  }
+//   &:first-of-type {
+//     left: f.spacing("8");
+//   }
 
-  &:last-of-type {
-    right: f.spacing("8");
-  }
-}
+//   &:last-of-type {
+//     right: f.spacing("8");
+//   }
+// }
 
-.rn-date-picker__month-label {
-  width: 6.5rem;
-  margin: 0 f.spacing("8");
-  text-align: center;
-  font-size: f.font-size("base");
-  color: f.color("neutral", "400");
-  font-weight: 600;
-  white-space: nowrap;
-}
+// .rn-date-picker__month-label {
+//   width: 6.5rem;
+//   margin: 0 f.spacing("8");
+//   text-align: center;
+//   font-size: f.font-size("base");
+//   color: f.color("neutral", "400");
+//   font-weight: 600;
+//   white-space: nowrap;
+// }
 
-.rn-date-picker__day-label-grid {
-  display: flex;
-}
+// .rn-date-picker__day-label-grid {
+//   display: flex;
+// }
 
-.rn-date-picker__day-label {
-  width: calc(100% / 7);
+// .rn-date-picker__day-label {
+//   width: calc(100% / 7);
 
-  padding: 0 f.spacing("2") f.spacing("4");
-  text-align: center;
-  text-transform: uppercase;
-  font-size: f.font-size("xs");
-  color: f.color("neutral", "400");
-  font-weight: 600;
-}
+//   padding: 0 f.spacing("2") f.spacing("4");
+//   text-align: center;
+//   text-transform: uppercase;
+//   font-size: f.font-size("xs");
+//   color: f.color("neutral", "400");
+//   font-weight: 600;
+// }
 
-.rn-date-picker__day-grid {
-  display: flex;
-  flex-wrap: wrap;
+// .rn-date-picker__day-grid {
+//   display: flex;
+//   flex-wrap: wrap;
 
-  div, button {
-    width: calc(100% / 7);
-  }
-}
+//   div, button {
+//     width: calc(100% / 7);
+//   }
+// }
 
-.rn-date-picker__btn-day {
-  padding: f.spacing("4");
-  border: 1px solid f.color("neutral", "100");
-  font-size: f.font-size("s");
-  font-weight: 600;
-  color: f.color("neutral", "400");
-  background-color: f.color("neutral", "white");
+// .rn-date-picker__btn-day {
+//   padding: f.spacing("4");
+//   border: 1px solid f.color("neutral", "100");
+//   font-size: f.font-size("s");
+//   font-weight: 600;
+//   color: f.color("neutral", "400");
+//   background-color: f.color("neutral", "white");
 
-  &:focus {
-    outline: none;
-  }
+//   &:focus {
+//     outline: none;
+//   }
 
-  &:hover {
-    color: f.color("neutral", "white");
-    background-color: f.color("action", "600");
-  }
+//   &:hover {
+//     color: f.color("neutral", "white");
+//     background-color: f.color("action", "600");
+//   }
 
-  &.is-selected-start-or-end {
-    color: f.color("neutral", "white");
-    background-color: f.color("action", "600");
-  }
+//   &.is-selected-start-or-end {
+//     color: f.color("neutral", "white");
+//     background-color: f.color("action", "600");
+//   }
 
-  &.is-selected {
-    color: f.color("neutral", "400");
-    background-color: f.color("action", "100");
-  }
+//   &.is-selected {
+//     color: f.color("neutral", "400");
+//     background-color: f.color("action", "100");
+//   }
 
-  &.is-within-range {
-    color: f.color("neutral", "white");
-    background-color: f.color("action", "400");
-  }
+//   &.is-within-range {
+//     color: f.color("neutral", "white");
+//     background-color: f.color("action", "400");
+//   }
 
-  &.is-disabled {
-    color: f.color("neutral", "200");
-    background-color: f.color("neutral", "100");
-  }
-}
+//   &.is-disabled {
+//     color: f.color("neutral", "200");
+//     background-color: f.color("neutral", "100");
+//   }
+// }

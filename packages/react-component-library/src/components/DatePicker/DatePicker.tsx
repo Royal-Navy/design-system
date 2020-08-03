@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 import TetherComponent from 'react-tether'
 import DayPicker, { DateUtils, RangeModifier } from 'react-day-picker'
-import 'react-day-picker/lib/style.css'
+// import 'react-day-picker/lib/style.css'
 
 import { DatePickerInput } from './DatePickerInput'
 import { useOpenClose } from './useOpenClose'
