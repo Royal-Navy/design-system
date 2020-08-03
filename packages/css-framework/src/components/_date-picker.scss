@@ -151,42 +151,37 @@
   }
 }
 
-.rn-date-picker__grid {
-  width: 280px;
+.DayPicker {
+  display: inline-block;
+}
+
+.DayPicker-wrapper {
+  position: relative;
+  flex-direction: row;
+  padding-bottom: f.spacing("8");
+  outline: none;
+  user-select: none;
+}
+
+.DayPicker-Months {
   display: flex;
-  padding: f.spacing("8") f.spacing("5") f.spacing("5") f.spacing("5");
-}
-
-.rn-date-picker__grid--range {
-  width: 570px;
-
-  div {
-    &:first-of-type {
-      padding-right: f.spacing("6");
-    }
-  }
-}
-
-.rn-date-picker__range-seperator {
-  position: absolute;
-  top: f.spacing("8");
-  left: 50%;
-  transform: translateX(-50%);
-  color: f.color("neutral", "300");
-  width: 1rem;
-  height: 1rem;
-}
-
-.rn-date-picker__header {
-  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  padding: f.spacing("2") 0 f.spacing("10");
 }
 
-.rn-date-picker__btn-nav {
+.DayPicker-Month {
+  display: table;
+  margin: 0 f.spacing("6");
+  margin-top: f.spacing("8");
+  border-spacing: 0;
+  border-collapse: collapse;
+  user-select: none;
+}
+
+.DayPicker-NavButton {
   position: absolute;
-  top: f.spacing("8");
+  top: 1rem;
+  cursor: pointer;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -198,84 +193,129 @@
   color: f.color("neutral", "300");
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
   background-color: f.color("neutral", "white");
-
-  &:first-of-type {
-    left: f.spacing("8");
-  }
-
-  &:last-of-type {
-    right: f.spacing("8");
-  }
+  background-position: center;
+  background-size: 75%;
+  background-repeat: no-repeat;
 }
 
-.rn-date-picker__month-label {
-  width: 6.5rem;
-  margin: 0 f.spacing("8");
+.DayPicker-NavButton--prev {
+  left: 1rem;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3EIcons/Navigation/chevron-left%3C/title%3E%3Cdefs%3E%3Cpolygon id='path-1' points='10.2755556 4.9422222 9.33333334 3.99999998 5.33333332 8 9.33333334 12 10.2755556 11.0577778 7.21777777 8'%3E%3C/polygon%3E%3C/defs%3E%3Cg id='Icons/Navigation/chevron-left' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cmask id='mask-2' fill='white'%3E%3Cuse xlink:href='%23path-1'%3E%3C/use%3E%3C/mask%3E%3Cuse id='Icons/Navigation/ic_chevron_left_18px' fill='%23233745' fill-rule='nonzero' xlink:href='%23path-1'%3E%3C/use%3E%3C/g%3E%3C/svg%3E");
+}
+
+.DayPicker-NavButton--next {
+  right: 1rem;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3EIcons/Navigation/chevron-right%3C/title%3E%3Cdefs%3E%3Cpolygon id='path-1' points='6.66666666 3.99999998 5.72444443 4.9422222 8.78222223 8 5.72444443 11.0577778 6.66666666 12 10.6666667 8'%3E%3C/polygon%3E%3C/defs%3E%3Cg id='Icons/Navigation/chevron-right' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cmask id='mask-2' fill='white'%3E%3Cuse xlink:href='%23path-1'%3E%3C/use%3E%3C/mask%3E%3Cuse id='Icons/Navigation/ic_chevron_right_18px' fill='%23233745' fill-rule='nonzero' xlink:href='%23path-1'%3E%3C/use%3E%3C/g%3E%3C/svg%3E");
+}
+
+.DayPicker-NavButton--interactionDisabled {
+  display: none;
+}
+
+.DayPicker-Caption {
+  display: table-caption;
+  margin-bottom: f.spacing("8");
   text-align: center;
+  height: 1.5rem;
+  line-height: 1.5rem;
+}
+
+.DayPicker-Caption > div {
   font-size: f.font-size("base");
   color: f.color("neutral", "400");
   font-weight: 600;
   white-space: nowrap;
 }
 
-.rn-date-picker__day-label-grid {
-  display: flex;
+.DayPicker-Weekdays {
+  display: table-header-group;
+  margin-top: f.spacing("8");
 }
 
-.rn-date-picker__day-label {
-  width: calc(100% / 7);
+.DayPicker-WeekdaysRow {
+  display: table-row;
+}
 
+.DayPicker-Weekday {
+  display: table-cell;
   padding: 0 f.spacing("2") f.spacing("4");
   text-align: center;
   text-transform: uppercase;
-  font-size: f.font-size("xs");
+  font-size: f.font-size("s");
   color: f.color("neutral", "400");
   font-weight: 600;
 }
 
-.rn-date-picker__day-grid {
-  display: flex;
-  flex-wrap: wrap;
-
-  div, button {
-    width: calc(100% / 7);
-  }
+.DayPicker-Weekday abbr[title] {
+  border-bottom: none;
+  text-decoration: none;
 }
 
-.rn-date-picker__btn-day {
+.DayPicker-Body {
+  display: table-row-group;
+}
+
+.DayPicker-Week {
+  display: table-row;
+}
+
+.DayPicker-Day {
+  display: table-cell;
   padding: f.spacing("4");
   border: 1px solid f.color("neutral", "100");
   font-size: f.font-size("s");
   font-weight: 600;
   color: f.color("neutral", "400");
   background-color: f.color("neutral", "white");
+  text-align: center;
+  cursor: pointer;
+}
 
-  &:focus {
-    outline: none;
-  }
+.DayPicker-Day--outside {
+  border: none;
+}
 
-  &:hover {
-    color: f.color("neutral", "white");
-    background-color: f.color("action", "600");
-  }
+.DayPicker--interactionDisabled .DayPicker-Day {
+  cursor: default;
+}
 
-  &.is-selected-start-or-end {
-    color: f.color("neutral", "white");
-    background-color: f.color("action", "600");
-  }
+.DayPicker-Day--today {
+  color: f.color("action", "400");
+  font-weight: 700;
+}
 
-  &.is-selected {
-    color: f.color("neutral", "400");
-    background-color: f.color("action", "100");
-  }
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  position: relative;
 
-  &.is-within-range {
-    color: f.color("neutral", "white");
-    background-color: f.color("action", "400");
-  }
+  background-color: f.color("action", "100");
+}
 
-  &.is-disabled {
-    color: f.color("neutral", "200");
-    background-color: f.color("neutral", "100");
-  }
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
+  background-color: f.color("action", "100");
+}
+
+.DayPicker:not(.DayPicker--interactionDisabled)
+  .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+  background-color: f.color("action", "500");
+  color: f.color("neutral", "white");
+}
+
+.rn-date-picker__grid--range .DayPicker-Day {
+  border-radius: 0;
+}
+
+.rn-date-picker__grid--range .DayPicker-Day--start,
+.rn-date-picker__grid--range .DayPicker-Day--end {
+  background-color: f.color("action", "500") !important;
+  color: f.color("neutral", "white");
+}
+
+.rn-date-picker__grid--range .DayPicker-Day--start {
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+.rn-date-picker__grid--range .DayPicker-Day--end {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
 }
