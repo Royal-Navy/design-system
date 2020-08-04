@@ -63,6 +63,7 @@ export const DatePickerInput = forwardRef(
             type="button"
             className="rn-date-picker__end-adornment"
             onClick={isOpen ? onClose : onFocus}
+            disabled={isDisabled}
             data-testid="datepicker-input-button"
           >
             <div className="rn-date-picker__indicator-separator" />

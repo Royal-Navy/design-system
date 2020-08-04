@@ -345,4 +345,16 @@ describe('DatePicker', () => {
       })
     })
   })
+
+  describe('when the `disabled` prop is provided', () => {
+    beforeEach(() => {
+      wrapper = render(<DatePicker isDisabled />)
+    })
+
+    it('sets the disabled attribute correctly for the input', () => {
+      expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
+        'disabled'
+      )
+    })
+  })
 })

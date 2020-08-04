@@ -106,6 +106,10 @@
   border: none;
   background: transparent;
   outline: none;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .rn-date-picker__end-adornment {
