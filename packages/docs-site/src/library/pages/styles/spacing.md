@@ -27,91 +27,113 @@ The Spacing Scale values, much like the Typography Scale values, doesn't increas
 <DataTable data={[
   {
     Scale: '1',
-    Size: '0.125rem'
+    Size: '0.125rem',
+    PX: '2px'
   },
   {
     Scale: '2',
-    Size: '0.25rem'
+    Size: '0.25rem',
+    PX: '4px'
   },
   {
     Scale: '3',
-    Size: '0.375rem'
+    Size: '0.375rem',
+    PX: '6px'
   },
   {
     Scale: '4',
-    Size: '0.5rem'
+    Size: '0.5rem',
+    PX: '8px'
   },
   {
     Scale: '5',
-    Size: '0.625rem'
+    Size: '0.625rem',
+    PX: '10px'
   },
   {
     Scale: '6',
-    Size: '1.75rem'
+    Size: '1.75rem',
+    PX: '12px'
   },
   {
     Scale: '7',
-    Size: '0.875rem'
+    Size: '0.875rem',
+    PX: '14px'
   },
   {
     Scale: '8',
-    Size: '1rem'
+    Size: '1rem',
+    PX: '16px'
   },
   {
     Scale: '9',
-    Size: '1.125rem'
+    Size: '1.125rem',
+    PX: '18px'
   },
   {
     Scale: '10',
-    Size: '1.25rem'
+    Size: '1.25rem',
+    PX: '20px'
   },
   {
     Scale: '11',
-    Size: '1.5rem'
+    Size: '1.5rem',
+    PX: '24px'
   },
   {
     Scale: '12',
-    Size: '2rem'
+    Size: '2rem',
+    PX: '32px'
   },
   {
     Scale: '13',
-    Size: '2.5rem'
+    Size: '2.5rem',
+    PX: '40px'
   },
   {
     Scale: '14',
-    Size: '3rem'
+    Size: '3rem',
+    PX: '48px'
   },
   {
     Scale: '15',
-    Size: '4rem'
+    Size: '4rem',
+    PX: '64px'
   },
   {
     Scale: '16',
-    Size: '5rem'
+    Size: '5rem',
+    PX: '80px'
   },
   {
     Scale: '17',
-    Size: '6rem'
+    Size: '6rem',
+    PX: '96px'
   },
   {
     Scale: '18',
-    Size: '8rem'
+    Size: '8rem',
+    PX: '128px'
   },
   {
     Scale: '19',
-    Size: '9rem'
+    Size: '9rem',
+    PX: '144px'
   },
   {
     Scale: '20',
-    Size: '10rem'
+    Size: '10rem',
+    PX: '160px'
   },
   {
     Scale: 'px',
-    Size: '1px'
+    Size: '1px',
+    PX: '-'
   },
   {
     Scale: 'full',
-    Size: '100%'
+    Size: '100%',
+    PX: '-'
   },
 ]} />
 
