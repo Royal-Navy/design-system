@@ -180,6 +180,25 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
   </div>
 </div>
 
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">withSide</h1>
+    <Badge color="supa" colorVariant="faded" size="small">Boolean</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>-</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">Specify whether or not to output sidebar headings.</p>
+    </div>
+  </div>
+</div>
+
 </div>
 <div className="rn-fw-code rn-fw-md">
 
@@ -630,6 +649,25 @@ Here you will find comprehensive API documentation for the Timeline Components.
   </div>
 </div>
 
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">withSide</h1>
+    <Badge color="supa" colorVariant="faded" size="small">Boolean</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>-</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">Specify whether or not to output sidebar headings.</p>
+    </div>
+  </div>
+</div>
+
 </div>
 <div className="rn-fw-code rn-fw-md">
 
@@ -681,7 +719,7 @@ Here you will find comprehensive API documentation for the Timeline Components.
 <div className="rn-fw-row" id="timeline-side">
 <div className="rn-fw-copy rn-fw-md">
 
-## TimelineSide
+## TimelineSide (Deprecated)
 
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
