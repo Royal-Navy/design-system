@@ -1,7 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-
 import { IconChevronRight } from '@royalnavy/icon-library'
+
+import { getId } from '../../helpers'
 
 export interface ListItemProps extends ComponentWithClass {
   children: string | string[]
@@ -29,6 +30,8 @@ export const ListItem: React.FC<ListItemProps> = ({
     className
   )
 
+  const titleId = getId('list-title')
+
   return (
     <li className={classes} data-testid="list-item" role="presentation">
       <button
@@ -37,8 +40,14 @@ export const ListItem: React.FC<ListItemProps> = ({
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <div role="listitem">
-          <h2 className="rn-list__item-title">{title}</h2>
+        <div role="listitem" aria-labelledby={titleId}>
+          <h2
+            className="rn-list__item-title"
+            id={titleId}
+            data-testid="list-item-heading"
+          >
+            {title}
+          </h2>
           <p className="rn-list__item-description">{children}</p>
         </div>
         <div>

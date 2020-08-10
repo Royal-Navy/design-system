@@ -49,6 +49,17 @@ describe('List', () => {
       })
     })
 
+    it('should set the `aria-labelledby` attribute to the ID of the title', () => {
+      const titleId = wrapper
+        .getAllByTestId('list-item-heading')[0]
+        .getAttribute('id')
+
+      expect(wrapper.getAllByRole('listitem')[0]).toHaveAttribute(
+        'aria-labelledby',
+        titleId
+      )
+    })
+
     it('should not call `console.warn`', () => {
       expect(consoleWarnSpy).toHaveBeenCalledTimes(0)
     })
