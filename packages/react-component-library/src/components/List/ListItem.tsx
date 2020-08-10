@@ -30,14 +30,14 @@ export const ListItem: React.FC<ListItemProps> = ({
   )
 
   return (
-    <li className={classes} data-testid="list-item">
+    <li className={classes} data-testid="list-item" role="presentation">
       <button
         className="rn-list__item-content"
         onClick={onClick}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <div>
+        <div role="listitem">
           <h2 className="rn-list__item-title">{title}</h2>
           <p className="rn-list__item-description">{children}</p>
         </div>
