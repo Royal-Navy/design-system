@@ -153,6 +153,16 @@ describe('Table', () => {
         expect(wrapper.queryAllByTestId('ascending').length).toEqual(0)
       })
 
+      it('should apply `aria-hidden` to sort icons', () => {
+        expect(wrapper.queryAllByTestId('unsorted')[0]).toHaveAttribute(
+          'aria-hidden'
+        )
+
+        expect(wrapper.queryAllByTestId('descending')[0]).toHaveAttribute(
+          'aria-hidden'
+        )
+      })
+
       it('should set the `aria-sort` attribute on the table header cells', () => {
         const tableHeaderCells = wrapper.queryAllByTestId('table-header')
 
@@ -177,6 +187,16 @@ describe('Table', () => {
           expect(wrapper.queryAllByTestId('unsorted').length).toEqual(1)
           expect(wrapper.queryAllByTestId('descending').length).toEqual(0)
           expect(wrapper.queryAllByTestId('ascending').length).toEqual(1)
+        })
+
+        it('should apply `aria-hidden` to sort icons', () => {
+          expect(wrapper.queryAllByTestId('unsorted')[0]).toHaveAttribute(
+            'aria-hidden'
+          )
+
+          expect(wrapper.queryAllByTestId('ascending')[0]).toHaveAttribute(
+            'aria-hidden'
+          )
         })
 
         it('should set the `aria-sort` attribute on the table header cells', () => {
