@@ -10,13 +10,14 @@ export interface RowProps {
 interface TableProps {
   data: RowProps[]
   children: React.ReactElement<TableColumnProps>[]
+  caption?: string
 }
 
 function getKey(prefix: string, id: string) {
   return `${prefix}_${id}`
 }
 
-export const Table: React.FC<TableProps> = ({ data, children }) => {
+export const Table: React.FC<TableProps> = ({ data, children, caption }) => {
   const { tableData, sortTableData, sortField, sortOrder } = useTableData(data)
 
   const childrenWithSort = React.Children.map(
@@ -32,6 +33,7 @@ export const Table: React.FC<TableProps> = ({ data, children }) => {
   return (
     <div className="rn-table__wrapper" data-testid="table-wrapper">
       <table className="rn-table" data-testid="table" role="grid">
+        {caption && <caption data-testid="table-caption">{caption}</caption>}
         <thead>
           <tr>{childrenWithSort}</tr>
         </thead>

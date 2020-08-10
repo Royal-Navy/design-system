@@ -147,6 +147,13 @@ Whilst there is no restriction on the number of Table instances that can be used
     Default: '',
     Description: 'Order the column will be sorted in `asc` or `desc`',
   },
+  {
+    Name: 'caption',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'An optional string to render as the table caption',
+  },
 ]} />
 
 </Tab>

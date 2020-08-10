@@ -111,3 +111,28 @@ examples.add('Sortable', () => {
     </Table>
   )
 })
+
+examples.add('With caption', () => {
+  const tableDataMock = [
+    {
+      id: 'a',
+      first: 'Row 1 cell 1',
+      second: 'Row 1 cell 2',
+      third: 'Row 1 cell 3',
+    },
+    {
+      id: 'b',
+      first: 'Row 2 cell 1',
+      second: 'Row 2 cell 2',
+      third: 'Row 2 cell 3',
+    },
+  ]
+
+  return (
+    <Table data={tableDataMock} caption="Example caption">
+      <TableColumn field="first">First column</TableColumn>
+      <TableColumn field="second">Second column</TableColumn>
+      <TableColumn field="third">Third column</TableColumn>
+    </Table>
+  )
+})
