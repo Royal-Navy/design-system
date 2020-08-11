@@ -186,6 +186,13 @@ describe('NumberInput', () => {
       )
     })
 
+    it('should apple the `aria-label` attribute to the root element', () => {
+      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+        'aria-label',
+        'Label'
+      )
+    })
+
     it('should display the footnote', () => {
       expect(wrapper.getByTestId('number-input-label').textContent).toEqual(
         'Label'

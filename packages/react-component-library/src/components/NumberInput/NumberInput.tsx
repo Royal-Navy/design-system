@@ -115,6 +115,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 
   return (
     <div
+      aria-label={label}
       className={classes}
       data-testid="number-input-container"
       role="spinbutton"
