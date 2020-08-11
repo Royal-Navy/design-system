@@ -78,6 +78,18 @@ describe('NumberInput', () => {
       )
     })
 
+    it('should apply the `aria-label` attribute to buttons', () => {
+      expect(wrapper.getByTestId('number-input-decrease')).toHaveAttribute(
+        'aria-label',
+        'Decrease the input value'
+      )
+
+      expect(wrapper.getByTestId('number-input-increase')).toHaveAttribute(
+        'aria-label',
+        'Increase the input value'
+      )
+    })
+
     it('should apply the correct `role` attribute', () => {
       expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
         'role',
