@@ -39,6 +39,13 @@ describe('TabSet', () => {
         )
       })
 
+      it('should apply the `aria-label` attribute to the tab', () => {
+        expect(wrapper.getAllByTestId('tab-set-tab')[0]).toHaveAttribute(
+          'aria-label',
+          'Title 1'
+        )
+      })
+
       it('should apply the correct roles', () => {
         expect(wrapper.getByTestId('tab-set-list')).toHaveAttribute(
           'role',
