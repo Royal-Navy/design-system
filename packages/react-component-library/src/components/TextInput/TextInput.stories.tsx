@@ -4,7 +4,7 @@ import { Field, Formik, Form } from 'formik'
 import React from 'react'
 import * as yup from 'yup'
 
-import { Search } from '../../icons'
+import { IconSearch, IconCrop, IconSave } from '@royalnavy/icon-library'
 import { Button } from '../Button'
 import { TextInput } from '.'
 
@@ -22,8 +22,13 @@ stories.add('Vanilla', () => {
     >
       <TextInput className="is-valid" name="colour" label="My Label" />
       <TextInput name="name" label="Name" />
-      <TextInput autoFocus name="hero" label="Hero" startAdornment={<Search />} />
-      <TextInput name="fruit" label="Fruit" endAdornment={<Search />} />
+      <TextInput
+        autoFocus
+        name="hero"
+        label="Hero"
+        startAdornment={<IconSearch />}
+      />
+      <TextInput name="fruit" label="Fruit" endAdornment={<IconCrop />} />
       <button type="submit">Submit</button>
     </form>
   )
@@ -68,19 +73,19 @@ stories.add('Formik', () => {
             name="hero"
             component={FormikTextInput}
             label="Hero"
-            endAdornment={<Search />}
+            endAdornment={<IconSearch />}
           />
           <Field
             name="fruit"
             component={FormikTextInput}
             label="Fruit"
-            startAdornment={<Search />}
+            startAdornment={<IconCrop />}
           />
           <Field
             name="search"
             component={FormikTextInput}
             placeholder="search"
-            endAdornment={<Search />}
+            endAdornment={<IconSave />}
           />
           <Button variant="secondary" onClick={action('Cancel')}>
             Cancel
