@@ -44,6 +44,10 @@ describe('Table', () => {
       )
     })
 
+    it('should not display the caption', () => {
+      expect(wrapper.queryByTestId('table-caption')).not.toBeInTheDocument()
+    })
+
     it('should set the `role` attribute to `grid`', () => {
       expect(wrapper.getByTestId('table')).toHaveAttribute('role', 'grid')
     })
@@ -301,6 +305,46 @@ describe('Table', () => {
     it('should update the table data', () => {
       const rows = wrapper.queryAllByTestId('table-row')
       expect(rows).toHaveLength(2)
+    })
+  })
+
+  describe('when caption is provided', () => {
+    beforeEach(() => {
+      const tableDataMock = [
+        {
+          id: 'a',
+          first: 'a1',
+          second: 'a2',
+          third: 'a3',
+        },
+        {
+          id: 'b',
+          first: 'b1',
+          second: 'b2',
+          third: 'b3',
+        },
+        {
+          id: 'c',
+          first: 'c1',
+          second: 'c2',
+          third: 'c3',
+        },
+      ]
+
+      wrapper = render(
+        <Table data={tableDataMock} caption="Hello, World!">
+          <TableColumn field="first">First</TableColumn>
+          <TableColumn field="second">Second</TableColumn>
+          <TableColumn field="third">Third</TableColumn>
+        </Table>
+      )
+    })
+
+    it('should display the caption', () => {
+      expect(wrapper.queryByTestId('table-caption')).toBeInTheDocument()
+      expect(wrapper.getByTestId('table-caption').innerHTML).toEqual(
+        'Hello, World!'
+      )
     })
   })
 })
