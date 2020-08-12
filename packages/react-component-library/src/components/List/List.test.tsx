@@ -39,6 +39,27 @@ describe('List', () => {
       )
     })
 
+    it('should apply the group role to the root element', () => {
+      expect(wrapper.getByTestId('list')).toHaveAttribute('role', 'group')
+    })
+
+    it('should apply the presentation role to the li element', () => {
+      wrapper.getAllByTestId('list-item').forEach((item) => {
+        expect(item).toHaveAttribute('role', 'presentation')
+      })
+    })
+
+    it('should set the `aria-labelledby` attribute to the ID of the title', () => {
+      const titleId = wrapper
+        .getAllByTestId('list-item-heading')[0]
+        .getAttribute('id')
+
+      expect(wrapper.getAllByRole('listitem')[0]).toHaveAttribute(
+        'aria-labelledby',
+        titleId
+      )
+    })
+
     it('should not call `console.warn`', () => {
       expect(consoleWarnSpy).toHaveBeenCalledTimes(0)
     })
@@ -166,7 +187,6 @@ describe('List', () => {
   })
 
   describe('when specify properties that will be overwritten', () => {
-
     beforeEach(() => {
       consoleWarnSpy = jest.spyOn(global.console, 'warn')
 

@@ -31,7 +31,11 @@ export const List: React.FC<ListProps> = ({ children, className }) => {
     }
   )
 
-  return <ol className={classes}>{mapped}</ol>
+  return (
+    <ol className={classes} role="group" data-testid="list">
+      {mapped}
+    </ol>
+  )
 }
 
 List.displayName = 'List'
