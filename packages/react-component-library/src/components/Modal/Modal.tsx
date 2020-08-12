@@ -43,8 +43,8 @@ export const Modal: React.FC<ModalProps> = ({
   )
 
   const primaryButtonWithIcon = primaryButton && {
-    ...primaryButton,
     icon: <IconForward data-testid="modal-primary-confirm" />,
+    ...primaryButton,
   }
 
   return (

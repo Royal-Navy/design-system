@@ -188,6 +188,27 @@ describe('Modal', () => {
           )
         })
       })
+
+      describe('and no primary button icon is specified', () => {
+        beforeEach(() => {
+          wrapper = render(
+            <Modal
+              isOpen
+              title={title}
+              onClose={onClose}
+              primaryButton={{...primaryButton, icon: undefined}}
+            >
+              <span>Example child JSX</span>
+            </Modal>
+          )
+        })
+
+        it('does not render an icon for the primary button', () => {
+          expect(
+            wrapper.queryByTestId('modal-primary-confirm')
+          ).toBeNull()
+        })
+      })
     })
   })
 
