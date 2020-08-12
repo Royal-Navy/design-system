@@ -24,9 +24,11 @@ export interface TableColumnProps {
 }
 
 const SORT_ORDER_ICONS_MAP = {
-  [TABLE_SORT_ORDER.ASCENDING]: <IconSortAscending data-testid="ascending" />,
+  [TABLE_SORT_ORDER.ASCENDING]: (
+    <IconSortAscending aria-hidden data-testid="ascending" />
+  ),
   [TABLE_SORT_ORDER.DESCENDING]: (
-    <IconSortDescending data-testid="descending" />
+    <IconSortDescending aria-hidden data-testid="descending" />
   ),
 }
 
@@ -42,7 +44,7 @@ function getIcon(sortable: boolean, sortOrder: string) {
 
   return (
     get(SORT_ORDER_ICONS_MAP, sortOrder) || (
-      <IconSortUnsorted data-testid="unsorted" />
+      <IconSortUnsorted aria-hidden data-testid="unsorted" />
     )
   )
 }
