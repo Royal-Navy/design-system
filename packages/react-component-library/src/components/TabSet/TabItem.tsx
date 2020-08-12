@@ -30,6 +30,7 @@ export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
         aria-selected={!!isActive}
         tabIndex={!isActive ? -1 : 0}
         data-testid="tab-set-tab"
+        aria-label={children.toString()}
       >
         <button className={tabClasses} onClick={handleClick}>
           <div>{children}</div>
