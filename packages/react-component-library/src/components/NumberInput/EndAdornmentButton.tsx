@@ -1,10 +1,11 @@
 import React from 'react'
 import classNames from 'classnames'
+import capitalize from 'lodash/capitalize'
 
 import { END_ADORNMENT_TYPE } from './constants'
 
 interface EndAdornmentButtonProps {
-  isCondensed: boolean,
+  isCondensed: boolean
   isDisabled: boolean
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
   type: typeof END_ADORNMENT_TYPE.DECREASE | typeof END_ADORNMENT_TYPE.INCREASE
@@ -22,6 +23,7 @@ export const EndAdornmentButton: React.FC<EndAdornmentButtonProps> = ({
 
   return (
     <button
+      aria-label={`${capitalize(type)} the input value`}
       data-testid={`number-input-${type}`}
       type="button"
       className={classes}
