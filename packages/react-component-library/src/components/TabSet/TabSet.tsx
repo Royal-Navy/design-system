@@ -1,4 +1,4 @@
-import React, { Children, useState } from 'react'
+import React, { Children, useState, KeyboardEvent } from 'react'
 import classNames from 'classnames'
 
 import { TabContent, TabItem, TabProps } from '.'
@@ -13,6 +13,9 @@ interface TabSetProps {
   onChange?: (id: number) => void
   isScrollable?: boolean
 }
+
+const LEFT_ARROW = 37
+const RIGHT_ARROW = 39
 
 export const TabSet: React.FC<TabSetProps> = ({
   className = '',
@@ -32,6 +35,24 @@ export const TabSet: React.FC<TabSetProps> = ({
 
     if (onChange) {
       onChange(index)
+    }
+  }
+
+  function handleKeyDown(event: KeyboardEvent<HTMLLIElement>) {
+    const { which } = event
+
+    const getNextIndex = (keyCode: number): number => {
+      const index = {
+        [LEFT_ARROW]: activeTab === 0 ? children.length - 1 : activeTab - 1,
+        [RIGHT_ARROW]: activeTab === children.length - 1 ? 0 : activeTab + 1,
+      }
+
+      return index[keyCode]
+    }
+
+    if ([LEFT_ARROW, RIGHT_ARROW].includes(which)) {
+      const index = getNextIndex(which)
+      handleClick(index)
     }
   }
 
@@ -62,6 +83,7 @@ export const TabSet: React.FC<TabSetProps> = ({
               <TabItem
                 tabId={tabIds[index]}
                 onClick={() => handleClick(index)}
+                onKeyDown={handleKeyDown}
                 isActive={index === activeTab}
                 index={index}
                 isScrollable={isScrollable}

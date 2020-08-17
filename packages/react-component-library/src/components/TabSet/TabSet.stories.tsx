@@ -14,6 +14,12 @@ stories.add('Default', () => (
     <Tab title="Example Tab 2">
       <p>This is some example tab 2 content</p>
     </Tab>
+    <Tab title="Example Tab 3">
+      <p>This is some example tab 3 content</p>
+    </Tab>
+    <Tab title="Example Tab 4">
+      <p>This is some example tab 4 content</p>
+    </Tab>
   </TabSet>
 ))
 
