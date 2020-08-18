@@ -160,6 +160,36 @@ describe('TabSet', () => {
             'false'
           )
         })
+
+        describe('and the user presses the left arrow key', () => {
+          beforeEach(() => {
+            fireEvent.keyDown(wrapper.getAllByTestId('tab-set-tab')[0], {
+              key: 'ArrowLeft',
+              keyCode: 37,
+            })
+          })
+
+          it('sets the previous tab to active', () => {
+            expect(
+              wrapper.getByText('Title 1').parentElement.classList
+            ).toContain('is-active')
+          })
+
+          describe('and the user presses the right arrow key', () => {
+            beforeEach(() => {
+              fireEvent.keyDown(wrapper.getAllByTestId('tab-set-tab')[1], {
+                key: 'ArrowRight',
+                keyCode: 39,
+              })
+            })
+
+            it('sets the next tab to active', () => {
+              expect(
+                wrapper.getByText('Title 2').parentElement.classList
+              ).toContain('is-active')
+            })
+          })
+        })
       })
     })
 
