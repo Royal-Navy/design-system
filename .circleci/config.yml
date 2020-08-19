@@ -219,64 +219,64 @@ jobs:
 
 workflows:
   version: 2
-  build_and_test_feature:
-    jobs:
-      - build_icon-library:
-          filters:
-            branches:
-              ignore:
-                - master
-                - latest
-      - security_audit:
-          requires:
-            - build_icon-library
-          filters:
-            branches:
-              ignore:
-                - master
-                - latest
-      - check_commits:
-          requires:
-            - build_icon-library
-          filters:
-            branches:
-              ignore:
-                - master
-                - latest
-      - lint_css-framework:
-          filters:
-            branches:
-              ignore:
-                - master
-                - latest
-      - lint_react-component-library:
-          filters:
-            branches:
-              ignore:
-                - master
-                - latest
-      - lint_docs_site:
-          filters:
-            branches:
-              ignore:
-                - master
-                - latest
-      - test_docs-site:
-          requires:
-            - lint_docs_site
-            - build_icon-library
-      - test_react-component-library:
-          requires:
-            - lint_react-component-library
-            - build_icon-library
-      - code_cov:
-          requires:
-            - test_react-component-library
-            - test_docs-site
-      - test_visual_regression:
-          requires:
-            - test_react-component-library
-            - build_icon-library
+  # build_and_test_feature:
+  #   jobs:
+  #     - build_icon-library:
+  #         filters:
+  #           branches:
+  #             ignore:
+  #               - master
+  #               - latest
+  #     - security_audit:
+  #         requires:
+  #           - build_icon-library
+  #         filters:
+  #           branches:
+  #             ignore:
+  #               - master
+  #               - latest
+  #     - check_commits:
+  #         requires:
+  #           - build_icon-library
+  #         filters:
+  #           branches:
+  #             ignore:
+  #               - master
+  #               - latest
+  #     - lint_css-framework:
+  #         filters:
+  #           branches:
+  #             ignore:
+  #               - master
+  #               - latest
+  #     - lint_react-component-library:
+  #         filters:
+  #           branches:
+  #             ignore:
+  #               - master
+  #               - latest
+  #     - lint_docs_site:
+  #         filters:
+  #           branches:
+  #             ignore:
+  #               - master
+  #               - latest
+  #     - test_docs-site:
+  #         requires:
+  #           - lint_docs_site
+  #           - build_icon-library
+  #     - test_react-component-library:
+  #         requires:
+  #           - lint_react-component-library
+  #           - build_icon-library
+  #     - code_cov:
+  #         requires:
+  #           - test_react-component-library
+  #           - test_docs-site
+  #     - test_visual_regression:
+  #         requires:
+  #           - test_react-component-library
+  #           - build_icon-library
 
   build_test_and_deploy_next:
     jobs:
