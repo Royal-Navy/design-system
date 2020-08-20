@@ -49,9 +49,8 @@ $offset: $outer + $border-thick;
     border-color: f.color("action", "600") transparent;
     position: absolute;
     top: -7px;
-    left: 95%;
+    right: 0.9rem;
     width: 0;
-    margin-left: -7px;
     z-index: 0;
     content: "";
   }
@@ -63,11 +62,11 @@ $offset: $outer + $border-thick;
     border-color: f.color("neutral", "white") transparent;
     position: absolute;
     top: -4px;
-    left: 95%;
+    right: 0.9rem;
     width: 0;
-    margin-left: -6px;
     z-index: 1;
     content: "";
+    transform: translateX(-1px);
   }
 
   .rn-dropdown__option,
