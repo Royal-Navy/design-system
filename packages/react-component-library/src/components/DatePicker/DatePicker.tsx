@@ -3,33 +3,17 @@ import differenceInMinutes from 'date-fns/differenceInMinutes'
 import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 import TetherComponent from 'react-tether'
-
-import {
-  IconChevronLeft,
-  IconChevronRight,
-  IconArrowForward,
-} from '@royalnavy/icon-library'
-
-import {
-  useDatepicker,
-  FocusedInput,
-  START_DATE,
-} from '@datepicker-react/hooks'
-
-import DatepickerContext from './datepickerContext'
+import DayPicker, { DateUtils, RangeModifier } from 'react-day-picker'
 
 import { DatePickerInput } from './DatePickerInput'
-import { DatePickerMonth } from './DatePickerMonth'
-import { DatePickerNavButton } from './DatePickerNavButton'
 import { useOpenClose } from './useOpenClose'
 import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
 import { FloatingBox, FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 import { getId } from '../../helpers'
 
 export interface StateObject {
-  endDate?: Date
-  focusedInput: FocusedInput
-  startDate?: Date
+  from?: Date
+  to?: Date
 }
 
 export interface DatePickerProps extends ComponentWithClass {
@@ -79,49 +63,31 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   isOpen,
 }) => {
   const [state, setState] = useState<StateObject>({
-    startDate,
-    endDate,
-    focusedInput: START_DATE, // START_DATE | END_DATE | null
+    from: startDate,
+    to: endDate,
   })
 
-  function handleDateChange(data: StateObject) {
-    setState({
-      ...data,
-      focusedInput: data.focusedInput || START_DATE,
-    })
+  const { from, to } = state
+  const modifiers = { start: from, end: to }
+
+  function handleDayClick(day: Date) {
+    const newState = isRange
+      ? DateUtils.addDayToRange(day, state as RangeModifier)
+      : { from: day, to: day }
+
+    setState(newState)
 
     if (onChange) {
-      onChange(data)
+      onChange({
+        startDate: from,
+        endDate: to,
+      } as StateObject)
     }
   }
 
-  const {
-    firstDayOfWeek,
-    activeMonths,
-    isDateSelected,
-    isDateHovered,
-    isFirstOrLastSelectedDate,
-    isDateBlocked,
-    isDateFocused,
-    focusedDate,
-    onDateHover,
-    onDateSelect,
-    onDateFocus,
-    goToPreviousMonths,
-    goToNextMonths,
-  } = useDatepicker({
-    startDate: state.startDate,
-    endDate: state.endDate,
-    focusedInput: state.focusedInput,
-    onDatesChange: handleDateChange,
-    minBookingDays: 1,
-    exactMinBookingDays: !isRange, // truthy only allow single day
-    numberOfMonths: isRange ? 2 : 1, // 2 to enable range
-  })
-
   const componentRef = useRef(null)
   const { openState, onFocus, onClose } = useOpenClose(componentRef, isOpen)
-  const hasContent = (value && value.length) || state.startDate
+  const hasContent = (value && value.length) || from
   const PLACEMENTS = DATEPICKER_PLACEMENTS[placement]
 
   const classes = classNames('rn-date-picker', className, {
@@ -152,94 +118,52 @@ export const DatePicker: React.FC<DatePickerProps> = ({
    * https://github.com/Microsoft/TypeScript/issues/27552
    */
   return (
-    <DatepickerContext.Provider
-      value={{
-        focusedDate,
-        isDateFocused,
-        isDateSelected,
-        isDateHovered,
-        isDateBlocked,
-        isFirstOrLastSelectedDate,
-        onDateSelect,
-        onDateFocus,
-        onDateHover,
-      }}
-    >
-      <div ref={componentRef} data-testid="datepicker-wrapper">
-        {/*
+    <div ref={componentRef} data-testid="datepicker-wrapper">
+      {/*
         // @ts-ignore */}
-        {React.createElement(TetherComponent, {
-          offset: PLACEMENTS.OFFSET,
-          attachment: PLACEMENTS.ATTACHMENT,
-          targetAttachment: PLACEMENTS.TARGET_ATTACHMENT,
-          className: tetherClasses,
-          renderTarget: (ref: React.RefObject<any>) => (
-            <DatePickerInput
-              ref={ref}
-              className={classes}
-              id={id}
-              name={name}
-              label={label}
-              value={transformDates(state.startDate, state.endDate)}
-              onBlur={onBlur}
-              onFocus={onFocus}
-              isDisabled={isDisabled}
-              isOpen={openState}
-              onClose={onClose}
+      {React.createElement(TetherComponent, {
+        offset: PLACEMENTS.OFFSET,
+        attachment: PLACEMENTS.ATTACHMENT,
+        targetAttachment: PLACEMENTS.TARGET_ATTACHMENT,
+        className: tetherClasses,
+        renderTarget: (ref: React.RefObject<HTMLDivElement>) => (
+          <DatePickerInput
+            ref={ref}
+            className={classes}
+            id={id}
+            name={name}
+            label={label}
+            value={transformDates(from, to)}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            isDisabled={isDisabled}
+            isOpen={openState}
+            onClose={onClose}
+          />
+        ),
+        renderElement: (ref: React.RefObject<HTMLDivElement>) => (
+          <FloatingBox
+            ref={ref}
+            position={PLACEMENTS.ARROW_POSITION}
+            scheme={FLOATING_BOX_SCHEME.LIGHT}
+            className={floatingBoxClasses}
+            role="dialog"
+            aria-modal
+            aria-labelledby={titleId}
+            aria-live="polite"
+          >
+            <DayPicker
+              className={gridClasses}
+              numberOfMonths={isRange ? 2 : 1}
+              selectedDays={[from, { from, to }]}
+              modifiers={modifiers}
+              onDayClick={handleDayClick}
+              initialMonth={startDate}
             />
-          ),
-          renderElement: (ref: React.RefObject<any>) => (
-            <FloatingBox
-              ref={ref}
-              position={PLACEMENTS.ARROW_POSITION}
-              scheme={FLOATING_BOX_SCHEME.LIGHT}
-              className={floatingBoxClasses}
-              role="dialog"
-              aria-modal
-              aria-labelledby={titleId}
-              aria-live="polite"
-            >
-              <>
-                <DatePickerNavButton
-                  onClick={goToPreviousMonths}
-                  aria-label="Previous month"
-                  aria-live="polite"
-                >
-                  <IconChevronLeft />
-                </DatePickerNavButton>
-
-                {isRange && (
-                  <IconArrowForward
-                    className="rn-date-picker__range-seperator"
-                    data-testid="datepicker-range-separator"
-                  />
-                )}
-
-                <DatePickerNavButton
-                  onClick={goToNextMonths}
-                  aria-label="Next month"
-                  aria-live="polite"
-                >
-                  <IconChevronRight />
-                </DatePickerNavButton>
-
-                <div className={gridClasses}>
-                  {activeMonths.map(({ month, year }) => (
-                    <DatePickerMonth
-                      titleId={titleId}
-                      key={`${year}-${month}`}
-                      year={year}
-                      month={month}
-                      firstDayOfWeek={firstDayOfWeek}
-                    />
-                  ))}
-                </div>
-              </>
-            </FloatingBox>
-          ),
-        })}
-      </div>
-    </DatepickerContext.Provider>
+          </FloatingBox>
+        ),
+      })}
+    </div>
   )
 }
 

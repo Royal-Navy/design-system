@@ -1,6 +1,5 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
 import { DatePicker, DATEPICKER_PLACEMENT, StateObject } from '.'
@@ -31,7 +30,7 @@ describe('DatePicker', () => {
       return n > 9 ? `${n}` : `0${n}`
     }
 
-    days = new Array(31).map((i) => leadingZero(i + 1)) // [01,02,...,31]
+    days = new Array(31).map((i) => leadingZero(i + 1)) // [01, 02, ..., 31]
   })
 
   afterAll(() => {
@@ -64,47 +63,6 @@ describe('DatePicker', () => {
       )
     })
 
-    it('should set the `aria-labelledby` attribute to the ID of the title', () => {
-      const titleId = wrapper
-        .getByTestId('datepicker-month-label')
-        .getAttribute('id')
-
-      expect(wrapper.getByTestId('datepicker-grid')).toHaveAttribute(
-        'aria-labelledby',
-        titleId
-      )
-
-      expect(wrapper.getByTestId('floating-box')).toHaveAttribute(
-        'aria-labelledby',
-        titleId
-      )
-    })
-
-    it('should set the `aria-label` and `aria-live` attributes for the buttons', () => {
-      expect(
-        wrapper.getAllByTestId('datepicker-nav-button')[0]
-      ).toHaveAttribute('aria-label', 'Previous month')
-
-      expect(
-        wrapper.getAllByTestId('datepicker-nav-button')[0]
-      ).toHaveAttribute('aria-live', 'polite')
-
-      expect(
-        wrapper.getAllByTestId('datepicker-nav-button')[1]
-      ).toHaveAttribute('aria-label', 'Next month')
-
-      expect(
-        wrapper.getAllByTestId('datepicker-nav-button')[1]
-      ).toHaveAttribute('aria-live', 'polite')
-    })
-
-    it('should set the `role` attribute for the Month grid', () => {
-      expect(wrapper.getByTestId('datepicker-grid')).toHaveAttribute(
-        'role',
-        'listbox'
-      )
-    })
-
     it('should set the `role` attribute for the Day buttons', () => {
       days.forEach((_, index) => {
         expect(
@@ -123,10 +81,6 @@ describe('DatePicker', () => {
 
     it('renders the component', () => {
       expect(wrapper.queryByTestId('datepicker-wrapper')).toBeInTheDocument()
-    })
-
-    it('renders the correct number of empty days', () => {
-      expect(wrapper.queryAllByTestId('datepicker-empty-day')).toHaveLength(6)
     })
 
     it('renders the correct sequence of days', () => {
@@ -175,15 +129,7 @@ describe('DatePicker', () => {
       })
 
       it('shows the month', () => {
-        expect(wrapper.getByTestId('datepicker-month-label').innerHTML).toBe(
-          'December 2019'
-        )
-      })
-
-      it('does not render a range separator', () => {
-        expect(
-          wrapper.queryAllByTestId('datepicker-range-separator')
-        ).toHaveLength(0)
+        expect(wrapper.queryByText('December 2019')).toBeInTheDocument()
       })
 
       it('displays the container', () => {
@@ -196,107 +142,49 @@ describe('DatePicker', () => {
         )
       })
 
-      describe('and the end user clicks on the navigate month buttons', () => {
-        describe('and clicks next', () => {
-          beforeEach(() => {
-            wrapper.getByTestId('datepicker-input').focus()
+      describe('and clicks on a day', () => {
+        beforeEach(() => {
+          click(wrapper.getByText('1'))
+        })
 
-            click(wrapper.getAllByTestId('datepicker-nav-button')[1])
-          })
+        it('set the value of the component to this date', () => {
+          expect(
+            wrapper.getByTestId('datepicker-input').getAttribute('value')
+          ).toBe('12/1/2019')
+        })
 
-          it('changes to the next month', () => {
-            expect(
-              wrapper.getByTestId('datepicker-month-label').innerHTML
-            ).toBe('January 2020')
-          })
-
-          it('does not hide the container', () => {
-            expect(
-              wrapper.getByTestId('datepicker-input-wrapper').classList
-            ).toContain('is-open')
-
-            expect(wrapper.getByTestId('floating-box').classList).toContain(
-              'is-visible'
-            )
+        it('invokes the onChange callback', () => {
+          expect(onChange).toHaveBeenCalledTimes(1)
+          expect(onChange).toHaveBeenCalledWith({
+            startDate: new Date('2019-12-01T00:00:00.000Z'),
+            endDate: undefined,
           })
         })
 
-        describe('and clicks previous', () => {
-          beforeEach(() => {
-            wrapper.getByTestId('datepicker-input').focus()
+        it('does not hide the container', () => {
+          expect(
+            wrapper.getByTestId('datepicker-input-wrapper').classList
+          ).toContain('is-open')
 
-            click(wrapper.getAllByTestId('datepicker-nav-button')[0])
-          })
+          expect(wrapper.getByTestId('floating-box').classList).toContain(
+            'is-visible'
+          )
+        })
+      })
 
-          it('changes to the previous month', () => {
-            expect(
-              wrapper.getByTestId('datepicker-month-label').innerHTML
-            ).toBe('November 2019')
-          })
-
-          it('does not hide the container', () => {
-            expect(
-              wrapper.getByTestId('datepicker-input-wrapper').classList
-            ).toContain('is-open')
-
-            expect(wrapper.getByTestId('floating-box').classList).toContain(
-              'is-visible'
-            )
-          })
+      describe('and clicks outside the date picker', () => {
+        beforeEach(() => {
+          fireEvent.mouseDown(wrapper.getByTestId('datepicker-outside'))
         })
 
-        describe('and clicks on a day', () => {
-          beforeEach(() => {
-            click(wrapper.getByTestId('datepicker-day-01'))
-          })
+        it('hides the container', () => {
+          expect(
+            wrapper.getByTestId('datepicker-input-wrapper').classList
+          ).not.toContain('is-open')
 
-          it('set the value of the component to this date', () => {
-            expect(
-              wrapper.getByTestId('datepicker-input').getAttribute('value')
-            ).toBe('12/1/2019')
-          })
-
-          it('invokes the onChange callback', () => {
-            expect(onChange).toHaveBeenCalledTimes(1)
-            expect(onChange).toHaveBeenCalledWith({
-              endDate: new Date('2019-12-01T00:00:00.000Z'),
-              focusedInput: null,
-              startDate: new Date('2019-12-01T00:00:00.000Z'),
-            })
-          })
-
-          it('does not hide the container', () => {
-            expect(
-              wrapper.getByTestId('datepicker-input-wrapper').classList
-            ).toContain('is-open')
-
-            expect(wrapper.getByTestId('floating-box').classList).toContain(
-              'is-visible'
-            )
-          })
-
-          it('sets the `aria-selected` attribute', () => {
-            expect(wrapper.getByTestId(`datepicker-day-01`)).toHaveAttribute(
-              'aria-selected',
-              'true'
-            )
-          })
-        })
-
-        describe('and clicks outside the date picker', () => {
-          beforeEach(() => {
-            fireEvent.mouseDown(wrapper.getByTestId('datepicker-outside'))
-          })
-
-          it('hides the container', () => {
-            expect(
-              wrapper.getByTestId('datepicker-input-wrapper').classList
-            ).not.toContain('is-open')
-
-            expect(wrapper.getByTestId('floating-box').classList).not.toContain(
-              'is-visible'
-            )
-          })
+          expect(wrapper.getByTestId('floating-box').classList).not.toContain(
+            'is-visible'
+          )
         })
       })
     })
@@ -339,9 +227,11 @@ describe('DatePicker', () => {
   describe('when selecting a date range', () => {
     beforeEach(() => {
       onChange = jest.fn()
+      startDate = new Date('12/01/2019')
 
       wrapper = render(
         <DatePicker
+          startDate={startDate}
           placement={DATEPICKER_PLACEMENT.BELOW}
           onChange={onChange}
           isRange
@@ -354,32 +244,12 @@ describe('DatePicker', () => {
         wrapper.getByTestId('datepicker-input').focus()
       })
 
-      it('shows a set of months', () => {
-        const monthLabels = wrapper.getAllByTestId('datepicker-month-label')
-
-        expect(monthLabels[0].innerHTML).toBe('December 2019')
-        expect(monthLabels[1].innerHTML).toBe('January 2020')
-      })
-
-      it('renders a range separator', () => {
-        expect(
-          wrapper.getByTestId('datepicker-range-separator')
-        ).toBeInTheDocument()
-      })
-
       describe('and the end user clicks on the navigate month buttons', () => {
         describe('and clicks next', () => {
           beforeEach(() => {
             wrapper.getByTestId('datepicker-input').focus()
 
-            click(wrapper.getAllByTestId('datepicker-nav-button')[1])
-          })
-
-          it('changes to the next set of months', () => {
-            const monthLabels = wrapper.getAllByTestId('datepicker-month-label')
-
-            expect(monthLabels[0].innerHTML).toBe('February 2020')
-            expect(monthLabels[1].innerHTML).toBe('March 2020')
+            click(wrapper.getAllByRole('button')[1])
           })
         })
 
@@ -387,42 +257,34 @@ describe('DatePicker', () => {
           beforeEach(() => {
             wrapper.getByTestId('datepicker-input').focus()
 
-            click(wrapper.getAllByTestId('datepicker-nav-button')[0])
-          })
-
-          it('changes to the previous set of months', () => {
-            const monthLabels = wrapper.getAllByTestId('datepicker-month-label')
-
-            expect(monthLabels[0].innerHTML).toBe('October 2019')
-            expect(monthLabels[1].innerHTML).toBe('November 2019')
+            click(wrapper.getAllByRole('button')[0])
           })
         })
 
         describe('and clicks on a day in the first month', () => {
           beforeEach(() => {
-            click(wrapper.getAllByTestId('datepicker-day-01')[0])
+            click(wrapper.getAllByText('1')[0])
           })
 
           it('set the value of the component to this date', () => {
             expect(
               wrapper.getByTestId('datepicker-input').getAttribute('value')
-            ).toBe('12/1/2019')
+            ).toBe('12/1/2019 - 12/1/2019')
           })
 
           it('invokes the onChange callback', () => {
             expect(onChange).toHaveBeenCalledTimes(1)
             expect(onChange).toHaveBeenCalledWith({
-              endDate: undefined,
-              focusedInput: 'endDate',
               startDate: new Date('2019-12-01T00:00:00.000Z'),
+              endDate: undefined,
             })
           })
         })
 
         describe('and clicks on days in both months', () => {
           beforeEach(() => {
-            click(wrapper.getAllByTestId('datepicker-day-01')[0])
-            click(wrapper.getAllByTestId('datepicker-day-20')[1])
+            click(wrapper.getAllByText('1')[0])
+            click(wrapper.getAllByText('20')[1])
           })
 
           it('set the value of the component to this date', () => {
@@ -434,14 +296,12 @@ describe('DatePicker', () => {
           it('invokes the onChange callback', () => {
             expect(onChange).toHaveBeenCalledTimes(2)
             expect(onChange).toHaveBeenCalledWith({
-              endDate: undefined,
-              focusedInput: 'endDate',
               startDate: new Date('2019-12-01T00:00:00.000Z'),
+              endDate: undefined,
             })
             expect(onChange).toHaveBeenCalledWith({
-              endDate: new Date('2020-01-20T00:00:00.000Z'),
-              focusedInput: null,
               startDate: new Date('2019-12-01T00:00:00.000Z'),
+              endDate: undefined,
             })
           })
         })
@@ -483,6 +343,18 @@ describe('DatePicker', () => {
       it('does not submit the form', () => {
         expect(onSubmitSpy).not.toHaveBeenCalled()
       })
+    })
+  })
+
+  describe('when the `disabled` prop is provided', () => {
+    beforeEach(() => {
+      wrapper = render(<DatePicker isDisabled />)
+    })
+
+    it('sets the disabled attribute correctly for the input', () => {
+      expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
+        'disabled'
+      )
     })
   })
 })
