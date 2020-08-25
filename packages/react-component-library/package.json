@@ -42,7 +42,7 @@
     "storybook": "start-storybook -p 6006",
     "test:watch": "NODE_ENV=test jest --watch",
     "test": "NODE_ENV=test jest",
-    "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --allowJs false --outDir dist/types"
+    "types": "tsc",
   },
   "lint-staged": {
     "*.@(js|jsx|ts|tsx)": "eslint"
