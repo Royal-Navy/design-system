@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
-import { DatePicker, DATEPICKER_PLACEMENT, StateObject } from '.'
+import { DatePicker, DATEPICKER_PLACEMENT } from '.'
 
 const NOW = '2019-12-05T11:00:00.000Z'
 
@@ -15,7 +15,7 @@ describe('DatePicker', () => {
   let wrapper: RenderResult
   let startDate: Date
   let label: string
-  let onChange: (data: StateObject) => void
+  let onChange: (data: { startDate: Date, endDate: Date }) => void
   let onBlur: (e: React.FormEvent) => void
   let dateSpy: jest.SpyInstance
   let days: string[]
