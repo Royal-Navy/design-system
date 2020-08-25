@@ -24,7 +24,7 @@ export interface DatePickerProps extends ComponentWithClass {
   label?: string
   name?: string
   onBlur?: (event: React.FormEvent) => void
-  onChange?: (data: StateObject) => void
+  onChange?: (data: {startDate: Date, endDate: Date}) => void
   placement?:
     | typeof DATEPICKER_PLACEMENT.ABOVE
     | typeof DATEPICKER_PLACEMENT.BELOW
@@ -81,7 +81,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       onChange({
         startDate: from,
         endDate: to,
-      } as StateObject)
+      })
     }
   }
 
