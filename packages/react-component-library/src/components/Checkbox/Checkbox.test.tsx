@@ -3,9 +3,9 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
 import { Checkbox } from '.'
+import { FieldProps } from '../../common/FieldProps'
+import { FormProps } from '../../common/FormProps'
 import { withFormik } from '../../enhancers/withFormik'
-import FieldProps from '../../types/FieldProps'
-import FormProps from '../../types/FormProps'
 
 describe('Checkbox', () => {
   let field: FieldProps

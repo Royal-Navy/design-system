@@ -1,8 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import { TOOLTIP_POSITION } from '.'
 import { getId } from '../../helpers'
+import { PositionType } from '../../common/Position'
+import { TOOLTIP_POSITION } from '.'
 
 export interface TooltipProps extends PositionType {
   children: React.ReactNode

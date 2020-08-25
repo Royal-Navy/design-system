@@ -2,8 +2,10 @@
 import React, { ReactElement } from 'react'
 
 import { Avatar, AVATAR_VARIANT } from '../../Avatar'
+import { ComponentWithClass } from '../../../common/ComponentWithClass'
+import { LinkTypes } from '../../../common/Link'
 import { MastheadUserItemProps } from './MastheadUserItem'
-import { Nav } from '../../../types/Nav'
+import { Nav } from '../../../common/Nav'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
 import { SHEET_PLACEMENT } from '../Sheet/constants'

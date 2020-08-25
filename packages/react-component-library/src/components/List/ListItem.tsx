@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { IconChevronRight } from '@royalnavy/icon-library'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getId } from '../../helpers'
 
 export interface ListItemProps extends ComponentWithClass {

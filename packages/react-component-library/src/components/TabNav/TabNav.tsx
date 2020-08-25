@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Nav, NavItem } from '../../types/Nav'
+import { Nav, NavItem } from '../../common/Nav'
 
 export const TabNav: React.FC<Nav<NavItem>> = ({ children, className }) => (
   <nav className={`rn-tab-nav ${className}`}>

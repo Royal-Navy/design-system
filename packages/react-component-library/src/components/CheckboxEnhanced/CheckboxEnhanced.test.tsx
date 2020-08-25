@@ -4,9 +4,9 @@ import { render, RenderResult, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { CheckboxEnhanced } from '.'
+import { FieldProps } from '../../common/FieldProps'
+import { FormProps } from '../../common/FormProps'
 import { withFormik } from '../../enhancers/withFormik'
-import FieldProps from '../../types/FieldProps'
-import FormProps from '../../types/FormProps'
 
 describe('CheckboxEnhanced', () => {
   let field: FieldProps

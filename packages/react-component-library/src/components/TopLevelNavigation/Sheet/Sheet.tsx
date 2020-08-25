@@ -6,6 +6,7 @@ import {
   SHEET_PLACEMENT_ARROW_POSITION_MAP,
 } from './constants'
 
+import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { FloatingBox } from '../../../primitives/FloatingBox'
 import { SheetButtonProps } from './SheetButton'
 import { useSheet } from './useSheet'

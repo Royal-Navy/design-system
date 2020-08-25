@@ -2,6 +2,8 @@ import React, { forwardRef } from 'react'
 import classNames from 'classnames'
 import { v4 as uuidv4 } from 'uuid'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
+
 export interface CheckboxProps extends ComponentWithClass {
   id?: string
   isChecked?: boolean

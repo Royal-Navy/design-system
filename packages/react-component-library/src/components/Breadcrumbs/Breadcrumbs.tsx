@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { BreadcrumbsItem, BreadcrumbsItemProps } from '.'
-import { Nav } from '../../types/Nav'
+import { Nav } from '../../common/Nav'
 import { warnIfOverwriting } from '../../helpers'
 
 export const Breadcrumbs: React.FC<Nav<BreadcrumbsItemProps>> = ({

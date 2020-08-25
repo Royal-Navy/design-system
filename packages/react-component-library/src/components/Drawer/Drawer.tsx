@@ -1,6 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 import { IconClose } from '@royalnavy/icon-library'
+
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { useOpenClose } from '../../hooks/useOpenClose'
 
 interface DrawerProps extends ComponentWithClass {

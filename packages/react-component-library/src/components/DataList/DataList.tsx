@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { IconKeyboardArrowDown } from '@royalnavy/icon-library'
 
 import { Badge } from '../Badge'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DataListItemProps } from '.'
 import { getId } from '../../helpers'
 

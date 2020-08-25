@@ -3,10 +3,10 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { withFormik } from '../../enhancers/withFormik'
-import FieldProps from '../../types/FieldProps'
-import FormProps from '../../types/FormProps'
+import { FieldProps } from '../../common/FieldProps'
+import { FormProps } from '../../common/FormProps'
 import { RadioEnhanced } from '.'
+import { withFormik } from '../../enhancers/withFormik'
 
 describe('RadioEnhanced', () => {
   let field: FieldProps

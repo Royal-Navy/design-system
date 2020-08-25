@@ -3,6 +3,7 @@ import classNames from 'classnames'
 
 import { Button, BUTTON_SIZE, BUTTON_VARIANT } from '../Button'
 import { Checkbox } from '../Checkbox'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 
 interface DismissibleBannerWithTitleProps extends ComponentWithClass {
   hasCheckbox?: boolean

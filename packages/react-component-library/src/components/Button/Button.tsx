@@ -7,6 +7,7 @@ import {
   BUTTON_VARIANT,
   BUTTON_ICON_POSITION,
 } from './constants'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 
 export type ButtonSizeType =
   | typeof BUTTON_SIZE.SMALL

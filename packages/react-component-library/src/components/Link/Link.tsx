@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { AnchorType } from '../../common/Link'
+
 export const Link: React.FC<AnchorType> = ({
   children,
   className = '',

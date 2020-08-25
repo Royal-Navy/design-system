@@ -1,4 +1,4 @@
-interface PositionType {
+export interface PositionType {
   left?: number
   right?: number
   bottom?: number

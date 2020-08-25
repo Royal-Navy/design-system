@@ -19,5 +19,5 @@
     "suppressImplicitAnyIndexErrors": true,
     "target": "esnext"
   },
-  "include": ["src", "jest", "jest.config.js"]
+  "include": ["src"]
 }

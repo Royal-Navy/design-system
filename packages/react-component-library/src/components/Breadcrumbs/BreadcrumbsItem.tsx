@@ -3,6 +3,7 @@ import React, { ReactElement } from 'react'
 import { IconChevronRight } from '@royalnavy/icon-library'
 
 import { EndTitle } from '.'
+import { LinkTypes } from '../../common/Link'
 
 export interface BreadcrumbsItemProps {
   isFirst?: boolean

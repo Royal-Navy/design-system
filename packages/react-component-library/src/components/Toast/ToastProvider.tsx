@@ -5,6 +5,7 @@ import {
   ToastProviderProps as BaseToastProviderProps,
 } from 'react-toast-notifications'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { Toast } from '.'
 
 export interface ToastProviderProps

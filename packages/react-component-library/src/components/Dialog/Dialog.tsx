@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { Modal } from '../Modal'
 import { ButtonProps } from '../Button'
 import { getId } from '../../helpers'

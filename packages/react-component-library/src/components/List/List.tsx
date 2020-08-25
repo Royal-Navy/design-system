@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { ListItem, ListItemProps } from './ListItem'
 import { useListItem } from './useListItem'
 import { warnIfOverwriting } from '../../helpers'

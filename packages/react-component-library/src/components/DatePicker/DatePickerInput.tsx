@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TriangleDown } from '../../icons'
 
 export interface DatePickerInputProps extends ComponentWithClass {

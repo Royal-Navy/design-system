@@ -3,8 +3,9 @@ import classNames from 'classnames'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import { Bell, Logo as DefaultLogo, Search as SearchIcon } from '../../../icons'
+import { LinkTypes } from '../../../common/Link'
 import { MastheadUserProps } from './index'
-import { Nav, NavItem } from '../../../types/Nav'
+import { Nav, NavItem } from '../../../common/Nav'
 import {
   NOTIFICATION_CONTAINER_WIDTH,
   NotificationsProps,

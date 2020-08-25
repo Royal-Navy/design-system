@@ -2,6 +2,8 @@ import React from 'react'
 import classNames from 'classnames'
 import { IconLoader } from '@royalnavy/icon-library'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
+
 export const ProgressIndicator: React.FC<ComponentWithClass> = ({
   className,
 }) => {

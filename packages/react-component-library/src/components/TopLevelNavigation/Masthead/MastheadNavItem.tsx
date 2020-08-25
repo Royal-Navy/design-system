@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { NavItem } from '../../../types/Nav'
+import { NavItem } from '../../../common/Nav'
 import { getKey } from '../../../helpers'
 
 export const MastheadNavItem: React.FC<NavItem> = ({ isActive, link }) => (

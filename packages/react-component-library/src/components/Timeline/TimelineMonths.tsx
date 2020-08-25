@@ -1,6 +1,7 @@
 import React from 'react'
 import { IconChevronRight, IconChevronLeft } from '@royalnavy/icon-library'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getKey } from '../../helpers'
 import { TimelineContext } from './context'
 import { TimelineHeaderRow } from './TimelineHeaderRow'

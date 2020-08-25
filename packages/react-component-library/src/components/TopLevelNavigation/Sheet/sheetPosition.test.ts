@@ -1,4 +1,5 @@
 import { calculate } from './sheetPosition'
+import { PositionType } from '../../../common/Position'
 import { SHEET_PLACEMENT } from './constants'
 
 describe('sheetPosition', () => {

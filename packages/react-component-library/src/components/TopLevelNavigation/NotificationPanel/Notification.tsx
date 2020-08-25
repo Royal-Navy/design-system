@@ -5,6 +5,7 @@ import format from 'date-fns/format'
 
 import { Avatar, AVATAR_VARIANT } from '../../Avatar'
 import { getId } from '../../../helpers'
+import { LinkTypes } from '../../../common/Link'
 
 export interface NotificationProps {
   link: React.ReactElement<LinkTypes>

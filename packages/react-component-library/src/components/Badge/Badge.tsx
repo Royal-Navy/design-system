@@ -1,6 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
+
 import {
   BADGE_COLOR,
   BADGE_COLOR_VARIANT,

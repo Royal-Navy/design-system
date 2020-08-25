@@ -1,6 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
+
 export const CardFrame: React.FC<ComponentWithClass> = ({
   children,
   className,
