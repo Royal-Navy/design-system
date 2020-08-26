@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/Royal-Navy/design-system/compare/2.12.0...2.13.0) (2020-08-26)
+
+
+### Bug Fixes
+
+* **DatePicker:** Repsect disabled prop ([167d85d](https://github.com/Royal-Navy/design-system/commit/167d85de9d1cf48e06d105f8257b1b6a3d4145c0))
+* **Dropdown:** Resolve arrow visual glitch ([577d8f8](https://github.com/Royal-Navy/design-system/commit/577d8f887292c04dc894746c66b53d394d5f8ffb))
+
+
+### Features
+
+* **Timeline:** Add `rowheader` roles ([dbe9a61](https://github.com/Royal-Navy/design-system/commit/dbe9a61fe540c08d85c4a044d1247d0792a28e16))
+
+
+
+
+
 # [2.12.0](https://github.com/Royal-Navy/design-system/compare/2.11.0...2.12.0) (2020-07-29)
 
 
