@@ -1,0 +1,34 @@
+{
+  "source": ["src/tokens/*.json"],
+  "platforms": {
+    "scss": {
+      "transformGroup": "scss",
+      "buildPath": "dist/",
+      "files": [{
+        "destination": "index.scss",
+        "format": "scss/map-deep",
+        "mapName": "tokens"
+      }]
+    },
+    "js": {
+      "transformGroup": "js",
+      "buildPath": "dist/",
+      "files": [
+        {
+          "destination": "index.js",
+          "format": "javascript/es6"
+        }
+      ]
+    },
+    "ts": {
+      "transformGroup": "js",
+      "buildPath": "dist/types/",
+      "files": [
+        {
+          "destination": "index.d.ts",
+          "format": "typings/es6"
+        }
+      ]
+    }
+  }
+}

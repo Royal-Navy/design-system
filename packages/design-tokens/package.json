@@ -1,0 +1,29 @@
+{
+  "name": "@royalnavy/design-tokens",
+  "version": "2.13.0-alpha.12",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "author": "Royal Navy",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "types": "dist/types/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Royal-Navy/design-system.git",
+    "directory": "packages/design-tokens"
+  },
+  "scripts": {
+    "build": "node ./build.js",
+    "prepare": "yarn build"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.20",
+    "style-dictionary": "^2.10.1"
+  }
+}

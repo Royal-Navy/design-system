@@ -1,0 +1,25 @@
+{
+  "zindex": {
+    "dialog": {
+      "value": "9000"
+    },
+    "modal": {
+      "value": "8000"
+    },
+    "overlay": {
+      "value": "7000"
+    },
+    "dropdown": {
+      "value": "6000"
+    },
+    "header": {
+      "value": "5000"
+    },
+    "footer": {
+      "value": "4000"
+    },
+    "body": {
+      "value": "0"
+    }
+  }
+}
