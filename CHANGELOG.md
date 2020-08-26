@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/Royal-Navy/design-system/compare/2.12.0...2.13.0) (2020-08-26)
+
+
+### Bug Fixes
+
+* **ComponentLibrary:** Remove accidentally committed dist archive ([839821a](https://github.com/Royal-Navy/design-system/commit/839821a41b8b083acb386ba686f0d189df810ff1))
+* **DatePicker:** Correct type of onChange prop ([4e9bada](https://github.com/Royal-Navy/design-system/commit/4e9badafc4953d99050f74b31f5577b0c8efff56))
+* **DatePicker:** Repsect disabled prop ([167d85d](https://github.com/Royal-Navy/design-system/commit/167d85de9d1cf48e06d105f8257b1b6a3d4145c0))
+* **Dropdown:** Resolve arrow visual glitch ([577d8f8](https://github.com/Royal-Navy/design-system/commit/577d8f887292c04dc894746c66b53d394d5f8ffb))
+* **NumberInput:** Fix value update bug ([058aa3e](https://github.com/Royal-Navy/design-system/commit/058aa3e775dc28f69e87144e8558dac2b87b1b29))
+* **Security:** Resolve dependencies ([4774f3f](https://github.com/Royal-Navy/design-system/commit/4774f3f94c25a7e406af41c82474e0902b6d2a9e))
+* **TextInput:** Use icon library icons ([602e906](https://github.com/Royal-Navy/design-system/commit/602e90658e6a1d6069d7863c39e0da80a812eab6))
+
+
+### Features
+
+* **List:** Add aria roles ([c003d21](https://github.com/Royal-Navy/design-system/commit/c003d210fed20178c704d523ed5c4e72c29ebd61))
+* **List:** Set `aria-labelledby` for list items ([d9a70a2](https://github.com/Royal-Navy/design-system/commit/d9a70a2cb8b61542c887c7f56100a7ef3f91c99a))
+* **Modal:** Respect primaryButton.icon if set ([763c3a7](https://github.com/Royal-Navy/design-system/commit/763c3a7c1968b08f9ef845bdd00d4acd58def7a2))
+* **NumberInput:** Add `aria-label` to buttons ([c56ee10](https://github.com/Royal-Navy/design-system/commit/c56ee10526b6eb8321d2af089e85bda99d38f3be))
+* **NumberInput:** Apply `aria-label` to root element ([569a396](https://github.com/Royal-Navy/design-system/commit/569a396e76cbd669b2e5ffeadbc4a4d24ead01f6))
+* **Table:** Add ability to display caption ([a456635](https://github.com/Royal-Navy/design-system/commit/a4566356519f56916a7e5928baab37c5d8fed55b))
+* **Table:** Apply `aria-hidden` to sort icons ([fca9fdf](https://github.com/Royal-Navy/design-system/commit/fca9fdf48de45f97c1c0cbe2d110f4283d6f20ae))
+* **TabSet:** Define `aria-label` for tab ([c78dfce](https://github.com/Royal-Navy/design-system/commit/c78dfcee4cedacf363408418af4602f2b75fe92b))
+* **TabSet:** Implement Keyboard control ([0fb44e4](https://github.com/Royal-Navy/design-system/commit/0fb44e4895845616030eca05d2fbd174cb27f4db))
+* **Timeline:** Add `rowheader` roles ([dbe9a61](https://github.com/Royal-Navy/design-system/commit/dbe9a61fe540c08d85c4a044d1247d0792a28e16))
+
+
+### Reverts
+
+* Revert "fix(Timeline): Remove end date extension" ([a82e1c0](https://github.com/Royal-Navy/design-system/commit/a82e1c020fff4f6db3c32d8b200273f3a2edb32f))
+
+
+
+
+
 # [2.12.0](https://github.com/Royal-Navy/design-system/compare/2.11.0...2.12.0) (2020-07-29)
 
 
