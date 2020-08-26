@@ -13,6 +13,7 @@ import {
   IconCheckCircle,
 } from '@royalnavy/icon-library'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getId } from '../../helpers'
 
 export interface ToastProps extends BaseToastProps, ComponentWithClass {

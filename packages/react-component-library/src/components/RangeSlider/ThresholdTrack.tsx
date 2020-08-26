@@ -2,6 +2,8 @@ import React from 'react'
 import classNames from 'classnames'
 import { TrackItem, GetTrackProps } from 'react-compound-slider'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
+
 interface ThresholdTrackProps extends TrackItem {
   getTrackProps: GetTrackProps
   thresholds?: number[]

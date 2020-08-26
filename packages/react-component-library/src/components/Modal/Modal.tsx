@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { IconForward } from '@royalnavy/icon-library'
 
 import { ButtonProps } from '../Button'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { useOpenClose } from '../../hooks/useOpenClose'

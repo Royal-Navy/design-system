@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import TetherComponent from 'react-tether'
 import DayPicker, { DateUtils, RangeModifier } from 'react-day-picker'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DatePickerInput } from './DatePickerInput'
 import { useOpenClose } from './useOpenClose'
 import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'

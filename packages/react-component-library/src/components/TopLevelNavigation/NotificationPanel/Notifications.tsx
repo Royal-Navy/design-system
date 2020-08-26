@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 import { IconKeyboardArrowRight } from '@royalnavy/icon-library'
 
+import { LinkTypes } from '../../../common/Link'
 import { NotificationProps } from './index'
 
 export interface NotificationsProps {

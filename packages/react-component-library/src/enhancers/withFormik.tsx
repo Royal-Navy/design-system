@@ -3,8 +3,8 @@ import classNames from 'classnames'
 import get from 'lodash/get'
 import { v4 as uuidv4 } from 'uuid'
 
-import FieldProps from '../types/FieldProps'
-import FormProps from '../types/FormProps'
+import { FieldProps } from '../common/FieldProps'
+import { FormProps } from '../common/FormProps'
 
 export interface FormikProps {
   className?: string

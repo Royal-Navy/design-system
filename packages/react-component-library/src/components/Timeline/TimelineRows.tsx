@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { differenceInDays, endOfWeek, max, min } from 'date-fns'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineRowProps } from '.'
 import { TimelineContext } from './context'
 import { withKey } from '../../helpers'

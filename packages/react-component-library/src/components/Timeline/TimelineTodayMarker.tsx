@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import classNames from 'classnames'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineContext } from './context'
 import { useTimelinePosition } from './hooks/useTimelinePosition'
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineProvider } from './context'
 import { TimelineComponent } from './types'
 

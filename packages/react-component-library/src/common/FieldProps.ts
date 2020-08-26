@@ -1,4 +1,4 @@
-export default interface FieldProps {
+export interface FieldProps {
   name: string
   value: string
   onChange: (e: React.SyntheticEvent) => void

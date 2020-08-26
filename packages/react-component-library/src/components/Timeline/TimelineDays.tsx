@@ -1,11 +1,10 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import { getKey, warnIfOverwriting } from '../../helpers'
+import { getKey } from '../../helpers'
 import { TimelineContext } from './context'
 import { TimelineDay } from './TimelineDay'
 import { TimelineHeaderRow } from './TimelineHeaderRow'
-import { BreadcrumbsItem } from '../Breadcrumbs'
 
 export interface TimelineDaysWithRenderContentProps {
   hasSide?: boolean

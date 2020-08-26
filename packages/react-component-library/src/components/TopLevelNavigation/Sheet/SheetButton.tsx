@@ -1,6 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 
+import { ComponentWithClass } from '../../../common/ComponentWithClass'
+
 export interface SheetButtonProps extends ComponentWithClass {
   children?: React.ReactElement
   icon: React.ReactElement

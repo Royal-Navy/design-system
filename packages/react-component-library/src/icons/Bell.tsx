@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { ComponentWithClass } from '../common/ComponentWithClass'
+
 export const Bell: React.FC<ComponentWithClass> = ({ className = '' }) => (
   <svg
     className={className}

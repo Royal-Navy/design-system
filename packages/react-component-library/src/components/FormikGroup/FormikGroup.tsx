@@ -1,6 +1,7 @@
 import React from 'react'
 import { useFormikContext } from 'formik'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import {
   FieldError,
   getError,

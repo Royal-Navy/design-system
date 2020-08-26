@@ -1,8 +1,10 @@
 import React, { forwardRef } from 'react'
 import classNames from 'classnames'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { FLOATING_BOX_SCHEME, FLOATING_BOX_ARROW_POSITION } from './constants'
 import { getId } from '../../helpers'
+import { PositionType } from '../../common/Position'
 
 export interface FloatingBoxProps extends PositionType, ComponentWithClass {
   role?: string

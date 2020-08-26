@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Nav, NavItem } from '../../../types/Nav'
+import { Nav, NavItem } from '../../../common/Nav'
 import { SidebarNavItem, SidebarNavItemProps } from './index'
 import { warnIfOverwriting } from '../../../helpers'
 

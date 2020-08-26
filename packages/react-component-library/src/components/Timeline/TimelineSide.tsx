@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
+
 export interface TimelineSideProps extends ComponentWithClass {
   rowGroups?: any[]
   headChildren?: any[]

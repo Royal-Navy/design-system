@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { getKey } from '../../helpers'
 
-import { NavItem } from '../../types/Nav'
+import { NavItem } from '../../common/Nav'
 
 export const TabNavItem: React.FC<NavItem> = ({ isActive, link }) => {
   const classes = classNames('rn-tab-nav__item', { 'is-active': isActive })

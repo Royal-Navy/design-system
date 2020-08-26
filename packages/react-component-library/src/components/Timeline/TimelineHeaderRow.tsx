@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineRow } from './TimelineRow'
 
 interface TimelineHeaderRowProps extends ComponentWithClass {

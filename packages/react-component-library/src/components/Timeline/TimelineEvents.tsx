@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineEventProps } from '.'
 
 export interface TimelineEventsProps extends ComponentWithClass {
