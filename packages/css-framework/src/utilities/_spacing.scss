@@ -1,7 +1,7 @@
 /* stylelint-disable */
 @use "sass:map";
 @use "../config";
-@use "../vars";
+@use "@royalnavy/design-tokens" as vars;
 
 $rules: (
   margin: m,

@@ -1,41 +1,49 @@
 {
   "name": "@royalnavy/css-framework",
-  "description": "Foundational CSS Framework for Royal Navy components and applications.",
   "version": "2.14.0-alpha.15",
+  "main": "index.scss",
+  "author": "Royal Navy",
+  "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
-  "author": "Royal Navy",
-  "contributors": [
-    "hxltrhuxze <hxltrhuxze@royalnavy.io> (royalnavy.io)",
-    "antictor <antictor@royalnavy.io> (royalnavy.io)"
+  "files": [
+    "dist",
+    "src"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Royal-Navy/design-system.git",
     "directory": "packages/css-framework"
   },
-  "homepage": "https://github.com/Royal-Navy/design-system/tree/develop/packages/css-framework#readme",
-  "license": "MIT",
-  "main": "index.scss",
-  "files": [
-    "dist",
-    "src"
-  ],
   "scripts": {
-    "build": "sass --style=compressed index.scss dist/styles.css",
+    "build": "yarn build:main && yarn build:base && yarn build:utilities && yarn build:clearfix && yarn build:flex && yarn build:position && yarn build:shadows && yarn build:sizing && yarn build:spacing && yarn build:typography && yarn build:visibility",
+    "build:main": "sass --load-path=../../node_modules/ --style=compressed index.scss dist/styles.css",
+    "build:base": "sass --load-path=../../node_modules/ --style=compressed src/entrypoints/base.scss dist/base.css",
+    "build:utilities": "sass --load-path=../../node_modules/ --style=compressed src/entrypoints/utilities.scss dist/utilities.css",
+    "build:clearfix": "sass --load-path=../../node_modules/ --style=compressed src/utilities/_clearfix.scss dist/clearfix.css",
+    "build:flex": "sass --load-path=../../node_modules/ --style=compressed src/utilities/_flex.scss dist/flex.css",
+    "build:position": "sass --load-path=../../node_modules/ --style=compressed src/utilities/_position.scss dist/position.css",
+    "build:shadows": "sass --load-path=../../node_modules/ --style=compressed src/utilities/_shadows.scss dist/shadows.css",
+    "build:sizing": "sass --load-path=../../node_modules/ --style=compressed src/utilities/_sizing.scss dist/sizing.css",
+    "build:spacing": "sass --load-path=../../node_modules/ --style=compressed src/utilities/_spacing.scss dist/spacing.css",
+    "build:typography": "sass --load-path=../../node_modules/ --style=compressed src/utilities/_typography.scss dist/typography.css",
+    "build:visibility": "sass --load-path=../../node_modules/ --style=compressed src/utilities/_visibility.scss dist/visibility.css",
     "lint": "stylelint ./index.scss",
     "lint-staged": "lint-staged",
     "watch": "sass --watch index.scss dist/styles.css",
     "prepare": "yarn build"
   },
-  "lint-staged": {
-    "*.@(scss)": "stylelint"
+  "dependencies": {
+    "@royalnavy/design-tokens": "^2.13.0-alpha.12"
   },
   "devDependencies": {
     "lint-staged": "^10.2.13",
     "sass": "^1.25.0",
     "stylelint": "^13.0.0",
     "stylelint-junit-formatter": "^0.2.2"
+  },
+  "lint-staged": {
+    "*.@(scss)": "stylelint"
   }
 }

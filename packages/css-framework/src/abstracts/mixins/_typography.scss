@@ -8,7 +8,7 @@
 **************************************************************************/
 
 @use "sass:map";
-@use "../../vars";
+@use "@royalnavy/design-tokens/dist" as vars;
 
 @mixin font-size($size) {
   @if map.has-key(vars.$typography, $size) {

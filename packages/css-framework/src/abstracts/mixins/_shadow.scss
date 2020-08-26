@@ -8,7 +8,7 @@
 **************************************************************************/
 
 @use "sass:map";
-@use "../../vars";
+@use "@royalnavy/design-tokens/dist" as vars;
 
 @mixin shadow($size, $inset: "") {
   @if map.has-key(vars.$shadows, $size) {

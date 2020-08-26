@@ -7,7 +7,7 @@
 
 **************************************************************************/
 @use "sass:map";
-@use "../../vars";
+@use "@royalnavy/design-tokens/dist" as vars;
 
 @function spacing($size) {
   @if map.has-key(vars.$spacing, $size) {

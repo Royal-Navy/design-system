@@ -26,3 +26,17 @@ $animation-timing: 0.2s;
 
 // Dev helpers
 $dev-mode: true !default;
+
+// Feature toggling
+$disable-base-styles: false !default;
+
+$enable-utility-all: true !default;
+
+$enable-utility-clearfix:   true !default;
+$enable-utility-flex:       true !default;
+$enable-utility-position:   true !default;
+$enable-utility-shadows:    true !default;
+$enable-utility-sizing:     true !default;
+$enable-utility-spacing:    true !default;
+$enable-utility-typography: true !default;
+$enable-utility-visibility: true !default;

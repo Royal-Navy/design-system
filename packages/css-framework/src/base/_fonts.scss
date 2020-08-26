@@ -4,7 +4,7 @@
 
 *****************************************************/
 @use "sass:map";
-@use "../vars";
+@use "@royalnavy/design-tokens/dist" as vars;
 @use "../config";
 @use "../abstracts/mixins" as *;
 @use "../abstracts/functions/map-deep-get" as *;
