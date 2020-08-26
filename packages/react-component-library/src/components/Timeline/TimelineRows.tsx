@@ -8,10 +8,12 @@ import { withKey } from '../../helpers'
 import { formatPx, isOdd } from './helpers'
 import { NO_DATA_MESSAGE, WEEK_START } from './constants'
 
+type TimelineRowsChildrenType =
+  | React.ReactElement<TimelineRowProps>
+  | React.ReactElement<TimelineRowProps>[]
+
 export interface TimelineRowsProps extends ComponentWithClass {
-  children:
-    | React.ReactElement<TimelineRowProps>
-    | React.ReactElement<TimelineRowProps>[]
+  children: TimelineRowsChildrenType
   renderColumns?: (
     index: number,
     isOddNumber: boolean,
@@ -21,9 +23,9 @@ export interface TimelineRowsProps extends ComponentWithClass {
 }
 
 const noData = (
-  <span className="timeline__empty" data-testid="timeline-no-data">
-    {NO_DATA_MESSAGE}
-  </span>
+  <div className="timeline__empty" data-testid="timeline-no-data">
+    <span>{NO_DATA_MESSAGE}</span>
+  </div>
 )
 
 function renderDefaultColumns(
@@ -51,35 +53,22 @@ function renderDefaultColumns(
   )
 }
 
-function isPopulated<T>(itemOrArray: T) {
-  if (!itemOrArray) {
-    return false
-  }
-
-  if (!Array.isArray(itemOrArray)) {
-    return true
-  }
-
-  return !!itemOrArray.length
-}
-
 export const TimelineRows: React.FC<TimelineRowsProps> = ({
   children,
   className,
   renderColumns,
 }) => {
-  const hasChildren = isPopulated(children)
-
+  const hasChildren = React.Children.count(children) > 0
+  const rowWeeksWrapperClasses = classNames('timeline__row-weeks-wrapper')
+  const rowWeeksClasses = classNames('timeline__row-weeks', {
+    'timeline__row-weeks--renderDefault': !renderColumns,
+  })
   const mainClasses = classNames('timeline__main', className, {
     'timeline__main--renderDefault': !renderColumns,
   })
 
-  const rowClasses = classNames('timeline__row-weeks', {
-    'timeline__row-weeks--renderDefault': !renderColumns,
-  })
-
   return (
-    <div className={mainClasses} data-testid="timeline-rows" role="rowgroup">
+    <>
       {hasChildren && (
         <TimelineContext.Consumer>
           {({
@@ -88,10 +77,10 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
               days,
               options: { dayWidth },
             },
-          }) => {
-            return (
+          }) => (
+            <div className={rowWeeksWrapperClasses}>
               <div
-                className={rowClasses}
+                className={rowWeeksClasses}
                 data-testid="timeline-columns"
                 role="presentation"
               >
@@ -128,13 +117,15 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
                   )
                 })}
               </div>
-            )
-          }}
+            </div>
+          )}
         </TimelineContext.Consumer>
       )}
 
-      {hasChildren ? children : noData}
-    </div>
+      <div className={mainClasses} data-testid="timeline-rows" role="rowgroup">
+        {hasChildren ? children : noData}
+      </div>
+    </>
   )
 }
 

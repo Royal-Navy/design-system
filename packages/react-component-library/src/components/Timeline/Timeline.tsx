@@ -1,27 +1,27 @@
 import React from 'react'
+import classNames from 'classnames'
 
 import { TimelineProvider } from './context'
 import { TimelineComponent } from './types'
 
 import {
-  TimelineSide,
   TimelineDays,
-  TimelineWeeks,
+  TimelineDaysProps,
   TimelineMonths,
-  TimelineTodayMarker,
-  TimelineRowProps,
+  TimelineMonthsProps,
   TimelineRows,
   TimelineRowsProps,
-  TimelineTodayMarkerProps,
-  TimelineMonthsProps,
-  TimelineWeeksProps,
-  TimelineDaysProps,
+  TimelineSide,
   TimelineSideProps,
+  TimelineTodayMarker,
+  TimelineTodayMarkerProps,
+  TimelineWeeks,
+  TimelineWeeksProps,
 } from '.'
 
 import { TimelineOptions } from './context/types'
 import { DEFAULTS } from './constants'
-import { getKey } from '../../helpers'
+import { warnIfOverwriting } from '../../helpers'
 
 type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
 
@@ -41,6 +41,7 @@ type timelineChildrenType =
 export interface TimelineProps extends ComponentWithClass {
   children: timelineChildrenType | timelineChildrenType[]
   dayWidth?: number
+  hasSide?: boolean
   startDate?: Date
   endDate?: Date
   today?: Date
@@ -66,30 +67,36 @@ function extractChildren(
   })
 }
 
-function extractRowData(
-  rowGroups: timelineBodyChildrenType | timelineBodyChildrenType[]
+function withHasSide(
+  children: React.ReactElement | React.ReactElement[],
+  hasSide: boolean
 ) {
-  return (rowGroups as []).map(
-    ({ props: { children } }: timelineBodyChildrenType) => {
-      const rows =
-        React.Children.map(
-          children,
-          ({ props: { name } }: React.ReactElement<TimelineRowProps>) => ({
-            name,
-          })
-        ) || []
+  return React.Children.map(children, (child) => {
+    warnIfOverwriting(child.props, 'hasSide', child.props.displayName)
 
-      return {
-        // ref, // Create refs to original components? Drag + Drop etc?
-        rows,
-      }
-    }
-  )
+    return React.cloneElement(child, {
+      hasSide,
+    })
+  })
+}
+
+function hasTimelineSideComponent(
+  children: timelineChildrenType | timelineChildrenType[]
+) {
+  const sideChildren = extractChildren(children, [TimelineSide.name])
+
+  if (!sideChildren.length) {
+    return false
+  }
+
+  console.warn('Component `TimelineSide` is deprecated')
+  return true
 }
 
 export const Timeline: React.FC<TimelineProps> = ({
   children,
   dayWidth = DEFAULTS.DAY_WIDTH,
+  hasSide,
   startDate,
   endDate,
   today,
@@ -100,7 +107,20 @@ export const Timeline: React.FC<TimelineProps> = ({
     rangeInMonths: range || DEFAULTS.RANGE_IN_MONTHS,
   }
 
-  const bodyChildren = extractChildren(children, [TimelineRows.name])
+  const rootChildren = extractChildren(
+    children,
+    [
+      TimelineDays.name,
+      TimelineMonths.name,
+      TimelineRows.name,
+      TimelineSide.name,
+      TimelineTodayMarker.name,
+      TimelineWeeks.name,
+    ],
+    true
+  )
+
+  const hasTimelineSide = hasTimelineSideComponent(children)
 
   const headChildren = extractChildren(children, [
     TimelineDays.name,
@@ -109,26 +129,10 @@ export const Timeline: React.FC<TimelineProps> = ({
     TimelineTodayMarker.name,
   ])
 
-  const rootChildren = extractChildren(
-    children,
-    [
-      TimelineRows.name,
-      TimelineDays.name,
-      TimelineWeeks.name,
-      TimelineMonths.name,
-      TimelineTodayMarker.name,
-    ],
-    true
-  ).map((child, index) => {
-    if (isComponentOf(child, [TimelineSide.name])) {
-      return React.cloneElement(child, {
-        rowGroups: extractRowData(bodyChildren),
-        headChildren,
-        key: getKey('root-component', index),
-      })
-    }
+  const bodyChildren = extractChildren(children, [TimelineRows.name])
 
-    return child
+  const innerClasses = classNames('timeline__inner', {
+    'timeline__inner--has-side': hasSide || hasTimelineSide,
   })
 
   return (
@@ -139,16 +143,26 @@ export const Timeline: React.FC<TimelineProps> = ({
       options={options}
     >
       <div className="timeline" data-testid="timeline" role="grid">
-        {rootChildren}
-        <div className="timeline__inner" data-testid="timeline-inner">
+        <div className={innerClasses}>
+          {rootChildren}
           <div
-            className="timeline__header"
+            className="timeline__header" // Kept for backwards compatibility in downstream applications
             data-testid="timeline-header"
             role="rowgroup"
           >
-            {headChildren}
+            {withHasSide(headChildren, hasSide || hasTimelineSide)}
           </div>
-          {bodyChildren}
+          {React.Children.map(
+            bodyChildren,
+            (bodyChild: React.ReactElement<TimelineRowsProps>) => {
+              return React.cloneElement(bodyChild, {
+                children: withHasSide(
+                  bodyChild.props.children,
+                  hasSide || hasTimelineSide
+                ),
+              })
+            }
+          )}
         </div>
       </div>
     </TimelineProvider>

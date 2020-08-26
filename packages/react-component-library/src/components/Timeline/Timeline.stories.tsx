@@ -73,8 +73,11 @@ stories.add('With data', () => (
 ))
 
 stories.add('With sidebar', () => (
-  <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
-    <TimelineSide />
+  <Timeline
+    hasSide
+    startDate={new Date(2020, 3, 1)}
+    today={new Date(2020, 3, 15)}
+  >
     <TimelineTodayMarker />
     <TimelineMonths />
     <TimelineWeeks />

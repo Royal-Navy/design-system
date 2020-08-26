@@ -1,14 +1,16 @@
 import React from 'react'
-import { format, endOfMonth, differenceInDays, min, max } from 'date-fns'
-import classNames from 'classnames'
+import { IconChevronRight, IconChevronLeft } from '@royalnavy/icon-library'
 
-import { formatPx } from './helpers'
 import { getKey } from '../../helpers'
 import { TimelineContext } from './context'
-import { DATE_MONTH_FORMAT } from './constants'
+import { TimelineHeaderRow } from './TimelineHeaderRow'
+import { TimelineMonth } from './TimelineMonth'
+import { Button } from '../Button'
+import { TIMELINE_ACTIONS } from './context/types'
 
 export interface TimelineMonthsWithRenderContentProps
   extends ComponentWithClass {
+  hasSide?: boolean
   render: (
     index: number,
     dayWidth: number,
@@ -18,6 +20,7 @@ export interface TimelineMonthsWithRenderContentProps
 }
 
 export interface TimelineMonthsWithChildrenProps extends ComponentWithClass {
+  hasSide?: boolean
   render?: never
 }
 
@@ -25,73 +28,62 @@ export type TimelineMonthsProps =
   | TimelineMonthsWithRenderContentProps
   | TimelineMonthsWithChildrenProps
 
-function renderDefault(
-  index: number,
-  dayWidth: number,
-  daysTotal: number,
-  startDate: Date
-): React.ReactElement {
-  const wrapperClasses = classNames(
-    'timeline__month',
-    'timeline__month--renderDefault'
-  )
-
-  const titleClasses = classNames(
-    'timeline__month-title',
-    'timeline__month-title--renderDefault'
-  )
-
-  return (
-    <div
-      className={wrapperClasses}
-      style={{
-        width: formatPx(dayWidth, daysTotal),
-      }}
-      data-testid="timeline-month"
-    >
-      <span className={titleClasses}>
-        {format(startDate, DATE_MONTH_FORMAT)}
-      </span>
-    </div>
-  )
-}
-
-export const TimelineMonths: React.FC<TimelineMonthsProps> = ({ render }) => {
-  return (
-    <TimelineContext.Consumer>
-      {({
-        state: {
-          days,
-          months,
-          options: { dayWidth },
-        },
-      }) => {
-        return (
-          <div className="timeline__months" data-testid="timeline-months" role="row">
-            {months &&
-              months.map(({ startDate }, index) => {
-                const firstDateDisplayed = max([startDate, days[0].date])
-                const lastDateDisplayed = min([
-                  endOfMonth(startDate),
-                  days[days.length - 1].date,
-                ])
-                const daysTotal =
-                  differenceInDays(lastDateDisplayed, firstDateDisplayed) + 1
-
-                const child = render
-                  ? render(index, dayWidth, daysTotal, startDate)
-                  : renderDefault(index, dayWidth, daysTotal, startDate)
-
-                return React.cloneElement(child, {
-                  key: getKey('timeline-month', startDate.toString()),
-                  role: 'columnheader',
-                })
-              })}
-          </div>
-        )
-      }}
-    </TimelineContext.Consumer>
-  )
-}
+export const TimelineMonths: React.FC<TimelineMonthsProps> = ({
+  hasSide,
+  render,
+}) => (
+  <TimelineContext.Consumer>
+    {({
+      dispatch,
+      state: {
+        days,
+        months,
+        options: { dayWidth },
+      },
+    }) => (
+      <TimelineHeaderRow
+        data-testid="timeline-months"
+        hasSide={hasSide}
+        name="Months"
+        renderRowHeader={(name) => (
+          <>
+            <div
+              aria-hidden
+              className="timeline__navigation"
+              data-testid="timeline-navigation"
+            >
+              <Button
+                variant="secondary"
+                icon={<IconChevronLeft />}
+                onClick={(_) => dispatch({ type: TIMELINE_ACTIONS.GET_PREV })}
+                data-testid="timeline-side-button-left"
+              />
+              <Button
+                variant="secondary"
+                icon={<IconChevronRight />}
+                onClick={(_) => dispatch({ type: TIMELINE_ACTIONS.GET_NEXT })}
+                data-testid="timeline-side-button-right"
+              />
+            </div>
+            {name}
+          </>
+        )}
+      >
+        <div className="timeline__months">
+          {months.map(({ startDate }, index) => (
+            <TimelineMonth
+              days={days}
+              dayWidth={dayWidth}
+              index={index}
+              key={getKey('timeline-month', startDate.toString())}
+              render={render}
+              startDate={startDate}
+            />
+          ))}
+        </div>
+      </TimelineHeaderRow>
+    )}
+  </TimelineContext.Consumer>
+)
 
 TimelineMonths.displayName = 'TimelineMonths'

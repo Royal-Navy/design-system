@@ -1,20 +1,20 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, RenderResult } from '@testing-library/react'
+import { render, RenderResult, fireEvent } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
 import { DEFAULTS } from '../constants'
 import {
-  TimelineSide,
-  TimelineTodayMarker,
-  TimelineMonths,
-  TimelineWeeks,
+  Timeline,
   TimelineDays,
   TimelineEvent,
   TimelineEvents,
+  TimelineMonths,
   TimelineRow,
   TimelineRows,
-  Timeline,
+  TimelineSide,
+  TimelineTodayMarker,
+  TimelineWeeks,
 } from '..'
 
 describe('Timeline', () => {
@@ -57,6 +57,10 @@ describe('Timeline', () => {
       expect(
         wrapper.queryByTestId('timeline-today-marker-wrapper')
       ).toHaveAttribute('role', 'presentation')
+    })
+
+    it('should not render the row headers', () => {
+      expect(wrapper.queryAllByTestId('timeline-row-header')).toHaveLength(0)
     })
 
     it('should set the `role` attribute to `row` on the months', () => {
@@ -199,6 +203,10 @@ describe('Timeline', () => {
       )
     })
 
+    it('should not render the row headers', () => {
+      expect(wrapper.queryAllByTestId('timeline-row-header')).toHaveLength(0)
+    })
+
     it('should display the timeline columns', () => {
       expect(wrapper.getByTestId('timeline-columns')).toBeInTheDocument()
     })
@@ -264,6 +272,176 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when `hasSide` is specified', () => {
+    describe('when no data is provided', () => {
+      beforeEach(() => {
+        wrapper = render(
+          <Timeline
+            hasSide
+            startDate={new Date(2020, 3, 1)}
+            today={new Date(2020, 3, 15)}
+          >
+            <TimelineTodayMarker />
+            <TimelineMonths />
+            <TimelineWeeks />
+            <TimelineDays />
+            <TimelineRows>{}</TimelineRows>
+          </Timeline>
+        )
+      })
+
+      it('should render the row headers', () => {
+        const rowHeaders = wrapper.getAllByTestId('timeline-row-header')
+
+        expect(rowHeaders[0]).toHaveTextContent('Months')
+        expect(rowHeaders[1]).toHaveTextContent('Weeks')
+        expect(rowHeaders[2]).toHaveTextContent('Days')
+      })
+    })
+
+    describe('when data is provided', () => {
+      beforeEach(() => {
+        wrapper = render(
+          <Timeline
+            hasSide
+            startDate={new Date(2020, 3, 1)}
+            today={new Date(2020, 3, 15)}
+          >
+            <TimelineTodayMarker />
+            <TimelineMonths />
+            <TimelineWeeks />
+            <TimelineDays />
+            <TimelineRows>
+              <TimelineRow name="Row 1">
+                <TimelineEvents>
+                  <TimelineEvent
+                    startDate={new Date(2020, 3, 13)}
+                    endDate={new Date(2020, 3, 18)}
+                  >
+                    Event 1
+                  </TimelineEvent>
+                  <TimelineEvent
+                    startDate={new Date(2020, 3, 20)}
+                    endDate={new Date(2020, 3, 22)}
+                  >
+                    Event 2
+                  </TimelineEvent>
+                </TimelineEvents>
+              </TimelineRow>
+              <TimelineRow name="Row 2">
+                <TimelineEvents>
+                  <TimelineEvent
+                    startDate={new Date(2020, 3, 15)}
+                    endDate={new Date(2020, 3, 20)}
+                  >
+                    Event 3
+                  </TimelineEvent>
+                  <TimelineEvent
+                    startDate={new Date(2020, 3, 22)}
+                    endDate={new Date(2020, 3, 24)}
+                  >
+                    Event 4
+                  </TimelineEvent>
+                </TimelineEvents>
+              </TimelineRow>
+            </TimelineRows>
+          </Timeline>
+        )
+      })
+
+      it('should render the row headers', () => {
+        const rowHeaders = wrapper.getAllByTestId('timeline-row-header')
+
+        expect(rowHeaders[0]).toHaveTextContent('Months')
+        expect(rowHeaders[1]).toHaveTextContent('Weeks')
+        expect(rowHeaders[2]).toHaveTextContent('Days')
+        expect(rowHeaders[3]).toHaveTextContent('Row 1')
+        expect(rowHeaders[4]).toHaveTextContent('Row 2')
+      })
+
+      it('should set the `aria-hidden` to `true` for the timeline navigation', () => {
+        expect(wrapper.getByTestId('timeline-navigation')).toHaveAttribute('aria-hidden', 'true')
+      })
+
+      describe('and when the left button is clicked', () => {
+        beforeEach(() => {
+          fireEvent(
+            wrapper.getByTestId('timeline-side-button-left'),
+            new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
+        })
+
+        it('should move to the previous set of months', () => {
+          const months = wrapper.getAllByTestId('timeline-month')
+
+          expect(months[0]).toHaveTextContent('January 2020')
+          expect(months[1]).toHaveTextContent('February 2020')
+          expect(months[2]).toHaveTextContent('March 2020')
+        })
+      })
+
+      describe('and when the right button is clicked', () => {
+        beforeEach(() => {
+          fireEvent(
+            wrapper.getByTestId('timeline-side-button-right'),
+            new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
+        })
+
+        it('should move to the previous set of months', () => {
+          const months = wrapper.getAllByTestId('timeline-month')
+
+          expect(months[0]).toHaveTextContent('July 2020')
+          expect(months[1]).toHaveTextContent('August 2020')
+          expect(months[2]).toHaveTextContent('September 2020')
+        })
+      })
+    })
+  })
+
+  describe('when `TimelineSide` is specified', () => {
+    let consoleWarnSpy: jest.SpyInstance
+
+    beforeEach(() => {
+      consoleWarnSpy = jest.spyOn(global.console, 'warn')
+
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineSide />
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should warn the consumer about using the deprecated component', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'Component `TimelineSide` is deprecated'
+      )
+    })
+
+    it('should render the row headers', () => {
+      const rowHeaders = wrapper.getAllByTestId('timeline-row-header')
+
+      expect(rowHeaders[0]).toHaveTextContent('Months')
+      expect(rowHeaders[1]).toHaveTextContent('Weeks')
+      expect(rowHeaders[2]).toHaveTextContent('Days')
+    })
+  })
+
   describe('when an event is outside the range', () => {
     beforeEach(() => {
       const EventWithinRange: React.FC = () => (
@@ -313,6 +491,7 @@ describe('Timeline', () => {
       dayWidth,
       daysTotal,
       startDate,
+      ...rest
     }: {
       index: number
       dayWidth: number
@@ -320,7 +499,7 @@ describe('Timeline', () => {
       startDate: Date
     }) => {
       return (
-        <span>
+        <span {...rest}>
           {startDate.toString()} - {index} - {dayWidth} - {daysTotal}
         </span>
       )
@@ -335,6 +514,7 @@ describe('Timeline', () => {
           <TimelineMonths
             render={(index, dayWidth, daysTotal, startDate) => (
               <CustomMonth
+                data-testid="timeline-custom-month"
                 index={index}
                 dayWidth={dayWidth}
                 daysTotal={daysTotal}
@@ -348,9 +528,11 @@ describe('Timeline', () => {
     })
 
     it('should render the day dates as specified', () => {
-      expect(
-        wrapper.getByTestId('timeline-months').firstChild.textContent
-      ).toBe(`${new Date(2020, 1, 1, 0, 0, 0).toString()} - 0 - 30 - 29`)
+      const expected =
+        'Sat Feb 01 2020 00:00:00 GMT+0000 (Coordinated Universal Time) - 0 - 30 - 29'
+      const firstMonth = wrapper.getAllByTestId('timeline-custom-month')[0]
+
+      expect(firstMonth).toHaveTextContent(expected)
     })
   })
 
@@ -363,6 +545,7 @@ describe('Timeline', () => {
       dayWidth,
       daysTotal,
       startDate,
+      ...rest
     }: {
       index: number
       isOddNumber: boolean
@@ -373,7 +556,7 @@ describe('Timeline', () => {
       startDate: Date
     }) => {
       return (
-        <span>
+        <span {...rest}>
           {startDate.toString()} - {index} - {isOddNumber.toString()} -{' '}
           {offsetPx} - {widthPx} - {dayWidth} - {daysTotal}
         </span>
@@ -397,6 +580,7 @@ describe('Timeline', () => {
               startDate
             ) => (
               <CustomWeek
+                data-testid="timeline-custom-week"
                 index={index}
                 isOddNumber={isOddNumber}
                 offsetPx={offsetPx}
@@ -413,11 +597,11 @@ describe('Timeline', () => {
     })
 
     it('should render the day dates as specified', () => {
-      expect(
-        wrapper.getAllByTestId('timeline-weeks')[0].firstChild.textContent
-      ).toBe(
+      const expected =
         'Mon Jan 27 2020 00:00:00 GMT+0000 (Coordinated Universal Time) - 0 - false - -150px - 210px - 30 - 7'
-      )
+      const firstWeek = wrapper.getAllByTestId('timeline-custom-week')[0]
+
+      expect(firstWeek).toHaveTextContent(expected)
     })
   })
 
@@ -426,13 +610,14 @@ describe('Timeline', () => {
       index,
       dayWidth,
       date,
+      ...rest
     }: {
       index: number
       dayWidth: number
       date: Date
     }) => {
       return (
-        <span>
+        <span {...rest}>
           {date.toString()} - {index} - {dayWidth}
         </span>
       )
@@ -446,7 +631,12 @@ describe('Timeline', () => {
         >
           <TimelineDays
             render={(index, dayWidth, date) => (
-              <CustomDay index={index} dayWidth={dayWidth} date={date} />
+              <CustomDay
+                data-testid="timeline-custom-day"
+                index={index}
+                dayWidth={dayWidth}
+                date={date}
+              />
             )}
           />
           <TimelineRows>{}</TimelineRows>
@@ -455,9 +645,11 @@ describe('Timeline', () => {
     })
 
     it('should render the day dates as specified', () => {
-      expect(
-        wrapper.getAllByTestId('timeline-days')[0].firstChild.textContent
-      ).toBe(`${new Date(2020, 1, 1, 0, 0, 0).toString()} - 0 - 30`)
+      const firstDay = wrapper.getAllByTestId('timeline-custom-day')[0]
+      const expected =
+        'Sat Feb 01 2020 00:00:00 GMT+0000 (Coordinated Universal Time) - 0 - 30'
+
+      expect(firstDay).toHaveTextContent(expected)
     })
   })
 
@@ -742,68 +934,6 @@ describe('Timeline', () => {
     })
   })
 
-  describe('when TimelineSide is used with TimelineMonths', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <Timeline
-          startDate={new Date(2020, 1, 1, 0, 0, 0)}
-          today={new Date(2020, 4, 1, 0, 0, 0)}
-          range={6}
-        >
-          <TimelineSide />
-          <TimelineTodayMarker />
-          <TimelineMonths />
-          <TimelineRows>
-            <TimelineRow name="Row 1">
-              <TimelineEvents>
-                <TimelineEvent
-                  startDate={new Date(2020, 1, 1, 0, 0, 0)}
-                  endDate={new Date(2020, 1, 10, 0, 0, 0)}
-                >
-                  Event
-                </TimelineEvent>
-              </TimelineEvents>
-            </TimelineRow>
-          </TimelineRows>
-        </Timeline>
-      )
-    })
-
-    it('renders the correct number of sidebar rows', () => {
-      expect(wrapper.queryAllByTestId('timeline-side-row')).toHaveLength(1)
-    })
-
-    it('renders the sidebar month label', () => {
-      expect(wrapper.queryByText('Months')).toBeInTheDocument()
-    })
-
-    it('does not render the sidebar weeks and days labels', () => {
-      expect(wrapper.queryByText('Weeks')).not.toBeInTheDocument()
-      expect(wrapper.queryByText('Days')).not.toBeInTheDocument()
-    })
-  })
-
-  describe('when TimelineSide is used with no row data', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <Timeline
-          startDate={new Date(2020, 1, 1, 0, 0, 0)}
-          today={new Date(2020, 4, 1, 0, 0, 0)}
-          range={6}
-        >
-          <TimelineSide />
-          <TimelineTodayMarker />
-          <TimelineMonths />
-          <TimelineRows>{}</TimelineRows>
-        </Timeline>
-      )
-    })
-
-    it('renders the correct number of sidebar rows', () => {
-      expect(wrapper.queryAllByTestId('timeline-side-row')).toHaveLength(0)
-    })
-  })
-
   describe('when Timeline is initialized with a fixed endDate', () => {
     beforeEach(() => {
       wrapper = render(
@@ -812,7 +942,6 @@ describe('Timeline', () => {
           endDate={new Date(2020, 1, 22, 0, 0, 0)}
           today={new Date(2020, 4, 1, 0, 0, 0)}
         >
-          <TimelineSide />
           <TimelineTodayMarker />
           <TimelineMonths />
           <TimelineWeeks />
@@ -868,7 +997,6 @@ describe('Timeline', () => {
           today={new Date(2020, 4, 1, 0, 0, 0)}
         >
           <CustomTimelineComponent />
-          <TimelineSide />
           <TimelineTodayMarker />
           <TimelineMonths />
           <TimelineRows>

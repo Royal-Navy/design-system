@@ -2,9 +2,8 @@ import React from 'react'
 import classNames from 'classnames'
 import { format } from 'date-fns'
 
-import { useTimelinePosition } from './hooks/useTimelinePosition'
-import { getKey } from '../../helpers'
 import { ACCESSIBLE_DATE_FORMAT } from './constants'
+import { useTimelinePosition } from './hooks/useTimelinePosition'
 
 export interface TimelineEventWithRenderContentProps
   extends ComponentWithClass {
