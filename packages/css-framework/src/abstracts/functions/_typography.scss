@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "@royalnavy/design-tokens/dist" as vars;
+@use "../../vars";
 
 @function font-size($size) {
 

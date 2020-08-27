@@ -6,7 +6,7 @@
       "buildPath": "dist/",
       "files": [{
         "destination": "index.scss",
-        "format": "scss/map-deep",
+        "format": "sass/map-deep-double-quotes",
         "mapName": "tokens"
       }]
     },

@@ -1,6 +1,6 @@
 @use "sass:map";
 @use "../config";
-@use "@royalnavy/design-tokens"as vars;
+@use "../vars";
 
 /* stylelint-disable */
 @mixin positionSharedStyles {
@@ -21,17 +21,22 @@
   }
 }
 
+@if (config.$enable-utility-all) {
+  @if (config.$enable-utility-position) {
 
-@each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
-  @if $_breakpoint == 'root' {
-    .#{config.$utility-ns} {
-      @include positionSharedStyles;
-    }
-  } @else {
-    @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
-      .#{$_breakpoint}\:#{config.$utility-ns} {
+    @each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
+      @if $_breakpoint == 'root' {
+        .#{config.$utility-ns} {
           @include positionSharedStyles;
+        }
+      } @else {
+        @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
+          .#{$_breakpoint}\:#{config.$utility-ns} {
+              @include positionSharedStyles;
+          }
+        }
       }
     }
+
   }
 }

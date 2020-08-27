@@ -1,0 +1,5 @@
+@use "../abstracts/functions/non-destructive-map-merge" as *;
+@use "../config";
+@use "../contexts" as context;
+
+$zindex: non-destructive-map-merge(context.$zindex, config.$zindex);

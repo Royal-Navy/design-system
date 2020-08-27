@@ -1,0 +1,9 @@
+/**************************************************************************
+    System-wide Breakpoints
+**************************************************************************/
+
+@use "../abstracts/functions/non-destructive-map-merge" as *;
+@use "../config";
+@use "../contexts";
+
+$breakpoints: non-destructive-map-merge(contexts.$breakpoints, config.$breakpoints);

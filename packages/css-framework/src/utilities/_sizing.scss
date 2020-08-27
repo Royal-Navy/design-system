@@ -1,7 +1,7 @@
 /* stylelint-disable */
 @use "sass:map";
 @use "../config";
-@use "@royalnavy/design-tokens" as vars;
+@use "../vars";
 
 // Sizing Utility
 $axes: (
@@ -11,17 +11,22 @@ $axes: (
 
 // Build Spacing Utility Classes
 
-@each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
-  @each $_size, $_multiplier in vars.$spacing {
-    @each $_axis, $_axis-shortname in $axes {
-      @if $_breakpoint == 'root' {
-        .#{config.$utility-ns}#{$_axis-shortname}-#{$_size} {
-          #{$_axis}: $_multiplier !important;
-        }
-      } @else {
-        @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
-          .#{$_breakpoint}\:#{config.$utility-ns}#{$_axis-shortname}-#{$_size} {
-            #{$_axis}: $_multiplier !important;
+@if (config.$enable-utility-all) {
+  @if (config.$enable-utility-sizing) {
+
+    @each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
+      @each $_size, $_multiplier in vars.$spacing {
+        @each $_axis, $_axis-shortname in $axes {
+          @if $_breakpoint == 'root' {
+            .#{config.$utility-ns}#{$_axis-shortname}-#{$_size} {
+              #{$_axis}: $_multiplier !important;
+            }
+          } @else {
+            @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
+              .#{$_breakpoint}\:#{config.$utility-ns}#{$_axis-shortname}-#{$_size} {
+                #{$_axis}: $_multiplier !important;
+              }
+            }
           }
         }
       }

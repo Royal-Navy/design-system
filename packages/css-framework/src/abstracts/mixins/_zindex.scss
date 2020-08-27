@@ -8,7 +8,7 @@
 
 **************************************************************************/
 @use "sass:map";
-@use "@royalnavy/design-tokens/dist" as vars;
+@use "../../vars";
 
 @mixin z-index($level, $subLevel: 0) {
   @if map.has-key(vars.$zindex, $level) {

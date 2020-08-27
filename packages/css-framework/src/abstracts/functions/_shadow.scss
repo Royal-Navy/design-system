@@ -1,9 +1,9 @@
 @use "sass:map";
-@use "@royalnavy/design-tokens/dist" as vars;
+@use "../../vars";
 
 @function shadow($size) {
   @if map.has-key(vars.$shadows, $size) {
-    @return unquote(map.get(vars.$shadows, $size));
+    @return map.get(vars.$shadows, $size);
   }
 
   @else {
