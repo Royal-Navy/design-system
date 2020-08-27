@@ -2,19 +2,18 @@
 @use "../config" as config;
 
 .rn-breadcrumbs__list {
-  display: block;
+  display: flex;
   font-size: f.font-size("base");
   margin: 0;
   padding: 0;
   list-style: none;
-  line-height: 1;
+  align-items: center;
 }
 
 .rn-breadcrumbs__breadcrumb {
-  display: inline-block;
-  vertical-align: top;
+  display: inline-flex;
   transition: all config.$animation-timing;
-  line-height: 1;
+  align-items: center;
 
   > a {
     color: f.color("neutral", "400");
