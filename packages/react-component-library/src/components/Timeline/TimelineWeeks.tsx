@@ -8,7 +8,6 @@ import { TimelineWeek } from './TimelineWeek'
 
 export interface TimelineWeeksWithRenderContentProps
   extends ComponentWithClass {
-  hasSide?: boolean
   render: (
     index: number,
     isOddNumber: boolean,
@@ -21,7 +20,6 @@ export interface TimelineWeeksWithRenderContentProps
 }
 
 export interface TimelineWeeksWithChildrenProps extends ComponentWithClass {
-  hasSide?: boolean
   render?: never
 }
 
@@ -29,10 +27,7 @@ export type TimelineWeeksProps =
   | TimelineWeeksWithRenderContentProps
   | TimelineWeeksWithChildrenProps
 
-export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({
-  hasSide,
-  render,
-}) => {
+export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
   return (
     <TimelineContext.Consumer>
       {({
@@ -45,7 +40,6 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({
         <TimelineHeaderRow
           className="timeline__row--short"
           data-testid="timeline-weeks"
-          hasSide={hasSide}
           name="Weeks"
         >
           <div className="timeline__weeks">

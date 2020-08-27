@@ -5,7 +5,6 @@ import { TimelineRow } from './TimelineRow'
 
 interface TimelineHeaderRowProps extends ComponentWithClass {
   children: React.ReactElement | React.ReactElement[]
-  hasSide: boolean
   name: string
   renderRowHeader?: (name: string) => React.ReactElement
 }

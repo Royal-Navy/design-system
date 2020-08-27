@@ -22,7 +22,6 @@ import {
 
 import { TimelineOptions } from './context/types'
 import { DEFAULTS } from './constants'
-import { warnIfOverwriting } from '../../helpers'
 
 type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
 
@@ -65,19 +64,6 @@ function extractChildren(
 ) {
   return (children as []).filter((child) => {
     return inverse ? !isComponentOf(child, names) : isComponentOf(child, names)
-  })
-}
-
-function withHasSide(
-  children: React.ReactElement | React.ReactElement[],
-  hasSide: boolean
-) {
-  return React.Children.map(children, (child) => {
-    warnIfOverwriting(child.props, 'hasSide', child.props.displayName)
-
-    return React.cloneElement(child, {
-      hasSide,
-    })
   })
 }
 
@@ -138,10 +124,11 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   return (
     <TimelineProvider
-      startDate={startDate}
       endDate={endDate}
-      today={today}
+      hasSide={hasSide || hasTimelineSide}
       options={options}
+      startDate={startDate}
+      today={today}
     >
       <div className="timeline" data-testid="timeline" role="grid">
         <div className={innerClasses}>
@@ -151,19 +138,9 @@ export const Timeline: React.FC<TimelineProps> = ({
             data-testid="timeline-header"
             role="rowgroup"
           >
-            {withHasSide(headChildren, hasSide || hasTimelineSide)}
+            {headChildren}
           </div>
-          {React.Children.map(
-            bodyChildren,
-            (bodyChild: React.ReactElement<TimelineRowsProps>) => {
-              return React.cloneElement(bodyChild, {
-                children: withHasSide(
-                  bodyChild.props.children,
-                  hasSide || hasTimelineSide
-                ),
-              })
-            }
-          )}
+          {bodyChildren}
         </div>
       </div>
     </TimelineProvider>
