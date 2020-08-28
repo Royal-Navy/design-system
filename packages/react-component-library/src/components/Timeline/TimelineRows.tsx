@@ -24,8 +24,8 @@ export interface TimelineRowsProps extends ComponentWithClass {
 }
 
 const noData = (
-  <div className="timeline__empty" data-testid="timeline-no-data">
-    <span>{NO_DATA_MESSAGE}</span>
+  <div className="timeline__empty" data-testid="timeline-no-data" role="row">
+    <span role="cell">{NO_DATA_MESSAGE}</span>
   </div>
 )
 

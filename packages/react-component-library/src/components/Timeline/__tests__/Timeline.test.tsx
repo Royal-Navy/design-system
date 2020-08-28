@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
-import { DEFAULTS } from '../constants'
+import { DEFAULTS, NO_DATA_MESSAGE } from '../constants'
 import {
   Timeline,
   TimelineDays,
@@ -147,6 +147,14 @@ describe('Timeline', () => {
 
     it('should display the no data message', () => {
       expect(wrapper.queryByTestId('timeline-no-data')).toBeInTheDocument()
+    })
+
+    it('should set the `role` attribute to `row` on the no data message', () => {
+      expect(wrapper.queryByTestId('timeline-no-data')).toHaveAttribute('role', 'row')
+    })
+
+    it('should set the `role` attribute to `cell` on the no data message text', () => {
+      expect(wrapper.getByText(NO_DATA_MESSAGE)).toHaveAttribute('role', 'cell')
     })
 
     it('should not display any rows', () => {
