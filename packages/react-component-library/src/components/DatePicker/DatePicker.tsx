@@ -80,8 +80,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 
     if (onChange) {
       onChange({
-        startDate: from,
-        endDate: to,
+        startDate: newState.from,
+        endDate: newState.to,
       })
     }
   }
