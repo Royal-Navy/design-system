@@ -359,10 +359,14 @@ describe('Timeline', () => {
         expect(rowHeaders[4]).toHaveTextContent('Row 2')
       })
 
-      it('should set the `aria-hidden` to `true` for the timeline navigation', () => {
-        expect(wrapper.getByTestId('timeline-navigation')).toHaveAttribute(
-          'aria-hidden',
-          'true'
+      it('should set the `aria-label` attributes for the timeline navigation buttons', () => {
+        expect(wrapper.getByTestId('timeline-side-button-left')).toHaveAttribute(
+          'aria-label',
+          'Navigate left'
+        )
+        expect(wrapper.getByTestId('timeline-side-button-right')).toHaveAttribute(
+          'aria-label',
+          'Navigate right'
         )
       })
 
