@@ -18,6 +18,19 @@ import {
 
 export default { component: Timeline, title: 'Timeline' } as Meta
 
+const disableScrollableRegionFocusableRule = {
+  a11y: {
+    config: {
+      rules: [
+        {
+          id: 'scrollable-region-focusable',
+          enabled: false,
+        },
+      ],
+    },
+  },
+}
+
 export const NoData = () => (
   <Timeline startDate={new Date(2020, 0, 1)} today={new Date(2020, 0, 15)}>
     <TimelineTodayMarker />
@@ -27,6 +40,7 @@ export const NoData = () => (
     <TimelineRows>{}</TimelineRows>
   </Timeline>
 )
+NoData.parameters = disableScrollableRegionFocusableRule
 NoData.storyName = 'No data'
 
 export const BoundByFixedDates = () => (
@@ -74,6 +88,7 @@ export const WithData = () => (
     </TimelineRows>
   </Timeline>
 )
+WithData.parameters = disableScrollableRegionFocusableRule
 WithData.storyName = 'With data'
 
 export const WithSidebar = () => (
