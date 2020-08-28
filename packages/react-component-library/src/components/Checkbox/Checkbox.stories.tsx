@@ -19,7 +19,7 @@ stories.add('Vanilla', () => {
       }}
     >
       <Checkbox name="example1" label="My Label 1" value="true" isChecked />
-      <Checkbox name="example2" label="My Label 2" />
+      <Checkbox name="example2" label="My Label 2" isDisabled />
       <Checkbox name="example3" label="My Label 3" />
       <button type="submit">Submit</button>
     </form>

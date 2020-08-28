@@ -10,6 +10,7 @@ $checkbox-focus-width: 1px;
   padding-left: f.spacing("11");
   font-size: f.font-size("base");
   user-select: none;
+
   .rn-form & {
     padding-top: f.spacing("6");
     padding-bottom: f.spacing("6");
@@ -89,4 +90,23 @@ $checkbox-focus-width: 1px;
   color: f.color("danger", "600");
   margin: f.spacing("4") f.spacing("6");
   font-size: f.font-size("base");
+}
+
+.rn-checkbox--is-disabled {
+  .rn-checkbox__label {
+    cursor: not-allowed;
+    color: f.color("neutral", "200");
+  }
+
+  input ~ .rn-checkbox__checkmark {
+    background-color: f.color("neutral", "000");
+    border: 1px solid f.color("neutral", "100");
+  }
+
+  input:hover ~ .rn-checkbox__checkmark,
+  input:active ~ .rn-checkbox__checkmark {
+    border: 1px solid f.color("neutral", "100");
+    box-shadow: none;
+    cursor: not-allowed;
+  }
 }
