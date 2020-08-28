@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import classNames from 'classnames'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 
@@ -30,9 +31,17 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     },
     ref
   ) => {
+    const classes = classNames(
+      'rn-radio',
+      {
+        'rn-radio--is-disabled': isDisabled,
+      },
+      className
+    )
+
     return (
       <div
-        className={`rn-radio ${className}`}
+        className={classes}
         data-testid="container"
         role="radio"
         aria-checked={isChecked}

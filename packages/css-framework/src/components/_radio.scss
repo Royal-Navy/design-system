@@ -88,3 +88,22 @@ $radio-focus-width: 0.1rem;
   margin: f.spacing("4") f.spacing("6");
   font-size: f.font-size("base");
 }
+
+.rn-radio--is-disabled {
+  .rn-radio__label {
+    cursor: not-allowed;
+    color: f.color("neutral", "200");
+  }
+
+  input ~ .rn-radio__checkmark {
+    background-color: f.color("neutral", "000");
+    border: 1px solid f.color("neutral", "100");
+  }
+
+  input:hover ~ .rn-radio__checkmark,
+  input:active ~ .rn-radio__checkmark {
+    border: 1px solid f.color("neutral", "100");
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
