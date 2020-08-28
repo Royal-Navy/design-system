@@ -1,7 +1,7 @@
 import { Dispatch } from 'react'
 
 export type TimelineOptions = {
-  dayWidth: number,
+  dayWidth: number
   rangeInMonths: number
 }
 
@@ -32,7 +32,7 @@ export type TimelineState = {
 
 export const TIMELINE_ACTIONS = {
   GET_NEXT: 'GET_NEXT',
-  GET_PREV: 'GET_PREV'
+  GET_PREV: 'GET_PREV',
 } as const
 
 export type TimelineAction =
@@ -40,12 +40,14 @@ export type TimelineAction =
   | { type: typeof TIMELINE_ACTIONS.GET_PREV }
 
 export interface TimelineContextDefault {
+  hasSide: boolean
   state: TimelineState
   dispatch: Dispatch<TimelineAction>
 }
 
 export interface TimelineProviderProps {
   children?: React.ReactNode
+  hasSide?: boolean
   startDate?: Date
   endDate?: Date
   today?: Date

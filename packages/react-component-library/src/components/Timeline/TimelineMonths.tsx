@@ -11,7 +11,6 @@ import { TIMELINE_ACTIONS } from './context/types'
 
 export interface TimelineMonthsWithRenderContentProps
   extends ComponentWithClass {
-  hasSide?: boolean
   render: (
     index: number,
     dayWidth: number,
@@ -21,7 +20,6 @@ export interface TimelineMonthsWithRenderContentProps
 }
 
 export interface TimelineMonthsWithChildrenProps extends ComponentWithClass {
-  hasSide?: boolean
   render?: never
 }
 
@@ -29,10 +27,7 @@ export type TimelineMonthsProps =
   | TimelineMonthsWithRenderContentProps
   | TimelineMonthsWithChildrenProps
 
-export const TimelineMonths: React.FC<TimelineMonthsProps> = ({
-  hasSide,
-  render,
-}) => (
+export const TimelineMonths: React.FC<TimelineMonthsProps> = ({ render }) => (
   <TimelineContext.Consumer>
     {({
       dispatch,
@@ -44,7 +39,6 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({
     }) => (
       <TimelineHeaderRow
         data-testid="timeline-months"
-        hasSide={hasSide}
         name="Months"
         renderRowHeader={(name) => (
           <>

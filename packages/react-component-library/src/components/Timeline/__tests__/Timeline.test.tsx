@@ -360,7 +360,10 @@ describe('Timeline', () => {
       })
 
       it('should set the `aria-hidden` to `true` for the timeline navigation', () => {
-        expect(wrapper.getByTestId('timeline-navigation')).toHaveAttribute('aria-hidden', 'true')
+        expect(wrapper.getByTestId('timeline-navigation')).toHaveAttribute(
+          'aria-hidden',
+          'true'
+        )
       })
 
       describe('and when the left button is clicked', () => {
@@ -1019,6 +1022,57 @@ describe('Timeline', () => {
       expect(
         wrapper.queryByTestId('custom-timeline-component')
       ).toBeInTheDocument()
+    })
+  })
+
+  describe('when composed with a HOC for `TimelineRow`', () => {
+    beforeEach(() => {
+      function AnotherTimelineRow() {
+        return (
+          <TimelineRow name="Another row">
+            <TimelineEvents>
+              <TimelineEvent
+                startDate={new Date(2020, 3, 13)}
+                endDate={new Date(2020, 3, 18)}
+              >
+                Event 1
+              </TimelineEvent>
+            </TimelineEvents>
+          </TimelineRow>
+        )
+      }
+
+      wrapper = render(
+        <Timeline
+          hasSide
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 13)}
+                  endDate={new Date(2020, 3, 18)}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+            <AnotherTimelineRow />
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render two rows', () => {
+      expect(wrapper.getAllByTestId('timeline-row')).toHaveLength(2)
+      expect(wrapper.getByText('Row 1')).toBeInTheDocument()
+      expect(wrapper.getByText('Another row')).toBeInTheDocument()
     })
   })
 })

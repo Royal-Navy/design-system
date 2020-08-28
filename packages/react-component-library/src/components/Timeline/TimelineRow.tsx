@@ -2,13 +2,12 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { TimelineEventsProps } from '.'
+import { TimelineContext, TimelineEventsProps } from '.'
 
 export interface TimelineRowProps extends ComponentWithClass {
   children:
     | React.ReactElement<TimelineEventsProps>
     | React.ReactElement<TimelineEventsProps>[]
-  hasSide?: boolean
   name?: string
   renderRowHeader?: (name: string) => React.ReactElement
   rowHeaderClassName?: string
@@ -17,7 +16,6 @@ export interface TimelineRowProps extends ComponentWithClass {
 export const TimelineRow: React.FC<TimelineRowProps> = ({
   children,
   className,
-  hasSide,
   name,
   renderRowHeader,
   rowHeaderClassName,
@@ -30,18 +28,27 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
   )
 
   return (
-    <div className={classes} data-testid="timeline-row" role="row" {...rest}>
-      {hasSide && (
+    <TimelineContext.Consumer>
+      {({ hasSide }) => (
         <div
-          className={rowHeaderClasses}
-          data-testid="timeline-row-header"
-          role="rowheader"
+          className={classes}
+          data-testid="timeline-row"
+          role="row"
+          {...rest}
         >
-          {renderRowHeader ? renderRowHeader(name) : name}
+          {hasSide && (
+            <div
+              className={rowHeaderClasses}
+              data-testid="timeline-row-header"
+              role="rowheader"
+            >
+              {renderRowHeader ? renderRowHeader(name) : name}
+            </div>
+          )}
+          <div className="timeline__row-content">{children}</div>
         </div>
       )}
-      <div className="timeline__row-content">{children}</div>
-    </div>
+    </TimelineContext.Consumer>
   )
 }
 

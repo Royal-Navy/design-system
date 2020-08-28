@@ -7,12 +7,10 @@ import { TimelineDay } from './TimelineDay'
 import { TimelineHeaderRow } from './TimelineHeaderRow'
 
 export interface TimelineDaysWithRenderContentProps {
-  hasSide?: boolean
   render: (index: number, dayWidth: number, date: Date) => React.ReactElement
 }
 
 export interface TimelineDaysWithChildrenProps {
-  hasSide?: boolean
   render?: never
 }
 
@@ -20,10 +18,7 @@ export type TimelineDaysProps =
   | TimelineDaysWithRenderContentProps
   | TimelineDaysWithChildrenProps
 
-export const TimelineDays: React.FC<TimelineDaysProps> = ({
-  hasSide,
-  render,
-}) => {
+export const TimelineDays: React.FC<TimelineDaysProps> = ({ render }) => {
   const classes = classNames('timeline__days', {
     'timeline__days--renderDefault': !render,
   })
@@ -40,7 +35,6 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({
         <TimelineHeaderRow
           className="timeline__row--short"
           data-testid="timeline-days"
-          hasSide={hasSide}
           name="Days"
         >
           <div className={classes}>
