@@ -1,5 +1,6 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
+import { Meta } from '@storybook/react/types-6-0'
+
 import { format } from 'date-fns'
 
 import {
@@ -15,9 +16,9 @@ import {
   TimelineSide,
 } from '.'
 
-const stories = storiesOf('Timeline', module)
+export default { component: Timeline, title: 'Timeline' } as Meta
 
-stories.add('No data', () => (
+export const NoData = () => (
   <Timeline startDate={new Date(2020, 0, 1)} today={new Date(2020, 0, 15)}>
     <TimelineTodayMarker />
     <TimelineMonths />
@@ -25,9 +26,10 @@ stories.add('No data', () => (
     <TimelineDays />
     <TimelineRows>{}</TimelineRows>
   </Timeline>
-))
+)
+NoData.storyName = 'No data'
 
-stories.add('Bound by fixed dates', () => (
+export const BoundByFixedDates = () => (
   <Timeline
     startDate={new Date(2020, 0, 13)}
     endDate={new Date(2020, 1, 15)}
@@ -39,9 +41,10 @@ stories.add('Bound by fixed dates', () => (
     <TimelineDays />
     <TimelineRows>{}</TimelineRows>
   </Timeline>
-))
+)
+BoundByFixedDates.storyName = 'Bound by fixed dates'
 
-stories.add('With data', () => (
+export const WithData = () => (
   <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
     <TimelineTodayMarker />
     <TimelineMonths />
@@ -70,9 +73,10 @@ stories.add('With data', () => (
       </TimelineRow>
     </TimelineRows>
   </Timeline>
-))
+)
+WithData.storyName = 'With data'
 
-stories.add('With sidebar', () => (
+export const WithSidebar = () => (
   <Timeline
     hasSide
     startDate={new Date(2020, 3, 1)}
@@ -105,9 +109,10 @@ stories.add('With sidebar', () => (
       </TimelineRow>
     </TimelineRows>
   </Timeline>
-))
+)
+WithSidebar.storyName = 'With sidebar'
 
-stories.add('With custom months', () => {
+const WithCustomMonths = () => {
   const CustomTimelineMonth = (
     index: number,
     dayWidth: number,
@@ -141,9 +146,10 @@ stories.add('With custom months', () => {
       <TimelineRows>{}</TimelineRows>
     </Timeline>
   )
-})
+}
+WithCustomMonths.storyName = 'With custom months'
 
-stories.add('With custom weeks', () => {
+const WithCustomWeeks = () => {
   const CustomTimelineWeek = (
     index: number,
     isOddNumber: boolean,
@@ -182,9 +188,10 @@ stories.add('With custom weeks', () => {
       <TimelineRows>{}</TimelineRows>
     </Timeline>
   )
-})
+}
+WithCustomWeeks.storyName = 'With custom weeks'
 
-stories.add('With custom days', () => {
+export const WithCustomDays = () => {
   const CustomTimelineDays = (index: number, dayWidth: number, date: Date) => {
     return (
       <span
@@ -211,9 +218,10 @@ stories.add('With custom days', () => {
       <TimelineRows>{}</TimelineRows>
     </Timeline>
   )
-})
+}
+WithCustomDays.storyName = 'With custom days'
 
-stories.add('With custom today marker', () => {
+export const WithCustomTodayMarker = () => {
   const CustomTodayMarker = (date: Date, offset: string) => {
     return (
       <span
@@ -245,9 +253,10 @@ stories.add('With custom today marker', () => {
       <TimelineRows>{}</TimelineRows>
     </Timeline>
   )
-})
+}
+WithCustomTodayMarker.storyName = 'With custom today marker'
 
-stories.add('With custom columns', () => {
+export const WithCustomColumns = () => {
   const CustomTimelineColumn = (
     index: number,
     isOddNumber: boolean,
@@ -298,9 +307,10 @@ stories.add('With custom columns', () => {
       </TimelineRows>
     </Timeline>
   )
-})
+}
+WithCustomColumns.storyName = 'With custom columns'
 
-stories.add('With custom event content', () => {
+export const WithCustomEventContent = () => {
   const CustomEvent = ({
     children,
     startDate,
@@ -406,9 +416,10 @@ stories.add('With custom event content', () => {
       </TimelineRows>
     </Timeline>
   )
-})
+}
+WithCustomEventContent.storyName = 'With custom event content'
 
-stories.add('With custom day width', () => {
+export const WithCustomDayWidth = () => {
   return (
     <Timeline
       startDate={new Date(2020, 3, 1)}
@@ -444,9 +455,10 @@ stories.add('With custom day width', () => {
       </TimelineRows>
     </Timeline>
   )
-})
+}
+WithCustomDayWidth.storyName = 'With custom day width'
 
-stories.add('With custom range', () => {
+export const WithCustomRange = () => {
   return (
     <Timeline
       startDate={new Date(2020, 3, 1)}
@@ -482,4 +494,5 @@ stories.add('With custom range', () => {
       </TimelineRows>
     </Timeline>
   )
-})
+}
+WithCustomRange.storyName = 'With custom range'
