@@ -31,7 +31,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => {
-    const classes = classNames('rn-checkbox', className)
+    const classes = classNames(
+      'rn-checkbox',
+      {
+        'rn-checkbox--is-disabled': isDisabled,
+      },
+      className
+    )
 
     return (
       <div className={classes} data-testid="container">
