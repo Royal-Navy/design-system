@@ -144,20 +144,20 @@ describe('DatePicker', () => {
 
       describe('and clicks on a day', () => {
         beforeEach(() => {
-          click(wrapper.getByText('1'))
+          click(wrapper.getByText('31'))
         })
 
         it('set the value of the component to this date', () => {
           expect(
             wrapper.getByTestId('datepicker-input').getAttribute('value')
-          ).toBe('12/1/2019')
+          ).toBe('12/31/2019')
         })
 
         it('invokes the onChange callback', () => {
           expect(onChange).toHaveBeenCalledTimes(1)
           expect(onChange).toHaveBeenCalledWith({
-            startDate: new Date('2019-12-01T00:00:00.000Z'),
-            endDate: undefined,
+            startDate: new Date('2019-12-31T12:00:00.000Z'),
+            endDate: new Date('2019-12-31T12:00:00.000Z'),
           })
         })
 
@@ -263,20 +263,20 @@ describe('DatePicker', () => {
 
         describe('and clicks on a day in the first month', () => {
           beforeEach(() => {
-            click(wrapper.getAllByText('1')[0])
+            click(wrapper.getAllByText('31')[0])
           })
 
           it('set the value of the component to this date', () => {
             expect(
               wrapper.getByTestId('datepicker-input').getAttribute('value')
-            ).toBe('12/1/2019 - 12/1/2019')
+            ).toBe('12/1/2019 - 12/31/2019')
           })
 
           it('invokes the onChange callback', () => {
             expect(onChange).toHaveBeenCalledTimes(1)
             expect(onChange).toHaveBeenCalledWith({
               startDate: new Date('2019-12-01T00:00:00.000Z'),
-              endDate: undefined,
+              endDate: new Date('2019-12-31T12:00:00.000Z'),
             })
           })
         })
@@ -297,11 +297,11 @@ describe('DatePicker', () => {
             expect(onChange).toHaveBeenCalledTimes(2)
             expect(onChange).toHaveBeenCalledWith({
               startDate: new Date('2019-12-01T00:00:00.000Z'),
-              endDate: undefined,
+              endDate: new Date('2020-01-20T12:00:00.000Z'),
             })
             expect(onChange).toHaveBeenCalledWith({
               startDate: new Date('2019-12-01T00:00:00.000Z'),
-              endDate: undefined,
+              endDate: new Date('2020-01-20T12:00:00.000Z'),
             })
           })
         })
