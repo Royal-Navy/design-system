@@ -386,6 +386,13 @@ describe('Masthead', () => {
       expect(wrapper.getByText('AB')).toBeInTheDocument()
     })
 
+    it('should set the `aria-label` attribute on the search button to `Show search`', () => {
+      expect(wrapper.queryByTestId('user-button')).toHaveAttribute(
+        'aria-label',
+        'Show user options'
+      )
+    })
+
     it('should not show the links', () => {
       expect(wrapper.queryByText('Profile')).toBeNull()
       expect(wrapper.queryByText('Settings')).toBeNull()
