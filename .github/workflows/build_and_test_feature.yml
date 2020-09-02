@@ -1,9 +1,10 @@
 name: Build & Test Feature
 
 on:
-  pull_request:
+  push:
     branches-ignore:
       - latest
+      - master
 
 jobs:
      Build_icon_library:
