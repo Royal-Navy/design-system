@@ -25,7 +25,7 @@ export interface DatePickerProps extends ComponentWithClass {
   label?: string
   name?: string
   onBlur?: (event: React.FormEvent) => void
-  onChange?: (data: {startDate: Date, endDate: Date}) => void
+  onChange?: (data: { startDate: Date; endDate: Date }) => void
   placement?:
     | typeof DATEPICKER_PLACEMENT.ABOVE
     | typeof DATEPICKER_PLACEMENT.BELOW
@@ -45,7 +45,7 @@ function transformDates(startDate: Date, endDate: Date) {
     return startDate.toLocaleDateString()
   }
 
-  return null
+  return ''
 }
 
 export const DatePicker: React.FC<DatePickerProps> = ({
