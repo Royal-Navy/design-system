@@ -1,5 +1,5 @@
 const { Octokit } = require('@octokit/rest')
-const lint = require('@commitlint/lint')
+const { default: lint } = require('@commitlint/lint')
 
 const { rules } = require('../../commitlint.config')
 
