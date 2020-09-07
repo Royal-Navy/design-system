@@ -3,7 +3,12 @@ import differenceInMinutes from 'date-fns/differenceInMinutes'
 import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 import TetherComponent from 'react-tether'
-import DayPicker, { DateUtils, RangeModifier } from 'react-day-picker'
+import DayPicker, {
+  DateUtils,
+  RangeModifier,
+  DayPickerProps,
+  DayModifiers,
+} from 'react-day-picker'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DatePickerInput } from './DatePickerInput'
@@ -34,6 +39,8 @@ export interface DatePickerProps extends ComponentWithClass {
   startDate?: Date
   value?: string
   isOpen?: boolean
+  disabledDays?: DayPickerProps['disabledDays']
+  initialMonth?: DayPickerProps['initialMonth']
 }
 
 function transformDates(startDate: Date, endDate: Date) {
@@ -62,6 +69,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   startDate,
   value,
   isOpen,
+  disabledDays,
+  initialMonth,
 }) => {
   const [state, setState] = useState<StateObject>({
     from: startDate,
@@ -71,7 +80,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   const { from, to } = state
   const modifiers = { start: from, end: to }
 
-  function handleDayClick(day: Date) {
+  function handleDayClick(day: Date, { disabled }: DayModifiers) {
+    if (disabled) return
+
     const newState = isRange
       ? DateUtils.addDayToRange(day, state as RangeModifier)
       : { from: day, to: day }
@@ -159,7 +170,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               selectedDays={[from, { from, to }]}
               modifiers={modifiers}
               onDayClick={handleDayClick}
-              initialMonth={startDate}
+              initialMonth={startDate || initialMonth}
+              disabledDays={disabledDays}
             />
           </FloatingBox>
         ),

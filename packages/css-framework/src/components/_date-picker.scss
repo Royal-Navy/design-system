@@ -323,3 +323,8 @@
   border-top-right-radius: 50%;
   border-bottom-right-radius: 50%;
 }
+
+.DayPicker-Day--disabled {
+  color: f.color("neutral", "200");
+  pointer-events: none;
+}

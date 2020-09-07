@@ -24,6 +24,18 @@ stories.add('Default', () => {
   )
 })
 
+examples.add('Custom initial month', () => {
+  return (
+    <DatePicker
+      initialMonth={new Date(2020, 1)}
+      onBlur={action('onBlur')}
+      onChange={action('onChange')}
+      placement={DATEPICKER_PLACEMENT.BELOW}
+      isOpen
+    />
+  )
+})
+
 examples.add('Custom label', () => {
   return (
     <DatePicker
@@ -43,6 +55,24 @@ examples.add('Disabled', () => {
       onBlur={action('onBlur')}
       onChange={action('onChange')}
       isDisabled
+    />
+  )
+})
+
+examples.add('Disabled days', () => {
+  return (
+    <DatePicker
+      startDate={new Date(2020, 3, 1)}
+      onBlur={action('onBlur')}
+      onChange={action('onChange')}
+      disabledDays={[
+        new Date(2020, 3, 12),
+        new Date(2020, 3, 2),
+        {
+          after: new Date(2020, 3, 20),
+          before: new Date(2020, 3, 25),
+        },
+      ]}
     />
   )
 })
