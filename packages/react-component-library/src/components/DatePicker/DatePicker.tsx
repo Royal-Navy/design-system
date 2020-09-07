@@ -40,6 +40,7 @@ export interface DatePickerProps extends ComponentWithClass {
   value?: string
   isOpen?: boolean
   disabledDays?: DayPickerProps['disabledDays']
+  initialMonth?: DayPickerProps['initialMonth']
 }
 
 function transformDates(startDate: Date, endDate: Date) {
@@ -69,6 +70,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   value,
   isOpen,
   disabledDays,
+  initialMonth,
 }) => {
   const [state, setState] = useState<StateObject>({
     from: startDate,
@@ -168,7 +170,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               selectedDays={[from, { from, to }]}
               modifiers={modifiers}
               onDayClick={handleDayClick}
-              initialMonth={startDate}
+              initialMonth={startDate || initialMonth}
               disabledDays={disabledDays}
             />
           </FloatingBox>

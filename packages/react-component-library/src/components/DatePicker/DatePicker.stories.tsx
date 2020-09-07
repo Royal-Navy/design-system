@@ -24,6 +24,18 @@ stories.add('Default', () => {
   )
 })
 
+examples.add('Custom initial month', () => {
+  return (
+    <DatePicker
+      initialMonth={new Date(2020, 1)}
+      onBlur={action('onBlur')}
+      onChange={action('onChange')}
+      placement={DATEPICKER_PLACEMENT.BELOW}
+      isOpen
+    />
+  )
+})
+
 examples.add('Custom label', () => {
   return (
     <DatePicker

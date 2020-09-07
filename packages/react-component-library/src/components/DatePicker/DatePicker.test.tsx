@@ -386,4 +386,21 @@ describe('DatePicker', () => {
       })
     })
   })
+
+  describe('when the `initialMonth` prop is provided and no `startDate`', () => {
+    beforeEach(() => {
+      wrapper = render(<DatePicker isOpen initialMonth={new Date(2020, 1)} />)
+    })
+
+    it('displays the correct month initially', () => {
+      expect(wrapper.queryByText('February 2020')).toBeInTheDocument()
+    })
+
+    it('does not set a startDate', () => {
+      expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
+        'value',
+        ''
+      )
+    })
+  })
 })
