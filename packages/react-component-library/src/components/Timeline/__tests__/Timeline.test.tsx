@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
-import { DEFAULTS } from '../constants'
+import { DEFAULTS, NO_DATA_MESSAGE } from '../constants'
 import {
   Timeline,
   TimelineDays,
@@ -147,6 +147,14 @@ describe('Timeline', () => {
 
     it('should display the no data message', () => {
       expect(wrapper.queryByTestId('timeline-no-data')).toBeInTheDocument()
+    })
+
+    it('should set the `role` attribute to `row` on the no data message', () => {
+      expect(wrapper.queryByTestId('timeline-no-data')).toHaveAttribute('role', 'row')
+    })
+
+    it('should set the `role` attribute to `cell` on the no data message text', () => {
+      expect(wrapper.getByText(NO_DATA_MESSAGE)).toHaveAttribute('role', 'cell')
     })
 
     it('should not display any rows', () => {
@@ -359,10 +367,14 @@ describe('Timeline', () => {
         expect(rowHeaders[4]).toHaveTextContent('Row 2')
       })
 
-      it('should set the `aria-hidden` to `true` for the timeline navigation', () => {
-        expect(wrapper.getByTestId('timeline-navigation')).toHaveAttribute(
-          'aria-hidden',
-          'true'
+      it('should set the `aria-label` attributes for the timeline navigation buttons', () => {
+        expect(wrapper.getByTestId('timeline-side-button-left')).toHaveAttribute(
+          'aria-label',
+          'Navigate left'
+        )
+        expect(wrapper.getByTestId('timeline-side-button-right')).toHaveAttribute(
+          'aria-label',
+          'Navigate right'
         )
       })
 

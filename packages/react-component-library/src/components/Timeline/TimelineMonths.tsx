@@ -43,17 +43,18 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({ render }) => (
         renderRowHeader={(name) => (
           <>
             <div
-              aria-hidden
               className="timeline__navigation"
               data-testid="timeline-navigation"
             >
               <Button
+                aria-label="Navigate left"
                 variant="secondary"
                 icon={<IconChevronLeft />}
                 onClick={(_) => dispatch({ type: TIMELINE_ACTIONS.GET_PREV })}
                 data-testid="timeline-side-button-left"
               />
               <Button
+                aria-label="Navigate right"
                 variant="secondary"
                 icon={<IconChevronRight />}
                 onClick={(_) => dispatch({ type: TIMELINE_ACTIONS.GET_NEXT })}
