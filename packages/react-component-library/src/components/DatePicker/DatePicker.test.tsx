@@ -15,7 +15,7 @@ describe('DatePicker', () => {
   let wrapper: RenderResult
   let startDate: Date
   let label: string
-  let onChange: (data: { startDate: Date, endDate: Date }) => void
+  let onChange: (data: { startDate: Date; endDate: Date }) => void
   let onBlur: (e: React.FormEvent) => void
   let dateSpy: jest.SpyInstance
   let days: string[]
@@ -355,6 +355,35 @@ describe('DatePicker', () => {
       expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
         'disabled'
       )
+    })
+  })
+
+  describe('when the `disabledDays` prop is provided', () => {
+    beforeEach(() => {
+      onChange = jest.fn()
+
+      wrapper = render(
+        <DatePicker
+          isOpen
+          onChange={onChange}
+          startDate={new Date(2020, 3, 1)}
+          disabledDays={[new Date(2020, 3, 12)]}
+        />
+      )
+    })
+
+    it('applies the disabled modifier class to the correct days', () => {
+      expect(wrapper.getByText('12')).toHaveClass('DayPicker-Day--disabled')
+    })
+
+    describe('and a disabled day is clicked', () => {
+      beforeEach(() => {
+        click(wrapper.getByText('12'))
+      })
+
+      it('does not set the picker to that day', () => {
+        expect(onChange).not.toHaveBeenCalled()
+      })
     })
   })
 })

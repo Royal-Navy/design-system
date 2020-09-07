@@ -47,6 +47,24 @@ examples.add('Disabled', () => {
   )
 })
 
+examples.add('Disabled days', () => {
+  return (
+    <DatePicker
+      startDate={new Date(2020, 3, 1)}
+      onBlur={action('onBlur')}
+      onChange={action('onChange')}
+      disabledDays={[
+        new Date(2020, 3, 12),
+        new Date(2020, 3, 2),
+        {
+          after: new Date(2020, 3, 20),
+          before: new Date(2020, 3, 25),
+        },
+      ]}
+    />
+  )
+})
+
 examples.add('Range', () => {
   return (
     <DatePicker
