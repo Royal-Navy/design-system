@@ -50,8 +50,9 @@ const MastheadUserWithItems: React.FC<MastheadUserWithItemsProps> = ({
   <Sheet
     button={(
       <SheetButton
+        aria-label="Show user options"
         className="rn-masthead__option"
-        data-testid="notification-button"
+        data-testid="user-button"
         icon={(
           <Avatar
             data-testid="masthead-avatar"
