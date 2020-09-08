@@ -28,25 +28,12 @@ commands:
       - run: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
 
 jobs:
-  build_icon-library:
+  build_prerequisites:
     docker: *docker
     steps:
       - checkout
       - run: yarn install
       - *build_icon_library
-      - save_cache:
-          paths:
-            - ~/.cache/yarn
-          key: yarn-packages-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - persist_to_workspace:
-          root: /home/circleci/project
-          paths:
-            - packages/icon-library
-  build_design-tokens:
-    docker: *docker
-    steps:
-      - checkout
-      - run: yarn install
       - *build_design_tokens
       - save_cache:
           paths:
@@ -55,7 +42,7 @@ jobs:
       - persist_to_workspace:
           root: /home/circleci/project
           paths:
-            - packages/design-tokens
+            - .
   security_audit:
     docker: *docker
     steps:
@@ -299,36 +286,28 @@ workflows:
 
   build_test_and_deploy_next:
     jobs:
-      - build_icon-library:
-          filters:
-            branches:
-              only:
-                - master
-      - build_design-tokens:
+      - build_prerequisites:
           filters:
             branches:
               only:
                 - master
       - commit_next:
          requires:
-            - build_icon-library
-            - build_design-tokens
+            - build_prerequisites
          filters:
             branches:
               only:
                 - master
       - test_react-component-library:
           requires:
-            - build_icon-library
-            - build_design-tokens
+            - build_prerequisites
           filters:
             branches:
               only:
                 - master
       - test_visual_regression:
           requires:
-            - build_icon-library
-            - build_design-tokens
+            - build_prerequisites
           filters:
             branches:
               only:
@@ -340,28 +319,21 @@ workflows:
             - commit_next
   build_test_and_deploy_latest:
     jobs:
-      - build_icon-library:
-          filters:
-            branches:
-              only:
-                - latest
-      - build_design-tokens:
+      - build_prerequisites:
           filters:
             branches:
               only:
                 - latest
       - security_audit:
           requires:
-            - build_icon-library
-            - build_design-tokens
+            - build_prerequisites
           filters:
             branches:
               only:
                 - latest
       - check_commits:
           requires:
-            - build_icon-library
-            - build_design-tokens
+            - build_prerequisites
           filters:
             branches:
               only:
@@ -383,13 +355,11 @@ workflows:
                 - latest
       - test_docs-site:
           requires:
-            - build_icon-library
-            - build_design-tokens
+            - build_prerequisites
             - lint_docs_site
       - test_react-component-library:
           requires:
-            - build_icon-library
-            - build_design-tokens
+            - build_prerequisites
             - lint_react-component-library
       - test_visual_regression:
           requires:
