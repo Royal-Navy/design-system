@@ -9,6 +9,10 @@ aliases:
       run:
         name: Build Icon Library
         command: yarn --cwd packages/icon-library build
+  - &build_design_tokens
+      run:
+        name: Build Design Tokens
+        command: yarn --cwd packages/design-tokens build
   - &docker
       - image: circleci/node:12.13.0
 
@@ -31,6 +35,20 @@ jobs:
       - checkout
       - run: yarn install
       - *build_icon_library
+      - save_cache:
+          paths:
+            - ~/.cache/yarn
+          key: yarn-packages-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - persist_to_workspace:
+          root: /home/circleci/project
+          paths:
+            - .
+  build_design-tokens:
+    docker: *docker
+    steps:
+      - checkout
+      - run: yarn install
+      - *build_design_tokens
       - save_cache:
           paths:
             - ~/.cache/yarn
@@ -287,9 +305,15 @@ workflows:
             branches:
               only:
                 - master
+      - build_design-tokens:
+          filters:
+            branches:
+              only:
+                - master
       - commit_next:
          requires:
             - build_icon-library
+            - build_design-tokens
          filters:
             branches:
               only:
@@ -297,6 +321,7 @@ workflows:
       - test_react-component-library:
           requires:
             - build_icon-library
+            - build_design-tokens
           filters:
             branches:
               only:
@@ -304,6 +329,7 @@ workflows:
       - test_visual_regression:
           requires:
             - build_icon-library
+            - build_design-tokens
           filters:
             branches:
               only:
@@ -320,9 +346,15 @@ workflows:
             branches:
               only:
                 - latest
+      - build_design-tokens:
+          filters:
+            branches:
+              only:
+                - latest
       - security_audit:
           requires:
             - build_icon-library
+            - build_design-tokens
           filters:
             branches:
               only:
@@ -330,6 +362,7 @@ workflows:
       - check_commits:
           requires:
             - build_icon-library
+            - build_design-tokens
           filters:
             branches:
               only:
@@ -352,10 +385,12 @@ workflows:
       - test_docs-site:
           requires:
             - build_icon-library
+            - build_design-tokens
             - lint_docs_site
       - test_react-component-library:
           requires:
             - build_icon-library
+            - build_design-tokens
             - lint_react-component-library
       - test_visual_regression:
           requires:
