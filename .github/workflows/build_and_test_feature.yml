@@ -24,14 +24,20 @@ jobs:
             yarn install
             yarn --cwd packages/icon-library build
 
-        - name: Create icon-library tar
-          run: cd packages/icon-library/ && tar -czvf dist.tar.gz dist
+        - name: Build design-tokens
+          run: yarn --cwd packages/design-tokens build
+
+        - name: Create tar
+          run: |
+            cp -R packages/icon-library/dist distil
+            cp -R packages/design-tokens/dist distdt
+            tar -czvf dist.tar.gz distil distdt
 
         - name: Persist icon-library
           uses: actions/upload-artifact@v2
           with:
             name: dist
-            path: packages/icon-library/dist.tar.gz
+            path: ./dist.tar.gz
 
 
      Security_audit:
@@ -64,7 +70,7 @@ jobs:
 
         - name: check commits
           run: |
-            cd packages/icon-library/ && tar -xzf ../../dist.tar.gz && cd ../..
+            tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
             node ./scripts/commitlint ${{ github.event.pull_request._links.html.href }}
             node ./scripts/check-fixup ${{ github.event.pull_request._links.html.href }}
 
@@ -170,7 +176,7 @@ jobs:
 
         - name: Build react components
           run: |
-            cd packages/icon-library/ && tar -xzf ../../dist.tar.gz && cd ../..
+            tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
             yarn --cwd packages/react-component-library build
         - name: Build site
           run: yarn --cwd packages/docs-site build
@@ -213,7 +219,7 @@ jobs:
             JEST_JUNIT_OUTPUT_DIR: test-results/jest
             JEST_JUNIT_OUTPUT_NAME: react-component-results.xml
           run: |
-            cd packages/icon-library/ && tar -xzf ../../dist.tar.gz && cd ../..
+            tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
             yarn --cwd packages/react-component-library jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
 
         - name: Upload test reports to CodeCov
@@ -248,7 +254,7 @@ jobs:
 
         - name: Run visual regression tests
           run: |
-            cd packages/icon-library/ && tar -xzf ../../dist.tar.gz && cd ../..
+            tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
             yarn --cwd packages/react-component-library chromatic --app-code=${{secrets.CHROMATIC_TOKEN}}
 
 
