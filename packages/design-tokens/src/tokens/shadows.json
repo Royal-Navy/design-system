@@ -1,0 +1,19 @@
+{
+  "shadow": {
+    "0": {
+      "value": "0 0 0 transparent"
+    },
+    "1": {
+      "value": "0 1px 3px rgba(0, 0, 0, 0.04)"
+    },
+    "2": {
+      "value": "0 2px 4px rgba(0, 0, 0, 0.08)"
+    },
+    "3": {
+      "value": "0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.14)"
+    },
+    "4": {
+      "value": "0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.12)"
+    }
+  }
+}

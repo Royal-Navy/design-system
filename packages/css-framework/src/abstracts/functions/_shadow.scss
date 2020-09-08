@@ -3,7 +3,7 @@
 
 @function shadow($size) {
   @if map.has-key(vars.$shadows, $size) {
-    @return unquote(map.get(vars.$shadows, $size));
+    @return map.get(vars.$shadows, $size);
   }
 
   @else {

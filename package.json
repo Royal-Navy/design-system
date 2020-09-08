@@ -8,7 +8,8 @@
     "packages/icon-library",
     "packages/react-component-library",
     "packages/fonts",
-    "packages/cra-template-royalnavy"
+    "packages/cra-template-royalnavy",
+    "packages/design-tokens"
   ],
   "engines": {
     "node": ">=10.13.0 <13"

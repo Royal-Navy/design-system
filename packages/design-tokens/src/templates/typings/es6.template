@@ -1,0 +1,10 @@
+/**
+ * Do not edit directly
+ * Generated on <%= new Date().toUTCString() %>
+ */
+
+declare module '@royalnavy/design-tokens' {
+<% _.each(allProperties, function(property) {
+%>  export const <%= property.name %>: string;
+<% }); %>
+}

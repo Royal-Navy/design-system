@@ -5,17 +5,21 @@
 /* stylelint-disable */
 // Shadows Utility
 
+@if (config.$enable-utility-all) {
+  @if (config.$enable-utility-shadows) {
 
-@each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
-  @each $_size, $_shadow in vars.$shadows {
-    @if $_breakpoint == 'root' {
-      .#{config.$utility-ns}-shadow-#{$_size} {
-        box-shadow: #{$_shadow} !important;
-      }
-    } @else {
-      @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
-        .#{$_breakpoint}\:#{config.$utility-ns}shadow-#{$_size} {
+    @each $_breakpoint, $_breakpoint-val in vars.$breakpoints {
+      @each $_size, $_shadow in vars.$shadows {
+        @if $_breakpoint == 'root' {
+          .#{config.$utility-ns}-shadow-#{$_size} {
             box-shadow: #{$_shadow} !important;
+          }
+        } @else {
+          @media only screen and (min-width: map.get($_breakpoint-val, 'breakpoint')) {
+            .#{$_breakpoint}\:#{config.$utility-ns}shadow-#{$_size} {
+                box-shadow: #{$_shadow} !important;
+            }
+          }
         }
       }
     }

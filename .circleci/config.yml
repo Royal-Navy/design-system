@@ -153,7 +153,8 @@ jobs:
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/fonts &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/icon-library &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/react-component-library &&
-            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/cra-template-royalnavy
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/cra-template-royalnavy &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/design-tokens
   publish_next:
     docker: *docker
     steps:
@@ -170,7 +171,8 @@ jobs:
             node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/fonts &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/icon-library &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/react-component-library &&
-            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/cra-template-royalnavy
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/cra-template-royalnavy &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/design-tokens
   commit_next:
     docker: *docker
     steps:

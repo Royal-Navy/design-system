@@ -1,6 +1,11 @@
 @use "../abstracts/mixins" as m;
 @use "../config";
 
-.#{config.$utility-ns}cf {
-  @include m.clearfix;
+@if (config.$enable-utility-all) {
+  @if (config.$enable-utility-clearfix) {
+
+    .#{config.$utility-ns}cf {
+      @include m.clearfix;
+    }
+  }
 }
