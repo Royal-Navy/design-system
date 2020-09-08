@@ -127,7 +127,7 @@ export const WithSidebar = () => (
 )
 WithSidebar.storyName = 'With sidebar'
 
-const WithCustomMonths = () => {
+export const WithCustomMonths = () => {
   const CustomTimelineMonth = (
     index: number,
     dayWidth: number,
@@ -164,7 +164,7 @@ const WithCustomMonths = () => {
 }
 WithCustomMonths.storyName = 'With custom months'
 
-const WithCustomWeeks = () => {
+export const WithCustomWeeks = () => {
   const CustomTimelineWeek = (
     index: number,
     isOddNumber: boolean,
