@@ -4,7 +4,7 @@
     "node": ">=10.13.0 <13"
   },
   "description": "The documentation site for royalnavy.io",
-  "version": "2.14.0-alpha.18",
+  "version": "2.14.0-alpha.19",
   "author": "Royal Navy",
   "license": "Apache-2.0",
   "scripts": {
@@ -44,10 +44,10 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.5.5",
     "@mdx-js/react": "^1.5.5",
-    "@royalnavy/css-framework": "^2.14.0-alpha.18",
-    "@royalnavy/fonts": "^2.14.0-alpha.18",
-    "@royalnavy/icon-library": "^2.14.0-alpha.18",
-    "@royalnavy/react-component-library": "^2.14.0-alpha.18",
+    "@royalnavy/css-framework": "^2.14.0-alpha.19",
+    "@royalnavy/fonts": "^2.14.0-alpha.19",
+    "@royalnavy/icon-library": "^2.14.0-alpha.19",
+    "@royalnavy/react-component-library": "^2.14.0-alpha.19",
     "change-case": "^4.1.1",
     "firacode": "^5.2.0",
     "gatsby": "^2.19.5",
@@ -76,7 +76,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
-    "@royalnavy/eslint-config-react": "^2.14.0-alpha.18",
+    "@royalnavy/eslint-config-react": "^2.14.0-alpha.19",
     "@svgr/cli": "^5.1.0",
     "@testing-library/jest-dom": "^5.0.2",
     "@testing-library/react": "^10.0.2",
