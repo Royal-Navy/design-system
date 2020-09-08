@@ -1,12 +1,28 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
+import { Meta } from '@storybook/react/types-6-0'
 
 import { DataList, DataListItem } from './index'
 
-const stories = storiesOf('DataList', module)
-const examples = storiesOf('DataList/Examples', module)
+export default { component: DataList, title: 'DataList' } as Meta
 
-stories.add('Default', () => (
+const disableDefinitionList = {
+  a11y: {
+    config: {
+      rules: [
+        {
+          id: 'definition-list',
+          enabled: false,
+        },
+        {
+          id: 'dlitem',
+          enabled: false,
+        },
+      ],
+    },
+  },
+}
+
+export const Default = () => (
   <DataList title="Title">
     <DataListItem description="Name">Horatio Nelson</DataListItem>
     <DataListItem description="Age">44</DataListItem>
@@ -15,9 +31,11 @@ stories.add('Default', () => (
     <DataListItem description="Water Temperature">25C</DataListItem>
     <DataListItem description="Wind Speed">8Kts</DataListItem>
   </DataList>
-))
+)
+Default.parameters = disableDefinitionList
+Default.storyName = 'Default'
 
-examples.add('Collapsible', () => (
+export const Collapsible = () => (
   <DataList title="Title" isCollapsible>
     <DataListItem description="Name">Horatio Nelson</DataListItem>
     <DataListItem description="Age">44</DataListItem>
@@ -26,4 +44,6 @@ examples.add('Collapsible', () => (
     <DataListItem description="Water Temperature">25C</DataListItem>
     <DataListItem description="Wind Speed">8Kts</DataListItem>
   </DataList>
-))
+)
+Collapsible.parameters = disableDefinitionList
+Collapsible.storyName = 'Collapsible'
