@@ -36,12 +36,9 @@
   box-shadow: 0 0 0 1px f.color("success", "700");
 }
 
-
 .rn-textarea__label {
   display: block;
-  z-index: 1;
   position: absolute;
-  padding-top: 6px;
   padding-left: f.spacing("6");
   padding-bottom: f.spacing("2");
   right: 14px;
