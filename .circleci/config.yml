@@ -27,7 +27,6 @@ commands:
             - yarn-packages-v2-
       - run: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
 
-
 jobs:
   build_icon-library:
     docker: *docker
@@ -42,7 +41,7 @@ jobs:
       - persist_to_workspace:
           root: /home/circleci/project
           paths:
-            - .
+            - /packages/icon-library
   build_design-tokens:
     docker: *docker
     steps:
@@ -56,7 +55,7 @@ jobs:
       - persist_to_workspace:
           root: /home/circleci/project
           paths:
-            - .
+            - /packages/design-tokens
   security_audit:
     docker: *docker
     steps:
