@@ -87,7 +87,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-jsx-remove-data-test-id": "^2.1.3",
     "babel-polyfill": "^6.26.0",
-    "chromatic": "^4.0.2",
+    "chromatic": "5.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "concurrently": "^5.1.0",
     "css-loader": "^3.4.2",
