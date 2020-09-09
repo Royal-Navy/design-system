@@ -17,8 +17,9 @@ export const Handle: React.FC<HandleProps> = ({
   const isActive: boolean = activeHandleID === id
 
   return (
-    <button
+    <div
       role="slider"
+      aria-label="Select range"
       aria-valuemin={min}
       aria-valuemax={max}
       aria-valuenow={value}
