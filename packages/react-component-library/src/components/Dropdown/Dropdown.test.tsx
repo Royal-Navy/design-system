@@ -31,6 +31,13 @@ describe('Dropdown', () => {
       expect(wrapper.getByText('Dropdown label')).toBeInTheDocument()
     })
 
+    it('should set the ARIA attributes on the input', () => {
+      expect(wrapper.container.querySelector('input')).toHaveAttribute(
+        'aria-label',
+        'Dropdown label'
+      )
+    })
+
     describe('when the dropdown is clicked', () => {
       beforeEach(() => {
         fireEvent.focus(wrapper.container.querySelector('input'))
