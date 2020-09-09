@@ -78,6 +78,13 @@ describe('NumberInput', () => {
       )
     })
 
+    it('should set the default `aria-label` attribute', () => {
+      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+        'aria-label',
+        'Number input'
+      )
+    })
+
     it('should apply the `aria-label` attribute to buttons', () => {
       expect(wrapper.getByTestId('number-input-decrease')).toHaveAttribute(
         'aria-label',
