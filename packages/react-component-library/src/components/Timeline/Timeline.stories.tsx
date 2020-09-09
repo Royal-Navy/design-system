@@ -56,6 +56,7 @@ export const BoundByFixedDates = () => (
     <TimelineRows>{}</TimelineRows>
   </Timeline>
 )
+BoundByFixedDates.parameters = disableScrollableRegionFocusableRule
 BoundByFixedDates.storyName = 'Bound by fixed dates'
 
 export const WithData = () => (
