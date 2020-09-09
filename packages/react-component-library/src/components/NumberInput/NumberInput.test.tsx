@@ -109,6 +109,18 @@ describe('NumberInput', () => {
 
     assertInputValue('')
 
+    it('should set the `aria-labelledby` attribute', () => {
+      const numberInputId = wrapper
+        .getByTestId('number-input-container')
+        .getAttribute('id')
+
+      expect(
+        wrapper
+          .getByTestId('number-input-input')
+          .getAttribute('aria-labelledby')
+      ).toEqual(numberInputId)
+    })
+
     it('should set the name attribute', () => {
       expect(
         wrapper.getByTestId('number-input-input').getAttribute('name')
