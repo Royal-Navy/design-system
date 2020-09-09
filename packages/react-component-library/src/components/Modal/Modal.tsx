@@ -21,6 +21,18 @@ export interface ModalProps extends ComponentWithClass {
   titleId?: string
 }
 
+function getTitleId(title: string, titleId: string) {
+  if (titleId) {
+    return titleId
+  }
+
+  if (title) {
+    return getId('modal-title')
+  }
+
+  return null
+}
+
 export const Modal: React.FC<ModalProps> = ({
   children,
   className,
@@ -31,7 +43,7 @@ export const Modal: React.FC<ModalProps> = ({
   secondaryButton,
   tertiaryButton,
   title,
-  titleId = getId('modal-title'),
+  titleId,
 }) => {
   const { handleOnClose, open } = useOpenClose(isOpen, onClose)
   const classes = classNames(
@@ -48,18 +60,20 @@ export const Modal: React.FC<ModalProps> = ({
     ...primaryButton,
   }
 
+  const modalTitleId = getTitleId(title, titleId)
+
   return (
     <div
       className={classes}
       role="dialog"
       aria-modal
-      aria-labelledby={titleId}
+      aria-labelledby={modalTitleId}
       aria-describedby={descriptionId}
       data-testid="modal-wrapper"
     >
       <article className="rn-modal__main">
         {title && (
-          <Header titleId={titleId} title={title} onClose={handleOnClose} />
+          <Header titleId={modalTitleId} title={title} onClose={handleOnClose} />
         )}
         <section
           id={descriptionId}

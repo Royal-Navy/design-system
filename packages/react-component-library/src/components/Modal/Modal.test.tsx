@@ -41,6 +41,12 @@ describe('Modal', () => {
         )
       })
 
+      it('does not set the `aria-labelledby` attribute', () => {
+        expect(wrapper.getByTestId('modal-wrapper')).not.toHaveAttribute(
+          'aria-labelledby'
+        )
+      })
+
       it('should apply the `role` attribute', () => {
         expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
           'role',
@@ -196,7 +202,7 @@ describe('Modal', () => {
               isOpen
               title={title}
               onClose={onClose}
-              primaryButton={{...primaryButton, icon: undefined}}
+              primaryButton={{ ...primaryButton, icon: undefined }}
             >
               <span>Example child JSX</span>
             </Modal>
@@ -204,9 +210,7 @@ describe('Modal', () => {
         })
 
         it('does not render an icon for the primary button', () => {
-          expect(
-            wrapper.queryByTestId('modal-primary-confirm')
-          ).toBeNull()
+          expect(wrapper.queryByTestId('modal-primary-confirm')).toBeNull()
         })
       })
     })
