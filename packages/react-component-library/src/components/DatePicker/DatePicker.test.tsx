@@ -21,6 +21,25 @@ describe('DatePicker', () => {
   let days: string[]
   let onSubmitSpy: (e: React.FormEvent) => void
 
+  function assertInputButtonAria({
+    ariaExpanded,
+    ariaLabel,
+  }: {
+    ariaExpanded: string
+    ariaLabel: string
+  }) {
+    it('updates the ARIA attributes on the input button', () => {
+      const button = wrapper.getByTestId('datepicker-input-button')
+      const dayPickerId = wrapper
+        .getByTestId('floating-box-content')
+        .getAttribute('id')
+
+      expect(button).toHaveAttribute('aria-expanded', ariaExpanded)
+      expect(button).toHaveAttribute('aria-label', ariaLabel)
+      expect(button).toHaveAttribute('aria-owns', dayPickerId)
+    })
+  }
+
   beforeAll(() => {
     dateSpy = jest
       .spyOn(Date, 'now')
@@ -63,6 +82,11 @@ describe('DatePicker', () => {
       )
     })
 
+    assertInputButtonAria({
+      ariaExpanded: 'false',
+      ariaLabel: 'Show day picker',
+    })
+
     it('should set the `role` attribute for the Day buttons', () => {
       days.forEach((_, index) => {
         expect(
@@ -96,6 +120,11 @@ describe('DatePicker', () => {
         wrapper.getByTestId('datepicker-input-button').click()
       })
 
+      assertInputButtonAria({
+        ariaExpanded: 'true',
+        ariaLabel: 'Hide day picker',
+      })
+
       it('displays the container', () => {
         expect(
           wrapper.getByTestId('datepicker-input-wrapper').classList
@@ -109,6 +138,11 @@ describe('DatePicker', () => {
       describe('and the user clicks it again', () => {
         beforeEach(() => {
           wrapper.getByTestId('datepicker-input-button').click()
+        })
+
+        assertInputButtonAria({
+          ariaExpanded: 'false',
+          ariaLabel: 'Show day picker',
         })
 
         it('hides the container', () => {
