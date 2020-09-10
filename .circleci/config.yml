@@ -109,7 +109,7 @@ jobs:
           environment:
             JEST_JUNIT_OUTPUT_DIR: test-results/jest
             JEST_JUNIT_OUTPUT_NAME: react-component-results.xml
-          command: yarn --cwd packages/react-component-library jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
+          command: yarn --cwd packages/react-component-library test --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
       - store_test_results:
           path: packages/react-component-library/test-results
       - store_artifacts:
