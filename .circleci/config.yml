@@ -152,13 +152,13 @@ jobs:
       - deploy: #deploy step is important to prevent triggering N builds
           name: Publish latest packages
           command: >-
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/design-tokens &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/css-framework &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/eslint-config-react &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/fonts &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/icon-library &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/react-component-library &&
-            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/cra-template-royalnavy &&
-            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/design-tokens
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY latest packages/cra-template-royalnavy
   publish_next:
     docker: *docker
     steps:
@@ -170,13 +170,13 @@ jobs:
       - deploy: #deploy step is important to prevent triggering N builds
           name: Publish next packages
           command: >-
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/design-tokens &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/css-framework &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/eslint-config-react &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/fonts &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/icon-library &&
             node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/react-component-library &&
-            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/cra-template-royalnavy &&
-            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/design-tokens
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/cra-template-royalnavy
   commit_next:
     docker: *docker
     steps:
