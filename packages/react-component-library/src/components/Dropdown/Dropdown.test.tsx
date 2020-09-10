@@ -13,9 +13,9 @@ describe('Dropdown', () => {
       onSelectSpy = jest.fn()
 
       const options = [
-        { label: 'Option 1', value: "1" },
-        { label: 'Option 2', value: "2" },
-        { label: 'Option 3', value: "3" },
+        { label: 'Option 1', value: '1' },
+        { label: 'Option 2', value: '2' },
+        { label: 'Option 3', value: '3' },
       ]
 
       wrapper = render(
@@ -41,7 +41,10 @@ describe('Dropdown', () => {
     describe('when the dropdown is clicked', () => {
       beforeEach(() => {
         fireEvent.focus(wrapper.container.querySelector('input'))
-        fireEvent.keyDown(wrapper.container.querySelector('input'), { key: 'ArrowDown', code: 40 })
+        fireEvent.keyDown(wrapper.container.querySelector('input'), {
+          key: 'ArrowDown',
+          code: 40,
+        })
       })
 
       it('should render three options', () => {
@@ -57,7 +60,7 @@ describe('Dropdown', () => {
 
         it('should call the `onSelect` callback once', () => {
           expect(onSelectSpy).toHaveBeenCalledTimes(1)
-          expect(onSelectSpy).toHaveBeenCalledWith("2")
+          expect(onSelectSpy).toHaveBeenCalledWith('2')
         })
       })
     })
