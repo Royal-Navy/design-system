@@ -46,12 +46,36 @@ describe('NumberInput', () => {
     })
   }
 
-  function assertAriaValue(expected: number) {
-    it('should set the new `aria-valuenow` attribute', () => {
+  function assertAriaValueAttributes({
+    min,
+    max,
+    now,
+    text,
+  }: {
+    min?: number
+    max?: number
+    now: number
+    text: string
+  }) {
+    it('should set the `aria-value*` attribute', () => {
       const container = wrapper.getByTestId(
         'number-input-container'
       ) as HTMLDivElement
-      expect(container).toHaveAttribute('aria-valuenow', `${expected}`)
+
+      if (min) {
+        expect(container).toHaveAttribute('aria-valuemin', min.toString())
+      } else {
+        expect(container).not.toHaveAttribute('aria-valuemin')
+      }
+
+      if (max) {
+        expect(container).toHaveAttribute('aria-valuemax', max.toString())
+      } else {
+        expect(container).not.toHaveAttribute('aria-valuemax')
+      }
+
+      expect(container).toHaveAttribute('aria-valuenow', now.toString())
+      expect(container).toHaveAttribute('aria-valuetext', text)
     })
   }
 
@@ -104,6 +128,8 @@ describe('NumberInput', () => {
       )
     })
 
+    assertAriaValueAttributes({ min: null, max: null, now: 0, text: '0' })
+
     it('should not display a start adornment', () => {
       expect(
         wrapper.queryAllByTestId('number-input-start-adornment')
@@ -114,7 +140,7 @@ describe('NumberInput', () => {
       expect(wrapper.queryAllByTestId('number-input-label')).toHaveLength(0)
     })
 
-    assertInputValue('')
+    assertInputValue('0')
 
     it('should set the `aria-labelledby` attribute', () => {
       const numberInputId = wrapper
@@ -476,7 +502,12 @@ describe('NumberInput', () => {
     })
 
     assertInputValue('1000 m')
-    assertAriaValue(1000)
+    assertAriaValueAttributes({
+      min: null,
+      max: null,
+      now: 1000,
+      text: '1000 m',
+    })
 
     describe('and the increase button is clicked', () => {
       beforeEach(() => {
@@ -484,7 +515,12 @@ describe('NumberInput', () => {
       })
 
       assertInputValue('1001 m')
-      assertAriaValue(1001)
+      assertAriaValueAttributes({
+        min: null,
+        max: null,
+        now: 1001,
+        text: '1001 m',
+      })
       assertOnChangeCall(1001)
     })
 
@@ -494,7 +530,12 @@ describe('NumberInput', () => {
       })
 
       assertInputValue('999 m')
-      assertAriaValue(999)
+      assertAriaValueAttributes({
+        min: null,
+        max: null,
+        now: 999,
+        text: '999 m',
+      })
       assertOnChangeCall(999)
     })
   })
@@ -513,7 +554,12 @@ describe('NumberInput', () => {
     })
 
     assertInputValue('£ 1000')
-    assertAriaValue(1000)
+    assertAriaValueAttributes({
+      min: null,
+      max: null,
+      now: 1000,
+      text: '£ 1000',
+    })
 
     describe('and the increase button is clicked', () => {
       beforeEach(() => {
@@ -521,7 +567,12 @@ describe('NumberInput', () => {
       })
 
       assertInputValue('£ 1001')
-      assertAriaValue(1001)
+      assertAriaValueAttributes({
+        min: null,
+        max: null,
+        now: 1001,
+        text: '£ 1001',
+      })
       assertOnChangeCall(1001)
     })
 
@@ -531,7 +582,12 @@ describe('NumberInput', () => {
       })
 
       assertInputValue('£ 999')
-      assertAriaValue(999)
+      assertAriaValueAttributes({
+        min: null,
+        max: null,
+        now: 999,
+        text: '£ 999',
+      })
       assertOnChangeCall(999)
     })
 
@@ -546,7 +602,12 @@ describe('NumberInput', () => {
       })
 
       assertInputValue('£ 1000')
-      assertAriaValue(1000)
+      assertAriaValueAttributes({
+        min: null,
+        max: null,
+        now: 1000,
+        text: '£ 1000',
+      })
       assertOnChangeCall(1000)
     })
   })

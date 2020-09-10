@@ -22,7 +22,7 @@ export function useValue(value: number) {
   const [nextValue, setNextValue] = useState<number>()
 
   const displayValue = useMemo(() => {
-    return nextValue || committedValue
+    return nextValue || committedValue || value
   }, [committedValue, nextValue])
 
   useEffect(() => {

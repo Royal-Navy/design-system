@@ -78,7 +78,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   step = 1,
   unit,
   unitPosition = UNIT_POSITION.AFTER,
-  value,
+  value = 0,
   ...rest
 }) => {
   const { hasFocus, onInputBlur, onInputFocus } = useFocus(onBlur)
