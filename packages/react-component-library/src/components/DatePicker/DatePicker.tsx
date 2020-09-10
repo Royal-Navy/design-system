@@ -121,6 +121,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   })
 
   const titleId = getId('datepicker-title')
+  const contentId = getId('day-picker')
 
   /**
    * Type error in upstream Tether package. Fix submitted.
@@ -142,6 +143,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           <DatePickerInput
             ref={ref}
             className={classes}
+            dayPickerId={contentId}
             id={id}
             name={name}
             label={label}
@@ -155,6 +157,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         ),
         renderElement: (ref: React.RefObject<HTMLDivElement>) => (
           <FloatingBox
+            contentId={contentId}
             ref={ref}
             position={PLACEMENTS.ARROW_POSITION}
             scheme={FLOATING_BOX_SCHEME.LIGHT}

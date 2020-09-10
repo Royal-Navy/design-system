@@ -24,6 +24,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <Select
+      aria-label={label}
       className="rn-dropdown"
       classNamePrefix="rn-dropdown"
       components={{ DropdownIndicator }}

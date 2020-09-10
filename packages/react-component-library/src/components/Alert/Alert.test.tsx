@@ -12,6 +12,12 @@ describe('Alert', () => {
       wrapper = render(<Alert>Description</Alert>)
     })
 
+    it('should not set the `aria-labelledby` attribute', () => {
+      expect(wrapper.getByTestId('alert')).not.toHaveAttribute(
+        'aria-labelledby'
+      )
+    })
+
     it('should set the `role` attribute to `alert`', () => {
       expect(wrapper.getByTestId('alert')).toHaveAttribute('role', 'alert')
     })

@@ -61,7 +61,7 @@ export const Alert: React.FC<AlertProps> = ({
     `rn-alert__description--${variant}`
   )
 
-  const titleId = getId('alert-title')
+  const titleId = title ? getId('alert-title') : null
   const descriptionId = getId('alert-description')
 
   return (

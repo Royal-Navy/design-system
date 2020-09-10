@@ -39,6 +39,16 @@ describe('RangeSlider', () => {
       expect(wrapper.queryAllByTestId('rangeslider-handle').length).toBe(1)
     })
 
+    it('should set the ARIA attributes on the handle', () => {
+      const handle = wrapper.getByTestId('rangeslider-handle')
+
+      expect(handle).toHaveAttribute('role', 'slider')
+      expect(handle).toHaveAttribute('aria-label', 'Select range')
+      expect(handle).toHaveAttribute('aria-valuemin', '0')
+      expect(handle).toHaveAttribute('aria-valuemax', '40')
+      expect(handle).toHaveAttribute('aria-valuenow', '20')
+    })
+
     it('should render correct number of ticks', () => {
       expect(wrapper.queryAllByTestId('rangeslider-tick').length).toBe(5)
     })
@@ -65,6 +75,12 @@ describe('RangeSlider', () => {
           key: 'ArrowRight',
           code: 39,
         })
+      })
+
+      it('should update the `aria-valuenow` attribute on the handle', () => {
+        const handle = wrapper.getByTestId('rangeslider-handle')
+
+        expect(handle).toHaveAttribute('aria-valuenow', '30')
       })
 
       it('invokes the onUpdateSpy callback', () => {

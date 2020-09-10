@@ -70,28 +70,6 @@ stories.add('Horizontal', () => (
   <Nav navItems={navItems} orientation="horizontal" />
 ))
 
-stories.add('Sizes', () => (
-  <div>
-    <Nav navItems={navItems} orientation="horizontal" size="small" />
-    <br />
-    <Nav navItems={navItems} orientation="horizontal" />
-    <br />
-    <Nav navItems={navItems} orientation="horizontal" size="large" />
-    <br />
-    <Nav navItems={navItems} orientation="horizontal" size="xlarge" />
-
-    <hr />
-
-    <Nav navItems={navItems} orientation="vertical" size="small" />
-    <br />
-    <Nav navItems={navItems} orientation="vertical" />
-    <br />
-    <Nav navItems={navItems} orientation="vertical" size="large" />
-    <br />
-    <Nav navItems={navItems} orientation="vertical" size="xlarge" />
-  </div>
-))
-
 const customNavItems = [
   {
     to: '#',

@@ -5,6 +5,7 @@ import { TriangleDown } from '../../icons'
 
 export interface DatePickerInputProps extends ComponentWithClass {
   ref: React.Ref<HTMLDivElement>
+  dayPickerId?: string
   id?: string
   label?: string
   name?: string
@@ -20,6 +21,7 @@ export const DatePickerInput = forwardRef(
   (props: DatePickerInputProps, ref?: React.Ref<HTMLDivElement>) => {
     const {
       className,
+      dayPickerId,
       id,
       label,
       name,
@@ -61,6 +63,9 @@ export const DatePickerInput = forwardRef(
             />
           </div>
           <button
+            aria-expanded={!!isOpen}
+            aria-label={`${isOpen ? 'Hide' : 'Show'} day picker`}
+            aria-owns={dayPickerId}
             type="button"
             className="rn-date-picker__end-adornment"
             onClick={isOpen ? onClose : onFocus}

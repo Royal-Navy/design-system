@@ -63,7 +63,7 @@ describe('TabSet', () => {
         )
       })
 
-      it('should set the `aria-labelledby` attribute to the ID of the tab', () => {
+      it('should set the `aria-labelledby` and `id` attributes to the ID of the tab', () => {
         const tabId0 = wrapper
           .getAllByTestId('tab-set-tab')[0]
           .getAttribute('aria-controls')
@@ -73,12 +73,22 @@ describe('TabSet', () => {
           tabId0
         )
 
+        expect(wrapper.getAllByTestId('tab-set-content')[0]).toHaveAttribute(
+          'id',
+          tabId0
+        )
+
         const tabId1 = wrapper
           .getAllByTestId('tab-set-tab')[1]
           .getAttribute('aria-controls')
 
         expect(wrapper.getAllByTestId('tab-set-content')[1]).toHaveAttribute(
           'aria-labelledby',
+          tabId1
+        )
+
+        expect(wrapper.getAllByTestId('tab-set-content')[1]).toHaveAttribute(
+          'id',
           tabId1
         )
       })
@@ -326,17 +336,15 @@ describe('TabSet', () => {
       )
     })
 
-    it('should add the `aria-hidden` attribute', () => {
-      expect(wrapper.getByTestId('scroll-left')).toHaveAttribute('aria-hidden')
-      expect(wrapper.getByTestId('scroll-right')).toHaveAttribute('aria-hidden')
-    })
-
-    it('should present a scroll left button', () => {
-      expect(wrapper.getByTestId('scroll-left')).toBeInTheDocument()
-    })
-
-    it('should present a scroll right button', () => {
-      expect(wrapper.getByTestId('scroll-right')).toBeInTheDocument()
+    it('should add the `aria-label` attributes to the scroll buttons', () => {
+      expect(wrapper.getByTestId('scroll-left')).toHaveAttribute(
+        'aria-label',
+        'Scroll left'
+      )
+      expect(wrapper.getByTestId('scroll-right')).toHaveAttribute(
+        'aria-label',
+        'Scroll right'
+      )
     })
 
     describe('when scrolling right', () => {

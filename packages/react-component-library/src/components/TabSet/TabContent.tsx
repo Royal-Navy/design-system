@@ -22,6 +22,7 @@ export const TabContent: React.FC<TabContentProps> = ({
       role="tabpanel"
       aria-labelledby={tabId}
       aria-hidden={!isActive}
+      id={tabId}
       tabIndex={0}
       data-testid="tab-set-content"
     >

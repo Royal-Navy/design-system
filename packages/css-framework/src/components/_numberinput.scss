@@ -30,9 +30,9 @@
 
 .rn-numberinput.is-invalid .rn-numberinput__input-wrapper {
   border-radius: 4px;
-  box-shadow: 2px 2px 0 0 f.color("danger", "600"),
-    -2px -2px 0 0 f.color("danger", "600"),
-    2px -2px 0 0 f.color("danger", "600"), -2px 2px 0 0 f.color("danger", "600");
+  box-shadow: 2px 2px 0 0 f.color("danger", "700"),
+    -2px -2px 0 0 f.color("danger", "700"),
+    2px -2px 0 0 f.color("danger", "700"), -2px 2px 0 0 f.color("danger", "700");
 }
 
 .rn-numberinput.is-valid .rn-numberinput__input-wrapper {

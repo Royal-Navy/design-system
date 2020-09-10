@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { EndAdornment } from './EndAdornment'
 import { Footnote } from './Footnote'
+import { getId } from '../../helpers'
 import { Input } from './Input'
 import { StartAdornment } from './StartAdornment'
 import { useFocus } from './useFocus'
@@ -77,7 +78,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   step = 1,
   unit,
   unitPosition = UNIT_POSITION.AFTER,
-  value,
+  value = 0,
   ...rest
 }) => {
   const { hasFocus, onInputBlur, onInputFocus } = useFocus(onBlur)
@@ -113,11 +114,14 @@ export const NumberInput: React.FC<NumberInputProps> = ({
     }
   }
 
+  const numberInputId = getId('number-input')
+
   return (
     <div
-      aria-label={label}
+      aria-label={label || 'Number input'}
       className={classes}
       data-testid="number-input-container"
+      id={numberInputId}
       role="spinbutton"
       aria-valuemin={min}
       aria-valuemax={max}
@@ -128,6 +132,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
         <StartAdornment>{startAdornment}</StartAdornment>
 
         <Input
+          aria-labelledby={numberInputId}
           id={id}
           isDisabled={isDisabled}
           isCondensed={isCondensed}
