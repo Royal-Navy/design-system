@@ -220,7 +220,7 @@ jobs:
             JEST_JUNIT_OUTPUT_NAME: react-component-results.xml
           run: |
             tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
-            yarn --cwd packages/react-component-library jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
+            yarn --cwd packages/react-component-library test --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
 
         - name: Upload test reports to CodeCov
           run: bash <(curl -s https://codecov.io/bash)
@@ -230,6 +230,30 @@ jobs:
           with:
             name: reacttest
             path: packages/react-component-library/test-results/jest/react-component-results.xml
+
+
+     Test_a11y:
+       runs-on: ubuntu-latest
+       needs: [Build_icon_library, Lint_react-component-library]
+       steps:
+         - name: Git clone repository
+           uses: actions/checkout@v2
+
+         - name: Cache Node modules
+           uses: actions/cache@v2
+           with:
+             path: '**/node_modules'
+             key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+         - name: Attach workspace
+           uses: actions/download-artifact@v2
+           with:
+             name: dist
+
+         - name: Jest a11y
+           run: |
+             tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
+             yarn --cwd packages/react-component-library test:a11y
 
 
      Test_visual_regression:
