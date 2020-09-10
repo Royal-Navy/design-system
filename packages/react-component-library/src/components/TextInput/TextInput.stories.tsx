@@ -81,12 +81,6 @@ stories.add('Formik', () => {
             label="Fruit"
             startAdornment={<IconCrop />}
           />
-          <Field
-            name="search"
-            component={FormikTextInput}
-            placeholder="search"
-            endAdornment={<IconSave />}
-          />
           <Button variant="secondary" onClick={action('Cancel')}>
             Cancel
           </Button>
