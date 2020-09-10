@@ -3,7 +3,6 @@ import classNames from 'classnames'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineProvider } from './context'
-import { TimelineComponent } from './types'
 
 import {
   TimelineDays,
@@ -48,29 +47,20 @@ export interface TimelineProps extends ComponentWithClass {
   range?: number
 }
 
-function isComponentOf<T extends TimelineComponent>(
-  item: T,
-  names: string[]
-): item is T {
-  const typeName: string | null = (item as T)?.type?.name
-
-  return names.includes(typeName)
-}
-
 function extractChildren(
   children: timelineChildrenType | timelineChildrenType[],
-  names: string[],
+  types: React.ReactElement['type'][],
   inverse?: boolean
 ) {
-  return (children as []).filter((child) => {
-    return inverse ? !isComponentOf(child, names) : isComponentOf(child, names)
+  return (children as []).filter((child: React.ReactElement) => {
+    return inverse ? !types.includes(child?.type) : types.includes(child?.type)
   })
 }
 
 function hasTimelineSideComponent(
   children: timelineChildrenType | timelineChildrenType[]
 ) {
-  const sideChildren = extractChildren(children, [TimelineSide.name])
+  const sideChildren = extractChildren(children, [TimelineSide])
 
   if (!sideChildren.length) {
     return false
@@ -97,12 +87,12 @@ export const Timeline: React.FC<TimelineProps> = ({
   const rootChildren = extractChildren(
     children,
     [
-      TimelineDays.name,
-      TimelineMonths.name,
-      TimelineRows.name,
-      TimelineSide.name,
-      TimelineTodayMarker.name,
-      TimelineWeeks.name,
+      TimelineDays,
+      TimelineMonths,
+      TimelineRows,
+      TimelineSide,
+      TimelineTodayMarker,
+      TimelineWeeks,
     ],
     true
   )
@@ -110,13 +100,13 @@ export const Timeline: React.FC<TimelineProps> = ({
   const hasTimelineSide = hasTimelineSideComponent(children)
 
   const headChildren = extractChildren(children, [
-    TimelineDays.name,
-    TimelineWeeks.name,
-    TimelineMonths.name,
-    TimelineTodayMarker.name,
+    TimelineDays,
+    TimelineWeeks,
+    TimelineMonths,
+    TimelineTodayMarker,
   ])
 
-  const bodyChildren = extractChildren(children, [TimelineRows.name])
+  const bodyChildren = extractChildren(children, [TimelineRows])
 
   const innerClasses = classNames('timeline__inner', {
     'timeline__inner--has-side': hasSide || hasTimelineSide,
