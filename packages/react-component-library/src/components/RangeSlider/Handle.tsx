@@ -29,6 +29,7 @@ export const Handle: React.FC<HandleProps> = ({
       }}
       {...getHandleProps(id)}
       data-value={Math.floor(value)}
+      data-percent={`${Math.floor(percent)}%`}
       data-testid="rangeslider-handle"
     />
   )

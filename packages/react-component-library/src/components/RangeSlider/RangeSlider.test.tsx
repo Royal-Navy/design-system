@@ -228,4 +228,27 @@ describe('RangeSlider', () => {
       expect(wrapper.queryAllByTestId('rangeslider-handle').length).toBe(3)
     })
   })
+
+  describe('when the `hasPercentage` prop is provided', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <RangeSlider
+          domain={[0, 40]}
+          mode={1}
+          values={[20]}
+          tracksLeft
+          tickCount={4}
+          thresholds={[40, 60]}
+          hasPercentage
+        />
+      )
+    })
+
+    it('should display the percentage value next to the handle', () => {
+      expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
+        'data-percent',
+        '50%'
+      )
+    })
+  })
 })

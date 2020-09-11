@@ -88,15 +88,26 @@ $range-slider-above-thresholds: f.color("action", "500");
     transform: translate(-50%, -225%);
     font-size: f.font-size("xs");
     color: f.color("neutral", "600");
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.15s ease-in-out;
+  }
+
+  &::before {
+    content: attr(data-percent);
+    position: absolute;
+    transform: translate(-50%, -325%);
+    font-size: f.font-size("s");
+    color: f.color("neutral", "300");
+    opacity: 1;
+    transition: opacity 0.15s ease-in-out;
+    font-weight: 600;
   }
 
   &.is-active, &:focus {
     box-shadow: 0px 0px 0px 7px rgba(f.color("action", "200"), 0.5);
     outline: none;
 
-    &::after {
+    &::after, &::before {
       opacity: 1;
     }
   }
@@ -150,4 +161,10 @@ $range-slider-above-thresholds: f.color("action", "500");
   font-size: f.font-size("xs");
   color: f.color("neutral", "400");
   text-align: center;
+}
+
+.rn-rangeslider:not(.has-percentage) {
+  .rn-rangeslider__handle::before {
+    display: none;
+  }
 }
