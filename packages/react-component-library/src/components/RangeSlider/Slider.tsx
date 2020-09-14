@@ -96,6 +96,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
                   activeHandleID={activeHandleID}
                   getHandleProps={getHandleProps}
                   displayUnit={displayUnit}
+                  thresholds={thresholds}
                 />
               ))}
             </div>
