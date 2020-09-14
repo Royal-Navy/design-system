@@ -122,14 +122,17 @@ $range-slider-above-thresholds: f.color("action", "500");
   cursor: pointer;
 }
 
+.rn-rangeslider__tick--below-first-threshold,
 .rn-rangeslider__track--below-first-threshold {
   background-color: $range-slider-track-below-first-threshold;
 }
 
+.rn-rangeslider__tick--between-thresholds,
 .rn-rangeslider__track--between-thresholds {
   background-color: $range-slider-track-between-thresholds;
 }
 
+.rn-rangeslider__tick--above-thresholds,
 .rn-rangeslider__track--above-thresholds {
   background-color: $range-slider-above-thresholds;
 }
@@ -148,10 +151,9 @@ $range-slider-above-thresholds: f.color("action", "500");
   width: 2px;
   height: 12px;
   transform: translateY(-50%);
-  background-color: $range-slider-bg-colour;
 
-  &.is-active {
-    background-color: $range-slider-track-colour;
+  &:not(.is-active) {
+    background-color: $range-slider-bg-colour;
   }
 }
 

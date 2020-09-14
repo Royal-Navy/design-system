@@ -141,6 +141,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
                     values={sliderValues}
                     domain={domain}
                     isReversed={isReversed}
+                    thresholds={thresholds}
                   />
                 ))}
               </div>
