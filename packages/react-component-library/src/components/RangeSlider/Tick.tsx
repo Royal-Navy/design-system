@@ -2,6 +2,8 @@ import React from 'react'
 import { SliderItem } from 'react-compound-slider'
 import classNames from 'classnames'
 
+import { useThresholdClasses } from './useThresholdClasses'
+
 interface TickProps {
   tick: SliderItem
   count: number
@@ -14,21 +16,6 @@ interface TickProps {
 
 function isActive(values: ReadonlyArray<number>, tickValue: number): boolean {
   return values.some((item) => item >= tickValue)
-}
-
-function getThresholdClasses(percent: number, thresholds: number[]) {
-  const singleThreshold = thresholds?.length === 1
-  const doubleThreshold = thresholds?.length === 2
-
-  return {
-    'rn-rangeslider__tick--below-first-threshold':
-      (singleThreshold || doubleThreshold) && percent <= thresholds[0],
-    'rn-rangeslider__tick--between-thresholds':
-      doubleThreshold && percent < thresholds[1] && percent >= thresholds[0],
-    'rn-rangeslider__tick--above-thresholds':
-      (singleThreshold || doubleThreshold) &&
-      percent >= thresholds[thresholds.length - 1],
-  }
 }
 
 export const Tick: React.FC<TickProps> = ({
@@ -45,7 +32,7 @@ export const Tick: React.FC<TickProps> = ({
 
   const tickClasses = classNames('rn-rangeslider__tick', {
     'is-active': isActive(values, tickValue),
-    ...getThresholdClasses(percent, thresholds),
+    ...useThresholdClasses(percent, thresholds, 'tick'),
   })
 
   return (

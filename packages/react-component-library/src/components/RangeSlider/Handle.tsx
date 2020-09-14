@@ -2,6 +2,8 @@ import React from 'react'
 import { GetHandleProps, SliderItem } from 'react-compound-slider'
 import classNames from 'classnames'
 
+import { useThresholdClasses } from './useThresholdClasses'
+
 interface HandleProps {
   activeHandleID: string
   domain: ReadonlyArray<number>
@@ -9,21 +11,6 @@ interface HandleProps {
   getHandleProps: GetHandleProps
   displayUnit?: string
   thresholds?: number[]
-}
-
-function getThresholdClasses(percent: number, thresholds: number[]) {
-  const singleThreshold = thresholds?.length === 1
-  const doubleThreshold = thresholds?.length === 2
-
-  return {
-    'rn-rangeslider__handle--below-first-threshold':
-      (singleThreshold || doubleThreshold) && percent <= thresholds[0],
-    'rn-rangeslider__handle--between-thresholds':
-      doubleThreshold && percent < thresholds[1] && percent >= thresholds[0],
-    'rn-rangeslider__handle--above-thresholds':
-      (singleThreshold || doubleThreshold) &&
-      percent >= thresholds[thresholds.length - 1],
-  }
 }
 
 export const Handle: React.FC<HandleProps> = ({
@@ -38,7 +25,7 @@ export const Handle: React.FC<HandleProps> = ({
 
   const classes = classNames('rn-rangeslider__handle', {
     'is-active': isActive,
-    ...getThresholdClasses(percent, thresholds),
+    ...useThresholdClasses(percent, thresholds, 'handle'),
   })
 
   return (
