@@ -135,6 +135,35 @@ $range-slider-above-thresholds: f.color("action", "500");
   cursor: pointer;
 }
 
+.rn-rangeslider__ticks {
+  div:first-of-type,
+  div:last-of-type {
+    .rn-rangeslider__tick {
+      height: 16px;
+    }
+  }
+}
+
+.rn-rangeslider__tick {
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  transform: translateY(-50%);
+  background-color: $range-slider-above-thresholds;
+
+  &:not(.is-active) {
+    background-color: $range-slider-bg-colour;
+  }
+}
+
+.rn-rangeslider__label {
+  position: absolute;
+  margin-top: 22px;
+  font-size: f.font-size("xs");
+  color: f.color("neutral", "400");
+  text-align: center;
+}
+
 .rn-rangeslider__tick--below-first-threshold,
 .rn-rangeslider__track--below-first-threshold,
 .rn-rangeslider__handle--below-first-threshold {
@@ -166,34 +195,6 @@ $range-slider-above-thresholds: f.color("action", "500");
     color: $range-slider-above-thresholds;
     background-color: rgba($range-slider-above-thresholds, .25);
   }
-}
-
-.rn-rangeslider__ticks {
-  div:first-of-type,
-  div:last-of-type {
-    .rn-rangeslider__tick {
-      height: 16px;
-    }
-  }
-}
-
-.rn-rangeslider__tick {
-  position: absolute;
-  width: 2px;
-  height: 12px;
-  transform: translateY(-50%);
-
-  &:not(.is-active) {
-    background-color: $range-slider-bg-colour;
-  }
-}
-
-.rn-rangeslider__label {
-  position: absolute;
-  margin-top: 22px;
-  font-size: f.font-size("xs");
-  color: f.color("neutral", "400");
-  text-align: center;
 }
 
 .rn-rangeslider:not(.has-percentage) {
