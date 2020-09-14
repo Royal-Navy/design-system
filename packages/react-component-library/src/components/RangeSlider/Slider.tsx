@@ -24,6 +24,7 @@ interface RangeSliderProps
   isReversed?: boolean
   thresholds?: number[]
   hasPercentage?: boolean
+  displayUnit?: string
 }
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
@@ -42,6 +43,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   onUpdate,
   thresholds,
   hasPercentage,
+  displayUnit,
   ...rest
 }) => {
   const [sliderValues, setSliderValues] = useState(values)
@@ -93,6 +95,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
                   domain={domain}
                   activeHandleID={activeHandleID}
                   getHandleProps={getHandleProps}
+                  displayUnit={displayUnit}
                 />
               ))}
             </div>

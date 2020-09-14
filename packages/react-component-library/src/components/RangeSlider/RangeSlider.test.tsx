@@ -255,4 +255,27 @@ describe('RangeSlider', () => {
       )
     })
   })
+
+  describe('when the `displayUnit` prop is provided', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <RangeSlider
+          domain={[0, 40]}
+          mode={1}
+          values={[20]}
+          tracksLeft
+          tickCount={4}
+          thresholds={[40, 60]}
+          displayUnit="pt"
+        />
+      )
+    })
+
+    it('should append the display unit to the handle label', () => {
+      expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
+        'data-value',
+        '20pt'
+      )
+    })
+  })
 })

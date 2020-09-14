@@ -6,6 +6,7 @@ interface HandleProps {
   domain: ReadonlyArray<number>
   handle: SliderItem
   getHandleProps: GetHandleProps
+  displayUnit?: string
 }
 
 export const Handle: React.FC<HandleProps> = ({
@@ -13,6 +14,7 @@ export const Handle: React.FC<HandleProps> = ({
   domain: [min, max],
   handle: { id, value, percent },
   getHandleProps,
+  displayUnit,
 }) => {
   const isActive: boolean = activeHandleID === id
 
@@ -28,7 +30,7 @@ export const Handle: React.FC<HandleProps> = ({
         left: `${percent}%`,
       }}
       {...getHandleProps(id)}
-      data-value={Math.floor(value)}
+      data-value={`${Math.floor(value)}${displayUnit || ''}`}
       data-percent={`${Math.floor(percent)}%`}
       data-testid="rangeslider-handle"
     />
