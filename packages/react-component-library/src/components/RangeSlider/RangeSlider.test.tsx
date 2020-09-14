@@ -35,6 +35,10 @@ describe('RangeSlider', () => {
       )
     })
 
+    it('should render the ticks', () => {
+      expect(wrapper.getAllByTestId('rangeslider-tick')).toHaveLength(5)
+    })
+
     it('should render a single handle', () => {
       expect(wrapper.queryAllByTestId('rangeslider-handle').length).toBe(1)
     })

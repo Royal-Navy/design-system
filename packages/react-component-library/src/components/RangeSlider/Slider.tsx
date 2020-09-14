@@ -128,7 +128,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
             </div>
           )}
         </Tracks>
-        {step && (
+        {tickCount && (
           <Ticks count={tickCount}>
             {({ ticks }) => (
               <div className="rn-rangeslider__ticks">
