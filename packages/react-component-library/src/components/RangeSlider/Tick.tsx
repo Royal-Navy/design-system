@@ -13,13 +13,7 @@ interface TickProps {
 }
 
 function isActive(values: ReadonlyArray<number>, tickValue: number): boolean {
-  const valuesBelow = values.some((item) => item <= tickValue)
-  const valuesAbove = values.some((item) => item >= tickValue)
-
-  const belowSingleHandle = values.length === 1 && values[0] >= tickValue
-  const betweenMultipleHandles = valuesBelow && valuesAbove
-
-  return belowSingleHandle || betweenMultipleHandles
+  return values.some((item) => item >= tickValue)
 }
 
 function getThresholdClasses(percent: number, thresholds: number[]) {
