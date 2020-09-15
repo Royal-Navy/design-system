@@ -35,6 +35,13 @@ describe('RangeSlider', () => {
       )
     })
 
+    it('should set the correct `tabindex`', () => {
+      expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
+        'tabindex',
+        '0'
+      )
+    })
+
     it('should render the ticks', () => {
       expect(wrapper.getAllByTestId('rangeslider-tick')).toHaveLength(5)
     })
@@ -230,6 +237,18 @@ describe('RangeSlider', () => {
 
     it('should render two handles', () => {
       expect(wrapper.queryAllByTestId('rangeslider-handle')).toHaveLength(3)
+    })
+
+    it('should set the correct `tabindex`', () => {
+      expect(wrapper.getAllByTestId('rangeslider-handle')[0]).toHaveAttribute(
+        'tabindex',
+        '0'
+      )
+
+      expect(wrapper.getAllByTestId('rangeslider-handle')[1]).toHaveAttribute(
+        'tabindex',
+        '1'
+      )
     })
   })
 
