@@ -716,6 +716,37 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when events have time specified', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineHours blockSize={12} />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 5, 6, 0, 0)}
+                  endDate={new Date(2020, 3, 7, 18, 0, 0)}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('positions the event correctly', () => {
+      expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
+        left: `255px`,
+      })
+    })
+  })
+
   describe('when rows has `renderColumns` specified', () => {
     const CustomColumn = ({
       index,
