@@ -27,6 +27,7 @@ A collection of composable and presentation agnostic Compound Components, Hooks 
   - [TimelineMonths](#timelinemonths)
   - [TimelineWeeks](#timelineweeks)
   - [TimelineDays](#timelinedays)
+  - [TimelineHours](#timelinehours)
   - [TimelineRows](#timelinerows)
   - [TimelineRow](#timelinerow)
   - [TimelineEvents](#timelineevents)
@@ -437,6 +438,32 @@ Through the use of clever composition and custom styling, it's possible to creat
     <tr>
       <td>render</td>
       <td>Function<&#8205;index: number, dayWidth: number, date: Date&#8205;></td>
+      <td>False</td>
+      <td>-</td>
+      <td>Supply a custom presentation layer</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td colspan="5"><h3>TimelineHours</h3></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>blockSize</td>
+      <td>number</td>
+      <td>False</td>
+      <td>6</td>
+      <td>Number of hours per block in a day</td>
+    </tr>
+    <tr>
+      <td>render</td>
+      <td>Function<&#8205;width: number, time: string&#8205;></td>
       <td>False</td>
       <td>-</td>
       <td>Supply a custom presentation layer</td>
