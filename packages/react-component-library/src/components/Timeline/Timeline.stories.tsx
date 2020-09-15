@@ -16,6 +16,7 @@ import {
   TimelineDays,
   TimelineSide,
 } from '.'
+import { TIMELINE_BLOCK_SIZE } from './constants'
 
 export default { component: Timeline, title: 'Timeline' } as Meta
 
@@ -139,7 +140,7 @@ export const WithHours = () => (
     <TimelineMonths />
     <TimelineWeeks />
     <TimelineDays />
-    <TimelineHours blockSize={6} />
+    <TimelineHours blockSize={TIMELINE_BLOCK_SIZE.QUARTER_DAY} />
     <TimelineRows>
       <TimelineRow name="Row 1">
         <TimelineEvents>

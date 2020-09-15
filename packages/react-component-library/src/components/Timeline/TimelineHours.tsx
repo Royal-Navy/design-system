@@ -2,17 +2,22 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { getKey } from '../../helpers'
+import { TIMELINE_BLOCK_SIZE } from './constants'
 import { TimelineContext } from './context'
 import { TimelineHour } from './TimelineHour'
 import { TimelineHeaderRow } from './TimelineHeaderRow'
 
+type BlockSizeType =
+  | typeof TIMELINE_BLOCK_SIZE.QUARTER_DAY
+  | typeof TIMELINE_BLOCK_SIZE.HALF_DAY
+
 export interface TimelineHoursWithRenderContentProps {
-  blockSize?: number
+  blockSize?: BlockSizeType
   render: (width: number, time: string) => React.ReactElement
 }
 
 export interface TimelineHoursWithChildrenProps {
-  blockSize?: number
+  blockSize?: BlockSizeType
   render?: never
 }
 

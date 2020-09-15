@@ -4,10 +4,15 @@ const DATE_DAY_FORMAT = 'dd'
 const DATE_MONTH_FORMAT = 'MMMM yyyy'
 const DATE_WEEK_FORMAT = 'dd/MM'
 
+const TIMELINE_BLOCK_SIZE = {
+  QUARTER_DAY: 6,
+  HALF_DAY: 12,
+} as const
+
 const DEFAULTS = {
   DAY_WIDTH: 30,
   RANGE_IN_MONTHS: 3,
-  HOURS_BLOCK_SIZE: 6,
+  HOURS_BLOCK_SIZE: TIMELINE_BLOCK_SIZE.QUARTER_DAY,
 } as const
 
 const NO_DATA_MESSAGE = 'No data available'
@@ -21,5 +26,6 @@ export {
   DATE_WEEK_FORMAT,
   DEFAULTS,
   NO_DATA_MESSAGE,
+  TIMELINE_BLOCK_SIZE,
   WEEK_START
 }

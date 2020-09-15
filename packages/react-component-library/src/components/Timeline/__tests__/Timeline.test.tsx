@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
-import { DEFAULTS, NO_DATA_MESSAGE } from '../constants'
+import { DEFAULTS, NO_DATA_MESSAGE, TIMELINE_BLOCK_SIZE } from '../constants'
 import {
   Timeline,
   TimelineDays,
@@ -732,7 +732,7 @@ describe('Timeline', () => {
           startDate={new Date(2020, 3, 1)}
           today={new Date(2020, 3, 15)}
         >
-          <TimelineHours blockSize={12} />
+          <TimelineHours blockSize={TIMELINE_BLOCK_SIZE.HALF_DAY} />
           <TimelineRows>
             <TimelineRow name="Row 1">
               <TimelineEvents>
@@ -761,7 +761,7 @@ describe('Timeline', () => {
           startDate={new Date(2020, 3, 1)}
           today={new Date(2020, 3, 15)}
         >
-          <TimelineHours blockSize={12} />
+          <TimelineHours blockSize={TIMELINE_BLOCK_SIZE.HALF_DAY} />
           <TimelineRows>
             <TimelineRow name="Row 1">
               <TimelineEvents>
