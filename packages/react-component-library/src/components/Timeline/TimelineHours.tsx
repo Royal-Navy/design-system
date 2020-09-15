@@ -6,14 +6,24 @@ import { TimelineContext } from './context'
 import { TimelineHour } from './TimelineHour'
 import { TimelineHeaderRow } from './TimelineHeaderRow'
 
-export interface TimelineHoursWithChildrenProps {
+export interface TimelineHoursWithRenderContentProps {
   blockSize?: number
+  render: (width: number, time: string) => React.ReactElement
 }
 
-export type TimelineHoursProps = TimelineHoursWithChildrenProps
+export interface TimelineHoursWithChildrenProps {
+  blockSize?: number
+  render?: never
+}
 
-export const TimelineHours: React.FC<TimelineHoursProps> = () => {
-  const classes = classNames('timeline__hours')
+export type TimelineHoursProps =
+  | TimelineHoursWithRenderContentProps
+  | TimelineHoursWithChildrenProps
+
+export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
+  const classes = classNames('timeline__hours', {
+    'timeline__hours--renderDefault': !render,
+  })
 
   return (
     <TimelineContext.Consumer>
@@ -39,6 +49,7 @@ export const TimelineHours: React.FC<TimelineHoursProps> = () => {
                     'timeline-hour',
                     `${date.toString()}-${hourIndex}`
                   )}
+                  render={render}
                   time={time}
                   timelineEndDate={timelineEndDate}
                   width={unitWidth}

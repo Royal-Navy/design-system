@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 interface TimelineHourProps {
   date: Date
+  render: (width: number, time: string) => React.ReactElement
   time: string
   timelineEndDate: Date
   width: number
@@ -37,6 +38,7 @@ function renderDefault(width: number, time: string) {
 
 export const TimelineHour: React.FC<TimelineHourProps> = ({
   date,
+  render,
   time,
   timelineEndDate,
   width,
@@ -44,7 +46,7 @@ export const TimelineHour: React.FC<TimelineHourProps> = ({
 }) => {
   if (isAfter(date, timelineEndDate)) return null
 
-  const child = renderDefault(width, time)
+  const child = render ? render(width, time) : renderDefault(width, time)
 
   return React.cloneElement(child, {
     role: 'columnheader',

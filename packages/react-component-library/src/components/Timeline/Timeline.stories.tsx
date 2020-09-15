@@ -275,6 +275,38 @@ export const WithCustomDays = () => {
 }
 WithCustomDays.storyName = 'With custom days'
 
+export const WithCustomHours = () => {
+  const CustomTimelineHours = (width: number, time: string) => {
+    return (
+      <span
+        style={{
+          display: 'inline-block',
+          width: `${width}px`,
+          height: '2.5rem',
+          backgroundColor: 'black',
+          color: 'white',
+          fontSize: '8px',
+        }}
+      >
+        {time}
+      </span>
+    )
+  }
+
+  return (
+    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
+      <TimelineSide />
+      <TimelineTodayMarker />
+      <TimelineMonths />
+      <TimelineWeeks />
+      <TimelineDays />
+      <TimelineHours render={CustomTimelineHours} />
+      <TimelineRows>{}</TimelineRows>
+    </Timeline>
+  )
+}
+WithCustomHours.storyName = 'With custom hours'
+
 export const WithCustomTodayMarker = () => {
   const CustomTodayMarker = (date: Date, offset: string) => {
     return (

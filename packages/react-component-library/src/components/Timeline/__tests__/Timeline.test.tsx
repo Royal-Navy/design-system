@@ -687,6 +687,44 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when hours has `render` specified', () => {
+    const CustomHour = ({
+      width,
+      time,
+      ...rest
+    }: {
+      width: number
+      time: string
+    }) => <span {...rest}>Time: {time}</span>
+
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 1, 7, 0, 0, 0)}
+        >
+          <TimelineHours
+            render={(width, time) => (
+              <CustomHour
+                data-testid="timeline-custom-hour"
+                width={width}
+                time={time}
+              />
+            )}
+          />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the day dates as specified', () => {
+      const firstHour = wrapper.getAllByTestId('timeline-custom-hour')[0]
+      const expected = 'Time: 00:00'
+
+      expect(firstHour).toHaveTextContent(expected)
+    })
+  })
+
   describe('when hours has `blockSize` specified', () => {
     beforeEach(() => {
       wrapper = render(
