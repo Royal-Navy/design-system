@@ -47,6 +47,7 @@ export interface TimelineProps extends ComponentWithClass {
   endDate?: Date
   today?: Date
   range?: number
+  unitWidth?: number
 }
 
 function extractChildren(
@@ -87,10 +88,18 @@ function getHoursBlockSize(
   )
 }
 
-function getDayWith(dayWidth: number, hoursBlockSize: number) {
+function getDayWidth(
+  hoursBlockSize: number,
+  dayWidth: number,
+  unitWidth: number
+) {
   const multiplier = hoursBlockSize ? 24 / hoursBlockSize : 1
 
-  return (dayWidth || DEFAULTS.DAY_WIDTH) * multiplier
+  if (dayWidth) {
+    console.warn('Prop `dayWidth` is deprecated')
+  }
+
+  return (dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH) * multiplier
 }
 
 export const Timeline: React.FC<TimelineProps> = ({
@@ -101,13 +110,13 @@ export const Timeline: React.FC<TimelineProps> = ({
   endDate,
   today,
   range,
+  unitWidth,
 }) => {
   const hoursBlockSize = getHoursBlockSize(children)
-
   const options: TimelineOptions = {
     hoursBlockSize,
-    dayWidth: getDayWith(dayWidth, hoursBlockSize),
-    hourWidth: DEFAULTS.DAY_WIDTH,
+    dayWidth: getDayWidth(hoursBlockSize, dayWidth, unitWidth),
+    unitWidth: unitWidth || DEFAULTS.UNIT_WIDTH,
     rangeInMonths: range || DEFAULTS.RANGE_IN_MONTHS,
   }
 

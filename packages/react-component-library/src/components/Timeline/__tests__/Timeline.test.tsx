@@ -21,6 +21,10 @@ import {
 describe('Timeline', () => {
   let wrapper: RenderResult
 
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   describe('when no data is provided', () => {
     beforeEach(() => {
       wrapper = render(
@@ -473,6 +477,52 @@ describe('Timeline', () => {
       expect(rowHeaders[0]).toHaveTextContent('Months')
       expect(rowHeaders[1]).toHaveTextContent('Weeks')
       expect(rowHeaders[2]).toHaveTextContent('Days')
+    })
+  })
+
+  describe('when `dayWidth` is specified', () => {
+    let consoleWarnSpy: jest.SpyInstance
+
+    beforeEach(() => {
+      consoleWarnSpy = jest.spyOn(global.console, 'warn')
+
+      wrapper = render(
+        <Timeline
+          dayWidth={100}
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 4)}
+                  endDate={new Date(2020, 3, 6)}
+                >
+                  Event
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should warn the consumer about using the deprecated prop', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'Prop `dayWidth` is deprecated'
+      )
+    })
+
+    it('positions the event correctly', () => {
+      expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
+        left: '300px',
+      })
     })
   })
 
@@ -1113,7 +1163,7 @@ describe('Timeline', () => {
 
     it('positions the event correctly', () => {
       expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
-        left: `${DEFAULTS.DAY_WIDTH * 4}px`,
+        left: `${DEFAULTS.UNIT_WIDTH * 4}px`,
       })
     })
   })

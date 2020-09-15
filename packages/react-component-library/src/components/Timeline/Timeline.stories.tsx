@@ -511,7 +511,7 @@ export const WithCustomDayWidth = () => {
     <Timeline
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
-      dayWidth={75}
+      unitWidth={75}
     >
       <TimelineSide />
       <TimelineTodayMarker />

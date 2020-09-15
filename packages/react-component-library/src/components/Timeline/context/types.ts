@@ -1,10 +1,10 @@
 import { Dispatch } from 'react'
 
 export type TimelineOptions = {
-  dayWidth: number
+  dayWidth: number,
   hoursBlockSize: number,
-  hourWidth: number
   rangeInMonths: number
+  unitWidth: number
 }
 
 export type TimelineDay = {

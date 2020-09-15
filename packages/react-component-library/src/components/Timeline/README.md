@@ -69,7 +69,7 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 | startDate | Date   | True     | -          | A month will display either side of this start date |
 | today     | Date   | False    | new Date() | Today's current date - default is system date time  |
 | range     | Number | False    | 3          | The number of months to display at any one time     |
-| dayWidth  | Number | False    | 30         | The fixed width value of a single day (in pixels)   |
+| unitWidth  | Number | False    | 30         | The fixed width value of a single day (in pixels)   |
 
 Comprehensive [API documentation](#component-apis) for each of the Compound Components can be found further below.
 
@@ -99,7 +99,7 @@ const ExampleTimeline = () => {
       startDate={new Date(2020, 4, 0)} 
       today={new Date(2020, 3, 15)} 
       range={3}
-      dayWidth={30}
+      unitWidth={30}
     >
       <TimelineTodayMarker />
       <TimelineSide/>
@@ -341,7 +341,7 @@ Through the use of clever composition and custom styling, it's possible to creat
       <td>The number of months to display at any one time</td>
     </tr>
     <tr>
-      <td>dayWidth</td>
+      <td>unitWidth</td>
       <td>Number</td>
       <td>False</td>
       <td>30</td>
