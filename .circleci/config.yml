@@ -284,34 +284,34 @@ workflows:
   #           - test_react-component-library
   #           - build_icon-library
 
-  build_test_and_deploy_next:
-    jobs:
-      - build_prerequisites:
-          filters:
-            branches:
-              only:
-                - master
-      - commit_next:
-         requires:
-            - build_prerequisites
-         filters:
-            branches:
-              only:
-                - master
-      - test_react-component-library:
-          requires:
-            - build_prerequisites
-          filters:
-            branches:
-              only:
-                - master
-      - test_visual_regression:
-          requires:
-            - build_prerequisites
-          filters:
-            branches:
-              only:
-                - master
+  # build_test_and_deploy_next:
+  #   jobs:
+  #     - build_prerequisites:
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+  #     - commit_next:
+  #        requires:
+  #           - build_prerequisites
+  #        filters:
+  #           branches:
+  #             only:
+  #               - master
+  #     - test_react-component-library:
+  #         requires:
+  #           - build_prerequisites
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+  #     - test_visual_regression:
+  #         requires:
+  #           - build_prerequisites
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
       - publish_next:
           requires:
             - test_react-component-library
