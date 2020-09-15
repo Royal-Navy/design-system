@@ -687,6 +687,35 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when hours has `blockSize` specified', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineHours blockSize={12} />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 13)}
+                  endDate={new Date(2020, 3, 18)}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('renders the correct number of hours', () => {
+      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(182)
+    })
+  })
+
   describe('when rows has `renderColumns` specified', () => {
     const CustomColumn = ({
       index,

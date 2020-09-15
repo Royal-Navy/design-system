@@ -139,7 +139,7 @@ export const WithHours = () => (
     <TimelineMonths />
     <TimelineWeeks />
     <TimelineDays />
-    <TimelineHours />
+    <TimelineHours blockSize={6} />
     <TimelineRows>
       <TimelineRow name="Row 1">
         <TimelineEvents>

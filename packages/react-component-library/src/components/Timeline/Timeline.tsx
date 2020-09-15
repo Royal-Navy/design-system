@@ -8,6 +8,7 @@ import {
   TimelineDays,
   TimelineDaysProps,
   TimelineHours,
+  TimelineHoursProps,
   TimelineMonths,
   TimelineMonthsProps,
   TimelineRows,
@@ -71,6 +72,21 @@ function hasTimelineSideComponent(
   return true
 }
 
+function getHoursBlockSize(
+  children: timelineChildrenType | timelineChildrenType[]
+) {
+  const hoursChildren = extractChildren(children, [TimelineHours])
+
+  if (!hoursChildren.length) {
+    return null
+  }
+
+  return (
+    (hoursChildren[0] as React.ReactElement<TimelineHoursProps>).props
+      .blockSize || DEFAULTS.HOURS_BLOCK_SIZE
+  )
+}
+
 function getDayWith(dayWidth: number, hoursBlockSize: number) {
   const multiplier = hoursBlockSize ? 24 / hoursBlockSize : 1
 
@@ -86,8 +102,10 @@ export const Timeline: React.FC<TimelineProps> = ({
   today,
   range,
 }) => {
+  const hoursBlockSize = getHoursBlockSize(children)
+
   const options: TimelineOptions = {
-    hoursBlockSize: DEFAULTS.HOURS_BLOCK_SIZE,
+    hoursBlockSize,
     dayWidth: getDayWith(dayWidth, hoursBlockSize),
     hourWidth: DEFAULTS.DAY_WIDTH,
     rangeInMonths: range || DEFAULTS.RANGE_IN_MONTHS,
