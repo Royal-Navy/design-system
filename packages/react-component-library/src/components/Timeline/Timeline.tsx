@@ -7,6 +7,7 @@ import { TimelineProvider } from './context'
 import {
   TimelineDays,
   TimelineDaysProps,
+  TimelineHours,
   TimelineMonths,
   TimelineMonthsProps,
   TimelineRows,
@@ -70,9 +71,15 @@ function hasTimelineSideComponent(
   return true
 }
 
+function getDayWith(dayWidth: number, hoursBlockSize: number) {
+  const multiplier = hoursBlockSize ? 24 / hoursBlockSize : 1
+
+  return (dayWidth || DEFAULTS.DAY_WIDTH) * multiplier
+}
+
 export const Timeline: React.FC<TimelineProps> = ({
   children,
-  dayWidth = DEFAULTS.DAY_WIDTH,
+  dayWidth,
   hasSide,
   startDate,
   endDate,
@@ -80,7 +87,9 @@ export const Timeline: React.FC<TimelineProps> = ({
   range,
 }) => {
   const options: TimelineOptions = {
-    dayWidth,
+    hoursBlockSize: DEFAULTS.HOURS_BLOCK_SIZE,
+    dayWidth: getDayWith(dayWidth, hoursBlockSize),
+    hourWidth: DEFAULTS.DAY_WIDTH,
     rangeInMonths: range || DEFAULTS.RANGE_IN_MONTHS,
   }
 
@@ -88,6 +97,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     children,
     [
       TimelineDays,
+      TimelineHours,
       TimelineMonths,
       TimelineRows,
       TimelineSide,
@@ -101,6 +111,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const headChildren = extractChildren(children, [
     TimelineDays,
+    TimelineHours,
     TimelineWeeks,
     TimelineMonths,
     TimelineTodayMarker,

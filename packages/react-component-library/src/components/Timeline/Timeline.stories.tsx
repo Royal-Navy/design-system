@@ -7,6 +7,7 @@ import {
   Timeline,
   TimelineEvent,
   TimelineEvents,
+  TimelineHours,
   TimelineRow,
   TimelineRows,
   TimelineTodayMarker,
@@ -127,6 +128,43 @@ export const WithSidebar = () => (
   </Timeline>
 )
 WithSidebar.storyName = 'With sidebar'
+
+export const WithHours = () => (
+  <Timeline
+    hasSide
+    startDate={new Date(2020, 3, 1)}
+    today={new Date(2020, 3, 15)}
+  >
+    <TimelineTodayMarker />
+    <TimelineMonths />
+    <TimelineWeeks />
+    <TimelineDays />
+    <TimelineHours />
+    <TimelineRows>
+      <TimelineRow name="Row 1">
+        <TimelineEvents>
+          <TimelineEvent
+            startDate={new Date(2020, 3, 5)}
+            endDate={new Date(2020, 3, 7)}
+          >
+            Event 1
+          </TimelineEvent>
+        </TimelineEvents>
+      </TimelineRow>
+      <TimelineRow name="Row 2">
+        <TimelineEvents>
+          <TimelineEvent
+            startDate={new Date(2020, 3, 3)}
+            endDate={new Date(2020, 3, 6)}
+          >
+            Event 2
+          </TimelineEvent>
+        </TimelineEvents>
+      </TimelineRow>
+    </TimelineRows>
+  </Timeline>
+)
+WithHours.storyName = 'With hours'
 
 export const WithCustomMonths = () => {
   const CustomTimelineMonth = (

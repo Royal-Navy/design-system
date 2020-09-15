@@ -5,6 +5,7 @@ import { TimelineOptions, TimelineState } from './types'
 
 const initialState: TimelineState = {
   days: [],
+  hours: [],
   months: [],
   options: null,
   startDate: null,
@@ -34,7 +35,11 @@ function initialiseState(
 
   return {
     ...state,
-    ...buildCalendar(firstDateDisplayed, lastDateDisplayed),
+    ...buildCalendar(
+      firstDateDisplayed,
+      lastDateDisplayed,
+      state.options.hoursBlockSize
+    ),
   }
 }
 

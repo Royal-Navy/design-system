@@ -7,6 +7,7 @@ import { DEFAULTS, NO_DATA_MESSAGE } from '../constants'
 import {
   Timeline,
   TimelineDays,
+  TimelineHours,
   TimelineEvent,
   TimelineEvents,
   TimelineMonths,
@@ -31,6 +32,7 @@ describe('Timeline', () => {
           <TimelineMonths />
           <TimelineWeeks />
           <TimelineDays />
+          <TimelineHours />
           <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
@@ -137,6 +139,23 @@ describe('Timeline', () => {
 
     it('should set the `role` attribute to `columnheader` on each day', () => {
       const days = wrapper.getAllByTestId('timeline-day')
+
+      days.forEach((day) => expect(day).toHaveAttribute('role', 'columnheader'))
+    })
+
+    it('should set the `role` attribute to `row` on the hours', () => {
+      expect(wrapper.queryByTestId('timeline-hours')).toHaveAttribute(
+        'role',
+        'row'
+      )
+    })
+
+    it('renders the correct number of hours', () => {
+      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(364)
+    })
+
+    it('should set the `role` attribute to `columnheader` on each hour', () => {
+      const days = wrapper.getAllByTestId('timeline-hour')
 
       days.forEach((day) => expect(day).toHaveAttribute('role', 'columnheader'))
     })
@@ -961,6 +980,7 @@ describe('Timeline', () => {
           <TimelineMonths />
           <TimelineWeeks />
           <TimelineDays />
+          <TimelineHours />
           <TimelineRows>
             <TimelineRow name="Row 1">
               <TimelineEvents>
@@ -989,9 +1009,13 @@ describe('Timeline', () => {
       expect(wrapper.queryAllByTestId('timeline-day-title')).toHaveLength(17)
     })
 
+    it('renders the correct number of hours', () => {
+      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(68)
+    })
+
     it('positions the event correctly', () => {
       expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
-        left: `${DEFAULTS.DAY_WIDTH}px`,
+        left: `${DEFAULTS.DAY_WIDTH * 4}px`,
       })
     })
   })

@@ -7,6 +7,7 @@ const DATE_WEEK_FORMAT = 'dd/MM'
 const DEFAULTS = {
   DAY_WIDTH: 30,
   RANGE_IN_MONTHS: 3,
+  HOURS_BLOCK_SIZE: 6,
 } as const
 
 const NO_DATA_MESSAGE = 'No data available'

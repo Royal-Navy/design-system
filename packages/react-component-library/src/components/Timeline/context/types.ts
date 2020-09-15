@@ -2,12 +2,19 @@ import { Dispatch } from 'react'
 
 export type TimelineOptions = {
   dayWidth: number
+  hoursBlockSize: number,
+  hourWidth: number
   rangeInMonths: number
 }
 
 export type TimelineDay = {
   dayIndex: number
   date: Date
+}
+
+export type TimelineHour = {
+  hourIndex: number
+  time: string
 }
 
 export type TimelineWeek = {
@@ -27,6 +34,7 @@ export type TimelineState = {
   months: TimelineMonth[]
   weeks: TimelineWeek[]
   days: TimelineDay[]
+  hours: TimelineHour[]
   options: TimelineOptions
 }
 
