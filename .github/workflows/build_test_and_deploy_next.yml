@@ -63,7 +63,7 @@ jobs:
           run: |
             git config user.email ${{secrets.GH_EMAIL}} &&
             git config user.name ${{secrets.GH_NAME}} &&
-            git remote set-url origin https://"${{ github.token }}"@github.com/Royal-Navy/design-system.git &&
+            git remote set-url origin https://"${{ secrets.GHA_TOKEN }}"@github.com/Royal-Navy/design-system.git &&
             git fetch
             git checkout master
 
