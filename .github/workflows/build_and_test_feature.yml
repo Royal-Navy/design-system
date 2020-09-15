@@ -33,7 +33,7 @@ jobs:
             cp -R packages/design-tokens/dist distdt
             tar -czvf dist.tar.gz distil distdt
 
-        - name: Persist icon-library
+        - name: Persist artifacts
           uses: actions/upload-artifact@v2
           with:
             name: dist
@@ -93,7 +93,7 @@ jobs:
             mkdir -p packages/css-framework/test-results/stylelint
             yarn --cwd packages/css-framework --silent stylelint --custom-formatter '../../node_modules/stylelint-junit-formatter/index.js' ./index.scss > packages/css-framework/test-results/stylelint/results.xml
 
-        - name: Store artifacts
+        - name: Persist artifacts
           uses: actions/upload-artifact@v2
           with:
             name: stylelint
@@ -121,7 +121,7 @@ jobs:
             mkdir -p packages/react-component-library/test-results/eslint
             yarn --cwd packages/react-component-library lint:ci
 
-        - name: Store artifacts
+        - name: Persist artifacts
           uses: actions/upload-artifact@v2
           with:
             name: lintreact
@@ -149,7 +149,7 @@ jobs:
             mkdir -p packages/docs-site/test-results/eslint
             yarn --cwd packages/docs-site lint:ci
 
-        - name: Store artifacts
+        - name: Persist artifacts
           uses: actions/upload-artifact@v2
           with:
             name: lintdocs
@@ -189,7 +189,7 @@ jobs:
         - name: Upload test reports to CodeCov
           run: bash <(curl -s https://codecov.io/bash)
 
-        - name: Store artifacts
+        - name: Persist artifacts
           uses: actions/upload-artifact@v2
           with:
             name: docstest
@@ -225,7 +225,7 @@ jobs:
         - name: Upload test reports to CodeCov
           run: bash <(curl -s https://codecov.io/bash)
 
-        - name: Store artifacts
+        - name: Persist artifacts
           uses: actions/upload-artifact@v2
           with:
             name: reacttest

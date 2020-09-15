@@ -1,0 +1,192 @@
+name: Build Test & Deploy next
+
+on:
+  push:
+     branches:
+       - master
+env:
+  NPM_REGISTRY: "https://registry.npmjs.org/"
+
+jobs:
+     Build_prerequisites:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Git clone repository
+          uses: actions/checkout@v2
+
+        - name: Cache Node modules
+          uses: actions/cache@v2
+          with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+        - name: Build icon-library
+          run: |
+            yarn install
+            yarn --cwd packages/icon-library build
+
+        - name: Build design-tokens
+          run: yarn --cwd packages/design-tokens build
+
+        - name: Create tar
+          run: |
+            cp -R packages/icon-library/dist distil
+            cp -R packages/design-tokens/dist distdt
+            tar -czvf dist.tar.gz distil distdt
+
+        - name: Persist artifacts
+          uses: actions/upload-artifact@v2
+          with:
+            name: dist
+            path: ./dist.tar.gz
+
+
+     Commit_next:
+      runs-on: ubuntu-latest
+      needs: [Build_prerequisites]
+      steps:
+        - name: Git clone repository
+          uses: actions/checkout@v2
+
+        - name: Cache Node modules
+          uses: actions/cache@v2
+          with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+        - name: Attach workspace
+          uses: actions/download-artifact@v2
+          with:
+            name: dist
+
+        - name: Configure git
+          run: |
+            git config user.email ${{secrets.GH_EMAIL}} &&
+            git config user.name ${{secrets.GH_NAME}} &&
+            git remote set-url origin https://"${{ github.token }}"@github.com/Royal-Navy/design-system.git &&
+            git fetch
+            git checkout master
+
+        - name: Update package version
+          run: |
+            tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
+            yarn lerna:prerelease --yes --no-push &&
+            git tag -d $(git describe --abbrev=0) &&
+            git push origin master
+
+
+     Test_a11y:
+      runs-on: ubuntu-latest
+      needs: [Build_prerequisites]
+      steps:
+        - name: Git clone repository
+          uses: actions/checkout@v2
+
+        - name: Cache Node modules
+          uses: actions/cache@v2
+          with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+        - name: Attach workspace
+          uses: actions/download-artifact@v2
+          with:
+            name: dist
+
+        - name: Jest a11y
+          run: |
+            tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
+            yarn --cwd packages/react-component-library test:a11y
+
+
+     Test_react-component-library:
+      runs-on: ubuntu-latest
+      needs: [Build_prerequisites]
+      steps:
+        - name: Git clone repository
+          uses: actions/checkout@v2
+
+        - name: Cache Node modules
+          uses: actions/cache@v2
+          with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+        - name: Attach workspace
+          uses: actions/download-artifact@v2
+          with:
+            name: dist
+
+        - name: Jest
+          env:
+            JEST_JUNIT_OUTPUT_DIR: test-results/jest
+            JEST_JUNIT_OUTPUT_NAME: react-component-results.xml
+          run: |
+            tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
+            yarn --cwd packages/react-component-library test --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
+
+        - name: Upload test reports to CodeCov
+          run: bash <(curl -s https://codecov.io/bash)
+
+        - name: Persist artifacts
+          uses: actions/upload-artifact@v2
+          with:
+            name: reacttest
+            path: packages/react-component-library/test-results/jest/react-component-results.xml
+
+
+     Test_visual_regression:
+      runs-on: ubuntu-latest
+      needs: [Build_prerequisites]
+      steps:
+        - name: Git clone repository
+          uses: actions/checkout@v2
+
+        - name: Cache Node modules
+          uses: actions/cache@v2
+          with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+        - name: Attach workspace
+          uses: actions/download-artifact@v2
+          with:
+            name: dist
+
+        - name: Run visual regression tests
+          run: |
+            tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
+            yarn --cwd packages/react-component-library chromatic --app-code=${{secrets.CHROMATIC_TOKEN}} --auto-accept-changes
+
+
+     Publish_next:
+      runs-on: ubuntu-latest
+      needs: [Test_react-component-library, Test_visual_regression, Commit_next]
+      steps:
+        - name: Git clone repository
+          uses: actions/checkout@v2
+
+        - name: Cache Node modules
+          uses: actions/cache@v2
+          with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+        - name: Attach workspace
+          uses: actions/download-artifact@v2
+          with:
+            name: dist
+
+        - name: Authenticate NPM
+          run: echo "//$NPM_REGISTRY/:_authToken=${{secrets.NPM_AUTH_TOKEN}}" > ~/.npmrc
+
+        - name: Publish next packages
+          run: |
+            tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/design-tokens &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/css-framework &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/eslint-config-react &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/fonts &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/icon-library &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/react-component-library &&
+            node ./scripts/npm/publish.js https://$NPM_REGISTRY next packages/cra-template-royalnavy
