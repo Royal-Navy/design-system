@@ -40,7 +40,7 @@ describe('RangeSlider', () => {
     })
 
     it('should render a single handle', () => {
-      expect(wrapper.queryAllByTestId('rangeslider-handle').length).toBe(1)
+      expect(wrapper.queryAllByTestId('rangeslider-handle')).toHaveLength(1)
     })
 
     it('should set the ARIA attributes on the handle', () => {
@@ -54,15 +54,15 @@ describe('RangeSlider', () => {
     })
 
     it('should render correct number of ticks', () => {
-      expect(wrapper.queryAllByTestId('rangeslider-tick').length).toBe(5)
+      expect(wrapper.queryAllByTestId('rangeslider-tick')).toHaveLength(5)
     })
 
     it('should not render any tracks', () => {
-      expect(wrapper.queryAllByTestId('rangeslider-track').length).toBe(0)
+      expect(wrapper.queryAllByTestId('rangeslider-track')).toHaveLength(0)
     })
 
     it('should not render any labels', () => {
-      expect(wrapper.queryAllByTestId('rangeslider-label').length).toBe(0)
+      expect(wrapper.queryAllByTestId('rangeslider-label')).toHaveLength(0)
     })
 
     describe('and the end user moves the handle to the right using keyboard', () => {
@@ -229,7 +229,7 @@ describe('RangeSlider', () => {
     })
 
     it('should render two handles', () => {
-      expect(wrapper.queryAllByTestId('rangeslider-handle').length).toBe(3)
+      expect(wrapper.queryAllByTestId('rangeslider-handle')).toHaveLength(3)
     })
   })
 
