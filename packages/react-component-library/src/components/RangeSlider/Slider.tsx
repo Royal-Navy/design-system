@@ -23,6 +23,8 @@ interface RangeSliderProps
   isDisabled?: boolean
   isReversed?: boolean
   thresholds?: number[]
+  hasPercentage?: boolean
+  displayUnit?: string
 }
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
@@ -40,6 +42,8 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   values,
   onUpdate,
   thresholds,
+  hasPercentage,
+  displayUnit,
   ...rest
 }) => {
   const [sliderValues, setSliderValues] = useState(values)
@@ -52,6 +56,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   const classes = classNames('rn-rangeslider', className, {
     'is-reversed': isReversed,
     'is-disabled': isDisabled,
+    'has-percentage': hasPercentage,
   })
 
   return (
@@ -90,6 +95,8 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
                   domain={domain}
                   activeHandleID={activeHandleID}
                   getHandleProps={getHandleProps}
+                  displayUnit={displayUnit}
+                  thresholds={thresholds}
                 />
               ))}
             </div>
@@ -125,7 +132,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
             </div>
           )}
         </Tracks>
-        {step && (
+        {tickCount && (
           <Ticks count={tickCount}>
             {({ ticks }) => (
               <div className="rn-rangeslider__ticks">
@@ -138,6 +145,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
                     values={sliderValues}
                     domain={domain}
                     isReversed={isReversed}
+                    thresholds={thresholds}
                   />
                 ))}
               </div>

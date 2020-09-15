@@ -19,6 +19,23 @@ stories.add('Default', () => (
   />
 ))
 
+examples.add('Multiple handles', () => (
+  <div style={{ margin: '4rem' }}>
+    <RangeSlider
+      domain={[0, 40]}
+      mode={2}
+      values={[10, 20, 30]}
+      onChange={action('onChange')}
+      onUpdate={action('onUpdate')}
+      tracksLeft
+      tickCount={10}
+      thresholds={[40, 60]}
+      hasPercentage
+      displayUnit="pt"
+    />
+  </div>
+))
+
 examples.add('Stepped', () => (
   <RangeSlider
     domain={[0, 40]}
@@ -53,18 +70,6 @@ examples.add('Double threshold', () => (
     onUpdate={action('onUpdate')}
     tracksLeft
     thresholds={[40, 60]}
-  />
-))
-
-examples.add('Multiple handles', () => (
-  <RangeSlider
-    domain={[0, 40]}
-    step={10}
-    mode={1}
-    values={[10, 30]}
-    onChange={action('onChange')}
-    onUpdate={action('onUpdate')}
-    tickCount={4}
   />
 ))
 

@@ -35,8 +35,12 @@ describe('RangeSlider', () => {
       )
     })
 
+    it('should render the ticks', () => {
+      expect(wrapper.getAllByTestId('rangeslider-tick')).toHaveLength(5)
+    })
+
     it('should render a single handle', () => {
-      expect(wrapper.queryAllByTestId('rangeslider-handle').length).toBe(1)
+      expect(wrapper.queryAllByTestId('rangeslider-handle')).toHaveLength(1)
     })
 
     it('should set the ARIA attributes on the handle', () => {
@@ -50,15 +54,15 @@ describe('RangeSlider', () => {
     })
 
     it('should render correct number of ticks', () => {
-      expect(wrapper.queryAllByTestId('rangeslider-tick').length).toBe(5)
+      expect(wrapper.queryAllByTestId('rangeslider-tick')).toHaveLength(5)
     })
 
     it('should not render any tracks', () => {
-      expect(wrapper.queryAllByTestId('rangeslider-track').length).toBe(0)
+      expect(wrapper.queryAllByTestId('rangeslider-track')).toHaveLength(0)
     })
 
     it('should not render any labels', () => {
-      expect(wrapper.queryAllByTestId('rangeslider-label').length).toBe(0)
+      expect(wrapper.queryAllByTestId('rangeslider-label')).toHaveLength(0)
     })
 
     describe('and the end user moves the handle to the right using keyboard', () => {
@@ -225,7 +229,53 @@ describe('RangeSlider', () => {
     })
 
     it('should render two handles', () => {
-      expect(wrapper.queryAllByTestId('rangeslider-handle').length).toBe(3)
+      expect(wrapper.queryAllByTestId('rangeslider-handle')).toHaveLength(3)
+    })
+  })
+
+  describe('when the `hasPercentage` prop is provided', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <RangeSlider
+          domain={[0, 40]}
+          mode={1}
+          values={[20]}
+          tracksLeft
+          tickCount={4}
+          thresholds={[40, 60]}
+          hasPercentage
+        />
+      )
+    })
+
+    it('should display the percentage value next to the handle', () => {
+      expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
+        'data-percent',
+        '50%'
+      )
+    })
+  })
+
+  describe('when the `displayUnit` prop is provided', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <RangeSlider
+          domain={[0, 40]}
+          mode={1}
+          values={[20]}
+          tracksLeft
+          tickCount={4}
+          thresholds={[40, 60]}
+          displayUnit="pt"
+        />
+      )
+    })
+
+    it('should append the display unit to the handle label', () => {
+      expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
+        'data-value',
+        '20pt'
+      )
     })
   })
 })
