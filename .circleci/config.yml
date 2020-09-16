@@ -312,11 +312,11 @@ workflows:
   #           branches:
   #             only:
   #               - master
-      - publish_next:
-          requires:
-            - test_react-component-library
-            - test_visual_regression
-            - commit_next
+  #    - publish_next:
+  #        requires:
+  #          - test_react-component-library
+  #          - test_visual_regression
+  #          - commit_next
   build_test_and_deploy_latest:
     jobs:
       - build_prerequisites:
