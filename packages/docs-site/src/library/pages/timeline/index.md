@@ -182,7 +182,7 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
-    <h1 className="rn-fw-api-title">withSide</h1>
+    <h1 className="rn-fw-api-title">hasSide</h1>
     <Badge color="supa" colorVariant="faded" size="small">Boolean</Badge>
   </div>
   <div className="rn-fw-api-body">
@@ -651,7 +651,7 @@ Here you will find comprehensive API documentation for the Timeline Components.
 
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
-    <h1 className="rn-fw-api-title">withSide</h1>
+    <h1 className="rn-fw-api-title">hasSide</h1>
     <Badge color="supa" colorVariant="faded" size="small">Boolean</Badge>
   </div>
   <div className="rn-fw-api-body">
