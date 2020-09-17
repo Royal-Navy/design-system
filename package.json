@@ -27,7 +27,8 @@
   },
   "resolutions": {
     "**/**/bl": "^4.0.3",
-    "**/**/dot-prop": "^5.2.0"
+    "**/**/dot-prop": "^5.2.0",
+    "**/**/node-fetch": "^2.6.1"
   },
   "prettier": {
     "bracketSpacing": true,
