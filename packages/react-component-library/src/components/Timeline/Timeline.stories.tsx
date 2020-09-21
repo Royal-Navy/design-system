@@ -7,6 +7,7 @@ import {
   Timeline,
   TimelineEvent,
   TimelineEvents,
+  TimelineHours,
   TimelineRow,
   TimelineRows,
   TimelineTodayMarker,
@@ -15,6 +16,7 @@ import {
   TimelineDays,
   TimelineSide,
 } from '.'
+import { TIMELINE_BLOCK_SIZE } from './constants'
 
 export default { component: Timeline, title: 'Timeline' } as Meta
 
@@ -128,6 +130,43 @@ export const WithSidebar = () => (
 )
 WithSidebar.storyName = 'With sidebar'
 
+export const WithHours = () => (
+  <Timeline
+    hasSide
+    startDate={new Date(2020, 3, 1)}
+    today={new Date(2020, 3, 15)}
+  >
+    <TimelineTodayMarker />
+    <TimelineMonths />
+    <TimelineWeeks />
+    <TimelineDays />
+    <TimelineHours blockSize={TIMELINE_BLOCK_SIZE.QUARTER_DAY} />
+    <TimelineRows>
+      <TimelineRow name="Row 1">
+        <TimelineEvents>
+          <TimelineEvent
+            startDate={new Date(2020, 3, 5, 6, 0, 0)}
+            endDate={new Date(2020, 3, 7, 18, 0, 0)}
+          >
+            Event 1
+          </TimelineEvent>
+        </TimelineEvents>
+      </TimelineRow>
+      <TimelineRow name="Row 2">
+        <TimelineEvents>
+          <TimelineEvent
+            startDate={new Date(2020, 3, 3, 12, 0, 0)}
+            endDate={new Date(2020, 3, 6, 12, 0, 0)}
+          >
+            Event 2
+          </TimelineEvent>
+        </TimelineEvents>
+      </TimelineRow>
+    </TimelineRows>
+  </Timeline>
+)
+WithHours.storyName = 'With hours'
+
 export const WithCustomMonths = () => {
   const CustomTimelineMonth = (
     index: number,
@@ -236,6 +275,38 @@ export const WithCustomDays = () => {
   )
 }
 WithCustomDays.storyName = 'With custom days'
+
+export const WithCustomHours = () => {
+  const CustomTimelineHours = (width: number, time: string) => {
+    return (
+      <span
+        style={{
+          display: 'inline-block',
+          width: `${width}px`,
+          height: '2.5rem',
+          backgroundColor: 'black',
+          color: 'white',
+          fontSize: '8px',
+        }}
+      >
+        {time}
+      </span>
+    )
+  }
+
+  return (
+    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
+      <TimelineSide />
+      <TimelineTodayMarker />
+      <TimelineMonths />
+      <TimelineWeeks />
+      <TimelineDays />
+      <TimelineHours render={CustomTimelineHours} />
+      <TimelineRows>{}</TimelineRows>
+    </Timeline>
+  )
+}
+WithCustomHours.storyName = 'With custom hours'
 
 export const WithCustomTodayMarker = () => {
   const CustomTodayMarker = (date: Date, offset: string) => {
@@ -440,7 +511,7 @@ export const WithCustomDayWidth = () => {
     <Timeline
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
-      dayWidth={75}
+      unitWidth={75}
     >
       <TimelineSide />
       <TimelineTodayMarker />

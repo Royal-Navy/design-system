@@ -122,28 +122,40 @@ $timeline-row-header-width: 16rem;
 .timeline__weeks,
 .timeline__weeks--renderDefault,
 .timeline__days,
-.timeline__days--renderDefault {
+.timeline__days--renderDefault,
+.timeline__hours,
+.timeline__hours--renderDefault {
   white-space: nowrap;
 }
 
 .timeline__week--renderDefault,
-.timeline__day--renderDefault {
+.timeline__day--renderDefault,
+.timeline__hour--renderDefault {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   height: 2.5rem;
   background-color: $timeline-bg-color;
   border-top: f.spacing("px") solid $timeline-border-color;
   border-bottom: f.spacing("px") solid $timeline-border-color;
 }
 
+.timeline__week--renderDefault {
+  justify-content: unset;
+}
+
 .timeline__week-title--renderDefault,
-.timeline__day-title--renderDefault {
+.timeline__day-title--renderDefault,
+.timeline__hour-title--renderDefault {
   font-weight: 600;
   font-size: f.font-size("m");
   color: f.color("neutral", "400");
-  margin-left: f.spacing("4");
   background-color: $timeline-bg-color;
   @include m.z-index("body", 2);
+}
+
+.timeline__week-title--renderDefault {
+  margin-left: f.spacing("4");
 }
 
 .timeline__week--renderDefault.timeline__week--alt {
@@ -154,11 +166,13 @@ $timeline-row-header-width: 16rem;
   }
 }
 
-.timeline__day--renderDefault {
+.timeline__day--renderDefault,
+.timeline__hour--renderDefault {
   border-right: f.spacing("px") solid f.color("neutral", "100");
 }
 
-.timeline__day-title--renderDefault {
+.timeline__day-title--renderDefault,
+.timeline__hour-title--renderDefault {
   font-size: f.font-size("xs");
 }
 
@@ -178,7 +192,8 @@ $timeline-row-header-width: 16rem;
   height: inherit;
   background-color: f.color("neutral", "white");
   border-right: f.spacing("px") solid $timeline-border-color;
-  box-shadow: inset 0px 0px 0px 0px $timeline-border-color, 5px 0px 5px 0px rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0px 0px 0px 0px $timeline-border-color,
+    5px 0px 5px 0px rgba(0, 0, 0, 0.04);
   @include m.z-index("body", 3);
   justify-content: flex-end;
   display: inline-flex;

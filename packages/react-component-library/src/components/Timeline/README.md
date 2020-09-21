@@ -27,6 +27,7 @@ A collection of composable and presentation agnostic Compound Components, Hooks 
   - [TimelineMonths](#timelinemonths)
   - [TimelineWeeks](#timelineweeks)
   - [TimelineDays](#timelinedays)
+  - [TimelineHours](#timelinehours)
   - [TimelineRows](#timelinerows)
   - [TimelineRow](#timelinerow)
   - [TimelineEvents](#timelineevents)
@@ -68,7 +69,7 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 | startDate | Date   | True     | -          | A month will display either side of this start date |
 | today     | Date   | False    | new Date() | Today's current date - default is system date time  |
 | range     | Number | False    | 3          | The number of months to display at any one time     |
-| dayWidth  | Number | False    | 30         | The fixed width value of a single day (in pixels)   |
+| unitWidth  | Number | False    | 30         | The fixed width value of a single day (in pixels)   |
 
 Comprehensive [API documentation](#component-apis) for each of the Compound Components can be found further below.
 
@@ -98,7 +99,7 @@ const ExampleTimeline = () => {
       startDate={new Date(2020, 4, 0)} 
       today={new Date(2020, 3, 15)} 
       range={3}
-      dayWidth={30}
+      unitWidth={30}
     >
       <TimelineTodayMarker />
       <TimelineSide/>
@@ -340,7 +341,7 @@ Through the use of clever composition and custom styling, it's possible to creat
       <td>The number of months to display at any one time</td>
     </tr>
     <tr>
-      <td>dayWidth</td>
+      <td>unitWidth</td>
       <td>Number</td>
       <td>False</td>
       <td>30</td>
@@ -437,6 +438,32 @@ Through the use of clever composition and custom styling, it's possible to creat
     <tr>
       <td>render</td>
       <td>Function<&#8205;index: number, dayWidth: number, date: Date&#8205;></td>
+      <td>False</td>
+      <td>-</td>
+      <td>Supply a custom presentation layer</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td colspan="5"><h3>TimelineHours</h3></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>blockSize</td>
+      <td>number</td>
+      <td>False</td>
+      <td>6</td>
+      <td>Number of hours per block in a day</td>
+    </tr>
+    <tr>
+      <td>render</td>
+      <td>Function<&#8205;width: number, time: string&#8205;></td>
       <td>False</td>
       <td>-</td>
       <td>Supply a custom presentation layer</td>

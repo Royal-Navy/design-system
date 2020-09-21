@@ -632,7 +632,7 @@ Here you will find comprehensive API documentation for the Timeline Components.
 
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
-    <h1 className="rn-fw-api-title">dayWidth</h1>
+    <h1 className="rn-fw-api-title">unitWidth</h1>
     <Badge color="supa" colorVariant="faded" size="small">Number</Badge>
   </div>
   <div className="rn-fw-api-body">
@@ -901,6 +901,65 @@ Here you will find comprehensive API documentation for the Timeline Components.
 </div>
 </div>
 
+
+<div className="rn-fw-row" id="timeline-hours">
+<div className="rn-fw-copy rn-fw-md">
+
+## TimelineHours
+
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">blockSize</h1>
+    <Badge color="supa" colorVariant="faded" size="small">number</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>6</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">Number of hours per block in a day.</p>
+    </div>
+  </div>
+</div>
+
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">render</h1>
+    <Badge color="supa" colorVariant="faded" size="small">Func</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value"><code>Function</code>
+        <ul className="rn-fw-api-value-list">
+          <li className="rn-fw-api-value-item">
+            <code className="rn-fw-api-value-name">width</code>
+            <span className="rn-fw-api-value-type">number</span>
+          </li>
+          <li className="rn-fw-api-value-item">
+            <code className="rn-fw-api-value-name">time</code>
+            <span className="rn-fw-api-value-type">string</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">Supply a custom presentation layer.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+<div className="rn-fw-code rn-fw-md">
+
+
+</div>
+</div>
 
 
 <div className="rn-fw-row" id="timeline-rows">

@@ -132,9 +132,12 @@ describe('TimelineContext reducer', () => {
         ],
         weeks: [],
         days: [],
+        hours: [],
         options: {
-          dayWidth: 30,
+          dayWidth: 120,
+          hoursBlockSize: 6,
           rangeInMonths: 3,
+          unitWidth: 30,
         },
       }
 

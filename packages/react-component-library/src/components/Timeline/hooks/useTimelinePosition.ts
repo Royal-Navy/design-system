@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
 import {
-  differenceInCalendarDays,
+  differenceInSeconds,
   isBefore,
   isAfter,
 } from 'date-fns'
@@ -9,23 +9,19 @@ import {
 import { TimelineContext } from '../context'
 import { formatPx } from '../helpers'
 
-function getWidth (
-  startDate: Date,
-  endDate: Date
-): number {
-  return differenceInCalendarDays(
-    new Date(endDate),
-    new Date(startDate)
-  ) + 1 // End day === full day
+const SECONDS_IN_DAY = 86400
+
+function getWidth(startDate: Date, endDate: Date): number {
+  return (
+    differenceInSeconds(new Date(endDate), new Date(startDate)) /
+    SECONDS_IN_DAY
+  )
 }
 
-function getOffset (
-  startDate: Date,
-  timelineStart: Date
-): number {
-  return differenceInCalendarDays(
-    new Date(startDate),
-    new Date(timelineStart)
+function getOffset(startDate: Date, timelineStart: Date): number {
+  return (
+    differenceInSeconds(new Date(startDate), new Date(timelineStart)) /
+    SECONDS_IN_DAY
   )
 }
 
@@ -39,10 +35,7 @@ export function useTimelinePosition(
   isAfterEnd: boolean
 } {
   const {
-    state: {
-      days,
-      options,
-    },
+    state: { days, options },
   } = useContext(TimelineContext)
 
   const firstDateDisplayed = days[0].date

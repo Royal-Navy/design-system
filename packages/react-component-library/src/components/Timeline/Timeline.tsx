@@ -7,6 +7,8 @@ import { TimelineProvider } from './context'
 import {
   TimelineDays,
   TimelineDaysProps,
+  TimelineHours,
+  TimelineHoursProps,
   TimelineMonths,
   TimelineMonthsProps,
   TimelineRows,
@@ -45,6 +47,7 @@ export interface TimelineProps extends ComponentWithClass {
   endDate?: Date
   today?: Date
   range?: number
+  unitWidth?: number
 }
 
 function extractChildren(
@@ -70,17 +73,50 @@ function hasTimelineSideComponent(
   return true
 }
 
+function getHoursBlockSize(
+  children: timelineChildrenType | timelineChildrenType[]
+) {
+  const hoursChildren = extractChildren(children, [TimelineHours])
+
+  if (!hoursChildren.length) {
+    return null
+  }
+
+  return (
+    (hoursChildren[0] as React.ReactElement<TimelineHoursProps>).props
+      .blockSize || DEFAULTS.HOURS_BLOCK_SIZE
+  )
+}
+
+function getDayWidth(
+  hoursBlockSize: number,
+  dayWidth: number,
+  unitWidth: number
+) {
+  const multiplier = hoursBlockSize ? 24 / hoursBlockSize : 1
+
+  if (dayWidth) {
+    console.warn('Prop `dayWidth` is deprecated')
+  }
+
+  return (dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH) * multiplier
+}
+
 export const Timeline: React.FC<TimelineProps> = ({
   children,
-  dayWidth = DEFAULTS.DAY_WIDTH,
+  dayWidth,
   hasSide,
   startDate,
   endDate,
   today,
   range,
+  unitWidth,
 }) => {
+  const hoursBlockSize = getHoursBlockSize(children)
   const options: TimelineOptions = {
-    dayWidth,
+    hoursBlockSize,
+    dayWidth: getDayWidth(hoursBlockSize, dayWidth, unitWidth),
+    unitWidth: unitWidth || DEFAULTS.UNIT_WIDTH,
     rangeInMonths: range || DEFAULTS.RANGE_IN_MONTHS,
   }
 
@@ -88,6 +124,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     children,
     [
       TimelineDays,
+      TimelineHours,
       TimelineMonths,
       TimelineRows,
       TimelineSide,
@@ -101,6 +138,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const headChildren = extractChildren(children, [
     TimelineDays,
+    TimelineHours,
     TimelineWeeks,
     TimelineMonths,
     TimelineTodayMarker,

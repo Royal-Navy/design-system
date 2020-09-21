@@ -6,6 +6,7 @@ import {
   eachMonthOfInterval,
   eachWeekOfInterval,
 } from 'date-fns'
+import { padStart } from 'lodash'
 
 import {
   TimelineState,
@@ -14,9 +15,12 @@ import {
   TimelineMonth,
   TimelineWeek,
   TimelineDay,
+  TimelineHour,
 } from './types'
 
 import { WEEK_START } from '../constants'
+
+const HOURS_IN_DAY = 24
 
 export function getMonths(start: Date, end: Date): TimelineMonth[] {
   const months = eachMonthOfInterval({ start, end }).map(
@@ -58,14 +62,37 @@ export function getDays(start: Date, end: Date): TimelineDay[] {
   return days
 }
 
+export function getHours(blockSize: number): TimelineHour[] {
+  if (!blockSize) {
+    return []
+  }
+
+  const numberOfBlocks = HOURS_IN_DAY / blockSize
+  return Array.from(Array(numberOfBlocks).keys()).map((blockNumber) => {
+    const timeHours = blockNumber * blockSize
+
+    return {
+      hourIndex: blockNumber,
+      time: `${padStart(timeHours.toString(), 2, '0')}:00`,
+    }
+  })
+}
+
 export function buildCalendar(
   startDate: Date,
-  endDate: Date
-): { months: TimelineMonth[]; weeks: TimelineWeek[]; days: TimelineDay[] } {
+  endDate: Date,
+  hoursBlockSize: number
+): {
+  months: TimelineMonth[]
+  weeks: TimelineWeek[]
+  days: TimelineDay[]
+  hours: TimelineHour[]
+} {
   return {
     months: getMonths(startDate, endDate),
     weeks: getWeeks(startDate, endDate),
     days: getDays(startDate, endDate),
+    hours: getHours(hoursBlockSize),
   }
 }
 
@@ -73,7 +100,10 @@ export function reducer(
   state: TimelineState,
   action: TimelineAction
 ): TimelineState | never {
-  const { months, options: { rangeInMonths: range } } = state
+  const {
+    months,
+    options: { hoursBlockSize, rangeInMonths: range },
+  } = state
   const firstMonthOfRange = months[0].startDate
   const lastMonthOfRange = addMonths(months[0].startDate, range - 1)
 
@@ -85,7 +115,8 @@ export function reducer(
         endDate: null,
         ...buildCalendar(
           addMonths(firstMonthOfRange, range),
-          endOfMonth(addMonths(lastMonthOfRange, range))
+          endOfMonth(addMonths(lastMonthOfRange, range)),
+          hoursBlockSize
         ),
       }
     case TIMELINE_ACTIONS.GET_PREV:
@@ -95,7 +126,8 @@ export function reducer(
         endDate: null,
         ...buildCalendar(
           subMonths(firstMonthOfRange, range),
-          endOfMonth(subMonths(lastMonthOfRange, range))
+          endOfMonth(subMonths(lastMonthOfRange, range)),
+          hoursBlockSize
         ),
       }
     default:

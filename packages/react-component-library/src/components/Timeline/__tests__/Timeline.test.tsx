@@ -3,10 +3,11 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
-import { DEFAULTS, NO_DATA_MESSAGE } from '../constants'
+import { DEFAULTS, NO_DATA_MESSAGE, TIMELINE_BLOCK_SIZE } from '../constants'
 import {
   Timeline,
   TimelineDays,
+  TimelineHours,
   TimelineEvent,
   TimelineEvents,
   TimelineMonths,
@@ -20,6 +21,10 @@ import {
 describe('Timeline', () => {
   let wrapper: RenderResult
 
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   describe('when no data is provided', () => {
     beforeEach(() => {
       wrapper = render(
@@ -31,6 +36,7 @@ describe('Timeline', () => {
           <TimelineMonths />
           <TimelineWeeks />
           <TimelineDays />
+          <TimelineHours />
           <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
@@ -137,6 +143,23 @@ describe('Timeline', () => {
 
     it('should set the `role` attribute to `columnheader` on each day', () => {
       const days = wrapper.getAllByTestId('timeline-day')
+
+      days.forEach((day) => expect(day).toHaveAttribute('role', 'columnheader'))
+    })
+
+    it('should set the `role` attribute to `row` on the hours', () => {
+      expect(wrapper.queryByTestId('timeline-hours')).toHaveAttribute(
+        'role',
+        'row'
+      )
+    })
+
+    it('renders the correct number of hours', () => {
+      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(364)
+    })
+
+    it('should set the `role` attribute to `columnheader` on each hour', () => {
+      const days = wrapper.getAllByTestId('timeline-hour')
 
       days.forEach((day) => expect(day).toHaveAttribute('role', 'columnheader'))
     })
@@ -457,6 +480,52 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when `dayWidth` is specified', () => {
+    let consoleWarnSpy: jest.SpyInstance
+
+    beforeEach(() => {
+      consoleWarnSpy = jest.spyOn(global.console, 'warn')
+
+      wrapper = render(
+        <Timeline
+          dayWidth={100}
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 4)}
+                  endDate={new Date(2020, 3, 6)}
+                >
+                  Event
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should warn the consumer about using the deprecated prop', () => {
+      expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'Prop `dayWidth` is deprecated'
+      )
+    })
+
+    it('positions the event correctly', () => {
+      expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
+        left: '300px',
+      })
+    })
+  })
+
   describe('when an event is outside the range', () => {
     beforeEach(() => {
       const EventWithinRange: React.FC = () => (
@@ -665,6 +734,104 @@ describe('Timeline', () => {
         'Sat Feb 01 2020 00:00:00 GMT+0000 (Coordinated Universal Time) - 0 - 30'
 
       expect(firstDay).toHaveTextContent(expected)
+    })
+  })
+
+  describe('when hours has `render` specified', () => {
+    const CustomHour = ({
+      width,
+      time,
+      ...rest
+    }: {
+      width: number
+      time: string
+    }) => <span {...rest}>Time: {time}</span>
+
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 1, 1, 0, 0, 0)}
+          today={new Date(2020, 1, 7, 0, 0, 0)}
+        >
+          <TimelineHours
+            render={(width, time) => (
+              <CustomHour
+                data-testid="timeline-custom-hour"
+                width={width}
+                time={time}
+              />
+            )}
+          />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the day dates as specified', () => {
+      const firstHour = wrapper.getAllByTestId('timeline-custom-hour')[0]
+      const expected = 'Time: 00:00'
+
+      expect(firstHour).toHaveTextContent(expected)
+    })
+  })
+
+  describe('when hours has `blockSize` specified', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineHours blockSize={TIMELINE_BLOCK_SIZE.HALF_DAY} />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 13)}
+                  endDate={new Date(2020, 3, 18)}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('renders the correct number of hours', () => {
+      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(182)
+    })
+  })
+
+  describe('when events have time specified', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineHours blockSize={TIMELINE_BLOCK_SIZE.HALF_DAY} />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 5, 6, 0, 0)}
+                  endDate={new Date(2020, 3, 7, 18, 0, 0)}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('positions the event correctly', () => {
+      expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
+        left: `255px`,
+      })
     })
   })
 
@@ -961,6 +1128,7 @@ describe('Timeline', () => {
           <TimelineMonths />
           <TimelineWeeks />
           <TimelineDays />
+          <TimelineHours />
           <TimelineRows>
             <TimelineRow name="Row 1">
               <TimelineEvents>
@@ -989,9 +1157,13 @@ describe('Timeline', () => {
       expect(wrapper.queryAllByTestId('timeline-day-title')).toHaveLength(17)
     })
 
+    it('renders the correct number of hours', () => {
+      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(68)
+    })
+
     it('positions the event correctly', () => {
       expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
-        left: `${DEFAULTS.DAY_WIDTH}px`,
+        left: `${DEFAULTS.UNIT_WIDTH * 4}px`,
       })
     })
   })

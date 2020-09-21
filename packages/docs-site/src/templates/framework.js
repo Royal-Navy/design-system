@@ -238,6 +238,11 @@ const FrameworkPageTemplate = ({ data: { mdx } }) => {
                   </a>
                 </li>
                 <li className="rn-fw-sidebar-nav-list-item">
+                  <a className="rn-fw-sidebar-nav-link" href="#timeline-hours">
+                    TimelineHours
+                  </a>
+                </li>
+                <li className="rn-fw-sidebar-nav-list-item">
                   <a className="rn-fw-sidebar-nav-link" href="#timeline-rows">
                     TimelineRows
                   </a>
