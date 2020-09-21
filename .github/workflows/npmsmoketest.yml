@@ -36,7 +36,8 @@ jobs:
                 limit: 10000
             uplinks:
                npmjs:
-                url: https://registry.yarnpkg.com
+                url: https://registry.npmjs.org/
+                timeout: 180s
             packages:
               '@*/*':
                 access: \$all
@@ -66,6 +67,7 @@ jobs:
           run: |
             cd main
             yarn install
+            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/design-tokens
             npm publish --registry ${{env.LOCAL_REGISTRY}} packages/css-framework
             npm publish --registry ${{env.LOCAL_REGISTRY}} packages/eslint-config-react
             npm publish --registry ${{env.LOCAL_REGISTRY}} packages/fonts
@@ -88,6 +90,7 @@ jobs:
             yarn install
             npm ls @royalnavy/react-component-library
             yarn config set registry ${{env.LOCAL_REGISTRY}}
+            yarn add @royalnavy/design-tokens
             yarn add @royalnavy/css-framework
             yarn add @royalnavy/icon-library
             yarn add @royalnavy/react-component-library
@@ -116,6 +119,8 @@ jobs:
           run: |
             cat main/packages/cra-template-royalnavy/template.json
             yarn config set registry ${{env.LOCAL_REGISTRY}}
+            yarn config set network-timeout 600000
+            yarn add @royalnavy/design-tokens
             yarn add @royalnavy/css-framework
             yarn add @royalnavy/fonts
             yarn add @royalnavy/icon-library
