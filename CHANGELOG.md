@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/Royal-Navy/design-system/compare/2.13.0...2.14.0) (2020-09-21)
+
+
+### Bug Fixes
+
+* **a11y:** Update error colours ([e28f031](https://github.com/Royal-Navy/design-system/commit/e28f03141aa0a143a67f8c06ff239612f9ed9ba6))
+* **Alert:** Fix attribute set when not available ([005c359](https://github.com/Royal-Navy/design-system/commit/005c35903656ad5e25361c6ed109217dc0eecce6))
+* **Breadcrumb:** Use flex for vertical center ([273c96c](https://github.com/Royal-Navy/design-system/commit/273c96cf626b8d1edf28df62d1bfbafc875088f2))
+* **Breadcrumbs:** Output unique ID for SVG ([2fcaf6b](https://github.com/Royal-Navy/design-system/commit/2fcaf6b4868e661be42771b3fbcac12d0c47a19c))
+* **Checkbox:** Add styling for disabled state ([97533aa](https://github.com/Royal-Navy/design-system/commit/97533aa3d488a0d2c0db505b729f900d8db8848a))
+* **CI:** Build & deploy next ([9afe369](https://github.com/Royal-Navy/design-system/commit/9afe36962876f2b1a9a6d03c613a49957518ab7e))
+* **CI:** Run test scripts ([5f6ffc4](https://github.com/Royal-Navy/design-system/commit/5f6ffc48ee6ca7adc54677b43bb606d0627d2974))
+* **DataList:** Fix rules for a11y checks ([174f5e9](https://github.com/Royal-Navy/design-system/commit/174f5e91e3b96c18efe1d5f59b903544647a8dfe))
+* **DatePicker:** Associate button with day picker ([73f9e66](https://github.com/Royal-Navy/design-system/commit/73f9e6620cb091a8cc2fc7bceb1606f8b44f85a8))
+* **DatePicker:** Fix lag in values passed to onChange ([1030394](https://github.com/Royal-Navy/design-system/commit/1030394afbcf58acc9d9c26ca54b9d0df98c2092))
+* **DatePicker:** Prevent warning with empty initial value ([a054472](https://github.com/Royal-Navy/design-system/commit/a05447200f8d7a2dc311c90f9aadb1695d7b2a07))
+* **Dropdown:** Add `aria-label` attribute ([cf32557](https://github.com/Royal-Navy/design-system/commit/cf32557e5d4a8618c40c88f2a4906683946e5739))
+* **Modal:** Add `aria-labelledby` conditionally ([35577df](https://github.com/Royal-Navy/design-system/commit/35577dfb60d798e02125c6e3ffcfba68493a330b))
+* **Nav:** Remove broken story ([cb894a7](https://github.com/Royal-Navy/design-system/commit/cb894a7bf8dd74c1395284fc2b49007004420954))
+* **NumberInput:** Set `aria-labelledby` attribute ([0100a20](https://github.com/Royal-Navy/design-system/commit/0100a20ace393fd311a1bcd0ea9244f8d0b10cf2))
+* **NumberInput:** Set default `aria-label` ([ed45eb6](https://github.com/Royal-Navy/design-system/commit/ed45eb6dbcd9247526476d19b14e80aa69c3a700))
+* **NumberInput:** Set value to 0 as default ([f37ba92](https://github.com/Royal-Navy/design-system/commit/f37ba92ffd3106dee3e82595eaf53f33f8150615))
+* **Radio:** Add styling for disabled state ([04465d3](https://github.com/Royal-Navy/design-system/commit/04465d3d6371476ece37819ec6ee0a9d9a126081))
+* **RangeSlider:** Add missing tabIndex to Handle ([d01d4cc](https://github.com/Royal-Navy/design-system/commit/d01d4cc446795fe4a70bde4620c07c5c9025263b))
+* **RangeSlider:** Make ticks display without threshold ([20dcec8](https://github.com/Royal-Navy/design-system/commit/20dcec8cccb53e0d9ed59d9bd99d64580163d575))
+* **RangeSlider:** Render ticks active if values above ([375eb60](https://github.com/Royal-Navy/design-system/commit/375eb60d890a3bb35f3e4437987340448f7e10eb))
+* **Slider:** Fix a11y violations ([c25693f](https://github.com/Royal-Navy/design-system/commit/c25693fc217ea3ea1e5c7608adbf6ca1cb304264))
+* **TabSet:** Set attributes correctly for a11y ([8fcb6c7](https://github.com/Royal-Navy/design-system/commit/8fcb6c78717d4db54186189b2b261534ed817ef0))
+* **TextArea:** Remove rogue z-index ([fe826f8](https://github.com/Royal-Navy/design-system/commit/fe826f84b3b24a092f2b283eeef8ac9060bb2f18))
+* **TextInput:** Remove unlikely scenario ([d9b7ad7](https://github.com/Royal-Navy/design-system/commit/d9b7ad7584750b8b1ac7499ac824f71be483ee91))
+* **Timeline:** Adjust z-index ([db053be](https://github.com/Royal-Navy/design-system/commit/db053be3d32b04d6faf39a3895f930a8041b2e74))
+* **Timeline:** Disable keyboard rules for story ([8f15ac0](https://github.com/Royal-Navy/design-system/commit/8f15ac00945c18d9c68d5be2923702342e013c31))
+* **Timeline:** Display name for HOC rows ([e065603](https://github.com/Royal-Navy/design-system/commit/e065603f3f8427ae2918141a3c6cf32f60235522))
+* **Timeline:** Fix duplicated elements in some environments ([bd66eda](https://github.com/Royal-Navy/design-system/commit/bd66edac0c1317633d4ab28b69bdbf2949e20cad))
+* **Timeline:** Re-add custom months and weeks stories ([0cfada8](https://github.com/Royal-Navy/design-system/commit/0cfada8331a97b0cb82a4f5b4c6852ebd6c947e8))
+* **TSConfig:** Convert .d.ts to .ts ([8ea8fa9](https://github.com/Royal-Navy/design-system/commit/8ea8fa9035783f91665b0e9987f7523b3f75ef8a))
+
+
+### Features
+
+* **Accessibility:** Add a11y tests ([d99f1ac](https://github.com/Royal-Navy/design-system/commit/d99f1ac9a6b6752c5ef783bf3088bd13ae937eaa))
+* **Accessibility:** Add link to statement ([bfea9cc](https://github.com/Royal-Navy/design-system/commit/bfea9cc0d647707be624ecc96f1aff47460edcb6))
+* **Accessibility:** Update statement ([ff02511](https://github.com/Royal-Navy/design-system/commit/ff02511390d2b2ad4395647a7bd26b36d6dce954))
+* **DatePicker:** Add ability to disable days ([f6316c3](https://github.com/Royal-Navy/design-system/commit/f6316c366d756b5af58cffa350ea37300cb268a4))
+* **DatePicker:** Allow `initialMonth` to be set without `startDate` ([6a61ef8](https://github.com/Royal-Navy/design-system/commit/6a61ef8ef8ad50b808e649c6e3f37403ede4d305))
+* **DesignTokens:** Create base package ([36d0594](https://github.com/Royal-Navy/design-system/commit/36d059415af44816af9662521e1698c9fcb5edd9))
+* **DesignTokens:** Link tokens to existing contexts ([d2c0270](https://github.com/Royal-Navy/design-system/commit/d2c0270ca7da6d3bdd3e4802a53d17e0691fc3d4))
+* **Masthead:** Make avatar accessible ([130cf24](https://github.com/Royal-Navy/design-system/commit/130cf24efd653917fead4f62d61f16d25c52df6e))
+* **RangeSlider:** Add ability to apply custom unit ([67faf6c](https://github.com/Royal-Navy/design-system/commit/67faf6ca7455c182178a3dcd4f967dbda96d325d))
+* **RangeSlider:** Add percentage badge ([1148c77](https://github.com/Royal-Navy/design-system/commit/1148c77e6d6d17a71b4d776e458364f9df9a216a))
+* **RangeSlider:** Colour code handles with thresholds ([448f476](https://github.com/Royal-Navy/design-system/commit/448f4769876f709ef32ad4e01c16f31a26cf53b5))
+* **RangeSlider:** Colour code ticks with thresholds ([650eac1](https://github.com/Royal-Navy/design-system/commit/650eac149aaa05e105ae95c8d8459aeaee1fba40))
+* **RangeSlider:** Enable tick display without stepped ([d40addc](https://github.com/Royal-Navy/design-system/commit/d40addcd1458f75e800b48fcb576a61b57de3001))
+* **Storybook:** Upgrade to v6 ([120b2bd](https://github.com/Royal-Navy/design-system/commit/120b2bdd5854cbb83df62abbc60462793855b428))
+* **TextArea:** Adjust label positioning ([b660aa0](https://github.com/Royal-Navy/design-system/commit/b660aa001407a35580989eb45a50eca5ccec8e5d))
+* **Timeline:** Add `aria-label` to buttons ([eeb4c9f](https://github.com/Royal-Navy/design-system/commit/eeb4c9feecb5712c1e7c84db205ace14a55c6f70))
+* **Timeline:** Add roles for no data ([fb0f2f5](https://github.com/Royal-Navy/design-system/commit/fb0f2f517aca15fc839be759cb8feb27b0d64731))
+* **Timeline:** Disable keyboard checks for now ([8bcbc67](https://github.com/Royal-Navy/design-system/commit/8bcbc67cb1f77f7ed05704cd31b97edf288b22fa))
+
+
+
+
+
 # [2.13.0](https://github.com/Royal-Navy/design-system/compare/2.12.0...2.13.0) (2020-08-26)
 
 

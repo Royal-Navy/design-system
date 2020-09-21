@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/Royal-Navy/design-system/compare/2.13.0...2.14.0) (2020-09-21)
+
+
+### Features
+
+* **Accessibility:** Add link to statement ([bfea9cc](https://github.com/Royal-Navy/design-system/commit/bfea9cc0d647707be624ecc96f1aff47460edcb6))
+* **Accessibility:** Update statement ([ff02511](https://github.com/Royal-Navy/design-system/commit/ff02511390d2b2ad4395647a7bd26b36d6dce954))
+
+
+
+
+
 # [2.13.0](https://github.com/Royal-Navy/design-system/compare/2.12.0...2.13.0) (2020-08-26)
 
 
