@@ -88,9 +88,8 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         <Handles>
           {({ activeHandleID, handles, getHandleProps }) => (
             <div className="rn-rangeslider__handles">
-              {handles.map((handle, index) => (
+              {handles.map((handle) => (
                 <Handle
-                  tabIndex={index}
                   key={handle.id}
                   handle={handle}
                   domain={domain}

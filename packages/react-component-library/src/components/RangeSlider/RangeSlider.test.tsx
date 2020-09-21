@@ -238,18 +238,6 @@ describe('RangeSlider', () => {
     it('should render two handles', () => {
       expect(wrapper.queryAllByTestId('rangeslider-handle')).toHaveLength(3)
     })
-
-    it('should set the correct `tabindex`', () => {
-      expect(wrapper.getAllByTestId('rangeslider-handle')[0]).toHaveAttribute(
-        'tabindex',
-        '0'
-      )
-
-      expect(wrapper.getAllByTestId('rangeslider-handle')[1]).toHaveAttribute(
-        'tabindex',
-        '1'
-      )
-    })
   })
 
   describe('when the `hasPercentage` prop is provided', () => {
