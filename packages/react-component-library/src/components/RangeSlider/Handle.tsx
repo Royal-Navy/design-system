@@ -11,6 +11,7 @@ interface HandleProps {
   getHandleProps: GetHandleProps
   displayUnit?: string
   thresholds?: number[]
+  tabIndex: number
 }
 
 export const Handle: React.FC<HandleProps> = ({
@@ -20,6 +21,7 @@ export const Handle: React.FC<HandleProps> = ({
   getHandleProps,
   displayUnit,
   thresholds,
+  tabIndex,
 }) => {
   const isActive: boolean = activeHandleID === id
 
@@ -30,6 +32,7 @@ export const Handle: React.FC<HandleProps> = ({
 
   return (
     <div
+      tabIndex={tabIndex}
       role="slider"
       aria-label="Select range"
       aria-valuemin={min}
