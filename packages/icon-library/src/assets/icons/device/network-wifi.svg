@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Icons/Device/network-wifi</title>
-    <defs>
-        <path d="M7.99111111,14.2133334 L0.16888884,4.47111109 C0.471111064,4.23999998 3.48444442,1.77777774 8,1.77777774 C12.5155556,1.77777774 15.5288889,4.23999998 15.8311112,4.47111109 L15.8311112,4.47111109 L13.5778888,7.27677774 L13.5822223,7.28 L8.00888889,14.2133334 L8,14.2222223 L8,14.2133334 L7.99111111,14.2133334 Z" id="path-1"></path>
-    </defs>
     <g id="Icons/Device/network-wifi" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <mask id="mask-2" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <use id="Combined-Shape" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
+        <path d="M7.99111111,14.2133334 L0.16888884,4.47111109 C0.471111064,4.23999998 3.48444442,1.77777774 8,1.77777774 C12.5155556,1.77777774 15.5288889,4.23999998 15.8311112,4.47111109 L15.8311112,4.47111109 L13.5778888,7.27677774 L13.5822223,7.28 L8.00888889,14.2133334 L8,14.2222223 L8,14.2133334 L7.99111111,14.2133334 Z" id="Combined-Shape" fill="#233745" fill-rule="nonzero"></path>
     </g>
 </svg>

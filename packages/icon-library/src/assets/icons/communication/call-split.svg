@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Icons/Communication/call-split</title>
-    <defs>
-        <path d="M9.33333334,2.66666663 L10.86,4.19333331 L8.94000001,6.11333332 L9.88666668,7.05999999 L11.8066667,5.13999998 L13.3333334,6.66666663 L13.3333334,2.66666663 L9.33333334,2.66666663 Z M6.66666663,2.66666663 L2.66666663,2.66666663 L2.66666663,6.66666663 L4.19333331,5.13999998 L7.33333333,8.27333334 L7.33333333,13.3333334 L8.66666663,13.3333334 L8.66666663,7.72666666 L5.13999998,4.19333331 L6.66666663,2.66666663 Z" id="path-1"></path>
-    </defs>
     <g id="Icons/Communication/call-split" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <mask id="mask-2" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <use id="Icons/Communication/ic_call_split_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
+        <path d="M9.33333334,2.66666663 L10.86,4.19333331 L8.94000001,6.11333332 L9.88666668,7.05999999 L11.8066667,5.13999998 L13.3333334,6.66666663 L13.3333334,2.66666663 L9.33333334,2.66666663 Z M6.66666663,2.66666663 L2.66666663,2.66666663 L2.66666663,6.66666663 L4.19333331,5.13999998 L7.33333333,8.27333334 L7.33333333,13.3333334 L8.66666663,13.3333334 L8.66666663,7.72666666 L5.13999998,4.19333331 L6.66666663,2.66666663 Z" id="Icons/Communication/ic_call_split_24px" fill="#233745" fill-rule="nonzero"></path>
     </g>
 </svg>
