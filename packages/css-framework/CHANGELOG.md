@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/Royal-Navy/design-system/compare/2.13.0...2.14.0) (2020-09-21)
+
+
+### Bug Fixes
+
+* **a11y:** Update error colours ([e28f031](https://github.com/Royal-Navy/design-system/commit/e28f03141aa0a143a67f8c06ff239612f9ed9ba6))
+* **Breadcrumb:** Use flex for vertical center ([273c96c](https://github.com/Royal-Navy/design-system/commit/273c96cf626b8d1edf28df62d1bfbafc875088f2))
+* **Checkbox:** Add styling for disabled state ([97533aa](https://github.com/Royal-Navy/design-system/commit/97533aa3d488a0d2c0db505b729f900d8db8848a))
+* **Radio:** Add styling for disabled state ([04465d3](https://github.com/Royal-Navy/design-system/commit/04465d3d6371476ece37819ec6ee0a9d9a126081))
+* **RangeSlider:** Make ticks display without threshold ([20dcec8](https://github.com/Royal-Navy/design-system/commit/20dcec8cccb53e0d9ed59d9bd99d64580163d575))
+* **TextArea:** Remove rogue z-index ([fe826f8](https://github.com/Royal-Navy/design-system/commit/fe826f84b3b24a092f2b283eeef8ac9060bb2f18))
+* **Timeline:** Adjust z-index ([db053be](https://github.com/Royal-Navy/design-system/commit/db053be3d32b04d6faf39a3895f930a8041b2e74))
+
+
+### Features
+
+* **DatePicker:** Add ability to disable days ([f6316c3](https://github.com/Royal-Navy/design-system/commit/f6316c366d756b5af58cffa350ea37300cb268a4))
+* **DesignTokens:** Link tokens to existing contexts ([d2c0270](https://github.com/Royal-Navy/design-system/commit/d2c0270ca7da6d3bdd3e4802a53d17e0691fc3d4))
+* **RangeSlider:** Add percentage badge ([1148c77](https://github.com/Royal-Navy/design-system/commit/1148c77e6d6d17a71b4d776e458364f9df9a216a))
+* **RangeSlider:** Colour code handles with thresholds ([448f476](https://github.com/Royal-Navy/design-system/commit/448f4769876f709ef32ad4e01c16f31a26cf53b5))
+* **RangeSlider:** Colour code ticks with thresholds ([650eac1](https://github.com/Royal-Navy/design-system/commit/650eac149aaa05e105ae95c8d8459aeaee1fba40))
+* **TextArea:** Adjust label positioning ([b660aa0](https://github.com/Royal-Navy/design-system/commit/b660aa001407a35580989eb45a50eca5ccec8e5d))
+
+
+
+
+
 # [2.13.0](https://github.com/Royal-Navy/design-system/compare/2.12.0...2.13.0) (2020-08-26)
 
 

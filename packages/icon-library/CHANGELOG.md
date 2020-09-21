@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/Royal-Navy/design-system/compare/2.13.0...2.14.0) (2020-09-21)
+
+
+### Bug Fixes
+
+* **Breadcrumbs:** Output unique ID for SVG ([2fcaf6b](https://github.com/Royal-Navy/design-system/commit/2fcaf6b4868e661be42771b3fbcac12d0c47a19c))
+
+
+
+
+
 # [2.13.0](https://github.com/Royal-Navy/design-system/compare/2.12.0...2.13.0) (2020-08-26)
 
 **Note:** Version bump only for package @royalnavy/icon-library
