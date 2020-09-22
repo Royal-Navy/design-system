@@ -58,7 +58,7 @@ describe('DatePicker', () => {
 
   describe('default props', () => {
     beforeEach(() => {
-      startDate = new Date('12/01/2019')
+      startDate = new Date(2019, 11, 1)
       onChange = jest.fn()
       onBlur = jest.fn()
 
@@ -184,7 +184,7 @@ describe('DatePicker', () => {
         it('set the value of the component to this date', () => {
           expect(
             wrapper.getByTestId('datepicker-input').getAttribute('value')
-          ).toBe('12/31/2019')
+          ).toBe('31/12/2019')
         })
 
         it('invokes the onChange callback', () => {
@@ -261,7 +261,7 @@ describe('DatePicker', () => {
   describe('when selecting a date range', () => {
     beforeEach(() => {
       onChange = jest.fn()
-      startDate = new Date('12/01/2019')
+      startDate = new Date(2019, 11, 1)
 
       wrapper = render(
         <DatePicker
@@ -303,7 +303,7 @@ describe('DatePicker', () => {
           it('set the value of the component to this date', () => {
             expect(
               wrapper.getByTestId('datepicker-input').getAttribute('value')
-            ).toBe('12/1/2019 - 12/31/2019')
+            ).toBe('01/12/2019 - 31/12/2019')
           })
 
           it('invokes the onChange callback', () => {
@@ -324,7 +324,7 @@ describe('DatePicker', () => {
           it('set the value of the component to this date', () => {
             expect(
               wrapper.getByTestId('datepicker-input').getAttribute('value')
-            ).toBe('12/1/2019 - 1/20/2020')
+            ).toBe('01/12/2019 - 20/01/2020')
           })
 
           it('invokes the onChange callback', () => {
