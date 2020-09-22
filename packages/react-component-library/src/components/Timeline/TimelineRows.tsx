@@ -1,13 +1,23 @@
 import React from 'react'
-import classNames from 'classnames'
+import styled from 'styled-components'
 import { differenceInDays, endOfWeek, max, min } from 'date-fns'
+import {
+  ColorNeutralWhite,
+  Spacing2,
+  ZindexBody,
+} from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineRowProps } from '.'
 import { TimelineContext } from './context'
 import { withKey } from '../../helpers'
 import { formatPx, isOdd } from './helpers'
-import { NO_DATA_MESSAGE, WEEK_START } from './constants'
+import {
+  NO_DATA_MESSAGE,
+  WEEK_START,
+  TIMELINE_BG_COLOR,
+  TIMELINE_ALT_BG_COLOR,
+} from './constants'
 
 type TimelineRowsChildrenType =
   | React.ReactElement<TimelineRowProps>
@@ -23,11 +33,39 @@ export interface TimelineRowsProps extends ComponentWithClass {
   ) => React.ReactElement
 }
 
+const StyledNoData = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: inherit;
+
+  span {
+    background-color: ${ColorNeutralWhite};
+    padding: ${Spacing2};
+    z-index: ${Number(ZindexBody) + 1};
+  }
+`
+
 const noData = (
-  <div className="timeline__empty" data-testid="timeline-no-data" role="row">
+  <StyledNoData role="row" data-testid="timeline-no-data">
     <span role="cell">{NO_DATA_MESSAGE}</span>
-  </div>
+  </StyledNoData>
 )
+
+interface StyledTimelineRowWeekProps {
+  isOddNumber: boolean
+  marginLeft: string
+  width: string
+}
+
+const StyledTimelineRowWeek = styled.div<StyledTimelineRowWeekProps>`
+  display: inline-block;
+  height: 100vh;
+  background-color: ${({ isOddNumber }) =>
+    isOddNumber ? TIMELINE_BG_COLOR : TIMELINE_ALT_BG_COLOR};
+  margin-left: ${({ marginLeft }) => marginLeft};
+  width: ${({ width }) => width};
+`
 
 function renderDefaultColumns(
   index: number,
@@ -35,24 +73,39 @@ function renderDefaultColumns(
   offsetPx: string,
   widthPx: string
 ) {
-  const classes = classNames(
-    'timeline__row-week',
-    'timeline__row-week--renderDefault',
-    {
-      'timeline__row-week--alt': isOddNumber,
-    }
-  )
-
   return (
-    <div
-      className={classes}
-      style={{
-        marginLeft: offsetPx,
-        width: widthPx,
-      }}
+    <StyledTimelineRowWeek
+      isOddNumber={isOddNumber}
+      marginLeft={offsetPx}
+      width={widthPx}
     />
   )
 }
+
+interface DefaultStyles {
+  defaultStyles: boolean
+}
+
+const StyledTimelineMain = styled.div<DefaultStyles>`
+  ${({ defaultStyles }) =>
+    defaultStyles &&
+    `
+      width: auto;
+      height: auto;
+      min-height: 4rem;
+    `}
+`
+
+const StyledTimelineRowWeeksWrapper = styled.div`
+  position: relative;
+`
+
+const StyledTimelineRowWeeks = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+`
 
 export const TimelineRows: React.FC<TimelineRowsProps> = ({
   children,
@@ -60,13 +113,6 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
   renderColumns,
 }) => {
   const hasChildren = React.Children.count(children) > 0
-  const rowWeeksWrapperClasses = classNames('timeline__row-weeks-wrapper')
-  const rowWeeksClasses = classNames('timeline__row-weeks', {
-    'timeline__row-weeks--renderDefault': !renderColumns,
-  })
-  const mainClasses = classNames('timeline__main', className, {
-    'timeline__main--renderDefault': !renderColumns,
-  })
 
   return (
     <>
@@ -79,11 +125,10 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
               options: { dayWidth },
             },
           }) => (
-            <div className={rowWeeksWrapperClasses}>
-              <div
-                className={rowWeeksClasses}
-                data-testid="timeline-columns"
+            <StyledTimelineRowWeeksWrapper>
+              <StyledTimelineRowWeeks
                 role="presentation"
+                data-testid="timeline-columns"
               >
                 {weeks.map(({ startDate }, index) => {
                   const lastDateDisplayed = min([
@@ -117,15 +162,20 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
                     startDate.toString()
                   )
                 })}
-              </div>
-            </div>
+              </StyledTimelineRowWeeks>
+            </StyledTimelineRowWeeksWrapper>
           )}
         </TimelineContext.Consumer>
       )}
 
-      <div className={mainClasses} data-testid="timeline-rows" role="rowgroup">
+      <StyledTimelineMain
+        className={className}
+        defaultStyles={!renderColumns}
+        role="rowgroup"
+        data-testid="timeline-rows"
+      >
         {hasChildren ? children : noData}
-      </div>
+      </StyledTimelineMain>
     </>
   )
 }

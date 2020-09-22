@@ -4,6 +4,13 @@ const { resolve } = require('path')
 module.exports = {
   target: 'node',
   entry: ['./index.ts'],
+  externals: {
+    'styled-components': {
+      commonjs: 'styled-components',
+      commonjs2: 'styled-components',
+      amd: 'styled-components',
+    },
+  },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },

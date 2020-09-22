@@ -1,6 +1,14 @@
 import React from 'react'
 import { isAfter } from 'date-fns'
-import classNames from 'classnames'
+import styled from 'styled-components'
+import {
+  SpacingPx,
+  ZindexBody,
+  ColorNeutral400,
+  TypographyXs,
+} from '@royalnavy/design-tokens'
+
+import { TIMELINE_BORDER_COLOR, TIMELINE_BG_COLOR } from './constants'
 
 interface TimelineHourProps {
   date: Date
@@ -10,29 +18,35 @@ interface TimelineHourProps {
   width: number
 }
 
+const StyledTimelineHour = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  background-color: ${TIMELINE_BG_COLOR};
+  border-top: ${SpacingPx} ${TIMELINE_BORDER_COLOR};
+  border-bottom: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+  border-right: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+`
+
+const StyledTitle = styled.span`
+  font-weight: 600;
+  font-size: ${TypographyXs};
+  color: ${ColorNeutral400};
+  background-color: ${TIMELINE_BG_COLOR};
+  z-index: ${Number(ZindexBody) + 2};
+`
+
 function renderDefault(width: number, time: string) {
-  const wrapperClasses = classNames(
-    'timeline__hour',
-    'timeline__hour--renderDefault'
-  )
-
-  const titleClasses = classNames(
-    'timeline__hour-title',
-    'timeline__hour-title--renderDefault'
-  )
-
   return (
-    <div
-      className={wrapperClasses}
+    <StyledTimelineHour
       data-testid="timeline-hour"
       style={{
         width: `${width}px`,
       }}
     >
-      <span className={titleClasses} data-testid="timeline-hour-title">
-        {time}
-      </span>
-    </div>
+      <StyledTitle data-testid="timeline-hour-title">{time}</StyledTitle>
+    </StyledTimelineHour>
   )
 }
 

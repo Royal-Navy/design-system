@@ -1,5 +1,5 @@
 import React from 'react'
-import classNames from 'classnames'
+import styled from 'styled-components'
 
 import { getKey } from '../../helpers'
 import { TIMELINE_BLOCK_SIZE } from './constants'
@@ -25,11 +25,11 @@ export type TimelineHoursProps =
   | TimelineHoursWithRenderContentProps
   | TimelineHoursWithChildrenProps
 
-export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
-  const classes = classNames('timeline__hours', {
-    'timeline__hours--renderDefault': !render,
-  })
+const StyledTimelineHours = styled.div`
+  white-space: nowrap;
+`
 
+export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
   return (
     <TimelineContext.Consumer>
       {({
@@ -40,12 +40,8 @@ export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
           options: { unitWidth },
         },
       }) => (
-        <TimelineHeaderRow
-          className="timeline__row--short"
-          data-testid="timeline-hours"
-          name="Hours"
-        >
-          <div className={classes}>
+        <TimelineHeaderRow isShort name="Hours" data-testid="timeline-hours">
+          <StyledTimelineHours>
             {days.map(({ date }) => {
               return hours.map(({ hourIndex, time }) => (
                 <TimelineHour
@@ -61,7 +57,7 @@ export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
                 />
               ))
             })}
-          </div>
+          </StyledTimelineHours>
         </TimelineHeaderRow>
       )}
     </TimelineContext.Consumer>

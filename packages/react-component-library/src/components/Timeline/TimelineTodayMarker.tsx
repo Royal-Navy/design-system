@@ -1,5 +1,11 @@
 import React, { useContext } from 'react'
-import classNames from 'classnames'
+import styled from 'styled-components'
+import {
+  SpacingPx,
+  ColorDanger500,
+  TypographyS,
+  ZindexBody,
+} from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineContext } from './context'
@@ -19,13 +25,36 @@ export type TimelineTodayMarkerProps =
   | TimelineTodayMarkerWithRenderContentProps
   | TimelineTodayMarkerWithChildrenProps
 
-function renderDefault(offset: string) {
-  const classes = classNames(
-    'timeline__today-marker',
-    'timeline__today-marker--renderDefault'
-  )
+const StyledTimelineTodayMarkerWrapper = styled.div`
+  position: relative;
+`
 
-  return <div style={{ left: offset }} className={classes} />
+interface StyledTimelineTodayMarkerProps {
+  left: string
+}
+
+const StyledTimelineTodayMarker = styled.div<StyledTimelineTodayMarkerProps>`
+  position: absolute;
+  top: 4rem;
+  display: inline-block;
+  width: ${SpacingPx};
+  height: 100vh;
+  background-color: ${ColorDanger500};
+  z-index: ${Number(ZindexBody) + 1};
+
+  &::before {
+    content: 'Today';
+    display: inline-block;
+    color: ${ColorDanger500};
+    font-size: ${TypographyS};
+    transform: translate(-50%, -175%);
+  }
+
+  left: ${({ left }) => left};
+`
+
+function renderDefault(offset: string) {
+  return <StyledTimelineTodayMarker left={offset} />
 }
 
 export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = ({
@@ -39,16 +68,13 @@ export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = ({
 
   if (isBeforeStart || isAfterEnd) return null
 
-  const wrapperClasses = classNames('timeline__today-marker-wrapper')
-
   return (
-    <div
-      className={wrapperClasses}
+    <StyledTimelineTodayMarkerWrapper
       data-testid="timeline-today-marker-wrapper"
       role="presentation"
     >
       {render ? render(today, offset) : renderDefault(offset)}
-    </div>
+    </StyledTimelineTodayMarkerWrapper>
   )
 }
 

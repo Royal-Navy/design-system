@@ -1,5 +1,5 @@
 import React from 'react'
-import classNames from 'classnames'
+import styled from 'styled-components'
 
 import { getKey } from '../../helpers'
 import { TimelineContext } from './context'
@@ -18,11 +18,11 @@ export type TimelineDaysProps =
   | TimelineDaysWithRenderContentProps
   | TimelineDaysWithChildrenProps
 
-export const TimelineDays: React.FC<TimelineDaysProps> = ({ render }) => {
-  const classes = classNames('timeline__days', {
-    'timeline__days--renderDefault': !render,
-  })
+const StyledTimelineDays = styled.div`
+  white-space: nowrap;
+`
 
+export const TimelineDays: React.FC<TimelineDaysProps> = ({ render }) => {
   return (
     <TimelineContext.Consumer>
       {({
@@ -32,12 +32,8 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({ render }) => {
           options: { dayWidth },
         },
       }) => (
-        <TimelineHeaderRow
-          className="timeline__row--short"
-          data-testid="timeline-days"
-          name="Days"
-        >
-          <div className={classes}>
+        <TimelineHeaderRow isShort name="Days" data-testid="timeline-days">
+          <StyledTimelineDays>
             {days.map(({ date }, index) => (
               <TimelineDay
                 date={date}
@@ -48,7 +44,7 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({ render }) => {
                 timelineEndDate={timelineEndDate}
               />
             ))}
-          </div>
+          </StyledTimelineDays>
         </TimelineHeaderRow>
       )}
     </TimelineContext.Consumer>

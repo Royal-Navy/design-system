@@ -1,3 +1,5 @@
+import { ColorNeutralWhite, ColorNeutral000, ColorNeutral100 } from '@royalnavy/design-tokens'
+
 const ACCESSIBLE_DATE_FORMAT = 'do MMMM y'
 
 const DATE_DAY_FORMAT = 'dd'
@@ -19,6 +21,11 @@ const NO_DATA_MESSAGE = 'No data available'
 
 const WEEK_START = 1 // Monday
 
+const TIMELINE_BORDER_COLOR = ColorNeutral100
+const TIMELINE_BG_COLOR = ColorNeutral000
+const TIMELINE_ALT_BG_COLOR = ColorNeutralWhite
+const TIMELINE_ROW_HEADER_WIDTH = '16rem'
+
 export {
   ACCESSIBLE_DATE_FORMAT,
   DATE_DAY_FORMAT,
@@ -27,5 +34,9 @@ export {
   DEFAULTS,
   NO_DATA_MESSAGE,
   TIMELINE_BLOCK_SIZE,
-  WEEK_START
+  WEEK_START,
+  TIMELINE_BORDER_COLOR,
+  TIMELINE_BG_COLOR,
+  TIMELINE_ALT_BG_COLOR,
+  TIMELINE_ROW_HEADER_WIDTH
 }

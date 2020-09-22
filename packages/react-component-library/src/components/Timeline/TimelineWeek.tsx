@@ -1,11 +1,21 @@
 import React from 'react'
-import classNames from 'classnames'
+import styled from 'styled-components'
 import { format, differenceInDays, endOfWeek, max, min } from 'date-fns'
+import {
+  SpacingPx,
+  TypographyM,
+  ColorNeutral400,
+  Spacing4,
+  ZindexBody,
+} from '@royalnavy/design-tokens'
 
 import {
   ACCESSIBLE_DATE_FORMAT,
   DATE_WEEK_FORMAT,
   WEEK_START,
+  TIMELINE_BG_COLOR,
+  TIMELINE_ALT_BG_COLOR,
+  TIMELINE_BORDER_COLOR,
 } from './constants'
 import { formatPx, isOdd } from './helpers'
 import { TimelineDay } from './context/types'
@@ -26,6 +36,35 @@ interface TimelineWeekProps {
   startDate: Date
 }
 
+interface StyledTimelineWeekProps {
+  isOddNumber: boolean
+  marginLeft: string
+  width: string
+}
+
+const StyledTimelineWeek = styled.div<StyledTimelineWeekProps>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  background-color: ${({ isOddNumber }) =>
+    isOddNumber ? TIMELINE_ALT_BG_COLOR : TIMELINE_BG_COLOR};
+  border-top: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+  border-bottom: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+  justify-content: unset;
+  margin-left: ${({ marginLeft }) => marginLeft};
+  width: ${({ width }) => width};
+`
+
+const StyledTitle = styled.span`
+  font-weight: 600;
+  font-size: ${TypographyM};
+  color: ${ColorNeutral400};
+  background-color: inherit;
+  z-index: ${Number(ZindexBody) + 2};
+  margin-left: ${Spacing4};
+`
+
 function renderDefault(
   index: number,
   isOddNumber: boolean,
@@ -35,32 +74,15 @@ function renderDefault(
   daysTotal: number,
   startDate: Date
 ) {
-  const wrapperClasses = classNames(
-    'timeline__week',
-    'timeline__week--renderDefault',
-    {
-      'timeline__week--alt': isOddNumber,
-    }
-  )
-
-  const titleClasses = classNames(
-    'timeline__week-title',
-    'timeline__week-title--renderDefault'
-  )
-
   return (
-    <div
-      className={wrapperClasses}
-      style={{
-        marginLeft: offsetPx,
-        width: widthPx,
-      }}
+    <StyledTimelineWeek
+      isOddNumber={isOddNumber}
+      marginLeft={offsetPx}
+      width={widthPx}
       data-testid="timeline-week"
     >
-      <span className={titleClasses}>
-        {format(startDate, DATE_WEEK_FORMAT)}
-      </span>
-    </div>
+      <StyledTitle>{format(startDate, DATE_WEEK_FORMAT)}</StyledTitle>
+    </StyledTimelineWeek>
   )
 }
 
