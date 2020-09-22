@@ -1,6 +1,6 @@
 {
   "name": "@royalnavy/design-tokens",
-  "version": "2.15.0-alpha.1",
+  "version": "2.15.0-alpha.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "author": "Royal Navy",
