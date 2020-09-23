@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Icons/Navigation/arrow-upward</title>
-    <defs>
-        <polygon id="path-1" points="2.66666663 8 3.60666664 8.94000001 7.33333333 5.21999998 7.33333333 13.3333334 8.66666667 13.3333334 8.66666667 5.21999998 12.3866667 8.94666667 13.3333334 8 8 2.66666663"></polygon>
-    </defs>
     <g id="Icons/Navigation/arrow-upward" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <mask id="mask-2" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <use id="Icons/Navigation/ic_arrow_upward_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
+        <polygon id="Icons/Navigation/ic_arrow_upward_24px" fill="#233745" fill-rule="nonzero" points="2.66666663 8 3.60666664 8.94000001 7.33333333 5.21999998 7.33333333 13.3333334 8.66666667 13.3333334 8.66666667 5.21999998 12.3866667 8.94666667 13.3333334 8 8 2.66666663"></polygon>
     </g>
 </svg>

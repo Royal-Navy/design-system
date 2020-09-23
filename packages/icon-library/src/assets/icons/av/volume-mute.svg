@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Icons/AV/volume-mute</title>
-    <defs>
-        <polygon id="path-1" points="4.44444442 6.22222221 4.44444442 9.77777779 7.11111111 9.77777779 10.6666667 13.3333334 10.6666667 2.66666663 7.11111111 6.22222221"></polygon>
-    </defs>
     <g id="Icons/AV/volume-mute" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <mask id="mask-2" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <use id="Icons/AV/ic_volume_mute_18px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
+        <polygon id="Icons/AV/ic_volume_mute_18px" fill="#233745" fill-rule="nonzero" points="4.44444442 6.22222221 4.44444442 9.77777779 7.11111111 9.77777779 10.6666667 13.3333334 10.6666667 2.66666663 7.11111111 6.22222221"></polygon>
     </g>
 </svg>
