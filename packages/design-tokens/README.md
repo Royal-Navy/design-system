@@ -18,10 +18,19 @@ If you want to install the prerelease then use the `@next` distribution tag.
 ```css
 @use '@royalnavy/design-tokens' as $vars
 ```
+NOTE: Application developers should consider consuming the @royalnavy/css-framework package instead of this package.
 
 ## Usage - Styled Components
 ```javascript
-import { token } from '@royalnavy/design-tokens'
+import { selectors } from "@royalnavy/design-tokens";
+
+const { color, spacing } = selectors
+
+// inside a styled-component
+const StyledExample = styled.div`
+  color: ${color('action', '500')};
+  margin-top: ${spacing('2')};
+`;
 ```
 
 ## Questions
