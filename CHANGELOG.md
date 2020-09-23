@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0](https://github.com/Royal-Navy/design-system/compare/2.14.0...2.15.0) (2020-09-23)
+
+
+### Bug Fixes
+
+* **DatePicker:** Ensure `en-GB` is used for format ([dfc7a23](https://github.com/Royal-Navy/design-system/commit/dfc7a2328513a859fca527b8efab1ece1fbb2f43))
+* **Docs:** Update Netlify team name ([674a0dc](https://github.com/Royal-Navy/design-system/commit/674a0dc26da9853177654ffedb01baf32c2fc11f))
+* **IconLibrary:** Ensure dependency is installed downstream ([e940736](https://github.com/Royal-Navy/design-system/commit/e9407366c0944910b1e7c1e13a3c04776a8d8066))
+* **RangeSlider:** Set correct handle `tabIndex` ([bd692fd](https://github.com/Royal-Navy/design-system/commit/bd692fda8c0e971e11553df591eda0ff8beea103))
+
+
+### Features
+
+* **Timeline:** Add ability to display hour blocks ([7df339c](https://github.com/Royal-Navy/design-system/commit/7df339c8b658b0e3eaa1d09952a6b6f621f56cc1))
+* **Timeline:** Add ability to specify block size ([c69504a](https://github.com/Royal-Navy/design-system/commit/c69504a0762ff4577fb1dab1a0af05a1c08474f6))
+* **Timeline:** Add custom render to hours ([2159107](https://github.com/Royal-Navy/design-system/commit/2159107affd219685e8016b76bf08caf6a45de86))
+* **Timeline:** Constrain hours `blockSize` prop ([f9efecd](https://github.com/Royal-Navy/design-system/commit/f9efecdfd51dfdd7551508eaebabc1a771131202))
+* **Timeline:** Display event using time offset ([0ae6d3b](https://github.com/Royal-Navy/design-system/commit/0ae6d3bfeed3cab1f97646633e856570a1223c0a))
+
+
+
+
+
 # [2.14.0](https://github.com/Royal-Navy/design-system/compare/2.13.0...2.14.0) (2020-09-21)
 
 

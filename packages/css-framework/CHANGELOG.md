@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0](https://github.com/Royal-Navy/design-system/compare/2.14.0...2.15.0) (2020-09-23)
+
+
+### Features
+
+* **Timeline:** Add ability to display hour blocks ([7df339c](https://github.com/Royal-Navy/design-system/commit/7df339c8b658b0e3eaa1d09952a6b6f621f56cc1))
+
+
+
+
+
 # [2.14.0](https://github.com/Royal-Navy/design-system/compare/2.13.0...2.14.0) (2020-09-21)
 
 
