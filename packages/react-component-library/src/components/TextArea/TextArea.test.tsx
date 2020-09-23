@@ -1,6 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { FieldProps } from '../../common/FieldProps'
 import { FormProps } from '../../common/FormProps'
@@ -36,6 +37,12 @@ describe('TextArea', () => {
     it('adds the CSS modifier', () => {
       expect(wrapper.getByTestId('textarea-container').classList).toContain(
         'rn-textarea--modifier'
+      )
+    })
+
+    it('should add the `has-content` to the container', () => {
+      expect(wrapper.getByTestId('textarea-container').classList).toContain(
+        'has-content'
       )
     })
 
@@ -88,6 +95,38 @@ describe('TextArea', () => {
 
       it('should call the onBlur callback once', () => {
         expect(onBlurSpy).toHaveBeenCalledTimes(1)
+      })
+    })
+
+    describe('when the value is changed', () => {
+      beforeEach(async () => {
+        await userEvent.type(
+          wrapper.getByTestId('textarea-input'),
+          '{backspace}'
+        )
+      })
+
+      it('should update the value', () => {
+        expect(wrapper.getByTestId('textarea-input')).toHaveValue('a')
+      })
+    })
+
+    describe('when the value is deleted', () => {
+      beforeEach(async () => {
+        await userEvent.type(
+          wrapper.getByTestId('textarea-input'),
+          '{backspace}{backspace}'
+        )
+      })
+
+      it('should remove the `has-content` to the container', () => {
+        expect(
+          wrapper.getByTestId('textarea-container').classList
+        ).not.toContain('has-content')
+      })
+
+      it('should update the value', () => {
+        expect(wrapper.getByTestId('textarea-input')).toHaveValue('')
       })
     })
   })
