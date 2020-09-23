@@ -40,8 +40,6 @@ const StyledRowHeader = styled.div<StyledRowHeaderProps>`
   height: inherit;
   background-color: ${ColorNeutralWhite};
   border-right: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
-  box-shadow: inset 0px 0px 0px 0px ${TIMELINE_BORDER_COLOR},
-    5px 0px 5px 0px rgba(0, 0, 0, 0.04);
   z-index: ${Number(ZindexBody) + 3};
   justify-content: flex-end;
   display: inline-flex;
