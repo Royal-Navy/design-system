@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0](https://github.com/Royal-Navy/design-system/compare/2.14.0...2.15.0) (2020-09-23)
+
+
+### Bug Fixes
+
+* **IconLibrary:** Ensure dependency is installed downstream ([e940736](https://github.com/Royal-Navy/design-system/commit/e9407366c0944910b1e7c1e13a3c04776a8d8066))
+
+
+
+
+
 # [2.14.0](https://github.com/Royal-Navy/design-system/compare/2.13.0...2.14.0) (2020-09-21)
 
 
