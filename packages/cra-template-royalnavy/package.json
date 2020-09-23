@@ -1,6 +1,6 @@
 {
   "name": "cra-template-royalnavy",
-  "version": "2.15.0",
+  "version": "2.16.0-alpha.0",
   "main": "template.json",
   "publishConfig": {
     "access": "public"
