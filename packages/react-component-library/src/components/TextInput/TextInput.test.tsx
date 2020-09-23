@@ -1,6 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { withFormik } from '../../enhancers/withFormik'
 import { TextInput } from '.'
@@ -114,6 +115,38 @@ describe('TextInput', () => {
         })
       })
     })
+
+    describe('when the value is changed', () => {
+      beforeEach(async () => {
+        await userEvent.type(
+          wrapper.getByTestId('input'),
+          '{backspace}'
+        )
+      })
+
+      it('should update the value', () => {
+        expect(wrapper.getByTestId('input')).toHaveValue('valu')
+      })
+    })
+
+    describe('when the value is deleted', () => {
+      beforeEach(async () => {
+        await userEvent.type(
+          wrapper.getByTestId('input'),
+          '{backspace}{backspace}{backspace}{backspace}{backspace}'
+        )
+      })
+
+      it('should remove the `has-content` to the container', () => {
+        expect(
+          wrapper.getByTestId('container').classList
+        ).not.toContain('has-content')
+      })
+
+      it('should update the value', () => {
+        expect(wrapper.getByTestId('input')).toHaveValue('')
+      })
+    })
   })
 
   describe('minimal props', () => {
@@ -212,9 +245,7 @@ describe('TextInput', () => {
           'aria-invalid',
           'true'
         )
-        expect(wrapper.getByTestId('input')).toHaveAttribute(
-          'aria-describedby',
-        )
+        expect(wrapper.getByTestId('input')).toHaveAttribute('aria-describedby')
       })
 
       it('should have an error', () => {

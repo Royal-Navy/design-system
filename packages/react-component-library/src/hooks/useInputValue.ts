@@ -10,7 +10,7 @@ export function useInputValue(value: string) {
     return !!(committedValue && committedValue.length)
   }, [committedValue])
 
-  function onValueChange(event: ChangeEvent<HTMLTextAreaElement>) {
+  function onValueChange<T>(event: ChangeEvent<T>) {
     const newValue = get(event, 'target.value')
     setCommittedValue(newValue)
   }
