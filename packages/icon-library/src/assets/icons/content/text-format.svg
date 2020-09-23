@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Icons/Content/text-format</title>
-    <defs>
-        <path d="M3.3333333,11.3333334 L3.3333333,12.6666667 L12.6666667,12.6666667 L12.6666667,11.3333334 L3.3333333,11.3333334 Z M6.33333331,8.53333334 L9.66666668,8.53333334 L10.2666667,10 L11.6666667,10 L8.5,2.66666663 L7.5,2.66666663 L4.33333331,10 L5.73333332,10 L6.33333331,8.53333334 Z M8,3.98666664 L9.24666667,7.33333333 L6.75333333,7.33333333 L8,3.98666664 Z" id="path-1"></path>
-    </defs>
     <g id="Icons/Content/text-format" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <mask id="mask-2" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <use id="Icons/Content/ic_text_format_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
+        <path d="M3.3333333,11.3333334 L3.3333333,12.6666667 L12.6666667,12.6666667 L12.6666667,11.3333334 L3.3333333,11.3333334 Z M6.33333331,8.53333334 L9.66666668,8.53333334 L10.2666667,10 L11.6666667,10 L8.5,2.66666663 L7.5,2.66666663 L4.33333331,10 L5.73333332,10 L6.33333331,8.53333334 Z M8,3.98666664 L9.24666667,7.33333333 L6.75333333,7.33333333 L8,3.98666664 Z" id="Icons/Content/ic_text_format_24px" fill="#233745" fill-rule="nonzero"></path>
     </g>
 </svg>

@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Icons/Toggle/star-half</title>
-    <defs>
-        <path d="M14.6666667,6.15999999 L9.87333335,5.74666665 L8,1.33333329 L6.12666665,5.75333332 L1.33333329,6.15999999 L4.97333331,9.31333334 L3.87999997,14 L8,11.5133334 L12.12,14 L11.0333334,9.31333334 L14.6666667,6.15999999 Z M8,10.2666667 L8,4.06666664 L9.14000001,6.75999999 L12.06,7.01333333 L9.84666668,8.93333334 L10.5133333,11.7866667 L8,10.2666667 Z" id="path-1"></path>
-    </defs>
     <g id="Icons/Toggle/star-half" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <mask id="mask-2" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <use id="Icons/Toggle/ic_star_half_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
+        <path d="M14.6666667,6.15999999 L9.87333335,5.74666665 L8,1.33333329 L6.12666665,5.75333332 L1.33333329,6.15999999 L4.97333331,9.31333334 L3.87999997,14 L8,11.5133334 L12.12,14 L11.0333334,9.31333334 L14.6666667,6.15999999 Z M8,10.2666667 L8,4.06666664 L9.14000001,6.75999999 L12.06,7.01333333 L9.84666668,8.93333334 L10.5133333,11.7866667 L8,10.2666667 Z" id="Icons/Toggle/ic_star_half_24px" fill="#233745" fill-rule="nonzero"></path>
     </g>
 </svg>

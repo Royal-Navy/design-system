@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Icons/Action/view-array</title>
-    <defs>
-        <path d="M2.66666663,12 L4.66666663,12 L4.66666663,3.3333333 L2.66666663,3.3333333 L2.66666663,12 Z M12,3.3333333 L12,12 L14,12 L14,3.3333333 L12,3.3333333 Z M5.33333332,12 L11.3333333,12 L11.3333333,3.3333333 L5.33333332,3.3333333 L5.33333332,12 Z" id="path-1"></path>
-    </defs>
     <g id="Icons/Action/view-array" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <mask id="mask-2" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <use id="Icons/Action/ic_view_array_24px" fill="#233745" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
+        <path d="M2.66666663,12 L4.66666663,12 L4.66666663,3.3333333 L2.66666663,3.3333333 L2.66666663,12 Z M12,3.3333333 L12,12 L14,12 L14,3.3333333 L12,3.3333333 Z M5.33333332,12 L11.3333333,12 L11.3333333,3.3333333 L5.33333332,3.3333333 L5.33333332,12 Z" id="Icons/Action/ic_view_array_24px" fill="#233745" fill-rule="nonzero"></path>
     </g>
 </svg>
