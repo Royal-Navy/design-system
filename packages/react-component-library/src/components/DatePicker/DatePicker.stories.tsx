@@ -15,7 +15,7 @@ const examples = storiesOf('DatePicker/Examples', module)
 stories.add('Default', () => {
   return (
     <DatePicker
-      startDate={new Date('11/01/2018')}
+      startDate={new Date(2018, 0, 11)}
       onBlur={action('onBlur')}
       onChange={action('onChange')}
       placement={DATEPICKER_PLACEMENT.BELOW}
@@ -39,7 +39,7 @@ examples.add('Custom initial month', () => {
 examples.add('Custom label', () => {
   return (
     <DatePicker
-      startDate={new Date('11/01/2018')}
+      startDate={new Date(2018, 0, 11)}
       onBlur={action('onBlur')}
       onChange={action('onChange')}
       label="Some other label"
@@ -51,7 +51,7 @@ examples.add('Custom label', () => {
 examples.add('Disabled', () => {
   return (
     <DatePicker
-      startDate={new Date('11/01/2018')}
+      startDate={new Date(2018, 0, 11)}
       onBlur={action('onBlur')}
       onChange={action('onChange')}
       isDisabled
@@ -97,8 +97,8 @@ const DatePickerForm = () => {
 
   const initialValues: Data = {
     foo: '',
-    startDate: new Date('01/01/2020'),
-    endDate: new Date('01/05/2020'),
+    startDate: new Date(2020, 0, 1),
+    endDate: new Date(2020, 4, 1),
   }
 
   const FormikTextInput = withFormik(TextInput)

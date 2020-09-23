@@ -34,7 +34,12 @@ const DATEPICKER_PLACEMENTS = {
   }
 }
 
+const LOCALE = {
+  UK: 'en-GB',
+}
+
 export {
   DATEPICKER_PLACEMENT,
   DATEPICKER_PLACEMENTS,
+  LOCALE,
 }

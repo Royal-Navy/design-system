@@ -4,6 +4,7 @@ import { format } from 'date-fns'
 
 import { ACCESSIBLE_DATE_FORMAT } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { DATE_FORMAT } from '../../constants'
 import { useTimelinePosition } from './hooks/useTimelinePosition'
 
 export interface TimelineEventWithRenderContentProps
@@ -51,7 +52,7 @@ function renderDefault(
         className="timeline__event-title"
         data-testid="timeline-event-title"
       >
-        {children || `Task ${format(new Date(startDate), 'dd/mm/yyyy')}`}
+        {children || `Task ${format(new Date(startDate), DATE_FORMAT.SHORT)}`}
       </span>
       <div className="timeline__event-bar" style={{ width: widthPx }} />
     </div>

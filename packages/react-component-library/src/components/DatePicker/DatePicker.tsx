@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import differenceInMinutes from 'date-fns/differenceInMinutes'
 import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
+import { format } from 'date-fns'
 import TetherComponent from 'react-tether'
 import DayPicker, {
   DateUtils,
@@ -11,6 +12,7 @@ import DayPicker, {
 } from 'react-day-picker'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { DATE_FORMAT } from '../../constants'
 import { DatePickerInput } from './DatePickerInput'
 import { useOpenClose } from './useOpenClose'
 import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
@@ -45,11 +47,14 @@ export interface DatePickerProps extends ComponentWithClass {
 
 function transformDates(startDate: Date, endDate: Date) {
   if (startDate && endDate && differenceInMinutes(endDate, startDate) > 0) {
-    return `${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`
+    return `${format(startDate, DATE_FORMAT.SHORT)} - ${format(
+      endDate,
+      DATE_FORMAT.SHORT
+    )}`
   }
 
   if (startDate) {
-    return startDate.toLocaleDateString()
+    return format(startDate, DATE_FORMAT.SHORT)
   }
 
   return ''
