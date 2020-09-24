@@ -279,18 +279,17 @@ WithCustomDays.storyName = 'With custom days'
 export const WithCustomHours = () => {
   const CustomTimelineHours = (width: number, time: string) => {
     return (
-      <span
+      <div
         style={{
           display: 'inline-block',
           width: `${width}px`,
           height: '2.5rem',
           backgroundColor: 'black',
           color: 'white',
-          fontSize: '8px',
         }}
       >
-        {time}
-      </span>
+        <span style={{ fontSize: '8px', paddingLeft: '5px' }}>{time}</span>
+      </div>
     )
   }
 
