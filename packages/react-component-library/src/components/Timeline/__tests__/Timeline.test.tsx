@@ -1259,4 +1259,47 @@ describe('Timeline', () => {
       expect(wrapper.getByText('Another row')).toBeInTheDocument()
     })
   })
+
+  describe('when an event has arbitrary `children`', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 13)}
+                  endDate={new Date(2020, 3, 18)}
+                >
+                  <div>Arbitrary event content</div>
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the arbitrary content', () => {
+      expect(
+        wrapper.getByText('Arbitrary event content')
+      ).toBeInTheDocument()
+    })
+
+    it('should set the `aria-label` on the event', () => {
+      const week = wrapper.getAllByTestId('timeline-event')[0]
+
+      expect(week).toHaveAttribute(
+        'aria-label',
+        'Begins on 13th April 2020 and ends on 18th April 2020'
+      )
+    })
+  })
 })
