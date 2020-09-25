@@ -40,7 +40,12 @@ export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
           options: { unitWidth },
         },
       }) => (
-        <TimelineHeaderRow isShort name="Hours" data-testid="timeline-hours">
+        <TimelineHeaderRow
+          className="timeline__hours"
+          isShort
+          name="Hours"
+          data-testid="timeline-hours"
+        >
           <StyledTimelineHours>
             {days.map(({ date }) => {
               return hours.map(({ hourIndex, time }) => (

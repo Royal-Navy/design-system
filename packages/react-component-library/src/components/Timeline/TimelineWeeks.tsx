@@ -42,7 +42,12 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
           options: { dayWidth },
         },
       }) => (
-        <TimelineHeaderRow isShort name="Weeks" data-testid="timeline-weeks">
+        <TimelineHeaderRow
+          className="timeline__weeks"
+          isShort
+          name="Weeks"
+          data-testid="timeline-weeks"
+        >
           <StyledTimelineWeeks>
             {weeks.map(({ startDate }, index) => (
               <TimelineWeek

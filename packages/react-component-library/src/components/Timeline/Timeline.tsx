@@ -180,10 +180,17 @@ export const Timeline: React.FC<TimelineProps> = ({
       startDate={startDate}
       today={today}
     >
-      <StyledTimeline data-testid="timeline" role="grid">
-        <StyledInner hasSide={hasSide || hasTimelineSide}>
+      <StyledTimeline className="timeline" data-testid="timeline" role="grid">
+        <StyledInner
+          className="timeline__inner"
+          hasSide={hasSide || hasTimelineSide}
+        >
           {rootChildren}
-          <StyledHeader data-testid="timeline-header" role="rowgroup">
+          <StyledHeader
+            className="timeline__header"
+            data-testid="timeline-header"
+            role="rowgroup"
+          >
             {headChildren}
           </StyledHeader>
           {bodyChildren}

@@ -32,7 +32,12 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({ render }) => {
           options: { dayWidth },
         },
       }) => (
-        <TimelineHeaderRow isShort name="Days" data-testid="timeline-days">
+        <TimelineHeaderRow
+          className="timeline__days"
+          isShort
+          name="Days"
+          data-testid="timeline-days"
+        >
           <StyledTimelineDays>
             {days.map(({ date }, index) => (
               <TimelineDay

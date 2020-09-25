@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import classNames from 'classnames'
 import {
   SpacingPx,
   ZindexBody,
@@ -66,12 +67,20 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
   name,
   renderRowHeader,
   isHeader,
+  className,
   ...rest
 }) => {
+  const classes = classNames('timeline__row', className)
+
   return (
     <TimelineContext.Consumer>
       {({ hasSide }) => (
-        <StyledTimelineRow data-testid="timeline-row" role="row" {...rest}>
+        <StyledTimelineRow
+          className={classes}
+          data-testid="timeline-row"
+          role="row"
+          {...rest}
+        >
           {hasSide && (
             <StyledRowHeader
               isHeader={isHeader}

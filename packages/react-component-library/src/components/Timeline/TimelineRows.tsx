@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import classNames from 'classnames'
 import { differenceInDays, endOfWeek, max, min } from 'date-fns'
 import {
   ColorNeutralWhite,
@@ -113,6 +114,7 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
   renderColumns,
 }) => {
   const hasChildren = React.Children.count(children) > 0
+  const mainClasses = classNames('timeline__main', className)
 
   return (
     <>
@@ -169,7 +171,7 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
       )}
 
       <StyledTimelineMain
-        className={className}
+        className={mainClasses}
         defaultStyles={!renderColumns}
         role="rowgroup"
         data-testid="timeline-rows"
