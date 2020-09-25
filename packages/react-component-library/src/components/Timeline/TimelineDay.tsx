@@ -1,8 +1,18 @@
 import React from 'react'
+import styled from 'styled-components'
 import { format, isAfter } from 'date-fns'
-import classNames from 'classnames'
+import {
+  SpacingPx,
+  ZindexBody,
+  TypographyXs,
+  ColorNeutral400,
+} from '@royalnavy/design-tokens'
 
-import { DATE_DAY_FORMAT } from './constants'
+import {
+  DATE_DAY_FORMAT,
+  TIMELINE_BORDER_COLOR,
+  TIMELINE_BG_COLOR,
+} from './constants'
 
 interface TimelineDayProps {
   date: Date
@@ -12,29 +22,37 @@ interface TimelineDayProps {
   timelineEndDate: Date
 }
 
+const StyledTimelineDay = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  background-color: ${TIMELINE_BG_COLOR};
+  border-top: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+  border-bottom: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+  border-right: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+`
+
+const StyledTitle = styled.div`
+  font-weight: 600;
+  font-size: ${TypographyXs};
+  color: ${ColorNeutral400};
+  background-color: ${TIMELINE_BG_COLOR};
+  z-index: ${Number(ZindexBody) + 2};
+`
+
 function renderDefault(index: number, dayWidth: number, date: Date) {
-  const wrapperClasses = classNames(
-    'timeline__day',
-    'timeline__day--renderDefault'
-  )
-
-  const titleClasses = classNames(
-    'timeline__day-title',
-    'timeline__day-title--renderDefault'
-  )
-
   return (
-    <div
-      className={wrapperClasses}
+    <StyledTimelineDay
       data-testid="timeline-day"
       style={{
         width: `${dayWidth}px`,
       }}
     >
-      <span className={titleClasses} data-testid="timeline-day-title">
+      <StyledTitle data-testid="timeline-day-title">
         {format(date, DATE_DAY_FORMAT)}
-      </span>
-    </div>
+      </StyledTitle>
+    </StyledTimelineDay>
   )
 }
 

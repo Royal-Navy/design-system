@@ -8,4 +8,7 @@ module.exports = {
   testMatch: ['**/?(*.)(spec|test).ts?(x)'],
   setupFiles: ['<rootDir>/jest/setupTests.js'],
   globalSetup: '<rootDir>/jest/globalSetup.js',
+  transformIgnorePatterns: [
+    '/node_modules/(?!@royalnavy/design-tokens).+\\.js$',
+  ],
 }

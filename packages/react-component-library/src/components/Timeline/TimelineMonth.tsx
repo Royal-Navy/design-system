@@ -1,6 +1,14 @@
 import React from 'react'
 import { format, endOfMonth, differenceInDays, min, max } from 'date-fns'
-import classNames from 'classnames'
+import styled from 'styled-components'
+import {
+  SpacingPx,
+  Spacing8,
+  ColorNeutral200,
+  ColorNeutral600,
+  ZindexBody,
+  TypographyXl,
+} from '@royalnavy/design-tokens'
 
 import { DATE_MONTH_FORMAT } from './constants'
 import { formatPx } from './helpers'
@@ -19,34 +27,51 @@ interface TimelineMonthProps {
   startDate: Date
 }
 
+const StyledTimelineMonth = styled.div`
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 4rem;
+
+  &:last-of-type {
+    border-right: none;
+  }
+
+  &::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 100vh;
+    border-right: ${SpacingPx} dashed ${ColorNeutral200};
+    z-index ${Number(ZindexBody) + 1}
+  }
+`
+
+const StyledTitle = styled.span`
+  font-size: ${TypographyXl};
+  font-weight: 600;
+  color: ${ColorNeutral600};
+  padding-left: ${Spacing8};
+`
+
 function renderDefault(
   index: number,
   dayWidth: number,
   daysTotal: number,
   startDate: Date
 ): React.ReactElement {
-  const wrapperClasses = classNames(
-    'timeline__month',
-    'timeline__month--renderDefault'
-  )
-
-  const titleClasses = classNames(
-    'timeline__month-title',
-    'timeline__month-title--renderDefault'
-  )
-
   return (
-    <div
-      className={wrapperClasses}
+    <StyledTimelineMonth
       style={{
         width: formatPx(dayWidth, daysTotal),
       }}
       data-testid="timeline-month"
     >
-      <span className={titleClasses}>
-        {format(startDate, DATE_MONTH_FORMAT)}
-      </span>
-    </div>
+      <StyledTitle>{format(startDate, DATE_MONTH_FORMAT)}</StyledTitle>
+    </StyledTimelineMonth>
   )
 }
 

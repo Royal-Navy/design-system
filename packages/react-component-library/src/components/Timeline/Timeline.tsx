@@ -1,5 +1,6 @@
 import React from 'react'
-import classNames from 'classnames'
+import styled from 'styled-components'
+import { ColorNeutralWhite, SpacingPx } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineProvider } from './context'
@@ -22,7 +23,11 @@ import {
 } from '.'
 
 import { TimelineOptions } from './context/types'
-import { DEFAULTS } from './constants'
+import {
+  DEFAULTS,
+  TIMELINE_BORDER_COLOR,
+  TIMELINE_ROW_HEADER_WIDTH,
+} from './constants'
 
 type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
 
@@ -102,6 +107,27 @@ function getDayWidth(
   return (dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH) * multiplier
 }
 
+const StyledTimeline = styled.div`
+  position: relative;
+  display: flex;
+  width: 100%;
+  background-color: ${ColorNeutralWhite};
+`
+
+interface StyledInnerProps {
+  hasSide: boolean
+}
+
+const StyledInner = styled.div<StyledInnerProps>`
+  overflow-y: hidden;
+  border-right: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+  border-bottom: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+  margin-left: ${({ hasSide }) =>
+    hasSide ? TIMELINE_ROW_HEADER_WIDTH : 'initial'};
+`
+
+const StyledHeader = styled.div``
+
 export const Timeline: React.FC<TimelineProps> = ({
   children,
   dayWidth,
@@ -146,10 +172,6 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const bodyChildren = extractChildren(children, [TimelineRows])
 
-  const innerClasses = classNames('timeline__inner', {
-    'timeline__inner--has-side': hasSide || hasTimelineSide,
-  })
-
   return (
     <TimelineProvider
       endDate={endDate}
@@ -158,19 +180,22 @@ export const Timeline: React.FC<TimelineProps> = ({
       startDate={startDate}
       today={today}
     >
-      <div className="timeline" data-testid="timeline" role="grid">
-        <div className={innerClasses}>
+      <StyledTimeline className="timeline" data-testid="timeline" role="grid">
+        <StyledInner
+          className="timeline__inner"
+          hasSide={hasSide || hasTimelineSide}
+        >
           {rootChildren}
-          <div
-            className="timeline__header" // Kept for backwards compatibility in downstream applications
+          <StyledHeader
+            className="timeline__header"
             data-testid="timeline-header"
             role="rowgroup"
           >
             {headChildren}
-          </div>
+          </StyledHeader>
           {bodyChildren}
-        </div>
-      </div>
+        </StyledInner>
+      </StyledTimeline>
     </TimelineProvider>
   )
 }

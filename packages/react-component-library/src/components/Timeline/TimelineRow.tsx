@@ -1,8 +1,20 @@
 import React from 'react'
+import styled from 'styled-components'
 import classNames from 'classnames'
+import {
+  SpacingPx,
+  ZindexBody,
+  TypographyS,
+  TypographyM,
+  ColorNeutral400,
+  ColorNeutral600,
+  ColorNeutralWhite,
+  Spacing8,
+} from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineContext, TimelineEventsProps } from '.'
+import { TIMELINE_BORDER_COLOR, TIMELINE_ROW_HEADER_WIDTH } from './constants'
 
 export interface TimelineRowProps extends ComponentWithClass {
   children:
@@ -10,43 +22,76 @@ export interface TimelineRowProps extends ComponentWithClass {
     | React.ReactElement<TimelineEventsProps>[]
   name?: string
   renderRowHeader?: (name: string) => React.ReactElement
-  rowHeaderClassName?: string
+  isHeader?: boolean
 }
+
+const StyledTimelineRow = styled.div`
+  display: flex;
+  height: 4rem;
+`
+
+interface StyledRowHeaderProps {
+  isHeader?: boolean
+}
+
+const StyledRowHeader = styled.div<StyledRowHeaderProps>`
+  min-width: ${TIMELINE_ROW_HEADER_WIDTH};
+  position: absolute;
+  left: 0;
+  height: inherit;
+  background-color: ${ColorNeutralWhite};
+  border-right: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+  z-index: ${Number(ZindexBody) + 3};
+  justify-content: flex-end;
+  display: inline-flex;
+  align-items: center;
+  font-size: ${TypographyM};
+  font-weight: 600;
+  color: ${ColorNeutral600};
+  padding-right: ${Spacing8};
+  ${({ isHeader }) =>
+    isHeader &&
+    `
+    font-size: ${TypographyS};
+    font-weight: normal;
+    color: ${ColorNeutral400};
+  `}
+`
+
+const StyledRowContent = styled.div`
+  position: relative;
+`
 
 export const TimelineRow: React.FC<TimelineRowProps> = ({
   children,
-  className,
   name,
   renderRowHeader,
-  rowHeaderClassName,
+  isHeader,
+  className,
   ...rest
 }) => {
   const classes = classNames('timeline__row', className)
-  const rowHeaderClasses = classNames(
-    'timeline__row-header',
-    rowHeaderClassName
-  )
 
   return (
     <TimelineContext.Consumer>
       {({ hasSide }) => (
-        <div
+        <StyledTimelineRow
           className={classes}
           data-testid="timeline-row"
           role="row"
           {...rest}
         >
           {hasSide && (
-            <div
-              className={rowHeaderClasses}
+            <StyledRowHeader
+              isHeader={isHeader}
               data-testid="timeline-row-header"
               role="rowheader"
             >
               {renderRowHeader ? renderRowHeader(name) : name}
-            </div>
+            </StyledRowHeader>
           )}
-          <div className="timeline__row-content">{children}</div>
-        </div>
+          <StyledRowContent>{children}</StyledRowContent>
+        </StyledTimelineRow>
       )}
     </TimelineContext.Consumer>
   )

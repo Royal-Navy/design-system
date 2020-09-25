@@ -1,8 +1,15 @@
 import React from 'react'
-import classNames from 'classnames'
+import styled from 'styled-components'
 import { format } from 'date-fns'
+import {
+  ZindexBody,
+  Spacing2,
+  TypographyS,
+  ColorNeutral600,
+  ColorSuccess500,
+} from '@royalnavy/design-tokens'
 
-import { ACCESSIBLE_DATE_FORMAT } from './constants'
+import { ACCESSIBLE_DATE_FORMAT, TIMELINE_BG_COLOR } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
 import { useTimelinePosition } from './hooks/useTimelinePosition'
@@ -31,31 +38,56 @@ export type TimelineEventProps =
   | TimelineEventWithRenderContentProps
   | TimelineEventWithChildrenProps
 
+const StyledTimelineEvent = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 4.5rem;
+  transform: translateY(-50%);
+  display: inline-flex;
+  flex-direction: column;
+  padding: ${Spacing2} 0;
+  background-color: ${TIMELINE_BG_COLOR};
+  overflow: visible;
+  z-index: ${Number(ZindexBody) + 2};
+`
+
+const StyledEventTitle = styled.span`
+  font-size: ${TypographyS};
+  font-weight: 400;
+  color: ${ColorNeutral600};
+  white-space: nowrap;
+`
+
+interface StyledEventBarProps {
+  width: string
+}
+
+const StyledEventBar = styled.div<StyledEventBarProps>`
+  display: inline-block;
+  background-color: ${ColorSuccess500};
+  border-radius: 4px;
+  height: 16px;
+  min-width: 1rem;
+  width: ${({ width }) => width};
+`
+
 function renderDefault(
   children: string,
   offsetPx: string,
   startDate: Date,
   widthPx: string
 ) {
-  const classes = classNames(
-    'timeline__event',
-    'timeline__event--renderDefault'
-  )
-
   return (
-    <div
-      className={classes}
+    <StyledTimelineEvent
       style={{ left: offsetPx }}
       data-testid="timeline-event"
     >
-      <span
-        className="timeline__event-title"
-        data-testid="timeline-event-title"
-      >
+      <StyledEventTitle data-testid="timeline-event-title">
         {children || `Task ${format(new Date(startDate), DATE_FORMAT.SHORT)}`}
-      </span>
-      <div className="timeline__event-bar" style={{ width: widthPx }} />
-    </div>
+      </StyledEventTitle>
+      <StyledEventBar width={widthPx} />
+    </StyledTimelineEvent>
   )
 }
 

@@ -1245,11 +1245,12 @@ Here you will find comprehensive API documentation for the Timeline Components.
 ## Roadmap
 
 - Migrate to independent package within monorepo
-- Adopt [styled-components](https://github.com/styled-components/styled-components) for default presentation
+- ~~Adopt [styled-components](https://github.com/styled-components/styled-components) for default presentation~~
 - Expose `TimelineSide` render prop
 - Add demos to sandbox
 - Iterate upon default presentation (user research and design)
 - Investigate support for advanced features:
+  - ~~Hours display~~
   - Infinite scroll
   - Lazy loading
   - View scaling (micro to macro / hours to years)
