@@ -8,6 +8,7 @@ import {
   ColorNeutral600,
   ColorSuccess500,
 } from '@royalnavy/design-tokens'
+import { isString } from 'lodash'
 
 import { ACCESSIBLE_DATE_FORMAT, TIMELINE_BG_COLOR } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
@@ -28,7 +29,7 @@ export interface TimelineEventWithRenderContentProps
 }
 
 export interface TimelineEventWithChildrenProps extends ComponentWithClass {
-  children: string
+  children: React.ReactNode
   endDate: Date
   render?: never
   startDate: Date
@@ -73,7 +74,7 @@ const StyledEventBar = styled.div<StyledEventBarProps>`
 `
 
 function renderDefault(
-  children: string,
+  children: React.ReactNode,
   offsetPx: string,
   startDate: Date,
   widthPx: string
@@ -91,8 +92,8 @@ function renderDefault(
   )
 }
 
-function getTitle(children: string, startDate: Date, endDate: Date) {
-  const start = children ? `${children} begins` : `Begins`
+function getTitle(children: React.ReactNode, startDate: Date, endDate: Date) {
+  const start = isString(children) ? `${children} begins` : `Begins`
 
   return `${start} on ${format(
     startDate,
