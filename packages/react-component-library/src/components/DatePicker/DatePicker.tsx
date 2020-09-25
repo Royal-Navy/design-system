@@ -60,6 +60,22 @@ function transformDates(startDate: Date, endDate: Date) {
   return ''
 }
 
+function getNewState(
+  isRange: boolean,
+  day: Date,
+  state: StateObject
+): StateObject {
+  if (isRange) {
+    if (state.from && (state.to || state.from > day)) {
+      return { from: day }
+    }
+
+    return DateUtils.addDayToRange(day, state as RangeModifier)
+  }
+
+  return { from: day, to: day }
+}
+
 export const DatePicker: React.FC<DatePickerProps> = ({
   className,
   endDate,
@@ -88,10 +104,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   function handleDayClick(day: Date, { disabled }: DayModifiers) {
     if (disabled) return
 
-    const newState = isRange
-      ? DateUtils.addDayToRange(day, state as RangeModifier)
-      : { from: day, to: day }
-
+    const newState = getNewState(isRange, day, state)
     setState(newState)
 
     if (onChange) {
