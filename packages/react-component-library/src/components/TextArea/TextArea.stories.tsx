@@ -21,6 +21,11 @@ stories.add('Vanilla', () => {
     >
       <TextArea className="is-valid" name="colour" label="My Label" />
       <TextArea name="name" label="Name" />
+      <TextArea
+        name="description"
+        label="Description"
+        value="Some content has already been entered"
+      />
       <button type="submit">Submit</button>
     </form>
   )

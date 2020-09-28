@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 
 import { useFocus } from '../../hooks/useFocus'
+import { useInputValue } from '../../hooks/useInputValue'
 
 export interface TextInputProps {
   autoFocus?: boolean
@@ -55,14 +56,14 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
   } = props
 
   const { focus, onLocalBlur, onFocus } = useFocus(onBlur)
-  const hasContent = value && value.length
+  const { committedValue, hasValue, onValueChange } = useInputValue(value)
   const hasLabel = label && label.length
 
   const classes = classNames(
     'rn-textinput',
     {
       'has-focus': focus,
-      'has-content': hasContent,
+      'has-content': hasValue,
       'no-label': !hasLabel,
     },
     className
@@ -87,11 +88,16 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
             id={id}
             name={name}
             onBlur={onLocalBlur}
-            onChange={onChange}
+            onChange={(e) => {
+              onValueChange(e)
+              if (onChange) {
+                onChange(e)
+              }
+            }}
             onFocus={onFocus}
             placeholder={placeholder}
             type={type}
-            value={value}
+            value={committedValue}
             {...rest}
           />
         </div>

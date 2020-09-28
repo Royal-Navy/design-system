@@ -1,9 +1,10 @@
-import React, { TextareaHTMLAttributes } from 'react'
+import React, { ChangeEvent, TextareaHTMLAttributes } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 
 import { useFocus } from '../../hooks/useFocus'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { useInputValue } from '../../hooks/useInputValue'
 
 export interface TextAreaInputProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -31,14 +32,14 @@ export const TextArea: React.FC<TextAreaInputProps> = (props) => {
   } = props
 
   const { focus, onLocalBlur, onFocus } = useFocus(onBlur)
-  const hasContent = value && value.length
+  const { committedValue, hasValue, onValueChange } = useInputValue(value)
   const hasLabel = label && label.length
 
   const classes = classNames(
-    'rn-textinput',
+    'rn-textarea',
     {
       'has-focus': focus,
-      'has-content': hasContent,
+      'has-content': hasValue,
       'no-label': !hasLabel,
     },
     className
@@ -63,10 +64,15 @@ export const TextArea: React.FC<TextAreaInputProps> = (props) => {
           id={id}
           name={name}
           onBlur={onLocalBlur}
-          onChange={onChange}
+          onChange={(e) => {
+            onValueChange(e)
+            if (onChange) {
+              onChange(e)
+            }
+          }}
           onFocus={onFocus}
           placeholder={placeholder}
-          value={value}
+          value={committedValue}
           {...rest}
         />
       </div>

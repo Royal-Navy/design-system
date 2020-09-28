@@ -1,6 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { FieldProps } from '../../common/FieldProps'
 import { FormProps } from '../../common/FormProps'
@@ -8,237 +9,211 @@ import { TextArea } from '.'
 import { withFormik } from '../../enhancers/withFormik'
 
 describe('TextArea', () => {
-  let field: FieldProps
-  let form: FormProps
-  let label = ''
-  let textInput: RenderResult
+  let onBlurSpy: (event: React.FormEvent) => void
+  let onChangeSpy: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
+  let wrapper: RenderResult
 
-  beforeEach(() => {
-    field = {
-      name: 'colour',
-      value: '',
-      onBlur: null,
-      onChange: jest.fn(),
-    }
-
-    form = {
-      errors: {},
-      touched: {},
-    }
-  })
-
-  describe('when a field has no errors', () => {
+  describe('all props', () => {
     beforeEach(() => {
-      form.errors = {}
-    })
+      onBlurSpy = jest.fn()
+      onChangeSpy = jest.fn()
 
-    describe('and the field has a label', () => {
-      beforeEach(() => {
-        label = 'Colour'
-      })
-
-      describe('and the field has a value', () => {
-        beforeEach(() => {
-          field.value = 'Green'
-
-          textInput = render(
-            <TextArea
-              value={field.value}
-              name={field.name}
-              onChange={field.onChange}
-              label={label}
-            />
-          )
-        })
-
-        it('should render a field with a label', () => {
-          expect(textInput.getByTestId('textarea-label')).toHaveTextContent(
-            'Colour'
-          )
-        })
-
-        it('should indicate that the field has content so the field is shrunk', () => {
-          expect(textInput.queryByTestId('textarea-container')).toHaveClass(
-            'has-content'
-          )
-        })
-
-        it('should populate the field value', () => {
-          expect(textInput.queryByTestId('textarea-input')).toHaveTextContent(
-            'Green'
-          )
-        })
-      })
-    })
-
-    describe('and the field has no label but a placeholder', () => {
-      beforeEach(() => {
-        textInput = render(
-          <TextArea
-            value={field.value}
-            name={field.name}
-            onChange={field.onChange}
-            placeholder="Search"
-          />
-        )
-      })
-
-      it('should not include a label', () => {
-        expect(textInput.queryByTestId('textarea-label')).toBeNull()
-      })
-
-      it('should adjust the styles to signify there is no label', () => {
-        expect(textInput.queryByTestId('textarea-container')).toHaveClass(
-          'no-label'
-        )
-      })
-
-      it('should include the placeholder in the field', () => {
-        expect(textInput.getByTestId('textarea-input')).toHaveAttribute(
-          'placeholder',
-          'Search'
-        )
-      })
-    })
-  })
-
-  describe('when a Formik enhanced field has an error', () => {
-    beforeEach(() => {
-      form.errors = {
-        colour: 'Something bad',
-      }
-    })
-
-    describe('and the form has not been touched', () => {
-      beforeEach(() => {
-        form.touched = {}
-
-        const FormikTextArea = withFormik(TextArea)
-
-        textInput = render(<FormikTextArea field={field} form={form} />)
-      })
-
-      it('should add the aria attributes', () => {
-        expect(textInput.getByTestId('textarea-input')).not.toHaveAttribute(
-          'aria-invalid'
-        )
-        expect(textInput.getByTestId('textarea-input')).not.toHaveAttribute(
-          'aria-describedby'
-        )
-      })
-
-      it('should not indicate the field has an error', () => {
-        expect(textInput.queryByTestId('textarea-container')).not.toHaveClass(
-          'is-invalid'
-        )
-      })
-
-      it('should not show the error', () => {
-        expect(textInput.queryAllByText('Something bad')).toHaveLength(0)
-      })
-    })
-
-    describe('and the form has been touched', () => {
-      beforeEach(() => {
-        form.touched.colour = true
-
-        const FormikTextArea = withFormik(TextArea)
-
-        textInput = render(<FormikTextArea field={field} form={form} />)
-      })
-
-      it('should add the aria attributes', () => {
-        expect(textInput.getByTestId('textarea-input')).toHaveAttribute(
-          'aria-invalid'
-        )
-        expect(textInput.getByTestId('textarea-input')).toHaveAttribute(
-          'aria-describedby'
-        )
-      })
-
-      it('should indicate the field has an error', () => {
-        expect(textInput.queryByTestId('textarea-container')).toHaveClass(
-          'is-invalid'
-        )
-      })
-
-      it('should show the error', () => {
-        expect(textInput.getByText('Something bad')).toBeInTheDocument()
-      })
-    })
-  })
-
-  describe('when an additional class it provided', () => {
-    beforeEach(() => {
-      textInput = render(
+      wrapper = render(
         <TextArea
-          className="test"
-          value={field.value}
-          name={field.name}
-          onChange={field.onChange}
-          label={label}
+          className="rn-textarea--modifier"
+          footnote="footnote"
+          id="id"
+          label="label"
+          name="name"
+          onBlur={onBlurSpy}
+          onChange={onChangeSpy}
+          placeholder="placeholder"
+          value="ab"
+          data-arbitrary="123"
         />
       )
     })
 
-    it('should attach the class to the wrapper', () => {
-      expect(textInput.queryByTestId('textarea-container')).toHaveClass('test')
-    })
-  })
-
-  describe('when an id is provided', () => {
-    beforeEach(() => {
-      textInput = render(
-        <TextArea
-          id="test"
-          value={field.value}
-          name={field.name}
-          onChange={field.onChange}
-          label={label}
-        />
+    it('adds the CSS modifier', () => {
+      expect(wrapper.getByTestId('textarea-container').classList).toContain(
+        'rn-textarea--modifier'
       )
     })
 
-    it('should attach the id to the field', () => {
-      expect(textInput.queryByTestId('textarea-input')).toHaveAttribute(
-        'id',
-        'test'
+    it('should add the `has-content` to the container', () => {
+      expect(wrapper.getByTestId('textarea-container').classList).toContain(
+        'has-content'
       )
+    })
+
+    it('renders the footnote', () => {
+      expect(wrapper.getByText('footnote')).toBeInTheDocument()
+    })
+
+    it('sets the `id` on the input', () => {
+      expect(wrapper.getByTestId('textarea-input')).toHaveAttribute('id', 'id')
+    })
+
+    it('renders the label', () => {
+      expect(wrapper.getByText('label')).toBeInTheDocument()
     })
 
     it('should associate the label to the field with the custom id', () => {
-      expect(textInput.queryByTestId('textarea-label')).toHaveAttribute(
-        'for',
-        'test'
+      expect(wrapper.getByTestId('textarea-label')).toHaveAttribute('for', 'id')
+    })
+
+    it('sets the `name` on the input', () => {
+      expect(wrapper.getByTestId('textarea-input')).toHaveAttribute(
+        'name',
+        'name'
       )
     })
-  })
 
-  describe('when the onBlur callback is provided', () => {
-    let onBlurSpy: jest.SpyInstance
+    it('sets the `placeholder` on the input', () => {
+      expect(wrapper.getByTestId('textarea-input')).toHaveAttribute(
+        'placeholder',
+        'placeholder'
+      )
+    })
 
-    beforeEach(() => {
-      field.onBlur = () => {
-        return true
-      }
-      onBlurSpy = jest.spyOn(field, 'onBlur')
+    it('sets the `value` on the input', () => {
+      expect(wrapper.getByTestId('textarea-input')).toHaveValue('ab')
+    })
 
-      textInput = render(
-        <div>
-          <TextArea {...field} />
-          <input type="text" data-testid="next-field" />
-        </div>
+    it('drills arbitrary props to the input', () => {
+      expect(wrapper.getByTestId('textarea-input')).toHaveAttribute(
+        'data-arbitrary',
+        '123'
       )
     })
 
     describe('when the text area loses focus', () => {
       beforeEach(() => {
-        textInput.getByTestId('textarea-input').focus()
-        textInput.getByTestId('next-field').focus()
+        wrapper.getByTestId('textarea-input').focus()
+        wrapper.getByTestId('textarea-input').blur()
       })
 
       it('should call the onBlur callback once', () => {
         expect(onBlurSpy).toHaveBeenCalledTimes(1)
+      })
+    })
+
+    describe('when the value is changed', () => {
+      beforeEach(async () => {
+        await userEvent.type(
+          wrapper.getByTestId('textarea-input'),
+          '{backspace}'
+        )
+      })
+
+      it('should update the value', () => {
+        expect(wrapper.getByTestId('textarea-input')).toHaveValue('a')
+      })
+    })
+
+    describe('when the value is deleted', () => {
+      beforeEach(async () => {
+        await userEvent.type(
+          wrapper.getByTestId('textarea-input'),
+          '{backspace}{backspace}'
+        )
+      })
+
+      it('should remove the `has-content` to the container', () => {
+        expect(
+          wrapper.getByTestId('textarea-container').classList
+        ).not.toContain('has-content')
+      })
+
+      it('should update the value', () => {
+        expect(wrapper.getByTestId('textarea-input')).toHaveValue('')
+      })
+    })
+  })
+
+  describe('when a Formik enhanced field has an error', () => {
+    let field: FieldProps
+    let form: FormProps
+
+    describe('and the form has not been touched', () => {
+      beforeEach(() => {
+        field = {
+          name: 'colour',
+          value: '',
+          onBlur: null,
+          onChange: jest.fn(),
+        }
+        form = {
+          errors: {
+            colour: 'Something bad',
+          },
+          touched: {},
+        }
+
+        const FormikTextArea = withFormik(TextArea)
+
+        wrapper = render(<FormikTextArea field={field} form={form} />)
+      })
+
+      it('should add the aria attributes', () => {
+        expect(wrapper.getByTestId('textarea-input')).not.toHaveAttribute(
+          'aria-invalid'
+        )
+        expect(wrapper.getByTestId('textarea-input')).not.toHaveAttribute(
+          'aria-describedby'
+        )
+      })
+
+      it('should not indicate the field has an error', () => {
+        expect(wrapper.queryByTestId('textarea-container')).not.toHaveClass(
+          'is-invalid'
+        )
+      })
+
+      it('should not show the error', () => {
+        expect(wrapper.queryAllByText('Something bad')).toHaveLength(0)
+      })
+    })
+
+    describe('and the form has been touched', () => {
+      beforeEach(() => {
+        field = {
+          name: 'colour',
+          value: '',
+          onBlur: null,
+          onChange: jest.fn(),
+        }
+        form = {
+          errors: {
+            colour: 'Something bad',
+          },
+          touched: {
+            colour: true,
+          },
+        }
+
+        const FormikTextArea = withFormik(TextArea)
+
+        wrapper = render(<FormikTextArea field={field} form={form} />)
+      })
+
+      it('should add the aria attributes', () => {
+        expect(wrapper.getByTestId('textarea-input')).toHaveAttribute(
+          'aria-invalid'
+        )
+        expect(wrapper.getByTestId('textarea-input')).toHaveAttribute(
+          'aria-describedby'
+        )
+      })
+
+      it('should indicate the field has an error', () => {
+        expect(wrapper.queryByTestId('textarea-container')).toHaveClass(
+          'is-invalid'
+        )
+      })
+
+      it('should show the error', () => {
+        expect(wrapper.getByText('Something bad')).toBeInTheDocument()
       })
     })
   })

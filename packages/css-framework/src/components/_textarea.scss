@@ -14,8 +14,7 @@
   background-color: f.color("neutral", "white");
   border: 1px solid f.color("neutral", "200");
   border-radius: 4px;
-  transition:
-    border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+  transition: border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   position: relative;
 }
@@ -31,18 +30,16 @@
   box-shadow: 0 0 0 1px f.color("danger", "700");
 }
 
-.rn-textarea.is-valid .rn-textarea__wrapper {
-  border-color: f.color("success", "700");
-  box-shadow: 0 0 0 1px f.color("success", "700");
-}
-
 .rn-textarea__label {
   display: block;
   position: absolute;
-  padding-left: f.spacing("6");
   padding-bottom: f.spacing("2");
-  right: 14px;
+  top: 0;
   left: 0;
+  transform-origin: top left;
+  transform: translate(f.spacing("6"), f.spacing("6")) scale(1);
+  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+    transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   pointer-events: none;
   color: f.color("neutral", "400");
   font-size: f.font-size("s");
@@ -50,12 +47,21 @@
   border-radius: 3px 3px 0 0;
 }
 
+.rn-textarea.has-focus .rn-textarea__label,
+.rn-textarea.has-content .rn-textarea__label {
+  transform: translate(f.spacing("6"), 6px) scale(0.8);
+}
+
+.rn-textarea.has-focus .rn-textarea__label,
+.rn-textarea.has-content .rn-textarea__label {
+  transform: translate(f.spacing("6"), 6px) scale(0.8);
+}
+
 .rn-textarea__label-inner {
   display: inline-block;
   transform-origin: top left;
   transform: translate(0, f.spacing("2")) scale(1.2);
-  transition:
-    color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
     transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 }
 
