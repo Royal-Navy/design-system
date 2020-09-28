@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconChevronRight, IconChevronLeft } from '@royalnavy/icon-library'
 import styled from 'styled-components'
-import { Spacing4 } from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getKey } from '../../helpers'
@@ -29,6 +29,8 @@ export type TimelineMonthsProps =
   | TimelineMonthsWithRenderContentProps
   | TimelineMonthsWithChildrenProps
 
+const { spacing } = selectors
+
 const StyledNavigation = styled.div`
   position: absolute;
   top: 1rem;
@@ -36,7 +38,7 @@ const StyledNavigation = styled.div`
 
   button {
     &:first-of-type {
-      margin-right: ${Spacing4};
+      margin-right: ${spacing('4')};
     }
 
     span:first-of-type {

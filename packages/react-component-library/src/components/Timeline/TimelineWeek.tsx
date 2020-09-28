@@ -1,13 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { format, differenceInDays, endOfWeek, max, min } from 'date-fns'
-import {
-  SpacingPx,
-  TypographyM,
-  ColorNeutral400,
-  Spacing4,
-  ZindexBody,
-} from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import {
   ACCESSIBLE_DATE_FORMAT,
@@ -36,6 +30,8 @@ interface TimelineWeekProps {
   startDate: Date
 }
 
+const { spacing, fontSize, color, zIndex } = selectors
+
 interface StyledTimelineWeekProps {
   isOddNumber: boolean
   marginLeft: string
@@ -49,8 +45,8 @@ const StyledTimelineWeek = styled.div<StyledTimelineWeekProps>`
   height: 2.5rem;
   background-color: ${({ isOddNumber }) =>
     isOddNumber ? TIMELINE_ALT_BG_COLOR : TIMELINE_BG_COLOR};
-  border-top: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
-  border-bottom: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+  border-top: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
+  border-bottom: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
   justify-content: unset;
   margin-left: ${({ marginLeft }) => marginLeft};
   width: ${({ width }) => width};
@@ -58,11 +54,11 @@ const StyledTimelineWeek = styled.div<StyledTimelineWeekProps>`
 
 const StyledTitle = styled.span`
   font-weight: 600;
-  font-size: ${TypographyM};
-  color: ${ColorNeutral400};
+  font-size: ${fontSize('m')};
+  color: ${color('neutral', '400')};
   background-color: inherit;
-  z-index: ${Number(ZindexBody) + 2};
-  margin-left: ${Spacing4};
+  z-index: ${zIndex('body', 2)};
+  margin-left: ${spacing('4')};
 `
 
 function renderDefault(

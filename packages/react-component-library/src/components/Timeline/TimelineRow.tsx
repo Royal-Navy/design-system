@@ -1,16 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import classNames from 'classnames'
-import {
-  SpacingPx,
-  ZindexBody,
-  TypographyS,
-  TypographyM,
-  ColorNeutral400,
-  ColorNeutral600,
-  ColorNeutralWhite,
-  Spacing8,
-} from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineContext, TimelineEventsProps } from '.'
@@ -24,6 +15,8 @@ export interface TimelineRowProps extends ComponentWithClass {
   renderRowHeader?: (name: string) => React.ReactElement
   isHeader?: boolean
 }
+
+const { color, zIndex, fontSize, spacing } = selectors
 
 const StyledTimelineRow = styled.div`
   display: flex;
@@ -39,22 +32,22 @@ const StyledRowHeader = styled.div<StyledRowHeaderProps>`
   position: absolute;
   left: 0;
   height: inherit;
-  background-color: ${ColorNeutralWhite};
-  border-right: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
-  z-index: ${Number(ZindexBody) + 3};
+  background-color: ${color('neutral', 'white')};
+  border-right: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
+  z-index: ${zIndex('body', 3)};
   justify-content: flex-end;
   display: inline-flex;
   align-items: center;
-  font-size: ${TypographyM};
+  font-size: ${fontSize('m')};
   font-weight: 600;
-  color: ${ColorNeutral600};
-  padding-right: ${Spacing8};
+  color: ${color('neutral', '600')};
+  padding-right: ${spacing('8')};
   ${({ isHeader }) =>
     isHeader &&
     `
-    font-size: ${TypographyS};
+    font-size: ${fontSize('s')};
     font-weight: normal;
-    color: ${ColorNeutral400};
+    color: ${color('neutral', '400')};
   `}
 `
 

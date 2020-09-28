@@ -1,13 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { format } from 'date-fns'
-import {
-  ZindexBody,
-  Spacing2,
-  TypographyS,
-  ColorNeutral600,
-  ColorSuccess500,
-} from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 import { isString } from 'lodash'
 
 import { ACCESSIBLE_DATE_FORMAT, TIMELINE_BG_COLOR } from './constants'
@@ -39,6 +33,8 @@ export type TimelineEventProps =
   | TimelineEventWithRenderContentProps
   | TimelineEventWithChildrenProps
 
+const { spacing, zIndex, color, fontSize } = selectors
+
 const StyledTimelineEvent = styled.div`
   position: absolute;
   top: 50%;
@@ -47,16 +43,16 @@ const StyledTimelineEvent = styled.div`
   transform: translateY(-50%);
   display: inline-flex;
   flex-direction: column;
-  padding: ${Spacing2} 0;
+  padding: ${spacing('2')} 0;
   background-color: ${TIMELINE_BG_COLOR};
   overflow: visible;
-  z-index: ${Number(ZindexBody) + 2};
+  z-index: ${zIndex('body', 2)};
 `
 
 const StyledEventTitle = styled.span`
-  font-size: ${TypographyS};
+  font-size: ${fontSize('s')};
   font-weight: 400;
-  color: ${ColorNeutral600};
+  color: ${color('neutral', '600')};
   white-space: nowrap;
 `
 
@@ -66,7 +62,7 @@ interface StyledEventBarProps {
 
 const StyledEventBar = styled.div<StyledEventBarProps>`
   display: inline-block;
-  background-color: ${ColorSuccess500};
+  background-color: ${color('success', '500')};
   border-radius: 4px;
   height: 16px;
   min-width: 1rem;

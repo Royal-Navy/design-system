@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ColorNeutralWhite, SpacingPx } from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineProvider } from './context'
@@ -107,11 +107,13 @@ function getDayWidth(
   return (dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH) * multiplier
 }
 
+const { color, spacing } = selectors
+
 const StyledTimeline = styled.div`
   position: relative;
   display: flex;
   width: 100%;
-  background-color: ${ColorNeutralWhite};
+  background-color: ${color('neutral', 'white')};
 `
 
 interface StyledInnerProps {
@@ -120,8 +122,8 @@ interface StyledInnerProps {
 
 const StyledInner = styled.div<StyledInnerProps>`
   overflow-y: hidden;
-  border-right: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
-  border-bottom: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+  border-right: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
+  border-bottom: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
   margin-left: ${({ hasSide }) =>
     hasSide ? TIMELINE_ROW_HEADER_WIDTH : 'initial'};
 `

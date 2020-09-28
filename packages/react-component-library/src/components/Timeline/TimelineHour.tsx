@@ -1,12 +1,7 @@
 import React from 'react'
 import { isAfter } from 'date-fns'
 import styled from 'styled-components'
-import {
-  SpacingPx,
-  ZindexBody,
-  ColorNeutral400,
-  TypographyXs,
-} from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { TIMELINE_BORDER_COLOR, TIMELINE_BG_COLOR } from './constants'
 
@@ -18,23 +13,25 @@ interface TimelineHourProps {
   width: number
 }
 
+const { spacing, color, fontSize, zIndex } = selectors
+
 const StyledTimelineHour = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 2.5rem;
   background-color: ${TIMELINE_BG_COLOR};
-  border-top: ${SpacingPx} ${TIMELINE_BORDER_COLOR};
-  border-bottom: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
-  border-right: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+  border-top: ${spacing('px')} ${TIMELINE_BORDER_COLOR};
+  border-bottom: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
+  border-right: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
 `
 
 const StyledTitle = styled.span`
   font-weight: 600;
-  font-size: ${TypographyXs};
-  color: ${ColorNeutral400};
+  font-size: ${fontSize('xs')};
+  color: ${color('neutral', '400')};
   background-color: ${TIMELINE_BG_COLOR};
-  z-index: ${Number(ZindexBody) + 2};
+  z-index: ${zIndex('body', 2)};
 `
 
 function renderDefault(width: number, time: string) {
