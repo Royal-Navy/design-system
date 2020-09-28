@@ -1,7 +1,7 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
-
 import { format } from 'date-fns'
+import { Meta } from '@storybook/react/types-6-0'
+import { ColorDanger500 } from '@royalnavy/design-tokens'
 
 import {
   Timeline,
@@ -395,6 +395,32 @@ export const WithCustomColumns = () => {
   )
 }
 WithCustomColumns.storyName = 'With custom columns'
+
+export const WithCustomEventBarColor = () => {
+  return (
+    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
+      <TimelineSide />
+      <TimelineTodayMarker />
+      <TimelineMonths />
+      <TimelineWeeks />
+      <TimelineDays />
+      <TimelineRows>
+        <TimelineRow name="Row 1">
+          <TimelineEvents>
+            <TimelineEvent
+              barColor={ColorDanger500}
+              startDate={new Date(2020, 3, 14)}
+              endDate={new Date(2020, 3, 18)}
+            >
+              Event 1
+            </TimelineEvent>
+          </TimelineEvents>
+        </TimelineRow>
+      </TimelineRows>
+    </Timeline>
+  )
+}
+WithCustomEventBarColor.storyName = 'With custom event bar color'
 
 export const WithCustomEventContent = () => {
   const CustomEvent = ({
