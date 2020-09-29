@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, RenderResult, fireEvent } from '@testing-library/react'
+import { fireEvent, render, RenderResult } from '@testing-library/react'
 
 import { DatePicker, DATEPICKER_PLACEMENT } from '.'
 
@@ -261,11 +261,9 @@ describe('DatePicker', () => {
   describe('when selecting a date range', () => {
     beforeEach(() => {
       onChange = jest.fn()
-      startDate = new Date(2019, 11, 1)
-
       wrapper = render(
         <DatePicker
-          startDate={startDate}
+          startDate={new Date(2019, 11, 10)}
           placement={DATEPICKER_PLACEMENT.BELOW}
           onChange={onChange}
           isRange
@@ -278,65 +276,82 @@ describe('DatePicker', () => {
         wrapper.getByTestId('datepicker-input').focus()
       })
 
-      describe('and the end user clicks on the navigate month buttons', () => {
-        describe('and clicks next', () => {
-          beforeEach(() => {
-            wrapper.getByTestId('datepicker-input').focus()
+      describe('and clicks on a day in the first month', () => {
+        beforeEach(() => {
+          click(wrapper.getAllByText('31')[0])
+        })
 
-            click(wrapper.getAllByRole('button')[1])
+        it('set the value of the component to this date', () => {
+          expect(
+            wrapper.getByTestId('datepicker-input').getAttribute('value')
+          ).toBe('10/12/2019 - 31/12/2019')
+        })
+
+        it('invokes the onChange callback', () => {
+          expect(onChange).toHaveBeenCalledTimes(1)
+          expect(onChange).toHaveBeenCalledWith({
+            startDate: new Date('2019-12-10T00:00:00.000Z'),
+            endDate: new Date('2019-12-31T12:00:00.000Z'),
+          })
+        })
+      })
+
+      describe('and clicks on days in the second month', () => {
+        beforeEach(() => {
+          click(wrapper.getAllByText('20')[1])
+        })
+
+        it('set the value of the component to this date', () => {
+          expect(
+            wrapper.getByTestId('datepicker-input').getAttribute('value')
+          ).toBe('10/12/2019 - 20/01/2020')
+        })
+
+        it('invokes the onChange callback', () => {
+          expect(onChange).toHaveBeenCalledTimes(1)
+          expect(onChange).toHaveBeenCalledWith({
+            startDate: new Date('2019-12-10T00:00:00.000Z'),
+            endDate: new Date('2020-01-20T12:00:00.000Z'),
           })
         })
 
-        describe('and clicks previous', () => {
+        describe('and clicks on another day', () => {
           beforeEach(() => {
-            wrapper.getByTestId('datepicker-input').focus()
-
-            click(wrapper.getAllByRole('button')[0])
-          })
-        })
-
-        describe('and clicks on a day in the first month', () => {
-          beforeEach(() => {
-            click(wrapper.getAllByText('31')[0])
+            click(wrapper.getAllByText('3')[0])
           })
 
-          it('set the value of the component to this date', () => {
+          it('reset the value of the component to this date', () => {
             expect(
               wrapper.getByTestId('datepicker-input').getAttribute('value')
-            ).toBe('01/12/2019 - 31/12/2019')
-          })
-
-          it('invokes the onChange callback', () => {
-            expect(onChange).toHaveBeenCalledTimes(1)
-            expect(onChange).toHaveBeenCalledWith({
-              startDate: new Date('2019-12-01T00:00:00.000Z'),
-              endDate: new Date('2019-12-31T12:00:00.000Z'),
-            })
-          })
-        })
-
-        describe('and clicks on days in both months', () => {
-          beforeEach(() => {
-            click(wrapper.getAllByText('1')[0])
-            click(wrapper.getAllByText('20')[1])
-          })
-
-          it('set the value of the component to this date', () => {
-            expect(
-              wrapper.getByTestId('datepicker-input').getAttribute('value')
-            ).toBe('01/12/2019 - 20/01/2020')
+            ).toBe('03/12/2019')
           })
 
           it('invokes the onChange callback', () => {
             expect(onChange).toHaveBeenCalledTimes(2)
             expect(onChange).toHaveBeenCalledWith({
-              startDate: new Date('2019-12-01T00:00:00.000Z'),
-              endDate: new Date('2020-01-20T12:00:00.000Z'),
+              startDate: new Date('2019-12-03T12:00:00.000Z'),
+              endDate: undefined,
             })
-            expect(onChange).toHaveBeenCalledWith({
-              startDate: new Date('2019-12-01T00:00:00.000Z'),
-              endDate: new Date('2020-01-20T12:00:00.000Z'),
-            })
+          })
+        })
+      })
+
+      describe('and clicks on a less than the first', () => {
+        beforeEach(() => {
+          click(wrapper.getAllByText('9')[0])
+        })
+
+        it('reset the value of the component to this date', () => {
+          expect(
+            wrapper.getByTestId('datepicker-input').getAttribute('value')
+          ).toBe('09/12/2019')
+        })
+
+        it('invokes the onChange callback', () => {
+          expect(onChange).toHaveBeenCalledTimes(1)
+          expect(onChange).toHaveBeenCalledWith({
+            startDate: new Date('2019-12-09T12:00:00.000Z'),
+            endDate: undefined,
           })
         })
       })
