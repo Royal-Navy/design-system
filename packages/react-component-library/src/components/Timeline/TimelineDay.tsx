@@ -1,12 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { format, isAfter } from 'date-fns'
-import {
-  SpacingPx,
-  ZindexBody,
-  TypographyXs,
-  ColorNeutral400,
-} from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import {
   DATE_DAY_FORMAT,
@@ -22,23 +17,25 @@ interface TimelineDayProps {
   timelineEndDate: Date
 }
 
+const { spacing, zIndex, fontSize, color } = selectors
+
 const StyledTimelineDay = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 2.5rem;
   background-color: ${TIMELINE_BG_COLOR};
-  border-top: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
-  border-bottom: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
-  border-right: ${SpacingPx} solid ${TIMELINE_BORDER_COLOR};
+  border-top: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
+  border-bottom: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
+  border-right: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
 `
 
 const StyledTitle = styled.div`
   font-weight: 600;
-  font-size: ${TypographyXs};
-  color: ${ColorNeutral400};
+  font-size: ${fontSize('xs')};
+  color: ${color('neutral', '400')};
   background-color: ${TIMELINE_BG_COLOR};
-  z-index: ${Number(ZindexBody) + 2};
+  z-index: ${zIndex('body', 2)};
 `
 
 function renderDefault(index: number, dayWidth: number, date: Date) {

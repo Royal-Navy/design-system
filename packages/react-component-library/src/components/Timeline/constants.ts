@@ -1,4 +1,4 @@
-import { ColorNeutralWhite, ColorNeutral000, ColorNeutral100 } from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 const ACCESSIBLE_DATE_FORMAT = 'do MMMM y'
 
@@ -21,9 +21,11 @@ const NO_DATA_MESSAGE = 'No data available'
 
 const WEEK_START = 1 // Monday
 
-const TIMELINE_BORDER_COLOR = ColorNeutral100
-const TIMELINE_BG_COLOR = ColorNeutral000
-const TIMELINE_ALT_BG_COLOR = ColorNeutralWhite
+const { color } = selectors
+
+const TIMELINE_BORDER_COLOR = color('neutral', '100')
+const TIMELINE_BG_COLOR = color('neutral', '000')
+const TIMELINE_ALT_BG_COLOR = color('neutral', 'white')
 const TIMELINE_ROW_HEADER_WIDTH = '16rem'
 
 export {

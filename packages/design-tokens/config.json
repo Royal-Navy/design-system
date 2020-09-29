@@ -10,23 +10,13 @@
         "mapName": "tokens"
       }]
     },
-    "js": {
+    "ts-flat": {
       "transformGroup": "js",
-      "buildPath": "dist/",
+      "buildPath": "src/",
       "files": [
         {
-          "destination": "index.js",
-          "format": "javascript/es6"
-        }
-      ]
-    },
-    "ts": {
-      "transformGroup": "js",
-      "buildPath": "dist/types/",
-      "files": [
-        {
-          "destination": "index.d.ts",
-          "format": "typings/es6"
+          "destination": "flat.ts",
+          "format": "typescript/es6"
         }
       ]
     }

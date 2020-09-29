@@ -2,11 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import classNames from 'classnames'
 import { differenceInDays, endOfWeek, max, min } from 'date-fns'
-import {
-  ColorNeutralWhite,
-  Spacing2,
-  ZindexBody,
-} from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineRowProps } from '.'
@@ -34,6 +30,8 @@ export interface TimelineRowsProps extends ComponentWithClass {
   ) => React.ReactElement
 }
 
+const { color, spacing, zIndex } = selectors
+
 const StyledNoData = styled.div`
   display: flex;
   align-items: center;
@@ -41,9 +39,9 @@ const StyledNoData = styled.div`
   min-height: inherit;
 
   span {
-    background-color: ${ColorNeutralWhite};
-    padding: ${Spacing2};
-    z-index: ${Number(ZindexBody) + 1};
+    background-color: ${color('neutral', 'white')};
+    padding: ${spacing('2')};
+    z-index: ${zIndex('body', 1)};
   }
 `
 

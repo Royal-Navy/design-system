@@ -1,14 +1,7 @@
 import React from 'react'
 import { format, endOfMonth, differenceInDays, min, max } from 'date-fns'
 import styled from 'styled-components'
-import {
-  SpacingPx,
-  Spacing8,
-  ColorNeutral200,
-  ColorNeutral600,
-  ZindexBody,
-  TypographyXl,
-} from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { DATE_MONTH_FORMAT } from './constants'
 import { formatPx } from './helpers'
@@ -26,6 +19,8 @@ interface TimelineMonthProps {
   ) => React.ReactElement
   startDate: Date
 }
+
+const { spacing, color, zIndex, fontSize } = selectors
 
 const StyledTimelineMonth = styled.div`
   position: relative;
@@ -45,16 +40,16 @@ const StyledTimelineMonth = styled.div`
     display: inline-block;
     width: 1rem;
     height: 100vh;
-    border-right: ${SpacingPx} dashed ${ColorNeutral200};
-    z-index ${Number(ZindexBody) + 1}
+    border-right: ${spacing('px')} dashed ${color('neutral', '200')};
+    z-index ${zIndex('body', 1)}
   }
 `
 
 const StyledTitle = styled.span`
-  font-size: ${TypographyXl};
+  font-size: ${fontSize('xl')};
   font-weight: 600;
-  color: ${ColorNeutral600};
-  padding-left: ${Spacing8};
+  color: ${color('neutral', '600')};
+  padding-left: ${spacing('8')};
 `
 
 function renderDefault(

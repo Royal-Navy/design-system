@@ -1,11 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import {
-  SpacingPx,
-  ColorDanger500,
-  TypographyS,
-  ZindexBody,
-} from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineContext } from './context'
@@ -25,6 +20,8 @@ export type TimelineTodayMarkerProps =
   | TimelineTodayMarkerWithRenderContentProps
   | TimelineTodayMarkerWithChildrenProps
 
+const { spacing, color, zIndex, fontSize } = selectors
+
 const StyledTimelineTodayMarkerWrapper = styled.div`
   position: relative;
 `
@@ -37,16 +34,16 @@ const StyledTimelineTodayMarker = styled.div<StyledTimelineTodayMarkerProps>`
   position: absolute;
   top: 4rem;
   display: inline-block;
-  width: ${SpacingPx};
+  width: ${spacing('px')};
   height: 100vh;
-  background-color: ${ColorDanger500};
-  z-index: ${Number(ZindexBody) + 1};
+  background-color: ${color('danger', '500')};
+  z-index: ${zIndex('body', 1)};
 
   &::before {
     content: 'Today';
     display: inline-block;
-    color: ${ColorDanger500};
-    font-size: ${TypographyS};
+    color: ${color('danger', '500')};
+    font-size: ${fontSize('s')};
     transform: translate(-50%, -175%);
   }
 
