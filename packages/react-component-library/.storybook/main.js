@@ -6,5 +6,6 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-knobs',
     '@storybook/preset-scss',
+    'storybook-addon-performance',
   ],
 }

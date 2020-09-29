@@ -9,6 +9,6 @@ module.exports = {
   setupFiles: ['<rootDir>/jest/setupTests.js'],
   globalSetup: '<rootDir>/jest/globalSetup.js',
   transformIgnorePatterns: [
-    '/node_modules/(?!@royalnavy/design-tokens).+\\.js$',
+    '/node_modules/(?!(@royalnavy/design-tokens|storybook-addon-performance)).+\\.js$',
   ],
 }
