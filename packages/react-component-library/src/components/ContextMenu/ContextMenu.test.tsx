@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { RenderResult, render } from '@testing-library/react'
+import { RenderResult, render, fireEvent } from '@testing-library/react'
 import { IconSettings } from '@royalnavy/icon-library'
 
 import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
@@ -18,52 +18,131 @@ describe('ContextMenu', () => {
   let wrapper: RenderResult
   let onClickSpy: (e: React.MouseEvent<HTMLElement>) => void
 
-  describe('With link', () => {
+  describe('With links and closed', () => {
     beforeEach(() => {
-      wrapper = render(
-        <ContextMenu>
-          <ContextMenuItem link={<Link href="/hello-foo">Hello, Foo!</Link>} />
-          <ContextMenuItem link={<Link href="/hello-bar">Hello, Bar!</Link>} />
-        </ContextMenu>
-      )
+      const ContextExample = () => {
+        const ref = useRef()
+
+        return (
+          <>
+            <div ref={ref}>Right click me!</div>
+            <ContextMenu attachedToRef={ref}>
+              <ContextMenuItem
+                link={<Link href="/hello-foo">Hello, Foo!</Link>}
+              />
+              <ContextMenuItem
+                link={<Link href="/hello-bar">Hello, Bar!</Link>}
+              />
+            </ContextMenu>
+          </>
+        )
+      }
+
+      wrapper = render(<ContextExample />)
+    })
+
+    it('is not rendered to the DOM', () => {
+      expect(wrapper.queryByTestId('context-menu')).not.toBeInTheDocument()
+    })
+  })
+
+  describe('With links and open', () => {
+    beforeEach(() => {
+      const ContextExample = () => {
+        const ref = useRef()
+
+        return (
+          <>
+            <div ref={ref}>Right click me!</div>
+            <ContextMenu attachedToRef={ref}>
+              <ContextMenuItem
+                link={<Link href="/hello-foo">Hello, Foo!</Link>}
+              />
+              <ContextMenuItem
+                link={<Link href="/hello-bar">Hello, Bar!</Link>}
+              />
+            </ContextMenu>
+          </>
+        )
+      }
+
+      wrapper = render(<ContextExample />)
+
+      fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+    })
+
+    it('is rendered to the DOM', () => {
+      expect(wrapper.queryByTestId('context-menu')).toBeInTheDocument()
     })
 
     it('renders the links', () => {
       expect(wrapper.queryByText('Hello, Foo!')).toBeInTheDocument()
       expect(wrapper.queryByText('Hello, Bar!')).toBeInTheDocument()
     })
+
+    describe('and the user clicks somewhere in the DOM', () => {
+      beforeEach(() => {
+        fireEvent.click(wrapper.getByText('Right click me!'))
+      })
+
+      it('hides the context menu', () => {
+        expect(wrapper.queryByTestId('context-menu')).not.toBeInTheDocument()
+      })
+    })
   })
 
-  describe('With custom link', () => {
+  describe('With custom link and open', () => {
     beforeEach(() => {
       onClickSpy = jest.fn()
 
-      wrapper = render(
-        <ContextMenu>
-          <ContextMenuItem
-            link={<CustomLink onClick={onClickSpy}>Click me!</CustomLink>}
-          />
-        </ContextMenu>
-      )
+      const ContextExample = () => {
+        const ref: React.Ref<HTMLDivElement> = useRef()
+
+        return (
+          <>
+            <div ref={ref}>Right click me!</div>
+            <ContextMenu attachedToRef={ref}>
+              <ContextMenuItem
+                link={<CustomLink onClick={onClickSpy}>Click me!</CustomLink>}
+              />
+            </ContextMenu>
+          </>
+        )
+      }
+
+      wrapper = render(<ContextExample />)
+
+      fireEvent.contextMenu(wrapper.getByText('Right click me!'))
 
       wrapper.getByTestId('context-menu-custom-link').click()
     })
 
-    it('invokes the onClick event when the custom link is clicked', () => {
+    it('invokes the supplied onClick callback when the custom link is clicked', () => {
       expect(onClickSpy).toHaveBeenCalledTimes(1)
     })
   })
 
-  describe('With icons', () => {
+  describe('With icons and open', () => {
     beforeEach(() => {
-      wrapper = render(
-        <ContextMenu>
-          <ContextMenuItem
-            icon={<IconSettings data-testid="context-menu-item-icon" />}
-            link={<Link href="/hello-foo">Hello, Foo!</Link>}
-          />
-        </ContextMenu>
-      )
+      const ContextExample = () => {
+        const ref = useRef()
+
+        return (
+          <>
+            <div ref={ref}>Right click me!</div>
+            <ContextMenu attachedToRef={ref}>
+              <ContextMenuItem
+                icon={<IconSettings data-testid="context-menu-item-icon" />}
+                link={<Link href="/hello-foo">Hello, Foo!</Link>}
+              />
+            </ContextMenu>
+          </>
+        )
+      }
+
+      wrapper = render(<ContextExample />)
+
+      fireEvent.contextMenu(wrapper.getByText('Right click me!'))
     })
 
     it('renders the icons', () => {
@@ -73,18 +152,29 @@ describe('ContextMenu', () => {
     })
   })
 
-  describe('With dividers', () => {
+  describe('With dividers and open', () => {
     beforeEach(() => {
-      wrapper = render(
-        <ContextMenu>
-          <ContextMenuDivider />
-          <ContextMenuItem
-            icon={IconSettings}
-            link={<Link href="/hello-foo">Hello, Foo!</Link>}
-          />
-          <ContextMenuDivider />
-        </ContextMenu>
-      )
+      const ContextExample = () => {
+        const ref = useRef()
+
+        return (
+          <>
+            <div ref={ref}>Right click me!</div>
+            <ContextMenu attachedToRef={ref}>
+              <ContextMenuDivider />
+              <ContextMenuItem
+                icon={IconSettings}
+                link={<Link href="/hello-foo">Hello, Foo!</Link>}
+              />
+              <ContextMenuDivider />
+            </ContextMenu>
+          </>
+        )
+      }
+
+      wrapper = render(<ContextExample />)
+
+      fireEvent.contextMenu(wrapper.getByText('Right click me!'))
     })
 
     it('renders the dividers', () => {

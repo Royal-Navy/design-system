@@ -8,11 +8,13 @@ interface ContextMenuItemProps extends NavItem {
   icon?: React.ReactNode
 }
 
+interface StyledTextProps {
+  hasIcon?: boolean
+}
+
 const { color, fontSize, spacing } = selectors
 
 const StyledContextMenuItem = styled.li`
-  overflow: hidden;
-
   &:first-of-type {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -26,9 +28,6 @@ const StyledContextMenuItem = styled.li`
   > * {
     display: flex;
     padding: ${spacing('4')} ${spacing('6')};
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-wrap: none;
   }
 
   &:hover {
@@ -49,10 +48,6 @@ const StyledIcon = styled.div`
     color: ${color('neutral', '500')};
   }
 `
-
-interface StyledTextProps {
-  hasIcon?: boolean
-}
 
 const StyledText = styled.div<StyledTextProps>`
   color: ${color('neutral', '300')};
