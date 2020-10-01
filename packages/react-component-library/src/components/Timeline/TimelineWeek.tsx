@@ -61,15 +61,17 @@ const StyledTitle = styled.span`
   margin-left: ${spacing('4')};
 `
 
-function renderDefault(
-  index: number,
-  isOddNumber: boolean,
-  offsetPx: string,
-  widthPx: string,
-  dayWidth: number,
-  daysTotal: number,
+function renderDefault({
+  isOddNumber,
+  offsetPx,
+  widthPx,
+  startDate,
+}: {
+  isOddNumber: boolean
+  offsetPx: string
+  widthPx: string
   startDate: Date
-) {
+}) {
   return (
     <StyledTimelineWeek
       isOddNumber={isOddNumber}
@@ -104,7 +106,7 @@ export const TimelineWeek: React.FC<TimelineWeekProps> = ({
 
   const isOddNumber = isOdd(index)
 
-  const args = [
+  const args = {
     index,
     isOddNumber,
     offsetPx,
@@ -112,10 +114,10 @@ export const TimelineWeek: React.FC<TimelineWeekProps> = ({
     dayWidth,
     daysTotal,
     startDate,
-  ]
+  }
 
   // @ts-ignore
-  const child = render ? render(...args) : renderDefault(...args)
+  const child = render ? render(...Object.values(args)) : renderDefault(args)
 
   const title = `Week beginning ${format(startDate, ACCESSIBLE_DATE_FORMAT)}`
 

@@ -34,7 +34,7 @@ const StyledTitle = styled.span`
   z-index: ${zIndex('body', 2)};
 `
 
-function renderDefault(width: number, time: string) {
+function renderDefault({ width, time }: { width: number; time: string }) {
   return (
     <StyledTimelineHour
       data-testid="timeline-hour"
@@ -57,7 +57,7 @@ export const TimelineHour: React.FC<TimelineHourProps> = ({
 }) => {
   if (isAfter(date, timelineEndDate)) return null
 
-  const child = render ? render(width, time) : renderDefault(width, time)
+  const child = render ? render(width, time) : renderDefault({ width, time })
 
   return React.cloneElement(child, {
     role: 'columnheader',

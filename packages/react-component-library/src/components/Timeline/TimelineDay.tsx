@@ -38,7 +38,7 @@ const StyledTitle = styled.div`
   z-index: ${zIndex('body', 2)};
 `
 
-function renderDefault(index: number, dayWidth: number, date: Date) {
+function renderDefault({ dayWidth, date }: { dayWidth: number; date: Date }) {
   return (
     <StyledTimelineDay
       data-testid="timeline-day"
@@ -65,7 +65,7 @@ export const TimelineDay: React.FC<TimelineDayProps> = ({
 
   const child = render
     ? render(index, dayWidth, date)
-    : renderDefault(index, dayWidth, date)
+    : renderDefault({ dayWidth, date })
 
   return React.cloneElement(child, {
     role: 'columnheader',
