@@ -552,6 +552,13 @@ Through the use of clever composition and custom styling, it's possible to creat
       <th>Description</th>
     </tr>
     <tr>
+      <td>barColor</td>
+      <td>string</td>
+      <td>False</td>
+      <td>ColorSuccess500</td>
+      <td>The colour of the bar</td>
+    </tr>
+    <tr>
       <td>startDate</td>
       <td>Date</td>
       <td>True</td>

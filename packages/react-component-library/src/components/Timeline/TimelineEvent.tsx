@@ -11,6 +11,7 @@ import { useTimelinePosition } from './hooks/useTimelinePosition'
 
 export interface TimelineEventWithRenderContentProps
   extends ComponentWithClass {
+  barColor?: never
   children?: never
   endDate: Date
   render: (
@@ -23,6 +24,7 @@ export interface TimelineEventWithRenderContentProps
 }
 
 export interface TimelineEventWithChildrenProps extends ComponentWithClass {
+  barColor?: string
   children: React.ReactNode
   endDate: Date
   render?: never
@@ -57,24 +59,32 @@ const StyledEventTitle = styled.span`
 `
 
 interface StyledEventBarProps {
+  barColor: string
   width: string
 }
 
 const StyledEventBar = styled.div<StyledEventBarProps>`
   display: inline-block;
-  background-color: ${color('success', '500')};
+  background-color: ${({ barColor = color('success', '500') }) => barColor};
   border-radius: 4px;
   height: 16px;
   min-width: 1rem;
   width: ${({ width }) => width};
 `
 
-function renderDefault(
-  children: React.ReactNode,
-  offsetPx: string,
-  startDate: Date,
+function renderDefault({
+  barColor,
+  children,
+  offsetPx,
+  startDate,
+  widthPx,
+}: {
+  barColor: string
+  children: React.ReactNode
+  offsetPx: string
+  startDate: Date
   widthPx: string
-) {
+}) {
   return (
     <StyledTimelineEvent
       style={{ left: offsetPx }}
@@ -83,7 +93,7 @@ function renderDefault(
       <StyledEventTitle data-testid="timeline-event-title">
         {children || `Task ${format(new Date(startDate), DATE_FORMAT.SHORT)}`}
       </StyledEventTitle>
-      <StyledEventBar width={widthPx} />
+      <StyledEventBar barColor={barColor} width={widthPx} />
     </StyledTimelineEvent>
   )
 }
@@ -98,6 +108,7 @@ function getTitle(children: React.ReactNode, startDate: Date, endDate: Date) {
 }
 
 export const TimelineEvent: React.FC<TimelineEventProps> = ({
+  barColor,
   children,
   endDate,
   render,
@@ -114,7 +125,7 @@ export const TimelineEvent: React.FC<TimelineEventProps> = ({
 
   const event = render
     ? render(startDate, endDate, widthPx, offsetPx)
-    : renderDefault(children, offsetPx, startDate, widthPx)
+    : renderDefault({ barColor, children, offsetPx, startDate, widthPx })
 
   const title = getTitle(children, startDate, endDate)
 

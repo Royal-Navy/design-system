@@ -52,12 +52,15 @@ const StyledTitle = styled.span`
   padding-left: ${spacing('8')};
 `
 
-function renderDefault(
-  index: number,
-  dayWidth: number,
-  daysTotal: number,
+function renderDefault({
+  dayWidth,
+  daysTotal,
+  startDate,
+}: {
+  dayWidth: number
+  daysTotal: number
   startDate: Date
-): React.ReactElement {
+}): React.ReactElement {
   return (
     <StyledTimelineMonth
       style={{
@@ -87,7 +90,7 @@ export const TimelineMonth: React.FC<TimelineMonthProps> = ({
 
   const child = render
     ? render(index, dayWidth, daysTotal, startDate)
-    : renderDefault(index, dayWidth, daysTotal, startDate)
+    : renderDefault({ dayWidth, daysTotal, startDate })
 
   return React.cloneElement(child, {
     role: 'columnheader',

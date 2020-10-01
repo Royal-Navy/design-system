@@ -1131,6 +1131,27 @@ Here you will find comprehensive API documentation for the Timeline Components.
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
     <h1 className="rn-fw-api-title">
+      barColor
+    </h1>
+    <Badge color="supa" colorVariant="faded" size="small">string</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>ColorSuccess500</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">The colour of the bar.</p>
+    </div>
+  </div>
+</div>
+
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">
       startDate
       <Badge className="rn_ml-4" color="danger" colorVariant="faded" variant="pill" size="small">Required</Badge>
     </h1>
