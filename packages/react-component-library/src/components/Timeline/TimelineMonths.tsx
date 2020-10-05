@@ -69,7 +69,7 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({ render }) => (
         className="timeline__months"
         data-testid="timeline-months"
         name="Months"
-        renderRowHeader={(name) => (
+        renderRowHeader={() => (
           <>
             <StyledNavigation
               className="timeline__navigation"
@@ -90,7 +90,6 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({ render }) => (
                 data-testid="timeline-side-button-right"
               />
             </StyledNavigation>
-            {name}
           </>
         )}
       >

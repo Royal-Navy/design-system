@@ -19,8 +19,9 @@ const StyledTimelineHeaderRow = styled<any>(TimelineRow)`
     `}
 `
 
-export const TimelineHeaderRow: React.FC<TimelineHeaderRowProps> = (props) => (
-  <StyledTimelineHeaderRow isHeader {...props} />
-)
+export const TimelineHeaderRow: React.FC<TimelineHeaderRowProps> = ({
+  name,
+  ...rest
+}) => <StyledTimelineHeaderRow isHeader ariaLabel={name} {...rest} />
 
 TimelineHeaderRow.displayName = 'TimelineHeaderRow'
