@@ -15,6 +15,11 @@ describe('Select Input', () => {
       isHidden: false,
       innerRef: jest.fn(),
       className: 'myclass',
+      theme: {
+        borderRadius: null,
+        colors: {},
+        spacing: null,
+      },
     }
   })
 
