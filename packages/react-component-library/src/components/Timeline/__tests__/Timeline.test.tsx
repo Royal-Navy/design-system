@@ -807,15 +807,18 @@ describe('Timeline', () => {
       wrapper = render(
         <Timeline
           startDate={new Date(2020, 3, 1)}
-          today={new Date(2020, 3, 15)}
+          today={new Date(2020, 3, 15, 12)}
         >
-          <TimelineHours blockSize={TIMELINE_BLOCK_SIZE.HALF_DAY} />
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
           <TimelineRows>
             <TimelineRow name="Row 1">
               <TimelineEvents>
                 <TimelineEvent
-                  startDate={new Date(2020, 3, 5, 6, 0, 0)}
-                  endDate={new Date(2020, 3, 7, 18, 0, 0)}
+                  startDate={new Date(2020, 3, 14, 12)}
+                  endDate={new Date(2020, 3, 18, 12)}
                 >
                   Event 1
                 </TimelineEvent>
@@ -826,9 +829,21 @@ describe('Timeline', () => {
       )
     })
 
+    it('positions the TodayMarker correct', () => {
+      expect(wrapper.getByTestId('timeline-today-marker')).toHaveStyle({
+        left: '435px',
+      })
+    })
+
     it('positions the event correctly', () => {
       expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
-        left: `255px`,
+        left: '405px',
+      })
+    })
+
+    it('sets the event width correctly', () => {
+      expect(wrapper.getByTestId('timeline-event-bar')).toHaveStyle({
+        width: '120px',
       })
     })
   })

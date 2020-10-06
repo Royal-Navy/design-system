@@ -59,7 +59,6 @@ const StyledEventTitle = styled.span`
 
 interface StyledEventBarProps {
   barColor: string
-  width: string
 }
 
 const StyledEventBar = styled.div<StyledEventBarProps>`
@@ -68,7 +67,6 @@ const StyledEventBar = styled.div<StyledEventBarProps>`
   border-radius: 4px;
   height: 16px;
   min-width: 1rem;
-  width: ${({ width }) => width};
 `
 
 function renderDefault({
@@ -92,7 +90,11 @@ function renderDefault({
       <StyledEventTitle data-testid="timeline-event-title">
         {children || `Task ${format(new Date(startDate), DATE_FORMAT.SHORT)}`}
       </StyledEventTitle>
-      <StyledEventBar barColor={barColor} width={widthPx} />
+      <StyledEventBar
+        barColor={barColor}
+        style={{ width: widthPx }}
+        data-testid="timeline-event-bar"
+      />
     </StyledTimelineEvent>
   )
 }

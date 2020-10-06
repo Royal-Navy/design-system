@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
 import {
-  differenceInSeconds,
+  differenceInCalendarDays,
   isBefore,
   isAfter,
 } from 'date-fns'
@@ -9,20 +9,26 @@ import {
 import { TimelineContext } from '../context'
 import { formatPx } from '../helpers'
 
-const SECONDS_IN_DAY = 86400
+const timeOffset = (date: Date) => 1 / 24 * new Date(date).getHours()
 
-function getWidth(startDate: Date, endDate: Date): number {
-  return (
-    differenceInSeconds(new Date(endDate), new Date(startDate)) /
-    SECONDS_IN_DAY
-  )
+function getWidth (
+  startDate: Date,
+  endDate: Date
+): number {
+  return differenceInCalendarDays(
+    new Date(endDate),
+    new Date(startDate)
+  ) - timeOffset(startDate) + timeOffset(endDate)
 }
 
-function getOffset(startDate: Date, timelineStart: Date): number {
-  return (
-    differenceInSeconds(new Date(startDate), new Date(timelineStart)) /
-    SECONDS_IN_DAY
-  )
+function getOffset (
+  startDate: Date,
+  timelineStart: Date
+): number {
+  return differenceInCalendarDays(
+    new Date(startDate),
+    new Date(timelineStart)
+  ) + timeOffset(startDate)
 }
 
 export function useTimelinePosition(
