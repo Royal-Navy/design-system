@@ -141,6 +141,7 @@ jobs:
             else
               yarn --cwd packages/react-component-library chromatic --app-code=$CHROMATIC_APP_CODE
             fi
+          no_output_timeout: 20m
   publish_latest:
     docker: *docker
     steps:
