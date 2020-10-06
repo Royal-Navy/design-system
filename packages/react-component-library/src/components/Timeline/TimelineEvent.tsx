@@ -46,7 +46,6 @@ const StyledTimelineEvent = styled.div`
   display: inline-flex;
   flex-direction: column;
   padding: ${spacing('2')} 0;
-  background-color: ${TIMELINE_BG_COLOR};
   overflow: visible;
   z-index: ${zIndex('body', 2)};
 `
