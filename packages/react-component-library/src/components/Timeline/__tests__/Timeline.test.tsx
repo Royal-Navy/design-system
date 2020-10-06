@@ -173,7 +173,10 @@ describe('Timeline', () => {
     })
 
     it('should set the `role` attribute to `row` on the no data message', () => {
-      expect(wrapper.queryByTestId('timeline-no-data')).toHaveAttribute('role', 'row')
+      expect(wrapper.queryByTestId('timeline-no-data')).toHaveAttribute(
+        'role',
+        'row'
+      )
     })
 
     it('should set the `role` attribute to `cell` on the no data message text', () => {
@@ -321,12 +324,12 @@ describe('Timeline', () => {
         )
       })
 
-      it('should render the row headers', () => {
+      it('should apply `aria-label` for row headers', () => {
         const rowHeaders = wrapper.getAllByTestId('timeline-row-header')
 
-        expect(rowHeaders[0]).toHaveTextContent('Months')
-        expect(rowHeaders[1]).toHaveTextContent('Weeks')
-        expect(rowHeaders[2]).toHaveTextContent('Days')
+        expect(rowHeaders[0]).toHaveAttribute('aria-label', 'Months')
+        expect(rowHeaders[1]).toHaveAttribute('aria-label', 'Weeks')
+        expect(rowHeaders[2]).toHaveAttribute('aria-label', 'Days')
       })
     })
 
@@ -383,22 +386,17 @@ describe('Timeline', () => {
       it('should render the row headers', () => {
         const rowHeaders = wrapper.getAllByTestId('timeline-row-header')
 
-        expect(rowHeaders[0]).toHaveTextContent('Months')
-        expect(rowHeaders[1]).toHaveTextContent('Weeks')
-        expect(rowHeaders[2]).toHaveTextContent('Days')
         expect(rowHeaders[3]).toHaveTextContent('Row 1')
         expect(rowHeaders[4]).toHaveTextContent('Row 2')
       })
 
       it('should set the `aria-label` attributes for the timeline navigation buttons', () => {
-        expect(wrapper.getByTestId('timeline-side-button-left')).toHaveAttribute(
-          'aria-label',
-          'Navigate left'
-        )
-        expect(wrapper.getByTestId('timeline-side-button-right')).toHaveAttribute(
-          'aria-label',
-          'Navigate right'
-        )
+        expect(
+          wrapper.getByTestId('timeline-side-button-left')
+        ).toHaveAttribute('aria-label', 'Navigate left')
+        expect(
+          wrapper.getByTestId('timeline-side-button-right')
+        ).toHaveAttribute('aria-label', 'Navigate right')
       })
 
       describe('and when the left button is clicked', () => {
@@ -471,12 +469,12 @@ describe('Timeline', () => {
       )
     })
 
-    it('should render the row headers', () => {
+    it('should apply `aria-label` for row headers', () => {
       const rowHeaders = wrapper.getAllByTestId('timeline-row-header')
 
-      expect(rowHeaders[0]).toHaveTextContent('Months')
-      expect(rowHeaders[1]).toHaveTextContent('Weeks')
-      expect(rowHeaders[2]).toHaveTextContent('Days')
+      expect(rowHeaders[0]).toHaveAttribute('aria-label', 'Months')
+      expect(rowHeaders[1]).toHaveAttribute('aria-label', 'Weeks')
+      expect(rowHeaders[2]).toHaveAttribute('aria-label', 'Days')
     })
   })
 
@@ -1288,9 +1286,7 @@ describe('Timeline', () => {
     })
 
     it('should render the arbitrary content', () => {
-      expect(
-        wrapper.getByText('Arbitrary event content')
-      ).toBeInTheDocument()
+      expect(wrapper.getByText('Arbitrary event content')).toBeInTheDocument()
     })
 
     it('should set the `aria-label` on the event', () => {

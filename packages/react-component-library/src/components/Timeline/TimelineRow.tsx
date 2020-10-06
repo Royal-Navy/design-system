@@ -12,6 +12,7 @@ export interface TimelineRowProps extends ComponentWithClass {
     | React.ReactElement<TimelineEventsProps>
     | React.ReactElement<TimelineEventsProps>[]
   name?: string
+  ariaLabel?: string
   renderRowHeader?: (name: string) => React.ReactElement
   isHeader?: boolean
 }
@@ -58,6 +59,7 @@ const StyledRowContent = styled.div`
 export const TimelineRow: React.FC<TimelineRowProps> = ({
   children,
   name,
+  ariaLabel,
   renderRowHeader,
   isHeader,
   className,
@@ -79,6 +81,7 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
               isHeader={isHeader}
               data-testid="timeline-row-header"
               role="rowheader"
+              aria-label={ariaLabel || name}
             >
               {renderRowHeader ? renderRowHeader(name) : name}
             </StyledRowHeader>
