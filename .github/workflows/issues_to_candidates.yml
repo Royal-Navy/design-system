@@ -1,0 +1,15 @@
+name: Move issues to Candidates
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  automate-project-columns:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Royal-Navy/github-project-automation-plus@v0.3.0
+        with:
+          project: "Design System Tactical Board"
+          column: "Candidates for Ready"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
