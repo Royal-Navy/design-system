@@ -26,18 +26,14 @@ const StyledTimelineTodayMarkerWrapper = styled.div`
   position: relative;
 `
 
-interface StyledTimelineTodayMarkerProps {
-  left: string
-}
-
-const StyledTimelineTodayMarker = styled.div<StyledTimelineTodayMarkerProps>`
+const StyledTimelineTodayMarker = styled.div`
   position: absolute;
   top: 4rem;
   display: inline-block;
   width: ${spacing('px')};
   height: 100vh;
   background-color: ${color('danger', '500')};
-  z-index: ${zIndex('body', 1)};
+  z-index: ${zIndex('body', 2)};
 
   &::before {
     content: 'Today';
@@ -46,12 +42,15 @@ const StyledTimelineTodayMarker = styled.div<StyledTimelineTodayMarkerProps>`
     font-size: ${fontSize('s')};
     transform: translate(-50%, -175%);
   }
-
-  left: ${({ left }) => left};
 `
 
 function renderDefault({ offset }: { offset: string }) {
-  return <StyledTimelineTodayMarker left={offset} />
+  return (
+    <StyledTimelineTodayMarker
+      data-testid="timeline-today-marker"
+      style={{ left: offset }}
+    />
+  )
 }
 
 export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = ({

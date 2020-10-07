@@ -62,7 +62,7 @@ BoundByFixedDates.parameters = disableScrollableRegionFocusableRule
 BoundByFixedDates.storyName = 'Bound by fixed dates'
 
 export const WithData = () => (
-  <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
+  <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15, 12)}>
     <TimelineTodayMarker />
     <TimelineMonths />
     <TimelineWeeks />
@@ -71,8 +71,8 @@ export const WithData = () => (
       <TimelineRow name="Row 1">
         <TimelineEvents>
           <TimelineEvent
-            startDate={new Date(2020, 3, 14)}
-            endDate={new Date(2020, 3, 18)}
+            startDate={new Date(2020, 3, 14, 12)}
+            endDate={new Date(2020, 3, 18, 12)}
           >
             Event 1
           </TimelineEvent>
