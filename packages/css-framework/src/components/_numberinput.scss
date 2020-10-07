@@ -177,3 +177,11 @@
     color: f.color("neutral", "300");
   }
 }
+
+.rn-numberinput__unit {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  position: absolute;
+  font-size: f.font-size("base");
+}

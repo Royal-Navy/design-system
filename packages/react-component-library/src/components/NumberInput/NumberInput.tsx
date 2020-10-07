@@ -12,7 +12,7 @@ import { useFocus } from './useFocus'
 import { useValue } from './useValue'
 import { UNIT_POSITION } from './constants'
 
-type UnitPosition = typeof UNIT_POSITION.AFTER | typeof UNIT_POSITION.BEFORE
+export type UnitPosition = typeof UNIT_POSITION.AFTER | typeof UNIT_POSITION.BEFORE
 
 export interface NumberInputProps {
   autoFocus?: boolean
@@ -142,7 +142,9 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           onInputBlur={onInputBlurSetCommittedValue}
           onInputFocus={onInputFocus}
           placeholder={placeholder}
-          value={formatValue(displayValue, unit, unitPosition)}
+          unit={unit}
+          unitPosition={unitPosition}
+          value={displayValue}
           {...rest}
         />
 

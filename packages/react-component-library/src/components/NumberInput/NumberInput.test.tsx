@@ -37,13 +37,24 @@ describe('NumberInput', () => {
   let wrapper: RenderResult
   let onChangeSpy: (event: any) => void
 
-  function assertInputValue(expected: string) {
-    it('should set the new value attribute', () => {
-      const input = wrapper.getByTestId(
-        'number-input-input'
-      ) as HTMLInputElement
-      expect(input.value).toEqual(expected)
+  function assertInputValue(expectedValue: string, expectedUnit?: string) {
+    it('should set the input value', () => {
+      expect(wrapper.getByTestId('number-input-input')).toHaveValue(
+        expectedValue
+      )
     })
+
+    if (expectedUnit) {
+      it('should display the unit', () => {
+        expect(wrapper.getByTestId('number-input-unit')).toHaveTextContent(
+          expectedUnit
+        )
+      })
+    } else {
+      it('should not show the unit', () => {
+        expect(wrapper.queryAllByTestId('number-input-unit')).toHaveLength(0)
+      })
+    }
   }
 
   function assertAriaValueAttributes({
@@ -501,7 +512,7 @@ describe('NumberInput', () => {
       )
     })
 
-    assertInputValue('1000 m')
+    assertInputValue('1000', 'm')
     assertAriaValueAttributes({
       min: null,
       max: null,
@@ -514,7 +525,7 @@ describe('NumberInput', () => {
         wrapper.getByTestId('number-input-increase').click()
       })
 
-      assertInputValue('1001 m')
+      assertInputValue('1001', 'm')
       assertAriaValueAttributes({
         min: null,
         max: null,
@@ -529,7 +540,7 @@ describe('NumberInput', () => {
         wrapper.getByTestId('number-input-decrease').click()
       })
 
-      assertInputValue('999 m')
+      assertInputValue('999', 'm')
       assertAriaValueAttributes({
         min: null,
         max: null,
@@ -553,7 +564,7 @@ describe('NumberInput', () => {
       )
     })
 
-    assertInputValue('£ 1000')
+    assertInputValue('1000', '£')
     assertAriaValueAttributes({
       min: null,
       max: null,
@@ -566,7 +577,7 @@ describe('NumberInput', () => {
         wrapper.getByTestId('number-input-increase').click()
       })
 
-      assertInputValue('£ 1001')
+      assertInputValue('1001', '£')
       assertAriaValueAttributes({
         min: null,
         max: null,
@@ -581,7 +592,7 @@ describe('NumberInput', () => {
         wrapper.getByTestId('number-input-decrease').click()
       })
 
-      assertInputValue('£ 999')
+      assertInputValue('999', '£')
       assertAriaValueAttributes({
         min: null,
         max: null,
@@ -601,7 +612,7 @@ describe('NumberInput', () => {
         fireEvent.blur(input)
       })
 
-      assertInputValue('£ 1000')
+      assertInputValue('1000', '£')
       assertAriaValueAttributes({
         min: null,
         max: null,
