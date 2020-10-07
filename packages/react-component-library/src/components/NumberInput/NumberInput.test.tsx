@@ -8,30 +8,8 @@ import {
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { NumberInput } from './NumberInput'
+import { Button, NumberInput } from '../..'
 import { UNIT_POSITION } from './constants'
-
-const NumberInputContainer: React.FC = () => {
-  const [value, setValue] = useState(0)
-
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(parseInt(event.target.value, 10))
-  }
-
-  const onClick = () => {
-    const newValue = value + 1
-    setValue(newValue)
-  }
-
-  return (
-    <div>
-      <NumberInput name="number-input" onChange={onChange} value={value} />
-      <button data-testid="button" type="button" onClick={onClick}>
-        Click me
-      </button>
-    </div>
-  )
-}
 
 describe('NumberInput', () => {
   let wrapper: RenderResult
@@ -211,9 +189,41 @@ describe('NumberInput', () => {
         await userEvent.type(input, '3')
       })
 
+      assertInputValue('123')
       assertOnChangeCall(1, 3)
       assertOnChangeCall(12, 3)
       assertOnChangeCall(123, 3)
+    })
+
+    describe('and the user types a value', () => {
+      beforeEach(async () => {
+        const input = wrapper.getByTestId('number-input-input')
+
+        await userEvent.type(input, '1')
+      })
+
+      assertInputValue('1')
+      assertOnChangeCall(1, 1)
+
+      describe('and the user deletes the value', () => {
+        beforeEach(async () => {
+          const input = wrapper.getByTestId('number-input-input')
+
+          await userEvent.type(input, '{backspace}')
+        })
+
+        assertInputValue('')
+        assertOnChangeCall(null, 2)
+
+        describe('and the decrease button is clicked', () => {
+          beforeEach(() => {
+            wrapper.getByTestId('number-input-decrease').click()
+          })
+
+          assertInputValue('-1')
+          assertOnChangeCall(-1, 3)
+        })
+      })
     })
   })
 
@@ -350,7 +360,7 @@ describe('NumberInput', () => {
           })
         })
 
-        assertInputValue('4')
+        assertInputValue('1')
 
         describe('and the number input loses focus', () => {
           beforeEach(() => {
@@ -625,17 +635,28 @@ describe('NumberInput', () => {
 
   describe('when an external element affects the value', () => {
     beforeEach(() => {
-      wrapper = render(<NumberInputContainer />)
+      function NumberInputWithUpdate() {
+        const [value, setValue] = useState<number>(1)
+
+        return (
+          <>
+            <Button onClick={() => setValue(1)}>Update</Button>
+            <NumberInput
+              name="number-input"
+              onChange={onChangeSpy}
+              value={value}
+            />
+          </>
+        )
+      }
+
+      wrapper = render(<NumberInputWithUpdate />)
       wrapper.getByTestId('button').click()
     })
 
     it('should update the value in the field', async () => {
       await waitFor(() => {
-        const input = wrapper.getByTestId(
-          'number-input-input'
-        ) as HTMLInputElement
-
-        expect(input.value).toEqual('1')
+        expect(wrapper.getByTestId('number-input-input')).toHaveValue('1')
       })
     })
   })

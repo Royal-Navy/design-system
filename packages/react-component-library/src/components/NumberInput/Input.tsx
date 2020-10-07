@@ -1,5 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
+import { isFinite } from 'lodash'
 
 import { NumberInputUnit } from './NumberInputUnit'
 import { UnitPosition } from './NumberInput'
@@ -36,8 +37,6 @@ export const Input: React.FC<InputProps> = ({
   ...rest
 }) => {
   const hasLabel = label && label.length
-  const displayValue =
-    value === null || value === undefined || Number.isNaN(value) ? '' : value
   const { inputOffset, inputRef, unitOffset } = useInputText(
     value,
     unitPosition
@@ -76,7 +75,7 @@ export const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         ref={inputRef}
         type="text"
-        value={displayValue}
+        value={isFinite(value) ? value : ''}
         {...rest}
         style={{ marginLeft: `${inputOffset}px` }}
       />

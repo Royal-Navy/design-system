@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 import { isFinite, isNil, without } from 'lodash'
 import { v4 as uuidv4 } from 'uuid'
@@ -12,7 +12,9 @@ import { useFocus } from './useFocus'
 import { useValue } from './useValue'
 import { UNIT_POSITION } from './constants'
 
-export type UnitPosition = typeof UNIT_POSITION.AFTER | typeof UNIT_POSITION.BEFORE
+export type UnitPosition =
+  | typeof UNIT_POSITION.AFTER
+  | typeof UNIT_POSITION.BEFORE
 
 export interface NumberInputProps {
   autoFocus?: boolean
@@ -53,12 +55,21 @@ function formatValue(
   return displayValue
 }
 
-function getNewValue(event: React.FormEvent<HTMLInputElement>, unit: string) {
+function getNewValue(event: React.FormEvent<HTMLInputElement>): number {
   const { value } = event.currentTarget
-  const valueParts = value.split(' ')
-  const valueWithoutUnit = without(valueParts, unit).join()
 
-  return parseInt(valueWithoutUnit, 10)
+  if (value === '') {
+    return null
+  }
+
+  return parseInt(value, 10)
+}
+
+function isWithinRange(max: number, min: number, newValue: number) {
+  const isNotBelowMin = isNil(min) || newValue >= min
+  const isNotAboveMax = isNil(max) || newValue <= max
+
+  return isNotBelowMin && isNotAboveMax
 }
 
 export const NumberInput: React.FC<NumberInputProps> = ({
@@ -82,29 +93,19 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   ...rest
 }) => {
   const { hasFocus, onInputBlur, onInputFocus } = useFocus(onBlur)
-  const {
-    displayValue,
-    setCommittedValueIfWithinRange,
-    setNextValue,
-  } = useValue(value)
+  const { committedValue, setCommittedValue } = useValue(value)
 
   const classes = classNames('rn-numberinput', className, {
     'has-focus': hasFocus,
-    'has-content': !isNil(displayValue),
+    'has-content': !isNil(committedValue),
   })
 
-  function onInputBlurSetCommittedValue(event: FormEvent<HTMLInputElement>) {
-    setNextValue(null)
-    const newValue = getNewValue(event, unit)
-
-    setCommittedValueIfWithinRange(max, min, name, onChange)(event, newValue)
-    onInputBlur(event)
-  }
-
-  function onInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const newValue = getNewValue(event, unit)
-    if (isFinite(newValue)) {
-      setNextValue(newValue)
+  function setCommittedValueWithinRange(newValue: number) {
+    if (
+      (isFinite(newValue) && isWithinRange(max, min, newValue)) ||
+      newValue === null
+    ) {
+      setCommittedValue(newValue)
       onChange({
         target: {
           name,
@@ -125,8 +126,8 @@ export const NumberInput: React.FC<NumberInputProps> = ({
       role="spinbutton"
       aria-valuemin={min}
       aria-valuemax={max}
-      aria-valuenow={displayValue}
-      aria-valuetext={String(formatValue(displayValue, unit, unitPosition))}
+      aria-valuenow={committedValue}
+      aria-valuetext={String(formatValue(committedValue, unit, unitPosition))}
     >
       <div className="rn-numberinput__outer-wrapper">
         <StartAdornment>{startAdornment}</StartAdornment>
@@ -138,13 +139,20 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           isCondensed={isCondensed}
           label={label}
           name={name}
-          onChange={onInputChange}
-          onInputBlur={onInputBlurSetCommittedValue}
+          onChange={(event) => {
+            const newValue = getNewValue(event)
+            setCommittedValueWithinRange(newValue)
+          }}
+          onInputBlur={(event) => {
+            const newValue = getNewValue(event)
+            setCommittedValueWithinRange(newValue)
+            onInputBlur(event)
+          }}
           onInputFocus={onInputFocus}
           placeholder={placeholder}
           unit={unit}
           unitPosition={unitPosition}
-          value={displayValue}
+          value={committedValue}
           {...rest}
         />
 
@@ -154,9 +162,11 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           max={max}
           min={min}
           name={name}
-          onClick={setCommittedValueIfWithinRange(max, min, name, onChange)}
+          onClick={(e, newValue) => {
+            setCommittedValueWithinRange(newValue)
+          }}
           step={step}
-          value={displayValue}
+          value={committedValue}
         />
       </div>
 
