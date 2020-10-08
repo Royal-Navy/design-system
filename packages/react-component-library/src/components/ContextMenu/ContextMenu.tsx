@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { useRightClick } from './useRightClick'
+import { useRightClick } from '../../hooks/useRightClick'
 
 interface ContextMenuProps extends ComponentWithClass {
   attachedToRef?: React.RefObject<HTMLElement>
