@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { isFinite, isNil, without } from 'lodash'
+import { isFinite, isNil } from 'lodash'
 import { v4 as uuidv4 } from 'uuid'
 
 import { EndAdornment } from './EndAdornment'
