@@ -9,7 +9,10 @@ interface EndAdornmentProps {
   max?: number
   min?: number
   name: string
-  onClick: (event: React.MouseEvent<HTMLButtonElement>, value: number) => void
+  onClick: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    newValue: number
+  ) => void
   step?: number
   value: number
 }

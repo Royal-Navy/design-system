@@ -1,5 +1,10 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import classNames from 'classnames'
+import { isFinite } from 'lodash'
+
+import { NumberInputUnit } from './NumberInputUnit'
+import { UnitPosition } from './NumberInput'
+import { useInputText } from './useInputText'
 
 interface InputProps {
   isDisabled?: boolean
@@ -11,7 +16,9 @@ interface InputProps {
   onInputBlur: (event: React.FormEvent<HTMLInputElement>) => void
   onInputFocus: () => void
   placeholder?: string
-  value?: number | string
+  unit: string
+  unitPosition: UnitPosition
+  value?: number
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -24,13 +31,16 @@ export const Input: React.FC<InputProps> = ({
   onInputBlur,
   onInputFocus,
   placeholder = '',
+  unit,
+  unitPosition,
   value,
   ...rest
 }) => {
   const hasLabel = label && label.length
-  const inputRef = useRef(null)
-  const displayValue =
-    value === null || value === undefined || Number.isNaN(value) ? '' : value
+  const { inputOffset, inputRef, unitOffset } = useInputText(
+    value,
+    unitPosition
+  )
 
   const inputClasses = classNames('rn-numberinput__input', {
     'rn-numberinput__input--condensed': isCondensed,
@@ -50,6 +60,9 @@ export const Input: React.FC<InputProps> = ({
           {label}
         </label>
       )}
+
+      <NumberInputUnit unit={unit} offset={unitOffset} />
+
       <input
         className={inputClasses}
         data-testid="number-input-input"
@@ -62,8 +75,9 @@ export const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         ref={inputRef}
         type="text"
-        value={displayValue}
+        value={isFinite(value) ? value : ''}
         {...rest}
+        style={{ marginLeft: `${inputOffset}px` }}
       />
     </div>
   )
