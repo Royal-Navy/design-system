@@ -25,6 +25,25 @@ describe('Timeline', () => {
     jest.clearAllMocks()
   })
 
+  describe('when a custom className is provided', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+          className="test-class-name"
+        >
+          <TimelineMonths />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('adds the custom CSS class to the component', () => {
+      expect(wrapper.getByTestId('timeline')).toHaveClass('test-class-name')
+    })
+  })
+
   describe('when no data is provided', () => {
     beforeEach(() => {
       wrapper = render(

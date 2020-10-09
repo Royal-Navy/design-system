@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
@@ -132,6 +133,7 @@ const StyledHeader = styled.div``
 
 export const Timeline: React.FC<TimelineProps> = ({
   children,
+  className,
   dayWidth,
   hasSide,
   startDate,
@@ -182,7 +184,11 @@ export const Timeline: React.FC<TimelineProps> = ({
       startDate={startDate}
       today={today}
     >
-      <StyledTimeline className="timeline" data-testid="timeline" role="grid">
+      <StyledTimeline
+        className={classNames('timeline', className)}
+        data-testid="timeline"
+        role="grid"
+      >
         <StyledInner
           className="timeline__inner"
           hasSide={hasSide || hasTimelineSide}
