@@ -30,7 +30,7 @@ export function getError(
   if (fieldTouched && fieldError) {
     return {
       id: `${fieldName}-error-${uuidv4()}`,
-      text: errors[fieldName],
+      text: fieldError,
     }
   }
 
