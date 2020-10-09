@@ -668,6 +668,25 @@ Here you will find comprehensive API documentation for the Timeline Components.
   </div>
 </div>
 
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">className</h1>
+    <Badge color="supa" colorVariant="faded" size="small">String</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>-</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">Custom CSS class to add to the component.</p>
+    </div>
+  </div>
+</div>
+
 </div>
 <div className="rn-fw-code rn-fw-md">
 
