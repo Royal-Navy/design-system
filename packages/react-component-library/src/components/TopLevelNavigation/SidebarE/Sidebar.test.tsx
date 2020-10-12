@@ -1,9 +1,20 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, render, RenderResult } from '@testing-library/react'
-import { IconHome, IconGrain } from '@royalnavy/icon-library'
+import {
+  fireEvent,
+  render,
+  RenderResult,
+  waitFor,
+} from '@testing-library/react'
+import { IconHome, IconGrain, IconExitToApp } from '@royalnavy/icon-library'
 
-import { Sidebar, SidebarNav, SidebarNavItem } from '.'
+import {
+  Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
+  SidebarUserItem,
+} from '.'
 import { Link } from '../../Link'
 
 describe('Sidebar', () => {
@@ -57,6 +68,85 @@ describe('Sidebar', () => {
 
       it('should not disply a tooltip on hover', () => {
         expect(wrapper.queryAllByTestId('tooltip')).toHaveLength(0)
+      })
+    })
+  })
+
+  describe('when composed with a user menu', () => {
+    beforeEach(() => {
+      const userWithMenu = (
+        <SidebarUser
+          initials="HN"
+          name="Horatio Nelson"
+          link={<Link href="/user-profile">View profile</Link>}
+        >
+          <SidebarUserItem link={<Link href="/user-profile">Profile</Link>} />
+          <SidebarUserItem
+            icon={<IconExitToApp />}
+            link={<Link href="/logout">Logout</Link>}
+          />
+        </SidebarUser>
+      )
+
+      wrapper = render(
+        <Sidebar
+          icon={<IconGrain />}
+          title="Application Name"
+          user={userWithMenu}
+        >
+          <SidebarNav>
+            <SidebarNavItem
+              icon={<IconHome />}
+              link={<Link href="/dashboard">Dashboard</Link>}
+            />
+            <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+          </SidebarNav>
+        </Sidebar>
+      )
+    })
+
+    describe('and is collapsed', () => {
+      describe('and the avatar is clicked', () => {
+        beforeEach(() => {
+          wrapper.getByText('HN').click()
+        })
+
+        it('should show the links', () => {
+          expect(wrapper.getByText('Profile')).toBeInTheDocument()
+          expect(wrapper.getByText('Logout')).toBeInTheDocument()
+        })
+
+        describe('and the avatar is clicked again', () => {
+          beforeEach(() => {
+            wrapper.getByText('HN').click()
+          })
+
+          it('should not show the links', () => {
+            return waitFor(() => {
+              expect(wrapper.queryByText('Profile')).toBeNull()
+              expect(wrapper.queryByText('Logout')).toBeNull()
+            })
+          })
+        })
+
+        describe('and the elsewhere in the document is clicked', () => {
+          beforeEach(() => {
+            fireEvent(
+              document,
+              new MouseEvent('mousedown', {
+                bubbles: true,
+                cancelable: true,
+              })
+            )
+          })
+
+          it('should not show the links', () => {
+            return waitFor(() => {
+              expect(wrapper.queryByText('Profile')).toBeNull()
+              expect(wrapper.queryByText('Logout')).toBeNull()
+            })
+          })
+        })
       })
     })
   })

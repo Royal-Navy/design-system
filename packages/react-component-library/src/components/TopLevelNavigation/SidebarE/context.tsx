@@ -11,7 +11,7 @@ interface SidebarProviderProps {
 
 const sidebarContextDefaults: SidebarContextDefaults = {
   isOpen: false,
-  setIsOpen: (isOpen) => undefined,
+  setIsOpen: (isOpen: boolean) => undefined,
 }
 
 export const SidebarContext = createContext(sidebarContextDefaults)
