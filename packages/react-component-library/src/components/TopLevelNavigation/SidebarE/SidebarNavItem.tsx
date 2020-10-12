@@ -1,26 +1,23 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
 import { NavItem } from '../../../common/Nav'
 import { SidebarContext } from './context'
+import { Tooltip } from '../../Tooltip'
 
 export interface SidebarNavItemProps extends NavItem {
   icon?: React.ReactNode
   onClick?: (e: React.MouseEvent<HTMLElement>) => void
 }
 
-interface StyledNavItemProps {
+interface StyledSidebarNavItemProps {
   isActive?: boolean
-}
-
-interface StyledTextProps {
-  hasIcon?: boolean
 }
 
 const { color, spacing, fontSize } = selectors
 
-const StyledNavItem = styled.div<StyledNavItemProps>`
+const StyledSidebarNavItem = styled.div<StyledSidebarNavItemProps>`
   margin: ${spacing('4')} 0;
   border-radius: 2px;
 
@@ -47,18 +44,18 @@ const StyledIcon = styled.div`
   svg {
     color: ${color('neutral', '100')};
 
-    ${StyledNavItem}:hover & {
+    ${StyledSidebarNavItem}:hover & {
       color: ${color('neutral', 'white')};
     }
   }
 `
 
-const StyledText = styled.div<StyledTextProps>`
+const StyledText = styled.div`
   display: inline-block;
   color: ${color('neutral', '100')};
   font-size: ${fontSize('m')};
 
-  ${StyledNavItem}:hover & {
+  ${StyledSidebarNavItem}:hover & {
     color: ${color('neutral', 'white')};
   }
 `
@@ -69,6 +66,7 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
   icon,
   onClick,
 }) => {
+  const [hasMouseOver, setHasMouseOver] = useState(false)
   const { isOpen } = useContext(SidebarContext)
   const linkElement = link as React.ReactElement
 
@@ -80,16 +78,31 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
       <>
         {icon && <StyledIcon>{icon}</StyledIcon>}
         {isOpen && (
-          <StyledText hasIcon={!!icon}>{linkElement.props.children}</StyledText>
+          <StyledText data-testid="sidebar-nav-item-text">
+            {linkElement.props.children}
+          </StyledText>
+        )}
+        {!isOpen && hasMouseOver && (
+          <Tooltip left={70} position="right">
+            {linkElement.props.children}
+          </Tooltip>
         )}
       </>
     ),
-    'data-testid': 'sidebar-nav-item',
     onClick,
     'aria-label': linkElement.props.children,
   })
 
-  return <StyledNavItem isActive={isActive}>{item}</StyledNavItem>
+  return (
+    <StyledSidebarNavItem
+      isActive={isActive}
+      onMouseEnter={(_) => setHasMouseOver(true)}
+      onMouseLeave={(_) => setHasMouseOver(false)}
+      data-testid="sidebar-nav-item"
+    >
+      {item}
+    </StyledSidebarNavItem>
+  )
 }
 
 SidebarNavItem.displayName = 'SidebarNavItem'

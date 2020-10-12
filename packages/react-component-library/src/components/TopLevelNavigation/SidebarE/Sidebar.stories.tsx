@@ -42,7 +42,7 @@ export const Default = () => {
         />
         <SidebarNavItem
           icon={<IconFeedback />}
-          link={<Link href="/data-feed">Data Feed</Link>}
+          link={<Link href="/data-feed">Data&nbsp;Feed</Link>}
         />
         <SidebarNavItem
           icon={<IconMessage />}
