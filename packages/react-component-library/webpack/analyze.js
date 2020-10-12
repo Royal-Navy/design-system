@@ -2,7 +2,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { resolve } = require('path')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 
 const commonConfig = require('./common')
 
