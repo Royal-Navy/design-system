@@ -1,7 +1,7 @@
 // production config
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { resolve } = require('path')
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 
 const commonConfig = require('./common')
 
