@@ -24,9 +24,13 @@ describe('Sidebar', () => {
     beforeEach(() => {
       wrapper = render(<Sidebar />)
     })
+
+    it('does not render the header', () => {
+      expect(wrapper.queryByTestId('sidebar-head')).not.toBeInTheDocument()
+    })
   })
 
-  describe('when composed with single level of navigaton', () => {
+  describe('when composed with single level of navigaton and header items', () => {
     beforeEach(() => {
       wrapper = render(
         <Sidebar icon={<IconGrain />} title="Application Name">
@@ -42,6 +46,10 @@ describe('Sidebar', () => {
     })
 
     describe('and is collapsed', () => {
+      it('should not render the application name', () => {
+        expect(wrapper.queryByText('Application Name')).not.toBeInTheDocument()
+      })
+
       it('should not display the text titles for navigation items', () => {
         expect(wrapper.queryByText('Dashboard')).not.toBeInTheDocument()
       })
@@ -60,6 +68,10 @@ describe('Sidebar', () => {
     describe('and is expanded', () => {
       beforeEach(() => {
         wrapper.getByTestId('sidebar-handle').click()
+      })
+
+      it('should render the application name', () => {
+        expect(wrapper.queryByText('Application Name')).toBeInTheDocument()
       })
 
       it('should display the text titles for navigation items', () => {

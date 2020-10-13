@@ -58,70 +58,53 @@ const userWithMenu = (
   </SidebarUser>
 )
 
+const sidebarNav = (
+  <SidebarNav>
+    <SidebarNavItem
+      icon={<IconHome />}
+      link={<Link href="/dashboard">Dashboard</Link>}
+    />
+    <SidebarNavItem
+      icon={<IconVerifiedUser />}
+      link={<Link href="/reports">Reports</Link>}
+    />
+    <SidebarNavItem
+      icon={<IconLocalShipping />}
+      link={<Link href="/platforms">Platforms</Link>}
+    />
+    <SidebarNavItem
+      icon={<IconFeedback />}
+      link={<Link href="/data-feed">Data&nbsp;Feed</Link>}
+    />
+    <SidebarNavItem
+      icon={<IconMessage />}
+      link={<Link href="/messages">Messages</Link>}
+    />
+    <SidebarNavItem
+      icon={<IconSettings />}
+      link={<Link href="/settings">Settings</Link>}
+    />
+  </SidebarNav>
+)
+
 export const Default = () => {
+  return <Sidebar>{sidebarNav}</Sidebar>
+}
+
+export const WithHeader = () => {
   return (
     <Sidebar icon={<IconGrain />} title="Application Name">
-      <SidebarNav>
-        <SidebarNavItem
-          icon={<IconHome />}
-          link={<Link href="/dashboard">Dashboard</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconVerifiedUser />}
-          link={<Link href="/reports">Reports</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconLocalShipping />}
-          link={<Link href="/platforms">Platforms</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconFeedback />}
-          link={<Link href="/data-feed">Data&nbsp;Feed</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconMessage />}
-          link={<Link href="/messages">Messages</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconSettings />}
-          link={<Link href="/settings">Settings</Link>}
-        />
-      </SidebarNav>
+      {sidebarNav}
     </Sidebar>
   )
 }
 
-Default.storyName = 'Default'
+WithHeader.storyName = 'With header'
 
 export const WithUserLink = () => {
   return (
     <Sidebar icon={<IconGrain />} title="Application Name" user={userWithLink}>
-      <SidebarNav>
-        <SidebarNavItem
-          icon={<IconHome />}
-          link={<Link href="/dashboard">Dashboard</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconVerifiedUser />}
-          link={<Link href="/reports">Reports</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconLocalShipping />}
-          link={<Link href="/platforms">Platforms</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconFeedback />}
-          link={<Link href="/data-feed">Data&nbsp;Feed</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconMessage />}
-          link={<Link href="/messages">Messages</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconSettings />}
-          link={<Link href="/settings">Settings</Link>}
-        />
-      </SidebarNav>
+      {sidebarNav}
     </Sidebar>
   )
 }
@@ -131,32 +114,7 @@ WithUserLink.storyName = 'With user link'
 export const WithUserMenu = () => {
   return (
     <Sidebar icon={<IconGrain />} title="Application Name" user={userWithMenu}>
-      <SidebarNav>
-        <SidebarNavItem
-          icon={<IconHome />}
-          link={<Link href="/dashboard">Dashboard</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconVerifiedUser />}
-          link={<Link href="/reports">Reports</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconLocalShipping />}
-          link={<Link href="/platforms">Platforms</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconFeedback />}
-          link={<Link href="/data-feed">Data&nbsp;Feed</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconMessage />}
-          link={<Link href="/messages">Messages</Link>}
-        />
-        <SidebarNavItem
-          icon={<IconSettings />}
-          link={<Link href="/settings">Settings</Link>}
-        />
-      </SidebarNav>
+      {sidebarNav}
     </Sidebar>
   )
 }

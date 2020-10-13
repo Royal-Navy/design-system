@@ -70,10 +70,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {({ isOpen }) => (
           <StyledSidebar isOpen={isOpen}>
             <SidebarHandle />
-            <StyledHead>
-              {icon && <StyledIcon>{icon}</StyledIcon>}
-              {isOpen && <StyledTitle>{title}</StyledTitle>}
-            </StyledHead>
+            {title && (
+              <StyledHead data-testid="sidebar-head">
+                {icon && <StyledIcon>{icon}</StyledIcon>}
+                {isOpen && <StyledTitle>{title}</StyledTitle>}
+              </StyledHead>
+            )}
             {children}
             {user}
           </StyledSidebar>
