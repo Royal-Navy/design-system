@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.16.0](https://github.com/Royal-Navy/design-system/compare/2.15.0...2.16.0) (2020-10-13)
+
+
+### Bug Fixes
+
+* **NumberInput:** Separate `unit` from `input` ([ae4f632](https://github.com/Royal-Navy/design-system/commit/ae4f632761544f20933178053003cbc8cf1be416))
+* **TextArea:** Adjust label dependent on state ([2b2b904](https://github.com/Royal-Navy/design-system/commit/2b2b9043f8fc779357992a945310fc4d280cfaff))
+
+
+### Features
+
+* **Timeline:** Migrate to styled-components ([bc8acbc](https://github.com/Royal-Navy/design-system/commit/bc8acbc235938f2c93108fb9158e0e7a63b32a32))
+
+
+
+
+
 # [2.15.0](https://github.com/Royal-Navy/design-system/compare/2.14.0...2.15.0) (2020-09-23)
 
 

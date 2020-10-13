@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.16.0](https://github.com/Royal-Navy/design-system/compare/2.15.0...2.16.0) (2020-10-13)
+
+
+### Features
+
+* **IconLibrary:** Add chain and chain-break icons ([35c0714](https://github.com/Royal-Navy/design-system/commit/35c07149406d58041cc560757ca081409e4a306a)), closes [#1319](https://github.com/Royal-Navy/design-system/issues/1319) [#1188](https://github.com/Royal-Navy/design-system/issues/1188)
+
+
+
+
+
 # [2.15.0](https://github.com/Royal-Navy/design-system/compare/2.14.0...2.15.0) (2020-09-23)
 
 

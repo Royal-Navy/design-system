@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.16.0](https://github.com/Royal-Navy/design-system/compare/2.15.0...2.16.0) (2020-10-13)
+
+
+### Bug Fixes
+
+* **DatePicker:** Fix range selection ([09a2dad](https://github.com/Royal-Navy/design-system/commit/09a2dada0ad2ea90325dd2c8cd503bafec1080ae))
+* **Formik:** Display nested field errors correctly ([281c05a](https://github.com/Royal-Navy/design-system/commit/281c05a3b839f44ca64f89dbbf4a7567ab190477))
+* **NumberInput:** Separate `unit` from `input` ([ae4f632](https://github.com/Royal-Navy/design-system/commit/ae4f632761544f20933178053003cbc8cf1be416))
+* **Select:** Add missing input props to test ([c9ddf31](https://github.com/Royal-Navy/design-system/commit/c9ddf31e120328f6864ff3be312f3e4b319b4a48))
+* **TextArea:** Adjust label dependent on state ([2b2b904](https://github.com/Royal-Navy/design-system/commit/2b2b9043f8fc779357992a945310fc4d280cfaff))
+* **TextInput:** Integrate `useInputValue` hook ([4d3bacc](https://github.com/Royal-Navy/design-system/commit/4d3bacc25f1cbcb66bb973f7c9c7f1be3da0d172))
+* **Timeline:** Adjust broken `With custom hours` story ([e8432c9](https://github.com/Royal-Navy/design-system/commit/e8432c9fb8b133279adee79c5642472dbad38790))
+* **Timeline:** Adjust offset calculation ([c5ba6d6](https://github.com/Royal-Navy/design-system/commit/c5ba6d6468c911e6271e436f0426589f1c23be48))
+* **Timeline:** Allow arbitrary event `children` ([1e47649](https://github.com/Royal-Navy/design-system/commit/1e47649413643f123ec8604b616e9feedf538e16))
+* **Timeline:** Forward className prop ([ea752b2](https://github.com/Royal-Navy/design-system/commit/ea752b25411343475fcff00b3427ee7d764b5769))
+* **Timeline:** Preserve BEM classes for skeleton markup ([273f1ca](https://github.com/Royal-Navy/design-system/commit/273f1ca782a0cb75624cd438e79fcc9ed5950ae3))
+* **Timeline:** Remove broken box-shadow ([b47b0ae](https://github.com/Royal-Navy/design-system/commit/b47b0ae83d5d338f5bae5d2b4b83166aa7d79ee3))
+* **Timeline:** Remove rogue background colour ([425ca03](https://github.com/Royal-Navy/design-system/commit/425ca03fbb8b185964c366da9ca01a3f618526a5))
+* **Timeline:** Set correct z-index for TodayMarker ([af34584](https://github.com/Royal-Navy/design-system/commit/af345845488aa4827543aff51112ddc9f7f9dd1b))
+
+
+### Features
+
+* **ContextMenu:** Add right-click behaviour ([a12c23c](https://github.com/Royal-Navy/design-system/commit/a12c23cc3c7039de809c5f560a431bddb85f3087))
+* **ContextMenu:** Create base component ([c8a32e0](https://github.com/Royal-Navy/design-system/commit/c8a32e0526cbe3180b78e997f3a02e48d9d68d03))
+* **Timeline:** Add ability to change bar colour ([a94a366](https://github.com/Royal-Navy/design-system/commit/a94a366dcfaa47aef3dafa54a1a3a4838fd9cbaa))
+* **Timeline:** Migrate to styled-components ([bc8acbc](https://github.com/Royal-Navy/design-system/commit/bc8acbc235938f2c93108fb9158e0e7a63b32a32))
+* **Timeline:** Remove unwanted sidebar labels ([593dd0c](https://github.com/Royal-Navy/design-system/commit/593dd0cfd4fe09a15808faadc055d085aa772799))
+
+
+
+
+
 # [2.15.0](https://github.com/Royal-Navy/design-system/compare/2.14.0...2.15.0) (2020-09-23)
 
 
