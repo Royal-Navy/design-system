@@ -2,13 +2,14 @@ import React from 'react'
 import classNames from 'classnames'
 import { isFinite, isNil } from 'lodash'
 import { selectors } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
 import { EndAdornment } from './EndAdornment'
 import { Footnote } from './Footnote'
 import { getId } from '../../helpers'
 import { Input } from './Input'
+import { InputValidationProps } from '../../common/InputValidationProps'
 import { StartAdornment } from './StartAdornment'
 import { useValue } from './useValue'
 import { UNIT_POSITION } from './constants'
@@ -19,7 +20,7 @@ export type UnitPosition =
   | typeof UNIT_POSITION.AFTER
   | typeof UNIT_POSITION.BEFORE
 
-export interface NumberInputProps {
+export interface NumberInputProps extends InputValidationProps {
   autoFocus?: boolean
   className?: string
   footnote?: string
@@ -96,12 +97,18 @@ function isWithinRange(max: number, min: number, newValue: number) {
   return isNotBelowMin && isNotAboveMax
 }
 
+function hasClass(allClasses: string, className: string) {
+  return allClasses && allClasses.split(' ').includes(className)
+}
+
 export const NumberInput: React.FC<NumberInputProps> = ({
   className,
   footnote,
   id = uuidv4(),
   isCondensed,
   isDisabled = false,
+  isInvalid,
+  isValid,
   label,
   max,
   min,
@@ -157,6 +164,8 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           id={id}
           isDisabled={isDisabled}
           isCondensed={isCondensed}
+          isValid={isValid || hasClass(className, 'is-valid')}
+          isInvalid={isInvalid || hasClass(className, 'is-invalid')}
           label={label}
           name={name}
           onChange={(event) => {

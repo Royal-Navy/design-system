@@ -65,15 +65,17 @@ export const withFormik = (FormComponent: React.FC<any> | string) => ({
 }: FormikProps) => {
   const { name } = field
   const error = getError(touched, errors, name)
+  const isInvalid = !!error
 
   const formComponentClassNames = classNames(className, {
-    'is-invalid': !!error,
+    'is-invalid': isInvalid,
   })
 
   const formComponentProps = {
     ...field,
     ...transformErrorToAriaAttributes(error),
     ...props,
+    isInvalid,
     className: formComponentClassNames,
   }
 

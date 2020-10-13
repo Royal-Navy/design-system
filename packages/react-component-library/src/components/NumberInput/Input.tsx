@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
 import { isFinite, isNil } from 'lodash'
-import { selectors } from '@royalnavy/design-tokens'
+import { ColourGroup, selectors } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 import { NumberInputUnit } from './NumberInputUnit'
 import { UnitPosition } from './NumberInput'
 import { useInputText } from './useInputText'
+import { InputValidationProps } from '../../common/InputValidationProps'
 
 const { color, fontSize, spacing } = selectors
 
-interface InputProps {
+interface InputProps extends InputValidationProps {
   isDisabled?: boolean
   id?: string
   isCondensed: boolean
@@ -29,7 +30,7 @@ interface StyledInputProps {
   offset: number
 }
 
-interface StyledInputWrapperProps {
+interface StyledInputWrapperProps extends InputValidationProps {
   hasFocus: boolean
 }
 
@@ -38,19 +39,22 @@ interface StyledLabelProps {
   hasFocus: boolean
 }
 
+function getInputBorder(group: ColourGroup) {
+  return css`
+    border-radius: 4px;
+    box-shadow: 2px 2px 0 0 ${color(group, '600')},
+      -2px -2px 0 0 ${color(group, '600')}, 2px -2px 0 0 ${color(group, '600')},
+      -2px 2px 0 0 ${color(group, '600')};
+  `
+}
+
 const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
   position: relative;
   flex-grow: 1;
 
-  ${({ hasFocus }) =>
-    hasFocus &&
-    css`
-      border-radius: 4px;
-      box-shadow: 2px 2px 0 0 ${color('action', '600')},
-        -2px -2px 0 0 ${color('action', '600')},
-        2px -2px 0 0 ${color('action', '600')},
-        -2px 2px 0 0 ${color('action', '600')};
-    `}
+  ${({ hasFocus }) => hasFocus && getInputBorder('action')}
+  ${({ isInvalid }) => isInvalid && getInputBorder('danger')}
+  ${({ isValid }) => isValid && getInputBorder('success')}
 `
 
 const StyledLabel = styled.label<StyledLabelProps>`
@@ -98,6 +102,8 @@ export const Input: React.FC<InputProps> = ({
   isDisabled = false,
   id,
   isCondensed,
+  isInvalid,
+  isValid,
   label,
   name,
   onChange,
@@ -120,7 +126,11 @@ export const Input: React.FC<InputProps> = ({
   })
 
   return (
-    <StyledInputWrapper hasFocus={hasFocus}>
+    <StyledInputWrapper
+      hasFocus={hasFocus}
+      isInvalid={isInvalid}
+      isValid={isValid}
+    >
       {hasLabel && (
         <StyledLabel
           className="rn-numberinput__label"
