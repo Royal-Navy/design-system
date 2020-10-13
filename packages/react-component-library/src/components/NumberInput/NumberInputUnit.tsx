@@ -1,9 +1,26 @@
 import React from 'react'
+import { selectors } from '@royalnavy/design-tokens'
+import styled from 'styled-components'
+
+const { fontSize } = selectors
 
 interface NumberInputUnitProps {
   offset: number
   unit: string
 }
+
+interface StyledNumberInputUnitProps {
+  offset: number
+}
+
+const StyledNumberInputUnit = styled.span<StyledNumberInputUnitProps>`
+  align-items: center;
+  display: flex;
+  height: 100%;
+  position: absolute;
+  font-size: ${fontSize('base')};
+  left: ${({ offset }) => `${offset}px`};
+`
 
 export const NumberInputUnit: React.FC<NumberInputUnitProps> = ({
   offset,
@@ -14,12 +31,14 @@ export const NumberInputUnit: React.FC<NumberInputUnitProps> = ({
   }
 
   return (
-    <span
+    <StyledNumberInputUnit
       className="rn-numberinput__unit"
       data-testid="number-input-unit"
-      style={{ left: `${offset}px` }}
+      offset={offset}
     >
       {unit}
-    </span>
+    </StyledNumberInputUnit>
   )
 }
+
+NumberInputUnit.displayName = 'NumberInputUnit'

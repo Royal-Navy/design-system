@@ -1,6 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 import { isFinite, isNil } from 'lodash'
+import { selectors } from '@royalnavy/design-tokens'
+import styled, { css } from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
 import { EndAdornment } from './EndAdornment'
@@ -8,9 +10,10 @@ import { Footnote } from './Footnote'
 import { getId } from '../../helpers'
 import { Input } from './Input'
 import { StartAdornment } from './StartAdornment'
-import { useFocus } from './useFocus'
 import { useValue } from './useValue'
 import { UNIT_POSITION } from './constants'
+
+const { color, spacing } = selectors
 
 export type UnitPosition =
   | typeof UNIT_POSITION.AFTER
@@ -36,6 +39,27 @@ export interface NumberInputProps {
   unitPosition?: UnitPosition
   value?: number
 }
+
+const StyledNumberInput = styled.div`
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  margin: ${spacing('6')} 0;
+  padding: 0;
+  border: 0;
+  vertical-align: top;
+  width: 100%;
+`
+
+const StyledNumberInputOuterWrapper = styled.div`
+  display: inline-flex;
+  flex-direction: row;
+  background-color: ${color('neutral', 'white')};
+  border: 1px solid ${color('neutral', '200')};
+  border-radius: 4px;
+  transition: border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+`
 
 function formatValue(
   displayValue: number,
@@ -92,13 +116,9 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   value = 0,
   ...rest
 }) => {
-  const { hasFocus, onInputBlur, onInputFocus } = useFocus(onBlur)
   const { committedValue, setCommittedValue } = useValue(value)
 
-  const classes = classNames('rn-numberinput', className, {
-    'has-focus': hasFocus,
-    'has-content': !isNil(committedValue),
-  })
+  const classes = classNames('rn-numberinput', className)
 
   function setCommittedValueWithinRange(newValue: number) {
     if (
@@ -118,7 +138,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   const numberInputId = getId('number-input')
 
   return (
-    <div
+    <StyledNumberInput
       aria-label={label || 'Number input'}
       className={classes}
       data-testid="number-input-container"
@@ -129,7 +149,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
       aria-valuenow={committedValue}
       aria-valuetext={String(formatValue(committedValue, unit, unitPosition))}
     >
-      <div className="rn-numberinput__outer-wrapper">
+      <StyledNumberInputOuterWrapper className="rn-numberinput__outer-wrapper">
         <StartAdornment>{startAdornment}</StartAdornment>
 
         <Input
@@ -146,9 +166,11 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           onInputBlur={(event) => {
             const newValue = getNewValue(event)
             setCommittedValueWithinRange(newValue)
-            onInputBlur(event)
+
+            if (onBlur) {
+              onBlur(event)
+            }
           }}
-          onInputFocus={onInputFocus}
           placeholder={placeholder}
           unit={unit}
           unitPosition={unitPosition}
@@ -168,10 +190,10 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           step={step}
           value={committedValue}
         />
-      </div>
+      </StyledNumberInputOuterWrapper>
 
       <Footnote>{footnote}</Footnote>
-    </div>
+    </StyledNumberInput>
   )
 }
 
