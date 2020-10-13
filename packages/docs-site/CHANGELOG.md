@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.16.0](https://github.com/Royal-Navy/design-system/compare/2.15.0...2.16.0) (2020-10-13)
+
+
+### Bug Fixes
+
+* **Timeline:** Forward className prop ([ea752b2](https://github.com/Royal-Navy/design-system/commit/ea752b25411343475fcff00b3427ee7d764b5769))
+
+
+
+
+
 # [2.15.0](https://github.com/Royal-Navy/design-system/compare/2.14.0...2.15.0) (2020-09-23)
 
 **Note:** Version bump only for package royalnavy.io
