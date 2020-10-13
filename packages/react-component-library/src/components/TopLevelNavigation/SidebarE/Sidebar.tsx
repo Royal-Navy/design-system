@@ -20,7 +20,7 @@ interface StyledSidebarProps {
 const { color, spacing, fontSize } = selectors
 
 const StyledSidebar = styled.aside<StyledSidebarProps>`
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   position: relative;
   width: ${({ isOpen }) => (isOpen ? '18rem' : '3.75rem')};

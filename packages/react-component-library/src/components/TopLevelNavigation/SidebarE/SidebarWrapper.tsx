@@ -1,10 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledSidebarWrapper = styled.div``
+import { ComponentWithClass } from '../../../common/ComponentWithClass'
 
-export const SidebarWrapper: React.FC = ({ children }) => {
-  return <StyledSidebarWrapper>{children}</StyledSidebarWrapper>
+const StyledSidebarWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+export const SidebarWrapper: React.FC<ComponentWithClass> = ({
+  className,
+  children,
+}) => {
+  return (
+    <StyledSidebarWrapper className={className}>
+      {children}
+    </StyledSidebarWrapper>
+  )
 }
 
 SidebarWrapper.displayName = 'SidebarWrapper'

@@ -20,6 +20,7 @@ import {
   SidebarNavItem,
   SidebarUser,
   SidebarUserItem,
+  SidebarWrapper,
 } from '.'
 import { Link } from '../../Link'
 
@@ -88,14 +89,22 @@ const sidebarNav = (
 )
 
 export const Default = () => {
-  return <Sidebar>{sidebarNav}</Sidebar>
+  return (
+    <SidebarWrapper>
+      <Sidebar>{sidebarNav}</Sidebar>
+      <main>Hello, World!</main>
+    </SidebarWrapper>
+  )
 }
 
 export const WithHeader = () => {
   return (
-    <Sidebar icon={<IconGrain />} title="Application Name">
-      {sidebarNav}
-    </Sidebar>
+    <SidebarWrapper>
+      <Sidebar icon={<IconGrain />} title="Application Name">
+        {sidebarNav}
+      </Sidebar>
+      <main>Hello, World!</main>
+    </SidebarWrapper>
   )
 }
 
@@ -103,9 +112,16 @@ WithHeader.storyName = 'With header'
 
 export const WithUserLink = () => {
   return (
-    <Sidebar icon={<IconGrain />} title="Application Name" user={userWithLink}>
-      {sidebarNav}
-    </Sidebar>
+    <SidebarWrapper>
+      <Sidebar
+        icon={<IconGrain />}
+        title="Application Name"
+        user={userWithLink}
+      >
+        {sidebarNav}
+      </Sidebar>
+      <main>Hello, World!</main>
+    </SidebarWrapper>
   )
 }
 
@@ -113,9 +129,16 @@ WithUserLink.storyName = 'With user link'
 
 export const WithUserMenu = () => {
   return (
-    <Sidebar icon={<IconGrain />} title="Application Name" user={userWithMenu}>
-      {sidebarNav}
-    </Sidebar>
+    <SidebarWrapper>
+      <Sidebar
+        icon={<IconGrain />}
+        title="Application Name"
+        user={userWithMenu}
+      >
+        {sidebarNav}
+      </Sidebar>
+      <main>Hello, World!</main>
+    </SidebarWrapper>
   )
 }
 

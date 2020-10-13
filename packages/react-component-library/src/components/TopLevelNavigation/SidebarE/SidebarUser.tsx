@@ -109,13 +109,13 @@ const SidebarAvatarWithItems: React.FC<Omit<
   'link'
 >> = ({ children, initials }) => (
   <StyledSheet
-    button={
+    button={(
       <StyledSheetButton
         aria-label="Show user options"
         data-testid="user-button"
         icon={<StyledAvatar initials={initials} data-testid="sidebar-avatar" />}
       />
-    }
+    )}
     placement={SHEET_PLACEMENT.RIGHT}
     width={SHEET_WIDTH}
   >
@@ -133,7 +133,7 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
 
   if (!isOpen && children) {
     return (
-      <StyledSidebarUser>
+      <StyledSidebarUser data-testid="sidebar-user">
         <SidebarAvatarWithItems initials={initials}>
           {children}
         </SidebarAvatarWithItems>
