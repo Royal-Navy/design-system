@@ -127,7 +127,7 @@ export const SidebarNotifications: React.FC<SidebarNotificationsProps> = ({
               )}
             </StyledSheetButton>
           )}
-          placement={SHEET_PLACEMENT.RIGHT}
+          placement={SHEET_PLACEMENT.RIGHT_BOTTOM}
           width={NOTIFICATION_CONTAINER_WIDTH}
         >
           {notifications}

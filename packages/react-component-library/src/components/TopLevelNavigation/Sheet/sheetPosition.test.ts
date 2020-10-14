@@ -17,7 +17,7 @@ describe('sheetPosition', () => {
 
       global.innerHeight = 1000
 
-      result = calculate[SHEET_PLACEMENT.RIGHT](element)
+      result = calculate[SHEET_PLACEMENT.RIGHT_BOTTOM](element)
     })
 
     it('should calculate the position to be on the right of the element', () => {

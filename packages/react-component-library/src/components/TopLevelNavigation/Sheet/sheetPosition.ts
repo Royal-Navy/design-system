@@ -1,5 +1,13 @@
 export const calculate = {
-  right: (element: Element | any) => {
+  right_top: (element: Element | any) => {
+    const elemRect = element.getBoundingClientRect()
+
+    const top = elemRect.top + window.pageYOffset - 7
+    const left = elemRect.left + elemRect.width + 18 + window.pageXOffset
+
+    return { top, left }
+  },
+  right_bottom: (element: Element | any) => {
     const elemRect = element.getBoundingClientRect()
 
     const bottom = window.innerHeight - elemRect.bottom - 8 + window.pageYOffset

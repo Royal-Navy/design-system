@@ -2,11 +2,12 @@ import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
-import { NavItem } from '../../../common/Nav'
+import { SidebarSubNav } from './SidebarSubNav'
+import { Nav, NavItem } from '../../../common/Nav'
 import { SidebarContext } from './context'
 import { Tooltip } from '../../Tooltip'
 
-export interface SidebarNavItemProps extends NavItem {
+export interface SidebarNavItemProps extends NavItem, Nav<SidebarNavItemProps> {
   icon?: React.ReactNode
   onClick?: (e: React.MouseEvent<HTMLElement>) => void
 }
@@ -17,17 +18,30 @@ interface StyledSidebarNavItemProps {
 
 const { color, spacing, fontSize } = selectors
 
-const StyledSidebarNavItem = styled.div<StyledSidebarNavItemProps>`
+export const StyledSidebarNavItem = styled.div<StyledSidebarNavItemProps>`
+  display: flex;
+  align-items: center;
   margin: ${spacing('4')} 0;
   border-radius: 2px;
 
-  > * {
+  > *:first-child {
     display: flex;
     align-items: center;
+    width: 100%;
   }
 
-  &:hover {
+  ${({ isActive }) =>
+    isActive &&
+    `
     background-color: ${color('action', '500')};
+
+    &:hover {
+      background-color: ${color('action', '500')};
+    }
+  `}
+
+  &:hover {
+    background-color: ${color('neutral', '400')};
 
     > * {
       text-decoration: none;
@@ -65,12 +79,11 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
   link,
   icon,
   onClick,
+  children,
 }) => {
   const [hasMouseOver, setHasMouseOver] = useState(false)
   const { isOpen } = useContext(SidebarContext)
   const linkElement = link as React.ReactElement
-
-  // TODO: Need to render optional sub-children
 
   const item = React.cloneElement(linkElement, {
     ...link.props,
@@ -101,6 +114,7 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
       data-testid="sidebar-nav-item"
     >
       {item}
+      {isOpen && children && <SidebarSubNav>{children}</SidebarSubNav>}
     </StyledSidebarNavItem>
   )
 }

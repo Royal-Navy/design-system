@@ -296,4 +296,93 @@ describe('Sidebar', () => {
       })
     })
   })
+
+  describe('when composed with nested navigation', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Sidebar
+          icon={<IconGrain />}
+          title="Application Name"
+          notifications={notifications}
+          hasUnreadNotification
+        >
+          <SidebarNav>
+            <SidebarNavItem
+              icon={<IconHome />}
+              link={<Link href="/dashboard">Dashboard</Link>}
+            >
+              <SidebarNavItem
+                link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
+              />
+              <SidebarNavItem
+                link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
+              />
+            </SidebarNavItem>
+            <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+          </SidebarNav>
+        </Sidebar>
+      )
+    })
+
+    describe('and the sidebar is collapsed', () => {
+      it('does not render the sub nav', () => {
+        expect(wrapper.queryAllByTestId('sidebar-sub-nav')).toHaveLength(0)
+      })
+    })
+
+    describe('and the sidebar is expanded', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('sidebar-handle').click()
+      })
+
+      it('renders the expand button for the correct top-level menu item', () => {
+        expect(
+          wrapper.getByTestId('sub-menu-expand-button')
+        ).toBeInTheDocument()
+      })
+
+      describe('and the expand button is clicked', () => {
+        beforeEach(() => {
+          wrapper.getByTestId('sub-menu-expand-button').click()
+        })
+
+        it('renders the sub nav', () => {
+          expect(wrapper.getByText('Sub-nav-item 1')).toBeInTheDocument()
+          expect(wrapper.getByText('Sub-nav-item 2')).toBeInTheDocument()
+        })
+
+        describe('and the expand button is clicked again', () => {
+          beforeEach(() => {
+            wrapper.getByTestId('sub-menu-expand-button').click()
+          })
+
+          it('should not show the sub nav', () => {
+            return waitFor(() => {
+              expect(wrapper.queryByText('Sub-nav-item 1')).toBeNull()
+              expect(wrapper.queryByText('Sub-nav-item 2')).toBeNull()
+            })
+          })
+
+          describe('and then elsewhere in the document is clicked', () => {
+            beforeEach(() => {
+              fireEvent(
+                document,
+                new MouseEvent('mousedown', {
+                  bubbles: true,
+                  cancelable: true,
+                })
+              )
+            })
+
+            it('should not show the sub nav', () => {
+              return waitFor(() => {
+                expect(wrapper.queryByText('Sub-nav-item 1')).toBeNull()
+                expect(wrapper.queryByText('Sub-nav-item 2')).toBeNull()
+              })
+            })
+          })
+        })
+      })
+    })
+  })
 })

@@ -26,6 +26,8 @@ export interface SidebarUserWithLinkProps extends ComponentWithClass {
   name?: string
 }
 
+type SidebarAvatarWithItemsProps = Omit<SidebarUserWithItemsProps, 'link'>
+
 export type SidebarUserProps =
   | SidebarUserWithLinkProps
   | SidebarUserWithItemsProps
@@ -104,10 +106,10 @@ const StyledSheetButton = styled(SheetButton)`
   padding: 0;
 `
 
-const SidebarAvatarWithItems: React.FC<Omit<
-  SidebarUserWithItemsProps,
-  'link'
->> = ({ children, initials }) => (
+const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
+  children,
+  initials,
+}) => (
   <StyledSheet
     button={(
       <StyledSheetButton
@@ -116,7 +118,7 @@ const SidebarAvatarWithItems: React.FC<Omit<
         icon={<StyledAvatar initials={initials} data-testid="sidebar-avatar" />}
       />
     )}
-    placement={SHEET_PLACEMENT.RIGHT}
+    placement={SHEET_PLACEMENT.RIGHT_BOTTOM}
     width={SHEET_WIDTH}
   >
     <ol>{children}</ol>
@@ -130,16 +132,6 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
   children,
 }) => {
   const { isOpen } = useContext(SidebarContext)
-
-  if (!isOpen && children) {
-    return (
-      <StyledSidebarUser data-testid="sidebar-user">
-        <SidebarAvatarWithItems initials={initials}>
-          {children}
-        </SidebarAvatarWithItems>
-      </StyledSidebarUser>
-    )
-  }
 
   if (isOpen) {
     return React.cloneElement(link as React.ReactElement, {
@@ -158,6 +150,16 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
       ),
       'data-testid': 'sidebar-user',
     })
+  }
+
+  if (!isOpen && children) {
+    return (
+      <StyledSidebarUser data-testid="sidebar-user">
+        <SidebarAvatarWithItems initials={initials}>
+          {children}
+        </SidebarAvatarWithItems>
+      </StyledSidebarUser>
+    )
   }
 
   return React.cloneElement(link as React.ReactElement, {
