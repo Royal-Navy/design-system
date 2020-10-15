@@ -21,6 +21,8 @@ export interface SheetProps extends ComponentWithClass {
   width: number
   onShow?: () => void
   onHide?: () => void
+  enterTiming?: number
+  exitTiming?: number
 }
 
 const { color } = selectors
@@ -46,6 +48,8 @@ export const Sheet: React.FC<SheetProps> = ({
   onHide,
   placement = SHEET_PLACEMENT.RIGHT,
   width,
+  enterTiming = 300,
+  exitTiming = 300,
 }) => {
   const arrowPosition = SHEET_PLACEMENT_ARROW_POSITION_MAP[placement]
 
@@ -69,7 +73,7 @@ export const Sheet: React.FC<SheetProps> = ({
 
       <TransitionGroup>
         {showSheet && (
-          <CSSTransition timeout={{ enter: 300, exit: 300 }}>
+          <CSSTransition timeout={{ enter: enterTiming, exit: exitTiming }}>
             <StyledFloatingBox
               {...position}
               width={width}
