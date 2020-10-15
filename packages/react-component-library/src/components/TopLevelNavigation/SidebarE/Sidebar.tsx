@@ -4,13 +4,17 @@ import { selectors } from '@royalnavy/design-tokens'
 
 import { SidebarHandle } from './SidebarHandle'
 import { SidebarUserProps } from './SidebarUser'
+import { SidebarNotifications } from './SidebarNotifications'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext, SidebarProvider } from './context'
+import { NotificationsProps } from '../NotificationPanel'
 
 interface SidebarProps extends ComponentWithClass {
   icon?: React.ReactNode
   title?: string
   user?: React.ReactElement<SidebarUserProps>
+  hasUnreadNotification?: boolean
+  notifications?: React.ReactElement<NotificationsProps>
 }
 
 interface StyledSidebarProps {
@@ -63,6 +67,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   title,
   children,
   user,
+  hasUnreadNotification,
+  notifications,
 }) => {
   return (
     <SidebarProvider>
@@ -77,6 +83,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </StyledHead>
             )}
             {children}
+
+            {notifications && (
+              <SidebarNotifications
+                notifications={notifications}
+                hasUnreadNotification={hasUnreadNotification}
+              />
+            )}
+
             {user}
           </StyledSidebar>
         )}

@@ -23,6 +23,7 @@ import {
   SidebarWrapper,
 } from '.'
 import { Link } from '../../Link'
+import { Notification, Notifications } from '../NotificationPanel'
 
 export default { component: Sidebar, title: 'SidebarE' } as Meta
 
@@ -88,6 +89,35 @@ const sidebarNav = (
   </SidebarNav>
 )
 
+const notifications = (
+  <Notifications link={<Link href="notifications" />}>
+    <Notification
+      link={<Link href="notifications/1" />}
+      name="Thomas Stephens"
+      action="added a new comment to your"
+      on="review"
+      when={new Date('2019-11-05T14:25:02.178Z')}
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+    />
+    <Notification
+      link={<Link href="notifications/2" />}
+      name="Thomas Stephens"
+      action="added a new comment to your"
+      on="review"
+      when={new Date('2019-11-01T14:25:02.178Z')}
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+    />
+    <Notification
+      link={<Link href="notifications/3" />}
+      name="Thomas Stephens"
+      action="added a new comment to your"
+      on="review"
+      when={new Date('2019-11-01T14:25:02.178Z')}
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+    />
+  </Notifications>
+)
+
 export const Default = () => {
   return (
     <SidebarWrapper>
@@ -143,3 +173,22 @@ export const WithUserMenu = () => {
 }
 
 WithUserMenu.storyName = 'With user menu'
+
+export const WithNotifications = () => {
+  return (
+    <SidebarWrapper>
+      <Sidebar
+        icon={<IconGrain />}
+        title="Application Name"
+        user={userWithMenu}
+        notifications={notifications}
+        hasUnreadNotification
+      >
+        {sidebarNav}
+      </Sidebar>
+      <main>Hello, World!</main>
+    </SidebarWrapper>
+  )
+}
+
+WithNotifications.storyName = 'With notifications'
