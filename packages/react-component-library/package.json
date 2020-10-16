@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/react-component-library",
   "description": "A collection of react components and helpers to assist in building applications for the Royal Navy",
-  "version": "2.16.1-alpha.1",
+  "version": "2.17.0-alpha.0",
   "publishConfig": {
     "access": "public"
   },
@@ -144,11 +144,11 @@
   ],
   "dependencies": {
     "@datepicker-react/hooks": "^2.4.1",
-    "@royalnavy/css-framework": "^2.16.1-alpha.1",
-    "@royalnavy/design-tokens": "^2.16.1-alpha.1",
-    "@royalnavy/eslint-config-react": "^2.16.1-alpha.1",
-    "@royalnavy/fonts": "^2.16.1-alpha.1",
-    "@royalnavy/icon-library": "^2.16.1-alpha.1",
+    "@royalnavy/css-framework": "^2.17.0-alpha.0",
+    "@royalnavy/design-tokens": "^2.17.0-alpha.0",
+    "@royalnavy/eslint-config-react": "^2.17.0-alpha.0",
+    "@royalnavy/fonts": "^2.17.0-alpha.0",
+    "@royalnavy/icon-library": "^2.17.0-alpha.0",
     "@types/react-responsive": "^8.0.2",
     "@types/react-toast-notifications": "^2.4.0",
     "classnames": "^2.2.6",
