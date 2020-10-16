@@ -55,7 +55,8 @@ export function useInputText(value: number, unitPosition: UnitPosition) {
 
     if (unitPosition === UNIT_POSITION.AFTER) {
       const offset = textWidth + paddingLeft + EXTRA_SPACING
-      setUnitOffset(Math.floor(offset))
+      const roundedUpToNearestThree = 3 * Math.round(offset / 3)
+      setUnitOffset(roundedUpToNearestThree)
     } else {
       setInputOffset(paddingLeft)
       setUnitOffset(paddingLeft)
