@@ -98,6 +98,13 @@ with the field.
 
 <DataTable caption="Select" data={[
   {
+    Name: 'isDisabled',
+    Type: 'boolean',
+    Required: 'False',
+    Default: 'false',
+    Description: 'Mark the field as disabled/inactive',
+  },
+  {
     Name: 'name',
     Type: 'string',
     Required: 'True',
