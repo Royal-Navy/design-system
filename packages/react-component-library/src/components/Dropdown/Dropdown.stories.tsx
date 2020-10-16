@@ -36,7 +36,7 @@ const scrollOptions = [
 
 const iconOptions = options.map(option => ({
   ...option,
-  icon: Bell,
+  icon: <Bell />,
 }))
 
 stories.add('Default', () => (
