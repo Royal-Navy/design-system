@@ -17,7 +17,10 @@ import { getId } from '../../../helpers'
 export interface SheetProps extends ComponentWithClass {
   button: React.ReactElement<SheetButtonProps>
   children: React.ReactElement
-  placement?: typeof SHEET_PLACEMENT.RIGHT | typeof SHEET_PLACEMENT.BELOW
+  placement?:
+    | typeof SHEET_PLACEMENT.RIGHT_BOTTOM
+    | typeof SHEET_PLACEMENT.RIGHT_TOP
+    | typeof SHEET_PLACEMENT.BELOW
   width: number
   onShow?: () => void
   onHide?: () => void
@@ -46,7 +49,7 @@ export const Sheet: React.FC<SheetProps> = ({
   className,
   onShow,
   onHide,
-  placement = SHEET_PLACEMENT.RIGHT,
+  placement = SHEET_PLACEMENT.RIGHT_BOTTOM,
   width,
   enterTiming = 300,
   exitTiming = 300,

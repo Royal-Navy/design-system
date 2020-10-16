@@ -3,7 +3,7 @@ export const calculate = {
     const elemRect = element.getBoundingClientRect()
 
     const top = elemRect.top + window.pageYOffset - 7
-    const left = elemRect.left + elemRect.width + 18 + window.pageXOffset
+    const left = elemRect.left + elemRect.width + window.pageXOffset
 
     return { top, left }
   },
@@ -11,7 +11,7 @@ export const calculate = {
     const elemRect = element.getBoundingClientRect()
 
     const bottom = window.innerHeight - elemRect.bottom - 8 + window.pageYOffset
-    const left = elemRect.left + elemRect.width + 18 + window.pageXOffset
+    const left = elemRect.left + elemRect.width + window.pageXOffset
 
     return { bottom, left }
   },

@@ -22,7 +22,7 @@ describe('sheetPosition', () => {
 
     it('should calculate the position to be on the right of the element', () => {
       expect(result).toHaveProperty('bottom', 982)
-      expect(result).toHaveProperty('left', 318)
+      expect(result).toHaveProperty('left', 300)
     })
   })
 
