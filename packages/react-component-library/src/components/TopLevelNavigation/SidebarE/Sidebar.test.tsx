@@ -82,6 +82,20 @@ describe('Sidebar', () => {
     })
 
     describe('and sidebar is collapsed', () => {
+      it('should apply the correct `aria-label` value to the handle', () => {
+        expect(wrapper.getByTestId('sidebar-handle')).toHaveAttribute(
+          'aria-label',
+          'Expand sidebar'
+        )
+      })
+
+      it('should apply the correct `aria-label` attribute to the navigation links', () => {
+        expect(wrapper.getAllByTestId('sidebar-nav-item')[0]).toHaveAttribute(
+          'aria-label',
+          'Dashboard'
+        )
+      })
+
       it('should not render the application name', () => {
         expect(wrapper.queryByText('Application Name')).not.toBeInTheDocument()
       })
@@ -104,6 +118,13 @@ describe('Sidebar', () => {
     describe('and sidebar is expanded', () => {
       beforeEach(() => {
         wrapper.getByTestId('sidebar-handle').click()
+      })
+
+      it('should apply the correct `aria-label` value to the handle', () => {
+        expect(wrapper.getByTestId('sidebar-handle')).toHaveAttribute(
+          'aria-label',
+          'Collapse sidebar'
+        )
       })
 
       it('should render the application name', () => {

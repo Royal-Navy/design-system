@@ -104,6 +104,7 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
     ),
     onClick,
     'aria-label': linkElement.props.children,
+    'data-testid': 'sidebar-nav-item',
   })
 
   return (
@@ -111,7 +112,6 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
       isActive={isActive}
       onMouseEnter={(_) => setHasMouseOver(true)}
       onMouseLeave={(_) => setHasMouseOver(false)}
-      data-testid="sidebar-nav-item"
     >
       {item}
       {isOpen && children && <SidebarSubNav>{children}</SidebarSubNav>}
