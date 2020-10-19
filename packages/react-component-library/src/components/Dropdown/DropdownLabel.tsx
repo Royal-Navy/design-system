@@ -1,7 +1,38 @@
 import React from 'react'
+import { selectors } from '@royalnavy/design-tokens'
+import styled, { css } from 'styled-components'
 
 import { Visibility, VisibilityOff } from '../../icons'
 import { DropdownOption } from './DropdownOption'
+
+const { spacing } = selectors
+
+interface StyledLabelProps {
+  isDisabled: boolean
+}
+
+const StyledLabel = styled.div<StyledLabelProps>`
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  ${({ isDisabled }) =>
+    isDisabled &&
+    css`
+      opacity: 0.25;
+    `}
+`
+
+const StyledAdornment = styled.span`
+  display: flex;
+  align-items: center;
+`
+
+const StyledStartAdornment = styled(StyledAdornment)`
+  padding-right: ${spacing('4')};
+`
+
+const StyledEndAdornment = styled(StyledAdornment)``
 
 export const DropdownLabel: React.FC<DropdownOption> = ({
   icon,
@@ -11,38 +42,27 @@ export const DropdownLabel: React.FC<DropdownOption> = ({
   rightContent,
   isVisible,
 }) => (
-  <div className={`rn-dropdownlabel ${isDisabled ? 'is-disabled' : ''}`}>
+  <StyledLabel isDisabled={isDisabled}>
     {icon && (
-      <span
-        className="rn-dropdownlabel__start-adornment"
-        data-testid="rn-dropdownlabel__start-adornment"
-      >
-        {icon}
-      </span>
+      <span data-testid="rn-dropdownlabel__start-adornment">{icon}</span>
     )}
-    <span
-      className="rn-dropdownlabel__label"
-      data-testid="dropdownlabel__label"
-    >
+    <StyledStartAdornment data-testid="dropdownlabel__label">
       {label}
-    </span>
+    </StyledStartAdornment>
     {isHidden && (
       <span data-testid="rn-dropdownlabel__iconinvisible">
-        <VisibilityOff className="rn-dropdownlabel__end-adornment" />
+        <VisibilityOff />
       </span>
     )}
     {isVisible && (
       <span data-testid="rn-dropdownlabel__iconvisible">
-        <Visibility className="is-active rn-dropdownlabel__end-adornment" />
+        <Visibility />
       </span>
     )}
     {rightContent && (
-      <span
-        className="rn-dropdownlabel__end-adornment"
-        data-testid="rn-dropdownlabel__rightcontent"
-      >
+      <StyledEndAdornment data-testid="rn-dropdownlabel__rightcontent">
         {rightContent}
-      </span>
+      </StyledEndAdornment>
     )}
-  </div>
+  </StyledLabel>
 )
