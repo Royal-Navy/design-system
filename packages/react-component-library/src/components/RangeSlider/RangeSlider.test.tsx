@@ -285,4 +285,31 @@ describe('RangeSlider', () => {
       )
     })
   })
+
+  describe('without the `onUpdate` callback', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <RangeSlider mode={mode} domain={domain} values={values} step={step} />
+      )
+    })
+
+    describe('and the end user moves the handle to the right using keyboard', () => {
+      it('does not throw an error', () => {
+        expect(() => {
+          fireEvent(
+            wrapper.getByTestId('rangeslider-handle'),
+            new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
+
+          fireEvent.keyDown(wrapper.getByTestId('rangeslider-handle'), {
+            key: 'ArrowRight',
+            code: 39,
+          })
+        }).not.toThrow(TypeError)
+      })
+    })
+  })
 })
