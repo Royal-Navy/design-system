@@ -24,9 +24,9 @@ interface StyledTooltipContentProps {
 
 const { zIndex, color, spacing, fontSize } = selectors
 
-const TOOLTIP_BORDER_THICK = 2
-const TOOLTIP_INNER = 8
-const TOOLTIP_OUTER = TOOLTIP_INNER - 2
+const TOOLTIP_BORDER_THICK = 1
+const TOOLTIP_INNER = 4
+const TOOLTIP_OUTER = TOOLTIP_INNER - 4
 const TOOLTIP_OFFSET = TOOLTIP_OUTER + TOOLTIP_BORDER_THICK
 const TOOLTIP_DARK_BG = color('neutral', '700')
 const TOOLTIP_DARK_BORDER = TOOLTIP_DARK_BG
@@ -112,7 +112,7 @@ const StyledTooltipContent = styled.div<StyledTooltipContentProps>`
   color: ${color('neutral', 'white')};
   border: ${TOOLTIP_DARK_BORDER} solid ${TOOLTIP_BORDER_THICK};
   border-radius: 5px;
-  padding: ${spacing('3')};
+  padding: ${spacing('6')} ${spacing('8')};
   position: relative;
   top: auto;
   left: auto;
