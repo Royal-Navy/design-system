@@ -307,7 +307,7 @@ Additional details about props can be found [here](https://sghall.github.io/reac
     Type: 'number[]',
     Required: 'True',
     Default: '',
-    Description: 'An array of numbers. You can supply one for a value slider, two for a range slider or more to create n-handled sliders. The values should correspond to valid step values in the domain. The numbers will be forced into the domain if they are two small or large.',
+    Description: 'An array of numbers. You can supply one for a value slider, two for a range slider or more to create n-handled sliders. The values should correspond to valid step values in the domain. The numbers will be forced into the domain if they are too small or too large.',
   },
   {
     Name: 'thresholds',
