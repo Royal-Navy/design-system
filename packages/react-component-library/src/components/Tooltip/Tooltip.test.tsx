@@ -12,12 +12,6 @@ describe('Tooltip', () => {
       wrapper = render(<Tooltip>Content</Tooltip>)
     })
 
-    it('should render the tooltip with the default position class', () => {
-      expect(wrapper.getByTestId('tooltip').classList).toContain(
-        'rn-tooltip--above'
-      )
-    })
-
     it('should render the tooltip without an `id` attribute', () => {
       expect(wrapper.getByTestId('tooltip')).not.toHaveAttribute('id')
     })
@@ -67,12 +61,6 @@ describe('Tooltip', () => {
         >
           Content
         </Tooltip>
-      )
-    })
-
-    it('should render the tooltip with the position class', () => {
-      expect(wrapper.getByTestId('tooltip').classList).toContain(
-        'rn-tooltip--below'
       )
     })
 
