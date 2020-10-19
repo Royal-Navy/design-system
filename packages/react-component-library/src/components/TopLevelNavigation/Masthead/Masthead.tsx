@@ -132,7 +132,7 @@ export const Masthead: React.FC<MastheadProps> = ({
                   aria-label="Show notifications"
                   className="rn-masthead__option"
                   data-testid="notification-button"
-                  icon={<Bell className="rn-sheet__icon" />}
+                  icon={<Bell />}
                 >
                   {hasUnreadNotification && (
                     <span
