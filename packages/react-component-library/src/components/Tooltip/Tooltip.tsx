@@ -7,7 +7,7 @@ import { PositionType } from '../../common/Position'
 import { TOOLTIP_POSITION } from '.'
 
 export interface TooltipProps extends PositionType {
-  children: React.ReactNode
+  children?: React.ReactNode
   id?: string
   position?:
     | typeof TOOLTIP_POSITION.ABOVE
@@ -182,9 +182,11 @@ export const Tooltip: React.FC<TooltipProps> = ({
     >
       <StyledTooltipContent position={position}>
         {title && <StyledTooltipTitle id={titleId}>{title}</StyledTooltipTitle>}
-        <StyledTooltipMessage data-testid="tooltip-content" id={contentId}>
-          {children}
-        </StyledTooltipMessage>
+        {children && (
+          <StyledTooltipMessage data-testid="tooltip-content" id={contentId}>
+            {children}
+          </StyledTooltipMessage>
+        )}
       </StyledTooltipContent>
     </StyledTooltip>
   )
