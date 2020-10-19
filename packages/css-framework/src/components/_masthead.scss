@@ -104,14 +104,12 @@ $masthead-main-height: 58px;
 
 .rn-masthead__user-item {
   display: flex;
-  border-bottom: 1px solid f.color("neutral", "500");
+  align-items: center;
   margin: f.spacing("4");
-  padding-bottom: f.spacing("2");
 }
 
 .rn-masthead__user-item-icon {
-  position: relative;
-  top: 2px;
+  display: inline-flex;
 }
 
 .rn-masthead__user-item-text {

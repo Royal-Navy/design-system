@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { selectors } from '@royalnavy/design-tokens'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import {
@@ -22,8 +23,19 @@ export interface SheetProps extends ComponentWithClass {
   onHide?: () => void
 }
 
+const { color } = selectors
+
 const StyledFloatingBox = styled(FloatingBox)`
   position: absolute;
+
+  > div {
+    background: ${color('neutral', 'black')} !important;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
 `
 
 export const Sheet: React.FC<SheetProps> = ({
