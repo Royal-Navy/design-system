@@ -50,7 +50,10 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
 
   const onUpdateHandler = (newValues: ReadonlyArray<number>): void => {
     setSliderValues(newValues)
-    onUpdate(newValues)
+
+    if (onUpdate) {
+      onUpdate(newValues)
+    }
   }
 
   const classes = classNames('rn-rangeslider', className, {
