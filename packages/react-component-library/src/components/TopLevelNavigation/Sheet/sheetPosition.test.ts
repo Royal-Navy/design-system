@@ -42,7 +42,7 @@ describe('sheetPosition', () => {
     })
 
     it('should calculate the position to be below the element', () => {
-      expect(result).toHaveProperty('top', 200)
+      expect(result).toHaveProperty('top', 194)
       expect(result).toHaveProperty('left', 579)
     })
   })
