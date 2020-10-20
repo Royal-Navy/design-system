@@ -14,9 +14,18 @@ import {
   SidebarNavItem,
   SidebarUser,
   SidebarUserItem,
+  SidebarWrapper,
 } from '.'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
+
+const userWithLink = (
+  <SidebarUser
+    initials="HN"
+    name="Horatio Nelson"
+    link={<Link href="/user-profile">Profile</Link>}
+  />
+)
 
 const userWithMenu = (
   <SidebarUser
@@ -69,19 +78,34 @@ describe('Sidebar', () => {
   describe('when composed with single level of navigaton and header items', () => {
     beforeEach(() => {
       wrapper = render(
-        <Sidebar icon={<IconGrain />} title="Application Name">
-          <SidebarNav>
-            <SidebarNavItem
-              icon={<IconHome />}
-              link={<Link href="/dashboard">Dashboard</Link>}
-            />
-            <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-          </SidebarNav>
-        </Sidebar>
+        <SidebarWrapper>
+          <Sidebar icon={<IconGrain />} title="Application Name">
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
       )
     })
 
     describe('and sidebar is collapsed', () => {
+      it('should not render any user information', () => {
+        expect(
+          wrapper.queryByTestId('sidebar-user-open')
+        ).not.toBeInTheDocument()
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed')
+        ).not.toBeInTheDocument()
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed-children')
+        ).not.toBeInTheDocument()
+      })
+
       it('should apply the correct `aria-label` value to the handle', () => {
         expect(wrapper.getByTestId('sidebar-handle')).toHaveAttribute(
           'aria-label',
@@ -108,11 +132,21 @@ describe('Sidebar', () => {
         beforeEach(() => {
           fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
         })
-      })
 
-      // it('should display a tooltip on hover', () => {
-      //   expect(wrapper.queryAllByTestId('tooltip')).toHaveLength(1)
-      // })
+        it('should display a tooltip on hover', () => {
+          expect(wrapper.queryAllByTestId('tooltip')).toHaveLength(1)
+        })
+
+        describe('and we move the mouse away', () => {
+          beforeEach(() => {
+            fireEvent.mouseLeave(wrapper.getAllByTestId('sidebar-nav-item')[0])
+          })
+
+          it('should display a tooltip on hover', () => {
+            expect(wrapper.queryAllByTestId('tooltip')).toHaveLength(0)
+          })
+        })
+      })
     })
 
     describe('and sidebar is expanded', () => {
@@ -138,34 +172,97 @@ describe('Sidebar', () => {
       it('should not disply a tooltip on hover', () => {
         expect(wrapper.queryAllByTestId('tooltip')).toHaveLength(0)
       })
+
+      describe('and we hover over a top level nav item', () => {
+        beforeEach(() => {
+          fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+        })
+
+        it('should not display a tooltip on hover', () => {
+          expect(wrapper.queryAllByTestId('tooltip')).toHaveLength(0)
+        })
+      })
+    })
+  })
+
+  describe('when composed with a user link', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper>
+          <Sidebar
+            icon={<IconGrain />}
+            title="Application Name"
+            user={userWithLink}
+          >
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
+      )
+    })
+
+    describe('and the sidebar is collapsed', () => {
+      it('should render the correct user information', () => {
+        expect(wrapper.queryByTestId('sidebar-user-closed')).toBeInTheDocument()
+
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed-children')
+        ).not.toBeInTheDocument()
+
+        expect(
+          wrapper.queryByTestId('sidebar-user-open')
+        ).not.toBeInTheDocument()
+      })
     })
   })
 
   describe('when composed with a user menu', () => {
     beforeEach(() => {
       wrapper = render(
-        <Sidebar
-          icon={<IconGrain />}
-          title="Application Name"
-          user={userWithMenu}
-        >
-          <SidebarNav>
-            <SidebarNavItem
-              icon={<IconHome />}
-              link={<Link href="/dashboard">Dashboard</Link>}
-            />
-            <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-          </SidebarNav>
-        </Sidebar>
+        <SidebarWrapper>
+          <Sidebar
+            icon={<IconGrain />}
+            title="Application Name"
+            user={userWithMenu}
+          >
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
       )
     })
 
     describe('and sidebar is collapsed', () => {
+      it('should render the correct user information', () => {
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed-children')
+        ).toBeInTheDocument()
+
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed')
+        ).not.toBeInTheDocument()
+
+        expect(
+          wrapper.queryByTestId('sidebar-user-open')
+        ).not.toBeInTheDocument()
+      })
+
       describe('and the avatar is clicked', () => {
         beforeEach(() => {
           wrapper.getByText('HN').click()
         })
-
         it('should show the links', () => {
           expect(wrapper.getByText('Profile')).toBeInTheDocument()
           expect(wrapper.getByText('Logout')).toBeInTheDocument()
@@ -204,24 +301,43 @@ describe('Sidebar', () => {
         })
       })
     })
+
+    describe('and the sidebar is expanded', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('sidebar-handle').click()
+      })
+      it('should render the correct user information', () => {
+        expect(wrapper.queryByTestId('sidebar-user-open')).toBeInTheDocument()
+
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed')
+        ).not.toBeInTheDocument()
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed-children')
+        ).not.toBeInTheDocument()
+      })
+    })
   })
 
   describe('when composed with notifications and the `hasUnreadNotification` prop is not set', () => {
     beforeEach(() => {
       wrapper = render(
-        <Sidebar
-          icon={<IconGrain />}
-          title="Application Name"
-          notifications={notifications}
-        >
-          <SidebarNav>
-            <SidebarNavItem
-              icon={<IconHome />}
-              link={<Link href="/dashboard">Dashboard</Link>}
-            />
-            <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-          </SidebarNav>
-        </Sidebar>
+        <SidebarWrapper>
+          <Sidebar
+            icon={<IconGrain />}
+            title="Application Name"
+            notifications={notifications}
+          >
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
       )
     })
 
@@ -233,20 +349,23 @@ describe('Sidebar', () => {
   describe('when composed with notifications and the `hasUnreadNotification prop is set`', () => {
     beforeEach(() => {
       wrapper = render(
-        <Sidebar
-          icon={<IconGrain />}
-          title="Application Name"
-          notifications={notifications}
-          hasUnreadNotification
-        >
-          <SidebarNav>
-            <SidebarNavItem
-              icon={<IconHome />}
-              link={<Link href="/dashboard">Dashboard</Link>}
-            />
-            <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-          </SidebarNav>
-        </Sidebar>
+        <SidebarWrapper>
+          <Sidebar
+            icon={<IconGrain />}
+            title="Application Name"
+            notifications={notifications}
+            hasUnreadNotification
+          >
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
       )
     })
 
@@ -321,27 +440,30 @@ describe('Sidebar', () => {
   describe('when composed with nested navigation', () => {
     beforeEach(() => {
       wrapper = render(
-        <Sidebar
-          icon={<IconGrain />}
-          title="Application Name"
-          notifications={notifications}
-          hasUnreadNotification
-        >
-          <SidebarNav>
-            <SidebarNavItem
-              icon={<IconHome />}
-              link={<Link href="/dashboard">Dashboard</Link>}
-            >
+        <SidebarWrapper>
+          <Sidebar
+            icon={<IconGrain />}
+            title="Application Name"
+            notifications={notifications}
+            hasUnreadNotification
+          >
+            <SidebarNav>
               <SidebarNavItem
-                link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
-              />
-              <SidebarNavItem
-                link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
-              />
-            </SidebarNavItem>
-            <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-          </SidebarNav>
-        </Sidebar>
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              >
+                <SidebarNavItem
+                  link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
+                />
+                <SidebarNavItem
+                  link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
+                />
+              </SidebarNavItem>
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
       )
     })
 

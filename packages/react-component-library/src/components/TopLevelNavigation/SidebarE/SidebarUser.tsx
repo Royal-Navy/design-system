@@ -148,13 +148,13 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
           </StyledSidebarUserText>
         </StyledSidebarUser>
       ),
-      'data-testid': 'sidebar-user',
+      'data-testid': 'sidebar-user-open',
     })
   }
 
   if (!isOpen && children) {
     return (
-      <StyledSidebarUser data-testid="sidebar-user">
+      <StyledSidebarUser data-testid="sidebar-user-closed-children">
         <SidebarAvatarWithItems initials={initials}>
           {children}
         </SidebarAvatarWithItems>
@@ -169,7 +169,7 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
         <StyledAvatar initials={initials} />
       </StyledSidebarUser>
     ),
-    'data-testid': 'sidebar-user',
+    'data-testid': 'sidebar-user-closed',
   })
 }
 
