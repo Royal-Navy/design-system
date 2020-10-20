@@ -286,6 +286,29 @@ describe('RangeSlider', () => {
     })
   })
 
+  describe('when the `formatValue` prop is provided', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <RangeSlider
+          domain={[0, 40]}
+          mode={1}
+          values={[20]}
+          tracksLeft
+          tickCount={4}
+          thresholds={[40, 60]}
+          formatValue={({ value }) => `£${value}`}
+        />
+      )
+    })
+
+    it('formats the handle label using the provided formatter', () => {
+      expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
+        'data-value',
+        '£20'
+      )
+    })
+  })
+
   describe('without the `onUpdate` callback', () => {
     beforeEach(() => {
       wrapper = render(

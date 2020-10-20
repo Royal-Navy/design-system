@@ -3,13 +3,14 @@ import { GetHandleProps, SliderItem } from 'react-compound-slider'
 import classNames from 'classnames'
 
 import { useThresholdClasses } from './useThresholdClasses'
+import { RangeSliderPositionBag, RangeSliderValueFormatter } from '.'
 
 interface HandleProps {
   activeHandleID: string
   domain: ReadonlyArray<number>
   handle: SliderItem
   getHandleProps: GetHandleProps
-  displayUnit?: string
+  formatValue: RangeSliderValueFormatter
   thresholds?: number[]
 }
 
@@ -18,8 +19,8 @@ export const Handle: React.FC<HandleProps> = ({
   domain: [min, max],
   handle: { id, value, percent },
   getHandleProps,
-  displayUnit,
   thresholds,
+  formatValue,
 }) => {
   const isActive: boolean = activeHandleID === id
 
@@ -27,6 +28,11 @@ export const Handle: React.FC<HandleProps> = ({
     'is-active': isActive,
     ...useThresholdClasses(percent, thresholds, 'handle'),
   })
+
+  const positionBag: RangeSliderPositionBag = {
+    value,
+    percentage: percent,
+  }
 
   return (
     <div
@@ -41,7 +47,7 @@ export const Handle: React.FC<HandleProps> = ({
         left: `${percent}%`,
       }}
       {...getHandleProps(id)}
-      data-value={`${Math.floor(value)}${displayUnit || ''}`}
+      data-value={formatValue(positionBag)}
       data-percent={`${Math.floor(percent)}%`}
       data-testid="rangeslider-handle"
     />

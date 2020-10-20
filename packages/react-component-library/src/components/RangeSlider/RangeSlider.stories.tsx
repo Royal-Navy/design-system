@@ -36,6 +36,22 @@ examples.add('Multiple handles', () => (
   </div>
 ))
 
+examples.add('Custom value formatter', () => (
+  <div style={{ padding: '2rem' }}>
+    <RangeSlider
+      domain={[0, 40]}
+      mode={2}
+      values={[10, 20, 30]}
+      onChange={action('onChange')}
+      onUpdate={action('onUpdate')}
+      tracksLeft
+      tickCount={10}
+      thresholds={[40, 60]}
+      formatValue={({ value }) => `£${value.toFixed(2)}`}
+    />
+  </div>
+))
+
 examples.add('Stepped', () => (
   <RangeSlider
     domain={[0, 40]}

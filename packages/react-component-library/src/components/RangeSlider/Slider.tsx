@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import classNames from 'classnames'
 
 import {
@@ -10,9 +10,15 @@ import {
   Ticks,
 } from 'react-compound-slider'
 
-import { Handle, Track, ThresholdTrack, Tick } from '.'
+import {
+  Handle,
+  RangeSliderValueFormatter,
+  Track,
+  ThresholdTrack,
+  Tick,
+} from '.'
 
-interface RangeSliderProps
+export interface RangeSliderProps
   extends Omit<SliderProps, 'children' | 'disabled' | 'reversed'> {
   hasLabels?: boolean
   tracksLeft?: boolean
@@ -25,6 +31,7 @@ interface RangeSliderProps
   thresholds?: number[]
   hasPercentage?: boolean
   displayUnit?: string
+  formatValue?: RangeSliderValueFormatter
 }
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
@@ -43,18 +50,27 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   onUpdate,
   thresholds,
   hasPercentage,
-  displayUnit,
+  displayUnit = '',
+  formatValue,
   ...rest
 }) => {
   const [sliderValues, setSliderValues] = useState(values)
 
-  const onUpdateHandler = (newValues: ReadonlyArray<number>): void => {
-    setSliderValues(newValues)
+  const onUpdateHandler = useCallback(
+    (newValues: ReadonlyArray<number>): void => {
+      setSliderValues(newValues)
 
-    if (onUpdate) {
-      onUpdate(newValues)
-    }
-  }
+      if (onUpdate) {
+        onUpdate(newValues)
+      }
+    },
+    [onUpdate, setSliderValues]
+  )
+
+  const formatValueDefault: RangeSliderValueFormatter = useCallback(
+    ({ value }) => `${Math.floor(value)}${displayUnit}`,
+    [displayUnit]
+  )
 
   const classes = classNames('rn-rangeslider', className, {
     'is-reversed': isReversed,
@@ -98,7 +114,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
                   domain={domain}
                   activeHandleID={activeHandleID}
                   getHandleProps={getHandleProps}
-                  displayUnit={displayUnit}
+                  formatValue={formatValue ?? formatValueDefault}
                   thresholds={thresholds}
                 />
               ))}
