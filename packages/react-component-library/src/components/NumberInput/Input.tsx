@@ -124,7 +124,7 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   const hasLabel = !!(label && label.length)
   const [hasFocus, setHasFocus] = useState<boolean>(false)
-  const { inputOffset, inputRef, unitOffset } = useInputText(
+  const { canShow, inputOffset, inputRef, unitOffset } = useInputText(
     value,
     unitPosition
   )
@@ -152,9 +152,14 @@ export const Input: React.FC<InputProps> = ({
         </StyledLabel>
       )}
 
-      <NumberInputUnit left={`${unitOffset}px`} top={hasLabel && spacing('4')}>
-        {unit}
-      </NumberInputUnit>
+      {canShow && (
+        <NumberInputUnit
+          left={`${unitOffset}px`}
+          top={hasLabel && spacing('4')}
+        >
+          {unit}
+        </NumberInputUnit>
+      )}
 
       <StyledInput
         className={inputClasses}
@@ -176,7 +181,7 @@ export const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         ref={inputRef}
         type="text"
-        value={isFinite(value) ? value : ''}
+        value={isFinite(value) && canShow ? value : ''}
         {...rest}
       />
     </StyledInputWrapper>
