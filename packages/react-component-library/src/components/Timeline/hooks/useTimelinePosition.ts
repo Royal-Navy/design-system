@@ -37,8 +37,13 @@ export function useTimelinePosition(
 ): {
   width: string
   offset: string
+  maxWidth: string
   isBeforeStart: boolean
   isAfterEnd: boolean
+  startsBeforeStart: boolean
+  startsAfterEnd: boolean
+  endsBeforeStart: boolean
+  endsAfterEnd: boolean
 } {
   const {
     state: { days, options },
@@ -47,19 +52,34 @@ export function useTimelinePosition(
   const firstDateDisplayed = days[0].date
   const lastDateDisplayed = days[days.length - 1].date
 
-  const isBeforeStart = isBefore(new Date(startDate), firstDateDisplayed)
-  const isAfterEnd = isAfter(new Date(startDate), lastDateDisplayed)
+  const startsBeforeStart = isBefore(new Date(startDate), firstDateDisplayed)
+  const startsAfterEnd = isAfter(new Date(startDate), lastDateDisplayed)
+  const endsBeforeStart = isBefore(new Date(endDate), firstDateDisplayed)
+  const endsAfterEnd = isAfter(new Date(endDate), lastDateDisplayed)
 
-  const width = formatPx(options.dayWidth, getWidth(startDate, endDate))
-  const offset = formatPx(
-    options.dayWidth,
-    getOffset(startDate, firstDateDisplayed)
-  )
+  const width = startsBeforeStart
+    ? getWidth(firstDateDisplayed, endDate)
+    : getWidth(startDate, endDate)
+
+  const offset = startsBeforeStart
+    ? 0
+    : getOffset(startDate, firstDateDisplayed)
+
+  const maxWidth = (startsBeforeStart && endsAfterEnd)
+    ? getWidth(firstDateDisplayed, lastDateDisplayed) + 1
+    : getWidth(startDate, lastDateDisplayed) + 1
+
+  console.warn('`isBeforeStart` and `isAfterEnd` are deprecated')
 
   return {
-    width,
-    offset,
-    isBeforeStart,
-    isAfterEnd,
+    width: formatPx(options.dayWidth, width),
+    offset: formatPx(options.dayWidth, offset),
+    maxWidth: formatPx(options.dayWidth, maxWidth),
+    startsBeforeStart,
+    startsAfterEnd,
+    endsBeforeStart,
+    endsAfterEnd,
+    isBeforeStart: startsBeforeStart,
+    isAfterEnd: startsAfterEnd,
   }
 }

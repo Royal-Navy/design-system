@@ -60,9 +60,12 @@ export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = ({
     state: { today },
   } = useContext(TimelineContext)
 
-  const { offset, isBeforeStart, isAfterEnd } = useTimelinePosition(today, null)
+  const { offset, startsBeforeStart, startsAfterEnd } = useTimelinePosition(
+    today,
+    null
+  )
 
-  if (isBeforeStart || isAfterEnd) return null
+  if (startsBeforeStart || startsAfterEnd) return null
 
   return (
     <StyledTimelineTodayMarkerWrapper
