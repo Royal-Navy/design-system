@@ -30,13 +30,7 @@ export const NumberInputUnit: React.FC<NumberInputUnitProps> = (props) => {
     return null
   }
 
-  return (
-    <StyledNumberInputUnit
-      className="rn-numberinput__unit"
-      data-testid="number-input-unit"
-      {...props}
-    />
-  )
+  return <StyledNumberInputUnit data-testid="number-input-unit" {...props} />
 }
 
 NumberInputUnit.displayName = 'NumberInputUnit'

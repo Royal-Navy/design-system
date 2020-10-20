@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import classNames from 'classnames'
 import { isFinite, isNil } from 'lodash'
 import { ColourGroup, selectors } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
@@ -129,10 +128,6 @@ export const Input: React.FC<InputProps> = ({
     unitPosition
   )
 
-  const inputClasses = classNames('rn-numberinput__input', {
-    'rn-numberinput__input--condensed': isCondensed,
-  })
-
   return (
     <StyledInputWrapper
       hasFocus={hasFocus}
@@ -141,7 +136,6 @@ export const Input: React.FC<InputProps> = ({
     >
       {hasLabel && (
         <StyledLabel
-          className="rn-numberinput__label"
           data-testid="number-input-label"
           hasFocus={hasFocus}
           hasContent={!isNil(value)}
@@ -162,7 +156,6 @@ export const Input: React.FC<InputProps> = ({
       )}
 
       <StyledInput
-        className={inputClasses}
         data-testid="number-input-input"
         disabled={isDisabled}
         hasLabel={hasLabel}
