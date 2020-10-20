@@ -1,5 +1,6 @@
 import React from 'react'
-import classNames from 'classnames'
+import styled from 'styled-components'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 
@@ -9,6 +10,19 @@ export interface SheetButtonProps extends ComponentWithClass {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
+const { spacing } = selectors
+
+const StyledSheetButton = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+  line-height: 0;
+  margin: 0 auto;
+  padding: ${spacing('2')};
+  position: relative;
+`
+
 export const SheetButton: React.FC<SheetButtonProps> = ({
   children,
   className,
@@ -16,18 +30,16 @@ export const SheetButton: React.FC<SheetButtonProps> = ({
   onClick,
   ...rest
 }) => {
-  const classes = classNames('rn-sheet__button', className)
-
   return (
-    <button
+    <StyledSheetButton
       aria-haspopup
-      className={classes}
+      className={className}
       onClick={onClick}
       type="button"
       {...rest}
     >
       {icon}
       {children}
-    </button>
+    </StyledSheetButton>
   )
 }

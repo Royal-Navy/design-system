@@ -12,7 +12,7 @@ export const calculate = {
 
     const left =
       elemRect.left - sheetWidth + elemRect.width + window.pageXOffset - 6
-    const top = elemRect.bottom + window.pageYOffset
+    const top = elemRect.bottom + window.pageYOffset - 6
 
     return { left, top }
   },

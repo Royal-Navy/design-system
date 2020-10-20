@@ -1,4 +1,6 @@
 import React from 'react'
+import styled from 'styled-components'
+import { selectors } from '@royalnavy/design-tokens'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import {
@@ -20,6 +22,21 @@ export interface SheetProps extends ComponentWithClass {
   onShow?: () => void
   onHide?: () => void
 }
+
+const { color } = selectors
+
+const StyledFloatingBox = styled(FloatingBox)`
+  position: absolute;
+
+  > div {
+    background: ${color('neutral', 'black')} !important;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+`
 
 export const Sheet: React.FC<SheetProps> = ({
   button,
@@ -50,11 +67,10 @@ export const Sheet: React.FC<SheetProps> = ({
         onClick: toggleSheet,
       })}
 
-      <TransitionGroup className="rn-sheet__transition-wrapper">
+      <TransitionGroup>
         {showSheet && (
           <CSSTransition timeout={{ enter: 300, exit: 300 }}>
-            <FloatingBox
-              className="rn-sheet__container"
+            <StyledFloatingBox
               {...position}
               width={width}
               scheme="dark"
@@ -64,7 +80,7 @@ export const Sheet: React.FC<SheetProps> = ({
                 'aria-expanded': showSheet,
                 id: sheetId,
               })}
-            </FloatingBox>
+            </StyledFloatingBox>
           </CSSTransition>
         )}
       </TransitionGroup>
