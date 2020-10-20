@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import { Field, Formik, Form } from 'formik'
 import { IconBrightnessHigh } from '@royalnavy/icon-library'
+import * as yup from 'yup'
 
 import { Button } from '../Button'
 import { NumberInput } from './NumberInput'
@@ -99,24 +100,37 @@ examples.add('Unit before', () => (
 
 examples.add('Formik', () => {
   const NumberInputForm = () => {
-    interface Data {
-      age: number
-      gold: number
-    }
+    const errorText = 'Something went wrong!'
 
-    const initialValues: Data = {
-      age: 13,
-      gold: 1,
-    }
+    const validationSchema = yup.object().shape({
+      gold: yup.number().required(errorText),
+    })
 
     const FormikNumberInput = withFormik(NumberInput)
 
     return (
-      <Formik initialValues={initialValues} onSubmit={action('onSubmit')}>
+      <Formik
+        initialErrors={{ gold: errorText }}
+        initialTouched={{ gold: true }}
+        initialValues={{ age: 13, btc: 10 }}
+        onSubmit={action('onSubmit')}
+        validationSchema={validationSchema}
+      >
         <Form>
           <Field component={FormikNumberInput} name="gold" label="Gold bars" />
           <Field component={FormikNumberInput} name="age" label="Age" />
-          <Field component={FormikNumberInput} name="age" label="Age" />
+          <Field
+            className="is-valid"
+            component={FormikNumberInput}
+            name="btc"
+            label="Bitcoins"
+          />
+          <Field
+            className="is-invalid"
+            component={FormikNumberInput}
+            name="bottles"
+            label="Bottles"
+          />
           <Button variant="secondary" onClick={action('Cancel')}>
             Cancel
           </Button>

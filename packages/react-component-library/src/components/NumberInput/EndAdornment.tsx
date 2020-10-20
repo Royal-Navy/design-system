@@ -1,7 +1,11 @@
 import React from 'react'
+import { selectors } from '@royalnavy/design-tokens'
+import styled from 'styled-components'
 
 import { EndAdornmentButton } from './EndAdornmentButton'
 import { END_ADORNMENT_TYPE } from './constants'
+
+const { color } = selectors
 
 interface EndAdornmentProps {
   isCondensed: boolean
@@ -16,6 +20,14 @@ interface EndAdornmentProps {
   step?: number
   value: number
 }
+
+const StyledNumberInputControls = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  border-left: 1px solid ${color('neutral', '100')};
+`
 
 export const EndAdornment: React.FC<EndAdornmentProps> = ({
   isCondensed,
@@ -35,7 +47,7 @@ export const EndAdornment: React.FC<EndAdornmentProps> = ({
   }
 
   return (
-    <div className="rn-numberinput__controls">
+    <StyledNumberInputControls>
       <EndAdornmentButton
         isCondensed={isCondensed}
         isDisabled={isDisabled}
@@ -48,7 +60,7 @@ export const EndAdornment: React.FC<EndAdornmentProps> = ({
         onClick={onButtonClick(() => (value || 0) - step)}
         type={END_ADORNMENT_TYPE.DECREASE}
       />
-    </div>
+    </StyledNumberInputControls>
   )
 }
 

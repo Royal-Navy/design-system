@@ -490,26 +490,6 @@ describe('NumberInput', () => {
     })
   })
 
-  describe('when a label is specified', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <NumberInput label="Label" name="number-input" onChange={onChangeSpy} />
-      )
-    })
-
-    describe('and the user focuses on the field', () => {
-      beforeEach(() => {
-        wrapper.getByTestId('number-input-input').focus()
-      })
-
-      it('the label should be shrunk', () => {
-        expect(
-          wrapper.getByTestId('number-input-container').classList
-        ).toContain('has-focus')
-      })
-    })
-  })
-
   describe('when there is a unit', () => {
     beforeEach(() => {
       wrapper = render(
