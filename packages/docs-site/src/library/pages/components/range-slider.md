@@ -310,6 +310,20 @@ Additional details about props can be found [here](https://sghall.github.io/reac
     Description: 'An array of numbers. You can supply one for a value slider, two for a range slider or more to create n-handled sliders. The values should correspond to valid step values in the domain. The numbers will be forced into the domain if they are too small or too large.',
   },
   {
+    Name: 'displayUnit',
+    Type: 'string',
+    Required: 'False',
+    Default: '',
+    Description: 'Unit suffix to display in handle value labels.',
+  },
+  {
+    Name: 'formatValue',
+    Type: '({value: number, percentage: number}) => string',
+    Required: 'False',
+    Default: '',
+    Description: 'Custom value formatter to use for handle value labels. Can be used for more advanced use cases than displayUnit allows.',
+  },
+  {
     Name: 'thresholds',
     Type: 'number[]',
     Required: 'False',
