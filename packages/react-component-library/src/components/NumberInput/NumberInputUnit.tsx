@@ -5,12 +5,14 @@ import styled from 'styled-components'
 const { fontSize } = selectors
 
 interface NumberInputUnitProps {
-  offset: number
-  unit: string
+  children: string
+  left: string
+  top: string
 }
 
 interface StyledNumberInputUnitProps {
-  offset: number
+  left: string
+  top: string
 }
 
 const StyledNumberInputUnit = styled.span<StyledNumberInputUnitProps>`
@@ -19,14 +21,12 @@ const StyledNumberInputUnit = styled.span<StyledNumberInputUnitProps>`
   height: 100%;
   position: absolute;
   font-size: ${fontSize('base')};
-  left: ${({ offset }) => `${offset}px`};
+  left: ${({ left }) => left};
+  top: ${({ top }) => top};
 `
 
-export const NumberInputUnit: React.FC<NumberInputUnitProps> = ({
-  offset,
-  unit,
-}) => {
-  if (!unit) {
+export const NumberInputUnit: React.FC<NumberInputUnitProps> = (props) => {
+  if (!props.children) {
     return null
   }
 
@@ -34,10 +34,8 @@ export const NumberInputUnit: React.FC<NumberInputUnitProps> = ({
     <StyledNumberInputUnit
       className="rn-numberinput__unit"
       data-testid="number-input-unit"
-      offset={offset}
-    >
-      {unit}
-    </StyledNumberInputUnit>
+      {...props}
+    />
   )
 }
 
