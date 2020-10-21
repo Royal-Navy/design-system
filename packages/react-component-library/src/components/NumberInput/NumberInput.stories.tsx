@@ -21,6 +21,15 @@ examples.add('Condensed', () => (
   <NumberInput isCondensed name="number-input" onChange={action('onChange')} />
 ))
 
+examples.add('Clear', () => (
+  <NumberInput
+    canClear
+    name="number-input"
+    onChange={action('onChange')}
+    value={10}
+  />
+))
+
 examples.add('Disabled', () => (
   <NumberInput isDisabled name="number-input" onChange={action('onChange')} />
 ))

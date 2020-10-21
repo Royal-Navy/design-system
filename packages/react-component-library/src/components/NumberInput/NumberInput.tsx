@@ -12,6 +12,7 @@ import { InputValidationProps } from '../../common/InputValidationProps'
 import { StartAdornment } from './StartAdornment'
 import { useValue } from './useValue'
 import { UNIT_POSITION } from './constants'
+import { ClearButton } from './ClearButton'
 
 const { color, spacing } = selectors
 
@@ -21,6 +22,7 @@ export type UnitPosition =
 
 export interface NumberInputProps extends InputValidationProps {
   autoFocus?: boolean
+  canClear?: boolean
   className?: string
   footnote?: string
   id?: string
@@ -101,6 +103,7 @@ function hasClass(allClasses: string, className: string) {
 }
 
 export const NumberInput: React.FC<NumberInputProps> = ({
+  canClear,
   className,
   footnote,
   id = uuidv4(),
@@ -183,6 +186,16 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           value={committedValue}
           {...rest}
         />
+
+        {canClear && (
+          <ClearButton
+            isCondensed={isCondensed}
+            isDisabled={isDisabled}
+            onClick={() => {
+              setCommittedValueWithinRange(null)
+            }}
+          />
+        )}
 
         <EndAdornment
           isCondensed={isCondensed}

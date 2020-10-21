@@ -161,6 +161,13 @@ The NumberInput can be used in conjunction with `withFormik` to allow it to be u
     Description: 'Sets focus on the field when it is loaded',
   },
   {
+    Name: 'canClear',
+    Type: 'boolean',
+    Required: 'False',
+    Default: '',
+    Description: 'Optional flag to show a clear button',
+  },
+  {
     Name: 'className',
     Type: 'string',
     Required: 'False',
