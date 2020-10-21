@@ -26,6 +26,7 @@ interface InputProps extends InputValidationProps {
 }
 
 interface StyledInputProps {
+  hasLabel: boolean
   isCondensed: boolean
   offset: number
 }
@@ -37,6 +38,7 @@ interface StyledInputWrapperProps extends InputValidationProps {
 interface StyledLabelProps {
   hasContent: boolean
   hasFocus: boolean
+  hasUnit: boolean
 }
 
 function getInputBorder(group: ColourGroup) {
@@ -71,8 +73,8 @@ const StyledLabel = styled.label<StyledLabelProps>`
   color: ${color('neutral', '400')};
   font-size: ${fontSize('base')};
 
-  ${({ hasContent, hasFocus }) =>
-    (hasContent || hasFocus) &&
+  ${({ hasContent, hasFocus, hasUnit }) =>
+    (hasContent || hasFocus || hasUnit) &&
     css`
       transform: translate(${spacing('6')}, 6px) scale(0.8);
     `}
@@ -83,7 +85,17 @@ const StyledInput = styled.input<StyledInputProps>`
   box-sizing: border-box;
   width: 100%;
   margin: 0 0 0 ${({ offset }) => `${offset}px`};
-  padding: ${({ isCondensed }) => (isCondensed ? spacing('3') : spacing('6'))};
+  padding: ${({ hasLabel, isCondensed }) => {
+    if (isCondensed) {
+      return spacing('3')
+    }
+
+    if (hasLabel) {
+      return `${spacing('10')} ${spacing('6')} ${spacing('2')}`
+    }
+
+    return spacing('6')
+  }};
   border: 0;
   background: none;
   -webkit-tap-highlight-color: transparent;
@@ -91,10 +103,6 @@ const StyledInput = styled.input<StyledInputProps>`
 
   &:focus {
     outline: 0;
-  }
-
-  ${StyledLabel} + & {
-    padding: ${spacing('10')} ${spacing('6')} ${spacing('2')};
   }
 `
 
@@ -114,7 +122,7 @@ export const Input: React.FC<InputProps> = ({
   value,
   ...rest
 }) => {
-  const hasLabel = label && label.length
+  const hasLabel = !!(label && label.length)
   const [hasFocus, setHasFocus] = useState<boolean>(false)
   const { inputOffset, inputRef, unitOffset } = useInputText(
     value,
@@ -137,18 +145,22 @@ export const Input: React.FC<InputProps> = ({
           data-testid="number-input-label"
           hasFocus={hasFocus}
           hasContent={!isNil(value)}
+          hasUnit={!isNil(unit)}
           htmlFor={id}
         >
           {label}
         </StyledLabel>
       )}
 
-      <NumberInputUnit unit={unit} offset={unitOffset} />
+      <NumberInputUnit left={`${unitOffset}px`} top={hasLabel && spacing('4')}>
+        {unit}
+      </NumberInputUnit>
 
       <StyledInput
         className={inputClasses}
         data-testid="number-input-input"
         disabled={isDisabled}
+        hasLabel={hasLabel}
         id={id}
         isCondensed={isCondensed}
         name={name}

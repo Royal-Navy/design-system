@@ -88,6 +88,16 @@ examples.add('Unit', () => (
   />
 ))
 
+examples.add('Unit and label', () => (
+  <NumberInput
+    label="Cost"
+    name="number-input"
+    onChange={action('onChange')}
+    value={1000}
+    unit="m&sup3;"
+  />
+))
+
 examples.add('Unit before', () => (
   <NumberInput
     name="number-input"
