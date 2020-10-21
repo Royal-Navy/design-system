@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import classNames from 'classnames'
 import { isFinite, isNil } from 'lodash'
 import { ColourGroup, selectors } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
@@ -124,14 +123,10 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   const hasLabel = !!(label && label.length)
   const [hasFocus, setHasFocus] = useState<boolean>(false)
-  const { inputOffset, inputRef, unitOffset } = useInputText(
+  const { canShow, inputOffset, inputRef, unitOffset } = useInputText(
     value,
     unitPosition
   )
-
-  const inputClasses = classNames('rn-numberinput__input', {
-    'rn-numberinput__input--condensed': isCondensed,
-  })
 
   return (
     <StyledInputWrapper
@@ -141,7 +136,6 @@ export const Input: React.FC<InputProps> = ({
     >
       {hasLabel && (
         <StyledLabel
-          className="rn-numberinput__label"
           data-testid="number-input-label"
           hasFocus={hasFocus}
           hasContent={!isNil(value)}
@@ -152,12 +146,16 @@ export const Input: React.FC<InputProps> = ({
         </StyledLabel>
       )}
 
-      <NumberInputUnit left={`${unitOffset}px`} top={hasLabel && spacing('4')}>
-        {unit}
-      </NumberInputUnit>
+      {canShow && (
+        <NumberInputUnit
+          left={`${unitOffset}px`}
+          top={hasLabel && spacing('4')}
+        >
+          {unit}
+        </NumberInputUnit>
+      )}
 
       <StyledInput
-        className={inputClasses}
         data-testid="number-input-input"
         disabled={isDisabled}
         hasLabel={hasLabel}
@@ -176,7 +174,7 @@ export const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         ref={inputRef}
         type="text"
-        value={isFinite(value) ? value : ''}
+        value={isFinite(value) && canShow ? value : ''}
         {...rest}
       />
     </StyledInputWrapper>

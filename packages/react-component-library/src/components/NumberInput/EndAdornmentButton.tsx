@@ -1,5 +1,4 @@
 import React from 'react'
-import classNames from 'classnames'
 import capitalize from 'lodash/capitalize'
 import { selectors } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
@@ -91,10 +90,6 @@ export const EndAdornmentButton: React.FC<EndAdornmentButtonProps> = ({
   onClick,
   type,
 }) => {
-  const classes = classNames(`rn-numberinput__${type}`, {
-    [`rn-numberinput__${type}--condensed`]: isCondensed,
-  })
-
   const Button =
     type === END_ADORNMENT_TYPE.DECREASE
       ? StyledDecreaseButton
@@ -106,7 +101,6 @@ export const EndAdornmentButton: React.FC<EndAdornmentButtonProps> = ({
       data-testid={`number-input-${type}`}
       isCondensed={isCondensed}
       type="button"
-      className={classes}
       disabled={isDisabled}
       onClick={onClick}
     >

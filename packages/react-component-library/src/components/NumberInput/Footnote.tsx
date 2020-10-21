@@ -6,12 +6,7 @@ interface FootnoteProps {
 
 export const Footnote: React.FC<FootnoteProps> = ({ children }) => {
   return children ? (
-    <small
-      className="rn-numberinput__footnote"
-      data-testid="number-input-footnote"
-    >
-      {children}
-    </small>
+    <small data-testid="number-input-footnote">{children}</small>
   ) : null
 }
 

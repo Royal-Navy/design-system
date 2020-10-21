@@ -35,10 +35,7 @@ export const StartAdornment: React.FC<StartAdornmentProps> = ({ children }) => {
   }
 
   return (
-    <StyledStartAdornment
-      className="rn-numberinput__start-adornment"
-      data-testid="number-input-start-adornment"
-    >
+    <StyledStartAdornment data-testid="number-input-start-adornment">
       {children}
     </StyledStartAdornment>
   )

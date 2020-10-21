@@ -44,6 +44,7 @@ export function useInputText(value: number, unitPosition: UnitPosition) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [inputOffset, setInputOffset] = useState<number>()
   const [unitOffset, setUnitOffset] = useState<number>()
+  const [canShow, setCanShow] = useState<boolean>(false)
 
   useEffect(() => {
     if (!unitPosition) return
@@ -55,13 +56,14 @@ export function useInputText(value: number, unitPosition: UnitPosition) {
 
     if (unitPosition === UNIT_POSITION.AFTER) {
       const offset = textWidth + paddingLeft + EXTRA_SPACING
-      const roundedUpToNearestThree = 3 * Math.round(offset / 3)
-      setUnitOffset(roundedUpToNearestThree)
+      setUnitOffset(offset)
+      setCanShow(true)
     } else {
       setInputOffset(paddingLeft)
       setUnitOffset(paddingLeft)
+      setCanShow(true)
     }
   }, [value])
 
-  return { inputRef, inputOffset, unitOffset }
+  return { canShow, inputRef, inputOffset, unitOffset }
 }

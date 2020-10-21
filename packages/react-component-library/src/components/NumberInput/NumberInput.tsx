@@ -1,5 +1,4 @@
 import React from 'react'
-import classNames from 'classnames'
 import { isFinite, isNil } from 'lodash'
 import { selectors } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
@@ -125,8 +124,6 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 }) => {
   const { committedValue, setCommittedValue } = useValue(value)
 
-  const classes = classNames('rn-numberinput', className)
-
   function setCommittedValueWithinRange(newValue: number) {
     if (
       (isFinite(newValue) && isWithinRange(max, min, newValue)) ||
@@ -147,7 +144,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   return (
     <StyledNumberInput
       aria-label={label || 'Number input'}
-      className={classes}
+      className={className}
       data-testid="number-input-container"
       id={numberInputId}
       role="spinbutton"
@@ -156,7 +153,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
       aria-valuenow={committedValue}
       aria-valuetext={String(formatValue(committedValue, unit, unitPosition))}
     >
-      <StyledNumberInputOuterWrapper className="rn-numberinput__outer-wrapper">
+      <StyledNumberInputOuterWrapper>
         <StartAdornment>{startAdornment}</StartAdornment>
 
         <Input
