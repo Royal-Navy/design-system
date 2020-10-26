@@ -16,6 +16,10 @@ interface StyledSidebarNavItemProps {
   isActive?: boolean
 }
 
+interface StyledIconProps {
+  isOpen?: boolean
+}
+
 const { color, spacing, fontSize } = selectors
 
 export const StyledSidebarNavItem = styled.div<StyledSidebarNavItemProps>`
@@ -49,25 +53,37 @@ export const StyledSidebarNavItem = styled.div<StyledSidebarNavItemProps>`
   }
 `
 
-const StyledIcon = styled.div`
+const StyledIcon = styled.div<StyledIconProps>`
   display: inline-flex;
   align-items: center;
-  padding: ${spacing('5')};
-  margin-right: ${spacing('2')};
+  justify-content: center;
+  width: 100%;
+  padding: 0.55rem;
 
   svg {
+    width: 18px;
+    height: 18px;
     color: ${color('neutral', '100')};
 
     ${StyledSidebarNavItem}:hover & {
       color: ${color('neutral', 'white')};
     }
   }
+
+  ${({ isOpen }) =>
+    isOpen &&
+    `
+    width: auto;
+    justify-content: left;
+    padding-left: 0.55rem;
+  `}
 `
 
 const StyledText = styled.div`
   display: inline-block;
   color: ${color('neutral', '100')};
   font-size: ${fontSize('m')};
+  margin-left: ${spacing('2')};
 
   ${StyledSidebarNavItem}:hover & {
     color: ${color('neutral', 'white')};
@@ -89,7 +105,7 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
     ...link.props,
     children: (
       <>
-        {icon && <StyledIcon>{icon}</StyledIcon>}
+        {icon && <StyledIcon isOpen={isOpen}>{icon}</StyledIcon>}
         {isOpen && (
           <StyledText data-testid="sidebar-nav-item-text">
             {linkElement.props.children}

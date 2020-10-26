@@ -9,7 +9,7 @@ import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext, SidebarProvider } from './context'
 import { NotificationsProps } from '../NotificationPanel'
 
-interface SidebarProps extends ComponentWithClass {
+export interface SidebarProps extends ComponentWithClass {
   icon?: React.ReactNode
   title?: string
   user?: React.ReactElement<SidebarUserProps>
@@ -49,11 +49,12 @@ const StyledIcon = styled.div`
   align-items: center;
   border-radius: 4px;
   background-color: ${color('neutral', '500')};
-  padding: ${spacing('5')};
+  padding: 0.55rem;
   margin-right: ${spacing('7')};
 
-  svg > {
-    font-size: ${fontSize('l')};
+  svg {
+    width: 18px;
+    height: 18px;
   }
 `
 
