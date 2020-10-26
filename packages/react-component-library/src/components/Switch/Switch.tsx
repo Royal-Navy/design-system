@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import classNames from 'classnames'
 import { v4 as uuidv4 } from 'uuid'
 
 import { getKey } from '../../helpers'
@@ -22,6 +23,7 @@ export interface SwitchProps {
   value?: string
   label?: string
   className?: string
+  isDisabled?: boolean
   onChange?: (event: React.FormEvent<HTMLInputElement>, value?: string) => void
   options: SwitchOptionProps[]
   size?:
@@ -32,6 +34,7 @@ export interface SwitchProps {
 
 export const Switch: React.FC<SwitchProps> = ({
   className,
+  isDisabled,
   label,
   name,
   onChange,
@@ -50,6 +53,7 @@ export const Switch: React.FC<SwitchProps> = ({
   return (
     <fieldset
       className={`rn-switch rn-switch--${size} ${className}`}
+      disabled={isDisabled}
       data-testid="switch-wrapper"
     >
       {label && (
@@ -58,30 +62,35 @@ export const Switch: React.FC<SwitchProps> = ({
         </legend>
       )}
       <div className="rn-switch__container">
-        {options.map(({ label: optionLabel, value: optionValue }) => (
-          <label
-            key={getKey('switch-option', optionLabel)}
-            className={`rn-switch__option ${
-              active === optionLabel ? 'is-active' : ''
-            }`}
-            htmlFor={`${id}-${optionLabel}`}
-            data-testid="switch-option"
-          >
-            {optionLabel}
-            <input
-              data-testid="switch-input"
-              id={`${id}-${optionLabel}`}
-              name={name || id}
-              value={optionValue}
-              type="radio"
-              className="rn-switch__radio"
-              onClick={(event) => {
-                setActive(optionLabel)
-                onChange(event, optionValue)
-              }}
-            />
-          </label>
-        ))}
+        {options.map(({ label: optionLabel, value: optionValue }) => {
+          const optionClasses = classNames('rn-switch__option', {
+            'is-active': active === optionLabel,
+            'rn-switch__option--disabled': isDisabled,
+          })
+
+          return (
+            <label
+              key={getKey('switch-option', optionLabel)}
+              className={optionClasses}
+              htmlFor={`${id}-${optionLabel}`}
+              data-testid="switch-option"
+            >
+              {optionLabel}
+              <input
+                data-testid="switch-input"
+                id={`${id}-${optionLabel}`}
+                name={name || id}
+                value={optionValue}
+                type="radio"
+                className="rn-switch__radio"
+                onClick={(event) => {
+                  setActive(optionLabel)
+                  onChange(event, optionValue)
+                }}
+              />
+            </label>
+          )
+        })}
       </div>
     </fieldset>
   )
