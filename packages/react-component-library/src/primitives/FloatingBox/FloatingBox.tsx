@@ -27,7 +27,7 @@ export interface FloatingBoxProps extends PositionType, ComponentWithClass {
     | typeof FLOATING_BOX_ARROW_POSITION.BOTTOM_RIGHT
   onMouseEnter?: (e: React.MouseEvent) => void
   onMouseLeave?: (e: React.MouseEvent) => void
-  children?: React.ReactElement
+  children?: React.ReactNode
 }
 
 export const FloatingBox = forwardRef(
