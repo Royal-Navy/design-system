@@ -15,23 +15,16 @@ interface StyledTextProps {
 const { color, fontSize, spacing } = selectors
 
 const StyledContextMenuItem = styled.li`
-  &:first-of-type {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-  }
-
-  &:last-of-type {
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-  }
-
+  border-radius: 2px;
   > * {
+    text-overflow: ellipsis;
     display: flex;
-    padding: ${spacing('4')} ${spacing('6')};
+    padding: ${spacing('3')} ${spacing('4')};
+    line-height: 1.2;
   }
 
   &:hover {
-    background-color: ${color('neutral', '000')};
+    background-color: ${color('neutral', '100')};
 
     > * {
       text-decoration: none;
@@ -42,18 +35,22 @@ const StyledContextMenuItem = styled.li`
 const StyledIcon = styled.div`
   display: inline-flex;
   align-items: center;
-  margin-right: ${spacing('4')};
+  margin-right: ${spacing('2')};
 
   svg {
-    color: ${color('neutral', '500')};
+    color: ${color('neutral', '300')};
   }
 `
 
 const StyledText = styled.div<StyledTextProps>`
-  color: ${color('neutral', '300')};
+  color: ${color('neutral', '400')};
   font-weight: 600;
-  font-size: ${fontSize('s')};
-  ${({ hasIcon }) => !hasIcon && `margin-left: 1.5rem;`}
+  font-size: ${fontSize('base')};
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  ${({ hasIcon }) => !hasIcon && `margin-left: 1.25rem;`}
 
   ${StyledContextMenuItem}:hover & {
     color: ${color('neutral', '400')};
