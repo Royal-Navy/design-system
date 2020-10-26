@@ -1,31 +1,30 @@
-import React, { useState, useRef } from 'react'
-import differenceInMinutes from 'date-fns/differenceInMinutes'
+import React, { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
-import { format } from 'date-fns'
+import { isNil } from 'lodash'
 import TetherComponent from 'react-tether'
-import DayPicker, {
-  DateUtils,
-  RangeModifier,
-  DayPickerProps,
-  DayModifiers,
-} from 'react-day-picker'
+import DayPicker, { DayPickerProps, DayModifiers } from 'react-day-picker'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { DATE_FORMAT } from '../../constants'
+import { DatePickerHoursSwitch } from './DatePickerHoursSwitch'
 import { DatePickerInput } from './DatePickerInput'
 import { useOpenClose } from './useOpenClose'
-import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
+import {
+  DATEPICKER_HOURS_BLOCK_SIZE,
+  DATEPICKER_PLACEMENT,
+  DATEPICKER_PLACEMENTS,
+} from '.'
 import { FloatingBox, FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 import { getId } from '../../helpers'
+import { useDateTime } from './useDateTime'
 
-export interface StateObject {
-  from?: Date
-  to?: Date
-}
+export type DatePickerHoursBlockSizeType =
+  | typeof DATEPICKER_HOURS_BLOCK_SIZE.QUARTER_DAY
+  | typeof DATEPICKER_HOURS_BLOCK_SIZE.HALF_DAY
 
 export interface DatePickerProps extends ComponentWithClass {
   endDate?: Date
+  hoursBlockSize?: DatePickerHoursBlockSizeType
   id?: string
   isDisabled?: boolean
   isRange?: boolean
@@ -45,40 +44,10 @@ export interface DatePickerProps extends ComponentWithClass {
   initialMonth?: DayPickerProps['initialMonth']
 }
 
-function transformDates(startDate: Date, endDate: Date) {
-  if (startDate && endDate && differenceInMinutes(endDate, startDate) > 0) {
-    return `${format(startDate, DATE_FORMAT.SHORT)} - ${format(
-      endDate,
-      DATE_FORMAT.SHORT
-    )}`
-  }
-
-  if (startDate) {
-    return format(startDate, DATE_FORMAT.SHORT)
-  }
-
-  return ''
-}
-
-function getNewState(
-  isRange: boolean,
-  day: Date,
-  state: StateObject
-): StateObject {
-  if (isRange) {
-    if (state.from && (state.to || state.from > day)) {
-      return { from: day }
-    }
-
-    return DateUtils.addDayToRange(day, state as RangeModifier)
-  }
-
-  return { from: day, to: day }
-}
-
 export const DatePicker: React.FC<DatePickerProps> = ({
   className,
   endDate,
+  hoursBlockSize,
   id = uuidv4(),
   isDisabled,
   isRange,
@@ -93,31 +62,31 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   disabledDays,
   initialMonth,
 }) => {
-  const [state, setState] = useState<StateObject>({
-    from: startDate,
-    to: endDate,
-  })
-
-  const { from, to } = state
-  const modifiers = { start: from, end: to }
+  const {
+    appendDay,
+    appendTime,
+    enriched,
+    formatted,
+    hasContent,
+    modifiers,
+    time,
+  } = useDateTime(startDate, endDate, isRange, value, onChange)
+  const { from, to } = enriched
 
   function handleDayClick(day: Date, { disabled }: DayModifiers) {
     if (disabled) return
 
-    const newState = getNewState(isRange, day, state)
-    setState(newState)
+    appendDay(day)
+  }
 
-    if (onChange) {
-      onChange({
-        startDate: newState.from,
-        endDate: newState.to,
-      })
+  function handleTimeClick(type: string) {
+    return (event: React.FormEvent<HTMLInputElement>, optionValue: string) => {
+      appendTime(type, optionValue)
     }
   }
 
   const componentRef = useRef(null)
   const { openState, onFocus, onClose } = useOpenClose(componentRef, isOpen)
-  const hasContent = (value && value.length) || from
   const PLACEMENTS = DATEPICKER_PLACEMENTS[placement]
 
   const classes = classNames('rn-date-picker', className, {
@@ -165,7 +134,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             id={id}
             name={name}
             label={label}
-            value={transformDates(from, to)}
+            value={formatted}
             onBlur={onBlur}
             onFocus={onFocus}
             isDisabled={isDisabled}
@@ -194,6 +163,27 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               initialMonth={startDate || initialMonth}
               disabledDays={disabledDays}
             />
+
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: 1 }}>
+                <DatePickerHoursSwitch
+                  hoursBlockSize={hoursBlockSize}
+                  isDisabled={isNil(from)}
+                  onChange={handleTimeClick('from')}
+                  value={time.from}
+                />
+              </div>
+              {isRange && (
+                <div style={{ flex: 1 }}>
+                  <DatePickerHoursSwitch
+                    hoursBlockSize={hoursBlockSize}
+                    isDisabled={isNil(to)}
+                    onChange={handleTimeClick('to')}
+                    value={time.to}
+                  />
+                </div>
+              )}
+            </div>
           </FloatingBox>
         ),
       })}

@@ -4,7 +4,11 @@ import { Field, Formik, Form } from 'formik'
 import React from 'react'
 
 import { withFormik } from '../../enhancers/withFormik'
-import { DatePicker, DATEPICKER_PLACEMENT } from '.'
+import {
+  DatePicker,
+  DATEPICKER_HOURS_BLOCK_SIZE,
+  DATEPICKER_PLACEMENT,
+} from '.'
 
 import { TextInput } from '../TextInput'
 import { Button } from '../Button'
@@ -77,6 +81,15 @@ examples.add('Disabled days', () => {
   )
 })
 
+examples.add('Quarter day time blocks', () => (
+  <DatePicker
+    hoursBlockSize={DATEPICKER_HOURS_BLOCK_SIZE.QUARTER_DAY}
+    isOpen
+    onBlur={action('onBlur')}
+    onChange={action('onChange')}
+  />
+))
+
 examples.add('Range', () => {
   return (
     <DatePicker
@@ -84,6 +97,18 @@ examples.add('Range', () => {
       onChange={action('onChange')}
       isRange
       isOpen
+    />
+  )
+})
+
+examples.add('Range with hours', () => {
+  return (
+    <DatePicker
+      hoursBlockSize={DATEPICKER_HOURS_BLOCK_SIZE.QUARTER_DAY}
+      initialMonth={new Date(2019, 11)}
+      isOpen
+      isRange
+      onChange={action('onChange')}
     />
   )
 })

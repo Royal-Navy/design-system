@@ -2,7 +2,11 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 
-import { DatePicker, DATEPICKER_PLACEMENT } from '.'
+import {
+  DatePicker,
+  DATEPICKER_HOURS_BLOCK_SIZE,
+  DATEPICKER_PLACEMENT,
+} from '.'
 
 const NOW = '2019-12-05T11:00:00.000Z'
 
@@ -450,6 +454,171 @@ describe('DatePicker', () => {
         'value',
         ''
       )
+    })
+  })
+
+  describe('when the `DatePicker` has quarter day hour blocks for time', () => {
+    beforeEach(() => {
+      onChange = jest.fn()
+
+      wrapper = render(
+        <DatePicker
+          hoursBlockSize={DATEPICKER_HOURS_BLOCK_SIZE.QUARTER_DAY}
+          initialMonth={new Date(2019, 11)}
+          isOpen
+          onChange={onChange}
+        />
+      )
+    })
+
+    it('should disable the time switch', () => {
+      expect(wrapper.getByTestId('switch-wrapper')).toHaveAttribute(
+        'disabled',
+        ''
+      )
+    })
+
+    describe('and the user clicks a day', () => {
+      beforeEach(() => {
+        click(wrapper.getByText('31'))
+      })
+
+      it('should enable the time switch', () => {
+        expect(wrapper.getByTestId('switch-wrapper')).not.toHaveAttribute(
+          'disabled'
+        )
+      })
+
+      describe('and the user clicks a quarter day block', () => {
+        beforeEach(() => {
+          click(wrapper.getByText('18:00'))
+        })
+
+        it('set the `value` of the component to this date with time', () => {
+          expect(
+            wrapper.getByTestId('datepicker-input').getAttribute('value')
+          ).toBe('31/12/2019 18:00')
+        })
+
+        it('invokes the `onChange` callback', () => {
+          expect(onChange).toHaveBeenCalledWith({
+            startDate: new Date('2019-12-31T18:00:00.000Z'),
+            endDate: new Date('2019-12-31T18:00:00.000Z'),
+          })
+        })
+      })
+    })
+  })
+
+  describe('when the `DatePicker` is a range and has quarter day hour blocks for time', () => {
+    beforeEach(() => {
+      onChange = jest.fn()
+
+      wrapper = render(
+        <DatePicker
+          hoursBlockSize={DATEPICKER_HOURS_BLOCK_SIZE.QUARTER_DAY}
+          initialMonth={new Date(2019, 11)}
+          isOpen
+          isRange
+          onChange={onChange}
+        />
+      )
+    })
+
+    describe('and clicks on a day in the first month', () => {
+      beforeEach(() => {
+        click(wrapper.getAllByText('31')[0])
+      })
+
+      it('set the value of the component to this date', () => {
+        expect(
+          wrapper.getByTestId('datepicker-input').getAttribute('value')
+        ).toBe('31/12/2019')
+      })
+
+      it('invokes the onChange callback', () => {
+        expect(onChange).toHaveBeenCalledTimes(1)
+        expect(onChange).toHaveBeenCalledWith({
+          startDate: new Date('2019-12-31T12:00:00.000Z'),
+          endDate: undefined,
+        })
+      })
+
+      describe('and clicks on a time in the first month', () => {
+        beforeEach(() => {
+          click(wrapper.getAllByText('18:00')[0])
+        })
+
+        it('set the `value` of the component to this date with time', () => {
+          expect(
+            wrapper.getByTestId('datepicker-input').getAttribute('value')
+          ).toBe('31/12/2019 18:00')
+        })
+
+        it('invokes the `onChange` callback', () => {
+          expect(onChange).toHaveBeenCalledWith({
+            startDate: new Date('2019-12-31T18:00:00.000Z'),
+            endDate: undefined,
+          })
+        })
+
+        describe('and clicks on a day in the second month', () => {
+          beforeEach(() => {
+            click(wrapper.getAllByText('20')[1])
+          })
+
+          it('set the value of the component to this date', () => {
+            expect(
+              wrapper.getByTestId('datepicker-input').getAttribute('value')
+            ).toBe('31/12/2019 18:00 - 20/01/2020')
+          })
+
+          it('invokes the onChange callback', () => {
+            expect(onChange).toHaveBeenCalledWith({
+              startDate: new Date('2019-12-31T18:00:00.000Z'),
+              endDate: new Date('2020-01-20T12:00:00.000Z'),
+            })
+          })
+
+          describe('and clicks on a time in the second month', () => {
+            beforeEach(() => {
+              click(wrapper.getAllByText('06:00')[1])
+            })
+
+            it('set the `value` of the component to this date with time', () => {
+              expect(
+                wrapper.getByTestId('datepicker-input').getAttribute('value')
+              ).toBe('31/12/2019 18:00 - 20/01/2020 06:00')
+            })
+
+            it('invokes the `onChange` callback', () => {
+              expect(onChange).toHaveBeenCalledWith({
+                startDate: new Date('2019-12-31T18:00:00.000Z'),
+                endDate: new Date('2020-01-20T06:00:00.000Z'),
+              })
+            })
+
+            describe('and changes the time in the first month', () => {
+              beforeEach(() => {
+                click(wrapper.getAllByText('00:00')[0])
+              })
+
+              it('set the `value` of the component to this date with time', () => {
+                expect(
+                  wrapper.getByTestId('datepicker-input').getAttribute('value')
+                ).toBe('31/12/2019 00:00 - 20/01/2020 06:00')
+              })
+
+              it('invokes the `onChange` callback', () => {
+                expect(onChange).toHaveBeenCalledWith({
+                  startDate: new Date('2019-12-31T00:00:00.000Z'),
+                  endDate: new Date('2020-01-20T06:00:00.000Z'),
+                })
+              })
+            })
+          })
+        })
+      })
     })
   })
 })
