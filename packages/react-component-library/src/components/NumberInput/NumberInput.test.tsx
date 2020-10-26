@@ -620,7 +620,7 @@ describe('NumberInput', () => {
 
         return (
           <>
-            <Button onClick={() => setValue(1)}>Update</Button>
+            <Button onClick={() => setValue(2)}>Update</Button>
             <NumberInput
               name="number-input"
               onChange={onChangeSpy}
@@ -636,7 +636,7 @@ describe('NumberInput', () => {
 
     it('should update the value in the field', async () => {
       await waitFor(() => {
-        expect(wrapper.getByTestId('number-input-input')).toHaveValue('1')
+        expect(wrapper.getByTestId('number-input-input')).toHaveValue('2')
       })
     })
   })
