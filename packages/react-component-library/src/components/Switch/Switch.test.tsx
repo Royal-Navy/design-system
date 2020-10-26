@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, RenderResult } from '@testing-library/react'
+import { render, RenderResult, waitFor } from '@testing-library/react'
 
 import { Switch } from './Switch'
+import { Button } from '../Button'
 
 describe('Switch', () => {
   let wrapper: RenderResult
@@ -100,6 +101,42 @@ describe('Switch', () => {
       expect(wrapper.getByText('Week').classList).not.toContain('is-active')
       expect(wrapper.getByText('Month').classList).not.toContain('is-active')
       expect(wrapper.getByText('Year').classList).not.toContain('is-active')
+    })
+  })
+
+  describe('when the value is updated by a side effect', () => {
+    beforeEach(() => {
+      function SwitchWithExternalUpdate() {
+        const [value, setValue] = useState<string>('1')
+
+        return (
+          <>
+            <Button onClick={() => setValue('4')}>Update</Button>
+            <Switch
+              name="switch-name"
+              options={[
+                { label: 'Day', value: '1' },
+                { label: 'Week', value: '2' },
+                { label: 'Month', value: '3' },
+                { label: 'Year', value: '4' },
+              ]}
+              value={value}
+            />
+          </>
+        )
+      }
+
+      onChangeSpy = jest.fn()
+
+      wrapper = render(<SwitchWithExternalUpdate />)
+
+      wrapper.getByTestId('button').click()
+    })
+
+    it('should set the fourth option as active', async () => {
+      await waitFor(() => {
+        expect(wrapper.getByText('Year').classList).toContain('is-active')
+      })
     })
   })
 })

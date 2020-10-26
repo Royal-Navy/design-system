@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { getKey } from '../../helpers'
@@ -39,7 +39,12 @@ export const Switch: React.FC<SwitchProps> = ({
   size = SWITCH_SIZE.REGULAR,
   value,
 }) => {
-  const [active, setActive] = useState(getActiveOption(options, value))
+  const [active, setActive] = useState(null)
+
+  useEffect(() => {
+    setActive(getActiveOption(options, value))
+  }, [value])
+
   const id = uuidv4()
 
   return (
