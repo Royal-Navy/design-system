@@ -7,27 +7,27 @@ import { Button } from '../Button'
 
 describe('Switch', () => {
   let wrapper: RenderResult
-  let onChangeSpy: (event: React.FormEvent<HTMLInputElement>) => void
+  let onChangeSpy: jest.SpyInstance
 
   describe('when all props are specified', () => {
     beforeEach(() => {
-      onChangeSpy = jest.fn()
+      const props = {
+        className: 'rn-switch--modifier',
+        label: 'Switch label',
+        name: 'switch-name',
+        onChange: () => true,
+        options: [
+          { label: 'Day', value: '1' },
+          { label: 'Week', value: '2' },
+          { label: 'Month', value: '3' },
+          { label: 'Year', value: '4' },
+        ],
+        value: '3',
+      }
 
-      wrapper = render(
-        <Switch
-          className="rn-switch--modifier"
-          label="Switch label"
-          name="switch-name"
-          onChange={onChangeSpy}
-          options={[
-            { label: 'Day', value: '1' },
-            { label: 'Week', value: '2' },
-            { label: 'Month', value: '3' },
-            { label: 'Year', value: '4' },
-          ]}
-          value="3"
-        />
-      )
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<Switch {...props} />)
     })
 
     it('should set the CSS modifier', () => {
@@ -71,6 +71,7 @@ describe('Switch', () => {
 
       it('should call the onClick callback', () => {
         expect(onChangeSpy).toHaveBeenCalledTimes(1)
+        expect(onChangeSpy.mock.calls[0][1]).toEqual('4')
       })
     })
   })

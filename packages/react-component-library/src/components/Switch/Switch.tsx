@@ -22,7 +22,7 @@ export interface SwitchProps {
   value?: string
   label?: string
   className?: string
-  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
+  onChange?: (event: React.FormEvent<HTMLInputElement>, value?: string) => void
   options: SwitchOptionProps[]
   size?:
     | typeof SWITCH_SIZE.LARGE
@@ -77,7 +77,7 @@ export const Switch: React.FC<SwitchProps> = ({
               className="rn-switch__radio"
               onClick={(event) => {
                 setActive(optionLabel)
-                onChange(event)
+                onChange(event, optionValue)
               }}
             />
           </label>
