@@ -18,7 +18,7 @@ export interface SwitchOptionProps {
 }
 
 export interface SwitchProps {
-  name: string
+  name?: string
   value?: string
   label?: string
   className?: string

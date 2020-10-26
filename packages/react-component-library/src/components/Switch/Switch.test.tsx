@@ -82,7 +82,6 @@ describe('Switch', () => {
 
       wrapper = render(
         <Switch
-          name="switch-name"
           options={[
             { label: 'Day', value: '1' },
             { label: 'Week', value: '2' },
