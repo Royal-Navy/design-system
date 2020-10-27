@@ -1,0 +1,21 @@
+@use "../../abstracts/functions" as f;
+
+.rn-sheet__container {
+  position: absolute;
+}
+
+.rn-sheet__button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+  line-height: 0;
+  margin: 0 auto;
+  padding: f.spacing("2");
+  position: relative;
+}
+
+.rn-sheet__icon {
+  height: 21px;
+  width: 16px;
+}

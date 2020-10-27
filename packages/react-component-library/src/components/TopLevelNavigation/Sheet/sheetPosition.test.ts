@@ -17,12 +17,12 @@ describe('sheetPosition', () => {
 
       global.innerHeight = 1000
 
-      result = calculate[SHEET_PLACEMENT.RIGHT](element)
+      result = calculate[SHEET_PLACEMENT.RIGHT_BOTTOM](element)
     })
 
     it('should calculate the position to be on the right of the element', () => {
       expect(result).toHaveProperty('bottom', 982)
-      expect(result).toHaveProperty('left', 318)
+      expect(result).toHaveProperty('left', 300)
     })
   })
 

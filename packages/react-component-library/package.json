@@ -161,7 +161,7 @@
     "react-select": "^3.0.8",
     "react-tether": "^2.0.7",
     "react-toast-notifications": "^2.4.0",
-    "react-transition-group": "^4.3.0"
+    "react-transition-group": "^4.4.1"
   },
   "peerDependencies": {
     "styled-components": ">= 5"
