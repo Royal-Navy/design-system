@@ -1,6 +1,7 @@
-import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import React from 'react'
+import { action } from '@storybook/addon-actions'
+import { IconLayers } from '@royalnavy/icon-library'
+import { storiesOf } from '@storybook/react'
 
 import { Bell, Tools } from '../../icons'
 import { Dropdown } from './Dropdown'
@@ -47,6 +48,7 @@ examples.add('Icons', () => (
   <Dropdown
     options={iconOptions}
     label="Layers"
+    labelIcon={<IconLayers />}
     onSelect={action('onSelect')}
   />
 ))
