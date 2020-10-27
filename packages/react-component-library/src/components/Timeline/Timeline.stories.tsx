@@ -108,7 +108,7 @@ export const WithSidebar = () => (
       <TimelineRow name="Row 1">
         <TimelineEvents>
           <TimelineEvent
-            startDate={new Date(2020, 3, 14)}
+            startDate={new Date(2020, 2, 14)}
             endDate={new Date(2020, 3, 18)}
           >
             Event 1
@@ -120,6 +120,16 @@ export const WithSidebar = () => (
           <TimelineEvent
             startDate={new Date(2020, 3, 3)}
             endDate={new Date(2020, 3, 8)}
+          >
+            Event 2
+          </TimelineEvent>
+        </TimelineEvents>
+      </TimelineRow>
+      <TimelineRow name="Row 3">
+        <TimelineEvents>
+          <TimelineEvent
+            startDate={new Date(2020, 1, 3)}
+            endDate={new Date(2020, 7, 8)}
           >
             Event 2
           </TimelineEvent>

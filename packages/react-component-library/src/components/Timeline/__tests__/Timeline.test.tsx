@@ -482,7 +482,6 @@ describe('Timeline', () => {
     })
 
     it('should warn the consumer about using the deprecated component', () => {
-      expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
       expect(consoleWarnSpy).toHaveBeenCalledWith(
         'Component `TimelineSide` is deprecated'
       )
@@ -530,7 +529,6 @@ describe('Timeline', () => {
     })
 
     it('should warn the consumer about using the deprecated prop', () => {
-      expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
       expect(consoleWarnSpy).toHaveBeenCalledWith(
         'Prop `dayWidth` is deprecated'
       )
@@ -857,12 +855,6 @@ describe('Timeline', () => {
     it('positions the event correctly', () => {
       expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
         left: '405px',
-      })
-    })
-
-    it('sets the event width correctly', () => {
-      expect(wrapper.getByTestId('timeline-event-bar')).toHaveStyle({
-        width: '120px',
       })
     })
   })
@@ -1330,6 +1322,70 @@ describe('Timeline', () => {
         'aria-label',
         'Begins on 13th April 2020 and ends on 18th April 2020'
       )
+    })
+  })
+
+  describe('when an event has a startDate out of bounds of the displayed range', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 2, 14)}
+                  endDate={new Date(2020, 3, 18)}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('renders the event', () => {
+      expect(wrapper.queryByTestId('timeline-event')).toBeInTheDocument()
+    })
+  })
+
+  describe('when an event has an endDate out of bounds of the displayed range', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 2, 1)}
+          today={new Date(2020, 2, 15)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 2, 14)}
+                  endDate={new Date(2020, 3, 18)}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('renders the event', () => {
+      expect(wrapper.queryByTestId('timeline-event')).toBeInTheDocument()
     })
   })
 })
