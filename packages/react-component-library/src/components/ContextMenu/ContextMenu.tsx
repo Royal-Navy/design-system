@@ -14,19 +14,20 @@ interface StyledContextMenuProps {
   left: number
 }
 
-const { color } = selectors
+const { color, spacing } = selectors
 
 const StyledContextMenu = styled.ol<StyledContextMenuProps>`
   position: fixed;
   top: ${({ top }) => `${top}px`};
   left: ${({ left }) => `${left}px`};
-  width: 12rem;
-  padding: 0;
+  min-width: 120px;
+  max-width: 240px;
+  padding: ${spacing('2')};
   list-style-type: none;
   background-color: ${color('neutral', 'white')};
   border-radius: 4px;
   border: 1px solid ${color('neutral', '200')};
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.04);
 `
 
 export const ContextMenu: React.FC<ContextMenuProps> = ({
