@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
+import { Transition } from 'react-transition-group'
 
 import { SidebarSubNav } from './SidebarSubNav'
 import { Nav, NavItem } from '../../../common/Nav'
 import { SidebarContext } from './context'
 import { Tooltip } from '../../Tooltip'
+import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
 
 export interface SidebarNavItemProps extends NavItem, Nav<SidebarNavItemProps> {
   icon?: React.ReactNode
@@ -17,6 +19,10 @@ interface StyledSidebarNavItemProps {
 }
 
 interface StyledIconProps {
+  isOpen?: boolean
+}
+
+interface StyledTextProps {
   isOpen?: boolean
 }
 
@@ -36,13 +42,13 @@ export const StyledSidebarNavItem = styled.div<StyledSidebarNavItemProps>`
 
   ${({ isActive }) =>
     isActive &&
-    `
-    background-color: ${color('action', '500')};
-
-    &:hover {
+    css`
       background-color: ${color('action', '500')};
-    }
-  `}
+
+      &:hover {
+        background-color: ${color('action', '500')};
+      }
+    `}
 
   &:hover {
     background-color: ${color('neutral', '400')};
@@ -56,7 +62,6 @@ export const StyledSidebarNavItem = styled.div<StyledSidebarNavItemProps>`
 const StyledIcon = styled.div<StyledIconProps>`
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   width: 100%;
   padding: 0.55rem;
 
@@ -72,22 +77,28 @@ const StyledIcon = styled.div<StyledIconProps>`
 
   ${({ isOpen }) =>
     isOpen &&
-    `
-    width: auto;
-    justify-content: left;
-    padding-left: 0.55rem;
-  `}
+    css`
+      width: auto;
+    `}
 `
 
-const StyledText = styled.div`
+const StyledText = styled.div<StyledTextProps>`
   display: inline-block;
   color: ${color('neutral', '100')};
   font-size: ${fontSize('m')};
   margin-left: ${spacing('2')};
+  opacity: 1;
+  transition: opacity 150ms linear;
 
   ${StyledSidebarNavItem}:hover & {
     color: ${color('neutral', 'white')};
   }
+
+  ${({ isOpen }) =>
+    !isOpen &&
+    css`
+      display: none;
+    `}
 `
 
 export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
@@ -106,11 +117,17 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
     children: (
       <>
         {icon && <StyledIcon isOpen={isOpen}>{icon}</StyledIcon>}
-        {isOpen && (
-          <StyledText data-testid="sidebar-nav-item-text">
-            {linkElement.props.children}
-          </StyledText>
-        )}
+        <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
+          {(state) => (
+            <StyledText
+              style={{ ...TRANSITION_STYLES[state] }}
+              isOpen={isOpen}
+              data-testid="sidebar-nav-item-text"
+            >
+              {linkElement.props.children}
+            </StyledText>
+          )}
+        </Transition>
         {!isOpen && hasMouseOver && (
           <Tooltip left={70} position="right">
             {linkElement.props.children}

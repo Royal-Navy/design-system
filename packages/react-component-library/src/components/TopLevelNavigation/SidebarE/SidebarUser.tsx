@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 import { IconExitToApp } from '@royalnavy/icon-library'
+import { Transition } from 'react-transition-group'
 
 import { Avatar } from '../../Avatar'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
@@ -12,6 +13,7 @@ import { SidebarUserItemProps } from './SidebarUserItem'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
 import { SHEET_PLACEMENT } from '../Sheet/constants'
+import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
 
 export interface SidebarUserWithItemsProps extends Nav<SidebarUserItemProps> {
   initials: string
@@ -50,6 +52,9 @@ const StyledSidebarUserText = styled.div`
   justify-content: space-between;
   width: calc(100% - 1rem);
   padding: 0 0 0 ${spacing('6')};
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 150ms linear;
 
   > div {
     display: inline-flex;
@@ -133,25 +138,6 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
 }) => {
   const { isOpen } = useContext(SidebarContext)
 
-  if (isOpen) {
-    return React.cloneElement(link as React.ReactElement, {
-      ...link.props,
-      children: (
-        <StyledSidebarUser>
-          <StyledAvatar initials={initials} />
-          <StyledSidebarUserText>
-            <div>
-              <span>{name}</span>
-              <span>View Profile</span>
-            </div>
-            <IconExitToApp />
-          </StyledSidebarUserText>
-        </StyledSidebarUser>
-      ),
-      'data-testid': 'sidebar-user-open',
-    })
-  }
-
   if (!isOpen && children) {
     return (
       <StyledSidebarUser data-testid="sidebar-user-closed-children">
@@ -167,9 +153,20 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
     children: (
       <StyledSidebarUser>
         <StyledAvatar initials={initials} />
+        <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
+          {(state) => (
+            <StyledSidebarUserText style={{ ...TRANSITION_STYLES[state] }}>
+              <div>
+                <span>{name}</span>
+                <span>View Profile</span>
+              </div>
+              <IconExitToApp />
+            </StyledSidebarUserText>
+          )}
+        </Transition>
       </StyledSidebarUser>
     ),
-    'data-testid': 'sidebar-user-closed',
+    'data-testid': `sidebar-user-${isOpen ? 'open' : 'closed'}`,
   })
 }
 
