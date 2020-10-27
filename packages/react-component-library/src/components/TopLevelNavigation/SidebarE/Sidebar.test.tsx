@@ -106,11 +106,8 @@ describe('Sidebar', () => {
         ).not.toBeInTheDocument()
       })
 
-      it('should apply the correct `aria-label` value to the handle', () => {
-        expect(wrapper.getByTestId('sidebar-handle')).toHaveAttribute(
-          'aria-label',
-          'Expand sidebar'
-        )
+      it('should not display the sidebar handle', () => {
+        expect(wrapper.queryByTestId('sidebar-handle')).not.toBeInTheDocument()
       })
 
       it('should apply the correct `aria-label` attribute to the navigation links', () => {
@@ -133,6 +130,17 @@ describe('Sidebar', () => {
           fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
         })
 
+        it('should display the sidebar handle', () => {
+          expect(wrapper.queryByTestId('sidebar-handle')).toBeInTheDocument()
+        })
+
+        it('should apply the correct `aria-label` value to the handle', () => {
+          expect(wrapper.getByTestId('sidebar-handle')).toHaveAttribute(
+            'aria-label',
+            'Expand sidebar'
+          )
+        })
+
         it('should display a tooltip on hover', () => {
           expect(wrapper.queryAllByTestId('tooltip')).toHaveLength(1)
         })
@@ -151,6 +159,7 @@ describe('Sidebar', () => {
 
     describe('and sidebar is expanded', () => {
       beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
         wrapper.getByTestId('sidebar-handle').click()
       })
 
@@ -304,6 +313,7 @@ describe('Sidebar', () => {
 
     describe('and the sidebar is expanded', () => {
       beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
         wrapper.getByTestId('sidebar-handle').click()
       })
       it('should render the correct user information', () => {
@@ -424,6 +434,7 @@ describe('Sidebar', () => {
 
     describe('and sidebar is expanded', () => {
       beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
         wrapper.getByTestId('sidebar-handle').click()
       })
 
@@ -475,6 +486,7 @@ describe('Sidebar', () => {
 
     describe('and the sidebar is expanded', () => {
       beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
         wrapper.getByTestId('sidebar-handle').click()
       })
 

@@ -74,9 +74,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
   return (
     <SidebarProvider>
       <SidebarContext.Consumer>
-        {({ isOpen }) => (
-          <StyledSidebar isOpen={isOpen}>
-            <SidebarHandle />
+        {({ isOpen, hasMouseOver, setHasMouseOver }) => (
+          <StyledSidebar
+            isOpen={isOpen}
+            onMouseEnter={(_) => setHasMouseOver(true)}
+            onMouseLeave={(_) => setHasMouseOver(false)}
+          >
+            {hasMouseOver && <SidebarHandle />}
             {title && (
               <StyledHead data-testid="sidebar-head">
                 {icon && <StyledIcon>{icon}</StyledIcon>}
