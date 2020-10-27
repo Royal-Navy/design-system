@@ -70,7 +70,14 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     hasContent,
     modifiers,
     time,
-  } = useDateTime(startDate, endDate, isRange, value, onChange)
+  } = useDateTime(
+    startDate,
+    endDate,
+    isRange,
+    value,
+    !!hoursBlockSize,
+    onChange
+  )
   const { from, to } = enriched
 
   function handleDayClick(day: Date, { disabled }: DayModifiers) {

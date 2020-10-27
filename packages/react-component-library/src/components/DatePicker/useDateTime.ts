@@ -14,15 +14,27 @@ interface TimeState {
   to: string
 }
 
+function getTime(hasTime: boolean, from: Date, to: Date) {
+  if (hasTime && from && to) {
+    return {
+      from: format(from, 'HH:00'),
+      to: format(to, 'HH:00'),
+    }
+  }
+
+  return { from: null, to: null }
+}
+
 export function useDateTime(
   from: Date,
   to: Date,
   isRange: boolean,
   value: string,
+  hasTime: boolean,
   onChange: (data: { startDate: Date; endDate: Date }) => void
 ) {
   const [date, setDate] = useState<StateObject>({ from, to })
-  const [time, setTime] = useState<TimeState>({ from: null, to: null })
+  const [time, setTime] = useState<TimeState>(getTime(hasTime, from, to))
   const [enriched, setEnriched] = useState<StateObject>({
     from: null,
     to: null,

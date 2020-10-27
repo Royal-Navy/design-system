@@ -113,6 +113,20 @@ examples.add('Range with hours', () => {
   )
 })
 
+examples.add('Range with hours selected', () => {
+  return (
+    <DatePicker
+      hoursBlockSize={DATEPICKER_HOURS_BLOCK_SIZE.QUARTER_DAY}
+      endDate={new Date(2019, 11, 15, 6)}
+      isOpen
+      isRange
+      onChange={action('onChange')}
+      placement={DATEPICKER_PLACEMENT.BELOW}
+      startDate={new Date(2019, 11, 10, 18)}
+    />
+  )
+})
+
 const DatePickerForm = () => {
   interface Data {
     foo: string
