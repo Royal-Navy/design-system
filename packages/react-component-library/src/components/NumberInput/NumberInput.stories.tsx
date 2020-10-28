@@ -13,12 +13,23 @@ import { UNIT_POSITION } from './constants'
 const stories = storiesOf('Number Input', module)
 const examples = storiesOf('Number Input/Examples', module)
 
+const chromaticIgnore = { chromatic: { disable: true } }
+
 stories.add('Default', () => (
   <NumberInput name="number-input" onChange={action('onChange')} />
 ))
 
 examples.add('Condensed', () => (
   <NumberInput isCondensed name="number-input" onChange={action('onChange')} />
+))
+
+examples.add('Clear', () => (
+  <NumberInput
+    canClear
+    name="number-input"
+    onChange={action('onChange')}
+    value={10}
+  />
 ))
 
 examples.add('Disabled', () => (
@@ -79,24 +90,32 @@ examples.add('Value', () => (
   <NumberInput name="number-input" onChange={action('onChange')} value={10} />
 ))
 
-examples.add('Unit', () => (
-  <NumberInput
-    name="number-input"
-    onChange={action('onChange')}
-    value={1000}
-    unit="m&sup3;"
-  />
-))
+examples.add(
+  'Unit',
+  () => (
+    <NumberInput
+      name="number-input"
+      onChange={action('onChange')}
+      value={1000}
+      unit="m&sup3;"
+    />
+  ),
+  chromaticIgnore
+)
 
-examples.add('Unit and label', () => (
-  <NumberInput
-    label="Cost"
-    name="number-input"
-    onChange={action('onChange')}
-    value={1000}
-    unit="m&sup3;"
-  />
-))
+examples.add(
+  'Unit and label',
+  () => (
+    <NumberInput
+      label="Cost"
+      name="number-input"
+      onChange={action('onChange')}
+      value={1000}
+      unit="m&sup3;"
+    />
+  ),
+  chromaticIgnore
+)
 
 examples.add('Unit before', () => (
   <NumberInput

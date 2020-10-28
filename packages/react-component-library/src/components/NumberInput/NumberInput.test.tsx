@@ -640,4 +640,23 @@ describe('NumberInput', () => {
       })
     })
   })
+
+  describe('when there is a clear button', () => {
+    describe('and the clear button is clicked', () => {
+      beforeEach(() => {
+        wrapper = render(
+          <NumberInput
+            canClear
+            name="number-input"
+            onChange={onChangeSpy}
+            value={1000}
+          />
+        )
+
+        wrapper.getByTestId('number-input-clear').click()
+      })
+
+      assertInputValue('')
+    })
+  })
 })
