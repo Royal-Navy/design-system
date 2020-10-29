@@ -4,7 +4,7 @@ import { selectors } from '@royalnavy/design-tokens'
 
 import { NavItem } from '../../../common/Nav'
 
-export interface SidebarUserItemProps extends NavItem {
+export interface SidebarUserItemEProps extends NavItem {
   icon?: React.ReactNode
 }
 
@@ -31,7 +31,7 @@ const StyledSidebarUserItemText = styled.div`
   }
 `
 
-export const SidebarUserItem: React.FC<SidebarUserItemProps> = ({
+export const SidebarUserItemE: React.FC<SidebarUserItemEProps> = ({
   icon,
   link,
 }) => {
@@ -50,4 +50,4 @@ export const SidebarUserItem: React.FC<SidebarUserItemProps> = ({
   })
 }
 
-SidebarUserItem.displayName = 'SidebarUserItem'
+SidebarUserItemE.displayName = 'SidebarUserItem'

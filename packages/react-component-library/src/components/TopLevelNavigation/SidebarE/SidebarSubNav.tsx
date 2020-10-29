@@ -7,7 +7,7 @@ import { SHEET_PLACEMENT } from '../Sheet/constants'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
 import { Nav } from '../../../common/Nav'
-import { SidebarNavItemProps } from './SidebarNavItem'
+import { SidebarNavItemEProps } from './SidebarNavItem'
 
 const SHEET_WIDTH = 200
 
@@ -64,7 +64,7 @@ const StyledSheetButton = styled(SheetButton)`
   }
 `
 
-export const SidebarSubNav: React.FC<Nav<SidebarNavItemProps>> = ({
+export const SidebarSubNav: React.FC<Nav<SidebarNavItemEProps>> = ({
   children,
 }) => {
   return (

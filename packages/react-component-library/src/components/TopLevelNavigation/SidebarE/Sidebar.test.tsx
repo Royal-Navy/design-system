@@ -9,18 +9,18 @@ import {
 import { IconHome, IconGrain, IconExitToApp } from '@royalnavy/icon-library'
 
 import {
-  Sidebar,
-  SidebarNav,
-  SidebarNavItem,
-  SidebarUser,
-  SidebarUserItem,
-  SidebarWrapper,
+  SidebarE,
+  SidebarNavE,
+  SidebarNavItemE,
+  SidebarUserE,
+  SidebarUserItemE,
+  SidebarWrapperE,
 } from '.'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 
 const userWithLink = (
-  <SidebarUser
+  <SidebarUserE
     initials="HN"
     name="Horatio Nelson"
     link={<Link href="/user-profile">Profile</Link>}
@@ -28,17 +28,17 @@ const userWithLink = (
 )
 
 const userWithMenu = (
-  <SidebarUser
+  <SidebarUserE
     initials="HN"
     name="Horatio Nelson"
     link={<Link href="/user-profile">View profile</Link>}
   >
-    <SidebarUserItem link={<Link href="/user-profile">Profile</Link>} />
-    <SidebarUserItem
+    <SidebarUserItemE link={<Link href="/user-profile">Profile</Link>} />
+    <SidebarUserItemE
       icon={<IconExitToApp />}
       link={<Link href="/logout">Logout</Link>}
     />
-  </SidebarUser>
+  </SidebarUserE>
 )
 
 const notifications = (
@@ -67,7 +67,7 @@ describe('Sidebar', () => {
 
   describe('when composed with minimal props', () => {
     beforeEach(() => {
-      wrapper = render(<Sidebar />)
+      wrapper = render(<SidebarE />)
     })
 
     it('does not render the header', () => {
@@ -78,18 +78,18 @@ describe('Sidebar', () => {
   describe('when composed with single level of navigaton and header items', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapper>
-          <Sidebar icon={<IconGrain />} title="Application Name">
-            <SidebarNav>
-              <SidebarNavItem
+        <SidebarWrapperE>
+          <SidebarE icon={<IconGrain />} title="Application Name">
+            <SidebarNavE>
+              <SidebarNavItemE
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               />
-              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-            </SidebarNav>
-          </Sidebar>
+              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
+            </SidebarNavE>
+          </SidebarE>
           <main>Hello, World!</main>
-        </SidebarWrapper>
+        </SidebarWrapperE>
       )
     })
 
@@ -197,22 +197,22 @@ describe('Sidebar', () => {
   describe('when composed with a user link', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapper>
-          <Sidebar
+        <SidebarWrapperE>
+          <SidebarE
             icon={<IconGrain />}
             title="Application Name"
             user={userWithLink}
           >
-            <SidebarNav>
-              <SidebarNavItem
+            <SidebarNavE>
+              <SidebarNavItemE
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               />
-              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-            </SidebarNav>
-          </Sidebar>
+              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
+            </SidebarNavE>
+          </SidebarE>
           <main>Hello, World!</main>
-        </SidebarWrapper>
+        </SidebarWrapperE>
       )
     })
 
@@ -234,22 +234,22 @@ describe('Sidebar', () => {
   describe('when composed with a user menu', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapper>
-          <Sidebar
+        <SidebarWrapperE>
+          <SidebarE
             icon={<IconGrain />}
             title="Application Name"
             user={userWithMenu}
           >
-            <SidebarNav>
-              <SidebarNavItem
+            <SidebarNavE>
+              <SidebarNavItemE
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               />
-              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-            </SidebarNav>
-          </Sidebar>
+              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
+            </SidebarNavE>
+          </SidebarE>
           <main>Hello, World!</main>
-        </SidebarWrapper>
+        </SidebarWrapperE>
       )
     })
 
@@ -332,22 +332,22 @@ describe('Sidebar', () => {
   describe('when composed with notifications and the `hasUnreadNotification` prop is not set', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapper>
-          <Sidebar
+        <SidebarWrapperE>
+          <SidebarE
             icon={<IconGrain />}
             title="Application Name"
             notifications={notifications}
           >
-            <SidebarNav>
-              <SidebarNavItem
+            <SidebarNavE>
+              <SidebarNavItemE
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               />
-              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-            </SidebarNav>
-          </Sidebar>
+              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
+            </SidebarNavE>
+          </SidebarE>
           <main>Hello, World!</main>
-        </SidebarWrapper>
+        </SidebarWrapperE>
       )
     })
 
@@ -359,23 +359,23 @@ describe('Sidebar', () => {
   describe('when composed with notifications and the `hasUnreadNotification prop is set`', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapper>
-          <Sidebar
+        <SidebarWrapperE>
+          <SidebarE
             icon={<IconGrain />}
             title="Application Name"
             notifications={notifications}
             hasUnreadNotification
           >
-            <SidebarNav>
-              <SidebarNavItem
+            <SidebarNavE>
+              <SidebarNavItemE
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               />
-              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-            </SidebarNav>
-          </Sidebar>
+              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
+            </SidebarNavE>
+          </SidebarE>
           <main>Hello, World!</main>
-        </SidebarWrapper>
+        </SidebarWrapperE>
       )
     })
 
@@ -451,30 +451,30 @@ describe('Sidebar', () => {
   describe('when composed with nested navigation', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapper>
-          <Sidebar
+        <SidebarWrapperE>
+          <SidebarE
             icon={<IconGrain />}
             title="Application Name"
             notifications={notifications}
             hasUnreadNotification
           >
-            <SidebarNav>
-              <SidebarNavItem
+            <SidebarNavE>
+              <SidebarNavItemE
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               >
-                <SidebarNavItem
+                <SidebarNavItemE
                   link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
                 />
-                <SidebarNavItem
+                <SidebarNavItemE
                   link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
                 />
-              </SidebarNavItem>
-              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-            </SidebarNav>
-          </Sidebar>
+              </SidebarNavItemE>
+              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
+            </SidebarNavE>
+          </SidebarE>
           <main>Hello, World!</main>
-        </SidebarWrapper>
+        </SidebarWrapperE>
       )
     })
 

@@ -15,20 +15,20 @@ import {
 } from '@royalnavy/icon-library'
 
 import {
-  Sidebar,
-  SidebarNav,
-  SidebarNavItem,
-  SidebarUser,
-  SidebarUserItem,
-  SidebarWrapper,
+  SidebarE,
+  SidebarNavE,
+  SidebarNavItemE,
+  SidebarUserE,
+  SidebarUserItemE,
+  SidebarWrapperE,
 } from '.'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 
-export default { component: Sidebar, title: 'SidebarE' } as Meta
+export default { component: SidebarE, title: 'SidebarE' } as Meta
 
 const userWithLink = (
-  <SidebarUser
+  <SidebarUserE
     initials="HN"
     name="Horatio Nelson"
     link={<Link href="/user-profile">View profile</Link>}
@@ -36,125 +36,125 @@ const userWithLink = (
 )
 
 const userWithMenu = (
-  <SidebarUser
+  <SidebarUserE
     initials="HN"
     name="Horatio Nelson"
     link={<Link href="/user-profile">View profile</Link>}
   >
-    <SidebarUserItem
+    <SidebarUserItemE
       icon={<IconPerson />}
       link={<Link href="/user-profile">Profile</Link>}
     />
-    <SidebarUserItem
+    <SidebarUserItemE
       icon={<IconSettings />}
       link={<Link href="/settings">Settings</Link>}
     />
-    <SidebarUserItem
+    <SidebarUserItemE
       icon={<IconChatBubble />}
       link={<Link href="/support">Support</Link>}
     />
-    <SidebarUserItem
+    <SidebarUserItemE
       icon={<IconExitToApp />}
       link={<Link href="/logout">Logout</Link>}
     />
-  </SidebarUser>
+  </SidebarUserE>
 )
 
 const sidebarNav = (
-  <SidebarNav>
-    <SidebarNavItem
+  <SidebarNavE>
+    <SidebarNavItemE
       icon={<IconHome />}
       link={<Link href="/dashboard">Dashboard</Link>}
     />
-    <SidebarNavItem
+    <SidebarNavItemE
       icon={<IconVerifiedUser />}
       link={<Link href="/reports">Reports</Link>}
     />
-    <SidebarNavItem
+    <SidebarNavItemE
       icon={<IconLocalShipping />}
       link={<Link href="/platforms">Platforms</Link>}
     />
-    <SidebarNavItem
+    <SidebarNavItemE
       icon={<IconFeedback />}
       link={<Link href="/data-feed">Data&nbsp;Feed</Link>}
     />
-    <SidebarNavItem
+    <SidebarNavItemE
       isActive
       icon={<IconMessage />}
       link={<Link href="/messages">Messages</Link>}
     />
-    <SidebarNavItem
+    <SidebarNavItemE
       icon={<IconSettings />}
       link={<Link href="/settings">Settings</Link>}
     />
-  </SidebarNav>
+  </SidebarNavE>
 )
 
 const sidebarNavWithSub = (
-  <SidebarNav>
-    <SidebarNavItem
+  <SidebarNavE>
+    <SidebarNavItemE
       icon={<IconHome />}
       link={<Link href="/dashboard">Dashboard</Link>}
     />
-    <SidebarNavItem
+    <SidebarNavItemE
       icon={<IconVerifiedUser />}
       link={<Link href="/reports">Reports</Link>}
     >
-      <SidebarNav>
-        <SidebarNavItem
+      <SidebarNavE>
+        <SidebarNavItemE
           link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
         />
-        <SidebarNavItem
+        <SidebarNavItemE
           link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
         />
-        <SidebarNavItem
+        <SidebarNavItemE
           link={<Link href="/sub-nav-item-3">Sub-nav-item 3</Link>}
         />
-      </SidebarNav>
-    </SidebarNavItem>
-    <SidebarNavItem
+      </SidebarNavE>
+    </SidebarNavItemE>
+    <SidebarNavItemE
       icon={<IconLocalShipping />}
       link={<Link href="/platforms">Platforms</Link>}
     />
-    <SidebarNavItem
+    <SidebarNavItemE
       icon={<IconFeedback />}
       link={<Link href="/data-feed">Data&nbsp;Feed</Link>}
     >
-      <SidebarNav>
-        <SidebarNavItem
+      <SidebarNavE>
+        <SidebarNavItemE
           link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
         />
-        <SidebarNavItem
+        <SidebarNavItemE
           link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
         />
-        <SidebarNavItem
+        <SidebarNavItemE
           link={<Link href="/sub-nav-item-3">Sub-nav-item 3</Link>}
         />
-      </SidebarNav>
-    </SidebarNavItem>
-    <SidebarNavItem
+      </SidebarNavE>
+    </SidebarNavItemE>
+    <SidebarNavItemE
       isActive
       icon={<IconMessage />}
       link={<Link href="/messages">Messages</Link>}
     >
-      <SidebarNav>
-        <SidebarNavItem
+      <SidebarNavE>
+        <SidebarNavItemE
           link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
         />
-        <SidebarNavItem
+        <SidebarNavItemE
           link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
         />
-        <SidebarNavItem
+        <SidebarNavItemE
           isActive
           link={<Link href="/sub-nav-item-3">Sub-nav-item 3</Link>}
         />
-      </SidebarNav>
-    </SidebarNavItem>
-    <SidebarNavItem
+      </SidebarNavE>
+    </SidebarNavItemE>
+    <SidebarNavItemE
       icon={<IconSettings />}
       link={<Link href="/settings">Settings</Link>}
     />
-  </SidebarNav>
+  </SidebarNavE>
 )
 
 const notifications = (
@@ -188,10 +188,10 @@ const notifications = (
 
 export const Default = () => {
   return (
-    <SidebarWrapper>
-      <Sidebar>{sidebarNav}</Sidebar>
+    <SidebarWrapperE>
+      <SidebarE>{sidebarNav}</SidebarE>
       <main>Hello, World!</main>
-    </SidebarWrapper>
+    </SidebarWrapperE>
   )
 }
 
@@ -199,12 +199,12 @@ Default.storyName = 'Default'
 
 export const WithHeader = () => {
   return (
-    <SidebarWrapper>
-      <Sidebar icon={<IconGrain />} title="Application Name">
+    <SidebarWrapperE>
+      <SidebarE icon={<IconGrain />} title="Application Name">
         {sidebarNav}
-      </Sidebar>
+      </SidebarE>
       <main>Hello, World!</main>
-    </SidebarWrapper>
+    </SidebarWrapperE>
   )
 }
 
@@ -212,16 +212,16 @@ WithHeader.storyName = 'With header'
 
 export const WithUserLink = () => {
   return (
-    <SidebarWrapper>
-      <Sidebar
+    <SidebarWrapperE>
+      <SidebarE
         icon={<IconGrain />}
         title="Application Name"
         user={userWithLink}
       >
         {sidebarNav}
-      </Sidebar>
+      </SidebarE>
       <main>Hello, World!</main>
-    </SidebarWrapper>
+    </SidebarWrapperE>
   )
 }
 
@@ -229,16 +229,16 @@ WithUserLink.storyName = 'With user link'
 
 export const WithUserMenu = () => {
   return (
-    <SidebarWrapper>
-      <Sidebar
+    <SidebarWrapperE>
+      <SidebarE
         icon={<IconGrain />}
         title="Application Name"
         user={userWithMenu}
       >
         {sidebarNav}
-      </Sidebar>
+      </SidebarE>
       <main>Hello, World!</main>
-    </SidebarWrapper>
+    </SidebarWrapperE>
   )
 }
 
@@ -246,8 +246,8 @@ WithUserMenu.storyName = 'With user menu'
 
 export const WithNotifications = () => {
   return (
-    <SidebarWrapper>
-      <Sidebar
+    <SidebarWrapperE>
+      <SidebarE
         icon={<IconGrain />}
         title="Application Name"
         user={userWithMenu}
@@ -255,9 +255,9 @@ export const WithNotifications = () => {
         hasUnreadNotification
       >
         {sidebarNav}
-      </Sidebar>
+      </SidebarE>
       <main>Hello, World!</main>
-    </SidebarWrapper>
+    </SidebarWrapperE>
   )
 }
 
@@ -265,8 +265,8 @@ WithNotifications.storyName = 'With notifications'
 
 export const WithSubNavigation = () => {
   return (
-    <SidebarWrapper>
-      <Sidebar
+    <SidebarWrapperE>
+      <SidebarE
         icon={<IconGrain />}
         title="Application Name"
         user={userWithMenu}
@@ -274,9 +274,9 @@ export const WithSubNavigation = () => {
         hasUnreadNotification
       >
         {sidebarNavWithSub}
-      </Sidebar>
+      </SidebarE>
       <main>Hello, World!</main>
-    </SidebarWrapper>
+    </SidebarWrapperE>
   )
 }
 
