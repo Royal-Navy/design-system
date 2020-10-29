@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { IconLayers } from '@royalnavy/icon-library'
+import { IconLayers, IconAnchor, IconShare } from '@royalnavy/icon-library'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
 import { Dropdown } from './Dropdown'
@@ -61,6 +61,15 @@ describe('Dropdown', () => {
         expect(wrapper.getByText('Option 3')).toBeInTheDocument()
       })
 
+      it('should not render label end adornments', () => {
+        expect(
+          wrapper.queryAllByTestId('dropdown-label-icon-visibility')
+        ).toHaveLength(0)
+        expect(
+          wrapper.queryAllByTestId('dropdown-label-icon-hidden')
+        ).toHaveLength(0)
+      })
+
       describe('when the second option is clicked', () => {
         beforeEach(() => {
           wrapper.getByText('Option 2').click()
@@ -93,6 +102,60 @@ describe('Dropdown', () => {
 
     it('should not render the label icon', () => {
       expect(wrapper.queryAllByTestId('placeholder-icon')).toHaveLength(0)
+    })
+  })
+
+  describe('with option icons', () => {
+    beforeEach(() => {
+      onSelectSpy = jest.fn()
+
+      const optionsWithIcons = [
+        {
+          ...options[0],
+          icon: <IconAnchor />,
+          isHidden: true,
+        },
+        {
+          ...options[1],
+          icon: <IconAnchor />,
+          isVisible: true,
+        },
+        {
+          ...options[3],
+          icon: <IconAnchor />,
+          rightContent: <IconShare data-testid="dropdown-label-icon-share" />,
+        },
+      ]
+
+      wrapper = render(
+        <Dropdown
+          onSelect={onSelectSpy}
+          options={optionsWithIcons}
+          label="Dropdown label"
+        />
+      )
+
+      fireEvent.focus(wrapper.container.querySelector('input'))
+      fireEvent.keyDown(wrapper.container.querySelector('input'), {
+        key: 'ArrowDown',
+        code: 40,
+      })
+    })
+
+    it('should render the label icons', () => {
+      expect(wrapper.getAllByTestId('dropdown-label-icon')).toHaveLength(3)
+    })
+
+    it('should render the label end adornments', () => {
+      expect(
+        wrapper.getByTestId('dropdown-label-icon-visibility')
+      ).toBeInTheDocument()
+      expect(
+        wrapper.getByTestId('dropdown-label-icon-hidden')
+      ).toBeInTheDocument()
+      expect(
+        wrapper.getByTestId('dropdown-label-icon-share')
+      ).toBeInTheDocument()
     })
   })
 })
