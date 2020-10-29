@@ -4,17 +4,17 @@ import { selectors } from '@royalnavy/design-tokens'
 import { Transition } from 'react-transition-group'
 
 import { SidebarHandle } from './SidebarHandle'
-import { SidebarUserProps } from './SidebarUser'
+import { SidebarUserEProps } from './SidebarUser'
 import { SidebarNotifications } from './SidebarNotifications'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext, SidebarProvider } from './context'
 import { NotificationsProps } from '../NotificationPanel'
 import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
 
-export interface SidebarProps extends ComponentWithClass {
+export interface SidebarEProps extends ComponentWithClass {
   icon?: React.ReactNode
   title?: string
-  user?: React.ReactElement<SidebarUserProps>
+  user?: React.ReactElement<SidebarUserEProps>
   hasUnreadNotification?: boolean
   notifications?: React.ReactElement<NotificationsProps>
 }
@@ -72,7 +72,7 @@ const StyledTitle = styled.div`
   transition: opacity 150ms linear;
 `
 
-export const Sidebar: React.FC<SidebarProps> = ({
+export const SidebarE: React.FC<SidebarEProps> = ({
   icon,
   title,
   children,
@@ -127,4 +127,4 @@ export const Sidebar: React.FC<SidebarProps> = ({
   )
 }
 
-Sidebar.displayName = 'Sidebar'
+SidebarE.displayName = 'Sidebar'

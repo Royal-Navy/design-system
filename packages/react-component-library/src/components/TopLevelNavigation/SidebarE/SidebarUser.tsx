@@ -9,13 +9,13 @@ import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { LinkTypes } from '../../../common/Link'
 import { Nav } from '../../../common/Nav'
 import { SidebarContext } from './context'
-import { SidebarUserItemProps } from './SidebarUserItem'
+import { SidebarUserItemEProps } from './SidebarUserItem'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
 import { SHEET_PLACEMENT } from '../Sheet/constants'
 import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
 
-export interface SidebarUserWithItemsProps extends Nav<SidebarUserItemProps> {
+export interface SidebarUserWithItemsProps extends Nav<SidebarUserItemEProps> {
   initials: string
   link: React.ReactElement<LinkTypes>
   name?: string
@@ -30,7 +30,7 @@ export interface SidebarUserWithLinkProps extends ComponentWithClass {
 
 type SidebarAvatarWithItemsProps = Omit<SidebarUserWithItemsProps, 'link'>
 
-export type SidebarUserProps =
+export type SidebarUserEProps =
   | SidebarUserWithLinkProps
   | SidebarUserWithItemsProps
 
@@ -130,7 +130,7 @@ const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
   </StyledSheet>
 )
 
-export const SidebarUser: React.FC<SidebarUserProps> = ({
+export const SidebarUserE: React.FC<SidebarUserEProps> = ({
   initials,
   link,
   name,
@@ -170,4 +170,4 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
   })
 }
 
-SidebarUser.displayName = 'SidebarUser'
+SidebarUserE.displayName = 'SidebarUser'

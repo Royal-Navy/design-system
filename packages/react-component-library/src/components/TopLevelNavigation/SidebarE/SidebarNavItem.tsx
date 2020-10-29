@@ -9,7 +9,9 @@ import { SidebarContext } from './context'
 import { Tooltip } from '../../Tooltip'
 import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
 
-export interface SidebarNavItemProps extends NavItem, Nav<SidebarNavItemProps> {
+export interface SidebarNavItemEProps
+  extends NavItem,
+    Nav<SidebarNavItemEProps> {
   icon?: React.ReactNode
   onClick?: (e: React.MouseEvent<HTMLElement>) => void
 }
@@ -101,7 +103,7 @@ const StyledText = styled.div<StyledTextProps>`
     `}
 `
 
-export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
+export const SidebarNavItemE: React.FC<SidebarNavItemEProps> = ({
   isActive,
   link,
   icon,
@@ -152,4 +154,4 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
   )
 }
 
-SidebarNavItem.displayName = 'SidebarNavItem'
+SidebarNavItemE.displayName = 'SidebarNavItem'

@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
 import { Nav, NavItem } from '../../../common/Nav'
-import { SidebarNavItem, SidebarNavItemProps } from './index'
+import { SidebarNavItemE, SidebarNavItemEProps } from './index'
 import { warnIfOverwriting } from '../../../helpers'
 
-export interface SidebarNavProps extends Nav<NavItem> {
+export interface SidebarNavEProps extends Nav<NavItem> {
   onBlur?: (e: React.FocusEvent<HTMLElement>) => void
   onFocus?: (e: React.FocusEvent<HTMLElement>) => void
   onItemClick?: (e: React.MouseEvent<HTMLElement>) => void
@@ -15,10 +15,10 @@ export interface SidebarNavProps extends Nav<NavItem> {
 }
 
 function mapNavItem(
-  navItem: React.ReactElement<SidebarNavItemProps>,
+  navItem: React.ReactElement<SidebarNavItemEProps>,
   onClick: (e: React.MouseEvent<HTMLElement>) => void
 ) {
-  warnIfOverwriting(navItem.props, 'onClick', SidebarNavItem.name)
+  warnIfOverwriting(navItem.props, 'onClick', SidebarNavItemE.name)
 
   return React.cloneElement(navItem, {
     ...navItem.props,
@@ -34,7 +34,7 @@ const StyledSidebarNav = styled.nav`
   color: ${color('neutral', 'white')};
 `
 
-export const SidebarNav: React.FC<SidebarNavProps> = ({
+export const SidebarNavE: React.FC<SidebarNavEProps> = ({
   children,
   onBlur,
   onFocus,
@@ -51,11 +51,11 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({
   >
     {React.Children.map(
       children,
-      (child: React.ReactElement<SidebarNavItemProps>) => {
+      (child: React.ReactElement<SidebarNavItemEProps>) => {
         return mapNavItem(child, onItemClick)
       }
     )}
   </StyledSidebarNav>
 )
 
-SidebarNav.displayName = 'SidebarNav'
+SidebarNavE.displayName = 'SidebarNav'

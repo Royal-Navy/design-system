@@ -8,7 +8,7 @@ const StyledSidebarWrapper = styled.div`
   flex-direction: row;
 `
 
-export const SidebarWrapper: React.FC<ComponentWithClass> = ({
+export const SidebarWrapperE: React.FC<ComponentWithClass> = ({
   className,
   children,
 }) => {
@@ -19,4 +19,4 @@ export const SidebarWrapper: React.FC<ComponentWithClass> = ({
   )
 }
 
-SidebarWrapper.displayName = 'SidebarWrapper'
+SidebarWrapperE.displayName = 'SidebarWrapper'
