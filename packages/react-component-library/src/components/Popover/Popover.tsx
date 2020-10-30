@@ -20,20 +20,20 @@ interface PopoverProps
   extends Omit<FloatingBoxProps, 'onMouseEnter' | 'onMouseLeave'> {
   children: React.ReactElement
   content: React.ReactElement
-  scheme?: typeof FLOATING_BOX_SCHEME.LIGHT | typeof FLOATING_BOX_SCHEME.DARK
   placement:
     | typeof POPOVER_PLACEMENT.ABOVE
     | typeof POPOVER_PLACEMENT.BELOW
     | typeof POPOVER_PLACEMENT.LEFT
     | typeof POPOVER_PLACEMENT.RIGHT
+  scheme?: typeof FLOATING_BOX_SCHEME.LIGHT | typeof FLOATING_BOX_SCHEME.DARK
 }
 
 export const Popover: React.FC<PopoverProps> = ({
-  className,
   children,
+  className,
   content,
-  scheme = FLOATING_BOX_SCHEME.LIGHT,
   placement = POPOVER_PLACEMENT.BELOW,
+  scheme = FLOATING_BOX_SCHEME.LIGHT,
   ...rest
 }) => {
   const [isVisible, setIsVisible] = useState(false)
@@ -59,17 +59,33 @@ export const Popover: React.FC<PopoverProps> = ({
     }, POPOVER_CLOSE_DELAY)
   }
 
+  const contentId = getId('popover-content')
+
+  function renderElement(ref: React.RefObject<HTMLElement>) {
+    return (
+      <FloatingBox
+        ref={ref}
+        className={classes}
+        position={PLACEMENTS.ARROW_POSITION}
+        scheme={scheme}
+        aria-describedby={contentId}
+        contentId={contentId}
+        {...rest}
+      >
+        {content}
+      </FloatingBox>
+    )
+  }
+
   function renderTarget(ref: React.RefObject<HTMLElement>) {
     return React.Children.map(children, (item: React.ReactElement) =>
       React.cloneElement(item, {
+        ref,
         onMouseEnter: handleOnMouseEnter,
         onMouseLeave: handleOnMouseLeave,
-        ref,
       })
     )[0]
   }
-
-  const contentId = getId('popover-content')
 
   /**
    * Type error in upstream Tether package. Fix submitted.
@@ -80,28 +96,13 @@ export const Popover: React.FC<PopoverProps> = ({
    */
   return (
     <>
-      {/*
-      // @ts-ignore */}
+      {/* @ts-ignore */}
       {React.createElement(TetherComponent, {
+        renderElement,
+        renderTarget,
         offset: PLACEMENTS.OFFSET,
         attachment: PLACEMENTS.ATTACHMENT,
         targetAttachment: PLACEMENTS.TARGET_ATTACHMENT,
-        renderTarget: (ref: any) => renderTarget(ref),
-        renderElement: (ref: any) => (
-          <FloatingBox
-            ref={ref}
-            className={classes}
-            onMouseEnter={handleOnMouseEnter}
-            onMouseLeave={handleOnMouseLeave}
-            position={PLACEMENTS.ARROW_POSITION}
-            scheme={scheme}
-            aria-describedby={contentId}
-            contentId={contentId}
-            {...rest}
-          >
-            {content}
-          </FloatingBox>
-        ),
       })}
     </>
   )

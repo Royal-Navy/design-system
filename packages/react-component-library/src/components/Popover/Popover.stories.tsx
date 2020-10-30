@@ -22,8 +22,8 @@ const popoverContent = (
 
 stories.add('Default', () => (
   <Popover
-    placement={POPOVER_PLACEMENT.BELOW}
     content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
+    placement={POPOVER_PLACEMENT.BELOW}
   >
     {popoverContent}
   </Popover>
@@ -31,9 +31,9 @@ stories.add('Default', () => (
 
 examples.add('Dark', () => (
   <Popover
+    content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
     placement={POPOVER_PLACEMENT.BELOW}
     scheme={FLOATING_BOX_SCHEME.DARK}
-    content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
   >
     {popoverContent}
   </Popover>
