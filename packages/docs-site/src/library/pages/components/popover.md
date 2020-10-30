@@ -95,6 +95,13 @@ A popover is a self-contained modal or dialogue that appears in context next to 
     Description: 'Arbitrary JSX to be rendered within the popover on hover.',
   },
   {
+    Name: 'isClick',
+    Type: 'boolean',
+    Required: 'False',
+    Default: '',
+    Description: 'If this is true then the popover is shown when clicked, otherwise it uses the default hover.',
+  },
+  {
     Name: 'scheme',
     Type: '"dark"|"light"',
     Required: 'False',

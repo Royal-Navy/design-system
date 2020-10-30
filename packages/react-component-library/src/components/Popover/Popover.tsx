@@ -20,6 +20,7 @@ interface PopoverProps
   extends Omit<FloatingBoxProps, 'onMouseEnter' | 'onMouseLeave'> {
   children: React.ReactElement
   content: React.ReactElement
+  isClick?: boolean
   placement:
     | typeof POPOVER_PLACEMENT.ABOVE
     | typeof POPOVER_PLACEMENT.BELOW
@@ -32,6 +33,7 @@ export const Popover: React.FC<PopoverProps> = ({
   children,
   className,
   content,
+  isClick,
   placement = POPOVER_PLACEMENT.BELOW,
   scheme = FLOATING_BOX_SCHEME.LIGHT,
   ...rest
@@ -44,7 +46,7 @@ export const Popover: React.FC<PopoverProps> = ({
     'is-visible': isVisible,
   })
 
-  function handleOnMouseEnter(_: React.MouseEvent) {
+  function showPopover(_: React.MouseEvent) {
     if (timerRef.current !== null) {
       clearTimeout(timerRef.current)
     }
@@ -52,11 +54,32 @@ export const Popover: React.FC<PopoverProps> = ({
     setIsVisible(true)
   }
 
-  function handleOnMouseLeave(_: React.MouseEvent) {
+  function hidePopover(_: React.MouseEvent) {
     timerRef.current = setTimeout(() => {
       timerRef.current = null
       setIsVisible(false)
     }, POPOVER_CLOSE_DELAY)
+  }
+
+  function togglePopover(_: React.MouseEvent) {
+    if (isVisible) {
+      hidePopover(_)
+    } else {
+      showPopover(_)
+    }
+  }
+
+  function getMouseEvents() {
+    if (isClick) {
+      return {
+        onClick: togglePopover,
+      }
+    }
+
+    return {
+      onMouseEnter: showPopover,
+      onMouseLeave: hidePopover,
+    }
   }
 
   const contentId = getId('popover-content')
@@ -81,8 +104,7 @@ export const Popover: React.FC<PopoverProps> = ({
     return React.Children.map(children, (item: React.ReactElement) =>
       React.cloneElement(item, {
         ref,
-        onMouseEnter: handleOnMouseEnter,
-        onMouseLeave: handleOnMouseLeave,
+        ...getMouseEvents(),
       })
     )[0]
   }
