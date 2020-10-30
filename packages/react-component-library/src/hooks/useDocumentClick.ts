@@ -7,7 +7,8 @@ const NODE_CURRENT = {
 
 export function useDocumentClick(
   node: React.MutableRefObject<undefined>,
-  onDocumentClick: (event: Event) => void
+  onDocumentClick: (event: Event) => void,
+  deps?: ReadonlyArray<any>
 ) {
   function documentClick(event: Event) {
     const current = node.current || NODE_CURRENT
@@ -23,5 +24,5 @@ export function useDocumentClick(
     return () => {
       document.removeEventListener('mousedown', documentClick)
     }
-  }, [])
+  }, deps)
 }

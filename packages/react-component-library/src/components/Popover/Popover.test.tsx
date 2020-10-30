@@ -95,7 +95,13 @@ describe('Popover', () => {
 
     describe('and the user clicks on the target', () => {
       beforeEach(() => {
-        wrapper.getByText('Click on me').click()
+        fireEvent(
+          wrapper.getByText('Click on me'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
       })
 
       it('to be visible to the end user', () => {
@@ -106,7 +112,33 @@ describe('Popover', () => {
 
       describe('and the user clicks on the target again', () => {
         beforeEach(() => {
-          wrapper.getByText('Click on me').click()
+          fireEvent(
+            wrapper.getByText('Click on me'),
+            new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
+        })
+
+        it('to not be visible to the end user', () => {
+          return waitFor(() => {
+            expect(wrapper.getByTestId('floating-box').classList).not.toContain(
+              'is-visible'
+            )
+          })
+        })
+      })
+
+      describe('and the user clicks elsewhere in the document', () => {
+        beforeEach(() => {
+          fireEvent(
+            document,
+            new MouseEvent('mousedown', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
         })
 
         it('to not be visible to the end user', () => {
