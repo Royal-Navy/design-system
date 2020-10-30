@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { DropdownIndicator } from './DropdownIndicator'
 import { DropdownLabel } from './DropdownLabel'
 import { DropdownOption } from './DropdownOption'
+import { DropdownPlaceholder } from './DropdownPlaceholder'
 
 const { color, spacing } = selectors
 
@@ -14,6 +15,7 @@ export interface DropdownProps {
   onSelect: (value: string) => void
   options: DropdownOption[]
   label: string
+  labelIcon?: React.ReactNode
 }
 
 const StyledSelect = styled(Select)`
@@ -120,6 +122,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   onSelect,
   options,
   label,
+  ...rest
 }) => {
   const onChange = (option: ValueType<DropdownOption>) => {
     const dropdownOption = option as DropdownOption
@@ -130,13 +133,14 @@ export const Dropdown: React.FC<DropdownProps> = ({
     <StyledSelect
       aria-label={label}
       classNamePrefix="rn-dropdown"
-      components={{ DropdownIndicator }}
+      components={{ DropdownIndicator, Placeholder: DropdownPlaceholder }}
       controlShouldRenderValue={false}
       formatOptionLabel={DropdownLabel}
       isSearchable={false}
       options={options}
       onChange={onChange}
       placeholder={label}
+      {...rest}
     />
   )
 }

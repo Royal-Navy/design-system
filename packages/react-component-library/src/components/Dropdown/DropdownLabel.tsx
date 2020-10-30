@@ -1,8 +1,8 @@
 import React from 'react'
+import { IconVisibility, IconVisibilityOff } from '@royalnavy/icon-library'
 import { selectors } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
-import { Visibility, VisibilityOff } from '../../icons'
 import { DropdownOption } from './DropdownOption'
 
 const { spacing } = selectors
@@ -12,6 +12,7 @@ interface StyledLabelProps {
 }
 
 const StyledLabel = styled.div<StyledLabelProps>`
+  position: relative;
   display: flex;
   align-items: center;
   flex: 1;
@@ -23,6 +24,11 @@ const StyledLabel = styled.div<StyledLabelProps>`
     `}
 `
 
+const StyledIcon = styled.span`
+  position: relative;
+  top: ${spacing('px')};
+`
+
 const StyledAdornment = styled.span`
   display: flex;
   align-items: center;
@@ -30,9 +36,17 @@ const StyledAdornment = styled.span`
 
 const StyledStartAdornment = styled(StyledAdornment)`
   padding-right: ${spacing('4')};
+
+  ${StyledIcon} + & {
+    margin-left: ${spacing('3')};
+  }
 `
 
-const StyledEndAdornment = styled(StyledAdornment)``
+const StyledEndAdornment = styled.span`
+  position: absolute;
+  top: ${spacing('px')};
+  right: 0;
+`
 
 export const DropdownLabel: React.FC<DropdownOption> = ({
   icon,
@@ -44,25 +58,23 @@ export const DropdownLabel: React.FC<DropdownOption> = ({
 }) => (
   <StyledLabel isDisabled={isDisabled}>
     {icon && (
-      <span data-testid="rn-dropdownlabel__start-adornment">{icon}</span>
+      <StyledIcon data-testid="dropdown-label-icon">
+        {icon}
+      </StyledIcon>
     )}
-    <StyledStartAdornment data-testid="dropdownlabel__label">
+    <StyledStartAdornment data-testid="dropdown-label-label">
       {label}
     </StyledStartAdornment>
-    {isHidden && (
-      <span data-testid="rn-dropdownlabel__iconinvisible">
-        <VisibilityOff />
-      </span>
-    )}
     {isVisible && (
-      <span data-testid="rn-dropdownlabel__iconvisible">
-        <Visibility />
-      </span>
-    )}
-    {rightContent && (
-      <StyledEndAdornment data-testid="rn-dropdownlabel__rightcontent">
-        {rightContent}
+      <StyledEndAdornment>
+        <IconVisibility data-testid="dropdown-label-icon-visibility" />
       </StyledEndAdornment>
     )}
+    {isHidden && (
+      <StyledEndAdornment>
+        <IconVisibilityOff data-testid="dropdown-label-icon-hidden" />
+      </StyledEndAdornment>
+    )}
+    {rightContent && <StyledEndAdornment>{rightContent}</StyledEndAdornment>}
   </StyledLabel>
 )

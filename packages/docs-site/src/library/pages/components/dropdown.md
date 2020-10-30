@@ -113,6 +113,13 @@ The `Dropdown` accepts a label, options and a handler which is called with the v
     Description: 'The text to display in the component the user needs to click on to view options',
   },
   {
+    Name: 'labelIcon',
+    Type: 'React.ReactNode',
+    Required: 'False',
+    Default: '',
+    Description: 'Optionally display an icon before the label text',
+  },
+  {
     Name: 'onSelect',
     Type: '(value:string) => void',
     Required: 'True',
