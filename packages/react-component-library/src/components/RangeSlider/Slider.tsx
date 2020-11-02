@@ -99,8 +99,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         <Rail>
           {({ getRailProps }) => (
             <div className="rn-rangeslider__rail">
-              <div className="rn-rangeslider__rail-outer" {...getRailProps()} />
-              <div className="rn-rangeslider__rail-inner" />
+              <div className="rn-rangeslider__rail-inner" {...getRailProps()} />
             </div>
           )}
         </Rail>
