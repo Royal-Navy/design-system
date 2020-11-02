@@ -3,9 +3,9 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { renderToStaticMarkup } from 'react-dom/server'
 import {
+  fireEvent,
   render,
   RenderResult,
-  fireEvent,
   waitFor,
 } from '@testing-library/react'
 
@@ -71,6 +71,78 @@ describe('Popover', () => {
 
         it('to not be visible to the end user', async () => {
           await waitFor(() => {
+            expect(wrapper.getByTestId('floating-box').classList).not.toContain(
+              'is-visible'
+            )
+          })
+        })
+      })
+    })
+  })
+
+  describe('when the `Popover` uses the click mouse event', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Popover
+          content={<pre>This is some arbitrary JSX</pre>}
+          isClick
+          placement={POPOVER_PLACEMENT.BELOW}
+        >
+          <div>Click on me</div>
+        </Popover>
+      )
+    })
+
+    describe('and the user clicks on the target', () => {
+      beforeEach(() => {
+        fireEvent(
+          wrapper.getByText('Click on me'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      })
+
+      it('to be visible to the end user', () => {
+        expect(wrapper.getByTestId('floating-box').classList).toContain(
+          'is-visible'
+        )
+      })
+
+      describe('and the user clicks on the target again', () => {
+        beforeEach(() => {
+          fireEvent(
+            wrapper.getByText('Click on me'),
+            new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
+        })
+
+        it('to not be visible to the end user', () => {
+          return waitFor(() => {
+            expect(wrapper.getByTestId('floating-box').classList).not.toContain(
+              'is-visible'
+            )
+          })
+        })
+      })
+
+      describe('and the user clicks elsewhere in the document', () => {
+        beforeEach(() => {
+          fireEvent(
+            document,
+            new MouseEvent('mousedown', {
+              bubbles: true,
+              cancelable: true,
+            })
+          )
+        })
+
+        it('to not be visible to the end user', () => {
+          return waitFor(() => {
             expect(wrapper.getByTestId('floating-box').classList).not.toContain(
               'is-visible'
             )

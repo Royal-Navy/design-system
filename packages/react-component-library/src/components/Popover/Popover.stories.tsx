@@ -8,7 +8,7 @@ import { Popover, POPOVER_PLACEMENT } from '.'
 const stories = storiesOf('Popover', module)
 const examples = storiesOf('Popover/Examples', module)
 
-const popoverContent = (
+const popoverContent = (text = 'Hover on me!') => (
   <div
     style={{
       display: 'inline-block',
@@ -16,25 +16,35 @@ const popoverContent = (
       backgroundColor: '#c9c9c9',
     }}
   >
-    Hover on me!
+    {text}
   </div>
 )
 
 stories.add('Default', () => (
   <Popover
-    placement={POPOVER_PLACEMENT.BELOW}
     content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
+    placement={POPOVER_PLACEMENT.BELOW}
   >
-    {popoverContent}
+    {popoverContent()}
   </Popover>
 ))
 
 examples.add('Dark', () => (
   <Popover
+    content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
     placement={POPOVER_PLACEMENT.BELOW}
     scheme={FLOATING_BOX_SCHEME.DARK}
-    content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
   >
-    {popoverContent}
+    {popoverContent()}
+  </Popover>
+))
+
+examples.add('Click', () => (
+  <Popover
+    content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
+    isClick
+    placement={POPOVER_PLACEMENT.BELOW}
+  >
+    {popoverContent('Click on me')}
   </Popover>
 ))
