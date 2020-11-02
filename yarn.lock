@@ -4168,10 +4168,10 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@testing-library/dom@^7.22.3", "@testing-library/dom@^7.24.2":
-  version "7.24.3"
-  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.24.3.tgz#dae3071463cf28dc7755b43d9cf2202e34cbb85d"
-  integrity sha512-6eW9fUhEbR423FZvoHRwbWm9RUUByLWGayYFNVvqTnQLYvsNpBS4uEuKH9aqr3trhxFwGVneJUonehL3B1sHJw==
+"@testing-library/dom@^7.26.0":
+  version "7.26.3"
+  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.26.3.tgz#5554ee985f712d621bd676104b879f85d9a7a0ef"
+  integrity sha512-/1P6taENE/H12TofJaS3L1J28HnXx8ZFhc338+XPR5y1E3g5ttOgu86DsGnV9/n2iPrfJQVUZ8eiGYZGSxculw==
   dependencies:
     "@babel/code-frame" "^7.10.4"
     "@babel/runtime" "^7.10.3"
@@ -4179,6 +4179,7 @@
     aria-query "^4.2.2"
     chalk "^4.1.0"
     dom-accessibility-api "^0.5.1"
+    lz-string "^1.4.4"
     pretty-format "^26.4.2"
 
 "@testing-library/jest-dom@^5.0.2":
@@ -4195,21 +4196,13 @@
     lodash "^4.17.15"
     redent "^3.0.0"
 
-"@testing-library/react@*":
-  version "11.0.4"
-  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-11.0.4.tgz#c84082bfe1593d8fcd475d46baee024452f31dee"
-  integrity sha512-U0fZO2zxm7M0CB5h1+lh31lbAwMSmDMEMGpMT3BUPJwIjDEKYWOV4dx7lb3x2Ue0Pyt77gmz/VropuJnSz/Iew==
+"@testing-library/react@*", "@testing-library/react@^11.1.0":
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-11.1.0.tgz#dfb4b3177d05a8ccf156b5fd14a5550e91d7ebe4"
+  integrity sha512-Nfz58jGzW0tgg3irmTB7sa02JLkLnCk+QN3XG6WiaGQYb0Qc4Ok00aujgjdxlIQWZHbb4Zj5ZOIeE9yKFSs4sA==
   dependencies:
     "@babel/runtime" "^7.11.2"
-    "@testing-library/dom" "^7.24.2"
-
-"@testing-library/react@^10.0.2":
-  version "10.4.9"
-  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-10.4.9.tgz#9faa29c6a1a217bf8bbb96a28bd29d7a847ca150"
-  integrity sha512-pHZKkqUy0tmiD81afs8xfiuseXfU/N7rAX3iKjeZYje86t9VaB0LrxYVa+OOsvkrveX5jCK3IjajVn2MbePvqA==
-  dependencies:
-    "@babel/runtime" "^7.10.3"
-    "@testing-library/dom" "^7.22.3"
+    "@testing-library/dom" "^7.26.0"
 
 "@testing-library/user-event@^12.0.15":
   version "12.1.6"
@@ -6578,15 +6571,7 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bl@^1.0.0:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/bl/-/bl-1.2.3.tgz#1e8dd80142eac80d7158c9dccc047fb620e035e7"
-  integrity sha512-pvcNpa0UU69UT341rO6AYy4FVAIkUHuZXRIWbq+zHnsVcRzDDjIAhGuuYoi0d//cwIwtt4pkpKycWEfjdV+vww==
-  dependencies:
-    readable-stream "^2.3.5"
-    safe-buffer "^5.1.1"
-
-bl@^4.0.0, bl@^4.0.3:
+bl@^1.0.0, bl@^4.0.0, bl@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/bl/-/bl-4.0.3.tgz#12d6287adc29080e22a705e5764b2a9522cdc489"
   integrity sha512-fs4G6/Hu4/EE+F75J8DuN/0IpQqNjAdC7aEQv7Qt8MHGUH7Ckv2MwTEEeN9QehD0pfIDkMI1bkHYkKy7xHyKIg==
@@ -9421,14 +9406,7 @@ dot-case@^3.0.3:
     no-case "^3.0.3"
     tslib "^1.10.0"
 
-dot-prop@^4.2.0:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-4.2.1.tgz#45884194a71fc2cda71cbb4bceb3a4dd2f433ba4"
-  integrity sha512-l0p4+mIuJIua0mhxGoh4a+iNL9bmeK5DvnSVQa6T0OhrVmaEa1XScX5Etc673FePCJOArq/4Pa2cLGODUWTPOQ==
-  dependencies:
-    is-obj "^1.0.0"
-
-dot-prop@^5.1.0, dot-prop@^5.2.0:
+dot-prop@^4.2.0, dot-prop@^5.1.0, dot-prop@^5.2.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-5.3.0.tgz#90ccce708cd9cd82cc4dc8c3ddd9abdd55b20e88"
   integrity sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==
@@ -13949,7 +13927,7 @@ is-number@^7.0.0:
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
 
-is-obj@^1.0.0, is-obj@^1.0.1:
+is-obj@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
   integrity sha1-PkcprB9f3gJc19g6iW2rn09n2w8=
@@ -16155,6 +16133,11 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+lz-string@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/lz-string/-/lz-string-1.4.4.tgz#c0d8eaf36059f705796e1e344811cf4c498d3a26"
+  integrity sha1-wNjq82BZ9wV5bh40SBHPTEmNOiY=
+
 macos-release@^2.2.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/macos-release/-/macos-release-2.4.1.tgz#64033d0ec6a5e6375155a74b1a1eba8e509820ac"
@@ -17085,12 +17068,7 @@ node-fetch-npm@^2.0.2:
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
 
-node-fetch@2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.1.2.tgz#ab884e8e7e57e38a944753cec706f788d1768bb5"
-  integrity sha1-q4hOjn5X44qUR1POxwb3iNF2i7U=
-
-node-fetch@2.6.1, node-fetch@^2.5.0, node-fetch@^2.6.0, node-fetch@^2.6.1:
+node-fetch@2.1.2, node-fetch@2.6.1, node-fetch@^2.5.0, node-fetch@^2.6.0, node-fetch@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
@@ -20327,7 +20305,7 @@ read@1, read@^1.0.7, read@~1.0.1:
   dependencies:
     mute-stream "~0.0.4"
 
-"readable-stream@1 || 2", readable-stream@2, readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.6, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.0, readable-stream@^2.3.3, readable-stream@^2.3.5, readable-stream@^2.3.6, readable-stream@~2.3.6:
+"readable-stream@1 || 2", readable-stream@2, readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.6, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.0, readable-stream@^2.3.3, readable-stream@^2.3.6, readable-stream@~2.3.6:
   version "2.3.7"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.7.tgz#1eca1cf711aef814c04f62252a36a62f6cb23b57"
   integrity sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw==
