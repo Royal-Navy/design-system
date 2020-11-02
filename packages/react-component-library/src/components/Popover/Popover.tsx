@@ -2,13 +2,17 @@ import React, { useRef, useState } from 'react'
 import classNames from 'classnames'
 import TetherComponent from 'react-tether'
 
-import { POPOVER_CLOSE_DELAY, POPOVER_PLACEMENT, POPOVER_PLACEMENTS } from './constants'
+import { POPOVER_PLACEMENT, POPOVER_PLACEMENTS } from './constants'
 
-import { FLOATING_BOX_SCHEME, FloatingBox, FloatingBoxProps } from '../../primitives/FloatingBox'
+import {
+  FLOATING_BOX_SCHEME,
+  FloatingBox,
+  FloatingBoxProps,
+} from '../../primitives/FloatingBox'
 
 import { getId } from '../../helpers'
 
-import { useDocumentClick } from '../../hooks'
+import { useHideShow } from './useHideShow'
 
 interface PopoverProps
   extends Omit<FloatingBoxProps, 'onMouseEnter' | 'onMouseLeave'> {
@@ -32,60 +36,13 @@ export const Popover: React.FC<PopoverProps> = ({
   scheme = FLOATING_BOX_SCHEME.LIGHT,
   ...rest
 }) => {
-  const [isVisible, setIsVisible] = useState(false)
-  const timerRef = useRef(null)
-  const floatingBoxChildrenRef = useRef()
+  const { floatingBoxChildrenRef, isVisible, mouseEvents } = useHideShow(
+    isClick
+  )
   const PLACEMENTS = POPOVER_PLACEMENTS[placement]
-
   const classes = classNames('rn-popover', className, {
     'is-visible': isVisible,
   })
-
-  function showPopover() {
-    if (timerRef.current !== null) {
-      clearTimeout(timerRef.current)
-    }
-
-    setIsVisible(true)
-  }
-
-  function hidePopover() {
-    if (isVisible) {
-      timerRef.current = setTimeout(() => {
-        timerRef.current = null
-        setIsVisible(false)
-      }, POPOVER_CLOSE_DELAY)
-    }
-  }
-
-  function togglePopover() {
-    if (isVisible) {
-      hidePopover()
-    } else {
-      showPopover()
-    }
-  }
-
-  function getMouseEvents() {
-    if (isClick) {
-      return {
-        onClick: togglePopover,
-      }
-    }
-
-    return {
-      onMouseEnter: showPopover,
-      onMouseLeave: hidePopover,
-    }
-  }
-
-  if (isClick) {
-    useDocumentClick(floatingBoxChildrenRef, () => {
-      if (isVisible) {
-        hidePopover()
-      }
-    }, [isVisible])
-  }
 
   const contentId = getId('popover-content')
 
@@ -101,7 +58,7 @@ export const Popover: React.FC<PopoverProps> = ({
         {...rest}
       >
         {React.cloneElement(content, {
-          ref: floatingBoxChildrenRef
+          ref: floatingBoxChildrenRef,
         })}
       </FloatingBox>
     )
@@ -111,7 +68,7 @@ export const Popover: React.FC<PopoverProps> = ({
     return React.Children.map(children, (item: React.ReactElement) =>
       React.cloneElement(item, {
         ref,
-        ...getMouseEvents(),
+        ...mouseEvents,
       })
     )[0]
   }
