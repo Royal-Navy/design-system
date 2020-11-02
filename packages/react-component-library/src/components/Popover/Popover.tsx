@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react'
-import classNames from 'classnames'
+import React from 'react'
+import styled, { css } from 'styled-components'
 import TetherComponent from 'react-tether'
 
 import { POPOVER_PLACEMENT, POPOVER_PLACEMENTS } from './constants'
@@ -27,9 +27,25 @@ interface PopoverProps
   scheme?: typeof FLOATING_BOX_SCHEME.LIGHT | typeof FLOATING_BOX_SCHEME.DARK
 }
 
+interface StyledFloatingBoxProps {
+  $isVisible: boolean
+}
+
+const StyledFloatingBox = styled(FloatingBox)<StyledFloatingBoxProps>`
+  pointer-events: none;
+  opacity: 0;
+  transition: linear opacity 0.3s;
+
+  ${({ $isVisible }) =>
+    $isVisible &&
+    css`
+      pointer-events: all;
+      opacity: 1;
+    `}
+`
+
 export const Popover: React.FC<PopoverProps> = ({
   children,
-  className,
   content,
   isClick,
   placement = POPOVER_PLACEMENT.BELOW,
@@ -40,17 +56,14 @@ export const Popover: React.FC<PopoverProps> = ({
     isClick
   )
   const PLACEMENTS = POPOVER_PLACEMENTS[placement]
-  const classes = classNames('rn-popover', className, {
-    'is-visible': isVisible,
-  })
 
   const contentId = getId('popover-content')
 
   function renderElement(ref: React.RefObject<HTMLElement>) {
     return (
-      <FloatingBox
+      <StyledFloatingBox
+        $isVisible={isVisible}
         ref={ref}
-        className={classes}
         position={PLACEMENTS.ARROW_POSITION}
         scheme={scheme}
         aria-describedby={contentId}
@@ -60,7 +73,7 @@ export const Popover: React.FC<PopoverProps> = ({
         {React.cloneElement(content, {
           ref: floatingBoxChildrenRef,
         })}
-      </FloatingBox>
+      </StyledFloatingBox>
     )
   }
 
