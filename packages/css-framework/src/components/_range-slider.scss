@@ -16,7 +16,8 @@ $range-slider-above-thresholds: f.color("action", "500");
   > div {
     position: relative;
     width: 100%;
-    height: 38px;
+    height: 40px;
+    padding-top: 20px;
   }
 
   &.is-disabled {
@@ -43,26 +44,21 @@ $range-slider-above-thresholds: f.color("action", "500");
 }
 
 .rn-rangeslider__rail {
-  position: relative;
+  position: absolute;
+  top: calc(50% + 20px);
+  left: 0;
   display: inline-block;
   width: 100%;
-  height: 2px;
-  top: 0.3rem;
-}
-
-.rn-rangeslider__rail-outer {
-  position: absolute;
-  width: 100%;
   height: 40px;
-  transform: translate(0%, -50%);
-  cursor: pointer;
+  transform: translateY(-100%);
 }
 
 .rn-rangeslider__rail-inner {
   position: absolute;
+  top: 50%;
   width: 100%;
   height: 2px;
-  transform: translate(0%, -50%);
+  transform: translateY(-50%);
   background-color: $range-slider-bg-colour;
   pointer-events: none;
 }
