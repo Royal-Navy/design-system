@@ -1,6 +1,8 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
+import 'jest-styled-components'
+import userEvent from '@testing-library/user-event'
 
 import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
 import { RangeSlider } from '.'
@@ -74,13 +76,7 @@ describe('RangeSlider', () => {
 
     describe('and the end user moves the handle to the right using keyboard', () => {
       beforeEach(() => {
-        fireEvent(
-          wrapper.getByTestId('rangeslider-handle'),
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-          })
-        )
+        userEvent.click(wrapper.getByTestId('rangeslider-handle'))
 
         fireEvent.keyDown(wrapper.getByTestId('rangeslider-handle'), {
           key: 'ArrowRight',
@@ -89,9 +85,10 @@ describe('RangeSlider', () => {
       })
 
       it('should update the `aria-valuenow` attribute on the handle', () => {
-        const handle = wrapper.getByTestId('rangeslider-handle')
-
-        expect(handle).toHaveAttribute('aria-valuenow', '30')
+        expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
+          'aria-valuenow',
+          '30'
+        )
       })
 
       it('invokes the onUpdateSpy callback', () => {
@@ -156,30 +153,29 @@ describe('RangeSlider', () => {
       )
     })
 
-    it('should apply the stateful `is-disabled` class', () => {
-      expect(wrapper.queryByTestId('rangeslider').classList).toContain(
-        'is-disabled'
-      )
-    })
-  })
-
-  describe('reversed', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <RangeSlider
-          mode={mode}
-          domain={domain}
-          values={values}
-          step={step}
-          isReversed
-        />
+    it('should apply the cursor `not-allowed` CSS property', () => {
+      expect(wrapper.queryByTestId('rangeslider')).toHaveStyleRule(
+        'cursor',
+        'not-allowed'
       )
     })
 
-    it('should apply the stateful `is-reversed` class', () => {
-      expect(wrapper.queryByTestId('rangeslider').classList).toContain(
-        'is-reversed'
-      )
+    describe('and the user attempts to move the slider', () => {
+      beforeEach(() => {
+        userEvent.click(wrapper.getByTestId('rangeslider-handle'))
+
+        fireEvent.keyDown(wrapper.getByTestId('rangeslider-handle'), {
+          key: 'ArrowRight',
+          code: 39,
+        })
+      })
+
+      it('does not move', () => {
+        expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
+          'aria-valuenow',
+          '20'
+        )
+      })
     })
   })
 
