@@ -9,11 +9,11 @@ import { PositionType } from '../../common/Position'
 
 const { breakpoint, color, spacing } = selectors
 
-type FloatingBoxSchemeType =
+export type FloatingBoxSchemeType =
   | typeof FLOATING_BOX_SCHEME.LIGHT
   | typeof FLOATING_BOX_SCHEME.DARK
 
-type FloatingBoxPositionType =
+export type FloatingBoxPositionType =
   | typeof FLOATING_BOX_ARROW_POSITION.LEFT_BOTTOM
   | typeof FLOATING_BOX_ARROW_POSITION.LEFT_TOP
   | typeof FLOATING_BOX_ARROW_POSITION.RIGHT_BOTTOM
