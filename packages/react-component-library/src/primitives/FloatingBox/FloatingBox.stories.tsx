@@ -1,14 +1,12 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { withKnobs, text } from '@storybook/addon-knobs'
+import { Meta } from '@storybook/react/types-6-0'
+
 import { FloatingBox } from './FloatingBox'
 import { FLOATING_BOX_ARROW_POSITION, FLOATING_BOX_SCHEME } from './constants'
 
-const stories = storiesOf('Primitives/FloatingBox', module)
+export default { component: FloatingBox, title: 'FloatingBox' } as Meta
 
-stories.addDecorator(withKnobs)
-
-stories.add('Dark', () => (
+export const Dark = () => (
   <FloatingBox
     width={300}
     height={200}
@@ -21,9 +19,10 @@ stories.add('Dark', () => (
       <pre>This is some arbitrary JSX</pre>
     </div>
   </FloatingBox>
-))
+)
+Dark.storyName = 'Dark'
 
-stories.add('Light', () => (
+export const Light = () => (
   <FloatingBox
     width={300}
     height={200}
@@ -36,4 +35,5 @@ stories.add('Light', () => (
       <pre>This is some arbitrary JSX</pre>
     </div>
   </FloatingBox>
-))
+)
+Light.storyName = 'Light'
