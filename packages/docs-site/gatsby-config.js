@@ -28,7 +28,6 @@ module.exports = {
         path: `${__dirname}/src/library/pages`,
       },
     },
-    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

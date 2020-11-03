@@ -53,8 +53,9 @@ describe('Popover', () => {
       })
 
       it('to be visible to the end user', () => {
-        expect(wrapper.getByTestId('floating-box').classList).toContain(
-          'is-visible'
+        expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
+          'opacity',
+          '1'
         )
       })
 
@@ -69,10 +70,11 @@ describe('Popover', () => {
           fireEvent.mouseOut(wrapper.getByText(HOVER_ON_ME))
         })
 
-        it('to not be visible to the end user', async () => {
-          await waitFor(() => {
-            expect(wrapper.getByTestId('floating-box').classList).not.toContain(
-              'is-visible'
+        it('to not be visible to the end user', () => {
+          return waitFor(() => {
+            expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
+              'opacity',
+              '0'
             )
           })
         })
@@ -105,8 +107,9 @@ describe('Popover', () => {
       })
 
       it('to be visible to the end user', () => {
-        expect(wrapper.getByTestId('floating-box').classList).toContain(
-          'is-visible'
+        expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
+          'opacity',
+          '1'
         )
       })
 
@@ -123,8 +126,9 @@ describe('Popover', () => {
 
         it('to not be visible to the end user', () => {
           return waitFor(() => {
-            expect(wrapper.getByTestId('floating-box').classList).not.toContain(
-              'is-visible'
+            expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
+              'opacity',
+              '0'
             )
           })
         })
@@ -143,8 +147,9 @@ describe('Popover', () => {
 
         it('to not be visible to the end user', () => {
           return waitFor(() => {
-            expect(wrapper.getByTestId('floating-box').classList).not.toContain(
-              'is-visible'
+            expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
+              'opacity',
+              '0'
             )
           })
         })
