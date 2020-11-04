@@ -4,7 +4,8 @@ description: Buttons are one of the foundational elements of any application.
 header: true
 ---
 
-import { Button, Icons, Tab, TabSet } from '@royalnavy/react-component-library'
+import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
+import { Button, Tab, TabSet } from '@royalnavy/react-component-library'
 import DataTable from '../../../components/presenters/data-table'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import SketchWidget from '../../../components/presenters/sketch-widget'
@@ -158,12 +159,12 @@ Buttons can be rendered in three different size variants.
 Icons can be added to a button and currently can only be shown to the right of the label. Icons should take the form of an SVG component.
 
 <CodeHighlighter 
-source={`<Button onClick={action} icon={<TriangleDown />}>Closed</Button>
-<Button onClick={action} icon={<TriangleUp />}>Open</Button>
+source={`<Button onClick={action} icon={<IconBrightnessLow />}>Low</Button>
+<Button onClick={action} icon={<IconBrightnessHigh />}>High</Button>
 `} language="javascript"
 >
-  <Button onClick={()=>{}} icon={<Icons.TriangleDown />}>Closed</Button>
-  <Button onClick={()=>{}} icon={<Icons.TriangleUp />}>Open</Button>
+  <Button onClick={()=>{}} icon={<IconBrightnessLow />}>Low</Button>
+  <Button onClick={()=>{}} icon={<IconBrightnessHigh />}>High</Button>
 </CodeHighlighter>
 
 ### Properties

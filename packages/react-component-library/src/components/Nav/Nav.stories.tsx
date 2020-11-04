@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-
+import { IconArrowDropDown, IconArrowDropUp } from '@royalnavy/icon-library'
 import { storiesOf } from '@storybook/react'
 import { withKnobs } from '@storybook/addon-knobs'
 
-import { TriangleDown, TriangleUp } from '../../icons'
 import { CustomLink } from '../CustomLink'
 import { Button } from '../Button'
 import { Nav } from '.'
@@ -108,7 +107,7 @@ const PrimaryNav = () => {
       <Button
         className="primary-nav--button"
         onClick={toggle}
-        icon={open ? <TriangleDown /> : <TriangleUp />}
+        icon={open ? <IconArrowDropDown /> : <IconArrowDropUp />}
       >
         Menu
       </Button>
