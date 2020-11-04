@@ -1,6 +1,12 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, render, RenderResult } from '@testing-library/react'
+import {
+  fireEvent,
+  render,
+  RenderResult,
+  waitFor,
+} from '@testing-library/react'
+import 'jest-styled-components'
 
 import { DatePicker, DATEPICKER_PLACEMENT } from '.'
 
@@ -126,13 +132,9 @@ describe('DatePicker', () => {
       })
 
       it('displays the container', () => {
-        expect(
-          wrapper.getByTestId('datepicker-input-wrapper').classList
-        ).toContain('is-open')
-
-        expect(wrapper.getByTestId('floating-box').classList).toContain(
-          'is-visible'
-        )
+        return waitFor(() => {
+          expect(wrapper.getByTestId('floating-box')).toBeVisible()
+        })
       })
 
       describe('and the user clicks it again', () => {
@@ -146,13 +148,12 @@ describe('DatePicker', () => {
         })
 
         it('hides the container', () => {
-          expect(
-            wrapper.getByTestId('datepicker-input-wrapper').classList
-          ).not.toContain('is-open')
-
-          expect(wrapper.getByTestId('floating-box').classList).not.toContain(
-            'is-visible'
-          )
+          return waitFor(() => {
+            expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
+              'opacity',
+              '0'
+            )
+          })
         })
       })
     })
@@ -167,13 +168,9 @@ describe('DatePicker', () => {
       })
 
       it('displays the container', () => {
-        expect(
-          wrapper.getByTestId('datepicker-input-wrapper').classList
-        ).toContain('is-open')
-
-        expect(wrapper.getByTestId('floating-box').classList).toContain(
-          'is-visible'
-        )
+        return waitFor(() => {
+          expect(wrapper.getByTestId('floating-box')).toBeVisible()
+        })
       })
 
       describe('and clicks on a day', () => {
@@ -196,13 +193,7 @@ describe('DatePicker', () => {
         })
 
         it('does not hide the container', () => {
-          expect(
-            wrapper.getByTestId('datepicker-input-wrapper').classList
-          ).toContain('is-open')
-
-          expect(wrapper.getByTestId('floating-box').classList).toContain(
-            'is-visible'
-          )
+          expect(wrapper.getByTestId('floating-box')).toBeVisible()
         })
       })
 
@@ -212,13 +203,12 @@ describe('DatePicker', () => {
         })
 
         it('hides the container', () => {
-          expect(
-            wrapper.getByTestId('datepicker-input-wrapper').classList
-          ).not.toContain('is-open')
-
-          expect(wrapper.getByTestId('floating-box').classList).not.toContain(
-            'is-visible'
-          )
+          return waitFor(() => {
+            expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
+              'opacity',
+              '0'
+            )
+          })
         })
       })
     })
@@ -245,10 +235,11 @@ describe('DatePicker', () => {
       )
     })
 
-    it('applies the `is-disabled` stateful class', () => {
-      expect(
-        wrapper.getByTestId('datepicker-input-wrapper').classList
-      ).toContain('is-disabled')
+    it('applies the cursor not-allowed style rule', () => {
+      expect(wrapper.getByTestId('datepicker-input-wrapper')).toHaveStyleRule(
+        'cursor',
+        'not-allowed'
+      )
     })
 
     it('applies the disabled attribute to the input', () => {
@@ -364,13 +355,7 @@ describe('DatePicker', () => {
     })
 
     it('displays the picker as open on initial render', () => {
-      expect(
-        wrapper.getByTestId('datepicker-input-wrapper').classList
-      ).toContain('is-open')
-
-      expect(wrapper.getByTestId('floating-box').classList).toContain(
-        'is-visible'
-      )
+      expect(wrapper.getByTestId('floating-box')).toBeVisible()
     })
   })
 
