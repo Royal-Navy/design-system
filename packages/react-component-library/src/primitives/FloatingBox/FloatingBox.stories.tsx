@@ -1,11 +1,8 @@
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 
-import {
-  FloatingBox,
-  FloatingBoxSchemeType,
-  FloatingBoxPositionType,
-} from './FloatingBox'
+import { FloatingBox } from './FloatingBox'
+import { FloatingBoxSchemeType, FloatingBoxPositionType } from './types'
 import { FLOATING_BOX_ARROW_POSITION, FLOATING_BOX_SCHEME } from './constants'
 
 export default { component: FloatingBox, title: 'FloatingBox' } as Meta
@@ -86,7 +83,6 @@ export const DarkLeftBottom = () => (
   />
 )
 DarkLeftBottom.storyName = 'Dark left bottom'
-
 
 export const LightTopLeft = () => (
   <FloatingBoxStory

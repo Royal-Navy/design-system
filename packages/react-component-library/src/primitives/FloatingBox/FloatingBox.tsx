@@ -6,22 +6,13 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { FLOATING_BOX_SCHEME, FLOATING_BOX_ARROW_POSITION } from './constants'
 import { getId } from '../../helpers'
 import { PositionType } from '../../common/Position'
+import {
+  FloatingBoxContent,
+  StyledFloatingBoxContent,
+} from './FloatingBoxContent'
+import { FloatingBoxSchemeType, FloatingBoxPositionType } from './types'
 
-const { breakpoint, color, spacing } = selectors
-
-export type FloatingBoxSchemeType =
-  | typeof FLOATING_BOX_SCHEME.LIGHT
-  | typeof FLOATING_BOX_SCHEME.DARK
-
-export type FloatingBoxPositionType =
-  | typeof FLOATING_BOX_ARROW_POSITION.LEFT_BOTTOM
-  | typeof FLOATING_BOX_ARROW_POSITION.LEFT_TOP
-  | typeof FLOATING_BOX_ARROW_POSITION.RIGHT_BOTTOM
-  | typeof FLOATING_BOX_ARROW_POSITION.RIGHT_TOP
-  | typeof FLOATING_BOX_ARROW_POSITION.TOP_LEFT
-  | typeof FLOATING_BOX_ARROW_POSITION.TOP_RIGHT
-  | typeof FLOATING_BOX_ARROW_POSITION.BOTTOM_LEFT
-  | typeof FLOATING_BOX_ARROW_POSITION.BOTTOM_RIGHT
+const { breakpoint, color } = selectors
 
 export interface FloatingBoxProps extends PositionType, ComponentWithClass {
   role?: string
@@ -38,65 +29,6 @@ export interface FloatingBoxProps extends PositionType, ComponentWithClass {
   onMouseLeave?: (e: React.MouseEvent) => void
   children?: React.ReactElement
 }
-
-interface StyledFloatingBoxContentProps {
-  $scheme: FloatingBoxSchemeType
-}
-
-const StyledFloatingBoxContent = styled.div<StyledFloatingBoxContentProps>`
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: ${color('neutral', 'white')};
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.12);
-
-  @media only screen and (min-width: ${breakpoint('xs').breakpoint}) {
-    position: relative;
-    top: auto;
-    left: auto;
-    height: auto;
-    width: auto;
-    padding: 0;
-    border-radius: 3px;
-
-    ${({ $scheme }) =>
-      $scheme === FLOATING_BOX_SCHEME.LIGHT &&
-      css`
-        background: ${color('neutral', 'white')};
-        border: ${color('neutral', '100')} solid ${spacing('px')};
-      `}
-
-    ${({ $scheme }) =>
-      $scheme === FLOATING_BOX_SCHEME.DARK &&
-      css`
-        background: ${color('neutral', '700')};
-        border: ${color('neutral', '700')} solid ${spacing('px')};
-        color: ${color('neutral', 'white')};
-      `}
-    
-    &:before {
-      border-style: solid;
-      content: '';
-      display: block;
-      position: absolute;
-      width: 0;
-      z-index: 0;
-    }
-
-    &:after {
-      border-style: solid;
-      content: '';
-      display: block;
-      position: absolute;
-      width: 0;
-      z-index: 1;
-    }
-  }
-`
 
 interface StyledFloatingBoxProps {
   $position: FloatingBoxPositionType
@@ -331,13 +263,9 @@ export const FloatingBox = forwardRef(
         data-testid="floating-box"
         {...rest}
       >
-        <StyledFloatingBoxContent
-          $scheme={scheme}
-          id={contentId}
-          data-testid="floating-box-content"
-        >
+        <FloatingBoxContent contentId={contentId} scheme={scheme}>
           {children}
-        </StyledFloatingBoxContent>
+        </FloatingBoxContent>
       </StyledFloatingBox>
     )
   }
