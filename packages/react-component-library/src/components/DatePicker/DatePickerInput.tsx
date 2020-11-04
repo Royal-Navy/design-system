@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { TriangleDown } from '../../icons'
+import { DropdownIndicatorIcon } from '../Dropdown/DropdownIndicatorIcon'
 
 export interface DatePickerInputProps extends ComponentWithClass {
   ref: React.Ref<HTMLDivElement>
@@ -73,7 +73,7 @@ export const DatePickerInput = forwardRef(
             data-testid="datepicker-input-button"
           >
             <div className="rn-date-picker__indicator-separator" />
-            <TriangleDown />
+            <DropdownIndicatorIcon isOpen={isOpen} />
           </button>
         </div>
       </div>
