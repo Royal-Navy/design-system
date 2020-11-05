@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.17.0](https://github.com/Royal-Navy/design-system/compare/2.16.0...2.17.0) (2020-11-05)
+
+
+### Bug Fixes
+
+* **Timeline:** Render events beyond range ([cfcc847](https://github.com/Royal-Navy/design-system/commit/cfcc847b3dbf0324d6be535f6af4f171ffb7077a))
+
+
+### Features
+
+* **Dropdown:** Add label icon ([98f9818](https://github.com/Royal-Navy/design-system/commit/98f98182669a53578da7ab3ba17365ab334ff08a))
+* **NumberInput:** Add clear button ([687000d](https://github.com/Royal-Navy/design-system/commit/687000de422c1944d8b9d4fe658225ff5ed4596d))
+* **Popover:** Control with click instead of hover ([032eb2b](https://github.com/Royal-Navy/design-system/commit/032eb2b7005745e88d2221a1f77d3b529a8bdaba))
+* **RangeSlider:** Add support for custom value formatter ([536686c](https://github.com/Royal-Navy/design-system/commit/536686c93e37f083715c44b80180c90faffbf8f4)), closes [#1561](https://github.com/Royal-Navy/design-system/issues/1561)
+* **Select:** Document `isDisabled` prop ([c877d7b](https://github.com/Royal-Navy/design-system/commit/c877d7bc27c338c2ef36221b14a5fdd1640ee9e7))
+
+
+
+
+
 # [2.16.0](https://github.com/Royal-Navy/design-system/compare/2.15.0...2.16.0) (2020-10-13)
 
 

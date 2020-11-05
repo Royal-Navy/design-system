@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.17.0](https://github.com/royal-navy/design-system/compare/2.16.0...2.17.0) (2020-11-05)
+
+
+### Bug Fixes
+
+* **CRATemplateRoyalNavy:** Add `jest-canvas-mock` ([227a3f3](https://github.com/royal-navy/design-system/commit/227a3f36858299062193d45034d93795ffc09873))
+* **CRATemplateRoyalNavy:** Remove service worker script ([61caa14](https://github.com/royal-navy/design-system/commit/61caa141ddd48e6c4bfa7a37af0347349083dec0))
+
+
+
+
+
 # [2.16.0](https://github.com/royal-navy/design-system/compare/2.15.0...2.16.0) (2020-10-13)
 
 **Note:** Version bump only for package cra-template-royalnavy
