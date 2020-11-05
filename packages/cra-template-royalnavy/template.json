@@ -6,11 +6,13 @@
       "lint": "eslint src/* --ext .ts --ext .tsx"
     },
     "dependencies": {
+      "styled-components": "^5.2.1",
       "@apollo/react-hooks": "^3.1.3",
       "apollo-boost": "^0.4.4",
       "graphql": "^14.5.8",
       "use-react-router": "^1.0.7",
       "react-router-dom": "^5.1.2",
+      "@royalnavy/design-tokens": "latest",
       "@royalnavy/css-framework": "latest",
       "@royalnavy/fonts": "latest",
       "@royalnavy/icon-library": "latest",
@@ -18,6 +20,7 @@
       "@testing-library/jest-dom": "^5.5.0",
       "@testing-library/react": "^10.0.4",
       "@testing-library/user-event": "^10.1.0",
+      "jest-canvas-mock": "^2.3.0",
       "typescript": "^3.8.0",
       "node-sass": "npm:sass",
       "sass": "^1.26.5",
