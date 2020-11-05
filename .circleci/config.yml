@@ -14,7 +14,7 @@ aliases:
         name: Build Design Tokens
         command: yarn --cwd packages/design-tokens build
   - &docker
-      - image: circleci/node:12.13.0
+      - image: circleci/node:14.15.0
 
 commands:
   dependencies:
