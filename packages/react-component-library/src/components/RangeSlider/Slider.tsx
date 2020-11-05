@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
-import classNames from 'classnames'
-
+import styled, { css } from 'styled-components'
+import { selectors } from '@royalnavy/design-tokens'
 import {
   Slider,
   SliderProps,
@@ -17,6 +17,7 @@ import {
   ThresholdTrack,
   Tick,
 } from '.'
+import { RANGE_SLIDER_BG_COLOR } from './constants'
 
 export interface RangeSliderProps
   extends Omit<SliderProps, 'children' | 'disabled' | 'reversed'> {
@@ -33,6 +34,67 @@ export interface RangeSliderProps
   displayUnit?: string
   formatValue?: RangeSliderValueFormatter
 }
+
+interface StyledRangeSliderProps {
+  $isReversed?: boolean
+  $isDisabled?: boolean
+  $hasPercentage?: boolean
+}
+
+const { color, spacing } = selectors
+
+const StyledTicks = styled.div`
+  div:first-of-type,
+  div:last-of-type {
+    div {
+      height: 16px;
+    }
+  }
+`
+
+const StyledRailInner = styled.div`
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  transform: translateY(-50%);
+  background-color: ${RANGE_SLIDER_BG_COLOR};
+  pointer-events: none;
+`
+
+const StyledRail = styled.div`
+  position: absolute;
+  top: calc(50% + 20px);
+  left: 0;
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  transform: translateY(-100%);
+`
+
+const StyledRangeSlider = styled.div<StyledRangeSliderProps>`
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+
+  > div {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    padding-top: 20px;
+  }
+
+  ${({ $isDisabled }) =>
+    $isDisabled &&
+    css`
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      * {
+        cursor: not-allowed;
+      }
+    `}
+`
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
   className,
@@ -72,20 +134,32 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
     [displayUnit]
   )
 
-  const classes = classNames('rn-rangeslider', className, {
-    'is-reversed': isReversed,
-    'is-disabled': isDisabled,
-    'has-percentage': hasPercentage,
-  })
+  const StyledIconLeft = IconLeft
+    ? styled(IconLeft)`
+        color: ${color('neutral', '400')};
+        overflow: visible;
+        margin-right: ${spacing('2')};
+      `
+    : undefined
+
+  const StyledIconRight = IconRight
+    ? styled(IconRight)`
+        color: ${color('neutral', '400')};
+        overflow: visible;
+        margin-left: ${spacing('2')};
+      `
+    : undefined
 
   return (
-    <div className={classes} data-testid="rangeslider">
+    <StyledRangeSlider
+      className={className}
+      $isReversed={isReversed}
+      $isDisabled={isDisabled}
+      $hasPercentage={hasPercentage}
+      data-testid="rangeslider"
+    >
       {IconLeft && (
-        <IconLeft
-          aria-hidden
-          className="rn-rangeslider__icon rn-rangeslider__icon--left"
-          data-testid="rangeslider-icon-left"
-        />
+        <StyledIconLeft aria-hidden data-testid="rangeslider-icon-left" />
       )}
       <Slider
         domain={domain}
@@ -98,14 +172,14 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
       >
         <Rail>
           {({ getRailProps }) => (
-            <div className="rn-rangeslider__rail">
-              <div className="rn-rangeslider__rail-inner" {...getRailProps()} />
-            </div>
+            <StyledRail>
+              <StyledRailInner {...getRailProps()} />
+            </StyledRail>
           )}
         </Rail>
         <Handles>
           {({ activeHandleID, handles, getHandleProps }) => (
-            <div className="rn-rangeslider__handles">
+            <div>
               {handles.map((handle) => (
                 <Handle
                   key={handle.id}
@@ -122,7 +196,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         </Handles>
         <Tracks left={tracksLeft} right={tracksRight}>
           {({ tracks, getTrackProps }) => (
-            <div className="rn-rangeslider__tracks">
+            <div>
               {tracks.map(({ id, source, target }) => {
                 if (thresholds) {
                   return (
@@ -153,7 +227,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         {tickCount && (
           <Ticks count={tickCount}>
             {({ ticks }) => (
-              <div className="rn-rangeslider__ticks">
+              <StyledTicks>
                 {ticks.map((tick) => (
                   <Tick
                     key={tick.id}
@@ -166,19 +240,15 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
                     thresholds={thresholds}
                   />
                 ))}
-              </div>
+              </StyledTicks>
             )}
           </Ticks>
         )}
       </Slider>
       {IconRight && (
-        <IconRight
-          aria-hidden
-          className="rn-rangeslider__icon rn-rangeslider__icon--right"
-          data-testid="rangeslider-icon-right"
-        />
+        <StyledIconRight aria-hidden data-testid="rangeslider-icon-right" />
       )}
-    </div>
+    </StyledRangeSlider>
   )
 }
 
