@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.17.0](https://github.com/Royal-Navy/design-system/compare/2.16.0...2.17.0) (2020-11-05)
+
+
+### Bug Fixes
+
+* **RangeSlider:** Fix rail positioning ([2a89fac](https://github.com/Royal-Navy/design-system/commit/2a89fac03b9f61c8b3944c1d644df53978dce681))
+
+
+### Features
+
+* **Dropdown:** Migrate to styled-components ([65193fa](https://github.com/Royal-Navy/design-system/commit/65193fad82d7a26ee97e63c030e569a29254a84f))
+* **FloatingBox:** Use `styled-components` ([80180db](https://github.com/Royal-Navy/design-system/commit/80180db9d837104de56db4ec54e5c36c83431c0d))
+* **NumberInput:** Migrate to Styled Components ([985fba3](https://github.com/Royal-Navy/design-system/commit/985fba36e35c2e7cdf4762f3a5b7e3e7fb352933))
+* **NumberInput:** Use SC for form validation ([90d0bea](https://github.com/Royal-Navy/design-system/commit/90d0bea4a25986c50430be5b2da91604e22cf3e7))
+* **Popover:** Use `styled-components` ([06e725f](https://github.com/Royal-Navy/design-system/commit/06e725fd9ac88fdce9b18bdca890bb26187f9eff))
+* **Sheet:** Update styling to match new designs ([089ec29](https://github.com/Royal-Navy/design-system/commit/089ec29889a15b143c54bbf4361558d182aeb1d1))
+
+
+
+
+
 # [2.16.0](https://github.com/Royal-Navy/design-system/compare/2.15.0...2.16.0) (2020-10-13)
 
 
