@@ -55,6 +55,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     placeholder = '',
     startAdornment,
     type = 'text',
+    isInvalid,
     ...rest
   } = props
 
