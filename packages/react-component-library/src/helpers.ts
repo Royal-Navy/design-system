@@ -9,6 +9,10 @@ function getId(prefix: string): string {
   return getKey(prefix, uuidv4())
 }
 
+function hasClass(allClasses: string, className: string) {
+  return allClasses && allClasses.split(' ').includes(className)
+}
+
 function warnIfOverwriting<P>(
   props: P,
   propertyName: string,
@@ -35,4 +39,4 @@ function withKey(
   return null
 }
 
-export { getId, getKey, warnIfOverwriting, withKey }
+export { getId, getKey, hasClass, warnIfOverwriting, withKey }
