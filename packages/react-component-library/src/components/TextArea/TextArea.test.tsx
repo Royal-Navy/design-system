@@ -40,12 +40,6 @@ describe('TextArea', () => {
       )
     })
 
-    it('should add the `has-content` to the container', () => {
-      expect(wrapper.getByTestId('textarea-container').classList).toContain(
-        'has-content'
-      )
-    })
-
     it('renders the footnote', () => {
       expect(wrapper.getByText('footnote')).toBeInTheDocument()
     })
