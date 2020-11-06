@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { getKey } from '../../helpers'
 import { SWITCH_SIZE } from '.'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { InputValidationProps } from '../../common/InputValidationProps'
 
 function getActiveOption(options: SwitchOptionProps[], value: string) {
   const initial: SwitchOptionProps | string = options.find(
@@ -17,11 +19,10 @@ export interface SwitchOptionProps {
   value: string
 }
 
-export interface SwitchProps {
+export interface SwitchProps extends ComponentWithClass, InputValidationProps {
   name: string
   value?: string
   label?: string
-  className?: string
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
   options: SwitchOptionProps[]
   size?:

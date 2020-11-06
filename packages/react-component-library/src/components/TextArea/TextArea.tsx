@@ -4,11 +4,13 @@ import classNames from 'classnames'
 
 import { useFocus } from '../../hooks/useFocus'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { InputValidationProps } from '../../common/InputValidationProps'
 import { useInputValue } from '../../hooks/useInputValue'
 
 export interface TextAreaInputProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement>,
-    ComponentWithClass {
+    ComponentWithClass,
+    InputValidationProps {
   isDisabled?: boolean
   footnote?: string
   label?: string

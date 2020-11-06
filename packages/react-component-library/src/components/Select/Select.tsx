@@ -6,9 +6,13 @@ import { DropdownIndicator } from '../Dropdown/DropdownIndicator'
 import { Input } from './Input'
 import { SingleValue } from './SingleValue'
 import { Option, SelectOptionWithBadgeType } from './Option'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { InputValidationProps } from '../../common/InputValidationProps'
 
-export interface SelectProps extends ReactSelectProps<any> {
-  className?: string
+export interface SelectProps
+  extends ReactSelectProps<any>,
+    ComponentWithClass,
+    InputValidationProps {
   label?: string
   name?: string
   onChange?: (event: any) => void
@@ -37,7 +41,7 @@ export const Select: React.FC<SelectProps> = ({
     })
   }
 
-  const selectedOption = options.find(option => option.value === value)
+  const selectedOption = options.find((option) => option.value === value)
 
   const classes = classNames('rn-select', className)
 

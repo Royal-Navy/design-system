@@ -3,8 +3,9 @@ import { v4 as uuidv4 } from 'uuid'
 import classNames from 'classnames'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { InputValidationProps } from '../../common/InputValidationProps'
 
-export interface RadioProps extends ComponentWithClass {
+export interface RadioProps extends ComponentWithClass, InputValidationProps {
   id?: string
   isChecked?: boolean
   isDisabled?: boolean

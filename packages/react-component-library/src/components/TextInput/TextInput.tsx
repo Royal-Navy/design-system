@@ -4,10 +4,13 @@ import classNames from 'classnames'
 
 import { useFocus } from '../../hooks/useFocus'
 import { useInputValue } from '../../hooks/useInputValue'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { InputValidationProps } from '../../common/InputValidationProps'
 
-export interface TextInputProps {
+export interface TextInputProps
+  extends ComponentWithClass,
+    InputValidationProps {
   autoFocus?: boolean
-  className?: string
   endAdornment?: React.ReactNode
   footnote?: string
   id?: string
