@@ -2,7 +2,7 @@ import React from 'react'
 import ReactSelect, { Props as ReactSelectProps } from 'react-select'
 import classNames from 'classnames'
 
-import { DropdownIndicator } from './DropdownIndicator'
+import { DropdownIndicator } from '../Dropdown/DropdownIndicator'
 import { Input } from './Input'
 import { SingleValue } from './SingleValue'
 import { Option, SelectOptionWithBadgeType } from './Option'

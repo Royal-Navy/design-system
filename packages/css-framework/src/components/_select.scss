@@ -1,8 +1,6 @@
 @use "../abstracts/functions" as f;
 
 .rn-select {
-
-
   .rn-select__control {
     padding-top: f.spacing("px");
     padding-bottom: f.spacing("px");
@@ -14,7 +12,8 @@
   .rn-select__control--is-focused,
   .rn-select__control:hover {
     border-color: f.color("action", "600");
-    box-shadow: 0 0 0 1px f.color("action", "600"), 0 0 0 4px f.color("action", "100");
+    box-shadow: 0 0 0 1px f.color("action", "600"),
+      0 0 0 4px f.color("action", "100");
     &.rn-select__control--menu-is-open {
       border-bottom-color: transparent;
     }
@@ -24,20 +23,14 @@
     padding: 0;
   }
 
-
   .rn-select__control--menu-is-open {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom-color: transparent;
   }
 
-  .rn-select__dropdown-indicator {
-    padding-left: (40px - 11px)/2;
-    padding-right: (40px - 11px)/2;
-  }
-
   .rn-select__indicator-separator {
-    background-color: f.color("neutral", "100");
+    margin-right: f.spacing("3");
   }
 
   .rn-select__menu {
@@ -49,7 +42,7 @@
       2px 2px 0 2px f.color("action", "100");
     border: 1px solid f.color("action", "600");
     border-top: 0;
-    background:f.color("neutral", "white");
+    background: f.color("neutral", "white");
     &::after {
       position: absolute;
       top: -1px;
@@ -120,7 +113,6 @@
     padding-bottom: f.spacing("2");
   }
 
-
   .rn-select__single-value .rn-select__badge {
     display: inline-block;
     transform: translateY(-1px);
@@ -134,15 +126,13 @@
     left: 0;
     transform-origin: top left;
     transform: translate(f.spacing("6"), f.spacing("6")) scale(1);
-    transition:
-      color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+    transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
       transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     pointer-events: none;
     color: f.color("neutral", "400");
     font-size: f.font-size("base");
     white-space: nowrap;
   }
-
 
   .rn-select__control--is-focused .rn-select__label,
   .rn-select__value-container--has-value .rn-select__label {

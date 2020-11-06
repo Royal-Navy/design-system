@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
+import { IconArrowDropDown, IconArrowDropUp } from '@royalnavy/icon-library'
 import {
   Badge,
   Button,
-  Icons,
   Nav,
   PhaseBanner,
 } from '@royalnavy/react-component-library'
@@ -12,8 +12,6 @@ import {
 import packageJson from '../../../../package'
 import SiteLogo from './images/SiteLogo'
 import GithubLogo from '../images/GithubLogo'
-
-const { TriangleDown, TriangleUp } = Icons
 
 const MastHead = ({ navItems }) => {
   const [open, setOpen] = useState(false)
@@ -59,7 +57,7 @@ const MastHead = ({ navItems }) => {
             className="masthead__button"
             data-testid="primary-nav-button"
             onClick={toggle}
-            icon={open ? <TriangleDown /> : <TriangleUp />}
+            icon={open ? <IconArrowDropDown /> : <IconArrowDropUp />}
             variant="secondary"
           >
             Menu
