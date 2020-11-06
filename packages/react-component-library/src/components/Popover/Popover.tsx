@@ -32,14 +32,12 @@ interface StyledFloatingBoxProps {
 }
 
 const StyledFloatingBox = styled(FloatingBox)<StyledFloatingBoxProps>`
-  pointer-events: none;
   opacity: 0;
   transition: linear opacity 0.3s;
 
   ${({ $isVisible }) =>
     $isVisible &&
     css`
-      pointer-events: all;
       opacity: 1;
     `}
 `
@@ -102,6 +100,7 @@ export const Popover: React.FC<PopoverProps> = ({
         offset: PLACEMENTS.OFFSET,
         attachment: PLACEMENTS.ATTACHMENT,
         targetAttachment: PLACEMENTS.TARGET_ATTACHMENT,
+        style: { pointerEvents: isVisible ? 'all' : 'none' },
       })}
     </>
   )
