@@ -322,6 +322,12 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   disabledDays,
   initialMonth,
 }) => {
+  const componentRef = useRef(null)
+
+  const { floatingBoxChildrenRef, openState, onFocus, onClose } = useOpenClose(
+    isOpen
+  )
+
   const [state, setState] = useState<StateObject>({
     from: startDate,
     to: endDate,
@@ -344,8 +350,6 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     }
   }
 
-  const componentRef = useRef(null)
-  const { openState, onFocus, onClose } = useOpenClose(componentRef, isOpen)
   const hasContent = (value && value.length) || from
   const PLACEMENTS = DATEPICKER_PLACEMENTS[placement]
 
@@ -397,15 +401,17 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             aria-labelledby={titleId}
             aria-live="polite"
           >
-            <StyledDayPicker
-              numberOfMonths={isRange ? 2 : 1}
-              selectedDays={[from, { from, to }]}
-              modifiers={modifiers}
-              onDayClick={handleDayClick}
-              initialMonth={startDate || initialMonth}
-              disabledDays={disabledDays}
-              $isRange={isRange}
-            />
+            <div ref={floatingBoxChildrenRef}>
+              <StyledDayPicker
+                numberOfMonths={isRange ? 2 : 1}
+                selectedDays={[from, { from, to }]}
+                modifiers={modifiers}
+                onDayClick={handleDayClick}
+                initialMonth={startDate || initialMonth}
+                disabledDays={disabledDays}
+                $isRange={isRange}
+              />
+            </div>
           </StyledFloatingBox>
         ),
       })}
