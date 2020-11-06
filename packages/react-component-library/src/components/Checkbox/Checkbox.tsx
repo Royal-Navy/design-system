@@ -3,8 +3,11 @@ import classNames from 'classnames'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { InputValidationProps } from '../../common/InputValidationProps'
 
-export interface CheckboxProps extends ComponentWithClass {
+export interface CheckboxProps
+  extends ComponentWithClass,
+    InputValidationProps {
   id?: string
   isChecked?: boolean
   isDisabled?: boolean

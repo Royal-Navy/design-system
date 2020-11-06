@@ -9,6 +9,7 @@ import { Footnote } from './Footnote'
 import { getId } from '../../helpers'
 import { Input } from './Input'
 import { InputValidationProps } from '../../common/InputValidationProps'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StartAdornment } from './StartAdornment'
 import { useValue } from './useValue'
 import { UNIT_POSITION } from './constants'
@@ -20,10 +21,11 @@ export type UnitPosition =
   | typeof UNIT_POSITION.AFTER
   | typeof UNIT_POSITION.BEFORE
 
-export interface NumberInputProps extends InputValidationProps {
+export interface NumberInputProps
+  extends ComponentWithClass,
+    InputValidationProps {
   autoFocus?: boolean
   canClear?: boolean
-  className?: string
   footnote?: string
   id?: string
   isCondensed?: boolean
