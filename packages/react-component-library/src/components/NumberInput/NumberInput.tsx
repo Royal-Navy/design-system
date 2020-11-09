@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { EndAdornment } from './EndAdornment'
 import { Footnote } from './Footnote'
-import { getId } from '../../helpers'
+import { getId, hasClass, } from '../../helpers'
 import { Input } from './Input'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
@@ -98,10 +98,6 @@ function isWithinRange(max: number, min: number, newValue: number) {
   const isNotAboveMax = isNil(max) || newValue <= max
 
   return isNotBelowMin && isNotAboveMax
-}
-
-function hasClass(allClasses: string, className: string) {
-  return allClasses && allClasses.split(' ').includes(className)
 }
 
 export const NumberInput: React.FC<NumberInputProps> = ({
