@@ -23,6 +23,13 @@ const StyledSelect = styled(Select)`
     border-color: ${color('neutral', '200')};
   }
 
+  // ie 11 fix: https://github.com/philipwalton/flexbugs/issues/231#issuecomment-362790042
+  .rn-dropdown__control:after {
+    content: '';
+    min-height: inherit;
+    font-size: 0;
+  }
+
   .rn-dropdown__placeholder {
     color: ${color('neutral', '500')};
   }
