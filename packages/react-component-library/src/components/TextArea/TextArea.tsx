@@ -8,7 +8,6 @@ import { useFocus } from '../../hooks/useFocus'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { useInputValue } from '../../hooks/useInputValue'
-import { InputValidationProps } from '../../common/InputValidationProps'
 
 const { color, fontSize, spacing } = selectors
 
