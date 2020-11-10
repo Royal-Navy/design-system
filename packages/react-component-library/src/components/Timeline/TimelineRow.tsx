@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import classNames from 'classnames'
 import { selectors } from '@royalnavy/design-tokens'
+import { useTimelineRowContent } from './hooks/useTimelineRowContent'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineContext, TimelineEventsProps } from '.'
@@ -56,6 +57,10 @@ const StyledRowContent = styled.div`
   position: relative;
 `
 
+const StyledNoEvents = styled.span`
+  display: none;
+`
+
 export const TimelineRow: React.FC<TimelineRowProps> = ({
   children,
   name,
@@ -66,6 +71,7 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
   ...rest
 }) => {
   const classes = classNames('timeline__row', className)
+  const { noCells, rowContentRef } = useTimelineRowContent(isHeader, [children])
 
   return (
     <TimelineContext.Consumer>
@@ -86,7 +92,10 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
               {renderRowHeader ? renderRowHeader(name) : name}
             </StyledRowHeader>
           )}
-          <StyledRowContent>{children}</StyledRowContent>
+          <StyledRowContent ref={rowContentRef}>
+            {noCells && <StyledNoEvents role="cell">No events</StyledNoEvents>}
+            {children}
+          </StyledRowContent>
         </StyledTimelineRow>
       )}
     </TimelineContext.Consumer>
