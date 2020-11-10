@@ -16,24 +16,36 @@ const HOVER_ON_ME = 'Hover on me!'
 describe('Popover', () => {
   let wrapper: RenderResult
   let children: React.ReactElement
+  let clickSpy: (e: React.MouseEvent) => void
 
   describe('when provided a placement and arbitrary JSX content', () => {
     beforeEach(() => {
       children = <pre>This is some arbitrary JSX</pre>
+      clickSpy = jest.fn()
 
       wrapper = render(
-        <Popover placement={POPOVER_PLACEMENT.BELOW} content={children}>
-          <div
-            style={{
-              display: 'inline-block',
-              padding: '1rem',
-              backgroundColor: '#c9c9c9',
-            }}
-          >
-            {HOVER_ON_ME}
-          </div>
-        </Popover>
+        <>
+          <Popover placement={POPOVER_PLACEMENT.BELOW} content={children}>
+            <div
+              style={{
+                display: 'inline-block',
+                padding: '1rem',
+                backgroundColor: '#c9c9c9',
+              }}
+            >
+              {HOVER_ON_ME}
+            </div>
+          </Popover>
+          <button onClick={clickSpy} style={{ margin: '2rem' }}>
+            Click me!
+          </button>
+        </>
       )
+    })
+
+    it('allows button covered by Popover to be clicked when Popover is hidden', () => {
+      wrapper.queryByText('Click me!').click()
+      expect(clickSpy).toHaveBeenCalledTimes(1)
     })
 
     it('should set the `aria-describedby` attribute to the ID of the content', () => {
