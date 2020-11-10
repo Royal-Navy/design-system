@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import classNames from 'classnames'
 import { differenceInDays, endOfWeek, max, min } from 'date-fns'
-import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { TimelineNoData } from './TimelineNoData'
 import { TimelineRowProps } from '.'
 import { TimelineContext } from './context'
 import { withKey } from '../../helpers'
 import { formatPx, isOdd } from './helpers'
 import {
-  NO_DATA_MESSAGE,
   WEEK_START,
   TIMELINE_BG_COLOR,
   TIMELINE_ALT_BG_COLOR,
@@ -29,27 +28,6 @@ export interface TimelineRowsProps extends ComponentWithClass {
     widthPx: string
   ) => React.ReactElement
 }
-
-const { color, spacing, zIndex } = selectors
-
-const StyledNoData = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: inherit;
-
-  span {
-    background-color: ${color('neutral', 'white')};
-    padding: ${spacing('2')};
-    z-index: ${zIndex('body', 1)};
-  }
-`
-
-const noData = (
-  <StyledNoData role="row" data-testid="timeline-no-data">
-    <span role="cell">{NO_DATA_MESSAGE}</span>
-  </StyledNoData>
-)
 
 interface StyledTimelineRowWeekProps {
   isOddNumber: boolean
@@ -174,7 +152,7 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
         role="rowgroup"
         data-testid="timeline-rows"
       >
-        {hasChildren ? children : noData}
+        {hasChildren ? children : <TimelineNoData />}
       </StyledTimelineMain>
     </>
   )
