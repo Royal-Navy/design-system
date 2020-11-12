@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.18.0](https://github.com/Royal-Navy/design-system/compare/2.17.0...2.18.0) (2020-11-12)
+
+
+### Features
+
+* **TextArea:** Convert to `styled-components` ([8d190a5](https://github.com/Royal-Navy/design-system/commit/8d190a5c8fe5e4e70b949a089536a7887c0dbcbe))
+
+
+
+
+
 # [2.17.0](https://github.com/Royal-Navy/design-system/compare/2.16.0...2.17.0) (2020-11-05)
 
 
