@@ -10,6 +10,10 @@ excludeFromNavigation: true
 
 # Versions
 
+## 2.18.0
+* [Release note](https://github.com/Royal-Navy/design-system/releases/tag/2.18.0)
+* [Documentation](https://26f58ccc7bb849a39ce82828a4fcdfe2-design-system.netlify.com)
+
 ## 2.17.0
 * [Release note](https://github.com/Royal-Navy/design-system/releases/tag/2.17.0)
 * [Documentation](https://a56194e13c3d4feda7b89d341efcefd1-design-system.netlify.com)

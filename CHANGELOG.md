@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.18.0](https://github.com/Royal-Navy/design-system/compare/2.17.0...2.18.0) (2020-11-12)
+
+
+### Bug Fixes
+
+* **Dropdown:** Fix label in ie 11 ([341a456](https://github.com/Royal-Navy/design-system/commit/341a4564170f9665d1a9e07b328385bf21ada8a6))
+* **Popover:** Prevent hidden Popover blocking covered content ([4634f1c](https://github.com/Royal-Navy/design-system/commit/4634f1c5d0e25213f3fdc0d16f7da443d8baf332))
+* **ReactComponentLibrary:** Correctly extend some interfaces ([14e3fd7](https://github.com/Royal-Navy/design-system/commit/14e3fd764fe9964d2b71261ea3e8b5efac600e1d))
+* **TextArea:** Fix bad merge ([dd957b8](https://github.com/Royal-Navy/design-system/commit/dd957b8935cab64c58cb5a99d2d7f75decc462ff))
+* **TextInput:** Do not drill `isInvalid` prop to DOM node ([de8f4a9](https://github.com/Royal-Navy/design-system/commit/de8f4a93befb9d970ca456441a7b5c84e4d3e6b4))
+
+
+### Features
+
+* **TextArea:** Convert to `styled-components` ([8d190a5](https://github.com/Royal-Navy/design-system/commit/8d190a5c8fe5e4e70b949a089536a7887c0dbcbe))
+
+
+
+
+
 # [2.17.0](https://github.com/Royal-Navy/design-system/compare/2.16.0...2.17.0) (2020-11-05)
 
 
