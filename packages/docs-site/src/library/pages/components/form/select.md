@@ -163,6 +163,13 @@ with the field.
     Default: '',
     Description: 'An optional thing to show inside a badge in the option, such as a count',
   },
+  {
+    Name: 'icon',
+    Type: 'React.ReactNode',
+    Required: 'False',
+    Default: '',
+    Description: 'A component that renders an icon to the right of the option',
+  },
 ]} />
 
 </Tab>

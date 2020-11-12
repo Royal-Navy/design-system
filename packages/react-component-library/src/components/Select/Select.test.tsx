@@ -1,6 +1,8 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
+import { IconAnchor } from '@royalnavy/icon-library'
+import userEvent from '@testing-library/user-event'
 
 import { Select } from '.'
 
@@ -101,6 +103,30 @@ describe('Select', () => {
 
     it('should find the input using the new `data-testid`', () => {
       expect(wrapper.getByTestId('select-1')).toBeInTheDocument()
+    })
+  })
+
+  describe('when provided with options that have icons', () => {
+    beforeEach(() => {
+      onChangeSpy = jest.fn()
+
+      const iconOptions = options.map((option) => ({
+        ...option,
+        icon: <IconAnchor data-testid="select-option-icon" />,
+      }))
+
+      wrapper = render(<Select label="Select label" options={iconOptions} />)
+
+      const input = wrapper.getByTestId('react-select-vendor-input')
+      fireEvent.focus(input)
+      fireEvent.keyDown(input, {
+        key: 'ArrowDown',
+        code: 40,
+      })
+    })
+
+    it('should render the icons', () => {
+      expect(wrapper.getAllByTestId('select-option-icon')).toHaveLength(2)
     })
   })
 })

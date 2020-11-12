@@ -1,6 +1,7 @@
-import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import React from 'react'
+import { action } from '@storybook/addon-actions'
+import { IconAnchor } from '@royalnavy/icon-library'
+import { storiesOf } from '@storybook/react'
 
 import { Select } from './index'
 
@@ -16,6 +17,11 @@ const options = [
   { value: 'vanilla', label: 'Vanilla', badge: 50 },
 ]
 
+const iconOptions = options.map(option => ({
+  ...option,
+  icon: <IconAnchor />,
+}))
+
 stories.add('Default', () => (
   <Select
     options={options}
@@ -30,5 +36,13 @@ examples.add('Disabled', () => (
     label="Example Label"
     onChange={action('onChange')}
     isDisabled
+  />
+))
+
+examples.add('Icons', () => (
+  <Select
+    options={iconOptions}
+    label="Example Label"
+    onChange={action('onChange')}
   />
 ))
