@@ -31,16 +31,21 @@ interface StyledChunkProps {
   $maxWidth: string
 }
 
-const StyledChunk = styled.div<StyledChunkProps>`
+const StyledChunk = styled.div.attrs<StyledChunkProps>(
+  ({ $left, $width, $maxWidth }) => ({
+    style: {
+      left: $left,
+      width: $width,
+      maxWidth: $maxWidth,
+    },
+  })
+)<StyledChunkProps>`
   position: absolute;
-  left: ${({ $left }) => $left};
   transform: translate(0%, -50%);
   height: 2px;
   z-index: 1;
   background-color: ${RANGE_SLIDER_TRACK_COLOR};
   cursor: pointer;
-  width: ${({ $width }) => $width};
-  max-width: ${({ $maxWidth }) => $maxWidth};
 
   ${({ $thresholdColor }) => css`
     background-color: ${$thresholdColor};
