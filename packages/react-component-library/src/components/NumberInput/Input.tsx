@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { isFinite, isNil } from 'lodash'
-import { ColourGroup, selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 import { NumberInputUnit } from './NumberInputUnit'
@@ -11,13 +11,15 @@ import { InputValidationProps } from '../../common/InputValidationProps'
 const { color, fontSize, spacing } = selectors
 
 interface InputProps extends InputValidationProps {
+  hasFocus: boolean
   isDisabled?: boolean
   id?: string
   isCondensed: boolean
   label?: string
   name: string
+  onBlur: (event: React.FormEvent<HTMLInputElement>) => void
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onInputBlur: (event: React.FormEvent<HTMLInputElement>) => void
+  onFocus: (event: React.FormEvent<HTMLInputElement>) => void
   placeholder?: string
   unit: string
   unitPosition: UnitPosition
@@ -30,32 +32,15 @@ interface StyledInputProps {
   offset: number
 }
 
-interface StyledInputWrapperProps extends InputValidationProps {
-  hasFocus: boolean
-}
-
 interface StyledLabelProps {
   hasContent: boolean
   hasFocus: boolean
   hasUnit: boolean
 }
 
-function getInputBorder(group: ColourGroup) {
-  return css`
-    border-radius: 4px;
-    box-shadow: 2px 2px 0 0 ${color(group, '600')},
-      -2px -2px 0 0 ${color(group, '600')}, 2px -2px 0 0 ${color(group, '600')},
-      -2px 2px 0 0 ${color(group, '600')};
-  `
-}
-
-const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
+const StyledInputWrapper = styled.div`
   position: relative;
   flex-grow: 1;
-
-  ${({ hasFocus }) => hasFocus && getInputBorder('action')}
-  ${({ isInvalid }) => isInvalid && getInputBorder('danger')}
-  ${({ isValid }) => isValid && getInputBorder('success')}
 `
 
 const StyledLabel = styled.label<StyledLabelProps>`
@@ -106,15 +91,11 @@ const StyledInput = styled.input<StyledInputProps>`
 `
 
 export const Input: React.FC<InputProps> = ({
+  hasFocus,
   isDisabled = false,
   id,
   isCondensed,
-  isInvalid,
-  isValid,
   label,
-  name,
-  onChange,
-  onInputBlur,
   placeholder = '',
   unit,
   unitPosition,
@@ -122,18 +103,13 @@ export const Input: React.FC<InputProps> = ({
   ...rest
 }) => {
   const hasLabel = !!(label && label.length)
-  const [hasFocus, setHasFocus] = useState<boolean>(false)
   const { canShow, inputOffset, inputRef, unitOffset } = useInputText(
     value,
     unitPosition
   )
 
   return (
-    <StyledInputWrapper
-      hasFocus={hasFocus}
-      isInvalid={isInvalid}
-      isValid={isValid}
-    >
+    <StyledInputWrapper>
       {hasLabel && (
         <StyledLabel
           data-testid="number-input-label"
@@ -161,16 +137,7 @@ export const Input: React.FC<InputProps> = ({
         hasLabel={hasLabel}
         id={id}
         isCondensed={isCondensed}
-        name={name}
         offset={inputOffset}
-        onBlur={(e) => {
-          setHasFocus(false)
-          onInputBlur(e)
-        }}
-        onChange={onChange}
-        onFocus={() => {
-          setHasFocus(true)
-        }}
         placeholder={placeholder}
         ref={inputRef}
         type="text"
