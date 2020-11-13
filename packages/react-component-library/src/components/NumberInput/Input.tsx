@@ -27,15 +27,15 @@ interface InputProps extends InputValidationProps {
 }
 
 interface StyledInputProps {
-  hasLabel: boolean
-  isCondensed: boolean
-  offset: number
+  $hasLabel: boolean
+  $isCondensed: boolean
+  $offset: number
 }
 
 interface StyledLabelProps {
-  hasContent: boolean
-  hasFocus: boolean
-  hasUnit: boolean
+  $hasContent: boolean
+  $hasFocus: boolean
+  $hasUnit: boolean
 }
 
 const StyledInputWrapper = styled.div`
@@ -57,8 +57,8 @@ const StyledLabel = styled.label<StyledLabelProps>`
   color: ${color('neutral', '400')};
   font-size: ${fontSize('base')};
 
-  ${({ hasContent, hasFocus, hasUnit }) =>
-    (hasContent || hasFocus || hasUnit) &&
+  ${({ $hasContent, $hasFocus, $hasUnit }) =>
+    ($hasContent || $hasFocus || $hasUnit) &&
     css`
       transform: translate(${spacing('6')}, 6px) scale(0.8);
     `}
@@ -68,13 +68,13 @@ const StyledInput = styled.input<StyledInputProps>`
   display: block;
   box-sizing: border-box;
   width: 100%;
-  margin: 0 0 0 ${({ offset }) => `${offset}px`};
-  padding: ${({ hasLabel, isCondensed }) => {
-    if (isCondensed) {
+  margin: 0 0 0 ${({ $offset }) => `${$offset}px`};
+  padding: ${({ $hasLabel, $isCondensed }) => {
+    if ($isCondensed) {
       return spacing('3')
     }
 
-    if (hasLabel) {
+    if ($hasLabel) {
       return `${spacing('10')} ${spacing('6')} ${spacing('2')}`
     }
 
@@ -112,10 +112,10 @@ export const Input: React.FC<InputProps> = ({
     <StyledInputWrapper>
       {hasLabel && (
         <StyledLabel
+          $hasContent={!isNil(value)}
+          $hasFocus={hasFocus}
+          $hasUnit={!isNil(unit)}
           data-testid="number-input-label"
-          hasFocus={hasFocus}
-          hasContent={!isNil(value)}
-          hasUnit={!isNil(unit)}
           htmlFor={id}
         >
           {label}
@@ -132,12 +132,12 @@ export const Input: React.FC<InputProps> = ({
       )}
 
       <StyledInput
+        $hasLabel={hasLabel}
+        $isCondensed={isCondensed}
+        $offset={inputOffset}
         data-testid="number-input-input"
         disabled={isDisabled}
-        hasLabel={hasLabel}
         id={id}
-        isCondensed={isCondensed}
-        offset={inputOffset}
         placeholder={placeholder}
         ref={inputRef}
         type="text"

@@ -3,7 +3,7 @@ import { IconCancel } from '@royalnavy/icon-library'
 import { selectors } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
-const { color, spacing } = selectors
+const { color } = selectors
 
 interface ClearButtonProps {
   isCondensed: boolean
@@ -12,7 +12,7 @@ interface ClearButtonProps {
 }
 
 interface StyledButtonProps {
-  isCondensed: boolean
+  $isCondensed: boolean
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
@@ -29,8 +29,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   display: flex;
   align-items: center;
 
-  ${({ isCondensed }) =>
-    isCondensed &&
+  ${({ $isCondensed }) =>
+    $isCondensed &&
     css`
       right: 44px;
 
@@ -47,10 +47,10 @@ export const ClearButton: React.FC<ClearButtonProps> = ({
 }) => {
   return (
     <StyledButton
+      $isCondensed={isCondensed}
       aria-label="Clear the input value"
       data-testid="number-input-clear"
       disabled={isDisabled}
-      isCondensed={isCondensed}
       onClick={onClick}
       type="button"
     >

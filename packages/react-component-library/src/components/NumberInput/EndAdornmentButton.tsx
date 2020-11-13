@@ -19,7 +19,7 @@ interface EndAdornmentButtonProps {
 }
 
 interface StyledButtonProps {
-  isCondensed: boolean
+  $isCondensed: boolean
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
@@ -53,8 +53,8 @@ const StyledDecreaseButton = styled(StyledButton)`
     border-color: transparent;
   }
 
-  ${({ isCondensed }) =>
-    isCondensed &&
+  ${({ $isCondensed }) =>
+    $isCondensed &&
     css`
       width: 36px;
 
@@ -69,8 +69,8 @@ const StyledIncreaseButton = styled(StyledButton)`
     transform: rotate(180deg);
   }
 
-  ${({ isCondensed }) =>
-    isCondensed &&
+  ${({ $isCondensed }) =>
+    $isCondensed &&
     css`
       width: 36px;
 
@@ -97,9 +97,9 @@ export const EndAdornmentButton: React.FC<EndAdornmentButtonProps> = ({
 
   return (
     <Button
+      $isCondensed={isCondensed}
       aria-label={`${capitalize(type)} the input value`}
       data-testid={`number-input-${type}`}
-      isCondensed={isCondensed}
       type="button"
       disabled={isDisabled}
       onClick={onClick}
