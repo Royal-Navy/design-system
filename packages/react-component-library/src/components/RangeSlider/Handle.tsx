@@ -25,9 +25,12 @@ interface StyledHandleProps {
 
 const { color, fontSize, spacing } = selectors
 
-const StyledHandle = styled.div<StyledHandleProps>`
+const StyledHandle = styled.div.attrs<StyledHandleProps>(({ $left }) => ({
+  style: {
+    left: $left,
+  },
+}))<StyledHandleProps>`
   position: absolute;
-  left: ${({ $left }) => $left};
   transform: translate(-50%, -50%);
   z-index: 2;
   width: 14px;
