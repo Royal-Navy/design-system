@@ -323,6 +323,10 @@ describe('Timeline', () => {
         'Event 1 begins on 13th April 2020 and ends on 18th April 2020'
       )
     })
+
+    it('should not render a "No events" cell', () => {
+      expect(wrapper.queryByText('No events')).toBeNull()
+    })
   })
 
   describe('when `hasSide` is specified', () => {
@@ -1386,6 +1390,42 @@ describe('Timeline', () => {
 
     it('renders the event', () => {
       expect(wrapper.queryByTestId('timeline-event')).toBeInTheDocument()
+    })
+  })
+
+  describe('when all events are outside the range', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 0, 1)}
+          today={new Date(2020, 0, 15)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 13)}
+                  endDate={new Date(2020, 3, 18)}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should display 0 events', () => {
+      expect(wrapper.queryAllByTestId('timeline-event-wrapper')).toHaveLength(0)
+    })
+
+    it('should render the "No events" cell', () => {
+      expect(wrapper.getByText('No events')).toBeInTheDocument()
     })
   })
 })

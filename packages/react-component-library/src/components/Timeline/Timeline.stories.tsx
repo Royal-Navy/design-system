@@ -618,3 +618,27 @@ export const WithCustomRange = () => {
   )
 }
 WithCustomRange.storyName = 'With custom range'
+
+
+export const NoVisibleCells = () => (
+  <Timeline startDate={new Date(2020, 0, 1)} today={new Date(2020, 0, 1, 12)}>
+    <TimelineTodayMarker />
+    <TimelineMonths />
+    <TimelineWeeks />
+    <TimelineDays />
+    <TimelineRows>
+      <TimelineRow name="Row 1">
+        <TimelineEvents>
+          <TimelineEvent
+            startDate={new Date(2020, 3, 14, 12)}
+            endDate={new Date(2020, 3, 18, 12)}
+          >
+            Event 1
+          </TimelineEvent>
+        </TimelineEvents>
+      </TimelineRow>
+    </TimelineRows>
+  </Timeline>
+)
+NoVisibleCells.parameters = disableScrollableRegionFocusableRule
+NoVisibleCells.storyName = 'No visible cells'
