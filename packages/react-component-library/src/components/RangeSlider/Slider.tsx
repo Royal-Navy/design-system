@@ -77,13 +77,6 @@ const StyledRangeSlider = styled.div<StyledRangeSliderProps>`
   align-items: center;
   width: 100%;
 
-  > div {
-    position: relative;
-    width: 100%;
-    height: 40px;
-    padding-top: 20px;
-  }
-
   ${({ $isDisabled }) =>
     $isDisabled &&
     css`
@@ -94,6 +87,29 @@ const StyledRangeSlider = styled.div<StyledRangeSliderProps>`
         cursor: not-allowed;
       }
     `}
+`
+
+const StyledSlider = styled(Slider)`
+  position: relative;
+  width: 100%;
+  height: 40px;
+  padding-top: 20px;
+`
+
+const StyledIconLeft = styled.div`
+  svg {
+    color: ${color('neutral', '400')};
+    overflow: visible;
+    margin-right: ${spacing('2')};
+  }
+`
+
+const StyledIconRight = styled.div`
+  svg {
+    color: ${color('neutral', '400')};
+    overflow: visible;
+    margin-left: ${spacing('2')};
+  }
 `
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
@@ -134,22 +150,6 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
     [displayUnit]
   )
 
-  const StyledIconLeft = IconLeft
-    ? styled(IconLeft)`
-        color: ${color('neutral', '400')};
-        overflow: visible;
-        margin-right: ${spacing('2')};
-      `
-    : undefined
-
-  const StyledIconRight = IconRight
-    ? styled(IconRight)`
-        color: ${color('neutral', '400')};
-        overflow: visible;
-        margin-left: ${spacing('2')};
-      `
-    : undefined
-
   return (
     <StyledRangeSlider
       className={className}
@@ -159,9 +159,11 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
       data-testid="rangeslider"
     >
       {IconLeft && (
-        <StyledIconLeft aria-hidden data-testid="rangeslider-icon-left" />
+        <StyledIconLeft aria-hidden data-testid="rangeslider-icon-left">
+          <IconLeft />
+        </StyledIconLeft>
       )}
-      <Slider
+      <StyledSlider
         domain={domain}
         reversed={isReversed}
         disabled={isDisabled}
@@ -244,9 +246,11 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
             )}
           </Ticks>
         )}
-      </Slider>
+      </StyledSlider>
       {IconRight && (
-        <StyledIconRight aria-hidden data-testid="rangeslider-icon-right" />
+        <StyledIconRight aria-hidden data-testid="rangeslider-icon-right">
+          <IconRight />
+        </StyledIconRight>
       )}
     </StyledRangeSlider>
   )
