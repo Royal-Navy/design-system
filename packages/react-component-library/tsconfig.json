@@ -19,5 +19,5 @@
     "suppressImplicitAnyIndexErrors": true,
     "target": "esnext"
   },
-  "include": ["src"]
+  "include": ["src", "jest"]
 }
