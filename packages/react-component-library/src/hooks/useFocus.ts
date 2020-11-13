@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
 export function useFocus(onBlur: (event: React.FormEvent) => void) {
-  const [focus, setFocus] = useState(false)
+  const [hasFocus, setHasFocus] = useState(false)
 
   const onFocus = () => {
-    setFocus(true)
+    setHasFocus(true)
   }
 
   const onLocalBlur = (event: React.FormEvent) => {
-    setFocus(false)
+    setHasFocus(false)
 
     if (onBlur) {
       onBlur(event)
@@ -16,7 +16,7 @@ export function useFocus(onBlur: (event: React.FormEvent) => void) {
   }
 
   return {
-    focus,
+    hasFocus,
     onFocus,
     onLocalBlur,
   }

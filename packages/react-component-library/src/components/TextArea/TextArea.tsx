@@ -162,24 +162,27 @@ export const TextArea: React.FC<TextAreaInputProps> = (props) => {
     ...rest
   } = props
 
-  const { focus, onLocalBlur, onFocus } = useFocus(onBlur)
+  const { hasFocus, onLocalBlur, onFocus } = useFocus(onBlur)
   const { committedValue, hasValue, onValueChange } = useInputValue(value)
   const hasLabel = !!(label && label.length)
 
   return (
     <StyledTextArea className={className} data-testid="textarea-container">
       <StyledTextAreaWrapper
-        $hasFocus={focus}
+        $hasFocus={hasFocus}
         $isInvalid={hasClass(className, 'is-invalid')}
       >
         {hasLabel && (
           <StyledTextAreaLabel
             $hasContent={hasValue}
-            $hasFocus={focus}
+            $hasFocus={hasFocus}
             data-testid="textarea-label"
             htmlFor={id}
           >
-            <StyledTextAreaLabelInner $hasContent={hasValue} $hasFocus={focus}>
+            <StyledTextAreaLabelInner
+              $hasContent={hasValue}
+              $hasFocus={hasFocus}
+            >
               {label}
             </StyledTextAreaLabelInner>
           </StyledTextAreaLabel>

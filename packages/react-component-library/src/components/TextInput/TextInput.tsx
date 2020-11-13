@@ -59,14 +59,14 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     ...rest
   } = props
 
-  const { focus, onLocalBlur, onFocus } = useFocus(onBlur)
+  const { hasFocus, onLocalBlur, onFocus } = useFocus(onBlur)
   const { committedValue, hasValue, onValueChange } = useInputValue(value)
   const hasLabel = label && label.length
 
   const classes = classNames(
     'rn-textinput',
     {
-      'has-focus': focus,
+      'has-focus': hasFocus,
       'has-content': hasValue,
       'no-label': !hasLabel,
     },
