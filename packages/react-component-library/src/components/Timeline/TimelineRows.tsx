@@ -39,7 +39,7 @@ const StyledTimelineRowWeek = styled.div<StyledTimelineRowWeekProps>`
   display: inline-block;
   height: 100vh;
   background-color: ${({ isOddNumber }) =>
-    isOddNumber ? TIMELINE_BG_COLOR : TIMELINE_ALT_BG_COLOR};
+    isOddNumber ?  TIMELINE_ALT_BG_COLOR : TIMELINE_BG_COLOR};
   margin-left: ${({ marginLeft }) => marginLeft};
   width: ${({ width }) => width};
 `
