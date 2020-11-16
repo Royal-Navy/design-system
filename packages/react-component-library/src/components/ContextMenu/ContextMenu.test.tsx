@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { RenderResult, render, fireEvent } from '@testing-library/react'
+import { RenderResult, render, fireEvent, act } from '@testing-library/react'
 import { IconSettings } from '@royalnavy/icon-library'
 
 import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
@@ -112,9 +112,13 @@ describe('ContextMenu', () => {
 
       wrapper = render(<ContextExample />)
 
-      fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+      act(() => {
+        fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+      })
 
-      wrapper.getByTestId('context-menu-custom-link').click()
+      act(() => {
+        wrapper.getByTestId('context-menu-custom-link').click()
+      })
     })
 
     it('invokes the supplied onClick callback when the custom link is clicked', () => {
@@ -163,7 +167,7 @@ describe('ContextMenu', () => {
             <ContextMenu attachedToRef={ref}>
               <ContextMenuDivider />
               <ContextMenuItem
-                icon={IconSettings}
+                icon={<IconSettings />}
                 link={<Link href="/hello-foo">Hello, Foo!</Link>}
               />
               <ContextMenuDivider />
