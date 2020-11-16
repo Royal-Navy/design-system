@@ -6,7 +6,7 @@ import { FieldProps } from '../../common/FieldProps'
 import { FormProps } from '../../common/FormProps'
 import { withFormik } from '../withFormik'
 
-const DummyComponent: React.FC = (props) => (
+const DummyComponent: React.FC = ({ isInvalid, ...props }: any) => (
   <div data-testid="dummy-component" {...props} />
 )
 const DummyFormikComponent = withFormik(DummyComponent)
