@@ -15,6 +15,10 @@ import { StartAdornment } from './StartAdornment'
 import { useFocus } from '../../hooks/useFocus'
 import { useValue } from './useValue'
 import { UNIT_POSITION } from './constants'
+import {
+  getOuterWrapperBorder,
+  StyledOuterWrapperProps,
+} from '../../styled-components/input'
 
 const { color, spacing } = selectors
 
@@ -56,46 +60,12 @@ const StyledNumberInput = styled.div`
   width: 100%;
 `
 
-interface StyledNumberInputOuterWrapperProps {
-  $hasFocus: boolean
-  $isInvalid: boolean
-  $isValid: boolean
-}
-
-function getBorderColor(
-  { $hasFocus, $isInvalid, $isValid }: StyledNumberInputOuterWrapperProps,
-  defaultBorderColor: string
-) {
-  if ($hasFocus) {
-    return color('action', '600')
-  }
-
-  if ($isInvalid) {
-    return color('danger', '600')
-  }
-
-  if ($isValid) {
-    return color('success', '600')
-  }
-
-  return defaultBorderColor
-}
-
-const StyledNumberInputOuterWrapper = styled.div<
-  StyledNumberInputOuterWrapperProps
->`
+const StyledNumberInputOuterWrapper = styled.div<StyledOuterWrapperProps>`
   display: inline-flex;
   flex-direction: row;
   background-color: ${color('neutral', 'white')};
-  border-radius: 4px;
 
-  ${(props) => css`
-    border: ${spacing('px')} solid ${getBorderColor(props, color('neutral', '200'))};
-    box-shadow: 0 0 0 ${spacing('px')} ${getBorderColor(props, 'transparent')};
-  `}
-
-  transition: border-color 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  ${(props) => getOuterWrapperBorder(props)}
 `
 
 function formatValue(

@@ -6,6 +6,10 @@ import { v4 as uuidv4 } from 'uuid'
 import { hasClass } from '../../helpers'
 import { useFocus } from '../../hooks/useFocus'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import {
+  getOuterWrapperBorder,
+  StyledOuterWrapperProps,
+} from '../../styled-components'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { useInputValue } from '../../hooks/useInputValue'
 
@@ -32,33 +36,11 @@ const StyledTextArea = styled.div`
   width: 100%;
 `
 
-interface StyledTextAreaWrapperProps {
-  $hasFocus: boolean
-  $isInvalid: boolean
-}
-
-const StyledTextAreaWrapper = styled.div<StyledTextAreaWrapperProps>`
-  background: ${color('neutral', 'white')};
-  border: ${spacing('px')} solid ${color('neutral', '200')};
-  border-radius: 4px;
-  transition: border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+const StyledTextAreaWrapper = styled.div<StyledOuterWrapperProps>`
   position: relative;
+  background: ${color('neutral', 'white')};
 
-  ${({ $hasFocus }) =>
-    $hasFocus &&
-    css`
-      box-shadow: 0 0 0 ${spacing('px')} ${color('action', '600')};
-      border: ${spacing('px')} solid ${color('action', '600')};
-      background: ${color('neutral', 'white')};
-    `}
-
-  ${({ $isInvalid }) =>
-    $isInvalid &&
-    css`
-      border-color: ${color('danger', '700')};
-      box-shadow: 0 0 0 1px ${color('danger', '700')};
-    `}
+  ${(props) => getOuterWrapperBorder(props)}
 `
 
 interface StyledTextAreaLabelProps {

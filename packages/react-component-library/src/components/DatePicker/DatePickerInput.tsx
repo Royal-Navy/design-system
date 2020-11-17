@@ -4,6 +4,7 @@ import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DropdownIndicatorIcon } from '../Dropdown/DropdownIndicatorIcon'
+import { getOuterWrapperBorder } from '../../styled-components'
 
 export interface DatePickerInputProps extends ComponentWithClass {
   ref: React.Ref<HTMLDivElement>
@@ -39,17 +40,8 @@ const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
   display: inline-flex;
   flex-direction: row;
   background-color: ${color('neutral', 'white')};
-  border-radius: 4px;
 
-  box-shadow: 0 0 0 1px
-    ${({ $isOpen }) => ($isOpen ? color('action', '600') : 'transparent')};
-
-  border: 1px solid
-    ${({ $isOpen }) =>
-      $isOpen ? color('action', '600') : color('neutral', '200')};
-
-  transition: border-color 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  ${({ $isOpen }) => getOuterWrapperBorder({ $hasFocus: $isOpen })}
 `
 
 const StyledInputWrapper = styled.div`
