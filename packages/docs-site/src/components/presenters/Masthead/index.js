@@ -25,12 +25,12 @@ const MastHead = ({ navItems }) => {
   return (
     <div className="masthead">
       <Link
-        to="/get-started/development/v2-migration"
+        to="https://forms.gle/HCgExKRQacv4T1DbA"
         className="masthead__banner"
       >
         <div className="rn-container">
-          There&apos;s a new version of the Royal Navy Design System.
-          <strong>Read the migration docs.</strong>
+          Please take our 1-minute survey to help us improve the Royal Navy
+          Design System.
         </div>
       </Link>
       <div className="masthead__container rn-container">
