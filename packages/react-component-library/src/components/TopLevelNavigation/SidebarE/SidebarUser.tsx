@@ -1,38 +1,28 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
-import { IconExitToApp } from '@royalnavy/icon-library'
+import { IconPerson, IconExitToApp } from '@royalnavy/icon-library'
 import { Transition } from 'react-transition-group'
 
 import { Avatar } from '../../Avatar'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { LinkTypes } from '../../../common/Link'
-import { Nav } from '../../../common/Nav'
 import { SidebarContext } from './context'
-import { SidebarUserItemEProps } from './SidebarUserItem'
+import { SidebarUserItemE } from './SidebarUserItem'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
 import { SHEET_PLACEMENT } from '../Sheet/constants'
 import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
 
-export interface SidebarUserWithItemsProps extends Nav<SidebarUserItemEProps> {
-  initials: string
-  link: React.ReactElement<LinkTypes>
-  name?: string
-}
-
-export interface SidebarUserWithLinkProps extends ComponentWithClass {
+export interface SidebarUserEProps extends ComponentWithClass {
   children?: never
   initials: string
-  link: React.ReactElement<LinkTypes>
+  userLink?: React.ReactElement<LinkTypes>
+  exitLink?: React.ReactElement<LinkTypes>
   name?: string
 }
 
-type SidebarAvatarWithItemsProps = Omit<SidebarUserWithItemsProps, 'link'>
-
-export type SidebarUserEProps =
-  | SidebarUserWithLinkProps
-  | SidebarUserWithItemsProps
+type SidebarAvatarWithItemsProps = Omit<SidebarUserEProps, 'link'>
 
 const SHEET_WIDTH = 106
 
@@ -61,12 +51,16 @@ const StyledSidebarUserText = styled.div`
     justify-content: center;
     flex-direction: column;
 
-    span:first-of-type {
+    a:hover {
+      text-decoration: none;
+    }
+
+    > span {
       color: ${color('neutral', 'white')};
       font-size: ${fontSize('m')};
     }
 
-    span:last-of-type {
+    a span {
       margin-top: ${spacing('1')};
       color: ${color('neutral', '300')};
       font-size: ${fontSize('s')};
@@ -112,8 +106,9 @@ const StyledSheetButton = styled(SheetButton)`
 `
 
 const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
-  children,
   initials,
+  userLink,
+  exitLink,
 }) => (
   <StyledSheet
     button={(
@@ -126,48 +121,62 @@ const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
     placement={SHEET_PLACEMENT.RIGHT_BOTTOM}
     width={SHEET_WIDTH}
   >
-    <ol>{children}</ol>
+    <ol>
+      {userLink && <SidebarUserItemE icon={<IconPerson />} link={userLink} />}
+      {exitLink && (
+        <SidebarUserItemE icon={<IconExitToApp />} link={exitLink} />
+      )}
+    </ol>
   </StyledSheet>
 )
 
 export const SidebarUserE: React.FC<SidebarUserEProps> = ({
   initials,
-  link,
+  userLink,
+  exitLink,
   name,
-  children,
 }) => {
   const { isOpen } = useContext(SidebarContext)
 
-  if (!isOpen && children) {
+  if (!isOpen) {
     return (
       <StyledSidebarUser data-testid="sidebar-user-closed-children">
-        <SidebarAvatarWithItems initials={initials}>
-          {children}
-        </SidebarAvatarWithItems>
+        <SidebarAvatarWithItems
+          initials={initials}
+          userLink={userLink}
+          exitLink={exitLink}
+        />
       </StyledSidebarUser>
     )
   }
 
-  return React.cloneElement(link as React.ReactElement, {
-    ...link.props,
-    children: (
-      <StyledSidebarUser>
-        <StyledAvatar initials={initials} />
-        <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
-          {(state) => (
-            <StyledSidebarUserText style={{ ...TRANSITION_STYLES[state] }}>
-              <div>
-                <span>{name}</span>
-                <span>View Profile</span>
-              </div>
-              <IconExitToApp />
-            </StyledSidebarUserText>
-          )}
-        </Transition>
-      </StyledSidebarUser>
-    ),
-    'data-testid': `sidebar-user-${isOpen ? 'open' : 'closed'}`,
-  })
+  return (
+    <StyledSidebarUser
+      data-testid={`sidebar-user-${isOpen ? 'open' : 'closed'}`}
+    >
+      <StyledAvatar initials={initials} />
+      <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
+        {(state) => (
+          <StyledSidebarUserText style={{ ...TRANSITION_STYLES[state] }}>
+            <div>
+              <span>{name}</span>
+              {userLink &&
+                React.cloneElement(userLink as React.ReactElement, {
+                  ...userLink.props,
+                  children: <span>View Profile</span>,
+                  'data-testid': 'sidebar-user-link',
+                })}
+            </div>
+            {exitLink &&
+              React.cloneElement(exitLink as React.ReactElement, {
+                children: <IconExitToApp />,
+                'data-testid': 'sidebar-exit-link',
+              })}
+          </StyledSidebarUserText>
+        )}
+      </Transition>
+    </StyledSidebarUser>
+  )
 }
 
 SidebarUserE.displayName = 'SidebarUser'

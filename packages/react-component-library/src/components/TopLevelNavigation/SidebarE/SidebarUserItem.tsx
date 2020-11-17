@@ -25,7 +25,9 @@ const StyledSidebarUserItemIcon = styled.div`
   }
 `
 
-const StyledSidebarUserItemText = styled.div`
+const StyledSidebarUserItemText = styled.span`
+  white-space: nowrap;
+
   ${StyledSidebarUserItem}:hover & {
     color: ${color('action', '500')};
   }
