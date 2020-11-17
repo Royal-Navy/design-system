@@ -30,6 +30,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       onBlur,
       onChange,
       value,
+      isInvalid,
       ...rest
     },
     ref

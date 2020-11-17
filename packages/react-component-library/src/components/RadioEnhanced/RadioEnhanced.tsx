@@ -14,6 +14,7 @@ export const RadioEnhanced: React.FC<RadioEnhancedProps> = ({
   name,
   tabIndex = 0,
   title,
+  isInvalid,
   ...rest
 }) => {
   const ref = useRef(null)

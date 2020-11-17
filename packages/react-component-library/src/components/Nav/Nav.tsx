@@ -16,7 +16,7 @@ function renderMenu(LinkComponent: any, navItems: any[]) {
   return (
     <ul className="rn-nav__list">
       {navItems.map((item) => {
-        const { active, children, label } = item
+        const { active, children, label, ...rest } = item
 
         const hasChildren: boolean = children && children.length > 0
         let subMenu: React.ReactNode | undefined
@@ -29,7 +29,7 @@ function renderMenu(LinkComponent: any, navItems: any[]) {
           <NavItem key={getKey('nav-item', label)} hasChildren={hasChildren}>
             <LinkComponent
               className={`rn-nav__item ${active ? 'is-active' : ''}`}
-              {...item}
+              {...rest}
             >
               {label}
             </LinkComponent>

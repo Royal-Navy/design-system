@@ -14,6 +14,7 @@ export const CheckboxEnhanced: React.FC<CheckboxEnhancedProps> = ({
   name,
   tabIndex = 0,
   title,
+  isInvalid,
   ...rest
 }) => {
   const ref = useRef(null)

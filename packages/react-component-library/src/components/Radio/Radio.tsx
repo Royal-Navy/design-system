@@ -28,6 +28,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       onChange,
       onBlur,
       value,
+      isInvalid,
       ...rest
     },
     ref
