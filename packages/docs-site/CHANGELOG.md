@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.19.0](https://github.com/Royal-Navy/design-system/compare/2.18.0...2.19.0) (2020-11-18)
+
+
+### Features
+
+* **Checkbox:** Explicitly expose `checked` and `defaultChecked` ([4a898bf](https://github.com/Royal-Navy/design-system/commit/4a898bf8453e12648e8cf02701d55e3dc696e048))
+* **Select:** Add ability to display `icon` ([0fa9531](https://github.com/Royal-Navy/design-system/commit/0fa9531cd842cfe25cb680e044edb1db316aea3c))
+
+
+
+
+
 # [2.18.0](https://github.com/Royal-Navy/design-system/compare/2.17.0...2.18.0) (2020-11-12)
 
 **Note:** Version bump only for package royalnavy.io
