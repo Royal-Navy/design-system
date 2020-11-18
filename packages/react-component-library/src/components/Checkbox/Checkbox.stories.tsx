@@ -56,18 +56,21 @@ stories.add('Formik', () => {
             name="example1"
             component={FormikCheckbox}
             label="My Label 1"
+            type="checkbox"
           />
           <Field
             className="rn-checkbox--is-valid"
             name="example2"
             component={FormikCheckbox}
             label="My Label 2"
+            type="checkbox"
           />
           <Field
             className="rn-checkbox--is-valid"
             name="example3"
             component={FormikCheckbox}
             label="My Label 3"
+            type="checkbox"
           />
           <button type="submit">Submit</button>
         </Form>
@@ -110,18 +113,21 @@ stories.add('Formik checkbox group', () => {
               name="example"
               label="Option 1"
               value="1"
+              type="checkbox"
             />
             <Field
               component={FormikCheckbox}
               name="example"
               label="Option 2"
               value="2"
+              type="checkbox"
             />
             <Field
               component={FormikCheckbox}
               name="example"
               label="Option 3"
               value="3"
+              type="checkbox"
             />
           </FormikGroup>
           <FormikGroup label="Select another option">
@@ -130,18 +136,21 @@ stories.add('Formik checkbox group', () => {
               name="exampleWithError"
               label="Another option 1"
               value="1"
+              type="checkbox"
             />
             <Field
               component={FormikCheckbox}
               name="exampleWithError"
               label="Another option 2"
               value="2"
+              type="checkbox"
             />
             <Field
               component={FormikCheckbox}
               name="exampleWithError"
               label="Another option 3"
               value="3"
+              type="checkbox"
             />
           </FormikGroup>
           <button type="submit">Submit</button>
