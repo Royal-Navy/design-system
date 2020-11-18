@@ -133,7 +133,21 @@ with the field:
     Description: 'Provide the ID for a field and tie it to its label. If one is not provided then a unique id will be created',
   },
   {
-    Name: 'isChecked',
+    Name: 'checked',
+    Type: 'boolean',
+    Required: 'False',
+    Default: 'false',
+    Description: 'Whether the checkbox is checked or not.',
+  },
+  {
+    Name: 'defaultChecked',
+    Type: 'boolean',
+    Required: 'False',
+    Default: 'false',
+    Description: 'Whether the checkbox is checked by default or not.',
+  },
+  {
+    Name: 'isChecked (Deprecated)',
     Type: 'boolean',
     Required: 'False',
     Default: 'false',

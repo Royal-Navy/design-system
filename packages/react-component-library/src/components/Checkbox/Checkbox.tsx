@@ -9,6 +9,8 @@ export interface CheckboxProps
   extends ComponentWithClass,
     InputValidationProps {
   id?: string
+  checked?: boolean
+  defaultChecked?: boolean
   isChecked?: boolean
   isDisabled?: boolean
   label: string
@@ -23,6 +25,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     {
       className = '',
       id = uuidv4(),
+      checked,
+      defaultChecked,
       isChecked,
       isDisabled,
       label,
@@ -35,6 +39,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => {
+    console.warn(
+      '`isChecked` prop has been deprecated, use `checked` and `defaultChecked`'
+    )
+
     const classes = classNames(
       'rn-checkbox',
       {
@@ -58,10 +66,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               type="checkbox"
               name={name}
               value={value}
-              defaultChecked={isChecked}
+              defaultChecked={isChecked || defaultChecked}
               onChange={onChange}
               onBlur={onBlur}
               disabled={isDisabled}
+              checked={checked}
               {...rest}
               data-testid="checkbox"
             />
