@@ -4,9 +4,9 @@ import { OptionProps } from 'react-select/src/components/Option'
 import { selectors } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
-import { Badge } from '../Badge'
+import { Badge, BADGE_SIZE } from '../Badge'
 
-const { spacing } = selectors
+const { color, fontSize, spacing } = selectors
 
 export interface SelectOptionWithBadgeType {
   badge?: string | number
@@ -15,17 +15,45 @@ export interface SelectOptionWithBadgeType {
   value: string
 }
 
-const StyledOption = styled.div`
+const StyledOption = styled(components.Option)`
   position: relative;
+  border-radius: 2px;
+  color: ${color('neutral', '500')};
   display: flex;
   align-items: center;
-  flex: 1;
+
+  .rn-select__option--is-focused {
+    background-color: ${color('neutral', '100')};
+    color: ${color('neutral', '500')};
+  }
+
+  .rn-select__option--is-selected {
+    background-color: ${color('action', '600')};
+    color: ${color('neutral', 'white')};
+  }
+
+  &&& {
+    padding: ${spacing('4')};
+    margin: 0;
+  }
+`
+
+const StyledBlah = styled.span`
+  font-size: ${fontSize('base')};
+  font-weight: 500;
 `
 
 const StyledEndAdornment = styled.span`
   position: absolute;
-  top: ${spacing('px')};
-  right: 0;
+  right: ${spacing('4')};
+  top: 50%;
+  transform: translateY(-50%);
+  height: ${spacing('7')};
+`
+
+const StyledBadge = styled(Badge)`
+  transform: translateY(-1px);
+  margin-left: ${spacing('2')};
 `
 
 export const Option: React.FC<OptionProps<SelectOptionWithBadgeType>> = (
@@ -36,16 +64,10 @@ export const Option: React.FC<OptionProps<SelectOptionWithBadgeType>> = (
   } = props
 
   return (
-    <components.Option {...props} data-testid="select-option">
-      <StyledOption>
-        <span data-testid="select-option-label">{label}</span>
-        {badge && (
-          <Badge className="rn-select__badge rn_ml-3" size="small">
-            {badge}
-          </Badge>
-        )}
-        {icon && <StyledEndAdornment>{icon}</StyledEndAdornment>}
-      </StyledOption>
-    </components.Option>
+    <StyledOption data-testid="select-option" {...props}>
+      <StyledBlah data-testid="select-option-label">{label}</StyledBlah>
+      {badge && <StyledBadge size={BADGE_SIZE.SMALL}>{badge}</StyledBadge>}
+      {icon && <StyledEndAdornment>{icon}</StyledEndAdornment>}
+    </StyledOption>
   )
 }
