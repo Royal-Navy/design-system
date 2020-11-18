@@ -11,8 +11,8 @@ interface NumberInputUnitProps {
 }
 
 interface StyledNumberInputUnitProps {
-  left: string
-  top: string
+  $left: string
+  $top: string
 }
 
 const StyledNumberInputUnit = styled.span<StyledNumberInputUnitProps>`
@@ -21,16 +21,28 @@ const StyledNumberInputUnit = styled.span<StyledNumberInputUnitProps>`
   height: 100%;
   position: absolute;
   font-size: ${fontSize('base')};
-  left: ${({ left }) => left};
-  top: ${({ top }) => top};
+  left: ${({ $left }) => $left};
+  top: ${({ $top }) => $top};
 `
 
-export const NumberInputUnit: React.FC<NumberInputUnitProps> = (props) => {
-  if (!props.children) {
+export const NumberInputUnit: React.FC<NumberInputUnitProps> = ({
+  children,
+  left,
+  top,
+}) => {
+  if (!children) {
     return null
   }
 
-  return <StyledNumberInputUnit data-testid="number-input-unit" {...props} />
+  return (
+    <StyledNumberInputUnit
+      data-testid="number-input-unit"
+      $left={left}
+      $top={top}
+    >
+      {children}
+    </StyledNumberInputUnit>
+  )
 }
 
 NumberInputUnit.displayName = 'NumberInputUnit'

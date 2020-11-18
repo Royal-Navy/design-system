@@ -1,19 +1,24 @@
 import React from 'react'
 import { isFinite, isNil } from 'lodash'
 import { selectors } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
+import { ClearButton } from './ClearButton'
 import { EndAdornment } from './EndAdornment'
 import { Footnote } from './Footnote'
-import { getId, hasClass, } from '../../helpers'
+import { getId, hasClass } from '../../helpers'
 import { Input } from './Input'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StartAdornment } from './StartAdornment'
+import { useFocus } from '../../hooks/useFocus'
 import { useValue } from './useValue'
 import { UNIT_POSITION } from './constants'
-import { ClearButton } from './ClearButton'
+import {
+  getOuterWrapperBorder,
+  StyledOuterWrapperProps,
+} from '../../styled-components/input'
 
 const { color, spacing } = selectors
 
@@ -55,14 +60,12 @@ const StyledNumberInput = styled.div`
   width: 100%;
 `
 
-const StyledNumberInputOuterWrapper = styled.div`
+const StyledNumberInputOuterWrapper = styled.div<StyledOuterWrapperProps>`
   display: inline-flex;
   flex-direction: row;
   background-color: ${color('neutral', 'white')};
-  border: 1px solid ${color('neutral', '200')};
-  border-radius: 4px;
-  transition: border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  ${(props) => getOuterWrapperBorder(props)}
 `
 
 function formatValue(
@@ -124,6 +127,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   ...rest
 }) => {
   const { committedValue, setCommittedValue } = useValue(value)
+  const { hasFocus, onFocus, onLocalBlur } = useFocus(onBlur)
 
   function setCommittedValueWithinRange(newValue: number) {
     if (
@@ -154,11 +158,16 @@ export const NumberInput: React.FC<NumberInputProps> = ({
       aria-valuenow={committedValue}
       aria-valuetext={String(formatValue(committedValue, unit, unitPosition))}
     >
-      <StyledNumberInputOuterWrapper>
+      <StyledNumberInputOuterWrapper
+        $hasFocus={hasFocus}
+        $isInvalid={isInvalid || hasClass(className, 'is-invalid')}
+        $isValid={isValid || hasClass(className, 'is-valid')}
+      >
         <StartAdornment>{startAdornment}</StartAdornment>
 
         <Input
           aria-labelledby={numberInputId}
+          hasFocus={hasFocus}
           id={id}
           isDisabled={isDisabled}
           isCondensed={isCondensed}
@@ -170,14 +179,13 @@ export const NumberInput: React.FC<NumberInputProps> = ({
             const newValue = getNewValue(event)
             setCommittedValueWithinRange(newValue)
           }}
-          onInputBlur={(event) => {
+          onBlur={(event) => {
             const newValue = getNewValue(event)
             setCommittedValueWithinRange(newValue)
 
-            if (onBlur) {
-              onBlur(event)
-            }
+            onLocalBlur(event)
           }}
+          onFocus={onFocus}
           placeholder={placeholder}
           unit={unit}
           unitPosition={unitPosition}
