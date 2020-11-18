@@ -54,6 +54,52 @@ describe('Checkbox', () => {
         'false'
       )
     })
+
+    it('should not initially render as checked', () => {
+      expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute('checked')
+    })
+  })
+
+  describe('when a field has defaultChecked prop set', () => {
+    beforeEach(() => {
+      label = 'My Label 1'
+      field.value = 'false'
+
+      checkbox = render(
+        <Checkbox
+          name={field.name}
+          value={field.value}
+          label={label}
+          onChange={field.onChange}
+          defaultChecked
+        />
+      )
+    })
+
+    it('should initially render as checked', () => {
+      expect(checkbox.getByTestId('checkbox')).toHaveAttribute('checked')
+    })
+  })
+
+  describe('when a field has checked prop set', () => {
+    beforeEach(() => {
+      label = 'My Label 1'
+      field.value = 'false'
+
+      checkbox = render(
+        <Checkbox
+          name={field.name}
+          value={field.value}
+          label={label}
+          onChange={field.onChange}
+          checked
+        />
+      )
+    })
+
+    it('should initially render as checked', () => {
+      expect(checkbox.getByTestId('checkbox')).toHaveAttribute('checked')
+    })
   })
 
   describe('when a field has an error and the form has not been touched', () => {
