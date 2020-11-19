@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.19.0](https://github.com/Royal-Navy/design-system/compare/2.18.0...2.19.0) (2020-11-18)
+
+
+### Bug Fixes
+
+* **Checkbox:** Update broken Formik stories ([4ae5bee](https://github.com/Royal-Navy/design-system/commit/4ae5beee9eb8f5a15cc910683ef251323e1d3a85))
+* **ContextMenu:** Resolve React console warnings ([84614e7](https://github.com/Royal-Navy/design-system/commit/84614e72cf725593a5addc756e76575423e3d017))
+* **Nav:** Fix arbitrary prop drilling ([0d074a9](https://github.com/Royal-Navy/design-system/commit/0d074a905e7e7b25ac5e8bc89dfed8f4d686f1fe))
+* **NumberInput:** Use solid border ([97fe357](https://github.com/Royal-Navy/design-system/commit/97fe3579fbfefdff244d37fb467e372500fcc1a6))
+* **RangeSlider:** Fix styled-components warning for icons ([c8b2725](https://github.com/Royal-Navy/design-system/commit/c8b2725d6a3560e764b980b23f450a2b6e2259ff))
+* **RangeSlider:** Use `attrs` to prevent excessive class generation ([45db7f7](https://github.com/Royal-Navy/design-system/commit/45db7f78798f0ab21a64d3616d71bd8bd154df70))
+* **ReactComponentLibrary:** Do not drill `isInvalid` prop to DOM nodes ([7b2d067](https://github.com/Royal-Navy/design-system/commit/7b2d0676609683ca9247560f44c9a0fa45662290))
+* **Timeline:** Add hidden cell when no cells ([c609427](https://github.com/Royal-Navy/design-system/commit/c6094275c2d16c490e35c2fdb4d582fd8fc9142b))
+* **Timeline:** Correct row column background mismatch ([63db7c1](https://github.com/Royal-Navy/design-system/commit/63db7c1334d37ffa3c0b09f3e0e972fb093aae65))
+
+
+### Features
+
+* **Checkbox:** Explicitly expose `checked` and `defaultChecked` ([4a898bf](https://github.com/Royal-Navy/design-system/commit/4a898bf8453e12648e8cf02701d55e3dc696e048))
+* **Select:** Add ability to display `icon` ([0fa9531](https://github.com/Royal-Navy/design-system/commit/0fa9531cd842cfe25cb680e044edb1db316aea3c))
+
+
+
+
+
 # [2.18.0](https://github.com/Royal-Navy/design-system/compare/2.17.0...2.18.0) (2020-11-12)
 
 
