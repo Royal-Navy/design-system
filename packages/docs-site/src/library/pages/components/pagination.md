@@ -70,6 +70,13 @@ The Pagination component allows an end user to navigate between pages of records
 ### Pagination Properties
 <DataTable data={[
   {
+    Name: 'initialPage',
+    Type: 'Number',
+    Required: 'False',
+    Default: '1',
+    Description: 'The active page presented when loaded.',
+  },
+  {
     Name: 'onChange',
     Type: 'Function<any>',
     Required: 'False',

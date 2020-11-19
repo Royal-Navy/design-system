@@ -9,3 +9,12 @@ const stories = storiesOf('Pagination', module)
 stories.add('Default', () => (
   <Pagination onChange={action('onChange')} pageSize={10} total={1000} />
 ))
+
+stories.add('Initial page 5', () => (
+  <Pagination
+    initialPage={5}
+    onChange={action('onChange')}
+    pageSize={10}
+    total={1000}
+  />
+))
