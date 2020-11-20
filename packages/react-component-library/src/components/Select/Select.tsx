@@ -64,6 +64,7 @@ const StyledReactSelect = styled(ReactSelect)`
     border: 1px solid ${color('action', '600')};
     border-top: 0;
     background: ${color('neutral', 'white')};
+    
     &::after {
       position: absolute;
       top: -1px;

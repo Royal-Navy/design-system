@@ -38,7 +38,7 @@ const StyledOption = styled(components.Option)`
   }
 `
 
-const StyledBlah = styled.span`
+const StyledLabel = styled.span`
   font-size: ${fontSize('base')};
   font-weight: 500;
 `
@@ -65,7 +65,7 @@ export const Option: React.FC<OptionProps<SelectOptionWithBadgeType>> = (
 
   return (
     <StyledOption data-testid="select-option" {...props}>
-      <StyledBlah data-testid="select-option-label">{label}</StyledBlah>
+      <StyledLabel data-testid="select-option-label">{label}</StyledLabel>
       {badge && <StyledBadge size={BADGE_SIZE.SMALL}>{badge}</StyledBadge>}
       {icon && <StyledEndAdornment>{icon}</StyledEndAdornment>}
     </StyledOption>
