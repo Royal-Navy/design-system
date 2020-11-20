@@ -163,7 +163,7 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
-    <h1 className="rn-fw-api-title">dayWidth</h1>
+    <h1 className="rn-fw-api-title">unitWidth</h1>
     <Badge color="supa" colorVariant="faded" size="small">Number</Badge>
   </div>
   <div className="rn-fw-api-body">
@@ -175,7 +175,7 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
     </div>
     <div className="rn-fw-api-row">
       <div className="rn-fw-api-item">Description</div>
-      <p className="rn-fw-api-value">The fixed width value of a single day (in pixels).</p>
+      <p className="rn-fw-api-value">The fixed width value of a single day or hour (in pixels).</p>
     </div>
   </div>
 </div>
@@ -228,7 +228,7 @@ const ExampleTimeline = () => {
       startDate={new Date(2020, 4, 0)} 
       today={new Date(2020, 3, 15)} 
       range={3}
-      dayWidth={30}
+      unitWidth={30}
     >
       <TimelineTodayMarker />
       <TimelineSide/>
