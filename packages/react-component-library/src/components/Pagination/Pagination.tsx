@@ -7,12 +7,14 @@ import { usePageChange, ELLIPSIS } from './usePageChange'
 import { getKey } from '../../helpers'
 
 interface PaginationProps {
+  initialPage?: number
   onChange?: (currentPage: number, totalPages: number) => void
   pageSize: number
   total: number
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
+  initialPage = 1,
   onChange,
   pageSize,
   total,
@@ -20,7 +22,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   const totalPages = Math.ceil(total / pageSize)
 
   const { currentPage, changePage, pageNumbers } = usePageChange(
-    1,
+    initialPage,
     totalPages,
     onChange
   )

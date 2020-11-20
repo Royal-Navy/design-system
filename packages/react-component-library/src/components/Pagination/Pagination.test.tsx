@@ -347,4 +347,15 @@ describe('Pagination', () => {
       expect(wrapper.getByText('Next')).not.toHaveAttribute('disabled')
     })
   })
+
+  describe('when the initial page is 5', () => {
+    beforeEach(() => {
+      wrapper = render(<Pagination initialPage={5} pageSize={10} total={45} />)
+    })
+
+    it('should apply the `is-active` class to the appropriate page', () => {
+      expect(wrapper.getByText('5').classList.contains('is-active')).toBe(true)
+    })
+  })
+
 })
