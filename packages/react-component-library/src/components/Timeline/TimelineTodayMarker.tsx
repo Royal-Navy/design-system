@@ -33,7 +33,7 @@ const StyledTimelineTodayMarker = styled.div`
   width: ${spacing('px')};
   height: 100vh;
   background-color: ${color('danger', '500')};
-  z-index: ${zIndex('body', 2)};
+  z-index: ${zIndex('body', 999)};
 
   &::before {
     content: 'Today';

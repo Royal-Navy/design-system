@@ -6,17 +6,26 @@
     "modal": {
       "value": "8000"
     },
-    "overlay": {
+    "masthead": {
       "value": "7000"
     },
-    "dropdown": {
+    "sidebar": {
+      "value": "7000"
+    },
+    "overlay": {
       "value": "6000"
     },
-    "header": {
+    "dropdown": {
       "value": "5000"
     },
-    "footer": {
+    "header": {
       "value": "4000"
+    },
+    "footer": {
+      "value": "3000"
+    },
+    "timeline": {
+     "value": "0"
     },
     "body": {
       "value": "0"

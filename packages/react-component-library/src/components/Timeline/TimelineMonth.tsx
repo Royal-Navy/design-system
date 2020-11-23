@@ -41,7 +41,7 @@ const StyledTimelineMonth = styled.div`
     width: 1rem;
     height: 100vh;
     border-right: ${spacing('px')} dashed ${color('neutral', '200')};
-    z-index ${zIndex('body', 1)}
+    z-index: ${zIndex('body', 1)};
   }
 `
 
