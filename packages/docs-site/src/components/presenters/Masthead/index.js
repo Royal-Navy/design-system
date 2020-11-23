@@ -39,9 +39,7 @@ const MastHead = ({ navItems }) => {
         </a>
 
         <div className="masthead__version">
-          <a href="/versions">
-            <Badge color="action">v{packageJson.version}</Badge>
-          </a>
+          <Badge color="action">v{packageJson.version}</Badge>
         </div>
 
         <a

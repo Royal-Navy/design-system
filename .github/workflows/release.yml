@@ -1,0 +1,83 @@
+name: Release
+
+on:
+  schedule:
+    - cron: '0 4 * * 1-5'
+
+jobs:
+  release:
+    name: 'Release & Publish'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+        # pulls all commits (needed for lerna / semantic release to correctly version)
+         fetch-depth: 0
+         token: ${{ secrets.GH_TOKEN }}
+
+      - name:  Pull all tags
+        # pulls all tags (needed for lerna / semantic release to correctly version)
+        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 13
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Get version from lerna.json before release step
+        id: initversion
+        run: |
+          echo "::set-output name=version::$(grep '"version":' lerna.json | cut -d\" -f4)"
+
+      - name: Check for package changes
+        id: changes
+        run: |
+          npx lerna changed  2>&1 | tail -1 |tee outfile
+          echo "::set-output name=changed::$(cat outfile)"
+
+      - name: GitHub Release
+        id: release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: ${{ secrets.GH_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.GH_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.GH_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.GH_EMAIL }}
+        if: contains(steps.changes.outputs.changed, 'ready to publish')
+        run: "yarn lerna:run-version --yes --create-release github -m \"chore(Release): %v\" --conventional-commits"
+
+      - name: Get version from package.json after release step
+        id: extractver
+        run: |
+          echo "::set-output name=version::$(grep '"version":' lerna.json | cut -d\" -f4)"
+
+      - name: Confirm version changes
+        run: |
+          echo "the initial version is ${{steps.initversion.outputs.version}}"
+          echo "the updated version is ${{steps.extractver.outputs.version}}"
+
+      - name: Publish NPM packages
+        if: steps.initversion.outputs.version != steps.extractver.outputs.version
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: |
+          npm publish --tag latest packages/design-tokens
+          npm publish --tag latest packages/css-framework
+          npm publish --tag latest packages/eslint-config-react
+          npm publish --tag latest packages/fonts
+          npm publish --tag latest packages/icon-library
+          npm publish --tag latest packages/react-component-library
+          npm publish --tag latest packages/cra-template-royalnavy
+
+      - name: Publish Docs & Storybook
+        if: steps.initversion.outputs.version != steps.extractver.outputs.version
+        run: |
+          curl -X POST -d {} ${{ secrets.DOCS_TOKEN }}
+          curl -X POST -d {} ${{ secrets.STORYBOOK_TOKEN }}
+
+

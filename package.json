@@ -54,7 +54,7 @@
     "storybook:static": "lerna run --parallel storybook:static",
     "lerna:prerelease": "yarn lerna:run-version --conventional-prerelease=* --no-changelog -m \"chore(Prerelease): %v [skip ci]\"",
     "lerna:version": "yarn lerna:run-version --conventional-graduate --create-release github -m \"chore(Release): %v\"",
-    "lerna:run-version": "lerna version --force-publish=* --conventional-commits --tag-version-prefix=''"
+    "lerna:run-version": "lerna version --force-publish=* --tag-version-prefix=''"
   },
   "husky": {
     "hooks": {

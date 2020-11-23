@@ -223,148 +223,157 @@ jobs:
           root: packages
           paths:
             - docs-site/coverage
+  workflow_disabled:
+    docker: *docker
+    steps:
+      - run: echo "this workflow is disabled"
 
 workflows:
   version: 2
-  # build_and_test_feature:
+      # build_and_test_feature:
+      #   jobs:
+      # - build_icon_library:
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - master
+      #           - latest
+      # - security_audit:
+      #     requires:
+      #       - build_icon-library
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - master
+      #           - latest
+      # - check_commits:
+      #     requires:
+      #       - build_icon-library
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - master
+      #           - latest
+      # - lint_css-framework:
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - master
+      #           - latest
+      # - lint_react-component-library:
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - master
+      #           - latest
+      # - lint_docs_site:
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - master
+      #           - latest
+      # - test_docs-site:
+      #     requires:
+      #       - lint_docs_site
+      #       - build_icon-library
+      # - test_react-component-library:
+      #     requires:
+      #       - lint_react-component-library
+      #       - build_icon-library
+      # - code_cov:
+      #     requires:
+      #       - test_react-component-library
+      #       - test_docs-site
+      # - test_visual_regression:
+      #     requires:
+      #       - test_react-component-library
+      #       - build_icon-library
+
+  # build_test_and_deploy_next:
   #   jobs:
-  #     - build_icon-library:
+  #     - build_prerequisites:
   #         filters:
   #           branches:
-  #             ignore:
+  #             only:
   #               - master
+  #     - commit_next:
+  #        requires:
+  #           - build_prerequisites
+  #        filters:
+  #           branches:
+  #             only:
+  #               - master
+  #     - test_react-component-library:
+  #         requires:
+  #           - build_prerequisites
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+  #     - test_visual_regression:
+  #         requires:
+  #           - build_prerequisites
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+  #     - publish_next:
+  #        requires:
+  #           - test_react-component-library
+  #           - test_visual_regression
+  #           - commit_next
+  build_test_and_deploy_latest:
+    jobs:
+      - workflow_disabled:
+          filters:
+            branches:
+              only:
+                - latest
+  #     - build_prerequisites:
+  #         filters:
+  #           branches:
+  #             only:
   #               - latest
   #     - security_audit:
   #         requires:
-  #           - build_icon-library
+  #           - build_prerequisites
   #         filters:
   #           branches:
-  #             ignore:
-  #               - master
+  #             only:
   #               - latest
   #     - check_commits:
   #         requires:
-  #           - build_icon-library
+  #           - build_prerequisites
   #         filters:
   #           branches:
-  #             ignore:
-  #               - master
+  #             only:
   #               - latest
   #     - lint_css-framework:
   #         filters:
   #           branches:
-  #             ignore:
-  #               - master
+  #             only:
   #               - latest
   #     - lint_react-component-library:
   #         filters:
   #           branches:
-  #             ignore:
-  #               - master
+  #             only:
   #               - latest
   #     - lint_docs_site:
   #         filters:
   #           branches:
-  #             ignore:
-  #               - master
+  #             only:
   #               - latest
   #     - test_docs-site:
   #         requires:
+  #           - build_prerequisites
   #           - lint_docs_site
-  #           - build_icon-library
   #     - test_react-component-library:
   #         requires:
+  #           - build_prerequisites
   #           - lint_react-component-library
-  #           - build_icon-library
-  #     - code_cov:
-  #         requires:
-  #           - test_react-component-library
-  #           - test_docs-site
   #     - test_visual_regression:
   #         requires:
   #           - test_react-component-library
-  #           - build_icon-library
-
-  build_test_and_deploy_next:
-    jobs:
-      - build_prerequisites:
-          filters:
-            branches:
-              only:
-                - master
-      - commit_next:
-         requires:
-            - build_prerequisites
-         filters:
-            branches:
-              only:
-                - master
-      - test_react-component-library:
-          requires:
-            - build_prerequisites
-          filters:
-            branches:
-              only:
-                - master
-      - test_visual_regression:
-          requires:
-            - build_prerequisites
-          filters:
-            branches:
-              only:
-                - master
-      - publish_next:
-         requires:
-            - test_react-component-library
-            - test_visual_regression
-            - commit_next
-  build_test_and_deploy_latest:
-    jobs:
-      - build_prerequisites:
-          filters:
-            branches:
-              only:
-                - latest
-      - security_audit:
-          requires:
-            - build_prerequisites
-          filters:
-            branches:
-              only:
-                - latest
-      - check_commits:
-          requires:
-            - build_prerequisites
-          filters:
-            branches:
-              only:
-                - latest
-      - lint_css-framework:
-          filters:
-            branches:
-              only:
-                - latest
-      - lint_react-component-library:
-          filters:
-            branches:
-              only:
-                - latest
-      - lint_docs_site:
-          filters:
-            branches:
-              only:
-                - latest
-      - test_docs-site:
-          requires:
-            - build_prerequisites
-            - lint_docs_site
-      - test_react-component-library:
-          requires:
-            - build_prerequisites
-            - lint_react-component-library
-      - test_visual_regression:
-          requires:
-            - test_react-component-library
-      - publish_latest:
-          requires:
-            - test_visual_regression
+  #     - publish_latest:
+  #         requires:
+  #           - test_visual_regression
