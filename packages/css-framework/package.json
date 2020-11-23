@@ -1,6 +1,6 @@
 {
   "name": "@royalnavy/css-framework",
-  "version": "2.20.0-alpha.1",
+  "version": "2.20.0-alpha.2",
   "main": "index.scss",
   "author": "Royal Navy",
   "license": "Apache-2.0",
@@ -35,7 +35,7 @@
     "prepare": "yarn build"
   },
   "dependencies": {
-    "@royalnavy/design-tokens": "^2.20.0-alpha.1"
+    "@royalnavy/design-tokens": "^2.20.0-alpha.2"
   },
   "devDependencies": {
     "lint-staged": "^10.2.13",
