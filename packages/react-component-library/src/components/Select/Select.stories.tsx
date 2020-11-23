@@ -25,7 +25,7 @@ const iconOptions = options.map(option => ({
 stories.add('Default', () => (
   <Select
     options={options}
-    label="Example Label"
+    label="Example label"
     onChange={action('onChange')}
   />
 ))
@@ -33,7 +33,7 @@ stories.add('Default', () => (
 examples.add('Disabled', () => (
   <Select
     options={options}
-    label="Example Label"
+    label="Example label"
     onChange={action('onChange')}
     isDisabled
   />
@@ -42,7 +42,7 @@ examples.add('Disabled', () => (
 examples.add('Icons', () => (
   <Select
     options={iconOptions}
-    label="Example Label"
+    label="Example label"
     onChange={action('onChange')}
   />
 ))

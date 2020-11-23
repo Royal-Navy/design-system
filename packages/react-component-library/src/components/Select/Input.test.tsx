@@ -14,7 +14,6 @@ describe('Select Input', () => {
       cx: jest.fn(),
       isHidden: false,
       innerRef: jest.fn(),
-      className: 'myclass',
       theme: {
         borderRadius: null,
         colors: {},

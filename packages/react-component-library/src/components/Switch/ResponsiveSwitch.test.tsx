@@ -67,8 +67,9 @@ describe('Switch', () => {
     })
 
     it('should render the select component', () => {
-      const select = wrapper.container.children[0].children[0]
-      expect(select.classList).toContain('rn-select')
+      expect(
+        wrapper.getByTestId('responsive-switch-select')
+      ).toBeInTheDocument()
     })
   })
 })

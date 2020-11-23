@@ -16,7 +16,11 @@ export const ResponsiveSwitch: React.FC<SwitchProps> = (props) => {
 
   return (
     <div className={classes} data-testid="responsive-switch">
-      {isDesktopOrLaptop ? <Switch {...props} /> : <Select {...props} />}
+      {isDesktopOrLaptop ? (
+        <Switch {...props} />
+      ) : (
+        <Select data-testid="responsive-switch-select" {...props} />
+      )}
     </div>
   )
 }

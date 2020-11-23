@@ -10,7 +10,6 @@ describe('Select Option', () => {
 
   beforeEach(() => {
     props = {
-      className: 'myclass',
       clearValue: jest.fn(),
       cx: jest.fn(),
       children: 'test label',
