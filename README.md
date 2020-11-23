@@ -107,7 +107,7 @@ We have configured a set of Prettier options to enforce consistent code formatti
 
 ## Browser support
 
-The Standards Toolkit currently supports all major evergreen browsers.
+The Royal Navy Design System currently supports all major evergreen browsers.
 
 ## Licensing
 
