@@ -108,10 +108,11 @@ function getDayWidth(
   return (dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH) * multiplier
 }
 
-const { color, spacing } = selectors
+const { color, spacing, zIndex } = selectors
 
 const StyledTimeline = styled.div`
   position: relative;
+  z-index: ${zIndex('timeline', 0)};
   display: flex;
   width: 100%;
   background-color: ${color('neutral', 'white')};

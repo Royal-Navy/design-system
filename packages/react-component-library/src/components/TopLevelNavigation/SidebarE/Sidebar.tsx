@@ -23,12 +23,13 @@ interface StyledSidebarProps {
   isOpen?: boolean
 }
 
-const { color, spacing, fontSize } = selectors
+const { color, spacing, fontSize, zIndex } = selectors
 
 const StyledSidebar = styled.aside<StyledSidebarProps>`
   display: inline-flex;
   flex-direction: column;
   position: relative;
+  z-index: ${zIndex('sidebar', 0)};
   width: ${({ isOpen }) => (isOpen ? '18rem' : '3.75rem')};
   height: 100vh;
   background-color: ${color('neutral', '700')};
