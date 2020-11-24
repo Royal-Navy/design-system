@@ -3,15 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [2.20.0-alpha.6](https://github.com/Royal-Navy/design-system/compare/2.19.0...2.20.0-alpha.6) (2020-11-24)
-
-
-### Features
-
-* **Pagination:** Expose `initialPage` prop ([7d3c622](https://github.com/Royal-Navy/design-system/commit/7d3c62244d53f6497f0e1764050cdd1063ca562b))
-
-
-
 
 
 # [2.19.0](https://github.com/Royal-Navy/design-system/compare/2.18.0...2.19.0) (2020-11-18)
