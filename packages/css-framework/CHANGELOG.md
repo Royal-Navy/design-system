@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.20.0-alpha.6](https://github.com/Royal-Navy/design-system/compare/2.19.0...2.20.0-alpha.6) (2020-11-24)
+
+
+### Features
+
+* **Select:** Convert to styled-components ([bec59a1](https://github.com/Royal-Navy/design-system/commit/bec59a1ab83567b871c396bc787ca8f46a437f1a))
+
+
+
+# [2.18.0](https://github.com/Royal-Navy/design-system/compare/2.17.0...2.18.0) (2020-11-12)
+
+
+
+
+
 # [2.19.0](https://github.com/Royal-Navy/design-system/compare/2.18.0...2.19.0) (2020-11-18)
 
 **Note:** Version bump only for package @royalnavy/css-framework
