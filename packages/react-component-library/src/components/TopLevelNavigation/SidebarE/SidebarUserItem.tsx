@@ -1,37 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
 
 import { NavItem } from '../../../common/Nav'
+import { StyledUserItem } from './partials/StyledUserItem'
+import { StyledUserItemIcon } from './partials/StyledUserItemIcon'
+import { StyledUserItemText } from './partials/StyledUserItemText'
 
 export interface SidebarUserItemEProps extends NavItem {
   icon?: React.ReactNode
 }
-
-const { color, spacing } = selectors
-
-const StyledSidebarUserItem = styled.li`
-  display: flex;
-  align-items: center;
-  margin: ${spacing('4')};
-`
-
-const StyledSidebarUserItemIcon = styled.div`
-  display: inline-flex;
-  margin-right: ${spacing('4')};
-
-  ${StyledSidebarUserItem}:hover & {
-    color: ${color('action', '500')};
-  }
-`
-
-const StyledSidebarUserItemText = styled.span`
-  white-space: nowrap;
-
-  ${StyledSidebarUserItem}:hover & {
-    color: ${color('action', '500')};
-  }
-`
 
 export const SidebarUserItemE: React.FC<SidebarUserItemEProps> = ({
   icon,
@@ -42,12 +18,10 @@ export const SidebarUserItemE: React.FC<SidebarUserItemEProps> = ({
   return React.cloneElement(linkElement, {
     ...link.props,
     children: (
-      <StyledSidebarUserItem>
-        {icon && <StyledSidebarUserItemIcon>{icon}</StyledSidebarUserItemIcon>}
-        <StyledSidebarUserItemText>
-          {linkElement.props.children}
-        </StyledSidebarUserItemText>
-      </StyledSidebarUserItem>
+      <StyledUserItem>
+        {icon && <StyledUserItemIcon>{icon}</StyledUserItemIcon>}
+        <StyledUserItemText>{linkElement.props.children}</StyledUserItemText>
+      </StyledUserItem>
     ),
   })
 }
