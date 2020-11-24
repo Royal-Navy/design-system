@@ -3,14 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [2.20.0-alpha.6](https://github.com/Royal-Navy/design-system/compare/2.19.0...2.20.0-alpha.6) (2020-11-24)
-
-
-### Bug Fixes
-
-* **Timeline:** Change z-indexes to fix stacking of Timeline elements ([36c5200](https://github.com/Royal-Navy/design-system/commit/36c52003fabe436a7e85949141087ef89c42440b))
-
-
 
 
 
