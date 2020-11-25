@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.20.0](https://github.com/Royal-Navy/design-system/compare/2.19.0...2.20.0) (2020-11-25)
+
+
+### Bug Fixes
+
+* **Changelog:** Remove bad entries ([0d6a9d5](https://github.com/Royal-Navy/design-system/commit/0d6a9d53bbeae8972d88f06c1f2baefbb821fd73))
+* **Version:** Reset version numbers ([eaae748](https://github.com/Royal-Navy/design-system/commit/eaae748d81fe46adb19ccb1de3008860c376d962))
+
+
+### Features
+
+* **Pagination:** Expose `initialPage` prop ([7d3c622](https://github.com/Royal-Navy/design-system/commit/7d3c62244d53f6497f0e1764050cdd1063ca562b))
+
+
+
+
+
 
 
 # [2.19.0](https://github.com/Royal-Navy/design-system/compare/2.18.0...2.19.0) (2020-11-18)

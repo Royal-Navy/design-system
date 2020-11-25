@@ -3,6 +3,107 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.20.0](https://github.com/Royal-Navy/design-system/compare/2.19.0...2.20.0) (2020-11-25)
+
+
+### Bug Fixes
+
+* **Changelog:** Remove bad entries ([0d6a9d5](https://github.com/Royal-Navy/design-system/commit/0d6a9d53bbeae8972d88f06c1f2baefbb821fd73))
+* **Checkbox:** Update broken Formik stories ([4ae5bee](https://github.com/Royal-Navy/design-system/commit/4ae5beee9eb8f5a15cc910683ef251323e1d3a85))
+* **ContextMenu:** Resolve React console warnings ([84614e7](https://github.com/Royal-Navy/design-system/commit/84614e72cf725593a5addc756e76575423e3d017))
+* **Nav:** Fix arbitrary prop drilling ([0d074a9](https://github.com/Royal-Navy/design-system/commit/0d074a905e7e7b25ac5e8bc89dfed8f4d686f1fe))
+* **NumberInput:** Use solid border ([97fe357](https://github.com/Royal-Navy/design-system/commit/97fe3579fbfefdff244d37fb467e372500fcc1a6))
+* **RangeSlider:** Fix styled-components warning for icons ([c8b2725](https://github.com/Royal-Navy/design-system/commit/c8b2725d6a3560e764b980b23f450a2b6e2259ff))
+* **RangeSlider:** Use `attrs` to prevent excessive class generation ([45db7f7](https://github.com/Royal-Navy/design-system/commit/45db7f78798f0ab21a64d3616d71bd8bd154df70))
+* **ReactComponentLibrary:** Do not drill `isInvalid` prop to DOM nodes ([7b2d067](https://github.com/Royal-Navy/design-system/commit/7b2d0676609683ca9247560f44c9a0fa45662290))
+* **Timeline:** Change z-indexes to fix stacking of Timeline elements ([36c5200](https://github.com/Royal-Navy/design-system/commit/36c52003fabe436a7e85949141087ef89c42440b))
+* **Timeline:** Correct row column background mismatch ([63db7c1](https://github.com/Royal-Navy/design-system/commit/63db7c1334d37ffa3c0b09f3e0e972fb093aae65))
+* **Version:** Reset version numbers ([eaae748](https://github.com/Royal-Navy/design-system/commit/eaae748d81fe46adb19ccb1de3008860c376d962))
+
+
+### Features
+
+* **Checkbox:** Explicitly expose `checked` and `defaultChecked` ([4a898bf](https://github.com/Royal-Navy/design-system/commit/4a898bf8453e12648e8cf02701d55e3dc696e048))
+* **Pagination:** Expose `initialPage` prop ([7d3c622](https://github.com/Royal-Navy/design-system/commit/7d3c62244d53f6497f0e1764050cdd1063ca562b))
+* **Select:** Add ability to display `icon` ([0fa9531](https://github.com/Royal-Navy/design-system/commit/0fa9531cd842cfe25cb680e044edb1db316aea3c))
+* **Select:** Convert to styled-components ([bec59a1](https://github.com/Royal-Navy/design-system/commit/bec59a1ab83567b871c396bc787ca8f46a437f1a))
+
+
+
+# [2.18.0](https://github.com/Royal-Navy/design-system/compare/2.17.0...2.18.0) (2020-11-12)
+
+
+### Bug Fixes
+
+* **Popover:** Prevent hidden Popover blocking covered content ([4634f1c](https://github.com/Royal-Navy/design-system/commit/4634f1c5d0e25213f3fdc0d16f7da443d8baf332))
+* **ReactComponentLibrary:** Correctly extend some interfaces ([14e3fd7](https://github.com/Royal-Navy/design-system/commit/14e3fd764fe9964d2b71261ea3e8b5efac600e1d))
+* **TextArea:** Fix bad merge ([dd957b8](https://github.com/Royal-Navy/design-system/commit/dd957b8935cab64c58cb5a99d2d7f75decc462ff))
+* **TextInput:** Do not drill `isInvalid` prop to DOM node ([de8f4a9](https://github.com/Royal-Navy/design-system/commit/de8f4a93befb9d970ca456441a7b5c84e4d3e6b4))
+* **Timeline:** Add hidden cell when no cells ([c609427](https://github.com/Royal-Navy/design-system/commit/c6094275c2d16c490e35c2fdb4d582fd8fc9142b))
+
+
+### Features
+
+* **TextArea:** Convert to `styled-components` ([8d190a5](https://github.com/Royal-Navy/design-system/commit/8d190a5c8fe5e4e70b949a089536a7887c0dbcbe))
+
+
+
+# [2.17.0](https://github.com/Royal-Navy/design-system/compare/2.16.0...2.17.0) (2020-11-05)
+
+
+### Bug Fixes
+
+* **Dropdown:** Fix broken icons story ([1611d1e](https://github.com/Royal-Navy/design-system/commit/1611d1e2ab0ab9c2b7acae1ed8e2bd58b1463fdc))
+* **Dropdown:** Update end adornment styles ([23092ea](https://github.com/Royal-Navy/design-system/commit/23092eada8c63da83d9e4612b84f9bc805cd61fc))
+* **Dropdown:** Use transient prop ([d7a4795](https://github.com/Royal-Navy/design-system/commit/d7a479539b451be59b785a3da0645d77cde2cd4c))
+* **NumberInput:** Remove references to classes ([2a4778e](https://github.com/Royal-Navy/design-system/commit/2a4778e246e6379da7a39ab7a7bf9c2a2b263990))
+* **NumberInput:** Round down offset calculation ([2509bfd](https://github.com/Royal-Navy/design-system/commit/2509bfde1cfe4a0cbc8d523e9bae7c28049655de))
+* **NumberInput:** Round up to nearest three ([eee613a](https://github.com/Royal-Navy/design-system/commit/eee613a3922eba440efe8e67df1d714e86ab6956))
+* **NumberInput:** Show unit/value after calculation ([bb4fdea](https://github.com/Royal-Navy/design-system/commit/bb4fdea53a194c120d0b329fceb55ac287833214))
+* **NumberInput:** Shrink label with unit ([31b4301](https://github.com/Royal-Navy/design-system/commit/31b43018ab5c695fbbb2843ffe9a606f6102d319))
+* **RangeSlider:** Fix rail positioning ([2a89fac](https://github.com/Royal-Navy/design-system/commit/2a89fac03b9f61c8b3944c1d644df53978dce681))
+* **RangeSlider:** Only invoke `onUpdate` if provided ([4e154d8](https://github.com/Royal-Navy/design-system/commit/4e154d8548896f55e759d12d2eb59e2e2217eebd))
+* **Sheet:** Adjust positioning caclculation ([89ba43a](https://github.com/Royal-Navy/design-system/commit/89ba43a5e31f8a38afa545dd845bc56b3ccb1d28))
+* **SidebarE:** Adjust icon size ([e0e1ce3](https://github.com/Royal-Navy/design-system/commit/e0e1ce34873721a33e41f85b3d396c0287174a39))
+* **SidebarE:** Rename and export ([291c7e2](https://github.com/Royal-Navy/design-system/commit/291c7e23e5bff033013267855834c05697a8762e))
+* **Timeline:** Render events beyond range ([cfcc847](https://github.com/Royal-Navy/design-system/commit/cfcc847b3dbf0324d6be535f6af4f171ffb7077a))
+* **Tooltip:** Allow for optional description ([ef6f3be](https://github.com/Royal-Navy/design-system/commit/ef6f3bea5fb8305f76af98e96d8f80d0af9b3d16))
+* **Tooltip:** Set `children` as optional ([6b30c74](https://github.com/Royal-Navy/design-system/commit/6b30c74eb948f6601b91ac9111b68d030faa8495))
+
+
+### Features
+
+* **ContextMenu:** Match design to Sketch component ([86ba9ff](https://github.com/Royal-Navy/design-system/commit/86ba9ffc50d435fce93689e3de4cd4fa6dd64b9b))
+* **Dropdown:** Add label icon ([98f9818](https://github.com/Royal-Navy/design-system/commit/98f98182669a53578da7ab3ba17365ab334ff08a))
+* **Dropdown:** Migrate to styled-components ([65193fa](https://github.com/Royal-Navy/design-system/commit/65193fad82d7a26ee97e63c030e569a29254a84f))
+* **NumberInput:** Add clear button ([687000d](https://github.com/Royal-Navy/design-system/commit/687000de422c1944d8b9d4fe658225ff5ed4596d))
+* **NumberInput:** Migrate to Styled Components ([985fba3](https://github.com/Royal-Navy/design-system/commit/985fba36e35c2e7cdf4762f3a5b7e3e7fb352933))
+* **NumberInput:** Use SC for form validation ([90d0bea](https://github.com/Royal-Navy/design-system/commit/90d0bea4a25986c50430be5b2da91604e22cf3e7))
+* **Popover:** Control with click instead of hover ([032eb2b](https://github.com/Royal-Navy/design-system/commit/032eb2b7005745e88d2221a1f77d3b529a8bdaba))
+* **Popover:** Hide `Popover` with document click ([c280d14](https://github.com/Royal-Navy/design-system/commit/c280d14e866c68a9938d256e39286863dd64d650))
+* **Popover:** Use `styled-components` ([06e725f](https://github.com/Royal-Navy/design-system/commit/06e725fd9ac88fdce9b18bdca890bb26187f9eff))
+* **RangeSlider:** Add support for custom value formatter ([536686c](https://github.com/Royal-Navy/design-system/commit/536686c93e37f083715c44b80180c90faffbf8f4)), closes [#1561](https://github.com/Royal-Navy/design-system/issues/1561)
+* **Sheet:** Add ability to specify timings ([48e0ccb](https://github.com/Royal-Navy/design-system/commit/48e0ccb48aa8d0082bc2c879f6595f2184945bc1))
+* **Sheet:** Update styling to match new designs ([089ec29](https://github.com/Royal-Navy/design-system/commit/089ec29889a15b143c54bbf4361558d182aeb1d1))
+* **SidebarE:** Add `SidebarWrapper` layout helper ([3fe67f2](https://github.com/Royal-Navy/design-system/commit/3fe67f22369aaa366acd7b048df910b0bca2ee4d))
+* **SidebarE:** Add ability to render sub-nav ([3c1715e](https://github.com/Royal-Navy/design-system/commit/3c1715e67b103c3e95b3b69b8e64a87881749a70))
+* **SidebarE:** Add collapsed user menu ([2d12b42](https://github.com/Royal-Navy/design-system/commit/2d12b4217269a2c7d562209f350f3b6b4544c875))
+* **SidebarE:** Add notification panel ([077da25](https://github.com/Royal-Navy/design-system/commit/077da251dfda69ea0b0f9c4b68859dd04e1e5b93))
+* **SidebarE:** Add transition animations ([976950c](https://github.com/Royal-Navy/design-system/commit/976950c760803752f553775e19404e606d1ed4fa))
+* **SidebarE:** Display Tooltip on collapsed hover ([d39db66](https://github.com/Royal-Navy/design-system/commit/d39db66754d7e509fb593e8d07827f85beaa8f67))
+* **SidebarE:** Implement baseline experimental Sidebar ([8855c02](https://github.com/Royal-Navy/design-system/commit/8855c02f3889d3c1065d437800a0db6c31cfcd72))
+* **SidebarE:** Make header optional ([af03090](https://github.com/Royal-Navy/design-system/commit/af03090d401af9c2ca4ce5e9533e73bc3585fae0))
+* **SidebarE:** Only display handle on mouseOver ([a66b08f](https://github.com/Royal-Navy/design-system/commit/a66b08f29a703c34022ff510506340d3639a3948))
+* **Tooltip:** Update styling to match new designs ([53e0ddf](https://github.com/Royal-Navy/design-system/commit/53e0ddf87581c5665efa4d77c2917c7b8851ab59))
+
+
+
+# [2.16.0](https://github.com/Royal-Navy/design-system/compare/2.15.0...2.16.0) (2020-10-13)
+
+
+
+
+
 
 
 # [2.19.0](https://github.com/Royal-Navy/design-system/compare/2.18.0...2.19.0) (2020-11-18)
