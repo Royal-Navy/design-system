@@ -183,14 +183,15 @@ TBC
   </SidebarWrapperE>
 </CodeHighlighter>
 
-### With user link
+### With user and exit links
 
 <CodeHighlighter source={`<SidebarWrapperE>
   <SidebarE icon={<IconGrain />} title="Application Name" user={
     <SidebarUserE
       initials="HN"
       name="Horatio Nelson"
-      link={<Link href="/user-profile">View profile</Link>}
+      userLink={<Link href="/user-profile">Profile</Link>}
+      exitLink={<Link href="/logout">Logout</Link>}
     />
   }>
     <SidebarNavE>
@@ -215,7 +216,8 @@ TBC
       <SidebarUserE
         initials="HN"
         name="Horatio Nelson"
-        link={<Link href="/user-profile">View profile</Link>}
+        userLink={<Link href="/user-profile">Profile</Link>}
+        exitLink={<Link href="/logout">Logout</Link>}
       />
     }>
       <SidebarNavE>
@@ -244,15 +246,12 @@ TBC
     <SidebarUserE
       initials="HN"
       name="Horatio Nelson"
-      link={<Link href="/user-profile">View profile</Link>}
+      userLink={<Link href="/user-profile">Profile</Link>}
+      exitLink={<Link href="/logout">Logout</Link>}
     >
       <SidebarUserItemE
         icon={<IconPerson />}
-        link={<Link href="/user-profile">Profile</Link>}
-      />
-      <SidebarUserItemE
-        icon={<IconExitToApp />}
-        link={<Link href="/logout">Logout</Link>}
+        link={<Link href="/something">Settings</Link>}
       />
     </SidebarUserE>
   }>
@@ -448,11 +447,18 @@ TBC
     Description: 'An array of items for displaying when clicking the user profile icon when the sidebar is collapsed',
   },
   {
-    Name: 'link',
+    Name: 'userLink',
     Type: 'React.ReactElement<LinkTypes>',
-    Required: 'True',
+    Required: 'False',
     Default: '',
     Description: 'Link component for navigating to the user profile',
+  },
+  {
+    Name: 'exitLink',
+    Type: 'React.ReactElement<LinkTypes>',
+    Required: 'False',
+    Default: '',
+    Description: 'Link component for logging out of the application.',
   },
   {
     Name: 'initials',

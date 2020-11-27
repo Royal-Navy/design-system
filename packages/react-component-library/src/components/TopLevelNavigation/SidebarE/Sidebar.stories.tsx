@@ -9,9 +9,7 @@ import {
   IconFeedback,
   IconSettings,
   IconGrain,
-  IconPerson,
   IconChatBubble,
-  IconExitToApp,
 } from '@royalnavy/icon-library'
 
 import {
@@ -19,7 +17,6 @@ import {
   SidebarNavE,
   SidebarNavItemE,
   SidebarUserE,
-  SidebarUserItemE,
   SidebarWrapperE,
 } from '.'
 import { Link } from '../../Link'
@@ -27,37 +24,13 @@ import { Notification, Notifications } from '../NotificationPanel'
 
 export default { component: SidebarE, title: 'SidebarE' } as Meta
 
-const userWithLink = (
+const userWithLinks = (
   <SidebarUserE
     initials="HN"
     name="Horatio Nelson"
-    link={<Link href="/user-profile">View profile</Link>}
+    userLink={<Link href="/user-profile">Profile</Link>}
+    exitLink={<Link href="/logout">Logout</Link>}
   />
-)
-
-const userWithMenu = (
-  <SidebarUserE
-    initials="HN"
-    name="Horatio Nelson"
-    link={<Link href="/user-profile">View profile</Link>}
-  >
-    <SidebarUserItemE
-      icon={<IconPerson />}
-      link={<Link href="/user-profile">Profile</Link>}
-    />
-    <SidebarUserItemE
-      icon={<IconSettings />}
-      link={<Link href="/settings">Settings</Link>}
-    />
-    <SidebarUserItemE
-      icon={<IconChatBubble />}
-      link={<Link href="/support">Support</Link>}
-    />
-    <SidebarUserItemE
-      icon={<IconExitToApp />}
-      link={<Link href="/logout">Logout</Link>}
-    />
-  </SidebarUserE>
 )
 
 const sidebarNav = (
@@ -210,30 +183,13 @@ export const WithHeader = () => {
 
 WithHeader.storyName = 'With header'
 
-export const WithUserLink = () => {
-  return (
-    <SidebarWrapperE>
-      <SidebarE
-        icon={<IconGrain />}
-        title="Application Name"
-        user={userWithLink}
-      >
-        {sidebarNav}
-      </SidebarE>
-      <main>Hello, World!</main>
-    </SidebarWrapperE>
-  )
-}
-
-WithUserLink.storyName = 'With user link'
-
 export const WithUserMenu = () => {
   return (
     <SidebarWrapperE>
       <SidebarE
         icon={<IconGrain />}
         title="Application Name"
-        user={userWithMenu}
+        user={userWithLinks}
       >
         {sidebarNav}
       </SidebarE>
@@ -250,7 +206,7 @@ export const WithNotifications = () => {
       <SidebarE
         icon={<IconGrain />}
         title="Application Name"
-        user={userWithMenu}
+        user={userWithLinks}
         notifications={notifications}
         hasUnreadNotification
       >
@@ -269,7 +225,7 @@ export const WithSubNavigation = () => {
       <SidebarE
         icon={<IconGrain />}
         title="Application Name"
-        user={userWithMenu}
+        user={userWithLinks}
         notifications={notifications}
         hasUnreadNotification
       >

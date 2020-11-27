@@ -6,39 +6,27 @@ import {
   RenderResult,
   waitFor,
 } from '@testing-library/react'
-import { IconHome, IconGrain, IconExitToApp } from '@royalnavy/icon-library'
+import { IconHome, IconGrain } from '@royalnavy/icon-library'
 
 import {
   SidebarE,
   SidebarNavE,
   SidebarNavItemE,
   SidebarUserE,
-  SidebarUserItemE,
   SidebarWrapperE,
 } from '.'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 
-const userWithLink = (
-  <SidebarUserE
-    initials="HN"
-    name="Horatio Nelson"
-    link={<Link href="/user-profile">Profile</Link>}
-  />
-)
+const user = <SidebarUserE initials="HN" name="Horatio Nelson" />
 
-const userWithMenu = (
+const userWithLinks = (
   <SidebarUserE
     initials="HN"
     name="Horatio Nelson"
-    link={<Link href="/user-profile">View profile</Link>}
-  >
-    <SidebarUserItemE link={<Link href="/user-profile">Profile</Link>} />
-    <SidebarUserItemE
-      icon={<IconExitToApp />}
-      link={<Link href="/logout">Logout</Link>}
-    />
-  </SidebarUserE>
+    userLink={<Link href="/user-profile">Profile</Link>}
+    exitLink={<Link href="/logout">Logout</Link>}
+  />
 )
 
 const notifications = (
@@ -194,15 +182,11 @@ describe('Sidebar', () => {
     })
   })
 
-  describe('when composed with a user link', () => {
+  describe('when composed with a user with user or exit links', () => {
     beforeEach(() => {
       wrapper = render(
         <SidebarWrapperE>
-          <SidebarE
-            icon={<IconGrain />}
-            title="Application Name"
-            user={userWithLink}
-          >
+          <SidebarE icon={<IconGrain />} title="Application Name" user={user}>
             <SidebarNavE>
               <SidebarNavItemE
                 icon={<IconHome />}
@@ -218,27 +202,48 @@ describe('Sidebar', () => {
 
     describe('and the sidebar is collapsed', () => {
       it('should render the correct user information', () => {
-        expect(wrapper.queryByTestId('sidebar-user-closed')).toBeInTheDocument()
-
         expect(
-          wrapper.queryByTestId('sidebar-user-closed-children')
+          wrapper.queryByTestId('sidebar-user-closed')
         ).not.toBeInTheDocument()
 
         expect(
           wrapper.queryByTestId('sidebar-user-open')
         ).not.toBeInTheDocument()
+
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed-children')
+        ).toBeInTheDocument()
+      })
+    })
+
+    describe('and the sidebar is expanded', () => {
+      beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+        wrapper.getByTestId('sidebar-handle').click()
+      })
+
+      it('should not render the exit link', () => {
+        expect(
+          wrapper.queryByTestId('sidebar-exit-link')
+        ).not.toBeInTheDocument()
+      })
+
+      it('should not render the user profile link', () => {
+        expect(
+          wrapper.queryByTestId('sidebar-user-link')
+        ).not.toBeInTheDocument()
       })
     })
   })
 
-  describe('when composed with a user menu', () => {
+  describe('when composed with a user menu, user link and exit link', () => {
     beforeEach(() => {
       wrapper = render(
         <SidebarWrapperE>
           <SidebarE
             icon={<IconGrain />}
             title="Application Name"
-            user={userWithMenu}
+            user={userWithLinks}
           >
             <SidebarNavE>
               <SidebarNavItemE
@@ -316,6 +321,7 @@ describe('Sidebar', () => {
         fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
         wrapper.getByTestId('sidebar-handle').click()
       })
+
       it('should render the correct user information', () => {
         expect(wrapper.queryByTestId('sidebar-user-open')).toBeInTheDocument()
 
@@ -325,6 +331,10 @@ describe('Sidebar', () => {
         expect(
           wrapper.queryByTestId('sidebar-user-closed-children')
         ).not.toBeInTheDocument()
+      })
+
+      it('should render the exit link', () => {
+        expect(wrapper.queryByTestId('sidebar-exit-link')).toBeInTheDocument()
       })
     })
   })
