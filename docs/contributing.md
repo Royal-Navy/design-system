@@ -17,6 +17,8 @@
         - [Cherry pick the fix](#cherry-pick-the-fix)
         - [Release the fix](#release-the-fix)
         - [Finally](#finally)
+- [Styled Components](#styled-components)
+  - [Recomended practices](#recomended-practices)
 
 ## Branching strategy
 The Royal Navy Design System repository is using a trunk-based development branching strategy. All changes are merged directly into `master`. To have control over publishing of packages, `npm publish` is triggered only when a new version tag is merged into `master`. Branches are still used for the peer review process. When required, separate branches are maintained for fixes.
@@ -153,3 +155,25 @@ A PR will need to be opened to `merge` the package updates into the release bran
 
 #### Finally
 Once deployed successfully, open a PR to `merge` the `CHANGELOG` and `package.json` changes back into `master`.
+
+## Styled Components
+We use the [`styled-components`](https://github.com/styled-components/styled-components) library for styling the component library.
+
+### Recomended practices
+- Break up components - consider creating a 'partials' directory.
+
+- Props unique to the styled-component that do not need to be drilled to the wrapped component / markup should be marked as transient (`$`). Transient by default (think `const`).
+
+- Avoid targeting markup even if it's namespaced by parent styled-component. This is sometimes a smell that the component needs breaking up further. There are exceptions to the rule - consider on a case by case basis.
+
+- Avoid mixing classes / BEM and styled-components. Stick to the single paradigm.
+
+- Avoid setting the style prop and instead pass props to the styled-component. Identify discrete UI states (avoiding one-to-one relationship between props and CSS properties where possible).
+
+- Always use the `css`\`` tagged template literal.
+
+- Always declare components outside of the React component (performance - CSS class re-generation).
+
+- It is important the `className` prop is attached to a component's parent DOM node. Not doing so will break `styled(Component)` HOC usage.
+
+- Prefer [specificity trick](https://styled-components.com/docs/faqs#how-can-i-override-styles-with-higher-specificity) over `!important` usage.
