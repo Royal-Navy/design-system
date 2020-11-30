@@ -16,7 +16,8 @@
 }
 
 .rn-footer__logo {
-  flex: 1;
+  width: 210px;
+  padding-right: rn.spacing("6");
 }
 
 .rn-footer__github {
