@@ -11,15 +11,11 @@ interface StyledFloatingBoxContentProps {
   $scheme: FloatingBoxSchemeType
 }
 
-export const StyledFloatingBoxContent = styled.div<
-  StyledFloatingBoxContentProps
->`
+export const StyledFloatingBoxContent = styled.div<StyledFloatingBoxContentProps>`
   position: absolute;
   top: 0;
   left: 0;
   background: ${color('neutral', 'white')};
-  height: 100%;
-  width: 100%;
   margin: 0;
   padding: 0;
   box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.12);
@@ -28,8 +24,6 @@ export const StyledFloatingBoxContent = styled.div<
     position: relative;
     top: auto;
     left: auto;
-    height: auto;
-    width: auto;
     padding: 0;
     border-radius: 3px;
 
@@ -47,7 +41,7 @@ export const StyledFloatingBoxContent = styled.div<
         border: ${color('neutral', '700')} solid ${spacing('px')};
         color: ${color('neutral', 'white')};
       `}
-    
+
     &:before {
       border-style: solid;
       content: '';
