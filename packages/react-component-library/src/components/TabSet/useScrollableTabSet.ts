@@ -6,7 +6,7 @@ function hasTab(tabIndex: number, itemsRef: Array<HTMLLIElement>) {
   return tabIndex > -1 && tabIndex < itemsRef.length
 }
 
-function scrollTo(element: HTMLDivElement, left: number) {
+function scrollTo(element: HTMLDivElement, left: number): Promise<void> {
   return new Promise(resolve => {
     function onScroll() {
       if (element.scrollLeft === left) {
