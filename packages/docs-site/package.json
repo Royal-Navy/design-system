@@ -59,6 +59,7 @@
     "gatsby-plugin-react-helmet": "^3.1.21",
     "gatsby-plugin-sass": "^2.1.27",
     "gatsby-plugin-sass-resources": "^2.0.0",
+    "gatsby-plugin-styled-components": "^3.5.0",
     "gatsby-source-filesystem": "^2.1.46",
     "lodash": "^4.17.19",
     "mixin-deep": "^2.0.1",
