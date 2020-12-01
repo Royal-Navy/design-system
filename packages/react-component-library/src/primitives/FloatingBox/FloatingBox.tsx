@@ -205,7 +205,7 @@ function getContentTweaks($position: FloatingBoxPositionType) {
   return null
 }
 
-const StyledFloatingBox = styled.div<StyledFloatingBoxProps>`
+export const StyledFloatingBox = styled.div<StyledFloatingBoxProps>`
   @media only screen and (min-width: ${breakpoint('xs').breakpoint}) {
     ${({ $position, $scheme }) =>
       css`

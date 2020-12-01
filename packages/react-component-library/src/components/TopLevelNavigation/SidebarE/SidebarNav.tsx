@@ -1,10 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
 
 import { Nav, NavItem } from '../../../common/Nav'
 import { SidebarNavItemE, SidebarNavItemEProps } from './index'
 import { warnIfOverwriting } from '../../../helpers'
+import { StyledNav } from './partials/StyledNav'
 
 export interface SidebarNavEProps extends Nav<NavItem> {
   onBlur?: (e: React.FocusEvent<HTMLElement>) => void
@@ -26,14 +25,6 @@ function mapNavItem(
   })
 }
 
-const { color, spacing } = selectors
-
-const StyledSidebarNav = styled.nav`
-  height: 100%;
-  padding: ${spacing('1')} ${spacing('6')};
-  color: ${color('neutral', 'white')};
-`
-
 export const SidebarNavE: React.FC<SidebarNavEProps> = ({
   children,
   onBlur,
@@ -42,7 +33,7 @@ export const SidebarNavE: React.FC<SidebarNavEProps> = ({
   onMouseOut,
   onMouseOver,
 }) => (
-  <StyledSidebarNav
+  <StyledNav
     onBlur={onBlur}
     onFocus={onFocus}
     onMouseOut={onMouseOut}
@@ -55,7 +46,7 @@ export const SidebarNavE: React.FC<SidebarNavEProps> = ({
         return mapNavItem(child, onItemClick)
       }
     )}
-  </StyledSidebarNav>
+  </StyledNav>
 )
 
 SidebarNavE.displayName = 'SidebarNav'

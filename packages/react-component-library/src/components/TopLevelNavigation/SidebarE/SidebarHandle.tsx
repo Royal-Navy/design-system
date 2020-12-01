@@ -1,40 +1,13 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
 import { IconChevronLeft, IconChevronRight } from '@royalnavy/icon-library'
 
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext } from './context'
+import { StyledHandle } from './partials/StyledHandle'
 
 interface SidebarHandleProps extends ComponentWithClass {
   style?: React.CSSProperties
 }
-
-const { color } = selectors
-
-const StyledSidebarHandle = styled.button`
-  position: absolute;
-  top: 1.15rem;
-  right: -1rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${color('action', '500')};
-  border-radius: 9999px;
-  width: 2rem;
-  height: 2rem;
-  border: none;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
-  transition: 100ms opacity linear;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  > svg {
-    color: ${color('neutral', 'white')};
-  }
-`
 
 export const SidebarHandle: React.FC<SidebarHandleProps> = (props) => {
   const { isOpen, setIsOpen } = useContext(SidebarContext)
@@ -45,14 +18,14 @@ export const SidebarHandle: React.FC<SidebarHandleProps> = (props) => {
   }
 
   return (
-    <StyledSidebarHandle
+    <StyledHandle
       onClick={handleClick}
       aria-label={`${isOpen ? 'Collapse' : 'Expand'} sidebar`}
       data-testid="sidebar-handle"
       {...props}
     >
       {isOpen ? <IconChevronLeft /> : <IconChevronRight />}
-    </StyledSidebarHandle>
+    </StyledHandle>
   )
 }
 
