@@ -61,8 +61,10 @@ function extractChildren(
   types: React.ReactElement['type'][],
   inverse?: boolean
 ) {
-  return (children as []).filter((child: React.ReactElement) => {
-    return inverse ? !types.includes(child?.type) : types.includes(child?.type)
+  return React.Children.toArray(children).filter((child: React.ReactNode) => {
+    const type = (child as React.ReactElement)?.type
+
+    return inverse ? !types.includes(type) : types.includes(type)
   })
 }
 
