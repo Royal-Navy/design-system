@@ -3,10 +3,10 @@ import React from 'react'
 import {
   Timeline,
   TimelineTodayMarker,
-  TimelineSide,
   TimelineMonths,
   TimelineWeeks,
   TimelineDays,
+  TimelineHours,
   TimelineRows,
   TimelineRow,
   TimelineEvents,
@@ -16,22 +16,21 @@ import {
 export const ExampleTimeline = () => {
   return (
     <Timeline
-      startDate={new Date(2020, 4, 0)}
-      today={new Date(2020, 3, 6)}
-      range={3}
-      dayWidth={30}
+      hasSide
+      startDate={new Date(2020, 3, 1)}
+      today={new Date(2020, 3, 3)}
     >
       <TimelineTodayMarker />
-      <TimelineSide />
       <TimelineMonths />
       <TimelineWeeks />
       <TimelineDays />
+      <TimelineHours />
       <TimelineRows>
         <TimelineRow name="Row 1">
           <TimelineEvents>
             <TimelineEvent
-              startDate={new Date(2020, 3, 2)}
-              endDate={new Date(2020, 3, 8)}
+              startDate={new Date(2020, 2, 14)}
+              endDate={new Date(2020, 3, 4)}
             >
               Event 1
             </TimelineEvent>
@@ -40,8 +39,8 @@ export const ExampleTimeline = () => {
         <TimelineRow name="Row 2">
           <TimelineEvents>
             <TimelineEvent
-              startDate={new Date(2020, 3, 3)}
-              endDate={new Date(2020, 3, 10)}
+              startDate={new Date(2020, 3, 2)}
+              endDate={new Date(2020, 3, 5)}
             >
               Event 2
             </TimelineEvent>
