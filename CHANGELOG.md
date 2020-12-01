@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.20.2](https://github.com/Royal-Navy/design-system/compare/2.20.1...2.20.2) (2020-12-01)
+
+
+### Bug Fixes
+
+* **FloatingBox:** Resolve sizing issue ([8f54119](https://github.com/Royal-Navy/design-system/commit/8f541193a6d18d510ceeffaf581668aba30946fd))
+
+
+
+
+
 ## [2.20.1](https://github.com/Royal-Navy/design-system/compare/2.20.0...2.20.1) (2020-11-30)
 
 
