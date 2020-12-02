@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.21.0](https://github.com/Royal-Navy/design-system/compare/2.20.2...2.21.0) (2020-12-02)
+
+
+### Bug Fixes
+
+* **DocsSite:** Add `gatsby-plugin-styled-components` ([4ed3b0d](https://github.com/Royal-Navy/design-system/commit/4ed3b0d6f96f4aebffeaaf08775833811860e50c))
+* **DocsSite:** Update outdated Compound Timeline example ([121dce6](https://github.com/Royal-Navy/design-system/commit/121dce62498dbe1e021b6c554b01e23182dc59fd))
+
+
+### Features
+
+* **Docs:** Update footer logo ([6774758](https://github.com/Royal-Navy/design-system/commit/677475890e1fe20744e93acda0eff99df39b01be))
+* **Storybook:** Add `Story` source tab add on ([31d1952](https://github.com/Royal-Navy/design-system/commit/31d1952e289f532a6e1babe208841e4e1d3a7423))
+
+
+
+## 2.20.1 (2020-11-30)
+
+
+
+
+
 ## [2.20.2](https://github.com/Royal-Navy/design-system/compare/2.20.1...2.20.2) (2020-12-01)
 
 
