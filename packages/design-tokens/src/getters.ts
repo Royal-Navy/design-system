@@ -1,4 +1,5 @@
 import get from 'lodash/get'
+import { css } from 'styled-components'
 
 import * as animationTokens from './tokens/animation.json'
 import * as breakpointsTokens from './tokens/breakpoints.json'
@@ -17,24 +18,77 @@ import {
   ShadowWeight,
   Spacing,
   TypographySize,
-  ZIndexGroup
+  ZIndexGroup,
+  StyledComponentsInterpolation,
 } from './types'
 
-export function getAnimation(
-  index: AnimationTiming
-): string | undefined {
-  return get(animationTokens, `timing[${index}].value`)
-}
+export function getBreakpoint(size: BreakpointSize): Breakpoint | undefined {
+  const breakpoint = get(
+    breakpointsTokens,
+    `breakpoint[${size}].breakpoint.value`
+  )
 
-export function getBreakpoint(
-  size: BreakpointSize
-): Breakpoint | undefined {
-  const breakpoint = get(breakpointsTokens, `breakpoint[${size}].breakpoint.value`)
-  const baseFontSize = get(breakpointsTokens, `breakpoint[${size}].baseFontSize.value`)
+  const baseFontSize = get(
+    breakpointsTokens,
+    `breakpoint[${size}].baseFontSize.value`
+  )
+
+  console.warn('`breakpoint` has been depereacted - see the `mediaQuery` selector')
 
   return {
     breakpoint,
     baseFontSize,
+  }
+}
+
+export function getMediaQuery(options: {
+  gte: BreakpointSize
+  lt?: BreakpointSize
+  media?: string
+}): (strings: TemplateStringsArray) => string {
+  const { gte, lt, media } = {
+    media: 'only screen and',
+    ...options,
+  }
+
+  const breakpointGTE = get(
+    breakpointsTokens,
+    `breakpoint[${gte}].breakpoint.value`
+  )
+
+  const breakpointLT = get(
+    breakpointsTokens,
+    `breakpoint[${lt}].breakpoint.value`
+  )
+
+  const baseFontSize = get(
+    breakpointsTokens,
+    `breakpoint[${gte}].baseFontSize.value`
+  )
+
+  return function (
+    strings: TemplateStringsArray,
+    ...interpolations: StyledComponentsInterpolation[]
+  ): string {
+    if (breakpointGTE && !breakpointLT) {
+      return `
+        @media ${media} (min-width: ${breakpointGTE}) {
+          font-size: ${baseFontSize};
+          ${css(strings, ...interpolations)}
+        }
+      `
+    }
+
+    if (breakpointGTE && breakpointLT) {
+      return `
+        @media ${media} (min-width: ${breakpointGTE}) and (max-width: ${breakpointLT}) {
+          font-size: ${baseFontSize};
+          ${css(strings, ...interpolations)}
+        }
+      `
+    }
+
+    throw new Error(`Invalid breakpoints: gte: ${gte} - lt: ${lt}`)
   }
 }
 
@@ -45,29 +99,27 @@ export function getColour(
   return get(coloursTokens, `color[${group}][${weight}].value`)
 }
 
-export function getShadow(
-  weight: ShadowWeight
-): string | undefined {
-  return get(shadowsTokens, `shadow[${weight}].value`)
-}
-
-export function getSpacing(
-  spacing: Spacing
-): string | undefined {
-  return get(spacingTokens, `spacing[${spacing}].value`)
-}
-
-export function getTypography(
-  size: TypographySize
-): string | undefined {
-  return get(typographyTokens, `typography[${size}].value`)
-}
-
 export function getZIndex(
   group: ZIndexGroup,
   offset: number
 ): number | undefined {
   return Number(get(zindexTokens, `zindex[${group}].value`)) + offset
+}
+
+export function getShadow(weight: ShadowWeight): string | undefined {
+  return get(shadowsTokens, `shadow[${weight}].value`)
+}
+
+export function getSpacing(spacing: Spacing): string | undefined {
+  return get(spacingTokens, `spacing[${spacing}].value`)
+}
+
+export function getTypography(size: TypographySize): string | undefined {
+  return get(typographyTokens, `typography[${size}].value`)
+}
+
+export function getAnimation(index: AnimationTiming): string | undefined {
+  return get(animationTokens, `timing[${index}].value`)
 }
 
 // ...
