@@ -1,39 +1,43 @@
 import React from 'react'
-import classNames from 'classnames'
 import {
   IconKeyboardArrowLeft,
   IconKeyboardArrowRight,
 } from '@royalnavy/icon-library'
 
-import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { StyledButton } from './partials/StyledButton'
 
-interface PaginationButtonProps extends ComponentWithClass {
-  children: string
+export const PAGINATION_BUTTON_VARIANT = {
+  PREV: 'Prev',
+  NEXT: 'Next',
+} as const
+
+interface PaginationButtonProps {
+  children:
+    | typeof PAGINATION_BUTTON_VARIANT.PREV
+    | typeof PAGINATION_BUTTON_VARIANT.NEXT
   disabled?: boolean
+  isActive?: boolean
   onClick: (event: React.MouseEvent) => void
-}
-
-const ICON_MAP = {
-  Prev: (
-    <IconKeyboardArrowLeft aria-hidden data-testid="pagination-icon-prev" />
-  ),
-  Next: (
-    <IconKeyboardArrowRight aria-hidden data-testid="pagination-icon-next" />
-  ),
 }
 
 export const PaginationButton: React.FC<PaginationButtonProps> = ({
   children,
-  className,
+  isActive,
   ...rest
 }) => {
-  const classes = classNames('rn-pagination__button', className)
-
   return (
-    <button className={classes} {...rest}>
-      {ICON_MAP[children]}
+    <StyledButton $isActive={isActive} {...rest}>
+      {children === PAGINATION_BUTTON_VARIANT.PREV && (
+        <IconKeyboardArrowLeft aria-hidden data-testid="pagination-icon-prev" />
+      )}
       {children}
-    </button>
+      {children === PAGINATION_BUTTON_VARIANT.NEXT && (
+        <IconKeyboardArrowRight
+          aria-hidden
+          data-testid="pagination-icon-next"
+        />
+      )}
+    </StyledButton>
   )
 }
 

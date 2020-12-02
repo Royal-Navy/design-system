@@ -2,7 +2,9 @@ import React from 'react'
 
 import { getKey } from '../../helpers'
 import { usePageChange, ELLIPSIS } from './usePageChange'
-import { PaginationButton } from './PaginationButton'
+import { PAGINATION_BUTTON_VARIANT, PaginationButton } from './PaginationButton'
+import { StyledList } from './partials/StyledList'
+import { StyledListItem } from './partials/StyledListItem'
 
 interface PaginationProps {
   initialPage?: number
@@ -26,66 +28,56 @@ export const Pagination: React.FC<PaginationProps> = ({
   )
 
   return (
-    <div className="rn-pagination">
-      <ol className="rn-pagination__list">
-        <li
-          key={getKey('pagination-item', 'previous')}
-          className="rn-pagination__item"
+    <StyledList>
+      <StyledListItem key={getKey('pagination-item', 'previous')}>
+        <PaginationButton
+          aria-label="Previous page"
+          data-testid="page-previous"
+          disabled={currentPage === 1}
+          onClick={() => changePage(currentPage - 1)}
         >
-          <PaginationButton
-            aria-label="Previous page"
-            data-testid="page-previous"
-            disabled={currentPage === 1}
-            onClick={() => changePage(currentPage - 1)}
-          >
-            Prev
-          </PaginationButton>
-        </li>
-        {pageNumbers.map(({ key, value }) => {
-          if (value === ELLIPSIS) {
-            return (
-              <li
-                key={getKey('pagination-item', `${key}${value}`)}
-                className="rn-pagination__item"
-                data-testid="page"
-              >
-                {value}
-              </li>
-            )
-          }
-
+          {PAGINATION_BUTTON_VARIANT.PREV}
+        </PaginationButton>
+      </StyledListItem>
+      {pageNumbers.map(({ key, value }) => {
+        if (value === ELLIPSIS) {
           return (
-            <li
+            <StyledListItem
               key={getKey('pagination-item', `${key}${value}`)}
-              className="rn-pagination__item"
               data-testid="page"
             >
-              <PaginationButton
-                aria-label={`Page ${value}`}
-                className={value === currentPage ? 'is-active' : null}
-                data-testid={`select-page-${value}`}
-                onClick={(_) => changePage(value)}
-              >
-                {value}
-              </PaginationButton>
-            </li>
+              {value}
+            </StyledListItem>
           )
-        })}
-        <li
-          key={getKey('pagination-item', 'next')}
-          className="rn-pagination__item"
-        >
-          <PaginationButton
-            aria-label="Next page"
-            data-testid="page-next"
-            disabled={currentPage === totalPages}
-            onClick={() => changePage(currentPage + 1)}
+        }
+
+        return (
+          <StyledListItem
+            key={getKey('pagination-item', `${key}${value}`)}
+            data-testid="page"
           >
-            Next
-          </PaginationButton>
-        </li>
-      </ol>
-    </div>
+            <PaginationButton
+              aria-label={`Page ${value}`}
+              data-testid={`select-page-${value}`}
+              isActive={value === currentPage}
+              onClick={(_) => changePage(value)}
+            >
+              {value}
+            </PaginationButton>
+          </StyledListItem>
+        )
+      })}
+      <StyledListItem key={getKey('pagination-item', 'next')}>
+        <PaginationButton
+          aria-label="Next page"
+          data-testid="page-next"
+          disabled={currentPage === totalPages}
+          onClick={() => changePage(currentPage + 1)}
+        >
+          {PAGINATION_BUTTON_VARIANT.NEXT}
+        </PaginationButton>
+      </StyledListItem>
+    </StyledList>
   )
 }
 
