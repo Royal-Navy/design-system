@@ -10,7 +10,7 @@ stories.add('Default', () => <PhaseBanner />)
 
 examples.add('Beta', () => <PhaseBanner phase="beta" />)
 
-examples.add('Custom link', () => <PhaseBanner link="/my-custom-link" />)
+examples.add('Custom link', () => <PhaseBanner link="#" />)
 
 examples.add('Custom text', () => (
   <PhaseBanner>

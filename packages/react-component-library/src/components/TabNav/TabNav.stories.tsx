@@ -8,8 +8,8 @@ const stories = storiesOf('TabNav', module)
 
 stories.add('Default', () => (
   <TabNav>
-    <TabNavItem link={<Link href="/thing1">Thing 1</Link>} isActive />
-    <TabNavItem link={<Link href="/thing2">Thing 2</Link>} />
-    <TabNavItem link={<Link href="/thing3">Thing 3</Link>} />
+    <TabNavItem link={<Link href="#">Thing 1</Link>} isActive />
+    <TabNavItem link={<Link href="#">Thing 2</Link>} />
+    <TabNavItem link={<Link href="#">Thing 3</Link>} />
   </TabNav>
 ))

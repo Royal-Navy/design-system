@@ -9,7 +9,6 @@ import {
   IconFeedback,
   IconSettings,
   IconGrain,
-  IconChatBubble,
 } from '@royalnavy/icon-library'
 
 import {
@@ -28,8 +27,8 @@ const userWithLinks = (
   <SidebarUserE
     initials="HN"
     name="Horatio Nelson"
-    userLink={<Link href="/user-profile">Profile</Link>}
-    exitLink={<Link href="/logout">Logout</Link>}
+    userLink={<Link href="#">Profile</Link>}
+    exitLink={<Link href="#">Logout</Link>}
   />
 )
 
@@ -37,28 +36,28 @@ const sidebarNav = (
   <SidebarNavE>
     <SidebarNavItemE
       icon={<IconHome />}
-      link={<Link href="/dashboard">Dashboard</Link>}
+      link={<Link href="#">Dashboard</Link>}
     />
     <SidebarNavItemE
       icon={<IconVerifiedUser />}
-      link={<Link href="/reports">Reports</Link>}
+      link={<Link href="#">Reports</Link>}
     />
     <SidebarNavItemE
       icon={<IconLocalShipping />}
-      link={<Link href="/platforms">Platforms</Link>}
+      link={<Link href="#">Platforms</Link>}
     />
     <SidebarNavItemE
       icon={<IconFeedback />}
-      link={<Link href="/data-feed">Data&nbsp;Feed</Link>}
+      link={<Link href="#">Data&nbsp;Feed</Link>}
     />
     <SidebarNavItemE
       isActive
       icon={<IconMessage />}
-      link={<Link href="/messages">Messages</Link>}
+      link={<Link href="#">Messages</Link>}
     />
     <SidebarNavItemE
       icon={<IconSettings />}
-      link={<Link href="/settings">Settings</Link>}
+      link={<Link href="#">Settings</Link>}
     />
   </SidebarNavE>
 )
@@ -67,73 +66,54 @@ const sidebarNavWithSub = (
   <SidebarNavE>
     <SidebarNavItemE
       icon={<IconHome />}
-      link={<Link href="/dashboard">Dashboard</Link>}
+      link={<Link href="#">Dashboard</Link>}
     />
     <SidebarNavItemE
       icon={<IconVerifiedUser />}
-      link={<Link href="/reports">Reports</Link>}
+      link={<Link href="#">Reports</Link>}
     >
       <SidebarNavE>
-        <SidebarNavItemE
-          link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
-        />
-        <SidebarNavItemE
-          link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
-        />
-        <SidebarNavItemE
-          link={<Link href="/sub-nav-item-3">Sub-nav-item 3</Link>}
-        />
+        <SidebarNavItemE link={<Link href="#">Sub-nav-item 1</Link>} />
+        <SidebarNavItemE link={<Link href="#">Sub-nav-item 2</Link>} />
+        <SidebarNavItemE link={<Link href="#">Sub-nav-item 3</Link>} />
       </SidebarNavE>
     </SidebarNavItemE>
     <SidebarNavItemE
       icon={<IconLocalShipping />}
-      link={<Link href="/platforms">Platforms</Link>}
+      link={<Link href="#">Platforms</Link>}
     />
     <SidebarNavItemE
       icon={<IconFeedback />}
-      link={<Link href="/data-feed">Data&nbsp;Feed</Link>}
+      link={<Link href="#">Data&nbsp;Feed</Link>}
     >
       <SidebarNavE>
-        <SidebarNavItemE
-          link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
-        />
-        <SidebarNavItemE
-          link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
-        />
-        <SidebarNavItemE
-          link={<Link href="/sub-nav-item-3">Sub-nav-item 3</Link>}
-        />
+        <SidebarNavItemE link={<Link href="#">Sub-nav-item 1</Link>} />
+        <SidebarNavItemE link={<Link href="#">Sub-nav-item 2</Link>} />
+        <SidebarNavItemE link={<Link href="#">Sub-nav-item 3</Link>} />
       </SidebarNavE>
     </SidebarNavItemE>
     <SidebarNavItemE
       isActive
       icon={<IconMessage />}
-      link={<Link href="/messages">Messages</Link>}
+      link={<Link href="#">Messages</Link>}
     >
       <SidebarNavE>
-        <SidebarNavItemE
-          link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
-        />
-        <SidebarNavItemE
-          link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
-        />
-        <SidebarNavItemE
-          isActive
-          link={<Link href="/sub-nav-item-3">Sub-nav-item 3</Link>}
-        />
+        <SidebarNavItemE link={<Link href="#">Sub-nav-item 1</Link>} />
+        <SidebarNavItemE link={<Link href="#">Sub-nav-item 2</Link>} />
+        <SidebarNavItemE isActive link={<Link href="#">Sub-nav-item 3</Link>} />
       </SidebarNavE>
     </SidebarNavItemE>
     <SidebarNavItemE
       icon={<IconSettings />}
-      link={<Link href="/settings">Settings</Link>}
+      link={<Link href="#">Settings</Link>}
     />
   </SidebarNavE>
 )
 
 const notifications = (
-  <Notifications link={<Link href="notifications" />}>
+  <Notifications link={<Link href="#" />}>
     <Notification
-      link={<Link href="notifications/1" />}
+      link={<Link href="#" />}
       name="Thomas Stephens"
       action="added a new comment to your"
       on="review"
@@ -141,7 +121,7 @@ const notifications = (
       description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
     />
     <Notification
-      link={<Link href="notifications/2" />}
+      link={<Link href="#" />}
       name="Thomas Stephens"
       action="added a new comment to your"
       on="review"
@@ -149,7 +129,7 @@ const notifications = (
       description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
     />
     <Notification
-      link={<Link href="notifications/3" />}
+      link={<Link href="#" />}
       name="Thomas Stephens"
       action="added a new comment to your"
       on="review"
