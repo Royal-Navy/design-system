@@ -1,10 +1,8 @@
 import React from 'react'
-import {
-  IconKeyboardArrowLeft,
-  IconKeyboardArrowRight,
-} from '@royalnavy/icon-library'
-import { usePageChange, ELLIPSIS } from './usePageChange'
+
 import { getKey } from '../../helpers'
+import { usePageChange, ELLIPSIS } from './usePageChange'
+import { PaginationButton } from './PaginationButton'
 
 interface PaginationProps {
   initialPage?: number
@@ -34,19 +32,14 @@ export const Pagination: React.FC<PaginationProps> = ({
           key={getKey('pagination-item', 'previous')}
           className="rn-pagination__item"
         >
-          <button
-            disabled={currentPage === 1}
-            className="rn-pagination__button"
-            onClick={(_) => changePage(currentPage - 1)}
-            data-testid="page-previous"
+          <PaginationButton
             aria-label="Previous page"
+            data-testid="page-previous"
+            disabled={currentPage === 1}
+            onClick={() => changePage(currentPage - 1)}
           >
-            <IconKeyboardArrowLeft
-              aria-hidden
-              data-testid="pagination-icon-prev"
-            />
             Prev
-          </button>
+          </PaginationButton>
         </li>
         {pageNumbers.map(({ key, value }) => {
           if (value === ELLIPSIS) {
@@ -67,16 +60,14 @@ export const Pagination: React.FC<PaginationProps> = ({
               className="rn-pagination__item"
               data-testid="page"
             >
-              <button
-                className={`rn-pagination__button ${
-                  value === currentPage ? 'is-active' : ''
-                }`}
-                onClick={(_) => changePage(value)}
+              <PaginationButton
                 aria-label={`Page ${value}`}
+                className={value === currentPage ? 'is-active' : null}
                 data-testid={`select-page-${value}`}
+                onClick={(_) => changePage(value)}
               >
                 {value}
-              </button>
+              </PaginationButton>
             </li>
           )
         })}
@@ -84,19 +75,14 @@ export const Pagination: React.FC<PaginationProps> = ({
           key={getKey('pagination-item', 'next')}
           className="rn-pagination__item"
         >
-          <button
-            disabled={currentPage === totalPages}
-            className="rn-pagination__button"
-            onClick={(_) => changePage(currentPage + 1)}
+          <PaginationButton
             aria-label="Next page"
             data-testid="page-next"
+            disabled={currentPage === totalPages}
+            onClick={() => changePage(currentPage + 1)}
           >
             Next
-            <IconKeyboardArrowRight
-              aria-hidden
-              data-testid="pagination-icon-next"
-            />
-          </button>
+          </PaginationButton>
         </li>
       </ol>
     </div>
