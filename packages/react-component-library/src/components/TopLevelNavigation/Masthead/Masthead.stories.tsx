@@ -41,12 +41,12 @@ const CustomLogo = () => (
   </svg>
 )
 
-const user = <MastheadUser initials="AT" link={<Link href="/user-profile" />} />
+const user = <MastheadUser initials="AT" link={<Link href="#" />} />
 
 const notifications = (
-  <Notifications link={<Link href="notifications" />}>
+  <Notifications link={<Link href="#" />}>
     <Notification
-      link={<Link href="notifications/1" />}
+      link={<Link href="#" />}
       name="Thomas Stephens"
       action="added a new comment to your"
       on="review"
@@ -54,7 +54,7 @@ const notifications = (
       description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
     />
     <Notification
-      link={<Link href="notifications/2" />}
+      link={<Link href="#" />}
       name="Thomas Stephens"
       action="added a new comment to your"
       on="review"
@@ -62,7 +62,7 @@ const notifications = (
       description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
     />
     <Notification
-      link={<Link href="notifications/3" />}
+      link={<Link href="#" />}
       name="Thomas Stephens"
       action="added a new comment to your"
       on="review"
@@ -101,19 +101,19 @@ stories.add('With avatar links', () => (
       <MastheadUser initials="AB">
         <MastheadUserItem
           icon={<IconPerson />}
-          link={<Link href="/profile">Profile</Link>}
+          link={<Link href="#">Profile</Link>}
         />
         <MastheadUserItem
           icon={<IconSettings />}
-          link={<Link href="/settings">Settings</Link>}
+          link={<Link href="#">Settings</Link>}
         />
         <MastheadUserItem
           icon={<IconChatBubble />}
-          link={<Link href="/support">Support</Link>}
+          link={<Link href="#">Support</Link>}
         />
         <MastheadUserItem
           icon={<IconExitToApp />}
-          link={<Link href="/logout">Logout</Link>}
+          link={<Link href="#">Logout</Link>}
         />
       </MastheadUser>
     )}
@@ -134,13 +134,10 @@ stories.add('Without logo, with navigation', () => (
     hasDefaultLogo={false}
     nav={(
       <MastheadNav>
-        <MastheadNavItem
-          link={<Link href="/home">Get started</Link>}
-          isActive
-        />
-        <MastheadNavItem link={<Link href="/styles">Styles</Link>} />
-        <MastheadNavItem link={<Link href="/components">Components</Link>} />
-        <MastheadNavItem link={<Link href="/about">About</Link>} />
+        <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
+        <MastheadNavItem link={<Link href="#">Styles</Link>} />
+        <MastheadNavItem link={<Link href="#">Components</Link>} />
+        <MastheadNavItem link={<Link href="#">About</Link>} />
       </MastheadNav>
     )}
   />
@@ -148,16 +145,13 @@ stories.add('Without logo, with navigation', () => (
 
 stories.add('With navigation', () => (
   <Masthead
-    homeLink={<Link href="/" />}
+    homeLink={<Link href="#" />}
     nav={(
       <MastheadNav>
-        <MastheadNavItem
-          link={<Link href="/home">Get started</Link>}
-          isActive
-        />
-        <MastheadNavItem link={<Link href="/styles">Styles</Link>} />
-        <MastheadNavItem link={<Link href="/components">Components</Link>} />
-        <MastheadNavItem link={<Link href="/about">About</Link>} />
+        <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
+        <MastheadNavItem link={<Link href="#">Styles</Link>} />
+        <MastheadNavItem link={<Link href="#">Components</Link>} />
+        <MastheadNavItem link={<Link href="#">About</Link>} />
       </MastheadNav>
     )}
     notifications={notifications}

@@ -11,25 +11,21 @@ const stories = storiesOf('Sidebar', module)
 
 const nav = (
   <SidebarNav>
-    <SidebarNavItem Image={House} link={<Link href="/">Home</Link>} />
-    <SidebarNavItem
-      Image={Graph}
-      link={<Link href="/stats">Stats</Link>}
-      isActive
-    />
-    <SidebarNavItem Image={Tools} link={<Link href="/tools">Tools</Link>} />
+    <SidebarNavItem Image={House} link={<Link href="#">Home</Link>} />
+    <SidebarNavItem Image={Graph} link={<Link href="#">Stats</Link>} isActive />
+    <SidebarNavItem Image={Tools} link={<Link href="#">Tools</Link>} />
   </SidebarNav>
 )
 
-const user = <SidebarUser initials="XT" link={<Link href="/user-profile" />} />
+const user = <SidebarUser initials="XT" link={<Link href="#" />} />
 
 stories.add('With notifications', () => (
   <Sidebar
     nav={nav}
     notifications={(
-      <Notifications link={<Link href="notifications" />}>
+      <Notifications link={<Link href="#" />}>
         <Notification
-          link={<Link href="notifications/1" />}
+          link={<Link href="#" />}
           name="Thomas Stephens"
           action="added a new comment to your"
           on="review"
@@ -37,7 +33,7 @@ stories.add('With notifications', () => (
           description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
         />
         <Notification
-          link={<Link href="notifications/2" />}
+          link={<Link href="#" />}
           name="Thomas Stephens"
           action="added a new comment to your"
           on="review"
@@ -45,7 +41,7 @@ stories.add('With notifications', () => (
           description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
         />
         <Notification
-          link={<Link href="notifications/3" />}
+          link={<Link href="#" />}
           name="Thomas Stephens"
           action="added a new comment to your"
           on="review"
