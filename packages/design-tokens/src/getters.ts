@@ -121,5 +121,3 @@ export function getTypography(size: TypographySize): string | undefined {
 export function getAnimation(index: AnimationTiming): string | undefined {
   return get(animationTokens, `timing[${index}].value`)
 }
-
-// ...
