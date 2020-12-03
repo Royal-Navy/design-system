@@ -2,7 +2,7 @@ import React from 'react'
 import { components } from 'react-select'
 import { OptionProps } from 'react-select/src/components/Option'
 import { selectors } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import { Badge, BADGE_SIZE } from '../Badge'
 
