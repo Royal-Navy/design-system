@@ -1,8 +1,11 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { Pagination } from '.'
+
+const { color } = selectors
 
 describe('Pagination', () => {
   let wrapper: RenderResult
@@ -62,8 +65,10 @@ describe('Pagination', () => {
       expect(wrapper.getAllByTestId('page')).toHaveLength(7)
     })
 
-    it('should apply the `is-active` class to the appropriate page', () => {
-      expect(wrapper.getByText('1').classList.contains('is-active')).toBe(true)
+    it('should apply the set the page to be active', () => {
+      const page = wrapper.getByText('1')
+      expect(page).toHaveStyleRule('background-color', color('neutral', '400'))
+      expect(page).toHaveStyleRule('color', color('neutral', 'white'))
     })
 
     it('should disable the `Prev` button', () => {
@@ -90,10 +95,10 @@ describe('Pagination', () => {
         expect(onChangeSpy).toHaveBeenCalledTimes(1)
       })
 
-      it('should apply the `is-active` class to the appropriate page', () => {
-        expect(wrapper.getByText('5').classList.contains('is-active')).toBe(
-          true
-        )
+      it('should apply the set the page to be active', () => {
+        const page = wrapper.getByText('5')
+        expect(page).toHaveStyleRule('background-color', color('neutral', '400'))
+        expect(page).toHaveStyleRule('color', color('neutral', 'white'))
       })
 
       it('should render pages', () => {
@@ -167,10 +172,10 @@ describe('Pagination', () => {
         expect(onChangeSpy).toHaveBeenCalledTimes(1)
       })
 
-      it('should apply the `is-active` class to the appropriate page', () => {
-        expect(wrapper.getByText('10').classList.contains('is-active')).toBe(
-          true
-        )
+      it('should apply the set the page to be active', () => {
+        const page = wrapper.getByText('10')
+        expect(page).toHaveStyleRule('background-color', color('neutral', '400'))
+        expect(page).toHaveStyleRule('color', color('neutral', 'white'))
       })
 
       it('should render pages', () => {
@@ -209,10 +214,10 @@ describe('Pagination', () => {
         expect(onChangeSpy).toHaveBeenCalledTimes(1)
       })
 
-      it('should apply the `is-active` class to the appropriate page', () => {
-        expect(wrapper.getByText('2').classList.contains('is-active')).toBe(
-          true
-        )
+      it('should apply the set the page to be active', () => {
+        const page = wrapper.getByText('2')
+        expect(page).toHaveStyleRule('background-color', color('neutral', '400'))
+        expect(page).toHaveStyleRule('color', color('neutral', 'white'))
       })
 
       describe('and the `Prev` button is clicked', () => {
@@ -232,10 +237,10 @@ describe('Pagination', () => {
           expect(onChangeSpy).toHaveBeenCalledTimes(2)
         })
 
-        it('should apply the `is-active` class to the appropriate page', () => {
-          expect(wrapper.getByText('1').classList.contains('is-active')).toBe(
-            true
-          )
+        it('should apply the set the page to be active', () => {
+          const page = wrapper.getByText('1')
+          expect(page).toHaveStyleRule('background-color', color('neutral', '400'))
+          expect(page).toHaveStyleRule('color', color('neutral', 'white'))
         })
       })
     })
@@ -255,8 +260,10 @@ describe('Pagination', () => {
       expect(wrapper.getAllByTestId('page')).toHaveLength(5)
     })
 
-    it('should apply the `is-active` class to the appropriate page', () => {
-      expect(wrapper.getByText('1').classList.contains('is-active')).toBe(true)
+    it('should apply the set the page to be active', () => {
+      const page = wrapper.getByText('1')
+      expect(page).toHaveStyleRule('background-color', color('neutral', '400'))
+      expect(page).toHaveStyleRule('color', color('neutral', 'white'))
     })
 
     it('should disable the `Prev` button', () => {
@@ -278,10 +285,10 @@ describe('Pagination', () => {
         )
       })
 
-      it('should apply the `is-active` class to the appropriate page', () => {
-        expect(wrapper.getByText('5').classList.contains('is-active')).toBe(
-          true
-        )
+      it('should apply the set the page to be active', () => {
+        const page = wrapper.getByText('5')
+        expect(page).toHaveStyleRule('background-color', color('neutral', '400'))
+        expect(page).toHaveStyleRule('color', color('neutral', 'white'))
       })
 
       it('should render pages', () => {
@@ -313,8 +320,10 @@ describe('Pagination', () => {
       expect(wrapper.getAllByTestId('page')).toHaveLength(1)
     })
 
-    it('should apply the `is-active` class to the appropriate page', () => {
-      expect(wrapper.getByText('1').classList.contains('is-active')).toBe(true)
+    it('should apply the set the page to be active', () => {
+      const page = wrapper.getByText('1')
+      expect(page).toHaveStyleRule('background-color', color('neutral', '400'))
+      expect(page).toHaveStyleRule('color', color('neutral', 'white'))
     })
 
     it('should disable both the `Prev` and `Next` buttons', () => {
@@ -335,8 +344,10 @@ describe('Pagination', () => {
       expect(wrapper.getAllByTestId('page')).toHaveLength(3)
     })
 
-    it('should apply the `is-active` class to the appropriate page', () => {
-      expect(wrapper.getByText('1').classList.contains('is-active')).toBe(true)
+    it('should apply the set the page to be active', () => {
+      const page = wrapper.getByText('1')
+      expect(page).toHaveStyleRule('background-color', color('neutral', '400'))
+      expect(page).toHaveStyleRule('color', color('neutral', 'white'))
     })
 
     it('should enable the `Prev` button', () => {
@@ -353,9 +364,10 @@ describe('Pagination', () => {
       wrapper = render(<Pagination initialPage={5} pageSize={10} total={45} />)
     })
 
-    it('should apply the `is-active` class to the appropriate page', () => {
-      expect(wrapper.getByText('5').classList.contains('is-active')).toBe(true)
+    it('should apply the set the page to be active', () => {
+      const page = wrapper.getByText('5')
+      expect(page).toHaveStyleRule('background-color', color('neutral', '400'))
+      expect(page).toHaveStyleRule('color', color('neutral', 'white'))
     })
   })
-
 })
