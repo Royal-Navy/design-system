@@ -17,7 +17,7 @@ const tokens = {
 }
 
 export type StyledComponentsInterpolation =
-  | ((executionContext: Object) => StyledComponentsInterpolation)
+  | ((executionContext: Record<string, any>) => StyledComponentsInterpolation)
   | string
   | number
   | StyledComponentsInterpolation[]
