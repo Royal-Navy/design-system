@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.22.0](https://github.com/Royal-Navy/design-system/compare/2.21.1...2.22.0) (2020-12-04)
+
+
+### Features
+
+* **Pagination:** Migrate to styled-components ([8f9d94d](https://github.com/Royal-Navy/design-system/commit/8f9d94d9f68649cb555946a91934869d984caff8))
+
+
+
+# 2.21.0 (2020-12-02)
+
+
+
+
+
 ## [2.21.1](https://github.com/Royal-Navy/design-system/compare/2.21.0...2.21.1) (2020-12-03)
 
 **Note:** Version bump only for package royal-navy-design-system
