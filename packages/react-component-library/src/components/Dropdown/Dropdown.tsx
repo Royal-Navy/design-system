@@ -131,7 +131,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   label,
   ...rest
 }) => {
-  const onChange = (option: ValueType<DropdownOption>) => {
+  const onChange = (option: ValueType<DropdownOption, boolean>) => {
     const dropdownOption = option as DropdownOption
     onSelect(dropdownOption.value)
   }

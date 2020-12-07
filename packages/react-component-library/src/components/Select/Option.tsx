@@ -56,9 +56,9 @@ const StyledBadge = styled(Badge)`
   margin-left: ${spacing('2')};
 `
 
-export const Option: React.FC<OptionProps<SelectOptionWithBadgeType>> = (
-  props
-) => {
+export const Option: React.FC<
+  OptionProps<SelectOptionWithBadgeType, boolean>
+> = (props) => {
   const {
     data: { badge, icon, label },
   } = props
