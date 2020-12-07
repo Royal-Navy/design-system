@@ -34,19 +34,15 @@ jobs:
             store:
               memory:
                 limit: 10000
+            ## no proxy required
             uplinks:
-               npmjs:
-                url: https://registry.npmjs.org/
-                timeout: 180s
             packages:
               '@*/*':
                 access: \$all
                 publish: \$all
-                proxy: npmjs
               '**':
                 access: \$all
                 publish: \$all
-                proxy: npmjs
             middlewares:
               audit:
                 enabled: true
@@ -61,6 +57,13 @@ jobs:
             mkdir -p .config/verdaccio
             cp --verbose config.yaml .config/verdaccio/config.yaml
             nohup verdaccio --config .config/verdaccio/config.yaml &>$tmp_registry_log &
+
+
+        - name: Cache Node modules
+          uses: actions/cache@v2
+          with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
 
         - name: Publish packages
@@ -88,8 +91,8 @@ jobs:
           run: |
             cd coffee
             yarn install
-            npm ls @royalnavy/react-component-library
             yarn config set registry ${{env.LOCAL_REGISTRY}}
+            npm ls @royalnavy/react-component-library
             yarn add @royalnavy/design-tokens
             yarn add @royalnavy/css-framework
             yarn add @royalnavy/icon-library
@@ -100,38 +103,6 @@ jobs:
         - name: Run test app
           run: |
             cd coffee
-            yarn build
-
-
-        - name: Install create-react-app
-          run: |
-            sudo yarn global add create-react-app --registry ${{env.LOCAL_REGISTRY}}
-
-
-        - name: Configure boilerplate app
-          run: |
-            cat main/packages/cra-template-royalnavy/template.json
-            VERSION="$(grep version main/packages/cra-template-royalnavy/package.json | awk -F: '{print $2}')"
-            sed -i  "s/\"latest\",/$VERSION/" main/packages/cra-template-royalnavy/template.json
-
-
-        - name: Create boilerplate app
-          run: |
-            cat main/packages/cra-template-royalnavy/template.json
-            yarn config set registry ${{env.LOCAL_REGISTRY}}
-            yarn config set network-timeout 600000
-            yarn add @royalnavy/design-tokens
-            yarn add @royalnavy/css-framework
-            yarn add @royalnavy/fonts
-            yarn add @royalnavy/icon-library
-            yarn add @royalnavy/react-component-library
-            yarn add @royalnavy/eslint-config-react
-            create-react-app my-app --template file:../design-system/main/packages/cra-template-royalnavy/
-
-
-        - name: Build boilerplate app
-          run: |
-            cd my-app
             grep version node_modules/@royalnavy/**/package.json
             echo "SKIP_PREFLIGHT_CHECK=true" > .env  #workaround for eslint CRA version issue
             yarn build
