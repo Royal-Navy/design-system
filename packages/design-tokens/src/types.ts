@@ -16,6 +16,12 @@ const tokens = {
   zindexTokens
 }
 
+export type StyledComponentsInterpolation =
+  | ((executionContext: Record<string, any>) => StyledComponentsInterpolation)
+  | string
+  | number
+  | StyledComponentsInterpolation[]
+
 export type Tokens = typeof tokens
 
 export type AnimationTiming = keyof Tokens['animationTokens']['timing']

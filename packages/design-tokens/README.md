@@ -24,12 +24,17 @@ NOTE: Application developers should consider consuming the @royalnavy/css-framew
 ```javascript
 import { selectors } from "@royalnavy/design-tokens";
 
-const { color, spacing } = selectors
+const { color, spacing, mediaQuery } = selectors
 
 // inside a styled-component
 const StyledExample = styled.div`
   color: ${color('action', '500')};
   margin-top: ${spacing('2')};
+
+  ${mediaQuery({ gte: 'xs', lt: 'xl', media: '' })`
+    // @media and (min-width:576px) and (max-width:1400px)
+    color: black;
+  `}
 `;
 ```
 
