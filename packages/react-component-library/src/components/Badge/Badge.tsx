@@ -24,7 +24,7 @@ export type BadgeSizeType =
   | typeof BADGE_SIZE.LARGE
   | typeof BADGE_SIZE.XLARGE
 
-interface BadgeProps extends ComponentWithClass {
+export interface BadgeProps extends ComponentWithClass {
   color?: BadgeColorType
   colorVariant?:
     | typeof BADGE_COLOR_VARIANT.FADED

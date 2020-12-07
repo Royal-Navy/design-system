@@ -1,31 +1,14 @@
 import React from 'react'
-import { components } from 'react-select'
-import { selectors } from '@royalnavy/design-tokens'
 import { SingleValueProps } from 'react-select/src/components/SingleValue'
-import styled from 'styled-components'
 
-import { Badge, BADGE_SIZE } from '../Badge'
+import { BADGE_SIZE } from '../Badge'
+import { StyledBadge } from './partials/StyledBadge'
 import { SelectOptionWithBadgeType } from './Option'
+import { StyledSingleValue } from './partials/StyledSingleValue'
 
-const { fontSize, spacing } = selectors
-
-const StyledSingleValue = styled(components.SingleValue)`
-  font-size: ${fontSize('base')};
-  overflow: visible;
-  
-  &&& {
-    margin: ${spacing('3')} 0 0 0;
-  }
-`
-
-const StyledBadge = styled(Badge)`
-  transform: translateY(-1px);
-  margin-left: ${spacing('2')};
-`
-
-export const SingleValue: React.FC<SingleValueProps<
-  SelectOptionWithBadgeType
->> = ({ children, ...props }) => {
+export const SingleValue: React.FC<
+  SingleValueProps<SelectOptionWithBadgeType>
+> = ({ children, ...props }) => {
   const { badge } = props.data
 
   return (
