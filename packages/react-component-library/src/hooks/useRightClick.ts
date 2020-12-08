@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useOpenClose } from './useOpenClose'
 
 type Coordinate = {
   x: number
@@ -18,8 +19,8 @@ function isWithinBoundingBox(
 
 export const useRightClick = (
   attachedToRef: React.RefObject<HTMLElement>
-): { position: Coordinate, isOpen: boolean } => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+): { position: Coordinate; isOpen: boolean } => {
+  const { open, setOpen } = useOpenClose(false)
   const [position, setPosition] = useState<Coordinate>({ x: 0, y: 0 })
 
   function displayContextMenu(e: MouseEvent) {
@@ -38,14 +39,14 @@ export const useRightClick = (
 
     if (isWithinBoundingBox(bottomLeft, topRight, mousePoint)) {
       e.preventDefault()
-      setIsOpen(true)
+      setOpen(true)
     } else {
-      setIsOpen(false)
+      setOpen(false)
     }
   }
 
   function hideContextMenu() {
-    setIsOpen(false)
+    setOpen(false)
   }
 
   useEffect(() => {
@@ -60,6 +61,6 @@ export const useRightClick = (
 
   return {
     position,
-    isOpen
+    isOpen: open,
   }
 }

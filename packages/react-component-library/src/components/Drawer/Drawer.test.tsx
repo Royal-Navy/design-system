@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState } from 'react'
+import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import '@testing-library/jest-dom/extend-expect'
 import {
@@ -11,6 +11,7 @@ import {
 
 import { Button } from '../Button'
 import { Drawer } from '.'
+import { useOpenClose } from '../../hooks'
 
 describe('Drawer', () => {
   let wrapper: RenderResult
@@ -82,18 +83,12 @@ describe('Drawer', () => {
     describe('and the drawer is instantiated as closed', () => {
       beforeEach(() => {
         const DrawerWithUpdate = () => {
-          const [isOpen, setIsOpen] = useState(false)
+          const { open, toggle } = useOpenClose(false)
 
           return (
             <>
-              <Button
-                onClick={() => {
-                  setIsOpen(!isOpen)
-                }}
-              >
-                {isOpen ? 'Hide' : 'Show'}
-              </Button>
-              <Drawer isOpen={isOpen} onClose={onCloseSpy}>
+              <Button onClick={toggle}>{open ? 'Hide' : 'Show'}</Button>
+              <Drawer isOpen={open} onClose={onCloseSpy}>
                 {children}
               </Drawer>
             </>

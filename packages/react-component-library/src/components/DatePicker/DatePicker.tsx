@@ -15,7 +15,7 @@ import DayPicker, {
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
 import { DatePickerInput } from './DatePickerInput'
-import { useOpenClose } from './useOpenClose'
+import { useDatePickerOpenClose } from './useDatePickerOpenClose'
 import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
 import { FloatingBox, FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 import { getId } from '../../helpers'
@@ -324,9 +324,12 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 }) => {
   const componentRef = useRef(null)
 
-  const { floatingBoxChildrenRef, openState, onFocus, onClose } = useOpenClose(
-    isOpen
-  )
+  const {
+    floatingBoxChildrenRef,
+    handleOnClose,
+    handleOnFocus,
+    open,
+  } = useDatePickerOpenClose(isOpen)
 
   const [state, setState] = useState<StateObject>({
     from: startDate,
@@ -371,7 +374,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         offset: PLACEMENTS.OFFSET,
         attachment: PLACEMENTS.ATTACHMENT,
         targetAttachment: PLACEMENTS.TARGET_ATTACHMENT,
-        $isVisible: openState,
+        $isVisible: open,
         renderTarget: (ref: React.RefObject<HTMLDivElement>) => (
           <DatePickerInput
             className={className}
@@ -382,10 +385,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             label={label}
             value={transformDates(from, to)}
             onBlur={onBlur}
-            onFocus={onFocus}
+            onFocus={handleOnFocus}
             isDisabled={isDisabled}
-            isOpen={openState}
-            onClose={onClose}
+            isOpen={open}
+            onClose={handleOnClose}
             hasContent={!!hasContent}
           />
         ),
@@ -395,7 +398,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             ref={ref}
             position={PLACEMENTS.ARROW_POSITION}
             scheme={FLOATING_BOX_SCHEME.LIGHT}
-            $isVisible={openState}
+            $isVisible={open}
             role="dialog"
             aria-modal
             aria-labelledby={titleId}
