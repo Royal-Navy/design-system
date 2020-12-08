@@ -1,4 +1,4 @@
-name: Pre_Deployment tests
+name: Build & Test Master
 
 on:
   push:
