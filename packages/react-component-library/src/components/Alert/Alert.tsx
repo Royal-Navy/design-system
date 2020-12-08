@@ -9,6 +9,7 @@ import classNames from 'classnames'
 
 import { ALERT_VARIANT } from './constants'
 import { getId } from '../../helpers'
+import { useOpenClose } from '../../hooks'
 
 const VARIANT_ICON_MAP = {
   [ALERT_VARIANT.DANGER]: (
@@ -40,15 +41,7 @@ export const Alert: React.FC<AlertProps> = ({
   title,
   variant = ALERT_VARIANT.INFO,
 }) => {
-  const [closed, setClosed] = useState(false)
-
-  function handleClick(event: React.FormEvent<HTMLButtonElement>) {
-    setClosed(true)
-
-    if (onClose) {
-      onClose(event)
-    }
-  }
+  const { open, handleOnClose } = useOpenClose(true, onClose)
 
   const classes = classNames('rn-alert', `rn-alert--${variant}`)
   const closeClasses = classNames(
@@ -65,7 +58,7 @@ export const Alert: React.FC<AlertProps> = ({
   const descriptionId = getId('alert-description')
 
   return (
-    !closed && (
+    open && (
       <div
         aria-describedby={descriptionId}
         aria-labelledby={titleId}
@@ -100,7 +93,7 @@ export const Alert: React.FC<AlertProps> = ({
           <div className="rn-alert__footer">
             <button
               className={closeClasses}
-              onClick={handleClick}
+              onClick={handleOnClose}
               data-testid="close"
             >
               Dismiss
