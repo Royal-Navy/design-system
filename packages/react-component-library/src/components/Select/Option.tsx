@@ -14,9 +14,9 @@ export interface SelectOptionWithBadgeType {
   value: string
 }
 
-export const Option: React.FC<
-  OptionProps<SelectOptionWithBadgeType, boolean>
-> = (props) => {
+export const Option: React.FC<OptionProps<SelectOptionWithBadgeType, false>> = (
+  props
+) => {
   const {
     data: { badge, icon, label },
   } = props
