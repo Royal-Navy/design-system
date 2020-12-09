@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.23.0](https://github.com/Royal-Navy/design-system/compare/2.22.0...2.23.0) (2020-12-09)
+
+
+### Features
+
+* **DesignTokens:** Expose tagged literal `bp` breakpoint selector ([6a7f6b7](https://github.com/Royal-Navy/design-system/commit/6a7f6b70c7c38a7cef4d8e6b3d809af357843927))
+
+
+
+
+
 # [2.22.0](https://github.com/Royal-Navy/design-system/compare/2.21.1...2.22.0) (2020-12-04)
 
 **Note:** Version bump only for package @royalnavy/design-tokens

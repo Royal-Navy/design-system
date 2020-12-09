@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.23.0](https://github.com/Royal-Navy/design-system/compare/2.22.0...2.23.0) (2020-12-09)
+
+
+### Bug Fixes
+
+* **ReactComponentLibrary:** Resolve clashing dependency ([b162148](https://github.com/Royal-Navy/design-system/commit/b1621487256388d142552b4da93cbcf58f2261d5))
+* **Select:** Add missing type arg post dep upgrade ([a0b3326](https://github.com/Royal-Navy/design-system/commit/a0b33269b195e617680de31737f584afe0f70e9c))
+
+
+### Features
+
+* **DesignTokens:** Expose tagged literal `bp` breakpoint selector ([6a7f6b7](https://github.com/Royal-Navy/design-system/commit/6a7f6b70c7c38a7cef4d8e6b3d809af357843927))
+
+
+
+
+
 # [2.22.0](https://github.com/Royal-Navy/design-system/compare/2.21.1...2.22.0) (2020-12-04)
 
 
