@@ -10,7 +10,7 @@ export function useDocumentClick(
   onDocumentClick: (event: Event) => void,
   deps?: ReadonlyArray<any>
 ) {
-  function documentClick(event: Event) {
+  function handleDocumentClick(event: Event) {
     const current = node.current || NODE_CURRENT
 
     if (!current.contains(event.target)) {
@@ -19,10 +19,10 @@ export function useDocumentClick(
   }
 
   useEffect(() => {
-    document.addEventListener('mousedown', documentClick)
+    document.addEventListener('mousedown', handleDocumentClick)
 
     return () => {
-      document.removeEventListener('mousedown', documentClick)
+      document.removeEventListener('mousedown', handleDocumentClick)
     }
   }, deps)
 }

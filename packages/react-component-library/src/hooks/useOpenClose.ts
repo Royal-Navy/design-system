@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-export function useOpenClose(
+export function useOpenClose<TEvent>(
   isOpen: boolean,
-  onClose: (event: React.FormEvent<HTMLButtonElement>) => void
+  onClose?: (event: TEvent) => void
 ) {
   const [open, setOpen] = useState(isOpen)
 
@@ -10,13 +10,28 @@ export function useOpenClose(
     setOpen(isOpen)
   }, [isOpen])
 
-  function handleOnClose(event: React.FormEvent<HTMLButtonElement>) {
+  function handleOnClose(event: TEvent) {
     setOpen(false)
-    onClose(event)
+
+    if (onClose) onClose(event)
+  }
+
+  function toggle(event: TEvent) {
+    const newOpen = !open
+    setOpen(newOpen)
+
+    if (!newOpen && onClose) onClose(event)
+  }
+
+  function handleOnFocus() {
+    setOpen(true)
   }
 
   return {
-    open,
     handleOnClose,
+    handleOnFocus,
+    open,
+    setOpen,
+    toggle,
   }
 }

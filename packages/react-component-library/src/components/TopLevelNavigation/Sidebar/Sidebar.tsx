@@ -9,6 +9,7 @@ import { SidebarNavProps, SidebarUserProps } from './index'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
 import { Bell } from '../../../icons'
+import { useOpenClose } from '../../../hooks'
 
 interface SidebarProps {
   hasUnreadNotification?: boolean
@@ -23,7 +24,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   hasUnreadNotification,
   user,
 }) => {
-  const [open, setOpen] = useState(false)
+  const { open, setOpen } = useOpenClose(false)
   const classes = classNames('rn-sidebar', {
     'is-open': open,
   })

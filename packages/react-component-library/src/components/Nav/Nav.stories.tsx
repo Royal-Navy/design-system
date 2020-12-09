@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React  from 'react'
 import { IconArrowDropDown, IconArrowDropUp } from '@royalnavy/icon-library'
 import { storiesOf } from '@storybook/react'
 import { withKnobs } from '@storybook/addon-knobs'
@@ -6,6 +6,7 @@ import { withKnobs } from '@storybook/addon-knobs'
 import { CustomLink } from '../CustomLink'
 import { Button } from '../Button'
 import { Nav } from '.'
+import { useOpenClose } from '../../hooks'
 
 const stories = storiesOf('Nav', module)
 
@@ -96,11 +97,7 @@ const customNavItems = [
 stories.add('Custom Item', () => <Nav navItems={customNavItems} />)
 
 const PrimaryNav = () => {
-  const [open, setOpen] = useState(true)
-
-  const toggle = () => {
-    setOpen(!open)
-  }
+  const { open, toggle } = useOpenClose(true)
 
   return (
     <div className="primary-nav">

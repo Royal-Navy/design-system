@@ -6,6 +6,7 @@ import { Badge } from '../Badge'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DataListItemProps } from '.'
 import { getId } from '../../helpers'
+import { useOpenClose } from '../../hooks'
 
 export interface DataListProps extends ComponentWithClass {
   children:
@@ -35,19 +36,19 @@ export const DataList: React.FC<DataListProps> = ({
   title,
   children,
 }) => {
-  const [expanded, setExpanded] = useState(false)
+  const { open, toggle } = useOpenClose(false)
   const classes = classNames('rn-data-list', className, {
     'is-collapsible': isCollapsible,
-    'is-expanded': expanded,
+    'is-expanded': open,
   })
-  const ariaAttributes = getAriaAttributes(isCollapsible, expanded)
+  const ariaAttributes = getAriaAttributes(isCollapsible, open)
   const sheetId = ariaAttributes && ariaAttributes['aria-owns']
 
   return (
     <dl className={classes} data-testid="data-list">
       <button
         className="rn-data-list__header"
-        onClick={() => setExpanded(!expanded)}
+        onClick={toggle}
         data-testid="data-list-header"
         {...ariaAttributes}
       >

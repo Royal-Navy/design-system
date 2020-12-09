@@ -1,21 +1,7 @@
-import React, { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { calculate } from './sheetPosition'
-import { useDocumentClick } from '../../../hooks'
-
-function onShowSheetChange(
-  showSheet: boolean,
-  onShow: () => void,
-  onHide: () => void
-) {
-  if (showSheet && onShow) {
-    onShow()
-  }
-
-  if (!showSheet && onHide) {
-    onHide()
-  }
-}
+import { useDocumentClick, useOpenClose } from '../../../hooks'
 
 export function useSheet(
   placement: string,
@@ -23,13 +9,18 @@ export function useSheet(
   onShow?: () => void,
   onHide?: () => void
 ) {
-  const [showSheet, setShowSheet] = useState(false)
+  const { open, setOpen, toggle } = useOpenClose(false)
   const [position, setPosition] = useState()
   const ref = useRef()
 
   useDocumentClick(ref, () => {
-    setShowSheet(false)
+    setOpen(false)
   })
+
+  useEffect(() => {
+    if (open && onShow) onShow()
+    if (!open && onHide) onHide()
+  }, [open])
 
   function toggleSheet(event: React.SyntheticEvent) {
     const element: any = event.currentTarget
@@ -37,16 +28,13 @@ export function useSheet(
 
     setPosition(calculate[placement](element, width))
 
-    const newShowSheet = !showSheet
-    setShowSheet(newShowSheet)
-
-    onShowSheetChange(newShowSheet, onShow, onHide)
+    toggle(event)
   }
 
   return {
     ref,
     position,
-    showSheet,
     toggleSheet,
+    showSheet: open,
   }
 }
