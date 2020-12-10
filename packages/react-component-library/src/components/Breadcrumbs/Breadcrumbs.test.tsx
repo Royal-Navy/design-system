@@ -86,13 +86,13 @@ describe('Breadcrumbs', () => {
 
     it('should warn the consumer `isFirst` will be overwritten', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'Prop `isFirst` on `BreadcrumbsItem` will be overwritten'
+        'WARN - RNDS - Prop `isFirst` on `BreadcrumbsItem` will be overwritten'
       )
     })
 
     it('should warn the consumer `isLast` will be overwritten', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'Prop `isLast` on `BreadcrumbsItem` will be overwritten'
+        'WARN - RNDS - Prop `isLast` on `BreadcrumbsItem` will be overwritten'
       )
     })
   })

@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
+import logger from '../../utils/logger'
 
 export interface CheckboxProps
   extends ComponentWithClass,
@@ -158,7 +159,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => {
-    console.warn(
+    logger.warn(
       '`isChecked` prop has been deprecated, use `checked` and `defaultChecked`'
     )
 

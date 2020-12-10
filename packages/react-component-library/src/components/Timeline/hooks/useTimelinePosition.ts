@@ -8,6 +8,7 @@ import {
 
 import { TimelineContext } from '../context'
 import { formatPx } from '../helpers'
+import logger from '../../../utils/logger'
 
 const timeOffset = (date: Date) => 1 / 24 * new Date(date).getHours()
 
@@ -69,7 +70,7 @@ export function useTimelinePosition(
     ? getWidth(firstDateDisplayed, lastDateDisplayed) + 1
     : getWidth(startDate, lastDateDisplayed) + 1
 
-  console.warn('`isBeforeStart` and `isAfterEnd` are deprecated')
+  logger.warn('`isBeforeStart` and `isAfterEnd` are deprecated')
 
   return {
     width: formatPx(options.dayWidth, width),

@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 
-import { Link } from "../../Link"
+import { Link } from '../../Link'
 import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './index'
 import { Graph, House, Tools } from '../../../icons'
 import { Notification, Notifications } from '../NotificationPanel'
@@ -264,7 +264,7 @@ describe('Sidebar', () => {
     it('should warn the consumer `onClick` will be overwritten', () => {
       expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'Prop `onClick` on `SidebarNavItem` will be overwritten'
+        'WARN - RNDS - Prop `onClick` on `SidebarNavItem` will be overwritten'
       )
     })
   })

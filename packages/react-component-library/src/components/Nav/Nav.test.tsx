@@ -31,7 +31,7 @@ describe('Nav', () => {
     it('should warn the consumer that the component is deprecated', () => {
       expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        `Component \`Nav\` is deprecated`
+        `WARN - RNDS - Component \`Nav\` is deprecated`
       )
     })
 

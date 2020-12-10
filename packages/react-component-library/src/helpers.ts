@@ -1,6 +1,8 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import logger from './utils/logger'
+
 function getKey(prefix: string, suffix: string | number): string {
   return `${prefix}-${suffix}`.replace(/\s/g, '')
 }
@@ -19,7 +21,7 @@ function warnIfOverwriting<P>(
   componentName: string
 ) {
   if (props[propertyName]) {
-    console.warn(
+    logger.warn(
       `Prop \`${propertyName}\` on \`${componentName}\` will be overwritten`
     )
   }
