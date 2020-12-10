@@ -57,7 +57,7 @@ Drawer is a simple panel that can be triggered to appear on the right hand side 
 </CodeHighlighter>
 
 
-### Avatar Properties
+### Drawer Properties
 <DataTable data={[
   {
     Name: 'className',
@@ -79,6 +79,13 @@ Drawer is a simple panel that can be triggered to appear on the right hand side 
     Required: 'False',
     Default: '',
     Description: 'Callback which is invoked when the the drawer is closed.',
+  },
+  {
+    Name: 'ref',
+    Type: 'React.RefObject<HTMLDivElement>',
+    Required: 'False',
+    Default: '',
+    Description: 'A ref object associated with the drawer wrapper.',
   },
 ]} />
 </Tab>
