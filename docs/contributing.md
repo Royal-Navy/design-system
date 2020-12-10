@@ -12,11 +12,6 @@
         - [Squashing](#squashing)
 - [Prereleases](#prereleases)
 - [Hot fixing](#hot-fixing)
-    - [Apply the fix to master in the first instance](#apply-the-fix-to-master-in-the-first-instance)
-    - [Add the fix to the release](#add-the-fix-to-the-release)
-        - [Cherry pick the fix](#cherry-pick-the-fix)
-        - [Release the fix](#release-the-fix)
-        - [Finally](#finally)
 - [Styled Components](#styled-components)
   - [Recomended practices](#recomended-practices)
 
@@ -105,56 +100,11 @@ git checkout feature/<name>
 git rebase -i --autosquash origin/master
 ```
 
-### Prereleases
-Each `merge` to `master` publishes a prerelease to NPM. 
+### Releases
+`master` is [released](https://github.com/Royal-Navy/design-system/actions?query=workflow%3ARelease) on a nightly schedule.
 
 ## Hot fixing
-If there is an issue (never happens :sunglasses:) then `master` is always fixed first as it is possible that another release from `master` could happen once the hot fix is live.
-
-### Apply the fix to `master` in the first instance
-To start adding a hot fix:
-
-```
-// get the latest code
-git checkout master
-git pull
-
-// create a branch
-git checkout -b fix/<name>
-```
-
-Make changes to the fix branch, `commit` and `push` to the remote repository. Open a PR and once approved `merge` into `master`.
-
-### Add the fix to the release
-Once the fix is merged into `master` you are ready to add the fix to the release.
-
-#### Cherry pick the fix
-The release branch will already exist from the previous `latest` release. This step is to apply the fix from `master` to the release branch.
-```
-// work with the release
-git checkout <major>.<minor>-latest
-
-// apply the fix commit from master
-git cherry-pick <commit-hash>
-```
-
-#### Release the fix
-The package numbers will need updating to trigger publishing of the packages.
-```
-// work with the release
-git checkout <major>.<minor>-latest
-
-// create a branch to increment version numbers
-git checkout <name-of-hot-fix>
-
-// create a version
-yarn lerna:version
-```
-
-A PR will need to be opened to `merge` the package updates into the release branch which will then trigger the publishing of packages.
-
-#### Finally
-Once deployed successfully, open a PR to `merge` the `CHANGELOG` and `package.json` changes back into `master`.
+If there is an issue (never happens :sunglasses:) then follow the process for adding a new feature. We are currently in the process of [updating the release mechanism](https://github.com/Royal-Navy/design-system/issues/1717) for hotfixes.
 
 ## Styled Components
 We use the [`styled-components`](https://github.com/styled-components/styled-components) library for styling the component library.
