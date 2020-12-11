@@ -17,6 +17,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier', 'jest'],
   rules: {
+    'arrow-body-style': 0,
     camelCase: 0,
     'import/extensions': [
       'error',
@@ -33,6 +34,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     'jsx-a11y/label-has-for': 0,
     'no-underscore-dangle': ['error', { allow: ['__typename'] }],
+    'no-use-before-define': 0,
     'prefer-destructuring': 0,
     'prettier/prettier': 0,
     'react/button-has-type': 0,
@@ -47,6 +49,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/no-use-before-define': [1],
     // https://github.com/benmosher/eslint-plugin-import/issues/1615
     'import/extensions': [
       'error',
