@@ -1,69 +1,32 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [2.23.2](https://github.com/Royal-Navy/design-system/compare/2.23.1...2.23.2) (2020-12-11)
-
-**Note:** Version bump only for package @royalnavy/fonts
-
-
 
 
 
 ## [2.23.1](https://github.com/Royal-Navy/design-system/compare/2.23.0...2.23.1) (2020-12-10)
 
-**Note:** Version bump only for package @royalnavy/fonts
-
-
-
 
 
 # [2.23.0](https://github.com/Royal-Navy/design-system/compare/2.22.0...2.23.0) (2020-12-09)
-
-**Note:** Version bump only for package @royalnavy/fonts
-
-
 
 
 
 # [2.22.0](https://github.com/Royal-Navy/design-system/compare/2.21.1...2.22.0) (2020-12-04)
 
-**Note:** Version bump only for package @royalnavy/fonts
-
-
-
 
 
 ## [2.21.1](https://github.com/Royal-Navy/design-system/compare/2.21.0...2.21.1) (2020-12-03)
-
-**Note:** Version bump only for package @royalnavy/fonts
-
-
 
 
 
 # [2.21.0](https://github.com/Royal-Navy/design-system/compare/2.20.2...2.21.0) (2020-12-02)
 
-**Note:** Version bump only for package @royalnavy/fonts
-
-
-
 
 
 ## [2.20.2](https://github.com/Royal-Navy/design-system/compare/2.20.1...2.20.2) (2020-12-01)
 
-**Note:** Version bump only for package @royalnavy/fonts
-
-
-
 
 
 ## [2.20.1](https://github.com/Royal-Navy/design-system/compare/2.20.0...2.20.1) (2020-11-30)
-
-**Note:** Version bump only for package @royalnavy/fonts
-
-
 
 
 
@@ -77,101 +40,50 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
-
 # [2.19.0](https://github.com/Royal-Navy/design-system/compare/2.18.0...2.19.0) (2020-11-18)
-
-**Note:** Version bump only for package @royalnavy/fonts
-
-
 
 
 
 # [2.18.0](https://github.com/Royal-Navy/design-system/compare/2.17.0...2.18.0) (2020-11-12)
 
-**Note:** Version bump only for package @royalnavy/fonts
-
-
-
 
 
 # [2.17.0](https://github.com/Royal-Navy/design-system/compare/2.16.0...2.17.0) (2020-11-05)
-
-**Note:** Version bump only for package @royalnavy/fonts
-
-
 
 
 
 # [2.16.0](https://github.com/Royal-Navy/design-system/compare/2.15.0...2.16.0) (2020-10-13)
 
-**Note:** Version bump only for package @royalnavy/fonts
-
-
-
 
 
 # [2.15.0](https://github.com/Royal-Navy/design-system/compare/2.14.0...2.15.0) (2020-09-23)
-
-**Note:** Version bump only for package @royalnavy/fonts
-
-
 
 
 
 # [2.14.0](https://github.com/Royal-Navy/design-system/compare/2.13.0...2.14.0) (2020-09-21)
 
-**Note:** Version bump only for package @royalnavy/fonts
-
-
-
 
 
 # [2.13.0](https://github.com/Royal-Navy/design-system/compare/2.12.0...2.13.0) (2020-08-26)
-
-**Note:** Version bump only for package @royalnavy/fonts
-
-
 
 
 
 # [2.12.0](https://github.com/Royal-Navy/design-system/compare/2.11.0...2.12.0) (2020-07-29)
 
-**Note:** Version bump only for package @royalnavy/fonts
-
-
-
 
 
 # [2.11.0](https://github.com/Royal-Navy/design-system/compare/2.10.0...2.11.0) (2020-07-21)
 
-**Note:** Version bump only for package @royalnavy/fonts
 
 
-
-
-
-# [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.9.0...2.10.0) (2020-07-09)
+# [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.8.0...2.10.0) (2020-07-09)
 
 
 ### Bug Fixes
 
 * **Fonts:** Improve browser coverage ([5159d1f](https://github.com/Royal-Navy/design-system/commit/5159d1f9ac00b7dc025a83eb4f0c789e03af1db2))
-
-
-
-
-
-# [2.9.0](https://github.com/Royal-Navy/design-system/compare/2.8.0...2.9.0) (2020-06-11)
-
-
-### Bug Fixes
-
 * **Packages:** Update missing repository config ([6e7354d](https://github.com/Royal-Navy/design-system/commit/6e7354df7f007a4a050f5ecb27a3f204347bd322))
 * **Release:** Fix release notes ([b767180](https://github.com/Royal-Navy/design-system/commit/b7671803bd1e77c2900e1c3d8b144be0a645748e))
-
-
 
 
 
@@ -181,8 +93,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **DocsSite:** Add Timeline framework docs ([3194f9d](https://github.com/Royal-Navy/design-system/commit/3194f9d657c1ea2e5e79732501231f355b1b27d5))
-
-
 
 
 
@@ -196,8 +106,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.6.0](https://github.com/Royal-Navy/design-system/compare/2.5.0...2.6.0) (2020-05-05)
 
 
@@ -207,17 +115,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.5.0](https://github.com/Royal-Navy/design-system/compare/2.4.0...2.5.0) (2020-04-22)
 
-**Note:** Version bump only for package @royalnavy/fonts
 
 
-
-
-
-# [2.4.0](https://github.com/Royal-Navy/design-system/compare/2.3.0...2.4.0) (2020-04-14)
+# [2.4.0](https://github.com/Royal-Navy/design-system/compare/2.3.0...2.4.0) (2020-04-15)
 
 
 ### Features
@@ -226,24 +128,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.3.0](https://github.com/Royal-Navy/design-system/compare/2.2.1...2.3.0) (2020-03-24)
-
-**Note:** Version bump only for package @royalnavy/fonts
-
-
-
-
-
-## [2.2.2](https://github.com/Royal-Navy/design-system/compare/2.2.1...2.2.2) (2020-03-12)
-
-**Note:** Version bump only for package @royalnavy/fonts
-
-
 
 
 
 ## [2.2.1](https://github.com/Royal-Navy/design-system/compare/2.2.0...2.2.1) (2020-03-05)
 
-**Note:** Version bump only for package @royalnavy/fonts
+
+
+# [2.2.0](https://github.com/Royal-Navy/design-system/compare/2.1.1...2.2.0) (2020-02-24)
+
+
+
+## [2.1.1](https://github.com/Royal-Navy/design-system/compare/2.1.0...2.1.1) (2020-01-30)
+
+
+
+# [2.1.0](https://github.com/Royal-Navy/design-system/compare/2.1.0-alpha.0...2.1.0) (2020-01-30)
+
+
+
+# [2.1.0-alpha.0](https://github.com/Royal-Navy/design-system/compare/2.0.1...2.1.0-alpha.0) (2020-01-28)
+
+
+
