@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import { useEffect, useState } from 'react'
 import compact from 'lodash/compact'
 
