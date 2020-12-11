@@ -5,6 +5,7 @@ import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineProvider } from './context'
+import logger from '../../utils/logger'
 
 import {
   TimelineDays,
@@ -77,7 +78,7 @@ function hasTimelineSideComponent(
     return false
   }
 
-  console.warn('Component `TimelineSide` is deprecated')
+  logger.warn('Component `TimelineSide` is deprecated')
   return true
 }
 
@@ -104,7 +105,7 @@ function getDayWidth(
   const multiplier = hoursBlockSize ? 24 / hoursBlockSize : 1
 
   if (dayWidth) {
-    console.warn('Prop `dayWidth` is deprecated')
+    logger.warn('Prop `dayWidth` is deprecated')
   }
 
   return (dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH) * multiplier

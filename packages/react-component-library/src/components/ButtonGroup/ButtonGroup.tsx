@@ -3,6 +3,7 @@ import classNames from 'classnames'
 
 import { ButtonGroupItemProps } from '.'
 import { BUTTON_SIZE } from '../Button'
+import logger from '../../utils/logger'
 
 export interface ButtonGroupProps {
   children: React.ReactElement<ButtonGroupItemProps>[]
@@ -29,7 +30,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
         children,
         (child: React.ReactElement<ButtonGroupItemProps>) => {
           if (child.props.size) {
-            console.warn(
+            logger.warn(
               'Prop `size` on `ButtonGroupItem` will be replaced by `size` from `ButtonGroup`'
             )
           }

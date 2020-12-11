@@ -1,3 +1,5 @@
+process.env.RNDS_LOG_LEVEL = 'debug'
+
 module.exports = {
   moduleNameMapper: {
     '@royalnavy/fonts': '<rootDir>/jest/__mocks__/fileMock.js',

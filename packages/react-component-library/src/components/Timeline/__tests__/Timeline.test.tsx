@@ -487,7 +487,7 @@ describe('Timeline', () => {
 
     it('should warn the consumer about using the deprecated component', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'Component `TimelineSide` is deprecated'
+        'WARN - RNDS - Component `TimelineSide` is deprecated'
       )
     })
 
@@ -534,7 +534,7 @@ describe('Timeline', () => {
 
     it('should warn the consumer about using the deprecated prop', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'Prop `dayWidth` is deprecated'
+        'WARN - RNDS - Prop `dayWidth` is deprecated'
       )
     })
 

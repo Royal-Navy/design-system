@@ -9,6 +9,7 @@ import { Nav } from '../../../common/Nav'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
 import { SHEET_PLACEMENT } from '../Sheet/constants'
+import logger from '../../../utils/logger'
 
 const SHEET_WIDTH = 106
 
@@ -76,7 +77,7 @@ export const MastheadUser: React.FC<MastheadUserProps> = ({
   link,
 }) => {
   if (link) {
-    console.warn('The `link` prop is deprecated')
+    logger.warn('The `link` prop is deprecated')
     return <MastheadUserWithLink initials={initials} link={link} />
   }
 

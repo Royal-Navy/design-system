@@ -3,6 +3,7 @@ import { getKey } from '../../helpers'
 
 import { Link } from '../Link'
 import { NavItem } from './NavItem'
+import logger from '../../utils/logger'
 
 interface NavProps {
   className?: string
@@ -48,7 +49,7 @@ export const Nav: React.FC<NavProps> = ({
   orientation = 'vertical',
   size = 'regular',
 }) => {
-  console.warn(`Component \`Nav\` is deprecated`)
+  logger.warn(`Component \`Nav\` is deprecated`)
 
   return (
     <nav

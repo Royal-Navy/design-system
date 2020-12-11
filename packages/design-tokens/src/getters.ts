@@ -33,8 +33,6 @@ export function getBreakpoint(size: BreakpointSize): Breakpoint | undefined {
     `breakpoint[${size}].baseFontSize.value`
   )
 
-  console.warn('`breakpoint` has been depereacted - see the `mediaQuery` selector')
-
   return {
     breakpoint,
     baseFontSize,
