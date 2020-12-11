@@ -1,13 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const TableCell = ({ column, content }) => {
-  return (
-    <td data-column={column} className="data-table__cell">
-      <span>{content || 'n/a'}</span>
-    </td>
-  )
-}
+const TableCell = ({ column, content }) => (
+  <td data-column={column} className="data-table__cell">
+    <span>{content || 'n/a'}</span>
+  </td>
+)
 
 TableCell.propTypes = {
   column: PropTypes.string.isRequired,

@@ -2,19 +2,17 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const PostArticle = ({ mdx, className, title, description, header }) => {
-  return (
-    <article className={`post-article ${className}`}>
-      {header && (
-        <div className="post-article__header">
-          <h1 className="post-article__title">{title}</h1>
-          <p className="post-article__lede">{description}</p>
-        </div>
-      )}
-      <MDXRenderer>{mdx}</MDXRenderer>
-    </article>
-  )
-}
+const PostArticle = ({ mdx, className, title, description, header }) => (
+  <article className={`post-article ${className}`}>
+    {header && (
+      <div className="post-article__header">
+        <h1 className="post-article__title">{title}</h1>
+        <p className="post-article__lede">{description}</p>
+      </div>
+    )}
+    <MDXRenderer>{mdx}</MDXRenderer>
+  </article>
+)
 
 PostArticle.propTypes = {
   className: PropTypes.string,
