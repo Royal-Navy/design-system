@@ -1,29 +1,12 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [2.23.2](https://github.com/Royal-Navy/design-system/compare/2.23.1...2.23.2) (2020-12-11)
-
-**Note:** Version bump only for package @royalnavy/css-framework
-
-
 
 
 
 ## [2.23.1](https://github.com/Royal-Navy/design-system/compare/2.23.0...2.23.1) (2020-12-10)
 
-**Note:** Version bump only for package @royalnavy/css-framework
-
-
-
 
 
 # [2.23.0](https://github.com/Royal-Navy/design-system/compare/2.22.0...2.23.0) (2020-12-09)
-
-**Note:** Version bump only for package @royalnavy/css-framework
-
-
 
 
 
@@ -36,41 +19,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# 2.21.0 (2020-12-02)
-
-
-
-
-
 ## [2.21.1](https://github.com/Royal-Navy/design-system/compare/2.21.0...2.21.1) (2020-12-03)
-
-**Note:** Version bump only for package @royalnavy/css-framework
-
-
 
 
 
 # [2.21.0](https://github.com/Royal-Navy/design-system/compare/2.20.2...2.21.0) (2020-12-02)
 
-**Note:** Version bump only for package @royalnavy/css-framework
-
-
-
 
 
 ## [2.20.2](https://github.com/Royal-Navy/design-system/compare/2.20.1...2.20.2) (2020-12-01)
 
-**Note:** Version bump only for package @royalnavy/css-framework
-
-
-
 
 
 ## [2.20.1](https://github.com/Royal-Navy/design-system/compare/2.20.0...2.20.1) (2020-11-30)
-
-**Note:** Version bump only for package @royalnavy/css-framework
-
-
 
 
 
@@ -89,20 +50,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [2.18.0](https://github.com/Royal-Navy/design-system/compare/2.17.0...2.18.0) (2020-11-12)
-
-
-
-
-
-
-
-
 # [2.19.0](https://github.com/Royal-Navy/design-system/compare/2.18.0...2.19.0) (2020-11-18)
-
-**Note:** Version bump only for package @royalnavy/css-framework
-
-
 
 
 
@@ -112,8 +60,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **TextArea:** Convert to `styled-components` ([8d190a5](https://github.com/Royal-Navy/design-system/commit/8d190a5c8fe5e4e70b949a089536a7887c0dbcbe))
-
-
 
 
 
@@ -136,8 +82,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.16.0](https://github.com/Royal-Navy/design-system/compare/2.15.0...2.16.0) (2020-10-13)
 
 
@@ -153,16 +97,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.15.0](https://github.com/Royal-Navy/design-system/compare/2.14.0...2.15.0) (2020-09-23)
 
 
 ### Features
 
 * **Timeline:** Add ability to display hour blocks ([7df339c](https://github.com/Royal-Navy/design-system/commit/7df339c8b658b0e3eaa1d09952a6b6f621f56cc1))
-
-
 
 
 
@@ -191,8 +131,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.13.0](https://github.com/Royal-Navy/design-system/compare/2.12.0...2.13.0) (2020-08-26)
 
 
@@ -208,8 +146,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.12.0](https://github.com/Royal-Navy/design-system/compare/2.11.0...2.12.0) (2020-07-29)
 
 
@@ -217,8 +153,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **DatePicker:** Adjust grid flex styles ([7e051cc](https://github.com/Royal-Navy/design-system/commit/7e051ccae7869746d0df521bec8db68d34645171))
 * **DatePicker:** Prevent month titles from wrapping ([e9f78df](https://github.com/Royal-Navy/design-system/commit/e9f78df8e2fb864519e1ea0173a404c4ee386bff))
-
-
 
 
 
@@ -239,9 +173,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
-# [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.9.0...2.10.0) (2020-07-09)
+# [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.8.0...2.10.0) (2020-07-09)
 
 
 ### Bug Fixes
@@ -252,48 +184,32 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **DatePicker:** Make dropdown button open/close picker ([2c4d252](https://github.com/Royal-Navy/design-system/commit/2c4d25253e50e44e00495dae26101bb9c396a1c7))
 * **DatePicker:** Replace grid with flexbox ([da462b5](https://github.com/Royal-Navy/design-system/commit/da462b5fb2c02dbb710affc72ea98bb47e231e5e))
 * **FloatingBox:** Replace use of `unset` ([f21ff7c](https://github.com/Royal-Navy/design-system/commit/f21ff7cecbbb8edcd265d31bbd297b975e5defc8))
+* **Modal:** Fix font weight and button alignment ([3581761](https://github.com/Royal-Navy/design-system/commit/35817619d48749a0b88ecb34c1ab8e82775f3124))
+* **Packages:** Update missing repository config ([6e7354d](https://github.com/Royal-Navy/design-system/commit/6e7354df7f007a4a050f5ecb27a3f204347bd322))
+* **Release:** Fix release notes ([b767180](https://github.com/Royal-Navy/design-system/commit/b7671803bd1e77c2900e1c3d8b144be0a645748e))
 * **TextInput:** Reduce error message spacing ([cd8a043](https://github.com/Royal-Navy/design-system/commit/cd8a043cf1c64b37e846928820d91c4ade14ec3c))
 
 
 ### Features
 
+* **Button:** Increase Tertiary Danger button text to pass a11y ([475bedf](https://github.com/Royal-Navy/design-system/commit/475bedf799f111fe87f38b1f2653b420acc8eaef))
 * **CheckboxCard:** Implement base CheckboxCard ([8c4c33e](https://github.com/Royal-Navy/design-system/commit/8c4c33e6b68f67b0478e8b753b19495a0e24c147))
 * **DismissableBanner:** Add default component ([86f9086](https://github.com/Royal-Navy/design-system/commit/86f908636f7e6ea44aef4e85b99d7fe9898b3b14))
 * **Masthead:** Add ability to have no service logo ([d61a90e](https://github.com/Royal-Navy/design-system/commit/d61a90eb2cee7b1feac0db3e2c02859c7a64d180))
 * **Masthead:** Add avatar links ([8a957ac](https://github.com/Royal-Navy/design-system/commit/8a957ac71f550d7ad977933dab6bcdbfedef6c38))
-* **RadioCard:** Implement base RadioCard ([1e32670](https://github.com/Royal-Navy/design-system/commit/1e32670f60d5dca4dab1f0d2be4b53471de66678))
-* **RangeSlider:** Add threshold functionality ([09e774d](https://github.com/Royal-Navy/design-system/commit/09e774dc559d668b4e957b9b158daea13080ce5c))
-* **RangeSlider:** Increase label contrast for a11y ([a29813c](https://github.com/Royal-Navy/design-system/commit/a29813c8074939d69635ad138d505b65fe090ba0))
-* **TopLevelNavigation:** Create sheet abstraction ([2f1ada7](https://github.com/Royal-Navy/design-system/commit/2f1ada73380b0c5787f79c4ffb981c25a5677fe7))
-
-
-
-
-
-# [2.9.0](https://github.com/Royal-Navy/design-system/compare/2.8.0...2.9.0) (2020-06-11)
-
-
-### Bug Fixes
-
-* **Modal:** Fix font weight and button alignment ([3581761](https://github.com/Royal-Navy/design-system/commit/35817619d48749a0b88ecb34c1ab8e82775f3124))
-* **Packages:** Update missing repository config ([6e7354d](https://github.com/Royal-Navy/design-system/commit/6e7354df7f007a4a050f5ecb27a3f204347bd322))
-* **Release:** Fix release notes ([b767180](https://github.com/Royal-Navy/design-system/commit/b7671803bd1e77c2900e1c3d8b144be0a645748e))
-
-
-### Features
-
-* **Button:** Increase Tertiary Danger button text to pass a11y ([475bedf](https://github.com/Royal-Navy/design-system/commit/475bedf799f111fe87f38b1f2653b420acc8eaef))
 * **Nav:** Add styles to counter bleeding global styles ([c043d26](https://github.com/Royal-Navy/design-system/commit/c043d26426d45c68f0232319ae8b8deae49864ca))
 * **Number Input:** Increase label contrast for a11y ([a6ede52](https://github.com/Royal-Navy/design-system/commit/a6ede5248c9431932f187c2cd85ebf61b0506280))
 * **NumberInput:** Add prop to condense component ([2beeb94](https://github.com/Royal-Navy/design-system/commit/2beeb94965fc3232a1a01e70054d209cc4ce16e6))
+* **RadioCard:** Implement base RadioCard ([1e32670](https://github.com/Royal-Navy/design-system/commit/1e32670f60d5dca4dab1f0d2be4b53471de66678))
+* **RangeSlider:** Add threshold functionality ([09e774d](https://github.com/Royal-Navy/design-system/commit/09e774dc559d668b4e957b9b158daea13080ce5c))
+* **RangeSlider:** Increase label contrast for a11y ([a29813c](https://github.com/Royal-Navy/design-system/commit/a29813c8074939d69635ad138d505b65fe090ba0))
 * **Select:** Increase label contrast for a11y ([96e19b0](https://github.com/Royal-Navy/design-system/commit/96e19b0dc3f6ce82d3b1bb565295099dee304fba))
 * **Switch:** Add new design to improve a11y ([cb7ac88](https://github.com/Royal-Navy/design-system/commit/cb7ac8812e8902d13e0a30b6824b274575297390))
 * **Tab Set:** Fix colour contrast of inactive tabs for a11y ([6fb48e1](https://github.com/Royal-Navy/design-system/commit/6fb48e1eaad24b87c2899121abe9ced29b2caf8a))
 * **Text Input:** Increase label contrast for a11y ([a15da38](https://github.com/Royal-Navy/design-system/commit/a15da3859a8c098baf77539caecc52c138560574))
 * **Textarea:** Increase label contrast for a11y ([511407a](https://github.com/Royal-Navy/design-system/commit/511407a0670fbad4966c538c6fbea0568691709b))
 * **Toast:** Increase time and close button contrast for a11y ([1b41c76](https://github.com/Royal-Navy/design-system/commit/1b41c769a3e98ac16a17c9b79a8aef8b183ecdbd))
-
-
+* **TopLevelNavigation:** Create sheet abstraction ([2f1ada7](https://github.com/Royal-Navy/design-system/commit/2f1ada73380b0c5787f79c4ffb981c25a5677fe7))
 
 
 
@@ -318,8 +234,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.7.0](https://github.com/Royal-Navy/design-system/compare/2.6.0...2.7.0) (2020-05-14)
 
 
@@ -336,8 +250,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.6.0](https://github.com/Royal-Navy/design-system/compare/2.5.0...2.6.0) (2020-05-05)
 
 
@@ -351,8 +263,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **timeline:** Implement TimelineMonths render prop ([60ea646](https://github.com/Royal-Navy/design-system/commit/60ea6462f4ef882c34ef9bec695feec719998b3f))
 * **timeline:** Implement TimelineTodayMarker render prop ([872a758](https://github.com/Royal-Navy/design-system/commit/872a7587a18cfb786d1c18461015c3f178d1cee9))
 * **toast:** Update design to match Sketch toolkit ([804a96d](https://github.com/Royal-Navy/design-system/commit/804a96df848f3cd20c7cf82249914ddcd54674c8))
-
-
 
 
 
@@ -373,9 +283,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
-# [2.4.0](https://github.com/Royal-Navy/design-system/compare/2.3.0...2.4.0) (2020-04-14)
+# [2.4.0](https://github.com/Royal-Navy/design-system/compare/2.3.0...2.4.0) (2020-04-15)
 
 
 ### Bug Fixes
@@ -387,8 +295,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **component library:** Add ability to place icon to left of button ([b1862d9](https://github.com/Royal-Navy/design-system/commit/b1862d954708efac4fa8f3cc1c4eb2a2982385ef))
 * **progress indicator:** Add default component ([0933b04](https://github.com/Royal-Navy/design-system/commit/0933b04d7b2bad947c1ab8a997e6407962e4961d))
-
-
 
 
 
@@ -416,16 +322,103 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
-## [2.2.2](https://github.com/Royal-Navy/design-system/compare/2.2.1...2.2.2) (2020-03-12)
-
-**Note:** Version bump only for package @royalnavy/css-framework
-
-
-
-
-
 ## [2.2.1](https://github.com/Royal-Navy/design-system/compare/2.2.0...2.2.1) (2020-03-05)
 
-**Note:** Version bump only for package @royalnavy/css-framework
+
+
+# [2.2.0](https://github.com/Royal-Navy/design-system/compare/2.1.1...2.2.0) (2020-02-24)
+
+
+
+## [2.1.1](https://github.com/Royal-Navy/design-system/compare/2.1.0...2.1.1) (2020-01-30)
+
+
+
+# [2.1.0](https://github.com/Royal-Navy/design-system/compare/2.1.0-alpha.0...2.1.0) (2020-01-30)
+
+
+
+# [2.1.0-alpha.0](https://github.com/Royal-Navy/design-system/compare/2.0.1...2.1.0-alpha.0) (2020-01-28)
+
+
+
+## [2.0.1](https://github.com/Royal-Navy/design-system/compare/2.0.0...2.0.1) (2020-01-21)
+
+
+
+# [2.0.0](https://github.com/Royal-Navy/design-system/compare/2.0.0-alpha.2...2.0.0) (2020-01-14)
+
+
+
+# [2.0.0-alpha.2](https://github.com/Royal-Navy/design-system/compare/2.0.0-alpha.1...2.0.0-alpha.2) (2020-01-14)
+
+
+
+# [2.0.0-alpha.1](https://github.com/Royal-Navy/design-system/compare/2.0.0-alpha.0...2.0.0-alpha.1) (2020-01-14)
+
+
+
+# [2.0.0-alpha.0](https://github.com/Royal-Navy/design-system/compare/1.10.0...2.0.0-alpha.0) (2020-01-13)
+
+
+
+# [1.10.0](https://github.com/Royal-Navy/design-system/compare/1.9.0...1.10.0) (2019-12-18)
+
+
+
+# [1.9.0](https://github.com/Royal-Navy/design-system/compare/1.8.0...1.9.0) (2019-12-10)
+
+
+
+# [1.8.0](https://github.com/Royal-Navy/design-system/compare/1.7.0...1.8.0) (2019-11-25)
+
+
+
+# [1.7.0](https://github.com/Royal-Navy/design-system/compare/1.6.1...1.7.0) (2019-11-13)
+
+
+
+## [1.6.1](https://github.com/Royal-Navy/design-system/compare/1.6.0...1.6.1) (2019-10-28)
+
+
+
+# [1.6.0](https://github.com/Royal-Navy/design-system/compare/1.5.0...1.6.0) (2019-10-24)
+
+
+
+# [1.5.0](https://github.com/Royal-Navy/design-system/compare/1.4.0...1.5.0) (2019-10-16)
+
+
+
+# [1.4.0](https://github.com/Royal-Navy/design-system/compare/1.3.0...1.4.0) (2019-10-01)
+
+
+
+# [1.3.0](https://github.com/Royal-Navy/design-system/compare/1.2.1...1.3.0) (2019-09-19)
+
+
+
+## [1.2.1](https://github.com/Royal-Navy/design-system/compare/1.2.0...1.2.1) (2019-09-05)
+
+
+
+# [1.2.0](https://github.com/Royal-Navy/design-system/compare/1.1.2...1.2.0) (2019-09-04)
+
+
+
+## [1.1.2](https://github.com/Royal-Navy/design-system/compare/1.1.1...1.1.2) (2019-09-04)
+
+
+
+## [1.1.1](https://github.com/Royal-Navy/design-system/compare/1.1.0...1.1.1) (2019-08-21)
+
+
+
+# [1.1.0](https://github.com/Royal-Navy/design-system/compare/1.0.2...1.1.0) (2019-08-19)
+
+
+
+## [1.0.2](https://github.com/Royal-Navy/design-system/compare/1.0.1...1.0.2) (2019-08-01)
+
+
+

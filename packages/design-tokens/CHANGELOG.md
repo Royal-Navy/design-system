@@ -1,21 +1,8 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [2.23.2](https://github.com/Royal-Navy/design-system/compare/2.23.1...2.23.2) (2020-12-11)
-
-**Note:** Version bump only for package @royalnavy/design-tokens
-
-
 
 
 
 ## [2.23.1](https://github.com/Royal-Navy/design-system/compare/2.23.0...2.23.1) (2020-12-10)
-
-**Note:** Version bump only for package @royalnavy/design-tokens
-
-
 
 
 
@@ -28,45 +15,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.22.0](https://github.com/Royal-Navy/design-system/compare/2.21.1...2.22.0) (2020-12-04)
-
-**Note:** Version bump only for package @royalnavy/design-tokens
-
-
 
 
 
 ## [2.21.1](https://github.com/Royal-Navy/design-system/compare/2.21.0...2.21.1) (2020-12-03)
 
-**Note:** Version bump only for package @royalnavy/design-tokens
-
-
-
 
 
 # [2.21.0](https://github.com/Royal-Navy/design-system/compare/2.20.2...2.21.0) (2020-12-02)
-
-**Note:** Version bump only for package @royalnavy/design-tokens
-
-
 
 
 
 ## [2.20.2](https://github.com/Royal-Navy/design-system/compare/2.20.1...2.20.2) (2020-12-01)
 
-**Note:** Version bump only for package @royalnavy/design-tokens
-
-
-
 
 
 ## [2.20.1](https://github.com/Royal-Navy/design-system/compare/2.20.0...2.20.1) (2020-11-30)
-
-**Note:** Version bump only for package @royalnavy/design-tokens
-
-
 
 
 
@@ -81,32 +46,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
-
-
-
 # [2.19.0](https://github.com/Royal-Navy/design-system/compare/2.18.0...2.19.0) (2020-11-18)
-
-**Note:** Version bump only for package @royalnavy/design-tokens
-
-
 
 
 
 # [2.18.0](https://github.com/Royal-Navy/design-system/compare/2.17.0...2.18.0) (2020-11-12)
 
-**Note:** Version bump only for package @royalnavy/design-tokens
-
-
-
 
 
 # [2.17.0](https://github.com/Royal-Navy/design-system/compare/2.16.0...2.17.0) (2020-11-05)
-
-**Note:** Version bump only for package @royalnavy/design-tokens
-
-
 
 
 
@@ -119,13 +67,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.15.0](https://github.com/Royal-Navy/design-system/compare/2.14.0...2.15.0) (2020-09-23)
-
-**Note:** Version bump only for package @royalnavy/design-tokens
-
-
 
 
 
@@ -136,3 +78,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **DesignTokens:** Create base package ([36d0594](https://github.com/Royal-Navy/design-system/commit/36d059415af44816af9662521e1698c9fcb5edd9))
 * **DesignTokens:** Link tokens to existing contexts ([d2c0270](https://github.com/Royal-Navy/design-system/commit/d2c0270ca7da6d3bdd3e4802a53d17e0691fc3d4))
+
+
+

@@ -1,69 +1,32 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [2.23.2](https://github.com/Royal-Navy/design-system/compare/2.23.1...2.23.2) (2020-12-11)
-
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
 
 
 
 ## [2.23.1](https://github.com/Royal-Navy/design-system/compare/2.23.0...2.23.1) (2020-12-10)
 
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
-
 
 
 # [2.23.0](https://github.com/Royal-Navy/design-system/compare/2.22.0...2.23.0) (2020-12-09)
-
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
 
 
 
 # [2.22.0](https://github.com/Royal-Navy/design-system/compare/2.21.1...2.22.0) (2020-12-04)
 
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
-
 
 
 ## [2.21.1](https://github.com/Royal-Navy/design-system/compare/2.21.0...2.21.1) (2020-12-03)
-
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
 
 
 
 # [2.21.0](https://github.com/Royal-Navy/design-system/compare/2.20.2...2.21.0) (2020-12-02)
 
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
-
 
 
 ## [2.20.2](https://github.com/Royal-Navy/design-system/compare/2.20.1...2.20.2) (2020-12-01)
 
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
-
 
 
 ## [2.20.1](https://github.com/Royal-Navy/design-system/compare/2.20.0...2.20.1) (2020-11-30)
-
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
 
 
 
@@ -77,89 +40,43 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.19.0](https://github.com/Royal-Navy/design-system/compare/2.18.0...2.19.0) (2020-11-18)
-
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
 
 
 
 # [2.18.0](https://github.com/Royal-Navy/design-system/compare/2.17.0...2.18.0) (2020-11-12)
 
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
-
 
 
 # [2.17.0](https://github.com/Royal-Navy/design-system/compare/2.16.0...2.17.0) (2020-11-05)
-
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
 
 
 
 # [2.16.0](https://github.com/Royal-Navy/design-system/compare/2.15.0...2.16.0) (2020-10-13)
 
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
-
 
 
 # [2.15.0](https://github.com/Royal-Navy/design-system/compare/2.14.0...2.15.0) (2020-09-23)
-
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
 
 
 
 # [2.14.0](https://github.com/Royal-Navy/design-system/compare/2.13.0...2.14.0) (2020-09-21)
 
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
-
 
 
 # [2.13.0](https://github.com/Royal-Navy/design-system/compare/2.12.0...2.13.0) (2020-08-26)
-
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
 
 
 
 # [2.12.0](https://github.com/Royal-Navy/design-system/compare/2.11.0...2.12.0) (2020-07-29)
 
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
-
 
 
 # [2.11.0](https://github.com/Royal-Navy/design-system/compare/2.10.0...2.11.0) (2020-07-21)
 
-**Note:** Version bump only for package @royalnavy/eslint-config-react
 
 
-
-
-
-# [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.9.0...2.10.0) (2020-07-09)
-
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
-
-
-
-# [2.9.0](https://github.com/Royal-Navy/design-system/compare/2.8.0...2.9.0) (2020-06-11)
+# [2.10.0](https://github.com/Royal-Navy/design-system/compare/2.8.0...2.10.0) (2020-07-09)
 
 
 ### Bug Fixes
@@ -169,13 +86,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.8.0](https://github.com/Royal-Navy/design-system/compare/2.7.0...2.8.0) (2020-06-04)
-
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
 
 
 
@@ -189,8 +100,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.6.0](https://github.com/Royal-Navy/design-system/compare/2.5.0...2.6.0) (2020-05-05)
 
 
@@ -200,17 +109,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.5.0](https://github.com/Royal-Navy/design-system/compare/2.4.0...2.5.0) (2020-04-22)
 
-**Note:** Version bump only for package @royalnavy/eslint-config-react
 
 
-
-
-
-# [2.4.0](https://github.com/Royal-Navy/design-system/compare/2.3.0...2.4.0) (2020-04-14)
+# [2.4.0](https://github.com/Royal-Navy/design-system/compare/2.3.0...2.4.0) (2020-04-15)
 
 
 ### Features
@@ -219,24 +122,107 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [2.3.0](https://github.com/Royal-Navy/design-system/compare/2.2.1...2.3.0) (2020-03-24)
-
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
-
-
-
-## [2.2.2](https://github.com/Royal-Navy/design-system/compare/2.2.1...2.2.2) (2020-03-12)
-
-**Note:** Version bump only for package @royalnavy/eslint-config-react
-
-
 
 
 
 ## [2.2.1](https://github.com/Royal-Navy/design-system/compare/2.2.0...2.2.1) (2020-03-05)
 
-**Note:** Version bump only for package @royalnavy/eslint-config-react
+
+
+# [2.2.0](https://github.com/Royal-Navy/design-system/compare/2.1.1...2.2.0) (2020-02-24)
+
+
+
+## [2.1.1](https://github.com/Royal-Navy/design-system/compare/2.1.0...2.1.1) (2020-01-30)
+
+
+
+# [2.1.0](https://github.com/Royal-Navy/design-system/compare/2.1.0-alpha.0...2.1.0) (2020-01-30)
+
+
+
+# [2.1.0-alpha.0](https://github.com/Royal-Navy/design-system/compare/2.0.1...2.1.0-alpha.0) (2020-01-28)
+
+
+
+## [2.0.1](https://github.com/Royal-Navy/design-system/compare/2.0.0...2.0.1) (2020-01-21)
+
+
+
+# [2.0.0](https://github.com/Royal-Navy/design-system/compare/2.0.0-alpha.2...2.0.0) (2020-01-14)
+
+
+
+# [2.0.0-alpha.2](https://github.com/Royal-Navy/design-system/compare/2.0.0-alpha.1...2.0.0-alpha.2) (2020-01-14)
+
+
+
+# [2.0.0-alpha.1](https://github.com/Royal-Navy/design-system/compare/2.0.0-alpha.0...2.0.0-alpha.1) (2020-01-14)
+
+
+
+# [2.0.0-alpha.0](https://github.com/Royal-Navy/design-system/compare/1.10.0...2.0.0-alpha.0) (2020-01-13)
+
+
+
+# [1.10.0](https://github.com/Royal-Navy/design-system/compare/1.9.0...1.10.0) (2019-12-18)
+
+
+
+# [1.9.0](https://github.com/Royal-Navy/design-system/compare/1.8.0...1.9.0) (2019-12-10)
+
+
+
+# [1.8.0](https://github.com/Royal-Navy/design-system/compare/1.7.0...1.8.0) (2019-11-25)
+
+
+
+# [1.7.0](https://github.com/Royal-Navy/design-system/compare/1.6.1...1.7.0) (2019-11-13)
+
+
+
+## [1.6.1](https://github.com/Royal-Navy/design-system/compare/1.6.0...1.6.1) (2019-10-28)
+
+
+
+# [1.6.0](https://github.com/Royal-Navy/design-system/compare/1.5.0...1.6.0) (2019-10-24)
+
+
+
+# [1.5.0](https://github.com/Royal-Navy/design-system/compare/1.4.0...1.5.0) (2019-10-16)
+
+
+
+# [1.4.0](https://github.com/Royal-Navy/design-system/compare/1.3.0...1.4.0) (2019-10-01)
+
+
+
+# [1.3.0](https://github.com/Royal-Navy/design-system/compare/1.2.1...1.3.0) (2019-09-19)
+
+
+
+## [1.2.1](https://github.com/Royal-Navy/design-system/compare/1.2.0...1.2.1) (2019-09-05)
+
+
+
+# [1.2.0](https://github.com/Royal-Navy/design-system/compare/1.1.2...1.2.0) (2019-09-04)
+
+
+
+## [1.1.2](https://github.com/Royal-Navy/design-system/compare/1.1.1...1.1.2) (2019-09-04)
+
+
+
+## [1.1.1](https://github.com/Royal-Navy/design-system/compare/1.1.0...1.1.1) (2019-08-21)
+
+
+
+# [1.1.0](https://github.com/Royal-Navy/design-system/compare/1.0.2...1.1.0) (2019-08-19)
+
+
+
+## [1.0.2](https://github.com/Royal-Navy/design-system/compare/1.0.1...1.0.2) (2019-08-01)
+
+
+
