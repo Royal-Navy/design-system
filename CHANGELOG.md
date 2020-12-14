@@ -1,28 +1,13 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-# [2.24.0](https://github.com/Royal-Navy/design-system/compare/2.23.2...2.24.0) (2020-12-14)
+#  (2020-12-14)
 
 
 ### Features
 
-* **ReactComponentLibrary:** Add logging wrapper ([e53568a](https://github.com/Royal-Navy/design-system/commit/e53568a2e2672fc77f2e2c3ea8e37e191538718a))
+* **Drawer:** Add ability to drill `ref` ([ff21bfd](https://github.com/Royal-Navy/design-system/commit/ff21bfd9fda5b8ffbcc6286dc9294e117d2d4829))
 
 
 
-## [2.23.1](https://github.com/Royal-Navy/design-system/compare/2.23.0...2.23.1) (2020-12-10)
-
-
-
-# 2.23.0 (2020-12-09)
-
-
-
-
-
-#  (2020-12-11)
+# [2.24.0](https://github.com/Royal-Navy/design-system/compare/2.23.2...2.24.0) (2020-12-14)
 
 
 ### Features
@@ -784,3 +769,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 # 0.1.0 (2019-03-15)
+
+
+
