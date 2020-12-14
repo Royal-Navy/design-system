@@ -18,7 +18,7 @@ jobs:
 
       - name:  Pull all tags
         # pulls all tags (needed for lerna / semantic release to correctly version)
-        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+        run: git fetch --all --tags
 
       - name: Setup Node.js
         uses: actions/setup-node@v1
