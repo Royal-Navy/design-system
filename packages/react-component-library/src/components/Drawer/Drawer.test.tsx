@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from 'react'
+import React, { useState } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import '@testing-library/jest-dom/extend-expect'
 import {
@@ -131,6 +131,32 @@ describe('Drawer', () => {
           })
         })
       })
+    })
+  })
+
+  describe('when a `ref` prop is specified', () => {
+    beforeEach(() => {
+      const DrawerWithRef: React.FC = () => {
+        const [content, setContent] = useState<string>('Not set')
+
+        return (
+          <Drawer
+            ref={(el) => {
+              if (el) setContent(el.getAttribute('data-testid'))
+            }}
+          >
+            {content}
+          </Drawer>
+        )
+      }
+
+      wrapper = render(<DrawerWithRef />)
+    })
+
+    it('has set the `ref` on the wrapper', () => {
+      expect(wrapper.getByTestId('drawer-content')).toHaveTextContent(
+        'drawer-wrapper'
+      )
     })
   })
 })

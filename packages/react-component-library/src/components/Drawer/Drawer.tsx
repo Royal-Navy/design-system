@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classNames from 'classnames'
 import { IconClose } from '@royalnavy/icon-library'
 
@@ -11,34 +11,32 @@ interface DrawerProps extends ComponentWithClass {
   onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
 }
 
-export const Drawer: React.FC<DrawerProps> = ({
-  children,
-  onClose,
-  isOpen,
-}) => {
-  const { handleOnClose, open } = useOpenClose(isOpen, onClose)
+export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
+  ({ children, onClose, isOpen }, ref) => {
+    const { handleOnClose, open } = useOpenClose(isOpen, onClose)
 
-  const classes = classNames('rn-drawer', {
-    'is-open': open,
-  })
+    const classes = classNames('rn-drawer', {
+      'is-open': open,
+    })
 
-  return (
-    <div className={classes} data-testid="drawer-wrapper">
-      <div className="rn-drawer__inner">
-        <button
-          className="rn-drawer__close"
-          onClick={handleOnClose}
-          data-testid="drawer-close"
-          aria-label="close"
-        >
-          <IconClose />
-        </button>
-        <div className="rn-drawer__content" data-testid="drawer-content">
-          {children}
+    return (
+      <div className={classes} data-testid="drawer-wrapper" ref={ref}>
+        <div className="rn-drawer__inner">
+          <button
+            className="rn-drawer__close"
+            onClick={handleOnClose}
+            data-testid="drawer-close"
+            aria-label="close"
+          >
+            <IconClose />
+          </button>
+          <div className="rn-drawer__content" data-testid="drawer-content">
+            {children}
+          </div>
         </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
+)
 
 Drawer.displayName = 'Drawer'
