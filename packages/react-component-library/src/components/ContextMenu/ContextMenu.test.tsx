@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { RenderResult, render, fireEvent, act } from '@testing-library/react'
 import { IconSettings } from '@royalnavy/icon-library'
+import 'jest-styled-components'
 
 import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
 import { Link } from '../Link'
@@ -18,7 +19,7 @@ describe('ContextMenu', () => {
   let wrapper: RenderResult
   let onClickSpy: (e: React.MouseEvent<HTMLElement>) => void
 
-  describe('With links and closed', () => {
+  describe('With links, no icons and closed', () => {
     beforeEach(() => {
       const ContextExample = () => {
         const ref = useRef()
@@ -46,7 +47,7 @@ describe('ContextMenu', () => {
     })
   })
 
-  describe('With links and open', () => {
+  describe('With links, no icons and and open', () => {
     beforeEach(() => {
       const ContextExample = () => {
         const ref = useRef()
@@ -69,6 +70,12 @@ describe('ContextMenu', () => {
       wrapper = render(<ContextExample />)
 
       fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+    })
+
+    it('should add margin to items', () => {
+      wrapper.getAllByTestId('context-menu-item-text').forEach((item) => {
+        expect(item).toHaveStyleRule('margin-left', '1.25rem')
+      })
     })
 
     it('is rendered to the DOM', () => {
@@ -147,6 +154,12 @@ describe('ContextMenu', () => {
       wrapper = render(<ContextExample />)
 
       fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+    })
+
+    it('should not add margin to items', () => {
+      wrapper.getAllByTestId('context-menu-item-text').forEach((item) => {
+        expect(item).not.toHaveStyleRule('margin-left', '1.25rem')
+      })
     })
 
     it('renders the icons', () => {

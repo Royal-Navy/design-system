@@ -57,3 +57,44 @@ export const Default = () => {
 }
 
 Default.storyName = 'Default'
+
+export const NoIcons = () => {
+  const ref = useRef()
+
+  return (
+    <>
+      <div
+        ref={ref}
+        style={{
+          display: 'inline-block',
+          padding: '1rem',
+          backgroundColor: '#c9c9c9',
+        }}
+      >
+        Right click me!
+      </div>
+
+      <ContextMenu attachedToRef={ref}>
+        <ContextMenuItem link={<Link href="/edit">Edit</Link>} />
+        <ContextMenuItem link={<Link href="/delete">Delete</Link>} />
+        <ContextMenuItem link={<Link href="/delete">Action</Link>} />
+        <ContextMenuDivider />
+        <ContextMenuItem link={<Link href="/add">Add</Link>} />
+        <ContextMenuDivider />
+        <ContextMenuItem
+          link={<Link href="/something-else">Do something else</Link>}
+        />
+        <ContextMenuDivider />
+        <ContextMenuItem
+          link={(
+            <Link href="/something-else">
+              This is too much text to put into a context menu item
+            </Link>
+          )}
+        />
+      </ContextMenu>
+    </>
+  )
+}
+
+NoIcons.storyName = 'No icons'
