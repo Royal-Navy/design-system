@@ -8,9 +8,8 @@ import {
   BADGE_COLOR_VARIANT,
   BADGE_SIZE,
   BADGE_VARIANT,
-  BadgeColorType,
-  BadgeSizeType,
 } from '.'
+import { BadgeColorType, BadgeSizeType } from './types'
 
 const stories = storiesOf('Badge', module)
 const fadedExamples = storiesOf('Badge/Examples/Faded', module)
