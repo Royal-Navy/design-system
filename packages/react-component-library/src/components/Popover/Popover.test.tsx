@@ -13,19 +13,20 @@ import { Popover, POPOVER_PLACEMENT } from '.'
 
 const HOVER_ON_ME = 'Hover on me!'
 
+jest.useFakeTimers()
+
 describe('Popover', () => {
-  let wrapper: RenderResult
-  let children: React.ReactElement
+  const content: React.ReactElement = <pre>This is some arbitrary JSX</pre>
   let clickSpy: (e: React.MouseEvent) => void
+  let wrapper: RenderResult
 
   describe('when provided a placement and arbitrary JSX content', () => {
     beforeEach(() => {
-      children = <pre>This is some arbitrary JSX</pre>
       clickSpy = jest.fn()
 
       wrapper = render(
         <>
-          <Popover placement={POPOVER_PLACEMENT.BELOW} content={children}>
+          <Popover placement={POPOVER_PLACEMENT.BELOW} content={content}>
             <div
               style={{
                 display: 'inline-block',
@@ -73,13 +74,17 @@ describe('Popover', () => {
 
       it('renders the provided arbitrary JSX', () => {
         expect(wrapper.getByTestId('floating-box-content').innerHTML).toContain(
-          renderToStaticMarkup(children)
+          renderToStaticMarkup(content)
         )
       })
 
       describe('and the user unhovers from the target element', () => {
         beforeEach(() => {
           fireEvent.mouseOut(wrapper.getByText(HOVER_ON_ME))
+        })
+
+        it('hid the `Popover` after 1000ms', () => {
+          expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 1000)
         })
 
         it('to not be visible to the end user', () => {
@@ -164,6 +169,32 @@ describe('Popover', () => {
               '0'
             )
           })
+        })
+      })
+    })
+  })
+
+  describe('when using a custom `closeDelay`', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Popover content={content} closeDelay={100}>
+          <div>{HOVER_ON_ME}</div>
+        </Popover>
+      )
+    })
+
+    describe('and the user hovers on the target element', () => {
+      beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getByText(HOVER_ON_ME))
+      })
+
+      describe('and the user unhovers from the target element', () => {
+        beforeEach(() => {
+          fireEvent.mouseOut(wrapper.getByText(HOVER_ON_ME))
+        })
+
+        it('hid the `Popover` after 100ms', () => {
+          expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 100)
         })
       })
     })
