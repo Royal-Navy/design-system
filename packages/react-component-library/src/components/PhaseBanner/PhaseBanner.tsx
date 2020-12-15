@@ -19,7 +19,11 @@ export const PhaseBanner: React.FC<PhaseBannerProps> = ({
       className={!isFullWidth ? 'rn-container' : 'rn-phase-banner__container'}
       data-testid="phase-banner-wrapper"
     >
-      <Badge size={BADGE_SIZE.SMALL} color={BADGE_COLOR.ACTION}>
+      <Badge
+        className="rn-phase-banner__badge"
+        color={BADGE_COLOR.ACTION}
+        size={BADGE_SIZE.SMALL}
+      >
         {phase}
       </Badge>
       <span

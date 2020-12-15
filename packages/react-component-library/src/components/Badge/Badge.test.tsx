@@ -21,14 +21,14 @@ describe('Badge', () => {
           colorVariant={BADGE_COLOR_VARIANT.SOLID}
           size={BADGE_SIZE.REGULAR}
           variant={BADGE_VARIANT.PILL}
-          dummy-testid="example"
+          data-arbitrary="example"
         />
       )
     })
 
     it('applies the props to the wrapper element', () => {
       expect(wrapper.getByTestId('badge')).toHaveAttribute(
-        'dummy-testid',
+        'data-arbitrary',
         'example'
       )
     })
