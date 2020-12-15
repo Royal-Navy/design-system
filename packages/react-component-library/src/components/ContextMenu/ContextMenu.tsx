@@ -1,19 +1,21 @@
 import React from 'react'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { useRightClick } from '../../hooks/useRightClick'
+import { useClickMenu, ClickType } from '../../hooks/useClickMenu'
 import { StyledContextMenu } from './partials/StyledContextMenu'
 
 interface ContextMenuProps extends ComponentWithClass {
   attachedToRef?: React.RefObject<HTMLElement>
+  clickType?: ClickType
 }
 
 export const ContextMenu: React.FC<ContextMenuProps> = ({
   className,
   children,
   attachedToRef,
+  clickType = 'right',
 }) => {
-  const { position, isOpen } = useRightClick(attachedToRef)
+  const { position, isOpen } = useClickMenu(attachedToRef, clickType)
 
   const hasIcons = !!React.Children.toArray(children).filter(
     (child: React.ReactNode) => (child as React.ReactElement)?.props?.icon

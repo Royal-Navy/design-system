@@ -47,6 +47,44 @@ describe('ContextMenu', () => {
     })
   })
 
+  describe('With a clickType of left', () => {
+    beforeEach(() => {
+      const ContextExample = () => {
+        const ref = useRef()
+
+        return (
+          <>
+            <div ref={ref}>Left click me!</div>
+            <ContextMenu attachedToRef={ref} clickType="left">
+              <ContextMenuItem
+                link={<Link href="/hello-foo">Hello, Foo!</Link>}
+              />
+              <ContextMenuItem
+                link={<Link href="/hello-bar">Hello, Bar!</Link>}
+              />
+            </ContextMenu>
+          </>
+        )
+      }
+
+      wrapper = render(<ContextExample />)
+    })
+
+    it('is not rendered to the DOM', () => {
+      expect(wrapper.queryByTestId('context-menu')).not.toBeInTheDocument()
+    })
+
+    describe('and the user left clicks on the target area', () => {
+      beforeEach(() => {
+        fireEvent.click(wrapper.getByText('Left click me!'))
+      })
+
+      it('is is rendered to the DOM', () => {
+        expect(wrapper.queryByTestId('context-menu')).toBeInTheDocument()
+      })
+    })
+  })
+
   describe('With links, no icons and and open', () => {
     beforeEach(() => {
       const ContextExample = () => {
