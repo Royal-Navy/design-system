@@ -1,3 +1,20 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [2.25.0](https://github.com/Royal-Navy/design-system/compare/2.24.0...2.25.0) (2020-12-15)
+
+
+### Features
+
+* **Drawer:** Add ability to drill `ref` ([ff21bfd](https://github.com/Royal-Navy/design-system/commit/ff21bfd9fda5b8ffbcc6286dc9294e117d2d4829))
+* **ESLintConfigReact:** Exclude false positive report of no-shadow lint rule ([60213c2](https://github.com/Royal-Navy/design-system/commit/60213c2fcd756653cbd52707b9a422bef7c86a83))
+
+
+
+
+
 # [2.24.0](https://github.com/Royal-Navy/design-system/compare/2.23.2...2.24.0) (2020-12-14)
 
 
@@ -640,6 +657,3 @@
 
 
 # 0.1.0 (2019-03-15)
-
-
-

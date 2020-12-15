@@ -1,3 +1,20 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [2.25.0](https://github.com/Royal-Navy/design-system/compare/2.24.0...2.25.0) (2020-12-15)
+
+
+### Features
+
+* **ESLintConfigReact:** Add exceptions for new rules introduced from deps ([1a5699d](https://github.com/Royal-Navy/design-system/commit/1a5699d5374635f03febc8a8fcce34baae1a5ed3))
+* **ESLintConfigReact:** Update Lint dependency to support Typescript 4 ([1416da9](https://github.com/Royal-Navy/design-system/commit/1416da98a66586330f5fedf31ff355d7e294f5c1))
+
+
+
+
+
 # [2.24.0](https://github.com/Royal-Navy/design-system/compare/2.23.2...2.24.0) (2020-12-14)
 
 
@@ -227,6 +244,3 @@
 
 
 ## [1.0.2](https://github.com/Royal-Navy/design-system/compare/1.0.1...1.0.2) (2019-08-01)
-
-
-
