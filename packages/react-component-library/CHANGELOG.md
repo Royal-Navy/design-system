@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.26.0](https://github.com/Royal-Navy/design-system/compare/2.25.0...2.26.0) (2020-12-16)
+
+
+### Features
+
+* **Badge:** Migrate to styled-components ([1eea54a](https://github.com/Royal-Navy/design-system/commit/1eea54ae41fb4b56e357d01910217bd7928963eb))
+* **ContextMenu:** Allow open on a left click ([6f32dd3](https://github.com/Royal-Navy/design-system/commit/6f32dd3ba24c05e2f9f9d074a9a2a9073cd95a5e))
+* **ContextMenu:** Prevent padding without icons ([2f680f5](https://github.com/Royal-Navy/design-system/commit/2f680f5c3991c586172ec212b4b2be5d60c2992e))
+
+
+
+
+
 # [2.25.0](https://github.com/Royal-Navy/design-system/compare/2.24.0...2.25.0) (2020-12-15)
 
 

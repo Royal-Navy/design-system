@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.26.0](https://github.com/Royal-Navy/design-system/compare/2.25.0...2.26.0) (2020-12-16)
+
+
+### Features
+
+* **Badge:** Migrate to styled-components ([1eea54a](https://github.com/Royal-Navy/design-system/commit/1eea54ae41fb4b56e357d01910217bd7928963eb))
+
+
+
+
+
 # [2.25.0](https://github.com/Royal-Navy/design-system/compare/2.24.0...2.25.0) (2020-12-15)
 
 **Note:** Version bump only for package @royalnavy/css-framework
