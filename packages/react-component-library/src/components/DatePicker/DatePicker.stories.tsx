@@ -24,6 +24,16 @@ stories.add('Default', () => {
   )
 })
 
+stories.add('Custom format', () => {
+  return (
+    <DatePicker
+      format="yyyy/MM/dd"
+      startDate={new Date(2018, 0, 11)}
+      placement={DATEPICKER_PLACEMENT.BELOW}
+    />
+  )
+})
+
 examples.add('Custom initial month', () => {
   return (
     <DatePicker
