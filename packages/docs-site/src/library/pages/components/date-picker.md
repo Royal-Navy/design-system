@@ -95,6 +95,13 @@ The Date Picker with Range Selection component is very similar to the standard D
     Description: 'Selects the specified date as the end date',
   },
   {
+    Name: 'format',
+    Type: 'string',
+    Required: 'False',
+    Default: 'dd/MM/yyyy',
+    Description: 'Specify a custom format for presenting dates. Format is based on <a href="https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table" target="_blank">Unicode Technical Standard #35</a>.',
+  },
+  {
     Name: 'id',
     Type: '',
     Required: 'False',

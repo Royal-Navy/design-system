@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import differenceInMinutes from 'date-fns/differenceInMinutes'
 import { v4 as uuidv4 } from 'uuid'
 import styled, { css } from 'styled-components'
@@ -7,9 +7,9 @@ import { format } from 'date-fns'
 import TetherComponent from 'react-tether'
 import DayPicker, {
   DateUtils,
-  RangeModifier,
-  DayPickerProps,
   DayModifiers,
+  DayPickerProps,
+  RangeModifier,
 } from 'react-day-picker'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
@@ -17,7 +17,7 @@ import { DATE_FORMAT } from '../../constants'
 import { DatePickerInput } from './DatePickerInput'
 import { useDatePickerOpenClose } from './useDatePickerOpenClose'
 import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
-import { FloatingBox, FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
+import { FLOATING_BOX_SCHEME, FloatingBox } from '../../primitives/FloatingBox'
 import { getId } from '../../helpers'
 
 export interface StateObject {
@@ -33,6 +33,7 @@ export type DatePickerPlacement =
 
 export interface DatePickerProps extends ComponentWithClass {
   endDate?: Date
+  format?: string
   id?: string
   isDisabled?: boolean
   isRange?: boolean
@@ -274,16 +275,20 @@ const StyledDayPicker = styled<any>(DayPicker)`
 
 const StyledDatePicker = styled.div``
 
-function transformDates(startDate: Date, endDate: Date) {
+function transformDates(
+  startDate: Date,
+  endDate: Date,
+  datePickerFormat: string
+) {
   if (startDate && endDate && differenceInMinutes(endDate, startDate) > 0) {
-    return `${format(startDate, DATE_FORMAT.SHORT)} - ${format(
+    return `${format(startDate, datePickerFormat)} - ${format(
       endDate,
-      DATE_FORMAT.SHORT
+      datePickerFormat
     )}`
   }
 
   if (startDate) {
-    return format(startDate, DATE_FORMAT.SHORT)
+    return format(startDate, datePickerFormat)
   }
 
   return ''
@@ -308,6 +313,7 @@ function getNewState(
 export const DatePicker: React.FC<DatePickerProps> = ({
   className,
   endDate,
+  format: datePickerFormat = DATE_FORMAT.SHORT,
   id = uuidv4(),
   isDisabled,
   isRange,
@@ -383,7 +389,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             id={id}
             name={name}
             label={label}
-            value={transformDates(from, to)}
+            value={transformDates(from, to, datePickerFormat)}
             onBlur={onBlur}
             onFocus={handleOnFocus}
             isDisabled={isDisabled}
