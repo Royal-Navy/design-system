@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.27.0](https://github.com/Royal-Navy/design-system/compare/2.26.0...2.27.0) (2020-12-18)
+
+
+### Features
+
+* **DatePicker:** Add ability to customise format ([1c8f62f](https://github.com/Royal-Navy/design-system/commit/1c8f62f8932d6f924c78b47852858c8c3522a942)), closes [#35](https://github.com/Royal-Navy/design-system/issues/35)
+* **DocsSite:** Allow HTML to be rendered ([76b5648](https://github.com/Royal-Navy/design-system/commit/76b5648d1bf5642bc84daf3271d38a2569b65396))
+
+
+
+
+
 # [2.26.0](https://github.com/Royal-Navy/design-system/compare/2.25.0...2.26.0) (2020-12-16)
 
 
