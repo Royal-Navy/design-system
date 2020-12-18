@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { action } from '@storybook/addon-actions'
 import { Meta } from '@storybook/react/types-6-0'
 
 import { IconEdit, IconDelete, IconAdd } from '@royalnavy/icon-library'
@@ -24,7 +25,11 @@ export const Default = () => {
         Right click me!
       </div>
 
-      <ContextMenu attachedToRef={ref}>
+      <ContextMenu
+        attachedToRef={ref}
+        onHide={action('onHide')}
+        onShow={action('onShow')}
+      >
         <ContextMenuItem
           icon={<IconEdit />}
           link={<Link href="/edit">Edit</Link>}

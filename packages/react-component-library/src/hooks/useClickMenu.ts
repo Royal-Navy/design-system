@@ -8,10 +8,22 @@ export type Coordinate = {
 
 export type ClickType = 'left' | 'right'
 
-export const useClickMenu = (
-  attachedToRef: React.RefObject<HTMLElement>,
+interface useClickMenuParams {
+  attachedToRef: React.RefObject<HTMLElement>
   clickType: ClickType
-): { position: Coordinate; isOpen: boolean } => {
+  onHide?: () => void
+  onShow?: () => void
+}
+
+export const useClickMenu = ({
+  attachedToRef,
+  clickType,
+  onHide,
+  onShow,
+}: useClickMenuParams): {
+  position: Coordinate
+  isOpen: boolean
+} => {
   const { open, setOpen } = useOpenClose<boolean>(false)
   const [position, setPosition] = useState<Coordinate>({ x: 0, y: 0 })
 
@@ -22,14 +34,17 @@ export const useClickMenu = (
     if (e.target === attachedToRef.current) {
       e.preventDefault()
       setOpen(true)
+      if (onShow) onShow()
       return
     }
 
     setOpen(false)
+    if (onHide) onHide()
   }
 
   function hideMenu() {
     setOpen(false)
+    if (onHide) onHide()
   }
 
   useEffect(() => {

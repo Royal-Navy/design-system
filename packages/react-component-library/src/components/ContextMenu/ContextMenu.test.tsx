@@ -236,4 +236,60 @@ describe('ContextMenu', () => {
       expect(wrapper.queryAllByTestId('context-menu-divider')).toHaveLength(2)
     })
   })
+
+  describe('With onShow and onHide', () => {
+    let onShowSpy: () => void
+    let onHideSpy: () => void
+
+    beforeEach(() => {
+      onShowSpy = jest.fn()
+      onHideSpy = jest.fn()
+
+      const ContextExample = () => {
+        const ref = useRef()
+
+        return (
+          <>
+            <div>Click elsewhere</div>
+            <div ref={ref}>Click me!</div>
+            <ContextMenu
+              attachedToRef={ref}
+              clickType="left"
+              onShow={onShowSpy}
+              onHide={onHideSpy}
+            >
+              <ContextMenuItem
+                link={<Link href="/hello-foo">Hello, Foo!</Link>}
+              />
+              <ContextMenuItem
+                link={<Link href="/hello-bar">Hello, Bar!</Link>}
+              />
+            </ContextMenu>
+          </>
+        )
+      }
+
+      wrapper = render(<ContextExample />)
+
+      act(() => {
+        fireEvent.click(wrapper.getByText('Click me!'))
+      })
+    })
+
+    it('it fires the onShow event', () => {
+      expect(onShowSpy).toBeCalledTimes(1)
+    })
+
+    describe('when the user closes the context', () => {
+      beforeEach(() => {
+        act(() => {
+          fireEvent.click(wrapper.getByText('Click elsewhere'))
+        })
+      })
+
+      it('it fires the onHide event', () => {
+        expect(onHideSpy).toBeCalledTimes(1)
+      })
+    })
+  })
 })
