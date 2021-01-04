@@ -24,17 +24,14 @@
 @forward "src/abstracts/mixins/zindex";
 
 // Base Styles
-
 @use "src/base/normalize";
 @use "src/base/box-sizing";
 @use "src/base/fonts";
-
 
 // Components
 @use "src/components/alert";
 @use "src/components/avatar";
 @use "src/components/autosuggest";
-@use "src/components/breadcrumbs";
 @use "src/components/btn";
 @use "src/components/btn-group";
 @use "src/components/card-frame";

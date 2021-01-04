@@ -1,16 +1,14 @@
 import React from 'react'
-import classNames from 'classnames'
 
 import { BreadcrumbsItem, BreadcrumbsItemProps } from '.'
 import { Nav } from '../../common/Nav'
 import { warnIfOverwriting } from '../../helpers'
+import { StyledBreadcrumbsList } from './partials/StyledBreadcrumbsList'
 
 export const Breadcrumbs: React.FC<Nav<BreadcrumbsItemProps>> = ({
   children,
   className,
 }) => {
-  const classes = classNames('rn-breadcrumbs', className)
-
   const mapped = React.Children.map(
     children,
     (child: React.ReactElement<BreadcrumbsItemProps>, index: number) => {
@@ -27,11 +25,11 @@ export const Breadcrumbs: React.FC<Nav<BreadcrumbsItemProps>> = ({
 
   return (
     <nav
-      className={classes}
+      className={className}
       aria-label="Breadcrumb"
       data-testid="breadcrumb-wrapper"
     >
-      <ol className="rn-breadcrumbs__list">{mapped}</ol>
+      <StyledBreadcrumbsList>{mapped}</StyledBreadcrumbsList>
     </nav>
   )
 }
