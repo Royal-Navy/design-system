@@ -3,13 +3,14 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
+import { CustomMode } from 'react-compound-slider'
 
 import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
 import { RangeSlider } from '.'
 
 describe('RangeSlider', () => {
   let wrapper: RenderResult
-  let mode: number
+  let mode: 1 | 2 | 3 | CustomMode
   let onUpdateSpy: (values: readonly number[]) => void
   let domain: number[] // lower and upper bounds
   let values: number[] // initial handle values

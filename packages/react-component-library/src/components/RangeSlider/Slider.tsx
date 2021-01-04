@@ -89,7 +89,7 @@ const StyledRangeSlider = styled.div<StyledRangeSliderProps>`
     `}
 `
 
-const StyledSlider = styled(Slider)`
+const StyledSlider = styled<React.ComponentType<SliderProps>>(Slider)`
   position: relative;
   width: 100%;
   height: 40px;
