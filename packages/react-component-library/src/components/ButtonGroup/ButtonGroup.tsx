@@ -1,9 +1,9 @@
 import React from 'react'
-import classNames from 'classnames'
 
 import { ButtonGroupItemProps } from '.'
 import { BUTTON_SIZE } from '../Button'
 import logger from '../../utils/logger'
+import { StyledButtonGroup } from './partials/StyledButtonGroup'
 
 export interface ButtonGroupProps {
   children: React.ReactElement<ButtonGroupItemProps>[]
@@ -20,12 +20,13 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   className,
   size = BUTTON_SIZE.REGULAR,
 }) => {
-  const classes = classNames('rn-btn-group', className, {
-    [`rn-btn-group--${size}`]: size,
-  })
-
   return (
-    <div className={classes} role="group" data-testid="buttongroup">
+    <StyledButtonGroup
+      className={className}
+      $size={size}
+      role="group"
+      data-testid="buttongroup"
+    >
       {React.Children.map(
         children,
         (child: React.ReactElement<ButtonGroupItemProps>) => {
@@ -41,7 +42,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
           })
         }
       )}
-    </div>
+    </StyledButtonGroup>
   )
 }
 
