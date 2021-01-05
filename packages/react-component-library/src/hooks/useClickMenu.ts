@@ -31,7 +31,7 @@ export const useClickMenu = ({
     const mousePoint: Coordinate = { x: e.clientX, y: e.clientY }
     setPosition(mousePoint)
 
-    if (e.target === attachedToRef.current) {
+    if (attachedToRef.current.contains(e.target as Node)) {
       e.preventDefault()
       setOpen(true)
       if (onShow) onShow()

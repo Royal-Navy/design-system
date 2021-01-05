@@ -251,7 +251,7 @@ describe('ContextMenu', () => {
         return (
           <>
             <div>Click elsewhere</div>
-            <div ref={ref}>Click me!</div>
+            <div ref={ref}><p>Click me!</p></div>
             <ContextMenu
               attachedToRef={ref}
               clickType="left"

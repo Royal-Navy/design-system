@@ -9,6 +9,55 @@ import { Link } from '../Link'
 
 export default { component: ContextMenu, title: 'ContextMenu' } as Meta
 
+const PirateContent: React.FC = () => (
+  <>
+    <h3
+      style={{
+        display: 'block',
+        padding: '1rem',
+        color: '#fff',
+        backgroundColor: '#1c2d39',
+      }}
+    >
+      Yar Pirate Ipsum
+    </h3>
+    <p
+      style={{
+        backgroundColor: '#fff',
+        padding: '1rem',
+      }}
+    >
+      Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast
+      yardarm. Pinnace holystone mizzenmast quarter crow&apos;s nest nipperkin
+      grog yardarm hempen halter furl. Swab barque interloper chantey doubloon
+      starboard grog black jack gangway rutters.
+    </p>
+    <p
+      style={{
+        backgroundColor: '#fff',
+        padding: '1rem',
+      }}
+    >
+      Deadlights jack lad schooner scallywag dance the hempen jig carouser
+      broadside cable strike colors. Bring a spring upon her cable holystone
+      blow the man down spanker Shiver me timbers to go on account lookout
+      wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm
+      spyglass sheet transom heave to.
+    </p>
+    <p
+      style={{
+        backgroundColor: '#fff',
+        padding: '1rem',
+      }}
+    >
+      Trysail Sail ho Corsair red ensign hulk smartly boom jib rum gangway. Case
+      shot Shiver me timbers gangplank crack Jennys tea cup ballast Blimey lee
+      snow crow&apos;s nest rutters. Fluke jib scourge of the seven seas
+      boatswain schooner gaff booty Jack Tar transom spirits.
+    </p>
+  </>
+)
+
 export const Default = () => {
   const ref = useRef()
 
@@ -18,11 +67,11 @@ export const Default = () => {
         ref={ref}
         style={{
           display: 'inline-block',
-          padding: '1rem',
-          backgroundColor: '#c9c9c9',
+          padding: '3rem',
+          backgroundColor: '#12202b',
         }}
       >
-        Right click me!
+        <PirateContent />
       </div>
 
       <ContextMenu
@@ -72,11 +121,12 @@ export const NoIcons = () => {
         ref={ref}
         style={{
           display: 'inline-block',
-          padding: '1rem',
-          backgroundColor: '#c9c9c9',
+          padding: '3rem',
+
+          backgroundColor: '#12202b',
         }}
       >
-        Right click me!
+        <PirateContent />
       </div>
 
       <ContextMenu attachedToRef={ref}>
@@ -113,11 +163,11 @@ export const LeftClick = () => {
         ref={ref}
         style={{
           display: 'inline-block',
-          padding: '1rem',
-          backgroundColor: '#c9c9c9',
+          padding: '3rem',
+          backgroundColor: '#12202b',
         }}
       >
-        Left click me!
+        <PirateContent />
       </div>
 
       <ContextMenu attachedToRef={ref} clickType="left">
