@@ -1,7 +1,7 @@
-import classNames from 'classnames'
 import React from 'react'
 
 import { AVATAR_VARIANT } from '.'
+import { StyledAvatar } from './partials/StyledAvatar'
 
 export interface AvatarProps {
   className?: string
@@ -14,9 +14,11 @@ export const Avatar: React.FC<AvatarProps> = ({
   initials,
   variant,
 }) => {
-  const classes = classNames('rn-avatar', className, `rn-avatar--${variant}`)
-
-  return <span className={classes}>{initials}</span>
+  return (
+    <StyledAvatar className={className} $dark={variant === AVATAR_VARIANT.DARK}>
+      {initials}
+    </StyledAvatar>
+  )
 }
 
 Avatar.displayName = 'Avatar'
