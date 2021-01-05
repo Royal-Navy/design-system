@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
 
-import { IconChevronRight } from '@royalnavy/icon-library'
-
-import { EndTitle } from '.'
 import { LinkTypes } from '../../common/Link'
+import { StyledBreadcrumbsItem } from './partials/StyledBreadcrumbsItem'
+import { StyledEndTitle } from './partials/StyledEndTitle'
+import { StyledIcon } from './partials/StyledIcon'
 
 export interface BreadcrumbsItemProps {
   isFirst?: boolean
@@ -17,20 +17,18 @@ export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
   link,
 }) => {
   return (
-    <li data-testid="breadcrumb" className="rn-breadcrumbs__breadcrumb">
+    <StyledBreadcrumbsItem data-testid="breadcrumb">
       {!isFirst && (
-        <IconChevronRight
-          className="rn-breadcrumbs__separator"
-          aria-hidden
-          data-testid="breadcrumb-separator"
-        />
+        <StyledIcon aria-hidden data-testid="breadcrumb-separator" />
       )}
       {isLast ? (
-        <EndTitle>{(link as ReactElement).props.children}</EndTitle>
+        <StyledEndTitle aria-current="page" data-testid="breadcrumb-end-title">
+          {(link as ReactElement).props.children}
+        </StyledEndTitle>
       ) : (
         link
       )}
-    </li>
+    </StyledBreadcrumbsItem>
   )
 }
 
