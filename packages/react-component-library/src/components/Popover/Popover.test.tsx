@@ -65,6 +65,10 @@ describe('Popover', () => {
         fireEvent.mouseEnter(wrapper.getByText(HOVER_ON_ME))
       })
 
+      afterEach(() => {
+        jest.clearAllTimers()
+      })
+
       it('to be visible to the end user', () => {
         expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
           'opacity',
