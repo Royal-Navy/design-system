@@ -1,9 +1,8 @@
 import { useRef, useState } from 'react'
 
-import { POPOVER_CLOSE_DELAY } from './constants'
 import { useDocumentClick } from '../../hooks'
 
-export function useHideShow(isClick: boolean) {
+export function useHideShow(isClick: boolean, closeDelay: number) {
   const [isVisible, setIsVisible] = useState(false)
   const timerRef = useRef(null)
   const floatingBoxChildrenRef = useRef()
@@ -13,7 +12,7 @@ export function useHideShow(isClick: boolean) {
       timerRef.current = setTimeout(() => {
         timerRef.current = null
         setIsVisible(false)
-      }, POPOVER_CLOSE_DELAY)
+      }, closeDelay)
     }
   }
 

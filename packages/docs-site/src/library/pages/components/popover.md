@@ -88,6 +88,13 @@ A popover is a self-contained modal or dialogue that appears in context next to 
     Description: 'Custom CSS class to add to the Popover element.',
   },
   {
+    Name: 'closeDelay',
+    Type: 'number',
+    Required: 'False',
+    Default: '1000',
+    Description: 'Length of time in milliseconds when the Popover will close after the mouse leaves the target element.',
+  },
+  {
     Name: 'content',
     Type: 'React.ReactElement',
     Required: 'False',
