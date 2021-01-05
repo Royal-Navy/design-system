@@ -1,15 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   IconInfo,
   IconError,
   IconCheckCircle,
   IconWarning,
 } from '@royalnavy/icon-library'
-import classNames from 'classnames'
 
 import { ALERT_VARIANT } from './constants'
 import { getId } from '../../helpers'
 import { useOpenClose } from '../../hooks'
+import { StyledAlert } from './partials/StyledAlert'
+import { StyledIcon } from './partials/StyledIcon'
+import { StyledContent } from './partials/StyledContent'
+import { StyledTitle } from './partials/StyledTitle'
+import { StyledDescription } from './partials/StyledDescription'
+import { StyledFooter } from './partials/StyledFooter'
+import { StyledCloseButton } from './partials/StyledCloseButton'
 
 const VARIANT_ICON_MAP = {
   [ALERT_VARIANT.DANGER]: (
@@ -24,15 +30,17 @@ const VARIANT_ICON_MAP = {
   ),
 }
 
+export type AlertVariantType =
+  | typeof ALERT_VARIANT.DANGER
+  | typeof ALERT_VARIANT.INFO
+  | typeof ALERT_VARIANT.SUCCESS
+  | typeof ALERT_VARIANT.WARNING
+
 interface AlertProps {
   children: string
   onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
   title?: string
-  variant?:
-    | typeof ALERT_VARIANT.DANGER
-    | typeof ALERT_VARIANT.INFO
-    | typeof ALERT_VARIANT.SUCCESS
-    | typeof ALERT_VARIANT.WARNING
+  variant?: AlertVariantType
 }
 
 export const Alert: React.FC<AlertProps> = ({
@@ -43,64 +51,48 @@ export const Alert: React.FC<AlertProps> = ({
 }) => {
   const { open, handleOnClose } = useOpenClose(true, onClose)
 
-  const classes = classNames('rn-alert', `rn-alert--${variant}`)
-  const closeClasses = classNames(
-    'rn-alert__close',
-    `rn-alert__close--${variant}`
-  )
-  const iconClasses = classNames('rn-alert__icon', `rn-alert__icon--${variant}`)
-  const descriptionClasses = classNames(
-    'rn-alert__description',
-    `rn-alert__description--${variant}`
-  )
-
   const titleId = title ? getId('alert-title') : null
   const descriptionId = getId('alert-description')
 
   return (
     open && (
-      <div
+      <StyledAlert
+        $variant={variant}
         aria-describedby={descriptionId}
         aria-labelledby={titleId}
-        className={classes}
         data-testid="alert"
         role="alert"
       >
-        <div
+        <StyledIcon
+          $variant={variant}
           aria-hidden="true"
-          className={iconClasses}
           data-testid="state-icon"
         >
           {VARIANT_ICON_MAP[variant]}
-        </div>
-        <div className="rn-alert__content" data-testid="content">
+        </StyledIcon>
+        <StyledContent data-testid="content">
           {title && (
-            <h2
-              className="rn-alert__title"
+            <StyledTitle
+              $variant={variant}
               data-testid="content-title"
               id={titleId}
             >
               {title}
-            </h2>
+            </StyledTitle>
           )}
-          <p
-            className={descriptionClasses}
+          <StyledDescription
             data-testid="content-description"
             id={descriptionId}
           >
             {children}
-          </p>
-          <div className="rn-alert__footer">
-            <button
-              className={closeClasses}
-              onClick={handleOnClose}
-              data-testid="close"
-            >
+          </StyledDescription>
+          <StyledFooter>
+            <StyledCloseButton onClick={handleOnClose} data-testid="close">
               Dismiss
-            </button>
-          </div>
-        </div>
-      </div>
+            </StyledCloseButton>
+          </StyledFooter>
+        </StyledContent>
+      </StyledAlert>
     )
   )
 }
