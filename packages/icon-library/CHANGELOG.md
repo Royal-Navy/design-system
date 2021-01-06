@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.29.0](https://github.com/Royal-Navy/design-system/compare/2.28.0...2.29.0) (2021-01-06)
+
+
+### Bug Fixes
+
+* **IconLibrary:** Export missing interface ([9730adf](https://github.com/Royal-Navy/design-system/commit/9730adfa21b340deae258fac204d9962c53f6862))
+
+
+
+
+
 # [2.28.0](https://github.com/Royal-Navy/design-system/compare/2.27.0...2.28.0) (2021-01-05)
 
 **Note:** Version bump only for package @royalnavy/icon-library

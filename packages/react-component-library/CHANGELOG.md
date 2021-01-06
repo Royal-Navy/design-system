@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.29.0](https://github.com/Royal-Navy/design-system/compare/2.28.0...2.29.0) (2021-01-06)
+
+
+### Bug Fixes
+
+* **ContextMenu:** Fix mouse event in context menu ([bb9eba4](https://github.com/Royal-Navy/design-system/commit/bb9eba4f3a561c3a6f11b1cff146ce5156869ca3))
+
+
+### Features
+
+* **Popover:** Add prop for altering close delay ([66c8741](https://github.com/Royal-Navy/design-system/commit/66c8741291bc68f6f9769a224cd15b68ca7e3461))
+
+
+
+
+
 # [2.28.0](https://github.com/Royal-Navy/design-system/compare/2.27.0...2.28.0) (2021-01-05)
 
 
