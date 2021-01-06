@@ -1,6 +1,8 @@
 import React, { useRef } from 'react'
 
 import { Checkbox, CheckboxProps } from '../Checkbox'
+import { StyledDescription } from './partials/StyledDescription'
+import { StyledCheckboxEnhanced } from './partials/StyledCheckboxEnhanced'
 
 export interface CheckboxEnhancedProps extends Omit<CheckboxProps, 'label'> {
   description?: string
@@ -28,9 +30,8 @@ export const CheckboxEnhanced: React.FC<CheckboxEnhancedProps> = ({
   }
 
   return (
-    <div
+    <StyledCheckboxEnhanced
       aria-checked={isChecked}
-      className="rn-checkbox-enhanced"
       data-testid="checkboxenhanced-wrapper"
       onClick={handleClick}
       onKeyUp={handleKeyUp}
@@ -45,14 +46,14 @@ export const CheckboxEnhanced: React.FC<CheckboxEnhancedProps> = ({
         {...rest}
       />
       {description && (
-        <p
+        <StyledDescription
           className="rn-checkbox-enhanced__description"
           data-testid="checkboxenhanced-description"
         >
           {description}
-        </p>
+        </StyledDescription>
       )}
-    </div>
+    </StyledCheckboxEnhanced>
   )
 }
 
