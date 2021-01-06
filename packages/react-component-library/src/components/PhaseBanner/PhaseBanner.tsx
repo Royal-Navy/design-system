@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Badge, BADGE_SIZE, BADGE_COLOR } from '../Badge'
+import { StyledWrapper } from './partials/StyledWrapper'
 
 interface PhaseBannerProps {
   isFullWidth?: boolean
@@ -15,8 +16,8 @@ export const PhaseBanner: React.FC<PhaseBannerProps> = ({
   phase = 'alpha',
 }) => (
   <div className={`rn-phase-banner rn-phase-banner--${phase}`}>
-    <div
-      className={!isFullWidth ? 'rn-container' : 'rn-phase-banner__container'}
+    <StyledWrapper
+      $isFullWidth={isFullWidth}
       data-testid="phase-banner-wrapper"
     >
       <Badge
@@ -37,7 +38,7 @@ export const PhaseBanner: React.FC<PhaseBannerProps> = ({
           </>
         )}
       </span>
-    </div>
+    </StyledWrapper>
   </div>
 )
 
