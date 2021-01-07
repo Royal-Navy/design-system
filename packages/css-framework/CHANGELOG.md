@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.30.0](https://github.com/Royal-Navy/design-system/compare/2.29.0...2.30.0) (2021-01-07)
+
+
+### Features
+
+* **CardFrame:** Use styled-components ([35c70af](https://github.com/Royal-Navy/design-system/commit/35c70af3831030c7810791e70bb27a83f139b018))
+
+
+
+
+
 # [2.29.0](https://github.com/Royal-Navy/design-system/compare/2.28.0...2.29.0) (2021-01-06)
 
 **Note:** Version bump only for package @royalnavy/css-framework
