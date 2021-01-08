@@ -30,6 +30,10 @@ const buttonSizeTextMap = {
 
 stories.add('Default', () => <Button>{text('Children', 'Default')}</Button>)
 
+stories.add('Disabled', () => (
+  <Button isDisabled>{text('Children', 'Disabled')}</Button>
+))
+
 variantExamples.add('Primary', () => (
   <Button onClick={action('Clicked primary')} variant={BUTTON_VARIANT.PRIMARY}>
     {text('Children', 'Default')}
@@ -110,7 +114,7 @@ iconExamples.add('Right', () => (
   </>
 ))
 
-Object.keys(buttonSizeTextMap).forEach(key => {
+Object.keys(buttonSizeTextMap).forEach((key) => {
   defaultSizeExamples.add(buttonSizeTextMap[key], () => (
     <Button onClick={action('Clicked')} size={key as ButtonSizeType}>
       {text('Children', 'Default')}
@@ -118,7 +122,7 @@ Object.keys(buttonSizeTextMap).forEach(key => {
   ))
 })
 
-Object.keys(buttonSizeTextMap).forEach(key => {
+Object.keys(buttonSizeTextMap).forEach((key) => {
   primarySizeExamples.add(buttonSizeTextMap[key], () => (
     <Button
       onClick={action('Clicked primary')}
@@ -130,7 +134,7 @@ Object.keys(buttonSizeTextMap).forEach(key => {
   ))
 })
 
-Object.keys(buttonSizeTextMap).forEach(key => {
+Object.keys(buttonSizeTextMap).forEach((key) => {
   secondarySizeExamples.add(buttonSizeTextMap[key], () => (
     <Button
       onClick={action('Clicked secondary')}
