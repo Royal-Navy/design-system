@@ -85,8 +85,9 @@ describe('DataList', () => {
     })
 
     it('should hide the items', () => {
-      expect(wrapper.queryByTestId('data-list').classList).not.toContain(
-        'is-expanded'
+      expect(wrapper.getByTestId('data-list-sheet')).toHaveStyleRule(
+        'height',
+        '0'
       )
     })
 
@@ -121,8 +122,9 @@ describe('DataList', () => {
       })
 
       it('should show the items', () => {
-        expect(wrapper.queryByTestId('data-list').classList).toContain(
-          'is-expanded'
+        expect(wrapper.getByTestId('data-list-sheet')).toHaveStyleRule(
+          'height',
+          'auto'
         )
       })
     })

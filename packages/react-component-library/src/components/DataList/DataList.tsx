@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
-import classNames from 'classnames'
+import React from 'react'
 import { IconKeyboardArrowDown } from '@royalnavy/icon-library'
 
-import { Badge } from '../Badge'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { DataListItemProps } from '.'
-import { getId } from '../../helpers'
+import { DataListItem, DataListItemProps } from '.'
+import { getId, warnIfOverwriting } from '../../helpers'
 import { useOpenClose } from '../../hooks'
+import { StyledAction } from './partials/StyledAction'
+import { StyledBadge } from './partials/StyledBadge'
+import { StyledDataList } from './partials/StyledDataList'
+import { StyledHeader } from './partials/StyledHeader'
+import { StyledSheet } from './partials/StyledSheet'
+import { StyledTitle } from './partials/StyledTitle'
 
 export interface DataListProps extends ComponentWithClass {
   children:
@@ -37,41 +41,48 @@ export const DataList: React.FC<DataListProps> = ({
   children,
 }) => {
   const { open, toggle } = useOpenClose(false)
-  const classes = classNames('rn-data-list', className, {
-    'is-collapsible': isCollapsible,
-    'is-expanded': open,
-  })
   const ariaAttributes = getAriaAttributes(isCollapsible, open)
   const sheetId = ariaAttributes && ariaAttributes['aria-owns']
 
   return (
-    <dl className={classes} data-testid="data-list">
-      <button
-        className="rn-data-list__header"
+    <StyledDataList $isCollapsible={isCollapsible} className={className}>
+      <StyledHeader
+        $isCollapsible={isCollapsible}
         onClick={toggle}
         data-testid="data-list-header"
         {...ariaAttributes}
       >
-        <h2 className="rn-data-list__title">
+        <StyledTitle>
           {title}
           {isCollapsible && (
-            <Badge className="rn-data-list__badge" size="small">
+            <StyledBadge $isCollapsible={isCollapsible} size="small">
               {(children as React.ReactElement<DataListItemProps>[]).length}
-            </Badge>
+            </StyledBadge>
           )}
-        </h2>
-        <span className="rn-data-list__action">
+        </StyledTitle>
+        <StyledAction $isCollapsible={isCollapsible} $isOpen={open}>
           <IconKeyboardArrowDown aria-hidden data-testid="arrow-down-icon" />
-        </span>
-      </button>
-      <div
-        className="rn-data-list__sheet"
+        </StyledAction>
+      </StyledHeader>
+      <StyledSheet
+        $isCollapsible={isCollapsible}
+        $isOpen={open}
         data-testid="data-list-sheet"
         id={sheetId}
       >
-        {children}
-      </div>
-    </dl>
+        {React.Children.map(
+          children,
+          (child: React.ReactElement<DataListItemProps>) => {
+            warnIfOverwriting(child.props, 'isCollapsible', DataListItem.name)
+
+            return React.cloneElement(child, {
+              ...child.props,
+              isCollapsible,
+            })
+          }
+        )}
+      </StyledSheet>
+    </StyledDataList>
   )
 }
 
