@@ -26,16 +26,4 @@ describe('PhaseBanner', () => {
       )
     })
   })
-
-  describe('with isFullWidth prop', () => {
-    beforeEach(() => {
-      wrapper = render(<PhaseBanner isFullWidth />)
-    })
-
-    it('applies the modifier class', () => {
-      expect(wrapper.getByTestId('phase-banner-wrapper')).toHaveClass(
-        'rn-phase-banner__container'
-      )
-    })
-  })
 })
