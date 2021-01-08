@@ -99,14 +99,14 @@
   }
 }
 
-.rn-modal .rn-btn.rn-modal__secondary-button {
+.rn-modal .rn-modal__secondary-button {
   @include m.breakpoint("xs") {
     margin-bottom: 0;
     margin-left: auto;
   }
 }
 
-.rn-modal .rn-btn.rn-modal__primary-button {
+.rn-modal .rn-modal__primary-button {
   @include m.breakpoint("xs") {
     margin-bottom: 0;
     margin-left: f.spacing("4");
