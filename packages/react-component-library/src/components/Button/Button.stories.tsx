@@ -25,7 +25,6 @@ const buttonSizeTextMap = {
   [BUTTON_SIZE.SMALL]: 'small',
   [BUTTON_SIZE.REGULAR]: 'regular',
   [BUTTON_SIZE.LARGE]: 'large',
-  [BUTTON_SIZE.XLARGE]: 'xlarge',
 }
 
 stories.add('Default', () => <Button>{text('Children', 'Default')}</Button>)

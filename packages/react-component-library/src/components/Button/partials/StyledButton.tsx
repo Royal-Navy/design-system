@@ -222,7 +222,8 @@ export const StyledButton = styled.button<StyledButtonProps>`
       `
     }
 
-    if ($size === BUTTON_SIZE.LARGE) {
+    // @ts-ignore
+    if ([BUTTON_SIZE.LARGE, BUTTON_SIZE.XLARGE].includes($size)) {
       return `
         padding: ${spacing('6')} ${spacing('9')};
         font-size: ${fontSize('l')};
@@ -230,18 +231,6 @@ export const StyledButton = styled.button<StyledButtonProps>`
 
         ${StyledText} {
           transform: translateY(-1px);
-        }
-      `
-    }
-
-    if ($size === BUTTON_SIZE.XLARGE) {
-      return `
-        font-size: f.font-size("l");
-        padding: f.spacing("6") f.spacing("10");
-
-        ${StyledIcon} svg {
-          width: 20px;
-          height: 20px;
         }
       `
     }
