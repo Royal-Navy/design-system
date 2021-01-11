@@ -104,12 +104,12 @@ git rebase -i --autosquash origin/master
 `master` is [released](https://github.com/Royal-Navy/design-system/actions?query=workflow%3ARelease) on a nightly schedule.
 
 ## Hot fixing
-If there is an issue (never happens :sunglasses:) then follow the process for adding a new feature. We are currently in the process of [updating the release mechanism](https://github.com/Royal-Navy/design-system/issues/1717) for hotfixes.
+If there is an issue (never happens :sunglasses:) then follow the process for adding a new feature. Hotfixes can be released & published by Design-System team members using the 'manual release' GitHub Actions workflow.
 
 ## Styled Components
 We use the [`styled-components`](https://github.com/styled-components/styled-components) library for styling the component library.
 
-### Recomended practices
+### Recommended practices
 - Break up components - consider creating a 'partials' directory.
 
 - Props unique to the styled-component that do not need to be drilled to the wrapped component / markup should be marked as transient (`$`). Transient by default (think `const`).
