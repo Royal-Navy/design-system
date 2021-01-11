@@ -29,7 +29,7 @@
     "prepare": "yarn build"
   },
   "dependencies": {
-    "react": "^16.12.0",
+    "react": "^17.0.1",
     "react-svg-unique-id": "^1.3.3"
   },
   "devDependencies": {
