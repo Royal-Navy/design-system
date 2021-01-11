@@ -50,6 +50,14 @@
   margin-left: rn.spacing("6");
 }
 
+.rn-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: rn.spacing("12");
+  padding-right: rn.spacing("12");
+}
+
 .masthead__nav {
   display: none;
   padding-top: rn.spacing("6");
