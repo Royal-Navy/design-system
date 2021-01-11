@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.30.1](https://github.com/royal-navy/design-system/compare/2.30.0...2.30.1) (2021-01-11)
+
+**Note:** Version bump only for package cra-template-royalnavy
+
+
+
+
+
 # [2.30.0](https://github.com/royal-navy/design-system/compare/2.29.0...2.30.0) (2021-01-07)
 
 **Note:** Version bump only for package cra-template-royalnavy
