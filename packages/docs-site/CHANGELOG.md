@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.30.2](https://github.com/Royal-Navy/design-system/compare/2.30.1...2.30.2) (2021-01-11)
+
+
+### Bug Fixes
+
+* **DocsSite:** Add legacy `.rn-container` ([4c7986f](https://github.com/Royal-Navy/design-system/commit/4c7986fe4638167902fb8caf1f79f3ac84a56eb2))
+
+
+
+
+
 ## [2.30.1](https://github.com/Royal-Navy/design-system/compare/2.30.0...2.30.1) (2021-01-11)
 
 **Note:** Version bump only for package royalnavy.io
