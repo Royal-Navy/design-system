@@ -17,7 +17,7 @@ interface StyledAlertProps {
   $variant?: AlertVariantType
 }
 
-const { spacing, breakpoint } = selectors
+const { spacing, mq } = selectors
 
 const STATE_VARIANT_MAP = {
   [ALERT_VARIANT.DANGER]: DANGER_ALERT_STATE_COLOR,
@@ -35,9 +35,9 @@ export const StyledAlert = styled.div<StyledAlertProps>`
   display: flex;
   align-items: flex-start;
 
-  @media only screen and (min-width: ${breakpoint('xs').breakpoint}) {
+  ${mq({ gte: 'xs' })`
     padding-right: ${spacing('18')};
-  }
+  `}
 
   &::before {
     position: absolute;
