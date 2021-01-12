@@ -43,7 +43,10 @@ export function getMediaQuery(options: {
   gte: BreakpointSize
   lt?: BreakpointSize
   media?: string
-}): (strings: TemplateStringsArray) => string {
+}): (
+  strings: TemplateStringsArray,
+  ...interpolations: StyledComponentsInterpolation[]
+) => string {
   const { gte, lt, media } = {
     media: 'only screen and',
     ...options,
@@ -69,21 +72,21 @@ export function getMediaQuery(options: {
     ...interpolations: StyledComponentsInterpolation[]
   ): string {
     if (breakpointGTE && !breakpointLT) {
-      return `
+      return css`
         @media ${media} (min-width: ${breakpointGTE}) {
           font-size: ${baseFontSize};
           ${css(strings, ...interpolations)}
         }
-      `
+      `.join('') // Join prevents commas e.g. `padding: ,1.25rem,`
     }
 
     if (breakpointGTE && breakpointLT) {
-      return `
+      return css`
         @media ${media} (min-width: ${breakpointGTE}) and (max-width: ${breakpointLT}) {
           font-size: ${baseFontSize};
           ${css(strings, ...interpolations)}
         }
-      `
+      `.join('')
     }
 
     throw new Error(`Invalid breakpoints: gte: ${gte} - lt: ${lt}`)

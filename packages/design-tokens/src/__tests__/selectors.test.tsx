@@ -6,7 +6,7 @@ import 'jest-styled-components'
 
 import { selectors } from '..'
 
-const { mediaQuery, mq } = selectors
+const { mediaQuery, mq, spacing } = selectors
 
 describe('mediaQuery / mq', () => {
   let wrapper: RenderResult
@@ -29,14 +29,17 @@ describe('mediaQuery / mq', () => {
 
       ${mediaQuery({ gte: 'xs' })`
         background-color: blue;
+        padding: ${spacing('2')};
       `}
 
       ${mq({ gte: 's', lt: 'm' })`
         background-color: green;
+        padding: ${spacing('4')};
       `}
 
       ${mq({ gte: 'l', lt: 'xl', media: '' })`
         background-color: black;
+        padding: ${spacing('6')};
       `}
     `
 
@@ -63,6 +66,15 @@ describe('mediaQuery / mq', () => {
           media: 'only screen and (min-width:576px)',
         }
       )
+
+      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+        'padding',
+        '0.25rem',
+        {
+          media: 'only screen and (min-width:576px)',
+        }
+      )
+
       expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
         'background-color',
         'green',
@@ -72,8 +84,24 @@ describe('mediaQuery / mq', () => {
       )
 
       expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+        'padding',
+        '0.5rem',
+        {
+          media: 'only screen and (min-width:768px) and (max-width:1024px)',
+        }
+      )
+
+      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
         'background-color',
         'black',
+        {
+          media: '(min-width:1200px) and (max-width:1400px)',
+        }
+      )
+
+      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+        'padding',
+        '0.75rem',
         {
           media: '(min-width:1200px) and (max-width:1400px)',
         }
