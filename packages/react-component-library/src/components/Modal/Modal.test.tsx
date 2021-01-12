@@ -170,28 +170,10 @@ describe('Modal', () => {
           expect(wrapper.queryByTestId('modal-tertiary')).toBeInTheDocument()
         })
 
-        it('should render primary button as primary variant', () => {
-          expect(wrapper.queryByTestId('modal-primary')).toHaveClass(
-            'rn-btn--primary'
-          )
-        })
-
         it('should render the primary button with an icon', () => {
           expect(
             wrapper.queryByTestId('modal-primary-confirm')
           ).toBeInTheDocument()
-        })
-
-        it('should render secondary button as secondary variant', () => {
-          expect(wrapper.queryByTestId('modal-secondary')).toHaveClass(
-            'rn-btn--secondary'
-          )
-        })
-
-        it('should render tertiary button as tertiary variant', () => {
-          expect(wrapper.queryByTestId('modal-tertiary')).toHaveClass(
-            'rn-btn--tertiary'
-          )
         })
       })
 

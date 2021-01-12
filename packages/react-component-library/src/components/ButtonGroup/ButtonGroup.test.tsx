@@ -51,18 +51,6 @@ describe('ButtonGroup', () => {
       expect(wrapper.getAllByTestId('button')).toHaveLength(3)
     })
 
-    it('should style the buttons as secondary buttons', () => {
-      const buttons = wrapper.getAllByTestId('button')
-      buttons.forEach((button) =>
-        expect(button).toHaveClass('rn-btn--secondary')
-      )
-    })
-
-    it('should set the default size', () => {
-      const buttons = wrapper.getAllByTestId('button')
-      buttons.forEach((button) => expect(button).toHaveClass('rn-btn--regular'))
-    })
-
     it('should default the type to "button"', () => {
       const buttons = wrapper.getAllByTestId('button')
       buttons.forEach((button) =>
@@ -137,11 +125,6 @@ describe('ButtonGroup', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
         'WARN - RNDS - Prop `size` on `ButtonGroupItem` will be replaced by `size` from `ButtonGroup`'
       )
-    })
-
-    it('should set the button size to the same as the size specified by the parent', () => {
-      const buttons = wrapper.getAllByTestId('button')
-      buttons.forEach((button) => expect(button).toHaveClass('rn-btn--regular'))
     })
   })
 })
