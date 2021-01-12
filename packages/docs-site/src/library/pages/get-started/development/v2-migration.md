@@ -1,5 +1,5 @@
 ---
-title: Migrating to Royal Navy Design System v2
+title: Migrating to v2
 description: 'This guide will show you how to upgrade your codebase to work with v2'
 header: true
 ---
