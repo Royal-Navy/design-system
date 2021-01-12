@@ -72,8 +72,11 @@ describe('Modal', () => {
         )
       })
 
-      it('should apply the `is-open` class', () => {
-        expect(wrapper.queryByTestId('modal-wrapper')).toHaveClass('is-open')
+      it('should open the modal', () => {
+        expect(wrapper.getByTestId('modal-wrapper')).toHaveStyleRule(
+          'display',
+          'block'
+        )
       })
 
       it('should not render the Header component', () => {
@@ -137,9 +140,10 @@ describe('Modal', () => {
           expect(onClose).toHaveBeenCalled()
         })
 
-        it('should apply the `is-closed` stateful class', () => {
-          expect(wrapper.queryByTestId('modal-wrapper')).toHaveClass(
-            'is-closed'
+        it('should close the modal', () => {
+          expect(wrapper.getByTestId('modal-wrapper')).toHaveStyleRule(
+            'display',
+            'none'
           )
         })
       })
@@ -229,7 +233,10 @@ describe('Modal', () => {
       })
 
       it('should be closed', () => {
-        expect(wrapper.queryByTestId('modal-wrapper')).toHaveClass('is-closed')
+        expect(wrapper.getByTestId('modal-wrapper')).toHaveStyleRule(
+          'display',
+          'none'
+        )
       })
 
       describe('and the button is clicked', () => {
@@ -240,9 +247,9 @@ describe('Modal', () => {
         })
 
         it('should be open', () => {
-          expect(wrapper.queryByTestId('modal-wrapper')).toHaveClass('is-open')
-          expect(wrapper.queryByTestId('modal-wrapper')).not.toHaveClass(
-            'is-closed'
+          expect(wrapper.getByTestId('modal-wrapper')).toHaveStyleRule(
+            'display',
+            'block'
           )
         })
 
@@ -254,11 +261,9 @@ describe('Modal', () => {
           })
 
           it('should be closed again', () => {
-            expect(wrapper.queryByTestId('modal-wrapper')).not.toHaveClass(
-              'is-open'
-            )
-            expect(wrapper.queryByTestId('modal-wrapper')).toHaveClass(
-              'is-closed'
+            expect(wrapper.getByTestId('modal-wrapper')).toHaveStyleRule(
+              'display',
+              'none'
             )
           })
         })
