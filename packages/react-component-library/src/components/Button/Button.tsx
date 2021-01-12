@@ -1,5 +1,4 @@
 import React, { FormEvent } from 'react'
-import classNames from 'classnames'
 
 import {
   BUTTON_COLOR,
@@ -8,6 +7,9 @@ import {
   BUTTON_ICON_POSITION,
 } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { StyledButton } from './partials/StyledButton'
+import { StyledIcon } from './partials/StyledIcon'
+import { StyledText } from './partials/StyledText'
 
 export type ButtonSizeType =
   | typeof BUTTON_SIZE.SMALL
@@ -49,17 +51,14 @@ export const Button: React.FC<ButtonProps> = ({
   variant,
   ...rest
 }) => {
-  const classes = classNames('rn-btn', className, {
-    'rn-btn--disabled': isDisabled,
-    [`rn-btn--icon-${iconPosition}`]: icon,
-    [`rn-btn--${variant}`]: variant,
-    [`rn-btn--${color}`]: color,
-    [`rn-btn--${size}`]: size,
-  })
-
   return (
-    <button
-      className={classes}
+    <StyledButton
+      className={className}
+      $disabled={isDisabled}
+      $variant={variant}
+      $color={color}
+      $size={size}
+      $iconPosition={iconPosition}
       data-testid="button"
       disabled={isDisabled}
       type={type}
@@ -72,13 +71,13 @@ export const Button: React.FC<ButtonProps> = ({
       }}
       {...rest}
     >
-      <span className="rn-btn__text">{children}</span>
+      <StyledText>{children}</StyledText>
       {icon && (
-        <span aria-hidden className="rn-btn__icon" data-testid="button-icon">
+        <StyledIcon aria-hidden data-testid="button-icon">
           {icon}
-        </span>
+        </StyledIcon>
       )}
-    </button>
+    </StyledButton>
   )
 }
 

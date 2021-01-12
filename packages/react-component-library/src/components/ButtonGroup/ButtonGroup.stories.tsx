@@ -33,8 +33,8 @@ examples.add('Small', () => (
   </ButtonGroup>
 ))
 
-examples.add('Large', () => (
-  <ButtonGroup size={BUTTON_SIZE.LARGE}>
+examples.add('Regular', () => (
+  <ButtonGroup size={BUTTON_SIZE.REGULAR}>
     <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
     <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
     <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>
@@ -43,8 +43,8 @@ examples.add('Large', () => (
   </ButtonGroup>
 ))
 
-examples.add('XLarge', () => (
-  <ButtonGroup size={BUTTON_SIZE.XLARGE}>
+examples.add('Large', () => (
+  <ButtonGroup size={BUTTON_SIZE.LARGE}>
     <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
     <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
     <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>

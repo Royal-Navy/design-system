@@ -10,6 +10,7 @@ import { TimelineHeaderRow } from './TimelineHeaderRow'
 import { TimelineMonth } from './TimelineMonth'
 import { Button } from '../Button'
 import { TIMELINE_ACTIONS } from './context/types'
+import { StyledIcon } from '../Button/partials/StyledIcon'
 
 export interface TimelineMonthsWithRenderContentProps
   extends ComponentWithClass {
@@ -45,7 +46,7 @@ const StyledNavigation = styled.div`
       display: none;
     }
 
-    .rn-btn__icon {
+    ${StyledIcon} {
       margin-left: 0;
     }
   }
