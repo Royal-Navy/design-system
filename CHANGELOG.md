@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.30.3](https://github.com/Royal-Navy/design-system/compare/2.30.2...2.30.3) (2021-01-13)
+
+
+### Bug Fixes
+
+* **Button:** Combine `large` and `xlarge` ([44a6f5c](https://github.com/Royal-Navy/design-system/commit/44a6f5c58c3a96b371542830c72eb704067ba8fc))
+* **DesignTokens:** Resolve mediaQuery nested interpolations ([f3e7af5](https://github.com/Royal-Navy/design-system/commit/f3e7af5cab9b763dd48ee7831a28c2382c1267c9))
+
+
+
+
+
 ## [2.30.2](https://github.com/Royal-Navy/design-system/compare/2.30.1...2.30.2) (2021-01-11)
 
 
