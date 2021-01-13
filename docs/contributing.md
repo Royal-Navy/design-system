@@ -118,7 +118,9 @@ We use the [`styled-components`](https://github.com/styled-components/styled-com
 
 - Avoid mixing classes / BEM and styled-components. Stick to the single paradigm.
 
-- Avoid setting the style prop and instead pass props to the styled-component. Identify discrete UI states (avoiding one-to-one relationship between props and CSS properties where possible).
+- Avoid setting the style prop and instead pass props to the styled-component. 
+
+- Identify discrete UI states (avoiding one-to-one relationship between props and CSS properties where possible).
 
 - Always use the `css`\`` tagged template literal.
 
