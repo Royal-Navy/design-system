@@ -250,11 +250,11 @@ const CustomTimelineComponent = ({
   const {
     width,
     offset,
-    isBeforeStart,
-    isAfterEnd
+    startsBeforeStart,
+    startsAfterEnd
   } = useTimelinePosition(startDate, endDate)
 
-  if (isBeforeStart || isAfterEnd) return null
+  if (startsBeforeStart || startsAfterEnd) return null
 
   return (
     <div style={{
