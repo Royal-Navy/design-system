@@ -7,6 +7,11 @@ export const StyledDrawerButton = styled.button`
   position: absolute;
   top: ${spacing('2')};
   right: ${spacing('2')};
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
   border: none;
   font-size: ${fontSize('l')};
   color: ${color('neutral', '300')};
