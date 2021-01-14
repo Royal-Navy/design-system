@@ -8,7 +8,6 @@ exports[`mediaQuery / mq with valid breakpoints snapshot test 1`] = `
 
 @media only screen and (min-width:576px) {
   .c0 {
-    font-size: 94%;
     background-color: blue;
     padding: 0.25rem;
   }
@@ -16,7 +15,6 @@ exports[`mediaQuery / mq with valid breakpoints snapshot test 1`] = `
 
 @media only screen and (min-width:768px) and (max-width:1024px) {
   .c0 {
-    font-size: 96%;
     background-color: green;
     padding: 0.5rem;
   }
@@ -24,7 +22,6 @@ exports[`mediaQuery / mq with valid breakpoints snapshot test 1`] = `
 
 @media (min-width:1200px) and (max-width:1400px) {
   .c0 {
-    font-size: 100%;
     background-color: black;
     padding: 0.75rem;
   }

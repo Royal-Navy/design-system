@@ -107,36 +107,5 @@ describe('mediaQuery / mq', () => {
         }
       )
     })
-
-    it('should set the `font-size` css property correctly', () => {
-      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
-        'font-size',
-        'initial'
-      )
-
-      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
-        'font-size',
-        '94%',
-        {
-          media: 'only screen and (min-width:576px)',
-        }
-      )
-
-      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
-        'font-size',
-        '96%',
-        {
-          media: 'only screen and (min-width:768px) and (max-width:1024px)',
-        }
-      )
-
-      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
-        'font-size',
-        '100%',
-        {
-          media: '(min-width:1200px) and (max-width:1400px)',
-        }
-      )
-    })
   })
 })
