@@ -1,10 +1,14 @@
 import React from 'react'
 import classNames from 'classnames'
 import get from 'lodash/get'
+import { selectors } from '@royalnavy/design-tokens'
+import styled from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
 import { FieldProps } from '../common/FieldProps'
 import { FormProps } from '../common/FormProps'
+
+const { color, fontSize, spacing } = selectors
 
 export interface FormikProps {
   className?: string
@@ -53,8 +57,14 @@ interface FieldErrorProps {
   children: string
 }
 
+const StyledFieldError = styled.div`
+  color: ${color('danger', '700')};
+  margin-bottom: ${spacing('4')};
+  font-size: ${fontSize('base')};
+`
+
 export const FieldError: React.FC<FieldErrorProps> = (props) => (
-  <div className="rn-form__invalid-feedback" data-testid="error" {...props} />
+  <StyledFieldError data-testid="error" {...props} />
 )
 
 export const withFormik = (FormComponent: React.FC<any> | string) => ({
