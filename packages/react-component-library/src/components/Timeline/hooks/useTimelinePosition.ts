@@ -70,8 +70,6 @@ export function useTimelinePosition(
     ? getWidth(firstDateDisplayed, lastDateDisplayed) + 1
     : getWidth(startDate, lastDateDisplayed) + 1
 
-  logger.warn('`isBeforeStart` and `isAfterEnd` are deprecated')
-
   return {
     width: formatPx(options.dayWidth, width),
     offset: formatPx(options.dayWidth, offset),
