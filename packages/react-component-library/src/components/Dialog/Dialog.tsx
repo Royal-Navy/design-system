@@ -1,10 +1,12 @@
 import React from 'react'
-import classNames from 'classnames'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { Modal } from '../Modal'
 import { ButtonProps } from '../Button'
 import { getId } from '../../helpers'
+import { StyledBody } from './partials/StyledBody'
+import { StyledDialog } from './partials/StyledDialog'
+import { StyledDescription } from './partials/StyledDescription'
+import { StyledTitle } from './partials/StyledTitle'
 
 export interface DialogProps extends ComponentWithClass {
   description?: string
@@ -16,7 +18,6 @@ export interface DialogProps extends ComponentWithClass {
 }
 
 export const Dialog: React.FC<DialogProps> = ({
-  className = '',
   description,
   isDanger = false,
   onCancel,
@@ -37,46 +38,30 @@ export const Dialog: React.FC<DialogProps> = ({
     variant: 'secondary',
   }
 
-  const classes = classNames(
-    'rn-dialog',
-    {
-      'rn-dialog--danger': isDanger,
-    },
-    className
-  )
-
   const titleId = getId('dialog-title')
   const descriptionId = getId('dialog-description')
 
   return (
-    <Modal
+    <StyledDialog
       titleId={titleId}
       descriptionId={descriptionId}
-      className={classes}
       primaryButton={confirmButton}
       tertiaryButton={cancelButton}
       {...rest}
     >
-      <section className="rn-dialog__body" data-testid="dialog-body">
+      <StyledBody data-testid="dialog-body">
         {title && (
-          <span
-            id={titleId}
-            className="rn-dialog__title"
-            data-testid="dialog-title"
-          >
+          <StyledTitle id={titleId} data-testid="dialog-title">
             {title}
-          </span>
+          </StyledTitle>
         )}
         {description && (
-          <p
-            className="rn-dialog__description"
-            data-testid="dialog-description"
-          >
+          <StyledDescription data-testid="dialog-description">
             {description}
-          </p>
+          </StyledDescription>
         )}
-      </section>
-    </Modal>
+      </StyledBody>
+    </StyledDialog>
   )
 }
 

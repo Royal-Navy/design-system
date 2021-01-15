@@ -1,13 +1,14 @@
 import React from 'react'
-import classNames from 'classnames'
 import { IconForward } from '@royalnavy/icon-library'
 
 import { ButtonProps } from '../Button'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { Header } from './Header'
 import { Footer } from './Footer'
-import { useOpenClose } from '../../hooks/useOpenClose'
 import { getId } from '../../helpers'
+import { Header } from './Header'
+import { StyledModal } from './partials/StyledModal'
+import { StyledMain } from './partials/StyledMain'
+import { useOpenClose } from '../../hooks/useOpenClose'
 
 export interface ModalProps extends ComponentWithClass {
   children?: React.ReactNode
@@ -46,15 +47,6 @@ export const Modal: React.FC<ModalProps> = ({
   titleId,
 }) => {
   const { handleOnClose, open } = useOpenClose(isOpen, onClose)
-  const classes = classNames(
-    'rn-modal',
-    {
-      'is-open': open,
-      'is-closed': !open,
-    },
-    className
-  )
-
   const primaryButtonWithIcon = primaryButton && {
     icon: <IconForward data-testid="modal-primary-confirm" />,
     ...primaryButton,
@@ -63,23 +55,24 @@ export const Modal: React.FC<ModalProps> = ({
   const modalTitleId = getTitleId(title, titleId)
 
   return (
-    <div
-      className={classes}
+    <StyledModal
+      $isOpen={open}
+      className={className}
       role="dialog"
       aria-modal
       aria-labelledby={modalTitleId}
       aria-describedby={descriptionId}
       data-testid="modal-wrapper"
     >
-      <article className="rn-modal__main">
+      <StyledMain>
         {title && (
-          <Header titleId={modalTitleId} title={title} onClose={handleOnClose} />
+          <Header
+            titleId={modalTitleId}
+            title={title}
+            onClose={handleOnClose}
+          />
         )}
-        <section
-          id={descriptionId}
-          className="rn-modal__body"
-          data-testid="modal-body"
-        >
+        <section id={descriptionId} data-testid="modal-body">
           {children}
         </section>
         {(primaryButton || secondaryButton || tertiaryButton) && (
@@ -89,8 +82,8 @@ export const Modal: React.FC<ModalProps> = ({
             tertiaryButton={tertiaryButton}
           />
         )}
-      </article>
-    </div>
+      </StyledMain>
+    </StyledModal>
   )
 }
 
