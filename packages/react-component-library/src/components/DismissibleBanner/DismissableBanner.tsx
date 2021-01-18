@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
-import classNames from 'classnames'
 
 import { Button, BUTTON_SIZE, BUTTON_VARIANT } from '../Button'
-import { Checkbox } from '../Checkbox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { StyledDismissibleBanner } from './partials/StyledDismissibleBanner'
+import { StyledContent } from './partials/StyledContent'
+import { StyledTitle } from './partials/StyledTitle'
+import { StyledFooter } from './partials/StyledFooter'
+import { StyledDontShow } from './partials/StyledDontShow'
+import { StyledDescription } from './partials/StyledDescription'
 
 interface DismissibleBannerWithTitleProps extends ComponentWithClass {
   hasCheckbox?: boolean
@@ -33,9 +37,9 @@ type DismissibleBannerProps =
 export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
   hasCheckbox = true,
   children,
-  className,
   onDismiss,
   title,
+  ...rest
 }) => {
   const [canShowAgain, setCanShowAgain] = useState(true)
 
@@ -43,33 +47,24 @@ export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
     onDismiss(event, canShowAgain)
   }
 
-  const classes = classNames('rn-dismissable-banner', className)
-
   return (
-    <div className={classes} data-testid="dimissablebanner-wrapper">
-      <div className="rn-dismissable-banner__content">
+    <StyledDismissibleBanner data-testid="dimissablebanner-wrapper" {...rest}>
+      <StyledContent>
         {title && (
           <>
-            <h2
-              className="rn-dismissable-banner__title"
-              data-testid="dimissablebanner-title"
-            >
+            <StyledTitle data-testid="dimissablebanner-title">
               {title}
-            </h2>
-            <p
-              className="rn-dismissable-banner__description"
-              data-testid="dimissablebanner-description"
-            >
+            </StyledTitle>
+            <StyledDescription data-testid="dimissablebanner-description">
               {children}
-            </p>
+            </StyledDescription>
           </>
         )}
         {!title && children}
-      </div>
-      <div className="rn-dismissable-banner__footer">
+      </StyledContent>
+      <StyledFooter>
         {hasCheckbox && (
-          <Checkbox
-            className="rn-checkbox--dontshow"
+          <StyledDontShow
             label="Don't show this again"
             name="dimissablebanner-dontshow"
             onChange={() => setCanShowAgain(!canShowAgain)}
@@ -83,8 +78,8 @@ export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
         >
           Dismiss
         </Button>
-      </div>
-    </div>
+      </StyledFooter>
+    </StyledDismissibleBanner>
   )
 }
 
