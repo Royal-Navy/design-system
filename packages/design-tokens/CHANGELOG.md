@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.30.4](https://github.com/Royal-Navy/design-system/compare/2.30.3...2.30.4) (2021-01-18)
+
+
+### Bug Fixes
+
+* **MediaQuery:** Remove font set ([81405ce](https://github.com/Royal-Navy/design-system/commit/81405ce804153e33acd3476f74d91f29425d7dee))
+
+
+
+
+
 ## [2.30.3](https://github.com/Royal-Navy/design-system/compare/2.30.2...2.30.3) (2021-01-13)
 
 
