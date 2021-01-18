@@ -3172,12 +3172,12 @@
     ts-dedent "^2.0.0"
 
 "@storybook/addon-storyshots-puppeteer@^6.1.9":
-  version "6.1.11"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots-puppeteer/-/addon-storyshots-puppeteer-6.1.11.tgz#415538f614b8802e3b1b7b118709213b67429939"
-  integrity sha512-nofL9gub9zJ95vvD2mHq90Fk/16Ekfi+Y3A+I0PJtFBT59SLum+IKOAofFrLPfoY6HR7+MXRuyxThks7+sNEKA==
+  version "6.1.14"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots-puppeteer/-/addon-storyshots-puppeteer-6.1.14.tgz#fc31eb61430489848912024be60f8b41ef9aecf7"
+  integrity sha512-sfNm01uvMliQNZAO2iFM3T9jF1u+R3GTwllY6DZ6THh7mV9+76SeyJ3sPUxGwVDjCF+GRpsuXCS68O3+qjn5wA==
   dependencies:
     "@storybook/csf" "0.0.1"
-    "@storybook/node-logger" "6.1.11"
+    "@storybook/node-logger" "6.1.14"
     "@types/jest-image-snapshot" "^2.8.0"
     "@wordpress/jest-puppeteer-axe" "^1.5.0"
     core-js "^3.0.1"
@@ -3472,6 +3472,17 @@
   version "6.1.11"
   resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.1.11.tgz#8e0d058b4804f2fea03c9d7d331b8e2d02f3b7ff"
   integrity sha512-MASonXDWpSMU9HF9mqbGOR1Ps/DTJ8AVmYD50+OnB9kXl4M42Dliobeq7JwKFMnZ42RelUCCSXdWW80hGrUKKA==
+  dependencies:
+    "@types/npmlog" "^4.1.2"
+    chalk "^4.0.0"
+    core-js "^3.0.1"
+    npmlog "^4.1.2"
+    pretty-hrtime "^1.0.3"
+
+"@storybook/node-logger@6.1.14":
+  version "6.1.14"
+  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.1.14.tgz#e5294f986e3ec5c67b2738895b9d16c9a2b667fa"
+  integrity sha512-3jrw7coAwFXZu4qK1vm54bCPhNRvxjG+7jISbhhocDoNIv0nLWL3+tJyrC5/k/XHQiUlLkhEzpMaASADmkttNw==
   dependencies:
     "@types/npmlog" "^4.1.2"
     chalk "^4.0.0"
