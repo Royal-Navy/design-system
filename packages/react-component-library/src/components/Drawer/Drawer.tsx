@@ -1,9 +1,12 @@
 import React, { forwardRef } from 'react'
-import classNames from 'classnames'
 import { IconClose } from '@royalnavy/icon-library'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { useOpenClose } from '../../hooks/useOpenClose'
+import { StyledDrawer } from './partials/StyledDrawer'
+import { StyledDrawerInner } from './partials/StyledDrawerInner'
+import { StyledDrawerButton } from './partials/StyledDrawerButton'
+import { StyledDrawerContent } from './partials/StyledDrawerContent'
 
 interface DrawerProps extends ComponentWithClass {
   children?: React.ReactNode
@@ -12,29 +15,29 @@ interface DrawerProps extends ComponentWithClass {
 }
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
-  ({ children, onClose, isOpen }, ref) => {
+  ({ children, onClose, isOpen, className }, ref) => {
     const { handleOnClose, open } = useOpenClose(isOpen, onClose)
 
-    const classes = classNames('rn-drawer', {
-      'is-open': open,
-    })
-
     return (
-      <div className={classes} data-testid="drawer-wrapper" ref={ref}>
-        <div className="rn-drawer__inner">
-          <button
-            className="rn-drawer__close"
+      <StyledDrawer
+        className={className}
+        $isOpen={open}
+        data-testid="drawer-wrapper"
+        ref={ref}
+      >
+        <StyledDrawerInner>
+          <StyledDrawerButton
             onClick={handleOnClose}
             data-testid="drawer-close"
             aria-label="close"
           >
             <IconClose />
-          </button>
-          <div className="rn-drawer__content" data-testid="drawer-content">
+          </StyledDrawerButton>
+          <StyledDrawerContent data-testid="drawer-content">
             {children}
-          </div>
-        </div>
-      </div>
+          </StyledDrawerContent>
+        </StyledDrawerInner>
+      </StyledDrawer>
     )
   }
 )
