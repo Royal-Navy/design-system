@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import classNames from 'classnames'
 
 import {
   ToastProps as BaseToastProps,
@@ -15,6 +14,14 @@ import {
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getId } from '../../helpers'
+import { StyledToast } from './partials/StyledToast'
+import { StyledToastHeader } from './partials/StyledToastHeader'
+import { StyledToastTitle } from './partials/StyledToastTitle'
+import { StyledToastLabel } from './partials/StyledToastLabel'
+import { StyledToastTime } from './partials/StyledToastTime'
+import { StyledToastButton } from './partials/StyledToastButton'
+import { StyledToastContent } from './partials/StyledToastContent'
+import { StyledToastDescription } from './partials/StyledToastDescription'
 
 export interface ToastProps extends BaseToastProps, ComponentWithClass {
   label?: string
@@ -60,6 +67,7 @@ export const Toast: React.FC<ToastProps> = ({
   transitionDuration,
   transitionState,
   dateTime,
+  className,
 }) => {
   const [time] = useState<string>(
     (dateTime || new Date()).toLocaleTimeString('en-GB', {
@@ -69,14 +77,13 @@ export const Toast: React.FC<ToastProps> = ({
     })
   )
 
-  const classes = classNames('rn-toast', `rn-toast--${appearance}`)
-
   const titleId = label ? getId('toast-title') : null
   const descriptionId = children ? getId('toast-description') : null
 
   return (
-    <div
-      className={classes}
+    <StyledToast
+      className={className}
+      $appearance={appearance}
       style={{
         transition: `
           transform ${transitionDuration}ms cubic-bezier(0.2, 0, 0, 1),
@@ -89,34 +96,32 @@ export const Toast: React.FC<ToastProps> = ({
       aria-describedby={descriptionId}
       data-testid="toast-wrapper"
     >
-      <div className="rn-toast__header">
-        <div className="rn-toast__title" id={titleId} data-testid="toast-title">
-          <span className="rn-toast__label">
+      <StyledToastHeader>
+        <StyledToastTitle id={titleId} data-testid="toast-title">
+          <StyledToastLabel>
             {getAppearanceIcon(appearance)}
             {label}
-          </span>
-          <span className="rn-toast__time">{time}</span>
-        </div>
+          </StyledToastLabel>
+          <StyledToastTime>{time}</StyledToastTime>
+        </StyledToastTitle>
         {onDismiss && (
-          <button
-            className="rn-toast__btn"
+          <StyledToastButton
             onClick={(_) => onDismiss()}
             data-testid="toast-dismiss"
           >
             Dismiss
-          </button>
+          </StyledToastButton>
         )}
-      </div>
-      <div className="rn-toast__content">
-        <span
-          className="rn-toast__description"
+      </StyledToastHeader>
+      <StyledToastContent>
+        <StyledToastDescription
           id={descriptionId}
           data-testid="toast-description"
         >
           {children}
-        </span>
-      </div>
-    </div>
+        </StyledToastDescription>
+      </StyledToastContent>
+    </StyledToast>
   )
 }
 
