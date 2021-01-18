@@ -1,5 +1,8 @@
 {
   "zindex": {
+    "context": {
+      "value": "10000"
+    },
     "dialog": {
       "value": "9000"
     },
