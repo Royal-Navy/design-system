@@ -20,7 +20,7 @@ stories.add('Vanilla', () => {
     >
       <Radio name="example" value="" label="My Label 1" />
       <Radio name="example" label="My Label 2" isDisabled />
-      <Radio name="example" label="My Label 3" />
+      <Radio name="example" label="My Label 3" isInvalid />
       <button type="submit">Submit</button>
     </form>
   )
