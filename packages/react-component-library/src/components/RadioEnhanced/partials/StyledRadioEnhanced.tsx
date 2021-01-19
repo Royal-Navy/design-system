@@ -24,6 +24,10 @@ export const StyledRadioEnhanced = styled.div<StyledRadioEnhancedProps>`
   border: 1px solid ${color('neutral', '100')};
   outline: none;
 
+  * {
+    cursor: pointer;
+  }
+
   &:hover {
     border-color: ${color('action', '400')};
     box-shadow: 0 0 0 3px ${color('action', '100')};
