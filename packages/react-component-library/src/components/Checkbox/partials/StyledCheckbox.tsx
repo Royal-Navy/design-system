@@ -30,13 +30,8 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
   ${({ $isInvalid }) =>
     $isInvalid &&
     css`
-      color: ${color('danger', '700')};
-      margin: ${spacing('4')} ${spacing('6')};
-      font-size: ${fontSize('base')};
+      ${StyledLabel} {
+        color: ${color('danger', '700')};
+      }
     `}
-
-  .rn-form & {
-    padding-top: ${spacing('6')};
-    padding-bottom: ${spacing('6')};
-  }
 `
