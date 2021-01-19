@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.30.5](https://github.com/Royal-Navy/design-system/compare/2.30.4...2.30.5) (2021-01-19)
+
+
+### Bug Fixes
+
+* **ContextMenu:** Add scoped `z-index` ([d477a7a](https://github.com/Royal-Navy/design-system/commit/d477a7a80375ded32dc76f70951ea6d4524dfb65))
+* **Drawer:** Resolve incorrect close button styling ([6179fa6](https://github.com/Royal-Navy/design-system/commit/6179fa615a2ac982973cc40c605b7e8794b09ff8))
+
+
+
+
+
 ## [2.30.4](https://github.com/Royal-Navy/design-system/compare/2.30.3...2.30.4) (2021-01-18)
 
 
