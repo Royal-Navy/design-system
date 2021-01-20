@@ -1,6 +1,6 @@
 {
   "name": "@royalnavy/icon-library",
-  "version": "2.30.5",
+  "version": "2.30.6",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "author": "Royal Navy",
