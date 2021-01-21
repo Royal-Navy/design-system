@@ -10,6 +10,8 @@ import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
 import { SHEET_PLACEMENT } from '../Sheet/constants'
 import logger from '../../../utils/logger'
+import { StyledOption } from './partials/StyledOption'
+import { StyledUserItems } from './partials/StyledUserItems'
 
 const SHEET_WIDTH = 106
 
@@ -35,13 +37,14 @@ const MastheadUserWithLink: React.FC<MastheadUserWithLinkProps> = ({
   React.cloneElement(link as ReactElement, {
     ...link.props,
     children: (
-      <Avatar
-        data-testid="masthead-avatar"
-        initials={initials}
-        variant={AVATAR_VARIANT.DARK}
-      />
+      <StyledOption>
+        <Avatar
+          data-testid="masthead-avatar"
+          initials={initials}
+          variant={AVATAR_VARIANT.DARK}
+        />
+      </StyledOption>
     ),
-    className: 'rn-masthead__option',
   })
 
 const MastheadUserWithItems: React.FC<MastheadUserWithItemsProps> = ({
@@ -50,9 +53,9 @@ const MastheadUserWithItems: React.FC<MastheadUserWithItemsProps> = ({
 }) => (
   <Sheet
     button={(
-      <SheetButton
+      <StyledOption
         aria-label="Show user options"
-        className="rn-masthead__option"
+        as={SheetButton}
         data-testid="user-button"
         icon={(
           <Avatar
@@ -63,11 +66,10 @@ const MastheadUserWithItems: React.FC<MastheadUserWithItemsProps> = ({
         )}
       />
     )}
-    className="rn-masthead__notification"
     placement={SHEET_PLACEMENT.BELOW}
     width={SHEET_WIDTH}
   >
-    <ol className="rn-masthead__user-items">{children}</ol>
+    <StyledUserItems>{children}</StyledUserItems>
   </Sheet>
 )
 
