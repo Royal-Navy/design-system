@@ -8,7 +8,6 @@ import {
 
 import { TimelineContext } from '../context'
 import { formatPx } from '../helpers'
-import logger from '../../../utils/logger'
 
 const timeOffset = (date: Date) => 1 / 24 * new Date(date).getHours()
 
