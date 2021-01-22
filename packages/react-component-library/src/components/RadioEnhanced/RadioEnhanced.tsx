@@ -1,6 +1,8 @@
 import React, { useRef } from 'react'
 
 import { Radio, RadioProps } from '../Radio'
+import { StyledRadioEnhanced } from './partials/StyledRadioEnhanced'
+import { StyledDescription } from './partials/StyledDescription'
 
 export interface RadioEnhancedProps extends Omit<RadioProps, 'label'> {
   description?: string
@@ -28,7 +30,7 @@ export const RadioEnhanced: React.FC<RadioEnhancedProps> = ({
   }
 
   return (
-    <div
+    <StyledRadioEnhanced
       aria-checked={isChecked}
       className="rn-radio-enhanced"
       data-testid="radioenhanced-wrapper"
@@ -45,14 +47,11 @@ export const RadioEnhanced: React.FC<RadioEnhancedProps> = ({
         {...rest}
       />
       {description && (
-        <p
-          className="rn-radio-enhanced__description"
-          data-testid="radioenhanced-description"
-        >
+        <StyledDescription data-testid="radioenhanced-description">
           {description}
-        </p>
+        </StyledDescription>
       )}
-    </div>
+    </StyledRadioEnhanced>
   )
 }
 
