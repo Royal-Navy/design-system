@@ -8,6 +8,8 @@ import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
 import { Link } from '../Link'
 import {
   CLICK_BUTTON,
+  CLICK_MENU_POSITION,
+  ClickMenuPositionType,
   ClickType,
 } from '../../hooks/useClickMenu'
 
@@ -65,6 +67,7 @@ const PirateContent: React.FC = () => (
 interface ContentMenuExampleProps {
   clickType?: ClickType
   hasIcons?: boolean
+  position?: ClickMenuPositionType
 }
 
 const ContextMenuExample: React.FC<ContentMenuExampleProps> = ({
@@ -133,3 +136,8 @@ export const LeftClick = () => (
   <ContextMenuExample clickType={CLICK_BUTTON.LEFT} />
 )
 LeftClick.storyName = 'Left click to open'
+
+export const Above = () => (
+  <ContextMenuExample position={CLICK_MENU_POSITION.ABOVE} />
+)
+Above.storyName = 'Above'

@@ -6,6 +6,7 @@ import 'jest-styled-components'
 
 import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
 import { Link } from '../Link'
+import { CLICK_MENU_POSITION } from '../../hooks/useClickMenu'
 
 const CustomLink = ({ children, onClick }: any) => {
   return (
@@ -43,7 +44,7 @@ describe('ContextMenu', () => {
     })
 
     it('is not rendered to the DOM', () => {
-      expect(wrapper.queryByTestId('context-menu')).not.toBeInTheDocument()
+      expect(wrapper.queryByTestId('context-menu')).not.toBeVisible()
     })
   })
 
@@ -68,10 +69,15 @@ describe('ContextMenu', () => {
       }
 
       wrapper = render(<ContextExample />)
+
+      // @ts-ignore
+      wrapper.getByTestId('context-menu').getBoundingClientRect = () => ({
+        height: 100,
+      })
     })
 
     it('is not rendered to the DOM', () => {
-      expect(wrapper.queryByTestId('context-menu')).not.toBeInTheDocument()
+      expect(wrapper.queryByTestId('context-menu')).not.toBeVisible()
     })
 
     describe('and the user left clicks on the target area', () => {
@@ -80,7 +86,59 @@ describe('ContextMenu', () => {
       })
 
       it('is is rendered to the DOM', () => {
-        expect(wrapper.queryByTestId('context-menu')).toBeInTheDocument()
+        expect(wrapper.queryByTestId('context-menu')).toBeVisible()
+      })
+
+      it('is is rendered below the mouse pointer', () => {
+        expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
+          'top',
+          '0px'
+        )
+      })
+    })
+  })
+
+  describe('with a position of above', () => {
+    beforeEach(() => {
+      const ContextExample = () => {
+        const ref = useRef()
+
+        return (
+          <>
+            <div ref={ref}>Right click me!</div>
+            <ContextMenu
+              attachedToRef={ref}
+              position={CLICK_MENU_POSITION.ABOVE}
+            >
+              <ContextMenuItem
+                link={<Link href="/hello-foo">Hello, Foo!</Link>}
+              />
+              <ContextMenuItem
+                link={<Link href="/hello-bar">Hello, Bar!</Link>}
+              />
+            </ContextMenu>
+          </>
+        )
+      }
+
+      wrapper = render(<ContextExample />)
+
+      // @ts-ignore
+      wrapper.getByTestId('context-menu').getBoundingClientRect = () => ({
+        height: 100,
+      })
+    })
+
+    describe('and the user right clicks on the target area', () => {
+      beforeEach(() => {
+        fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+      })
+
+      it('is is rendered above the mouse pointer', () => {
+        expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
+          'top',
+          '-100px'
+        )
       })
     })
   })
@@ -117,12 +175,12 @@ describe('ContextMenu', () => {
     })
 
     it('is rendered to the DOM', () => {
-      expect(wrapper.queryByTestId('context-menu')).toBeInTheDocument()
+      expect(wrapper.queryByTestId('context-menu')).toBeVisible()
     })
 
     it('renders the links', () => {
-      expect(wrapper.queryByText('Hello, Foo!')).toBeInTheDocument()
-      expect(wrapper.queryByText('Hello, Bar!')).toBeInTheDocument()
+      expect(wrapper.queryByText('Hello, Foo!')).toBeVisible()
+      expect(wrapper.queryByText('Hello, Bar!')).toBeVisible()
     })
 
     describe('and the user clicks somewhere in the DOM', () => {
@@ -131,7 +189,7 @@ describe('ContextMenu', () => {
       })
 
       it('hides the context menu', () => {
-        expect(wrapper.queryByTestId('context-menu')).not.toBeInTheDocument()
+        expect(wrapper.queryByTestId('context-menu')).not.toBeVisible()
       })
     })
   })
@@ -203,7 +261,7 @@ describe('ContextMenu', () => {
     it('renders the icons', () => {
       expect(
         wrapper.queryByTestId('context-menu-item-icon')
-      ).toBeInTheDocument()
+      ).toBeVisible()
     })
   })
 
