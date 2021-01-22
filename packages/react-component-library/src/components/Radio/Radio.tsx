@@ -1,14 +1,19 @@
 import React, { forwardRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import classNames from 'classnames'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
+import { StyledRadio } from './partials/StyledRadio'
+import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
+import { StyledLabel } from './partials/StyledLabel'
+import { StyledInput } from './partials/StyledInput'
+import { StyledCheckmark } from './partials/StyledCheckmark'
 
 export interface RadioProps extends ComponentWithClass, InputValidationProps {
   id?: string
   isChecked?: boolean
   isDisabled?: boolean
+  isInvalid?: boolean
   label: string
   name: string
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
@@ -33,28 +38,21 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     },
     ref
   ) => {
-    const classes = classNames(
-      'rn-radio',
-      {
-        'rn-radio--is-disabled': isDisabled,
-      },
-      className
-    )
-
     return (
-      <div
-        className={classes}
+      <StyledRadio
+        className={className}
         data-testid="container"
         role="radio"
         aria-checked={isChecked}
+        $isDisabled={isDisabled}
+        $isInvalid={isInvalid}
       >
-        <div className="rn-radio__outer-wrapper">
-          <label className="rn-radio__label" htmlFor={id} data-testid="label">
-            <input
+        <StyledOuterWrapper>
+          <StyledLabel htmlFor={id} data-testid="label">
+            <StyledInput
               ref={ref}
               defaultChecked={isChecked}
               id={id}
-              className="rn-radio__radio"
               type="radio"
               name={name}
               value={value}
@@ -64,11 +62,11 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
               {...rest}
               data-testid="radio"
             />
-            <span className="rn-radio__checkmark" />
+            <StyledCheckmark />
             {label}
-          </label>
-        </div>
-      </div>
+          </StyledLabel>
+        </StyledOuterWrapper>
+      </StyledRadio>
     )
   }
 )
