@@ -31,7 +31,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
   onHide,
   onShow,
 }) => {
-  const { position, isOpen } = useClickMenu({
+  const { coordinates, isOpen } = useClickMenu({
     attachedToRef,
     clickType,
     onHide,
@@ -47,8 +47,8 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
       {isOpen && (
         <StyledContextMenu
           className={className}
-          top={position.y}
-          left={position.x}
+          top={coordinates.y}
+          left={coordinates.x}
           $hasIcons={hasIcons}
           data-testid="context-menu"
         >

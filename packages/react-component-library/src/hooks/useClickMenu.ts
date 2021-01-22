@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useOpenClose } from './useOpenClose'
 
-export type Coordinate = {
+export type Coordinates = {
   x: number
   y: number
 }
@@ -21,15 +21,15 @@ export const useClickMenu = ({
   onHide,
   onShow,
 }: useClickMenuParams): {
-  position: Coordinate
+  coordinates: Coordinates
   isOpen: boolean
 } => {
   const { open, setOpen } = useOpenClose<boolean>(false)
-  const [position, setPosition] = useState<Coordinate>({ x: 0, y: 0 })
+  const [coordinates, setCoordinates] = useState<Coordinates>({ x: 0, y: 0 })
 
   function displayMenu(e: MouseEvent) {
-    const mousePoint: Coordinate = { x: e.clientX, y: e.clientY }
-    setPosition(mousePoint)
+    const mousePoint: Coordinates = { x: e.clientX, y: e.clientY }
+    setCoordinates(mousePoint)
 
     if (attachedToRef.current.contains(e.target as Node)) {
       e.preventDefault()
@@ -65,7 +65,7 @@ export const useClickMenu = ({
   })
 
   return {
-    position,
+    coordinates,
     isOpen: open,
   }
 }
