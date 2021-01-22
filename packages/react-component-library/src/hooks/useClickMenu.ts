@@ -6,7 +6,12 @@ export type Coordinates = {
   y: number
 }
 
-export type ClickType = 'left' | 'right'
+export const CLICK_BUTTON = {
+  LEFT: 'left',
+  RIGHT: 'right',
+} as const
+
+export type ClickType = typeof CLICK_BUTTON.LEFT | typeof CLICK_BUTTON.RIGHT
 
 interface useClickMenuParams {
   attachedToRef: React.RefObject<HTMLElement>
@@ -48,11 +53,11 @@ export const useClickMenu = ({
   }
 
   useEffect(() => {
-    if (clickType === 'left') {
+    if (clickType === CLICK_BUTTON.LEFT) {
       document.addEventListener('click', displayMenu)
     }
 
-    if (clickType === 'right') {
+    if (clickType === CLICK_BUTTON.RIGHT) {
       document.addEventListener('contextmenu', displayMenu)
       document.addEventListener('click', hideMenu)
     }
