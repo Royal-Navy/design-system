@@ -334,7 +334,7 @@ export const WithCustomTodayMarker = () => {
           zIndex: 1,
         }}
       >
-        {date.toString()}
+        {date.toUTCString()}
       </span>
     )
   }
@@ -618,7 +618,6 @@ export const WithCustomRange = () => {
   )
 }
 WithCustomRange.storyName = 'With custom range'
-
 
 export const NoVisibleCells = () => (
   <Timeline startDate={new Date(2020, 0, 1)} today={new Date(2020, 0, 1, 12)}>
