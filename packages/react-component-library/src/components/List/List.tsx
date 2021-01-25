@@ -1,8 +1,8 @@
 import React from 'react'
-import classNames from 'classnames'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { ListItem, ListItemProps } from './ListItem'
+import { StyledList } from './partials/StyledList'
 import { useListItem } from './useListItem'
 import { warnIfOverwriting } from '../../helpers'
 
@@ -12,10 +12,8 @@ interface ListProps extends ComponentWithClass {
     | React.ReactElement<ListItemProps>[]
 }
 
-export const List: React.FC<ListProps> = ({ children, className }) => {
+export const List: React.FC<ListProps> = ({ children, ...rest }) => {
   const { isActive, setActiveIndex } = useListItem()
-
-  const classes = classNames('rn-list', className)
 
   const mapped = React.Children.map(
     children,
@@ -33,9 +31,9 @@ export const List: React.FC<ListProps> = ({ children, className }) => {
   )
 
   return (
-    <ol className={classes} role="group" data-testid="list">
+    <StyledList role="group" data-testid="list" {...rest}>
       {mapped}
-    </ol>
+    </StyledList>
   )
 }
 

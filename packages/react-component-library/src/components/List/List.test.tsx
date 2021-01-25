@@ -6,8 +6,11 @@ import {
   RenderResult,
   waitFor,
 } from '@testing-library/react'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { List, ListItem } from '.'
+
+const { color } = selectors
 
 describe('List', () => {
   let consoleWarnSpy: jest.SpyInstance
@@ -130,11 +133,13 @@ describe('List', () => {
 
       it('should give the other items the `is-inactive` class', async () => {
         return waitFor(() => {
-          expect(wrapper.getAllByTestId('list-item')[1].classList).toContain(
-            'is-inactive'
+          expect(wrapper.getAllByTestId('list-item')[1]).toHaveStyleRule(
+            'background-color',
+            color('neutral', '000')
           )
-          expect(wrapper.getAllByTestId('list-item')[2].classList).toContain(
-            'is-inactive'
+          expect(wrapper.getAllByTestId('list-item')[2]).toHaveStyleRule(
+            'background-color',
+            color('neutral', '000')
           )
         })
       })
@@ -154,11 +159,13 @@ describe('List', () => {
 
         it('should give the other items the `is-inactive` class', async () => {
           return waitFor(() => {
-            expect(wrapper.getAllByTestId('list-item')[0].classList).toContain(
-              'is-inactive'
+            expect(wrapper.getAllByTestId('list-item')[0]).toHaveStyleRule(
+              'background-color',
+              color('neutral', '000')
             )
-            expect(wrapper.getAllByTestId('list-item')[2].classList).toContain(
-              'is-inactive'
+            expect(wrapper.getAllByTestId('list-item')[2]).toHaveStyleRule(
+              'background-color',
+              color('neutral', '000')
             )
           })
         })
