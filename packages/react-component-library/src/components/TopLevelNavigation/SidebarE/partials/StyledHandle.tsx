@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
-const { color } = selectors
+const { color, zIndex } = selectors
 
 export const StyledHandle = styled.button`
   position: absolute;
@@ -17,6 +17,7 @@ export const StyledHandle = styled.button`
   border: none;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
   transition: 100ms opacity linear;
+  z-index: ${zIndex('sidebar', 2)};
 
   &:hover {
     cursor: pointer;
