@@ -30,6 +30,7 @@ export const Select: React.FC<SelectProps> = ({
   onChange,
   options,
   value,
+  defaultMenuIsOpen,
   ...rest
 }) => {
   const onSelectChange = (option: any) => {
@@ -67,6 +68,8 @@ export const Select: React.FC<SelectProps> = ({
       options={options}
       placeholder={null}
       value={selectedOption}
+      autoFocus={defaultMenuIsOpen}
+      defaultMenuIsOpen={defaultMenuIsOpen}
       {...rest}
     />
   )

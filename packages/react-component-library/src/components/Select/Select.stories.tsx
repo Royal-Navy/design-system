@@ -17,7 +17,7 @@ const options = [
   { value: 'vanilla', label: 'Vanilla', badge: 50 },
 ]
 
-const iconOptions = options.map(option => ({
+const iconOptions = options.map((option) => ({
   ...option,
   icon: <IconAnchor />,
 }))
@@ -27,6 +27,15 @@ stories.add('Default', () => (
     options={options}
     label="Example label"
     onChange={action('onChange')}
+  />
+))
+
+examples.add('Open by default', () => (
+  <Select
+    options={options}
+    label="Example label"
+    onChange={action('onChange')}
+    defaultMenuIsOpen
   />
 ))
 
