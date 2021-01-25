@@ -2,10 +2,10 @@ import { components } from 'react-select'
 import { selectors } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
-const { color, spacing } = selectors
+const { color } = selectors
 
 export const StyledMenu = styled(components.Menu)`
-  margin-top: -${spacing('px')};
+  margin-top: -2px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   box-shadow: 0 0 0 1px ${color('action', '600')},
