@@ -2992,10 +2992,10 @@
     semver "^6.0.0"
     tslib "^1.13.0"
 
-"@snyk/dep-graph@^1.19.3", "@snyk/dep-graph@^1.19.4", "@snyk/dep-graph@^1.19.5", "@snyk/dep-graph@^1.21.0":
-  version "1.22.0"
-  resolved "https://registry.yarnpkg.com/@snyk/dep-graph/-/dep-graph-1.22.0.tgz#3c9090b3a52596a0758d007e5ae8fda88864601d"
-  integrity sha512-KBRCZieE3XD4sd7yi0kBODElZF2que9jEgPnxNBwKcECHNH+DKv0rUIHchpMMrY2jK/cmbbq8Dmv/rmFLVT7CQ==
+"@snyk/dep-graph@^1.19.3", "@snyk/dep-graph@^1.19.4", "@snyk/dep-graph@^1.21.0", "@snyk/dep-graph@^1.23.0":
+  version "1.23.0"
+  resolved "https://registry.yarnpkg.com/@snyk/dep-graph/-/dep-graph-1.23.0.tgz#73198dfc062c9d9f3de10fb7ca56a175306247ed"
+  integrity sha512-qR0ENrbcNWHYmSRZCxjrlFy2T7i+rJjL6Rnd2e+NByJgn8zBmX6Qf5FjqNbZAI0AYjOlzXMZjGrbAbe4QkWV+w==
   dependencies:
     graphlib "^2.1.8"
     lodash.isequal "^4.5.0"
@@ -3036,10 +3036,10 @@
     tslib "^1.9.3"
     xml-js "^1.6.11"
 
-"@snyk/java-call-graph-builder@1.18.0":
-  version "1.18.0"
-  resolved "https://registry.yarnpkg.com/@snyk/java-call-graph-builder/-/java-call-graph-builder-1.18.0.tgz#f93abeaf347083b9d534a4f94b1468fd97d111a0"
-  integrity sha512-6Mt+Rs2N4HdHICCjxWRwtGXUrSktCsSGnn7HlL6wi+4JXjPWa+rDCzaF6furqRR3aphZAclgved0haFwwmqBxQ==
+"@snyk/java-call-graph-builder@1.19.0":
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/@snyk/java-call-graph-builder/-/java-call-graph-builder-1.19.0.tgz#ed6e80843cc3968b8332c5db52649a9146565069"
+  integrity sha512-in26UkFVEWvGyHmSmVUebvgyubANJB7rfrkE3PKjHDA80NwSLZDSNWOOC2lF2B+4ob4STWjQdMbv+bMqXl5Yew==
   dependencies:
     ci-info "^2.0.0"
     debug "^4.1.1"
@@ -18535,6 +18535,11 @@ promise-inflight@^1.0.1:
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
   integrity sha1-mEcocL8igTL8vdhoEputEsPAKeM=
 
+promise-queue@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/promise-queue/-/promise-queue-2.2.5.tgz#2f6f5f7c0f6d08109e967659c79b88a9ed5e93b4"
+  integrity sha1-L29ffA9tCBCelnZZx5uIqe1ek7Q=
+
 promise-retry@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/promise-retry/-/promise-retry-1.1.1.tgz#6739e968e3051da20ce6497fb2b50f6911df3d6d"
@@ -20805,14 +20810,14 @@ snyk-go-plugin@1.16.4:
     tmp "0.2.1"
     tslib "^1.10.0"
 
-snyk-gradle-plugin@3.11.0:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/snyk-gradle-plugin/-/snyk-gradle-plugin-3.11.0.tgz#4d22704c38875e23a96469ac27d0d43ae746fc70"
-  integrity sha512-OXf1A+kcif+vslm/nsel3bDYWsGwum2PsZLETM28nG4JOgqBLYLWvCHPgH9r2aa0MKTq0nBpimvFkzDm/+2qQQ==
+snyk-gradle-plugin@3.12.0:
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/snyk-gradle-plugin/-/snyk-gradle-plugin-3.12.0.tgz#3721626e0557fd6ea039dfe116df7510b7b45315"
+  integrity sha512-WAmViagNolXsqPO/xmArlnpmisw6j/4xN6FLJ/gl9cDSSrgTh013sZlynkZj0G1v4enkelIMuqfVKXzinthm/Q==
   dependencies:
     "@snyk/cli-interface" "2.9.1"
     "@snyk/dep-graph" "^1.19.4"
-    "@snyk/java-call-graph-builder" "1.18.0"
+    "@snyk/java-call-graph-builder" "1.19.0"
     "@types/debug" "^4.1.4"
     chalk "^3.0.0"
     debug "^4.1.1"
@@ -20907,13 +20912,13 @@ snyk-php-plugin@1.9.2:
     "@snyk/composer-lockfile-parser" "^1.4.1"
     tslib "1.11.1"
 
-snyk-poetry-lockfile-parser@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/snyk-poetry-lockfile-parser/-/snyk-poetry-lockfile-parser-1.1.1.tgz#3f062953802916f6ae1767ec13dd1892fff0541e"
-  integrity sha512-G3LX27V2KUsKObwVN4vDDjrYr5BERad9pXHAf+SST5+vZsdPUUZjd1ZUIrHgCv7IQhwq+7mZrtqedY5x7+LIGA==
+snyk-poetry-lockfile-parser@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/snyk-poetry-lockfile-parser/-/snyk-poetry-lockfile-parser-1.1.2.tgz#78749209a97679dd7a56168c7c4cf8c04c22153e"
+  integrity sha512-qaLNhVw/og6LXRmSuPiXcwre07ybJWh8RASF3aumk5R0cmxCU3YLmJ7pfi/N+PMpwiHCfSZFOMIGIL9jXcX9zQ==
   dependencies:
     "@snyk/cli-interface" "^2.9.2"
-    "@snyk/dep-graph" "^1.19.5"
+    "@snyk/dep-graph" "^1.23.0"
     debug "^4.2.0"
     toml "^3.0.0"
     tslib "^2.0.0"
@@ -20933,13 +20938,13 @@ snyk-policy@1.14.1:
     snyk-try-require "^1.3.1"
     then-fs "^2.0.0"
 
-snyk-python-plugin@1.19.1:
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/snyk-python-plugin/-/snyk-python-plugin-1.19.1.tgz#91febcd260094a9d900bc54bf200aa0c2632613a"
-  integrity sha512-JoOUHnA76L3pekCblSuE9jQ9CuA5jt+GqXpsLQbEIZ0FQQTBa+0F7vfolg3Q7+s1it4ZdtgSbSWrlxCngIJt8g==
+snyk-python-plugin@1.19.2:
+  version "1.19.2"
+  resolved "https://registry.yarnpkg.com/snyk-python-plugin/-/snyk-python-plugin-1.19.2.tgz#b274794a216dce7c57797c8f94f95c781e2e883c"
+  integrity sha512-n5Z7WiMTNtrBaDE9blnYVoX5fyXeMVhDNrQ/q21lHRAvDKDCY9tNNfduUjOVG6HbIH89mW8lLUdBNAMu/hpl+Q==
   dependencies:
     "@snyk/cli-interface" "^2.0.3"
-    snyk-poetry-lockfile-parser "^1.1.1"
+    snyk-poetry-lockfile-parser "^1.1.2"
     tmp "0.0.33"
 
 snyk-resolve-deps@4.4.0:
@@ -21010,9 +21015,9 @@ snyk-try-require@1.3.1, snyk-try-require@^1.1.1, snyk-try-require@^1.3.1:
     then-fs "^2.0.0"
 
 snyk@^1.334.0:
-  version "1.437.3"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.437.3.tgz#a3cfbfb568bf60b19be31a337899ebe71365bd70"
-  integrity sha512-DFcYz8Q8LT/XNCNxaeEoGahazvkEhWS//JWJTfr6W1d5jMnORQauPxxj4RR3WGjKewSDl2eElwK1jhi5RNOP9g==
+  version "1.439.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.439.0.tgz#88f3de3b90873152d69be808f6fe6c8b3cd12388"
+  integrity sha512-VHai1FZxbQEH3CKBgJo76FBF5MuLnAVyg4lXxRCOBLOW2vCK8kCZnaMMwvlOCubYCAdnzUOE34qCwJi/zG5RWw==
   dependencies:
     "@snyk/cli-interface" "2.11.0"
     "@snyk/dep-graph" "1.21.0"
@@ -21032,6 +21037,7 @@ snyk@^1.334.0:
     needle "2.5.0"
     open "^7.0.3"
     os-name "^3.0.0"
+    promise-queue "^2.2.5"
     proxy-agent "^3.1.1"
     proxy-from-env "^1.0.0"
     semver "^6.0.0"
@@ -21039,14 +21045,14 @@ snyk@^1.334.0:
     snyk-cpp-plugin "2.2.1"
     snyk-docker-plugin "4.13.1"
     snyk-go-plugin "1.16.4"
-    snyk-gradle-plugin "3.11.0"
+    snyk-gradle-plugin "3.12.0"
     snyk-module "3.1.0"
     snyk-mvn-plugin "2.25.0"
     snyk-nodejs-lockfile-parser "1.30.1"
     snyk-nuget-plugin "1.19.4"
     snyk-php-plugin "1.9.2"
     snyk-policy "1.14.1"
-    snyk-python-plugin "1.19.1"
+    snyk-python-plugin "1.19.2"
     snyk-resolve "1.0.1"
     snyk-resolve-deps "4.4.0"
     snyk-sbt-plugin "2.11.0"
