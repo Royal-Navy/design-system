@@ -11,13 +11,30 @@ describe('Breadcrumbs', () => {
   describe('when called with regular links', () => {
     beforeEach(() => {
       wrapper = render(
-        <Breadcrumbs>
-          <BreadcrumbsItem link={<Link href="#home">Home</Link>} />
+        <Breadcrumbs data-arbitrary="arbitrary-breadcrumbs">
+          <BreadcrumbsItem
+            data-arbitrary="arbitrary-breadcrumbs-item"
+            link={<Link href="#home">Home</Link>}
+          />
           <BreadcrumbsItem link={<Link href="#ships">Ships</Link>} />
           <BreadcrumbsItem link={<Link href="#reports">Reports</Link>} />
           <BreadcrumbsItem link={<Link href="#stuff">Stuff</Link>} />
           <BreadcrumbsItem link={<Link href="#22">22nd April 2019</Link>} />
         </Breadcrumbs>
+      )
+    })
+
+    it('should spread arbitrary props for breadcrumbs', () => {
+      expect(wrapper.getByTestId('breadcrumb-wrapper')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-breadcrumbs'
+      )
+    })
+
+    it('should spread arbitrary props for breadcrumbs items', () => {
+      expect(wrapper.getAllByTestId('breadcrumb')[0]).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-breadcrumbs-item'
       )
     })
 

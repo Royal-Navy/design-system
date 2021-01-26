@@ -15,7 +15,7 @@ interface DrawerProps extends ComponentWithClass {
 }
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
-  ({ children, onClose, isOpen, className }, ref) => {
+  ({ children, onClose, isOpen, className, ...rest }, ref) => {
     const { handleOnClose, open } = useOpenClose(isOpen, onClose)
 
     return (
@@ -24,6 +24,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
         $isOpen={open}
         data-testid="drawer-wrapper"
         ref={ref}
+        {...rest}
       >
         <StyledDrawerInner>
           <StyledDrawerButton

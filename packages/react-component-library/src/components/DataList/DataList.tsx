@@ -35,17 +35,21 @@ function getAriaAttributes(isCollapsible: boolean, expanded: boolean) {
 }
 
 export const DataList: React.FC<DataListProps> = ({
-  className,
   isCollapsible,
   title,
   children,
+  ...rest
 }) => {
   const { open, toggle } = useOpenClose(false)
   const ariaAttributes = getAriaAttributes(isCollapsible, open)
   const sheetId = ariaAttributes && ariaAttributes['aria-owns']
 
   return (
-    <StyledDataList $isCollapsible={isCollapsible} className={className}>
+    <StyledDataList
+      $isCollapsible={isCollapsible}
+      data-testid="data-list"
+      {...rest}
+    >
       <StyledHeader
         $isCollapsible={isCollapsible}
         onClick={toggle}

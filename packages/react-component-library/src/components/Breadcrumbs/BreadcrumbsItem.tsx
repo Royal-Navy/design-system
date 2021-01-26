@@ -27,9 +27,10 @@ export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
   isFirst,
   isLast,
   link,
+  ...rest
 }) => {
   return (
-    <StyledBreadcrumbsItem data-testid="breadcrumb">
+    <StyledBreadcrumbsItem data-testid="breadcrumb" {...rest}>
       {!isFirst && (
         <StyledIcon aria-hidden data-testid="breadcrumb-separator" />
       )}

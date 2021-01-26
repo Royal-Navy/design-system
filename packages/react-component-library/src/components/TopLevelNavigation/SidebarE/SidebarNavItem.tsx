@@ -23,6 +23,7 @@ export const SidebarNavItemE: React.FC<SidebarNavItemEProps> = ({
   icon,
   onClick,
   children,
+  ...rest
 }) => {
   const [hasMouseOver, setHasMouseOver] = useState(false)
   const { isOpen } = useContext(SidebarContext)
@@ -54,6 +55,7 @@ export const SidebarNavItemE: React.FC<SidebarNavItemEProps> = ({
     onClick,
     'aria-label': linkElement.props.children,
     'data-testid': 'sidebar-nav-item',
+    ...rest,
   })
 
   return (

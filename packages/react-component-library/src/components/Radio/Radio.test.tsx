@@ -107,7 +107,7 @@ describe('Radio', () => {
     })
   })
 
-  describe('when an additional class it provided', () => {
+  describe('when an additional class is provided', () => {
     beforeEach(() => {
       radio = render(
         <Radio
@@ -144,6 +144,27 @@ describe('Radio', () => {
 
     it('should associate the label to the field with the custom id', () => {
       expect(radio.queryByTestId('label')).toHaveAttribute('for', 'test')
+    })
+  })
+
+  describe('when arbitrary props are provided', () => {
+    beforeEach(() => {
+      radio = render(
+        <Radio
+          data-arbitrary="arbitrary"
+          name={field.name}
+          value={field.value}
+          onChange={field.onChange}
+          label={label}
+        />
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(radio.getByTestId('radio')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
     })
   })
 })

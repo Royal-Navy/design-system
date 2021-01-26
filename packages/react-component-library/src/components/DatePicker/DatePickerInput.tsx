@@ -7,7 +7,6 @@ import { DropdownIndicatorIcon } from '../Dropdown/DropdownIndicatorIcon'
 import { getOuterWrapperBorder } from '../../styled-components'
 
 export interface DatePickerInputProps extends ComponentWithClass {
-  ref: React.Ref<HTMLDivElement>
   dayPickerId?: string
   id?: string
   label?: string
@@ -161,6 +160,7 @@ export const DatePickerInput = forwardRef(
       isOpen,
       onClose,
       hasContent,
+      ...rest
     } = props
 
     return (
@@ -191,6 +191,7 @@ export const DatePickerInput = forwardRef(
               readOnly
               aria-label="Choose date"
               data-testid="datepicker-input"
+              {...rest}
             />
           </StyledInputWrapper>
           <StyledButton

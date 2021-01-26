@@ -253,4 +253,44 @@ describe('List', () => {
       )
     })
   })
+
+  describe('when arbitrary props are specified', () => {
+    beforeEach(() => {
+      onClickSpy1 = jest.fn()
+      onClickSpy2 = jest.fn()
+      onClickSpy3 = jest.fn()
+
+      wrapper = render(
+        <List data-arbitrary="arbitrary-list">
+          <ListItem
+            data-arbitrary="arbitrary-list-item"
+            onClick={onClickSpy1}
+            title="List item"
+          >
+            This is the description
+          </ListItem>
+          <ListItem onClick={onClickSpy2} title="List item">
+            This is the description
+          </ListItem>
+          <ListItem onClick={onClickSpy3} title="List item">
+            This is the description
+          </ListItem>
+        </List>
+      )
+    })
+
+    it('should spread arbitrary props to the list', () => {
+      expect(wrapper.getByTestId('list')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-list'
+      )
+    })
+
+    it('should spread arbitrary props to the list item', () => {
+      expect(wrapper.getAllByTestId('list-item')[0]).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-list-item'
+      )
+    })
+  })
 })

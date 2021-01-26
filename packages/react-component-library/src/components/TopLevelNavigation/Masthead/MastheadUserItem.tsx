@@ -13,6 +13,7 @@ export interface MastheadUserItemProps extends NavItem {
 export const MastheadUserItem: React.FC<MastheadUserItemProps> = ({
   icon,
   link,
+  ...rest
 }) => {
   const linkElement = link as React.ReactElement
 
@@ -27,7 +28,7 @@ export const MastheadUserItem: React.FC<MastheadUserItemProps> = ({
   })
 
   return (
-    <li>
+    <li data-testid="masthead-user-item" {...rest}>
       <StyledUserItemWrapper>{item}</StyledUserItemWrapper>
     </li>
   )

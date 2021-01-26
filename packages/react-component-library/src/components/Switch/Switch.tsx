@@ -39,23 +39,19 @@ export interface SwitchProps extends ComponentWithClass, InputValidationProps {
 }
 
 export const Switch: React.FC<SwitchProps> = ({
-  className,
   label,
   name,
   onChange,
   options = [],
   size = SWITCH_SIZE.REGULAR,
   value,
+  ...rest
 }) => {
   const [active, setActive] = useState(getActiveOption(options, value))
   const id = uuidv4()
 
   return (
-    <StyledSwitch
-      className={className}
-      data-testid="switch-wrapper"
-      $size={size}
-    >
+    <StyledSwitch data-testid="switch-wrapper" $size={size} {...rest}>
       {label && (
         <StyledLegend data-testid="switch-legend">{label}</StyledLegend>
       )}

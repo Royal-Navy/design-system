@@ -48,6 +48,7 @@ export const Alert: React.FC<AlertProps> = ({
   onClose,
   title,
   variant = ALERT_VARIANT.INFO,
+  ...rest
 }) => {
   const { open, handleOnClose } = useOpenClose(true, onClose)
 
@@ -62,6 +63,7 @@ export const Alert: React.FC<AlertProps> = ({
         aria-labelledby={titleId}
         data-testid="alert"
         role="alert"
+        {...rest}
       >
         <StyledIcon
           $variant={variant}

@@ -166,4 +166,19 @@ describe('Drawer', () => {
       )
     })
   })
+
+  describe('when an arbitrary prop is specified', () => {
+    beforeEach(() => {
+      children = <h1>Arbitrary JSX</h1>
+
+      wrapper = render(<Drawer data-arbitrary="arbitrary">{children}</Drawer>)
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('drawer-wrapper')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
 })

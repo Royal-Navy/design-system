@@ -17,8 +17,8 @@ export interface ButtonGroupProps extends ComponentWithClass {
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   children,
-  className,
   size = BUTTON_SIZE.REGULAR,
+  ...rest
 }) => {
   const mappedChildren = React.Children.map(
     children,
@@ -38,10 +38,10 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
 
   return (
     <StyledButtonGroup
-      className={className}
       $size={size}
       role="group"
       data-testid="buttongroup"
+      {...rest}
     >
       {mappedChildren}
     </StyledButtonGroup>

@@ -14,8 +14,13 @@ export const DataListItem: React.FC<DataListItemProps> = ({
   children,
   description,
   isCollapsible,
+  ...rest
 }) => (
-  <StyledItem $isCollapsible={isCollapsible} data-testid="data-list-item">
+  <StyledItem
+    $isCollapsible={isCollapsible}
+    data-testid="data-list-item"
+    {...rest}
+  >
     <StyledItemKey>{description}</StyledItemKey>
     <StyledItemValue>{children}</StyledItemValue>
   </StyledItem>

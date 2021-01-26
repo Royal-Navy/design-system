@@ -147,7 +147,7 @@ describe('RadioEnhanced', () => {
     })
   })
 
-  describe('when an additional class it provided', () => {
+  describe('when an additional class is provided', () => {
     beforeEach(() => {
       radio = render(
         <RadioEnhanced
@@ -204,6 +204,27 @@ describe('RadioEnhanced', () => {
     it('should output the description', () => {
       expect(radio.getByTestId('radioenhanced-description').innerHTML).toEqual(
         'Hello, World!'
+      )
+    })
+  })
+
+  describe('when arbitrary props are provided', () => {
+    beforeEach(() => {
+      radio = render(
+        <RadioEnhanced
+          data-arbitrary="arbitrary"
+          name={field.name}
+          value={field.value}
+          onChange={field.onChange}
+          title={label}
+        />
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(radio.getByTestId('radio')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
       )
     })
   })

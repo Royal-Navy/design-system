@@ -32,6 +32,7 @@ export const SidebarNavE: React.FC<SidebarNavEProps> = ({
   onItemClick,
   onMouseOut,
   onMouseOver,
+  ...rest
 }) => (
   <StyledNav
     onBlur={onBlur}
@@ -39,6 +40,7 @@ export const SidebarNavE: React.FC<SidebarNavEProps> = ({
     onMouseOut={onMouseOut}
     onMouseOver={onMouseOver}
     data-testid="sidebar-nav"
+    {...rest}
   >
     {React.Children.map(
       children,

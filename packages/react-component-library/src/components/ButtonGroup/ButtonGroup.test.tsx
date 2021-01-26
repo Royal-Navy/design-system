@@ -99,6 +99,34 @@ describe('ButtonGroup', () => {
     })
   })
 
+  describe('provide arbitrary props', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <ButtonGroup data-arbitrary="arbitrary-buttongroup">
+          <ButtonGroupItem data-arbitrary="arbitrary-button" onClick={oneClickSpy}>One</ButtonGroupItem>
+          <ButtonGroupItem onClick={twoClickSpy}>Two</ButtonGroupItem>
+          <ButtonGroupItem onClick={threeClickSpy} isDisabled>
+            Three
+          </ButtonGroupItem>
+        </ButtonGroup>
+      )
+    })
+
+    it('should spread arbitrary props to the button group', () => {
+      expect(wrapper.getByTestId('buttongroup')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-buttongroup'
+      )
+    })
+
+    it('should spread arbitrary props to the button group item', () => {
+      expect(wrapper.getAllByTestId('button')[0]).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-button'
+      )
+    })
+  })
+
   describe('when a different size is provided for each item', () => {
     beforeEach(() => {
       wrapper = render(

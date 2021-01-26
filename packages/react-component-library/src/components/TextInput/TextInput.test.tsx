@@ -22,6 +22,7 @@ describe('TextInput', () => {
           <TextInput
             autoFocus
             className="rn-textinput--custom"
+            data-arbitrary="arbitrary"
             endAdornment={<span>end</span>}
             value="value"
             name="name"
@@ -54,6 +55,13 @@ describe('TextInput', () => {
     it('should set the custom class', () => {
       expect(wrapper.getByTestId('container').classList).toContain(
         'rn-textinput--custom'
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('input')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
       )
     })
 

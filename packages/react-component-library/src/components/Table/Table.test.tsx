@@ -367,4 +367,51 @@ describe('Table', () => {
       )
     })
   })
+
+  describe('when arbitrary props are provided', () => {
+    beforeEach(() => {
+      const tableDataMock = [
+        {
+          id: 'a',
+          first: 'a1',
+          second: 'a2',
+          third: 'a3',
+        },
+        {
+          id: 'b',
+          first: 'b1',
+          second: 'b2',
+          third: 'b3',
+        },
+        {
+          id: 'c',
+          first: 'c1',
+          second: 'c2',
+          third: 'c3',
+        },
+      ]
+
+      wrapper = render(
+        <Table data={tableDataMock} data-arbitrary="arbitrary">
+          <TableColumn data-arbitrary="arbitrary-column" field="first">First</TableColumn>
+          <TableColumn field="second">Second</TableColumn>
+          <TableColumn field="third">Third</TableColumn>
+        </Table>
+      )
+    })
+
+    it('should spread arbitrary props on the table', () => {
+      expect(wrapper.getByTestId('table')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+
+    it('should spread arbitrary props on the table column', () => {
+      expect(wrapper.getAllByTestId('table-header')[0]).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-column'
+      )
+    })
+  })
 })

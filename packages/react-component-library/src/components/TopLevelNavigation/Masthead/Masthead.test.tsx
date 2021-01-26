@@ -21,6 +21,10 @@ import { Notification, Notifications } from '../NotificationPanel'
 describe('Masthead', () => {
   let wrapper: RenderResult
 
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   describe('minimal props', () => {
     beforeEach(() => {
       wrapper = render(<Masthead title="title" />)
@@ -80,6 +84,7 @@ describe('Masthead', () => {
 
       const notification = (
         <Notification
+          data-arbitrary="arbitrary-notification"
           link={<Link href="notifications/1" />}
           name="Thomas Stephens"
           action="added a new comment to your"
@@ -90,17 +95,30 @@ describe('Masthead', () => {
       )
 
       const props = {
+        'data-arbitrary': 'arbitrary-masthead',
         hasUnreadNotification: true,
-        homeLink: <Link href="/" />,
+        homeLink: (
+          <Link
+            data-arbitrary="arbitrary-home-link"
+            data-testid="masthead-home-link"
+            href="/"
+          />
+        ),
         Logo: ({ role }) => <svg data-testid="custom-logo" role={role} />,
         nav: (
-          <MastheadNav>
-            <MastheadNavItem link={<Link href="/first">First</Link>} />
+          <MastheadNav data-arbitrary="arbitrary-nav">
+            <MastheadNavItem
+              data-arbitrary="arbitrary-nav-item"
+              link={<Link href="/first">First</Link>}
+            />
             <MastheadNavItem link={<Link href="/second">Second</Link>} />
           </MastheadNav>
         ),
         notifications: (
-          <Notifications link={<Link href="notifications" />}>
+          <Notifications
+            data-arbitrary="arbitrary-notifications"
+            link={<Link href="notifications" />}
+          >
             {notification}
             {notification}
           </Notifications>
@@ -109,13 +127,53 @@ describe('Masthead', () => {
         searchPlaceholder: 2,
         title: 'title',
         user: (
-          <MastheadUser initials="AB" link={<Link href="/user-profile" />} />
+          <MastheadUser
+            data-arbitrary="arbitrary-user"
+            data-testid="masthead-user"
+            initials="AB"
+            link={<Link href="/user-profile" />}
+          />
         ),
       }
 
       onSearchSpy = jest.spyOn(props, 'onSearch')
 
       wrapper = render(<Masthead {...props} />)
+    })
+
+    it('should spread arbitrary props on the masthead', () => {
+      expect(wrapper.getByTestId('masthead')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-masthead'
+      )
+    })
+
+    it('should spread arbitrary props on the home link', () => {
+      expect(wrapper.getByTestId('masthead-home-link')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-home-link'
+      )
+    })
+
+    it('should spread arbitrary props on the nav', () => {
+      expect(wrapper.getByTestId('masthead-nav')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-nav'
+      )
+    })
+
+    it('should spread arbitrary props on the nav item', () => {
+      expect(wrapper.getAllByTestId('masthead-nav-item')[0]).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-nav-item'
+      )
+    })
+
+    it('should spread arbitrary props on the user', () => {
+      expect(wrapper.getByTestId('masthead-user')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-user'
+      )
     })
 
     it('should warn the consumer for using the deprecated `link` prop', () => {
@@ -314,6 +372,20 @@ describe('Masthead', () => {
         wrapper.queryByTestId('notification-button').click()
       })
 
+      it('should spread arbitrary props on the notifications', () => {
+        expect(wrapper.getByTestId('notifications-sheet')).toHaveAttribute(
+          'data-arbitrary',
+          'arbitrary-notifications'
+        )
+      })
+
+      it('should spread arbitrary props on the notifications item', () => {
+        expect(wrapper.getAllByTestId('notification')[0]).toHaveAttribute(
+          'data-arbitrary',
+          'arbitrary-notification'
+        )
+      })
+
       it('should set the `aria-expanded` attribute on the notification button to `true`', () => {
         expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
           'aria-expanded',
@@ -356,7 +428,10 @@ describe('Masthead', () => {
             title="title"
             user={(
               <MastheadUser initials="AB">
-                <MastheadUserItem link={<Link href="/profile">Profile</Link>} />
+                <MastheadUserItem
+                  data-arbitrary="arbitrary-user-item"
+                  link={<Link href="/profile">Profile</Link>}
+                />
                 <MastheadUserItem
                   link={<Link href="/settings">Settings</Link>}
                 />
@@ -398,6 +473,13 @@ describe('Masthead', () => {
         expect(wrapper.getByText('Settings')).toBeInTheDocument()
         expect(wrapper.getByText('Support')).toBeInTheDocument()
         expect(wrapper.getByText('Logout')).toBeInTheDocument()
+      })
+
+      it('should spread arbitrary props on the user item', () => {
+        expect(wrapper.getAllByTestId('masthead-user-item')[0]).toHaveAttribute(
+          'data-arbitrary',
+          'arbitrary-user-item'
+        )
       })
 
       describe('and the avatar is clicked again', () => {

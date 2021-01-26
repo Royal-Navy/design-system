@@ -545,6 +545,99 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when arbitrary props are specified', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          data-arbitrary="arbitrary-timeline"
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineTodayMarker data-arbitrary="arbitrary-today-marker" />
+          <TimelineMonths data-arbitrary="arbitrary-months" />
+          <TimelineWeeks data-arbitrary="arbitrary-weeks" />
+          <TimelineDays data-arbitrary="arbitrary-days" />
+          <TimelineRows data-arbitrary="arbitrary-rows">
+            <TimelineRow name="Row 1" data-arbitrary="arbitrary-row">
+              <TimelineEvents data-arbitrary="arbitrary-events">
+                <TimelineEvent
+                  data-arbitrary="arbitrary-event"
+                  startDate={new Date(2020, 3, 4)}
+                  endDate={new Date(2020, 3, 6)}
+                >
+                  Event
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should spread arbitrary props on the timeline', () => {
+      expect(wrapper.getByTestId('timeline')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-timeline'
+      )
+    })
+
+    it('should spread arbitrary props on the timeline today marker', () => {
+      expect(wrapper.getByTestId('timeline-today-marker-wrapper')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-today-marker'
+      )
+    })
+
+    it('should spread arbitrary props on the timeline months', () => {
+      expect(wrapper.getByTestId('timeline-months')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-months'
+      )
+    })
+
+    it('should spread arbitrary props on the timeline weeks', () => {
+      expect(wrapper.getByTestId('timeline-weeks')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-weeks'
+      )
+    })
+
+    it('should spread arbitrary props on the timeline days', () => {
+      expect(wrapper.getByTestId('timeline-days')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-days'
+      )
+    })
+
+    it('should spread arbitrary props on the timeline rows', () => {
+      expect(wrapper.getByTestId('timeline-rows')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-rows'
+      )
+    })
+
+    it('should spread arbitrary props on the timeline row', () => {
+      expect(wrapper.getByTestId('timeline-row')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-row'
+      )
+    })
+
+    it('should spread arbitrary props on the timeline events', () => {
+      expect(wrapper.getByTestId('timeline-events')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-events'
+      )
+    })
+
+    it('should spread arbitrary props on the timeline event', () => {
+      expect(wrapper.getByTestId('timeline-event')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-event'
+      )
+    })
+  })
+
   describe('when an event is outside the range', () => {
     beforeEach(() => {
       const EventWithinRange: React.FC = () => (

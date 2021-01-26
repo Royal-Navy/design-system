@@ -25,9 +25,10 @@ function getKey(prefix: string, id: string) {
 
 export const Table: React.FC<TableProps> = ({
   data,
-  children,
   caption,
+  children,
   className,
+  ...rest
 }) => {
   const { tableData, sortTableData, sortField, sortOrder } = useTableData(data)
 
@@ -43,7 +44,7 @@ export const Table: React.FC<TableProps> = ({
 
   return (
     <StyledTableWrapper className={className} data-testid="table-wrapper">
-      <StyledTable data-testid="table" role="grid">
+      <StyledTable data-testid="table" role="grid" {...rest}>
         {caption && <caption data-testid="table-caption">{caption}</caption>}
         <StyledTableHead>
           <StyledTableRow>{childrenWithSort}</StyledTableRow>

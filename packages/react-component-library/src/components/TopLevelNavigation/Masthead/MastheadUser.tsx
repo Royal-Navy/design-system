@@ -33,11 +33,12 @@ export type MastheadUserProps =
 const MastheadUserWithLink: React.FC<MastheadUserWithLinkProps> = ({
   link,
   initials,
+  ...rest
 }) =>
   React.cloneElement(link as ReactElement, {
     ...link.props,
     children: (
-      <StyledOption>
+      <StyledOption {...rest}>
         <Avatar
           data-testid="masthead-avatar"
           initials={initials}
@@ -75,19 +76,15 @@ const MastheadUserWithItems: React.FC<MastheadUserWithItemsProps> = ({
 
 export const MastheadUser: React.FC<MastheadUserProps> = ({
   children,
-  initials,
   link,
+  ...rest
 }) => {
   if (link) {
     logger.warn('The `link` prop is deprecated')
-    return <MastheadUserWithLink initials={initials} link={link} />
+    return <MastheadUserWithLink link={link} {...rest} />
   }
 
-  return (
-    <MastheadUserWithItems initials={initials}>
-      {children}
-    </MastheadUserWithItems>
-  )
+  return <MastheadUserWithItems {...rest}>{children}</MastheadUserWithItems>
 }
 
 MastheadUser.displayName = 'MastheadUser'

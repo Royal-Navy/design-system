@@ -81,12 +81,20 @@ describe('Alert', () => {
 
       wrapper = render(
         <Alert
+          data-arbitrary="arbitrary"
           onClose={onCloseSpy}
           title="Title"
           variant={ALERT_VARIANT.DANGER}
         >
           Description
         </Alert>
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('alert')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
       )
     })
 

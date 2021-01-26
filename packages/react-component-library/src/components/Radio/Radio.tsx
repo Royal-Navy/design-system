@@ -59,8 +59,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
               onChange={onChange}
               onBlur={onBlur}
               disabled={isDisabled}
-              {...rest}
               data-testid="radio"
+              {...rest}
             />
             <StyledCheckmark />
             {label}

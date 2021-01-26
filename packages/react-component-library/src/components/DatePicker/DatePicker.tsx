@@ -311,15 +311,11 @@ function getNewState(
 }
 
 export const DatePicker: React.FC<DatePickerProps> = ({
-  className,
   endDate,
   format: datePickerFormat = DATE_FORMAT.SHORT,
   id = uuidv4(),
-  isDisabled,
   isRange,
   label = 'Select Date',
-  name,
-  onBlur,
   onChange,
   placement = DATEPICKER_PLACEMENT.BELOW,
   startDate,
@@ -327,6 +323,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   isOpen,
   disabledDays,
   initialMonth,
+  ...rest
 }) => {
   const componentRef = useRef(null)
 
@@ -383,19 +380,16 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         $isVisible: open,
         renderTarget: (ref: React.RefObject<HTMLDivElement>) => (
           <DatePickerInput
-            className={className}
             ref={ref}
             dayPickerId={contentId}
             id={id}
-            name={name}
             label={label}
             value={transformDates(from, to, datePickerFormat)}
-            onBlur={onBlur}
             onFocus={handleOnFocus}
-            isDisabled={isDisabled}
             isOpen={open}
             onClose={handleOnClose}
             hasContent={!!hasContent}
+            {...rest}
           />
         ),
         renderElement: (ref: React.RefObject<HTMLDivElement>) => (

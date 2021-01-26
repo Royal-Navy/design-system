@@ -7,7 +7,7 @@ import { StyledBreadcrumbsList } from './partials/StyledBreadcrumbsList'
 
 export const Breadcrumbs: React.FC<Nav<BreadcrumbsItemProps>> = ({
   children,
-  className,
+  ...rest
 }) => {
   const mapped = React.Children.map(
     children,
@@ -24,11 +24,7 @@ export const Breadcrumbs: React.FC<Nav<BreadcrumbsItemProps>> = ({
   )
 
   return (
-    <nav
-      className={className}
-      aria-label="Breadcrumb"
-      data-testid="breadcrumb-wrapper"
-    >
+    <nav aria-label="Breadcrumb" data-testid="breadcrumb-wrapper" {...rest}>
       <StyledBreadcrumbsList>{mapped}</StyledBreadcrumbsList>
     </nav>
   )

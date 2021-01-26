@@ -145,6 +145,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   today,
   range,
   unitWidth,
+  ...rest
 }) => {
   const hoursBlockSize = getHoursBlockSize(children)
   const options: TimelineOptions = {
@@ -192,6 +193,7 @@ export const Timeline: React.FC<TimelineProps> = ({
         className={classNames('timeline', className)}
         data-testid="timeline"
         role="grid"
+        {...rest}
       >
         <StyledInner
           className="timeline__inner"

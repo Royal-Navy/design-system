@@ -10,15 +10,13 @@ export interface AvatarProps {
 }
 
 export const Avatar: React.FC<AvatarProps> = ({
-  className,
   initials,
   variant,
-}) => {
-  return (
-    <StyledAvatar className={className} $dark={variant === AVATAR_VARIANT.DARK}>
-      {initials}
-    </StyledAvatar>
-  )
-}
+  ...rest
+}) => (
+  <StyledAvatar $dark={variant === AVATAR_VARIANT.DARK} {...rest}>
+    {initials}
+  </StyledAvatar>
+)
 
 Avatar.displayName = 'Avatar'

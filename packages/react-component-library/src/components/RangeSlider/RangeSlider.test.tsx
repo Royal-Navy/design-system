@@ -306,6 +306,30 @@ describe('RangeSlider', () => {
     })
   })
 
+  describe('when arbitrary props are provided', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <RangeSlider
+          data-arbitrary="arbitrary"
+          domain={[0, 40]}
+          mode={1}
+          values={[20]}
+          tracksLeft
+          tickCount={4}
+          thresholds={[40, 60]}
+        />
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('rangeslider')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
+
+
   describe('without the `onUpdate` callback', () => {
     beforeEach(() => {
       wrapper = render(

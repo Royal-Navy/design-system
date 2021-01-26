@@ -36,10 +36,15 @@ describe('Sidebar', () => {
     beforeEach(() => {
       wrapper = render(
         <Sidebar
+          data-arbitrary="arbitrary-sidebar"
           hasUnreadNotification
           nav={(
-            <SidebarNav>
-              <SidebarNavItem Image={House} link={<Link href="/">Home</Link>} />
+            <SidebarNav data-arbitrary="arbitrary-nav">
+              <SidebarNavItem
+                data-arbitrary="arbitrary-nav-item"
+                Image={House}
+                link={<Link href="/">Home</Link>}
+              />
               <SidebarNavItem
                 Image={Graph}
                 link={<Link href="/stats">Stats</Link>}
@@ -52,8 +57,12 @@ describe('Sidebar', () => {
             </SidebarNav>
           )}
           notifications={(
-            <Notifications link={<Link href="notifications" />}>
+            <Notifications
+              data-arbitrary="arbitrary-notifications"
+              link={<Link href="notifications" />}
+            >
               <Notification
+                data-arbitrary="arbitrary-notification"
                 link={<Link href="notifications/1" />}
                 name="Thomas Stephens"
                 action="added a new comment to your"
@@ -71,10 +80,42 @@ describe('Sidebar', () => {
               />
             </Notifications>
           )}
-          user={
-            <SidebarUser initials="XT" link={<Link href="/user-profile" />} />
-          }
+          user={(
+            <SidebarUser
+              data-arbitrary="arbitrary-user"
+              initials="XT"
+              link={<Link href="/user-profile" />}
+            />
+          )}
         />
+      )
+    })
+
+    it('should spread arbitrary props on the sidebar', () => {
+      expect(wrapper.getByTestId('sidebar')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-sidebar'
+      )
+    })
+
+    it('should spread arbitrary props on the nav', () => {
+      expect(wrapper.getByTestId('sidebar-nav')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-nav'
+      )
+    })
+
+    it('should spread arbitrary props on the nav item', () => {
+      expect(wrapper.getAllByTestId('sidebar-nav-item')[0]).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-nav-item'
+      )
+    })
+
+    it('should spread arbitrary props on the user', () => {
+      expect(wrapper.getByTestId('sidebar-user')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-user'
       )
     })
 
@@ -84,10 +125,6 @@ describe('Sidebar', () => {
       images.forEach((image) => {
         expect(image).toHaveAttribute('aria-hidden', 'true')
       })
-    })
-
-    it('should render the notifications', () => {
-      expect(wrapper.getByTestId('notification-button')).toBeInTheDocument()
     })
 
     it('should set the `aria-expanded` attribute on the notification button to `false`', () => {
@@ -113,6 +150,25 @@ describe('Sidebar', () => {
 
     it('should render the user', () => {
       expect(wrapper.getByTestId('sidebar-user')).toBeInTheDocument()
+    })
+
+    describe('when the user opens the notifications', () => {
+      beforeEach(() => {
+        wrapper.queryByTestId('notification-button').click()
+      })
+
+      it('should spread arbitrary props on the notifications', () => {
+        expect(wrapper.getByTestId('notifications-sheet')).toHaveAttribute(
+          'data-arbitrary',
+          'arbitrary-notifications'
+        )
+      })
+
+      it('should spread arbitrary props on the notifications item', () => {
+        expect(
+          wrapper.getAllByTestId('notification')[0]
+        ).toHaveAttribute('data-arbitrary', 'arbitrary-notification')
+      })
     })
   })
 

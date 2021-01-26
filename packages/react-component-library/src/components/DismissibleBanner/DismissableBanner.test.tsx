@@ -98,4 +98,24 @@ describe('DismissibleBanner', () => {
       expect(wrapper.queryAllByTestId('checkbox')).toHaveLength(0)
     })
   })
+
+  describe('with arbitrary props', () => {
+    beforeEach(() => {
+      const props = {
+        children: 'content',
+        'data-arbitrary': 'arbitrary',
+        title: 'title',
+        onDismiss: () => true,
+      }
+
+      wrapper = render(<DismissibleBanner {...props} />)
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('dimissablebanner-wrapper')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
 })

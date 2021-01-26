@@ -24,6 +24,7 @@ describe('TabSet', () => {
       beforeEach(() => {
         const props = {
           className: 'rn-tab-set--modifier',
+          'data-arbitrary': 'arbitrary',
           onChange: () => {
             return true
           },
@@ -33,9 +34,23 @@ describe('TabSet', () => {
 
         wrapper = render(
           <TabSet {...props}>
-            <Tab title="Title 1">Content 1</Tab>
+            <Tab data-arbitrary="arbitrary-tab" title="Title 1">Content 1</Tab>
             <Tab title="Title 2">Content 2</Tab>
           </TabSet>
+        )
+      })
+
+      it('should spread arbitrary props on the tab set', () => {
+        expect(wrapper.getByTestId('tab-set')).toHaveAttribute(
+          'data-arbitrary',
+          'arbitrary'
+        )
+      })
+
+      it('should spread arbitrary props on the tab', () => {
+        expect(wrapper.getAllByTestId('tab-set-content')[0]).toHaveAttribute(
+          'data-arbitrary',
+          'arbitrary-tab'
         )
       })
 

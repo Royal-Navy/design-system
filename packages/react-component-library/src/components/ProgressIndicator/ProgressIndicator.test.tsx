@@ -34,4 +34,19 @@ describe('ProgressIndicator', () => {
       )
     })
   })
+
+  describe('with arbitrary props', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <ProgressIndicator data-arbitrary="arbitrary" />
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('progress-indicator')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
 })

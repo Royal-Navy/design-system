@@ -550,4 +550,59 @@ describe('Sidebar', () => {
       })
     })
   })
+
+  describe('when composed with arbitrary props', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapperE data-arbitrary="arbitrary-wrapper">
+          <SidebarE data-arbitrary="arbitrary-sidebar" notifications={notifications}>
+            <SidebarNavE data-arbitrary="arbitrary-nav">
+              <SidebarNavItemE
+                data-arbitrary="arbitrary-nav-item"
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              >
+                <SidebarNavItemE
+                  link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
+                />
+                <SidebarNavItemE
+                  link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
+                />
+              </SidebarNavItemE>
+              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
+            </SidebarNavE>
+          </SidebarE>
+          <main>Hello, World!</main>
+        </SidebarWrapperE>
+      )
+    })
+
+    it('should spread arbitrary props on the sidebar wrapper', () => {
+      expect(wrapper.getByTestId('sidebar-wrapper')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-wrapper'
+      )
+    })
+
+    it('should spread arbitrary props on the sidebar', () => {
+      expect(wrapper.getByTestId('sidebar')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-sidebar'
+      )
+    })
+
+    it('should spread arbitrary props on the sidebar nav', () => {
+      expect(wrapper.getByTestId('sidebar-nav')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-nav'
+      )
+    })
+
+    it('should spread arbitrary props on the sidebar nav item', () => {
+      expect(wrapper.getAllByTestId('sidebar-nav-item')[0]).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-nav-item'
+      )
+    })
+  })
 })

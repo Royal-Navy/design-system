@@ -144,4 +144,31 @@ describe('Searchbar', () => {
       })
     })
   })
+
+  describe('when arbitrary props are specified', () => {
+    beforeEach(() => {
+      const searchButton = {
+        current: {
+          contains: jest.fn().mockReturnValue(false),
+        },
+      }
+
+      wrapper = render(
+        <SearchBar
+          data-arbitrary="arbitrary"
+          onSearch={onSearchSpy}
+          searchButton={searchButton}
+          searchPlaceholder="placeholder"
+          setShowSearch={setShowSearchSpy}
+        />
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('searchbar')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
 })

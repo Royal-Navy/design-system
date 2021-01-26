@@ -17,7 +17,6 @@ export interface SearchbarProps {
 }
 
 export const SearchBar: React.FC<SearchbarProps> = ({
-  className = '',
   onSearch,
   searchButton,
   searchPlaceholder,
@@ -41,9 +40,8 @@ export const SearchBar: React.FC<SearchbarProps> = ({
   return (
     <StyledSearchBar
       ref={searchBoxRef}
-      className={className}
-      {...rest}
       data-testid="searchbar"
+      {...rest}
     >
       <StyledForm data-testid="searchbar-form" onSubmit={onSubmit}>
         <TextInput

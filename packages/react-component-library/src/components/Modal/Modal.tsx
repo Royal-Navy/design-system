@@ -45,6 +45,7 @@ export const Modal: React.FC<ModalProps> = ({
   tertiaryButton,
   title,
   titleId,
+  ...rest
 }) => {
   const { handleOnClose, open } = useOpenClose(isOpen, onClose)
   const primaryButtonWithIcon = primaryButton && {
@@ -63,6 +64,7 @@ export const Modal: React.FC<ModalProps> = ({
       aria-labelledby={modalTitleId}
       aria-describedby={descriptionId}
       data-testid="modal-wrapper"
+      {...rest}
     >
       <StyledMain>
         {title && (
