@@ -7,6 +7,7 @@ interface StyledContextMenuProps {
   top: number
   left: number
   $hasIcons: boolean
+  $isOpen: boolean
 }
 
 const { color, spacing, zIndex } = selectors
@@ -24,7 +25,8 @@ export const StyledContextMenu = styled.ol<StyledContextMenuProps>`
   border: 1px solid ${color('neutral', '200')};
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.04);
   z-index: ${zIndex('context', 1)};
-
+  visibility: ${({ $isOpen }) => $isOpen ? 'visible' : 'hidden'};
+  
   ${({ $hasIcons }) =>
     !$hasIcons &&
     css`

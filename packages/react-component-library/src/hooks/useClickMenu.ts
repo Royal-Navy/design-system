@@ -1,35 +1,62 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useOpenClose } from './useOpenClose'
 
-export type Coordinate = {
+export type Coordinates = {
   x: number
   y: number
 }
 
-export type ClickType = 'left' | 'right'
+export const CLICK_BUTTON = {
+  LEFT: 'left',
+  RIGHT: 'right',
+} as const
+
+export const CLICK_MENU_POSITION = {
+  ABOVE: 'above',
+  BELOW: 'below',
+} as const
+
+export type ClickType = typeof CLICK_BUTTON.LEFT | typeof CLICK_BUTTON.RIGHT
+
+export type ClickMenuPositionType =
+  | typeof CLICK_MENU_POSITION.ABOVE
+  | typeof CLICK_MENU_POSITION.BELOW
 
 interface useClickMenuParams {
   attachedToRef: React.RefObject<HTMLElement>
   clickType: ClickType
   onHide?: () => void
   onShow?: () => void
+  position?: ClickMenuPositionType
 }
 
-export const useClickMenu = ({
+export const useClickMenu = <TMenuElement extends HTMLElement>({
   attachedToRef,
   clickType,
   onHide,
   onShow,
+  position,
 }: useClickMenuParams): {
-  position: Coordinate
+  coordinates: Coordinates
   isOpen: boolean
+  menuRef: React.RefObject<TMenuElement>
 } => {
   const { open, setOpen } = useOpenClose<boolean>(false)
-  const [position, setPosition] = useState<Coordinate>({ x: 0, y: 0 })
+  const [coordinates, setCoordinates] = useState<Coordinates>({ x: 0, y: 0 })
+  const menuRef = useRef<TMenuElement>(null)
+
+  function getY({ clientY }: { clientY: number }) {
+    if (position === CLICK_MENU_POSITION.BELOW) {
+      return clientY
+    }
+
+    const menuHeight = menuRef.current.getBoundingClientRect().height
+    return clientY - menuHeight
+  }
 
   function displayMenu(e: MouseEvent) {
-    const mousePoint: Coordinate = { x: e.clientX, y: e.clientY }
-    setPosition(mousePoint)
+    const mousePoint: Coordinates = { x: e.clientX, y: getY(e) }
+    setCoordinates(mousePoint)
 
     if (attachedToRef.current.contains(e.target as Node)) {
       e.preventDefault()
@@ -65,7 +92,8 @@ export const useClickMenu = ({
   })
 
   return {
-    position,
+    coordinates,
+    menuRef,
     isOpen: open,
   }
 }

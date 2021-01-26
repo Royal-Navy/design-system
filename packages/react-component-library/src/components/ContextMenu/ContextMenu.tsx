@@ -1,7 +1,12 @@
 import React from 'react'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { useClickMenu, ClickType } from '../../hooks/useClickMenu'
+import {
+  useClickMenu,
+  ClickType,
+  ClickMenuPositionType,
+  CLICK_MENU_POSITION,
+} from '../../hooks/useClickMenu'
 import { StyledContextMenu } from './partials/StyledContextMenu'
 
 interface ContextMenuProps extends ComponentWithClass {
@@ -21,6 +26,7 @@ interface ContextMenuProps extends ComponentWithClass {
    * onShow: Optional handler function to be called when the context menu is displayed
    */
   onShow?: () => void
+  position?: ClickMenuPositionType
 }
 
 export const ContextMenu: React.FC<ContextMenuProps> = ({
@@ -30,12 +36,14 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
   clickType = 'right',
   onHide,
   onShow,
+  position = CLICK_MENU_POSITION.BELOW,
 }) => {
-  const { position, isOpen } = useClickMenu({
+  const { coordinates, isOpen, menuRef } = useClickMenu<HTMLOListElement>({
     attachedToRef,
     clickType,
     onHide,
     onShow,
+    position,
   })
 
   const hasIcons = !!React.Children.toArray(children).filter(
@@ -43,19 +51,17 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
   ).length
 
   return (
-    <>
-      {isOpen && (
-        <StyledContextMenu
-          className={className}
-          top={position.y}
-          left={position.x}
-          $hasIcons={hasIcons}
-          data-testid="context-menu"
-        >
-          {children}
-        </StyledContextMenu>
-      )}
-    </>
+    <StyledContextMenu
+      $hasIcons={hasIcons}
+      $isOpen={isOpen}
+      className={className}
+      data-testid="context-menu"
+      left={coordinates.x}
+      ref={menuRef}
+      top={coordinates.y}
+    >
+      {children}
+    </StyledContextMenu>
   )
 }
 

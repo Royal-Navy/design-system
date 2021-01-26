@@ -85,6 +85,13 @@ Right clicking on this component will open the context menu in place of the defa
 ### ContextMenu Properties
 <DataTable data={[
   {
+    Name: 'attachedToRef',
+    Type: 'React.RefObject<HTMLElement>',
+    Required: 'True',
+    Default: '',
+    Description: 'A ref object associated with the component or element the context menu is attached to',
+  },
+  {
     Name: 'children',
     Type: 'React.ReactElement<ContextMenuItemProps>[]',
     Required: 'True',
@@ -92,11 +99,39 @@ Right clicking on this component will open the context menu in place of the defa
     Description: 'Supply menu items and dividers as children',
   },
   {
-    Name: 'attachedToRef',
-    Type: 'React.RefObject<HTMLElement>',
-    Required: 'True',
+    Name: 'className',
+    Type: 'string',
+    Required: 'False',
     Default: '',
-    Description: 'A ref object associated with the component or element the context menu is attached to',
+    Description: 'CSS class name to modify properties',
+  },
+  {
+    Name: 'clickType',
+    Type: 'left | right',
+    Required: 'False',
+    Default: 'right',
+    Description: 'Button to be clicked to show menu',
+  },
+  {
+    Name: 'onHide',
+    Type: '() => void',
+    Required: 'False',
+    Default: '',
+    Description: 'Callback for when the menu is hidden',
+  },
+  {
+    Name: 'onShow',
+    Type: '() => void',
+    Required: 'False',
+    Default: '',
+    Description: 'Callback for when the menu is shown',
+  },
+  {
+    Name: 'position',
+    Type: 'above | below',
+    Required: 'False',
+    Default: 'below',
+    Description: 'Where the menu is positioned',
   },
 ]} />
 

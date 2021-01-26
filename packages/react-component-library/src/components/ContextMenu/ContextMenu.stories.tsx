@@ -6,6 +6,12 @@ import { IconEdit, IconDelete, IconAdd } from '@royalnavy/icon-library'
 
 import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
 import { Link } from '../Link'
+import {
+  CLICK_BUTTON,
+  CLICK_MENU_POSITION,
+  ClickMenuPositionType,
+  ClickType,
+} from '../../hooks/useClickMenu'
 
 export default { component: ContextMenu, title: 'ContextMenu' } as Meta
 
@@ -58,7 +64,16 @@ const PirateContent: React.FC = () => (
   </>
 )
 
-export const Default = () => {
+interface ContentMenuExampleProps {
+  clickType?: ClickType
+  hasIcons?: boolean
+  position?: ClickMenuPositionType
+}
+
+const ContextMenuExample: React.FC<ContentMenuExampleProps> = ({
+  hasIcons,
+  ...rest
+}) => {
   const ref = useRef()
 
   return (
@@ -78,19 +93,20 @@ export const Default = () => {
         attachedToRef={ref}
         onHide={action('onHide')}
         onShow={action('onShow')}
+        {...rest}
       >
         <ContextMenuItem
-          icon={<IconEdit />}
+          icon={hasIcons && <IconEdit />}
           link={<Link href="/edit">Edit</Link>}
         />
         <ContextMenuItem
-          icon={<IconDelete />}
+          icon={hasIcons && <IconDelete />}
           link={<Link href="/delete">Delete</Link>}
         />
         <ContextMenuItem link={<Link href="/delete">Action</Link>} />
         <ContextMenuDivider />
         <ContextMenuItem
-          icon={<IconAdd />}
+          icon={hasIcons && <IconAdd />}
           link={<Link href="/add">Add</Link>}
         />
         <ContextMenuDivider />
@@ -110,87 +126,18 @@ export const Default = () => {
   )
 }
 
+export const Default = () => <ContextMenuExample hasIcons />
 Default.storyName = 'Default'
 
-export const NoIcons = () => {
-  const ref = useRef()
-
-  return (
-    <>
-      <div
-        ref={ref}
-        style={{
-          display: 'inline-block',
-          padding: '3rem',
-
-          backgroundColor: '#12202b',
-        }}
-      >
-        <PirateContent />
-      </div>
-
-      <ContextMenu attachedToRef={ref}>
-        <ContextMenuItem link={<Link href="/edit">Edit</Link>} />
-        <ContextMenuItem link={<Link href="/delete">Delete</Link>} />
-        <ContextMenuItem link={<Link href="/delete">Action</Link>} />
-        <ContextMenuDivider />
-        <ContextMenuItem link={<Link href="/add">Add</Link>} />
-        <ContextMenuDivider />
-        <ContextMenuItem
-          link={<Link href="/something-else">Do something else</Link>}
-        />
-        <ContextMenuDivider />
-        <ContextMenuItem
-          link={(
-            <Link href="/something-else">
-              This is too much text to put into a context menu item
-            </Link>
-          )}
-        />
-      </ContextMenu>
-    </>
-  )
-}
-
+export const NoIcons = () => <ContextMenuExample />
 NoIcons.storyName = 'No icons'
 
-export const LeftClick = () => {
-  const ref = useRef()
-
-  return (
-    <>
-      <div
-        ref={ref}
-        style={{
-          display: 'inline-block',
-          padding: '3rem',
-          backgroundColor: '#12202b',
-        }}
-      >
-        <PirateContent />
-      </div>
-
-      <ContextMenu attachedToRef={ref} clickType="left">
-        <ContextMenuItem link={<Link href="/edit">Edit</Link>} />
-        <ContextMenuItem link={<Link href="/delete">Delete</Link>} />
-        <ContextMenuItem link={<Link href="/delete">Action</Link>} />
-        <ContextMenuDivider />
-        <ContextMenuItem link={<Link href="/add">Add</Link>} />
-        <ContextMenuDivider />
-        <ContextMenuItem
-          link={<Link href="/something-else">Do something else</Link>}
-        />
-        <ContextMenuDivider />
-        <ContextMenuItem
-          link={(
-            <Link href="/something-else">
-              This is too much text to put into a context menu item
-            </Link>
-          )}
-        />
-      </ContextMenu>
-    </>
-  )
-}
-
+export const LeftClick = () => (
+  <ContextMenuExample clickType={CLICK_BUTTON.LEFT} />
+)
 LeftClick.storyName = 'Left click to open'
+
+export const Above = () => (
+  <ContextMenuExample position={CLICK_MENU_POSITION.ABOVE} />
+)
+Above.storyName = 'Above'
