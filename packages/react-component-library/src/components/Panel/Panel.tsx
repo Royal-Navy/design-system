@@ -1,5 +1,21 @@
 import React from 'react'
+import styled from 'styled-components'
+import { selectors } from '@royalnavy/design-tokens'
 
-export const Panel: React.FC = ({ children }) => {
-  return <div className="rn-panel">{children}</div>
+import { ComponentWithClass } from '../../common/ComponentWithClass'
+
+const { color } = selectors
+
+const StyledPanel = styled.div`
+  background: ${color('neutral', 'white')};
+  border: 1px solid ${color('neutral', '100')};
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
+`
+
+export const Panel: React.FC<ComponentWithClass> = ({
+  children,
+  className,
+}) => {
+  return <StyledPanel className={className}>{children}</StyledPanel>
 }
