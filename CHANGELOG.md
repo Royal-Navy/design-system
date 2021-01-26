@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.30.8](https://github.com/Royal-Navy/design-system/compare/2.30.7...2.30.8) (2021-01-26)
+
+
+### Bug Fixes
+
+* **Select:** Resolve positioning issue ([4644769](https://github.com/Royal-Navy/design-system/commit/464476964c0c040501b2508613d1b2777b3382d5))
+* **SidebarE:** Resolve legacy Chrome squashed icon ([7f1cd04](https://github.com/Royal-Navy/design-system/commit/7f1cd04022cc1882809c32082995caae4f6ae7e0))
+
+
+
+
+
 ## [2.30.7](https://github.com/Royal-Navy/design-system/compare/2.30.6...2.30.7) (2021-01-25)
 
 

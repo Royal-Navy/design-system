@@ -1,6 +1,6 @@
 {
   "name": "@royalnavy/design-tokens",
-  "version": "2.30.7",
+  "version": "2.30.8",
   "main": "dist/cjs/index.js",
   "author": "Royal Navy",
   "license": "Apache-2.0",
