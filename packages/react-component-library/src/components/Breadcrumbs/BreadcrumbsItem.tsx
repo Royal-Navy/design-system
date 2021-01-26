@@ -11,6 +11,18 @@ export interface BreadcrumbsItemProps {
   link: React.ReactElement<LinkTypes>
 }
 
+function getText(isLast: boolean, link: React.ReactElement<LinkTypes>) {
+  if (isLast) {
+    return (
+      <StyledEndTitle aria-current="page" data-testid="breadcrumb-end-title">
+        {(link as ReactElement).props.children}
+      </StyledEndTitle>
+    )
+  }
+
+  return link
+}
+
 export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
   isFirst,
   isLast,
@@ -21,13 +33,8 @@ export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
       {!isFirst && (
         <StyledIcon aria-hidden data-testid="breadcrumb-separator" />
       )}
-      {isLast ? (
-        <StyledEndTitle aria-current="page" data-testid="breadcrumb-end-title">
-          {(link as ReactElement).props.children}
-        </StyledEndTitle>
-      ) : (
-        link
-      )}
+
+      {getText(isLast, link)}
     </StyledBreadcrumbsItem>
   )
 }
