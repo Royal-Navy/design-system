@@ -163,7 +163,7 @@ describe('Masthead', () => {
 
     it('should link the avatar', () => {
       const avatar = wrapper.getByText('AB')
-      const link = avatar.parentElement
+      const link = avatar.parentElement.parentElement
 
       expect(link.getAttribute('href')).toEqual('/user-profile')
     })
@@ -260,12 +260,6 @@ describe('Masthead', () => {
         expect(wrapper.queryByTestId('searchbar')).toBeInTheDocument()
       })
 
-      it('should set a rule on the wrapper so mobile scrolling is disabled', () => {
-        expect(wrapper.queryByTestId('masthead')).toHaveClass(
-          'rn-masthead--show-search'
-        )
-      })
-
       describe('and then searches', () => {
         beforeEach(() => {
           const searchbarForm = wrapper.queryByTestId('searchbar-form')
@@ -335,12 +329,6 @@ describe('Masthead', () => {
         expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
           'aria-owns',
           sheetId
-        )
-      })
-
-      it('should set a rule on the wrapper so mobile scrolling is disabled', () => {
-        expect(wrapper.queryByTestId('masthead')).toHaveClass(
-          'rn-masthead--show-notifications'
         )
       })
 

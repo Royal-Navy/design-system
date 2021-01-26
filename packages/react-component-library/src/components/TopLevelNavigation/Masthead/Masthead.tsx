@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import classNames from 'classnames'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import { Bell, Logo as DefaultLogo, Search as SearchIcon } from '../../../icons'
@@ -15,6 +14,14 @@ import { SHEET_PLACEMENT } from '../Sheet/constants'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
 import { useMastheadSearch } from './useMastheadSearch'
+import { StyledOption } from './partials/StyledOption'
+import { StyledOptions } from './partials/StyledOptions'
+import { StyledMain } from './partials/StyledMain'
+import { StyledMastHead } from './partials/StyledMasthead'
+import { StyledServiceName } from './partials/StyledServiceName'
+import { StyledTitle } from './partials/StyledTitle'
+import { StyledVerticalSeparator } from './partials/StyledVerticalSeparator'
+import { StyledBanner } from './partials/StyledBanner'
 
 export interface MastheadProps {
   hasDefaultLogo?: boolean
@@ -35,23 +42,19 @@ function getServiceName(
   title: string
 ) {
   const link = homeLink || <span />
-
   return React.cloneElement(link as React.ReactElement, {
     ...link.props,
     children: (
-      <>
+      <StyledServiceName>
         {Logo &&
           React.cloneElement(<Logo />, {
             role: 'presentation',
           })}
-        <span className="rn-masthead__title" data-testid="masthead-servicename">
+        <StyledTitle $hasLogo={!!Logo} data-testid="masthead-servicename">
           {title}
-        </span>
-      </>
+        </StyledTitle>
+      </StyledServiceName>
     ),
-    className: classNames('rn-masthead__service-name', {
-      'rn-masthead__service--has-logo': Logo,
-    }),
   })
 }
 
@@ -66,6 +69,7 @@ export const Masthead: React.FC<MastheadProps> = ({
   searchPlaceholder = '',
   title,
   user,
+  ...rest
 }) => {
   const [showNotifications, setShowNotifications] = useState(false)
   const searchButtonRef = useRef<HTMLButtonElement>(null)
@@ -80,57 +84,50 @@ export const Masthead: React.FC<MastheadProps> = ({
 
   const DisplayLogo = Logo ?? (hasDefaultLogo ? DefaultLogo : null)
 
-  const classes = classNames('rn-masthead', {
-    'rn-masthead--show-search': showSearch,
-    'rn-masthead--show-notifications': showNotifications,
-  })
-
-  const searchButtonClasses = classNames(
-    'rn-masthead__option',
-    'rn-searchbar__btn',
-    {
-      'is-active': showSearch,
-      'is-inactive': !showSearch,
-    }
-  )
-
   const submitSearch = (term: string) => {
     onSearch(term)
     setShowSearch(false)
   }
 
   return (
-    <div className={classes} data-testid="masthead" ref={mastheadContainerRef}>
-      <div className="rn-masthead__main">
-        <div data-testid="masthead-banner" role="banner">
+    <StyledMastHead
+      $showNotifications={showNotifications}
+      $showSearch={showSearch}
+      data-testid="masthead"
+      ref={mastheadContainerRef}
+      {...rest}
+    >
+      <StyledMain>
+        <StyledBanner data-testid="masthead-banner" role="banner">
           {getServiceName(homeLink, DisplayLogo, title)}
-        </div>
+        </StyledBanner>
 
-        <div className="rn-masthead__options">
+        <StyledOptions>
           {onSearch && (
             <>
-              <button
+              <StyledOption
+                $isActive={showSearch}
                 aria-expanded={showSearch}
                 aria-label="Show search"
-                className={searchButtonClasses}
+                as="button"
                 onClick={toggleSearch}
                 ref={searchButtonRef}
                 data-testid="masthead-search-button"
               >
                 <SearchIcon />
-              </button>
-              <svg className="rn-masthead__vertical-separator">
+              </StyledOption>
+              <StyledVerticalSeparator>
                 <line x1="0" y1="14" x2="0" y2="44" />
-              </svg>
+              </StyledVerticalSeparator>
             </>
           )}
 
           {notifications && (
             <Sheet
               button={(
-                <SheetButton
+                <StyledOption
                   aria-label="Show notifications"
-                  className="rn-masthead__option"
+                  as={SheetButton}
                   data-testid="notification-button"
                   icon={<Bell />}
                 >
@@ -140,9 +137,8 @@ export const Masthead: React.FC<MastheadProps> = ({
                       data-testid="not-read"
                     />
                   )}
-                </SheetButton>
+                </StyledOption>
               )}
-              className="rn-masthead__notification"
               placement={SHEET_PLACEMENT.BELOW}
               width={NOTIFICATION_CONTAINER_WIDTH}
               onHide={() => setShowNotifications(false)}
@@ -153,8 +149,8 @@ export const Masthead: React.FC<MastheadProps> = ({
           )}
 
           {user}
-        </div>
-      </div>
+        </StyledOptions>
+      </StyledMain>
 
       <TransitionGroup>
         {onSearch && showSearch && (
@@ -174,7 +170,7 @@ export const Masthead: React.FC<MastheadProps> = ({
       </TransitionGroup>
 
       {nav}
-    </div>
+    </StyledMastHead>
   )
 }
 
