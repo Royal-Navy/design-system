@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.31.0](https://github.com/Royal-Navy/design-system/compare/2.30.8...2.31.0) (2021-01-27)
+
+
+### Features
+
+* **ContextMenu:** Add position above/below ([df30343](https://github.com/Royal-Navy/design-system/commit/df303439935bd71b2adb1192a38527b7d958c382))
+
+
+
+
+
 ## [2.30.8](https://github.com/Royal-Navy/design-system/compare/2.30.7...2.30.8) (2021-01-26)
 
 
