@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import { Bell, Logo as DefaultLogo, Search as SearchIcon } from '../../../icons'
 import { LinkTypes } from '../../../common/Link'
@@ -9,7 +8,6 @@ import {
   NOTIFICATION_CONTAINER_WIDTH,
   NotificationsProps,
 } from '../NotificationPanel'
-import { Searchbar } from '../Searchbar'
 import { SHEET_PLACEMENT } from '../Sheet/constants'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
@@ -22,6 +20,7 @@ import { StyledServiceName } from './partials/StyledServiceName'
 import { StyledTitle } from './partials/StyledTitle'
 import { StyledVerticalSeparator } from './partials/StyledVerticalSeparator'
 import { StyledBanner } from './partials/StyledBanner'
+import { SearchBar } from '../SearchBar/SearchBar'
 
 export interface MastheadProps {
   hasDefaultLogo?: boolean
@@ -152,22 +151,15 @@ export const Masthead: React.FC<MastheadProps> = ({
         </StyledOptions>
       </StyledMain>
 
-      <TransitionGroup>
-        {onSearch && showSearch && (
-          <CSSTransition
-            classNames="rn-searchbar"
-            timeout={{ enter: 300, exit: 300 }}
-          >
-            <Searchbar
-              onSearch={submitSearch}
-              searchButton={searchButtonRef}
-              searchPlaceholder={searchPlaceholder}
-              setShowSearch={setShowSearch}
-              style={{ width: containerWidth }}
-            />
-          </CSSTransition>
-        )}
-      </TransitionGroup>
+      {onSearch && showSearch && (
+        <SearchBar
+          onSearch={submitSearch}
+          searchButton={searchButtonRef}
+          searchPlaceholder={searchPlaceholder}
+          setShowSearch={setShowSearch}
+          style={{ width: containerWidth }}
+        />
+      )}
 
       {nav}
     </StyledMastHead>

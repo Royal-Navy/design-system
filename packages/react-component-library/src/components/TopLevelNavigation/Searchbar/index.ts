@@ -1,1 +1,1 @@
-export * from './Searchbar'
+export * from './SearchBar'
