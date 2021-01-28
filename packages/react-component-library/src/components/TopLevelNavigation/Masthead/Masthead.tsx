@@ -115,9 +115,11 @@ export const Masthead: React.FC<MastheadProps> = ({
               >
                 <SearchIcon />
               </StyledOption>
-              <StyledVerticalSeparator>
-                <line x1="0" y1="14" x2="0" y2="44" />
-              </StyledVerticalSeparator>
+              {user && (
+                <StyledVerticalSeparator>
+                  <line x1="0" y1="14" x2="0" y2="44" />
+                </StyledVerticalSeparator>
+              )}
             </>
           )}
 
@@ -147,6 +149,11 @@ export const Masthead: React.FC<MastheadProps> = ({
             </Sheet>
           )}
 
+          {(notifications || onSearch) && user && (
+            <StyledVerticalSeparator>
+              <line x1="0" y1="14" x2="0" y2="44" />
+            </StyledVerticalSeparator>
+          )}
           {user}
         </StyledOptions>
       </StyledMain>
