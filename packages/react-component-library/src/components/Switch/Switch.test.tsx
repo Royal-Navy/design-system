@@ -14,7 +14,7 @@ describe('Switch', () => {
 
       wrapper = render(
         <Switch
-          className="rn-switch--modifier"
+          className="custom-class"
           label="Switch label"
           name="switch-name"
           onChange={onChangeSpy}
@@ -29,9 +29,9 @@ describe('Switch', () => {
       )
     })
 
-    it('should set the CSS modifier', () => {
+    it('should drill the custom CSS class', () => {
       expect(wrapper.getByTestId('switch-wrapper').classList).toContain(
-        'rn-switch--modifier'
+        'custom-class'
       )
     })
 
@@ -56,7 +56,10 @@ describe('Switch', () => {
     })
 
     it('should set the value', () => {
-      expect(wrapper.getByText('Month').classList).toContain('is-active')
+      expect(wrapper.getByText('Month')).toHaveStyleRule(
+        'background-color',
+        '#3e5667'
+      )
     })
 
     describe('when the selected option is changed', () => {
@@ -65,7 +68,10 @@ describe('Switch', () => {
       })
 
       it('should set the value', () => {
-        expect(wrapper.getByText('Year').classList).toContain('is-active')
+        expect(wrapper.getByText('Year')).toHaveStyleRule(
+          'background-color',
+          '#3e5667'
+        )
       })
 
       it('should call the onClick callback', () => {

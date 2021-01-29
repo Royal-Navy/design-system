@@ -5,6 +5,11 @@ import { getKey } from '../../helpers'
 import { SWITCH_SIZE } from '.'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
+import { StyledSwitch } from './partials/StyledSwitch'
+import { StyledLegend } from './partials/StyledLegend'
+import { StyledContainer } from './partials/StyledContainer'
+import { StyledOption } from './partials/StyledOption'
+import { SwitchInput } from './partials/SwitchInput'
 
 function getActiveOption(options: SwitchOptionProps[], value: string) {
   const initial: SwitchOptionProps | string = options.find(
@@ -13,6 +18,11 @@ function getActiveOption(options: SwitchOptionProps[], value: string) {
 
   return (initial && initial.label) || null
 }
+
+export type SwitchSizeType =
+  | typeof SWITCH_SIZE.LARGE
+  | typeof SWITCH_SIZE.SMALL
+  | typeof SWITCH_SIZE.REGULAR
 
 export interface SwitchOptionProps {
   label: string
@@ -25,10 +35,7 @@ export interface SwitchProps extends ComponentWithClass, InputValidationProps {
   label?: string
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
   options: SwitchOptionProps[]
-  size?:
-    | typeof SWITCH_SIZE.LARGE
-    | typeof SWITCH_SIZE.SMALL
-    | typeof SWITCH_SIZE.REGULAR
+  size?: SwitchSizeType
 }
 
 export const Switch: React.FC<SwitchProps> = ({
@@ -44,42 +51,38 @@ export const Switch: React.FC<SwitchProps> = ({
   const id = uuidv4()
 
   return (
-    <fieldset
-      className={`rn-switch rn-switch--${size} ${className}`}
+    <StyledSwitch
+      className={className}
       data-testid="switch-wrapper"
+      $size={size}
     >
       {label && (
-        <legend className="rn-switch__legend" data-testid="switch-legend">
-          {label}
-        </legend>
+        <StyledLegend data-testid="switch-legend">{label}</StyledLegend>
       )}
-      <div className="rn-switch__container">
+      <StyledContainer>
         {options.map(({ label: optionLabel, value: optionValue }) => (
-          <label
+          <StyledOption
             key={getKey('switch-option', optionLabel)}
-            className={`rn-switch__option ${
-              active === optionLabel ? 'is-active' : ''
-            }`}
+            $isActive={active === optionLabel}
             htmlFor={`${id}-${optionLabel}`}
             data-testid="switch-option"
           >
             {optionLabel}
-            <input
+            <SwitchInput
               data-testid="switch-input"
               id={`${id}-${optionLabel}`}
               name={name || id}
               value={optionValue}
               type="radio"
-              className="rn-switch__radio"
               onClick={(event) => {
                 setActive(optionLabel)
                 onChange(event)
               }}
             />
-          </label>
+          </StyledOption>
         ))}
-      </div>
-    </fieldset>
+      </StyledContainer>
+    </StyledSwitch>
   )
 }
 

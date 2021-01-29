@@ -5,21 +5,27 @@ import { useMediaQuery } from 'react-responsive'
 import { Select } from '../Select'
 import { Switch, SwitchProps } from '.'
 
-export const ResponsiveSwitch: React.FC<SwitchProps> = (props) => {
+export const ResponsiveSwitch: React.FC<SwitchProps> = ({
+  className,
+  ...rest
+}) => {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-device-width: 768px)',
   })
 
-  const classes = classNames('rn-response-switch', {
-    [`is-${isDesktopOrLaptop ? 'desktop' : 'mobile'}`]: true,
-  })
+  const classes = classNames(
+    {
+      [`is-${isDesktopOrLaptop ? 'desktop' : 'mobile'}`]: true,
+    },
+    className
+  )
 
   return (
     <div className={classes} data-testid="responsive-switch">
       {isDesktopOrLaptop ? (
-        <Switch {...props} />
+        <Switch {...rest} />
       ) : (
-        <Select data-testid="responsive-switch-select" {...props} />
+        <Select data-testid="responsive-switch-select" {...rest} />
       )}
     </div>
   )
