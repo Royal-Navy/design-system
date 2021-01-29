@@ -11,18 +11,22 @@ export const StyledOption = styled(components.Option)`
   display: flex;
   align-items: center;
 
-  .rn-select__option--is-focused {
+  &.rn-select__option--is-focused {
     background-color: ${color('neutral', '100')};
     color: ${color('neutral', '500')};
   }
 
-  .rn-select__option--is-selected {
+  &.rn-select__option--is-selected {
     background-color: ${color('action', '600')};
     color: ${color('neutral', 'white')};
   }
 
   &&& {
     padding: ${spacing('4')};
-    margin: 0;
+    margin: ${spacing('2')} 0;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 `

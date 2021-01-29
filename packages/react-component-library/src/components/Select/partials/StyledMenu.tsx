@@ -5,15 +5,18 @@ import styled from 'styled-components'
 const { color } = selectors
 
 export const StyledMenu = styled(components.Menu)`
-  margin-top: -2px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  box-shadow: 0 0 0 1px ${color('action', '600')},
-    -2px 2px 0 2px ${color('action', '100')},
-    2px 2px 0 2px ${color('action', '100')};
   border: 1px solid ${color('action', '600')};
   border-top: 0;
   background: ${color('neutral', 'white')};
+
+  &&& {
+    margin-top: -2px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0 0 0 1px ${color('action', '600')},
+      -2px 2px 0 2px ${color('action', '100')},
+      2px 2px 0 2px ${color('action', '100')};
+  }
 
   &::after {
     position: absolute;
