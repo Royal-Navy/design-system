@@ -1,5 +1,4 @@
 import React from 'react'
-import classNames from 'classnames'
 import get from 'lodash/get'
 import {
   IconSortAscending,
@@ -8,6 +7,7 @@ import {
 } from '@royalnavy/icon-library'
 
 import { TABLE_SORT_ORDER } from './constants'
+import { StyledTableColumn } from './partials/StyledTableColumn'
 
 type SortOrderType =
   | typeof TABLE_SORT_ORDER.ASCENDING
@@ -67,7 +67,6 @@ export const TableColumn: React.FC<TableColumnProps> = ({
   sortOrder,
   children,
 }) => {
-  const className = classNames({ 'is-sortable': isSortable })
   const icon = getIcon(isSortable, sortOrder)
 
   function onClick() {
@@ -77,14 +76,14 @@ export const TableColumn: React.FC<TableColumnProps> = ({
   }
 
   return (
-    <th
+    <StyledTableColumn
       aria-sort={getAriaSort(isSortable, sortOrder)}
-      className={className}
+      $isSortable={isSortable}
       onClick={onClick}
       data-testid="table-header"
     >
       {children}
       {icon}
-    </th>
+    </StyledTableColumn>
   )
 }
