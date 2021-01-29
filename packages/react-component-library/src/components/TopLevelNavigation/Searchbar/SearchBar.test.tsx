@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 
-import { Searchbar } from './index'
+import { SearchBar } from '.'
 
 describe('Searchbar', () => {
   let onSearchSpy: (term: string) => void
@@ -21,7 +21,7 @@ describe('Searchbar', () => {
       }
 
       wrapper = render(
-        <Searchbar
+        <SearchBar
           onSearch={onSearchSpy}
           searchButton={searchButton}
           searchPlaceholder="placeholder"
@@ -116,7 +116,7 @@ describe('Searchbar', () => {
       }
 
       wrapper = render(
-        <Searchbar
+        <SearchBar
           onSearch={onSearchSpy}
           searchButton={searchButton}
           searchPlaceholder="placeholder"

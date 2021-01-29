@@ -3,6 +3,9 @@ import React, { useRef, useState } from 'react'
 import { TextInput } from '../../TextInput'
 import { RightArrow } from '../../../icons'
 import { useDocumentClick } from '../../../hooks'
+import { StyledSearchBar } from './partials/StyledSearchBar'
+import { StyledForm } from './partials/StyledForm'
+import { StyledButton } from './partials/StyledButton'
 
 export interface SearchbarProps {
   className?: string
@@ -13,7 +16,7 @@ export interface SearchbarProps {
   style?: Record<string, unknown>
 }
 
-export const Searchbar: React.FC<SearchbarProps> = ({
+export const SearchBar: React.FC<SearchbarProps> = ({
   className = '',
   onSearch,
   searchButton,
@@ -36,17 +39,13 @@ export const Searchbar: React.FC<SearchbarProps> = ({
   }
 
   return (
-    <div
+    <StyledSearchBar
       ref={searchBoxRef}
-      className={`rn-searchbar ${className}`}
+      className={className}
       {...rest}
       data-testid="searchbar"
     >
-      <form
-        className="rn-searchbar__form"
-        data-testid="searchbar-form"
-        onSubmit={onSubmit}
-      >
+      <StyledForm data-testid="searchbar-form" onSubmit={onSubmit}>
         <TextInput
           autoFocus
           id="term"
@@ -57,17 +56,16 @@ export const Searchbar: React.FC<SearchbarProps> = ({
           placeholder={searchPlaceholder}
           value={term}
         />
-        <button
+        <StyledButton
           aria-label="Search"
-          className="rn-searchbar__submit-button"
           data-testid="searchbar-submit-button"
           type="submit"
         >
           <RightArrow />
-        </button>
-      </form>
-    </div>
+        </StyledButton>
+      </StyledForm>
+    </StyledSearchBar>
   )
 }
 
-Searchbar.displayName = 'Searchbar'
+SearchBar.displayName = 'SearchBar'

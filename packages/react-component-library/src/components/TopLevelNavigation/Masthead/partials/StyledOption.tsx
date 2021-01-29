@@ -22,7 +22,6 @@ export const StyledOption = styled.div<StyledOptionProps>`
     color('neutral', $isActive ? '400' : 'white')};
   border: none;
   cursor: pointer;
-  transition: background-color 300ms;
 
   &:focus {
     box-shadow: 0 0 0 0.2rem rgba(${color('action', '700')}, 0.5);
