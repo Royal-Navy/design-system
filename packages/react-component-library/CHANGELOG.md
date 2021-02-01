@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.31.1](https://github.com/Royal-Navy/design-system/compare/2.31.0...2.31.1) (2021-02-01)
+
+
+### Bug Fixes
+
+* **Masthead:** Correctly apply spacers based on features ([7e3a5ee](https://github.com/Royal-Navy/design-system/commit/7e3a5ee3839a9159edb34c8f42012fc8a78e8a06))
+* **Masthead:** Prevent `Avatar` link text-decoration ([961f85d](https://github.com/Royal-Navy/design-system/commit/961f85d7f1a931adf315ddb33800b5802a08f3f9))
+* **SearchBar:** Resolve git case sensitivity issue ([7ef7ca2](https://github.com/Royal-Navy/design-system/commit/7ef7ca21c1228120ea6252bbbc1817707d57dab5))
+* **Select:** Resolve visual regressions introduced by refactor ([a522322](https://github.com/Royal-Navy/design-system/commit/a52232266e7fefcb0ce6f1b458f9fab05cb05648))
+
+
+
+
+
 # [2.31.0](https://github.com/Royal-Navy/design-system/compare/2.30.8...2.31.0) (2021-01-27)
 
 
