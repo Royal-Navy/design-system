@@ -1,11 +1,20 @@
 import React, { Children, useState, KeyboardEvent } from 'react'
-import classNames from 'classnames'
+import {
+  IconKeyboardArrowLeft,
+  IconKeyboardArrowRight,
+} from '@royalnavy/icon-library'
 
 import { Tab, TabContent, TabItem, TabProps } from '.'
-import { ScrollButton } from './ScrollButton'
 import { useScrollableTabSet } from './useScrollableTabSet'
 import { SCROLL_DIRECTION } from './constants'
 import { getId } from '../../helpers'
+import { StyledTabSet } from './partials/StyledTabSet'
+import { StyledHeader } from './partials/StyledHeader'
+import { StyledNavigation } from './partials/StyledNavigation'
+import { StyledTabs } from './partials/StyledTabs'
+import { StyledBody } from './partials/StyledBody'
+import { StyledScrollRight } from './partials/StyledScrollRight'
+import { StyledScrollLeft } from './partials/StyledScrollLeft'
 
 interface TabSetProps {
   className?: string
@@ -18,7 +27,7 @@ const LEFT_ARROW = 37
 const RIGHT_ARROW = 39
 
 export const TabSet: React.FC<TabSetProps> = ({
-  className = '',
+  className,
   children,
   onChange,
   isScrollable,
@@ -57,29 +66,29 @@ export const TabSet: React.FC<TabSetProps> = ({
     }
   }
 
-  const articleClasses = classNames('rn-tab-set', className, {
-    'is-scrollable': isScrollable,
-  })
-
   return (
-    <article className={articleClasses} data-testid="tab-set" {...rest}>
-      <header className="rn-tab-set__head">
+    <StyledTabSet
+      $isScrollable={isScrollable}
+      className={className}
+      data-testid="tab-set"
+      {...rest}
+    >
+      <StyledHeader $isScrollable={isScrollable}>
         {isScrollable && (
-          <ScrollButton
-            direction={SCROLL_DIRECTION.LEFT}
+          <StyledScrollLeft
+            aria-label={`Scroll ${SCROLL_DIRECTION.LEFT}`}
             onClick={scrollToNextTab((currentTabIndex) => currentTabIndex - 1)}
-          />
+            data-testid={`scroll-${SCROLL_DIRECTION.LEFT}`}
+          >
+            <IconKeyboardArrowLeft />
+          </StyledScrollLeft>
         )}
-        <div
-          className="rn-tab-set__navigation"
+        <StyledNavigation
+          $isScrollable={isScrollable}
           ref={tabsRef}
           data-testid="tabs"
         >
-          <ol
-            className="rn-tab-set__tabs"
-            role="tablist"
-            data-testid="tab-set-list"
-          >
+          <StyledTabs role="tablist" data-testid="tab-set-list">
             {Children.map(children, ({ props }, index: number) => (
               <TabItem
                 tabId={tabIds[index]}
@@ -96,16 +105,19 @@ export const TabSet: React.FC<TabSetProps> = ({
                 {props.title}
               </TabItem>
             ))}
-          </ol>
-        </div>
+          </StyledTabs>
+        </StyledNavigation>
         {isScrollable && (
-          <ScrollButton
-            direction={SCROLL_DIRECTION.RIGHT}
+          <StyledScrollRight
+            aria-label={`Scroll ${SCROLL_DIRECTION.RIGHT}`}
             onClick={scrollToNextTab((currentTabIndex) => currentTabIndex + 1)}
-          />
+            data-testid={`scroll-${SCROLL_DIRECTION.RIGHT}`}
+          >
+            <IconKeyboardArrowRight />
+          </StyledScrollRight>
         )}
-      </header>
-      <div className="rn-tab-set__body">
+      </StyledHeader>
+      <StyledBody $isScrollable={isScrollable}>
         {Children.map(
           children,
           (child: React.ReactElement<TabProps>, index: number) => {
@@ -122,8 +134,8 @@ export const TabSet: React.FC<TabSetProps> = ({
             )
           }
         )}
-      </div>
-    </article>
+      </StyledBody>
+    </StyledTabSet>
   )
 }
 
