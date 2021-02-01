@@ -1,6 +1,5 @@
-import React from 'react'
 import { selectors } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import { StyledCheckmark } from '../../Checkbox/partials/StyledCheckmark'
 import { StyledInput } from '../../Checkbox/partials/StyledInput'
@@ -36,5 +35,6 @@ export const StyledCheckboxEnhanced = styled.div`
   ${StyledLabel} {
     font-size: ${fontSize('m')};
     color: ${color('neutral', '500')};
+    pointer-events: none;
   }
 `
