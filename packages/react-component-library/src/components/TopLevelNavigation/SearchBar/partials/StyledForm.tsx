@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
+import { StyledInput } from '../../../TextInput/partials/StyledInput'
+import { StyledOuterWrapper } from '../../../TextInput/partials/StyledOuterWrapper'
+import { StyledTextInput } from '../../../TextInput/partials/StyledTextInput'
+
 const { zIndex, color, spacing } = selectors
 
 export const StyledForm = styled.form`
@@ -10,13 +14,12 @@ export const StyledForm = styled.form`
   background-color: ${color('neutral', '400')};
   height: 59px;
 
-  .rn-textinput {
+  ${StyledTextInput} {
     margin: 0;
     flex-grow: 1;
   }
 
-  .rn-textinput__outer-wrapper,
-  .rn-textinput.has-focus .rn-textinput__outer-wrapper {
+  ${StyledOuterWrapper} {
     border: 0;
     background: transparent;
     align-items: center;
@@ -24,7 +27,7 @@ export const StyledForm = styled.form`
     box-shadow: none;
   }
 
-  .rn-textinput__input {
+  ${StyledInput} {
     padding: ${spacing('8')};
     color: ${color('neutral', 'white')};
     background-color: transparent;
