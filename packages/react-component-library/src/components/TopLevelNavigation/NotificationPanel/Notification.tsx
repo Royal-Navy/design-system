@@ -4,7 +4,7 @@ import formatDistanceStrict from 'date-fns/formatDistanceStrict'
 import format from 'date-fns/format'
 
 import { Avatar, AVATAR_VARIANT } from '../../Avatar'
-import { getId } from '../../../helpers'
+import { getInitials, getId } from '../../../helpers'
 import { LinkTypes } from '../../../common/Link'
 
 export interface NotificationProps {
@@ -15,13 +15,6 @@ export interface NotificationProps {
   on: string
   when: Date
   description: string
-}
-
-function getInitials(name: string) {
-  return name
-    .split(/[\s-]+/)
-    .map((namePart) => namePart[0])
-    .join('')
 }
 
 function formatWhen(when: Date) {

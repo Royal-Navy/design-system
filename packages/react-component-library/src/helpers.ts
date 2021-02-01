@@ -3,6 +3,13 @@ import { v4 as uuidv4 } from 'uuid'
 
 import logger from './utils/logger'
 
+function getInitials(name: string) {
+  return name
+    .split(/[\s-]+/)
+    .map((namePart) => namePart[0])
+    .join('')
+}
+
 function getKey(prefix: string, suffix: string | number): string {
   return `${prefix}-${suffix}`.replace(/\s/g, '')
 }
@@ -41,4 +48,4 @@ function withKey(
   return null
 }
 
-export { getId, getKey, hasClass, warnIfOverwriting, withKey }
+export { getInitials, getId, getKey, hasClass, warnIfOverwriting, withKey }
