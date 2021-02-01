@@ -21,6 +21,7 @@ import { StyledTitle } from './partials/StyledTitle'
 import { StyledVerticalSeparator } from './partials/StyledVerticalSeparator'
 import { StyledBanner } from './partials/StyledBanner'
 import { SearchBar } from '../SearchBar/SearchBar'
+import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
 
 export interface MastheadProps {
   hasDefaultLogo?: boolean
@@ -133,10 +134,7 @@ export const Masthead: React.FC<MastheadProps> = ({
                   icon={<Bell />}
                 >
                   {hasUnreadNotification && (
-                    <span
-                      className="rn-notification-panel__not-read"
-                      data-testid="not-read"
-                    />
+                    <StyledNotRead data-testid="not-read" />
                   )}
                 </StyledOption>
               )}
