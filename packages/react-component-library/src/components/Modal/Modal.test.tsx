@@ -270,4 +270,21 @@ describe('Modal', () => {
       })
     })
   })
+
+  describe('when the component has arbitrary props', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Modal data-arbitrary="arbitrary">
+          <span>Example child JSX</span>
+        </Modal>
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
 })

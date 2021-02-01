@@ -54,7 +54,7 @@ describe('Popover', () => {
         .getByTestId('floating-box-content')
         .getAttribute('id')
 
-      expect(wrapper.getByTestId('floating-box')).toHaveAttribute(
+      expect(wrapper.getByTestId('popover')).toHaveAttribute(
         'aria-describedby',
         contentId
       )
@@ -70,7 +70,7 @@ describe('Popover', () => {
       })
 
       it('to be visible to the end user', () => {
-        expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
+        expect(wrapper.getByTestId('popover')).toHaveStyleRule(
           'opacity',
           '1'
         )
@@ -93,7 +93,7 @@ describe('Popover', () => {
 
         it('to not be visible to the end user', () => {
           return waitFor(() => {
-            expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
+            expect(wrapper.getByTestId('popover')).toHaveStyleRule(
               'opacity',
               '0'
             )
@@ -128,7 +128,7 @@ describe('Popover', () => {
       })
 
       it('to be visible to the end user', () => {
-        expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
+        expect(wrapper.getByTestId('popover')).toHaveStyleRule(
           'opacity',
           '1'
         )
@@ -147,7 +147,7 @@ describe('Popover', () => {
 
         it('to not be visible to the end user', () => {
           return waitFor(() => {
-            expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
+            expect(wrapper.getByTestId('popover')).toHaveStyleRule(
               'opacity',
               '0'
             )
@@ -168,7 +168,7 @@ describe('Popover', () => {
 
         it('to not be visible to the end user', () => {
           return waitFor(() => {
-            expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
+            expect(wrapper.getByTestId('popover')).toHaveStyleRule(
               'opacity',
               '0'
             )
@@ -203,4 +203,22 @@ describe('Popover', () => {
       })
     })
   })
+
+  describe('when passing arbitrary props', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Popover content={content} data-arbitrary="arbitrary">
+          <div>{HOVER_ON_ME}</div>
+        </Popover>
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('popover')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
+
 })

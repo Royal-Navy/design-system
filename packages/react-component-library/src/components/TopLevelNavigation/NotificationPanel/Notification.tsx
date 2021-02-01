@@ -47,11 +47,12 @@ export const Notification: React.FC<NotificationProps> = ({
   on,
   when,
   description,
+  ...rest
 }) => {
   const contentId = getId('content')
 
   return (
-    <li data-testid="notification">
+    <li data-testid="notification" {...rest}>
       <div className="rn-notifications-item-wrapper">
         {React.cloneElement(link as ReactElement, {
           ...link.props,

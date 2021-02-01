@@ -56,7 +56,10 @@ const StyledTimelineMonths = styled.div`
   white-space: nowrap;
 `
 
-export const TimelineMonths: React.FC<TimelineMonthsProps> = ({ render }) => (
+export const TimelineMonths: React.FC<TimelineMonthsProps> = ({
+  render,
+  ...rest
+}) => (
   <TimelineContext.Consumer>
     {({
       dispatch,
@@ -93,6 +96,7 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({ render }) => (
             </StyledNavigation>
           </>
         )}
+        {...rest}
       >
         <StyledTimelineMonths>
           {months.map(({ startDate }, index) => (

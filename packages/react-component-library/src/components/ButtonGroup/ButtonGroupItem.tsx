@@ -20,6 +20,7 @@ export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
   icon,
   onClick,
   size,
+  ...rest
 }) => (
   <Button
     isDisabled={isDisabled}
@@ -29,6 +30,7 @@ export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
     type="button"
     variant="secondary"
     size={size}
+    {...rest}
   >
     {children}
   </Button>

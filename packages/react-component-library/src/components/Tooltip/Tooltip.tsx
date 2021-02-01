@@ -152,13 +152,13 @@ const StyledTooltipMessage = styled.div`
 export const Tooltip: React.FC<TooltipProps> = ({
   bottom,
   children,
-  id,
   left,
   position = TOOLTIP_POSITION.ABOVE,
   right,
   title,
   top,
   width,
+  ...rest
 }) => {
   const style = {
     bottom,
@@ -176,9 +176,9 @@ export const Tooltip: React.FC<TooltipProps> = ({
       aria-describedby={contentId}
       aria-labelledby={titleId}
       data-testid="tooltip"
-      id={id}
       role="tooltip"
       style={style}
+      {...rest}
     >
       <StyledTooltipContent position={position}>
         {title && <StyledTooltipTitle id={titleId}>{title}</StyledTooltipTitle>}

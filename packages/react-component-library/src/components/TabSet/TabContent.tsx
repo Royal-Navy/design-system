@@ -13,6 +13,7 @@ export const TabContent: React.FC<TabContentProps> = ({
   tabId,
   isActive,
   children,
+  ...rest
 }) => {
   const classes = classNames('rn-tab-set__content', { 'is-active': isActive })
 
@@ -25,6 +26,7 @@ export const TabContent: React.FC<TabContentProps> = ({
       id={tabId}
       tabIndex={0}
       data-testid="tab-set-content"
+      {...rest}
     >
       {children}
     </div>

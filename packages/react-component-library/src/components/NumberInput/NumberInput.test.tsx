@@ -659,4 +659,24 @@ describe('NumberInput', () => {
       assertInputValue('')
     })
   })
+
+  describe('when arbitrary props are specified', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <NumberInput
+          data-arbitrary="arbitrary"
+          name="number-input"
+          onChange={onChangeSpy}
+        />
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('number-input-input')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
+
 })

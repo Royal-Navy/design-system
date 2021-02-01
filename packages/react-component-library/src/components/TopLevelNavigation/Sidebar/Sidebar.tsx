@@ -23,6 +23,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   notifications,
   hasUnreadNotification,
   user,
+  ...rest
 }) => {
   const { open, setOpen } = useOpenClose(false)
   const classes = classNames('rn-sidebar', {
@@ -30,7 +31,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   })
 
   return (
-    <div className={classes} data-testid="sidebar">
+    <div className={classes} data-testid="sidebar" {...rest}>
       {nav &&
         React.cloneElement(nav, {
           ...nav.props,

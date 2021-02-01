@@ -69,6 +69,7 @@ export const Popover: React.FC<PopoverProps> = ({
         scheme={scheme}
         aria-describedby={contentId}
         contentId={contentId}
+        data-testid="popover"
         {...rest}
       >
         {React.cloneElement(content, {

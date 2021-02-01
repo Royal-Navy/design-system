@@ -23,6 +23,7 @@ describe('Toast', () => {
           appearance="info"
           autoDismiss={false}
           autoDismissTimeout={300}
+          data-arbitrary="arbitrary"
           label={LABEL}
           isRunning={false}
           onDismiss={onDismissSpy}
@@ -34,6 +35,13 @@ describe('Toast', () => {
         >
           {DESCRIPTION}
         </Toast>
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('toast-wrapper')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
       )
     })
 

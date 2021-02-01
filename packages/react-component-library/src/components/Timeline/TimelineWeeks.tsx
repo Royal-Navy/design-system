@@ -32,7 +32,10 @@ const StyledTimelineWeeks = styled.div`
   white-space: nowrap;
 `
 
-export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
+export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({
+  render,
+  ...rest
+}) => {
   return (
     <TimelineContext.Consumer>
       {({
@@ -47,6 +50,7 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({ render }) => {
           isShort
           name="Weeks"
           data-testid="timeline-weeks"
+          {...rest}
         >
           <StyledTimelineWeeks>
             {weeks.map(({ startDate }, index) => (

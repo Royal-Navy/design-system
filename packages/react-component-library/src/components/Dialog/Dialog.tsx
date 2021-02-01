@@ -43,6 +43,7 @@ export const Dialog: React.FC<DialogProps> = ({
 
   return (
     <StyledDialog
+      data-testid="dialog"
       titleId={titleId}
       descriptionId={descriptionId}
       primaryButton={confirmButton}

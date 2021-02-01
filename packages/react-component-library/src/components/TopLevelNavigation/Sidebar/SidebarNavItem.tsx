@@ -12,7 +12,7 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
   Image,
   isActive,
   link,
-  onClick,
+  ...rest
 }) => {
   const linkElement = link as React.ReactElement
   const classes = classNames('rn-sidebar__nav-link', { 'is-active': isActive })
@@ -31,6 +31,6 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
     ),
     className: classes,
     'data-testid': 'sidebar-nav-item',
-    onClick,
+    ...rest,
   })
 }

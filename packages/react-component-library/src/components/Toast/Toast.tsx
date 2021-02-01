@@ -67,7 +67,7 @@ export const Toast: React.FC<ToastProps> = ({
   transitionDuration,
   transitionState,
   dateTime,
-  className,
+  ...rest
 }) => {
   const [time] = useState<string>(
     (dateTime || new Date()).toLocaleTimeString('en-GB', {
@@ -82,7 +82,6 @@ export const Toast: React.FC<ToastProps> = ({
 
   return (
     <StyledToast
-      className={className}
       $appearance={appearance}
       style={{
         transition: `
@@ -95,6 +94,7 @@ export const Toast: React.FC<ToastProps> = ({
       aria-labelledby={titleId}
       aria-describedby={descriptionId}
       data-testid="toast-wrapper"
+      {...rest}
     >
       <StyledToastHeader>
         <StyledToastTitle id={titleId} data-testid="toast-title">

@@ -13,9 +13,6 @@ const StyledPanel = styled.div`
   border-radius: 3px;
 `
 
-export const Panel: React.FC<ComponentWithClass> = ({
-  children,
-  className,
-}) => {
-  return <StyledPanel className={className}>{children}</StyledPanel>
-}
+export const Panel: React.FC<ComponentWithClass> = (props) => (
+  <StyledPanel data-testid="panel" {...props} />
+)

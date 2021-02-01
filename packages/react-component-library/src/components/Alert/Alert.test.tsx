@@ -7,7 +7,7 @@ import { Alert, ALERT_VARIANT } from '.'
 describe('Alert', () => {
   let wrapper: RenderResult
 
-  describe('when only the description is specified', () => {
+  describe('when minimal props are provided', () => {
     beforeEach(() => {
       wrapper = render(<Alert>Description</Alert>)
     })
@@ -55,9 +55,47 @@ describe('Alert', () => {
     })
   })
 
-  describe('when the title is specified', () => {
+  describe('when composing with different variants', () => {
+    it.each`
+      variant
+      ${ALERT_VARIANT.DANGER}
+      ${ALERT_VARIANT.INFO}
+      ${ALERT_VARIANT.SUCCESS}
+      ${ALERT_VARIANT.WARNING}
+    `('should render the $variant icon', ({ variant }) => {
+      wrapper = render(
+        <Alert title="Title" variant={variant}>
+          Description
+        </Alert>
+      )
+
+      expect(wrapper.getByTestId(`icon-${variant}`)).toBeInTheDocument()
+    })
+  })
+
+  describe('when all props are provided', () => {
+    let onCloseSpy: (event: React.FormEvent<HTMLButtonElement>) => void
+
     beforeEach(() => {
-      wrapper = render(<Alert title="Title">Description</Alert>)
+      onCloseSpy = jest.fn()
+
+      wrapper = render(
+        <Alert
+          data-arbitrary="arbitrary"
+          onClose={onCloseSpy}
+          title="Title"
+          variant={ALERT_VARIANT.DANGER}
+        >
+          Description
+        </Alert>
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('alert')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
     })
 
     it('should set the `aria-labelledby` attribute to the ID of the title', () => {
@@ -91,8 +129,10 @@ describe('Alert', () => {
       )
     })
 
-    it('should render the default info icon', () => {
-      expect(wrapper.getByTestId('icon-info')).toBeInTheDocument()
+    it('should render the danger icon', () => {
+      expect(
+        wrapper.getByTestId(`icon-${ALERT_VARIANT.DANGER}`)
+      ).toBeInTheDocument()
     })
 
     it('should render the content title', () => {
@@ -103,34 +143,6 @@ describe('Alert', () => {
       expect(wrapper.getByTestId('content-description')).toHaveTextContent(
         'Description'
       )
-    })
-  })
-
-  describe('when composing with different variants', () => {
-    it.each`
-      variant
-      ${ALERT_VARIANT.DANGER}
-      ${ALERT_VARIANT.INFO}
-      ${ALERT_VARIANT.SUCCESS}
-      ${ALERT_VARIANT.WARNING}
-    `('should render the $variant icon', ({ variant }) => {
-      wrapper = render(
-        <Alert title="Title" variant={variant}>
-          Description
-        </Alert>
-      )
-
-      expect(wrapper.getByTestId(`icon-${variant}`)).toBeInTheDocument()
-    })
-  })
-
-  describe('when the onClose callback is specified', () => {
-    let onCloseSpy: (event: React.FormEvent<HTMLButtonElement>) => void
-
-    beforeEach(() => {
-      onCloseSpy = jest.fn()
-
-      wrapper = render(<Alert onClose={onCloseSpy}>Description</Alert>)
     })
 
     describe('when the close button is clicked', () => {

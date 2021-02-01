@@ -30,13 +30,13 @@ interface ContextMenuProps extends ComponentWithClass {
 }
 
 export const ContextMenu: React.FC<ContextMenuProps> = ({
-  className,
   children,
   attachedToRef,
   clickType = 'right',
   onHide,
   onShow,
   position = CLICK_MENU_POSITION.BELOW,
+  ...rest
 }) => {
   const { coordinates, isOpen, menuRef } = useClickMenu<HTMLOListElement>({
     attachedToRef,
@@ -54,11 +54,11 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
     <StyledContextMenu
       $hasIcons={hasIcons}
       $isOpen={isOpen}
-      className={className}
       data-testid="context-menu"
       left={coordinates.x}
       ref={menuRef}
       top={coordinates.y}
+      {...rest}
     >
       {children}
     </StyledContextMenu>

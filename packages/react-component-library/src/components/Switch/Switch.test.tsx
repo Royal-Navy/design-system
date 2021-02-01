@@ -15,6 +15,7 @@ describe('Switch', () => {
       wrapper = render(
         <Switch
           className="custom-class"
+          data-arbitrary="arbitrary"
           label="Switch label"
           name="switch-name"
           onChange={onChangeSpy}
@@ -26,6 +27,13 @@ describe('Switch', () => {
           ]}
           value="3"
         />
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('switch-wrapper')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
       )
     })
 

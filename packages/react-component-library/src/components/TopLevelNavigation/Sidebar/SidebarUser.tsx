@@ -14,6 +14,7 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
   className,
   initials,
   link,
+  ...rest
 }) => {
   const classes = classNames('rn-sidebar__nav-link', className)
 
@@ -27,6 +28,7 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
     ),
     className: classes,
     'data-testid': 'sidebar-user',
+    ...rest
   })
 }
 

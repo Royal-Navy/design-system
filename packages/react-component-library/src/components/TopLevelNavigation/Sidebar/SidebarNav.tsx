@@ -26,20 +26,10 @@ function mapNavItem(
 
 export const SidebarNav: React.FC<SidebarNavProps> = ({
   children,
-  onBlur,
-  onFocus,
   onItemClick,
-  onMouseOut,
-  onMouseOver,
+  ...rest
 }) => (
-  <nav
-    className="rn-sidebar__top"
-    data-testid="sidebar-nav"
-    onBlur={onBlur}
-    onFocus={onFocus}
-    onMouseOut={onMouseOut}
-    onMouseOver={onMouseOver}
-  >
+  <nav className="rn-sidebar__top" data-testid="sidebar-nav" {...rest}>
     {React.Children.map(
       children,
       (child: React.ReactElement<SidebarNavItemProps>) => {

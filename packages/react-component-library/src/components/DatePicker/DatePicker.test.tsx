@@ -437,4 +437,17 @@ describe('DatePicker', () => {
       )
     })
   })
+
+  describe('when arbitrary props are provided', () => {
+    beforeEach(() => {
+      wrapper = render(<DatePicker data-arbitrary="arbitrary" />)
+    })
+
+    it('sets the disabled attribute correctly for the input', () => {
+      expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
 })

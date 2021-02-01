@@ -350,4 +350,37 @@ describe('ContextMenu', () => {
       })
     })
   })
+
+  describe('With arbitrary props', () => {
+    beforeEach(() => {
+      const ContextExample = () => {
+        const ref = useRef()
+
+        return (
+          <>
+            <div>Click elsewhere</div>
+            <div ref={ref}><p>Click me!</p></div>
+            <ContextMenu
+              attachedToRef={ref}
+              clickType="left"
+              data-arbitrary="arbitrary"
+            >
+              <ContextMenuItem
+                link={<Link href="/hello-foo">Hello, Foo!</Link>}
+              />
+            </ContextMenu>
+          </>
+        )
+      }
+
+      wrapper = render(<ContextExample />)
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('context-menu')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
 })

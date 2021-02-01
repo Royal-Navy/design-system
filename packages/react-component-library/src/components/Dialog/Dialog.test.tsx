@@ -25,6 +25,7 @@ describe('Modal', () => {
       beforeEach(() => {
         wrapper = render(
           <Dialog
+            data-arbitrary="arbitrary"
             title={title}
             description={description}
             onConfirm={onConfirm}
@@ -34,10 +35,17 @@ describe('Modal', () => {
         )
       })
 
+      it('should spread arbitrary props', () => {
+        expect(wrapper.getByTestId('dialog')).toHaveAttribute(
+          'data-arbitrary',
+          'arbitrary'
+        )
+      })
+
       it('should set the `aria-labelledby` attribute to the ID of the title', () => {
         const titleId = wrapper.getByTestId('dialog-title').getAttribute('id')
 
-        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+        expect(wrapper.getByTestId('dialog')).toHaveAttribute(
           'aria-labelledby',
           titleId
         )

@@ -22,7 +22,10 @@ const StyledTimelineDays = styled.div`
   white-space: nowrap;
 `
 
-export const TimelineDays: React.FC<TimelineDaysProps> = ({ render }) => {
+export const TimelineDays: React.FC<TimelineDaysProps> = ({
+  render,
+  ...rest
+}) => {
   return (
     <TimelineContext.Consumer>
       {({
@@ -37,6 +40,7 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({ render }) => {
           isShort
           name="Days"
           data-testid="timeline-days"
+          {...rest}
         >
           <StyledTimelineDays>
             {days.map(({ date }, index) => (

@@ -7,6 +7,7 @@ import { Link } from '../../Link'
 
 const MOCK_NOTIFICATION = (
   <Notification
+    data-arbitrary="arbitrary-notification"
     link={<Link href="notifications/1" />}
     name="Thomas Stephens"
     action="added a new comment to your"
@@ -22,11 +23,27 @@ describe('Notifications', () => {
 
     beforeEach(() => {
       wrapper = render(
-        <Notifications link={<Link href="notifications" />}>
+        <Notifications
+          data-arbitrary="arbitrary-notifications"
+          link={<Link href="notifications" />}
+        >
           {MOCK_NOTIFICATION}
           {MOCK_NOTIFICATION}
         </Notifications>
       )
+    })
+
+    it('should spread arbitrary props on the notifications', () => {
+      expect(wrapper.getByTestId('notifications-sheet')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-notifications'
+      )
+    })
+
+    it('should spread arbitrary props on the notifications item', () => {
+      expect(
+        wrapper.getAllByTestId('notification')[0]
+      ).toHaveAttribute('data-arbitrary', 'arbitrary-notification')
     })
 
     it('should set the `role` attribute on the notification sheet to `grid`', () => {

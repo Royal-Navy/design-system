@@ -10,11 +10,25 @@ describe('DataList', () => {
   describe('default props', () => {
     beforeEach(() => {
       wrapper = render(
-        <DataList title="title">
-          <DataListItem description="One">1</DataListItem>
+        <DataList data-arbitrary="arbitrary" title="title">
+          <DataListItem data-arbitrary="arbitrary-item" description="One">1</DataListItem>
           <DataListItem description="Two">2</DataListItem>
           <DataListItem description="Three">3</DataListItem>
         </DataList>
+      )
+    })
+
+    it('should spread arbitrary props to the data list', () => {
+      expect(wrapper.getByTestId('data-list')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+
+    it('should spread arbitrary props to the data list items', () => {
+      expect(wrapper.getAllByTestId('data-list-item')[0]).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-item'
       )
     })
 

@@ -182,6 +182,7 @@ export const TimelineEvent: React.FC<TimelineEventProps> = ({
   endDate,
   render,
   startDate,
+  ...rest
 }) => {
   const {
     startsBeforeStart,
@@ -216,6 +217,7 @@ export const TimelineEvent: React.FC<TimelineEventProps> = ({
         title,
         'aria-label': title,
         role: 'cell',
+        ...rest,
       })}
     </div>
   )

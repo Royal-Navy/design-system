@@ -222,4 +222,26 @@ describe('CheckboxEnhanced', () => {
       ).toEqual('Hello, World!')
     })
   })
+
+  describe('when an abritrary prop is provided', () => {
+    beforeEach(() => {
+      checkbox = render(
+        <CheckboxEnhanced
+          data-arbitrary="arbitrary"
+          name={field.name}
+          value={field.value}
+          onChange={field.onChange}
+          title={label}
+          description="Hello, World!"
+        />
+      )
+    })
+
+    it('should drill the arbitrary prop', () => {
+      expect(checkbox.queryByTestId('checkbox')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
 })

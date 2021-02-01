@@ -18,9 +18,9 @@ export const PhaseBanner: React.FC<PhaseBannerProps> = ({
   isFullWidth = false,
   link = '/feedback',
   phase = 'alpha',
-  className,
+  ...rest
 }) => (
-  <StyledPhaseBanner className={className}>
+  <StyledPhaseBanner data-testid="phase-banner" {...rest}>
     <StyledWrapper
       $isFullWidth={isFullWidth}
       data-testid="phase-banner-wrapper"

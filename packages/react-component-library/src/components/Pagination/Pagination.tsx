@@ -18,6 +18,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   onChange,
   pageSize,
   total,
+  ...rest
 }) => {
   const totalPages = Math.ceil(total / pageSize)
 
@@ -28,7 +29,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   )
 
   return (
-    <StyledList>
+    <StyledList data-testid="pagination" {...rest}>
       <StyledListItem key={getKey('pagination-item', 'previous')}>
         <PaginationButton
           aria-label="Previous page"

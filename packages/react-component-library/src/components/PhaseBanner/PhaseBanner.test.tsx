@@ -17,12 +17,21 @@ describe('PhaseBanner', () => {
         </p>
       )
 
-      wrapper = render(<PhaseBanner>{content}</PhaseBanner>)
+      wrapper = render(
+        <PhaseBanner data-arbitrary="arbitrary">{content}</PhaseBanner>
+      )
     })
 
     it('renders the custom content', () => {
       expect(wrapper.getByTestId('phase-banner-content').innerHTML).toContain(
         renderToStaticMarkup(content)
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('phase-banner')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
       )
     })
   })

@@ -66,6 +66,7 @@ export const TableColumn: React.FC<TableColumnProps> = ({
   onSortClick,
   sortOrder,
   children,
+  ...rest
 }) => {
   const icon = getIcon(isSortable, sortOrder)
 
@@ -81,6 +82,7 @@ export const TableColumn: React.FC<TableColumnProps> = ({
       $isSortable={isSortable}
       onClick={onClick}
       data-testid="table-header"
+      {...rest}
     >
       {children}
       {icon}

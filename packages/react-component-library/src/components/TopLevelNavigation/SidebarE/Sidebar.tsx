@@ -28,15 +28,18 @@ export const SidebarE: React.FC<SidebarEProps> = ({
   user,
   hasUnreadNotification,
   notifications,
+  ...rest
 }) => {
   return (
     <SidebarProvider>
       <SidebarContext.Consumer>
         {({ isOpen, hasMouseOver, setHasMouseOver }) => (
           <StyledSidebar
+            data-testid="sidebar"
             isOpen={isOpen}
             onMouseEnter={(_) => setHasMouseOver(true)}
             onMouseLeave={(_) => setHasMouseOver(false)}
+            {...rest}
           >
             <Transition in={hasMouseOver} timeout={0} unmountOnExit>
               {(state) => (

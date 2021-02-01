@@ -370,4 +370,19 @@ describe('Pagination', () => {
       expect(page).toHaveStyleRule('color', color('neutral', 'white'))
     })
   })
+
+  describe('when passing arbitrary props', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Pagination data-arbitrary="arbitrary" pageSize={10} total={45} />
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('pagination')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
 })

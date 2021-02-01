@@ -51,6 +51,7 @@ describe('Tooltip', () => {
       wrapper = render(
         <Tooltip
           bottom={1}
+          data-arbitrary="arbitrary"
           id="123"
           left={2}
           position={TOOLTIP_POSITION.BELOW}
@@ -61,6 +62,13 @@ describe('Tooltip', () => {
         >
           Content
         </Tooltip>
+      )
+    })
+
+    it('should spread arbitrary props', () => {
+      expect(wrapper.getByTestId('tooltip')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
       )
     })
 

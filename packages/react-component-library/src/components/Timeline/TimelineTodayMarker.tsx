@@ -55,6 +55,7 @@ function renderDefault({ offset }: { offset: string }) {
 
 export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = ({
   render,
+  ...rest
 }) => {
   const {
     state: { today },
@@ -71,6 +72,7 @@ export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = ({
     <StyledTimelineTodayMarkerWrapper
       data-testid="timeline-today-marker-wrapper"
       role="presentation"
+      {...rest}
     >
       {render ? render(today, offset) : renderDefault({ offset })}
     </StyledTimelineTodayMarkerWrapper>

@@ -204,4 +204,25 @@ describe('Checkbox', () => {
       expect(checkbox.queryByTestId('label')).toHaveAttribute('for', 'test')
     })
   })
+
+  describe('when an arbitrary prop is provided', () => {
+    beforeEach(() => {
+      checkbox = render(
+        <Checkbox
+          data-arbitrary="arbitrary"
+          name={field.name}
+          value={field.value}
+          label={label}
+          onChange={field.onChange}
+        />
+      )
+    })
+
+    it('should drill the arbitrary prop', () => {
+      expect(checkbox.queryByTestId('checkbox')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary'
+      )
+    })
+  })
 })

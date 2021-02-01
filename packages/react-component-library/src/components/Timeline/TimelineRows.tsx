@@ -39,7 +39,7 @@ const StyledTimelineRowWeek = styled.div<StyledTimelineRowWeekProps>`
   display: inline-block;
   height: 100vh;
   background-color: ${({ isOddNumber }) =>
-    isOddNumber ?  TIMELINE_ALT_BG_COLOR : TIMELINE_BG_COLOR};
+    isOddNumber ? TIMELINE_ALT_BG_COLOR : TIMELINE_BG_COLOR};
   margin-left: ${({ marginLeft }) => marginLeft};
   width: ${({ width }) => width};
 `
@@ -88,6 +88,7 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
   children,
   className,
   renderColumns,
+  ...rest
 }) => {
   const hasChildren = React.Children.count(children) > 0
   const mainClasses = classNames('timeline__main', className)
@@ -151,6 +152,7 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
         defaultStyles={!renderColumns}
         role="rowgroup"
         data-testid="timeline-rows"
+        {...rest}
       >
         {hasChildren ? children : <TimelineNoData />}
       </StyledTimelineMain>

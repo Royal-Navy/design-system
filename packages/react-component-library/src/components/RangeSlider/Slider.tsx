@@ -113,7 +113,6 @@ const StyledIconRight = styled.div`
 `
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
-  className,
   domain,
   step,
   hasLabels,
@@ -125,6 +124,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   isReversed,
   isDisabled,
   values,
+  onChange,
   onUpdate,
   thresholds,
   hasPercentage,
@@ -152,11 +152,11 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
 
   return (
     <StyledRangeSlider
-      className={className}
       $isReversed={isReversed}
       $isDisabled={isDisabled}
       $hasPercentage={hasPercentage}
       data-testid="rangeslider"
+      {...rest}
     >
       {IconLeft && (
         <StyledIconLeft aria-hidden data-testid="rangeslider-icon-left">
@@ -169,8 +169,8 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         disabled={isDisabled}
         values={values}
         step={step}
+        onChange={onChange}
         onUpdate={onUpdateHandler}
-        {...rest}
       >
         <Rail>
           {({ getRailProps }) => (
