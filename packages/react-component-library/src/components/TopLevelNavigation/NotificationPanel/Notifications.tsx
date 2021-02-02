@@ -3,6 +3,9 @@ import { IconKeyboardArrowRight } from '@royalnavy/icon-library'
 
 import { LinkTypes } from '../../../common/Link'
 import { NotificationProps } from './index'
+import { StyledNotifications } from './partials/StyledNotifications'
+import { StyledList } from './partials/StyledList'
+import { StyledViewAll } from './partials/StyledViewAll'
 
 export interface NotificationsProps {
   children:
@@ -16,11 +19,9 @@ export const Notifications: React.FC<NotificationsProps> = ({
   link,
   ...rest
 }) => (
-  <div data-testid="notifications-sheet" role="grid" {...rest}>
-    <ol className="rn-notifications" data-testid="notifications">
-      {children}
-    </ol>
-    <span className="rn-notifications__view-all">
+  <StyledNotifications data-testid="notifications-sheet" role="grid" {...rest}>
+    <StyledList data-testid="notifications">{children}</StyledList>
+    <StyledViewAll>
       {React.cloneElement(link as ReactElement, {
         children: (
           <>
@@ -29,6 +30,6 @@ export const Notifications: React.FC<NotificationsProps> = ({
           </>
         ),
       })}
-    </span>
-  </div>
+    </StyledViewAll>
+  </StyledNotifications>
 )

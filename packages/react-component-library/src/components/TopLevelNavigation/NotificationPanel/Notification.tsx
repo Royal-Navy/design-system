@@ -4,8 +4,16 @@ import formatDistanceStrict from 'date-fns/formatDistanceStrict'
 import format from 'date-fns/format'
 
 import { Avatar, AVATAR_VARIANT } from '../../Avatar'
-import { getId } from '../../../helpers'
+import { getInitials, getId } from '../../../helpers'
 import { LinkTypes } from '../../../common/Link'
+import { StyledNotification } from './partials/StyledNotification'
+import { StyledWrapper } from './partials/StyledWrapper'
+import { StyledItem } from './partials/StyledItem'
+import { StyledAvatar } from './partials/StyledAvatar'
+import { StyledItemNotRead } from './partials/StyledItemNotRead'
+import { StyledContent } from './partials/StyledContent'
+import { StyledCircle } from './partials/StyledCircle'
+import { StyledDescription } from './partials/StyledDescription'
 
 export interface NotificationProps {
   link: React.ReactElement<LinkTypes>
@@ -15,13 +23,6 @@ export interface NotificationProps {
   on: string
   when: Date
   description: string
-}
-
-function getInitials(name: string) {
-  return name
-    .split(/[\s-]+/)
-    .map((namePart) => namePart[0])
-    .join('')
 }
 
 function formatWhen(when: Date) {
@@ -52,55 +53,41 @@ export const Notification: React.FC<NotificationProps> = ({
   const contentId = getId('content')
 
   return (
-    <li data-testid="notification" {...rest}>
-      <div className="rn-notifications-item-wrapper">
+    <StyledNotification data-testid="notification" {...rest}>
+      <StyledWrapper>
         {React.cloneElement(link as ReactElement, {
           ...link.props,
           children: (
-            <div
+            <StyledItem
               aria-describedby={contentId}
-              className="rn-notifications-item"
               data-testid="notification-row"
               role="row"
             >
-              <div className="rn-notifications-item__avatar" role="gridcell">
+              <StyledAvatar role="gridcell">
                 <Avatar
                   initials={getInitials(name)}
                   variant={AVATAR_VARIANT.DARK}
                 />
-                {!isRead && (
-                  <span
-                    className="rn-notification-panel__not-read rn-notification-panel__not-read--notification-item"
-                    data-testid="not-read-item"
-                  />
-                )}
-              </div>
-              <div
-                className="rn-notifications-item__content"
+                {!isRead && <StyledItemNotRead data-testid="not-read-item" />}
+              </StyledAvatar>
+              <StyledContent
                 data-testid="notification-content"
                 id={contentId}
                 role="gridcell"
               >
-                <span className="rn-notifications-item__content-strong">
-                  {name}
-                </span>
+                <strong>{name}</strong>
                 {` ${action} `}
-                <span className="rn-notifications-item__content-strong">
-                  {on}
-                </span>
-                <span
-                  className="rn-notifications-item__content-circle"
-                  data-testid="circle"
-                />
+                <strong>{on}</strong>
+                <StyledCircle data-testid="circle" />
                 <span>{formatWhen(when)}</span>
-                <div className="rn-notifications-item__content-description">
+                <StyledDescription>
                   {description.substring(0, 38)}...
-                </div>
-              </div>
-            </div>
+                </StyledDescription>
+              </StyledContent>
+            </StyledItem>
           ),
         })}
-      </div>
-    </li>
+      </StyledWrapper>
+    </StyledNotification>
   )
 }

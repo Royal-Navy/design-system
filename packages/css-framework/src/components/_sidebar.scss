@@ -38,6 +38,7 @@ body.has-sidebar {
 
   &:hover, &:focus {
     outline: none;
+    text-decoration: none;
   }
 }
 
@@ -52,8 +53,6 @@ body.has-sidebar {
   fill: f.color("neutral", "200");
 }
 
-
-
 .rn-sidebar__nav-link.is-active .rn-sidebar__nav-label {
   color: f.color("neutral", "white");
 }
@@ -61,8 +60,6 @@ body.has-sidebar {
 .rn-sidebar__nav-link.is-active .rn-iconfill {
   fill: f.color("neutral", "white");
 }
-
-
 
 .rn-sidebar__top {
   padding-bottom: 100px;
@@ -95,10 +92,14 @@ body.has-sidebar {
   background: f.color("neutral", "700");
 }
 
-
 .rn-sidebar__bottom {
   width: $bar-width;
+
+  > div > button {
+    margin-bottom: 1rem;
+  }
 }
+
 .rn-sidebar__bottom .rn-sidebar__nav-link {
   padding-top: spacing("4");
   padding-bottom: spacing("4");
@@ -136,8 +137,6 @@ body.has-sidebar {
 .rn-sidebar.is-open .rn-sidebar__nav-label {
   opacity: 1;
 }
-
-
 
 // Animations
 

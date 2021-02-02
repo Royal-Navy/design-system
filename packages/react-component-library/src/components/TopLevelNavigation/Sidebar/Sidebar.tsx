@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 
 import {
@@ -10,6 +10,7 @@ import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
 import { Bell } from '../../../icons'
 import { useOpenClose } from '../../../hooks'
+import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
 
 interface SidebarProps {
   hasUnreadNotification?: boolean
@@ -52,10 +53,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 icon={<Bell className="rn-sheet__icon" />}
               >
                 {hasUnreadNotification && (
-                  <span
-                    className="rn-notification-panel__not-read"
-                    data-testid="not-read"
-                  />
+                  <StyledNotRead data-testid="not-read" />
                 )}
               </SheetButton>
             )}
