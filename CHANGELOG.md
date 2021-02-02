@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.32.0](https://github.com/Royal-Navy/design-system/compare/2.31.1...2.32.0) (2021-02-02)
+
+
+### Bug Fixes
+
+* **CheckboxEnhanced:** Resolve unclickable label ([3247802](https://github.com/Royal-Navy/design-system/commit/3247802e7a4b64ad849b7cb64e6a5c978fef6911))
+
+
+### Features
+
+* **ReactComponentLibrary:** Spread arbitrary props ([e42ad6f](https://github.com/Royal-Navy/design-system/commit/e42ad6fb35ac6945f005937f8420eb3ce509f74f))
+
+
+
+
+
 ## [2.31.1](https://github.com/Royal-Navy/design-system/compare/2.31.0...2.31.1) (2021-02-01)
 
 
