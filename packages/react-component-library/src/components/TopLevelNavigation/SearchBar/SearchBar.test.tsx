@@ -35,11 +35,11 @@ describe('Searchbar', () => {
     })
 
     it('should auto focus on the search field', () => {
-      expect(wrapper.getByTestId('input')).toHaveFocus()
+      expect(wrapper.getByTestId('text-input-input')).toHaveFocus()
     })
 
     it('should render the input with a placeholder', () => {
-      expect(wrapper.getByTestId('input')).toHaveAttribute(
+      expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
         'placeholder',
         'placeholder'
       )
@@ -87,7 +87,7 @@ describe('Searchbar', () => {
 
     describe('and the user enters a search term', () => {
       beforeEach(() => {
-        fireEvent.change(wrapper.getByTestId('input'), {
+        fireEvent.change(wrapper.getByTestId('text-input-input'), {
           target: {
             value: 'A',
           },

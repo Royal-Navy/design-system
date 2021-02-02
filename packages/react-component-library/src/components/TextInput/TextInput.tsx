@@ -1,11 +1,16 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import classNames from 'classnames'
 
 import { useFocus } from '../../hooks/useFocus'
 import { useInputValue } from '../../hooks/useInputValue'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
+import { StyledTextInput } from './partials/StyledTextInput'
+import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
+import { StyledAdornment } from './partials/StyledAdornment'
+import { StyledInputWrapper } from './partials/StyledInputWrapper'
+import { StyledLabel } from './partials/StyledLabel'
+import { StyledInput } from './partials/StyledInput'
 
 export interface TextInputProps
   extends ComponentWithClass,
@@ -63,36 +68,31 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
   const { committedValue, hasValue, onValueChange } = useInputValue(value)
   const hasLabel = label && label.length
 
-  const classes = classNames(
-    'rn-textinput',
-    {
-      'has-focus': hasFocus,
-      'has-content': hasValue,
-      'no-label': !hasLabel,
-    },
-    className
-  )
-
   return (
-    <div className={classes} data-testid="container">
-      <div className="rn-textinput__outer-wrapper">
+    <StyledTextInput
+      className={className}
+      $hasFocus={hasFocus}
+      $hasContent={hasValue}
+      $noLabel={!hasLabel}
+      data-testid="text-input-container"
+    >
+      <StyledOuterWrapper>
         {startAdornment && (
-          <div className="rn-textinput__start-adornment">{startAdornment}</div>
+          <StyledAdornment $position="start">{startAdornment}</StyledAdornment>
         )}
-        <div className="rn-textinput__input-wrapper" data-testid="inputwrapper">
+        <StyledInputWrapper data-testid="text-input-input-wrapper">
           {hasLabel && (
-            <label className="rn-textinput__label" htmlFor={id}>
+            <StyledLabel htmlFor={id} data-testid="text-input-label">
               {label}
-            </label>
+            </StyledLabel>
           )}
-          <input
-            className="rn-textinput__input"
-            data-testid="input"
+          <StyledInput
+            data-testid="text-input-input"
             disabled={isDisabled}
             id={id}
             name={name}
             onBlur={onLocalBlur}
-            onChange={(e) => {
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               onValueChange(e)
               if (onChange) {
                 onChange(e)
@@ -104,13 +104,13 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
             value={committedValue}
             {...rest}
           />
-        </div>
+        </StyledInputWrapper>
         {endAdornment && (
-          <div className="rn-textinput__end-adornment">{endAdornment}</div>
+          <StyledAdornment $position="end">{endAdornment}</StyledAdornment>
         )}
-      </div>
-      {footnote && <small className="rn-textinput__footnote">{footnote}</small>}
-    </div>
+      </StyledOuterWrapper>
+      {footnote && <small>{footnote}</small>}
+    </StyledTextInput>
   )
 }
 

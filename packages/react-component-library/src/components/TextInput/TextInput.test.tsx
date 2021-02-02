@@ -21,7 +21,7 @@ describe('TextInput', () => {
         <>
           <TextInput
             autoFocus
-            className="rn-textinput--custom"
+            className="custom-class"
             data-arbitrary="arbitrary"
             endAdornment={<span>end</span>}
             value="value"
@@ -40,26 +40,28 @@ describe('TextInput', () => {
       )
     })
 
-    it('should have the has-content class', () => {
-      expect(wrapper.getByTestId('container').classList).toContain(
-        'has-content'
+    it('should apply the `$hasContent` style rule to label', () => {
+      expect(wrapper.getByTestId('text-input-label')).toHaveStyleRule(
+        'transform',
+        'translate(0.75rem,0.75rem) scale(1)'
       )
     })
 
-    it('should not have the no-label class', () => {
-      expect(wrapper.getByTestId('container').classList).not.toContain(
-        'no-label'
+    it('should not apply the `$noLabel` style rule to the input', () => {
+      expect(wrapper.getByTestId('text-input-input')).not.toHaveStyleRule(
+        'padding',
+        '0.75rem'
       )
     })
 
     it('should set the custom class', () => {
-      expect(wrapper.getByTestId('container').classList).toContain(
-        'rn-textinput--custom'
+      expect(wrapper.getByTestId('text-input-container').classList).toContain(
+        'custom-class'
       )
     })
 
     it('should spread arbitrary props', () => {
-      expect(wrapper.getByTestId('input')).toHaveAttribute(
+      expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
       )
@@ -78,26 +80,38 @@ describe('TextInput', () => {
     })
 
     it('should set the ID', () => {
-      expect(wrapper.getByTestId('input')).toHaveAttribute('id', 'id')
+      expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
+        'id',
+        'id'
+      )
     })
 
     it('should set the name', () => {
-      expect(wrapper.getByTestId('input')).toHaveAttribute('name', 'name')
+      expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
+        'name',
+        'name'
+      )
     })
 
     it('should set the placeholder', () => {
-      expect(wrapper.getByTestId('input')).toHaveAttribute(
+      expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
         'placeholder',
         'placeholder'
       )
     })
 
     it('should set the type', () => {
-      expect(wrapper.getByTestId('input')).toHaveAttribute('type', 'text')
+      expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
+        'type',
+        'text'
+      )
     })
 
     it('should set the value', () => {
-      expect(wrapper.getByTestId('input')).toHaveAttribute('value', 'value')
+      expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
+        'value',
+        'value'
+      )
     })
 
     it('should render the end adornment', () => {
@@ -110,7 +124,7 @@ describe('TextInput', () => {
 
     describe('and focusing on the input', () => {
       beforeEach(() => {
-        wrapper.getByTestId('input').focus()
+        wrapper.getByTestId('text-input-input').focus()
       })
 
       describe('and focusing on the next input', () => {
@@ -127,32 +141,33 @@ describe('TextInput', () => {
     describe('when the value is changed', () => {
       beforeEach(async () => {
         await userEvent.type(
-          wrapper.getByTestId('input'),
+          wrapper.getByTestId('text-input-input'),
           '{backspace}'
         )
       })
 
       it('should update the value', () => {
-        expect(wrapper.getByTestId('input')).toHaveValue('valu')
+        expect(wrapper.getByTestId('text-input-input')).toHaveValue('valu')
       })
     })
 
     describe('when the value is deleted', () => {
       beforeEach(async () => {
         await userEvent.type(
-          wrapper.getByTestId('input'),
+          wrapper.getByTestId('text-input-input'),
           '{backspace}{backspace}{backspace}{backspace}{backspace}'
         )
       })
 
-      it('should remove the `has-content` to the container', () => {
-        expect(
-          wrapper.getByTestId('container').classList
-        ).not.toContain('has-content')
+      it('should remove the `$hasContent` style rule from label', () => {
+        expect(wrapper.getByTestId('text-input-label')).toHaveStyleRule(
+          'transform',
+          'translate(0.75rem,0.75rem) scale(1)'
+        )
       })
 
       it('should update the value', () => {
-        expect(wrapper.getByTestId('input')).toHaveValue('')
+        expect(wrapper.getByTestId('text-input-input')).toHaveValue('')
       })
     })
   })
@@ -163,7 +178,10 @@ describe('TextInput', () => {
     })
 
     it('should have the no-label class', () => {
-      expect(wrapper.getByTestId('container').classList).toContain('no-label')
+      expect(wrapper.getByTestId('text-input-input')).toHaveStyleRule(
+        'padding',
+        '1.25rem 0.75rem 0.25rem'
+      )
     })
   })
 
@@ -172,8 +190,11 @@ describe('TextInput', () => {
       wrapper = render(<TextInput name="name" isDisabled />)
     })
 
-    it('should have the no-label class', () => {
-      expect(wrapper.getByTestId('input')).toHaveAttribute('disabled', '')
+    it('should correctly apply the `disabled` attribute to the input element', () => {
+      expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
+        'disabled',
+        ''
+      )
     })
   })
 
@@ -182,8 +203,11 @@ describe('TextInput', () => {
       wrapper = render(<TextInput name="name" type="password" />)
     })
 
-    it('should have the no-label class', () => {
-      expect(wrapper.getByTestId('input')).toHaveAttribute('type', 'password')
+    it('should correctly apply the custom `type` attribute to the input element', () => {
+      expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
+        'type',
+        'password'
+      )
     })
   })
 
@@ -209,14 +233,18 @@ describe('TextInput', () => {
       })
 
       it('should not add the aria attributes', () => {
-        expect(wrapper.getByTestId('input')).not.toHaveAttribute('aria-invalid')
-        expect(wrapper.getByTestId('input')).not.toHaveAttribute(
+        expect(wrapper.getByTestId('text-input-input')).not.toHaveAttribute(
+          'aria-invalid'
+        )
+        expect(wrapper.getByTestId('text-input-input')).not.toHaveAttribute(
           'aria-describedBy'
         )
       })
 
       it('should not have an error', () => {
-        expect(wrapper.getByTestId('container')).not.toHaveClass('is-invalid')
+        expect(wrapper.getByTestId('text-input-container')).not.toHaveClass(
+          'is-invalid'
+        )
       })
 
       it('should not show the error', () => {
@@ -249,15 +277,19 @@ describe('TextInput', () => {
       })
 
       it('should add the aria attributes', () => {
-        expect(wrapper.getByTestId('input')).toHaveAttribute(
+        expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
           'aria-invalid',
           'true'
         )
-        expect(wrapper.getByTestId('input')).toHaveAttribute('aria-describedby')
+        expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
+          'aria-describedby'
+        )
       })
 
       it('should have an error', () => {
-        expect(wrapper.getByTestId('container')).toHaveClass('is-invalid')
+        expect(wrapper.getByTestId('text-input-container')).toHaveClass(
+          'is-invalid'
+        )
       })
 
       it('should show the error', () => {
