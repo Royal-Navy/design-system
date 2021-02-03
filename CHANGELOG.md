@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.32.1](https://github.com/Royal-Navy/design-system/compare/2.32.0...2.32.1) (2021-02-03)
+
+
+### Bug Fixes
+
+* **Sidebar:** Display legacy sidebar notification icon ([12b4d2c](https://github.com/Royal-Navy/design-system/commit/12b4d2cd031010007a346ab0491b305a80748d8d))
+
+
+
+
+
 # [2.32.0](https://github.com/Royal-Navy/design-system/compare/2.31.1...2.32.0) (2021-02-02)
 
 
