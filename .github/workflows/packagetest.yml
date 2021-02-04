@@ -60,6 +60,7 @@ jobs:
           run: |
            cd my-app
            grep version node_modules/@royalnavy/**/package.json
+           echo "SKIP_PREFLIGHT_CHECK=true" > .env  #workaround for babel-loader (8.2.2) CRA version issue
            yarn build
 
 
