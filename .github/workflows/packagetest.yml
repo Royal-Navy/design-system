@@ -55,10 +55,11 @@ jobs:
         - name: Create boilerplate app
           run: |
            npx create-react-app my-app --template file:../design-system/packages/cra-template-royalnavy
-           cd my-app
-           grep version node_modules/@royalnavy/**/package.json
 
         - name: Build boilerlate app
-          run: yarn build
+          run: |
+           cd my-app
+           grep version node_modules/@royalnavy/**/package.json
+           yarn build
 
 
