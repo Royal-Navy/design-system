@@ -14,11 +14,11 @@ jobs:
           #   path: main
 
 
-        - name: Cache Node modules
-          uses: actions/cache@v2
-          with:
-            path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+        # - name: Cache Node modules
+        #   uses: actions/cache@v2
+        #   with:
+        #     path: '**/node_modules'
+        #     key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
 
         - name: Install Dependencies
@@ -52,5 +52,13 @@ jobs:
             done
            cat $TEMPLATE
 
+        - name: Create boilerplate app
+          run: |
+           npx create-react-app my-app --template file:../design-system/packages/cra-template-royalnavy
+           cd my-app
+           grep version node_modules/@royalnavy/**/package.json
+
+        - name: Build boilerlate app
+          run: yarn build
 
 
