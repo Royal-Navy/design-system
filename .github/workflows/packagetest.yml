@@ -1,0 +1,56 @@
+name: Package Test
+
+on:
+  pull_request:
+
+jobs:
+     Package_test:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Git clone repository
+          uses: actions/checkout@v2
+          # with:
+          #   path: main
+
+
+        - name: Cache Node modules
+          uses: actions/cache@v2
+          with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+
+        - name: Install Dependencies
+          run: |
+            yarn install
+
+        - name: Build design-tokens
+          run: yarn --cwd packages/design-tokens build
+
+        - name: test info
+          run: |
+           pwd
+           ls -l
+           jq --version
+           cat packages/cra-template-royalnavy/template.json
+
+        - name: Update CRA template to use local packages
+          run: |
+           TEMPLATE=packages/cra-template-royalnavy/template.json
+           PACKAGES=(
+            design-tokens
+            css-framework
+            fonts
+            icon-library
+            react-component-library
+           )
+           for i in "${PACKAGES[@]}";
+            do
+              contents="$(jq '.package.dependencies."@royalnavy/'$i'" = "file:../packages/'$i'"' $TEMPLATE)" \
+              && echo "${contents}" > $TEMPLATE
+            done
+           cat $TEMPLATE
+
+
+
