@@ -32,11 +32,17 @@ module.exports = {
           },
         ],
       ],
-      plugins: ['babel-plugin-jsx-remove-data-test-id'],
+      plugins: [
+        'babel-plugin-styled-components',
+        'babel-plugin-jsx-remove-data-test-id',
+      ],
     },
     cjs: {
       presets: [['@babel/preset-env']],
-      plugins: ['babel-plugin-jsx-remove-data-test-id'],
+      plugins: [
+        'babel-plugin-styled-components',
+        'babel-plugin-jsx-remove-data-test-id',
+      ],
     },
     test: {
       plugins: ['@babel/plugin-transform-modules-commonjs'],
