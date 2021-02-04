@@ -10,16 +10,12 @@ jobs:
       steps:
         - name: Git clone repository
           uses: actions/checkout@v2
-          # with:
-          #   path: main
 
-
-        # - name: Cache Node modules
-        #   uses: actions/cache@v2
-        #   with:
-        #     path: '**/node_modules'
-        #     key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
+        - name: Cache Node modules
+          uses: actions/cache@v2
+          with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
         - name: Install Dependencies
           run: |
