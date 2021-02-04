@@ -1,7 +1,5 @@
 import React from 'react'
 import classNames from 'classnames'
-import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineProvider } from './context'
@@ -25,11 +23,10 @@ import {
 } from '.'
 
 import { TimelineOptions } from './context/types'
-import {
-  DEFAULTS,
-  TIMELINE_BORDER_COLOR,
-  TIMELINE_ROW_HEADER_WIDTH,
-} from './constants'
+import { DEFAULTS } from './constants'
+import { StyledTimeline } from './partials/StyledTimeline'
+import { StyledInner } from './partials/StyledInner'
+import { StyledHeader } from './partials/StyledHeader'
 
 type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
 
@@ -110,30 +107,6 @@ function getDayWidth(
 
   return (dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH) * multiplier
 }
-
-const { color, spacing, zIndex } = selectors
-
-const StyledTimeline = styled.div`
-  position: relative;
-  z-index: ${zIndex('timeline', 0)};
-  display: flex;
-  width: 100%;
-  background-color: ${color('neutral', 'white')};
-`
-
-interface StyledInnerProps {
-  hasSide: boolean
-}
-
-const StyledInner = styled.div<StyledInnerProps>`
-  overflow-y: hidden;
-  border-right: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
-  border-bottom: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
-  margin-left: ${({ hasSide }) =>
-    hasSide ? TIMELINE_ROW_HEADER_WIDTH : 'initial'};
-`
-
-const StyledHeader = styled.div``
 
 export const Timeline: React.FC<TimelineProps> = ({
   children,

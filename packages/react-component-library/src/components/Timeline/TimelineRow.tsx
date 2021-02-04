@@ -1,12 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
 import classNames from 'classnames'
-import { selectors } from '@royalnavy/design-tokens'
 import { useTimelineRowContent } from './hooks/useTimelineRowContent'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { StyledNoEvents } from './partials/StyledNoEvents'
+import { StyledRow } from './partials/StyledRow'
+import { StyledRowContent } from './partials/StyledRowContent'
+import { StyledRowHeader } from './partials/StyledRowHeader'
 import { TimelineContext, TimelineEventsProps } from '.'
-import { TIMELINE_BORDER_COLOR, TIMELINE_ROW_HEADER_WIDTH } from './constants'
 
 export interface TimelineRowProps extends ComponentWithClass {
   children:
@@ -17,49 +18,6 @@ export interface TimelineRowProps extends ComponentWithClass {
   renderRowHeader?: (name: string) => React.ReactElement
   isHeader?: boolean
 }
-
-const { color, zIndex, fontSize, spacing } = selectors
-
-const StyledTimelineRow = styled.div`
-  display: flex;
-  height: 4rem;
-`
-
-interface StyledRowHeaderProps {
-  isHeader?: boolean
-}
-
-const StyledRowHeader = styled.div<StyledRowHeaderProps>`
-  min-width: ${TIMELINE_ROW_HEADER_WIDTH};
-  position: absolute;
-  left: 0;
-  height: inherit;
-  background-color: ${color('neutral', 'white')};
-  border-right: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
-  z-index: ${zIndex('body', 3)};
-  justify-content: flex-end;
-  display: inline-flex;
-  align-items: center;
-  font-size: ${fontSize('m')};
-  font-weight: 600;
-  color: ${color('neutral', '600')};
-  padding-right: ${spacing('8')};
-  ${({ isHeader }) =>
-    isHeader &&
-    `
-    font-size: ${fontSize('s')};
-    font-weight: normal;
-    color: ${color('neutral', '400')};
-  `}
-`
-
-const StyledRowContent = styled.div`
-  position: relative;
-`
-
-const StyledNoEvents = styled.span`
-  display: none;
-`
 
 export const TimelineRow: React.FC<TimelineRowProps> = ({
   children,
@@ -76,7 +34,7 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
   return (
     <TimelineContext.Consumer>
       {({ hasSide }) => (
-        <StyledTimelineRow
+        <StyledRow
           className={classes}
           data-testid="timeline-row"
           role="row"
@@ -96,7 +54,7 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
             {noCells && <StyledNoEvents role="cell">No events</StyledNoEvents>}
             {children}
           </StyledRowContent>
-        </StyledTimelineRow>
+        </StyledRow>
       )}
     </TimelineContext.Consumer>
   )

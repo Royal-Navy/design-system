@@ -1,8 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { TimelineRow } from './TimelineRow'
+import { StyledHeaderRow } from './partials/StyledHeaderRow'
 
 interface TimelineHeaderRowProps extends ComponentWithClass {
   children: React.ReactElement | React.ReactElement[]
@@ -11,17 +10,9 @@ interface TimelineHeaderRowProps extends ComponentWithClass {
   isShort?: boolean
 }
 
-const StyledTimelineHeaderRow = styled<any>(TimelineRow)`
-  ${({ isShort }) =>
-    isShort &&
-    `
-      height: 2.5rem;
-    `}
-`
-
 export const TimelineHeaderRow: React.FC<TimelineHeaderRowProps> = ({
   name,
   ...rest
-}) => <StyledTimelineHeaderRow isHeader ariaLabel={name} {...rest} />
+}) => <StyledHeaderRow isHeader ariaLabel={name} {...rest} />
 
 TimelineHeaderRow.displayName = 'TimelineHeaderRow'

@@ -1,12 +1,13 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
 import { format } from 'date-fns'
-import { selectors } from '@royalnavy/design-tokens'
 import { isString } from 'lodash'
 
 import { ACCESSIBLE_DATE_FORMAT } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
+import { StyledEvent } from './partials/StyledEvent'
+import { StyledEventBar } from './partials/StyledEventBar'
+import { StyledEventTitle } from './partials/StyledEventTitle'
 import { useTimelinePosition } from './hooks/useTimelinePosition'
 
 export interface TimelineEventWithRenderContentProps
@@ -36,98 +37,6 @@ export type TimelineEventProps =
   | TimelineEventWithRenderContentProps
   | TimelineEventWithChildrenProps
 
-const { spacing, zIndex, color, fontSize } = selectors
-
-const StyledTimelineEvent = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 4.5rem;
-  transform: translateY(-50%);
-  display: inline-flex;
-  flex-direction: column;
-  padding: ${spacing('2')} 0;
-  overflow: visible;
-  z-index: ${zIndex('body', 2)};
-`
-
-const StyledEventTitle = styled.span`
-  font-size: ${fontSize('s')};
-  font-weight: 400;
-  color: ${color('neutral', '600')};
-  white-space: nowrap;
-`
-
-interface StyledEventBarProps {
-  width: string
-  maxWidth?: string
-  barColor: string
-  startsBeforeStart?: boolean
-  endsAfterEnd?: boolean
-}
-
-const StyledEventBar = styled.div<StyledEventBarProps>`
-  order: 1;
-  position: relative;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: ${({ barColor = color('success', '500') }) => barColor};
-  height: 16px;
-  min-width: 1rem;
-  width: ${({ width }) => width};
-  max-width: ${({ maxWidth }) => maxWidth};
-
-  ${({ startsBeforeStart, width, barColor = color('success', '500') }) =>
-    startsBeforeStart &&
-    css`
-      border-top-left-radius: unset;
-      border-bottom-left-radius: unset;
-      margin-left: 14px;
-      width: calc(${width} - 14px);
-
-      &::before {
-        content: '';
-        position: absolute;
-        left: -14px;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 8px 14px 8px 0;
-        border-color: transparent ${barColor} transparent transparent;
-      }
-
-      + ${StyledEventTitle} {
-        margin-left: 14px;
-      }
-    `}
-
-  ${({ endsAfterEnd, maxWidth, barColor = color('success', '500') }) =>
-    endsAfterEnd &&
-    css`
-      border-top-right-radius: unset;
-      border-bottom-right-radius: unset;
-      max-width: calc(${maxWidth} - 14px);
-
-      &::after {
-        content: '';
-        position: absolute;
-        right: -14px;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 8px 0 8px 14px;
-        border-color: transparent transparent transparent ${barColor};
-      }
-    `}
-
-    ${({ startsBeforeStart, endsAfterEnd, maxWidth }) =>
-    startsBeforeStart &&
-    endsAfterEnd &&
-    css`
-      max-width: calc(${maxWidth} - 28px);
-    `}
-`
-
 function renderDefault({
   barColor,
   children,
@@ -148,7 +57,7 @@ function renderDefault({
   endsAfterEnd: boolean
 }) {
   return (
-    <StyledTimelineEvent
+    <StyledEvent
       style={{ left: offsetPx }}
       data-testid="timeline-event"
     >
@@ -163,7 +72,7 @@ function renderDefault({
       <StyledEventTitle data-testid="timeline-event-title">
         {children || `Task ${format(new Date(startDate), DATE_FORMAT.SHORT)}`}
       </StyledEventTitle>
-    </StyledTimelineEvent>
+    </StyledEvent>
   )
 }
 
