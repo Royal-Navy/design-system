@@ -1,5 +1,11 @@
 @use "@royalnavy/css-framework" as rn;
 
+$btn-border-radius: 4px;
+$btn-border-radius--small: 3px;
+$btn-disabled-opacity: 0.4;
+$btn-block-spacing-y: 1rem;
+$btn-focus-width: 0.2rem;
+
 .hero-banner {
   background-color: rn.color("action", "800");
   color: rn.color("neutral", "100");
@@ -57,4 +63,45 @@
   margin: 0;
   color: rn.color("action", "100");
   padding: rn.spacing("10") 0;
+}
+
+.rn-btn {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: $btn-border-radius;
+  outline: 0;
+  padding: rn.spacing("5") rn.spacing("8") rn.spacing("5") rn.spacing("8");
+  font-size: rn.font-size("m");
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+
+  color: rn.color("neutral", "white");
+  background-color: rn.color("action", "600");
+
+  &:hover {
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    background-color: rn.color("action", "700");
+  }
+
+  &:focus {
+    border: 1px solid rn.color("action", "500");
+    box-shadow: 0 0 0 $btn-focus-width rgba(rn.color("action", "500"), 0.3);
+  }
+
+  &.rn-btn--danger:focus {
+    border: 1px solid rn.color("danger", "500");
+    box-shadow: 0 0 0 $btn-focus-width rgba(rn.color("danger", "500"), 0.3);
+  }
 }
