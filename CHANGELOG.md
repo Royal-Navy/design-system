@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.32.2](https://github.com/Royal-Navy/design-system/compare/2.32.1...2.32.2) (2021-02-05)
+
+
+### Bug Fixes
+
+* **CRATemplateRoyalNavy:** Add missing type ([b2fb0b1](https://github.com/Royal-Navy/design-system/commit/b2fb0b159f78c1f110d6d4283edf1addfbabe459))
+
+
+
+
+
 ## [2.32.1](https://github.com/Royal-Navy/design-system/compare/2.32.0...2.32.1) (2021-02-03)
 
 
