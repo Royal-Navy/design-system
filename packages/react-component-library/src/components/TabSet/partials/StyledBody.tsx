@@ -7,6 +7,7 @@ const { color, spacing } = selectors
 
 export const StyledBody = styled.div<StyledTabSetProps>`
   padding: ${spacing('12')} 0;
+  overflow-y: auto;
 
   ${({ $isScrollable }) =>
     $isScrollable &&

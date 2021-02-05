@@ -34,6 +34,29 @@ stories.add('Default full width', () => (
   </TabSet>
 ))
 
+stories.add('Default scrollable body', () => (
+  <div style={{ height: '200px' }}>
+    <TabSet onChange={action('onChange')}>
+      <Tab title="Example Tab 1">
+        <>
+          <p>This is some example tab 1 content</p>
+          <p>This is some example tab 1 content</p>
+          <p>This is some example tab 1 content</p>
+          <p>This is some example tab 1 content</p>
+          <p>This is some example tab 1 content</p>
+          <p>This is some example tab 1 content</p>
+          <p>This is some example tab 1 content</p>
+          <p>This is some example tab 1 content</p>
+          <p>This is some example tab 1 content</p>
+        </>
+      </Tab>
+      <Tab title="Example Tab 2">
+        <p>This is some example tab 2 content</p>
+      </Tab>
+    </TabSet>
+  </div>
+))
+
 interface TabTitleProps {
   children: string
   year: number

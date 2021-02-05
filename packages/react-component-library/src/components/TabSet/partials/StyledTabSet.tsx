@@ -11,4 +11,5 @@ export const StyledTabSet = styled.article`
   display: flex;
   flex-flow: column;
   background-color: ${color('neutral', 'white')};
+  height: 100%;
 `
