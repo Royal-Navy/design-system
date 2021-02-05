@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Device/network-cell</title>
-    <g id="Icons/Device/network-cell" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M0.888888844,14.2222223 L10.6666667,4.44444442 L10.6658888,4.44488884 L14.2222223,0.888888844 L14.2222223,14.2222223 L0.888888844,14.2222223 Z" id="Combined-Shape" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><rect fill="none" height="24" width="24"/><path d="M2,22h20V2L2,22z M20,20h-3V9.83l3-3V20z"/></svg>

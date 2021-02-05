@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Device/widgets</title>
-    <g id="Icons/Device/widgets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M8.88888889,8.88888889 L8.88888889,14.2222223 L14.2222223,14.2222223 L14.2222223,8.88888889 L8.88888889,8.88888889 Z M1.77777774,7.11111111 L7.11111111,7.11111111 L7.11111111,1.77777774 L1.77777774,1.77777774 L1.77777774,7.11111111 Z M1.77777774,14.2222223 L7.11111111,14.2222223 L7.11111111,8.88888889 L1.77777774,8.88888889 L1.77777774,14.2222223 Z M8.88888889,14.2222223 L14.2222223,14.2222223 L14.2222223,8.88888889 L8.88888889,8.88888889 L8.88888889,14.2222223 Z M15.3333334,4.44444442 L11.5555556,0.666666621 L7.77777778,4.44444442 L11.5555556,8.22222222 L15.3333334,4.44444442 Z" id="Icons/Device/ic_widgets_18px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M13 13v8h8v-8h-8zM3 21h8v-8H3v8zM3 3v8h8V3H3zm13.66-1.31L11 7.34 16.66 13l5.66-5.66-5.66-5.65z"/></svg>

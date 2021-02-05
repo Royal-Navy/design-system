@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Alert/warning</title>
-    <g id="Icons/Alert/warning" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M0.444444397,14.2222223 L15.5555556,14.2222223 L8,0.888888844 L0.444444397,14.2222223 Z M8.88888889,12.4444445 L7.11111111,12.4444445 L7.11111111,10.6666667 L8.88888889,10.6666667 L8.88888889,12.4444445 Z M8.88888889,9.77777779 L7.11111111,9.77777779 L7.11111111,6.22222221 L8.88888889,6.22222221 L8.88888889,9.77777779 Z" id="Icons/Alert/ic_warning_18px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>

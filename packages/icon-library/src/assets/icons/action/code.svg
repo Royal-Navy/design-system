@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Action/code</title>
-    <g id="Icons/Action/code" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M6.26666666,11.0666667 L3.19999997,7.99999997 L6.26666666,4.93333331 L5.33333329,3.99999998 L1.33333329,7.99999997 L5.33333329,12 L6.26666666,11.0666667 Z M9.73333334,11.0666667 L12.8,7.99999997 L9.73333334,4.93333331 L10.6666667,3.99999998 L14.6666667,7.99999997 L10.6666667,12 L9.73333334,11.0666667 L9.73333334,11.0666667 Z" id="Icons/Action/ic_code_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>

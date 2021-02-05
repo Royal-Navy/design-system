@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/AV/equalizer</title>
-    <g id="Icons/AV/equalizer" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M6.66666666,13.3333334 L9.33333334,13.3333334 L9.33333334,2.66666663 L6.66666666,2.66666663 L6.66666666,13.3333334 Z M2.66666663,13.3333334 L5.33333332,13.3333334 L5.33333332,8 L2.66666663,8 L2.66666663,13.3333334 Z M10.6666667,5.99999999 L10.6666667,13.3333334 L13.3333334,13.3333334 L13.3333334,5.99999999 L10.6666667,5.99999999 Z" id="Icons/AV/ic_equalizer_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20h4V4h-4v16zm-6 0h4v-8H4v8zM16 9v11h4V9h-4z"/></svg>

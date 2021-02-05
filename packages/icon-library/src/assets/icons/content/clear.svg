@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Content/clear</title>
-    <g id="Icons/Content/clear" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <polygon id="Icons/Content/ic_clear_24px" fill="#233745" fill-rule="nonzero" points="12.6666667 4.27333331 11.7266667 3.3333333 8 7.05999999 4.27333331 3.3333333 3.3333333 4.27333331 7.05999999 8 3.3333333 11.7266667 4.27333331 12.6666667 8 8.94000001 11.7266667 12.6666667 12.6666667 11.7266667 8.94000001 8"></polygon>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>

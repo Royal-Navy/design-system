@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Editor/pie-chart</title>
-    <g id="Icons/Editor/pie-chart" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M7.33333329,1.33333329 L7.33333329,14.6666667 C3.95333331,14.3333333 1.33333329,11.4733334 1.33333329,8 C1.33333329,4.52666664 3.95333331,1.66666663 7.33333329,1.33333329 Z M8.68666667,1.33333329 L8.68666667,7.32666666 L14.6666667,7.32666666 C14.3533334,4.16666664 11.84,1.64666663 8.68666667,1.33333329 Z M8.68666667,8.67333334 L8.68666667,14.6666667 C11.8466667,14.3533334 14.3533334,11.8333334 14.6666667,8.67333334 L8.68666667,8.67333334 Z" id="Icons/Editor/ic_pie_chart_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"/></svg>

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Action/view-day</title>
-    <g id="Icons/Action/view-day" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M1.33333329,14 L14,14 L14,12 L1.33333329,12 L1.33333329,14 Z M13.3333333,5.33333332 L1.99999996,5.33333332 C1.63333329,5.33333332 1.33333329,5.63333332 1.33333329,5.99999999 L1.33333329,10 C1.33333329,10.3666667 1.63333329,10.6666667 1.99999996,10.6666667 L13.3333333,10.6666667 C13.7,10.6666667 14,10.3666667 14,10 L14,5.99999999 C14,5.63333332 13.7,5.33333332 13.3333333,5.33333332 Z M1.33333329,1.99999996 L1.33333329,3.99999996 L14,3.99999996 L14,1.99999996 L1.33333329,1.99999996 Z" id="Icons/Action/ic_view_day_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M2 21h19v-3H2v3zM20 8H3c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h17c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zM2 3v3h19V3H2z"/></svg>

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Hardware/scanner</title>
-    <g id="Icons/Hardware/scanner" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M13.2,7.13333333 L2.79999997,3.3333333 L2.3333333,4.59999998 L11.7333334,8 L3.3333333,8 C2.59999997,8 1.99999996,8.6 1.99999996,9.3333333 L1.99999996,12 C1.99999996,12.7333334 2.59999997,13.3333333 3.3333333,13.3333333 L12.6666667,13.3333333 C13.4,13.3333333 14,12.7333334 14,12 L14,8.3333333 C14,7.8 13.6666667,7.26666666 13.2,7.13333333 Z M4.66666665,11.3333334 L3.3333333,11.3333334 L3.3333333,10 L4.66666665,10 L4.66666665,11.3333334 Z M12.6666667,11.3333334 L5.99999999,11.3333334 L5.99999999,10 L12.6666667,10 L12.6666667,11.3333334 Z" id="Icons/Hardware/ic_scanner_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19.8 10.7L4.2 5l-.7 1.9L17.6 12H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5.5c0-.8-.5-1.6-1.2-1.8zM7 17H5v-2h2v2zm12 0H9v-2h10v2z"/></svg>

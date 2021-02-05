@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Action/room</title>
-    <g id="Icons/Action/room" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M8,1.33333329 C5.41999998,1.33333329 3.3333333,3.41999997 3.3333333,5.99999999 C3.3333333,9.50000001 8,14.6666667 8,14.6666667 C8,14.6666667 12.6666667,9.50000001 12.6666667,5.99999999 C12.6666667,3.41999997 10.58,1.33333329 8,1.33333329 Z M8,7.66666666 C7.07999999,7.66666666 6.33333332,6.91999999 6.33333332,5.99999999 C6.33333332,5.07999998 7.07999999,4.33333331 8,4.33333331 C8.92000001,4.33333331 9.66666668,5.07999998 9.66666668,5.99999999 C9.66666668,6.91999999 8.92000001,7.66666666 8,7.66666666 Z" id="Icons/Action/ic_room_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Maps/local-parking</title>
-    <g id="Icons/Maps/local-parking" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M8.66666667,1.99999996 L3.99999998,1.99999996 L3.99999998,14 L6.66666666,14 L6.66666666,9.99999996 L8.66666667,9.99999996 C10.8733334,9.99999996 12.6666667,8.20666667 12.6666667,5.99999996 C12.6666667,3.79333331 10.8733334,1.99999996 8.66666667,1.99999996 Z M8.80000001,7.33333333 L6.66666666,7.33333333 L6.66666666,4.66666665 L8.80000001,4.66666665 C9.53333334,4.66666665 10.1333333,5.26666665 10.1333333,5.99999999 C10.1333333,6.73333333 9.53333334,7.33333333 8.80000001,7.33333333 Z" id="Icons/Maps/ic_local_parking_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg>

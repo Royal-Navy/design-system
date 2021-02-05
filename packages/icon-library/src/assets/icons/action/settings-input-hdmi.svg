@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Action/settings-input-hdmi</title>
-    <g id="Icons/Action/settings-input-hdmi" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M12,4.66666665 L12,2.66666663 C12,1.9333333 11.4,1.33333329 10.6666667,1.33333329 L5.3333333,1.33333329 C4.59999998,1.33333329 3.99999997,1.9333333 3.99999997,2.66666663 L3.99999997,4.66666665 L3.3333333,4.66666665 L3.3333333,8.66666667 L5.3333333,12.6666667 L5.3333333,14.6666667 L10.6666667,14.6666667 L10.6666667,12.6666667 L12.6666667,8.66666667 L12.6666667,4.66666665 L12,4.66666665 Z M5.33333332,2.66666663 L10.6666667,2.66666663 L10.6666667,4.66666663 L9.33333332,4.66666663 L9.33333332,3.3333333 L8.66666667,3.3333333 L8.66666667,4.66666663 L7.33333332,4.66666663 L7.33333332,3.3333333 L6.66666666,3.3333333 L6.66666666,4.66666663 L5.33333332,4.66666663 L5.33333332,2.66666663 Z" id="Icons/Action/ic_settings_input_hdmi_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 7V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v3H5v6l3 6v3h8v-3l3-6V7h-1zM8 4h8v3h-2V5h-1v2h-2V5h-1v2H8V4z"/></svg>

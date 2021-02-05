@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/AV/games</title>
-    <g id="Icons/AV/games" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M9.99999999,4.99999998 L9.99999999,1.33333329 L5.99999999,1.33333329 L5.99999999,4.99999998 L7.99999999,6.99999999 L9.99999999,4.99999998 Z M4.99999998,5.99999999 L1.33333329,5.99999999 L1.33333329,9.99999999 L4.99999998,9.99999999 L6.99999999,7.99999999 L4.99999998,5.99999999 Z M5.99999999,11 L5.99999999,14.6666667 L9.99999999,14.6666667 L9.99999999,11 L7.99999999,9.00000001 L5.99999999,11 Z M11,5.99999999 L9.00000001,7.99999999 L11,9.99999999 L14.6666667,9.99999999 L14.6666667,5.99999999 L11,5.99999999 Z" id="Icons/AV/ic_games_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15 7.5V2H9v5.5l3 3 3-3zM7.5 9H2v6h5.5l3-3-3-3zM9 16.5V22h6v-5.5l-3-3-3 3zM16.5 9l-3 3 3 3H22V9h-5.5z"/></svg>

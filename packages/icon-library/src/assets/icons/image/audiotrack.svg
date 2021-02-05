@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Image/audiotrack</title>
-    <g id="Icons/Image/audiotrack" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M7.99999998,1.99999996 L7.99999998,8.18666667 C7.68666666,8.07333333 7.35333333,7.99999996 6.99999998,7.99999996 C5.33999998,7.99999996 3.99999998,9.34000001 3.99999998,11 C3.99999998,12.66 5.33999998,14 6.99999998,14 C8.54,14 9.80000001,12.8333334 9.96666668,11.3333334 L9.99999998,11.3333334 L9.99999998,3.99999996 L12.6666667,3.99999996 L12.6666667,1.99999996 L7.99999998,1.99999996 Z" id="Icons/Image/ic_audiotrack_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z"/></svg>

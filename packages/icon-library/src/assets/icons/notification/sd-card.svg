@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Notification/sd-card</title>
-    <g id="Icons/Notification/sd-card" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M12,1.33333329 L6.66666663,1.33333329 L2.67999997,5.33333329 L2.66666663,13.3333333 C2.66666663,14.0666667 3.26666664,14.6666667 3.99999997,14.6666667 L12,14.6666667 C12.7333334,14.6666667 13.3333334,14.0666667 13.3333334,13.3333333 L13.3333334,2.66666663 C13.3333334,1.9333333 12.7333334,1.33333329 12,1.33333329 Z M8,5.33333332 L6.66666666,5.33333332 L6.66666666,2.66666663 L8,2.66666663 L8,5.33333332 Z M10,5.33333332 L8.66666667,5.33333332 L8.66666667,2.66666663 L10,2.66666663 L10,5.33333332 Z M12,5.33333332 L10.6666667,5.33333332 L10.6666667,2.66666663 L12,2.66666663 L12,5.33333332 Z" id="Icons/Notification/ic_sd_card_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 2h-8L4.02 8 4 20c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 6h-2V4h2v4zm3 0h-2V4h2v4zm3 0h-2V4h2v4z"/></svg>

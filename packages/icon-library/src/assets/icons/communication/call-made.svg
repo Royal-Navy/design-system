@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Communication/call-made</title>
-    <g id="Icons/Communication/call-made" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <polygon id="Icons/Communication/ic_call_made_24px" fill="#233745" fill-rule="nonzero" points="5.99999999 3.3333333 5.99999999 4.66666665 10.3933333 4.66666665 2.66666663 12.3933334 3.60666664 13.3333334 11.3333334 5.60666665 11.3333334 10 12.6666667 10 12.6666667 3.3333333"></polygon>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5z"/></svg>

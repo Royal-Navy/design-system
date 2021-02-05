@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Content/reply-all</title>
-    <g id="Icons/Content/reply-all" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M4.66666665,5.3333333 L4.66666665,3.3333333 L-5.00000006e-08,8 L4.66666665,12.6666667 L4.66666665,10.6666667 L1.99999995,8 L4.66666665,5.3333333 Z M8.66666667,5.99999999 L8.66666667,3.3333333 L3.99999997,8 L8.66666667,12.6666667 L8.66666667,9.93333335 C12,9.93333335 14.3333334,11 16,13.3333333 C15.3333334,10 13.3333334,6.66666666 8.66666667,5.99999999 Z" id="Icons/Content/ic_reply_all_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 8V5l-7 7 7 7v-3l-4-4 4-4zm6 1V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/></svg>

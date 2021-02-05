@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Notification/airline-seat-individual-suite</title>
-    <g id="Icons/Notification/airline-seat-individual-suite" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M4.66666663,8.66666665 C5.76666665,8.66666665 6.66666663,7.76666667 6.66666663,6.66666665 C6.66666663,5.56666665 5.76666665,4.66666665 4.66666663,4.66666665 C3.56666664,4.66666665 2.66666663,5.56666665 2.66666663,6.66666665 C2.66666663,7.76666667 3.56666664,8.66666665 4.66666663,8.66666665 Z M12.6666666,4.66666665 L7.33333333,4.66666665 L7.33333333,9.33333334 L1.99999996,9.33333334 L1.99999996,4.66666665 L0.666666621,4.66666665 L0.666666621,11.3333334 L15.3333334,11.3333334 L15.3333334,7.33333333 C15.3333334,5.85999999 14.14,4.66666665 12.6666666,4.66666665 Z" id="Icons/Notification/ic_airline_seat_individual_suite_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 13c1.65 0 3-1.35 3-3S8.65 7 7 7s-3 1.35-3 3 1.35 3 3 3zm12-6h-8v7H3V7H1v10h22v-6c0-2.21-1.79-4-4-4z"/></svg>

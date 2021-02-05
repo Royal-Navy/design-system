@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Editor/vertical-align-center</title>
-    <g id="Icons/Editor/vertical-align-center" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M11.1111111,2.66666663 L8.88888887,2.66666663 L8.88888887,-5.00000006e-08 L7.11111111,-5.00000006e-08 L7.11111111,2.66666663 L4.88888887,2.66666663 L8,5.77777776 L11.1111111,2.66666663 Z M2.66666663,7.11111111 L2.66666663,8.88888889 L13.3333334,8.88888889 L13.3333334,7.11111111 L2.66666663,7.11111111 Z M4.88888887,13.3333334 L7.11111111,13.3333334 L7.11111111,16.0000001 L8.88888887,16.0000001 L8.88888887,13.3333334 L11.1111111,13.3333334 L8,10.2222222 L4.88888887,13.3333334 Z" id="Icons/Editor/ic_vertical_align_center_18px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M8 19h3v4h2v-4h3l-4-4-4 4zm8-14h-3V1h-2v4H8l4 4 4-4zM4 11v2h16v-2H4z"/></svg>

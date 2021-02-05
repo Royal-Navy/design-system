@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/AV/subscriptions</title>
-    <g id="Icons/AV/subscriptions" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M13.3333334,5.33333332 L2.66666663,5.33333332 L2.66666663,3.99999998 L13.3333334,3.99999998 L13.3333334,5.33333332 Z M12,1.33333329 L3.99999998,1.33333329 L3.99999998,2.66666663 L12,2.66666663 L12,1.33333329 Z M14.6666667,8 L14.6666667,13.3333334 C14.6666667,14.0666667 14.0666667,14.6666667 13.3333333,14.6666667 L2.66666663,14.6666667 C1.9333333,14.6666667 1.33333329,14.0666667 1.33333329,13.3333334 L1.33333329,8 C1.33333329,7.26666666 1.9333333,6.66666666 2.66666663,6.66666666 L13.3333333,6.66666666 C14.0666667,6.66666666 14.6666667,7.26666666 14.6666667,8 Z M10.6666667,10.6666667 L6.66666666,8.48666667 L6.66666666,12.84 L10.6666667,10.6666667 Z" id="Icons/AV/ic_subscriptions_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M20 8H4V6h16v2zm-2-6H6v2h12V2zm4 10v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-8c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2zm-6 4l-6-3.27v6.53L16 16z"/><path d="M0 0h24v24H0z" fill="none"/></svg>

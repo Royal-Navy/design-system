@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Device/bluetooth-disabled</title>
-    <g id="Icons/Device/bluetooth-disabled" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M8.66666667,3.88666664 L9.92000001,5.13999998 L8.85333334,6.20666666 L9.79333334,7.14666666 L11.8066667,5.13333332 L8,1.33333329 L7.33333333,1.33333329 L7.33333333,4.68666665 L8.66666667,6.01999999 L8.66666667,3.88666664 Z M3.60666664,2.66666663 L2.66666663,3.60666664 L7.05999999,8 L3.3333333,11.7266667 L4.27333331,12.6666666 L7.33333333,9.60666668 L7.33333333,14.6666666 L8,14.6666666 L10.86,11.8066667 L12.3933334,13.3333334 L13.3333334,12.3933334 L3.60666664,2.66666663 Z M8.66666667,12.1133334 L8.66666667,9.60666668 L9.92000001,10.86 L8.66666667,12.1133334 Z" id="Icons/Device/ic_bluetooth_disabled_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M13 5.83l1.88 1.88-1.6 1.6 1.41 1.41 3.02-3.02L12 2h-1v5.03l2 2v-3.2zM5.41 4L4 5.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l4.29-4.29 2.3 2.29L20 18.59 5.41 4zM13 18.17v-3.76l1.88 1.88L13 18.17z"/></svg>
