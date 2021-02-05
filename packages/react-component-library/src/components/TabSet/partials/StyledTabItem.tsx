@@ -5,13 +5,22 @@ import { StyledTabSetProps } from './StyledTabSet'
 
 const { mq, spacing } = selectors
 
-export const StyledTabItem = styled.li<StyledTabSetProps>`
+interface StyledTabItemProps extends StyledTabSetProps {
+  $isFullWidth: boolean
+}
+
+export const StyledTabItem = styled.li<StyledTabItemProps>`
   display: inline-block;
+
+  ${({ $isFullWidth }) =>
+    $isFullWidth &&
+    css`
+      flex: 1;
+    `}
 
   ${({ $isScrollable }) =>
     $isScrollable &&
     css`
-      width: 100%;
       padding-left: ${spacing('2')};
 
       &:last-child {

@@ -10,36 +10,46 @@ interface TabItemProps {
   isActive: boolean
   onClick: () => void
   onKeyDown: (event: KeyboardEvent<HTMLLIElement>) => void
+  isFullWidth?: boolean
   isScrollable?: boolean
 }
 
-export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
-  ({ tabId, children, isActive, isScrollable, onClick, onKeyDown }, ref) => {
-    function handleClick(e: MouseEvent<HTMLButtonElement>) {
-      e.preventDefault()
-      onClick()
-    }
+export const TabItem = forwardRef<HTMLLIElement, TabItemProps>((props, ref) => {
+  const {
+    tabId,
+    children,
+    isActive,
+    isFullWidth,
+    isScrollable,
+    onClick,
+    onKeyDown,
+  } = props
 
-    return (
-      <StyledTabItem
-        $isScrollable={isScrollable}
-        ref={ref}
-        role="tab"
-        aria-controls={tabId}
-        aria-selected={!!isActive}
-        tabIndex={!isActive ? -1 : 0}
-        data-testid="tab-set-tab"
-        aria-label={children.toString()}
-        onKeyDown={onKeyDown}
-      >
-        <StyledTab
-          $isActive={isActive}
-          $isScrollable={isScrollable}
-          onClick={handleClick}
-        >
-          <div>{children}</div>
-        </StyledTab>
-      </StyledTabItem>
-    )
+  function handleClick(e: MouseEvent<HTMLButtonElement>) {
+    e.preventDefault()
+    onClick()
   }
-)
+
+  return (
+    <StyledTabItem
+      $isFullWidth={isFullWidth}
+      $isScrollable={isScrollable}
+      ref={ref}
+      role="tab"
+      aria-controls={tabId}
+      aria-selected={!!isActive}
+      tabIndex={!isActive ? -1 : 0}
+      data-testid="tab-set-tab"
+      aria-label={children.toString()}
+      onKeyDown={onKeyDown}
+    >
+      <StyledTab
+        $isActive={isActive}
+        $isScrollable={isScrollable}
+        onClick={handleClick}
+      >
+        <div>{children}</div>
+      </StyledTab>
+    </StyledTabItem>
+  )
+})

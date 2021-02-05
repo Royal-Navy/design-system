@@ -1,9 +1,7 @@
-import React, { Children, useState, KeyboardEvent } from 'react'
-import {
-  IconKeyboardArrowLeft,
-  IconKeyboardArrowRight,
-} from '@royalnavy/icon-library'
+import React, { Children, KeyboardEvent, useState } from 'react'
+import { IconKeyboardArrowLeft, IconKeyboardArrowRight } from '@royalnavy/icon-library'
 
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { Tab, TabContent, TabItem, TabProps } from '.'
 import { useScrollableTabSet } from './useScrollableTabSet'
 import { SCROLL_DIRECTION } from './constants'
@@ -16,20 +14,28 @@ import { StyledBody } from './partials/StyledBody'
 import { StyledScrollRight } from './partials/StyledScrollRight'
 import { StyledScrollLeft } from './partials/StyledScrollLeft'
 
-interface TabSetProps {
-  className?: string
+interface TabSetProps extends ComponentWithClass {
   children: React.ReactElement<TabProps>[]
   onChange?: (id: number) => void
+  isFullWidth?: boolean
+  isScrollable?: never
+}
+
+interface ScrollableTabSetProps extends ComponentWithClass {
+  children: React.ReactElement<TabProps>[]
+  onChange?: (id: number) => void
+  isFullWidth?: never
   isScrollable?: boolean
 }
 
 const LEFT_ARROW = 37
 const RIGHT_ARROW = 39
 
-export const TabSet: React.FC<TabSetProps> = ({
+export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
   className,
   children,
   onChange,
+  isFullWidth,
   isScrollable,
   ...rest
 }) => {
@@ -67,12 +73,7 @@ export const TabSet: React.FC<TabSetProps> = ({
   }
 
   return (
-    <StyledTabSet
-      $isScrollable={isScrollable}
-      className={className}
-      data-testid="tab-set"
-      {...rest}
-    >
+    <StyledTabSet className={className} data-testid="tab-set" {...rest}>
       <StyledHeader $isScrollable={isScrollable}>
         {isScrollable && (
           <StyledScrollLeft
@@ -96,6 +97,7 @@ export const TabSet: React.FC<TabSetProps> = ({
                 onKeyDown={handleKeyDown}
                 isActive={index === activeTab}
                 index={index}
+                isFullWidth={isFullWidth}
                 isScrollable={isScrollable}
                 ref={(el) => {
                   itemsRef.current[index] = el

@@ -11,6 +11,7 @@ interface StyledTabProps extends StyledTabSetProps {
 
 function getDefaultTab($isActive: boolean) {
   return css`
+    width: 100%;
     display: flex;
     align-items: center;
     text-align: center;
@@ -39,7 +40,6 @@ function getDefaultTab($isActive: boolean) {
 
 function getScrollableTab($isActive: boolean) {
   return css`
-    width: 100%;
     padding: ${spacing('5')} ${spacing('10')};
     border-radius: 4px 4px 0 0;
     border: 1px solid ${color('neutral', $isActive ? '200' : '100')};
