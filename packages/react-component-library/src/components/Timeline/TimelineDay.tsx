@@ -1,13 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
 import { format, isAfter } from 'date-fns'
-import { selectors } from '@royalnavy/design-tokens'
 
-import {
-  DATE_DAY_FORMAT,
-  TIMELINE_BORDER_COLOR,
-  TIMELINE_BG_COLOR,
-} from './constants'
+import { DATE_DAY_FORMAT } from './constants'
+import { StyledDay } from './partials/StyledDay'
+import { StyledDayTitle } from './partials/StyledDayTitle'
 
 interface TimelineDayProps {
   date: Date
@@ -17,39 +13,18 @@ interface TimelineDayProps {
   timelineEndDate: Date
 }
 
-const { spacing, zIndex, fontSize, color } = selectors
-
-const StyledTimelineDay = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.5rem;
-  background-color: ${TIMELINE_BG_COLOR};
-  border-top: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
-  border-bottom: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
-  border-right: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
-`
-
-const StyledTitle = styled.div`
-  font-weight: 600;
-  font-size: ${fontSize('xs')};
-  color: ${color('neutral', '400')};
-  background-color: ${TIMELINE_BG_COLOR};
-  z-index: ${zIndex('body', 2)};
-`
-
 function renderDefault({ dayWidth, date }: { dayWidth: number; date: Date }) {
   return (
-    <StyledTimelineDay
+    <StyledDay
       data-testid="timeline-day"
       style={{
         width: `${dayWidth}px`,
       }}
     >
-      <StyledTitle data-testid="timeline-day-title">
+      <StyledDayTitle data-testid="timeline-day-title">
         {format(date, DATE_DAY_FORMAT)}
-      </StyledTitle>
-    </StyledTimelineDay>
+      </StyledDayTitle>
+    </StyledDay>
   )
 }
 

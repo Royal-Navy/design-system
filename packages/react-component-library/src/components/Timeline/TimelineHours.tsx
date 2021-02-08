@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import { getKey } from '../../helpers'
+import { StyledHours } from './partials/StyledHours'
 import { TIMELINE_BLOCK_SIZE } from './constants'
 import { TimelineContext } from './context'
 import { TimelineHour } from './TimelineHour'
@@ -25,10 +25,6 @@ export type TimelineHoursProps =
   | TimelineHoursWithRenderContentProps
   | TimelineHoursWithChildrenProps
 
-const StyledTimelineHours = styled.div`
-  white-space: nowrap;
-`
-
 export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
   return (
     <TimelineContext.Consumer>
@@ -46,7 +42,7 @@ export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
           name="Hours"
           data-testid="timeline-hours"
         >
-          <StyledTimelineHours>
+          <StyledHours>
             {days.map(({ date }) => {
               return hours.map(({ hourIndex, time }) => (
                 <TimelineHour
@@ -62,7 +58,7 @@ export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
                 />
               ))
             })}
-          </StyledTimelineHours>
+          </StyledHours>
         </TimelineHeaderRow>
       )}
     </TimelineContext.Consumer>

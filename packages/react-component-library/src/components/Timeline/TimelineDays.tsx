@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import { getKey } from '../../helpers'
+import { StyledDays } from './partials/StyledDays'
 import { TimelineContext } from './context'
 import { TimelineDay } from './TimelineDay'
 import { TimelineHeaderRow } from './TimelineHeaderRow'
@@ -17,10 +17,6 @@ export interface TimelineDaysWithChildrenProps {
 export type TimelineDaysProps =
   | TimelineDaysWithRenderContentProps
   | TimelineDaysWithChildrenProps
-
-const StyledTimelineDays = styled.div`
-  white-space: nowrap;
-`
 
 export const TimelineDays: React.FC<TimelineDaysProps> = ({
   render,
@@ -42,7 +38,7 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({
           data-testid="timeline-days"
           {...rest}
         >
-          <StyledTimelineDays>
+          <StyledDays>
             {days.map(({ date }, index) => (
               <TimelineDay
                 date={date}
@@ -53,7 +49,7 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({
                 timelineEndDate={timelineEndDate}
               />
             ))}
-          </StyledTimelineDays>
+          </StyledDays>
         </TimelineHeaderRow>
       )}
     </TimelineContext.Consumer>

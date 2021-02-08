@@ -1,7 +1,5 @@
 import React from 'react'
 import { IconChevronRight, IconChevronLeft } from '@royalnavy/icon-library'
-import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getKey } from '../../helpers'
@@ -10,7 +8,8 @@ import { TimelineHeaderRow } from './TimelineHeaderRow'
 import { TimelineMonth } from './TimelineMonth'
 import { Button } from '../Button'
 import { TIMELINE_ACTIONS } from './context/types'
-import { StyledIcon } from '../Button/partials/StyledIcon'
+import { StyledMonths } from './partials/StyledMonths'
+import { StyledNavigation } from './partials/StyledNavigation'
 
 export interface TimelineMonthsWithRenderContentProps
   extends ComponentWithClass {
@@ -29,32 +28,6 @@ export interface TimelineMonthsWithChildrenProps extends ComponentWithClass {
 export type TimelineMonthsProps =
   | TimelineMonthsWithRenderContentProps
   | TimelineMonthsWithChildrenProps
-
-const { spacing } = selectors
-
-const StyledNavigation = styled.div`
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-
-  button {
-    &:first-of-type {
-      margin-right: ${spacing('4')};
-    }
-
-    span:first-of-type {
-      display: none;
-    }
-
-    ${StyledIcon} {
-      margin-left: 0;
-    }
-  }
-`
-
-const StyledTimelineMonths = styled.div`
-  white-space: nowrap;
-`
 
 export const TimelineMonths: React.FC<TimelineMonthsProps> = ({
   render,
@@ -98,7 +71,7 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({
         )}
         {...rest}
       >
-        <StyledTimelineMonths>
+        <StyledMonths>
           {months.map(({ startDate }, index) => (
             <TimelineMonth
               days={days}
@@ -109,7 +82,7 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({
               startDate={startDate}
             />
           ))}
-        </StyledTimelineMonths>
+        </StyledMonths>
       </TimelineHeaderRow>
     )}
   </TimelineContext.Consumer>

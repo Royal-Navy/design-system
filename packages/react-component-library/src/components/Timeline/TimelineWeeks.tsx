@@ -1,8 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getKey } from '../../helpers'
+import { StyledWeeks } from './partials/StyledWeeks'
 import { TimelineContext } from './context'
 import { TimelineHeaderRow } from './TimelineHeaderRow'
 import { TimelineWeek } from './TimelineWeek'
@@ -28,10 +28,6 @@ export type TimelineWeeksProps =
   | TimelineWeeksWithRenderContentProps
   | TimelineWeeksWithChildrenProps
 
-const StyledTimelineWeeks = styled.div`
-  white-space: nowrap;
-`
-
 export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({
   render,
   ...rest
@@ -52,7 +48,7 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({
           data-testid="timeline-weeks"
           {...rest}
         >
-          <StyledTimelineWeeks>
+          <StyledWeeks>
             {weeks.map(({ startDate }, index) => (
               <TimelineWeek
                 days={days}
@@ -63,7 +59,7 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({
                 startDate={startDate}
               />
             ))}
-          </StyledTimelineWeeks>
+          </StyledWeeks>
         </TimelineHeaderRow>
       )}
     </TimelineContext.Consumer>

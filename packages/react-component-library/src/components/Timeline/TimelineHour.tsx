@@ -1,9 +1,8 @@
 import React from 'react'
 import { isAfter } from 'date-fns'
-import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
 
-import { TIMELINE_BORDER_COLOR, TIMELINE_BG_COLOR } from './constants'
+import { StyledHour } from './partials/StyledHour'
+import { StyledHourTitle } from './partials/StyledHourTitle'
 
 interface TimelineHourProps {
   date: Date
@@ -13,37 +12,18 @@ interface TimelineHourProps {
   width: number
 }
 
-const { spacing, color, fontSize, zIndex } = selectors
-
-const StyledTimelineHour = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.5rem;
-  background-color: ${TIMELINE_BG_COLOR};
-  border-top: ${spacing('px')} ${TIMELINE_BORDER_COLOR};
-  border-bottom: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
-  border-right: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
-`
-
-const StyledTitle = styled.span`
-  font-weight: 600;
-  font-size: ${fontSize('xs')};
-  color: ${color('neutral', '400')};
-  background-color: ${TIMELINE_BG_COLOR};
-  z-index: ${zIndex('body', 2)};
-`
-
 function renderDefault({ width, time }: { width: number; time: string }) {
   return (
-    <StyledTimelineHour
+    <StyledHour
       data-testid="timeline-hour"
       style={{
         width: `${width}px`,
       }}
     >
-      <StyledTitle data-testid="timeline-hour-title">{time}</StyledTitle>
-    </StyledTimelineHour>
+      <StyledHourTitle data-testid="timeline-hour-title">
+        {time}
+      </StyledHourTitle>
+    </StyledHour>
   )
 }
 
