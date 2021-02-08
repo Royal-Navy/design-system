@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.33.0](https://github.com/Royal-Navy/design-system/compare/2.32.2...2.33.0) (2021-02-08)
+
+
+### Bug Fixes
+
+* **DocsSite:** Tweak hero CTA styling ([a68b666](https://github.com/Royal-Navy/design-system/commit/a68b66603c8387c1cfe62c70db1ae75b6a7e1db1))
+
+
+### Features
+
+* **Sketch Library:** Add 500 new Material Icons ([c0d85d3](https://github.com/Royal-Navy/design-system/commit/c0d85d3370e7386af9688475d5c9c5b1ccc7a8f5))
+
+
+
+
+
 ## [2.32.2](https://github.com/Royal-Navy/design-system/compare/2.32.1...2.32.2) (2021-02-05)
 
 **Note:** Version bump only for package royalnavy.io
