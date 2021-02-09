@@ -7,6 +7,7 @@ import { StyledLabel } from './StyledLabel'
 const { spacing } = selectors
 
 export const StyledValueContainer = styled(components.ValueContainer)`
+  position: initial;
   padding: 0 0 0 ${spacing('6')};
   height: inherit;
 

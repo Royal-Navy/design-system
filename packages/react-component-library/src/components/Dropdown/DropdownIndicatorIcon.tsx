@@ -13,12 +13,14 @@ interface StyledIconArrowDropDownProps {
   $isOpen: boolean
 }
 
-const StyledIconArrowDropDown = styled(IconArrowDropDown)<
-  StyledIconArrowDropDownProps
->`
+const StyledIconArrowDropDown = styled(
+  IconArrowDropDown
+)<StyledIconArrowDropDownProps>`
   position: relative;
+  width: 26px;
+  height: 26px;
   left: -4px;
-  
+
   color: ${({ $isOpen }) =>
     $isOpen ? color('action', '600') : color('neutral', '200')};
   transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -28,6 +30,6 @@ const StyledIconArrowDropDown = styled(IconArrowDropDown)<
 
 export const DropdownIndicatorIcon: React.FC<DropdownIndicatorProps> = ({
   isOpen,
-}) => <StyledIconArrowDropDown $isOpen={isOpen} viewBox="4 5 8 8" />
+}) => <StyledIconArrowDropDown $isOpen={isOpen} />
 
 DropdownIndicatorIcon.displayName = 'DropdownIndicatorIcon'
