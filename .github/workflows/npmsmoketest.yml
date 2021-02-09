@@ -1,63 +1,19 @@
 name: NPM Smoke Test
-env:
-  LOCAL_REGISTRY: "http://localhost:4873"
 
 on:
+  push:
+    branches:
+      - master
   pull_request:
 
 
 jobs:
-     NPM_Smoketest:
+     NPM_smoketest:
       runs-on: ubuntu-latest
 
       steps:
         - name: Git clone repository
           uses: actions/checkout@v2
-          with:
-            path: main
-
-
-        - name: Install Verdaccio
-          run: |
-            sudo npm install -g verdaccio
-            sudo npm install -g verdaccio-auth-memory
-            sudo npm install -g verdaccio-memory
-            sudo npm install -g npm-auth-to-token
-
-
-        - name: Configure Verdaccio
-          run: |
-            cat <<EOF >config.yaml
-            auth:
-              auth-memory:
-                users:
-            store:
-              memory:
-                limit: 10000
-            ## no proxy required
-            uplinks:
-            packages:
-              '@*/*':
-                access: \$all
-                publish: \$all
-              '**':
-                access: \$all
-                publish: \$all
-            middlewares:
-              audit:
-                enabled: true
-            max_body_size: 500mb
-            logs:
-             - {type: stdout, format: pretty, level: trace}
-            server:
-              keepAliveTimeout: 0
-            EOF
-
-            tmp_registry_log=`mktemp`
-            mkdir -p .config/verdaccio
-            cp --verbose config.yaml .config/verdaccio/config.yaml
-            nohup verdaccio --config .config/verdaccio/config.yaml &>$tmp_registry_log &
-
 
         - name: Cache Node modules
           uses: actions/cache@v2
@@ -65,46 +21,39 @@ jobs:
             path: '**/node_modules'
             key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
-
-        - name: Publish packages
+        - name: Install Dependencies
           run: |
-            cd main
             yarn install
-            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/design-tokens
-            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/css-framework
-            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/eslint-config-react
-            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/fonts
-            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/icon-library
-            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/react-component-library
-            npm publish --registry ${{env.LOCAL_REGISTRY}} packages/cra-template-royalnavy
 
+        - name: Build design-tokens
+          run: yarn --cwd packages/design-tokens build
 
-        - name: Checkout test app
-          uses: actions/checkout@v2
-          with:
-            repository: Royal-Navy/coffee.git
-            Path: coffee
-            ref: master
-
-
-        - name: Build test app
+        - name: Update CRA template to use local packages
           run: |
-            cd coffee
-            yarn install
-            yarn config set registry ${{env.LOCAL_REGISTRY}}
-            npm ls @royalnavy/react-component-library
-            yarn add @royalnavy/design-tokens
-            yarn add @royalnavy/css-framework
-            yarn add @royalnavy/icon-library
-            yarn add @royalnavy/react-component-library
-            npm ls @royalnavy/react-component-library
+           TEMPLATE=packages/cra-template-royalnavy/template.json
+           PACKAGES=(
+            design-tokens
+            css-framework
+            fonts
+            icon-library
+            react-component-library
+           )
+           for i in "${PACKAGES[@]}";
+            do
+              contents="$(jq '.package.dependencies."@royalnavy/'$i'" = "file:../packages/'$i'"' $TEMPLATE)" \
+              && echo "${contents}" > $TEMPLATE
+            done
+           cat $TEMPLATE
 
-
-        - name: Run test app
+        - name: Create boilerplate app
           run: |
-            cd coffee
-            grep version node_modules/@royalnavy/**/package.json
-            echo "SKIP_PREFLIGHT_CHECK=true" > .env  #workaround for eslint CRA version issue
-            yarn build
+           npx create-react-app my-app --template file:../design-system/packages/cra-template-royalnavy
+
+        - name: Build boilerlate app
+          run: |
+           cd my-app
+           grep version node_modules/@royalnavy/**/package.json
+           echo "SKIP_PREFLIGHT_CHECK=true" > .env  #workaround for babel-loader (8.2.2) CRA version issue
+           yarn build
 
 
