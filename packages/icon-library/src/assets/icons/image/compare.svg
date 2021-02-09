@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Image/compare</title>
-    <g id="Icons/Image/compare" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M6.66666666,1.99999996 L3.3333333,1.99999996 C2.59999997,1.99999996 1.99999996,2.59999997 1.99999996,3.3333333 L1.99999996,12.6666666 C1.99999996,13.4 2.59999997,14 3.3333333,14 L6.66666666,14 L6.66666666,15.3333334 L7.99999996,15.3333334 L7.99999996,0.666666621 L6.66666666,0.666666621 L6.66666666,1.99999996 Z M6.66666666,12 L3.3333333,12 L6.66666666,8 L6.66666666,12 Z M12.6666667,1.99999996 L9.33333334,1.99999996 L9.33333334,3.3333333 L12.6666667,3.3333333 L12.6666667,12 L9.33333334,7.99999996 L9.33333334,14 L12.6666667,14 C13.4,14 14,13.4 14,12.6666667 L14,3.3333333 C14,2.59999997 13.4,1.99999996 12.6666667,1.99999996 Z" id="Icons/Image/ic_compare_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h5v2h2V1h-2v2zm0 15H5l5-6v6zm9-15h-5v2h5v13l-5-6v9h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Image/crop-16-9</title>
-    <g id="Icons/Image/crop-16-9" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M12.6666667,3.99999998 L3.3333333,3.99999998 C2.59999997,3.99999998 1.99999996,4.59999998 1.99999996,5.33333332 L1.99999996,10.6666667 C1.99999996,11.4 2.59999997,12 3.3333333,12 L12.6666667,12 C13.4,12 14,11.4 14,10.6666667 L14,5.33333332 C14,4.59999998 13.4,3.99999998 12.6666667,3.99999998 Z M12.6666667,10.6666667 L3.3333333,10.6666667 L3.3333333,5.33333332 L12.6666667,5.33333332 L12.6666667,10.6666667 Z" id="Icons/Image/ic_crop_16_9_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z"/></svg>

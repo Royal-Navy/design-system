@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Communication/stay-current-landscape</title>
-    <g id="Icons/Communication/stay-current-landscape" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M0.673333288,4.66666665 L0.666666621,11.3333333 C0.666666621,12.0666667 1.26666662,12.6666667 1.99999996,12.6666667 L14,12.6666667 C14.7333334,12.6666667 15.3333334,12.0666667 15.3333334,11.3333333 L15.3333334,4.66666665 C15.3333334,3.93333331 14.7333334,3.3333333 14,3.3333333 L1.99999996,3.3333333 C1.26666662,3.3333333 0.673333288,3.93333331 0.673333288,4.66666665 Z M12.6666667,4.66666665 L12.6666667,11.3333334 L3.3333333,11.3333334 L3.3333333,4.66666665 L12.6666667,4.66666665 Z" id="Icons/Communication/ic_stay_current_landscape_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M1.01 7L1 17c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2H3c-1.1 0-1.99.9-1.99 2zM19 7v10H5V7h14z"/></svg>

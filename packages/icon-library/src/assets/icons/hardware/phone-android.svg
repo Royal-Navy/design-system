@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Hardware/phone-android</title>
-    <g id="Icons/Hardware/phone-android" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M10.6666667,0.666666621 L5.3333333,0.666666621 C4.22666664,0.666666621 3.3333333,1.55999996 3.3333333,2.66666662 L3.3333333,13.3333334 C3.3333333,14.44 4.22666664,15.3333334 5.3333333,15.3333334 L10.6666667,15.3333334 C11.7733334,15.3333334 12.6666667,14.44 12.6666667,13.3333334 L12.6666667,2.66666662 C12.6666667,1.55999996 11.7733334,0.666666621 10.6666667,0.666666621 Z M9.33333334,14 L6.66666666,14 L6.66666666,13.3333334 L9.33333334,13.3333334 L9.33333334,14 Z M11.5,12 L4.49999998,12 L4.49999998,2.66666663 L11.5,2.66666663 L11.5,12 Z" id="Icons/Hardware/ic_phone_android_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M16 1H8C6.34 1 5 2.34 5 4v16c0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3V4c0-1.66-1.34-3-3-3zm-2 20h-4v-1h4v1zm3.25-3H6.75V4h10.5v14z"/></svg>

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Action/hourglass-full</title>
-    <g id="Icons/Action/hourglass-full" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <polygon id="Icons/Action/ic_hourglass_full_24px" fill="#233745" fill-rule="nonzero" points="3.99999998 1.33333329 3.99999998 5.33333332 4.00666664 5.33333332 3.99999998 5.33999998 6.66666666 8 3.99999998 10.6666667 4.00666664 10.6733334 3.99999998 10.6733334 3.99999998 14.6666667 12 14.6666667 12 10.6733334 11.9933334 10.6733334 12 10.6666667 9.33333334 8 12 5.33999998 11.9933334 5.33333332 12 5.33333332 12 1.33333329"></polygon>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6z"/></svg>

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Content/add</title>
-    <g id="Icons/Content/add" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <polygon id="Icons/Content/ic_add_24px" fill="#233745" fill-rule="nonzero" points="12.6666667 8.66666667 8.66666667 8.66666667 8.66666667 12.6666667 7.33333333 12.6666667 7.33333333 8.66666667 3.3333333 8.66666667 3.3333333 7.33333333 7.33333333 7.33333333 7.33333333 3.3333333 8.66666667 3.3333333 8.66666667 7.33333333 12.6666667 7.33333333"></polygon>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>

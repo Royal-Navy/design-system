@@ -39,16 +39,14 @@
             "value": "size",
             "spread": false,
             "literal": true
+          },
+          {
+            "name": "fill",
+            "value": "CurrentColor",
+            "spread": false,
+            "literal": false,
+            "position": "end"
           }
-        ]
-      }
-    ],
-    [
-      "@svgr/babel-plugin-replace-jsx-attribute-value",
-      {
-        "values": [
-          { "value": "#3E5667", "newValue": "CurrentColor" },
-          { "value": "#233745", "newValue": "CurrentColor" }
         ]
       }
     ]

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/AV/playlist-add-check</title>
-    <g id="Icons/AV/playlist-add-check" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M9.33333329,6.66666666 L1.33333329,6.66666666 L1.33333329,8 L9.33333329,8 L9.33333329,6.66666666 Z M9.33333329,3.99999997 L1.33333329,3.99999997 L1.33333329,5.33333332 L9.33333329,5.33333332 L9.33333329,3.99999997 Z M1.33333329,10.6666667 L6.66666666,10.6666667 L6.66666666,9.33333334 L1.33333329,9.33333334 L1.33333329,10.6666667 Z M14.3333334,7.66666666 L15.3333334,8.66666666 L10.6733334,13.3333334 L7.66666666,10.3333333 L8.66666666,9.33333334 L10.6733334,11.3333334 L14.3333334,7.66666666 Z" id="Icons/AV/ic_playlist_add_check_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M14,10H2v2h12V10z M14,6H2v2h12V6z M2,16h8v-2H2V16z M21.5,11.5L23,13l-6.99,7l-4.51-4.5L13,14l3.01,3L21.5,11.5z"/></g></g></g></svg>

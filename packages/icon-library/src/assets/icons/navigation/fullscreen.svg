@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Navigation/fullscreen</title>
-    <g id="Icons/Navigation/fullscreen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M3.99999998,9.77777779 L2.66666663,9.77777779 L2.66666663,13.3333334 L6.22222221,13.3333334 L6.22222221,12 L3.99999998,12 L3.99999998,9.77777779 Z M2.66666663,6.22222221 L3.99999998,6.22222221 L3.99999998,3.99999998 L6.22222221,3.99999998 L6.22222221,2.66666663 L2.66666663,2.66666663 L2.66666663,6.22222221 Z M12,12 L9.77777779,12 L9.77777779,13.3333334 L13.3333334,13.3333334 L13.3333334,9.77777779 L12,9.77777779 L12,12 Z M9.77777779,2.66666663 L9.77777779,3.99999998 L12,3.99999998 L12,6.22222221 L13.3333334,6.22222221 L13.3333334,2.66666663 L9.77777779,2.66666663 Z" id="Icons/Navigation/ic_fullscreen_18px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>

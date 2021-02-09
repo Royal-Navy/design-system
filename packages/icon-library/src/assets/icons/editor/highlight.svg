@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Editor/highlight</title>
-    <g id="Icons/Editor/highlight" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M3.99999998,9.33333334 L5.99999998,11.3333334 L5.99999998,14.6666667 L9.99999998,14.6666667 L9.99999998,11.3333334 L12,9.33333334 L12,5.99999999 L3.99999998,5.99999999 L3.99999998,9.33333334 Z M7.33333333,1.33333329 L8.66666667,1.33333329 L8.66666667,3.33333329 L7.33333333,3.33333329 L7.33333333,1.33333329 Z M2.3333333,3.91666664 L3.27599997,2.9733333 L4.68933331,4.38799998 L3.74666664,5.33133332 L2.3333333,3.91666664 Z M11.3066667,4.38999998 L12.722,2.97666664 L13.6646667,3.91933331 L12.25,5.33333332 L11.3066667,4.38999998 Z" id="Icons/Editor/ic_highlight_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M6,14l3,3v5h6v-5l3-3V9H6V14z M11,2h2v3h-2V2z M3.5,5.88l1.41-1.41l2.12,2.12L5.62,8L3.5,5.88z M16.96,6.59l2.12-2.12 l1.41,1.41L18.38,8L16.96,6.59z"/></g></g></g></svg>

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Editor/format-indent-decrease</title>
-    <g id="Icons/Editor/format-indent-decrease" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M7.11111111,10.6666667 L14.2222223,10.6666667 L14.2222223,8.88888889 L7.11111111,8.88888889 L7.11111111,10.6666667 Z M7.11111111,7.11111111 L14.2222223,7.11111111 L14.2222223,5.33333332 L7.11111111,5.33333332 L7.11111111,7.11111111 Z M14.2222223,12.4444445 L1.77777774,12.4444445 L1.77777774,14.2222223 L14.2222223,14.2222223 L14.2222223,12.4444445 Z M1.77777774,8 L4.88888887,11.1111111 L4.88888887,4.88888887 L1.77777774,8 Z M1.77777774,1.77777774 L1.77777774,3.55555553 L14.2222223,3.55555553 L14.2222223,1.77777774 L1.77777774,1.77777774 Z" id="Icons/Editor/ic_format_indent_decrease_18px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M11 17h10v-2H11v2zm-8-5l4 4V8l-4 4zm0 9h18v-2H3v2zM3 3v2h18V3H3zm8 6h10V7H11v2zm0 4h10v-2H11v2z"/></svg>

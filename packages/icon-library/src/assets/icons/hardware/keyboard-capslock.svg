@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Hardware/keyboard-capslock</title>
-    <g id="Icons/Hardware/keyboard-capslock" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M7.99999997,5.60666665 L11.06,8.66666667 L12,7.72666664 L7.99999997,3.72666664 L3.99999998,7.72666664 L4.93999998,8.66666667 L7.99999997,5.60666665 Z M3.99999998,12 L12,12 L12,10.6666667 L3.99999998,10.6666667 L3.99999998,12 Z" id="Icons/Hardware/ic_keyboard_capslock_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8.41L16.59 13 18 11.59l-6-6-6 6L7.41 13 12 8.41zM6 18h12v-2H6v2z"/></svg>

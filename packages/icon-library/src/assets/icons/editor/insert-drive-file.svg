@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Editor/insert-drive-file</title>
-    <g id="Icons/Editor/insert-drive-file" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M3.55555553,0.888888844 C3.06666664,0.888888844 2.67555552,1.28888885 2.67555552,1.77777774 L2.66666663,14.2222223 C2.66666663,14.7111112 3.05777775,15.1111112 3.55555553,15.1111112 L12.4444445,15.1111112 C12.9333334,15.1111112 13.3333334,14.7111112 13.3333334,14.2222223 L13.3333334,5.33333332 L8.88888889,0.888888844 L3.55555553,0.888888844 Z M8.88888889,5.33333332 L8.88888889,1.77777774 L12.4444445,5.33333332 L8.88888889,5.33333332 Z" id="Icons/Editor/ic_insert_drive_file_18px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/></svg>

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Action/stars</title>
-    <g id="Icons/Action/stars" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M7.99333333,1.33333329 C4.31333331,1.33333329 1.33333329,4.31999998 1.33333329,8 C1.33333329,11.68 4.31333331,14.6666667 7.99333333,14.6666667 C11.68,14.6666667 14.6666667,11.68 14.6666667,8 C14.6666667,4.31999998 11.68,1.33333329 7.99333333,1.33333329 Z M10.82,12 L8,10.3 L5.17999998,12 L5.92666665,8.79333334 L3.43999997,6.63999999 L6.71999999,6.35999999 L8,3.3333333 L9.28000001,6.35333332 L12.56,6.63333332 L10.0733333,8.78666667 L10.82,12 Z" id="Icons/Action/ic_stars_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>

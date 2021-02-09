@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Notification/wifi</title>
-    <g id="Icons/Notification/wifi" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M0.666666621,5.99999999 L1.99999996,7.33333333 C5.31333332,4.01999998 10.6866667,4.01999998 14,7.33333333 L15.3333334,5.99999999 C11.2866667,1.9533333 4.71999998,1.9533333 0.666666621,5.99999999 Z M5.99999999,11.3333334 L7.99999999,13.3333334 L9.99999999,11.3333334 C8.90000001,10.2266667 7.10666666,10.2266667 5.99999999,11.3333334 Z M3.3333333,8.66666667 L4.66666665,10 C6.50666666,8.16 9.49333334,8.16 11.3333333,10 L12.6666667,8.66666667 C10.0933333,6.09333332 5.91333332,6.09333332 3.3333333,8.66666667 Z" id="Icons/Notification/ic_wifi_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>

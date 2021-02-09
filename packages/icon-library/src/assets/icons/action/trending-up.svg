@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Action/trending-up</title>
-    <g id="Icons/Action/trending-up" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <polygon id="Icons/Action/ic_trending_up_24px" fill="#233745" fill-rule="nonzero" points="10.6666667 3.99999998 12.1933334 5.52666665 8.94000001 8.78 6.27333332 6.11333332 1.33333329 11.06 2.2733333 12 6.27333332 8 8.94000001 10.6666667 13.14 6.47333332 14.6666667 8 14.6666667 3.99999998"></polygon>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>

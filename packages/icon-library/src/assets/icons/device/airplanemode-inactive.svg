@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Device/airplanemode-inactive</title>
-    <g id="Icons/Device/airplanemode-inactive" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M8.66666666,5.99999999 L8.66666666,2.33333329 C8.66666666,1.77999996 8.22,1.33333329 7.66666666,1.33333329 C7.11333333,1.33333329 6.66666666,1.77999996 6.66666666,2.33333329 L6.66666666,4.78666665 L11.8866667,10.0066667 L14,10.6666667 L14,9.33333329 L8.66666666,5.99999999 Z M1.99999996,3.51333331 L5.32666665,6.83999999 L1.33333329,9.33333334 L1.33333329,10.6666666 L6.66666666,9.00000001 L6.66666666,12.6666666 L5.33333329,13.6666666 L5.33333329,14.6666666 L7.66666666,14 L10,14.6666666 L10,13.6666666 L8.66666667,12.6666666 L8.66666667,10.18 L12.4866667,14 L13.3333333,13.1533334 L2.84666663,2.66666663 L1.99999996,3.51333331 Z" id="Icons/Device/ic_airplanemode_inactive_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><g><path d="M10.5,7.67V3.5C10.5,2.67,11.17,2,12,2c0.83,0,1.5,0.67,1.5,1.5V9l8.5,5v2l-4.49-1.32L10.5,7.67z M19.78,22.61l1.41-1.41 L13.5,13.5L9.56,9.56L2.81,2.81L1.39,4.22l6.38,6.38L2,14v2l8.5-2.5V19L8,20.5L8,22l4-1l4,1l0-1.5L13.5,19v-2.67L19.78,22.61z"/><path d="M0,0h24v24H0V0z" fill="none"/></g></svg>

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Action/star-rate</title>
-    <g id="Icons/Action/star-rate" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <polygon id="Icons/Action/ic_star_rate_18px" fill="#233745" fill-rule="nonzero" points="8 10.0444445 11.2977778 12.4444445 10.0355556 8.56888889 13.3333334 6.22222221 9.2888889 6.22222221 8 2.22222219 6.7111111 6.22222221 2.66666663 6.22222221 5.96444443 8.56888889 4.7022222 12.4444445"></polygon>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>

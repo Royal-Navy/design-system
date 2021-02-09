@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Navigation/unfold-less</title>
-    <g id="Icons/Navigation/unfold-less" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M4.9422222,12.8355556 L5.88444443,13.7777778 L8,11.6622222 L10.1155556,13.7777778 L11.0577778,12.8355556 L8,9.77777779 L4.9422222,12.8355556 Z M11.0577778,3.16444441 L10.1155556,2.22222219 L8,4.33777775 L5.88444443,2.22222219 L4.9422222,3.16444441 L8,6.22222219 L11.0577778,3.16444441 L11.0577778,3.16444441 Z" id="Icons/Navigation/ic_unfold_less_18px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M7.41 18.59L8.83 20 12 16.83 15.17 20l1.41-1.41L12 14l-4.59 4.59zm9.18-13.18L15.17 4 12 7.17 8.83 4 7.41 5.41 12 10l4.59-4.59z"/></svg>

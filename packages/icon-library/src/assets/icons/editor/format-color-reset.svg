@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Editor/format-color-reset</title>
-    <g id="Icons/Editor/format-color-reset" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M12.4444445,9.77777774 C12.4444445,6.81777777 8,1.77777774 8,1.77777774 C8,1.77777774 7.24444444,2.63999997 6.35555555,3.84888886 L12.4266667,9.92000001 L12.4444445,9.77777774 Z M3.15555553,2.90666663 L2.01777774,4.04444442 L4.58666665,6.61333332 C3.99111109,7.72444444 3.55555553,8.85333334 3.55555553,9.77777779 C3.55555553,12.2311111 5.54666665,14.2222223 8,14.2222223 C9.16444445,14.2222223 10.2133333,13.76 11.0133334,13.0311111 L13.0933334,15.1111112 L14.2222223,13.9822223 L3.15555553,2.90666663 Z" id="Icons/Editor/ic_format_color_reset_18px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0zm0 0h24v24H0zm0 0h24v24H0z" fill="none"/><path d="M18 14c0-4-6-10.8-6-10.8s-1.33 1.51-2.73 3.52l8.59 8.59c.09-.42.14-.86.14-1.31zm-.88 3.12L12.5 12.5 5.27 5.27 4 6.55l3.32 3.32C6.55 11.32 6 12.79 6 14c0 3.31 2.69 6 6 6 1.52 0 2.9-.57 3.96-1.5l2.63 2.63 1.27-1.27-2.74-2.74z"/></svg>

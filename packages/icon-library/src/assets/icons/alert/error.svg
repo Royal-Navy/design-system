@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Alert/error</title>
-    <g id="Icons/Alert/error" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M8,0.915555511 C4.07111109,0.915555511 0.888888844,4.09777775 0.888888844,8.02666667 C0.888888844,11.9555556 4.07111109,15.1377778 8,15.1377778 C11.9288889,15.1377778 15.1111112,11.9555556 15.1111112,8.02666667 C15.1111112,4.09777775 11.9288889,0.915555511 8,0.915555511 Z M8.88888889,11.5555556 L7.11111111,11.5555556 L7.11111111,9.77777779 L8.88888889,9.77777779 L8.88888889,11.5555556 Z M8.88888889,8.88888889 L7.11111111,8.88888889 L7.11111111,4.44444442 L8.88888889,4.44444442 L8.88888889,8.88888889 Z" id="Icons/Alert/ic_error_18px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Editor/format-textdirection-l-to-r</title>
-    <g id="Icons/Editor/format-textdirection-l-to-r" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M5.33333332,6.22222221 L5.33333332,10.6666667 L7.11111111,10.6666667 L7.11111111,1.77777774 L8,1.77777774 L8,10.6666667 L9.77777779,10.6666667 L9.77777779,1.77777774 L10.6666666,1.77777774 L10.6666666,0.888888844 L5.33333332,0.888888844 C3.85777775,0.888888844 2.66666663,2.07999996 2.66666663,3.55555553 C2.66666663,5.03111109 3.85777775,6.22222221 5.33333332,6.22222221 Z M14.2222223,13.3333334 L11.5555556,10.6666667 L11.5555556,12.4444445 L1.77777774,12.4444445 L1.77777774,14.2222223 L11.5555556,14.2222223 L11.5555556,16.0000001 L14.2222223,13.3333334 Z" id="Icons/Editor/ic_format_textdirection_l_to_r_18px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 10v5h2V4h2v11h2V4h2V2H9C6.79 2 5 3.79 5 6s1.79 4 4 4zm12 8l-4-4v3H5v2h12v3l4-4z"/></svg>

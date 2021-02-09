@@ -9,7 +9,6 @@ const { color, spacing } = selectors
 export const StyledControl = styled(components.Control)`
   padding: 0;
   margin: 0;
-  height: 44px;
 
   .rn-select__control--is-focused,
   &:hover {

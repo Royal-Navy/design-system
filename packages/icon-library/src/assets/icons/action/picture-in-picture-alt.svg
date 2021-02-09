@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Action/picture-in-picture-alt</title>
-    <g id="Icons/Action/picture-in-picture-alt" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M12.6666667,7.33333333 L7.33333333,7.33333333 L7.33333333,11.3333333 L12.6666667,11.3333333 L12.6666667,7.33333333 Z M15.3333334,12.6666667 L15.3333334,3.31999997 C15.3333334,2.58666663 14.7333334,1.99999996 14,1.99999996 L1.99999996,1.99999996 C1.26666662,1.99999996 0.666666621,2.58666663 0.666666621,3.31999997 L0.666666621,12.6666667 C0.666666621,13.4 1.26666662,14 1.99999996,14 L14,14 C14.7333334,14 15.3333334,13.4 15.3333334,12.6666667 Z M14,12.68 L1.99999996,12.68 L1.99999996,3.3133333 L14,3.3133333 L14,12.68 Z" id="Icons/Action/ic_picture_in_picture_alt_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 11h-8v6h8v-6zm4 8V4.98C23 3.88 22.1 3 21 3H3c-1.1 0-2 .88-2 1.98V19c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zm-2 .02H3V4.97h18v14.05z"/></svg>

@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons/Maps/local-bar</title>
-    <g id="Icons/Maps/local-bar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
-        <path d="M14,3.3333333 L14,1.99999996 L1.99999996,1.99999996 L1.99999996,3.3333333 L7.33333333,9.33333334 L7.33333333,12.6666667 L3.99999996,12.6666667 L3.99999996,14 L12,14 L12,12.6666667 L8.66666667,12.6666667 L8.66666667,9.33333334 L14,3.3333333 Z M4.95333331,4.66666665 L3.77333331,3.3333333 L12.2333334,3.3333333 L11.0466667,4.66666665 L4.95333331,4.66666665 Z" id="Icons/Maps/ic_local_bar_24px" fill="#233745" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 5V3H3v2l8 9v5H6v2h12v-2h-5v-5l8-9zM7.43 7L5.66 5h12.69l-1.78 2H7.43z"/></svg>
