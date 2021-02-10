@@ -138,6 +138,7 @@ export const WithSidebar = () => (
     </TimelineRows>
   </Timeline>
 )
+WithSidebar.parameters = disableScrollableRegionFocusableRule
 WithSidebar.storyName = 'With sidebar'
 
 export const WithHours = () => (
@@ -175,6 +176,7 @@ export const WithHours = () => (
     </TimelineRows>
   </Timeline>
 )
+WithHours.parameters = disableScrollableRegionFocusableRule
 WithHours.storyName = 'With hours'
 
 export const WithCustomMonths = () => {
@@ -212,6 +214,7 @@ export const WithCustomMonths = () => {
     </Timeline>
   )
 }
+WithCustomMonths.parameters = disableScrollableRegionFocusableRule
 WithCustomMonths.storyName = 'With custom months'
 
 export const WithCustomWeeks = () => {
@@ -254,6 +257,7 @@ export const WithCustomWeeks = () => {
     </Timeline>
   )
 }
+WithCustomWeeks.parameters = disableScrollableRegionFocusableRule
 WithCustomWeeks.storyName = 'With custom weeks'
 
 export const WithCustomDays = () => {
@@ -284,6 +288,7 @@ export const WithCustomDays = () => {
     </Timeline>
   )
 }
+WithCustomDays.parameters = disableScrollableRegionFocusableRule
 WithCustomDays.storyName = 'With custom days'
 
 export const WithCustomHours = () => {
@@ -315,6 +320,7 @@ export const WithCustomHours = () => {
     </Timeline>
   )
 }
+WithCustomHours.parameters = disableScrollableRegionFocusableRule
 WithCustomHours.storyName = 'With custom hours'
 
 export const WithCustomTodayMarker = () => {
@@ -350,6 +356,7 @@ export const WithCustomTodayMarker = () => {
     </Timeline>
   )
 }
+WithCustomTodayMarker.parameters = disableScrollableRegionFocusableRule
 WithCustomTodayMarker.storyName = 'With custom today marker'
 
 export const WithCustomColumns = () => {
@@ -404,6 +411,7 @@ export const WithCustomColumns = () => {
     </Timeline>
   )
 }
+WithCustomColumns.parameters = disableScrollableRegionFocusableRule
 WithCustomColumns.storyName = 'With custom columns'
 
 export const WithCustomEventBarColor = () => {
@@ -430,6 +438,7 @@ export const WithCustomEventBarColor = () => {
     </Timeline>
   )
 }
+WithCustomEventBarColor.parameters = disableScrollableRegionFocusableRule
 WithCustomEventBarColor.storyName = 'With custom event bar color'
 
 export const WithCustomEventContent = () => {
@@ -539,6 +548,7 @@ export const WithCustomEventContent = () => {
     </Timeline>
   )
 }
+WithCustomEventContent.parameters = disableScrollableRegionFocusableRule
 WithCustomEventContent.storyName = 'With custom event content'
 
 export const WithCustomDayWidth = () => {
@@ -578,6 +588,7 @@ export const WithCustomDayWidth = () => {
     </Timeline>
   )
 }
+WithCustomDayWidth.parameters = disableScrollableRegionFocusableRule
 WithCustomDayWidth.storyName = 'With custom day width'
 
 export const WithCustomRange = () => {
@@ -617,6 +628,7 @@ export const WithCustomRange = () => {
     </Timeline>
   )
 }
+WithCustomRange.parameters = disableScrollableRegionFocusableRule
 WithCustomRange.storyName = 'With custom range'
 
 export const NoVisibleCells = () => (
