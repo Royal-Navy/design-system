@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.34.0](https://github.com/Royal-Navy/design-system/compare/2.33.1...2.34.0) (2021-02-10)
+
+
+### Bug Fixes
+
+* **IconLibrary:** Adjust DropdownIndicatorIcon styles ([1c4c1f2](https://github.com/Royal-Navy/design-system/commit/1c4c1f2769d7aa32bafd8b9792da625d950376dc))
+
+
+### Features
+
+* **IconLibrary:** Add additional icons ([f463805](https://github.com/Royal-Navy/design-system/commit/f463805430b6a560168b9d00dd3612a4f0bbcb0d))
+
+
+
+
+
 ## [2.33.1](https://github.com/Royal-Navy/design-system/compare/2.33.0...2.33.1) (2021-02-09)
 
 **Note:** Version bump only for package royal-navy-design-system
