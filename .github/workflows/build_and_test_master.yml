@@ -255,6 +255,25 @@ jobs:
              yarn --cwd packages/react-component-library test:a11y
 
 
+     Test_design-tokens:
+       runs-on: ubuntu-latest
+       needs: [Build_icon_library]
+       steps:
+         - name: Git clone repository
+           uses: actions/checkout@v2
+
+         - name: Cache Node modules
+           uses: actions/cache@v2
+           with:
+             path: '**/node_modules'
+             key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+         - name: Jest design-tokens
+           run: |
+             yarn --cwd packages/design-tokens build
+             yarn --cwd packages/design-tokens test
+
+
      Test_visual_regression:
       runs-on: ubuntu-latest
       needs: [Build_icon_library, Test_react-component-library]
