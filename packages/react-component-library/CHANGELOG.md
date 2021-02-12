@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.34.1](https://github.com/Royal-Navy/design-system/compare/2.34.0...2.34.1) (2021-02-12)
+
+
+### Bug Fixes
+
+* **TabNav:** Add export to expose TabNav component ([d0ca0a9](https://github.com/Royal-Navy/design-system/commit/d0ca0a90c712ed9305fdc13a7a75bfb64a8c11ee))
+
+
+
+
+
 # [2.34.0](https://github.com/Royal-Navy/design-system/compare/2.33.1...2.34.0) (2021-02-10)
 
 
