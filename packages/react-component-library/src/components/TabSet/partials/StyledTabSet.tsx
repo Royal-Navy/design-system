@@ -7,8 +7,9 @@ export interface StyledTabSetProps {
   $isScrollable: boolean
 }
 
-export const StyledTabSet = styled.article<StyledTabSetProps>`
+export const StyledTabSet = styled.article`
   display: flex;
   flex-flow: column;
   background-color: ${color('neutral', 'white')};
+  height: 100%;
 `

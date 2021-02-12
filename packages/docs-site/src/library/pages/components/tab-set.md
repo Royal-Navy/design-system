@@ -124,6 +124,13 @@ The TabSet (and companion Tab) component allows the user to switch between diffe
     Description: 'Called when a tab is clicked.',
   },
   {
+    Name: 'isFullWidth',
+    Type: 'boolean',
+    Required: 'False',
+    Default: 'False',
+    Description: 'Sets the TabSet and tabs to fill the full width',
+  },
+  {
     Name: 'isScrollable',
     Type: 'boolean',
     Required: 'False',
