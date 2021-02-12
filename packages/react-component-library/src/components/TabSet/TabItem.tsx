@@ -1,5 +1,7 @@
 import React, { forwardRef, MouseEvent, KeyboardEvent } from 'react'
-import classNames from 'classnames'
+
+import { StyledTabItem } from './partials/StyledTabItem'
+import { StyledTab } from './partials/StyledTab'
 
 interface TabItemProps {
   tabId: string
@@ -12,19 +14,15 @@ interface TabItemProps {
 }
 
 export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
-  ({ tabId, children, isActive, onClick, onKeyDown }, ref) => {
-    const tabClasses = classNames('rn-tab-set__tab', {
-      'is-active': isActive,
-    })
-
+  ({ tabId, children, isActive, isScrollable, onClick, onKeyDown }, ref) => {
     function handleClick(e: MouseEvent<HTMLButtonElement>) {
       e.preventDefault()
       onClick()
     }
 
     return (
-      <li
-        className="rn-tab-set__tab-item"
+      <StyledTabItem
+        $isScrollable={isScrollable}
         ref={ref}
         role="tab"
         aria-controls={tabId}
@@ -34,10 +32,14 @@ export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
         aria-label={children.toString()}
         onKeyDown={onKeyDown}
       >
-        <button className={tabClasses} onClick={handleClick}>
+        <StyledTab
+          $isActive={isActive}
+          $isScrollable={isScrollable}
+          onClick={handleClick}
+        >
           <div>{children}</div>
-        </button>
-      </li>
+        </StyledTab>
+      </StyledTabItem>
     )
   }
 )

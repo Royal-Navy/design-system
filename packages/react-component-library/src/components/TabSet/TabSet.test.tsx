@@ -7,9 +7,12 @@ import {
   RenderResult,
   waitFor,
 } from '@testing-library/react'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { Tab, TabSet } from '.'
 import { SCROLL_DIRECTION } from './constants'
+
+const { color } = selectors
 
 function flushPromises() {
   return new Promise((resolve) => setImmediate(resolve))
@@ -152,9 +155,8 @@ describe('TabSet', () => {
         })
 
         it('should apply the `is-active` class to the appropriate tab', () => {
-          expect(
-            wrapper.getByText('Title 2').parentElement.classList
-          ).toContain('is-active')
+          const tab = wrapper.getByText('Title 2').parentElement
+          expect(tab).toHaveStyleRule('color', color('neutral', '500'))
         })
 
         it('should invoke the onChange function', () => {
@@ -195,9 +197,8 @@ describe('TabSet', () => {
           })
 
           it('sets the previous tab to active', () => {
-            expect(
-              wrapper.getByText('Title 1').parentElement.classList
-            ).toContain('is-active')
+            const tab = wrapper.getByText('Title 1').parentElement
+            expect(tab).toHaveStyleRule('color', color('neutral', '500'))
           })
 
           describe('and the user presses the right arrow key', () => {
@@ -209,9 +210,8 @@ describe('TabSet', () => {
             })
 
             it('sets the next tab to active', () => {
-              expect(
-                wrapper.getByText('Title 2').parentElement.classList
-              ).toContain('is-active')
+              const tab = wrapper.getByText('Title 2').parentElement
+              expect(tab).toHaveStyleRule('color', color('neutral', '500'))
             })
           })
         })
@@ -234,9 +234,8 @@ describe('TabSet', () => {
         })
 
         it('should apply the `is-active` class to the appropriate tab', () => {
-          expect(
-            wrapper.getByText('Title 2').parentElement.classList
-          ).toContain('is-active')
+          const tab = wrapper.getByText('Title 2').parentElement
+          expect(tab).toHaveStyleRule('color', color('neutral', '500'))
         })
       })
     })
@@ -395,20 +394,25 @@ describe('TabSet', () => {
     })
 
     describe('when scrolling left', () => {
-      describe('when scroll right and scroll left buttons are each clicked once', () => {
+      describe('when scroll right is clicked twice and scroll left is clicked once', () => {
         beforeEach(async () => {
+          await scroll(SCROLL_DIRECTION.RIGHT)
           await scroll(SCROLL_DIRECTION.RIGHT)
           await scroll(SCROLL_DIRECTION.LEFT)
         })
 
         it('should scroll the tabs twice', () => {
-          expect(scrollToSpy).toHaveBeenCalledTimes(2)
-          expect(scrollToSpy).toHaveBeenCalledWith({
+          expect(scrollToSpy).toHaveBeenCalledTimes(3)
+          expect(scrollToSpy.mock.calls[0][0]).toEqual({
             left: 200,
             behavior: 'smooth',
           })
-          expect(scrollToSpy).toHaveBeenCalledWith({
-            left: 100,
+          expect(scrollToSpy.mock.calls[1][0]).toEqual({
+            left: 300,
+            behavior: 'smooth',
+          })
+          expect(scrollToSpy.mock.calls[2][0]).toEqual({
+            left: 200,
             behavior: 'smooth',
           })
         })

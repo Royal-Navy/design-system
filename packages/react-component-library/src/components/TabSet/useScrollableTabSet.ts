@@ -9,13 +9,12 @@ function hasTab(tabIndex: number, itemsRef: Array<HTMLLIElement>) {
 function scrollTo(element: HTMLDivElement, left: number): Promise<void> {
   return new Promise(resolve => {
     function onScroll() {
-      if (element.scrollLeft === left) {
+      if (Math.ceil(element.scrollLeft) >= left) {
         element.removeEventListener('scroll', onScroll)
         resolve()
       }
     }
     element.addEventListener('scroll', onScroll)
-    onScroll()
     element.scrollTo({
       left,
       behavior: 'smooth',

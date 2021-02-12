@@ -1,6 +1,6 @@
 import React from 'react'
-import classNames from 'classnames'
 
+import { StyledContent } from './partials/StyledContent'
 import { TabProps } from '.'
 
 interface TabContentProps {
@@ -14,21 +14,17 @@ export const TabContent: React.FC<TabContentProps> = ({
   isActive,
   children,
   ...rest
-}) => {
-  const classes = classNames('rn-tab-set__content', { 'is-active': isActive })
-
-  return (
-    <div
-      className={classes}
-      role="tabpanel"
-      aria-labelledby={tabId}
-      aria-hidden={!isActive}
-      id={tabId}
-      tabIndex={0}
-      data-testid="tab-set-content"
-      {...rest}
-    >
-      {children}
-    </div>
-  )
-}
+}) => (
+  <StyledContent
+    $isActive={isActive}
+    role="tabpanel"
+    aria-labelledby={tabId}
+    aria-hidden={!isActive}
+    id={tabId}
+    tabIndex={0}
+    data-testid="tab-set-content"
+    {...rest}
+  >
+    {children}
+  </StyledContent>
+)
