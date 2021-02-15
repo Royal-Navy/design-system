@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.35.0](https://github.com/Royal-Navy/design-system/compare/2.34.1...2.35.0) (2021-02-15)
+
+
+### Features
+
+* **TabSet:** Add ability to show tabs full width ([8e17800](https://github.com/Royal-Navy/design-system/commit/8e17800a815431c6ecf8096e0f8356d9589f2958))
+
+
+
+
+
 ## [2.34.1](https://github.com/Royal-Navy/design-system/compare/2.34.0...2.34.1) (2021-02-12)
 
 **Note:** Version bump only for package royalnavy.io
