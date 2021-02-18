@@ -27,6 +27,7 @@ import { DEFAULTS } from './constants'
 import { StyledTimeline } from './partials/StyledTimeline'
 import { StyledInner } from './partials/StyledInner'
 import { StyledHeader } from './partials/StyledHeader'
+import { TimelineToolbar } from './TimelineToolbar'
 
 type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
 
@@ -162,6 +163,7 @@ export const Timeline: React.FC<TimelineProps> = ({
       startDate={startDate}
       today={today}
     >
+      <TimelineToolbar />
       <StyledTimeline
         className={classNames('timeline', className)}
         data-testid="timeline"
