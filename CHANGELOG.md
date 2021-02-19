@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.36.0](https://github.com/Royal-Navy/design-system/compare/2.35.1...2.36.0) (2021-02-19)
+
+
+### Features
+
+* **Timeline:** Move navigation to toolbar ([385eeeb](https://github.com/Royal-Navy/design-system/commit/385eeebf232dd2d38bf2d875abcbc136e6040f13))
+
+
+
+
+
 ## [2.35.1](https://github.com/Royal-Navy/design-system/compare/2.35.0...2.35.1) (2021-02-18)
 
 **Note:** Version bump only for package royal-navy-design-system

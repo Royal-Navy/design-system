@@ -1,6 +1,6 @@
 {
   "name": "@royalnavy/eslint-config-react",
-  "version": "2.35.1",
+  "version": "2.36.0",
   "files": [
     "index.js",
     "prettier.config.js"
