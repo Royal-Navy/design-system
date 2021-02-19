@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.36.1](https://github.com/Royal-Navy/design-system/compare/2.36.0...2.36.1) (2021-02-19)
+
+
+### Bug Fixes
+
+* **Timeline:** Add bg colour to toolbar ([65f447b](https://github.com/Royal-Navy/design-system/commit/65f447b767a56f5aad83f5dc8fde3fdd7f6c3119))
+
+
+
+
+
 # [2.36.0](https://github.com/Royal-Navy/design-system/compare/2.35.1...2.36.0) (2021-02-19)
 
 
