@@ -130,6 +130,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   hasPercentage,
   displayUnit = '',
   formatValue,
+  mode,
   ...rest
 }) => {
   const [sliderValues, setSliderValues] = useState(values)
@@ -169,6 +170,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         disabled={isDisabled}
         values={values}
         step={step}
+        mode={mode}
         onChange={onChange}
         onUpdate={onUpdateHandler}
       >
