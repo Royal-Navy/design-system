@@ -30,7 +30,8 @@
     "**/**/dot-prop": "^5.2.0",
     "**/**/node-fetch": "^2.6.1",
     "**/**/axios": "^0.21.1",
-    "**/**/yup": "^0.31.1"
+    "**/**/yup": "^0.31.1",
+    "**/**/socket.io": "^2.4.0"
   },
   "prettier": {
     "bracketSpacing": true,
