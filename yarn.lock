@@ -15094,7 +15094,12 @@ lock@^1.0.0:
   resolved "https://registry.yarnpkg.com/lock/-/lock-1.1.0.tgz#53157499d1653b136ca66451071fca615703fa55"
   integrity sha1-UxV0mdFlOxNspmRRBx/KYVcD+lU=
 
-lodash-es@^4.17.11, lodash-es@^4.17.14, lodash-es@^4.17.15:
+lodash-es@^4.17.11:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
+
+lodash-es@^4.17.14, lodash-es@^4.17.15:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.20.tgz#29f6332eefc60e849f869c264bc71126ad61e8f7"
   integrity sha512-JD1COMZsq8maT6mnuz1UMV0jvYD0E0aUsSOdrr1/nAG3dhqQXwRRgeW0cSqH1U43INKcqxaiVIQNOUDld7gRDA==
@@ -17950,12 +17955,11 @@ polished@^3.4.4:
     "@scarf/scarf" "^1.1.0"
 
 polished@^4.0.3:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/polished/-/polished-4.1.0.tgz#ab80c10e04fdf8795faee723b59577de18d2936b"
-  integrity sha512-y8IInTGHuwku7+O+wsJ7OOvNpJF7EPP/IDzF1uj9UJfEEKpMAfeq5gZ5UrtOksM7Jk4+hBAk6Ce8rFOOF4msZg==
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-4.1.1.tgz#40442cc973348e466f2918cdf647531bb6c29bfb"
+  integrity sha512-4MZTrfPMPRLD7ac8b+2JZxei58zw6N1hFkdBDERif5Tlj19y3vPoPusrLG+mJIlPTGnUlKw3+yWz0BazvMx1vg==
   dependencies:
     "@babel/runtime" "^7.12.5"
-    "@scarf/scarf" "^1.1.0"
 
 portfinder@^1.0.26:
   version "1.0.28"
