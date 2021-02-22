@@ -20,7 +20,7 @@ import {
 import { RANGE_SLIDER_BG_COLOR } from './constants'
 
 export interface RangeSliderProps
-  extends Omit<SliderProps, 'children' | 'disabled' | 'reversed'> {
+  extends Omit<SliderProps, 'children' | 'disabled' | 'reversed' | 'vertical'> {
   hasLabels?: boolean
   tracksLeft?: boolean
   tracksRight?: boolean
@@ -131,6 +131,8 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   displayUnit = '',
   formatValue,
   mode,
+  onSlideStart,
+  onSlideEnd,
   ...rest
 }) => {
   const [sliderValues, setSliderValues] = useState(values)
@@ -173,6 +175,8 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         mode={mode}
         onChange={onChange}
         onUpdate={onUpdateHandler}
+        onSlideStart={onSlideStart}
+        onSlideEnd={onSlideEnd}
       >
         <Rail>
           {({ getRailProps }) => (
