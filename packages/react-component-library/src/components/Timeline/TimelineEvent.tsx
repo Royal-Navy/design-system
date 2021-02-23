@@ -20,7 +20,9 @@ export interface TimelineEventWithRenderContentProps
     startDate: Date,
     widthPx: string,
     offsetPx: string,
-    maxWidthPx: string
+    maxWidthPx: string,
+    startsBeforeStart: boolean,
+    endsAfterEnd: boolean
   ) => React.ReactNode
   startDate: Date
 }
@@ -106,7 +108,15 @@ export const TimelineEvent: React.FC<TimelineEventProps> = ({
   if (startsAfterEnd || endsBeforeStart) return null
 
   const event = render
-    ? render(startDate, endDate, widthPx, offsetPx, maxWidthPx)
+    ? render(
+        startDate,
+        endDate,
+        widthPx,
+        offsetPx,
+        maxWidthPx,
+        startsBeforeStart,
+        endsAfterEnd
+      )
     : renderDefault({
         barColor,
         children,

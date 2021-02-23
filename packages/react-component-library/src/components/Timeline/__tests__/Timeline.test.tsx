@@ -582,10 +582,9 @@ describe('Timeline', () => {
     })
 
     it('should spread arbitrary props on the timeline today marker', () => {
-      expect(wrapper.getByTestId('timeline-today-marker-wrapper')).toHaveAttribute(
-        'data-arbitrary',
-        'arbitrary-today-marker'
-      )
+      expect(
+        wrapper.getByTestId('timeline-today-marker-wrapper')
+      ).toHaveAttribute('data-arbitrary', 'arbitrary-today-marker')
     })
 
     it('should spread arbitrary props on the timeline months', () => {
@@ -1038,33 +1037,6 @@ describe('Timeline', () => {
   })
 
   describe('when an event has `render` specified', () => {
-    const CustomEvent = ({
-      children,
-      offsetPx,
-      widthPx,
-      ...rest
-    }: {
-      children: React.ReactNode
-      offsetPx: string
-      widthPx: string
-    }) => {
-      return (
-        <div
-          data-testid="timeline-custom-event"
-          style={{
-            position: 'absolute',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            left: offsetPx,
-            width: widthPx,
-          }}
-          {...rest}
-        >
-          {children}
-        </div>
-      )
-    }
-
     beforeEach(() => {
       const EventWithRender: React.FC = () => (
         <TimelineEvent
@@ -1074,12 +1046,36 @@ describe('Timeline', () => {
             startDate: Date,
             endDate: Date,
             widthPx: string,
-            offsetPx: string
+            offsetPx: string,
+            maxWidthPx: string,
+            startsBeforeStart: boolean,
+            endsAfterEnd: boolean,
+            ...rest
           ) => {
             return (
-              <CustomEvent widthPx={widthPx} offsetPx={offsetPx}>
-                Custom Event
-              </CustomEvent>
+              <div data-testid="timeline-custom-event" {...rest}>
+                <span data-testid="timeline-custom-event-start-date">
+                  {startDate.toString()}
+                </span>
+                <span data-testid="timeline-custom-event-end-date">
+                  {endDate.toString()}
+                </span>
+                <span data-testid="timeline-custom-event-width-px">
+                  {widthPx}
+                </span>
+                <span data-testid="timeline-custom-event-offset-px">
+                  {offsetPx}
+                </span>
+                <span data-testid="timeline-custom-event-max-width-px">
+                  {maxWidthPx}
+                </span>
+                <span data-testid="timeline-custom-event-starts-before-start">
+                  {startsBeforeStart ? 'true' : 'false'}
+                </span>
+                <span data-testid="timeline-custom-event-ends-after-end">
+                  {endsAfterEnd ? 'true' : 'false'}
+                </span>
+              </div>
             )
           }}
         />
@@ -1103,7 +1099,31 @@ describe('Timeline', () => {
     })
 
     it('should render the event as specified', () => {
-      expect(wrapper.queryByText('Custom Event')).toBeInTheDocument()
+      expect(
+        wrapper.getByTestId('timeline-custom-event-start-date')
+      ).toHaveTextContent(
+        'Thu Apr 16 2020 00:00:00 GMT+0000 (Coordinated Universal Time)'
+      )
+      expect(
+        wrapper.getByTestId('timeline-custom-event-end-date')
+      ).toHaveTextContent(
+        'Mon Apr 20 2020 00:00:00 GMT+0000 (Coordinated Universal Time)'
+      )
+      expect(
+        wrapper.getByTestId('timeline-custom-event-width-px')
+      ).toHaveTextContent('120px')
+      expect(
+        wrapper.getByTestId('timeline-custom-event-offset-px')
+      ).toHaveTextContent('2250px')
+      expect(
+        wrapper.getByTestId('timeline-custom-event-max-width-px')
+      ).toHaveTextContent('450px')
+      expect(
+        wrapper.getByTestId('timeline-custom-event-starts-before-start')
+      ).toHaveTextContent('false')
+      expect(
+        wrapper.getByTestId('timeline-custom-event-ends-after-end')
+      ).toHaveTextContent('false')
     })
 
     it('should set the `aria-label` on each event', () => {
