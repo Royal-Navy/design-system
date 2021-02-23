@@ -10,6 +10,7 @@ import { StyledMonthTitleMedium } from './partials/StyledMonthTitleMedium'
 import { StyledMonthTitleSmall } from './partials/StyledMonthTitleSmall'
 import { TimelineDay } from './context/types'
 
+const DECEMBER_INDEX = 11
 const MONTH_SMALL_THRESHOLD = 30
 const MONTH_MEDIUM_THRESHOLD = 100
 
@@ -39,7 +40,11 @@ function renderDefault({
 
   if (width < MONTH_SMALL_THRESHOLD) {
     return (
-      <StyledMonthSmall $width={width} data-testid="timeline-month">
+      <StyledMonthSmall
+        $hasThickBorder={startDate.getMonth() === DECEMBER_INDEX}
+        $width={width}
+        data-testid="timeline-month"
+      >
         <StyledMonthTitleSmall>
           {format(startDate, 'MMM')} {format(startDate, 'yyyy')}
         </StyledMonthTitleSmall>
