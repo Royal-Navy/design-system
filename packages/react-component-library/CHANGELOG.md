@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.36.2](https://github.com/Royal-Navy/design-system/compare/2.36.1...2.36.2) (2021-02-23)
+
+
+### Bug Fixes
+
+* **RangeSlider:** Drill missing `mode` prop ([345d132](https://github.com/Royal-Navy/design-system/commit/345d1326748bff87c8ef0faab3c2de7ae951e7e4))
+* **RangeSlider:** Drill some additional base props ([e5a837c](https://github.com/Royal-Navy/design-system/commit/e5a837cdf031ba0c1e32ce73988fddd53b4a2ecb))
+
+
+
+
+
 ## [2.36.1](https://github.com/Royal-Navy/design-system/compare/2.36.0...2.36.1) (2021-02-19)
 
 
