@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.36.3](https://github.com/Royal-Navy/design-system/compare/2.36.2...2.36.3) (2021-02-24)
+
+
+### Bug Fixes
+
+* **Timeline:** Pass params to custom render ([c1fbbf0](https://github.com/Royal-Navy/design-system/commit/c1fbbf02fc3354b7b594881d3d5d40b49552a08d))
+
+
+
+
+
 ## [2.36.2](https://github.com/Royal-Navy/design-system/compare/2.36.1...2.36.2) (2021-02-23)
 
 
