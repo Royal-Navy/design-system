@@ -11,7 +11,9 @@ const PostArticle = ({ mdx, className, title, description, header }) => {
           <p className="post-article__lede">{description}</p>
         </div>
       )}
-      <MDXRenderer>{mdx}</MDXRenderer>
+      <div>
+        <MDXRenderer>{mdx}</MDXRenderer>
+      </div>
     </article>
   )
 }
