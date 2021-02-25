@@ -1,5 +1,5 @@
 import styled from 'styled-components'
 
-export const StyledRowWeeksWrapper = styled.div`
+export const StyledWeekColumnsWrapper = styled.div`
   position: relative;
 `

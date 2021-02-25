@@ -1,7 +1,4 @@
 import {
-  addMonths,
-  subMonths,
-  endOfMonth,
   eachDayOfInterval,
   eachMonthOfInterval,
   eachWeekOfInterval,
@@ -11,11 +8,11 @@ import { padStart } from 'lodash'
 import {
   TimelineState,
   TimelineAction,
-  TIMELINE_ACTIONS,
   TimelineMonth,
   TimelineWeek,
   TimelineDay,
   TimelineHour,
+  TimelineScaleOption,
 } from './types'
 
 import { WEEK_START } from '../constants'
@@ -23,14 +20,12 @@ import { WEEK_START } from '../constants'
 const HOURS_IN_DAY = 24
 
 export function getMonths(start: Date, end: Date): TimelineMonth[] {
-  const months = eachMonthOfInterval({ start, end }).map(
-    (date) => {
-      return {
-        monthIndex: date.getMonth(),
-        startDate: date,
-      }
+  const months = eachMonthOfInterval({ start, end }).map((date) => {
+    return {
+      monthIndex: date.getMonth(),
+      startDate: date,
     }
-  )
+  })
 
   return months
 }
@@ -50,14 +45,12 @@ export function getWeeks(start: Date, end: Date): TimelineWeek[] {
 }
 
 export function getDays(start: Date, end: Date): TimelineDay[] {
-  const days = eachDayOfInterval({ start, end }).map(
-    (date) => {
-      return {
-        dayIndex: date.getDate() - 1,
-        date,
-      }
+  const days = eachDayOfInterval({ start, end }).map((date) => {
+    return {
+      dayIndex: date.getDate() - 1,
+      date,
     }
-  )
+  })
 
   return days
 }
@@ -78,20 +71,20 @@ export function getHours(blockSize: number): TimelineHour[] {
   })
 }
 
-export function buildCalendar(
-  startDate: Date,
-  endDate: Date,
-  hoursBlockSize: number
-): {
+export function buildCalendar({
+  from,
+  to,
+  hoursBlockSize,
+}: TimelineScaleOption): {
   months: TimelineMonth[]
   weeks: TimelineWeek[]
   days: TimelineDay[]
   hours: TimelineHour[]
 } {
   return {
-    months: getMonths(startDate, endDate),
-    weeks: getWeeks(startDate, endDate),
-    days: getDays(startDate, endDate),
+    months: getMonths(from, to),
+    weeks: getWeeks(from, to),
+    days: getDays(from, to),
     hours: getHours(hoursBlockSize),
   }
 }
@@ -100,37 +93,11 @@ export function reducer(
   state: TimelineState,
   action: TimelineAction
 ): TimelineState | never {
-  const {
-    months,
-    options: { hoursBlockSize, rangeInMonths: range },
-  } = state
-  const firstMonthOfRange = months[0].startDate
-  const lastMonthOfRange = addMonths(months[0].startDate, range - 1)
+  const { scale } = action
 
-  switch (action.type) {
-    case TIMELINE_ACTIONS.GET_NEXT:
-      return {
-        ...state,
-        startDate: addMonths(firstMonthOfRange, range),
-        endDate: null,
-        ...buildCalendar(
-          addMonths(firstMonthOfRange, range),
-          endOfMonth(addMonths(lastMonthOfRange, range)),
-          hoursBlockSize
-        ),
-      }
-    case TIMELINE_ACTIONS.GET_PREV:
-      return {
-        ...state,
-        startDate: subMonths(firstMonthOfRange, range),
-        endDate: null,
-        ...buildCalendar(
-          subMonths(firstMonthOfRange, range),
-          endOfMonth(subMonths(lastMonthOfRange, range)),
-          hoursBlockSize
-        ),
-      }
-    default:
-      throw new Error('Unknown reducer action')
+  return {
+    ...state,
+    ...buildCalendar(scale),
+    currentScaleOption: scale,
   }
 }

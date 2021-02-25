@@ -2,13 +2,13 @@ import styled from 'styled-components'
 
 import { TIMELINE_ALT_BG_COLOR, TIMELINE_BG_COLOR } from '../constants'
 
-interface StyledRowWeekProps {
+interface StyledWeekColumnProps {
   isOddNumber: boolean
   marginLeft: string
   width: string
 }
 
-export const StyledRowWeek = styled.div<StyledRowWeekProps>`
+export const StyledWeekColumn = styled.div<StyledWeekColumnProps>`
   display: inline-block;
   height: 100vh;
   background-color: ${({ isOddNumber }) =>

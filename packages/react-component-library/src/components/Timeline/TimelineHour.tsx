@@ -4,6 +4,8 @@ import { isAfter } from 'date-fns'
 import { StyledHour } from './partials/StyledHour'
 import { StyledHourTitle } from './partials/StyledHourTitle'
 
+const HOUR_DISPLAY_THRESHOLD = 30
+
 interface TimelineHourProps {
   date: Date
   render: (width: number, time: string) => React.ReactElement
@@ -14,12 +16,7 @@ interface TimelineHourProps {
 
 function renderDefault({ width, time }: { width: number; time: string }) {
   return (
-    <StyledHour
-      data-testid="timeline-hour"
-      style={{
-        width: `${width}px`,
-      }}
-    >
+    <StyledHour $width={width} data-testid="timeline-hour">
       <StyledHourTitle data-testid="timeline-hour-title">
         {time}
       </StyledHourTitle>
@@ -35,7 +32,9 @@ export const TimelineHour: React.FC<TimelineHourProps> = ({
   width,
   ...rest
 }) => {
-  if (isAfter(date, timelineEndDate)) return null
+  if (isAfter(date, timelineEndDate) || width < HOUR_DISPLAY_THRESHOLD) {
+    return null
+  }
 
   const child = render ? render(width, time) : renderDefault({ width, time })
 

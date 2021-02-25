@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
-import { DEFAULTS, NO_DATA_MESSAGE, TIMELINE_BLOCK_SIZE } from '../constants'
+import { NO_DATA_MESSAGE, TIMELINE_BLOCK_SIZE } from '../constants'
 import {
   Timeline,
   TimelineDays,
@@ -49,7 +49,7 @@ describe('Timeline', () => {
       wrapper = render(
         <Timeline
           startDate={new Date(2020, 3, 1)}
-          today={new Date(2020, 3, 15)}
+          today={new Date(2020, 3, 6)}
         >
           <TimelineTodayMarker />
           <TimelineMonths />
@@ -59,6 +59,8 @@ describe('Timeline', () => {
           <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
+
+      wrapper.getByTestId('timeline-toolbar-zoom-in').click()
     })
 
     it('should set the `role` attribute to `grid` on the timeline', () => {
@@ -96,7 +98,7 @@ describe('Timeline', () => {
     })
 
     it('renders the correct number of months', () => {
-      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(3)
+      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(1)
     })
 
     it('should set the `role` attribute to `columnheader` on each month', () => {
@@ -111,8 +113,6 @@ describe('Timeline', () => {
       const months = wrapper.queryAllByTestId('timeline-month')
 
       expect(months[0]).toHaveTextContent('April 2020')
-      expect(months[1]).toHaveTextContent('May 2020')
-      expect(months[2]).toHaveTextContent('June 2020')
     })
 
     it('should set the `role` attribute to `row` on the weeks', () => {
@@ -123,7 +123,7 @@ describe('Timeline', () => {
     })
 
     it('renders the correct number of weeks', () => {
-      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(14)
+      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(2)
     })
 
     it('should set the `aria-label` on each week', () => {
@@ -157,7 +157,9 @@ describe('Timeline', () => {
     })
 
     it('renders the correct number of days', () => {
-      expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(91)
+      const days = wrapper.queryAllByTestId('timeline-day')
+
+      expect(days).toHaveLength(7)
     })
 
     it('should set the `role` attribute to `columnheader` on each day', () => {
@@ -174,17 +176,13 @@ describe('Timeline', () => {
     })
 
     it('renders the correct number of hours', () => {
-      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(364)
+      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(28)
     })
 
     it('should set the `role` attribute to `columnheader` on each hour', () => {
       const days = wrapper.getAllByTestId('timeline-hour')
 
       days.forEach((day) => expect(day).toHaveAttribute('role', 'columnheader'))
-    })
-
-    it('should not display the timeline columns', () => {
-      expect(wrapper.queryAllByTestId('timeline-columns')).toHaveLength(0)
     })
 
     it('should display the no data message', () => {
@@ -433,12 +431,10 @@ describe('Timeline', () => {
           )
         })
 
-        it('should move to the previous set of months', () => {
+        it('should move to the previous month', () => {
           const months = wrapper.getAllByTestId('timeline-month')
 
-          expect(months[0]).toHaveTextContent('January 2020')
-          expect(months[1]).toHaveTextContent('February 2020')
-          expect(months[2]).toHaveTextContent('March 2020')
+          expect(months[0]).toHaveTextContent('March 2020')
         })
       })
 
@@ -453,12 +449,10 @@ describe('Timeline', () => {
           )
         })
 
-        it('should move to the previous set of months', () => {
+        it('should move to the next month', () => {
           const months = wrapper.getAllByTestId('timeline-month')
 
-          expect(months[0]).toHaveTextContent('July 2020')
-          expect(months[1]).toHaveTextContent('August 2020')
-          expect(months[2]).toHaveTextContent('September 2020')
+          expect(months[0]).toHaveTextContent('May 2020')
         })
       })
     })
@@ -501,11 +495,7 @@ describe('Timeline', () => {
   })
 
   describe('when `dayWidth` is specified', () => {
-    let consoleWarnSpy: jest.SpyInstance
-
     beforeEach(() => {
-      consoleWarnSpy = jest.spyOn(global.console, 'warn')
-
       wrapper = render(
         <Timeline
           dayWidth={100}
@@ -529,12 +519,6 @@ describe('Timeline', () => {
             </TimelineRow>
           </TimelineRows>
         </Timeline>
-      )
-    })
-
-    it('should warn the consumer about using the deprecated prop', () => {
-      expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - RNDS - Prop `dayWidth` is deprecated'
       )
     })
 
@@ -824,6 +808,8 @@ describe('Timeline', () => {
           startDate={new Date(2020, 1, 1, 0, 0, 0)}
           today={new Date(2020, 1, 7, 0, 0, 0)}
         >
+          <TimelineMonths />
+          <TimelineWeeks />
           <TimelineDays
             render={(index, dayWidth, date) => (
               <CustomDay
@@ -864,6 +850,9 @@ describe('Timeline', () => {
           startDate={new Date(2020, 1, 1, 0, 0, 0)}
           today={new Date(2020, 1, 7, 0, 0, 0)}
         >
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
           <TimelineHours
             render={(width, time) => (
               <CustomHour
@@ -876,6 +865,8 @@ describe('Timeline', () => {
           <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
+
+      wrapper.getByTestId('timeline-toolbar-zoom-in').click()
     })
 
     it('should render the day dates as specified', () => {
@@ -893,6 +884,9 @@ describe('Timeline', () => {
           startDate={new Date(2020, 3, 1)}
           today={new Date(2020, 3, 15)}
         >
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
           <TimelineHours blockSize={TIMELINE_BLOCK_SIZE.HALF_DAY} />
           <TimelineRows>
             <TimelineRow name="Row 1">
@@ -908,10 +902,12 @@ describe('Timeline', () => {
           </TimelineRows>
         </Timeline>
       )
+
+      wrapper.getByTestId('timeline-toolbar-zoom-in').click()
     })
 
     it('renders the correct number of hours', () => {
-      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(182)
+      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(14)
     })
   })
 
@@ -1024,9 +1020,7 @@ describe('Timeline', () => {
     })
 
     it('should render the correct number of columns', () => {
-      expect(wrapper.getByTestId('timeline-columns').childNodes).toHaveLength(
-        14
-      )
+      expect(wrapper.getByTestId('timeline-columns').childNodes).toHaveLength(5)
     })
 
     it('should render the column content correctly', () => {
@@ -1082,7 +1076,7 @@ describe('Timeline', () => {
       )
 
       wrapper = render(
-        <Timeline startDate={new Date(2020, 1, 1, 0, 0, 0)}>
+        <Timeline startDate={new Date(2020, 3, 1, 0, 0, 0)}>
           <TimelineTodayMarker />
           <TimelineMonths />
           <TimelineWeeks />
@@ -1114,7 +1108,7 @@ describe('Timeline', () => {
       ).toHaveTextContent('120px')
       expect(
         wrapper.getByTestId('timeline-custom-event-offset-px')
-      ).toHaveTextContent('2250px')
+      ).toHaveTextContent('450px')
       expect(
         wrapper.getByTestId('timeline-custom-event-max-width-px')
       ).toHaveTextContent('450px')
@@ -1253,7 +1247,7 @@ describe('Timeline', () => {
     })
 
     it('renders the correct number of months', () => {
-      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(6)
+      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(1)
     })
   })
 
@@ -1298,13 +1292,13 @@ describe('Timeline', () => {
       expect(wrapper.queryAllByTestId('timeline-day-title')).toHaveLength(17)
     })
 
-    it('renders the correct number of hours', () => {
-      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(68)
+    it('does not render hours', () => {
+      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(0)
     })
 
     it('positions the event correctly', () => {
       expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
-        left: `${DEFAULTS.UNIT_WIDTH * 4}px`,
+        left: `30px`,
       })
     })
   })
@@ -1539,6 +1533,165 @@ describe('Timeline', () => {
 
     it('should render the "No events" cell', () => {
       expect(wrapper.getByText('No events')).toBeInTheDocument()
+    })
+  })
+
+  describe('when scaling', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineHours />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 13)}
+                  endDate={new Date(2020, 3, 18)}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render months', () => {
+      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(1)
+    })
+
+    it('should render weeks', () => {
+      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(5)
+    })
+
+    it('should render days', () => {
+      expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(30)
+    })
+
+    it('should not render hours', () => {
+      expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(0)
+    })
+
+    describe('and then zooming out once (year view)', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('timeline-toolbar-zoom-out').click()
+      })
+
+      it('should render months', () => {
+        expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(12)
+      })
+
+      it('should render weeks', () => {
+        expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(0)
+      })
+
+      it('should render days', () => {
+        expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(0)
+      })
+
+      it('should not render hours', () => {
+        expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(0)
+      })
+    })
+
+    describe('and then zooming out twice (5 year view)', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('timeline-toolbar-zoom-out').click()
+        wrapper.getByTestId('timeline-toolbar-zoom-out').click()
+      })
+
+      it('should render months', () => {
+        expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(60)
+      })
+
+      it('should render weeks', () => {
+        expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(0)
+      })
+
+      it('should render days', () => {
+        expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(0)
+      })
+
+      it('should not render hours', () => {
+        expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(0)
+      })
+    })
+
+    describe('and then zooming in once (week view)', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+      })
+
+      it('should render months', () => {
+        expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(1)
+      })
+
+      it('should render weeks', () => {
+        expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(2)
+      })
+
+      it('should render days', () => {
+        expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(7)
+      })
+
+      it('should not render hours', () => {
+        expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(28)
+      })
+    })
+
+    describe('and then zooming in twice (1/4 day view)', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+      })
+
+      it('should render months', () => {
+        expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(1)
+      })
+
+      it('should render weeks', () => {
+        expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(2)
+      })
+
+      it('should render days', () => {
+        expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(7)
+      })
+
+      it('should not render hours', () => {
+        expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(28)
+      })
+    })
+
+    describe('and then zooming in thrice (1 hour view)', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+      })
+
+      it('should render months', () => {
+        expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(1)
+      })
+
+      it('should render weeks', () => {
+        expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(2)
+      })
+
+      it('should render days', () => {
+        expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(7)
+      })
+
+      it('should not render hours', () => {
+        expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(28)
+      })
     })
   })
 })

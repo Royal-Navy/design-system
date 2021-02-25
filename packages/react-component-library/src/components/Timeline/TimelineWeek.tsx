@@ -11,6 +11,8 @@ import { StyledWeekTitle } from './partials/StyledWeekTitle'
 import { StyledWeek } from './partials/StyledWeek'
 import { TimelineDay } from './context/types'
 
+const WEEK_DISPLAY_THRESHOLD = 50
+
 interface TimelineWeekProps {
   days: TimelineDay[]
   dayWidth: number
@@ -50,6 +52,28 @@ function renderDefault({
   )
 }
 
+function getOffset(startDate: Date, days: TimelineDay[], dayWidth: number) {
+  const offsetInDays = differenceInDays(
+    startDate,
+    max([startDate, days[0].date])
+  )
+
+  return formatPx(dayWidth, offsetInDays)
+}
+
+function getWidth(startDate: Date, days: TimelineDay[], dayWidth: number) {
+  const lastDateDisplayed = min([
+    endOfWeek(startDate, { weekStartsOn: WEEK_START }),
+    days[days.length - 1].date,
+  ])
+  const daysTotal = differenceInDays(lastDateDisplayed, startDate) + 1
+
+  return {
+    daysTotal,
+    widthPx: formatPx(dayWidth, daysTotal),
+  }
+}
+
 export const TimelineWeek: React.FC<TimelineWeekProps> = ({
   days,
   dayWidth,
@@ -58,24 +82,17 @@ export const TimelineWeek: React.FC<TimelineWeekProps> = ({
   startDate,
   ...rest
 }) => {
-  const lastDateDisplayed = min([
-    endOfWeek(startDate, { weekStartsOn: WEEK_START }),
-    days[days.length - 1].date,
-  ])
-  const daysTotal = differenceInDays(lastDateDisplayed, startDate) + 1
-  const offsetInDays = differenceInDays(
-    startDate,
-    max([startDate, days[0].date])
-  )
-  const offsetPx = formatPx(dayWidth, offsetInDays)
-  const widthPx = formatPx(dayWidth, daysTotal)
+  if (dayWidth * 7 < WEEK_DISPLAY_THRESHOLD) {
+    return null
+  }
 
   const isOddNumber = isOdd(index)
+  const { widthPx, daysTotal } = getWidth(startDate, days, dayWidth)
 
   const args = {
     index,
     isOddNumber,
-    offsetPx,
+    offsetPx: getOffset(startDate, days, dayWidth),
     widthPx,
     dayWidth,
     daysTotal,

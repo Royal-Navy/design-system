@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { format, endOfMonth, differenceInDays, min, max } from 'date-fns'
 
 import { DATE_MONTH_FORMAT } from './constants'
-import { formatPx } from './helpers'
 import { StyledMonth } from './partials/StyledMonth'
+import { StyledMonthMedium } from './partials/StyledMonthMedium'
+import { StyledMonthSmall } from './partials/StyledMonthSmall'
 import { StyledMonthTitle } from './partials/StyledMonthTitle'
+import { StyledMonthTitleMedium } from './partials/StyledMonthTitleMedium'
+import { StyledMonthTitleSmall } from './partials/StyledMonthTitleSmall'
 import { TimelineDay } from './context/types'
+
+const MONTH_SMALL_THRESHOLD = 30
+const MONTH_MEDIUM_THRESHOLD = 100
 
 interface TimelineMonthProps {
   days: TimelineDay[]
@@ -29,13 +35,31 @@ function renderDefault({
   daysTotal: number
   startDate: Date
 }): React.ReactElement {
+  const width = dayWidth * daysTotal
+
+  if (width < MONTH_SMALL_THRESHOLD) {
+    return (
+      <StyledMonthSmall $width={width} data-testid="timeline-month">
+        <StyledMonthTitleSmall>
+          {format(startDate, 'MMM')} {format(startDate, 'yyyy')}
+        </StyledMonthTitleSmall>
+      </StyledMonthSmall>
+    )
+  }
+
+  if (width < MONTH_MEDIUM_THRESHOLD) {
+    return (
+      <StyledMonthMedium $width={width} data-testid="timeline-month">
+        <StyledMonthTitleMedium>
+          <span>{format(startDate, 'MMM')}</span>
+          <span>{format(startDate, 'yyyy')}</span>
+        </StyledMonthTitleMedium>
+      </StyledMonthMedium>
+    )
+  }
+
   return (
-    <StyledMonth
-      style={{
-        width: formatPx(dayWidth, daysTotal),
-      }}
-      data-testid="timeline-month"
-    >
+    <StyledMonth $width={width} data-testid="timeline-month">
       <StyledMonthTitle>
         {format(startDate, DATE_MONTH_FORMAT)}
       </StyledMonthTitle>

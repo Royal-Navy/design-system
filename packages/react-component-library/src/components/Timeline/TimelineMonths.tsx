@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getKey } from '../../helpers'
@@ -28,37 +28,32 @@ export type TimelineMonthsProps =
 export const TimelineMonths: React.FC<TimelineMonthsProps> = ({
   render,
   ...rest
-}) => (
-  <TimelineContext.Consumer>
-    {({
-      dispatch,
-      state: {
-        days,
-        months,
-        options: { dayWidth },
-      },
-    }) => (
-      <TimelineHeaderRow
-        className="timeline__months"
-        data-testid="timeline-months"
-        name="Months"
-        {...rest}
-      >
-        <StyledMonths>
-          {months.map(({ startDate }, index) => (
-            <TimelineMonth
-              days={days}
-              dayWidth={dayWidth}
-              index={index}
-              key={getKey('timeline-month', startDate.toString())}
-              render={render}
-              startDate={startDate}
-            />
-          ))}
-        </StyledMonths>
-      </TimelineHeaderRow>
-    )}
-  </TimelineContext.Consumer>
-)
+}) => {
+  const {
+    state: { currentScaleOption, days, months },
+  } = useContext(TimelineContext)
+
+  return (
+    <TimelineHeaderRow
+      className="timeline__months"
+      data-testid="timeline-months"
+      name="Months"
+      {...rest}
+    >
+      <StyledMonths>
+        {months.map(({ startDate }, index) => (
+          <TimelineMonth
+            days={days}
+            dayWidth={currentScaleOption.widths.day}
+            index={index}
+            key={getKey('timeline-month', startDate.toString())}
+            render={render}
+            startDate={startDate}
+          />
+        ))}
+      </StyledMonths>
+    </TimelineHeaderRow>
+  )
+}
 
 TimelineMonths.displayName = 'TimelineMonths'

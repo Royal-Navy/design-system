@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { getKey } from '../../helpers'
 import { StyledDays } from './partials/StyledDays'
@@ -22,37 +22,31 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({
   render,
   ...rest
 }) => {
+  const {
+    state: { currentScaleOption, days },
+  } = useContext(TimelineContext)
+
   return (
-    <TimelineContext.Consumer>
-      {({
-        state: {
-          days,
-          endDate: timelineEndDate,
-          options: { dayWidth },
-        },
-      }) => (
-        <TimelineHeaderRow
-          className="timeline__days"
-          isShort
-          name="Days"
-          data-testid="timeline-days"
-          {...rest}
-        >
-          <StyledDays>
-            {days.map(({ date }, index) => (
-              <TimelineDay
-                date={date}
-                dayWidth={dayWidth}
-                index={index}
-                key={getKey('timeline-day', date.toString())}
-                render={render}
-                timelineEndDate={timelineEndDate}
-              />
-            ))}
-          </StyledDays>
-        </TimelineHeaderRow>
-      )}
-    </TimelineContext.Consumer>
+    <TimelineHeaderRow
+      className="timeline__days"
+      isShort
+      name="Days"
+      data-testid="timeline-days"
+      {...rest}
+    >
+      <StyledDays>
+        {days.map(({ date }, index) => (
+          <TimelineDay
+            date={date}
+            dayWidth={currentScaleOption.widths.day}
+            index={index}
+            key={getKey('timeline-day', date.toString())}
+            render={render}
+            timelineEndDate={currentScaleOption.to}
+          />
+        ))}
+      </StyledDays>
+    </TimelineHeaderRow>
   )
 }
 
