@@ -37,7 +37,7 @@ export const TimelineWeekColumns: React.FC<TimelineWeekColumnProps> = ({
   renderColumns,
 }) => (
   <TimelineContext.Consumer>
-    {({ state: { days, options, weeks } }) => (
+    {({ state: { currentScaleOption, days, weeks } }) => (
       <StyledWeekColumnsWrapper>
         <StyledWeekColumns role="presentation" data-testid="timeline-columns">
           {weeks.map(({ startDate }, index) => {
@@ -49,9 +49,12 @@ export const TimelineWeekColumns: React.FC<TimelineWeekColumnProps> = ({
               startDate,
               max([startDate, days[0].date])
             )
-            const offsetPx = formatPx(options.scale.widths.day, offsetInDays)
+            const offsetPx = formatPx(
+              currentScaleOption.widths.day,
+              offsetInDays
+            )
             const widthPx = formatPx(
-              options.scale.widths.day,
+              currentScaleOption.widths.day,
               differenceInDays(lastDateDisplayed, startDate) + 1
             )
 

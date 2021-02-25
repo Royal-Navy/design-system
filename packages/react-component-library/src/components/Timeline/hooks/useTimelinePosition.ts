@@ -37,7 +37,7 @@ export function useTimelinePosition(
   endsAfterEnd: boolean
 } {
   const {
-    state: { days, options },
+    state: { currentScaleOption, days },
   } = useContext(TimelineContext)
 
   const firstDateDisplayed = days[0].date
@@ -62,9 +62,9 @@ export function useTimelinePosition(
       : getWidth(startDate, lastDateDisplayed) + 1
 
   return {
-    width: formatPx(options.dayWidth, width),
-    offset: formatPx(options.dayWidth, offset),
-    maxWidth: formatPx(options.dayWidth, maxWidth),
+    width: formatPx(currentScaleOption.widths.day, width),
+    offset: formatPx(currentScaleOption.widths.day, offset),
+    maxWidth: formatPx(currentScaleOption.widths.day, maxWidth),
     startsBeforeStart,
     startsAfterEnd,
     endsBeforeStart,

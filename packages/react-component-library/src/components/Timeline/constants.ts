@@ -7,6 +7,7 @@ const DATE_MONTH_FORMAT = 'MMMM yyyy'
 const DATE_WEEK_FORMAT = 'dd/MM'
 
 const TIMELINE_BLOCK_SIZE = {
+  SINGLE_HOUR: 1,
   QUARTER_DAY: 6,
   HALF_DAY: 12,
 } as const

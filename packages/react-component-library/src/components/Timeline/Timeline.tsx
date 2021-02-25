@@ -1,5 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
+import { find } from 'lodash'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineProvider } from './context'
@@ -28,6 +29,7 @@ import { StyledTimeline } from './partials/StyledTimeline'
 import { StyledInner } from './partials/StyledInner'
 import { StyledHeader } from './partials/StyledHeader'
 import { TimelineToolbar } from './TimelineToolbar'
+import { initialiseScaleOptions } from './context/timeline_scales'
 import { TimelineWeekColumns } from './TimelineWeekColumns'
 
 type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
@@ -96,20 +98,6 @@ function getHoursBlockSize(
   )
 }
 
-function getDayWidth(
-  hoursBlockSize: number,
-  dayWidth: number,
-  unitWidth: number
-) {
-  const multiplier = hoursBlockSize ? 24 / hoursBlockSize : 1
-
-  if (dayWidth) {
-    logger.warn('Prop `dayWidth` is deprecated')
-  }
-
-  return (dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH) * multiplier
-}
-
 function getRenderColumns(
   children: timelineChildrenType | timelineChildrenType[]
 ) {
@@ -135,12 +123,10 @@ export const Timeline: React.FC<TimelineProps> = ({
   unitWidth,
   ...rest
 }) => {
-  const hoursBlockSize = getHoursBlockSize(children)
+  const renderColumns = getRenderColumns(children)
   const options: TimelineOptions = {
-    hoursBlockSize,
-    dayWidth: getDayWidth(hoursBlockSize, dayWidth, unitWidth),
-    unitWidth: unitWidth || DEFAULTS.UNIT_WIDTH,
-    rangeInMonths: range || DEFAULTS.RANGE_IN_MONTHS,
+    hoursBlockSize: getHoursBlockSize(children),
+    unitWidth: dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH,
   }
 
   const rootChildren = extractChildren(

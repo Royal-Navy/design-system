@@ -1,15 +1,16 @@
-import { addMonths, endOfMonth, startOfMonth } from 'date-fns'
+import { find } from 'lodash'
 
 import { buildCalendar } from './reducer'
 import { TimelineOptions, TimelineState } from './types'
+import { initialiseScaleOptions } from './timeline_scales'
 
 const initialState: TimelineState = {
   days: [],
   hours: [],
   months: [],
   options: null,
-  startDate: null,
-  endDate: null,
+  scaleOptions: [],
+  currentScaleOption: null,
   today: new Date(),
   weeks: [],
 }
@@ -25,21 +26,22 @@ function initialiseState(
     today,
     startDate,
     endDate,
-    options: { ...initialState.options, ...options },
+    options,
   }
 
-  const firstDateDisplayed = endDate ? startDate : startOfMonth(startDate)
-  const lastDateDisplayed =
-    endDate ??
-    endOfMonth(addMonths(firstDateDisplayed, state.options.rangeInMonths - 1))
+  const scaleOptions = initialiseScaleOptions(
+    startDate,
+    endDate,
+    options.hoursBlockSize,
+    options.unitWidth
+  )
+  const defaultScaleOption = find(scaleOptions, ({ isDefault }) => isDefault)
 
   return {
     ...state,
-    ...buildCalendar(
-      firstDateDisplayed,
-      lastDateDisplayed,
-      state.options.hoursBlockSize
-    ),
+    ...buildCalendar(defaultScaleOption),
+    scaleOptions,
+    currentScaleOption: defaultScaleOption,
   }
 }
 

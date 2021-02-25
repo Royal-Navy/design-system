@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getKey } from '../../helpers'
@@ -32,37 +32,31 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({
   render,
   ...rest
 }) => {
+  const {
+    state: { currentScaleOption, days, weeks },
+  } = useContext(TimelineContext)
+
   return (
-    <TimelineContext.Consumer>
-      {({
-        state: {
-          days,
-          weeks,
-          options: { dayWidth },
-        },
-      }) => (
-        <TimelineHeaderRow
-          className="timeline__weeks"
-          isShort
-          name="Weeks"
-          data-testid="timeline-weeks"
-          {...rest}
-        >
-          <StyledWeeks>
-            {weeks.map(({ startDate }, index) => (
-              <TimelineWeek
-                days={days}
-                dayWidth={dayWidth}
-                index={index}
-                key={getKey('timeline-week', startDate.toString())}
-                render={render}
-                startDate={startDate}
-              />
-            ))}
-          </StyledWeeks>
-        </TimelineHeaderRow>
-      )}
-    </TimelineContext.Consumer>
+    <TimelineHeaderRow
+      className="timeline__weeks"
+      isShort
+      name="Weeks"
+      data-testid="timeline-weeks"
+      {...rest}
+    >
+      <StyledWeeks>
+        {weeks.map(({ startDate }, index) => (
+          <TimelineWeek
+            days={days}
+            dayWidth={currentScaleOption.widths.day}
+            index={index}
+            key={getKey('timeline-week', startDate.toString())}
+            render={render}
+            startDate={startDate}
+          />
+        ))}
+      </StyledWeeks>
+    </TimelineHeaderRow>
   )
 }
 

@@ -15,7 +15,6 @@ export const StyledDay = styled.div<StyledDayProps>`
   justify-content: center;
   height: 2.5rem;
   background-color: ${TIMELINE_BG_COLOR};
-  border-top: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
   border-bottom: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
   border-right: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
   width: ${({ $width }) => `${$width}px`};
