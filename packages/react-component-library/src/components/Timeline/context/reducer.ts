@@ -23,14 +23,12 @@ import { WEEK_START } from '../constants'
 const HOURS_IN_DAY = 24
 
 export function getMonths(start: Date, end: Date): TimelineMonth[] {
-  const months = eachMonthOfInterval({ start, end }).map(
-    (date) => {
-      return {
-        monthIndex: date.getMonth(),
-        startDate: date,
-      }
+  const months = eachMonthOfInterval({ start, end }).map((date) => {
+    return {
+      monthIndex: date.getMonth(),
+      startDate: date,
     }
-  )
+  })
 
   return months
 }
@@ -50,14 +48,12 @@ export function getWeeks(start: Date, end: Date): TimelineWeek[] {
 }
 
 export function getDays(start: Date, end: Date): TimelineDay[] {
-  const days = eachDayOfInterval({ start, end }).map(
-    (date) => {
-      return {
-        dayIndex: date.getDate() - 1,
-        date,
-      }
+  const days = eachDayOfInterval({ start, end }).map((date) => {
+    return {
+      dayIndex: date.getDate() - 1,
+      date,
     }
-  )
+  })
 
   return days
 }

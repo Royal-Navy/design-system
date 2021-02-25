@@ -1,34 +1,25 @@
 import { useContext } from 'react'
 
-import {
-  differenceInCalendarDays,
-  isBefore,
-  isAfter,
-} from 'date-fns'
+import { differenceInCalendarDays, isBefore, isAfter } from 'date-fns'
 
 import { TimelineContext } from '../context'
 import { formatPx } from '../helpers'
 
-const timeOffset = (date: Date) => 1 / 24 * new Date(date).getHours()
+const timeOffset = (date: Date) => (1 / 24) * new Date(date).getHours()
 
-function getWidth (
-  startDate: Date,
-  endDate: Date
-): number {
-  return differenceInCalendarDays(
-    new Date(endDate),
-    new Date(startDate)
-  ) - timeOffset(startDate) + timeOffset(endDate)
+function getWidth(startDate: Date, endDate: Date): number {
+  return (
+    differenceInCalendarDays(new Date(endDate), new Date(startDate)) -
+    timeOffset(startDate) +
+    timeOffset(endDate)
+  )
 }
 
-function getOffset (
-  startDate: Date,
-  timelineStart: Date
-): number {
-  return differenceInCalendarDays(
-    new Date(startDate),
-    new Date(timelineStart)
-  ) + timeOffset(startDate)
+function getOffset(startDate: Date, timelineStart: Date): number {
+  return (
+    differenceInCalendarDays(new Date(startDate), new Date(timelineStart)) +
+    timeOffset(startDate)
+  )
 }
 
 export function useTimelinePosition(
@@ -65,9 +56,10 @@ export function useTimelinePosition(
     ? 0
     : getOffset(startDate, firstDateDisplayed)
 
-  const maxWidth = (startsBeforeStart && endsAfterEnd)
-    ? getWidth(firstDateDisplayed, lastDateDisplayed) + 1
-    : getWidth(startDate, lastDateDisplayed) + 1
+  const maxWidth =
+    startsBeforeStart && endsAfterEnd
+      ? getWidth(firstDateDisplayed, lastDateDisplayed) + 1
+      : getWidth(startDate, lastDateDisplayed) + 1
 
   return {
     width: formatPx(options.dayWidth, width),
