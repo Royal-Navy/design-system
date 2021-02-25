@@ -30,12 +30,7 @@ function renderDefault({
   startDate: Date
 }): React.ReactElement {
   return (
-    <StyledMonth
-      style={{
-        width: formatPx(dayWidth, daysTotal),
-      }}
-      data-testid="timeline-month"
-    >
+    <StyledMonth $width={width} data-testid="timeline-month">
       <StyledMonthTitle>
         {format(startDate, DATE_MONTH_FORMAT)}
       </StyledMonthTitle>

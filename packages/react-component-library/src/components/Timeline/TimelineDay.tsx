@@ -15,12 +15,7 @@ interface TimelineDayProps {
 
 function renderDefault({ dayWidth, date }: { dayWidth: number; date: Date }) {
   return (
-    <StyledDay
-      data-testid="timeline-day"
-      style={{
-        width: `${dayWidth}px`,
-      }}
-    >
+    <StyledDay $width={dayWidth} data-testid="timeline-day">
       <StyledDayTitle data-testid="timeline-day-title">
         {format(date, DATE_DAY_FORMAT)}
       </StyledDayTitle>

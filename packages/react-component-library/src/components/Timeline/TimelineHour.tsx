@@ -14,12 +14,7 @@ interface TimelineHourProps {
 
 function renderDefault({ width, time }: { width: number; time: string }) {
   return (
-    <StyledHour
-      data-testid="timeline-hour"
-      style={{
-        width: `${width}px`,
-      }}
-    >
+    <StyledHour $width={width} data-testid="timeline-hour">
       <StyledHourTitle data-testid="timeline-hour-title">
         {time}
       </StyledHourTitle>

@@ -1,13 +1,21 @@
 import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
+import { TIMELINE_BORDER_COLOR } from '../constants'
+
 const { color, spacing, zIndex } = selectors
 
-export const StyledMonth = styled.div`
+export interface StyledMonthProps {
+  $width: number
+}
+
+export const StyledMonth = styled.div<StyledMonthProps>`
   position: relative;
   display: inline-flex;
   align-items: center;
   height: 4rem;
+  border-bottom: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
+  width: ${({ $width }) => `${$width}px`};
 
   &:last-of-type {
     border-right: none;
