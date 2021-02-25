@@ -925,6 +925,8 @@ Here you will find comprehensive API documentation for the Timeline Components.
 
 ## TimelineHours
 
+<p>Hour blocks will not be visible at the default scale level and will be visible when scaling in from the week level.</p>
+
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
     <h1 className="rn-fw-api-title">blockSize</h1>
