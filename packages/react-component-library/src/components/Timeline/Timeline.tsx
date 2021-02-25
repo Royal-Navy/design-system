@@ -28,6 +28,7 @@ import { StyledTimeline } from './partials/StyledTimeline'
 import { StyledInner } from './partials/StyledInner'
 import { StyledHeader } from './partials/StyledHeader'
 import { TimelineToolbar } from './TimelineToolbar'
+import { TimelineWeekColumns } from './TimelineWeekColumns'
 
 type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
 
@@ -109,6 +110,19 @@ function getDayWidth(
   return (dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH) * multiplier
 }
 
+function getRenderColumns(
+  children: timelineChildrenType | timelineChildrenType[]
+) {
+  const rowsChildren = extractChildren(children, [TimelineRows])
+
+  if (!rowsChildren.length) {
+    return null
+  }
+
+  return (rowsChildren[0] as React.ReactElement<TimelineRowsProps>).props
+    .renderColumns
+}
+
 export const Timeline: React.FC<TimelineProps> = ({
   children,
   className,
@@ -174,6 +188,7 @@ export const Timeline: React.FC<TimelineProps> = ({
           className="timeline__inner"
           hasSide={hasSide || hasTimelineSide}
         >
+          <TimelineWeekColumns renderColumns={renderColumns} />
           {rootChildren}
           <StyledHeader
             className="timeline__header"

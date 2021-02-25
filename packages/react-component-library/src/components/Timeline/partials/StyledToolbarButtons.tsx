@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled  from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
 import { StyledIcon } from '../../Button/partials/StyledIcon'

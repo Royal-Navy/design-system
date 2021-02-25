@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-export const StyledRowWeeks = styled.div`
+export const StyledWeekColumns = styled.div`
   position: absolute;
-  top: 0;
+  top: 4rem;
   left: 0;
   white-space: nowrap;
 `
