@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.37.0](https://github.com/Royal-Navy/design-system/compare/2.36.3...2.37.0) (2021-02-26)
+
+
+### Bug Fixes
+
+* **DocsSite:** Prevent bleeding `TabSet` ([9277171](https://github.com/Royal-Navy/design-system/commit/92771714d1eef6df6f13e28ebc78425e916ca243))
+
+
+### Features
+
+* **Timeline:** Add scaling ([a25ba0a](https://github.com/Royal-Navy/design-system/commit/a25ba0ae4daa0fd325e1bddeb104b6b10f2779de))
+
+
+
+
+
 ## [2.36.3](https://github.com/Royal-Navy/design-system/compare/2.36.2...2.36.3) (2021-02-24)
 
 
