@@ -16,7 +16,8 @@ export const StyledTodayMarker = styled.div`
     content: 'Today';
     display: inline-block;
     color: ${color('danger', '500')};
-    font-size: ${fontSize('s')};
-    transform: translate(-50%, -175%);
+    background-color: ${color('neutral', 'white')};
+    font-size: ${fontSize('xxs')};
+    transform: translate(-50%, -200%);
   }
 `
