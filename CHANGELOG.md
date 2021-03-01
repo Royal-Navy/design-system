@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.38.0](https://github.com/Royal-Navy/design-system/compare/2.37.0...2.38.0) (2021-03-01)
+
+
+### Features
+
+* **Timeline:** Add readability to 5 year view ([cf4a10b](https://github.com/Royal-Navy/design-system/commit/cf4a10b5812c430e78739a6e53a1bbce873f6671))
+* **Timeline:** Add thick border for December ([496c924](https://github.com/Royal-Navy/design-system/commit/496c92486a64400adfe57f6f386ae40a6f27c7e9))
+
+
+
+
+
 # [2.37.0](https://github.com/Royal-Navy/design-system/compare/2.36.3...2.37.0) (2021-02-26)
 
 
