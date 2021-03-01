@@ -1,6 +1,4 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
-import { transparentize } from 'polished'
 import { TrackItem, GetTrackProps } from 'react-compound-slider'
 
 import { ThresholdColor } from './useThresholdColor'
@@ -8,8 +6,8 @@ import {
   RANGE_SLIDER_TRACK_BELOW_FIRST_THRESHOLD,
   RANGE_SLIDER_TRACK_BETWEEN_THRESHOLDS,
   RANGE_SLIDER_TRACK_ABOVE_THRESHOLDS,
-  RANGE_SLIDER_TRACK_COLOR,
 } from './constants'
+import { StyledChunk } from './partials/StyledChunk'
 
 interface ThresholdTrackProps extends TrackItem {
   getTrackProps: GetTrackProps
@@ -23,39 +21,6 @@ interface ChunkProps {
   testId: string
   $thresholdColor?: ThresholdColor
 }
-
-interface StyledChunkProps {
-  $thresholdColor?: ThresholdColor
-  $left: string
-  $width: string
-  $maxWidth: string
-}
-
-const StyledChunk = styled.div.attrs<StyledChunkProps>(
-  ({ $left, $width, $maxWidth }) => ({
-    style: {
-      left: $left,
-      width: $width,
-      maxWidth: $maxWidth,
-    },
-  })
-)<StyledChunkProps>`
-  position: absolute;
-  transform: translate(0%, -50%);
-  height: 2px;
-  z-index: 1;
-  background-color: ${RANGE_SLIDER_TRACK_COLOR};
-  cursor: pointer;
-
-  ${({ $thresholdColor }) => css`
-    background-color: ${$thresholdColor};
-
-    &::after {
-      color: ${$thresholdColor};
-      background-color: ${transparentize(0.75, $thresholdColor)};
-    }
-  `}
-`
 
 export const ThresholdTrack: React.FC<ThresholdTrackProps> = ({
   target,

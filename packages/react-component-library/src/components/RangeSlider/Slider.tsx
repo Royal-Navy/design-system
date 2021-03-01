@@ -1,8 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
 import {
-  Slider,
   SliderProps,
   Rail,
   Handles,
@@ -17,7 +14,13 @@ import {
   ThresholdTrack,
   Tick,
 } from '.'
-import { RANGE_SLIDER_BG_COLOR } from './constants'
+import { StyledSlider } from './partials/StyledSlider'
+import { StyledIconLeft } from './partials/StyledIconLeft'
+import { StyledIconRight } from './partials/StyledIconRight'
+import { StyledRangeSlider } from './partials/StyledRangeSlider'
+import { StyledRail } from './partials/StyledRail'
+import { StyledRailInner } from './partials/StyledRailInner'
+import { StyledTicks } from './partials/StyledTicks'
 
 export interface RangeSliderProps
   extends Omit<SliderProps, 'children' | 'disabled' | 'reversed' | 'vertical'> {
@@ -34,83 +37,6 @@ export interface RangeSliderProps
   displayUnit?: string
   formatValue?: RangeSliderValueFormatter
 }
-
-interface StyledRangeSliderProps {
-  $isReversed?: boolean
-  $isDisabled?: boolean
-  $hasPercentage?: boolean
-}
-
-const { color, spacing } = selectors
-
-const StyledTicks = styled.div`
-  div:first-of-type,
-  div:last-of-type {
-    div {
-      height: 16px;
-    }
-  }
-`
-
-const StyledRailInner = styled.div`
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  height: 2px;
-  transform: translateY(-50%);
-  background-color: ${RANGE_SLIDER_BG_COLOR};
-  pointer-events: none;
-`
-
-const StyledRail = styled.div`
-  position: absolute;
-  top: calc(50% + 20px);
-  left: 0;
-  display: inline-block;
-  width: 100%;
-  height: 40px;
-  transform: translateY(-100%);
-`
-
-const StyledRangeSlider = styled.div<StyledRangeSliderProps>`
-  display: inline-flex;
-  align-items: center;
-  width: 100%;
-
-  ${({ $isDisabled }) =>
-    $isDisabled &&
-    css`
-      opacity: 0.5;
-      cursor: not-allowed;
-
-      * {
-        cursor: not-allowed;
-      }
-    `}
-`
-
-const StyledSlider = styled<React.ComponentType<SliderProps>>(Slider)`
-  position: relative;
-  width: 100%;
-  height: 40px;
-  padding-top: 20px;
-`
-
-const StyledIconLeft = styled.div`
-  svg {
-    color: ${color('neutral', '400')};
-    overflow: visible;
-    margin-right: ${spacing('2')};
-  }
-`
-
-const StyledIconRight = styled.div`
-  svg {
-    color: ${color('neutral', '400')};
-    overflow: visible;
-    margin-left: ${spacing('2')};
-  }
-`
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({
   domain,
@@ -177,6 +103,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         onUpdate={onUpdateHandler}
         onSlideStart={onSlideStart}
         onSlideEnd={onSlideEnd}
+        data-testid="rangeslider-slider"
       >
         <Rail>
           {({ getRailProps }) => (
