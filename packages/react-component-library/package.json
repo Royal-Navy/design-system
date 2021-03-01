@@ -111,7 +111,7 @@
     "eslint-plugin-react": "^7.18.0",
     "express": "^4.17.1",
     "file-loader": "^6.0.0",
-    "html-webpack-plugin": "^4.3.0",
+    "html-webpack-plugin": "^5.2.0",
     "image-webpack-loader": "^7.0.1",
     "jest": "^26.0.1",
     "jest-canvas-mock": "^2.3.0",
