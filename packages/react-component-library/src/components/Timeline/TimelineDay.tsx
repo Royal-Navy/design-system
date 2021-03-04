@@ -5,7 +5,7 @@ import { DATE_DAY_FORMAT } from './constants'
 import { StyledDay } from './partials/StyledDay'
 import { StyledDayTitle } from './partials/StyledDayTitle'
 
-const DAY_DISPLAY_THRESHOLD = 30
+const DAY_DISPLAY_THRESHOLD = 29
 
 interface TimelineDayProps {
   date: Date
