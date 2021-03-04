@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.38.2](https://github.com/Royal-Navy/design-system/compare/2.38.1...2.38.2) (2021-03-04)
+
+
+### Bug Fixes
+
+* **Timeline:** Reduce day display threshold ([60d95e6](https://github.com/Royal-Navy/design-system/commit/60d95e673a05314a8c9ac6873e27cbab21ac6c02))
+* **Timeline:** Use `range` at default zoom level ([c655d7d](https://github.com/Royal-Navy/design-system/commit/c655d7dafea1d444b49cbe569e2497da3d5f931f))
+
+
+
+
+
 ## [2.38.1](https://github.com/Royal-Navy/design-system/compare/2.38.0...2.38.1) (2021-03-02)
 
 **Note:** Version bump only for package @royalnavy/react-component-library
