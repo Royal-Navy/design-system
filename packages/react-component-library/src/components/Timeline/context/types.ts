@@ -17,6 +17,7 @@ export type TimelineScaleOption = {
 
 export type TimelineOptions = {
   hoursBlockSize: BlockSizeType
+  range: number
   unitWidth: number
 }
 

@@ -125,6 +125,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 }) => {
   const renderColumns = getRenderColumns(children)
   const options: TimelineOptions = {
+    range,
     hoursBlockSize: getHoursBlockSize(children),
     unitWidth: dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH,
   }

@@ -9,7 +9,7 @@ import {
 import { find } from 'lodash'
 
 import { BlockSizeType } from '../TimelineHours'
-import { TimelineScaleOption } from './types'
+import { TimelineOptions, TimelineScaleOption } from './types'
 import { TIMELINE_BLOCK_SIZE } from '../constants'
 
 const DEFAULT_INTERVAL_SIZE = 1
@@ -28,34 +28,37 @@ type ScaleConfigOptionType = {
 }
 type ScaleConfigType = { [key: string]: ScaleConfigOptionType }
 
-const scaleConfig: ScaleConfigType = {
-  hour: {
-    calculateDate: addWeeks,
-    hoursBlockSize: TIMELINE_BLOCK_SIZE.SINGLE_HOUR,
-    scale: 8,
-  },
-  quarter_day: {
-    calculateDate: addWeeks,
-    scale: 4,
-  },
-  day: {
-    calculateDate: addWeeks,
-    scale: 2,
-  },
-  week: {
-    calculateDate: addWeeks,
-  },
-  month: {
-    calculateDate: addMonths,
-    isDefault: true,
-  },
-  year: {
-    calculateDate: addYears,
-  },
-  five_year: {
-    calculateDate: addYears,
-    intervalSize: 5,
-  },
+function getScaleConfig(monthIntervalSize: number): ScaleConfigType {
+  return {
+    hour: {
+      calculateDate: addWeeks,
+      hoursBlockSize: TIMELINE_BLOCK_SIZE.SINGLE_HOUR,
+      scale: 8,
+    },
+    quarter_day: {
+      calculateDate: addWeeks,
+      scale: 4,
+    },
+    day: {
+      calculateDate: addWeeks,
+      scale: 2,
+    },
+    week: {
+      calculateDate: addWeeks,
+    },
+    month: {
+      calculateDate: addMonths,
+      intervalSize: monthIntervalSize || 1,
+      isDefault: true,
+    },
+    year: {
+      calculateDate: addYears,
+    },
+    five_year: {
+      calculateDate: addYears,
+      intervalSize: 5,
+    },
+  }
 }
 
 function mapScaleOption(
@@ -64,14 +67,13 @@ function mapScaleOption(
   hoursBlockSize: BlockSizeType,
   endDate: Date
 ) {
-  return (scaleConfigKey: string): TimelineScaleOption => {
-    const {
-      calculateDate,
-      intervalSize,
-      scale,
-      hoursBlockSize: configHoursBlockSize,
-      ...rest
-    } = scaleConfig[scaleConfigKey]
+  return ({
+    calculateDate,
+    intervalSize,
+    scale,
+    hoursBlockSize: configHoursBlockSize,
+    ...rest
+  }: ScaleConfigOptionType): TimelineScaleOption => {
     const to = addDays(
       calculateDate(startDate, intervalSize || DEFAULT_INTERVAL_SIZE),
       -1
@@ -100,17 +102,22 @@ function mapScaleOption(
 function initialiseScaleOptions(
   startDate: Date,
   endDate: Date,
-  hoursBlockSize: BlockSizeType,
-  unitWidth: number
+  { hoursBlockSize, range, unitWidth }: TimelineOptions
 ): TimelineScaleOption[] {
+  const scaleConfig = getScaleConfig(range)
   const defaultConfig = find(scaleConfig, ({ isDefault }) => isDefault)
   const numberOfDays =
     differenceInDays(defaultConfig.calculateDate(startDate, 1), startDate) - 1
   const maxWidth = unitWidth * numberOfDays
 
-  return Object.keys(scaleConfig).map(
-    mapScaleOption(startDate, maxWidth, hoursBlockSize, endDate)
-  )
+  return Object.keys(scaleConfig).map((scaleConfigKey) => {
+    return mapScaleOption(
+      startDate,
+      maxWidth,
+      hoursBlockSize,
+      endDate
+    )(scaleConfig[scaleConfigKey])
+  })
 }
 
 export { initialiseScaleOptions }
