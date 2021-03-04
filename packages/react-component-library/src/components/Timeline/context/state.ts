@@ -29,12 +29,7 @@ function initialiseState(
     options,
   }
 
-  const scaleOptions = initialiseScaleOptions(
-    startDate,
-    endDate,
-    options.hoursBlockSize,
-    options.unitWidth
-  )
+  const scaleOptions = initialiseScaleOptions(startDate, endDate, options)
   const defaultScaleOption = find(scaleOptions, ({ isDefault }) => isDefault)
 
   return {

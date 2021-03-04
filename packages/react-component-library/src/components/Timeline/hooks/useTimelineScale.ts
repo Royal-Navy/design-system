@@ -47,8 +47,10 @@ export function useTimelineScale() {
         (currentScaleOption.intervalSize || 1) * intervalMultiplier
       ),
       null,
-      currentScaleOption.hoursBlockSize,
-      options.unitWidth
+      {
+        ...options,
+        hoursBlockSize: currentScaleOption.hoursBlockSize,
+      }
     )
     const newScaleOption = newScaleOptions[scaleIndex]
     setTimelineScaleOptions(newScaleOptions)

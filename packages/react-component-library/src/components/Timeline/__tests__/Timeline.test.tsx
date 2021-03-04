@@ -47,10 +47,7 @@ describe('Timeline', () => {
   describe('when no data is provided', () => {
     beforeEach(() => {
       wrapper = render(
-        <Timeline
-          startDate={new Date(2020, 3, 1)}
-          today={new Date(2020, 3, 6)}
-        >
+        <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 6)}>
           <TimelineTodayMarker />
           <TimelineMonths />
           <TimelineWeeks />
@@ -1247,7 +1244,7 @@ describe('Timeline', () => {
     })
 
     it('renders the correct number of months', () => {
-      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(1)
+      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(6)
     })
   })
 
