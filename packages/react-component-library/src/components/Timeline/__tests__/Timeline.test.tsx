@@ -1253,7 +1253,7 @@ describe('Timeline', () => {
       wrapper = render(
         <Timeline
           startDate={new Date(2020, 1, 6, 0, 0, 0)}
-          endDate={new Date(2020, 1, 22, 0, 0, 0)}
+          endDate={new Date(2020, 2, 17, 0, 0, 0)}
           today={new Date(2020, 4, 1, 0, 0, 0)}
         >
           <TimelineTodayMarker />
@@ -1278,15 +1278,18 @@ describe('Timeline', () => {
     })
 
     it('renders the correct number of months', () => {
-      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(1)
+      expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(2)
     })
 
     it('renders the correct number of weeks', () => {
-      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(3)
+      expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(7)
     })
 
     it('renders the correct number of days', () => {
-      expect(wrapper.queryAllByTestId('timeline-day-title')).toHaveLength(17)
+      const days = wrapper.queryAllByTestId('timeline-day-title')
+      expect(days).toHaveLength(41)
+      expect(days[0]).toHaveTextContent('06')
+      expect(days[days.length - 1]).toHaveTextContent('17')
     })
 
     it('does not render hours', () => {
@@ -1295,7 +1298,26 @@ describe('Timeline', () => {
 
     it('positions the event correctly', () => {
       expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
-        left: `30px`,
+        left: `30.75px`,
+      })
+    })
+
+    describe('when navigating right', () => {
+      beforeEach(() => {
+        fireEvent(
+          wrapper.getByTestId('timeline-side-button-right'),
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      })
+
+      it('renders the correct number of days', () => {
+        const days = wrapper.queryAllByTestId('timeline-day-title')
+        expect(days).toHaveLength(41)
+        expect(days[0]).toHaveTextContent('18')
+        expect(days[days.length - 1]).toHaveTextContent('27')
       })
     })
   })

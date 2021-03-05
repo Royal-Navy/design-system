@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { findIndex, isNil } from 'lodash'
 
-import { TIMELINE_ACTIONS } from '../context/types'
+import { TIMELINE_ACTIONS, TimelineScaleOption } from '../context/types'
 import { TimelineContext } from '../context'
 import { initialiseScaleOptions } from '../context/timeline_scales'
 
@@ -39,19 +39,33 @@ export function useTimelineScale() {
   function move(
     type: typeof TIMELINE_ACTIONS.GET_NEXT | typeof TIMELINE_ACTIONS.GET_PREV
   ) {
-    const intervalMultiplier = type === TIMELINE_ACTIONS.GET_NEXT ? 1 : -1
     const currentScaleOption = timelineScaleOptions[scaleIndex]
-    const newScaleOptions = initialiseScaleOptions(
-      currentScaleOption.calculateDate(
-        currentScaleOption.from,
-        currentScaleOption.intervalSize * intervalMultiplier
-      ),
-      null,
-      {
-        ...options,
-        hoursBlockSize: currentScaleOption.hoursBlockSize,
-      }
+    const intervalMultiplier = type === TIMELINE_ACTIONS.GET_NEXT ? 1 : -1
+
+    const getIntervalSize = ({ intervalSize }: TimelineScaleOption) =>
+      intervalSize * intervalMultiplier
+    const newStartDate = currentScaleOption.calculateDate(
+      currentScaleOption.from,
+      getIntervalSize(currentScaleOption)
     )
+    const getNewEndDate = (): Date => {
+      if (options.endDate && currentScaleOption.isDefault) {
+        return currentScaleOption.calculateDate(
+          currentScaleOption.to,
+          getIntervalSize(currentScaleOption)
+        )
+      }
+
+      return null
+    }
+
+    const newScaleOptions = initialiseScaleOptions({
+      ...options,
+      startDate: newStartDate,
+      endDate: getNewEndDate(),
+      hoursBlockSize: currentScaleOption.hoursBlockSize,
+    })
+
     const newScaleOption = newScaleOptions[scaleIndex]
     setTimelineScaleOptions(newScaleOptions)
 
