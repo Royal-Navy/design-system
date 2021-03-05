@@ -16,20 +16,16 @@ const initialState: TimelineState = {
 }
 
 function initialiseState(
-  startDate: Date = new Date(),
-  endDate: Date,
   today: Date = new Date(),
   options: TimelineOptions
 ): TimelineState {
   const state = {
     ...initialState,
     today,
-    startDate,
-    endDate,
     options,
   }
 
-  const scaleOptions = initialiseScaleOptions(startDate, endDate, options)
+  const scaleOptions = initialiseScaleOptions(options)
   const defaultScaleOption = find(scaleOptions, ({ isDefault }) => isDefault)
 
   return {

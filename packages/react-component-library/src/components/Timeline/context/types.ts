@@ -16,8 +16,10 @@ export type TimelineScaleOption = {
 }
 
 export type TimelineOptions = {
+  endDate: Date
   hoursBlockSize: BlockSizeType
   range: number
+  startDate: Date
   unitWidth: number
 }
 
@@ -72,8 +74,6 @@ export interface TimelineContextDefault {
 export interface TimelineProviderProps {
   children?: React.ReactNode
   hasSide?: boolean
-  startDate?: Date
-  endDate?: Date
   today?: Date
   options?: TimelineOptions
 }
