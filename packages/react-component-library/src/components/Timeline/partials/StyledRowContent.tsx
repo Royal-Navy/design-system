@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const StyledRowContent = styled.div`
+import { StyledSubComponentProps } from './StyledSubComponent'
+
+export const StyledRowContent = styled.div<StyledSubComponentProps>`
   position: relative;
   width: 100%;
+
+  ${({ $css }) => $css}
 `

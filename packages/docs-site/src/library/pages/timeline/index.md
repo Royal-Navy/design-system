@@ -1080,6 +1080,49 @@ Here you will find comprehensive API documentation for the Timeline Components.
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
     <h1 className="rn-fw-api-title">
+      children
+      <Badge className="rn_ml-4" color="danger" colorVariant="faded" variant="pill" size="small">Required</Badge>
+    </h1>
+    <Badge color="supa" colorVariant="faded" size="small">React.ReactNode &#124; React.ReactNode[]</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>Function</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">Supply children to be rendered.</p>
+    </div>
+  </div>
+</div>
+
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">
+      css
+    </h1>
+    <Badge color="supa" colorVariant="faded" size="small">CSSProp</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>-</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">Pass a styled-components css`` value to modify the CSS.</p>
+    </div>
+  </div>
+</div>
+
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">
       name
       <Badge className="rn_ml-4" color="danger" colorVariant="faded" variant="pill" size="small">Required</Badge>
     </h1>
@@ -1102,21 +1145,41 @@ Here you will find comprehensive API documentation for the Timeline Components.
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
     <h1 className="rn-fw-api-title">
-      children
-      <Badge className="rn_ml-4" color="danger" colorVariant="faded" variant="pill" size="small">Required</Badge>
+      contentProps
     </h1>
-    <Badge color="supa" colorVariant="faded" size="small">React.ReactNode &#124; React.ReactNode[]</Badge>
+    <Badge color="supa" colorVariant="faded" size="small">&#123; css:? CSSProp, 'data-testid'?: string &#125;</Badge>
   </div>
   <div className="rn-fw-api-body">
     <div className="rn-fw-api-row">
       <div className="rn-fw-api-item">Default Value</div>
       <div className="rn-fw-api-value">
-        <code>Function</code>
+        <code>-</code>
       </div>
     </div>
     <div className="rn-fw-api-row">
       <div className="rn-fw-api-item">Description</div>
-      <p className="rn-fw-api-value">Supply children to be rendered.</p>
+      <p className="rn-fw-api-value">Ability to pass props to the content div of the row.</p>
+    </div>
+  </div>
+</div>
+
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">
+      headerProps
+    </h1>
+    <Badge color="supa" colorVariant="faded" size="small">&#123; css:? CSSProp, 'data-testid'?: string &#125;</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>-</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">Ability to pass props to the header div of the row.</p>
     </div>
   </div>
 </div>

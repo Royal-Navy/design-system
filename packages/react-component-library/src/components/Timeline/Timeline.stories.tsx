@@ -1,7 +1,12 @@
 import React from 'react'
+import { css, CSSProp } from 'styled-components'
 import { format } from 'date-fns'
 import { Meta } from '@storybook/react/types-6-0'
-import { ColorDanger500 } from '@royalnavy/design-tokens'
+import {
+  ColorDanger500,
+  ColorNeutral100,
+  ColorNeutral200,
+} from '@royalnavy/design-tokens'
 
 import {
   Timeline,
@@ -413,6 +418,55 @@ export const WithCustomColumns = () => {
 }
 WithCustomColumns.parameters = disableScrollableRegionFocusableRule
 WithCustomColumns.storyName = 'With custom columns'
+
+export const WithCustomRowCss = () => {
+  const rowCss: CSSProp = css`
+    height: 40px;
+  `
+  const rowContentProps = {
+    css: css`
+      background-color: ${ColorNeutral100};
+    `,
+  }
+  const rowHeaderProps = {
+    css: css`
+      background-color: ${ColorNeutral200};
+    `,
+  }
+
+  return (
+    <Timeline
+      hasSide
+      startDate={new Date(2020, 3, 1)}
+      today={new Date(2020, 3, 15)}
+    >
+      <TimelineTodayMarker />
+      <TimelineMonths />
+      <TimelineWeeks />
+      <TimelineDays />
+      <TimelineRows>
+        <TimelineRow
+          css={rowCss}
+          contentProps={rowContentProps}
+          headerProps={rowHeaderProps}
+          name="Row 1"
+          renderRowHeader={() => <span>Row with custom style</span>}
+        >
+          <TimelineEvents>
+            <TimelineEvent
+              startDate={new Date(2020, 2, 14)}
+              endDate={new Date(2020, 3, 18)}
+            >
+              Event 1
+            </TimelineEvent>
+          </TimelineEvents>
+        </TimelineRow>
+      </TimelineRows>
+    </Timeline>
+  )
+}
+WithCustomRowCss.parameters = disableScrollableRegionFocusableRule
+WithCustomRowCss.storyName = 'With custom row CSS'
 
 export const WithCustomEventBarColor = () => {
   return (

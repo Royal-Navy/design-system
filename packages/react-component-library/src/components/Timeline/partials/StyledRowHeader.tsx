@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
+import { StyledSubComponentProps } from './StyledSubComponent'
 import { TIMELINE_BORDER_COLOR, TIMELINE_ROW_HEADER_WIDTH } from '../constants'
 
 const { color, fontSize, spacing, zIndex } = selectors
 
-interface StyledRowHeaderProps {
+interface StyledRowHeaderProps extends StyledSubComponentProps {
   isHeader?: boolean
 }
 
@@ -31,4 +32,6 @@ export const StyledRowHeader = styled.div<StyledRowHeaderProps>`
       font-weight: normal;
       color: ${color('neutral', '400')};
     `}
+
+  ${({ $css }) => $css}
 `

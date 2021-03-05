@@ -1,9 +1,12 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
+import { ColorNeutral100, ColorNeutral200 } from '@royalnavy/design-tokens'
+import { css, CSSProp } from 'styled-components'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
 import { NO_DATA_MESSAGE, TIMELINE_BLOCK_SIZE } from '../constants'
+import { SubcomponentProps } from '../../../common/SubcomponentProps'
 import {
   Timeline,
   TimelineDays,
@@ -1750,6 +1753,75 @@ describe('Timeline', () => {
 
     it('should not render the toolbar', () => {
       expect(wrapper.queryAllByTestId('timeline-toolbar')).toHaveLength(0)
+    })
+  })
+
+  describe('when using custom row CSS', () => {
+    beforeEach(() => {
+      const rowCss: CSSProp = css`
+        height: 40px;
+      `
+      const rowContentProps: SubcomponentProps = {
+        css: css`
+          background-color: ${ColorNeutral100};
+        `,
+        'data-testid': `content-1`,
+      }
+      const rowHeaderProps: SubcomponentProps = {
+        css: css`
+          background-color: ${ColorNeutral200};
+        `,
+        'data-testid': `header-1`,
+      }
+
+      wrapper = render(
+        <Timeline
+          hasSide
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow
+              css={rowCss}
+              contentProps={rowContentProps}
+              headerProps={rowHeaderProps}
+              name="Row 1"
+              renderRowHeader={() => <span>Row with custom style</span>}
+            >
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 2, 14)}
+                  endDate={new Date(2020, 3, 18)}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the custom CSS on the row', () => {
+      const row = wrapper.getByTestId('timeline-row')
+
+      expect(row).toHaveStyleRule('height', '40px')
+    })
+
+    it('should render the custom CSS on the row header', () => {
+      const content = wrapper.getByTestId('header-1')
+
+      expect(content).toHaveStyleRule('background-color', ColorNeutral200)
+    })
+
+    it('should render the custom CSS on the row content', () => {
+      const content = wrapper.getByTestId('content-1')
+
+      expect(content).toHaveStyleRule('background-color', ColorNeutral100)
     })
   })
 })
