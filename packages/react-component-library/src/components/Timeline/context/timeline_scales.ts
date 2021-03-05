@@ -109,7 +109,10 @@ function initialiseScaleOptions(
   const scaleConfig = getScaleConfig(range)
   const defaultConfig = find(scaleConfig, ({ isDefault }) => isDefault)
   const numberOfDays =
-    differenceInDays(defaultConfig.calculateDate(startDate, 1), startDate) - 1
+    differenceInDays(
+      defaultConfig.calculateDate(startDate, defaultConfig.intervalSize),
+      startDate
+    ) - 1
   const maxWidth = unitWidth * numberOfDays
 
   return Object.keys(scaleConfig).map((scaleConfigKey) => {
