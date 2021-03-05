@@ -44,7 +44,7 @@ export function useTimelineScale() {
     const newScaleOptions = initialiseScaleOptions(
       currentScaleOption.calculateDate(
         currentScaleOption.from,
-        (currentScaleOption.intervalSize || 1) * intervalMultiplier
+        currentScaleOption.intervalSize * intervalMultiplier
       ),
       null,
       {
