@@ -55,9 +55,9 @@ describe('Select', () => {
     })
 
     it('should add the name', () => {
-      const hiddenInput = wrapper.container.children[0].children[1]
+      const input = wrapper.getByTestId('react-select-vendor-input')
 
-      expect(hiddenInput.getAttribute('name')).toEqual('select-name')
+      expect(input.getAttribute('name')).toEqual('select-name')
     })
 
     describe('when the select is clicked', () => {
