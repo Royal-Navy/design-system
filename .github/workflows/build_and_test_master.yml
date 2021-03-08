@@ -64,14 +64,8 @@ jobs:
             path: '**/node_modules'
             key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
-        - name: Attach workspace
-          uses: actions/download-artifact@v2
-          with:
-            name: dist
-
         - name: check commits
           run: |
-            tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
             PR_NUM=$(curl -s  -H "Accept: application/vnd.github.groot-preview+json" \
             https://api.github.com/repos/Royal-Navy/design-system/commits/${{ github.sha }}/pulls | jq -r '.[].number')
             node ./scripts/commitlint "$GIT_URL$PR_NUM"
