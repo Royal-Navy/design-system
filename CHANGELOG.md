@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.38.3](https://github.com/Royal-Navy/design-system/compare/2.38.2...2.38.3) (2021-03-08)
+
+
+### Bug Fixes
+
+* **Timeline:** Show all days if `endDate` supplied ([45eaab3](https://github.com/Royal-Navy/design-system/commit/45eaab3091a21ba1b0ba4875d0757edd331d30d5))
+* **Timeline:** Use `intervalSize` for `maxWidth` ([f35b3ab](https://github.com/Royal-Navy/design-system/commit/f35b3abfecb71037a02c668535735cc46f6284d5))
+
+
+
+
+
 ## [2.38.2](https://github.com/Royal-Navy/design-system/compare/2.38.1...2.38.2) (2021-03-04)
 
 
