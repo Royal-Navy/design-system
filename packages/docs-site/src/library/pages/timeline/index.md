@@ -83,28 +83,6 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
     <h1 className="rn-fw-api-title">
-      startDate
-      <Badge className="rn_ml-4" color="danger" colorVariant="faded" variant="pill" size="small">Required</Badge>
-    </h1>
-    <Badge color="supa" colorVariant="faded" size="small">Date</Badge>
-  </div>
-  <div className="rn-fw-api-body">
-    <div className="rn-fw-api-row">
-      <div className="rn-fw-api-item">Default Value</div>
-      <div className="rn-fw-api-value">
-        <code>-</code>
-      </div>
-    </div>
-    <div className="rn-fw-api-row">
-      <div className="rn-fw-api-item">Description</div>
-      <p className="rn-fw-api-value">A month will display either side of this start date.</p>
-    </div>
-  </div>
-</div>
-
-<div className="rn-fw-api">
-  <div className="rn-fw-api-header">
-    <h1 className="rn-fw-api-title">
       endDate
     </h1>
     <Badge color="supa" colorVariant="faded" size="small">Date</Badge>
@@ -125,19 +103,19 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
-    <h1 className="rn-fw-api-title">today</h1>
-    <Badge color="supa" colorVariant="faded" size="small">Date</Badge>
+    <h1 className="rn-fw-api-title">hasSide</h1>
+    <Badge color="supa" colorVariant="faded" size="small">Boolean</Badge>
   </div>
   <div className="rn-fw-api-body">
     <div className="rn-fw-api-row">
       <div className="rn-fw-api-item">Default Value</div>
       <div className="rn-fw-api-value">
-        <code>new Date()</code>
+        <code>-</code>
       </div>
     </div>
     <div className="rn-fw-api-row">
       <div className="rn-fw-api-item">Description</div>
-      <p className="rn-fw-api-value">Today's current date - default is system date time.</p>
+      <p className="rn-fw-api-value">Specify whether or not to output sidebar headings.</p>
     </div>
   </div>
 </div>
@@ -163,6 +141,47 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">
+      startDate
+      <Badge className="rn_ml-4" color="danger" colorVariant="faded" variant="pill" size="small">Required</Badge>
+    </h1>
+    <Badge color="supa" colorVariant="faded" size="small">Date</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>-</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">A month will display either side of this start date.</p>
+    </div>
+  </div>
+</div>
+
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">today</h1>
+    <Badge color="supa" colorVariant="faded" size="small">Date</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>new Date()</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">Today's current date - default is system date time.</p>
+    </div>
+  </div>
+</div>
+
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
     <h1 className="rn-fw-api-title">unitWidth</h1>
     <Badge color="supa" colorVariant="faded" size="small">Number</Badge>
   </div>
@@ -176,25 +195,6 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
     <div className="rn-fw-api-row">
       <div className="rn-fw-api-item">Description</div>
       <p className="rn-fw-api-value">The fixed width value of a single day or hour (in pixels).</p>
-    </div>
-  </div>
-</div>
-
-<div className="rn-fw-api">
-  <div className="rn-fw-api-header">
-    <h1 className="rn-fw-api-title">hasSide</h1>
-    <Badge color="supa" colorVariant="faded" size="small">Boolean</Badge>
-  </div>
-  <div className="rn-fw-api-body">
-    <div className="rn-fw-api-row">
-      <div className="rn-fw-api-item">Default Value</div>
-      <div className="rn-fw-api-value">
-        <code>-</code>
-      </div>
-    </div>
-    <div className="rn-fw-api-row">
-      <div className="rn-fw-api-item">Description</div>
-      <p className="rn-fw-api-value">Specify whether or not to output sidebar headings.</p>
     </div>
   </div>
 </div>
