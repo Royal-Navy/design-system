@@ -1713,4 +1713,43 @@ describe('Timeline', () => {
       })
     })
   })
+
+  describe('when the toolbar is to be hidden', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          hideToolbar
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 13)}
+                  endDate={new Date(2020, 3, 18)}
+                >
+                  Event 1
+                </TimelineEvent>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 20)}
+                  endDate={new Date(2020, 3, 22)}
+                >
+                  Event 2
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should not render the toolbar', () => {
+      expect(wrapper.queryAllByTestId('timeline-toolbar')).toHaveLength(0)
+    })
+  })
 })
