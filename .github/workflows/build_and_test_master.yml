@@ -225,15 +225,6 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-        - name: Upload test reports to CodeCov
-          run: bash <(curl -s https://codecov.io/bash)
-
-        - name: Persist artifacts
-          uses: actions/upload-artifact@v2
-          with:
-            name: reacttest
-            path: packages/react-component-library/test-results/jest/react-component-results.xml
-
 
      Test_a11y:
        runs-on: ubuntu-latest
