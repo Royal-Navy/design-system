@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.39.0](https://github.com/Royal-Navy/design-system/compare/2.38.3...2.39.0) (2021-03-10)
+
+
+### Bug Fixes
+
+* **CSSFramework:** Add missing container classes ([10d25b3](https://github.com/Royal-Navy/design-system/commit/10d25b3c0092df7c4416025a995be3f05daba2d9))
+
+
+
+
+
 ## [2.38.3](https://github.com/Royal-Navy/design-system/compare/2.38.2...2.38.3) (2021-03-08)
 
 **Note:** Version bump only for package @royalnavy/css-framework

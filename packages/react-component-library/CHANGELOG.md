@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.39.0](https://github.com/Royal-Navy/design-system/compare/2.38.3...2.39.0) (2021-03-10)
+
+
+### Bug Fixes
+
+* **FloatingBox:** Add missing export ([0b8f421](https://github.com/Royal-Navy/design-system/commit/0b8f4213d9efd46ef1a592f4b4793d325e91eb41))
+
+
+### Features
+
+* **Container:** Add missing layout component ([9583ad3](https://github.com/Royal-Navy/design-system/commit/9583ad3d5bc8560072ab3eb910ed387760018516))
+
+
+
+
+
 ## [2.38.3](https://github.com/Royal-Navy/design-system/compare/2.38.2...2.38.3) (2021-03-08)
 
 
