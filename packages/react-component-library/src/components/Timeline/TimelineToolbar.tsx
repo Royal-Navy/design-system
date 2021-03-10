@@ -23,7 +23,7 @@ export const TimelineToolbar: React.FC = () => {
   } = useTimelineScale()
 
   return (
-    <StyledToolbar>
+    <StyledToolbar data-testid="timeline-toolbar">
       <StyledToolbarButtons>
         <Button
           aria-label="Navigate left"
