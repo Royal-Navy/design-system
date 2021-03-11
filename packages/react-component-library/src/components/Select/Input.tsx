@@ -18,6 +18,7 @@ export const Input: React.FC<SelectInputProps> = (props) => {
     'selectProps.data-testid',
     'react-select-vendor-input'
   )
+  const name = get(props, 'selectProps.name')
 
   return (
     <StyledInputContainer>
@@ -26,7 +27,7 @@ export const Input: React.FC<SelectInputProps> = (props) => {
           {ariaLabel}
         </StyledLabel>
       )}
-      <StyledInput data-testid={inputTestId} {...rest} />
+      <StyledInput data-testid={inputTestId} name={name} {...rest} />
     </StyledInputContainer>
   )
 }
