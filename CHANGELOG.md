@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.40.0](https://github.com/Royal-Navy/design-system/compare/2.39.0...2.40.0) (2021-03-11)
+
+
+### Features
+
+* **Timeline:** Add prop to hide toolbar ([c2932d9](https://github.com/Royal-Navy/design-system/commit/c2932d9ef5325ac2ea17da3f692ab1be4608dcd9))
+
+
+
+
+
 # [2.39.0](https://github.com/Royal-Navy/design-system/compare/2.38.3...2.39.0) (2021-03-10)
 
 
