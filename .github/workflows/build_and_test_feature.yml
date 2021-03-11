@@ -218,16 +218,13 @@ jobs:
             JEST_JUNIT_OUTPUT_NAME: react-component-results.xml
           run: |
             tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
-            yarn --cwd packages/react-component-library test --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
+            yarn --cwd packages/react-component-library test --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand --testResultsProcessor=jest-sonar-reporter
 
-        - name: Upload test reports to CodeCov
-          run: bash <(curl -s https://codecov.io/bash)
-
-        - name: Persist artifacts
-          uses: actions/upload-artifact@v2
-          with:
-            name: reacttest
-            path: packages/react-component-library/test-results/jest/react-component-results.xml
+        - name: SonarCloud Scan
+          uses: Royal-Navy/sonarcloud-github-action@master
+          env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
      Test_a11y:
