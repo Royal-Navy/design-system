@@ -24,6 +24,7 @@ export interface TextInputProps
   name: string
   onBlur?: (event: React.FormEvent) => void
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void
   placeholder?: string
   startAdornment?: React.ReactNode
   type?:

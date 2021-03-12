@@ -185,10 +185,17 @@ An enhanced version of the field is also exported that is compatible with Formik
   },
   {
     Name: 'onChange',
-    Type: 'React.ChangeEvent <HTMLTextAreaElement>',
-    Required: 'True',
+    Type: 'React.ChangeEvent<HTMLInputElement>',
+    Required: 'False',
     Default: '',
     Description: 'Called when the field value changes',
+  },
+  {
+    Name: 'onKeyDown',
+    Type: 'React.KeyboardEvent<HTMLInputElement>',
+    Required: 'False',
+    Default: '',
+    Description: 'Called when a key is pressed down in the field',
   },
   {
     Name: 'placeholder',
