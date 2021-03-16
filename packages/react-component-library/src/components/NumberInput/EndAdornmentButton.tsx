@@ -104,7 +104,7 @@ export const EndAdornmentButton: React.FC<EndAdornmentButtonProps> = ({
       disabled={isDisabled}
       onClick={onClick}
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="7">
+      <svg xmlns="https://www.w3.org/2000/svg" width="11" height="7">
         <path
           fill="#6F798A"
           fillRule="evenodd"
