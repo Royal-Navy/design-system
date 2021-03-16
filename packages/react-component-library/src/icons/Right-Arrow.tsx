@@ -7,8 +7,8 @@ export const RightArrow: React.FC = ({ children, ...rest }) => (
     height="10px"
     viewBox="0 0 11 10"
     version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
+    xmlns="https://www.w3.org/2000/svg"
+    xmlnsXlink="https://www.w3.org/1999/xlink"
     {...rest}
   >
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
