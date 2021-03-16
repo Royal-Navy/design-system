@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const StyledRow = styled.div`
+import { StyledSubComponentProps } from './StyledSubComponent'
+
+export const StyledRow = styled.div<StyledSubComponentProps>`
   display: flex;
   height: 4rem;
+
+  ${({ $css }) => $css}
 `
