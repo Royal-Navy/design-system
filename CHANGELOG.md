@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.41.0](https://github.com/Royal-Navy/design-system/compare/2.40.2...2.41.0) (2021-03-17)
+
+
+### Features
+
+* **Timeline:** Add ability to customise row CSS ([138c5b5](https://github.com/Royal-Navy/design-system/commit/138c5b52c6f46ca8916927a1253ee93833b8ed0e))
+
+
+
+
+
 ## [2.40.2](https://github.com/Royal-Navy/design-system/compare/2.40.1...2.40.2) (2021-03-16)
 
 **Note:** Version bump only for package royal-navy-design-system
