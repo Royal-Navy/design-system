@@ -12,6 +12,14 @@ describe('RangeSlider', () => {
   let wrapper: RenderResult
   let mode: 1 | 2 | 3 | CustomMode
   let onUpdateSpy: (values: readonly number[]) => void
+  let onSlideStartSpy: (
+    values: ReadonlyArray<number>,
+    data: { activeHandleID: string }
+  ) => void
+  let onSlideEndSpy: (
+    values: ReadonlyArray<number>,
+    data: { activeHandleID: string }
+  ) => void
   let domain: number[] // lower and upper bounds
   let values: number[] // initial handle values
   let step: number
@@ -21,6 +29,8 @@ describe('RangeSlider', () => {
     beforeEach(() => {
       mode = 1
       onUpdateSpy = jest.fn()
+      onSlideStartSpy = jest.fn()
+      onSlideEndSpy = jest.fn()
       domain = [0, 40]
       values = [20]
       step = 10
@@ -33,6 +43,8 @@ describe('RangeSlider', () => {
           values={values}
           step={step}
           tickCount={tickCount}
+          onSlideStart={onSlideStartSpy}
+          onSlideEnd={onSlideEndSpy}
           onUpdate={onUpdateSpy}
         />
       )
@@ -90,6 +102,14 @@ describe('RangeSlider', () => {
           'aria-valuenow',
           '30'
         )
+      })
+
+      it('invokes the onSlideStartSpy callback', () => {
+        expect(onSlideStartSpy).toHaveBeenCalledTimes(1)
+      })
+
+      it('invokes the onSlideEndSpy callback', () => {
+        expect(onSlideEndSpy).toHaveBeenCalledTimes(1)
       })
 
       it('invokes the onUpdateSpy callback', () => {
