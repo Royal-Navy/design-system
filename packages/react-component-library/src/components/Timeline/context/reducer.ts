@@ -99,5 +99,10 @@ export function reducer(
     ...state,
     ...buildCalendar(scale),
     currentScaleOption: scale,
+    options: {
+      ...state.options,
+      startDate: scale.from,
+      endDate: scale.to,
+    },
   }
 }
