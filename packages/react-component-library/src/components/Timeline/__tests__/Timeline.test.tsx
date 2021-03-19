@@ -2,8 +2,9 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { ColorNeutral100, ColorNeutral200 } from '@royalnavy/design-tokens'
 import { css, CSSProp } from 'styled-components'
-import { render, RenderResult, fireEvent } from '@testing-library/react'
+import { render, RenderResult } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
+import userEvent from '@testing-library/user-event'
 
 import { NO_DATA_MESSAGE, TIMELINE_BLOCK_SIZE } from '../constants'
 import { SubcomponentProps } from '../../../common/SubcomponentProps'
@@ -422,13 +423,7 @@ describe('Timeline', () => {
 
       describe('and when the left button is clicked', () => {
         beforeEach(() => {
-          fireEvent(
-            wrapper.getByTestId('timeline-side-button-left'),
-            new MouseEvent('click', {
-              bubbles: true,
-              cancelable: true,
-            })
-          )
+          userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
         })
 
         it('should move to the previous month', () => {
@@ -440,13 +435,7 @@ describe('Timeline', () => {
 
       describe('and when the right button is clicked', () => {
         beforeEach(() => {
-          fireEvent(
-            wrapper.getByTestId('timeline-side-button-right'),
-            new MouseEvent('click', {
-              bubbles: true,
-              cancelable: true,
-            })
-          )
+          userEvent.click(wrapper.getByTestId('timeline-side-button-right'))
         })
 
         it('should move to the next month', () => {
@@ -1307,13 +1296,7 @@ describe('Timeline', () => {
 
     describe('when navigating right', () => {
       beforeEach(() => {
-        fireEvent(
-          wrapper.getByTestId('timeline-side-button-right'),
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-          })
-        )
+        userEvent.click(wrapper.getByTestId('timeline-side-button-right'))
       })
 
       it('renders the correct number of days', () => {
