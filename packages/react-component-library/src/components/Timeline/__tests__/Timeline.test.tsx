@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { ColorNeutral100, ColorNeutral200 } from '@royalnavy/design-tokens'
 import { css, CSSProp } from 'styled-components'
-import { render, RenderResult, fireEvent } from '@testing-library/react'
+import { render, RenderResult } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
+import userEvent from '@testing-library/user-event'
 
 import { NO_DATA_MESSAGE, TIMELINE_BLOCK_SIZE } from '../constants'
 import { SubcomponentProps } from '../../../common/SubcomponentProps'
 import {
   Timeline,
+  TimelineContext,
   TimelineDays,
+  TimelineDaysProps,
   TimelineHours,
   TimelineEvent,
   TimelineEvents,
@@ -20,6 +23,23 @@ import {
   TimelineTodayMarker,
   TimelineWeeks,
 } from '..'
+
+const TimelineDates: React.FC<TimelineDaysProps> = () => {
+  const {
+    state: {
+      options: { startDate, endDate },
+    },
+  } = useContext(TimelineContext)
+
+  return (
+    <>
+      <span data-testid="timeline-start-date">{startDate.toISOString()}</span>
+      {endDate && (
+        <span data-testid="timeline-end-date">{endDate.toISOString()}</span>
+      )}
+    </>
+  )
+}
 
 describe('Timeline', () => {
   let wrapper: RenderResult
@@ -362,6 +382,7 @@ describe('Timeline', () => {
             startDate={new Date(2020, 3, 1)}
             today={new Date(2020, 3, 15)}
           >
+            <TimelineDates />
             <TimelineTodayMarker />
             <TimelineMonths />
             <TimelineWeeks />
@@ -422,13 +443,7 @@ describe('Timeline', () => {
 
       describe('and when the left button is clicked', () => {
         beforeEach(() => {
-          fireEvent(
-            wrapper.getByTestId('timeline-side-button-left'),
-            new MouseEvent('click', {
-              bubbles: true,
-              cancelable: true,
-            })
-          )
+          userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
         })
 
         it('should move to the previous month', () => {
@@ -436,23 +451,29 @@ describe('Timeline', () => {
 
           expect(months[0]).toHaveTextContent('March 2020')
         })
+
+        it('should update the `startDate`', () => {
+          expect(wrapper.getByTestId('timeline-start-date')).toHaveTextContent(
+            '2020-03-01T00:00:00.000Z'
+          )
+        })
       })
 
       describe('and when the right button is clicked', () => {
         beforeEach(() => {
-          fireEvent(
-            wrapper.getByTestId('timeline-side-button-right'),
-            new MouseEvent('click', {
-              bubbles: true,
-              cancelable: true,
-            })
-          )
+          userEvent.click(wrapper.getByTestId('timeline-side-button-right'))
         })
 
         it('should move to the next month', () => {
           const months = wrapper.getAllByTestId('timeline-month')
 
           expect(months[0]).toHaveTextContent('May 2020')
+        })
+
+        it('should update the `startDate`', () => {
+          expect(wrapper.getByTestId('timeline-start-date')).toHaveTextContent(
+            '2020-05-01T00:00:00.000Z'
+          )
         })
       })
     })
@@ -1251,7 +1272,7 @@ describe('Timeline', () => {
     })
   })
 
-  describe('when Timeline is initialized with a fixed endDate', () => {
+  describe('when Timeline is initialised with a fixed `endDate`', () => {
     beforeEach(() => {
       wrapper = render(
         <Timeline
@@ -1259,6 +1280,7 @@ describe('Timeline', () => {
           endDate={new Date(2020, 2, 17, 0, 0, 0)}
           today={new Date(2020, 4, 1, 0, 0, 0)}
         >
+          <TimelineDates />
           <TimelineTodayMarker />
           <TimelineMonths />
           <TimelineWeeks />
@@ -1307,13 +1329,7 @@ describe('Timeline', () => {
 
     describe('when navigating right', () => {
       beforeEach(() => {
-        fireEvent(
-          wrapper.getByTestId('timeline-side-button-right'),
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-          })
-        )
+        userEvent.click(wrapper.getByTestId('timeline-side-button-right'))
       })
 
       it('renders the correct number of days', () => {
@@ -1321,6 +1337,18 @@ describe('Timeline', () => {
         expect(days).toHaveLength(41)
         expect(days[0]).toHaveTextContent('18')
         expect(days[days.length - 1]).toHaveTextContent('27')
+      })
+
+      it('should update the `startDate`', () => {
+        expect(wrapper.getByTestId('timeline-start-date')).toHaveTextContent(
+          '2020-03-18T00:00:00.000Z'
+        )
+      })
+
+      it('should update the `endDate`', () => {
+        expect(wrapper.getByTestId('timeline-end-date')).toHaveTextContent(
+          '2020-04-27T00:00:00.000Z'
+        )
       })
     })
   })
