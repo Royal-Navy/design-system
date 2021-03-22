@@ -8,8 +8,11 @@ const { spacing } = selectors
 
 export const StyledValueContainer = styled(components.ValueContainer)`
   position: initial;
-  padding: 0 0 0 ${spacing('6')};
   height: inherit;
+
+  &&& {
+    padding: 0 0 0 ${spacing('6')};
+  }
 
   &.rn-select__value-container--has-value ${StyledLabel} {
     transform: translate(${spacing('6')}, ${spacing('2')}) scale(0.8);
