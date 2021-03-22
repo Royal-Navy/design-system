@@ -49,6 +49,7 @@ export interface TimelineProps extends ComponentWithClass {
   children: timelineChildrenType | timelineChildrenType[]
   dayWidth?: number
   hasSide?: boolean
+  hideScaling?: boolean
   hideToolbar?: boolean
   startDate?: Date
   endDate?: Date
@@ -115,6 +116,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   className,
   dayWidth,
   hasSide,
+  hideScaling = false,
   hideToolbar = false,
   startDate,
   endDate,
@@ -164,7 +166,7 @@ export const Timeline: React.FC<TimelineProps> = ({
       options={options}
       today={today}
     >
-      {!hideToolbar && <TimelineToolbar />}
+      {!hideToolbar && <TimelineToolbar hideScaling={hideScaling} />}
       <StyledTimeline
         className={classNames('timeline', className)}
         data-testid="timeline"

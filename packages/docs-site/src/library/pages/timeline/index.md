@@ -122,6 +122,25 @@ yarn add @royalnavy/css-framework @royalnavy/react-component-library
 
 <div className="rn-fw-api">
   <div className="rn-fw-api-header">
+    <h1 className="rn-fw-api-title">hideScaling</h1>
+    <Badge color="supa" colorVariant="faded" size="small">Boolean</Badge>
+  </div>
+  <div className="rn-fw-api-body">
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Default Value</div>
+      <div className="rn-fw-api-value">
+        <code>false</code>
+      </div>
+    </div>
+    <div className="rn-fw-api-row">
+      <div className="rn-fw-api-item">Description</div>
+      <p className="rn-fw-api-value">Specify whether to hide the scaling buttons.</p>
+    </div>
+  </div>
+</div>
+
+<div className="rn-fw-api">
+  <div className="rn-fw-api-header">
     <h1 className="rn-fw-api-title">hideToolbar</h1>
     <Badge color="supa" colorVariant="faded" size="small">Boolean</Badge>
   </div>
