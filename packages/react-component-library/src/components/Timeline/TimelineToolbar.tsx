@@ -12,7 +12,13 @@ import { StyledToolbarButtons } from './partials/StyledToolbarButtons'
 import { StyledToolbarSeparator } from './partials/StyledToolbarSeparator'
 import { useTimelineScale } from './hooks/useTimelineScale'
 
-export const TimelineToolbar: React.FC = () => {
+interface TimelineToolbarProps {
+  hideScaling: boolean
+}
+
+export const TimelineToolbar: React.FC<TimelineToolbarProps> = ({
+  hideScaling,
+}) => {
   const {
     canZoomIn,
     canZoomOut,
@@ -42,27 +48,31 @@ export const TimelineToolbar: React.FC = () => {
           data-testid="timeline-side-button-right"
         />
       </StyledToolbarButtons>
-      <StyledToolbarSeparator />
-      <StyledToolbarButtons>
-        <Button
-          aria-label="Zoom out"
-          isDisabled={!canZoomOut}
-          size={BUTTON_SIZE.SMALL}
-          variant={BUTTON_VARIANT.SECONDARY}
-          icon={<IconZoomOut />}
-          onClick={zoomOut}
-          data-testid="timeline-toolbar-zoom-out"
-        />
-        <Button
-          aria-label="Zoom in"
-          isDisabled={!canZoomIn}
-          size={BUTTON_SIZE.SMALL}
-          variant={BUTTON_VARIANT.SECONDARY}
-          icon={<IconZoomIn />}
-          onClick={zoomIn}
-          data-testid="timeline-toolbar-zoom-in"
-        />
-      </StyledToolbarButtons>
+      {!hideScaling && (
+        <>
+          <StyledToolbarSeparator />
+          <StyledToolbarButtons>
+            <Button
+              aria-label="Zoom out"
+              isDisabled={!canZoomOut}
+              size={BUTTON_SIZE.SMALL}
+              variant={BUTTON_VARIANT.SECONDARY}
+              icon={<IconZoomOut />}
+              onClick={zoomOut}
+              data-testid="timeline-toolbar-zoom-out"
+            />
+            <Button
+              aria-label="Zoom in"
+              isDisabled={!canZoomIn}
+              size={BUTTON_SIZE.SMALL}
+              variant={BUTTON_VARIANT.SECONDARY}
+              icon={<IconZoomIn />}
+              onClick={zoomIn}
+              data-testid="timeline-toolbar-zoom-in"
+            />
+          </StyledToolbarButtons>
+        </>
+      )}
     </StyledToolbar>
   )
 }

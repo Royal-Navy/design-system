@@ -1784,6 +1784,51 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when the scaling buttons are to be hidden', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          hideScaling
+          startDate={new Date(2020, 3, 1)}
+          today={new Date(2020, 3, 15)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 13)}
+                  endDate={new Date(2020, 3, 18)}
+                >
+                  Event 1
+                </TimelineEvent>
+                <TimelineEvent
+                  startDate={new Date(2020, 3, 20)}
+                  endDate={new Date(2020, 3, 22)}
+                >
+                  Event 2
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should not render the scaling buttons', () => {
+      expect(
+        wrapper.queryAllByTestId('timeline-toolbar-zoom-out')
+      ).toHaveLength(0)
+
+      expect(wrapper.queryAllByTestId('timeline-toolbar-zoom-in')).toHaveLength(
+        0
+      )
+    })
+  })
+
   describe('when using custom row CSS', () => {
     beforeEach(() => {
       const rowCss: CSSProp = css`
