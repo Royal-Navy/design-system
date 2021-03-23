@@ -1323,7 +1323,7 @@ describe('Timeline', () => {
 
     it('positions the event correctly', () => {
       expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
-        left: `30.75px`,
+        left: `30px`,
       })
     })
 

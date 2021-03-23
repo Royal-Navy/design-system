@@ -95,10 +95,9 @@ function mapScaleOption(
     ...rest
   }: ScaleConfigOptionType): TimelineScaleOption => {
     const to = addDays(calculateDate(startDate, intervalSize), -1)
-    const numberOfHours = differenceInHours(to, startDate)
+    const numberOfHours = differenceInHours(to, startDate) + HOURS_IN_DAY
     const optionHoursBlockSize =
       configHoursBlockSize || hoursBlockSize || TIMELINE_BLOCK_SIZE.QUARTER_DAY
-
     const hourWidth = (maxWidth / numberOfHours) * (scale || 1)
 
     return {
@@ -130,7 +129,7 @@ function initialiseScaleOptions({
     : differenceInDays(
         defaultConfig.calculateDate(startDate, defaultConfig.intervalSize),
         startDate
-      ) - 1
+      )
   const maxWidth = unitWidth * numberOfDays
 
   return Object.keys(scaleConfig).map((scaleConfigKey) => {
