@@ -4,28 +4,34 @@ import styled, { css } from 'styled-components'
 
 const { color } = selectors
 
-export const StyledDayPicker = styled<any>(DayPicker)`
+interface StyledDayPickerProps {
+  $isRange: boolean
+}
+
+export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
   ${({ $isRange }) =>
     $isRange &&
     css`
-      .DayPicker-Day {
-        border-radius: 0;
-      }
+      &&&& {
+        .DayPicker-Day {
+          border-radius: 0;
+        }
 
-      .DayPicker-Day--start,
-      .DayPicker-Day--end {
-        background-color: ${color('action', '500')} !important;
-        color: ${color('neutral', 'white')};
-      }
+        .DayPicker-Day--start,
+        .DayPicker-Day--end:not(.DayPicker-Day--outside) {
+          background-color: ${color('action', '500')};
+          color: ${color('neutral', 'white')};
+        }
 
-      .DayPicker-Day--start {
-        border-top-left-radius: 50%;
-        border-bottom-left-radius: 50%;
-      }
+        .DayPicker-Day--start {
+          border-top-left-radius: 50%;
+          border-bottom-left-radius: 50%;
+        }
 
-      .DayPicker-Day--end {
-        border-top-right-radius: 50%;
-        border-bottom-right-radius: 50%;
+        .DayPicker-Day--end {
+          border-top-right-radius: 50%;
+          border-bottom-right-radius: 50%;
+        }
       }
     `}
 `
