@@ -4,6 +4,7 @@ import { ColorNeutral100, ColorNeutral200 } from '@royalnavy/design-tokens'
 import { css, CSSProp } from 'styled-components'
 import { render, RenderResult } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
+import timezoneMock from 'timezone-mock'
 import userEvent from '@testing-library/user-event'
 
 import { NO_DATA_MESSAGE, TIMELINE_BLOCK_SIZE } from '../constants'
@@ -1895,6 +1896,39 @@ describe('Timeline', () => {
       const content = wrapper.getByTestId('content-1')
 
       expect(content).toHaveStyleRule('background-color', ColorNeutral100)
+    })
+  })
+
+  describe('when `endDate` and `unitWidth` are specified', () => {
+    beforeAll(() => {
+      timezoneMock.register('Europe/London')
+    })
+
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 9, 5)}
+          endDate={new Date(2021, 1, 1)}
+          unitWidth={53}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    afterAll(() => {
+      timezoneMock.unregister()
+    })
+
+    it('should render the days with the correct width', () => {
+      expect(wrapper.getAllByTestId('timeline-day')[0]).toHaveStyleRule(
+        'width',
+        '53px'
+      )
     })
   })
 })
