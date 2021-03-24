@@ -90,6 +90,8 @@ examples.add('Disabled days', () => {
 examples.add('Range', () => {
   return (
     <DatePicker
+      endDate={new Date(2021, 3, 2)}
+      startDate={new Date(2021, 2, 15)}
       onBlur={action('onBlur')}
       onChange={action('onChange')}
       isRange
