@@ -20,6 +20,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
     transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   pointer-events: none;
+  user-select: none;
   color: ${color('neutral', '400')};
   font-size: ${fontSize('base')};
 

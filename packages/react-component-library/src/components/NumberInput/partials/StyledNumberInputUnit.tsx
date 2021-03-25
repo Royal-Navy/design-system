@@ -16,4 +16,6 @@ export const StyledNumberInputUnit = styled.span<StyledNumberInputUnitProps>`
   font-size: ${fontSize('base')};
   left: ${({ $left }) => $left};
   top: ${({ $top }) => $top};
+  pointer-events: none;
+  user-select: none;
 `
