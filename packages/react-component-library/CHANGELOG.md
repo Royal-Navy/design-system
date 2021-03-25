@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.43.1](https://github.com/Royal-Navy/design-system/compare/2.43.0...2.43.1) (2021-03-25)
+
+
+### Bug Fixes
+
+* **DatePicker:** Fix end date outside of days ([219540c](https://github.com/Royal-Navy/design-system/commit/219540ce2a3c8ee3de18821647d035927b6e7ec7))
+* **Select:** Increase specificity of padding ([466e213](https://github.com/Royal-Navy/design-system/commit/466e2139f031a5f1e887713ae4bee1f58fc00f4a))
+* **Select:** Use correct class selector ([ac30aff](https://github.com/Royal-Navy/design-system/commit/ac30aff98c49db0c1def9416fcba8835fa09f386))
+
+
+
+
+
 # [2.43.0](https://github.com/Royal-Navy/design-system/compare/2.42.2...2.43.0) (2021-03-24)
 
 
