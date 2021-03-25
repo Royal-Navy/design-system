@@ -1,7 +1,5 @@
 import React from 'react'
 import { isFinite, isNil } from 'lodash'
-import { selectors } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ClearButton } from './ClearButton'
@@ -15,12 +13,8 @@ import { StartAdornment } from './StartAdornment'
 import { useFocus } from '../../hooks/useFocus'
 import { useValue } from './useValue'
 import { UNIT_POSITION } from './constants'
-import {
-  getOuterWrapperBorder,
-  StyledOuterWrapperProps,
-} from '../../styled-components/input'
-
-const { color, spacing } = selectors
+import { StyledNumberInput } from './partials/StyledNumberInput'
+import { StyledNumberInputOuterWrapper } from './partials/StyledNumberInputOuterWrapper'
 
 export type UnitPosition =
   | typeof UNIT_POSITION.AFTER
@@ -48,25 +42,6 @@ export interface NumberInputProps
   unitPosition?: UnitPosition
   value?: number
 }
-
-const StyledNumberInput = styled.div`
-  display: inline-flex;
-  flex-direction: column;
-  position: relative;
-  margin: ${spacing('6')} 0;
-  padding: 0;
-  border: 0;
-  vertical-align: top;
-  width: 100%;
-`
-
-const StyledNumberInputOuterWrapper = styled.div<StyledOuterWrapperProps>`
-  display: inline-flex;
-  flex-direction: row;
-  background-color: ${color('neutral', 'white')};
-
-  ${(props) => getOuterWrapperBorder(props)}
-`
 
 function formatValue(
   displayValue: number,
