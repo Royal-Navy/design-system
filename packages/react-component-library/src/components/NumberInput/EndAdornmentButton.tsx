@@ -1,11 +1,9 @@
 import React from 'react'
 import capitalize from 'lodash/capitalize'
-import { selectors } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
 
 import { END_ADORNMENT_TYPE } from './constants'
-
-const { color } = selectors
+import { StyledIncreaseButton } from './partials/StyledIncreaseButton'
+import { StyledDecreaseButton } from './partials/StyledDecreaseButton'
 
 type EndAdornmentType =
   | typeof END_ADORNMENT_TYPE.DECREASE
@@ -17,72 +15,6 @@ interface EndAdornmentButtonProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
   type: EndAdornmentType
 }
-
-interface StyledButtonProps {
-  $isCondensed: boolean
-}
-
-const StyledButton = styled.button<StyledButtonProps>`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 42px;
-  align-items: center;
-
-  background: transparent;
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  border: 0;
-
-  flex-grow: 1;
-
-  &:focus {
-    border-radius: 4px;
-    box-shadow: 2px 2px 0 0 ${color('action', '600')},
-      -2px -2px 0 0 ${color('action', '600')},
-      2px -2px 0 0 ${color('action', '600')},
-      -2px 2px 0 0 ${color('action', '600')};
-  }
-`
-
-const StyledDecreaseButton = styled(StyledButton)`
-  border-top: 1px solid ${color('neutral', '100')};
-
-  &:focus {
-    border-color: transparent;
-  }
-
-  ${({ $isCondensed }) =>
-    $isCondensed &&
-    css`
-      width: 36px;
-
-      & > svg {
-        transform: scale(0.7);
-      }
-    `}
-`
-
-const StyledIncreaseButton = styled(StyledButton)`
-  & > svg {
-    transform: rotate(180deg);
-  }
-
-  ${({ $isCondensed }) =>
-    $isCondensed &&
-    css`
-      width: 36px;
-
-      & > svg {
-        transform: rotate(180deg) scale(0.7);
-      }
-    `}
-
-  &:focus + ${StyledDecreaseButton} {
-    border-color: transparent;
-  }
-`
 
 export const EndAdornmentButton: React.FC<EndAdornmentButtonProps> = ({
   isCondensed,
