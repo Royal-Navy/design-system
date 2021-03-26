@@ -7,6 +7,7 @@ import {
   waitFor,
 } from '@testing-library/react'
 import 'jest-styled-components'
+import userEvent from '@testing-library/user-event'
 
 import { DatePicker, DATEPICKER_PLACEMENT } from '.'
 
@@ -139,7 +140,7 @@ describe('DatePicker', () => {
 
       describe('and the user clicks it again', () => {
         beforeEach(() => {
-          wrapper.getByTestId('datepicker-input-button').click()
+          userEvent.click(wrapper.getByTestId('datepicker-input-button'))
         })
 
         assertInputButtonAria({
