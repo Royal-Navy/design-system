@@ -4,7 +4,6 @@ import {
   addWeeks,
   addYears,
   differenceInDays,
-  differenceInHours,
 } from 'date-fns'
 import { find } from 'lodash'
 
@@ -95,7 +94,7 @@ function mapScaleOption(
     ...rest
   }: ScaleConfigOptionType): TimelineScaleOption => {
     const to = addDays(calculateDate(startDate, intervalSize), -1)
-    const numberOfHours = differenceInHours(to, startDate) + HOURS_IN_DAY
+    const numberOfHours = (differenceInDays(to, startDate) + 1) * HOURS_IN_DAY
     const optionHoursBlockSize =
       configHoursBlockSize || hoursBlockSize || TIMELINE_BLOCK_SIZE.QUARTER_DAY
     const hourWidth = (maxWidth / numberOfHours) * (scale || 1)
