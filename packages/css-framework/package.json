@@ -35,7 +35,8 @@
     "prepare": "yarn build"
   },
   "dependencies": {
-    "@royalnavy/design-tokens": "^2.43.3"
+    "@royalnavy/design-tokens": "^2.43.3",
+    "@royalnavy/eslint-config-react": "^2.43.3"
   },
   "devDependencies": {
     "lint-staged": "^10.2.13",
