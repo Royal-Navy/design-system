@@ -11,15 +11,22 @@ import {
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
-import { DatePickerInput } from './DatePickerInput'
-import { useDatePickerOpenClose } from './useDatePickerOpenClose'
 import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
+import { DropdownIndicatorIcon } from '../Dropdown/DropdownIndicatorIcon'
 import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 import { getId } from '../../helpers'
 import { StyledDatePicker } from './partials/StyledDatePicker'
 import { StyledDayPicker } from './partials/StyledDayPicker'
 import { StyledFloatingBox } from './partials/StyledFloatingBox'
 import { StyledTetherComponent } from './partials/StyledTetherComponent'
+import { StyledDatePickerInput } from './partials/StyledDatePickerInput'
+import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
+import { StyledInputWrapper } from './partials/StyledInputWrapper'
+import { StyledLabel } from './partials/StyledLabel'
+import { StyledInput } from './partials/StyledInput'
+import { StyledButton } from './partials/StyledButton'
+import { StyledSeparator } from './partials/StyledSeparator'
+import { useDatePickerOpenClose } from './useDatePickerOpenClose'
 
 export interface StateObject {
   from?: Date
@@ -86,9 +93,11 @@ function getNewState(
 }
 
 export const DatePicker: React.FC<DatePickerProps> = ({
+  className,
   endDate,
   format: datePickerFormat = DATE_FORMAT.SHORT,
   id = uuidv4(),
+  isDisabled,
   isRange,
   label = 'Select Date',
   onChange,
@@ -106,6 +115,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     floatingBoxChildrenRef,
     handleOnClose,
     handleOnFocus,
+    inputButtonRef,
     open,
   } = useDatePickerOpenClose(isOpen)
 
@@ -131,7 +141,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     }
   }
 
-  const hasContent = (value && value.length) || from
+  const hasContent = !!((value && value.length) || from)
   const PLACEMENTS = DATEPICKER_PLACEMENTS[placement]
 
   const titleId = getId('datepicker-title')
@@ -154,18 +164,49 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         targetAttachment: PLACEMENTS.TARGET_ATTACHMENT,
         $isVisible: open,
         renderTarget: (ref: React.RefObject<HTMLDivElement>) => (
-          <DatePickerInput
+          <StyledDatePickerInput
+            className={className}
             ref={ref}
-            dayPickerId={contentId}
-            id={id}
-            label={label}
-            value={transformDates(from, to, datePickerFormat)}
-            onFocus={handleOnFocus}
-            isOpen={open}
-            onClose={handleOnClose}
-            hasContent={!!hasContent}
-            {...rest}
-          />
+            data-testid="datepicker-input-wrapper"
+            $isDisabled={isDisabled}
+          >
+            <StyledOuterWrapper $isOpen={isOpen}>
+              <StyledInputWrapper>
+                <StyledLabel
+                  $isOpen={isOpen}
+                  $hasContent={hasContent}
+                  htmlFor={id}
+                  data-testid="datepicker-label"
+                >
+                  {label}
+                </StyledLabel>
+                <StyledInput
+                  type="text"
+                  id={id}
+                  value={transformDates(from, to, datePickerFormat)}
+                  onFocus={handleOnFocus}
+                  disabled={isDisabled}
+                  readOnly
+                  aria-label="Choose date"
+                  data-testid="datepicker-input"
+                  {...rest}
+                />
+              </StyledInputWrapper>
+              <StyledButton
+                aria-expanded={!!open}
+                aria-label={`${open ? 'Hide' : 'Show'} day picker`}
+                aria-owns={contentId}
+                ref={inputButtonRef}
+                type="button"
+                onClick={open ? handleOnClose : handleOnFocus}
+                disabled={isDisabled}
+                data-testid="datepicker-input-button"
+              >
+                <StyledSeparator />
+                <DropdownIndicatorIcon isOpen={open} />
+              </StyledButton>
+            </StyledOuterWrapper>
+          </StyledDatePickerInput>
         ),
         renderElement: (ref: React.RefObject<HTMLDivElement>) => (
           <StyledFloatingBox
