@@ -23,10 +23,10 @@ import { StyledDatePickerInput } from './partials/StyledDatePickerInput'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledLabel } from './partials/StyledLabel'
-import { StyledInput } from './partials/StyledInput'
 import { StyledButton } from './partials/StyledButton'
 import { StyledSeparator } from './partials/StyledSeparator'
 import { useDatePickerOpenClose } from './useDatePickerOpenClose'
+import { DatePickerInput } from './DatePickerInput'
 
 export interface StateObject {
   from?: Date
@@ -180,15 +180,13 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 >
                   {label}
                 </StyledLabel>
-                <StyledInput
-                  type="text"
+                <DatePickerInput
                   id={id}
-                  value={transformDates(from, to, datePickerFormat)}
+                  isDisabled={isDisabled}
+                  format={datePickerFormat}
+                  from={from}
                   onFocus={handleOnFocus}
-                  disabled={isDisabled}
-                  readOnly
-                  aria-label="Choose date"
-                  data-testid="datepicker-input"
+                  to={to}
                   {...rest}
                 />
               </StyledInputWrapper>
