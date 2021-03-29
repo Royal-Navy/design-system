@@ -31,7 +31,8 @@
     "**/**/node-fetch": "^2.6.1",
     "**/**/axios": "^0.21.1",
     "**/**/yup": "^0.31.1",
-    "**/**/socket.io": "^2.4.0"
+    "**/**/socket.io": "^2.4.0",
+    "**/**/hosted-git-info": "^3.0.8"
   },
   "prettier": {
     "bracketSpacing": true,
