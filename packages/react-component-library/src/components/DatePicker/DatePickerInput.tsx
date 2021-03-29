@@ -1,9 +1,8 @@
 import React from 'react'
-import differenceInMinutes from 'date-fns/differenceInMinutes'
-import { format } from 'date-fns'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledInput } from './partials/StyledInput'
+import { useInputValue } from './useInputValue'
 
 export interface DatePickerInputProps extends ComponentWithClass {
   id: string
@@ -14,25 +13,6 @@ export interface DatePickerInputProps extends ComponentWithClass {
   to: Date
 }
 
-function transformDates(
-  startDate: Date,
-  endDate: Date,
-  datePickerFormat: string
-) {
-  if (startDate && endDate && differenceInMinutes(endDate, startDate) > 0) {
-    return `${format(startDate, datePickerFormat)} - ${format(
-      endDate,
-      datePickerFormat
-    )}`
-  }
-
-  if (startDate) {
-    return format(startDate, datePickerFormat)
-  }
-
-  return ''
-}
-
 export const DatePickerInput: React.FC<DatePickerInputProps> = ({
   from,
   to,
@@ -40,6 +20,8 @@ export const DatePickerInput: React.FC<DatePickerInputProps> = ({
   isDisabled,
   ...rest
 }) => {
+  const { value } = useInputValue(from, to, datePickerFormat)
+
   return (
     <StyledInput
       aria-label="Choose date"
@@ -47,7 +29,7 @@ export const DatePickerInput: React.FC<DatePickerInputProps> = ({
       disabled={isDisabled}
       readOnly
       type="text"
-      value={transformDates(from, to, datePickerFormat)}
+      value={value}
       {...rest}
     />
   )
