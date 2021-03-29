@@ -6,6 +6,7 @@ const { color, fontSize, spacing } = selectors
 interface StyledLabelProps {
   $isOpen?: boolean
   $hasContent?: boolean
+  $hasPlaceholder?: boolean
 }
 
 export const StyledLabel = styled.label<StyledLabelProps>`
@@ -22,8 +23,8 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   color: ${color('neutral', '400')};
   font-size: ${fontSize('base')};
 
-  ${({ $isOpen, $hasContent }) =>
-    ($isOpen || $hasContent) &&
+  ${({ $isOpen, $hasContent, $hasPlaceholder }) =>
+    ($isOpen || $hasContent || $hasPlaceholder) &&
     css`
       transform: translate(${spacing('6')}, 6px) scale(0.8);
     `}

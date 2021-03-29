@@ -59,7 +59,6 @@ describe('DatePicker', () => {
 
     days = new Array(31).map((i) => leadingZero(i + 1)) // [01, 02, ..., 31]
   })
-
   afterAll(() => {
     dateSpy.mockRestore()
   })
@@ -95,6 +94,13 @@ describe('DatePicker', () => {
       ariaLabel: 'Show day picker',
     })
 
+    it('renders the `input` with the `placeholder` attribute', () => {
+      expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
+        'placeholder',
+        'dd/mm/yyyy'
+      )
+    })
+
     it('should set the `role` attribute for the Day buttons', () => {
       days.forEach((_, index) => {
         expect(
@@ -125,7 +131,7 @@ describe('DatePicker', () => {
 
     describe('when the end user clicks the open close button', () => {
       beforeEach(() => {
-        wrapper.getByTestId('datepicker-input-button').click()
+        userEvent.click(wrapper.getByTestId('datepicker-input-button'))
       })
 
       assertInputButtonAria({
@@ -149,7 +155,7 @@ describe('DatePicker', () => {
           ariaLabel: 'Show day picker',
         })
 
-        it('hides the container', () => {
+        it('hides the day picker container', () => {
           return waitFor(() => {
             expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
               'opacity',
@@ -201,16 +207,370 @@ describe('DatePicker', () => {
 
       describe('and clicks outside the date picker', () => {
         beforeEach(() => {
-          fireEvent.mouseDown(wrapper.getByTestId('datepicker-outside'))
+          userEvent.click(wrapper.getByTestId('datepicker-outside'))
         })
 
-        it('hides the container', () => {
+        it('hides the day picker container', () => {
           return waitFor(() => {
             expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
               'opacity',
               '0'
             )
           })
+        })
+
+        describe('and the user focuses on the input', () => {
+          beforeEach(() => {
+            userEvent.click(wrapper.getByTestId('datepicker-input-button'))
+          })
+
+          it('shows the day picker container', () => {
+            return waitFor(() => {
+              expect(wrapper.getByTestId('floating-box')).toBeVisible()
+            })
+          })
+        })
+      })
+    })
+
+    describe('when the end user types a new date value', () => {
+      describe('and the date value is valid', () => {
+        describe('and the day/month use two digit format', () => {
+          beforeEach(async () => {
+            const input = wrapper.getByTestId('datepicker-input')
+
+            await userEvent.type(input, '{backspace}01/05/2016')
+          })
+
+          it('set the value of the component to this date', () => {
+            expect(
+              wrapper.getByTestId('datepicker-input').getAttribute('value')
+            ).toBe('01/05/2016')
+          })
+
+          it('invokes the `onChange` callback', () => {
+            expect(onChange).toHaveBeenCalledTimes(1)
+            expect(onChange).toHaveBeenCalledWith({
+              startDate: new Date('2016-05-01T12:00:00.000Z'),
+              endDate: new Date('2016-05-01T12:00:00.000Z'),
+            })
+          })
+
+          it('updates the selected day', () => {
+            expect(wrapper.getByText('May 2016')).toBeInTheDocument()
+            expect(wrapper.getByText('1')).toBeInTheDocument()
+          })
+
+          it('continues to show the day picker container', () => {
+            expect(
+              wrapper.getByTestId('datepicker-input-button')
+            ).toHaveAttribute('aria-label', 'Hide day picker')
+          })
+
+          describe('and the return key is pressed', () => {
+            beforeEach(async () => {
+              const input = wrapper.getByTestId('datepicker-input')
+
+              await userEvent.type(input, '{enter}')
+            })
+
+            it('hides the day picker container', () => {
+              expect(
+                wrapper.getByTestId('datepicker-input-button')
+              ).toHaveAttribute('aria-label', 'Show day picker')
+            })
+          })
+
+          describe('and clicks on a day', () => {
+            beforeEach(() => {
+              click(wrapper.getByText('31'))
+            })
+
+            it('set the value of the component to this date', () => {
+              expect(
+                wrapper.getByTestId('datepicker-input').getAttribute('value')
+              ).toBe('31/05/2016')
+            })
+
+            it('invokes the onChange callback', () => {
+              expect(onChange).toHaveBeenCalledTimes(2)
+              expect(onChange).toHaveBeenCalledWith({
+                startDate: new Date('2016-05-31T12:00:00.000Z'),
+                endDate: new Date('2016-05-31T12:00:00.000Z'),
+              })
+              expect(onChange).toHaveBeenCalledWith({
+                startDate: new Date('2016-05-01T12:00:00.000Z'),
+                endDate: new Date('2016-05-01T12:00:00.000Z'),
+              })
+            })
+
+            it('continues to show the day picker container', () => {
+              expect(
+                wrapper.getByTestId('datepicker-input-button')
+              ).toHaveAttribute('aria-label', 'Hide day picker')
+            })
+          })
+        })
+
+        describe('and the day/month use one digit format', () => {
+          beforeEach(async () => {
+            const input = wrapper.getByTestId('datepicker-input')
+
+            await userEvent.type(input, '{backspace}1/5/2016{enter}')
+          })
+
+          it('set the value of the component to this date', () => {
+            expect(
+              wrapper.getByTestId('datepicker-input').getAttribute('value')
+            ).toBe('01/05/2016')
+          })
+
+          it('invokes the `onChange` callback', () => {
+            expect(onChange).toHaveBeenCalledTimes(1)
+            expect(onChange).toHaveBeenCalledWith({
+              startDate: new Date('2016-05-01T12:00:00.000Z'),
+              endDate: new Date('2016-05-01T12:00:00.000Z'),
+            })
+          })
+
+          it('updates the selected day', () => {
+            expect(wrapper.getByText('May 2016')).toBeInTheDocument()
+            expect(wrapper.getByText('1')).toBeInTheDocument()
+          })
+
+          it('hides the day picker container', () => {
+            expect(
+              wrapper.getByTestId('datepicker-input-button')
+            ).toHaveAttribute('aria-label', 'Show day picker')
+          })
+        })
+      })
+
+      describe('and the escape key is pressed', () => {
+        beforeEach(async () => {
+          const input = wrapper.getByTestId('datepicker-input')
+          const newValue = '{backspace}20{esc}'
+
+          await userEvent.type(input, newValue)
+        })
+
+        it('revert the value of the component to the original date', () => {
+          expect(
+            wrapper.getByTestId('datepicker-input').getAttribute('value')
+          ).toBe('01/12/2019')
+        })
+
+        it('not invoke the `onChange` callback', () => {
+          expect(onChange).not.toHaveBeenCalled()
+        })
+
+        it('hides the day picker container', () => {
+          expect(
+            wrapper.getByTestId('datepicker-input-button')
+          ).toHaveAttribute('aria-label', 'Show day picker')
+        })
+      })
+
+      describe('and a date is partially entered', () => {
+        describe('and a day is selected', () => {
+          beforeEach(async () => {
+            const input = wrapper.getByTestId('datepicker-input')
+
+            await userEvent.type(input, '{backspace}20')
+
+            click(wrapper.getByText('21'))
+          })
+
+          it('set the value of the component to the selected date', () => {
+            expect(
+              wrapper.getByTestId('datepicker-input').getAttribute('value')
+            ).toBe('21/12/2019')
+          })
+
+          it('invokes the `onChange` callback', () => {
+            expect(onChange).toHaveBeenCalledTimes(1)
+            expect(onChange).toHaveBeenCalledWith({
+              startDate: new Date('2019-12-21T12:00:00.000Z'),
+              endDate: new Date('2019-12-21T12:00:00.000Z'),
+            })
+          })
+        })
+      })
+
+      describe('and the date value is invalid', () => {
+        describe('when entering letters', () => {
+          describe('and using the enter key', () => {
+            beforeEach(async () => {
+              const input = wrapper.getByTestId('datepicker-input')
+
+              await userEvent.type(input, '{backspace}abcd{enter}')
+            })
+
+            it('not invoke the `onChange` callback', () => {
+              expect(onChange).not.toHaveBeenCalled()
+            })
+
+            it('should be in an error state', () => {
+              expect(
+                wrapper.getByTestId('datepicker-outer-wrapper')
+              ).toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+            })
+
+            describe('and the escape key is pressed', () => {
+              beforeEach(async () => {
+                const input = wrapper.getByTestId('datepicker-input')
+
+                await userEvent.type(input, '{esc}')
+              })
+
+              it('not invoke the `onChange` callback', () => {
+                expect(onChange).not.toHaveBeenCalled()
+              })
+
+              it('should not be in an error state', () => {
+                expect(
+                  wrapper.getByTestId('datepicker-outer-wrapper')
+                ).not.toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+              })
+            })
+
+            describe('and a valid date is entered', () => {
+              beforeEach(async () => {
+                const input = wrapper.getByTestId('datepicker-input')
+                const newValue =
+                  '{backspace}{backspace}{backspace}{backspace}01/03/2021{enter}'
+
+                await userEvent.type(input, newValue)
+              })
+
+              it('invokes the `onChange` callback', () => {
+                expect(onChange).toHaveBeenCalledTimes(1)
+                expect(onChange).toHaveBeenCalledWith({
+                  startDate: new Date('2021-03-01T12:00:00.000Z'),
+                  endDate: new Date('2021-03-01T12:00:00.000Z'),
+                })
+              })
+
+              it('should not be in an error state', () => {
+                expect(
+                  wrapper.getByTestId('datepicker-outer-wrapper')
+                ).not.toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+              })
+            })
+          })
+
+          describe('and tabbing', () => {
+            beforeEach(async () => {
+              const input = wrapper.getByTestId('datepicker-input')
+
+              await userEvent.type(input, '{backspace}abcd')
+
+              userEvent.tab()
+            })
+
+            it('not invoke the `onChange` callback', () => {
+              expect(onChange).not.toHaveBeenCalled()
+            })
+
+            it('should be in an error state', () => {
+              expect(
+                wrapper.getByTestId('datepicker-outer-wrapper')
+              ).toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+            })
+
+            it('should call the `onBlur` callback', () => {
+              expect(onBlur).toHaveBeenCalledTimes(1)
+            })
+          })
+
+          describe('and the `input` loses `focus`', () => {
+            beforeEach(async () => {
+              const input = wrapper.getByTestId('datepicker-input')
+
+              await userEvent.type(input, '{backspace}abcd')
+
+              input.blur()
+            })
+
+            it('not invoke the `onChange` callback', () => {
+              expect(onChange).not.toHaveBeenCalled()
+            })
+
+            it('should be in an error state', () => {
+              expect(
+                wrapper.getByTestId('datepicker-outer-wrapper')
+              ).toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+            })
+
+            it('should call the `onBlur` callback', () => {
+              expect(onBlur).toHaveBeenCalledTimes(1)
+            })
+          })
+        })
+
+        describe('when using a two digit year', () => {
+          beforeEach(async () => {
+            const input = wrapper.getByTestId('datepicker-input')
+
+            await userEvent.type(input, '{backspace}12/12/20{enter}')
+          })
+
+          it('not invoke the `onChange` callback', () => {
+            expect(onChange).not.toHaveBeenCalled()
+          })
+
+          it('should be in an error state', () => {
+            expect(
+              wrapper.getByTestId('datepicker-outer-wrapper')
+            ).toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+          })
+        })
+
+        describe('when using a date that does not exist', () => {
+          beforeEach(async () => {
+            const input = wrapper.getByTestId('datepicker-input')
+
+            await userEvent.type(input, '{backspace}15/15/20{enter}')
+          })
+
+          it('not invoke the `onChange` callback', () => {
+            expect(onChange).not.toHaveBeenCalled()
+          })
+
+          it('should be in an error state', () => {
+            expect(
+              wrapper.getByTestId('datepicker-outer-wrapper')
+            ).toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+          })
+        })
+      })
+
+      describe('and the `input` loses `focus`', () => {
+        beforeEach(async () => {
+          const input = wrapper.getByTestId('datepicker-input')
+
+          await userEvent.type(input, '{backspace}01/05/2016')
+
+          input.blur()
+        })
+
+        it('set the value of the component to this date', () => {
+          expect(
+            wrapper.getByTestId('datepicker-input').getAttribute('value')
+          ).toBe('01/05/2016')
+        })
+
+        it('invokes the `onChange` callback', () => {
+          expect(onChange).toHaveBeenCalledTimes(1)
+          expect(onChange).toHaveBeenCalledWith({
+            startDate: new Date('2016-05-01T12:00:00.000Z'),
+            endDate: new Date('2016-05-01T12:00:00.000Z'),
+          })
+        })
+
+        it('updates the selected day', () => {
+          expect(wrapper.getByText('May 2016')).toBeInTheDocument()
+          expect(wrapper.getByText('1')).toBeInTheDocument()
         })
       })
     })
@@ -261,6 +621,19 @@ describe('DatePicker', () => {
           onChange={onChange}
           isRange
         />
+      )
+    })
+
+    it('should set the `readonly` attribute on the `input`', () => {
+      expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
+        'readonly',
+        ''
+      )
+    })
+
+    it('does not render the `input` with the `placeholder` attribute', () => {
+      expect(wrapper.getByTestId('datepicker-input')).not.toHaveAttribute(
+        'placeholder'
       )
     })
 
@@ -373,7 +746,7 @@ describe('DatePicker', () => {
 
     describe('and the open/close button is clicked', () => {
       beforeEach(() => {
-        wrapper.getByTestId('datepicker-input-button').click()
+        userEvent.click(wrapper.getByTestId('datepicker-input-button'))
       })
 
       it('does not submit the form', () => {
@@ -419,6 +792,25 @@ describe('DatePicker', () => {
 
       it('does not set the picker to that day', () => {
         expect(onChange).not.toHaveBeenCalled()
+      })
+    })
+
+    describe('and a disabled day is typed', () => {
+      beforeEach(async () => {
+        const input = wrapper.getByTestId('datepicker-input')
+
+        await userEvent.type(input, '{backspace}12/04/2020{enter}')
+      })
+
+      it('does not set the picker to that day', () => {
+        expect(onChange).not.toHaveBeenCalled()
+      })
+
+      it('should be in an error state', () => {
+        expect(wrapper.getByTestId('datepicker-outer-wrapper')).toHaveStyleRule(
+          'border',
+          `1px solid ${ColorDanger600}`
+        )
       })
     })
   })
@@ -478,6 +870,25 @@ describe('DatePicker', () => {
           `1px solid ${ColorDanger600}`
         )
       })
+    })
+  })
+
+  describe('when `format` is specified', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <DatePicker format="yyyy/MM/dd" startDate={new Date(2018, 0, 11)} />
+      )
+    })
+
+    it('should set the value', () => {
+      expect(wrapper.getByTestId('datepicker-input')).toHaveValue('2018/01/11')
+    })
+
+    it('renders the `input` with the `placeholder` attribute', () => {
+      expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
+        'placeholder',
+        'yyyy/mm/dd'
+      )
     })
   })
 })

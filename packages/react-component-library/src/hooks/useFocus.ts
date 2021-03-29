@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export function useFocus(onBlur: (event: React.FormEvent) => void) {
+export function useFocus(onBlur?: (event: React.FormEvent) => void) {
   const [hasFocus, setHasFocus] = useState(false)
 
   const onFocus = () => {
