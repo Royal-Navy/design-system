@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.43.3](https://github.com/Royal-Navy/design-system/compare/2.43.2...2.43.3) (2021-03-30)
+
+
+### Bug Fixes
+
+* **DatePicker:** Monitor multiple refs ([dcbc960](https://github.com/Royal-Navy/design-system/commit/dcbc96069748c33f9ffca0f818d1e884c9625c13))
+
+
+
+
+
 ## [2.43.2](https://github.com/Royal-Navy/design-system/compare/2.43.1...2.43.2) (2021-03-29)
 
 
