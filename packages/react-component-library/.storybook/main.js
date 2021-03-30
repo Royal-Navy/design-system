@@ -1,18 +1,14 @@
 module.exports = {
   stories: ['../src/**/*.stories.tsx'],
   addons: [
-    '@storybook/addon-a11y',
-    '@storybook/addon-actions',
-    '@storybook/addon-links',
-    '@storybook/addon-knobs',
+    '@storybook/preset-scss',
     {
-      name: '@storybook/addon-storysource',
+      name: '@storybook/addon-docs',
       options: {
-        loaderOptions: {
-          injectStoryParameters: false,
-        },
+        configureJSX: true,
       },
     },
-    '@storybook/preset-scss',
+    '@storybook/addon-a11y',
+    '@storybook/addon-actions',
   ],
 }
