@@ -32,7 +32,8 @@
     "**/**/axios": "^0.21.1",
     "**/**/yup": "^0.31.1",
     "**/**/socket.io": "^2.4.0",
-    "**/**/hosted-git-info": "^3.0.8"
+    "**/**/hosted-git-info": "^3.0.8",
+    "**/**/netmask": "^2.0.1"
   },
   "prettier": {
     "bracketSpacing": true,
