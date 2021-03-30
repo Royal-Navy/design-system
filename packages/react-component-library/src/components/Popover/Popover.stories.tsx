@@ -1,14 +1,12 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
+import { Meta } from '@storybook/react/types-6-0'
 
 import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
-
 import { Popover, POPOVER_PLACEMENT } from '.'
 
-const stories = storiesOf('Popover', module)
-const examples = storiesOf('Popover/Examples', module)
+export default { component: Popover, title: 'Popover' } as Meta
 
-const popoverContent = (text = 'Hover on me!') => (
+const popoverContent = (text = 'Hover on me') => (
   <div
     style={{
       display: 'inline-block',
@@ -20,16 +18,16 @@ const popoverContent = (text = 'Hover on me!') => (
   </div>
 )
 
-stories.add('Default', () => (
-  <Popover
-    content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
-    placement={POPOVER_PLACEMENT.BELOW}
-  >
-    {popoverContent()}
-  </Popover>
-))
+export const Default = (props: any) => (
+  <Popover {...props}>{popoverContent()}</Popover>
+)
 
-examples.add('Dark', () => (
+Default.args = {
+  content: <pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>,
+  placement: POPOVER_PLACEMENT.BELOW,
+}
+
+export const Dark = () => (
   <Popover
     content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
     placement={POPOVER_PLACEMENT.BELOW}
@@ -37,9 +35,11 @@ examples.add('Dark', () => (
   >
     {popoverContent()}
   </Popover>
-))
+)
 
-examples.add('Click', () => (
+Dark.storyName = 'Dark'
+
+export const ClickToActivate = () => (
   <Popover
     content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
     isClick
@@ -47,4 +47,6 @@ examples.add('Click', () => (
   >
     {popoverContent('Click on me')}
   </Popover>
-))
+)
+
+ClickToActivate.storyName = 'Click to activate'

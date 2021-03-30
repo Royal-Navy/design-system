@@ -1,39 +1,31 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
+import { Meta } from '@storybook/react/types-6-0'
 
 import { DismissibleBanner } from '.'
 
-const stories = storiesOf('DismissibleBanner', module)
-const examples = storiesOf('DismissibleBanner/Examples', module)
+export default {
+  component: DismissibleBanner,
+  title: 'Dismissible Banner',
+} as Meta
 
-const TITLE = 'Dismissible banner'
-const DESCRIPTION = 'This is the dismissible banner description.'
+export const Default = ({ description, ...rest }: any) => (
+  <DismissibleBanner {...rest}>{description}</DismissibleBanner>
+)
 
-stories.add('Default', () => {
-  return (
-    <DismissibleBanner title={TITLE} onDismiss={action('onDismiss')}>
-      {DESCRIPTION}
-    </DismissibleBanner>
-  )
-})
+Default.args = {
+  title: 'Example Title',
+  description: 'Example description',
+  onDismiss: (e: React.SyntheticEvent) => console.log,
+}
 
-examples.add('Arbitrary', () => {
-  return (
-    <DismissibleBanner onDismiss={action('onDismiss')}>
-      <p>Arbitrary content</p>
-    </DismissibleBanner>
-  )
-})
+export const HiddenCheckbox = () => (
+  <DismissibleBanner
+    onDismiss={(e: React.SyntheticEvent) => console.log}
+    hasCheckbox={false}
+    title="Example Title"
+  >
+    Example description
+  </DismissibleBanner>
+)
 
-examples.add('Hide checkbox', () => {
-  return (
-    <DismissibleBanner
-      hasCheckbox={false}
-      onDismiss={action('onDismiss')}
-      title={TITLE}
-    >
-      {DESCRIPTION}
-    </DismissibleBanner>
-  )
-})
+HiddenCheckbox.storyName = 'Hidden checkbox'

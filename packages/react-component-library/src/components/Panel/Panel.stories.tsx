@@ -1,10 +1,14 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
+import { Meta } from '@storybook/react/types-6-0'
 
 import { Panel } from './index'
 
-const stories = storiesOf('Panel', module)
+export default { component: Panel, title: 'Panel' } as Meta
 
-stories.add('Default', () => {
-  return <Panel>Content</Panel>
-})
+export const Default = ({ children, ...rest }: any) => (
+  <Panel {...rest}>{children}</Panel>
+)
+
+Default.args = {
+  children: 'Hello, World!',
+}

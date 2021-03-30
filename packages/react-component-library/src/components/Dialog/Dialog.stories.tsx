@@ -1,33 +1,41 @@
-import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import React from 'react'
+import styled from 'styled-components'
+import { Meta } from '@storybook/react/types-6-0'
 
 import { Dialog } from './index'
+import { StyledMain } from '../Modal/partials/StyledMain'
 
-const stories = storiesOf('Dialog', module)
-const examples = storiesOf('Dialog/Examples', module)
+const StyledDialog = styled(Dialog)`
+  position: absolute;
+  z-index: 1;
 
-stories.add('Default', () => {
-  return (
-    <Dialog
-      title="Dialog Title"
-      description="Dialog description."
-      onConfirm={action('onConfirm')}
-      onCancel={action('onCancel')}
-      isOpen
-    />
-  )
-})
+  ${StyledMain} {
+    position: absolute;
+  }
+`
 
-examples.add('Danger', () => {
-  return (
-    <Dialog
-      title="Dialog Title"
-      description="Dialog description."
-      onConfirm={action('onConfirm')}
-      onCancel={action('onCancel')}
+export default { component: Dialog, title: 'Dialog' } as Meta
+
+export const Default = (props: any) => (
+  <div style={{ height: '10rem' }}>
+    {/* Styles extended for Storybook presentation */}
+    <StyledDialog {...props} />
+  </div>
+)
+
+Default.args = {
+  title: 'Example Title',
+  description: 'Example description',
+  isOpen: true,
+}
+
+export const Danger = () => (
+  <div style={{ height: '10rem' }}>
+    <StyledDialog
+      title="Example Title"
+      description="Example description"
       isDanger
       isOpen
     />
-  )
-})
+  </div>
+)

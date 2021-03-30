@@ -1,32 +1,44 @@
 import React from 'react'
+import { Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import { withFormik } from '../../enhancers/withFormik'
 import { Checkbox } from '.'
+import { Button } from '../Button'
 import { FormikGroup } from '../FormikGroup'
 
-const stories = storiesOf('Checkbox', module)
+export default { component: Checkbox, title: 'Checkbox' } as Meta
 
-stories.add('Vanilla', () => {
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault()
-        action('Submitted')(e)
-      }}
-    >
-      <Checkbox name="example1" label="My Label 1" value="true" isChecked />
-      <Checkbox name="example2" label="My Label 2" isDisabled />
-      <Checkbox name="example3" label="My Label 3" isInvalid />
-      <button type="submit">Submit</button>
-    </form>
-  )
-})
+export const Default = (props: any) => <Checkbox {...props} />
 
-stories.add('Formik', () => {
+Default.args = {
+  id: undefined,
+  label: 'Default checkbox',
+  name: 'default',
+  isChecked: true,
+}
+
+export const Disabled = (props: any) => <Checkbox {...props} />
+
+Disabled.args = {
+  id: undefined,
+  isDisabled: true,
+  label: 'Disabled checkbox',
+  name: 'disabled',
+}
+
+export const Invalid = (props: any) => <Checkbox {...props} />
+
+Invalid.args = {
+  id: undefined,
+  label: 'Invalid checkbox',
+  name: 'invalid',
+  isInvalid: true,
+}
+
+export const WithFormik = () => {
   const CheckboxForm = () => {
     interface Data {
       [key: string]: boolean
@@ -52,36 +64,36 @@ stories.add('Formik', () => {
       >
         <Form>
           <Field
-            className="rn-checkbox--is-valid"
             name="example1"
             component={FormikCheckbox}
-            label="My Label 1"
+            label="Option 1"
             type="checkbox"
           />
           <Field
-            className="rn-checkbox--is-valid"
             name="example2"
             component={FormikCheckbox}
-            label="My Label 2"
+            label="Option 2"
             type="checkbox"
           />
           <Field
-            className="rn-checkbox--is-valid"
             name="example3"
             component={FormikCheckbox}
-            label="My Label 3"
+            label="Option 3"
             type="checkbox"
           />
-          <button type="submit">Submit</button>
+          <br />
+          <Button type="submit">Submit</Button>
         </Form>
       </Formik>
     )
   }
 
   return <CheckboxForm />
-})
+}
 
-stories.add('Formik checkbox group', () => {
+WithFormik.storyName = 'Formik'
+
+export const WithFormikGroup = () => {
   const CheckboxForm = () => {
     interface Data {
       [key: string]: string
@@ -93,8 +105,7 @@ stories.add('Formik checkbox group', () => {
     }
 
     const validationSchema = yup.object().shape({
-      example: yup.string().required('Field is required'),
-      exampleWithError: yup.string().required('Field is required'),
+      exampleWithError: yup.array().min(0).required('Field is required'),
     })
 
     const FormikCheckbox = withFormik(Checkbox)
@@ -112,37 +123,38 @@ stories.add('Formik checkbox group', () => {
               component={FormikCheckbox}
               name="example"
               label="Option 1"
-              value="1"
+              value="Option 1"
               type="checkbox"
             />
             <Field
               component={FormikCheckbox}
               name="example"
               label="Option 2"
-              value="2"
+              value="Option 2"
               type="checkbox"
             />
             <Field
               component={FormikCheckbox}
               name="example"
               label="Option 3"
-              value="3"
+              value="Option 3"
               type="checkbox"
             />
           </FormikGroup>
+          <br />
           <FormikGroup label="Select another option">
             <Field
               component={FormikCheckbox}
               name="exampleWithError"
               label="Another option 1"
-              value="1"
+              value="Another option 1"
               type="checkbox"
             />
             <Field
               component={FormikCheckbox}
               name="exampleWithError"
               label="Another option 2"
-              value="2"
+              value="Another option 2"
               type="checkbox"
             />
             <Field
@@ -153,11 +165,14 @@ stories.add('Formik checkbox group', () => {
               type="checkbox"
             />
           </FormikGroup>
-          <button type="submit">Submit</button>
+          <br />
+          <Button type="submit">Submit</Button>
         </Form>
       </Formik>
     )
   }
 
   return <CheckboxForm />
-})
+}
+
+WithFormikGroup.storyName = 'Formik Group'

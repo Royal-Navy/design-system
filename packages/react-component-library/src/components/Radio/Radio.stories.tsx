@@ -1,33 +1,98 @@
 import React from 'react'
+import { Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
-import { Field, Form, Formik } from 'formik'
+import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
-import { FormikGroup } from '../FormikGroup/FormikGroup'
-import { Radio } from '.'
 import { withFormik } from '../../enhancers/withFormik'
+import { Radio } from '.'
+import { Button } from '../Button'
+import { FormikGroup } from '../FormikGroup'
 
-const stories = storiesOf('Radio', module)
+export default { component: Radio, title: 'Radio' } as Meta
 
-stories.add('Vanilla', () => {
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault()
-        action('Submitted')(e)
-      }}
-    >
-      <Radio name="example" value="" label="My Label 1" />
-      <Radio name="example" label="My Label 2" isDisabled />
-      <Radio name="example" label="My Label 3" isInvalid />
-      <button type="submit">Submit</button>
-    </form>
-  )
-})
+export const Default = (props: any) => <Radio {...props} />
 
-stories.add('Formik radio group', () => {
-  const RadiosForm = () => {
+Default.args = {
+  id: undefined,
+  label: 'Default radio',
+  name: 'default',
+  isChecked: true,
+}
+
+export const Disabled = (props: any) => <Radio {...props} />
+
+Disabled.args = {
+  id: undefined,
+  isDisabled: true,
+  label: 'Disabled radio',
+  name: 'disabled',
+}
+
+export const Invalid = (props: any) => <Radio {...props} />
+
+Invalid.args = {
+  id: undefined,
+  label: 'Invalid radio',
+  name: 'invalid',
+  isInvalid: true,
+}
+
+export const WithFormik = () => {
+  const RadioForm = () => {
+    interface Data {
+      [key: string]: string
+    }
+
+    const initialValues: Data = {
+      example: 'Option 1',
+    }
+
+    const validationSchema = yup.object().shape({
+      example: yup.string(),
+    })
+
+    const FormikRadio = withFormik(Radio)
+
+    return (
+      <Formik
+        initialValues={initialValues}
+        onSubmit={action('Submitted')}
+        validationSchema={validationSchema}
+      >
+        <Form>
+          <Field
+            name="example"
+            component={FormikRadio}
+            label="Option 1"
+            value="Option 1"
+          />
+          <Field
+            name="example"
+            component={FormikRadio}
+            label="Option 2"
+            value="Option 2"
+          />
+          <Field
+            name="example"
+            component={FormikRadio}
+            label="Option 3"
+            value="Option 3"
+          />
+          <br />
+          <Button type="submit">Submit</Button>
+        </Form>
+      </Formik>
+    )
+  }
+
+  return <RadioForm />
+}
+
+WithFormik.storyName = 'Formik'
+
+export const WithFormikGroup = () => {
+  const RadioForm = () => {
     interface Data {
       [key: string]: string
     }
@@ -38,7 +103,6 @@ stories.add('Formik radio group', () => {
     }
 
     const validationSchema = yup.object().shape({
-      example: yup.string().required('Field is required'),
       exampleWithError: yup.string().required('Field is required'),
     })
 
@@ -51,38 +115,39 @@ stories.add('Formik radio group', () => {
         validationSchema={validationSchema}
       >
         <Form>
-          <FormikGroup>
+          <FormikGroup label="Select an option">
             <Field
               component={FormikRadio}
               name="example"
               label="Option 1"
-              value="1"
+              value="Option 1"
             />
             <Field
               component={FormikRadio}
               name="example"
               label="Option 2"
-              value="2"
+              value="Option 2"
             />
             <Field
               component={FormikRadio}
               name="example"
               label="Option 3"
-              value="3"
+              value="Option 3"
             />
           </FormikGroup>
-          <FormikGroup>
+          <br />
+          <FormikGroup label="Select another option">
             <Field
               component={FormikRadio}
               name="exampleWithError"
               label="Another option 1"
-              value="1"
+              value="Another option 1"
             />
             <Field
               component={FormikRadio}
               name="exampleWithError"
               label="Another option 2"
-              value="2"
+              value="Another option 2"
             />
             <Field
               component={FormikRadio}
@@ -91,11 +156,14 @@ stories.add('Formik radio group', () => {
               value="3"
             />
           </FormikGroup>
-          <button type="submit">Submit</button>
+          <br />
+          <Button type="submit">Submit</Button>
         </Form>
       </Formik>
     )
   }
 
-  return <RadiosForm />
-})
+  return <RadioForm />
+}
+
+WithFormikGroup.storyName = 'Formik Group'

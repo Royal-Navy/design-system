@@ -1,15 +1,26 @@
-import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import React from 'react'
+import styled from 'styled-components'
+import { Meta } from '@storybook/react/types-6-0'
 
 import { Drawer } from '.'
 
-const stories = storiesOf('Drawer', module)
+export default { component: Drawer, title: 'Drawer' } as Meta
 
-stories.add('Default', () => {
-  return (
-    <Drawer onClose={action('onClose')} isOpen>
-      <h1>Arbitrary JSX</h1>
-    </Drawer>
-  )
-})
+const StyledDrawer = styled(Drawer)`
+  position: absolute;
+  height: calc(100% - 10px);
+  transform: translate(-10px, 10px);
+`
+
+export const Default = (props: any) => (
+  <div style={{ height: '20rem' }}>
+    {/* Styles extended for Storybook presentation */}
+    <StyledDrawer {...props}>
+      <pre style={{ padding: '0 1rem' }}>Arbitrary JSX</pre>
+    </StyledDrawer>
+  </div>
+)
+
+Default.args = {
+  isOpen: true,
+}

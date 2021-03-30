@@ -1,6 +1,5 @@
 import React from 'react'
-import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
+import { Meta } from '@storybook/react/types-6-0'
 import {
   IconChatBubble,
   IconExitToApp,
@@ -19,8 +18,18 @@ import {
 } from '.'
 import { Notification, Notifications } from '../NotificationPanel'
 
-const stories = storiesOf('Masthead', module)
-const examples = storiesOf('Masthead/Examples', module)
+export default {
+  component: Masthead,
+  subcomponents: {
+    MastheadNav,
+    MastheadNavItem,
+    MastheadUser,
+    MastheadUserItem,
+    Notifications,
+    Notification,
+  },
+  title: 'Masthead',
+} as Meta
 
 const notifications = (
   <Notifications link={<Link href="#" />}>
@@ -72,8 +81,9 @@ const user = (
   </MastheadUser>
 )
 
-stories.add('Default', () => (
+export const Default = (props: any) => (
   <Masthead
+    {...props}
     homeLink={<Link href="#" />}
     nav={
       <MastheadNav>
@@ -84,39 +94,52 @@ stories.add('Default', () => (
       </MastheadNav>
     }
     notifications={notifications}
-    onSearch={action('onSearch')}
-    searchPlaceholder="Search"
-    title="Royal Navy Design System"
-    hasUnreadNotification
     user={user}
   />
-))
+)
 
-examples.add('Custom logo', () => (
+Default.args = {
+  onSearch: (e: React.SyntheticEvent) => console.log,
+  searchPlaceholder: 'Search',
+  title: 'Royal Navy Design System',
+  hasUnreadNotification: true,
+}
+
+export const CustomLogo = () => (
   <Masthead title="Royal Navy Design System" Logo={IconHome} />
-))
+)
 
-examples.add('Without logo', () => (
+CustomLogo.storyName = 'Custom logo'
+
+export const WithoutLogo = () => (
   <Masthead title="Royal Navy Design System" hasDefaultLogo={false} />
-))
+)
 
-examples.add('With search', () => (
+WithoutLogo.storyName = 'Without logo'
+
+export const WithSearch = () => (
   <Masthead
-    onSearch={action('onSearch')}
+    onSearch={(term: string) => console.log}
     searchPlaceholder="Search..."
     title="Royal Navy Design System"
   />
-))
+)
 
-examples.add('With avatar links', () => (
+WithSearch.storyName = 'With search'
+
+export const WithAvatarLinks = () => (
   <Masthead title="Royal Navy Design System" user={user} />
-))
+)
 
-examples.add('With notifications', () => (
+WithAvatarLinks.storyName = 'With avatar links'
+
+export const WithNotifications = () => (
   <Masthead title="Royal Navy Design System" notifications={notifications} />
-))
+)
 
-examples.add('With navigation', () => (
+WithNotifications.storyName = 'With notifications'
+
+export const WithNavigation = () => (
   <Masthead
     homeLink={<Link href="#" />}
     title="Royal Navy Design System"
@@ -129,18 +152,6 @@ examples.add('With navigation', () => (
       </MastheadNav>
     }
   />
-))
+)
 
-examples.add('With navigation', () => (
-  <Masthead
-    nav={
-      <MastheadNav>
-        <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
-        <MastheadNavItem link={<Link href="#">Styles</Link>} />
-        <MastheadNavItem link={<Link href="#">Components</Link>} />
-        <MastheadNavItem link={<Link href="#">About</Link>} />
-      </MastheadNav>
-    }
-    title="Royal Navy Design System"
-  />
-))
+WithNavigation.storyName = 'With navigation'

@@ -1,116 +1,121 @@
 import React from 'react'
-import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
+import { Meta } from '@storybook/react/types-6-0'
 
 import { Field, Formik, Form } from 'formik'
 import { withFormik } from '../../enhancers/withFormik'
+import { Button } from '../Button'
 
 import { ResponsiveSwitch, Switch, SWITCH_SIZE } from '.'
 
-const stories = storiesOf('Switch', module)
-const examples = storiesOf('Switch/Examples', module)
+export default {
+  component: Switch,
+  subcomponents: { ResponsiveSwitch },
+  title: 'Switch',
+} as Meta
 
 const options = [
-  { label: 'Day', value: '1' },
-  { label: 'Week', value: '2' },
-  { label: 'Month', value: '3' },
-  { label: 'Year', value: '4' },
+  { label: 'One', value: '1' },
+  { label: 'Two', value: '2' },
+  { label: 'Three', value: '3' },
+  { label: 'Four', value: '4' },
 ]
 
-stories.add('Default', () => (
-  <Switch
-    name="example-switch-field"
-    label="Date Range"
-    options={options}
-    onChange={action('onChange')}
-  />
-))
+export const Default = (props: any) => <Switch {...props} />
 
-examples.add('No legend', () => (
-  <Switch
-    name="example-switch-field"
-    options={options}
-    onChange={action('onChange')}
-  />
-))
+Default.args = {
+  name: 'switch-default',
+  options,
+  onChange: (e: React.SyntheticEvent) => console.log,
+}
 
-examples.add('Responsive', () => (
+export const WithLegend = () => (
+  <Switch
+    name="switch-legend"
+    label="Example legend"
+    options={options}
+    onChange={(e: React.SyntheticEvent) => console.log}
+  />
+)
+
+WithLegend.storyName = 'With legend'
+
+export const Responsive = () => (
   <ResponsiveSwitch
-    name="example-switch-field"
-    label="Date Range"
+    name="switch-responsive"
     options={options}
-    onChange={action('onChange')}
+    onChange={(e: React.SyntheticEvent) => console.log}
   />
-))
+)
 
-examples.add('Small', () => (
-  <Switch
-    name="example-switch-field"
-    label="Date Range"
-    options={options}
-    onChange={action('onChange')}
-    size={SWITCH_SIZE.SMALL}
-  />
-))
+Responsive.storyName = 'Responsive'
 
-examples.add('Large', () => (
+export const SelectedValue = () => (
   <Switch
-    name="example-switch-field"
-    value=""
-    label="Date Range"
+    name="switch-selected-value"
     options={options}
-    onChange={action('onChange')}
-    size={SWITCH_SIZE.LARGE}
-  />
-))
-
-examples.add('Selected value', () => (
-  <Switch
-    name="example-switch-field"
-    options={options}
-    onChange={action('onChange')}
+    onChange={(e: React.SyntheticEvent) => console.log}
     value="2"
   />
-))
+)
 
-examples.add('Formik', () => {
-  const SwitchForm = () => {
-    interface Data {
-      'example-switch-field': string
-    }
+SelectedValue.storyName = 'With value selected'
 
-    const initialValues: Data = {
-      'example-switch-field': '3',
-    }
+export const Small = () => (
+  <Switch
+    name="switch-small"
+    options={options}
+    onChange={(e: React.SyntheticEvent) => console.log}
+    size={SWITCH_SIZE.SMALL}
+  />
+)
 
-    const FormikSwitch = withFormik(ResponsiveSwitch)
+Small.storyName = 'Small'
 
-    return (
-      <Formik
-        initialValues={initialValues}
-        onSubmit={action('Submitted')}
-        render={({ setFieldValue }) => {
-          return (
-            <Form>
-              <Field
-                name="example-switch-field"
-                label="Date Range"
-                component={FormikSwitch}
-                options={options}
-                onChange={(event: React.FormEvent<HTMLInputElement>) => {
-                  setFieldValue(
-                    'example-switch-field',
-                    event.currentTarget.value
-                  )
-                  action('onChange')(event)
-                }}
-              />
-            </Form>
-          )
-        }}
-      />
-    )
+export const Large = () => (
+  <Switch
+    name="switch-large"
+    options={options}
+    onChange={(e: React.SyntheticEvent) => console.log}
+    size={SWITCH_SIZE.LARGE}
+  />
+)
+
+Large.storyName = 'Large'
+
+export const WithFormik = () => {
+  interface Data {
+    'switch-formik': string
   }
 
-  return <SwitchForm />
-})
+  const initialValues: Data = {
+    'switch-formik': '3',
+  }
+
+  const FormikSwitch = withFormik(ResponsiveSwitch)
+
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={console.log}
+      render={({ setFieldValue }) => {
+        return (
+          <Form>
+            <Field
+              name="switch-formik"
+              component={FormikSwitch}
+              options={options}
+              onChange={(event: React.FormEvent<HTMLInputElement>) => {
+                setFieldValue('example-switch-field', event.currentTarget.value)
+                console.log(event)
+              }}
+            />
+            <br />
+            <Button type="submit">Submit</Button>
+          </Form>
+        )
+      }}
+    />
+  )
+}
+
+WithFormik.storyName = 'Formik'

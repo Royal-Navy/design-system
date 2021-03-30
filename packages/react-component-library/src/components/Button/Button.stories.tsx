@@ -1,146 +1,114 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { withKnobs, text } from '@storybook/addon-knobs'
+import { Meta } from '@storybook/react/types-6-0'
 
 import { IconBrightnessLow } from '@royalnavy/icon-library'
-import { Button, ButtonSizeType } from './index'
-import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT } from './constants'
+import { Button } from './index'
+import {
+  BUTTON_COLOR,
+  BUTTON_SIZE,
+  BUTTON_VARIANT,
+  BUTTON_ICON_POSITION,
+} from './constants'
 
-const stories = storiesOf('Button', module)
-const examples = storiesOf('Button/Examples', module)
-const iconExamples = storiesOf('Button/Examples/Icon', module)
-const variantExamples = storiesOf('Button/Examples/Variants', module)
-const dangerExamples = storiesOf('Button/Examples/Danger', module)
-const defaultSizeExamples = storiesOf('Button/Examples/Sizes/Default', module)
-const primarySizeExamples = storiesOf('Button/Examples/Sizes/Primary', module)
-const secondarySizeExamples = storiesOf(
-  'Button/Examples/Sizes/Secondary',
-  module
+export default { component: Button, title: 'Button' } as Meta
+
+export const Default = ({ children, ...rest }: any) => (
+  <Button {...rest}>{children}</Button>
 )
 
-stories.addDecorator(withKnobs)
-
-const buttonSizeTextMap = {
-  [BUTTON_SIZE.SMALL]: 'small',
-  [BUTTON_SIZE.REGULAR]: 'regular',
-  [BUTTON_SIZE.LARGE]: 'large',
+Default.args = {
+  children: 'Default',
 }
 
-stories.add('Default', () => <Button>{text('Children', 'Default')}</Button>)
+export const Primary = ({ children, ...rest }: any) => (
+  <Button {...rest}>{children}</Button>
+)
 
-stories.add('Disabled', () => (
-  <Button isDisabled>{text('Children', 'Disabled')}</Button>
-))
+Primary.args = {
+  variant: BUTTON_VARIANT.PRIMARY,
+  children: 'Primary',
+}
 
-variantExamples.add('Primary', () => (
-  <Button onClick={action('Clicked primary')} variant={BUTTON_VARIANT.PRIMARY}>
-    {text('Children', 'Default')}
+export const Secondary = ({ children, ...rest }: any) => (
+  <Button {...rest}>{children}</Button>
+)
+
+Secondary.args = {
+  variant: BUTTON_VARIANT.SECONDARY,
+  children: 'Secondary',
+}
+
+export const Tertiary = ({ children, ...rest }: any) => (
+  <Button {...rest}>{children}</Button>
+)
+
+Tertiary.args = {
+  variant: BUTTON_VARIANT.TERTIARY,
+  children: 'Tertiary',
+}
+
+export const Danger = ({ children, ...rest }: any) => (
+  <Button {...rest}>{children}</Button>
+)
+
+Danger.args = {
+  variant: BUTTON_VARIANT.PRIMARY,
+  color: BUTTON_COLOR.DANGER,
+  children: 'Danger',
+}
+
+export const Small = ({ children, ...rest }: any) => (
+  <Button {...rest}>{children}</Button>
+)
+
+Small.args = {
+  variant: BUTTON_VARIANT.PRIMARY,
+  size: BUTTON_SIZE.SMALL,
+  children: 'Small',
+}
+
+export const Large = ({ children, ...rest }: any) => (
+  <Button {...rest}>{children}</Button>
+)
+
+Large.args = {
+  variant: BUTTON_VARIANT.PRIMARY,
+  size: BUTTON_SIZE.LARGE,
+  children: 'Large',
+}
+
+export const Disabled = ({ children }: any) => (
+  <Button isDisabled>{children}</Button>
+)
+
+Disabled.args = {
+  children: 'Disabled',
+}
+
+export const WithLeftIcon = ({ icon, iconPosition, children }: any) => (
+  <Button icon={icon} iconPosition={iconPosition}>
+    {children}
   </Button>
-))
+)
 
-variantExamples.add('Secondary', () => (
-  <Button
-    onClick={action('Clicked secondary')}
-    variant={BUTTON_VARIANT.SECONDARY}
-  >
-    {text('Children', 'Default')}
+WithLeftIcon.args = {
+  children: 'Default',
+  icon: <IconBrightnessLow />,
+  iconPosition: BUTTON_ICON_POSITION.LEFT,
+}
+
+WithLeftIcon.storyName = 'With left icon'
+
+export const WithRightIcon = ({ icon, iconPosition, children }: any) => (
+  <Button icon={icon} iconPosition={iconPosition}>
+    {children}
   </Button>
-))
+)
 
-variantExamples.add('Tertiary', () => (
-  <Button
-    onClick={action('Clicked tertiary')}
-    variant={BUTTON_VARIANT.TERTIARY}
-  >
-    {text('Children', 'Default')}
-  </Button>
-))
+WithRightIcon.args = {
+  children: 'Default',
+  icon: <IconBrightnessLow />,
+  iconPosition: BUTTON_ICON_POSITION.RIGHT,
+}
 
-dangerExamples.add('Primary', () => (
-  <Button
-    onClick={action('Clicked primary')}
-    variant={BUTTON_VARIANT.PRIMARY}
-    color={BUTTON_COLOR.DANGER}
-  >
-    {text('Children', 'Default')}
-  </Button>
-))
-
-dangerExamples.add('Secondary', () => (
-  <Button
-    onClick={action('Clicked secondary')}
-    variant={BUTTON_VARIANT.SECONDARY}
-    color={BUTTON_COLOR.DANGER}
-  >
-    {text('Children', 'Default')}
-  </Button>
-))
-
-dangerExamples.add('Tertiary', () => (
-  <Button
-    onClick={action('Clicked tertiary')}
-    variant={BUTTON_VARIANT.TERTIARY}
-    color={BUTTON_COLOR.DANGER}
-  >
-    {text('Children', 'Default')}
-  </Button>
-))
-
-iconExamples.add('Left', () => (
-  <>
-    <Button
-      variant="primary"
-      onClick={action('Decreasing brightness')}
-      icon={<IconBrightnessLow />}
-      iconPosition="left"
-    >
-      Button
-    </Button>
-  </>
-))
-
-iconExamples.add('Right', () => (
-  <>
-    <Button
-      variant="primary"
-      onClick={action('Decreasing brightness')}
-      icon={<IconBrightnessLow />}
-      iconPosition="right"
-    >
-      Button
-    </Button>
-  </>
-))
-
-Object.keys(buttonSizeTextMap).forEach((key) => {
-  defaultSizeExamples.add(buttonSizeTextMap[key], () => (
-    <Button onClick={action('Clicked')} size={key as ButtonSizeType}>
-      {text('Children', 'Default')}
-    </Button>
-  ))
-})
-
-Object.keys(buttonSizeTextMap).forEach((key) => {
-  primarySizeExamples.add(buttonSizeTextMap[key], () => (
-    <Button
-      onClick={action('Clicked primary')}
-      variant={BUTTON_VARIANT.PRIMARY}
-      size={key as ButtonSizeType}
-    >
-      {text('Children', 'Default')}
-    </Button>
-  ))
-})
-
-Object.keys(buttonSizeTextMap).forEach((key) => {
-  secondarySizeExamples.add(buttonSizeTextMap[key], () => (
-    <Button
-      onClick={action('Clicked secondary')}
-      variant={BUTTON_VARIANT.SECONDARY}
-      size={key as ButtonSizeType}
-    >
-      {text('Children', 'Default')}
-    </Button>
-  ))
-})
+WithRightIcon.storyName = 'With right icon'

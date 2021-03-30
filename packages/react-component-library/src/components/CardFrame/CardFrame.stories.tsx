@@ -1,10 +1,14 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
+import { Meta } from '@storybook/react/types-6-0'
 
 import { CardFrame } from './index'
 
-const stories = storiesOf('CardFrame', module)
+export default { component: CardFrame, title: 'Card Frame' } as Meta
 
-stories.add('Default', () => {
-  return <CardFrame>Content</CardFrame>
-})
+export const Default = ({ children, ...props }: any) => (
+  <CardFrame {...props}>{children}</CardFrame>
+)
+
+Default.args = {
+  children: 'Arbitrary JSX',
+}

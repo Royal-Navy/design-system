@@ -3,7 +3,11 @@ import { Meta } from '@storybook/react/types-6-0'
 
 import { DataList, DataListItem } from './index'
 
-export default { component: DataList, title: 'DataList' } as Meta
+export default {
+  component: DataList,
+  subcomponents: { DataListItem },
+  title: 'Data List',
+} as Meta
 
 const disableDefinitionList = {
   a11y: {
@@ -22,8 +26,8 @@ const disableDefinitionList = {
   },
 }
 
-export const Default = () => (
-  <DataList title="Title">
+export const Default = (props: any) => (
+  <DataList {...props}>
     <DataListItem description="Name">Horatio Nelson</DataListItem>
     <DataListItem description="Age">44</DataListItem>
     <DataListItem description="Location">Portsmouth</DataListItem>
@@ -32,11 +36,17 @@ export const Default = () => (
     <DataListItem description="Wind Speed">8Kts</DataListItem>
   </DataList>
 )
+
 Default.parameters = disableDefinitionList
+
+Default.args = {
+  title: 'Example Title',
+}
+
 Default.storyName = 'Default'
 
 export const Collapsible = () => (
-  <DataList title="Title" isCollapsible>
+  <DataList title="Example Title" isCollapsible>
     <DataListItem description="Name">Horatio Nelson</DataListItem>
     <DataListItem description="Age">44</DataListItem>
     <DataListItem description="Location">Portsmouth</DataListItem>
@@ -45,5 +55,7 @@ export const Collapsible = () => (
     <DataListItem description="Wind Speed">8Kts</DataListItem>
   </DataList>
 )
+
 Collapsible.parameters = disableDefinitionList
+
 Collapsible.storyName = 'Collapsible'

@@ -1,54 +1,56 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
+import { Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
-import { withKnobs } from '@storybook/addon-knobs'
 
 import { IconBrightnessLow } from '@royalnavy/icon-library'
 
 import { ButtonGroup, ButtonGroupItem } from '.'
 import { BUTTON_SIZE } from '../Button'
 
-const stories = storiesOf('Button group', module)
-const examples = storiesOf('Button group/Examples', module)
+export default {
+  component: ButtonGroup,
+  subcomponents: { ButtonGroupItem },
+  title: 'Button Group',
+} as Meta
 
-stories.addDecorator(withKnobs)
-
-stories.add('Default', () => (
-  <ButtonGroup>
-    <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
-    <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
+export const Default = ({ size }: any) => (
+  <ButtonGroup size={size}>
+    <ButtonGroupItem onClick={action('Clicked')}>One</ButtonGroupItem>
+    <ButtonGroupItem>Two</ButtonGroupItem>
     <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>
       Three
     </ButtonGroupItem>
   </ButtonGroup>
-))
+)
 
-examples.add('Small', () => (
-  <ButtonGroup size={BUTTON_SIZE.SMALL}>
-    <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
-    <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
+Default.args = {
+  size: BUTTON_SIZE.REGULAR,
+}
+
+export const Small = ({ size }: any) => (
+  <ButtonGroup size={size}>
+    <ButtonGroupItem onClick={action('Clicked')}>One</ButtonGroupItem>
+    <ButtonGroupItem>Two</ButtonGroupItem>
     <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>
       Three
     </ButtonGroupItem>
   </ButtonGroup>
-))
+)
 
-examples.add('Regular', () => (
-  <ButtonGroup size={BUTTON_SIZE.REGULAR}>
-    <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
-    <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
+Small.args = {
+  size: BUTTON_SIZE.SMALL,
+}
+
+export const Large = ({ size }: any) => (
+  <ButtonGroup size={size}>
+    <ButtonGroupItem onClick={action('Clicked')}>One</ButtonGroupItem>
+    <ButtonGroupItem>Two</ButtonGroupItem>
     <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>
       Three
     </ButtonGroupItem>
   </ButtonGroup>
-))
+)
 
-examples.add('Large', () => (
-  <ButtonGroup size={BUTTON_SIZE.LARGE}>
-    <ButtonGroupItem onClick={action('Click One')}>One</ButtonGroupItem>
-    <ButtonGroupItem onClick={action('Click Two')}>Two</ButtonGroupItem>
-    <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>
-      Three
-    </ButtonGroupItem>
-  </ButtonGroup>
-))
+Large.args = {
+  size: BUTTON_SIZE.LARGE,
+}

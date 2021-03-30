@@ -1,32 +1,34 @@
 import React from 'react'
-import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
+import { Meta } from '@storybook/react/types-6-0'
 
 import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
 import { RangeSlider } from './index'
 
-const stories = storiesOf('RangeSlider', module)
-const examples = storiesOf('RangeSlider/Examples', module)
+export default { component: RangeSlider, title: 'Range Slider' } as Meta
 
-stories.add('Default', () => (
-  <RangeSlider
-    domain={[0, 40]}
-    mode={1}
-    values={[20]}
-    onChange={action('onChange')}
-    onUpdate={action('onUpdate')}
-    tracksLeft
-  />
-))
+export const Default = (props: any) => (
+  <div style={{ display: 'flex', height: '5rem' }}>
+    <RangeSlider {...props} />
+  </div>
+)
 
-examples.add('Multiple handles', () => (
-  <div style={{ margin: '4rem' }}>
+Default.args = {
+  domain: [0, 40],
+  mode: 1,
+  values: [20],
+  tracksLeft: true,
+  onChange: (values: ReadonlyArray<number>) => console.log,
+  onUpdate: (values: ReadonlyArray<number>) => console.log,
+}
+
+export const MultipleHandles = () => (
+  <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
       domain={[0, 40]}
       mode={2}
       values={[10, 20, 30]}
-      onChange={action('onChange')}
-      onUpdate={action('onUpdate')}
+      onChange={(values: ReadonlyArray<number>) => console.log}
+      onUpdate={(values: ReadonlyArray<number>) => console.log}
       tracksLeft
       tickCount={10}
       thresholds={[40, 60]}
@@ -34,114 +36,145 @@ examples.add('Multiple handles', () => (
       displayUnit="pt"
     />
   </div>
-))
+)
 
-examples.add('Custom value formatter', () => (
-  <div style={{ padding: '2rem' }}>
+MultipleHandles.storyName = 'Multiple handles'
+
+export const SingleThreshold = () => (
+  <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
       domain={[0, 40]}
-      mode={2}
-      values={[10, 20, 30]}
-      onChange={action('onChange')}
-      onUpdate={action('onUpdate')}
+      mode={1}
+      values={[20]}
+      onChange={(values: ReadonlyArray<number>) => console.log}
+      onUpdate={(values: ReadonlyArray<number>) => console.log}
       tracksLeft
-      tickCount={10}
+      thresholds={[40]}
+    />
+  </div>
+)
+
+SingleThreshold.storyName = 'Single threshold'
+
+export const DoubleThreshold = () => (
+  <div style={{ display: 'flex', height: '5rem' }}>
+    <RangeSlider
+      domain={[0, 40]}
+      mode={1}
+      values={[20]}
+      onChange={(values: ReadonlyArray<number>) => console.log}
+      onUpdate={(values: ReadonlyArray<number>) => console.log}
+      tracksLeft
       thresholds={[40, 60]}
+    />
+  </div>
+)
+
+DoubleThreshold.storyName = 'Double threshold'
+
+export const CustomValueFormatter = () => (
+  <div style={{ display: 'flex', height: '5rem' }}>
+    <RangeSlider
+      domain={[0, 40]}
+      mode={1}
+      values={[20]}
+      onChange={(values: ReadonlyArray<number>) => console.log}
+      onUpdate={(values: ReadonlyArray<number>) => console.log}
+      tickCount={4}
+      tracksLeft
       formatValue={({ value }) => `£${value.toFixed(2)}`}
     />
   </div>
-))
+)
 
-examples.add('Stepped', () => (
-  <RangeSlider
-    domain={[0, 40]}
-    step={10}
-    mode={1}
-    values={[20]}
-    onChange={action('onChange')}
-    onUpdate={action('onUpdate')}
-    tickCount={4}
-    tracksLeft
-  />
-))
+CustomValueFormatter.storyName = 'Custom value formatter'
 
-examples.add('Single threshold', () => (
-  <RangeSlider
-    domain={[0, 40]}
-    mode={1}
-    values={[20]}
-    onChange={action('onChange')}
-    onUpdate={action('onUpdate')}
-    tracksLeft
-    thresholds={[40]}
-  />
-))
+export const Stepped = () => (
+  <div style={{ display: 'flex', height: '5rem' }}>
+    <RangeSlider
+      domain={[0, 40]}
+      step={10}
+      mode={1}
+      values={[20]}
+      onChange={(values: ReadonlyArray<number>) => console.log}
+      onUpdate={(values: ReadonlyArray<number>) => console.log}
+      tickCount={4}
+      tracksLeft
+    />
+  </div>
+)
 
-examples.add('Double threshold', () => (
-  <RangeSlider
-    domain={[0, 40]}
-    mode={1}
-    values={[20]}
-    onChange={action('onChange')}
-    onUpdate={action('onUpdate')}
-    tracksLeft
-    thresholds={[40, 60]}
-  />
-))
+Stepped.storyName = 'Stepped'
 
-examples.add('With icons', () => (
-  <RangeSlider
-    domain={[0, 40]}
-    step={10}
-    mode={1}
-    values={[20]}
-    onChange={action('onChange')}
-    onUpdate={action('onUpdate')}
-    tickCount={4}
-    tracksLeft
-    IconLeft={IconBrightnessLow}
-    IconRight={IconBrightnessHigh}
-  />
-))
+export const WithIcons = () => (
+  <div style={{ display: 'flex', height: '5rem' }}>
+    <RangeSlider
+      domain={[0, 40]}
+      step={10}
+      mode={1}
+      values={[20]}
+      onChange={(values: ReadonlyArray<number>) => console.log}
+      onUpdate={(values: ReadonlyArray<number>) => console.log}
+      tickCount={4}
+      tracksLeft
+      IconLeft={IconBrightnessLow}
+      IconRight={IconBrightnessHigh}
+    />
+  </div>
+)
 
-examples.add('With labels', () => (
-  <RangeSlider
-    domain={[0, 40]}
-    step={2}
-    mode={1}
-    values={[20]}
-    onChange={action('onChange')}
-    onUpdate={action('onUpdate')}
-    tracksLeft
-    hasLabels
-    tickCount={20}
-  />
-))
+WithIcons.storyName = 'With icons'
 
-examples.add('Reversed scale', () => (
-  <RangeSlider
-    domain={[0, 40]}
-    step={2}
-    mode={1}
-    values={[20]}
-    onChange={action('onChange')}
-    onUpdate={action('onUpdate')}
-    tracksRight
-    hasLabels
-    tickCount={20}
-    isReversed
-  />
-))
+export const WithLabels = () => (
+  <div style={{ display: 'flex', height: '5rem' }}>
+    <RangeSlider
+      domain={[0, 40]}
+      step={2}
+      mode={1}
+      values={[20]}
+      onChange={(values: ReadonlyArray<number>) => console.log}
+      onUpdate={(values: ReadonlyArray<number>) => console.log}
+      tracksLeft
+      hasLabels
+      tickCount={20}
+    />
+  </div>
+)
 
-examples.add('Disabled', () => (
-  <RangeSlider
-    domain={[0, 40]}
-    step={10}
-    mode={1}
-    values={[20]}
-    onChange={action('onChange')}
-    onUpdate={action('onUpdate')}
-    tracksLeft
-    isDisabled
-  />
-))
+WithLabels.storyName = 'With labels'
+
+export const ReversedScale = () => (
+  <div style={{ display: 'flex', height: '5rem' }}>
+    <RangeSlider
+      domain={[0, 40]}
+      step={2}
+      mode={1}
+      values={[20]}
+      onChange={(values: ReadonlyArray<number>) => console.log}
+      onUpdate={(values: ReadonlyArray<number>) => console.log}
+      tracksRight
+      hasLabels
+      tickCount={20}
+      isReversed
+    />
+  </div>
+)
+
+ReversedScale.storyName = 'Reversed scale'
+
+export const Disabled = () => (
+  <div style={{ display: 'flex', height: '5rem' }}>
+    <RangeSlider
+      domain={[0, 40]}
+      step={10}
+      mode={1}
+      values={[20]}
+      onChange={(values: ReadonlyArray<number>) => console.log}
+      onUpdate={(values: ReadonlyArray<number>) => console.log}
+      tracksLeft
+      isDisabled
+    />
+  </div>
+)
+
+Disabled.storyName = 'Disabled'

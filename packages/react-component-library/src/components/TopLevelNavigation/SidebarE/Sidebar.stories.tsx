@@ -21,7 +21,19 @@ import {
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 
-export default { component: SidebarE, title: 'SidebarE' } as Meta
+export default {
+  component: SidebarE,
+  subcomponents: {
+    SidebarE,
+    SidebarNavE,
+    SidebarNavItemE,
+    SidebarUserE,
+    SidebarWrapperE,
+    Notifications,
+    Notification,
+  },
+  title: 'Sidebar (Experimental)',
+} as Meta
 
 const userWithLinks = (
   <SidebarUserE
@@ -139,23 +151,27 @@ const notifications = (
   </Notifications>
 )
 
-export const Default = () => {
+export const Default = (props: any) => {
   return (
     <SidebarWrapperE>
-      <SidebarE>{sidebarNav}</SidebarE>
+      <div style={{ maxHeight: '20rem' }}>
+        <SidebarE {...props}>{sidebarNav}</SidebarE>
+      </div>
       <main>Hello, World!</main>
     </SidebarWrapperE>
   )
 }
 
-Default.storyName = 'Default'
+Default.args = {}
 
 export const WithHeader = () => {
   return (
     <SidebarWrapperE>
-      <SidebarE icon={<IconGrain />} title="Application Name">
-        {sidebarNav}
-      </SidebarE>
+      <div style={{ maxHeight: '20rem' }}>
+        <SidebarE icon={<IconGrain />} title="Application Name">
+          {sidebarNav}
+        </SidebarE>
+      </div>
       <main>Hello, World!</main>
     </SidebarWrapperE>
   )
@@ -166,13 +182,15 @@ WithHeader.storyName = 'With header'
 export const WithUserMenu = () => {
   return (
     <SidebarWrapperE>
-      <SidebarE
-        icon={<IconGrain />}
-        title="Application Name"
-        user={userWithLinks}
-      >
-        {sidebarNav}
-      </SidebarE>
+      <div style={{ maxHeight: '20rem' }}>
+        <SidebarE
+          icon={<IconGrain />}
+          title="Application Name"
+          user={userWithLinks}
+        >
+          {sidebarNav}
+        </SidebarE>
+      </div>
       <main>Hello, World!</main>
     </SidebarWrapperE>
   )
@@ -183,15 +201,17 @@ WithUserMenu.storyName = 'With user menu'
 export const WithNotifications = () => {
   return (
     <SidebarWrapperE>
-      <SidebarE
-        icon={<IconGrain />}
-        title="Application Name"
-        user={userWithLinks}
-        notifications={notifications}
-        hasUnreadNotification
-      >
-        {sidebarNav}
-      </SidebarE>
+      <div style={{ maxHeight: '20rem' }}>
+        <SidebarE
+          icon={<IconGrain />}
+          title="Application Name"
+          user={userWithLinks}
+          notifications={notifications}
+          hasUnreadNotification
+        >
+          {sidebarNav}
+        </SidebarE>
+      </div>
       <main>Hello, World!</main>
     </SidebarWrapperE>
   )
@@ -202,15 +222,17 @@ WithNotifications.storyName = 'With notifications'
 export const WithSubNavigation = () => {
   return (
     <SidebarWrapperE>
-      <SidebarE
-        icon={<IconGrain />}
-        title="Application Name"
-        user={userWithLinks}
-        notifications={notifications}
-        hasUnreadNotification
-      >
-        {sidebarNavWithSub}
-      </SidebarE>
+      <div style={{ maxHeight: '20rem' }}>
+        <SidebarE
+          icon={<IconGrain />}
+          title="Application Name"
+          user={userWithLinks}
+          notifications={notifications}
+          hasUnreadNotification
+        >
+          {sidebarNavWithSub}
+        </SidebarE>
+      </div>
       <main>Hello, World!</main>
     </SidebarWrapperE>
   )
