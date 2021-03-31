@@ -1,6 +1,1 @@
-module.exports = {
-  bracketSpacing: true,
-  semi: true,
-  singleQuote: false,
-  trailingComma: "es5",
-};
+module.exports = require("@royalnavy/eslint-config-react/prettier.config.js");

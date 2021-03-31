@@ -54,6 +54,7 @@
     "webpack-merge": "^5.2.0"
   },
   "dependencies": {
+    "@royalnavy/eslint-config-react": "^2.43.2",
     "lodash": "^4.17.20"
   },
   "peerDependencies": {

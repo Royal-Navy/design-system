@@ -29,6 +29,7 @@
     "prepare": "yarn build"
   },
   "dependencies": {
+    "@royalnavy/eslint-config-react": "^2.43.2",
     "react": "^17.0.1",
     "react-svg-unique-id": "^1.3.3"
   },
