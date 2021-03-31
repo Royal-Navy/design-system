@@ -11,7 +11,7 @@ jobs:
     - name: Move small/med labeled issues to Candidates column
       uses: Royal-Navy/move-labeled-or-milestoned-issue@v2.0
       with:
-        action-token: "${{ secrets.GHA_UPNEXT_TOKEN }}"
+        action-token: "${{ secrets.GHA_ISSUES_TOKEN }}"
         project-url: "https://github.com/Royal-Navy/design-system/projects/6"
         column-name: "Candidates for Ready"
         label-name: "Small,Medium"
