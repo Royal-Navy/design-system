@@ -22,7 +22,7 @@ const user = <SidebarUser initials="XT" link={<Link href="#" />} />
 stories.add('With notifications', () => (
   <Sidebar
     nav={nav}
-    notifications={(
+    notifications={
       <Notifications link={<Link href="#" />}>
         <Notification
           link={<Link href="#" />}
@@ -49,7 +49,7 @@ stories.add('With notifications', () => (
           description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
         />
       </Notifications>
-    )}
+    }
     hasUnreadNotification
     user={user}
   />
@@ -60,7 +60,7 @@ stories.add('Without notifications', () => <Sidebar nav={nav} user={user} />)
 stories.add('With custom Link component', () => (
   <Sidebar
     nav={nav}
-    notifications={(
+    notifications={
       <Notifications link={<CustomLink to="notifications" />}>
         <Notification
           link={<CustomLink to="notifications/1" />}
@@ -87,7 +87,7 @@ stories.add('With custom Link component', () => (
           description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
         />
       </Notifications>
-    )}
+    }
     hasUnreadNotification
     user={user}
   />

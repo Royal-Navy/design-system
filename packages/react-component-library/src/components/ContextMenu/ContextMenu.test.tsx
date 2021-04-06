@@ -259,9 +259,7 @@ describe('ContextMenu', () => {
     })
 
     it('renders the icons', () => {
-      expect(
-        wrapper.queryByTestId('context-menu-item-icon')
-      ).toBeVisible()
+      expect(wrapper.queryByTestId('context-menu-item-icon')).toBeVisible()
     })
   })
 
@@ -309,7 +307,9 @@ describe('ContextMenu', () => {
         return (
           <>
             <div>Click elsewhere</div>
-            <div ref={ref}><p>Click me!</p></div>
+            <div ref={ref}>
+              <p>Click me!</p>
+            </div>
             <ContextMenu
               attachedToRef={ref}
               clickType="left"
@@ -359,7 +359,9 @@ describe('ContextMenu', () => {
         return (
           <>
             <div>Click elsewhere</div>
-            <div ref={ref}><p>Click me!</p></div>
+            <div ref={ref}>
+              <p>Click me!</p>
+            </div>
             <ContextMenu
               attachedToRef={ref}
               clickType="left"

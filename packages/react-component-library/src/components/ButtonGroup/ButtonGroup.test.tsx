@@ -103,7 +103,12 @@ describe('ButtonGroup', () => {
     beforeEach(() => {
       wrapper = render(
         <ButtonGroup data-arbitrary="arbitrary-buttongroup">
-          <ButtonGroupItem data-arbitrary="arbitrary-button" onClick={oneClickSpy}>One</ButtonGroupItem>
+          <ButtonGroupItem
+            data-arbitrary="arbitrary-button"
+            onClick={oneClickSpy}
+          >
+            One
+          </ButtonGroupItem>
           <ButtonGroupItem onClick={twoClickSpy}>Two</ButtonGroupItem>
           <ButtonGroupItem onClick={threeClickSpy} isDisabled>
             Three

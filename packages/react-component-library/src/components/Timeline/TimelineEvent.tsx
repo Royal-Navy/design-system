@@ -59,10 +59,7 @@ function renderDefault({
   endsAfterEnd: boolean
 }) {
   return (
-    <StyledEvent
-      style={{ left: offsetPx }}
-      data-testid="timeline-event"
-    >
+    <StyledEvent style={{ left: offsetPx }} data-testid="timeline-event">
       <StyledEventBar
         barColor={barColor}
         width={widthPx}

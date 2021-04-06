@@ -37,7 +37,9 @@ describe('TabSet', () => {
 
         wrapper = render(
           <TabSet {...props}>
-            <Tab data-arbitrary="arbitrary-tab" title="Title 1">Content 1</Tab>
+            <Tab data-arbitrary="arbitrary-tab" title="Title 1">
+              Content 1
+            </Tab>
             <Tab title="Title 2">Content 2</Tab>
           </TabSet>
         )

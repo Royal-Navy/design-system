@@ -9,8 +9,8 @@ export const StyledTetherComponent = styled<any>(TetherComponent)`
   pointer-events: none;
 
   ${({ $isVisible }) =>
-  $isVisible &&
-  css`
+    $isVisible &&
+    css`
       pointer-events: all;
     `}
 

@@ -30,7 +30,7 @@ export const SidebarNotifications: React.FC<SidebarNotificationsProps> = ({
     <>
       {notifications && (
         <StyledNotificationsSheet
-          button={(
+          button={
             <StyledNotificationsSheetButton
               aria-label="Show notifications"
               data-testid="notification-button"
@@ -56,7 +56,7 @@ export const SidebarNotifications: React.FC<SidebarNotificationsProps> = ({
                 )}
               </Transition>
             </StyledNotificationsSheetButton>
-          )}
+          }
           placement={SHEET_PLACEMENT.RIGHT_BOTTOM}
           width={NOTIFICATION_CONTAINER_WIDTH}
         >

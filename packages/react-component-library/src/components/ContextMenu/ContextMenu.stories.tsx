@@ -115,11 +115,11 @@ const ContextMenuExample: React.FC<ContentMenuExampleProps> = ({
         />
         <ContextMenuDivider />
         <ContextMenuItem
-          link={(
+          link={
             <Link href="/something-else">
               This is too much text to put into a context menu item
             </Link>
-          )}
+          }
         />
       </ContextMenu>
     </>

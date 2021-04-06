@@ -38,7 +38,7 @@ describe('Sidebar', () => {
         <Sidebar
           data-arbitrary="arbitrary-sidebar"
           hasUnreadNotification
-          nav={(
+          nav={
             <SidebarNav data-arbitrary="arbitrary-nav">
               <SidebarNavItem
                 data-arbitrary="arbitrary-nav-item"
@@ -55,8 +55,8 @@ describe('Sidebar', () => {
                 link={<Link href="/tools">Tools</Link>}
               />
             </SidebarNav>
-          )}
-          notifications={(
+          }
+          notifications={
             <Notifications
               data-arbitrary="arbitrary-notifications"
               link={<Link href="notifications" />}
@@ -79,14 +79,14 @@ describe('Sidebar', () => {
                 description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
               />
             </Notifications>
-          )}
-          user={(
+          }
+          user={
             <SidebarUser
               data-arbitrary="arbitrary-user"
               initials="XT"
               link={<Link href="/user-profile" />}
             />
-          )}
+          }
         />
       )
     })
@@ -165,9 +165,10 @@ describe('Sidebar', () => {
       })
 
       it('should spread arbitrary props on the notifications item', () => {
-        expect(
-          wrapper.getAllByTestId('notification')[0]
-        ).toHaveAttribute('data-arbitrary', 'arbitrary-notification')
+        expect(wrapper.getAllByTestId('notification')[0]).toHaveAttribute(
+          'data-arbitrary',
+          'arbitrary-notification'
+        )
       })
     })
   })
@@ -176,7 +177,7 @@ describe('Sidebar', () => {
     beforeEach(() => {
       wrapper = render(
         <Sidebar
-          nav={(
+          nav={
             <SidebarNav>
               <SidebarNavItem link={<Link href="/">Home</Link>} />
               <SidebarNavItem
@@ -185,7 +186,7 @@ describe('Sidebar', () => {
               />
               <SidebarNavItem link={<Link href="/tools">Tools</Link>} />
             </SidebarNav>
-          )}
+          }
         />
       )
     })
@@ -221,11 +222,11 @@ describe('Sidebar', () => {
     beforeEach(() => {
       wrapper = render(
         <Sidebar
-          nav={(
+          nav={
             <SidebarNav>
               <SidebarNavItem link={<Link href="/">Home</Link>} />
             </SidebarNav>
-          )}
+          }
         />
       )
     })
@@ -261,11 +262,11 @@ describe('Sidebar', () => {
     beforeEach(() => {
       wrapper = render(
         <Sidebar
-          nav={(
+          nav={
             <SidebarNav>
               <SidebarNavItem link={<Link href="/">Home</Link>} />
             </SidebarNav>
-          )}
+          }
         />
       )
     })
@@ -305,14 +306,14 @@ describe('Sidebar', () => {
 
       wrapper = render(
         <Sidebar
-          nav={(
+          nav={
             <SidebarNav>
               <SidebarNavItem
                 link={<Link href="/">Home</Link>}
                 onClick={() => undefined}
               />
             </SidebarNav>
-          )}
+          }
         />
       )
     })

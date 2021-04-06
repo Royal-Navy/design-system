@@ -37,9 +37,7 @@ describe('ProgressIndicator', () => {
 
   describe('with arbitrary props', () => {
     beforeEach(() => {
-      wrapper = render(
-        <ProgressIndicator data-arbitrary="arbitrary" />
-      )
+      wrapper = render(<ProgressIndicator data-arbitrary="arbitrary" />)
     })
 
     it('should spread arbitrary props', () => {

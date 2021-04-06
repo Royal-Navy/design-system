@@ -1,4 +1,4 @@
-import React  from 'react'
+import React from 'react'
 import { IconArrowDropDown, IconArrowDropUp } from '@royalnavy/icon-library'
 import { storiesOf } from '@storybook/react'
 import { withKnobs } from '@storybook/addon-knobs'

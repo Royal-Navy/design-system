@@ -349,7 +349,6 @@ describe('RangeSlider', () => {
     })
   })
 
-
   describe('without the `onUpdate` callback', () => {
     beforeEach(() => {
       wrapper = render(

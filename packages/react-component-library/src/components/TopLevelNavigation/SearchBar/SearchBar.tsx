@@ -38,11 +38,7 @@ export const SearchBar: React.FC<SearchbarProps> = ({
   }
 
   return (
-    <StyledSearchBar
-      ref={searchBoxRef}
-      data-testid="searchbar"
-      {...rest}
-    >
+    <StyledSearchBar ref={searchBoxRef} data-testid="searchbar" {...rest}>
       <StyledForm data-testid="searchbar-form" onSubmit={onSubmit}>
         <TextInput
           autoFocus

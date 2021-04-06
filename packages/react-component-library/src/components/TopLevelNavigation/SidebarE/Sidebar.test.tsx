@@ -555,7 +555,10 @@ describe('Sidebar', () => {
     beforeEach(() => {
       wrapper = render(
         <SidebarWrapperE data-arbitrary="arbitrary-wrapper">
-          <SidebarE data-arbitrary="arbitrary-sidebar" notifications={notifications}>
+          <SidebarE
+            data-arbitrary="arbitrary-sidebar"
+            notifications={notifications}
+          >
             <SidebarNavE data-arbitrary="arbitrary-nav">
               <SidebarNavItemE
                 data-arbitrary="arbitrary-nav-item"

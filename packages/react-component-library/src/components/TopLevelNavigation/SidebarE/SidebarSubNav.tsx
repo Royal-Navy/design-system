@@ -14,13 +14,13 @@ export const SidebarSubNav: React.FC<Nav<SidebarNavItemEProps>> = ({
 }) => {
   return (
     <StyledSubNavSheet
-      button={(
+      button={
         <StyledSubNavSheetButton
           aria-label="Expand sub-menu"
           data-testid="sub-menu-expand-button"
           icon={<IconMoreVert />}
         />
-      )}
+      }
       placement={SHEET_PLACEMENT.RIGHT_TOP}
       width={SHEET_WIDTH}
       exitTiming={0}

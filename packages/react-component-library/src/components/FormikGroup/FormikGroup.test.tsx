@@ -61,7 +61,10 @@ describe('FormikGroup', () => {
     })
 
     it('should add the role attribute', () => {
-      expect(wrapper.getByTestId('formik-group')).toHaveAttribute('role', 'group')
+      expect(wrapper.getByTestId('formik-group')).toHaveAttribute(
+        'role',
+        'group'
+      )
     })
 
     it('should add the legend', () => {

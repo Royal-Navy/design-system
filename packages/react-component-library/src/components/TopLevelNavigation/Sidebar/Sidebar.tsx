@@ -46,7 +46,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className="rn-sidebar__bottom">
         {notifications && (
           <Sheet
-            button={(
+            button={
               <SheetButton
                 aria-label="Show notifications"
                 data-testid="notification-button"
@@ -56,7 +56,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <StyledNotRead data-testid="not-read" />
                 )}
               </SheetButton>
-            )}
+            }
             width={NOTIFICATION_CONTAINER_WIDTH}
           >
             {notifications}

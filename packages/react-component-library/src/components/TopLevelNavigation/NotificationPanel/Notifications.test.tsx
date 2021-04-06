@@ -41,9 +41,10 @@ describe('Notifications', () => {
     })
 
     it('should spread arbitrary props on the notifications item', () => {
-      expect(
-        wrapper.getAllByTestId('notification')[0]
-      ).toHaveAttribute('data-arbitrary', 'arbitrary-notification')
+      expect(wrapper.getAllByTestId('notification')[0]).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-notification'
+      )
     })
 
     it('should set the `role` attribute on the notification sheet to `grid`', () => {
