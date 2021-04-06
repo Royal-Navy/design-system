@@ -426,7 +426,7 @@ describe('Masthead', () => {
         <>
           <Masthead
             title="title"
-            user={(
+            user={
               <MastheadUser initials="AB">
                 <MastheadUserItem
                   data-arbitrary="arbitrary-user-item"
@@ -438,7 +438,7 @@ describe('Masthead', () => {
                 <MastheadUserItem link={<Link href="/support">Support</Link>} />
                 <MastheadUserItem link={<Link href="/logout">Logout</Link>} />
               </MastheadUser>
-            )}
+            }
           />
           <div>Other content</div>
         </>

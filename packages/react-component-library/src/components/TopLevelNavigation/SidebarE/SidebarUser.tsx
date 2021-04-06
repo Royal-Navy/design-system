@@ -32,7 +32,7 @@ const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
   exitLink,
 }) => (
   <StyledUserSheet
-    button={(
+    button={
       <StyledUserSheetButton
         aria-label="Show user options"
         data-testid="user-button"
@@ -40,7 +40,7 @@ const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
           <StyledUserAvatar initials={initials} data-testid="sidebar-avatar" />
         }
       />
-    )}
+    }
     placement={SHEET_PLACEMENT.RIGHT_BOTTOM}
     width={SHEET_WIDTH}
   >

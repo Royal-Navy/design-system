@@ -2,7 +2,11 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import TetherComponent from 'react-tether'
 
-import { POPOVER_CLOSE_DELAY, POPOVER_PLACEMENT, POPOVER_PLACEMENTS } from './constants'
+import {
+  POPOVER_CLOSE_DELAY,
+  POPOVER_PLACEMENT,
+  POPOVER_PLACEMENTS,
+} from './constants'
 
 import {
   FLOATING_BOX_SCHEME,
@@ -17,7 +21,7 @@ import { useHideShow } from './useHideShow'
 interface PopoverProps
   extends Omit<FloatingBoxProps, 'onMouseEnter' | 'onMouseLeave'> {
   children: React.ReactElement
-  closeDelay?: number,
+  closeDelay?: number
   content: React.ReactElement
   isClick?: boolean
   placement:

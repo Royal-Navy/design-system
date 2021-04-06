@@ -2,7 +2,10 @@ import React from 'react'
 
 import { ComponentWithClass } from '../common/ComponentWithClass'
 
-export const Logo: React.FC<ComponentWithClass> = ({ className = '', ...rest }) => (
+export const Logo: React.FC<ComponentWithClass> = ({
+  className = '',
+  ...rest
+}) => (
   <svg
     className={className}
     width="21"

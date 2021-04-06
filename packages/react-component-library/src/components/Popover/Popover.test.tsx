@@ -70,10 +70,7 @@ describe('Popover', () => {
       })
 
       it('to be visible to the end user', () => {
-        expect(wrapper.getByTestId('popover')).toHaveStyleRule(
-          'opacity',
-          '1'
-        )
+        expect(wrapper.getByTestId('popover')).toHaveStyleRule('opacity', '1')
       })
 
       it('renders the provided arbitrary JSX', () => {
@@ -128,10 +125,7 @@ describe('Popover', () => {
       })
 
       it('to be visible to the end user', () => {
-        expect(wrapper.getByTestId('popover')).toHaveStyleRule(
-          'opacity',
-          '1'
-        )
+        expect(wrapper.getByTestId('popover')).toHaveStyleRule('opacity', '1')
       })
 
       describe('and the user clicks on the target again', () => {
@@ -220,5 +214,4 @@ describe('Popover', () => {
       )
     })
   })
-
 })

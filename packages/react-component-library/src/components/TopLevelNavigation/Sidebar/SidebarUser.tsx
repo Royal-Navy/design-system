@@ -28,7 +28,7 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
     ),
     className: classes,
     'data-testid': 'sidebar-user',
-    ...rest
+    ...rest,
   })
 }
 

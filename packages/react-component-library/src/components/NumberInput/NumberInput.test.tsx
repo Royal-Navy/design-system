@@ -678,5 +678,4 @@ describe('NumberInput', () => {
       )
     })
   })
-
 })

@@ -126,7 +126,7 @@ export const Masthead: React.FC<MastheadProps> = ({
 
           {notifications && (
             <Sheet
-              button={(
+              button={
                 <StyledOption
                   aria-label="Show notifications"
                   as={SheetButton}
@@ -137,7 +137,7 @@ export const Masthead: React.FC<MastheadProps> = ({
                     <StyledNotRead data-testid="not-read" />
                   )}
                 </StyledOption>
-              )}
+              }
               placement={SHEET_PLACEMENT.BELOW}
               width={NOTIFICATION_CONTAINER_WIDTH}
               onHide={() => setShowNotifications(false)}

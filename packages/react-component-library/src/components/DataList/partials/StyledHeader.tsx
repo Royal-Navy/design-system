@@ -28,7 +28,7 @@ export const StyledHeader = styled.button<StyledDataListProps>`
 
       &:hover {
         background-color: ${color('neutral', '000')};
-        
+
         ${StyledAction} {
           background-color: ${color('neutral', '200')};
         }

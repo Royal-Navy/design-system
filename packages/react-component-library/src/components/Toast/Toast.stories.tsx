@@ -25,7 +25,7 @@ const ToastButton: React.FC<Options> = ({
 
   return (
     <button
-      onClick={_ => {
+      onClick={(_) => {
         addToast(text('Description', DESCRIPTION), {
           label: text('Label', LABEL),
           appearance,

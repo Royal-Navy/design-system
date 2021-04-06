@@ -8,9 +8,7 @@ describe('Panel', () => {
   let wrapper: RenderResult
 
   beforeEach(() => {
-    wrapper = render(
-      <Panel data-arbitrary="arbitrary">Content</Panel>
-    )
+    wrapper = render(<Panel data-arbitrary="arbitrary">Content</Panel>)
   })
 
   it('should render the content', () => {

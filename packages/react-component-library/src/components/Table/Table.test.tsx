@@ -393,7 +393,9 @@ describe('Table', () => {
 
       wrapper = render(
         <Table data={tableDataMock} data-arbitrary="arbitrary">
-          <TableColumn data-arbitrary="arbitrary-column" field="first">First</TableColumn>
+          <TableColumn data-arbitrary="arbitrary-column" field="first">
+            First
+          </TableColumn>
           <TableColumn field="second">Second</TableColumn>
           <TableColumn field="third">Third</TableColumn>
         </Table>

@@ -8,7 +8,6 @@ import { Dropdown } from './Dropdown'
 const stories = storiesOf('Dropdown', module)
 const examples = storiesOf('Dropdown/Examples', module)
 
-
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
   { value: 'chozbun', label: 'Chozo Bun', isHidden: true },
@@ -29,7 +28,7 @@ const scrollOptions = [
   { value: 'Zombie', label: 'Zombie' },
 ]
 
-const iconOptions = options.map(option => ({
+const iconOptions = options.map((option) => ({
   ...option,
   icon: <IconAnchor />,
 }))

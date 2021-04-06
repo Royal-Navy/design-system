@@ -1,4 +1,4 @@
-import styled  from 'styled-components'
+import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
 const { color, spacing } = selectors

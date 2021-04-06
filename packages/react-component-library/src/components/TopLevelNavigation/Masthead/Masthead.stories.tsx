@@ -75,14 +75,14 @@ const user = (
 stories.add('Default', () => (
   <Masthead
     homeLink={<Link href="#" />}
-    nav={(
+    nav={
       <MastheadNav>
         <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
         <MastheadNavItem link={<Link href="#">Styles</Link>} />
         <MastheadNavItem link={<Link href="#">Components</Link>} />
         <MastheadNavItem link={<Link href="#">About</Link>} />
       </MastheadNav>
-    )}
+    }
     notifications={notifications}
     onSearch={action('onSearch')}
     searchPlaceholder="Search"
@@ -120,27 +120,27 @@ examples.add('With navigation', () => (
   <Masthead
     homeLink={<Link href="#" />}
     title="Royal Navy Design System"
-    nav={(
+    nav={
       <MastheadNav>
         <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
         <MastheadNavItem link={<Link href="#">Styles</Link>} />
         <MastheadNavItem link={<Link href="#">Components</Link>} />
         <MastheadNavItem link={<Link href="#">About</Link>} />
       </MastheadNav>
-    )}
+    }
   />
 ))
 
 examples.add('With navigation', () => (
   <Masthead
-    nav={(
+    nav={
       <MastheadNav>
         <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
         <MastheadNavItem link={<Link href="#">Styles</Link>} />
         <MastheadNavItem link={<Link href="#">Components</Link>} />
         <MastheadNavItem link={<Link href="#">About</Link>} />
       </MastheadNav>
-    )}
+    }
     title="Royal Navy Design System"
   />
 ))

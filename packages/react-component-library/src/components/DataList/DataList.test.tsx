@@ -11,7 +11,9 @@ describe('DataList', () => {
     beforeEach(() => {
       wrapper = render(
         <DataList data-arbitrary="arbitrary" title="title">
-          <DataListItem data-arbitrary="arbitrary-item" description="One">1</DataListItem>
+          <DataListItem data-arbitrary="arbitrary-item" description="One">
+            1
+          </DataListItem>
           <DataListItem description="Two">2</DataListItem>
           <DataListItem description="Three">3</DataListItem>
         </DataList>

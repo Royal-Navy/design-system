@@ -53,20 +53,20 @@ const MastheadUserWithItems: React.FC<MastheadUserWithItemsProps> = ({
   initials,
 }) => (
   <Sheet
-    button={(
+    button={
       <StyledOption
         aria-label="Show user options"
         as={SheetButton}
         data-testid="user-button"
-        icon={(
+        icon={
           <Avatar
             data-testid="masthead-avatar"
             initials={initials}
             variant={AVATAR_VARIANT.DARK}
           />
-        )}
+        }
       />
-    )}
+    }
     placement={SHEET_PLACEMENT.BELOW}
     width={SHEET_WIDTH}
   >

@@ -57,11 +57,7 @@ export const DropdownLabel: React.FC<DropdownOption> = ({
   isVisible,
 }) => (
   <StyledLabel isDisabled={isDisabled}>
-    {icon && (
-      <StyledIcon data-testid="dropdown-label-icon">
-        {icon}
-      </StyledIcon>
-    )}
+    {icon && <StyledIcon data-testid="dropdown-label-icon">{icon}</StyledIcon>}
     <StyledStartAdornment data-testid="dropdown-label-label">
       {label}
     </StyledStartAdornment>

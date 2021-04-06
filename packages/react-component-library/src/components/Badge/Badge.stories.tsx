@@ -43,7 +43,7 @@ const badgeSizeTextMap = {
 
 stories.add('Default', () => <Badge>{text('Children', 'Badge')}</Badge>)
 
-Object.keys(badgeColorTextMap).forEach(key => {
+Object.keys(badgeColorTextMap).forEach((key) => {
   fadedExamples.add(badgeColorTextMap[key], () => (
     <Badge
       color={key as BadgeColorType}
@@ -55,7 +55,7 @@ Object.keys(badgeColorTextMap).forEach(key => {
   ))
 })
 
-Object.keys(badgeColorTextMap).forEach(key => {
+Object.keys(badgeColorTextMap).forEach((key) => {
   solidExamples.add(badgeColorTextMap[key], () => (
     <Badge
       color={key as BadgeColorType}
@@ -67,7 +67,7 @@ Object.keys(badgeColorTextMap).forEach(key => {
   ))
 })
 
-Object.keys(badgeSizeTextMap).forEach(key => {
+Object.keys(badgeSizeTextMap).forEach((key) => {
   sizesExamples.add(badgeSizeTextMap[key], () => (
     <Badge
       color={BADGE_COLOR.NEUTRAL}
@@ -79,7 +79,7 @@ Object.keys(badgeSizeTextMap).forEach(key => {
   ))
 })
 
-Object.keys(badgeColorTextMap).forEach(key => {
+Object.keys(badgeColorTextMap).forEach((key) => {
   pillsExamples.add(badgeColorTextMap[key], () => (
     <Badge
       color={key as BadgeColorType}
