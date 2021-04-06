@@ -1,5 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
+import { ColorDanger600, ColorSuccess600 } from '@royalnavy/design-tokens'
 import {
   fireEvent,
   render,
@@ -449,6 +450,34 @@ describe('DatePicker', () => {
         'data-arbitrary',
         'arbitrary'
       )
+    })
+  })
+
+  describe('when form validation classes are provided', () => {
+    describe('when the field is valid', () => {
+      beforeEach(() => {
+        wrapper = render(<DatePicker className="is-valid" />)
+      })
+
+      it('should set the border on the outer wrapper', () => {
+        expect(wrapper.getByTestId('datepicker-outer-wrapper')).toHaveStyleRule(
+          'border',
+          `1px solid ${ColorSuccess600}`
+        )
+      })
+    })
+
+    describe('when the field is invalid', () => {
+      beforeEach(() => {
+        wrapper = render(<DatePicker className="is-invalid" />)
+      })
+
+      it('should set the border on the outer wrapper', () => {
+        expect(wrapper.getByTestId('datepicker-outer-wrapper')).toHaveStyleRule(
+          'border',
+          `1px solid ${ColorDanger600}`
+        )
+      })
     })
   })
 })

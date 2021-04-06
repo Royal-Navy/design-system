@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
-import { StyledOuterWrapper } from './StyledOuterWrapper'
-
-const { color, spacing } = selectors
+const { spacing } = selectors
 
 interface StyledDatePickerInputProps {
   $isDisabled?: boolean
@@ -29,18 +27,4 @@ export const StyledDatePickerInput = styled.div<StyledDatePickerInputProps>`
         cursor: not-allowed;
       }
     `}
-
-  &.is-invalid {
-    ${StyledOuterWrapper} {
-      border-color: ${color('danger', '700')};
-      box-shadow: 0 0 0 1px ${color('danger', '700')};
-    }
-  }
-
-  &.is-valid {
-    ${StyledOuterWrapper} {
-      border-color: ${color('success', '700')};
-      box-shadow: 0 0 0 1px ${color('success', '700')};
-    }
-  }
 `

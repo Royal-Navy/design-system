@@ -1,7 +1,8 @@
 import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
-import { Field, Formik, Form } from 'formik'
+import { Field, Form, Formik } from 'formik'
 import React from 'react'
+import * as yup from 'yup'
 
 import { withFormik } from '../../enhancers/withFormik'
 import { DatePicker, DATEPICKER_PLACEMENT } from '.'
@@ -101,25 +102,34 @@ examples.add('Range', () => {
 })
 
 const DatePickerForm = () => {
-  interface Data {
-    foo: string
-    startDate: Date
-    endDate: Date
-  }
+  const errorText = 'Something went wrong!'
 
-  const initialValues: Data = {
-    foo: '',
-    startDate: new Date(2020, 0, 1),
-    endDate: new Date(2020, 4, 1),
-  }
+  const validationSchema = yup.object().shape({
+    andAnotherStartDate: yup.date().required(errorText),
+  })
 
   const FormikTextInput = withFormik(TextInput)
   const FormikDatePicker = withFormik(DatePicker)
 
+  const initialValues: {
+    andAnotherStartDate: Date
+    foo: string
+    startDate: Date
+    endDate: Date
+  } = {
+    andAnotherStartDate: null,
+    foo: null,
+    startDate: new Date(2020, 0, 1),
+    endDate: new Date(2020, 4, 1),
+  }
+
   return (
     <Formik
+      initialErrors={{ andAnotherStartDate: errorText }}
+      initialTouched={{ andAnotherStartDate: true }}
       initialValues={initialValues}
       onSubmit={action('onSubmit')}
+      validationSchema={validationSchema}
       render={({ setFieldValue }) => {
         return (
           <Form>
@@ -135,6 +145,23 @@ const DatePickerForm = () => {
               }}
               startDate={initialValues.startDate}
               endDate={initialValues.endDate}
+            />
+            <Field
+              isValid
+              name="anotherDate"
+              label="Another date"
+              component={FormikDatePicker}
+              onChange={({ startDate }: any) => {
+                setFieldValue('anotherStartDate', startDate)
+              }}
+            />
+            <Field
+              name="andAnotherStartDate"
+              label="And another date"
+              component={FormikDatePicker}
+              onChange={({ startDate }: any) => {
+                setFieldValue('andAnotherStartDate', startDate)
+              }}
             />
             <Button type="submit">Submit</Button>
           </Form>

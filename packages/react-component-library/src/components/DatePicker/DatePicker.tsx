@@ -14,7 +14,8 @@ import { DATE_FORMAT } from '../../constants'
 import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
 import { DropdownIndicatorIcon } from '../Dropdown/DropdownIndicatorIcon'
 import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
-import { getId } from '../../helpers'
+import { getId, hasClass } from '../../helpers'
+import { InputValidationProps } from '../../common/InputValidationProps'
 import { StyledDatePicker } from './partials/StyledDatePicker'
 import { StyledDayPicker } from './partials/StyledDayPicker'
 import { StyledFloatingBox } from './partials/StyledFloatingBox'
@@ -39,7 +40,9 @@ export type DatePickerPlacement =
   | typeof DATEPICKER_PLACEMENT.LEFT
   | typeof DATEPICKER_PLACEMENT.RIGHT
 
-export interface DatePickerProps extends ComponentWithClass {
+export interface DatePickerProps
+  extends ComponentWithClass,
+    InputValidationProps {
   endDate?: Date
   format?: string
   id?: string
@@ -98,7 +101,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   format: datePickerFormat = DATE_FORMAT.SHORT,
   id = uuidv4(),
   isDisabled,
+  isInvalid,
   isRange,
+  isValid,
   label = 'Select Date',
   onChange,
   placement = DATEPICKER_PLACEMENT.BELOW,
@@ -123,6 +128,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     from: startDate,
     to: endDate,
   })
+  const [hasError, setHasError] = useState<boolean>(
+    isInvalid || hasClass(className, 'is-invalid')
+  )
 
   const { from, to } = state
   const modifiers = { start: from, end: to }
@@ -170,10 +178,15 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             data-testid="datepicker-input-wrapper"
             $isDisabled={isDisabled}
           >
-            <StyledOuterWrapper $isOpen={isOpen}>
+            <StyledOuterWrapper
+              data-testid="datepicker-outer-wrapper"
+              $hasFocus={open}
+              $isInvalid={hasError}
+              $isValid={isValid || hasClass(className, 'is-valid')}
+            >
               <StyledInputWrapper>
                 <StyledLabel
-                  $isOpen={isOpen}
+                  $isOpen={open}
                   $hasContent={hasContent}
                   htmlFor={id}
                   data-testid="datepicker-label"
