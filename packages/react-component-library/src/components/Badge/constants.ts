@@ -27,6 +27,7 @@ const BADGE_SIZE = {
 
 const BADGE_VARIANT = {
   PILL: 'pill',
+  REGULAR: 'regular'
 } as const
 
 export { BADGE_COLOR, BADGE_COLOR_VARIANT, BADGE_SIZE, BADGE_VARIANT }

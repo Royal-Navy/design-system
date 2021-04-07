@@ -29,4 +29,6 @@ export type BadgeColorVariantType =
   | typeof BADGE_COLOR_VARIANT.FADED
   | typeof BADGE_COLOR_VARIANT.SOLID
 
-export type BadgeVariantType = typeof BADGE_VARIANT.PILL
+export type BadgeVariantType =
+  | typeof BADGE_VARIANT.PILL
+  | typeof BADGE_VARIANT.REGULAR

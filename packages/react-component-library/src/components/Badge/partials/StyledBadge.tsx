@@ -1,4 +1,3 @@
-import React from 'react'
 import { selectors } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 

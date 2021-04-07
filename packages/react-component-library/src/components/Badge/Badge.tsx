@@ -3,7 +3,12 @@ import React from 'react'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledBadge } from './partials/StyledBadge'
 
-import { BADGE_COLOR, BADGE_COLOR_VARIANT, BADGE_SIZE } from './constants'
+import {
+  BADGE_COLOR,
+  BADGE_COLOR_VARIANT,
+  BADGE_SIZE,
+  BADGE_VARIANT,
+} from './constants'
 import {
   BadgeColorType,
   BadgeColorVariantType,
@@ -23,7 +28,7 @@ export const Badge: React.FC<BadgeProps> = ({
   color: badgeColor = BADGE_COLOR.NEUTRAL,
   colorVariant = BADGE_COLOR_VARIANT.SOLID,
   size = BADGE_SIZE.REGULAR,
-  variant,
+  variant = BADGE_VARIANT.REGULAR,
   ...rest
 }) => (
   <StyledBadge
