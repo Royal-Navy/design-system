@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import classNames from 'classnames'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledRows } from './partials/StyledRows'
 import { TimelineNoData } from './TimelineNoData'
-import { TimelineRowProps } from '.'
+import { TimelineContext, TimelineRowProps } from '.'
+import { StyledRow } from './partials/StyledRow'
 
 type TimelineRowsChildrenType =
   | React.ReactElement<TimelineRowProps>
@@ -28,9 +29,13 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
 }) => {
   const hasChildren = React.Children.count(children) > 0
   const mainClasses = classNames('timeline__main', className)
+  const {
+    state: { currentScaleOption, days },
+  } = useContext(TimelineContext)
 
   return (
     <StyledRows
+      $width={currentScaleOption.widths.day * days.length}
       className={mainClasses}
       defaultStyles={!renderColumns}
       role="rowgroup"

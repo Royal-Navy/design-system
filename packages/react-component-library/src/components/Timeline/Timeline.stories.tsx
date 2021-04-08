@@ -438,6 +438,7 @@ export const WithCustomRowCss = () => {
     <Timeline
       hasSide
       startDate={new Date(2020, 3, 1)}
+      endDate={new Date(2020, 4, 30)}
       today={new Date(2020, 3, 15)}
     >
       <TimelineTodayMarker />
