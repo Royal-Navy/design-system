@@ -4,7 +4,7 @@
     <title>Icons/Standards/chain-break</title>
     <g id="Icons/Standards/chain-break" stroke="none" stroke-width="1" fill="none"
        fill-rule="evenodd">
-        <rect id="Spacer" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="16" height="16"></rect>
+        <rect id="Spacer" x="0" y="0" width="16" height="16"></rect>
         <g id="Group"
            transform="translate(8.385768, 9.224876) rotate(9.000000) translate(-8.385768, -9.224876) translate(0.385768, 3.724876)"
            fill="#233745" fill-rule="nonzero">
