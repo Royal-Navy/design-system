@@ -9429,7 +9429,7 @@ duplexify@^3.4.2, duplexify@^3.5.0, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-easy-bem@^1.0.0:
+easy-bem@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/easy-bem/-/easy-bem-1.1.1.tgz#1bfcc10425498090bcfddc0f9c000aba91399e03"
   integrity sha512-GJRqdiy2h+EXy6a8E6R+ubmqUM08BK0FWNq41k24fup6045biQ8NXxoXimiwegMQvFFV3t1emADdGNL1TlS61A==
@@ -19309,7 +19309,7 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
-prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.0, prop-types@^15.7.2:
+prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -19829,15 +19829,14 @@ react-hotkeys@2.0.0:
   dependencies:
     prop-types "^15.6.1"
 
-react-indiana-drag-scroll@^1.5.5:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/react-indiana-drag-scroll/-/react-indiana-drag-scroll-1.8.1.tgz#495cb86b5ec064b28ebb9b8f01f8b49a27713a7e"
-  integrity sha512-jUunh472mcH1YRUfSjw/A+Wxb/eA3ilBvb5YQCkHwjaZ51NR1r08kiYcGuqb0xd2B8p7ZVxow6eEkD3EUEIM1Q==
+react-indiana-drag-scroll@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-indiana-drag-scroll/-/react-indiana-drag-scroll-2.0.1.tgz#8785488a9e9c789b0e1c092e60d03f05a789d428"
+  integrity sha512-xZQXfFf9pHLOL6/AvTFiGZCB4Vu8wO8DjEaO+xRVkSki2bEZSFfS8eeKG0OkTzcYVrXzc5aHAD1Mfl3EG+EFMA==
   dependencies:
     classnames "^2.2.6"
     debounce "^1.2.0"
-    easy-bem "^1.0.0"
-    prop-types "^15.7.0"
+    easy-bem "^1.1.1"
 
 react-input-autosize@^3.0.0:
   version "3.0.0"
