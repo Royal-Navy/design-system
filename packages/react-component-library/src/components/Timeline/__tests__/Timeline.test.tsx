@@ -294,6 +294,13 @@ describe('Timeline', () => {
       expect(wrapper.queryByTestId('timeline-no-data')).not.toBeInTheDocument()
     })
 
+    it('should set the width of the rows', () => {
+      expect(wrapper.getByTestId('timeline-rows')).toHaveStyleRule(
+        'width',
+        '900px'
+      )
+    })
+
     it('should set the `role` attribute to `rowgroup` on the rows group', () => {
       expect(wrapper.queryByTestId('timeline-rows')).toHaveAttribute(
         'role',
@@ -1928,6 +1935,13 @@ describe('Timeline', () => {
       expect(wrapper.getAllByTestId('timeline-day')[0]).toHaveStyleRule(
         'width',
         '53px'
+      )
+    })
+
+    it('should set the width of the rows', () => {
+      expect(wrapper.getByTestId('timeline-rows')).toHaveStyleRule(
+        'width',
+        '6360px'
       )
     })
   })
