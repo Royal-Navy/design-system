@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
-const { fontSize, spacing } = selectors
+const { color, fontSize, spacing } = selectors
 
 interface StyledTableColumnProps {
   $isSortable?: boolean
@@ -26,5 +26,6 @@ export const StyledTableColumn = styled.th<StyledTableColumnProps>`
     left: ${spacing('2')};
     width: ${spacing('6')};
     height: ${spacing('6')};
+    color: ${color('neutral', '500')};
   }
 `
