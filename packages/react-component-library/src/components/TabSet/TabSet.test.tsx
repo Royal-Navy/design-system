@@ -235,9 +235,42 @@ describe('TabSet', () => {
           wrapper.getByText('Title 2').click()
         })
 
-        it('should apply the `is-active` class to the appropriate tab', () => {
+        it('should make the appropriate tab active', () => {
           const tab = wrapper.getByText('Title 2').parentElement
           expect(tab).toHaveStyleRule('color', color('neutral', '500'))
+        })
+      })
+    })
+
+    describe('when the initialActiveTab is set', () => {
+      beforeEach(() => {
+        wrapper = render(
+          <TabSet>
+            <Tab title="Title 1">Content 1</Tab>
+            <Tab title="Title 2" isActive>
+              Content 2
+            </Tab>
+          </TabSet>
+        )
+      })
+
+      it('should make the appropriate tab active', () => {
+        const tab1 = wrapper.getByText('Title 1').parentElement
+        const tab2 = wrapper.getByText('Title 2').parentElement
+        expect(tab1).not.toHaveStyleRule('color', color('neutral', '500'))
+        expect(tab2).toHaveStyleRule('color', color('neutral', '500'))
+      })
+
+      describe('when the user clicks on a tab', () => {
+        beforeEach(() => {
+          wrapper.getByText('Title 1').click()
+        })
+
+        it('should make the appropriate tab active', () => {
+          const tab1 = wrapper.getByText('Title 1').parentElement
+          const tab2 = wrapper.getByText('Title 2').parentElement
+          expect(tab1).toHaveStyleRule('color', color('neutral', '500'))
+          expect(tab2).not.toHaveStyleRule('color', color('neutral', '500'))
         })
       })
     })

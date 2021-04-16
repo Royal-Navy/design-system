@@ -22,6 +22,7 @@ interface TabSetProps extends ComponentWithClass {
   onChange?: (id: number) => void
   isFullWidth?: boolean
   isScrollable?: never
+  initialActiveTab?: number
 }
 
 interface ScrollableTabSetProps extends ComponentWithClass {
@@ -42,11 +43,24 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
   isScrollable,
   ...rest
 }) => {
+  function getActiveIndex(tabs: React.ReactNode | React.ReactNode[]): number {
+    const activeIndex = Children.toArray(tabs).findIndex(
+      (item: React.ReactNode) => {
+        if (React.isValidElement(item)) {
+          return item.props.isActive
+        }
+
+        return false
+      }
+    )
+
+    return activeIndex === -1 ? 0 : activeIndex
+  }
+
   const [tabIds] = useState(
     Array.from({ length: children.length }).map(() => getId('tab-content'))
   )
-
-  const [activeTab, setActiveTab] = useState(0)
+  const [activeTab, setActiveTab] = useState(getActiveIndex(children))
   const { scrollToNextTab, tabsRef, itemsRef } = useScrollableTabSet(children)
 
   function handleClick(index: number) {
@@ -126,7 +140,12 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
         {Children.map(
           children,
           (child: React.ReactElement<TabProps>, index: number) => {
-            const { children: tabChildren, title, ...tabRest } = child.props
+            const {
+              children: tabChildren,
+              title,
+              isActive,
+              ...tabRest
+            } = child.props
 
             return (
               <TabContent
