@@ -34,7 +34,8 @@
     "**/**/socket.io": "^2.4.0",
     "**/**/hosted-git-info": "^3.0.8",
     "**/**/netmask": "^2.0.1",
-    "**/**/ssri": "^8.0.1"
+    "**/**/ssri": "^8.0.1",
+    "**/**/engine.io": "^4.0.0"
   },
   "prettier": {
     "bracketSpacing": true,
