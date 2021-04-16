@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.44.0](https://github.com/Royal-Navy/design-system/compare/2.43.6...2.44.0) (2021-04-16)
+
+
+### Bug Fixes
+
+* **ChainIcon:** Allow setting of `color` ([0c9f7c1](https://github.com/Royal-Navy/design-system/commit/0c9f7c1e8b6d65915f9fe106ec3636b81628c965))
+
+
+
+
+
 ## [2.43.6](https://github.com/Royal-Navy/design-system/compare/2.43.5...2.43.6) (2021-04-13)
 
 **Note:** Version bump only for package @royalnavy/icon-library

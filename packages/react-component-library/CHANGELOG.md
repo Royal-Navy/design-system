@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.44.0](https://github.com/Royal-Navy/design-system/compare/2.43.6...2.44.0) (2021-04-16)
+
+
+### Bug Fixes
+
+* **Checkbox:** Align checkmark ([1945337](https://github.com/Royal-Navy/design-system/commit/194533715a27d8aef41e0759d83d143b6a880f91))
+
+
+### Features
+
+* **Timeline:** Set `width` of rows ([7747856](https://github.com/Royal-Navy/design-system/commit/774785614458ea1341db7e384c0f3b8130e8d43a))
+
+
+
+
+
 ## [2.43.6](https://github.com/Royal-Navy/design-system/compare/2.43.5...2.43.6) (2021-04-13)
 
 **Note:** Version bump only for package @royalnavy/react-component-library

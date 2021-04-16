@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.44.0](https://github.com/Royal-Navy/design-system/compare/2.43.6...2.44.0) (2021-04-16)
+
+**Note:** Version bump only for package royalnavy.io
+
+
+
+
+
 ## [2.43.6](https://github.com/Royal-Navy/design-system/compare/2.43.5...2.43.6) (2021-04-13)
 
 **Note:** Version bump only for package royalnavy.io
