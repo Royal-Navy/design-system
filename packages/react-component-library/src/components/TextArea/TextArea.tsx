@@ -144,7 +144,7 @@ export const TextArea: React.FC<TextAreaInputProps> = (props) => {
     ...rest
   } = props
 
-  const { hasFocus, onLocalBlur, onFocus } = useFocus(onBlur)
+  const { hasFocus, onLocalBlur, onLocalFocus } = useFocus(onBlur)
   const { committedValue, hasValue, onValueChange } = useInputValue(value)
   const hasLabel = !!(label && label.length)
 
@@ -182,7 +182,7 @@ export const TextArea: React.FC<TextAreaInputProps> = (props) => {
               onChange(e)
             }
           }}
-          onFocus={onFocus}
+          onFocus={onLocalFocus}
           placeholder={placeholder}
           value={committedValue}
           {...rest}

@@ -65,7 +65,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     ...rest
   } = props
 
-  const { hasFocus, onLocalBlur, onFocus } = useFocus(onBlur)
+  const { hasFocus, onLocalBlur, onLocalFocus } = useFocus(onBlur)
   const { committedValue, hasValue, onValueChange } = useInputValue(value)
   const hasLabel = label && label.length
 
@@ -99,7 +99,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
                 onChange(e)
               }
             }}
-            onFocus={onFocus}
+            onFocus={onLocalFocus}
             placeholder={placeholder}
             type={type}
             value={committedValue}
