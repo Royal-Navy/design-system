@@ -23,6 +23,23 @@ stories.add('Default', () => (
   </TabSet>
 ))
 
+stories.add('Initial active tab', () => (
+  <TabSet onChange={action('onChange')}>
+    <Tab title="Example Tab 1">
+      <p>This is some example tab 1 content</p>
+    </Tab>
+    <Tab title="Example Tab 2" isActive>
+      <p>This is some example tab 2 content</p>
+    </Tab>
+    <Tab title="Example Tab 3">
+      <p>This is some example tab 3 content</p>
+    </Tab>
+    <Tab title="Example Tab 4">
+      <p>This is some example tab 4 content</p>
+    </Tab>
+  </TabSet>
+))
+
 stories.add('Default full width', () => (
   <TabSet isFullWidth onChange={action('onChange')}>
     <Tab title="Example Tab 1">
