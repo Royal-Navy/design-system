@@ -13,15 +13,45 @@ import { StyledCheckmark } from './partials/StyledCheckmark'
 export interface CheckboxProps
   extends ComponentWithClass,
     InputValidationProps {
+  /**
+   * Optional unique ID to apply to the component.
+   */
   id?: string
+  /**
+   * Optional HTML `checked` attribute denoting checked state of component.
+   */
   checked?: boolean
+  /**
+   * Toggles whether the component should be checked on initial render.
+   */
   defaultChecked?: boolean
+  /**
+   * Toggles whether or note the component is marked as checked.
+   */
   isChecked?: boolean
+  /**
+   * Toggles whether the component is disabled or not (preventing user interaction).
+   */
   isDisabled?: boolean
+  /**
+   * Label to display to the right of the component.
+   */
   label: string
+  /**
+   * HTML `name` attribute associated with the component.
+   */
   name: string
+  /**
+   * Optional handler to be invoked when the blur event is emitted.
+   */
   onBlur?: (event: React.FormEvent<HTMLInputElement>) => void
+  /**
+   * Optional handler to be invoked when the value of the component changes.
+   */
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
+  /**
+   * Optional HTML `value` attribute associated with the component.
+   */
   value?: string
 }
 

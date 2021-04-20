@@ -12,15 +12,39 @@ import { TimelineContext, TimelineEventsProps } from '.'
 import { useTimelineRowContent } from './hooks/useTimelineRowContent'
 
 export interface TimelineRowProps extends ComponentWithClass {
+  /**
+   * Supply children to be rendered.
+   */
   children:
     | React.ReactElement<TimelineEventsProps>
     | React.ReactElement<TimelineEventsProps>[]
+  /**
+   * A styled-components css`` value to modify the CSS.
+   */
   css?: CSSProp
+  /**
+   * A descriptive identifier for the row.
+   */
   name?: string
+  /**
+   * @private
+   */
   ariaLabel?: string
+  /**
+   * Ability to pass props to the content div of the row.
+   */
   contentProps?: SubcomponentProps
+  /**
+   * Ability to pass props to the header div of the row.
+   */
   headerProps?: SubcomponentProps
+  /**
+   * Supply a custom presentation layer.
+   */
   renderRowHeader?: (name: string) => React.ReactElement
+  /**
+   * @private
+   */
   isHeader?: boolean
 }
 

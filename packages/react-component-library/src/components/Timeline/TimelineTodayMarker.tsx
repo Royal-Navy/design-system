@@ -8,6 +8,9 @@ import { useTimelinePosition } from './hooks'
 
 export interface TimelineTodayMarkerWithRenderContentProps
   extends ComponentWithClass {
+  /**
+   * Supply a custom presentation layer.
+   */
   render: (today: Date, offset: string) => React.ReactNode
 }
 

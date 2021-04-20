@@ -5,25 +5,25 @@ import { Alert, ALERT_VARIANT } from './index'
 
 export default { component: Alert, title: 'Alert' } as Meta
 
-export const Default = ({ title, description, variant }: any) => (
+export const Default = ({ title, children, variant }: any) => (
   <Alert title={title} variant={variant}>
-    {description}
+    {children}
   </Alert>
 )
 
 Default.args = {
   title: 'Example Title',
-  description:
+  children:
     'The alert description provides context to the user, bringing attention to information that needs to be consumed.',
   variant: ALERT_VARIANT.INFO,
 }
 
-export const WithoutTitle = ({ description, variant }: any) => (
-  <Alert variant={variant}>{description}</Alert>
+export const WithoutTitle = ({ children, variant }: any) => (
+  <Alert variant={variant}>{children}</Alert>
 )
 
 WithoutTitle.args = {
-  description:
+  children:
     'The alert description provides context to the user, bringing attention to information that needs to be consumed.',
   variant: ALERT_VARIANT.INFO,
 }

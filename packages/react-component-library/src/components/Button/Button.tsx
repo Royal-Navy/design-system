@@ -27,14 +27,41 @@ export type ButtonIconPositionType =
   | typeof BUTTON_ICON_POSITION.RIGHT
 
 export interface ButtonProps extends ComponentWithClass {
+  /**
+   * Text to display within the component.
+   */
   children?: string
+  /**
+   * Custom color variant of the component (only default and `danger` is currently supported).
+   */
   color?: typeof BUTTON_COLOR.DANGER
+  /**
+   * Toggles whether the component is disabled or not (preventing user interaction).
+   */
   isDisabled?: boolean
+  /**
+   * Optional icon to display beside the component text.
+   */
   icon?: React.ReactNode
+  /**
+   * Position of the optional icon.
+   */
   iconPosition?: ButtonIconPositionType
+  /**
+   * Optional handler called when the component is clicked.
+   */
   onClick?: (event: FormEvent<HTMLButtonElement>) => void
+  /**
+   * Size of the component.
+   */
   size?: ButtonSizeType
+  /**
+   * HTML type of the component (forms should use the `submit` type).
+   */
   type?: 'button' | 'submit'
+  /**
+   * Type of component to display (style varies accordingly).
+   */
   variant?: ButtonVariantType
 }
 

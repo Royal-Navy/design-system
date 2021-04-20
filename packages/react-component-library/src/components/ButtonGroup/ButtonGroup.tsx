@@ -7,7 +7,13 @@ import logger from '../../utils/logger'
 import { StyledButtonGroup } from './partials/StyledButtonGroup'
 
 export interface ButtonGroupProps extends ComponentWithClass {
+  /**
+   * Collection of `ButtonGroupItem` components to display as part of the group.
+   */
   children: React.ReactElement<ButtonGroupItemProps>[]
+  /**
+   * Size of the component.
+   */
   size?:
     | typeof BUTTON_SIZE.LARGE
     | typeof BUTTON_SIZE.REGULAR

@@ -3,10 +3,25 @@ import React, { FormEvent } from 'react'
 import { Button, BUTTON_SIZE } from '../Button'
 
 export interface ButtonGroupItemProps {
+  /**
+   * Text to display within the component.
+   */
   children: string
+  /**
+   * Toggles whether the component is disabled or not (preventing user interaction).
+   */
   isDisabled?: boolean
+  /**
+   * Optional icon to display beside the component text.
+   */
   icon?: React.ReactNode
+  /**
+   * Optional handler called when the component is clicked.
+   */
   onClick?: (event: FormEvent<HTMLButtonElement>) => void
+  /**
+   * Size of the component.
+   */
   size?:
     | typeof BUTTON_SIZE.LARGE
     | typeof BUTTON_SIZE.REGULAR

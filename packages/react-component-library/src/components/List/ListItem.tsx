@@ -10,11 +10,29 @@ import { StyledItemDescription } from './partials/StyledItemDescription'
 import { StyledItemAction } from './partials/StyledItemAction'
 
 export interface ListItemProps extends ComponentWithClass {
+  /**
+   * Description text to display for an individual item.
+   */
   children: string | string[]
+  /**
+   * Toggles whether the item is in an active state.
+   */
   isActive?: boolean
+  /**
+   * Handler called when the item is clicked.
+   */
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+  /**
+   * Optional handler called when the mouse enters the item area.
+   */
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  /**
+   * Optional handler called when the mouse leaves the item area.
+   */
   onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  /**
+   * Text title to display for an individual item.
+   */
   title: string
 }
 

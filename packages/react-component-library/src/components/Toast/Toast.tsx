@@ -24,7 +24,13 @@ import { StyledToastContent } from './partials/StyledToastContent'
 import { StyledToastDescription } from './partials/StyledToastDescription'
 
 export interface ToastProps extends BaseToastProps, ComponentWithClass {
+  /**
+   * Text label to display at the top of the component.
+   */
   label?: string
+  /**
+   * Date and time of the event.
+   */
   dateTime?: Date
 }
 

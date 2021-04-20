@@ -14,8 +14,17 @@ export interface RowProps {
 }
 
 interface TableProps extends ComponentWithClass {
+  /**
+   * Data to display within the table (JSON).
+   */
   data: RowProps[]
+  /**
+   * Collection of `TableColumn` components to describe column functionality.
+   */
   children: React.ReactElement<TableColumnProps>[]
+  /**
+   * Optional text caption to display above the component.
+   */
   caption?: string
 }
 

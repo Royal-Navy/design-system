@@ -13,12 +13,27 @@ import { useOpenClose } from '../../../hooks'
 import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
 
 interface SidebarProps {
+  /**
+   * Toggle whether there are unread notifications.
+   */
   hasUnreadNotification?: boolean
+  /**
+   * Optional JSX to render the primary navigation.
+   */
   nav?: React.ReactElement<SidebarNavProps>
+  /**
+   * Optional JSX to render a collection of notifications.
+   */
   notifications?: React.ReactElement<NotificationsProps>
+  /**
+   * Optional JSX to render a user menu.
+   */
   user?: React.ReactElement<SidebarUserProps>
 }
 
+/**
+ * @deprecated
+ */
 export const Sidebar: React.FC<SidebarProps> = ({
   nav,
   notifications,

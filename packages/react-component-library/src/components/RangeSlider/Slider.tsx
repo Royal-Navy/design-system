@@ -24,17 +24,53 @@ import { StyledTicks } from './partials/StyledTicks'
 
 export interface RangeSliderProps
   extends Omit<SliderProps, 'children' | 'disabled' | 'reversed' | 'vertical'> {
+  /**
+   * Toggles whether or not to display labels below the slider.
+   */
   hasLabels?: boolean
+  /**
+   * Toggles whether to display colored tracks to the left of the handle.
+   */
   tracksLeft?: boolean
+  /**
+   * Toggles whether to display colored tracks to the right of the handle.
+   */
   tracksRight?: boolean
+  /**
+   * The number of tickets to display along the slider track.
+   */
   tickCount?: number
+  /**
+   * Optional JSX icon element to display to the left of the component.
+   */
   IconLeft?: React.ElementType
+  /**
+   * Optional JSX icon element to display to the right of the component.
+   */
   IconRight?: React.ElementType
+  /**
+   * Toggles whether the component is disabled or not (preventing user interaction).
+   */
   isDisabled?: boolean
+  /**
+   * Toggles whether to reverse the scale of the slider.
+   */
   isReversed?: boolean
+  /**
+   * Optional numeric array of thresholds to display on the slider bar (up to 2).
+   */
   thresholds?: number[]
+  /**
+   * Toggles whether to display percentage values alongside the draggable handles.
+   */
   hasPercentage?: boolean
+  /**
+   * Toggles whether to display unit values alongside the draggable handles.
+   */
   displayUnit?: string
+  /**
+   * Optional custom value formatter function.
+   */
   formatValue?: RangeSliderValueFormatter
 }
 

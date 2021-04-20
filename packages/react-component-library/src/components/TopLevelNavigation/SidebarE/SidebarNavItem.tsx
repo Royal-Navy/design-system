@@ -13,7 +13,13 @@ import { StyledNavItemText } from './partials/StyledNavItemText'
 export interface SidebarNavItemEProps
   extends NavItem,
     Nav<SidebarNavItemEProps> {
+  /**
+   * Optiona icon to display to the left of the navigation item.
+   */
   icon?: React.ReactNode
+  /**
+   * Optional handler invoked when an item is clicked on.
+   */
   onClick?: (e: React.MouseEvent<HTMLElement>) => void
 }
 

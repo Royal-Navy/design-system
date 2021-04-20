@@ -13,10 +13,19 @@ import { StyledSheet } from './partials/StyledSheet'
 import { StyledTitle } from './partials/StyledTitle'
 
 export interface DataListProps extends ComponentWithClass {
+  /**
+   * Collection of `DataListItem` components to display in the list.
+   */
   children:
     | React.ReactElement<DataListItemProps>
     | React.ReactElement<DataListItemProps>[]
+  /**
+   * Toggles whether the list is collapsable via user input.
+   */
   isCollapsible?: boolean
+  /**
+   * Text title to display at the top of the component.
+   */
   title: string
 }
 

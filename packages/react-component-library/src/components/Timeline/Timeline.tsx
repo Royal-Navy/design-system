@@ -46,15 +46,45 @@ type timelineChildrenType =
   | timelineBodyChildrenType
 
 export interface TimelineProps extends ComponentWithClass {
+  /**
+   * Collection of composable Timeline compound components.
+   */
   children: timelineChildrenType | timelineChildrenType[]
+  /**
+   * Width of a single day unit (pixels).
+   */
   dayWidth?: number
+  /**
+   * Specify whether or not to output sidebar headings.
+   */
   hasSide?: boolean
+  /**
+   * Specify whether to hide the scaling buttons.
+   */
   hideScaling?: boolean
+  /**
+   * Specify whether to hide the toolbar.
+   */
   hideToolbar?: boolean
+  /**
+   * A month will display either side of this start date.
+   */
   startDate?: Date
+  /**
+   * Bound the timeline by the specified start and end dates.
+   */
   endDate?: Date
+  /**
+   * Today's current date - default is the system date time.
+   */
   today?: Date
+  /**
+   * The number of months to display at any one time.
+   */
   range?: number
+  /**
+   * The fixed width value of a single day (in pixels).
+   */
   unitWidth?: number
 }
 

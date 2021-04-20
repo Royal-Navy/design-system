@@ -11,14 +11,43 @@ import { StyledMain } from './partials/StyledMain'
 import { useOpenClose } from '../../hooks/useOpenClose'
 
 export interface ModalProps extends ComponentWithClass {
+  /**
+   * Optional arbitrary JSX content to display in the main body of the component.
+   */
   children?: React.ReactNode
+  /**
+   * A11y `aria-describedby` attribute value.
+   * @private
+   */
   descriptionId?: string
+  /**
+   * Toggles whether the component is visible or hidden from view.
+   */
   isOpen?: boolean
+  /**
+   * Optional handler called when the close button is clicked.
+   */
   onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
+  /**
+   * Optional primary action button to display in the component.
+   */
   primaryButton?: ButtonProps
+  /**
+   * Optional secondary action button to display in the component.
+   */
   secondaryButton?: ButtonProps
+  /**
+   * Optional tertiary action button to display in the component.
+   */
   tertiaryButton?: ButtonProps
+  /**
+   * Optional text title to display at the top of the component.
+   */
   title?: string
+  /**
+   * A11y `aria-labelledby` attribute value.
+   * @private
+   */
   titleId?: string
 }
 

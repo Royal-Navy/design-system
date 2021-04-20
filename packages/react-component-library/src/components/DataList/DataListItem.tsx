@@ -5,8 +5,18 @@ import { StyledItemKey } from './partials/StyledItemKey'
 import { StyledItemValue } from './partials/StyledItemValue'
 
 export interface DataListItemProps {
+  /**
+   * Value text to display for the item.
+   */
   children: string
+  /**
+   * Key text to display for the item.
+   */
   description: string
+  /**
+   * Toggles whether the item is part of a collapsable list.
+   * @private
+   */
   isCollapsible?: boolean
 }
 

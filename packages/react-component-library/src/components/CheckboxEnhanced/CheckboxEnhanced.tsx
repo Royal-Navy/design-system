@@ -5,8 +5,17 @@ import { StyledDescription } from './partials/StyledDescription'
 import { StyledCheckboxEnhanced } from './partials/StyledCheckboxEnhanced'
 
 export interface CheckboxEnhancedProps extends Omit<CheckboxProps, 'label'> {
+  /**
+   * Optional description text to display underneath the Checkbox.
+   */
   description?: string
+  /**
+   * Optional HTML `tabIndex` attribute to apply to the component.
+   */
   tabIndex?: number
+  /**
+   * Title text to display next to the Checkbox.
+   */
   title: string
 }
 

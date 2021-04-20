@@ -24,15 +24,45 @@ import { SearchBar } from '../SearchBar/SearchBar'
 import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
 
 export interface MastheadProps {
+  /**
+   * Toggle whether or not to display the default logo.
+   */
   hasDefaultLogo?: boolean
+  /**
+   * Toggle whether there are unread notifications.
+   */
   hasUnreadNotification?: boolean
+  /**
+   * Link component for when a user clicks on the logo / app name.
+   */
   homeLink?: React.ReactElement<LinkTypes>
+  /**
+   * Optional custom logo component (SVG reccomended).
+   */
   Logo?: React.ComponentType
+  /**
+   * Optional JSX to render the primary navigation.
+   */
   nav?: React.ReactElement<Nav<NavItem>>
+  /**
+   * Optional JSX to render a collection of notifications.
+   */
   notifications?: React.ReactElement<NotificationsProps>
+  /**
+   * Optional handler invoked when the submit search button is clicked.
+   */
   onSearch?: (term: string) => void
+  /**
+   * Optional placeholder text to display in the search bar.
+   */
   searchPlaceholder?: string
+  /**
+   * Text title of the application.
+   */
   title: string
+  /**
+   * Optional JSX to render a user menu.
+   */
   user?: React.ReactElement<MastheadUserProps>
 }
 

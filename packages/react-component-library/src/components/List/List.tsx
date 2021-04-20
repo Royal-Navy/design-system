@@ -7,6 +7,9 @@ import { useListItem } from './useListItem'
 import { warnIfOverwriting } from '../../helpers'
 
 interface ListProps extends ComponentWithClass {
+  /**
+   * Collection of `ListItem` components to display within the list.
+   */
   children:
     | React.ReactElement<ListItemProps>
     | React.ReactElement<ListItemProps>[]

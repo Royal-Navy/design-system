@@ -8,13 +8,13 @@ export default {
   title: 'Dismissible Banner',
 } as Meta
 
-export const Default = ({ description, ...rest }: any) => (
-  <DismissibleBanner {...rest}>{description}</DismissibleBanner>
+export const Default = ({ children, ...rest }: any) => (
+  <DismissibleBanner {...rest}>{children}</DismissibleBanner>
 )
 
 Default.args = {
   title: 'Example Title',
-  description: 'Example description',
+  children: 'Example description',
   onDismiss: (e: React.SyntheticEvent) => console.log,
 }
 

@@ -17,9 +17,21 @@ import {
 } from './types'
 
 export interface BadgeProps extends ComponentWithClass {
+  /**
+   * Color of the component (pre-defined design token values).
+   */
   color?: BadgeColorType
+  /**
+   * Whether to display using solid or faded colors.
+   */
   colorVariant?: BadgeColorVariantType
+  /**
+   * Size of the component.
+   */
   size?: BadgeSizeType
+  /**
+   * Type of component to display (style varies accordingly).
+   */
   variant?: BadgeVariantType
 }
 

@@ -16,12 +16,33 @@ import { StyledCircle } from './partials/StyledCircle'
 import { StyledDescription } from './partials/StyledDescription'
 
 export interface NotificationProps {
+  /**
+   * Link component for the notification item.
+   */
   link: React.ReactElement<LinkTypes>
+  /**
+   * Text name for the notification.
+   */
   name: string
+  /**
+   * Toggle if the notification has been read or not.
+   */
   isRead?: boolean
+  /**
+   * Text for the action link associated with the notification.
+   */
   action: string
+  /**
+   * Qualifier text for the action.
+   */
   on: string
+  /**
+   * Date and time of the event.
+   */
   when: Date
+  /**
+   * Text description of the notification.
+   */
   description: string
 }
 

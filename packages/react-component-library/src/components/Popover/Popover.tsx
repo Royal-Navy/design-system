@@ -20,15 +20,33 @@ import { useHideShow } from './useHideShow'
 
 interface PopoverProps
   extends Omit<FloatingBoxProps, 'onMouseEnter' | 'onMouseLeave'> {
+  /**
+   * JSX target element to attach the Popover to.
+   */
   children: React.ReactElement
+  /**
+   * Number of milliseconds (ms) before the component closes after mouse leave.
+   */
   closeDelay?: number
+  /**
+   * Arbitrary JSX content to display within the component.
+   */
   content: React.ReactElement
+  /**
+   * Toggles whether the Popover displays on click instead of mouse over.
+   */
   isClick?: boolean
+  /**
+   * Where to display the Popover relative to the target element.
+   */
   placement:
     | typeof POPOVER_PLACEMENT.ABOVE
     | typeof POPOVER_PLACEMENT.BELOW
     | typeof POPOVER_PLACEMENT.LEFT
     | typeof POPOVER_PLACEMENT.RIGHT
+  /**
+   * Type of component to display (style varies accordingly).
+   */
   scheme?: typeof FLOATING_BOX_SCHEME.LIGHT | typeof FLOATING_BOX_SCHEME.DARK
 }
 

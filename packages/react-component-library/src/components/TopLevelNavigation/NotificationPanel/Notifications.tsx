@@ -8,9 +8,15 @@ import { StyledList } from './partials/StyledList'
 import { StyledViewAll } from './partials/StyledViewAll'
 
 export interface NotificationsProps {
+  /**
+   * Collection of Notification item components.
+   */
   children:
     | React.ReactElement<NotificationProps>
     | React.ReactElement<NotificationProps>[]
+  /**
+   * Link component for 'View all notifications'.
+   */
   link: React.ReactElement<LinkTypes>
 }
 

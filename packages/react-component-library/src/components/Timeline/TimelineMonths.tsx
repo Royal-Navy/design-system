@@ -9,6 +9,9 @@ import { StyledMonths } from './partials/StyledMonths'
 
 export interface TimelineMonthsWithRenderContentProps
   extends ComponentWithClass {
+  /**
+   * Supply a custom presentation layer.
+   */
   render: (
     index: number,
     dayWidth: number,

@@ -41,20 +41,66 @@ export type DatePickerPlacement =
 export interface DatePickerProps
   extends ComponentWithClass,
     InputValidationProps {
+  /**
+   * End date of the picker (only relevant in range mode).
+   */
   endDate?: Date
+  /**
+   * Custom date format (e.g. `yyyy/MM/dd`).
+   */
   format?: string
+  /**
+   * Optional unique ID to apply to the component.
+   */
   id?: string
+  /**
+   * Toggles whether the component is disabled or not (preventing user interaction).
+   */
   isDisabled?: boolean
+  /**
+   * Toggles whether the component is a range variant (allowing selection of start and end dates).
+   */
   isRange?: boolean
+  /**
+   * Optional text label to display within the picker input.
+   */
   label?: string
+  /**
+   * Optional HTML `name` attribute to apply to the component.
+   */
   name?: string
+  /**
+   * Optional handler to be invoked when the blur event is emitted.
+   */
   onBlur?: (event: React.FormEvent) => void
+  /**
+   * Optional handler to be invoked when the value of the component changes.
+   */
   onChange?: (data: { startDate: Date; endDate: Date }) => void
+  /**
+   * Position to display the picker relative to the input.
+   */
   placement?: DatePickerPlacement
+  /**
+   * Start date of the picker (the first date selected by end user).
+   */
   startDate?: Date
+  /**
+   * Optional HTML `value` attribute associated with the component.
+   * @deprecated
+   */
   value?: string
+  /**
+   * Toggles whether or not the picker is open.
+   */
   isOpen?: boolean
+  /**
+   * An array of dates to disabled within the picker (preventing user interaction).
+   */
   disabledDays?: DayPickerProps['disabledDays']
+  /**
+   * Optional month from which to display the picker calendar on first render.
+   */
   initialMonth?: DayPickerProps['initialMonth']
 }
 

@@ -16,8 +16,17 @@ import { StyledUserText } from './partials/StyledUserText'
 
 export interface SidebarUserEProps extends ComponentWithClass {
   children?: never
+  /**
+   * Initials of the end user (e.g. Joe Bloggs => JB).
+   */
   initials: string
+  /**
+   * Link component to apply to the user avatar.
+   */
   userLink?: React.ReactElement<LinkTypes>
+  /**
+   * Link component to apply to the exit icon.
+   */
   exitLink?: React.ReactElement<LinkTypes>
   name?: string
 }

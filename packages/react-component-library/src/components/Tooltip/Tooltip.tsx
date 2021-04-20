@@ -7,18 +7,36 @@ import { PositionType } from '../../common/Position'
 import { TOOLTIP_POSITION } from '.'
 
 export interface TooltipProps extends PositionType {
+  /**
+   * Text to display within the tooltip.
+   */
   children?: React.ReactNode
+  /**
+   * Optional HTML `id` attribute.
+   */
   id?: string
+  /**
+   * Where to position the tooltip relative to the target element.
+   */
   position?:
     | typeof TOOLTIP_POSITION.ABOVE
     | typeof TOOLTIP_POSITION.BELOW
     | typeof TOOLTIP_POSITION.LEFT
     | typeof TOOLTIP_POSITION.RIGHT
+  /**
+   * Optional text title to display above the tooltip text.
+   */
   title?: string
+  /**
+   * Optional fixed width of the component.
+   */
   width?: number
 }
 
 interface StyledTooltipContentProps {
+  /**
+   * Where to position the tooltip relative to the target element.
+   */
   position?: string
 }
 

@@ -13,7 +13,13 @@ export type BlockSizeType =
   | typeof TIMELINE_BLOCK_SIZE.HALF_DAY
 
 export interface TimelineHoursWithRenderContentProps {
+  /**
+   * Number of hours per block in a day.
+   */
   blockSize?: BlockSizeType
+  /**
+   * Supply a custom presentation layer.
+   */
   render: (width: number, time: string) => React.ReactElement
 }
 

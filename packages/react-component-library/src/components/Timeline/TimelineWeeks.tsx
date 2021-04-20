@@ -9,6 +9,9 @@ import { TimelineWeek } from './TimelineWeek'
 
 export interface TimelineWeeksWithRenderContentProps
   extends ComponentWithClass {
+  /**
+   * Supply a custom presentation layer.
+   */
   render: (
     index: number,
     isOddNumber: boolean,

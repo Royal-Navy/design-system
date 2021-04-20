@@ -14,10 +14,25 @@ import { StyledHeadIcon } from './partials/StyledHeadIcon'
 import { StyledHeadTitle } from './partials/StyledHeadTitle'
 
 export interface SidebarEProps extends ComponentWithClass {
+  /**
+   * Optional icon to display at the top of the component (JSX).
+   */
   icon?: React.ReactNode
+  /**
+   * Optional text title to display at the top of the component.
+   */
   title?: string
+  /**
+   * Optional JSX to render a user menu.
+   */
   user?: React.ReactElement<SidebarUserEProps>
+  /**
+   * Toggle whether there are unread notifications.
+   */
   hasUnreadNotification?: boolean
+  /**
+   * Optional JSX to render a collection of notifications.
+   */
   notifications?: React.ReactElement<NotificationsProps>
 }
 

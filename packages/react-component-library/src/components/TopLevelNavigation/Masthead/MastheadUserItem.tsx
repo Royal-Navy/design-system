@@ -7,6 +7,9 @@ import { StyledUserItemText } from './partials/StyledUserItemText'
 import { StyledUserItemWrapper } from './partials/StyledUserItemWrapper'
 
 export interface MastheadUserItemProps extends NavItem {
+  /**
+   * Icon to display next to the user menu item.
+   */
   icon: React.ReactNode
 }
 

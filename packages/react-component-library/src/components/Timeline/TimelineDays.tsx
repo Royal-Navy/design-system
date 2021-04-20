@@ -7,6 +7,9 @@ import { TimelineDay } from './TimelineDay'
 import { TimelineHeaderRow } from './TimelineHeaderRow'
 
 export interface TimelineDaysWithRenderContentProps {
+  /**
+   * Supply a custom presentation layer.
+   */
   render: (index: number, dayWidth: number, date: Date) => React.ReactElement
 }
 

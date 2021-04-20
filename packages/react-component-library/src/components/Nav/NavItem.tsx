@@ -4,7 +4,15 @@ import React, { useState } from 'react'
 import { some, get } from 'lodash'
 
 interface NavItemProps {
+  /**
+   * Link item to display within the navigation item.
+   * @private
+   */
   children?: any
+  /**
+   * Toggles whether or not the navigation item has nested children.
+   * @private
+   */
   hasChildren: boolean
 }
 

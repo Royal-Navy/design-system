@@ -4,12 +4,24 @@ import { getKey } from '../../helpers'
 import { Link } from '../Link'
 import { NavItem } from './NavItem'
 import logger from '../../utils/logger'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 
-interface NavProps {
-  className?: string
+interface NavProps extends ComponentWithClass {
+  /**
+   * Link component to use for each navigation item (custom implementation welcome).
+   */
   LinkComponent?: any
+  /**
+   * Collection of navigation items to display in the list (JSON).
+   */
   navItems: any[]
+  /**
+   * Orientation of the component.
+   */
   orientation?: 'vertical' | 'horizontal'
+  /**
+   * Size of the component.
+   */
   size?: 'small' | 'regular' | 'large' | 'xlarge'
 }
 

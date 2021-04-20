@@ -6,8 +6,19 @@ import { StyledEndTitle } from './partials/StyledEndTitle'
 import { StyledIcon } from './partials/StyledIcon'
 
 export interface BreadcrumbsItemProps {
+  /**
+   * Denotes whether this is the first item.
+   * @private
+   */
   isFirst?: boolean
+  /**
+   * Denotes whether this is the last item.
+   * @private
+   */
   isLast?: boolean
+  /**
+   * Link component to use for the item (custom implementation welcome).
+   */
   link: React.ReactElement<LinkTypes>
 }
 

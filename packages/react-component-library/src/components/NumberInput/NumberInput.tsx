@@ -23,23 +23,77 @@ export type UnitPosition =
 export interface NumberInputProps
   extends ComponentWithClass,
     InputValidationProps {
+  /**
+   * Toggles whether to focus the input on initial render.
+   */
   autoFocus?: boolean
+  /**
+   * Toggles whether or not the clear button is displayed.
+   */
   canClear?: boolean
+  /**
+   * Optional text footnote to display below the component.
+   */
   footnote?: string
+  /**
+   * Optional HTML `id` attribute to apply to the internal input.
+   */
   id?: string
+  /**
+   * Toggles whether or not to render a reduced height version of the component.
+   */
   isCondensed?: boolean
+  /**
+   * Toggles whether the component is disabled or not (preventing user interaction).
+   */
   isDisabled?: boolean
+  /**
+   * Optional descriptive text label to display within the component.
+   */
   label?: string
+  /**
+   * Maximum value selectable by the component (upper bound).
+   */
   max?: number
+  /**
+   * Minimum value selectable by the component (lower bound).
+   */
   min?: number
+  /**
+   * HTML `name` attribute to apply to the internal input.
+   */
   name: string
+  /**
+   * Optional handler called when the `onBlur` event is emitted.
+   */
   onBlur?: (event: React.FormEvent) => void
+  /**
+   * Handler called when the value selected by the component changes.
+   */
   onChange: (event: any) => void
+  /**
+   * Optional placeholder text to display within the component.
+   */
   placeholder?: string
+  /**
+   * Optional adornment (icon or string) to display to the left of the input value.
+   */
   startAdornment?: React.ReactNode | string
+  /**
+   * Stepped increment amount by which to increase/decrese component value.
+   */
   step?: number
+  /**
+   * Optional value to display next to the component value.
+   */
   unit?: string
+  /**
+   * Whether to display the unit to the left or right of the component value.
+   */
   unitPosition?: UnitPosition
+  /**
+   * Currently selected value displayed by the component.
+   */
   value?: number
 }
 

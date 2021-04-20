@@ -11,21 +11,24 @@ import { StyledContextMenu } from './partials/StyledContextMenu'
 
 interface ContextMenuProps extends ComponentWithClass {
   /**
-   * attachedToRef: A ref object for the element associated with the context menu
+   * A ref object for the element associated with the component.
    */
   attachedToRef: React.RefObject<HTMLElement>
   /**
-   * clickType: Should the menu display when the user uses a left or right mouse click?
+   * Should the menu display when the user uses a left or right mouse click.
    */
   clickType?: ClickType
   /**
-   * onHide: Optional handler function to be called when the context menu is hidden
+   * Optional handler function to be invoked when the component is hidden.
    */
   onHide?: () => void
   /**
-   * onShow: Optional handler function to be called when the context menu is displayed
+   * Optional handler function to be invoked when the component is displayed.
    */
   onShow?: () => void
+  /**
+   * Where to display the component relative to the target element.
+   */
   position?: ClickMenuPositionType
 }
 

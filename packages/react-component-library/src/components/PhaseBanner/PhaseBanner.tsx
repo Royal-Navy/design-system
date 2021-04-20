@@ -8,8 +8,17 @@ import { StyledText } from './partials/StyledText'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 
 interface PhaseBannerProps extends ComponentWithClass {
+  /**
+   * Toggles whether the banner display full width across the viewport.
+   */
   isFullWidth?: boolean
+  /**
+   * Optional HTML `href` attribute to apply to the feedback link.
+   */
   link?: string
+  /**
+   * Optionally display the applications current phase of release.
+   */
   phase?: 'alpha' | 'beta'
 }
 

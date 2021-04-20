@@ -16,13 +16,25 @@ import { StyledUserItems } from './partials/StyledUserItems'
 const SHEET_WIDTH = 106
 
 export interface MastheadUserWithItemsProps extends Nav<MastheadUserItemProps> {
+  /**
+   * Initials of the end user (e.g. Joe Bloggs => JB).
+   */
   initials: string
+  /**
+   * Link component to apply to the user avatar.
+   */
   link?: never
 }
 
 export interface MastheadUserWithLinkProps extends ComponentWithClass {
   children?: never
+  /**
+   * Initials of the end user (e.g. Joe Bloggs => JB).
+   */
   initials: string
+  /**
+   * Link component to apply to the user avatar.
+   */
   link: React.ReactElement<LinkTypes>
 }
 

@@ -17,10 +17,25 @@ export interface SelectProps
   extends ReactSelectProps<any>,
     ComponentWithClass,
     InputValidationProps {
+  /**
+   * Optional text label to display within the component.
+   */
   label?: string
+  /**
+   * Optional HTML `name` attribute to apply to the component.
+   */
   name?: string
+  /**
+   * Optional handler invoked when the selected value changes.
+   */
   onChange?: (event: any) => void
+  /**
+   * Collection of options to display within the Select (JSON).
+   */
   options: SelectOptionWithBadgeType[]
+  /**
+   * Optional HTML `value` attribute to apply to the component.
+   */
   value?: string
 }
 

@@ -18,17 +18,40 @@ import { StyledScrollRight } from './partials/StyledScrollRight'
 import { StyledScrollLeft } from './partials/StyledScrollLeft'
 
 interface TabSetProps extends ComponentWithClass {
+  /**
+   * Collection of `Tab` components that make up the tab set.
+   */
   children: React.ReactElement<TabProps>[]
+  /**
+   * Optional handler invoked when the currently selected tab is changed.
+   */
   onChange?: (id: number) => void
+  /**
+   * Toggles whether to display the tab set full width.
+   */
   isFullWidth?: boolean
+  /**
+   * Toggles whether to render the scrollable variant of the component.
+   */
   isScrollable?: never
-  initialActiveTab?: number
 }
 
 interface ScrollableTabSetProps extends ComponentWithClass {
+  /**
+   * Collection of `Tab` components that make up the tab set.
+   */
   children: React.ReactElement<TabProps>[]
+  /**
+   * Optional handler invoked when the currently selected tab is changed.
+   */
   onChange?: (id: number) => void
+  /**
+   * Toggles whether to display the tab set full width.
+   */
   isFullWidth?: never
+  /**
+   * Toggles whether to render the scrollable variant of the component.
+   */
   isScrollable?: boolean
 }
 
