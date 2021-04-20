@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.45.0](https://github.com/Royal-Navy/design-system/compare/2.44.1...2.45.0) (2021-04-20)
+
+
+### Features
+
+* **TabSet:** Add ability to set initial active tab ([e91a0ed](https://github.com/Royal-Navy/design-system/commit/e91a0ed1715a55450277babd6756cfc4700c8786))
+
+
+
+
+
 ## [2.44.1](https://github.com/Royal-Navy/design-system/compare/2.44.0...2.44.1) (2021-04-19)
 
 **Note:** Version bump only for package royal-navy-design-system
