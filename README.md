@@ -1,7 +1,7 @@
 # Royal Navy [Design System](https://docs.royalnavy.io/)
 
  ![Build & Test Master](https://github.com/Royal-Navy/design-system/workflows/Build%20&%20Test%20Master/badge.svg)
- [![GitHub release](https://img.shields.io/github/release/royal-navy/design-system.svg)](https://github.com/Royal-Navy/design-system/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/design-system/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Royal-Navy_design-system&metric=coverage)](https://sonarcloud.io/dashboard?id=Royal-Navy_design-system)
+ [![GitHub release](https://img.shields.io/github/release/royal-navy/design-system.svg)](https://github.com/Royal-Navy/design-system/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/design-system/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Royal-Navy_design-system&metric=coverage)](https://sonarcloud.io/dashboard?id=Royal-Navy_design-system) [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](http://storybook.royalnavy.io)
 
 
 
