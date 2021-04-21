@@ -1,15 +1,18 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { Tab, TabSet } from '.'
+import { Tab, TabSet, TabSetProps, ScrollableTabSetProps } from '.'
 
 export default {
   component: TabSet,
   subcomponents: { Tab },
   title: 'Tab Set',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta
 
-export const Default = (props: any) => (
+export const Default: Story<TabSetProps> = (props) => (
   <TabSet {...props}>
     <Tab title="Example Tab 1">
       <p>example tab 1 content</p>
@@ -23,12 +26,10 @@ export const Default = (props: any) => (
   </TabSet>
 )
 
-Default.args = {
-  onChange: (e: React.SyntheticEvent) => console.log,
-}
+Default.args = {}
 
-export const InitialActiveTab = () => (
-  <TabSet onChange={(id: number) => console.log}>
+export const InitialActiveTab: Story<TabSetProps> = (props) => (
+  <TabSet {...props}>
     <Tab title="Example Tab 1">
       <p>example tab 1 content</p>
     </Tab>
@@ -43,8 +44,8 @@ export const InitialActiveTab = () => (
 
 InitialActiveTab.storyName = 'Initial active tab'
 
-export const FullWidth = () => (
-  <TabSet isFullWidth onChange={(id: number) => console.log}>
+export const FullWidth: Story<TabSetProps> = (props) => (
+  <TabSet {...props} isFullWidth>
     <Tab title="Example Tab 1">
       <p>example tab 1 content</p>
     </Tab>
@@ -56,9 +57,9 @@ export const FullWidth = () => (
 
 FullWidth.storyName = 'Full width'
 
-export const ScrollableBody = () => (
+export const ScrollableBody: Story<TabSetProps> = (props) => (
   <div style={{ height: '200px' }}>
-    <TabSet onChange={(id: number) => console.log}>
+    <TabSet {...props}>
       <Tab title="Example Tab 1">
         <>
           <p>scrollable tab 1 content</p>
@@ -101,8 +102,8 @@ const TabTitle: React.FC<TabTitleProps> = ({ year, children }) => (
   </>
 )
 
-export const Scrollable = () => (
-  <TabSet isScrollable>
+export const Scrollable: Story<ScrollableTabSetProps> = (props) => (
+  <TabSet {...props} isScrollable>
     <Tab title={<TabTitle year={2019}>01/02</TabTitle>}>
       <p>example tab 1 content</p>
     </Tab>

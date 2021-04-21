@@ -1,8 +1,9 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
 import {
   Badge,
+  BadgeProps,
   BADGE_COLOR,
   BADGE_COLOR_VARIANT,
   BADGE_SIZE,
@@ -11,13 +12,13 @@ import {
 
 export default { component: Badge, title: 'Badge' } as Meta
 
-export const Default = ({
+export const Default: Story<BadgeProps> = ({
   color,
   colorVariant,
   size,
   variant,
   children,
-}: any) => (
+}) => (
   <Badge
     color={color}
     colorVariant={colorVariant}

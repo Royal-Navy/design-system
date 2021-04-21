@@ -12,7 +12,7 @@ import { Bell } from '../../../icons'
 import { useOpenClose } from '../../../hooks'
 import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
 
-interface SidebarProps {
+export interface SidebarProps {
   /**
    * Toggle whether there are unread notifications.
    */

@@ -1,12 +1,18 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
 import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
-import { RangeSlider } from './index'
+import { RangeSlider, RangeSliderProps } from './index'
 
-export default { component: RangeSlider, title: 'Range Slider' } as Meta
+export default {
+  component: RangeSlider,
+  title: 'Range Slider',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-export const Default = (props: any) => (
+export const Default: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider {...props} />
   </div>
@@ -17,18 +23,15 @@ Default.args = {
   mode: 1,
   values: [20],
   tracksLeft: true,
-  onChange: (values: ReadonlyArray<number>) => console.log,
-  onUpdate: (values: ReadonlyArray<number>) => console.log,
 }
 
-export const MultipleHandles = () => (
+export const MultipleHandles: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
+      {...props}
       domain={[0, 40]}
       mode={2}
       values={[10, 20, 30]}
-      onChange={(values: ReadonlyArray<number>) => console.log}
-      onUpdate={(values: ReadonlyArray<number>) => console.log}
       tracksLeft
       tickCount={10}
       thresholds={[40, 60]}
@@ -40,14 +43,13 @@ export const MultipleHandles = () => (
 
 MultipleHandles.storyName = 'Multiple handles'
 
-export const SingleThreshold = () => (
+export const SingleThreshold: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
+      {...props}
       domain={[0, 40]}
       mode={1}
       values={[20]}
-      onChange={(values: ReadonlyArray<number>) => console.log}
-      onUpdate={(values: ReadonlyArray<number>) => console.log}
       tracksLeft
       thresholds={[40]}
     />
@@ -56,14 +58,13 @@ export const SingleThreshold = () => (
 
 SingleThreshold.storyName = 'Single threshold'
 
-export const DoubleThreshold = () => (
+export const DoubleThreshold: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
+      {...props}
       domain={[0, 40]}
       mode={1}
       values={[20]}
-      onChange={(values: ReadonlyArray<number>) => console.log}
-      onUpdate={(values: ReadonlyArray<number>) => console.log}
       tracksLeft
       thresholds={[40, 60]}
     />
@@ -72,14 +73,13 @@ export const DoubleThreshold = () => (
 
 DoubleThreshold.storyName = 'Double threshold'
 
-export const CustomValueFormatter = () => (
+export const CustomValueFormatter: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
+      {...props}
       domain={[0, 40]}
       mode={1}
       values={[20]}
-      onChange={(values: ReadonlyArray<number>) => console.log}
-      onUpdate={(values: ReadonlyArray<number>) => console.log}
       tickCount={4}
       tracksLeft
       formatValue={({ value }) => `£${value.toFixed(2)}`}
@@ -89,15 +89,14 @@ export const CustomValueFormatter = () => (
 
 CustomValueFormatter.storyName = 'Custom value formatter'
 
-export const Stepped = () => (
+export const Stepped: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
+      {...props}
       domain={[0, 40]}
       step={10}
       mode={1}
       values={[20]}
-      onChange={(values: ReadonlyArray<number>) => console.log}
-      onUpdate={(values: ReadonlyArray<number>) => console.log}
       tickCount={4}
       tracksLeft
     />
@@ -106,15 +105,14 @@ export const Stepped = () => (
 
 Stepped.storyName = 'Stepped'
 
-export const WithIcons = () => (
+export const WithIcons: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
+      {...props}
       domain={[0, 40]}
       step={10}
       mode={1}
       values={[20]}
-      onChange={(values: ReadonlyArray<number>) => console.log}
-      onUpdate={(values: ReadonlyArray<number>) => console.log}
       tickCount={4}
       tracksLeft
       IconLeft={IconBrightnessLow}
@@ -125,15 +123,14 @@ export const WithIcons = () => (
 
 WithIcons.storyName = 'With icons'
 
-export const WithLabels = () => (
+export const WithLabels: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
+      {...props}
       domain={[0, 40]}
       step={2}
       mode={1}
       values={[20]}
-      onChange={(values: ReadonlyArray<number>) => console.log}
-      onUpdate={(values: ReadonlyArray<number>) => console.log}
       tracksLeft
       hasLabels
       tickCount={20}
@@ -143,15 +140,14 @@ export const WithLabels = () => (
 
 WithLabels.storyName = 'With labels'
 
-export const ReversedScale = () => (
+export const ReversedScale: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
+      {...props}
       domain={[0, 40]}
       step={2}
       mode={1}
       values={[20]}
-      onChange={(values: ReadonlyArray<number>) => console.log}
-      onUpdate={(values: ReadonlyArray<number>) => console.log}
       tracksRight
       hasLabels
       tickCount={20}
@@ -162,15 +158,14 @@ export const ReversedScale = () => (
 
 ReversedScale.storyName = 'Reversed scale'
 
-export const Disabled = () => (
+export const Disabled: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
+      {...props}
       domain={[0, 40]}
       step={10}
       mode={1}
       values={[20]}
-      onChange={(values: ReadonlyArray<number>) => console.log}
-      onUpdate={(values: ReadonlyArray<number>) => console.log}
       tracksLeft
       isDisabled
     />

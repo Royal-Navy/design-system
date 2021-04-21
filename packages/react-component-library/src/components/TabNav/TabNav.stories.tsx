@@ -1,16 +1,20 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
 import { Link } from '../Link'
 import { TabNav, TabNavItem } from '.'
+import { Nav, NavItem } from '../../common/Nav'
 
 export default {
   component: TabNav,
   subcomponents: { TabNavItem },
   title: 'Tab Nav',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta
 
-export const Default = (props: any) => (
+export const Default: Story<Nav<NavItem>> = (props) => (
   <TabNav {...props}>
     <TabNavItem link={<Link href="#">Example Tab 1</Link>} isActive />
     <TabNavItem link={<Link href="#">Example Tab 2</Link>} />

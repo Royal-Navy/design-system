@@ -1,16 +1,24 @@
-import React, { useRef } from 'react'
 import { action } from '@storybook/addon-actions'
-import { Meta } from '@storybook/react/types-6-0'
+import React, { useRef } from 'react'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
 import { IconEdit, IconDelete, IconAdd } from '@royalnavy/icon-library'
 
-import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
+import {
+  ContextMenu,
+  ContextMenuProps,
+  ContextMenuItem,
+  ContextMenuDivider,
+} from '.'
 import { Link } from '../Link'
 
 export default {
   component: ContextMenu,
   subcomponents: { ContextMenuItem, ContextMenuDivider },
   title: 'Context Menu',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta
 
 const ClickArea = React.forwardRef((props, ref: any) => (
@@ -26,7 +34,7 @@ const ClickArea = React.forwardRef((props, ref: any) => (
   </div>
 ))
 
-export const Default = (props: any) => {
+export const Default: Story<ContextMenuProps> = (props) => {
   const ref = useRef()
 
   return (
@@ -62,7 +70,7 @@ export const Default = (props: any) => {
 
 Default.storyName = 'Default'
 
-export const WithIcons = (props: any) => {
+export const WithIcons: Story<ContextMenuProps> = (props) => {
   const ref = useRef()
 
   return (

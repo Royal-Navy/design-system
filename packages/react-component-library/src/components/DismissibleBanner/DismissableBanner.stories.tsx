@@ -1,29 +1,27 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { DismissibleBanner } from '.'
+import { DismissibleBanner, DismissibleBannerProps } from '.'
 
 export default {
   component: DismissibleBanner,
   title: 'Dismissible Banner',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta
 
-export const Default = ({ children, ...rest }: any) => (
+export const Default: Story<any> = ({ children, ...rest }) => (
   <DismissibleBanner {...rest}>{children}</DismissibleBanner>
 )
 
 Default.args = {
   title: 'Example Title',
   children: 'Example description',
-  onDismiss: (e: React.SyntheticEvent) => console.log,
 }
 
-export const HiddenCheckbox = () => (
-  <DismissibleBanner
-    onDismiss={(e: React.SyntheticEvent) => console.log}
-    hasCheckbox={false}
-    title="Example Title"
-  >
+export const HiddenCheckbox: Story<any> = (props) => (
+  <DismissibleBanner {...props} hasCheckbox={false} title="Example Title">
     Example description
   </DismissibleBanner>
 )

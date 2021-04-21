@@ -7,7 +7,7 @@ import { StyledBadge } from './partials/StyledBadge'
 import { StyledText } from './partials/StyledText'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 
-interface PhaseBannerProps extends ComponentWithClass {
+export interface PhaseBannerProps extends ComponentWithClass {
   /**
    * Toggles whether the banner display full width across the viewport.
    */

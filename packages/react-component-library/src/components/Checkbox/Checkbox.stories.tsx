@@ -1,17 +1,23 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import { withFormik } from '../../enhancers/withFormik'
-import { Checkbox } from '.'
+import { Checkbox, CheckboxProps } from '.'
 import { Button } from '../Button'
 import { FormikGroup } from '../FormikGroup'
 
-export default { component: Checkbox, title: 'Checkbox' } as Meta
+export default {
+  component: Checkbox,
+  title: 'Checkbox',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-export const Default = (props: any) => <Checkbox {...props} />
+export const Default: Story<CheckboxProps> = (props) => <Checkbox {...props} />
 
 Default.args = {
   id: undefined,
@@ -20,7 +26,7 @@ Default.args = {
   isChecked: true,
 }
 
-export const Disabled = (props: any) => <Checkbox {...props} />
+export const Disabled: Story<CheckboxProps> = (props) => <Checkbox {...props} />
 
 Disabled.args = {
   id: undefined,
@@ -29,7 +35,7 @@ Disabled.args = {
   name: 'disabled',
 }
 
-export const Invalid = (props: any) => <Checkbox {...props} />
+export const Invalid: Story<CheckboxProps> = (props) => <Checkbox {...props} />
 
 Invalid.args = {
   id: undefined,
@@ -38,7 +44,7 @@ Invalid.args = {
   isInvalid: true,
 }
 
-export const WithFormik = () => {
+export const WithFormik: Story<CheckboxProps> = () => {
   const CheckboxForm = () => {
     interface Data {
       [key: string]: boolean
@@ -59,7 +65,7 @@ export const WithFormik = () => {
     return (
       <Formik
         initialValues={initialValues}
-        onSubmit={action('Submitted')}
+        onSubmit={action('onSubmit')}
         validationSchema={validationSchema}
       >
         <Form>
@@ -93,7 +99,7 @@ export const WithFormik = () => {
 
 WithFormik.storyName = 'Formik'
 
-export const WithFormikGroup = () => {
+export const WithFormikGroup: Story<CheckboxProps> = () => {
   const CheckboxForm = () => {
     interface Data {
       [key: string]: string
@@ -114,7 +120,7 @@ export const WithFormikGroup = () => {
       <Formik
         initialErrors={{ exampleWithError: 'Field is required' }}
         initialValues={initialValues}
-        onSubmit={action('Submitted')}
+        onSubmit={action('onSubmit')}
         validationSchema={validationSchema}
       >
         <Form>

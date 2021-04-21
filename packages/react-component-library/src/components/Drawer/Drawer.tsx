@@ -8,7 +8,7 @@ import { StyledDrawerInner } from './partials/StyledDrawerInner'
 import { StyledDrawerButton } from './partials/StyledDrawerButton'
 import { StyledDrawerContent } from './partials/StyledDrawerContent'
 
-interface DrawerProps extends ComponentWithClass {
+export interface DrawerProps extends ComponentWithClass {
   /**
    * Arbitrary JSX content to display within the component.
    */

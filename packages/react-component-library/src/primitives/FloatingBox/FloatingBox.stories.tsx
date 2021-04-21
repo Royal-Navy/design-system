@@ -1,12 +1,18 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { FloatingBox } from './FloatingBox'
+import { FloatingBox, FloatingBoxProps } from './FloatingBox'
 import { FLOATING_BOX_ARROW_POSITION, FLOATING_BOX_SCHEME } from './constants'
 
-export default { component: FloatingBox, title: 'Floating Box' } as Meta
+export default {
+  component: FloatingBox,
+  title: 'Floating Box',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-export const Default = (props: any) => (
+export const Default: Story<FloatingBoxProps> = (props) => (
   <FloatingBox {...props}>
     <div style={{ padding: '0 1rem' }}>
       <pre>Arbitrary JSX content</pre>
@@ -22,8 +28,9 @@ Default.args = {
   position: FLOATING_BOX_ARROW_POSITION.LEFT_BOTTOM,
 }
 
-export const Dark = () => (
+export const Dark: Story<FloatingBoxProps> = (props) => (
   <FloatingBox
+    {...props}
     width={235}
     top={100}
     left={100}

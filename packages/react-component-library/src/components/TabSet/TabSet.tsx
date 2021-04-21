@@ -17,7 +17,7 @@ import { StyledBody } from './partials/StyledBody'
 import { StyledScrollRight } from './partials/StyledScrollRight'
 import { StyledScrollLeft } from './partials/StyledScrollLeft'
 
-interface TabSetProps extends ComponentWithClass {
+export interface TabSetProps extends ComponentWithClass {
   /**
    * Collection of `Tab` components that make up the tab set.
    */
@@ -36,7 +36,7 @@ interface TabSetProps extends ComponentWithClass {
   isScrollable?: never
 }
 
-interface ScrollableTabSetProps extends ComponentWithClass {
+export interface ScrollableTabSetProps extends ComponentWithClass {
   /**
    * Collection of `Tab` components that make up the tab set.
    */

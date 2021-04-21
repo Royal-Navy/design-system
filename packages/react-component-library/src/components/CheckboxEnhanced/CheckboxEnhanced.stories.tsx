@@ -1,15 +1,20 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
 
-import { CheckboxEnhanced } from '.'
+import { CheckboxEnhanced, CheckboxEnhancedProps } from '.'
 
 export default {
   component: CheckboxEnhanced,
   title: 'Checkbox Enhanced',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta
 
-export const Default = (props: any) => <CheckboxEnhanced {...props} />
+export const Default: Story<CheckboxEnhancedProps> = (props) => (
+  <CheckboxEnhanced {...props} />
+)
 
 Default.args = {
   id: undefined,
@@ -18,7 +23,7 @@ Default.args = {
   isChecked: true,
 }
 
-export const WithDescription = () => (
+export const WithDescription: Story<CheckboxEnhancedProps> = () => (
   <CheckboxEnhanced
     name="withdescription"
     title="With description"
@@ -28,11 +33,11 @@ export const WithDescription = () => (
 
 WithDescription.storyName = 'With description'
 
-export const GridLayout = () => (
+export const GridLayout: Story<CheckboxEnhancedProps> = () => (
   <form
     onSubmit={(e) => {
       e.preventDefault()
-      action('Submitted')(e)
+      action('onSubmit')(e)
     }}
   >
     <div

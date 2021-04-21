@@ -18,7 +18,7 @@ import { getId } from '../../helpers'
 
 import { useHideShow } from './useHideShow'
 
-interface PopoverProps
+export interface PopoverProps
   extends Omit<FloatingBoxProps, 'onMouseEnter' | 'onMouseLeave'> {
   /**
    * JSX target element to attach the Popover to.

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { IconAnchor } from '@royalnavy/icon-library'
 
-import { Select } from './index'
+import { Select, SelectProps } from './index'
 
 const options = [
   { value: 'chocolate', label: 'Chocolate', badge: 100 },
@@ -10,9 +10,15 @@ const options = [
   { value: 'strawberry', label: 'Strawberry' },
 ]
 
-export default { component: Select, title: 'Select' } as Meta
+export default {
+  component: Select,
+  title: 'Select',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-export const Default = (props: any) => (
+export const Default: Story<SelectProps> = (props) => (
   <div style={{ height: '10rem' }}>
     <Select {...props} />
   </div>
@@ -21,24 +27,23 @@ export const Default = (props: any) => (
 Default.args = {
   options,
   label: 'Example label',
-  onChange: (e: React.SyntheticEvent) => console.log,
   name: 'select-default',
   defaultMenuIsOpen: true,
 }
 
-export const Disabled = () => (
+export const Disabled: Story<SelectProps> = (props) => (
   <Select
+    {...props}
     options={options}
     label="Example label"
     name="select-disabled"
-    onChange={(e: React.SyntheticEvent) => console.log}
     isDisabled
   />
 )
 
 Disabled.storyName = 'Disabled'
 
-export const WithIcons = () => {
+export const WithIcons: Story<SelectProps> = (props) => {
   const iconOptions = options.map((option) => ({
     ...option,
     icon: <IconAnchor />,
@@ -47,10 +52,10 @@ export const WithIcons = () => {
   return (
     <div style={{ height: '10rem' }}>
       <Select
+        {...props}
         options={iconOptions}
         label="Example label"
         name="select-icons"
-        onChange={(e: React.SyntheticEvent) => console.log}
       />
     </div>
   )

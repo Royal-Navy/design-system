@@ -13,7 +13,7 @@ export interface RowProps {
   id: string
 }
 
-interface TableProps extends ComponentWithClass {
+export interface TableProps extends ComponentWithClass {
   /**
    * Data to display within the table (JSON).
    */

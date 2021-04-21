@@ -1,12 +1,18 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { IconArrowDropDown, IconArrowDropUp } from '@royalnavy/icon-library'
 
 import { Button } from '../Button'
-import { Nav } from '.'
+import { Nav, NavProps } from '.'
 import { useOpenClose } from '../../hooks'
 
-export default { component: Nav, title: 'Nav' } as Meta
+export default {
+  component: Nav,
+  title: 'Nav',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
 const navItems = [
   {
@@ -60,19 +66,19 @@ const navItemsWithChildren = [
   ...navItems,
 ]
 
-export const Default = (props: any) => <Nav {...props} />
+export const Default: Story<NavProps> = (props) => <Nav {...props} />
 
 Default.args = {
   navItems: navItemsWithChildren,
 }
 
-export const Horizontal = () => (
+export const Horizontal: Story<NavProps> = () => (
   <Nav navItems={navItems} orientation="horizontal" />
 )
 
 Horizontal.storyName = 'Horizontal'
 
-export const CustomItem = () => {
+export const CustomItem: Story<NavProps> = () => {
   const customNavItems = [
     {
       to: '#',
@@ -102,7 +108,7 @@ export const CustomItem = () => {
 
 CustomItem.storyName = 'Custom item'
 
-export const PrimaryNavigation = () => {
+export const PrimaryNavigation: Story<NavProps> = () => {
   const { open, toggle } = useOpenClose(true)
 
   interface CustomLink {

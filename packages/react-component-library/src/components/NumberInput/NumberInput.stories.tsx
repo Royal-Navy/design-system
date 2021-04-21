@@ -1,135 +1,128 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
+import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 import { IconBrightnessHigh } from '@royalnavy/icon-library'
 import * as yup from 'yup'
 
 import { Button } from '../Button'
-import { NumberInput } from './NumberInput'
+import { NumberInput, NumberInputProps } from './NumberInput'
 import { withFormik } from '../../enhancers/withFormik'
 import { UNIT_POSITION } from './constants'
 
 const chromaticIgnore = { chromatic: { disable: true } }
 
-export default { component: NumberInput, title: 'Number Input' } as Meta
+export default {
+  component: NumberInput,
+  title: 'Number Input',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-export const Default = (props: any) => <NumberInput {...props} />
+export const Default: Story<NumberInputProps> = (props) => (
+  <NumberInput {...props} />
+)
 
 Default.args = {
   id: undefined,
   name: 'number-input-default',
-  onChange: (e: React.SyntheticEvent) => console.log,
 }
 
-export const Condensed = () => (
-  <NumberInput
-    isCondensed
-    name="number-input-condensed"
-    onChange={(e: React.SyntheticEvent) => console.log}
-  />
+export const Condensed: Story<NumberInputProps> = (props) => (
+  <NumberInput {...props} isCondensed name="number-input-condensed" />
 )
 
 Condensed.storyName = 'Condensed'
 
-export const Clearable = () => (
-  <NumberInput
-    canClear
-    name="number-input-clearable"
-    onChange={(e: React.SyntheticEvent) => console.log}
-    value={10}
-  />
+export const Clearable: Story<NumberInputProps> = (props) => (
+  <NumberInput {...props} canClear name="number-input-clearable" value={10} />
 )
 
 Clearable.storyName = 'Clearable'
 
-export const Disabled = () => (
-  <NumberInput
-    isDisabled
-    name="number-input-disabled"
-    onChange={(e: React.SyntheticEvent) => console.log}
-  />
+export const Disabled: Story<NumberInputProps> = (props) => (
+  <NumberInput {...props} isDisabled name="number-input-disabled" />
 )
 
 Disabled.storyName = 'Disabled'
 
-export const WithFootnote = () => (
+export const WithFootnote: Story<NumberInputProps> = (props) => (
   <NumberInput
+    {...props}
     footnote="Footnote"
     name="number-input-with-footnote"
-    onChange={(e: React.SyntheticEvent) => console.log}
   />
 )
 
 WithFootnote.storyName = 'With footnote'
 
-export const WithLabel = () => (
-  <NumberInput
-    label="Label"
-    name="number-input-label"
-    onChange={(e: React.SyntheticEvent) => console.log}
-  />
+export const WithLabel: Story<NumberInputProps> = (props) => (
+  <NumberInput {...props} label="Label" name="number-input-label" />
 )
 
 WithLabel.storyName = 'With label'
 
-export const Placeholder = () => (
+export const Placeholder: Story<NumberInputProps> = (props) => (
   <NumberInput
+    {...props}
     label="Label"
     name="number-input-placeholder"
-    onChange={(e: React.SyntheticEvent) => console.log}
     placeholder="Placeholder"
   />
 )
 
 Placeholder.storyName = 'With placeholder'
 
-export const StartAdornmentIcon = () => (
+export const StartAdornmentIcon: Story<NumberInputProps> = (props) => (
   <NumberInput
+    {...props}
     name="number-input-start-adornment-icon"
-    onChange={(e: React.SyntheticEvent) => console.log}
     startAdornment={<IconBrightnessHigh />}
   />
 )
 
 StartAdornmentIcon.storyName = 'With start adornment icon'
 
-export const StartAdornmentText = () => (
+export const StartAdornmentText: Story<NumberInputProps> = (props) => (
   <NumberInput
+    {...props}
     name="number-input-start-adornment-text"
-    onChange={(e: React.SyntheticEvent) => console.log}
     startAdornment="Kts"
   />
 )
 
 StartAdornmentText.storyName = 'With start adornment text'
 
-export const WithUnit = () => (
+export const WithUnit: Story<NumberInputProps> = (props) => (
   <NumberInput
+    {...props}
     name="number-input-unit"
-    onChange={(e: React.SyntheticEvent) => console.log}
     value={1000}
     unit="m&sup3;"
   />
 )
 
 WithUnit.storyName = 'With unit'
+WithUnit.parameters = chromaticIgnore
 
-export const WithUnitLabel = () => (
+export const WithUnitLabel: Story<NumberInputProps> = (props) => (
   <NumberInput
+    {...props}
     label="Cost"
     name="number-input-unit-label"
-    onChange={(e: React.SyntheticEvent) => console.log}
     value={1000}
     unit="m&sup3;"
   />
 )
 
 WithUnitLabel.storyName = 'With unit and label'
+WithUnitLabel.parameters = chromaticIgnore
 
-export const UnitBefore = () => (
+export const UnitBefore: Story<NumberInputProps> = (props) => (
   <NumberInput
+    {...props}
     name="number-input-unit-before"
-    onChange={(e: React.SyntheticEvent) => console.log}
     value={1000}
     unit="&pound;"
     unitPosition={UNIT_POSITION.BEFORE}
@@ -138,7 +131,7 @@ export const UnitBefore = () => (
 
 UnitBefore.storyName = 'With unit before'
 
-export const WithFormik = () => {
+export const WithFormik: Story<NumberInputProps> = (props) => {
   const errorText = 'Something went wrong!'
 
   const validationSchema = yup.object().shape({
@@ -152,7 +145,7 @@ export const WithFormik = () => {
       initialErrors={{ gold: errorText }}
       initialTouched={{ gold: true }}
       initialValues={{ age: 13, btc: 10 }}
-      onSubmit={console.log}
+      onSubmit={action('onSubmit')}
       validationSchema={validationSchema}
     >
       <Form>

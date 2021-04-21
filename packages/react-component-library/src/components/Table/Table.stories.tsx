@@ -1,13 +1,16 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
 import { Badge, BADGE_COLOR_VARIANT, BADGE_COLOR } from '../Badge'
-import { Table, TableColumn } from '.'
+import { Table, TableProps, TableColumn } from '.'
 
 export default {
   component: Table,
   subcomponents: { TableColumn },
   title: 'Table',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta
 
 const tableData = [
@@ -29,7 +32,7 @@ const tableData = [
   },
 ]
 
-export const Default = (props: any) => {
+export const Default: Story<TableProps> = (props) => {
   return (
     <Table {...props}>
       <TableColumn field="first">First column</TableColumn>
@@ -45,7 +48,7 @@ Default.args = {
   data: tableData,
 }
 
-export const ArbitraryCellContent = () => {
+export const ArbitraryCellContent: Story<TableProps> = (props) => {
   const tableDataArbitraryCellContent = [
     {
       id: 'a',
@@ -74,7 +77,7 @@ export const ArbitraryCellContent = () => {
   ]
 
   return (
-    <Table data={tableDataArbitraryCellContent}>
+    <Table {...props} data={tableDataArbitraryCellContent}>
       <TableColumn field="first">First column</TableColumn>
       <TableColumn field="second">Status</TableColumn>
     </Table>
@@ -83,7 +86,7 @@ export const ArbitraryCellContent = () => {
 
 ArbitraryCellContent.storyName = 'Arbitrary cell content'
 
-export const Sortable = () => {
+export const Sortable: Story<TableProps> = (props) => {
   const tableDataSortable = [
     {
       id: 'a',
@@ -106,7 +109,7 @@ export const Sortable = () => {
   ]
 
   return (
-    <Table data={tableDataSortable}>
+    <Table {...props} data={tableDataSortable}>
       <TableColumn field="first" isSortable>
         First column
       </TableColumn>
@@ -122,7 +125,7 @@ export const Sortable = () => {
 
 Sortable.storyName = 'Sortable'
 
-export const WithCaption = () => {
+export const WithCaption: Story<TableProps> = (props) => {
   const tableDataWithCaption = [
     {
       id: 'a',
@@ -139,7 +142,7 @@ export const WithCaption = () => {
   ]
 
   return (
-    <Table data={tableDataWithCaption} caption="Example caption">
+    <Table {...props} data={tableDataWithCaption} caption="Example caption">
       <TableColumn field="first">First column</TableColumn>
       <TableColumn field="second">Second column</TableColumn>
       <TableColumn field="third">Third column</TableColumn>

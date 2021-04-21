@@ -1,11 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
 import { Graph, House, Tools } from '../../../icons'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
-import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './index'
+import {
+  Sidebar,
+  SidebarProps,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
+} from './index'
 
 export default {
   component: Sidebar,
@@ -17,6 +23,9 @@ export default {
     Notification,
   },
   title: 'Sidebar (Deprecated)',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta
 
 const nav = (
@@ -60,16 +69,25 @@ const user = <SidebarUser initials="XT" link={<Link href="#" />} />
 
 const StyledSidebar = styled(Sidebar)``
 
-export const Default = (props: any) => <Sidebar {...props} nav={nav} />
+export const Default: Story<SidebarProps> = (props) => (
+  <Sidebar {...props} nav={nav} />
+)
 
 Default.args = {}
 
-export const WithNotifications = () => (
-  <Sidebar hasUnreadNotification nav={nav} notifications={notifications} />
+export const WithNotifications: Story<SidebarProps> = (props) => (
+  <Sidebar
+    {...props}
+    hasUnreadNotification
+    nav={nav}
+    notifications={notifications}
+  />
 )
 
 WithNotifications.storyName = 'With notifications'
 
-export const WithUser = () => <Sidebar nav={nav} user={user} />
+export const WithUser: Story<SidebarProps> = (props) => (
+  <Sidebar {...props} nav={nav} user={user} />
+)
 
 WithUser.storyName = 'With user'

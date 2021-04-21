@@ -1,8 +1,8 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
 import { IconBrightnessLow } from '@royalnavy/icon-library'
-import { Button } from './index'
+import { Button, ButtonProps } from './index'
 import {
   BUTTON_COLOR,
   BUTTON_SIZE,
@@ -10,9 +10,13 @@ import {
   BUTTON_ICON_POSITION,
 } from './constants'
 
-export default { component: Button, title: 'Button' } as Meta
+export default {
+  component: Button,
+  title: 'Button',
+  parameters: { actions: { argTypesRegex: '^on.*' } },
+} as Meta
 
-export const Default = ({ children, ...rest }: any) => (
+export const Default: Story<ButtonProps> = ({ children, ...rest }) => (
   <Button {...rest}>{children}</Button>
 )
 
@@ -20,7 +24,7 @@ Default.args = {
   children: 'Default',
 }
 
-export const Primary = ({ children, ...rest }: any) => (
+export const Primary: Story<ButtonProps> = ({ children, ...rest }) => (
   <Button {...rest}>{children}</Button>
 )
 
@@ -29,7 +33,7 @@ Primary.args = {
   children: 'Primary',
 }
 
-export const Secondary = ({ children, ...rest }: any) => (
+export const Secondary: Story<ButtonProps> = ({ children, ...rest }) => (
   <Button {...rest}>{children}</Button>
 )
 
@@ -38,7 +42,7 @@ Secondary.args = {
   children: 'Secondary',
 }
 
-export const Tertiary = ({ children, ...rest }: any) => (
+export const Tertiary: Story<ButtonProps> = ({ children, ...rest }) => (
   <Button {...rest}>{children}</Button>
 )
 
@@ -47,7 +51,7 @@ Tertiary.args = {
   children: 'Tertiary',
 }
 
-export const Danger = ({ children, ...rest }: any) => (
+export const Danger: Story<ButtonProps> = ({ children, ...rest }) => (
   <Button {...rest}>{children}</Button>
 )
 
@@ -57,7 +61,7 @@ Danger.args = {
   children: 'Danger',
 }
 
-export const Small = ({ children, ...rest }: any) => (
+export const Small: Story<ButtonProps> = ({ children, ...rest }) => (
   <Button {...rest}>{children}</Button>
 )
 
@@ -67,7 +71,7 @@ Small.args = {
   children: 'Small',
 }
 
-export const Large = ({ children, ...rest }: any) => (
+export const Large: Story<ButtonProps> = ({ children, ...rest }) => (
   <Button {...rest}>{children}</Button>
 )
 
@@ -77,7 +81,7 @@ Large.args = {
   children: 'Large',
 }
 
-export const Disabled = ({ children }: any) => (
+export const Disabled: Story<ButtonProps> = ({ children }) => (
   <Button isDisabled>{children}</Button>
 )
 
@@ -85,7 +89,11 @@ Disabled.args = {
   children: 'Disabled',
 }
 
-export const WithLeftIcon = ({ icon, iconPosition, children }: any) => (
+export const WithLeftIcon: Story<ButtonProps> = ({
+  icon,
+  iconPosition,
+  children,
+}) => (
   <Button icon={icon} iconPosition={iconPosition}>
     {children}
   </Button>
@@ -99,7 +107,11 @@ WithLeftIcon.args = {
 
 WithLeftIcon.storyName = 'With left icon'
 
-export const WithRightIcon = ({ icon, iconPosition, children }: any) => (
+export const WithRightIcon: Story<ButtonProps> = ({
+  icon,
+  iconPosition,
+  children,
+}) => (
   <Button icon={icon} iconPosition={iconPosition}>
     {children}
   </Button>

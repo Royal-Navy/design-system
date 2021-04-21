@@ -1,21 +1,24 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { useToasts, Options } from 'react-toast-notifications'
 
-import { ToastProvider, Toast } from '.'
+import { ToastProvider, Toast, ToastProps } from '.'
 import { Button } from '../Button'
 
 export default {
   component: Toast,
   subcomponents: { ToastProvider },
   title: 'Toast',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta
 
 const LABEL = 'Example label'
 const DESCRIPTION = 'This is an example toast message'
 const DATE_TIME = new Date('Tue, 18 Feb 2020 14:36:43 GMT')
 
-export const Default = (props: any) => {
+export const Default: Story<Options> = (props) => {
   const ToastButton: React.FC<Options> = ({
     appearance = 'info',
     autoDismiss = false,
@@ -46,11 +49,9 @@ export const Default = (props: any) => {
   )
 }
 
-Default.args = {
-  onDismiss: (message?: string) => console.log,
-}
+Default.args = {}
 
-export const AutoDismiss = () => {
+export const AutoDismiss: Story<Options> = (props) => {
   const ToastButton: React.FC<Options> = ({
     appearance = 'info',
     autoDismiss = false,
@@ -76,26 +77,20 @@ export const AutoDismiss = () => {
 
   return (
     <ToastProvider>
-      <ToastButton
-        appearance="info"
-        onDismiss={(message?: string, ...rest) => console.log}
-        autoDismiss
-      />
+      <ToastButton {...props} appearance="info" autoDismiss />
     </ToastProvider>
   )
 }
 
 AutoDismiss.storyName = 'Auto dismiss'
 
-export const ComponentOnly = () => (
+export const ComponentOnly: Story<ToastProps> = (props) => (
   <Toast
+    {...props}
     appearance="info"
     autoDismiss={false}
     autoDismissTimeout={300}
     isRunning={false}
-    onDismiss={(message?: string) => console.log}
-    onMouseEnter={() => console.log('onMouseEnter')}
-    onMouseLeave={() => console.log('onMouseLeave')}
     placement="top-right"
     transitionDuration={300}
     transitionState="entered"
@@ -108,15 +103,13 @@ export const ComponentOnly = () => (
 
 ComponentOnly.storyName = 'Component only'
 
-export const Danger = () => (
+export const Danger: Story<ToastProps> = (props) => (
   <Toast
+    {...props}
     appearance="error"
     autoDismiss={false}
     autoDismissTimeout={300}
     isRunning={false}
-    onDismiss={(message?: string) => console.log}
-    onMouseEnter={() => console.log('onMouseEnter')}
-    onMouseLeave={() => console.log('onMouseLeave')}
     placement="top-right"
     transitionDuration={300}
     transitionState="entered"
@@ -129,15 +122,13 @@ export const Danger = () => (
 
 Danger.storyName = 'Danger'
 
-export const Success = () => (
+export const Success: Story<ToastProps> = (props) => (
   <Toast
+    {...props}
     appearance="success"
     autoDismiss={false}
     autoDismissTimeout={300}
     isRunning={false}
-    onDismiss={(message?: string) => console.log}
-    onMouseEnter={() => console.log('onMouseEnter')}
-    onMouseLeave={() => console.log('onMouseLeave')}
     placement="top-right"
     transitionDuration={300}
     transitionState="entered"
@@ -150,15 +141,13 @@ export const Success = () => (
 
 Success.storyName = 'Success'
 
-export const Warning = () => (
+export const Warning: Story<ToastProps> = (props) => (
   <Toast
+    {...props}
     appearance="warning"
     autoDismiss={false}
     autoDismissTimeout={300}
     isRunning={false}
-    onDismiss={(message?: string) => console.log}
-    onMouseEnter={() => console.log('onMouseEnter')}
-    onMouseLeave={() => console.log('onMouseLeave')}
     placement="top-right"
     transitionDuration={300}
     transitionState="entered"

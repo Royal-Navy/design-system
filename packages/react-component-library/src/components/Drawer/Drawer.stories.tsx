@@ -1,10 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { Drawer } from '.'
+import { Drawer, DrawerProps } from '.'
 
-export default { component: Drawer, title: 'Drawer' } as Meta
+export default {
+  component: Drawer,
+  title: 'Drawer',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
 const StyledDrawer = styled(Drawer)`
   position: absolute;
@@ -12,7 +18,7 @@ const StyledDrawer = styled(Drawer)`
   transform: translate(-10px, 10px);
 `
 
-export const Default = (props: any) => (
+export const Default: Story<DrawerProps> = (props) => (
   <div style={{ height: '20rem' }}>
     {/* Styles extended for Storybook presentation */}
     <StyledDrawer {...props}>

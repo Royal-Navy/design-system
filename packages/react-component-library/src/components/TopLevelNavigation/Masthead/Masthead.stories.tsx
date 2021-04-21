@@ -1,5 +1,5 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import {
   IconChatBubble,
   IconExitToApp,
@@ -11,6 +11,7 @@ import {
 import { Link } from '../../Link'
 import {
   Masthead,
+  MastheadProps,
   MastheadNav,
   MastheadNavItem,
   MastheadUser,
@@ -29,6 +30,9 @@ export default {
     Notification,
   },
   title: 'Masthead',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta
 
 const notifications = (
@@ -81,7 +85,7 @@ const user = (
   </MastheadUser>
 )
 
-export const Default = (props: any) => (
+export const Default: Story<MastheadProps> = (props) => (
   <Masthead
     {...props}
     homeLink={<Link href="#" />}
@@ -99,27 +103,30 @@ export const Default = (props: any) => (
 )
 
 Default.args = {
-  onSearch: (e: React.SyntheticEvent) => console.log,
   searchPlaceholder: 'Search',
   title: 'Royal Navy Design System',
   hasUnreadNotification: true,
 }
 
-export const CustomLogo = () => (
-  <Masthead title="Royal Navy Design System" Logo={IconHome} />
+export const CustomLogo: Story<MastheadProps> = (props) => (
+  <Masthead {...props} title="Royal Navy Design System" Logo={IconHome} />
 )
 
 CustomLogo.storyName = 'Custom logo'
 
-export const WithoutLogo = () => (
-  <Masthead title="Royal Navy Design System" hasDefaultLogo={false} />
+export const WithoutLogo: Story<MastheadProps> = (props) => (
+  <Masthead
+    {...props}
+    title="Royal Navy Design System"
+    hasDefaultLogo={false}
+  />
 )
 
 WithoutLogo.storyName = 'Without logo'
 
-export const WithSearch = () => (
+export const WithSearch: Story<MastheadProps> = (props) => (
   <Masthead
-    onSearch={(term: string) => console.log}
+    {...props}
     searchPlaceholder="Search..."
     title="Royal Navy Design System"
   />
@@ -127,20 +134,25 @@ export const WithSearch = () => (
 
 WithSearch.storyName = 'With search'
 
-export const WithAvatarLinks = () => (
-  <Masthead title="Royal Navy Design System" user={user} />
+export const WithAvatarLinks: Story<MastheadProps> = (props) => (
+  <Masthead {...props} title="Royal Navy Design System" user={user} />
 )
 
 WithAvatarLinks.storyName = 'With avatar links'
 
-export const WithNotifications = () => (
-  <Masthead title="Royal Navy Design System" notifications={notifications} />
+export const WithNotifications: Story<MastheadProps> = (props) => (
+  <Masthead
+    {...props}
+    title="Royal Navy Design System"
+    notifications={notifications}
+  />
 )
 
 WithNotifications.storyName = 'With notifications'
 
-export const WithNavigation = () => (
+export const WithNavigation: Story<MastheadProps> = (props) => (
   <Masthead
+    {...props}
     homeLink={<Link href="#" />}
     title="Royal Navy Design System"
     nav={

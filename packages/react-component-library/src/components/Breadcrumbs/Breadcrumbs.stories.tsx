@@ -1,8 +1,9 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { Breadcrumbs, BreadcrumbsItem } from '.'
+import { Breadcrumbs, BreadcrumbsItemProps, BreadcrumbsItem } from '.'
 import { Link } from '../Link'
+import { Nav } from '../../common/Nav'
 
 export default {
   component: Breadcrumbs,
@@ -10,7 +11,7 @@ export default {
   title: 'Breadcrumbs',
 } as Meta
 
-export const Default = ({ className }: any) => (
+export const Default: Story<Nav<BreadcrumbsItemProps>> = ({ className }) => (
   <Breadcrumbs className={className}>
     <BreadcrumbsItem link={<Link href="/">Home</Link>} />
     <BreadcrumbsItem link={<Link href="/components">Components</Link>} />
@@ -19,7 +20,3 @@ export const Default = ({ className }: any) => (
     />
   </Breadcrumbs>
 )
-
-Default.args = {
-  className: '',
-}

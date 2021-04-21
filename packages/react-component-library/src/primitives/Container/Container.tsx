@@ -5,7 +5,7 @@ import { StyledContainer } from './partials/StyledContainer'
 
 export type ContainerSizeType = 'small' | 'regular' | 'large'
 
-interface ContainerProps extends ComponentWithClass {
+export interface ContainerProps extends ComponentWithClass {
   size?: ContainerSizeType
 }
 

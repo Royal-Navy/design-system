@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { Dialog } from './index'
+import { Dialog, DialogProps } from './index'
 import { StyledMain } from '../Modal/partials/StyledMain'
 
 const StyledDialog = styled(Dialog)`
@@ -14,9 +14,15 @@ const StyledDialog = styled(Dialog)`
   }
 `
 
-export default { component: Dialog, title: 'Dialog' } as Meta
+export default {
+  component: Dialog,
+  title: 'Dialog',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-export const Default = (props: any) => (
+export const Default: Story<DialogProps> = (props) => (
   <div style={{ height: '10rem' }}>
     {/* Styles extended for Storybook presentation */}
     <StyledDialog {...props} />
@@ -29,7 +35,7 @@ Default.args = {
   isOpen: true,
 }
 
-export const Danger = () => (
+export const Danger: Story<DialogProps> = () => (
   <div style={{ height: '10rem' }}>
     <StyledDialog
       title="Example Title"

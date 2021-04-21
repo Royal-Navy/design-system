@@ -6,7 +6,7 @@ import { NavItem } from './NavItem'
 import logger from '../../utils/logger'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 
-interface NavProps extends ComponentWithClass {
+export interface NavProps extends ComponentWithClass {
   /**
    * Link component to use for each navigation item (custom implementation welcome).
    */

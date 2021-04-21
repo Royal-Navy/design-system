@@ -33,6 +33,10 @@ export interface BadgeProps extends ComponentWithClass {
    * Type of component to display (style varies accordingly).
    */
   variant?: BadgeVariantType
+  /**
+   * Text content to display within the badge.
+   */
+  children: React.ReactNode | React.ReactNode[]
 }
 
 export const Badge: React.FC<BadgeProps> = ({

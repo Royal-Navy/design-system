@@ -9,7 +9,7 @@ import { StyledListItem } from './partials/StyledListItem'
 import { StyledTextInput } from './partials/StyledTextInput'
 import { StyledTotalPages } from './partials/StyledTotalPages'
 
-interface PaginationProps {
+export interface PaginationProps {
   /**
    * Starting page to display from range on first render.
    */

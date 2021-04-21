@@ -1,25 +1,34 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { Modal } from './index'
+import { Modal, ModalProps } from './index'
 import { StyledMain } from './partials/StyledMain'
 import { BUTTON_COLOR, ButtonProps } from '../Button'
 
-export default { component: Modal, title: 'Modal' } as Meta
+export default {
+  component: Modal,
+  title: 'Modal',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
 const primaryButton: ButtonProps = {
-  onClick: (e: React.SyntheticEvent) => console.log,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onClick: (e: React.SyntheticEvent) => {},
   children: 'Primary',
 }
 
 const secondaryButton: ButtonProps = {
-  onClick: (e: React.SyntheticEvent) => console.log,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onClick: (e: React.SyntheticEvent) => {},
   children: 'Secondary',
 }
 
 const tertiaryButton: ButtonProps = {
-  onClick: (e: React.SyntheticEvent) => console.log,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onClick: (e: React.SyntheticEvent) => {},
   children: 'Tertiary',
 }
 
@@ -32,7 +41,7 @@ const StyledModal = styled(Modal)`
   }
 `
 
-export const Default = (props: any) => (
+export const Default: Story<ModalProps> = (props) => (
   <div style={{ height: '15rem' }}>
     {/* Styles extended for Storybook presentation */}
     <StyledModal {...props}>
@@ -51,7 +60,7 @@ Default.args = {
   tertiaryButton,
 }
 
-export const NoHeader = () => (
+export const NoHeader: Story<ModalProps> = () => (
   <div style={{ height: '10rem' }}>
     <StyledModal
       primaryButton={primaryButton}
@@ -66,7 +75,7 @@ export const NoHeader = () => (
 
 NoHeader.storyName = 'No header'
 
-export const NoButtons = () => (
+export const NoButtons: Story<ModalProps> = () => (
   <div style={{ height: '10rem' }}>
     <StyledModal title="Example Title" isOpen>
       <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
@@ -76,7 +85,7 @@ export const NoButtons = () => (
 
 NoButtons.storyName = 'No buttons'
 
-export const DangerButton = () => {
+export const DangerButton: Story<ModalProps> = () => {
   const primaryButtonWithoutIcon: ButtonProps = {
     ...primaryButton,
     color: BUTTON_COLOR.DANGER,
@@ -99,7 +108,7 @@ export const DangerButton = () => {
 
 DangerButton.storyName = 'Danger button with no icon'
 
-export const NoTertiaryButton = () => (
+export const NoTertiaryButton: Story<ModalProps> = () => (
   <div style={{ height: '15rem' }}>
     <StyledModal
       title="Example Title"
@@ -114,7 +123,7 @@ export const NoTertiaryButton = () => (
 
 NoTertiaryButton.storyName = 'No tertiary button'
 
-export const Blank = () => (
+export const Blank: Story<ModalProps> = () => (
   <div style={{ height: '10rem' }}>
     <StyledModal isOpen>
       <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>

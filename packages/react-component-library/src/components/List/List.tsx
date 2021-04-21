@@ -6,7 +6,7 @@ import { StyledList } from './partials/StyledList'
 import { useListItem } from './useListItem'
 import { warnIfOverwriting } from '../../helpers'
 
-interface ListProps extends ComponentWithClass {
+export interface ListProps extends ComponentWithClass {
   /**
    * Collection of `ListItem` components to display within the list.
    */

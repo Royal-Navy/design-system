@@ -21,7 +21,7 @@ interface DismissibleBannerWithTitleProps extends ComponentWithClass {
   /**
    * Optional handler function to be invoked when the Dismiss button is clicked.
    */
-  onDismiss: (
+  onDismiss?: (
     event: React.FormEvent<HTMLButtonElement>,
     canShowAgain: boolean
   ) => void
@@ -44,7 +44,7 @@ interface DismissibleBannerWithArbitraryContentProps
   /**
    * Optional handler function to be invoked when the Dismiss button is clicked.
    */
-  onDismiss: (
+  onDismiss?: (
     event: React.FormEvent<HTMLButtonElement>,
     canShowAgain: boolean
   ) => void
@@ -54,7 +54,7 @@ interface DismissibleBannerWithArbitraryContentProps
   title?: never
 }
 
-type DismissibleBannerProps =
+export type DismissibleBannerProps =
   | DismissibleBannerWithTitleProps
   | DismissibleBannerWithArbitraryContentProps
 

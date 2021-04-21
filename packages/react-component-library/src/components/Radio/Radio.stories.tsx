@@ -1,17 +1,23 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import { withFormik } from '../../enhancers/withFormik'
-import { Radio } from '.'
+import { Radio, RadioProps } from '.'
 import { Button } from '../Button'
 import { FormikGroup } from '../FormikGroup'
 
-export default { component: Radio, title: 'Radio' } as Meta
+export default {
+  component: Radio,
+  title: 'Radio',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-export const Default = (props: any) => <Radio {...props} />
+export const Default: Story<RadioProps> = (props) => <Radio {...props} />
 
 Default.args = {
   id: undefined,
@@ -20,7 +26,7 @@ Default.args = {
   isChecked: true,
 }
 
-export const Disabled = (props: any) => <Radio {...props} />
+export const Disabled: Story<RadioProps> = (props) => <Radio {...props} />
 
 Disabled.args = {
   id: undefined,
@@ -29,7 +35,7 @@ Disabled.args = {
   name: 'disabled',
 }
 
-export const Invalid = (props: any) => <Radio {...props} />
+export const Invalid: Story<RadioProps> = (props) => <Radio {...props} />
 
 Invalid.args = {
   id: undefined,
@@ -38,7 +44,7 @@ Invalid.args = {
   isInvalid: true,
 }
 
-export const WithFormik = () => {
+export const WithFormik: Story<RadioProps> = () => {
   const RadioForm = () => {
     interface Data {
       [key: string]: string
@@ -57,7 +63,7 @@ export const WithFormik = () => {
     return (
       <Formik
         initialValues={initialValues}
-        onSubmit={action('Submitted')}
+        onSubmit={action('onSubmit')}
         validationSchema={validationSchema}
       >
         <Form>
@@ -91,7 +97,7 @@ export const WithFormik = () => {
 
 WithFormik.storyName = 'Formik'
 
-export const WithFormikGroup = () => {
+export const WithFormikGroup: Story<RadioProps> = () => {
   const RadioForm = () => {
     interface Data {
       [key: string]: string
@@ -111,7 +117,7 @@ export const WithFormikGroup = () => {
     return (
       <Formik
         initialValues={initialValues}
-        onSubmit={action('Submitted')}
+        onSubmit={action('onSubmit')}
         validationSchema={validationSchema}
       >
         <Form>

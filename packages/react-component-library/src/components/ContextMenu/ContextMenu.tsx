@@ -9,7 +9,7 @@ import {
 } from '../../hooks/useClickMenu'
 import { StyledContextMenu } from './partials/StyledContextMenu'
 
-interface ContextMenuProps extends ComponentWithClass {
+export interface ContextMenuProps extends ComponentWithClass {
   /**
    * A ref object for the element associated with the component.
    */

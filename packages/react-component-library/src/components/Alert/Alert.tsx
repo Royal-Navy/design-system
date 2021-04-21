@@ -36,7 +36,7 @@ export type AlertVariantType =
   | typeof ALERT_VARIANT.SUCCESS
   | typeof ALERT_VARIANT.WARNING
 
-interface AlertProps {
+export interface AlertProps {
   /**
    * Description text to display under the component title.
    */

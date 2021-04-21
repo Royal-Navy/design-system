@@ -1,11 +1,17 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
 import { IconLayers, IconAnchor } from '@royalnavy/icon-library'
 
-import { Dropdown } from './Dropdown'
+import { Dropdown, DropdownProps } from './Dropdown'
 
-export default { component: Dropdown, title: 'Dropdown' } as Meta
+export default {
+  component: Dropdown,
+  title: 'Dropdown',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
 const options = [
   { value: 'option', label: 'Option' },
@@ -14,7 +20,7 @@ const options = [
   { value: 'disabled', label: 'Disabled', isDisabled: true },
 ]
 
-export const Default = (props: any) => {
+export const Default: Story<DropdownProps> = (props) => {
   return (
     <div style={{ height: '15rem' }}>
       <Dropdown {...props} />
@@ -27,7 +33,7 @@ Default.args = {
   label: 'Example label',
 }
 
-export const WithIcons = () => {
+export const WithIcons: Story<DropdownProps> = () => {
   const iconOptions = options.map((option) => ({
     ...option,
     icon: <IconAnchor />,

@@ -1,17 +1,25 @@
 import React from 'react'
 import * as yup from 'yup'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 
 import { withFormik } from '../../enhancers/withFormik'
-import { DatePicker, DATEPICKER_PLACEMENT } from '.'
+import { DatePicker, DatePickerProps, DATEPICKER_PLACEMENT } from '.'
 
 import { Button } from '../Button'
 
-export default { component: DatePicker, title: 'Date Picker' } as Meta
+export default {
+  component: DatePicker,
+  title: 'Date Picker',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-export const Default = (props: any) => <DatePicker {...props} />
+export const Default: Story<DatePickerProps> = (props) => (
+  <DatePicker {...props} />
+)
 
 Default.args = {
   id: undefined,
@@ -19,7 +27,7 @@ Default.args = {
   placement: DATEPICKER_PLACEMENT.BELOW,
 }
 
-export const CustomFormat = () => (
+export const CustomFormat: Story<DatePickerProps> = () => (
   <DatePicker
     format="yyyy/MM/dd"
     startDate={new Date(2021, 0, 11)}
@@ -29,7 +37,7 @@ export const CustomFormat = () => (
 
 CustomFormat.storyName = 'Custom format'
 
-export const CustomInitialMonth = () => (
+export const CustomInitialMonth: Story<DatePickerProps> = () => (
   <DatePicker
     initialMonth={new Date(2021, 1)}
     placement={DATEPICKER_PLACEMENT.BELOW}
@@ -38,15 +46,17 @@ export const CustomInitialMonth = () => (
 
 CustomInitialMonth.storyName = 'Custom initial month'
 
-export const CustomLabel = () => <DatePicker label="Custom label" />
+export const CustomLabel: Story<DatePickerProps> = () => (
+  <DatePicker label="Custom label" />
+)
 
 CustomLabel.storyName = 'Custom label'
 
-export const Disabled = () => <DatePicker isDisabled />
+export const Disabled: Story<DatePickerProps> = () => <DatePicker isDisabled />
 
 Disabled.storyName = 'Disabled'
 
-export const DisabledDays = () => (
+export const DisabledDays: Story<DatePickerProps> = () => (
   <DatePicker
     startDate={new Date(2021, 3, 1)}
     disabledDays={[
@@ -62,11 +72,11 @@ export const DisabledDays = () => (
 
 DisabledDays.storyName = 'Disabled days'
 
-export const Range = () => <DatePicker isRange />
+export const Range: Story<DatePickerProps> = () => <DatePicker isRange />
 
 Range.storyName = 'Range'
 
-export const WithFormik = () => {
+export const WithFormik: Story<DatePickerProps> = () => {
   interface Data {
     andAnotherStartDate: Date | null
     startDate: Date

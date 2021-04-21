@@ -1,36 +1,49 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
+import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import { Button } from '../Button'
-import { TextArea } from '.'
+import { TextArea, TextAreaInputProps } from '.'
 
 import { withFormik } from '../../enhancers/withFormik'
 
-export default { component: TextArea, title: 'Text Area' } as Meta
+export default {
+  component: TextArea,
+  title: 'Text Area',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-export const Default = (props: any) => <TextArea {...props} />
+export const Default: Story<TextAreaInputProps> = (props) => (
+  <TextArea {...props} />
+)
 
 Default.args = {
   name: 'textarea-default',
 }
 
-export const WithLabel = () => <TextArea label="Example label" />
+export const WithLabel: Story<TextAreaInputProps> = (props) => (
+  <TextArea {...props} label="Example label" />
+)
 
 WithLabel.storyName = 'With label'
 
-export const WithFootnote = () => (
-  <TextArea label="Example label" footnote="Example footnote" />
+export const WithFootnote: Story<TextAreaInputProps> = (props) => (
+  <TextArea {...props} label="Example label" footnote="Example footnote" />
 )
 
 WithFootnote.storyName = 'With footnote'
 
-export const Disabled = () => <TextArea label="Example label" isDisabled />
+export const Disabled: Story<TextAreaInputProps> = (props) => (
+  <TextArea {...props} label="Example label" isDisabled />
+)
 
 Disabled.storyName = 'Disabled'
 
-export const WithFormik = () => {
+export const WithFormik: Story<TextAreaInputProps> = (props) => {
   interface Data {
     'textarea-formik': string
   }
@@ -48,7 +61,7 @@ export const WithFormik = () => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={console.log}
+      onSubmit={action('onSubmit')}
       validationSchema={validationSchema}
     >
       <Form>

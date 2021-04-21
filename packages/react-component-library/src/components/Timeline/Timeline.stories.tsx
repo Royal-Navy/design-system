@@ -1,5 +1,5 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { css, CSSProp } from 'styled-components'
 import { format } from 'date-fns'
 import {
@@ -10,6 +10,7 @@ import {
 
 import {
   Timeline,
+  TimelineProps,
   TimelineEvent,
   TimelineEvents,
   TimelineHours,
@@ -38,6 +39,9 @@ export default {
     TimelineSide,
   },
   title: 'Timeline',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta
 
 const disableScrollableRegionFocusableRule = {
@@ -53,7 +57,7 @@ const disableScrollableRegionFocusableRule = {
   },
 }
 
-export const Default = (props: any) => (
+export const Default: Story<TimelineProps> = (props) => (
   <Timeline {...props}>
     <TimelineTodayMarker />
     <TimelineMonths />
@@ -72,8 +76,9 @@ Default.parameters = disableScrollableRegionFocusableRule
 
 Default.storyName = 'No data'
 
-export const BoundByFixedDates = () => (
+export const BoundByFixedDates: Story<TimelineProps> = (props) => (
   <Timeline
+    {...props}
     startDate={new Date(2020, 0, 13)}
     endDate={new Date(2020, 1, 15)}
     today={new Date(2020, 0, 15)}
@@ -90,8 +95,12 @@ BoundByFixedDates.parameters = disableScrollableRegionFocusableRule
 
 BoundByFixedDates.storyName = 'Bound by fixed dates'
 
-export const WithData = () => (
-  <Timeline startDate={new Date(2020, 9, 1)} today={new Date(2020, 9, 15, 12)}>
+export const WithData: Story<TimelineProps> = (props) => (
+  <Timeline
+    {...props}
+    startDate={new Date(2020, 9, 1)}
+    today={new Date(2020, 9, 15, 12)}
+  >
     <TimelineTodayMarker />
     <TimelineMonths />
     <TimelineWeeks />
@@ -125,8 +134,9 @@ WithData.parameters = disableScrollableRegionFocusableRule
 
 WithData.storyName = 'With data'
 
-export const WithSidebar = () => (
+export const WithSidebar: Story<TimelineProps> = (props) => (
   <Timeline
+    {...props}
     hasSide
     startDate={new Date(2020, 3, 1)}
     today={new Date(2020, 3, 15)}
@@ -174,8 +184,9 @@ WithSidebar.parameters = disableScrollableRegionFocusableRule
 
 WithSidebar.storyName = 'With sidebar'
 
-export const WithHours = () => (
+export const WithHours: Story<TimelineProps> = (props) => (
   <Timeline
+    {...props}
     hasSide
     startDate={new Date(2020, 3, 1)}
     today={new Date(2020, 3, 15)}
@@ -214,7 +225,7 @@ WithHours.parameters = disableScrollableRegionFocusableRule
 
 WithHours.storyName = 'With hours'
 
-export const WithCustomMonths = () => {
+export const WithCustomMonths: Story<TimelineProps> = (props) => {
   const CustomTimelineMonth = (
     index: number,
     dayWidth: number,
@@ -239,7 +250,11 @@ export const WithCustomMonths = () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
+    <Timeline
+      {...props}
+      startDate={new Date(2020, 3, 1)}
+      today={new Date(2020, 3, 15)}
+    >
       <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths render={CustomTimelineMonth} />
@@ -254,7 +269,7 @@ WithCustomMonths.parameters = disableScrollableRegionFocusableRule
 
 WithCustomMonths.storyName = 'With custom months'
 
-export const WithCustomWeeks = () => {
+export const WithCustomWeeks: Story<TimelineProps> = (props) => {
   const CustomTimelineWeek = (
     index: number,
     isOddNumber: boolean,
@@ -284,7 +299,11 @@ export const WithCustomWeeks = () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
+    <Timeline
+      {...props}
+      startDate={new Date(2020, 3, 1)}
+      today={new Date(2020, 3, 15)}
+    >
       <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
@@ -299,7 +318,7 @@ WithCustomWeeks.parameters = disableScrollableRegionFocusableRule
 
 WithCustomWeeks.storyName = 'With custom weeks'
 
-export const WithCustomDays = () => {
+export const WithCustomDays: Story<TimelineProps> = (props) => {
   const CustomTimelineDays = (index: number, dayWidth: number, date: Date) => {
     return (
       <span
@@ -317,7 +336,11 @@ export const WithCustomDays = () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
+    <Timeline
+      {...props}
+      startDate={new Date(2020, 3, 1)}
+      today={new Date(2020, 3, 15)}
+    >
       <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
@@ -332,7 +355,7 @@ WithCustomDays.parameters = disableScrollableRegionFocusableRule
 
 WithCustomDays.storyName = 'With custom days'
 
-export const WithCustomHours = () => {
+export const WithCustomHours: Story<TimelineProps> = (props) => {
   const CustomTimelineHours = (width: number, time: string) => {
     return (
       <div
@@ -350,7 +373,11 @@ export const WithCustomHours = () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
+    <Timeline
+      {...props}
+      startDate={new Date(2020, 3, 1)}
+      today={new Date(2020, 3, 15)}
+    >
       <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
@@ -366,7 +393,7 @@ WithCustomHours.parameters = disableScrollableRegionFocusableRule
 
 WithCustomHours.storyName = 'With custom hours'
 
-export const WithCustomTodayMarker = () => {
+export const WithCustomTodayMarker: Story<TimelineProps> = (props) => {
   const CustomTodayMarker = (date: Date, offset: string) => {
     return (
       <span
@@ -389,7 +416,11 @@ export const WithCustomTodayMarker = () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
+    <Timeline
+      {...props}
+      startDate={new Date(2020, 3, 1)}
+      today={new Date(2020, 3, 15)}
+    >
       <TimelineSide />
       <TimelineTodayMarker render={CustomTodayMarker} />
       <TimelineMonths />
@@ -404,7 +435,7 @@ WithCustomTodayMarker.parameters = disableScrollableRegionFocusableRule
 
 WithCustomTodayMarker.storyName = 'With custom today marker'
 
-export const WithCustomColumns = () => {
+export const WithCustomColumns: Story<TimelineProps> = (props) => {
   const CustomTimelineColumn = (
     index: number,
     isOddNumber: boolean,
@@ -425,7 +456,11 @@ export const WithCustomColumns = () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
+    <Timeline
+      {...props}
+      startDate={new Date(2020, 3, 1)}
+      today={new Date(2020, 3, 15)}
+    >
       <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
@@ -461,7 +496,7 @@ WithCustomColumns.parameters = disableScrollableRegionFocusableRule
 
 WithCustomColumns.storyName = 'With custom columns'
 
-export const WithCustomRowCss = () => {
+export const WithCustomRowCss: Story<TimelineProps> = (props) => {
   const rowCss: CSSProp = css`
     height: 40px;
   `
@@ -478,6 +513,7 @@ export const WithCustomRowCss = () => {
 
   return (
     <Timeline
+      {...props}
       hasSide
       startDate={new Date(2020, 3, 1)}
       endDate={new Date(2020, 4, 30)}
@@ -513,9 +549,13 @@ WithCustomRowCss.parameters = disableScrollableRegionFocusableRule
 
 WithCustomRowCss.storyName = 'With custom row CSS'
 
-export const WithCustomEventBarColor = () => {
+export const WithCustomEventBarColor: Story<TimelineProps> = (props) => {
   return (
-    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
+    <Timeline
+      {...props}
+      startDate={new Date(2020, 3, 1)}
+      today={new Date(2020, 3, 15)}
+    >
       <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
@@ -542,7 +582,7 @@ WithCustomEventBarColor.parameters = disableScrollableRegionFocusableRule
 
 WithCustomEventBarColor.storyName = 'With custom event bar color'
 
-export const WithCustomEventContent = () => {
+export const WithCustomEventContent: Story<TimelineProps> = (props) => {
   const CustomEvent = ({
     children,
     startDate,
@@ -576,7 +616,11 @@ export const WithCustomEventContent = () => {
   }
 
   return (
-    <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 15)}>
+    <Timeline
+      {...props}
+      startDate={new Date(2020, 3, 1)}
+      today={new Date(2020, 3, 15)}
+    >
       <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
@@ -654,9 +698,10 @@ WithCustomEventContent.parameters = disableScrollableRegionFocusableRule
 
 WithCustomEventContent.storyName = 'With custom event content'
 
-export const WithCustomDayWidth = () => {
+export const WithCustomDayWidth: Story<TimelineProps> = (props) => {
   return (
     <Timeline
+      {...props}
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
       unitWidth={75}
@@ -696,9 +741,10 @@ WithCustomDayWidth.parameters = disableScrollableRegionFocusableRule
 
 WithCustomDayWidth.storyName = 'With custom day width'
 
-export const WithCustomRange = () => {
+export const WithCustomRange: Story<TimelineProps> = (props) => {
   return (
     <Timeline
+      {...props}
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
       range={6}
@@ -738,8 +784,12 @@ WithCustomRange.parameters = disableScrollableRegionFocusableRule
 
 WithCustomRange.storyName = 'With custom range'
 
-export const NoVisibleCells = () => (
-  <Timeline startDate={new Date(2020, 0, 1)} today={new Date(2020, 0, 1, 12)}>
+export const NoVisibleCells: Story<TimelineProps> = (props) => (
+  <Timeline
+    {...props}
+    startDate={new Date(2020, 0, 1)}
+    today={new Date(2020, 0, 1, 12)}
+  >
     <TimelineTodayMarker />
     <TimelineMonths />
     <TimelineWeeks />
@@ -763,8 +813,9 @@ NoVisibleCells.parameters = disableScrollableRegionFocusableRule
 
 NoVisibleCells.storyName = 'No visible cells'
 
-export const HiddenToolbar = () => (
+export const HiddenToolbar: Story<TimelineProps> = (props) => (
   <Timeline
+    {...props}
     hideToolbar
     startDate={new Date(2020, 9, 1)}
     today={new Date(2020, 9, 15, 12)}
@@ -802,8 +853,9 @@ HiddenToolbar.parameters = disableScrollableRegionFocusableRule
 
 HiddenToolbar.storyName = 'Hidden toolbar'
 
-export const HiddenScaling = () => (
+export const HiddenScaling: Story<TimelineProps> = (props) => (
   <Timeline
+    {...props}
     hideScaling
     startDate={new Date(2020, 9, 1)}
     today={new Date(2020, 9, 15, 12)}

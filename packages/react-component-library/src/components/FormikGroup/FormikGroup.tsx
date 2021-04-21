@@ -8,7 +8,7 @@ import {
   transformErrorToAriaAttributes,
 } from '../../enhancers'
 
-interface FormikGroupProps extends ComponentWithClass {
+export interface FormikGroupProps extends ComponentWithClass {
   children: React.ReactElement[]
   label?: string
 }

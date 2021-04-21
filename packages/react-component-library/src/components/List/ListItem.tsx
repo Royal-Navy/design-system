@@ -19,9 +19,9 @@ export interface ListItemProps extends ComponentWithClass {
    */
   isActive?: boolean
   /**
-   * Handler called when the item is clicked.
+   * Optional handler called when the item is clicked.
    */
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   /**
    * Optional handler called when the mouse enters the item area.
    */

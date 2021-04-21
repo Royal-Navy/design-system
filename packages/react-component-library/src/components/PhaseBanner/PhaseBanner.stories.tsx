@@ -1,21 +1,31 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { PhaseBanner } from '.'
+import { PhaseBanner, PhaseBannerProps } from '.'
 
-export default { component: PhaseBanner, title: 'Phase Banner' } as Meta
+export default {
+  component: PhaseBanner,
+  title: 'Phase Banner',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-export const Default = (props: any) => <PhaseBanner {...props} />
+export const Default: Story<PhaseBannerProps> = (props) => (
+  <PhaseBanner {...props} />
+)
 
-export const Beta = () => <PhaseBanner phase="beta" />
+export const Beta: Story<PhaseBannerProps> = () => <PhaseBanner phase="beta" />
 
 Beta.storyName = 'Beta'
 
-export const CustomLink = () => <PhaseBanner link="#" />
+export const CustomLink: Story<PhaseBannerProps> = () => (
+  <PhaseBanner link="#" />
+)
 
 CustomLink.storyName = 'Custom link'
 
-export const CustomText = () => (
+export const CustomText: Story<PhaseBannerProps> = () => (
   <PhaseBanner>
     Custom html can go here. <strong>This part is in bold!</strong>
   </PhaseBanner>
@@ -23,6 +33,8 @@ export const CustomText = () => (
 
 CustomText.storyName = 'Custom text'
 
-export const FullWidth = () => <PhaseBanner isFullWidth />
+export const FullWidth: Story<PhaseBannerProps> = () => (
+  <PhaseBanner isFullWidth />
+)
 
 FullWidth.storyName = 'Full width'

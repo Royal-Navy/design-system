@@ -1,11 +1,11 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { Container } from '.'
+import { Container, ContainerProps } from '.'
 
 export default { component: Container, title: 'Container' } as Meta
 
-export const Default = ({ children, ...rest }: any) => (
+export const Default: Story<ContainerProps> = ({ children, ...rest }) => (
   <Container {...rest}>{children}</Container>
 )
 

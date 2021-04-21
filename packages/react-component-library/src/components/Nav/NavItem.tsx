@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { some, get } from 'lodash'
 
-interface NavItemProps {
+export interface NavItemProps {
   /**
    * Link item to display within the navigation item.
    * @private

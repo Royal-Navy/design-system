@@ -1,16 +1,20 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
+import { action } from '@storybook/addon-actions'
 
 import { Field, Formik, Form } from 'formik'
 import { withFormik } from '../../enhancers/withFormik'
 import { Button } from '../Button'
 
-import { ResponsiveSwitch, Switch, SWITCH_SIZE } from '.'
+import { ResponsiveSwitch, Switch, SwitchProps, SWITCH_SIZE } from '.'
 
 export default {
   component: Switch,
   subcomponents: { ResponsiveSwitch },
   title: 'Switch',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta
 
 const options = [
@@ -20,69 +24,59 @@ const options = [
   { label: 'Four', value: '4' },
 ]
 
-export const Default = (props: any) => <Switch {...props} />
+export const Default: Story<SwitchProps> = (props) => <Switch {...props} />
 
 Default.args = {
   name: 'switch-default',
   options,
-  onChange: (e: React.SyntheticEvent) => console.log,
 }
 
-export const WithLegend = () => (
+export const WithLegend: Story<SwitchProps> = (props) => (
   <Switch
+    {...props}
     name="switch-legend"
     label="Example legend"
     options={options}
-    onChange={(e: React.SyntheticEvent) => console.log}
   />
 )
 
 WithLegend.storyName = 'With legend'
 
-export const Responsive = () => (
-  <ResponsiveSwitch
-    name="switch-responsive"
-    options={options}
-    onChange={(e: React.SyntheticEvent) => console.log}
-  />
+export const Responsive: Story<SwitchProps> = (props) => (
+  <ResponsiveSwitch {...props} name="switch-responsive" options={options} />
 )
 
 Responsive.storyName = 'Responsive'
 
-export const SelectedValue = () => (
-  <Switch
-    name="switch-selected-value"
-    options={options}
-    onChange={(e: React.SyntheticEvent) => console.log}
-    value="2"
-  />
+export const SelectedValue: Story<SwitchProps> = (props) => (
+  <Switch {...props} name="switch-selected-value" options={options} value="2" />
 )
 
 SelectedValue.storyName = 'With value selected'
 
-export const Small = () => (
+export const Small: Story<SwitchProps> = (props) => (
   <Switch
+    {...props}
     name="switch-small"
     options={options}
-    onChange={(e: React.SyntheticEvent) => console.log}
     size={SWITCH_SIZE.SMALL}
   />
 )
 
 Small.storyName = 'Small'
 
-export const Large = () => (
+export const Large: Story<SwitchProps> = (props) => (
   <Switch
+    {...props}
     name="switch-large"
     options={options}
-    onChange={(e: React.SyntheticEvent) => console.log}
     size={SWITCH_SIZE.LARGE}
   />
 )
 
 Large.storyName = 'Large'
 
-export const WithFormik = () => {
+export const WithFormik: Story<SwitchProps> = (props) => {
   interface Data {
     'switch-formik': string
   }
@@ -96,7 +90,7 @@ export const WithFormik = () => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={console.log}
+      onSubmit={action('onSubmit')}
       render={({ setFieldValue }) => {
         return (
           <Form>

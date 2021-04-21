@@ -1,5 +1,5 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
 import {
   IconHome,
@@ -13,6 +13,7 @@ import {
 
 import {
   SidebarE,
+  SidebarEProps,
   SidebarNavE,
   SidebarNavItemE,
   SidebarUserE,
@@ -33,6 +34,9 @@ export default {
     Notification,
   },
   title: 'Sidebar (Experimental)',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
 } as Meta
 
 const userWithLinks = (
@@ -151,7 +155,7 @@ const notifications = (
   </Notifications>
 )
 
-export const Default = (props: any) => {
+export const Default: Story<SidebarEProps> = (props) => {
   return (
     <SidebarWrapperE>
       <div style={{ maxHeight: '20rem' }}>
@@ -164,11 +168,11 @@ export const Default = (props: any) => {
 
 Default.args = {}
 
-export const WithHeader = () => {
+export const WithHeader: Story<SidebarEProps> = (props) => {
   return (
     <SidebarWrapperE>
       <div style={{ maxHeight: '20rem' }}>
-        <SidebarE icon={<IconGrain />} title="Application Name">
+        <SidebarE {...props} icon={<IconGrain />} title="Application Name">
           {sidebarNav}
         </SidebarE>
       </div>
@@ -179,11 +183,12 @@ export const WithHeader = () => {
 
 WithHeader.storyName = 'With header'
 
-export const WithUserMenu = () => {
+export const WithUserMenu: Story<SidebarEProps> = (props) => {
   return (
     <SidebarWrapperE>
       <div style={{ maxHeight: '20rem' }}>
         <SidebarE
+          {...props}
           icon={<IconGrain />}
           title="Application Name"
           user={userWithLinks}
@@ -198,11 +203,12 @@ export const WithUserMenu = () => {
 
 WithUserMenu.storyName = 'With user menu'
 
-export const WithNotifications = () => {
+export const WithNotifications: Story<SidebarEProps> = (props) => {
   return (
     <SidebarWrapperE>
       <div style={{ maxHeight: '20rem' }}>
         <SidebarE
+          {...props}
           icon={<IconGrain />}
           title="Application Name"
           user={userWithLinks}
@@ -219,11 +225,12 @@ export const WithNotifications = () => {
 
 WithNotifications.storyName = 'With notifications'
 
-export const WithSubNavigation = () => {
+export const WithSubNavigation: Story<SidebarEProps> = (props) => {
   return (
     <SidebarWrapperE>
       <div style={{ maxHeight: '20rem' }}>
         <SidebarE
+          {...props}
           icon={<IconGrain />}
           title="Application Name"
           user={userWithLinks}

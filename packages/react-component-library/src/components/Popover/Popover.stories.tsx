@@ -1,10 +1,16 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
 import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
-import { Popover, POPOVER_PLACEMENT } from '.'
+import { Popover, PopoverProps, POPOVER_PLACEMENT } from '.'
 
-export default { component: Popover, title: 'Popover' } as Meta
+export default {
+  component: Popover,
+  title: 'Popover',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
 const popoverContent = (text = 'Hover on me') => (
   <div
@@ -18,7 +24,7 @@ const popoverContent = (text = 'Hover on me') => (
   </div>
 )
 
-export const Default = (props: any) => (
+export const Default: Story<PopoverProps> = (props) => (
   <Popover {...props}>{popoverContent()}</Popover>
 )
 
@@ -27,7 +33,7 @@ Default.args = {
   placement: POPOVER_PLACEMENT.BELOW,
 }
 
-export const Dark = () => (
+export const Dark: Story<PopoverProps> = () => (
   <Popover
     content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
     placement={POPOVER_PLACEMENT.BELOW}
@@ -39,7 +45,7 @@ export const Dark = () => (
 
 Dark.storyName = 'Dark'
 
-export const ClickToActivate = () => (
+export const ClickToActivate: Story<PopoverProps> = () => (
   <Popover
     content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
     isClick
