@@ -109,6 +109,20 @@ The Date Picker with Range Selection component is very similar to the standard D
     Description: 'ID for the input',
   },
   {
+    Name: 'isInvalid',
+    Type: '',
+    Required: 'False',
+    Default: '',
+    Description: 'Specifies whether the component should be presented in a invalid state.',
+  },
+  {
+    Name: 'isValid',
+    Type: '',
+    Required: 'False',
+    Default: '',
+    Description: 'Specifies whether the component should be presented in a valid state.',
+  },
+  {
     Name: 'isRange',
     Type: '',
     Required: 'False',

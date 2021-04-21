@@ -102,7 +102,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   ...rest
 }) => {
   const { committedValue, setCommittedValue } = useValue(value)
-  const { hasFocus, onFocus, onLocalBlur } = useFocus(onBlur)
+  const { hasFocus, onLocalFocus, onLocalBlur } = useFocus(onBlur)
 
   function setCommittedValueWithinRange(newValue: number) {
     if (
@@ -160,7 +160,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 
             onLocalBlur(event)
           }}
-          onFocus={onFocus}
+          onFocus={onLocalFocus}
           placeholder={placeholder}
           unit={unit}
           unitPosition={unitPosition}

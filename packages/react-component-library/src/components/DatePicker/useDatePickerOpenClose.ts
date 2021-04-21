@@ -8,19 +8,21 @@ export function useDatePickerOpenClose(
   floatingBoxChildrenRef: React.RefObject<HTMLDivElement>
   handleOnClose: () => void
   inputButtonRef: React.RefObject<HTMLButtonElement>
+  inputRef: React.RefObject<HTMLInputElement>
   handleOnFocus: (event: React.FormEvent<Element>) => void
   open: boolean
 } {
   const { open, handleOnClose, handleOnFocus } = useOpenClose(isOpen)
   const floatingBoxChildrenRef = useRef()
   const inputButtonRef = useRef()
+  const inputRef = useRef()
 
   function handleDatePickerOnClose() {
     handleOnClose(null)
   }
 
   useDocumentClick(
-    [floatingBoxChildrenRef, inputButtonRef],
+    [floatingBoxChildrenRef, inputButtonRef, inputRef],
     handleDatePickerOnClose,
     [open]
   )
@@ -29,6 +31,7 @@ export function useDatePickerOpenClose(
     floatingBoxChildrenRef,
     handleOnFocus,
     inputButtonRef,
+    inputRef,
     open,
     handleOnClose: handleDatePickerOnClose,
   }

@@ -13,12 +13,12 @@ function getBorderColor(
   { $hasFocus, $isInvalid, $isValid }: StyledOuterWrapperProps,
   borderColorDefault: string
 ) {
-  if ($hasFocus) {
-    return color('action', '600')
-  }
-
   if ($isInvalid) {
     return color('danger', '600')
+  }
+
+  if ($hasFocus) {
+    return color('action', '600')
   }
 
   if ($isValid) {
