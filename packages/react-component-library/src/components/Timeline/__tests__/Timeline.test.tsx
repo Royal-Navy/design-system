@@ -1278,6 +1278,21 @@ describe('Timeline', () => {
     it('renders the correct number of months', () => {
       expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(6)
     })
+
+    describe('when moving left four times', () => {
+      beforeEach(() => {
+        userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
+        userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
+        userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
+        userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
+      })
+
+      it('the first day should be 01', () => {
+        expect(wrapper.getAllByTestId('timeline-day')[0]).toHaveTextContent(
+          '01'
+        )
+      })
+    })
   })
 
   describe('when Timeline is initialised with a fixed `endDate`', () => {

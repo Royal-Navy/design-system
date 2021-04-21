@@ -102,7 +102,7 @@ export function reducer(
     options: {
       ...state.options,
       startDate: scale.from,
-      endDate: scale.to,
+      endDate: state.options.endDate ? scale.to : null,
     },
   }
 }
