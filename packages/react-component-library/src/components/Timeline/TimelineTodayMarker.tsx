@@ -22,10 +22,7 @@ export type TimelineTodayMarkerProps =
 
 function renderDefault({ offset }: { offset: string }) {
   return (
-    <StyledTodayMarker
-      data-testid="timeline-today-marker"
-      style={{ left: offset }}
-    />
+    <StyledTodayMarker $leftPx={offset} data-testid="timeline-today-marker" />
   )
 }
 
