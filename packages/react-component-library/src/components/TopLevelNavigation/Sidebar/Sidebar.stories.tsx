@@ -25,6 +25,12 @@ export default {
   title: 'Sidebar (Deprecated)',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    docs: {
+      description: {
+        component:
+          'This API has been marked as deprecated. Consider using the new experimental Sidebar implementation.',
+      },
+    },
   },
 } as Meta
 

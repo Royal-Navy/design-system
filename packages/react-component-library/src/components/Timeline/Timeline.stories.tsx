@@ -38,9 +38,15 @@ export default {
     TimelineDays,
     TimelineSide,
   },
-  title: 'Timeline',
+  title: 'Compound Timeline',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    docs: {
+      description: {
+        component:
+          'A collection of composable and presentation agnostic Compound Components, Hooks and a Context Provider, to help aid in the creation of scheduling based user-interfaces. Visit the [Compound Timeline microsite](https://docs.royalnavy.io/timeline) for more comprehensive documentation.',
+      },
+    },
   },
 } as Meta
 

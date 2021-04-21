@@ -15,6 +15,12 @@ export default {
   title: 'Select',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    docs: {
+      description: {
+        component:
+          'This component wraps a popular open-source library. See comprehensive documentation [here](https://github.com/JedWatson/react-select#readme).',
+      },
+    },
   },
 } as Meta
 
