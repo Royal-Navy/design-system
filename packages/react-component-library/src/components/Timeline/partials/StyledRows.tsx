@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 
 interface StyledRowsProps {
   $width: number
-  defaultStyles: boolean
+  $hasDefaultStyles: boolean
 }
 
 export const StyledRows = styled.div<StyledRowsProps>`
@@ -11,8 +11,8 @@ export const StyledRows = styled.div<StyledRowsProps>`
       ${$width}px
     `};
 
-  ${({ defaultStyles }) =>
-    defaultStyles &&
+  ${({ $hasDefaultStyles }) =>
+    $hasDefaultStyles &&
     css`
       height: auto;
       min-height: 4rem;

@@ -35,9 +35,9 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
 
   return (
     <StyledRows
+      $hasDefaultStyles={!renderColumns}
       $width={currentScaleOption.widths.day * days.length}
       className={mainClasses}
-      defaultStyles={!renderColumns}
       role="rowgroup"
       data-testid="timeline-rows"
       {...rest}

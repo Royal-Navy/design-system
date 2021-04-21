@@ -10,19 +10,19 @@ import {
 const { spacing } = selectors
 
 interface StyledWeekProps {
-  isOddNumber: boolean
-  marginLeft: string
-  width: string
+  $isOddNumber: boolean
+  $marginLeftPx: string
+  $widthPx: string
 }
 
 export const StyledWeek = styled.div<StyledWeekProps>`
   display: inline-flex;
   align-items: center;
   height: 2.5rem;
-  background-color: ${({ isOddNumber }) =>
-    isOddNumber ? TIMELINE_ALT_BG_COLOR : TIMELINE_BG_COLOR};
+  background-color: ${({ $isOddNumber }) =>
+    $isOddNumber ? TIMELINE_ALT_BG_COLOR : TIMELINE_BG_COLOR};
   border-bottom: ${spacing('px')} solid ${TIMELINE_BORDER_COLOR};
   justify-content: unset;
-  margin-left: ${({ marginLeft }) => marginLeft};
-  width: ${({ width }) => width};
+  margin-left: ${({ $marginLeftPx }) => $marginLeftPx};
+  width: ${({ $widthPx }) => $widthPx};
 `

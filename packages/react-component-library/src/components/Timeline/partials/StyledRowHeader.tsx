@@ -7,7 +7,7 @@ import { TIMELINE_BORDER_COLOR, TIMELINE_ROW_HEADER_WIDTH } from '../constants'
 const { color, fontSize, spacing, zIndex } = selectors
 
 interface StyledRowHeaderProps extends StyledSubComponentProps {
-  isHeader?: boolean
+  $isHeader?: boolean
 }
 
 export const StyledRowHeader = styled.div<StyledRowHeaderProps>`
@@ -25,8 +25,8 @@ export const StyledRowHeader = styled.div<StyledRowHeaderProps>`
   font-weight: 600;
   color: ${color('neutral', '600')};
   padding-right: ${spacing('8')};
-  ${({ isHeader }) =>
-    isHeader &&
+  ${({ $isHeader }) =>
+    $isHeader &&
     css`
       font-size: ${fontSize('s')};
       font-weight: normal;

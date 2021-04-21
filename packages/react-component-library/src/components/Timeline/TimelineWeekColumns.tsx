@@ -17,9 +17,9 @@ function renderDefaultColumns(
 ) {
   return (
     <StyledWeekColumn
-      isOddNumber={isOddNumber}
-      marginLeft={offsetPx}
-      width={widthPx}
+      $isOddNumber={isOddNumber}
+      $marginLeftPx={offsetPx}
+      $widthPx={widthPx}
     />
   )
 }

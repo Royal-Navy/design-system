@@ -174,8 +174,8 @@ export const Timeline: React.FC<TimelineProps> = ({
         {...rest}
       >
         <StyledInner
+          $hasSide={hasSide || hasTimelineSide}
           className="timeline__inner"
-          hasSide={hasSide || hasTimelineSide}
         >
           <TimelineWeekColumns renderColumns={renderColumns} />
           {rootChildren}
