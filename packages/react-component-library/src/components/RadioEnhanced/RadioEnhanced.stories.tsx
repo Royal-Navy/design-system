@@ -1,79 +1,65 @@
 import React from 'react'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 
-import { RadioEnhanced } from '.'
+import { RadioEnhanced, RadioEnhancedProps } from '.'
 
-const stories = storiesOf('RadioEnhanced', module)
+export default {
+  component: RadioEnhanced,
+  title: 'Radio Enhanced',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-stories.add('Default', () => {
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault()
-        action('Submitted')(e)
+export const Default: Story<RadioEnhancedProps> = (props) => (
+  <RadioEnhanced {...props} />
+)
+
+Default.args = {
+  id: undefined,
+  name: 'default',
+  title: 'Default radio enhanced',
+  isChecked: true,
+}
+
+export const WithDescription: Story<RadioEnhancedProps> = () => (
+  <RadioEnhanced
+    name="withdescription"
+    title="With description"
+    description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
+  />
+)
+
+WithDescription.storyName = 'With description'
+
+export const GridLayout: Story<RadioEnhancedProps> = () => (
+  <form
+    onSubmit={(e) => {
+      e.preventDefault()
+      action('onSubmit')(e)
+    }}
+  >
+    <div
+      style={{
+        width: '44rem',
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gridTemplateRows: '1fr 1fr',
+        gap: '1px 1px',
       }}
     >
-      <div
-        style={{
-          width: '44rem',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gridTemplateRows: '1fr 1fr',
-          gap: '1px 1px',
-        }}
-      >
-        <RadioEnhanced name="example" value="" title="My Label 1" />
-        <RadioEnhanced name="example" value="" title="My Label 2" />
-        <RadioEnhanced name="example" value="" title="My Label 3" />
-        <RadioEnhanced name="example" value="" title="My Label 4" />
-      </div>
-    </form>
-  )
-})
+      <RadioEnhanced
+        name="option"
+        title="Option 1"
+        value="Option 1"
+        isChecked
+      />
+      <RadioEnhanced name="option" title="Option 2" value="Option 2" />
+      <RadioEnhanced name="option" title="Option 3" value="Option 3" />
+      <RadioEnhanced name="option" title="Option 4" value="Option 4" />
+    </div>
+  </form>
+)
 
-stories.add('With description', () => {
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault()
-        action('Submitted')(e)
-      }}
-    >
-      <div
-        style={{
-          width: '44rem',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gridTemplateRows: '1fr 1fr',
-          gap: '1px 1px',
-        }}
-      >
-        <RadioEnhanced
-          name="example"
-          value=""
-          title="My Label 1"
-          description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
-        />
-        <RadioEnhanced
-          name="example"
-          value=""
-          title="My Label 2"
-          description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
-        />
-        <RadioEnhanced
-          name="example"
-          value=""
-          title="My Label 3"
-          description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
-        />
-        <RadioEnhanced
-          name="example"
-          value=""
-          title="My Label 4"
-          description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
-        />
-      </div>
-    </form>
-  )
-})
+GridLayout.storyName = 'Grid layout'

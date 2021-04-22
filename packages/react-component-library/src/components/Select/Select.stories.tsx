@@ -1,57 +1,70 @@
 import React from 'react'
-import { action } from '@storybook/addon-actions'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { IconAnchor } from '@royalnavy/icon-library'
-import { storiesOf } from '@storybook/react'
 
-import { Select } from './index'
-
-const stories = storiesOf('Select', module)
-const examples = storiesOf('Select/Examples', module)
+import { Select, SelectProps } from './index'
 
 const options = [
   { value: 'chocolate', label: 'Chocolate', badge: 100 },
-  { value: 'chozbun', label: 'Chozo Bun', badge: 21 },
-  { value: 'melon', label: 'Melon', badge: 321 },
-  { value: 'strawberry', label: 'Strawberry', badge: 200 },
-  { value: 'snozberry', label: 'Snozberry' },
-  { value: 'vanilla', label: 'Vanilla', badge: 50 },
+  { value: 'melon', label: 'Melon' },
+  { value: 'strawberry', label: 'Strawberry' },
 ]
 
-const iconOptions = options.map((option) => ({
-  ...option,
-  icon: <IconAnchor />,
-}))
+export default {
+  component: Select,
+  title: 'Select',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+    docs: {
+      description: {
+        component:
+          'This component wraps a popular open-source library. See comprehensive documentation [here](https://github.com/JedWatson/react-select#readme).',
+      },
+    },
+  },
+} as Meta
 
-stories.add('Default', () => (
+export const Default: Story<SelectProps> = (props) => (
+  <div style={{ height: '10rem' }}>
+    <Select {...props} />
+  </div>
+)
+
+Default.args = {
+  options,
+  label: 'Example label',
+  name: 'select-default',
+  defaultMenuIsOpen: true,
+}
+
+export const Disabled: Story<SelectProps> = (props) => (
   <Select
+    {...props}
     options={options}
     label="Example label"
-    onChange={action('onChange')}
-  />
-))
-
-examples.add('Open by default', () => (
-  <Select
-    options={options}
-    label="Example label"
-    onChange={action('onChange')}
-    defaultMenuIsOpen
-  />
-))
-
-examples.add('Disabled', () => (
-  <Select
-    options={options}
-    label="Example label"
-    onChange={action('onChange')}
+    name="select-disabled"
     isDisabled
   />
-))
+)
 
-examples.add('Icons', () => (
-  <Select
-    options={iconOptions}
-    label="Example label"
-    onChange={action('onChange')}
-  />
-))
+Disabled.storyName = 'Disabled'
+
+export const WithIcons: Story<SelectProps> = (props) => {
+  const iconOptions = options.map((option) => ({
+    ...option,
+    icon: <IconAnchor />,
+  }))
+
+  return (
+    <div style={{ height: '10rem' }}>
+      <Select
+        {...props}
+        options={iconOptions}
+        label="Example label"
+        name="select-icons"
+      />
+    </div>
+  )
+}
+
+WithIcons.storyName = 'With icons'

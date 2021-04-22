@@ -1,175 +1,162 @@
 import React from 'react'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 import { Field, Formik, Form } from 'formik'
 import { IconBrightnessHigh } from '@royalnavy/icon-library'
 import * as yup from 'yup'
 
 import { Button } from '../Button'
-import { NumberInput } from './NumberInput'
+import { NumberInput, NumberInputProps } from './NumberInput'
 import { withFormik } from '../../enhancers/withFormik'
 import { UNIT_POSITION } from './constants'
 
-const stories = storiesOf('Number Input', module)
-const examples = storiesOf('Number Input/Examples', module)
-
 const chromaticIgnore = { chromatic: { disable: true } }
 
-stories.add('Default', () => (
-  <NumberInput name="number-input" onChange={action('onChange')} />
-))
+export default {
+  component: NumberInput,
+  title: 'Number Input',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-examples.add('Condensed', () => (
-  <NumberInput isCondensed name="number-input" onChange={action('onChange')} />
-))
+export const Default: Story<NumberInputProps> = (props) => (
+  <NumberInput {...props} />
+)
 
-examples.add('Clear', () => (
+Default.args = {
+  id: undefined,
+  name: 'number-input-default',
+}
+
+export const Condensed: Story<NumberInputProps> = (props) => (
+  <NumberInput {...props} isCondensed name="number-input-condensed" />
+)
+
+Condensed.storyName = 'Condensed'
+
+export const Clearable: Story<NumberInputProps> = (props) => (
+  <NumberInput {...props} canClear name="number-input-clearable" value={10} />
+)
+
+Clearable.storyName = 'Clearable'
+
+export const Disabled: Story<NumberInputProps> = (props) => (
+  <NumberInput {...props} isDisabled name="number-input-disabled" />
+)
+
+Disabled.storyName = 'Disabled'
+
+export const WithFootnote: Story<NumberInputProps> = (props) => (
   <NumberInput
-    canClear
-    name="number-input"
-    onChange={action('onChange')}
-    value={10}
-  />
-))
-
-examples.add('Disabled', () => (
-  <NumberInput isDisabled name="number-input" onChange={action('onChange')} />
-))
-
-examples.add('Footnote', () => (
-  <NumberInput
+    {...props}
     footnote="Footnote"
-    name="number-input"
-    onChange={action('onChange')}
+    name="number-input-with-footnote"
   />
-))
+)
 
-examples.add('Label', () => (
-  <NumberInput
-    label="Label"
-    name="number-input"
-    onChange={action('onChange')}
-  />
-))
+WithFootnote.storyName = 'With footnote'
 
-examples.add('Label and value', () => (
-  <NumberInput
-    label="Label"
-    name="number-input"
-    onChange={action('onChange')}
-    value={10}
-  />
-))
+export const WithLabel: Story<NumberInputProps> = (props) => (
+  <NumberInput {...props} label="Label" name="number-input-label" />
+)
 
-examples.add('Placeholder', () => (
+WithLabel.storyName = 'With label'
+
+export const Placeholder: Story<NumberInputProps> = (props) => (
   <NumberInput
+    {...props}
     label="Label"
-    name="number-input"
-    onChange={action('onChange')}
+    name="number-input-placeholder"
     placeholder="Placeholder"
   />
-))
+)
 
-examples.add('Start adornment icon', () => (
+Placeholder.storyName = 'With placeholder'
+
+export const StartAdornmentIcon: Story<NumberInputProps> = (props) => (
   <NumberInput
-    name="example-number-input"
-    onChange={action('onChange')}
+    {...props}
+    name="number-input-start-adornment-icon"
     startAdornment={<IconBrightnessHigh />}
   />
-))
+)
 
-examples.add('Start adornment text', () => (
+StartAdornmentIcon.storyName = 'With start adornment icon'
+
+export const StartAdornmentText: Story<NumberInputProps> = (props) => (
   <NumberInput
-    name="example-number-input"
-    onChange={action('onChange')}
+    {...props}
+    name="number-input-start-adornment-text"
     startAdornment="Kts"
   />
-))
-
-examples.add('Value', () => (
-  <NumberInput name="number-input" onChange={action('onChange')} value={10} />
-))
-
-examples.add(
-  'Unit',
-  () => (
-    <NumberInput
-      name="number-input"
-      onChange={action('onChange')}
-      value={1000}
-      unit="m&sup3;"
-    />
-  ),
-  chromaticIgnore
 )
 
-examples.add(
-  'Unit and label',
-  () => (
-    <NumberInput
-      label="Cost"
-      name="number-input"
-      onChange={action('onChange')}
-      value={1000}
-      unit="m&sup3;"
-    />
-  ),
-  chromaticIgnore
-)
+StartAdornmentText.storyName = 'With start adornment text'
 
-examples.add('Unit before', () => (
+export const WithUnit: Story<NumberInputProps> = (props) => (
   <NumberInput
-    name="number-input"
-    onChange={action('onChange')}
+    {...props}
+    name="number-input-unit"
+    value={1000}
+    unit="m&sup3;"
+  />
+)
+
+WithUnit.storyName = 'With unit'
+WithUnit.parameters = chromaticIgnore
+
+export const WithUnitLabel: Story<NumberInputProps> = (props) => (
+  <NumberInput
+    {...props}
+    label="Cost"
+    name="number-input-unit-label"
+    value={1000}
+    unit="m&sup3;"
+  />
+)
+
+WithUnitLabel.storyName = 'With unit and label'
+WithUnitLabel.parameters = chromaticIgnore
+
+export const UnitBefore: Story<NumberInputProps> = (props) => (
+  <NumberInput
+    {...props}
+    name="number-input-unit-before"
     value={1000}
     unit="&pound;"
     unitPosition={UNIT_POSITION.BEFORE}
   />
-))
+)
 
-examples.add('Formik', () => {
-  const NumberInputForm = () => {
-    const errorText = 'Something went wrong!'
+UnitBefore.storyName = 'With unit before'
 
-    const validationSchema = yup.object().shape({
-      gold: yup.number().required(errorText),
-    })
+export const WithFormik: Story<NumberInputProps> = (props) => {
+  const errorText = 'Something went wrong!'
 
-    const FormikNumberInput = withFormik(NumberInput)
+  const validationSchema = yup.object().shape({
+    gold: yup.number().required(errorText),
+  })
 
-    return (
-      <Formik
-        initialErrors={{ gold: errorText }}
-        initialTouched={{ gold: true }}
-        initialValues={{ age: 13, btc: 10 }}
-        onSubmit={action('onSubmit')}
-        validationSchema={validationSchema}
-      >
-        <Form>
-          <Field component={FormikNumberInput} name="gold" label="Gold bars" />
-          <Field component={FormikNumberInput} name="age" label="Age" />
-          <Field
-            className="is-valid"
-            component={FormikNumberInput}
-            name="btc"
-            label="Bitcoins"
-          />
-          <Field
-            className="is-invalid"
-            component={FormikNumberInput}
-            name="bottles"
-            label="Bottles"
-          />
-          <Button variant="secondary" onClick={action('Cancel')}>
-            Cancel
-          </Button>
-          <Button type="submit" variant="primary">
-            Save
-          </Button>
-        </Form>
-      </Formik>
-    )
-  }
+  const FormikNumberInput = withFormik(NumberInput)
 
-  return <NumberInputForm />
-})
+  return (
+    <Formik
+      initialErrors={{ gold: errorText }}
+      initialTouched={{ gold: true }}
+      initialValues={{ age: 13, btc: 10 }}
+      onSubmit={action('onSubmit')}
+      validationSchema={validationSchema}
+    >
+      <Form>
+        <Field component={FormikNumberInput} name="gold" label="Gold bars" />
+        <Field component={FormikNumberInput} name="btc" label="Bitcoins" />
+        <Button type="submit" variant="primary">
+          Submit
+        </Button>
+      </Form>
+    </Formik>
+  )
+}
+
+WithFormik.storyName = 'Formik'

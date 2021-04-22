@@ -1,16 +1,18 @@
 import React from 'react'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { IconArrowDropDown, IconArrowDropUp } from '@royalnavy/icon-library'
-import { storiesOf } from '@storybook/react'
-import { withKnobs } from '@storybook/addon-knobs'
 
-import { CustomLink } from '../CustomLink'
 import { Button } from '../Button'
-import { Nav } from '.'
+import { Nav, NavProps } from '.'
 import { useOpenClose } from '../../hooks'
 
-const stories = storiesOf('Nav', module)
-
-stories.addDecorator(withKnobs)
+export default {
+  component: Nav,
+  title: 'Nav',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
 const navItems = [
   {
@@ -64,50 +66,73 @@ const navItemsWithChildren = [
   ...navItems,
 ]
 
-stories.add('Vertical', () => <Nav navItems={navItemsWithChildren} />)
+export const Default: Story<NavProps> = (props) => <Nav {...props} />
 
-stories.add('Horizontal', () => (
+Default.args = {
+  navItems: navItemsWithChildren,
+}
+
+export const Horizontal: Story<NavProps> = () => (
   <Nav navItems={navItems} orientation="horizontal" />
-))
+)
 
-const customNavItems = [
-  {
-    to: '#',
-    label: 'Styles',
-  },
-  {
-    to: '#',
-    label: 'Components',
-  },
-  {
-    to: '#',
-    label: 'Patterns',
-    active: true,
-  },
-  {
-    to: '#',
-    label: 'Community',
-  },
-  {
-    to: '#',
-    label: 'About',
-  },
-]
+Horizontal.storyName = 'Horizontal'
 
-stories.add('Custom Item', () => <Nav navItems={customNavItems} />)
+export const CustomItem: Story<NavProps> = () => {
+  const customNavItems = [
+    {
+      to: '#',
+      label: 'Styles',
+    },
+    {
+      to: '#',
+      label: 'Components',
+    },
+    {
+      to: '#',
+      label: 'Patterns',
+      active: true,
+    },
+    {
+      to: '#',
+      label: 'Community',
+    },
+    {
+      to: '#',
+      label: 'About',
+    },
+  ]
 
-const PrimaryNav = () => {
+  return <Nav navItems={customNavItems} />
+}
+
+CustomItem.storyName = 'Custom item'
+
+export const PrimaryNavigation: Story<NavProps> = () => {
   const { open, toggle } = useOpenClose(true)
 
+  interface CustomLink {
+    className?: string
+    to: string
+  }
+
+  const CustomLink: React.FC<CustomLink> = ({ children, className, to }) => (
+    <div className={className}>
+      <a href={to}>
+        <strong>{children}</strong>
+      </a>
+    </div>
+  )
+
   return (
-    <div className="primary-nav">
+    <div>
       <Button
-        className="primary-nav--button"
         onClick={toggle}
         icon={open ? <IconArrowDropDown /> : <IconArrowDropUp />}
       >
         Menu
       </Button>
+      <hr />
       {open && (
         <Nav
           navItems={navItems}
@@ -119,4 +144,4 @@ const PrimaryNav = () => {
   )
 }
 
-stories.add('Primary Navigation', () => <PrimaryNav />)
+PrimaryNavigation.storyName = 'Primary navigation with custom link'

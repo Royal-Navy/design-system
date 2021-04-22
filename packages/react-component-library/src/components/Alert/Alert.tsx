@@ -36,10 +36,22 @@ export type AlertVariantType =
   | typeof ALERT_VARIANT.SUCCESS
   | typeof ALERT_VARIANT.WARNING
 
-interface AlertProps {
+export interface AlertProps {
+  /**
+   * Description text to display under the component title.
+   */
   children: string
+  /**
+   * Optional handler to be invoked when the component is closed.
+   */
   onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
+  /**
+   * Optional title to display above the description text.
+   */
   title?: string
+  /**
+   * Type of component to display (style varies accordingly).
+   */
   variant?: AlertVariantType
 }
 

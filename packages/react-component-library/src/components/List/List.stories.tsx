@@ -1,26 +1,25 @@
 import React from 'react'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 
-import { List, ListItem } from '.'
+import { List, ListProps, ListItem } from '.'
 
-const stories = storiesOf('List', module)
+export default {
+  component: List,
+  subcomponents: { ListItem },
+  title: 'List',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-stories.add('Default', () => {
-  return (
-    <List>
-      <ListItem onClick={action('Clicked 1')} title="List item 1">
-        This is the description for item 1
-      </ListItem>
-      <ListItem onClick={action('Clicked 2')} title="List item 2">
-        This is the description for item 2
-      </ListItem>
-      <ListItem onClick={action('Clicked 3')} title="List item 3">
-        This is the description for item 3
-      </ListItem>
-      <ListItem onClick={action('Clicked 4')} title="List item 4">
-        This is the description for item 4
-      </ListItem>
-    </List>
-  )
-})
+export const Default: Story<ListProps> = (props) => (
+  <List {...props}>
+    <ListItem onClick={action('onClick')} title="List item 1">
+      This is the description for item 1
+    </ListItem>
+    <ListItem title="List item 2">This is the description for item 2</ListItem>
+    <ListItem title="List item 3">This is the description for item 3</ListItem>
+    <ListItem title="List item 4">This is the description for item 4</ListItem>
+  </List>
+)

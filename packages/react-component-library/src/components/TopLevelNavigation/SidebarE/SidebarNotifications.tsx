@@ -16,7 +16,13 @@ import { StyledNotificationDot } from './partials/StyledNotificationDot'
 import { StyledNotificationsLabel } from './partials/StyledNotificationsLabel'
 
 export interface SidebarNotificationsProps extends ComponentWithClass {
+  /**
+   * Toggle whether there are unread notifications.
+   */
   hasUnreadNotification?: boolean
+  /**
+   * Collection of Notification item components.
+   */
   notifications?: React.ReactElement<NotificationsProps>
 }
 

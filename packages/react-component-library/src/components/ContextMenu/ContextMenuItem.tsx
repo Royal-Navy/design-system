@@ -6,6 +6,9 @@ import { StyledIcon } from './partials/StyledIcon'
 import { StyledText } from './partials/StyledText'
 
 interface ContextMenuItemProps extends NavItem {
+  /**
+   * Optional icon to display beside the component text.
+   */
   icon?: React.ReactNode
 }
 

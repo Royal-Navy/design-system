@@ -7,4 +7,4 @@ export const SidebarWrapperE: React.FC<ComponentWithClass> = (props) => {
   return <StyledWrapper data-testid="sidebar-wrapper" {...props} />
 }
 
-SidebarWrapperE.displayName = 'SidebarWrapper'
+SidebarWrapperE.displayName = 'SidebarWrapperE'

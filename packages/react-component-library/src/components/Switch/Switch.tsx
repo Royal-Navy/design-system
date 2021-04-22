@@ -30,11 +30,29 @@ export interface SwitchOptionProps {
 }
 
 export interface SwitchProps extends ComponentWithClass, InputValidationProps {
+  /**
+   * HTML `name` attribute to apply to the component.
+   */
   name: string
+  /**
+   * Optional HTML `value` attribute to apply to the component.
+   */
   value?: string
+  /**
+   * Optional label to display as HTML legend.
+   */
   label?: string
+  /**
+   * Optional handler invoked when the selected value changes.
+   */
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
+  /**
+   * Collection of options to display within the Switch (JSON).
+   */
   options: SwitchOptionProps[]
+  /**
+   * Size of the component.
+   */
   size?: SwitchSizeType
 }
 

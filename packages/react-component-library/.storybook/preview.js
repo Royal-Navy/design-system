@@ -3,4 +3,9 @@ import '@royalnavy/fonts'
 
 export const parameters = {
   layout: 'fullscreen',
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
 }

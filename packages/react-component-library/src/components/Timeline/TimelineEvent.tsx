@@ -12,9 +12,21 @@ import { useTimelinePosition } from './hooks/useTimelinePosition'
 
 export interface TimelineEventWithRenderContentProps
   extends ComponentWithClass {
+  /**
+   * The color of the bar.
+   */
   barColor?: never
+  /**
+   * Supply children to be rendered.
+   */
   children?: never
+  /**
+   * The end date of the event.
+   */
   endDate: Date
+  /**
+   * Supply a custom presentation layer.
+   */
   render: (
     endDate: Date,
     startDate: Date,
@@ -24,14 +36,32 @@ export interface TimelineEventWithRenderContentProps
     startsBeforeStart: boolean,
     endsAfterEnd: boolean
   ) => React.ReactNode
+  /**
+   * The start date of the event.
+   */
   startDate: Date
 }
 
 export interface TimelineEventWithChildrenProps extends ComponentWithClass {
+  /**
+   * The color of the bar.
+   */
   barColor?: string
+  /**
+   * Supply children to be rendered.
+   */
   children: React.ReactNode
+  /**
+   * The end date of the event.
+   */
   endDate: Date
+  /**
+   * Supply a custom presentation layer.
+   */
   render?: never
+  /**
+   * The start date of the event.
+   */
   startDate: Date
 }
 

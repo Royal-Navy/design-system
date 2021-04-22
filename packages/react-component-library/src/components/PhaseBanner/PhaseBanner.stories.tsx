@@ -1,21 +1,40 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { PhaseBanner } from '.'
+import { PhaseBanner, PhaseBannerProps } from '.'
 
-const stories = storiesOf('Phase banner', module)
-const examples = storiesOf('Phase banner/Examples', module)
+export default {
+  component: PhaseBanner,
+  title: 'Phase Banner',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-stories.add('Default', () => <PhaseBanner />)
+export const Default: Story<PhaseBannerProps> = (props) => (
+  <PhaseBanner {...props} />
+)
 
-examples.add('Beta', () => <PhaseBanner phase="beta" />)
+export const Beta: Story<PhaseBannerProps> = () => <PhaseBanner phase="beta" />
 
-examples.add('Custom link', () => <PhaseBanner link="#" />)
+Beta.storyName = 'Beta'
 
-examples.add('Custom text', () => (
+export const CustomLink: Story<PhaseBannerProps> = () => (
+  <PhaseBanner link="#" />
+)
+
+CustomLink.storyName = 'Custom link'
+
+export const CustomText: Story<PhaseBannerProps> = () => (
   <PhaseBanner>
     Custom html can go here. <strong>This part is in bold!</strong>
   </PhaseBanner>
-))
+)
 
-examples.add('Full width', () => <PhaseBanner isFullWidth />)
+CustomText.storyName = 'Custom text'
+
+export const FullWidth: Story<PhaseBannerProps> = () => (
+  <PhaseBanner isFullWidth />
+)
+
+FullWidth.storyName = 'Full width'

@@ -9,11 +9,26 @@ import { StyledListItem } from './partials/StyledListItem'
 import { StyledTextInput } from './partials/StyledTextInput'
 import { StyledTotalPages } from './partials/StyledTotalPages'
 
-interface PaginationProps {
+export interface PaginationProps {
+  /**
+   * Starting page to display from range on first render.
+   */
   initialPage?: number
+  /**
+   * Optional HTML `name` attribute to apply to the component (a11y).
+   */
   name?: string
+  /**
+   * Optional handler called when the value of currently selected page changes.
+   */
   onChange?: (currentPage: number, totalPages: number) => void
+  /**
+   * Number of items within a paginated collection per page.
+   */
   pageSize: number
+  /**
+   * Total number of items within a paginated collection.
+   */
   total: number
 }
 

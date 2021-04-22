@@ -16,10 +16,25 @@ type SortOrderType =
 type AriaSortType = 'ascending' | 'descending' | 'none'
 
 export interface TableColumnProps {
+  /**
+   * Name of the column to display in the table head.
+   */
   children: string
+  /**
+   * Mapping of column to `field` key within supplied table data JSON.
+   */
   field: string
+  /**
+   * Toggle whether the column is sortable.
+   */
   isSortable?: boolean
+  /**
+   * Optional handler invoked when one of the column sort buttons is clicked.
+   */
   onSortClick?: (field: string) => void
+  /**
+   * Optional sort order by which to sort the column.
+   */
   sortOrder?: SortOrderType
 }
 

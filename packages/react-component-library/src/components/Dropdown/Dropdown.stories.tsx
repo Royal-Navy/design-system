@@ -1,55 +1,60 @@
 import React from 'react'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
-import { IconLayers, IconAnchor, IconShare } from '@royalnavy/icon-library'
-import { storiesOf } from '@storybook/react'
+import { IconLayers, IconAnchor } from '@royalnavy/icon-library'
 
-import { Dropdown } from './Dropdown'
+import { Dropdown, DropdownProps } from './Dropdown'
 
-const stories = storiesOf('Dropdown', module)
-const examples = storiesOf('Dropdown/Examples', module)
+export default {
+  component: Dropdown,
+  title: 'Dropdown',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+    docs: {
+      description: {
+        component:
+          'This component wraps a popular open-source library. See comprehensive documentation [here](https://github.com/JedWatson/react-select#readme).',
+      },
+    },
+  },
+} as Meta
 
 const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'chozbun', label: 'Chozo Bun', isHidden: true },
-  { value: 'melon', label: 'Melon', isVisible: true, isDisabled: true },
-  { value: 'strawberry', label: 'Strawberry', isDisabled: true },
-  { value: 'vanilla', label: 'Vanilla', rightContent: <IconShare /> },
+  { value: 'option', label: 'Option' },
+  { value: 'visible', label: 'Visible', isVisible: true },
+  { value: 'hidden', label: 'Hidden', isHidden: true },
+  { value: 'disabled', label: 'Disabled', isDisabled: true },
 ]
 
-const scrollOptions = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'chozbun', label: 'Chozo Bun', isHidden: true },
-  { value: 'melon', label: 'Melon', isVisible: true },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'snozberry', label: 'Snozberry' },
-  { value: 'vanilla', label: 'Vanilla', rightContent: <IconShare /> },
-  { value: 'Wombat', label: 'Wombat' },
-  { value: 'Yowler', label: 'Yowler' },
-  { value: 'Zombie', label: 'Zombie' },
-]
+export const Default: Story<DropdownProps> = (props) => {
+  return (
+    <div style={{ height: '15rem' }}>
+      <Dropdown {...props} />
+    </div>
+  )
+}
 
-const iconOptions = options.map((option) => ({
-  ...option,
-  icon: <IconAnchor />,
-}))
+Default.args = {
+  options,
+  label: 'Example label',
+}
 
-stories.add('Default', () => (
-  <Dropdown options={options} label="Layers" onSelect={action('onSelect')} />
-))
+export const WithIcons: Story<DropdownProps> = () => {
+  const iconOptions = options.map((option) => ({
+    ...option,
+    icon: <IconAnchor />,
+  }))
 
-examples.add('Icons', () => (
-  <Dropdown
-    options={iconOptions}
-    label="Layers"
-    labelIcon={<IconLayers />}
-    onSelect={action('onSelect')}
-  />
-))
+  return (
+    <div style={{ height: '15rem' }}>
+      <Dropdown
+        options={iconOptions}
+        label="Example label"
+        labelIcon={<IconLayers />}
+        onSelect={action('onSelect')}
+      />
+    </div>
+  )
+}
 
-examples.add('Scroll', () => (
-  <Dropdown
-    options={scrollOptions}
-    label="Layers"
-    onSelect={action('onSelect')}
-  />
-))
+WithIcons.storyName = 'With icons'

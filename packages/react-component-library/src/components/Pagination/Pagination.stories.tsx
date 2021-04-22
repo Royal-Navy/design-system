@@ -1,20 +1,28 @@
 import React from 'react'
-import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { Pagination } from '.'
+import { Pagination, PaginationProps } from '.'
 
-const stories = storiesOf('Pagination', module)
+export default {
+  component: Pagination,
+  title: 'Pagination',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-stories.add('Default', () => (
-  <Pagination onChange={action('onChange')} pageSize={10} total={1000} />
-))
+export const Default: Story<PaginationProps> = (props) => (
+  <Pagination {...props} />
+)
 
-stories.add('Initial page 5', () => (
-  <Pagination
-    initialPage={5}
-    onChange={action('onChange')}
-    pageSize={10}
-    total={1000}
-  />
-))
+Default.args = {
+  name: undefined,
+  pageSize: 10,
+  total: 1000,
+}
+
+export const InitialPage: Story<PaginationProps> = (props) => (
+  <Pagination {...props} initialPage={5} pageSize={10} total={1000} />
+)
+
+InitialPage.storyName = 'Initial page set to 5'

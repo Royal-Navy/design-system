@@ -3,7 +3,7 @@ import { IconMoreVert } from '@royalnavy/icon-library'
 
 import { SHEET_PLACEMENT } from '../Sheet/constants'
 import { Nav } from '../../../common/Nav'
-import { SidebarNavItemEProps } from './SidebarNavItem'
+import { SidebarNavItemEProps } from './SidebarNavItemE'
 import { StyledSubNavSheet } from './partials/StyledSubNavSheet'
 import { StyledSubNavSheetButton } from './partials/StyledSubNavSheetButton'
 

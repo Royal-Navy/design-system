@@ -1,11 +1,14 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { withKnobs } from '@storybook/addon-knobs'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { Container } from '.'
+import { Container, ContainerProps } from '.'
 
-const stories = storiesOf('Container', module)
+export default { component: Container, title: 'Container' } as Meta
 
-stories.addDecorator(withKnobs)
+export const Default: Story<ContainerProps> = ({ children, ...rest }) => (
+  <Container {...rest}>{children}</Container>
+)
 
-stories.add('Default', () => <Container>Arbitrary JSX</Container>)
+Default.args = {
+  children: 'Arbitrary JSX',
+}

@@ -5,14 +5,19 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledRows } from './partials/StyledRows'
 import { TimelineNoData } from './TimelineNoData'
 import { TimelineContext, TimelineRowProps } from '.'
-import { StyledRow } from './partials/StyledRow'
 
 type TimelineRowsChildrenType =
   | React.ReactElement<TimelineRowProps>
   | React.ReactElement<TimelineRowProps>[]
 
 export interface TimelineRowsProps extends ComponentWithClass {
+  /**
+   * Supply children to be rendered.
+   */
   children: TimelineRowsChildrenType
+  /**
+   * Supply a custom presentation layer.
+   */
   renderColumns?: (
     index: number,
     isOddNumber: boolean,

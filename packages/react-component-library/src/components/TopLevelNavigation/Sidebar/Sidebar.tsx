@@ -11,25 +11,46 @@ import { SheetButton } from '../Sheet/SheetButton'
 import { Bell } from '../../../icons'
 import { useOpenClose } from '../../../hooks'
 import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
+import { ComponentWithClass } from '../../../common/ComponentWithClass'
 
-interface SidebarProps {
+export interface SidebarProps extends ComponentWithClass {
+  /**
+   * Toggle whether there are unread notifications.
+   */
   hasUnreadNotification?: boolean
+  /**
+   * Optional JSX to render the primary navigation.
+   */
   nav?: React.ReactElement<SidebarNavProps>
+  /**
+   * Optional JSX to render a collection of notifications.
+   */
   notifications?: React.ReactElement<NotificationsProps>
+  /**
+   * Optional JSX to render a user menu.
+   */
   user?: React.ReactElement<SidebarUserProps>
 }
 
+/**
+ * @deprecated
+ */
 export const Sidebar: React.FC<SidebarProps> = ({
   nav,
   notifications,
   hasUnreadNotification,
   user,
+  className,
   ...rest
 }) => {
   const { open, setOpen } = useOpenClose(false)
-  const classes = classNames('rn-sidebar', {
-    'is-open': open,
-  })
+  const classes = classNames(
+    'rn-sidebar',
+    {
+      'is-open': open,
+    },
+    className
+  )
 
   return (
     <div className={classes} data-testid="sidebar" {...rest}>

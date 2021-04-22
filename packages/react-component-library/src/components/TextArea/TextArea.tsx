@@ -19,10 +19,25 @@ export interface TextAreaInputProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement>,
     ComponentWithClass,
     InputValidationProps {
+  /**
+   * Toggles whether the component is disabled or not (preventing user interaction).
+   */
   isDisabled?: boolean
+  /**
+   * Optional text footnote to display below the component.
+   */
   footnote?: string
+  /**
+   * Optional text label to display within the component.
+   */
   label?: string
+  /**
+   * Optional handler invoked when the `onBlur` event is emitted.
+   */
   onBlur?: (event: React.FormEvent) => void
+  /**
+   * Optional HTML `value` attribute to apply to the component.
+   */
   value?: string
 }
 

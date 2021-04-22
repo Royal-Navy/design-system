@@ -1,82 +1,65 @@
 import React from 'react'
+import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
 
-import { CheckboxEnhanced } from '.'
+import { CheckboxEnhanced, CheckboxEnhancedProps } from '.'
 
-const stories = storiesOf('CheckboxEnhanced', module)
+export default {
+  component: CheckboxEnhanced,
+  title: 'Checkbox Enhanced',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-stories.add('Default', () => {
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault()
-        action('Submitted')(e)
+export const Default: Story<CheckboxEnhancedProps> = (props) => (
+  <CheckboxEnhanced {...props} />
+)
+
+Default.args = {
+  id: undefined,
+  name: 'default',
+  title: 'Default checkbox enhanced',
+  isChecked: true,
+}
+
+export const WithDescription: Story<CheckboxEnhancedProps> = () => (
+  <CheckboxEnhanced
+    name="withdescription"
+    title="With description"
+    description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
+  />
+)
+
+WithDescription.storyName = 'With description'
+
+export const GridLayout: Story<CheckboxEnhancedProps> = () => (
+  <form
+    onSubmit={(e) => {
+      e.preventDefault()
+      action('onSubmit')(e)
+    }}
+  >
+    <div
+      style={{
+        width: '44rem',
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gridTemplateRows: '1fr 1fr',
+        gap: '1px 1px',
       }}
     >
-      <div
-        style={{
-          width: '44rem',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gridTemplateRows: '1fr 1fr',
-          gap: '1px 1px',
-        }}
-      >
-        <CheckboxEnhanced
-          name="example1"
-          title="My Label 1"
-          value="true"
-          isChecked
-        />
-        <CheckboxEnhanced name="example2" title="My Label 2" />
-        <CheckboxEnhanced name="example3" title="My Label 3" />
-        <CheckboxEnhanced name="example4" title="My Label 4" />
-      </div>
-    </form>
-  )
-})
+      <CheckboxEnhanced
+        name="option1"
+        title="Option 1"
+        value="Option 1"
+        isChecked
+      />
+      <CheckboxEnhanced name="option2" title="Option 2" value="Option 2" />
+      <CheckboxEnhanced name="option3" title="Option 3" value="Option 3" />
+      <CheckboxEnhanced name="option4" title="Option 4" value="Option 4" />
+    </div>
+  </form>
+)
 
-stories.add('With description', () => {
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault()
-        action('Submitted')(e)
-      }}
-    >
-      <div
-        style={{
-          width: '44rem',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gridTemplateRows: '1fr 1fr',
-          gap: '1px 1px',
-        }}
-      >
-        <CheckboxEnhanced
-          name="example1"
-          title="My Label 1"
-          value="true"
-          isChecked
-          description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
-        />
-        <CheckboxEnhanced
-          name="example2"
-          title="My Label 2"
-          description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
-        />
-        <CheckboxEnhanced
-          name="example3"
-          title="My Label 3"
-          description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
-        />
-        <CheckboxEnhanced
-          name="example4"
-          title="My Label 4"
-          description="Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facillisis in, egestas eget quam."
-        />
-      </div>
-    </form>
-  )
-})
+GridLayout.storyName = 'Grid layout'

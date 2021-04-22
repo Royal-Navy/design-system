@@ -1,126 +1,109 @@
-import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
-import { Field, Form, Formik } from 'formik'
 import React from 'react'
 import * as yup from 'yup'
+import { Story, Meta } from '@storybook/react/types-6-0'
+import { action } from '@storybook/addon-actions'
+import { Field, Formik, Form } from 'formik'
 
 import { withFormik } from '../../enhancers/withFormik'
-import { DatePicker, DATEPICKER_PLACEMENT } from '.'
+import { DatePicker, DatePickerProps, DATEPICKER_PLACEMENT } from '.'
 
-import { TextInput } from '../TextInput'
 import { Button } from '../Button'
 
-const stories = storiesOf('DatePicker', module)
-const examples = storiesOf('DatePicker/Examples', module)
+export default {
+  component: DatePicker,
+  title: 'Date Picker',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-stories.add('Default', () => {
-  return (
-    <DatePicker
-      startDate={new Date(2018, 0, 11)}
-      onBlur={action('onBlur')}
-      onChange={action('onChange')}
-      placement={DATEPICKER_PLACEMENT.BELOW}
-      isOpen
-    />
-  )
-})
+export const Default: Story<DatePickerProps> = (props) => (
+  <DatePicker {...props} />
+)
 
-stories.add('Custom format', () => {
-  return (
-    <DatePicker
-      format="yyyy/MM/dd"
-      startDate={new Date(2018, 0, 11)}
-      placement={DATEPICKER_PLACEMENT.BELOW}
-    />
-  )
-})
+Default.args = {
+  id: undefined,
+  startDate: undefined,
+  placement: DATEPICKER_PLACEMENT.BELOW,
+}
 
-examples.add('Custom initial month', () => {
-  return (
-    <DatePicker
-      initialMonth={new Date(2020, 1)}
-      onBlur={action('onBlur')}
-      onChange={action('onChange')}
-      placement={DATEPICKER_PLACEMENT.BELOW}
-      isOpen
-    />
-  )
-})
+export const CustomFormat: Story<DatePickerProps> = (props) => (
+  <DatePicker
+    {...props}
+    format="yyyy/MM/dd"
+    startDate={new Date(2021, 0, 11)}
+    placement={DATEPICKER_PLACEMENT.BELOW}
+  />
+)
 
-examples.add('Custom label', () => {
-  return (
-    <DatePicker
-      startDate={new Date(2018, 0, 11)}
-      onBlur={action('onBlur')}
-      onChange={action('onChange')}
-      label="Some other label"
-      isOpen
-    />
-  )
-})
+CustomFormat.storyName = 'Custom format'
 
-examples.add('Disabled', () => {
-  return (
-    <DatePicker
-      startDate={new Date(2018, 0, 11)}
-      onBlur={action('onBlur')}
-      onChange={action('onChange')}
-      isDisabled
-    />
-  )
-})
+export const CustomInitialMonth: Story<DatePickerProps> = (props) => (
+  <DatePicker
+    {...props}
+    initialMonth={new Date(2021, 1)}
+    placement={DATEPICKER_PLACEMENT.BELOW}
+  />
+)
 
-examples.add('Disabled days', () => {
-  return (
-    <DatePicker
-      startDate={new Date(2020, 3, 1)}
-      onBlur={action('onBlur')}
-      onChange={action('onChange')}
-      disabledDays={[
-        new Date(2020, 3, 12),
-        new Date(2020, 3, 2),
-        {
-          after: new Date(2020, 3, 20),
-          before: new Date(2020, 3, 25),
-        },
-      ]}
-    />
-  )
-})
+CustomInitialMonth.storyName = 'Custom initial month'
 
-examples.add('Range', () => {
-  return (
-    <DatePicker
-      endDate={new Date(2021, 3, 2)}
-      startDate={new Date(2021, 2, 15)}
-      onBlur={action('onBlur')}
-      onChange={action('onChange')}
-      isRange
-      isOpen
-    />
-  )
-})
+export const CustomLabel: Story<DatePickerProps> = (props) => (
+  <DatePicker {...props} label="Custom label" />
+)
 
-const DatePickerForm = () => {
+CustomLabel.storyName = 'Custom label'
+
+export const Disabled: Story<DatePickerProps> = (props) => (
+  <DatePicker {...props} isDisabled />
+)
+
+Disabled.storyName = 'Disabled'
+
+export const DisabledDays: Story<DatePickerProps> = (props) => (
+  <DatePicker
+    {...props}
+    startDate={new Date(2021, 3, 1)}
+    disabledDays={[
+      new Date(2021, 3, 12),
+      new Date(2021, 3, 2),
+      {
+        after: new Date(2021, 3, 20),
+        before: new Date(2021, 3, 25),
+      },
+    ]}
+  />
+)
+
+DisabledDays.storyName = 'Disabled days'
+
+export const Range: Story<DatePickerProps> = (props) => (
+  <DatePicker {...props} isRange />
+)
+
+Range.storyName = 'Range'
+
+export const WithFormik: Story<DatePickerProps> = (props) => {
+  interface Data {
+    startDate: Date
+    endDate: Date
+    anotherStartDate: Date | null
+    andAnotherStartDate: Date | null
+  }
+
   const errorText = 'Something went wrong!'
 
   const validationSchema = yup.object().shape({
     andAnotherStartDate: yup.date().required(errorText),
   })
 
-  const FormikTextInput = withFormik(TextInput)
   const FormikDatePicker = withFormik(DatePicker)
 
-  const initialValues: {
-    andAnotherStartDate: Date
-    foo: string
-    startDate: Date
-    endDate: Date
-  } = {
-    andAnotherStartDate: null,
-    foo: null,
+  const initialValues: Data = {
     startDate: new Date(2020, 0, 1),
     endDate: new Date(2020, 4, 1),
+    anotherStartDate: null,
+    andAnotherStartDate: null,
   }
 
   return (
@@ -133,10 +116,9 @@ const DatePickerForm = () => {
       render={({ setFieldValue }) => {
         return (
           <Form>
-            <Field name="foo" label="Foo" component={FormikTextInput} />
             <Field
+              {...props}
               name="date"
-              label="Date"
               component={FormikDatePicker}
               isRange
               onChange={({ startDate, endDate }: any) => {
@@ -171,6 +153,4 @@ const DatePickerForm = () => {
   )
 }
 
-examples.add('Formik', () => {
-  return <DatePickerForm />
-})
+WithFormik.storyName = 'Formik'

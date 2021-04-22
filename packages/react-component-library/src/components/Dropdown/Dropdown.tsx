@@ -12,9 +12,21 @@ import { DropdownPlaceholder } from './DropdownPlaceholder'
 const { color, spacing } = selectors
 
 export interface DropdownProps {
-  onSelect: (value: string) => void
+  /**
+   * Handler called when an option is clicked.
+   */
+  onSelect?: (value: string) => void
+  /**
+   * Array of options to display within the component.
+   */
   options: DropdownOption[]
+  /**
+   * Text label to display within the component.
+   */
   label: string
+  /**
+   * Optional icon component to display next to the label.
+   */
   labelIcon?: React.ReactNode
 }
 

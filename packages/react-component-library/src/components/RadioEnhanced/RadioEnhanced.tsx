@@ -5,8 +5,17 @@ import { StyledRadioEnhanced } from './partials/StyledRadioEnhanced'
 import { StyledDescription } from './partials/StyledDescription'
 
 export interface RadioEnhancedProps extends Omit<RadioProps, 'label'> {
+  /**
+   * Optional description text to display underneath the Radio.
+   */
   description?: string
+  /**
+   * Optional HTML `tabIndex` attribute to apply to the component.
+   */
   tabIndex?: number
+  /**
+   * Title text to display next to the Radio.
+   */
   title: string
 }
 

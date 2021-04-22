@@ -8,9 +8,18 @@ import { StyledDrawerInner } from './partials/StyledDrawerInner'
 import { StyledDrawerButton } from './partials/StyledDrawerButton'
 import { StyledDrawerContent } from './partials/StyledDrawerContent'
 
-interface DrawerProps extends ComponentWithClass {
+export interface DrawerProps extends ComponentWithClass {
+  /**
+   * Arbitrary JSX content to display within the component.
+   */
   children?: React.ReactNode
+  /**
+   * Toggles whether the component is visible or hidden outside of the viewport.
+   */
   isOpen?: boolean
+  /**
+   * Optional handler called when the close button is clicked.
+   */
   onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
 }
 

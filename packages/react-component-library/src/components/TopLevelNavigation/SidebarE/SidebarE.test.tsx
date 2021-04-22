@@ -50,7 +50,7 @@ const notifications = (
   </Notifications>
 )
 
-describe('Sidebar', () => {
+describe('SidebarE', () => {
   let wrapper: RenderResult
 
   describe('when composed with minimal props', () => {

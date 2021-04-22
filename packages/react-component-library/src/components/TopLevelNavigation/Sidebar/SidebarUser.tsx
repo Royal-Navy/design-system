@@ -6,10 +6,19 @@ import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { LinkTypes } from '../../../common/Link'
 
 export interface SidebarUserProps extends ComponentWithClass {
+  /**
+   * Initials of the end user (e.g. Joe Bloggs => JB).
+   */
   initials: string
+  /**
+   * Link component to apply to the user avatar.
+   */
   link: React.ReactElement<LinkTypes>
 }
 
+/**
+ * @deprecated
+ */
 export const SidebarUser: React.FC<SidebarUserProps> = ({
   className,
   initials,

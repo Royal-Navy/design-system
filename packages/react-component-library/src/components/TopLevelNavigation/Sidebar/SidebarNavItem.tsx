@@ -4,10 +4,19 @@ import classNames from 'classnames'
 import { NavItem } from '../../../common/Nav'
 
 export interface SidebarNavItemProps extends NavItem {
+  /**
+   * Optional image component to display to the left of the navigation item.
+   */
   Image?: React.ComponentType
+  /**
+   * Optional handler invoked when an item is clicked on.
+   */
   onClick?: () => void
 }
 
+/**
+ * @deprecated
+ */
 export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
   Image,
   isActive,

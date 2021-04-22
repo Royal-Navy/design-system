@@ -5,7 +5,7 @@ import { Transition } from 'react-transition-group'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { LinkTypes } from '../../../common/Link'
 import { SidebarContext } from './context'
-import { SidebarUserItemE } from './SidebarUserItem'
+import { SidebarUserItemE } from './SidebarUserItemE'
 import { SHEET_PLACEMENT } from '../Sheet/constants'
 import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
 import { StyledUserAvatar } from './partials/StyledUserAvatar'
@@ -16,8 +16,17 @@ import { StyledUserText } from './partials/StyledUserText'
 
 export interface SidebarUserEProps extends ComponentWithClass {
   children?: never
+  /**
+   * Initials of the end user (e.g. Joe Bloggs => JB).
+   */
   initials: string
+  /**
+   * Link component to apply to the user avatar.
+   */
   userLink?: React.ReactElement<LinkTypes>
+  /**
+   * Link component to apply to the exit icon.
+   */
   exitLink?: React.ReactElement<LinkTypes>
   name?: string
 }
@@ -100,4 +109,4 @@ export const SidebarUserE: React.FC<SidebarUserEProps> = ({
   )
 }
 
-SidebarUserE.displayName = 'SidebarUser'
+SidebarUserE.displayName = 'SidebarUserE'

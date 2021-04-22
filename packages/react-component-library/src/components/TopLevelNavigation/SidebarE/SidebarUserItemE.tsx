@@ -6,6 +6,9 @@ import { StyledUserItemIcon } from './partials/StyledUserItemIcon'
 import { StyledUserItemText } from './partials/StyledUserItemText'
 
 export interface SidebarUserItemEProps extends NavItem {
+  /**
+   * Optional icon to display to the left of the user navigation item.
+   */
   icon?: React.ReactNode
 }
 
@@ -26,4 +29,4 @@ export const SidebarUserItemE: React.FC<SidebarUserItemEProps> = ({
   })
 }
 
-SidebarUserItemE.displayName = 'SidebarUserItem'
+SidebarUserItemE.displayName = 'SidebarUserItemE'

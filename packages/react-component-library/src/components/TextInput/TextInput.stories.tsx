@@ -1,96 +1,103 @@
-import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
-import { Field, Formik, Form } from 'formik'
 import React from 'react'
+import { Story, Meta } from '@storybook/react/types-6-0'
+import { action } from '@storybook/addon-actions'
+import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
-import { IconSearch, IconCrop, IconSave } from '@royalnavy/icon-library'
+import { IconSearch } from '@royalnavy/icon-library'
 import { Button } from '../Button'
-import { TextInput } from '.'
+import { TextInput, TextInputProps } from '.'
 
 import { withFormik } from '../../enhancers/withFormik'
 
-const stories = storiesOf('TextInput', module)
+export default {
+  component: TextInput,
+  title: 'Text Input',
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+  },
+} as Meta
 
-stories.add('Vanilla', () => {
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault()
-        action('Submitted')(e)
-      }}
-    >
-      <TextInput className="is-valid" name="colour" label="My Label" />
-      <TextInput name="name" label="Name" />
-      <TextInput
-        autoFocus
-        name="hero"
-        label="Hero"
-        startAdornment={<IconSearch />}
-      />
-      <TextInput name="fruit" label="Fruit" endAdornment={<IconCrop />} />
-      <button type="submit">Submit</button>
-    </form>
-  )
-})
+export const Default: Story<TextInputProps> = (props) => (
+  <TextInput {...props} />
+)
 
-stories.add('Formik', () => {
-  const TextInputForm = () => {
-    interface Data {
-      colour: string
-      city: string
-    }
+Default.args = {
+  name: 'text-input-default',
+  label: 'Example label',
+}
 
-    const initialValues: Data = {
-      colour: 'Green',
-      city: '',
-    }
+export const WithLabel: Story<TextInputProps> = (props) => (
+  <TextInput {...props} name="text-input-label" label="Example label" />
+)
 
-    const validationSchema = yup.object().shape({
-      city: yup.string().required('Something went wrong!'),
-    })
+WithLabel.storyName = 'With label'
 
-    const FormikTextInput = withFormik(TextInput)
+export const Disabled: Story<TextInputProps> = (props) => (
+  <TextInput
+    {...props}
+    name="text-input-disabled"
+    label="Example label"
+    isDisabled
+  />
+)
 
-    return (
-      <Formik
-        initialValues={initialValues}
-        initialErrors={{ city: 'Something went wrong!' }}
-        initialTouched={{ city: true }}
-        validationSchema={validationSchema}
-        onSubmit={action('Submit')}
-      >
-        <Form>
-          <Field
-            className="is-valid"
-            name="colour"
-            label="My Label"
-            component={FormikTextInput}
-          />
-          <Field name="name" label="Name" component={FormikTextInput} />
-          <Field name="city" component={FormikTextInput} label="City" />
-          <Field
-            name="hero"
-            component={FormikTextInput}
-            label="Hero"
-            endAdornment={<IconSearch />}
-          />
-          <Field
-            name="fruit"
-            component={FormikTextInput}
-            label="Fruit"
-            startAdornment={<IconCrop />}
-          />
-          <Button variant="secondary" onClick={action('Cancel')}>
-            Cancel
-          </Button>
-          <Button type="submit" variant="primary">
-            Save
-          </Button>
-        </Form>
-      </Formik>
-    )
+Disabled.storyName = 'Disabled'
+
+export const WithStartAdornment: Story<TextInputProps> = (props) => (
+  <TextInput
+    {...props}
+    name="text-input-start-adornment"
+    label="Example label"
+    startAdornment={<IconSearch />}
+  />
+)
+
+WithStartAdornment.storyName = 'With start adornment'
+
+export const WithEndAdornment: Story<TextInputProps> = (props) => (
+  <TextInput
+    {...props}
+    name="text-input-end-adornment"
+    label="Example label"
+    endAdornment={<IconSearch />}
+  />
+)
+
+WithEndAdornment.storyName = 'With end adornment'
+
+export const WithFormik: Story<TextInputProps> = (props) => {
+  interface Data {
+    'text-input-formik': string
   }
 
-  return <TextInputForm />
-})
+  const initialValues: Data = {
+    'text-input-formik': '',
+  }
+
+  const validationSchema = yup.object().shape({
+    'text-input-formik': yup.string().required('Something went wrong!'),
+  })
+
+  const FormikTextInput = withFormik(TextInput)
+
+  return (
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={action('onSubmit')}
+    >
+      <Form>
+        <Field
+          name="text-input-formik"
+          label="Example label"
+          component={FormikTextInput}
+        />
+        <br />
+        <Button type="submit">Submit</Button>
+      </Form>
+    </Formik>
+  )
+}
+
+WithFormik.storyName = 'Formik'

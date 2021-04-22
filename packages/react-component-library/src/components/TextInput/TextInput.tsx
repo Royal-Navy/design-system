@@ -15,18 +15,57 @@ import { StyledInput } from './partials/StyledInput'
 export interface TextInputProps
   extends ComponentWithClass,
     InputValidationProps {
+  /**
+   * Toggle whether to auto focus the component upon initial render.
+   */
   autoFocus?: boolean
+  /**
+   * Optional adornment to display to the right of the input value.
+   */
   endAdornment?: React.ReactNode
+  /**
+   * Optional text footnote to display below the component.
+   */
   footnote?: string
+  /**
+   * Optional HTML `id` attribute to apply to the component.
+   */
   id?: string
+  /**
+   * Toggles whether the component is disabled or not (preventing user interaction).
+   */
   isDisabled?: boolean
+  /**
+   * Optional text label to display within the component.
+   */
   label?: string
+  /**
+   * HTML `name` attribute to apply to the component.
+   */
   name: string
+  /**
+   * Optional handler invoked when the `onBlur` event is emitted.
+   */
   onBlur?: (event: React.FormEvent) => void
+  /**
+   * Optional handler invoked when the value of the component changes.
+   */
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  /**
+   * Optional handler invoked when the `onKeyDown` event is emitted.
+   */
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void
+  /**
+   * Optional placeholder text to display within the component.
+   */
   placeholder?: string
+  /**
+   * Optional adornment to display to the left of the input value.
+   */
   startAdornment?: React.ReactNode
+  /**
+   * HTML `type` attribute to apply to the component.
+   */
   type?:
     | 'color'
     | 'date'
@@ -43,6 +82,9 @@ export interface TextInputProps
     | 'time'
     | 'url'
     | 'week'
+  /**
+   * Optional HTML `value` attribute to apply to the component.
+   */
   value?: string
 }
 
