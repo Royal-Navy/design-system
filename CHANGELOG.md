@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.46.0](https://github.com/Royal-Navy/design-system/compare/2.45.0...2.46.0) (2021-04-22)
+
+
+### Features
+
+* **DatePicker:** Add ability to key date ([1349331](https://github.com/Royal-Navy/design-system/commit/13493318c32fec03bcdc7446f1fa361c37e58c94))
+
+
+
+
+
 # [2.45.0](https://github.com/Royal-Navy/design-system/compare/2.44.1...2.45.0) (2021-04-20)
 
 
