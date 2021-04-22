@@ -8,6 +8,12 @@ export interface Nav<T> extends ComponentWithClass {
 }
 
 export interface NavItem {
+  /**
+   * Denotes whether the navigation item is active or not.
+   */
   isActive?: boolean
+  /**
+   * Link component (custom implementation welcome).
+   */
   link: React.ReactElement<LinkTypes>
 }

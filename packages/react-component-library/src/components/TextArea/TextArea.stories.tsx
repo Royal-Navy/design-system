@@ -23,6 +23,7 @@ export const Default: Story<TextAreaInputProps> = (props) => (
 
 Default.args = {
   name: 'textarea-default',
+  label: 'Example label',
 }
 
 export const WithLabel: Story<TextAreaInputProps> = (props) => (

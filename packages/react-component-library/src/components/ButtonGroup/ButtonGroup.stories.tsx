@@ -18,9 +18,13 @@ export default {
 
 export const Default: Story<ButtonGroupProps> = ({ size }) => (
   <ButtonGroup size={size}>
-    <ButtonGroupItem onClick={action('onClick')}>One</ButtonGroupItem>
-    <ButtonGroupItem>Two</ButtonGroupItem>
-    <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>
+    <ButtonGroupItem onClick={action('onClick - One')}>One</ButtonGroupItem>
+    <ButtonGroupItem onClick={action('onClick - Two')}>Two</ButtonGroupItem>
+    <ButtonGroupItem
+      onClick={action('onClick - Three')}
+      isDisabled
+      icon={<IconBrightnessLow />}
+    >
       Three
     </ButtonGroupItem>
   </ButtonGroup>

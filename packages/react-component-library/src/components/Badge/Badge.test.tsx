@@ -22,7 +22,9 @@ describe('Badge', () => {
           size={BADGE_SIZE.REGULAR}
           variant={BADGE_VARIANT.PILL}
           data-arbitrary="example"
-        />
+        >
+          Hello, World!
+        </Badge>
       )
     })
 

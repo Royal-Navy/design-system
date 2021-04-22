@@ -66,4 +66,4 @@ export const SidebarNavE: React.FC<SidebarNavEProps> = ({
   </StyledNav>
 )
 
-SidebarNavE.displayName = 'SidebarNav'
+SidebarNavE.displayName = 'SidebarNavE'

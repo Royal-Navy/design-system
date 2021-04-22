@@ -23,7 +23,38 @@ import { StyledRailInner } from './partials/StyledRailInner'
 import { StyledTicks } from './partials/StyledTicks'
 
 export interface RangeSliderProps
-  extends Omit<SliderProps, 'children' | 'disabled' | 'reversed' | 'vertical'> {
+  extends Omit<
+    SliderProps,
+    | 'children'
+    | 'disabled'
+    | 'reversed'
+    | 'vertical'
+    | 'domain'
+    | 'values'
+    | 'mode'
+    | 'step'
+  > {
+  /**
+   * Two element array of numbers providing the min and max values for the slider [min, max] e.g. [0, 100].
+   * It does not matter if the slider is reversed on the screen, domain is always [min, max] with min < max.
+   */
+  domain?: ReadonlyArray<number>
+  /**
+   * An array of numbers. You can supply one for a value slider, two for a range slider or more to create n-handled sliders.
+   * The values should correspond to valid step values in the domain.
+   * The numbers will be forced into the domain if they are two small or large.
+   */
+  values: ReadonlyArray<number>
+  /**
+   * The step value for the slider.
+   */
+  step?: number
+  /**
+   * The interaction mode. Value of 1 will allow handles to cross each other.
+   * Value of 2 will keep the sliders from crossing and separated by a step.
+   * Value of 3 will make the handles pushable and keep them a step apart.
+   */
+  mode?: 1 | 2 | 3
   /**
    * Toggles whether or not to display labels below the slider.
    */

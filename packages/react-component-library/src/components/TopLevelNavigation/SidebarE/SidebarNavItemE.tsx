@@ -76,4 +76,4 @@ export const SidebarNavItemE: React.FC<SidebarNavItemEProps> = ({
   )
 }
 
-SidebarNavItemE.displayName = 'SidebarNavItem'
+SidebarNavItemE.displayName = 'SidebarNavItemE'

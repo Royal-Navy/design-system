@@ -5,7 +5,7 @@ import { Transition } from 'react-transition-group'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { LinkTypes } from '../../../common/Link'
 import { SidebarContext } from './context'
-import { SidebarUserItemE } from './SidebarUserItem'
+import { SidebarUserItemE } from './SidebarUserItemE'
 import { SHEET_PLACEMENT } from '../Sheet/constants'
 import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
 import { StyledUserAvatar } from './partials/StyledUserAvatar'
@@ -109,4 +109,4 @@ export const SidebarUserE: React.FC<SidebarUserEProps> = ({
   )
 }
 
-SidebarUserE.displayName = 'SidebarUser'
+SidebarUserE.displayName = 'SidebarUserE'

@@ -152,7 +152,7 @@ export const WithFormik: Story<NumberInputProps> = (props) => {
         <Field component={FormikNumberInput} name="gold" label="Gold bars" />
         <Field component={FormikNumberInput} name="btc" label="Bitcoins" />
         <Button type="submit" variant="primary">
-          Save
+          Submit
         </Button>
       </Form>
     </Formik>

@@ -118,7 +118,6 @@ export const WithFormikGroup: Story<CheckboxProps> = () => {
 
     return (
       <Formik
-        initialErrors={{ exampleWithError: 'Field is required' }}
         initialValues={initialValues}
         onSubmit={action('onSubmit')}
         validationSchema={validationSchema}

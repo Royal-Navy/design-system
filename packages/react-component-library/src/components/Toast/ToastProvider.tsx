@@ -5,14 +5,9 @@ import {
   ToastProviderProps as BaseToastProviderProps,
 } from 'react-toast-notifications'
 
-import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { Toast } from '.'
 
-export interface ToastProviderProps
-  extends BaseToastProviderProps,
-    ComponentWithClass {
-  //
-}
+export type ToastProviderProps = BaseToastProviderProps
 
 export const ToastProvider: React.FC<ToastProviderProps> = ({
   children,

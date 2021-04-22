@@ -24,6 +24,7 @@ export const Default: Story<TextInputProps> = (props) => (
 
 Default.args = {
   name: 'text-input-default',
+  label: 'Example label',
 }
 
 export const WithLabel: Story<TextInputProps> = (props) => (

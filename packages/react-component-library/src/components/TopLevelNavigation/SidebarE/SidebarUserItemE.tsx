@@ -29,4 +29,4 @@ export const SidebarUserItemE: React.FC<SidebarUserItemEProps> = ({
   })
 }
 
-SidebarUserItemE.displayName = 'SidebarUserItem'
+SidebarUserItemE.displayName = 'SidebarUserItemE'

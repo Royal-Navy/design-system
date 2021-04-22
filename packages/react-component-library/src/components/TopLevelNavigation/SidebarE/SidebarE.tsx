@@ -2,7 +2,7 @@ import React from 'react'
 import { Transition } from 'react-transition-group'
 
 import { SidebarHandle } from './SidebarHandle'
-import { SidebarUserEProps } from './SidebarUser'
+import { SidebarUserEProps } from './SidebarUserE'
 import { SidebarNotifications } from './SidebarNotifications'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext, SidebarProvider } from './context'
@@ -94,4 +94,4 @@ export const SidebarE: React.FC<SidebarEProps> = ({
   )
 }
 
-SidebarE.displayName = 'Sidebar'
+SidebarE.displayName = 'SidebarE'

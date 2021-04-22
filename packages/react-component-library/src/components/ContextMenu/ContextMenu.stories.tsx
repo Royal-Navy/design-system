@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions'
 import React, { useRef } from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 
@@ -21,7 +20,7 @@ export default {
   },
 } as Meta
 
-const ClickArea = React.forwardRef((props, ref: any) => (
+const ClickArea = React.forwardRef(({ children, ...rest }: any, ref: any) => (
   <div
     ref={ref}
     style={{
@@ -30,7 +29,7 @@ const ClickArea = React.forwardRef((props, ref: any) => (
       backgroundColor: '#c9c9c9',
     }}
   >
-    Click on me
+    {children}
   </div>
 ))
 
@@ -39,13 +38,10 @@ export const Default: Story<ContextMenuProps> = (props) => {
 
   return (
     <>
-      <ClickArea ref={ref} />
-      <ContextMenu
-        attachedToRef={ref}
-        onHide={action('onHide')}
-        onShow={action('onShow')}
-        {...props}
-      >
+      <ClickArea ref={ref}>
+        {props.clickType === 'left' ? 'Click on me' : 'Right click on me'}
+      </ClickArea>
+      <ContextMenu {...props} attachedToRef={ref}>
         <ContextMenuItem link={<Link href="/edit">Edit</Link>} />
         <ContextMenuItem link={<Link href="/delete">Delete</Link>} />
         <ContextMenuItem link={<Link href="/delete">Action</Link>} />
@@ -75,13 +71,10 @@ export const WithIcons: Story<ContextMenuProps> = (props) => {
 
   return (
     <>
-      <ClickArea ref={ref} />
-      <ContextMenu
-        attachedToRef={ref}
-        onHide={action('onHide')}
-        onShow={action('onShow')}
-        {...props}
-      >
+      <ClickArea ref={ref}>
+        {props.clickType === 'left' ? 'Click on me' : 'Right click on me'}
+      </ClickArea>
+      <ContextMenu {...props} attachedToRef={ref}>
         <ContextMenuItem
           icon={<IconEdit />}
           link={<Link href="/edit">Edit</Link>}

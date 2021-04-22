@@ -35,75 +35,79 @@ export default {
   },
 } as Meta
 
-const notifications = (
-  <Notifications link={<Link href="#" />}>
-    <Notification
-      link={<Link href="#" />}
-      name="Thomas Stephens"
-      action="added a new comment to your"
-      on="review"
-      when={new Date('2019-11-05T14:25:02.178Z')}
-      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
-    />
-    <Notification
-      link={<Link href="#" />}
-      name="Thomas Stephens"
-      action="added a new comment to your"
-      on="review"
-      when={new Date('2019-11-01T14:25:02.178Z')}
-      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
-    />
-    <Notification
-      link={<Link href="#" />}
-      name="Thomas Stephens"
-      action="added a new comment to your"
-      on="review"
-      when={new Date('2019-11-01T14:25:02.178Z')}
-      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
-    />
-  </Notifications>
-)
+export const Default: Story<MastheadProps> = (props) => {
+  const notifications = (
+    <Notifications link={<Link href="#" />}>
+      <Notification
+        link={<Link href="#" />}
+        name="Thomas Stephens"
+        action="added a new comment to your"
+        on="review"
+        when={new Date('2019-11-05T14:25:02.178Z')}
+        description="Hello, World!"
+      />
+      <Notification
+        link={<Link href="#" />}
+        name="Thomas Stephens"
+        action="added a new comment to your"
+        on="review"
+        when={new Date('2019-11-01T14:25:02.178Z')}
+        description="Hello, World!"
+      />
+      <Notification
+        link={<Link href="#" />}
+        name="Thomas Stephens"
+        action="added a new comment to your"
+        on="review"
+        when={new Date('2019-11-01T14:25:02.178Z')}
+        description="Hello, World!"
+      />
+    </Notifications>
+  )
 
-const user = (
-  <MastheadUser initials="RN">
-    <MastheadUserItem
-      icon={<IconPerson />}
-      link={<Link href="#">Profile</Link>}
-    />
-    <MastheadUserItem
-      icon={<IconSettings />}
-      link={<Link href="#">Settings</Link>}
-    />
-    <MastheadUserItem
-      icon={<IconChatBubble />}
-      link={<Link href="#">Support</Link>}
-    />
-    <MastheadUserItem
-      icon={<IconExitToApp />}
-      link={<Link href="#">Logout</Link>}
-    />
-  </MastheadUser>
-)
+  const user = (
+    <MastheadUser initials="RN">
+      <MastheadUserItem
+        icon={<IconPerson />}
+        link={<Link href="#">Profile</Link>}
+      />
+      <MastheadUserItem
+        icon={<IconSettings />}
+        link={<Link href="#">Settings</Link>}
+      />
+      <MastheadUserItem
+        icon={<IconChatBubble />}
+        link={<Link href="#">Support</Link>}
+      />
+      <MastheadUserItem
+        icon={<IconExitToApp />}
+        link={<Link href="#">Logout</Link>}
+      />
+    </MastheadUser>
+  )
 
-export const Default: Story<MastheadProps> = (props) => (
-  <Masthead
-    {...props}
-    homeLink={<Link href="#" />}
-    nav={
-      <MastheadNav>
-        <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
-        <MastheadNavItem link={<Link href="#">Styles</Link>} />
-        <MastheadNavItem link={<Link href="#">Components</Link>} />
-        <MastheadNavItem link={<Link href="#">About</Link>} />
-      </MastheadNav>
-    }
-    notifications={notifications}
-    user={user}
-  />
-)
+  const nav = (
+    <MastheadNav>
+      <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
+      <MastheadNavItem link={<Link href="#">Styles</Link>} />
+      <MastheadNavItem link={<Link href="#">Components</Link>} />
+      <MastheadNavItem link={<Link href="#">About</Link>} />
+    </MastheadNav>
+  )
+
+  return (
+    <Masthead
+      {...props}
+      homeLink={<Link href="#" />}
+      nav={nav}
+      notifications={notifications}
+      user={user}
+    />
+  )
+}
 
 Default.args = {
-  searchPlaceholder: 'Search',
+  searchPlaceholder: null,
   title: 'Royal Navy Design System',
   hasUnreadNotification: true,
 }
@@ -113,6 +117,9 @@ export const CustomLogo: Story<MastheadProps> = (props) => (
 )
 
 CustomLogo.storyName = 'Custom logo'
+CustomLogo.args = {
+  onSearch: null,
+}
 
 export const WithoutLogo: Story<MastheadProps> = (props) => (
   <Masthead
@@ -123,6 +130,9 @@ export const WithoutLogo: Story<MastheadProps> = (props) => (
 )
 
 WithoutLogo.storyName = 'Without logo'
+WithoutLogo.args = {
+  onSearch: null,
+}
 
 export const WithSearch: Story<MastheadProps> = (props) => (
   <Masthead
@@ -134,36 +144,101 @@ export const WithSearch: Story<MastheadProps> = (props) => (
 
 WithSearch.storyName = 'With search'
 
-export const WithAvatarLinks: Story<MastheadProps> = (props) => (
-  <Masthead {...props} title="Royal Navy Design System" user={user} />
-)
+export const WithAvatarLinks: Story<MastheadProps> = (props) => {
+  const user = (
+    <MastheadUser initials="RN">
+      <MastheadUserItem
+        icon={<IconPerson />}
+        link={<Link href="#">Profile</Link>}
+      />
+      <MastheadUserItem
+        icon={<IconSettings />}
+        link={<Link href="#">Settings</Link>}
+      />
+      <MastheadUserItem
+        icon={<IconChatBubble />}
+        link={<Link href="#">Support</Link>}
+      />
+      <MastheadUserItem
+        icon={<IconExitToApp />}
+        link={<Link href="#">Logout</Link>}
+      />
+    </MastheadUser>
+  )
+
+  return <Masthead {...props} title="Royal Navy Design System" user={user} />
+}
 
 WithAvatarLinks.storyName = 'With avatar links'
+WithAvatarLinks.args = {
+  onSearch: null,
+}
 
-export const WithNotifications: Story<MastheadProps> = (props) => (
-  <Masthead
-    {...props}
-    title="Royal Navy Design System"
-    notifications={notifications}
-  />
-)
+export const WithNavigation: Story<MastheadProps> = (props) => {
+  const nav = (
+    <MastheadNav>
+      <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
+      <MastheadNavItem link={<Link href="#">Styles</Link>} />
+      <MastheadNavItem link={<Link href="#">Components</Link>} />
+      <MastheadNavItem link={<Link href="#">About</Link>} />
+    </MastheadNav>
+  )
 
-WithNotifications.storyName = 'With notifications'
-
-export const WithNavigation: Story<MastheadProps> = (props) => (
-  <Masthead
-    {...props}
-    homeLink={<Link href="#" />}
-    title="Royal Navy Design System"
-    nav={
-      <MastheadNav>
-        <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
-        <MastheadNavItem link={<Link href="#">Styles</Link>} />
-        <MastheadNavItem link={<Link href="#">Components</Link>} />
-        <MastheadNavItem link={<Link href="#">About</Link>} />
-      </MastheadNav>
-    }
-  />
-)
+  return (
+    <Masthead
+      {...props}
+      homeLink={<Link href="#" />}
+      title="Royal Navy Design System"
+      nav={nav}
+    />
+  )
+}
 
 WithNavigation.storyName = 'With navigation'
+WithNavigation.args = {
+  onSearch: null,
+}
+
+export const WithNotifications: Story<MastheadProps> = (props) => {
+  const notifications = (
+    <Notifications link={<Link href="#" />}>
+      <Notification
+        link={<Link href="#" />}
+        name="Thomas Stephens"
+        action="added a new comment to your"
+        on="review"
+        when={new Date('2019-11-05T14:25:02.178Z')}
+        description="Hello, World!"
+      />
+      <Notification
+        link={<Link href="#" />}
+        name="Thomas Stephens"
+        action="added a new comment to your"
+        on="review"
+        when={new Date('2019-11-01T14:25:02.178Z')}
+        description="Hello, World!"
+      />
+      <Notification
+        link={<Link href="#" />}
+        name="Thomas Stephens"
+        action="added a new comment to your"
+        on="review"
+        when={new Date('2019-11-01T14:25:02.178Z')}
+        description="Hello, World!"
+      />
+    </Notifications>
+  )
+
+  return (
+    <Masthead
+      {...props}
+      title="Royal Navy Design System"
+      notifications={notifications}
+    />
+  )
+}
+
+WithNotifications.storyName = 'With notifications'
+WithNotifications.args = {
+  onSearch: null,
+}
