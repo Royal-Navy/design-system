@@ -54,7 +54,7 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
           {hasSide && (
             <StyledRowHeader
               $css={headerCss}
-              isHeader={isHeader}
+              $isHeader={isHeader}
               data-testid="timeline-row-header"
               role="rowheader"
               aria-label={ariaLabel || name}

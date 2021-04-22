@@ -3,9 +3,14 @@ import { selectors } from '@royalnavy/design-tokens'
 
 const { color, fontSize, spacing, zIndex } = selectors
 
-export const StyledTodayMarker = styled.div`
+interface StyledTodayMarkerProps {
+  $leftPx: string
+}
+
+export const StyledTodayMarker = styled.div<StyledTodayMarkerProps>`
   position: absolute;
   top: 4rem;
+  left: ${({ $leftPx }) => $leftPx || 0};
   display: inline-block;
   width: ${spacing('px')};
   height: 100vh;

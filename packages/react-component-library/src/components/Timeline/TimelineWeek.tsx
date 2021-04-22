@@ -42,9 +42,9 @@ function renderDefault({
 }) {
   return (
     <StyledWeek
-      isOddNumber={isOddNumber}
-      marginLeft={offsetPx}
-      width={widthPx}
+      $isOddNumber={isOddNumber}
+      $marginLeftPx={offsetPx}
+      $widthPx={widthPx}
       data-testid="timeline-week"
     >
       <StyledWeekTitle>{format(startDate, DATE_WEEK_FORMAT)}</StyledWeekTitle>

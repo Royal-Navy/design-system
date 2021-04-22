@@ -59,13 +59,13 @@ function renderDefault({
   endsAfterEnd: boolean
 }) {
   return (
-    <StyledEvent style={{ left: offsetPx }} data-testid="timeline-event">
+    <StyledEvent $leftPx={offsetPx} data-testid="timeline-event">
       <StyledEventBar
-        barColor={barColor}
-        width={widthPx}
-        maxWidth={maxWidthPx}
-        startsBeforeStart={startsBeforeStart}
-        endsAfterEnd={endsAfterEnd}
+        $barColor={barColor}
+        $width={widthPx}
+        $maxWidth={maxWidthPx}
+        $startsBeforeStart={startsBeforeStart}
+        $endsAfterEnd={endsAfterEnd}
         data-testid="timeline-event-bar"
       />
       <StyledEventTitle data-testid="timeline-event-title">

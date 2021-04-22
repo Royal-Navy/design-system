@@ -3,10 +3,14 @@ import { selectors } from '@royalnavy/design-tokens'
 
 const { spacing, zIndex } = selectors
 
-export const StyledEvent = styled.div`
+interface StyledEventProps {
+  $leftPx: string
+}
+
+export const StyledEvent = styled.div<StyledEventProps>`
   position: absolute;
   top: 50%;
-  left: 0;
+  left: ${({ $leftPx }) => $leftPx || 0};
   width: 4.5rem;
   transform: translateY(-50%);
   display: inline-flex;

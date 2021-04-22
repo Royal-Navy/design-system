@@ -6,11 +6,11 @@ import { StyledEventTitle } from './StyledEventTitle'
 const { color } = selectors
 
 interface StyledEventBarProps {
-  width: string
-  maxWidth?: string
-  barColor: string
-  startsBeforeStart?: boolean
-  endsAfterEnd?: boolean
+  $width: string
+  $maxWidth?: string
+  $barColor: string
+  $startsBeforeStart?: boolean
+  $endsAfterEnd?: boolean
 }
 
 export const StyledEventBar = styled.div<StyledEventBarProps>`
@@ -18,19 +18,19 @@ export const StyledEventBar = styled.div<StyledEventBarProps>`
   position: relative;
   display: inline-block;
   border-radius: 4px;
-  background-color: ${({ barColor = color('success', '500') }) => barColor};
+  background-color: ${({ $barColor = color('success', '500') }) => $barColor};
   height: 16px;
   min-width: 1rem;
-  width: ${({ width }) => width};
-  max-width: ${({ maxWidth }) => maxWidth};
+  width: ${({ $width }) => $width};
+  max-width: ${({ $maxWidth }) => $maxWidth};
 
-  ${({ startsBeforeStart, width, barColor = color('success', '500') }) =>
-    startsBeforeStart &&
+  ${({ $startsBeforeStart, $width, $barColor = color('success', '500') }) =>
+    $startsBeforeStart &&
     css`
       border-top-left-radius: unset;
       border-bottom-left-radius: unset;
       margin-left: 14px;
-      width: calc(${width} - 14px);
+      width: calc(${$width} - 14px);
 
       &::before {
         content: '';
@@ -40,7 +40,7 @@ export const StyledEventBar = styled.div<StyledEventBarProps>`
         height: 0;
         border-style: solid;
         border-width: 8px 14px 8px 0;
-        border-color: transparent ${barColor} transparent transparent;
+        border-color: transparent ${$barColor} transparent transparent;
       }
 
       + ${StyledEventTitle} {
@@ -48,12 +48,12 @@ export const StyledEventBar = styled.div<StyledEventBarProps>`
       }
     `}
 
-  ${({ endsAfterEnd, maxWidth, barColor = color('success', '500') }) =>
-    endsAfterEnd &&
+  ${({ $endsAfterEnd, $maxWidth, $barColor = color('success', '500') }) =>
+    $endsAfterEnd &&
     css`
       border-top-right-radius: unset;
       border-bottom-right-radius: unset;
-      max-width: calc(${maxWidth} - 14px);
+      max-width: calc(${$maxWidth} - 14px);
 
       &::after {
         content: '';
@@ -63,14 +63,14 @@ export const StyledEventBar = styled.div<StyledEventBarProps>`
         height: 0;
         border-style: solid;
         border-width: 8px 0 8px 14px;
-        border-color: transparent transparent transparent ${barColor};
+        border-color: transparent transparent transparent ${$barColor};
       }
     `}
 
-    ${({ startsBeforeStart, endsAfterEnd, maxWidth }) =>
-    startsBeforeStart &&
-    endsAfterEnd &&
+    ${({ $startsBeforeStart, $endsAfterEnd, $maxWidth }) =>
+    $startsBeforeStart &&
+    $endsAfterEnd &&
     css`
-      max-width: calc(${maxWidth} - 28px);
+      max-width: calc(${$maxWidth} - 28px);
     `}
 `
