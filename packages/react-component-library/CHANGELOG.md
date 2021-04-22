@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.46.1](https://github.com/Royal-Navy/design-system/compare/2.46.0...2.46.1) (2021-04-22)
+
+
+### Bug Fixes
+
+* **Badge:** Add missing default for variant prop ([58c625a](https://github.com/Royal-Navy/design-system/commit/58c625afdaacd55409991c3f2fb1ace5cdac7a94))
+* **Timeline:** Set `endDate` if bound by dates ([b984561](https://github.com/Royal-Navy/design-system/commit/b98456129e605aabaffe2ef7b73bff5fa64cbcaf))
+
+
+
+
+
 # [2.46.0](https://github.com/Royal-Navy/design-system/compare/2.45.0...2.46.0) (2021-04-22)
 
 
