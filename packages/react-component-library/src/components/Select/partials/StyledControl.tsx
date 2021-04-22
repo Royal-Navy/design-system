@@ -19,6 +19,6 @@ export const StyledControl = styled(components.Control)`
   }
 
   &.rn-select__control--is-focused ${StyledLabel} {
-    transform: translate(${spacing('6')}, ${spacing('2')}) scale(0.8);
+    transform: translate(${spacing('6')}, 6px) scale(0.8);
   }
 `

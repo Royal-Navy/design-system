@@ -15,6 +15,6 @@ export const StyledValueContainer = styled(components.ValueContainer)`
   }
 
   &.rn-select__value-container--has-value ${StyledLabel} {
-    transform: translate(${spacing('6')}, ${spacing('2')}) scale(0.8);
+    transform: translate(${spacing('6')}, 6px) scale(0.8);
   }
 `
