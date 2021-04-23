@@ -160,9 +160,6 @@ jobs:
             JEST_JUNIT_OUTPUT_NAME: docs-site-results.xml
           run: yarn --cwd packages/docs-site jest --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand
 
-        - name: Upload test reports to CodeCov
-          run: bash <(curl -s https://codecov.io/bash)
-
         - name: Persist artifacts
           uses: actions/upload-artifact@v2
           with:
