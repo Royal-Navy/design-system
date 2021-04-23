@@ -2,7 +2,6 @@
 title: Context Menu
 description: A menu that appears upon user interaction, such as right-click mouse operation.
 header: true
-draft: true
 ---
 
 import { TabSet, Tab, ContextMenu, ContextMenuItem, ContextMenuDivider, Link } from '@royalnavy/react-component-library'
@@ -10,35 +9,34 @@ import { IconEdit } from '@royalnavy/icon-library'
 import CodeHighlighter from '../../../components/presenters/code-highlighter'
 import DataTable from '../../../components/presenters/data-table'
 
+import ContextMenuComponent from '../../images/components/context-menu/Component'
+import ContextMenuAnatomy from '../../images/components/context-menu/Anatomy'
+
 # Overview
 A menu that appears upon user interaction, such as right-click mouse operation.
 
-## Usage
+<ContextMenuComponent />
 
-TBC
+## Usage
+The Context Menu provides a way to add additional functionality to a component or application. You should only use the Context Menu for supplementary actions, as it is hidden by default.
 
 <TabSet>
 <Tab title="Design">
 
 ### Anatomy
 
-TBC
+  <ContextMenuAnatomy />
 
-### Sizing & Spacing
+  1. **Container**. Wraps the entire component.
+  1. **Menu Item**. A single menu action.
 
-TBC
 
-### Hierarchy & Placement
+  ### Sizing & Spacing
+  The Context Menu is of a fixed width, so you should keep your menu item names short. We recommend using iconography to supplement a menu item.
 
-TBC
 
-### States
-
-TBC
-
-### Variations
-
-TBC
+  ### Hierarchy & Placement
+  The Context Menu can be triggered anywhere in your application. Ensure the actions in the menu apply to the object or component that has triggered it. Only one Context Menu should be visible at any time.
 
 </Tab>
 
