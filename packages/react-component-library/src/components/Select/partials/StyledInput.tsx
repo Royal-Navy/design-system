@@ -10,5 +10,5 @@ interface StyledInputProps {
 
 export const StyledInput = styled(components.Input)<StyledInputProps>`
   font-size: ${fontSize('base')};
-  margin: ${spacing('6')} 0 0;
+  margin: ${spacing('8')} 0 0;
 `

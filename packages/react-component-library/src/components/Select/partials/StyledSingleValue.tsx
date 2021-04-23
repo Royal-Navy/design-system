@@ -9,6 +9,6 @@ export const StyledSingleValue = styled(components.SingleValue)`
   overflow: visible;
 
   &&& {
-    margin: ${spacing('3')} 0 0 0;
+    margin: ${spacing('4')} 0 0 0;
   }
 `

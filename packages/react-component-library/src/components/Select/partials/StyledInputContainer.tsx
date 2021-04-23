@@ -5,7 +5,7 @@ export const StyledInputContainer = styled.div`
   align-items: center;
   height: inherit;
 
-  &&& > * {
+  &&& > div {
     padding: 0;
     margin: 0;
   }
