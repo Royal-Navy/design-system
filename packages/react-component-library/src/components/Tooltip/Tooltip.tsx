@@ -46,24 +46,20 @@ export const Tooltip: React.FC<TooltipProps> = ({
   width,
   ...rest
 }) => {
-  const style = {
-    bottom,
-    left,
-    right,
-    top,
-    width,
-  }
-
   const contentId = getId('tooltip-content')
   const titleId = title ? getId('tooltip-title') : null
 
   return (
     <StyledTooltip
+      $bottom={bottom}
+      $left={left}
+      $right={right}
+      $top={top}
+      $width={width}
       aria-describedby={contentId}
       aria-labelledby={titleId}
       data-testid="tooltip"
       role="tooltip"
-      style={style}
       {...rest}
     >
       <StyledContent $position={position}>
