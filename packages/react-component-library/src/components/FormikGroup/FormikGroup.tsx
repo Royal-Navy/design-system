@@ -1,4 +1,6 @@
 import React from 'react'
+import { selectors } from '@royalnavy/design-tokens'
+import styled from 'styled-components'
 import { useFormikContext } from 'formik'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
@@ -13,6 +15,12 @@ export interface FormikGroupProps extends ComponentWithClass {
   label?: string
 }
 
+const { spacing } = selectors
+
+const StyledLegend = styled.legend`
+  padding-bottom: ${spacing('4')};
+`
+
 export const FormikGroup: React.FC<FormikGroupProps> = ({
   children,
   className,
@@ -24,7 +32,9 @@ export const FormikGroup: React.FC<FormikGroupProps> = ({
 
   return (
     <div className={className} data-testid="formik-group" role="group">
-      {label && <legend data-testid="formik-group-legend">{label}</legend>}
+      {label && (
+        <StyledLegend data-testid="formik-group-legend">{label}</StyledLegend>
+      )}
       {React.Children.map(children, (child) => {
         return React.cloneElement(child, transformErrorToAriaAttributes(error))
       })}
