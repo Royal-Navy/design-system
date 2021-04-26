@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.47.0](https://github.com/Royal-Navy/design-system/compare/2.46.1...2.47.0) (2021-04-26)
+
+
+### Features
+
+* **ContextMenu:** Add design documentation ([63b463f](https://github.com/Royal-Navy/design-system/commit/63b463f162157f6e3fc3570bfea04b9041870663))
+* **SidebarE:** Add design documentation ([6488828](https://github.com/Royal-Navy/design-system/commit/6488828c005523fc337626dca700c7aa4aa4765a))
+
+
+
+
+
 ## [2.46.1](https://github.com/Royal-Navy/design-system/compare/2.46.0...2.46.1) (2021-04-22)
 
 **Note:** Version bump only for package royalnavy.io

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.47.0](https://github.com/Royal-Navy/design-system/compare/2.46.1...2.47.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* **Select:** Resolve input styling issue ([d8ad0af](https://github.com/Royal-Navy/design-system/commit/d8ad0af5000500a6e2d10d532c24939c0cad0f76))
+
+
+
+
+
 ## [2.46.1](https://github.com/Royal-Navy/design-system/compare/2.46.0...2.46.1) (2021-04-22)
 
 
