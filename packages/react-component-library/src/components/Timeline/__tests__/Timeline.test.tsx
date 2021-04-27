@@ -523,37 +523,105 @@ describe('Timeline', () => {
     })
   })
 
-  describe('when `dayWidth` is specified', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <Timeline
-          dayWidth={100}
-          startDate={new Date(2020, 3, 1)}
-          today={new Date(2020, 3, 15)}
-        >
-          <TimelineTodayMarker />
-          <TimelineMonths />
-          <TimelineWeeks />
-          <TimelineDays />
-          <TimelineRows>
-            <TimelineRow name="Row 1">
-              <TimelineEvents>
-                <TimelineEvent
-                  startDate={new Date(2020, 3, 4)}
-                  endDate={new Date(2020, 3, 6)}
-                >
-                  Event
-                </TimelineEvent>
-              </TimelineEvents>
-            </TimelineRow>
-          </TimelineRows>
-        </Timeline>
-      )
+  describe('when `unitWidth` is specified', () => {
+    describe('when the width is 100', () => {
+      beforeEach(() => {
+        wrapper = render(
+          <Timeline
+            unitWidth={100}
+            startDate={new Date(2020, 3, 1)}
+            today={new Date(2020, 3, 15)}
+          >
+            <TimelineTodayMarker />
+            <TimelineMonths />
+            <TimelineWeeks />
+            <TimelineDays />
+            <TimelineRows>
+              <TimelineRow name="Row 1">
+                <TimelineEvents>
+                  <TimelineEvent
+                    startDate={new Date(2020, 3, 4)}
+                    endDate={new Date(2020, 3, 6)}
+                  >
+                    Event
+                  </TimelineEvent>
+                </TimelineEvents>
+              </TimelineRow>
+            </TimelineRows>
+          </Timeline>
+        )
+      })
+
+      it('positions the event correctly', () => {
+        expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
+          left: '300px',
+        })
+      })
     })
 
-    it('positions the event correctly', () => {
-      expect(wrapper.getByTestId('timeline-event')).toHaveStyle({
-        left: '300px',
+    describe('when the width is 20', () => {
+      beforeEach(() => {
+        wrapper = render(
+          <Timeline
+            startDate={new Date(2020, 3, 1)}
+            today={new Date(2020, 3, 15)}
+            unitWidth={20}
+          >
+            <TimelineTodayMarker />
+            <TimelineMonths />
+            <TimelineWeeks />
+            <TimelineDays />
+            <TimelineRows>
+              <TimelineRow name="Row 1">
+                <TimelineEvents>
+                  <TimelineEvent
+                    startDate={new Date(2020, 3, 4)}
+                    endDate={new Date(2020, 3, 6)}
+                  >
+                    Event
+                  </TimelineEvent>
+                </TimelineEvents>
+              </TimelineRow>
+            </TimelineRows>
+          </Timeline>
+        )
+      })
+
+      it('should render the days', () => {
+        expect(wrapper.getAllByTestId('timeline-day')).toHaveLength(30)
+      })
+    })
+
+    describe('when the width is 19', () => {
+      beforeEach(() => {
+        wrapper = render(
+          <Timeline
+            startDate={new Date(2020, 3, 1)}
+            today={new Date(2020, 3, 15)}
+            unitWidth={19}
+          >
+            <TimelineTodayMarker />
+            <TimelineMonths />
+            <TimelineWeeks />
+            <TimelineDays />
+            <TimelineRows>
+              <TimelineRow name="Row 1">
+                <TimelineEvents>
+                  <TimelineEvent
+                    startDate={new Date(2020, 3, 4)}
+                    endDate={new Date(2020, 3, 6)}
+                  >
+                    Event
+                  </TimelineEvent>
+                </TimelineEvents>
+              </TimelineRow>
+            </TimelineRows>
+          </Timeline>
+        )
+      })
+
+      it('should not render the days', () => {
+        expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(0)
       })
     })
   })
