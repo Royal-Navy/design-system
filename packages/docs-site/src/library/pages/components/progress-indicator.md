@@ -4,12 +4,15 @@ description: An animated indication that some form of network request or process
 header: true
 ---
 
-import { ProgressIndicator, Tab, TabSet } from '@royalnavy/react-component-library'
-import CodeHighlighter from '../../../components/presenters/code-highlighter'
-import DataTable from '../../../components/presenters/data-table'
-
 import ProgressIndicatorComponent from '../../images/components/progress-indicator/Component'
 import ProgressIndicatorAnatomy from '../../images/components/progress-indicator/Anatomy'
+
+import Bucket from '../../../components/presenters/bucket'
+
+<div className="bucket__container">
+  <Bucket type="sketch" url="https://docs.royalnavy.io/design-system.sketch" />
+  <Bucket type="storybook" url="https://storybook.royalnavy.io/?path=/docs/progress-indicator--default" />
+</div>
 
 # Overview
 
@@ -27,9 +30,6 @@ Where a widget of content is in a loading state the `aria-busy` attribute should
 
 The default value of `aria-busy` is false for all elements. When `aria-busy` is true for an element, assistive technologies may ignore changes to content owned by that element and then process all changes made during the busy period as a single, atomic update when aria-busy becomes false.
 
-<TabSet>
-<Tab title="Design">
-
 ### Anatomy
 
 <ProgressIndicatorAnatomy />
@@ -40,24 +40,3 @@ The default value of `aria-busy` is false for all elements. When `aria-busy` is 
 ### Hierarchy & Placement
 
 The Progress Indicator can either be used as a full screen overlay, or within an individual component. Use the indicator full screen when the application is on first load. Individual components should have the progress indicator displayed when they are retrieving data, yet don't have anything to display yet.
-
-</Tab>
-
-<Tab title="Develop">
-
-### Basic Usage
-<CodeHighlighter source={`<ProgressIndicator />`} language="javascript" />
-
-### Properties
-<DataTable data={[
-  {
-    Name: 'className',
-    Type: 'string',
-    Required: 'False',
-    Default: '',
-    Description: 'CSS modifier class to add to the component',
-  },
-]} />
-
-</Tab>
-</TabSet>

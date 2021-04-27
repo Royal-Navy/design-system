@@ -4,24 +4,23 @@ description: Alerts are a great way to provide contextual feedback to a user.
 header: true
 ---
 
-
-import { TabSet, Tab } from '@royalnavy/react-component-library'
-import CodeHighlighter from '../../../components/presenters/code-highlighter'
-import DataTable from '../../../components/presenters/data-table'
-
 import AlertComponent from '../../images/components/alert/Component'
 import AlertAnatomy from '../../images/components/alert/Anatomy'
 import AlertStates from '../../images/components/alert/States'
 
+import Bucket from '../../../components/presenters/bucket'
+
+<div className="bucket__container">
+  <Bucket type="sketch" url="https://docs.royalnavy.io/design-system.sketch" />
+  <Bucket type="storybook" url="https://storybook.royalnavy.io/?path=/docs/alert--default" />
+</div>
 
 # Overview
+
 <AlertComponent />
 
 ## Usage
 The usage of the Alert component is derived from the context it will be placed in. There are four Alert variations - info, success, warning, and danger. By default, the Info Alert should be used, with the stateful Alerts being placed to either confirm an action or inform the user that the action may be dangerous (e.g. deleting data).
-
-<TabSet>
-<Tab title="Design">
 
 ### Anatomy
 
@@ -46,47 +45,3 @@ The Alert Component has four states - info, success, warning, and danger.
 
 ### Variations
 Each Alert comes in two variations - Title & Description, and just a Description.
-
-</Tab>
-
-<Tab title="Develop">
-
-### Basic Usage
-<CodeHighlighter source={`<Alert title="Alert Title" variant={ALERT_VARIANT.WARNING}>
-  This is the alert description.
-</Alert>`} language="javascript" />
-
-### Alert Properties
-<DataTable data={[
-  {
-    Name: 'children',
-    Type: 'string',
-    Required: 'True',
-    Default: '',
-    Description: 'Content of the alert.',
-  },
-  {
-    Name: 'onClose',
-    Type: 'func',
-    Required: 'False',
-    Default: '',
-    Description: 'Optional callback which is invoked when the alert is closed.',
-  },
-  {
-    Name: 'title',
-    Type: 'string',
-    Required: 'False',
-    Default: '',
-    Description: 'Title of the alert.',
-  },
-  {
-    Name: 'variant',
-    Type: 'string',
-    Required: 'False',
-    Default: 'info',
-    Description: 'Variant of the alert, can be `danger`, `info`, `success` or `warning`.',
-  },
-]} />
-
-</Tab>
-</TabSet>

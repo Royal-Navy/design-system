@@ -199,11 +199,16 @@
 }
 
 .masthead__github {
+  opacity: .5;
   path {
     fill: rn.color("neutral", "black");
   }
   width: rn.spacing("12");
   height: rn.spacing("12");
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 @include rn.breakpoint("xs") {

@@ -4,12 +4,6 @@ description: Buttons are one of the foundational elements of any application.
 header: true
 ---
 
-import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
-import { Button, Tab, TabSet } from '@royalnavy/react-component-library'
-import DataTable from '../../../components/presenters/data-table'
-import CodeHighlighter from '../../../components/presenters/code-highlighter'
-import SketchWidget from '../../../components/presenters/sketch-widget'
-
 import ButtonComponent from '../../images/components/button/Component'
 import ButtonAnatomy from '../../images/components/button/Anatomy'
 import ButtonPrimary from '../../images/components/button/Primary'
@@ -21,6 +15,13 @@ import ButtonTertiary from '../../images/components/button/Tertiary'
 import ButtonTertiaryStates from '../../images/components/button/TertiaryStates'
 import ButtonTertiaryHierarchy from '../../images/components/button/TertiaryHierarchy'
 
+import Bucket from '../../../components/presenters/bucket'
+
+<div className="bucket__container">
+  <Bucket type="sketch" url="https://docs.royalnavy.io/design-system.sketch" />
+  <Bucket type="storybook" url="https://storybook.royalnavy.io/?path=/docs/button--default" />
+</div>
+
 # Overview
 
 The Button Component gives users a way to take action in an interface. They are placed throughout User Interfaces (UIs) and often serve as the main action in a component.
@@ -29,11 +30,6 @@ The Button Component gives users a way to take action in an interface. They are 
 
 ## Usage
 The usage section is a bullet pointed list of scenarios the component should be used in.
-
-<TabSet>
-  <Tab title="Design">
-
-<SketchWidget name="Button" href="/design-system.sketch" />
 
 Buttons are available in three variants - [Primary](#primary), [Secondary](#secondary), and [Tertiary](#tertiary). These variants allow designers to establish [hierarchy](#hierarchy) in interfaces.
 
@@ -103,136 +99,3 @@ Like all other buttons, Tertiary Buttons have three main interactive states:
 Avoid using multiple Tertiary Buttons next to each other. Their supportive role is best used to undo a Primary or Secondary action.
 
 <ButtonTertiaryHierarchy />
-
-</Tab>
-
-<Tab title="Develop">
-
-Buttons are implemented as a simple component that as a minimum expects its main content (label) to be passed in as a child element, along with the action to carry out when the button is clicked. Additional properties allow more custom styling of the button.
-
-### Basic Usage
-
-<CodeHighlighter source="<Button onClick={onClickHandler}>Click me</Button>" language="javascript">
-  <Button onClick={() => {}}>Click me</Button>
-</CodeHighlighter>
-
-### Variants
-A button can be one of three variants to indicate its importance and role on a page: Primary, Secondary or Tertiary. There is a further variation allowed to indicate if a button is associated with an action that is dangerous, such as deleting a record.
-
-<CodeHighlighter 
-source={`<Button onClick={action} variant="primary">Primary</Button>
-<Button onClick={action} variant="secondary">Secondary</Button>
-<Button onClick={action} variant="tertiary">Tertiary</Button>
-
-<Button onClick={action} variant="primary" color="danger">Primary</Button>
-<Button onClick={action} variant="secondary" color="danger">Secondary</Button>
-<Button onClick={action} variant="tertiary" color="danger">Tertiary</Button>
-`} language="javascript"
->
-  <p>
-    <Button onClick={()=>{}} variant="primary">Primary</Button>
-    <Button onClick={()=>{}} variant="secondary">Secondary</Button>
-    <Button onClick={()=>{}} variant="tertiary">Tertiary</Button>
-  </p>
-  <p>
-    <Button onClick={()=>{}} variant="primary" color="danger">Primary</Button>
-    <Button onClick={()=>{}} variant="secondary" color="danger">Secondary</Button>
-    <Button onClick={()=>{}} variant="tertiary" color="danger">Tertiary</Button>
-  </p>
-</CodeHighlighter>
-
-### Sizes
-Buttons can be rendered in three different size variants.
-
-<CodeHighlighter source={`<Button onClick={action} variant="primary" size="small">Small</Button>
-<Button onClick={action} variant="primary" size="regular">Regular</Button>
-<Button onClick={action} variant="primary" size="large">Large</Button>
-`} language="javascript"
->
-  <Button onClick={()=>{}} variant="primary" size="small">Small</Button>
-  <Button onClick={()=>{}} variant="primary" size="regular">Regular</Button>
-  <Button onClick={()=>{}} variant="primary" size="large">Large</Button>
-</CodeHighlighter>
-
-
-### Icons
-Icons can be added to a button and currently can only be shown to the right of the label. Icons should take the form of an SVG component.
-
-<CodeHighlighter 
-source={`<Button onClick={action} icon={<IconBrightnessLow />}>Low</Button>
-<Button onClick={action} icon={<IconBrightnessHigh />}>High</Button>
-`} language="javascript"
->
-  <Button onClick={()=>{}} icon={<IconBrightnessLow />}>Low</Button>
-  <Button onClick={()=>{}} icon={<IconBrightnessHigh />}>High</Button>
-</CodeHighlighter>
-
-### Properties
-<DataTable data={[
-  {
-    Name: 'children',
-    Type: 'ReactNode',
-    Required: 'True',
-    Default: '',
-    Description: 'The content to place in the button, typically text',
-  },
-  {
-    Name: 'className',
-    Type: 'string',
-    Required: 'False',
-    Default: '',
-    Description: 'Custom css class to add to the button element',
-  },
-  {
-    Name: 'color',
-    Type: 'string (danger)',
-    Required: 'False',
-    Default: '',
-    Description: 'An alternative color style to use, danger is the only alternative currently supported',
-  },
-  {
-    Name: 'isDisabled',
-    Type: 'boolean',
-    Required: 'False',
-    Default: false,
-    Description: 'Mark the button as disabled/inactive',
-  },
-  {
-    Name: 'icon',
-    Type: 'ReactNode',
-    Required: 'False',
-    Default: '',
-    Description: 'Icon to display to the right of text in the button. Accepts any Node but ideally would be an image or svg tag',
-  },
-  {
-    Name: 'iconPlacement',
-    Type: 'string (left/right)',
-    Required: 'False',
-    Default: 'right',
-    Description: 'This specifies which side of the button text the icon should be rendered',
-  },
-  {
-    Name: 'onClick',
-    Type: '(event: React.SyntheticEvent):void',
-    Required: 'False',
-    Default: '',
-    Description: 'Function to call when a user clicks on a button',
-  },
-  {
-    Name: 'size',
-    Type: 'string (small/regular/large)',
-    Required: 'False',
-    Default: 'regular',
-    Description: 'The size for the button',
-  },
-  {
-    Name: 'variant',
-    Type: 'string (primary/secondary/tertiary)',
-    Required: 'False',
-    Default: 'tertiary',
-    Description: 'The style of button',
-  },
-]} />
-
-</Tab>
-</TabSet>

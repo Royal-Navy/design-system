@@ -1,6 +1,6 @@
 ---
 title: Colours
-description: 'Using colour within a Standard Toolkit application'
+description: ''
 tags: public
 pageClass: ''
 template: default

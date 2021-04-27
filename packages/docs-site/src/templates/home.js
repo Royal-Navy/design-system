@@ -37,7 +37,7 @@ const HomeTemplate = ({ data: { mdx }, location }) => {
       <MastHead navItems={primaryNavData} />
       <HeroBanner
         title="Build your application using Royal Navy Design System styles and components"
-        text="Use this design system to build applications and services for the Royal Navy. The website includes guidance, a component library and prototyping tools. Use these to save time and give users a consistent experience that meets the NELSON Standard."
+        text="Use this design system to build applications and services for the Royal Navy. The website includes guidance, a component library and prototyping tools. Use these to save time and give users a consistent experience that meets the Royal Navy's service standards."
         ctaText="Get started"
         ctaLink="/get-started"
       />

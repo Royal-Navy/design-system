@@ -88,7 +88,9 @@ $card-background-color: #f0f4f8;
 
   svg {
     height: 12px;
-    margin-left: rn.spacing("4");
+    margin-left: rn.spacing("4") !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 }
 

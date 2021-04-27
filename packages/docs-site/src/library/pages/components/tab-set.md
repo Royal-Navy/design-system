@@ -4,16 +4,16 @@ description: The Tab Set displays multiple content areas, which can be viewed by
 header: true
 ---
 
-import { Tab, TabSet } from '@royalnavy/react-component-library'
-import DataTable from '../../../components/presenters/data-table'
-import CodeHighlighter from '../../../components/presenters/code-highlighter'
-import SketchWidget from '../../../components/presenters/sketch-widget'
-import TabSetComponent from '../../images/components/tabset/Component'
-import TabSetAnatomy from '../../images/components/tabset/Anatomy'
-import TabSetStates from '../../images/components/tabset/States'
 import TabSetScrollableComponent from '../../images/components/tabset/ScrollableComponent'
 import TabSetScrollableAnatomy from '../../images/components/tabset/ScrollableAnatomy'
 import TabSetScrollableStates from '../../images/components/tabset/ScrollableStates'
+
+import Bucket from '../../../components/presenters/bucket'
+
+<div className="bucket__container">
+  <Bucket type="sketch" url="https://docs.royalnavy.io/design-system.sketch" />
+  <Bucket type="storybook" url="https://storybook.royalnavy.io/?path=/docs/tab-set--default" />
+</div>
 
 # Overview
 
@@ -21,12 +21,6 @@ import TabSetScrollableStates from '../../images/components/tabset/ScrollableSta
 
 ## Usage
 The Tab Set component is used to separate content that exists at the same level of hierarchy. It provides easy navigation between these sections.
-
-<TabSet>
-
-<Tab title="Design">
-
-<SketchWidget name="TabSet" href="/design-system.sketch" />
 
 The Tab Set component comes in two distinct varieties - the default Tab Set and the [Scrollable Tab Set](#scrollable-tabs).
 
@@ -73,89 +67,3 @@ Much like the default Tab Set component, the Scrollable Tab Set has three states
 
 #### Hierarchy & Placement
 The Scrollable Tab Set is a top level navigational component, so therefore it should not be nested inside any other scrollable Tab Set component.
-
-
-</Tab>
-
-<Tab title="Develop">
-The TabSet (and companion Tab) component allows the user to switch between different sets of related content within a single page.
-
-### Basic Usage
-<CodeHighlighter source={`<TabSet>
-  <Tab title="Example Tab 1">
-    <p>This is some example tab 1 content</p>
-  </Tab>
-  <Tab title="Example Tab 2">
-    <p>This is some example tab 2 content</p>
-  </Tab>
-</TabSet>
-`} language="javascript">
-  <TabSet>
-    <Tab title="Example Tab 1">
-      <p>This is some example tab 1 content</p>
-    </Tab>
-    <Tab title="Example Tab 2">
-      <p>This is some example tab 2 content</p>
-    </Tab>
-  </TabSet>
-</CodeHighlighter>
-
-### TabSet Properties
-<DataTable data={[
-  {
-    Name: 'children',
-    Type: 'React.ReactElement<TabProps>[]',
-    Required: 'True',
-    Default: '',
-    Description: 'A Tab to include within the TabSet. Must be a Tab component',
-  },
-  {
-    Name: 'className',
-    Type: 'string',
-    Required: 'False',
-    Default: '',
-    Description: 'Additional CSS class to modify rn-tab-set',
-  },
-  {
-    Name: 'onChange',
-    Type: '(id: number) => void',
-    Required: 'False',
-    Default: '',
-    Description: 'Called when a tab is clicked.',
-  },
-  {
-    Name: 'isFullWidth',
-    Type: 'boolean',
-    Required: 'False',
-    Default: 'False',
-    Description: 'Sets the TabSet and tabs to fill the full width',
-  },
-  {
-    Name: 'isScrollable',
-    Type: 'boolean',
-    Required: 'False',
-    Default: 'False',
-    Description: 'Adds ability to scroll through a large number of tabs.',
-  }
-]} />
-
-### Tab Properties
-<DataTable data={[
-  {
-    Name: 'title',
-    Type: 'React.ReactElement | string',
-    Required: 'True',
-    Default: '',
-    Description: 'The title to be used for this Tab within the TabSet',
-  },
-  {
-    Name: 'children',
-    Type: 'React.ReactElement | string',
-    Required: 'True',
-    Default: '',
-    Description: 'The content to place in the Tab. Any JSX is valid',
-  }
-]} />
-
-</Tab>
-</TabSet>

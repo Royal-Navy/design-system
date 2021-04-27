@@ -54,17 +54,24 @@ $text-color: #748999;
     }
   }
 
+  svg {
+    margin: 1rem 0;
+  }
 }
 
 h1, h2, h3,
 h4, h5, h6 {
   color: rn.color("neutral", "500");
   margin-top: rn.spacing("12");
-  margin-bottom: rn.spacing("2");
+  margin-bottom: rn.spacing("8");
 
   + .data-table {
     margin-top: rn.spacing("8");
   }
+}
+
+ul {
+  margin: 1rem;
 }
 
 p, li {
