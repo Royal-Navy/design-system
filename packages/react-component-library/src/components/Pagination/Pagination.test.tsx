@@ -169,6 +169,13 @@ describe('Pagination', () => {
             expect(wrapper.getByText('Check page number')).toBeVisible()
           })
 
+          it('should display the error in the correct position', () => {
+            const error = wrapper.getByTestId('tooltip')
+            expect(error).toHaveStyleRule('bottom', '39px')
+            expect(error).toHaveStyleRule('right', '3px')
+            expect(error).toHaveStyleRule('width', '155px')
+          })
+
           it('should not call the onChange callback', () => {
             expect(onChangeSpy).not.toHaveBeenCalled()
           })

@@ -101,10 +101,11 @@ describe('Tooltip', () => {
     })
 
     it('should render the tooltip with extra style', () => {
-      expect(wrapper.getByTestId('tooltip')).toHaveAttribute(
-        'style',
-        'bottom: 1px; left: 2px; right: 3px; top: 4px; width: 100px;'
-      )
+      expect(wrapper.getByTestId('tooltip')).toHaveStyleRule('bottom', '1px')
+      expect(wrapper.getByTestId('tooltip')).toHaveStyleRule('left', '2px')
+      expect(wrapper.getByTestId('tooltip')).toHaveStyleRule('right', '3px')
+      expect(wrapper.getByTestId('tooltip')).toHaveStyleRule('top', '4px')
+      expect(wrapper.getByTestId('tooltip')).toHaveStyleRule('width', '100px')
     })
 
     it('should render the title', () => {
