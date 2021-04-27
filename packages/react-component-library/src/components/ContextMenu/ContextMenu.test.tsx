@@ -3,6 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { RenderResult, render, fireEvent, act } from '@testing-library/react'
 import { IconSettings } from '@royalnavy/icon-library'
 import 'jest-styled-components'
+import userEvent from '@testing-library/user-event'
 
 import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
 import { Link } from '../Link'
@@ -64,6 +65,7 @@ describe('ContextMenu', () => {
                 link={<Link href="/hello-bar">Hello, Bar!</Link>}
               />
             </ContextMenu>
+            <div data-testid="outside">Outside</div>
           </>
         )
       }
@@ -94,6 +96,30 @@ describe('ContextMenu', () => {
           'top',
           '0px'
         )
+      })
+
+      it('should disable scrolling', () => {
+        expect(wrapper.baseElement).toHaveAttribute(
+          'style',
+          'overflow: hidden;'
+        )
+      })
+
+      describe('and outside is clicked', () => {
+        beforeEach(() => {
+          userEvent.click(wrapper.getByTestId('outside'))
+        })
+
+        it('should hide the context menu', () => {
+          expect(wrapper.queryByTestId('context-menu')).not.toBeVisible()
+        })
+
+        it('should enable scrolling again', () => {
+          expect(wrapper.baseElement).toHaveAttribute(
+            'style',
+            'overflow: auto;'
+          )
+        })
       })
     })
   })
