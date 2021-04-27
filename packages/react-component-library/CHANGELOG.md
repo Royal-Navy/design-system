@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.47.1](https://github.com/Royal-Navy/design-system/compare/2.47.0...2.47.1) (2021-04-27)
+
+
+### Bug Fixes
+
+* **DismissibleBanner:** Resolve checkbox alignment ([69613a2](https://github.com/Royal-Navy/design-system/commit/69613a2a2a703d3c33d6e29ce2989fb820570d86))
+* **FormikGroup:** Adjust legend spacing styling ([e8cb327](https://github.com/Royal-Navy/design-system/commit/e8cb327abc9c5db7e082e659ee08a7130c53fcf0))
+* **Radio:** Adjust alignment and spacing ([03b18f0](https://github.com/Royal-Navy/design-system/commit/03b18f006c81dbe06469c937af19b9a153e915d3))
+
+
+
+
+
 # [2.47.0](https://github.com/Royal-Navy/design-system/compare/2.46.1...2.47.0) (2021-04-26)
 
 
