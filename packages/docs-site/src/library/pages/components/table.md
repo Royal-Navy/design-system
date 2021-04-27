@@ -4,13 +4,15 @@ description: Display tabular data.
 header: true
 ---
 
-import { Table, Column, TabSet, Tab } from '@royalnavy/react-component-library'
-import DataTable from '../../../components/presenters/data-table'
-import CodeHighlighter from '../../../components/presenters/code-highlighter'
-import SketchWidget from '../../../components/presenters/sketch-widget'
-
 import TableComponent from '../../images/components/table/Component'
 import TableAnatomy from '../../images/components/table/Anatomy'
+
+import Bucket from '../../../components/presenters/bucket'
+
+<div className="bucket__container">
+  <Bucket type="sketch" url="https://docs.royalnavy.io/design-system.sketch" />
+  <Bucket type="storybook" url="https://storybook.royalnavy.io/?path=/docs/table--default" />
+</div>
 
 # Overview
 
@@ -20,11 +22,6 @@ The Table component is used to display tabular data. Each row is presented in th
 
 ## Usage
 The Table component is best used to compare information in rows and columns. It organises data, making it easier for users to interpret by looking for patterns and insights. By default, the Table simply renders data passed to it, however it can be enhanced to include features such as Column Sorting.
-
-<TabSet>
-<Tab title="Design">
-
-<SketchWidget name="Table" href="/design-system.sketch" />
 
 ### Anatomy
 <TableAnatomy />
@@ -39,122 +36,3 @@ The Table component adapts to the data and content placed inside of it. By defau
 
 ### Hierarchy & Placement
 Whilst there is no restriction on the number of Table instances that can be used per page, it's always worth exploring if there is a more informative or interactive way of displaying this data to the user.
-
-</Tab>
-
-<Tab title="Develop">
-
-### Basic Usage
-<CodeHighlighter source={`const data = [
-  {
-    id: 'a',
-    first: 'a1',
-    second: 'a2',
-    third: 'a3',
-  },
-  {
-    id: 'b',
-    first: 'b1',
-    second: 'b2',
-    third: 'b3',
-  },
-  {
-    id: 'c',
-    first: 'c1',
-    second: 'c2',
-    third: 'c3',
-  },
-]\n
-<Table data={data}>
-  <Column field="first" sortable>First</Column>
-  <Column field="second">Second</Column>
-  <Column field="third">Third</Column>
-</Table>
-`} language="javascript" />
-
-### Basic Usage with Aribtrary Cell Content
-<CodeHighlighter source={`const data = [
-  {
-    id: 'a',
-    first: 'a1',
-    second: <Badge color="success">Online</Badge>,
-  },
-  {
-    id: 'b',
-    first: 'b1',
-    second: <Badge color="danger">Offline</Badge>,
-  },
-]\n
-<Table data={data}>
-  <Column field="first">First</Column>
-  <Column field="second">Second</Column>
-  <Column field="third">Third</Column>
-</Table>
-`} language="javascript" />
-
-### Table Properties
-<DataTable data={[
-  {
-    Name: 'data',
-    Type: '{ id: string }[]',
-    Required: 'True',
-    Default: '',
-    Description: 'An array of objects for presenting as rows. Each object has fields which can either be a string or an arbitrary component such as a Badge.',
-  },
-  {
-    Name: 'children',
-    Type: 'React.ReactElement<ColumnProps>[]',
-    Required: 'True',
-    Default: '',
-    Description: 'An array of columns for header cells and presenting cells.',
-  },
-]} />
-
-### Column Properties
-<DataTable data={[
-  {
-    Name: 'children',
-    Type: 'string',
-    Required: 'True',
-    Default: '',
-    Description: 'Text to be presented in the column header cell.',
-  },
-  {
-    Name: 'field',
-    Type: 'string',
-    Required: 'True',
-    Default: '',
-    Description: 'Name of the field to be presented in the cell.',
-  },
-  {
-    Name: 'onSortClick',
-    Type: '(field: string) => void',
-    Required: 'False',
-    Default: '',
-    Description: 'Called when the column sort is clicked.',
-  },
-  {
-    Name: 'isSortable',
-    Type: 'boolean',
-    Required: 'False',
-    Default: '',
-    Description: 'If specified then the column will be sortable.',
-  },
-  {
-    Name: 'sortOrder',
-    Type: 'string',
-    Required: 'False',
-    Default: '',
-    Description: 'Order the column will be sorted in `asc` or `desc`',
-  },
-  {
-    Name: 'caption',
-    Type: 'string',
-    Required: 'False',
-    Default: '',
-    Description: 'An optional string to render as the table caption',
-  },
-]} />
-
-</Tab>
-</TabSet>

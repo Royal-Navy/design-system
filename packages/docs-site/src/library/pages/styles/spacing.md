@@ -1,6 +1,6 @@
 ---
 title: Spacing
-description: How we handle Spacing and sizing in the Royal Navy Design System
+description: ''
 tags: public
 pageClass: ''
 template: default

@@ -55,6 +55,8 @@ $border-radius-button: 3px;
     margin-right: rn.spacing("4");
     .post-article & {
       margin-top: 0;
+      margin-bottom: 0;
+      margin-right: rn.spacing("4");
     }
   }
 

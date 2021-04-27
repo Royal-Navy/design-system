@@ -1,6 +1,6 @@
 ---
 title: Design
-description: 'Start designing with a Design System from the Royal Navy - the Royal Navy Design System'
+description: 'Start designing with a Design System from the Royal Navy.'
 header: true
 ---
 

@@ -4,7 +4,7 @@ description: ''
 header: true
 ---
 
-import CodeHighlighter from '../../../../components/presenters/code-highlighter'
+import CodeHighlighter from '../../../components/presenters/code-highlighter'
 
 ## Installation
 

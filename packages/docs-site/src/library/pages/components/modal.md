@@ -4,14 +4,16 @@ description: Modal is a child window that overlays the main parent window.
 header: true
 ---
 
-import { Modal, TabSet, Tab } from '@royalnavy/react-component-library'
-import DataTable from '../../../components/presenters/data-table'
-import CodeHighlighter from '../../../components/presenters/code-highlighter'
-import SketchWidget from '../../../components/presenters/sketch-widget'
-
 import ModalComponent from '../../images/components/modal/Component'
 import ModalUsage from '../../images/components/modal/Usage'
 import ModalAnatomy from '../../images/components/modal/Anatomy'
+
+import Bucket from '../../../components/presenters/bucket'
+
+<div className="bucket__container">
+  <Bucket type="sketch" url="https://docs.royalnavy.io/design-system.sketch" />
+  <Bucket type="storybook" url="https://storybook.royalnavy.io/?path=/docs/modal--default" />
+</div>
 
 # Overview
 
@@ -25,12 +27,6 @@ The Modal should be used to control application flow for a user. By opening a mo
 <ModalUsage />
 
 Modals can be combined with [Forms](/components/forms/) to create flows that capture the user's attention.
-
-<TabSet>
-
-<Tab title="Design">
-
-<SketchWidget name="Modal" href="/design-system.sketch" />
 
 ### Anatomy
 
@@ -46,105 +42,3 @@ The Modal component has two states - `hidden` and `active`. By default, includin
 
 ### Hierarchy & Placement
 As the Modal is a full-screen component, only one can be used at any time. The Modal auto-positions itself to the centre of the screen and will adjust itself based on the content provided. There is no need to manually size or place the Modal.
-
-</Tab>
-
-<Tab title="Develop">
-
-Modal is a child window that overlays the main parent window.
-
-### Basic Usage
-<CodeHighlighter className="code-highlighter--modal" source={`<Modal
-  title="Modal Header"
-  primaryButton={primaryButton}
-  secondaryButton={secondaryButton}
-  tertiaryButton={tertiaryButton}
-  onClose={() => console.log('close')}
-  isOpen
->
-  This is an example modal.
-</Modal>`} language="javascript">
-  <Modal
-    className="docs-site-example-modal"
-    title="Modal Header"
-    primaryButton={{
-  onClick: event => console.log('Next'),
-  children: 'Next',
-}}
-    secondaryButton={{
-  onClick: event => console.log('Cancel'),
-  children: 'Cancel',
-}}
-    tertiaryButton={{
-  onClick: event => console.log('Back'),
-  children: 'Back',
-}}
-    onClose={() => console.log('onClose')}
-    isOpen
-  >
-    <div style={{ padding: '1rem' }}>This is an example Modal.</div>
-  </Modal>
-</CodeHighlighter>
-
-### Modal Properties
-<DataTable data={[
-  {
-    Name: 'className',
-    Type: 'string',
-    Required: 'False',
-    Default: '',
-    Description: 'Custom CSS class to add to the component',
-  },
-  {
-    Name: 'children',
-    Type: 'React.ReactNode',
-    Required: 'False',
-    Default: '',
-    Description: 'Content of the modal',
-  },
-  {
-    Name: 'isOpen',
-    Type: 'boolean',
-    Required: 'False',
-    Default: '',
-    Description: 'An attribute denoting the open / close state of the modal',
-  },
-  {
-    Name: 'onClose',
-    Type: 'Function<any>',
-    Required: 'False',
-    Default: '',
-    Description: 'A callback function invoked when the modal is closed',
-  },
-  {
-    Name: 'primaryButton',
-    Type: 'ButtonProps',
-    Required: 'False',
-    Default: '',
-    Description: 'A collection of props specifying the look and behaviour of the primary button',
-  },
-  {
-    Name: 'secondaryButton',
-    Type: 'ButtonProps',
-    Required: 'False',
-    Default: '',
-    Description: 'A collection of props specifying the look and behaviour of the secondary button',
-  },
-  {
-    Name: 'tertiaryButton',
-    Type: 'ButtonProps',
-    Required: 'False',
-    Default: '',
-    Description: 'A collection of props specifying the look and behaviour of the tertiary button',
-  },
-  {
-    Name: 'title',
-    Type: 'string',
-    Required: 'False',
-    Default: '',
-    Description: 'The title to display at the top of the modal',
-  },
-]} />
-
-</Tab>
-</TabSet>

@@ -27,6 +27,7 @@ $text-color: #748999;
   border: none;
   font-size: rn.font-size("base");
   color: $text-color;
+  margin: 1rem 0;
 }
 
 .data-table__caption {
@@ -52,6 +53,8 @@ $text-color: #748999;
 .data-table__btn-sort {
   border: none;
   display: none;
+  margin-left: .5rem;
+  background: none;
   svg {
     // I don't like this hack, and it will
     // need a rewrite in the future, however
@@ -59,6 +62,7 @@ $text-color: #748999;
     // way of tackling specificity.
     .post-article & {
       margin-top: 0;
+      margin-bottom: 0;
     }
   }
 }

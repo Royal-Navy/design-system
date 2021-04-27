@@ -2,13 +2,14 @@
 title: Forms
 description: Forms contain interactive controls for submitting information to a web server.
 header: true
+index: 6
 ---
 
 # Overview
 
 Forms are an important part of almost all applications. Making sure they are displayed and behave consistently is a key principle behind the **Royal Navy Design System** component library.
 
-The component library has support for regular React JS forms and also forms constructed using Formik. Support for `Redux Forms` will be added to a future release.
+The component library has support for regular React JS forms and also forms constructed using Formik.
 
 ## Form components and state
 
@@ -16,7 +17,7 @@ Form components are a little different to most React components, they need to di
 
 Below is an example of a field with the value state managed by the container:
 
-```
+```javascript
 import React, { useState } from 'react'
 import { TextInput } from '@royalnavy/react-component-library
 
@@ -77,7 +78,7 @@ const MyForm = () => {
 
 ## Form libraries
 
-Building forms can result in large amounts of boilerplate/repetitive code and forms can grow to become complex once things such as validation are introduced. With this growth in complexity and size, there is the added risk of different developers adopting different patterns or code becoming bloated and difficult to maintain. With this in mind, a small number of frameworks have been created to help the developer and provide patterns to solve common challenges. The two most popular libraries are [Formik](https://jaredpalmer.com/formik/) and [Redux Forms](https://redux-form.com).
+Building forms can result in large amounts of boilerplate/repetitive code and forms can grow to become complex once things such as validation are introduced. With this growth in complexity and size, there is the added risk of different developers adopting different patterns or code becoming bloated and difficult to maintain. With this in mind, a small number of frameworks have been created to help the developer and provide patterns to solve common challenges.
 
 ### Formik
 
@@ -119,7 +120,3 @@ const MyForm = () => (
 Note: because the name of the object exposed by the component library conflicts with the name of the object exported by Formik, you must alias it to another name.
 
 In the above example [Yup](https://github.com/jquense/yup) is used to provide a standardized way of handling validation. Yup is not required by Formik but the two are proven to work together. This approach scales well and any developer who has worked on a Formik form, will be able to understand the code.
-
-### Redux Forms
-
-Redux support for the form components will be provided in a future release.
