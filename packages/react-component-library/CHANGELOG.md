@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.47.2](https://github.com/Royal-Navy/design-system/compare/2.47.1...2.47.2) (2021-04-27)
+
+
+### Bug Fixes
+
+* **ContextMenu:** Disable scrolling when open ([cf16502](https://github.com/Royal-Navy/design-system/commit/cf165025b8dd570a3c6829ad301a27d3ec890df0))
+* **Pagination:** Set `bottom` on error ([c33428f](https://github.com/Royal-Navy/design-system/commit/c33428f2e5d38967207284b82c248ff4388208f1))
+* **Timeline:** Increase threshold to display day ([de0570e](https://github.com/Royal-Navy/design-system/commit/de0570ed299cefede58a4405f3e86de14b0ad854))
+
+
+
+
+
 ## [2.47.1](https://github.com/Royal-Navy/design-system/compare/2.47.0...2.47.1) (2021-04-27)
 
 

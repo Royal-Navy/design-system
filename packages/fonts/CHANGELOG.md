@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.47.2](https://github.com/Royal-Navy/design-system/compare/2.47.1...2.47.2) (2021-04-27)
+
+**Note:** Version bump only for package @royalnavy/fonts
+
+
+
+
+
 ## [2.47.1](https://github.com/Royal-Navy/design-system/compare/2.47.0...2.47.1) (2021-04-27)
 
 **Note:** Version bump only for package @royalnavy/fonts
