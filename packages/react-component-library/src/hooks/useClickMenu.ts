@@ -91,6 +91,11 @@ export const useClickMenu = <TMenuElement extends HTMLElement>({
     }
   })
 
+  useEffect(() => {
+    const body = document.querySelector('body')
+    body.style.overflow = open ? 'hidden' : 'auto'
+  }, [open])
+
   return {
     coordinates,
     menuRef,
