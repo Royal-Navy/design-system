@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import {
   SliderProps,
+  CustomMode,
   Rail,
   Handles,
   Tracks,
@@ -53,8 +54,9 @@ export interface RangeSliderProps
    * The interaction mode. Value of 1 will allow handles to cross each other.
    * Value of 2 will keep the sliders from crossing and separated by a step.
    * Value of 3 will make the handles pushable and keep them a step apart.
+   * You can also supply a function that will be passed the current values and the incoming update. Your function should return what the state should be set as.
    */
-  mode?: 1 | 2 | 3
+  mode?: 1 | 2 | 3 | CustomMode
   /**
    * Toggles whether or not to display labels below the slider.
    */
