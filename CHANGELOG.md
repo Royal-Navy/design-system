@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.47.3](https://github.com/Royal-Navy/design-system/compare/2.47.2...2.47.3) (2021-04-28)
+
+
+### Bug Fixes
+
+* **RangeSlider:** Add missing CustomMode type ([130afec](https://github.com/Royal-Navy/design-system/commit/130afec936eecc7d65163e339864b85087032675))
+
+
+
+
+
 ## [2.47.2](https://github.com/Royal-Navy/design-system/compare/2.47.1...2.47.2) (2021-04-27)
 
 
