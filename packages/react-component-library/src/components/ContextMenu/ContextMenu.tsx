@@ -38,7 +38,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
   clickType = 'right',
   onHide,
   onShow,
-  position = CLICK_MENU_POSITION.BELOW,
+  position = CLICK_MENU_POSITION.RIGHT_BELOW,
   ...rest
 }) => {
   const { coordinates, isOpen, menuRef } = useClickMenu<HTMLOListElement>({

@@ -7,7 +7,10 @@ import userEvent from '@testing-library/user-event'
 
 import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
 import { Link } from '../Link'
-import { CLICK_MENU_POSITION } from '../../hooks/useClickMenu'
+import {
+  CLICK_MENU_POSITION,
+  ClickMenuPositionType,
+} from '../../hooks/useClickMenu'
 
 const CustomLink = ({ children, onClick }: any) => {
   return (
@@ -124,47 +127,151 @@ describe('ContextMenu', () => {
     })
   })
 
-  describe('with a position of above', () => {
-    beforeEach(() => {
-      const ContextExample = () => {
-        const ref = useRef()
+  describe('when setting different positions', () => {
+    const ContextExample = ({
+      position,
+    }: {
+      position: ClickMenuPositionType
+    }) => {
+      const ref = useRef()
 
-        return (
-          <>
-            <div ref={ref}>Right click me!</div>
-            <ContextMenu
-              attachedToRef={ref}
-              position={CLICK_MENU_POSITION.ABOVE}
-            >
-              <ContextMenuItem
-                link={<Link href="/hello-foo">Hello, Foo!</Link>}
-              />
-              <ContextMenuItem
-                link={<Link href="/hello-bar">Hello, Bar!</Link>}
-              />
-            </ContextMenu>
-          </>
+      return (
+        <>
+          <div ref={ref}>Right click me!</div>
+          <ContextMenu attachedToRef={ref} position={position}>
+            <ContextMenuItem
+              link={<Link href="/hello-foo">Hello, Foo!</Link>}
+            />
+            <ContextMenuItem
+              link={<Link href="/hello-bar">Hello, Bar!</Link>}
+            />
+          </ContextMenu>
+        </>
+      )
+    }
+
+    describe('with a position of `ABOVE`', () => {
+      beforeEach(() => {
+        wrapper = render(
+          <ContextExample position={CLICK_MENU_POSITION.ABOVE} />
         )
-      }
 
-      wrapper = render(<ContextExample />)
+        // @ts-ignore
+        wrapper.getByTestId('context-menu').getBoundingClientRect = () => ({
+          height: 100,
+          width: 50,
+        })
+      })
 
-      // @ts-ignore
-      wrapper.getByTestId('context-menu').getBoundingClientRect = () => ({
-        height: 100,
+      describe('and the user right clicks on the target area', () => {
+        beforeEach(() => {
+          fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+        })
+
+        it('is is rendered above the mouse pointer', () => {
+          expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
+            'top',
+            '-100px'
+          )
+          expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
+            'left',
+            '0px'
+          )
+        })
       })
     })
 
-    describe('and the user right clicks on the target area', () => {
+    describe('with a position of `RIGHT_ABOVE`', () => {
       beforeEach(() => {
-        fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+        wrapper = render(
+          <ContextExample position={CLICK_MENU_POSITION.RIGHT_ABOVE} />
+        )
+
+        // @ts-ignore
+        wrapper.getByTestId('context-menu').getBoundingClientRect = () => ({
+          height: 100,
+          width: 50,
+        })
       })
 
-      it('is is rendered above the mouse pointer', () => {
-        expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
-          'top',
-          '-100px'
+      describe('and the user right clicks on the target area', () => {
+        beforeEach(() => {
+          fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+        })
+
+        it('is is rendered above the mouse pointer', () => {
+          expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
+            'top',
+            '-100px'
+          )
+          expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
+            'left',
+            '0px'
+          )
+        })
+      })
+    })
+
+    describe('with a position of `LEFT_ABOVE`', () => {
+      beforeEach(() => {
+        wrapper = render(
+          <ContextExample position={CLICK_MENU_POSITION.LEFT_ABOVE} />
         )
+
+        // @ts-ignore
+        wrapper.getByTestId('context-menu').getBoundingClientRect = () => ({
+          height: 100,
+          width: 50,
+        })
+      })
+
+      describe('and the user right clicks on the target area', () => {
+        beforeEach(() => {
+          fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+        })
+
+        it('is is rendered above the mouse pointer on the left', () => {
+          expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
+            'top',
+            '-100px'
+          )
+
+          expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
+            'left',
+            '-50px'
+          )
+        })
+      })
+    })
+
+    describe('with a position of `LEFT_BELOW`', () => {
+      beforeEach(() => {
+        wrapper = render(
+          <ContextExample position={CLICK_MENU_POSITION.LEFT_BELOW} />
+        )
+
+        // @ts-ignore
+        wrapper.getByTestId('context-menu').getBoundingClientRect = () => ({
+          height: 100,
+          width: 50,
+        })
+      })
+
+      describe('and the user right clicks on the target area', () => {
+        beforeEach(() => {
+          fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+        })
+
+        it('is is rendered below the mouse pointer on the left', () => {
+          expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
+            'top',
+            '0px'
+          )
+          expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
+            'left',
+            '-50px'
+          )
+        })
       })
     })
   })

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+
 import { useOpenClose } from './useOpenClose'
 
 export type Coordinates = {
@@ -14,6 +15,10 @@ export const CLICK_BUTTON = {
 export const CLICK_MENU_POSITION = {
   ABOVE: 'above',
   BELOW: 'below',
+  LEFT_ABOVE: 'left_above',
+  LEFT_BELOW: 'left_below',
+  RIGHT_ABOVE: 'right_above',
+  RIGHT_BELOW: 'right_below',
 } as const
 
 export type ClickType = typeof CLICK_BUTTON.LEFT | typeof CLICK_BUTTON.RIGHT
@@ -21,6 +26,10 @@ export type ClickType = typeof CLICK_BUTTON.LEFT | typeof CLICK_BUTTON.RIGHT
 export type ClickMenuPositionType =
   | typeof CLICK_MENU_POSITION.ABOVE
   | typeof CLICK_MENU_POSITION.BELOW
+  | typeof CLICK_MENU_POSITION.LEFT_ABOVE
+  | typeof CLICK_MENU_POSITION.LEFT_BELOW
+  | typeof CLICK_MENU_POSITION.RIGHT_ABOVE
+  | typeof CLICK_MENU_POSITION.RIGHT_BELOW
 
 interface useClickMenuParams {
   attachedToRef: React.RefObject<HTMLElement>
@@ -45,17 +54,39 @@ export const useClickMenu = <TMenuElement extends HTMLElement>({
   const [coordinates, setCoordinates] = useState<Coordinates>({ x: 0, y: 0 })
   const menuRef = useRef<TMenuElement>(null)
 
-  function getY({ clientY }: { clientY: number }) {
-    if (position === CLICK_MENU_POSITION.BELOW) {
-      return clientY
+  function getCoordinates({ clientX, clientY }: MouseEvent) {
+    const {
+      height: menuHeight,
+      width: menuWidth,
+    } = menuRef.current.getBoundingClientRect()
+
+    if (
+      position === CLICK_MENU_POSITION.BELOW ||
+      position === CLICK_MENU_POSITION.RIGHT_BELOW
+    ) {
+      return { x: clientX, y: clientY }
     }
 
-    const menuHeight = menuRef.current.getBoundingClientRect().height
-    return clientY - menuHeight
+    if (
+      position === CLICK_MENU_POSITION.ABOVE ||
+      position === CLICK_MENU_POSITION.RIGHT_ABOVE
+    ) {
+      return { x: clientX, y: clientY - menuHeight }
+    }
+
+    if (position === CLICK_MENU_POSITION.LEFT_ABOVE) {
+      return { x: clientX - menuWidth, y: clientY - menuHeight }
+    }
+
+    if (position === CLICK_MENU_POSITION.LEFT_BELOW) {
+      return { x: clientX - menuWidth, y: clientY }
+    }
+
+    throw new Error('Unknown CLICK_MENU_POSITION')
   }
 
   function displayMenu(e: MouseEvent) {
-    const mousePoint: Coordinates = { x: e.clientX, y: getY(e) }
+    const mousePoint: Coordinates = getCoordinates(e)
     setCoordinates(mousePoint)
 
     if (attachedToRef.current.contains(e.target as Node)) {
