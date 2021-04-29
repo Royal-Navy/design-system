@@ -76,7 +76,16 @@ const MastHead = ({ navItems }) => {
             open ? 'is-open' : 'is-closed'
           }`}
         >
-          <Nav orientation="horizontal" navItems={navItems} />
+          <Nav
+            orientation="horizontal"
+            navItems={[
+              ...navItems,
+              {
+                href: 'https://timeline.royalnavy.io',
+                label: 'Compound Timeline',
+              },
+            ]}
+          />
         </div>
       )}
     </div>
