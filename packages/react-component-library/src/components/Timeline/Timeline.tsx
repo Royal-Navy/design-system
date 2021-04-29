@@ -1,49 +1,15 @@
 import React from 'react'
-import classNames from 'classnames'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineProvider } from './context'
 import logger from '../../utils/logger'
 
-import {
-  TimelineDays,
-  TimelineDaysProps,
-  TimelineHours,
-  TimelineHoursProps,
-  TimelineMonths,
-  TimelineMonthsProps,
-  TimelineRows,
-  TimelineRowsProps,
-  TimelineSide,
-  TimelineSideProps,
-  TimelineTodayMarker,
-  TimelineTodayMarkerProps,
-  TimelineWeeks,
-  TimelineWeeksProps,
-} from '.'
+import { extractChildren, timelineChildrenType } from './helpers/children'
+import { TimelineHours, TimelineHoursProps, TimelineSide } from '.'
 
 import { TimelineOptions } from './context/types'
 import { DEFAULTS } from './constants'
-import { StyledTimeline } from './partials/StyledTimeline'
-import { StyledInner } from './partials/StyledInner'
-import { StyledHeader } from './partials/StyledHeader'
-import { TimelineToolbar } from './TimelineToolbar'
-import { TimelineWeekColumns } from './TimelineWeekColumns'
-
-type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
-
-type timelineHeadChildrenType =
-  | React.ReactElement<TimelineTodayMarkerProps>
-  | React.ReactElement<TimelineMonthsProps>
-  | React.ReactElement<TimelineWeeksProps>
-  | React.ReactElement<TimelineDaysProps>
-
-type timelineBodyChildrenType = React.ReactElement<TimelineRowsProps>
-
-type timelineChildrenType =
-  | timelineRootChildrenType
-  | timelineHeadChildrenType
-  | timelineBodyChildrenType
+import { TimelineGrid } from './TimelineGrid'
 
 export interface TimelineProps extends ComponentWithClass {
   /**
@@ -88,18 +54,6 @@ export interface TimelineProps extends ComponentWithClass {
   unitWidth?: number
 }
 
-function extractChildren(
-  children: timelineChildrenType | timelineChildrenType[],
-  types: React.ReactElement['type'][],
-  inverse?: boolean
-) {
-  return React.Children.toArray(children).filter((child: React.ReactNode) => {
-    const type = (child as React.ReactElement)?.type
-
-    return inverse ? !types.includes(type) : types.includes(type)
-  })
-}
-
 function hasTimelineSideComponent(
   children: timelineChildrenType | timelineChildrenType[]
 ) {
@@ -128,19 +82,6 @@ function getHoursBlockSize(
   )
 }
 
-function getRenderColumns(
-  children: timelineChildrenType | timelineChildrenType[]
-) {
-  const rowsChildren = extractChildren(children, [TimelineRows])
-
-  if (!rowsChildren.length) {
-    return null
-  }
-
-  return (rowsChildren[0] as React.ReactElement<TimelineRowsProps>).props
-    .renderColumns
-}
-
 export const Timeline: React.FC<TimelineProps> = ({
   children,
   className,
@@ -155,7 +96,6 @@ export const Timeline: React.FC<TimelineProps> = ({
   unitWidth,
   ...rest
 }) => {
-  const renderColumns = getRenderColumns(children)
   const options: TimelineOptions = {
     endDate,
     range,
@@ -164,31 +104,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     unitWidth: dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH,
   }
 
-  const rootChildren = extractChildren(
-    children,
-    [
-      TimelineDays,
-      TimelineHours,
-      TimelineMonths,
-      TimelineRows,
-      TimelineSide,
-      TimelineTodayMarker,
-      TimelineWeeks,
-    ],
-    true
-  )
-
   const hasTimelineSide = hasTimelineSideComponent(children)
-
-  const headChildren = extractChildren(children, [
-    TimelineDays,
-    TimelineHours,
-    TimelineWeeks,
-    TimelineMonths,
-    TimelineTodayMarker,
-  ])
-
-  const bodyChildren = extractChildren(children, [TimelineRows])
 
   return (
     <TimelineProvider
@@ -196,29 +112,15 @@ export const Timeline: React.FC<TimelineProps> = ({
       options={options}
       today={today}
     >
-      {!hideToolbar && <TimelineToolbar hideScaling={hideScaling} />}
-      <StyledTimeline
-        className={classNames('timeline', className)}
-        data-testid="timeline"
-        role="grid"
+      <TimelineGrid
+        className={className}
+        hasSide={hasSide || hasTimelineSide}
+        hideScaling={hideScaling}
+        hideToolbar={hideToolbar}
         {...rest}
       >
-        <StyledInner
-          $hasSide={hasSide || hasTimelineSide}
-          className="timeline__inner"
-        >
-          <TimelineWeekColumns renderColumns={renderColumns} />
-          {rootChildren}
-          <StyledHeader
-            className="timeline__header"
-            data-testid="timeline-header"
-            role="rowgroup"
-          >
-            {headChildren}
-          </StyledHeader>
-          {bodyChildren}
-        </StyledInner>
-      </StyledTimeline>
+        {children}
+      </TimelineGrid>
     </TimelineProvider>
   )
 }
