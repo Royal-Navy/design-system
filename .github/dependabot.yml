@@ -1,0 +1,30 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 10
+  reviewers:
+  - m7kvqbe1
+  - thyhjwb6
+  labels:
+  - "Type: Devops"
+  ignore:
+  - dependency-name: webpack-cli
+    versions:
+    - 4.5.0
+  - dependency-name: source-map-loader
+    versions:
+    - 2.0.0
+    - 2.0.1
+  - dependency-name: yup
+    versions:
+    - 0.32.9
+  - dependency-name: webpack
+    versions:
+    - 5.15.0
+    - 5.22.0
+  commit-message:
+    prefix: chore(Security)
+  rebase-strategy: disabled
