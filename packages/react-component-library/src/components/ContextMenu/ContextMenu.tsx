@@ -5,6 +5,7 @@ import {
   useClickMenu,
   ClickType,
   ClickMenuPositionType,
+  CLICK_BUTTON,
   CLICK_MENU_POSITION,
 } from '../../hooks/useClickMenu'
 import { StyledContextMenu } from './partials/StyledContextMenu'
@@ -33,12 +34,12 @@ export interface ContextMenuProps extends ComponentWithClass {
 }
 
 export const ContextMenu: React.FC<ContextMenuProps> = ({
-  children,
   attachedToRef,
-  clickType = 'right',
+  children,
+  clickType = CLICK_BUTTON.RIGHT,
   onHide,
   onShow,
-  position = CLICK_MENU_POSITION.BELOW,
+  position = CLICK_MENU_POSITION.RIGHT_BELOW,
   ...rest
 }) => {
   const { coordinates, isOpen, menuRef } = useClickMenu<HTMLOListElement>({
