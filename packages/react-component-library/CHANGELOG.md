@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.48.0](https://github.com/Royal-Navy/design-system/compare/2.47.3...2.48.0) (2021-04-30)
+
+
+### Features
+
+* **ContextMenu:** Add left positions ([1bffb11](https://github.com/Royal-Navy/design-system/commit/1bffb11e1d82a17438bd6705071fa1bc5009122a))
+
+
+
+
+
 ## [2.47.3](https://github.com/Royal-Navy/design-system/compare/2.47.2...2.47.3) (2021-04-28)
 
 
