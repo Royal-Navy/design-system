@@ -50,7 +50,7 @@
     "@royalnavy/react-component-library": "^2.48.1",
     "change-case": "^4.1.1",
     "firacode": "^5.2.0",
-    "gatsby": "2.29.3",
+    "gatsby": "2.32.12",
     "gatsby-image": "^3.2.0",
     "gatsby-plugin-catch-links": "^2.1.24",
     "gatsby-plugin-manifest": "^3.3.0",
