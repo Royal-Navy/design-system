@@ -50,6 +50,10 @@ describe('RangeSlider', () => {
       )
     })
 
+    it('should not display the percentage value next to the handle', () => {
+      expect(wrapper.getByTestId('rangeslider-percentage')).not.toBeVisible()
+    })
+
     it('should set the correct `tabindex`', () => {
       expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
         'tabindex',
@@ -273,10 +277,7 @@ describe('RangeSlider', () => {
     })
 
     it('should display the percentage value next to the handle', () => {
-      expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
-        'data-percent',
-        '50%'
-      )
+      expect(wrapper.getByTestId('rangeslider-percentage')).toBeVisible()
     })
   })
 
@@ -296,10 +297,7 @@ describe('RangeSlider', () => {
     })
 
     it('should append the display unit to the handle label', () => {
-      expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
-        'data-value',
-        '20pt'
-      )
+      expect(wrapper.getByTestId('rangeslider-value')).toHaveTextContent('20pt')
     })
   })
 
@@ -319,10 +317,7 @@ describe('RangeSlider', () => {
     })
 
     it('formats the handle label using the provided formatter', () => {
-      expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
-        'data-value',
-        '£20'
-      )
+      expect(wrapper.getByTestId('rangeslider-value')).toHaveTextContent('£20')
     })
   })
 
