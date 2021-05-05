@@ -2,21 +2,25 @@ import React, { useContext } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { ColorNeutral100, ColorNeutral200 } from '@royalnavy/design-tokens'
 import { css, CSSProp } from 'styled-components'
-import { render, RenderResult } from '@testing-library/react'
+import { render, RenderResult, waitFor } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import timezoneMock from 'timezone-mock'
 import userEvent from '@testing-library/user-event'
 
-import { NO_DATA_MESSAGE, TIMELINE_BLOCK_SIZE } from '../constants'
+import {
+  NO_DATA_MESSAGE,
+  TIMELINE_BLOCK_SIZE,
+  TIMELINE_ROW_HEADER_WIDTH,
+} from '../constants'
 import { SubcomponentProps } from '../../../common/SubcomponentProps'
 import {
   Timeline,
   TimelineContext,
   TimelineDays,
   TimelineDaysProps,
-  TimelineHours,
   TimelineEvent,
   TimelineEvents,
+  TimelineHours,
   TimelineMonths,
   TimelineRow,
   TimelineRows,
@@ -1788,7 +1792,7 @@ describe('Timeline', () => {
       })
     })
 
-    describe('and then zooming in twice (1/4 day view)', () => {
+    describe('and then zooming in twice (day view)', () => {
       beforeEach(() => {
         wrapper.getByTestId('timeline-toolbar-zoom-in').click()
         wrapper.getByTestId('timeline-toolbar-zoom-in').click()
@@ -1799,19 +1803,19 @@ describe('Timeline', () => {
       })
 
       it('should render weeks', () => {
-        expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(2)
+        expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(1)
       })
 
       it('should render days', () => {
-        expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(7)
+        expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(5)
       })
 
       it('should not render hours', () => {
-        expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(28)
+        expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(20)
       })
     })
 
-    describe('and then zooming in thrice (1 hour view)', () => {
+    describe('and then zooming in thrice (1/4 day view)', () => {
       beforeEach(() => {
         wrapper.getByTestId('timeline-toolbar-zoom-in').click()
         wrapper.getByTestId('timeline-toolbar-zoom-in').click()
@@ -1823,15 +1827,40 @@ describe('Timeline', () => {
       })
 
       it('should render weeks', () => {
-        expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(2)
+        expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(1)
       })
 
       it('should render days', () => {
-        expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(7)
+        expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(3)
       })
 
       it('should not render hours', () => {
-        expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(28)
+        expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(12)
+      })
+    })
+
+    describe('and then zooming in four times (1 hour view)', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+      })
+
+      it('should render months', () => {
+        expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(1)
+      })
+
+      it('should render weeks', () => {
+        expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(1)
+      })
+
+      it('should render days', () => {
+        expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(1)
+      })
+
+      it('should not render hours', () => {
+        expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(24)
       })
     })
   })
@@ -2026,6 +2055,108 @@ describe('Timeline', () => {
         'width',
         '6360px'
       )
+    })
+  })
+
+  describe('when `isFullWidth` is specified', () => {
+    describe('without a side', () => {
+      beforeEach(async () => {
+        // @ts-ignore
+        Element.prototype.getBoundingClientRect = jest.fn(() => {
+          return {
+            width: 1860 + 1,
+          }
+        })
+
+        wrapper = render(
+          <Timeline isFullWidth startDate={new Date(2020, 9, 1)}>
+            <TimelineTodayMarker />
+            <TimelineMonths />
+            <TimelineWeeks />
+            <TimelineDays />
+            <TimelineRows>
+              <TimelineRow name="Row 1">
+                <TimelineEvents>
+                  <TimelineEvent
+                    startDate={new Date(2020, 9, 14, 12)}
+                    endDate={new Date(2020, 9, 18, 12)}
+                  >
+                    Event 1
+                  </TimelineEvent>
+                </TimelineEvents>
+              </TimelineRow>
+              <TimelineRow name="Row 2">
+                <TimelineEvents>
+                  <TimelineEvent
+                    startDate={new Date(2020, 9, 3)}
+                    endDate={new Date(2020, 9, 8)}
+                  >
+                    Event 2
+                  </TimelineEvent>
+                </TimelineEvents>
+              </TimelineRow>
+            </TimelineRows>
+          </Timeline>
+        )
+      })
+
+      it('should render the days with the correct width', async () => {
+        return waitFor(() => {
+          expect(wrapper.getAllByTestId('timeline-day')[0]).toHaveStyleRule(
+            'width',
+            '60px'
+          )
+        })
+      })
+    })
+
+    describe('with a side', () => {
+      beforeEach(() => {
+        // @ts-ignore
+        Element.prototype.getBoundingClientRect = jest.fn(() => {
+          return {
+            width: 2326 + TIMELINE_ROW_HEADER_WIDTH,
+          }
+        })
+
+        wrapper = render(
+          <Timeline hasSide isFullWidth startDate={new Date(2020, 9, 1)}>
+            <TimelineTodayMarker />
+            <TimelineMonths />
+            <TimelineWeeks />
+            <TimelineDays />
+            <TimelineRows>
+              <TimelineRow name="Row 1">
+                <TimelineEvents>
+                  <TimelineEvent
+                    startDate={new Date(2020, 9, 14, 12)}
+                    endDate={new Date(2020, 9, 18, 12)}
+                  >
+                    Event 1
+                  </TimelineEvent>
+                </TimelineEvents>
+              </TimelineRow>
+              <TimelineRow name="Row 2">
+                <TimelineEvents>
+                  <TimelineEvent
+                    startDate={new Date(2020, 9, 3)}
+                    endDate={new Date(2020, 9, 8)}
+                  >
+                    Event 2
+                  </TimelineEvent>
+                </TimelineEvents>
+              </TimelineRow>
+            </TimelineRows>
+          </Timeline>
+        )
+      })
+
+      it('should render the days with the correct width', () => {
+        expect(wrapper.getAllByTestId('timeline-day')[0]).toHaveStyleRule(
+          'width',
+          '75px'
+        )
+      })
     })
   })
 })

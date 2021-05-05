@@ -11,7 +11,7 @@ interface StyledRowHeaderProps extends StyledSubComponentProps {
 }
 
 export const StyledRowHeader = styled.div<StyledRowHeaderProps>`
-  min-width: ${TIMELINE_ROW_HEADER_WIDTH};
+  min-width: ${TIMELINE_ROW_HEADER_WIDTH}px;
   position: absolute;
   left: 0;
   height: inherit;

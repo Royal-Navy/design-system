@@ -50,20 +50,17 @@ function getScaleConfig(
 ): ScaleConfigType {
   return {
     hour: {
-      calculateDate: addWeeks,
+      calculateDate: addDays,
       hoursBlockSize: TIMELINE_BLOCK_SIZE.SINGLE_HOUR,
-      intervalSize: DEFAULT_INTERVAL_SIZE,
-      scale: 8,
+      intervalSize: 1,
     },
     quarter_day: {
-      calculateDate: addWeeks,
-      intervalSize: DEFAULT_INTERVAL_SIZE,
-      scale: 4,
+      calculateDate: addDays,
+      intervalSize: 3,
     },
     day: {
-      calculateDate: addWeeks,
-      intervalSize: DEFAULT_INTERVAL_SIZE,
-      scale: 2,
+      calculateDate: addDays,
+      intervalSize: 5,
     },
     week: {
       calculateDate: addWeeks,
@@ -114,13 +111,24 @@ function mapScaleOption(
   }
 }
 
-function initialiseScaleOptions({
-  endDate,
-  hoursBlockSize,
-  range,
-  startDate,
-  unitWidth,
-}: TimelineOptions): TimelineScaleOption[] {
+function getMaxWidth(
+  timelineWidth: number,
+  unitWidth: number,
+  numberOfDays: number
+) {
+  const unitWidthTotal = unitWidth * numberOfDays
+
+  if (timelineWidth && timelineWidth > unitWidthTotal) {
+    return timelineWidth
+  }
+
+  return unitWidthTotal
+}
+
+function initialiseScaleOptions(
+  { endDate, hoursBlockSize, range, startDate, unitWidth }: TimelineOptions,
+  timelineWidth?: number
+): TimelineScaleOption[] {
   const scaleConfig = getScaleConfig(startDate, endDate, range)
   const defaultConfig = find(scaleConfig, ({ isDefault }) => isDefault)
   const numberOfDays = endDate
@@ -129,7 +137,7 @@ function initialiseScaleOptions({
         defaultConfig.calculateDate(startDate, defaultConfig.intervalSize),
         startDate
       )
-  const maxWidth = unitWidth * numberOfDays
+  const maxWidth = getMaxWidth(timelineWidth, unitWidth, numberOfDays)
 
   return Object.keys(scaleConfig).map((scaleConfigKey) => {
     return mapScaleOption(

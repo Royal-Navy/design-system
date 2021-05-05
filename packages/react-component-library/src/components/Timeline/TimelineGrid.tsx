@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import classNames from 'classnames'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
@@ -6,6 +6,7 @@ import { extractChildren, timelineChildrenType } from './helpers/children'
 import { StyledHeader } from './partials/StyledHeader'
 import { StyledInner } from './partials/StyledInner'
 import { StyledTimeline } from './partials/StyledTimeline'
+import { TimelineContext } from './context'
 import { TimelineDays } from './TimelineDays'
 import { TimelineHours } from './TimelineHours'
 import { TimelineMonths } from './TimelineMonths'
@@ -15,12 +16,14 @@ import { TimelineTodayMarker } from './TimelineTodayMarker'
 import { TimelineToolbar } from './TimelineToolbar'
 import { TimelineWeekColumns } from './TimelineWeekColumns'
 import { TimelineWeeks } from './TimelineWeeks'
+import { useTimelineWidth } from './hooks/useTimelineWidth'
 
 export interface ComponentNameProps extends ComponentWithClass {
   children: timelineChildrenType | timelineChildrenType[]
   hasSide: boolean
   hideScaling: boolean
   hideToolbar: boolean
+  isFullWidth: boolean
 }
 
 function getRenderColumns(
@@ -38,8 +41,14 @@ export const TimelineGrid: React.FC<ComponentNameProps> = ({
   hasSide,
   hideScaling,
   hideToolbar,
+  isFullWidth,
   ...rest
 }) => {
+  const {
+    state: { currentScaleOption },
+  } = useContext(TimelineContext)
+  const { timelineRef } = useTimelineWidth(hasSide, isFullWidth)
+
   const renderColumns = getRenderColumns(children)
 
   const rootChildren = extractChildren(
@@ -68,15 +77,18 @@ export const TimelineGrid: React.FC<ComponentNameProps> = ({
 
   return (
     <>
-      {!hideToolbar && <TimelineToolbar hideScaling={hideScaling} />}
+      {currentScaleOption && !hideToolbar && (
+        <TimelineToolbar hideScaling={hideScaling} />
+      )}
       <StyledTimeline
         className={classNames('timeline', className)}
         data-testid="timeline"
+        ref={timelineRef}
         role="grid"
         {...rest}
       >
-        <StyledInner className="timeline__inner" hasSide={hasSide}>
-          {
+        {currentScaleOption && (
+          <StyledInner className="timeline__inner" $hasSide={hasSide}>
             <>
               <TimelineWeekColumns renderColumns={renderColumns} />
               {rootChildren}
@@ -89,8 +101,8 @@ export const TimelineGrid: React.FC<ComponentNameProps> = ({
               </StyledHeader>
               {bodyChildren}
             </>
-          }
-        </StyledInner>
+          </StyledInner>
+        )}
       </StyledTimeline>
     </>
   )

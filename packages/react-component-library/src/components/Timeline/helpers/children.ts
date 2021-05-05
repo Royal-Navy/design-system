@@ -7,20 +7,20 @@ import { TimelineSideProps } from '../TimelineSide'
 import { TimelineTodayMarkerProps } from '../TimelineTodayMarker'
 import { TimelineWeeksProps } from '../TimelineWeeks'
 
-export type timelineRootChildrenType = React.ReactElement<TimelineSideProps>
+type TimelineRootChildrenType = React.ReactElement<TimelineSideProps>
 
-export type timelineHeadChildrenType =
+type TimelineHeadChildrenType =
   | React.ReactElement<TimelineTodayMarkerProps>
   | React.ReactElement<TimelineMonthsProps>
   | React.ReactElement<TimelineWeeksProps>
   | React.ReactElement<TimelineDaysProps>
 
-export type timelineBodyChildrenType = React.ReactElement<TimelineRowsProps>
+type TimelineBodyChildrenType = React.ReactElement<TimelineRowsProps>
 
 export type timelineChildrenType =
-  | timelineRootChildrenType
-  | timelineHeadChildrenType
-  | timelineBodyChildrenType
+  | TimelineRootChildrenType
+  | TimelineHeadChildrenType
+  | TimelineBodyChildrenType
 
 export function extractChildren(
   children: timelineChildrenType | timelineChildrenType[],

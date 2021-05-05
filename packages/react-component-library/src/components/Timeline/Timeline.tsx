@@ -33,6 +33,10 @@ export interface TimelineProps extends ComponentWithClass {
    */
   hideToolbar?: boolean
   /**
+   * Specify whether the `Timeline` should fill the full width.
+   */
+  isFullWidth?: boolean
+  /**
    * A month will display either side of this start date.
    */
   startDate?: Date
@@ -89,6 +93,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   hasSide,
   hideScaling = false,
   hideToolbar = false,
+  isFullWidth = false,
   startDate,
   endDate,
   today,
@@ -117,6 +122,7 @@ export const Timeline: React.FC<TimelineProps> = ({
         hasSide={hasSide || hasTimelineSide}
         hideScaling={hideScaling}
         hideToolbar={hideToolbar}
+        isFullWidth={isFullWidth}
         {...rest}
       >
         {children}
