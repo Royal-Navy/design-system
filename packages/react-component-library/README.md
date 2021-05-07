@@ -44,6 +44,16 @@ The Design System is maintained by a team at the Royal Navy. If you want to know
 
 The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Royal Navy Design System.
 
+## End to end tests
+
+Tests are dependent on the application running.
+
+`yarn storybook:test`
+
+### Run all specs
+
+`yarn test:e2e`
+
 ## Contributing
 
 The [contributing guide](https://github.com/Royal-Navy/design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
