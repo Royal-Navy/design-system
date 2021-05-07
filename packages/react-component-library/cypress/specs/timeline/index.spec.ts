@@ -37,5 +37,15 @@ describe('Compound Timeline', () => {
     it('should fill the width', () => {
       cy.get(selectors.timeline.month).should('have.css', 'width', '1023px')
     })
+
+    describe('resize window', () => {
+      before(() => {
+        cy.viewport(1500, 768)
+      })
+
+      it('should fill the width', () => {
+        cy.get(selectors.timeline.month).should('have.css', 'width', '1499px')
+      })
+    })
   })
 })
