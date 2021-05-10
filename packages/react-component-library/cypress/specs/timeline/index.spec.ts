@@ -1,3 +1,4 @@
+import { DEFAULTS } from '../../../src/components/Timeline/constants'
 import selectors from '../../selectors'
 
 describe('Compound Timeline', () => {
@@ -262,6 +263,21 @@ describe('Compound Timeline', () => {
         it('should fill the width', () => {
           cy.get(selectors.timeline.month).should('have.css', 'width', '1023px')
         })
+      })
+    })
+
+    describe('small screen', () => {
+      before(() => {
+        cy.viewport(800, 600)
+      })
+
+      it('should be the minimum width', () => {
+        const width = DEFAULTS.UNIT_WIDTH * 31
+        cy.get(selectors.timeline.month).should(
+          'have.css',
+          'width',
+          `${width}px`
+        )
       })
     })
   })
