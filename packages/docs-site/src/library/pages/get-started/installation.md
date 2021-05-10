@@ -18,7 +18,7 @@ npm install @royalnavy/css-framework @royalnavy/react-component-library
 yarn add @royalnavy/css-framework @royalnavy/react-component-library
 ```
 
-Note: As of `2.16.0` the [`styled-components`](https://github.com/styled-components/styled-components) package is now a required [peerDependency](https://nodejs.org/en/blog/npm/peer-dependencies/).
+NOTE: As of `2.16.0` the [`styled-components`](https://github.com/styled-components/styled-components) package is now a required [peerDependency](https://nodejs.org/en/blog/npm/peer-dependencies/).
 
 ### Quick start
 

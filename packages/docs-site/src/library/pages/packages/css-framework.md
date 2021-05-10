@@ -1,10 +1,10 @@
 ---
-title: SASS/CSS framework
-description: ''
+title: CSS Framework
+description: 'NOTE: We now reccomend using design-tokens and a CSS-in-JS solution instead of SASS.'
 header: true
 ---
 
-The @royalnavy/css-framework package provides a compiled version of the component CSS, the Utility classes and the source SASS. The source SASS can either be used with the component library package, or as a standalone stylesheet.
+The `@royalnavy/css-framework` package provides a compiled version of the component CSS, the Utility classes and the source SASS. The source SASS can either be used with the component library package, or as a standalone stylesheet.
 
 Under the hood, the CSS Framework uses [SCSS Modules](http://sass.logdown.com/posts/7858341-the-module-system-is-launched). To include the framework in your application, import it at the top of your main stylesheet as:
 ```
