@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
-    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/config-conventional": "^12.1.1",
     "@commitlint/lint": "^12.1.1",
     "@octokit/rest": "^18.0.3",
     "eslint-config-prettier": "^7.1.0",
