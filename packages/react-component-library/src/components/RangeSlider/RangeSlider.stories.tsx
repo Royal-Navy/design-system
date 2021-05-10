@@ -12,6 +12,19 @@ export default {
   },
 } as Meta
 
+const disableColorContrastRule = {
+  a11y: {
+    config: {
+      rules: [
+        {
+          id: 'color-contrast',
+          enabled: false,
+        },
+      ],
+    },
+  },
+}
+
 export const Default: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider {...props} />
@@ -24,6 +37,8 @@ Default.args = {
   values: [20],
   tracksLeft: true,
 }
+
+Default.parameters = disableColorContrastRule
 
 export const MultipleHandles: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
@@ -43,6 +58,8 @@ export const MultipleHandles: Story<RangeSliderProps> = (props) => (
 
 MultipleHandles.storyName = 'Multiple handles'
 
+MultipleHandles.parameters = disableColorContrastRule
+
 export const SingleThreshold: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
@@ -58,6 +75,8 @@ export const SingleThreshold: Story<RangeSliderProps> = (props) => (
 
 SingleThreshold.storyName = 'Single threshold'
 
+SingleThreshold.parameters = disableColorContrastRule
+
 export const DoubleThreshold: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
@@ -72,6 +91,8 @@ export const DoubleThreshold: Story<RangeSliderProps> = (props) => (
 )
 
 DoubleThreshold.storyName = 'Double threshold'
+
+DoubleThreshold.parameters = disableColorContrastRule
 
 export const CustomValueFormatter: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
@@ -89,6 +110,8 @@ export const CustomValueFormatter: Story<RangeSliderProps> = (props) => (
 
 CustomValueFormatter.storyName = 'Custom value formatter'
 
+CustomValueFormatter.parameters = disableColorContrastRule
+
 export const Stepped: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
@@ -104,6 +127,27 @@ export const Stepped: Story<RangeSliderProps> = (props) => (
 )
 
 Stepped.storyName = 'Stepped'
+
+Stepped.parameters = disableColorContrastRule
+
+export const WithPercentage: Story<RangeSliderProps> = (props) => (
+  <div style={{ display: 'flex', height: '5rem' }}>
+    <RangeSlider
+      {...props}
+      domain={[0, 40]}
+      step={10}
+      mode={1}
+      values={[20]}
+      tickCount={4}
+      tracksLeft
+      hasPercentage
+    />
+  </div>
+)
+
+WithPercentage.storyName = 'With percentage'
+
+WithPercentage.parameters = disableColorContrastRule
 
 export const WithIcons: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
@@ -123,6 +167,8 @@ export const WithIcons: Story<RangeSliderProps> = (props) => (
 
 WithIcons.storyName = 'With icons'
 
+WithIcons.parameters = disableColorContrastRule
+
 export const WithLabels: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
@@ -139,6 +185,8 @@ export const WithLabels: Story<RangeSliderProps> = (props) => (
 )
 
 WithLabels.storyName = 'With labels'
+
+WithLabels.parameters = disableColorContrastRule
 
 export const ReversedScale: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
@@ -158,6 +206,8 @@ export const ReversedScale: Story<RangeSliderProps> = (props) => (
 
 ReversedScale.storyName = 'Reversed scale'
 
+ReversedScale.parameters = disableColorContrastRule
+
 export const Disabled: Story<RangeSliderProps> = (props) => (
   <div style={{ display: 'flex', height: '5rem' }}>
     <RangeSlider
@@ -173,3 +223,5 @@ export const Disabled: Story<RangeSliderProps> = (props) => (
 )
 
 Disabled.storyName = 'Disabled'
+
+Disabled.parameters = disableColorContrastRule

@@ -4,6 +4,8 @@ import { transparentize } from 'polished'
 
 import { RANGE_SLIDER_HANDLE_COLOR } from '../constants'
 import { ThresholdColor } from '../useThresholdColor'
+import { StyledValue } from './StyledValue'
+import { StyledPercentage } from './StyledPercentage'
 
 interface StyledHandleProps {
   $isActive?: boolean
@@ -11,7 +13,7 @@ interface StyledHandleProps {
   $left: string
 }
 
-const { color, fontSize, spacing } = selectors
+const { color } = selectors
 
 export const StyledHandle = styled.div.attrs<any>(({ $left }) => ({
   style: {
@@ -32,36 +34,12 @@ export const StyledHandle = styled.div.attrs<any>(({ $left }) => ({
   transition: box-shadow 0.15s ease-in-out;
   cursor: pointer;
 
-  &::after {
-    content: attr(data-value);
-    position: absolute;
-    transform: translate(-50%, -155%);
-    font-size: ${fontSize('xs')};
-    color: ${color('neutral', '600')};
-    opacity: 1;
-    transition: opacity 0.15s ease-in-out;
-    padding: ${spacing('2')} ${spacing('3')};
-    border-radius: 12px;
-    font-weight: 600;
-  }
-
-  &::before {
-    content: attr(data-percent);
-    position: absolute;
-    transform: translate(-50%, -355%);
-    font-size: ${fontSize('s')};
-    color: ${color('neutral', '300')};
-    opacity: 1;
-    transition: opacity 0.15s ease-in-out;
-    font-weight: 700;
-  }
-
   &:nth-of-type(2n) {
-    &::after {
+    ${StyledValue} {
       transform: translate(-50%, 125%);
     }
 
-    &::before {
+    ${StyledPercentage} {
       transform: translate(-50%, 355%);
     }
   }
@@ -73,8 +51,8 @@ export const StyledHandle = styled.div.attrs<any>(({ $left }) => ({
         ${transparentize(0.5, color('neutral', '200'))};
       outline: none;
 
-      &::after,
-      &::before {
+      ${StyledValue},
+      ${StyledPercentage} {
         opacity: 1;
       }
     `}
@@ -83,8 +61,8 @@ export const StyledHandle = styled.div.attrs<any>(({ $left }) => ({
     box-shadow: 0px 0px 0px 7px ${transparentize(0.5, color('neutral', '200'))};
     outline: none;
 
-    &::after,
-    &::before {
+    ${StyledValue},
+    ${StyledPercentage} {
       opacity: 1;
     }
   }
@@ -94,7 +72,7 @@ export const StyledHandle = styled.div.attrs<any>(({ $left }) => ({
     css`
       background-color: ${$thresholdColor};
 
-      &::after {
+      ${StyledValue} {
         color: ${$thresholdColor};
         background-color: ${transparentize(0.75, $thresholdColor)};
       }

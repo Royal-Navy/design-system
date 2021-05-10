@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components'
 
+import { StyledPercentage } from './StyledPercentage'
+
 interface StyledRangeSliderProps {
   $isReversed?: boolean
   $isDisabled?: boolean
@@ -21,4 +23,12 @@ export const StyledRangeSlider = styled.div<StyledRangeSliderProps>`
         cursor: not-allowed;
       }
     `}
+
+  ${({ $hasPercentage }) =>
+    !$hasPercentage &&
+    `
+      ${StyledPercentage} {
+        display: none;
+      }
+  `}
 `
