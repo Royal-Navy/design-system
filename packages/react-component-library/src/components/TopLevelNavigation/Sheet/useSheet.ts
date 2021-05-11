@@ -18,8 +18,12 @@ export function useSheet(
   })
 
   useEffect(() => {
-    if (open && onShow) onShow()
-    if (!open && onHide) onHide()
+    if (open && onShow) {
+      onShow()
+    }
+    if (!open && onHide) {
+      onHide()
+    }
   }, [open])
 
   function toggleSheet(event: React.SyntheticEvent) {

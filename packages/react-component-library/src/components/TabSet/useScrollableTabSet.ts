@@ -7,7 +7,7 @@ function hasTab(tabIndex: number, itemsRef: Array<HTMLLIElement>) {
 }
 
 function scrollTo(element: HTMLDivElement, left: number): Promise<void> {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     function onScroll() {
       if (Math.ceil(element.scrollLeft) >= left) {
         element.removeEventListener('scroll', onScroll)
@@ -41,9 +41,12 @@ export function useScrollableTabSet(items: React.ReactElement<TabProps>[]) {
           itemsRef.current[nextTab].offsetLeft - tabsRef.current.offsetLeft
 
         await scrollTo(tabsRef.current, newPosition).then(() => {
-          const isPositionTheSame = currentPosition === tabsRef.current.scrollLeft
+          const isPositionTheSame =
+            currentPosition === tabsRef.current.scrollLeft
 
-          if (!isPositionTheSame) setCurrentScrollToTab(nextTab)
+          if (!isPositionTheSame) {
+            setCurrentScrollToTab(nextTab)
+          }
         })
       }
     }

@@ -42,7 +42,9 @@ export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = ({
     null
   )
 
-  if (startsBeforeStart || startsAfterEnd) return null
+  if (startsBeforeStart || startsAfterEnd) {
+    return null
+  }
 
   return (
     <StyledTodayMarkerWrapper

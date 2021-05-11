@@ -132,7 +132,9 @@ export const TimelineEvent: React.FC<TimelineEventProps> = ({
     maxWidth: maxWidthPx,
   } = useTimelinePosition(startDate, endDate)
 
-  if (startsAfterEnd || endsBeforeStart) return null
+  if (startsAfterEnd || endsBeforeStart) {
+    return null
+  }
 
   const event = render
     ? render(

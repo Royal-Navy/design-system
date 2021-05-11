@@ -19,6 +19,7 @@ module.exports = {
   rules: {
     'arrow-body-style': 0,
     camelCase: 0,
+    curly: ['error', 'all'],
     'import/extensions': [
       'error',
       'ignorePackages',
