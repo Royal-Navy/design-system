@@ -1,5 +1,5 @@
 import { selectors } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const { color, fontSize, mq, spacing } = selectors
 

@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { format, endOfMonth, differenceInDays, min, max } from 'date-fns'
+import React from 'react'
+import { format, endOfMonth, differenceInDays, max, min } from 'date-fns'
 
 import { DATE_MONTH_FORMAT } from './constants'
 import { StyledMonth } from './partials/StyledMonth'
