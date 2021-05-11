@@ -28,8 +28,8 @@ export interface TimelineEventWithRenderContentProps
    * Supply a custom presentation layer.
    */
   render: (
-    endDate: Date,
     startDate: Date,
+    endDate: Date,
     widthPx: string,
     offsetPx: string,
     maxWidthPx: string,
