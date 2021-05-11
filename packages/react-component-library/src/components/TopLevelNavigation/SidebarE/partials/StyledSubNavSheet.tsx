@@ -3,7 +3,7 @@ import { selectors } from '@royalnavy/design-tokens'
 
 import { Sheet } from '../../Sheet/Sheet'
 import { StyledNavItem } from './StyledNavItem'
-import { StyledFloatingBox } from '../../../../primitives/FloatingBox'
+import { StyledFloatingBox } from '../../../../primitives/FloatingBox/partials/StyledFloatingBox'
 
 const { spacing, color } = selectors
 
