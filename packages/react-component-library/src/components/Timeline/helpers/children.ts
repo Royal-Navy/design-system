@@ -25,7 +25,7 @@ export type timelineChildrenType =
 export function extractChildren(
   children: timelineChildrenType | timelineChildrenType[],
   types: React.ReactElement['type'][],
-  inverse?: boolean
+  inverse = false
 ) {
   return React.Children.toArray(children).filter((child: React.ReactNode) => {
     const type = (child as React.ReactElement)?.type
