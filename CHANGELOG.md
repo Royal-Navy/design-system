@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.48.3](https://github.com/Royal-Navy/design-system/compare/2.48.2...2.48.3) (2021-05-11)
+
+
+### Bug Fixes
+
+* **RangeSlider:** Respect `hasPercentage` prop ([0193510](https://github.com/Royal-Navy/design-system/commit/01935108d838c74229731a86954461786c507334))
+
+
+### Reverts
+
+* Revert "chore(Security): Bump `xmlhttprequest-ssl` via resolutions" ([5f1b9e9](https://github.com/Royal-Navy/design-system/commit/5f1b9e9d56007940b1d99ac75d4641612abd8f6e))
+
+
+
+
+
 ## [2.48.2](https://github.com/Royal-Navy/design-system/compare/2.48.1...2.48.2) (2021-05-06)
 
 **Note:** Version bump only for package royal-navy-design-system
