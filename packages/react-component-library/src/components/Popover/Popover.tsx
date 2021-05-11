@@ -1,5 +1,4 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
 import TetherComponent from 'react-tether'
 
 import {
@@ -10,13 +9,14 @@ import {
 
 import {
   FLOATING_BOX_SCHEME,
-  FloatingBox,
   FloatingBoxProps,
 } from '../../primitives/FloatingBox'
 
 import { getId } from '../../helpers'
 
 import { useHideShow } from './useHideShow'
+import { StyledFloatingBox } from './partials/StyledFloatingBox'
+
 type PopoverPlacementType =
   | typeof POPOVER_PLACEMENT.ABOVE
   | typeof POPOVER_PLACEMENT.BELOW
@@ -50,21 +50,6 @@ export interface PopoverProps
    */
   scheme?: typeof FLOATING_BOX_SCHEME.LIGHT | typeof FLOATING_BOX_SCHEME.DARK
 }
-
-interface StyledFloatingBoxProps {
-  $isVisible: boolean
-}
-
-const StyledFloatingBox = styled(FloatingBox)<StyledFloatingBoxProps>`
-  opacity: 0;
-  transition: linear opacity 0.3s;
-
-  ${({ $isVisible }) =>
-    $isVisible &&
-    css`
-      opacity: 1;
-    `}
-`
 
 export const Popover: React.FC<PopoverProps> = ({
   children,
