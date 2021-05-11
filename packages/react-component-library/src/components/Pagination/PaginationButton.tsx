@@ -15,12 +15,14 @@ export const PAGINATION_BUTTON_VARIANT = {
   NEXT: 'Next',
 } as const
 
+type PaginationButtonChildrenType =
+  | typeof PAGINATION_BUTTON_VARIANT.FIRST
+  | typeof PAGINATION_BUTTON_VARIANT.LAST
+  | typeof PAGINATION_BUTTON_VARIANT.PREV
+  | typeof PAGINATION_BUTTON_VARIANT.NEXT
+
 interface PaginationButtonProps {
-  children:
-    | typeof PAGINATION_BUTTON_VARIANT.FIRST
-    | typeof PAGINATION_BUTTON_VARIANT.LAST
-    | typeof PAGINATION_BUTTON_VARIANT.PREV
-    | typeof PAGINATION_BUTTON_VARIANT.NEXT
+  children: PaginationButtonChildrenType
   disabled: boolean
   onClick: (event: React.MouseEvent) => void
 }

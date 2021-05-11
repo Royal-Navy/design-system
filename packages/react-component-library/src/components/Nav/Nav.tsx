@@ -6,6 +6,9 @@ import { NavItem } from './NavItem'
 import logger from '../../utils/logger'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 
+type NavOrientationType = 'vertical' | 'horizontal'
+type NavSizeType = 'small' | 'regular' | 'large' | 'xlarge'
+
 export interface NavProps extends ComponentWithClass {
   /**
    * Link component to use for each navigation item (custom implementation welcome).
@@ -18,11 +21,11 @@ export interface NavProps extends ComponentWithClass {
   /**
    * Orientation of the component.
    */
-  orientation?: 'vertical' | 'horizontal'
+  orientation?: NavOrientationType
   /**
    * Size of the component.
    */
-  size?: 'small' | 'regular' | 'large' | 'xlarge'
+  size?: NavSizeType
 }
 
 function renderMenu(LinkComponent: any, navItems: any[]) {

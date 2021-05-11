@@ -11,6 +11,22 @@ import { StyledAdornment } from './partials/StyledAdornment'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledLabel } from './partials/StyledLabel'
 import { StyledInput } from './partials/StyledInput'
+type TextInputType =
+  | 'color'
+  | 'date'
+  | 'datatime-local'
+  | 'email'
+  | 'file'
+  | 'image'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week'
 
 export interface TextInputProps
   extends ComponentWithClass,
@@ -66,22 +82,7 @@ export interface TextInputProps
   /**
    * HTML `type` attribute to apply to the component.
    */
-  type?:
-    | 'color'
-    | 'date'
-    | 'datatime-local'
-    | 'email'
-    | 'file'
-    | 'image'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week'
+  type?: TextInputType
   /**
    * Optional HTML `value` attribute to apply to the component.
    */

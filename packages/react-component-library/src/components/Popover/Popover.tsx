@@ -17,6 +17,11 @@ import {
 import { getId } from '../../helpers'
 
 import { useHideShow } from './useHideShow'
+type PopoverPlacementType =
+  | typeof POPOVER_PLACEMENT.ABOVE
+  | typeof POPOVER_PLACEMENT.BELOW
+  | typeof POPOVER_PLACEMENT.LEFT
+  | typeof POPOVER_PLACEMENT.RIGHT
 
 export interface PopoverProps
   extends Omit<FloatingBoxProps, 'onMouseEnter' | 'onMouseLeave'> {
@@ -39,11 +44,7 @@ export interface PopoverProps
   /**
    * Where to display the Popover relative to the target element.
    */
-  placement:
-    | typeof POPOVER_PLACEMENT.ABOVE
-    | typeof POPOVER_PLACEMENT.BELOW
-    | typeof POPOVER_PLACEMENT.LEFT
-    | typeof POPOVER_PLACEMENT.RIGHT
+  placement: PopoverPlacementType
   /**
    * Type of component to display (style varies accordingly).
    */

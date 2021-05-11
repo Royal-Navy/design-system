@@ -1,6 +1,7 @@
 import React, { FormEvent } from 'react'
 
-import { Button, BUTTON_SIZE } from '../Button'
+import { ButtonGroupSizeType } from './ButtonGroup'
+import { Button } from '../Button'
 
 export interface ButtonGroupItemProps {
   /**
@@ -22,11 +23,7 @@ export interface ButtonGroupItemProps {
   /**
    * Size of the component.
    */
-  size?:
-    | typeof BUTTON_SIZE.LARGE
-    | typeof BUTTON_SIZE.REGULAR
-    | typeof BUTTON_SIZE.SMALL
-    | typeof BUTTON_SIZE.XLARGE
+  size?: ButtonGroupSizeType
 }
 
 export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({

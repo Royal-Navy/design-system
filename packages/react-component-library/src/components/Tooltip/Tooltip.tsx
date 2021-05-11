@@ -8,6 +8,12 @@ import { StyledContent } from './partials/StyledContent'
 import { StyledTitle } from './partials/StyledTitle'
 import { StyledMessage } from './partials/StyledMessage'
 
+type TooltipPositionType =
+  | typeof TOOLTIP_POSITION.ABOVE
+  | typeof TOOLTIP_POSITION.BELOW
+  | typeof TOOLTIP_POSITION.LEFT
+  | typeof TOOLTIP_POSITION.RIGHT
+
 export interface TooltipProps extends PositionType {
   /**
    * Text to display within the tooltip.
@@ -20,11 +26,7 @@ export interface TooltipProps extends PositionType {
   /**
    * Where to position the tooltip relative to the target element.
    */
-  position?:
-    | typeof TOOLTIP_POSITION.ABOVE
-    | typeof TOOLTIP_POSITION.BELOW
-    | typeof TOOLTIP_POSITION.LEFT
-    | typeof TOOLTIP_POSITION.RIGHT
+  position?: TooltipPositionType
   /**
    * Optional text title to display above the tooltip text.
    */

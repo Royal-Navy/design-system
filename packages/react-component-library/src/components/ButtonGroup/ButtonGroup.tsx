@@ -6,6 +6,12 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 import logger from '../../utils/logger'
 import { StyledButtonGroup } from './partials/StyledButtonGroup'
 
+export type ButtonGroupSizeType =
+  | typeof BUTTON_SIZE.LARGE
+  | typeof BUTTON_SIZE.REGULAR
+  | typeof BUTTON_SIZE.SMALL
+  | typeof BUTTON_SIZE.XLARGE
+
 export interface ButtonGroupProps extends ComponentWithClass {
   /**
    * Collection of `ButtonGroupItem` components to display as part of the group.
@@ -14,11 +20,7 @@ export interface ButtonGroupProps extends ComponentWithClass {
   /**
    * Size of the component.
    */
-  size?:
-    | typeof BUTTON_SIZE.LARGE
-    | typeof BUTTON_SIZE.REGULAR
-    | typeof BUTTON_SIZE.SMALL
-    | typeof BUTTON_SIZE.XLARGE
+  size?: ButtonGroupSizeType
 }
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
