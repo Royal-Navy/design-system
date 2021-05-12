@@ -14,10 +14,10 @@
     "media-feature-name-no-unknown": true,
     "no-empty-source": true,
     "no-extra-semicolons": true,
-    "unit-blacklist": ["em"],
+    "unit-disallowed-list": ["em"],
     "property-no-vendor-prefix": true,
     "declaration-no-important": true,
-    "declaration-property-unit-whitelist": {
+    "declaration-property-unit-allowed-list": {
         "border-radius": ["px"],
         "line-height": []
     },
