@@ -46,7 +46,7 @@ jobs:
           uses: actions/checkout@v2
 
         - name: Run audit
-          run: yarn audit
+          run: yarn run audit
 
 
      Lint_css-framework:
