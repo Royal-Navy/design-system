@@ -31,11 +31,14 @@
     "**/**/node-fetch": "^2.6.1",
     "**/**/axios": "^0.21.1",
     "**/**/yup": "^0.31.1",
-    "**/**/socket.io": "^2.4.0",
     "**/**/hosted-git-info": "^3.0.8",
     "**/**/netmask": "^2.0.1",
     "**/**/ssri": "^8.0.1",
-    "**/**/engine.io": "^4.0.0"
+    "**/**/engine.io": "^4.0.0",
+    "**/**/trim": "^0.0.3",
+    "**/**/postcss": "^8.2.15",
+    "**/**/postcss-scss": "^3.0.5",
+    "**/**/browserslist": "4.16.5"
   },
   "prettier": {
     "bracketSpacing": true,

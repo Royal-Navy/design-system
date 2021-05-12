@@ -33,7 +33,7 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.errors) {
       return Promise.reject(result.errors)
     }
@@ -68,4 +68,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       value: slug,
     })
   }
+}
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      fallback: {
+        stream: false,
+      },
+    },
+  })
 }

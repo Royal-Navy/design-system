@@ -1,6 +1,7 @@
 const sass = require('sass')
 
 module.exports = {
+  flags: { PRESERVE_WEBPACK_CACHE: true },
   siteMetadata: {
     title: `Royal Navy Design System`,
     description: `The Royal Navy Design System documentation site.`,
