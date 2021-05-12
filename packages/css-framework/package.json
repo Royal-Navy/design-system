@@ -41,8 +41,10 @@
   "devDependencies": {
     "lint-staged": "^10.2.13",
     "sass": "^1.25.0",
-    "stylelint": "^13.0.0",
-    "stylelint-junit-formatter": "^0.2.2"
+    "stylelint": "^13.13.1"
+  },
+  "peerDependencies": {
+    "postcss": "^8.2.15"
   },
   "lint-staged": {
     "*.@(scss)": "stylelint"

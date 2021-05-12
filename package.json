@@ -35,7 +35,10 @@
     "**/**/hosted-git-info": "^3.0.8",
     "**/**/netmask": "^2.0.1",
     "**/**/ssri": "^8.0.1",
-    "**/**/engine.io": "^4.0.0"
+    "**/**/engine.io": "^4.0.0",
+    "**/**/trim": "^0.0.3",
+    "**/**/postcss": "^8.2.15",
+    "**/**/postcss-scss": "^3.0.5"
   },
   "prettier": {
     "bracketSpacing": true,
