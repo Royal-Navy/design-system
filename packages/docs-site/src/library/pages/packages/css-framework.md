@@ -6,7 +6,22 @@ header: true
 
 The `@royalnavy/css-framework` package provides a compiled version of the component CSS, the Utility classes and the source SASS. The source SASS can either be used with the component library package, or as a standalone stylesheet.
 
+## Installation
+
+The Royal Navy CSS Framework is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/css-framework).
+
+```
+// npm
+npm install @royalnavy/css-framework
+
+// yarn
+yarn add @royalnavy/css-framework
+```
+
+## Usage
+
 Under the hood, the CSS Framework uses [SCSS Modules](http://sass.logdown.com/posts/7858341-the-module-system-is-launched). To include the framework in your application, import it at the top of your main stylesheet as:
+
 ```
 @use "@royalnavy/css-framework" as rn;
 ```
@@ -15,7 +30,7 @@ The `rn` namespace is an optional value, however we recommend using it to ensure
 color: rn.color("neutral", "500");
 ```
 
-### Context
+## Context
 
 Environment is a huge factor in deciding how we display NELSON applications, therefore it is important to provide the correct Context for your app. The CSS Framework only supports the `light` context currently.
 
@@ -33,7 +48,7 @@ rn.color("danger", "500")
 [SHADE] - Shades exist between `000` and `900`. The default theme provides a different shade for every multiple of `100`. The `neutral` palette also has values for `black` and `white` keys.
 
 
-### Customising the Framework
+## Customising the Framework
 
 The CSS Framework can be customised to suit your needs. Using the `with` keyword, the following variables can be overridden:
 
@@ -62,8 +77,6 @@ Overriding these variables will merge the supplied values with the current conte
 ```
 
 In the example above, we are updating the `neutral: 000` value to `#FF0000` (red) and adding a new type, `supg`, with its own colour values.
-
----
 
 ## Utility Classes
 

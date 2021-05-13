@@ -13,6 +13,7 @@ header: true
 [Prettier](https://prettier.io/) is an opinionated code formatter. It removes original styling and ensures that all outputted code conforms to a consistent style.
 
 ## Installation
+
 The Royal Navy ESLint config is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/eslint-config-react).
 
 ```

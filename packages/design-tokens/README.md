@@ -1,8 +1,10 @@
 # Design Tokens
+
 An agnostic way to store variables such as typography, color, and spacing.
 
 ## Installation
-The Royal Navy Design Tokens are available as a NPM package.
+
+The Royal Navy Design Tokens are available as an [NPM package](https://www.npmjs.com/package/@royalnavy/design-tokens).
 
 ```
 // npm
@@ -12,15 +14,12 @@ npm install @royalnavy/design-tokens
 yarn add @royalnavy/design-tokens
 ```
 
-If you want to install the prerelease then use the `@next` distribution tag.
+## Selectors
 
-## Usage - SASS
-```css
-@use '@royalnavy/design-tokens' as $vars
-```
-NOTE: Application developers should consider consuming the @royalnavy/css-framework package instead of this package.
+The reccomended way to access tokens is using the supplied selector functions.
 
-## Usage - Styled Components
+Simply import the selector object and then destructure the selectors you want to use out of this.
+
 ```javascript
 import { selectors } from "@royalnavy/design-tokens";
 
@@ -38,17 +37,57 @@ const StyledExample = styled.div`
 `;
 ```
 
+| Selector   | Alias | Example Return Value                               | Description                                                       |
+|------------|-------|----------------------------------------------------|-------------------------------------------------------------------|
+| animation  |       | `0.2s`                                             | Animation timing values.                                          |
+| breakpoint |       | `{   breakpoint: '768px',   baseFontSize: '96%' }` | Raw object containing `breakpoint` and associated `baseFontSize`. |
+| mediaQuery | mq    |  See usage example above.                                                  | Tagged template literal that generates a media query string.      |
+| color      |       | `#FFFFFF`                                          | A color value as a hex string.                                    |
+| shadow     |       | `0 1px 3px rgba(0, 0, 0, 0.04)`                    | Preset `box-shadow` values.                                       |
+| spacing    |       | `0.5rem`                                           | Fixed spacing value in REMs.                                      |
+| fontSize   |       | `0.5rem`                                           | Fixed `font-size` value in REMs.                                  |
+| zIndex     |       | `6001`                                             | Scoped `z-index` value with optional modifier.                    |
+
+The selectors are typed. We reccomend using the hinting in your IDE to see the signatures and available arguments for each selector. Alternatively, you can see the raw tokens [here on GitHub](https://github.com/Royal-Navy/design-system/tree/master/packages/design-tokens/src/tokens).
+
+## Raw Tokens
+
+It's also possible to access the raw underlying tokens.
+
+We consider these to be implementation detail (they may change without notice), as such we recommend using selectors over raw tokens in most instances.
+
+### JavaScript
+
+```javascript
+import { ColorNeutral100 } from '@royalnavy/design-tokens'
+```
+
+### SASS
+
+```css
+@use '@royalnavy/design-tokens' as $vars
+```
+
 ## Questions
-Design Tokens is maintained by a team at the Royal Navy. If you want to know more, please email the [Design System team](mailto:design-system@royalnavy.io).
+
+The Design System is maintained by a team at the Royal Navy. If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
+
+## Documentation
+
+The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Royal Navy Design System.
 
 ## Contributing
+
 The [contributing guide](https://github.com/Royal-Navy/design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
 
 ## Changelog
+
 If you have recently updated then read the [release notes](https://github.com/Royal-Navy/design-system/releases)
 
 ## Roadmap
+
 The [Design System Roadmap Board](https://github.com/orgs/Royal-Navy/projects/5) contains the work that has been prioritised for the next 12 months.
 
 ## License
-Design Tokens is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE)
+
+The Royal Navy Design System is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE).
