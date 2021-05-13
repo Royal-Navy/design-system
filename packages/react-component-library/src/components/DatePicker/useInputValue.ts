@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { differenceInMinutes, format } from 'date-fns'
+
 import { getId } from '../../helpers'
 
 function transformDates(
@@ -25,26 +26,19 @@ export function useInputValue(
   from: Date,
   to: Date,
   datePickerFormat: string,
-  hasFocus: boolean
+  hasFocus: boolean,
+  revertKeyedValue: () => void
 ): {
   displayValue: string
   inputKey: string
-  keyedValue: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  revert: () => void
 } {
   const [displayValue, setDisplayValue] = useState<string>(
     transformDates(from, to, datePickerFormat)
   )
-  const [keyedValue, setKeyedValue] = useState<string>()
   const [inputKey, setInputKey] = useState<string>(getId('date-picker-input'))
 
-  function revert() {
-    setKeyedValue(null)
-  }
-
   useEffect(() => {
-    revert()
+    revertKeyedValue()
     setDisplayValue(transformDates(from, to, datePickerFormat))
 
     if (!hasFocus) {
@@ -52,15 +46,8 @@ export function useInputValue(
     }
   }, [from, to])
 
-  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setKeyedValue(e.target.value)
-  }
-
   return {
     displayValue,
     inputKey,
-    keyedValue,
-    onChange,
-    revert,
   }
 }
