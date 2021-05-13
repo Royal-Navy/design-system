@@ -5,6 +5,7 @@ tags: public
 pageClass: ''
 template: default
 header: false
+excludeFromNavigation: true
 ---
 
 # Contact

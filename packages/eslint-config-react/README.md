@@ -1,8 +1,18 @@
-# ESLint Config
-This package provides the Royal Navy [ESLint](https://eslint.org/) configuration.
+# ESLint Config React
+
+This package provides the Royal Navy ESLint and Prettier configuration.
+
+## ESLint
+
+[ESLint](https://eslint.org/) statically analyzes your code to quickly find problems. ESLint is built into most text editors and you can run ESLint as part of your continuous integration pipeline.
+
+## Prettier
+
+[Prettier](https://prettier.io/) is an opinionated code formatter. It removes original styling and ensures that all outputted code conforms to a consistent style.
 
 ## Installation
-The Royal Navy ESLint config is available as an NPM package.
+
+The Royal Navy ESLint config is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/eslint-config-react).
 
 ```
 // npm
@@ -28,19 +38,26 @@ _.prettier.config.js_
 module.exports = require('@royalnavy/eslint-config-react/prettier.config.js')
 ```
 
-If you want to install the prerelease then use the `@next` distribution tag.
-
 ## Questions
-The ESLint config package is maintained by a team at the Royal Navy. If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
+
+The Design System is maintained by a team at the Royal Navy. If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
+
+## Documentation
+
+The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Royal Navy Design System.
 
 ## Contributing
+
 The [contributing guide](https://github.com/Royal-Navy/design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
 
 ## Changelog
+
 If you have recently updated then read the [release notes](https://github.com/Royal-Navy/design-system/releases)
 
 ## Roadmap
+
 The [Design System Roadmap Board](https://github.com/orgs/Royal-Navy/projects/5) contains the work that has been prioritised for the next 12 months.
 
 ## License
-The Royal Navy Design System is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE)
+
+The Royal Navy Design System is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE).
