@@ -22,9 +22,9 @@ export const StyledMonth = styled.div<StyledMonthProps>`
     border-right: none;
   }
 
-  &::after {
+  &:not(:last-of-type)::after {
     position: absolute;
-    right: -1px;
+    right: 0;
     top: 0;
     content: '';
     display: inline-block;
@@ -32,9 +32,7 @@ export const StyledMonth = styled.div<StyledMonthProps>`
     height: 100vh;
     border-right: ${({ $hasThickBorder }) =>
       $hasThickBorder
-        ? css`
-            2px solid ${color('neutral', '200')}
-          `
+        ? css`2px solid ${color('neutral', '200')}`
         : css`
             ${spacing('px')} dashed ${color('neutral', '200')}
           `};

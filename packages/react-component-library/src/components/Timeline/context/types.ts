@@ -1,6 +1,12 @@
-import { Dispatch } from 'react'
+import React, { Dispatch } from 'react'
 
 import { BlockSizeType } from '../TimelineHours'
+import { TimelineSideProps } from '../TimelineSide'
+import { TimelineTodayMarkerProps } from '../TimelineTodayMarker'
+import { TimelineMonthsProps } from '../TimelineMonths'
+import { TimelineWeeksProps } from '../TimelineWeeks'
+import { TimelineDaysProps } from '../TimelineDays'
+import { TimelineRowsProps } from '../TimelineRows'
 
 export type TimelineScaleOption = {
   calculateDate: (d: Date, n: number) => Date
@@ -44,26 +50,39 @@ export type TimelineMonth = {
 }
 
 export type TimelineState = {
-  today: Date
-  months: TimelineMonth[]
-  weeks: TimelineWeek[]
+  currentScaleIndex: number
+  currentScaleOption: TimelineScaleOption
   days: TimelineDay[]
   hours: TimelineHour[]
+  months: TimelineMonth[]
   options: TimelineOptions
   scaleOptions: TimelineScaleOption[]
-  currentScaleOption: TimelineScaleOption
+  today: Date
+  weeks: TimelineWeek[]
+  width: number
 }
 
 export const TIMELINE_ACTIONS = {
+  CHANGE_WIDTH: 'CHANGE_WIDTH',
   GET_NEXT: 'GET_NEXT',
   GET_PREV: 'GET_PREV',
   SCALE: 'SCALE',
 } as const
 
 export type TimelineAction =
-  | { type: typeof TIMELINE_ACTIONS.GET_NEXT; scale: TimelineScaleOption }
-  | { type: typeof TIMELINE_ACTIONS.GET_PREV; scale: TimelineScaleOption }
-  | { type: typeof TIMELINE_ACTIONS.SCALE; scale: TimelineScaleOption }
+  | {
+      type: typeof TIMELINE_ACTIONS.CHANGE_WIDTH
+      width: number
+    }
+  | {
+      type: typeof TIMELINE_ACTIONS.GET_NEXT
+      scaleOptions: TimelineScaleOption[]
+    }
+  | {
+      type: typeof TIMELINE_ACTIONS.GET_PREV
+      scaleOptions: TimelineScaleOption[]
+    }
+  | { type: typeof TIMELINE_ACTIONS.SCALE; scaleIndex: number }
 
 export interface TimelineContextDefault {
   hasSide: boolean

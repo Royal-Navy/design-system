@@ -6,16 +6,19 @@ import {
 import { padStart } from 'lodash'
 
 import {
-  TimelineState,
+  TIMELINE_ACTIONS,
   TimelineAction,
-  TimelineMonth,
-  TimelineWeek,
   TimelineDay,
   TimelineHour,
+  TimelineMonth,
+  TimelineOptions,
   TimelineScaleOption,
+  TimelineState,
+  TimelineWeek,
 } from './types'
 
 import { WEEK_START } from '../constants'
+import { initialiseScaleOptions } from './timeline_scales'
 
 const HOURS_IN_DAY = 24
 
@@ -89,20 +92,60 @@ export function buildCalendar({
   }
 }
 
+function transformOptions(
+  options: TimelineOptions,
+  currentScaleOption: TimelineScaleOption
+) {
+  return {
+    ...options,
+    endDate: options.endDate ? currentScaleOption.to : null,
+    startDate: currentScaleOption.from,
+  }
+}
+
 export function reducer(
   state: TimelineState,
   action: TimelineAction
 ): TimelineState | never {
-  const { scale } = action
-
-  return {
-    ...state,
-    ...buildCalendar(scale),
-    currentScaleOption: scale,
-    options: {
-      ...state.options,
-      startDate: scale.from,
-      endDate: state.options.endDate ? scale.to : null,
-    },
+  switch (action.type) {
+    case TIMELINE_ACTIONS.CHANGE_WIDTH:
+      /* eslint-disable no-case-declarations */
+      const scaleOptions = initialiseScaleOptions(state.options, action.width)
+      const currentScaleIndex =
+        state.currentScaleIndex ||
+        scaleOptions.findIndex(({ isDefault }) => isDefault)
+      return {
+        ...state,
+        ...buildCalendar(scaleOptions[currentScaleIndex]),
+        currentScaleIndex,
+        scaleOptions,
+        currentScaleOption: scaleOptions[currentScaleIndex],
+        width: action.width,
+      }
+    case TIMELINE_ACTIONS.GET_PREV:
+    case TIMELINE_ACTIONS.GET_NEXT:
+      return {
+        ...state,
+        ...buildCalendar(action.scaleOptions[state.currentScaleIndex]),
+        currentScaleOption: action.scaleOptions[state.currentScaleIndex],
+        options: transformOptions(
+          state.options,
+          action.scaleOptions[state.currentScaleIndex]
+        ),
+        scaleOptions: action.scaleOptions,
+      }
+    case TIMELINE_ACTIONS.SCALE:
+      return {
+        ...state,
+        ...buildCalendar(state.scaleOptions[action.scaleIndex]),
+        currentScaleIndex: action.scaleIndex,
+        currentScaleOption: state.scaleOptions[action.scaleIndex],
+        options: transformOptions(
+          state.options,
+          state.scaleOptions[state.currentScaleIndex]
+        ),
+      }
+    default:
+      throw new Error('Unknown action type')
   }
 }

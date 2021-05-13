@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from 'react'
 
-import { initialState, initialiseState } from './state'
+import { initialState } from './state'
 import { reducer } from './reducer'
 import { TimelineContextDefault, TimelineProviderProps } from './types'
 
@@ -18,9 +18,11 @@ export const TimelineProvider: React.FC<TimelineProviderProps> = ({
   options,
   today,
 }) => {
-  const [state, dispatch] = useReducer(reducer, initialState, () =>
-    initialiseState(today, options)
-  )
+  const [state, dispatch] = useReducer(reducer, {
+    ...initialState,
+    options,
+    today,
+  })
 
   return (
     <TimelineContext.Provider value={{ hasSide, state, dispatch }}>

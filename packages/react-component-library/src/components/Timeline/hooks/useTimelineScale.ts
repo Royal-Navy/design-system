@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react'
-import { findIndex, isNil } from 'lodash'
+import { useContext, useEffect, useState } from 'react'
+import { isNil } from 'lodash'
 
 import { TIMELINE_ACTIONS, TimelineScaleOption } from '../context/types'
 import { TimelineContext } from '../context'
@@ -8,38 +8,44 @@ import { initialiseScaleOptions } from '../context/timeline_scales'
 export function useTimelineScale() {
   const {
     dispatch,
-    state: { options, scaleOptions },
+    state: {
+      currentScaleIndex,
+      currentScaleOption,
+      options,
+      scaleOptions,
+      width,
+    },
   } = useContext(TimelineContext)
   const [timelineScaleOptions, setTimelineScaleOptions] = useState(scaleOptions)
-  const defaultScaleIndex = findIndex(
-    timelineScaleOptions,
-    ({ isDefault }) => isDefault
-  )
-  const [scaleIndex, setScaleIndex] = useState<number>(defaultScaleIndex)
+  const canZoomIn = isNil(currentScaleIndex) || currentScaleIndex > 0
+  const canZoomOut = currentScaleIndex < timelineScaleOptions.length - 1
 
-  const canZoomIn = isNil(scaleIndex) || scaleIndex > 0
-  const canZoomOut = scaleIndex < timelineScaleOptions.length - 1
+  useEffect(() => {
+    const newScaleOptions = initialiseScaleOptions(options, width)
+    setTimelineScaleOptions(newScaleOptions)
+  }, [width])
 
-  function updateScale(newScaleIndex: number) {
-    setScaleIndex(newScaleIndex)
+  useEffect(() => {
+    setTimelineScaleOptions(scaleOptions)
+  }, [scaleOptions])
+
+  function zoomIn() {
     dispatch({
-      scale: timelineScaleOptions[newScaleIndex],
+      scaleIndex: currentScaleIndex - 1,
       type: TIMELINE_ACTIONS.SCALE,
     })
   }
 
-  function zoomIn() {
-    updateScale(scaleIndex - 1)
-  }
-
   function zoomOut() {
-    updateScale(scaleIndex + 1)
+    dispatch({
+      scaleIndex: currentScaleIndex + 1,
+      type: TIMELINE_ACTIONS.SCALE,
+    })
   }
 
   function move(
     type: typeof TIMELINE_ACTIONS.GET_NEXT | typeof TIMELINE_ACTIONS.GET_PREV
   ) {
-    const currentScaleOption = timelineScaleOptions[scaleIndex]
     const intervalMultiplier = type === TIMELINE_ACTIONS.GET_NEXT ? 1 : -1
 
     const getIntervalSize = ({ intervalSize }: TimelineScaleOption) =>
@@ -59,19 +65,19 @@ export function useTimelineScale() {
       return null
     }
 
-    const newScaleOptions = initialiseScaleOptions({
-      ...options,
-      startDate: newStartDate,
-      endDate: getNewEndDate(),
-      hoursBlockSize: currentScaleOption.hoursBlockSize,
-    })
-
-    const newScaleOption = newScaleOptions[scaleIndex]
-    setTimelineScaleOptions(newScaleOptions)
+    const newScaleOptions = initialiseScaleOptions(
+      {
+        ...options,
+        startDate: newStartDate,
+        endDate: getNewEndDate(),
+        hoursBlockSize: currentScaleOption.hoursBlockSize,
+      },
+      width
+    )
 
     dispatch({
       type,
-      scale: newScaleOption,
+      scaleOptions: newScaleOptions,
     })
   }
 

@@ -27,7 +27,7 @@ const { color } = selectors
 const TIMELINE_BORDER_COLOR = color('neutral', '100')
 const TIMELINE_BG_COLOR = color('neutral', '000')
 const TIMELINE_ALT_BG_COLOR = color('neutral', 'white')
-const TIMELINE_ROW_HEADER_WIDTH = '16rem'
+const TIMELINE_ROW_HEADER_WIDTH = 270
 
 export {
   ACCESSIBLE_DATE_FORMAT,
@@ -41,5 +41,5 @@ export {
   TIMELINE_BORDER_COLOR,
   TIMELINE_BG_COLOR,
   TIMELINE_ALT_BG_COLOR,
-  TIMELINE_ROW_HEADER_WIDTH
+  TIMELINE_ROW_HEADER_WIDTH,
 }
