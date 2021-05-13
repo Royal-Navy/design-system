@@ -33,16 +33,29 @@
       margin-bottom: 0;
     }
   }
+
+  svg {
+    transform: translateX(-1rem) scale(.75);
+
+    @include rn.breakpoint('s') {
+      transform: unset;
+    }
+  }
 }
 
 .bucket__button {
   display: inline-flex;
   border-radius: 4px;
   padding: rn.spacing('4') rn.spacing('8');
-  font-size: 16px;
+  font-size: 12px;
+  white-space: nowrap;
+
+  @include rn.breakpoint('s') {
+    font-size: 16px;
+  }
 
   &:hover {
-    text-decoration: none;;
+    text-decoration: none;
   }
 }
 
@@ -50,6 +63,10 @@
   .bucket__button {
     background-color: #ffbd00;
     color: rn.color('neutral', '500');
+
+    &:hover {
+      background-color: rgba(#ffbd00, .9);
+    }
   }
 }
 
@@ -57,5 +74,9 @@
   .bucket__button {
     background-color: #ff4785;
     color: rn.color('neutral', 'white');
+
+    &:hover {
+      background-color: rgba(#ff4785, .9);
+    }
   }
 }
