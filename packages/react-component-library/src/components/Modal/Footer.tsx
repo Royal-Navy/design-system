@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { BUTTON_VARIANT, ButtonProps } from '../Button'
-import { StyledButtonGroup } from '../ButtonGroup/partials/StyledButtonGroup'
 import { StyledFooter } from './partials/StyledFooter'
 import { StyledPrimaryButton } from './partials/StyledPrimaryButton'
 import { StyledSecondaryButton } from './partials/StyledSecondaryButton'
@@ -30,23 +29,21 @@ export const Footer: React.FC<FooterProps> = ({
         data-testid="modal-tertiary"
       />
     )}
-    <StyledButtonGroup>
-      {secondaryButton && (
-        <StyledSecondaryButton
-          type="button"
-          variant={BUTTON_VARIANT.SECONDARY}
-          {...secondaryButton}
-          data-testid="modal-secondary"
-        />
-      )}
-      {primaryButton && (
-        <StyledPrimaryButton
-          type="button"
-          variant={BUTTON_VARIANT.PRIMARY}
-          {...primaryButton}
-          data-testid="modal-primary"
-        />
-      )}
-    </StyledButtonGroup>
+    {secondaryButton && (
+      <StyledSecondaryButton
+        type="button"
+        variant={BUTTON_VARIANT.SECONDARY}
+        {...secondaryButton}
+        data-testid="modal-secondary"
+      />
+    )}
+    {primaryButton && (
+      <StyledPrimaryButton
+        type="button"
+        variant={BUTTON_VARIANT.PRIMARY}
+        {...primaryButton}
+        data-testid="modal-primary"
+      />
+    )}
   </StyledFooter>
 )
