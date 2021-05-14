@@ -13,7 +13,8 @@ export const StyledNavItemIcon = styled.div<StyledNavItemIconProps>`
   display: inline-flex;
   align-items: center;
   width: 100%;
-  padding: 0.55rem;
+  padding: 0.55rem 0;
+  justify-content: center;
 
   svg {
     width: 18px;
