@@ -48,7 +48,7 @@ const HeroBanner = ({
             <div className="hero-banner__stakeholder">
               <div className="rn-container">
                 <p className="hero-banner__stakeholder-message">
-                  Are you a Navy Product Owner or Stakeholder?
+                  Are you a Navy Product Owner or Stakeholder?&nbsp;
                   <a className="hero-banner__link" href="/about">
                     Find out how the Design System relates to you.
                   </a>{' '}

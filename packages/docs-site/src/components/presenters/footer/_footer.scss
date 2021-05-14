@@ -26,6 +26,10 @@
   }
   width: rn.spacing("12");
   height: rn.spacing("12");
+
+  &:hover {
+    opacity: .5;
+  }
 }
 
 .rn-footer,

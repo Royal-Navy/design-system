@@ -1,7 +1,6 @@
 @use "@royalnavy/css-framework" as rn;
 
 .masthead {
-  margin-bottom: rn.spacing("6");
   background: white;
 }
 
@@ -13,7 +12,6 @@
   font-size: rn.font-size("base");
   font-weight: 400;
   transition: background-color 0.3s;
-  text-align: center;
   @include rn.breakpoint("xs") {
     text-align: left;
   }
@@ -30,6 +28,17 @@
     }
   }
 
+}
+
+.masthead__phasebanner {
+  display: none;
+
+  white-space: nowrap;
+  overflow: hidden;
+
+  @include rn.breakpoint('s') {
+    display: block;
+  }
 }
 
 .masthead__container {
@@ -196,6 +205,12 @@
   .rn-badge {
     text-transform: none !important;
   }
+
+  display: none;
+
+  @include rn.breakpoint('s') {
+    display: inline-block;
+  }
 }
 
 .masthead__github {
@@ -208,6 +223,12 @@
 
   &:hover {
     opacity: 1;
+  }
+
+  display: none;
+
+  @include rn.breakpoint('s') {
+    display: inline-block;
   }
 }
 
