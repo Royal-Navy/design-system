@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.49.0](https://github.com/Royal-Navy/design-system/compare/2.48.4...2.49.0) (2021-05-14)
+
+
+### Features
+
+* **Timeline:** Add full width capability ([1fb701d](https://github.com/Royal-Navy/design-system/commit/1fb701dc6cc4eebf1a823e70bd2403fc124e65c4))
+
+
+
+
+
 ## [2.48.4](https://github.com/Royal-Navy/design-system/compare/2.48.3...2.48.4) (2021-05-13)
 
 **Note:** Version bump only for package royal-navy-design-system

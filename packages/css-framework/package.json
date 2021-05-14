@@ -1,6 +1,6 @@
 {
   "name": "@royalnavy/css-framework",
-  "version": "2.48.4",
+  "version": "2.49.0",
   "main": "index.scss",
   "author": "Royal Navy",
   "license": "Apache-2.0",
@@ -35,8 +35,8 @@
     "prepare": "yarn build"
   },
   "dependencies": {
-    "@royalnavy/design-tokens": "^2.48.4",
-    "@royalnavy/eslint-config-react": "^2.48.4"
+    "@royalnavy/design-tokens": "^2.49.0",
+    "@royalnavy/eslint-config-react": "^2.49.0"
   },
   "devDependencies": {
     "lint-staged": "^10.2.13",
