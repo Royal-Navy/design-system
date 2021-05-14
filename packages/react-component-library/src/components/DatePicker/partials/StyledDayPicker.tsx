@@ -17,7 +17,7 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
           border-radius: 0;
         }
 
-        .DayPicker-Day--start,
+        .DayPicker-Day--start:not(.DayPicker-Day--outside),
         .DayPicker-Day--end:not(.DayPicker-Day--outside) {
           background-color: ${color('action', '500')};
           color: ${color('neutral', 'white')};
