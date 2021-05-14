@@ -38,11 +38,13 @@
     "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
     "lint": "eslint src/* --ext .js --ext .jsx --ext .ts --ext .tsx",
     "prepare": "yarn build",
-    "storybook:static": "NODE_ENV=es build-storybook -c .storybook -o .static_storybook",
     "storybook": "NODE_ENV=es RNDS_LOG_LEVEL=debug start-storybook -p 6006",
+    "storybook:static": "NODE_ENV=es build-storybook -c .storybook -o .static_storybook",
+    "storybook:test": "NODE_ENV=test RNDS_LOG_LEVEL=debug start-storybook -p 6006",
     "test": "NODE_ENV=test jest --testPathIgnorePatterns=./src/a11y/index.test.tsx",
     "test:a11y": "NODE_ENV=test yarn storybook:static && jest ./src/a11y/index.test.tsx",
     "test:watch": "NODE_ENV=test jest --watch",
+    "test:e2e": "cypress run",
     "types": "tsc"
   },
   "lint-staged": {
@@ -107,6 +109,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "concurrently": "^6.0.2",
     "css-loader": "^5.0.1",
+    "cypress": "^7.2.0",
     "eslint": "^7.3.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^7.1.0",
