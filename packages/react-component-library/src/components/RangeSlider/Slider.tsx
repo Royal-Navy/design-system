@@ -23,18 +23,19 @@ import { StyledRail } from './partials/StyledRail'
 import { StyledRailInner } from './partials/StyledRailInner'
 import { StyledTicks } from './partials/StyledTicks'
 
-export interface RangeSliderProps
-  extends Omit<
-    SliderProps,
-    | 'children'
-    | 'disabled'
-    | 'reversed'
-    | 'vertical'
-    | 'domain'
-    | 'values'
-    | 'mode'
-    | 'step'
-  > {
+type SliderOmitType =
+  | 'children'
+  | 'disabled'
+  | 'reversed'
+  | 'vertical'
+  | 'domain'
+  | 'values'
+  | 'mode'
+  | 'step'
+
+type SliderModeType = 1 | 2 | 3 | CustomMode
+
+export interface RangeSliderProps extends Omit<SliderProps, SliderOmitType> {
   /**
    * Two element array of numbers providing the min and max values for the slider [min, max] e.g. [0, 100].
    * It does not matter if the slider is reversed on the screen, domain is always [min, max] with min < max.
@@ -56,7 +57,7 @@ export interface RangeSliderProps
    * Value of 3 will make the handles pushable and keep them a step apart.
    * You can also supply a function that will be passed the current values and the incoming update. Your function should return what the state should be set as.
    */
-  mode?: 1 | 2 | 3 | CustomMode
+  mode?: SliderModeType
   /**
    * Toggles whether or not to display labels below the slider.
    */

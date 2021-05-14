@@ -5,12 +5,29 @@ import { useFocus } from '../../hooks/useFocus'
 import { useInputValue } from '../../hooks/useInputValue'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
-import { StyledTextInput } from './partials/StyledTextInput'
-import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledAdornment } from './partials/StyledAdornment'
+import { StyledInput } from './partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledLabel } from './partials/StyledLabel'
-import { StyledInput } from './partials/StyledInput'
+import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
+import { StyledTextInput } from './partials/StyledTextInput'
+
+type TextInputType =
+  | 'color'
+  | 'date'
+  | 'datatime-local'
+  | 'email'
+  | 'file'
+  | 'image'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week'
 
 export interface TextInputProps
   extends ComponentWithClass,
@@ -66,22 +83,7 @@ export interface TextInputProps
   /**
    * HTML `type` attribute to apply to the component.
    */
-  type?:
-    | 'color'
-    | 'date'
-    | 'datatime-local'
-    | 'email'
-    | 'file'
-    | 'image'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week'
+  type?: TextInputType
   /**
    * Optional HTML `value` attribute to apply to the component.
    */

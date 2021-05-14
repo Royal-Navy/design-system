@@ -1,14 +1,12 @@
 import React, { forwardRef } from 'react'
-import { isNil, isString } from 'lodash'
-import { addHours, isMatch, parse } from 'date-fns'
-import { DayPickerProps, ModifiersUtils } from 'react-day-picker'
+import { isString } from 'lodash'
+import { DayPickerProps } from 'react-day-picker'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledInput } from './partials/StyledInput'
 import { useInputValue } from './useInputValue'
 import { useFocus } from '../../hooks/useFocus'
-
-const INPUT_MASK = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/
+import { useInputKeys } from './useInputKeys'
 
 export interface DatePickerInputProps extends ComponentWithClass {
   disabledDays: DayPickerProps['disabledDays']
@@ -49,76 +47,27 @@ export const DatePickerInput = forwardRef<
   ) => {
     const { hasFocus, onLocalFocus, onLocalBlur } = useFocus()
     const {
-      displayValue,
-      inputKey,
+      checkNewDate,
       keyedValue,
       onChange,
-      revert,
-    } = useInputValue(from, to, datePickerFormat, hasFocus)
+      onKeyDown,
+      onKeyUp,
+      revertKeyedValue,
+    } = useInputKeys(
+      datePickerFormat,
+      disabledDays,
+      onComplete,
+      onDayChange,
+      setHasError
+    )
 
-    function checkNewDate(value: string) {
-      if (INPUT_MASK.test(value) && isMatch(value, datePickerFormat)) {
-        const parsedDate = parse(value, datePickerFormat, new Date())
-        const newDate = addHours(parsedDate, 12)
-
-        if (!ModifiersUtils.dayMatchesModifier(newDate, disabledDays)) {
-          return newDate
-        }
-      }
-
-      setHasError(true)
-      return null
-    }
-
-    const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      setHasError(false)
-
-      const isTabKey = e.keyCode === 9
-      const { value } = e.target as HTMLInputElement
-
-      if (isTabKey) {
-        checkNewDate(value)
-
-        return onComplete()
-      }
-
-      return null
-    }
-
-    const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      setHasError(false)
-
-      const isEscapeKey = e.keyCode === 27
-      const isReturnKey = e.keyCode === 13
-      const isTabKey = e.keyCode === 9
-
-      if (isTabKey) {
-        return null
-      }
-
-      if (isEscapeKey) {
-        revert()
-        return onComplete()
-      }
-
-      const { value } = e.target as HTMLInputElement
-      const hasChanged = !isNil(keyedValue)
-
-      if (isReturnKey) {
-        checkNewDate(value)
-
-        return onComplete()
-      }
-
-      if (INPUT_MASK.test(value) && hasChanged) {
-        const newDate = checkNewDate(value)
-        if (newDate) {
-          onDayChange(newDate)
-        }
-      }
-
-      return null
-    }
+    const { displayValue, inputKey } = useInputValue(
+      from,
+      to,
+      datePickerFormat,
+      hasFocus,
+      revertKeyedValue
+    )
 
     return (
       <StyledInput

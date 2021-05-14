@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
-import { StyledButton, StyledButtonProps } from './StyledButton'
+import { StyledButton } from './StyledButton'
 
 const { color } = selectors
 

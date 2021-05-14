@@ -2,8 +2,7 @@ import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
 import { Sheet } from '../../Sheet/Sheet'
-import { StyledUserItem } from './StyledUserItem'
-import { StyledFloatingBox } from '../../../../primitives/FloatingBox'
+import { StyledFloatingBox } from '../../../../primitives/FloatingBox/partials/StyledFloatingBox'
 
 const { color } = selectors
 

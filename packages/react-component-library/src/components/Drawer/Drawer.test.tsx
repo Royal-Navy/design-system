@@ -149,7 +149,9 @@ describe('Drawer', () => {
         return (
           <Drawer
             ref={(el) => {
-              if (el) setContent(el.getAttribute('data-testid'))
+              if (el) {
+                setContent(el.getAttribute('data-testid'))
+              }
             }}
           >
             {content}

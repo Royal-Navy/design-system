@@ -28,8 +28,8 @@ export interface TimelineEventWithRenderContentProps
    * Supply a custom presentation layer.
    */
   render: (
-    endDate: Date,
     startDate: Date,
+    endDate: Date,
     widthPx: string,
     offsetPx: string,
     maxWidthPx: string,
@@ -132,7 +132,9 @@ export const TimelineEvent: React.FC<TimelineEventProps> = ({
     maxWidth: maxWidthPx,
   } = useTimelinePosition(startDate, endDate)
 
-  if (startsAfterEnd || endsBeforeStart) return null
+  if (startsAfterEnd || endsBeforeStart) {
+    return null
+  }
 
   const event = render
     ? render(

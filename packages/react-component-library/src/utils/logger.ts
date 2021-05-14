@@ -1,9 +1,4 @@
-export type LogLevel =
-  | 'debug'
-  | 'info'
-  | 'warn'
-  | 'error'
-  | '__RNDS_LOG_LEVEL'
+export type LogLevel = 'debug' | 'info' | 'warn' | 'error' | '__RNDS_LOG_LEVEL'
 
 export type Logger = Record<LogLevel, typeof console.log>
 
@@ -29,11 +24,7 @@ export default levels.reduce((logger, level: LogLevel, index: number) => {
     [level]: (...args: unknown[]) => {
       const func = level === 'debug' ? 'log' : level
 
-      if (
-        RNDS_LOG_LEVEL &&
-        console &&
-        isValidLogLevel(RNDS_LOG_LEVEL, index)
-      ) {
+      if (RNDS_LOG_LEVEL && console && isValidLogLevel(RNDS_LOG_LEVEL, index)) {
         const [message, ...rest] = [...args]
 
         // eslint-disable-next-line no-console
@@ -41,4 +32,4 @@ export default levels.reduce((logger, level: LogLevel, index: number) => {
       }
     },
   }
-}, <Logger>{})
+}, {} as Logger)

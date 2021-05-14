@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { StyledButton, StyledButtonProps } from './StyledButton'
+import { StyledButton } from './StyledButton'
 import { StyledDecreaseButton } from './StyledDecreaseButton'
 
 export const StyledIncreaseButton = styled(StyledButton)`

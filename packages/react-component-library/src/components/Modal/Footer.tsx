@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, BUTTON_VARIANT, ButtonProps } from '../Button'
+import { BUTTON_VARIANT, ButtonProps } from '../Button'
 import { StyledButtonGroup } from '../ButtonGroup/partials/StyledButtonGroup'
 import { StyledFooter } from './partials/StyledFooter'
 import { StyledPrimaryButton } from './partials/StyledPrimaryButton'

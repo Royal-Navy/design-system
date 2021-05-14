@@ -47,7 +47,9 @@ export function useInputText(value: number, unitPosition: UnitPosition) {
   const [canShow, setCanShow] = useState<boolean>(false)
 
   useEffect(() => {
-    if (!unitPosition) return
+    if (!unitPosition) {
+      return
+    }
 
     const { textWidth, paddingLeft } = getInputProperties(
       inputRef.current,

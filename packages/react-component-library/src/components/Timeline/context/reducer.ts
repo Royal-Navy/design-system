@@ -23,19 +23,17 @@ import { initialiseScaleOptions } from './timeline_scales'
 const HOURS_IN_DAY = 24
 
 export function getMonths(start: Date, end: Date): TimelineMonth[] {
-  const months = eachMonthOfInterval({ start, end }).map((date) => {
+  return eachMonthOfInterval({ start, end }).map((date) => {
     return {
       monthIndex: date.getMonth(),
       startDate: date,
     }
   })
-
-  return months
 }
 
 export function getWeeks(start: Date, end: Date): TimelineWeek[] {
   const interval = { start, end }
-  const weeks = eachWeekOfInterval(interval, { weekStartsOn: WEEK_START }).map(
+  return eachWeekOfInterval(interval, { weekStartsOn: WEEK_START }).map(
     (date, weekIndex) => {
       return {
         weekIndex,
@@ -43,19 +41,15 @@ export function getWeeks(start: Date, end: Date): TimelineWeek[] {
       }
     }
   )
-
-  return weeks
 }
 
 export function getDays(start: Date, end: Date): TimelineDay[] {
-  const days = eachDayOfInterval({ start, end }).map((date) => {
+  return eachDayOfInterval({ start, end }).map((date) => {
     return {
       dayIndex: date.getDate() - 1,
       date,
     }
   })
-
-  return days
 }
 
 export function getHours(blockSize: number): TimelineHour[] {

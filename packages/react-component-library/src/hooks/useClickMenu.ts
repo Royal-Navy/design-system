@@ -31,7 +31,7 @@ export type ClickMenuPositionType =
   | typeof CLICK_MENU_POSITION.RIGHT_ABOVE
   | typeof CLICK_MENU_POSITION.RIGHT_BELOW
 
-interface useClickMenuParams {
+interface UseClickMenuParams {
   attachedToRef: React.RefObject<HTMLElement>
   clickType: ClickType
   onHide?: () => void
@@ -45,7 +45,7 @@ export const useClickMenu = <TMenuElement extends HTMLElement>({
   onHide,
   onShow,
   position,
-}: useClickMenuParams): {
+}: UseClickMenuParams): {
   coordinates: Coordinates
   isOpen: boolean
   menuRef: React.RefObject<TMenuElement>
@@ -92,17 +92,23 @@ export const useClickMenu = <TMenuElement extends HTMLElement>({
     if (attachedToRef.current.contains(e.target as Node)) {
       e.preventDefault()
       setOpen(true)
-      if (onShow) onShow()
+      if (onShow) {
+        onShow()
+      }
       return
     }
 
     setOpen(false)
-    if (onHide) onHide()
+    if (onHide) {
+      onHide()
+    }
   }
 
   function hideMenu() {
     setOpen(false)
-    if (onHide) onHide()
+    if (onHide) {
+      onHide()
+    }
   }
 
   useEffect(() => {

@@ -13,14 +13,18 @@ export function useOpenClose<TEvent>(
   function handleOnClose(event: TEvent) {
     setOpen(false)
 
-    if (onClose) onClose(event)
+    if (onClose) {
+      onClose(event)
+    }
   }
 
   function toggle(event: TEvent) {
     const newOpen = !open
     setOpen(newOpen)
 
-    if (!newOpen && onClose) onClose(event)
+    if (!newOpen && onClose) {
+      onClose(event)
+    }
   }
 
   function handleOnFocus() {

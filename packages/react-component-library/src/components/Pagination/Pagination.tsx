@@ -9,6 +9,8 @@ import { StyledListItem } from './partials/StyledListItem'
 import { StyledTextInput } from './partials/StyledTextInput'
 import { StyledTotalPages } from './partials/StyledTotalPages'
 
+const KEY_PREFIX = 'pagination-item'
+
 export interface PaginationProps {
   /**
    * Starting page to display from range on first render.
@@ -52,7 +54,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <StyledList data-testid="pagination" {...rest}>
-      <StyledListItem key={getKey('pagination-item', 'first')}>
+      <StyledListItem key={getKey(KEY_PREFIX, 'first')}>
         <PaginationButton
           disabled={isOnFirstPage}
           onClick={() => changePage(1)}
@@ -60,7 +62,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           {PAGINATION_BUTTON_VARIANT.FIRST}
         </PaginationButton>
       </StyledListItem>
-      <StyledListItem key={getKey('pagination-item', 'previous')}>
+      <StyledListItem key={getKey(KEY_PREFIX, 'previous')}>
         <PaginationButton
           disabled={isOnFirstPage}
           onClick={() => changePage(currentPage - 1)}
@@ -78,7 +80,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         />
         <StyledTotalPages>of {totalPages}</StyledTotalPages>
       </StyledListItem>
-      <StyledListItem key={getKey('pagination-item', 'next')}>
+      <StyledListItem key={getKey(KEY_PREFIX, 'next')}>
         <PaginationButton
           disabled={isOnLastPage}
           onClick={() => changePage(currentPage + 1)}
@@ -86,7 +88,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           {PAGINATION_BUTTON_VARIANT.NEXT}
         </PaginationButton>
       </StyledListItem>
-      <StyledListItem key={getKey('pagination-item', 'last')}>
+      <StyledListItem key={getKey(KEY_PREFIX, 'last')}>
         <PaginationButton
           disabled={isOnLastPage}
           onClick={() => changePage(totalPages)}
