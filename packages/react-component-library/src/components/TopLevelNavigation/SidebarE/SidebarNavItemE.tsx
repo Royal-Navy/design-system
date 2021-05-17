@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useRef } from 'react'
 import { Transition } from 'react-transition-group'
 
 import { SidebarSubNav } from './SidebarSubNav'
@@ -34,15 +34,22 @@ export const SidebarNavItemE: React.FC<SidebarNavItemEProps> = ({
   const [hasMouseOver, setHasMouseOver] = useState(false)
   const { isOpen } = useContext(SidebarContext)
   const linkElement = link as React.ReactElement
+  const nodeRef = useRef(null)
 
   const item = React.cloneElement(linkElement, {
     ...link.props,
     children: (
       <>
         {icon && <StyledNavItemIcon isOpen={isOpen}>{icon}</StyledNavItemIcon>}
-        <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
+        <Transition
+          nodeRef={nodeRef}
+          in={isOpen}
+          timeout={TRANSITION_TIMEOUT}
+          unmountOnExit
+        >
           {(state) => (
             <StyledNavItemText
+              ref={nodeRef}
               style={{ ...TRANSITION_STYLES[state] }}
               isOpen={isOpen}
               data-testid="sidebar-nav-item-text"

@@ -53,6 +53,20 @@ const notifications = (
 describe('SidebarE', () => {
   let wrapper: RenderResult
 
+  describe('when rendered in React strict mode', () => {
+    it('should not throw deprecation warning about findDOMNode', () => {
+      expect(() => {
+        wrapper = render(
+          <React.StrictMode>
+            <SidebarE />
+          </React.StrictMode>
+        )
+
+        fireEvent.mouseOver(wrapper.getByTestId('sidebar'))
+      }).not.toThrowError(/findDOMNode is deprecated in StrictMode/)
+    })
+  })
+
   describe('when composed with minimal props', () => {
     beforeEach(() => {
       wrapper = render(<SidebarE />)

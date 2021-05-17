@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Transition } from 'react-transition-group'
 
 import { SidebarHandle } from './SidebarHandle'
@@ -45,6 +45,8 @@ export const SidebarE: React.FC<SidebarEProps> = ({
   notifications,
   ...rest
 }) => {
+  const nodeRef = useRef(null)
+
   return (
     <SidebarProvider>
       <SidebarContext.Consumer>
@@ -56,9 +58,17 @@ export const SidebarE: React.FC<SidebarEProps> = ({
             onMouseLeave={(_) => setHasMouseOver(false)}
             {...rest}
           >
-            <Transition in={hasMouseOver} timeout={0} unmountOnExit>
+            <Transition
+              nodeRef={nodeRef}
+              in={hasMouseOver}
+              timeout={0}
+              unmountOnExit
+            >
               {(state) => (
-                <SidebarHandle style={{ ...TRANSITION_STYLES[state] }} />
+                <SidebarHandle
+                  ref={nodeRef}
+                  style={{ ...TRANSITION_STYLES[state] }}
+                />
               )}
             </Transition>
             {title && (
