@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.49.1](https://github.com/Royal-Navy/design-system/compare/2.49.0...2.49.1) (2021-05-17)
+
+
+### Bug Fixes
+
+* **DatePicker:** Do not style `--outside` days ([57938ff](https://github.com/Royal-Navy/design-system/commit/57938fff7e6a85d50323ec5238f257e3c7b3150c))
+* **SidebarE:** Tweak icon positioning ([265c46c](https://github.com/Royal-Navy/design-system/commit/265c46cb0212984a0ddda22d9b316784801ab13c))
+* **Timeline:** Reorder documented props ([4c5bdb7](https://github.com/Royal-Navy/design-system/commit/4c5bdb725b6fe996b16d97d12cc072809f223a14))
+
+
+
+
+
 # [2.49.0](https://github.com/Royal-Navy/design-system/compare/2.48.4...2.49.0) (2021-05-14)
 
 

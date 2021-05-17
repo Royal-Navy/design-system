@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.49.1](https://github.com/Royal-Navy/design-system/compare/2.49.0...2.49.1) (2021-05-17)
+
+
+### Bug Fixes
+
+* **DocsSite:** Remove SVG explicit width and heights ([ac25a99](https://github.com/Royal-Navy/design-system/commit/ac25a9930427c25f5ed0f771d5146dc6bafbad6d))
+* **DocsSite:** Resolve mobile styling issues ([b22c3fc](https://github.com/Royal-Navy/design-system/commit/b22c3fc83b8338810a146f2c9675ac0ccdcb48eb))
+
+
+
+
+
 # [2.49.0](https://github.com/Royal-Navy/design-system/compare/2.48.4...2.49.0) (2021-05-14)
 
 **Note:** Version bump only for package royalnavy.io
