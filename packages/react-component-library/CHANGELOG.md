@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.49.2](https://github.com/Royal-Navy/design-system/compare/2.49.1...2.49.2) (2021-05-18)
+
+
+### Bug Fixes
+
+* **Modal:** Resolve incorrect use of ButtonGroup wrapper ([aa764fa](https://github.com/Royal-Navy/design-system/commit/aa764fa322bdda88187e0a32111f1d62f60a9ad6))
+* **SidebarE:** Use explicit refs with `Transition` ([6aa14b2](https://github.com/Royal-Navy/design-system/commit/6aa14b28d1d81f1976a2aa79d6debea9f2960bb7))
+
+
+
+
+
 ## [2.49.1](https://github.com/Royal-Navy/design-system/compare/2.49.0...2.49.1) (2021-05-17)
 
 
