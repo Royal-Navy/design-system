@@ -14,7 +14,7 @@ export const StyledNavItemIcon = styled.div<StyledNavItemIconProps>`
   align-items: center;
   width: 100%;
   padding: 0.55rem 0;
-  justify-content: center;
+  justify-content: space-evenly;
 
   svg {
     width: 18px;
@@ -30,5 +30,6 @@ export const StyledNavItemIcon = styled.div<StyledNavItemIconProps>`
     isOpen &&
     css`
       width: auto;
+      padding: 0.55rem;
     `}
 `
