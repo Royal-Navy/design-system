@@ -6,4 +6,4 @@ export interface MainProps {
 
 export const Main: React.FC<MainProps> = ({ children }) => <>{children}</>
 
-Main.displayName = 'Main-Layout'
+Main.displayName = 'LayoutMain'
