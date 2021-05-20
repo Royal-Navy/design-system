@@ -224,6 +224,39 @@ jobs:
            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
+     Test-e2e_react-component-library:
+      runs-on: ubuntu-latest
+      needs: [Build_icon_library, Lint_react-component-library]
+      steps:
+        - name: Git clone repository
+          uses: actions/checkout@v2
+
+        - name: Cache Node modules
+          uses: actions/cache@v2
+          with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+        - name: Attach workspace
+          uses: actions/download-artifact@v2
+          with:
+            name: dist
+
+        - name: Unpack icon library & design tokens
+          run: |
+            tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
+
+        - name: Run e2e tests
+          uses: cypress-io/github-action@v2
+          env:
+            CHOKIDAR_USEPOLLING: 1
+          with:
+            project: ./packages/react-component-library
+            start: yarn --cwd packages/react-component-library storybook:test
+            wait-on: 'http://localhost:6006'
+            wait-on-timeout: 180
+
+
      Test_a11y:
        runs-on: ubuntu-latest
        needs: [Build_icon_library, Lint_react-component-library]
