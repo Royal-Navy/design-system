@@ -23,17 +23,21 @@ NOTE: As of `2.16.0` the [`styled-components`](https://github.com/styled-compone
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
-import '@royalnavy/css-framework/dist/style.css'
-import '@royalnavy/fonts'
-import { Button } from '@royalnavy/react-component-library'
+import { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
 
 function App() {
   return (
-    <Button variant="primary">
-      Hello, World!
-    </Button>
+    <GlobalStyleProvider>
+      <Button variant="primary">
+        Hello, World!
+      </Button>
+    </GlobalStyleProvider>
   )
 }
 
 ReactDOM.render(<App />, document.querySelector('#app'))
 ```
+
+## `<GlobalStyleProvider />`
+
+This context provider component applies global Royal Navy Design System styles to your application (resets, normalize and fonts). You should wrap the root of your app in this component.
