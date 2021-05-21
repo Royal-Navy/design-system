@@ -9,6 +9,7 @@ interface SidebarContextDefaults {
 
 interface SidebarProviderProps {
   children?: React.ReactNode
+  initialIsOpen?: boolean
 }
 
 const sidebarContextDefaults: SidebarContextDefaults = {
@@ -22,8 +23,9 @@ export const SidebarContext = createContext(sidebarContextDefaults)
 
 export const SidebarProvider: React.FC<SidebarProviderProps> = ({
   children,
+  initialIsOpen = false,
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [isOpen, setIsOpen] = useState<boolean>(initialIsOpen)
   const [hasMouseOver, setHasMouseOver] = useState<boolean>(false)
 
   return (

@@ -23,6 +23,19 @@ import {
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 
+const disableColorContrastRule = {
+  a11y: {
+    config: {
+      rules: [
+        {
+          id: 'color-contrast',
+          enabled: false,
+        },
+      ],
+    },
+  },
+}
+
 export default {
   component: SidebarE,
   subcomponents: {
@@ -99,6 +112,63 @@ export const Default: Story<SidebarEProps> = (props) => {
 }
 
 Default.args = {}
+
+export const InitiallyOpen: Story<SidebarEProps> = (props) => {
+  const sidebarNav = (
+    <SidebarNavE>
+      <SidebarNavItemE
+        icon={<IconHome />}
+        link={<Link href="#">Dashboard</Link>}
+      />
+      <SidebarNavItemE
+        icon={<IconVerifiedUser />}
+        link={<Link href="#">Reports</Link>}
+      />
+      <SidebarNavItemE
+        icon={<IconLocalShipping />}
+        link={<Link href="#">Platforms</Link>}
+      />
+      <SidebarNavItemE
+        icon={<IconFeedback />}
+        link={<Link href="#">Data&nbsp;Feed</Link>}
+      />
+      <SidebarNavItemE
+        isActive
+        icon={<IconMessage />}
+        link={<Link href="#">Messages</Link>}
+      />
+      <SidebarNavItemE
+        icon={<IconSettings />}
+        link={<Link href="#">Settings</Link>}
+      />
+    </SidebarNavE>
+  )
+
+  return (
+    <SidebarWrapperE>
+      <div style={{ maxHeight: '30rem' }}>
+        <StyledSidebarE {...props} initialIsOpen>
+          {sidebarNav}
+        </StyledSidebarE>
+      </div>
+      <main
+        style={{
+          padding: '2rem',
+          backgroundColor: '#c9c9c9',
+          width: '100%',
+        }}
+      >
+        Hello, World!
+      </main>
+    </SidebarWrapperE>
+  )
+}
+
+InitiallyOpen.args = {}
+
+InitiallyOpen.parameters = disableColorContrastRule
+
+InitiallyOpen.storyName = 'Initially open'
 
 export const WithSubNavigation: Story<SidebarEProps> = (props) => {
   const sidebarNavWithSub = (
