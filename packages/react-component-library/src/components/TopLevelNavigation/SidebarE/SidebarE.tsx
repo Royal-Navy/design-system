@@ -34,6 +34,10 @@ export interface SidebarEProps extends ComponentWithClass {
    * Optional JSX to render a collection of notifications.
    */
   notifications?: React.ReactElement<NotificationsProps>
+  /**
+   * Initial `isOpen` state on first render.
+   */
+  initialIsOpen?: boolean
 }
 
 export const SidebarE: React.FC<SidebarEProps> = ({
@@ -43,12 +47,13 @@ export const SidebarE: React.FC<SidebarEProps> = ({
   user,
   hasUnreadNotification,
   notifications,
+  initialIsOpen = false,
   ...rest
 }) => {
   const nodeRef = useRef(null)
 
   return (
-    <SidebarProvider>
+    <SidebarProvider initialIsOpen={initialIsOpen}>
       <SidebarContext.Consumer>
         {({ isOpen, hasMouseOver, setHasMouseOver }) => (
           <StyledSidebar
