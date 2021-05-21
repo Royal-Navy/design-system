@@ -13,6 +13,8 @@ export const StyledMain = styled.article`
   right: 0;
   bottom: 0;
   border-radius: 8px 8px 0 0;
+  max-height: 95vh;
+  overflow-y: scroll;
 
   ${mq({ gte: 'xs' })`
     border-radius: 5px;

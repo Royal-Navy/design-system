@@ -79,6 +79,17 @@ describe('Modal', () => {
         )
       })
 
+      it('should scroll on lower resolution screens', () => {
+        expect(wrapper.getByTestId('modal-main')).toHaveStyleRule(
+          'max-height',
+          '95vh'
+        )
+        expect(wrapper.getByTestId('modal-main')).toHaveStyleRule(
+          'overflow-y',
+          'scroll'
+        )
+      })
+
       it('should not render the Header component', () => {
         expect(wrapper.queryByTestId('modal-header')).toBeNull()
       })
