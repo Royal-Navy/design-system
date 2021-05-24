@@ -6,7 +6,6 @@ on:
       - master
   pull_request:
 
-
 jobs:
      NPM_smoketest:
       runs-on: ubuntu-latest
@@ -27,6 +26,12 @@ jobs:
 
         - name: Build design-tokens
           run: yarn --cwd packages/design-tokens build
+
+        - name: Build icon-library
+          run: yarn --cwd packages/icon-library build
+
+        - name: Build react-component-library
+          run: yarn --cwd packages/react-component-library build
 
         - name: Update CRA template to use local packages
           run: |
@@ -56,5 +61,3 @@ jobs:
            grep version node_modules/@royalnavy/**/package.json
            echo "SKIP_PREFLIGHT_CHECK=true" > .env  #workaround for babel-loader (8.2.2) CRA version issue
            yarn build
-
-
