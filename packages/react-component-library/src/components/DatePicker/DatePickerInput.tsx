@@ -80,7 +80,9 @@ export const DatePickerInput = forwardRef<
           onLocalBlur(e)
 
           const { value } = e.target as HTMLInputElement
-          checkNewDate(value)
+          if (value) {
+            checkNewDate(value)
+          }
 
           if (onBlur) {
             onBlur(e)
