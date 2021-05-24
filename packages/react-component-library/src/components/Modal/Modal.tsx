@@ -95,7 +95,7 @@ export const Modal: React.FC<ModalProps> = ({
       data-testid="modal-wrapper"
       {...rest}
     >
-      <StyledMain>
+      <StyledMain data-testid="modal-main">
         {title && (
           <Header
             titleId={modalTitleId}
