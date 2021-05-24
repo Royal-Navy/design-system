@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.50.0](https://github.com/Royal-Navy/design-system/compare/2.49.2...2.50.0) (2021-05-24)
+
+
+### Bug Fixes
+
+* **SidebarE:** Adjust expanded state icon positioning ([bd418e4](https://github.com/Royal-Navy/design-system/commit/bd418e4a6026fe5dc7b45e99e87681c10bc975f5))
+
+
+### Features
+
+* **SidebarE:** Add ability to set initial `isOpen` state ([222e61f](https://github.com/Royal-Navy/design-system/commit/222e61ff601d81f0d44ec6c04583816ed021b449))
+
+
+
+
+
 ## [2.49.2](https://github.com/Royal-Navy/design-system/compare/2.49.1...2.49.2) (2021-05-18)
 
 
