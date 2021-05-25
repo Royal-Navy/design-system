@@ -18,7 +18,7 @@ jobs:
             result=$(( gh issue list --repo Royal-Navy/design-system -l '⏱ Awaiting triage' ) 2>&1)
 
             slack_triage () {
-            curl -X POST -H 'Content-type: application/json' --data '{"text":"There are <'$TRIAGE_URL'|Triage issues> to review this morning"}' ${{ secrets.SLACK_WEBOOK }}
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"There are <'$TRIAGE_URL'|Triage issues> to review this morning"}' ${{ secrets.SLACK_WEBHOOK }}
             }
             slack_notriage () {
             curl -X POST -H 'Content-type: application/json' --data '{"text":"There are no issues to Triage this morning"}' ${{ secrets.SLACK_WEBHOOK }}
