@@ -1,6 +1,5 @@
-// Third party
 import { useToasts } from 'react-toast-notifications'
-import * as Icons from './icons' // deprecated
+import * as Icons from './icons' // Deprecated legacy icons
 
 export { Icons, useToasts }
 
@@ -9,6 +8,9 @@ export { Formik } from './components/Formik'
 
 // Enhancers
 export * from './enhancers'
+
+// Styled Components utility
+export * from './styled-components'
 
 // Components
 export * from './components/Alert'

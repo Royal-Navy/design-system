@@ -38,7 +38,8 @@
     "**/**/trim": "^0.0.3",
     "**/**/postcss": "^8.2.15",
     "**/**/postcss-scss": "^3.0.5",
-    "**/**/browserslist": "4.16.5"
+    "**/**/browserslist": "4.16.5",
+    "**/**/dns-packet": "^5.2.2"
   },
   "prettier": {
     "bracketSpacing": true,

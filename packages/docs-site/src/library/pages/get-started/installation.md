@@ -27,14 +27,14 @@ Here's a quick example of an application to get you started:
 <CodeHighlighter 
 source={`i${''}mport React from 'react'
 i${''}mport ReactDOM from 'react-dom'
-i${''}mport '@royalnavy/css-framework/dist/styles.css'
-i${''}mport '@royalnavy/fonts'
-i${''}mport { Button } from '@royalnavy/react-component-library'
+i${''}mport { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
 \nfunction App() {
   return (
-    <Button variant="primary">
-      Hello, World!
-    </Button>
+    <GlobalStyleProvider>
+      <Button variant="primary">
+        Hello, World!
+      </Button>
+    </GlobalStyleProvider>
   )
 }
 \nReactDOM.render(<App />, document.querySelector('#app'))`}

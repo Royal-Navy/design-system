@@ -34,24 +34,22 @@ module.exports = {
             },
           },
           {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: () => [
-                require('postcss-flexbugs-fixes'),
-                require('postcss-preset-env')({
-                  autoprefixer: {
-                    flexbox: 'no-2009',
-                  },
-                  stage: 3,
-                }),
-              ],
-            },
-          },
-          {
             loader: 'sass-loader',
             options: {
               implementation: require('sass'),
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  require('postcss-flexbugs-fixes'),
+                  require('autoprefixer')({
+                    flexbox: 'no-2009',
+                  }),
+                ],
+              },
             },
           },
         ],
@@ -59,6 +57,10 @@ module.exports = {
       {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf)$/,
+        use: ['url-loader?limit=100000'],
       },
     ],
   },

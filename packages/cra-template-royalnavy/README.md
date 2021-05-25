@@ -19,7 +19,7 @@ yarn create react-app my-app --template royalnavy
 ## Includes
 
 - TypeScript
-- SASS
+- styled-components + SASS
 - Apollo
 - Full `@royalnavy` suite of packages
 - ESLint, prettier and editorconfig configuration
