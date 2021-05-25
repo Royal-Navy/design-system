@@ -250,6 +250,7 @@ jobs:
           uses: cypress-io/github-action@v2
           env:
             CHOKIDAR_USEPOLLING: 1
+            CYPRESS_INSTALL_BINARY: 0
           with:
             project: ./packages/react-component-library
             start: yarn --cwd packages/react-component-library storybook:test
