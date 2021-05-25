@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.50.1](https://github.com/Royal-Navy/design-system/compare/2.50.0...2.50.1) (2021-05-25)
+
+
+### Bug Fixes
+
+* **DatePicker:** Fix error state when selecting ([eecaa55](https://github.com/Royal-Navy/design-system/commit/eecaa55bc08828768e839123c1f80940cf176b64))
+* **Modal:** Set `max-height` and `overflow-y` ([ba55ee6](https://github.com/Royal-Navy/design-system/commit/ba55ee68551407a2ea604cd020a771cda3b86b45))
+
+
+
+
+
 # [2.50.0](https://github.com/Royal-Navy/design-system/compare/2.49.2...2.50.0) (2021-05-24)
 
 
