@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.51.0](https://github.com/Royal-Navy/design-system/compare/2.50.1...2.51.0) (2021-05-26)
+
+
+### Bug Fixes
+
+* **CRATemplateRoyalNavy:** Set `SKIP_PREFLIGHT_CHECK` env var ([4eb7f9d](https://github.com/Royal-Navy/design-system/commit/4eb7f9d9099f10229244c8fc0b1819a9dec9e19a))
+
+
+### Features
+
+* **CRATemplateRoyalNavy:** Use styled-components over SASS ([3d732a7](https://github.com/Royal-Navy/design-system/commit/3d732a77b36042db5929caf53e25bd2455bb621e))
+* **StyledComponents:** Create `GlobalStyleProvider` ([1daaa95](https://github.com/Royal-Navy/design-system/commit/1daaa95afe40b73ed16cc08f29412784e81d60bf))
+
+
+
+
+
 ## [2.50.1](https://github.com/Royal-Navy/design-system/compare/2.50.0...2.50.1) (2021-05-25)
 
 
