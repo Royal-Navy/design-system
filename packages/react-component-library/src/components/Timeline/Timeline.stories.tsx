@@ -909,6 +909,7 @@ export const FullWidth = () => (
     <TimelineMonths />
     <TimelineWeeks />
     <TimelineDays />
+    <TimelineHours />
     <TimelineRows>
       <TimelineRow name="Row 1">
         <TimelineEvents>

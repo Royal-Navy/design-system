@@ -2,8 +2,9 @@ import React, { useContext } from 'react'
 
 import { getKey } from '../../helpers'
 import { StyledHours } from './partials/StyledHours'
-import { TIMELINE_BLOCK_SIZE } from './constants'
+import { DISPLAY_THRESHOLDS, TIMELINE_BLOCK_SIZE } from './constants'
 import { TimelineContext } from './context'
+import { TimelineColumnHeader } from './TimelineColumnHeader'
 import { TimelineHour } from './TimelineHour'
 import { TimelineHeaderRow } from './TimelineHeaderRow'
 
@@ -35,10 +36,34 @@ export type TimelineHoursProps =
 export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
   const { state } = useContext(TimelineContext)
   const { currentScaleOption, days, hours } = state
+  const isBelowThreshold =
+    currentScaleOption.widths.hour < DISPLAY_THRESHOLDS.HOUR
 
   if (!hours || hours.length === 1) {
     return null
   }
+
+  const rowChildren = isBelowThreshold ? (
+    <TimelineColumnHeader
+      aria-label="No hours"
+      data-testid="timeline-no-hours"
+    />
+  ) : (
+    <StyledHours>
+      {days.map(({ date }) => {
+        return hours.map(({ hourIndex, time }) => (
+          <TimelineHour
+            date={date}
+            key={getKey('timeline-hour', `${date.toString()}-${hourIndex}`)}
+            render={render}
+            time={time}
+            timelineEndDate={currentScaleOption.to}
+            width={currentScaleOption.widths.hour}
+          />
+        ))
+      })}
+    </StyledHours>
+  )
 
   return (
     <TimelineHeaderRow
@@ -47,20 +72,7 @@ export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
       name="Hours"
       data-testid="timeline-hours"
     >
-      <StyledHours>
-        {days.map(({ date }) => {
-          return hours.map(({ hourIndex, time }) => (
-            <TimelineHour
-              date={date}
-              key={getKey('timeline-hour', `${date.toString()}-${hourIndex}`)}
-              render={render}
-              time={time}
-              timelineEndDate={currentScaleOption.to}
-              width={currentScaleOption.widths.hour}
-            />
-          ))
-        })}
-      </StyledHours>
+      {rowChildren}
     </TimelineHeaderRow>
   )
 }

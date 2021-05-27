@@ -6,6 +6,8 @@ import { StyledWeeks } from './partials/StyledWeeks'
 import { TimelineContext } from './context'
 import { TimelineHeaderRow } from './TimelineHeaderRow'
 import { TimelineWeek } from './TimelineWeek'
+import { DISPLAY_THRESHOLDS } from './constants'
+import { TimelineColumnHeader } from './TimelineColumnHeader'
 
 export interface TimelineWeeksWithRenderContentProps
   extends ComponentWithClass {
@@ -39,6 +41,29 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({
     state: { currentScaleOption, days, weeks },
   } = useContext(TimelineContext)
 
+  const isBelowThreshold =
+    currentScaleOption.widths.day * 7 < DISPLAY_THRESHOLDS.WEEK
+
+  const rowChildren = isBelowThreshold ? (
+    <TimelineColumnHeader
+      aria-label="No weeks"
+      data-testid="timeline-no-weeks"
+    />
+  ) : (
+    <StyledWeeks>
+      {weeks.map(({ startDate }, index) => (
+        <TimelineWeek
+          days={days}
+          dayWidth={currentScaleOption.widths.day}
+          index={index}
+          key={getKey('timeline-week', startDate.toString())}
+          render={render}
+          startDate={startDate}
+        />
+      ))}
+    </StyledWeeks>
+  )
+
   return (
     <TimelineHeaderRow
       className="timeline__weeks"
@@ -47,18 +72,7 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({
       data-testid="timeline-weeks"
       {...rest}
     >
-      <StyledWeeks>
-        {weeks.map(({ startDate }, index) => (
-          <TimelineWeek
-            days={days}
-            dayWidth={currentScaleOption.widths.day}
-            index={index}
-            key={getKey('timeline-week', startDate.toString())}
-            render={render}
-            startDate={startDate}
-          />
-        ))}
-      </StyledWeeks>
+      {rowChildren}
     </TimelineHeaderRow>
   )
 }
