@@ -21,7 +21,6 @@ export const SidebarSubNav: React.FC<Nav<SidebarNavItemEProps>> = ({
           icon={<IconMoreVert />}
         />
       }
-      placement={SHEET_PLACEMENT.RIGHT_TOP}
       width={SHEET_WIDTH}
       exitTiming={0}
       data-testid="sidebar-sub-nav"

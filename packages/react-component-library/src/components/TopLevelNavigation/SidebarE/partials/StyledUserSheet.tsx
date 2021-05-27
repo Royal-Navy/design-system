@@ -8,7 +8,7 @@ const { color } = selectors
 
 export const StyledUserSheet = styled(Sheet)`
   ${StyledFloatingBox} {
-    margin-left: 1px;
+    transform: translate(55px, calc(-100% + 10px));
 
     ol {
       list-style-type: none;

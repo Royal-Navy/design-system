@@ -11,7 +11,7 @@ export const StyledSubNavSheet = styled(Sheet)`
   display: flex;
 
   ${StyledFloatingBox} {
-    margin-left: ${spacing('3')};
+    transform: translateX(20px);
 
     ol {
       list-style-type: none;
