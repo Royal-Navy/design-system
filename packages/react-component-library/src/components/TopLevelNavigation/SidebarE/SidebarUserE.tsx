@@ -27,6 +27,9 @@ export interface SidebarUserEProps extends ComponentWithClass {
    * Link component to apply to the exit icon.
    */
   exitLink?: React.ReactElement<LinkTypes>
+  /**
+   * Full name of the end user (e.g. Joe Bloggs).
+   */
   name?: string
 }
 
