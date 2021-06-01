@@ -30,7 +30,9 @@ export function useSheet(
     const element: any = event.currentTarget
     element.blur()
 
-    setPosition(calculate[placement](element, width))
+    if (placement) {
+      setPosition(calculate[placement](element, width))
+    }
 
     toggle(event)
   }

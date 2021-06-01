@@ -6,7 +6,6 @@ import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { LinkTypes } from '../../../common/Link'
 import { SidebarContext } from './context'
 import { SidebarUserItemE } from './SidebarUserItemE'
-import { SHEET_PLACEMENT } from '../Sheet/constants'
 import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
 import { StyledUserAvatar } from './partials/StyledUserAvatar'
 import { StyledUserSheet } from './partials/StyledUserSheet'
@@ -28,6 +27,9 @@ export interface SidebarUserEProps extends ComponentWithClass {
    * Link component to apply to the exit icon.
    */
   exitLink?: React.ReactElement<LinkTypes>
+  /**
+   * Full name of the end user (e.g. Joe Bloggs).
+   */
   name?: string
 }
 
@@ -50,7 +52,6 @@ const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
         }
       />
     }
-    placement={SHEET_PLACEMENT.RIGHT_BOTTOM}
     width={SHEET_WIDTH}
   >
     <ol>

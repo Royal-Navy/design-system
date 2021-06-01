@@ -49,7 +49,7 @@ export const Sheet: React.FC<SheetProps> = ({
   className,
   onShow,
   onHide,
-  placement = SHEET_PLACEMENT.RIGHT_BOTTOM,
+  placement,
   width,
   enterTiming = 300,
   exitTiming = 300,
