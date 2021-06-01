@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactSelect, { Props as ReactSelectProps } from 'react-select'
 
 import { DropdownIndicator } from '../Dropdown/DropdownIndicator'
@@ -12,6 +12,7 @@ import { StyledMenu } from './partials/StyledMenu'
 import { StyledValueContainer } from './partials/StyledValueContainer'
 import { StyledIndicatorSeparator } from './partials/StyledIndicatorSeparator'
 import { StyledControl } from './partials/StyledControl'
+import { useSelectedOption } from './useSelectedOption'
 
 export interface SelectProps
   extends ReactSelectProps<any>,
@@ -48,9 +49,12 @@ export const Select: React.FC<SelectProps> = ({
   defaultMenuIsOpen,
   ...rest
 }) => {
+  const { selectedOption, setSelectedValue } = useSelectedOption(options, value)
+
   const onSelectChange = (option: any) => {
     const selectedValue =
       option && option.value !== undefined ? option.value : null
+    setSelectedValue(selectedValue)
 
     onChange({
       target: {
@@ -59,8 +63,6 @@ export const Select: React.FC<SelectProps> = ({
       },
     })
   }
-
-  const selectedOption = options.find((option) => option.value === value)
 
   return (
     <ReactSelect
