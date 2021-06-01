@@ -11,7 +11,7 @@ import Bucket from '../../../components/presenters/bucket'
 
 <div className="bucket__container">
   <Bucket type="sketch" url="https://docs.royalnavy.io/design-system.sketch" />
-  <Bucket type="storybook" url="https://storybook.royalnavy.io/?path=/docs/ button-group--default" />
+  <Bucket type="storybook" url="https://storybook.royalnavy.io/?path=/docs/button-group--default" />
 </div>
 
 # Overview
