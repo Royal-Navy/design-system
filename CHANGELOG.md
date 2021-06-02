@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.51.1](https://github.com/Royal-Navy/design-system/compare/2.51.0...2.51.1) (2021-06-02)
+
+
+### Bug Fixes
+
+* **SidebarE:** Resolve `Sheet` positioning issues ([42a7643](https://github.com/Royal-Navy/design-system/commit/42a7643004e3bc51e4dfaf12295d9fc2290f3aba))
+
+
+
+
+
 # [2.51.0](https://github.com/Royal-Navy/design-system/compare/2.50.1...2.51.0) (2021-05-26)
 
 
