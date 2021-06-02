@@ -2,7 +2,6 @@ import React, { createContext } from 'react'
 import { createGlobalStyle } from 'styled-components'
 import { Normalize } from 'styled-normalize'
 import { selectors, BreakpointSize } from '@royalnavy/design-tokens'
-import '@royalnavy/fonts'
 
 interface GlobalStyleContextDefaults {
   theme?: string

@@ -23,6 +23,7 @@ NOTE: As of `2.16.0` the [`styled-components`](https://github.com/styled-compone
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
+import '@royalnavy/fonts'
 import { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
 
 function App() {

@@ -27,6 +27,7 @@ Here's a quick example of an application to get you started:
 <CodeHighlighter 
 source={`i${''}mport React from 'react'
 i${''}mport ReactDOM from 'react-dom'
+i${''}mport '@royalnavy/fonts'
 i${''}mport { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
 \nfunction App() {
   return (
