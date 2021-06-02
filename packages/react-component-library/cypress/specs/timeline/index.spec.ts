@@ -1,3 +1,4 @@
+import { describe, cy, it, before } from 'local-cypress'
 import { DEFAULTS } from '../../../src/components/Timeline/constants'
 import selectors from '../../selectors'
 
