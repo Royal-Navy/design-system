@@ -10,8 +10,10 @@ const NODE_CURRENT = {
  * Handle document click
  * @param nodes - if the click is inside a node then document click event will
  * not be raised
+ *
  * @param onDocumentClick - if the click is outside of nodes then the callback
  * will be raised
+ *
  * @param deps - monitored for change when assigning the document click
  */
 export function useDocumentClick(

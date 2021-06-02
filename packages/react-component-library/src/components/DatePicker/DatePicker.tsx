@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
+import { Placement } from '@popperjs/core'
 import { v4 as uuidv4 } from 'uuid'
 import {
   DateUtils,
@@ -7,31 +8,38 @@ import {
   RangeModifier,
 } from 'react-day-picker'
 
+import {
+  FLOATING_BOX_PLACEMENT,
+  FLOATING_BOX_SCHEME,
+} from '../../primitives/FloatingBox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
-import { DATEPICKER_PLACEMENT, DATEPICKER_PLACEMENTS } from '.'
+import { DATEPICKER_PLACEMENT } from './constants'
 import { DatePickerInput } from './DatePickerInput'
 import { DropdownIndicatorIcon } from '../Dropdown/DropdownIndicatorIcon'
-import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
+import { FloatingBoxContent } from '../../primitives/FloatingBox/FloatingBoxContent'
 import { getId, hasClass } from '../../helpers'
 import { InputValidationProps } from '../../common/InputValidationProps'
-import { StyledDatePicker } from './partials/StyledDatePicker'
-import { StyledDayPicker } from './partials/StyledDayPicker'
-import { StyledFloatingBox } from './partials/StyledFloatingBox'
-import { StyledTetherComponent } from './partials/StyledTetherComponent'
+import { StyledArrow } from '../../primitives/FloatingBox/partials/StyledArrow'
+import { StyledButton } from './partials/StyledButton'
 import { StyledDatePickerInput } from './partials/StyledDatePickerInput'
-import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
+import { StyledDayPicker } from './partials/StyledDayPicker'
+import { StyledFloatingBox } from '../../primitives/FloatingBox/partials/StyledFloatingBox'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledLabel } from './partials/StyledLabel'
-import { StyledButton } from './partials/StyledButton'
+import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledSeparator } from './partials/StyledSeparator'
 import { useDatePickerOpenClose } from './useDatePickerOpenClose'
+import { useFloatingElement } from '../../hooks/useFloatingElement'
 
 export interface StateObject {
   from?: Date
   to?: Date
 }
 
+/**
+ * @deprecated
+ */
 export type DatePickerPlacement =
   | typeof DATEPICKER_PLACEMENT.ABOVE
   | typeof DATEPICKER_PLACEMENT.BELOW
@@ -78,10 +86,6 @@ export interface DatePickerProps
    */
   onChange?: (data: { startDate: Date; endDate: Date }) => void
   /**
-   * Position to display the picker relative to the input.
-   */
-  placement?: DatePickerPlacement
-  /**
    * Start date of the picker (the first date selected by end user).
    */
   startDate?: Date
@@ -102,6 +106,11 @@ export interface DatePickerProps
    * Optional month from which to display the picker calendar on first render.
    */
   initialMonth?: DayPickerProps['initialMonth']
+  /**
+   * Position to display the picker relative to the input.
+   * NOTE: This is now calculated automatically by default based on available screen real-estate.
+   */
+  placement?: DatePickerPlacement | Placement
 }
 
 function getNewState(
@@ -131,16 +140,14 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   isValid,
   label = 'Select Date',
   onChange,
-  placement = DATEPICKER_PLACEMENT.BELOW,
   startDate,
   value,
   isOpen,
   disabledDays,
   initialMonth,
+  placement = FLOATING_BOX_PLACEMENT.BOTTOM,
   ...rest
 }) => {
-  const componentRef = useRef(null)
-
   const {
     floatingBoxChildrenRef,
     handleOnClose,
@@ -179,122 +186,134 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   }
 
   const hasContent = !!((value && value.length) || from)
-  const PLACEMENTS = DATEPICKER_PLACEMENTS[placement]
 
   const titleId = getId('datepicker-title')
   const contentId = getId('day-picker')
 
+  const placeholder = isRange ? null : datePickerFormat.toLowerCase()
+
   /**
-   * Type error in upstream Tether package. Fix submitted.
-   * Using createElement allows us to avoid the type error.
-   *
-   * https://github.com/danreeves/react-tether/issues/218
-   * https://github.com/Microsoft/TypeScript/issues/27552
+   * Maintain compatability with legacy interface
    */
+  const legacyPlacementMap = {
+    above: 'top',
+    below: 'bottom',
+  }
+
+  const {
+    targetElementRef,
+    floatingElementRef,
+    arrowElementRef,
+    styles,
+    attributes,
+  } = useFloatingElement(legacyPlacementMap[placement] || placement)
+
   return (
-    <StyledDatePicker ref={componentRef} data-testid="datepicker-wrapper">
-      {/*
-        // @ts-ignore */}
-      {React.createElement(StyledTetherComponent, {
-        offset: PLACEMENTS.OFFSET,
-        attachment: PLACEMENTS.ATTACHMENT,
-        targetAttachment: PLACEMENTS.TARGET_ATTACHMENT,
-        $isVisible: open,
-        renderTarget: (ref: React.RefObject<HTMLDivElement>) => {
-          const placeholder = isRange ? null : datePickerFormat.toLowerCase()
-          return (
-            <StyledDatePickerInput
-              className={className}
-              ref={ref}
-              data-testid="datepicker-input-wrapper"
-              $isDisabled={isDisabled}
+    <>
+      <StyledDatePickerInput
+        className={className}
+        data-testid="datepicker-input-wrapper"
+        $isDisabled={isDisabled}
+        ref={targetElementRef}
+      >
+        <StyledOuterWrapper
+          data-testid="datepicker-outer-wrapper"
+          $hasFocus={open}
+          $isInvalid={hasError}
+          $isValid={isValid || hasClass(className, 'is-valid')}
+        >
+          <StyledInputWrapper>
+            <StyledLabel
+              id={titleId}
+              $isOpen={open}
+              $hasContent={hasContent}
+              $hasPlaceholder={!!placeholder}
+              htmlFor={id}
+              data-testid="datepicker-label"
             >
-              <StyledOuterWrapper
-                data-testid="datepicker-outer-wrapper"
-                $hasFocus={open}
-                $isInvalid={hasError}
-                $isValid={isValid || hasClass(className, 'is-valid')}
-              >
-                <StyledInputWrapper>
-                  <StyledLabel
-                    $isOpen={open}
-                    $hasContent={hasContent}
-                    $hasPlaceholder={!!placeholder}
-                    htmlFor={id}
-                    data-testid="datepicker-label"
-                  >
-                    {label}
-                  </StyledLabel>
-                  <DatePickerInput
-                    disabledDays={disabledDays}
-                    id={id}
-                    isDisabled={isDisabled}
-                    isRange={isRange}
-                    format={datePickerFormat}
-                    from={from}
-                    onComplete={handleOnClose}
-                    onDayChange={(day: Date) => {
-                      setCurrentMonth(day)
-                      handleDayClick(day)
-                    }}
-                    onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
-                      if (!isRange) {
-                        e.target.select()
-                      }
-                      handleOnFocus(e)
-                    }}
-                    placeholder={placeholder}
-                    ref={inputRef}
-                    setHasError={setHasError}
-                    to={to}
-                    {...rest}
-                  />
-                </StyledInputWrapper>
-                <StyledButton
-                  aria-expanded={!!open}
-                  aria-label={`${open ? 'Hide' : 'Show'} day picker`}
-                  aria-owns={contentId}
-                  ref={inputButtonRef}
-                  type="button"
-                  onClick={open ? handleOnClose : handleOnFocus}
-                  disabled={isDisabled}
-                  data-testid="datepicker-input-button"
-                >
-                  <StyledSeparator />
-                  <DropdownIndicatorIcon isOpen={open} />
-                </StyledButton>
-              </StyledOuterWrapper>
-            </StyledDatePickerInput>
-          )
-        },
-        renderElement: (ref: React.RefObject<HTMLDivElement>) => (
-          <StyledFloatingBox
-            contentId={contentId}
-            ref={ref}
-            position={PLACEMENTS.ARROW_POSITION}
-            scheme={FLOATING_BOX_SCHEME.LIGHT}
-            $isVisible={open}
-            role="dialog"
-            aria-modal
-            aria-labelledby={titleId}
-            aria-live="polite"
+              {label}
+            </StyledLabel>
+            <DatePickerInput
+              disabledDays={disabledDays}
+              id={id}
+              isDisabled={isDisabled}
+              isRange={isRange}
+              format={datePickerFormat}
+              from={from}
+              onComplete={handleOnClose}
+              onDayChange={(day: Date) => {
+                setCurrentMonth(day)
+                handleDayClick(day)
+              }}
+              onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
+                if (!isRange) {
+                  e.target.select()
+                }
+                handleOnFocus(e)
+              }}
+              placeholder={placeholder}
+              ref={inputRef}
+              setHasError={setHasError}
+              to={to}
+              {...rest}
+            />
+          </StyledInputWrapper>
+          <StyledButton
+            aria-expanded={!!open}
+            aria-label={`${open ? 'Hide' : 'Show'} day picker`}
+            aria-owns={contentId}
+            ref={inputButtonRef}
+            type="button"
+            onClick={open ? handleOnClose : handleOnFocus}
+            disabled={isDisabled}
+            data-testid="datepicker-input-button"
           >
-            <div ref={floatingBoxChildrenRef}>
-              <StyledDayPicker
-                numberOfMonths={isRange ? 2 : 1}
-                selectedDays={[from, { from, to }]}
-                modifiers={modifiers}
-                month={currentMonth}
-                onDayClick={handleDayClick}
-                initialMonth={startDate || initialMonth}
-                disabledDays={disabledDays}
-                $isRange={isRange}
-              />
-            </div>
-          </StyledFloatingBox>
-        ),
-      })}
-    </StyledDatePicker>
+            <StyledSeparator />
+            <DropdownIndicatorIcon isOpen={open} />
+          </StyledButton>
+        </StyledOuterWrapper>
+      </StyledDatePickerInput>
+      <StyledFloatingBox
+        ref={floatingElementRef}
+        role="dialog"
+        data-testid="floating-box"
+        aria-modal
+        aria-labelledby={titleId}
+        aria-live="polite"
+        $isVisible={open}
+        style={styles.popper}
+        {...attributes.popper}
+        {...rest}
+      >
+        <FloatingBoxContent
+          contentId={contentId}
+          scheme={FLOATING_BOX_SCHEME.LIGHT}
+          data-testid="floating-box-content"
+        >
+          <StyledArrow
+            $placement={
+              attributes?.popper?.['data-popper-placement'] as Placement
+            }
+            ref={arrowElementRef}
+            style={styles.arrow}
+            {...attributes.arrow}
+          />
+          <div ref={floatingBoxChildrenRef}>
+            <StyledDayPicker
+              numberOfMonths={isRange ? 2 : 1}
+              selectedDays={[from, { from, to }]}
+              modifiers={modifiers}
+              month={currentMonth}
+              onDayClick={handleDayClick}
+              initialMonth={startDate || initialMonth}
+              disabledDays={disabledDays}
+              $isRange={isRange}
+              $isVisible={open}
+            />
+          </div>
+        </FloatingBoxContent>
+      </StyledFloatingBox>
+    </>
   )
 }
 
