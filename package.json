@@ -40,7 +40,8 @@
     "**/**/postcss-scss": "^3.0.5",
     "**/**/browserslist": "4.16.5",
     "**/**/dns-packet": "^5.2.2",
-    "**/**/typescript": "4.2.2"
+    "**/**/typescript": "4.2.2",
+    "**/**/ws": "^7.4.6"
   },
   "prettier": {
     "bracketSpacing": true,
