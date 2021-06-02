@@ -11,8 +11,6 @@ import { StyledWeekTitle } from './partials/StyledWeekTitle'
 import { StyledWeek } from './partials/StyledWeek'
 import { TimelineDay } from './context/types'
 
-const WEEK_DISPLAY_THRESHOLD = 50
-
 interface TimelineWeekProps {
   days: TimelineDay[]
   dayWidth: number
@@ -82,10 +80,6 @@ export const TimelineWeek: React.FC<TimelineWeekProps> = ({
   startDate,
   ...rest
 }) => {
-  if (dayWidth * 7 < WEEK_DISPLAY_THRESHOLD) {
-    return null
-  }
-
   const isOddNumber = isOdd(index)
   const { widthPx, daysTotal } = getWidth(startDate, days, dayWidth)
 

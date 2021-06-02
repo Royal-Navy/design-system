@@ -5,8 +5,6 @@ import { DATE_DAY_FORMAT } from './constants'
 import { StyledDay } from './partials/StyledDay'
 import { StyledDayTitle } from './partials/StyledDayTitle'
 
-const DAY_DISPLAY_THRESHOLD = 20
-
 interface TimelineDayProps {
   date: Date
   dayWidth: number
@@ -33,7 +31,7 @@ export const TimelineDay: React.FC<TimelineDayProps> = ({
   timelineEndDate,
   ...rest
 }) => {
-  if (isAfter(date, timelineEndDate) || dayWidth < DAY_DISPLAY_THRESHOLD) {
+  if (isAfter(date, timelineEndDate)) {
     return null
   }
 

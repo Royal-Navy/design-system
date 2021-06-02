@@ -1725,6 +1725,13 @@ describe('Timeline', () => {
       expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(0)
     })
 
+    it('should render a no hours column header', () => {
+      expect(wrapper.getByTestId('timeline-no-hours')).toHaveAttribute(
+        'aria-label',
+        'No hours'
+      )
+    })
+
     describe('and then zooming out once (year view)', () => {
       beforeEach(() => {
         wrapper.getByTestId('timeline-toolbar-zoom-out').click()
@@ -1734,16 +1741,37 @@ describe('Timeline', () => {
         expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(12)
       })
 
-      it('should render weeks', () => {
+      it('should not render weeks', () => {
         expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(0)
       })
 
-      it('should render days', () => {
+      it('should render a no weeks column header', () => {
+        expect(wrapper.getByTestId('timeline-no-weeks')).toHaveAttribute(
+          'aria-label',
+          'No weeks'
+        )
+      })
+
+      it('should not render days', () => {
         expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(0)
+      })
+
+      it('should render a no days column header', () => {
+        expect(wrapper.getByTestId('timeline-no-days')).toHaveAttribute(
+          'aria-label',
+          'No days'
+        )
       })
 
       it('should not render hours', () => {
         expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(0)
+      })
+
+      it('should render a no hours column header', () => {
+        expect(wrapper.getByTestId('timeline-no-hours')).toHaveAttribute(
+          'aria-label',
+          'No hours'
+        )
       })
     })
 
@@ -1757,16 +1785,37 @@ describe('Timeline', () => {
         expect(wrapper.queryAllByTestId('timeline-month')).toHaveLength(60)
       })
 
-      it('should render weeks', () => {
+      it('should not render weeks', () => {
         expect(wrapper.queryAllByTestId('timeline-week')).toHaveLength(0)
       })
 
-      it('should render days', () => {
+      it('should render a no weeks column header', () => {
+        expect(wrapper.getByTestId('timeline-no-weeks')).toHaveAttribute(
+          'aria-label',
+          'No weeks'
+        )
+      })
+
+      it('should not render days', () => {
         expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(0)
+      })
+
+      it('should render a no days column header', () => {
+        expect(wrapper.getByTestId('timeline-no-days')).toHaveAttribute(
+          'aria-label',
+          'No days'
+        )
       })
 
       it('should not render hours', () => {
         expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(0)
+      })
+
+      it('should render a no hours column header', () => {
+        expect(wrapper.getByTestId('timeline-no-hours')).toHaveAttribute(
+          'aria-label',
+          'No hours'
+        )
       })
     })
 
@@ -1787,7 +1836,7 @@ describe('Timeline', () => {
         expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(7)
       })
 
-      it('should not render hours', () => {
+      it('should render hours', () => {
         expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(28)
       })
     })
@@ -1810,7 +1859,7 @@ describe('Timeline', () => {
         expect(wrapper.queryAllByTestId('timeline-day')).toHaveLength(5)
       })
 
-      it('should not render hours', () => {
+      it('should render hours', () => {
         expect(wrapper.queryAllByTestId('timeline-hour')).toHaveLength(20)
       })
     })
