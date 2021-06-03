@@ -1,19 +1,17 @@
 import React from 'react'
 import { IconMoreVert } from '@royalnavy/icon-library'
 
-import { SHEET_PLACEMENT } from '../Sheet/constants'
 import { Nav } from '../../../common/Nav'
 import { SidebarNavItemEProps } from './SidebarNavItemE'
-import { StyledSubNavSheet } from './partials/StyledSubNavSheet'
+import { Sheet } from '../Sheet/Sheet'
+import { StyledSheetList } from './partials/StyledSheetList'
 import { StyledSubNavSheetButton } from './partials/StyledSubNavSheetButton'
-
-const SHEET_WIDTH = 200
 
 export const SidebarSubNav: React.FC<Nav<SidebarNavItemEProps>> = ({
   children,
 }) => {
   return (
-    <StyledSubNavSheet
+    <Sheet
       button={
         <StyledSubNavSheetButton
           aria-label="Expand sub-menu"
@@ -21,12 +19,12 @@ export const SidebarSubNav: React.FC<Nav<SidebarNavItemEProps>> = ({
           icon={<IconMoreVert />}
         />
       }
-      width={SHEET_WIDTH}
-      exitTiming={0}
       data-testid="sidebar-sub-nav"
+      placement="right"
+      closeDelay={0}
     >
-      <ol>{children}</ol>
-    </StyledSubNavSheet>
+      <StyledSheetList>{children}</StyledSheetList>
+    </Sheet>
   )
 }
 

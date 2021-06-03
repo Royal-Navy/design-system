@@ -7,10 +7,11 @@ import { LinkTypes } from '../../../common/Link'
 import { SidebarContext } from './context'
 import { SidebarUserItemE } from './SidebarUserItemE'
 import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
+import { Sheet } from '../Sheet/Sheet'
 import { StyledUserAvatar } from './partials/StyledUserAvatar'
-import { StyledUserSheet } from './partials/StyledUserSheet'
 import { StyledUserSheetButton } from './partials/StyledUserSheetButton'
 import { StyledUser } from './partials/StyledUser'
+import { StyledSheetList } from './partials/StyledSheetList'
 import { StyledUserText } from './partials/StyledUserText'
 
 export interface SidebarUserEProps extends ComponentWithClass {
@@ -35,14 +36,12 @@ export interface SidebarUserEProps extends ComponentWithClass {
 
 type SidebarAvatarWithItemsProps = Omit<SidebarUserEProps, 'link'>
 
-const SHEET_WIDTH = 106
-
 const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
   initials,
   userLink,
   exitLink,
 }) => (
-  <StyledUserSheet
+  <Sheet
     button={
       <StyledUserSheetButton
         aria-label="Show user options"
@@ -52,15 +51,15 @@ const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
         }
       />
     }
-    width={SHEET_WIDTH}
+    placement="right"
   >
-    <ol>
+    <StyledSheetList>
       {userLink && <SidebarUserItemE icon={<IconPerson />} link={userLink} />}
       {exitLink && (
         <SidebarUserItemE icon={<IconExitToApp />} link={exitLink} />
       )}
-    </ol>
-  </StyledUserSheet>
+    </StyledSheetList>
+  </Sheet>
 )
 
 export const SidebarUserE: React.FC<SidebarUserEProps> = ({

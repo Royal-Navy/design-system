@@ -1,14 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 
 import { Bell, Logo as DefaultLogo, Search as SearchIcon } from '../../../icons'
 import { LinkTypes } from '../../../common/Link'
 import { MastheadUserProps } from './index'
 import { Nav, NavItem } from '../../../common/Nav'
-import {
-  NOTIFICATION_CONTAINER_WIDTH,
-  NotificationsProps,
-} from '../NotificationPanel'
-import { SHEET_PLACEMENT } from '../Sheet/constants'
+import { NotificationsProps } from '../NotificationPanel'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
 import { useMastheadSearch } from './useMastheadSearch'
@@ -101,7 +97,6 @@ export const Masthead: React.FC<MastheadProps> = ({
   user,
   ...rest
 }) => {
-  const [showNotifications, setShowNotifications] = useState(false)
   const searchButtonRef = useRef<HTMLButtonElement>(null)
 
   const {
@@ -120,13 +115,7 @@ export const Masthead: React.FC<MastheadProps> = ({
   }
 
   return (
-    <StyledMastHead
-      $showNotifications={showNotifications}
-      $showSearch={showSearch}
-      data-testid="masthead"
-      ref={mastheadContainerRef}
-      {...rest}
-    >
+    <StyledMastHead data-testid="masthead" ref={mastheadContainerRef} {...rest}>
       <StyledMain>
         <StyledBanner data-testid="masthead-banner" role="banner">
           {getServiceName(homeLink, DisplayLogo, title)}
@@ -168,10 +157,7 @@ export const Masthead: React.FC<MastheadProps> = ({
                   )}
                 </StyledOption>
               }
-              placement={SHEET_PLACEMENT.BELOW}
-              width={NOTIFICATION_CONTAINER_WIDTH}
-              onHide={() => setShowNotifications(false)}
-              onShow={() => setShowNotifications(true)}
+              placement="bottom"
             >
               {notifications}
             </Sheet>

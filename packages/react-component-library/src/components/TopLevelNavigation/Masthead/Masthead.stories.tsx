@@ -44,23 +44,23 @@ export const Default: Story<MastheadProps> = (props) => {
         action="added a new comment to your"
         on="review"
         when={new Date('2019-11-05T14:25:02.178Z')}
-        description="Hello, World!"
+        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
       />
       <Notification
         link={<Link href="#" />}
         name="Thomas Stephens"
         action="added a new comment to your"
         on="review"
-        when={new Date('2019-11-01T14:25:02.178Z')}
-        description="Hello, World!"
+        when={new Date('2019-11-05T14:25:02.178Z')}
+        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
       />
       <Notification
         link={<Link href="#" />}
         name="Thomas Stephens"
         action="added a new comment to your"
         on="review"
-        when={new Date('2019-11-01T14:25:02.178Z')}
-        description="Hello, World!"
+        when={new Date('2019-11-05T14:25:02.178Z')}
+        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
       />
     </Notifications>
   )
@@ -208,23 +208,23 @@ export const WithNotifications: Story<MastheadProps> = (props) => {
         action="added a new comment to your"
         on="review"
         when={new Date('2019-11-05T14:25:02.178Z')}
-        description="Hello, World!"
+        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
       />
       <Notification
         link={<Link href="#" />}
         name="Thomas Stephens"
         action="added a new comment to your"
         on="review"
-        when={new Date('2019-11-01T14:25:02.178Z')}
-        description="Hello, World!"
+        when={new Date('2019-11-05T14:25:02.178Z')}
+        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
       />
       <Notification
         link={<Link href="#" />}
         name="Thomas Stephens"
         action="added a new comment to your"
         on="review"
-        when={new Date('2019-11-01T14:25:02.178Z')}
-        description="Hello, World!"
+        when={new Date('2019-11-05T14:25:02.178Z')}
+        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
       />
     </Notifications>
   )

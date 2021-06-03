@@ -327,8 +327,8 @@ describe('SidebarE', () => {
 
           it('should not show the links', () => {
             return waitFor(() => {
-              expect(wrapper.queryByText('Profile')).toBeNull()
-              expect(wrapper.queryByText('Logout')).toBeNull()
+              expect(wrapper.queryByText('Profile')).not.toBeVisible()
+              expect(wrapper.queryByText('Logout')).not.toBeVisible()
             })
           })
 
@@ -345,8 +345,8 @@ describe('SidebarE', () => {
 
             it('should not show the links', () => {
               return waitFor(() => {
-                expect(wrapper.queryByText('Profile')).toBeNull()
-                expect(wrapper.queryByText('Logout')).toBeNull()
+                expect(wrapper.queryByText('Profile')).not.toBeVisible()
+                expect(wrapper.queryByText('Logout')).not.toBeVisible()
               })
             })
           })
@@ -453,8 +453,8 @@ describe('SidebarE', () => {
 
           it('should not show the notifications', () => {
             return waitFor(() => {
-              expect(wrapper.queryByText('User 1')).toBeNull()
-              expect(wrapper.queryByText('User 2')).toBeNull()
+              expect(wrapper.queryByText('User 1')).not.toBeVisible()
+              expect(wrapper.queryByText('User 2')).not.toBeVisible()
             })
           })
 
@@ -471,8 +471,8 @@ describe('SidebarE', () => {
 
             it('should not show the notifications', () => {
               return waitFor(() => {
-                expect(wrapper.queryByText('User 1')).toBeNull()
-                expect(wrapper.queryByText('User 2')).toBeNull()
+                expect(wrapper.queryByText('User 1')).not.toBeVisible()
+                expect(wrapper.queryByText('User 2')).not.toBeVisible()
               })
             })
           })
@@ -561,8 +561,8 @@ describe('SidebarE', () => {
 
           it('should not show the sub nav', () => {
             return waitFor(() => {
-              expect(wrapper.queryByText('Sub-nav-item 1')).toBeNull()
-              expect(wrapper.queryByText('Sub-nav-item 2')).toBeNull()
+              expect(wrapper.queryByText('Sub-nav-item 1')).not.toBeVisible()
+              expect(wrapper.queryByText('Sub-nav-item 2')).not.toBeVisible()
             })
           })
 
@@ -579,8 +579,8 @@ describe('SidebarE', () => {
 
             it('should not show the sub nav', () => {
               return waitFor(() => {
-                expect(wrapper.queryByText('Sub-nav-item 1')).toBeNull()
-                expect(wrapper.queryByText('Sub-nav-item 2')).toBeNull()
+                expect(wrapper.queryByText('Sub-nav-item 1')).not.toBeVisible()
+                expect(wrapper.queryByText('Sub-nav-item 2')).not.toBeVisible()
               })
             })
           })

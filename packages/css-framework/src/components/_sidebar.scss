@@ -93,6 +93,8 @@ body.has-sidebar {
 }
 
 .rn-sidebar__bottom {
+  display: inline-flex;
+  justify-content: center;
   width: $bar-width;
 
   > div > button {

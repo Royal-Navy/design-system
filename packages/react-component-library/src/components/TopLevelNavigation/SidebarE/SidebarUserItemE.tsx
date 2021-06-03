@@ -18,15 +18,21 @@ export const SidebarUserItemE: React.FC<SidebarUserItemEProps> = ({
 }) => {
   const linkElement = link as React.ReactElement
 
-  return React.cloneElement(linkElement, {
-    ...link.props,
-    children: (
-      <StyledUserItem>
-        {icon && <StyledUserItemIcon>{icon}</StyledUserItemIcon>}
-        <StyledUserItemText>{linkElement.props.children}</StyledUserItemText>
-      </StyledUserItem>
-    ),
-  })
+  return (
+    <StyledUserItem>
+      {React.cloneElement(linkElement, {
+        ...link.props,
+        children: (
+          <>
+            {icon && <StyledUserItemIcon>{icon}</StyledUserItemIcon>}
+            <StyledUserItemText>
+              {linkElement.props.children}
+            </StyledUserItemText>
+          </>
+        ),
+      })}
+    </StyledUserItem>
+  )
 }
 
 SidebarUserItemE.displayName = 'SidebarUserItemE'
