@@ -10,7 +10,7 @@ import {
 } from '../../primitives/FloatingBox'
 import { getId } from '../../helpers'
 import { POPOVER_CLOSE_DELAY } from './constants'
-import { useHideShow } from './useHideShow'
+import { useHideShow } from '../../hooks/useHideShow'
 
 export interface PopoverProps
   extends Omit<

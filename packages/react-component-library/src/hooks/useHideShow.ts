@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react'
 
-import { useDocumentClick } from '../../hooks'
+import { useDocumentClick } from '.'
 
 export function useHideShow(isClick: boolean, closeDelay: number) {
   const [isVisible, setIsVisible] = useState(false)
   const timerRef = useRef(null)
   const floatingBoxChildrenRef = useRef()
 
-  function hidePopover() {
+  function hideElement() {
     if (isVisible) {
       timerRef.current = setTimeout(() => {
         timerRef.current = null
@@ -16,7 +16,7 @@ export function useHideShow(isClick: boolean, closeDelay: number) {
     }
   }
 
-  function showPopover() {
+  function showElement() {
     if (timerRef.current !== null) {
       clearTimeout(timerRef.current)
     }
@@ -25,17 +25,17 @@ export function useHideShow(isClick: boolean, closeDelay: number) {
   }
 
   if (isClick) {
-    useDocumentClick(floatingBoxChildrenRef, hidePopover, [isVisible])
+    useDocumentClick(floatingBoxChildrenRef, hideElement, [isVisible])
   }
 
   function getMouseEvents() {
     if (isClick) {
       return {
-        onClick: isVisible ? hidePopover : showPopover,
+        onClick: isVisible ? hideElement : showElement,
       }
     }
 
-    return { onMouseEnter: showPopover, onMouseLeave: hidePopover }
+    return { onMouseEnter: showElement, onMouseLeave: hideElement }
   }
 
   return {
