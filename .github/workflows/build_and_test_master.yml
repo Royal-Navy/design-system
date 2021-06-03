@@ -18,6 +18,14 @@ jobs:
             path: '**/node_modules'
             key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
+        - name: Cache Cypress binary
+          uses: actions/cache@v2
+          with:
+            path: ~/.cache/Cypress
+            key: cypress-${{ runner.os }}-cypress2-${{ hashFiles('**/yarn.lock') }}
+            restore-keys: |
+             cypress-${{ runner.os }}-cypress-
+
         - name: Build icon-library
           run: |
             yarn install
@@ -213,6 +221,14 @@ jobs:
             path: '**/node_modules'
             key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
+        - name: Cache Cypress binary
+          uses: actions/cache@v2
+          with:
+            path: ~/.cache/Cypress
+            key: cypress-${{ runner.os }}-cypress2-${{ hashFiles('**/yarn.lock') }}
+            restore-keys: |
+             cypress-${{ runner.os }}-cypress-
+
         - name: Attach workspace
           uses: actions/download-artifact@v2
           with:
@@ -226,7 +242,6 @@ jobs:
           uses: cypress-io/github-action@v2
           env:
             CHOKIDAR_USEPOLLING: 1
-            CYPRESS_INSTALL_BINARY: 0
           with:
             project: ./packages/react-component-library
             start: yarn --cwd packages/react-component-library storybook:test
