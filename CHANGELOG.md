@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.51.2](https://github.com/Royal-Navy/design-system/compare/2.51.1...2.51.2) (2021-06-03)
+
+
+### Bug Fixes
+
+* **ReactComponentLibrary:** Do not bundle fonts package ([81e8a26](https://github.com/Royal-Navy/design-system/commit/81e8a26e9ff6b145c975e0a9db19e6b733b9082c))
+* **Timeline:** Make rows accessible when scaling ([ff0c7ab](https://github.com/Royal-Navy/design-system/commit/ff0c7abade64726617dab3f3c46e1199a699ded0))
+
+
+
+
+
 ## [2.51.1](https://github.com/Royal-Navy/design-system/compare/2.51.0...2.51.1) (2021-06-02)
 
 

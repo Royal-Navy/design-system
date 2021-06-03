@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.51.2](https://github.com/royal-navy/design-system/compare/2.51.1...2.51.2) (2021-06-03)
+
+
+### Bug Fixes
+
+* **ReactComponentLibrary:** Do not bundle fonts package ([81e8a26](https://github.com/royal-navy/design-system/commit/81e8a26e9ff6b145c975e0a9db19e6b733b9082c))
+
+
+
+
+
 ## [2.51.1](https://github.com/royal-navy/design-system/compare/2.51.0...2.51.1) (2021-06-02)
 
 **Note:** Version bump only for package cra-template-royalnavy
