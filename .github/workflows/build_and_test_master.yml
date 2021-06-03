@@ -18,9 +18,17 @@ jobs:
             path: '**/node_modules'
             key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
+        - name: Cache Cypress binary
+          uses: actions/cache@v2
+          with:
+            path: ~/.cache/Cypress
+            key: cypress-${{ runner.os }}-cypress2-${{ hashFiles('**/yarn.lock') }}
+            restore-keys: |
+             cypress-${{ runner.os }}-cypress-
+
         - name: Build icon-library
           run: |
-            yarn install
+            yarn install --frozen-lockfile
             yarn --cwd packages/icon-library build
 
         - name: Build design-tokens
@@ -63,7 +71,7 @@ jobs:
 
         - name: Get dependencies & run lint
           run: |
-            yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
+            yarn install --frozen-lockfile
             mkdir -p packages/css-framework/test-results/stylelint
             yarn --cwd packages/css-framework --silent stylelint --custom-formatter '../../node_modules/stylelint-junit-formatter/index.js' ./index.scss > packages/css-framework/test-results/stylelint/results.xml
 
@@ -91,7 +99,7 @@ jobs:
         - name: Get dependencies & run lint
           run: |
             echo "$ESLINT_JUNIT_OUTPUT"
-            yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
+            yarn install --frozen-lockfile
             mkdir -p packages/react-component-library/test-results/eslint
             yarn --cwd packages/react-component-library lint:ci
 
@@ -118,7 +126,7 @@ jobs:
 
         - name: Get dependencies & run lint
           run: |
-            yarn install --cache-folder ~/.cache/yarn
+            yarn install --frozen-lockfile
             yarn --cwd packages/docs-site svgr
             mkdir -p packages/docs-site/test-results/eslint
             yarn --cwd packages/docs-site lint:ci
@@ -152,8 +160,10 @@ jobs:
           run: |
             tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
             yarn --cwd packages/react-component-library build
+
         - name: Build site
           run: yarn --cwd packages/docs-site build
+
         - name: Jest
           env:
             JEST_JUNIT_OUTPUT_DIR: test-results/jest
@@ -213,6 +223,14 @@ jobs:
             path: '**/node_modules'
             key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
+        - name: Cache Cypress binary
+          uses: actions/cache@v2
+          with:
+            path: ~/.cache/Cypress
+            key: cypress-${{ runner.os }}-cypress2-${{ hashFiles('**/yarn.lock') }}
+            restore-keys: |
+             cypress-${{ runner.os }}-cypress-
+
         - name: Attach workspace
           uses: actions/download-artifact@v2
           with:
@@ -226,7 +244,6 @@ jobs:
           uses: cypress-io/github-action@v2
           env:
             CHOKIDAR_USEPOLLING: 1
-            CYPRESS_INSTALL_BINARY: 0
           with:
             project: ./packages/react-component-library
             start: yarn --cwd packages/react-component-library storybook:test
