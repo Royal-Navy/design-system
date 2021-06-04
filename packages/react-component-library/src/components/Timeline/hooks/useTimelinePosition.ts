@@ -26,15 +26,15 @@ export function useTimelinePosition(
   startDate: Date,
   endDate: Date
 ): {
-  width: string
-  offset: string
-  maxWidth: string
-  isBeforeStart: boolean
-  isAfterEnd: boolean
-  startsBeforeStart: boolean
-  startsAfterEnd: boolean
-  endsBeforeStart: boolean
   endsAfterEnd: boolean
+  endsBeforeStart: boolean
+  isAfterEnd: boolean
+  isBeforeStart: boolean
+  maxWidth: string
+  offset: string
+  startsAfterEnd: boolean
+  startsBeforeStart: boolean
+  width: string
 } {
   const {
     state: { currentScaleOption, days },
