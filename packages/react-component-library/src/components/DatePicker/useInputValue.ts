@@ -3,7 +3,7 @@ import { differenceInMinutes, format } from 'date-fns'
 
 import { getId } from '../../helpers'
 
-function transformDates(
+export function transformDates(
   startDate: Date,
   endDate: Date,
   datePickerFormat: string

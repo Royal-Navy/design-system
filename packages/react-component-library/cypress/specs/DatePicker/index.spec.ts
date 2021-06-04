@@ -5,6 +5,7 @@ import { ColorAction600 } from '@royalnavy/design-tokens'
 import { DATE_FORMAT } from '../../../src/constants'
 import { hexToRgb } from '../../helpers'
 import selectors from '../../selectors'
+import { transformDates } from '../../../src/components/DatePicker/useInputValue'
 
 describe('DatePicker', () => {
   describe('when a day is selected', () => {
@@ -28,12 +29,10 @@ describe('DatePicker', () => {
       })
 
       it('should set the value of the input to the date', () => {
-        const expectedDate = startOfMonth(new Date())
+        const from = startOfMonth(new Date())
+        const expected = transformDates(from, null, DATE_FORMAT.SHORT)
 
-        cy.get(selectors.datePicker.input).should(
-          'have.value',
-          format(expectedDate, DATE_FORMAT.SHORT)
-        )
+        cy.get(selectors.datePicker.input).should('have.value', expected)
       })
 
       it('should not be in an error state', () => {
