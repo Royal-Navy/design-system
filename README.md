@@ -5,6 +5,8 @@
 
 Build web applications that meet the Royal Navy's service standards.
 
+Visit the [Roadmap board](https://github.com/orgs/Royal-Navy/projects/5) to view the high-level objectives for the Royal Navy Design System. To check on issues currently being completed, view our [Tactical board](https://github.com/Royal-Navy/design-system/projects/6) instead.
+
 ## Releases & versioning
 
 All packages are published to the [NPM registry](https://www.npmjs.com/search?q=%40royalnavy) and we adhere to [semantic versioning](https://semver.org/).
