@@ -1,14 +1,40 @@
-// shared config (dev and prod)
 const { resolve } = require('path')
 
 module.exports = {
+  performance: {
+    hints: 'warning',
+  },
   target: 'node',
   entry: ['./index.ts'],
+  output: {
+    filename: 'index.js',
+    path: resolve(__dirname, '../dist/cjs'),
+    library: 'rnComponentLibrary',
+    libraryTarget: 'commonjs2',
+  },
   externals: {
     'styled-components': {
       commonjs: 'styled-components',
       commonjs2: 'styled-components',
       amd: 'styled-components',
+    },
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react',
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+      umd: 'react-dom',
+    },
+    lodash: {
+      commonjs: 'lodash',
+      amd: 'lodash',
+      root: '_',
     },
   },
   resolve: {
@@ -17,6 +43,12 @@ module.exports = {
   context: resolve(__dirname, '../src'),
   module: {
     rules: [
+      {
+        test: /\.m?js/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.(js|jsx|ts|tsx)$/,
         use: ['babel-loader', 'source-map-loader'],
@@ -63,9 +95,5 @@ module.exports = {
         use: ['url-loader?limit=100000'],
       },
     ],
-  },
-
-  performance: {
-    hints: false,
   },
 }
