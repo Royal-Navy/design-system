@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest an idea for this project
 title: ''
-labels: 'Type: Enhancement,⏱ Awaiting triage'
+labels: 'Type: Enhancement, Status: Awaiting triage'
 assignees: ''
 
 ---
