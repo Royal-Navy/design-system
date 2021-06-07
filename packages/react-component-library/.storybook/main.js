@@ -12,4 +12,18 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-actions',
   ],
+  core: {
+    builder: 'webpack5',
+  },
+  webpackFinal: (config) => {
+    config.resolve = {
+      ...config.resolve,
+      alias: {
+        ...config.resolve.alias,
+        stream: require.resolve('stream-browserify'),
+      },
+    }
+
+    return config
+  },
 }
