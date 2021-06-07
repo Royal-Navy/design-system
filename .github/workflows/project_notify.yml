@@ -15,7 +15,7 @@ jobs:
              TRIAGE_URL: https://github.com/Royal-Navy/design-system/issues?q=is%3Aissue+is%3Aopen+label%3A%22%E2%8F%B1+Awaiting+triage%22
           run: |
 
-            result=$(( gh issue list --repo Royal-Navy/design-system -l '⏱ Awaiting triage' ) 2>&1)
+            result=$(( gh issue list --repo Royal-Navy/design-system -l 'Status: Awaiting triage' ) 2>&1)
 
             slack_triage () {
             curl -X POST -H 'Content-type: application/json' --data '{"text":"There are <'$TRIAGE_URL'|Triage issues> to review this morning"}' ${{ secrets.SLACK_WEBHOOK }}

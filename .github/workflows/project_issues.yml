@@ -14,5 +14,5 @@ jobs:
         action-token: "${{ secrets.GHA_ISSUES_TOKEN }}"
         project-url: "https://github.com/Royal-Navy/design-system/projects/6"
         column-name: "Candidates for Ready"
-        label-name: "Small,Medium"
-        columns-to-ignore: "Ready,Doing,Needs Review,Done"
+        label-name: "Size: Small, Size: Medium"
+        columns-to-ignore: "Ready,In Progress,In Review,Done"
