@@ -33,7 +33,9 @@ const HomeTemplate = ({ data: { mdx }, location }) => {
 
   return (
     <Layout>
-      <Helmet title={`${mdx.frontmatter.title} | Royal Navy Design System`} />
+      <Helmet title={`${mdx.frontmatter.title} | Royal Navy Design System`}>
+        <script type="text/javascript" src="/scripts/newrelic.js" />
+      </Helmet>
       <MastHead navItems={primaryNavData} />
       <HeroBanner
         title="Build your application using Royal Navy Design System styles and components"
