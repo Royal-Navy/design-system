@@ -10,7 +10,8 @@ import { Button, BUTTON_SIZE, BUTTON_VARIANT } from '../Button'
 import { StyledToolbar } from './partials/StyledToolbar'
 import { StyledToolbarButtons } from './partials/StyledToolbarButtons'
 import { StyledToolbarSeparator } from './partials/StyledToolbarSeparator'
-import { useTimelineScale } from './hooks/useTimelineScale'
+import { useTimelineFrame } from './hooks/useTimelineFrame'
+import { useTimelineZoom } from './hooks/useTimelineZoom'
 
 interface TimelineToolbarProps {
   hideScaling: boolean
@@ -19,14 +20,8 @@ interface TimelineToolbarProps {
 export const TimelineToolbar: React.FC<TimelineToolbarProps> = ({
   hideScaling,
 }) => {
-  const {
-    canZoomIn,
-    canZoomOut,
-    moveNext,
-    movePrevious,
-    zoomIn,
-    zoomOut,
-  } = useTimelineScale()
+  const { canZoomIn, canZoomOut, zoomIn, zoomOut } = useTimelineZoom()
+  const { moveNext, movePrevious } = useTimelineFrame()
 
   return (
     <StyledToolbar data-testid="timeline-toolbar">
