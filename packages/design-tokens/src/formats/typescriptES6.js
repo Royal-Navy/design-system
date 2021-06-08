@@ -5,7 +5,9 @@ module.exports = (dictionary) => {
         prop.value
       )};`
 
-      if (prop.comment) toRetProp = toRetProp.concat(` // ${prop.comment}`)
+      if (prop.comment) {
+        toRetProp = toRetProp.concat(` // ${prop.comment}`)
+      }
 
       return toRetProp
     })
