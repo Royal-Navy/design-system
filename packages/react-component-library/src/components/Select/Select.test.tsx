@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, render, RenderResult } from '@testing-library/react'
+import {
+  fireEvent,
+  render,
+  RenderResult,
+  waitFor,
+} from '@testing-library/react'
 import { IconAnchor } from '@royalnavy/icon-library'
 
 import { Select } from '.'
+import { Button } from '../Button'
 
 const options = [
   {
@@ -79,6 +85,14 @@ describe('Select', () => {
           wrapper.getByText('Option 1').click()
         })
 
+        it('should render the select with the selected value', () => {
+          return waitFor(() => {
+            expect(
+              wrapper.getByTestId('select-single-value-label')
+            ).toHaveTextContent('Option 1')
+          })
+        })
+
         it('should call the `onChange` spy once', () => {
           expect(onChangeSpy).toHaveBeenCalledTimes(1)
           expect(onChangeSpy).toHaveBeenCalledWith({
@@ -126,6 +140,59 @@ describe('Select', () => {
 
     it('should render the icons', () => {
       expect(wrapper.getAllByTestId('select-option-icon')).toHaveLength(2)
+    })
+  })
+
+  describe('when there is a clear button outside', () => {
+    beforeEach(() => {
+      const SelectWithOutsideClearButton: React.FC = () => {
+        const [value, setValue] = useState<string>()
+        const onChange = (event: any) => setValue(event.target.value)
+        const onClick = () => setValue(null)
+
+        return (
+          <>
+            <Select
+              options={options}
+              value={value}
+              onChange={onChange}
+              label="test"
+            />
+            <Button data-testid="clear-button" onClick={onClick}>
+              Clear
+            </Button>
+          </>
+        )
+      }
+
+      wrapper = render(<SelectWithOutsideClearButton />)
+    })
+
+    describe('and an option is selected', () => {
+      beforeEach(async () => {
+        const input = wrapper.getByTestId('react-select-vendor-input')
+        fireEvent.focus(input)
+        fireEvent.keyDown(input, {
+          key: 'ArrowDown',
+          code: 40,
+        })
+
+        wrapper.getByText('Option 1').click()
+      })
+
+      describe('and the `Clear` button is clicked', () => {
+        beforeEach(() => {
+          wrapper.getByTestId('clear-button').click()
+        })
+
+        it('should clear the select label', () => {
+          return waitFor(() => {
+            expect(
+              wrapper.queryAllByTestId('select-single-value-label')
+            ).toHaveLength(0)
+          })
+        })
+      })
     })
   })
 })
