@@ -23,7 +23,7 @@ jobs:
           uses: actions/cache@v2
           with:
             path: ~/.cache/Cypress
-            key: cypress-${{ runner.os }}-cypress2-${{ hashFiles('**/yarn.lock') }}
+            key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/yarn.lock') }}
             restore-keys: |
              cypress-${{ runner.os }}-cypress-
 
@@ -251,7 +251,7 @@ jobs:
           uses: actions/cache@v2
           with:
             path: ~/.cache/Cypress
-            key: cypress-${{ runner.os }}-cypress2-${{ hashFiles('**/yarn.lock') }}
+            key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/yarn.lock') }}
             restore-keys: |
              cypress-${{ runner.os }}-cypress-
 
@@ -263,6 +263,14 @@ jobs:
         - name: Unpack icon library & design tokens
           run: |
             tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
+
+        - name: Confirm Cypress binary is installed
+          run: |
+            result=$(yarn cypress version)
+            if [[  `echo $result` == *"not installed"* ]];
+              then echo "cypress binary is not installed, installing binary...." && yarn cypress install;
+              else echo "cypress binary is installed, no action required";
+            fi
 
         - name: Run e2e tests
           uses: cypress-io/github-action@v2
