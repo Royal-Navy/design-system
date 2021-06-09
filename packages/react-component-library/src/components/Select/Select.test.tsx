@@ -85,6 +85,16 @@ describe('Select', () => {
           wrapper.getByText('Option 1').click()
         })
 
+        it('should render a clear button', () => {
+          const control = wrapper.container.children[0].children[1]
+          const indicators = control.children[1]
+          const firstIndicator = indicators.children[0]
+
+          expect(firstIndicator.classList).toContain(
+            'rn-select__clear-indicator'
+          )
+        })
+
         it('should render the select with the selected value', () => {
           return waitFor(() => {
             expect(
@@ -191,6 +201,43 @@ describe('Select', () => {
               wrapper.queryAllByTestId('select-single-value-label')
             ).toHaveLength(0)
           })
+        })
+      })
+    })
+  })
+
+  describe('when `isClearable` is `false`', () => {
+    beforeEach(() => {
+      onChangeSpy = jest.fn()
+
+      wrapper = render(
+        <Select isClearable={false} onChange={onChangeSpy} options={options} />
+      )
+    })
+
+    describe('when the select is clicked', () => {
+      beforeEach(() => {
+        const input = wrapper.getByTestId('react-select-vendor-input')
+        fireEvent.focus(input)
+        fireEvent.keyDown(input, {
+          key: 'ArrowDown',
+          code: 40,
+        })
+      })
+
+      describe('when the first option is clicked', () => {
+        beforeEach(() => {
+          wrapper.getByText('Option 1').click()
+        })
+
+        it('should not render a clear button', () => {
+          const control = wrapper.container.children[0].children[1]
+          const indicators = control.children[1]
+          const firstIndicator = indicators.children[0]
+
+          expect(firstIndicator.classList).not.toContain(
+            'rn-select__clear-indicator'
+          )
         })
       })
     })
