@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.52.0](https://github.com/Royal-Navy/design-system/compare/2.51.3...2.52.0) (2021-06-09)
+
+
+### Bug Fixes
+
+* **DatePicker:** Remove check for range ([e05b476](https://github.com/Royal-Navy/design-system/commit/e05b476b13d13b300f88a9bb2398ee445997386b))
+* **Select:** Allow clear outside component ([0038700](https://github.com/Royal-Navy/design-system/commit/003870072d290a5553f0557ccc7c90a573cf8332))
+
+
+### Features
+
+* **Timeline:** Expose hooks for consumers ([b420493](https://github.com/Royal-Navy/design-system/commit/b4204935f4516ec1da6fc107b55c4fbda49344dc))
+
+
+### Performance Improvements
+
+* **NewRelic:** Add docs-site tracking tag ([65658d9](https://github.com/Royal-Navy/design-system/commit/65658d9134f2145c27fc010a7f7461a3fdb385ba))
+* **NewRelic:** Add Storybook tracking tag ([c073138](https://github.com/Royal-Navy/design-system/commit/c0731382eb33c709cc08bbfd4441850c36ceb450))
+
+
+
+
+
 ## [2.51.3](https://github.com/Royal-Navy/design-system/compare/2.51.2...2.51.3) (2021-06-08)
 
 **Note:** Version bump only for package royal-navy-design-system
