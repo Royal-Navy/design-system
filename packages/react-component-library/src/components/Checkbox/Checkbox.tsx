@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
-import logger from '../../utils/logger'
 import { StyledCheckbox } from './partials/StyledCheckbox'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledLabel } from './partials/StyledLabel'
@@ -27,6 +26,7 @@ export interface CheckboxProps
   defaultChecked?: boolean
   /**
    * Toggles whether or note the component is marked as checked.
+   * @deprecated
    */
   isChecked?: boolean
   /**
@@ -74,10 +74,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => {
-    logger.warn(
-      '`isChecked` prop has been deprecated, use `checked` and `defaultChecked`'
-    )
-
     return (
       <StyledCheckbox
         $isDisabled={isDisabled}
