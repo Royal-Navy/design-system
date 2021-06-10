@@ -25,6 +25,7 @@ describe('DatePicker', () => {
   let label: string
   let onChange: (data: { startDate: Date; endDate: Date }) => void
   let onBlur: (e: React.FormEvent) => void
+  let onCalendarFocus: (e: React.SyntheticEvent) => void
   let dateSpy: jest.SpyInstance
   let days: string[]
   let onSubmitSpy: (e: React.FormEvent) => void
@@ -69,6 +70,7 @@ describe('DatePicker', () => {
       startDate = new Date(2019, 11, 1)
       onChange = jest.fn()
       onBlur = jest.fn()
+      onCalendarFocus = jest.fn()
 
       wrapper = render(
         <>
@@ -76,6 +78,7 @@ describe('DatePicker', () => {
             startDate={startDate}
             onChange={onChange}
             onBlur={onBlur}
+            onCalendarFocus={onCalendarFocus}
           />
           <div data-testid="datepicker-outside" />
         </>
@@ -266,6 +269,45 @@ describe('DatePicker', () => {
           it('hides the day picker container', () => {
             return waitFor(() => {
               expect(wrapper.getByTestId('floating-box')).not.toBeVisible()
+            })
+          })
+
+          describe('and the tab key is pressed', () => {
+            beforeEach(async () => {
+              wrapper.getByTestId('datepicker-input').focus()
+
+              await userEvent.tab()
+            })
+
+            it('focuses the picker open/close button', () => {
+              expect(
+                wrapper.getByTestId('datepicker-input-button')
+              ).toHaveFocus()
+            })
+
+            describe('and the space key is pressed', () => {
+              beforeEach(async () => {
+                const button = wrapper.getByTestId('datepicker-input-button')
+
+                await userEvent.type(button, '{space}', { skipClick: true })
+              })
+
+              it('closes the picker container', () => {
+                expect(
+                  wrapper.getByTestId('datepicker-input-button')
+                ).toHaveAttribute('aria-label', 'Show day picker')
+              })
+            })
+
+            describe('and the tab  key is pressed again', () => {
+              beforeEach(async () => {
+                await userEvent.tab()
+              })
+
+              it('focuses the picker container', () => {
+                expect(onCalendarFocus).toHaveBeenCalledTimes(1)
+                // NOTE: `react-day-picker` internals from here on down
+              })
             })
           })
 

@@ -77,6 +77,10 @@ export interface DatePickerProps
    */
   onChange?: (data: { startDate: Date; endDate: Date }) => void
   /**
+   * Optional handler to be invoked when the calendar is focussed.
+   */
+  onCalendarFocus?: (e: React.SyntheticEvent) => void
+  /**
    * Start date of the picker (the first date selected by end user).
    */
   startDate?: Date
@@ -115,6 +119,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   isValid,
   label = 'Select Date',
   onChange,
+  onCalendarFocus,
   startDate,
   value,
   isOpen,
@@ -272,6 +277,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               disabledDays={disabledDays}
               $isRange={isRange}
               $isVisible={open}
+              onFocus={onCalendarFocus}
             />
           </div>
         </FloatingBoxContent>

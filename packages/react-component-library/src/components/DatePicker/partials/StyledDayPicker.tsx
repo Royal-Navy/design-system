@@ -26,8 +26,12 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
     position: relative;
     flex-direction: row;
     padding-bottom: ${spacing('8')};
-    outline: none;
     user-select: none;
+
+    &:focus {
+      outline: 1px dotted #212121;
+      outline: 5px auto -webkit-focus-ring-color;
+    }
   }
 
   .DayPicker-Months {

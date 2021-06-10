@@ -45,7 +45,7 @@ export function useInputKeys(
     return null
   }
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): null => {
     setHasError(false)
 
     const isTabKey = e.keyCode === 9
@@ -53,8 +53,6 @@ export function useInputKeys(
 
     if (isTabKey) {
       checkNewDate(value)
-
-      return onComplete()
     }
 
     return null
