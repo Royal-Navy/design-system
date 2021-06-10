@@ -19,6 +19,10 @@ export interface SelectProps
     ComponentWithClass,
     InputValidationProps {
   /**
+   * Specify whether or not to have a clear button.
+   */
+  isClearable?: boolean
+  /**
    * Optional text label to display within the component.
    */
   label?: string
@@ -41,6 +45,7 @@ export interface SelectProps
 }
 
 export const Select: React.FC<SelectProps> = ({
+  isClearable = true,
   label,
   name,
   onChange,
@@ -79,7 +84,7 @@ export const Select: React.FC<SelectProps> = ({
         MenuList: StyledMenuList,
         ValueContainer: StyledValueContainer,
       }}
-      isClearable
+      isClearable={isClearable}
       name={name}
       onChange={onSelectChange}
       options={options}

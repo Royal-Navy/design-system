@@ -49,6 +49,18 @@ export const Disabled: Story<SelectProps> = (props) => (
 
 Disabled.storyName = 'Disabled'
 
+export const NotClearable: Story<SelectProps> = (props) => (
+  <Select
+    {...props}
+    options={options}
+    label="Example label"
+    name="select-disabled"
+    isClearable={false}
+  />
+)
+
+NotClearable.storyName = 'Not clearable'
+
 export const WithIcons: Story<SelectProps> = (props) => {
   const iconOptions = options.map((option) => ({
     ...option,
