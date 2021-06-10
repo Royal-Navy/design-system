@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.52.1](https://github.com/Royal-Navy/design-system/compare/2.52.0...2.52.1) (2021-06-10)
+
+**Note:** Version bump only for package royal-navy-design-system
+
+
+
+
+
 # [2.52.0](https://github.com/Royal-Navy/design-system/compare/2.51.3...2.52.0) (2021-06-09)
 
 
