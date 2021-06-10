@@ -5,6 +5,9 @@ header: true
 ---
 
 import Bucket from '../../../components/presenters/bucket'
+import ToastComponent from '../../images/components/toast/Component'
+import ToastAnatomy from '../../images/components/toast/Anatomy'
+import ToastStates from '../../images/components/toast/States'
 
 <div className="bucket__container">
   <Bucket type="sketch" url="https://docs.royalnavy.io/design-system.sketch" />
@@ -12,7 +15,30 @@ import Bucket from '../../../components/presenters/bucket'
 </div>
 
 # Overview
-Toasts overlay the application screen and sit fixed relative to the viewport.
+The Toast component provides a way to send notifications to the user.
+
+<ToastComponent />
 
 ## Usage
-By default, a Toast will remain visible until dismissed. The user can dismiss it by tapping/clicking anywhere outside of it.
+Use Toasts to push messages to your users, based on actions they may perform.
+
+### Anatomy
+
+<ToastAnatomy />
+
+1. **Label**. Text label to display at the top of the component
+2. **Time**. Timestamp displaying when the Toast was triggered.
+3. **Close button**. Dismisses the Toast.
+4. **Description**. Accompanying text for additional context.
+
+### Sizing & Spacing
+The Toast is of a fixed width, but will resize vertically to fit multiple lines of text within it.
+
+### Hierarchy & Placement
+Toast components sit in the top right of the viewport. If multiple are triggered, they stack vertically.
+
+### States
+
+<ToastStates />
+
+The Toast component has four available states: Default, Danger, Warning, and Success.
