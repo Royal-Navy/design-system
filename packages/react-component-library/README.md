@@ -41,6 +41,44 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 
 This context provider component applies global Royal Navy Design System styles to your application (resets, normalize and fonts). You should wrap the root of your app in this component.
 
+## Hooks
+
+### `useFloatingElement`
+
+This hook aids in the positioning of arbitrary elements relative to a target element. The positoning engine will intelligently position the element based on available screen real-estate.
+
+```javascript
+import { useFloatingElement } from '@royalnavy/react-component-library'
+
+const Example = () => {
+  const {
+    targetElementRef,
+    floatingElementRef,
+    arrowElementRef,
+    styles,
+    attributes,
+  } = useFloatingElement(placement)
+
+  return (    
+    <>
+      <Target ref={targetElementRef} />
+      <Float
+        ref={floatingElementRef}
+        style={styles.popper}
+        {...attributes.popper}
+      >
+        Hello, World!
+      </Float>
+    </>
+  )
+}
+
+```
+
+The hook wraps a popular underlying positioning engine called [Popper](https://github.com/popperjs/react-popper). 
+
+If you want opinionated styling for your floating element please consider the [Popover](https://storybook.royalnavy.io/?path=/docs/popover--default) component.
+
 ## Questions
 
 The Design System is maintained by a team at the Royal Navy. If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).

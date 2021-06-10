@@ -457,10 +457,10 @@ describe('Masthead', () => {
     })
 
     it('should not show the links', () => {
-      expect(wrapper.queryByText('Profile')).toBeNull()
-      expect(wrapper.queryByText('Settings')).toBeNull()
-      expect(wrapper.queryByText('Support')).toBeNull()
-      expect(wrapper.queryByText('Logout')).toBeNull()
+      expect(wrapper.queryByText('Profile')).not.toBeVisible()
+      expect(wrapper.queryByText('Settings')).not.toBeVisible()
+      expect(wrapper.queryByText('Support')).not.toBeVisible()
+      expect(wrapper.queryByText('Logout')).not.toBeVisible()
     })
 
     describe('and the avatar is clicked', () => {
@@ -469,10 +469,10 @@ describe('Masthead', () => {
       })
 
       it('should show the links', () => {
-        expect(wrapper.getByText('Profile')).toBeInTheDocument()
-        expect(wrapper.getByText('Settings')).toBeInTheDocument()
-        expect(wrapper.getByText('Support')).toBeInTheDocument()
-        expect(wrapper.getByText('Logout')).toBeInTheDocument()
+        expect(wrapper.getByText('Profile')).toBeVisible()
+        expect(wrapper.getByText('Settings')).toBeVisible()
+        expect(wrapper.getByText('Support')).toBeVisible()
+        expect(wrapper.getByText('Logout')).toBeVisible()
       })
 
       it('should spread arbitrary props on the user item', () => {
@@ -489,10 +489,10 @@ describe('Masthead', () => {
 
         it('should not show the links', () => {
           return waitFor(() => {
-            expect(wrapper.queryByText('Profile')).toBeNull()
-            expect(wrapper.queryByText('Settings')).toBeNull()
-            expect(wrapper.queryByText('Support')).toBeNull()
-            expect(wrapper.queryByText('Logout')).toBeNull()
+            expect(wrapper.queryByText('Profile')).not.toBeVisible()
+            expect(wrapper.queryByText('Settings')).not.toBeVisible()
+            expect(wrapper.queryByText('Support')).not.toBeVisible()
+            expect(wrapper.queryByText('Logout')).not.toBeVisible()
           })
         })
       })
@@ -510,10 +510,10 @@ describe('Masthead', () => {
 
         it('should not show the links', () => {
           return waitFor(() => {
-            expect(wrapper.queryByText('Profile')).toBeNull()
-            expect(wrapper.queryByText('Settings')).toBeNull()
-            expect(wrapper.queryByText('Support')).toBeNull()
-            expect(wrapper.queryByText('Logout')).toBeNull()
+            expect(wrapper.queryByText('Profile')).toBeVisible()
+            expect(wrapper.queryByText('Settings')).toBeVisible()
+            expect(wrapper.queryByText('Support')).toBeVisible()
+            expect(wrapper.queryByText('Logout')).toBeVisible()
           })
         })
       })

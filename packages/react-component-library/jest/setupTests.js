@@ -6,9 +6,13 @@ import { format } from 'util'
 const originalConsoleError = global.console.error
 
 global.console.error = (...args) => {
-  const reactFailures = [/Failed prop type/, /Warning: /, /StrictMode/]
+  const blocked = [/Failed prop type/, /Warning: /, /StrictMode/]
+  const allowed = [/act/]
 
-  if (reactFailures.some((p) => p.test(args[0]))) {
+  if (
+    blocked.some((p) => p.test(args[0])) &&
+    !allowed.some((p) => p.test(args[0]))
+  ) {
     originalConsoleError(...args)
     throw new Error(format(...args))
   }

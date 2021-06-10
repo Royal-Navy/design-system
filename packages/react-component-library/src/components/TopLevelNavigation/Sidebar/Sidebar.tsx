@@ -1,10 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import {
-  NOTIFICATION_CONTAINER_WIDTH,
-  NotificationsProps,
-} from '../NotificationPanel'
+import { NotificationsProps } from '../NotificationPanel'
 import { SidebarNavProps, SidebarUserProps } from './index'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
@@ -78,7 +75,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 )}
               </SheetButton>
             }
-            width={NOTIFICATION_CONTAINER_WIDTH}
           >
             {notifications}
           </Sheet>

@@ -9,24 +9,25 @@ import {
   waitFor,
 } from '@testing-library/react'
 
-import { Popover, POPOVER_PLACEMENT } from '.'
+import { Popover } from '.'
 
 const HOVER_ON_ME = 'Hover on me!'
+const CONTENT_TEXT = 'This is some arbitrary JSX'
 
 jest.useFakeTimers()
 
 describe('Popover', () => {
-  const content: React.ReactElement = <pre>This is some arbitrary JSX</pre>
+  const content: React.ReactElement = <pre>{CONTENT_TEXT}</pre>
   let clickSpy: (e: React.MouseEvent) => void
   let wrapper: RenderResult
 
-  describe('when provided a placement and arbitrary JSX content', () => {
+  describe('when provided with arbitrary JSX content', () => {
     beforeEach(() => {
       clickSpy = jest.fn()
 
       wrapper = render(
         <>
-          <Popover placement={POPOVER_PLACEMENT.BELOW} content={content}>
+          <Popover content={content}>
             <div
               style={{
                 display: 'inline-block',
@@ -49,17 +50,6 @@ describe('Popover', () => {
       expect(clickSpy).toHaveBeenCalledTimes(1)
     })
 
-    it('should set the `aria-describedby` attribute to the ID of the content', () => {
-      const contentId = wrapper
-        .getByTestId('floating-box-content')
-        .getAttribute('id')
-
-      expect(wrapper.getByTestId('popover')).toHaveAttribute(
-        'aria-describedby',
-        contentId
-      )
-    })
-
     describe('and the user hovers on the target element', () => {
       beforeEach(() => {
         fireEvent.mouseEnter(wrapper.getByText(HOVER_ON_ME))
@@ -69,8 +59,19 @@ describe('Popover', () => {
         jest.clearAllTimers()
       })
 
+      it('should set the `aria-describedby` attribute to the ID of the content', () => {
+        const contentId = wrapper
+          .getByTestId('floating-box-content')
+          .getAttribute('id')
+
+        expect(wrapper.getByTestId('popover')).toHaveAttribute(
+          'aria-describedby',
+          contentId
+        )
+      })
+
       it('to be visible to the end user', () => {
-        expect(wrapper.getByTestId('popover')).toHaveStyleRule('opacity', '1')
+        expect(wrapper.getByTestId('floating-box-content')).toBeVisible()
       })
 
       it('renders the provided arbitrary JSX', () => {
@@ -90,10 +91,7 @@ describe('Popover', () => {
 
         it('to not be visible to the end user', () => {
           return waitFor(() => {
-            expect(wrapper.getByTestId('popover')).toHaveStyleRule(
-              'opacity',
-              '0'
-            )
+            expect(wrapper.queryByText(CONTENT_TEXT)).not.toBeVisible()
           })
         })
       })
@@ -103,11 +101,7 @@ describe('Popover', () => {
   describe('when the `Popover` uses the click mouse event', () => {
     beforeEach(() => {
       wrapper = render(
-        <Popover
-          content={<pre>This is some arbitrary JSX</pre>}
-          isClick
-          placement={POPOVER_PLACEMENT.BELOW}
-        >
+        <Popover content={<pre>This is some arbitrary JSX</pre>} isClick>
           <div>Click on me</div>
         </Popover>
       )
@@ -125,7 +119,7 @@ describe('Popover', () => {
       })
 
       it('to be visible to the end user', () => {
-        expect(wrapper.getByTestId('popover')).toHaveStyleRule('opacity', '1')
+        expect(wrapper.getByTestId('floating-box-content')).toBeVisible()
       })
 
       describe('and the user clicks on the target again', () => {
@@ -141,10 +135,7 @@ describe('Popover', () => {
 
         it('to not be visible to the end user', () => {
           return waitFor(() => {
-            expect(wrapper.getByTestId('popover')).toHaveStyleRule(
-              'opacity',
-              '0'
-            )
+            expect(wrapper.queryByText(CONTENT_TEXT)).not.toBeVisible()
           })
         })
       })
@@ -162,10 +153,7 @@ describe('Popover', () => {
 
         it('to not be visible to the end user', () => {
           return waitFor(() => {
-            expect(wrapper.getByTestId('popover')).toHaveStyleRule(
-              'opacity',
-              '0'
-            )
+            expect(wrapper.queryByText(CONTENT_TEXT)).not.toBeVisible()
           })
         })
       })

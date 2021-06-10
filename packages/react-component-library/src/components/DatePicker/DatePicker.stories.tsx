@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 
 import { withFormik } from '../../enhancers/withFormik'
-import { DatePicker, DatePickerProps, DATEPICKER_PLACEMENT } from '.'
+import { DatePicker, DatePickerProps } from '.'
 
 import { Button } from '../Button'
 
@@ -14,6 +14,16 @@ export default {
   title: 'Date Picker',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-attr',
+            enabled: false,
+          },
+        ],
+      },
+    },
   },
 } as Meta
 
@@ -24,7 +34,6 @@ export const Default: Story<DatePickerProps> = (props) => (
 Default.args = {
   id: undefined,
   startDate: undefined,
-  placement: DATEPICKER_PLACEMENT.BELOW,
 }
 
 export const CustomFormat: Story<DatePickerProps> = (props) => (
@@ -32,18 +41,13 @@ export const CustomFormat: Story<DatePickerProps> = (props) => (
     {...props}
     format="yyyy/MM/dd"
     startDate={new Date(2021, 0, 11)}
-    placement={DATEPICKER_PLACEMENT.BELOW}
   />
 )
 
 CustomFormat.storyName = 'Custom format'
 
 export const CustomInitialMonth: Story<DatePickerProps> = (props) => (
-  <DatePicker
-    {...props}
-    initialMonth={new Date(2021, 1)}
-    placement={DATEPICKER_PLACEMENT.BELOW}
-  />
+  <DatePicker {...props} initialMonth={new Date(2021, 1)} />
 )
 
 CustomInitialMonth.storyName = 'Custom initial month'

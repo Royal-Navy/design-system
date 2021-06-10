@@ -9,7 +9,7 @@ interface StyledOptionProps {
   $isActive?: boolean
 }
 
-export const StyledOption = styled.div<StyledOptionProps>`
+export const StyledOption = styled.button<StyledOptionProps>`
   display: flex;
   align-items: center;
   justify-content: center;

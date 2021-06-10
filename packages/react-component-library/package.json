@@ -181,12 +181,13 @@
     "react-compound-slider": "^3.3.1",
     "react-day-picker": "^7.4.8",
     "react-indiana-drag-scroll": "^2.0.1",
+    "react-popper": "^2.2.5",
     "react-responsive": "^8.0.3",
     "react-select": "^4.1.0",
-    "react-tether": "^2.0.7",
     "react-toast-notifications": "^2.4.0",
     "react-transition-group": "^4.4.1",
-    "styled-normalize": "^8.0.7"
+    "styled-normalize": "^8.0.7",
+    "@popperjs/core": "^2.9.2"
   },
   "peerDependencies": {
     "styled-components": ">= 5"

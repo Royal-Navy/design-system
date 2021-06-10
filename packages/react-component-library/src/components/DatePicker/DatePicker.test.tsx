@@ -10,7 +10,7 @@ import {
 import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
 
-import { DatePicker, DATEPICKER_PLACEMENT } from '.'
+import { DatePicker } from '.'
 
 const NOW = '2019-12-05T11:00:00.000Z'
 
@@ -38,6 +38,7 @@ describe('DatePicker', () => {
   }) {
     it('updates the ARIA attributes on the input button', () => {
       const button = wrapper.getByTestId('datepicker-input-button')
+
       const dayPickerId = wrapper
         .getByTestId('floating-box-content')
         .getAttribute('id')
@@ -73,7 +74,6 @@ describe('DatePicker', () => {
         <>
           <DatePicker
             startDate={startDate}
-            placement={DATEPICKER_PLACEMENT.BELOW}
             onChange={onChange}
             onBlur={onBlur}
           />
@@ -118,7 +118,9 @@ describe('DatePicker', () => {
     })
 
     it('renders the component', () => {
-      expect(wrapper.queryByTestId('datepicker-wrapper')).toBeInTheDocument()
+      expect(
+        wrapper.queryByTestId('datepicker-input-wrapper')
+      ).toBeInTheDocument()
     })
 
     it('renders the correct sequence of days', () => {
@@ -157,10 +159,9 @@ describe('DatePicker', () => {
 
         it('hides the day picker container', () => {
           return waitFor(() => {
-            expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
-              'opacity',
-              '0'
-            )
+            expect(
+              wrapper.queryByTestId('floating-box-content')
+            ).not.toBeVisible()
           })
         })
       })
@@ -212,10 +213,9 @@ describe('DatePicker', () => {
 
         it('hides the day picker container', () => {
           return waitFor(() => {
-            expect(wrapper.getByTestId('floating-box')).toHaveStyleRule(
-              'opacity',
-              '0'
-            )
+            expect(
+              wrapper.queryByTestId('floating-box-content')
+            ).not.toBeVisible()
           })
         })
 
@@ -580,9 +580,7 @@ describe('DatePicker', () => {
     beforeEach(() => {
       label = 'Custom Label'
 
-      wrapper = render(
-        <DatePicker label={label} placement={DATEPICKER_PLACEMENT.BELOW} />
-      )
+      wrapper = render(<DatePicker label={label} />)
     })
 
     it('renders that label accordingly', () => {
@@ -592,9 +590,7 @@ describe('DatePicker', () => {
 
   describe('when isDisabled prop is provided', () => {
     beforeEach(() => {
-      wrapper = render(
-        <DatePicker placement={DATEPICKER_PLACEMENT.BELOW} isDisabled />
-      )
+      wrapper = render(<DatePicker isDisabled />)
     })
 
     it('applies the cursor not-allowed style rule', () => {
@@ -617,7 +613,6 @@ describe('DatePicker', () => {
       wrapper = render(
         <DatePicker
           startDate={new Date(2019, 11, 10)}
-          placement={DATEPICKER_PLACEMENT.BELOW}
           onChange={onChange}
           isRange
         />

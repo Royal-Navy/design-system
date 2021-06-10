@@ -3,18 +3,15 @@ const FLOATING_BOX_SCHEME = {
   DARK: 'dark'
 } as const
 
-const FLOATING_BOX_ARROW_POSITION = {
-  LEFT_BOTTOM: 'left_bottom',
-  LEFT_TOP: 'left_top',
-  RIGHT_BOTTOM: 'right_bottom',
-  RIGHT_TOP: 'right_top',
-  TOP_LEFT: 'top_left',
-  TOP_RIGHT: 'top_right',
-  BOTTOM_LEFT: 'bottom_left',
-  BOTTOM_RIGHT: 'bottom_right'
+const FLOATING_BOX_PLACEMENT = {
+  LEFT: 'left',
+  RIGHT: 'right',
+  TOP: 'top',
+  BOTTOM: 'bottom',
+  AUTO: 'auto'
 } as const
 
 export {
   FLOATING_BOX_SCHEME,
-  FLOATING_BOX_ARROW_POSITION,
+  FLOATING_BOX_PLACEMENT
 }

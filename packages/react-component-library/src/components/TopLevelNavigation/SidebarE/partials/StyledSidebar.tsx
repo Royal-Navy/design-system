@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
+import { StyledContent } from '../../../../primitives/FloatingBox/partials/StyledContent'
+
 interface StyledSidebarProps {
   isOpen?: boolean
 }
@@ -16,6 +18,7 @@ export const StyledSidebar = styled.aside<StyledSidebarProps>`
   height: 100vh;
   background-color: ${color('neutral', '700')};
   color: ${color('neutral', 'white')};
+
   transition: ${({ isOpen }) =>
     isOpen
       ? '200ms width cubic-bezier(0.34, 1.56, 0.64, 1)'
@@ -23,5 +26,9 @@ export const StyledSidebar = styled.aside<StyledSidebarProps>`
 
   > a:hover {
     text-decoration: none;
+  }
+
+  ${StyledContent} {
+    margin: 0 0 0.5rem 0.5rem;
   }
 `

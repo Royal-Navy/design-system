@@ -17,6 +17,7 @@ export const StyledDatePickerInput = styled.div<StyledDatePickerInputProps>`
   border: 0;
   vertical-align: top;
   width: 100%;
+  min-width: 16rem;
 
   ${({ $isDisabled }) =>
     $isDisabled &&

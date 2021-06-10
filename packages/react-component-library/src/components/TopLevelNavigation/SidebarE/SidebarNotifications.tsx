@@ -4,11 +4,7 @@ import { Transition } from 'react-transition-group'
 
 import { SidebarContext } from './context'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
-import { SHEET_PLACEMENT } from '../Sheet/constants'
-import {
-  NotificationsProps,
-  NOTIFICATION_CONTAINER_WIDTH,
-} from '../NotificationPanel'
+import { NotificationsProps } from '../NotificationPanel'
 import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
 import { StyledNotificationsSheet } from './partials/StyledNotificationsSheet'
 import { StyledNotificationsSheetButton } from './partials/StyledNotificationsSheetButton'
@@ -63,7 +59,7 @@ export const SidebarNotifications: React.FC<SidebarNotificationsProps> = ({
               </Transition>
             </StyledNotificationsSheetButton>
           }
-          width={NOTIFICATION_CONTAINER_WIDTH}
+          placement="right"
         >
           {notifications}
         </StyledNotificationsSheet>

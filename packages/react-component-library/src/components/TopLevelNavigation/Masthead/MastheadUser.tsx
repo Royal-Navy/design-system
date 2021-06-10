@@ -8,12 +8,9 @@ import { MastheadUserItemProps } from './MastheadUserItem'
 import { Nav } from '../../../common/Nav'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
-import { SHEET_PLACEMENT } from '../Sheet/constants'
 import logger from '../../../utils/logger'
 import { StyledOption } from './partials/StyledOption'
 import { StyledUserItems } from './partials/StyledUserItems'
-
-const SHEET_WIDTH = 106
 
 export interface MastheadUserWithItemsProps extends Nav<MastheadUserItemProps> {
   /**
@@ -79,8 +76,7 @@ const MastheadUserWithItems: React.FC<MastheadUserWithItemsProps> = ({
         }
       />
     }
-    placement={SHEET_PLACEMENT.BELOW}
-    width={SHEET_WIDTH}
+    placement="bottom"
   >
     <StyledUserItems>{children}</StyledUserItems>
   </Sheet>
