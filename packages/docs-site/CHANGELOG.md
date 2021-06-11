@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.53.0](https://github.com/Royal-Navy/design-system/compare/2.52.1...2.53.0) (2021-06-11)
+
+
+### Performance Improvements
+
+* **NewRelic:** Remove script tags included in error ([cf3f881](https://github.com/Royal-Navy/design-system/commit/cf3f881c1f34abc1f9b6f4d81ad39cd3584b03f1))
+
+
+
+
+
 ## [2.52.1](https://github.com/Royal-Navy/design-system/compare/2.52.0...2.52.1) (2021-06-10)
 
 **Note:** Version bump only for package royalnavy.io
