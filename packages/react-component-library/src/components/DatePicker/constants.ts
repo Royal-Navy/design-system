@@ -9,7 +9,7 @@ const DATEPICKER_PLACEMENT = {
   RIGHT: 'right'
 } as const
 
-const DATEPICKER_AUTO_CLOSE_DELAY = 250
+const DATEPICKER_AUTO_CLOSE_DELAY = 0
 
 export {
   LOCALE,
