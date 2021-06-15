@@ -22,6 +22,17 @@ const MastHead = ({ navItems }) => {
     setOpen(!open)
   }
 
+  const aboutNavItem = navItems.pop()
+
+  const combinedNav = [
+    ...navItems,
+    {
+      href: 'https://timeline.royalnavy.io',
+      label: 'Compound Timeline',
+    },
+    aboutNavItem,
+  ]
+
   return (
     <div className="masthead">
       <Link
@@ -76,16 +87,7 @@ const MastHead = ({ navItems }) => {
             open ? 'is-open' : 'is-closed'
           }`}
         >
-          <Nav
-            orientation="horizontal"
-            navItems={[
-              ...navItems,
-              {
-                href: 'https://timeline.royalnavy.io',
-                label: 'Compound Timeline',
-              },
-            ]}
-          />
+          <Nav orientation="horizontal" navItems={combinedNav} />
         </div>
       )}
     </div>
