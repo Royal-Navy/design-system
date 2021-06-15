@@ -44,15 +44,16 @@ Here's a quick example application to get you started:
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
-import '@royalnavy/css-framework/dist/style.css'
 import '@royalnavy/fonts'
-import { Button } from '@royalnavy/react-component-library'
+import { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
 
 function App() {
   return (
-    <Button variant="primary">
-      Hello, World!
-    </Button>
+    <GlobalStyleProvider>
+      <Button variant="primary">
+        Hello, World!
+      </Button>
+     </GlobalStyleProvider>
   )
 }
 
