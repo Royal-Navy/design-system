@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Placement } from '@popperjs/core'
 import { v4 as uuidv4 } from 'uuid'
 import {
@@ -14,7 +14,7 @@ import {
 } from '../../primitives/FloatingBox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
-import { DATEPICKER_PLACEMENT } from './constants'
+import { DATEPICKER_PLACEMENT, DATEPICKER_AUTO_CLOSE_DELAY } from './constants'
 import { DatePickerInput } from './DatePickerInput'
 import { DropdownIndicatorIcon } from '../Dropdown/DropdownIndicatorIcon'
 import { FloatingBoxContent } from '../../primitives/FloatingBox/FloatingBoxContent'
@@ -184,6 +184,14 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       })
     }
   }
+
+  useEffect(() => {
+    if (!isRange) {
+      setTimeout(() => {
+        handleOnClose()
+      }, DATEPICKER_AUTO_CLOSE_DELAY)
+    }
+  }, [state])
 
   const hasContent = !!((value && value.length) || from)
 

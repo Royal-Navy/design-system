@@ -1,6 +1,6 @@
 import { describe, cy, it, before } from 'local-cypress'
 import { addDays, startOfMonth, format } from 'date-fns'
-import { ColorAction600 } from '@royalnavy/design-tokens'
+import { ColorAction600, ColorNeutral200 } from '@royalnavy/design-tokens'
 
 import { DATE_FORMAT } from '../../../src/constants'
 import { hexToRgb } from '../../helpers'
@@ -16,16 +16,16 @@ describe('DatePicker', () => {
     })
 
     it('should show the days', () => {
-      cy.get(selectors.datePicker.floatingBox).should(
-        'have.css',
-        'opacity',
-        '1'
+      cy.get(selectors.datePicker.floatingBox, { timeout: 15000 }).should(
+        'be.visible'
       )
     })
 
     describe('and the first day is clicked', () => {
       before(() => {
-        cy.get(selectors.datePicker.day.inside).contains('1').click()
+        cy.get(selectors.datePicker.day.inside)
+          .contains('1')
+          .click({ force: true })
       })
 
       it('should set the value of the input to the date', () => {
@@ -39,7 +39,7 @@ describe('DatePicker', () => {
         cy.get(selectors.datePicker.outerWrapper).should(
           'have.css',
           'border',
-          `1px solid ${hexToRgb(ColorAction600)}`
+          `1px solid ${hexToRgb(ColorNeutral200)}`
         )
       })
     })
@@ -53,11 +53,7 @@ describe('DatePicker', () => {
     })
 
     it('should show the days', () => {
-      cy.get(selectors.datePicker.floatingBox).should(
-        'have.css',
-        'opacity',
-        '1'
-      )
+      cy.get(selectors.datePicker.floatingBox).should('be.visible')
     })
 
     describe('and the `from` day is clicked', () => {
