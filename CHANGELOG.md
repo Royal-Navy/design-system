@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.53.2](https://github.com/Royal-Navy/design-system/compare/2.53.1...2.53.2) (2021-06-16)
+
+
+### Bug Fixes
+
+* **DocsSite:** Adjust top-level navigation order ([993a00c](https://github.com/Royal-Navy/design-system/commit/993a00c6279674c1e9dcb6845d8d7539edc2fdc8))
+
+
+
+
+
 ## [2.53.1](https://github.com/Royal-Navy/design-system/compare/2.53.0...2.53.1) (2021-06-14)
 
 **Note:** Version bump only for package royal-navy-design-system
