@@ -13,11 +13,13 @@ export const StyledFloatingBox = styled.div<StyledFloatingBoxProps>`
 
   opacity: 0;
   pointer-events: none;
+  transition: 100ms opacity linear;
 
   ${({ $isVisible }) =>
     $isVisible &&
     css`
       opacity: 1;
       pointer-events: all;
+      transition: 100ms opacity linear;
     `}
 `
