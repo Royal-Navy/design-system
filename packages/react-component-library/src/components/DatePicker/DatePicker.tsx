@@ -1,12 +1,7 @@
 import React, { useState } from 'react'
 import { Placement } from '@popperjs/core'
 import { v4 as uuidv4 } from 'uuid'
-import {
-  DateUtils,
-  DayModifiers,
-  DayPickerProps,
-  RangeModifier,
-} from 'react-day-picker'
+import { DayPickerProps } from 'react-day-picker'
 
 import {
   FLOATING_BOX_PLACEMENT,
@@ -31,11 +26,7 @@ import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledSeparator } from './partials/StyledSeparator'
 import { useDatePickerOpenClose } from './useDatePickerOpenClose'
 import { useFloatingElement } from '../../hooks/useFloatingElement'
-
-export interface StateObject {
-  from?: Date
-  to?: Date
-}
+import { useSelection } from './useSelection'
 
 /**
  * @deprecated
@@ -113,22 +104,6 @@ export interface DatePickerProps
   placement?: DatePickerPlacement | Placement
 }
 
-function getNewState(
-  isRange: boolean,
-  day: Date,
-  state: StateObject
-): StateObject {
-  if (isRange) {
-    if (state.from && (state.to || state.from > day)) {
-      return { from: day }
-    }
-
-    return DateUtils.addDayToRange(day, state as RangeModifier)
-  }
-
-  return { from: day, to: day }
-}
-
 export const DatePicker: React.FC<DatePickerProps> = ({
   className,
   endDate,
@@ -157,10 +132,14 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     open,
   } = useDatePickerOpenClose(isOpen)
 
-  const [state, setState] = useState<StateObject>({
-    from: startDate,
-    to: endDate,
-  })
+  const { state, handleDayClick } = useSelection(
+    startDate,
+    endDate,
+    isRange,
+    onChange,
+    handleOnClose
+  )
+
   const [hasError, setHasError] = useState<boolean>(
     isInvalid || hasClass(className, 'is-invalid')
   )
@@ -168,22 +147,6 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 
   const { from, to } = state
   const modifiers = { start: from, end: to }
-
-  function handleDayClick(day: Date, dayModifiers?: DayModifiers) {
-    if (dayModifiers && dayModifiers.disabled) {
-      return
-    }
-
-    const newState = getNewState(isRange, day, state)
-    setState(newState)
-
-    if (onChange) {
-      onChange({
-        startDate: newState.from,
-        endDate: newState.to,
-      })
-    }
-  }
 
   const hasContent = !!((value && value.length) || from)
 

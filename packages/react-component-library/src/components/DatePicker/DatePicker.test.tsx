@@ -201,8 +201,10 @@ describe('DatePicker', () => {
           })
         })
 
-        it('does not hide the container', () => {
-          expect(wrapper.getByTestId('floating-box')).toBeVisible()
+        it('hides the container', () => {
+          return waitFor(() => {
+            expect(wrapper.getByTestId('floating-box')).not.toBeVisible()
+          })
         })
       })
 
@@ -261,10 +263,10 @@ describe('DatePicker', () => {
             expect(wrapper.getByText('1')).toBeInTheDocument()
           })
 
-          it('continues to show the day picker container', () => {
-            expect(
-              wrapper.getByTestId('datepicker-input-button')
-            ).toHaveAttribute('aria-label', 'Hide day picker')
+          it('hides the day picker container', () => {
+            return waitFor(() => {
+              expect(wrapper.getByTestId('floating-box')).not.toBeVisible()
+            })
           })
 
           describe('and the return key is pressed', () => {
@@ -275,9 +277,9 @@ describe('DatePicker', () => {
             })
 
             it('hides the day picker container', () => {
-              expect(
-                wrapper.getByTestId('datepicker-input-button')
-              ).toHaveAttribute('aria-label', 'Show day picker')
+              return waitFor(() => {
+                expect(wrapper.getByTestId('floating-box')).not.toBeVisible()
+              })
             })
           })
 
@@ -304,10 +306,10 @@ describe('DatePicker', () => {
               })
             })
 
-            it('continues to show the day picker container', () => {
-              expect(
-                wrapper.getByTestId('datepicker-input-button')
-              ).toHaveAttribute('aria-label', 'Hide day picker')
+            it('hides the day picker container', () => {
+              return waitFor(() => {
+                expect(wrapper.getByTestId('floating-box')).not.toBeVisible()
+              })
             })
           })
         })
