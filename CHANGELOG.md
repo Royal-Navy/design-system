@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.54.0](https://github.com/Royal-Navy/design-system/compare/2.53.2...2.54.0) (2021-06-18)
+
+
+### Bug Fixes
+
+* **DatePicker:** Close single picker on selection ([81b5cfe](https://github.com/Royal-Navy/design-system/commit/81b5cfe8611a9d3736c13fddfbd5f5ff56928b7e))
+* **DatePicker:** Resolve tab order issues ([1408b5d](https://github.com/Royal-Navy/design-system/commit/1408b5da89753248479ee12d91dfbd8eb42ef6f5))
+
+
+### Features
+
+* **FloatingBox:** Add open close transition ([11df104](https://github.com/Royal-Navy/design-system/commit/11df104a47914962be7b36d8c923a0bec8bce8d2))
+
+
+
+
+
 ## [2.53.2](https://github.com/Royal-Navy/design-system/compare/2.53.1...2.53.2) (2021-06-16)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.54.0](https://github.com/Royal-Navy/design-system/compare/2.53.2...2.54.0) (2021-06-18)
+
+**Note:** Version bump only for package @royalnavy/eslint-config-react
+
+
+
+
+
 ## [2.53.2](https://github.com/Royal-Navy/design-system/compare/2.53.1...2.53.2) (2021-06-16)
 
 **Note:** Version bump only for package @royalnavy/eslint-config-react
