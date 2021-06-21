@@ -1,0 +1,22 @@
+name: Automerge
+
+on:
+  workflow_run:
+    types:
+      - completed
+    workflows:
+      - 'Build & Test Feature'
+
+jobs:
+  Automerge:
+    name: Merge Dependabot PR's
+    runs-on: ubuntu-latest
+    steps:
+      - # Only run on successfully completed jobs
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        name: Run merge me action
+        uses: Royal-Navy/merge-me-action@master
+        with:
+          # This token must be used as the GitHub Actions token does not support pushing
+          # to protected branches.
+          GITHUB_TOKEN: ${{ secrets.MERGE_BOT }}
