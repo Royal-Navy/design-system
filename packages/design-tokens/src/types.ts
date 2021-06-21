@@ -1,10 +1,10 @@
-import * as animationTokens from './tokens/animation.json'
-import * as breakpointsTokens from './tokens/breakpoints.json'
-import * as coloursTokens from './tokens/colours.json'
-import * as shadowsTokens from './tokens/shadows.json'
-import * as spacingTokens from './tokens/spacing.json'
-import * as typographyTokens from './tokens/typography.json'
-import * as zindexTokens from './tokens/zindex.json'
+import * as animationTokens from './tokens/light/animation.json'
+import * as breakpointsTokens from './tokens/light/breakpoints.json'
+import * as coloursTokens from './tokens/light/colours.json'
+import * as shadowsTokens from './tokens/light/shadows.json'
+import * as spacingTokens from './tokens/light/spacing.json'
+import * as typographyTokens from './tokens/light/typography.json'
+import * as zindexTokens from './tokens/light/zindex.json'
 
 const tokens = {
   animationTokens,
@@ -23,6 +23,10 @@ export type StyledComponentsInterpolation =
   | StyledComponentsInterpolation[]
 
 export type Tokens = typeof tokens
+
+export type Theme = Tokens & { mode: string }
+
+export type ThemeProps = { theme?: Theme }
 
 export type AnimationTiming = keyof Tokens['animationTokens']['timing']
 

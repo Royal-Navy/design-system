@@ -1,0 +1,37 @@
+{
+  "zindex": {
+    "context": {
+      "value": "10000"
+    },
+    "dialog": {
+      "value": "9000"
+    },
+    "modal": {
+      "value": "8000"
+    },
+    "masthead": {
+      "value": "7000"
+    },
+    "sidebar": {
+      "value": "7000"
+    },
+    "overlay": {
+      "value": "6000"
+    },
+    "dropdown": {
+      "value": "5000"
+    },
+    "header": {
+      "value": "4000"
+    },
+    "footer": {
+      "value": "3000"
+    },
+    "timeline": {
+     "value": "0"
+    },
+    "body": {
+      "value": "0"
+    }
+  }
+}

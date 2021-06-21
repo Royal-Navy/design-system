@@ -1,14 +1,7 @@
 import get from 'lodash/get'
 import { css } from 'styled-components'
 
-import * as animationTokens from './tokens/animation.json'
-import * as breakpointsTokens from './tokens/breakpoints.json'
-import * as coloursTokens from './tokens/colours.json'
-import * as shadowsTokens from './tokens/shadows.json'
-import * as spacingTokens from './tokens/spacing.json'
-import * as typographyTokens from './tokens/typography.json'
-import * as zindexTokens from './tokens/zindex.json'
-
+import defaultTheme from './themes/light'
 import {
   AnimationTiming,
   BreakpointSize,
@@ -20,9 +13,19 @@ import {
   TypographySize,
   ZIndexGroup,
   StyledComponentsInterpolation,
+  Theme,
 } from './types'
 
-export function getBreakpoint(size: BreakpointSize): Breakpoint | undefined {
+function getTheme(theme?: Theme): Theme {
+  return theme?.coloursTokens ? theme : defaultTheme
+}
+
+export function getBreakpoint(
+  size: BreakpointSize,
+  theme?: Theme
+): Breakpoint | undefined {
+  const { breakpointsTokens } = getTheme(theme)
+
   const breakpoint = get(
     breakpointsTokens,
     `breakpoint[${size}].breakpoint.value`
@@ -39,11 +42,14 @@ export function getBreakpoint(size: BreakpointSize): Breakpoint | undefined {
   }
 }
 
-export function getMediaQuery(options: {
-  gte: BreakpointSize
-  lt?: BreakpointSize
-  media?: string
-}): (
+export function getMediaQuery(
+  options: {
+    gte: BreakpointSize
+    lt?: BreakpointSize
+    media?: string
+  },
+  theme?: Theme
+): (
   strings: TemplateStringsArray,
   ...interpolations: StyledComponentsInterpolation[]
 ) => string {
@@ -51,6 +57,8 @@ export function getMediaQuery(options: {
     media: 'only screen and',
     ...options,
   }
+
+  const { breakpointsTokens } = getTheme(theme)
 
   const breakpointGTE = get(
     breakpointsTokens,
@@ -86,32 +94,48 @@ export function getMediaQuery(options: {
   }
 }
 
+export function getAnimation(
+  index: AnimationTiming,
+  theme?: Theme
+): string | undefined {
+  return get(getTheme(theme).animationTokens, `timing[${index}].value`)
+}
+
 export function getColour(
   group: ColourGroup,
-  weight: ColourShade
+  weight: ColourShade,
+  theme?: Theme
 ): string | undefined {
-  return get(coloursTokens, `color[${group}][${weight}].value`)
+  return get(getTheme(theme).coloursTokens, `color[${group}][${weight}].value`)
+}
+
+export function getTypography(
+  size: TypographySize,
+  theme?: Theme
+): string | undefined {
+  return get(getTheme(theme).typographyTokens, `typography[${size}].value`)
+}
+
+export function getShadow(
+  weight: ShadowWeight,
+  theme?: Theme
+): string | undefined {
+  return get(getTheme(theme).shadowsTokens, `shadow[${weight}].value`)
+}
+
+export function getSpacing(
+  spacing: Spacing,
+  theme?: Theme
+): string | undefined {
+  return get(getTheme(theme).spacingTokens, `spacing[${spacing}].value`)
 }
 
 export function getZIndex(
   group: ZIndexGroup,
-  offset: number
+  offset: number,
+  theme?: Theme
 ): number | undefined {
-  return Number(get(zindexTokens, `zindex[${group}].value`)) + offset
-}
-
-export function getShadow(weight: ShadowWeight): string | undefined {
-  return get(shadowsTokens, `shadow[${weight}].value`)
-}
-
-export function getSpacing(spacing: Spacing): string | undefined {
-  return get(spacingTokens, `spacing[${spacing}].value`)
-}
-
-export function getTypography(size: TypographySize): string | undefined {
-  return get(typographyTokens, `typography[${size}].value`)
-}
-
-export function getAnimation(index: AnimationTiming): string | undefined {
-  return get(animationTokens, `timing[${index}].value`)
+  return (
+    Number(get(getTheme(theme).zindexTokens, `zindex[${group}].value`)) + offset
+  )
 }

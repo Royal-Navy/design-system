@@ -1,0 +1,37 @@
+{
+  "typography": {
+    "xxs": {
+      "value": "0.5rem"
+    },
+    "xs": {
+      "value": "0.625rem"
+    },
+    "s": {
+      "value": "0.75rem"
+    },
+    "base": {
+      "value": "0.875rem"
+    },
+    "m": {
+      "value": "1rem"
+    },
+    "l": {
+      "value": "1.125rem"
+    },
+    "xl": {
+      "value": "1.25rem"
+    },
+    "xxl": {
+      "value": "1.5rem"
+    },
+    "display": {
+      "value": "1.875rem"
+    },
+    "display-l": {
+      "value": "2.25rem"
+    },
+    "display-xl": {
+      "value": "3rem"
+    }
+  }
+}
