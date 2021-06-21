@@ -1,20 +1,15 @@
 import React, { createContext } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
-import {
-  selectors,
-  BreakpointSize,
-  lightTheme,
-  Tokens,
-} from '@royalnavy/design-tokens'
+import { selectors, BreakpointSize, lightTheme } from '@royalnavy/design-tokens'
 
 interface GlobalStyleContextDefaults {
-  theme?: Tokens
+  theme?: Record<string, any>
 }
 
 interface GlobalStyleProviderProps {
   children?: React.ReactNode
-  theme?: Tokens
+  theme?: Record<string, any>
 }
 
 const breakpoints: BreakpointSize[] = ['s', 'xs', 'm', 'l', 'xl', 'xxl']

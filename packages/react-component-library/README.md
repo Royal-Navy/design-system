@@ -46,6 +46,14 @@ This context provider component applies global Royal Navy Design System styles t
 
 By default the `GlobalStyleProvider` will use the `lightTheme` exported by the `@royalnavy/design-tokens` package. You can create your own themes by injecting your own custom token set via the `theme` prop.
 
+We recommend reading the following blog post on [`styled-theming`](https://jamie.build/styled-theming.html). Using this pattern you can selectively theme individual components. Inverting responsibility for the implementation of the theme to the component itself.
+
+When utilising this pattern remember to extend a base token set:
+
+```javascript
+<GlobalStyleProvider theme={{ ...lightTheme, customThemeMode: 'foo' }} />
+```
+
 ## Hooks
 
 ### `useFloatingElement`
