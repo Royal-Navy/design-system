@@ -62,11 +62,6 @@ export function getMediaQuery(options: {
     `breakpoint[${lt}].breakpoint.value`
   )
 
-  const baseFontSize = get(
-    breakpointsTokens,
-    `breakpoint[${gte}].baseFontSize.value`
-  )
-
   return function (
     strings: TemplateStringsArray,
     ...interpolations: StyledComponentsInterpolation[]
