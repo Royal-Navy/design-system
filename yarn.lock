@@ -11596,9 +11596,9 @@ gatsby-plugin-sass@^4.5.0:
     sass-loader "^10.1.1"
 
 gatsby-plugin-styled-components@^4.5.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-4.7.0.tgz#3356cba3037f599ec8cec919243c54ae2a479dd9"
-  integrity sha512-bwj2uSxDbnyCKsOLmCSAKuGxicOpPqDwYZmWDOnkm1nKbcEg1iZ6Mx4fXFC8TvJMKuGzrtJFGwe2M204p6BERQ==
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-4.8.0.tgz#6c8bbc44e40d5e9d3e0c1a96c425f0f49d7a2b85"
+  integrity sha512-1mlwle7Qy+K5UZRZByPTeRssRegLbhLC62zUS6aPIZ6C40W167wHL4VrM6byGqpJOcr4LwBsxB+VwbEWqZ1Qnw==
   dependencies:
     "@babel/runtime" "^7.14.0"
 
@@ -24706,9 +24706,9 @@ write-pkg@^4.0.0:
     write-json-file "^3.2.0"
 
 ws@7.4.5, ws@7.4.6, "ws@^5.2.0 || ^6.0.0 || ^7.0.0", ws@^6.2.1, ws@^7.3.0, ws@^7.3.1, ws@^7.4.5, ws@^7.4.6, ws@~7.4.2:
-  version "7.4.6"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.6.tgz#5654ca8ecdeee47c33a9a4bf6d28e2be2980377c"
-  integrity sha512-YmhHDO4MzaDLB+M9ym/mDA5z0naX8j7SIlT8f8z+I0VtzsRbekxEutHSme7NPS2qE8StCYQNUnfWdXta/Yu85A==
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.0.tgz#0033bafea031fb9df041b2026fc72a571ca44691"
+  integrity sha512-6ezXvzOZupqKj4jUqbQ9tXuJNo+BR2gU8fFRk3XCP3e0G6WT414u5ELe6Y0vtp7kmSJ3F7YWObSNr1ESsgi4vw==
 
 x-is-string@^0.1.0:
   version "0.1.0"
