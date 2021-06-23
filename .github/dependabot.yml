@@ -9,7 +9,7 @@ updates:
   - m7kvqbe1
   - thyhjwb6
   labels:
-  - "Type: Devops"
+  - "Type: Dependencies"
   ignore:
   - dependency-name: webpack-cli
     versions:
@@ -27,4 +27,4 @@ updates:
     - 5.22.0
   commit-message:
     prefix: chore(Security)
-  rebase-strategy: disabled
+  rebase-strategy: auto
