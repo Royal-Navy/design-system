@@ -12,10 +12,10 @@ To install and save to your project's package.json dependencies, run:
 
 ```
 // with npm
-npm install @royalnavy/css-framework @royalnavy/react-component-library
+npm install @royalnavy/fonts @royalnavy/react-component-library
 
 // ...or with yarn
-yarn add @royalnavy/css-framework @royalnavy/react-component-library
+yarn add @royalnavy/fonts @royalnavy/react-component-library
 ```
 
 NOTE: As of `2.16.0` the [`styled-components`](https://github.com/styled-components/styled-components) package is now a required [peerDependency](https://nodejs.org/en/blog/npm/peer-dependencies/).
