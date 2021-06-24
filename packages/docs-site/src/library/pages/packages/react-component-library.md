@@ -10,10 +10,10 @@ The Royal Navy React Component Library is available as an [NPM package](https://
 
 ```
 // npm
-npm install @royalnavy/react-component-library
+npm install @royalnavy/fonts @royalnavy/react-component-library
 
 // yarn
-yarn add @royalnavy/react-component-library
+yarn add @royalnavy/fonts @royalnavy/react-component-library
 ```
 
 NOTE: As of `2.16.0` the [`styled-components`](https://github.com/styled-components/styled-components) package is now a required [peerDependency](https://nodejs.org/en/blog/npm/peer-dependencies/).
@@ -42,3 +42,37 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 ## `<GlobalStyleProvider />`
 
 This context provider component applies global Royal Navy Design System styles to your application (resets, normalize and fonts). You should wrap the root of your app in this component.
+
+## Hooks
+
+### `useFloatingElement`
+
+This hook aids in the positioning of arbitrary elements relative to a target element. The positoning engine will intelligently position the element based on available screen real-estate.
+
+```javascript
+import { useFloatingElement } from '@royalnavy/react-component-library'
+
+const Example = () => {
+  const {
+    targetElementRef,
+    floatingElementRef,
+    arrowElementRef,
+    styles,
+    attributes,
+  } = useFloatingElement(placement)
+
+  return (
+    <>
+      <Target ref={targetElementRef} />
+      <Float
+        ref={floatingElementRef}
+        style={styles.popper}
+        {...attributes.popper}
+      >
+        Hello, World!
+      </Float>
+    </>
+  )
+}
+
+```

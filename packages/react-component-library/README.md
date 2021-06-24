@@ -8,10 +8,10 @@ The Royal Navy React Component Library is available as an [NPM package](https://
 
 ```
 // npm
-npm install @royalnavy/react-component-library
+npm install @royalnavy/fonts @royalnavy/react-component-library
 
 // yarn
-yarn add @royalnavy/react-component-library
+yarn add @royalnavy/fonts @royalnavy/react-component-library
 ```
 
 NOTE: As of `2.16.0` the [`styled-components`](https://github.com/styled-components/styled-components) package is now a required [peerDependency](https://nodejs.org/en/blog/npm/peer-dependencies/).
