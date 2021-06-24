@@ -53,7 +53,7 @@ Another use for the Action palette is for the components that need to stand out 
   <Swatch color="#85c6f2" name="300" />
   <Swatch color="#b7dff7" name="200" />
   <Swatch color="#ddf4ff" name="100" />
-  <Swatch color="#ecf8ff" name="100" />
+  <Swatch color="#ecf8ff" name="000" />
 </div>
 
 ### State Colours

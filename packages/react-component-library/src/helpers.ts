@@ -22,6 +22,11 @@ function hasClass(allClasses: string, className: string) {
   return allClasses && allClasses.split(' ').includes(className)
 }
 
+function isIE11() {
+  // @ts-ignore
+  return !!window.MSInputMethodContext && !!document.documentMode
+}
+
 function warnIfOverwriting<P>(
   props: P,
   propertyName: string,
@@ -48,4 +53,12 @@ function withKey(
   return null
 }
 
-export { getInitials, getId, getKey, hasClass, warnIfOverwriting, withKey }
+export {
+  getInitials,
+  getId,
+  getKey,
+  hasClass,
+  isIE11,
+  warnIfOverwriting,
+  withKey,
+}

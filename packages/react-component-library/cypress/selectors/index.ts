@@ -1,5 +1,5 @@
-import timeline from './timeline'
 import datePicker from './DatePicker'
+import timeline from './timeline'
 
 export default {
   datePicker,
