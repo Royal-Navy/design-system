@@ -4,7 +4,7 @@ import { selectors } from '@royalnavy/design-tokens'
 import {
   getOuterWrapperBorder,
   StyledOuterWrapperProps,
-} from '../../../styled-components'
+} from '../../../styled-components/input'
 
 const { color } = selectors
 

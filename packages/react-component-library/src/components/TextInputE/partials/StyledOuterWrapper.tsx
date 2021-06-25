@@ -1,18 +1,13 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
 
 import {
-  getOuterWrapperBorder,
+  StyledOuterWrapper as StyledOuterWrapperBase,
   StyledOuterWrapperProps,
-} from '../../../styled-components/inpute'
+} from '../../../styled-components'
 
-const { color } = selectors
-
-export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
+export const StyledOuterWrapper = styled(
+  StyledOuterWrapperBase
+)<StyledOuterWrapperProps>`
   display: inline-flex;
   flex-direction: row;
-  background-color: ${({ $isDisabled }) =>
-    $isDisabled ? color('neutral', '000') : color('neutral', 'white')};
-
-  ${(props) => getOuterWrapperBorder(props)}
 `
