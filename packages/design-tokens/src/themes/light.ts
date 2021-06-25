@@ -1,6 +1,6 @@
 import * as animationTokens from '../tokens/light/animation.json'
 import * as breakpointsTokens from '../tokens/light/breakpoints.json'
-import * as coloursTokens from '../tokens/light/colours.json'
+import * as colorsTokens from '../tokens/light/colors.json'
 import * as shadowsTokens from '../tokens/light/shadows.json'
 import * as spacingTokens from '../tokens/light/spacing.json'
 import * as typographyTokens from '../tokens/light/typography.json'
@@ -10,7 +10,7 @@ export default {
   mode: 'light',
   animationTokens,
   breakpointsTokens,
-  coloursTokens,
+  colorsTokens,
   shadowsTokens,
   spacingTokens,
   typographyTokens,

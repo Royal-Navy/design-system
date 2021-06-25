@@ -1,6 +1,6 @@
 import * as animationTokens from './tokens/light/animation.json'
 import * as breakpointsTokens from './tokens/light/breakpoints.json'
-import * as coloursTokens from './tokens/light/colours.json'
+import * as colorsTokens from './tokens/light/colors.json'
 import * as shadowsTokens from './tokens/light/shadows.json'
 import * as spacingTokens from './tokens/light/spacing.json'
 import * as typographyTokens from './tokens/light/typography.json'
@@ -9,7 +9,7 @@ import * as zindexTokens from './tokens/light/zindex.json'
 const tokens = {
   animationTokens,
   breakpointsTokens,
-  coloursTokens,
+  colorsTokens,
   shadowsTokens,
   spacingTokens,
   typographyTokens,
@@ -37,9 +37,9 @@ export type Breakpoint = {
   baseFontSize: string
 }
 
-export type ColourGroup = keyof Tokens['coloursTokens']['color']
+export type ColorGroup = keyof Tokens['colorsTokens']['color']
 
-export type ColourShade =
+export type ColorShade =
   'black' | 'white' | '000' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'
 
 export type ShadowWeight = keyof Tokens['shadowsTokens']['shadow']

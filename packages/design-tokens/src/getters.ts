@@ -6,8 +6,8 @@ import {
   AnimationTiming,
   BreakpointSize,
   Breakpoint,
-  ColourGroup,
-  ColourShade,
+  ColorGroup,
+  ColorShade,
   ShadowWeight,
   Spacing,
   TypographySize,
@@ -17,7 +17,7 @@ import {
 } from './types'
 
 function getTheme(theme?: Theme): Theme {
-  return theme?.coloursTokens ? theme : defaultTheme
+  return theme?.colorsTokens ? theme : defaultTheme
 }
 
 export function getBreakpoint(
@@ -102,11 +102,11 @@ export function getAnimation(
 }
 
 export function getColour(
-  group: ColourGroup,
-  weight: ColourShade,
+  group: ColorGroup,
+  weight: ColorShade,
   theme?: Theme
 ): string | undefined {
-  return get(getTheme(theme).coloursTokens, `color[${group}][${weight}].value`)
+  return get(getTheme(theme).colorsTokens, `color[${group}][${weight}].value`)
 }
 
 export function getTypography(
