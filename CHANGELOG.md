@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.55.0](https://github.com/Royal-Navy/design-system/compare/2.54.1...2.55.0) (2021-06-25)
+
+
+### Bug Fixes
+
+* **TextInput:** Ensure component is controlled ([dcbc92a](https://github.com/Royal-Navy/design-system/commit/dcbc92a4c998aab9633e0893b16170ef11febce9))
+
+
+### Features
+
+* **TextInputE:** Create component ([0e900fd](https://github.com/Royal-Navy/design-system/commit/0e900fd6b7b003c0eb959a74fac4ad10b5b0d639))
+
+
+
+
+
 ## [2.54.1](https://github.com/Royal-Navy/design-system/compare/2.54.0...2.54.1) (2021-06-23)
 
 **Note:** Version bump only for package royal-navy-design-system
