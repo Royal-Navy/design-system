@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components'
+
+import { isIE11 } from '../../../helpers'
 import {
   StyledLabel as StyledLabelBase,
   StyledLabelProps,
 } from '../../../styled-components/partials/StyledLabel'
-
-import { isIE11 } from '../../../helpers'
 
 function getYPosition() {
   return isIE11() ? '15px' : '13px'
