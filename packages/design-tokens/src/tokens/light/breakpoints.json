@@ -1,0 +1,60 @@
+{
+  "breakpoint": {
+    "root": {
+      "breakpoint": {
+        "value": "0"
+      },
+      "baseFontSize": {
+        "value": "100%"
+      }
+    },
+    "xs": {
+      "breakpoint": {
+        "value": "576px"
+      },
+      "baseFontSize": {
+        "value": "94%"
+      }
+    },
+    "s": {
+      "breakpoint": {
+        "value": "768px"
+      },
+      "baseFontSize": {
+        "value": "96%"
+      }
+    },
+    "m": {
+      "breakpoint": {
+        "value": "1024px"
+      },
+      "baseFontSize": {
+        "value": "98%"
+      }
+    },
+    "l": {
+      "breakpoint": {
+        "value": "1200px"
+      },
+      "baseFontSize": {
+        "value": "100%"
+      }
+    },
+    "xl": {
+      "breakpoint": {
+        "value": "1400px"
+      },
+      "baseFontSize": {
+        "value": "103%"
+      }
+    },
+    "xxl": {
+      "breakpoint": {
+        "value": "1600px"
+      },
+      "baseFontSize": {
+        "value": "106%"
+      }
+    }
+  }
+}

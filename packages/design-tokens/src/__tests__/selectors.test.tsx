@@ -6,11 +6,21 @@ import 'jest-styled-components'
 
 import { selectors } from '..'
 
-const { mediaQuery, mq, spacing } = selectors
+const {
+  mediaQuery,
+  mq,
+  spacing,
+  breakpoint,
+  animation,
+  color,
+  fontSize,
+  shadow,
+  zIndex,
+} = selectors
+
+let wrapper: RenderResult
 
 describe('mediaQuery / mq', () => {
-  let wrapper: RenderResult
-
   describe('with invalid breakpoints', () => {
     it('throws an error', () => {
       expect(() => {
@@ -107,5 +117,129 @@ describe('mediaQuery / mq', () => {
         }
       )
     })
+  })
+})
+
+describe('breakpoint', () => {
+  const StyledComponent = styled.div`
+    @media only screen and (min-width: ${breakpoint('xs').breakpoint}) {
+      font-size: ${breakpoint('xs').baseFontSize};
+    }
+  `
+
+  beforeEach(() => {
+    wrapper = render(<StyledComponent data-testid="test-element" />)
+  })
+
+  it('should set styles correctly', () => {
+    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+      'font-size',
+      '94%',
+      {
+        media: 'only screen and (min-width:576px)',
+      }
+    )
+  })
+})
+
+describe('animation', () => {
+  const StyledComponent = styled.div`
+    transition: opacity ${animation('default')} linear;
+  `
+
+  beforeEach(() => {
+    wrapper = render(<StyledComponent data-testid="test-element" />)
+  })
+
+  it('should set styles correctly', () => {
+    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+      'transition',
+      'opacity 0.2s linear'
+    )
+  })
+})
+
+describe('color', () => {
+  const StyledComponent = styled.div`
+    color: ${color('neutral', '100')};
+  `
+
+  beforeEach(() => {
+    wrapper = render(<StyledComponent data-testid="test-element" />)
+  })
+
+  it('should set styles correctly', () => {
+    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+      'color',
+      '#e2e9ee'
+    )
+  })
+})
+
+describe('fontSize', () => {
+  const StyledComponent = styled.div`
+    font-size: ${fontSize('xs')};
+  `
+
+  beforeEach(() => {
+    wrapper = render(<StyledComponent data-testid="test-element" />)
+  })
+
+  it('should set styles correctly', () => {
+    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+      'font-size',
+      '0.625rem'
+    )
+  })
+})
+
+describe('shadow', () => {
+  const StyledComponent = styled.div`
+    box-shadow: ${shadow('0')};
+  `
+
+  beforeEach(() => {
+    wrapper = render(<StyledComponent data-testid="test-element" />)
+  })
+
+  it('should set styles correctly', () => {
+    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+      'box-shadow',
+      '0 0 0 transparent'
+    )
+  })
+})
+
+describe('spacing', () => {
+  const StyledComponent = styled.div`
+    padding: ${spacing('4')};
+  `
+
+  beforeEach(() => {
+    wrapper = render(<StyledComponent data-testid="test-element" />)
+  })
+
+  it('should set styles correctly', () => {
+    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+      'padding',
+      '0.5rem'
+    )
+  })
+})
+
+describe('zIndex', () => {
+  const StyledComponent = styled.div`
+    z-index: ${zIndex('overlay', 1)};
+  `
+
+  beforeEach(() => {
+    wrapper = render(<StyledComponent data-testid="test-element" />)
+  })
+
+  it('should set styles correctly', () => {
+    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+      'z-index',
+      '6001'
+    )
   })
 })

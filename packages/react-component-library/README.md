@@ -23,10 +23,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import '@royalnavy/fonts'
 import { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
+import { lightTheme } from '@royalnavy/design-tokens'
 
 function App() {
   return (
-    <GlobalStyleProvider>
+    <GlobalStyleProvider theme={lightTheme}>
       <Button variant="primary">
         Hello, World!
       </Button>
@@ -40,6 +41,18 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 ## `<GlobalStyleProvider />`
 
 This context provider component applies global Royal Navy Design System styles to your application (resets, normalize and fonts). You should wrap the root of your app in this component.
+
+### Theming
+
+By default the `GlobalStyleProvider` will use the `lightTheme` exported by the `@royalnavy/design-tokens` package. You can create your own themes by injecting your own custom token set via the `theme` prop.
+
+We recommend reading the following blog post on [`styled-theming`](https://jamie.build/styled-theming.html). Using this pattern you can selectively theme individual components. Inverting responsibility for the implementation of the theme to the component itself.
+
+When utilising this pattern remember to extend a base token set:
+
+```javascript
+<GlobalStyleProvider theme={{ ...lightTheme, customThemeMode: 'foo' }} />
+```
 
 ## Hooks
 

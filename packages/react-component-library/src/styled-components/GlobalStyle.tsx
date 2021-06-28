@@ -1,15 +1,15 @@
 import React, { createContext } from 'react'
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
-import { selectors, BreakpointSize } from '@royalnavy/design-tokens'
+import { selectors, BreakpointSize, lightTheme } from '@royalnavy/design-tokens'
 
 interface GlobalStyleContextDefaults {
-  theme?: string
+  theme?: Record<string, any>
 }
 
 interface GlobalStyleProviderProps {
   children?: React.ReactNode
-  theme?: string
+  theme?: Record<string, any>
 }
 
 const breakpoints: BreakpointSize[] = ['s', 'xs', 'm', 'l', 'xl', 'xxl']
@@ -101,14 +101,14 @@ export const GlobalStyleContext = createContext(globalStyleContextDefaults)
 
 export const GlobalStyleProvider: React.FC<GlobalStyleProviderProps> = ({
   children,
-  theme = 'light',
+  theme = lightTheme,
 }) => {
   return (
     <GlobalStyleContext.Provider value={{ theme }}>
       <Normalize />
       <BoxSizing />
       <Fonts />
-      {children}
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </GlobalStyleContext.Provider>
   )
 }
