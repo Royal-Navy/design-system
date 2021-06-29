@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.56.0](https://github.com/Royal-Navy/design-system/compare/2.55.1...2.56.0) (2021-06-29)
+
+
+### Features
+
+* **StyledComponents:** Add design token theming ([4d71de4](https://github.com/Royal-Navy/design-system/commit/4d71de494af534120094a9ab9723ce4037c01d27))
+
+
+
+
+
 ## [2.55.1](https://github.com/Royal-Navy/design-system/compare/2.55.0...2.55.1) (2021-06-28)
 
 **Note:** Version bump only for package @royalnavy/react-component-library
