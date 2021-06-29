@@ -7,7 +7,7 @@ import * as yup from 'yup'
 import { withFormik } from '../../enhancers/withFormik'
 import { RadioE, RadioEProps } from '.'
 import { Button } from '../Button'
-import { FormikGroup } from '../FormikGroup'
+import { FormikGroupE } from '../FormikGroup'
 import { Fieldset } from '../Fieldset'
 
 export default {
@@ -124,51 +124,47 @@ export const WithFormikGroup: Story<RadioEProps> = () => {
         validationSchema={validationSchema}
       >
         <Form>
-          <Fieldset>
-            <FormikGroup label="Select an option">
-              <Field
-                component={FormikRadio}
-                name="example"
-                label="Option 1"
-                value="Option 1"
-              />
-              <Field
-                component={FormikRadio}
-                name="example"
-                label="Option 2"
-                value="Option 2"
-              />
-              <Field
-                component={FormikRadio}
-                name="example"
-                label="Option 3"
-                value="Option 3"
-              />
-            </FormikGroup>
-          </Fieldset>
+          <FormikGroupE label="Select an option">
+            <Field
+              component={FormikRadio}
+              name="example"
+              label="Option 1"
+              value="Option 1"
+            />
+            <Field
+              component={FormikRadio}
+              name="example"
+              label="Option 2"
+              value="Option 2"
+            />
+            <Field
+              component={FormikRadio}
+              name="example"
+              label="Option 3"
+              value="Option 3"
+            />
+          </FormikGroupE>
           <br />
-          <Fieldset>
-            <FormikGroup label="Select another option">
-              <Field
-                component={FormikRadio}
-                name="exampleWithError"
-                label="Another option 1"
-                value="Another option 1"
-              />
-              <Field
-                component={FormikRadio}
-                name="exampleWithError"
-                label="Another option 2"
-                value="Another option 2"
-              />
-              <Field
-                component={FormikRadio}
-                name="exampleWithError"
-                label="Another option 3"
-                value="3"
-              />
-            </FormikGroup>
-          </Fieldset>
+          <FormikGroupE label="Select another option">
+            <Field
+              component={FormikRadio}
+              name="exampleWithError"
+              label="Another option 1"
+              value="Another option 1"
+            />
+            <Field
+              component={FormikRadio}
+              name="exampleWithError"
+              label="Another option 2"
+              value="Another option 2"
+            />
+            <Field
+              component={FormikRadio}
+              name="exampleWithError"
+              label="Another option 3"
+              value="3"
+            />
+          </FormikGroupE>
           <br />
           <Button type="submit">Submit</Button>
         </Form>

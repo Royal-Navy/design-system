@@ -63,38 +63,46 @@ const StyledFieldError = styled.div`
   font-size: ${fontSize('base')};
 `
 
+const StyledFieldErrorE = styled.div`
+  color: ${color('danger', '800')};
+  margin-left: ${spacing('8')};
+  margin-bottom: ${spacing('2')};
+  font-size: ${fontSize('s')};
+`
+
 export const FieldError: React.FC<FieldErrorProps> = (props) => (
   <StyledFieldError data-testid="error" {...props} />
 )
 
-export const withFormik = (FormComponent: React.FC<any> | string) => ({
-  field,
-  form: { touched, errors },
-  className,
-  ...props
-}: FormikProps) => {
-  const { name } = field
-  const error = getError(touched, errors, name)
-  const isInvalid = !!error
+export const FieldErrorE: React.FC<FieldErrorProps> = (props) => (
+  <StyledFieldErrorE data-testid="error" {...props} />
+)
 
-  const formComponentClassNames = classNames(className, {
-    'is-invalid': isInvalid,
-  })
+export const withFormik =
+  (FormComponent: React.FC<any> | string) =>
+  ({ field, form: { touched, errors }, className, ...props }: FormikProps) => {
+    const { name } = field
+    const error = getError(touched, errors, name)
+    const isInvalid = !!error
 
-  const formComponentProps = {
-    ...field,
-    ...transformErrorToAriaAttributes(error),
-    ...props,
-    isInvalid,
-    className: formComponentClassNames,
+    const formComponentClassNames = classNames(className, {
+      'is-invalid': isInvalid,
+    })
+
+    const formComponentProps = {
+      ...field,
+      ...transformErrorToAriaAttributes(error),
+      ...props,
+      isInvalid,
+      className: formComponentClassNames,
+    }
+
+    return (
+      <div>
+        <FormComponent {...formComponentProps} />
+        {!props['aria-describedby'] && error && (
+          <FieldError id={error.id}>{error.text}</FieldError>
+        )}
+      </div>
+    )
   }
-
-  return (
-    <div>
-      <FormComponent {...formComponentProps} />
-      {!props['aria-describedby'] && error && (
-        <FieldError id={error.id}>{error.text}</FieldError>
-      )}
-    </div>
-  )
-}

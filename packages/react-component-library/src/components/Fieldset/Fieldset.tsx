@@ -1,14 +1,27 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 
 import { StyledCheckbox } from '../CheckboxE/partials/StyledCheckbox'
 import { StyledRadio } from '../RadioE/partials/StyledRadio'
 
-const StyledFieldset = styled.fieldset`
-  border: none;
+interface StyledFieldsetProps {
+  $isInvalid?: boolean
+}
+
+interface FieldsetProps extends ComponentWithClass {
+  isInvalid?: boolean
+}
+
+const { color } = selectors
+
+const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
+  display: inline-block;
+  border: 1px solid transparent;
   padding: unset;
+  border-radius: 15px;
 
   div {
     ${StyledCheckbox}, ${StyledRadio} {
@@ -83,7 +96,7 @@ const StyledFieldset = styled.fieldset`
     `}
 `
 
-export const Fieldset: React.FC<ComponentWithClass> = (props) => {
+export const Fieldset: React.FC<FieldsetProps> = (props) => {
   return <StyledFieldset {...props} />
 }
 

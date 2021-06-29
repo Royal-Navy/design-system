@@ -7,7 +7,7 @@ import * as yup from 'yup'
 import { withFormik } from '../../enhancers/withFormik'
 import { CheckboxE, CheckboxEProps } from '.'
 import { Button } from '../Button'
-import { FormikGroup } from '../FormikGroup'
+import { FormikGroupE } from '../FormikGroup'
 import { Fieldset } from '../Fieldset'
 
 export default {
@@ -132,57 +132,53 @@ export const WithFormikGroup: Story<CheckboxEProps> = () => {
         validationSchema={validationSchema}
       >
         <Form>
-          <Fieldset>
-            <FormikGroup label="Select an option">
-              <Field
-                component={FormikCheckbox}
-                name="example"
-                label="Option 1"
-                value="Option 1"
-                type="checkbox"
-              />
-              <Field
-                component={FormikCheckbox}
-                name="example"
-                label="Option 2"
-                value="Option 2"
-                type="checkbox"
-              />
-              <Field
-                component={FormikCheckbox}
-                name="example"
-                label="Option 3"
-                value="Option 3"
-                type="checkbox"
-              />
-            </FormikGroup>
-          </Fieldset>
+          <FormikGroupE label="Select an option">
+            <Field
+              component={FormikCheckbox}
+              name="example"
+              label="Option 1"
+              value="Option 1"
+              type="checkbox"
+            />
+            <Field
+              component={FormikCheckbox}
+              name="example"
+              label="Option 2"
+              value="Option 2"
+              type="checkbox"
+            />
+            <Field
+              component={FormikCheckbox}
+              name="example"
+              label="Option 3"
+              value="Option 3"
+              type="checkbox"
+            />
+          </FormikGroupE>
           <br />
-          <Fieldset>
-            <FormikGroup label="Select another option">
-              <Field
-                component={FormikCheckbox}
-                name="exampleWithError"
-                label="Another option 1"
-                value="Another option 1"
-                type="checkbox"
-              />
-              <Field
-                component={FormikCheckbox}
-                name="exampleWithError"
-                label="Another option 2"
-                value="Another option 2"
-                type="checkbox"
-              />
-              <Field
-                component={FormikCheckbox}
-                name="exampleWithError"
-                label="Another option 3"
-                value="3"
-                type="checkbox"
-              />
-            </FormikGroup>
-          </Fieldset>
+          <FormikGroupE label="Select another option">
+            <Field
+              component={FormikCheckbox}
+              name="exampleWithError"
+              label="Another option 1"
+              value="Another option 1"
+              type="checkbox"
+            />
+            <Field
+              component={FormikCheckbox}
+              name="exampleWithError"
+              label="Another option 2"
+              value="Another option 2"
+              type="checkbox"
+            />
+            <Field
+              component={FormikCheckbox}
+              name="exampleWithError"
+              label="Another option 3"
+              value="3"
+              type="checkbox"
+            />
+          </FormikGroupE>
           <br />
           <Button type="submit">Submit</Button>
         </Form>
