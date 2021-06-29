@@ -25,11 +25,6 @@ export interface CheckboxEProps
    */
   defaultChecked?: boolean
   /**
-   * Toggles whether or note the component is marked as checked.
-   * @deprecated
-   */
-  isChecked?: boolean
-  /**
    * Toggles whether the component is disabled or not (preventing user interaction).
    */
   isDisabled?: boolean
