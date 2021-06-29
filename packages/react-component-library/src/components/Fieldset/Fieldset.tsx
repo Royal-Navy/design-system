@@ -4,13 +4,14 @@ import styled from 'styled-components'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 
 import { StyledCheckbox } from '../CheckboxE/partials/StyledCheckbox'
+import { StyledRadio } from '../RadioE/partials/StyledRadio'
 
 const StyledFieldset = styled.fieldset`
   border: none;
   padding: unset;
 
   div {
-    ${StyledCheckbox} {
+    ${StyledCheckbox}, ${StyledRadio} {
       border-radius: unset;
       border-bottom-width: 1px;
       border-bottom-color: transparent;
@@ -26,14 +27,14 @@ const StyledFieldset = styled.fieldset`
   }
 
   div:first-of-type {
-    ${StyledCheckbox} {
+    ${StyledCheckbox}, ${StyledRadio} {
       border-top-left-radius: 15px;
       border-top-right-radius: 15px;
     }
   }
 
   div:last-of-type {
-    ${StyledCheckbox} {
+    ${StyledCheckbox}, ${StyledRadio} {
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
       border-bottom-color: ${color('neutral', '200')};
