@@ -1,20 +1,14 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
-import { action } from '@storybook/addon-actions'
-import { Field, Formik, Form } from 'formik'
-import * as yup from 'yup'
 
 import { IconSearch } from '@royalnavy/icon-library'
-import { Button } from '../Button'
 import { TextInputE, TextInputEProps } from '.'
-
-import { withFormik } from '../../enhancers/withFormik'
 
 export default {
   component: TextInputE,
   title: 'Text Input (Experimental)',
   parameters: {
-    actions: { argTypesRegex: '^on.*' },
+    argTypes: { onBlur: { action: 'onBlur' } },
   },
 } as Meta
 
