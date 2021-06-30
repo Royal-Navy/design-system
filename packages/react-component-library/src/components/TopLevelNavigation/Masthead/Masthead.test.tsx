@@ -457,10 +457,10 @@ describe('Masthead', () => {
     })
 
     it('should not show the links', () => {
-      expect(wrapper.queryByText('Profile')).not.toBeVisible()
-      expect(wrapper.queryByText('Settings')).not.toBeVisible()
-      expect(wrapper.queryByText('Support')).not.toBeVisible()
-      expect(wrapper.queryByText('Logout')).not.toBeVisible()
+      expect(wrapper.queryByText('Profile')).not.toBeInTheDocument()
+      expect(wrapper.queryByText('Settings')).not.toBeInTheDocument()
+      expect(wrapper.queryByText('Support')).not.toBeInTheDocument()
+      expect(wrapper.queryByText('Logout')).not.toBeInTheDocument()
     })
 
     describe('and the avatar is clicked', () => {
@@ -469,10 +469,12 @@ describe('Masthead', () => {
       })
 
       it('should show the links', () => {
-        expect(wrapper.getByText('Profile')).toBeVisible()
-        expect(wrapper.getByText('Settings')).toBeVisible()
-        expect(wrapper.getByText('Support')).toBeVisible()
-        expect(wrapper.getByText('Logout')).toBeVisible()
+        return waitFor(() => {
+          expect(wrapper.getByText('Profile')).toBeVisible()
+          expect(wrapper.getByText('Settings')).toBeVisible()
+          expect(wrapper.getByText('Support')).toBeVisible()
+          expect(wrapper.getByText('Logout')).toBeVisible()
+        })
       })
 
       it('should spread arbitrary props on the user item', () => {

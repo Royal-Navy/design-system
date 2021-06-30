@@ -71,7 +71,9 @@ describe('Popover', () => {
       })
 
       it('to be visible to the end user', () => {
-        expect(wrapper.getByTestId('floating-box-content')).toBeVisible()
+        return waitFor(() => {
+          expect(wrapper.getByTestId('floating-box-content')).toBeVisible()
+        })
       })
 
       it('renders the provided arbitrary JSX', () => {
@@ -119,7 +121,9 @@ describe('Popover', () => {
       })
 
       it('to be visible to the end user', () => {
-        expect(wrapper.getByTestId('floating-box-content')).toBeVisible()
+        return waitFor(() => {
+          expect(wrapper.getByTestId('floating-box-content')).toBeVisible()
+        })
       })
 
       describe('and the user clicks on the target again', () => {
@@ -195,11 +199,19 @@ describe('Popover', () => {
       )
     })
 
-    it('should spread arbitrary props', () => {
-      expect(wrapper.getByTestId('popover')).toHaveAttribute(
-        'data-arbitrary',
-        'arbitrary'
-      )
+    describe('and the user hovers on the target element', () => {
+      beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getByText(HOVER_ON_ME))
+      })
+
+      it('should spread arbitrary props', () => {
+        return waitFor(() => {
+          expect(wrapper.getByTestId('popover')).toHaveAttribute(
+            'data-arbitrary',
+            'arbitrary'
+          )
+        })
+      })
     })
   })
 })

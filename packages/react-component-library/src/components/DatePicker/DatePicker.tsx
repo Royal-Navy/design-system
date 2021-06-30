@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Placement } from '@popperjs/core'
 import { v4 as uuidv4 } from 'uuid'
 import { DayPickerProps } from 'react-day-picker'
+import { Transition } from 'react-transition-group'
 
 import {
   FLOATING_BOX_PLACEMENT,
@@ -176,6 +177,13 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     attributes,
   } = useFloatingElement(legacyPlacementMap[placement] || placement)
 
+  const TRANSITION_STYLES = {
+    entering: { opacity: 0 },
+    entered: { opacity: 1 },
+    exiting: { opacity: 0 },
+    exited: { opacity: 0 },
+  }
+
   return (
     <>
       <StyledDatePickerInput
@@ -241,47 +249,50 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           </StyledButton>
         </StyledOuterWrapper>
       </StyledDatePickerInput>
-      <StyledFloatingBox
-        ref={floatingElementRef}
-        role="dialog"
-        data-testid="floating-box"
-        aria-modal
-        aria-labelledby={titleId}
-        aria-live="polite"
-        $isVisible={open}
-        style={styles.popper}
-        {...attributes.popper}
-        {...rest}
-      >
-        <FloatingBoxContent
-          contentId={contentId}
-          scheme={FLOATING_BOX_SCHEME.LIGHT}
-          data-testid="floating-box-content"
-        >
-          <StyledArrow
-            $placement={
-              attributes?.popper?.['data-popper-placement'] as Placement
-            }
-            ref={arrowElementRef}
-            style={styles.arrow}
-            {...attributes.arrow}
-          />
-          <div ref={floatingBoxChildrenRef}>
-            <StyledDayPicker
-              numberOfMonths={isRange ? 2 : 1}
-              selectedDays={[from, { from, to }]}
-              modifiers={modifiers}
-              month={currentMonth}
-              onDayClick={handleDayClick}
-              initialMonth={startDate || initialMonth}
-              disabledDays={disabledDays}
-              $isRange={isRange}
-              $isVisible={open}
-              onFocus={onCalendarFocus}
-            />
-          </div>
-        </FloatingBoxContent>
-      </StyledFloatingBox>
+      <Transition in={open} timeout={0} unmountOnExit>
+        {(transitionState) => (
+          <StyledFloatingBox
+            ref={floatingElementRef}
+            role="dialog"
+            data-testid="floating-box"
+            aria-modal
+            aria-labelledby={titleId}
+            aria-live="polite"
+            style={{ ...styles.popper, ...TRANSITION_STYLES[transitionState] }}
+            {...attributes.popper}
+            {...rest}
+          >
+            <FloatingBoxContent
+              contentId={contentId}
+              scheme={FLOATING_BOX_SCHEME.LIGHT}
+              data-testid="floating-box-content"
+            >
+              <StyledArrow
+                $placement={
+                  attributes?.popper?.['data-popper-placement'] as Placement
+                }
+                ref={arrowElementRef}
+                style={styles.arrow}
+                {...attributes.arrow}
+              />
+              <div ref={floatingBoxChildrenRef}>
+                <StyledDayPicker
+                  numberOfMonths={isRange ? 2 : 1}
+                  selectedDays={[from, { from, to }]}
+                  modifiers={modifiers}
+                  month={currentMonth}
+                  onDayClick={handleDayClick}
+                  initialMonth={startDate || initialMonth}
+                  disabledDays={disabledDays}
+                  $isRange={isRange}
+                  $isVisible={open}
+                  onFocus={onCalendarFocus}
+                />
+              </div>
+            </FloatingBoxContent>
+          </StyledFloatingBox>
+        )}
+      </Transition>
     </>
   )
 }
