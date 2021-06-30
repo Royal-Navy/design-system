@@ -61,6 +61,7 @@ export const TextArea: React.FC<TextAreaInputProps> = (props) => {
     <StyledTextArea className={className} data-testid="textarea-container">
       <StyledTextAreaWrapper
         $hasFocus={hasFocus}
+        $hasLabel={hasLabel}
         $isInvalid={hasClass(className, 'is-invalid')}
       >
         {hasLabel && (
