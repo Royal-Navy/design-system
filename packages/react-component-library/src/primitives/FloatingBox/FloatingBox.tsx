@@ -1,5 +1,6 @@
 import React from 'react'
 import { Placement } from '@popperjs/core'
+import { Transition } from 'react-transition-group'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { FloatingBoxContent } from './FloatingBoxContent'
@@ -24,6 +25,13 @@ export interface FloatingBoxProps extends PositionType, ComponentWithClass {
   placement?: Placement
 }
 
+const TRANSITION_STYLES = {
+  entering: { opacity: 0 },
+  entered: { opacity: 1 },
+  exiting: { opacity: 0 },
+  exited: { opacity: 0 },
+}
+
 export const FloatingBox: React.FC<FloatingBoxProps> = ({
   contentId = getId('floating-box'),
   scheme = FLOATING_BOX_SCHEME.LIGHT,
@@ -46,33 +54,36 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
   return (
     <>
       <StyledTarget ref={targetElementRef}>{renderTarget}</StyledTarget>
-      <StyledFloatingBox
-        ref={floatingElementRef}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        role="dialog"
-        data-testid="floating-box"
-        $isVisible={isVisible}
-        style={styles.popper}
-        {...attributes.popper}
-        {...rest}
-      >
-        <FloatingBoxContent
-          contentId={contentId}
-          scheme={scheme}
-          data-testid="floating-box-content"
-        >
-          <StyledArrow
-            $placement={
-              attributes?.popper?.['data-popper-placement'] as Placement
-            }
-            ref={arrowElementRef}
-            style={styles.arrow}
-            {...attributes.arrow}
-          />
-          {children}
-        </FloatingBoxContent>
-      </StyledFloatingBox>
+      <Transition in={isVisible} timeout={0} unmountOnExit>
+        {(state) => (
+          <StyledFloatingBox
+            style={{ ...styles.popper, ...TRANSITION_STYLES[state] }}
+            ref={floatingElementRef}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            role="dialog"
+            data-testid="floating-box"
+            {...attributes.popper}
+            {...rest}
+          >
+            <FloatingBoxContent
+              contentId={contentId}
+              scheme={scheme}
+              data-testid="floating-box-content"
+            >
+              <StyledArrow
+                $placement={
+                  attributes?.popper?.['data-popper-placement'] as Placement
+                }
+                ref={arrowElementRef}
+                style={styles.arrow}
+                {...attributes.arrow}
+              />
+              {children}
+            </FloatingBoxContent>
+          </StyledFloatingBox>
+        )}
+      </Transition>
     </>
   )
 }

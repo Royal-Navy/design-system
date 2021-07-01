@@ -40,13 +40,8 @@ describe('DatePicker', () => {
     it('updates the ARIA attributes on the input button', () => {
       const button = wrapper.getByTestId('datepicker-input-button')
 
-      const dayPickerId = wrapper
-        .getByTestId('floating-box-content')
-        .getAttribute('id')
-
       expect(button).toHaveAttribute('aria-expanded', ariaExpanded)
       expect(button).toHaveAttribute('aria-label', ariaLabel)
-      expect(button).toHaveAttribute('aria-owns', dayPickerId)
     })
   }
 
