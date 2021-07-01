@@ -27,12 +27,12 @@ export const StyledTextAreaInput = styled.textarea<StyledTextAreaInputProps>`
   ${({ $hasLabel }) => {
     if ($hasLabel) {
       return css`
-        padding: ${spacing('10')} ${spacing('6')} ${spacing('2')};
+        padding: 0 ${spacing('6')} ${spacing('2')};
       `
     }
 
     return css`
-      padding: ${spacing('6')};
+      padding: 0 ${spacing('6')} ${spacing('6')};
     `
   }}
 `

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import { isIE11 } from '../../../helpers'
 import {
   StyledOuterWrapper as StyledOuterWrapperBase,
   StyledOuterWrapperProps,
@@ -8,6 +9,6 @@ import {
 export const StyledOuterWrapper = styled(
   StyledOuterWrapperBase
 )<StyledOuterWrapperProps>`
-  display: inline-flex;
-  flex-direction: row;
+  position: relative;
+  padding: ${isIE11() ? '21px' : '19px'} 8px 8px 8px;
 `

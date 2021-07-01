@@ -4,13 +4,19 @@ import { selectors } from '@royalnavy/design-tokens'
 import {
   getOuterWrapperBorder,
   StyledOuterWrapperProps,
-} from '../../../styled-components'
+} from '../../../styled-components/input'
 
-const { color } = selectors
+const { color, spacing } = selectors
 
-export const StyledTextAreaWrapper = styled.div<StyledOuterWrapperProps>`
+interface StyledTextAreaWrapperProps extends StyledOuterWrapperProps {
+  $hasLabel: boolean
+}
+
+export const StyledTextAreaWrapper = styled.div<StyledTextAreaWrapperProps>`
   position: relative;
   background: ${color('neutral', 'white')};
 
   ${(props) => getOuterWrapperBorder(props)}
+
+  padding-top: ${({ $hasLabel }) => ($hasLabel ? spacing('10') : spacing('6'))};
 `
