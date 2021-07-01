@@ -13,9 +13,7 @@ import { withFormik } from '../../enhancers/withFormik'
 export default {
   component: TextInput,
   title: 'Text Input',
-  parameters: {
-    actions: { argTypesRegex: '^on.*' },
-  },
+  argTypes: { onBlur: { action: 'onBlur' } },
 } as Meta
 
 export const Default: Story<TextInputProps> = (props) => (
