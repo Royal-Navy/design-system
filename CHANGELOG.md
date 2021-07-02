@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.57.0](https://github.com/Royal-Navy/design-system/compare/2.56.0...2.57.0) (2021-07-02)
+
+
+### Bug Fixes
+
+* **FloatingBox:** Handle `isVisible` using `Transition` ([125ba37](https://github.com/Royal-Navy/design-system/commit/125ba373d0ca40c018df5af8f2b50c9c7595c1f3))
+* **Storybook:** Add more specific actions ([5ec5c47](https://github.com/Royal-Navy/design-system/commit/5ec5c4731e81eff633a2d712a452575bde049854))
+* **TextArea:** Move `padding-top` to wrapper ([7a507a0](https://github.com/Royal-Navy/design-system/commit/7a507a055918d0b5e4e168191d8cc66d035a373b))
+
+
+### Features
+
+* **TextAreaE:** Create component ([65bd360](https://github.com/Royal-Navy/design-system/commit/65bd36054a36c95002d37ca1926b6f8fcd179fb5))
+
+
+
+
+
 # [2.56.0](https://github.com/Royal-Navy/design-system/compare/2.55.1...2.56.0) (2021-06-29)
 
 
