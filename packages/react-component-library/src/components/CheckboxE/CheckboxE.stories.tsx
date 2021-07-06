@@ -8,7 +8,6 @@ import { withFormik } from '../../enhancers/withFormik'
 import { CheckboxE, CheckboxEProps } from '.'
 import { Button } from '../Button'
 import { FormikGroupE } from '../FormikGroup'
-import { Fieldset } from '../Fieldset'
 
 export default {
   component: CheckboxE,
@@ -51,76 +50,19 @@ Invalid.args = {
   isInvalid: true,
 }
 
-export const WithFormik: Story<CheckboxEProps> = () => {
-  const CheckboxForm = () => {
-    interface Data {
-      [key: string]: boolean
-    }
-
-    const initialValues: Data = {
-      example1: true,
-      example2: false,
-      example3: false,
-    }
-
-    const validationSchema = yup.object().shape({
-      example: yup.string(),
-    })
-
-    const FormikCheckbox = withFormik(CheckboxE)
-
-    return (
-      <Formik
-        initialValues={initialValues}
-        onSubmit={action('onSubmit')}
-        validationSchema={validationSchema}
-      >
-        <Form>
-          <Fieldset>
-            <Field
-              name="example1"
-              component={FormikCheckbox}
-              label="Option 1"
-              type="checkbox"
-            />
-            <Field
-              name="example2"
-              component={FormikCheckbox}
-              label="Option 2"
-              type="checkbox"
-            />
-            <Field
-              name="example3"
-              component={FormikCheckbox}
-              label="Option 3"
-              type="checkbox"
-            />
-          </Fieldset>
-          <br />
-          <Button type="submit">Submit</Button>
-        </Form>
-      </Formik>
-    )
-  }
-
-  return <CheckboxForm />
-}
-
-WithFormik.storyName = 'Formik'
-
 export const WithFormikGroup: Story<CheckboxEProps> = () => {
   const CheckboxForm = () => {
     interface Data {
-      [key: string]: string
+      [key: string]: string[]
     }
 
     const initialValues: Data = {
-      example: '',
-      exampleWithError: '',
+      example: [],
+      exampleWithError: [],
     }
 
     const validationSchema = yup.object().shape({
-      exampleWithError: yup.array().min(0).required('Field is required'),
+      exampleWithError: yup.array().min(1),
     })
 
     const FormikCheckbox = withFormik(CheckboxE)
