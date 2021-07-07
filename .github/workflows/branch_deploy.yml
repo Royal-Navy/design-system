@@ -1,0 +1,54 @@
+name: Branch deploy preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      preview_branch:
+        description: 'Enter the branch name you wish to preview'
+        required: true
+
+jobs:
+  branch_deploy_preview:
+    runs-on: ubuntu-latest
+    env:
+      PREVIEW_URL: https://deploy-preview--infallible-goldstine-0b7659.netlify.app
+    steps:
+    - name: Git clone repository
+      uses: actions/checkout@v2
+
+    - name:  Fetch all commits
+      run: git fetch --all
+
+    - name: Remove deploy preview branch if it exists
+      run: |
+        result=$((git branch --all) 2>&1)
+        if [[  `echo $result` == *"deploy/preview"* ]];
+          then
+            git push origin --delete deploy/preview;
+          else
+            echo "deploy/preview branch does not exist";
+        fi
+
+    - name: Checkout preview branch
+      run: |
+        git checkout ${{ github.event.inputs.preview_branch }}
+        git fetch
+        git checkout -b deploy/preview
+        git fetch
+
+    - name: Merge into deploy/preview branch
+      run: |
+        git merge ${{ github.event.inputs.preview_branch }}
+
+    - name: Push deploy_preview branch
+      run: |
+        git push origin deploy/preview
+
+    - name: Deploy preview branch
+      run: |
+        curl -X POST -d {} ${{ secrets.BRANCH_DEPLOY_TOKEN }}
+
+    - name: Check deployment
+      run: |
+        timeout 900 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' ${PREVIEW_URL})" != "200" ]]; do sleep 30; done' || false
+        echo "The branch is deployed & ready to preview - ${PREVIEW_URL}"
