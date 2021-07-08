@@ -6,17 +6,49 @@ on:
       - completed
     workflows:
       - 'Build & Test Feature'
+    branches:
+      - 'dependabot/**'
+
 
 jobs:
+
+  Test_visual_regression:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+
+      - name: Git clone repository
+        uses: actions/checkout@v2
+        with:
+            fetch-depth: 0
+
+      - name: Cache Node modules
+        uses: actions/cache@v2
+        with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Build icon-library
+        run: |
+            yarn install --frozen-lockfile
+            yarn --cwd packages/icon-library build
+
+      - name: Build design-tokens
+        run: |
+            yarn --cwd packages/design-tokens build
+
+      - name: Run visual regression tests
+        run: |
+            yarn --cwd packages/react-component-library chromatic --project-token=${{secrets.CHROMATIC_TOKEN}}
+
+
   Automerge:
     name: Merge Dependabot PR's
     runs-on: ubuntu-latest
+    needs: [Test_visual_regression]
     steps:
-      - # Only run on successfully completed jobs
-        if: ${{ github.event.workflow_run.conclusion == 'success' }}
-        name: Run merge me action
+
+      - name: Run merge me action
         uses: Royal-Navy/merge-me-action@master
         with:
-          # This token must be used as the GitHub Actions token does not support pushing
-          # to protected branches.
           GITHUB_TOKEN: ${{ secrets.MERGE_BOT }}
