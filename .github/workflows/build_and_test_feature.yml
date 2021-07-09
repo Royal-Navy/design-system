@@ -330,6 +330,7 @@ jobs:
      Test_visual_regression:
       runs-on: ubuntu-latest
       needs: [Build_icon_library, Test_react-component-library]
+      if: ${{ github.actor != 'dependabot[bot]' }}
       steps:
         - name: Git clone repository
           uses: actions/checkout@v2
