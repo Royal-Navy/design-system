@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.59.0](https://github.com/Royal-Navy/design-system/compare/2.58.0...2.59.0) (2021-07-09)
+
+
+### Features
+
+* **DocsSite:** Update `Get started` ([08a40cb](https://github.com/Royal-Navy/design-system/commit/08a40cb373cf2608887db0cb2f18c8f11074667f))
+
+
+
+
+
 # [2.58.0](https://github.com/Royal-Navy/design-system/compare/2.57.0...2.58.0) (2021-07-09)
 
 
