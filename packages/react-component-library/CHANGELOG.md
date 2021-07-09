@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.58.0](https://github.com/Royal-Navy/design-system/compare/2.57.0...2.58.0) (2021-07-09)
+
+
+### Bug Fixes
+
+* **FormikGroup:** Apply `Fieldset` to children ([c0afb21](https://github.com/Royal-Navy/design-system/commit/c0afb21431f1ddfdd795592257aceb56721db715))
+
+
+### Features
+
+* **CheckboxE:** Adjust styling to match new design ([8115068](https://github.com/Royal-Navy/design-system/commit/811506871c696d35d67cb126781818c0cad1fe56))
+* **CheckboxE:** Create base component ([5274519](https://github.com/Royal-Navy/design-system/commit/527451958edfed6e7cbae56f710328ded097782f))
+* **Fieldset:** Create base component ([daa9633](https://github.com/Royal-Navy/design-system/commit/daa9633c25fc746a2db984c3487f787117086180))
+* **RadioE:** Add base implementation and style ([1aaddf5](https://github.com/Royal-Navy/design-system/commit/1aaddf516b65f9b683a204318ba5d24d929a1985))
+
+
+
+
+
 # [2.57.0](https://github.com/Royal-Navy/design-system/compare/2.56.0...2.57.0) (2021-07-02)
 
 
