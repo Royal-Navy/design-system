@@ -12,7 +12,7 @@ You also can view interactive live examples, code snippets and component API ref
 
 ## Packages
 
-View detailed information about the available packages [here](/packages).
+We publish a collection of [companion packages](/packages) to help you build robust web applications.
 
 ## Supported technologies
 
