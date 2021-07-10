@@ -1,5 +1,6 @@
+const newRelic = require('./newRelic')
+
 module.exports = {
-  stories: ['../src/**/*.stories.tsx'],
   addons: [
     '@storybook/addon-postcss',
     '@storybook/preset-scss',
@@ -12,4 +13,9 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-actions',
   ],
+  previewHead: (head) => `
+    ${head}
+    ${process.env.NETLIFY && newRelic.script}
+  `,
+  stories: ['../src/**/*.stories.tsx'],
 }
