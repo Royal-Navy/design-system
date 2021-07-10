@@ -242,4 +242,53 @@ describe('Select', () => {
       })
     })
   })
+
+  describe('when the options are updated externally', () => {
+    beforeEach(() => {
+      const initialOptions = options
+      const updatedOptions = [
+        {
+          badge: 'Badge 2',
+          label: 'Option 2',
+          value: '2',
+        },
+        {
+          badge: 'Badge 3',
+          label: 'Option 3',
+          value: '3',
+        },
+      ]
+
+      const SelectWithUpdate = () => {
+        const [selectOptions, updateSelectOptions] = useState(initialOptions)
+        const [value, setValue] = useState('2')
+
+        return (
+          <>
+            <Button
+              onClick={() => {
+                updateSelectOptions(updatedOptions)
+                setValue('3')
+              }}
+            >
+              Update
+            </Button>
+            <Select options={selectOptions} value={value} />
+          </>
+        )
+      }
+
+      wrapper = render(<SelectWithUpdate />)
+
+      wrapper.getByText('Update').click()
+    })
+
+    it('should render the select with the selected value', () => {
+      return waitFor(() => {
+        expect(
+          wrapper.getByTestId('select-single-value-label')
+        ).toHaveTextContent('Option 3')
+      })
+    })
+  })
 })
