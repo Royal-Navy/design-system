@@ -8192,10 +8192,10 @@ chownr@^2.0.0:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
-chromatic@5.9.0:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-5.9.0.tgz#c21a1f956b49bd8523e01ba711e83f132910edc4"
-  integrity sha512-2jy5dG48B4ws2YxMLSm/iBL+J21+GcmGJXbjfCejf7bZ+w4KXxcc0MsYVr5ExfjjkAWvDBe52q9HjLqF684gWA==
+chromatic@5.9.2:
+  version "5.9.2"
+  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-5.9.2.tgz#2a9ad2c2f2e5f98be9cf3e4707d43808cbc450df"
+  integrity sha512-h7+LPo5j2yHUaQIpaJzM7SXfkdEE9I7/rI6TWSeURwCrUggptVjj/+T4X2rmuqD5TfCp9HyHvtRObRl4PVWfNw==
   dependencies:
     "@actions/core" "^1.2.4"
     "@actions/github" "^4.0.0"
@@ -25452,9 +25452,9 @@ write-pkg@^4.0.0:
     write-json-file "^3.2.0"
 
 ws@7.4.5, ws@7.4.6, "ws@^5.2.0 || ^6.0.0 || ^7.0.0", ws@^6.2.1, ws@^7.3.0, ws@^7.3.1, ws@^7.4.5, ws@^7.4.6, ws@~7.4.2:
-  version "7.5.2"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.2.tgz#09cc8fea3bec1bc5ed44ef51b42f945be36900f6"
-  integrity sha512-lkF7AWRicoB9mAgjeKbGqVUekLnSNO4VjKVnuPHpQeOxZOErX6BPXwJk70nFslRCEEA8EVW7ZjKwXaP9N+1sKQ==
+  version "7.5.3"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.3.tgz#160835b63c7d97bfab418fc1b8a9fced2ac01a74"
+  integrity sha512-kQ/dHIzuLrS6Je9+uv81ueZomEwH0qVYstcAQ4/Z93K8zeko9gtAbttJWzoC5ukqXY1PpoouV3+VSOqEAFt5wg==
 
 x-is-string@^0.1.0:
   version "0.1.0"
