@@ -23,7 +23,7 @@ export function useSelectedOption(
     setSelectedOption(
       options.find((option) => option.value === selectedValue) || null
     )
-  }, [selectedValue])
+  }, [options, selectedValue])
 
   return {
     selectedOption,
