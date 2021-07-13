@@ -2208,4 +2208,56 @@ describe('Timeline', () => {
       })
     })
   })
+
+  describe('when the `range` is `1` and `today` is the last day', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2021, 0, 1)}
+          range={1}
+          today={new Date(2021, 0, 31, 12)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2021, 0, 31, 0, 0, 0)}
+                  endDate={new Date(2021, 1, 1, 18, 0, 0)}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={new Date(2021, 0, 31, 6, 0, 0)}
+                  endDate={new Date(2021, 1, 1, 18, 0, 0)}
+                >
+                  Event 2
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('should render the today marker', () => {
+      expect(
+        wrapper.queryByTestId('timeline-today-marker-wrapper')
+      ).toBeInTheDocument()
+    })
+
+    it('should render the first event', () => {
+      expect(wrapper.getByText('Event 1')).toBeInTheDocument()
+    })
+
+    it('should render the second event', () => {
+      expect(wrapper.getByText('Event 2')).toBeInTheDocument()
+    })
+  })
 })

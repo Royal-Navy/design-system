@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { differenceInCalendarDays, isAfter, isBefore } from 'date-fns'
+import { differenceInCalendarDays, endOfDay, isAfter, isBefore } from 'date-fns'
 
 import { TimelineContext } from '../context'
 import { formatPx } from '../helpers'
@@ -43,9 +43,9 @@ export function useTimelinePosition(
   const { from: firstDateDisplayed, to: lastDateDisplayed } = currentScaleOption
 
   const startsBeforeStart = isBefore(startDate, firstDateDisplayed)
-  const startsAfterEnd = isAfter(startDate, lastDateDisplayed)
+  const startsAfterEnd = isAfter(startDate, endOfDay(lastDateDisplayed))
   const endsBeforeStart = isBefore(endDate, firstDateDisplayed)
-  const endsAfterEnd = isAfter(endDate, lastDateDisplayed)
+  const endsAfterEnd = isAfter(endDate, endOfDay(lastDateDisplayed))
 
   const width = startsBeforeStart
     ? getWidth(firstDateDisplayed, endDate)
