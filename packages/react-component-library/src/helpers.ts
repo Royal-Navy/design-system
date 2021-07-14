@@ -23,6 +23,12 @@ function hasClass(allClasses: string, className: string) {
 }
 
 function isIE11() {
+  if (typeof window === 'undefined') {
+    logger.warn(`window object does not exist`)
+
+    return false
+  }
+
   // @ts-ignore
   return !!window.MSInputMethodContext && !!document.documentMode
 }
