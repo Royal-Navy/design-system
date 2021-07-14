@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.59.3](https://github.com/Royal-Navy/design-system/compare/2.59.2...2.59.3) (2021-07-14)
+
+
+### Bug Fixes
+
+* **Helpers:** Handle non existent `window` object gracefully ([c2c458e](https://github.com/Royal-Navy/design-system/commit/c2c458ecf0c23218a5f86b0c8574b403886a677d))
+
+
+
+
+
 ## [2.59.2](https://github.com/Royal-Navy/design-system/compare/2.59.1...2.59.2) (2021-07-14)
 
 
