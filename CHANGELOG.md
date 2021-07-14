@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.59.2](https://github.com/Royal-Navy/design-system/compare/2.59.1...2.59.2) (2021-07-14)
+
+
+### Bug Fixes
+
+* **Select:** Set selected option with side effect ([8e44a18](https://github.com/Royal-Navy/design-system/commit/8e44a186f8d68f9a95f4caf40ef9707611a703f3))
+* **Storybook:** Add New Relic only in Netlify ([c68489c](https://github.com/Royal-Navy/design-system/commit/c68489c12e499d38a3f1765dec2d94d577834470))
+
+
+
+
+
 ## [2.59.1](https://github.com/Royal-Navy/design-system/compare/2.59.0...2.59.1) (2021-07-13)
 
 **Note:** Version bump only for package royal-navy-design-system
