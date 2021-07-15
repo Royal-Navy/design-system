@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { differenceInCalendarDays, isBefore, isAfter } from 'date-fns'
+import { differenceInCalendarDays, endOfDay, isAfter, isBefore } from 'date-fns'
 
 import { TimelineContext } from '../context'
 import { formatPx } from '../helpers'
@@ -37,16 +37,15 @@ export function useTimelinePosition(
   width: string
 } {
   const {
-    state: { currentScaleOption, days },
+    state: { currentScaleOption },
   } = useContext(TimelineContext)
 
-  const firstDateDisplayed = days[0].date
-  const lastDateDisplayed = days[days.length - 1].date
+  const { from: firstDateDisplayed, to: lastDateDisplayed } = currentScaleOption
 
-  const startsBeforeStart = isBefore(new Date(startDate), firstDateDisplayed)
-  const startsAfterEnd = isAfter(new Date(startDate), lastDateDisplayed)
-  const endsBeforeStart = isBefore(new Date(endDate), firstDateDisplayed)
-  const endsAfterEnd = isAfter(new Date(endDate), lastDateDisplayed)
+  const startsBeforeStart = isBefore(startDate, firstDateDisplayed)
+  const startsAfterEnd = isAfter(startDate, endOfDay(lastDateDisplayed))
+  const endsBeforeStart = isBefore(endDate, firstDateDisplayed)
+  const endsAfterEnd = isAfter(endDate, endOfDay(lastDateDisplayed))
 
   const width = startsBeforeStart
     ? getWidth(firstDateDisplayed, endDate)
@@ -62,14 +61,14 @@ export function useTimelinePosition(
       : getWidth(startDate, lastDateDisplayed) + 1
 
   return {
-    width: formatPx(currentScaleOption.widths.day, width),
-    offset: formatPx(currentScaleOption.widths.day, offset),
-    maxWidth: formatPx(currentScaleOption.widths.day, maxWidth),
-    startsBeforeStart,
-    startsAfterEnd,
-    endsBeforeStart,
     endsAfterEnd,
-    isBeforeStart: startsBeforeStart,
+    endsBeforeStart,
+    startsAfterEnd,
+    startsBeforeStart,
     isAfterEnd: startsAfterEnd,
+    isBeforeStart: startsBeforeStart,
+    maxWidth: formatPx(currentScaleOption.widths.day, maxWidth),
+    offset: formatPx(currentScaleOption.widths.day, offset),
+    width: formatPx(currentScaleOption.widths.day, width),
   }
 }
