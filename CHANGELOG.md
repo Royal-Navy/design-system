@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.59.4](https://github.com/Royal-Navy/design-system/compare/2.59.3...2.59.4) (2021-07-16)
+
+
+### Bug Fixes
+
+* **Timeline:** Disregard time for last day ([8705dd5](https://github.com/Royal-Navy/design-system/commit/8705dd56822cf6ca739df10a4a3ea0f3852366e1))
+
+
+
+
+
 ## [2.59.3](https://github.com/Royal-Navy/design-system/compare/2.59.2...2.59.3) (2021-07-14)
 
 
