@@ -96,7 +96,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
     "jsdom": "^16.0.1",
-    "lint-staged": "^10.2.13",
+    "lint-staged": "^11.0.1",
     "prettier": "^2.0.5",
     "react-test-renderer": "^17.0.1",
     "sass": "^1.25.0",

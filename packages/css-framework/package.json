@@ -39,7 +39,7 @@
     "@royalnavy/eslint-config-react": "^2.59.4"
   },
   "devDependencies": {
-    "lint-staged": "^10.2.13",
+    "lint-staged": "^11.0.1",
     "sass": "^1.25.0",
     "stylelint": "^13.13.1"
   },
