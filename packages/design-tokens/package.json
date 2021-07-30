@@ -20,7 +20,7 @@
   "scripts": {
     "build": "run-s build:dict build:cjs types",
     "build:dict": "node ./build-dictionary.js",
-    "build:cjs": "webpack -p --config=webpack/prod.js",
+    "build:cjs": "webpack --mode production --config=webpack/prod.js",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --allowJs false --outDir dist/types",
     "prepare": "yarn build",
     "test": "jest",
@@ -51,7 +51,7 @@
     "style-dictionary": "^3.0.0",
     "typescript": "^4.0.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.7.2",
     "webpack-merge": "^5.2.0"
   },
   "dependencies": {
