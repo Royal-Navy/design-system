@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.59.8](https://github.com/Royal-Navy/design-system/compare/2.59.7...2.59.8) (2021-08-02)
+
+**Note:** Version bump only for package @royalnavy/react-component-library
+
+
+
+
+
 ## [2.59.7](https://github.com/Royal-Navy/design-system/compare/2.59.6...2.59.7) (2021-07-27)
 
 **Note:** Version bump only for package @royalnavy/react-component-library
