@@ -29,11 +29,13 @@ A short document to help you
 ### Static Axure library
 
 Current version:
-3.0
+3.1
 
 Changes from previous version:
-- First Axure library
-- Contains all forms v3 components (currently Experimental)
+- Modal: Added missing keyline under Modal title
+- Pagination: Fixed icon order
+- File upload: Left-aligned all widgets
+- Range slider: Added warning icons to improve accessibility
 
 [Download our static Axure library](/RNDS-static-library.rplib)
 
@@ -48,7 +50,7 @@ Changes from previous version:
 - First Axure library
 - Contains all forms v3 components (currently Experimental)
 
-Coming soon
+[Download our interactive Axure library](/RNDS-dynamic-library.rplib)
 
 
 
