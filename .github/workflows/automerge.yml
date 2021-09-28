@@ -49,6 +49,6 @@ jobs:
     steps:
 
       - name: Run merge me action
-        uses: Royal-Navy/merge-me-action@master
+        uses: defencedigital/design-system-mergeme-action@master
         with:
           GITHUB_TOKEN: ${{ secrets.MERGE_BOT }}
