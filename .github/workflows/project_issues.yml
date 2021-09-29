@@ -12,7 +12,7 @@ jobs:
       uses: defencedigital/design-system-moveissue-action@master
       with:
         action-token: "${{ secrets.GHA_ISSUES_TOKEN }}"
-        project-url: "https://github.com/defencedigital/defence-design-system/projects/6"
+        project-url: "https://github.com/defencedigital/mod-uk-design-system/projects/6"
         column-name: "Candidates for Ready"
         label-name: "Size: Small,Size: Medium"
         columns-to-ignore: "Ready,In Progress,In Review,Done"
