@@ -101,7 +101,7 @@
     "@types/uuid": "^8.0.0",
     "@types/yup": "^0.29.2",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
-    "babel-jest": "^26.6.3",
+    "babel-jest": "^27.2.4",
     "babel-loader": "^8.0.6",
     "babel-plugin-jsx-remove-data-test-id": "^3.0.0",
     "babel-plugin-search-and-replace": "1.1.0",
