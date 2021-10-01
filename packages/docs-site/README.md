@@ -1,1 +1,0 @@
-# docs.royalnay.io

@@ -72,8 +72,7 @@ jobs:
           npm publish --tag latest packages/react-component-library
           npm publish --tag latest packages/cra-template-royalnavy
 
-      - name: Publish Docs & Storybook
+      - name: Publish Storybook
         if: steps.initversion.outputs.version != steps.extractver.outputs.version
         run: |
-          curl -X POST -d {} ${{ secrets.DOCS_TOKEN }}
           curl -X POST -d {} ${{ secrets.STORYBOOK_TOKEN }}

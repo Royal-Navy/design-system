@@ -125,6 +125,7 @@
     "file-loader": "^6.0.0",
     "hex-rgb": "^5.0.0",
     "html-webpack-plugin": "^5.2.0",
+    "identity-obj-proxy": "^3.0.0",
     "image-webpack-loader": "^7.0.1",
     "jest": "^26.0.1",
     "jest-canvas-mock": "^2.3.0",
