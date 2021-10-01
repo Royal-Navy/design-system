@@ -53,7 +53,7 @@ jobs:
         - name: Create boilerplate app
           run: |
            if [ -d "my-app" ]; then rm -Rf my-app ; fi
-           npx create-react-app my-app --template file:../design-system/packages/cra-template-royalnavy
+           npx create-react-app my-app --template file:../${{ github.event.repository.name }}/packages/cra-template-royalnavy
 
         - name: Build boilerlate app
           run: |
