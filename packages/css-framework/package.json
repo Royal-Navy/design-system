@@ -41,7 +41,8 @@
   "devDependencies": {
     "lint-staged": "^11.0.1",
     "sass": "^1.25.0",
-    "stylelint": "^13.13.1"
+    "stylelint": "^13.13.1",
+    "stylelint-junit-formatter": "^0.2.2"
   },
   "lint-staged": {
     "*.@(scss)": "stylelint"
