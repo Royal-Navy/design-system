@@ -9,7 +9,7 @@ import { StyledFooter } from './partials/StyledFooter'
 import { StyledDontShow } from './partials/StyledDontShow'
 import { StyledDescription } from './partials/StyledDescription'
 
-interface DismissibleBannerWithTitleProps extends ComponentWithClass {
+export interface DismissibleBannerWithTitleProps extends ComponentWithClass {
   /**
    * Toggles whether to display the 'Don't show this again' checkbox.
    */
@@ -31,7 +31,7 @@ interface DismissibleBannerWithTitleProps extends ComponentWithClass {
   title: string
 }
 
-interface DismissibleBannerWithArbitraryContentProps
+export interface DismissibleBannerWithArbitraryContentProps
   extends ComponentWithClass {
   /**
    * Toggles whether to display the 'Don't show this again' checkbox.
@@ -67,7 +67,7 @@ export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
 }) => {
   const [canShowAgain, setCanShowAgain] = useState(true)
 
-  function onButtonClick(event: React.FormEvent<HTMLButtonElement>) {
+  const onButtonClick = (event: React.FormEvent<HTMLButtonElement>) => {
     onDismiss(event, canShowAgain)
   }
 

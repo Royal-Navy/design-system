@@ -7,11 +7,11 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledCheckbox } from '../CheckboxE/partials/StyledCheckbox'
 import { StyledRadio } from '../RadioE/partials/StyledRadio'
 
-interface StyledFieldsetProps {
+export interface StyledFieldsetProps {
   $isInvalid?: boolean
 }
 
-interface FieldsetProps extends ComponentWithClass {
+export interface FieldsetProps extends ComponentWithClass {
   isInvalid?: boolean
 }
 

@@ -5,7 +5,7 @@ import { useThresholdColor } from './useThresholdColor'
 import { StyledLabel } from './partials/StyledLabel'
 import { StyledMarker } from './partials/StyledMarker'
 
-interface TickProps {
+export interface TickProps {
   tick: SliderItem
   count: number
   hasLabels?: boolean

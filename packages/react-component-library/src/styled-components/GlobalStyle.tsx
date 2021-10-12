@@ -3,11 +3,11 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
 import { selectors, BreakpointSize, lightTheme } from '@royalnavy/design-tokens'
 
-interface GlobalStyleContextDefaults {
+export interface GlobalStyleContextDefaults {
   theme?: Record<string, any>
 }
 
-interface GlobalStyleProviderProps {
+export interface GlobalStyleProviderProps {
   children?: React.ReactNode
   theme?: Record<string, any>
 }

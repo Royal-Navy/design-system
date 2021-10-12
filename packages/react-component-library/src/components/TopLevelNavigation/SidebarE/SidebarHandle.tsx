@@ -5,7 +5,7 @@ import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext } from './context'
 import { StyledHandle } from './partials/StyledHandle'
 
-interface SidebarHandleProps extends ComponentWithClass {
+export interface SidebarHandleProps extends ComponentWithClass {
   style: React.CSSProperties
 }
 
@@ -13,7 +13,7 @@ export const SidebarHandle = forwardRef(
   (props: SidebarHandleProps, ref?: React.Ref<HTMLButtonElement>) => {
     const { isOpen, setIsOpen } = useContext(SidebarContext)
 
-    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
       setIsOpen(!isOpen)
     }

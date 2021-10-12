@@ -24,7 +24,7 @@ function renderDefaultColumns(
   )
 }
 
-interface TimelineWeekColumnProps {
+export interface TimelineWeekColumnProps {
   renderColumns?: (
     index: number,
     isOddNumber: boolean,

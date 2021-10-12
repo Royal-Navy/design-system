@@ -5,7 +5,7 @@ import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { Link } from '../../Link'
 import { UserType } from '../../../common/User'
 
-interface UserLinkProps extends ComponentWithClass {
+export interface UserLinkProps extends ComponentWithClass {
   user: UserType
   LinkComponent?: any
 }

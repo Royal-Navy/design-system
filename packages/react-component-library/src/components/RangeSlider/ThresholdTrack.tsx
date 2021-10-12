@@ -9,12 +9,12 @@ import {
 } from './constants'
 import { StyledChunk } from './partials/StyledChunk'
 
-interface ThresholdTrackProps extends TrackItem {
+export interface ThresholdTrackProps extends TrackItem {
   getTrackProps: GetTrackProps
   thresholds?: number[]
 }
 
-interface ChunkProps {
+export interface ChunkProps {
   $left: number
   $width: number
   $maxWidth: number

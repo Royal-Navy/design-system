@@ -25,7 +25,7 @@ export const TabItem = forwardRef<HTMLLIElement, TabItemProps>((props, ref) => {
     onKeyDown,
   } = props
 
-  function handleClick(e: MouseEvent<HTMLButtonElement>) {
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     onClick()
   }
