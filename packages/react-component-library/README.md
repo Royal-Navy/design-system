@@ -1,10 +1,10 @@
 # React Component Library
 
-A collection of React components written for Royal Navy web applications.
+A collection of React components written for Defence Digital web applications.
 
 ## Installation
 
-The Royal Navy React Component Library is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/react-component-library).
+The Defence Digital React Component Library is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/react-component-library).
 
 ```
 // npm
@@ -40,7 +40,7 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 
 ## `<GlobalStyleProvider />`
 
-This context provider component applies global Royal Navy Design System styles to your application (resets, normalize and fonts). You should wrap the root of your app in this component.
+This context provider component applies global Defence Digital Design System styles to your application (resets, normalize and fonts). You should wrap the root of your app in this component.
 
 ### Theming
 
@@ -94,11 +94,11 @@ If you want opinionated styling for your floating element please consider the [P
 
 ## Questions
 
-The Design System is maintained by a team at the Royal Navy. If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
+The Design System is maintained by a team at the Defence Digital. If you want to know more about the Defence Digital Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
 
 ## Documentation
 
-The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Royal Navy Design System.
+The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Defence Digital Design System.
 
 ## End to end tests
 
@@ -112,16 +112,16 @@ Tests are dependent on the application running.
 
 ## Contributing
 
-The [contributing guide](https://github.com/Royal-Navy/design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
+The [contributing guide](https://github.com/defencedigital/mod-uk-design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
 
 ## Changelog
 
-If you have recently updated then read the [release notes](https://github.com/Royal-Navy/design-system/releases)
+If you have recently updated then read the [release notes](https://github.com/defencedigital/mod-uk-design-system/releases)
 
 ## Roadmap
 
-The [Design System Roadmap Board](https://github.com/orgs/Royal-Navy/projects/5) contains the work that has been prioritised for the next 12 months.
+The [Design System Roadmap Board](https://github.com/defencedigital/mod-uk-design-system/projects/7) contains the work that has been prioritised for the next 12 months.
 
 ## License
 
-The Royal Navy Design System is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE).
+The Defence Digital Design System is licensed under the [Apache License 2.0](https://github.com/defencedigital/mod-uk-design-system/blob/master/LICENSE).

@@ -1,15 +1,15 @@
-# Royal Navy [Design System](https://docs.royalnavy.io/)
+# MOD.UK [Design System](https://design-system.digital.mod.uk/)
 
- ![Build & Test Master](https://github.com/Royal-Navy/design-system/workflows/Build%20&%20Test%20Master/badge.svg)
- [![GitHub release](https://img.shields.io/github/release/royal-navy/design-system.svg)](https://github.com/Royal-Navy/design-system/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/design-system/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Royal-Navy_design-system&metric=coverage)](https://sonarcloud.io/dashboard?id=Royal-Navy_design-system) [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](http://storybook.royalnavy.io)
+ ![Build & Test Master](https://github.com/defencedigital/mod-uk-design-system/workflows/Build%20&%20Test%20Master/badge.svg)
+ [![GitHub release](https://img.shields.io/github/release/royal-navy/design-system.svg)](https://github.com/defencedigital/mod-uk-design-system/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/design-system/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=defencedigital_mod-uk-design-system&metric=coverage)](https://sonarcloud.io/dashboard?id=defencedigital_mod-uk-design-system) [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](http://storybook.design-system.digital.mod.uk)
 
-Build web applications that meet the Royal Navy's service standards.
+Build web applications that meet Defence Digitals's service standards.
 
-Visit the [Roadmap board](https://github.com/orgs/Royal-Navy/projects/5) to view the high-level objectives for the Royal Navy Design System. To check on issues currently being completed, view our [Tactical board](https://github.com/Royal-Navy/design-system/projects/6) instead.
+Visit the [Roadmap board](https://github.com/defencedigital/mod-uk-design-system/projects/7) to view the high-level objectives for the MOD.UK Design System. To check on issues currently being completed, view our [Tactical board](https://github.com/defencedigital/mod-uk-design-system/projects/6) instead.
 
 ## Releases & versioning
 
-All packages are published to the [NPM registry](https://www.npmjs.com/search?q=%40royalnavy) and we adhere to [semantic versioning](https://semver.org/).
+All packages are published to the [NPM registry](https://www.npmjs.com/search?q=%40defencedigital) and we adhere to [semantic versioning](https://semver.org/).
 
 ## Supported technologies
 
@@ -19,7 +19,7 @@ The following view layer libraries are currently supported:
 
 ## Component usage guidelines
 
-Please refer to the [component demo pages](https://docs.royalnavy.io/components) and [Storybook](http://storybook.royalnavy.io/) to see interactive examples, code snippets and details on how best to consume each of the components.
+Please refer to the [component demo pages](design-system.digital.mod.uk/components) and [Storybook](http://storybook.design-system.digital.mod.uk/) to see interactive examples, code snippets and details on how best to consume each of the components.
 
 ## Installation & quick start
 
@@ -112,11 +112,11 @@ We have configured a set of Prettier options to enforce consistent code formatti
 
 ## Browser support
 
-The Royal Navy Design System currently supports all major evergreen browsers.
+The MOD.UK Design System currently supports all major evergreen browsers.
 
 ## Licensing
 
-The Royal-Navy/design-system is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE).
+The defencedigital/mod-uk-design-system is licensed under the [Apache License 2.0](https://github.com/defencedigital/mod-uk-design-system/blob/master/LICENSE).
 
 ## Contributing
 Read the [contributing guidelines](docs/contributing.md).

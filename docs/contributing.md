@@ -1,4 +1,4 @@
-# Contributing to Royal Navy Design System
+# Contributing to MOD.UK Design System
 - [Branching strategy](#branching-strategy)
 - [Adding a new feature](#adding-a-new-feature)
 - [Committing](#committing)
@@ -16,7 +16,7 @@
   - [Recomended practices](#recomended-practices)
 
 ## Branching strategy
-The Royal Navy Design System repository is using a trunk-based development branching strategy. All changes are merged directly into `master`. To have control over publishing of packages, `npm publish` is triggered only when a new version tag is merged into `master`. Branches are still used for the peer review process. When required, separate branches are maintained for fixes.
+The MOD.UK Design System repository is using a trunk-based development branching strategy. All changes are merged directly into `master`. To have control over publishing of packages, `npm publish` is triggered only when a new version tag is merged into `master`. Branches are still used for the peer review process. When required, separate branches are maintained for fixes.
 
 It is important that there are no breaking changes added to `master`. All changes are backwards compatible. If there is an opportunity to improve the code resulting in a breaking change then this can be discussed in an issue.
 
@@ -101,7 +101,7 @@ git rebase -i --autosquash origin/master
 ```
 
 ### Releases
-`master` is [released](https://github.com/Royal-Navy/design-system/actions?query=workflow%3ARelease) on a nightly schedule.
+`master` is [released](https://github.com/defencedigital/mod-uk-design-system/actions?query=workflow%3ARelease) on a nightly schedule.
 
 ## Hot fixing
 If there is an issue (never happens :sunglasses:) then follow the process for adding a new feature. Hotfixes can be released & published by Design-System team members using the 'manual release' GitHub Actions workflow.

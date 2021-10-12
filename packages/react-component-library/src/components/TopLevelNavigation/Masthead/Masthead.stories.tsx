@@ -108,12 +108,12 @@ export const Default: Story<MastheadProps> = (props) => {
 
 Default.args = {
   searchPlaceholder: null,
-  title: 'Royal Navy Design System',
+  title: 'Defence Digital Design System',
   hasUnreadNotification: true,
 }
 
 export const CustomLogo: Story<MastheadProps> = (props) => (
-  <Masthead {...props} title="Royal Navy Design System" Logo={IconHome} />
+  <Masthead {...props} title="Defence Digital Design System" Logo={IconHome} />
 )
 
 CustomLogo.storyName = 'Custom logo'
@@ -124,7 +124,7 @@ CustomLogo.args = {
 export const WithoutLogo: Story<MastheadProps> = (props) => (
   <Masthead
     {...props}
-    title="Royal Navy Design System"
+    title="Defence Digital Design System"
     hasDefaultLogo={false}
   />
 )
@@ -138,7 +138,7 @@ export const WithSearch: Story<MastheadProps> = (props) => (
   <Masthead
     {...props}
     searchPlaceholder="Search..."
-    title="Royal Navy Design System"
+    title="Defence Digital Design System"
   />
 )
 
@@ -166,7 +166,9 @@ export const WithAvatarLinks: Story<MastheadProps> = (props) => {
     </MastheadUser>
   )
 
-  return <Masthead {...props} title="Royal Navy Design System" user={user} />
+  return (
+    <Masthead {...props} title="Defence Digital Design System" user={user} />
+  )
 }
 
 WithAvatarLinks.storyName = 'With avatar links'
@@ -188,7 +190,7 @@ export const WithNavigation: Story<MastheadProps> = (props) => {
     <Masthead
       {...props}
       homeLink={<Link href="#" />}
-      title="Royal Navy Design System"
+      title="Defence Digital Design System"
       nav={nav}
     />
   )
@@ -232,7 +234,7 @@ export const WithNotifications: Story<MastheadProps> = (props) => {
   return (
     <Masthead
       {...props}
-      title="Royal Navy Design System"
+      title="Defence Digital Design System"
       notifications={notifications}
     />
   )

@@ -3,7 +3,7 @@
   "version": "2.59.11",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
-  "author": "Royal Navy",
+  "author": "Defence Digital",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
@@ -15,7 +15,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/Royal-Navy/design-system.git",
+    "url": "https://github.com/defencedigital/mod-uk-design-system.git",
     "directory": "packages/icon-library"
   },
   "scripts": {
