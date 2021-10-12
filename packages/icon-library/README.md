@@ -1,3 +1,7 @@
+__This package has moved to [`@defencedigital/icon-library`](https://www.npmjs.com/package/@defencedigital/icon-library).__
+
+----
+
 # Icon Library
 
 A collection of SVG icons for use in Defence Digital web application development.

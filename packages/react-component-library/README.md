@@ -1,3 +1,7 @@
+__This package has moved to [`@defencedigital/react-component-library`](https://www.npmjs.com/package/@defencedigital/react-component-library).__
+
+----
+
 # React Component Library
 
 A collection of React components written for Defence Digital web applications.
