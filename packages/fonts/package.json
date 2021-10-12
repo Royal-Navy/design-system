@@ -2,14 +2,14 @@
   "name": "@royalnavy/fonts",
   "version": "2.59.11",
   "main": "index.css",
-  "author": "Royal Navy",
+  "author": "Defence Digital",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Royal-Navy/design-system.git",
+    "url": "https://github.com/defencedigital/mod-uk-design-system.git",
     "directory": "packages/fonts"
   }
 }

@@ -1,6 +1,10 @@
+__This package has moved to [`@defencedigital/eslint-config-react`](https://www.npmjs.com/package/@defencedigital/eslint-config-react).__
+
+----
+
 # ESLint Config React
 
-This package provides the Royal Navy ESLint and Prettier configuration.
+This package provides the Defence Digital ESLint and Prettier configuration.
 
 ## ESLint
 
@@ -12,7 +16,7 @@ This package provides the Royal Navy ESLint and Prettier configuration.
 
 ## Installation
 
-The Royal Navy ESLint config is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/eslint-config-react).
+The Defence Digital ESLint config is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/eslint-config-react).
 
 ```
 // npm
@@ -40,24 +44,24 @@ module.exports = require('@royalnavy/eslint-config-react/prettier.config.js')
 
 ## Questions
 
-The Design System is maintained by a team at the Royal Navy. If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
+The Design System is maintained by a team at the Defence Digital. If you want to know more about the Defence Digital Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
 
 ## Documentation
 
-The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Royal Navy Design System.
+The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Defence Digital Design System.
 
 ## Contributing
 
-The [contributing guide](https://github.com/Royal-Navy/design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
+The [contributing guide](https://github.com/defencedigital/mod-uk-design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
 
 ## Changelog
 
-If you have recently updated then read the [release notes](https://github.com/Royal-Navy/design-system/releases)
+If you have recently updated then read the [release notes](https://github.com/defencedigital/mod-uk-design-system/releases)
 
 ## Roadmap
 
-The [Design System Roadmap Board](https://github.com/orgs/Royal-Navy/projects/5) contains the work that has been prioritised for the next 12 months.
+The [Design System Roadmap Board](https://github.com/defencedigital/mod-uk-design-system/projects/7) contains the work that has been prioritised for the next 12 months.
 
 ## License
 
-The Royal Navy Design System is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE).
+The Defence Digital Design System is licensed under the [Apache License 2.0](https://github.com/defencedigital/mod-uk-design-system/blob/master/LICENSE).

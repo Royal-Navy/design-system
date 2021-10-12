@@ -1,4 +1,10 @@
+__This package has moved to [`@defencedigital/css-framework`](https://www.npmjs.com/package/@defencedigital/css-framework).__
+
+----
+
 # CSS Framework
+
+NOTE: This package has been deprecated in favour of `@defencedigital/css-framework`.
 
 NOTE: We now reccomend using design-tokens and a CSS-in-JS solution instead of SASS.
 
@@ -6,7 +12,7 @@ The `@royalnavy/css-framework` package provides a compiled version of the compon
 
 ## Installation
 
-The Royal Navy CSS Framework is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/css-framework).
+The Defence Digital CSS Framework is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/css-framework).
 
 ```
 // npm
@@ -78,28 +84,28 @@ In the example above, we are updating the `neutral: 000` value to `#FF0000` (red
 
 ## Utility Classes
 
-Several different Utility classes are provided by this framework. These classes provide a modular way to style components using the Royal Navy Design System styles, without having to author any styles yourself.
+Several different Utility classes are provided by this framework. These classes provide a modular way to style components using the Defence Digital Design System styles, without having to author any styles yourself.
 
 ## Questions
 
-The Design System is maintained by a team at the Royal Navy. If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
+The Design System is maintained by a team at the Defence Digital. If you want to know more about the Defence Digital Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
 
 ## Documentation
 
-The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Royal Navy Design System.
+The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Defence Digital Design System.
 
 ## Contributing
 
-The [contributing guide](https://github.com/Royal-Navy/design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
+The [contributing guide](https://github.com/defencedigital/mod-uk-design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
 
 ## Changelog
 
-If you have recently updated then read the [release notes](https://github.com/Royal-Navy/design-system/releases)
+If you have recently updated then read the [release notes](https://github.com/defencedigital/mod-uk-design-system/releases)
 
 ## Roadmap
 
-The [Design System Roadmap Board](https://github.com/orgs/Royal-Navy/projects/5) contains the work that has been prioritised for the next 12 months.
+The [Design System Roadmap Board](https://github.com/defencedigital/mod-uk-design-system/projects/7) contains the work that has been prioritised for the next 12 months.
 
 ## License
 
-The Royal Navy Design System is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE).
+The Defence Digital Design System is licensed under the [Apache License 2.0](https://github.com/defencedigital/mod-uk-design-system/blob/master/LICENSE).

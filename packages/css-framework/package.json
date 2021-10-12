@@ -2,7 +2,7 @@
   "name": "@royalnavy/css-framework",
   "version": "2.59.11",
   "main": "index.scss",
-  "author": "Royal Navy",
+  "author": "Defence Digital",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Royal-Navy/design-system.git",
+    "url": "https://github.com/defencedigital/mod-uk-design-system.git",
     "directory": "packages/css-framework"
   },
   "scripts": {

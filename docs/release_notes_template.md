@@ -1,4 +1,4 @@
-# Royal Navy Design System
+# MOD.UK Design System
 
 ## New features
 - [#123](http://link/to/pr) Description of change
