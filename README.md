@@ -3,7 +3,7 @@
  ![Build & Test Master](https://github.com/defencedigital/mod-uk-design-system/workflows/Build%20&%20Test%20Master/badge.svg)
  [![GitHub release](https://img.shields.io/github/release/royal-navy/design-system.svg)](https://github.com/defencedigital/mod-uk-design-system/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/design-system/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=defencedigital_mod-uk-design-system&metric=coverage)](https://sonarcloud.io/dashboard?id=defencedigital_mod-uk-design-system) [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](http://storybook.design-system.digital.mod.uk)
 
-Build web applications that meet Defence Digitals's service standards.
+Build web applications that meet the Defence Digital service standards.
 
 Visit the [Roadmap board](https://github.com/defencedigital/mod-uk-design-system/projects/7) to view the high-level objectives for the MOD.UK Design System. To check on issues currently being completed, view our [Tactical board](https://github.com/defencedigital/mod-uk-design-system/projects/6) instead.
 
