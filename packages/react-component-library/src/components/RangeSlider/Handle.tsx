@@ -7,7 +7,7 @@ import { StyledHandle } from './partials/StyledHandle'
 import { StyledPercentage } from './partials/StyledPercentage'
 import { StyledValue } from './partials/StyledValue'
 
-interface HandleProps {
+export interface HandleProps {
   activeHandleID: string
   domain: ReadonlyArray<number>
   handle: SliderItem

@@ -75,7 +75,7 @@ export const CheckboxE: React.FC<CheckboxEProps> = ({
     ref.current.focus()
   }
 
-  function handleOnChange(e: React.FormEvent<HTMLInputElement>) {
+  const handleOnChange = (e: React.FormEvent<HTMLInputElement>) => {
     setIsChecked(!isChecked)
 
     if (onChange) {

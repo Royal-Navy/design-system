@@ -3,7 +3,7 @@ import React from 'react'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledHeaderRow } from './partials/StyledHeaderRow'
 
-interface TimelineHeaderRowProps extends ComponentWithClass {
+export interface TimelineHeaderRowProps extends ComponentWithClass {
   children: React.ReactElement | React.ReactElement[]
   name: string
   renderRowHeader?: (name: string) => React.ReactElement

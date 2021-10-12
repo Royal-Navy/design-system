@@ -5,7 +5,7 @@ import { StyledContextMenuItem } from './partials/StyledContextMenuItem'
 import { StyledIcon } from './partials/StyledIcon'
 import { StyledText } from './partials/StyledText'
 
-interface ContextMenuItemProps extends NavItem {
+export interface ContextMenuItemProps extends NavItem {
   /**
    * Optional icon to display beside the component text.
    */

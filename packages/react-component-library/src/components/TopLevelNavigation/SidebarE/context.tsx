@@ -1,13 +1,13 @@
 import React, { createContext, useState } from 'react'
 
-interface SidebarContextDefaults {
+export interface SidebarContextDefaults {
   isOpen?: boolean
   setIsOpen: (isOpen: boolean) => void
   hasMouseOver?: boolean
   setHasMouseOver: (hasMouseOver: boolean) => void
 }
 
-interface SidebarProviderProps {
+export interface SidebarProviderProps {
   children?: React.ReactNode
   initialIsOpen?: boolean
 }

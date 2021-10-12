@@ -3,7 +3,7 @@ import React from 'react'
 import { FloatingBoxSchemeType } from './types'
 import { StyledContent } from './partials/StyledContent'
 
-interface FloatingBoxContentProps {
+export interface FloatingBoxContentProps {
   contentId?: string
   scheme?: FloatingBoxSchemeType
 }

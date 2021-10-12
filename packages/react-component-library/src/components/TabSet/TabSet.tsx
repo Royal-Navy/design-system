@@ -86,7 +86,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
   const [activeTab, setActiveTab] = useState(getActiveIndex(children))
   const { scrollToNextTab, tabsRef, itemsRef } = useScrollableTabSet(children)
 
-  function handleClick(index: number) {
+  const handleClick = (index: number) => {
     setActiveTab(index)
 
     if (onChange) {
@@ -94,7 +94,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
     }
   }
 
-  function handleKeyDown(event: KeyboardEvent<HTMLLIElement>) {
+  const handleKeyDown = (event: KeyboardEvent<HTMLLIElement>) => {
     const { which } = event
 
     const getNextIndex = (keyCode: number): number => {
@@ -130,23 +130,26 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
           data-testid="tabs"
         >
           <StyledTabs role="tablist" data-testid="tab-set-list">
-            {Children.map(children, ({ props }, index: number) => (
-              <TabItem
-                tabId={tabIds[index]}
-                onClick={() => handleClick(index)}
-                onKeyDown={handleKeyDown}
-                isActive={index === activeTab}
-                index={index}
-                isFullWidth={isFullWidth}
-                isScrollable={isScrollable}
-                ref={(el) => {
-                  itemsRef.current[index] = el
-                  return itemsRef.current[index]
-                }}
-              >
-                {props.title}
-              </TabItem>
-            ))}
+            {Children.map(
+              children,
+              ({ props }: React.ReactElement, index: number) => (
+                <TabItem
+                  tabId={tabIds[index]}
+                  onClick={() => handleClick(index)}
+                  onKeyDown={handleKeyDown}
+                  isActive={index === activeTab}
+                  index={index}
+                  isFullWidth={isFullWidth}
+                  isScrollable={isScrollable}
+                  ref={(el) => {
+                    itemsRef.current[index] = el
+                    return itemsRef.current[index]
+                  }}
+                >
+                  {props.title}
+                </TabItem>
+              )
+            )}
           </StyledTabs>
         </StyledNavigation>
         {isScrollable && (

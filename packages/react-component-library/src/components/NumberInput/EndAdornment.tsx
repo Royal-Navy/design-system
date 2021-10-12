@@ -4,7 +4,7 @@ import { EndAdornmentButton } from './EndAdornmentButton'
 import { END_ADORNMENT_TYPE } from './constants'
 import { StyledNumberInputControls } from './partials/StyledNumberInputControls'
 
-interface EndAdornmentProps {
+export interface EndAdornmentProps {
   isCondensed: boolean
   isDisabled: boolean
   max?: number

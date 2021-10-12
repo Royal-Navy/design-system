@@ -10,7 +10,7 @@ import { StyledInput } from './partials/StyledInput'
 import { StyledLabel } from './partials/StyledLabel'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 
-interface InputProps extends InputValidationProps {
+export interface InputProps extends InputValidationProps {
   hasFocus: boolean
   isDisabled?: boolean
   id?: string

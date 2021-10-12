@@ -38,7 +38,10 @@ export const FormikGroup: React.FC<FormikGroupProps> = ({
         <StyledLegend data-testid="formik-group-legend">{label}</StyledLegend>
       )}
       {React.Children.map(children, (child) => {
-        return React.cloneElement(child, transformErrorToAriaAttributes(error))
+        return React.cloneElement(
+          child as React.ReactElement,
+          transformErrorToAriaAttributes(error)
+        )
       })}
       {error && (
         <FieldError id={error.id} data-testid="formik-group-error">
@@ -73,7 +76,7 @@ export const FormikGroupE: React.FC<FormikGroupProps> = ({
       <Fieldset isInvalid={!!error}>
         {React.Children.map(children, (child) => {
           return React.cloneElement(
-            child,
+            child as React.ReactElement,
             transformErrorToAriaAttributes(error)
           )
         })}

@@ -85,7 +85,7 @@ export const TableColumn: React.FC<TableColumnProps> = ({
 }) => {
   const icon = getIcon(isSortable, sortOrder)
 
-  function onClick() {
+  const onClick = () => {
     if (isSortable) {
       onSortClick(field)
     }
