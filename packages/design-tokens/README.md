@@ -4,14 +4,14 @@ An agnostic way to store variables such as typography, color, and spacing.
 
 ## Installation
 
-The Defence Digital Design Tokens are available as an [NPM package](https://www.npmjs.com/package/@royalnavy/design-tokens).
+The Defence Digital Design Tokens are available as an [NPM package](https://www.npmjs.com/package/@defencedigital/design-tokens).
 
 ```
 // npm
-npm install @royalnavy/design-tokens
+npm install @defencedigital/design-tokens
 
 // yarn
-yarn add @royalnavy/design-tokens
+yarn add @defencedigital/design-tokens
 ```
 
 ## Selectors
@@ -21,7 +21,7 @@ The reccomended way to access tokens is using the supplied selector functions.
 Simply import the selector object and then destructure the selectors you want to use out of this.
 
 ```javascript
-import { selectors } from "@royalnavy/design-tokens";
+import { selectors } from "@defencedigital/design-tokens";
 
 const { color, spacing, mediaQuery } = selectors
 
@@ -59,18 +59,18 @@ We consider these to be implementation detail (they may change without notice), 
 ### JavaScript
 
 ```javascript
-import { ColorNeutral100 } from '@royalnavy/design-tokens'
+import { ColorNeutral100 } from '@defencedigital/design-tokens'
 ```
 
 ### SASS
 
 ```css
-@use '@royalnavy/design-tokens' as $vars
+@use '@defencedigital/design-tokens' as $vars
 ```
 
 ## Questions
 
-The Design System is maintained by a team at the Defence Digital. If you want to know more about the Defence Digital Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
+The Design System is maintained by a team at the Defence Digital. If you want to know more about the Defence Digital Design System, please email the [Design System Team](mailto:design-system@defencedigital.io).
 
 ## Documentation
 

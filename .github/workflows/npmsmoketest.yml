@@ -35,7 +35,7 @@ jobs:
 
         - name: Update CRA template to use local packages
           run: |
-           TEMPLATE=packages/cra-template-royalnavy/template.json
+           TEMPLATE=packages/cra-template-defencedigital/template.json
            PACKAGES=(
             design-tokens
             css-framework
@@ -45,7 +45,7 @@ jobs:
            )
            for i in "${PACKAGES[@]}";
             do
-              contents="$(jq '.package.dependencies."@royalnavy/'$i'" = "file:../packages/'$i'"' $TEMPLATE)" \
+              contents="$(jq '.package.dependencies."@defencedigital/'$i'" = "file:../packages/'$i'"' $TEMPLATE)" \
               && echo "${contents}" > $TEMPLATE
             done
            cat $TEMPLATE
@@ -53,11 +53,11 @@ jobs:
         - name: Create boilerplate app
           run: |
            if [ -d "my-app" ]; then rm -Rf my-app ; fi
-           npx create-react-app my-app --template file:../${{ github.event.repository.name }}/packages/cra-template-royalnavy
+           npx create-react-app my-app --template file:../${{ github.event.repository.name }}/packages/cra-template-defencedigital
 
         - name: Build boilerlate app
           run: |
            cd my-app
-           grep version node_modules/@royalnavy/**/package.json
+           grep version node_modules/@defencedigital/**/package.json
            echo "SKIP_PREFLIGHT_CHECK=true" > .env  #workaround for babel-loader (8.2.2) CRA version issue
            yarn build

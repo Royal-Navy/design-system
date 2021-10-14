@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import '@royalnavy/fonts'
-import { GlobalStyleProvider } from '@royalnavy/react-component-library'
+import '@defencedigital/fonts'
+import { GlobalStyleProvider } from '@defencedigital/react-component-library'
 import { Redirect, BrowserRouter as Router, Route } from 'react-router-dom'
 import { ApolloProvider } from '@apollo/react-hooks'
 

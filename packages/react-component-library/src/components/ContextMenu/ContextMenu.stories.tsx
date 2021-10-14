@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { IconEdit, IconDelete, IconAdd } from '@royalnavy/icon-library'
+import { IconEdit, IconDelete, IconAdd } from '@defencedigital/icon-library'
 
 import {
   ContextMenu,

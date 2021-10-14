@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-import { IconChevronRight } from '@royalnavy/icon-library'
+import { selectors } from '@defencedigital/design-tokens'
+import { IconChevronRight } from '@defencedigital/icon-library'
 
 const { color } = selectors
 

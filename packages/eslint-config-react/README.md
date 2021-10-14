@@ -12,14 +12,14 @@ This package provides the Defence Digital ESLint and Prettier configuration.
 
 ## Installation
 
-The Defence Digital ESLint config is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/eslint-config-react).
+The Defence Digital ESLint config is available as an [NPM package](https://www.npmjs.com/package/@defencedigital/eslint-config-react).
 
 ```
 // npm
-npm install @royalnavy/eslint-config-react
+npm install @defencedigital/eslint-config-react
 
 // yarn
-yarn add @royalnavy/eslint-config-react
+yarn add @defencedigital/eslint-config-react
 ```
 
 In the root of your project create the following files:
@@ -28,14 +28,14 @@ _.eslintrc.js_
 
 ```js
 module.exports = {
-  extends: ['@royalnavy/eslint-config-react'],
+  extends: ['@defencedigital/eslint-config-react'],
 }
 ```
 
 _.prettier.config.js_	
 
 ```js	
-module.exports = require('@royalnavy/eslint-config-react/prettier.config.js')
+module.exports = require('@defencedigital/eslint-config-react/prettier.config.js')
 ```
 
 ## Questions
@@ -44,7 +44,7 @@ The Design System is maintained by a team at the Defence Digital. If you want to
 
 ## Documentation
 
-The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Defence Digital Design System.
+The [documentation website](https://design-system.digital.mod.uk/) contains all the information you need to build your application using the Defence Digital Design System.
 
 ## Contributing
 

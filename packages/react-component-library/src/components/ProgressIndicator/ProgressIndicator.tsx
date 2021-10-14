@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconLoader } from '@royalnavy/icon-library'
+import { IconLoader } from '@defencedigital/icon-library'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledProgressIndicator } from './partials/StyledProgressIndicator'

@@ -1,5 +1,5 @@
 {
-  "name": "@royalnavy/eslint-config-react",
+  "name": "@defencedigital/eslint-config-react",
   "version": "2.59.12",
   "files": [
     "index.js",

@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconMoreVert } from '@royalnavy/icon-library'
+import { IconMoreVert } from '@defencedigital/icon-library'
 
 import { Nav } from '../../../common/Nav'
 import { SidebarNavItemEProps } from './SidebarNavItemE'

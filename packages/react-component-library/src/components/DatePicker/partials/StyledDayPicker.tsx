@@ -1,5 +1,5 @@
 import DayPicker from 'react-day-picker'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
 
 const { color, spacing, fontSize } = selectors

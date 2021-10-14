@@ -2,7 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
 
-import { IconBrightnessLow } from '@royalnavy/icon-library'
+import { IconBrightnessLow } from '@defencedigital/icon-library'
 
 import { ButtonGroup, ButtonGroupProps, ButtonGroupItem } from '.'
 import { BUTTON_SIZE } from '../Button'

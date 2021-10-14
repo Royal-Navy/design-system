@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
-import { IconSearch } from '@royalnavy/icon-library'
+import { IconSearch } from '@defencedigital/icon-library'
 import { Button } from '../Button'
 import { TextInput, TextInputProps } from '.'
 

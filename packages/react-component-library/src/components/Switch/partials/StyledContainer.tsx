@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 
 import { SWITCH_BORDER_COLOR, SWITCH_BACKGROUND_COLOR } from '../constants'
 

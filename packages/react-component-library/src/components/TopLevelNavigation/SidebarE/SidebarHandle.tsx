@@ -1,5 +1,5 @@
 import React, { useContext, forwardRef } from 'react'
-import { IconChevronLeft, IconChevronRight } from '@royalnavy/icon-library'
+import { IconChevronLeft, IconChevronRight } from '@defencedigital/icon-library'
 
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext } from './context'

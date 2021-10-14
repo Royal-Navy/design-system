@@ -4,7 +4,7 @@ import {
   IconError,
   IconCheckCircle,
   IconWarning,
-} from '@royalnavy/icon-library'
+} from '@defencedigital/icon-library'
 
 import { ALERT_VARIANT } from './constants'
 import { getId } from '../../helpers'

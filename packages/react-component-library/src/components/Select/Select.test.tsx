@@ -6,7 +6,7 @@ import {
   RenderResult,
   waitFor,
 } from '@testing-library/react'
-import { IconAnchor } from '@royalnavy/icon-library'
+import { IconAnchor } from '@defencedigital/icon-library'
 
 import { Select } from '.'
 import { Button } from '../Button'

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 
 import { FloatingBoxSchemeType } from '../types'
 import { FLOATING_BOX_SCHEME } from '../constants'

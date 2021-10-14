@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconCancel } from '@royalnavy/icon-library'
+import { IconCancel } from '@defencedigital/icon-library'
 
 import { StyledClearButton } from './partials/StyledClearButton'
 

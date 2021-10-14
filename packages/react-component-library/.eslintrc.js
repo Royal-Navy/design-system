@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@royalnavy/eslint-config-react'],
+  extends: ['@defencedigital/eslint-config-react'],
   overrides: [
     {
       files: ['**/*.stories.tsx'],

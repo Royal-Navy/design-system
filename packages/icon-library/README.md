@@ -10,21 +10,21 @@ It has been extended and supplemented with domain specific icons and [silhouette
 
 ## Installation
 
-The Defence Digital Icon Library is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/icon-library).
+The Defence Digital Icon Library is available as an [NPM package](https://www.npmjs.com/package/@defencedigital/icon-library).
 
 ```
 // npm
-npm install @royalnavy/icon-library
+npm install @defencedigital/icon-library
 
 // yarn
-yarn add @royalnavy/icon-library
+yarn add @defencedigital/icon-library
 ```
 
 ## Usage
 
 ```javascript
-import { IconHome } from '@royalnavy/icon-library'
-import { SilhouetteAircraftCarrier } from '@royalnavy/icon-library'
+import { IconHome } from '@defencedigital/icon-library'
+import { SilhouetteAircraftCarrier } from '@defencedigital/icon-library'
 
 // <IconHome size={16} />
 // <SilhouetteAircraftCarrier size={128} />
@@ -46,7 +46,7 @@ The Design System is maintained by a team at the Defence Digital. If you want to
 
 ## Documentation
 
-The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Defence Digital Design System.
+The [documentation website](https://design-system.digital.mod.uk/) contains all the information you need to build your application using the Defence Digital Design System.
 
 ## Changelog
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { IconSearch } from '@royalnavy/icon-library'
+import { IconSearch } from '@defencedigital/icon-library'
 import { TextInputE, TextInputEProps } from '.'
 
 export default {

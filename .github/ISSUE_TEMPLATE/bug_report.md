@@ -16,7 +16,7 @@ assignees: ''
 
 Please provide a reference to a repository that includes a minimal reproduction of the issue.
 
-We recommend spawning a new application using the [Defence Digital CRA Template](https://www.npmjs.com/package/cra-template-royalnavy):
+We recommend spawning a new application using the [Defence Digital CRA Template](https://www.npmjs.com/package/cra-template-defencedigital):
 
 ```bash
 // npx

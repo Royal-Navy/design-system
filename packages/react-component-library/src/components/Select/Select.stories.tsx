@@ -1,6 +1,6 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
-import { IconAnchor } from '@royalnavy/icon-library'
+import { IconAnchor } from '@defencedigital/icon-library'
 
 import { Select, SelectProps } from './index'
 

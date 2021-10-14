@@ -1,7 +1,7 @@
 import React from 'react'
 import { components } from 'react-select'
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 
 const { spacing } = selectors
 

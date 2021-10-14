@@ -29,10 +29,10 @@ To install and save to your projects package.json dependencies, run:
 
 ```
 # with npm
-npm install @royalnavy/fonts @royalnavy/react-component-library
+npm install @defencedigital/fonts @defencedigital/react-component-library
 
 # ...or with yarn
-yarn add @royalnavy/fonts @royalnavy/react-component-library
+yarn add @defencedigital/fonts @defencedigital/react-component-library
 ```
 
 Note: As of `2.16.0` the [`styled-components`](https://github.com/styled-components/styled-components) package is now a required [peerDependency](https://nodejs.org/en/blog/npm/peer-dependencies/).
@@ -44,8 +44,8 @@ Here's a quick example application to get you started:
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
-import '@royalnavy/fonts'
-import { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
+import '@defencedigital/fonts'
+import { GlobalStyleProvider, Button } from '@defencedigital/react-component-library'
 
 function App() {
   return (

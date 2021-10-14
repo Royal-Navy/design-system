@@ -5,7 +5,10 @@ import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
 import { CustomMode } from 'react-compound-slider'
 
-import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
+import {
+  IconBrightnessLow,
+  IconBrightnessHigh,
+} from '@defencedigital/icon-library'
 import { RangeSlider } from '.'
 
 describe('RangeSlider', () => {

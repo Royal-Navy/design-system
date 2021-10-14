@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
-import { IconLayers, IconAnchor } from '@royalnavy/icon-library'
+import { IconLayers, IconAnchor } from '@defencedigital/icon-library'
 
 import { Dropdown, DropdownProps } from './Dropdown'
 

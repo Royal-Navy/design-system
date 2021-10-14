@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 import { AppearanceTypes } from 'react-toast-notifications'
 
 import { StyledToastLabel } from './StyledToastLabel'

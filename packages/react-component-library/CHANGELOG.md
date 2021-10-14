@@ -5,7 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.59.12](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.11...2.59.12) (2021-10-14)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -13,7 +13,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.59.11](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.10...2.59.11) (2021-09-21)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -21,7 +21,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.59.10](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.9...2.59.10) (2021-09-17)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -29,7 +29,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.59.9](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.8...2.59.9) (2021-09-16)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -37,7 +37,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.59.8](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.7...2.59.8) (2021-08-02)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -45,7 +45,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.59.7](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.6...2.59.7) (2021-07-27)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -64,7 +64,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.59.5](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.4...2.59.5) (2021-07-20)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -106,7 +106,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.59.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.0...2.59.1) (2021-07-13)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -114,7 +114,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.59.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.58.0...2.59.0) (2021-07-09)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -170,7 +170,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.55.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.55.0...2.55.1) (2021-06-28)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -194,7 +194,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.54.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.54.0...2.54.1) (2021-06-23)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -219,7 +219,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.53.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.53.1...2.53.2) (2021-06-16)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -227,7 +227,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.53.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.53.0...2.53.1) (2021-06-14)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -252,7 +252,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.52.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.52.0...2.52.1) (2021-06-10)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -282,7 +282,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.51.3](https://github.com/defencedigital/mod-uk-design-system/compare/2.51.2...2.51.3) (2021-06-08)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -388,7 +388,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.48.4](https://github.com/defencedigital/mod-uk-design-system/compare/2.48.3...2.48.4) (2021-05-13)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -407,7 +407,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.48.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.48.1...2.48.2) (2021-05-06)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -415,7 +415,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.48.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.48.0...2.48.1) (2021-04-30)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -516,7 +516,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.44.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.44.0...2.44.1) (2021-04-19)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -540,7 +540,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.43.6](https://github.com/defencedigital/mod-uk-design-system/compare/2.43.5...2.43.6) (2021-04-13)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -548,7 +548,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.43.5](https://github.com/defencedigital/mod-uk-design-system/compare/2.43.4...2.43.5) (2021-04-07)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -556,7 +556,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.43.4](https://github.com/defencedigital/mod-uk-design-system/compare/2.43.3...2.43.4) (2021-04-01)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -627,7 +627,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.42.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.42.0...2.42.1) (2021-03-22)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -657,7 +657,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.40.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.40.1...2.40.2) (2021-03-16)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -665,7 +665,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.40.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.40.0...2.40.1) (2021-03-12)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -724,7 +724,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.38.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.38.0...2.38.1) (2021-03-02)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -800,7 +800,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.35.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.35.0...2.35.1) (2021-02-18)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -842,7 +842,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.33.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.33.0...2.33.1) (2021-02-09)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -850,7 +850,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.33.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.32.2...2.33.0) (2021-02-08)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -858,7 +858,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.32.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.32.1...2.32.2) (2021-02-05)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -943,7 +943,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.30.6](https://github.com/defencedigital/mod-uk-design-system/compare/2.30.5...2.30.6) (2021-01-20)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -986,7 +986,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.30.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.30.1...2.30.2) (2021-01-11)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 
@@ -994,7 +994,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.30.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.30.0...2.30.1) (2021-01-11)
 
-**Note:** Version bump only for package @royalnavy/react-component-library
+**Note:** Version bump only for package @defencedigital/react-component-library
 
 
 

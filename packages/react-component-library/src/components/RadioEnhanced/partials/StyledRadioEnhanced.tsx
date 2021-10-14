@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 
 import { StyledRadio } from '../../Radio/partials/StyledRadio'
 import { StyledInput } from '../../Radio/partials/StyledInput'

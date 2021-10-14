@@ -4,7 +4,7 @@ import {
   IconChevronLeft,
   IconZoomIn,
   IconZoomOut,
-} from '@royalnavy/icon-library'
+} from '@defencedigital/icon-library'
 
 import { Button, BUTTON_SIZE, BUTTON_VARIANT } from '../Button'
 import { StyledToolbar } from './partials/StyledToolbar'

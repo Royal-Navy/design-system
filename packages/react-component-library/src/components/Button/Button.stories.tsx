@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { IconBrightnessLow } from '@royalnavy/icon-library'
+import { IconBrightnessLow } from '@defencedigital/icon-library'
 import { Button, ButtonProps } from './index'
 import {
   BUTTON_COLOR,

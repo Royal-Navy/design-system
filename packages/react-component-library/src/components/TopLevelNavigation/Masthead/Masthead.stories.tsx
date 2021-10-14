@@ -6,7 +6,7 @@ import {
   IconPerson,
   IconSettings,
   IconHome,
-} from '@royalnavy/icon-library'
+} from '@defencedigital/icon-library'
 
 import { Link } from '../../Link'
 import {

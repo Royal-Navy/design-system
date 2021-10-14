@@ -7,7 +7,7 @@ import {
   RenderResult,
   waitFor,
 } from '@testing-library/react'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 
 import { Tab, TabSet } from '.'
 import { SCROLL_DIRECTION } from './constants'

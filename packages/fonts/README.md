@@ -4,14 +4,14 @@ The CSS and web font files for self-hosting "Lato".
 
 ## Installation
 
-The Defence Digital Fonts are available as an [NPM package](https://www.npmjs.com/package/@royalnavy/fonts).
+The Defence Digital Fonts are available as an [NPM package](https://www.npmjs.com/package/@defencedigital/fonts).
 
 ```
 // npm
-npm install @royalnavy/fonts
+npm install @defencedigital/fonts
 
 // yarn
-yarn add @royalnavy/fonts
+yarn add @defencedigital/fonts
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ You will need to have webpack setup to load css and font files. Many tools built
 To use, simply require the package in your project’s entry file e.g.
 
 ```javascript
-import '@royalnavy/fonts'
+import '@defencedigital/fonts'
 ```
 
 ## Questions
@@ -32,7 +32,7 @@ The Design System is maintained by a team at the Defence Digital. If you want to
 
 ## Documentation
 
-The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Defence Digital Design System.
+The [documentation website](https://design-system.digital.mod.uk/) contains all the information you need to build your application using the Defence Digital Design System.
 
 ## Contributing
 

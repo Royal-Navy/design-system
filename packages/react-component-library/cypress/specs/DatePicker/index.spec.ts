@@ -1,6 +1,6 @@
 import { describe, cy, it, before } from 'local-cypress'
 import { addDays, startOfMonth, format } from 'date-fns'
-import { ColorAction600, ColorNeutral200 } from '@royalnavy/design-tokens'
+import { ColorAction600, ColorNeutral200 } from '@defencedigital/design-tokens'
 
 import { DATE_FORMAT } from '../../../src/constants'
 import { hexToRgb } from '../../helpers'

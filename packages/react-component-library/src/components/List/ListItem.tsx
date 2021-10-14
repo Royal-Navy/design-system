@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconChevronRight } from '@royalnavy/icon-library'
+import { IconChevronRight } from '@defencedigital/icon-library'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getId } from '../../helpers'

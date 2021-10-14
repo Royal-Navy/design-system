@@ -10,7 +10,7 @@ import {
   IconWarning,
   IconError,
   IconCheckCircle,
-} from '@royalnavy/icon-library'
+} from '@defencedigital/icon-library'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getId } from '../../helpers'

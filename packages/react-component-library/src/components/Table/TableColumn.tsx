@@ -4,7 +4,7 @@ import {
   IconSortAscending,
   IconSortDescending,
   IconSortUnsorted,
-} from '@royalnavy/icon-library'
+} from '@defencedigital/icon-library'
 
 import { TABLE_SORT_ORDER } from './constants'
 import { StyledTableColumn } from './partials/StyledTableColumn'

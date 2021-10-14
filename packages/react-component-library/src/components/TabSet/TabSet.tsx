@@ -2,7 +2,7 @@ import React, { Children, KeyboardEvent, useState } from 'react'
 import {
   IconKeyboardArrowLeft,
   IconKeyboardArrowRight,
-} from '@royalnavy/icon-library'
+} from '@defencedigital/icon-library'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { Tab, TabContent, TabItem, TabProps } from '.'

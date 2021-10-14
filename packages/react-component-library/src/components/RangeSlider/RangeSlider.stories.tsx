@@ -1,7 +1,10 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
+import {
+  IconBrightnessLow,
+  IconBrightnessHigh,
+} from '@defencedigital/icon-library'
 import { RangeSlider, RangeSliderProps } from './index'
 
 export default {
