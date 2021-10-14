@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.59.12](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.11...2.59.12) (2021-10-14)
+
+**Note:** Version bump only for package @royalnavy/fonts
+
+
+
+
+
 ## [2.59.11](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.10...2.59.11) (2021-09-21)
 
 **Note:** Version bump only for package @royalnavy/fonts
