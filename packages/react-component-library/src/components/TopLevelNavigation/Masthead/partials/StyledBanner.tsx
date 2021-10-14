@@ -1,5 +1,5 @@
 import { rgba } from 'polished'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 import styled from 'styled-components'
 
 import { MAIN_HEIGHT } from './constants'

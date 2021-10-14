@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 

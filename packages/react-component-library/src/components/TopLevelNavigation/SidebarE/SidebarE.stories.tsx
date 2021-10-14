@@ -10,7 +10,7 @@ import {
   IconFeedback,
   IconSettings,
   IconGrain,
-} from '@royalnavy/icon-library'
+} from '@defencedigital/icon-library'
 
 import {
   SidebarE,

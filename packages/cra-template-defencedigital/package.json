@@ -1,5 +1,5 @@
 {
-  "name": "cra-template-royalnavy",
+  "name": "cra-template-defencedigital",
   "version": "2.59.12",
   "main": "template.json",
   "publishConfig": {
@@ -15,7 +15,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/defencedigital/mod-uk-design-system.git",
-    "directory": "packages/cra-template-royalnavy"
+    "directory": "packages/cra-template-defencedigital"
   },
   "author": "Defence Digital",
   "license": "Apache-2.0",

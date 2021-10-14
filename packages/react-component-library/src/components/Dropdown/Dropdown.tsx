@@ -1,7 +1,7 @@
 import React from 'react'
 import Select from 'react-select'
 import { ValueType } from 'react-select/src/types'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 import styled from 'styled-components'
 
 import { DropdownIndicator } from './DropdownIndicator'

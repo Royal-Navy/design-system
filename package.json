@@ -7,7 +7,7 @@
     "packages/icon-library",
     "packages/react-component-library",
     "packages/fonts",
-    "packages/cra-template-royalnavy",
+    "packages/cra-template-defencedigital",
     "packages/design-tokens"
   ],
   "engines": {

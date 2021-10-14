@@ -1,6 +1,9 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
-import { IconArrowDropDown, IconArrowDropUp } from '@royalnavy/icon-library'
+import {
+  IconArrowDropDown,
+  IconArrowDropUp,
+} from '@defencedigital/icon-library'
 
 import { Button } from '../Button'
 import { Nav, NavProps } from '.'

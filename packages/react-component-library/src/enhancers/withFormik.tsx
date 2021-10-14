@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import get from 'lodash/get'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 import styled from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 

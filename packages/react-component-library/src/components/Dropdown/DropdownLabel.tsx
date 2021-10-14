@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconVisibility, IconVisibilityOff } from '@royalnavy/icon-library'
+import { IconVisibility, IconVisibilityOff } from '@defencedigital/icon-library'
 
 import { DropdownOption } from './DropdownOption'
 import { StyledLabel } from './partials/StyledLabel'

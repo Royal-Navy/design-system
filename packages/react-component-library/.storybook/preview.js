@@ -1,5 +1,5 @@
-import '@royalnavy/css-framework/index.scss'
-import '@royalnavy/fonts'
+import '@defencedigital/css-framework/index.scss'
+import '@defencedigital/fonts'
 
 /**
  * Hacky way of clicking on Docs button on first load of page.

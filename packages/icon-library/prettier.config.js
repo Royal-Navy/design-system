@@ -1,1 +1,1 @@
-module.exports = require('@royalnavy/eslint-config-react/prettier.config.js')
+module.exports = require('@defencedigital/eslint-config-react/prettier.config.js')

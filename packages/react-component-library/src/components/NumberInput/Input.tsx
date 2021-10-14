@@ -1,6 +1,6 @@
 import React from 'react'
 import { isFinite, isNil } from 'lodash'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 
 import { NumberInputUnit } from './NumberInputUnit'
 import { UnitPosition } from './NumberInput'

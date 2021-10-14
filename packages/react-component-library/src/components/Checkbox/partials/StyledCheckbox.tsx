@@ -1,5 +1,5 @@
 import React from 'react'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
 
 import { StyledLabel } from './StyledLabel'

@@ -2,7 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
-import { IconBrightnessHigh } from '@royalnavy/icon-library'
+import { IconBrightnessHigh } from '@defencedigital/icon-library'
 import * as yup from 'yup'
 
 import { Button } from '../Button'

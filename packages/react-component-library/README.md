@@ -1,21 +1,17 @@
-__This package has moved to [`@defencedigital/react-component-library`](https://www.npmjs.com/package/@defencedigital/react-component-library).__
-
-----
-
 # React Component Library
 
 A collection of React components written for Defence Digital web applications.
 
 ## Installation
 
-The Defence Digital React Component Library is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/react-component-library).
+The Defence Digital React Component Library is available as an [NPM package](https://www.npmjs.com/package/@defencedigital/react-component-library).
 
 ```
 // npm
-npm install @royalnavy/fonts @royalnavy/react-component-library
+npm install @defencedigital/fonts @defencedigital/react-component-library
 
 // yarn
-yarn add @royalnavy/fonts @royalnavy/react-component-library
+yarn add @defencedigital/fonts @defencedigital/react-component-library
 ```
 
 NOTE: As of `2.16.0` the [`styled-components`](https://github.com/styled-components/styled-components) package is now a required [peerDependency](https://nodejs.org/en/blog/npm/peer-dependencies/).
@@ -25,9 +21,9 @@ NOTE: As of `2.16.0` the [`styled-components`](https://github.com/styled-compone
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
-import '@royalnavy/fonts'
-import { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
-import { lightTheme } from '@royalnavy/design-tokens'
+import '@defencedigital/fonts'
+import { GlobalStyleProvider, Button } from '@defencedigital/react-component-library'
+import { lightTheme } from '@defencedigital/design-tokens'
 
 function App() {
   return (
@@ -48,7 +44,7 @@ This context provider component applies global Defence Digital Design System sty
 
 ### Theming
 
-By default the `GlobalStyleProvider` will use the `lightTheme` exported by the `@royalnavy/design-tokens` package. You can create your own themes by injecting your own custom token set via the `theme` prop.
+By default the `GlobalStyleProvider` will use the `lightTheme` exported by the `@defencedigital/design-tokens` package. You can create your own themes by injecting your own custom token set via the `theme` prop.
 
 We recommend reading the following blog post on [`styled-theming`](https://jamie.build/styled-theming.html). Using this pattern you can selectively theme individual components. Inverting responsibility for the implementation of the theme to the component itself.
 
@@ -65,7 +61,7 @@ When utilising this pattern remember to extend a base token set:
 This hook aids in the positioning of arbitrary elements relative to a target element. The positoning engine will intelligently position the element based on available screen real-estate.
 
 ```javascript
-import { useFloatingElement } from '@royalnavy/react-component-library'
+import { useFloatingElement } from '@defencedigital/react-component-library'
 
 const Example = () => {
   const {
@@ -102,7 +98,7 @@ The Design System is maintained by a team at the Defence Digital. If you want to
 
 ## Documentation
 
-The [documentation website](https://docs.royalnavy.io/) contains all the information you need to build your application using the Defence Digital Design System.
+The [documentation website](https://design-system.digital.mod.uk/) contains all the information you need to build your application using the Defence Digital Design System.
 
 ## End to end tests
 

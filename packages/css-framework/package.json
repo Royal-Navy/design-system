@@ -1,5 +1,5 @@
 {
-  "name": "@royalnavy/css-framework",
+  "name": "@defencedigital/css-framework",
   "version": "2.59.12",
   "main": "index.scss",
   "author": "Defence Digital",
@@ -35,8 +35,8 @@
     "prepare": "yarn build"
   },
   "dependencies": {
-    "@royalnavy/design-tokens": "^2.59.12",
-    "@royalnavy/eslint-config-react": "^2.59.12"
+    "@defencedigital/design-tokens": "^2.59.12",
+    "@defencedigital/eslint-config-react": "^2.59.12"
   },
   "devDependencies": {
     "lint-staged": "^11.0.1",

@@ -1,7 +1,11 @@
 import React, { createContext } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
-import { selectors, BreakpointSize, lightTheme } from '@royalnavy/design-tokens'
+import {
+  selectors,
+  BreakpointSize,
+  lightTheme,
+} from '@defencedigital/design-tokens'
 
 export interface GlobalStyleContextDefaults {
   theme?: Record<string, any>

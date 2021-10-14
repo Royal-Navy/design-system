@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { ColorDanger600, ColorSuccess600 } from '@royalnavy/design-tokens'
+import { ColorDanger600, ColorSuccess600 } from '@defencedigital/design-tokens'
 import {
   fireEvent,
   render,

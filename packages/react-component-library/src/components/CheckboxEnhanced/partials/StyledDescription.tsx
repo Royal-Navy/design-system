@@ -1,5 +1,5 @@
 import React from 'react'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 import styled from 'styled-components'
 
 const { color, spacing } = selectors

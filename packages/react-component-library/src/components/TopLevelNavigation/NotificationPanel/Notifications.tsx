@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { IconKeyboardArrowRight } from '@royalnavy/icon-library'
+import { IconKeyboardArrowRight } from '@defencedigital/icon-library'
 
 import { LinkTypes } from '../../../common/Link'
 import { NotificationProps } from './index'

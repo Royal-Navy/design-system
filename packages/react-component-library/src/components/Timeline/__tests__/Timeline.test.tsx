@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { ColorNeutral100, ColorNeutral200 } from '@royalnavy/design-tokens'
+import { ColorNeutral100, ColorNeutral200 } from '@defencedigital/design-tokens'
 import { css, CSSProp } from 'styled-components'
 import { render, RenderResult, waitFor } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'

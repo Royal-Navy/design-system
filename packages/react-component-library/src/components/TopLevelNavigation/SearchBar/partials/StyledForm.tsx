@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { selectors } from '@defencedigital/design-tokens'
 
 import { StyledInput } from '../../../TextInput/partials/StyledInput'
 import { StyledOuterWrapper } from '../../../TextInput/partials/StyledOuterWrapper'

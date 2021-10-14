@@ -1,25 +1,19 @@
-__This package has moved to [`@defencedigital/css-framework`](https://www.npmjs.com/package/@defencedigital/css-framework).__
-
-----
-
 # CSS Framework
-
-NOTE: This package has been deprecated in favour of `@defencedigital/css-framework`.
 
 NOTE: We now reccomend using design-tokens and a CSS-in-JS solution instead of SASS.
 
-The `@royalnavy/css-framework` package provides a compiled version of the component CSS, the Utility classes and the source SASS. The source SASS can either be used with the component library package, or as a standalone stylesheet.
+The `@defencedigital/css-framework` package provides a compiled version of the component CSS, the Utility classes and the source SASS. The source SASS can either be used with the component library package, or as a standalone stylesheet.
 
 ## Installation
 
-The Defence Digital CSS Framework is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/css-framework).
+The Defence Digital CSS Framework is available as an [NPM package](https://www.npmjs.com/package/@defencedigital/css-framework).
 
 ```
 // npm
-npm install @royalnavy/css-framework
+npm install @defencedigital/css-framework
 
 // yarn
-yarn add @royalnavy/css-framework
+yarn add @defencedigital/css-framework
 ```
 
 ## Usage
@@ -27,7 +21,7 @@ yarn add @royalnavy/css-framework
 Under the hood, the CSS Framework uses [SCSS Modules](http://sass.logdown.com/posts/7858341-the-module-system-is-launched). To include the framework in your application, import it at the top of your main stylesheet as:
 
 ```
-@use "@royalnavy/css-framework" as rn;
+@use "@defencedigital/css-framework" as rn;
 ```
 The `rn` namespace is an optional value, however we recommend using it to ensure the supplied functions and mixins don't clash with any other frameworks/styles you may use. With the `rn` namespace, all functions are composed as follows:
 ```
@@ -68,7 +62,7 @@ $zindex;
 Overriding these variables will merge the supplied values with the current context values:
 
 ```
-@use "@royalnavy/css-framework" as rn with (
+@use "@defencedigital/css-framework" as rn with (
   $colors: (
     "neutral": (
       "500": #FF0000
@@ -88,7 +82,7 @@ Several different Utility classes are provided by this framework. These classes 
 
 ## Questions
 
-The Design System is maintained by a team at the Defence Digital. If you want to know more about the Defence Digital Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
+The Design System is maintained by a team at the Defence Digital. If you want to know more about the Defence Digital Design System, please email the [Design System Team](mailto:design-system@defencedigital.io).
 
 ## Documentation
 

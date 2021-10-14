@@ -6,7 +6,7 @@ import {
   ColorDanger500,
   ColorNeutral100,
   ColorNeutral200,
-} from '@royalnavy/design-tokens'
+} from '@defencedigital/design-tokens'
 
 import {
   Timeline,
