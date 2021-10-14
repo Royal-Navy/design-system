@@ -1,10 +1,4 @@
-__This package has moved to [`@defencedigital/css-framework`](https://www.npmjs.com/package/@defencedigital/css-framework).__
-
-----
-
 # CSS Framework
-
-NOTE: This package has been deprecated in favour of `@defencedigital/css-framework`.
 
 NOTE: We now reccomend using design-tokens and a CSS-in-JS solution instead of SASS.
 

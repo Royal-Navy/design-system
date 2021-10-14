@@ -1,7 +1,3 @@
-__This package has moved to [`@defencedigital/eslint-config-react`](https://www.npmjs.com/package/@defencedigital/eslint-config-react).__
-
-----
-
 # ESLint Config React
 
 This package provides the Defence Digital ESLint and Prettier configuration.

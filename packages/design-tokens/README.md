@@ -1,7 +1,3 @@
-__This package has moved to [`@defencedigital/design-tokens`](https://www.npmjs.com/package/@defencedigital/design-tokens).__
-
-----
-
 # Design Tokens
 
 An agnostic way to store variables such as typography, color, and spacing.

@@ -1,7 +1,3 @@
-__This package has moved to [`@defencedigital/fonts`](https://www.npmjs.com/package/@defencedigital/fonts).__
-
-----
-
 # Fonts
 
 The CSS and web font files for self-hosting "Lato".
