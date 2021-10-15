@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.59.13](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.12...2.59.13) (2021-10-15)
+
+
+### Reverts
+
+* Revert "docs(README): Add migration notice to READMEs" ([57accba](https://github.com/defencedigital/mod-uk-design-system/commit/57accba4d282dad229509ec8c8a792b59f2bab8b))
+
+
+
+
+
 ## [2.59.12](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.11...2.59.12) (2021-10-14)
 
 **Note:** Version bump only for package @defencedigital/react-component-library
