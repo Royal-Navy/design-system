@@ -26,7 +26,7 @@ jobs:
         uses: actions/cache@v2
         with:
             path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Build icon-library
         run: |

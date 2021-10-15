@@ -17,7 +17,7 @@ jobs:
           uses: actions/cache@v2
           with:
             path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
 
         - name: Cache Cypress binary
           uses: actions/cache@v2
@@ -71,7 +71,7 @@ jobs:
           uses: actions/cache@v2
           with:
             path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
 
         - name: check commits
           run: |
@@ -91,7 +91,7 @@ jobs:
           uses: actions/cache@v2
           with:
             path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
 
         - name: Get dependencies & run lint
           run: |
@@ -118,7 +118,7 @@ jobs:
           uses: actions/cache@v2
           with:
             path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
 
         - name: Get dependencies & run lint
           run: |
@@ -145,7 +145,7 @@ jobs:
           uses: actions/cache@v2
           with:
             path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
 
         - name: Attach workspace
           uses: actions/download-artifact@v2
@@ -179,7 +179,7 @@ jobs:
           uses: actions/cache@v2
           with:
             path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
 
         - name: Cache Cypress binary
           uses: actions/cache@v2
@@ -228,7 +228,7 @@ jobs:
            uses: actions/cache@v2
            with:
              path: '**/node_modules'
-             key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+             key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
 
          - name: Attach workspace
            uses: actions/download-artifact@v2
@@ -252,7 +252,7 @@ jobs:
            uses: actions/cache@v2
            with:
              path: '**/node_modules'
-             key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+             key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
 
          - name: Jest design-tokens
            run: |
@@ -274,7 +274,7 @@ jobs:
           uses: actions/cache@v2
           with:
             path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
 
         - name: Attach workspace
           uses: actions/download-artifact@v2
