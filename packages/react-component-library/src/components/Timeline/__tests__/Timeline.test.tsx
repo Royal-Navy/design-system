@@ -1422,6 +1422,31 @@ describe('Timeline', () => {
       })
     })
 
+    describe('when navigating left', () => {
+      beforeEach(() => {
+        userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
+      })
+
+      it('renders the correct number of days', () => {
+        const days = wrapper.queryAllByTestId('timeline-day-title')
+        expect(days).toHaveLength(41)
+        expect(days[0]).toHaveTextContent('27')
+        expect(days[days.length - 1]).toHaveTextContent('05')
+      })
+
+      it('should update the `startDate`', () => {
+        expect(wrapper.getByTestId('timeline-start-date')).toHaveTextContent(
+          '2019-12-27T00:00:00.000Z'
+        )
+      })
+
+      it('should update the `endDate`', () => {
+        expect(wrapper.getByTestId('timeline-end-date')).toHaveTextContent(
+          '2020-02-05T00:00:00.000Z'
+        )
+      })
+    })
+
     describe('when navigating right', () => {
       beforeEach(() => {
         userEvent.click(wrapper.getByTestId('timeline-side-button-right'))

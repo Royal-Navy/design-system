@@ -53,6 +53,7 @@ export type TimelineState = {
   currentScaleIndex: number
   currentScaleOption: TimelineScaleOption
   days: TimelineDay[]
+  getNewEndDate: (intervalMultiplier?: number) => Date
   hours: TimelineHour[]
   months: TimelineMonth[]
   options: TimelineOptions
