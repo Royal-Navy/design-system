@@ -68,6 +68,7 @@ export const TIMELINE_ACTIONS = {
   CHANGE_WIDTH: 'CHANGE_WIDTH',
   GET_NEXT: 'GET_NEXT',
   GET_PREV: 'GET_PREV',
+  INITIALISE: 'INITIALISE',
   SCALE: 'SCALE',
 } as const
 
@@ -87,6 +88,10 @@ export type TimelineAction =
   | {
       type: typeof TIMELINE_ACTIONS.GET_PREV
       scaleOptions: TimelineScaleOption[]
+    }
+  | {
+      type: typeof TIMELINE_ACTIONS.INITIALISE
+      width: number
     }
   | { type: typeof TIMELINE_ACTIONS.SCALE; scaleIndex: number }
 
