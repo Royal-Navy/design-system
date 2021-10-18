@@ -64,6 +64,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className="rn-sidebar__bottom">
         {notifications && (
           <Sheet
+            id="sidebar-notifications"
             button={
               <SheetButton
                 aria-label="Show notifications"
