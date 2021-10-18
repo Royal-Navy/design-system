@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DateUtils, DayModifiers, RangeModifier } from 'react-day-picker'
 
 import { StateObject } from './types'
@@ -35,6 +35,13 @@ export const useSelection = (
     to: endDate,
   })
 
+  useEffect(() => {
+    setState({
+      from: startDate,
+      to: endDate,
+    })
+  }, [startDate, endDate])
+
   function handleDayClick(day: Date, dayModifiers?: DayModifiers) {
     if (dayModifiers && dayModifiers.disabled) {
       return
@@ -50,7 +57,7 @@ export const useSelection = (
       })
     }
 
-    (function closeOnSelection() {
+    ;(function closeOnSelection() {
       if (isRange && !newState.to) {
         return
       }

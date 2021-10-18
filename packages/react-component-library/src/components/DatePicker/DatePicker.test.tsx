@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { ColorDanger600, ColorSuccess600 } from '@defencedigital/design-tokens'
 import {
@@ -11,6 +11,7 @@ import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
 
 import { DatePicker } from '.'
+import { Button } from '../Button'
 
 const NOW = '2019-12-05T11:00:00.000Z'
 
@@ -923,6 +924,48 @@ describe('DatePicker', () => {
         'placeholder',
         'yyyy/mm/dd'
       )
+    })
+  })
+
+  describe('when `startDate` and `endDate` are updated externally', () => {
+    beforeEach(() => {
+      const initialProps = {
+        startDate: new Date(2021, 11, 1),
+        endDate: new Date(2021, 11, 2),
+      }
+      const update1Props = {
+        ...initialProps,
+        startDate: new Date(2022, 11, 1),
+      }
+      const update2Props = {
+        ...update1Props,
+        endDate: new Date(2022, 11, 2),
+      }
+
+      const DatePickerWithUpdate = () => {
+        const [props, updateProps] = useState(initialProps)
+
+        return (
+          <>
+            <Button onClick={() => updateProps(update1Props)}>Update 1</Button>
+            <Button onClick={() => updateProps(update2Props)}>Update 2</Button>
+            <DatePicker {...props} isRange />
+          </>
+        )
+      }
+
+      wrapper = render(<DatePickerWithUpdate />)
+
+      wrapper.getByText('Update 1').click()
+      wrapper.getByText('Update 2').click()
+    })
+
+    it('set the value of the component to this date', () => {
+      return waitFor(() => {
+        expect(
+          wrapper.getByTestId('datepicker-input').getAttribute('value')
+        ).toBe('01/12/2022 - 02/12/2022')
+      })
     })
   })
 })
