@@ -87,7 +87,7 @@
     "@types/classnames": "^2.2.9",
     "@types/enzyme": "^3.10.4",
     "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/jest": "^26.0.20",
+    "@types/jest": "^27.0.2",
     "@types/jsdom": "^16.2.0",
     "@types/lodash": "^4.14.149",
     "@types/node": "^16.3.3",
