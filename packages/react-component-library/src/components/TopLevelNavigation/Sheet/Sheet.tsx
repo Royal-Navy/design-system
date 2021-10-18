@@ -15,6 +15,7 @@ export interface SheetProps extends ComponentWithClass {
   children: React.ReactElement
   placement?: Placement
   closeDelay?: number
+  id?: string
 }
 
 export const Sheet: React.FC<SheetProps> = ({
@@ -22,19 +23,19 @@ export const Sheet: React.FC<SheetProps> = ({
   children,
   placement = FLOATING_BOX_PLACEMENT.RIGHT,
   closeDelay = 250,
+  id = getId('sheet'),
 }) => {
   const { floatingBoxChildrenRef, isVisible, mouseEvents } = useHideShow(
     true,
     closeDelay
   )
-  const sheetId = getId('sheet')
 
   const SheetTarget = () => {
     return React.cloneElement(button as React.ReactElement, {
       ...button.props,
       ...mouseEvents,
       'aria-expanded': isVisible,
-      'aria-owns': sheetId,
+      'aria-owns': id,
     })
   }
 
@@ -47,7 +48,7 @@ export const Sheet: React.FC<SheetProps> = ({
     >
       <div ref={floatingBoxChildrenRef}>
         {React.cloneElement(children, {
-          id: sheetId,
+          id,
           'aria-expanded': isVisible,
         })}
       </div>

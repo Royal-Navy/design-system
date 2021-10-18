@@ -157,6 +157,17 @@ describe('Sidebar', () => {
         wrapper.queryByTestId('notification-button').click()
       })
 
+      it('should maintain static sheet ID', () => {
+        expect(wrapper.getByTestId('notification-button')).toHaveAttribute(
+          'aria-owns',
+          'sidebar-notifications'
+        )
+        expect(wrapper.getByTestId('notifications-sheet')).toHaveAttribute(
+          'id',
+          'sidebar-notifications'
+        )
+      })
+
       it('should spread arbitrary props on the notifications', () => {
         expect(wrapper.getByTestId('notifications-sheet')).toHaveAttribute(
           'data-arbitrary',
