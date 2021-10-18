@@ -53,6 +53,7 @@ export type TimelineState = {
   currentScaleIndex: number
   currentScaleOption: TimelineScaleOption
   days: TimelineDay[]
+  getNewEndDate: (intervalMultiplier?: number) => Date
   hours: TimelineHour[]
   months: TimelineMonth[]
   options: TimelineOptions
@@ -63,13 +64,19 @@ export type TimelineState = {
 }
 
 export const TIMELINE_ACTIONS = {
+  CHANGE_START_DATE: 'CHANGE_START_DATE',
   CHANGE_WIDTH: 'CHANGE_WIDTH',
   GET_NEXT: 'GET_NEXT',
   GET_PREV: 'GET_PREV',
+  INITIALISE: 'INITIALISE',
   SCALE: 'SCALE',
 } as const
 
 export type TimelineAction =
+  | {
+      type: typeof TIMELINE_ACTIONS.CHANGE_START_DATE
+      scaleOptions: TimelineScaleOption[]
+    }
   | {
       type: typeof TIMELINE_ACTIONS.CHANGE_WIDTH
       width: number
@@ -81,6 +88,10 @@ export type TimelineAction =
   | {
       type: typeof TIMELINE_ACTIONS.GET_PREV
       scaleOptions: TimelineScaleOption[]
+    }
+  | {
+      type: typeof TIMELINE_ACTIONS.INITIALISE
+      width: number
     }
   | { type: typeof TIMELINE_ACTIONS.SCALE; scaleIndex: number }
 

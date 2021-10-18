@@ -2,53 +2,35 @@ import { useContext } from 'react'
 
 import { initialiseScaleOptions } from '../context/timeline_scales'
 import { TimelineContext } from '../context'
-import { TIMELINE_ACTIONS, TimelineScaleOption } from '../context/types'
+import { TIMELINE_ACTIONS } from '../context/types'
 
 export function useTimelineFrame(): {
   moveNext: () => void
   movePrevious: () => void
 } {
-  const {
-    dispatch,
-    state: { currentScaleOption, options, width },
-  } = useContext(TimelineContext)
+  const { dispatch, state } = useContext(TimelineContext)
+  const { currentScaleOption, options, width } = state
 
   function move(
-    type: typeof TIMELINE_ACTIONS.GET_NEXT | typeof TIMELINE_ACTIONS.GET_PREV
+    type: typeof TIMELINE_ACTIONS.GET_NEXT | typeof TIMELINE_ACTIONS.GET_PREV,
+    intervalMultiplier = 1
   ) {
-    const intervalMultiplier = type === TIMELINE_ACTIONS.GET_NEXT ? 1 : -1
-
-    const getIntervalSize = ({ intervalSize }: TimelineScaleOption) =>
-      intervalSize * intervalMultiplier
     const newStartDate = currentScaleOption.calculateDate(
       currentScaleOption.from,
-      getIntervalSize(currentScaleOption)
+      currentScaleOption.intervalSize * intervalMultiplier
     )
-    const getNewEndDate = (): Date => {
-      if (options.endDate && currentScaleOption.isDefault) {
-        return currentScaleOption.calculateDate(
-          currentScaleOption.to,
-          getIntervalSize(currentScaleOption)
-        )
-      }
-
-      return null
-    }
 
     const newScaleOptions = initialiseScaleOptions(
       {
         ...options,
         startDate: newStartDate,
-        endDate: getNewEndDate(),
+        endDate: state.getNewEndDate(intervalMultiplier),
         hoursBlockSize: currentScaleOption.hoursBlockSize,
       },
       width
     )
 
-    dispatch({
-      type,
-      scaleOptions: newScaleOptions,
-    })
+    dispatch({ type, scaleOptions: newScaleOptions })
   }
 
   function moveNext() {
@@ -56,7 +38,7 @@ export function useTimelineFrame(): {
   }
 
   function movePrevious() {
-    move(TIMELINE_ACTIONS.GET_PREV)
+    move(TIMELINE_ACTIONS.GET_PREV, -1)
   }
 
   return {

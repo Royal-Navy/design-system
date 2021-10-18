@@ -20,21 +20,30 @@ export function useTimelineWidth(
     return timelineWidth - 1 - sideWidth
   }
 
-  function dispatchWidthChange() {
-    dispatch({
-      type: TIMELINE_ACTIONS.CHANGE_WIDTH,
-      width: isFullWidth ? getWidth() : null,
-    })
+  function dispatchWidthChange(
+    type:
+      | typeof TIMELINE_ACTIONS.CHANGE_WIDTH
+      | typeof TIMELINE_ACTIONS.INITIALISE = TIMELINE_ACTIONS.CHANGE_WIDTH
+  ) {
+    return () => {
+      dispatch({
+        type,
+        width: isFullWidth ? getWidth() : null,
+      })
+    }
   }
 
   /* eslint-disable consistent-return */
   useEffect(() => {
-    dispatchWidthChange()
+    dispatchWidthChange(TIMELINE_ACTIONS.INITIALISE)()
 
     if (isFullWidth) {
-      window.addEventListener('resize', debounce(dispatchWidthChange, 250))
+      window.addEventListener('resize', debounce(dispatchWidthChange(), 250))
       return () => {
-        window.removeEventListener('resize', debounce(dispatchWidthChange, 250))
+        window.removeEventListener(
+          'resize',
+          debounce(dispatchWidthChange(), 250)
+        )
       }
     }
   }, [])

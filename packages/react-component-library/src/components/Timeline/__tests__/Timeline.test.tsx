@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { ColorNeutral100, ColorNeutral200 } from '@defencedigital/design-tokens'
 import { css, CSSProp } from 'styled-components'
@@ -7,6 +7,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import timezoneMock from 'timezone-mock'
 import userEvent from '@testing-library/user-event'
 
+import { Button } from '../../Button'
 import {
   NO_DATA_MESSAGE,
   TIMELINE_BLOCK_SIZE,
@@ -1422,6 +1423,31 @@ describe('Timeline', () => {
       })
     })
 
+    describe('when navigating left', () => {
+      beforeEach(() => {
+        userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
+      })
+
+      it('renders the correct number of days', () => {
+        const days = wrapper.queryAllByTestId('timeline-day-title')
+        expect(days).toHaveLength(41)
+        expect(days[0]).toHaveTextContent('27')
+        expect(days[days.length - 1]).toHaveTextContent('05')
+      })
+
+      it('should update the `startDate`', () => {
+        expect(wrapper.getByTestId('timeline-start-date')).toHaveTextContent(
+          '2019-12-27T00:00:00.000Z'
+        )
+      })
+
+      it('should update the `endDate`', () => {
+        expect(wrapper.getByTestId('timeline-end-date')).toHaveTextContent(
+          '2020-02-05T00:00:00.000Z'
+        )
+      })
+    })
+
     describe('when navigating right', () => {
       beforeEach(() => {
         userEvent.click(wrapper.getByTestId('timeline-side-button-right'))
@@ -2258,6 +2284,56 @@ describe('Timeline', () => {
 
     it('should render the second event', () => {
       expect(wrapper.getByText('Event 2')).toBeInTheDocument()
+    })
+  })
+
+  describe('when `startDate` is updated externally', () => {
+    beforeEach(() => {
+      const TimelineWithUpdate = () => {
+        const [startDate, updateStartDate] = useState<Date>(
+          new Date(2020, 3, 1)
+        )
+
+        return (
+          <>
+            <Button onClick={() => updateStartDate(new Date(2020, 6, 1))}>
+              Update
+            </Button>
+            <Timeline startDate={startDate} today={new Date(2020, 3, 15)}>
+              <TimelineTodayMarker />
+              <TimelineMonths />
+              <TimelineWeeks />
+              <TimelineDays />
+              <TimelineRows>
+                <TimelineRow name="Row 1">
+                  <TimelineEvents>
+                    <TimelineEvent
+                      startDate={new Date(2020, 3, 13)}
+                      endDate={new Date(2020, 3, 18)}
+                    >
+                      Event 1
+                    </TimelineEvent>
+                  </TimelineEvents>
+                </TimelineRow>
+              </TimelineRows>
+            </Timeline>
+          </>
+        )
+      }
+
+      wrapper = render(<TimelineWithUpdate />)
+
+      wrapper.getByText('Update').click()
+    })
+
+    it('should not show the event', async () => {
+      await waitFor(() => {
+        expect(wrapper.queryByTestId('timeline-month')).toHaveTextContent(
+          'July 2020'
+        )
+      })
+
+      expect(wrapper.queryAllByText('Event 1')).toHaveLength(0)
     })
   })
 })

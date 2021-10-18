@@ -103,6 +103,7 @@ export function reducer(
 ): TimelineState | never {
   switch (action.type) {
     case TIMELINE_ACTIONS.CHANGE_WIDTH:
+    case TIMELINE_ACTIONS.INITIALISE:
       /* eslint-disable no-case-declarations */
       const scaleOptions = initialiseScaleOptions(state.options, action.width)
       const currentScaleIndex =
@@ -116,6 +117,7 @@ export function reducer(
         currentScaleOption: scaleOptions[currentScaleIndex],
         width: action.width,
       }
+    case TIMELINE_ACTIONS.CHANGE_START_DATE:
     case TIMELINE_ACTIONS.GET_PREV:
     case TIMELINE_ACTIONS.GET_NEXT:
       return {
