@@ -3,6 +3,6 @@
 
 # These owners will be the default owners for everything in
 # the repo. Unless a later match takes precedence,
-# @thyhjwb6 and @m7kvqbe1 will be requested for
+# @thyhjwb6, @m7kvqbe1 and @jpveooys will be requested for
 # review when someone opens a pull request.
-*       @thyhjwb6 @m7kvqbe1
+*       @thyhjwb6 @m7kvqbe1 @jpveooys
