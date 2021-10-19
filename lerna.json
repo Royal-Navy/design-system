@@ -2,6 +2,6 @@
   "packages": [
     "packages/*"
   ],
-  "version": "2.59.13",
+  "version": "2.59.14",
   "npmClient": "yarn"
 }

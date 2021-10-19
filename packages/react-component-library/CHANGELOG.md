@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.59.14](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.13...2.59.14) (2021-10-19)
+
+
+### Bug Fixes
+
+* **DatePicker:** Allow update from side effect ([f961497](https://github.com/defencedigital/mod-uk-design-system/commit/f96149758f4e920f1d74ec6cfc0c2feb8082728b))
+* **Sidebar:** Maintain static `Sheet` ID ([3d3e02f](https://github.com/defencedigital/mod-uk-design-system/commit/3d3e02f2f689fd174349c5494c98792bc3253999))
+* **Timeline:** Handle `startDate` side effect ([08d7c92](https://github.com/defencedigital/mod-uk-design-system/commit/08d7c92f9188fa846ae64d2ad6cd01accb9c5624))
+
+
+
+
+
 ## [2.59.13](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.12...2.59.13) (2021-10-15)
 
 
