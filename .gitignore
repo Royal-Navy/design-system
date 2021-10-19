@@ -15,7 +15,6 @@ dist
 .DS_Store
 .vscode/
 .idea
-.husky
 
 lerna-debug.log*
 npm-debug.log*

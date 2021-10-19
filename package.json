@@ -65,12 +65,7 @@
     "lerna:prerelease": "yarn lerna:run-version --conventional-prerelease=* --no-changelog -m \"chore(Prerelease): %v [skip ci]\"",
     "lerna:version": "yarn lerna:run-version --conventional-graduate --create-release github -m \"chore(Release): %v\"",
     "lerna:run-version": "lerna version --force-publish=* --tag-version-prefix=''",
-    "audit": "./scripts/audit/audit.sh"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lerna run --parallel lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+    "audit": "./scripts/audit/audit.sh",
+    "prepare": "husky install"
   }
 }
