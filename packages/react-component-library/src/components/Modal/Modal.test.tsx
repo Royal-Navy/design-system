@@ -86,7 +86,7 @@ describe('Modal', () => {
         )
         expect(wrapper.getByTestId('modal-main')).toHaveStyleRule(
           'overflow-y',
-          'scroll'
+          'auto'
         )
       })
 

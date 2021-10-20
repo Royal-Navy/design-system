@@ -14,7 +14,7 @@ export const StyledMain = styled.article`
   bottom: 0;
   border-radius: 8px 8px 0 0;
   max-height: 95vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   ${mq({ gte: 'xs' })`
     border-radius: 5px;
