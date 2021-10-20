@@ -24,6 +24,7 @@ import {
   TimelineHours,
   TimelineMonths,
   TimelineRow,
+  TimelineRowProps,
   TimelineRows,
   TimelineSide,
   TimelineTodayMarker,
@@ -63,7 +64,7 @@ describe('Timeline', () => {
           className="test-class-name"
         >
           <TimelineMonths />
-          <TimelineRows>{}</TimelineRows>
+          <TimelineRows>{ }</TimelineRows>
         </Timeline>
       )
     })
@@ -82,7 +83,7 @@ describe('Timeline', () => {
           <TimelineWeeks />
           <TimelineDays />
           <TimelineHours />
-          <TimelineRows>{}</TimelineRows>
+          <TimelineRows>{ }</TimelineRows>
         </Timeline>
       )
 
@@ -373,7 +374,7 @@ describe('Timeline', () => {
             <TimelineMonths />
             <TimelineWeeks />
             <TimelineDays />
-            <TimelineRows>{}</TimelineRows>
+            <TimelineRows>{ }</TimelineRows>
           </Timeline>
         )
       })
@@ -508,7 +509,7 @@ describe('Timeline', () => {
           <TimelineMonths />
           <TimelineWeeks />
           <TimelineDays />
-          <TimelineRows>{}</TimelineRows>
+          <TimelineRows>{ }</TimelineRows>
         </Timeline>
       )
     })
@@ -803,7 +804,7 @@ describe('Timeline', () => {
               />
             )}
           />
-          <TimelineRows>{}</TimelineRows>
+          <TimelineRows>{ }</TimelineRows>
         </Timeline>
       )
     })
@@ -872,7 +873,7 @@ describe('Timeline', () => {
               />
             )}
           />
-          <TimelineRows>{}</TimelineRows>
+          <TimelineRows>{ }</TimelineRows>
         </Timeline>
       )
     })
@@ -922,7 +923,7 @@ describe('Timeline', () => {
               />
             )}
           />
-          <TimelineRows>{}</TimelineRows>
+          <TimelineRows>{ }</TimelineRows>
         </Timeline>
       )
     })
@@ -964,7 +965,7 @@ describe('Timeline', () => {
               />
             )}
           />
-          <TimelineRows>{}</TimelineRows>
+          <TimelineRows>{ }</TimelineRows>
         </Timeline>
       )
 
@@ -1267,7 +1268,7 @@ describe('Timeline', () => {
               <CustomTodayMarker today={today} offset={offset} />
             )}
           />
-          <TimelineRows>{}</TimelineRows>
+          <TimelineRows>{ }</TimelineRows>
         </Timeline>
       )
     })
@@ -2109,7 +2110,7 @@ describe('Timeline', () => {
           <TimelineMonths />
           <TimelineWeeks />
           <TimelineDays />
-          <TimelineRows>{}</TimelineRows>
+          <TimelineRows>{ }</TimelineRows>
         </Timeline>
       )
     })
@@ -2334,6 +2335,72 @@ describe('Timeline', () => {
       })
 
       expect(wrapper.queryAllByText('Event 1')).toHaveLength(0)
+    })
+  })
+
+
+  describe('when parent rerenders', () => {
+    let eventSpy: jest.Mock<JSX.Element>
+    beforeEach(() => {
+      eventSpy = jest.fn(() => <div>Event 1</div>)
+
+      const startDate = new Date(2020, 3, 1)
+      const today = new Date(2020, 3, 15)
+      const eventEndDate = new Date(2020, 3, 1)
+
+      let counter = 0
+
+      const TimelineWithUpdate: React.FC<{ children: React.ReactElement<TimelineRowProps> }> = ({ children }) => {
+
+        const [_, forceRerender] = useState({})
+        counter += 1
+
+        return (
+          <>
+            <Button onClick={() => forceRerender({})}>
+              Force update
+            </Button>
+            <div>Render: {counter}</div>
+            <Timeline startDate={startDate} today={today}>
+              <TimelineTodayMarker />
+              <TimelineMonths />
+              <TimelineWeeks />
+              <TimelineDays />
+              <TimelineRows>
+                {children}
+              </TimelineRows>
+            </Timeline>
+          </>
+        )
+      }
+
+      const TimelineRowsItem = () => (
+        <TimelineRow name="Row 1">
+          <TimelineEvents>
+            <TimelineEvent
+              startDate={startDate}
+              endDate={eventEndDate}
+              render={eventSpy}
+            />
+          </TimelineEvents>
+        </TimelineRow>
+      )
+
+      wrapper = render(
+        <TimelineWithUpdate>
+          <TimelineRowsItem />
+        </TimelineWithUpdate>
+      )
+    })
+
+    it('should not rerender children if props have not changed', async () => {
+      expect(eventSpy).toBeCalledTimes(1)
+      eventSpy.mockClear()
+
+      wrapper.getByText('Force update').click()
+      expect(await wrapper.findByText('Render: 2')).toBeInTheDocument()
+      expect(eventSpy).not.toBeCalled()
+
     })
   })
 })
