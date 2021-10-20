@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer } from 'react'
+import React, { createContext, useEffect, useReducer, useMemo } from 'react'
 
 import { initialState } from './state'
 import { reducer } from './reducer'
@@ -46,8 +46,12 @@ export const TimelineProvider: React.FC<TimelineProviderProps> = ({
     dispatch({ scaleOptions, type: TIMELINE_ACTIONS.CHANGE_START_DATE })
   }, [options.startDate])
 
+  const value = useMemo(() => ({ hasSide, state, dispatch }), [
+    hasSide, state, dispatch
+  ])
+
   return (
-    <TimelineContext.Provider value={{ hasSide, state, dispatch }}>
+    <TimelineContext.Provider value={value}>
       {children}
     </TimelineContext.Provider>
   )

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { memo, useContext } from 'react'
 
 import { getKey } from '../../helpers'
 import { StyledDays } from './partials/StyledDays'
@@ -23,7 +23,7 @@ export type TimelineDaysProps =
   | TimelineDaysWithRenderContentProps
   | TimelineDaysWithChildrenProps
 
-export const TimelineDays: React.FC<TimelineDaysProps> = ({
+export const TimelineDays: React.FC<TimelineDaysProps> = memo(({
   render,
   ...rest
 }) => {
@@ -61,6 +61,6 @@ export const TimelineDays: React.FC<TimelineDaysProps> = ({
       {rowChildren}
     </TimelineHeaderRow>
   )
-}
+})
 
 TimelineDays.displayName = 'TimelineDays'

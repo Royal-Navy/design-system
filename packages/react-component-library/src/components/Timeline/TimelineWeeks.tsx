@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { memo, useContext } from 'react'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getKey } from '../../helpers'
@@ -33,7 +33,7 @@ export type TimelineWeeksProps =
   | TimelineWeeksWithRenderContentProps
   | TimelineWeeksWithChildrenProps
 
-export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({
+export const TimelineWeeks: React.FC<TimelineWeeksProps> = memo(({
   render,
   ...rest
 }) => {
@@ -75,6 +75,6 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = ({
       {rowChildren}
     </TimelineHeaderRow>
   )
-}
+})
 
 TimelineWeeks.displayName = 'TimelineWeeks'

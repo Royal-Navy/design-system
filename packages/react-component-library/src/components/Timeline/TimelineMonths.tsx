@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, memo } from 'react'
 import { differenceInDays, endOfMonth, min as minDate, max } from 'date-fns'
 import { min as minNumber } from 'lodash'
 
@@ -47,7 +47,7 @@ function getSize(monthWidths: { daysTotal: number; monthWidth: number }[]) {
   return MONTH_SIZE.LARGE
 }
 
-export const TimelineMonths: React.FC<TimelineMonthsProps> = ({
+export const TimelineMonths = memo<TimelineMonthsProps>(({
   render,
   ...rest
 }) => {
@@ -97,6 +97,6 @@ export const TimelineMonths: React.FC<TimelineMonthsProps> = ({
       </StyledMonths>
     </TimelineHeaderRow>
   )
-}
+})
 
 TimelineMonths.displayName = 'TimelineMonths'
