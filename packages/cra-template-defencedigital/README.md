@@ -34,7 +34,7 @@ For more information, please refer to:
 
 ## Questions
 
-The Design System is maintained by a team at the Defence Digital. If you want to know more about the MOD.UK Design System, please email the [Design System Team](mailto:design-system@royalnavy.io).
+The Design System is maintained by a team at the Defence Digital. If you want to know more about the MOD.UK Design System, please email the [Design System Team](mailto:design-system@digital.mod.uk).
 
 ## Documentation
 
