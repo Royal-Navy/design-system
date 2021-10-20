@@ -21,7 +21,7 @@ The below table details which versions of the MOD.UK Design System are supported
 
 Please report vulnerabilities to us using the guidelines outlined below.
 
-To report a security issue, email design-system@royalnavy.io include the word "SECURITY" in the subject line.
+To report a security issue, email design-system@digital.mod.uk include the word "SECURITY" in the subject line.
 
 Please include:
 - Your name and affiliation (if any)
@@ -49,6 +49,6 @@ We will publish here any known security improvements we have not got to yet.  We
 
 
 ## Contact
-design-system@royalnavy.io
+design-system@digital.mod.uk
 
 Defence Digital Digital Standards security policy version 1.1.0
