@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.59.15](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.14...2.59.15) (2021-10-20)
+
+
+### Bug Fixes
+
+* **ReactComponentLibrary:** Add some missing exports ([5f12758](https://github.com/defencedigital/mod-uk-design-system/commit/5f127584f3b951e3291818a4b215bce00364535f))
+
+
+
+
+
 ## [2.59.14](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.13...2.59.14) (2021-10-19)
 
 
