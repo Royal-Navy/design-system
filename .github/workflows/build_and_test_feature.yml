@@ -1,10 +1,6 @@
 name: Build & Test Feature
 
-on:
-  push:
-    branches-ignore:
-      - latest
-      - master
+on: pull_request
 
 jobs:
      Build_icon_library:
@@ -61,8 +57,6 @@ jobs:
      Check_commits:
       runs-on: ubuntu-latest
       needs: Build_icon_library
-      env:
-        GIT_URL: "https://github.com/defencedigital/mod-uk-design-system/pulls/"
       steps:
         - name: Git clone repository
           uses: actions/checkout@v2
@@ -75,11 +69,8 @@ jobs:
 
         - name: check commits
           run: |
-            PR_NUM=$(curl -s  -H "Accept: application/vnd.github.groot-preview+json" \
-            https://api.github.com/repos/defencedigital/mod-uk-design-system/commits/${{ github.sha }}/pulls | jq -r '.[].number')
-            node ./scripts/commitlint "$GIT_URL$PR_NUM"
-            node ./scripts/check-fixup "$GIT_URL$PR_NUM"
-
+            node ./scripts/commitlint ${{ github.event.pull_request._links.html.href }}
+            node ./scripts/check-fixup ${{ github.event.pull_request._links.html.href }}
 
      Lint_css-framework:
       runs-on: ubuntu-latest
