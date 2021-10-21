@@ -1,6 +1,6 @@
 {
   "name": "@defencedigital/design-tokens",
-  "version": "2.59.15",
+  "version": "2.59.16",
   "main": "dist/cjs/index.js",
   "author": "Defence Digital",
   "license": "Apache-2.0",
@@ -55,7 +55,7 @@
     "webpack-merge": "^5.2.0"
   },
   "dependencies": {
-    "@defencedigital/eslint-config-react": "^2.59.15",
+    "@defencedigital/eslint-config-react": "^2.59.16",
     "lodash": "^4.17.20"
   },
   "peerDependencies": {
