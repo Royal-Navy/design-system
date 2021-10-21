@@ -4,7 +4,6 @@ import { Story, Meta } from '@storybook/react/types-6-0'
 import { IconBrightnessLow } from '@defencedigital/icon-library'
 import { ButtonE, ButtonEProps } from './index'
 import {
-  BUTTON_E_COLOR,
   BUTTON_E_SIZE,
   BUTTON_E_VARIANT,
   BUTTON_E_ICON_POSITION,
@@ -16,111 +15,123 @@ export default {
   parameters: { actions: { argTypesRegex: '^on.*' } },
 } as Meta
 
-export const Default: Story<ButtonEProps> = ({ children, ...rest }) => (
-  <ButtonE {...rest}>{children}</ButtonE>
-)
+const Template: Story<ButtonEProps> = (args) => <ButtonE {...args} />
 
+export const Default = Template.bind({})
 Default.args = {
   children: 'Default',
 }
 
-export const Primary: Story<ButtonEProps> = ({ children, ...rest }) => (
-  <ButtonE {...rest}>{children}</ButtonE>
-)
-
+export const Primary = Template.bind({})
 Primary.args = {
   variant: BUTTON_E_VARIANT.PRIMARY,
   children: 'Primary',
 }
 
-export const Secondary: Story<ButtonEProps> = ({ children, ...rest }) => (
-  <ButtonE {...rest}>{children}</ButtonE>
-)
+export const PrimaryDisabled = Template.bind({})
+PrimaryDisabled.storyName = 'Primary, disabled'
+PrimaryDisabled.args = {
+  variant: BUTTON_E_VARIANT.PRIMARY,
+  isDisabled: true,
+  children: 'Primary, disabled',
+}
 
+export const PrimaryLeftIcon = Template.bind({})
+PrimaryLeftIcon.storyName = 'Primary, with left icon'
+PrimaryLeftIcon.args = {
+  children: 'Primary',
+  icon: <IconBrightnessLow />,
+  iconPosition: BUTTON_E_ICON_POSITION.LEFT,
+}
+
+export const PrimaryRightIcon = Template.bind({})
+PrimaryRightIcon.storyName = 'Primary, with right icon'
+PrimaryRightIcon.args = {
+  children: 'Primary',
+  icon: <IconBrightnessLow />,
+  iconPosition: BUTTON_E_ICON_POSITION.RIGHT,
+}
+
+export const IconNoText = Template.bind({})
+IconNoText.storyName = 'Icon, no text'
+IconNoText.args = {
+  children: null,
+  icon: <IconBrightnessLow />,
+  title: 'Reduce brightness',
+}
+
+export const Secondary = Template.bind({})
 Secondary.args = {
   variant: BUTTON_E_VARIANT.SECONDARY,
   children: 'Secondary',
 }
 
-export const Tertiary: Story<ButtonEProps> = ({ children, ...rest }) => (
-  <ButtonE {...rest}>{children}</ButtonE>
-)
+export const SecondaryLeftIcon = Template.bind({})
+SecondaryLeftIcon.storyName = 'Secondary, with left icon'
+SecondaryLeftIcon.args = {
+  variant: BUTTON_E_VARIANT.SECONDARY,
+  children: 'Secondary',
+  icon: <IconBrightnessLow />,
+  iconPosition: BUTTON_E_ICON_POSITION.LEFT,
+}
 
+export const SecondaryDisabled = Template.bind({})
+SecondaryDisabled.storyName = 'Secondary, disabled'
+SecondaryDisabled.args = {
+  variant: BUTTON_E_VARIANT.SECONDARY,
+  isDisabled: true,
+  children: 'Secondary, disabled',
+}
+
+export const Tertiary = Template.bind({})
 Tertiary.args = {
   variant: BUTTON_E_VARIANT.TERTIARY,
   children: 'Tertiary',
 }
 
-export const Danger: Story<ButtonEProps> = ({ children, ...rest }) => (
-  <ButtonE {...rest}>{children}</ButtonE>
-)
+export const TertiaryLeftIcon = Template.bind({})
+TertiaryLeftIcon.storyName = 'Tertiary, with left icon'
+TertiaryLeftIcon.args = {
+  variant: BUTTON_E_VARIANT.TERTIARY,
+  children: 'Tertiary',
+  icon: <IconBrightnessLow />,
+  iconPosition: BUTTON_E_ICON_POSITION.LEFT,
+}
 
+export const TertiaryDisabled = Template.bind({})
+TertiaryDisabled.storyName = 'Tertiary, disabled'
+TertiaryDisabled.args = {
+  variant: BUTTON_E_VARIANT.TERTIARY,
+  isDisabled: true,
+  children: 'Tertiary, disabled',
+}
+
+export const Danger = Template.bind({})
 Danger.args = {
-  variant: BUTTON_E_VARIANT.PRIMARY,
-  color: BUTTON_E_COLOR.DANGER,
+  variant: BUTTON_E_VARIANT.DANGER,
   children: 'Danger',
 }
 
-export const Small: Story<ButtonEProps> = ({ children, ...rest }) => (
-  <ButtonE {...rest}>{children}</ButtonE>
-)
+export const DangerDisabled = Template.bind({})
+DangerDisabled.storyName = 'Danger, disabled'
+DangerDisabled.args = {
+  variant: BUTTON_E_VARIANT.DANGER,
+  isDisabled: true,
+  children: 'Danger, disabled',
+}
 
+export const Small = Template.bind({})
 Small.args = {
   variant: BUTTON_E_VARIANT.PRIMARY,
   size: BUTTON_E_SIZE.SMALL,
   children: 'Small',
 }
 
-export const Large: Story<ButtonEProps> = ({ children, ...rest }) => (
-  <ButtonE {...rest}>{children}</ButtonE>
-)
-
-Large.args = {
+export const SmallIconNoText = Template.bind({})
+SmallIconNoText.storyName = 'Small, with icon, no text '
+SmallIconNoText.args = {
   variant: BUTTON_E_VARIANT.PRIMARY,
-  size: BUTTON_E_SIZE.LARGE,
-  children: 'Large',
-}
-
-export const Disabled: Story<ButtonEProps> = ({ children }) => (
-  <ButtonE isDisabled>{children}</ButtonE>
-)
-
-Disabled.args = {
-  children: 'Disabled',
-}
-
-export const WithLeftIcon: Story<ButtonEProps> = ({
-  icon,
-  iconPosition,
-  children,
-}) => (
-  <ButtonE icon={icon} iconPosition={iconPosition}>
-    {children}
-  </ButtonE>
-)
-
-WithLeftIcon.args = {
-  children: 'Default',
+  size: BUTTON_E_SIZE.SMALL,
   icon: <IconBrightnessLow />,
-  iconPosition: BUTTON_E_ICON_POSITION.LEFT,
+  title: 'Reduce brightness',
 }
-
-WithLeftIcon.storyName = 'With left icon'
-
-export const WithRightIcon: Story<ButtonEProps> = ({
-  icon,
-  iconPosition,
-  children,
-}) => (
-  <ButtonE icon={icon} iconPosition={iconPosition}>
-    {children}
-  </ButtonE>
-)
-
-WithRightIcon.args = {
-  children: 'Default',
-  icon: <IconBrightnessLow />,
-  iconPosition: BUTTON_E_ICON_POSITION.RIGHT,
-}
-
-WithRightIcon.storyName = 'With right icon'
