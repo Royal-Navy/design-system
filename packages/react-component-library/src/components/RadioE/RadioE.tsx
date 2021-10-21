@@ -8,6 +8,7 @@ import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledLabel } from './partials/StyledLabel'
 import { StyledInput } from './partials/StyledInput'
 import { StyledCheckmark } from './partials/StyledCheckmark'
+import { StyledRadioWrapper } from './partials/StyledRadioWrapper'
 
 export interface RadioEProps extends ComponentWithClass, InputValidationProps {
   /**
@@ -68,37 +69,39 @@ export const RadioE: React.FC<RadioEProps> = ({
   }
 
   return (
-    <StyledRadio
-      className={className}
-      role="radio"
-      aria-checked={defaultChecked}
-      $isDisabled={isDisabled}
-      $isInvalid={isInvalid}
-      $isChecked={defaultChecked}
-      onClick={handleClick}
-      onKeyUp={handleKeyUp}
-      data-testid="container"
-    >
-      <StyledOuterWrapper>
-        <StyledLabel htmlFor={id} data-testid="label">
-          <StyledInput
-            ref={ref}
-            defaultChecked={defaultChecked}
-            id={id}
-            type="radio"
-            name={name}
-            value={value}
-            onChange={onChange}
-            onBlur={onBlur}
-            disabled={isDisabled}
-            data-testid="radio"
-            {...rest}
-          />
-          <StyledCheckmark />
-          {label}
-        </StyledLabel>
-      </StyledOuterWrapper>
-    </StyledRadio>
+    <StyledRadioWrapper>
+      <StyledRadio
+        className={className}
+        role="radio"
+        aria-checked={defaultChecked}
+        $isDisabled={isDisabled}
+        $isInvalid={isInvalid}
+        $isChecked={defaultChecked}
+        onClick={handleClick}
+        onKeyUp={handleKeyUp}
+        data-testid="container"
+      >
+        <StyledOuterWrapper>
+          <StyledLabel htmlFor={id} data-testid="label">
+            <StyledInput
+              ref={ref}
+              defaultChecked={defaultChecked}
+              id={id}
+              type="radio"
+              name={name}
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              disabled={isDisabled}
+              data-testid="radio"
+              {...rest}
+            />
+            <StyledCheckmark />
+            {label}
+          </StyledLabel>
+        </StyledOuterWrapper>
+      </StyledRadio>
+    </StyledRadioWrapper>
   )
 }
 

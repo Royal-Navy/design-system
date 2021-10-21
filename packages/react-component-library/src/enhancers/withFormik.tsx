@@ -98,11 +98,11 @@ export const withFormik =
     }
 
     return (
-      <div>
+      <>
         <FormComponent {...formComponentProps} />
         {!props['aria-describedby'] && error && (
           <FieldError id={error.id}>{error.text}</FieldError>
         )}
-      </div>
+      </>
     )
   }

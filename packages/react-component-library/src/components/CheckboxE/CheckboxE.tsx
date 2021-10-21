@@ -8,6 +8,7 @@ import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledLabel } from './partials/StyledLabel'
 import { StyledInput } from './partials/StyledInput'
 import { StyledCheckmark } from './partials/StyledCheckmark'
+import { StyledCheckboxWrapper } from './partials/StyledCheckboxWrapper'
 
 export interface CheckboxEProps
   extends ComponentWithClass,
@@ -84,37 +85,39 @@ export const CheckboxE: React.FC<CheckboxEProps> = ({
   }
 
   return (
-    <StyledCheckbox
-      $isDisabled={isDisabled}
-      $isInvalid={isInvalid}
-      $isChecked={isChecked}
-      className={className}
-      onClick={handleClick}
-      onKeyUp={handleKeyUp}
-      data-testid="container"
-    >
-      <StyledOuterWrapper>
-        <StyledLabel htmlFor={id} data-testid="label">
-          <StyledInput
-            $isDisabled={isDisabled}
-            ref={ref}
-            id={id}
-            type="checkbox"
-            name={name}
-            value={value}
-            defaultChecked={defaultChecked}
-            onChange={handleOnChange}
-            onBlur={onBlur}
-            disabled={isDisabled}
-            checked={checked}
-            {...rest}
-            data-testid="checkbox"
-          />
-          <StyledCheckmark />
-          {label}
-        </StyledLabel>
-      </StyledOuterWrapper>
-    </StyledCheckbox>
+    <StyledCheckboxWrapper>
+      <StyledCheckbox
+        $isDisabled={isDisabled}
+        $isInvalid={isInvalid}
+        $isChecked={isChecked}
+        className={className}
+        onClick={handleClick}
+        onKeyUp={handleKeyUp}
+        data-testid="container"
+      >
+        <StyledOuterWrapper>
+          <StyledLabel htmlFor={id} data-testid="label">
+            <StyledInput
+              $isDisabled={isDisabled}
+              ref={ref}
+              id={id}
+              type="checkbox"
+              name={name}
+              value={value}
+              defaultChecked={defaultChecked}
+              onChange={handleOnChange}
+              onBlur={onBlur}
+              disabled={isDisabled}
+              checked={checked}
+              {...rest}
+              data-testid="checkbox"
+            />
+            <StyledCheckmark />
+            {label}
+          </StyledLabel>
+        </StyledOuterWrapper>
+      </StyledCheckbox>
+    </StyledCheckboxWrapper>
   )
 }
 
