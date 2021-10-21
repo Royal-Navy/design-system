@@ -156,7 +156,7 @@
     "webpack-merge": "^5.2.0",
     "yup": "^0.32.8",
     "formik": "^2.2.9",
-    "react-hook-form": "^7.17.5"
+    "react-hook-form": "6.15.4"
   },
   "browserslist": [
     ">0.2%",

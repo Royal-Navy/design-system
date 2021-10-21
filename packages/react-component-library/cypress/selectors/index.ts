@@ -1,9 +1,9 @@
 import datePicker from './DatePicker'
 import timeline from './timeline'
-import formik from './formik'
+import form from './form'
 
 export default {
   datePicker,
   timeline,
-  formik
+  form
 }

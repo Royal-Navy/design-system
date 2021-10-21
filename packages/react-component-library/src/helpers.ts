@@ -59,6 +59,10 @@ function withKey(
   return null
 }
 
+function sleep(ms: number): Promise<undefined> {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 export {
   getInitials,
   getId,
@@ -67,4 +71,5 @@ export {
   isIE11,
   warnIfOverwriting,
   withKey,
+  sleep,
 }

@@ -9,6 +9,7 @@ import { CheckboxE } from '../../components/CheckboxE'
 import { Button } from '../../components/Button'
 import { FormikGroupE } from '../../components/FormikGroup'
 import { withFormik } from '../../enhancers/withFormik'
+import { sleep } from '../../helpers'
 
 export interface FormValues {
   email?: string
@@ -49,11 +50,10 @@ export const ExampleFormik: React.FC<unknown> = () => {
 
           return errors
         }}
-        onSubmit={(values: FormValues, { setSubmitting }) => {
-          setTimeout(() => {
-            setFormValues(values)
-            setSubmitting(false)
-          }, 400)
+        onSubmit={async (values: FormValues, { setSubmitting }) => {
+          await sleep(400)
+          setFormValues(values)
+          setSubmitting(false)
         }}
       >
         {({
@@ -70,20 +70,20 @@ export const ExampleFormik: React.FC<unknown> = () => {
               name="email"
               label="Email"
               component={FormikTextInputE}
-              data-testid="formik-example-TextInputE-email"
+              data-testid="form-example-TextInputE-email"
             />
             <Field
               type="password"
               name="password"
               label="Password"
               component={FormikTextInputE}
-              data-testid="formik-example-TextInputE-password"
+              data-testid="form-example-TextInputE-password"
             />
             <Field
               name="description"
               label="Description"
               component={FormikTextAreaE}
-              data-testid="formik-example-TextAreaE-description"
+              data-testid="form-example-TextAreaE-description"
             />
             <FormikGroupE label="Example checkbox selection">
               <Field
@@ -92,7 +92,6 @@ export const ExampleFormik: React.FC<unknown> = () => {
                 label="Option 1"
                 value="Option 1"
                 type="checkbox"
-                data-testid="formik-example-CheckboxE-1"
               />
               <Field
                 component={FormikCheckboxE}
@@ -100,7 +99,6 @@ export const ExampleFormik: React.FC<unknown> = () => {
                 label="Option 2"
                 value="Option 2"
                 type="checkbox"
-                data-testid="formik-example-CheckboxE-2"
               />
               <Field
                 component={FormikCheckboxE}
@@ -116,7 +114,6 @@ export const ExampleFormik: React.FC<unknown> = () => {
                 name="exampleRadio"
                 label="Option 1"
                 value="Option 1"
-                data-testid="formik-example-RadioE-1"
               />
               <Field
                 component={FormikRadioE}
@@ -128,7 +125,7 @@ export const ExampleFormik: React.FC<unknown> = () => {
             <Button
               type="submit"
               isDisabled={isSubmitting}
-              data-testid="formik-example-submit"
+              data-testid="form-example-submit"
             >
               Submit
             </Button>
@@ -136,7 +133,7 @@ export const ExampleFormik: React.FC<unknown> = () => {
         )}
       </Formik>
 
-      <pre data-testid="formik-values">
+      <pre data-testid="form-example-values">
         {JSON.stringify(formValues, null, 2)}
       </pre>
     </main>
