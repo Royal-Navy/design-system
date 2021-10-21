@@ -45,11 +45,14 @@ describe('RadioE', () => {
     })
 
     it('should render a field with a label', () => {
-      expect(radio.getByTestId('label')).toHaveTextContent('My Label 1')
+      expect(radio.getByTestId('radio-label')).toHaveTextContent('My Label 1')
     })
 
     it('should populate the field value', () => {
-      expect(radio.queryByTestId('radio')).toHaveAttribute('value', 'option1')
+      expect(radio.queryByTestId('radio-input')).toHaveAttribute(
+        'value',
+        'option1'
+      )
     })
   })
 
@@ -67,12 +70,16 @@ describe('RadioE', () => {
     })
 
     it('should not add the aria attributes', () => {
-      expect(radio.getByTestId('radio')).not.toHaveAttribute('aria-invalid')
-      expect(radio.getByTestId('radio')).not.toHaveAttribute('aria-describedBy')
+      expect(radio.getByTestId('radio-input')).not.toHaveAttribute(
+        'aria-invalid'
+      )
+      expect(radio.getByTestId('radio-input')).not.toHaveAttribute(
+        'aria-describedBy'
+      )
     })
 
     it('should not indicate the field has an error', () => {
-      expect(radio.queryByTestId('container')).not.toHaveClass('is-invalid')
+      expect(radio.queryByTestId('radio')).not.toHaveClass('is-invalid')
     })
 
     it('should not show the error', () => {
@@ -94,12 +101,14 @@ describe('RadioE', () => {
     })
 
     it('should add the aria attributes', () => {
-      expect(radio.getByTestId('radio')).toHaveAttribute('aria-invalid')
-      expect(radio.getByTestId('radio')).toHaveAttribute('aria-describedby')
+      expect(radio.getByTestId('radio-input')).toHaveAttribute('aria-invalid')
+      expect(radio.getByTestId('radio-input')).toHaveAttribute(
+        'aria-describedby'
+      )
     })
 
     it('should indicate the field has an error', () => {
-      expect(radio.queryByTestId('container')).toHaveClass('is-invalid')
+      expect(radio.queryByTestId('radio')).toHaveClass('is-invalid')
     })
 
     it('should show the error', () => {
@@ -121,7 +130,7 @@ describe('RadioE', () => {
     })
 
     it('should attach the class to the wrapper', () => {
-      expect(radio.queryByTestId('container')).toHaveClass('test')
+      expect(radio.queryByTestId('radio')).toHaveClass('test')
     })
   })
 
@@ -139,11 +148,11 @@ describe('RadioE', () => {
     })
 
     it('should attach the id to the field', () => {
-      expect(radio.queryByTestId('radio')).toHaveAttribute('id', 'test')
+      expect(radio.queryByTestId('radio-input')).toHaveAttribute('id', 'test')
     })
 
     it('should associate the label to the field with the custom id', () => {
-      expect(radio.queryByTestId('label')).toHaveAttribute('for', 'test')
+      expect(radio.queryByTestId('radio-label')).toHaveAttribute('for', 'test')
     })
   })
 
@@ -161,7 +170,7 @@ describe('RadioE', () => {
     })
 
     it('should spread arbitrary props', () => {
-      expect(radio.getByTestId('radio')).toHaveAttribute(
+      expect(radio.getByTestId('radio-input')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
       )
