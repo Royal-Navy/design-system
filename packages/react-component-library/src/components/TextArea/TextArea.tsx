@@ -14,7 +14,7 @@ import { useInputValue } from '../../hooks/useInputValue'
 
 export interface TextAreaInputProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement>,
-    ComponentWithClass,
+    Omit<ComponentWithClass, 'children'>,
     InputValidationProps {
   /**
    * Toggles whether the component is disabled or not (preventing user interaction).

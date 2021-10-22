@@ -20,42 +20,48 @@ export interface InputProps extends ComponentWithClass {
   value?: string
 }
 
-export const Input: React.FC<InputProps> = ({
-  hasFocus,
-  id = getId('text-input'),
-  isDisabled,
-  label,
-  onChange,
-  value,
-  ...rest
-}) => {
-  const { committedValue, hasValue, onValueChange } = useInputValue(value)
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      hasFocus,
+      id = getId('text-input'),
+      isDisabled,
+      label,
+      onChange,
+      value,
+      ...rest
+    },
+    ref
+  ) => {
+    const { committedValue, hasValue, onValueChange } = useInputValue(value)
 
-  return (
-    <>
-      <StyledLabel
-        $hasContent={hasValue}
-        $hasFocus={hasFocus}
-        htmlFor={id}
-        data-testid="text-input-label"
-      >
-        {label}
-      </StyledLabel>
-      <StyledInput
-        data-testid="text-input-input"
-        disabled={isDisabled}
-        id={id}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          onValueChange(e)
-          if (onChange) {
-            onChange(e)
-          }
-        }}
-        value={committedValue}
-        {...rest}
-      />
-    </>
-  )
-}
+    return (
+      <>
+        <StyledLabel
+          $hasContent={hasValue}
+          $hasFocus={hasFocus}
+          htmlFor={id}
+          data-testid="text-input-label"
+        >
+          {label}
+        </StyledLabel>
+        <StyledInput
+          ref={ref}
+          data-testid="text-input-input"
+          disabled={isDisabled}
+          id={id}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            onValueChange(e)
+            if (onChange) {
+              onChange(e)
+            }
+          }}
+          value={committedValue}
+          {...rest}
+        />
+      </>
+    )
+  }
+)
 
 Input.displayName = 'ComponentName'

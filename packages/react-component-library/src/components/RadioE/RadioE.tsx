@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import mergeRefs from 'react-merge-refs'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
@@ -45,64 +46,69 @@ export interface RadioEProps extends ComponentWithClass, InputValidationProps {
   value?: string
 }
 
-export const RadioE: React.FC<RadioEProps> = ({
-  className = '',
-  id = uuidv4(),
-  defaultChecked,
-  isDisabled = false,
-  label,
-  name,
-  onChange,
-  onBlur,
-  value,
-  isInvalid,
-  ...rest
-}) => {
-  const ref = useRef<HTMLInputElement>(null)
+export const RadioE = React.forwardRef<HTMLInputElement, RadioEProps>(
+  (
+    {
+      className = '',
+      id = uuidv4(),
+      defaultChecked,
+      isDisabled = false,
+      label,
+      name,
+      onChange,
+      onBlur,
+      value,
+      isInvalid,
+      ...rest
+    },
+    ref
+  ) => {
+    const localRef = useRef<HTMLInputElement>(null)
 
-  const handleClick = (_: React.MouseEvent<HTMLDivElement>) => {
-    ref.current.click()
+    const handleClick = (_: React.MouseEvent<HTMLDivElement>) => {
+      localRef.current.click()
+    }
+
+    const handleKeyUp = (_: React.KeyboardEvent) => {
+      localRef.current.focus()
+    }
+
+    return (
+      <StyledRadioWrapper>
+        <StyledRadio
+          className={className}
+          role="radio"
+          aria-checked={defaultChecked}
+          $isDisabled={isDisabled}
+          $isInvalid={isInvalid}
+          $isChecked={defaultChecked}
+          onClick={handleClick}
+          onKeyUp={handleKeyUp}
+          data-testid="radio"
+        >
+          <StyledOuterWrapper>
+            <StyledLabel htmlFor={id} data-testid="radio-label">
+              <StyledInput
+                ref={mergeRefs([localRef, ref])}
+                defaultChecked={defaultChecked}
+                id={id}
+                type="radio"
+                name={name}
+                value={value}
+                onChange={onChange}
+                onBlur={onBlur}
+                disabled={isDisabled}
+                data-testid="radio-input"
+                {...rest}
+              />
+              <StyledCheckmark />
+              {label}
+            </StyledLabel>
+          </StyledOuterWrapper>
+        </StyledRadio>
+      </StyledRadioWrapper>
+    )
   }
-
-  const handleKeyUp = (_: React.KeyboardEvent) => {
-    ref.current.focus()
-  }
-
-  return (
-    <StyledRadioWrapper>
-      <StyledRadio
-        className={className}
-        role="radio"
-        aria-checked={defaultChecked}
-        $isDisabled={isDisabled}
-        $isInvalid={isInvalid}
-        $isChecked={defaultChecked}
-        onClick={handleClick}
-        onKeyUp={handleKeyUp}
-        data-testid="container"
-      >
-        <StyledOuterWrapper>
-          <StyledLabel htmlFor={id} data-testid="label">
-            <StyledInput
-              ref={ref}
-              defaultChecked={defaultChecked}
-              id={id}
-              type="radio"
-              name={name}
-              value={value}
-              onChange={onChange}
-              onBlur={onBlur}
-              disabled={isDisabled}
-              data-testid="radio"
-              {...rest}
-            />
-            <StyledCheckmark />
-            {label}
-          </StyledLabel>
-        </StyledOuterWrapper>
-      </StyledRadio>
-    </StyledRadioWrapper>
-  )
-}
+)
 
 RadioE.displayName = 'RadioE'
