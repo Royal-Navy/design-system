@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import logger from './utils/logger'
 
-function getInitials(name: string) {
+function getInitials(name: string): string {
   return name
     .split(/[\s-]+/)
     .map((namePart) => namePart[0])
@@ -18,11 +18,11 @@ function getId(prefix: string): string {
   return getKey(prefix, uuidv4())
 }
 
-function hasClass(allClasses: string, className: string) {
+function hasClass(allClasses: string, className: string): boolean {
   return allClasses && allClasses.split(' ').includes(className)
 }
 
-function isIE11() {
+function isIE11(): boolean {
   if (typeof window === 'undefined') {
     logger.warn(`window object does not exist`)
 
@@ -37,7 +37,7 @@ function warnIfOverwriting<P>(
   props: P,
   propertyName: string,
   componentName: string
-) {
+): void {
   if (props[propertyName]) {
     logger.warn(
       `Prop \`${propertyName}\` on \`${componentName}\` will be overwritten`
@@ -49,7 +49,7 @@ function withKey(
   element: React.ReactElement,
   prefix: string,
   suffix: string | number
-) {
+): React.ReactElement {
   if (element) {
     return React.cloneElement(element, {
       key: getKey(prefix, suffix),
