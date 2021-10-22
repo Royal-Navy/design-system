@@ -19,7 +19,7 @@ The following view layer libraries are currently supported:
 
 ## Component usage guidelines
 
-Please refer to the [component demo pages](design-system.digital.mod.uk/components) and [Storybook](http://storybook.design-system.digital.mod.uk/) to see interactive examples, code snippets and details on how best to consume each of the components.
+Please refer to the [component demo pages](https://design-system.digital.mod.uk/components) and [Storybook](http://storybook.design-system.digital.mod.uk/) to see interactive examples, code snippets and details on how best to consume each of the components.
 
 ## Installation & quick start
 
