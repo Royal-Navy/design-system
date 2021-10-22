@@ -6,15 +6,17 @@ import { ButtonEIconPositionType, ButtonESizeType } from '../ButtonE'
 
 const { spacing } = selectors
 
-interface StyledIconProps {
+interface StyledIconWrapperProps {
   $buttonHasText: boolean
   $buttonSize: ButtonESizeType
+  $isLoading: boolean
   $iconPosition: ButtonEIconPositionType
 }
 
-export const StyledIcon = styled.span<StyledIconProps>`
+export const StyledIconWrapper = styled.span<StyledIconWrapperProps>`
   display: inline-flex;
   align-items: center;
+  visibility: ${({ $isLoading }) => ($isLoading ? 'hidden' : 'initial')};
 
   ${({ $buttonSize, $buttonHasText }) =>
     $buttonSize === BUTTON_E_SIZE.FORMS &&

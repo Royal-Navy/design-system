@@ -103,4 +103,39 @@ describe('Button', () => {
       )
     })
   })
+
+  describe('when the button is loading', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <ButtonE icon={<IconBrightnessLow />} isLoading>
+          Click me
+        </ButtonE>
+      )
+    })
+
+    it('disables the button', () => {
+      expect(wrapper.getByTestId('button')).toBeDisabled()
+    })
+
+    it('hides the user-provided icon', () => {
+      expect(wrapper.getByTestId('button-icon')).toHaveStyleRule(
+        'visibility',
+        'hidden'
+      )
+    })
+
+    it('hides the button text', () => {
+      expect(wrapper.getByTestId('button-icon')).toHaveStyleRule(
+        'visibility',
+        'hidden'
+      )
+    })
+
+    it('shows a loading icon with the `aria-hidden` attribute', () => {
+      expect(wrapper.getByTestId('loading-icon')).toHaveAttribute(
+        'aria-hidden',
+        'true'
+      )
+    })
+  })
 })

@@ -36,6 +36,14 @@ PrimaryDisabled.args = {
   children: 'Primary, disabled',
 }
 
+export const PrimaryLoading = Template.bind({})
+PrimaryLoading.storyName = 'Primary, loading'
+PrimaryLoading.args = {
+  variant: BUTTON_E_VARIANT.PRIMARY,
+  isLoading: true,
+  children: 'Primary, loading',
+}
+
 export const PrimaryLeftIcon = Template.bind({})
 PrimaryLeftIcon.storyName = 'Primary, with left icon'
 PrimaryLeftIcon.args = {
@@ -83,6 +91,14 @@ SecondaryDisabled.args = {
   children: 'Secondary, disabled',
 }
 
+export const SecondaryLoading = Template.bind({})
+SecondaryLoading.storyName = 'Secondary, loading'
+SecondaryLoading.args = {
+  variant: BUTTON_E_VARIANT.SECONDARY,
+  isLoading: true,
+  children: 'Secondary, loading',
+}
+
 export const Tertiary = Template.bind({})
 Tertiary.args = {
   variant: BUTTON_E_VARIANT.TERTIARY,
@@ -106,6 +122,14 @@ TertiaryDisabled.args = {
   children: 'Tertiary, disabled',
 }
 
+export const TertiaryLoading = Template.bind({})
+TertiaryLoading.storyName = 'Tertiary, loading'
+TertiaryLoading.args = {
+  variant: BUTTON_E_VARIANT.TERTIARY,
+  isLoading: true,
+  children: 'Tertiary, loading',
+}
+
 export const Danger = Template.bind({})
 Danger.args = {
   variant: BUTTON_E_VARIANT.DANGER,
@@ -120,11 +144,28 @@ DangerDisabled.args = {
   children: 'Danger, disabled',
 }
 
+export const DangerLoading = Template.bind({})
+DangerLoading.storyName = 'Danger, loading'
+DangerLoading.args = {
+  variant: BUTTON_E_VARIANT.DANGER,
+  isLoading: true,
+  children: 'Danger, loading',
+}
+
 export const Small = Template.bind({})
 Small.args = {
   variant: BUTTON_E_VARIANT.PRIMARY,
   size: BUTTON_E_SIZE.SMALL,
   children: 'Small',
+}
+
+export const SmallLoading = Template.bind({})
+SmallLoading.storyName = 'Small, loading'
+SmallLoading.args = {
+  variant: BUTTON_E_VARIANT.PRIMARY,
+  size: BUTTON_E_SIZE.SMALL,
+  children: 'Small, loading',
+  isLoading: true,
 }
 
 export const SmallIconNoText = Template.bind({})

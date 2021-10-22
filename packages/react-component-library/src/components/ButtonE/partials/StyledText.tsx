@@ -1,3 +1,9 @@
 import styled from 'styled-components'
 
-export const StyledText = styled.span``
+interface StyledTextProps {
+  $isLoading: boolean
+}
+
+export const StyledText = styled.span<StyledTextProps>`
+  visibility: ${({ $isLoading }) => ($isLoading ? 'hidden' : 'initial')};
+`
