@@ -15,7 +15,7 @@ module.exports = {
   ],
   previewHead: (head) => `
     ${head}
-    ${process.env.NETLIFY && newRelic.script}
+    ${process.env.NETLIFY ? newRelic.script : ''}
   `,
   stories: ['../src/**/*.stories.tsx'],
 }
