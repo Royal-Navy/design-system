@@ -1427,9 +1427,9 @@
     lodash.once "^4.1.1"
 
 "@datepicker-react/hooks@^2.4.1":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@datepicker-react/hooks/-/hooks-2.8.0.tgz#34e921f64fda5fb25d140a25f2143596a6b637eb"
-  integrity sha512-hc+SKVi595W5fToh5gHJiMiREAw58YAbt37N0MpQdGNiMWwO4DYm37PpmVUQlT23GL7ZkLNThp0ZJsrk69HRLQ==
+  version "2.8.4"
+  resolved "https://registry.yarnpkg.com/@datepicker-react/hooks/-/hooks-2.8.4.tgz#6e07aa98bf21b90b7c88fb35919cca6eb08f2c31"
+  integrity sha512-qaYJKK5sOSdqcL/OnCtyv3/Q6fRRljfeAyl5ISTPgEO0CM5xZzkGmTx40+6wvqjH5lEZH4ysS95nPyLwZS2tlw==
   dependencies:
     date-fns "^2.14.0"
 
