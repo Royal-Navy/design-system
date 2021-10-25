@@ -2,24 +2,23 @@ import React from 'react'
 import { isFinite, isNil } from 'lodash'
 import { v4 as uuidv4 } from 'uuid'
 
-import { EndAdornment } from './EndAdornment'
-import { Footnote } from './Footnote'
+import { Buttons } from './Buttons'
+import { COMPONENT_SIZE, ComponentSizeType } from '../Forms'
 import { getId, hasClass } from '../../helpers'
 import { Input } from './Input'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { StartAdornment } from './StartAdornment'
 import { useFocus } from '../../hooks/useFocus'
 import { useValue } from './useValue'
-import { UNIT_POSITION } from './constants'
+import { StyledIcon } from './partials/StyledIcon'
+import { StyledDivider } from './partials/StyledDivider'
+import { StyledFootnote } from './partials/StyledFootnote'
 import { StyledNumberInput } from './partials/StyledNumberInput'
-import { StyledNumberInputOuterWrapper } from './partials/StyledNumberInputOuterWrapper'
+import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
+import { StyledPrefix } from './partials/StyledPrefix'
+import { StyledSuffix } from './partials/StyledSuffix'
 
-export type UnitPosition =
-  | typeof UNIT_POSITION.AFTER
-  | typeof UNIT_POSITION.BEFORE
-
-export interface NumberInputProps
+interface NumberInputBaseProps
   extends ComponentWithClass,
     InputValidationProps {
   /**
@@ -34,10 +33,6 @@ export interface NumberInputProps
    * Optional HTML `id` attribute to apply to the internal input.
    */
   id?: string
-  /**
-   * Toggles whether or not to render a reduced height version of the component.
-   */
-  isCondensed?: boolean
   /**
    * Toggles whether the component is disabled or not (preventing user interaction).
    */
@@ -71,40 +66,62 @@ export interface NumberInputProps
    */
   placeholder?: string
   /**
-   * Optional adornment (icon or string) to display to the left of the input value.
+   * Size of the component.
    */
-  startAdornment?: React.ReactNode | string
+  size?: ComponentSizeType
   /**
    * Stepped increment amount by which to increase/decrese component value.
    */
   step?: number
-  /**
-   * Optional value to display next to the component value.
-   */
-  unit?: string
-  /**
-   * Whether to display the unit to the left or right of the component value.
-   */
-  unitPosition?: UnitPosition
   /**
    * Currently selected value displayed by the component.
    */
   value?: number
 }
 
-function formatValue(
-  displayValue: number,
-  unit: string,
-  unitPosition: UnitPosition
-) {
+export interface NumberInputWithIconProps extends NumberInputBaseProps {
+  /**
+   * Optional icon to display to the left of the input value.
+   */
+  icon?: React.ReactNode
+  prefix?: never
+  suffix?: never
+}
+
+export interface NumberInputWithPrefixProps extends NumberInputBaseProps {
+  icon?: never
+  /**
+   * Optional value to display next to the component value.
+   */
+  prefix?: string
+  suffix?: never
+}
+
+export interface NumberInputWithSuffixProps extends NumberInputBaseProps {
+  icon?: never
+  prefix?: never
+  /**
+   * Optional value to display next to the component value.
+   */
+  suffix?: string
+}
+
+export type NumberInputProps =
+  | NumberInputWithIconProps
+  | NumberInputWithPrefixProps
+  | NumberInputWithSuffixProps
+
+function formatValue(displayValue: number, prefix: string, suffix: string) {
   if (isNil(displayValue)) {
-    return null
+    return 'Not set'
   }
 
-  if (unit) {
-    return unitPosition === UNIT_POSITION.AFTER
-      ? `${displayValue} ${unit}`
-      : `${unit} ${displayValue}`
+  if (prefix) {
+    return `${prefix} ${displayValue}`
+  }
+
+  if (suffix) {
+    return `${displayValue} ${suffix}`
   }
 
   return displayValue
@@ -130,8 +147,8 @@ function isWithinRange(max: number, min: number, newValue: number) {
 export const NumberInputE: React.FC<NumberInputProps> = ({
   className,
   footnote,
+  icon,
   id = uuidv4(),
-  isCondensed,
   isDisabled = false,
   isInvalid,
   isValid,
@@ -142,11 +159,11 @@ export const NumberInputE: React.FC<NumberInputProps> = ({
   onBlur,
   onChange,
   placeholder = '',
-  startAdornment,
+  prefix,
+  size = COMPONENT_SIZE.FORMS,
   step = 1,
-  unit,
-  unitPosition = UNIT_POSITION.AFTER,
-  value = 0,
+  suffix,
+  value,
   ...rest
 }) => {
   const { committedValue, setCommittedValue } = useValue(value)
@@ -178,22 +195,33 @@ export const NumberInputE: React.FC<NumberInputProps> = ({
       role="spinbutton"
       aria-valuemin={min}
       aria-valuemax={max}
-      aria-valuenow={committedValue}
-      aria-valuetext={String(formatValue(committedValue, unit, unitPosition))}
+      aria-valuenow={committedValue || 0}
+      aria-valuetext={String(formatValue(committedValue, prefix, suffix))}
     >
-      <StyledNumberInputOuterWrapper
+      <StyledOuterWrapper
         $hasFocus={hasFocus}
+        $isDisabled={isDisabled}
         $isInvalid={isInvalid || hasClass(className, 'is-invalid')}
-        $isValid={isValid || hasClass(className, 'is-valid')}
+        $size={size}
       >
-        <StartAdornment>{startAdornment}</StartAdornment>
+        {icon && (
+          <StyledIcon data-testid="number-input-icon">{icon}</StyledIcon>
+        )}
+
+        {prefix && (
+          <>
+            <StyledPrefix data-testid="number-input-prefix">
+              {prefix}
+            </StyledPrefix>
+            <StyledDivider $size={size} />
+          </>
+        )}
 
         <Input
           aria-labelledby={numberInputId}
           hasFocus={hasFocus}
           id={id}
           isDisabled={isDisabled}
-          isCondensed={isCondensed}
           isValid={isValid || hasClass(className, 'is-valid')}
           isInvalid={isInvalid || hasClass(className, 'is-invalid')}
           label={label}
@@ -210,14 +238,21 @@ export const NumberInputE: React.FC<NumberInputProps> = ({
           }}
           onFocus={onLocalFocus}
           placeholder={placeholder}
-          unit={unit}
-          unitPosition={unitPosition}
+          size={size}
           value={committedValue}
           {...rest}
         />
 
-        <EndAdornment
-          isCondensed={isCondensed}
+        {suffix && (
+          <>
+            <StyledDivider $size={size} />
+            <StyledSuffix data-testid="number-input-suffix">
+              {suffix}
+            </StyledSuffix>
+          </>
+        )}
+
+        <Buttons
           isDisabled={isDisabled}
           max={max}
           min={min}
@@ -225,12 +260,17 @@ export const NumberInputE: React.FC<NumberInputProps> = ({
           onClick={(e, newValue) => {
             setCommittedValueWithinRange(newValue)
           }}
+          size={size}
           step={step}
           value={committedValue}
         />
-      </StyledNumberInputOuterWrapper>
+      </StyledOuterWrapper>
 
-      <Footnote>{footnote}</Footnote>
+      {footnote && (
+        <StyledFootnote data-testid="number-input-footnote">
+          {footnote}
+        </StyledFootnote>
+      )}
     </StyledNumberInput>
   )
 }

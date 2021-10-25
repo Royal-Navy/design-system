@@ -1,20 +1,19 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
-import { action } from '@storybook/addon-actions'
-import { Field, Formik, Form } from 'formik'
 import { IconBrightnessHigh } from '@defencedigital/icon-library'
-import * as yup from 'yup'
 
-import { Button } from '../Button'
-import { NumberInputE, NumberInputProps } from './NumberInputE'
-import { withFormik } from '../../enhancers/withFormik'
-import { UNIT_POSITION } from './constants'
-
-const chromaticIgnore = { chromatic: { disable: true } }
+import { COMPONENT_SIZE } from '../Forms'
+import {
+  NumberInputE,
+  NumberInputProps,
+  NumberInputWithIconProps,
+  NumberInputWithPrefixProps,
+  NumberInputWithSuffixProps,
+} from './NumberInputE'
 
 export default {
   component: NumberInputE,
-  title: 'Number Input',
+  title: 'Number Input (Experimental)',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
@@ -29,11 +28,15 @@ Default.args = {
   name: 'number-input-default',
 }
 
-export const Condensed: Story<NumberInputProps> = (props) => (
-  <NumberInputE {...props} isCondensed name="number-input-condensed" />
+export const Small: Story<NumberInputProps> = (props) => (
+  <NumberInputE
+    {...props}
+    name="number-input-small"
+    size={COMPONENT_SIZE.SMALL}
+  />
 )
 
-Condensed.storyName = 'Condensed'
+Small.storyName = 'Small'
 
 export const Disabled: Story<NumberInputProps> = (props) => (
   <NumberInputE {...props} isDisabled name="number-input-disabled" />
@@ -57,89 +60,40 @@ export const WithLabel: Story<NumberInputProps> = (props) => (
 
 WithLabel.storyName = 'With label'
 
-export const StartAdornmentIcon: Story<NumberInputProps> = (props) => (
+export const Icon: Story<NumberInputWithIconProps> = (props) => (
   <NumberInputE
     {...props}
-    name="number-input-start-adornment-icon"
-    startAdornment={<IconBrightnessHigh />}
+    name="number-input-icon"
+    icon={<IconBrightnessHigh />}
   />
 )
 
-StartAdornmentIcon.storyName = 'With start adornment icon'
+Icon.storyName = 'With icon'
 
-export const StartAdornmentText: Story<NumberInputProps> = (props) => (
+export const Prefix: Story<NumberInputWithPrefixProps> = (props) => (
   <NumberInputE
     {...props}
-    name="number-input-start-adornment-text"
-    startAdornment="Kts"
-  />
-)
-
-StartAdornmentText.storyName = 'With start adornment text'
-
-export const WithUnit: Story<NumberInputProps> = (props) => (
-  <NumberInputE
-    {...props}
-    name="number-input-unit"
+    name="number-input-prefix"
     value={1000}
-    unit="m&sup3;"
+    prefix="&pound;"
   />
 )
 
-WithUnit.storyName = 'With unit'
-WithUnit.parameters = chromaticIgnore
+Prefix.storyName = 'With prefix'
 
-export const WithUnitLabel: Story<NumberInputProps> = (props) => (
+export const Suffix: Story<NumberInputWithSuffixProps> = (props) => (
   <NumberInputE
     {...props}
-    label="Cost"
-    name="number-input-unit-label"
+    name="number-input-suffix"
     value={1000}
-    unit="m&sup3;"
+    suffix="m&sup3;"
   />
 )
 
-WithUnitLabel.storyName = 'With unit and label'
-WithUnitLabel.parameters = chromaticIgnore
+Suffix.storyName = 'With suffix'
 
-export const UnitBefore: Story<NumberInputProps> = (props) => (
-  <NumberInputE
-    {...props}
-    name="number-input-unit-before"
-    value={1000}
-    unit="&pound;"
-    unitPosition={UNIT_POSITION.BEFORE}
-  />
+export const Error: Story<NumberInputProps> = (props) => (
+  <NumberInputE {...props} isInvalid name="number-input-error" />
 )
 
-UnitBefore.storyName = 'With unit before'
-
-export const WithFormik: Story<NumberInputProps> = (props) => {
-  const errorText = 'Something went wrong!'
-
-  const validationSchema = yup.object().shape({
-    gold: yup.number().required(errorText),
-  })
-
-  const FormikNumberInput = withFormik(NumberInput)
-
-  return (
-    <Formik
-      initialErrors={{ gold: errorText }}
-      initialTouched={{ gold: true }}
-      initialValues={{ age: 13, btc: 10 }}
-      onSubmit={action('onSubmit')}
-      validationSchema={validationSchema}
-    >
-      <Form>
-        <Field component={FormikNumberInput} name="gold" label="Gold bars" />
-        <Field component={FormikNumberInput} name="btc" label="Bitcoins" />
-        <Button type="submit" variant="primary">
-          Submit
-        </Button>
-      </Form>
-    </Formik>
-  )
-}
-
-WithFormik.storyName = 'Formik'
+Error.storyName = 'With error'
