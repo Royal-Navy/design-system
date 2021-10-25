@@ -1,7 +1,7 @@
 {
   "name": "@defencedigital/react-component-library",
   "description": "A collection of react components and helpers to assist in building applications for the Defence Digital",
-  "version": "2.59.16",
+  "version": "2.59.17",
   "publishConfig": {
     "access": "public"
   },
@@ -69,7 +69,7 @@
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
-    "@defencedigital/eslint-config-react": "^2.59.16",
+    "@defencedigital/eslint-config-react": "^2.59.17",
     "@storybook/addon-a11y": "^6.2.8",
     "@storybook/addon-actions": "^6.2.8",
     "@storybook/addon-docs": "^6.2.8",
@@ -169,10 +169,10 @@
   ],
   "dependencies": {
     "@datepicker-react/hooks": "^2.4.1",
-    "@defencedigital/css-framework": "^2.59.16",
-    "@defencedigital/design-tokens": "^2.59.16",
-    "@defencedigital/fonts": "^2.59.16",
-    "@defencedigital/icon-library": "^2.59.16",
+    "@defencedigital/css-framework": "^2.59.17",
+    "@defencedigital/design-tokens": "^2.59.17",
+    "@defencedigital/fonts": "^2.59.17",
+    "@defencedigital/icon-library": "^2.59.17",
     "@popperjs/core": "^2.9.2",
     "@types/react-responsive": "^8.0.2",
     "@types/react-toast-notifications": "^2.4.0",

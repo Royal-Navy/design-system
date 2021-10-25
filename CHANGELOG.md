@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.59.17](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.16...2.59.17) (2021-10-25)
+
+
+### Bug Fixes
+
+* **Modal:** Update `overflow-y` to be `auto` ([27a7fa0](https://github.com/defencedigital/mod-uk-design-system/commit/27a7fa0036c5534cd68baada80c9d08e89525bcb))
+
+
+
+
+
 ## [2.59.16](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.15...2.59.16) (2021-10-21)
 
 **Note:** Version bump only for package moduk-design-system
