@@ -7,7 +7,7 @@ import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
-import { Button } from '../../components/Button'
+import { ButtonE } from '../../components/ButtonE'
 import { Fieldset } from '../../components/Fieldset'
 import { sleep } from '../../helpers'
 
@@ -102,13 +102,13 @@ export const ExampleReactHookForm: React.FC<unknown> = () => {
             value="Option 2"
           />
         </Fieldset>
-        <Button
+        <ButtonE
           type="submit"
           data-testid="form-example-submit"
           isDisabled={isSubmitting}
         >
           Submit
-        </Button>
+        </ButtonE>
       </form>
 
       <pre data-testid="form-example-values">
