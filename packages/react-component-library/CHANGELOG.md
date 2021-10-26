@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.59.18](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.17...2.59.18) (2021-10-26)
+
+
+### Performance Improvements
+
+* **Timeline:** Add memo context and Timeline headers comp ([304faff](https://github.com/defencedigital/mod-uk-design-system/commit/304faffe452da7077fc800e1c6698933ae0a518d))
+
+
+
+
+
 ## [2.59.17](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.16...2.59.17) (2021-10-25)
 
 
