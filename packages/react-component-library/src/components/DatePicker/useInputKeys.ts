@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { addHours, isMatch, parse } from 'date-fns'
 import { DayPickerProps, ModifiersUtils } from 'react-day-picker'
 import { isNil } from 'lodash'
@@ -22,10 +22,7 @@ export function useInputKeys(
   revertKeyedValue: () => void
 } {
   const [keyedValue, setKeyedValue] = useState<string>()
-
-  function revertKeyedValue() {
-    setKeyedValue(null)
-  }
+  const revertKeyedValue = useCallback(() => setKeyedValue(null), [])
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     setKeyedValue(e.target.value)
