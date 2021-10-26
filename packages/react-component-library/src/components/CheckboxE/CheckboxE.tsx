@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import mergeRefs from 'react-merge-refs'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
@@ -8,6 +9,7 @@ import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledLabel } from './partials/StyledLabel'
 import { StyledInput } from './partials/StyledInput'
 import { StyledCheckmark } from './partials/StyledCheckmark'
+import { StyledCheckboxWrapper } from './partials/StyledCheckboxWrapper'
 
 export interface CheckboxEProps
   extends ComponentWithClass,
@@ -50,72 +52,79 @@ export interface CheckboxEProps
   value?: string
 }
 
-export const CheckboxE: React.FC<CheckboxEProps> = ({
-  className = '',
-  id = uuidv4(),
-  checked,
-  defaultChecked,
-  isDisabled,
-  label,
-  name,
-  onBlur,
-  onChange,
-  value,
-  isInvalid,
-  ...rest
-}) => {
-  const ref = useRef<HTMLInputElement>(null)
-  const [isChecked, setIsChecked] = useState(defaultChecked || checked)
+export const CheckboxE = React.forwardRef<HTMLInputElement, CheckboxEProps>(
+  (
+    {
+      className = '',
+      id = uuidv4(),
+      checked,
+      defaultChecked,
+      isDisabled,
+      label,
+      name,
+      onBlur,
+      onChange,
+      value,
+      isInvalid,
+      ...rest
+    },
+    ref
+  ) => {
+    const localRef = useRef<HTMLInputElement>(null)
+    const [isChecked, setIsChecked] = useState(defaultChecked || checked)
 
-  const handleClick = (_: React.MouseEvent<HTMLDivElement>) => {
-    ref.current.click()
-  }
-
-  const handleKeyUp = (_: React.KeyboardEvent) => {
-    ref.current.focus()
-  }
-
-  const handleOnChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setIsChecked(!isChecked)
-
-    if (onChange) {
-      onChange(e)
+    const handleClick = (_: React.MouseEvent<HTMLDivElement>) => {
+      localRef.current.click()
     }
-  }
 
-  return (
-    <StyledCheckbox
-      $isDisabled={isDisabled}
-      $isInvalid={isInvalid}
-      $isChecked={isChecked}
-      className={className}
-      onClick={handleClick}
-      onKeyUp={handleKeyUp}
-      data-testid="container"
-    >
-      <StyledOuterWrapper>
-        <StyledLabel htmlFor={id} data-testid="label">
-          <StyledInput
-            $isDisabled={isDisabled}
-            ref={ref}
-            id={id}
-            type="checkbox"
-            name={name}
-            value={value}
-            defaultChecked={defaultChecked}
-            onChange={handleOnChange}
-            onBlur={onBlur}
-            disabled={isDisabled}
-            checked={checked}
-            {...rest}
-            data-testid="checkbox"
-          />
-          <StyledCheckmark />
-          {label}
-        </StyledLabel>
-      </StyledOuterWrapper>
-    </StyledCheckbox>
-  )
-}
+    const handleKeyUp = (_: React.KeyboardEvent) => {
+      localRef.current.focus()
+    }
+
+    const handleOnChange = (e: React.FormEvent<HTMLInputElement>) => {
+      setIsChecked(!isChecked)
+
+      if (onChange) {
+        onChange(e)
+      }
+    }
+
+    return (
+      <StyledCheckboxWrapper>
+        <StyledCheckbox
+          $isDisabled={isDisabled}
+          $isInvalid={isInvalid}
+          $isChecked={isChecked}
+          className={className}
+          onClick={handleClick}
+          onKeyUp={handleKeyUp}
+          data-testid="checkbox"
+        >
+          <StyledOuterWrapper>
+            <StyledLabel htmlFor={id} data-testid="checkbox-label">
+              <StyledInput
+                ref={mergeRefs([localRef, ref])}
+                $isDisabled={isDisabled}
+                id={id}
+                type="checkbox"
+                name={name}
+                value={value}
+                defaultChecked={defaultChecked}
+                onChange={handleOnChange}
+                onBlur={onBlur}
+                disabled={isDisabled}
+                checked={checked}
+                {...rest}
+                data-testid="checkbox-input"
+              />
+              <StyledCheckmark />
+              {label}
+            </StyledLabel>
+          </StyledOuterWrapper>
+        </StyledCheckbox>
+      </StyledCheckboxWrapper>
+    )
+  }
+)
 
 CheckboxE.displayName = 'CheckboxE'

@@ -45,18 +45,22 @@ describe('Checkbox', () => {
     })
 
     it('should render a field with a label', () => {
-      expect(checkbox.getByTestId('label')).toHaveTextContent('My Label 1')
+      expect(checkbox.getByTestId('checkbox-label')).toHaveTextContent(
+        'My Label 1'
+      )
     })
 
     it('should populate the field value', () => {
-      expect(checkbox.queryByTestId('checkbox')).toHaveAttribute(
+      expect(checkbox.queryByTestId('checkbox-input')).toHaveAttribute(
         'value',
         'false'
       )
     })
 
     it('should not initially render as checked', () => {
-      expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute('checked')
+      expect(checkbox.getByTestId('checkbox-input')).not.toHaveAttribute(
+        'checked'
+      )
     })
   })
 
@@ -77,7 +81,7 @@ describe('Checkbox', () => {
     })
 
     it('should initially render as checked', () => {
-      expect(checkbox.getByTestId('checkbox')).toHaveAttribute('checked')
+      expect(checkbox.getByTestId('checkbox-input')).toHaveAttribute('checked')
     })
   })
 
@@ -98,7 +102,7 @@ describe('Checkbox', () => {
     })
 
     it('should initially render as checked', () => {
-      expect(checkbox.getByTestId('checkbox')).toHaveAttribute('checked')
+      expect(checkbox.getByTestId('checkbox-input')).toHaveAttribute('checked')
     })
   })
 
@@ -125,7 +129,7 @@ describe('Checkbox', () => {
     })
 
     it('should not indicate the field has an error', () => {
-      expect(checkbox.queryByTestId('container')).not.toHaveClass('is-invalid')
+      expect(checkbox.queryByTestId('checkbox')).not.toHaveClass('is-invalid')
     })
 
     it('should not show the error', () => {
@@ -147,17 +151,17 @@ describe('Checkbox', () => {
     })
 
     it('should add the aria attributes', () => {
-      expect(checkbox.getByTestId('checkbox')).toHaveAttribute(
+      expect(checkbox.getByTestId('checkbox-input')).toHaveAttribute(
         'aria-invalid',
         'true'
       )
-      expect(checkbox.getByTestId('checkbox')).toHaveAttribute(
+      expect(checkbox.getByTestId('checkbox-input')).toHaveAttribute(
         'aria-describedby'
       )
     })
 
     it('should indicate the field has an error', () => {
-      expect(checkbox.queryByTestId('container')).toHaveClass('is-invalid')
+      expect(checkbox.queryByTestId('checkbox')).toHaveClass('is-invalid')
     })
 
     it('should show the error', () => {
@@ -179,7 +183,7 @@ describe('Checkbox', () => {
     })
 
     it('should attach the class to the wrapper', () => {
-      expect(checkbox.queryByTestId('container')).toHaveClass('test')
+      expect(checkbox.queryByTestId('checkbox')).toHaveClass('test')
     })
   })
 
@@ -197,11 +201,17 @@ describe('Checkbox', () => {
     })
 
     it('should attach the id to the field', () => {
-      expect(checkbox.queryByTestId('checkbox')).toHaveAttribute('id', 'test')
+      expect(checkbox.queryByTestId('checkbox-input')).toHaveAttribute(
+        'id',
+        'test'
+      )
     })
 
     it('should associate the label to the field with the custom id', () => {
-      expect(checkbox.queryByTestId('label')).toHaveAttribute('for', 'test')
+      expect(checkbox.queryByTestId('checkbox-label')).toHaveAttribute(
+        'for',
+        'test'
+      )
     })
   })
 
@@ -219,7 +229,7 @@ describe('Checkbox', () => {
     })
 
     it('should drill the arbitrary prop', () => {
-      expect(checkbox.queryByTestId('checkbox')).toHaveAttribute(
+      expect(checkbox.queryByTestId('checkbox-input')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
       )

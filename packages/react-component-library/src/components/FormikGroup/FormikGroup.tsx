@@ -19,8 +19,12 @@ export interface FormikGroupProps extends ComponentWithClass {
 
 const { spacing } = selectors
 
+const StyledFormikGroupE = styled.div`
+  display: inline-block;
+`
+
 const StyledLegend = styled.legend`
-  padding-bottom: ${spacing('4')};
+  padding: ${spacing('10')} 0 ${spacing('8')};
 `
 
 export const FormikGroup: React.FC<FormikGroupProps> = ({
@@ -64,7 +68,11 @@ export const FormikGroupE: React.FC<FormikGroupProps> = ({
   const error = getError(touched, errors, fieldName)
 
   return (
-    <div className={className} data-testid="formik-group" role="group">
+    <StyledFormikGroupE
+      className={className}
+      data-testid="formik-group"
+      role="group"
+    >
       {label && (
         <StyledLegend data-testid="formik-group-legend">{label}</StyledLegend>
       )}
@@ -81,7 +89,7 @@ export const FormikGroupE: React.FC<FormikGroupProps> = ({
           )
         })}
       </Fieldset>
-    </div>
+    </StyledFormikGroupE>
   )
 }
 

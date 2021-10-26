@@ -12,7 +12,7 @@ import { useInputValue } from '../../hooks/useInputValue'
 
 export interface TextAreaEProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement>,
-    ComponentWithClass,
+    Omit<ComponentWithClass, 'children'>,
     InputValidationProps {
   /**
    * Toggles whether the component is disabled or not (preventing user interaction).
@@ -32,55 +32,59 @@ export interface TextAreaEProps
   value?: string
 }
 
-export const TextAreaE: React.FC<TextAreaEProps> = (props) => {
-  const {
-    className,
-    isDisabled,
-    isInvalid,
-    id = getId('text-area'),
-    label,
-    onBlur,
-    onChange,
-    value,
-    ...rest
-  } = props
+export const TextAreaE = React.forwardRef<HTMLTextAreaElement, TextAreaEProps>(
+  (
+    {
+      className,
+      isDisabled,
+      isInvalid,
+      id = getId('text-area'),
+      label,
+      onBlur,
+      onChange,
+      value,
+      ...rest
+    },
+    ref
+  ) => {
+    const { hasFocus, onLocalBlur, onLocalFocus } = useFocus(onBlur)
+    const { committedValue, hasValue, onValueChange } = useInputValue(value)
 
-  const { hasFocus, onLocalBlur, onLocalFocus } = useFocus(onBlur)
-  const { committedValue, hasValue, onValueChange } = useInputValue(value)
-
-  return (
-    <StyledTextArea className={className} data-testid="textarea-container">
-      <StyledOuterWrapper
-        $hasFocus={hasFocus}
-        $isDisabled={isDisabled}
-        $isInvalid={isInvalid}
-      >
-        <StyledLabel
-          $hasContent={hasValue}
+    return (
+      <StyledTextArea className={className} data-testid="textarea-container">
+        <StyledOuterWrapper
           $hasFocus={hasFocus}
-          data-testid="textarea-label"
-          htmlFor={id}
+          $isDisabled={isDisabled}
+          $isInvalid={isInvalid}
         >
-          {label}
-        </StyledLabel>
-        <StyledInput
-          data-testid="textarea-input"
-          disabled={isDisabled}
-          id={id}
-          onBlur={onLocalBlur}
-          onChange={(e) => {
-            onValueChange(e)
-            if (onChange) {
-              onChange(e)
-            }
-          }}
-          onFocus={onLocalFocus}
-          value={committedValue}
-          {...rest}
-        />
-      </StyledOuterWrapper>
-    </StyledTextArea>
-  )
-}
+          <StyledLabel
+            $hasContent={hasValue}
+            $hasFocus={hasFocus}
+            data-testid="textarea-label"
+            htmlFor={id}
+          >
+            {label}
+          </StyledLabel>
+          <StyledInput
+            ref={ref}
+            data-testid="textarea-input"
+            disabled={isDisabled}
+            id={id}
+            onBlur={onLocalBlur}
+            onChange={(e) => {
+              onValueChange(e)
+              if (onChange) {
+                onChange(e)
+              }
+            }}
+            onFocus={onLocalFocus}
+            value={committedValue}
+            {...rest}
+          />
+        </StyledOuterWrapper>
+      </StyledTextArea>
+    )
+  }
+)
 
 TextAreaE.displayName = 'TextAreaE'

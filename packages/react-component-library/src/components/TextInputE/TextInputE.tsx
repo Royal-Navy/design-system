@@ -83,44 +83,50 @@ export interface TextInputEProps
   value?: string
 }
 
-export const TextInputE: React.FC<TextInputEProps> = (props) => {
-  const {
-    className,
-    endAdornment,
-    isDisabled,
-    isInvalid,
-    onBlur,
-    startAdornment,
-    ...rest
-  } = props
+export const TextInputE = React.forwardRef<HTMLInputElement, TextInputEProps>(
+  (
+    {
+      className,
+      endAdornment,
+      isDisabled,
+      isInvalid,
+      onBlur,
+      startAdornment,
+      ...rest
+    },
+    ref
+  ) => {
+    const { hasFocus, onLocalBlur, onLocalFocus } = useFocus(onBlur)
 
-  const { hasFocus, onLocalBlur, onLocalFocus } = useFocus(onBlur)
-
-  return (
-    <StyledTextInput className={className} data-testid="text-input-container">
-      <StyledOuterWrapper
-        $hasFocus={hasFocus}
-        $isDisabled={isDisabled}
-        $isInvalid={isInvalid}
-      >
-        {startAdornment && (
-          <StyledAdornment $position="start">{startAdornment}</StyledAdornment>
-        )}
-        <StyledInputWrapper data-testid="text-input-input-wrapper">
-          <Input
-            hasFocus={hasFocus}
-            isDisabled={isDisabled}
-            onBlur={onLocalBlur}
-            onFocus={onLocalFocus}
-            {...rest}
-          />
-        </StyledInputWrapper>
-        {endAdornment && (
-          <StyledAdornment $position="end">{endAdornment}</StyledAdornment>
-        )}
-      </StyledOuterWrapper>
-    </StyledTextInput>
-  )
-}
+    return (
+      <StyledTextInput className={className} data-testid="text-input-container">
+        <StyledOuterWrapper
+          $hasFocus={hasFocus}
+          $isDisabled={isDisabled}
+          $isInvalid={isInvalid}
+        >
+          {startAdornment && (
+            <StyledAdornment $position="start">
+              {startAdornment}
+            </StyledAdornment>
+          )}
+          <StyledInputWrapper data-testid="text-input-input-wrapper">
+            <Input
+              ref={ref}
+              hasFocus={hasFocus}
+              isDisabled={isDisabled}
+              onBlur={onLocalBlur}
+              onFocus={onLocalFocus}
+              {...rest}
+            />
+          </StyledInputWrapper>
+          {endAdornment && (
+            <StyledAdornment $position="end">{endAdornment}</StyledAdornment>
+          )}
+        </StyledOuterWrapper>
+      </StyledTextInput>
+    )
+  }
+)
 
 TextInputE.displayName = 'TextInputE'

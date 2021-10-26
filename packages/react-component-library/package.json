@@ -154,7 +154,9 @@
     "webpack-bundle-analyzer": "^4.2.0",
     "webpack-cli": "^4.7.2",
     "webpack-merge": "^5.2.0",
-    "yup": "^0.32.8"
+    "yup": "^0.32.8",
+    "formik": "^2.2.9",
+    "react-hook-form": "6.15.4"
   },
   "browserslist": [
     ">0.2%",
@@ -179,12 +181,12 @@
     "autoprefixer": "^10.2.5",
     "classnames": "^2.2.6",
     "date-fns": "^2.9.0",
-    "formik": "^2.1.2",
     "polished": "^4.0.3",
     "postcss-flexbugs-fixes": "^5.0.2",
     "react-compound-slider": "^3.3.1",
     "react-day-picker": "^7.4.8",
     "react-indiana-drag-scroll": "^2.0.1",
+    "react-merge-refs": "^1.1.0",
     "react-popper": "^2.2.5",
     "react-responsive": "^8.0.3",
     "react-select": "^4.1.0",
