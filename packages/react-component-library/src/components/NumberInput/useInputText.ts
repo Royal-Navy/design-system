@@ -58,6 +58,7 @@ export function useInputText(value: number, unitPosition: UnitPosition) {
 
     if (unitPosition === UNIT_POSITION.AFTER) {
       const offset = textWidth + paddingLeft + EXTRA_SPACING
+      setInputOffset(0)
       setUnitOffset(offset)
       setCanShow(true)
     } else {
@@ -65,7 +66,7 @@ export function useInputText(value: number, unitPosition: UnitPosition) {
       setUnitOffset(paddingLeft)
       setCanShow(true)
     }
-  }, [value])
+  }, [value, unitPosition])
 
   return { canShow, inputRef, inputOffset, unitOffset }
 }
