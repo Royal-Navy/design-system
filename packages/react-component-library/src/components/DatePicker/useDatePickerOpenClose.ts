@@ -1,10 +1,8 @@
-import React, { useRef } from 'react'
+import React, { useCallback, useRef } from 'react'
 
 import { useDocumentClick, useOpenClose } from '../../hooks'
 
-export function useDatePickerOpenClose(
-  isOpen = false
-): {
+export function useDatePickerOpenClose(isOpen = false): {
   floatingBoxChildrenRef: React.RefObject<HTMLDivElement>
   handleOnClose: () => void
   inputButtonRef: React.RefObject<HTMLButtonElement>
@@ -17,14 +15,13 @@ export function useDatePickerOpenClose(
   const inputButtonRef = useRef()
   const inputRef = useRef()
 
-  function handleDatePickerOnClose() {
+  const handleDatePickerOnClose = useCallback(() => {
     handleOnClose(null)
-  }
+  }, [handleOnClose])
 
   useDocumentClick(
     [floatingBoxChildrenRef, inputButtonRef, inputRef],
-    handleDatePickerOnClose,
-    [open]
+    handleDatePickerOnClose
   )
 
   return {
