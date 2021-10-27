@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.60.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.18...2.60.0) (2021-10-27)
+
+
+### Bug Fixes
+
+* **Fieldset:** Style checkbox and radio groups ([0e172dc](https://github.com/defencedigital/mod-uk-design-system/commit/0e172dc018c38389fe45af95df7f874fb6c31fa7))
+* **Firefox:** Ignore pointer events for `CheckboxE` and `RadioE` label ([6a8ba52](https://github.com/defencedigital/mod-uk-design-system/commit/6a8ba5297aaba90aa22c3958b0c0d8f2a645a5b7))
+* **Forms:** Enable forwardRef for experimental components ([1cef9ed](https://github.com/defencedigital/mod-uk-design-system/commit/1cef9ed460d926f174816b297f8319bdeb1bd12f))
+* **Helpers:** Add some missing return types ([7fd1a71](https://github.com/defencedigital/mod-uk-design-system/commit/7fd1a71a2506092e26d73c43acdb114850c2018f))
+
+
+### Features
+
+* **Forms:** Add Formik example ([912da5f](https://github.com/defencedigital/mod-uk-design-system/commit/912da5ffcb0bcd6ad65ce72b481dea1e8c276569))
+* **Forms:** Add react-hook-form example ([6f1c875](https://github.com/defencedigital/mod-uk-design-system/commit/6f1c8756a40a82183471239b83773c92b30240c7))
+
+
+
+
+
 ## [2.59.18](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.17...2.59.18) (2021-10-26)
 
 
