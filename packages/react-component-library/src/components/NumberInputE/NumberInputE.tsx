@@ -60,7 +60,12 @@ interface NumberInputBaseProps
   /**
    * Handler called when the value selected by the component changes.
    */
-  onChange: (event: any) => void
+  onChange: (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.MouseEvent<HTMLButtonElement>,
+    newValue: number
+  ) => void
   /**
    * Optional placeholder text to display within the component.
    */
@@ -169,19 +174,11 @@ export const NumberInputE: React.FC<NumberInputProps> = ({
   const { committedValue, setCommittedValue } = useValue(value)
   const { hasFocus, onLocalFocus, onLocalBlur } = useFocus(onBlur)
 
-  function setCommittedValueWithinRange(newValue: number) {
-    if (
+  function canCommit(newValue: number) {
+    return (
       (isFinite(newValue) && isWithinRange(max, min, newValue)) ||
       newValue === null
-    ) {
-      setCommittedValue(newValue)
-      onChange({
-        target: {
-          name,
-          value: newValue,
-        },
-      })
-    }
+    )
   }
 
   const numberInputId = getId('number-input')
@@ -228,13 +225,19 @@ export const NumberInputE: React.FC<NumberInputProps> = ({
           name={name}
           onChange={(event) => {
             const newValue = getNewValue(event)
-            setCommittedValueWithinRange(newValue)
+
+            if (canCommit(newValue)) {
+              setCommittedValue(newValue)
+              onChange(event, newValue)
+            }
           }}
           onBlur={(event) => {
             const newValue = getNewValue(event)
-            setCommittedValueWithinRange(newValue)
 
-            onLocalBlur(event)
+            if (canCommit(newValue)) {
+              setCommittedValue(newValue)
+              onLocalBlur(event)
+            }
           }}
           onFocus={onLocalFocus}
           placeholder={placeholder}
@@ -258,7 +261,8 @@ export const NumberInputE: React.FC<NumberInputProps> = ({
           min={min}
           name={name}
           onClick={(e, newValue) => {
-            setCommittedValueWithinRange(newValue)
+            setCommittedValue(newValue)
+            onChange(e, newValue)
           }}
           size={size}
           step={step}

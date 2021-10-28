@@ -11,9 +11,16 @@ import userEvent from '@testing-library/user-event'
 import { Button, COMPONENT_SIZE } from '../..'
 import { NumberInputE } from '.'
 
+const defaultProps = {
+  name: 'number-input',
+  onChange: (
+    _: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>
+  ) => true,
+}
+
 describe('NumberInputE', () => {
   let wrapper: RenderResult
-  let onChangeSpy: (event: any) => void
+  let onChangeSpy: jest.SpyInstance
 
   function assertInputValue(expectedValue: string) {
     it('sets the input value', () => {
@@ -57,26 +64,23 @@ describe('NumberInputE', () => {
   }
 
   function assertOnChangeCall(expected: number, expectedNumberOfTimes = 1) {
-    it('calls the onChange callback with the new value', () => {
+    it(`calls the \`onChange\` callback ${expectedNumberOfTimes} times with the new value ${expected}`, () => {
       expect(onChangeSpy).toHaveBeenCalledTimes(expectedNumberOfTimes)
-      expect(onChangeSpy).toHaveBeenCalledWith({
-        target: {
-          name: 'number-input',
-          value: expected,
-        },
-      })
+      expect(onChangeSpy.mock.calls[expectedNumberOfTimes - 1][1]).toEqual(
+        expected
+      )
     })
   }
 
-  beforeEach(() => {
-    onChangeSpy = jest.fn()
+  afterEach(() => {
+    jest.clearAllMocks()
   })
 
   describe('when minimal props', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInputE name="number-input" onChange={onChangeSpy} />
-      )
+      onChangeSpy = jest.spyOn(defaultProps, 'onChange')
+
+      wrapper = render(<NumberInputE {...defaultProps} />)
     })
 
     it('sets the default `aria-label` attribute', () => {
@@ -177,9 +181,15 @@ describe('NumberInputE', () => {
         await userEvent.type(input, '3')
       })
 
+      it('calls the `onChange` callback once with `1`', () => {
+        expect(onChangeSpy.mock.calls[0][1]).toEqual(1)
+      })
+
+      it('calls the `onChange` callback once with `12`', () => {
+        expect(onChangeSpy.mock.calls[1][1]).toEqual(12)
+      })
+
       assertInputValue('123')
-      assertOnChangeCall(1, 3)
-      assertOnChangeCall(12, 3)
       assertOnChangeCall(123, 3)
     })
 
@@ -217,13 +227,14 @@ describe('NumberInputE', () => {
 
   describe('when there is a footnote', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInputE
-          footnote="Footnote"
-          name="number-input"
-          onChange={onChangeSpy}
-        />
-      )
+      const props = {
+        ...defaultProps,
+        footnote: 'Footnote',
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInputE {...props} />)
     })
 
     it('displays the footnote', () => {
@@ -235,13 +246,14 @@ describe('NumberInputE', () => {
 
   describe('when there is a label', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInputE
-          label="Label"
-          name="number-input"
-          onChange={onChangeSpy}
-        />
-      )
+      const props = {
+        ...defaultProps,
+        label: 'Label',
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInputE {...props} />)
     })
 
     it('sets the `aria-label` attribute to the root element', () => {
@@ -260,14 +272,17 @@ describe('NumberInputE', () => {
 
   describe('when max and min are specified', () => {
     beforeEach(() => {
+      const props = {
+        ...defaultProps,
+        max: 3,
+        min: 0,
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
       wrapper = render(
         <>
-          <NumberInputE
-            max={3}
-            min={0}
-            name="number-input"
-            onChange={onChangeSpy}
-          />
+          <NumberInputE {...props} />
           <input type="text" data-testid="next-field" />
         </>
       )
@@ -296,7 +311,7 @@ describe('NumberInputE', () => {
         increase.click()
       })
 
-      assertInputValue('3')
+      assertInputValue('4')
 
       describe('and the decrease button is clicked four times', () => {
         beforeEach(() => {
@@ -367,9 +382,14 @@ describe('NumberInputE', () => {
 
   describe('when the step is specified', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInputE name="number-input" step={3} onChange={onChangeSpy} />
-      )
+      const props = {
+        ...defaultProps,
+        step: 3,
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInputE {...props} />)
     })
 
     describe('and the increase button is clicked', () => {
@@ -393,13 +413,14 @@ describe('NumberInputE', () => {
 
   describe('when a CSS class name is specified', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInputE
-          className="number-input__custom"
-          name="number-input"
-          onChange={onChangeSpy}
-        />
-      )
+      const props = {
+        ...defaultProps,
+        className: 'number-input__custom',
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInputE {...props} />)
     })
 
     it('sets the CSS modifier', () => {
@@ -411,14 +432,15 @@ describe('NumberInputE', () => {
 
   describe('when an ID is specified', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInputE
-          id="number-input-id"
-          label="Label"
-          name="number-input"
-          onChange={onChangeSpy}
-        />
-      )
+      const props = {
+        ...defaultProps,
+        id: 'number-input-id',
+        label: 'Label',
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInputE {...props} />)
     })
 
     it('sets the `id` attribute', () => {
@@ -435,18 +457,20 @@ describe('NumberInputE', () => {
   })
 
   describe('when the onBlur callback is specified', () => {
-    let onBlurSpy: (event: React.FormEvent) => void
+    let onBlurSpy: jest.SpyInstance
 
     beforeEach(() => {
-      onBlurSpy = jest.fn()
+      const props = {
+        ...defaultProps,
+        onBlur: (_: React.FormEvent) => true,
+      }
+
+      onBlurSpy = jest.spyOn(props, 'onBlur')
+      onChangeSpy = jest.spyOn(props, 'onChange')
 
       wrapper = render(
         <>
-          <NumberInputE
-            name="number-input"
-            onBlur={onBlurSpy}
-            onChange={onChangeSpy}
-          />
+          <NumberInputE {...props} />
           <input type="text" data-testid="next-field" />
         </>
       )
@@ -466,14 +490,15 @@ describe('NumberInputE', () => {
 
   describe('when there is a prefix', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInputE
-          name="number-input"
-          onChange={onChangeSpy}
-          value={1000}
-          prefix="&pound;"
-        />
-      )
+      const props = {
+        ...defaultProps,
+        prefix: String.fromCharCode(163),
+        value: 1000,
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInputE {...props} />)
     })
 
     assertInputValue('1000')
@@ -487,14 +512,15 @@ describe('NumberInputE', () => {
 
   describe('when there is a suffix', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInputE
-          name="number-input"
-          onChange={onChangeSpy}
-          value={1000}
-          suffix="m"
-        />
-      )
+      const props = {
+        ...defaultProps,
+        value: 1000,
+        suffix: 'm',
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInputE {...props} />)
     })
 
     assertInputValue('1000')
@@ -511,14 +537,17 @@ describe('NumberInputE', () => {
       function NumberInputWithUpdate() {
         const [value, setValue] = useState<number>(1)
 
+        const props = {
+          ...defaultProps,
+          value,
+        }
+
+        onChangeSpy = jest.spyOn(props, 'onChange')
+
         return (
           <>
             <Button onClick={() => setValue(1)}>Update</Button>
-            <NumberInputE
-              name="number-input"
-              onChange={onChangeSpy}
-              value={value}
-            />
+            <NumberInputE {...props} />
           </>
         )
       }
@@ -536,13 +565,14 @@ describe('NumberInputE', () => {
 
   describe('when arbitrary props are specified', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInputE
-          data-arbitrary="arbitrary"
-          name="number-input"
-          onChange={onChangeSpy}
-        />
-      )
+      const props = {
+        ...defaultProps,
+        'data-arbitrary': 'arbitrary',
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInputE {...props} />)
     })
 
     it('spreads arbitrary props', () => {
@@ -555,14 +585,15 @@ describe('NumberInputE', () => {
 
   describe('when small', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInputE
-          label="Label"
-          name="number-input"
-          onChange={onChangeSpy}
-          size={COMPONENT_SIZE.SMALL}
-        />
-      )
+      const props = {
+        ...defaultProps,
+        label: 'Label',
+        size: COMPONENT_SIZE.SMALL,
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInputE {...props} />)
     })
 
     it('displays the label', () => {
