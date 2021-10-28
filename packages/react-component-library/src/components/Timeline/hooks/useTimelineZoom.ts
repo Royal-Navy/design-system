@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { isNil } from 'lodash'
 
-import { buildScaleOptions } from '../context/timeline_scales'
 import { TIMELINE_ACTIONS } from '../context/types'
 import { TimelineContext } from '../context'
 
@@ -13,20 +12,10 @@ export function useTimelineZoom(): {
 } {
   const {
     dispatch,
-    state: { currentScaleIndex, options, scaleOptions, width },
+    state: { currentScaleIndex, scaleOptions },
   } = useContext(TimelineContext)
-  const [timelineScaleOptions, setTimelineScaleOptions] = useState(scaleOptions)
   const canZoomIn = isNil(currentScaleIndex) || currentScaleIndex > 0
-  const canZoomOut = currentScaleIndex < timelineScaleOptions.length - 1
-
-  useEffect(() => {
-    const newScaleOptions = buildScaleOptions(options, width)
-    setTimelineScaleOptions(newScaleOptions)
-  }, [width])
-
-  useEffect(() => {
-    setTimelineScaleOptions(scaleOptions)
-  }, [scaleOptions])
+  const canZoomOut = currentScaleIndex < scaleOptions.length - 1
 
   function zoomIn() {
     dispatch({
