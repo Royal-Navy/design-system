@@ -111,7 +111,7 @@ export interface NumberInputWithSuffixProps extends NumberInputBaseProps {
   suffix?: string
 }
 
-export type NumberInputProps =
+export type NumberInputEProps =
   | NumberInputWithIconProps
   | NumberInputWithPrefixProps
   | NumberInputWithSuffixProps
@@ -149,7 +149,7 @@ function isWithinRange(max: number, min: number, newValue: number) {
   return isNotBelowMin && isNotAboveMax
 }
 
-export const NumberInputE: React.FC<NumberInputProps> = ({
+export const NumberInputE: React.FC<NumberInputEProps> = ({
   className,
   footnote,
   icon,

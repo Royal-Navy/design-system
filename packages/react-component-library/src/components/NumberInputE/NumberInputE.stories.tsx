@@ -3,13 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0'
 import { IconBrightnessHigh } from '@defencedigital/icon-library'
 
 import { COMPONENT_SIZE } from '../Forms'
-import {
-  NumberInputE,
-  NumberInputProps,
-  NumberInputWithIconProps,
-  NumberInputWithPrefixProps,
-  NumberInputWithSuffixProps,
-} from './NumberInputE'
+import { NumberInputE, NumberInputEProps } from './NumberInputE'
 
 export default {
   component: NumberInputE,
@@ -19,81 +13,48 @@ export default {
   },
 } as Meta
 
-export const Default: Story<NumberInputProps> = (props) => (
-  <NumberInputE {...props} />
-)
+const Template: Story<NumberInputEProps> = (args) => <NumberInputE {...args} />
 
-Default.args = {
-  id: undefined,
-  name: 'number-input-default',
+export const Default = Template.bind({})
+
+export const Small = Template.bind({})
+Small.args = {
+  size: COMPONENT_SIZE.SMALL,
 }
 
-export const Small: Story<NumberInputProps> = (props) => (
-  <NumberInputE
-    {...props}
-    name="number-input-small"
-    size={COMPONENT_SIZE.SMALL}
-  />
-)
+export const Disabled = Template.bind({})
+Disabled.args = {
+  isDisabled: true,
+}
 
-Small.storyName = 'Small'
+export const WithFootnote = Template.bind({})
+WithFootnote.args = {
+  footnote: 'Footnote',
+}
 
-export const Disabled: Story<NumberInputProps> = (props) => (
-  <NumberInputE {...props} isDisabled name="number-input-disabled" />
-)
+export const WithLabel = Template.bind({})
+WithLabel.args = {
+  label: 'Label',
+}
 
-Disabled.storyName = 'Disabled'
+export const WithIcon = Template.bind({})
+WithIcon.args = {
+  icon: <IconBrightnessHigh />,
+}
 
-export const WithFootnote: Story<NumberInputProps> = (props) => (
-  <NumberInputE
-    {...props}
-    footnote="Footnote"
-    name="number-input-with-footnote"
-  />
-)
+export const WithPrefix = Template.bind({})
+WithPrefix.args = {
+  prefix: String.fromCharCode(163),
+  value: 1000,
+}
 
-WithFootnote.storyName = 'With footnote'
+export const WithSuffix = Template.bind({})
+WithSuffix.args = {
+  suffix: `m${String.fromCharCode(179)}`,
+  value: 1000,
+}
 
-export const WithLabel: Story<NumberInputProps> = (props) => (
-  <NumberInputE {...props} label="Label" name="number-input-label" />
-)
-
-WithLabel.storyName = 'With label'
-
-export const Icon: Story<NumberInputWithIconProps> = (props) => (
-  <NumberInputE
-    {...props}
-    name="number-input-icon"
-    icon={<IconBrightnessHigh />}
-  />
-)
-
-Icon.storyName = 'With icon'
-
-export const Prefix: Story<NumberInputWithPrefixProps> = (props) => (
-  <NumberInputE
-    {...props}
-    name="number-input-prefix"
-    value={1000}
-    prefix="&pound;"
-  />
-)
-
-Prefix.storyName = 'With prefix'
-
-export const Suffix: Story<NumberInputWithSuffixProps> = (props) => (
-  <NumberInputE
-    {...props}
-    name="number-input-suffix"
-    value={1000}
-    suffix="m&sup3;"
-  />
-)
-
-Suffix.storyName = 'With suffix'
-
-export const Error: Story<NumberInputProps> = (props) => (
-  <NumberInputE {...props} isInvalid name="number-input-error" />
-)
-
-Error.storyName = 'With error'
+export const WithError = Template.bind({})
+WithError.args = {
+  isInvalid: true,
+}
