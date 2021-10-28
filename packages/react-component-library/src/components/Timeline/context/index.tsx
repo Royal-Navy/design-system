@@ -7,7 +7,7 @@ import {
   TimelineContextDefault,
   TimelineProviderProps,
 } from './types'
-import { initialiseScaleOptions } from './timeline_scales'
+import { buildScaleOptions } from './timeline_scales'
 
 const timelineContextDefaults: TimelineContextDefault = {
   hasSide: false,
@@ -34,7 +34,7 @@ export const TimelineProvider: React.FC<TimelineProviderProps> = ({
       return
     }
 
-    const scaleOptions = initialiseScaleOptions(
+    const scaleOptions = buildScaleOptions(
       {
         ...options,
         endDate: state.getNewEndDate(),
@@ -46,9 +46,10 @@ export const TimelineProvider: React.FC<TimelineProviderProps> = ({
     dispatch({ scaleOptions, type: TIMELINE_ACTIONS.CHANGE_START_DATE })
   }, [options.startDate])
 
-  const value = useMemo(() => ({ hasSide, state, dispatch }), [
-    hasSide, state, dispatch
-  ])
+  const value = useMemo(
+    () => ({ hasSide, state, dispatch }),
+    [hasSide, state, dispatch]
+  )
 
   return (
     <TimelineContext.Provider value={value}>

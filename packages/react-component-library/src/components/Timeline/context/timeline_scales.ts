@@ -125,7 +125,7 @@ function getMaxWidth(
   return unitWidthTotal
 }
 
-function initialiseScaleOptions(
+function buildScaleOptions(
   { endDate, hoursBlockSize, range, startDate, unitWidth }: TimelineOptions,
   timelineWidth?: number
 ): TimelineScaleOption[] {
@@ -148,4 +148,4 @@ function initialiseScaleOptions(
   })
 }
 
-export { initialiseScaleOptions }
+export { buildScaleOptions }

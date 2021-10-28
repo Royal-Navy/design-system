@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { initialiseScaleOptions } from '../context/timeline_scales'
+import { buildScaleOptions } from '../context/timeline_scales'
 import { TimelineContext } from '../context'
 import { TIMELINE_ACTIONS } from '../context/types'
 
@@ -20,7 +20,7 @@ export function useTimelineFrame(): {
       currentScaleOption.intervalSize * intervalMultiplier
     )
 
-    const newScaleOptions = initialiseScaleOptions(
+    const newScaleOptions = buildScaleOptions(
       {
         ...options,
         startDate: newStartDate,
