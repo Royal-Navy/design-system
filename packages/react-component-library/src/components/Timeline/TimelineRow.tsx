@@ -61,7 +61,7 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
   ...rest
 }) => {
   const classes = classNames('timeline__row', className)
-  const { noCells, rowContentRef } = useTimelineRowContent(isHeader, [children])
+  const { noCells, rowContentRef } = useTimelineRowContent(isHeader, children)
   const { css: contentCss, ...restContentProps } = contentProps
   const { css: headerCss, ...restHeaderProps } = headerProps
 
