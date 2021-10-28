@@ -6,6 +6,7 @@ module.exports = {
   },
   extends: [
     'airbnb',
+    'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',
     'prettier',
     'plugin:jest/recommended',
@@ -19,16 +20,6 @@ module.exports = {
     'arrow-body-style': 0,
     camelCase: 0,
     curly: ['error', 'all'],
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
-      },
-    ],
     'import/no-extraneous-dependencies': 0,
     'import/no-unresolved': 0,
     'import/prefer-default-export': 0,
