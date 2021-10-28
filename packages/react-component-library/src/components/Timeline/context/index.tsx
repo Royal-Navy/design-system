@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useReducer, useMemo } from 'react'
 
+import { usePrevious } from '../../../hooks'
 import { initialState } from './state'
 import { reducer } from './reducer'
 import {
@@ -29,8 +30,14 @@ export const TimelineProvider: React.FC<TimelineProviderProps> = ({
     today,
   })
 
+  const prevStartDate = usePrevious(options.startDate)
+
   useEffect(() => {
     if (!state.currentScaleOption) {
+      return
+    }
+
+    if (prevStartDate === undefined || prevStartDate === options.startDate) {
       return
     }
 
@@ -44,7 +51,7 @@ export const TimelineProvider: React.FC<TimelineProviderProps> = ({
     )
 
     dispatch({ scaleOptions, type: TIMELINE_ACTIONS.CHANGE_START_DATE })
-  }, [options.startDate])
+  }, [options, prevStartDate, state])
 
   const value = useMemo(
     () => ({ hasSide, state, dispatch }),
