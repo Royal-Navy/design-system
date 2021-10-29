@@ -8,12 +8,10 @@ import { ButtonE } from './index'
 describe('Button', () => {
   let wrapper: RenderResult
   let onClickSpy: (event: FormEvent<HTMLButtonElement>) => void
-  let blurSpy: jest.SpyInstance
   let button: HTMLElement
 
   beforeEach(() => {
     onClickSpy = jest.fn()
-    blurSpy = jest.fn()
   })
 
   describe('default props', () => {
@@ -32,15 +30,7 @@ describe('Button', () => {
 
     describe('when the button is clicked', () => {
       beforeEach(() => {
-        fireEvent.click(button, {
-          target: {
-            blur: blurSpy,
-          },
-        })
-      })
-
-      it('should blur the button so it does not remain active', () => {
-        expect(blurSpy).toHaveBeenCalledTimes(1)
+        fireEvent.click(button)
       })
 
       it('should handle the click event', () => {
@@ -55,18 +45,8 @@ describe('Button', () => {
       button = wrapper.getByText('Click me').parentElement
     })
 
-    describe('when the button is clicked', () => {
-      beforeEach(() => {
-        fireEvent.click(button, {
-          target: {
-            blur: blurSpy,
-          },
-        })
-      })
-
-      it('should blur the button so it does not remain active', () => {
-        expect(blurSpy).toHaveBeenCalledTimes(1)
-      })
+    it('does not throw an error when the button is clicked', () => {
+      expect(() => fireEvent.click(button)).not.toThrow()
     })
   })
 

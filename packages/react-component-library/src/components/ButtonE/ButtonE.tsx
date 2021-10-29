@@ -109,13 +109,7 @@ export const ButtonE: React.FC<ButtonEProps> = ({
       type={type}
       aria-label={children}
       title={title}
-      onClick={(e) => {
-        e.currentTarget.blur()
-
-        if (onClick) {
-          onClick(e)
-        }
-      }}
+      onClick={onClick}
       {...rest}
     >
       {isLoading && (
