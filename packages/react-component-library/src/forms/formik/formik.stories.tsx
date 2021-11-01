@@ -6,7 +6,7 @@ import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
-import { Button } from '../../components/Button'
+import { ButtonE } from '../../components/ButtonE'
 import { FormikGroupE } from '../../components/FormikGroup'
 import { withFormik } from '../../enhancers/withFormik'
 import { sleep } from '../../helpers'
@@ -122,13 +122,13 @@ export const ExampleFormik: React.FC<unknown> = () => {
                 value="Option 2"
               />
             </FormikGroupE>
-            <Button
+            <ButtonE
               type="submit"
               isDisabled={isSubmitting}
               data-testid="form-example-submit"
             >
               Submit
-            </Button>
+            </ButtonE>
           </form>
         )}
       </Formik>
