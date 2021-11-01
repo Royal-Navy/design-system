@@ -130,7 +130,7 @@
     "image-webpack-loader": "^7.0.1",
     "jest": "^26.0.1",
     "jest-canvas-mock": "^2.3.0",
-    "jest-junit": "^12.0.0",
+    "jest-junit": "^13.0.0",
     "jest-sonar-reporter": "^2.0.0",
     "jest-styled-components": "^7.0.3",
     "lint-staged": "^11.0.1",
