@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.61.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.60.0...2.61.0) (2021-11-02)
+
+
+### Features
+
+* **ButtonE:** Add loading state and isLoading prop ([016f893](https://github.com/defencedigital/mod-uk-design-system/commit/016f893736951b8705761919532dd0ee9b3f8590))
+* **ButtonE:** Create component based on Button ([a9ff79a](https://github.com/defencedigital/mod-uk-design-system/commit/a9ff79ad5eb18815fb61879070701324347fcc69))
+* **ButtonE:** Remove blur on click behaviour ([2d1e8f7](https://github.com/defencedigital/mod-uk-design-system/commit/2d1e8f7eda6968a4ffcfe24a1cc41c0148a4dcdb))
+* **ButtonE:** Update styling based on forms v3 spec ([e0f519c](https://github.com/defencedigital/mod-uk-design-system/commit/e0f519c40fea76d26a7e0005af84c4c5bfb5fdda))
+* **Forms:** Update form examples to use ButtonE ([0cbddb2](https://github.com/defencedigital/mod-uk-design-system/commit/0cbddb229926176bdae5997eaea9ccc5a9a1d18f))
+
+
+
+
+
 # [2.60.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.59.18...2.60.0) (2021-10-27)
 
 
