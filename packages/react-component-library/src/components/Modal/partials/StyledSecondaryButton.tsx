@@ -1,13 +1,12 @@
 import { selectors } from '@defencedigital/design-tokens'
 import styled from 'styled-components'
 
-import { Button } from '../../Button'
+import { StyledButton } from './StyledButton'
 
 const { mq } = selectors
 
-export const StyledSecondaryButton = styled(Button)`
+export const StyledSecondaryButton = styled(StyledButton)`
   ${mq({ gte: 'xs' })`
-    margin-bottom: 0;
     margin-left: auto;
   `}
 `
