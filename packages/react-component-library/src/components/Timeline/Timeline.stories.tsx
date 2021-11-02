@@ -49,6 +49,23 @@ export default {
     },
     layout: 'fullscreen',
   },
+  argTypes: {
+    endDate: {
+      control: {
+        type: 'date',
+      },
+    },
+    startDate: {
+      control: {
+        type: 'date',
+      },
+    },
+    today: {
+      control: {
+        type: 'date',
+      },
+    },
+  },
 } as Meta
 
 const disableScrollableRegionFocusableRule = {
@@ -64,8 +81,8 @@ const disableScrollableRegionFocusableRule = {
   },
 }
 
-export const Default: Story<TimelineProps> = (props) => (
-  <Timeline {...props}>
+const Template: Story<TimelineProps> = (args) => (
+  <Timeline {...args}>
     <TimelineTodayMarker />
     <TimelineMonths />
     <TimelineWeeks />
@@ -74,32 +91,21 @@ export const Default: Story<TimelineProps> = (props) => (
   </Timeline>
 )
 
+export const Default = Template.bind({})
 Default.args = {
-  startDate: new Date(2020, 0, 1),
-  today: new Date(2020, 0, 15),
+  startDate: new Date(2022, 0, 1),
+  today: new Date(2022, 0, 15),
 }
-
 Default.parameters = disableScrollableRegionFocusableRule
-
 Default.storyName = 'No data'
 
-export const BoundByFixedDates: Story<TimelineProps> = (props) => (
-  <Timeline
-    {...props}
-    startDate={new Date(2020, 0, 13)}
-    endDate={new Date(2020, 1, 15)}
-    today={new Date(2020, 0, 15)}
-  >
-    <TimelineTodayMarker />
-    <TimelineMonths />
-    <TimelineWeeks />
-    <TimelineDays />
-    <TimelineRows>{}</TimelineRows>
-  </Timeline>
-)
-
+export const BoundByFixedDates = Template.bind({})
+BoundByFixedDates.args = {
+  endDate: new Date(2021, 1, 15),
+  startDate: new Date(2021, 0, 13),
+  today: new Date(2021, 0, 15),
+}
 BoundByFixedDates.parameters = disableScrollableRegionFocusableRule
-
 BoundByFixedDates.storyName = 'Bound by fixed dates'
 
 export const WithData: Story<TimelineProps> = (props) => (
@@ -138,7 +144,6 @@ export const WithData: Story<TimelineProps> = (props) => (
 )
 
 WithData.parameters = disableScrollableRegionFocusableRule
-
 WithData.storyName = 'With data'
 
 export const WithSidebar: Story<TimelineProps> = (props) => (

@@ -90,7 +90,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   children,
   className,
   dayWidth,
-  hasSide,
+  hasSide = false,
   hideScaling = false,
   hideToolbar = false,
   isFullWidth = false,
