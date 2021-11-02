@@ -46,6 +46,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {label}
         </StyledLabel>
         <StyledInput
+          $hasLabel
           ref={ref}
           data-testid="text-input-input"
           disabled={isDisabled}
