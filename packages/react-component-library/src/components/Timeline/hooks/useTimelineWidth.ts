@@ -1,4 +1,10 @@
-import { MutableRefObject, useContext, useEffect, useRef } from 'react'
+import {
+  MutableRefObject,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+} from 'react'
 import { debounce } from 'lodash'
 
 import { TimelineContext } from '../context'
@@ -14,39 +20,39 @@ export function useTimelineWidth(
   const timelineRef = useRef<HTMLDivElement>()
   const { dispatch } = useContext(TimelineContext)
 
-  function getWidth() {
+  const getWidth = useCallback(() => {
     const timelineWidth = timelineRef.current.getBoundingClientRect().width
     const sideWidth = hasSide ? TIMELINE_ROW_HEADER_WIDTH : 0
     return timelineWidth - 1 - sideWidth
-  }
+  }, [hasSide])
 
-  function dispatchWidthChange(
-    type:
-      | typeof TIMELINE_ACTIONS.CHANGE_WIDTH
-      | typeof TIMELINE_ACTIONS.INITIALISE = TIMELINE_ACTIONS.CHANGE_WIDTH
-  ) {
-    return () => {
+  const dispatchWidthChange = useCallback(
+    (
+      type:
+        | typeof TIMELINE_ACTIONS.CHANGE_WIDTH
+        | typeof TIMELINE_ACTIONS.INITIALISE = TIMELINE_ACTIONS.CHANGE_WIDTH
+    ) => {
       dispatch({
         type,
         width: isFullWidth ? getWidth() : null,
       })
-    }
-  }
+    },
+    [dispatch, getWidth, isFullWidth]
+  )
 
   /* eslint-disable consistent-return */
   useEffect(() => {
-    dispatchWidthChange(TIMELINE_ACTIONS.INITIALISE)()
+    dispatchWidthChange(TIMELINE_ACTIONS.INITIALISE)
 
     if (isFullWidth) {
-      window.addEventListener('resize', debounce(dispatchWidthChange(), 250))
+      const onDocumentResize = debounce(() => dispatchWidthChange(), 250)
+
+      window.addEventListener('resize', onDocumentResize)
       return () => {
-        window.removeEventListener(
-          'resize',
-          debounce(dispatchWidthChange(), 250)
-        )
+        window.removeEventListener('resize', onDocumentResize)
       }
     }
-  }, [])
+  }, [dispatchWidthChange, isFullWidth])
 
   return {
     timelineRef,

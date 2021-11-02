@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 import { useDocumentClick } from '.'
 
@@ -7,14 +7,14 @@ export function useHideShow(isClick: boolean, closeDelay: number) {
   const timerRef = useRef(null)
   const floatingBoxChildrenRef = useRef()
 
-  function hideElement() {
+  const hideElement = useCallback(() => {
     if (isVisible) {
       timerRef.current = setTimeout(() => {
         timerRef.current = null
         setIsVisible(false)
       }, closeDelay)
     }
-  }
+  }, [closeDelay, isVisible])
 
   function showElement() {
     if (timerRef.current !== null) {
@@ -24,9 +24,7 @@ export function useHideShow(isClick: boolean, closeDelay: number) {
     setIsVisible(true)
   }
 
-  if (isClick) {
-    useDocumentClick(floatingBoxChildrenRef, hideElement, [isVisible])
-  }
+  useDocumentClick(floatingBoxChildrenRef, hideElement, isClick)
 
   function getMouseEvents() {
     if (isClick) {

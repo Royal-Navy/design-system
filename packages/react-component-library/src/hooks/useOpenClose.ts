@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 export function useOpenClose<TEvent>(
   isOpen: boolean,
@@ -10,13 +10,16 @@ export function useOpenClose<TEvent>(
     setOpen(isOpen)
   }, [isOpen])
 
-  function handleOnClose(event: TEvent) {
-    setOpen(false)
+  const handleOnClose = useCallback(
+    (event: TEvent) => {
+      setOpen(false)
 
-    if (onClose) {
-      onClose(event)
-    }
-  }
+      if (onClose) {
+        onClose(event)
+      }
+    },
+    [onClose]
+  )
 
   function toggle(event: TEvent) {
     const newOpen = !open

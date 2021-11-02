@@ -44,7 +44,7 @@ export function useInputValue(
     if (!hasFocus) {
       setInputKey(getId('date-picker-input'))
     }
-  }, [from, to])
+  }, [from, to, datePickerFormat, hasFocus, revertKeyedValue])
 
   return {
     displayValue,

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 
 import { TextInput } from '../../TextInput'
 import { RightArrow } from '../../../icons'
@@ -26,11 +26,16 @@ export const SearchBar: React.FC<SearchbarProps> = ({
   const searchBoxRef = useRef()
   const [term, setTerm] = useState('')
 
-  useDocumentClick(searchBoxRef, (event: Event) => {
-    if (!searchButton.current.contains(event.target)) {
-      setShowSearch(false)
-    }
-  })
+  const onDocumentClick = useCallback(
+    (event: Event) => {
+      if (!searchButton.current.contains(event.target)) {
+        setShowSearch(false)
+      }
+    },
+    [searchButton, setShowSearch]
+  )
+
+  useDocumentClick(searchBoxRef, onDocumentClick)
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
