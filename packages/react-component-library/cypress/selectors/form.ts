@@ -5,6 +5,8 @@ export default {
     description: '[data-testid="form-example-TextAreaE-description"]',
     checkbox: '[data-testid="checkbox"]',
     radio: '[data-testid="radio"]',
+    switch: '[data-testid="switch"]',
+    switchOption: '[data-testid="switch-option"]'
   },
   submit: '[data-testid="form-example-submit"]',
   values: '[data-testid="form-example-values"]'

@@ -7,6 +7,7 @@ import { TextAreaE } from '../../components/TextAreaE'
 import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
 import { ButtonE } from '../../components/ButtonE'
+import { SwitchE, SwitchEOption, SwitchEProps } from '../../components/SwitchE'
 import { FormikGroupE } from '../../components/FormikGroup'
 import { withFormik } from '../../enhancers/withFormik'
 import { sleep } from '../../helpers'
@@ -17,12 +18,26 @@ export interface FormValues {
   description?: string
   exampleCheckbox: string[]
   exampleRadio: string[]
+  exampleSwitch: string
 }
+
+const SwitchEFormed: React.FC<SwitchEProps> = (props) => (
+  <SwitchE
+    {...props}
+    label="Example switch selection"
+    data-testid="form-example-SwitchE"
+  >
+    <SwitchEOption label="One" value="1" />
+    <SwitchEOption label="Two" value="2" />
+    <SwitchEOption label="Three" value="3" />
+  </SwitchE>
+)
 
 const FormikTextInputE = withFormik(TextInputE)
 const FormikTextAreaE = withFormik(TextAreaE)
 const FormikCheckboxE = withFormik(CheckboxE)
 const FormikRadioE = withFormik(RadioE)
+const FormikSwitchE = withFormik(SwitchEFormed)
 
 export const ExampleFormik: React.FC<unknown> = () => {
   const [formValues, setFormValues] = useState<FormValues>()
@@ -36,6 +51,7 @@ export const ExampleFormik: React.FC<unknown> = () => {
           description: '',
           exampleCheckbox: [],
           exampleRadio: [],
+          exampleSwitch: '',
         }}
         validate={(values) => {
           const errors: Record<string, unknown> = {}
@@ -64,6 +80,7 @@ export const ExampleFormik: React.FC<unknown> = () => {
           handleBlur,
           handleSubmit,
           isSubmitting,
+          setFieldValue,
         }) => (
           <form onSubmit={handleSubmit}>
             <Field
@@ -122,6 +139,13 @@ export const ExampleFormik: React.FC<unknown> = () => {
                 value="Option 2"
               />
             </FormikGroupE>
+            <Field
+              name="exampleSwitch"
+              component={FormikSwitchE}
+              onChange={(event: React.FormEvent<HTMLInputElement>) => {
+                setFieldValue('exampleSwitch', event.currentTarget.value)
+              }}
+            />
             <ButtonE
               type="submit"
               isDisabled={isSubmitting}
