@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.62.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.61.0...2.62.0) (2021-11-03)
+
+
+### Bug Fixes
+
+* **DatePicker:** Fix rule of hooks linting errors ([42fb729](https://github.com/defencedigital/mod-uk-design-system/commit/42fb729c1d94ba544dda50e3489b640158e9478a))
+* **Hooks:** Fix useDocumentClick rule of hook violations ([b79dede](https://github.com/defencedigital/mod-uk-design-system/commit/b79dede9ce24082e0aa507ed3809439257d424e8))
+* **NumberInput:** Fix rule of hooks linting errors ([83647eb](https://github.com/defencedigital/mod-uk-design-system/commit/83647eb75a87b0673d609143de01d8754cdd2468))
+* **Timeline:** Fix rule of hook violations in TimelineProvider ([5bdec93](https://github.com/defencedigital/mod-uk-design-system/commit/5bdec93cd1d5e99c6a1754f4aa9b833ac4d98f88))
+* **Timeline:** Fix rule of hook violations in useTimelineRowContent ([0074b45](https://github.com/defencedigital/mod-uk-design-system/commit/0074b457bbf5949af010935d4d8afdbd9f54db6a))
+* **Timeline:** Fix rule of hook violations in useTimelineWidth ([a62edc2](https://github.com/defencedigital/mod-uk-design-system/commit/a62edc26d826c3754c93db9fd4f53a7816c8d9b9))
+* **Timeline:** Fix rule of hook violations in useTimelineZoom ([ed75582](https://github.com/defencedigital/mod-uk-design-system/commit/ed7558287866ad8d3bd72955bc5befdfcdf358a4))
+
+
+### Features
+
+* **NumberInputE:** Add component ([efe032d](https://github.com/defencedigital/mod-uk-design-system/commit/efe032d78e3461140586be0abb2fb9d6bb1d0a44))
+* **NumberInputE:** Update to v3 design ([69d9fb6](https://github.com/defencedigital/mod-uk-design-system/commit/69d9fb6fe114f0024709704e82efa0bbbe3161f1))
+* **TextInputE:** Add condensed styles ([4f29e48](https://github.com/defencedigital/mod-uk-design-system/commit/4f29e480a1ab82276ce9d3d8386c0eefd7884c17))
+
+
+
+
+
 # [2.61.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.60.0...2.61.0) (2021-11-02)
 
 

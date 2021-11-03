@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.62.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.61.0...2.62.0) (2021-11-03)
+
+
+### Features
+
+* **ESLintConfigReact:** Enable rule of hook rules ([7ea0408](https://github.com/defencedigital/mod-uk-design-system/commit/7ea0408cedadbdb95bd74957795afcedfa7ed49c))
+
+
+
+
+
 # [2.61.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.60.0...2.61.0) (2021-11-02)
 
 **Note:** Version bump only for package @defencedigital/eslint-config-react
