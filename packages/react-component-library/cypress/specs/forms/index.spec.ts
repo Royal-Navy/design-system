@@ -33,6 +33,7 @@ describe('Form Examples', () => {
             cy.get(selectors.form.input.email).should('be.visible')
             cy.get(selectors.form.input.password).should('be.visible')
             cy.get(selectors.form.input.description).should('be.visible')
+            cy.get(selectors.form.input.switch).should('be.visible')
           })
 
           describe('when an empty form is submitted', () => {
@@ -51,6 +52,7 @@ describe('Form Examples', () => {
               cy.get(selectors.form.input.password).type('password')
               cy.get(selectors.form.input.description).type('Hello, World!')
               cy.get(selectors.form.input.radio).eq(0).click()
+              cy.get(selectors.form.input.switchOption).eq(0).click()
             })
 
             it('should not show any validation errors', () => {
@@ -75,6 +77,7 @@ describe('Form Examples', () => {
                       description: 'Hello, World!',
                       exampleCheckbox: [],
                       exampleRadio: 'Option 1',
+                      exampleSwitch: '1'
                     },
                     null,
                     2
