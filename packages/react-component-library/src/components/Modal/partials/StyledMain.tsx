@@ -21,7 +21,7 @@ export const StyledMain = styled.article`
     bottom: auto;
     top: 50%;
     left: 50%;
-    transform: translate3d(-50%, -50%, 0);
+    transform: translate(-50%, -50%);
     width: 100%;
     max-width: 700px;
   `}

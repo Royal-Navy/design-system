@@ -1,5 +1,7 @@
 import { selectors } from '@defencedigital/design-tokens'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import { StyledButton } from './StyledButton'
 
 const { color, mq, spacing } = selectors
 
@@ -17,7 +19,25 @@ export const StyledFooter = styled.footer<StyledFooterProps>`
   flex-direction: column-reverse;
   border-top: 1px solid ${color('neutral', '100')};
 
-  ${mq({ gte: 'xs' })`
-    flex-direction: row;
+  ${StyledButton} + ${StyledButton} {
+    margin-bottom: ${spacing('4')};
+  }
+
+  ${({ $hasTertiaryButton }) =>
+    mq({ gte: 'xs' })`
+      flex-direction: row;
+
+      ${StyledButton} + ${StyledButton} {
+        margin-bottom: 0;
+      }
+
+      ${
+        $hasTertiaryButton &&
+        css`
+          ${StyledButton}:nth-child(2) {
+            margin-left: auto;
+          }
+        `
+      }
   `}
 `

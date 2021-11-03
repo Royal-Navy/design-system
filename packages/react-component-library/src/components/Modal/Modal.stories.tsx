@@ -32,6 +32,7 @@ const tertiaryButton: ButtonProps = {
   children: 'Tertiary',
 }
 
+// Styles extended for Storybook presentation
 const StyledModal = styled(Modal)`
   position: absolute;
   z-index: 1;
@@ -40,16 +41,19 @@ const StyledModal = styled(Modal)`
     position: absolute;
   }
 `
-
-export const Default: Story<ModalProps> = (props) => (
-  <div style={{ height: '15rem' }}>
-    {/* Styles extended for Storybook presentation */}
-    <StyledModal {...props}>
+const Template: Story<ModalProps> = (args) => (
+  <div
+    style={{
+      height: args.title && args.primaryButton ? '15rem' : '10rem',
+    }}
+  >
+    <StyledModal {...args}>
       <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
     </StyledModal>
   </div>
 )
 
+export const Default = Template.bind({})
 Default.args = {
   titleId: undefined,
   descriptionId: undefined,
@@ -60,75 +64,46 @@ Default.args = {
   tertiaryButton,
 }
 
-export const NoHeader: Story<ModalProps> = () => (
-  <div style={{ height: '10rem' }}>
-    <StyledModal
-      primaryButton={primaryButton}
-      secondaryButton={secondaryButton}
-      tertiaryButton={tertiaryButton}
-      isOpen
-    >
-      <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
-    </StyledModal>
-  </div>
-)
-
+export const NoHeader = Template.bind({})
+NoHeader.args = {
+  isOpen: true,
+  primaryButton,
+  secondaryButton,
+  tertiaryButton,
+}
 NoHeader.storyName = 'No header'
 
-export const NoButtons: Story<ModalProps> = () => (
-  <div style={{ height: '10rem' }}>
-    <StyledModal title="Example Title" isOpen>
-      <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
-    </StyledModal>
-  </div>
-)
-
+export const NoButtons = Template.bind({})
+NoButtons.args = {
+  title: 'Example Title',
+  isOpen: true,
+}
 NoButtons.storyName = 'No buttons'
 
-export const DangerButton: Story<ModalProps> = () => {
-  const primaryButtonWithoutIcon: ButtonProps = {
+export const DangerButton = Template.bind({})
+DangerButton.args = {
+  isOpen: true,
+  title: 'Example Title',
+  primaryButton: {
     ...primaryButton,
     color: BUTTON_COLOR.DANGER,
     icon: undefined,
-  }
-
-  return (
-    <div style={{ height: '15rem' }}>
-      <StyledModal
-        title="Example Title"
-        primaryButton={primaryButtonWithoutIcon}
-        secondaryButton={secondaryButton}
-        isOpen
-      >
-        <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
-      </StyledModal>
-    </div>
-  )
+  },
+  secondaryButton,
 }
-
 DangerButton.storyName = 'Danger button with no icon'
 
-export const NoTertiaryButton: Story<ModalProps> = () => (
-  <div style={{ height: '15rem' }}>
-    <StyledModal
-      title="Example Title"
-      primaryButton={primaryButton}
-      secondaryButton={secondaryButton}
-      isOpen
-    >
-      <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
-    </StyledModal>
-  </div>
-)
-
+export const NoTertiaryButton = Template.bind({})
+NoTertiaryButton.args = {
+  title: 'Example Title',
+  isOpen: true,
+  primaryButton,
+  secondaryButton,
+}
 NoTertiaryButton.storyName = 'No tertiary button'
 
-export const Blank: Story<ModalProps> = () => (
-  <div style={{ height: '10rem' }}>
-    <StyledModal isOpen>
-      <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
-    </StyledModal>
-  </div>
-)
-
+export const Blank = Template.bind({})
+Blank.args = {
+  isOpen: true,
+}
 Blank.storyName = 'Blank'
