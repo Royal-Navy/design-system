@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.63.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.62.0...2.63.0) (2021-11-04)
+
+
+### Bug Fixes
+
+* **Modal:** Fix Chromatic snaphots on IE11 ([5e66257](https://github.com/defencedigital/mod-uk-design-system/commit/5e66257e573291bcdaf916fdb0cb44267bbbe013))
+* **Modal:** Fix layout in IE11 when no tertiary button ([2116e5d](https://github.com/defencedigital/mod-uk-design-system/commit/2116e5d836d12bb37d73a7b219eeb4b1556b0af5))
+* **Modal:** Fix spacing between buttons in mobile layout ([0a1350d](https://github.com/defencedigital/mod-uk-design-system/commit/0a1350dd625ecb992acd14bddae2e22c286b751f))
+
+
+### Features
+
+* **Forms:** Add SwitchE to examples ([173654a](https://github.com/defencedigital/mod-uk-design-system/commit/173654ab3112f3f4aa5d9ed0412ec66744e774ad))
+* **SwitchE:** Create new component ([fd900b4](https://github.com/defencedigital/mod-uk-design-system/commit/fd900b4eeaf887a37902bf8100a8b3cd752cf36f))
+
+
+
+
+
 # [2.62.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.61.0...2.62.0) (2021-11-03)
 
 
