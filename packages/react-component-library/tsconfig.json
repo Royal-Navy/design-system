@@ -20,5 +20,5 @@
     "target": "esnext",
     "types": ["jest", "@testing-library/jest-dom"]
   },
-  "include": ["src", "jest"]
+  "include": ["src"]
 }
