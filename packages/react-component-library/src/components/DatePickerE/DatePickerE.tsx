@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Placement } from '@popperjs/core'
-import { v4 as uuidv4 } from 'uuid'
 import { DayPickerProps } from 'react-day-picker'
 import { Transition } from 'react-transition-group'
 
@@ -10,7 +9,6 @@ import {
 } from '../../primitives/FloatingBox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
-import { DATEPICKER_PLACEMENT } from './constants'
 import { DatePickerEInput } from './DatePickerEInput'
 import { DropdownIndicatorIcon } from '../Dropdown/DropdownIndicatorIcon'
 import { FloatingBoxContent } from '../../primitives/FloatingBox/FloatingBoxContent'
@@ -26,17 +24,9 @@ import { StyledLabel } from './partials/StyledLabel'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledSeparator } from './partials/StyledSeparator'
 import { useDatePickerEOpenClose } from './useDatePickerEOpenClose'
+import { useExternalId } from '../../hooks/useExternalId'
 import { useFloatingElement } from '../../hooks/useFloatingElement'
 import { useSelection } from './useSelection'
-
-/**
- * @deprecated
- */
-export type DatePickerPlacement =
-  | typeof DATEPICKER_PLACEMENT.ABOVE
-  | typeof DATEPICKER_PLACEMENT.BELOW
-  | typeof DATEPICKER_PLACEMENT.LEFT
-  | typeof DATEPICKER_PLACEMENT.RIGHT
 
 export interface DatePickerEProps
   extends ComponentWithClass,
@@ -106,14 +96,14 @@ export interface DatePickerEProps
    * Position to display the picker relative to the input.
    * NOTE: This is now calculated automatically by default based on available screen real-estate.
    */
-  placement?: DatePickerPlacement | Placement
+  placement?: Placement
 }
 
 export const DatePickerE: React.FC<DatePickerEProps> = ({
   className,
   endDate,
   format: datePickerFormat = DATE_FORMAT.SHORT,
-  id = uuidv4(),
+  id: externalId,
   isDisabled,
   isInvalid,
   isRange,
@@ -129,6 +119,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   placement = FLOATING_BOX_PLACEMENT.BOTTOM,
   ...rest
 }) => {
+  const id = useExternalId(externalId)
   const {
     floatingBoxChildrenRef,
     handleOnClose,
@@ -161,21 +152,13 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
 
   const placeholder = isRange ? null : datePickerFormat.toLowerCase()
 
-  /**
-   * Maintain compatability with legacy interface
-   */
-  const legacyPlacementMap = {
-    above: 'top',
-    below: 'bottom',
-  }
-
   const {
     targetElementRef,
     floatingElementRef,
     arrowElementRef,
     styles,
     attributes,
-  } = useFloatingElement(legacyPlacementMap[placement] || placement)
+  } = useFloatingElement(placement)
 
   const TRANSITION_STYLES = {
     entering: { opacity: 0 },

@@ -11,7 +11,7 @@ import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
 
 import { DatePickerE } from '.'
-import { Button } from '../Button'
+import { ButtonE } from '../ButtonE'
 
 const NOW = '2019-12-05T11:00:00.000Z'
 const ERROR_BORDER = `1px solid ${ColorDanger600}`
@@ -1009,8 +1009,12 @@ describe('DatePickerE', () => {
 
         return (
           <>
-            <Button onClick={() => updateProps(update1Props)}>Update 1</Button>
-            <Button onClick={() => updateProps(update2Props)}>Update 2</Button>
+            <ButtonE onClick={() => updateProps(update1Props)}>
+              Update 1
+            </ButtonE>
+            <ButtonE onClick={() => updateProps(update2Props)}>
+              Update 2
+            </ButtonE>
             <DatePickerE {...props} isRange />
           </>
         )
