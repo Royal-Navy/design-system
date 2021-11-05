@@ -1,9 +1,7 @@
 import { useCallback, useState } from 'react'
-import { addHours, isMatch, parse } from 'date-fns'
+import { addHours, isValid, parse } from 'date-fns'
 import { DayPickerProps, ModifiersUtils } from 'react-day-picker'
 import { isNil } from 'lodash'
-
-const INPUT_MASK = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/
 
 type OnCompleteType = () => void
 
@@ -28,9 +26,20 @@ export function useInputKeys(
     setKeyedValue(e.target.value)
   }
 
-  function checkNewDate(value: string) {
-    if (INPUT_MASK.test(value) && isMatch(value, datePickerFormat)) {
-      const parsedDate = parse(value, datePickerFormat, new Date())
+  function parseDate(value: string) {
+    const date = parse(value, datePickerFormat, new Date())
+
+    if (!isValid(date) || date.getFullYear() <= 999) {
+      return null
+    }
+
+    return date
+  }
+
+  function checkNewDate(value: string | Date | null) {
+    const parsedDate = typeof value === 'string' ? parseDate(value) : value
+
+    if (parsedDate) {
       const newDate = addHours(parsedDate, 12)
 
       if (!ModifiersUtils.dayMatchesModifier(newDate, disabledDays)) {
@@ -49,7 +58,8 @@ export function useInputKeys(
     const { value } = e.target as HTMLInputElement
 
     if (isTabKey) {
-      checkNewDate(value)
+      const parsedDate = parseDate(value)
+      checkNewDate(parsedDate)
     }
 
     return null
@@ -73,15 +83,16 @@ export function useInputKeys(
 
     const { value } = e.target as HTMLInputElement
     const hasChanged = !isNil(keyedValue)
+    const parsedDate = parseDate(value)
 
     if (isReturnKey) {
-      checkNewDate(value)
+      checkNewDate(parsedDate)
 
       return onComplete()
     }
 
-    if (INPUT_MASK.test(value) && hasChanged) {
-      const newDate = checkNewDate(value)
+    if (parsedDate && hasChanged) {
+      const newDate = checkNewDate(parsedDate)
       if (newDate) {
         onDayChange(newDate)
       }

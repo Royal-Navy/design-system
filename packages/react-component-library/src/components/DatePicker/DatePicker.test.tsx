@@ -14,6 +14,7 @@ import { DatePicker } from '.'
 import { Button } from '../Button'
 
 const NOW = '2019-12-05T11:00:00.000Z'
+const ERROR_BORDER = `1px solid ${ColorDanger600}`
 
 function click(element: HTMLElement) {
   fireEvent.mouseDown(element)
@@ -453,7 +454,7 @@ describe('DatePicker', () => {
             it('should be in an error state', () => {
               expect(
                 wrapper.getByTestId('datepicker-outer-wrapper')
-              ).toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+              ).toHaveStyleRule('border', ERROR_BORDER)
             })
 
             describe('and the escape key is pressed', () => {
@@ -470,7 +471,7 @@ describe('DatePicker', () => {
               it('should not be in an error state', () => {
                 expect(
                   wrapper.getByTestId('datepicker-outer-wrapper')
-                ).not.toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+                ).not.toHaveStyleRule('border', ERROR_BORDER)
               })
             })
 
@@ -494,7 +495,7 @@ describe('DatePicker', () => {
               it('should not be in an error state', () => {
                 expect(
                   wrapper.getByTestId('datepicker-outer-wrapper')
-                ).not.toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+                ).not.toHaveStyleRule('border', ERROR_BORDER)
               })
             })
           })
@@ -515,7 +516,7 @@ describe('DatePicker', () => {
             it('should be in an error state', () => {
               expect(
                 wrapper.getByTestId('datepicker-outer-wrapper')
-              ).toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+              ).toHaveStyleRule('border', ERROR_BORDER)
             })
 
             it('should call the `onBlur` callback', () => {
@@ -539,7 +540,7 @@ describe('DatePicker', () => {
             it('should be in an error state', () => {
               expect(
                 wrapper.getByTestId('datepicker-outer-wrapper')
-              ).toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+              ).toHaveStyleRule('border', ERROR_BORDER)
             })
 
             it('should call the `onBlur` callback', () => {
@@ -562,7 +563,7 @@ describe('DatePicker', () => {
           it('should be in an error state', () => {
             expect(
               wrapper.getByTestId('datepicker-outer-wrapper')
-            ).toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+            ).toHaveStyleRule('border', ERROR_BORDER)
           })
         })
 
@@ -580,7 +581,7 @@ describe('DatePicker', () => {
           it('should be in an error state', () => {
             expect(
               wrapper.getByTestId('datepicker-outer-wrapper')
-            ).toHaveStyleRule('border', `1px solid ${ColorDanger600}`)
+            ).toHaveStyleRule('border', ERROR_BORDER)
           })
         })
       })
@@ -844,7 +845,7 @@ describe('DatePicker', () => {
       it('should be in an error state', () => {
         expect(wrapper.getByTestId('datepicker-outer-wrapper')).toHaveStyleRule(
           'border',
-          `1px solid ${ColorDanger600}`
+          ERROR_BORDER
         )
       })
     })
@@ -902,7 +903,7 @@ describe('DatePicker', () => {
       it('should set the border on the outer wrapper', () => {
         expect(wrapper.getByTestId('datepicker-outer-wrapper')).toHaveStyleRule(
           'border',
-          `1px solid ${ColorDanger600}`
+          ERROR_BORDER
         )
       })
     })
@@ -910,8 +911,14 @@ describe('DatePicker', () => {
 
   describe('when `format` is specified', () => {
     beforeEach(() => {
+      onChange = jest.fn()
+
       wrapper = render(
-        <DatePicker format="yyyy/MM/dd" startDate={new Date(2018, 0, 11)} />
+        <DatePicker
+          format="yyyy/MM/dd"
+          startDate={new Date(2018, 0, 11)}
+          onChange={onChange}
+        />
       )
     })
 
@@ -925,6 +932,61 @@ describe('DatePicker', () => {
         'yyyy/mm/dd'
       )
     })
+
+    describe('when a valid date is typed', () => {
+      beforeEach(async () => {
+        const input = wrapper.getByTestId('datepicker-input')
+
+        userEvent.type(input, `2016/02/03{enter}`)
+      })
+
+      it('invokes the `onChange` callback', () => {
+        const expectedDate = new Date('2016-02-03T12:00:00.000Z')
+        expect(onChange).toHaveBeenCalledTimes(1)
+        expect(onChange).toHaveBeenCalledWith({
+          startDate: expectedDate,
+          endDate: expectedDate,
+        })
+      })
+
+      it("isn't in an error state", () => {
+        expect(
+          wrapper.getByTestId('datepicker-outer-wrapper')
+        ).not.toHaveStyleRule('border', ERROR_BORDER)
+      })
+    })
+
+    describe.each(['201/01/01', '02/03/2021'])(
+      'when the invalid date %s is typed',
+      (date) => {
+        let input: HTMLElement
+
+        beforeEach(async () => {
+          input = wrapper.getByTestId('datepicker-input')
+
+          userEvent.type(input, date)
+        })
+
+        describe.each([
+          ['enter', () => userEvent.type(input, '{enter}')],
+          ['tab', () => userEvent.tab()],
+        ])('and %s is pressed', (_, commitValue) => {
+          beforeEach(() => {
+            commitValue()
+          })
+
+          it("doesn't call the `onChange` callback", () => {
+            expect(onChange).not.toHaveBeenCalled()
+          })
+
+          it('is in an error state', () => {
+            expect(
+              wrapper.getByTestId('datepicker-outer-wrapper')
+            ).toHaveStyleRule('border', ERROR_BORDER)
+          })
+        })
+      }
+    )
   })
 
   describe('when `startDate` and `endDate` are updated externally', () => {
