@@ -15,6 +15,7 @@ const HOVER_ON_ME = 'Hover on me!'
 const CONTENT_TEXT = 'This is some arbitrary JSX'
 
 jest.useFakeTimers()
+jest.spyOn(global, 'setTimeout')
 
 describe('Popover', () => {
   const content: React.ReactElement = <pre>{CONTENT_TEXT}</pre>
