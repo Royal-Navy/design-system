@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.63.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.63.0...2.63.1) (2021-11-08)
+
+
+### Bug Fixes
+
+* **DatePicker:** Fix date validation when using custom date format ([cd744e2](https://github.com/defencedigital/mod-uk-design-system/commit/cd744e2108d5609272c3c01cf8a542043bb617b1))
+
+
+
+
+
 # [2.63.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.62.0...2.63.0) (2021-11-04)
 
 
