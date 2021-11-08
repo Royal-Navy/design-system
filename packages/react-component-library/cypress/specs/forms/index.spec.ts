@@ -1,5 +1,3 @@
-/* eslint-disable jest/expect-expect */
-/* eslint-disable jest/valid-describe */
 import { describe, cy, it, before } from 'local-cypress'
 
 import selectors from '../../selectors'
@@ -77,7 +75,7 @@ describe('Form Examples', () => {
                       description: 'Hello, World!',
                       exampleCheckbox: [],
                       exampleRadio: 'Option 1',
-                      exampleSwitch: '1'
+                      exampleSwitch: '1',
                     },
                     null,
                     2
