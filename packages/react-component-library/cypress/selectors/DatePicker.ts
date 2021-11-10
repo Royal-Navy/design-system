@@ -1,4 +1,5 @@
 export default {
+  button: '[data-testid="datepicker-input-button"]',
   day: {
     inside: '.DayPicker-Day:not(.DayPicker-Day--outside)',
   },

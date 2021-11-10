@@ -5,7 +5,6 @@ const { color, spacing } = selectors
 
 export const StyledSeparator = styled.div`
   width: 1px;
-  height: 100%;
-  margin-right: ${spacing('8')};
-  background: ${color('neutral', '100')};
+  align-self: stretch;
+  background: ${color('neutral', '200')};
 `

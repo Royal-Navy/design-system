@@ -15,7 +15,7 @@ export interface DatePickerEInputProps extends ComponentWithClass {
   format: string
   from: Date
   isRange: boolean
-  onBlur?: (event: React.FormEvent) => void
+  onBlur?: React.FocusEventHandler<HTMLInputElement>
   onDayChange: (day?: Date) => void
   onComplete: () => void
   onFocus: React.FocusEventHandler<HTMLInputElement>
@@ -76,16 +76,13 @@ export const DatePickerEInput = forwardRef<
         disabled={isDisabled}
         key={inputKey}
         readOnly={isRange}
-        onBlur={(e: React.FormEvent) => {
+        onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
+          onBlur(e)
           onLocalBlur(e)
 
-          const { value } = e.target as HTMLInputElement
+          const { value } = e.currentTarget
           if (!isRange && value) {
             checkNewDate(value)
-          }
-
-          if (onBlur) {
-            onBlur(e)
           }
         }}
         onChange={onChange}

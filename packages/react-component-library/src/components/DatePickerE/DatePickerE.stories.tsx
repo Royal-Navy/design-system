@@ -120,15 +120,6 @@ export const WithFormik: Story<DatePickerEProps> = (props) => {
             endDate={initialValues.endDate}
           />
           <Field
-            isValid
-            name="anotherDate"
-            label="Another date"
-            component={FormikDatePicker}
-            onChange={({ startDate }: any) => {
-              setFieldValue('anotherStartDate', startDate)
-            }}
-          />
-          <Field
             name="andAnotherStartDate"
             label="And another date"
             component={FormikDatePicker}

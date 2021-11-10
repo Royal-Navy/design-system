@@ -1,3 +1,4 @@
+import { IconEvent } from '@defencedigital/icon-library'
 import React, { useState } from 'react'
 import { Placement } from '@popperjs/core'
 import { DayPickerProps } from 'react-day-picker'
@@ -9,20 +10,21 @@ import {
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
 import { DatePickerEInput } from './DatePickerEInput'
-import { DropdownIndicatorIcon } from '../Dropdown/DropdownIndicatorIcon'
 import { getId, hasClass } from '../../helpers'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { StyledButton } from './partials/StyledButton'
 import { StyledDatePickerEInput } from './partials/StyledDatePickerEInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
+import { StyledIconEventWrapper } from './partials/StyledIconEventWrapper'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledLabel } from './partials/StyledLabel'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
-import { StyledSeparator } from './partials/StyledSeparator'
 import { useDatePickerEOpenClose } from './useDatePickerEOpenClose'
 import { useExternalId } from '../../hooks/useExternalId'
-import { useStatefulRef } from '../../hooks/useStatefulRef'
+import { useFocus } from '../../hooks/useFocus'
 import { useSelection } from './useSelection'
+import { useStatefulRef } from '../../hooks/useStatefulRef'
+import { WEEKDAY_TITLES } from './constants'
 
 export interface DatePickerEProps
   extends ComponentWithClass,
@@ -98,7 +100,6 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   isDisabled,
   isInvalid,
   isRange,
-  isValid,
   label = 'Select Date',
   onChange,
   onCalendarFocus,
@@ -107,9 +108,11 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   disabledDays,
   initialMonth,
   placement = FLOATING_BOX_PLACEMENT.BOTTOM,
+  onBlur,
   ...rest
 }) => {
   const id = useExternalId(externalId)
+  const { hasFocus, onLocalBlur, onLocalFocus } = useFocus()
   const {
     floatingBoxChildrenRef,
     handleOnClose,
@@ -153,9 +156,9 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
       >
         <StyledOuterWrapper
           data-testid="datepicker-outer-wrapper"
-          $hasFocus={open}
+          $hasFocus={hasFocus && !hasError}
           $isInvalid={hasError}
-          $isValid={isValid || hasClass(className, 'is-valid')}
+          $isDisabled={isDisabled}
         >
           <StyledInputWrapper>
             <StyledLabel
@@ -180,10 +183,17 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
                 setCurrentMonth(day)
                 handleDayClick(day)
               }}
+              onBlur={(e) => {
+                onLocalBlur(e)
+                if (onBlur) {
+                  onBlur(e)
+                }
+              }}
               onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
                 if (!isRange) {
                   e.target.select()
                 }
+                onLocalFocus()
                 handleOnFocus(e)
               }}
               placeholder={placeholder}
@@ -203,8 +213,9 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
             disabled={isDisabled}
             data-testid="datepicker-input-button"
           >
-            <StyledSeparator />
-            <DropdownIndicatorIcon isOpen={open} />
+            <StyledIconEventWrapper>
+              <IconEvent size={18} />
+            </StyledIconEventWrapper>
           </StyledButton>
         </StyledOuterWrapper>
       </StyledDatePickerEInput>
@@ -219,7 +230,8 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
       >
         <div ref={floatingBoxChildrenRef}>
           <StyledDayPicker
-            numberOfMonths={isRange ? 2 : 1}
+            firstDayOfWeek={1}
+            weekdaysShort={WEEKDAY_TITLES}
             selectedDays={[from, { from, to }]}
             modifiers={modifiers}
             month={currentMonth}

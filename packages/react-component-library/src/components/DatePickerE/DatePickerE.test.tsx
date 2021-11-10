@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { ColorDanger600, ColorSuccess600 } from '@defencedigital/design-tokens'
+import { ColorDanger800 } from '@defencedigital/design-tokens'
 import {
   fireEvent,
   render,
@@ -15,7 +15,7 @@ import { DatePickerE } from '.'
 import { ButtonE } from '../ButtonE'
 
 const NOW = '2019-12-05T11:00:00.000Z'
-const ERROR_BORDER = `1px solid ${ColorDanger600}`
+const ERROR_BORDER = `3px solid ${ColorDanger800.toUpperCase()}`
 
 function click(element: HTMLElement) {
   fireEvent.mouseDown(element)
@@ -736,48 +736,28 @@ describe('DatePickerE', () => {
         wrapper.getByTestId('datepicker-input').focus()
       })
 
-      describe('and clicks on a day in the first month', () => {
+      describe('and clicks on a second date', () => {
         beforeEach(() => {
-          click(wrapper.getAllByText('31')[0])
+          click(wrapper.getByText('20'))
         })
 
         it('set the value of the component to this date', () => {
           expect(
             wrapper.getByTestId('datepicker-input').getAttribute('value')
-          ).toBe('10/12/2019 - 31/12/2019')
+          ).toBe('10/12/2019 - 20/12/2019')
         })
 
         it('invokes the onChange callback', () => {
           expect(onChange).toHaveBeenCalledTimes(1)
           expect(onChange).toHaveBeenCalledWith({
             startDate: new Date('2019-12-10T00:00:00.000Z'),
-            endDate: new Date('2019-12-31T12:00:00.000Z'),
-          })
-        })
-      })
-
-      describe('and clicks on days in the second month', () => {
-        beforeEach(() => {
-          click(wrapper.getAllByText('20')[1])
-        })
-
-        it('set the value of the component to this date', () => {
-          expect(
-            wrapper.getByTestId('datepicker-input').getAttribute('value')
-          ).toBe('10/12/2019 - 20/01/2020')
-        })
-
-        it('invokes the onChange callback', () => {
-          expect(onChange).toHaveBeenCalledTimes(1)
-          expect(onChange).toHaveBeenCalledWith({
-            startDate: new Date('2019-12-10T00:00:00.000Z'),
-            endDate: new Date('2020-01-20T12:00:00.000Z'),
+            endDate: new Date('2019-12-20T12:00:00.000Z'),
           })
         })
 
         describe('and clicks on another day', () => {
           beforeEach(() => {
-            click(wrapper.getAllByText('3')[0])
+            click(wrapper.getByText('3'))
           })
 
           it('reset the value of the component to this date', () => {
@@ -798,7 +778,7 @@ describe('DatePickerE', () => {
 
       describe('and clicks on a less than the first', () => {
         beforeEach(() => {
-          click(wrapper.getAllByText('9')[0])
+          click(wrapper.getByText('9'))
         })
 
         it('reset the value of the component to this date', () => {
@@ -939,31 +919,16 @@ describe('DatePickerE', () => {
     })
   })
 
-  describe('when form validation classes are provided', () => {
-    describe('when the field is valid', () => {
-      beforeEach(() => {
-        wrapper = render(<DatePickerE className="is-valid" />)
-      })
-
-      it('should set the border on the outer wrapper', () => {
-        expect(wrapper.getByTestId('datepicker-outer-wrapper')).toHaveStyleRule(
-          'border',
-          `1px solid ${ColorSuccess600}`
-        )
-      })
+  describe('when the is-invalid CSS class is set', () => {
+    beforeEach(() => {
+      wrapper = render(<DatePickerE className="is-invalid" />)
     })
 
-    describe('when the field is invalid', () => {
-      beforeEach(() => {
-        wrapper = render(<DatePickerE className="is-invalid" />)
-      })
-
-      it('should set the border on the outer wrapper', () => {
-        expect(wrapper.getByTestId('datepicker-outer-wrapper')).toHaveStyleRule(
-          'border',
-          ERROR_BORDER
-        )
-      })
+    it('should set the border on the outer wrapper', () => {
+      expect(wrapper.getByTestId('datepicker-outer-wrapper')).toHaveStyleRule(
+        'border',
+        ERROR_BORDER
+      )
     })
   })
 

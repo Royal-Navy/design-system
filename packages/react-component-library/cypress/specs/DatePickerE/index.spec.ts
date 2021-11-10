@@ -1,10 +1,6 @@
 import { describe, cy, it, before } from 'local-cypress'
 import { addDays, startOfMonth, format } from 'date-fns'
-import {
-  ColorAction600,
-  ColorDanger600,
-  ColorNeutral200,
-} from '@defencedigital/design-tokens'
+import { ColorNeutral200 } from '@defencedigital/design-tokens'
 
 import { DATE_FORMAT } from '../../../src/constants'
 import { hexToRgb } from '../../helpers'
@@ -89,10 +85,9 @@ describe('DatePickerE', () => {
           cy.get(selectors.datePicker.input).should('have.value', expected)
         })
 
-        describe('and again focuses on the input to subsequently click away', () => {
+        describe('and the picker is closed', () => {
           before(() => {
-            cy.get(selectors.datePicker.input).focus()
-            cy.get(selectors.datePicker.input).blur()
+            cy.get(selectors.datePicker.button).click()
 
             cy.wait(1000)
           })
@@ -101,7 +96,7 @@ describe('DatePickerE', () => {
             cy.get(selectors.datePicker.outerWrapper).should(
               'has.border',
               'color',
-              hexToRgb(ColorAction600)
+              hexToRgb(ColorNeutral200)
             )
           })
         })
