@@ -78,3 +78,13 @@ jobs:
         if: steps.initversion.outputs.version != steps.extractver.outputs.version
         run: |
           curl -X POST -d {} ${{ secrets.STORYBOOK_TOKEN }}
+
+      - name: Send notification on failure
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: defencedigital/design-system-slacknotify-action@master
+        with:
+          channel_id: C02H226CT33
+          status: FAILED
+          color: danger
