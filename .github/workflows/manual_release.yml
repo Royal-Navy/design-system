@@ -64,13 +64,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
-          npm publish --tag latest packages/design-tokens
-          npm publish --tag latest packages/css-framework
-          npm publish --tag latest packages/eslint-config-react
-          npm publish --tag latest packages/fonts
-          npm publish --tag latest packages/icon-library
-          npm publish --tag latest packages/react-component-library
-          npm publish --tag latest packages/cra-template-defencedigital
+          npm publish --tag latest ./packages/design-tokens
+          npm publish --tag latest ./packages/css-framework
+          npm publish --tag latest ./packages/eslint-config-react
+          npm publish --tag latest ./packages/fonts
+          npm publish --tag latest ./packages/icon-library
+          npm publish --tag latest ./packages/react-component-library
+          npm publish --tag latest ./packages/cra-template-defencedigital
 
       - name: Publish Storybook
         if: steps.initversion.outputs.version != steps.extractver.outputs.version
