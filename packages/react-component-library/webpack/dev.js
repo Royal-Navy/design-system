@@ -11,7 +11,7 @@ module.exports = merge(commonConfig, {
     path: resolve(__dirname, '../dist/cjs'),
     libraryTarget: 'commonjs2',
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-cheap-module-source-map',
   externals: {
     react: {
       root: 'React',
