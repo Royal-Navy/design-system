@@ -107,7 +107,7 @@
     "chromatic": "5.9.2",
     "clean-webpack-plugin": "^4.0.0",
     "concurrently": "^6.0.2",
-    "css-loader": "^5.0.1",
+    "css-loader": "^6.5.1",
     "cypress": "^7.2.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^18.0.1",
