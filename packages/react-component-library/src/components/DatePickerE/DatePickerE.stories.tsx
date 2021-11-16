@@ -1,13 +1,13 @@
+import { action } from '@storybook/addon-actions'
+import { Meta, Story } from '@storybook/react'
+import { parseISO } from 'date-fns'
+import { Field, Form, Formik } from 'formik'
 import React from 'react'
 import * as yup from 'yup'
-import { Story, Meta } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { Field, Formik, Form } from 'formik'
 
-import { withFormik } from '../../enhancers/withFormik'
-import { DatePickerE, DatePickerEProps } from '.'
-
+import { withFormik } from '../../enhancers'
 import { ButtonE } from '../ButtonE'
+import { DatePickerE, DatePickerEProps } from '.'
 
 export default {
   component: DatePickerE,
@@ -27,65 +27,52 @@ export default {
   },
 } as Meta
 
-export const Default: Story<DatePickerEProps> = (props) => (
-  <DatePickerE {...props} />
-)
+const Template: Story<DatePickerEProps> = (args) => <DatePickerE {...args} />
 
-Default.args = {
-  id: undefined,
-  startDate: undefined,
+export const Default = Template.bind({})
+
+export const CustomFormat = Template.bind({})
+CustomFormat.storyName = 'Custom format'
+CustomFormat.args = {
+  format: 'yyyy/MM/dd',
+  startDate: parseISO('2021-01-11'),
 }
 
-export const CustomFormat: Story<DatePickerEProps> = (props) => (
-  <DatePickerE
-    {...props}
-    format="yyyy/MM/dd"
-    startDate={new Date(2021, 0, 11)}
-  />
-)
-
-CustomFormat.storyName = 'Custom format'
-
-export const CustomInitialMonth: Story<DatePickerEProps> = (props) => (
-  <DatePickerE {...props} initialMonth={new Date(2021, 1)} />
-)
-
+export const CustomInitialMonth = Template.bind({})
 CustomInitialMonth.storyName = 'Custom initial month'
+CustomInitialMonth.args = {
+  initialMonth: parseISO('2021-01-01'),
+}
 
-export const CustomLabel: Story<DatePickerEProps> = (props) => (
-  <DatePickerE {...props} label="Custom label" />
-)
-
+export const CustomLabel = Template.bind({})
 CustomLabel.storyName = 'Custom label'
+CustomLabel.args = {
+  label: 'Custom label',
+}
 
-export const Disabled: Story<DatePickerEProps> = (props) => (
-  <DatePickerE {...props} isDisabled />
-)
+export const Disabled = Template.bind({})
+Disabled.args = {
+  isDisabled: true,
+}
 
-Disabled.storyName = 'Disabled'
-
-export const DisabledDays: Story<DatePickerEProps> = (props) => (
-  <DatePickerE
-    {...props}
-    startDate={new Date(2021, 3, 1)}
-    disabledDays={[
-      new Date(2021, 3, 12),
-      new Date(2021, 3, 2),
-      {
-        after: new Date(2021, 3, 20),
-        before: new Date(2021, 3, 25),
-      },
-    ]}
-  />
-)
-
+export const DisabledDays = Template.bind({})
 DisabledDays.storyName = 'Disabled days'
+DisabledDays.args = {
+  startDate: parseISO('2021-04-01'),
+  disabledDays: [
+    parseISO('2021-04-12'),
+    parseISO('2021-04-02'),
+    {
+      after: parseISO('2021-03-20'),
+      before: parseISO('2021-03-25'),
+    },
+  ],
+}
 
-export const Range: Story<DatePickerEProps> = (props) => (
-  <DatePickerE {...props} isRange />
-)
-
-Range.storyName = 'Range'
+export const Range = Template.bind({})
+Range.args = {
+  isRange: true,
+}
 
 export const WithFormik: Story<DatePickerEProps> = (props) => {
   interface Data {
@@ -117,43 +104,42 @@ export const WithFormik: Story<DatePickerEProps> = (props) => {
       initialValues={initialValues}
       onSubmit={action('onSubmit')}
       validationSchema={validationSchema}
-      render={({ setFieldValue }) => {
-        return (
-          <Form>
-            <Field
-              {...props}
-              name="date"
-              component={FormikDatePicker}
-              isRange
-              onChange={({ startDate, endDate }: any) => {
-                setFieldValue('startDate', startDate)
-                setFieldValue('endDate', endDate)
-              }}
-              startDate={initialValues.startDate}
-              endDate={initialValues.endDate}
-            />
-            <Field
-              isValid
-              name="anotherDate"
-              label="Another date"
-              component={FormikDatePicker}
-              onChange={({ startDate }: any) => {
-                setFieldValue('anotherStartDate', startDate)
-              }}
-            />
-            <Field
-              name="andAnotherStartDate"
-              label="And another date"
-              component={FormikDatePicker}
-              onChange={({ startDate }: any) => {
-                setFieldValue('andAnotherStartDate', startDate)
-              }}
-            />
-            <ButtonE type="submit">Submit</ButtonE>
-          </Form>
-        )
-      }}
-    />
+    >
+      {({ setFieldValue }) => (
+        <Form>
+          <Field
+            {...props}
+            name="date"
+            component={FormikDatePicker}
+            isRange
+            onChange={({ startDate, endDate }: any) => {
+              setFieldValue('startDate', startDate)
+              setFieldValue('endDate', endDate)
+            }}
+            startDate={initialValues.startDate}
+            endDate={initialValues.endDate}
+          />
+          <Field
+            isValid
+            name="anotherDate"
+            label="Another date"
+            component={FormikDatePicker}
+            onChange={({ startDate }: any) => {
+              setFieldValue('anotherStartDate', startDate)
+            }}
+          />
+          <Field
+            name="andAnotherStartDate"
+            label="And another date"
+            component={FormikDatePicker}
+            onChange={({ startDate }: any) => {
+              setFieldValue('andAnotherStartDate', startDate)
+            }}
+          />
+          <ButtonE type="submit">Submit</ButtonE>
+        </Form>
+      )}
+    </Formik>
   )
 }
 
