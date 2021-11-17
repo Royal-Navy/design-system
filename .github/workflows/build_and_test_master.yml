@@ -84,8 +84,6 @@ jobs:
 
      Lint_react-component-library:
       runs-on: ubuntu-latest
-      env:
-        ESLINT_JUNIT_OUTPUT: "test-results/eslint/react-component-results.xml"
       steps:
         - name: Git clone repository
           uses: actions/checkout@v2
@@ -98,16 +96,8 @@ jobs:
 
         - name: Get dependencies & run lint
           run: |
-            echo "$ESLINT_JUNIT_OUTPUT"
             yarn install --frozen-lockfile
-            mkdir -p packages/react-component-library/test-results/eslint
-            yarn --cwd packages/react-component-library lint:ci
-
-        - name: Persist artifacts
-          uses: actions/upload-artifact@v2
-          with:
-            name: lintreact
-            path: packages/react-component-library/test-results/eslint/react-component-results.xml
+            yarn --cwd packages/react-component-library lint
 
 
      Test_react-component-library:
