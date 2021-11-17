@@ -34,4 +34,10 @@ export const parameters = {
       type: 'code',
     },
   },
+  options: {
+    storySort: {
+      method: 'alphabetical',
+      includeNames: false,
+    },
+  },
 }
