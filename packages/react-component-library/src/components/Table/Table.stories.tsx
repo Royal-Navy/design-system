@@ -10,6 +10,7 @@ export default {
   title: 'Table',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    layout: 'fullscreen',
   },
 } as Meta
 

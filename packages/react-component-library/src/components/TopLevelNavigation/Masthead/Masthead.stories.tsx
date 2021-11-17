@@ -32,6 +32,7 @@ export default {
   title: 'Masthead',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    layout: 'fullscreen',
   },
 } as Meta
 

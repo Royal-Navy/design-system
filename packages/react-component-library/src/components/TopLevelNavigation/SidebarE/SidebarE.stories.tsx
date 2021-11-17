@@ -55,6 +55,7 @@ export default {
           'This API is experimental and may change outside of the typical semver release cycle.',
       },
     },
+    layout: 'fullscreen',
   },
 } as Meta
 

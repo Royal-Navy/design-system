@@ -9,6 +9,7 @@ export default {
   title: 'Tab Set',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    layout: 'fullscreen',
   },
 } as Meta
 

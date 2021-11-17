@@ -9,6 +9,7 @@ export default {
   title: 'Floating Box',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    layout: 'fullscreen',
   },
 } as Meta
 

@@ -9,6 +9,7 @@ export default {
   title: 'Drawer',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    layout: 'fullscreen',
   },
 } as Meta
 

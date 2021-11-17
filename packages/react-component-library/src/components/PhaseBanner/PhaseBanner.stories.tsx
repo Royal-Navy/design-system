@@ -8,6 +8,7 @@ export default {
   title: 'Phase Banner',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    layout: 'fullscreen',
   },
 } as Meta
 

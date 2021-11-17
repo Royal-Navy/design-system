@@ -11,6 +11,7 @@ export default {
   title: 'Modal',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    layout: 'fullscreen',
   },
 } as Meta
 

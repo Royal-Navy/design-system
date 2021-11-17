@@ -30,6 +30,7 @@ export default {
           'This API has been marked as deprecated. Consider using the new experimental Sidebar implementation.',
       },
     },
+    layout: 'fullscreen',
   },
 } as Meta
 

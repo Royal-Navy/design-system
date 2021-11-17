@@ -19,6 +19,7 @@ export default {
   title: 'Dialog',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    layout: 'fullscreen',
   },
 } as Meta
 

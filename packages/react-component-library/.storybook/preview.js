@@ -29,7 +29,6 @@ function clickDocsButtonOnFirstLoad() {
 window.addEventListener('load', clickDocsButtonOnFirstLoad)
 
 export const parameters = {
-  layout: 'fullscreen',
   docs: {
     source: {
       type: 'code',
