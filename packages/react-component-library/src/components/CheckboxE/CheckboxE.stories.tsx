@@ -11,7 +11,7 @@ import { FormikGroupE } from '../FormikGroup'
 
 export default {
   component: CheckboxE,
-  title: 'CheckboxE',
+  title: 'Checkbox (Experimental)',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

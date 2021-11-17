@@ -11,7 +11,7 @@ import { FormikGroupE } from '../FormikGroup'
 
 export default {
   component: RadioE,
-  title: 'RadioE',
+  title: 'Radio (Experimental)',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
