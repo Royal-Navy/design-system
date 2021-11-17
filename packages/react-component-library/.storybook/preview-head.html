@@ -3,6 +3,26 @@
   rel="stylesheet"
 />
 <style type="text/css">
-  .sbdocs-h2:first-of-type { margin-bottom: 40px; }
-  .rn-sidebar--storybook { position: unset !important; max-height: 30rem; }
+  /* https://github.com/storybookjs/storybook/issues/8928 */
+  #docs-root .sbdocs-h2:first-of-type {
+    margin-bottom: 40px;
+  }
+
+  #docs-root .docs-story {
+    overflow: visible;
+  }
+
+  #docs-root .docs-story > div:first-child {
+    margin: unset;
+  }
+
+  #docs-root .docs-story > div:first-child > div:first-child {
+    transform: none;
+    height: auto;
+  }
+
+  .rn-sidebar--storybook {
+    position: unset !important;
+    max-height: 30rem;
+  }
 </style>

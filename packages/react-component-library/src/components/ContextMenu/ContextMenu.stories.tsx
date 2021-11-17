@@ -28,6 +28,7 @@ const ClickArea = React.forwardRef(({ children, ...rest }: any, ref: any) => (
       padding: '1rem',
       backgroundColor: '#c9c9c9',
     }}
+    data-testid="storybook-context-menu-target"
   >
     {children}
   </div>
