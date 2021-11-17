@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react'
 
 import { Dialog, DialogProps } from './index'
 import { StyledMain } from '../Modal/partials/StyledMain'

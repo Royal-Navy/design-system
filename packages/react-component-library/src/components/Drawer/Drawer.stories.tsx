@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react'
 
 import { Drawer, DrawerProps } from '.'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react'
 
 import { IconSearch } from '@defencedigital/icon-library'
 import { TextInputE, TextInputEProps } from '.'

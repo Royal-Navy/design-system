@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react'
 
 import { FloatingBox, FloatingBoxProps } from './FloatingBox'
 import { FLOATING_BOX_SCHEME } from './constants'
