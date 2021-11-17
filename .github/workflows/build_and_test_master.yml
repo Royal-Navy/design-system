@@ -184,16 +184,16 @@ jobs:
               else echo "cypress binary is installed, no action required";
             fi
 
-      - name: Run e2e tests
-        uses: cypress-io/github-action@v2
-        env:
-          CHOKIDAR_USEPOLLING: 1
-        with:
-          project: ./packages/react-component-library
-          start: yarn --cwd packages/react-component-library storybook:test
-          wait-on: 'http://localhost:6006'
-          wait-on-timeout: 180
-          browser: ${{ matrix.browser }}
+        - name: Run e2e tests
+          uses: cypress-io/github-action@v2
+          env:
+            CHOKIDAR_USEPOLLING: 1
+          with:
+            project: ./packages/react-component-library
+            start: yarn --cwd packages/react-component-library storybook:test
+            wait-on: 'http://localhost:6006'
+            wait-on-timeout: 180
+            browser: ${{ matrix.browser }}
 
 
      Test_a11y:
