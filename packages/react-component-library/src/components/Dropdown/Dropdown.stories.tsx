@@ -39,22 +39,21 @@ Default.args = {
   label: 'Example label',
 }
 
-export const WithIcons: Story<DropdownProps> = () => {
-  const iconOptions = options.map((option) => ({
-    ...option,
-    icon: <IconAnchor />,
-  }))
+const iconOptions = options.map((option) => ({
+  ...option,
+  icon: <IconAnchor />,
+}))
 
-  return (
-    <div style={{ height: '15rem' }}>
-      <Dropdown
-        options={iconOptions}
-        label="Example label"
-        labelIcon={<IconLayers />}
-        onSelect={action('onSelect')}
-      />
-    </div>
-  )
-}
+export const WithIcons: Story<DropdownProps> = (props) => (
+  <div style={{ height: '15rem' }}>
+    <Dropdown
+      {...props}
+      options={iconOptions}
+      label="Example label"
+      labelIcon={<IconLayers />}
+      onSelect={action('onSelect')}
+    />
+  </div>
+)
 
 WithIcons.storyName = 'With icons'

@@ -4,6 +4,7 @@ import { Story, Meta } from '@storybook/react'
 
 import { Modal, ModalProps } from './index'
 import { StyledMain } from './partials/StyledMain'
+import { StyledModal } from './partials/StyledModal'
 import { BUTTON_COLOR, ButtonProps } from '../Button'
 
 export default {
@@ -12,6 +13,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
+    jsx: {
+      showFunctions: true,
+    },
   },
 } as Meta
 
@@ -33,25 +37,26 @@ const tertiaryButton: ButtonProps = {
   children: 'Tertiary',
 }
 
-// Styles extended for Storybook presentation
-const StyledModal = styled(Modal)`
-  position: absolute;
-  z-index: 1;
+const Wrapper = styled.div<{ $height: string }>`
+  height: ${({ $height }) => $height};
 
-  ${StyledMain} {
+  /* Styles extended for Storybook presentation */
+  ${StyledModal} {
     position: absolute;
+    z-index: 1;
+
+    ${StyledMain} {
+      position: absolute;
+    }
   }
 `
+
 const Template: Story<ModalProps> = (args) => (
-  <div
-    style={{
-      height: args.title && args.primaryButton ? '15rem' : '10rem',
-    }}
-  >
-    <StyledModal {...args}>
+  <Wrapper $height={args.title && args.primaryButton ? '15rem' : '10rem'}>
+    <Modal {...args}>
       <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
-    </StyledModal>
-  </div>
+    </Modal>
+  </Wrapper>
 )
 
 export const Default = Template.bind({})

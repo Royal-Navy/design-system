@@ -24,12 +24,13 @@ export default {
   },
 } as Meta
 
-export const Default: Story<SelectProps> = (props) => (
-  <div style={{ height: '10rem' }}>
-    <Select {...props} />
+const Template: Story<SelectProps> = (args) => (
+  <div style={{ height: args.isDisabled ? 'initial' : '10rem' }}>
+    <Select {...args} />
   </div>
 )
 
+export const Default = Template.bind({})
 Default.args = {
   options,
   label: 'Example label',
@@ -37,46 +38,30 @@ Default.args = {
   defaultMenuIsOpen: true,
 }
 
-export const Disabled: Story<SelectProps> = (props) => (
-  <Select
-    {...props}
-    options={options}
-    label="Example label"
-    name="select-disabled"
-    isDisabled
-  />
-)
-
-Disabled.storyName = 'Disabled'
-
-export const NotClearable: Story<SelectProps> = (props) => (
-  <Select
-    {...props}
-    options={options}
-    label="Example label"
-    name="select-disabled"
-    isClearable={false}
-  />
-)
-
-NotClearable.storyName = 'Not clearable'
-
-export const WithIcons: Story<SelectProps> = (props) => {
-  const iconOptions = options.map((option) => ({
-    ...option,
-    icon: <IconAnchor />,
-  }))
-
-  return (
-    <div style={{ height: '10rem' }}>
-      <Select
-        {...props}
-        options={iconOptions}
-        label="Example label"
-        name="select-icons"
-      />
-    </div>
-  )
+export const Disabled = Template.bind({})
+Disabled.args = {
+  options,
+  label: 'Example label',
+  name: 'select-disabled',
+  isDisabled: true,
 }
 
+export const NotClearable = Template.bind({})
+NotClearable.storyName = 'Not clearable'
+NotClearable.args = {
+  options,
+  label: 'Example label',
+  name: 'select-not-clearable',
+  isClearable: false,
+}
+
+export const WithIcons = Template.bind({})
 WithIcons.storyName = 'With icons'
+WithIcons.args = {
+  options: options.map((option) => ({
+    ...option,
+    icon: <IconAnchor />,
+  })),
+  label: 'Example label',
+  name: 'select-icons',
+}
