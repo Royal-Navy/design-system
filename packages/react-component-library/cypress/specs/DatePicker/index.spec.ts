@@ -1,6 +1,10 @@
 import { describe, cy, it, before } from 'local-cypress'
 import { addDays, startOfMonth, format } from 'date-fns'
-import { ColorAction600, ColorNeutral200 } from '@defencedigital/design-tokens'
+import {
+  ColorAction600,
+  ColorNeutral200,
+  ColorDanger600,
+} from '@defencedigital/design-tokens'
 
 import { DATE_FORMAT } from '../../../src/constants'
 import { hexToRgb } from '../../helpers'
@@ -35,13 +39,25 @@ describe('DatePicker', () => {
         cy.get(selectors.datePicker.input).should('have.value', expected)
       })
 
-      it('should not be in an error state', () => {
+      it('should not be in an error state', { browser: '!firefox' }, () => {
         cy.get(selectors.datePicker.outerWrapper).should(
           'have.css',
           'border',
           `1px solid ${hexToRgb(ColorNeutral200)}`
         )
       })
+
+      it(
+        'should not be in an error state (firefox)',
+        { browser: 'firefox' },
+        () => {
+          cy.get(selectors.datePicker.outerWrapper).should(
+            'not.have.css',
+            'border',
+            `1px solid ${hexToRgb(ColorDanger600)}`
+          )
+        }
+      )
     })
   })
 
@@ -91,13 +107,25 @@ describe('DatePicker', () => {
             cy.wait(1000)
           })
 
-          it('should not be in an error state', () => {
+          it('should not be in an error state', { browser: '!firefox' }, () => {
             cy.get(selectors.datePicker.outerWrapper).should(
               'have.css',
               'border',
               `1px solid ${hexToRgb(ColorAction600)}`
             )
           })
+
+          it(
+            'should not be in an error state (firefox)',
+            { browser: 'firefox' },
+            () => {
+              cy.get(selectors.datePicker.outerWrapper).should(
+                'not.have.css',
+                'border',
+                `1px solid ${hexToRgb(ColorDanger600)}`
+              )
+            }
+          )
         })
       })
     })
