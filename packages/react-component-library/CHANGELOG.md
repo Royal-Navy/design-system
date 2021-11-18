@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.63.6](https://github.com/defencedigital/mod-uk-design-system/compare/2.63.5...2.63.6) (2021-11-18)
+
+
+### Bug Fixes
+
+* **Storybook:** Resolve storybook docs styling in Firefox ([6699b5a](https://github.com/defencedigital/mod-uk-design-system/commit/6699b5a89430b3e8ff524f0b8a848921459606d7))
+
+
+
+
+
 ## [2.63.5](https://github.com/defencedigital/mod-uk-design-system/compare/2.63.4...2.63.5) (2021-11-17)
 
 **Note:** Version bump only for package @defencedigital/react-component-library
