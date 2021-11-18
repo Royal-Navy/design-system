@@ -25,7 +25,6 @@
     "prepare": "yarn build",
     "test": "jest",
     "lint-staged": "lint-staged",
-    "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src/* --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json --no-error-on-unmatched-pattern",
     "lint": "eslint src/* --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json --no-error-on-unmatched-pattern"
   },
   "lint-staged": {
