@@ -85,14 +85,7 @@ jobs:
       - name: Get dependencies & run lint
         run: |
           yarn install --frozen-lockfile
-          mkdir -p packages/css-framework/test-results/stylelint
-          yarn --cwd packages/css-framework --silent stylelint --custom-formatter '../../node_modules/stylelint-junit-formatter/index.js' ./index.scss > packages/css-framework/test-results/stylelint/results.xml
-
-      - name: Persist artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: stylelint
-          path: packages/css-framework/test-results/stylelint/results.xml
+          yarn --cwd packages/css-framework --silent stylelint --formatter verbose ./index.scss
 
   Lint_react-component-library:
     runs-on: ubuntu-latest
