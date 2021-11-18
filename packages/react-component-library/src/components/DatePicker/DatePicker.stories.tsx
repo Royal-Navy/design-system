@@ -1,6 +1,6 @@
 import React from 'react'
 import * as yup from 'yup'
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 

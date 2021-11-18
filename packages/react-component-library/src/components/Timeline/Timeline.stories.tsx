@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react'
 import { css, CSSProp } from 'styled-components'
 import { format } from 'date-fns'
 import {
@@ -47,6 +47,7 @@ export default {
           'A collection of composable and presentation agnostic Compound Components, Hooks and a Context Provider, to help aid in the creation of scheduling based user-interfaces. Visit the [Compound Timeline microsite](https://timeline.royalnavy.io/) for more comprehensive documentation.',
       },
     },
+    layout: 'fullscreen',
   },
 } as Meta
 

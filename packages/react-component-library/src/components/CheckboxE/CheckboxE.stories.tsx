@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
@@ -11,7 +11,7 @@ import { FormikGroupE } from '../FormikGroup'
 
 export default {
   component: CheckboxE,
-  title: 'CheckboxE',
+  title: 'Checkbox (Experimental)',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

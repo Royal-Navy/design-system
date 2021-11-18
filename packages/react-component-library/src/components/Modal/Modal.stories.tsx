@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react'
 
 import { Modal, ModalProps } from './index'
 import { StyledMain } from './partials/StyledMain'
@@ -11,6 +11,7 @@ export default {
   title: 'Modal',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    layout: 'fullscreen',
   },
 } as Meta
 

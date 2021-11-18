@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react'
 
 import { Graph, House, Tools } from '../../../icons'
 import { Link } from '../../Link'
@@ -30,6 +30,7 @@ export default {
           'This API has been marked as deprecated. Consider using the new experimental Sidebar implementation.',
       },
     },
+    layout: 'fullscreen',
   },
 } as Meta
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { Story, Meta } from '@storybook/react'
 
 import {
   IconHome,
@@ -55,6 +55,7 @@ export default {
           'This API is experimental and may change outside of the typical semver release cycle.',
       },
     },
+    layout: 'fullscreen',
   },
 } as Meta
 
