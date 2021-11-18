@@ -35,7 +35,6 @@
     "chromatic": "chromatic --build-script-name storybook:static --exit-zero-on-changes",
     "dev": "concurrently \"webpack --watch --config=webpack/dev.js\" \"yarn types --watch\"",
     "lint-staged": "lint-staged",
-    "lint:ci": "eslint -f ../../node_modules/eslint-junit/index.js src cypress --ext .js --ext .jsx --ext .ts --ext .tsx",
     "lint": "eslint src cypress --ext .js --ext .jsx --ext .ts --ext .tsx",
     "prepare": "yarn build",
     "storybook": "BABEL_ENV=es RNDS_LOG_LEVEL=debug start-storybook -p 6006",
