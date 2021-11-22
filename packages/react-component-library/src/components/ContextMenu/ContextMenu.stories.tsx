@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { Story, Meta } from '@storybook/react'
+import styled from 'styled-components'
 
 import { IconEdit, IconDelete, IconAdd } from '@defencedigital/icon-library'
 
@@ -20,26 +21,18 @@ export default {
   },
 } as Meta
 
-const ClickArea = React.forwardRef(({ children, ...rest }: any, ref: any) => (
-  <div
-    ref={ref}
-    style={{
-      display: 'inline-block',
-      padding: '1rem',
-      backgroundColor: '#c9c9c9',
-    }}
-    data-testid="storybook-context-menu-target"
-  >
-    {children}
-  </div>
-))
+const ClickArea = styled.div`
+  display: inline-block;
+  padding: 1rem;
+  background-color: #c9c9c9;
+`
 
 export const Default: Story<ContextMenuProps> = (props) => {
   const ref = useRef()
 
   return (
     <>
-      <ClickArea ref={ref}>
+      <ClickArea ref={ref} data-testid="storybook-context-menu-target">
         {props.clickType === 'left' ? 'Click on me' : 'Right click on me'}
       </ClickArea>
       <ContextMenu {...props} attachedToRef={ref}>

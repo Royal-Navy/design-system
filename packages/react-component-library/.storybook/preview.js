@@ -29,9 +29,18 @@ function clickDocsButtonOnFirstLoad() {
 window.addEventListener('load', clickDocsButtonOnFirstLoad)
 
 export const parameters = {
+  jsx: {
+    // Filter out callback props injected by the Actions addon
+    // from dynamic code snippets on the Docs tab as these are
+    // noisy and usually not needed
+    filterProps: (value) =>
+      value !== undefined && value?.name !== 'actionHandler',
+  },
   docs: {
     source: {
-      type: 'code',
+      // Avoid breaking IE11 on Chromatic as WeakSet isn't available
+      // there
+      type: typeof WeakSet === undefined ? 'code' : 'auto',
     },
   },
   options: {

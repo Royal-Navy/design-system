@@ -49,41 +49,39 @@ Default.args = {
   data: tableData,
 }
 
-export const ArbitraryCellContent: Story<TableProps> = (props) => {
-  const tableDataArbitraryCellContent = [
-    {
-      id: 'a',
-      first: 'Row 1 cell 1',
-      second: (
-        <Badge
-          colorVariant={BADGE_COLOR_VARIANT.FADED}
-          color={BADGE_COLOR.SUCCESS}
-        >
-          Online
-        </Badge>
-      ),
-    },
-    {
-      id: 'b',
-      first: 'Row 2 cell 1',
-      second: (
-        <Badge
-          colorVariant={BADGE_COLOR_VARIANT.FADED}
-          color={BADGE_COLOR.DANGER}
-        >
-          Offline
-        </Badge>
-      ),
-    },
-  ]
+const tableDataArbitraryCellContent = [
+  {
+    id: 'a',
+    first: 'Row 1 cell 1',
+    second: (
+      <Badge
+        colorVariant={BADGE_COLOR_VARIANT.FADED}
+        color={BADGE_COLOR.SUCCESS}
+      >
+        Online
+      </Badge>
+    ),
+  },
+  {
+    id: 'b',
+    first: 'Row 2 cell 1',
+    second: (
+      <Badge
+        colorVariant={BADGE_COLOR_VARIANT.FADED}
+        color={BADGE_COLOR.DANGER}
+      >
+        Offline
+      </Badge>
+    ),
+  },
+]
 
-  return (
-    <Table {...props} data={tableDataArbitraryCellContent}>
-      <TableColumn field="first">First column</TableColumn>
-      <TableColumn field="second">Status</TableColumn>
-    </Table>
-  )
-}
+export const ArbitraryCellContent: Story<TableProps> = (props) => (
+  <Table {...props} data={tableDataArbitraryCellContent}>
+    <TableColumn field="first">First column</TableColumn>
+    <TableColumn field="second">Status</TableColumn>
+  </Table>
+)
 
 ArbitraryCellContent.storyName = 'Arbitrary cell content'
 

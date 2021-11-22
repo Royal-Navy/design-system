@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { Story, Meta } from '@storybook/react'
 
-import { ProgressIndicator } from './index'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { StyledProgressIndicator } from './partials/StyledProgressIndicator'
+import { ProgressIndicator } from './index'
 
 export default {
   component: ProgressIndicator,
@@ -13,13 +14,17 @@ export default {
   },
 } as Meta
 
-const StyledProgressIndicator = styled(ProgressIndicator)`
-  position: absolute;
-  transform: translate(-50%, -50%);
+const Wrapper = styled.div`
+  height: 10rem;
+
+  ${StyledProgressIndicator} {
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
 `
 
 export const Default: Story<ComponentWithClass> = (props) => (
-  <div style={{ height: '10rem' }}>
-    <StyledProgressIndicator {...props} />
-  </div>
+  <Wrapper>
+    <ProgressIndicator {...props} />
+  </Wrapper>
 )
