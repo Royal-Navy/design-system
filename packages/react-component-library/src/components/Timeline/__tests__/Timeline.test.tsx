@@ -2094,6 +2094,47 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when `endDate` is before `startDate`', () => {
+    let consoleErrorSpy: jest.SpyInstance
+
+    beforeAll(() => {
+      timezoneMock.register('Europe/London')
+    })
+
+    beforeEach(() => {
+      consoleErrorSpy = jest.spyOn(global.console, 'error')
+
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 9, 5)}
+          endDate={new Date(2020, 1, 1)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    afterAll(() => {
+      timezoneMock.unregister()
+    })
+
+    it('renders the default number of days', () => {
+      const days = wrapper.queryAllByTestId('timeline-day')
+
+      expect(days).toHaveLength(31)
+    })
+
+    it('writes an error to the console', () => {
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        'ERROR - RNDS - `startDate` is after `endDate`'
+      )
+    })
+  })
+
   describe('when `endDate` and `unitWidth` are specified', () => {
     beforeAll(() => {
       timezoneMock.register('Europe/London')

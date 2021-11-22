@@ -1,4 +1,5 @@
 import React from 'react'
+import { isAfter } from 'date-fns'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineProvider } from './context'
@@ -86,6 +87,15 @@ function getHoursBlockSize(
   )
 }
 
+function getEndDate(startDate: Date, endDate: Date) {
+  if (startDate && endDate && isAfter(startDate, endDate)) {
+    logger.error('`startDate` is after `endDate`')
+    return null
+  }
+
+  return endDate
+}
+
 export const Timeline: React.FC<TimelineProps> = ({
   children,
   className,
@@ -102,9 +112,9 @@ export const Timeline: React.FC<TimelineProps> = ({
   ...rest
 }) => {
   const options: TimelineOptions = {
-    endDate,
     range,
     startDate,
+    endDate: getEndDate(startDate, endDate),
     hoursBlockSize: getHoursBlockSize(children),
     unitWidth: dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH,
   }
