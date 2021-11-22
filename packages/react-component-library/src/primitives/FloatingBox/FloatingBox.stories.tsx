@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { FloatingBox, FloatingBoxProps } from './FloatingBox'
+import { FloatingBox, FloatingBoxWithEmbeddedTargetProps } from './FloatingBox'
 import { FLOATING_BOX_SCHEME } from './constants'
 
 export default {
@@ -13,7 +13,7 @@ export default {
   },
 } as Meta
 
-export const Default: Story<FloatingBoxProps> = (props) => (
+export const Default: Story<FloatingBoxWithEmbeddedTargetProps> = (props) => (
   <FloatingBox isVisible renderTarget={<div />} {...props}>
     <div style={{ padding: '0 1rem' }}>
       <pre>Arbitrary JSX content</pre>
@@ -25,7 +25,7 @@ Default.args = {
   scheme: FLOATING_BOX_SCHEME.LIGHT,
 }
 
-export const Dark: Story<FloatingBoxProps> = (props) => (
+export const Dark: Story<FloatingBoxWithEmbeddedTargetProps> = (props) => (
   <FloatingBox
     isVisible
     renderTarget={<div />}
