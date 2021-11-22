@@ -3,7 +3,7 @@ import { isString } from 'lodash'
 import { DayPickerProps } from 'react-day-picker'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { StyledInput } from './partials/StyledInput'
+import { StyledInput } from '../TextInputE/partials/StyledInput'
 import { useInputValue } from './useInputValue'
 import { useFocus } from '../../hooks/useFocus'
 import { useInputKeys } from './useInputKeys'
@@ -14,6 +14,7 @@ export interface DatePickerEInputProps extends ComponentWithClass {
   isDisabled: boolean
   format: string
   from: Date
+  hasLabel: boolean
   isRange: boolean
   onBlur?: React.FocusEventHandler<HTMLInputElement>
   onDayChange: (day?: Date) => void
@@ -34,6 +35,7 @@ export const DatePickerEInput = forwardRef<
       from,
       to,
       format: datePickerFormat,
+      hasLabel,
       isDisabled,
       isRange,
       onBlur,
@@ -96,6 +98,7 @@ export const DatePickerEInput = forwardRef<
         ref={ref}
         type="text"
         defaultValue={isString(keyedValue) ? keyedValue : displayValue}
+        $hasLabel={hasLabel}
         {...rest}
       />
     )

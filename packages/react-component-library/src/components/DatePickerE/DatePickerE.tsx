@@ -12,12 +12,12 @@ import { DATE_FORMAT } from '../../constants'
 import { DatePickerEInput } from './DatePickerEInput'
 import { getId, hasClass } from '../../helpers'
 import { InputValidationProps } from '../../common/InputValidationProps'
+import { StyledLabel } from '../TextInputE/partials/StyledLabel'
 import { StyledButton } from './partials/StyledButton'
 import { StyledDatePickerEInput } from './partials/StyledDatePickerEInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
 import { StyledIconEventWrapper } from './partials/StyledIconEventWrapper'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
-import { StyledLabel } from './partials/StyledLabel'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { useDatePickerEOpenClose } from './useDatePickerEOpenClose'
 import { useExternalId } from '../../hooks/useExternalId'
@@ -163,9 +163,8 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
           <StyledInputWrapper>
             <StyledLabel
               id={titleId}
-              $isOpen={open}
-              $hasContent={hasContent}
-              $hasPlaceholder={!!placeholder}
+              $hasFocus={hasFocus}
+              $hasContent={hasContent || placeholder}
               htmlFor={id}
               data-testid="datepicker-label"
             >
@@ -178,6 +177,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
               isRange={isRange}
               format={datePickerFormat}
               from={from}
+              hasLabel={Boolean(label)}
               onComplete={handleOnClose}
               onDayChange={(day: Date) => {
                 setCurrentMonth(day)
