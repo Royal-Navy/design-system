@@ -14,7 +14,7 @@
     "node": ">=12.18.3 <17"
   },
   "devDependencies": {
-    "@commitlint/cli": "^13.2.1",
+    "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^12.1.1",
     "@commitlint/lint": "^12.1.1",
     "@octokit/rest": "^18.0.3",
