@@ -3,12 +3,9 @@ import { addHours, isValid, parse } from 'date-fns'
 import { DayPickerProps, ModifiersUtils } from 'react-day-picker'
 import { isNil } from 'lodash'
 
-type OnCompleteType = () => void
-
 export function useInputKeys(
   datePickerFormat: string,
   disabledDays: DayPickerProps['disabledDays'],
-  onComplete: OnCompleteType,
   onDayChange: (day?: Date) => void,
   setHasError: React.Dispatch<React.SetStateAction<boolean>>
 ): {
@@ -73,12 +70,12 @@ export function useInputKeys(
     const isTabKey = e.keyCode === 9
 
     if (isTabKey) {
-      return null
+      return
     }
 
     if (isEscapeKey) {
       revertKeyedValue()
-      return onComplete()
+      return
     }
 
     const { value } = e.target as HTMLInputElement
@@ -87,8 +84,7 @@ export function useInputKeys(
 
     if (isReturnKey) {
       checkNewDate(parsedDate)
-
-      return onComplete()
+      return
     }
 
     if (parsedDate && hasChanged) {
@@ -97,8 +93,6 @@ export function useInputKeys(
         onDayChange(newDate)
       }
     }
-
-    return null
   }
 
   return {

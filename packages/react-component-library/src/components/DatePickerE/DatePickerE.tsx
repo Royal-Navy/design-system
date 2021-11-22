@@ -100,7 +100,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   isDisabled,
   isInvalid,
   isRange,
-  label = 'Select Date',
+  label = 'Date',
   onChange,
   onCalendarFocus,
   startDate,
@@ -116,7 +116,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   const {
     floatingBoxChildrenRef,
     handleOnClose,
-    handleOnFocus,
+    handleOnOpen,
     inputButtonRef,
     inputRef,
     open,
@@ -144,7 +144,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   const titleId = getId('datepicker-title')
   const contentId = getId('day-picker')
 
-  const placeholder = isRange ? null : datePickerFormat.toLowerCase()
+  const placeholder = !isRange ? datePickerFormat.toLowerCase() : null
 
   return (
     <>
@@ -160,15 +160,16 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
           $isInvalid={hasError}
           $isDisabled={isDisabled}
         >
-          <StyledInputWrapper>
+          <StyledInputWrapper $isRange={isRange}>
             <StyledLabel
               id={titleId}
-              $hasFocus={hasFocus}
-              $hasContent={hasContent || placeholder}
+              $hasFocus={hasFocus && !isRange}
+              $hasContent={hasContent}
               htmlFor={id}
               data-testid="datepicker-label"
             >
               {label}
+              {placeholder && ` (${placeholder})`}
             </StyledLabel>
             <DatePickerEInput
               disabledDays={disabledDays}
@@ -178,7 +179,6 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
               format={datePickerFormat}
               from={from}
               hasLabel={Boolean(label)}
-              onComplete={handleOnClose}
               onDayChange={(day: Date) => {
                 setCurrentMonth(day)
                 handleDayClick(day)
@@ -194,7 +194,9 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
                   e.target.select()
                 }
                 onLocalFocus()
-                handleOnFocus(e)
+                if (isRange) {
+                  handleOnOpen()
+                }
               }}
               placeholder={placeholder}
               ref={inputRef}
@@ -209,7 +211,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
             aria-owns={contentId}
             ref={inputButtonRef}
             type="button"
-            onClick={open ? handleOnClose : handleOnFocus}
+            onClick={open ? handleOnClose : handleOnOpen}
             disabled={isDisabled}
             data-testid="datepicker-input-button"
           >

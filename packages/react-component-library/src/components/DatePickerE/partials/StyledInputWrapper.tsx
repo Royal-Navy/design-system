@@ -1,6 +1,18 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const StyledInputWrapper = styled.div`
+interface StyledInputWrapperProps {
+  $isRange: boolean
+}
+
+export const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
   position: relative;
   flex-grow: 1;
+
+  ${({ $isRange }) =>
+    $isRange &&
+    css`
+      input {
+        cursor: default;
+      }
+    `}
 `

@@ -7,7 +7,7 @@ export function useDatePickerEOpenClose(isOpen = false): {
   handleOnClose: () => void
   inputButtonRef: React.RefObject<HTMLButtonElement>
   inputRef: React.RefObject<HTMLInputElement>
-  handleOnFocus: (event: React.FormEvent) => void
+  handleOnOpen: () => void
   open: boolean
 } {
   const { open, handleOnClose, handleOnFocus } = useOpenClose(isOpen)
@@ -26,7 +26,7 @@ export function useDatePickerEOpenClose(isOpen = false): {
 
   return {
     floatingBoxChildrenRef,
-    handleOnFocus,
+    handleOnOpen: handleOnFocus,
     inputButtonRef,
     inputRef,
     open,

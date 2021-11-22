@@ -18,7 +18,6 @@ export interface DatePickerEInputProps extends ComponentWithClass {
   isRange: boolean
   onBlur?: React.FocusEventHandler<HTMLInputElement>
   onDayChange: (day?: Date) => void
-  onComplete: () => void
   onFocus: React.FocusEventHandler<HTMLInputElement>
   placeholder: string
   setHasError: React.Dispatch<React.SetStateAction<boolean>>
@@ -39,7 +38,6 @@ export const DatePickerEInput = forwardRef<
       isDisabled,
       isRange,
       onBlur,
-      onComplete,
       onDayChange,
       onFocus,
       setHasError,
@@ -55,13 +53,7 @@ export const DatePickerEInput = forwardRef<
       onKeyDown,
       onKeyUp,
       revertKeyedValue,
-    } = useInputKeys(
-      datePickerFormat,
-      disabledDays,
-      onComplete,
-      onDayChange,
-      setHasError
-    )
+    } = useInputKeys(datePickerFormat, disabledDays, onDayChange, setHasError)
 
     const { displayValue, inputKey } = useInputValue(
       from,

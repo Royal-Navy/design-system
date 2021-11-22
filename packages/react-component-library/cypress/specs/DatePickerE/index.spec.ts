@@ -14,7 +14,7 @@ describe('DatePickerE', () => {
         '/iframe.html?id=date-picker-experimental--default&viewMode=story'
       )
 
-      cy.get(selectors.datePicker.input).focus()
+      cy.get(selectors.datePicker.button).click()
     })
 
     it('should show the days', () => {
