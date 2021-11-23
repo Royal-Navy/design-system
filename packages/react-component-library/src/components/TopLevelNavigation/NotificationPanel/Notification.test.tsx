@@ -10,14 +10,10 @@ describe('Notification', () => {
   let wrapper: RenderResult
   let dateSpy: jest.SpyInstance
 
-  beforeAll(() => {
+  beforeEach(() => {
     dateSpy = jest
       .spyOn(Date, 'now')
       .mockImplementation(() => new Date(NOW).valueOf())
-  })
-
-  afterAll(() => {
-    dateSpy.mockRestore()
   })
 
   describe('when the notification happened less than five minutes ago', () => {

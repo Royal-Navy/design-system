@@ -58,9 +58,6 @@ describe('DatePicker', () => {
 
     days = new Array(31).map((i) => leadingZero(i + 1)) // [01, 02, ..., 31]
   })
-  afterAll(() => {
-    dateSpy.mockRestore()
-  })
 
   describe('default props', () => {
     beforeEach(() => {
