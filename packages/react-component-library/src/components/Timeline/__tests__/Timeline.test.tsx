@@ -64,7 +64,7 @@ describe('Timeline', () => {
           className="test-class-name"
         >
           <TimelineMonths />
-          <TimelineRows>{ }</TimelineRows>
+          <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
     })
@@ -83,7 +83,7 @@ describe('Timeline', () => {
           <TimelineWeeks />
           <TimelineDays />
           <TimelineHours />
-          <TimelineRows>{ }</TimelineRows>
+          <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
 
@@ -374,7 +374,7 @@ describe('Timeline', () => {
             <TimelineMonths />
             <TimelineWeeks />
             <TimelineDays />
-            <TimelineRows>{ }</TimelineRows>
+            <TimelineRows>{}</TimelineRows>
           </Timeline>
         )
       })
@@ -509,7 +509,7 @@ describe('Timeline', () => {
           <TimelineMonths />
           <TimelineWeeks />
           <TimelineDays />
-          <TimelineRows>{ }</TimelineRows>
+          <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
     })
@@ -804,7 +804,7 @@ describe('Timeline', () => {
               />
             )}
           />
-          <TimelineRows>{ }</TimelineRows>
+          <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
     })
@@ -873,7 +873,7 @@ describe('Timeline', () => {
               />
             )}
           />
-          <TimelineRows>{ }</TimelineRows>
+          <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
     })
@@ -923,7 +923,7 @@ describe('Timeline', () => {
               />
             )}
           />
-          <TimelineRows>{ }</TimelineRows>
+          <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
     })
@@ -965,7 +965,7 @@ describe('Timeline', () => {
               />
             )}
           />
-          <TimelineRows>{ }</TimelineRows>
+          <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
 
@@ -1268,7 +1268,7 @@ describe('Timeline', () => {
               <CustomTodayMarker today={today} offset={offset} />
             )}
           />
-          <TimelineRows>{ }</TimelineRows>
+          <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
     })
@@ -2094,6 +2094,47 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when `endDate` is before `startDate`', () => {
+    let consoleErrorSpy: jest.SpyInstance
+
+    beforeAll(() => {
+      timezoneMock.register('Europe/London')
+    })
+
+    beforeEach(() => {
+      consoleErrorSpy = jest.spyOn(global.console, 'error')
+
+      wrapper = render(
+        <Timeline
+          startDate={new Date(2020, 9, 5)}
+          endDate={new Date(2020, 1, 1)}
+        >
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    afterAll(() => {
+      timezoneMock.unregister()
+    })
+
+    it('renders the default number of days', () => {
+      const days = wrapper.queryAllByTestId('timeline-day')
+
+      expect(days).toHaveLength(31)
+    })
+
+    it('writes an error to the console', () => {
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        'ERROR - RNDS - `startDate` is after `endDate`'
+      )
+    })
+  })
+
   describe('when `endDate` and `unitWidth` are specified', () => {
     beforeAll(() => {
       timezoneMock.register('Europe/London')
@@ -2110,7 +2151,7 @@ describe('Timeline', () => {
           <TimelineMonths />
           <TimelineWeeks />
           <TimelineDays />
-          <TimelineRows>{ }</TimelineRows>
+          <TimelineRows>{}</TimelineRows>
         </Timeline>
       )
     })
@@ -2338,7 +2379,6 @@ describe('Timeline', () => {
     })
   })
 
-
   describe('when parent rerenders', () => {
     let eventSpy: jest.Mock<JSX.Element>
     beforeEach(() => {
@@ -2350,25 +2390,22 @@ describe('Timeline', () => {
 
       let counter = 0
 
-      const TimelineWithUpdate: React.FC<{ children: React.ReactElement<TimelineRowProps> }> = ({ children }) => {
-
+      const TimelineWithUpdate: React.FC<{
+        children: React.ReactElement<TimelineRowProps>
+      }> = ({ children }) => {
         const [_, forceRerender] = useState({})
         counter += 1
 
         return (
           <>
-            <Button onClick={() => forceRerender({})}>
-              Force update
-            </Button>
+            <Button onClick={() => forceRerender({})}>Force update</Button>
             <div>Render: {counter}</div>
             <Timeline startDate={startDate} today={today}>
               <TimelineTodayMarker />
               <TimelineMonths />
               <TimelineWeeks />
               <TimelineDays />
-              <TimelineRows>
-                {children}
-              </TimelineRows>
+              <TimelineRows>{children}</TimelineRows>
             </Timeline>
           </>
         )
@@ -2400,7 +2437,6 @@ describe('Timeline', () => {
       wrapper.getByText('Force update').click()
       expect(await wrapper.findByText('Render: 2')).toBeInTheDocument()
       expect(eventSpy).not.toBeCalled()
-
     })
   })
 })
