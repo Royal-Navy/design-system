@@ -3,10 +3,6 @@ import React, { useState } from 'react'
 import { Placement } from '@popperjs/core'
 import { DayPickerProps } from 'react-day-picker'
 
-import {
-  FLOATING_BOX_PLACEMENT,
-  FloatingBox,
-} from '../../primitives/FloatingBox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
 import { DatePickerEInput } from './DatePickerEInput'
@@ -16,6 +12,7 @@ import { StyledLabel } from '../TextInputE/partials/StyledLabel'
 import { StyledButton } from './partials/StyledButton'
 import { StyledDatePickerEInput } from './partials/StyledDatePickerEInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
+import { StyledFloatingBox } from './partials/StyledFloatingBox'
 import { StyledIconEventWrapper } from './partials/StyledIconEventWrapper'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
@@ -107,7 +104,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   isOpen,
   disabledDays,
   initialMonth,
-  placement = FLOATING_BOX_PLACEMENT.BOTTOM,
+  placement = 'bottom-start',
   onBlur,
   ...rest
 }) => {
@@ -221,7 +218,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
           </StyledButton>
         </StyledOuterWrapper>
       </StyledDatePickerEInput>
-      <FloatingBox
+      <StyledFloatingBox
         isVisible={open}
         placement={placement}
         targetElement={floatingBoxTarget}
@@ -245,7 +242,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
             onFocus={onCalendarFocus}
           />
         </div>
-      </FloatingBox>
+      </StyledFloatingBox>
     </>
   )
 }

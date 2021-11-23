@@ -12,11 +12,13 @@ export const FloatingBoxContent: React.FC<FloatingBoxContentProps> = ({
   children,
   contentId,
   scheme,
+  ...rest
 }) => (
   <StyledContent
     $scheme={scheme}
     id={contentId}
     data-testid="floating-box-content"
+    {...rest}
   >
     {children}
   </StyledContent>
