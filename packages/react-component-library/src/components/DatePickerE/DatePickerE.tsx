@@ -76,11 +76,6 @@ export interface DatePickerEProps
    */
   startDate?: Date
   /**
-   * Optional HTML `value` attribute associated with the component.
-   * @deprecated
-   */
-  value?: string
-  /**
    * Toggles whether or not the picker is open.
    */
   isOpen?: boolean
@@ -112,7 +107,6 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   onChange,
   onCalendarFocus,
   startDate,
-  value,
   isOpen,
   disabledDays,
   initialMonth,
@@ -145,7 +139,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   const { from, to } = state
   const modifiers = { start: from, end: to }
 
-  const hasContent = !!((value && value.length) || from)
+  const hasContent = Boolean(from)
 
   const titleId = getId('datepicker-title')
   const contentId = getId('day-picker')
@@ -243,7 +237,6 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
             aria-live="polite"
             style={{ ...styles.popper, ...TRANSITION_STYLES[transitionState] }}
             {...attributes.popper}
-            {...rest}
           >
             <FloatingBoxContent
               contentId={contentId}
