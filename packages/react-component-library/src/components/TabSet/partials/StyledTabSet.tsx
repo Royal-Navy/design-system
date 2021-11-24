@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const { color } = selectors
 
 export interface StyledTabSetProps {
-  $isScrollable: boolean
+  $isScrollable?: boolean
 }
 
 export const StyledTabSet = styled.article`

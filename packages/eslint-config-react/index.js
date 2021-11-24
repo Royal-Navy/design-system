@@ -38,6 +38,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'react/jsx-wrap-multilines': 0,
     'react/prop-types': 0,
+    'react/require-default-props': 0,
     '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
