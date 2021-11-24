@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.63.9](https://github.com/defencedigital/mod-uk-design-system/compare/2.63.8...2.63.9) (2021-11-24)
+
+
+### Bug Fixes
+
+* **Timeline:** Log invalid `endDate` to console ([a4cf137](https://github.com/defencedigital/mod-uk-design-system/commit/a4cf1370bbce1ce57b2bc466744d3741e6ecb5ea))
+* **Timeline:** Use date control for stories ([042a457](https://github.com/defencedigital/mod-uk-design-system/commit/042a457c160ff9f1f5249ca5007e8e0b1cb91141))
+
+
+
+
+
 ## [2.63.8](https://github.com/defencedigital/mod-uk-design-system/compare/2.63.7...2.63.8) (2021-11-23)
 
 **Note:** Version bump only for package @defencedigital/react-component-library
