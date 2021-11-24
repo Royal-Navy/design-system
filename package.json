@@ -68,5 +68,9 @@
     "lerna:run-version": "lerna version --force-publish=* --tag-version-prefix=''",
     "audit": "./scripts/audit/audit.sh",
     "prepare": "husky install"
+  },
+  "dependencies": {
+    "@defencedigital/fonts": "^2.63.8",
+    "@defencedigital/react-component-library": "^2.63.8"
   }
 }
