@@ -22,6 +22,8 @@ module.exports = {
       rules: {
         'jest/expect-expect': 'off',
         'jest/valid-describe': 'off',
+        'jest/valid-describe-callback': 'off',
+        'jest/valid-title': 'off',
       },
     },
   ],
