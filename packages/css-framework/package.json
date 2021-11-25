@@ -29,7 +29,7 @@
     "build:spacing": "sass --load-path=../../node_modules/ --style=compressed src/utilities/_spacing.scss dist/spacing.css",
     "build:typography": "sass --load-path=../../node_modules/ --style=compressed src/utilities/_typography.scss dist/typography.css",
     "build:visibility": "sass --load-path=../../node_modules/ --style=compressed src/utilities/_visibility.scss dist/visibility.css",
-    "lint": "stylelint ./index.scss",
+    "lint": "stylelint ./index.scss src/",
     "lint-staged": "lint-staged",
     "watch": "sass --watch index.scss dist/styles.css",
     "prepare": "yarn build"
@@ -40,9 +40,10 @@
   },
   "devDependencies": {
     "lint-staged": "^12.0.2",
+    "postcss": "^8.4.1",
     "sass": "^1.25.0",
-    "stylelint": "^13.13.1",
-    "stylelint-junit-formatter": "^0.2.2"
+    "stylelint": "^14.1.0",
+    "stylelint-config-standard-scss": "^3.0.0"
   },
   "lint-staged": {
     "*.@(scss)": "stylelint"

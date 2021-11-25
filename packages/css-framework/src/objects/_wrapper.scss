@@ -3,8 +3,8 @@
 .container {
   padding: 0 f.spacing("8");
   margin: 0 auto;
+
   @media only screen and (min-width: 768px) {
-    padding: 0 f.spacing("12")
+    padding: 0 f.spacing("12");
   }
 }
-
