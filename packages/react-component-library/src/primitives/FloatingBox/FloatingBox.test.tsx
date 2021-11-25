@@ -53,7 +53,7 @@ describe('FloatingBox', () => {
       expect(wrapper.getByText('Hello, World!')).toBeInTheDocument()
     })
 
-    it('it renders the provided arbitrary JSX', () => {
+    it('renders the provided arbitrary JSX', () => {
       expect(wrapper.getByTestId('floating-box-content').innerHTML).toContain(
         renderToStaticMarkup(children)
       )

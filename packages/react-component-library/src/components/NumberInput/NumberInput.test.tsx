@@ -1,3 +1,5 @@
+/* eslint-disable jest/no-conditional-expect */
+
 import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import {

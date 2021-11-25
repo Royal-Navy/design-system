@@ -467,7 +467,7 @@ describe('ContextMenu', () => {
       })
     })
 
-    it('it fires the onShow event', () => {
+    it('fires the onShow event', () => {
       expect(onShowSpy).toBeCalledTimes(1)
     })
 
@@ -478,7 +478,7 @@ describe('ContextMenu', () => {
         })
       })
 
-      it('it fires the onHide event', () => {
+      it('fires the onHide event', () => {
         expect(onHideSpy).toBeCalledTimes(1)
       })
     })

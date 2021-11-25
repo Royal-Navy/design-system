@@ -235,7 +235,7 @@ describe('List', () => {
     })
   })
 
-  describe('when a list item has multiple children ', () => {
+  describe('when a list item has multiple children', () => {
     beforeEach(() => {
       const extraItemText = 'extra text'
       wrapper = render(
