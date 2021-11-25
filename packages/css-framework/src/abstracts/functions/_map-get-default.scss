@@ -8,8 +8,8 @@
 @function map-get-default($map, $key, $default) {
   $result: $default;
 
-  @if (map.has-key($map, $key)) {
-    $result: map.get($map, $key)
+  @if map.has-key($map, $key) {
+    $result: map.get($map, $key);
   }
 
   @return $result;

@@ -20,6 +20,7 @@ body.has-sidebar {
   left: 0;
   background: f.color("neutral", "600");
   color: f.color("neutral", "white");
+
   @include m.z-index("header");
 
   // Mobile browsers include their navbar in the height so a bottom aligned element needs to be moved up
@@ -36,7 +37,8 @@ body.has-sidebar {
   display: block;
   text-decoration: none;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     outline: none;
     text-decoration: none;
   }
@@ -82,7 +84,8 @@ body.has-sidebar {
   display: flex;
   flex-direction: row;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: f.color("neutral", "700");
   }
 }

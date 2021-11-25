@@ -4,9 +4,7 @@
 @function shadow($size) {
   @if map.has-key(vars.$shadows, $size) {
     @return map.get(vars.$shadows, $size);
-  }
-
-  @else {
+  } @else {
     @error "No shadow value could be retrieved for #{$size}";
   }
 }

@@ -13,9 +13,7 @@
 @mixin font-size($size) {
   @if map.has-key(vars.$typography, $size) {
     font-size: map.get(vars.$typography, $size);
-  }
-
-  @else {
+  } @else {
     @error "No font size could be retrieved for #{$size}";
   }
 }
