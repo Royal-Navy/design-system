@@ -6,7 +6,7 @@ import { StyledTabSetProps } from './StyledTabSet'
 const { mq, spacing } = selectors
 
 interface StyledTabItemProps extends StyledTabSetProps {
-  $isFullWidth: boolean
+  $isFullWidth?: boolean
 }
 
 export const StyledTabItem = styled.li<StyledTabItemProps>`

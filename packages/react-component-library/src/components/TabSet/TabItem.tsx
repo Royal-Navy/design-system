@@ -6,7 +6,6 @@ import { StyledTab } from './partials/StyledTab'
 interface TabItemProps {
   tabId: string
   children: React.ReactElement | string
-  index: number
   isActive: boolean
   onClick: () => void
   onKeyDown: (event: KeyboardEvent<HTMLLIElement>) => void
@@ -14,42 +13,45 @@ interface TabItemProps {
   isScrollable?: boolean
 }
 
-export const TabItem = forwardRef<HTMLLIElement, TabItemProps>((props, ref) => {
-  const {
-    tabId,
-    children,
-    isActive,
-    isFullWidth,
-    isScrollable,
-    onClick,
-    onKeyDown,
-  } = props
+export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
+  (
+    {
+      tabId,
+      children,
+      isActive,
+      isFullWidth,
+      isScrollable,
+      onClick,
+      onKeyDown,
+    },
+    ref
+  ) => {
+    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault()
+      onClick()
+    }
 
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    onClick()
-  }
-
-  return (
-    <StyledTabItem
-      $isFullWidth={isFullWidth}
-      $isScrollable={isScrollable}
-      ref={ref}
-      role="tab"
-      aria-controls={tabId}
-      aria-selected={!!isActive}
-      tabIndex={!isActive ? -1 : 0}
-      data-testid="tab-set-tab"
-      aria-label={children.toString()}
-      onKeyDown={onKeyDown}
-    >
-      <StyledTab
-        $isActive={isActive}
+    return (
+      <StyledTabItem
+        $isFullWidth={isFullWidth}
         $isScrollable={isScrollable}
-        onClick={handleClick}
+        ref={ref}
+        role="tab"
+        aria-controls={tabId}
+        aria-selected={!!isActive}
+        tabIndex={!isActive ? -1 : 0}
+        data-testid="tab-set-tab"
+        aria-label={children.toString()}
+        onKeyDown={onKeyDown}
       >
-        <div>{children}</div>
-      </StyledTab>
-    </StyledTabItem>
-  )
-})
+        <StyledTab
+          $isActive={isActive}
+          $isScrollable={isScrollable}
+          onClick={handleClick}
+        >
+          <div>{children}</div>
+        </StyledTab>
+      </StyledTabItem>
+    )
+  }
+)

@@ -138,7 +138,6 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
                   onClick={() => handleClick(index)}
                   onKeyDown={handleKeyDown}
                   isActive={index === activeTab}
-                  index={index}
                   isFullWidth={isFullWidth}
                   isScrollable={isScrollable}
                   ref={(el) => {
