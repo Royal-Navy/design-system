@@ -41,25 +41,13 @@ describe('DatePickerE', () => {
         cy.get(selectors.datePicker.input).should('have.value', expected)
       })
 
-      it('should not be in an error state', { browser: '!firefox' }, () => {
+      it('should not be in an error state', () => {
         cy.get(selectors.datePicker.outerWrapper).should(
-          'have.css',
-          'border',
-          `1px solid ${hexToRgb(ColorNeutral200)}`
+          'has.border',
+          'color',
+          hexToRgb(ColorNeutral200)
         )
       })
-
-      it(
-        'should not be in an error state (firefox)',
-        { browser: 'firefox' },
-        () => {
-          cy.get(selectors.datePicker.outerWrapper).should(
-            'not.have.css',
-            'border',
-            `1px solid ${hexToRgb(ColorDanger600)}`
-          )
-        }
-      )
     })
   })
 
@@ -109,25 +97,13 @@ describe('DatePickerE', () => {
             cy.wait(1000)
           })
 
-          it('should not be in an error state', { browser: '!firefox' }, () => {
+          it('should not be in an error state', () => {
             cy.get(selectors.datePicker.outerWrapper).should(
-              'have.css',
-              'border',
-              `1px solid ${hexToRgb(ColorAction600)}`
+              'has.border',
+              'color',
+              hexToRgb(ColorAction600)
             )
           })
-
-          it(
-            'should not be in an error state (firefox)',
-            { browser: 'firefox' },
-            () => {
-              cy.get(selectors.datePicker.outerWrapper).should(
-                'not.have.css',
-                'border',
-                `1px solid ${hexToRgb(ColorDanger600)}`
-              )
-            }
-          )
         })
       })
     })
