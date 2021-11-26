@@ -52,6 +52,10 @@ export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
         ${defaults};
         background-color: ${color('neutral', '000')};
         border: 1px solid transparent;
+
+        * {
+          cursor: not-allowed;
+        }
       `
     }
 
