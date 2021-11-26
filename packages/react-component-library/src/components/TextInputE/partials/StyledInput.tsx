@@ -5,6 +5,16 @@ import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
 
 const { color, fontSize } = selectors
 
+const TEXT_INPUT_FONT_SIZE = {
+  [COMPONENT_SIZE.FORMS]: fontSize('m'),
+  [COMPONENT_SIZE.SMALL]: fontSize('base'),
+}
+
+export const TEXT_INPUT_INPUT_HEIGHT = {
+  [COMPONENT_SIZE.FORMS]: '44px',
+  [COMPONENT_SIZE.SMALL]: '31px',
+}
+
 function removeAutoFillBackground() {
   return css`
     &:-webkit-autofill,
@@ -44,10 +54,8 @@ export const StyledInput = styled.input<StyledInputProps>`
   ${removeAutoFillBackground()}
 
   color: ${color('neutral', '600')};
-  font-size: ${({ $size }) =>
-    $size === COMPONENT_SIZE.SMALL ? fontSize('base') : fontSize('m')};
-
-  height: ${({ $size }) => ($size === COMPONENT_SIZE.SMALL ? '31px' : '44px')};
+  font-size: ${({ $size }) => TEXT_INPUT_FONT_SIZE[$size]};
+  height: ${({ $size }) => TEXT_INPUT_INPUT_HEIGHT[$size]};
 
   &:focus {
     outline: 0;
