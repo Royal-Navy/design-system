@@ -1,7 +1,7 @@
 import { IconEvent } from '@defencedigital/icon-library'
 import React, { useState } from 'react'
 import { Placement } from '@popperjs/core'
-import { DayPickerProps } from 'react-day-picker'
+import { DayModifiers, DayPickerProps } from 'react-day-picker'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
@@ -19,9 +19,22 @@ import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { useDatePickerEOpenClose } from './useDatePickerEOpenClose'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useFocus } from '../../hooks/useFocus'
+import { useRangeHoverOrFocusDate } from './useRangeHoverOrFocusDate'
 import { useSelection } from './useSelection'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
 import { WEEKDAY_TITLES } from './constants'
+
+declare module 'react-day-picker' {
+  // eslint-disable-next-line no-shadow
+  interface DayPickerProps {
+    // This prop is currently missing from the react-day-picker types
+    onDayFocus?: (
+      day: Date,
+      modifiers: DayModifiers,
+      e: React.FocusEvent<HTMLDivElement>
+    ) => void
+  }
+}
 
 export interface DatePickerEProps
   extends ComponentWithClass,
@@ -133,8 +146,19 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   const [currentMonth, setCurrentMonth] = useState<Date>(null)
   const [floatingBoxTarget, setFloatingBoxTarget] = useStatefulRef()
 
+  const {
+    rangeHoverOrFocusDate,
+    handleDayFocus,
+    handleDayMouseEnter,
+    handleDayMouseLeave,
+  } = useRangeHoverOrFocusDate(isRange)
+
   const { from, to } = state
-  const modifiers = { start: from, end: to }
+
+  const modifiers = {
+    start: from,
+    end: to,
+  }
 
   const hasContent = Boolean(from)
 
@@ -231,7 +255,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
           <StyledDayPicker
             firstDayOfWeek={1}
             weekdaysShort={WEEKDAY_TITLES}
-            selectedDays={[from, { from, to }]}
+            selectedDays={[{ from, to: to || rangeHoverOrFocusDate }]}
             modifiers={modifiers}
             month={currentMonth}
             onDayClick={handleDayClick}
@@ -240,6 +264,9 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
             $isRange={isRange}
             $isVisible={open}
             onFocus={onCalendarFocus}
+            onDayMouseEnter={handleDayMouseEnter}
+            onDayMouseLeave={handleDayMouseLeave}
+            onDayFocus={handleDayFocus}
           />
         </div>
       </StyledFloatingBox>

@@ -680,9 +680,79 @@ describe('DatePickerE', () => {
         wrapper.getByTestId('datepicker-input').focus()
       })
 
+      it('opens the day picker', () => {
+        return waitFor(() => {
+          expect(wrapper.getByTestId('floating-box')).toBeVisible()
+        })
+      })
+
+      describe('and hovers over a second date', () => {
+        beforeEach(() => {
+          userEvent.hover(wrapper.getByText('13'))
+        })
+
+        it('shades the date range', () => {
+          expect(
+            wrapper.getAllByText(/^10|11|12|13$/, {
+              selector: '.DayPicker-Day--selected',
+            })
+          ).toHaveLength(4)
+        })
+
+        it("doesn't shade dates outside the range", () => {
+          expect(
+            wrapper.queryAllByText(/^(?!(10|11|12|13))\d\d$/, {
+              selector: '.DayPicker-Day--selected',
+            })
+          ).toHaveLength(0)
+        })
+
+        describe('and unhovers the second date', () => {
+          beforeEach(() => {
+            userEvent.unhover(wrapper.getByText('13'))
+          })
+
+          it('does not shade any days', () => {
+            expect(
+              wrapper.container.querySelectorAll('.DayPicker-Day--selected')
+            ).toHaveLength(0)
+          })
+        })
+      })
+
+      describe('and focuses a second date', () => {
+        beforeEach(() => {
+          fireEvent.focus(wrapper.getByText('13'))
+        })
+
+        it('shades the date range', () => {
+          expect(
+            wrapper.getAllByText(/^10|11|12|13$/, {
+              selector: '.DayPicker-Day--selected',
+            })
+          ).toHaveLength(4)
+        })
+
+        it("doesn't shade dates outside the range", () => {
+          expect(
+            wrapper.queryAllByText(/^(?!(10|11|12|13))\d\d$/, {
+              selector: '.DayPicker-Day--selected',
+            })
+          ).toHaveLength(0)
+        })
+      })
+
       describe('and clicks on a second date', () => {
         beforeEach(() => {
           click(wrapper.getByText('20'))
+        })
+
+        it('closes the day picker', () => {
+          return waitFor(() => {
+            expect(
+              wrapper.queryByTestId('floating-box')
+            ).not.toBeInTheDocument()
+          })
         })
 
         it('set the value of the component to this date', () => {
@@ -698,44 +768,32 @@ describe('DatePickerE', () => {
             endDate: new Date('2019-12-20T12:00:00.000Z'),
           })
         })
-
-        describe('and clicks on another day', () => {
-          beforeEach(() => {
-            click(wrapper.getByText('3'))
-          })
-
-          it('reset the value of the component to this date', () => {
-            expect(
-              wrapper.getByTestId('datepicker-input').getAttribute('value')
-            ).toBe('03/12/2019')
-          })
-
-          it('invokes the onChange callback', () => {
-            expect(onChange).toHaveBeenCalledTimes(2)
-            expect(onChange).toHaveBeenCalledWith({
-              startDate: new Date('2019-12-03T12:00:00.000Z'),
-              endDate: undefined,
-            })
-          })
-        })
       })
 
-      describe('and clicks on a less than the first', () => {
+      describe('and clicks on a date less than the first', () => {
         beforeEach(() => {
           click(wrapper.getByText('9'))
         })
 
-        it('reset the value of the component to this date', () => {
+        it('closes the day picker', () => {
+          return waitFor(() => {
+            expect(
+              wrapper.queryByTestId('floating-box')
+            ).not.toBeInTheDocument()
+          })
+        })
+
+        it('updates the value to start from this date', () => {
           expect(
             wrapper.getByTestId('datepicker-input').getAttribute('value')
-          ).toBe('09/12/2019')
+          ).toBe('09/12/2019 - 10/12/2019')
         })
 
         it('invokes the onChange callback', () => {
           expect(onChange).toHaveBeenCalledTimes(1)
           expect(onChange).toHaveBeenCalledWith({
             startDate: new Date('2019-12-09T12:00:00.000Z'),
-            endDate: undefined,
+            endDate: new Date('2019-12-10T00:00:00.000Z'),
           })
         })
       })
