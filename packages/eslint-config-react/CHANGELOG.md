@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.64.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.63.9...2.64.0) (2021-11-26)
+
+
+### Features
+
+* **ESLintConfigReact:** Declare support for ESLint 8 ([6f2a064](https://github.com/defencedigital/mod-uk-design-system/commit/6f2a0641ce499275810d1c511c3639526aa2d853))
+
+
+
+
+
 ## [2.63.9](https://github.com/defencedigital/mod-uk-design-system/compare/2.63.8...2.63.9) (2021-11-24)
 
 **Note:** Version bump only for package @defencedigital/eslint-config-react

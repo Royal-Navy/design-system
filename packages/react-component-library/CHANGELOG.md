@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.64.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.63.9...2.64.0) (2021-11-26)
+
+
+### Features
+
+* **DatePickerE:** Create component as fork of DatePicker ([9f29d46](https://github.com/defencedigital/mod-uk-design-system/commit/9f29d4672912d1b5ad533834981fa98cdad5315b))
+* **DatePickerE:** Memoise ID and remove deprecated DatePickerPlacement ([47f8fad](https://github.com/defencedigital/mod-uk-design-system/commit/47f8fad2e13f47eb36c29337234e1e1015fbc4f8))
+* **DatePickerE:** Remove deprecated value prop and incorrect spread ([0d5ae64](https://github.com/defencedigital/mod-uk-design-system/commit/0d5ae6487fce3a7d7738d30f2f0eb032c9da89f4))
+* **DatePickerE:** Tidy up stories ([9db8129](https://github.com/defencedigital/mod-uk-design-system/commit/9db8129ef4c4522e8c26a653755e7cfa671b945d))
+
+
+
+
+
 ## [2.63.9](https://github.com/defencedigital/mod-uk-design-system/compare/2.63.8...2.63.9) (2021-11-24)
 
 
