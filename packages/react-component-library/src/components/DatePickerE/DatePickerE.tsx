@@ -122,6 +122,9 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   ...rest
 }) => {
   const id = useExternalId(externalId)
+  const titleId = `datepicker-title-${useExternalId()}`
+  const contentId = `datepicker-contentId-${useExternalId()}`
+
   const { hasFocus, onLocalBlur, onLocalFocus } = useFocus()
   const {
     floatingBoxChildrenRef,
@@ -161,9 +164,6 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   }
 
   const hasContent = Boolean(from)
-
-  const titleId = getId('datepicker-title')
-  const contentId = getId('day-picker')
 
   const placeholder = !isRange ? datePickerFormat.toLowerCase() : null
 
