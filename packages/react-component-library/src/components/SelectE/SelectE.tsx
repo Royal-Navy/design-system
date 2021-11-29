@@ -49,6 +49,10 @@ export interface SelectEProps extends ComponentWithClass {
    * Optional handler invoked when the selected value changes.
    */
   onChange?: (value: string) => void
+  /**
+   * Optional HTML `value` attribute to apply to the component.
+   */
+  value?: string
 }
 
 function getChildBy(
@@ -61,6 +65,11 @@ function getChildBy(
   })
 }
 
+function getSelectedValue(children: SelectChildrenType, value: string) {
+  const child = getChildBy(children, 'value', value)
+  return (child as React.ReactElement)?.props?.children
+}
+
 export const SelectE: React.FC<SelectEProps> = ({
   children,
   id = getId('select'),
@@ -68,6 +77,7 @@ export const SelectE: React.FC<SelectEProps> = ({
   isInvalid,
   label,
   onChange,
+  value,
   ...rest
 }) => {
   const [hasHover, setHasHover] = useState<boolean>(false)
@@ -81,6 +91,7 @@ export const SelectE: React.FC<SelectEProps> = ({
           onChange((child as React.ReactElement)?.props?.value)
         }
       }}
+      initialSelectedItem={getSelectedValue(children, value)}
       itemToString={(item) => item || ''}
     >
       {({

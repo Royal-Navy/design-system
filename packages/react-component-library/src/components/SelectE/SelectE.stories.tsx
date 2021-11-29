@@ -40,3 +40,8 @@ export const WithError = Template.bind({})
 WithError.args = {
   isInvalid: true,
 }
+
+export const WithValue = Template.bind({})
+WithValue.args = {
+  value: 'two',
+}

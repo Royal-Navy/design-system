@@ -234,4 +234,36 @@ describe('SelectE', () => {
       )
     })
   })
+
+  describe('when `value` is set', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SelectE label="Label" value="two">
+          <SelectEOption value="one">One</SelectEOption>
+          <SelectEOption value="two">Two</SelectEOption>
+          <SelectEOption value="three">Three</SelectEOption>
+        </SelectE>
+      )
+    })
+
+    it('sets the value', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveValue('Two')
+    })
+  })
+
+  describe('when `value` is invalidly set', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SelectE label="Label" value="invalid">
+          <SelectEOption value="one">One</SelectEOption>
+          <SelectEOption value="two">Two</SelectEOption>
+          <SelectEOption value="three">Three</SelectEOption>
+        </SelectE>
+      )
+    })
+
+    it('does not set the value', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveValue('')
+    })
+  })
 })
