@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.64.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.64.0...2.64.1) (2021-11-29)
+
+
+### Bug Fixes
+
+* **StyledOuterWrapper:** Add disabled state cursor style ([2e045b9](https://github.com/defencedigital/mod-uk-design-system/commit/2e045b996edf654358253df600afc8bc4135b0b4))
+* **TextAreaE:** Change incorrect disabled state label style ([c6b1fc7](https://github.com/defencedigital/mod-uk-design-system/commit/c6b1fc7deb0409fc9972d26e0129ff5a8a628993))
+
+
+
+
+
 # [2.64.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.63.9...2.64.0) (2021-11-26)
 
 
