@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { SliderItem } from 'react-compound-slider'
 
 import { useThresholdColor } from './useThresholdColor'
@@ -28,8 +28,15 @@ export const TickE: React.FC<TickEProps> = ({
   isReversed,
   thresholds,
 }) => {
-  const percent: number = isReversed ? 100 - tick.percent : tick.percent // invert if reversed
-  const tickValue: number = (domain[1] / 100) * percent
+  const percent: number = useMemo(
+    () => (isReversed ? 100 - tick.percent : tick.percent),
+    [tick.percent, isReversed]
+  ) // invert if reversed
+
+  const tickValue: number = useMemo(
+    () => (domain[1] / 100) * percent,
+    [domain, percent]
+  )
 
   return (
     <div data-testid="rangeslider-tick">
