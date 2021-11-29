@@ -28,7 +28,7 @@ function removeAutoFillBackground() {
   `
 }
 
-interface StyledInputProps {
+export interface StyledInputProps {
   $hasLabel: boolean
   $size?: ComponentSizeType
 }

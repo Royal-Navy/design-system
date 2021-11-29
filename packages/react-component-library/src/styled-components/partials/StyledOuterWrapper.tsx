@@ -5,7 +5,7 @@ import { COMPONENT_SIZE, ComponentSizeType } from '../../components/Forms'
 
 const { color } = selectors
 
-const BORDER_RADIUS = {
+export const BORDER_RADIUS = {
   [COMPONENT_SIZE.SMALL]: '10px',
   [COMPONENT_SIZE.FORMS]: '15px',
 }
