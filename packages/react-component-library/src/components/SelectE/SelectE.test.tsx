@@ -67,6 +67,10 @@ describe('SelectE', () => {
       expect(wrapper.getByTestId('select-input')).toHaveValue('')
     })
 
+    it('does not display a clear button', () => {
+      expect(wrapper.queryAllByTestId('select-clear-button')).toHaveLength(0)
+    })
+
     it('does not display the items', () => {
       expect(wrapper.queryAllByTestId('select-option')).toHaveLength(0)
     })
@@ -134,6 +138,20 @@ describe('SelectE', () => {
         it('calls the `onChange` callback', () => {
           expect(onChangeSpy).toHaveBeenCalledTimes(1)
           expect(onChangeSpy).toHaveBeenCalledWith('two')
+        })
+
+        describe('and the clear button is clicked', () => {
+          beforeEach(() => {
+            wrapper.getByTestId('select-clear-button').click()
+          })
+
+          it('resets the value', () => {
+            expect(wrapper.getByTestId('select-input')).toHaveValue('')
+          })
+
+          it('calls the `onChange` callback', () => {
+            expect(onChangeSpy).toHaveBeenCalledWith(null)
+          })
         })
       })
     })

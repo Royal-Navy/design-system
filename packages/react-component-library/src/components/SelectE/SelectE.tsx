@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Downshift from 'downshift'
 
 import { ArrowButton } from './ArrowButton'
+import { ClearButton } from './ClearButton'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getId } from '../../helpers'
 import { SelectEOptionProps } from './SelectEOption'
@@ -48,7 +49,7 @@ export interface SelectEProps extends ComponentWithClass {
   /**
    * Optional handler invoked when the selected value changes.
    */
-  onChange?: (value: string) => void
+  onChange?: (value: string | null) => void
   /**
    * Optional HTML `value` attribute to apply to the component.
    */
@@ -88,13 +89,14 @@ export const SelectE: React.FC<SelectEProps> = ({
       onChange={(selection) => {
         if (onChange) {
           const child = getChildBy(children, 'children', selection)
-          onChange((child as React.ReactElement)?.props?.value)
+          onChange((child as React.ReactElement)?.props?.value ?? null)
         }
       }}
       initialSelectedItem={getSelectedValue(children, value)}
       itemToString={(item) => item || ''}
     >
       {({
+        clearSelection,
         getInputProps,
         getItemProps,
         getMenuProps,
@@ -157,6 +159,12 @@ export const SelectE: React.FC<SelectEProps> = ({
                   />
                 </StyledInputWrapper>
                 <StyledInlineButtons>
+                  {inputValue && (
+                    <ClearButton
+                      isDisabled={isDisabled}
+                      onClick={() => clearSelection()}
+                    />
+                  )}
                   <ArrowButton
                     hasHover={hasHover}
                     isDisabled={isDisabled}
