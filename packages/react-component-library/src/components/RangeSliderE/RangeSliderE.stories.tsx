@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Story, Meta } from '@storybook/react'
 
 import {
@@ -28,203 +29,148 @@ const disableColorContrastRule = {
   },
 }
 
-export const Default: Story<RangeSliderEProps> = (props) => (
-  <div style={{ display: 'flex', height: '5rem' }}>
+const StyledWrapper = styled.div`
+  display: flex;
+  height: 5rem'
+`
+
+const Template: Story<RangeSliderEProps> = (props) => (
+  <StyledWrapper>
     <RangeSliderE {...props} />
-  </div>
+  </StyledWrapper>
 )
 
+export const Default = Template.bind({})
 Default.args = {
   domain: [0, 40],
   mode: 1,
   values: [20],
   tracksLeft: true,
 }
-
 Default.parameters = disableColorContrastRule
 
-export const MultipleHandles: Story<RangeSliderEProps> = (props) => (
-  <div style={{ display: 'flex', height: '5rem' }}>
-    <RangeSliderE
-      {...props}
-      domain={[0, 40]}
-      mode={2}
-      values={[10, 20, 30]}
-      tracksLeft
-      tickCount={10}
-      thresholds={[40, 60]}
-      hasPercentage
-      displayUnit="pt"
-    />
-  </div>
-)
-
+export const MultipleHandles = Template.bind({})
+MultipleHandles.args = {
+  domain: [0, 40],
+  mode: 2,
+  values: [10, 20, 30],
+  tracksLeft: true,
+  tickCount: 10,
+  thresholds: [40, 60],
+  hasPercentage: true,
+  displayUnit: 'pt',
+}
 MultipleHandles.storyName = 'Multiple handles'
-
 MultipleHandles.parameters = disableColorContrastRule
 
-export const SingleThreshold: Story<RangeSliderEProps> = (props) => (
-  <div style={{ display: 'flex', height: '5rem' }}>
-    <RangeSliderE
-      {...props}
-      domain={[0, 40]}
-      mode={1}
-      values={[20]}
-      tracksLeft
-      thresholds={[40]}
-    />
-  </div>
-)
-
+export const SingleThreshold = Template.bind({})
+SingleThreshold.args = {
+  domain: [0, 40],
+  mode: 1,
+  values: [20],
+  tracksLeft: true,
+  thresholds: [40],
+}
 SingleThreshold.storyName = 'Single threshold'
-
 SingleThreshold.parameters = disableColorContrastRule
 
-export const DoubleThreshold: Story<RangeSliderEProps> = (props) => (
-  <div style={{ display: 'flex', height: '5rem' }}>
-    <RangeSliderE
-      {...props}
-      domain={[0, 40]}
-      mode={1}
-      values={[20]}
-      tracksLeft
-      thresholds={[40, 60]}
-    />
-  </div>
-)
-
+export const DoubleThreshold = Template.bind({})
+DoubleThreshold.args = {
+  domain: [0, 40],
+  mode: 1,
+  values: [20],
+  tracksLeft: true,
+  thresholds: [40, 60],
+}
 DoubleThreshold.storyName = 'Double threshold'
-
 DoubleThreshold.parameters = disableColorContrastRule
 
-export const CustomValueFormatter: Story<RangeSliderEProps> = (props) => (
-  <div style={{ display: 'flex', height: '5rem' }}>
-    <RangeSliderE
-      {...props}
-      domain={[0, 40]}
-      mode={1}
-      values={[20]}
-      tickCount={4}
-      tracksLeft
-      formatValue={({ value }) => `£${value.toFixed(2)}`}
-    />
-  </div>
-)
-
+export const CustomValueFormatter = Template.bind({})
+CustomValueFormatter.args = {
+  domain: [0, 40],
+  mode: 1,
+  values: [20],
+  tickCount: 4,
+  tracksLeft: true,
+  formatValue: ({ value }) => `£${value.toFixed(2)}`,
+}
 CustomValueFormatter.storyName = 'Custom value formatter'
-
 CustomValueFormatter.parameters = disableColorContrastRule
 
-export const Stepped: Story<RangeSliderEProps> = (props) => (
-  <div style={{ display: 'flex', height: '5rem' }}>
-    <RangeSliderE
-      {...props}
-      domain={[0, 40]}
-      step={10}
-      mode={1}
-      values={[20]}
-      tickCount={4}
-      tracksLeft
-    />
-  </div>
-)
-
+export const Stepped = Template.bind({})
+Stepped.args = {
+  domain: [0, 40],
+  step: 10,
+  mode: 1,
+  values: [20],
+  tickCount: 4,
+  tracksLeft: true,
+}
 Stepped.storyName = 'Stepped'
-
 Stepped.parameters = disableColorContrastRule
 
-export const WithPercentage: Story<RangeSliderEProps> = (props) => (
-  <div style={{ display: 'flex', height: '5rem' }}>
-    <RangeSliderE
-      {...props}
-      domain={[0, 40]}
-      step={10}
-      mode={1}
-      values={[20]}
-      tickCount={4}
-      tracksLeft
-      hasPercentage
-    />
-  </div>
-)
-
+export const WithPercentage = Template.bind({})
+WithPercentage.args = {
+  domain: [0, 40],
+  step: 10,
+  mode: 1,
+  values: [20],
+  tickCount: 4,
+  tracksLeft: true,
+  hasPercentage: true,
+}
 WithPercentage.storyName = 'With percentage'
-
 WithPercentage.parameters = disableColorContrastRule
 
-export const WithIcons: Story<RangeSliderEProps> = (props) => (
-  <div style={{ display: 'flex', height: '5rem' }}>
-    <RangeSliderE
-      {...props}
-      domain={[0, 40]}
-      step={10}
-      mode={1}
-      values={[20]}
-      tickCount={4}
-      tracksLeft
-      IconLeft={IconBrightnessLow}
-      IconRight={IconBrightnessHigh}
-    />
-  </div>
-)
-
+export const WithIcons = Template.bind({})
+WithIcons.args = {
+  domain: [0, 40],
+  step: 10,
+  mode: 1,
+  values: [20],
+  tickCount: 4,
+  tracksLeft: true,
+  IconLeft: IconBrightnessLow,
+  IconRight: IconBrightnessHigh,
+}
 WithIcons.storyName = 'With icons'
-
 WithIcons.parameters = disableColorContrastRule
 
-export const WithLabels: Story<RangeSliderEProps> = (props) => (
-  <div style={{ display: 'flex', height: '5rem' }}>
-    <RangeSliderE
-      {...props}
-      domain={[0, 40]}
-      step={2}
-      mode={1}
-      values={[20]}
-      tracksLeft
-      hasLabels
-      tickCount={20}
-    />
-  </div>
-)
-
+export const WithLabels = Template.bind({})
+WithLabels.args = {
+  domain: [0, 40],
+  step: 2,
+  mode: 1,
+  values: [20],
+  tracksLeft: true,
+  hasLabels: true,
+  tickCount: 20,
+}
 WithLabels.storyName = 'With labels'
-
 WithLabels.parameters = disableColorContrastRule
 
-export const ReversedScale: Story<RangeSliderEProps> = (props) => (
-  <div style={{ display: 'flex', height: '5rem' }}>
-    <RangeSliderE
-      {...props}
-      domain={[0, 40]}
-      step={2}
-      mode={1}
-      values={[20]}
-      tracksRight
-      hasLabels
-      tickCount={20}
-      isReversed
-    />
-  </div>
-)
-
+export const ReversedScale = Template.bind({})
+ReversedScale.args = {
+  domain: [0, 40],
+  step: 2,
+  mode: 1,
+  values: [20],
+  tracksRight: true,
+  hasLabels: true,
+  tickCount: 20,
+  isReversed: true,
+}
 ReversedScale.storyName = 'Reversed scale'
-
 ReversedScale.parameters = disableColorContrastRule
 
-export const Disabled: Story<RangeSliderEProps> = (props) => (
-  <div style={{ display: 'flex', height: '5rem' }}>
-    <RangeSliderE
-      {...props}
-      domain={[0, 40]}
-      step={10}
-      mode={1}
-      values={[20]}
-      tracksLeft
-      isDisabled
-    />
-  </div>
-)
-
+export const Disabled = Template.bind({})
+Disabled.args = {
+  domain: [0, 40],
+  step: 10,
+  mode: 1,
+  values: [20],
+  tracksLeft: true,
+  isDisabled: true,
+}
 Disabled.storyName = 'Disabled'
-
 Disabled.parameters = disableColorContrastRule
