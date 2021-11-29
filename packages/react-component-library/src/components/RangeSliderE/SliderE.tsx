@@ -177,8 +177,8 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
       >
         <Rail>
           {({ getRailProps }) => (
-            <StyledRail>
-              <StyledRailInner {...getRailProps()} />
+            <StyledRail {...getRailProps()} data-testid="rangeslider-rail">
+              <StyledRailInner />
             </StyledRail>
           )}
         </Rail>
