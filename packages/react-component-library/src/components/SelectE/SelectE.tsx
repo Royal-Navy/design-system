@@ -38,6 +38,10 @@ export interface SelectEProps extends ComponentWithClass {
    */
   isDisabled?: boolean
   /**
+   * Toggles whether the component is invalid or not.
+   */
+  isInvalid?: boolean
+  /**
    * Text label to display within the component.
    */
   label: string
@@ -61,6 +65,7 @@ export const SelectE: React.FC<SelectEProps> = ({
   children,
   id = getId('select'),
   isDisabled,
+  isInvalid,
   label,
   onChange,
   ...rest
@@ -97,7 +102,12 @@ export const SelectE: React.FC<SelectEProps> = ({
             aria-labelledby={labelId}
           >
             <StyledTextInput data-testid="text-input-container">
-              <StyledOuterWrapper $hasFocus={isOpen}>
+              <StyledOuterWrapper
+                $hasFocus={isOpen}
+                $isDisabled={isDisabled}
+                $isInvalid={isInvalid}
+                data-testid="select-outer-wrapper"
+              >
                 <StyledInputWrapper data-testid="text-input-input-wrapper">
                   <StyledLabel
                     $hasContent={!!inputValue}

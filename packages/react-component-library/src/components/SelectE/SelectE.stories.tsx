@@ -35,3 +35,8 @@ export const Disabled = Template.bind({})
 Disabled.args = {
   isDisabled: true,
 }
+
+export const WithError = Template.bind({})
+WithError.args = {
+  isInvalid: true,
+}

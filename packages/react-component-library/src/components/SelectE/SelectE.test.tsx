@@ -2,8 +2,10 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { ColorAction000 } from '@defencedigital/design-tokens'
+import { ColorAction000, ColorDanger800 } from '@defencedigital/design-tokens'
 
+import { BORDER_WIDTH } from '../../styled-components'
+import { COMPONENT_SIZE } from '../Forms'
 import { SelectE } from '.'
 import { SelectEOption } from './SelectEOption'
 
@@ -209,6 +211,27 @@ describe('SelectE', () => {
       it('does not show the items', () => {
         expect(wrapper.queryAllByTestId('select-option')).toHaveLength(0)
       })
+    })
+  })
+
+  describe('when invalid', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SelectE isInvalid label="Label">
+          <SelectEOption value="one">One</SelectEOption>
+          <SelectEOption value="two">Two</SelectEOption>
+          <SelectEOption value="three">Three</SelectEOption>
+        </SelectE>
+      )
+    })
+
+    it('displays in an error state', () => {
+      expect(wrapper.getByTestId('select-outer-wrapper')).toHaveStyleRule(
+        'border',
+        `${
+          BORDER_WIDTH[COMPONENT_SIZE.FORMS]
+        } solid ${ColorDanger800.toUpperCase()}`
+      )
     })
   })
 })
