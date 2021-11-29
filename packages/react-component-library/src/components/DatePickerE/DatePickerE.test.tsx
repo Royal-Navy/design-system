@@ -6,6 +6,7 @@ import {
   render,
   RenderResult,
   waitFor,
+  waitForElementToBeRemoved,
 } from '@testing-library/react'
 import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
@@ -645,6 +646,62 @@ describe('DatePickerE', () => {
       expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
         'disabled'
       )
+    })
+  })
+
+  describe('when a single date picker is rendered and the picker is opened', () => {
+    beforeEach(() => {
+      wrapper = render(<DatePickerE />)
+
+      userEvent.click(wrapper.getByTestId('datepicker-input-button'))
+    })
+
+    it('displays the current month', () => {
+      expect(wrapper.getByText('November 2021')).toBeInTheDocument()
+    })
+
+    describe('when the next month button is clicked', () => {
+      beforeEach(() => {
+        userEvent.click(wrapper.getByLabelText('Next Month'))
+      })
+
+      it('displays the next month', () => {
+        expect(wrapper.getByText('December 2021')).toBeInTheDocument()
+      })
+
+      describe('when the first day is clicked', () => {
+        beforeEach(() => {
+          click(wrapper.getByText('1'))
+        })
+
+        it('updates the input value', () => {
+          expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
+            '01/12/2021'
+          )
+        })
+
+        it('closes the picker', () => {
+          return waitFor(() => {
+            expect(
+              wrapper.queryByTestId('floating-box')
+            ).not.toBeInTheDocument()
+          })
+        })
+
+        describe('when the picker is reopened', () => {
+          beforeEach(async () => {
+            await waitForElementToBeRemoved(
+              wrapper.queryByTestId('floating-box')
+            )
+
+            userEvent.click(wrapper.getByTestId('datepicker-input-button'))
+          })
+
+          it('opens the picker on the previously selected month', () => {
+            expect(wrapper.getByText('December 2021')).toBeInTheDocument()
+          })
+        })
+      })
     })
   })
 
