@@ -57,7 +57,6 @@ MultipleHandles.args = {
   tracksLeft: true,
   tickCount: 10,
   thresholds: [40, 60],
-  hasPercentage: true,
   hasMarkers: true,
   displayUnit: 'pt',
 }
@@ -113,20 +112,6 @@ Stepped.args = {
 }
 Stepped.storyName = 'Stepped'
 Stepped.parameters = disableColorContrastRule
-
-export const WithPercentage = Template.bind({})
-WithPercentage.args = {
-  domain: [0, 40],
-  step: 10,
-  mode: 1,
-  values: [20],
-  tickCount: 4,
-  tracksLeft: true,
-  hasMarkers: true,
-  hasPercentage: true,
-}
-WithPercentage.storyName = 'With percentage'
-WithPercentage.parameters = disableColorContrastRule
 
 export const WithIcons = Template.bind({})
 WithIcons.args = {

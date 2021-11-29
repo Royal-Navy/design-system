@@ -99,10 +99,6 @@ export interface RangeSliderEProps extends Omit<SliderProps, SliderOmitType> {
    */
   thresholds?: number[]
   /**
-   * Toggles whether to display percentage values alongside the draggable handles.
-   */
-  hasPercentage?: boolean
-  /**
    * Toggles whether to display unit values alongside the draggable handles.
    */
   displayUnit?: string
@@ -128,7 +124,6 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
   onChange,
   onUpdate,
   thresholds,
-  hasPercentage,
   displayUnit = '',
   formatValue,
   mode,
@@ -158,7 +153,6 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
     <StyledRangeSlider
       $isReversed={isReversed}
       $isDisabled={isDisabled}
-      $hasPercentage={hasPercentage}
       data-testid="rangeslider"
       {...rest}
     >

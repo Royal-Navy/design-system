@@ -4,7 +4,6 @@ import { GetHandleProps, SliderItem } from 'react-compound-slider'
 import { useThresholdColor } from './useThresholdColor'
 import { RangeSliderEPositionBag, RangeSliderEValueFormatter } from '.'
 import { StyledHandle } from './partials/StyledHandle'
-import { StyledPercentage } from './partials/StyledPercentage'
 import { StyledValue } from './partials/StyledValue'
 
 export interface HandleEProps {
@@ -45,9 +44,6 @@ export const HandleE: React.FC<HandleEProps> = ({
       {...getHandleProps(id)}
       data-testid="rangeslider-handle"
     >
-      <StyledPercentage data-testid="rangeslider-percentage">
-        {`${Math.floor(percent)}%`}
-      </StyledPercentage>
       <StyledValue data-testid="rangeslider-value">
         {formatValue(positionBag)}
       </StyledValue>

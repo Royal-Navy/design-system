@@ -53,10 +53,6 @@ describe('RangeSliderE', () => {
       )
     })
 
-    it('should not display the percentage value next to the handle', () => {
-      expect(wrapper.getByTestId('rangeslider-percentage')).not.toBeVisible()
-    })
-
     it('should set the correct `tabindex`', () => {
       expect(wrapper.getByTestId('rangeslider-handle')).toHaveAttribute(
         'tabindex',
@@ -265,26 +261,6 @@ describe('RangeSliderE', () => {
 
     it('should render two handles', () => {
       expect(wrapper.queryAllByTestId('rangeslider-handle')).toHaveLength(3)
-    })
-  })
-
-  describe('when the `hasPercentage` prop is provided', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <RangeSliderE
-          domain={[0, 40]}
-          mode={1}
-          values={[20]}
-          tracksLeft
-          tickCount={4}
-          thresholds={[40, 60]}
-          hasPercentage
-        />
-      )
-    })
-
-    it('should display the percentage value next to the handle', () => {
-      expect(wrapper.getByTestId('rangeslider-percentage')).toBeVisible()
     })
   })
 
