@@ -31,7 +31,8 @@ const disableColorContrastRule = {
 
 const StyledWrapper = styled.div`
   display: flex;
-  height: 5rem'
+  height: 5rem;
+  padding: 0 1.5rem;
 `
 
 const Template: Story<RangeSliderEProps> = (props) => (

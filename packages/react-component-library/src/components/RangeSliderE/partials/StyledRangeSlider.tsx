@@ -16,7 +16,7 @@ export const StyledRangeSlider = styled.div<StyledRangeSliderProps>`
       opacity: 0.5;
       cursor: not-allowed;
 
-      * {
+      &&& * {
         cursor: not-allowed;
       }
     `}

@@ -15,9 +15,11 @@ interface StyledMarkerProps {
 
 export const StyledMarker = styled.div<StyledMarkerProps>`
   position: absolute;
-  width: 2px;
-  height: 12px;
-  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
   background-color: ${RANGE_SLIDER_TRACK_ABOVE_THRESHOLDS};
   left: ${({ $left }) => $left};
 

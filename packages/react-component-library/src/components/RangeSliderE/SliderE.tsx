@@ -158,7 +158,7 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
     >
       {IconLeft && (
         <StyledIconLeft aria-hidden data-testid="rangeslider-icon-left">
-          <IconLeft />
+          <IconLeft size={22} />
         </StyledIconLeft>
       )}
       <StyledSlider
@@ -252,7 +252,7 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
       </StyledSlider>
       {IconRight && (
         <StyledIconRight aria-hidden data-testid="rangeslider-icon-right">
-          <IconRight />
+          <IconRight size={22} />
         </StyledIconRight>
       )}
     </StyledRangeSlider>

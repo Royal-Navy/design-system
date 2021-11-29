@@ -22,7 +22,7 @@ export const StyledChunk = styled.div.attrs<StyledChunkProps>(
 )<StyledChunkProps>`
   position: absolute;
   transform: translate(0%, -50%);
-  height: 2px;
+  height: 6px;
   z-index: 1;
   background-color: ${RANGE_SLIDER_TRACK_COLOR};
   cursor: pointer;
