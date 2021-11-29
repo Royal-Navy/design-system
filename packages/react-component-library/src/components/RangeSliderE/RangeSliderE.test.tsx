@@ -94,6 +94,10 @@ describe('RangeSliderE', () => {
       expect(wrapper.queryAllByTestId('rangeslider-label')).toHaveLength(0)
     })
 
+    it('should not render any markers', () => {
+      expect(wrapper.queryAllByTestId('rangeslider-marker')).toHaveLength(2)
+    })
+
     describe('and the end user moves the handle to the right using keyboard', () => {
       beforeEach(() => {
         userEvent.click(wrapper.getByTestId('rangeslider-handle'))
@@ -321,6 +325,31 @@ describe('RangeSliderE', () => {
 
     it('formats the handle label using the provided formatter', () => {
       expect(wrapper.getByTestId('rangeslider-value')).toHaveTextContent('£20')
+    })
+  })
+
+  describe('when markers and labels are enabled', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <RangeSliderE
+          domain={[0, 40]}
+          mode={1}
+          values={[20]}
+          tracksLeft
+          tickCount={4}
+          thresholds={[40, 60]}
+          hasMarkers
+          hasLabels
+        />
+      )
+    })
+
+    it('should render the correct number of labels', () => {
+      expect(wrapper.queryAllByTestId('rangeslider-label')).toHaveLength(5)
+    })
+
+    it('should render the correct number of markers', () => {
+      expect(wrapper.queryAllByTestId('rangeslider-marker')).toHaveLength(5)
     })
   })
 

@@ -63,6 +63,10 @@ export interface RangeSliderEProps extends Omit<SliderProps, SliderOmitType> {
    */
   hasLabels?: boolean
   /**
+   * Toggles whether or not to display value markers along the slider.
+   */
+  hasMarkers?: boolean
+  /**
    * Toggles whether to display colored tracks to the left of the handle.
    */
   tracksLeft?: boolean
@@ -112,6 +116,7 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
   domain,
   step,
   hasLabels,
+  hasMarkers,
   tracksLeft = false,
   tracksRight = false,
   tickCount = 10,
@@ -238,6 +243,7 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
                     key={tick.id}
                     tick={tick}
                     count={ticks.length}
+                    hasMarkers={hasMarkers}
                     hasLabels={hasLabels}
                     values={sliderValues}
                     domain={domain}

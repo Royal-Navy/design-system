@@ -58,6 +58,7 @@ MultipleHandles.args = {
   tickCount: 10,
   thresholds: [40, 60],
   hasPercentage: true,
+  hasMarkers: true,
   displayUnit: 'pt',
 }
 MultipleHandles.storyName = 'Multiple handles'
@@ -69,6 +70,7 @@ SingleThreshold.args = {
   mode: 1,
   values: [20],
   tracksLeft: true,
+  hasMarkers: true,
   thresholds: [40],
 }
 SingleThreshold.storyName = 'Single threshold'
@@ -80,6 +82,7 @@ DoubleThreshold.args = {
   mode: 1,
   values: [20],
   tracksLeft: true,
+  hasMarkers: true,
   thresholds: [40, 60],
 }
 DoubleThreshold.storyName = 'Double threshold'
@@ -92,6 +95,7 @@ CustomValueFormatter.args = {
   values: [20],
   tickCount: 4,
   tracksLeft: true,
+  hasMarkers: true,
   formatValue: ({ value }) => `£${value.toFixed(2)}`,
 }
 CustomValueFormatter.storyName = 'Custom value formatter'
@@ -105,6 +109,7 @@ Stepped.args = {
   values: [20],
   tickCount: 4,
   tracksLeft: true,
+  hasMarkers: true,
 }
 Stepped.storyName = 'Stepped'
 Stepped.parameters = disableColorContrastRule
@@ -117,6 +122,7 @@ WithPercentage.args = {
   values: [20],
   tickCount: 4,
   tracksLeft: true,
+  hasMarkers: true,
   hasPercentage: true,
 }
 WithPercentage.storyName = 'With percentage'
@@ -130,6 +136,7 @@ WithIcons.args = {
   values: [20],
   tickCount: 4,
   tracksLeft: true,
+  hasMarkers: true,
   IconLeft: IconBrightnessLow,
   IconRight: IconBrightnessHigh,
 }
@@ -144,6 +151,7 @@ WithLabels.args = {
   values: [20],
   tracksLeft: true,
   hasLabels: true,
+  hasMarkers: true,
   tickCount: 20,
 }
 WithLabels.storyName = 'With labels'
@@ -157,6 +165,7 @@ ReversedScale.args = {
   values: [20],
   tracksRight: true,
   hasLabels: true,
+  hasMarkers: true,
   tickCount: 20,
   isReversed: true,
 }
@@ -170,6 +179,7 @@ Disabled.args = {
   mode: 1,
   values: [20],
   tracksLeft: true,
+  hasMarkers: true,
   isDisabled: true,
 }
 Disabled.storyName = 'Disabled'

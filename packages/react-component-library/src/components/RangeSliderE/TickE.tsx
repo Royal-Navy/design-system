@@ -9,6 +9,7 @@ export interface TickEProps {
   tick: SliderItem
   count: number
   hasLabels?: boolean
+  hasMarkers?: boolean
   values: ReadonlyArray<number>
   domain: ReadonlyArray<number>
   isReversed?: boolean
@@ -23,6 +24,7 @@ export const TickE: React.FC<TickEProps> = ({
   tick,
   count,
   hasLabels,
+  hasMarkers,
   values,
   domain,
   isReversed,
@@ -38,13 +40,20 @@ export const TickE: React.FC<TickEProps> = ({
     [domain, percent]
   )
 
+  const thresholdColor = useThresholdColor(percent, thresholds)
+
+  const showMarker = percent === 0 || percent === 100 || hasMarkers
+
   return (
     <div data-testid="rangeslider-tick">
-      <StyledMarker
-        $left={`${tick.percent}%`}
-        $isActive={isActive(values, tickValue)}
-        $thresholdColor={useThresholdColor(percent, thresholds)}
-      />
+      {showMarker && (
+        <StyledMarker
+          $left={`${tick.percent}%`}
+          $isActive={isActive(values, tickValue)}
+          $thresholdColor={thresholdColor}
+          data-testid="rangeslider-marker"
+        />
+      )}
       {hasLabels && (
         <StyledLabel
           $marginLeft={`${-(100 / count) / 2}%`}
