@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-
 import { StyledCheckboxWrapper } from '../CheckboxE/partials/StyledCheckboxWrapper'
 import { StyledCheckbox } from '../CheckboxE/partials/StyledCheckbox'
 import { StyledRadioWrapper } from '../RadioE/partials/StyledRadioWrapper'
@@ -21,12 +20,21 @@ const { color, spacing } = selectors
 
 const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   display: inline-block;
-  border: 1px solid transparent;
+  position: relative;
   padding: unset;
+  border: none;
   border-radius: 15px;
 
   legend {
     padding: ${spacing('10')} 0 ${spacing('8')};
+  }
+
+  ${StyledRadioWrapper}, ${StyledCheckboxWrapper} {
+    margin-top: -1px;
+
+    &:first-of-type {
+      margin-top: unset;
+    }
   }
 
   ${StyledRadioWrapper}, ${StyledCheckboxWrapper} {
@@ -70,43 +78,58 @@ const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   ${({ $isInvalid }) =>
     $isInvalid &&
     css`
-      border: 1px solid ${color('danger', '800')};
-      box-shadow: inset 0 0 0 1px ${color('danger', '800')},
-        0 0 0 2px ${color('danger', '800')};
+      &::after {
+        box-shadow: inset 0 0 0 1px ${color('danger', '800')},
+          0 0 0 2px ${color('danger', '800')};
+        border-radius: 15px;
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        pointer-events: none;
+      }
 
       ${StyledRadioWrapper},
       ${StyledCheckboxWrapper} {
         ${StyledCheckbox}, ${StyledRadio} {
           border-color: ${color('neutral', '200')};
           box-shadow: unset;
-          border-right-color: ${color('danger', '800')};
-          border-left-color: ${color('danger', '800')};
+          border-right-color: transparent;
+          border-left-color: transparent;
         }
       }
 
       ${StyledRadioWrapper}:first-of-type,
       ${StyledCheckboxWrapper}:first-of-type {
         ${StyledCheckbox}, ${StyledRadio} {
-          border-top-color: ${color('danger', '800')};
-        }
+          border-top-color: transparent;
 
-        &:active,
-        &:focus-within {
-          border-top-color: ${color('action', '500')};
+          &:active,
+          &:focus-within {
+            border-top-color: ${color('action', '500')};
+          }
         }
       }
 
       ${StyledRadioWrapper}:last-of-type,
       ${StyledCheckboxWrapper}:last-of-type {
         ${StyledCheckbox}, ${StyledRadio} {
-          border-bottom-color: ${color('danger', '800')};
+          border-bottom-color: transparent;
+
+          &:active,
+          &:focus-within {
+            border-bottom-color: ${color('action', '500')};
+          }
         }
       }
     `}
 `
 
-export const Fieldset: React.FC<FieldsetProps> = (props) => {
-  return <StyledFieldset {...props} />
+export const Fieldset: React.FC<FieldsetProps> = ({ isInvalid, ...rest }) => {
+  return <StyledFieldset $isInvalid={isInvalid} {...rest} />
 }
 
 Fieldset.displayName = 'Fieldset'

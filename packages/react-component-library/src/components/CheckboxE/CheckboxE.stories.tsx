@@ -6,7 +6,6 @@ import * as yup from 'yup'
 
 import { withFormik } from '../../enhancers/withFormik'
 import { CheckboxE, CheckboxEProps } from '.'
-import { Button } from '../Button'
 import { FormikGroupE } from '../FormikGroup'
 
 export default {
@@ -17,20 +16,16 @@ export default {
   },
 } as Meta
 
-export const Default: Story<CheckboxEProps> = (props) => (
-  <CheckboxE {...props} />
-)
+const Template: Story<CheckboxEProps> = (props) => <CheckboxE {...props} />
 
+export const Default = Template.bind({})
 Default.args = {
   id: undefined,
   label: 'Default checkbox',
   name: 'default',
 }
 
-export const Disabled: Story<CheckboxEProps> = (props) => (
-  <CheckboxE {...props} />
-)
-
+export const Disabled = Template.bind({})
 Disabled.args = {
   id: undefined,
   isDisabled: true,
@@ -39,10 +34,7 @@ Disabled.args = {
   checked: true,
 }
 
-export const Invalid: Story<CheckboxEProps> = (props) => (
-  <CheckboxE {...props} />
-)
-
+export const Invalid = Template.bind({})
 Invalid.args = {
   id: undefined,
   label: 'Invalid checkbox',
@@ -61,6 +53,10 @@ export const WithFormikGroup: Story<CheckboxEProps> = () => {
       exampleWithError: [],
     }
 
+    const initialTouched = {
+      exampleWithError: true,
+    }
+
     const validationSchema = yup.object().shape({
       exampleWithError: yup.array().min(1),
     })
@@ -70,6 +66,8 @@ export const WithFormikGroup: Story<CheckboxEProps> = () => {
     return (
       <Formik
         initialValues={initialValues}
+        initialTouched={initialTouched}
+        validateOnMount
         onSubmit={action('onSubmit')}
         validationSchema={validationSchema}
       >
@@ -121,8 +119,6 @@ export const WithFormikGroup: Story<CheckboxEProps> = () => {
               type="checkbox"
             />
           </FormikGroupE>
-          <br />
-          <Button type="submit">Submit</Button>
         </Form>
       </Formik>
     )

@@ -6,7 +6,6 @@ import * as yup from 'yup'
 
 import { withFormik } from '../../enhancers/withFormik'
 import { RadioE, RadioEProps } from '.'
-import { Button } from '../Button'
 import { FormikGroupE } from '../FormikGroup'
 
 export default {
@@ -17,8 +16,9 @@ export default {
   },
 } as Meta
 
-export const Default: Story<RadioEProps> = (props) => <RadioE {...props} />
+const Template: Story<RadioEProps> = (props) => <RadioE {...props} />
 
+export const Default = Template.bind({})
 Default.args = {
   id: undefined,
   label: 'Default radio',
@@ -26,8 +26,7 @@ Default.args = {
   defaultChecked: true,
 }
 
-export const Disabled: Story<RadioEProps> = (props) => <RadioE {...props} />
-
+export const Disabled = Template.bind({})
 Disabled.args = {
   id: undefined,
   isDisabled: true,
@@ -35,8 +34,7 @@ Disabled.args = {
   name: 'disabled',
 }
 
-export const Invalid: Story<RadioEProps> = (props) => <RadioE {...props} />
-
+export const Invalid = Template.bind({})
 Invalid.args = {
   id: undefined,
   label: 'Invalid radio',
@@ -55,6 +53,10 @@ export const WithFormikGroup: Story<RadioEProps> = () => {
       exampleWithError: '',
     }
 
+    const initialTouched = {
+      exampleWithError: true,
+    }
+
     const validationSchema = yup.object().shape({
       exampleWithError: yup.string().required(),
     })
@@ -64,6 +66,8 @@ export const WithFormikGroup: Story<RadioEProps> = () => {
     return (
       <Formik
         initialValues={initialValues}
+        initialTouched={initialTouched}
+        validateOnMount
         onSubmit={action('onSubmit')}
         validationSchema={validationSchema}
       >
@@ -109,8 +113,6 @@ export const WithFormikGroup: Story<RadioEProps> = () => {
               value="3"
             />
           </FormikGroupE>
-          <br />
-          <Button type="submit">Submit</Button>
         </Form>
       </Formik>
     )
