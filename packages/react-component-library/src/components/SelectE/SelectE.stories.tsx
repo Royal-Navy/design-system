@@ -30,3 +30,8 @@ const Template: Story<SelectEProps> = (args) => (
 )
 
 export const Default = Template.bind({})
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  isDisabled: true,
+}

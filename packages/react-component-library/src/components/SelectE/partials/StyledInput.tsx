@@ -6,5 +6,7 @@ import {
 } from '../../TextInputE/partials/StyledInput'
 
 export const StyledInput = styled(StyledTextInputInput)<StyledInputProps>`
-  cursor: pointer;
+  &:enabled {
+    cursor: pointer;
+  }
 `

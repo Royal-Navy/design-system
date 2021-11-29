@@ -156,4 +156,59 @@ describe('SelectE', () => {
       })
     })
   })
+
+  describe('when disabled', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SelectE isDisabled label="Label">
+          <SelectEOption value="one">One</SelectEOption>
+          <SelectEOption value="two">Two</SelectEOption>
+          <SelectEOption value="three">Three</SelectEOption>
+        </SelectE>
+      )
+    })
+
+    describe('when the mouse enters the input', () => {
+      beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getByTestId('select-input'))
+      })
+
+      it('does not show the arrow button in a hover state', () => {
+        expect(wrapper.getByTestId('select-arrow-button')).toHaveStyleRule(
+          'background-color',
+          'transparent'
+        )
+      })
+    })
+
+    describe('when tabbing to the input', () => {
+      beforeEach(() => {
+        userEvent.tab()
+      })
+
+      it('does not show the items', () => {
+        expect(wrapper.queryAllByTestId('select-option')).toHaveLength(0)
+      })
+    })
+
+    describe('when clicking on the input', () => {
+      beforeEach(() => {
+        userEvent.click(wrapper.getByTestId('select-input'))
+      })
+
+      it('does not show the items', () => {
+        expect(wrapper.queryAllByTestId('select-option')).toHaveLength(0)
+      })
+    })
+
+    describe('when clicking on the arrow button', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('select-arrow-button').click()
+      })
+
+      it('does not show the items', () => {
+        expect(wrapper.queryAllByTestId('select-option')).toHaveLength(0)
+      })
+    })
+  })
 })

@@ -34,6 +34,10 @@ export interface SelectEProps extends ComponentWithClass {
    */
   id?: string
   /**
+   * Toggles whether the component is disabled or not (preventing user interaction).
+   */
+  isDisabled?: boolean
+  /**
    * Text label to display within the component.
    */
   label: string
@@ -56,6 +60,7 @@ function getChildBy(
 export const SelectE: React.FC<SelectEProps> = ({
   children,
   id = getId('select'),
+  isDisabled,
   label,
   onChange,
   ...rest
@@ -106,14 +111,21 @@ export const SelectE: React.FC<SelectEProps> = ({
                   <StyledInput
                     $hasLabel
                     data-testid="select-input"
+                    disabled={isDisabled}
                     onMouseDown={() => {
-                      toggleMenu()
+                      if (!isDisabled) {
+                        toggleMenu()
+                      }
                     }}
                     onFocus={() => {
-                      openMenu()
+                      if (!isDisabled) {
+                        openMenu()
+                      }
                     }}
                     onMouseEnter={() => {
-                      setHasHover(true)
+                      if (!isDisabled) {
+                        setHasHover(true)
+                      }
                     }}
                     onMouseLeave={() => setHasHover(false)}
                     readOnly
@@ -126,6 +138,7 @@ export const SelectE: React.FC<SelectEProps> = ({
                 <StyledInlineButtons>
                   <ArrowButton
                     hasHover={hasHover}
+                    isDisabled={isDisabled}
                     isOpen={isOpen}
                     {...getToggleButtonProps()}
                   />
