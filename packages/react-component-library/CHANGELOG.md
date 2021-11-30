@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.64.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.64.1...2.64.2) (2021-11-30)
+
+
+### Bug Fixes
+
+* **CheckboxE:** Set Formik `initialTouched` and use Template bind ([2968c11](https://github.com/defencedigital/mod-uk-design-system/commit/2968c1163e2854c7e6f97b68be2f717860c8c90e))
+* **DatePickerE:** Reopen picker on correct date ([3973859](https://github.com/defencedigital/mod-uk-design-system/commit/39738593ee4c163dc714c91b9c4f44b463655039))
+* **Fieldset:** Resolve isInvalid styling for `CheckboxE` and `RadioE` ([2af7bd4](https://github.com/defencedigital/mod-uk-design-system/commit/2af7bd4b6dcbf9a8219d2d97ea8839b09ecee4fc))
+* **RadioE:** Set Formik `initialTouched` and use Template bind ([893c90f](https://github.com/defencedigital/mod-uk-design-system/commit/893c90f3195593ae46cad2f3a4ce741c4bc5d1e8))
+
+
+
+
+
 ## [2.64.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.64.0...2.64.1) (2021-11-29)
 
 
