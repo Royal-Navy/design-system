@@ -1,31 +1,27 @@
 import React, { useState } from 'react'
 import { Placement } from '@popperjs/core'
 import { DayPickerProps } from 'react-day-picker'
-import { Transition } from 'react-transition-group'
 
 import {
   FLOATING_BOX_PLACEMENT,
-  FLOATING_BOX_SCHEME,
+  FloatingBox,
 } from '../../primitives/FloatingBox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
 import { DatePickerEInput } from './DatePickerEInput'
 import { DropdownIndicatorIcon } from '../Dropdown/DropdownIndicatorIcon'
-import { FloatingBoxContent } from '../../primitives/FloatingBox/FloatingBoxContent'
 import { getId, hasClass } from '../../helpers'
 import { InputValidationProps } from '../../common/InputValidationProps'
-import { StyledArrow } from '../../primitives/FloatingBox/partials/StyledArrow'
 import { StyledButton } from './partials/StyledButton'
 import { StyledDatePickerEInput } from './partials/StyledDatePickerEInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
-import { StyledFloatingBox } from '../../primitives/FloatingBox/partials/StyledFloatingBox'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledLabel } from './partials/StyledLabel'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledSeparator } from './partials/StyledSeparator'
 import { useDatePickerEOpenClose } from './useDatePickerEOpenClose'
 import { useExternalId } from '../../hooks/useExternalId'
-import { useFloatingElement } from '../../hooks/useFloatingElement'
+import { useStatefulRef } from '../../hooks/useStatefulRef'
 import { useSelection } from './useSelection'
 
 export interface DatePickerEProps
@@ -135,6 +131,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     isInvalid || hasClass(className, 'is-invalid')
   )
   const [currentMonth, setCurrentMonth] = useState<Date>(null)
+  const [floatingBoxTarget, setFloatingBoxTarget] = useStatefulRef()
 
   const { from, to } = state
   const modifiers = { start: from, end: to }
@@ -146,28 +143,13 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
 
   const placeholder = isRange ? null : datePickerFormat.toLowerCase()
 
-  const {
-    targetElementRef,
-    floatingElementRef,
-    arrowElementRef,
-    styles,
-    attributes,
-  } = useFloatingElement(placement)
-
-  const TRANSITION_STYLES = {
-    entering: { opacity: 0 },
-    entered: { opacity: 1 },
-    exiting: { opacity: 0 },
-    exited: { opacity: 0 },
-  }
-
   return (
     <>
       <StyledDatePickerEInput
         className={className}
         data-testid="datepicker-input-wrapper"
         $isDisabled={isDisabled}
-        ref={targetElementRef}
+        ref={setFloatingBoxTarget}
       >
         <StyledOuterWrapper
           data-testid="datepicker-outer-wrapper"
@@ -226,49 +208,30 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
           </StyledButton>
         </StyledOuterWrapper>
       </StyledDatePickerEInput>
-      <Transition in={open} timeout={0} unmountOnExit>
-        {(transitionState) => (
-          <StyledFloatingBox
-            ref={floatingElementRef}
-            role="dialog"
-            data-testid="floating-box"
-            aria-modal
-            aria-labelledby={titleId}
-            aria-live="polite"
-            style={{ ...styles.popper, ...TRANSITION_STYLES[transitionState] }}
-            {...attributes.popper}
-          >
-            <FloatingBoxContent
-              contentId={contentId}
-              scheme={FLOATING_BOX_SCHEME.LIGHT}
-              data-testid="floating-box-content"
-            >
-              <StyledArrow
-                $placement={
-                  attributes?.popper?.['data-popper-placement'] as Placement
-                }
-                ref={arrowElementRef}
-                style={styles.arrow}
-                {...attributes.arrow}
-              />
-              <div ref={floatingBoxChildrenRef}>
-                <StyledDayPicker
-                  numberOfMonths={isRange ? 2 : 1}
-                  selectedDays={[from, { from, to }]}
-                  modifiers={modifiers}
-                  month={currentMonth}
-                  onDayClick={handleDayClick}
-                  initialMonth={from || initialMonth}
-                  disabledDays={disabledDays}
-                  $isRange={isRange}
-                  $isVisible={open}
-                  onFocus={onCalendarFocus}
-                />
-              </div>
-            </FloatingBoxContent>
-          </StyledFloatingBox>
-        )}
-      </Transition>
+      <FloatingBox
+        isVisible={open}
+        placement={placement}
+        targetElement={floatingBoxTarget}
+        role="dialog"
+        aria-modal
+        aria-labelledby={titleId}
+        aria-live="polite"
+      >
+        <div ref={floatingBoxChildrenRef}>
+          <StyledDayPicker
+            numberOfMonths={isRange ? 2 : 1}
+            selectedDays={[from, { from, to }]}
+            modifiers={modifiers}
+            month={currentMonth}
+            onDayClick={handleDayClick}
+            initialMonth={from || initialMonth}
+            disabledDays={disabledDays}
+            $isRange={isRange}
+            $isVisible={open}
+            onFocus={onCalendarFocus}
+          />
+        </div>
+      </FloatingBox>
     </>
   )
 }

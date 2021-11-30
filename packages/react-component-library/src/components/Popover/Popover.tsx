@@ -15,7 +15,7 @@ import { useHideShow } from '../../hooks/useHideShow'
 export interface PopoverProps
   extends Omit<
     FloatingBoxProps,
-    'onMouseEnter' | 'onMouseLeave' | 'renderTarget'
+    'onMouseEnter' | 'onMouseLeave' | 'renderTarget' | 'targetElement'
   > {
   /**
    * JSX target element to attach the Popover to.

@@ -13,17 +13,39 @@ import { StyledArrow } from './partials/StyledArrow'
 import { useFloatingElement } from '../../hooks/useFloatingElement'
 import { FLOATING_BOX_SCHEME } from './constants'
 
-export interface FloatingBoxProps extends PositionType, ComponentWithClass {
+export interface FloatingBoxBaseProps extends PositionType, ComponentWithClass {
   role?: string
   contentId?: string
   scheme?: FloatingBoxSchemeType
   onMouseEnter?: (e: React.MouseEvent) => void
   onMouseLeave?: (e: React.MouseEvent) => void
   children?: React.ReactElement
-  renderTarget?: React.ReactElement
   isVisible?: boolean
   placement?: Placement
 }
+
+export interface FloatingBoxWithExternalTargetProps
+  extends FloatingBoxBaseProps {
+  renderTarget?: never
+  /**
+   * External element that the floating box should attach to.
+   */
+  targetElement?: Element
+}
+
+export interface FloatingBoxWithEmbeddedTargetProps
+  extends FloatingBoxBaseProps {
+  /**
+   * JSX to render, representing the element that the floating
+   * box should attach to.
+   */
+  renderTarget?: React.ReactElement
+  targetElement?: never
+}
+
+export type FloatingBoxProps =
+  | FloatingBoxWithExternalTargetProps
+  | FloatingBoxWithEmbeddedTargetProps
 
 const TRANSITION_STYLES = {
   entering: { opacity: 0 },
@@ -39,6 +61,7 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
   onMouseLeave,
   children,
   renderTarget,
+  targetElement,
   isVisible,
   placement = 'auto',
   ...rest
@@ -49,11 +72,18 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
     arrowElementRef,
     styles,
     attributes,
-  } = useFloatingElement(placement)
+  } = useFloatingElement(placement, undefined, targetElement)
 
   return (
     <>
-      <StyledTarget ref={targetElementRef}>{renderTarget}</StyledTarget>
+      {renderTarget && (
+        <StyledTarget
+          ref={targetElementRef}
+          data-testid="floating-box-styled-target"
+        >
+          {renderTarget}
+        </StyledTarget>
+      )}
       <Transition in={isVisible} timeout={0} unmountOnExit>
         {(state) => (
           <StyledFloatingBox
