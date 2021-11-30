@@ -45,15 +45,7 @@ module.exports = {
       ],
     },
     test: {
-      plugins: [
-        [
-          'babel-plugin-styled-components',
-          {
-            displayName: true,
-          },
-        ],
-        '@babel/plugin-transform-modules-commonjs',
-      ],
+      plugins: ['@babel/plugin-transform-modules-commonjs'],
     },
   },
 }
