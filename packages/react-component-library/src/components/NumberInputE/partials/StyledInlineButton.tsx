@@ -18,14 +18,12 @@ export const StyledInlineButton = styled.button<StyledInlineButtonProps>`
   height: 28px;
   width: 28px;
   align-items: center;
-
   background: transparent;
   margin: 8px;
   padding: 0;
   outline: 0;
   border: 0;
   border-radius: 8px;
-
   color: ${color('action', '700')};
 
   &:hover {
@@ -61,5 +59,9 @@ export const StyledInlineButton = styled.button<StyledInlineButtonProps>`
     &:hover {
       background-color: unset;
     }
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
   }
 `
