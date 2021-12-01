@@ -10,14 +10,9 @@ export const BORDER_RADIUS = {
   [COMPONENT_SIZE.FORMS]: '15px',
 }
 
-const BORDER_WIDTH = {
+export const BORDER_WIDTH = {
   [COMPONENT_SIZE.SMALL]: '2px',
   [COMPONENT_SIZE.FORMS]: '3px',
-}
-
-const MARGIN = {
-  [COMPONENT_SIZE.SMALL]: '-1px',
-  [COMPONENT_SIZE.FORMS]: '-2px',
 }
 
 export interface StyledOuterWrapperProps {
@@ -31,9 +26,9 @@ export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
   ${({ $hasFocus, $isDisabled, $isInvalid, $size = COMPONENT_SIZE.FORMS }) => {
     const defaults = css`
       background-color: ${color('neutral', 'white')};
-      border: 1px solid ${color('neutral', '200')};
+      border: ${BORDER_WIDTH[$size]} solid transparent;
       border-radius: ${BORDER_RADIUS[$size]};
-      box-shadow: 0 0 0 ${BORDER_WIDTH[$size]} transparent;
+      box-shadow: 0 0 0 1px ${color('neutral', '200')};
       transition: border-color 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
         box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     `
@@ -43,7 +38,6 @@ export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
         ${defaults};
         border: ${BORDER_WIDTH[$size]} solid ${color('action', '500')};
         box-shadow: 0 0 0 ${BORDER_WIDTH[$size]} ${color('action', '100')};
-        margin: ${MARGIN[$size]};
       `
     }
 
@@ -51,7 +45,8 @@ export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
       return css`
         ${defaults};
         background-color: ${color('neutral', '000')};
-        border: 1px solid transparent;
+        border: ${BORDER_WIDTH[$size]} solid transparent;
+        box-shadow: unset;
 
         * {
           cursor: not-allowed;
@@ -63,7 +58,7 @@ export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
       return css`
         ${defaults};
         border: ${BORDER_WIDTH[$size]} solid ${color('danger', '800')};
-        margin: ${MARGIN[$size]};
+        box-shadow: unset;
       `
     }
 
