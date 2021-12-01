@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.65.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.64.2...2.65.0) (2021-12-01)
+
+
+### Features
+
+* **FloatingBox:** Integrate with DatePickerE ([1f6e87a](https://github.com/defencedigital/mod-uk-design-system/commit/1f6e87aa3ae05a73a451cdc18b8dcc17033bb670))
+
+
+### Reverts
+
+* Revert "build(Storybook): Show Styled Components displayName for BABEL_ENV test" ([d9a1798](https://github.com/defencedigital/mod-uk-design-system/commit/d9a1798aa2c96b3a03ab3f66c7d06fadbd6443da))
+
+
+
+
+
 ## [2.64.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.64.1...2.64.2) (2021-11-30)
 
 
