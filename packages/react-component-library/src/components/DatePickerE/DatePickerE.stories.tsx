@@ -31,6 +31,12 @@ const Template: Story<DatePickerEProps> = (args) => <DatePickerE {...args} />
 
 export const Default = Template.bind({})
 
+export const WithExistingValue = Template.bind({})
+WithExistingValue.storyName = 'With existing value'
+WithExistingValue.args = {
+  startDate: parseISO('2021-12-15'),
+}
+
 export const CustomFormat = Template.bind({})
 CustomFormat.storyName = 'Custom format'
 CustomFormat.args = {
@@ -72,6 +78,14 @@ DisabledDays.args = {
 export const Range = Template.bind({})
 Range.args = {
   isRange: true,
+}
+
+export const RangeWithExistingValue = Template.bind({})
+RangeWithExistingValue.storyName = 'Range, with existing value'
+RangeWithExistingValue.args = {
+  isRange: true,
+  startDate: parseISO('2021-12-05'),
+  endDate: parseISO('2021-12-15'),
 }
 
 export const WithFormik: Story<DatePickerEProps> = (props) => {
