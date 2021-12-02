@@ -12,9 +12,13 @@ describe('RangeSliderE', () => {
       cy.get(selectors.rangeSliderE.rail).click(800, 0)
     })
 
+    it('should apply focus to the handle', () => {
+      cy.get(selectors.rangeSliderE.handle.handle).should('have.focus')
+    })
+
     it('should move the handle to that position', () => {
       cy.get(selectors.rangeSliderE.handle.value)
-        .contains('32')
+        .contains('33')
         .should('be.visible')
     })
 

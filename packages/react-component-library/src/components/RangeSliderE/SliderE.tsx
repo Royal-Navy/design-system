@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useRef } from 'react'
 import {
   SliderProps,
   CustomMode,
@@ -131,7 +131,20 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
   onSlideEnd,
   ...rest
 }) => {
-  const [sliderValues, setSliderValues] = useState(values)
+  const [sliderValues, setSliderValues] =
+    useState<ReadonlyArray<number>>(values)
+  const handleRef = useRef<HTMLDivElement>(null)
+
+  const onChangeHandler = useCallback(
+    (newValues: ReadonlyArray<number>): void => {
+      if (onChange) {
+        onChange(newValues)
+      }
+
+      handleRef.current.focus()
+    },
+    [onChange]
+  )
 
   const onUpdateHandler = useCallback(
     (newValues: ReadonlyArray<number>): void => {
@@ -168,7 +181,7 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
         values={values}
         step={step}
         mode={mode}
-        onChange={onChange}
+        onChange={onChangeHandler}
         onUpdate={onUpdateHandler}
         onSlideStart={onSlideStart}
         onSlideEnd={onSlideEnd}
@@ -182,17 +195,16 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
           )}
         </Rail>
         <Handles>
-          {({ activeHandleID, handles, getHandleProps }) => (
+          {({ handles, getHandleProps }) => (
             <div>
               {handles.map((handle) => (
                 <HandleE
+                  ref={handleRef}
                   key={handle.id}
                   handle={handle}
                   domain={domain}
-                  activeHandleID={activeHandleID}
                   getHandleProps={getHandleProps}
                   formatValue={formatValue ?? formatValueDefault}
-                  thresholds={thresholds}
                 />
               ))}
             </div>

@@ -3,25 +3,12 @@ import { selectors } from '@defencedigital/design-tokens'
 import { transparentize } from 'polished'
 
 import { RANGE_SLIDER_HANDLE_COLOR } from '../constants'
-import { ThresholdColor } from '../useThresholdColor'
-import { StyledValue } from './StyledValue'
-
-interface StyledHandleProps {
-  $isActive?: boolean
-  $thresholdColor?: ThresholdColor
-  $left: string
-}
 
 const { color } = selectors
 
-export const StyledHandle = styled.div.attrs<any>(({ $left }) => ({
-  style: {
-    left: $left,
-  },
-}))<any>`
+export const StyledHandle = styled.div`
   position: absolute;
   transform: translate(-10px, -50%);
-  z-index: 2;
   width: 18px;
   height: 18px;
   margin-left: 1px;
@@ -37,9 +24,5 @@ export const StyledHandle = styled.div.attrs<any>(({ $left }) => ({
     box-shadow: 1px 1px 2px 0px rgba(000, 000, 000, 0.25),
       0px 0px 0px 5px ${transparentize(0.5, color('action', '200'))};
     outline: none;
-
-    ${StyledValue} {
-      opacity: 1;
-    }
   }
 `
