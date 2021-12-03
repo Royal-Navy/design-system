@@ -22,6 +22,7 @@ export interface DatePickerEInputProps extends ComponentWithClass {
   placeholder: string
   setHasError: React.Dispatch<React.SetStateAction<boolean>>
   to: Date
+  value?: never
 }
 
 export const DatePickerEInput = forwardRef<
@@ -41,6 +42,9 @@ export const DatePickerEInput = forwardRef<
       onDayChange,
       onFocus,
       setHasError,
+      // Drop value as Formik passes it
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      value: _,
       ...rest
     },
     ref

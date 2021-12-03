@@ -1062,6 +1062,15 @@ describe('DatePickerE', () => {
     )
   })
 
+  describe('when a startDate and value is specified', () => {
+    // @ts-ignore
+    const jsxToRender = <DatePickerE startDate={new Date()} value={null} />
+
+    it('does not throw an error', () => {
+      expect(() => render(jsxToRender)).not.toThrowError()
+    })
+  })
+
   describe.skip('when `startDate` and `endDate` are updated externally', () => {
     beforeEach(() => {
       const initialProps = {
