@@ -3,6 +3,11 @@ import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ColorAction000, ColorDanger800 } from '@defencedigital/design-tokens'
+import {
+  IconAgriculture,
+  IconAnchor,
+  IconRemove,
+} from '@defencedigital/icon-library'
 
 import { BORDER_WIDTH } from '../../styled-components'
 import { COMPONENT_SIZE } from '../Forms'
@@ -286,6 +291,43 @@ describe('SelectE', () => {
 
     it('does not set the value', () => {
       expect(wrapper.getByTestId('select-input')).toHaveValue('')
+    })
+  })
+
+  describe('when options have icons', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SelectE id="select-id" label="Label">
+          <SelectEOption
+            icon={<IconAnchor data-testid="select-icon" />}
+            value="one"
+          >
+            One
+          </SelectEOption>
+          <SelectEOption
+            icon={<IconRemove data-testid="select-icon" />}
+            value="two"
+          >
+            Two
+          </SelectEOption>
+          <SelectEOption
+            icon={<IconAgriculture data-testid="select-icon" />}
+            value="three"
+          >
+            Three
+          </SelectEOption>
+        </SelectE>
+      )
+    })
+
+    describe('and clicking on the input', () => {
+      beforeEach(() => {
+        userEvent.click(wrapper.getByTestId('select-input'))
+      })
+
+      it('displays 3 icons', () => {
+        expect(wrapper.queryAllByTestId('select-icon')).toHaveLength(3)
+      })
     })
   })
 

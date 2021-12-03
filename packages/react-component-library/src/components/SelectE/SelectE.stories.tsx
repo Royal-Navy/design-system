@@ -1,5 +1,11 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
+import {
+  IconAgriculture,
+  IconAnchor,
+  IconBrightnessAuto,
+  IconRemove,
+} from '@defencedigital/icon-library'
 
 import { SelectE, SelectEProps } from './index'
 import { SelectEOption } from './SelectEOption'
@@ -51,19 +57,19 @@ WithValue.args = {
   value: 'two',
 }
 
-export const WithBadges = Template.bind({})
-WithBadges.args = {
+export const WithIconsAndBadges = Template.bind({})
+WithIconsAndBadges.args = {
   children: [
-    <SelectEOption badge={100} value="one">
+    <SelectEOption badge={100} icon={<IconAnchor />} value="one">
       One
     </SelectEOption>,
-    <SelectEOption badge={110} value="two">
+    <SelectEOption badge={110} icon={<IconRemove />} value="two">
       Two
     </SelectEOption>,
-    <SelectEOption badge={111} value="three">
+    <SelectEOption badge={111} icon={<IconAgriculture />} value="three">
       Three
     </SelectEOption>,
-    <SelectEOption badge={112} value="four">
+    <SelectEOption badge={112} icon={<IconBrightnessAuto />} value="four">
       Four
     </SelectEOption>,
   ],

@@ -4,7 +4,7 @@ import { selectors } from '@defencedigital/design-tokens'
 import { COMPONENT_SIZE } from '../../Forms'
 import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInputE/partials/StyledInput'
 
-const { color } = selectors
+const { color, spacing } = selectors
 
 interface StyledOptionsProps {
   $isHighlighted: boolean
@@ -27,4 +27,12 @@ export const StyledOption = styled.li<StyledOptionsProps>`
     css`
       background-color: ${color('neutral', '100')};
     `}
+
+  & > svg {
+    height: 16px;
+    width: 16px;
+    transform: translateY(1px);
+    margin-right: ${spacing('4')};
+    color: ${color('neutral', '400')};
+  }
 `
