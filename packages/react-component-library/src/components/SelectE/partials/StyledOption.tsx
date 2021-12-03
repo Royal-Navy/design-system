@@ -12,7 +12,7 @@ interface StyledOptionsProps {
 
 export const StyledOption = styled.li<StyledOptionsProps>`
   height: ${TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.FORMS]};
-  padding-left: 11px;
+  padding: 0 11px;
   display: flex;
   align-items: center;
   cursor: pointer;

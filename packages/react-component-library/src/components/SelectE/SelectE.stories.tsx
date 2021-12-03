@@ -20,12 +20,17 @@ export default {
 
 const Template: Story<SelectEProps> = (args) => (
   <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
-    <SelectE label="Some label" {...args}>
-      <SelectEOption value="one">One</SelectEOption>
-      <SelectEOption value="two">Two</SelectEOption>
-      <SelectEOption value="three">Three</SelectEOption>
-      <SelectEOption value="four">Four</SelectEOption>
-    </SelectE>
+    <SelectE
+      /* eslint-disable react/no-children-prop */
+      children={[
+        <SelectEOption value="one">One</SelectEOption>,
+        <SelectEOption value="two">Two</SelectEOption>,
+        <SelectEOption value="three">Three</SelectEOption>,
+        <SelectEOption value="four">Four</SelectEOption>,
+      ]}
+      label="Some label"
+      {...args}
+    />
   </div>
 )
 
@@ -44,4 +49,22 @@ WithError.args = {
 export const WithValue = Template.bind({})
 WithValue.args = {
   value: 'two',
+}
+
+export const WithBadges = Template.bind({})
+WithBadges.args = {
+  children: [
+    <SelectEOption badge={100} value="one">
+      One
+    </SelectEOption>,
+    <SelectEOption badge={110} value="two">
+      Two
+    </SelectEOption>,
+    <SelectEOption badge={111} value="three">
+      Three
+    </SelectEOption>,
+    <SelectEOption badge={112} value="four">
+      Four
+    </SelectEOption>,
+  ],
 }

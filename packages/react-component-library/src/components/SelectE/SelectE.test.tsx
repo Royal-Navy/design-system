@@ -174,6 +174,10 @@ describe('SelectE', () => {
       it('shows the items', () => {
         expect(wrapper.queryAllByTestId('select-option')).toHaveLength(3)
       })
+
+      it('does not display badges', () => {
+        expect(wrapper.queryAllByTestId('select-badge')).toHaveLength(0)
+      })
     })
   })
 
@@ -282,6 +286,38 @@ describe('SelectE', () => {
 
     it('does not set the value', () => {
       expect(wrapper.getByTestId('select-input')).toHaveValue('')
+    })
+  })
+
+  describe('when options have badges', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SelectE id="select-id" label="Label">
+          <SelectEOption badge={1} value="one">
+            One
+          </SelectEOption>
+          <SelectEOption badge={2} value="two">
+            Two
+          </SelectEOption>
+          <SelectEOption badge={3} value="three">
+            Three
+          </SelectEOption>
+        </SelectE>
+      )
+    })
+
+    describe('when clicking on the input', () => {
+      beforeEach(() => {
+        userEvent.click(wrapper.getByTestId('select-input'))
+      })
+
+      it('displays 3 badges', () => {
+        const badges = wrapper.queryAllByTestId('select-badge')
+        expect(badges[0]).toHaveTextContent('1')
+        expect(badges[1]).toHaveTextContent('2')
+        expect(badges[2]).toHaveTextContent('3')
+        expect(badges).toHaveLength(3)
+      })
     })
   })
 })
