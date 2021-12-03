@@ -12,12 +12,17 @@ export function useDatePickerEOpenClose(isOpen = false): {
 } {
   const { open, handleOnClose, handleOnFocus } = useOpenClose(isOpen)
   const floatingBoxChildrenRef = useRef()
-  const inputButtonRef = useRef()
+  const inputButtonRef = useRef<HTMLButtonElement>()
   const inputRef = useRef()
 
   const handleDatePickerOnClose = useCallback(() => {
+    if (!open) {
+      return
+    }
+
     handleOnClose(null)
-  }, [handleOnClose])
+    inputButtonRef.current?.focus()
+  }, [handleOnClose, open])
 
   useDocumentClick(
     [floatingBoxChildrenRef, inputButtonRef, inputRef],

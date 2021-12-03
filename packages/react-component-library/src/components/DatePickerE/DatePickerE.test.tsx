@@ -629,6 +629,12 @@ describe('DatePickerE', () => {
           expect(wrapper.queryByTestId('floating-box')).not.toBeInTheDocument()
         })
       })
+
+      it('focuses the open/close button', () => {
+        return waitFor(() =>
+          expect(wrapper.queryByTestId('datepicker-input-button')).toHaveFocus()
+        )
+      })
     })
 
     describe('when the next month button is clicked', () => {
@@ -657,6 +663,14 @@ describe('DatePickerE', () => {
               wrapper.queryByTestId('floating-box')
             ).not.toBeInTheDocument()
           })
+        })
+
+        it('focuses the open/close button', () => {
+          return waitFor(() =>
+            expect(
+              wrapper.queryByTestId('datepicker-input-button')
+            ).toHaveFocus()
+          )
         })
 
         describe('when the picker is reopened', () => {
@@ -779,6 +793,14 @@ describe('DatePickerE', () => {
               wrapper.queryByTestId('floating-box')
             ).not.toBeInTheDocument()
           })
+        })
+
+        it('focuses the open/close button', () => {
+          return waitFor(() =>
+            expect(
+              wrapper.queryByTestId('datepicker-input-button')
+            ).toHaveFocus()
+          )
         })
 
         it('set the value of the component to this date', () => {
