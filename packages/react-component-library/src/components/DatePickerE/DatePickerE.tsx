@@ -16,6 +16,7 @@ import { StyledFloatingBox } from './partials/StyledFloatingBox'
 import { StyledIconEventWrapper } from './partials/StyledIconEventWrapper'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
+import { useCloseOnEscape } from './useCloseOnEscape'
 import { useDatePickerEOpenClose } from './useDatePickerEOpenClose'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useFocus } from '../../hooks/useFocus'
@@ -134,6 +135,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     inputRef,
     open,
   } = useDatePickerEOpenClose(isOpen)
+  const { handleDayPickerKeyDown } = useCloseOnEscape(handleOnClose)
 
   const { state, handleDayClick } = useSelection(
     startDate,
@@ -259,6 +261,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
             modifiers={modifiers}
             month={currentMonth}
             onDayClick={handleDayClick}
+            onKeyDown={handleDayPickerKeyDown}
             initialMonth={from || initialMonth}
             disabledDays={disabledDays}
             $isRange={isRange}

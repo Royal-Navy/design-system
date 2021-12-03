@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import { addHours, isValid, parse } from 'date-fns'
 import { DayPickerProps, ModifiersUtils } from 'react-day-picker'
 import { isNil } from 'lodash'
+import { ESCAPE, RETURN, TAB } from '../../utils/keyCodes'
 
 export function useInputKeys(
   datePickerFormat: string,
@@ -51,10 +52,9 @@ export function useInputKeys(
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): null => {
     setHasError(false)
 
-    const isTabKey = e.keyCode === 9
     const { value } = e.target as HTMLInputElement
 
-    if (isTabKey) {
+    if (e.keyCode === TAB) {
       const parsedDate = parseDate(value)
       checkNewDate(parsedDate)
     }
@@ -65,15 +65,11 @@ export function useInputKeys(
   const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     setHasError(false)
 
-    const isEscapeKey = e.keyCode === 27
-    const isReturnKey = e.keyCode === 13
-    const isTabKey = e.keyCode === 9
-
-    if (isTabKey) {
+    if (e.keyCode === TAB) {
       return
     }
 
-    if (isEscapeKey) {
+    if (e.keyCode === ESCAPE) {
       revertKeyedValue()
       return
     }
@@ -82,7 +78,7 @@ export function useInputKeys(
     const hasChanged = !isNil(keyedValue)
     const parsedDate = parseDate(value)
 
-    if (isReturnKey) {
+    if (e.keyCode === RETURN) {
       checkNewDate(parsedDate)
       return
     }

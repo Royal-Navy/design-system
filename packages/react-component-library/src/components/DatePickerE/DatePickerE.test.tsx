@@ -605,6 +605,32 @@ describe('DatePickerE', () => {
       expect(wrapper.getByText('December 2019')).toBeInTheDocument()
     })
 
+    describe.each([
+      {
+        name: 'day picker container',
+        selector: () =>
+          wrapper.container.querySelectorAll('.DayPicker-wrapper')[0],
+      },
+      {
+        name: 'previous month button',
+        selector: () => wrapper.getByLabelText('Previous Month'),
+      },
+      {
+        name: 'day picker day',
+        selector: () => wrapper.getByText(10),
+      },
+    ])('when the escape key is pressed in $name', ({ selector }) => {
+      beforeEach(() => {
+        userEvent.type(selector(), '{esc}')
+      })
+
+      it('closes the day picker', () => {
+        return waitFor(() => {
+          expect(wrapper.queryByTestId('floating-box')).not.toBeInTheDocument()
+        })
+      })
+    })
+
     describe('when the next month button is clicked', () => {
       beforeEach(() => {
         userEvent.click(wrapper.getByLabelText('Next Month'))
