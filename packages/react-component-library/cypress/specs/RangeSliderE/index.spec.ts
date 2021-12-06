@@ -1,4 +1,3 @@
-/* eslint-disable jest/valid-expect */
 import { before, cy, describe, it, expect } from 'local-cypress'
 import { ColorNeutral200, ColorAction500 } from '@defencedigital/design-tokens'
 

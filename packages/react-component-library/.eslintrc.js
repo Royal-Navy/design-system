@@ -21,6 +21,7 @@ module.exports = {
       files: ['cypress/specs/**/*.ts'],
       rules: {
         'jest/expect-expect': 'off',
+        'jest/valid-expect': 'off',
         'jest/valid-describe': 'off',
         'jest/valid-describe-callback': 'off',
         'jest/valid-title': 'off',
