@@ -7987,10 +7987,10 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@4.3.2, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
-  integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
+debug@4, debug@4.3.3, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
+  integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
   dependencies:
     ms "2.1.2"
 
@@ -7998,6 +7998,13 @@ debug@4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.1.tgz#f0d229c505e0c6d8c49ac553d1b13dc183f6b2ee"
   integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
+  dependencies:
+    ms "2.1.2"
+
+debug@4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
+  integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
   dependencies:
     ms "2.1.2"
 
@@ -12865,11 +12872,11 @@ loader-utils@^2.0.0:
     json5 "^2.1.2"
 
 local-cypress@^1.2.1:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/local-cypress/-/local-cypress-1.2.2.tgz#90c5232a9eddcedce1400d0bddb4ee37e3d590cd"
-  integrity sha512-XZY0DrHA/KSeVCSDmSbpfRAmqrpQS2iYDf105InNnXToaf+MKHf1PQUpuoQrmLltsYV0Ma3ybrh3epT9p29TKg==
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/local-cypress/-/local-cypress-1.2.3.tgz#f979b4ab153b7a3592b1d43334eb49b3e84d8695"
+  integrity sha512-nNw160F8SdCaaS1MFEHyyTzW6Liv4LVIdzlKeX7arcFU+Hk0YOmvkLpt65IY3EQtdYOm6HBgw1So8Jn/A6nVRA==
   dependencies:
-    debug "4.3.2"
+    debug "4.3.3"
 
 locate-path@^2.0.0:
   version "2.0.0"
