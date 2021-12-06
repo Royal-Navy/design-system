@@ -24,7 +24,7 @@ describe('RangeSliderE', () => {
     data: { activeHandleID: string }
   ) => void
   let domain: number[] // lower and upper bounds
-  let values: number[] // initial handle values
+  let values: readonly [number, number?] // initial handle values
   let step: number
   let tickCount: number
 
@@ -140,7 +140,7 @@ describe('RangeSliderE', () => {
 
     it('renders the correct track chunks', () => {
       expect(
-        wrapper.queryByTestId('rangeslider-chunk-below-first-threshold')
+        wrapper.queryByTestId('rangeslider-track-below-first-threshold')
       ).toBeInTheDocument()
     })
   })
@@ -160,10 +160,10 @@ describe('RangeSliderE', () => {
 
     it('renders the correct track chunks', () => {
       expect(
-        wrapper.queryByTestId('rangeslider-chunk-below-first-threshold')
+        wrapper.queryByTestId('rangeslider-track-below-first-threshold')
       ).toBeInTheDocument()
       expect(
-        wrapper.queryByTestId('rangeslider-chunk-between-thresholds')
+        wrapper.queryByTestId('rangeslider-track-between-thresholds')
       ).toBeInTheDocument()
     })
   })
@@ -246,7 +246,7 @@ describe('RangeSliderE', () => {
 
   describe('multiple handles', () => {
     beforeEach(() => {
-      values = [10, 20, 30]
+      values = [10, 20]
 
       wrapper = render(
         <RangeSliderE
@@ -260,7 +260,7 @@ describe('RangeSliderE', () => {
     })
 
     it('should render two handles', () => {
-      expect(wrapper.queryAllByTestId('rangeslider-handle')).toHaveLength(3)
+      expect(wrapper.queryAllByTestId('rangeslider-handle')).toHaveLength(2)
     })
   })
 

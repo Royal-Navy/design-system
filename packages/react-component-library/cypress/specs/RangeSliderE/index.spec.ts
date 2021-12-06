@@ -38,6 +38,38 @@ describe('RangeSliderE', () => {
     })
   })
 
+  describe('thresholds', () => {
+    before(() => {
+      cy.visit(
+        '/iframe.html?id=range-slider-experimental--double-threshold&viewMode=story'
+      )
+    })
+
+    it('renders both thresholds', () => {
+      cy.get(selectors.rangeSliderE.thresholds.betweenThresholds).should(
+        'be.visible'
+      )
+      cy.get(selectors.rangeSliderE.thresholds.aboveThresholds).should(
+        'be.visible'
+      )
+    })
+
+    describe.skip('the user clicks on the rail (below both thresholds)', () => {
+      beforeEach(() => {
+        cy.get(selectors.rangeSliderE.rail).click(0, 0)
+      })
+
+      it('should no longer render either threshold', () => {
+        cy.get(selectors.rangeSliderE.thresholds.betweenThresholds).should(
+          'not.be.visible'
+        )
+        cy.get(selectors.rangeSliderE.thresholds.aboveThresholds).should(
+          'not.be.visible'
+        )
+      })
+    })
+  })
+
   describe('multiple handles', () => {
     before(() => {
       cy.visit(

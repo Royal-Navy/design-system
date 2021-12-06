@@ -14,6 +14,7 @@ import {
   RangeSliderEValueFormatter,
   TrackE,
   ThresholdTrackE,
+  ThresholdRailE,
   TickE,
 } from '.'
 import { StyledSlider } from './partials/StyledSlider'
@@ -199,7 +200,9 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
         <Rail>
           {({ getRailProps }) => (
             <StyledRail {...getRailProps()} data-testid="rangeslider-rail">
-              <StyledRailInner />
+              <StyledRailInner>
+                {thresholds && <ThresholdRailE thresholds={thresholds} />}
+              </StyledRailInner>
             </StyledRail>
           )}
         </Rail>

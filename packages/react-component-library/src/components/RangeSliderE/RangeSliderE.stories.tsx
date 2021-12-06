@@ -67,7 +67,7 @@ export const SingleThreshold = Template.bind({})
 SingleThreshold.args = {
   domain: [0, 40],
   mode: 1,
-  values: [20],
+  values: [30],
   tracksLeft: true,
   hasMarkers: true,
   thresholds: [40],
@@ -79,7 +79,7 @@ export const DoubleThreshold = Template.bind({})
 DoubleThreshold.args = {
   domain: [0, 40],
   mode: 1,
-  values: [20],
+  values: [30],
   tracksLeft: true,
   hasMarkers: true,
   thresholds: [40, 60],
