@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.66.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.65.1...2.66.0) (2021-12-06)
+
+
+### Bug Fixes
+
+* **RangeSliderE:** Add ability to extend range via click ([66b1a60](https://github.com/defencedigital/mod-uk-design-system/commit/66b1a6096c478deeaea285e51ec7ceaaeb761f2b))
+* **RangeSliderE:** Focus handle when clicking label and track ([0b50730](https://github.com/defencedigital/mod-uk-design-system/commit/0b5073025b86180500991bd543de4d1feb7c2cdc))
+
+
+### Features
+
+* **RangeSliderE:** Add and expose base implementation ([0c39100](https://github.com/defencedigital/mod-uk-design-system/commit/0c391001325fd51f8972edf061cb5c466ecd4fbb))
+* **RangeSliderE:** Make markers optional ([6eb79ab](https://github.com/defencedigital/mod-uk-design-system/commit/6eb79ab055f3e9f90980f7112ef08b7148f4d8b6))
+* **RangeSliderE:** Remove deprecated percentage display ([5859ac5](https://github.com/defencedigital/mod-uk-design-system/commit/5859ac57abf76251ad42a5ea8efbaaf3f0a118e3))
+* **RangeSliderE:** Style according to spec ([87f92de](https://github.com/defencedigital/mod-uk-design-system/commit/87f92de53314ed7e02e8503c1f95360bd88194af))
+
+
+### Performance Improvements
+
+* **RangeSliderE:** Memoize some calculations ([81fdaba](https://github.com/defencedigital/mod-uk-design-system/commit/81fdaba5da9bc28f9fc056788d0dec38744e1959))
+
+
+
+
+
 ## [2.65.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.65.0...2.65.1) (2021-12-02)
 
 **Note:** Version bump only for package moduk-design-system
