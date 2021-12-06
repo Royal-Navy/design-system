@@ -4,4 +4,5 @@ export default {
     value: '[data-testid="rangeslider-value"]',
     handle: '[data-testid="rangeslider-handle"]',
   },
+  markers: '[data-testid="rangeslider-marker"]',
 }

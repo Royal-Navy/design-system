@@ -54,10 +54,9 @@ export const MultipleHandles = Template.bind({})
 MultipleHandles.args = {
   domain: [0, 40],
   mode: 2,
-  values: [10, 20, 30],
-  tracksLeft: true,
+  values: [10, 30],
+  step: 1,
   tickCount: 10,
-  thresholds: [40, 60],
   hasMarkers: true,
   displayUnit: 'pt',
 }
