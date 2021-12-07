@@ -7,6 +7,7 @@ import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
+import { NumberInputE } from '../../components/NumberInputE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { ButtonE } from '../../components/ButtonE'
 import { Fieldset } from '../../components/Fieldset'
@@ -19,6 +20,7 @@ export interface FormValues {
   exampleCheckbox: string[]
   exampleRadio: string[]
   exampleSwitch: string
+  exampleNumberInput: number
 }
 
 export const ExampleReactHookForm: React.FC<unknown> = () => {
@@ -36,10 +38,12 @@ export const ExampleReactHookForm: React.FC<unknown> = () => {
       exampleCheckbox: [],
       exampleRadio: [],
       exampleSwitch: '',
+      exampleNumberInput: null,
     },
   })
 
   const exampleSwitchValue = watch('exampleSwitch')
+  const exampleNumberInputValue = watch('exampleNumberInput')
 
   const [formValues, setFormValues] = useState<FormValues>()
 
@@ -50,10 +54,18 @@ export const ExampleReactHookForm: React.FC<unknown> = () => {
 
   useEffect(() => {
     register({ name: 'exampleSwitch' })
+    register({ name: 'exampleNumberInput' })
   }, [register])
 
   const handleSwitchEChange = (e: React.FormEvent<HTMLInputElement>) =>
     setValue('exampleSwitch', e.currentTarget.value)
+
+  const handleNumberInputEChange = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.MouseEvent<HTMLButtonElement>,
+    newValue: number
+  ) => setValue('exampleNumberInput', newValue)
 
   return (
     <main>
@@ -127,6 +139,13 @@ export const ExampleReactHookForm: React.FC<unknown> = () => {
           <SwitchEOption label="Two" value="2" />
           <SwitchEOption label="Three" value="3" />
         </SwitchE>
+        <NumberInputE
+          name="exampleNumberInput"
+          label="Example number input"
+          onChange={handleNumberInputEChange}
+          value={exampleNumberInputValue}
+          data-testid="form-example-NumberInputE"
+        />
         <ButtonE
           type="submit"
           data-testid="form-example-submit"

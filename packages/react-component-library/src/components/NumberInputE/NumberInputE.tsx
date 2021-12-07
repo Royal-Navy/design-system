@@ -187,7 +187,7 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
     <StyledNumberInput
       aria-label={label || 'Number input'}
       className={className}
-      data-testid="number-input-container"
+      data-testid="number-input"
       id={numberInputId}
       role="spinbutton"
       aria-valuemin={min}

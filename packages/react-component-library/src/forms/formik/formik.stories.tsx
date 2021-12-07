@@ -7,6 +7,7 @@ import { TextAreaE } from '../../components/TextAreaE'
 import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
 import { ButtonE } from '../../components/ButtonE'
+import { NumberInputE } from '../../components/NumberInputE'
 import { SwitchE, SwitchEOption, SwitchEProps } from '../../components/SwitchE'
 import { FormikGroupE } from '../../components/FormikGroup'
 import { withFormik } from '../../enhancers/withFormik'
@@ -19,6 +20,7 @@ export interface FormValues {
   exampleCheckbox: string[]
   exampleRadio: string[]
   exampleSwitch: string
+  exampleNumberInput: number
 }
 
 const SwitchEFormed: React.FC<SwitchEProps> = (props) => (
@@ -38,6 +40,7 @@ const FormikTextAreaE = withFormik(TextAreaE)
 const FormikCheckboxE = withFormik(CheckboxE)
 const FormikRadioE = withFormik(RadioE)
 const FormikSwitchE = withFormik(SwitchEFormed)
+const FormikNumberInputE = withFormik(NumberInputE)
 
 export const ExampleFormik: React.FC<unknown> = () => {
   const [formValues, setFormValues] = useState<FormValues>()
@@ -52,6 +55,7 @@ export const ExampleFormik: React.FC<unknown> = () => {
           exampleCheckbox: [],
           exampleRadio: [],
           exampleSwitch: '',
+          exampleNumberInput: null,
         }}
         validate={(values) => {
           const errors: Record<string, unknown> = {}
@@ -144,6 +148,18 @@ export const ExampleFormik: React.FC<unknown> = () => {
               component={FormikSwitchE}
               onChange={(event: React.FormEvent<HTMLInputElement>) => {
                 setFieldValue('exampleSwitch', event.currentTarget.value)
+              }}
+            />
+            <Field
+              name="exampleNumberInput"
+              component={FormikNumberInputE}
+              onChange={(
+                event:
+                  | React.ChangeEvent<HTMLInputElement>
+                  | React.MouseEvent<HTMLButtonElement>,
+                newValue: number
+              ) => {
+                setFieldValue('exampleNumberInput', newValue)
               }}
             />
             <ButtonE
