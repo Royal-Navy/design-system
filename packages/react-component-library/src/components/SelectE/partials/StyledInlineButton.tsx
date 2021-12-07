@@ -4,6 +4,7 @@ import { selectors } from '@defencedigital/design-tokens'
 import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
 
 export interface StyledInlineButtonProps {
+  $hasHover: boolean
   $size: ComponentSizeType
 }
 
@@ -18,7 +19,7 @@ export const StyledInlineButton = styled.button<StyledInlineButtonProps>`
   height: 28px;
   width: 28px;
   align-items: center;
-  background: transparent;
+  background-color: transparent;
   margin: 8px;
   padding: 0;
   outline: 0;
@@ -29,6 +30,12 @@ export const StyledInlineButton = styled.button<StyledInlineButtonProps>`
   &:hover {
     background-color: ${color('action', '000')};
   }
+
+  ${({ $hasHover }) =>
+    $hasHover &&
+    css`
+      background-color: ${color('action', '000')};
+    `}
 
   &:focus {
     background-color: ${color('action', '100')};

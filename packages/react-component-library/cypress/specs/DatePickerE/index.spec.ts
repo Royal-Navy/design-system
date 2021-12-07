@@ -1,9 +1,7 @@
 import { describe, cy, it, before } from 'local-cypress'
 import { addDays, startOfMonth, format } from 'date-fns'
-import { ColorNeutral200 } from '@defencedigital/design-tokens'
 
 import { DATE_FORMAT } from '../../../src/constants'
-import { hexToRgb } from '../../helpers'
 import selectors from '../../selectors'
 import { transformDates } from '../../../src/components/DatePicker/useInputValue'
 
@@ -41,7 +39,7 @@ describe('DatePickerE', () => {
         cy.get(selectors.datePicker.outerWrapper).should(
           'has.border',
           'color',
-          hexToRgb(ColorNeutral200)
+          'rgba(0, 0, 0, 0)'
         )
       })
     })
@@ -96,7 +94,7 @@ describe('DatePickerE', () => {
             cy.get(selectors.datePicker.outerWrapper).should(
               'has.border',
               'color',
-              hexToRgb(ColorNeutral200)
+              'rgba(0, 0, 0, 0)'
             )
           })
         })
