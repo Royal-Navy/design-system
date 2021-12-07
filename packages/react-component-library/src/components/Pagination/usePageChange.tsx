@@ -1,6 +1,8 @@
 /* eslint-disable no-shadow */
 import { useState } from 'react'
 
+import { RETURN } from '../../utils/keyCodes'
+
 export const usePageChange = (
   initialPage: number,
   totalPages: number,
@@ -21,9 +23,7 @@ export const usePageChange = (
   function onKeyDown(event: React.KeyboardEvent) {
     setHasError(false)
 
-    const isPressingReturnKey = event.keyCode === 13
-
-    if (isPressingReturnKey) {
+    if (event.keyCode === RETURN) {
       const { value } = event.target as HTMLInputElement
 
       if (!Number.isNaN(value)) {

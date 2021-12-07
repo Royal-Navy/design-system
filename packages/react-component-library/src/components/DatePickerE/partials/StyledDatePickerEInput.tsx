@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
+import { StyledInput } from '../../TextInputE/partials/StyledInput'
+
 const { spacing } = selectors
 
 interface StyledDatePickerInputProps {
@@ -18,6 +20,10 @@ export const StyledDatePickerEInput = styled.div<StyledDatePickerInputProps>`
   vertical-align: top;
   width: 100%;
   min-width: 16rem;
+
+  ${StyledInput}:not(:focus)::placeholder {
+    color: transparent;
+  }
 
   ${({ $isDisabled }) =>
     $isDisabled &&

@@ -3,7 +3,7 @@ import { isString } from 'lodash'
 import { DayPickerProps } from 'react-day-picker'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { StyledInput } from './partials/StyledInput'
+import { StyledInput } from '../TextInputE/partials/StyledInput'
 import { useInputValue } from './useInputValue'
 import { useFocus } from '../../hooks/useFocus'
 import { useInputKeys } from './useInputKeys'
@@ -14,14 +14,15 @@ export interface DatePickerEInputProps extends ComponentWithClass {
   isDisabled: boolean
   format: string
   from: Date
+  hasLabel: boolean
   isRange: boolean
-  onBlur?: (event: React.FormEvent) => void
+  onBlur?: React.FocusEventHandler<HTMLInputElement>
   onDayChange: (day?: Date) => void
-  onComplete: () => void
   onFocus: React.FocusEventHandler<HTMLInputElement>
   placeholder: string
   setHasError: React.Dispatch<React.SetStateAction<boolean>>
   to: Date
+  value?: never
 }
 
 export const DatePickerEInput = forwardRef<
@@ -34,13 +35,16 @@ export const DatePickerEInput = forwardRef<
       from,
       to,
       format: datePickerFormat,
+      hasLabel,
       isDisabled,
       isRange,
       onBlur,
-      onComplete,
       onDayChange,
       onFocus,
       setHasError,
+      // Drop value as Formik passes it
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      value: _,
       ...rest
     },
     ref
@@ -53,13 +57,7 @@ export const DatePickerEInput = forwardRef<
       onKeyDown,
       onKeyUp,
       revertKeyedValue,
-    } = useInputKeys(
-      datePickerFormat,
-      disabledDays,
-      onComplete,
-      onDayChange,
-      setHasError
-    )
+    } = useInputKeys(datePickerFormat, disabledDays, onDayChange, setHasError)
 
     const { displayValue, inputKey } = useInputValue(
       from,
@@ -76,16 +74,13 @@ export const DatePickerEInput = forwardRef<
         disabled={isDisabled}
         key={inputKey}
         readOnly={isRange}
-        onBlur={(e: React.FormEvent) => {
+        onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
+          onBlur(e)
           onLocalBlur(e)
 
-          const { value } = e.target as HTMLInputElement
+          const { value } = e.currentTarget
           if (!isRange && value) {
             checkNewDate(value)
-          }
-
-          if (onBlur) {
-            onBlur(e)
           }
         }}
         onChange={onChange}
@@ -99,6 +94,7 @@ export const DatePickerEInput = forwardRef<
         ref={ref}
         type="text"
         defaultValue={isString(keyedValue) ? keyedValue : displayValue}
+        $hasLabel={hasLabel}
         {...rest}
       />
     )

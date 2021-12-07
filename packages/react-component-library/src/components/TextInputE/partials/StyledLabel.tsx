@@ -32,7 +32,7 @@ export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
     }
 
     return css`
-      transform: translate(11px, 8px) scale(0.75);
+      transform: translate(11px, 6px) scale(0.75);
     `
   }}
 `

@@ -2,6 +2,6 @@ const LOCALE = {
   UK: 'en-GB',
 }
 
-const DATEPICKER_AUTO_CLOSE_DELAY = 0
+const WEEKDAY_TITLES = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
-export { LOCALE, DATEPICKER_AUTO_CLOSE_DELAY }
+export { LOCALE, WEEKDAY_TITLES }

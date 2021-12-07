@@ -41,7 +41,7 @@ describe('TextInputE', () => {
     it('should apply the `$hasContent` style rule to label', () => {
       expect(wrapper.getByTestId('text-input-label')).toHaveStyleRule(
         'transform',
-        'translate(11px,8px) scale(0.75)'
+        'translate(11px,6px) scale(0.75)'
       )
     })
 

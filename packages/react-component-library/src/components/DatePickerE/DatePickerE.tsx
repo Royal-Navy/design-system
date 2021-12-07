@@ -1,28 +1,41 @@
+import { IconEvent } from '@defencedigital/icon-library'
 import React, { useState } from 'react'
 import { Placement } from '@popperjs/core'
-import { DayPickerProps } from 'react-day-picker'
+import { DayModifiers, DayPickerProps } from 'react-day-picker'
 
-import {
-  FLOATING_BOX_PLACEMENT,
-  FloatingBox,
-} from '../../primitives/FloatingBox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
 import { DatePickerEInput } from './DatePickerEInput'
-import { DropdownIndicatorIcon } from '../Dropdown/DropdownIndicatorIcon'
-import { getId, hasClass } from '../../helpers'
+import { hasClass } from '../../helpers'
 import { InputValidationProps } from '../../common/InputValidationProps'
+import { StyledLabel } from '../TextInputE/partials/StyledLabel'
 import { StyledButton } from './partials/StyledButton'
 import { StyledDatePickerEInput } from './partials/StyledDatePickerEInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
+import { StyledFloatingBox } from './partials/StyledFloatingBox'
+import { StyledIconEventWrapper } from './partials/StyledIconEventWrapper'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
-import { StyledLabel } from './partials/StyledLabel'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
-import { StyledSeparator } from './partials/StyledSeparator'
+import { useCloseOnEscape } from './useCloseOnEscape'
 import { useDatePickerEOpenClose } from './useDatePickerEOpenClose'
 import { useExternalId } from '../../hooks/useExternalId'
-import { useStatefulRef } from '../../hooks/useStatefulRef'
+import { useFocus } from '../../hooks/useFocus'
+import { useRangeHoverOrFocusDate } from './useRangeHoverOrFocusDate'
 import { useSelection } from './useSelection'
+import { useStatefulRef } from '../../hooks/useStatefulRef'
+import { WEEKDAY_TITLES } from './constants'
+
+declare module 'react-day-picker' {
+  // eslint-disable-next-line no-shadow
+  interface DayPickerProps {
+    // This prop is currently missing from the react-day-picker types
+    onDayFocus?: (
+      day: Date,
+      modifiers: DayModifiers,
+      e: React.FocusEvent<HTMLDivElement>
+    ) => void
+  }
+}
 
 export interface DatePickerEProps
   extends ComponentWithClass,
@@ -98,26 +111,31 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   isDisabled,
   isInvalid,
   isRange,
-  isValid,
-  label = 'Select Date',
+  label = 'Date',
   onChange,
   onCalendarFocus,
   startDate,
   isOpen,
   disabledDays,
   initialMonth,
-  placement = FLOATING_BOX_PLACEMENT.BOTTOM,
+  placement = 'bottom-start',
+  onBlur,
   ...rest
 }) => {
   const id = useExternalId(externalId)
+  const titleId = `datepicker-title-${useExternalId()}`
+  const contentId = `datepicker-contentId-${useExternalId()}`
+
+  const { hasFocus, onLocalBlur, onLocalFocus } = useFocus()
   const {
     floatingBoxChildrenRef,
     handleOnClose,
-    handleOnFocus,
+    handleOnOpen,
     inputButtonRef,
     inputRef,
     open,
   } = useDatePickerEOpenClose(isOpen)
+  const { handleDayPickerKeyDown } = useCloseOnEscape(handleOnClose)
 
   const { state, handleDayClick } = useSelection(
     startDate,
@@ -133,15 +151,23 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   const [currentMonth, setCurrentMonth] = useState<Date>(null)
   const [floatingBoxTarget, setFloatingBoxTarget] = useStatefulRef()
 
+  const {
+    rangeHoverOrFocusDate,
+    handleDayFocus,
+    handleDayMouseEnter,
+    handleDayMouseLeave,
+  } = useRangeHoverOrFocusDate(isRange)
+
   const { from, to } = state
-  const modifiers = { start: from, end: to }
+
+  const modifiers = {
+    start: from,
+    end: to,
+  }
 
   const hasContent = Boolean(from)
 
-  const titleId = getId('datepicker-title')
-  const contentId = getId('day-picker')
-
-  const placeholder = isRange ? null : datePickerFormat.toLowerCase()
+  const placeholder = !isRange ? datePickerFormat.toLowerCase() : null
 
   return (
     <>
@@ -153,20 +179,20 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
       >
         <StyledOuterWrapper
           data-testid="datepicker-outer-wrapper"
-          $hasFocus={open}
+          $hasFocus={hasFocus && !hasError}
           $isInvalid={hasError}
-          $isValid={isValid || hasClass(className, 'is-valid')}
+          $isDisabled={isDisabled}
         >
-          <StyledInputWrapper>
+          <StyledInputWrapper $isRange={isRange}>
             <StyledLabel
               id={titleId}
-              $isOpen={open}
+              $hasFocus={hasFocus && !isRange}
               $hasContent={hasContent}
-              $hasPlaceholder={!!placeholder}
               htmlFor={id}
               data-testid="datepicker-label"
             >
               {label}
+              {placeholder && ` (${placeholder})`}
             </StyledLabel>
             <DatePickerEInput
               disabledDays={disabledDays}
@@ -175,16 +201,25 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
               isRange={isRange}
               format={datePickerFormat}
               from={from}
-              onComplete={handleOnClose}
+              hasLabel={Boolean(label)}
               onDayChange={(day: Date) => {
                 setCurrentMonth(day)
                 handleDayClick(day)
+              }}
+              onBlur={(e) => {
+                onLocalBlur(e)
+                if (onBlur) {
+                  onBlur(e)
+                }
               }}
               onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
                 if (!isRange) {
                   e.target.select()
                 }
-                handleOnFocus(e)
+                onLocalFocus()
+                if (isRange) {
+                  handleOnOpen()
+                }
               }}
               placeholder={placeholder}
               ref={inputRef}
@@ -199,16 +234,17 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
             aria-owns={contentId}
             ref={inputButtonRef}
             type="button"
-            onClick={open ? handleOnClose : handleOnFocus}
+            onClick={open ? handleOnClose : handleOnOpen}
             disabled={isDisabled}
             data-testid="datepicker-input-button"
           >
-            <StyledSeparator />
-            <DropdownIndicatorIcon isOpen={open} />
+            <StyledIconEventWrapper>
+              <IconEvent size={18} />
+            </StyledIconEventWrapper>
           </StyledButton>
         </StyledOuterWrapper>
       </StyledDatePickerEInput>
-      <FloatingBox
+      <StyledFloatingBox
         isVisible={open}
         placement={placement}
         targetElement={floatingBoxTarget}
@@ -219,19 +255,24 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
       >
         <div ref={floatingBoxChildrenRef}>
           <StyledDayPicker
-            numberOfMonths={isRange ? 2 : 1}
-            selectedDays={[from, { from, to }]}
+            firstDayOfWeek={1}
+            weekdaysShort={WEEKDAY_TITLES}
+            selectedDays={[{ from, to: to || rangeHoverOrFocusDate }]}
             modifiers={modifiers}
             month={currentMonth}
             onDayClick={handleDayClick}
+            onKeyDown={handleDayPickerKeyDown}
             initialMonth={from || initialMonth}
             disabledDays={disabledDays}
             $isRange={isRange}
             $isVisible={open}
             onFocus={onCalendarFocus}
+            onDayMouseEnter={handleDayMouseEnter}
+            onDayMouseLeave={handleDayMouseLeave}
+            onDayFocus={handleDayFocus}
           />
         </div>
-      </FloatingBox>
+      </StyledFloatingBox>
     </>
   )
 }

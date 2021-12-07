@@ -9,6 +9,7 @@ import { Tab, TabContent, TabItem, TabProps } from '.'
 import { useScrollableTabSet } from './useScrollableTabSet'
 import { SCROLL_DIRECTION } from './constants'
 import { getId } from '../../helpers'
+import { ARROW_LEFT, ARROW_RIGHT } from '../../utils/keyCodes'
 import { StyledTabSet } from './partials/StyledTabSet'
 import { StyledHeader } from './partials/StyledHeader'
 import { StyledNavigation } from './partials/StyledNavigation'
@@ -55,9 +56,6 @@ export interface ScrollableTabSetProps extends ComponentWithClass {
   isScrollable?: boolean
 }
 
-const LEFT_ARROW = 37
-const RIGHT_ARROW = 39
-
 export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
   className,
   children,
@@ -99,14 +97,14 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
 
     const getNextIndex = (keyCode: number): number => {
       const index = {
-        [LEFT_ARROW]: activeTab === 0 ? children.length - 1 : activeTab - 1,
-        [RIGHT_ARROW]: activeTab === children.length - 1 ? 0 : activeTab + 1,
+        [ARROW_LEFT]: activeTab === 0 ? children.length - 1 : activeTab - 1,
+        [ARROW_RIGHT]: activeTab === children.length - 1 ? 0 : activeTab + 1,
       }
 
       return index[keyCode]
     }
 
-    if ([LEFT_ARROW, RIGHT_ARROW].includes(which)) {
+    if ([ARROW_LEFT, ARROW_RIGHT].includes(which)) {
       const index = getNextIndex(which)
       handleClick(index)
     }

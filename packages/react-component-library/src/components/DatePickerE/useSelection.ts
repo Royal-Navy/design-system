@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { DateUtils, DayModifiers, RangeModifier } from 'react-day-picker'
 
 import { StateObject } from './types'
-import { DATEPICKER_AUTO_CLOSE_DELAY } from './constants'
 
 function getNewState(
   isRange: boolean,
@@ -10,7 +9,7 @@ function getNewState(
   state: StateObject
 ): StateObject {
   if (isRange) {
-    if (state.from && (state.to || state.from > day)) {
+    if (state.from && state.to) {
       return { from: day }
     }
 
@@ -57,15 +56,9 @@ export const useSelection = (
       })
     }
 
-    ;(function closeOnSelection() {
-      if (isRange && !newState.to) {
-        return
-      }
-
-      setTimeout(() => {
-        handleOnClose()
-      }, DATEPICKER_AUTO_CLOSE_DELAY)
-    })()
+    if (newState.to || !isRange) {
+      setTimeout(() => handleOnClose())
+    }
   }
 
   return {

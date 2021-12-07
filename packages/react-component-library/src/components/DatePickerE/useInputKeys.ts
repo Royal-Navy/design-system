@@ -2,13 +2,11 @@ import { useCallback, useState } from 'react'
 import { addHours, isValid, parse } from 'date-fns'
 import { DayPickerProps, ModifiersUtils } from 'react-day-picker'
 import { isNil } from 'lodash'
-
-type OnCompleteType = () => void
+import { ESCAPE, RETURN, TAB } from '../../utils/keyCodes'
 
 export function useInputKeys(
   datePickerFormat: string,
   disabledDays: DayPickerProps['disabledDays'],
-  onComplete: OnCompleteType,
   onDayChange: (day?: Date) => void,
   setHasError: React.Dispatch<React.SetStateAction<boolean>>
 ): {
@@ -54,10 +52,9 @@ export function useInputKeys(
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): null => {
     setHasError(false)
 
-    const isTabKey = e.keyCode === 9
     const { value } = e.target as HTMLInputElement
 
-    if (isTabKey) {
+    if (e.keyCode === TAB) {
       const parsedDate = parseDate(value)
       checkNewDate(parsedDate)
     }
@@ -68,27 +65,22 @@ export function useInputKeys(
   const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     setHasError(false)
 
-    const isEscapeKey = e.keyCode === 27
-    const isReturnKey = e.keyCode === 13
-    const isTabKey = e.keyCode === 9
-
-    if (isTabKey) {
-      return null
+    if (e.keyCode === TAB) {
+      return
     }
 
-    if (isEscapeKey) {
+    if (e.keyCode === ESCAPE) {
       revertKeyedValue()
-      return onComplete()
+      return
     }
 
     const { value } = e.target as HTMLInputElement
     const hasChanged = !isNil(keyedValue)
     const parsedDate = parseDate(value)
 
-    if (isReturnKey) {
+    if (e.keyCode === RETURN) {
       checkNewDate(parsedDate)
-
-      return onComplete()
+      return
     }
 
     if (parsedDate && hasChanged) {
@@ -97,8 +89,6 @@ export function useInputKeys(
         onDayChange(newDate)
       }
     }
-
-    return null
   }
 
   return {
