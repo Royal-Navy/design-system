@@ -44,9 +44,7 @@ describe('NumberInputE', () => {
     text: string
   }) {
     it('sets the `aria-value*` attribute', () => {
-      const container = wrapper.getByTestId(
-        'number-input-container'
-      ) as HTMLDivElement
+      const container = wrapper.getByTestId('number-input') as HTMLDivElement
 
       if (min) {
         expect(container).toHaveAttribute('aria-valuemin', min.toString())
@@ -86,7 +84,7 @@ describe('NumberInputE', () => {
     })
 
     it('sets the default `aria-label` attribute', () => {
-      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+      expect(wrapper.getByTestId('number-input')).toHaveAttribute(
         'aria-label',
         'Number input'
       )
@@ -105,7 +103,7 @@ describe('NumberInputE', () => {
     })
 
     it('applies the correct `role` attribute', () => {
-      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+      expect(wrapper.getByTestId('number-input')).toHaveAttribute(
         'role',
         'spinbutton'
       )
@@ -127,7 +125,7 @@ describe('NumberInputE', () => {
 
     it('does not set the `aria-labelledby` attribute', () => {
       const numberInputId = wrapper
-        .getByTestId('number-input-container')
+        .getByTestId('number-input')
         .getAttribute('id')
 
       expect(
@@ -259,7 +257,7 @@ describe('NumberInputE', () => {
     })
 
     it('sets the `aria-label` attribute to the root element', () => {
-      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+      expect(wrapper.getByTestId('number-input')).toHaveAttribute(
         'aria-label',
         'Label'
       )
@@ -291,14 +289,14 @@ describe('NumberInputE', () => {
     })
 
     it('sets the correct `aria-valuemin` attribute', () => {
-      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+      expect(wrapper.getByTestId('number-input')).toHaveAttribute(
         'aria-valuemin',
         '0'
       )
     })
 
     it('aplies the `aria-valuemax` attribute', () => {
-      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+      expect(wrapper.getByTestId('number-input')).toHaveAttribute(
         'aria-valuemax',
         '3'
       )
@@ -426,7 +424,7 @@ describe('NumberInputE', () => {
     })
 
     it('sets the CSS modifier', () => {
-      expect(wrapper.getByTestId('number-input-container').classList).toContain(
+      expect(wrapper.getByTestId('number-input').classList).toContain(
         'number-input__custom'
       )
     })

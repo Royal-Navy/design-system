@@ -6,8 +6,10 @@ export default {
     checkbox: '[data-testid="checkbox"]',
     radio: '[data-testid="radio"]',
     switch: '[data-testid="switch"]',
-    switchOption: '[data-testid="switch-option"]'
+    switchOption: '[data-testid="switch-option"]',
+    numberInput: '[data-testid="number-input"]',
+    numberInputIncrease: '[data-testid="number-input-increase"]',
   },
   submit: '[data-testid="form-example-submit"]',
-  values: '[data-testid="form-example-values"]'
+  values: '[data-testid="form-example-values"]',
 }
