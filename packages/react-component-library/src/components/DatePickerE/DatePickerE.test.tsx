@@ -163,7 +163,21 @@ describe('DatePickerE', () => {
           return waitFor(() => {
             expect(
               wrapper.queryByTestId('floating-box-content')
-            ).not.toBeVisible()
+            ).not.toBeInTheDocument()
+          })
+        })
+      })
+
+      describe('and the input is clicked on', () => {
+        beforeEach(() => {
+          userEvent.click(wrapper.getByTestId('datepicker-input'))
+        })
+
+        it('hides the day picker container', () => {
+          return waitFor(() => {
+            expect(
+              wrapper.queryByTestId('floating-box-content')
+            ).not.toBeInTheDocument()
           })
         })
       })
@@ -280,8 +294,8 @@ describe('DatePickerE', () => {
                 it('hides the day picker container', () => {
                   return waitFor(() => {
                     expect(
-                      wrapper.getByTestId('floating-box')
-                    ).not.toBeVisible()
+                      wrapper.queryByTestId('floating-box')
+                    ).not.toBeInTheDocument()
                   })
                 })
               })

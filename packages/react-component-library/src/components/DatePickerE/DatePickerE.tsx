@@ -132,7 +132,6 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     handleOnClose,
     handleOnOpen,
     inputButtonRef,
-    inputRef,
     open,
   } = useDatePickerEOpenClose(isOpen)
   const { handleDayPickerKeyDown } = useCloseOnEscape(handleOnClose)
@@ -222,7 +221,6 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
                 }
               }}
               placeholder={placeholder}
-              ref={inputRef}
               setHasError={setHasError}
               to={to}
               {...rest}
