@@ -4,7 +4,7 @@ import { selectors } from '@defencedigital/design-tokens'
 import { COMPONENT_SIZE } from '../../Forms'
 import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInputE/partials/StyledInput'
 
-const { color, spacing } = selectors
+const { color, fontSize, spacing } = selectors
 
 interface StyledOptionsProps {
   $isHighlighted: boolean
@@ -17,6 +17,7 @@ export const StyledOption = styled.li<StyledOptionsProps>`
   align-items: center;
   cursor: pointer;
   color: ${color('neutral', '400')};
+  font-size: ${fontSize('m')};
 
   &:hover {
     background-color: ${color('neutral', '100')};
