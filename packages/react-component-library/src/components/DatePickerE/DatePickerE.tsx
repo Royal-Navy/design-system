@@ -212,9 +212,6 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
                 }
               }}
               onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
-                if (!isRange) {
-                  e.target.select()
-                }
                 onLocalFocus()
                 if (isRange) {
                   handleOnOpen()

@@ -201,7 +201,7 @@ describe('DatePickerE', () => {
           beforeEach(async () => {
             const input = wrapper.getByTestId('datepicker-input')
 
-            await userEvent.type(input, '{backspace}01/05/2016')
+            await userEvent.type(input, '{selectall}01/05/2016')
           })
 
           it('set the value of the component to this date', () => {
@@ -307,7 +307,7 @@ describe('DatePickerE', () => {
           beforeEach(async () => {
             const input = wrapper.getByTestId('datepicker-input')
 
-            await userEvent.type(input, '{backspace}1/5/2016{enter}')
+            await userEvent.type(input, '{selectall}1/5/2016{enter}')
           })
 
           it('set the value of the component to this date', () => {
@@ -340,7 +340,7 @@ describe('DatePickerE', () => {
       describe('and the escape key is pressed', () => {
         beforeEach(async () => {
           const input = wrapper.getByTestId('datepicker-input')
-          const newValue = '{backspace}20{esc}'
+          const newValue = '{selectall}20{esc}'
 
           await userEvent.type(input, newValue)
         })
@@ -366,7 +366,7 @@ describe('DatePickerE', () => {
         beforeEach(async () => {
           const input = wrapper.getByTestId('datepicker-input')
 
-          await userEvent.type(input, '{backspace}20')
+          await userEvent.type(input, '{selectall}20')
         })
         describe('and a day is selected', () => {
           beforeEach(async () => {
@@ -396,7 +396,7 @@ describe('DatePickerE', () => {
             beforeEach(async () => {
               const input = wrapper.getByTestId('datepicker-input')
 
-              await userEvent.type(input, '{backspace}abcd{enter}')
+              await userEvent.type(input, '{selectall}abcd{enter}')
             })
 
             it('not invoke the `onChange` callback', () => {
@@ -456,7 +456,7 @@ describe('DatePickerE', () => {
             beforeEach(async () => {
               const input = wrapper.getByTestId('datepicker-input')
 
-              await userEvent.type(input, '{backspace}abcd')
+              await userEvent.type(input, '{selectall}abcd')
 
               userEvent.tab()
             })
@@ -480,7 +480,7 @@ describe('DatePickerE', () => {
             beforeEach(async () => {
               const input = wrapper.getByTestId('datepicker-input')
 
-              await userEvent.type(input, '{backspace}abcd')
+              await userEvent.type(input, '{selectall}abcd')
 
               input.blur()
             })
@@ -505,7 +505,7 @@ describe('DatePickerE', () => {
           beforeEach(async () => {
             const input = wrapper.getByTestId('datepicker-input')
 
-            await userEvent.type(input, '{backspace}12/12/20{enter}')
+            await userEvent.type(input, '{selectall}12/12/20{enter}')
           })
 
           it('not invoke the `onChange` callback', () => {
@@ -523,7 +523,7 @@ describe('DatePickerE', () => {
           beforeEach(async () => {
             const input = wrapper.getByTestId('datepicker-input')
 
-            await userEvent.type(input, '{backspace}15/15/20{enter}')
+            await userEvent.type(input, '{selectall}15/15/20{enter}')
           })
 
           it('not invoke the `onChange` callback', () => {
@@ -542,7 +542,7 @@ describe('DatePickerE', () => {
         beforeEach(async () => {
           const input = wrapper.getByTestId('datepicker-input')
 
-          await userEvent.type(input, '{backspace}01/05/2016')
+          await userEvent.type(input, '{selectall}01/05/2016')
 
           input.blur()
         })
@@ -937,7 +937,7 @@ describe('DatePickerE', () => {
       beforeEach(async () => {
         const input = wrapper.getByTestId('datepicker-input')
 
-        await userEvent.type(input, '{backspace}12/04/2020{enter}')
+        await userEvent.type(input, '{selectall}12/04/2020{enter}')
       })
 
       it('does not set the picker to that day', () => {
@@ -1024,7 +1024,7 @@ describe('DatePickerE', () => {
       beforeEach(async () => {
         const input = wrapper.getByTestId('datepicker-input')
 
-        userEvent.type(input, `2016/02/03{enter}`)
+        userEvent.type(input, `{selectall}2016/02/03{enter}`)
       })
 
       it('invokes the `onChange` callback', () => {
