@@ -14,7 +14,7 @@ function getTopBorder() {
       content: '';
       position: absolute;
       left: 0;
-      top: 1px;
+      top: 0;
       height: 1px;
       width: 100%;
       border-bottom: 1px solid ${color('neutral', '200')};
