@@ -106,7 +106,7 @@ export function reducer(
     case TIMELINE_ACTIONS.INITIALISE: {
       const scaleOptions = buildScaleOptions(state.options, action.width)
       const currentScaleIndex =
-        state.currentScaleIndex ||
+        state.currentScaleIndex ??
         scaleOptions.findIndex(({ isDefault }) => isDefault)
       return {
         ...state,
