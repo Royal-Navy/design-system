@@ -4,4 +4,10 @@ const LOCALE = {
 
 const WEEKDAY_TITLES = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
-export { LOCALE, WEEKDAY_TITLES }
+const DATE_VALIDITY = {
+  VALID: 'valid',
+  INVALID: 'invalid',
+  DISABLED: 'disabled',
+} as const
+
+export { DATE_VALIDITY, LOCALE, WEEKDAY_TITLES }

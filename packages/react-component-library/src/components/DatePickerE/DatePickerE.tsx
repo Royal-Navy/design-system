@@ -1,11 +1,13 @@
 import { IconEvent } from '@defencedigital/icon-library'
+import { isValid } from 'date-fns'
 import React, { useState } from 'react'
 import { Placement } from '@popperjs/core'
 import { DayModifiers, DayPickerProps } from 'react-day-picker'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
-import { DatePickerEInput } from './DatePickerEInput'
+import { DATE_VALIDITY, WEEKDAY_TITLES } from './constants'
+import { formatDatesForInput } from './formatDatesForInput'
 import { hasClass } from '../../helpers'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { StyledLabel } from '../TextInputE/partials/StyledLabel'
@@ -14,16 +16,17 @@ import { StyledDatePickerEInput } from './partials/StyledDatePickerEInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
 import { StyledFloatingBox } from './partials/StyledFloatingBox'
 import { StyledIconEventWrapper } from './partials/StyledIconEventWrapper'
+import { StyledInput } from '../TextInputE/partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { useCloseOnEscape } from './useCloseOnEscape'
 import { useDatePickerEOpenClose } from './useDatePickerEOpenClose'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useFocus } from '../../hooks/useFocus'
+import { useInput } from './useInput'
 import { useRangeHoverOrFocusDate } from './useRangeHoverOrFocusDate'
 import { useSelection } from './useSelection'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
-import { WEEKDAY_TITLES } from './constants'
 
 declare module 'react-day-picker' {
   // eslint-disable-next-line no-shadow
@@ -35,6 +38,18 @@ declare module 'react-day-picker' {
       e: React.FocusEvent<HTMLDivElement>
     ) => void
   }
+}
+
+export type DatePickerEDateValidityType =
+  | typeof DATE_VALIDITY.VALID
+  | typeof DATE_VALIDITY.INVALID
+  | typeof DATE_VALIDITY.DISABLED
+
+export interface DatePickerEOnChangeData {
+  startDate: Date | null
+  startDateValidity: DatePickerEDateValidityType | null
+  endDate: Date | null
+  endDateValidity: DatePickerEDateValidityType | null
 }
 
 export interface DatePickerEProps
@@ -74,8 +89,18 @@ export interface DatePickerEProps
   onBlur?: (event: React.FormEvent) => void
   /**
    * Optional handler to be invoked when the value of the component changes.
+   *
+   * Note: If an invalid date is typed, `data.startDate` will be set to an
+   * invalid date object and the `data.startDateValidity` will be set to
+   * `"invalid"`. (If you're using `yup` for validation, you may wish to
+   * use the `.typeError()` chainer to display an appropriate error message.)
+   *
+   * If a date that is disabled using the `disabledDays` prop is typed,
+   * `data.startDate` will be populated and `data.startDateValidity` will
+   * be set to `"disabled"`. You should check for this and ensure an
+   * appropriate error message is displayed.
    */
-  onChange?: (data: { startDate: Date; endDate: Date }) => void
+  onChange?: (data: DatePickerEOnChangeData) => void
   /**
    * Optional handler to be invoked when the calendar is focussed.
    */
@@ -89,7 +114,13 @@ export interface DatePickerEProps
    */
   isOpen?: boolean
   /**
-   * An array of dates to disabled within the picker (preventing user interaction).
+   * An array of dates to disabled within the picker, preventing them from
+   * being selected in the date picker calendar.
+   *
+   * Note that these dates can still be manually typed in. You should still
+   * check for them in your validation logic and display an appropriate
+   * error message if they are received. See the `onChange` prop for more
+   * information.
    */
   disabledDays?: DayPickerProps['disabledDays']
   /**
@@ -101,7 +132,13 @@ export interface DatePickerEProps
    * NOTE: This is now calculated automatically by default based on available screen real-estate.
    */
   placement?: Placement
+  /**
+   * Not used. Use `startDate` and `endDate` instead.
+   */
+  value?: never
 }
+
+const replaceInvalidDate = (date: Date) => (isValid(date) ? date : undefined)
 
 export const DatePickerE: React.FC<DatePickerEProps> = ({
   className,
@@ -120,6 +157,9 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   initialMonth,
   placement = 'bottom-start',
   onBlur,
+  // Formik can pass value – drop it to stop it being forwarded to the input
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  value: _,
   ...rest
 }) => {
   const id = useExternalId(externalId)
@@ -136,18 +176,22 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   } = useDatePickerEOpenClose(isOpen)
   const { handleDayPickerKeyDown } = useCloseOnEscape(handleOnClose)
 
+  const [inputValue, setInputValue] = useState<string>(
+    formatDatesForInput(startDate, endDate, datePickerFormat)
+  )
   const { state, handleDayClick } = useSelection(
     startDate,
     endDate,
     isRange,
-    onChange,
-    handleOnClose
+    datePickerFormat,
+    disabledDays,
+    setInputValue,
+    onChange
   )
 
   const [hasError, setHasError] = useState<boolean>(
     isInvalid || hasClass(className, 'is-invalid')
   )
-  const [currentMonth, setCurrentMonth] = useState<Date>(null)
   const [floatingBoxTarget, setFloatingBoxTarget] = useStatefulRef()
 
   const {
@@ -158,10 +202,18 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   } = useRangeHoverOrFocusDate(isRange)
 
   const { from, to } = state
+  const { handleKeyDown, handleInputBlur, handleInputChange } = useInput(
+    datePickerFormat,
+    isRange,
+    handleDayClick,
+    state,
+    setHasError,
+    setInputValue
+  )
 
   const modifiers = {
-    start: from,
-    end: to,
+    start: replaceInvalidDate(from),
+    end: replaceInvalidDate(to),
   }
 
   const hasContent = Boolean(from)
@@ -178,7 +230,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
       >
         <StyledOuterWrapper
           data-testid="datepicker-outer-wrapper"
-          $hasFocus={hasFocus && !hasError}
+          $hasFocus={hasFocus}
           $isInvalid={hasError}
           $isDisabled={isDisabled}
         >
@@ -193,33 +245,31 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
               {label}
               {placeholder && ` (${placeholder})`}
             </StyledLabel>
-            <DatePickerEInput
-              disabledDays={disabledDays}
+            <StyledInput
+              $hasLabel={Boolean(label)}
+              aria-label="Choose date"
+              data-testid="datepicker-input"
               id={id}
-              isDisabled={isDisabled}
-              isRange={isRange}
-              format={datePickerFormat}
-              from={from}
-              hasLabel={Boolean(label)}
-              onDayChange={(day: Date) => {
-                setCurrentMonth(day)
-                handleDayClick(day)
-              }}
+              type="text"
+              disabled={isDisabled}
+              readOnly={isRange}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
               onBlur={(e) => {
                 onLocalBlur(e)
+                handleInputBlur()
                 if (onBlur) {
                   onBlur(e)
                 }
               }}
-              onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
+              onFocus={() => {
                 onLocalFocus()
                 if (isRange) {
                   handleOnOpen()
                 }
               }}
               placeholder={placeholder}
-              setHasError={setHasError}
-              to={to}
+              value={inputValue}
               {...rest}
             />
           </StyledInputWrapper>
@@ -252,12 +302,33 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
           <StyledDayPicker
             firstDayOfWeek={1}
             weekdaysShort={WEEKDAY_TITLES}
-            selectedDays={[{ from, to: to || rangeHoverOrFocusDate }]}
+            selectedDays={[
+              {
+                from: replaceInvalidDate(from),
+                to: replaceInvalidDate(to) || rangeHoverOrFocusDate,
+              },
+            ]}
             modifiers={modifiers}
-            month={currentMonth}
-            onDayClick={handleDayClick}
+            onDayClick={(day, { disabled }) => {
+              if (disabled) {
+                return
+              }
+
+              setHasError(false)
+              const newState = handleDayClick(day)
+              setInputValue(
+                formatDatesForInput(
+                  newState.from,
+                  newState.to,
+                  datePickerFormat
+                )
+              )
+              if (newState.to || !isRange) {
+                setTimeout(() => handleOnClose())
+              }
+            }}
             onKeyDown={handleDayPickerKeyDown}
-            initialMonth={from || initialMonth}
+            initialMonth={replaceInvalidDate(from) || initialMonth}
             disabledDays={disabledDays}
             $isRange={isRange}
             $isVisible={open}

@@ -1,6 +1,18 @@
+import { isValid } from 'date-fns'
 import { useEffect, useState } from 'react'
-import { DateUtils, DayModifiers, RangeModifier } from 'react-day-picker'
+import {
+  DateUtils,
+  DayPickerProps,
+  ModifiersUtils,
+  RangeModifier,
+} from 'react-day-picker'
 
+import {
+  DatePickerEDateValidityType,
+  DatePickerEOnChangeData,
+} from './DatePickerE'
+import { DATE_VALIDITY } from './constants'
+import { formatDatesForInput } from './formatDatesForInput'
 import { StateObject } from './types'
 
 function getNewState(
@@ -19,14 +31,35 @@ function getNewState(
   return { from: day, to: day }
 }
 
+function calculateDateValidity(
+  date: Date,
+  disabledDays: DayPickerProps['disabledDays']
+): DatePickerEDateValidityType {
+  if (!date) {
+    return null
+  }
+
+  if (!isValid(date)) {
+    return DATE_VALIDITY.INVALID
+  }
+
+  if (ModifiersUtils.dayMatchesModifier(date, disabledDays)) {
+    return DATE_VALIDITY.DISABLED
+  }
+
+  return DATE_VALIDITY.VALID
+}
+
 export const useSelection = (
   startDate: Date,
   endDate: Date,
   isRange: boolean,
-  onChange?: (data: { startDate: Date; endDate: Date }) => void,
-  handleOnClose?: () => void
+  datePickerFormat: string,
+  disabledDays: DayPickerProps['disabledDays'],
+  setInputValue: React.Dispatch<React.SetStateAction<string>>,
+  onChange?: (data: DatePickerEOnChangeData) => void
 ): {
-  handleDayClick: (day: Date, dayModifiers?: DayModifiers) => void
+  handleDayClick: (day: Date) => StateObject
   state: StateObject
 } => {
   const [state, setState] = useState<StateObject>({
@@ -39,26 +72,26 @@ export const useSelection = (
       from: startDate,
       to: endDate,
     })
-  }, [startDate, endDate])
 
-  function handleDayClick(day: Date, dayModifiers?: DayModifiers) {
-    if (dayModifiers && dayModifiers.disabled) {
-      return
-    }
+    setInputValue(formatDatesForInput(startDate, endDate, datePickerFormat))
+  }, [startDate, endDate, datePickerFormat, setInputValue])
 
+  function handleDayClick(day: Date): StateObject {
     const newState = getNewState(isRange, day, state)
     setState(newState)
 
+    const { from: newFrom, to: newTo } = newState
+
     if (onChange) {
       onChange({
-        startDate: newState.from,
-        endDate: newState.to,
+        startDate: newFrom,
+        startDateValidity: calculateDateValidity(newFrom, disabledDays),
+        endDate: newTo,
+        endDateValidity: calculateDateValidity(newTo, disabledDays),
       })
     }
 
-    if (newState.to || !isRange) {
-      setTimeout(() => handleOnClose())
-    }
+    return newState
   }
 
   return {
