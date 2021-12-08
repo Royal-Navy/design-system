@@ -215,10 +215,10 @@ describe('DatePickerE', () => {
     describe('when the end user types a new date value', () => {
       describe('and the date value is valid', () => {
         describe('and the day/month use two digit format', () => {
-          beforeEach(async () => {
+          beforeEach(() => {
             const input = wrapper.getByTestId('datepicker-input')
 
-            await userEvent.type(input, '{selectall}01/05/2016')
+            userEvent.type(input, '{selectall}01/05/2016')
           })
 
           it('set the value of the component to this date', () => {
@@ -248,10 +248,10 @@ describe('DatePickerE', () => {
           })
 
           describe('and the tab key is pressed', () => {
-            beforeEach(async () => {
+            beforeEach(() => {
               wrapper.getByTestId('datepicker-input').focus()
 
-              await userEvent.tab()
+              userEvent.tab()
             })
 
             it('focuses the picker open/close button', () => {
@@ -261,10 +261,10 @@ describe('DatePickerE', () => {
             })
 
             describe('and the space key is pressed', () => {
-              beforeEach(async () => {
+              beforeEach(() => {
                 const button = wrapper.getByTestId('datepicker-input-button')
 
-                await userEvent.type(button, '{space}', { skipClick: true })
+                userEvent.type(button, '{space}', { skipClick: true })
               })
 
               it('opens the picker container', () => {
@@ -274,8 +274,8 @@ describe('DatePickerE', () => {
               })
 
               describe('and the tab key is pressed again', () => {
-                beforeEach(async () => {
-                  await userEvent.tab()
+                beforeEach(() => {
+                  userEvent.tab()
                 })
 
                 it('focuses the picker container', () => {
@@ -319,15 +319,15 @@ describe('DatePickerE', () => {
         describe('and the day/month use one digit format', () => {
           let input: HTMLElement
 
-          beforeEach(async () => {
+          beforeEach(() => {
             input = wrapper.getByTestId('datepicker-input')
 
-            await userEvent.type(input, '{selectall}1/5/2016')
+            userEvent.type(input, '{selectall}1/5/2016')
           })
 
           describe('and enter is pressed', () => {
-            beforeEach(async () => {
-              await userEvent.type(input, '{enter}')
+            beforeEach(() => {
+              userEvent.type(input, '{enter}')
             })
 
             it('updates the value of the input with the formatted date', () => {
@@ -338,8 +338,8 @@ describe('DatePickerE', () => {
           })
 
           describe('and tab is pressed', () => {
-            beforeEach(async () => {
-              await userEvent.tab()
+            beforeEach(() => {
+              userEvent.tab()
             })
 
             it('updates the value of the input with the formatted date', () => {
@@ -384,13 +384,13 @@ describe('DatePickerE', () => {
       })
 
       describe('and a date is partially entered', () => {
-        beforeEach(async () => {
+        beforeEach(() => {
           const input = wrapper.getByTestId('datepicker-input')
 
-          await userEvent.type(input, '{selectall}20')
+          userEvent.type(input, '{selectall}20')
         })
         describe('and a day is selected', () => {
-          beforeEach(async () => {
+          beforeEach(() => {
             userEvent.click(wrapper.getByTestId('datepicker-input-button'))
             click(wrapper.getByText('21'))
           })
@@ -414,10 +414,10 @@ describe('DatePickerE', () => {
 
       describe('and the date value is invalid', () => {
         describe('when entering letters', () => {
-          beforeEach(async () => {
+          beforeEach(() => {
             const input = wrapper.getByTestId('datepicker-input')
 
-            await userEvent.type(input, '{selectall}abcd')
+            userEvent.type(input, '{selectall}abcd')
           })
 
           it('calls the `onChange` callback with an invalid date', () => {
@@ -430,8 +430,8 @@ describe('DatePickerE', () => {
           })
 
           describe('and the tab key is pressed', () => {
-            beforeEach(async () => {
-              await userEvent.tab()
+            beforeEach(() => {
+              userEvent.tab()
             })
 
             it('is in an error state', () => {
@@ -446,12 +446,12 @@ describe('DatePickerE', () => {
           })
 
           describe('and a valid date is entered', () => {
-            beforeEach(async () => {
+            beforeEach(() => {
               const input = wrapper.getByTestId('datepicker-input')
               const newValue =
                 '{backspace}{backspace}{backspace}{backspace}01/03/2021'
 
-              await userEvent.type(input, newValue)
+              userEvent.type(input, newValue)
             })
 
             it('invokes the `onChange` callback', () => {
@@ -471,7 +471,7 @@ describe('DatePickerE', () => {
           })
 
           describe('and the `input` loses `focus`', () => {
-            beforeEach(async () => {
+            beforeEach(() => {
               const input = wrapper.getByTestId('datepicker-input')
 
               input.blur()
@@ -490,9 +490,9 @@ describe('DatePickerE', () => {
         })
 
         describe('when using a two digit year', () => {
-          beforeEach(async () => {
+          beforeEach(() => {
             const input = wrapper.getByTestId('datepicker-input')
-            await userEvent.type(input, '{selectall}12/12/20')
+            userEvent.type(input, '{selectall}12/12/20')
             input.blur()
           })
 
@@ -513,9 +513,9 @@ describe('DatePickerE', () => {
         })
 
         describe('when using a date that does not exist', () => {
-          beforeEach(async () => {
+          beforeEach(() => {
             const input = wrapper.getByTestId('datepicker-input')
-            await userEvent.type(input, '{selectall}15/15/20')
+            userEvent.type(input, '{selectall}15/15/20')
             input.blur()
           })
 
@@ -974,10 +974,10 @@ describe('DatePickerE', () => {
     })
 
     describe('and a disabled day is typed', () => {
-      beforeEach(async () => {
+      beforeEach(() => {
         const input = wrapper.getByTestId('datepicker-input')
 
-        await userEvent.type(input, '{selectall}12/04/2020')
+        userEvent.type(input, '{selectall}12/04/2020')
       })
 
       it('calls the `onChange` callback with the disabled date', () => {
@@ -1057,7 +1057,7 @@ describe('DatePickerE', () => {
     })
 
     describe('when a valid date is typed', () => {
-      beforeEach(async () => {
+      beforeEach(() => {
         const input = wrapper.getByTestId('datepicker-input')
 
         userEvent.type(input, `{selectall}2016/02/03`)
@@ -1085,7 +1085,7 @@ describe('DatePickerE', () => {
       (date) => {
         let input: HTMLElement
 
-        beforeEach(async () => {
+        beforeEach(() => {
           input = wrapper.getByTestId('datepicker-input')
 
           userEvent.type(input, date)
