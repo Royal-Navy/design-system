@@ -264,6 +264,18 @@ describe('Compound Timeline', () => {
         it('should fill the width', () => {
           cy.get(selectors.timeline.month).should('have.css', 'width', '1023px')
         })
+
+        describe('resizing the window', () => {
+          before(() => {
+            cy.viewport(1500, 768)
+          })
+
+          it('still renders 1 day', () => {
+            cy.get(selectors.timeline.day)
+              .should('have.length', 1)
+              .should('have.css', 'width', '1499px')
+          })
+        })
       })
     })
 
