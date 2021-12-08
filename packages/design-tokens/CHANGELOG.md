@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.67.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.66.0...2.67.0) (2021-12-08)
+
+**Note:** Version bump only for package @defencedigital/design-tokens
+
+
+
+
+
 # [2.66.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.65.1...2.66.0) (2021-12-06)
 
 **Note:** Version bump only for package @defencedigital/design-tokens

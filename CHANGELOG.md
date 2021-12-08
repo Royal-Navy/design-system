@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.67.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.66.0...2.67.0) (2021-12-08)
+
+
+### Bug Fixes
+
+* **DatePickerE:** Drop value prop passed by Formik ([a5bdb12](https://github.com/defencedigital/mod-uk-design-system/commit/a5bdb12c159d1da77436e48c70e0c8ae321b10e4))
+* **NumberInputE:** Add pointer to buttons ([3ae4654](https://github.com/defencedigital/mod-uk-design-system/commit/3ae4654934bed0593747b98322f915332f01ff1e))
+* **TextInputE:** Correct label position when shrunk ([1e0f80f](https://github.com/defencedigital/mod-uk-design-system/commit/1e0f80fde7580560fc7c8fa0255367acbb99687a))
+
+
+### Features
+
+* **DatePickerE:** Add additional stories ([fb9e5c5](https://github.com/defencedigital/mod-uk-design-system/commit/fb9e5c5473b183a71d87f32d14c1eae72ce3c111))
+* **DatePickerE:** Adjust placeholder and opening behaviour ([28ede47](https://github.com/defencedigital/mod-uk-design-system/commit/28ede47ac5ada669c449b9e1cff88b805d3986be))
+* **DatePickerE:** Close picker on escape ([4771a5e](https://github.com/defencedigital/mod-uk-design-system/commit/4771a5ec4f3bfc48c87aaf500cdd5313b0d1dbcd))
+* **DatePickerE:** Focus open/close button when day picker is closed ([86d4a65](https://github.com/defencedigital/mod-uk-design-system/commit/86d4a65731277bd72d45b2e8e4fcf4248c36e42e))
+* **DatePickerE:** Memoise more IDs ([2123094](https://github.com/defencedigital/mod-uk-design-system/commit/212309461df2b3ac0f3df0bca4842774659fd98c))
+* **DatePickerE:** Reuse TextInputE partials ([d93c630](https://github.com/defencedigital/mod-uk-design-system/commit/d93c63047d023ddb36872a9cad4e326fef8ecd6e))
+* **DatePickerE:** Update floating box styling and positioning ([68880d0](https://github.com/defencedigital/mod-uk-design-system/commit/68880d0b2473da74af4384e489f4fbaa429cc4ed))
+* **DatePickerE:** Update range behaviour and styling ([8e89f76](https://github.com/defencedigital/mod-uk-design-system/commit/8e89f766ddbad4258d598ee6ffbeaa185161d811))
+* **DatePickerE:** Update styling of input control and day picker ([1a6e5b1](https://github.com/defencedigital/mod-uk-design-system/commit/1a6e5b1e95567207720e812f53553698c2d51f13))
+* **SelectE:** Add ability to disable ([57f016f](https://github.com/defencedigital/mod-uk-design-system/commit/57f016fb1545544c05ec65322aa351c47c73c760))
+* **SelectE:** Add ability to set value ([85547d4](https://github.com/defencedigital/mod-uk-design-system/commit/85547d4f9b3ba0f90674b29055d33e87a82cd157))
+* **SelectE:** Add component ([781d794](https://github.com/defencedigital/mod-uk-design-system/commit/781d794a766515c5988f977600f4d96ca68d595e))
+* **SelectE:** Add error state ([1de0b8d](https://github.com/defencedigital/mod-uk-design-system/commit/1de0b8db732a8f28cbf384da631b8167f57113f0))
+
+
+
+
+
 # [2.66.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.65.1...2.66.0) (2021-12-06)
 
 
