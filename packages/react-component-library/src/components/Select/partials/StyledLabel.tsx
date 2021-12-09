@@ -1,7 +1,7 @@
 import { selectors } from '@defencedigital/design-tokens'
 import styled from 'styled-components'
 
-const { color, fontSize, spacing } = selectors
+const { color, fontSize } = selectors
 
 export const StyledLabel = styled.label`
   display: block;
@@ -11,7 +11,7 @@ export const StyledLabel = styled.label`
   top: 0;
   left: 0;
   transform-origin: top left;
-  transform: translate(${spacing('6')}, ${spacing('6')}) scale(1);
+  transform: translate(12px, 13px) scale(1);
   transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
     transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 `

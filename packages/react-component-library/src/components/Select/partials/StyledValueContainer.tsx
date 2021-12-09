@@ -7,11 +7,10 @@ import { StyledLabel } from './StyledLabel'
 const { spacing } = selectors
 
 export const StyledValueContainer = styled(components.ValueContainer)`
-  position: initial;
-  height: inherit;
-
   &&& {
     padding: 0 0 0 ${spacing('6')};
+    position: initial;
+    height: inherit;
   }
 
   &.rn-select__value-container--has-value ${StyledLabel} {
