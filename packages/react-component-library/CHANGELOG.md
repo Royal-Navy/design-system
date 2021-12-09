@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.67.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.67.0...2.67.1) (2021-12-09)
+
+
+### Bug Fixes
+
+* **Timeline:** Update scale index condition ([168a02a](https://github.com/defencedigital/mod-uk-design-system/commit/168a02aa3234569b2dc396cd5a73846f34e131fa))
+
+
+
+
+
 # [2.67.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.66.0...2.67.0) (2021-12-08)
 
 
