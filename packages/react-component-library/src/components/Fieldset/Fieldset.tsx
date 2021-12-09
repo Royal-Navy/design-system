@@ -21,7 +21,7 @@ const { color, spacing } = selectors
 const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   display: inline-block;
   position: relative;
-  padding: unset;
+  padding: 0;
   border: none;
   border-radius: 15px;
 
@@ -33,13 +33,13 @@ const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
     margin-top: -1px;
 
     &:first-of-type {
-      margin-top: unset;
+      margin-top: 0;
     }
   }
 
   ${StyledRadioWrapper}, ${StyledCheckboxWrapper} {
     ${StyledCheckbox}, ${StyledRadio} {
-      border-radius: unset;
+      border-radius: 0;
       border-bottom-width: 1px;
       border-bottom-color: transparent;
 
@@ -96,7 +96,7 @@ const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
       ${StyledCheckboxWrapper} {
         ${StyledCheckbox}, ${StyledRadio} {
           border-color: ${color('neutral', '200')};
-          box-shadow: unset;
+          box-shadow: none;
           border-right-color: transparent;
           border-left-color: transparent;
         }
