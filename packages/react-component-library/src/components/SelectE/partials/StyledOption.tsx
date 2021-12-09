@@ -4,7 +4,7 @@ import { selectors } from '@defencedigital/design-tokens'
 import { COMPONENT_SIZE } from '../../Forms'
 import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInputE/partials/StyledInput'
 
-const { color } = selectors
+const { color, fontSize, spacing } = selectors
 
 interface StyledOptionsProps {
   $isHighlighted: boolean
@@ -12,11 +12,12 @@ interface StyledOptionsProps {
 
 export const StyledOption = styled.li<StyledOptionsProps>`
   height: ${TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.FORMS]};
-  padding-left: 11px;
+  padding: 0 11px;
   display: flex;
   align-items: center;
   cursor: pointer;
   color: ${color('neutral', '400')};
+  font-size: ${fontSize('m')};
 
   &:hover {
     background-color: ${color('neutral', '100')};
@@ -27,4 +28,12 @@ export const StyledOption = styled.li<StyledOptionsProps>`
     css`
       background-color: ${color('neutral', '100')};
     `}
+
+  & > svg {
+    height: 16px;
+    width: 16px;
+    transform: translateY(1px);
+    margin-right: ${spacing('4')};
+    color: ${color('neutral', '400')};
+  }
 `

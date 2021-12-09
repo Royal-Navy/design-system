@@ -1,5 +1,11 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
+import {
+  IconAgriculture,
+  IconAnchor,
+  IconBrightnessAuto,
+  IconRemove,
+} from '@defencedigital/icon-library'
 
 import { SelectE, SelectEProps } from './index'
 import { SelectEOption } from './SelectEOption'
@@ -20,12 +26,17 @@ export default {
 
 const Template: Story<SelectEProps> = (args) => (
   <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
-    <SelectE label="Some label" {...args}>
-      <SelectEOption value="one">One</SelectEOption>
-      <SelectEOption value="two">Two</SelectEOption>
-      <SelectEOption value="three">Three</SelectEOption>
-      <SelectEOption value="four">Four</SelectEOption>
-    </SelectE>
+    <SelectE
+      /* eslint-disable react/no-children-prop */
+      children={[
+        <SelectEOption value="one">One</SelectEOption>,
+        <SelectEOption value="two">Two</SelectEOption>,
+        <SelectEOption value="three">Three</SelectEOption>,
+        <SelectEOption value="four">Four</SelectEOption>,
+      ]}
+      label="Some label"
+      {...args}
+    />
   </div>
 )
 
@@ -44,4 +55,22 @@ WithError.args = {
 export const WithValue = Template.bind({})
 WithValue.args = {
   value: 'two',
+}
+
+export const WithIconsAndBadges = Template.bind({})
+WithIconsAndBadges.args = {
+  children: [
+    <SelectEOption badge={100} icon={<IconAnchor />} value="one">
+      One
+    </SelectEOption>,
+    <SelectEOption badge={110} icon={<IconRemove />} value="two">
+      Two
+    </SelectEOption>,
+    <SelectEOption badge={111} icon={<IconAgriculture />} value="three">
+      Three
+    </SelectEOption>,
+    <SelectEOption badge={112} icon={<IconBrightnessAuto />} value="four">
+      Four
+    </SelectEOption>,
+  ],
 }
