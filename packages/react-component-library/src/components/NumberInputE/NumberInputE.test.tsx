@@ -173,12 +173,12 @@ describe('NumberInputE', () => {
     })
 
     describe('and the user types values', () => {
-      beforeEach(async () => {
+      beforeEach(() => {
         const input = wrapper.getByTestId('number-input-input')
 
-        await userEvent.type(input, '1')
-        await userEvent.type(input, '2')
-        await userEvent.type(input, '3')
+        userEvent.type(input, '1')
+        userEvent.type(input, '2')
+        userEvent.type(input, '3')
       })
 
       it('calls the `onChange` callback once with `1`', () => {
@@ -193,7 +193,7 @@ describe('NumberInputE', () => {
       assertOnChangeCall(123, 3)
     })
 
-    describe('and the user types a value with an invalid character', () => {
+    describe('and the user types a value with invalid characters', () => {
       beforeEach(() => {
         const input = wrapper.getByTestId('number-input-input')
 
@@ -224,20 +224,20 @@ describe('NumberInputE', () => {
     })
 
     describe('and the user types a value', () => {
-      beforeEach(async () => {
+      beforeEach(() => {
         const input = wrapper.getByTestId('number-input-input')
 
-        await userEvent.type(input, '1')
+        userEvent.type(input, '1')
       })
 
       assertInputValue('1')
       assertOnChangeCall(1, 1)
 
       describe('and the user deletes the value', () => {
-        beforeEach(async () => {
+        beforeEach(() => {
           const input = wrapper.getByTestId('number-input-input')
 
-          await userEvent.type(input, '{backspace}')
+          userEvent.type(input, '{backspace}')
         })
 
         assertInputValue('')
