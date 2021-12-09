@@ -42,6 +42,10 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/no-unused-vars': [
+      1,
+      { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+    ],
     '@typescript-eslint/no-use-before-define': [1],
     // https://github.com/benmosher/eslint-plugin-import/issues/1615
     'import/extensions': [

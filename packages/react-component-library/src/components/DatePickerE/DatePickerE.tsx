@@ -158,7 +158,6 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   placement = 'bottom-start',
   onBlur,
   // Formik can pass value – drop it to stop it being forwarded to the input
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   value: _,
   ...rest
 }) => {
