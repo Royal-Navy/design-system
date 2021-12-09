@@ -5,7 +5,7 @@ import { SwitchE, SwitchEOption, SwitchEProps, SWITCHE_SIZE } from '.'
 
 export default {
   component: SwitchE,
-  title: 'SwitchE (Experimental)',
+  title: 'Switch (Experimental)',
   subcomponents: { SwitchEOption },
   parameters: {
     actions: { argTypesRegex: '^on.*' },

@@ -44,7 +44,7 @@ export default {
     docs: {
       description: {
         component:
-          'A collection of composable and presentation agnostic Compound Components, Hooks and a Context Provider, to help aid in the creation of scheduling based user-interfaces. Visit the [Compound Timeline microsite](https://timeline.royalnavy.io/) for more comprehensive documentation.',
+          'A collection of composable and presentation agnostic Compound Components, Hooks and a Context Provider, to help aid in the creation of scheduling based user-interfaces. Visit the [Compound Timeline microsite](https://design-system.digital.mod.uk/timeline) for more comprehensive documentation.',
       },
     },
     layout: 'fullscreen',

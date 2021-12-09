@@ -1,5 +1,5 @@
 import React from 'react'
-import { TrackItem, GetTrackProps } from 'react-compound-slider'
+import { IconWarning, IconDangerous } from '@defencedigital/icon-library'
 
 import { ThresholdColor } from './useThresholdColor'
 import {
@@ -7,14 +7,13 @@ import {
   RANGE_SLIDER_TRACK_BETWEEN_THRESHOLDS,
   RANGE_SLIDER_TRACK_ABOVE_THRESHOLDS,
 } from './constants'
-import { StyledTrackChunk } from './partials/StyledTrackChunk'
+import { StyledRailChunk } from './partials/StyledRailChunk'
 
-export interface ThresholdTrackEProps extends TrackItem {
-  getTrackProps: GetTrackProps
+export interface ThresholdRailEProps {
   thresholds?: number[]
 }
 
-export interface TrackChunkEProps {
+export interface RailChunkEProps {
   $left: number
   $width: number
   $maxWidth: number
@@ -22,67 +21,68 @@ export interface TrackChunkEProps {
   $thresholdColor?: ThresholdColor
 }
 
-export const ThresholdTrackE: React.FC<ThresholdTrackEProps> = ({
-  target,
-  getTrackProps,
+export const ThresholdRailE: React.FC<ThresholdRailEProps> = ({
   thresholds,
 }) => {
   const singleThreshold = thresholds?.length === 1
   const doubleThreshold = thresholds?.length === 2
 
-  const TrackChunkE: React.FC<TrackChunkEProps> = ({
+  const RailChunkE: React.FC<RailChunkEProps> = ({
     $left,
     $width,
     $maxWidth,
     testId,
     $thresholdColor,
+    children,
   }) => {
     return (
-      <StyledTrackChunk
+      <StyledRailChunk
         $thresholdColor={$thresholdColor}
         $left={`${$left}%`}
         $width={`${$width}%`}
         $maxWidth={`${$maxWidth}%`}
-        {...getTrackProps()}
-        data-testid={`rangeslider-track-${testId}`}
-      />
+        data-testid={`rangeslider-rail-${testId}`}
+      >
+        {children}
+      </StyledRailChunk>
     )
   }
 
   return (
     <>
       {(singleThreshold || doubleThreshold) && (
-        <TrackChunkE
+        <RailChunkE
           $thresholdColor={RANGE_SLIDER_TRACK_BELOW_FIRST_THRESHOLD}
           $left={0}
-          $width={target.percent}
+          $width={100}
           $maxWidth={thresholds[0]}
           testId="below-first-threshold"
         />
       )}
 
       {doubleThreshold && (
-        <TrackChunkE
+        <RailChunkE
           $thresholdColor={RANGE_SLIDER_TRACK_BETWEEN_THRESHOLDS}
           $left={thresholds[0]}
-          $width={Math.max(0, target.percent - thresholds[0])}
-          $maxWidth={Math.max(0, target.percent - thresholds[0])}
+          $width={Math.max(0, 100 - thresholds[0])}
+          $maxWidth={Math.max(0, 100 - thresholds[0])}
           testId="between-thresholds"
-        />
+        >
+          <IconWarning />
+        </RailChunkE>
       )}
 
-      <TrackChunkE
+      <RailChunkE
         $thresholdColor={RANGE_SLIDER_TRACK_ABOVE_THRESHOLDS}
         $left={thresholds[thresholds.length - 1]}
-        $width={Math.max(0, target.percent - thresholds[thresholds.length - 1])}
-        $maxWidth={Math.max(
-          0,
-          target.percent - thresholds[thresholds.length - 1]
-        )}
+        $width={Math.max(0, 100 - thresholds[thresholds.length - 1])}
+        $maxWidth={Math.max(0, 100 - thresholds[thresholds.length - 1])}
         testId="above-thresholds"
-      />
+      >
+        <IconDangerous />
+      </RailChunkE>
     </>
   )
 }
 
-ThresholdTrackE.displayName = 'ThresholdTrackE'
+ThresholdRailE.displayName = 'ThresholdRailE'

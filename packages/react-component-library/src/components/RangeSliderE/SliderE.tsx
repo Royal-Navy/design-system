@@ -1,4 +1,5 @@
-import React, { useCallback, useState, useRef } from 'react'
+import React, { useCallback, useState, createRef } from 'react'
+import intersection from 'lodash/intersection'
 import {
   SliderProps,
   CustomMode,
@@ -13,6 +14,7 @@ import {
   RangeSliderEValueFormatter,
   TrackE,
   ThresholdTrackE,
+  ThresholdRailE,
   TickE,
 } from '.'
 import { StyledSlider } from './partials/StyledSlider'
@@ -42,11 +44,11 @@ export interface RangeSliderEProps extends Omit<SliderProps, SliderOmitType> {
    */
   domain?: ReadonlyArray<number>
   /**
-   * An array of numbers. You can supply one for a value slider, two for a range slider or more to create n-handled sliders.
+   * An array of numbers. You can supply one for a value slider, two for a range slider.
    * The values should correspond to valid step values in the domain.
    * The numbers will be forced into the domain if they are two small or large.
    */
-  values: ReadonlyArray<number>
+  values: readonly [number, number?]
   /**
    * The step value for the slider.
    */
@@ -133,28 +135,36 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
 }) => {
   const [sliderValues, setSliderValues] =
     useState<ReadonlyArray<number>>(values)
-  const handleRef = useRef<HTMLDivElement>(null)
+  const handleRefs = values.map(() => createRef<HTMLDivElement>())
 
-  const onChangeHandler = useCallback(
+  const focusHandle = useCallback(
     (newValues: ReadonlyArray<number>): void => {
-      if (onChange) {
-        onChange(newValues)
+      const staticValues = intersection(sliderValues, newValues)
+
+      // Single handle
+      if (sliderValues.length === 1) {
+        handleRefs[0].current.focus()
       }
 
-      handleRef.current.focus()
+      // Multiple handles
+      if (sliderValues.length === 2 && staticValues.length === 1) {
+        const refId = sliderValues.indexOf(staticValues[0]) === 1 ? 0 : 1
+        handleRefs[refId].current.focus()
+      }
     },
-    [onChange]
+    [sliderValues, handleRefs]
   )
 
   const onUpdateHandler = useCallback(
     (newValues: ReadonlyArray<number>): void => {
+      focusHandle(newValues)
       setSliderValues(newValues)
 
       if (onUpdate) {
         onUpdate(newValues)
       }
     },
-    [onUpdate, setSliderValues]
+    [onUpdate, setSliderValues, focusHandle]
   )
 
   const formatValueDefault: RangeSliderEValueFormatter = useCallback(
@@ -181,7 +191,7 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
         values={values}
         step={step}
         mode={mode}
-        onChange={onChangeHandler}
+        onChange={onChange}
         onUpdate={onUpdateHandler}
         onSlideStart={onSlideStart}
         onSlideEnd={onSlideEnd}
@@ -190,16 +200,18 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
         <Rail>
           {({ getRailProps }) => (
             <StyledRail {...getRailProps()} data-testid="rangeslider-rail">
-              <StyledRailInner />
+              <StyledRailInner>
+                {thresholds && <ThresholdRailE thresholds={thresholds} />}
+              </StyledRailInner>
             </StyledRail>
           )}
         </Rail>
         <Handles>
           {({ handles, getHandleProps }) => (
             <div>
-              {handles.map((handle) => (
+              {handles.map((handle, index) => (
                 <HandleE
-                  ref={handleRef}
+                  ref={handleRefs[index]}
                   key={handle.id}
                   handle={handle}
                   domain={domain}
@@ -255,6 +267,8 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
                     domain={domain}
                     isReversed={isReversed}
                     thresholds={thresholds}
+                    tracksLeft={tracksLeft}
+                    tracksRight={tracksRight}
                   />
                 ))}
               </StyledTicks>
