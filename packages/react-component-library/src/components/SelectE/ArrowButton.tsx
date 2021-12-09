@@ -1,8 +1,9 @@
 import React from 'react'
 import { IconExpandLess, IconExpandMore } from '@defencedigital/icon-library'
 
-import { COMPONENT_SIZE } from '../Forms'
-import { StyledInlineButton } from './partials/StyledInlineButton'
+import { InlineButton } from '../InlineButtons/InlineButton'
+
+const ICON_VIEW_BOX = '4 4 16 16'
 
 interface InlineButtonProps {
   hasHover: boolean
@@ -12,22 +13,20 @@ interface InlineButtonProps {
 }
 
 export const ArrowButton: React.FC<InlineButtonProps> = ({
-  hasHover,
-  isDisabled,
   isOpen,
   ...rest
 }) => (
-  <StyledInlineButton
-    $hasHover={hasHover}
-    $size={COMPONENT_SIZE.FORMS}
+  <InlineButton
     aria-label={`${isOpen ? 'Hide' : 'Show'} options`}
     data-testid="select-arrow-button"
-    disabled={isDisabled}
-    type="button"
     {...rest}
   >
-    {isOpen ? <IconExpandLess /> : <IconExpandMore />}
-  </StyledInlineButton>
+    {isOpen ? (
+      <IconExpandLess size={18} viewBox={ICON_VIEW_BOX} />
+    ) : (
+      <IconExpandMore size={18} viewBox={ICON_VIEW_BOX} />
+    )}
+  </InlineButton>
 )
 
 ArrowButton.displayName = 'ArrowButton'

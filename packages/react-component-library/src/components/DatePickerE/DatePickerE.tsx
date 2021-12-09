@@ -9,13 +9,13 @@ import { DATE_FORMAT } from '../../constants'
 import { DATE_VALIDITY, WEEKDAY_TITLES } from './constants'
 import { formatDatesForInput } from './formatDatesForInput'
 import { hasClass } from '../../helpers'
+import { InlineButton } from '../InlineButtons/InlineButton'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { StyledLabel } from '../TextInputE/partials/StyledLabel'
-import { StyledButton } from './partials/StyledButton'
 import { StyledDatePickerEInput } from './partials/StyledDatePickerEInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
 import { StyledFloatingBox } from './partials/StyledFloatingBox'
-import { StyledIconEventWrapper } from './partials/StyledIconEventWrapper'
+import { StyledInlineButtons } from '../InlineButtons/partials/StyledInlineButtons'
 import { StyledInput } from '../TextInputE/partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
@@ -272,20 +272,19 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
               {...rest}
             />
           </StyledInputWrapper>
-          <StyledButton
-            aria-expanded={!!open}
-            aria-label={`${open ? 'Hide' : 'Show'} day picker`}
-            aria-owns={contentId}
-            ref={inputButtonRef}
-            type="button"
-            onClick={open ? handleOnClose : handleOnOpen}
-            disabled={isDisabled}
-            data-testid="datepicker-input-button"
-          >
-            <StyledIconEventWrapper>
+          <StyledInlineButtons>
+            <InlineButton
+              aria-expanded={!!open}
+              aria-label={`${open ? 'Hide' : 'Show'} day picker`}
+              aria-owns={contentId}
+              data-testid="datepicker-input-button"
+              isDisabled={isDisabled}
+              onClick={open ? handleOnClose : handleOnOpen}
+              ref={inputButtonRef}
+            >
               <IconEvent size={18} />
-            </StyledIconEventWrapper>
-          </StyledButton>
+            </InlineButton>
+          </StyledInlineButtons>
         </StyledOuterWrapper>
       </StyledDatePickerEInput>
       <StyledFloatingBox

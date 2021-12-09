@@ -1,15 +1,7 @@
 import styled from 'styled-components'
 
-import { StyledInlineButton } from './StyledInlineButton'
+import { StyledInlineButtons as StyledInlineButtonsBase } from '../../InlineButtons/partials/StyledInlineButtons'
 
-export const StyledInlineButtons = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-
-  ${StyledInlineButton} + ${StyledInlineButton} {
-    margin-left: 0;
-  }
+export const StyledInlineButtons = styled(StyledInlineButtonsBase)`
+  border-left: none;
 `

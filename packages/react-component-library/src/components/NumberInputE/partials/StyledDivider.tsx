@@ -11,7 +11,6 @@ interface StyledDividerProps {
 
 export const StyledDivider = styled.div<StyledDividerProps>`
   position: relative;
-  top: 9px;
   border-left: 1px solid ${color('neutral', '200')};
   height: 24px;
 
