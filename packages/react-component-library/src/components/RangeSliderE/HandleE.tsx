@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GetHandleProps, SliderItem } from 'react-compound-slider'
 
 import { RangeSliderEPositionBag, RangeSliderEValueFormatter } from '.'
@@ -23,13 +23,19 @@ export const HandleE = React.forwardRef<HTMLDivElement, HandleEProps>(
     },
     ref
   ) => {
+    const [hasFocus, setHasFocus] = useState<boolean>(false)
+
     const positionBag: RangeSliderEPositionBag = {
       value,
       percentage: percent,
     }
 
     return (
-      <StyledHandleWrapper $left={`${percent}%`} {...getHandleProps(id)}>
+      <StyledHandleWrapper
+        $left={`${percent}%`}
+        $hasFocus={hasFocus}
+        {...getHandleProps(id)}
+      >
         <StyledHandle
           ref={ref}
           tabIndex={0}
@@ -39,6 +45,8 @@ export const HandleE = React.forwardRef<HTMLDivElement, HandleEProps>(
           aria-valuemax={max}
           aria-valuenow={value}
           data-testid="rangeslider-handle"
+          onFocus={(_) => setHasFocus(true)}
+          onBlur={(_) => setHasFocus(false)}
         />
         <StyledValue
           data-testid="rangeslider-value"
