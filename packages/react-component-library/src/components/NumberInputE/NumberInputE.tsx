@@ -134,12 +134,13 @@ function formatValue(displayValue: number, prefix: string, suffix: string) {
 
 function getNewValue(event: React.FormEvent<HTMLInputElement>): number {
   const { value } = event.currentTarget
+  const sanitizedValue = value.replace(/\D/g, '')
 
-  if (value === '') {
+  if (sanitizedValue === '') {
     return null
   }
 
-  return parseInt(value, 10)
+  return parseInt(sanitizedValue, 10)
 }
 
 function isWithinRange(max: number, min: number, newValue: number) {

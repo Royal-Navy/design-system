@@ -193,6 +193,36 @@ describe('NumberInputE', () => {
       assertOnChangeCall(123, 3)
     })
 
+    describe('and the user types a value with an invalid character', () => {
+      beforeEach(() => {
+        const input = wrapper.getByTestId('number-input-input')
+
+        userEvent.type(input, '1')
+        userEvent.type(input, 'a')
+        userEvent.type(input, '.')
+        userEvent.type(input, '2')
+      })
+
+      it('calls the `onChange` callback with `1`', () => {
+        expect(onChangeSpy.mock.calls[0][1]).toEqual(1)
+      })
+
+      it('calls the `onChange` callback again with `1`', () => {
+        expect(onChangeSpy.mock.calls[1][1]).toEqual(1)
+      })
+
+      it('calls the `onChange` callback yet again with `1`', () => {
+        expect(onChangeSpy.mock.calls[2][1]).toEqual(1)
+      })
+
+      it('calls the `onChange` callback again with `12`', () => {
+        expect(onChangeSpy.mock.calls[3][1]).toEqual(12)
+      })
+
+      assertInputValue('12')
+      assertOnChangeCall(12, 4)
+    })
+
     describe('and the user types a value', () => {
       beforeEach(async () => {
         const input = wrapper.getByTestId('number-input-input')
@@ -334,7 +364,7 @@ describe('NumberInputE', () => {
         wrapper.getByTestId('number-input-input').focus()
       })
 
-      describe('and the user types an invalid character', () => {
+      describe('and the value is changed to an alpha character', () => {
         beforeEach(() => {
           fireEvent.change(wrapper.getByTestId('number-input-input'), {
             target: {
@@ -343,10 +373,10 @@ describe('NumberInputE', () => {
           })
         })
 
-        assertInputValue('1')
+        assertInputValue('')
       })
 
-      describe('and the user types a valid number', () => {
+      describe('and the value is changed to a valid number', () => {
         beforeEach(() => {
           fireEvent.change(wrapper.getByTestId('number-input-input'), {
             target: {
@@ -358,7 +388,7 @@ describe('NumberInputE', () => {
         assertInputValue('3')
       })
 
-      describe('and the user types an number outside the max min range', () => {
+      describe('and the value is changed to a number outside the max min range', () => {
         beforeEach(() => {
           fireEvent.change(wrapper.getByTestId('number-input-input'), {
             target: {
