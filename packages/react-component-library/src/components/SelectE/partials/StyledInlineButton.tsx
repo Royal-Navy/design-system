@@ -4,7 +4,7 @@ import { selectors } from '@defencedigital/design-tokens'
 import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
 
 export interface StyledInlineButtonProps {
-  $hasHover: boolean
+  $hasHover?: boolean
   $size: ComponentSizeType
 }
 
