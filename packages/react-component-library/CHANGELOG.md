@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.68.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.67.1...2.68.0) (2021-12-10)
+
+
+### Bug Fixes
+
+* **NumberInputE:** Sanitize input before invoking `parseInt` ([2c0e7ef](https://github.com/defencedigital/mod-uk-design-system/commit/2c0e7ef813998d194d62310b13eb97f3668a944b))
+* **SelectE:** Move border ([37fdf84](https://github.com/defencedigital/mod-uk-design-system/commit/37fdf84fb3b18c16ff3f93b158e9f57d994f6a31))
+* **SelectE:** Update option font size ([6fd878c](https://github.com/defencedigital/mod-uk-design-system/commit/6fd878cfa02b1b03b8f04b9e5d5a45df8d93486b))
+
+
+### Features
+
+* **RangeSliderE:** Adjust handle z-index on focus ([65443d0](https://github.com/defencedigital/mod-uk-design-system/commit/65443d0c6b4b95e63e43058565467e5588cd6c7c))
+* **RangeSliderE:** Adjust threshold styling ([5421007](https://github.com/defencedigital/mod-uk-design-system/commit/5421007beeec703751316e4733b8c64086edc0ef))
+* **RangeSliderE:** Update multiple handle behaviour ([77a518e](https://github.com/defencedigital/mod-uk-design-system/commit/77a518ea0a6a4db4b174377192b0239a58f8aa10))
+* **SelectE:** Add badges ([a565608](https://github.com/defencedigital/mod-uk-design-system/commit/a565608f9fd2669daa3cab7713558cdf853866ff))
+* **SelectE:** Add clear button ([374e89e](https://github.com/defencedigital/mod-uk-design-system/commit/374e89eb62400df720ecaf9e2637e7b3de2c253a))
+* **SelectE:** Add icons ([e3d4db8](https://github.com/defencedigital/mod-uk-design-system/commit/e3d4db80313ea363f9048fdb5e059fd4230f65cb))
+
+
+
+
+
 ## [2.67.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.67.0...2.67.1) (2021-12-09)
 
 
