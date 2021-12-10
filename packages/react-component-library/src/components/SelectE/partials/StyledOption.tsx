@@ -34,6 +34,5 @@ export const StyledOption = styled.li<StyledOptionsProps>`
     width: 16px;
     transform: translateY(1px);
     margin-right: ${spacing('4')};
-    color: ${color('neutral', '400')};
   }
 `
