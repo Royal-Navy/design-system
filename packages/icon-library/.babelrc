@@ -42,7 +42,7 @@
           },
           {
             "name": "fill",
-            "value": "CurrentColor",
+            "value": "currentColor",
             "spread": false,
             "literal": false,
             "position": "end"
