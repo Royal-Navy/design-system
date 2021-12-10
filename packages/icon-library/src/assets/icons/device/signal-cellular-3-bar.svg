@@ -1,7 +1,11 @@
-<svg fill="currentColor" width="16px" height="16px" viewBox="0 0 16 16" version="1.1"
-     xmlns="http://www.w3.org/2000/svg"
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <path d="M0.888888844,14.2222223 L10.6666667,4.44444442 L10.6658888,4.44488884 L14.2222223,0.888888844 L14.2222223,14.2222223 L0.888888844,14.2222223 Z"
-          id="Combined-Shape"></path>
+    <title>Icons/Device/signal-cellular-3-bar</title>
+    <g id="Icons/Device/signal-cellular-3-bar" stroke="none" stroke-width="1" fill="none"
+       fill-rule="evenodd">
+        <rect id="Spacer" x="0" y="0" width="16" height="16"></rect>
+        <path d="M0.888888844,14.2222223 L10.6666667,4.44444442 L10.6658888,4.44488884 L14.2222223,0.888888844 L14.2222223,14.2222223 L0.888888844,14.2222223 Z"
+              id="Combined-Shape" fill="#233745" fill-rule="nonzero"></path>
+    </g>
 </svg>

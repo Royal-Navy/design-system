@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-const { color, fontSize, spacing } = selectors
+const { fontSize, spacing } = selectors
 
 interface StyledTableColumnProps {
   $isSortable?: boolean
@@ -26,6 +26,5 @@ export const StyledTableColumn = styled.th<StyledTableColumnProps>`
     left: ${spacing('2')};
     width: ${spacing('6')};
     height: ${spacing('6')};
-    color: ${color('neutral', '500')};
   }
 `
