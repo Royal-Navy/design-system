@@ -36,7 +36,7 @@ function getBoxShadow() {
       right: 0;
       bottom: 0;
       box-shadow: 0 0 0 3px ${color('action', '500')},
-        0 0 0 6px ${color('action', '100')};
+        0 0 0 6px ${color('action', '100')}, 0 2px 22px rgba(0, 0, 0, 0.2);
       pointer-events: none;
       border-radius: ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]};
     }
