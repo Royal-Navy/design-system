@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.68.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.68.0...2.68.1) (2021-12-13)
+
+
+### Reverts
+
+* Revert "refactor(IconLibrary): Set `fill` to `currentColor`" ([b886507](https://github.com/defencedigital/mod-uk-design-system/commit/b8865079004974bc7de5c336c691d5a4d799f86b))
+
+
+
+
+
 # [2.68.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.67.1...2.68.0) (2021-12-10)
 
 **Note:** Version bump only for package @defencedigital/icon-library
