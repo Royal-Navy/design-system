@@ -7,7 +7,6 @@
     },
     "dependencies": {
       "@apollo/client": "^3.5.6",
-      "@defencedigital/css-framework": "latest",
       "@defencedigital/design-tokens": "latest",
       "@defencedigital/eslint-config-react": "latest",
       "@defencedigital/fonts": "latest",
