@@ -7,57 +7,57 @@ on:
   pull_request:
 
 jobs:
-     NPM_smoketest:
-      runs-on: ubuntu-latest
+  NPM_smoketest:
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Git clone repository
-          uses: actions/checkout@v2
+    steps:
+      - name: Git clone repository
+        uses: actions/checkout@v2
 
-        - name: Cache Node modules
-          uses: actions/cache@v2
-          with:
-            path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Cache Node modules
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
 
-        - name: Install Dependencies
-          run: |
-            yarn install
+      - name: Install Dependencies
+        run: |
+          yarn install
 
-        - name: Build design-tokens
-          run: yarn --cwd packages/design-tokens build
+      - name: Build design-tokens
+        run: yarn --cwd packages/design-tokens build
 
-        - name: Build icon-library
-          run: yarn --cwd packages/icon-library build
+      - name: Build icon-library
+        run: yarn --cwd packages/icon-library build
 
-        - name: Build react-component-library
-          run: yarn --cwd packages/react-component-library build
+      - name: Build react-component-library
+        run: yarn --cwd packages/react-component-library build
 
-        - name: Update CRA template to use local packages
-          run: |
-           TEMPLATE=packages/cra-template-defencedigital/template.json
-           PACKAGES=(
-            design-tokens
-            css-framework
-            fonts
-            icon-library
-            react-component-library
-           )
-           for i in "${PACKAGES[@]}";
-            do
-              contents="$(jq '.package.dependencies."@defencedigital/'$i'" = "file:../packages/'$i'"' $TEMPLATE)" \
-              && echo "${contents}" > $TEMPLATE
-            done
-           cat $TEMPLATE
+      - name: Update CRA template to use local packages
+        run: |
+          TEMPLATE=packages/cra-template-defencedigital/template.json
+          PACKAGES=(
+           design-tokens
+           css-framework
+           fonts
+           icon-library
+           react-component-library
+          )
+          for i in "${PACKAGES[@]}";
+           do
+             contents="$(jq '.package.dependencies."@defencedigital/'$i'" = "file:../packages/'$i'"' $TEMPLATE)" \
+             && echo "${contents}" > $TEMPLATE
+           done
+          cat $TEMPLATE
 
-        - name: Create boilerplate app
-          run: |
-           if [ -d "my-app" ]; then rm -Rf my-app ; fi
-           npx create-react-app my-app --template file:../${{ github.event.repository.name }}/packages/cra-template-defencedigital
+      - name: Create boilerplate app
+        run: |
+          if [ -d "my-app" ]; then rm -Rf my-app ; fi
+          npx create-react-app my-app --template file:../${{ github.event.repository.name }}/packages/cra-template-defencedigital
 
-        - name: Build boilerlate app
-          run: |
-           cd my-app
-           grep version node_modules/@defencedigital/**/package.json
-           echo "SKIP_PREFLIGHT_CHECK=true" > .env  #workaround for babel-loader (8.2.2) CRA version issue
-           yarn build
+      - name: Build boilerlate app
+        run: |
+          cd my-app
+          grep version node_modules/@defencedigital/**/package.json
+          echo "SKIP_PREFLIGHT_CHECK=true" > .env  #workaround for babel-loader (8.2.2) CRA version issue
+          yarn build
