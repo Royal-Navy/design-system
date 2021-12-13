@@ -44,19 +44,18 @@ jobs:
           )
           for i in "${PACKAGES[@]}";
            do
-             contents="$(jq '.package.dependencies."@defencedigital/'$i'" = "file:../packages/'$i'"' $TEMPLATE)" \
+             contents="$(jq '.package.dependencies."@defencedigital/'$i'" = "file:'$GITHUB_WORKSPACE'/packages/'$i'"' $TEMPLATE)" \
              && echo "${contents}" > $TEMPLATE
            done
           cat $TEMPLATE
 
       - name: Create boilerplate app
         run: |
-          if [ -d "my-app" ]; then rm -Rf my-app ; fi
-          npx create-react-app my-app --template file:../${{ github.event.repository.name }}/packages/cra-template-defencedigital
+          if [ -d "$RUNNER_TEMP/my-app" ]; then rm -Rf $RUNNER_TEMP/my-app ; fi
+          npx create-react-app $RUNNER_TEMP/my-app --template file:../${{ github.event.repository.name }}/packages/cra-template-defencedigital
 
       - name: Build boilerlate app
         run: |
-          cd my-app
+          cd $RUNNER_TEMP/my-app
           grep version node_modules/@defencedigital/**/package.json
-          echo "SKIP_PREFLIGHT_CHECK=true" > .env  #workaround for babel-loader (8.2.2) CRA version issue
           yarn build
