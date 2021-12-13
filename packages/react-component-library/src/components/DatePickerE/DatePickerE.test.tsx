@@ -1,3 +1,4 @@
+import { isValid } from 'date-fns'
 import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { ColorDanger800 } from '@defencedigital/design-tokens'
@@ -11,8 +12,9 @@ import {
 import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
 
-import { DatePickerE } from '.'
+import { DatePickerE, DatePickerEOnChangeData } from '.'
 import { ButtonE } from '../ButtonE'
+import { DATE_VALIDITY } from './constants'
 
 const NOW = '2019-12-05T11:00:00.000Z'
 const ERROR_BORDER = `3px solid ${ColorDanger800.toUpperCase()}`
@@ -26,11 +28,11 @@ describe('DatePickerE', () => {
   let wrapper: RenderResult
   let startDate: Date
   let label: string
-  let onChange: (data: { startDate: Date; endDate: Date }) => void
   let onBlur: (e: React.FormEvent) => void
   let onCalendarFocus: (e: React.SyntheticEvent) => void
   let days: string[]
   let onSubmitSpy: (e: React.FormEvent) => void
+  const onChange = jest.fn<void, [DatePickerEOnChangeData]>()
 
   function assertInputButtonAria({
     ariaExpanded,
@@ -62,12 +64,12 @@ describe('DatePickerE', () => {
 
   afterEach(() => {
     jest.useRealTimers()
+    onChange.mockReset()
   })
 
   describe('default props', () => {
     beforeEach(() => {
       startDate = new Date(2019, 11, 1)
-      onChange = jest.fn()
       onBlur = jest.fn()
       onCalendarFocus = jest.fn()
 
@@ -163,7 +165,21 @@ describe('DatePickerE', () => {
           return waitFor(() => {
             expect(
               wrapper.queryByTestId('floating-box-content')
-            ).not.toBeVisible()
+            ).not.toBeInTheDocument()
+          })
+        })
+      })
+
+      describe('and the input is clicked on', () => {
+        beforeEach(() => {
+          userEvent.click(wrapper.getByTestId('datepicker-input'))
+        })
+
+        it('hides the day picker container', () => {
+          return waitFor(() => {
+            expect(
+              wrapper.queryByTestId('floating-box-content')
+            ).not.toBeInTheDocument()
           })
         })
       })
@@ -181,26 +197,42 @@ describe('DatePickerE', () => {
       })
     })
 
+    describe('when the input is cleared using the keyboard', () => {
+      beforeEach(() => {
+        userEvent.clear(wrapper.getByTestId('datepicker-input'))
+      })
+
+      it('calls the `onChange` callback with null dates', () => {
+        expect(onChange).toHaveBeenLastCalledWith({
+          startDate: null,
+          startDateValidity: null,
+          endDate: null,
+          endDateValidity: null,
+        })
+      })
+    })
+
     describe('when the end user types a new date value', () => {
       describe('and the date value is valid', () => {
         describe('and the day/month use two digit format', () => {
-          beforeEach(async () => {
+          beforeEach(() => {
             const input = wrapper.getByTestId('datepicker-input')
 
-            await userEvent.type(input, '{backspace}01/05/2016')
+            userEvent.type(input, '{selectall}01/05/2016')
           })
 
           it('set the value of the component to this date', () => {
-            expect(
-              wrapper.getByTestId('datepicker-input').getAttribute('value')
-            ).toBe('01/05/2016')
+            expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
+              '01/05/2016'
+            )
           })
 
           it('invokes the `onChange` callback', () => {
-            expect(onChange).toHaveBeenCalledTimes(1)
-            expect(onChange).toHaveBeenCalledWith({
+            expect(onChange).toHaveBeenLastCalledWith({
               startDate: new Date('2016-05-01T12:00:00.000Z'),
+              startDateValidity: DATE_VALIDITY.VALID,
               endDate: new Date('2016-05-01T12:00:00.000Z'),
+              endDateValidity: DATE_VALIDITY.VALID,
             })
           })
 
@@ -216,10 +248,10 @@ describe('DatePickerE', () => {
           })
 
           describe('and the tab key is pressed', () => {
-            beforeEach(async () => {
+            beforeEach(() => {
               wrapper.getByTestId('datepicker-input').focus()
 
-              await userEvent.tab()
+              userEvent.tab()
             })
 
             it('focuses the picker open/close button', () => {
@@ -229,10 +261,10 @@ describe('DatePickerE', () => {
             })
 
             describe('and the space key is pressed', () => {
-              beforeEach(async () => {
+              beforeEach(() => {
                 const button = wrapper.getByTestId('datepicker-input-button')
 
-                await userEvent.type(button, '{space}', { skipClick: true })
+                userEvent.type(button, '{space}', { skipClick: true })
               })
 
               it('opens the picker container', () => {
@@ -242,8 +274,8 @@ describe('DatePickerE', () => {
               })
 
               describe('and the tab key is pressed again', () => {
-                beforeEach(async () => {
-                  await userEvent.tab()
+                beforeEach(() => {
+                  userEvent.tab()
                 })
 
                 it('focuses the picker container', () => {
@@ -258,30 +290,25 @@ describe('DatePickerE', () => {
                 })
 
                 it('set the value of the component to this date', () => {
-                  expect(
-                    wrapper
-                      .getByTestId('datepicker-input')
-                      .getAttribute('value')
-                  ).toBe('31/05/2016')
+                  expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
+                    '31/05/2016'
+                  )
                 })
 
                 it('invokes the onChange callback', () => {
-                  expect(onChange).toHaveBeenCalledTimes(2)
-                  expect(onChange).toHaveBeenCalledWith({
+                  expect(onChange).toHaveBeenLastCalledWith({
                     startDate: new Date('2016-05-31T12:00:00.000Z'),
+                    startDateValidity: DATE_VALIDITY.VALID,
                     endDate: new Date('2016-05-31T12:00:00.000Z'),
-                  })
-                  expect(onChange).toHaveBeenCalledWith({
-                    startDate: new Date('2016-05-01T12:00:00.000Z'),
-                    endDate: new Date('2016-05-01T12:00:00.000Z'),
+                    endDateValidity: DATE_VALIDITY.VALID,
                   })
                 })
 
                 it('hides the day picker container', () => {
                   return waitFor(() => {
                     expect(
-                      wrapper.getByTestId('floating-box')
-                    ).not.toBeVisible()
+                      wrapper.queryByTestId('floating-box')
+                    ).not.toBeInTheDocument()
                   })
                 })
               })
@@ -290,23 +317,56 @@ describe('DatePickerE', () => {
         })
 
         describe('and the day/month use one digit format', () => {
-          beforeEach(async () => {
-            const input = wrapper.getByTestId('datepicker-input')
+          let input: HTMLElement
 
-            await userEvent.type(input, '{backspace}1/5/2016{enter}')
+          beforeEach(() => {
+            input = wrapper.getByTestId('datepicker-input')
+
+            userEvent.type(input, '{selectall}1/5/2016')
           })
 
-          it('set the value of the component to this date', () => {
-            expect(
-              wrapper.getByTestId('datepicker-input').getAttribute('value')
-            ).toBe('01/05/2016')
+          describe('and enter is pressed', () => {
+            beforeEach(() => {
+              userEvent.type(input, '{enter}')
+            })
+
+            it('updates the value of the input with the formatted date', () => {
+              expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
+                '01/05/2016'
+              )
+            })
+          })
+
+          describe('and tab is pressed', () => {
+            beforeEach(() => {
+              userEvent.tab()
+            })
+
+            it('updates the value of the input with the formatted date', () => {
+              expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
+                '01/05/2016'
+              )
+            })
+          })
+
+          describe('and the `input` loses `focus`', () => {
+            beforeEach(() => {
+              input.blur()
+            })
+
+            it('updates the value of the input with the formatted date', () => {
+              expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
+                '01/05/2016'
+              )
+            })
           })
 
           it('invokes the `onChange` callback', () => {
-            expect(onChange).toHaveBeenCalledTimes(1)
-            expect(onChange).toHaveBeenCalledWith({
+            expect(onChange).toHaveBeenLastCalledWith({
               startDate: new Date('2016-05-01T12:00:00.000Z'),
+              startDateValidity: DATE_VALIDITY.VALID,
               endDate: new Date('2016-05-01T12:00:00.000Z'),
+              endDateValidity: DATE_VALIDITY.VALID,
             })
           })
 
@@ -323,54 +383,30 @@ describe('DatePickerE', () => {
         })
       })
 
-      describe('and the escape key is pressed', () => {
-        beforeEach(async () => {
-          const input = wrapper.getByTestId('datepicker-input')
-          const newValue = '{backspace}20{esc}'
-
-          await userEvent.type(input, newValue)
-        })
-
-        it('revert the value of the component to the original date', () => {
-          expect(
-            wrapper.getByTestId('datepicker-input').getAttribute('value')
-          ).toBe('01/12/2019')
-        })
-
-        it('not invoke the `onChange` callback', () => {
-          expect(onChange).not.toHaveBeenCalled()
-        })
-
-        it('hides the day picker container', () => {
-          expect(
-            wrapper.getByTestId('datepicker-input-button')
-          ).toHaveAttribute('aria-label', 'Show day picker')
-        })
-      })
-
       describe('and a date is partially entered', () => {
-        beforeEach(async () => {
+        beforeEach(() => {
           const input = wrapper.getByTestId('datepicker-input')
 
-          await userEvent.type(input, '{backspace}20')
+          userEvent.type(input, '{selectall}20')
         })
         describe('and a day is selected', () => {
-          beforeEach(async () => {
+          beforeEach(() => {
             userEvent.click(wrapper.getByTestId('datepicker-input-button'))
             click(wrapper.getByText('21'))
           })
 
           it('set the value of the component to the selected date', () => {
-            expect(
-              wrapper.getByTestId('datepicker-input').getAttribute('value')
-            ).toBe('21/12/2019')
+            expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
+              '21/12/2019'
+            )
           })
 
           it('invokes the `onChange` callback', () => {
-            expect(onChange).toHaveBeenCalledTimes(1)
-            expect(onChange).toHaveBeenCalledWith({
+            expect(onChange).toHaveBeenLastCalledWith({
               startDate: new Date('2019-12-21T12:00:00.000Z'),
+              startDateValidity: DATE_VALIDITY.VALID,
               endDate: new Date('2019-12-21T12:00:00.000Z'),
+              endDateValidity: DATE_VALIDITY.VALID,
             })
           })
         })
@@ -378,127 +414,98 @@ describe('DatePickerE', () => {
 
       describe('and the date value is invalid', () => {
         describe('when entering letters', () => {
-          describe('and using the enter key', () => {
-            beforeEach(async () => {
-              const input = wrapper.getByTestId('datepicker-input')
+          beforeEach(() => {
+            const input = wrapper.getByTestId('datepicker-input')
 
-              await userEvent.type(input, '{backspace}abcd{enter}')
-            })
-
-            it('not invoke the `onChange` callback', () => {
-              expect(onChange).not.toHaveBeenCalled()
-            })
-
-            it('should be in an error state', () => {
-              expect(
-                wrapper.getByTestId('datepicker-outer-wrapper')
-              ).toHaveStyleRule('border', ERROR_BORDER)
-            })
-
-            describe('and the escape key is pressed', () => {
-              beforeEach(async () => {
-                const input = wrapper.getByTestId('datepicker-input')
-
-                await userEvent.type(input, '{esc}')
-              })
-
-              it('not invoke the `onChange` callback', () => {
-                expect(onChange).not.toHaveBeenCalled()
-              })
-
-              it('should not be in an error state', () => {
-                expect(
-                  wrapper.getByTestId('datepicker-outer-wrapper')
-                ).not.toHaveStyleRule('border', ERROR_BORDER)
-              })
-            })
-
-            describe('and a valid date is entered', () => {
-              beforeEach(async () => {
-                const input = wrapper.getByTestId('datepicker-input')
-                const newValue =
-                  '{backspace}{backspace}{backspace}{backspace}01/03/2021{enter}'
-
-                await userEvent.type(input, newValue)
-              })
-
-              it('invokes the `onChange` callback', () => {
-                expect(onChange).toHaveBeenCalledTimes(1)
-                expect(onChange).toHaveBeenCalledWith({
-                  startDate: new Date('2021-03-01T12:00:00.000Z'),
-                  endDate: new Date('2021-03-01T12:00:00.000Z'),
-                })
-              })
-
-              it('should not be in an error state', () => {
-                expect(
-                  wrapper.getByTestId('datepicker-outer-wrapper')
-                ).not.toHaveStyleRule('border', ERROR_BORDER)
-              })
-            })
+            userEvent.type(input, '{selectall}abcd')
           })
 
-          describe('and tabbing', () => {
-            beforeEach(async () => {
-              const input = wrapper.getByTestId('datepicker-input')
+          it('calls the `onChange` callback with an invalid date', () => {
+            const lastCall = onChange.mock.calls[onChange.mock.calls.length - 1]
 
-              await userEvent.type(input, '{backspace}abcd')
+            expect(isValid(lastCall[0].startDate)).toBeFalsy()
+            expect(lastCall[0].startDateValidity).toBe(DATE_VALIDITY.INVALID)
+            expect(isValid(lastCall[0].endDate)).toBeFalsy()
+            expect(lastCall[0].endDateValidity).toBe(DATE_VALIDITY.INVALID)
+          })
 
+          describe('and the tab key is pressed', () => {
+            beforeEach(() => {
               userEvent.tab()
             })
 
-            it('not invoke the `onChange` callback', () => {
-              expect(onChange).not.toHaveBeenCalled()
-            })
-
-            it('should be in an error state', () => {
+            it('is in an error state', () => {
               expect(
                 wrapper.getByTestId('datepicker-outer-wrapper')
               ).toHaveStyleRule('border', ERROR_BORDER)
             })
 
-            it('should call the `onBlur` callback', () => {
+            it('calls the `onBlur` callback', () => {
               expect(onBlur).toHaveBeenCalledTimes(1)
             })
           })
 
-          describe('and the `input` loses `focus`', () => {
-            beforeEach(async () => {
+          describe('and a valid date is entered', () => {
+            beforeEach(() => {
               const input = wrapper.getByTestId('datepicker-input')
+              const newValue =
+                '{backspace}{backspace}{backspace}{backspace}01/03/2021'
 
-              await userEvent.type(input, '{backspace}abcd')
+              userEvent.type(input, newValue)
+            })
+
+            it('invokes the `onChange` callback', () => {
+              expect(onChange).toHaveBeenLastCalledWith({
+                startDate: new Date('2021-03-01T12:00:00.000Z'),
+                startDateValidity: DATE_VALIDITY.VALID,
+                endDate: new Date('2021-03-01T12:00:00.000Z'),
+                endDateValidity: DATE_VALIDITY.VALID,
+              })
+            })
+
+            it('should not be in an error state', () => {
+              expect(
+                wrapper.getByTestId('datepicker-outer-wrapper')
+              ).not.toHaveStyleRule('border', ERROR_BORDER)
+            })
+          })
+
+          describe('and the `input` loses `focus`', () => {
+            beforeEach(() => {
+              const input = wrapper.getByTestId('datepicker-input')
 
               input.blur()
             })
 
-            it('not invoke the `onChange` callback', () => {
-              expect(onChange).not.toHaveBeenCalled()
-            })
-
-            it('should be in an error state', () => {
+            it('is in an error state', () => {
               expect(
                 wrapper.getByTestId('datepicker-outer-wrapper')
               ).toHaveStyleRule('border', ERROR_BORDER)
             })
 
-            it('should call the `onBlur` callback', () => {
+            it('calls the `onBlur` callback', () => {
               expect(onBlur).toHaveBeenCalledTimes(1)
             })
           })
         })
 
         describe('when using a two digit year', () => {
-          beforeEach(async () => {
+          beforeEach(() => {
             const input = wrapper.getByTestId('datepicker-input')
-
-            await userEvent.type(input, '{backspace}12/12/20{enter}')
+            userEvent.type(input, '{selectall}12/12/20')
+            input.blur()
           })
 
-          it('not invoke the `onChange` callback', () => {
-            expect(onChange).not.toHaveBeenCalled()
+          it('calls the `onChange` callback with an invalid date', () => {
+            const lastCall = onChange.mock.calls[onChange.mock.calls.length - 1]
+
+            expect(isValid(lastCall[0].startDate)).toBeFalsy()
+            expect(lastCall[0].startDateValidity).toBe(DATE_VALIDITY.INVALID)
+            expect(isValid(lastCall[0].endDate)).toBeFalsy()
+            expect(lastCall[0].endDateValidity).toBe(DATE_VALIDITY.INVALID)
           })
 
-          it('should be in an error state', () => {
+          it('is in an error state', () => {
             expect(
               wrapper.getByTestId('datepicker-outer-wrapper')
             ).toHaveStyleRule('border', ERROR_BORDER)
@@ -506,56 +513,43 @@ describe('DatePickerE', () => {
         })
 
         describe('when using a date that does not exist', () => {
-          beforeEach(async () => {
+          beforeEach(() => {
             const input = wrapper.getByTestId('datepicker-input')
-
-            await userEvent.type(input, '{backspace}15/15/20{enter}')
+            userEvent.type(input, '{selectall}15/15/20')
+            input.blur()
           })
 
-          it('not invoke the `onChange` callback', () => {
-            expect(onChange).not.toHaveBeenCalled()
+          it('calls the `onChange` callback with an invalid date', () => {
+            const lastCall = onChange.mock.calls[onChange.mock.calls.length - 1]
+
+            expect(isValid(lastCall[0].startDate)).toBeFalsy()
+            expect(lastCall[0].startDateValidity).toBe(DATE_VALIDITY.INVALID)
+            expect(isValid(lastCall[0].endDate)).toBeFalsy()
+            expect(lastCall[0].endDateValidity).toBe(DATE_VALIDITY.INVALID)
           })
 
-          it('should be in an error state', () => {
+          it('is in an error state', () => {
             expect(
               wrapper.getByTestId('datepicker-outer-wrapper')
             ).toHaveStyleRule('border', ERROR_BORDER)
           })
         })
       })
+    })
 
-      describe('and the `input` loses `focus`', () => {
-        beforeEach(async () => {
-          const input = wrapper.getByTestId('datepicker-input')
+    describe('when a new date is pasted', () => {
+      beforeEach(() => {
+        const input = wrapper.getByTestId('datepicker-input')
+        userEvent.clear(input)
+        userEvent.paste(input, '01/05/2021')
+      })
 
-          await userEvent.type(input, '{backspace}01/05/2016')
-
-          input.blur()
-        })
-
-        it('set the value of the component to this date', () => {
-          expect(
-            wrapper.getByTestId('datepicker-input').getAttribute('value')
-          ).toBe('01/05/2016')
-        })
-
-        it('invokes the `onChange` callback', () => {
-          expect(onChange).toHaveBeenCalledTimes(1)
-          expect(onChange).toHaveBeenCalledWith({
-            startDate: new Date('2016-05-01T12:00:00.000Z'),
-            endDate: new Date('2016-05-01T12:00:00.000Z'),
-          })
-        })
-
-        describe('and the open/close button is clicked', () => {
-          beforeEach(() => {
-            userEvent.click(wrapper.getByTestId('datepicker-input-button'))
-          })
-
-          it('updates the selected day', () => {
-            expect(wrapper.getByText('May 2016')).toBeInTheDocument()
-            expect(wrapper.getByText('1')).toBeInTheDocument()
-          })
+      it('calls the `onChange` callback with the new date', () => {
+        expect(onChange).toHaveBeenLastCalledWith({
+          startDate: new Date('2021-05-01T12:00:00.000Z'),
+          startDateValidity: DATE_VALIDITY.VALID,
+          endDate: new Date('2021-05-01T12:00:00.000Z'),
+          endDateValidity: DATE_VALIDITY.VALID,
         })
       })
     })
@@ -692,7 +686,6 @@ describe('DatePickerE', () => {
 
   describe('when selecting a date range', () => {
     beforeEach(() => {
-      onChange = jest.fn()
       wrapper = render(
         <DatePickerE
           startDate={new Date(2019, 11, 10)}
@@ -804,16 +797,18 @@ describe('DatePickerE', () => {
         })
 
         it('set the value of the component to this date', () => {
-          expect(
-            wrapper.getByTestId('datepicker-input').getAttribute('value')
-          ).toBe('10/12/2019 - 20/12/2019')
+          expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
+            '10/12/2019 - 20/12/2019'
+          )
         })
 
         it('invokes the onChange callback', () => {
           expect(onChange).toHaveBeenCalledTimes(1)
           expect(onChange).toHaveBeenCalledWith({
             startDate: new Date('2019-12-10T00:00:00.000Z'),
+            startDateValidity: DATE_VALIDITY.VALID,
             endDate: new Date('2019-12-20T12:00:00.000Z'),
+            endDateValidity: DATE_VALIDITY.VALID,
           })
         })
       })
@@ -832,18 +827,79 @@ describe('DatePickerE', () => {
         })
 
         it('updates the value to start from this date', () => {
-          expect(
-            wrapper.getByTestId('datepicker-input').getAttribute('value')
-          ).toBe('09/12/2019 - 10/12/2019')
+          expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
+            '09/12/2019 - 10/12/2019'
+          )
         })
 
         it('invokes the onChange callback', () => {
           expect(onChange).toHaveBeenCalledTimes(1)
           expect(onChange).toHaveBeenCalledWith({
             startDate: new Date('2019-12-09T12:00:00.000Z'),
+            startDateValidity: DATE_VALIDITY.VALID,
             endDate: new Date('2019-12-10T00:00:00.000Z'),
+            endDateValidity: DATE_VALIDITY.VALID,
           })
         })
+      })
+    })
+  })
+
+  describe('when in range mode and two dates are already selected', () => {
+    let input: HTMLElement
+
+    beforeEach(() => {
+      wrapper = render(
+        <DatePickerE
+          startDate={new Date(2019, 11, 10)}
+          endDate={new Date(2019, 11, 15)}
+          isRange
+        />
+      )
+
+      input = wrapper.getByTestId('datepicker-input')
+    })
+
+    it('the input value displays the range selected', () => {
+      expect(input).toHaveValue('10/12/2019 - 15/12/2019')
+    })
+
+    describe('and the input is focused and blurred', () => {
+      beforeEach(() => {
+        input.focus()
+        input.blur()
+      })
+
+      it('the input value is unchanged', () => {
+        expect(input).toHaveValue('10/12/2019 - 15/12/2019')
+      })
+    })
+
+    // Note this shouldn't happen in reality as the input is read-only
+    // in range mode
+    describe('and return is pressed in the input', () => {
+      beforeEach(() => {
+        userEvent.type(input, '{enter}')
+      })
+
+      it('the input value is unchanged', () => {
+        expect(input).toHaveValue('10/12/2019 - 15/12/2019')
+      })
+    })
+
+    // Note this shouldn't happen in reality as the input is read-only
+    // in range mode
+    describe('and a date is typed in the input', () => {
+      beforeEach(() => {
+        fireEvent.change(input, {
+          target: {
+            value: '10/10/2021',
+          },
+        })
+      })
+
+      it('the input value is unchanged', () => {
+        expect(input).toHaveValue('10/12/2019 - 15/12/2019')
       })
     })
   })
@@ -893,8 +949,6 @@ describe('DatePickerE', () => {
 
   describe('when the `disabledDays` prop is provided', () => {
     beforeEach(() => {
-      onChange = jest.fn()
-
       wrapper = render(
         <DatePickerE
           isOpen
@@ -920,21 +974,19 @@ describe('DatePickerE', () => {
     })
 
     describe('and a disabled day is typed', () => {
-      beforeEach(async () => {
+      beforeEach(() => {
         const input = wrapper.getByTestId('datepicker-input')
 
-        await userEvent.type(input, '{backspace}12/04/2020{enter}')
+        userEvent.type(input, '{selectall}12/04/2020')
       })
 
-      it('does not set the picker to that day', () => {
-        expect(onChange).not.toHaveBeenCalled()
-      })
-
-      it('should be in an error state', () => {
-        expect(wrapper.getByTestId('datepicker-outer-wrapper')).toHaveStyleRule(
-          'border',
-          ERROR_BORDER
-        )
+      it('calls the `onChange` callback with the disabled date', () => {
+        expect(onChange).toHaveBeenLastCalledWith({
+          startDate: new Date('2020-04-12T12:00:00.000Z'),
+          startDateValidity: DATE_VALIDITY.DISABLED,
+          endDate: new Date('2020-04-12T12:00:00.000Z'),
+          endDateValidity: DATE_VALIDITY.DISABLED,
+        })
       })
     })
   })
@@ -984,8 +1036,6 @@ describe('DatePickerE', () => {
 
   describe('when `format` is specified', () => {
     beforeEach(() => {
-      onChange = jest.fn()
-
       wrapper = render(
         <DatePickerE
           format="yyyy/MM/dd"
@@ -1007,18 +1057,19 @@ describe('DatePickerE', () => {
     })
 
     describe('when a valid date is typed', () => {
-      beforeEach(async () => {
+      beforeEach(() => {
         const input = wrapper.getByTestId('datepicker-input')
 
-        userEvent.type(input, `2016/02/03{enter}`)
+        userEvent.type(input, `{selectall}2016/02/03`)
       })
 
       it('invokes the `onChange` callback', () => {
         const expectedDate = new Date('2016-02-03T12:00:00.000Z')
-        expect(onChange).toHaveBeenCalledTimes(1)
-        expect(onChange).toHaveBeenCalledWith({
+        expect(onChange).toHaveBeenLastCalledWith({
           startDate: expectedDate,
+          startDateValidity: DATE_VALIDITY.VALID,
           endDate: expectedDate,
+          endDateValidity: DATE_VALIDITY.VALID,
         })
       })
 
@@ -1034,22 +1085,24 @@ describe('DatePickerE', () => {
       (date) => {
         let input: HTMLElement
 
-        beforeEach(async () => {
+        beforeEach(() => {
           input = wrapper.getByTestId('datepicker-input')
 
           userEvent.type(input, date)
         })
 
-        describe.each([
-          ['enter', () => userEvent.type(input, '{enter}')],
-          ['tab', () => userEvent.tab()],
-        ])('and %s is pressed', (_, commitValue) => {
-          beforeEach(() => {
-            commitValue()
-          })
+        it('calls the `onChange` callback with an invalid date', () => {
+          const lastCall = onChange.mock.calls[onChange.mock.calls.length - 1]
 
-          it("doesn't call the `onChange` callback", () => {
-            expect(onChange).not.toHaveBeenCalled()
+          expect(isValid(lastCall[0].startDate)).toBeFalsy()
+          expect(lastCall[0].startDateValidity).toBe(DATE_VALIDITY.INVALID)
+          expect(isValid(lastCall[0].endDate)).toBeFalsy()
+          expect(lastCall[0].endDateValidity).toBe(DATE_VALIDITY.INVALID)
+        })
+
+        describe('and the input is blurred', () => {
+          beforeEach(() => {
+            input.blur()
           })
 
           it('is in an error state', () => {
@@ -1110,9 +1163,9 @@ describe('DatePickerE', () => {
 
     it('set the value of the component to this date', () => {
       return waitFor(() => {
-        expect(
-          wrapper.getByTestId('datepicker-input').getAttribute('value')
-        ).toBe('01/12/2022 - 02/12/2022')
+        expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
+          '01/12/2022 - 02/12/2022'
+        )
       })
     })
   })
