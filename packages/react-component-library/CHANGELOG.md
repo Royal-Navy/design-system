@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.69.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.68.1...2.69.0) (2021-12-13)
+
+
+### Bug Fixes
+
+* **DatePickerE:** Close picker when input focused ([0b73569](https://github.com/defencedigital/mod-uk-design-system/commit/0b7356968c1b52b710a1fb716ec2b10a08ec5251))
+* **Fieldset:** Improve styling in IE11 ([f44ecf1](https://github.com/defencedigital/mod-uk-design-system/commit/f44ecf17e4a9b740982ff27b6611d8a4efdb591e))
+* **Helpers:** Make `isFirefox` helper node safe ([2e3268b](https://github.com/defencedigital/mod-uk-design-system/commit/2e3268bec5b1c1a19e7078bf3bc4d3310f024e6d))
+* **Select:** Correct label positioning ([0d7c83c](https://github.com/defencedigital/mod-uk-design-system/commit/0d7c83c9168a123bdf794167bb0bca483cab2581))
+
+
+### Features
+
+* **DatePickerE:** Don't select all text on mouse focus ([563e0fa](https://github.com/defencedigital/mod-uk-design-system/commit/563e0faf6baf11a1828351e492884295d244964d))
+* **DatePickerE:** Preserve invalid typed dates ([bad6d69](https://github.com/defencedigital/mod-uk-design-system/commit/bad6d69b216f80c4c6ef91d20604bf2628d3cea6))
+* **ESLintConfigReact:** Ignore unused variables starting with _ ([e26b158](https://github.com/defencedigital/mod-uk-design-system/commit/e26b15831e27887c2cea10027898de88885e5adf))
+
+
+
+
+
 ## [2.68.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.68.0...2.68.1) (2021-12-13)
 
 

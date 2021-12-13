@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.69.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.68.1...2.69.0) (2021-12-13)
+
+
+### Features
+
+* **ESLintConfigReact:** Ignore unused variables starting with _ ([e26b158](https://github.com/defencedigital/mod-uk-design-system/commit/e26b15831e27887c2cea10027898de88885e5adf))
+
+
+
+
+
 ## [2.68.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.68.0...2.68.1) (2021-12-13)
 
 **Note:** Version bump only for package @defencedigital/eslint-config-react
