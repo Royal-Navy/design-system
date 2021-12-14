@@ -59,3 +59,8 @@ jobs:
           cd $RUNNER_TEMP/my-app
           grep version node_modules/@defencedigital/**/package.json
           yarn build
+
+      - name: Lint boilerlate app
+        run: |
+          cd $RUNNER_TEMP/my-app
+          yarn lint

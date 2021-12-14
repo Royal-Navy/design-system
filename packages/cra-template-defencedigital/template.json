@@ -3,7 +3,7 @@
     "author": "Defence Digital",
     "scripts": {
       "codegen": "gql-gen --config codegen.yml",
-      "lint": "eslint src/* --ext .ts --ext .tsx"
+      "lint": "eslint src --ext .ts --ext .tsx"
     },
     "dependencies": {
       "@apollo/client": "^3.5.6",
