@@ -192,6 +192,7 @@
     "styled-theming": "^2.2.0"
   },
   "peerDependencies": {
+    "formik": "^2 || ^3",
     "styled-components": ">= 5"
   }
 }
