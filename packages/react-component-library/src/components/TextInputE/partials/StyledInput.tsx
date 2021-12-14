@@ -54,8 +54,10 @@ export const StyledInput = styled.input<StyledInputProps>`
   ${removeAutoFillBackground()}
 
   color: ${color('neutral', '600')};
-  font-size: ${({ $size }) => TEXT_INPUT_FONT_SIZE[$size]};
-  height: ${({ $size }) => TEXT_INPUT_INPUT_HEIGHT[$size]};
+  font-size: ${({ $size = COMPONENT_SIZE.FORMS }) =>
+    TEXT_INPUT_FONT_SIZE[$size]};
+  height: ${({ $size = COMPONENT_SIZE.FORMS }) =>
+    TEXT_INPUT_INPUT_HEIGHT[$size]};
 
   &:focus {
     outline: 0;

@@ -254,10 +254,10 @@ describe('SelectE', () => {
 
     it('displays in an error state', () => {
       expect(wrapper.getByTestId('select-outer-wrapper')).toHaveStyleRule(
-        'border',
-        `${
+        'box-shadow',
+        `0 0 0 ${
           BORDER_WIDTH[COMPONENT_SIZE.FORMS]
-        } solid ${ColorDanger800.toUpperCase()}`
+        } ${ColorDanger800.toUpperCase()}`
       )
     })
   })

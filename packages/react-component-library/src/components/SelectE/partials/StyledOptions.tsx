@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { BORDER_RADIUS, BORDER_WIDTH } from '../../../styled-components'
+import { BORDER_RADIUS } from '../../../styled-components'
 import { COMPONENT_SIZE } from '../../Forms'
 
 export const StyledOptions = styled.ul`
@@ -9,13 +9,6 @@ export const StyledOptions = styled.ul`
   list-style-type: none;
   padding-left: 0;
   margin-left: 0;
-  border-radius: 0 0
-    calc(
-      ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]} -
-        ${BORDER_WIDTH[COMPONENT_SIZE.FORMS]}
-    )
-    calc(
-      ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]} -
-        ${BORDER_WIDTH[COMPONENT_SIZE.FORMS]}
-    );
+  border-radius: 0 0 ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]}
+    ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]};
 `

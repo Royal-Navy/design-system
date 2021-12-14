@@ -12,12 +12,16 @@ import {
 import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
 
+import { BORDER_WIDTH } from '../../styled-components'
+import { COMPONENT_SIZE } from '../Forms'
 import { DatePickerE, DatePickerEOnChangeData } from '.'
 import { ButtonE } from '../ButtonE'
 import { DATE_VALIDITY } from './constants'
 
 const NOW = '2019-12-05T11:00:00.000Z'
-const ERROR_BORDER = `3px solid ${ColorDanger800.toUpperCase()}`
+const ERROR_BOX_SHADOW = `0 0 0 ${
+  BORDER_WIDTH[COMPONENT_SIZE.FORMS]
+} ${ColorDanger800.toUpperCase()}`
 
 function click(element: HTMLElement) {
   fireEvent.mouseDown(element)
@@ -437,7 +441,7 @@ describe('DatePickerE', () => {
             it('is in an error state', () => {
               expect(
                 wrapper.getByTestId('datepicker-outer-wrapper')
-              ).toHaveStyleRule('border', ERROR_BORDER)
+              ).toHaveStyleRule('box-shadow', ERROR_BOX_SHADOW)
             })
 
             it('calls the `onBlur` callback', () => {
@@ -466,7 +470,7 @@ describe('DatePickerE', () => {
             it('should not be in an error state', () => {
               expect(
                 wrapper.getByTestId('datepicker-outer-wrapper')
-              ).not.toHaveStyleRule('border', ERROR_BORDER)
+              ).not.toHaveStyleRule('box-shadow', ERROR_BOX_SHADOW)
             })
           })
 
@@ -480,7 +484,7 @@ describe('DatePickerE', () => {
             it('is in an error state', () => {
               expect(
                 wrapper.getByTestId('datepicker-outer-wrapper')
-              ).toHaveStyleRule('border', ERROR_BORDER)
+              ).toHaveStyleRule('box-shadow', ERROR_BOX_SHADOW)
             })
 
             it('calls the `onBlur` callback', () => {
@@ -508,7 +512,7 @@ describe('DatePickerE', () => {
           it('is in an error state', () => {
             expect(
               wrapper.getByTestId('datepicker-outer-wrapper')
-            ).toHaveStyleRule('border', ERROR_BORDER)
+            ).toHaveStyleRule('box-shadow', ERROR_BOX_SHADOW)
           })
         })
 
@@ -531,7 +535,7 @@ describe('DatePickerE', () => {
           it('is in an error state', () => {
             expect(
               wrapper.getByTestId('datepicker-outer-wrapper')
-            ).toHaveStyleRule('border', ERROR_BORDER)
+            ).toHaveStyleRule('box-shadow', ERROR_BOX_SHADOW)
           })
         })
       })
@@ -1028,8 +1032,8 @@ describe('DatePickerE', () => {
 
     it('should set the border on the outer wrapper', () => {
       expect(wrapper.getByTestId('datepicker-outer-wrapper')).toHaveStyleRule(
-        'border',
-        ERROR_BORDER
+        'box-shadow',
+        ERROR_BOX_SHADOW
       )
     })
   })
@@ -1076,7 +1080,7 @@ describe('DatePickerE', () => {
       it("isn't in an error state", () => {
         expect(
           wrapper.getByTestId('datepicker-outer-wrapper')
-        ).not.toHaveStyleRule('border', ERROR_BORDER)
+        ).not.toHaveStyleRule('box-shadow', ERROR_BOX_SHADOW)
       })
     })
 
@@ -1108,7 +1112,7 @@ describe('DatePickerE', () => {
           it('is in an error state', () => {
             expect(
               wrapper.getByTestId('datepicker-outer-wrapper')
-            ).toHaveStyleRule('border', ERROR_BORDER)
+            ).toHaveStyleRule('box-shadow', ERROR_BOX_SHADOW)
           })
         })
       }
