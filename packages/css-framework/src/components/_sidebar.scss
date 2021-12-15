@@ -49,6 +49,7 @@ body.has-sidebar {
   align-items: center;
   justify-content: center;
   width: $bar-width - $border;
+  color: f.color('neutral', '200');
 }
 
 .rn-iconfill {

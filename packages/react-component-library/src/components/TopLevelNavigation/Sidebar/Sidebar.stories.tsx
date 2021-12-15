@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
+import { IconHome, IconBarChart, IconTune } from '@defencedigital/icon-library'
 
-import { Graph, House, Tools } from '../../../icons'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 import {
@@ -37,13 +37,13 @@ export default {
 export const Default: Story<SidebarProps> = (props) => {
   const nav = (
     <SidebarNav>
-      <SidebarNavItem Image={House} link={<Link href="#">Home</Link>} />
+      <SidebarNavItem Image={IconHome} link={<Link href="#">Home</Link>} />
       <SidebarNavItem
-        Image={Graph}
+        Image={IconBarChart}
         link={<Link href="#">Stats</Link>}
         isActive
       />
-      <SidebarNavItem Image={Tools} link={<Link href="#">Tools</Link>} />
+      <SidebarNavItem Image={IconTune} link={<Link href="#">Settings</Link>} />
     </SidebarNav>
   )
 
@@ -57,13 +57,13 @@ export const WithUser: Story<SidebarProps> = (props) => {
 
   const nav = (
     <SidebarNav>
-      <SidebarNavItem Image={House} link={<Link href="#">Home</Link>} />
+      <SidebarNavItem Image={IconHome} link={<Link href="#">Home</Link>} />
       <SidebarNavItem
-        Image={Graph}
+        Image={IconBarChart}
         link={<Link href="#">Stats</Link>}
         isActive
       />
-      <SidebarNavItem Image={Tools} link={<Link href="#">Tools</Link>} />
+      <SidebarNavItem Image={IconTune} link={<Link href="#">Settings</Link>} />
     </SidebarNav>
   )
 
@@ -111,13 +111,13 @@ export const WithNotifications: Story<SidebarProps> = (props) => {
 
   const nav = (
     <SidebarNav>
-      <SidebarNavItem Image={House} link={<Link href="#">Home</Link>} />
+      <SidebarNavItem Image={IconHome} link={<Link href="#">Home</Link>} />
       <SidebarNavItem
-        Image={Graph}
+        Image={IconBarChart}
         link={<Link href="#">Stats</Link>}
         isActive
       />
-      <SidebarNavItem Image={Tools} link={<Link href="#">Tools</Link>} />
+      <SidebarNavItem Image={IconTune} link={<Link href="#">Settings</Link>} />
     </SidebarNav>
   )
 
