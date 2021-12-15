@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 
-import { Search as SearchIcon } from '../../../icons'
 import { Logo as DefaultLogo } from './Logo'
 import { LinkTypes } from '../../../common/Link'
 import { MastheadUserProps } from './index'
@@ -20,6 +19,7 @@ import { StyledBanner } from './partials/StyledBanner'
 import { SearchBar } from '../SearchBar/SearchBar'
 import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
 import { StyledIconNotifications } from './partials/StyledIconNotifications'
+import { StyledIconSearch } from './partials/StyledIconSearch'
 
 export interface MastheadProps {
   /**
@@ -135,7 +135,7 @@ export const Masthead: React.FC<MastheadProps> = ({
                 ref={searchButtonRef}
                 data-testid="masthead-search-button"
               >
-                <SearchIcon />
+                <StyledIconSearch />
               </StyledOption>
               {user && (
                 <StyledVerticalSeparator>
