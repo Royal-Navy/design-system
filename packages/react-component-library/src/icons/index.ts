@@ -1,4 +1,3 @@
-export * from './Bell'
 export * from './Graph'
 export * from './House'
 export * from './Logo'

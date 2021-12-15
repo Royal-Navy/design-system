@@ -1,7 +1,6 @@
 import { useToasts } from 'react-toast-notifications'
-import * as Icons from './icons' // Deprecated legacy icons
 
-export { Icons, useToasts }
+export { useToasts }
 
 // Formik components (enhanced)
 export { Formik } from './components/Formik'
