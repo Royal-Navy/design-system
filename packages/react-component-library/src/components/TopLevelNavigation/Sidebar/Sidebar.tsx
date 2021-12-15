@@ -1,11 +1,13 @@
 import React from 'react'
+import styled from 'styled-components'
+import { selectors } from '@defencedigital/design-tokens'
+import { IconNotifications } from '@defencedigital/icon-library'
 import classNames from 'classnames'
 
 import { NotificationsProps } from '../NotificationPanel'
 import { SidebarNavProps, SidebarUserProps } from './index'
 import { Sheet } from '../Sheet/Sheet'
 import { SheetButton } from '../Sheet/SheetButton'
-import { Bell } from '../../../icons'
 import { useOpenClose } from '../../../hooks'
 import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
@@ -28,6 +30,17 @@ export interface SidebarProps extends ComponentWithClass {
    */
   user?: React.ReactElement<SidebarUserProps>
 }
+
+const { color } = selectors
+
+const StyledIconNotifications = styled(IconNotifications)`
+  color: ${color('neutral', '200')};
+
+  + span {
+    top: 0px;
+    right: 0px;
+  }
+`
 
 /**
  * @deprecated
@@ -69,7 +82,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <SheetButton
                 aria-label="Show notifications"
                 data-testid="notification-button"
-                icon={<Bell className="rn-sheet__icon" />}
+                icon={<StyledIconNotifications />}
               >
                 {hasUnreadNotification && (
                   <StyledNotRead data-testid="not-read" />
