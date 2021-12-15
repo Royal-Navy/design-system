@@ -21,6 +21,9 @@ export default {
           'This component wraps a popular open-source library. See comprehensive documentation [here](https://www.downshift-js.com/downshift/).',
       },
     },
+    options: {
+      enableShortcuts: false,
+    },
   },
 } as Meta
 

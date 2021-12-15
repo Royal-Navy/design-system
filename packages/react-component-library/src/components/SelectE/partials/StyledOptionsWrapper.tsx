@@ -7,6 +7,10 @@ import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInputE/partials/StyledInput'
 
 const { color, zIndex } = selectors
 
+interface StyledOptionsWrapperProps {
+  $isVisible: boolean
+}
+
 function getTopBorder() {
   return css`
     &::before {
@@ -39,7 +43,8 @@ function getBoxShadow() {
   `
 }
 
-export const StyledOptionsWrapper = styled.div`
+export const StyledOptionsWrapper = styled.div<StyledOptionsWrapperProps>`
+  display: ${({ $isVisible }) => ($isVisible ? 'block' : 'none')};
   z-index: ${zIndex('dropdown', 1)};
   position: absolute;
   width: 100%;

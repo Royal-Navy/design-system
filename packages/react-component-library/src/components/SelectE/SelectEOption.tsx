@@ -14,30 +14,30 @@ export interface SelectEOptionProps extends ComponentWithClass {
   value: string
 }
 
-export const SelectEOption: React.FC<SelectEOptionProps> = ({
-  badge,
-  icon,
-  children,
-  isHighlighted,
-  ...rest
-}) => (
-  <StyledOption
-    $isHighlighted={isHighlighted}
-    data-testid="select-option"
-    {...rest}
-  >
-    {icon}
-    <StyledOptionText>{children}</StyledOptionText>
-    {badge && (
-      <StyledOptionBadge
-        data-testid="select-badge"
-        size={BADGE_SIZE.XSMALL}
-        variant={BADGE_VARIANT.PILL}
-      >
-        {badge}
-      </StyledOptionBadge>
-    )}
-  </StyledOption>
-)
+export const SelectEOption = React.forwardRef<
+  HTMLLIElement,
+  SelectEOptionProps
+>(({ badge, icon, children, isHighlighted, ...rest }, ref) => {
+  return (
+    <StyledOption
+      $isHighlighted={isHighlighted}
+      data-testid="select-option"
+      ref={ref}
+      {...rest}
+    >
+      {icon}
+      <StyledOptionText>{children}</StyledOptionText>
+      {badge && (
+        <StyledOptionBadge
+          data-testid="select-badge"
+          size={BADGE_SIZE.XSMALL}
+          variant={BADGE_VARIANT.PILL}
+        >
+          {badge}
+        </StyledOptionBadge>
+      )}
+    </StyledOption>
+  )
+})
 
 SelectEOption.displayName = 'SelectEOption'
