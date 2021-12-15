@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 
-import { Logo as DefaultLogo, Search as SearchIcon } from '../../../icons'
+import { Search as SearchIcon } from '../../../icons'
+import { Logo as DefaultLogo } from './Logo'
 import { LinkTypes } from '../../../common/Link'
 import { MastheadUserProps } from './index'
 import { Nav, NavItem } from '../../../common/Nav'
@@ -74,7 +75,7 @@ function getServiceName(
     children: (
       <StyledServiceName>
         {Logo &&
-          React.cloneElement(<Logo />, {
+          React.cloneElement(<Logo data-testid="logo" />, {
             role: 'presentation',
           })}
         <StyledTitle $hasLogo={!!Logo} data-testid="masthead-servicename">
