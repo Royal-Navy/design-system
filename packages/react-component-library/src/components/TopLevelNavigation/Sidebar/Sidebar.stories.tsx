@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { IconHome, IconBarChart, IconTune } from '@defencedigital/icon-library'
 
-import { Graph, House, Tools } from '../../../icons'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './index'
@@ -31,13 +31,13 @@ export default {
 export const Default: ComponentStory<typeof Sidebar> = (props) => {
   const nav = (
     <SidebarNav>
-      <SidebarNavItem Image={House} link={<Link href="#">Home</Link>} />
+      <SidebarNavItem Image={IconHome} link={<Link href="#">Home</Link>} />
       <SidebarNavItem
-        Image={Graph}
+        Image={IconBarChart}
         link={<Link href="#">Stats</Link>}
         isActive
       />
-      <SidebarNavItem Image={Tools} link={<Link href="#">Tools</Link>} />
+      <SidebarNavItem Image={IconTune} link={<Link href="#">Settings</Link>} />
     </SidebarNav>
   )
 
@@ -51,13 +51,13 @@ export const WithUser: ComponentStory<typeof Sidebar> = (props) => {
 
   const nav = (
     <SidebarNav>
-      <SidebarNavItem Image={House} link={<Link href="#">Home</Link>} />
+      <SidebarNavItem Image={IconHome} link={<Link href="#">Home</Link>} />
       <SidebarNavItem
-        Image={Graph}
+        Image={IconBarChart}
         link={<Link href="#">Stats</Link>}
         isActive
       />
-      <SidebarNavItem Image={Tools} link={<Link href="#">Tools</Link>} />
+      <SidebarNavItem Image={IconTune} link={<Link href="#">Settings</Link>} />
     </SidebarNav>
   )
 
@@ -105,13 +105,13 @@ export const WithNotifications: ComponentStory<typeof Sidebar> = (props) => {
 
   const nav = (
     <SidebarNav>
-      <SidebarNavItem Image={House} link={<Link href="#">Home</Link>} />
+      <SidebarNavItem Image={IconHome} link={<Link href="#">Home</Link>} />
       <SidebarNavItem
-        Image={Graph}
+        Image={IconBarChart}
         link={<Link href="#">Stats</Link>}
         isActive
       />
-      <SidebarNavItem Image={Tools} link={<Link href="#">Tools</Link>} />
+      <SidebarNavItem Image={IconTune} link={<Link href="#">Settings</Link>} />
     </SidebarNav>
   )
 
