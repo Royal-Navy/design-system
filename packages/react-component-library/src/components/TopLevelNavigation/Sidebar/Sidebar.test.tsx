@@ -1,10 +1,10 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
+import { IconHome, IconBarChart, IconTune } from '@defencedigital/icon-library'
 
 import { Link } from '../../Link'
 import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './index'
-import { Graph, House, Tools } from '../../../icons'
 import { Notification, Notifications } from '../NotificationPanel'
 
 describe('Sidebar', () => {
@@ -42,16 +42,16 @@ describe('Sidebar', () => {
             <SidebarNav data-arbitrary="arbitrary-nav">
               <SidebarNavItem
                 data-arbitrary="arbitrary-nav-item"
-                Image={House}
+                Image={IconHome}
                 link={<Link href="/">Home</Link>}
               />
               <SidebarNavItem
-                Image={Graph}
+                Image={IconBarChart}
                 link={<Link href="/stats">Stats</Link>}
                 isActive
               />
               <SidebarNavItem
-                Image={Tools}
+                Image={IconTune}
                 link={<Link href="/tools">Tools</Link>}
               />
             </SidebarNav>
