@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import '@defencedigital/fonts'
 import { GlobalStyleProvider } from '@defencedigital/react-component-library'
 import { Redirect, BrowserRouter as Router, Route } from 'react-router-dom'
-import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloProvider } from '@apollo/client/react'
 
 import { Home } from './pages'
 import { client } from './graphql/client'
