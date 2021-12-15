@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react'
+import { IconChevronRight } from '@defencedigital/icon-library'
 
 import { TextInput } from '../../TextInput'
-import { RightArrow } from '../../../icons'
 import { useDocumentClick } from '../../../hooks'
 import { StyledSearchBar } from './partials/StyledSearchBar'
 import { StyledForm } from './partials/StyledForm'
@@ -60,7 +60,7 @@ export const SearchBar: React.FC<SearchbarProps> = ({
           data-testid="searchbar-submit-button"
           type="submit"
         >
-          <RightArrow />
+          <IconChevronRight />
         </StyledButton>
       </StyledForm>
     </StyledSearchBar>
