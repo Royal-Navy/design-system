@@ -1,4 +1,3 @@
-export * from './Logo'
 export * from './Right-Arrow'
 export * from './Search'
 export * from './Visibility'
