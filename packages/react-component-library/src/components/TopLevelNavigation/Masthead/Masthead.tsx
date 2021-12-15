@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-import { Bell, Logo as DefaultLogo, Search as SearchIcon } from '../../../icons'
+import { Logo as DefaultLogo, Search as SearchIcon } from '../../../icons'
 import { LinkTypes } from '../../../common/Link'
 import { MastheadUserProps } from './index'
 import { Nav, NavItem } from '../../../common/Nav'
@@ -18,6 +18,7 @@ import { StyledVerticalSeparator } from './partials/StyledVerticalSeparator'
 import { StyledBanner } from './partials/StyledBanner'
 import { SearchBar } from '../SearchBar/SearchBar'
 import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
+import { StyledIconNotifications } from './partials/StyledIconNotifications'
 
 export interface MastheadProps {
   /**
@@ -150,7 +151,7 @@ export const Masthead: React.FC<MastheadProps> = ({
                   aria-label="Show notifications"
                   as={SheetButton}
                   data-testid="notification-button"
-                  icon={<Bell />}
+                  icon={<StyledIconNotifications />}
                 >
                   {hasUnreadNotification && (
                     <StyledNotRead data-testid="not-read" />
