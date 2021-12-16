@@ -6,15 +6,17 @@ A collection of React components written for Defence Digital web applications.
 
 The Defence Digital React Component Library is available as an [NPM package](https://www.npmjs.com/package/@defencedigital/react-component-library).
 
-```
+To install it, run the relevant command for your package manager:
+
+```shell
 // npm
-npm install @defencedigital/fonts @defencedigital/react-component-library
+npm install @defencedigital/fonts @defencedigital/react-component-library styled-components formik
 
 // yarn
-yarn add @defencedigital/fonts @defencedigital/react-component-library
+yarn add @defencedigital/fonts @defencedigital/react-component-library styled-components formik
 ```
 
-NOTE: As of `2.16.0` the [`styled-components`](https://github.com/styled-components/styled-components) package is now a required [peerDependency](https://nodejs.org/en/blog/npm/peer-dependencies/).
+Note: [`styled-components`](https://styled-components.com/) and [`formik`](https://formik.org/) are required [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/) and are installed with the above commands.
 
 ## Usage
 

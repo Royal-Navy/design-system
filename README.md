@@ -25,17 +25,17 @@ Please refer to the [component demo pages](https://design-system.digital.mod.uk/
 
 ### Installation
 
-To install and save to your projects package.json dependencies, run:
+To install and save to your project's package.json dependencies, run:
 
 ```
 # with npm
-npm install @defencedigital/fonts @defencedigital/react-component-library
+npm install @defencedigital/fonts @defencedigital/react-component-library styled-components formik
 
 # ...or with yarn
-yarn add @defencedigital/fonts @defencedigital/react-component-library
+yarn add @defencedigital/fonts @defencedigital/react-component-library styled-components formik
 ```
 
-Note: As of `2.16.0` the [`styled-components`](https://github.com/styled-components/styled-components) package is now a required [peerDependency](https://nodejs.org/en/blog/npm/peer-dependencies/).
+Note: [`styled-components`](https://styled-components.com/) and [`formik`](https://formik.org/) are required [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/) and are installed with the above commands.
 
 ### Quick start
 
