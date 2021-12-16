@@ -45,7 +45,7 @@ export const Buttons: React.FC<ButtonsProps> = ({
   }
 
   return (
-    <StyledInlineButtons $isDisabled={isDisabled}>
+    <StyledInlineButtons>
       <InlineButton
         aria-label={`${capitalize(
           NUMBER_INPUT_BUTTON_TYPE.DECREASE
