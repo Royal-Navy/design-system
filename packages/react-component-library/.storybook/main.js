@@ -20,17 +20,5 @@ module.exports = {
     ${head}
     ${process.env.NETLIFY ? newRelic.script : ''}
   `,
-  webpackFinal: (config) => {
-    return {
-      ...config,
-      resolve: {
-        ...config.resolve,
-        fallback: {
-          ...config.resolve.fallback,
-          stream: require.resolve('stream-browserify'),
-        },
-      },
-    }
-  },
   stories: ['../src/**/*.stories.tsx'],
 }
