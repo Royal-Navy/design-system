@@ -1,10 +1,17 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
-import { StyledIconEventWrapper } from './StyledIconEventWrapper'
+
+import { ComponentSizeType } from '../../Forms'
+import { StyledIconWrapper } from './StyledIconWrapper'
 
 const { color } = selectors
 
-export const StyledButton = styled.button`
+interface StyledButtonProps {
+  $hasHover?: boolean
+  $size?: ComponentSizeType
+}
+
+export const StyledInlineButton = styled.button<StyledButtonProps>`
   position: relative;
   display: flex;
   justify-content: center;
@@ -16,7 +23,7 @@ export const StyledButton = styled.button`
   outline: none;
   color: ${color('action', '700')};
   border: none;
-  border-left: 1px solid ${color('neutral', '200')};
+  height: 100%;
 
   &:disabled {
     color: ${color('neutral', '300')};
@@ -29,13 +36,21 @@ export const StyledButton = styled.button`
 
   &:enabled:focus,
   &:enabled:hover {
-    ${StyledIconEventWrapper} {
+    ${StyledIconWrapper} {
       background-color: ${color('action', '000')};
     }
   }
 
+  ${({ $hasHover }) =>
+    $hasHover &&
+    css`
+      ${StyledIconWrapper} {
+        background-color: ${color('action', '000')};
+      }
+    `}
+
   &:enabled:active {
-    ${StyledIconEventWrapper} {
+    ${StyledIconWrapper} {
       background-color: ${color('action', '100')};
     }
   }
