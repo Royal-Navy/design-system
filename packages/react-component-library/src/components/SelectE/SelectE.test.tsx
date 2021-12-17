@@ -115,7 +115,7 @@ describe('SelectE', () => {
 
     describe('when the arrow button is clicked', () => {
       beforeEach(() => {
-        wrapper.getByTestId('select-arrow-button').click()
+        userEvent.click(wrapper.getByTestId('select-arrow-button'))
       })
 
       it('displays the items', () => {
@@ -129,7 +129,7 @@ describe('SelectE', () => {
 
       describe('and the second item is clicked', () => {
         beforeEach(() => {
-          wrapper.getByText('Two').click()
+          userEvent.click(wrapper.getByText('Two'))
         })
 
         it('hides the items', () => {
@@ -147,7 +147,7 @@ describe('SelectE', () => {
 
         describe('and the clear button is clicked', () => {
           beforeEach(() => {
-            wrapper.getByTestId('select-clear-button').click()
+            userEvent.click(wrapper.getByTestId('select-clear-button'))
           })
 
           it('resets the value', () => {
@@ -232,7 +232,7 @@ describe('SelectE', () => {
 
     describe('when clicking on the arrow button', () => {
       beforeEach(() => {
-        wrapper.getByTestId('select-arrow-button').click()
+        userEvent.click(wrapper.getByTestId('select-arrow-button'))
       })
 
       it('does not show the items', () => {

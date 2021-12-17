@@ -11,4 +11,8 @@ export const StyledOptions = styled.ul`
   margin-left: 0;
   border-radius: 0 0 ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]}
     ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]};
+
+  &:focus {
+    outline: none;
+  }
 `

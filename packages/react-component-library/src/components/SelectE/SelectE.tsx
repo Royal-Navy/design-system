@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Downshift from 'downshift'
+import { useSelect } from 'downshift'
 
 import { ArrowButton } from './ArrowButton'
 import { ClearButton } from './ClearButton'
@@ -29,7 +29,7 @@ export interface SelectEProps extends ComponentWithClass {
   /**
    * Collection of options to display within the Select.
    */
-  children: SelectChildType | SelectChildType[]
+  children: SelectChildrenType
   /**
    * Optional HTML `id` attribute to apply to the component.
    */
@@ -56,21 +56,6 @@ export interface SelectEProps extends ComponentWithClass {
   value?: string
 }
 
-function getChildBy(
-  children: SelectChildrenType,
-  propName: string,
-  value: string
-): React.ReactNode {
-  return React.Children.toArray(children).find((child: React.ReactNode) => {
-    return React.isValidElement(child) && child.props[propName] === value
-  })
-}
-
-function getSelectedValue(children: SelectChildrenType, value: string) {
-  const child = getChildBy(children, 'value', value)
-  return (child as React.ReactElement)?.props?.children
-}
-
 export const SelectE: React.FC<SelectEProps> = ({
   children,
   id = getId('select'),
@@ -83,125 +68,114 @@ export const SelectE: React.FC<SelectEProps> = ({
 }) => {
   const [hasHover, setHasHover] = useState<boolean>(false)
   const labelId = getId('label')
+  const itemToString = (item: SelectChildType) => {
+    return React.isValidElement(item) ? item.props.children : null
+  }
+
+  const {
+    getItemProps,
+    getMenuProps,
+    getToggleButtonProps,
+    highlightedIndex,
+    isOpen,
+    openMenu,
+    selectItem,
+    selectedItem,
+    toggleMenu,
+  } = useSelect({
+    itemToString,
+    initialSelectedItem: React.Children.toArray(children).find((child) => {
+      return React.isValidElement(child) ? child.props.value === value : null
+    }),
+    items: React.Children.toArray(children),
+    onSelectedItemChange: ({ selectedItem: newItem }) => {
+      if (onChange) {
+        onChange(React.isValidElement(newItem) ? newItem.props.value : null)
+      }
+    },
+  })
 
   return (
-    <Downshift
-      onChange={(selection) => {
-        if (onChange) {
-          const child = getChildBy(children, 'children', selection)
-          onChange((child as React.ReactElement)?.props?.value ?? null)
-        }
-      }}
-      initialSelectedItem={getSelectedValue(children, value)}
-      itemToString={(item) => item || ''}
-    >
-      {({
-        clearSelection,
-        getInputProps,
-        getItemProps,
-        getMenuProps,
-        getRootProps,
-        getToggleButtonProps,
-        highlightedIndex,
-        inputValue,
-        isOpen,
-        openMenu,
-        toggleMenu,
-      }) => {
-        return (
-          <StyledSelect
-            data-testid="select"
-            {...getRootProps(undefined, { suppressRefError: true })}
-            aria-labelledby={labelId}
-          >
-            <StyledTextInput data-testid="text-input-container">
-              <StyledOuterWrapper
-                $hasFocus={isOpen}
-                $isDisabled={isDisabled}
-                $isInvalid={isInvalid}
-                data-testid="select-outer-wrapper"
-              >
-                <StyledInputWrapper data-testid="text-input-input-wrapper">
-                  <StyledLabel
-                    $hasContent={!!inputValue}
-                    $hasFocus={false}
-                    htmlFor={id}
-                    id={labelId}
-                    data-testid="select-label"
-                  >
-                    {label}
-                  </StyledLabel>
-                  <StyledInput
-                    $hasLabel
-                    data-testid="select-input"
-                    disabled={isDisabled}
-                    onMouseDown={() => {
-                      if (!isDisabled) {
-                        toggleMenu()
-                      }
-                    }}
-                    onFocus={() => {
-                      if (!isDisabled) {
-                        openMenu()
-                      }
-                    }}
-                    onMouseEnter={() => {
-                      if (!isDisabled) {
-                        setHasHover(true)
-                      }
-                    }}
-                    onMouseLeave={() => setHasHover(false)}
-                    readOnly
-                    {...rest}
-                    {...getInputProps()}
-                    id={id}
-                    aria-labelledby={labelId}
-                  />
-                </StyledInputWrapper>
-                <StyledInlineButtons>
-                  {inputValue && (
-                    <ClearButton
-                      isDisabled={isDisabled}
-                      onClick={() => clearSelection()}
-                    />
-                  )}
-                  <ArrowButton
-                    hasHover={hasHover}
-                    isDisabled={isDisabled}
-                    isOpen={isOpen}
-                    {...getToggleButtonProps()}
-                  />
-                </StyledInlineButtons>
-              </StyledOuterWrapper>
-            </StyledTextInput>
-            {isOpen && (
-              <StyledOptionsWrapper>
-                <StyledOptions {...getMenuProps()}>
-                  {React.Children.map(
-                    children,
-                    (child: SelectChildType, index: number) => {
-                      if (!React.isValidElement(child)) {
-                        return null
-                      }
-
-                      return React.cloneElement(child, {
-                        ...child.props,
-                        ...getItemProps({
-                          index,
-                          key: `option-${index}`,
-                          item: child.props.children,
-                        }),
-                        isHighlighted: highlightedIndex === index,
-                      })
-                    }
-                  )}
-                </StyledOptions>
-              </StyledOptionsWrapper>
+    <StyledSelect data-testid="select" aria-labelledby={labelId}>
+      <StyledTextInput data-testid="text-input-container">
+        <StyledOuterWrapper
+          $hasFocus={isOpen}
+          $isDisabled={isDisabled}
+          $isInvalid={isInvalid}
+          data-testid="select-outer-wrapper"
+        >
+          <StyledInputWrapper data-testid="text-input-input-wrapper">
+            <StyledLabel
+              $hasContent={!!selectedItem}
+              $hasFocus={false}
+              htmlFor={id}
+              id={labelId}
+              data-testid="select-label"
+            >
+              {label}
+            </StyledLabel>
+            <StyledInput
+              $hasLabel
+              aria-labelledby={labelId}
+              data-testid="select-input"
+              disabled={isDisabled}
+              onFocus={() => {
+                openMenu()
+              }}
+              onMouseDown={(e) => {
+                toggleMenu()
+                e.stopPropagation()
+                e.preventDefault()
+              }}
+              onMouseEnter={() => {
+                if (!isDisabled) {
+                  setHasHover(true)
+                }
+              }}
+              onMouseLeave={() => setHasHover(false)}
+              readOnly
+              id={id}
+              value={selectedItem ? itemToString(selectedItem) : ''}
+              {...rest}
+            />
+          </StyledInputWrapper>
+          <StyledInlineButtons>
+            {selectedItem && (
+              <ClearButton
+                isDisabled={isDisabled}
+                onClick={() => selectItem(null)}
+              />
             )}
-          </StyledSelect>
-        )
-      }}
-    </Downshift>
+            <ArrowButton
+              hasHover={hasHover}
+              isDisabled={isDisabled}
+              isOpen={isOpen}
+              {...getToggleButtonProps()}
+            />
+          </StyledInlineButtons>
+        </StyledOuterWrapper>
+      </StyledTextInput>
+      <StyledOptionsWrapper $isVisible={isOpen}>
+        <StyledOptions {...getMenuProps()}>
+          {isOpen &&
+            React.Children.map(children, (child: SelectChildType, index) => {
+              if (!React.isValidElement(child)) {
+                return null
+              }
+
+              return React.cloneElement(child, {
+                ...child.props,
+                ...getItemProps({
+                  index,
+                  item: child,
+                  key: `select-option-${child.props.children}`,
+                }),
+                isHighlighted: highlightedIndex === index,
+              })
+            })}
+        </StyledOptions>
+      </StyledOptionsWrapper>
+    </StyledSelect>
   )
 }
 
