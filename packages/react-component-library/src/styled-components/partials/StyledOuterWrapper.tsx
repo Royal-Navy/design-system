@@ -5,14 +5,24 @@ import { COMPONENT_SIZE, ComponentSizeType } from '../../components/Forms'
 
 const { color } = selectors
 
+// Note: These are used with box shadows rather than borders, and for box
+// shadows the values are taken to the inner edge of the shadow (rather
+// than the outer edge for borders). To get the value that would be used
+// with a normal border, the border width should be added to the radius
+// value.
 export const BORDER_RADIUS = {
-  [COMPONENT_SIZE.SMALL]: '10px',
-  [COMPONENT_SIZE.FORMS]: '15px',
+  [COMPONENT_SIZE.SMALL]: '8px',
+  [COMPONENT_SIZE.FORMS]: '12px',
 }
 
 export const BORDER_WIDTH = {
   [COMPONENT_SIZE.SMALL]: '2px',
   [COMPONENT_SIZE.FORMS]: '3px',
+}
+
+const SECONDARY_BORDER_WIDTH = {
+  [COMPONENT_SIZE.SMALL]: '4px',
+  [COMPONENT_SIZE.FORMS]: '6px',
 }
 
 export interface StyledOuterWrapperProps {
@@ -26,7 +36,7 @@ export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
   ${({ $hasFocus, $isDisabled, $isInvalid, $size = COMPONENT_SIZE.FORMS }) => {
     const defaults = css`
       background-color: ${color('neutral', 'white')};
-      border: ${BORDER_WIDTH[$size]} solid transparent;
+      border: none;
       border-radius: ${BORDER_RADIUS[$size]};
       box-shadow: 0 0 0 1px ${color('neutral', '200')};
       transition: border-color 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
@@ -36,8 +46,8 @@ export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
     if ($hasFocus) {
       return css`
         ${defaults};
-        border: ${BORDER_WIDTH[$size]} solid ${color('action', '500')};
-        box-shadow: 0 0 0 ${BORDER_WIDTH[$size]} ${color('action', '100')};
+        box-shadow: 0 0 0 ${BORDER_WIDTH[$size]} ${color('action', '500')},
+          0 0 0 ${SECONDARY_BORDER_WIDTH[$size]} ${color('action', '100')};
       `
     }
 
@@ -45,7 +55,6 @@ export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
       return css`
         ${defaults};
         background-color: ${color('neutral', '000')};
-        border: ${BORDER_WIDTH[$size]} solid transparent;
         box-shadow: unset;
 
         * {
@@ -57,8 +66,7 @@ export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
     if ($isInvalid) {
       return css`
         ${defaults};
-        border: ${BORDER_WIDTH[$size]} solid ${color('danger', '800')};
-        box-shadow: unset;
+        box-shadow: 0 0 0 ${BORDER_WIDTH[$size]} ${color('danger', '800')};
       `
     }
 

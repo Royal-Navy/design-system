@@ -22,16 +22,6 @@ function hasClass(allClasses: string, className: string): boolean {
   return allClasses && allClasses.split(' ').includes(className)
 }
 
-function isFirefox(): boolean {
-  if (typeof navigator === 'undefined') {
-    logger.warn('`navigator` object does not exist')
-
-    return false
-  }
-
-  return navigator.userAgent.toLowerCase().indexOf('firefox') > -1
-}
-
 function isIE11(): boolean {
   if (typeof window === 'undefined') {
     logger.warn('`window` object does not exist')
@@ -78,7 +68,6 @@ export {
   getId,
   getKey,
   hasClass,
-  isFirefox,
   isIE11,
   warnIfOverwriting,
   withKey,
