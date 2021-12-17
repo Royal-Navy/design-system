@@ -25,10 +25,10 @@
     "prettier": "^2.0.5"
   },
   "resolutions": {
-    "**/**/axe-core": "^3.5.3",
-    "**/**/trim": "^0.0.3",
-    "**/**/yup": "^0.31.1",
-    "**/**/ansi-regex": "^5.0.1"
+    "**/axe-core": "^3.5.3",
+    "**/trim": "^0.0.3",
+    "**/yup": "^0.31.1",
+    "**/ansi-regex": "^5.0.1"
   },
   "prettier": {
     "bracketSpacing": true,
