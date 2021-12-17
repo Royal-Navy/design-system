@@ -1,23 +1,22 @@
 module.exports = {
-  template(
-    { template },
-    opts,
-    { imports, componentName, props, jsx, exports }
-  ) {
-    const typeScriptTpl = template.smart({ plugins: ['jsx', 'typescript'] })
-    return typeScriptTpl.ast`
-      import React from 'react'
-      import { SVGUniqueID } from 'react-svg-unique-id';
-      import { SVGIconProps } from '../types'
-
-      const ${componentName} = ({ size = 16, ...props }: SVGIconProps) => (
-        <SVGUniqueID>{${jsx}}</SVGUniqueID>
-      );
-
-      export default ${componentName};
-  `
+  typescript: true,
+  prettierConfig: {
+    ...require('./prettier.config.js'),
+    parser: 'typescript',
   },
-  svgoConfig: {
-    plugins: [{ removeViewBox: false }],
+  template: (variables, { tpl }) => {
+    return tpl`
+import React from 'react'
+import { SVGUniqueID } from 'react-svg-unique-id'
+import { SVGIconProps } from '../types'
+
+${variables.interfaces}
+
+const ${variables.componentName} = ({ size = 16, ...props }: SVGIconProps) => (
+  <SVGUniqueID>{${variables.jsx}}</SVGUniqueID>
+);
+
+${variables.exports}
+`
   },
 }
