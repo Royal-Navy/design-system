@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.70.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.69.1...2.70.0) (2021-12-17)
+
+
+### Bug Fixes
+
+* **CRATemplate:** Add support for CRA v5 and npm v8 ([d89321a](https://github.com/defencedigital/mod-uk-design-system/commit/d89321a0009a2b9bc7bb63e824d89d48abdbb8ce))
+* **NumberInputE:** Remove divider positioning ([f52b95f](https://github.com/defencedigital/mod-uk-design-system/commit/f52b95f157002e65711ad733e27f9d8bdd45973d))
+* **ReactComponentLibrary:** Make Formik a peer dependency ([7cd742f](https://github.com/defencedigital/mod-uk-design-system/commit/7cd742f8c47238b8e596cf683681fa9b8efec3fd))
+
+
+
+
+
 ## [2.69.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.69.0...2.69.1) (2021-12-15)
 
 **Note:** Version bump only for package @defencedigital/react-component-library

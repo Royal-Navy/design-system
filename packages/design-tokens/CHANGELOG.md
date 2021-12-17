@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.70.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.69.1...2.70.0) (2021-12-17)
+
+
+### Bug Fixes
+
+* **CRATemplate:** Add support for CRA v5 and npm v8 ([d89321a](https://github.com/defencedigital/mod-uk-design-system/commit/d89321a0009a2b9bc7bb63e824d89d48abdbb8ce))
+
+
+
+
+
 ## [2.69.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.69.0...2.69.1) (2021-12-15)
 
 **Note:** Version bump only for package @defencedigital/design-tokens
