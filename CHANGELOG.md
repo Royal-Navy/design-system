@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.71.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.70.0...2.71.0) (2021-12-20)
+
+
+### Bug Fixes
+
+* **InlineButtons:** Don't hide button left border when disabled ([ac3cb14](https://github.com/defencedigital/mod-uk-design-system/commit/ac3cb14c8c281faa314377a4646cb3c4050b7eb7))
+* **SelectE:** Add drop shadow ([2652003](https://github.com/defencedigital/mod-uk-design-system/commit/2652003f546b026bdb48ae5e1181d5d7ddc21906))
+* **StyledOuterWrapper:** Fix height and label alignment problems ([85c4586](https://github.com/defencedigital/mod-uk-design-system/commit/85c45869ba0234437b28dfe8fa3c4754e364a927))
+
+
+### Features
+
+* **SelectE:** Add ability to type ([01a3606](https://github.com/defencedigital/mod-uk-design-system/commit/01a36069a3d9e11687efb544da2aa632290c7e77))
+
+
+
+
+
 # [2.70.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.69.1...2.70.0) (2021-12-17)
 
 

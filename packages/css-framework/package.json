@@ -1,6 +1,6 @@
 {
   "name": "@defencedigital/css-framework",
-  "version": "2.70.0",
+  "version": "2.71.0",
   "main": "index.scss",
   "author": "Defence Digital",
   "license": "Apache-2.0",
@@ -35,8 +35,8 @@
     "prepare": "yarn build"
   },
   "dependencies": {
-    "@defencedigital/design-tokens": "^2.70.0",
-    "@defencedigital/eslint-config-react": "^2.70.0"
+    "@defencedigital/design-tokens": "^2.71.0",
+    "@defencedigital/eslint-config-react": "^2.71.0"
   },
   "devDependencies": {
     "lint-staged": "^12.0.2",
