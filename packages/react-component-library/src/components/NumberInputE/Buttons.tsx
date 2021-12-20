@@ -7,6 +7,7 @@ import { InlineButton } from '../InlineButtons/InlineButton'
 import { NUMBER_INPUT_BUTTON_TYPE } from './constants'
 import { StyledDivider } from './partials/StyledDivider'
 import { StyledInlineButtons } from '../InlineButtons/partials/StyledInlineButtons'
+import { countDecimals } from '../../helpers'
 
 export interface ButtonsProps {
   isDisabled: boolean
@@ -15,11 +16,11 @@ export interface ButtonsProps {
   name: string
   onClick: (
     event: React.MouseEvent<HTMLButtonElement>,
-    newValue: number
+    newValue: string
   ) => void
   size: ComponentSizeType
   step?: number
-  value: number
+  value: string
 }
 
 const iconLookup = {
@@ -34,12 +35,15 @@ export const Buttons: React.FC<ButtonsProps> = ({
   step,
   value,
 }) => {
-  function onButtonClick(getNewValue: () => number) {
+  const digits = countDecimals(step)
+
+  function onButtonClick(getNewValue: () => string) {
     return (event: React.MouseEvent<HTMLButtonElement>) => {
       const target = event.currentTarget
       target.blur()
 
       const newValue = getNewValue()
+
       onClick(event, newValue)
     }
   }
@@ -52,7 +56,9 @@ export const Buttons: React.FC<ButtonsProps> = ({
         )} the input value`}
         data-testid={`number-input-${NUMBER_INPUT_BUTTON_TYPE.DECREASE}`}
         isDisabled={isDisabled}
-        onClick={onButtonClick(() => (value || 0) - step)}
+        onClick={onButtonClick(() =>
+          ((parseFloat(value) || 0) - step).toFixed(digits)
+        )}
         size={size}
       >
         {iconLookup[NUMBER_INPUT_BUTTON_TYPE.DECREASE]}
@@ -64,7 +70,9 @@ export const Buttons: React.FC<ButtonsProps> = ({
         )} the input value`}
         data-testid={`number-input-${NUMBER_INPUT_BUTTON_TYPE.INCREASE}`}
         isDisabled={isDisabled}
-        onClick={onButtonClick(() => (value || 0) + step)}
+        onClick={onButtonClick(() =>
+          ((parseFloat(value) || 0) + step).toFixed(digits)
+        )}
         size={size}
       >
         {iconLookup[NUMBER_INPUT_BUTTON_TYPE.INCREASE]}

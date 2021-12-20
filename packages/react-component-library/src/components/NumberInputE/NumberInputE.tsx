@@ -116,7 +116,11 @@ export type NumberInputEProps =
   | NumberInputWithPrefixProps
   | NumberInputWithSuffixProps
 
-function formatValue(displayValue: number, prefix: string, suffix: string) {
+function formatValue(
+  displayValue: string,
+  prefix: string,
+  suffix: string
+): string {
   if (isNil(displayValue)) {
     return 'Not set'
   }
@@ -132,15 +136,15 @@ function formatValue(displayValue: number, prefix: string, suffix: string) {
   return displayValue
 }
 
-function getNewValue(event: React.FormEvent<HTMLInputElement>): number {
+function getNewValue(event: React.FormEvent<HTMLInputElement>): string {
   const { value } = event.currentTarget
-  const sanitizedValue = value.replace(/\D/g, '')
+  const sanitizedValue = value.replace(/[^.0-9]/g, '')
 
   if (sanitizedValue === '') {
     return null
   }
 
-  return parseInt(sanitizedValue, 10)
+  return sanitizedValue
 }
 
 function isWithinRange(max: number, min: number, newValue: number) {
@@ -172,13 +176,17 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
   value,
   ...rest
 }) => {
-  const { committedValue, setCommittedValue } = useValue(value)
+  const { committedValue, setCommittedValue } = useValue(
+    value ? String(value) : null
+  )
   const { hasFocus, onLocalFocus, onLocalBlur } = useFocus(onBlur)
 
-  function canCommit(newValue: number) {
+  function canCommit(newValue: string) {
+    const parsedValue = parseFloat(newValue)
+
     return (
-      (isFinite(newValue) && isWithinRange(max, min, newValue)) ||
-      newValue === null
+      (isFinite(parsedValue) && isWithinRange(max, min, parsedValue)) ||
+      parsedValue === null
     )
   }
 
@@ -193,7 +201,7 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
       role="spinbutton"
       aria-valuemin={min}
       aria-valuemax={max}
-      aria-valuenow={committedValue || 0}
+      aria-valuenow={Number(committedValue) || 0}
       aria-valuetext={String(formatValue(committedValue, prefix, suffix))}
     >
       <StyledOuterWrapper
@@ -227,15 +235,15 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
           onChange={(event) => {
             const newValue = getNewValue(event)
 
-            if (canCommit(newValue)) {
+            if (!newValue || canCommit(newValue)) {
               setCommittedValue(newValue)
-              onChange(event, newValue)
+              onChange(event, isNil(newValue) ? null : Number(newValue))
             }
           }}
           onBlur={(event) => {
             const newValue = getNewValue(event)
 
-            if (canCommit(newValue)) {
+            if (!newValue || canCommit(newValue)) {
               setCommittedValue(newValue)
               onLocalBlur(event)
             }
@@ -264,7 +272,7 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
           onClick={(e, newValue) => {
             if (canCommit(newValue)) {
               setCommittedValue(newValue)
-              onChange(e, newValue)
+              onChange(e, Number(newValue))
             }
           }}
           size={size}
