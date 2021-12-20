@@ -21,6 +21,8 @@ const NOW = '2019-12-05T11:00:00.000Z'
 const ERROR_BOX_SHADOW = `0 0 0 ${
   BORDER_WIDTH[COMPONENT_SIZE.FORMS]
 } ${ColorDanger800.toUpperCase()}`
+const PREVIOUS_MONTH_BUTTON_LABEL = 'Go to previous month'
+const NEXT_MONTH_BUTTON_LABEL = 'Go to next month'
 
 function formatDate(date: Date | null) {
   return date && isValid(date) ? format(date, 'dd/MM/yyyy') : ''
@@ -32,7 +34,6 @@ describe('DatePicker', () => {
   let initialStartDate: Date
   let label: string
   let onBlur: (e: React.FormEvent) => void
-  let onCalendarFocus: jest.Mock<void, [React.SyntheticEvent]>
   let days: string[]
   let onSubmitSpy: (e: React.FormEvent) => void
   const onChange = jest.fn<void, [DatePickerOnChangeData]>()
@@ -75,7 +76,6 @@ describe('DatePicker', () => {
     beforeEach(() => {
       initialStartDate = new Date(2019, 11, 1)
       onBlur = jest.fn()
-      onCalendarFocus = jest.fn<void, [React.SyntheticEvent]>()
 
       wrapper = render(
         <>
@@ -83,7 +83,6 @@ describe('DatePicker', () => {
             initialStartDate={initialStartDate}
             onChange={onChange}
             onBlur={onBlur}
-            onCalendarFocus={onCalendarFocus}
           />
           <div data-testid="datepicker-outside" />
         </>
@@ -166,7 +165,9 @@ describe('DatePicker', () => {
 
       it('colours the current date', () => {
         return waitFor(() => {
-          expect(wrapper.getByText(/^5$/)).toHaveStyle({
+          expect(
+            wrapper.getByRole('button', { name: '5th December (Thursday)' })
+          ).toHaveStyle({
             color: ColorWarning800,
           })
         })
@@ -296,13 +297,13 @@ describe('DatePicker', () => {
 
               describe('and the tab key is pressed again', () => {
                 beforeEach(() => {
-                  onCalendarFocus.mockClear()
                   return user.tab()
                 })
 
-                it('focuses the picker container', () => {
-                  expect(onCalendarFocus).toHaveBeenCalledTimes(1)
-                  // NOTE: `react-day-picker` internals from here on down
+                it('focuses the previous month button', () => {
+                  expect(
+                    wrapper.getByLabelText(PREVIOUS_MONTH_BUTTON_LABEL)
+                  ).toHaveFocus()
                 })
               })
 
@@ -624,18 +625,21 @@ describe('DatePicker', () => {
 
     it('focuses the previous month button', () => {
       return waitFor(() =>
-        expect(wrapper.getByLabelText('Previous Month')).toHaveFocus()
+        expect(
+          wrapper.getByLabelText(PREVIOUS_MONTH_BUTTON_LABEL)
+        ).toHaveFocus()
       )
     })
 
-    describe('when Shift-Tab is pressed twice', () => {
+    describe('when Shift-Tab is pressed once', () => {
       beforeEach(async () => {
-        await user.tab({ shift: true })
         await user.tab({ shift: true })
       })
 
       it('traps the focus within the picker', () => {
-        expect(wrapper.getByText('1')).toHaveFocus()
+        expect(
+          wrapper.getByRole('button', { name: '5th December (Thursday)' })
+        ).toHaveFocus()
       })
 
       describe('and Tab is then pressed once', () => {
@@ -644,26 +648,22 @@ describe('DatePicker', () => {
         })
 
         it('still traps the focus within the picker', () => {
-          const dayPicker =
-            wrapper.container.querySelectorAll('.DayPicker-wrapper')[0]
-          expect(dayPicker).toHaveFocus()
+          expect(
+            wrapper.getByLabelText(PREVIOUS_MONTH_BUTTON_LABEL)
+          ).toHaveFocus()
         })
       })
     })
 
     describe.each([
       {
-        name: 'day picker container',
-        selector: () =>
-          wrapper.container.querySelectorAll('.DayPicker-wrapper')[0],
-      },
-      {
         name: 'previous month button',
-        selector: () => wrapper.getByLabelText('Previous Month'),
+        selector: () => wrapper.getByLabelText(PREVIOUS_MONTH_BUTTON_LABEL),
       },
       {
         name: 'day picker day',
-        selector: () => wrapper.getByText(10),
+        selector: () =>
+          wrapper.getByRole('button', { name: '10th December (Tuesday)' }),
       },
     ])('when the escape key is pressed in $name', ({ selector }) => {
       beforeEach(() => {
@@ -685,7 +685,7 @@ describe('DatePicker', () => {
 
     describe('when the next month button is clicked', () => {
       beforeEach(() => {
-        return user.click(wrapper.getByLabelText('Next Month'))
+        return user.click(wrapper.getByLabelText(NEXT_MONTH_BUTTON_LABEL))
       })
 
       it('displays the next month', () => {
@@ -782,7 +782,8 @@ describe('DatePicker', () => {
         it('shades the date range', () => {
           expect(
             wrapper.getAllByText(/^10|11|12|13$/, {
-              selector: '.DayPicker-Day--selected',
+              selector: '.rdp-day_selected span',
+              ignore: '[class=rdp-vhidden]',
             })
           ).toHaveLength(4)
         })
@@ -790,7 +791,7 @@ describe('DatePicker', () => {
         it("doesn't shade dates outside the range", () => {
           expect(
             wrapper.queryAllByText(/^(?!(10|11|12|13))\d\d$/, {
-              selector: '.DayPicker-Day--selected',
+              selector: '.rdp-day_selected span',
             })
           ).toHaveLength(0)
         })
@@ -816,7 +817,8 @@ describe('DatePicker', () => {
         it('shades the date range', () => {
           expect(
             wrapper.getAllByText(/^10|11|12|13$/, {
-              selector: '.DayPicker-Day--selected',
+              selector: '.rdp-day_selected span',
+              ignore: '[class=rdp-vhidden]',
             })
           ).toHaveLength(4)
         })
@@ -824,7 +826,7 @@ describe('DatePicker', () => {
         it("doesn't shade dates outside the range", () => {
           expect(
             wrapper.queryAllByText(/^(?!(10|11|12|13))\d\d$/, {
-              selector: '.DayPicker-Day--selected',
+              selector: '.rdp-day_selected span',
             })
           ).toHaveLength(0)
         })
@@ -977,13 +979,17 @@ describe('DatePicker', () => {
     })
 
     it('colours the override date', () => {
-      expect(wrapper.getByText(/^15$/)).toHaveStyle({
+      expect(
+        wrapper.getByRole('button', { name: '15th December (Sunday)' })
+      ).toHaveStyle({
         color: ColorWarning800,
       })
     })
 
     it('does not colour the actual current date', () => {
-      expect(wrapper.getByText(/^5$/)).not.toHaveStyle({
+      expect(
+        wrapper.getByRole('button', { name: '5th December (Thursday)' })
+      ).not.toHaveStyle({
         color: ColorWarning800,
       })
     })
@@ -1035,12 +1041,17 @@ describe('DatePicker', () => {
     })
 
     it('applies the disabled modifier class to the correct days', () => {
-      expect(wrapper.getByText('12')).toHaveClass('DayPicker-Day--disabled')
+      expect(
+        wrapper.getByRole('button', { name: '12th April (Sunday)' })
+      ).toHaveClass('rdp-day_disabled')
     })
 
     describe('and a disabled day is clicked', () => {
       beforeEach(() => {
-        return userEvent.click(wrapper.getByText('12'), {
+        const button = wrapper.getByRole('button', {
+          name: '12th April (Sunday)',
+        })
+        return userEvent.click(button, {
           pointerEventsCheck: PointerEventsCheckLevel.Never,
           advanceTimers: jest.advanceTimersByTime,
         })

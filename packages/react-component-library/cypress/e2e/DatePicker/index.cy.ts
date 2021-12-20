@@ -2,10 +2,10 @@ import { describe, cy, it, before } from 'local-cypress'
 import { addDays, startOfMonth, format } from 'date-fns'
 import { ColorNeutral200 } from '@defencedigital/design-tokens'
 
+import { formatDatesForInput } from '../../../src/components/DatePicker/utils'
 import { DATE_FORMAT } from '../../../src/constants'
 import { hexToRgb } from '../../helpers'
 import selectors from '../../selectors'
-import { formatDatesForInput } from '../../../src/components/DatePicker/utils/formatDatesForInput'
 
 describe('DatePicker', () => {
   describe('when a day is selected', () => {
@@ -23,9 +23,7 @@ describe('DatePicker', () => {
 
     describe('and the first day is clicked', () => {
       before(() => {
-        cy.get(selectors.datePicker.day.inside)
-          .contains('1')
-          .click({ force: true })
+        cy.get(selectors.datePicker.day).contains('1').click({ force: true })
       })
 
       it('should set the value of the input to the date', () => {
@@ -47,7 +45,7 @@ describe('DatePicker', () => {
 
   describe('when a range is selected', () => {
     before(() => {
-      cy.visit('/iframe.html?id=date-picker--range&viewMode=story')
+      cy.visit('/iframe.html?id=date-picker-experimental--range&viewMode=story')
 
       cy.get(selectors.datePicker.input).click()
     })
@@ -58,7 +56,7 @@ describe('DatePicker', () => {
 
     describe('and the `from` day is clicked', () => {
       before(() => {
-        cy.get(selectors.datePicker.day.inside).contains('1').click()
+        cy.get(selectors.datePicker.day).contains('1').click()
       })
 
       it('should set the value of the input to the date', () => {
@@ -72,7 +70,7 @@ describe('DatePicker', () => {
 
       describe('and the `to` day is clicked', () => {
         before(() => {
-          cy.get(selectors.datePicker.day.inside).contains('10').click()
+          cy.get(selectors.datePicker.day).contains('10').click()
         })
 
         it('should set the value of the input to the range', () => {

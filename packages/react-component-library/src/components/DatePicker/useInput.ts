@@ -14,7 +14,7 @@ function parseDate(datePickerFormat: string, value: string) {
     return new Date(NaN)
   }
 
-  return addHours(date, 12)
+  return date
 }
 
 export function useInput(
