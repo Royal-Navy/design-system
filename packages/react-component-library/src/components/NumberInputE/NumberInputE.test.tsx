@@ -341,7 +341,7 @@ describe('NumberInputE', () => {
         increase.click()
       })
 
-      assertInputValue('4')
+      assertInputValue('3')
 
       describe('and the decrease button is clicked four times', () => {
         beforeEach(() => {

@@ -262,8 +262,10 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
           min={min}
           name={name}
           onClick={(e, newValue) => {
-            setCommittedValue(newValue)
-            onChange(e, newValue)
+            if (canCommit(newValue)) {
+              setCommittedValue(newValue)
+              onChange(e, newValue)
+            }
           }}
           size={size}
           step={step}
