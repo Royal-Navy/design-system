@@ -22,6 +22,11 @@ SteppedFloats.args = {
   step: 0.25,
 }
 
+export const Placeholder = Template.bind({})
+Placeholder.args = {
+  placeholder: 'Example placeholder',
+}
+
 export const Small = Template.bind({})
 Small.args = {
   size: COMPONENT_SIZE.SMALL,
