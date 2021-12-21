@@ -199,7 +199,6 @@ describe('NumberInputE', () => {
 
         userEvent.type(input, '1')
         userEvent.type(input, 'a')
-        userEvent.type(input, '.')
         userEvent.type(input, '2')
       })
 
@@ -211,16 +210,12 @@ describe('NumberInputE', () => {
         expect(onChangeSpy.mock.calls[1][1]).toEqual(1)
       })
 
-      it('calls the `onChange` callback yet again with `1`', () => {
-        expect(onChangeSpy.mock.calls[2][1]).toEqual(1)
-      })
-
       it('calls the `onChange` callback again with `12`', () => {
-        expect(onChangeSpy.mock.calls[3][1]).toEqual(12)
+        expect(onChangeSpy.mock.calls[2][1]).toEqual(12)
       })
 
       assertInputValue('12')
-      assertOnChangeCall(12, 4)
+      assertOnChangeCall(12, 3)
     })
 
     describe('and the user types a value', () => {
@@ -341,7 +336,7 @@ describe('NumberInputE', () => {
         increase.click()
       })
 
-      assertInputValue('4')
+      assertInputValue('3')
 
       describe('and the decrease button is clicked four times', () => {
         beforeEach(() => {
@@ -410,11 +405,15 @@ describe('NumberInputE', () => {
     })
   })
 
-  describe('when the step is specified', () => {
+  describe.each([
+    ['3', '0'],
+    ['0.1', '0.0'],
+    ['0.25', '0.00'],
+  ])('when a step of %s is specified', (step, zero) => {
     beforeEach(() => {
       const props = {
         ...defaultProps,
-        step: 3,
+        step: Number(step),
       }
 
       onChangeSpy = jest.spyOn(props, 'onChange')
@@ -428,7 +427,7 @@ describe('NumberInputE', () => {
         increase.click()
       })
 
-      assertInputValue('3')
+      assertInputValue(step)
 
       describe('and the decrease button is clicked', () => {
         beforeEach(() => {
@@ -436,7 +435,7 @@ describe('NumberInputE', () => {
           decrease.click()
         })
 
-        assertInputValue('0')
+        assertInputValue(zero)
       })
     })
   })

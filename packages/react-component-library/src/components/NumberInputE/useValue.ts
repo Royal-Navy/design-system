@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export function useValue(value: number) {
+export function useValue(value: string) {
   const [committedValue, setCommittedValue] = useState(value)
 
   useEffect(() => {

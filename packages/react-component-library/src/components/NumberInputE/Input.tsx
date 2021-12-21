@@ -1,5 +1,5 @@
 import React from 'react'
-import { isFinite, isNil } from 'lodash'
+import { isNil } from 'lodash'
 
 import { ComponentSizeType } from '../Forms'
 import { InputValidationProps } from '../../common/InputValidationProps'
@@ -18,7 +18,7 @@ export interface InputProps extends InputValidationProps {
   onFocus: (event: React.FormEvent<HTMLInputElement>) => void
   placeholder?: string
   size: ComponentSizeType
-  value?: number
+  value?: string
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -26,7 +26,6 @@ export const Input: React.FC<InputProps> = ({
   isDisabled,
   id,
   label,
-  placeholder = '',
   size,
   value,
   ...rest
@@ -52,7 +51,7 @@ export const Input: React.FC<InputProps> = ({
         data-testid="number-input-input"
         disabled={isDisabled}
         id={id}
-        value={isFinite(value) ? value : ''}
+        value={value || ''}
         {...rest}
       />
     </StyledInputWrapper>
