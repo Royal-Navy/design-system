@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.72.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.71.1...2.72.0) (2021-12-22)
+
+
+### Reverts
+
+* **Deps:** Resolve security alerts and update SVGR ([745bfac](https://github.com/defencedigital/mod-uk-design-system/commit/745bface92dd7bafc47034f84b050a18a41ce1a7))
+
+
+
+
+
 ## [2.71.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.71.0...2.71.1) (2021-12-21)
 
 **Note:** Version bump only for package @defencedigital/icon-library
