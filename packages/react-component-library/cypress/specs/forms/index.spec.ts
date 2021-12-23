@@ -2,6 +2,29 @@ import { describe, cy, it, before } from 'local-cypress'
 
 import selectors from '../../selectors'
 
+const expectedResult = {
+  'react-hook-form': {
+    email: 'hello@world.com',
+    password: 'password',
+    description: 'Hello, World!',
+    exampleCheckbox: [],
+    exampleRadio: 'Option 1',
+    exampleRangeSlider: [28],
+    exampleSwitch: '1',
+    exampleNumberInput: 1,
+  },
+  Formik: {
+    email: 'hello@world.com',
+    password: 'password',
+    description: 'Hello, World!',
+    exampleCheckbox: [],
+    exampleRadio: 'Option 1',
+    exampleSwitch: '1',
+    exampleNumberInput: 1,
+    exampleRangeSlider: [28],
+  },
+}
+
 describe('Form Examples', () => {
   describe(
     'when browsing on desktop',
@@ -33,6 +56,7 @@ describe('Form Examples', () => {
             cy.get(selectors.form.input.description).should('be.visible')
             cy.get(selectors.form.input.switch).should('be.visible')
             cy.get(selectors.form.input.numberInput).should('be.visible')
+            cy.get(selectors.form.input.rangeSlider).should('be.visible')
           })
 
           describe('when an empty form is submitted', () => {
@@ -53,6 +77,7 @@ describe('Form Examples', () => {
               cy.get(selectors.form.input.radio).eq(0).click()
               cy.get(selectors.form.input.switchOption).eq(0).click()
               cy.get(selectors.form.input.numberInputIncrease).click()
+              cy.get(selectors.form.input.rangeSliderRail).click(800, 0)
             })
 
             it('should not show any validation errors', () => {
@@ -70,19 +95,7 @@ describe('Form Examples', () => {
 
               it('should supply form the field values', () => {
                 cy.get(selectors.form.values).contains(
-                  JSON.stringify(
-                    {
-                      email: 'hello@world.com',
-                      password: 'password',
-                      description: 'Hello, World!',
-                      exampleCheckbox: [],
-                      exampleRadio: 'Option 1',
-                      exampleSwitch: '1',
-                      exampleNumberInput: 1,
-                    },
-                    null,
-                    2
-                  )
+                  JSON.stringify(expectedResult[name], null, 2)
                 )
               })
             })

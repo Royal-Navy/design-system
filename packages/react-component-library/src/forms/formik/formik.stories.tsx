@@ -9,6 +9,7 @@ import { CheckboxE } from '../../components/CheckboxE'
 import { ButtonE } from '../../components/ButtonE'
 import { NumberInputE } from '../../components/NumberInputE'
 import { SwitchE, SwitchEOption, SwitchEProps } from '../../components/SwitchE'
+import { RangeSliderE } from '../../components/RangeSliderE'
 import { FormikGroupE } from '../../components/FormikGroup'
 import { withFormik } from '../../enhancers/withFormik'
 import { sleep } from '../../helpers'
@@ -41,6 +42,7 @@ const FormikCheckboxE = withFormik(CheckboxE)
 const FormikRadioE = withFormik(RadioE)
 const FormikSwitchE = withFormik(SwitchEFormed)
 const FormikNumberInputE = withFormik(NumberInputE)
+const FormikeRangeSliderE = withFormik(RangeSliderE)
 
 export const ExampleFormik: React.FC<unknown> = () => {
   const [formValues, setFormValues] = useState<FormValues>()
@@ -56,6 +58,7 @@ export const ExampleFormik: React.FC<unknown> = () => {
           exampleRadio: [],
           exampleSwitch: '',
           exampleNumberInput: null,
+          exampleRangeSlider: [20],
         }}
         validate={(values) => {
           const errors: Record<string, unknown> = {}
@@ -161,6 +164,18 @@ export const ExampleFormik: React.FC<unknown> = () => {
               ) => {
                 setFieldValue('exampleNumberInput', newValue)
               }}
+            />
+            <Field
+              name="exampleRangeSlider"
+              component={FormikeRangeSliderE}
+              onChange={(newValues: ReadonlyArray<number>) => {
+                setFieldValue('exampleRangeSlider', newValues)
+              }}
+              domain={[0, 40]}
+              mode={1}
+              values={[20]}
+              tracksLeft
+              step={2}
             />
             <ButtonE
               type="submit"

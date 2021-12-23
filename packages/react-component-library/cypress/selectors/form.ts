@@ -9,6 +9,8 @@ export default {
     switchOption: '[data-testid="switch-option"]',
     numberInput: '[data-testid="number-input"]',
     numberInputIncrease: '[data-testid="number-input-increase"]',
+    rangeSlider: '[data-testid="rangeslider"]',
+    rangeSliderRail: '[data-testid="rangeslider-rail"]',
   },
   submit: '[data-testid="form-example-submit"]',
   values: '[data-testid="form-example-values"]',
