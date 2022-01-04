@@ -2,20 +2,13 @@ import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 import { rgba } from 'polished'
 
-import {
-  BUTTON_E_ICON_POSITION,
-  BUTTON_E_SIZE,
-  BUTTON_E_VARIANT,
-} from '../constants'
-import {
-  ButtonEIconPositionType,
-  ButtonESizeType,
-  ButtonEVariantType,
-} from '../ButtonE'
+import { BUTTON_E_ICON_POSITION, BUTTON_E_VARIANT } from '../constants'
+import { ButtonEIconPositionType, ButtonEVariantType } from '../ButtonE'
+import { ComponentSizeType, COMPONENT_SIZE } from '../../Forms'
 
 interface StyledButtonProps {
   $variant: ButtonEVariantType
-  $size: ButtonESizeType
+  $size: ComponentSizeType
   $iconPosition: ButtonEIconPositionType
 }
 
@@ -45,7 +38,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   }
 
   ${({ $size }) =>
-    $size === BUTTON_E_SIZE.SMALL &&
+    $size === COMPONENT_SIZE.SMALL &&
     css`
       border-radius: 10px;
       height: 33px;
