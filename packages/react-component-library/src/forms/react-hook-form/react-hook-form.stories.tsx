@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react'
-import { useForm } from 'react-hook-form/dist/index.ie11'
+import { useForm, Controller } from 'react-hook-form/dist/index.ie11'
 import { Story, Meta } from '@storybook/react'
 
 import { TextInputE } from '../../components/TextInputE'
@@ -9,6 +9,7 @@ import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
 import { NumberInputE } from '../../components/NumberInputE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
+import { RangeSliderE } from '../../components/RangeSliderE'
 import { ButtonE } from '../../components/ButtonE'
 import { Fieldset } from '../../components/Fieldset'
 import { sleep } from '../../helpers'
@@ -21,10 +22,12 @@ export interface FormValues {
   exampleRadio: string[]
   exampleSwitch: string
   exampleNumberInput: number
+  exampleRangeSlider: number[]
 }
 
 export const ExampleReactHookForm: React.FC<unknown> = () => {
   const {
+    control,
     setValue,
     register,
     handleSubmit,
@@ -39,6 +42,7 @@ export const ExampleReactHookForm: React.FC<unknown> = () => {
       exampleRadio: [],
       exampleSwitch: '',
       exampleNumberInput: null,
+      exampleRangeSlider: [20],
     },
   })
 
@@ -55,6 +59,7 @@ export const ExampleReactHookForm: React.FC<unknown> = () => {
   useEffect(() => {
     register({ name: 'exampleSwitch' })
     register({ name: 'exampleNumberInput' })
+    register({ name: 'exampleRangeSlider' })
   }, [register])
 
   const handleSwitchEChange = (e: React.FormEvent<HTMLInputElement>) =>
@@ -145,6 +150,22 @@ export const ExampleReactHookForm: React.FC<unknown> = () => {
           onChange={handleNumberInputEChange}
           value={exampleNumberInputValue}
           data-testid="form-example-NumberInputE"
+        />
+        <Controller
+          control={control}
+          name="exampleRangeSlider"
+          render={({ onChange, value }) => {
+            return (
+              <RangeSliderE
+                onChange={onChange}
+                values={value}
+                domain={[0, 40]}
+                mode={1}
+                tracksLeft
+                step={2}
+              />
+            )
+          }}
         />
         <ButtonE
           type="submit"
