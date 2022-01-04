@@ -152,14 +152,6 @@
     "webpack-merge": "^5.2.0",
     "yup": "^0.32.8"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 10",
-    "not op_mini all",
-    "ie 11",
-    "chrome >= 38"
-  ],
   "files": [
     "dist"
   ],
