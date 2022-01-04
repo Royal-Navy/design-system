@@ -1,4 +1,4 @@
-name: Automerge
+name: Dependabot Automerge
 
 on:
   workflow_run:
@@ -38,13 +38,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [Test_visual_regression]
     steps:
-      - name: Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v1.1.1
-        with:
-          github-token: "${{ secrets.MERGE_BOT }}"
-      - name: Enable auto-merge for Dependabot PRs
-        if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch'}}
+      - name: Auto merge Dependabot minor and patch version bumps
         uses: defencedigital/design-system-mergeme-action@master
         with:
           GITHUB_TOKEN: ${{ secrets.MERGE_BOT }}
+          PRESET: DEPENDABOT_MINOR

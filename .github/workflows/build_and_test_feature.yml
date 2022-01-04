@@ -233,6 +233,7 @@ jobs:
   Test_visual_regression:
     runs-on: ubuntu-latest
     needs: [Build_icon_library, Test_react-component-library]
+    # https://github.blog/changelog/2021-02-19-github-actions-workflows-triggered-by-dependabot-prs-will-run-with-read-only-permissions/
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
       - name: Git clone repository
