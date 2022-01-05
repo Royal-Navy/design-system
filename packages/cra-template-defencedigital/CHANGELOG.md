@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.72.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.72.0...2.72.1) (2022-01-05)
+
+**Note:** Version bump only for package cra-template-defencedigital
+
+
+
+
+
 # [2.72.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.71.1...2.72.0) (2021-12-22)
 
 **Note:** Version bump only for package cra-template-defencedigital
