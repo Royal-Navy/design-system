@@ -1,5 +1,5 @@
 import { isValid } from 'date-fns'
-import React, { useState } from 'react'
+import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { ColorDanger800 } from '@defencedigital/design-tokens'
 import {
@@ -15,7 +15,6 @@ import userEvent from '@testing-library/user-event'
 import { BORDER_WIDTH } from '../../styled-components'
 import { COMPONENT_SIZE } from '../Forms'
 import { DatePickerE, DatePickerEOnChangeData } from '.'
-import { ButtonE } from '../ButtonE'
 import { DATE_VALIDITY } from './constants'
 
 const NOW = '2019-12-05T11:00:00.000Z'
@@ -1128,11 +1127,12 @@ describe('DatePickerE', () => {
     })
   })
 
-  describe.skip('when `startDate` and `endDate` are updated externally', () => {
+  describe('when the `startDate` and `endDate` props are updated', () => {
     beforeEach(() => {
       const initialProps = {
         startDate: new Date(2021, 11, 1),
         endDate: new Date(2021, 11, 2),
+        isRange: true,
       }
       const update1Props = {
         ...initialProps,
@@ -1143,29 +1143,12 @@ describe('DatePickerE', () => {
         endDate: new Date(2022, 11, 2),
       }
 
-      const DatePickerWithUpdate = () => {
-        const [props, updateProps] = useState(initialProps)
-
-        return (
-          <>
-            <ButtonE onClick={() => updateProps(update1Props)}>
-              Update 1
-            </ButtonE>
-            <ButtonE onClick={() => updateProps(update2Props)}>
-              Update 2
-            </ButtonE>
-            <DatePickerE {...props} isRange />
-          </>
-        )
-      }
-
-      wrapper = render(<DatePickerWithUpdate />)
-
-      wrapper.getByText('Update 1').click()
-      wrapper.getByText('Update 2').click()
+      wrapper = render(<DatePickerE {...initialProps} />)
+      wrapper.rerender(<DatePickerE {...update1Props} />)
+      wrapper.rerender(<DatePickerE {...update2Props} />)
     })
 
-    it('set the value of the component to this date', () => {
+    it('sets the value of the component to the new date range', () => {
       return waitFor(() => {
         expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
           '01/12/2022 - 02/12/2022'
