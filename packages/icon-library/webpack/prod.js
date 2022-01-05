@@ -1,5 +1,6 @@
 // production config
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const { resolve } = require('path')
 const { merge } = require('webpack-merge')
 
@@ -14,6 +15,18 @@ module.exports = merge(commonConfig, {
   },
   devtool: 'source-map',
   plugins: [new CleanWebpackPlugin()],
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            // This option is really slow, and the benefit is negligible
+            collapse_vars: false,
+          },
+        },
+      }),
+    ],
+  },
   externals: {
     react: {
       root: 'React',
