@@ -1,14 +1,13 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { SwitchESizeType } from '../SwitchE'
 import { StyledContainer } from './StyledContainer'
 import { StyledSwitchOption } from './StyledSwitchOption'
 import { StyledLegend } from './StyledLegend'
-import { SWITCHE_SIZE } from '../constants'
+import { ComponentSizeType, COMPONENT_SIZE } from '../../Forms'
 
 interface StyledSwitchProps {
-  $size?: SwitchESizeType
+  $size?: ComponentSizeType
   $isDisabled?: boolean
   $isInvalid?: boolean
 }
@@ -20,7 +19,7 @@ export const StyledSwitch = styled.div<StyledSwitchProps>`
   font-size: ${fontSize('m')};
 
   ${({ $size }) =>
-    $size === SWITCHE_SIZE.SMALL &&
+    $size === COMPONENT_SIZE.SMALL &&
     css`
       & {
         font-size: ${fontSize('s')};

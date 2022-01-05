@@ -2,16 +2,13 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { warnIfOverwriting, getKey } from '../../helpers'
-import { SWITCHE_SIZE, SwitchEOption, SwitchEOptionProps } from '.'
+import { SwitchEOption, SwitchEOptionProps } from '.'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { StyledSwitch } from './partials/StyledSwitch'
 import { StyledLegend } from './partials/StyledLegend'
 import { StyledContainer } from './partials/StyledContainer'
-
-export type SwitchESizeType =
-  | typeof SWITCHE_SIZE.SMALL
-  | typeof SWITCHE_SIZE.FORMS
+import { ComponentSizeType, COMPONENT_SIZE } from '../Forms'
 
 export type SwitchEChildType =
   | React.ReactElement<SwitchEOptionProps>
@@ -40,7 +37,7 @@ export interface SwitchEProps extends ComponentWithClass, InputValidationProps {
   /**
    * Size of the component.
    */
-  size?: SwitchESizeType
+  size?: ComponentSizeType
   /**
    * Toggles whether the component is disabled or not (preventing user interaction).
    */
@@ -56,7 +53,7 @@ export const SwitchE: React.FC<SwitchEProps> = ({
   value,
   label,
   onChange,
-  size = SWITCHE_SIZE.FORMS,
+  size = COMPONENT_SIZE.FORMS,
   isDisabled,
   isInvalid,
   children,

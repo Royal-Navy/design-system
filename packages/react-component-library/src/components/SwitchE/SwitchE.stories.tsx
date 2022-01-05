@@ -1,7 +1,8 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { SwitchE, SwitchEOption, SwitchEProps, SWITCHE_SIZE } from '.'
+import { SwitchE, SwitchEOption, SwitchEProps } from '.'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   component: SwitchE,
@@ -59,5 +60,5 @@ export const Small = Template.bind({})
 Small.storyName = 'Small'
 Small.args = {
   name: 'switch-small',
-  size: SWITCHE_SIZE.SMALL,
+  size: COMPONENT_SIZE.SMALL,
 }

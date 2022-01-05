@@ -1,20 +1,13 @@
 import { IconLoader } from '@defencedigital/icon-library'
 import React, { FormEvent } from 'react'
 
-import {
-  BUTTON_E_ICON_POSITION,
-  BUTTON_E_SIZE,
-  BUTTON_E_VARIANT,
-} from './constants'
+import { BUTTON_E_ICON_POSITION, BUTTON_E_VARIANT } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledButton } from './partials/StyledButton'
 import { StyledIconWrapper } from './partials/StyledIconWrapper'
 import { StyledText } from './partials/StyledText'
 import { StyledIconLoaderWrapper } from './partials/StyledIconLoader'
-
-export type ButtonESizeType =
-  | typeof BUTTON_E_SIZE.SMALL
-  | typeof BUTTON_E_SIZE.FORMS
+import { ComponentSizeType, COMPONENT_SIZE } from '../Forms'
 
 export type ButtonEVariantType =
   | typeof BUTTON_E_VARIANT.PRIMARY
@@ -49,7 +42,7 @@ interface ButtonEBaseProps extends Omit<ComponentWithClass, 'children'> {
   /**
    * Size of the component.
    */
-  size?: ButtonESizeType
+  size?: ComponentSizeType
   /**
    * HTML type of the component (forms should use the `submit` type).
    */
@@ -92,7 +85,7 @@ export const ButtonE: React.FC<ButtonEProps> = ({
   icon,
   iconPosition = BUTTON_E_ICON_POSITION.RIGHT,
   onClick,
-  size = BUTTON_E_SIZE.FORMS,
+  size = COMPONENT_SIZE.FORMS,
   title,
   type = 'button',
   variant = BUTTON_E_VARIANT.PRIMARY,
@@ -114,7 +107,7 @@ export const ButtonE: React.FC<ButtonEProps> = ({
     >
       {isLoading && (
         <StyledIconLoaderWrapper data-testid="loading-icon" aria-hidden>
-          <IconLoader size={size === BUTTON_E_SIZE.FORMS ? 26 : 21} />
+          <IconLoader size={size === COMPONENT_SIZE.FORMS ? 26 : 21} />
         </StyledIconLoaderWrapper>
       )}
       <StyledText $isLoading={isLoading}>{children}</StyledText>

@@ -3,11 +3,8 @@ import { Story, Meta } from '@storybook/react'
 
 import { IconBrightnessLow } from '@defencedigital/icon-library'
 import { ButtonE, ButtonEProps } from './index'
-import {
-  BUTTON_E_SIZE,
-  BUTTON_E_VARIANT,
-  BUTTON_E_ICON_POSITION,
-} from './constants'
+import { BUTTON_E_VARIANT, BUTTON_E_ICON_POSITION } from './constants'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   component: ButtonE,
@@ -155,7 +152,7 @@ DangerLoading.args = {
 export const Small = Template.bind({})
 Small.args = {
   variant: BUTTON_E_VARIANT.PRIMARY,
-  size: BUTTON_E_SIZE.SMALL,
+  size: COMPONENT_SIZE.SMALL,
   children: 'Small',
 }
 
@@ -163,7 +160,7 @@ export const SmallLoading = Template.bind({})
 SmallLoading.storyName = 'Small, loading'
 SmallLoading.args = {
   variant: BUTTON_E_VARIANT.PRIMARY,
-  size: BUTTON_E_SIZE.SMALL,
+  size: COMPONENT_SIZE.SMALL,
   children: 'Small, loading',
   isLoading: true,
 }
@@ -172,7 +169,7 @@ export const SmallIconNoText = Template.bind({})
 SmallIconNoText.storyName = 'Small, with icon, no text '
 SmallIconNoText.args = {
   variant: BUTTON_E_VARIANT.PRIMARY,
-  size: BUTTON_E_SIZE.SMALL,
+  size: COMPONENT_SIZE.SMALL,
   icon: <IconBrightnessLow />,
   title: 'Reduce brightness',
 }

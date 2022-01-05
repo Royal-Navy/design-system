@@ -1,14 +1,15 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { BUTTON_E_ICON_POSITION, BUTTON_E_SIZE } from '../constants'
-import { ButtonEIconPositionType, ButtonESizeType } from '../ButtonE'
+import { BUTTON_E_ICON_POSITION } from '../constants'
+import { ButtonEIconPositionType } from '../ButtonE'
+import { ComponentSizeType, COMPONENT_SIZE } from '../../Forms'
 
 const { spacing } = selectors
 
 interface StyledIconWrapperProps {
   $buttonHasText: boolean
-  $buttonSize: ButtonESizeType
+  $buttonSize: ComponentSizeType
   $isLoading: boolean
   $iconPosition: ButtonEIconPositionType
 }
@@ -19,7 +20,7 @@ export const StyledIconWrapper = styled.span<StyledIconWrapperProps>`
   visibility: ${({ $isLoading }) => ($isLoading ? 'hidden' : 'initial')};
 
   ${({ $buttonSize, $buttonHasText }) =>
-    $buttonSize === BUTTON_E_SIZE.FORMS &&
+    $buttonSize === COMPONENT_SIZE.FORMS &&
     !$buttonHasText &&
     css`
       padding: 0 ${spacing('4')};
