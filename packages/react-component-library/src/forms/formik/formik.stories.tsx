@@ -158,7 +158,7 @@ export const ExampleFormik: React.FC<unknown> = () => {
               name="exampleNumberInput"
               component={FormikNumberInputE}
               onChange={(
-                event:
+                _:
                   | React.ChangeEvent<HTMLInputElement>
                   | React.MouseEvent<HTMLButtonElement>,
                 newValue: number

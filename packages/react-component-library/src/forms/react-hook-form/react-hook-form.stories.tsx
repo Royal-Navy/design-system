@@ -66,7 +66,7 @@ export const ExampleReactHookForm: React.FC<unknown> = () => {
     setValue('exampleSwitch', e.currentTarget.value)
 
   const handleNumberInputEChange = (
-    event:
+    _:
       | React.ChangeEvent<HTMLInputElement>
       | React.MouseEvent<HTMLButtonElement>,
     newValue: number
