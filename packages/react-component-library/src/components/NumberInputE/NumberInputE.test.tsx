@@ -77,10 +77,14 @@ describe('NumberInputE', () => {
   })
 
   describe('when minimal props', () => {
+    let input: HTMLElement
+
     beforeEach(() => {
       onChangeSpy = jest.spyOn(defaultProps, 'onChange')
 
       wrapper = render(<NumberInputE {...defaultProps} />)
+
+      input = wrapper.getByTestId('number-input-input')
     })
 
     it('sets the default `aria-label` attribute', () => {
@@ -136,9 +140,7 @@ describe('NumberInputE', () => {
     })
 
     it('sets the name attribute', () => {
-      expect(
-        wrapper.getByTestId('number-input-input').getAttribute('name')
-      ).toEqual('number-input')
+      expect(input.getAttribute('name')).toEqual('number-input')
     })
 
     it('does not display a footnote', () => {
@@ -174,8 +176,6 @@ describe('NumberInputE', () => {
 
     describe('and the user types values', () => {
       beforeEach(() => {
-        const input = wrapper.getByTestId('number-input-input')
-
         userEvent.type(input, '1')
         userEvent.type(input, '2')
         userEvent.type(input, '3')
@@ -195,8 +195,6 @@ describe('NumberInputE', () => {
 
     describe('and the user types a value with invalid characters', () => {
       beforeEach(() => {
-        const input = wrapper.getByTestId('number-input-input')
-
         userEvent.type(input, '1')
         userEvent.type(input, 'a')
         userEvent.type(input, '2')
@@ -220,8 +218,6 @@ describe('NumberInputE', () => {
 
     describe('and the user types a value', () => {
       beforeEach(() => {
-        const input = wrapper.getByTestId('number-input-input')
-
         userEvent.type(input, '1')
       })
 
@@ -230,8 +226,6 @@ describe('NumberInputE', () => {
 
       describe('and the user deletes the value', () => {
         beforeEach(() => {
-          const input = wrapper.getByTestId('number-input-input')
-
           userEvent.type(input, '{backspace}')
         })
 
@@ -296,6 +290,8 @@ describe('NumberInputE', () => {
   })
 
   describe('when max and min are specified', () => {
+    let input: HTMLElement
+
     beforeEach(() => {
       const props = {
         ...defaultProps,
@@ -311,6 +307,8 @@ describe('NumberInputE', () => {
           <input type="text" data-testid="next-field" />
         </>
       )
+
+      input = wrapper.getByTestId('number-input-input')
     })
 
     it('sets the correct `aria-valuemin` attribute', () => {
@@ -356,12 +354,12 @@ describe('NumberInputE', () => {
         const increase = wrapper.getByTestId('number-input-increase')
         increase.click()
 
-        wrapper.getByTestId('number-input-input').focus()
+        input.focus()
       })
 
       describe('and the value is changed to an alpha character', () => {
         beforeEach(() => {
-          fireEvent.change(wrapper.getByTestId('number-input-input'), {
+          fireEvent.change(input, {
             target: {
               value: 'a',
             },
@@ -373,7 +371,7 @@ describe('NumberInputE', () => {
 
       describe('and the value is changed to a valid number', () => {
         beforeEach(() => {
-          fireEvent.change(wrapper.getByTestId('number-input-input'), {
+          fireEvent.change(input, {
             target: {
               value: '3',
             },
@@ -385,7 +383,7 @@ describe('NumberInputE', () => {
 
       describe('and the value is changed to a number outside the max min range', () => {
         beforeEach(() => {
-          fireEvent.change(wrapper.getByTestId('number-input-input'), {
+          fireEvent.change(input, {
             target: {
               value: '4',
             },
