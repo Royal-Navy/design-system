@@ -15,13 +15,14 @@ import { withFormik } from '../../enhancers/withFormik'
 import { sleep } from '../../helpers'
 
 export interface FormValues {
-  email?: string
-  password?: string
-  description?: string
+  email: string
+  password: string
+  description: string
   exampleCheckbox: string[]
   exampleRadio: string[]
   exampleSwitch: string
   exampleNumberInput: number
+  exampleRangeSlider: number[]
 }
 
 const SwitchEFormed: React.FC<SwitchEProps> = (props) => (
