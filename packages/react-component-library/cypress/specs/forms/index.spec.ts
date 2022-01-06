@@ -23,6 +23,16 @@ const expectedResult = {
     exampleNumberInput: 1,
     exampleRangeSlider: [28],
   },
+  Vanilla: {
+    email: 'hello@world.com',
+    password: 'password',
+    description: 'Hello, World!',
+    exampleCheckbox: [],
+    exampleRadio: ['Option 1'],
+    exampleSwitch: '1',
+    exampleNumberInput: 1,
+    exampleRangeSlider: [28],
+  },
 }
 
 describe('Form Examples', () => {
@@ -41,6 +51,10 @@ describe('Form Examples', () => {
         {
           name: 'react-hook-form',
           uri: '/iframe.html?id=forms-react-hook-form--default&viewMode=story',
+        },
+        {
+          name: 'Vanilla',
+          uri: '/iframe.html?id=forms-vanilla--default&viewMode=story',
         },
       ]
 
