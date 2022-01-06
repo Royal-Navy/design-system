@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import {
+  createEvent,
   fireEvent,
   render,
   RenderResult,
@@ -77,14 +78,14 @@ describe('NumberInputE', () => {
   })
 
   describe('when minimal props', () => {
-    let input: HTMLElement
+    let input: HTMLInputElement
 
     beforeEach(() => {
       onChangeSpy = jest.spyOn(defaultProps, 'onChange')
 
       wrapper = render(<NumberInputE {...defaultProps} />)
 
-      input = wrapper.getByTestId('number-input-input')
+      input = wrapper.getByTestId('number-input-input') as HTMLInputElement
     })
 
     it('sets the default `aria-label` attribute', () => {
@@ -204,16 +205,12 @@ describe('NumberInputE', () => {
         expect(onChangeSpy.mock.calls[0][1]).toEqual(1)
       })
 
-      it('calls the `onChange` callback again with `1`', () => {
-        expect(onChangeSpy.mock.calls[1][1]).toEqual(1)
-      })
-
       it('calls the `onChange` callback again with `12`', () => {
-        expect(onChangeSpy.mock.calls[2][1]).toEqual(12)
+        expect(onChangeSpy.mock.calls[1][1]).toEqual(12)
       })
 
       assertInputValue('12')
-      assertOnChangeCall(12, 3)
+      assertOnChangeCall(12, 2)
     })
 
     describe('and the user types a value', () => {
@@ -242,6 +239,110 @@ describe('NumberInputE', () => {
         })
       })
     })
+
+    describe('and the user types a fractional value', () => {
+      beforeEach(() => {
+        userEvent.type(input, '100.1')
+      })
+
+      assertInputValue('100.1')
+      assertOnChangeCall(100.1, 5)
+
+      describe('and a second decimal point is typed after the first', () => {
+        beforeEach(() => {
+          onChangeSpy.mockReset()
+          userEvent.type(input, '.25')
+        })
+
+        assertInputValue('100.125')
+        assertOnChangeCall(100.125, 2)
+      })
+
+      describe('and a second decimal point is typed before the first', () => {
+        beforeEach(() => {
+          onChangeSpy.mockReset()
+          userEvent.type(input, '{home}.25')
+        })
+
+        it('keeps the cursor between the second and third character', () => {
+          expect(input.selectionStart).toBe(2)
+        })
+
+        assertInputValue('25100.1')
+        assertOnChangeCall(25100.1, 2)
+      })
+    })
+
+    // Note: Testing Library currently doesn't trigger React's simulated
+    // beforeInput event, so the next two describe blocks do that
+    // manually using the keyPress event.
+    describe.each(['1', '.'])(
+      'and beforeInput is triggered the valid character %s',
+      (char) => {
+        let event: Event
+
+        beforeEach(() => {
+          event = createEvent.keyPress(input, {
+            which: char.charCodeAt(0),
+          })
+          fireEvent(input, event)
+        })
+
+        it('does not cancel the event', () => {
+          expect(event.defaultPrevented).toBeFalsy()
+        })
+      }
+    )
+
+    describe.each(['f', '@'])(
+      'and beforeInput is triggered the invalid character %s',
+      (char) => {
+        let event: Event
+
+        beforeEach(() => {
+          event = createEvent.keyPress(input, {
+            which: char.charCodeAt(0),
+          })
+          fireEvent(input, event)
+        })
+
+        it('cancels the event', () => {
+          expect(event.defaultPrevented).toBeTruthy()
+        })
+      }
+    )
+
+    describe.each(['123.456.789', '123invalid'])(
+      'and the user pastes the invalid value "%s" in an empty input',
+      (pastedValue) => {
+        beforeEach(() => {
+          userEvent.paste(input, pastedValue)
+        })
+
+        assertInputValue('')
+
+        it('does not call onChange', () => {
+          expect(onChangeSpy).not.toHaveBeenCalled()
+        })
+      }
+    )
+
+    describe.each(['123.456.789', '123invalid'])(
+      'and the user pastes the invalid value "%s" after an existing value',
+      (pastedValue) => {
+        beforeEach(() => {
+          userEvent.type(input, '100')
+          onChangeSpy.mockReset()
+          userEvent.paste(input, pastedValue)
+        })
+
+        assertInputValue('100')
+
+        it('does not call onChange', () => {
+          expect(onChangeSpy).not.toHaveBeenCalled()
+        })
+      }
+    )
   })
 
   describe('when there is a footnote', () => {
@@ -366,7 +467,7 @@ describe('NumberInputE', () => {
           })
         })
 
-        assertInputValue('')
+        assertInputValue('1')
       })
 
       describe('and the value is changed to a valid number', () => {

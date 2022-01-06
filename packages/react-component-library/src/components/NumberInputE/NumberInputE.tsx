@@ -136,15 +136,16 @@ function formatValue(
   return displayValue
 }
 
+function areCharactersValid(characters: string): boolean {
+  return /^[0-9.]*$/.test(characters)
+}
+
+function isValueValid(value: string): boolean {
+  return /^\d*(\.\d*)?$/.test(value)
+}
+
 function getNewValue(event: React.FormEvent<HTMLInputElement>): string {
-  const { value } = event.currentTarget
-  const sanitizedValue = value.replace(/[^.0-9]/g, '')
-
-  if (sanitizedValue === '') {
-    return null
-  }
-
-  return sanitizedValue
+  return event.currentTarget.value || null
 }
 
 function isWithinRange(max: number, min: number, newValue: number) {
@@ -190,6 +191,60 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
     )
   }
 
+  /**
+   * Block invalid input before the DOM is updated where possible (to
+   * avoid the cursor jumping).
+   *
+   * Note: React simulates this event using other native events.
+   */
+  const handleBeforeInput = (
+    event:
+      | React.FormEvent<HTMLInputElement>
+      | React.CompositionEvent<HTMLInputElement>
+  ) => {
+    // Unfortunately, the event seems to be typed incorrectly at present
+    // (without the data property)
+    if (!('data' in event)) {
+      return
+    }
+
+    // data could contain a single character, or something longer
+    // in case of pasting. The text could be an insertion or a
+    // replacement (if existing text was selected).
+    const { data } = event
+
+    if (!areCharactersValid(data)) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+  }
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isValueValid(event.currentTarget.value)) {
+      return
+    }
+
+    const newValue = getNewValue(event)
+
+    if (!newValue || canCommit(newValue)) {
+      setCommittedValue(newValue)
+      onChange(event, isNil(newValue) ? null : Number(newValue))
+    }
+  }
+
+  /**
+   * Block a second decimal point from being typed (before the DOM is
+   * updated, to avoid the cursor jumping).
+   */
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const currentValue = event.currentTarget.value
+
+    if (event.key === '.' && currentValue.includes('.')) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+  }
+
   const numberInputId = getId('number-input')
 
   return (
@@ -232,22 +287,10 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
           isInvalid={isInvalid || hasClass(className, 'is-invalid')}
           label={label}
           name={name}
-          onChange={(event) => {
-            const newValue = getNewValue(event)
-
-            if (!newValue || canCommit(newValue)) {
-              setCommittedValue(newValue)
-              onChange(event, isNil(newValue) ? null : Number(newValue))
-            }
-          }}
-          onBlur={(event) => {
-            const newValue = getNewValue(event)
-
-            if (!newValue || canCommit(newValue)) {
-              setCommittedValue(newValue)
-              onLocalBlur(event)
-            }
-          }}
+          onBeforeInput={handleBeforeInput}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          onBlur={onLocalBlur}
           onFocus={onLocalFocus}
           placeholder={placeholder}
           size={size}

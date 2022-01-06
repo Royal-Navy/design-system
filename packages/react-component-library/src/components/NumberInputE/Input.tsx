@@ -13,9 +13,11 @@ export interface InputProps extends InputValidationProps {
   id?: string
   label?: string
   name: string
+  onBeforeInput: (event: React.FormEvent<HTMLInputElement>) => void
   onBlur: (event: React.FormEvent<HTMLInputElement>) => void
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   onFocus: (event: React.FormEvent<HTMLInputElement>) => void
+  onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void
   placeholder?: string
   size: ComponentSizeType
   value?: string
