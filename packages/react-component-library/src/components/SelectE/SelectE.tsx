@@ -15,6 +15,7 @@ import { StyledOptionsWrapper } from './partials/StyledOptionsWrapper'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledSelect } from './partials/StyledSelect'
 import { StyledTextInput } from './partials/StyledTextInput'
+import { itemToString } from './helpers'
 
 type SelectChildType =
   | React.ReactElement<SelectEOptionProps>
@@ -68,10 +69,6 @@ export const SelectE: React.FC<SelectEProps> = ({
 }) => {
   const [hasHover, setHasHover] = useState<boolean>(false)
   const labelId = getId('label')
-  const itemToString = (item: SelectChildType) => {
-    return React.isValidElement(item) ? item.props.children : null
-  }
-
   const {
     getItemProps,
     getMenuProps,
