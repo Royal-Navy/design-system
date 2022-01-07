@@ -14,7 +14,7 @@ export type SelectChildType =
   | null
   | undefined
 
-type SelectChildrenType = SelectChildType | SelectChildType[]
+export type SelectChildrenType = SelectChildType | SelectChildType[]
 
 export interface SelectEProps extends ComponentWithClass {
   /**
