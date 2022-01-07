@@ -1,23 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelect } from 'downshift'
 
-import { ArrowButton } from './ArrowButton'
-import { ClearButton } from './ClearButton'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getId } from '../../helpers'
 import { SelectEOptionProps } from './SelectEOption'
-import { StyledInlineButtons } from './partials/StyledInlineButtons'
-import { StyledInput } from './partials/StyledInput'
-import { StyledInputWrapper } from './partials/StyledInputWrapper'
-import { StyledLabel } from '../TextInputE/partials/StyledLabel'
-import { StyledOptions } from './partials/StyledOptions'
-import { StyledOptionsWrapper } from './partials/StyledOptionsWrapper'
-import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
-import { StyledSelect } from './partials/StyledSelect'
-import { StyledTextInput } from './partials/StyledTextInput'
-import { itemToString } from './helpers'
+import { SelectLayout } from './SelectLayout'
+import { initialSelectedItem, itemToString } from './helpers'
 
-type SelectChildType =
+export type SelectChildType =
   | React.ReactElement<SelectEOptionProps>
   | React.ReactFragment
   | false
@@ -60,15 +50,10 @@ export interface SelectEProps extends ComponentWithClass {
 export const SelectE: React.FC<SelectEProps> = ({
   children,
   id = getId('select'),
-  isDisabled,
-  isInvalid,
-  label,
   onChange,
   value,
   ...rest
 }) => {
-  const [hasHover, setHasHover] = useState<boolean>(false)
-  const labelId = getId('label')
   const {
     getItemProps,
     getMenuProps,
@@ -76,14 +61,12 @@ export const SelectE: React.FC<SelectEProps> = ({
     highlightedIndex,
     isOpen,
     openMenu,
-    selectItem,
+    reset,
     selectedItem,
     toggleMenu,
   } = useSelect({
     itemToString,
-    initialSelectedItem: React.Children.toArray(children).find((child) => {
-      return React.isValidElement(child) ? child.props.value === value : null
-    }),
+    initialSelectedItem: initialSelectedItem(children, value),
     items: React.Children.toArray(children),
     onSelectedItemChange: ({ selectedItem: newItem }) => {
       if (onChange) {
@@ -93,86 +76,50 @@ export const SelectE: React.FC<SelectEProps> = ({
   })
 
   return (
-    <StyledSelect data-testid="select" aria-labelledby={labelId}>
-      <StyledTextInput data-testid="text-input-container">
-        <StyledOuterWrapper
-          $hasFocus={isOpen}
-          $isDisabled={isDisabled}
-          $isInvalid={isInvalid}
-          data-testid="select-outer-wrapper"
-        >
-          <StyledInputWrapper data-testid="text-input-input-wrapper">
-            <StyledLabel
-              $hasContent={!!selectedItem}
-              $hasFocus={false}
-              htmlFor={id}
-              id={labelId}
-              data-testid="select-label"
-            >
-              {label}
-            </StyledLabel>
-            <StyledInput
-              $hasLabel
-              aria-labelledby={labelId}
-              data-testid="select-input"
-              disabled={isDisabled}
-              onFocus={() => {
-                openMenu()
-              }}
-              onMouseDown={(e) => {
-                toggleMenu()
-                e.stopPropagation()
-                e.preventDefault()
-              }}
-              onMouseEnter={() => {
-                if (!isDisabled) {
-                  setHasHover(true)
-                }
-              }}
-              onMouseLeave={() => setHasHover(false)}
-              readOnly
-              id={id}
-              value={selectedItem ? itemToString(selectedItem) : ''}
-              {...rest}
-            />
-          </StyledInputWrapper>
-          <StyledInlineButtons>
-            {selectedItem && (
-              <ClearButton
-                isDisabled={isDisabled}
-                onClick={() => selectItem(null)}
-              />
-            )}
-            <ArrowButton
-              hasHover={hasHover}
-              isDisabled={isDisabled}
-              isOpen={isOpen}
-              {...getToggleButtonProps()}
-            />
-          </StyledInlineButtons>
-        </StyledOuterWrapper>
-      </StyledTextInput>
-      <StyledOptionsWrapper $isVisible={isOpen}>
-        <StyledOptions {...getMenuProps()}>
-          {isOpen &&
-            React.Children.map(children, (child: SelectChildType, index) => {
-              if (!React.isValidElement(child)) {
-                return null
-              }
+    <SelectLayout
+      hasSelectedItem={!!selectedItem}
+      id={id}
+      inputProps={{
+        onFocus: () => {
+          if (!isOpen) {
+            openMenu()
+          }
+        },
+        onMouseDown: (e: React.MouseEvent) => {
+          toggleMenu()
+          e.stopPropagation()
+          e.preventDefault()
+        },
+      }}
+      isOpen={isOpen}
+      menuProps={getMenuProps()}
+      onClearButtonClick={() => {
+        reset()
+      }}
+      toggleButtonProps={getToggleButtonProps()}
+      value={selectedItem ? itemToString(selectedItem) : ''}
+      {...{
+        readOnly: true,
+        ...rest,
+      }}
+    >
+      {isOpen &&
+        React.Children.map(children, (child: SelectChildType, index) => {
+          if (!React.isValidElement(child)) {
+            return null
+          }
 
-              return React.cloneElement(child, {
-                ...child.props,
-                ...getItemProps({
-                  index,
-                  item: child,
-                  key: `select-option-${child.props.children}`,
-                }),
-                isHighlighted: highlightedIndex === index,
-              })
-            })}
-        </StyledOptions>
-      </StyledOptionsWrapper>
-    </StyledSelect>
+          return React.cloneElement(child, {
+            ...child.props,
+            ...getItemProps({
+              index,
+              item: child,
+              key: `select-option-${child.props.children}`,
+            }),
+            isHighlighted: highlightedIndex === index,
+          })
+        })}
+    </SelectLayout>
   )
 }
 
