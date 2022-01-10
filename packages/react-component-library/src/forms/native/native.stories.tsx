@@ -1,6 +1,4 @@
-/* eslint-disable no-console */
-import React, { useState, useEffect } from 'react'
-import { useForm, Controller } from 'react-hook-form/dist/index.ie11'
+import React from 'react'
 import { ComponentMeta } from '@storybook/react'
 
 import { TextInputE } from '../../components/TextInputE'
@@ -12,7 +10,7 @@ import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { RangeSliderE } from '../../components/RangeSliderE'
 import { ButtonE } from '../../components/ButtonE'
 import { Fieldset } from '../../components/Fieldset'
-import { sleep } from '../../helpers'
+import { useNativeForm } from './useNativeForm'
 
 export interface FormValues {
   email: string
@@ -22,19 +20,21 @@ export interface FormValues {
   exampleRadio: string[]
   exampleSwitch: string
   exampleNumberInput: number
-  exampleRangeSlider: number[]
+  exampleRangeSlider: readonly [number, number?]
 }
 
 export const Example: React.FC<unknown> = () => {
   const {
-    control,
-    setValue,
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors, isSubmitting },
-  } = useForm({
-    defaultValues: {
+    formErrors,
+    formPayload,
+    formState,
+    handleChange,
+    handleCheckboxGroup,
+    handleRadioGroup,
+    isSubmitting,
+    onSubmit,
+  } = useNativeForm<FormValues>(
+    {
       email: '',
       password: '',
       description: '',
@@ -44,100 +44,92 @@ export const Example: React.FC<unknown> = () => {
       exampleNumberInput: null,
       exampleRangeSlider: [20],
     },
-  })
-
-  const exampleSwitchValue = watch('exampleSwitch')
-  const exampleNumberInputValue = watch('exampleNumberInput')
-
-  const [formValues, setFormValues] = useState<FormValues>()
-
-  const onSubmit = async (values: FormValues) => {
-    await sleep(400)
-    setFormValues(values)
-  }
-
-  useEffect(() => {
-    register({ name: 'exampleSwitch' })
-    register({ name: 'exampleNumberInput' })
-    register({ name: 'exampleRangeSlider' })
-  }, [register])
-
-  const handleSwitchEChange = (e: React.FormEvent<HTMLInputElement>) =>
-    setValue('exampleSwitch', e.currentTarget.value)
-
-  const handleNumberInputEChange = (
-    _:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.MouseEvent<HTMLButtonElement>,
-    newValue: number
-  ) => setValue('exampleNumberInput', newValue)
+    {
+      email: true,
+      // ...
+    },
+    {
+      email: (value: string): boolean => !value,
+      // ...
+    }
+  )
 
   return (
     <main>
-      <form onSubmit={handleSubmit(onSubmit, (err, e) => console.log(err, e))}>
+      <form onSubmit={onSubmit}>
         <TextInputE
           type="email"
           name="email"
-          ref={register({ required: true })}
           label="Email"
-          isInvalid={!!errors.email}
+          value={formState.email}
+          onChange={handleChange}
+          isInvalid={formErrors.email}
           data-testid="form-example-TextInputE-email"
         />
-        {errors.email && <span>Required</span>}
+        {formErrors.email && <span>Required</span>}
         <TextInputE
           type="password"
           name="password"
-          ref={register}
           label="Password"
+          value={formState.password}
+          onChange={handleChange}
           data-testid="form-example-TextInputE-password"
         />
         <TextAreaE
           name="description"
-          ref={register}
           label="Description"
+          value={formState.description}
+          onChange={handleChange}
           data-testid="form-example-TextAreaE-description"
         />
         <Fieldset>
           <legend>Example checkbox selection</legend>
           <CheckboxE
+            onChange={handleCheckboxGroup}
             name="exampleCheckbox"
             label="Option 1"
-            ref={register}
             value="Option 1"
           />
           <CheckboxE
+            onChange={handleCheckboxGroup}
             name="exampleCheckbox"
             label="Option 2"
-            ref={register}
             value="Option 2"
           />
           <CheckboxE
+            onChange={handleCheckboxGroup}
             name="exampleCheckbox"
             label="Option 3"
-            ref={register}
             value="Option 3"
           />
         </Fieldset>
         <Fieldset>
           <legend>Example radio selection</legend>
           <RadioE
+            onChange={handleRadioGroup}
             name="exampleRadio"
             label="Option 1"
-            ref={register}
             value="Option 1"
           />
           <RadioE
+            onChange={handleRadioGroup}
             name="exampleRadio"
             label="Option 2"
-            ref={register}
             value="Option 2"
           />
         </Fieldset>
         <SwitchE
           name="exampleSwitch"
           label="Example switch selection"
-          onChange={handleSwitchEChange}
-          value={exampleSwitchValue}
+          onChange={(e: React.FormEvent<HTMLInputElement>) =>
+            handleChange({
+              currentTarget: {
+                name: 'exampleSwitch',
+                value: e.currentTarget.value,
+              },
+            })
+          }
+          value={formState.exampleSwitch}
           data-testid="form-example-SwitchE"
         >
           <SwitchEOption label="One" value="1" />
@@ -147,25 +139,36 @@ export const Example: React.FC<unknown> = () => {
         <NumberInputE
           name="exampleNumberInput"
           label="Example number input"
-          onChange={handleNumberInputEChange}
-          value={exampleNumberInputValue}
+          onChange={(
+            _:
+              | React.ChangeEvent<HTMLInputElement>
+              | React.MouseEvent<HTMLButtonElement>,
+            newValue: number
+          ) => {
+            handleChange({
+              currentTarget: {
+                name: 'exampleNumberInput',
+                value: newValue,
+              },
+            })
+          }}
+          value={formState.exampleNumberInput}
           data-testid="form-example-NumberInputE"
         />
-        <Controller
-          control={control}
-          name="exampleRangeSlider"
-          render={({ onChange, value }) => {
-            return (
-              <RangeSliderE
-                onChange={onChange}
-                values={value}
-                domain={[0, 40]}
-                mode={1}
-                tracksLeft
-                step={2}
-              />
-            )
+        <RangeSliderE
+          onChange={(values: ReadonlyArray<number>) => {
+            handleChange({
+              currentTarget: {
+                name: 'exampleRangeSlider',
+                value: values as [],
+              },
+            })
           }}
+          values={formState.exampleRangeSlider}
+          domain={[0, 40]}
+          mode={1}
+          tracksLeft
+          step={2}
         />
         <ButtonE
           type="submit"
@@ -177,13 +180,13 @@ export const Example: React.FC<unknown> = () => {
       </form>
 
       <pre data-testid="form-example-values">
-        {JSON.stringify(formValues, null, 2)}
+        {JSON.stringify(formPayload, null, 2)}
       </pre>
     </main>
   )
 }
 
 export default {
-  title: 'Forms/react-hook-form',
+  title: 'Forms/Native',
   component: Example,
 } as ComponentMeta<typeof Example>
