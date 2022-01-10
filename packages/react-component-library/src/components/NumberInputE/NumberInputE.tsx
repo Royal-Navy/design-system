@@ -1,5 +1,5 @@
 import React from 'react'
-import { isFinite, isNil } from 'lodash'
+import { isNil } from 'lodash'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Buttons } from './Buttons'
@@ -8,7 +8,9 @@ import { getId, hasClass } from '../../helpers'
 import { Input } from './Input'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { useChangeHandlers } from './useChangeHandlers'
 import { useFocus } from '../../hooks/useFocus'
+import { useEarlyValidation } from './useEarlyValidation'
 import { useValue } from './useValue'
 import { StyledIcon } from './partials/StyledIcon'
 import { StyledDivider } from './partials/StyledDivider'
@@ -136,25 +138,6 @@ function formatValue(
   return displayValue
 }
 
-function areCharactersValid(characters: string): boolean {
-  return /^[0-9.]*$/.test(characters)
-}
-
-function isValueValid(value: string): boolean {
-  return /^\d*(\.\d*)?$/.test(value)
-}
-
-function getNewValue(event: React.FormEvent<HTMLInputElement>): string {
-  return event.currentTarget.value || null
-}
-
-function isWithinRange(max: number, min: number, newValue: number) {
-  const isNotBelowMin = isNil(min) || newValue >= min
-  const isNotAboveMax = isNil(max) || newValue <= max
-
-  return isNotBelowMin && isNotAboveMax
-}
-
 export const NumberInputE: React.FC<NumberInputEProps> = ({
   className,
   footnote,
@@ -181,69 +164,13 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
     value ? String(value) : null
   )
   const { hasFocus, onLocalFocus, onLocalBlur } = useFocus(onBlur)
-
-  function canCommit(newValue: string) {
-    const parsedValue = parseFloat(newValue)
-
-    return (
-      (isFinite(parsedValue) && isWithinRange(max, min, parsedValue)) ||
-      parsedValue === null
-    )
-  }
-
-  /**
-   * Block invalid input before the DOM is updated where possible (to
-   * avoid the cursor jumping).
-   *
-   * Note: React simulates this event using other native events.
-   */
-  const handleBeforeInput = (
-    event:
-      | React.FormEvent<HTMLInputElement>
-      | React.CompositionEvent<HTMLInputElement>
-  ) => {
-    // Unfortunately, the event seems to be typed incorrectly at present
-    // (without the data property)
-    if (!('data' in event)) {
-      return
-    }
-
-    // data could contain a single character, or something longer
-    // in case of pasting. The text could be an insertion or a
-    // replacement (if existing text was selected).
-    const { data } = event
-
-    if (!areCharactersValid(data)) {
-      event.preventDefault()
-      event.stopPropagation()
-    }
-  }
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!isValueValid(event.currentTarget.value)) {
-      return
-    }
-
-    const newValue = getNewValue(event)
-
-    if (!newValue || canCommit(newValue)) {
-      setCommittedValue(newValue)
-      onChange(event, isNil(newValue) ? null : Number(newValue))
-    }
-  }
-
-  /**
-   * Block a second decimal point from being typed (before the DOM is
-   * updated, to avoid the cursor jumping).
-   */
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    const currentValue = event.currentTarget.value
-
-    if (event.key === '.' && currentValue.includes('.')) {
-      event.preventDefault()
-      event.stopPropagation()
-    }
-  }
+  const { handleBeforeInput, handleKeyDown } = useEarlyValidation()
+  const { handleButtonClick, handleInputChange } = useChangeHandlers(
+    min,
+    max,
+    onChange,
+    setCommittedValue
+  )
 
   const numberInputId = getId('number-input')
 
@@ -288,7 +215,7 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
           label={label}
           name={name}
           onBeforeInput={handleBeforeInput}
-          onChange={handleChange}
+          onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           onBlur={onLocalBlur}
           onFocus={onLocalFocus}
@@ -312,12 +239,7 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
           max={max}
           min={min}
           name={name}
-          onClick={(e, newValue) => {
-            if (canCommit(newValue)) {
-              setCommittedValue(newValue)
-              onChange(e, Number(newValue))
-            }
-          }}
+          onClick={handleButtonClick}
           size={size}
           step={step}
           value={committedValue}
