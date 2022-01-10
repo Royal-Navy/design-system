@@ -6,7 +6,7 @@ import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInputE/partials/StyledInput'
 
 const { color, fontSize, spacing } = selectors
 
-interface StyledOptionsProps {
+export interface StyledOptionsProps {
   $isHighlighted: boolean
 }
 

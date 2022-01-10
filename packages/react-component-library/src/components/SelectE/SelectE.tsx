@@ -1,53 +1,16 @@
 import React from 'react'
 import { useSelect } from 'downshift'
 
-import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getId } from '../../helpers'
-import { SelectEOptionProps } from './SelectEOption'
-import { SelectLayout } from './SelectLayout'
-import { initialSelectedItem, itemToString } from './helpers'
+import {
+  initialSelectedItem,
+  itemToString,
+  SelectBaseProps,
+  SelectChildType,
+  SelectLayout,
+} from '../SelectBase'
 
-export type SelectChildType =
-  | React.ReactElement<SelectEOptionProps>
-  | React.ReactFragment
-  | false
-  | null
-  | undefined
-
-export type SelectChildrenType = SelectChildType | SelectChildType[]
-
-export interface SelectEProps extends ComponentWithClass {
-  /**
-   * Collection of options to display within the Select.
-   */
-  children: SelectChildrenType
-  /**
-   * Optional HTML `id` attribute to apply to the component.
-   */
-  id?: string
-  /**
-   * Toggles whether the component is disabled or not (preventing user interaction).
-   */
-  isDisabled?: boolean
-  /**
-   * Toggles whether the component is invalid or not.
-   */
-  isInvalid?: boolean
-  /**
-   * Text label to display within the component.
-   */
-  label: string
-  /**
-   * Optional handler invoked when the selected value changes.
-   */
-  onChange?: (value: string | null) => void
-  /**
-   * Optional HTML `value` attribute to apply to the component.
-   */
-  value?: string
-}
-
-export const SelectE: React.FC<SelectEProps> = ({
+export const SelectE: React.FC<SelectBaseProps> = ({
   children,
   id = getId('select'),
   onChange,

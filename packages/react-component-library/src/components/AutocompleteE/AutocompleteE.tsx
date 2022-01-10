@@ -2,14 +2,18 @@ import React from 'react'
 import { useCombobox } from 'downshift'
 
 import { getId } from '../../helpers'
-import { initialSelectedItem, itemToString } from '../SelectE/helpers'
-import { SelectChildType, SelectEProps } from '../SelectE'
-import { SelectLayout } from '../SelectE/SelectLayout'
+import {
+  initialSelectedItem,
+  itemToString,
+  SelectBaseProps,
+  SelectChildType,
+  SelectLayout,
+} from '../SelectBase'
 import { useInput } from './hooks/useInput'
 import { useItems } from './hooks/useItems'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface AutocompleteEProps extends SelectEProps {}
+export interface AutocompleteEProps extends SelectBaseProps {}
 
 export const AutocompleteE: React.FC<AutocompleteEProps> = ({
   children,

@@ -7,7 +7,8 @@ import {
   IconRemove,
 } from '@defencedigital/icon-library'
 
-import { SelectE, SelectEProps } from './index'
+import { SelectBaseProps } from '../SelectBase'
+import { SelectE } from './index'
 import { SelectEOption } from './SelectEOption'
 
 export default {
@@ -27,7 +28,7 @@ export default {
   },
 } as Meta
 
-const Template: Story<SelectEProps> = (args) => (
+const Template: Story<SelectBaseProps> = (args) => (
   <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
     <SelectE label="Some label" {...args}>
       <SelectEOption value="one">One</SelectEOption>
@@ -38,7 +39,7 @@ const Template: Story<SelectEProps> = (args) => (
   </div>
 )
 
-const TemplateWIthIconsAndBadges: Story<SelectEProps> = (args) => (
+const TemplateWIthIconsAndBadges: Story<SelectBaseProps> = (args) => (
   <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
     <SelectE label="Some label" {...args}>
       <SelectEOption badge={100} icon={<IconAnchor />} value="one">

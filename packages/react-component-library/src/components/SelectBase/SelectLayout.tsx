@@ -1,23 +1,20 @@
 import React, { useMemo, useState } from 'react'
-import {
-  UseSelectReturnValue,
-  UseComboboxReturnValue,
-} from 'downshift'
+import { UseSelectReturnValue, UseComboboxReturnValue } from 'downshift'
 
-import { ArrowButton } from './ArrowButton'
-import { getId } from '../../helpers'
-import { ClearButton } from './ClearButton'
+import { ArrowButton } from '../SelectE/ArrowButton'
+import { ClearButton } from '../SelectE/ClearButton'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { getId } from '../../helpers'
+import { SelectChildType } from './types'
 import { StyledInlineButtons } from './partials/StyledInlineButtons'
 import { StyledInput } from './partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledLabel } from '../TextInputE/partials/StyledLabel'
+import { StyledOptions } from './partials/StyledOptions'
+import { StyledOptionsWrapper } from './partials/StyledOptionsWrapper'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledSelect } from './partials/StyledSelect'
 import { StyledTextInput } from './partials/StyledTextInput'
-import { StyledOptions } from './partials/StyledOptions'
-import { StyledOptionsWrapper } from './partials/StyledOptionsWrapper'
-import { SelectChildType } from './SelectE'
 
 export interface SelectLayoutProps extends ComponentWithClass {
   hasLabelFocus?: boolean

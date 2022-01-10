@@ -1,5 +1,6 @@
 import React from 'react'
-import { SelectChildrenType, SelectChildType } from './SelectE'
+
+import { SelectChildrenType, SelectChildType } from './types'
 
 function itemToString(item: SelectChildType) {
   return React.isValidElement(item) ? item.props.children : null

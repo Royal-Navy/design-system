@@ -1,12 +1,17 @@
 import React from 'react'
-import { IconAgriculture, IconAnchor, IconBrightnessAuto, IconRemove } from '@defencedigital/icon-library'
+import {
+  IconAgriculture,
+  IconAnchor,
+  IconBrightnessAuto,
+  IconRemove,
+} from '@defencedigital/icon-library'
 import { Story, Meta } from '@storybook/react'
 
 import { AutocompleteE, AutocompleteEOption, AutocompleteEProps } from './index'
 
 export default {
   component: AutocompleteE,
-  title: 'AutocompleteE (Experimental)',
+  title: 'Autocomplete (Experimental)',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
@@ -35,7 +40,11 @@ const TemplateWIthIconsAndBadges: Story<AutocompleteEProps> = (args) => (
       <AutocompleteEOption badge={111} icon={<IconAgriculture />} value="three">
         Three
       </AutocompleteEOption>
-      <AutocompleteEOption badge={112} icon={<IconBrightnessAuto />} value="four">
+      <AutocompleteEOption
+        badge={112}
+        icon={<IconBrightnessAuto />}
+        value="four"
+      >
         Four
       </AutocompleteEOption>
     </AutocompleteE>
@@ -60,4 +69,3 @@ WithValue.args = {
 }
 
 export const WithIconsAndBadges = TemplateWIthIconsAndBadges.bind({})
-

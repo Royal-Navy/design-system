@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { UseComboboxStateChange } from 'downshift'
 
-import { SelectChildType } from '../../SelectE'
+import { SelectChildType } from '../../SelectBase'
 
 export function useInput(): {
   inputRef: React.RefObject<HTMLInputElement>

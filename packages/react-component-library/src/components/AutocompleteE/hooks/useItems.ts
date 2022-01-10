@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { UseComboboxStateChange } from 'downshift'
 
-import { SelectChildType } from '../../SelectE'
+import { SelectChildType } from '../../SelectBase'
 
 export function useItems(children: SelectChildType[]): {
   items: SelectChildType[]
