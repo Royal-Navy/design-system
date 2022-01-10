@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form/dist/index.ie11'
-import { Story, Meta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
@@ -25,7 +25,7 @@ export interface FormValues {
   exampleRangeSlider: number[]
 }
 
-export const ExampleReactHookForm: React.FC<unknown> = () => {
+export const Example: React.FC<unknown> = () => {
   const {
     control,
     setValue,
@@ -185,7 +185,5 @@ export const ExampleReactHookForm: React.FC<unknown> = () => {
 
 export default {
   title: 'Forms/react-hook-form',
-  component: ExampleReactHookForm,
-} as Meta
-
-export const Default: Story<unknown> = () => <ExampleReactHookForm />
+  component: Example,
+} as ComponentMeta<typeof Example>

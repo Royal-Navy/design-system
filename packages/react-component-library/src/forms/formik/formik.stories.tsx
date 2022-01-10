@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import { Formik, Field } from 'formik'
 
 import { TextInputE } from '../../components/TextInputE'
@@ -45,7 +45,7 @@ const FormikSwitchE = withFormik(SwitchEFormed)
 const FormikNumberInputE = withFormik(NumberInputE)
 const FormikeRangeSliderE = withFormik(RangeSliderE)
 
-export const ExampleFormik: React.FC<unknown> = () => {
+export const Example: React.FC<unknown> = () => {
   const [formValues, setFormValues] = useState<FormValues>()
 
   return (
@@ -198,7 +198,5 @@ export const ExampleFormik: React.FC<unknown> = () => {
 
 export default {
   title: 'Forms/Formik',
-  component: ExampleFormik,
-} as Meta
-
-export const Default: Story<unknown> = () => <ExampleFormik />
+  component: Example,
+} as ComponentMeta<typeof Example>

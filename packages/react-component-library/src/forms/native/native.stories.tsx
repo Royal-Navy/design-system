@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
@@ -23,7 +23,7 @@ export interface FormValues {
   exampleRangeSlider: readonly [number, number?]
 }
 
-export const ExampleNativeForm: React.FC<unknown> = () => {
+export const Example: React.FC<unknown> = () => {
   const {
     formErrors,
     formPayload,
@@ -188,7 +188,5 @@ export const ExampleNativeForm: React.FC<unknown> = () => {
 
 export default {
   title: 'Forms/Native',
-  component: ExampleNativeForm,
-} as Meta
-
-export const Default: Story<unknown> = () => <ExampleNativeForm />
+  component: Example,
+} as ComponentMeta<typeof Example>

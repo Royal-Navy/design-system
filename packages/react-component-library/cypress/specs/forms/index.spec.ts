@@ -23,7 +23,7 @@ const expectedResult = {
     exampleNumberInput: 1,
     exampleRangeSlider: [28],
   },
-  Vanilla: {
+  Native: {
     email: 'hello@world.com',
     password: 'password',
     description: 'Hello, World!',
@@ -46,15 +46,15 @@ describe('Form Examples', () => {
       const examples = [
         {
           name: 'Formik',
-          uri: '/iframe.html?id=forms-formik--default&viewMode=story',
+          uri: '/iframe.html?id=forms-formik--example&viewMode=story',
         },
         {
           name: 'react-hook-form',
-          uri: '/iframe.html?id=forms-react-hook-form--default&viewMode=story',
+          uri: '/iframe.html?id=forms-react-hook-form--example&viewMode=story',
         },
         {
-          name: 'Vanilla',
-          uri: '/iframe.html?id=forms-vanilla--default&viewMode=story',
+          name: 'Native',
+          uri: '/iframe.html?id=forms-native--example&viewMode=story',
         },
       ]
 
