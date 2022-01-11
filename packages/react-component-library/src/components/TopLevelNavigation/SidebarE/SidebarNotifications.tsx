@@ -59,7 +59,7 @@ export const SidebarNotifications: React.FC<SidebarNotificationsProps> = ({
               </Transition>
             </StyledNotificationsSheetButton>
           }
-          placement="right"
+          placement={['right']}
         >
           {notifications}
         </StyledNotificationsSheet>

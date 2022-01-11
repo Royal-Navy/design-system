@@ -157,7 +157,7 @@ export const Masthead: React.FC<MastheadProps> = ({
                   )}
                 </StyledOption>
               }
-              placement="bottom"
+              placement={['top', 'bottom']}
             >
               {notifications}
             </Sheet>

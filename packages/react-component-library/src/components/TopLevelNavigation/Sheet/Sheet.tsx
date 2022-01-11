@@ -1,5 +1,5 @@
 import React from 'react'
-import { Placement } from '@popperjs/core'
+import type { Placement } from '@floating-ui/core'
 
 import {
   FLOATING_BOX_PLACEMENT,
@@ -13,7 +13,7 @@ import { useHideShow } from '../../../hooks/useHideShow'
 export interface SheetProps extends ComponentWithClass {
   button: React.ReactElement<SheetButtonProps>
   children: React.ReactElement
-  placement?: Placement
+  placement?: Placement[]
   closeDelay?: number
   id?: string
 }
@@ -21,7 +21,7 @@ export interface SheetProps extends ComponentWithClass {
 export const Sheet: React.FC<SheetProps> = ({
   button,
   children,
-  placement = FLOATING_BOX_PLACEMENT.RIGHT,
+  placement = [FLOATING_BOX_PLACEMENT.RIGHT],
   closeDelay = 250,
   id = getId('sheet'),
 }) => {
@@ -42,7 +42,7 @@ export const Sheet: React.FC<SheetProps> = ({
   return (
     <FloatingBox
       isVisible={isVisible}
-      placement={placement}
+      allowedPlacements={placement}
       renderTarget={<SheetTarget />}
       scheme="dark"
     >

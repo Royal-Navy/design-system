@@ -1,5 +1,5 @@
-import React from 'react'
-import { Placement } from '@popperjs/core'
+import React, { useRef } from 'react'
+import type { Placement } from '@floating-ui/core'
 import { Transition } from 'react-transition-group'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
@@ -21,7 +21,7 @@ export interface FloatingBoxBaseProps extends PositionType, ComponentWithClass {
   onMouseLeave?: (e: React.MouseEvent) => void
   children?: React.ReactElement
   isVisible?: boolean
-  placement?: Placement
+  allowedPlacements?: Placement[]
 }
 
 export interface FloatingBoxWithExternalTargetProps
@@ -61,18 +61,15 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
   onMouseLeave,
   children,
   renderTarget,
-  targetElement,
+  targetElement, // TODO: how is this different to renderTarget?
   isVisible,
-  placement = 'auto',
+  allowedPlacements,
   ...rest
 }) => {
-  const {
-    targetElementRef,
-    floatingElementRef,
-    arrowElementRef,
-    styles,
-    attributes,
-  } = useFloatingElement(placement, undefined, targetElement)
+  const arrowElementRef = useRef(null)
+
+  const { placement, targetElementRef, floatingElementRef, styles } =
+    useFloatingElement(undefined, arrowElementRef, allowedPlacements)
 
   return (
     <>
@@ -87,13 +84,12 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
       <Transition in={isVisible} timeout={0} unmountOnExit>
         {(state) => (
           <StyledFloatingBox
-            style={{ ...styles.popper, ...TRANSITION_STYLES[state] }}
+            style={{ ...styles.float, ...TRANSITION_STYLES[state] }}
             ref={floatingElementRef}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
             role="dialog"
             data-testid="floating-box"
-            {...attributes.popper}
             {...rest}
           >
             <FloatingBoxContent
@@ -102,12 +98,9 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
               data-testid="floating-box-content"
             >
               <StyledArrow
-                $placement={
-                  attributes?.popper?.['data-popper-placement'] as Placement
-                }
+                $placement={placement}
                 ref={arrowElementRef}
                 style={styles.arrow}
-                {...attributes.arrow}
               />
               {children}
             </FloatingBoxContent>

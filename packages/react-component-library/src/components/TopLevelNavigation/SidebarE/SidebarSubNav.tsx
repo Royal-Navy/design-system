@@ -20,7 +20,7 @@ export const SidebarSubNav: React.FC<Nav<SidebarNavItemEProps>> = ({
         />
       }
       data-testid="sidebar-sub-nav"
-      placement="right"
+      placement={['right']}
       closeDelay={0}
     >
       <StyledSheetList>{children}</StyledSheetList>

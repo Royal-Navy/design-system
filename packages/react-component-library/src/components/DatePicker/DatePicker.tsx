@@ -1,13 +1,10 @@
-import React, { useState } from 'react'
-import { Placement } from '@popperjs/core'
+import React, { useState, useRef } from 'react'
+import type { Placement } from '@floating-ui/core'
 import { v4 as uuidv4 } from 'uuid'
 import { DayPickerProps } from 'react-day-picker'
 import { Transition } from 'react-transition-group'
 
-import {
-  FLOATING_BOX_PLACEMENT,
-  FLOATING_BOX_SCHEME,
-} from '../../primitives/FloatingBox'
+import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
 import { DATEPICKER_PLACEMENT } from './constants'
@@ -105,6 +102,7 @@ export interface DatePickerProps
   /**
    * Position to display the picker relative to the input.
    * NOTE: This is now calculated automatically by default based on available screen real-estate.
+   * @deprecated
    */
   placement?: DatePickerPlacement | Placement
 }
@@ -126,9 +124,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   isOpen,
   disabledDays,
   initialMonth,
-  placement = FLOATING_BOX_PLACEMENT.BOTTOM,
+  placement: _,
   ...rest
 }) => {
+  const arrowElementRef = useRef()
+
   const {
     floatingBoxChildrenRef,
     handleOnClose,
@@ -161,21 +161,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 
   const placeholder = isRange ? null : datePickerFormat.toLowerCase()
 
-  /**
-   * Maintain compatability with legacy interface
-   */
-  const legacyPlacementMap = {
-    above: 'top',
-    below: 'bottom',
-  }
-
-  const {
-    targetElementRef,
-    floatingElementRef,
-    arrowElementRef,
-    styles,
-    attributes,
-  } = useFloatingElement(legacyPlacementMap[placement] || placement)
+  const { placement, targetElementRef, floatingElementRef, styles } =
+    useFloatingElement(undefined, arrowElementRef, ['top', 'bottom'])
 
   const TRANSITION_STYLES = {
     entering: { opacity: 0 },
@@ -258,8 +245,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             aria-modal
             aria-labelledby={titleId}
             aria-live="polite"
-            style={{ ...styles.popper, ...TRANSITION_STYLES[transitionState] }}
-            {...attributes.popper}
+            style={{ ...styles.float, ...TRANSITION_STYLES[transitionState] }}
             {...rest}
           >
             <FloatingBoxContent
@@ -268,12 +254,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               data-testid="floating-box-content"
             >
               <StyledArrow
-                $placement={
-                  attributes?.popper?.['data-popper-placement'] as Placement
-                }
+                $placement={placement}
                 ref={arrowElementRef}
                 style={styles.arrow}
-                {...attributes.arrow}
               />
               <div ref={floatingBoxChildrenRef}>
                 <StyledDayPicker

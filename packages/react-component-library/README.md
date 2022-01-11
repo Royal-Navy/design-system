@@ -24,15 +24,16 @@ Note: [`styled-components`](https://styled-components.com/) and [`formik`](https
 import React from 'react'
 import ReactDOM from 'react-dom'
 import '@defencedigital/fonts'
-import { GlobalStyleProvider, Button } from '@defencedigital/react-component-library'
+import {
+  GlobalStyleProvider,
+  Button,
+} from '@defencedigital/react-component-library'
 import { lightTheme } from '@defencedigital/design-tokens'
 
 function App() {
   return (
     <GlobalStyleProvider theme={lightTheme}>
-      <Button variant="primary">
-        Hello, World!
-      </Button>
+      <Button variant="primary">Hello, World!</Button>
     </GlobalStyleProvider>
   )
 }
@@ -56,44 +57,6 @@ When utilising this pattern remember to extend a base token set:
 <GlobalStyleProvider theme={{ ...lightTheme, customThemeMode: 'foo' }} />
 ```
 
-## Hooks
-
-### `useFloatingElement`
-
-This hook aids in the positioning of arbitrary elements relative to a target element. The positoning engine will intelligently position the element based on available screen real-estate.
-
-```javascript
-import { useFloatingElement } from '@defencedigital/react-component-library'
-
-const Example = () => {
-  const {
-    targetElementRef,
-    floatingElementRef,
-    arrowElementRef,
-    styles,
-    attributes,
-  } = useFloatingElement(placement)
-
-  return (    
-    <>
-      <Target ref={targetElementRef} />
-      <Float
-        ref={floatingElementRef}
-        style={styles.popper}
-        {...attributes.popper}
-      >
-        Hello, World!
-      </Float>
-    </>
-  )
-}
-
-```
-
-The hook wraps a popular underlying positioning engine called [Popper](https://github.com/popperjs/react-popper). 
-
-If you want opinionated styling for your floating element please consider the [Popover](https://storybook.royalnavy.io/?path=/docs/popover--default) component.
-
 ## Questions
 
 The Design System is maintained by a team at the Defence Digital. If you want to know more about the Defence Digital Design System, please email the [Design System Team](mailto:design-system@digital.mod.uk).
@@ -114,7 +77,7 @@ Tests are dependent on the application running.
 
 ## Contributing
 
-The [contributing guide](https://github.com/defencedigital/mod-uk-design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
+The [contributing guide](https://github.com/defencedigital/mod-uk-design-system/blob/master/docs/contributing.md) resource presents information about our development process.
 
 ## Changelog
 

@@ -51,7 +51,7 @@ const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
         }
       />
     }
-    placement="right"
+    placement={['right']}
   >
     <StyledSheetList>
       {userLink && <SidebarUserItemE icon={<IconPerson />} link={userLink} />}

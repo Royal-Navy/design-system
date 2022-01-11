@@ -76,7 +76,7 @@ const MastheadUserWithItems: React.FC<MastheadUserWithItemsProps> = ({
         }
       />
     }
-    placement="bottom"
+    placement={['top', 'bottom']}
   >
     <StyledUserItems>{children}</StyledUserItems>
   </Sheet>

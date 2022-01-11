@@ -1,47 +1,77 @@
-import { Dispatch, SetStateAction } from 'react'
-import { PositioningStrategy, Placement } from '@popperjs/core'
-import { usePopper } from 'react-popper'
-
-import { useStatefulRef } from './useStatefulRef'
+import { useEffect } from 'react'
+import { isNil } from 'lodash'
+import type { VirtualElement, Placement, Strategy } from '@floating-ui/core'
+import {
+  useFloating,
+  shift,
+  arrow,
+  autoPlacement,
+} from '@floating-ui/react-dom'
 
 export const useFloatingElement = (
-  placement: Placement = 'bottom',
-  strategy: PositioningStrategy = 'fixed',
-  externalTargetElement?: Element
+  strategy: Strategy = 'fixed',
+  arrowElementRef?:
+    | React.MutableRefObject<HTMLElement | undefined>
+    | HTMLElement,
+  allowedPlacements?: Placement[]
 ): {
-  targetElementRef: Dispatch<SetStateAction<Element>>
-  floatingElementRef: Dispatch<SetStateAction<HTMLElement | null>>
-  arrowElementRef: Dispatch<SetStateAction<HTMLElement | null>>
+  placement: Placement
+  targetElementRef: (node: Element | VirtualElement | null) => void
+  floatingElementRef: (node: HTMLElement | null) => void
   styles: { [key: string]: React.CSSProperties }
-  attributes: { [key: string]: { [key: string]: string } | undefined }
 } => {
-  const [targetElement, targetElementRef] = useStatefulRef()
-  const [floatingElement, floatingElementRef] = useStatefulRef<HTMLElement>()
-  const [arrowElement, arrowElementRef] = useStatefulRef<HTMLElement>()
+  const {
+    x,
+    y,
+    placement,
+    reference: targetElementRef,
+    floating: floatingElementRef,
+    update,
+    refs,
+    middlewareData,
+  } = useFloating({
+    strategy,
+    middleware: [
+      shift(),
+      autoPlacement({ allowedPlacements }),
+      arrowElementRef &&
+        arrow({
+          element: arrowElementRef,
+          padding: 20,
+        }),
+    ],
+  })
 
-  const { styles, attributes } = usePopper(
-    externalTargetElement || targetElement,
-    floatingElement,
-    {
-      modifiers: [
-        {
-          name: 'arrow',
-          options: {
-            element: arrowElement,
-            padding: 20,
-          },
-        },
-      ],
-      placement,
-      strategy,
+  const { arrow: { x: arrowX, y: arrowY } = {} } = middlewareData
+
+  useEffect(() => {
+    if (!refs.reference.current || !refs.floating.current) {
+      return undefined
     }
-  )
+
+    window.addEventListener('scroll', update)
+    window.addEventListener('resize', update)
+
+    return () => {
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  })
 
   return {
+    placement,
     targetElementRef,
     floatingElementRef,
-    arrowElementRef,
-    styles,
-    attributes,
+    styles: {
+      float: {
+        position: strategy,
+        left: isNil(x) ? '' : `${x}px`,
+        top: isNil(y) ? '' : `${y}px`,
+      },
+      arrow: {
+        left: isNil(x) ? '' : `${arrowX}px`,
+        top: isNil(y) ? '' : `${arrowY}px`,
+      },
+    },
   }
 }

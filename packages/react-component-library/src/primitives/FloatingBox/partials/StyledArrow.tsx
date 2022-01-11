@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { Placement } from '@popperjs/core'
+import type { Placement } from '@floating-ui/core'
 
 interface StyledArrowProps {
   $placement?: Placement
@@ -7,6 +7,7 @@ interface StyledArrowProps {
 
 const placementStyleMap = {
   top: css`
+    position: absolute;
     bottom: -6px;
     border-width: 0 5px 5px;
 
@@ -25,7 +26,23 @@ const placementStyleMap = {
       top: -6px;
     }
   `,
+  bottom: css`
+    position: absolute;
+    top: 0;
+    border-width: 0 5px 5px;
+
+    &::before {
+      z-index: 0;
+      top: -5px;
+    }
+
+    &::after {
+      z-index: 1;
+      top: -6px;
+    }
+  `,
   left: css`
+    position: relative;
     right: -2px;
     border-width: 5px 0 5px 5px;
 
@@ -44,6 +61,7 @@ const placementStyleMap = {
     }
   `,
   right: css`
+    position: relative;
     left: -2px;
     border-width: 5px 5px 5px 0;
 
@@ -64,8 +82,6 @@ const placementStyleMap = {
 }
 
 export const StyledArrow = styled.div<StyledArrowProps>`
-  position: relative;
-
   &::before,
   &::after {
     border-style: solid;

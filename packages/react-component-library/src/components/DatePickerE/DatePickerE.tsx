@@ -1,7 +1,7 @@
 import { IconEvent } from '@defencedigital/icon-library'
 import { isValid } from 'date-fns'
 import React, { useState } from 'react'
-import { Placement } from '@popperjs/core'
+import type { Placement } from '@floating-ui/core'
 import { DayModifiers, DayPickerProps } from 'react-day-picker'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
@@ -289,7 +289,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
       </StyledDatePickerEInput>
       <StyledFloatingBox
         isVisible={open}
-        placement={placement}
+        allowedPlacements={[]}
         targetElement={floatingBoxTarget}
         role="dialog"
         aria-modal

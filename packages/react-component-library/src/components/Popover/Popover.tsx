@@ -1,5 +1,5 @@
 import React from 'react'
-import { Placement } from '@popperjs/core'
+import type { Placement } from '@floating-ui/core'
 
 import {
   FLOATING_BOX_PLACEMENT,
@@ -75,7 +75,7 @@ export const Popover: React.FC<PopoverProps> = ({
       aria-describedby={contentId}
       contentId={contentId}
       data-testid="popover"
-      placement={placement}
+      allowedPlacements={[placement]}
       {...rest}
     >
       <div data-testid="popover-content" ref={floatingBoxChildrenRef}>
