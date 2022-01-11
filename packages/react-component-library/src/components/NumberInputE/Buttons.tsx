@@ -35,11 +35,21 @@ export const Buttons: React.FC<ButtonsProps> = ({
   step,
   value,
 }) => {
-  function onButtonClick(getNewValue: () => string) {
-    return (event: React.MouseEvent<HTMLButtonElement>) => {
-      const newValue = getNewValue()
-      onClick(event, newValue)
+  function handleClick(
+    event: React.MouseEvent<HTMLButtonElement>,
+    isDecrease: boolean
+  ) {
+    // Do nothing if the value is e.g. only `-`
+    if (value && !Number.isFinite(parseFloat(value))) {
+      return
     }
+
+    const decimal = new Decimal(value || 0)
+    const newValue = (
+      isDecrease ? decimal.minus(step) : decimal.plus(step)
+    ).toString()
+
+    onClick(event, newValue)
   }
 
   return (
@@ -50,9 +60,7 @@ export const Buttons: React.FC<ButtonsProps> = ({
         )} the input value`}
         data-testid={`number-input-${NUMBER_INPUT_BUTTON_TYPE.DECREASE}`}
         isDisabled={isDisabled}
-        onClick={onButtonClick(() => {
-          return new Decimal(value || 0).minus(step).toString()
-        })}
+        onClick={(event) => handleClick(event, true)}
         size={size}
       >
         {iconLookup[NUMBER_INPUT_BUTTON_TYPE.DECREASE]}
@@ -64,9 +72,7 @@ export const Buttons: React.FC<ButtonsProps> = ({
         )} the input value`}
         data-testid={`number-input-${NUMBER_INPUT_BUTTON_TYPE.INCREASE}`}
         isDisabled={isDisabled}
-        onClick={onButtonClick(() => {
-          return new Decimal(value || 0).plus(step).toString()
-        })}
+        onClick={(event) => handleClick(event, false)}
         size={size}
       >
         {iconLookup[NUMBER_INPUT_BUTTON_TYPE.INCREASE]}
