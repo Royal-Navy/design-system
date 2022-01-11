@@ -33,6 +33,10 @@ describe('AutocompleteE', () => {
         })
       })
 
+      it('does not render the `No results for t` text', () => {
+        cy.get(selectors.autocompleteE.noResults).should('not.exist')
+      })
+
       describe('and the `Three` option is clicked', () => {
         beforeEach(() => {
           cy.get(selectors.selectE.option).eq(0).click()
@@ -52,6 +56,20 @@ describe('AutocompleteE', () => {
       it('renders no options', () => {
         const options = cy.get(selectors.selectE.option)
         options.should('have.length', 0)
+      })
+    })
+
+    describe('and `z` is typed', () => {
+      beforeEach(() => {
+        cy.get(selectors.selectE.input).type('z')
+      })
+
+      it('renders no options', () => {
+        cy.get(selectors.selectE.option).should('have.length', 0)
+      })
+
+      it('renders the `No results for z` text', () => {
+        cy.get(selectors.autocompleteE.noResults).should('be.visible')
       })
     })
   })

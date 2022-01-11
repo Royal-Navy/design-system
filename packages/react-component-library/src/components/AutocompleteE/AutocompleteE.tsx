@@ -11,6 +11,7 @@ import {
 } from '../SelectBase'
 import { useInput } from './hooks/useInput'
 import { useItems } from './hooks/useItems'
+import { NoResults } from './NoResults'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AutocompleteEProps extends SelectBaseProps {}
@@ -98,6 +99,7 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
             isHighlighted: highlightedIndex === index,
           })
         })}
+      {inputValue && !items.length && <NoResults>{inputValue}</NoResults>}
     </SelectLayout>
   )
 }
