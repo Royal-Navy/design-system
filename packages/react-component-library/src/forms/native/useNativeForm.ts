@@ -2,25 +2,30 @@ import React, { useState } from 'react'
 
 import { sleep } from '../../helpers'
 
-interface FormErrors {
-  [key: string]: boolean
-}
+type Validators<FormValues> = Partial<{
+  [key in keyof FormValues]: (value: FormValues[key]) => boolean | string
+}>
+
+type FormErrors<FormValues> = Partial<{
+  [key in keyof FormValues]: boolean | string
+}>
 
 interface SyntheticFormEvent {
   currentTarget: {
     name: string
-    value: string | string[] | number | number[]
+    value: string | string[] | number | number[] | Date
   }
 }
 
-export const useNativeForm = <T>(
-  initialState: T,
-  initialErrors: FormErrors,
-  validation: Record<string, (value: string) => boolean>
+export const useNativeForm = <FormValues>(
+  initialState: FormValues,
+  initialErrors: FormErrors<FormValues>,
+  validation: Validators<FormValues>
 ) => {
-  const [formErrors, setFormErrors] = useState<FormErrors>(initialErrors)
-  const [formPayload, setFormPayload] = useState<T | undefined>()
-  const [formState, setFormState] = useState<T>(initialState)
+  const [formErrors, setFormErrors] =
+    useState<FormErrors<FormValues>>(initialErrors)
+  const [formPayload, setFormPayload] = useState<FormValues | undefined>()
+  const [formState, setFormState] = useState<FormValues>(initialState)
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
   const handleChange = (
@@ -31,7 +36,7 @@ export const useNativeForm = <T>(
     if (validation[name]) {
       setFormErrors({
         ...formErrors,
-        ...{ [name]: validation[name](String(value)) },
+        ...{ [name]: validation[name](value) },
       })
     }
 
@@ -81,7 +86,7 @@ export const useNativeForm = <T>(
 
     await sleep(400) // Simulate stubbed async action e.g. `fetch(...)`
 
-    if (!Object.values(formErrors).includes(true)) {
+    if (!Object.values(formErrors).some((error) => error)) {
       setFormPayload(formState)
     }
 

@@ -1,3 +1,4 @@
+import { isBefore, isValid, parseISO } from 'date-fns'
 import React from 'react'
 import { ComponentMeta } from '@storybook/react'
 
@@ -5,6 +6,7 @@ import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
+import { DatePickerE } from '../../components/DatePickerE'
 import { NumberInputE } from '../../components/NumberInputE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { RangeSliderE } from '../../components/RangeSliderE'
@@ -20,8 +22,11 @@ export interface FormValues {
   exampleRadio: string[]
   exampleSwitch: string
   exampleNumberInput: number
+  exampleDatePicker: Date | null
   exampleRangeSlider: readonly [number, number?]
 }
+
+const MINIMUM_DATE = parseISO('2022-01-01')
 
 export const Example: React.FC<unknown> = () => {
   const {
@@ -42,6 +47,7 @@ export const Example: React.FC<unknown> = () => {
       exampleRadio: [],
       exampleSwitch: '',
       exampleNumberInput: null,
+      exampleDatePicker: null,
       exampleRangeSlider: [20],
     },
     {
@@ -50,6 +56,17 @@ export const Example: React.FC<unknown> = () => {
     },
     {
       email: (value: string): boolean => !value,
+      exampleDatePicker: (value) => {
+        if (value && !isValid(value)) {
+          return 'Enter a valid date'
+        }
+
+        if (isBefore(value, MINIMUM_DATE)) {
+          return 'Enter a date on or after 1 January 2022'
+        }
+
+        return false
+      },
       // ...
     }
   )
@@ -63,7 +80,7 @@ export const Example: React.FC<unknown> = () => {
           label="Email"
           value={formState.email}
           onChange={handleChange}
-          isInvalid={formErrors.email}
+          isInvalid={Boolean(formErrors.email)}
           data-testid="form-example-TextInputE-email"
         />
         {formErrors.email && <span>Required</span>}
@@ -155,6 +172,20 @@ export const Example: React.FC<unknown> = () => {
           value={formState.exampleNumberInput}
           data-testid="form-example-NumberInputE"
         />
+        <DatePickerE
+          onChange={({ startDate }) => {
+            handleChange({
+              currentTarget: {
+                name: 'exampleDatePicker',
+                value: startDate,
+              },
+            })
+          }}
+          disabledDays={{ before: MINIMUM_DATE }}
+        />
+        {formErrors.exampleDatePicker && (
+          <span>{formErrors.exampleDatePicker}</span>
+        )}
         <RangeSliderE
           onChange={(values: ReadonlyArray<number>) => {
             handleChange({

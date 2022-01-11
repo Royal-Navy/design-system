@@ -9,6 +9,8 @@ export default {
     switchOption: '[data-testid="switch-option"]',
     numberInput: '[data-testid="number-input"]',
     numberInputIncrease: '[data-testid="number-input-increase"]',
+    datePicker: '[data-testid="datepicker-outer-wrapper"]',
+    datePickerInput: '[data-testid="datepicker-input"]',
     rangeSlider: '[data-testid="rangeslider"]',
     rangeSliderRail: '[data-testid="rangeslider-rail"]',
   },

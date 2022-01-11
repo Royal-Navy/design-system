@@ -1,3 +1,4 @@
+import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import { Formik, Field } from 'formik'
@@ -8,6 +9,10 @@ import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
 import { ButtonE } from '../../components/ButtonE'
 import { NumberInputE } from '../../components/NumberInputE'
+import {
+  DatePickerE,
+  DatePickerEOnChangeData,
+} from '../../components/DatePickerE'
 import { SwitchE, SwitchEOption, SwitchEProps } from '../../components/SwitchE'
 import { RangeSliderE } from '../../components/RangeSliderE'
 import { FormikGroupE } from '../../components/FormikGroup'
@@ -42,8 +47,11 @@ const FormikTextAreaE = withFormik(TextAreaE)
 const FormikCheckboxE = withFormik(CheckboxE)
 const FormikRadioE = withFormik(RadioE)
 const FormikSwitchE = withFormik(SwitchEFormed)
+const FormikDatePickerE = withFormik(DatePickerE)
 const FormikNumberInputE = withFormik(NumberInputE)
-const FormikeRangeSliderE = withFormik(RangeSliderE)
+const FormikRangeSliderE = withFormik(RangeSliderE)
+
+const MINIMUM_DATE = parseISO('2022-01-01')
 
 export const Example: React.FC<unknown> = () => {
   const [formValues, setFormValues] = useState<FormValues>()
@@ -59,17 +67,24 @@ export const Example: React.FC<unknown> = () => {
           exampleRadio: [],
           exampleSwitch: '',
           exampleNumberInput: null,
+          exampleDatePicker: null,
           exampleRangeSlider: [20],
         }}
-        validate={(values) => {
+        validate={({ email, exampleDatePicker }) => {
           const errors: Record<string, unknown> = {}
 
-          if (!values.email) {
+          if (!email) {
             errors.email = 'Required'
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
+          } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
             errors.email = 'Invalid email address'
+          }
+
+          if (exampleDatePicker && !isValid(exampleDatePicker)) {
+            errors.exampleDatePicker = 'Enter a valid date'
+          }
+
+          if (isBefore(exampleDatePicker, MINIMUM_DATE)) {
+            errors.exampleDatePicker = 'Enter a date on or after 1 January 2022'
           }
 
           return errors
@@ -167,8 +182,16 @@ export const Example: React.FC<unknown> = () => {
               }}
             />
             <Field
+              name="exampleDatePicker"
+              component={FormikDatePickerE}
+              disabledDays={{ before: MINIMUM_DATE }}
+              onChange={({ startDate }: DatePickerEOnChangeData) => {
+                setFieldValue('exampleDatePicker', startDate)
+              }}
+            />
+            <Field
               name="exampleRangeSlider"
-              component={FormikeRangeSliderE}
+              component={FormikRangeSliderE}
               onChange={(newValues: ReadonlyArray<number>) => {
                 setFieldValue('exampleRangeSlider', newValues)
               }}
