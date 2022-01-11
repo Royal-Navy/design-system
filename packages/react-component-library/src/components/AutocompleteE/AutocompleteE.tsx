@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelect } from 'downshift'
+import { useCombobox } from 'downshift'
 
 import { getId } from '../../helpers'
 import {
@@ -9,15 +9,27 @@ import {
   SelectChildType,
   SelectLayout,
 } from '../SelectBase'
+import { useInput } from './hooks/useInput'
+import { useItems } from './hooks/useItems'
 
-export const SelectE: React.FC<SelectBaseProps> = ({
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface AutocompleteEProps extends SelectBaseProps {}
+
+export const AutocompleteE: React.FC<AutocompleteEProps> = ({
   children,
-  id = getId('select'),
+  id = getId('autocomplete'),
   onChange,
   value,
   ...rest
 }) => {
+  const { items, onInputValueChange } = useItems(
+    React.Children.toArray(children)
+  )
+  const { inputRef, onIsOpenChange } = useInput()
+
   const {
+    getComboboxProps,
+    getInputProps,
     getItemProps,
     getMenuProps,
     getToggleButtonProps,
@@ -27,10 +39,12 @@ export const SelectE: React.FC<SelectBaseProps> = ({
     reset,
     selectedItem,
     toggleMenu,
-  } = useSelect({
+  } = useCombobox({
+    items,
     itemToString,
+    onInputValueChange,
+    onIsOpenChange,
     initialSelectedItem: initialSelectedItem(children, value),
-    items: React.Children.toArray(children),
     onSelectedItemChange: ({ selectedItem: newItem }) => {
       if (onChange) {
         onChange(React.isValidElement(newItem) ? newItem.props.value : null)
@@ -40,9 +54,10 @@ export const SelectE: React.FC<SelectBaseProps> = ({
 
   return (
     <SelectLayout
+      hasLabelFocus={isOpen}
       hasSelectedItem={!!selectedItem}
       id={id}
-      inputProps={{
+      inputProps={getInputProps({
         onFocus: () => {
           if (!isOpen) {
             openMenu()
@@ -53,7 +68,9 @@ export const SelectE: React.FC<SelectBaseProps> = ({
           e.stopPropagation()
           e.preventDefault()
         },
-      }}
+        ref: inputRef,
+      })}
+      inputWrapperProps={getComboboxProps()}
       isOpen={isOpen}
       menuProps={getMenuProps()}
       onClearButtonClick={() => {
@@ -61,13 +78,10 @@ export const SelectE: React.FC<SelectBaseProps> = ({
       }}
       toggleButtonProps={getToggleButtonProps()}
       value={selectedItem ? itemToString(selectedItem) : ''}
-      {...{
-        readOnly: true,
-        ...rest,
-      }}
+      {...rest}
     >
       {isOpen &&
-        React.Children.map(children, (child: SelectChildType, index) => {
+        React.Children.map(items, (child: SelectChildType, index) => {
           if (!React.isValidElement(child)) {
             return null
           }
@@ -77,7 +91,7 @@ export const SelectE: React.FC<SelectBaseProps> = ({
             ...getItemProps({
               index,
               item: child,
-              key: `select-option-${child.props.children}`,
+              key: `autocomplete-option-${child.props.children}`,
             }),
             isHighlighted: highlightedIndex === index,
           })
@@ -86,4 +100,4 @@ export const SelectE: React.FC<SelectBaseProps> = ({
   )
 }
 
-SelectE.displayName = 'SelectE'
+AutocompleteE.displayName = 'AutocompleteE'
