@@ -1,5 +1,5 @@
 import React from 'react'
-import { isFinite, isNil } from 'lodash'
+import { isNil } from 'lodash'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Buttons } from './Buttons'
@@ -8,7 +8,9 @@ import { getId, hasClass } from '../../helpers'
 import { Input } from './Input'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { useChangeHandlers } from './useChangeHandlers'
 import { useFocus } from '../../hooks/useFocus'
+import { useEarlyValidation } from './useEarlyValidation'
 import { useValue } from './useValue'
 import { StyledIcon } from './partials/StyledIcon'
 import { StyledDivider } from './partials/StyledDivider'
@@ -136,24 +138,6 @@ function formatValue(
   return displayValue
 }
 
-function getNewValue(event: React.FormEvent<HTMLInputElement>): string {
-  const { value } = event.currentTarget
-  const sanitizedValue = value.replace(/[^.0-9]/g, '')
-
-  if (sanitizedValue === '') {
-    return null
-  }
-
-  return sanitizedValue
-}
-
-function isWithinRange(max: number, min: number, newValue: number) {
-  const isNotBelowMin = isNil(min) || newValue >= min
-  const isNotAboveMax = isNil(max) || newValue <= max
-
-  return isNotBelowMin && isNotAboveMax
-}
-
 export const NumberInputE: React.FC<NumberInputEProps> = ({
   className,
   footnote,
@@ -180,15 +164,13 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
     value ? String(value) : null
   )
   const { hasFocus, onLocalFocus, onLocalBlur } = useFocus(onBlur)
-
-  function canCommit(newValue: string) {
-    const parsedValue = parseFloat(newValue)
-
-    return (
-      (isFinite(parsedValue) && isWithinRange(max, min, parsedValue)) ||
-      parsedValue === null
-    )
-  }
+  const { handleBeforeInput, handleKeyDown } = useEarlyValidation()
+  const { handleButtonClick, handleInputChange } = useChangeHandlers(
+    min,
+    max,
+    onChange,
+    setCommittedValue
+  )
 
   const numberInputId = getId('number-input')
 
@@ -232,22 +214,10 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
           isInvalid={isInvalid || hasClass(className, 'is-invalid')}
           label={label}
           name={name}
-          onChange={(event) => {
-            const newValue = getNewValue(event)
-
-            if (!newValue || canCommit(newValue)) {
-              setCommittedValue(newValue)
-              onChange(event, isNil(newValue) ? null : Number(newValue))
-            }
-          }}
-          onBlur={(event) => {
-            const newValue = getNewValue(event)
-
-            if (!newValue || canCommit(newValue)) {
-              setCommittedValue(newValue)
-              onLocalBlur(event)
-            }
-          }}
+          onBeforeInput={handleBeforeInput}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+          onBlur={onLocalBlur}
           onFocus={onLocalFocus}
           placeholder={placeholder}
           size={size}
@@ -269,12 +239,7 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
           max={max}
           min={min}
           name={name}
-          onClick={(e, newValue) => {
-            if (canCommit(newValue)) {
-              setCommittedValue(newValue)
-              onChange(e, Number(newValue))
-            }
-          }}
+          onClick={handleButtonClick}
           size={size}
           step={step}
           value={committedValue}
