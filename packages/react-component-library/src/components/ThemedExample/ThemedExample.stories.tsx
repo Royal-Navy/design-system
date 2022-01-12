@@ -12,7 +12,6 @@ export default {
   title: 'Custom Theming',
   parameters: {
     a11y: {
-      disabled: true,
       config: {
         rules: [
           {
