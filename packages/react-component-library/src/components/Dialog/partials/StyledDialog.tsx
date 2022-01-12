@@ -2,13 +2,9 @@ import { selectors } from '@defencedigital/design-tokens'
 import styled from 'styled-components'
 
 import { Modal } from '../../Modal'
-import { StyledButton } from '../../Button/partials/StyledButton'
-import { StyledFooter } from '../../Modal/partials/StyledFooter'
-import { StyledIcon } from '../../Button/partials/StyledIcon'
 import { StyledMain } from '../../Modal/partials/StyledMain'
-import { StyledPrimaryButton } from '../../Modal/partials/StyledPrimaryButton'
 
-const { mq, spacing } = selectors
+const { mq } = selectors
 
 export const StyledDialog = styled(Modal)`
   ${StyledMain} {
@@ -16,24 +12,5 @@ export const StyledDialog = styled(Modal)`
       width: 100%;
       max-width: 480px;
     `}
-  }
-
-  ${StyledFooter} {
-    ${StyledButton} {
-      display: block;
-      width: 100%;
-
-      ${mq({ gte: 'xs' })`
-        width: auto;
-      `}
-    }
-
-    ${StyledIcon} {
-      transform: translateY(2px);
-    }
-
-    ${StyledPrimaryButton} {
-      margin-left: 0;
-    }
   }
 `

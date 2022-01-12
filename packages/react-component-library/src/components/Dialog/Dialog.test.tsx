@@ -77,10 +77,10 @@ describe('Modal', () => {
         })
       })
 
-      describe('and the tertiary button is clicked', () => {
+      describe('and the secondary button is clicked', () => {
         beforeEach(() => {
           fireEvent(
-            wrapper.getByTestId('modal-tertiary'),
+            wrapper.getByTestId('modal-secondary'),
             new MouseEvent('click', {
               bubbles: true,
               cancelable: true,
