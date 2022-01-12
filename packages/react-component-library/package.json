@@ -169,6 +169,7 @@
     "date-fns": "^2.9.0",
     "decimal.js": "^10.3.1",
     "downshift": "^6.1.7",
+    "focus-trap-react": "^8.9.1",
     "polished": "^4.0.3",
     "postcss-flexbugs-fixes": "^5.0.2",
     "react-compound-slider": "^3.3.1",
@@ -182,7 +183,8 @@
     "react-toast-notifications": "^2.4.0",
     "react-transition-group": "^4.4.1",
     "styled-normalize": "^8.0.7",
-    "styled-theming": "^2.2.0"
+    "styled-theming": "^2.2.0",
+    "usehooks-ts": "^2.2.1"
   },
   "peerDependencies": {
     "formik": "^2 || ^3",

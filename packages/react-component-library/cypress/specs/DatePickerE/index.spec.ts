@@ -51,7 +51,7 @@ describe('DatePickerE', () => {
     before(() => {
       cy.visit('/iframe.html?id=date-picker-experimental--range&viewMode=story')
 
-      cy.get(selectors.datePicker.input).focus()
+      cy.get(selectors.datePicker.input).click()
     })
 
     it('should show the days', () => {
