@@ -13,7 +13,7 @@ import { StyledArrow } from './partials/StyledArrow'
 import { useFloatingElement } from '../../hooks/useFloatingElement'
 import { FLOATING_BOX_SCHEME } from './constants'
 
-export interface FloatingBoxBaseProps extends PositionType, ComponentWithClass {
+export interface FloatingBoxProps extends PositionType, ComponentWithClass {
   role?: string
   contentId?: string
   scheme?: FloatingBoxSchemeType
@@ -22,30 +22,8 @@ export interface FloatingBoxBaseProps extends PositionType, ComponentWithClass {
   children?: React.ReactElement
   isVisible?: boolean
   allowedPlacements?: Placement[]
-}
-
-export interface FloatingBoxWithExternalTargetProps
-  extends FloatingBoxBaseProps {
-  renderTarget?: never
-  /**
-   * External element that the floating box should attach to.
-   */
-  targetElement?: Element
-}
-
-export interface FloatingBoxWithEmbeddedTargetProps
-  extends FloatingBoxBaseProps {
-  /**
-   * JSX to render, representing the element that the floating
-   * box should attach to.
-   */
   renderTarget?: React.ReactElement
-  targetElement?: never
 }
-
-export type FloatingBoxProps =
-  | FloatingBoxWithExternalTargetProps
-  | FloatingBoxWithEmbeddedTargetProps
 
 const TRANSITION_STYLES = {
   entering: { opacity: 0 },
@@ -61,7 +39,6 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
   onMouseLeave,
   children,
   renderTarget,
-  targetElement, // TODO: how is this different to renderTarget?
   isVisible,
   allowedPlacements,
   ...rest

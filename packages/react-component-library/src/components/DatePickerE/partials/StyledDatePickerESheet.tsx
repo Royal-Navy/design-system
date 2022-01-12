@@ -1,13 +1,13 @@
 import { selectors } from '@defencedigital/design-tokens'
 import styled from 'styled-components'
 
-import { FloatingBox } from '../../../primitives'
 import { StyledArrow } from '../../../primitives/FloatingBox/partials/StyledArrow'
 import { StyledContent } from '../../../primitives/FloatingBox/partials/StyledContent'
+import { StyledFloatingBox } from '../../../primitives/FloatingBox/partials/StyledFloatingBox'
 
 const { color } = selectors
 
-export const StyledFloatingBox = styled(FloatingBox)`
+export const StyledDatePickerESheet = styled(StyledFloatingBox)`
   padding: 0;
 
   ${StyledArrow} {

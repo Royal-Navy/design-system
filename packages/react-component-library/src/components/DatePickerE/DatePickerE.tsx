@@ -1,32 +1,32 @@
+import { DayModifiers, DayPickerProps } from 'react-day-picker'
 import { IconEvent } from '@defencedigital/icon-library'
 import { isValid } from 'date-fns'
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import type { Placement } from '@floating-ui/core'
-import { DayModifiers, DayPickerProps } from 'react-day-picker'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
 import { DATE_VALIDITY, WEEKDAY_TITLES } from './constants'
+import { DatePickerESheet } from './DatePickerESheet'
 import { formatDatesForInput } from './formatDatesForInput'
 import { hasClass } from '../../helpers'
 import { InlineButton } from '../InlineButtons/InlineButton'
 import { InputValidationProps } from '../../common/InputValidationProps'
-import { StyledLabel } from '../TextInputE/partials/StyledLabel'
 import { StyledDatePickerEInput } from './partials/StyledDatePickerEInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
-import { StyledFloatingBox } from './partials/StyledFloatingBox'
 import { StyledInlineButtons } from '../InlineButtons/partials/StyledInlineButtons'
 import { StyledInput } from '../TextInputE/partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
+import { StyledLabel } from '../TextInputE/partials/StyledLabel'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { useCloseOnEscape } from './useCloseOnEscape'
 import { useDatePickerEOpenClose } from './useDatePickerEOpenClose'
 import { useExternalId } from '../../hooks/useExternalId'
+import { useFloatingElement } from '../../hooks/useFloatingElement'
 import { useFocus } from '../../hooks/useFocus'
 import { useInput } from './useInput'
 import { useRangeHoverOrFocusDate } from './useRangeHoverOrFocusDate'
 import { useSelection } from './useSelection'
-import { useStatefulRef } from '../../hooks/useStatefulRef'
 
 declare module 'react-day-picker' {
   // eslint-disable-next-line no-shadow
@@ -130,6 +130,7 @@ export interface DatePickerEProps
   /**
    * Position to display the picker relative to the input.
    * NOTE: This is now calculated automatically by default based on available screen real-estate.
+   * @deprecated
    */
   placement?: Placement
   /**
@@ -155,12 +156,13 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   isOpen,
   disabledDays,
   initialMonth,
-  placement = 'bottom-start',
+  placement: _0,
   onBlur,
   // Formik can pass value – drop it to stop it being forwarded to the input
-  value: _,
+  value: _1,
   ...rest
 }) => {
+  const arrowElementRef = useRef()
   const id = useExternalId(externalId)
   const titleId = `datepicker-title-${useExternalId()}`
   const contentId = `datepicker-contentId-${useExternalId()}`
@@ -191,7 +193,6 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   const [hasError, setHasError] = useState<boolean>(
     isInvalid || hasClass(className, 'is-invalid')
   )
-  const [floatingBoxTarget, setFloatingBoxTarget] = useStatefulRef()
 
   const {
     rangeHoverOrFocusDate,
@@ -210,6 +211,13 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     setInputValue
   )
 
+  const {
+    placement,
+    targetElementRef,
+    floatingElementRef,
+    styles: floatingElementStyles,
+  } = useFloatingElement(undefined, arrowElementRef, ['bottom', 'top'])
+
   const modifiers = {
     start: replaceInvalidDate(from),
     end: replaceInvalidDate(to),
@@ -225,7 +233,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
         className={className}
         data-testid="datepicker-input-wrapper"
         $isDisabled={isDisabled}
-        ref={setFloatingBoxTarget}
+        ref={targetElementRef}
       >
         <StyledOuterWrapper
           data-testid="datepicker-outer-wrapper"
@@ -287,14 +295,16 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
           </StyledInlineButtons>
         </StyledOuterWrapper>
       </StyledDatePickerEInput>
-      <StyledFloatingBox
+      <DatePickerESheet
         isVisible={open}
-        allowedPlacements={[]}
-        targetElement={floatingBoxTarget}
         role="dialog"
         aria-modal
         aria-labelledby={titleId}
         aria-live="polite"
+        styles={floatingElementStyles}
+        placement={placement}
+        floatingElementRef={floatingElementRef}
+        arrowElementRef={arrowElementRef}
       >
         <div ref={floatingBoxChildrenRef}>
           <StyledDayPicker
@@ -336,7 +346,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
             onDayFocus={handleDayFocus}
           />
         </div>
-      </StyledFloatingBox>
+      </DatePickerESheet>
     </>
   )
 }
