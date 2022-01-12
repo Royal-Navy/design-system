@@ -16,7 +16,6 @@ describe('Breadcrumbs', () => {
             data-arbitrary="arbitrary-breadcrumbs-item"
             link={<Link href="#home">Home</Link>}
           />
-          <BreadcrumbsItem link={<Link href="#ships">Ships</Link>} />
           <BreadcrumbsItem link={<Link href="#reports">Reports</Link>} />
           <BreadcrumbsItem link={<Link href="#stuff">Stuff</Link>} />
           <BreadcrumbsItem link={<Link href="#22">22nd April 2019</Link>} />
@@ -60,17 +59,17 @@ describe('Breadcrumbs', () => {
 
     it('should render a list of breadcrumbs', () => {
       const linkElements = wrapper.queryAllByTestId('breadcrumb')
-      expect(linkElements).toHaveLength(5)
+      expect(linkElements).toHaveLength(4)
     })
 
     it('should render four separators', () => {
       const linkElements = wrapper.queryAllByTestId('breadcrumb-separator')
-      expect(linkElements).toHaveLength(4)
+      expect(linkElements).toHaveLength(3)
     })
 
     it('should render the first 4 links as anchors', () => {
       const linkElements = wrapper.queryAllByTestId('link')
-      expect(linkElements).toHaveLength(4)
+      expect(linkElements).toHaveLength(3)
     })
 
     it('should render the last link as a title', () => {
@@ -79,7 +78,7 @@ describe('Breadcrumbs', () => {
     })
 
     it('should only include separators in for all but the first link', () => {
-      expect(wrapper.queryAllByTestId('link')).toHaveLength(4)
+      expect(wrapper.queryAllByTestId('link')).toHaveLength(3)
     })
   })
 
@@ -126,6 +125,25 @@ describe('Breadcrumbs', () => {
     it('should render one breadcrumb', () => {
       const linkElements = wrapper.queryAllByTestId('breadcrumb')
       expect(linkElements).toHaveLength(1)
+    })
+  })
+
+  describe('when href and children are used', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Breadcrumbs>
+          <BreadcrumbsItem href="#home">Home</BreadcrumbsItem>
+          <BreadcrumbsItem href="#reports">Reports</BreadcrumbsItem>
+        </Breadcrumbs>
+      )
+    })
+
+    it('should render the breadcrumb title', () => {
+      expect(wrapper.queryByText('Home')).toBeInTheDocument()
+    })
+
+    it('sould apply the `href` attribute', () => {
+      expect(wrapper.queryByText('Home')).toHaveAttribute('href', '#home')
     })
   })
 })
