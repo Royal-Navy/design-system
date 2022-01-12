@@ -9,6 +9,7 @@ const expectedResult = {
     description: 'Hello, World!',
     exampleCheckbox: [],
     exampleRadio: 'Option 1',
+    exampleDatePicker: '2022-01-31T12:00:00.000Z',
     exampleRangeSlider: [28],
     exampleSwitch: '1',
     exampleNumberInput: 1,
@@ -21,6 +22,7 @@ const expectedResult = {
     exampleRadio: 'Option 1',
     exampleSwitch: '1',
     exampleNumberInput: 1,
+    exampleDatePicker: '2022-01-31T12:00:00.000Z',
     exampleRangeSlider: [28],
   },
   Native: {
@@ -31,6 +33,7 @@ const expectedResult = {
     exampleRadio: ['Option 1'],
     exampleSwitch: '1',
     exampleNumberInput: 1,
+    exampleDatePicker: '2022-01-31T12:00:00.000Z',
     exampleRangeSlider: [28],
   },
 }
@@ -70,6 +73,7 @@ describe('Form Examples', () => {
             cy.get(selectors.form.input.description).should('be.visible')
             cy.get(selectors.form.input.switch).should('be.visible')
             cy.get(selectors.form.input.numberInput).should('be.visible')
+            cy.get(selectors.form.input.datePicker).should('be.visible')
             cy.get(selectors.form.input.rangeSlider).should('be.visible')
           })
 
@@ -91,6 +95,7 @@ describe('Form Examples', () => {
               cy.get(selectors.form.input.radio).eq(0).click()
               cy.get(selectors.form.input.switchOption).eq(0).click()
               cy.get(selectors.form.input.numberInputIncrease).click()
+              cy.get(selectors.form.input.datePickerInput).type('31/01/2022')
               cy.get(selectors.form.input.rangeSliderRail).click(800, 0)
             })
 

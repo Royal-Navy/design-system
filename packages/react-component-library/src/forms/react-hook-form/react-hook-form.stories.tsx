@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form/dist/index.ie11'
 import { ComponentMeta } from '@storybook/react'
@@ -7,6 +8,7 @@ import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
+import { DatePickerE } from '../../components/DatePickerE'
 import { NumberInputE } from '../../components/NumberInputE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { RangeSliderE } from '../../components/RangeSliderE'
@@ -19,11 +21,14 @@ export interface FormValues {
   password: string
   description: string
   exampleCheckbox: string[]
+  exampleDatePicker: Date | null
   exampleRadio: string[]
   exampleSwitch: string
   exampleNumberInput: number
   exampleRangeSlider: number[]
 }
+
+const MINIMUM_DATE = parseISO('2022-01-01')
 
 export const Example: React.FC<unknown> = () => {
   const {
@@ -39,6 +44,7 @@ export const Example: React.FC<unknown> = () => {
       password: '',
       description: '',
       exampleCheckbox: [],
+      exampleDatePicker: null,
       exampleRadio: [],
       exampleSwitch: '',
       exampleNumberInput: null,
@@ -59,7 +65,6 @@ export const Example: React.FC<unknown> = () => {
   useEffect(() => {
     register({ name: 'exampleSwitch' })
     register({ name: 'exampleNumberInput' })
-    register({ name: 'exampleRangeSlider' })
   }, [register])
 
   const handleSwitchEChange = (e: React.FormEvent<HTMLInputElement>) =>
@@ -151,6 +156,36 @@ export const Example: React.FC<unknown> = () => {
           value={exampleNumberInputValue}
           data-testid="form-example-NumberInputE"
         />
+        <Controller
+          control={control}
+          name="exampleDatePicker"
+          rules={{
+            validate: (value) => {
+              if (value && !isValid(value)) {
+                return 'Enter a valid date'
+              }
+
+              if (isBefore(value, MINIMUM_DATE)) {
+                return 'Enter a date on or after 1 January 2022'
+              }
+
+              return true
+            },
+          }}
+          render={({ onChange }) => {
+            return (
+              <DatePickerE
+                onChange={({ startDate }) => {
+                  onChange(startDate)
+                }}
+                disabledDays={{ before: MINIMUM_DATE }}
+              />
+            )
+          }}
+        />
+        {errors.exampleDatePicker && (
+          <span>{errors.exampleDatePicker.message}</span>
+        )}
         <Controller
           control={control}
           name="exampleRangeSlider"
