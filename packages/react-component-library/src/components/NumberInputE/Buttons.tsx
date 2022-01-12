@@ -39,11 +39,7 @@ export const Buttons: React.FC<ButtonsProps> = ({
 
   function onButtonClick(getNewValue: () => string) {
     return (event: React.MouseEvent<HTMLButtonElement>) => {
-      const target = event.currentTarget
-      target.blur()
-
       const newValue = getNewValue()
-
       onClick(event, newValue)
     }
   }
