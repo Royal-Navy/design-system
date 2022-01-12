@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.73.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.72.4...2.73.0) (2022-01-12)
+
+
+### Bug Fixes
+
+* **NumberInputE:** Improve handling of invalid input ([54e8eca](https://github.com/defencedigital/mod-uk-design-system/commit/54e8eca5ab078dbde1e5c10fcd5c659f497e3d14))
+
+
+### Features
+
+* **Autocomplete:** Add component ([420ddca](https://github.com/defencedigital/mod-uk-design-system/commit/420ddca27ad57240365b703ad729946dfe2be2ec))
+
+
+
+
+
 ## [2.72.4](https://github.com/defencedigital/mod-uk-design-system/compare/2.72.3...2.72.4) (2022-01-11)
 
 **Note:** Version bump only for package moduk-design-system
