@@ -5,7 +5,7 @@ import { StyledBreadcrumbsItem } from './partials/StyledBreadcrumbsItem'
 import { StyledEndTitle } from './partials/StyledEndTitle'
 import { StyledIcon } from './partials/StyledIcon'
 
-export interface BreadcrumbsItemProps {
+export interface BreadcrumbsItemBaseProps {
   /**
    * Denotes whether this is the first item.
    * @private
@@ -16,28 +16,51 @@ export interface BreadcrumbsItemProps {
    * @private
    */
   isLast?: boolean
-  /**
-   * Link component to use for the item (custom implementation welcome).
-   */
-  link: React.ReactElement<LinkTypes>
 }
 
-function getText(isLast: boolean, link: React.ReactElement<LinkTypes>) {
+export interface BreadcrumbsItemWithLinkProps extends BreadcrumbsItemBaseProps {
+  /**
+   * Optional Link component to use for the item (redundant if `href` is used).
+   */
+  link: React.ReactElement<LinkTypes>
+  href?: never
+}
+
+export interface BreadcrumbsItemWithHrefProps extends BreadcrumbsItemBaseProps {
+  /**
+   * Optional `href` attribute to apply to HTML anchor (redundant if `link` is used).
+   */
+  href: string
+  link?: never
+}
+
+export type BreadcrumbsItemProps =
+  | BreadcrumbsItemWithLinkProps
+  | BreadcrumbsItemWithHrefProps
+
+function getText(
+  isLast: boolean,
+  link?: React.ReactElement<LinkTypes>,
+  href?: string,
+  children?: React.ReactNode
+): React.ReactElement {
   if (isLast) {
     return (
       <StyledEndTitle aria-current="page" data-testid="breadcrumb-end-title">
-        {(link as ReactElement).props.children}
+        {link ? (link as ReactElement).props.children : children}
       </StyledEndTitle>
     )
   }
 
-  return link
+  return link || <a href={href}>{children}</a>
 }
 
 export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
   isFirst,
   isLast,
   link,
+  href,
+  children,
   ...rest
 }) => {
   return (
@@ -46,7 +69,7 @@ export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
         <StyledIcon aria-hidden data-testid="breadcrumb-separator" />
       )}
 
-      {getText(isLast, link)}
+      {getText(isLast, link, href, children)}
     </StyledBreadcrumbsItem>
   )
 }
