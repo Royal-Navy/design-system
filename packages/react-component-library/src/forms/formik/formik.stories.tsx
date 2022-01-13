@@ -8,6 +8,10 @@ import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
+import {
+  AutocompleteE,
+  AutocompleteEOption,
+} from '../../components/AutocompleteE'
 import { ButtonE } from '../../components/ButtonE'
 import { NumberInputE } from '../../components/NumberInputE'
 import {
@@ -31,6 +35,7 @@ export interface FormValues {
   exampleNumberInput: number
   exampleDatePicker: Date | null
   exampleSelect: string | null
+  exampleAutocomplete: string | null
   exampleRangeSlider: number[]
 }
 
@@ -58,6 +63,7 @@ const FormikSwitchE = withFormik(SwitchEFormed)
 const FormikDatePickerE = withFormik(DatePickerE)
 const FormikNumberInputE = withFormik(NumberInputE)
 const FormikSelectE = withFormik(SelectE)
+const FormikAutocompleteE = withFormik(AutocompleteE)
 const FormikRangeSliderE = withFormik(StyledRangeSliderE)
 
 const MINIMUM_DATE = parseISO('2022-01-01')
@@ -78,6 +84,7 @@ export const Example: React.FC<unknown> = () => {
           exampleNumberInput: null,
           exampleDatePicker: null,
           exampleSelect: null,
+          exampleAutocomplete: null,
           exampleRangeSlider: [20],
         }}
         validate={({ email, exampleDatePicker }) => {
@@ -212,6 +219,20 @@ export const Example: React.FC<unknown> = () => {
               <SelectEOption value="two">Two</SelectEOption>
               <SelectEOption value="three">Three</SelectEOption>
               <SelectEOption value="four">Four</SelectEOption>
+            </Field>
+            <Field
+              name="exampleAutocomplete"
+              component={FormikAutocompleteE}
+              label="Example autocomplete"
+              value={values.exampleAutocomplete}
+              onChange={(value: string | null) => {
+                setFieldValue('exampleAutocomplete', value)
+              }}
+            >
+              <AutocompleteEOption value="one">One</AutocompleteEOption>
+              <AutocompleteEOption value="two">Two</AutocompleteEOption>
+              <AutocompleteEOption value="three">Three</AutocompleteEOption>
+              <AutocompleteEOption value="four">Four</AutocompleteEOption>
             </Field>
             <Field
               name="exampleRangeSlider"

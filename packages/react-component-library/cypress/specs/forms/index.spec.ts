@@ -11,6 +11,7 @@ const expectedResult = {
     exampleRadio: 'Option 1',
     exampleDatePicker: '2022-01-31T12:00:00.000Z',
     exampleSelect: 'three',
+    exampleAutocomplete: 'four',
     exampleRangeSlider: [28],
     exampleSwitch: '1',
     exampleNumberInput: 1,
@@ -25,6 +26,7 @@ const expectedResult = {
     exampleNumberInput: 1,
     exampleDatePicker: '2022-01-31T12:00:00.000Z',
     exampleSelect: 'three',
+    exampleAutocomplete: 'four',
     exampleRangeSlider: [28],
   },
   Native: {
@@ -37,9 +39,16 @@ const expectedResult = {
     exampleNumberInput: 1,
     exampleDatePicker: '2022-01-31T12:00:00.000Z',
     exampleSelect: 'three',
+    exampleAutocomplete: 'four',
     exampleRangeSlider: [28],
   },
 }
+
+const getSelect = () =>
+  cy.contains(selectors.form.input.select, 'Example select')
+
+const getAutocomplete = () =>
+  cy.contains(selectors.form.input.select, 'Example autocomplete')
 
 describe('Form Examples', () => {
   describe(
@@ -77,7 +86,8 @@ describe('Form Examples', () => {
             cy.get(selectors.form.input.switch).should('be.visible')
             cy.get(selectors.form.input.numberInput).should('be.visible')
             cy.get(selectors.form.input.datePicker).should('be.visible')
-            cy.get(selectors.form.input.select).should('be.visible')
+            getSelect().should('be.visible')
+            getAutocomplete().should('be.visible')
             cy.get(selectors.form.input.rangeSlider).should('be.visible')
           })
 
@@ -100,7 +110,8 @@ describe('Form Examples', () => {
               cy.get(selectors.form.input.switchOption).eq(0).click()
               cy.get(selectors.form.input.numberInputIncrease).click()
               cy.get(selectors.form.input.datePickerInput).type('31/01/2022')
-              cy.get(selectors.form.input.select).type('th{enter}')
+              getSelect().type('th{enter}')
+              getAutocomplete().type('fo{downArrow}{enter}')
               cy.get(selectors.form.input.rangeSliderRail).click(800, 0)
             })
 

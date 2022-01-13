@@ -6,6 +6,10 @@ import styled from 'styled-components'
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { RadioE } from '../../components/RadioE'
+import {
+  AutocompleteE,
+  AutocompleteEOption,
+} from '../../components/AutocompleteE'
 import { CheckboxE } from '../../components/CheckboxE'
 import { DatePickerE } from '../../components/DatePickerE'
 import { NumberInputE } from '../../components/NumberInputE'
@@ -26,6 +30,7 @@ export interface FormValues {
   exampleNumberInput: number
   exampleDatePicker: Date | null
   exampleSelect: string | null
+  exampleAutocomplete: string | null
   exampleRangeSlider: readonly [number, number?]
 }
 
@@ -56,6 +61,7 @@ export const Example: React.FC<unknown> = () => {
       exampleNumberInput: null,
       exampleDatePicker: null,
       exampleSelect: null,
+      exampleAutocomplete: null,
       exampleRangeSlider: [20],
     },
     {
@@ -211,6 +217,23 @@ export const Example: React.FC<unknown> = () => {
           <SelectEOption value="three">Three</SelectEOption>
           <SelectEOption value="four">Four</SelectEOption>
         </SelectE>
+        <AutocompleteE
+          label="Example autocomplete"
+          onChange={(value) => {
+            handleChange({
+              currentTarget: {
+                name: 'exampleAutocomplete',
+                value,
+              },
+            })
+          }}
+          value={formState.exampleAutocomplete}
+        >
+          <AutocompleteEOption value="one">One</AutocompleteEOption>
+          <AutocompleteEOption value="two">Two</AutocompleteEOption>
+          <AutocompleteEOption value="three">Three</AutocompleteEOption>
+          <AutocompleteEOption value="four">Four</AutocompleteEOption>
+        </AutocompleteE>
         <StyledRangeSliderE
           onChange={(values: ReadonlyArray<number>) => {
             handleChange({

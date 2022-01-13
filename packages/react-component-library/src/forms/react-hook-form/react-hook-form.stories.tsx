@@ -8,6 +8,10 @@ import styled from 'styled-components'
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { RadioE } from '../../components/RadioE'
+import {
+  AutocompleteE,
+  AutocompleteEOption,
+} from '../../components/AutocompleteE'
 import { CheckboxE } from '../../components/CheckboxE'
 import { DatePickerE } from '../../components/DatePickerE'
 import { NumberInputE } from '../../components/NumberInputE'
@@ -28,6 +32,7 @@ export interface FormValues {
   exampleSwitch: string
   exampleNumberInput: number
   exampleSelect: string | null
+  exampleAutocomplete: null
   exampleRangeSlider: number[]
 }
 
@@ -204,6 +209,22 @@ export const Example: React.FC<unknown> = () => {
               <SelectEOption value="three">Three</SelectEOption>
               <SelectEOption value="four">Four</SelectEOption>
             </SelectE>
+          )}
+        />
+        <Controller
+          control={control}
+          name="exampleAutocomplete"
+          render={({ onChange, value }) => (
+            <AutocompleteE
+              label="Example autocomplete"
+              onChange={onChange}
+              value={value}
+            >
+              <AutocompleteEOption value="one">One</AutocompleteEOption>
+              <AutocompleteEOption value="two">Two</AutocompleteEOption>
+              <AutocompleteEOption value="three">Three</AutocompleteEOption>
+              <AutocompleteEOption value="four">Four</AutocompleteEOption>
+            </AutocompleteE>
           )}
         />
         <Controller
