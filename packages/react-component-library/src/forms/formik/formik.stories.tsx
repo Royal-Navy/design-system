@@ -2,17 +2,23 @@ import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import { Formik, Field } from 'formik'
+import styled from 'styled-components'
 
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
+import {
+  AutocompleteE,
+  AutocompleteEOption,
+} from '../../components/AutocompleteE'
 import { ButtonE } from '../../components/ButtonE'
 import { NumberInputE } from '../../components/NumberInputE'
 import {
   DatePickerE,
   DatePickerEOnChangeData,
 } from '../../components/DatePickerE'
+import { SelectE, SelectEOption } from '../../components/SelectE'
 import { SwitchE, SwitchEOption, SwitchEProps } from '../../components/SwitchE'
 import { RangeSliderE } from '../../components/RangeSliderE'
 import { FormikGroupE } from '../../components/FormikGroup'
@@ -27,6 +33,9 @@ export interface FormValues {
   exampleRadio: string[]
   exampleSwitch: string
   exampleNumberInput: number
+  exampleDatePicker: Date | null
+  exampleSelect: string | null
+  exampleAutocomplete: string | null
   exampleRangeSlider: number[]
 }
 
@@ -42,6 +51,10 @@ const SwitchEFormed: React.FC<SwitchEProps> = (props) => (
   </SwitchE>
 )
 
+const StyledRangeSliderE = styled(RangeSliderE)`
+  margin-top: 3rem;
+`
+
 const FormikTextInputE = withFormik(TextInputE)
 const FormikTextAreaE = withFormik(TextAreaE)
 const FormikCheckboxE = withFormik(CheckboxE)
@@ -49,7 +62,9 @@ const FormikRadioE = withFormik(RadioE)
 const FormikSwitchE = withFormik(SwitchEFormed)
 const FormikDatePickerE = withFormik(DatePickerE)
 const FormikNumberInputE = withFormik(NumberInputE)
-const FormikRangeSliderE = withFormik(RangeSliderE)
+const FormikSelectE = withFormik(SelectE)
+const FormikAutocompleteE = withFormik(AutocompleteE)
+const FormikRangeSliderE = withFormik(StyledRangeSliderE)
 
 const MINIMUM_DATE = parseISO('2022-01-01')
 
@@ -58,7 +73,7 @@ export const Example: React.FC<unknown> = () => {
 
   return (
     <main>
-      <Formik
+      <Formik<FormValues>
         initialValues={{
           email: '',
           password: '',
@@ -68,6 +83,8 @@ export const Example: React.FC<unknown> = () => {
           exampleSwitch: '',
           exampleNumberInput: null,
           exampleDatePicker: null,
+          exampleSelect: null,
+          exampleAutocomplete: null,
           exampleRangeSlider: [20],
         }}
         validate={({ email, exampleDatePicker }) => {
@@ -189,6 +206,34 @@ export const Example: React.FC<unknown> = () => {
                 setFieldValue('exampleDatePicker', startDate)
               }}
             />
+            <Field
+              name="exampleSelect"
+              component={FormikSelectE}
+              label="Example select"
+              value={values.exampleSelect}
+              onChange={(value: string | null) => {
+                setFieldValue('exampleSelect', value)
+              }}
+            >
+              <SelectEOption value="one">One</SelectEOption>
+              <SelectEOption value="two">Two</SelectEOption>
+              <SelectEOption value="three">Three</SelectEOption>
+              <SelectEOption value="four">Four</SelectEOption>
+            </Field>
+            <Field
+              name="exampleAutocomplete"
+              component={FormikAutocompleteE}
+              label="Example autocomplete"
+              value={values.exampleAutocomplete}
+              onChange={(value: string | null) => {
+                setFieldValue('exampleAutocomplete', value)
+              }}
+            >
+              <AutocompleteEOption value="one">One</AutocompleteEOption>
+              <AutocompleteEOption value="two">Two</AutocompleteEOption>
+              <AutocompleteEOption value="three">Three</AutocompleteEOption>
+              <AutocompleteEOption value="four">Four</AutocompleteEOption>
+            </Field>
             <Field
               name="exampleRangeSlider"
               component={FormikRangeSliderE}
