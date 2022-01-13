@@ -71,6 +71,20 @@ describe('AutocompleteE', () => {
       it('renders the `No results for z` text', () => {
         cy.get(selectors.autocompleteE.noResults).should('be.visible')
       })
+
+      describe('and the component is blurred', () => {
+        beforeEach(() => {
+          cy.get('body').click()
+        })
+
+        it('keeps the small label', () => {
+          cy.get(selectors.selectE.label).should(
+            'have.css',
+            'transform',
+            'matrix(0.75, 0, 0, 0.75, 11, 6)'
+          )
+        })
+      })
     })
   })
 })

@@ -57,7 +57,7 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
   return (
     <SelectLayout
       hasLabelFocus={isOpen}
-      hasSelectedItem={!!selectedItem}
+      hasSelectedItem={!!inputValue}
       id={id}
       inputProps={getInputProps({
         onFocus: () => {
