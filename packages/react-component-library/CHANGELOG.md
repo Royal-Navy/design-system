@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.74.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.73.0...2.74.0) (2022-01-13)
+
+
+### Features
+
+* **Breadcrumbs:** Supplement interface with `href` and children ([fd710d8](https://github.com/defencedigital/mod-uk-design-system/commit/fd710d89bc7de1f7bcdf2c0fa49619f5c1a5ed1b))
+
+
+
+
+
 # [2.73.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.72.4...2.73.0) (2022-01-12)
 
 
