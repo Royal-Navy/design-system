@@ -3,6 +3,7 @@ import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form/dist/index.ie11'
 import { ComponentMeta } from '@storybook/react'
+import styled from 'styled-components'
 
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
@@ -10,6 +11,7 @@ import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
 import { DatePickerE } from '../../components/DatePickerE'
 import { NumberInputE } from '../../components/NumberInputE'
+import { SelectE, SelectEOption } from '../../components/SelectE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { RangeSliderE } from '../../components/RangeSliderE'
 import { ButtonE } from '../../components/ButtonE'
@@ -25,10 +27,15 @@ export interface FormValues {
   exampleRadio: string[]
   exampleSwitch: string
   exampleNumberInput: number
+  exampleSelect: string | null
   exampleRangeSlider: number[]
 }
 
 const MINIMUM_DATE = parseISO('2022-01-01')
+
+const StyledRangeSliderE = styled(RangeSliderE)`
+  margin-top: 3rem;
+`
 
 export const Example: React.FC<unknown> = () => {
   const {
@@ -46,6 +53,7 @@ export const Example: React.FC<unknown> = () => {
       exampleCheckbox: [],
       exampleDatePicker: null,
       exampleRadio: [],
+      exampleSelect: null,
       exampleSwitch: '',
       exampleNumberInput: null,
       exampleRangeSlider: [20],
@@ -188,10 +196,22 @@ export const Example: React.FC<unknown> = () => {
         )}
         <Controller
           control={control}
+          name="exampleSelect"
+          render={({ onChange, value }) => (
+            <SelectE label="Example select" onChange={onChange} value={value}>
+              <SelectEOption value="one">One</SelectEOption>
+              <SelectEOption value="two">Two</SelectEOption>
+              <SelectEOption value="three">Three</SelectEOption>
+              <SelectEOption value="four">Four</SelectEOption>
+            </SelectE>
+          )}
+        />
+        <Controller
+          control={control}
           name="exampleRangeSlider"
           render={({ onChange, value }) => {
             return (
-              <RangeSliderE
+              <StyledRangeSliderE
                 onChange={onChange}
                 values={value}
                 domain={[0, 40]}

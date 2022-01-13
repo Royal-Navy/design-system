@@ -1,6 +1,7 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React from 'react'
 import { ComponentMeta } from '@storybook/react'
+import styled from 'styled-components'
 
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
@@ -8,6 +9,7 @@ import { RadioE } from '../../components/RadioE'
 import { CheckboxE } from '../../components/CheckboxE'
 import { DatePickerE } from '../../components/DatePickerE'
 import { NumberInputE } from '../../components/NumberInputE'
+import { SelectE, SelectEOption } from '../../components/SelectE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { RangeSliderE } from '../../components/RangeSliderE'
 import { ButtonE } from '../../components/ButtonE'
@@ -23,10 +25,15 @@ export interface FormValues {
   exampleSwitch: string
   exampleNumberInput: number
   exampleDatePicker: Date | null
+  exampleSelect: string | null
   exampleRangeSlider: readonly [number, number?]
 }
 
 const MINIMUM_DATE = parseISO('2022-01-01')
+
+const StyledRangeSliderE = styled(RangeSliderE)`
+  margin-top: 3rem;
+`
 
 export const Example: React.FC<unknown> = () => {
   const {
@@ -48,6 +55,7 @@ export const Example: React.FC<unknown> = () => {
       exampleSwitch: '',
       exampleNumberInput: null,
       exampleDatePicker: null,
+      exampleSelect: null,
       exampleRangeSlider: [20],
     },
     {
@@ -186,7 +194,24 @@ export const Example: React.FC<unknown> = () => {
         {formErrors.exampleDatePicker && (
           <span>{formErrors.exampleDatePicker}</span>
         )}
-        <RangeSliderE
+        <SelectE
+          label="Example select"
+          onChange={(value) => {
+            handleChange({
+              currentTarget: {
+                name: 'exampleSelect',
+                value,
+              },
+            })
+          }}
+          value={formState.exampleSelect}
+        >
+          <SelectEOption value="one">One</SelectEOption>
+          <SelectEOption value="two">Two</SelectEOption>
+          <SelectEOption value="three">Three</SelectEOption>
+          <SelectEOption value="four">Four</SelectEOption>
+        </SelectE>
+        <StyledRangeSliderE
           onChange={(values: ReadonlyArray<number>) => {
             handleChange({
               currentTarget: {

@@ -11,6 +11,7 @@ export default {
     numberInputIncrease: '[data-testid="number-input-increase"]',
     datePicker: '[data-testid="datepicker-outer-wrapper"]',
     datePickerInput: '[data-testid="datepicker-input"]',
+    select: '[data-testid="select"]',
     rangeSlider: '[data-testid="rangeslider"]',
     rangeSliderRail: '[data-testid="rangeslider-rail"]',
   },
