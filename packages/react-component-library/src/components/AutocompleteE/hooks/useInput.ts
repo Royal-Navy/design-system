@@ -1,15 +1,19 @@
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 import { UseComboboxStateChange } from 'downshift'
 
-import { SelectChildType } from '../../SelectBase'
+import { SelectChildWithStringType } from '../../SelectBase'
 
 export function useInput(): {
   inputRef: React.RefObject<HTMLInputElement>
-  onIsOpenChange: (changes: UseComboboxStateChange<SelectChildType>) => void
+  onIsOpenChange: (
+    changes: UseComboboxStateChange<SelectChildWithStringType>
+  ) => void
 } {
   const inputRef = useRef<HTMLInputElement>()
 
-  function onIsOpenChange({ isOpen }: UseComboboxStateChange<SelectChildType>) {
+  function onIsOpenChange({
+    isOpen,
+  }: UseComboboxStateChange<SelectChildWithStringType>) {
     if (isOpen) {
       inputRef.current.focus()
     } else {

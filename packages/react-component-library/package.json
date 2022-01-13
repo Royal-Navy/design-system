@@ -177,6 +177,7 @@
     "react-popper": "^2.2.5",
     "react-responsive": "^8.0.3",
     "react-select": "^4.1.0",
+    "react-string-replace": "^0.4.4",
     "react-toast-notifications": "^2.4.0",
     "react-transition-group": "^4.4.1",
     "styled-normalize": "^8.0.7",

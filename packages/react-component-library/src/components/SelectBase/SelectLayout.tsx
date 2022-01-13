@@ -5,7 +5,7 @@ import { ArrowButton } from '../SelectE/ArrowButton'
 import { ClearButton } from '../SelectE/ClearButton'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getId } from '../../helpers'
-import { SelectChildType } from './types'
+import { SelectChildWithStringType } from './types'
 import { StyledInlineButtons } from './partials/StyledInlineButtons'
 import { StyledInput } from './partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
@@ -16,30 +16,27 @@ import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledSelect } from './partials/StyledSelect'
 import { StyledTextInput } from './partials/StyledTextInput'
 
+type ComboboxReturnValueType = UseComboboxReturnValue<SelectChildWithStringType>
+type SelectReturnValueType = UseSelectReturnValue<SelectChildWithStringType>
+
 export interface SelectLayoutProps extends ComponentWithClass {
   hasLabelFocus?: boolean
   hasSelectedItem: boolean
   id: string
-  inputProps: ReturnType<
-    UseComboboxReturnValue<SelectChildType>['getInputProps']
-  >
-  inputWrapperProps?: ReturnType<
-    UseComboboxReturnValue<SelectChildType>['getComboboxProps']
-  >
+  inputProps: ReturnType<ComboboxReturnValueType['getInputProps']>
+  inputWrapperProps?: ReturnType<ComboboxReturnValueType['getComboboxProps']>
   isDisabled?: boolean
   isInvalid?: boolean
   isOpen: boolean
   label: string
   menuProps:
-    | ReturnType<UseComboboxReturnValue<SelectChildType>['getMenuProps']>
-    | ReturnType<UseSelectReturnValue<SelectChildType>['getMenuProps']>
+    | ReturnType<ComboboxReturnValueType['getMenuProps']>
+    | ReturnType<SelectReturnValueType['getMenuProps']>
   onChange?: (value: string | null) => void
   onClearButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void
   toggleButtonProps:
-    | ReturnType<
-        UseComboboxReturnValue<SelectChildType>['getToggleButtonProps']
-      >
-    | ReturnType<UseSelectReturnValue<SelectChildType>['getToggleButtonProps']>
+    | ReturnType<ComboboxReturnValueType['getToggleButtonProps']>
+    | ReturnType<SelectReturnValueType['getToggleButtonProps']>
   value?: string
 }
 
