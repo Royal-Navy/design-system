@@ -3,14 +3,20 @@ import styled from 'styled-components'
 import { Story, Meta } from '@storybook/react'
 
 import { Dialog, DialogProps } from './index'
+import { StyledDialog } from './partials/StyledDialog'
 import { StyledMain } from '../Modal/partials/StyledMain'
 
-const StyledDialog = styled(Dialog)`
-  position: absolute;
-  z-index: 1;
+const Wrapper = styled.div`
+  height: 14rem;
 
-  ${StyledMain} {
+  /* Styles extended for Storybook presentation */
+  ${StyledDialog} {
     position: absolute;
+    z-index: 1;
+
+    ${StyledMain} {
+      position: absolute;
+    }
   }
 `
 
@@ -23,26 +29,23 @@ export default {
   },
 } as Meta
 
-export const Default: Story<DialogProps> = (props) => (
-  <div style={{ height: '10rem' }}>
-    {/* Styles extended for Storybook presentation */}
-    <StyledDialog {...props} />
-  </div>
+const Template: Story<DialogProps> = (args) => (
+  <Wrapper>
+    <Dialog {...args} />
+  </Wrapper>
 )
 
+export const Default = Template.bind({})
 Default.args = {
   title: 'Example Title',
   description: 'Example description',
   isOpen: true,
 }
 
-export const Danger: Story<DialogProps> = () => (
-  <div style={{ height: '10rem' }}>
-    <StyledDialog
-      title="Example Title"
-      description="Example description"
-      isDanger
-      isOpen
-    />
-  </div>
-)
+export const Danger = Template.bind({})
+Danger.args = {
+  title: 'Example Title',
+  description: 'Example description',
+  isDanger: true,
+  isOpen: true,
+}

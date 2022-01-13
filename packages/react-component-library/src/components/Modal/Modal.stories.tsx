@@ -52,7 +52,7 @@ const Wrapper = styled.div<{ $height: string }>`
 `
 
 const Template: Story<ModalProps> = (args) => (
-  <Wrapper $height={args.title && args.primaryButton ? '15rem' : '10rem'}>
+  <Wrapper $height={args.title && args.primaryButton ? '17rem' : '12rem'}>
     <Modal {...args}>
       <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>
     </Modal>

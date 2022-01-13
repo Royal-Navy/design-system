@@ -65,7 +65,7 @@ export const Dialog: React.FC<DialogProps> = ({
       titleId={titleId}
       descriptionId={descriptionId}
       primaryButton={confirmButton}
-      tertiaryButton={cancelButton}
+      secondaryButton={cancelButton}
       {...rest}
     >
       <StyledBody data-testid="dialog-body">
