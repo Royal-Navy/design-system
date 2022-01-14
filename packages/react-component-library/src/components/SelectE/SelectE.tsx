@@ -6,7 +6,7 @@ import {
   initialSelectedItem,
   itemToString,
   SelectBaseProps,
-  SelectChildType,
+  SelectChildWithStringType,
   SelectLayout,
 } from '../SelectBase'
 
@@ -67,21 +67,24 @@ export const SelectE: React.FC<SelectBaseProps> = ({
       }}
     >
       {isOpen &&
-        React.Children.map(children, (child: SelectChildType, index) => {
-          if (!React.isValidElement(child)) {
-            return null
-          }
+        React.Children.map(
+          children,
+          (child: SelectChildWithStringType, index) => {
+            if (!React.isValidElement(child)) {
+              return null
+            }
 
-          return React.cloneElement(child, {
-            ...child.props,
-            ...getItemProps({
-              index,
-              item: child,
-              key: `select-option-${child.props.children}`,
-            }),
-            isHighlighted: highlightedIndex === index,
-          })
-        })}
+            return React.cloneElement(child, {
+              ...child.props,
+              ...getItemProps({
+                index,
+                item: child,
+                key: `select-option-${child.props.children}`,
+              }),
+              isHighlighted: highlightedIndex === index,
+            })
+          }
+        )}
     </SelectLayout>
   )
 }

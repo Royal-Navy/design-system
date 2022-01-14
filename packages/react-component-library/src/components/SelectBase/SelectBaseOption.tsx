@@ -6,13 +6,26 @@ import { StyledOptionBadge } from './partials/StyledOptionBadge'
 import { StyledOptionText } from './partials/StyledOptionText'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 
-export interface SelectBaseOptionProps extends ComponentWithClass {
+export interface SelectBaseOptionBaseProps extends ComponentWithClass {
   badge?: string | number
   icon?: React.ReactNode
-  children: string
   isHighlighted?: boolean
   value: string
 }
+
+export interface SelectBaseOptionAsArrayProps
+  extends SelectBaseOptionBaseProps {
+  children: React.ReactNodeArray
+}
+
+export interface SelectBaseOptionAsStringProps
+  extends SelectBaseOptionBaseProps {
+  children: string
+}
+
+export type SelectBaseOptionProps =
+  | SelectBaseOptionAsArrayProps
+  | SelectBaseOptionAsStringProps
 
 export const SelectBaseOption = React.forwardRef<
   HTMLLIElement,

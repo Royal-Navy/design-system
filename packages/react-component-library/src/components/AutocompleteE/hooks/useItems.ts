@@ -1,25 +1,26 @@
 import React, { useState } from 'react'
 import { UseComboboxStateChange } from 'downshift'
 
-import { SelectChildType } from '../../SelectBase'
+import { SelectChildWithStringType } from '../../SelectBase'
 
-export function useItems(children: SelectChildType[]): {
-  items: SelectChildType[]
-  onInputValueChange: (changes: UseComboboxStateChange<SelectChildType>) => void
+export function useItems(children: SelectChildWithStringType[]): {
+  items: SelectChildWithStringType[]
+  onInputValueChange: (
+    changes: UseComboboxStateChange<SelectChildWithStringType>
+  ) => void
 } {
-  const [items, setItems] = useState<SelectChildType[]>(children)
+  const [items, setItems] = useState<SelectChildWithStringType[]>(children)
 
   function onInputValueChange({
     inputValue,
-  }: UseComboboxStateChange<SelectChildType>) {
+  }: UseComboboxStateChange<SelectChildWithStringType>) {
     setItems(
       children.filter((item) => {
         if (!React.isValidElement(item)) {
           return false
         }
-        return item.props.children
-          .toLowerCase()
-          .startsWith(inputValue.toLowerCase())
+        const filter = inputValue.toLowerCase()
+        return item.props.children.toLowerCase().indexOf(filter) > -1
       })
     )
   }

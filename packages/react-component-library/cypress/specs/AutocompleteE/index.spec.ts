@@ -1,4 +1,4 @@
-import { beforeEach, cy, describe, it } from 'local-cypress'
+import { beforeEach, cy, describe, expect, it } from 'local-cypress'
 
 import selectors from '../../selectors'
 
@@ -18,23 +18,40 @@ describe('AutocompleteE', () => {
       cy.get(selectors.selectE.option).should('have.length', 4)
     })
 
-    describe('and `t` is typed', () => {
+    describe('and `hr` is typed', () => {
       beforeEach(() => {
-        cy.get(selectors.selectE.input).type('t')
+        cy.get(selectors.selectE.input).type('hr')
       })
 
-      it('renders two options', () => {
-        cy.get(selectors.selectE.option).should('have.length', 2)
+      it('renders one option', () => {
+        const options = cy.get(selectors.selectE.option)
+        options.should('have.length', 1)
+        options.should(($option) => {
+          expect($option.eq(0), 'option 1').to.contain.html(
+            'T<strong>hr</strong>ee'
+          )
+        })
       })
 
       describe('and the `Three` option is clicked', () => {
         beforeEach(() => {
-          cy.get(selectors.selectE.option).eq(1).click()
+          cy.get(selectors.selectE.option).eq(0).click()
         })
 
         it('sets the value', () => {
           cy.get(selectors.selectE.input).should('have.value', 'Three')
         })
+      })
+    })
+
+    describe('and `*` is typed', () => {
+      beforeEach(() => {
+        cy.get(selectors.selectE.input).type('*')
+      })
+
+      it('renders no options', () => {
+        const options = cy.get(selectors.selectE.option)
+        options.should('have.length', 0)
       })
     })
   })

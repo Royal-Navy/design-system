@@ -6,7 +6,7 @@ import {
   initialSelectedItem,
   itemToString,
   SelectBaseProps,
-  SelectChildType,
+  SelectChildWithStringType,
   SelectLayout,
 } from '../SelectBase'
 import { useInput } from './hooks/useInput'
@@ -34,6 +34,7 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
     getMenuProps,
     getToggleButtonProps,
     highlightedIndex,
+    inputValue,
     isOpen,
     openMenu,
     reset,
@@ -81,7 +82,7 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
       {...rest}
     >
       {isOpen &&
-        React.Children.map(items, (child: SelectChildType, index) => {
+        React.Children.map(items, (child: SelectChildWithStringType, index) => {
           if (!React.isValidElement(child)) {
             return null
           }
@@ -93,6 +94,7 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
               item: child,
               key: `autocomplete-option-${child.props.children}`,
             }),
+            inputValue,
             isHighlighted: highlightedIndex === index,
           })
         })}

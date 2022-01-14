@@ -1,12 +1,20 @@
 import React from 'react'
 
-import { SelectBaseOptionProps } from './SelectBaseOption'
+import {
+  SelectBaseOptionAsStringProps,
+  SelectBaseOptionProps,
+} from './SelectBaseOption'
 
-export type SelectChildType =
-  | React.ReactElement<SelectBaseOptionProps>
+type SelectChildType<T> =
+  | React.ReactElement<T>
   | React.ReactFragment
   | false
   | null
   | undefined
 
-export type SelectChildrenType = SelectChildType | SelectChildType[]
+export type SelectChildWithStringType =
+  SelectChildType<SelectBaseOptionAsStringProps>
+
+export type SelectChildrenType =
+  | SelectChildType<SelectBaseOptionProps>
+  | SelectChildType<SelectBaseOptionProps>[]
