@@ -1,16 +1,10 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Graph, House, Tools } from '../../../icons'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
-import {
-  Sidebar,
-  SidebarProps,
-  SidebarNav,
-  SidebarNavItem,
-  SidebarUser,
-} from './index'
+import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './index'
 
 export default {
   component: Sidebar,
@@ -32,9 +26,9 @@ export default {
     },
     layout: 'fullscreen',
   },
-} as Meta
+} as ComponentMeta<typeof Sidebar>
 
-export const Default: Story<SidebarProps> = (props) => {
+export const Default: ComponentStory<typeof Sidebar> = (props) => {
   const nav = (
     <SidebarNav>
       <SidebarNavItem Image={House} link={<Link href="#">Home</Link>} />
@@ -52,7 +46,7 @@ export const Default: Story<SidebarProps> = (props) => {
 
 Default.args = {}
 
-export const WithUser: Story<SidebarProps> = (props) => {
+export const WithUser: ComponentStory<typeof Sidebar> = (props) => {
   const user = <SidebarUser initials="XT" link={<Link href="#" />} />
 
   const nav = (
@@ -79,7 +73,7 @@ export const WithUser: Story<SidebarProps> = (props) => {
 
 WithUser.storyName = 'With user'
 
-export const WithNotifications: Story<SidebarProps> = (props) => {
+export const WithNotifications: ComponentStory<typeof Sidebar> = (props) => {
   const notifications = (
     <Notifications link={<Link href="#" />}>
       <Notification

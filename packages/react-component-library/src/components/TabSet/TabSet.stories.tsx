@@ -1,7 +1,7 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { Story, ComponentMeta } from '@storybook/react'
 
-import { Tab, TabSet, TabSetProps, ScrollableTabSetProps } from '.'
+import { ScrollableTabSetProps, Tab, TabSet, TabSetProps } from '.'
 
 export default {
   component: TabSet,
@@ -11,7 +11,7 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
   },
-} as Meta
+} as ComponentMeta<typeof TabSet>
 
 export const Default: Story<TabSetProps> = (props) => (
   <TabSet {...props}>

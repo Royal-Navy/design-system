@@ -11,7 +11,7 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
   },
-} as Meta
+} as Meta<FloatingBoxWithEmbeddedTargetProps>
 
 export const Default: Story<FloatingBoxWithEmbeddedTargetProps> = (props) => (
   <FloatingBox isVisible renderTarget={<div />} {...props}>

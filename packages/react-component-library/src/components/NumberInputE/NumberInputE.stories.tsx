@@ -1,9 +1,9 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { IconBrightnessHigh } from '@defencedigital/icon-library'
 
 import { COMPONENT_SIZE } from '../Forms'
-import { NumberInputE, NumberInputEProps } from './NumberInputE'
+import { NumberInputE } from './NumberInputE'
 
 export default {
   component: NumberInputE,
@@ -17,9 +17,11 @@ export default {
       },
     },
   },
-} as Meta
+} as ComponentMeta<typeof NumberInputE>
 
-const Template: Story<NumberInputEProps> = (args) => <NumberInputE {...args} />
+const Template: ComponentStory<typeof NumberInputE> = (args) => (
+  <NumberInputE {...args} />
+)
 
 export const Default = Template.bind({})
 

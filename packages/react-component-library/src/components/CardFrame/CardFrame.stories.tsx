@@ -1,14 +1,16 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { CardFrame } from './index'
-import { ComponentWithClass } from '../../common/ComponentWithClass'
 
-export default { component: CardFrame, title: 'Card Frame' } as Meta
+export default { component: CardFrame, title: 'Card Frame' } as ComponentMeta<
+  typeof CardFrame
+>
 
-export const Default: Story<ComponentWithClass> = ({ children, ...props }) => (
-  <CardFrame {...props}>{children}</CardFrame>
-)
+export const Default: ComponentStory<typeof CardFrame> = ({
+  children,
+  ...props
+}) => <CardFrame {...props}>{children}</CardFrame>
 
 Default.args = {
   children: 'Arbitrary JSX',

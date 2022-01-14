@@ -1,12 +1,12 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import {
   IconArrowDropDown,
   IconArrowDropUp,
 } from '@defencedigital/icon-library'
 
 import { Button } from '../Button'
-import { Nav, NavProps } from '.'
+import { Nav } from '.'
 import { useOpenClose } from '../../hooks'
 
 export default {
@@ -15,7 +15,7 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof Nav>
 
 const navItems = [
   {
@@ -69,19 +69,19 @@ const navItemsWithChildren = [
   ...navItems,
 ]
 
-export const Default: Story<NavProps> = (props) => <Nav {...props} />
+export const Default: ComponentStory<typeof Nav> = (props) => <Nav {...props} />
 
 Default.args = {
   navItems: navItemsWithChildren,
 }
 
-export const Horizontal: Story<NavProps> = () => (
+export const Horizontal: ComponentStory<typeof Nav> = () => (
   <Nav navItems={navItems} orientation="horizontal" />
 )
 
 Horizontal.storyName = 'Horizontal'
 
-export const CustomItem: Story<NavProps> = () => {
+export const CustomItem: ComponentStory<typeof Nav> = () => {
   const customNavItems = [
     {
       to: '#',
@@ -111,7 +111,7 @@ export const CustomItem: Story<NavProps> = () => {
 
 CustomItem.storyName = 'Custom item'
 
-export const PrimaryNavigation: Story<NavProps> = () => {
+export const PrimaryNavigation: ComponentStory<typeof Nav> = () => {
   const { open, toggle } = useOpenClose(true)
 
   interface CustomLink {

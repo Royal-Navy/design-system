@@ -1,9 +1,9 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { IconLayers, IconAnchor } from '@defencedigital/icon-library'
 
-import { Dropdown, DropdownProps } from './Dropdown'
+import { Dropdown } from './Dropdown'
 
 export default {
   component: Dropdown,
@@ -17,7 +17,7 @@ export default {
       },
     },
   },
-} as Meta
+} as ComponentMeta<typeof Dropdown>
 
 const options = [
   { value: 'option', label: 'Option' },
@@ -26,7 +26,7 @@ const options = [
   { value: 'disabled', label: 'Disabled', isDisabled: true },
 ]
 
-export const Default: Story<DropdownProps> = (props) => {
+export const Default: ComponentStory<typeof Dropdown> = (props) => {
   return (
     <div style={{ height: '15rem' }}>
       <Dropdown {...props} />
@@ -44,7 +44,7 @@ const iconOptions = options.map((option) => ({
   icon: <IconAnchor />,
 }))
 
-export const WithIcons: Story<DropdownProps> = (props) => (
+export const WithIcons: ComponentStory<typeof Dropdown> = (props) => (
   <div style={{ height: '15rem' }}>
     <Dropdown
       {...props}

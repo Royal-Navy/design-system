@@ -1,8 +1,8 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import { RadioEnhanced, RadioEnhancedProps } from '.'
+import { RadioEnhanced } from '.'
 
 export default {
   component: RadioEnhanced,
@@ -10,9 +10,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof RadioEnhanced>
 
-export const Default: Story<RadioEnhancedProps> = (props) => (
+export const Default: ComponentStory<typeof RadioEnhanced> = (props) => (
   <RadioEnhanced {...props} />
 )
 
@@ -23,7 +23,7 @@ Default.args = {
   isChecked: true,
 }
 
-export const WithDescription: Story<RadioEnhancedProps> = () => (
+export const WithDescription: ComponentStory<typeof RadioEnhanced> = () => (
   <RadioEnhanced
     name="withdescription"
     title="With description"
@@ -33,7 +33,7 @@ export const WithDescription: Story<RadioEnhancedProps> = () => (
 
 WithDescription.storyName = 'With description'
 
-export const GridLayout: Story<RadioEnhancedProps> = () => (
+export const GridLayout: ComponentStory<typeof RadioEnhanced> = () => (
   <form
     onSubmit={(e) => {
       e.preventDefault()

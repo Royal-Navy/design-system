@@ -1,17 +1,16 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Breadcrumbs, BreadcrumbsItemProps, BreadcrumbsItem } from '.'
+import { Breadcrumbs, BreadcrumbsItem } from '.'
 import { Link } from '../Link'
-import { Nav } from '../../common/Nav'
 
 export default {
   component: Breadcrumbs,
   subcomponents: { BreadcrumbsItem },
   title: 'Breadcrumbs',
-} as Meta
+} as ComponentMeta<typeof Breadcrumbs>
 
-export const Default: Story<Nav<BreadcrumbsItemProps>> = ({ className }) => (
+export const Default: ComponentStory<typeof Breadcrumbs> = ({ className }) => (
   <Breadcrumbs className={className}>
     <BreadcrumbsItem link={<Link href="/">Home</Link>} />
     <BreadcrumbsItem href="/components">Components</BreadcrumbsItem>

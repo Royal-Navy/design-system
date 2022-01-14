@@ -1,8 +1,8 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { IconBrightnessLow } from '@defencedigital/icon-library'
-import { Button, ButtonProps } from './index'
+import { Button } from './index'
 import {
   BUTTON_COLOR,
   BUTTON_SIZE,
@@ -14,46 +14,51 @@ export default {
   component: Button,
   title: 'Button',
   parameters: { actions: { argTypesRegex: '^on.*' } },
-} as Meta
+} as ComponentMeta<typeof Button>
 
-export const Default: Story<ButtonProps> = ({ children, ...rest }) => (
-  <Button {...rest}>{children}</Button>
-)
+export const Default: ComponentStory<typeof Button> = ({
+  children,
+  ...rest
+}) => <Button {...rest}>{children}</Button>
 
 Default.args = {
   children: 'Default',
 }
 
-export const Primary: Story<ButtonProps> = ({ children, ...rest }) => (
-  <Button {...rest}>{children}</Button>
-)
+export const Primary: ComponentStory<typeof Button> = ({
+  children,
+  ...rest
+}) => <Button {...rest}>{children}</Button>
 
 Primary.args = {
   variant: BUTTON_VARIANT.PRIMARY,
   children: 'Primary',
 }
 
-export const Secondary: Story<ButtonProps> = ({ children, ...rest }) => (
-  <Button {...rest}>{children}</Button>
-)
+export const Secondary: ComponentStory<typeof Button> = ({
+  children,
+  ...rest
+}) => <Button {...rest}>{children}</Button>
 
 Secondary.args = {
   variant: BUTTON_VARIANT.SECONDARY,
   children: 'Secondary',
 }
 
-export const Tertiary: Story<ButtonProps> = ({ children, ...rest }) => (
-  <Button {...rest}>{children}</Button>
-)
+export const Tertiary: ComponentStory<typeof Button> = ({
+  children,
+  ...rest
+}) => <Button {...rest}>{children}</Button>
 
 Tertiary.args = {
   variant: BUTTON_VARIANT.TERTIARY,
   children: 'Tertiary',
 }
 
-export const Danger: Story<ButtonProps> = ({ children, ...rest }) => (
-  <Button {...rest}>{children}</Button>
-)
+export const Danger: ComponentStory<typeof Button> = ({
+  children,
+  ...rest
+}) => <Button {...rest}>{children}</Button>
 
 Danger.args = {
   variant: BUTTON_VARIANT.PRIMARY,
@@ -61,7 +66,7 @@ Danger.args = {
   children: 'Danger',
 }
 
-export const Small: Story<ButtonProps> = ({ children, ...rest }) => (
+export const Small: ComponentStory<typeof Button> = ({ children, ...rest }) => (
   <Button {...rest}>{children}</Button>
 )
 
@@ -71,7 +76,7 @@ Small.args = {
   children: 'Small',
 }
 
-export const Large: Story<ButtonProps> = ({ children, ...rest }) => (
+export const Large: ComponentStory<typeof Button> = ({ children, ...rest }) => (
   <Button {...rest}>{children}</Button>
 )
 
@@ -81,7 +86,7 @@ Large.args = {
   children: 'Large',
 }
 
-export const Disabled: Story<ButtonProps> = ({ children }) => (
+export const Disabled: ComponentStory<typeof Button> = ({ children }) => (
   <Button isDisabled>{children}</Button>
 )
 
@@ -89,7 +94,7 @@ Disabled.args = {
   children: 'Disabled',
 }
 
-export const WithLeftIcon: Story<ButtonProps> = ({
+export const WithLeftIcon: ComponentStory<typeof Button> = ({
   icon,
   iconPosition,
   children,
@@ -107,7 +112,7 @@ WithLeftIcon.args = {
 
 WithLeftIcon.storyName = 'With left icon'
 
-export const WithRightIcon: Story<ButtonProps> = ({
+export const WithRightIcon: ComponentStory<typeof Button> = ({
   icon,
   iconPosition,
   children,

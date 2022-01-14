@@ -1,7 +1,7 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentMeta, Story } from '@storybook/react'
 
-import { DismissibleBanner, DismissibleBannerProps } from '.'
+import { DismissibleBanner, DismissibleBannerWithTitleProps } from '.'
 
 export default {
   component: DismissibleBanner,
@@ -9,18 +9,21 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof DismissibleBanner>
 
-export const Default: Story<any> = ({ children, ...rest }) => (
-  <DismissibleBanner {...rest}>{children}</DismissibleBanner>
-)
+export const Default: Story<DismissibleBannerWithTitleProps> = ({
+  children,
+  ...rest
+}) => <DismissibleBanner {...rest}>{children}</DismissibleBanner>
 
 Default.args = {
   title: 'Example Title',
   children: 'Example description',
 }
 
-export const HiddenCheckbox: Story<any> = (props) => (
+export const HiddenCheckbox: Story<DismissibleBannerWithTitleProps> = (
+  props
+) => (
   <DismissibleBanner {...props} hasCheckbox={false} title="Example Title">
     Example description
   </DismissibleBanner>

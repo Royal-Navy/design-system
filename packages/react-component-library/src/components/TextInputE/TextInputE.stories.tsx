@@ -1,8 +1,8 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { IconSearch } from '@defencedigital/icon-library'
-import { TextInputE, TextInputEProps } from '.'
+import { TextInputE } from '.'
 
 export default {
   component: TextInputE,
@@ -10,9 +10,9 @@ export default {
   parameters: {
     argTypes: { onBlur: { action: 'onBlur' } },
   },
-} as Meta
+} as ComponentMeta<typeof TextInputE>
 
-export const Default: Story<TextInputEProps> = (props) => (
+export const Default: ComponentStory<typeof TextInputE> = (props) => (
   <TextInputE {...props} />
 )
 
@@ -21,7 +21,7 @@ Default.args = {
   label: 'Example label',
 }
 
-export const Disabled: Story<TextInputEProps> = (props) => (
+export const Disabled: ComponentStory<typeof TextInputE> = (props) => (
   <TextInputE
     {...props}
     name="text-input-disabled"
@@ -32,7 +32,9 @@ export const Disabled: Story<TextInputEProps> = (props) => (
 
 Disabled.storyName = 'Disabled'
 
-export const WithStartAdornment: Story<TextInputEProps> = (props) => (
+export const WithStartAdornment: ComponentStory<typeof TextInputE> = (
+  props
+) => (
   <TextInputE
     {...props}
     name="text-input-start-adornment"
@@ -43,7 +45,7 @@ export const WithStartAdornment: Story<TextInputEProps> = (props) => (
 
 WithStartAdornment.storyName = 'With start adornment'
 
-export const WithEndAdornment: Story<TextInputEProps> = (props) => (
+export const WithEndAdornment: ComponentStory<typeof TextInputE> = (props) => (
   <TextInputE
     {...props}
     name="text-input-end-adornment"
@@ -54,7 +56,7 @@ export const WithEndAdornment: Story<TextInputEProps> = (props) => (
 
 WithEndAdornment.storyName = 'With end adornment'
 
-export const WithError: Story<TextInputEProps> = (props) => (
+export const WithError: ComponentStory<typeof TextInputE> = (props) => (
   <TextInputE
     {...props}
     isInvalid

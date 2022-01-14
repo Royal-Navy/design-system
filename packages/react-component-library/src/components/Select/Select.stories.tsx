@@ -1,8 +1,8 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { IconAnchor } from '@defencedigital/icon-library'
 
-import { Select, SelectProps } from './index'
+import { Select } from './index'
 
 const options = [
   { value: 'chocolate', label: 'Chocolate', badge: 100 },
@@ -22,9 +22,9 @@ export default {
       },
     },
   },
-} as Meta
+} as ComponentMeta<typeof Select>
 
-const Template: Story<SelectProps> = (args) => (
+const Template: ComponentStory<typeof Select> = (args) => (
   <div style={{ height: args.isDisabled ? 'initial' : '10rem' }}>
     <Select {...args} />
   </div>

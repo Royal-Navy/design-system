@@ -5,9 +5,9 @@ import {
   IconBrightnessAuto,
   IconRemove,
 } from '@defencedigital/icon-library'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { AutocompleteE, AutocompleteEOption, AutocompleteEProps } from './index'
+import { AutocompleteE, AutocompleteEOption } from './index'
 
 export default {
   component: AutocompleteE,
@@ -15,9 +15,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof AutocompleteE>
 
-const Template: Story<AutocompleteEProps> = (args) => (
+const Template: ComponentStory<typeof AutocompleteE> = (args) => (
   <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
     <AutocompleteE label="Some label" {...args}>
       <AutocompleteEOption value="one">One</AutocompleteEOption>
@@ -28,7 +28,9 @@ const Template: Story<AutocompleteEProps> = (args) => (
   </div>
 )
 
-const TemplateWIthIconsAndBadges: Story<AutocompleteEProps> = (args) => (
+const TemplateWIthIconsAndBadges: ComponentStory<typeof AutocompleteE> = (
+  args
+) => (
   <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
     <AutocompleteE label="Some label" {...args}>
       <AutocompleteEOption badge={100} icon={<IconAnchor />} value="one">

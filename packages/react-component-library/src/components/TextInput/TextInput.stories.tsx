@@ -1,12 +1,12 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import { IconSearch } from '@defencedigital/icon-library'
 import { Button } from '../Button'
-import { TextInput, TextInputProps } from '.'
+import { TextInput } from '.'
 
 import { withFormik } from '../../enhancers/withFormik'
 
@@ -14,9 +14,9 @@ export default {
   component: TextInput,
   title: 'Text Input',
   argTypes: { onBlur: { action: 'onBlur' } },
-} as Meta
+} as ComponentMeta<typeof TextInput>
 
-export const Default: Story<TextInputProps> = (props) => (
+export const Default: ComponentStory<typeof TextInput> = (props) => (
   <TextInput {...props} />
 )
 
@@ -25,13 +25,13 @@ Default.args = {
   label: 'Example label',
 }
 
-export const WithLabel: Story<TextInputProps> = (props) => (
+export const WithLabel: ComponentStory<typeof TextInput> = (props) => (
   <TextInput {...props} name="text-input-label" label="Example label" />
 )
 
 WithLabel.storyName = 'With label'
 
-export const Disabled: Story<TextInputProps> = (props) => (
+export const Disabled: ComponentStory<typeof TextInput> = (props) => (
   <TextInput
     {...props}
     name="text-input-disabled"
@@ -42,7 +42,7 @@ export const Disabled: Story<TextInputProps> = (props) => (
 
 Disabled.storyName = 'Disabled'
 
-export const WithStartAdornment: Story<TextInputProps> = (props) => (
+export const WithStartAdornment: ComponentStory<typeof TextInput> = (props) => (
   <TextInput
     {...props}
     name="text-input-start-adornment"
@@ -53,7 +53,7 @@ export const WithStartAdornment: Story<TextInputProps> = (props) => (
 
 WithStartAdornment.storyName = 'With start adornment'
 
-export const WithEndAdornment: Story<TextInputProps> = (props) => (
+export const WithEndAdornment: ComponentStory<typeof TextInput> = (props) => (
   <TextInput
     {...props}
     name="text-input-end-adornment"
@@ -64,7 +64,7 @@ export const WithEndAdornment: Story<TextInputProps> = (props) => (
 
 WithEndAdornment.storyName = 'With end adornment'
 
-export const WithFormik: Story<TextInputProps> = (props) => {
+export const WithFormik: ComponentStory<typeof TextInput> = (props) => {
   interface Data {
     'text-input-formik': string
   }

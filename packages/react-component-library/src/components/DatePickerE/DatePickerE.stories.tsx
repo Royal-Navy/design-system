@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { Meta, Story } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { parseISO } from 'date-fns'
 import { Field, Form, Formik } from 'formik'
 import React from 'react'
@@ -7,7 +7,7 @@ import * as yup from 'yup'
 
 import { withFormik } from '../../enhancers'
 import { ButtonE } from '../ButtonE'
-import { DatePickerE, DatePickerEProps } from '.'
+import { DatePickerE } from '.'
 
 export default {
   component: DatePickerE,
@@ -25,9 +25,11 @@ export default {
       },
     },
   },
-} as Meta
+} as ComponentMeta<typeof DatePickerE>
 
-const Template: Story<DatePickerEProps> = (args) => <DatePickerE {...args} />
+const Template: ComponentStory<typeof DatePickerE> = (args) => (
+  <DatePickerE {...args} />
+)
 
 export const Default = Template.bind({})
 
@@ -88,7 +90,7 @@ RangeWithExistingValue.args = {
   endDate: parseISO('2021-12-15'),
 }
 
-export const WithFormik: Story<DatePickerEProps> = (props) => {
+export const WithFormik: ComponentStory<typeof DatePickerE> = (props) => {
   interface Data {
     startDate: Date
     endDate: Date

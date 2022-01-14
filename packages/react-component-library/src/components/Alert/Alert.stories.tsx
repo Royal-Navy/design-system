@@ -1,11 +1,17 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Alert, AlertProps, ALERT_VARIANT } from './index'
+import { Alert, ALERT_VARIANT } from './index'
 
-export default { component: Alert, title: 'Alert' } as Meta
+export default { component: Alert, title: 'Alert' } as ComponentMeta<
+  typeof Alert
+>
 
-export const Default: Story<AlertProps> = ({ title, children, variant }) => (
+export const Default: ComponentStory<typeof Alert> = ({
+  title,
+  children,
+  variant,
+}) => (
   <Alert title={title} variant={variant}>
     {children}
   </Alert>
@@ -18,9 +24,10 @@ Default.args = {
   variant: ALERT_VARIANT.INFO,
 }
 
-export const WithoutTitle: Story<AlertProps> = ({ children, variant }) => (
-  <Alert variant={variant}>{children}</Alert>
-)
+export const WithoutTitle: ComponentStory<typeof Alert> = ({
+  children,
+  variant,
+}) => <Alert variant={variant}>{children}</Alert>
 
 WithoutTitle.args = {
   children:

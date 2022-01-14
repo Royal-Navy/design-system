@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Modal, ModalProps } from './index'
+import { Modal } from './index'
 import { StyledMain } from './partials/StyledMain'
 import { StyledModal } from './partials/StyledModal'
 import { BUTTON_COLOR, ButtonProps } from '../Button'
@@ -17,7 +17,7 @@ export default {
       showFunctions: true,
     },
   },
-} as Meta
+} as ComponentMeta<typeof Modal>
 
 const primaryButton: ButtonProps = {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -51,7 +51,7 @@ const Wrapper = styled.div<{ $height: string }>`
   }
 `
 
-const Template: Story<ModalProps> = (args) => (
+const Template: ComponentStory<typeof Modal> = (args) => (
   <Wrapper $height={args.title && args.primaryButton ? '17rem' : '12rem'}>
     <Modal {...args}>
       <pre style={{ padding: '1rem' }}>Arbitrary JSX content</pre>

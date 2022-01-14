@@ -1,11 +1,11 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import { Button } from '../Button'
-import { TextArea, TextAreaInputProps } from '.'
+import { TextArea } from '.'
 
 import { withFormik } from '../../enhancers/withFormik'
 
@@ -15,9 +15,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof TextArea>
 
-export const Default: Story<TextAreaInputProps> = (props) => (
+export const Default: ComponentStory<typeof TextArea> = (props) => (
   <TextArea {...props} />
 )
 
@@ -26,25 +26,25 @@ Default.args = {
   label: 'Example label',
 }
 
-export const WithLabel: Story<TextAreaInputProps> = (props) => (
+export const WithLabel: ComponentStory<typeof TextArea> = (props) => (
   <TextArea {...props} label="Example label" />
 )
 
 WithLabel.storyName = 'With label'
 
-export const WithFootnote: Story<TextAreaInputProps> = (props) => (
+export const WithFootnote: ComponentStory<typeof TextArea> = (props) => (
   <TextArea {...props} label="Example label" footnote="Example footnote" />
 )
 
 WithFootnote.storyName = 'With footnote'
 
-export const Disabled: Story<TextAreaInputProps> = (props) => (
+export const Disabled: ComponentStory<typeof TextArea> = (props) => (
   <TextArea {...props} label="Example label" isDisabled />
 )
 
 Disabled.storyName = 'Disabled'
 
-export const WithFormik: Story<TextAreaInputProps> = (props) => {
+export const WithFormik: ComponentStory<typeof TextArea> = (props) => {
   interface Data {
     'textarea-formik': string
   }

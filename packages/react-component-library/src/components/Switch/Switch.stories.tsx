@@ -1,12 +1,12 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import { Field, Formik, Form } from 'formik'
 import { withFormik } from '../../enhancers/withFormik'
 import { Button } from '../Button'
 
-import { ResponsiveSwitch, Switch, SwitchProps, SWITCH_SIZE } from '.'
+import { ResponsiveSwitch, Switch, SWITCH_SIZE } from '.'
 
 export default {
   component: Switch,
@@ -15,7 +15,7 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof Switch>
 
 const options = [
   { label: 'One', value: '1' },
@@ -24,14 +24,16 @@ const options = [
   { label: 'Four', value: '4' },
 ]
 
-export const Default: Story<SwitchProps> = (props) => <Switch {...props} />
+export const Default: ComponentStory<typeof Switch> = (props) => (
+  <Switch {...props} />
+)
 
 Default.args = {
   name: 'switch-default',
   options,
 }
 
-export const WithLegend: Story<SwitchProps> = (props) => (
+export const WithLegend: ComponentStory<typeof Switch> = (props) => (
   <Switch
     {...props}
     name="switch-legend"
@@ -42,19 +44,19 @@ export const WithLegend: Story<SwitchProps> = (props) => (
 
 WithLegend.storyName = 'With legend'
 
-export const Responsive: Story<SwitchProps> = (props) => (
+export const Responsive: ComponentStory<typeof Switch> = (props) => (
   <ResponsiveSwitch {...props} name="switch-responsive" options={options} />
 )
 
 Responsive.storyName = 'Responsive'
 
-export const SelectedValue: Story<SwitchProps> = (props) => (
+export const SelectedValue: ComponentStory<typeof Switch> = (props) => (
   <Switch {...props} name="switch-selected-value" options={options} value="2" />
 )
 
 SelectedValue.storyName = 'With value selected'
 
-export const Small: Story<SwitchProps> = (props) => (
+export const Small: ComponentStory<typeof Switch> = (props) => (
   <Switch
     {...props}
     name="switch-small"
@@ -65,7 +67,7 @@ export const Small: Story<SwitchProps> = (props) => (
 
 Small.storyName = 'Small'
 
-export const Large: Story<SwitchProps> = (props) => (
+export const Large: ComponentStory<typeof Switch> = (props) => (
   <Switch
     {...props}
     name="switch-large"
@@ -76,7 +78,7 @@ export const Large: Story<SwitchProps> = (props) => (
 
 Large.storyName = 'Large'
 
-export const WithFormik: Story<SwitchProps> = (props) => {
+export const WithFormik: ComponentStory<typeof Switch> = (props) => {
   interface Data {
     'switch-formik': string
   }

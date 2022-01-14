@@ -1,9 +1,8 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Link } from '../Link'
 import { TabNav, TabNavItem } from '.'
-import { Nav, NavItem } from '../../common/Nav'
 
 export default {
   component: TabNav,
@@ -12,9 +11,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof TabNav>
 
-export const Default: Story<Nav<NavItem>> = (props) => (
+export const Default: ComponentStory<typeof TabNav> = (props) => (
   <TabNav {...props}>
     <TabNavItem link={<Link href="#">Example Tab 1</Link>} isActive />
     <TabNavItem link={<Link href="#">Example Tab 2</Link>} />

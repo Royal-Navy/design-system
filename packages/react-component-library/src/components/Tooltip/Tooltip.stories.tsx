@@ -1,7 +1,7 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Tooltip, TooltipProps } from '.'
+import { Tooltip } from '.'
 
 export default {
   component: Tooltip,
@@ -9,9 +9,12 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof Tooltip>
 
-export const Default: Story<TooltipProps> = ({ children, ...rest }) => (
+export const Default: ComponentStory<typeof Tooltip> = ({
+  children,
+  ...rest
+}) => (
   <div style={{ height: '4rem' }}>
     <Tooltip {...rest}>{children}</Tooltip>
   </div>
@@ -21,7 +24,7 @@ Default.args = {
   children: 'Hello, World!',
 }
 
-export const WithTitle: Story<TooltipProps> = (props) => (
+export const WithTitle: ComponentStory<typeof Tooltip> = (props) => (
   <div style={{ height: '4rem' }}>
     <Tooltip {...props} title="Example title">
       This tooltip has a title!

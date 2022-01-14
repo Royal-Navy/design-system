@@ -1,7 +1,6 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { ComponentWithClass } from '../../common/ComponentWithClass'
 import {
   CustomTokenSets as CustomTokenSetsExample,
   StyledTheming as StyledThemingExample,
@@ -22,18 +21,18 @@ export default {
       },
     },
   },
-} as Meta
+} as ComponentMeta<typeof CustomTokenSetsExample>
 
-export const Default: Story<ComponentWithClass> = () => (
+export const Default: ComponentStory<typeof CustomTokenSetsExample> = () => (
   <CustomTokenSetsExample />
 )
 
 Default.args = {}
 Default.storyName = 'Custom Token Sets'
 
-export const StyledTheming: Story<ComponentWithClass> = () => (
-  <StyledThemingExample />
-)
+export const StyledTheming: ComponentStory<
+  typeof CustomTokenSetsExample
+> = () => <StyledThemingExample />
 
 StyledTheming.args = {}
 StyledTheming.storyName = 'Styled Theming'

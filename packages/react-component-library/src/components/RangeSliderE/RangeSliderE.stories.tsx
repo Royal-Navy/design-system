@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import {
   IconBrightnessLow,
   IconBrightnessHigh,
 } from '@defencedigital/icon-library'
-import { RangeSliderE, RangeSliderEProps } from './index'
+import { RangeSliderE } from './index'
 
 export default {
   component: RangeSliderE,
@@ -14,7 +14,7 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof RangeSliderE>
 
 const disableColorContrastRule = {
   a11y: {
@@ -35,7 +35,7 @@ const StyledWrapper = styled.div`
   padding: 0 1.5rem;
 `
 
-const Template: Story<RangeSliderEProps> = (props) => (
+const Template: ComponentStory<typeof RangeSliderE> = (props) => (
   <StyledWrapper>
     <RangeSliderE {...props} />
   </StyledWrapper>

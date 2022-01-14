@@ -1,11 +1,11 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import { withFormik } from '../../enhancers/withFormik'
-import { RadioE, RadioEProps } from '.'
+import { RadioE } from '.'
 import { FormikGroupE } from '../FormikGroup'
 
 export default {
@@ -14,9 +14,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof RadioE>
 
-const Template: Story<RadioEProps> = (props) => <RadioE {...props} />
+const Template: ComponentStory<typeof RadioE> = (props) => <RadioE {...props} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -42,7 +42,7 @@ Invalid.args = {
   isInvalid: true,
 }
 
-export const WithFormikGroup: Story<RadioEProps> = () => {
+export const WithFormikGroup: ComponentStory<typeof RadioE> = () => {
   const RadioForm = () => {
     interface Data {
       [key: string]: string

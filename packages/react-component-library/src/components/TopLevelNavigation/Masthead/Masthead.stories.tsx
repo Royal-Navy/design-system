@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import {
   IconChatBubble,
   IconExitToApp,
@@ -11,7 +11,6 @@ import {
 import { Link } from '../../Link'
 import {
   Masthead,
-  MastheadProps,
   MastheadNav,
   MastheadNavItem,
   MastheadUser,
@@ -34,9 +33,9 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
   },
-} as Meta
+} as ComponentMeta<typeof Masthead>
 
-export const Default: Story<MastheadProps> = (props) => {
+export const Default: ComponentStory<typeof Masthead> = (props) => {
   const notifications = (
     <Notifications link={<Link href="#" />}>
       <Notification
@@ -113,7 +112,7 @@ Default.args = {
   hasUnreadNotification: true,
 }
 
-export const CustomLogo: Story<MastheadProps> = (props) => (
+export const CustomLogo: ComponentStory<typeof Masthead> = (props) => (
   <Masthead {...props} title="Defence Digital Design System" Logo={IconHome} />
 )
 
@@ -122,7 +121,7 @@ CustomLogo.args = {
   onSearch: null,
 }
 
-export const WithoutLogo: Story<MastheadProps> = (props) => (
+export const WithoutLogo: ComponentStory<typeof Masthead> = (props) => (
   <Masthead
     {...props}
     title="Defence Digital Design System"
@@ -135,7 +134,7 @@ WithoutLogo.args = {
   onSearch: null,
 }
 
-export const WithSearch: Story<MastheadProps> = (props) => (
+export const WithSearch: ComponentStory<typeof Masthead> = (props) => (
   <Masthead
     {...props}
     searchPlaceholder="Search..."
@@ -145,7 +144,7 @@ export const WithSearch: Story<MastheadProps> = (props) => (
 
 WithSearch.storyName = 'With search'
 
-export const WithAvatarLinks: Story<MastheadProps> = (props) => {
+export const WithAvatarLinks: ComponentStory<typeof Masthead> = (props) => {
   const user = (
     <MastheadUser initials="RN">
       <MastheadUserItem
@@ -177,7 +176,7 @@ WithAvatarLinks.args = {
   onSearch: null,
 }
 
-export const WithNavigation: Story<MastheadProps> = (props) => {
+export const WithNavigation: ComponentStory<typeof Masthead> = (props) => {
   const nav = (
     <MastheadNav>
       <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
@@ -202,7 +201,7 @@ WithNavigation.args = {
   onSearch: null,
 }
 
-export const WithNotifications: Story<MastheadProps> = (props) => {
+export const WithNotifications: ComponentStory<typeof Masthead> = (props) => {
   const notifications = (
     <Notifications link={<Link href="#" />}>
       <Notification

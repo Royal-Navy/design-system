@@ -1,8 +1,8 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
-import { Popover, PopoverProps } from '.'
+import { Popover } from '.'
 
 export default {
   component: Popover,
@@ -10,7 +10,7 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof Popover>
 
 const popoverTarget = (text = 'Hover on me') => (
   <div
@@ -24,7 +24,7 @@ const popoverTarget = (text = 'Hover on me') => (
   </div>
 )
 
-export const Default: Story<PopoverProps> = (props) => (
+export const Default: ComponentStory<typeof Popover> = (props) => (
   <Popover {...props}>{popoverTarget()}</Popover>
 )
 
@@ -32,7 +32,7 @@ Default.args = {
   content: <pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>,
 }
 
-export const Dark: Story<PopoverProps> = () => (
+export const Dark: ComponentStory<typeof Popover> = () => (
   <Popover
     content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
     scheme={FLOATING_BOX_SCHEME.DARK}
@@ -43,7 +43,7 @@ export const Dark: Story<PopoverProps> = () => (
 
 Dark.storyName = 'Dark'
 
-export const ClickToActivate: Story<PopoverProps> = () => (
+export const ClickToActivate: ComponentStory<typeof Popover> = () => (
   <Popover
     content={<pre style={{ padding: '1rem' }}>This is some arbitrary JSX</pre>}
     isClick

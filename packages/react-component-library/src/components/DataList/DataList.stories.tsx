@@ -1,7 +1,7 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { DataList, DataListProps, DataListItem } from './index'
+import { DataList, DataListItem } from './index'
 
 export default {
   component: DataList,
@@ -10,7 +10,7 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof DataList>
 
 const disableDefinitionList = {
   a11y: {
@@ -29,7 +29,7 @@ const disableDefinitionList = {
   },
 }
 
-export const Default: Story<DataListProps> = (props) => (
+export const Default: ComponentStory<typeof DataList> = (props) => (
   <DataList {...props}>
     <DataListItem description="Name">Horatio Nelson</DataListItem>
     <DataListItem description="Age">44</DataListItem>
@@ -48,7 +48,7 @@ Default.args = {
 
 Default.storyName = 'Default'
 
-export const Collapsible: Story<DataListProps> = () => (
+export const Collapsible: ComponentStory<typeof DataList> = () => (
   <DataList title="Example Title" isCollapsible>
     <DataListItem description="Name">Horatio Nelson</DataListItem>
     <DataListItem description="Age">44</DataListItem>
