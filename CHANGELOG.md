@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.75.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.74.0...2.75.0) (2022-01-14)
+
+
+### Features
+
+* **Dialog:** Move cancel button to secondary position ([c268edc](https://github.com/defencedigital/mod-uk-design-system/commit/c268edc8861a5356d01bd7e4a0db61afa3e78aa7))
+
+
+
+
+
 # [2.74.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.73.0...2.74.0) (2022-01-13)
 
 
