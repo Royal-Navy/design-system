@@ -175,6 +175,28 @@ describe('NumberInputE', () => {
       })
     })
 
+    describe.each([
+      { buttonType: 'increase', expectedValue: '1' },
+      { buttonType: 'decrease', expectedValue: '-1' },
+    ])(
+      'and Enter is pressed with the $buttonType button focused',
+      ({ buttonType, expectedValue }) => {
+        let increase: HTMLElement
+
+        beforeEach(() => {
+          increase = wrapper.getByTestId(`number-input-${buttonType}`)
+          increase.focus()
+          userEvent.keyboard('{Enter}')
+        })
+
+        assertInputValue(expectedValue)
+
+        it(`does not blur the ${buttonType} button`, () => {
+          expect(increase).toHaveFocus()
+        })
+      }
+    )
+
     describe('and the user types values', () => {
       beforeEach(() => {
         userEvent.type(input, '1')
