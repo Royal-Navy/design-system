@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.76.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.75.0...2.76.0) (2022-01-17)
+
+
+### Bug Fixes
+
+* **NumberInputE:** Don't blur buttons on click ([7a2c9e7](https://github.com/defencedigital/mod-uk-design-system/commit/7a2c9e7917cb15926ef2fe49e7911eccbe0baa41))
+
+
+### Features
+
+* **AutocompleteE:** Embolden filter value ([1e1880e](https://github.com/defencedigital/mod-uk-design-system/commit/1e1880eece87c341c39d219fa6468a8940d6b99c))
+
+
+
+
+
 # [2.75.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.74.0...2.75.0) (2022-01-14)
 
 
