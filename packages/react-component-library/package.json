@@ -167,6 +167,7 @@
     "autoprefixer": "^10.2.5",
     "classnames": "^2.2.6",
     "date-fns": "^2.9.0",
+    "decimal.js": "^10.3.1",
     "downshift": "^6.1.7",
     "polished": "^4.0.3",
     "postcss-flexbugs-fixes": "^5.0.2",

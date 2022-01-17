@@ -1,13 +1,13 @@
 import React from 'react'
 import capitalize from 'lodash/capitalize'
 import { IconAdd, IconRemove } from '@defencedigital/icon-library'
+import { Decimal } from 'decimal.js'
 
 import { ComponentSizeType } from '../Forms'
 import { InlineButton } from '../InlineButtons/InlineButton'
 import { NUMBER_INPUT_BUTTON_TYPE } from './constants'
 import { StyledDivider } from './partials/StyledDivider'
 import { StyledInlineButtons } from '../InlineButtons/partials/StyledInlineButtons'
-import { countDecimals } from '../../helpers'
 
 export interface ButtonsProps {
   isDisabled: boolean
@@ -35,8 +35,6 @@ export const Buttons: React.FC<ButtonsProps> = ({
   step,
   value,
 }) => {
-  const digits = countDecimals(step)
-
   function onButtonClick(getNewValue: () => string) {
     return (event: React.MouseEvent<HTMLButtonElement>) => {
       const newValue = getNewValue()
@@ -52,9 +50,9 @@ export const Buttons: React.FC<ButtonsProps> = ({
         )} the input value`}
         data-testid={`number-input-${NUMBER_INPUT_BUTTON_TYPE.DECREASE}`}
         isDisabled={isDisabled}
-        onClick={onButtonClick(() =>
-          ((parseFloat(value) || 0) - step).toFixed(digits)
-        )}
+        onClick={onButtonClick(() => {
+          return new Decimal(value || 0).minus(step).toString()
+        })}
         size={size}
       >
         {iconLookup[NUMBER_INPUT_BUTTON_TYPE.DECREASE]}
@@ -66,9 +64,9 @@ export const Buttons: React.FC<ButtonsProps> = ({
         )} the input value`}
         data-testid={`number-input-${NUMBER_INPUT_BUTTON_TYPE.INCREASE}`}
         isDisabled={isDisabled}
-        onClick={onButtonClick(() =>
-          ((parseFloat(value) || 0) + step).toFixed(digits)
-        )}
+        onClick={onButtonClick(() => {
+          return new Decimal(value || 0).plus(step).toString()
+        })}
         size={size}
       >
         {iconLookup[NUMBER_INPUT_BUTTON_TYPE.INCREASE]}

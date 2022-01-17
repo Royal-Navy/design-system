@@ -10,6 +10,12 @@ export default {
   title: 'Number Input (Experimental)',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    docs: {
+      description: {
+        component:
+          'This component leverages a [custom `Decimal` type](https://github.com/MikeMcl/decimal.js) for handling floating point arithmetic.',
+      },
+    },
   },
 } as Meta
 
