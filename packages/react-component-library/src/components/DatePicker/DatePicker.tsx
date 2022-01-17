@@ -354,6 +354,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               onDayMouseLeave={handleDayBlurOrMouseLeave}
               onDayFocus={handleDayFocusOrMouseEnter}
               onDayBlur={handleDayBlurOrMouseLeave}
+              initialFocus
             />
           </div>
         </FocusTrap>

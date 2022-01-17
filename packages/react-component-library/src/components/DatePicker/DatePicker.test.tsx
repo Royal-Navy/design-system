@@ -612,6 +612,22 @@ describe('DatePicker', () => {
     })
   })
 
+  describe('when a single date picker with a value is rendered and the picker is opened', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <DatePicker startDate={new Date('2022-01-18T00:00:00Z')} />
+      )
+
+      return user.click(wrapper.getByTestId('datepicker-input-button'))
+    })
+
+    it('focuses the current date', () => {
+      expect(
+        wrapper.getByRole('button', { name: '18th January (Tuesday)' })
+      ).toHaveFocus()
+    })
+  })
+
   describe('when a single date picker is rendered and the picker is opened', () => {
     beforeEach(() => {
       wrapper = render(<DatePicker />)
@@ -623,12 +639,10 @@ describe('DatePicker', () => {
       expect(wrapper.getByText('December 2019')).toBeInTheDocument()
     })
 
-    it('focuses the previous month button', () => {
-      return waitFor(() =>
-        expect(
-          wrapper.getByLabelText(PREVIOUS_MONTH_BUTTON_LABEL)
-        ).toHaveFocus()
-      )
+    it('focuses the current date', () => {
+      expect(
+        wrapper.getByRole('button', { name: '5th December (Thursday)' })
+      ).toHaveFocus()
     })
 
     describe('when Shift-Tab is pressed once', () => {
@@ -638,7 +652,7 @@ describe('DatePicker', () => {
 
       it('traps the focus within the picker', () => {
         expect(
-          wrapper.getByRole('button', { name: '5th December (Thursday)' })
+          wrapper.getByLabelText(PREVIOUS_MONTH_BUTTON_LABEL)
         ).toHaveFocus()
       })
 
@@ -649,7 +663,7 @@ describe('DatePicker', () => {
 
         it('still traps the focus within the picker', () => {
           expect(
-            wrapper.getByLabelText(PREVIOUS_MONTH_BUTTON_LABEL)
+            wrapper.getByRole('button', { name: '5th December (Thursday)' })
           ).toHaveFocus()
         })
       })
