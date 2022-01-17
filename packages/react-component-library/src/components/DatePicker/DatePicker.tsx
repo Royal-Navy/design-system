@@ -209,9 +209,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 
   const {
     rangeHoverOrFocusDate,
-    handleDayFocus,
-    handleDayMouseEnter,
-    handleDayMouseLeave,
+    handleDayFocusOrMouseEnter,
+    handleDayBlurOrMouseLeave,
   } = useRangeHoverOrFocusDate(isRange)
 
   const { handleKeyDown, handleInputBlur, handleInputChange } = useInput(
@@ -351,9 +350,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               }}
               defaultMonth={replaceInvalidDate(startDate) || initialMonth}
               disabled={disabledDays}
-              onDayMouseEnter={handleDayMouseEnter}
-              onDayMouseLeave={handleDayMouseLeave}
-              onDayFocus={handleDayFocus}
+              onDayMouseEnter={handleDayFocusOrMouseEnter}
+              onDayMouseLeave={handleDayBlurOrMouseLeave}
+              onDayFocus={handleDayFocusOrMouseEnter}
+              onDayBlur={handleDayBlurOrMouseLeave}
             />
           </div>
         </FocusTrap>
