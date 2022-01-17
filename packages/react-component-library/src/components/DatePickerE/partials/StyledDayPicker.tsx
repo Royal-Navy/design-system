@@ -31,6 +31,7 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
     padding-bottom: ${spacing('8')};
     user-select: none;
     border-radius: 15px;
+    outline: none;
   }
 
   .DayPicker-Months {
@@ -60,6 +61,7 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
     padding: 0;
     border: 1px solid ${color('neutral', '200')};
     border-radius: 10px;
+    outline: none;
     color: ${color('neutral', '300')};
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     background-color: ${color('neutral', 'white')};
