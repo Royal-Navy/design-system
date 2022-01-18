@@ -9,12 +9,17 @@ import { TimelineContext } from './context'
 import { WEEK_START } from './constants'
 import { withKey } from '../../helpers'
 
-function renderDefaultColumns(
-  index: number,
-  isOddNumber: boolean,
-  offsetPx: string,
+function renderDefault({
+  index: _,
+  isOddNumber,
+  offsetPx,
+  widthPx,
+}: {
+  index: number
+  isOddNumber: boolean
+  offsetPx: string
   widthPx: string
-) {
+}) {
   return (
     <StyledWeekColumn
       $isOddNumber={isOddNumber}
@@ -25,16 +30,16 @@ function renderDefaultColumns(
 }
 
 export interface TimelineWeekColumnProps {
-  renderColumns?: (
-    index: number,
-    isOddNumber: boolean,
-    offsetPx: string,
+  render?: (props: {
+    index: number
+    isOddNumber: boolean
+    offsetPx: string
     widthPx: string
-  ) => React.ReactElement
+  }) => React.ReactElement
 }
 
 export const TimelineWeekColumns: React.FC<TimelineWeekColumnProps> = ({
-  renderColumns,
+  render,
 }) => (
   <TimelineContext.Consumer>
     {({ state: { currentScaleOption, days, weeks } }) => (
@@ -60,9 +65,9 @@ export const TimelineWeekColumns: React.FC<TimelineWeekColumnProps> = ({
 
             const isOddNumber = isOdd(index)
 
-            const column = renderColumns
-              ? renderColumns(index, isOddNumber, offsetPx, widthPx)
-              : renderDefaultColumns(index, isOddNumber, offsetPx, widthPx)
+            const column = render
+              ? render({ index, isOddNumber, offsetPx, widthPx })
+              : renderDefault({ index, isOddNumber, offsetPx, widthPx })
 
             return withKey(column, 'timeline-column', startDate.toString())
           })}

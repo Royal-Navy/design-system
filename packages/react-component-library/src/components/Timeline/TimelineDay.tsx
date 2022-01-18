@@ -9,7 +9,11 @@ interface TimelineDayProps {
   date: Date
   dayWidth: number
   index: number
-  render: (index: number, dayWidth: number, date: Date) => React.ReactElement
+  render: (props: {
+    index: number
+    dayWidth: number
+    date: Date
+  }) => React.ReactElement
   timelineEndDate: Date
 }
 
@@ -36,7 +40,7 @@ export const TimelineDay: React.FC<TimelineDayProps> = ({
   }
 
   const child = render
-    ? render(index, dayWidth, date)
+    ? render({ index, dayWidth, date })
     : renderDefault({ dayWidth, date })
 
   return React.cloneElement(child, {

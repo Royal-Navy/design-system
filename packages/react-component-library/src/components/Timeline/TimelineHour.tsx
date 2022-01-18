@@ -6,7 +6,7 @@ import { StyledHourTitle } from './partials/StyledHourTitle'
 
 interface TimelineHourProps {
   date: Date
-  render: (width: number, time: string) => React.ReactElement
+  render: (props: { width: number; time: string }) => React.ReactElement
   time: string
   timelineEndDate: Date
   width: number
@@ -34,7 +34,9 @@ export const TimelineHour: React.FC<TimelineHourProps> = ({
     return null
   }
 
-  const child = render ? render(width, time) : renderDefault({ width, time })
+  const child = render
+    ? render({ width, time })
+    : renderDefault({ width, time })
 
   return React.cloneElement(child, {
     role: 'columnheader',

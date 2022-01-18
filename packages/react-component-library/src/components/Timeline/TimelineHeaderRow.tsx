@@ -6,7 +6,7 @@ import { StyledHeaderRow } from './partials/StyledHeaderRow'
 export interface TimelineHeaderRowProps extends ComponentWithClass {
   children: React.ReactElement | React.ReactElement[]
   name: string
-  renderRowHeader?: (name: string) => React.ReactElement
+  render?: (props: { name: string }) => React.ReactElement
   isShort?: boolean
 }
 

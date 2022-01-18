@@ -15,15 +15,15 @@ interface TimelineWeekProps {
   days: TimelineDay[]
   dayWidth: number
   index: number
-  render: (
-    index: number,
-    isOddNumber: boolean,
-    offsetPx: string,
-    widthPx: string,
-    dayWidth: number,
-    daysTotal: number,
+  render: (props: {
+    index: number
+    isOddNumber: boolean
+    offsetPx: string
+    widthPx: string
+    dayWidth: number
+    daysTotal: number
     startDate: Date
-  ) => React.ReactElement
+  }) => React.ReactElement
   startDate: Date
 }
 
@@ -93,8 +93,7 @@ export const TimelineWeek: React.FC<TimelineWeekProps> = ({
     startDate,
   }
 
-  // @ts-ignore
-  const child = render ? render(...Object.values(args)) : renderDefault(args)
+  const child = render ? render(args) : renderDefault(args)
 
   const title = `Week beginning ${format(startDate, ACCESSIBLE_DATE_FORMAT)}`
 
