@@ -19,8 +19,6 @@ export interface TimelineWeeksWithRenderContentProps
     isOddNumber: boolean
     offsetPx: string
     widthPx: string
-    dayWidth: number
-    daysTotal: number
     startDate: Date
   }) => React.ReactElement
 }
