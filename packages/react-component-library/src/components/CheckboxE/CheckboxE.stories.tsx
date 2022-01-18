@@ -1,11 +1,11 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import { withFormik } from '../../enhancers/withFormik'
-import { CheckboxE, CheckboxEProps } from '.'
+import { CheckboxE } from '.'
 import { FormikGroupE } from '../FormikGroup'
 
 export default {
@@ -14,9 +14,11 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof CheckboxE>
 
-const Template: Story<CheckboxEProps> = (props) => <CheckboxE {...props} />
+const Template: ComponentStory<typeof CheckboxE> = (props) => (
+  <CheckboxE {...props} />
+)
 
 export const Default = Template.bind({})
 Default.args = {
@@ -42,7 +44,7 @@ Invalid.args = {
   isInvalid: true,
 }
 
-export const WithFormikGroup: Story<CheckboxEProps> = () => {
+export const WithFormikGroup: ComponentStory<typeof CheckboxE> = () => {
   const CheckboxForm = () => {
     interface Data {
       [key: string]: string[]

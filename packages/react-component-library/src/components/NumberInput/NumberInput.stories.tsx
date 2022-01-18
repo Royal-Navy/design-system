@@ -1,12 +1,12 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 import { IconBrightnessHigh } from '@defencedigital/icon-library'
 import * as yup from 'yup'
 
 import { Button } from '../Button'
-import { NumberInput, NumberInputProps } from './NumberInput'
+import { NumberInput } from './NumberInput'
 import { withFormik } from '../../enhancers/withFormik'
 import { UNIT_POSITION } from './constants'
 
@@ -18,9 +18,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof NumberInput>
 
-export const Default: Story<NumberInputProps> = (props) => (
+export const Default: ComponentStory<typeof NumberInput> = (props) => (
   <NumberInput {...props} />
 )
 
@@ -29,25 +29,25 @@ Default.args = {
   name: 'number-input-default',
 }
 
-export const Condensed: Story<NumberInputProps> = (props) => (
+export const Condensed: ComponentStory<typeof NumberInput> = (props) => (
   <NumberInput {...props} isCondensed name="number-input-condensed" />
 )
 
 Condensed.storyName = 'Condensed'
 
-export const Clearable: Story<NumberInputProps> = (props) => (
+export const Clearable: ComponentStory<typeof NumberInput> = (props) => (
   <NumberInput {...props} canClear name="number-input-clearable" value={10} />
 )
 
 Clearable.storyName = 'Clearable'
 
-export const Disabled: Story<NumberInputProps> = (props) => (
+export const Disabled: ComponentStory<typeof NumberInput> = (props) => (
   <NumberInput {...props} isDisabled name="number-input-disabled" />
 )
 
 Disabled.storyName = 'Disabled'
 
-export const WithFootnote: Story<NumberInputProps> = (props) => (
+export const WithFootnote: ComponentStory<typeof NumberInput> = (props) => (
   <NumberInput
     {...props}
     footnote="Footnote"
@@ -57,13 +57,13 @@ export const WithFootnote: Story<NumberInputProps> = (props) => (
 
 WithFootnote.storyName = 'With footnote'
 
-export const WithLabel: Story<NumberInputProps> = (props) => (
+export const WithLabel: ComponentStory<typeof NumberInput> = (props) => (
   <NumberInput {...props} label="Label" name="number-input-label" />
 )
 
 WithLabel.storyName = 'With label'
 
-export const Placeholder: Story<NumberInputProps> = (props) => (
+export const Placeholder: ComponentStory<typeof NumberInput> = (props) => (
   <NumberInput
     {...props}
     label="Label"
@@ -74,7 +74,9 @@ export const Placeholder: Story<NumberInputProps> = (props) => (
 
 Placeholder.storyName = 'With placeholder'
 
-export const StartAdornmentIcon: Story<NumberInputProps> = (props) => (
+export const StartAdornmentIcon: ComponentStory<typeof NumberInput> = (
+  props
+) => (
   <NumberInput
     {...props}
     name="number-input-start-adornment-icon"
@@ -84,7 +86,9 @@ export const StartAdornmentIcon: Story<NumberInputProps> = (props) => (
 
 StartAdornmentIcon.storyName = 'With start adornment icon'
 
-export const StartAdornmentText: Story<NumberInputProps> = (props) => (
+export const StartAdornmentText: ComponentStory<typeof NumberInput> = (
+  props
+) => (
   <NumberInput
     {...props}
     name="number-input-start-adornment-text"
@@ -94,7 +98,7 @@ export const StartAdornmentText: Story<NumberInputProps> = (props) => (
 
 StartAdornmentText.storyName = 'With start adornment text'
 
-export const WithUnit: Story<NumberInputProps> = (props) => (
+export const WithUnit: ComponentStory<typeof NumberInput> = (props) => (
   <NumberInput
     {...props}
     name="number-input-unit"
@@ -106,7 +110,7 @@ export const WithUnit: Story<NumberInputProps> = (props) => (
 WithUnit.storyName = 'With unit'
 WithUnit.parameters = chromaticIgnore
 
-export const WithUnitLabel: Story<NumberInputProps> = (props) => (
+export const WithUnitLabel: ComponentStory<typeof NumberInput> = (props) => (
   <NumberInput
     {...props}
     label="Cost"
@@ -119,7 +123,7 @@ export const WithUnitLabel: Story<NumberInputProps> = (props) => (
 WithUnitLabel.storyName = 'With unit and label'
 WithUnitLabel.parameters = chromaticIgnore
 
-export const UnitBefore: Story<NumberInputProps> = (props) => (
+export const UnitBefore: ComponentStory<typeof NumberInput> = (props) => (
   <NumberInput
     {...props}
     name="number-input-unit-before"
@@ -131,7 +135,7 @@ export const UnitBefore: Story<NumberInputProps> = (props) => (
 
 UnitBefore.storyName = 'With unit before'
 
-export const WithFormik: Story<NumberInputProps> = (props) => {
+export const WithFormik: ComponentStory<typeof NumberInput> = (props) => {
   const errorText = 'Something went wrong!'
 
   const validationSchema = yup.object().shape({

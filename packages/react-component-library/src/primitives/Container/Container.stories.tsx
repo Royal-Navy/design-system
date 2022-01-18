@@ -1,17 +1,18 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Container, ContainerProps } from '.'
+import { Container } from '.'
 
 export default {
   component: Container,
   parameters: { layout: 'fullscreen' },
   title: 'Container',
-} as Meta
+} as ComponentMeta<typeof Container>
 
-export const Default: Story<ContainerProps> = ({ children, ...rest }) => (
-  <Container {...rest}>{children}</Container>
-)
+export const Default: ComponentStory<typeof Container> = ({
+  children,
+  ...rest
+}) => <Container {...rest}>{children}</Container>
 
 Default.args = {
   children: 'Arbitrary JSX',

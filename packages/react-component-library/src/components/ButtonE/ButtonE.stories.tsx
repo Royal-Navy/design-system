@@ -1,8 +1,8 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { IconBrightnessLow } from '@defencedigital/icon-library'
-import { ButtonE, ButtonEProps } from './index'
+import { ButtonE } from './index'
 import { BUTTON_E_VARIANT, BUTTON_E_ICON_POSITION } from './constants'
 import { COMPONENT_SIZE } from '../Forms'
 
@@ -10,9 +10,9 @@ export default {
   component: ButtonE,
   title: 'Button (Experimental)',
   parameters: { actions: { argTypesRegex: '^on.*' } },
-} as Meta
+} as ComponentMeta<typeof ButtonE>
 
-const Template: Story<ButtonEProps> = (args) => <ButtonE {...args} />
+const Template: ComponentStory<typeof ButtonE> = (args) => <ButtonE {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

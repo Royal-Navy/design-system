@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import {
   IconHome,
@@ -14,7 +14,6 @@ import {
 
 import {
   SidebarE,
-  SidebarEProps,
   SidebarNavE,
   SidebarNavItemE,
   SidebarUserE,
@@ -57,13 +56,13 @@ export default {
     },
     layout: 'fullscreen',
   },
-} as Meta
+} as ComponentMeta<typeof SidebarE>
 
 const StyledSidebarE = styled(SidebarE)`
   max-height: 30rem;
 `
 
-export const Default: Story<SidebarEProps> = (props) => {
+export const Default: ComponentStory<typeof SidebarE> = (props) => {
   const sidebarNav = (
     <SidebarNavE>
       <SidebarNavItemE
@@ -114,7 +113,7 @@ export const Default: Story<SidebarEProps> = (props) => {
 
 Default.args = {}
 
-export const InitiallyOpen: Story<SidebarEProps> = (props) => {
+export const InitiallyOpen: ComponentStory<typeof SidebarE> = (props) => {
   const sidebarNav = (
     <SidebarNavE>
       <SidebarNavItemE
@@ -171,7 +170,7 @@ InitiallyOpen.parameters = disableColorContrastRule
 
 InitiallyOpen.storyName = 'Initially open'
 
-export const WithSubNavigation: Story<SidebarEProps> = (props) => {
+export const WithSubNavigation: ComponentStory<typeof SidebarE> = (props) => {
   const sidebarNavWithSub = (
     <SidebarNavE>
       <SidebarNavItemE
@@ -243,7 +242,7 @@ export const WithSubNavigation: Story<SidebarEProps> = (props) => {
 
 WithSubNavigation.storyName = 'With sub-navigation'
 
-export const WithHeader: Story<SidebarEProps> = (props) => {
+export const WithHeader: ComponentStory<typeof SidebarE> = (props) => {
   const sidebarNav = (
     <SidebarNavE>
       <SidebarNavItemE
@@ -300,7 +299,7 @@ export const WithHeader: Story<SidebarEProps> = (props) => {
 
 WithHeader.storyName = 'With header'
 
-export const WithUserMenu: Story<SidebarEProps> = (props) => {
+export const WithUserMenu: ComponentStory<typeof SidebarE> = (props) => {
   const userWithLinks = (
     <SidebarUserE
       initials="HN"
@@ -362,7 +361,7 @@ export const WithUserMenu: Story<SidebarEProps> = (props) => {
 
 WithUserMenu.storyName = 'With user menu'
 
-export const WithNotifications: Story<SidebarEProps> = (props) => {
+export const WithNotifications: ComponentStory<typeof SidebarE> = (props) => {
   const notifications = (
     <Notifications link={<Link href="#" />}>
       <Notification

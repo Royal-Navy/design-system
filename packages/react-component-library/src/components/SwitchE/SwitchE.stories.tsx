@@ -1,7 +1,7 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { SwitchE, SwitchEOption, SwitchEProps } from '.'
+import { SwitchE, SwitchEOption } from '.'
 import { COMPONENT_SIZE } from '../Forms'
 
 export default {
@@ -11,9 +11,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof SwitchE>
 
-const Template: Story<SwitchEProps> = (props) => (
+const Template: ComponentStory<typeof SwitchE> = (props) => (
   <SwitchE {...props}>
     <SwitchEOption label="Day" value="1" />
     <SwitchEOption label="Week" value="2" />

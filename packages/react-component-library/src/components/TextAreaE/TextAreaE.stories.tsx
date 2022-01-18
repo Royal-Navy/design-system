@@ -1,7 +1,7 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { TextAreaE, TextAreaEProps } from '.'
+import { TextAreaE } from '.'
 
 export default {
   component: TextAreaE,
@@ -9,9 +9,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof TextAreaE>
 
-export const Default: Story<TextAreaEProps> = (props) => (
+export const Default: ComponentStory<typeof TextAreaE> = (props) => (
   <TextAreaE {...props} />
 )
 
@@ -20,13 +20,13 @@ Default.args = {
   label: 'Example label',
 }
 
-export const Disabled: Story<TextAreaEProps> = (props) => (
+export const Disabled: ComponentStory<typeof TextAreaE> = (props) => (
   <TextAreaE {...props} isDisabled label="Example label" />
 )
 
 Disabled.storyName = 'Disabled'
 
-export const WithError: Story<TextAreaEProps> = (props) => (
+export const WithError: ComponentStory<typeof TextAreaE> = (props) => (
   <TextAreaE {...props} isInvalid label="Example label" />
 )
 

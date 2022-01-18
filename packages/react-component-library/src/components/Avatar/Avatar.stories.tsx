@@ -1,15 +1,18 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Avatar, AvatarProps, AVATAR_VARIANT } from '.'
+import { Avatar, AVATAR_VARIANT } from '.'
 
 export default {
   component: Avatar,
   parameters: { layout: 'fullscreen' },
   title: 'Avatar',
-} as Meta
+} as ComponentMeta<typeof Avatar>
 
-export const Default: Story<AvatarProps> = ({ initials, variant }) => (
+export const Default: ComponentStory<typeof Avatar> = ({
+  initials,
+  variant,
+}) => (
   <div style={{ background: '#c9c9c9', padding: 20 }}>
     <Avatar initials={initials} variant={variant} />
   </div>

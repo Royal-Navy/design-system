@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import { IconBrightnessLow } from '@defencedigital/icon-library'
@@ -14,9 +14,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof ButtonGroup>
 
-export const Default: Story<ButtonGroupProps> = ({ size }) => (
+export const Default: ComponentStory<typeof ButtonGroup> = ({ size }) => (
   <ButtonGroup size={size}>
     <ButtonGroupItem onClick={action('onClick - One')}>One</ButtonGroupItem>
     <ButtonGroupItem onClick={action('onClick - Two')}>Two</ButtonGroupItem>
@@ -34,7 +34,7 @@ Default.args = {
   size: BUTTON_SIZE.REGULAR,
 }
 
-export const Small: Story<ButtonGroupProps> = ({ size }) => (
+export const Small: ComponentStory<typeof ButtonGroup> = ({ size }) => (
   <ButtonGroup size={size}>
     <ButtonGroupItem onClick={action('onClick')}>One</ButtonGroupItem>
     <ButtonGroupItem>Two</ButtonGroupItem>
@@ -48,7 +48,9 @@ Small.args = {
   size: BUTTON_SIZE.SMALL,
 }
 
-export const Large: Story<ButtonGroupProps> = ({ size }: ButtonGroupProps) => (
+export const Large: ComponentStory<typeof ButtonGroup> = ({
+  size,
+}: ButtonGroupProps) => (
   <ButtonGroup size={size}>
     <ButtonGroupItem onClick={action('onClick')}>One</ButtonGroupItem>
     <ButtonGroupItem>Two</ButtonGroupItem>

@@ -1,11 +1,11 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Field, Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import { withFormik } from '../../enhancers/withFormik'
-import { Radio, RadioProps } from '.'
+import { Radio } from '.'
 import { Button } from '../Button'
 import { FormikGroup } from '../FormikGroup'
 
@@ -15,9 +15,11 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof Radio>
 
-export const Default: Story<RadioProps> = (props) => <Radio {...props} />
+export const Default: ComponentStory<typeof Radio> = (props) => (
+  <Radio {...props} />
+)
 
 Default.args = {
   id: undefined,
@@ -26,7 +28,9 @@ Default.args = {
   isChecked: true,
 }
 
-export const Disabled: Story<RadioProps> = (props) => <Radio {...props} />
+export const Disabled: ComponentStory<typeof Radio> = (props) => (
+  <Radio {...props} />
+)
 
 Disabled.args = {
   id: undefined,
@@ -35,7 +39,9 @@ Disabled.args = {
   name: 'disabled',
 }
 
-export const Invalid: Story<RadioProps> = (props) => <Radio {...props} />
+export const Invalid: ComponentStory<typeof Radio> = (props) => (
+  <Radio {...props} />
+)
 
 Invalid.args = {
   id: undefined,
@@ -44,7 +50,7 @@ Invalid.args = {
   isInvalid: true,
 }
 
-export const WithFormik: Story<RadioProps> = () => {
+export const WithFormik: ComponentStory<typeof Radio> = () => {
   const RadioForm = () => {
     interface Data {
       [key: string]: string
@@ -97,7 +103,7 @@ export const WithFormik: Story<RadioProps> = () => {
 
 WithFormik.storyName = 'Formik'
 
-export const WithFormikGroup: Story<RadioProps> = () => {
+export const WithFormikGroup: ComponentStory<typeof Radio> = () => {
   const RadioForm = () => {
     interface Data {
       [key: string]: string

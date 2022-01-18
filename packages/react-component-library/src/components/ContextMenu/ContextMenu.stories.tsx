@@ -1,15 +1,10 @@
 import React, { useRef } from 'react'
-import { Story, Meta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import styled from 'styled-components'
 
 import { IconEdit, IconDelete, IconAdd } from '@defencedigital/icon-library'
 
-import {
-  ContextMenu,
-  ContextMenuProps,
-  ContextMenuItem,
-  ContextMenuDivider,
-} from '.'
+import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
 import { Link } from '../Link'
 
 export default {
@@ -19,7 +14,7 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as Meta
+} as ComponentMeta<typeof ContextMenu>
 
 const ClickArea = styled.div`
   display: inline-block;
@@ -27,7 +22,7 @@ const ClickArea = styled.div`
   background-color: #c9c9c9;
 `
 
-export const Default: Story<ContextMenuProps> = (props) => {
+export const Default: ComponentStory<typeof ContextMenu> = (props) => {
   const ref = useRef()
 
   return (
@@ -60,7 +55,7 @@ export const Default: Story<ContextMenuProps> = (props) => {
 
 Default.storyName = 'Default'
 
-export const WithIcons: Story<ContextMenuProps> = (props) => {
+export const WithIcons: ComponentStory<typeof ContextMenu> = (props) => {
   const ref = useRef()
 
   return (

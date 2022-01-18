@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import {
   IconAgriculture,
   IconAnchor,
@@ -7,7 +7,6 @@ import {
   IconRemove,
 } from '@defencedigital/icon-library'
 
-import { SelectBaseProps } from '../SelectBase'
 import { SelectE } from './index'
 import { SelectEOption } from './SelectEOption'
 
@@ -26,9 +25,9 @@ export default {
       enableShortcuts: false,
     },
   },
-} as Meta
+} as ComponentMeta<typeof SelectE>
 
-const Template: Story<SelectBaseProps> = (args) => (
+const Template: ComponentStory<typeof SelectE> = (args) => (
   <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
     <SelectE label="Some label" {...args}>
       <SelectEOption value="one">One</SelectEOption>
@@ -39,7 +38,7 @@ const Template: Story<SelectBaseProps> = (args) => (
   </div>
 )
 
-const TemplateWIthIconsAndBadges: Story<SelectBaseProps> = (args) => (
+const TemplateWIthIconsAndBadges: ComponentStory<typeof SelectE> = (args) => (
   <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
     <SelectE label="Some label" {...args}>
       <SelectEOption badge={100} icon={<IconAnchor />} value="one">
