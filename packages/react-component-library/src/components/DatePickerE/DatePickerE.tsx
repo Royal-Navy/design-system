@@ -1,8 +1,10 @@
 import { IconEvent } from '@defencedigital/icon-library'
 import { isValid } from 'date-fns'
-import React, { useState } from 'react'
+import FocusTrap from 'focus-trap-react'
+import React, { useRef, useState } from 'react'
 import { Placement } from '@popperjs/core'
 import { DayModifiers, DayPickerProps } from 'react-day-picker'
+import { useBoolean } from 'usehooks-ts'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
@@ -19,10 +21,9 @@ import { StyledInlineButtons } from '../InlineButtons/partials/StyledInlineButto
 import { StyledInput } from '../TextInputE/partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
-import { useCloseOnEscape } from './useCloseOnEscape'
-import { useDatePickerEOpenClose } from './useDatePickerEOpenClose'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useFocus } from '../../hooks/useFocus'
+import { useFocusTrapOptions } from './useFocusTrapOptions'
 import { useInput } from './useInput'
 import { useRangeHoverOrFocusDate } from './useRangeHoverOrFocusDate'
 import { useSelection } from './useSelection'
@@ -110,9 +111,9 @@ export interface DatePickerEProps
    */
   startDate?: Date
   /**
-   * Toggles whether or not the picker is open.
+   * Toggles whether the picker is open on first render.
    */
-  isOpen?: boolean
+  initialIsOpen?: boolean
   /**
    * An array of dates to disabled within the picker, preventing them from
    * being selected in the date picker calendar.
@@ -152,7 +153,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   onChange,
   onCalendarFocus,
   startDate,
-  isOpen,
+  initialIsOpen,
   disabledDays,
   initialMonth,
   placement = 'bottom-start',
@@ -164,16 +165,19 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   const id = useExternalId(externalId)
   const titleId = `datepicker-title-${useExternalId()}`
   const contentId = `datepicker-contentId-${useExternalId()}`
+  const buttonRef = useRef<HTMLButtonElement>()
+  const inputRef = useRef<HTMLInputElement>()
 
   const { hasFocus, onLocalBlur, onLocalFocus } = useFocus()
   const {
-    floatingBoxChildrenRef,
-    handleOnClose,
-    handleOnOpen,
-    inputButtonRef,
-    open,
-  } = useDatePickerEOpenClose(isOpen)
-  const { handleDayPickerKeyDown } = useCloseOnEscape(handleOnClose)
+    setFalse: close,
+    value: isOpen,
+    toggle: toggleIsOpen,
+  } = useBoolean(initialIsOpen)
+  const focusTrapOptions = useFocusTrapOptions(
+    close,
+    isRange ? [buttonRef, inputRef] : [buttonRef]
+  )
 
   const [inputValue, setInputValue] = useState<string>(
     formatDatesForInput(startDate, endDate, datePickerFormat)
@@ -245,6 +249,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
               {placeholder && ` (${placeholder})`}
             </StyledLabel>
             <StyledInput
+              ref={inputRef}
               $hasLabel={Boolean(label)}
               aria-label="Choose date"
               data-testid="datepicker-input"
@@ -264,7 +269,12 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
               onFocus={() => {
                 onLocalFocus()
                 if (isRange) {
-                  handleOnOpen()
+                  buttonRef.current?.focus()
+                }
+              }}
+              onClick={() => {
+                if (isRange) {
+                  toggleIsOpen()
                 }
               }}
               placeholder={placeholder}
@@ -274,13 +284,13 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
           </StyledInputWrapper>
           <StyledInlineButtons>
             <InlineButton
-              aria-expanded={!!open}
-              aria-label={`${open ? 'Hide' : 'Show'} day picker`}
+              aria-expanded={!!isOpen}
+              aria-label={`${isOpen ? 'Hide' : 'Show'} day picker`}
               aria-owns={contentId}
               data-testid="datepicker-input-button"
               isDisabled={isDisabled}
-              onClick={open ? handleOnClose : handleOnOpen}
-              ref={inputButtonRef}
+              onClick={toggleIsOpen}
+              ref={buttonRef}
             >
               <IconEvent size={18} />
             </InlineButton>
@@ -288,7 +298,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
         </StyledOuterWrapper>
       </StyledDatePickerEInput>
       <StyledFloatingBox
-        isVisible={open}
+        isVisible={isOpen}
         placement={placement}
         targetElement={floatingBoxTarget}
         role="dialog"
@@ -296,7 +306,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
         aria-labelledby={titleId}
         aria-live="polite"
       >
-        <div ref={floatingBoxChildrenRef}>
+        <FocusTrap focusTrapOptions={focusTrapOptions}>
           <StyledDayPicker
             firstDayOfWeek={1}
             weekdaysShort={WEEKDAY_TITLES}
@@ -322,20 +332,19 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
                 )
               )
               if (newState.to || !isRange) {
-                setTimeout(() => handleOnClose())
+                setTimeout(() => close())
               }
             }}
-            onKeyDown={handleDayPickerKeyDown}
             initialMonth={replaceInvalidDate(from) || initialMonth}
             disabledDays={disabledDays}
             $isRange={isRange}
-            $isVisible={open}
+            $isVisible={isOpen}
             onFocus={onCalendarFocus}
             onDayMouseEnter={handleDayMouseEnter}
             onDayMouseLeave={handleDayMouseLeave}
             onDayFocus={handleDayFocus}
           />
-        </div>
+        </FocusTrap>
       </StyledFloatingBox>
     </>
   )

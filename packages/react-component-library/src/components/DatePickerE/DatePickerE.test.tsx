@@ -602,6 +602,38 @@ describe('DatePickerE', () => {
       expect(wrapper.getByText('December 2019')).toBeInTheDocument()
     })
 
+    it('focuses the previous month button', () => {
+      return waitFor(() =>
+        expect(wrapper.getByLabelText('Previous Month')).toHaveFocus()
+      )
+    })
+
+    describe('when the day picker is focused and Shift-Tab is pressed', () => {
+      let dayPicker: Element
+
+      beforeEach(() => {
+        dayPicker = wrapper.container.querySelectorAll('.DayPicker-wrapper')[0]
+
+        fireEvent.focus(dayPicker)
+
+        userEvent.tab({ shift: true })
+      })
+
+      it('traps the focus within the picker', () => {
+        expect(wrapper.getByText('1')).toHaveFocus()
+      })
+
+      describe('and Tab is then pressed', () => {
+        beforeEach(() => {
+          userEvent.tab()
+        })
+
+        it('still traps the focus within the picker', () => {
+          expect(dayPicker).toHaveFocus()
+        })
+      })
+    })
+
     describe.each([
       {
         name: 'day picker container',
@@ -711,9 +743,9 @@ describe('DatePickerE', () => {
       )
     })
 
-    describe('when the end user focuses on the Input', () => {
+    describe('when the end user clicks on the Input', () => {
       beforeEach(() => {
-        wrapper.getByTestId('datepicker-input').focus()
+        userEvent.click(wrapper.getByTestId('datepicker-input'))
       })
 
       it('opens the day picker', () => {
@@ -907,9 +939,9 @@ describe('DatePickerE', () => {
     })
   })
 
-  describe('when the isOpen prop is provided', () => {
+  describe('when the initialIsOpen prop is provided', () => {
     beforeEach(() => {
-      wrapper = render(<DatePickerE isOpen />)
+      wrapper = render(<DatePickerE initialIsOpen />)
     })
 
     it('displays the picker as open on initial render', () => {
@@ -954,7 +986,7 @@ describe('DatePickerE', () => {
     beforeEach(() => {
       wrapper = render(
         <DatePickerE
-          isOpen
+          initialIsOpen
           onChange={onChange}
           startDate={new Date(2020, 3, 1)}
           disabledDays={[new Date(2020, 3, 12)]}
@@ -996,7 +1028,9 @@ describe('DatePickerE', () => {
 
   describe('when the `initialMonth` prop is provided and no `startDate`', () => {
     beforeEach(() => {
-      wrapper = render(<DatePickerE isOpen initialMonth={new Date(2020, 1)} />)
+      wrapper = render(
+        <DatePickerE initialIsOpen initialMonth={new Date(2020, 1)} />
+      )
     })
 
     it('displays the correct month initially', () => {
