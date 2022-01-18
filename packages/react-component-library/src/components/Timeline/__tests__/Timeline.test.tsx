@@ -26,7 +26,6 @@ import {
   TimelineRow,
   TimelineRowProps,
   TimelineRows,
-  TimelineSide,
   TimelineTodayMarker,
   TimelineWeeks,
 } from '..'
@@ -493,30 +492,20 @@ describe('Timeline', () => {
     })
   })
 
-  describe('when `TimelineSide` is specified', () => {
-    let consoleWarnSpy: jest.SpyInstance
-
+  describe('when `hasSide` prop is specified', () => {
     beforeEach(() => {
-      consoleWarnSpy = jest.spyOn(global.console, 'warn')
-
       wrapper = render(
         <Timeline
           startDate={new Date(2020, 3, 1)}
           today={new Date(2020, 3, 15)}
+          hasSide
         >
-          <TimelineSide />
           <TimelineTodayMarker />
           <TimelineMonths />
           <TimelineWeeks />
           <TimelineDays />
           <TimelineRows>{}</TimelineRows>
         </Timeline>
-      )
-    })
-
-    it('should warn the consumer about using the deprecated component', () => {
-      expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - RNDS - Component `TimelineSide` is deprecated'
       )
     })
 

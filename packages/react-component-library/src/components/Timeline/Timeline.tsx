@@ -6,7 +6,7 @@ import { TimelineProvider } from './context'
 import logger from '../../utils/logger'
 
 import { extractChildren, timelineChildrenType } from './helpers/children'
-import { TimelineHours, TimelineHoursProps, TimelineSide } from '.'
+import { TimelineHours, TimelineHoursProps } from '.'
 
 import { TimelineOptions } from './context/types'
 import { DEFAULTS } from './constants'
@@ -59,19 +59,6 @@ export interface TimelineProps extends ComponentWithClass {
   unitWidth?: number
 }
 
-function hasTimelineSideComponent(
-  children: timelineChildrenType | timelineChildrenType[]
-) {
-  const sideChildren = extractChildren(children, [TimelineSide])
-
-  if (!sideChildren.length) {
-    return false
-  }
-
-  logger.warn('Component `TimelineSide` is deprecated')
-  return true
-}
-
 function getHoursBlockSize(
   children: timelineChildrenType | timelineChildrenType[]
 ) {
@@ -119,17 +106,11 @@ export const Timeline: React.FC<TimelineProps> = ({
     unitWidth: dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH,
   }
 
-  const hasTimelineSide = hasTimelineSideComponent(children)
-
   return (
-    <TimelineProvider
-      hasSide={hasSide || hasTimelineSide}
-      options={options}
-      today={today}
-    >
+    <TimelineProvider hasSide={hasSide} options={options} today={today}>
       <TimelineGrid
         className={className}
-        hasSide={hasSide || hasTimelineSide}
+        hasSide={hasSide}
         hideScaling={hideScaling}
         hideToolbar={hideToolbar}
         isFullWidth={isFullWidth}
