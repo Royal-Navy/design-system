@@ -284,20 +284,16 @@ WithCustomMonths.storyName = 'With custom months'
 
 export const WithCustomWeeks: ComponentStory<typeof Timeline> = (props) => {
   const CustomTimelineWeek = ({
-    index: _0,
+    index: _,
     isOddNumber,
     offsetPx,
     widthPx,
-    dayWidth: _1,
-    daysTotal: _2,
     startDate,
   }: {
     index: number
     isOddNumber: boolean
     offsetPx: string
     widthPx: string
-    dayWidth: number
-    daysTotal: number
     startDate: Date
   }) => {
     return (

@@ -813,8 +813,6 @@ describe('Timeline', () => {
       isOddNumber,
       offsetPx,
       widthPx,
-      dayWidth,
-      daysTotal,
       startDate,
       ...rest
     }: {
@@ -822,14 +820,12 @@ describe('Timeline', () => {
       isOddNumber: boolean
       offsetPx: string
       widthPx: string
-      dayWidth: number
-      daysTotal: number
       startDate: Date
     }) => {
       return (
         <span {...rest}>
           {startDate.toString()} - {index} - {isOddNumber.toString()} -{' '}
-          {offsetPx} - {widthPx} - {dayWidth} - {daysTotal}
+          {offsetPx} - {widthPx}
         </span>
       )
     }
@@ -841,23 +837,13 @@ describe('Timeline', () => {
           today={new Date(2020, 1, 7, 0, 0, 0)}
         >
           <TimelineWeeks
-            render={({
-              index,
-              isOddNumber,
-              offsetPx,
-              widthPx,
-              dayWidth,
-              daysTotal,
-              startDate,
-            }) => (
+            render={({ index, isOddNumber, offsetPx, widthPx, startDate }) => (
               <CustomWeek
                 data-testid="timeline-custom-week"
                 index={index}
                 isOddNumber={isOddNumber}
                 offsetPx={offsetPx}
                 widthPx={widthPx}
-                dayWidth={dayWidth}
-                daysTotal={daysTotal}
                 startDate={startDate}
               />
             )}
@@ -869,7 +855,7 @@ describe('Timeline', () => {
 
     it('should render the day dates as specified', () => {
       const expected =
-        'Mon Jan 27 2020 00:00:00 GMT+0000 (Coordinated Universal Time) - 0 - false - -150px - 210px - 30 - 7'
+        'Mon Jan 27 2020 00:00:00 GMT+0000 (Coordinated Universal Time) - 0 - false - -150px - 210px'
       const firstWeek = wrapper.getAllByTestId('timeline-custom-week')[0]
 
       expect(firstWeek).toHaveTextContent(expected)
