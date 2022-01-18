@@ -123,7 +123,7 @@ describe('mediaQuery / mq', () => {
 describe('breakpoint', () => {
   const StyledComponent = styled.div`
     @media only screen and (min-width: ${breakpoint('xs').breakpoint}) {
-      font-size: ${breakpoint('xs').baseFontSize};
+      font-size: 14px;
     }
   `
 
@@ -134,7 +134,7 @@ describe('breakpoint', () => {
   it('should set styles correctly', () => {
     expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
       'font-size',
-      '94%',
+      '14px',
       {
         media: 'only screen and (min-width:576px)',
       }

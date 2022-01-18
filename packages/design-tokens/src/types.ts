@@ -35,13 +35,23 @@ export type BreakpointSize = keyof Tokens['breakpointsTokens']['breakpoint']
 
 export type Breakpoint = {
   breakpoint: string
-  baseFontSize: string
 }
 
 export type ColorGroup = keyof Tokens['colorsTokens']['color']
 
 export type ColorShade =
-  'black' | 'white' | '000' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'
+  | 'black'
+  | 'white'
+  | '000'
+  | '100'
+  | '200'
+  | '300'
+  | '400'
+  | '500'
+  | '600'
+  | '700'
+  | '800'
+  | '900'
 
 export type ShadowWeight = keyof Tokens['shadowsTokens']['shadow']
 
