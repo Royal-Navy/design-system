@@ -63,14 +63,6 @@ function sleep(ms: number): Promise<undefined> {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-function countDecimals(value: number): number {
-  if (Math.floor(value) === value) {
-    return 0
-  }
-
-  return value.toString().split('.')[1].length || 0
-}
-
 export {
   getInitials,
   getId,
@@ -80,5 +72,4 @@ export {
   warnIfOverwriting,
   withKey,
   sleep,
-  countDecimals,
 }

@@ -527,10 +527,10 @@ describe('NumberInputE', () => {
   })
 
   describe.each([
-    ['3', '0'],
-    ['0.1', '0.0'],
-    ['0.25', '0.00'],
-  ])('when a step of %s is specified', (step, zero) => {
+    [3, 0, 3],
+    [0.1, 0, 0.1],
+    [0.25, 0.9, 1.15],
+  ])('when a step of %s is specified', (step, initial, sum) => {
     beforeEach(() => {
       const props = {
         ...defaultProps,
@@ -539,7 +539,7 @@ describe('NumberInputE', () => {
 
       onChangeSpy = jest.spyOn(props, 'onChange')
 
-      wrapper = render(<NumberInputE {...props} />)
+      wrapper = render(<NumberInputE value={initial} {...props} />)
     })
 
     describe('and the increase button is clicked', () => {
@@ -548,7 +548,7 @@ describe('NumberInputE', () => {
         increase.click()
       })
 
-      assertInputValue(step)
+      assertInputValue(String(sum))
 
       describe('and the decrease button is clicked', () => {
         beforeEach(() => {
@@ -556,7 +556,7 @@ describe('NumberInputE', () => {
           decrease.click()
         })
 
-        assertInputValue(zero)
+        assertInputValue(String(initial))
       })
     })
   })
