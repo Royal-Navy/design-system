@@ -11,7 +11,6 @@ import { TimelineDays } from './TimelineDays'
 import { TimelineHours } from './TimelineHours'
 import { TimelineMonths } from './TimelineMonths'
 import { TimelineRows, TimelineRowsProps } from './TimelineRows'
-import { TimelineSide } from './TimelineSide'
 import { TimelineTodayMarker } from './TimelineTodayMarker'
 import { TimelineToolbar } from './TimelineToolbar'
 import { TimelineWeekColumns } from './TimelineWeekColumns'
@@ -31,8 +30,7 @@ function getRenderColumns(
 ) {
   const rowsChildren = extractChildren(children, [TimelineRows])
 
-  return (rowsChildren[0] as React.ReactElement<TimelineRowsProps>).props
-    .renderColumns
+  return (rowsChildren[0] as React.ReactElement<TimelineRowsProps>).props.render
 }
 
 export const TimelineGrid: React.FC<ComponentNameProps> = ({
@@ -58,7 +56,6 @@ export const TimelineGrid: React.FC<ComponentNameProps> = ({
       TimelineHours,
       TimelineMonths,
       TimelineRows,
-      TimelineSide,
       TimelineTodayMarker,
       TimelineWeeks,
     ],
@@ -90,7 +87,7 @@ export const TimelineGrid: React.FC<ComponentNameProps> = ({
         {currentScaleOption && (
           <StyledInner className="timeline__inner" $hasSide={hasSide}>
             <>
-              <TimelineWeekColumns renderColumns={renderColumns} />
+              <TimelineWeekColumns render={renderColumns} />
               {rootChildren}
               <StyledHeader
                 className="timeline__header"

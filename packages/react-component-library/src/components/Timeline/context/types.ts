@@ -1,7 +1,6 @@
 import React, { Dispatch } from 'react'
 
 import { BlockSizeType } from '../TimelineHours'
-import { TimelineSideProps } from '../TimelineSide'
 import { TimelineTodayMarkerProps } from '../TimelineTodayMarker'
 import { TimelineMonthsProps } from '../TimelineMonths'
 import { TimelineWeeksProps } from '../TimelineWeeks'

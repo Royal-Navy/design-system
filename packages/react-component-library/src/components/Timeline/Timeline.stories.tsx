@@ -19,7 +19,6 @@ import {
   TimelineMonths,
   TimelineWeeks,
   TimelineDays,
-  TimelineSide,
 } from '.'
 import { TIMELINE_BLOCK_SIZE } from './constants'
 
@@ -35,7 +34,6 @@ export default {
     TimelineMonths,
     TimelineWeeks,
     TimelineDays,
-    TimelineSide,
   },
   title: 'Compound Timeline',
   parameters: {
@@ -271,7 +269,6 @@ export const WithCustomMonths: ComponentStory<typeof Timeline> = (props) => {
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
     >
-      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths render={CustomTimelineMonth} />
       <TimelineWeeks />
@@ -328,7 +325,6 @@ export const WithCustomWeeks: ComponentStory<typeof Timeline> = (props) => {
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
     >
-      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
       <TimelineWeeks render={CustomTimelineWeek} />
@@ -373,7 +369,6 @@ export const WithCustomDays: ComponentStory<typeof Timeline> = (props) => {
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
     >
-      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
       <TimelineWeeks />
@@ -416,7 +411,6 @@ export const WithCustomHours: ComponentStory<typeof Timeline> = (props) => {
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
     >
-      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
       <TimelineWeeks />
@@ -467,7 +461,6 @@ export const WithCustomTodayMarker: ComponentStory<typeof Timeline> = (
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
     >
-      <TimelineSide />
       <TimelineTodayMarker render={CustomTodayMarker} />
       <TimelineMonths />
       <TimelineWeeks />
@@ -512,7 +505,6 @@ export const WithCustomColumns: ComponentStory<typeof Timeline> = (props) => {
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
     >
-      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
       <TimelineWeeks />
@@ -609,7 +601,6 @@ export const WithCustomEventBarColor: ComponentStory<typeof Timeline> = (
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
     >
-      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
       <TimelineWeeks />
@@ -676,7 +667,6 @@ export const WithCustomEventContent: ComponentStory<typeof Timeline> = (
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
     >
-      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
       <TimelineWeeks />
@@ -751,7 +741,6 @@ export const WithCustomDayWidth: ComponentStory<typeof Timeline> = (props) => {
       today={new Date(2020, 3, 15)}
       unitWidth={75}
     >
-      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
       <TimelineWeeks />
@@ -794,7 +783,6 @@ export const WithCustomRange: ComponentStory<typeof Timeline> = (props) => {
       today={new Date(2020, 3, 15)}
       range={6}
     >
-      <TimelineSide />
       <TimelineTodayMarker />
       <TimelineMonths />
       <TimelineWeeks />
