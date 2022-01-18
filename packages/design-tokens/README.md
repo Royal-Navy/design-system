@@ -21,7 +21,7 @@ The reccomended way to access tokens is using the supplied selector functions.
 Simply import the selector object and then destructure the selectors you want to use out of this.
 
 ```javascript
-import { selectors } from "@defencedigital/design-tokens";
+import { selectors } from '@defencedigital/design-tokens'
 
 const { color, spacing, mediaQuery } = selectors
 
@@ -34,19 +34,19 @@ const StyledExample = styled.div`
     // @media and (min-width:576px) and (max-width:1400px)
     color: black;
   `}
-`;
+`
 ```
 
-| Selector   | Alias | Example Return Value                               | Description                                                       |
-|------------|-------|----------------------------------------------------|-------------------------------------------------------------------|
-| animation  |       | `0.2s`                                             | Animation timing values.                                          |
-| breakpoint |       | `{   breakpoint: '768px',   baseFontSize: '96%' }` | Raw object containing `breakpoint` and associated `baseFontSize`. |
-| mediaQuery | mq    |  See usage example above.                                                  | Tagged template literal that generates a media query string.      |
-| color      |       | `#FFFFFF`                                          | A color value as a hex string.                                    |
-| shadow     |       | `0 1px 3px rgba(0, 0, 0, 0.04)`                    | Preset `box-shadow` values.                                       |
-| spacing    |       | `0.5rem`                                           | Fixed spacing value in REMs.                                      |
-| fontSize   |       | `0.5rem`                                           | Fixed `font-size` value in REMs.                                  |
-| zIndex     |       | `6001`                                             | Scoped `z-index` value with optional modifier.                    |
+| Selector   | Alias | Example Return Value            | Description                                                  |
+| ---------- | ----- | ------------------------------- | ------------------------------------------------------------ |
+| animation  |       | `0.2s`                          | Animation timing values.                                     |
+| breakpoint |       | `{ breakpoint: '768px' }`       | Raw object containing `breakpoint`.                          |
+| mediaQuery | mq    | See usage example above.        | Tagged template literal that generates a media query string. |
+| color      |       | `#FFFFFF`                       | A color value as a hex string.                               |
+| shadow     |       | `0 1px 3px rgba(0, 0, 0, 0.04)` | Preset `box-shadow` values.                                  |
+| spacing    |       | `0.5rem`                        | Fixed spacing value in REMs.                                 |
+| fontSize   |       | `0.5rem`                        | Fixed `font-size` value in REMs.                             |
+| zIndex     |       | `6001`                          | Scoped `z-index` value with optional modifier.               |
 
 The selectors are typed. We reccomend using the hinting in your IDE to see the signatures and available arguments for each selector. Alternatively, you can see the raw tokens [here on GitHub](https://github.com/defencedigital/mod-uk-design-system/tree/master/packages/design-tokens/src/tokens).
 
@@ -65,7 +65,7 @@ import { ColorNeutral100 } from '@defencedigital/design-tokens'
 ### SASS
 
 ```css
-@use '@defencedigital/design-tokens' as $vars
+@use '@defencedigital/design-tokens' as $vars;
 ```
 
 ## Questions
@@ -78,7 +78,7 @@ The [documentation website](https://docs.royalnavy.io/) contains all the informa
 
 ## Contributing
 
-The [contributing guide](https://github.com/defencedigital/mod-uk-design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
+The [contributing guide](https://github.com/defencedigital/mod-uk-design-system/blob/master/docs/contributing.md) resource presents information about our development process.
 
 ## Changelog
 

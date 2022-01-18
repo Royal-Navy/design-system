@@ -1,11 +1,7 @@
 import React, { createContext } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
-import {
-  selectors,
-  BreakpointSize,
-  lightTheme,
-} from '@defencedigital/design-tokens'
+import { selectors, lightTheme } from '@defencedigital/design-tokens'
 
 export interface GlobalStyleContextDefaults {
   theme?: Record<string, any>
@@ -16,9 +12,7 @@ export interface GlobalStyleProviderProps {
   theme?: Record<string, any>
 }
 
-const breakpoints: BreakpointSize[] = ['s', 'xs', 'm', 'l', 'xl', 'xxl']
-
-const { mq, breakpoint, fontSize } = selectors
+const { fontSize } = selectors
 
 /**
  * Globally setting `border-box`
@@ -43,14 +37,7 @@ const BoxSizing = createGlobalStyle`
 const Fonts = createGlobalStyle`
   html {
     font-family: "lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
-    ${breakpoints
-      .map((bp) => {
-        return mq({ gte: bp })`
-          font-size: ${breakpoint(bp).baseFontSize};
-        `
-      })
-      .join('\n\n')}
+    font-size: ${fontSize('base')};
   }
 
   h1,
