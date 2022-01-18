@@ -31,14 +31,8 @@ export function getBreakpoint(
     `breakpoint[${size}].breakpoint.value`
   )
 
-  const baseFontSize = get(
-    breakpointsTokens,
-    `breakpoint[${size}].baseFontSize.value`
-  )
-
   return {
     breakpoint,
-    baseFontSize,
   }
 }
 
