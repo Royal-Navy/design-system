@@ -1,11 +1,6 @@
 import React, { Dispatch } from 'react'
 
 import { BlockSizeType } from '../TimelineHours'
-import { TimelineTodayMarkerProps } from '../TimelineTodayMarker'
-import { TimelineMonthsProps } from '../TimelineMonths'
-import { TimelineWeeksProps } from '../TimelineWeeks'
-import { TimelineDaysProps } from '../TimelineDays'
-import { TimelineRowsProps } from '../TimelineRows'
 
 export type TimelineScaleOption = {
   calculateDate: (d: Date, n: number) => Date
