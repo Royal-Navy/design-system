@@ -11,7 +11,7 @@ export interface TimelineTodayMarkerWithRenderContentProps
   /**
    * Supply a custom presentation layer.
    */
-  render: (today: Date, offset: string) => React.ReactNode
+  render: (props: { today: Date; offset: string }) => React.ReactNode
 }
 
 export interface TimelineTodayMarkerWithChildrenProps
@@ -52,7 +52,7 @@ export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = ({
       role="presentation"
       {...rest}
     >
-      {render ? render(today, offset) : renderDefault({ offset })}
+      {render ? render({ today, offset }) : renderDefault({ offset })}
     </StyledTodayMarkerWrapper>
   )
 }

@@ -794,7 +794,7 @@ describe('Timeline', () => {
           today={new Date(2020, 1, 7, 0, 0, 0)}
         >
           <TimelineMonths
-            render={(index, dayWidth, daysTotal, startDate) => (
+            render={({ index, dayWidth, daysTotal, startDate }) => (
               <CustomMonth
                 data-testid="timeline-custom-month"
                 index={index}
@@ -852,15 +852,15 @@ describe('Timeline', () => {
           today={new Date(2020, 1, 7, 0, 0, 0)}
         >
           <TimelineWeeks
-            render={(
+            render={({
               index,
               isOddNumber,
               offsetPx,
               widthPx,
               dayWidth,
               daysTotal,
-              startDate
-            ) => (
+              startDate,
+            }) => (
               <CustomWeek
                 data-testid="timeline-custom-week"
                 index={index}
@@ -914,7 +914,7 @@ describe('Timeline', () => {
           <TimelineMonths />
           <TimelineWeeks />
           <TimelineDays
-            render={(index, dayWidth, date) => (
+            render={({ index, dayWidth, date }) => (
               <CustomDay
                 data-testid="timeline-custom-day"
                 index={index}
@@ -939,7 +939,7 @@ describe('Timeline', () => {
 
   describe('when hours has `render` specified', () => {
     const CustomHour = ({
-      width,
+      width: _,
       time,
       ...rest
     }: {
@@ -957,7 +957,7 @@ describe('Timeline', () => {
           <TimelineWeeks />
           <TimelineDays />
           <TimelineHours
-            render={(width, time) => (
+            render={({ width, time }) => (
               <CustomHour
                 data-testid="timeline-custom-hour"
                 width={width}
@@ -1084,7 +1084,7 @@ describe('Timeline', () => {
           <TimelineWeeks />
           <TimelineDays />
           <TimelineRows
-            renderColumns={(index, isOddNumber, offsetPx, widthPx) => (
+            render={({ index, isOddNumber, offsetPx, widthPx }) => (
               <CustomColumn
                 index={index}
                 isOddNumber={isOddNumber}
@@ -1139,16 +1139,16 @@ describe('Timeline', () => {
         <TimelineEvent
           startDate={new Date(2020, 3, 16)}
           endDate={new Date(2020, 3, 20)}
-          render={(
-            startDate: Date,
-            endDate: Date,
-            widthPx: string,
-            offsetPx: string,
-            maxWidthPx: string,
-            startsBeforeStart: boolean,
-            endsAfterEnd: boolean,
+          render={({
+            startDate,
+            endDate,
+            widthPx,
+            offsetPx,
+            maxWidthPx,
+            startsBeforeStart,
+            endsAfterEnd,
             ...rest
-          ) => {
+          }) => {
             return (
               <div data-testid="timeline-custom-event" {...rest}>
                 <span data-testid="timeline-custom-event-start-date">
@@ -1264,7 +1264,7 @@ describe('Timeline', () => {
           today={new Date(2020, 1, 7, 0, 0, 0)}
         >
           <TimelineTodayMarker
-            render={(today, offset) => (
+            render={({ today, offset }) => (
               <CustomTodayMarker today={today} offset={offset} />
             )}
           />
@@ -2059,7 +2059,7 @@ describe('Timeline', () => {
               contentProps={rowContentProps}
               headerProps={rowHeaderProps}
               name="Row 1"
-              renderRowHeader={() => <span>Row with custom style</span>}
+              render={() => <span>Row with custom style</span>}
             >
               <TimelineEvents>
                 <TimelineEvent

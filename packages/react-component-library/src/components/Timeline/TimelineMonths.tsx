@@ -14,12 +14,12 @@ export interface TimelineMonthsWithRenderContentProps
   /**
    * Supply a custom presentation layer.
    */
-  render: (
-    index: number,
-    dayWidth: number,
-    daysTotal: number,
+  render: (props: {
+    index: number
+    dayWidth: number
+    daysTotal: number
     startDate: Date
-  ) => React.ReactElement
+  }) => React.ReactElement
 }
 
 export interface TimelineMonthsWithChildrenProps extends ComponentWithClass {
@@ -47,56 +47,55 @@ function getSize(monthWidths: { daysTotal: number; monthWidth: number }[]) {
   return MONTH_SIZE.LARGE
 }
 
-export const TimelineMonths = memo<TimelineMonthsProps>(({
-  render,
-  ...rest
-}) => {
-  const {
-    state: { currentScaleOption, days, months },
-  } = useContext(TimelineContext)
+export const TimelineMonths = memo<TimelineMonthsProps>(
+  ({ render, ...rest }) => {
+    const {
+      state: { currentScaleOption, days, months },
+    } = useContext(TimelineContext)
 
-  const monthWidths = months.map(({ startDate }) => {
-    const firstDateDisplayed = max([startDate, days[0].date])
-    const lastDateDisplayed = minDate([
-      endOfMonth(startDate),
-      days[days.length - 1].date,
-    ])
-    const daysTotal =
-      differenceInDays(lastDateDisplayed, firstDateDisplayed) + 1
+    const monthWidths = months.map(({ startDate }) => {
+      const firstDateDisplayed = max([startDate, days[0].date])
+      const lastDateDisplayed = minDate([
+        endOfMonth(startDate),
+        days[days.length - 1].date,
+      ])
+      const daysTotal =
+        differenceInDays(lastDateDisplayed, firstDateDisplayed) + 1
 
-    const monthWidth = currentScaleOption.widths.day * daysTotal
+      const monthWidth = currentScaleOption.widths.day * daysTotal
 
-    return {
-      daysTotal,
-      monthWidth,
-    }
-  })
+      return {
+        daysTotal,
+        monthWidth,
+      }
+    })
 
-  const size = getSize(monthWidths)
+    const size = getSize(monthWidths)
 
-  return (
-    <TimelineHeaderRow
-      className="timeline__months"
-      data-testid="timeline-months"
-      name="Months"
-      {...rest}
-    >
-      <StyledMonths>
-        {months.map(({ startDate }, index) => (
-          <TimelineMonth
-            days={days}
-            dayWidth={currentScaleOption.widths.day}
-            daysTotal={monthWidths[index].daysTotal}
-            index={index}
-            key={getKey('timeline-month', startDate.toString())}
-            render={render}
-            size={size}
-            startDate={startDate}
-          />
-        ))}
-      </StyledMonths>
-    </TimelineHeaderRow>
-  )
-})
+    return (
+      <TimelineHeaderRow
+        className="timeline__months"
+        data-testid="timeline-months"
+        name="Months"
+        {...rest}
+      >
+        <StyledMonths>
+          {months.map(({ startDate }, index) => (
+            <TimelineMonth
+              days={days}
+              dayWidth={currentScaleOption.widths.day}
+              daysTotal={monthWidths[index].daysTotal}
+              index={index}
+              key={getKey('timeline-month', startDate.toString())}
+              render={render}
+              size={size}
+              startDate={startDate}
+            />
+          ))}
+        </StyledMonths>
+      </TimelineHeaderRow>
+    )
+  }
+)
 
 TimelineMonths.displayName = 'TimelineMonths'
