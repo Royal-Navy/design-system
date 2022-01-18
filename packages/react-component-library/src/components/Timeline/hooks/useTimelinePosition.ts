@@ -28,8 +28,6 @@ export function useTimelinePosition(
 ): {
   endsAfterEnd: boolean
   endsBeforeStart: boolean
-  isAfterEnd: boolean
-  isBeforeStart: boolean
   maxWidth: string
   offset: string
   startsAfterEnd: boolean
@@ -65,8 +63,6 @@ export function useTimelinePosition(
     endsBeforeStart,
     startsAfterEnd,
     startsBeforeStart,
-    isAfterEnd: startsAfterEnd,
-    isBeforeStart: startsBeforeStart,
     maxWidth: formatPx(currentScaleOption.widths.day, maxWidth),
     offset: formatPx(currentScaleOption.widths.day, offset),
     width: formatPx(currentScaleOption.widths.day, width),
