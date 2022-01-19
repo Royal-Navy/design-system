@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.77.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.76.0...2.77.0) (2022-01-19)
+
+
+### Bug Fixes
+
+* **DatePickerE:** Remove outline on sheet month navigation buttons ([f54f298](https://github.com/defencedigital/mod-uk-design-system/commit/f54f2982ba8ed0682b39463d869f355c2c704e1c))
+* **NumberInputE:** Enable stepping of floats with varying precision ([efa3214](https://github.com/defencedigital/mod-uk-design-system/commit/efa32148d7fb45b722490b2c7862674a274b3299))
+
+
+### Features
+
+* **DatePickerE:** Add focus trap ([4633f53](https://github.com/defencedigital/mod-uk-design-system/commit/4633f53868ce5ad3368c60f7bae385ecf3e84157))
+
+
+
+
+
 # [2.76.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.75.0...2.76.0) (2022-01-17)
 
 
