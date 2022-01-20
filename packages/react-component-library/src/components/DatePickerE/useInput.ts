@@ -30,7 +30,7 @@ export function useInput(
   setHasError: React.Dispatch<React.SetStateAction<boolean>>,
   dispatch: React.Dispatch<DatePickerEAction>
 ) {
-  const { from } = state
+  const { startDate } = state
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -50,8 +50,8 @@ export function useInput(
 
     dispatch({ type: DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE })
 
-    setHasError(from && !isValid(from))
-  }, [dispatch, from, isRange, setHasError])
+    setHasError(startDate && !isValid(startDate))
+  }, [dispatch, startDate, isRange, setHasError])
 
   const handleInputChange = useCallback(
     (event) => {

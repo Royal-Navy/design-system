@@ -159,7 +159,7 @@ const replaceInvalidDate = (date: Date) => (isValid(date) ? date : undefined)
 
 export const DatePickerE: React.FC<DatePickerEProps> = ({
   className,
-  endDate,
+  endDate: externalEndDate,
   format: datePickerFormat = DATE_FORMAT.SHORT,
   id: externalId,
   isDisabled,
@@ -168,7 +168,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   label = 'Date',
   onChange,
   onCalendarFocus,
-  startDate,
+  startDate: externalStartDate,
   initialIsOpen,
   disabledDays,
   initialMonth,
@@ -198,8 +198,8 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   )
 
   const [state, dispatch] = useDatePickerEReducer(
-    startDate,
-    endDate,
+    externalStartDate,
+    externalEndDate,
     initialStartDate,
     initialEndDate,
     datePickerFormat,
@@ -212,6 +212,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     disabledDays,
     onChange
   )
+  const { startDate, endDate } = state
 
   const [hasError, setHasError] = useState<boolean>(
     isInvalid || hasClass(className, 'is-invalid')
@@ -225,7 +226,6 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     handleDayMouseLeave,
   } = useRangeHoverOrFocusDate(isRange)
 
-  const { from, to } = state
   const { handleKeyDown, handleInputBlur, handleInputChange } = useInput(
     datePickerFormat,
     isRange,
@@ -236,11 +236,11 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   )
 
   const modifiers = {
-    start: replaceInvalidDate(from),
-    end: replaceInvalidDate(to),
+    start: replaceInvalidDate(startDate),
+    end: replaceInvalidDate(endDate),
   }
 
-  const hasContent = Boolean(from)
+  const hasContent = Boolean(startDate)
 
   const placeholder = !isRange ? datePickerFormat.toLowerCase() : null
 
@@ -333,8 +333,8 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
             weekdaysShort={WEEKDAY_TITLES}
             selectedDays={[
               {
-                from: replaceInvalidDate(from),
-                to: replaceInvalidDate(to) || rangeHoverOrFocusDate,
+                from: replaceInvalidDate(startDate),
+                to: replaceInvalidDate(endDate) || rangeHoverOrFocusDate,
               },
             ]}
             modifiers={modifiers}
@@ -347,11 +347,11 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
               const newState = handleDayClick(day)
               dispatch({ type: DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE })
 
-              if (newState.to || !isRange) {
+              if (newState.endDate || !isRange) {
                 setTimeout(() => close())
               }
             }}
-            initialMonth={replaceInvalidDate(from) || initialMonth}
+            initialMonth={replaceInvalidDate(startDate) || initialMonth}
             disabledDays={disabledDays}
             $isRange={isRange}
             $isVisible={isOpen}
