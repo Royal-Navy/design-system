@@ -1,7 +1,7 @@
 import { IconEvent } from '@defencedigital/icon-library'
 import { isValid } from 'date-fns'
 import FocusTrap from 'focus-trap-react'
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { Placement } from '@popperjs/core'
 import { DayModifiers, DayPickerProps } from 'react-day-picker'
 import { useBoolean } from 'usehooks-ts'
@@ -213,10 +213,9 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     onChange
   )
   const { startDate, endDate } = state
+  const hasError =
+    state.hasError || isInvalid || hasClass(className, 'is-invalid')
 
-  const [hasError, setHasError] = useState<boolean>(
-    isInvalid || hasClass(className, 'is-invalid')
-  )
   const [floatingBoxTarget, setFloatingBoxTarget] = useStatefulRef()
 
   const {
@@ -230,8 +229,6 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     datePickerFormat,
     isRange,
     handleDayClick,
-    state,
-    setHasError,
     dispatch
   )
 
@@ -343,8 +340,9 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
                 return
               }
 
-              setHasError(false)
               const newState = handleDayClick(day)
+
+              dispatch({ type: DATEPICKER_E_ACTION.REFRESH_HAS_ERROR })
               dispatch({ type: DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE })
 
               if (newState.endDate || !isRange) {

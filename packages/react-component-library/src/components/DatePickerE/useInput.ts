@@ -2,11 +2,7 @@ import { addHours, isValid, parse } from 'date-fns'
 import React, { useCallback } from 'react'
 
 import { RETURN } from '../../utils/keyCodes'
-import {
-  DATEPICKER_E_ACTION,
-  DatePickerEAction,
-  DatePickerEState,
-} from './types'
+import { DATEPICKER_E_ACTION, DatePickerEAction } from './types'
 
 function parseDate(datePickerFormat: string, value: string) {
   if (!value) {
@@ -26,12 +22,8 @@ export function useInput(
   datePickerFormat: string,
   isRange: boolean,
   handleDayClick: (date: Date) => void,
-  state: DatePickerEState,
-  setHasError: React.Dispatch<React.SetStateAction<boolean>>,
   dispatch: React.Dispatch<DatePickerEAction>
 ) {
-  const { startDate } = state
-
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
       if (isRange || event.keyCode !== RETURN) {
@@ -48,10 +40,9 @@ export function useInput(
       return
     }
 
+    dispatch({ type: DATEPICKER_E_ACTION.REFRESH_HAS_ERROR })
     dispatch({ type: DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE })
-
-    setHasError(startDate && !isValid(startDate))
-  }, [dispatch, startDate, isRange, setHasError])
+  }, [dispatch, isRange])
 
   const handleInputChange = useCallback(
     (event) => {
@@ -68,12 +59,8 @@ export function useInput(
 
       const date = parseDate(datePickerFormat, event.currentTarget.value)
       handleDayClick(date)
-
-      if (isValid(date)) {
-        setHasError(false)
-      }
     },
-    [isRange, dispatch, datePickerFormat, handleDayClick, setHasError]
+    [isRange, dispatch, datePickerFormat, handleDayClick]
   )
 
   return {

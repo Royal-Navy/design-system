@@ -12,11 +12,12 @@ function init({
   startDate,
   endDate,
   datePickerFormat,
-}: Omit<DatePickerEState, 'inputValue'>) {
+}: Omit<DatePickerEState, 'hasError' | 'inputValue'>) {
   return {
     startDate,
     endDate,
     datePickerFormat,
+    hasError: false,
     inputValue: formatDatesForInput(startDate, endDate, datePickerFormat),
   }
 }
@@ -30,6 +31,11 @@ function reducer(
       return init(action.data)
     case DATEPICKER_E_ACTION.UPDATE:
       return { ...state, ...action.data }
+    case DATEPICKER_E_ACTION.REFRESH_HAS_ERROR:
+      return {
+        ...state,
+        hasError: state.startDate && !isValid(state.startDate),
+      }
     case DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE:
       if (state.startDate && !isValid(state.startDate)) {
         return state
