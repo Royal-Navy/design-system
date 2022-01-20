@@ -13,11 +13,12 @@ export const StyledAction = styled.span<StyledDataListProps>`
       border-radius: 3px;
       padding: ${spacing('2')};
       display: flex;
+      align-items: center;
+      justify-content: center;
       background: ${color('neutral', '100')};
       transition: background-color ${animation('default')};
 
       svg {
-        transform: translate(-1px, 0);
         transition: transform ${animation('default')};
       }
     `}
@@ -27,7 +28,7 @@ export const StyledAction = styled.span<StyledDataListProps>`
     $isOpen &&
     css`
       svg {
-        transform: rotate(180deg) translate(0, 1px);
+        transform: rotate(180deg);
       }
     `}
 `

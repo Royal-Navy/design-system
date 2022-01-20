@@ -6,9 +6,20 @@ export interface StyledDataListProps {
 }
 
 export const StyledDataList = styled.dl<StyledDataListProps>`
+  overflow: hidden;
+  transition: 200ms max-height linear;
+
   ${({ $isCollapsible }) =>
     $isCollapsible &&
     css`
       border-radius: 3px;
+      max-height: 100%;
+    `}
+
+  ${({ $isCollapsible, $isOpen }) =>
+    $isCollapsible &&
+    !$isOpen &&
+    css`
+      max-height: 37px;
     `}
 `
