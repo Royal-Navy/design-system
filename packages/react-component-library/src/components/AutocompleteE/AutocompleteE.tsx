@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useCombobox } from 'downshift'
 
 import { getId } from '../../helpers'
@@ -9,9 +9,10 @@ import {
   SelectChildWithStringType,
   SelectLayout,
 } from '../SelectBase'
+import { NoResults } from './NoResults'
+import { useHighlightedIndex } from './hooks/useHighlightedIndex'
 import { useInput } from './hooks/useInput'
 import { useItems } from './hooks/useItems'
-import { NoResults } from './NoResults'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AutocompleteEProps extends SelectBaseProps {}
@@ -40,6 +41,7 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
     openMenu,
     reset,
     selectedItem,
+    setHighlightedIndex,
     toggleMenu,
   } = useCombobox({
     items,
@@ -54,12 +56,22 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
     },
   })
 
+  const { resetHighlightedIndex } = useHighlightedIndex(
+    highlightedIndex,
+    inputValue,
+    isOpen,
+    setHighlightedIndex
+  )
+
   return (
     <SelectLayout
       hasLabelFocus={isOpen}
       hasSelectedItem={!!inputValue}
       id={id}
       inputProps={getInputProps({
+        onBlur: () => {
+          resetHighlightedIndex()
+        },
         onFocus: () => {
           if (!isOpen) {
             openMenu()
