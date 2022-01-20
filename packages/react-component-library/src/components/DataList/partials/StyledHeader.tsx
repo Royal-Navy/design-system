@@ -7,6 +7,7 @@ import { StyledDataListProps } from './StyledDataList'
 const { animation, color, spacing } = selectors
 
 export const StyledHeader = styled.button<StyledDataListProps>`
+  position: relative;
   padding: ${spacing('3')} ${spacing('0')} ${spacing('3')} ${spacing('2')};
   display: flex;
   align-items: center;
@@ -14,6 +15,7 @@ export const StyledHeader = styled.button<StyledDataListProps>`
   width: 100%;
   border: none;
   pointer-events: none;
+  z-index: 1;
 
   ${({ $isCollapsible }) =>
     $isCollapsible &&

@@ -56,6 +56,7 @@ export const DataList: React.FC<DataListProps> = ({
   return (
     <StyledDataList
       $isCollapsible={isCollapsible}
+      $isOpen={open}
       data-testid="data-list"
       {...rest}
     >

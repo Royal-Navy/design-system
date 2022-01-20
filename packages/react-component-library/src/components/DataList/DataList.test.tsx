@@ -101,10 +101,7 @@ describe('DataList', () => {
     })
 
     it('should hide the items', () => {
-      expect(wrapper.getByTestId('data-list-sheet')).toHaveStyleRule(
-        'height',
-        '0'
-      )
+      expect(wrapper.getAllByTestId('data-list-item')[0]).toBeVisible()
     })
 
     it('should render the badge', () => {
@@ -138,10 +135,7 @@ describe('DataList', () => {
       })
 
       it('should show the items', () => {
-        expect(wrapper.getByTestId('data-list-sheet')).toHaveStyleRule(
-          'height',
-          'auto'
-        )
+        expect(wrapper.getAllByTestId('data-list-item')[0]).toBeVisible()
       })
     })
   })
