@@ -31,31 +31,31 @@ const disableDefinitionList = {
 
 export const Default: ComponentStory<typeof DataList> = (props) => (
   <DataList {...props}>
-    <DataListItem description="Name">Horatio Nelson</DataListItem>
-    <DataListItem description="Age">44</DataListItem>
-    <DataListItem description="Location">Portsmouth</DataListItem>
-    <DataListItem description="Departure">2230</DataListItem>
-    <DataListItem description="Water Temperature">25C</DataListItem>
-    <DataListItem description="Wind Speed">8Kts</DataListItem>
+    <DataListItem title="Name">Horatio Nelson</DataListItem>
+    <DataListItem title="Age">44</DataListItem>
+    <DataListItem title="Location">Portsmouth</DataListItem>
+    <DataListItem title="Departure">2230</DataListItem>
+    <DataListItem title="Water Temperature">25C</DataListItem>
+    <DataListItem title="Wind Speed">8Kts</DataListItem>
   </DataList>
 )
 
 Default.parameters = disableDefinitionList
 
 Default.args = {
-  title: 'Example Title',
+  description: 'Example description',
 }
 
 Default.storyName = 'Default'
 
 export const Collapsible: ComponentStory<typeof DataList> = () => (
-  <DataList title="Example Title" isCollapsible>
-    <DataListItem description="Name">Horatio Nelson</DataListItem>
-    <DataListItem description="Age">44</DataListItem>
-    <DataListItem description="Location">Portsmouth</DataListItem>
-    <DataListItem description="Departure">2230</DataListItem>
-    <DataListItem description="Water Temperature">25C</DataListItem>
-    <DataListItem description="Wind Speed">8Kts</DataListItem>
+  <DataList description="Example description" isCollapsible>
+    <DataListItem title="Name">Horatio Nelson</DataListItem>
+    <DataListItem title="Age">44</DataListItem>
+    <DataListItem title="Location">Portsmouth</DataListItem>
+    <DataListItem title="Departure">2230</DataListItem>
+    <DataListItem title="Water Temperature">25C</DataListItem>
+    <DataListItem title="Wind Speed">8Kts</DataListItem>
   </DataList>
 )
 

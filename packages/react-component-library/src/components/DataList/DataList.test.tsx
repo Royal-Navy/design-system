@@ -10,12 +10,12 @@ describe('DataList', () => {
   describe('default props', () => {
     beforeEach(() => {
       wrapper = render(
-        <DataList data-arbitrary="arbitrary" title="title">
-          <DataListItem data-arbitrary="arbitrary-item" description="One">
+        <DataList data-arbitrary="arbitrary" description="description">
+          <DataListItem data-arbitrary="arbitrary-item" title="One">
             1
           </DataListItem>
-          <DataListItem description="Two">2</DataListItem>
-          <DataListItem description="Three">3</DataListItem>
+          <DataListItem title="Two">2</DataListItem>
+          <DataListItem title="Three">3</DataListItem>
         </DataList>
       )
     })
@@ -52,8 +52,8 @@ describe('DataList', () => {
       )
     })
 
-    it('should render the title', () => {
-      expect(wrapper.queryByText('title')).toBeInTheDocument()
+    it('should render the description', () => {
+      expect(wrapper.queryByText('description')).toBeInTheDocument()
     })
 
     it('should not render the badge', () => {
@@ -69,10 +69,10 @@ describe('DataList', () => {
   describe('when collapsible', () => {
     beforeEach(() => {
       wrapper = render(
-        <DataList title="title" isCollapsible>
-          <DataListItem description="One">1</DataListItem>
-          <DataListItem description="Two">2</DataListItem>
-          <DataListItem description="Three">3</DataListItem>
+        <DataList description="title" isCollapsible>
+          <DataListItem title="One">1</DataListItem>
+          <DataListItem title="Two">2</DataListItem>
+          <DataListItem title="Three">3</DataListItem>
         </DataList>
       )
     })

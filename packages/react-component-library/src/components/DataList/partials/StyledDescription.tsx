@@ -3,7 +3,7 @@ import { selectors } from '@defencedigital/design-tokens'
 
 const { color, fontSize } = selectors
 
-export const StyledTitle = styled.h2`
+export const StyledDescription = styled.h2`
   color: ${color('neutral', '600')};
   font-size: ${fontSize('m')};
   font-weight: 500;

@@ -12,7 +12,7 @@ export interface DataListItemProps {
   /**
    * Key text to display for the item.
    */
-  description: string
+  title: string
   /**
    * Toggles whether the item is part of a collapsable list.
    * @private
@@ -22,7 +22,7 @@ export interface DataListItemProps {
 
 export const DataListItem: React.FC<DataListItemProps> = ({
   children,
-  description,
+  title,
   isCollapsible,
   ...rest
 }) => (
@@ -31,7 +31,7 @@ export const DataListItem: React.FC<DataListItemProps> = ({
     data-testid="data-list-item"
     {...rest}
   >
-    <StyledItemKey>{description}</StyledItemKey>
+    <StyledItemKey>{title}</StyledItemKey>
     <StyledItemValue>{children}</StyledItemValue>
   </StyledItem>
 )
