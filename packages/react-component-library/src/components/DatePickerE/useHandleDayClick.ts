@@ -47,7 +47,7 @@ function calculateDateValidity(
   return DATE_VALIDITY.VALID
 }
 
-export const useSelection = (
+export const useHandleDayClick = (
   state: DatePickerEState,
   dispatch: React.Dispatch<DatePickerEAction>,
   isRange: boolean,

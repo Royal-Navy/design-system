@@ -24,9 +24,9 @@ import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useFocus } from '../../hooks/useFocus'
 import { useFocusTrapOptions } from './useFocusTrapOptions'
+import { useHandleDayClick } from './useHandleDayClick'
 import { useInput } from './useInput'
 import { useRangeHoverOrFocusDate } from './useRangeHoverOrFocusDate'
-import { useSelection } from './useSelection'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
 import { useDatePickerEReducer } from './useDatePickerEReducer'
 
@@ -205,7 +205,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     datePickerFormat,
     isRange
   )
-  const handleDayClick = useSelection(
+  const handleDayClick = useHandleDayClick(
     state,
     dispatch,
     isRange,
