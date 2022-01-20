@@ -10,7 +10,7 @@ import { StyledBadge } from './partials/StyledBadge'
 import { StyledDataList } from './partials/StyledDataList'
 import { StyledHeader } from './partials/StyledHeader'
 import { StyledSheet } from './partials/StyledSheet'
-import { StyledTitle } from './partials/StyledTitle'
+import { StyledDescription } from './partials/StyledDescription'
 
 export interface DataListProps extends ComponentWithClass {
   /**
@@ -24,9 +24,9 @@ export interface DataListProps extends ComponentWithClass {
    */
   isCollapsible?: boolean
   /**
-   * Text title to display at the top of the component.
+   * Text description to display at the top of the component.
    */
-  title: string
+  description: string
 }
 
 function getAriaAttributes(isCollapsible: boolean, expanded: boolean) {
@@ -45,7 +45,7 @@ function getAriaAttributes(isCollapsible: boolean, expanded: boolean) {
 
 export const DataList: React.FC<DataListProps> = ({
   isCollapsible,
-  title,
+  description,
   children,
   ...rest
 }) => {
@@ -65,14 +65,14 @@ export const DataList: React.FC<DataListProps> = ({
         data-testid="data-list-header"
         {...ariaAttributes}
       >
-        <StyledTitle>
-          {title}
+        <StyledDescription>
+          {description}
           {isCollapsible && (
             <StyledBadge $isCollapsible={isCollapsible} size="small">
               {(children as React.ReactElement<DataListItemProps>[]).length}
             </StyledBadge>
           )}
-        </StyledTitle>
+        </StyledDescription>
         <StyledAction $isCollapsible={isCollapsible} $isOpen={open}>
           <IconKeyboardArrowDown aria-hidden data-testid="arrow-down-icon" />
         </StyledAction>
