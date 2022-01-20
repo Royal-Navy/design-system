@@ -1,9 +1,12 @@
 import { addHours, isValid, parse } from 'date-fns'
-import { useCallback } from 'react'
+import React, { useCallback } from 'react'
 
-import { StateObject } from './types'
-import { formatDatesForInput } from './formatDatesForInput'
 import { RETURN } from '../../utils/keyCodes'
+import {
+  DATEPICKER_E_ACTION,
+  DatePickerEAction,
+  DatePickerEState,
+} from './types'
 
 function parseDate(datePickerFormat: string, value: string) {
   if (!value) {
@@ -23,9 +26,9 @@ export function useInput(
   datePickerFormat: string,
   isRange: boolean,
   handleDayClick: (date: Date) => void,
-  state: StateObject,
+  state: DatePickerEState,
   setHasError: React.Dispatch<React.SetStateAction<boolean>>,
-  setInputValue: React.Dispatch<React.SetStateAction<string>>
+  dispatch: React.Dispatch<DatePickerEAction>
 ) {
   const { from } = state
 
@@ -35,11 +38,9 @@ export function useInput(
         return
       }
 
-      if (isValid(from)) {
-        setInputValue(formatDatesForInput(from, null, datePickerFormat))
-      }
+      dispatch({ type: DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE })
     },
-    [datePickerFormat, from, isRange, setInputValue]
+    [dispatch, isRange]
   )
 
   const handleInputBlur = useCallback(() => {
@@ -47,12 +48,10 @@ export function useInput(
       return
     }
 
-    if (isValid(from)) {
-      setInputValue(formatDatesForInput(from, null, datePickerFormat))
-    }
+    dispatch({ type: DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE })
 
     setHasError(from && !isValid(from))
-  }, [datePickerFormat, from, isRange, setHasError, setInputValue])
+  }, [dispatch, from, isRange, setHasError])
 
   const handleInputChange = useCallback(
     (event) => {
@@ -60,7 +59,13 @@ export function useInput(
         return
       }
 
-      setInputValue(event.currentTarget.value)
+      dispatch({
+        type: DATEPICKER_E_ACTION.UPDATE,
+        data: {
+          inputValue: event.currentTarget.value,
+        },
+      })
+
       const date = parseDate(datePickerFormat, event.currentTarget.value)
       handleDayClick(date)
 
@@ -68,7 +73,7 @@ export function useInput(
         setHasError(false)
       }
     },
-    [isRange, datePickerFormat, handleDayClick, setHasError, setInputValue]
+    [isRange, dispatch, datePickerFormat, handleDayClick, setHasError]
   )
 
   return {

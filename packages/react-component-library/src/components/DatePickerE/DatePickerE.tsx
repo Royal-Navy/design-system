@@ -9,7 +9,7 @@ import { useBoolean } from 'usehooks-ts'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
 import { DATE_VALIDITY, WEEKDAY_TITLES } from './constants'
-import { formatDatesForInput } from './formatDatesForInput'
+import { DATEPICKER_E_ACTION } from './types'
 import { hasClass } from '../../helpers'
 import { InlineButton } from '../InlineButtons/InlineButton'
 import { InputValidationProps } from '../../common/InputValidationProps'
@@ -28,6 +28,7 @@ import { useInput } from './useInput'
 import { useRangeHoverOrFocusDate } from './useRangeHoverOrFocusDate'
 import { useSelection } from './useSelection'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
+import { useDatePickerEReducer } from './useDatePickerEReducer'
 
 declare module 'react-day-picker' {
   // eslint-disable-next-line no-shadow
@@ -57,7 +58,10 @@ export interface DatePickerEProps
   extends ComponentWithClass,
     InputValidationProps {
   /**
-   * End date of the picker (only relevant in range mode).
+   * The end of the selected date range. (Only relevant if isRange is set.)
+   *
+   * If set, it should be kept updated with the `endDate` value provided
+   * by the `onChange` callback.
    */
   endDate?: Date
   /**
@@ -107,7 +111,11 @@ export interface DatePickerEProps
    */
   onCalendarFocus?: (e: React.SyntheticEvent) => void
   /**
-   * Start date of the picker (the first date selected by end user).
+   * The selected date, or the start of the selected date range if `isRange`
+   * is set.
+   *
+   * If set, it should be kept updated with the `startDate` provided
+   * by the `onChange` callback.
    */
   startDate?: Date
   /**
@@ -128,6 +136,14 @@ export interface DatePickerEProps
    * Optional month from which to display the picker calendar on first render.
    */
   initialMonth?: DayPickerProps['initialMonth']
+  /**
+   * Initial value for `startDate`. Only used when the `startDate` prop is not set.
+   */
+  initialStartDate?: Date
+  /**
+   * Initial value for `endDate`. Only used when the `endDate` prop is not set.
+   */
+  initialEndDate?: Date
   /**
    * Position to display the picker relative to the input.
    * NOTE: This is now calculated automatically by default based on available screen real-estate.
@@ -156,6 +172,8 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   initialIsOpen,
   disabledDays,
   initialMonth,
+  initialStartDate,
+  initialEndDate,
   placement = 'bottom-start',
   onBlur,
   // Formik can pass value – drop it to stop it being forwarded to the input
@@ -179,16 +197,19 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     isRange ? [buttonRef, inputRef] : [buttonRef]
   )
 
-  const [inputValue, setInputValue] = useState<string>(
-    formatDatesForInput(startDate, endDate, datePickerFormat)
-  )
-  const { state, handleDayClick } = useSelection(
+  const [state, dispatch] = useDatePickerEReducer(
     startDate,
     endDate,
-    isRange,
+    initialStartDate,
+    initialEndDate,
     datePickerFormat,
+    isRange
+  )
+  const handleDayClick = useSelection(
+    state,
+    dispatch,
+    isRange,
     disabledDays,
-    setInputValue,
     onChange
   )
 
@@ -211,7 +232,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     handleDayClick,
     state,
     setHasError,
-    setInputValue
+    dispatch
   )
 
   const modifiers = {
@@ -278,7 +299,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
                 }
               }}
               placeholder={placeholder}
-              value={inputValue}
+              value={state.inputValue}
               {...rest}
             />
           </StyledInputWrapper>
@@ -324,13 +345,8 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
 
               setHasError(false)
               const newState = handleDayClick(day)
-              setInputValue(
-                formatDatesForInput(
-                  newState.from,
-                  newState.to,
-                  datePickerFormat
-                )
-              )
+              dispatch({ type: DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE })
+
               if (newState.to || !isRange) {
                 setTimeout(() => close())
               }
