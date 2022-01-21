@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useMemo, useState } from 'react'
 
 export interface SidebarContextDefaults {
   isOpen?: boolean
@@ -27,11 +27,13 @@ export const SidebarProvider: React.FC<SidebarProviderProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(initialIsOpen)
   const [hasMouseOver, setHasMouseOver] = useState<boolean>(false)
+  const contextValue = useMemo(
+    () => ({ isOpen, setIsOpen, hasMouseOver, setHasMouseOver }),
+    [hasMouseOver, isOpen]
+  )
 
   return (
-    <SidebarContext.Provider
-      value={{ isOpen, setIsOpen, hasMouseOver, setHasMouseOver }}
-    >
+    <SidebarContext.Provider value={contextValue}>
       {children}
     </SidebarContext.Provider>
   )

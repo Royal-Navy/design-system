@@ -9,9 +9,11 @@ describe('Switch', () => {
   let wrapper: RenderResult
 
   describe('when the device is desktop', () => {
+    const contextValue = { deviceWidth: 768 }
+
     beforeEach(() => {
       wrapper = render(
-        <ReactResponsiveContext.Provider value={{ deviceWidth: 768 }}>
+        <ReactResponsiveContext.Provider value={contextValue}>
           <ResponsiveSwitch
             name="switch-name"
             options={[
@@ -41,9 +43,11 @@ describe('Switch', () => {
   })
 
   describe('when the device is mobile', () => {
+    const contextValue = { deviceWidth: 767 }
+
     beforeEach(() => {
       wrapper = render(
-        <ReactResponsiveContext.Provider value={{ deviceWidth: 767 }}>
+        <ReactResponsiveContext.Provider value={contextValue}>
           <ResponsiveSwitch
             name="switch-name"
             options={[
