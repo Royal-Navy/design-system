@@ -45,88 +45,84 @@ Invalid.args = {
 }
 
 export const WithFormikGroup: ComponentStory<typeof CheckboxE> = () => {
-  const CheckboxForm = () => {
-    interface Data {
-      [key: string]: string[]
-    }
-
-    const initialValues: Data = {
-      example: [],
-      exampleWithError: [],
-    }
-
-    const initialTouched = {
-      exampleWithError: true,
-    }
-
-    const validationSchema = yup.object().shape({
-      exampleWithError: yup.array().min(1),
-    })
-
-    const FormikCheckbox = withFormik(CheckboxE)
-
-    return (
-      <Formik
-        initialValues={initialValues}
-        initialTouched={initialTouched}
-        validateOnMount
-        onSubmit={action('onSubmit')}
-        validationSchema={validationSchema}
-      >
-        <Form>
-          <FormikGroupE label="Select an option">
-            <Field
-              component={FormikCheckbox}
-              name="example"
-              label="Option 1"
-              value="Option 1"
-              type="checkbox"
-            />
-            <Field
-              component={FormikCheckbox}
-              name="example"
-              label="Option 2"
-              value="Option 2"
-              type="checkbox"
-            />
-            <Field
-              component={FormikCheckbox}
-              name="example"
-              label="Option 3"
-              value="Option 3"
-              type="checkbox"
-            />
-          </FormikGroupE>
-          <br />
-          <FormikGroupE label="Select another option">
-            <Field
-              component={FormikCheckbox}
-              name="exampleWithError"
-              label="Another option 1"
-              value="Another option 1"
-              type="checkbox"
-            />
-            <Field
-              component={FormikCheckbox}
-              name="exampleWithError"
-              label="Another option 2"
-              value="Another option 2"
-              type="checkbox"
-            />
-            <Field
-              component={FormikCheckbox}
-              name="exampleWithError"
-              label="Another option 3"
-              value="3"
-              type="checkbox"
-            />
-          </FormikGroupE>
-        </Form>
-      </Formik>
-    )
+  interface Data {
+    [key: string]: string[]
   }
 
-  return <CheckboxForm />
+  const initialValues: Data = {
+    example: [],
+    exampleWithError: [],
+  }
+
+  const initialTouched = {
+    exampleWithError: true,
+  }
+
+  const validationSchema = yup.object().shape({
+    exampleWithError: yup.array().min(1),
+  })
+
+  const FormikCheckbox = withFormik(CheckboxE)
+
+  return (
+    <Formik
+      initialValues={initialValues}
+      initialTouched={initialTouched}
+      validateOnMount
+      onSubmit={action('onSubmit')}
+      validationSchema={validationSchema}
+    >
+      <Form>
+        <FormikGroupE label="Select an option">
+          <Field
+            component={FormikCheckbox}
+            name="example"
+            label="Option 1"
+            value="Option 1"
+            type="checkbox"
+          />
+          <Field
+            component={FormikCheckbox}
+            name="example"
+            label="Option 2"
+            value="Option 2"
+            type="checkbox"
+          />
+          <Field
+            component={FormikCheckbox}
+            name="example"
+            label="Option 3"
+            value="Option 3"
+            type="checkbox"
+          />
+        </FormikGroupE>
+        <br />
+        <FormikGroupE label="Select another option">
+          <Field
+            component={FormikCheckbox}
+            name="exampleWithError"
+            label="Another option 1"
+            value="Another option 1"
+            type="checkbox"
+          />
+          <Field
+            component={FormikCheckbox}
+            name="exampleWithError"
+            label="Another option 2"
+            value="Another option 2"
+            type="checkbox"
+          />
+          <Field
+            component={FormikCheckbox}
+            name="exampleWithError"
+            label="Another option 3"
+            value="3"
+            type="checkbox"
+          />
+        </FormikGroupE>
+      </Form>
+    </Formik>
+  )
 }
 
 WithFormikGroup.storyName = 'Formik Group'

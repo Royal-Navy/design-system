@@ -24,69 +24,41 @@ const LABEL = 'Example label'
 const DESCRIPTION = 'This is an example toast message'
 const DATE_TIME = new Date('Tue, 18 Feb 2020 14:36:43 GMT')
 
-export const Default: Story<Options> = (props) => {
-  const ToastButton: React.FC<Options> = ({
-    appearance = 'info',
-    autoDismiss = false,
-    onDismiss,
-  }) => {
-    const { addToast } = useToasts()
-
-    return (
-      <Button
-        onClick={(_) => {
-          addToast(DESCRIPTION, {
-            label: LABEL,
-            appearance,
-            autoDismiss,
-            onDismiss,
-          })
-        }}
-      >
-        Add Toast
-      </Button>
-    )
-  }
+const ToastButton: React.FC<Options> = ({
+  appearance = 'info',
+  autoDismiss = false,
+  onDismiss,
+}) => {
+  const { addToast } = useToasts()
 
   return (
-    <ToastProvider>
-      <ToastButton {...props} />
-    </ToastProvider>
+    <Button
+      onClick={(_) => {
+        addToast(DESCRIPTION, {
+          label: LABEL,
+          appearance,
+          autoDismiss,
+          onDismiss,
+        })
+      }}
+    >
+      Add Toast
+    </Button>
   )
 }
+export const Default: Story<Options> = (props) => (
+  <ToastProvider>
+    <ToastButton {...props} />
+  </ToastProvider>
+)
 
 Default.args = {}
 
-export const AutoDismiss: Story<Options> = (props) => {
-  const ToastButton: React.FC<Options> = ({
-    appearance = 'info',
-    autoDismiss = false,
-    onDismiss,
-  }) => {
-    const { addToast } = useToasts()
-
-    return (
-      <Button
-        onClick={(_) => {
-          addToast(DESCRIPTION, {
-            label: LABEL,
-            appearance,
-            autoDismiss,
-            onDismiss,
-          })
-        }}
-      >
-        Add Toast
-      </Button>
-    )
-  }
-
-  return (
-    <ToastProvider>
-      <ToastButton {...props} appearance="info" autoDismiss />
-    </ToastProvider>
-  )
-}
+export const AutoDismiss: Story<Options> = (props) => (
+  <ToastProvider>
+    <ToastButton {...props} appearance="info" autoDismiss />
+  </ToastProvider>
+)
 
 AutoDismiss.storyName = 'Auto dismiss'
 

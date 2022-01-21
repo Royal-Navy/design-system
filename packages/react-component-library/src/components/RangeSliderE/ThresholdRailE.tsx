@@ -21,32 +21,32 @@ export interface RailChunkEProps {
   $thresholdColor?: ThresholdColor
 }
 
+const RailChunkE: React.FC<RailChunkEProps> = ({
+  $left,
+  $width,
+  $maxWidth,
+  testId,
+  $thresholdColor,
+  children,
+}) => {
+  return (
+    <StyledRailChunk
+      $thresholdColor={$thresholdColor}
+      $left={`${$left}%`}
+      $width={`${$width}%`}
+      $maxWidth={`${$maxWidth}%`}
+      data-testid={`rangeslider-rail-${testId}`}
+    >
+      {children}
+    </StyledRailChunk>
+  )
+}
+
 export const ThresholdRailE: React.FC<ThresholdRailEProps> = ({
   thresholds,
 }) => {
   const singleThreshold = thresholds?.length === 1
   const doubleThreshold = thresholds?.length === 2
-
-  const RailChunkE: React.FC<RailChunkEProps> = ({
-    $left,
-    $width,
-    $maxWidth,
-    testId,
-    $thresholdColor,
-    children,
-  }) => {
-    return (
-      <StyledRailChunk
-        $thresholdColor={$thresholdColor}
-        $left={`${$left}%`}
-        $width={`${$width}%`}
-        $maxWidth={`${$maxWidth}%`}
-        data-testid={`rangeslider-rail-${testId}`}
-      >
-        {children}
-      </StyledRailChunk>
-    )
-  }
 
   return (
     <>
