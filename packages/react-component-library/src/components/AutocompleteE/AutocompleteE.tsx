@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useCombobox } from 'downshift'
 
 import { getId } from '../../helpers'
@@ -11,8 +11,7 @@ import {
 } from '../SelectBase'
 import { NoResults } from './NoResults'
 import { useHighlightedIndex } from './hooks/useHighlightedIndex'
-import { useInput } from './hooks/useInput'
-import { useItems } from './hooks/useItems'
+import { useAutocomplete } from './hooks/useAutocomplete'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AutocompleteEProps extends SelectBaseProps {}
@@ -24,10 +23,8 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
   value,
   ...rest
 }) => {
-  const { items, onInputValueChange } = useItems(
-    React.Children.toArray(children)
-  )
-  const { inputRef, onIsOpenChange } = useInput()
+  const { inputRef, items, onInputValueChange, onIsOpenChange } =
+    useAutocomplete(React.Children.toArray(children))
 
   const {
     getComboboxProps,
@@ -60,6 +57,7 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
     highlightedIndex,
     inputValue,
     isOpen,
+    items,
     setHighlightedIndex
   )
 

@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { UseComboboxStateChange } from 'downshift'
 
+import { findIndexOfInputValue } from '../helpers'
 import { SelectChildWithStringType } from '../../SelectBase'
 
-export function useItems(children: SelectChildWithStringType[]): {
+export function useAutocomplete(children: SelectChildWithStringType[]): {
+  inputRef: React.RefObject<HTMLInputElement>
   items: SelectChildWithStringType[]
   onInputValueChange: (
     changes: UseComboboxStateChange<SelectChildWithStringType>
   ) => void
+  onIsOpenChange: (
+    changes: UseComboboxStateChange<SelectChildWithStringType>
+  ) => void
 } {
+  const inputRef = useRef<HTMLInputElement>()
   const [items, setItems] = useState<SelectChildWithStringType[]>(children)
 
   function onInputValueChange({
@@ -25,8 +31,20 @@ export function useItems(children: SelectChildWithStringType[]): {
     )
   }
 
+  function onIsOpenChange({
+    isOpen,
+  }: UseComboboxStateChange<SelectChildWithStringType>) {
+    if (isOpen) {
+      inputRef.current.focus()
+    } else {
+      inputRef.current.blur()
+    }
+  }
+
   return {
+    inputRef,
     items,
     onInputValueChange,
+    onIsOpenChange,
   }
 }
