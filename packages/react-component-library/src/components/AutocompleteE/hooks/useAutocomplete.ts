@@ -4,7 +4,11 @@ import { UseComboboxStateChange } from 'downshift'
 import { findIndexOfInputValue } from '../helpers'
 import { SelectChildWithStringType } from '../../SelectBase'
 
-export function useAutocomplete(children: SelectChildWithStringType[]): {
+export function useAutocomplete(
+  children: SelectChildWithStringType[],
+  isInvalid: boolean
+): {
+  hasError: boolean
   inputRef: React.RefObject<HTMLInputElement>
   items: SelectChildWithStringType[]
   onInputValueChange: (
@@ -14,34 +18,57 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
     changes: UseComboboxStateChange<SelectChildWithStringType>
   ) => void
 } {
+  const [hasError, setHasError] = useState<boolean>(isInvalid)
   const inputRef = useRef<HTMLInputElement>()
   const [items, setItems] = useState<SelectChildWithStringType[]>(children)
 
   function onInputValueChange({
     inputValue,
+    isOpen,
   }: UseComboboxStateChange<SelectChildWithStringType>) {
-    setItems(
-      children.filter((item) => {
-        if (!React.isValidElement(item)) {
-          return false
-        }
-        const filter = inputValue.toLowerCase()
-        return item.props.children.toLowerCase().indexOf(filter) > -1
-      })
-    )
+    if (isOpen) {
+      setItems(
+        children.filter((item) => {
+          if (!React.isValidElement(item)) {
+            return false
+          }
+          const filter = inputValue.toLowerCase()
+          return item.props.children.toLowerCase().indexOf(filter) > -1
+        })
+      )
+    } else {
+      setHasError(getHasError(inputValue))
+    }
+  }
+
+  function getHasError(inputValue: string): boolean {
+    if (!inputValue) {
+      return false
+    }
+
+    return findIndexOfInputValue(items, inputValue) === -1
   }
 
   function onIsOpenChange({
+    inputValue,
     isOpen,
   }: UseComboboxStateChange<SelectChildWithStringType>) {
     if (isOpen) {
       inputRef.current.focus()
     } else {
+      const newHasError = getHasError(inputValue)
+      setHasError(newHasError)
+
+      if (!newHasError) {
+        setItems(children)
+      }
+
       inputRef.current.blur()
     }
   }
 
   return {
+    hasError,
     inputRef,
     items,
     onInputValueChange,

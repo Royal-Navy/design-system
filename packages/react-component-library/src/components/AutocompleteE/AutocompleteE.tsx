@@ -16,15 +16,53 @@ import { useAutocomplete } from './hooks/useAutocomplete'
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AutocompleteEProps extends SelectBaseProps {}
 
+function onBlur(resetHighlightedIndex: () => void): () => void {
+  return () => {
+    resetHighlightedIndex()
+  }
+}
+
+function onFocus(isOpen: boolean, openMenu: () => void): () => void {
+  return () => {
+    if (!isOpen) {
+      openMenu()
+    }
+  }
+}
+
+function onKeyDown(
+  highlightedIndex: number,
+  items: SelectChildWithStringType[],
+  setInputValue: (inputValue: string) => void
+): (e: React.KeyboardEvent<HTMLInputElement>) => void {
+  return (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === 'Tab' && highlightedIndex !== -1) {
+      const item = React.Children.toArray(items)[highlightedIndex]
+      if (React.isValidElement(item)) {
+        setInputValue(item.props.children)
+      }
+    }
+  }
+}
+
+function onMouseDown(toggleMenu: () => void): (e: React.MouseEvent) => void {
+  return (e: React.MouseEvent) => {
+    toggleMenu()
+    e.stopPropagation()
+    e.preventDefault()
+  }
+}
+
 export const AutocompleteE: React.FC<AutocompleteEProps> = ({
   children,
   id = getId('autocomplete'),
+  isInvalid,
   onChange,
   value,
   ...rest
 }) => {
-  const { inputRef, items, onInputValueChange, onIsOpenChange } =
-    useAutocomplete(React.Children.toArray(children))
+  const { hasError, inputRef, items, onInputValueChange, onIsOpenChange } =
+    useAutocomplete(React.Children.toArray(children), isInvalid)
 
   const {
     getComboboxProps,
@@ -39,6 +77,7 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
     reset,
     selectedItem,
     setHighlightedIndex,
+    setInputValue,
     toggleMenu,
   } = useCombobox({
     items,
@@ -67,22 +106,14 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
       hasSelectedItem={!!inputValue}
       id={id}
       inputProps={getInputProps({
-        onBlur: () => {
-          resetHighlightedIndex()
-        },
-        onFocus: () => {
-          if (!isOpen) {
-            openMenu()
-          }
-        },
-        onMouseDown: (e: React.MouseEvent) => {
-          toggleMenu()
-          e.stopPropagation()
-          e.preventDefault()
-        },
+        onBlur: onBlur(resetHighlightedIndex),
+        onFocus: onFocus(isOpen, openMenu),
+        onKeyDown: onKeyDown(highlightedIndex, items, setInputValue),
+        onMouseDown: onMouseDown(toggleMenu),
         ref: inputRef,
       })}
       inputWrapperProps={getComboboxProps()}
+      isInvalid={hasError}
       isOpen={isOpen}
       menuProps={getMenuProps()}
       onClearButtonClick={() => {
