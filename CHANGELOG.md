@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.78.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.77.0...2.78.0) (2022-01-21)
+
+
+### Bug Fixes
+
+* **AutocompleteE:** Fix transformed label ([9a95ac4](https://github.com/defencedigital/mod-uk-design-system/commit/9a95ac48fb64926860e3ec4bb2f65dee6057b145))
+
+
+### Features
+
+* **AutocompleteE:** Highlight first item ([7f21e90](https://github.com/defencedigital/mod-uk-design-system/commit/7f21e907cbd3c8494588e6a162b2252217f325a4))
+* **SelectE:** Add No results ([0cb70fc](https://github.com/defencedigital/mod-uk-design-system/commit/0cb70fc8445a50b784b3ce82519ebd9f8e34f6b9))
+
+
+
+
+
 # [2.77.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.76.0...2.77.0) (2022-01-19)
 
 
