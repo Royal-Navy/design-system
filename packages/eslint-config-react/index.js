@@ -30,6 +30,7 @@ module.exports = {
     'prettier/prettier': 0,
     'react/button-has-type': 0,
     'react/destructuring-assignment': 0,
+    'react/function-component-definition': 0,
     'react/jsx-filename-extension': [
       1,
       { extensions: ['.js', '.jsx', '.tsx'] },
