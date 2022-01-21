@@ -1,1 +1,1 @@
-export * from './DismissableBanner'
+export * from './DismissibleBanner'

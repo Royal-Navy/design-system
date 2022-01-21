@@ -22,14 +22,14 @@ describe('DismissibleBanner', () => {
     })
 
     it('should render the title', () => {
-      expect(wrapper.getByTestId('dimissablebanner-title')).toHaveTextContent(
+      expect(wrapper.getByTestId('dimissiblebanner-title')).toHaveTextContent(
         'title'
       )
     })
 
     it('should render the content', () => {
       expect(
-        wrapper.getByTestId('dimissablebanner-description')
+        wrapper.getByTestId('dimissiblebanner-description')
       ).toHaveTextContent('content')
     })
 
@@ -46,7 +46,7 @@ describe('DismissibleBanner', () => {
 
     describe("when the `Don't show this again` checkbox is clicked before the component is dismissed", () => {
       beforeEach(() => {
-        wrapper.getByTestId('checkbox').click()
+        wrapper.getByTestId('dimissiblebanner-dontshow').click()
         wrapper.getByText('Dismiss').click()
       })
 
@@ -68,12 +68,12 @@ describe('DismissibleBanner', () => {
     })
 
     it('should render the title', () => {
-      expect(wrapper.queryAllByTestId('dimissablebanner-title')).toHaveLength(0)
+      expect(wrapper.queryAllByTestId('dimissiblebanner-title')).toHaveLength(0)
     })
 
     it('should render the content', () => {
       expect(
-        wrapper.queryAllByTestId('dimissablebanner-description')
+        wrapper.queryAllByTestId('dimissiblebanner-description')
       ).toHaveLength(0)
     })
 
@@ -112,7 +112,7 @@ describe('DismissibleBanner', () => {
     })
 
     it('should spread arbitrary props', () => {
-      expect(wrapper.getByTestId('dimissablebanner-wrapper')).toHaveAttribute(
+      expect(wrapper.getByTestId('dimissiblebanner-wrapper')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
       )

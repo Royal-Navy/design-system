@@ -72,14 +72,14 @@ export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
   }
 
   return (
-    <StyledDismissibleBanner data-testid="dimissablebanner-wrapper" {...rest}>
+    <StyledDismissibleBanner data-testid="dimissiblebanner-wrapper" {...rest}>
       <StyledContent>
         {title && (
           <>
-            <StyledTitle data-testid="dimissablebanner-title">
+            <StyledTitle data-testid="dimissiblebanner-title">
               {title}
             </StyledTitle>
-            <StyledDescription data-testid="dimissablebanner-description">
+            <StyledDescription data-testid="dimissiblebanner-description">
               {children}
             </StyledDescription>
           </>
@@ -89,13 +89,15 @@ export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
       <StyledFooter>
         {hasCheckbox && (
           <StyledDontShow
+            data-testid="dimissiblebanner-dontshow"
             label="Don't show this again"
-            name="dimissablebanner-dontshow"
+            name="dimissiblebanner-dontshow"
             onChange={() => setCanShowAgain(!canShowAgain)}
           />
         )}
         {!hasCheckbox && <span />}
         <Button
+          data-testid="dimissiblebanner-dismiss"
           onClick={onButtonClick}
           size={BUTTON_SIZE.SMALL}
           variant={BUTTON_VARIANT.SECONDARY}
