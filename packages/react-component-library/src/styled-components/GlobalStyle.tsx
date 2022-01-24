@@ -12,7 +12,7 @@ export interface GlobalStyleProviderProps {
   theme?: Record<string, any>
 }
 
-const { fontSize } = selectors
+const { fontSize, color } = selectors
 
 /**
  * Globally setting `border-box`
@@ -32,12 +32,26 @@ const BoxSizing = createGlobalStyle`
 `
 
 /**
+ * Globally setting anchor styles
+ */
+const Hyperlinks = createGlobalStyle`
+  a {
+    color: ${color('action', '500')};
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+`
+
+/**
  * Generate base font size
  */
 const Fonts = createGlobalStyle`
   html {
     font-family: "lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: ${fontSize('base')};
+    font-size: ${fontSize('m')};
   }
 
   h1,
@@ -98,6 +112,7 @@ export const GlobalStyleProvider: React.FC<GlobalStyleProviderProps> = ({
     <GlobalStyleContext.Provider value={{ theme }}>
       <Normalize />
       <BoxSizing />
+      <Hyperlinks />
       <Fonts />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </GlobalStyleContext.Provider>

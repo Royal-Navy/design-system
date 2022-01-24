@@ -1,5 +1,6 @@
-import '@defencedigital/css-framework/index.scss'
 import '@defencedigital/fonts'
+
+import { GlobalStyleProvider } from '../src/styled-components/GlobalStyle'
 
 /**
  * Hacky way of clicking on Docs button on first load of page.
@@ -50,3 +51,11 @@ export const parameters = {
     },
   },
 }
+
+export const decorators = [
+  (Story) => (
+    <GlobalStyleProvider>
+      <Story />
+    </GlobalStyleProvider>
+  ),
+]

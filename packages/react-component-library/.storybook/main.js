@@ -2,8 +2,6 @@ const newRelic = require('./newRelic')
 
 module.exports = {
   addons: [
-    '@storybook/addon-postcss',
-    '@storybook/preset-scss',
     {
       name: '@storybook/addon-docs',
       options: {
