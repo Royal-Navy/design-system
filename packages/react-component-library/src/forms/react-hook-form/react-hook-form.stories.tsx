@@ -185,13 +185,14 @@ export const Example: React.FC<unknown> = () => {
               return true
             },
           }}
-          render={({ onChange }) => {
+          render={({ onChange, value }) => {
             return (
               <DatePickerE
+                disabledDays={{ before: MINIMUM_DATE }}
                 onChange={({ startDate }) => {
                   onChange(startDate)
                 }}
-                disabledDays={{ before: MINIMUM_DATE }}
+                startDate={value}
               />
             )
           }}

@@ -1,34 +1,31 @@
-import { isValid } from 'date-fns'
-import { useEffect, useState } from 'react'
-import {
-  DateUtils,
-  DayPickerProps,
-  ModifiersUtils,
-  RangeModifier,
-} from 'react-day-picker'
+import { isValid, max, min } from 'date-fns'
+import React from 'react'
+import { DayPickerProps, ModifiersUtils } from 'react-day-picker'
 
 import {
   DatePickerEDateValidityType,
   DatePickerEOnChangeData,
 } from './DatePickerE'
 import { DATE_VALIDITY } from './constants'
-import { formatDatesForInput } from './formatDatesForInput'
-import { StateObject } from './types'
+import {
+  DATEPICKER_E_ACTION,
+  DatePickerEAction,
+  DatePickerEState,
+} from './types'
 
-function getNewState(
-  isRange: boolean,
-  day: Date,
-  state: StateObject
-): StateObject {
-  if (isRange) {
-    if (state.from && state.to) {
-      return { from: day }
-    }
-
-    return DateUtils.addDayToRange(day, state as RangeModifier)
+function getNewState(isRange: boolean, day: Date, state: DatePickerEState) {
+  if (!isRange) {
+    return { from: day, to: day }
   }
 
-  return { from: day, to: day }
+  if (state.from && !state.to) {
+    return {
+      from: min([state.from, day]),
+      to: max([state.from, day]),
+    }
+  }
+
+  return { from: day, to: null }
 }
 
 function calculateDateValidity(
@@ -51,34 +48,19 @@ function calculateDateValidity(
 }
 
 export const useSelection = (
-  startDate: Date,
-  endDate: Date,
+  state: DatePickerEState,
+  dispatch: React.Dispatch<DatePickerEAction>,
   isRange: boolean,
-  datePickerFormat: string,
   disabledDays: DayPickerProps['disabledDays'],
-  setInputValue: React.Dispatch<React.SetStateAction<string>>,
   onChange?: (data: DatePickerEOnChangeData) => void
-): {
-  handleDayClick: (day: Date) => StateObject
-  state: StateObject
-} => {
-  const [state, setState] = useState<StateObject>({
-    from: startDate,
-    to: endDate,
-  })
-
-  useEffect(() => {
-    setState({
-      from: startDate,
-      to: endDate,
-    })
-
-    setInputValue(formatDatesForInput(startDate, endDate, datePickerFormat))
-  }, [startDate, endDate, datePickerFormat, setInputValue])
-
-  function handleDayClick(day: Date): StateObject {
+): ((day: Date) => { from: Date; to: Date }) => {
+  function handleDayClick(day: Date) {
     const newState = getNewState(isRange, day, state)
-    setState(newState)
+
+    dispatch({
+      type: DATEPICKER_E_ACTION.UPDATE,
+      data: newState,
+    })
 
     const { from: newFrom, to: newTo } = newState
 
@@ -94,8 +76,5 @@ export const useSelection = (
     return newState
   }
 
-  return {
-    handleDayClick,
-    state,
-  }
+  return handleDayClick
 }

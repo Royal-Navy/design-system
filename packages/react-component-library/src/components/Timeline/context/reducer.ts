@@ -142,6 +142,6 @@ export function reducer(
         ),
       }
     default:
-      throw new Error('Unknown action type')
+      throw new Error('Unknown reducer action type')
   }
 }
