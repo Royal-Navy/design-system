@@ -22,11 +22,6 @@ const ERROR_BOX_SHADOW = `0 0 0 ${
   BORDER_WIDTH[COMPONENT_SIZE.FORMS]
 } ${ColorDanger800.toUpperCase()}`
 
-function click(element: HTMLElement) {
-  fireEvent.mouseDown(element)
-  fireEvent.click(element)
-}
-
 function formatDate(date: Date | null) {
   return isValid(date) ? format(date, 'dd/MM/yyyy') : ''
 }
@@ -293,7 +288,7 @@ describe('DatePickerE', () => {
 
               describe('and clicks on a day', () => {
                 beforeEach(() => {
-                  click(wrapper.getByText('31'))
+                  userEvent.click(wrapper.getByText('31'))
                 })
 
                 it('set the value of the component to this date', () => {
@@ -399,7 +394,7 @@ describe('DatePickerE', () => {
         describe('and a day is selected', () => {
           beforeEach(() => {
             userEvent.click(wrapper.getByTestId('datepicker-input-button'))
-            click(wrapper.getByText('21'))
+            userEvent.click(wrapper.getByText('21'))
           })
 
           it('set the value of the component to the selected date', () => {
@@ -681,7 +676,7 @@ describe('DatePickerE', () => {
 
       describe('when the first day is clicked', () => {
         beforeEach(() => {
-          click(wrapper.getByText('1'))
+          userEvent.click(wrapper.getByText('1'))
         })
 
         it('updates the input value', () => {
@@ -816,7 +811,7 @@ describe('DatePickerE', () => {
 
       describe('and clicks on a second date', () => {
         beforeEach(() => {
-          click(wrapper.getByText('20'))
+          userEvent.click(wrapper.getByText('20'))
         })
 
         it('closes the day picker', () => {
@@ -854,7 +849,7 @@ describe('DatePickerE', () => {
 
       describe('and clicks on a date less than the first', () => {
         beforeEach(() => {
-          click(wrapper.getByText('9'))
+          userEvent.click(wrapper.getByText('9'))
         })
 
         it('closes the day picker', () => {
@@ -1004,7 +999,9 @@ describe('DatePickerE', () => {
 
     describe('and a disabled day is clicked', () => {
       beforeEach(() => {
-        click(wrapper.getByText('12'))
+        userEvent.click(wrapper.getByText('12'), undefined, {
+          skipPointerEventsCheck: true,
+        })
       })
 
       it('does not set the picker to that day', () => {

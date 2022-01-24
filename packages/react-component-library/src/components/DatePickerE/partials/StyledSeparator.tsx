@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-const { color, spacing } = selectors
+const { color } = selectors
 
 export const StyledSeparator = styled.div`
   width: 1px;

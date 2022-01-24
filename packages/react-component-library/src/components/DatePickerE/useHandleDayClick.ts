@@ -13,19 +13,23 @@ import {
   DatePickerEState,
 } from './types'
 
-function getNewState(isRange: boolean, day: Date, state: DatePickerEState) {
+function getNewState(
+  isRange: boolean,
+  day: Date,
+  { startDate, endDate }: DatePickerEState
+) {
   if (!isRange) {
-    return { from: day, to: day }
+    return { startDate: day, endDate: day }
   }
 
-  if (state.from && !state.to) {
+  if (startDate && !endDate) {
     return {
-      from: min([state.from, day]),
-      to: max([state.from, day]),
+      startDate: min([startDate, day]),
+      endDate: max([startDate, day]),
     }
   }
 
-  return { from: day, to: null }
+  return { startDate: day, endDate: null }
 }
 
 function calculateDateValidity(
@@ -47,13 +51,13 @@ function calculateDateValidity(
   return DATE_VALIDITY.VALID
 }
 
-export const useSelection = (
+export const useHandleDayClick = (
   state: DatePickerEState,
   dispatch: React.Dispatch<DatePickerEAction>,
   isRange: boolean,
   disabledDays: DayPickerProps['disabledDays'],
   onChange?: (data: DatePickerEOnChangeData) => void
-): ((day: Date) => { from: Date; to: Date }) => {
+): ((day: Date) => { startDate: Date; endDate: Date }) => {
   function handleDayClick(day: Date) {
     const newState = getNewState(isRange, day, state)
 
@@ -62,14 +66,14 @@ export const useSelection = (
       data: newState,
     })
 
-    const { from: newFrom, to: newTo } = newState
+    const { startDate, endDate } = newState
 
     if (onChange) {
       onChange({
-        startDate: newFrom,
-        startDateValidity: calculateDateValidity(newFrom, disabledDays),
-        endDate: newTo,
-        endDateValidity: calculateDateValidity(newTo, disabledDays),
+        startDate,
+        startDateValidity: calculateDateValidity(startDate, disabledDays),
+        endDate,
+        endDateValidity: calculateDateValidity(endDate, disabledDays),
       })
     }
 

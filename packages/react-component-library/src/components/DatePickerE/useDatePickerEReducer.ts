@@ -9,15 +9,16 @@ import {
 } from './types'
 
 function init({
-  from,
-  to,
+  startDate,
+  endDate,
   datePickerFormat,
-}: Omit<DatePickerEState, 'inputValue'>) {
+}: Omit<DatePickerEState, 'hasError' | 'inputValue'>) {
   return {
-    from,
-    to,
+    startDate,
+    endDate,
     datePickerFormat,
-    inputValue: formatDatesForInput(from, to, datePickerFormat),
+    hasError: false,
+    inputValue: formatDatesForInput(startDate, endDate, datePickerFormat),
   }
 }
 
@@ -30,16 +31,21 @@ function reducer(
       return init(action.data)
     case DATEPICKER_E_ACTION.UPDATE:
       return { ...state, ...action.data }
+    case DATEPICKER_E_ACTION.REFRESH_HAS_ERROR:
+      return {
+        ...state,
+        hasError: state.startDate && !isValid(state.startDate),
+      }
     case DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE:
-      if (state.from && !isValid(state.from)) {
+      if (state.startDate && !isValid(state.startDate)) {
         return state
       }
 
       return {
         ...state,
         inputValue: formatDatesForInput(
-          state.from,
-          state.to,
+          state.startDate,
+          state.endDate,
           state.datePickerFormat
         ),
       }
@@ -69,8 +75,8 @@ function shouldReset(
   }
 
   return (
-    !areDatesEqual(state.from, startDate) ||
-    (isRange && !areDatesEqual(state.to, endDate)) ||
+    !areDatesEqual(state.startDate, startDate) ||
+    (isRange && !areDatesEqual(state.endDate, endDate)) ||
     datePickerFormat !== state.datePickerFormat
   )
 }
@@ -86,8 +92,8 @@ export function useDatePickerEReducer(
   const [state, dispatch] = useReducer(
     reducer,
     {
-      from: startDate === undefined ? initialStartDate : startDate,
-      to: endDate === undefined ? initialEndDate : endDate,
+      startDate: startDate === undefined ? initialStartDate : startDate,
+      endDate: endDate === undefined ? initialEndDate : endDate,
       datePickerFormat,
     },
     init
@@ -98,8 +104,8 @@ export function useDatePickerEReducer(
       dispatch({
         type: DATEPICKER_E_ACTION.RESET,
         data: {
-          from: startDate,
-          to: endDate,
+          startDate,
+          endDate,
           datePickerFormat,
         },
       })
