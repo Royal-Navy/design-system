@@ -12,7 +12,7 @@ export interface GlobalStyleProviderProps {
   theme?: Record<string, any>
 }
 
-const { fontSize } = selectors
+const { fontSize, color } = selectors
 
 /**
  * Globally setting `border-box`
@@ -28,6 +28,20 @@ const BoxSizing = createGlobalStyle`
     &::after {
       box-sizing: border-box;
     }
+  }
+`
+
+/**
+ * Globally setting anchor styles
+ */
+const Hyperlinks = createGlobalStyle`
+  a {
+    color: ${color('action', '500')};
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 `
 
@@ -98,6 +112,7 @@ export const GlobalStyleProvider: React.FC<GlobalStyleProviderProps> = ({
     <GlobalStyleContext.Provider value={{ theme }}>
       <Normalize />
       <BoxSizing />
+      <Hyperlinks />
       <Fonts />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </GlobalStyleContext.Provider>
