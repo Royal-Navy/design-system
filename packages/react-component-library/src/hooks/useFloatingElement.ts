@@ -7,7 +7,7 @@ import { useStatefulRef } from './useStatefulRef'
 export const useFloatingElement = (
   placement: Placement = 'bottom',
   strategy: PositioningStrategy = 'fixed',
-  externalTargetElement?: Element
+  externalTargetElement: Element = undefined
 ): {
   targetElementRef: Dispatch<SetStateAction<Element>>
   floatingElementRef: Dispatch<SetStateAction<HTMLElement | null>>

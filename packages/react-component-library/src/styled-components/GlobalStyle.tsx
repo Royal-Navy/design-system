@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import React, { createContext, useMemo } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
 import { selectors, lightTheme } from '@defencedigital/design-tokens'
@@ -108,8 +108,15 @@ export const GlobalStyleProvider: React.FC<GlobalStyleProviderProps> = ({
   children,
   theme = lightTheme,
 }) => {
+  const contextValue = useMemo(
+    () => ({
+      theme,
+    }),
+    [theme]
+  )
+
   return (
-    <GlobalStyleContext.Provider value={{ theme }}>
+    <GlobalStyleContext.Provider value={contextValue}>
       <Normalize />
       <BoxSizing />
       <Hyperlinks />

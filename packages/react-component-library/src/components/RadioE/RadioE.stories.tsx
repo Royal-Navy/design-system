@@ -43,82 +43,78 @@ Invalid.args = {
 }
 
 export const WithFormikGroup: ComponentStory<typeof RadioE> = () => {
-  const RadioForm = () => {
-    interface Data {
-      [key: string]: string
-    }
-
-    const initialValues: Data = {
-      example: '',
-      exampleWithError: '',
-    }
-
-    const initialTouched = {
-      exampleWithError: true,
-    }
-
-    const validationSchema = yup.object().shape({
-      exampleWithError: yup.string().required(),
-    })
-
-    const FormikRadio = withFormik(RadioE)
-
-    return (
-      <Formik
-        initialValues={initialValues}
-        initialTouched={initialTouched}
-        validateOnMount
-        onSubmit={action('onSubmit')}
-        validationSchema={validationSchema}
-      >
-        <Form>
-          <FormikGroupE label="Select an option">
-            <Field
-              component={FormikRadio}
-              name="example"
-              label="Option 1"
-              value="Option 1"
-            />
-            <Field
-              component={FormikRadio}
-              name="example"
-              label="Option 2"
-              value="Option 2"
-            />
-            <Field
-              component={FormikRadio}
-              name="example"
-              label="Option 3"
-              value="Option 3"
-            />
-          </FormikGroupE>
-          <br />
-          <FormikGroupE label="Select another option">
-            <Field
-              component={FormikRadio}
-              name="exampleWithError"
-              label="Another option 1"
-              value="Another option 1"
-            />
-            <Field
-              component={FormikRadio}
-              name="exampleWithError"
-              label="Another option 2"
-              value="Another option 2"
-            />
-            <Field
-              component={FormikRadio}
-              name="exampleWithError"
-              label="Another option 3"
-              value="3"
-            />
-          </FormikGroupE>
-        </Form>
-      </Formik>
-    )
+  interface Data {
+    [key: string]: string
   }
 
-  return <RadioForm />
+  const initialValues: Data = {
+    example: '',
+    exampleWithError: '',
+  }
+
+  const initialTouched = {
+    exampleWithError: true,
+  }
+
+  const validationSchema = yup.object().shape({
+    exampleWithError: yup.string().required(),
+  })
+
+  const FormikRadio = withFormik(RadioE)
+
+  return (
+    <Formik
+      initialValues={initialValues}
+      initialTouched={initialTouched}
+      validateOnMount
+      onSubmit={action('onSubmit')}
+      validationSchema={validationSchema}
+    >
+      <Form>
+        <FormikGroupE label="Select an option">
+          <Field
+            component={FormikRadio}
+            name="example"
+            label="Option 1"
+            value="Option 1"
+          />
+          <Field
+            component={FormikRadio}
+            name="example"
+            label="Option 2"
+            value="Option 2"
+          />
+          <Field
+            component={FormikRadio}
+            name="example"
+            label="Option 3"
+            value="Option 3"
+          />
+        </FormikGroupE>
+        <br />
+        <FormikGroupE label="Select another option">
+          <Field
+            component={FormikRadio}
+            name="exampleWithError"
+            label="Another option 1"
+            value="Another option 1"
+          />
+          <Field
+            component={FormikRadio}
+            name="exampleWithError"
+            label="Another option 2"
+            value="Another option 2"
+          />
+          <Field
+            component={FormikRadio}
+            name="exampleWithError"
+            label="Another option 3"
+            value="3"
+          />
+        </FormikGroupE>
+      </Form>
+    </Formik>
+  )
 }
 
 WithFormikGroup.storyName = 'Formik Group'

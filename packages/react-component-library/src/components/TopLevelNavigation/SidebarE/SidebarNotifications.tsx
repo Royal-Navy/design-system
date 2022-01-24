@@ -28,43 +28,37 @@ export const SidebarNotifications: React.FC<SidebarNotificationsProps> = ({
 }) => {
   const { isOpen } = useContext(SidebarContext)
 
+  if (!notifications) {
+    return null
+  }
+
   return (
-    <>
-      {notifications && (
-        <StyledNotificationsSheet
-          button={
-            <StyledNotificationsSheetButton
-              aria-label="Show notifications"
-              data-testid="notification-button"
-              icon={<IconNotifications />}
-              isOpen={isOpen}
-            >
-              {hasUnreadNotification && (
-                <StyledNotificationDot data-testid="not-read">
-                  {React.Children.count(notifications.props.children)}
-                </StyledNotificationDot>
-              )}
-              <Transition
-                in={isOpen}
-                timeout={TRANSITION_TIMEOUT}
-                unmountOnExit
-              >
-                {(state) => (
-                  <StyledNotificationsLabel
-                    style={{ ...TRANSITION_STYLES[state] }}
-                  >
-                    Notifications
-                  </StyledNotificationsLabel>
-                )}
-              </Transition>
-            </StyledNotificationsSheetButton>
-          }
-          placement="right"
+    <StyledNotificationsSheet
+      button={
+        <StyledNotificationsSheetButton
+          aria-label="Show notifications"
+          data-testid="notification-button"
+          icon={<IconNotifications />}
+          isOpen={isOpen}
         >
-          {notifications}
-        </StyledNotificationsSheet>
-      )}
-    </>
+          {hasUnreadNotification && (
+            <StyledNotificationDot data-testid="not-read">
+              {React.Children.count(notifications.props.children)}
+            </StyledNotificationDot>
+          )}
+          <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
+            {(state) => (
+              <StyledNotificationsLabel style={{ ...TRANSITION_STYLES[state] }}>
+                Notifications
+              </StyledNotificationsLabel>
+            )}
+          </Transition>
+        </StyledNotificationsSheetButton>
+      }
+      placement="right"
+    >
+      {notifications}
+    </StyledNotificationsSheet>
   )
 }
 

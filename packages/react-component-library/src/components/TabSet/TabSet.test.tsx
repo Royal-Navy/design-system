@@ -15,7 +15,9 @@ import { SCROLL_DIRECTION } from './constants'
 const { color } = selectors
 
 function flushPromises() {
-  return new Promise((resolve) => setImmediate(resolve))
+  return new Promise((resolve) => {
+    setImmediate(resolve)
+  })
 }
 
 describe('TabSet', () => {

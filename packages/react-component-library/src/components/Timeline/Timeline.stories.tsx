@@ -234,35 +234,35 @@ WithHours.parameters = disableScrollableRegionFocusableRule
 
 WithHours.storyName = 'With hours'
 
-export const WithCustomMonths: ComponentStory<typeof Timeline> = (props) => {
-  const CustomTimelineMonth = ({
-    index: _,
-    dayWidth,
-    daysTotal,
-    startDate,
-  }: {
-    index: number
-    dayWidth: number
-    daysTotal: number
-    startDate: Date
-  }) => {
-    return (
-      <span
-        style={{
-          display: 'inline-block',
-          width: `${dayWidth * daysTotal}px`,
-          height: '4rem',
-          backgroundColor: 'black',
-          color: 'white',
-          borderLeft: '1px solid white',
-          paddingLeft: '.5rem',
-        }}
-      >
-        {format(startDate, 'MMMM yyyy')}
-      </span>
-    )
-  }
+const CustomTimelineMonth = ({
+  index: _,
+  dayWidth,
+  daysTotal,
+  startDate,
+}: {
+  index: number
+  dayWidth: number
+  daysTotal: number
+  startDate: Date
+}) => {
+  return (
+    <span
+      style={{
+        display: 'inline-block',
+        width: `${dayWidth * daysTotal}px`,
+        height: '4rem',
+        backgroundColor: 'black',
+        color: 'white',
+        borderLeft: '1px solid white',
+        paddingLeft: '.5rem',
+      }}
+    >
+      {format(startDate, 'MMMM yyyy')}
+    </span>
+  )
+}
 
+export const WithCustomMonths: ComponentStory<typeof Timeline> = (props) => {
   return (
     <Timeline
       {...props}
@@ -282,254 +282,234 @@ WithCustomMonths.parameters = disableScrollableRegionFocusableRule
 
 WithCustomMonths.storyName = 'With custom months'
 
-export const WithCustomWeeks: ComponentStory<typeof Timeline> = (props) => {
-  const CustomTimelineWeek = ({
-    index: _,
-    isOddNumber,
-    offsetPx,
-    widthPx,
-    startDate,
-  }: {
-    index: number
-    isOddNumber: boolean
-    offsetPx: string
-    widthPx: string
-    startDate: Date
-  }) => {
-    return (
-      <span
-        style={{
-          display: 'inline-block',
-          marginLeft: offsetPx,
-          width: widthPx,
-          height: '2.5rem',
-          backgroundColor: `${isOddNumber ? 'black' : 'white'}`,
-          color: `${isOddNumber ? 'white' : 'black'}`,
-          borderTop: '1px solid black',
-          borderBottom: '1px solid black',
-          paddingLeft: '.5rem',
-        }}
-      >
-        {format(startDate, 'dd/MM')}
-      </span>
-    )
-  }
+const CustomTimelineWeek = ({
+  index: _,
+  isOddNumber,
+  offsetPx,
+  widthPx,
+  startDate,
+}: {
+  index: number
+  isOddNumber: boolean
+  offsetPx: string
+  widthPx: string
+  startDate: Date
+}) => (
+  <span
+    style={{
+      display: 'inline-block',
+      marginLeft: offsetPx,
+      width: widthPx,
+      height: '2.5rem',
+      backgroundColor: `${isOddNumber ? 'black' : 'white'}`,
+      color: `${isOddNumber ? 'white' : 'black'}`,
+      borderTop: '1px solid black',
+      borderBottom: '1px solid black',
+      paddingLeft: '.5rem',
+    }}
+  >
+    {format(startDate, 'dd/MM')}
+  </span>
+)
 
-  return (
-    <Timeline
-      {...props}
-      startDate={new Date(2020, 3, 1)}
-      today={new Date(2020, 3, 15)}
-    >
-      <TimelineTodayMarker />
-      <TimelineMonths />
-      <TimelineWeeks render={CustomTimelineWeek} />
-      <TimelineDays />
-      <TimelineRows>{}</TimelineRows>
-    </Timeline>
-  )
-}
+export const WithCustomWeeks: ComponentStory<typeof Timeline> = (props) => (
+  <Timeline
+    {...props}
+    startDate={new Date(2020, 3, 1)}
+    today={new Date(2020, 3, 15)}
+  >
+    <TimelineTodayMarker />
+    <TimelineMonths />
+    <TimelineWeeks render={CustomTimelineWeek} />
+    <TimelineDays />
+    <TimelineRows>{}</TimelineRows>
+  </Timeline>
+)
 
 WithCustomWeeks.parameters = disableScrollableRegionFocusableRule
 
 WithCustomWeeks.storyName = 'With custom weeks'
 
-export const WithCustomDays: ComponentStory<typeof Timeline> = (props) => {
-  const CustomTimelineDays = ({
-    index: _,
-    dayWidth,
-    date,
-  }: {
-    index: number
-    dayWidth: number
-    date: Date
-  }) => {
-    return (
-      <span
-        style={{
-          display: 'inline-block',
-          width: `${dayWidth}px`,
-          height: '2.5rem',
-          backgroundColor: 'black',
-          color: 'white',
-        }}
-      >
-        {format(date, 'dd')}
-      </span>
-    )
-  }
+const CustomTimelineDays = ({
+  index: _,
+  dayWidth,
+  date,
+}: {
+  index: number
+  dayWidth: number
+  date: Date
+}) => (
+  <span
+    style={{
+      display: 'inline-block',
+      width: `${dayWidth}px`,
+      height: '2.5rem',
+      backgroundColor: 'black',
+      color: 'white',
+    }}
+  >
+    {format(date, 'dd')}
+  </span>
+)
 
-  return (
-    <Timeline
-      {...props}
-      startDate={new Date(2020, 3, 1)}
-      today={new Date(2020, 3, 15)}
-    >
-      <TimelineTodayMarker />
-      <TimelineMonths />
-      <TimelineWeeks />
-      <TimelineDays render={CustomTimelineDays} />
-      <TimelineRows>{}</TimelineRows>
-    </Timeline>
-  )
-}
+export const WithCustomDays: ComponentStory<typeof Timeline> = (props) => (
+  <Timeline
+    {...props}
+    startDate={new Date(2020, 3, 1)}
+    today={new Date(2020, 3, 15)}
+  >
+    <TimelineTodayMarker />
+    <TimelineMonths />
+    <TimelineWeeks />
+    <TimelineDays render={CustomTimelineDays} />
+    <TimelineRows>{}</TimelineRows>
+  </Timeline>
+)
 
 WithCustomDays.parameters = disableScrollableRegionFocusableRule
 
 WithCustomDays.storyName = 'With custom days'
 
-export const WithCustomHours: ComponentStory<typeof Timeline> = (props) => {
-  const CustomTimelineHours = ({
-    width,
-    time,
-  }: {
-    width: number
-    time: string
-  }) => {
-    return (
-      <div
-        style={{
-          display: 'inline-block',
-          width: `${width}px`,
-          height: '2.5rem',
-          backgroundColor: 'black',
-          color: 'white',
-        }}
-      >
-        <span style={{ fontSize: '8px', paddingLeft: '5px' }}>{time}</span>
-      </div>
-    )
-  }
+const CustomTimelineHours = ({
+  width,
+  time,
+}: {
+  width: number
+  time: string
+}) => (
+  <div
+    style={{
+      display: 'inline-block',
+      width: `${width}px`,
+      height: '2.5rem',
+      backgroundColor: 'black',
+      color: 'white',
+    }}
+  >
+    <span style={{ fontSize: '8px', paddingLeft: '5px' }}>{time}</span>
+  </div>
+)
 
-  return (
-    <Timeline
-      {...props}
-      startDate={new Date(2020, 3, 1)}
-      today={new Date(2020, 3, 15)}
-    >
-      <TimelineTodayMarker />
-      <TimelineMonths />
-      <TimelineWeeks />
-      <TimelineDays />
-      <TimelineHours render={CustomTimelineHours} />
-      <TimelineRows>{}</TimelineRows>
-    </Timeline>
-  )
-}
+export const WithCustomHours: ComponentStory<typeof Timeline> = (props) => (
+  <Timeline
+    {...props}
+    startDate={new Date(2020, 3, 1)}
+    today={new Date(2020, 3, 15)}
+  >
+    <TimelineTodayMarker />
+    <TimelineMonths />
+    <TimelineWeeks />
+    <TimelineDays />
+    <TimelineHours render={CustomTimelineHours} />
+    <TimelineRows>{}</TimelineRows>
+  </Timeline>
+)
 
 WithCustomHours.parameters = disableScrollableRegionFocusableRule
 
 WithCustomHours.storyName = 'With custom hours'
 
+const CustomTodayMarker = ({
+  today,
+  offset,
+}: {
+  today: Date
+  offset: string
+}) => (
+  <span
+    className="rn_text-s"
+    style={{
+      position: 'absolute',
+      left: offset,
+      height: '100vh',
+      width: '2px',
+      background: 'black',
+      overflow: 'visible',
+      whiteSpace: 'nowrap',
+      textIndent: '1rem',
+      zIndex: 1,
+    }}
+  >
+    {today.toUTCString()}
+  </span>
+)
+
 export const WithCustomTodayMarker: ComponentStory<typeof Timeline> = (
   props
-) => {
-  const CustomTodayMarker = ({
-    today,
-    offset,
-  }: {
-    today: Date
-    offset: string
-  }) => {
-    return (
-      <span
-        className="rn_text-s"
-        style={{
-          position: 'absolute',
-          left: offset,
-          height: '100vh',
-          width: '2px',
-          background: 'black',
-          overflow: 'visible',
-          whiteSpace: 'nowrap',
-          textIndent: '1rem',
-          zIndex: 1,
-        }}
-      >
-        {today.toUTCString()}
-      </span>
-    )
-  }
-
-  return (
-    <Timeline
-      {...props}
-      startDate={new Date(2020, 3, 1)}
-      today={new Date(2020, 3, 15)}
-    >
-      <TimelineTodayMarker render={CustomTodayMarker} />
-      <TimelineMonths />
-      <TimelineWeeks />
-      <TimelineDays />
-      <TimelineRows>{}</TimelineRows>
-    </Timeline>
-  )
-}
+) => (
+  <Timeline
+    {...props}
+    startDate={new Date(2020, 3, 1)}
+    today={new Date(2020, 3, 15)}
+  >
+    <TimelineTodayMarker render={CustomTodayMarker} />
+    <TimelineMonths />
+    <TimelineWeeks />
+    <TimelineDays />
+    <TimelineRows>{}</TimelineRows>
+  </Timeline>
+)
 
 WithCustomTodayMarker.parameters = disableScrollableRegionFocusableRule
 
 WithCustomTodayMarker.storyName = 'With custom today marker'
 
-export const WithCustomColumns: ComponentStory<typeof Timeline> = (props) => {
-  const CustomTimelineColumn = ({
-    index: _,
-    isOddNumber,
-    offsetPx,
-    widthPx,
-  }: {
-    index: number
-    isOddNumber: boolean
-    offsetPx: string
-    widthPx: string
-  }) => {
-    return (
-      <div
-        style={{
-          display: 'inline-block',
-          width: widthPx,
-          marginLeft: offsetPx,
-          backgroundColor: `${isOddNumber ? 'black' : 'white'}`,
-          height: '100vh',
-        }}
-      />
-    )
-  }
+const CustomTimelineColumn = ({
+  index: _,
+  isOddNumber,
+  offsetPx,
+  widthPx,
+}: {
+  index: number
+  isOddNumber: boolean
+  offsetPx: string
+  widthPx: string
+}) => (
+  <div
+    style={{
+      display: 'inline-block',
+      width: widthPx,
+      marginLeft: offsetPx,
+      backgroundColor: `${isOddNumber ? 'black' : 'white'}`,
+      height: '100vh',
+    }}
+  />
+)
 
-  return (
-    <Timeline
-      {...props}
-      startDate={new Date(2020, 3, 1)}
-      today={new Date(2020, 3, 15)}
-    >
-      <TimelineTodayMarker />
-      <TimelineMonths />
-      <TimelineWeeks />
-      <TimelineDays />
-      <TimelineRows render={CustomTimelineColumn}>
-        <TimelineRow name="Row 1">
-          <TimelineEvents>
-            <TimelineEvent
-              startDate={new Date(2020, 3, 14)}
-              endDate={new Date(2020, 3, 18)}
-            >
-              Event 1
-            </TimelineEvent>
-          </TimelineEvents>
-        </TimelineRow>
-        <TimelineRow name="Row 2">
-          <TimelineEvents>
-            <TimelineEvent
-              startDate={new Date(2020, 3, 3)}
-              endDate={new Date(2020, 3, 8)}
-            >
-              Event 2
-            </TimelineEvent>
-          </TimelineEvents>
-        </TimelineRow>
-      </TimelineRows>
-    </Timeline>
-  )
-}
+export const WithCustomColumns: ComponentStory<typeof Timeline> = (props) => (
+  <Timeline
+    {...props}
+    startDate={new Date(2020, 3, 1)}
+    today={new Date(2020, 3, 15)}
+  >
+    <TimelineTodayMarker />
+    <TimelineMonths />
+    <TimelineWeeks />
+    <TimelineDays />
+    <TimelineRows render={CustomTimelineColumn}>
+      <TimelineRow name="Row 1">
+        <TimelineEvents>
+          <TimelineEvent
+            startDate={new Date(2020, 3, 14)}
+            endDate={new Date(2020, 3, 18)}
+          >
+            Event 1
+          </TimelineEvent>
+        </TimelineEvents>
+      </TimelineRow>
+      <TimelineRow name="Row 2">
+        <TimelineEvents>
+          <TimelineEvent
+            startDate={new Date(2020, 3, 3)}
+            endDate={new Date(2020, 3, 8)}
+          >
+            Event 2
+          </TimelineEvent>
+        </TimelineEvents>
+      </TimelineRow>
+    </TimelineRows>
+  </Timeline>
+)
 
 WithCustomColumns.parameters = disableScrollableRegionFocusableRule
 
@@ -622,108 +602,104 @@ WithCustomEventBarColor.parameters = disableScrollableRegionFocusableRule
 
 WithCustomEventBarColor.storyName = 'With custom event bar color'
 
+const CustomEvent = ({
+  children,
+  startDate,
+  endDate,
+  widthPx,
+  offsetPx,
+  ...rest
+}: {
+  children: React.ReactNode
+  startDate: Date
+  endDate: Date
+  widthPx: string
+  offsetPx: string
+}) => (
+  <div
+    style={{
+      position: 'absolute',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      backgroundColor: 'black',
+      color: 'white',
+      marginLeft: offsetPx,
+      width: widthPx,
+    }}
+    {...rest}
+  >
+    {children}
+  </div>
+)
+
 export const WithCustomEventContent: ComponentStory<typeof Timeline> = (
   props
-) => {
-  const CustomEvent = ({
-    children,
-    startDate,
-    endDate,
-    widthPx,
-    offsetPx,
-    ...rest
-  }: {
-    children: React.ReactNode
-    startDate: Date
-    endDate: Date
-    widthPx: string
-    offsetPx: string
-  }) => {
-    return (
-      <div
-        style={{
-          position: 'absolute',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          backgroundColor: 'black',
-          color: 'white',
-          marginLeft: offsetPx,
-          width: widthPx,
-        }}
-        {...rest}
-      >
-        {children}
-      </div>
-    )
-  }
-
-  return (
-    <Timeline
-      {...props}
-      startDate={new Date(2020, 3, 1)}
-      today={new Date(2020, 3, 15)}
-    >
-      <TimelineTodayMarker />
-      <TimelineMonths />
-      <TimelineWeeks />
-      <TimelineDays />
-      <TimelineRows>
-        <TimelineRow name="Row 1">
-          <TimelineEvents>
-            <TimelineEvent
-              startDate={new Date(2020, 3, 6)}
-              endDate={new Date(2020, 3, 10)}
-              render={({ startDate, endDate, widthPx, offsetPx }) => {
-                return (
-                  <CustomEvent
-                    startDate={startDate}
-                    endDate={endDate}
-                    widthPx={widthPx}
-                    offsetPx={offsetPx}
-                  >
-                    Event 1
-                  </CustomEvent>
-                )
-              }}
-            />
-            <TimelineEvent
-              startDate={new Date(2020, 3, 16)}
-              endDate={new Date(2020, 3, 20)}
-              render={({ startDate, endDate, widthPx, offsetPx }) => {
-                return (
-                  <CustomEvent
-                    startDate={startDate}
-                    endDate={endDate}
-                    widthPx={widthPx}
-                    offsetPx={offsetPx}
-                  >
-                    Event 2
-                  </CustomEvent>
-                )
-              }}
-            />
-          </TimelineEvents>
-        </TimelineRow>
-        <TimelineRow name="Row 2">
-          <TimelineEvents>
-            <TimelineEvent
-              startDate={new Date(2020, 3, 15)}
-              endDate={new Date(2020, 3, 19)}
-            >
-              Event 3
-            </TimelineEvent>
-            <TimelineEvent
-              startDate={new Date(2020, 3, 22)}
-              endDate={new Date(2020, 3, 24)}
-            >
-              Event 4
-            </TimelineEvent>
-          </TimelineEvents>
-        </TimelineRow>
-      </TimelineRows>
-    </Timeline>
-  )
-}
+) => (
+  <Timeline
+    {...props}
+    startDate={new Date(2020, 3, 1)}
+    today={new Date(2020, 3, 15)}
+  >
+    <TimelineTodayMarker />
+    <TimelineMonths />
+    <TimelineWeeks />
+    <TimelineDays />
+    <TimelineRows>
+      <TimelineRow name="Row 1">
+        <TimelineEvents>
+          <TimelineEvent
+            startDate={new Date(2020, 3, 6)}
+            endDate={new Date(2020, 3, 10)}
+            render={({ startDate, endDate, widthPx, offsetPx }) => {
+              return (
+                <CustomEvent
+                  startDate={startDate}
+                  endDate={endDate}
+                  widthPx={widthPx}
+                  offsetPx={offsetPx}
+                >
+                  Event 1
+                </CustomEvent>
+              )
+            }}
+          />
+          <TimelineEvent
+            startDate={new Date(2020, 3, 16)}
+            endDate={new Date(2020, 3, 20)}
+            render={({ startDate, endDate, widthPx, offsetPx }) => {
+              return (
+                <CustomEvent
+                  startDate={startDate}
+                  endDate={endDate}
+                  widthPx={widthPx}
+                  offsetPx={offsetPx}
+                >
+                  Event 2
+                </CustomEvent>
+              )
+            }}
+          />
+        </TimelineEvents>
+      </TimelineRow>
+      <TimelineRow name="Row 2">
+        <TimelineEvents>
+          <TimelineEvent
+            startDate={new Date(2020, 3, 15)}
+            endDate={new Date(2020, 3, 19)}
+          >
+            Event 3
+          </TimelineEvent>
+          <TimelineEvent
+            startDate={new Date(2020, 3, 22)}
+            endDate={new Date(2020, 3, 24)}
+          >
+            Event 4
+          </TimelineEvent>
+        </TimelineEvents>
+      </TimelineRow>
+    </TimelineRows>
+  </Timeline>
+)
 
 WithCustomEventContent.parameters = disableScrollableRegionFocusableRule
 
