@@ -1,6 +1,7 @@
 import autocompleteE from './AutocompleteE'
 import contextMenu from './ContextMenu'
 import datePicker from './DatePicker'
+import dismissibleBanner from './DismissibleBanner'
 import form from './form'
 import numberInputE from './NumberInputE'
 import rangeSliderE from './RangeSliderE'
@@ -11,6 +12,7 @@ export default {
   autocompleteE,
   contextMenu,
   datePicker,
+  dismissibleBanner,
   form,
   numberInputE,
   rangeSliderE,

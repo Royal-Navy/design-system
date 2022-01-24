@@ -95,8 +95,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               onBlur={onBlur}
               disabled={isDisabled}
               checked={checked}
-              {...rest}
               data-testid="checkbox"
+              {...rest}
             />
             <StyledCheckmark />
             {label}
