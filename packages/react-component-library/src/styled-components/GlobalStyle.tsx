@@ -51,7 +51,7 @@ const Hyperlinks = createGlobalStyle`
 const Fonts = createGlobalStyle`
   html {
     font-family: "lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: ${fontSize('base')};
+    font-size: ${fontSize('m')};
   }
 
   h1,
