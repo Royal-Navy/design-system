@@ -12,46 +12,10 @@ import {
 import { NoResults } from './NoResults'
 import { useHighlightedIndex } from './hooks/useHighlightedIndex'
 import { useAutocomplete } from './hooks/useAutocomplete'
+import { useMenuVisibility } from './hooks/useMenuVisibility'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AutocompleteEProps extends SelectBaseProps {}
-
-function onBlur(resetHighlightedIndex: () => void): () => void {
-  return () => {
-    resetHighlightedIndex()
-  }
-}
-
-function onFocus(isOpen: boolean, openMenu: () => void): () => void {
-  return () => {
-    if (!isOpen) {
-      openMenu()
-    }
-  }
-}
-
-function onKeyDown(
-  highlightedIndex: number,
-  items: SelectChildWithStringType[],
-  setInputValue: (inputValue: string) => void
-): (e: React.KeyboardEvent<HTMLInputElement>) => void {
-  return (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === 'Tab' && highlightedIndex !== -1) {
-      const item = React.Children.toArray(items)[highlightedIndex]
-      if (React.isValidElement(item)) {
-        setInputValue(item.props.children)
-      }
-    }
-  }
-}
-
-function onMouseDown(toggleMenu: () => void): (e: React.MouseEvent) => void {
-  return (e: React.MouseEvent) => {
-    toggleMenu()
-    e.stopPropagation()
-    e.preventDefault()
-  }
-}
 
 export const AutocompleteE: React.FC<AutocompleteEProps> = ({
   children,
@@ -92,12 +56,19 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
     },
   })
 
-  const { resetHighlightedIndex } = useHighlightedIndex(
+  const { onInputBlurHandler, onInputKeyDownHandler } = useHighlightedIndex(
     highlightedIndex,
     inputValue,
     isOpen,
     items,
-    setHighlightedIndex
+    setHighlightedIndex,
+    setInputValue
+  )
+
+  const { onInputFocusHandler, onInputMouseDownHandler } = useMenuVisibility(
+    isOpen,
+    openMenu,
+    toggleMenu
   )
 
   return (
@@ -106,10 +77,10 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
       hasSelectedItem={!!inputValue}
       id={id}
       inputProps={getInputProps({
-        onBlur: onBlur(resetHighlightedIndex),
-        onFocus: onFocus(isOpen, openMenu),
-        onKeyDown: onKeyDown(highlightedIndex, items, setInputValue),
-        onMouseDown: onMouseDown(toggleMenu),
+        onBlur: onInputBlurHandler,
+        onFocus: onInputFocusHandler,
+        onKeyDown: onInputKeyDownHandler,
+        onMouseDown: onInputMouseDownHandler,
         ref: inputRef,
       })}
       inputWrapperProps={getComboboxProps()}
