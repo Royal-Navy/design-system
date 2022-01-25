@@ -7,6 +7,7 @@ import {
   waitFor,
 } from '@testing-library/react'
 import { IconAnchor } from '@defencedigital/icon-library'
+import userEvent from '@testing-library/user-event'
 
 import { Select } from '.'
 import { Button } from '../Button'
@@ -288,6 +289,47 @@ describe('Select', () => {
         expect(
           wrapper.getByTestId('select-single-value-label')
         ).toHaveTextContent('Option 3')
+      })
+    })
+  })
+
+  describe('when an option value is selected that overflows', () => {
+    const label =
+      'This is a really, really long select option label that overflows the container when selected'
+
+    beforeEach(() => {
+      wrapper = render(
+        <Select
+          options={[
+            ...options,
+            {
+              label,
+              value: 'foo',
+            },
+          ]}
+        />
+      )
+
+      const input = wrapper.getByTestId('react-select-vendor-input')
+      fireEvent.focus(input)
+      fireEvent.keyDown(input, {
+        key: 'ArrowDown',
+        code: 40,
+      })
+
+      userEvent.click(wrapper.getByText(label))
+    })
+
+    describe('when the user hovers over the label', () => {
+      beforeEach(() => {
+        userEvent.hover(wrapper.getByText(label))
+      })
+
+      it('displays the Tooltip with the label content', () => {
+        expect(wrapper.getByTestId('floating-box')).toBeInTheDocument()
+        expect(wrapper.getByTestId('floating-box-content')).toHaveTextContent(
+          label
+        )
       })
     })
   })
