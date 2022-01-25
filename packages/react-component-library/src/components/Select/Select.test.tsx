@@ -333,4 +333,31 @@ describe('Select', () => {
       })
     })
   })
+
+  describe('when the optional `onChange` callback is not provided and the user selects an item', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Select
+          options={[
+            ...options,
+            {
+              label: 'Foo',
+              value: 'foo',
+            },
+          ]}
+        />
+      )
+
+      const input = wrapper.getByTestId('react-select-vendor-input')
+      fireEvent.focus(input)
+      fireEvent.keyDown(input, {
+        key: 'ArrowDown',
+        code: 40,
+      })
+    })
+
+    it('should not attempt to invoke the `onChange` callback', () => {
+      expect(() => userEvent.click(wrapper.getByText('Foo'))).not.toThrow()
+    })
+  })
 })

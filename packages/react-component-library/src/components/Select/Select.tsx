@@ -61,12 +61,14 @@ export const Select: React.FC<SelectProps> = ({
       option && option.value !== undefined ? option.value : null
     setSelectedValue(selectedValue)
 
-    onChange({
-      target: {
-        name,
-        value: selectedValue,
-      },
-    })
+    if (onChange) {
+      onChange({
+        target: {
+          name,
+          value: selectedValue,
+        },
+      })
+    }
   }
 
   return (
