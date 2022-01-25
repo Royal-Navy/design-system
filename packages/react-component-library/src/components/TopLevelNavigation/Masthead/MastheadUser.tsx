@@ -48,11 +48,9 @@ const MastheadUserWithLink: React.FC<MastheadUserWithLinkProps> = ({
     ...link.props,
     children: (
       <StyledOption {...rest}>
-        <Avatar
-          data-testid="masthead-avatar"
-          initials={initials}
-          variant={AVATAR_VARIANT.DARK}
-        />
+        <Avatar data-testid="masthead-avatar" variant={AVATAR_VARIANT.DARK}>
+          {initials}
+        </Avatar>
       </StyledOption>
     ),
   })
@@ -68,11 +66,9 @@ const MastheadUserWithItems: React.FC<MastheadUserWithItemsProps> = ({
         as={SheetButton}
         data-testid="user-button"
         icon={
-          <Avatar
-            data-testid="masthead-avatar"
-            initials={initials}
-            variant={AVATAR_VARIANT.DARK}
-          />
+          <Avatar data-testid="masthead-avatar" variant={AVATAR_VARIANT.DARK}>
+            {initials}
+          </Avatar>
         }
       />
     }

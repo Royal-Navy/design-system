@@ -85,10 +85,9 @@ export const Notification: React.FC<NotificationProps> = ({
               role="row"
             >
               <StyledAvatar role="gridcell">
-                <Avatar
-                  initials={getInitials(name)}
-                  variant={AVATAR_VARIANT.DARK}
-                />
+                <Avatar variant={AVATAR_VARIANT.DARK}>
+                  {getInitials(name)}
+                </Avatar>
                 {!isRead && <StyledItemNotRead data-testid="not-read-item" />}
               </StyledAvatar>
               <StyledContent

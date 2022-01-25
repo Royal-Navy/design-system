@@ -9,16 +9,14 @@ export default {
   title: 'Avatar',
 } as ComponentMeta<typeof Avatar>
 
-export const Default: ComponentStory<typeof Avatar> = ({
-  initials,
-  variant,
-}) => (
+const Template: ComponentStory<typeof Avatar> = (props) => (
   <div style={{ background: '#c9c9c9', padding: 20 }}>
-    <Avatar initials={initials} variant={variant} />
+    <Avatar {...props} />
   </div>
 )
 
+export const Default = Template.bind({})
 Default.args = {
+  children: 'AT',
   variant: AVATAR_VARIANT.LIGHT,
-  initials: 'AT',
 }
