@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ReactSelect, { Props as ReactSelectProps } from 'react-select'
 
 import { DropdownIndicator } from '../Dropdown/DropdownIndicator'
