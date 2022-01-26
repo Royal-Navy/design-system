@@ -16,7 +16,11 @@ export interface AvatarProps extends ComponentWithClass {
 }
 
 export const Avatar: React.FC<AvatarProps> = ({ variant, ...rest }) => (
-  <StyledAvatar $dark={variant === AVATAR_VARIANT.DARK} {...rest} />
+  <StyledAvatar
+    $dark={variant === AVATAR_VARIANT.DARK}
+    data-testid="avatar-content"
+    {...rest}
+  />
 )
 
 Avatar.displayName = 'Avatar'
