@@ -2,11 +2,11 @@ import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
 import { StyledAction } from './StyledAction'
-import { StyledDataListProps } from './StyledDataList'
+import { StyledDescriptionListProps } from './StyledDescriptionList'
 
 const { animation, color, spacing } = selectors
 
-export const StyledHeader = styled.button<StyledDataListProps>`
+export const StyledHeader = styled.button<StyledDescriptionListProps>`
   position: relative;
   padding: ${spacing('3')} ${spacing('0')} ${spacing('3')} ${spacing('2')};
   display: flex;

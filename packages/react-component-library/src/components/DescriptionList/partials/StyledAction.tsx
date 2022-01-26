@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
-import { StyledDataListProps } from './StyledDataList'
+import { StyledDescriptionListProps } from './StyledDescriptionList'
 
 const { animation, color, spacing } = selectors
 
-export const StyledAction = styled.span<StyledDataListProps>`
+export const StyledAction = styled.span<StyledDescriptionListProps>`
   display: none;
 
   ${({ $isCollapsible }) =>
