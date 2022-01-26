@@ -187,6 +187,7 @@ export const Example: React.FC<unknown> = () => {
           data-testid="form-example-NumberInputE"
         />
         <DatePickerE
+          disabledDays={{ before: MINIMUM_DATE }}
           onChange={({ startDate }) => {
             handleChange({
               currentTarget: {
@@ -195,7 +196,7 @@ export const Example: React.FC<unknown> = () => {
               },
             })
           }}
-          disabledDays={{ before: MINIMUM_DATE }}
+          startDate={formState.exampleDatePicker}
         />
         {formErrors.exampleDatePicker && (
           <span>{formErrors.exampleDatePicker}</span>

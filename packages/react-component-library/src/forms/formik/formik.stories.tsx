@@ -202,6 +202,7 @@ export const Example: React.FC<unknown> = () => {
               name="exampleDatePicker"
               component={FormikDatePickerE}
               disabledDays={{ before: MINIMUM_DATE }}
+              startDate={values.exampleDatePicker}
               onChange={({ startDate }: DatePickerEOnChangeData) => {
                 setFieldValue('exampleDatePicker', startDate)
               }}

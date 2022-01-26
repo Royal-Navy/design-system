@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.78.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.78.1...2.78.2) (2022-01-25)
+
+
+### Bug Fixes
+
+* **DatePickerE:** Allow state to be held externally ([64a2e36](https://github.com/defencedigital/mod-uk-design-system/commit/64a2e36f05c6a2c8cacbf7204e979af315290e29))
+
+
+
+
+
 ## [2.78.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.78.0...2.78.1) (2022-01-24)
 
 **Note:** Version bump only for package @defencedigital/react-component-library

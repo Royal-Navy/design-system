@@ -1,7 +1,7 @@
 import { IconEvent } from '@defencedigital/icon-library'
 import { isValid } from 'date-fns'
 import FocusTrap from 'focus-trap-react'
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { Placement } from '@popperjs/core'
 import { DayModifiers, DayPickerProps } from 'react-day-picker'
 import { useBoolean } from 'usehooks-ts'
@@ -9,7 +9,7 @@ import { useBoolean } from 'usehooks-ts'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
 import { DATE_VALIDITY, WEEKDAY_TITLES } from './constants'
-import { formatDatesForInput } from './formatDatesForInput'
+import { DATEPICKER_E_ACTION } from './types'
 import { hasClass } from '../../helpers'
 import { InlineButton } from '../InlineButtons/InlineButton'
 import { InputValidationProps } from '../../common/InputValidationProps'
@@ -24,10 +24,11 @@ import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useFocus } from '../../hooks/useFocus'
 import { useFocusTrapOptions } from './useFocusTrapOptions'
+import { useHandleDayClick } from './useHandleDayClick'
 import { useInput } from './useInput'
 import { useRangeHoverOrFocusDate } from './useRangeHoverOrFocusDate'
-import { useSelection } from './useSelection'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
+import { useDatePickerEReducer } from './useDatePickerEReducer'
 
 declare module 'react-day-picker' {
   // eslint-disable-next-line no-shadow
@@ -57,7 +58,10 @@ export interface DatePickerEProps
   extends ComponentWithClass,
     InputValidationProps {
   /**
-   * End date of the picker (only relevant in range mode).
+   * The end of the selected date range. (Only relevant if isRange is set.)
+   *
+   * If set, it should be kept updated with the `endDate` value provided
+   * by the `onChange` callback.
    */
   endDate?: Date
   /**
@@ -107,7 +111,11 @@ export interface DatePickerEProps
    */
   onCalendarFocus?: (e: React.SyntheticEvent) => void
   /**
-   * Start date of the picker (the first date selected by end user).
+   * The selected date, or the start of the selected date range if `isRange`
+   * is set.
+   *
+   * If set, it should be kept updated with the `startDate` provided
+   * by the `onChange` callback.
    */
   startDate?: Date
   /**
@@ -129,6 +137,14 @@ export interface DatePickerEProps
    */
   initialMonth?: DayPickerProps['initialMonth']
   /**
+   * Initial value for `startDate`. Only used when the `startDate` prop is not set.
+   */
+  initialStartDate?: Date
+  /**
+   * Initial value for `endDate`. Only used when the `endDate` prop is not set.
+   */
+  initialEndDate?: Date
+  /**
    * Position to display the picker relative to the input.
    * NOTE: This is now calculated automatically by default based on available screen real-estate.
    */
@@ -143,7 +159,7 @@ const replaceInvalidDate = (date: Date) => (isValid(date) ? date : undefined)
 
 export const DatePickerE: React.FC<DatePickerEProps> = ({
   className,
-  endDate,
+  endDate: externalEndDate,
   format: datePickerFormat = DATE_FORMAT.SHORT,
   id: externalId,
   isDisabled,
@@ -152,10 +168,12 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   label = 'Date',
   onChange,
   onCalendarFocus,
-  startDate,
+  startDate: externalStartDate,
   initialIsOpen,
   disabledDays,
   initialMonth,
+  initialStartDate,
+  initialEndDate,
   placement = 'bottom-start',
   onBlur,
   // Formik can pass value – drop it to stop it being forwarded to the input
@@ -179,22 +197,25 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     isRange ? [buttonRef, inputRef] : [buttonRef]
   )
 
-  const [inputValue, setInputValue] = useState<string>(
-    formatDatesForInput(startDate, endDate, datePickerFormat)
-  )
-  const { state, handleDayClick } = useSelection(
-    startDate,
-    endDate,
-    isRange,
+  const [state, dispatch] = useDatePickerEReducer(
+    externalStartDate,
+    externalEndDate,
+    initialStartDate,
+    initialEndDate,
     datePickerFormat,
+    isRange
+  )
+  const handleDayClick = useHandleDayClick(
+    state,
+    dispatch,
+    isRange,
     disabledDays,
-    setInputValue,
     onChange
   )
+  const { startDate, endDate } = state
+  const hasError =
+    state.hasError || isInvalid || hasClass(className, 'is-invalid')
 
-  const [hasError, setHasError] = useState<boolean>(
-    isInvalid || hasClass(className, 'is-invalid')
-  )
   const [floatingBoxTarget, setFloatingBoxTarget] = useStatefulRef()
 
   const {
@@ -204,22 +225,19 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
     handleDayMouseLeave,
   } = useRangeHoverOrFocusDate(isRange)
 
-  const { from, to } = state
   const { handleKeyDown, handleInputBlur, handleInputChange } = useInput(
     datePickerFormat,
     isRange,
     handleDayClick,
-    state,
-    setHasError,
-    setInputValue
+    dispatch
   )
 
   const modifiers = {
-    start: replaceInvalidDate(from),
-    end: replaceInvalidDate(to),
+    start: replaceInvalidDate(startDate),
+    end: replaceInvalidDate(endDate),
   }
 
-  const hasContent = Boolean(from)
+  const hasContent = Boolean(startDate)
 
   const placeholder = !isRange ? datePickerFormat.toLowerCase() : null
 
@@ -278,7 +296,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
                 }
               }}
               placeholder={placeholder}
-              value={inputValue}
+              value={state.inputValue}
               {...rest}
             />
           </StyledInputWrapper>
@@ -312,8 +330,8 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
             weekdaysShort={WEEKDAY_TITLES}
             selectedDays={[
               {
-                from: replaceInvalidDate(from),
-                to: replaceInvalidDate(to) || rangeHoverOrFocusDate,
+                from: replaceInvalidDate(startDate),
+                to: replaceInvalidDate(endDate) || rangeHoverOrFocusDate,
               },
             ]}
             modifiers={modifiers}
@@ -322,20 +340,16 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
                 return
               }
 
-              setHasError(false)
               const newState = handleDayClick(day)
-              setInputValue(
-                formatDatesForInput(
-                  newState.from,
-                  newState.to,
-                  datePickerFormat
-                )
-              )
-              if (newState.to || !isRange) {
+
+              dispatch({ type: DATEPICKER_E_ACTION.REFRESH_HAS_ERROR })
+              dispatch({ type: DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE })
+
+              if (newState.endDate || !isRange) {
                 setTimeout(() => close())
               }
             }}
-            initialMonth={replaceInvalidDate(from) || initialMonth}
+            initialMonth={replaceInvalidDate(startDate) || initialMonth}
             disabledDays={disabledDays}
             $isRange={isRange}
             $isVisible={isOpen}
