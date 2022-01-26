@@ -2,12 +2,11 @@ import React from 'react'
 import { isNil } from 'lodash'
 
 import { ComponentSizeType } from '../Forms'
-import { InputValidationProps } from '../../common/InputValidationProps'
 import { StyledInput } from '../TextInputE/partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledLabel } from '../TextInputE/partials/StyledLabel'
 
-export interface InputProps extends InputValidationProps {
+export interface InputProps {
   hasFocus: boolean
   isDisabled?: boolean
   id?: string

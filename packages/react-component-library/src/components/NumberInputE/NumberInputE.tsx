@@ -151,7 +151,6 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
   id = uuidv4(),
   isDisabled = false,
   isInvalid,
-  isValid,
   label,
   max,
   min,
@@ -182,6 +181,8 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
   )
 
   const numberInputId = getId('number-input')
+  const isCommittedValueInvalid =
+    committedValue && !Number.isFinite(parseFloat(committedValue))
 
   return (
     <StyledNumberInput
@@ -196,9 +197,14 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
       aria-valuetext={String(formatValue(committedValue, prefix, suffix))}
     >
       <StyledOuterWrapper
+        data-testid="number-input-outer-wrapper"
         $hasFocus={hasFocus}
         $isDisabled={isDisabled}
-        $isInvalid={isInvalid || hasClass(className, 'is-invalid')}
+        $isInvalid={
+          isInvalid ||
+          isCommittedValueInvalid ||
+          hasClass(className, 'is-invalid')
+        }
         $size={size}
       >
         {icon && (
@@ -219,8 +225,6 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
           hasFocus={hasFocus}
           id={id}
           isDisabled={isDisabled}
-          isValid={isValid || hasClass(className, 'is-valid')}
-          isInvalid={isInvalid || hasClass(className, 'is-invalid')}
           label={label}
           name={name}
           onBeforeInput={handleBeforeInput}

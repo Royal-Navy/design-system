@@ -11,6 +11,7 @@ import {
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import { ColorAction500, ColorDanger800 } from '@defencedigital/design-tokens'
 import { Button, COMPONENT_SIZE } from '../..'
 import { NumberInputE } from '.'
 
@@ -288,6 +289,27 @@ describe('NumberInputE', () => {
 
       assertInputValue('-')
       assertOnChangeCall(NaN, 1)
+
+      it('shows a focus border and not an error border', () => {
+        expect(
+          wrapper.getByTestId('number-input-outer-wrapper')
+        ).toHaveStyleRule('box-shadow', expect.stringContaining(ColorAction500))
+      })
+
+      describe('and the input is blurred', () => {
+        beforeEach(() => {
+          input.blur()
+        })
+
+        it('shows an error border', () => {
+          expect(
+            wrapper.getByTestId('number-input-outer-wrapper')
+          ).toHaveStyleRule(
+            'box-shadow',
+            expect.stringContaining(ColorDanger800.toUpperCase())
+          )
+        })
+      })
 
       describe('and the increase button is clicked', () => {
         beforeEach(() => {
