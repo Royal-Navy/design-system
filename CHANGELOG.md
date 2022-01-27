@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.79.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.78.2...2.79.0) (2022-01-27)
+
+
+### Features
+
+* **AutocompleteE:** Handle focus behaviour ([257e7fc](https://github.com/defencedigital/mod-uk-design-system/commit/257e7fcf990e4e8eaa38644ed4f4d6ffe6deaaaf))
+
+
+
+
+
 ## [2.78.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.78.1...2.78.2) (2022-01-25)
 
 
