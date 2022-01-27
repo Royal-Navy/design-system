@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { StyledDataListProps } from './StyledDataList'
+import { StyledDescriptionListProps } from './StyledDescriptionList'
 
 const { color } = selectors
 
-export const StyledSheet = styled.div<StyledDataListProps>`
+export const StyledSheet = styled.div<StyledDescriptionListProps>`
   height: auto;
   z-index: 0;
   transition: 200ms all linear;

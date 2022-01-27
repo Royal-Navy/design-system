@@ -2,23 +2,23 @@ import React from 'react'
 import { IconKeyboardArrowDown } from '@defencedigital/icon-library'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { DataListItem, DataListItemProps } from '.'
+import { DescriptionListItem, DescriptionListItemProps } from '.'
 import { getId, warnIfOverwriting } from '../../helpers'
 import { useOpenClose } from '../../hooks'
 import { StyledAction } from './partials/StyledAction'
 import { StyledBadge } from './partials/StyledBadge'
-import { StyledDataList } from './partials/StyledDataList'
+import { StyledDescriptionList } from './partials/StyledDescriptionList'
 import { StyledHeader } from './partials/StyledHeader'
 import { StyledSheet } from './partials/StyledSheet'
 import { StyledDescription } from './partials/StyledDescription'
 
-export interface DataListProps extends ComponentWithClass {
+export interface DescriptionListProps extends ComponentWithClass {
   /**
-   * Collection of `DataListItem` components to display in the list.
+   * Collection of `DescriptionListItem` components to display in the list.
    */
   children:
-    | React.ReactElement<DataListItemProps>
-    | React.ReactElement<DataListItemProps>[]
+    | React.ReactElement<DescriptionListItemProps>
+    | React.ReactElement<DescriptionListItemProps>[]
   /**
    * Toggles whether the list is collapsable via user input.
    */
@@ -43,7 +43,7 @@ function getAriaAttributes(isCollapsible: boolean, expanded: boolean) {
   return null
 }
 
-export const DataList: React.FC<DataListProps> = ({
+export const DescriptionList: React.FC<DescriptionListProps> = ({
   isCollapsible,
   description,
   children,
@@ -54,23 +54,26 @@ export const DataList: React.FC<DataListProps> = ({
   const sheetId = ariaAttributes && ariaAttributes['aria-owns']
 
   return (
-    <StyledDataList
+    <StyledDescriptionList
       $isCollapsible={isCollapsible}
       $isOpen={open}
-      data-testid="data-list"
+      data-testid="description-list"
       {...rest}
     >
       <StyledHeader
         $isCollapsible={isCollapsible}
         onClick={toggle}
-        data-testid="data-list-header"
+        data-testid="description-list-header"
         {...ariaAttributes}
       >
         <StyledDescription>
           {description}
           {isCollapsible && (
             <StyledBadge $isCollapsible={isCollapsible} size="small">
-              {(children as React.ReactElement<DataListItemProps>[]).length}
+              {
+                (children as React.ReactElement<DescriptionListItemProps>[])
+                  .length
+              }
             </StyledBadge>
           )}
         </StyledDescription>
@@ -81,13 +84,17 @@ export const DataList: React.FC<DataListProps> = ({
       <StyledSheet
         $isCollapsible={isCollapsible}
         $isOpen={open}
-        data-testid="data-list-sheet"
+        data-testid="description-list-sheet"
         id={sheetId}
       >
         {React.Children.map(
           children,
-          (child: React.ReactElement<DataListItemProps>) => {
-            warnIfOverwriting(child.props, 'isCollapsible', DataListItem.name)
+          (child: React.ReactElement<DescriptionListItemProps>) => {
+            warnIfOverwriting(
+              child.props,
+              'isCollapsible',
+              DescriptionListItem.name
+            )
 
             return React.cloneElement(child, {
               ...child.props,
@@ -96,8 +103,8 @@ export const DataList: React.FC<DataListProps> = ({
           }
         )}
       </StyledSheet>
-    </StyledDataList>
+    </StyledDescriptionList>
   )
 }
 
-DataList.displayName = 'DataList'
+DescriptionList.displayName = 'DescriptionList'

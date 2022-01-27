@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components'
 
-export interface StyledDataListProps {
+export interface StyledDescriptionListProps {
   $isCollapsible: boolean
   $isOpen?: boolean
 }
 
-export const StyledDataList = styled.dl<StyledDataListProps>`
+export const StyledDescriptionList = styled.dl<StyledDescriptionListProps>`
   overflow: hidden;
   transition: 200ms max-height linear;
 

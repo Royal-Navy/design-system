@@ -4,7 +4,7 @@ import { StyledItem } from './partials/StyledItem'
 import { StyledItemKey } from './partials/StyledItemKey'
 import { StyledItemValue } from './partials/StyledItemValue'
 
-export interface DataListItemProps {
+export interface DescriptionListItemProps {
   /**
    * Value text to display for the item.
    */
@@ -20,7 +20,7 @@ export interface DataListItemProps {
   isCollapsible?: boolean
 }
 
-export const DataListItem: React.FC<DataListItemProps> = ({
+export const DescriptionListItem: React.FC<DescriptionListItemProps> = ({
   children,
   title,
   isCollapsible,
@@ -28,7 +28,7 @@ export const DataListItem: React.FC<DataListItemProps> = ({
 }) => (
   <StyledItem
     $isCollapsible={isCollapsible}
-    data-testid="data-list-item"
+    data-testid="description-list-item"
     {...rest}
   >
     <StyledItemKey>{title}</StyledItemKey>
@@ -36,4 +36,4 @@ export const DataListItem: React.FC<DataListItemProps> = ({
   </StyledItem>
 )
 
-DataListItem.displayName = 'DataListItem'
+DescriptionListItem.displayName = 'DescriptionListItem'
