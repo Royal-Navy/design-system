@@ -11,6 +11,7 @@ import {
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import { ColorAction500, ColorDanger800 } from '@defencedigital/design-tokens'
 import { Button, COMPONENT_SIZE } from '../..'
 import { NumberInputE } from '.'
 
@@ -19,6 +20,16 @@ const defaultProps = {
   onChange: (
     _: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>
   ) => true,
+}
+
+function paste(element: HTMLElement, text: string) {
+  // userEvent 13.x doesn't set clipboardData automatically, though
+  // React always does
+  userEvent.paste(element, text, {
+    clipboardData: {
+      getData: () => text,
+    } as unknown as DataTransfer,
+  })
 }
 
 describe('NumberInputE', () => {
@@ -262,6 +273,71 @@ describe('NumberInputE', () => {
       })
     })
 
+    describe('and the user types a negative value', () => {
+      beforeEach(() => {
+        userEvent.type(input, '-100')
+      })
+
+      assertInputValue('-100')
+      assertOnChangeCall(-100, 4)
+    })
+
+    describe('and the user types only a minus sign', () => {
+      beforeEach(() => {
+        userEvent.type(input, '-')
+      })
+
+      assertInputValue('-')
+      assertOnChangeCall(NaN, 1)
+
+      it('shows a focus border and not an error border', () => {
+        expect(
+          wrapper.getByTestId('number-input-outer-wrapper')
+        ).toHaveStyleRule('box-shadow', expect.stringContaining(ColorAction500))
+      })
+
+      describe('and the input is blurred', () => {
+        beforeEach(() => {
+          input.blur()
+        })
+
+        it('shows an error border', () => {
+          expect(
+            wrapper.getByTestId('number-input-outer-wrapper')
+          ).toHaveStyleRule(
+            'box-shadow',
+            expect.stringContaining(ColorDanger800.toUpperCase())
+          )
+        })
+      })
+
+      describe('and the increase button is clicked', () => {
+        beforeEach(() => {
+          onChangeSpy.mockReset()
+          wrapper.getByTestId('number-input-increase').click()
+        })
+
+        assertInputValue('-')
+
+        it('does not call the onChange callback', () => {
+          expect(onChangeSpy).not.toHaveBeenCalled()
+        })
+      })
+
+      describe('and the decrease button is clicked', () => {
+        beforeEach(() => {
+          onChangeSpy.mockReset()
+          wrapper.getByTestId('number-input-decrease').click()
+        })
+
+        assertInputValue('-')
+
+        it('does not call the onChange callback', () => {
+          expect(onChangeSpy).not.toHaveBeenCalled()
+        })
+      })
+    })
+
     describe('and the user types a fractional value', () => {
       beforeEach(() => {
         userEvent.type(input, '100.1')
@@ -279,27 +355,13 @@ describe('NumberInputE', () => {
         assertInputValue('100.125')
         assertOnChangeCall(100.125, 2)
       })
-
-      describe('and a second decimal point is typed before the first', () => {
-        beforeEach(() => {
-          onChangeSpy.mockReset()
-          userEvent.type(input, '{home}.25')
-        })
-
-        it('keeps the cursor between the second and third character', () => {
-          expect(input.selectionStart).toBe(2)
-        })
-
-        assertInputValue('25100.1')
-        assertOnChangeCall(25100.1, 2)
-      })
     })
 
     // Note: Testing Library currently doesn't trigger React's simulated
     // beforeInput event, so the next two describe blocks do that
     // manually using the keyPress event.
     describe.each(['1', '.'])(
-      'and beforeInput is triggered the valid character %s',
+      'and beforeInput is triggered with the valid character %s',
       (char) => {
         let event: Event
 
@@ -317,7 +379,7 @@ describe('NumberInputE', () => {
     )
 
     describe.each(['f', '@'])(
-      'and beforeInput is triggered the invalid character %s',
+      'and beforeInput is triggered with the invalid character %s',
       (char) => {
         let event: Event
 
@@ -334,11 +396,48 @@ describe('NumberInputE', () => {
       }
     )
 
-    describe.each(['123.456.789', '123invalid'])(
+    describe.each(['123.456', '-123', '-123.456'])(
+      'and the user pastes the valid value "%s" in an empty input',
+      (pastedValue) => {
+        beforeEach(() => {
+          paste(input, pastedValue)
+        })
+
+        assertInputValue(pastedValue)
+
+        it('calls onChange with the value', () => {
+          expect(onChangeSpy).toHaveBeenLastCalledWith(
+            expect.anything(),
+            parseFloat(pastedValue)
+          )
+        })
+      }
+    )
+
+    describe.each(['123.456', '-123', '-123.456'])(
+      'and the user pastes the valid value "%s" with existing text selected',
+      (pastedValue) => {
+        beforeEach(() => {
+          userEvent.type(input, '999{selectall}')
+          paste(input, pastedValue)
+        })
+
+        assertInputValue(pastedValue)
+
+        it('calls onChange with the value', () => {
+          expect(onChangeSpy).toHaveBeenLastCalledWith(
+            expect.anything(),
+            parseFloat(pastedValue)
+          )
+        })
+      }
+    )
+
+    describe.each(['123.456.789', '123invalid', '-123-456'])(
       'and the user pastes the invalid value "%s" in an empty input',
       (pastedValue) => {
         beforeEach(() => {
-          userEvent.paste(input, pastedValue)
+          paste(input, pastedValue)
         })
 
         assertInputValue('')
@@ -349,13 +448,13 @@ describe('NumberInputE', () => {
       }
     )
 
-    describe.each(['123.456.789', '123invalid'])(
+    describe.each(['123.456.789', '123invalid', '-123'])(
       'and the user pastes the invalid value "%s" after an existing value',
       (pastedValue) => {
         beforeEach(() => {
           userEvent.type(input, '100')
           onChangeSpy.mockReset()
-          userEvent.paste(input, pastedValue)
+          paste(input, pastedValue)
         })
 
         assertInputValue('100')
@@ -441,11 +540,32 @@ describe('NumberInputE', () => {
       )
     })
 
-    it('aplies the `aria-valuemax` attribute', () => {
+    it('applies the `aria-valuemax` attribute', () => {
       expect(wrapper.getByTestId('number-input')).toHaveAttribute(
         'aria-valuemax',
         '3'
       )
+    })
+
+    describe('and the user types -3', () => {
+      beforeEach(() => {
+        userEvent.type(input, '-3')
+      })
+
+      assertInputValue('3')
+      assertOnChangeCall(3, 1)
+    })
+
+    describe('and the user pastes -3', () => {
+      beforeEach(() => {
+        paste(input, '-3')
+      })
+
+      assertInputValue('')
+
+      it('does not call onChange', () => {
+        expect(onChangeSpy).not.toHaveBeenCalled()
+      })
     })
 
     describe('and the increase button is clicked four times', () => {
