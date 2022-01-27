@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ReactSelect, { Props as ReactSelectProps } from 'react-select'
 
 import { DropdownIndicator } from '../Dropdown/DropdownIndicator'
@@ -61,12 +61,14 @@ export const Select: React.FC<SelectProps> = ({
       option && option.value !== undefined ? option.value : null
     setSelectedValue(selectedValue)
 
-    onChange({
-      target: {
-        name,
-        value: selectedValue,
-      },
-    })
+    if (onChange) {
+      onChange({
+        target: {
+          name,
+          value: selectedValue,
+        },
+      })
+    }
   }
 
   return (
