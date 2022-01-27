@@ -58,9 +58,7 @@ describe('Checkbox', () => {
     })
 
     it('should not initially render as checked', () => {
-      expect(checkbox.getByTestId('checkbox-input')).not.toHaveAttribute(
-        'checked'
-      )
+      expect(checkbox.getByTestId('checkbox-input')).not.toBeChecked()
     })
   })
 
@@ -81,7 +79,7 @@ describe('Checkbox', () => {
     })
 
     it('should initially render as checked', () => {
-      expect(checkbox.getByTestId('checkbox-input')).toHaveAttribute('checked')
+      expect(checkbox.getByTestId('checkbox-input')).toBeChecked()
     })
   })
 
@@ -102,7 +100,7 @@ describe('Checkbox', () => {
     })
 
     it('should initially render as checked', () => {
-      expect(checkbox.getByTestId('checkbox-input')).toHaveAttribute('checked')
+      expect(checkbox.getByTestId('checkbox-input')).toBeChecked()
     })
   })
 
