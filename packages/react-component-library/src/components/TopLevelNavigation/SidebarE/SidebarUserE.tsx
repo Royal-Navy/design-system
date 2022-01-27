@@ -47,7 +47,9 @@ const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
         aria-label="Show user options"
         data-testid="user-button"
         icon={
-          <StyledUserAvatar initials={initials} data-testid="sidebar-avatar" />
+          <StyledUserAvatar data-testid="sidebar-avatar">
+            {initials}
+          </StyledUserAvatar>
         }
       />
     }
@@ -84,7 +86,7 @@ export const SidebarUserE: React.FC<SidebarUserEProps> = ({
 
   return (
     <StyledUser data-testid={`sidebar-user-${isOpen ? 'open' : 'closed'}`}>
-      <StyledUserAvatar initials={initials} />
+      <StyledUserAvatar>{initials}</StyledUserAvatar>
       <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
         {(state) => (
           <StyledUserText style={{ ...TRANSITION_STYLES[state] }}>

@@ -10,7 +10,9 @@ describe('Avatar', () => {
 
     beforeEach(() => {
       wrapper = render(
-        <Avatar className="modifier" data-arbitrary="arbitrary" initials="AB" />
+        <Avatar className="modifier" data-arbitrary="arbitrary">
+          AB
+        </Avatar>
       )
     })
 

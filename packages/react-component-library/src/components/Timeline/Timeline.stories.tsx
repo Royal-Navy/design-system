@@ -266,6 +266,7 @@ export const WithCustomMonths: ComponentStory<typeof Timeline> = (props) => {
   return (
     <Timeline
       {...props}
+      hasSide
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
     >
@@ -315,6 +316,7 @@ const CustomTimelineWeek = ({
 export const WithCustomWeeks: ComponentStory<typeof Timeline> = (props) => (
   <Timeline
     {...props}
+    hasSide
     startDate={new Date(2020, 3, 1)}
     today={new Date(2020, 3, 15)}
   >
@@ -355,6 +357,7 @@ const CustomTimelineDays = ({
 export const WithCustomDays: ComponentStory<typeof Timeline> = (props) => (
   <Timeline
     {...props}
+    hasSide
     startDate={new Date(2020, 3, 1)}
     today={new Date(2020, 3, 15)}
   >
@@ -393,6 +396,7 @@ const CustomTimelineHours = ({
 export const WithCustomHours: ComponentStory<typeof Timeline> = (props) => (
   <Timeline
     {...props}
+    hasSide
     startDate={new Date(2020, 3, 1)}
     today={new Date(2020, 3, 15)}
   >
@@ -439,6 +443,7 @@ export const WithCustomTodayMarker: ComponentStory<typeof Timeline> = (
 ) => (
   <Timeline
     {...props}
+    hasSide
     startDate={new Date(2020, 3, 1)}
     today={new Date(2020, 3, 15)}
   >
@@ -479,6 +484,7 @@ const CustomTimelineColumn = ({
 export const WithCustomColumns: ComponentStory<typeof Timeline> = (props) => (
   <Timeline
     {...props}
+    hasSide
     startDate={new Date(2020, 3, 1)}
     today={new Date(2020, 3, 15)}
   >
@@ -574,6 +580,7 @@ export const WithCustomEventBarColor: ComponentStory<typeof Timeline> = (
   return (
     <Timeline
       {...props}
+      hasSide
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
     >
@@ -637,6 +644,7 @@ export const WithCustomEventContent: ComponentStory<typeof Timeline> = (
 ) => (
   <Timeline
     {...props}
+    hasSide
     startDate={new Date(2020, 3, 1)}
     today={new Date(2020, 3, 15)}
   >
@@ -709,6 +717,7 @@ export const WithCustomDayWidth: ComponentStory<typeof Timeline> = (props) => {
   return (
     <Timeline
       {...props}
+      hasSide
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
       unitWidth={75}
@@ -751,6 +760,7 @@ export const WithCustomRange: ComponentStory<typeof Timeline> = (props) => {
   return (
     <Timeline
       {...props}
+      hasSide
       startDate={new Date(2020, 3, 1)}
       today={new Date(2020, 3, 15)}
       range={6}
