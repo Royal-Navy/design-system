@@ -1,6 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { FieldProps } from '../../common/FieldProps'
 import { FormProps } from '../../common/FormProps'
@@ -30,6 +31,8 @@ describe('RadioE', () => {
   })
 
   describe('when the field has no errors, a label and a value', () => {
+    let input: HTMLElement
+
     beforeEach(() => {
       label = 'My Label 1'
       field.value = 'option1'
@@ -42,6 +45,8 @@ describe('RadioE', () => {
           label={label}
         />
       )
+
+      input = radio.getByTestId('radio-input')
     })
 
     it('should render a field with a label', () => {
@@ -49,10 +54,31 @@ describe('RadioE', () => {
     })
 
     it('should populate the field value', () => {
-      expect(radio.queryByTestId('radio-input')).toHaveAttribute(
-        'value',
-        'option1'
-      )
+      expect(input).toHaveAttribute('value', 'option1')
+    })
+
+    describe('and tab is pressed', () => {
+      beforeEach(() => {
+        userEvent.tab()
+      })
+
+      it('focuses the input', () => {
+        expect(input).toHaveFocus()
+      })
+
+      describe('and space is pressed', () => {
+        beforeEach(() => {
+          userEvent.keyboard('[Space]')
+        })
+
+        it('checks the input', () => {
+          expect(input).toBeChecked()
+        })
+
+        it('calls onChange once', () => {
+          expect(field.onChange).toHaveBeenCalledTimes(1)
+        })
+      })
     })
   })
 
