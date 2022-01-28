@@ -73,8 +73,10 @@ export const CheckboxE = React.forwardRef<HTMLInputElement, CheckboxEProps>(
     const localRef = useRef<HTMLInputElement>(null)
     const [isChecked, setIsChecked] = useState(defaultChecked || checked)
 
-    const handleClick = (_: React.MouseEvent<HTMLDivElement>) => {
-      localRef.current.click()
+    const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+      if (event.target !== localRef.current) {
+        localRef.current.click()
+      }
     }
 
     const handleKeyUp = (_: React.KeyboardEvent) => {

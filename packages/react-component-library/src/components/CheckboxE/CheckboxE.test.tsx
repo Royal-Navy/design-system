@@ -1,6 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { CheckboxE } from '.'
 import { FieldProps } from '../../common/FieldProps'
@@ -12,14 +13,16 @@ describe('Checkbox', () => {
   let form: FormProps
   let label: string
   let checkbox: RenderResult
+  let onChangeSpy: jest.Mock
 
   beforeEach(() => {
     label = ''
+    onChangeSpy = jest.fn()
 
     field = {
       name: 'example1',
       value: 'false',
-      onChange: jest.fn(),
+      onChange: onChangeSpy,
       onBlur: jest.fn(),
     }
 
@@ -30,6 +33,8 @@ describe('Checkbox', () => {
   })
 
   describe('when a field has no errors, a label and a value', () => {
+    let input: HTMLElement
+
     beforeEach(() => {
       label = 'My Label 1'
       field.value = 'false'
@@ -42,6 +47,8 @@ describe('Checkbox', () => {
           onChange={field.onChange}
         />
       )
+
+      input = checkbox.getByTestId('checkbox-input')
     })
 
     it('should render a field with a label', () => {
@@ -51,14 +58,50 @@ describe('Checkbox', () => {
     })
 
     it('should populate the field value', () => {
-      expect(checkbox.queryByTestId('checkbox-input')).toHaveAttribute(
-        'value',
-        'false'
-      )
+      expect(input).toHaveAttribute('value', 'false')
     })
 
     it('should not initially render as checked', () => {
-      expect(checkbox.getByTestId('checkbox-input')).not.toBeChecked()
+      expect(input).not.toBeChecked()
+    })
+
+    describe('and tab is pressed', () => {
+      beforeEach(() => {
+        userEvent.tab()
+      })
+
+      it('focuses the input', () => {
+        expect(input).toHaveFocus()
+      })
+
+      describe('and space is pressed', () => {
+        beforeEach(() => {
+          userEvent.keyboard('[Space]')
+        })
+
+        it('checks the input', () => {
+          expect(input).toBeChecked()
+        })
+
+        it('calls onChange once', () => {
+          expect(field.onChange).toHaveBeenCalledTimes(1)
+        })
+
+        describe('and space is pressed again', () => {
+          beforeEach(() => {
+            onChangeSpy.mockReset()
+            userEvent.keyboard('[Space]')
+          })
+
+          it('unchecks the input', () => {
+            expect(input).not.toBeChecked()
+          })
+
+          it('calls onChange once', () => {
+            expect(field.onChange).toHaveBeenCalledTimes(1)
+          })
+        })
+      })
     })
   })
 
