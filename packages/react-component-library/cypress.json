@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://localhost:6006",
+  "baseUrl": "http://localhost:6007",
   "defaultCommandTimeout": 10000,
   "integrationFolder": "cypress/specs",
   "screenshotOnRunFailure": false,

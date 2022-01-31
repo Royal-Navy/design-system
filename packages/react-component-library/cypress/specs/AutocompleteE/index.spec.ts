@@ -86,7 +86,7 @@ describe('AutocompleteE', () => {
           cy.get(selectors.selectE.input).tab()
         })
 
-        it.skip('sets the value to the highlighted item', () => {
+        it('sets the value to the highlighted item', () => {
           cy.get(selectors.selectE.input).should('have.value', 'Three')
         })
       })

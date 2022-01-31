@@ -18,9 +18,11 @@ module.exports = {
       },
     },
     {
-      files: ['cypress/specs/**/*.ts'],
+      files: ['cypress/specs/**/*.ts', 'playwright/tests/**/*.ts'],
       rules: {
         'jest/expect-expect': 'off',
+        'jest/no-done-callback': 'off',
+        'jest/no-identical-title': 'off',
         'jest/valid-expect': 'off',
         'jest/valid-describe': 'off',
         'jest/valid-describe-callback': 'off',
