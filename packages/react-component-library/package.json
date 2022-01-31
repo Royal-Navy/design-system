@@ -87,7 +87,7 @@
     "@types/jest": "^27.0.2",
     "@types/jsdom": "^16.2.0",
     "@types/lodash": "^4.14.149",
-    "@types/node": "^16.3.3",
+    "@types/node": "^17.0.13",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-select": "^3.0.27",
