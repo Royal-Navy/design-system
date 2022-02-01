@@ -10,7 +10,7 @@ interface StyledRadioProps {
   $isChecked?: boolean
 }
 
-const RADIO_FOCUS_WIDTH = '0.1rem'
+const RADIO_ACTIVE_BORDER_WIDTH = '2px'
 
 const { spacing, fontSize, color, animation } = selectors
 
@@ -37,37 +37,36 @@ export const StyledRadio = styled.div<StyledRadioProps>`
       0 0 0 5px ${color('action', '100')};
   }
 
-  /* Active state, light blue outline */
-
-  &:hover ${StyledCheckmark}, ${StyledInput}:active ~ ${StyledCheckmark} {
-    border: 1px solid ${color('action', '500')};
-    outline: none;
-    box-shadow: 0 0 0 ${RADIO_FOCUS_WIDTH} ${color('action', '500')};
+  ${StyledCheckmark}::before {
+    display: block;
+    box-shadow: 0 0 0 0 transparent;
     transition: all ${animation('default')};
   }
 
-  /* Checked state, blue border */
+  /* Checkmark hover and active states, blue border */
+
+  &:hover ${StyledCheckmark}, ${StyledInput}:active ~ ${StyledCheckmark} {
+    &::before {
+      box-shadow: 0 0 0 ${RADIO_ACTIVE_BORDER_WIDTH} ${color('action', '500')};
+    }
+  }
+
+  /* Checkmark checked state */
 
   ${StyledInput}:checked ~ ${StyledCheckmark} {
     background-color: ${color('neutral', 'white')};
-    border: 1px solid ${color('action', '500')};
-    box-shadow: 0 0 0 ${RADIO_FOCUS_WIDTH} ${color('action', '500')};
-  }
 
-  ${StyledInput}:checked ~ ${StyledCheckmark}:after {
-    display: block;
-  }
+    /* Blue border */
+    &::before {
+      box-shadow: 0 0 0 ${RADIO_ACTIVE_BORDER_WIDTH} ${color('action', '500')};
+    }
 
-  /* Checkmark, blue dot */
-
-  ${StyledCheckmark}::after {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 999px;
-    background: ${color('action', '500')};
-    border: 2px solid ${color('neutral', 'white')};
+    /* Central blue dot */
+    &::after {
+      display: block;
+      background: ${color('action', '500')};
+      border: 2px solid ${color('neutral', 'white')};
+    }
   }
 
   ${({ $isDisabled }) =>
@@ -84,10 +83,13 @@ export const StyledRadio = styled.div<StyledRadioProps>`
         border: 1px solid ${color('neutral', '100')};
       }
 
-      &:hover ${StyledCheckmark}, ${StyledInput}:active ~ .rn-radio__checkmark {
+      &:hover ${StyledCheckmark}, ${StyledInput}:active ~ ${StyledCheckmark} {
         border: 1px solid ${color('neutral', '100')};
-        box-shadow: none;
         cursor: not-allowed;
+
+        &::before {
+          box-shadow: none;
+        }
       }
 
       background-color: ${color('neutral', '000')};

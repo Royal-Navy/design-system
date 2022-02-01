@@ -23,7 +23,14 @@ Default.args = {
   id: undefined,
   label: 'Default radio',
   name: 'default',
+}
+
+export const Checked = Template.bind({})
+Checked.args = {
+  id: undefined,
   defaultChecked: true,
+  label: 'Checked radio',
+  name: 'checked',
 }
 
 export const Disabled = Template.bind({})
