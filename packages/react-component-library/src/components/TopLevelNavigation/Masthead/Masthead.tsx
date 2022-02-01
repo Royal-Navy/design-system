@@ -49,7 +49,7 @@ export interface MastheadProps {
   /**
    * Optional handler invoked when the submit search button is clicked.
    */
-  onSearch?: (term: string) => void
+  onSearch?: (event: React.FormEvent<HTMLFormElement>, term: string) => void
   /**
    * Optional placeholder text to display in the search bar.
    */
@@ -111,8 +111,8 @@ export const Masthead: React.FC<MastheadProps> = ({
 
   const DisplayLogo = Logo ?? (hasDefaultLogo ? DefaultLogo : null)
 
-  const submitSearch = (term: string) => {
-    onSearch(term)
+  const submitSearch = (e: React.FormEvent<HTMLFormElement>, term: string) => {
+    onSearch(e, term)
     setShowSearch(false)
   }
 

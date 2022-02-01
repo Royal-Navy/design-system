@@ -333,6 +333,10 @@ describe('Masthead', () => {
 
         it('should use the onSearch method passed to the masthead to search', () => {
           expect(onSearchSpy).toHaveBeenCalledTimes(1)
+          expect(onSearchSpy).toHaveBeenCalledWith(
+            expect.objectContaining({ _reactName: 'onSubmit' }),
+            ''
+          )
         })
 
         it('should hide the searchbar from view', () => {
