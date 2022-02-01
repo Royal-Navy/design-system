@@ -101,7 +101,7 @@ export function getAnimation(
   return get(getTheme(theme).animationTokens, `timing[${index}].value`)
 }
 
-export function getColour(
+export function getColor(
   group: ColorGroup,
   weight: ColorShade,
   theme?: Theme
