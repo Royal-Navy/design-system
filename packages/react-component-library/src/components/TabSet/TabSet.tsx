@@ -166,7 +166,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
             const {
               children: tabChildren,
               title,
-              isActive,
+              isActive: _,
               ...tabRest
             } = child.props
 
