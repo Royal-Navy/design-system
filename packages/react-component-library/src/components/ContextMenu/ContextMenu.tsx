@@ -22,11 +22,11 @@ export interface ContextMenuProps extends ComponentWithClass {
   /**
    * Optional handler function to be invoked when the component is hidden.
    */
-  onHide?: () => void
+  onHide?: (e: MouseEvent) => void
   /**
    * Optional handler function to be invoked when the component is displayed.
    */
-  onShow?: () => void
+  onShow?: (e: MouseEvent) => void
   /**
    * Where to display the component relative to the target element.
    */
