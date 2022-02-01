@@ -9,7 +9,7 @@ import {
 } from '@testing-library/react'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { Tab, TabSet } from '.'
+import { TabSetItem, TabSet } from '.'
 import { SCROLL_DIRECTION } from './constants'
 
 const { color } = selectors
@@ -39,10 +39,10 @@ describe('TabSet', () => {
 
         wrapper = render(
           <TabSet {...props}>
-            <Tab data-arbitrary="arbitrary-tab" title="Title 1">
+            <TabSetItem data-arbitrary="arbitrary-tab" title="Title 1">
               Content 1
-            </Tab>
-            <Tab title="Title 2">Content 2</Tab>
+            </TabSetItem>
+            <TabSetItem title="Title 2">Content 2</TabSetItem>
           </TabSet>
         )
       })
@@ -226,8 +226,8 @@ describe('TabSet', () => {
       beforeEach(() => {
         wrapper = render(
           <TabSet>
-            <Tab title="Title 1">Content 1</Tab>
-            <Tab title="Title 2">Content 2</Tab>
+            <TabSetItem title="Title 1">Content 1</TabSetItem>
+            <TabSetItem title="Title 2">Content 2</TabSetItem>
           </TabSet>
         )
       })
@@ -248,10 +248,10 @@ describe('TabSet', () => {
       beforeEach(() => {
         wrapper = render(
           <TabSet>
-            <Tab title="Title 1">Content 1</Tab>
-            <Tab title="Title 2" isActive>
+            <TabSetItem title="Title 1">Content 1</TabSetItem>
+            <TabSetItem title="Title 2" isActive>
               Content 2
-            </Tab>
+            </TabSetItem>
           </TabSet>
         )
       })
@@ -284,8 +284,8 @@ describe('TabSet', () => {
         wrapper = render(
           <form>
             <TabSet>
-              <Tab title="Title 1">Content 1</Tab>
-              <Tab title="Title 2">Content 2</Tab>
+              <TabSetItem title="Title 1">Content 1</TabSetItem>
+              <TabSetItem title="Title 2">Content 2</TabSetItem>
             </TabSet>
           </form>
         )
@@ -313,12 +313,12 @@ describe('TabSet', () => {
       beforeEach(() => {
         wrapper = render(
           <TabSet>
-            <Tab title={<span>Title 1</span>}>
+            <TabSetItem title={<span>Title 1</span>}>
               <p>Content 1</p>
-            </Tab>
-            <Tab title={<span>Title 2</span>}>
+            </TabSetItem>
+            <TabSetItem title={<span>Title 2</span>}>
               <p>Content 2</p>
-            </Tab>
+            </TabSetItem>
           </TabSet>
         )
       })
@@ -346,9 +346,9 @@ describe('TabSet', () => {
     beforeEach(() => {
       wrapper = render(
         <TabSet isScrollable>
-          <Tab title="Title 1">Content 1</Tab>
-          <Tab title="Title 2">Content 2</Tab>
-          <Tab title="Title 3">Content 3</Tab>
+          <TabSetItem title="Title 1">Content 1</TabSetItem>
+          <TabSetItem title="Title 2">Content 2</TabSetItem>
+          <TabSetItem title="Title 3">Content 3</TabSetItem>
         </TabSet>
       )
 
