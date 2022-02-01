@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.79.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.0...2.79.1) (2022-01-28)
+
+
+### Bug Fixes
+
+* **NumberInputE:** Allow negative values to be typed or pasted ([196fd18](https://github.com/defencedigital/mod-uk-design-system/commit/196fd18a85f43298ee3b6eccc7a376c0327bd368))
+* **NumberInputE:** Show error border if single minus sign entered ([d8c0501](https://github.com/defencedigital/mod-uk-design-system/commit/d8c05017e750ef565dbed0859f555ae903e38fd9))
+* **Select:** Check callback exists before invoking ([fb7a949](https://github.com/defencedigital/mod-uk-design-system/commit/fb7a94973d01f3446c275e7131ad62aaba82b890))
+* **Select:** Handle long selected values ([80f2e29](https://github.com/defencedigital/mod-uk-design-system/commit/80f2e298ca398d586309273463cd4dd5993fb06b))
+
+
+
+
+
+# [2.79.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.78.2...2.79.0) (2022-01-27)
+
+
+### Features
+
+* **AutocompleteE:** Handle focus behaviour ([257e7fc](https://github.com/defencedigital/mod-uk-design-system/commit/257e7fcf990e4e8eaa38644ed4f4d6ffe6deaaaf))
+
+
+
+
+
 ## [2.78.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.78.1...2.78.2) (2022-01-25)
 
 

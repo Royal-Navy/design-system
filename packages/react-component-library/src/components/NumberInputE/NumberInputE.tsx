@@ -49,6 +49,9 @@ interface NumberInputBaseProps
   max?: number
   /**
    * Minimum value selectable by the component (lower bound).
+   *
+   * To disable the entry of negative numbers, set this to `0` or
+   * greater.
    */
   min?: number
   /**
@@ -60,13 +63,16 @@ interface NumberInputBaseProps
    */
   onBlur?: (event: React.FormEvent) => void
   /**
-   * Handler called when the value selected by the component changes.
+   * Handler called when the entered value changes.
+   *
+   * Note that `newValue` could be `NaN` if negative numbers
+   * are allowed and a single `-` is entered.
    */
   onChange: (
     event:
       | React.ChangeEvent<HTMLInputElement>
       | React.MouseEvent<HTMLButtonElement>,
-    newValue: number
+    newValue: number | null
   ) => void
   /**
    * Optional placeholder text to display within the component.
@@ -145,7 +151,6 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
   id = uuidv4(),
   isDisabled = false,
   isInvalid,
-  isValid,
   label,
   max,
   min,
@@ -160,12 +165,15 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
   value,
   ...rest
 }) => {
+  const isNegativeAllowed = isNil(min) || min < 0
   const { committedValue, setCommittedValue } = useValue(
     value ? String(value) : null
   )
   const { hasFocus, onLocalFocus, onLocalBlur } = useFocus(onBlur)
-  const { handleBeforeInput, handleKeyDown } = useEarlyValidation()
+  const { handleBeforeInput, handlePaste } =
+    useEarlyValidation(isNegativeAllowed)
   const { handleButtonClick, handleInputChange } = useChangeHandlers(
+    isNegativeAllowed,
     min,
     max,
     onChange,
@@ -173,6 +181,8 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
   )
 
   const numberInputId = getId('number-input')
+  const isCommittedValueInvalid =
+    committedValue && !Number.isFinite(parseFloat(committedValue))
 
   return (
     <StyledNumberInput
@@ -187,9 +197,14 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
       aria-valuetext={String(formatValue(committedValue, prefix, suffix))}
     >
       <StyledOuterWrapper
+        data-testid="number-input-outer-wrapper"
         $hasFocus={hasFocus}
         $isDisabled={isDisabled}
-        $isInvalid={isInvalid || hasClass(className, 'is-invalid')}
+        $isInvalid={
+          isInvalid ||
+          isCommittedValueInvalid ||
+          hasClass(className, 'is-invalid')
+        }
         $size={size}
       >
         {icon && (
@@ -210,13 +225,11 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
           hasFocus={hasFocus}
           id={id}
           isDisabled={isDisabled}
-          isValid={isValid || hasClass(className, 'is-valid')}
-          isInvalid={isInvalid || hasClass(className, 'is-invalid')}
           label={label}
           name={name}
           onBeforeInput={handleBeforeInput}
           onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
+          onPaste={handlePaste}
           onBlur={onLocalBlur}
           onFocus={onLocalFocus}
           placeholder={placeholder}

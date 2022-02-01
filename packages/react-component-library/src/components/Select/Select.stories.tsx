@@ -8,6 +8,11 @@ const options = [
   { value: 'chocolate', label: 'Chocolate', badge: 100 },
   { value: 'melon', label: 'Melon' },
   { value: 'strawberry', label: 'Strawberry' },
+  {
+    value: 'foo',
+    label:
+      'This is a really, really long select option label that overflows the container when selected',
+  },
 ]
 
 export default {
@@ -25,7 +30,12 @@ export default {
 } as ComponentMeta<typeof Select>
 
 const Template: ComponentStory<typeof Select> = (args) => (
-  <div style={{ height: args.isDisabled ? 'initial' : '10rem' }}>
+  <div
+    style={{
+      height: args.isDisabled ? 'initial' : '13rem',
+      maxWidth: '25rem',
+    }}
+  >
     <Select {...args} />
   </div>
 )

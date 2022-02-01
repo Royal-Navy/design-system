@@ -4,6 +4,7 @@ import React, { useCallback } from 'react'
 import { canCommit, isValueValid } from './validation'
 
 export function useChangeHandlers(
+  isNegativeAllowed: boolean,
   min: number | undefined,
   max: number | undefined,
   onChange: (
@@ -22,7 +23,7 @@ export function useChangeHandlers(
 } {
   const handleInputChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      if (!isValueValid(event.currentTarget.value)) {
+      if (!isValueValid(event.currentTarget.value, isNegativeAllowed)) {
         return
       }
 
@@ -33,7 +34,7 @@ export function useChangeHandlers(
         onChange(event, isNil(newValue) ? null : Number(newValue))
       }
     },
-    [min, max, onChange, setCommittedValue]
+    [isNegativeAllowed, min, max, setCommittedValue, onChange]
   )
 
   const handleButtonClick = useCallback(

@@ -1,11 +1,14 @@
 import { isFinite, isNil } from 'lodash'
 
-export function areCharactersValid(characters: string): boolean {
-  return /^[0-9.]*$/.test(characters)
-}
+const OPTIONAL_NEGATIVE_REGEX = /^-?\d*(\.\d*)?$/
+const NON_NEGATIVE_REGEX = /^\d*(\.\d*)?$/
 
-export function isValueValid(value: string): boolean {
-  return /^\d*(\.\d*)?$/.test(value)
+export function isValueValid(
+  value: string,
+  isNegativeAllowed: boolean
+): boolean {
+  const regex = isNegativeAllowed ? OPTIONAL_NEGATIVE_REGEX : NON_NEGATIVE_REGEX
+  return regex.test(value)
 }
 
 export function isWithinRange(
@@ -26,8 +29,9 @@ export function canCommit(
 ): boolean {
   const parsedValue = parseFloat(newValue)
 
-  return (
-    (isFinite(parsedValue) && isWithinRange(max, min, parsedValue)) ||
-    parsedValue === null
-  )
+  if (newValue === '-' || parsedValue === null) {
+    return true
+  }
+
+  return isFinite(parsedValue) && isWithinRange(max, min, parsedValue)
 }
