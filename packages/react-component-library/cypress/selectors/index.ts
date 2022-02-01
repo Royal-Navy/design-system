@@ -1,4 +1,5 @@
 import autocompleteE from './AutocompleteE'
+import checkboxE from './CheckboxE'
 import contextMenu from './ContextMenu'
 import datePicker from './DatePicker'
 import form from './form'
@@ -9,6 +10,7 @@ import timeline from './timeline'
 
 export default {
   autocompleteE,
+  checkboxE,
   contextMenu,
   datePicker,
   form,
