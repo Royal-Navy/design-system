@@ -14,6 +14,21 @@ const RADIO_ACTIVE_BORDER_WIDTH = '2px'
 
 const { spacing, fontSize, color, animation } = selectors
 
+const BackgroundColor = css<StyledRadioProps>`
+  ${({ $isDisabled }) =>
+    $isDisabled ? color('neutral', '000') : color('neutral', 'white')}
+`
+
+const CheckmarkActiveBorderColor = css<StyledRadioProps>`
+  ${({ $isDisabled }) =>
+    $isDisabled ? color('neutral', '200') : color('action', '500')}
+`
+
+const CheckmarkCheckedFillColor = css<StyledRadioProps>`
+  ${({ $isDisabled }) =>
+    $isDisabled ? color('neutral', '200') : color('action', '500')}
+`
+
 export const StyledRadio = styled.div<StyledRadioProps>`
   display: inline-flex;
   position: relative;
@@ -21,6 +36,7 @@ export const StyledRadio = styled.div<StyledRadioProps>`
   cursor: pointer;
   font-size: ${fontSize('base')};
   user-select: none;
+  background: ${BackgroundColor};
 
   * {
     cursor: pointer;
@@ -37,35 +53,45 @@ export const StyledRadio = styled.div<StyledRadioProps>`
       0 0 0 5px ${color('action', '100')};
   }
 
-  ${StyledCheckmark}::before {
-    display: block;
-    box-shadow: 0 0 0 0 transparent;
-    transition: all ${animation('default')};
+  ${StyledCheckmark} {
+    background: ${BackgroundColor};
+
+    &::before {
+      display: block;
+      box-shadow: 0 0 0 0 transparent;
+      transition: all ${animation('default')};
+    }
   }
 
   /* Checkmark hover and active states, blue border */
 
-  &:hover ${StyledCheckmark}, ${StyledInput}:active ~ ${StyledCheckmark} {
-    &::before {
-      box-shadow: 0 0 0 ${RADIO_ACTIVE_BORDER_WIDTH} ${color('action', '500')};
-    }
-  }
+  ${({ $isDisabled }) =>
+    !$isDisabled &&
+    css`
+      &:hover ${StyledCheckmark}, ${StyledInput}:active ~ ${StyledCheckmark} {
+        &::before {
+          box-shadow: 0 0 0 ${RADIO_ACTIVE_BORDER_WIDTH}
+            ${color('action', '500')};
+        }
+      }
+    `}
 
   /* Checkmark checked state */
 
   ${StyledInput}:checked ~ ${StyledCheckmark} {
     background-color: ${color('neutral', 'white')};
 
-    /* Blue border */
+    /* Blue border (grey if disabled) */
     &::before {
-      box-shadow: 0 0 0 ${RADIO_ACTIVE_BORDER_WIDTH} ${color('action', '500')};
+      box-shadow: 0 0 0 ${RADIO_ACTIVE_BORDER_WIDTH}
+        ${CheckmarkActiveBorderColor};
     }
 
-    /* Central blue dot */
+    /* Central blue dot (grey dot if disabled) */
     &::after {
       display: block;
-      background: ${color('action', '500')};
-      border: 2px solid ${color('neutral', 'white')};
+      background: ${CheckmarkCheckedFillColor};
+      border: 2px solid ${BackgroundColor};
     }
   }
 
@@ -78,21 +104,6 @@ export const StyledRadio = styled.div<StyledRadioProps>`
         cursor: not-allowed;
       }
 
-      ${StyledInput} ~ ${StyledCheckmark} {
-        background-color: ${color('neutral', '200')};
-        border: 1px solid ${color('neutral', '100')};
-      }
-
-      &:hover ${StyledCheckmark}, ${StyledInput}:active ~ ${StyledCheckmark} {
-        border: 1px solid ${color('neutral', '100')};
-        cursor: not-allowed;
-
-        &::before {
-          box-shadow: none;
-        }
-      }
-
-      background-color: ${color('neutral', '000')};
       border-color: transparent;
 
       &:focus-within,

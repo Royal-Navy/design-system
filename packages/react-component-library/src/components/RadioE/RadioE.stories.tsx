@@ -41,6 +41,16 @@ Disabled.args = {
   name: 'disabled',
 }
 
+export const DisabledChecked = Template.bind({})
+DisabledChecked.storyName = 'Disabled, checked'
+DisabledChecked.args = {
+  id: undefined,
+  isDisabled: true,
+  defaultChecked: true,
+  label: 'Disabled, checked radio',
+  name: 'disabled-checked',
+}
+
 export const Invalid = Template.bind({})
 Invalid.args = {
   id: undefined,
