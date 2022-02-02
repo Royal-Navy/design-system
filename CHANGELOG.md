@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.79.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.1...2.79.2) (2022-02-02)
+
+
+### Bug Fixes
+
+* **CheckboxE:** Fix inability to use space to toggle state in Firefox ([666b6f9](https://github.com/defencedigital/mod-uk-design-system/commit/666b6f9148ff07fd7a6ff28fbba0f0dd186136cb))
+* **RadioE:** Prevent possible loop in click handler ([6b3e82d](https://github.com/defencedigital/mod-uk-design-system/commit/6b3e82dbfe9edddacf390d2c89e74244d24a8e62))
+
+
+
+
+
 ## [2.79.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.0...2.79.1) (2022-01-28)
 
 
