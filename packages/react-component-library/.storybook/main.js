@@ -12,6 +12,7 @@ module.exports = {
     },
     '@storybook/addon-a11y',
     '@storybook/addon-actions',
+    '@storybook/addon-ie11',
   ],
   core: {
     builder: 'webpack5',
