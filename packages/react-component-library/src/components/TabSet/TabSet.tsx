@@ -4,25 +4,25 @@ import {
   IconKeyboardArrowRight,
 } from '@defencedigital/icon-library'
 
-import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { Tab, TabContent, TabItem, TabProps } from '.'
-import { useScrollableTabSet } from './useScrollableTabSet'
-import { SCROLL_DIRECTION } from './constants'
-import { getId } from '../../helpers'
 import { ARROW_LEFT, ARROW_RIGHT } from '../../utils/keyCodes'
-import { StyledTabSet } from './partials/StyledTabSet'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { getId } from '../../helpers'
+import { SCROLL_DIRECTION } from './constants'
+import { StyledBody } from './partials/StyledBody'
 import { StyledHeader } from './partials/StyledHeader'
 import { StyledNavigation } from './partials/StyledNavigation'
-import { StyledTabs } from './partials/StyledTabs'
-import { StyledBody } from './partials/StyledBody'
-import { StyledScrollRight } from './partials/StyledScrollRight'
 import { StyledScrollLeft } from './partials/StyledScrollLeft'
+import { StyledScrollRight } from './partials/StyledScrollRight'
+import { StyledTabs } from './partials/StyledTabs'
+import { StyledTabSet } from './partials/StyledTabSet'
+import { TabSetItem, TabContent, TabItem, TabSetItemProps } from '.'
+import { useScrollableTabSet } from './useScrollableTabSet'
 
 export interface TabSetProps extends ComponentWithClass {
   /**
    * Collection of `Tab` components that make up the tab set.
    */
-  children: React.ReactElement<TabProps>[]
+  children: React.ReactElement<TabSetItemProps>[]
   /**
    * Optional handler invoked when the currently selected tab is changed.
    */
@@ -41,7 +41,7 @@ export interface ScrollableTabSetProps extends ComponentWithClass {
   /**
    * Collection of `Tab` components that make up the tab set.
    */
-  children: React.ReactElement<TabProps>[]
+  children: React.ReactElement<TabSetItemProps>[]
   /**
    * Optional handler invoked when the currently selected tab is changed.
    */
@@ -162,11 +162,11 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
       <StyledBody $isScrollable={isScrollable}>
         {Children.map(
           children,
-          (child: React.ReactElement<TabProps>, index: number) => {
+          (child: React.ReactElement<TabSetItemProps>, index: number) => {
             const {
               children: tabChildren,
               title,
-              isActive,
+              isActive: _,
               ...tabRest
             } = child.props
 
@@ -176,7 +176,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
                 isActive={index === activeTab}
                 {...tabRest}
               >
-                <Tab title={title}>{tabChildren}</Tab>
+                <TabSetItem title={title}>{tabChildren}</TabSetItem>
               </TabContent>
             )
           }

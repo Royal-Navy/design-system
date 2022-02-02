@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import { TabProps } from './Tab'
+import { TabSetItemProps } from './TabSetItem'
 
 function hasTab(tabIndex: number, itemsRef: Array<HTMLLIElement>) {
   return tabIndex > -1 && tabIndex < itemsRef.length
@@ -22,7 +22,9 @@ function scrollTo(element: HTMLDivElement, left: number): Promise<void> {
   })
 }
 
-export function useScrollableTabSet(items: React.ReactElement<TabProps>[]) {
+export function useScrollableTabSet(
+  items: React.ReactElement<TabSetItemProps>[]
+) {
   const [currentScrollToTab, setCurrentScrollToTab] = useState(0)
   const itemsRef = useRef<Array<HTMLLIElement>>([])
   const tabsRef = useRef<HTMLDivElement>()

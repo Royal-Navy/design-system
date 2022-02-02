@@ -1,6 +1,6 @@
 import React from 'react'
 
-export interface TabProps {
+export interface TabSetItemProps {
   /**
    * Text title to display within the tab.
    */
@@ -15,8 +15,8 @@ export interface TabProps {
   isActive?: boolean
 }
 
-export const Tab: React.FC<TabProps> = ({ children }) => {
+export const TabSetItem: React.FC<TabSetItemProps> = ({ children }) => {
   return <>{children}</>
 }
 
-Tab.displayName = 'Tab'
+TabSetItem.displayName = 'TabSetItem'
