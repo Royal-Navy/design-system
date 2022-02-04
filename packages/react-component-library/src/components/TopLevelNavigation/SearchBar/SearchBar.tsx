@@ -9,7 +9,7 @@ import { StyledButton } from './partials/StyledButton'
 
 export interface SearchbarProps {
   className?: string
-  onSearch: (term: string) => void
+  onSearch: (event: React.FormEvent<HTMLFormElement>, term: string) => void
   searchButton: any
   searchPlaceholder: string
   setShowSearch: (isVisible: boolean) => void
@@ -39,7 +39,7 @@ export const SearchBar: React.FC<SearchbarProps> = ({
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    onSearch(term)
+    onSearch(event, term)
   }
 
   return (

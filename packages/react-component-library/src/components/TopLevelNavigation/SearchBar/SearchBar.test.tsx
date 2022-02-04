@@ -5,7 +5,10 @@ import { fireEvent, render, RenderResult } from '@testing-library/react'
 import { SearchBar } from '.'
 
 describe('Searchbar', () => {
-  let onSearchSpy: (term: string) => void
+  let onSearchSpy: (
+    event: React.FormEvent<HTMLFormElement>,
+    term: string
+  ) => void
   let wrapper: RenderResult
   let setShowSearchSpy: (isVisible: boolean) => void
 
@@ -101,7 +104,10 @@ describe('Searchbar', () => {
 
         it('should call the `onSearch` callback with the search term', () => {
           expect(onSearchSpy).toHaveBeenCalledTimes(1)
-          expect(onSearchSpy).toHaveBeenCalledWith('A')
+          expect(onSearchSpy).toHaveBeenCalledWith(
+            expect.objectContaining({ _reactName: 'onSubmit' }),
+            'A'
+          )
         })
       })
     })

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import { useOpenClose } from './useOpenClose'
 
@@ -34,8 +34,8 @@ export type ClickMenuPositionType =
 interface UseClickMenuParams {
   attachedToRef: React.RefObject<HTMLElement>
   clickType: ClickType
-  onHide?: () => void
-  onShow?: () => void
+  onHide?: (e: MouseEvent) => void
+  onShow?: (e: MouseEvent) => void
   position?: ClickMenuPositionType
 }
 
@@ -55,10 +55,8 @@ export const useClickMenu = <TMenuElement extends HTMLElement>({
   const menuRef = useRef<TMenuElement>(null)
 
   function getCoordinates({ clientX, clientY }: MouseEvent) {
-    const {
-      height: menuHeight,
-      width: menuWidth,
-    } = menuRef.current.getBoundingClientRect()
+    const { height: menuHeight, width: menuWidth } =
+      menuRef.current.getBoundingClientRect()
 
     if (
       position === CLICK_MENU_POSITION.BELOW ||
@@ -93,21 +91,21 @@ export const useClickMenu = <TMenuElement extends HTMLElement>({
       e.preventDefault()
       setOpen(true)
       if (onShow) {
-        onShow()
+        onShow(e)
       }
       return
     }
 
     setOpen(false)
     if (onHide) {
-      onHide()
+      onHide(e)
     }
   }
 
-  function hideMenu() {
+  function hideMenu(e: MouseEvent): void {
     setOpen(false)
     if (onHide) {
-      onHide()
+      onHide(e)
     }
   }
 

@@ -165,7 +165,10 @@ describe('TabSet', () => {
 
         it('should invoke the onChange function', () => {
           expect(onChangeSpy).toHaveBeenCalledTimes(1)
-          expect(onChangeSpy).toHaveBeenCalledWith(1)
+          expect(onChangeSpy).toHaveBeenCalledWith(
+            expect.objectContaining({ _reactName: 'onClick' }),
+            1
+          )
         })
 
         it('should set the first tab `tabIndex` to -1', () => {

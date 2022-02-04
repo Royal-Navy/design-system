@@ -469,6 +469,9 @@ describe('ContextMenu', () => {
 
     it('fires the onShow event', () => {
       expect(onShowSpy).toBeCalledTimes(1)
+      expect(onShowSpy).toHaveBeenCalledWith(
+        expect.objectContaining({ isTrusted: false })
+      )
     })
 
     describe('when the user closes the context', () => {
@@ -480,6 +483,9 @@ describe('ContextMenu', () => {
 
       it('fires the onHide event', () => {
         expect(onHideSpy).toBeCalledTimes(1)
+        expect(onHideSpy).toHaveBeenCalledWith(
+          expect.objectContaining({ isTrusted: false })
+        )
       })
     })
   })

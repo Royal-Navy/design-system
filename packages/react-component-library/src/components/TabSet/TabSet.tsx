@@ -1,4 +1,4 @@
-import React, { Children, KeyboardEvent, useState } from 'react'
+import React, { Children, KeyboardEvent, MouseEvent, useState } from 'react'
 import {
   IconKeyboardArrowLeft,
   IconKeyboardArrowRight,
@@ -18,6 +18,11 @@ import { StyledTabSet } from './partials/StyledTabSet'
 import { TabSetItem, TabContent, TabItem, TabSetItemProps } from '.'
 import { useScrollableTabSet } from './useScrollableTabSet'
 
+type OnChangeEventType =
+  | KeyboardEvent<HTMLLIElement>
+  | KeyboardEvent<HTMLButtonElement>
+  | MouseEvent<HTMLButtonElement>
+
 export interface TabSetProps extends ComponentWithClass {
   /**
    * Collection of `Tab` components that make up the tab set.
@@ -26,7 +31,7 @@ export interface TabSetProps extends ComponentWithClass {
   /**
    * Optional handler invoked when the currently selected tab is changed.
    */
-  onChange?: (id: number) => void
+  onChange?: (e: OnChangeEventType, id: number) => void
   /**
    * Toggles whether to display the tab set full width.
    */
@@ -45,7 +50,7 @@ export interface ScrollableTabSetProps extends ComponentWithClass {
   /**
    * Optional handler invoked when the currently selected tab is changed.
    */
-  onChange?: (id: number) => void
+  onChange?: (e: OnChangeEventType, id: number) => void
   /**
    * Toggles whether to display the tab set full width.
    */
@@ -84,11 +89,11 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
   const [activeTab, setActiveTab] = useState(getActiveIndex(children))
   const { scrollToNextTab, tabsRef, itemsRef } = useScrollableTabSet(children)
 
-  const handleClick = (index: number) => {
+  function handleClick(e: OnChangeEventType, index: number) {
     setActiveTab(index)
 
     if (onChange) {
-      onChange(index)
+      onChange(e, index)
     }
   }
 
@@ -106,7 +111,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
 
     if ([ARROW_LEFT, ARROW_RIGHT].includes(which)) {
       const index = getNextIndex(which)
-      handleClick(index)
+      handleClick(event, index)
     }
   }
 
@@ -133,7 +138,9 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
               ({ props }: React.ReactElement, index: number) => (
                 <TabItem
                   tabId={tabIds[index]}
-                  onClick={() => handleClick(index)}
+                  onClick={(e: MouseEvent<HTMLButtonElement>) =>
+                    handleClick(e, index)
+                  }
                   onKeyDown={handleKeyDown}
                   isActive={index === activeTab}
                   isFullWidth={isFullWidth}
