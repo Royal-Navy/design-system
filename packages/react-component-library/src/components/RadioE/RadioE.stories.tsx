@@ -23,7 +23,14 @@ Default.args = {
   id: undefined,
   label: 'Default radio',
   name: 'default',
+}
+
+export const Checked = Template.bind({})
+Checked.args = {
+  id: undefined,
   defaultChecked: true,
+  label: 'Checked radio',
+  name: 'checked',
 }
 
 export const Disabled = Template.bind({})
@@ -32,6 +39,16 @@ Disabled.args = {
   isDisabled: true,
   label: 'Disabled radio',
   name: 'disabled',
+}
+
+export const DisabledChecked = Template.bind({})
+DisabledChecked.storyName = 'Disabled, checked'
+DisabledChecked.args = {
+  id: undefined,
+  isDisabled: true,
+  defaultChecked: true,
+  label: 'Disabled, checked radio',
+  name: 'disabled-checked',
 }
 
 export const Invalid = Template.bind({})
