@@ -1,5 +1,4 @@
 import { IconEvent } from '@defencedigital/icon-library'
-import { isValid } from 'date-fns'
 import FocusTrap from 'focus-trap-react'
 import React, { useRef } from 'react'
 import { Placement } from '@popperjs/core'
@@ -13,6 +12,7 @@ import { DATEPICKER_E_ACTION } from './types'
 import { hasClass } from '../../helpers'
 import { InlineButton } from '../InlineButtons/InlineButton'
 import { InputValidationProps } from '../../common/InputValidationProps'
+import { isDateValid } from './utils'
 import { StyledLabel } from '../TextInputE/partials/StyledLabel'
 import { StyledDatePickerEInput } from './partials/StyledDatePickerEInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
@@ -63,7 +63,7 @@ export interface DatePickerEProps
    * If set, it should be kept updated with the `endDate` value provided
    * by the `onChange` callback.
    */
-  endDate?: Date
+  endDate?: Date | null
   /**
    * Custom date format (e.g. `yyyy/MM/dd`).
    */
@@ -117,7 +117,7 @@ export interface DatePickerEProps
    * If set, it should be kept updated with the `startDate` provided
    * by the `onChange` callback.
    */
-  startDate?: Date
+  startDate?: Date | null
   /**
    * Toggles whether the picker is open on first render.
    */
@@ -139,11 +139,11 @@ export interface DatePickerEProps
   /**
    * Initial value for `startDate`. Only used when the `startDate` prop is not set.
    */
-  initialStartDate?: Date
+  initialStartDate?: Date | null
   /**
    * Initial value for `endDate`. Only used when the `endDate` prop is not set.
    */
-  initialEndDate?: Date
+  initialEndDate?: Date | null
   /**
    * Position to display the picker relative to the input.
    * NOTE: This is now calculated automatically by default based on available screen real-estate.
@@ -155,16 +155,17 @@ export interface DatePickerEProps
   value?: never
 }
 
-const replaceInvalidDate = (date: Date) => (isValid(date) ? date : undefined)
+const replaceInvalidDate = (date: Date | null | undefined): Date | undefined =>
+  isDateValid(date) ? date : undefined
 
 export const DatePickerE: React.FC<DatePickerEProps> = ({
   className,
   endDate: externalEndDate,
   format: datePickerFormat = DATE_FORMAT.SHORT,
   id: externalId,
-  isDisabled,
+  isDisabled = false,
   isInvalid,
-  isRange,
+  isRange = false,
   label = 'Date',
   onChange,
   onCalendarFocus,
@@ -172,8 +173,8 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   initialIsOpen,
   disabledDays,
   initialMonth,
-  initialStartDate,
-  initialEndDate,
+  initialStartDate = null,
+  initialEndDate = null,
   placement = 'bottom-start',
   onBlur,
   // Formik can pass value – drop it to stop it being forwarded to the input
@@ -183,8 +184,8 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   const id = useExternalId(externalId)
   const titleId = `datepicker-title-${useExternalId()}`
   const contentId = `datepicker-contentId-${useExternalId()}`
-  const buttonRef = useRef<HTMLButtonElement>()
-  const inputRef = useRef<HTMLInputElement>()
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const { hasFocus, onLocalBlur, onLocalFocus } = useFocus()
   const {
@@ -239,7 +240,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
 
   const hasContent = Boolean(startDate)
 
-  const placeholder = !isRange ? datePickerFormat.toLowerCase() : null
+  const placeholder = !isRange ? datePickerFormat.toLowerCase() : undefined
 
   return (
     <>
@@ -302,7 +303,7 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
           </StyledInputWrapper>
           <StyledInlineButtons>
             <InlineButton
-              aria-expanded={!!isOpen}
+              aria-expanded={isOpen}
               aria-label={`${isOpen ? 'Hide' : 'Show'} day picker`}
               aria-owns={contentId}
               data-testid="datepicker-input-button"
