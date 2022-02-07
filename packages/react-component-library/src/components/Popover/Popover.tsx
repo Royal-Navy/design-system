@@ -47,7 +47,7 @@ export const Popover: React.FC<PopoverProps> = ({
   children,
   closeDelay = POPOVER_CLOSE_DELAY,
   content,
-  isClick,
+  isClick = false,
   scheme = FLOATING_BOX_SCHEME.LIGHT,
   placement = FLOATING_BOX_PLACEMENT.RIGHT,
   ...rest
