@@ -17,7 +17,7 @@ describe('Button', () => {
   describe('default props', () => {
     beforeEach(() => {
       wrapper = render(<ButtonE onClick={onClickSpy}>Click me</ButtonE>)
-      button = wrapper.getByText('Click me').parentElement
+      button = wrapper.getByLabelText('Click me')
     })
 
     it('should default the type to "button"', () => {
@@ -42,7 +42,7 @@ describe('Button', () => {
   describe('when the onClick callback has not been specified', () => {
     beforeEach(() => {
       wrapper = render(<ButtonE>Click me</ButtonE>)
-      button = wrapper.getByText('Click me').parentElement
+      button = wrapper.getByLabelText('Click me')
     })
 
     it('does not throw an error when the button is clicked', () => {
@@ -61,7 +61,7 @@ describe('Button', () => {
           Click me
         </ButtonE>
       )
-      button = wrapper.getByText('Click me').parentElement
+      button = wrapper.getByLabelText('Click me')
 
       expect(button).toHaveAttribute('type', expected)
     })

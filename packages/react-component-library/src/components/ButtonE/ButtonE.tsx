@@ -81,7 +81,7 @@ export const ButtonE: React.FC<ButtonEProps> = ({
   children,
   className,
   isDisabled,
-  isLoading,
+  isLoading = false,
   icon,
   iconPosition = BUTTON_E_ICON_POSITION.RIGHT,
   onClick,
