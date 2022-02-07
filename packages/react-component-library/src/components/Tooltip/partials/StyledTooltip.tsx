@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components'
 
 interface StyledTooltipProps {
-  $bottom: number
-  $left: number
-  $right: number
-  $top: number
-  $width: number
+  $bottom?: number
+  $left?: number
+  $right?: number
+  $top?: number
+  $width?: number
 }
 
-function getUnitAsPx($unit: number) {
+function getUnitAsPx($unit: number | undefined) {
   return $unit ? `${$unit}px` : 'auto'
 }
 
