@@ -10,9 +10,9 @@
     axe-core "^4.3.3"
 
 "@babel/cli@^7.11.6", "@babel/cli@^7.8.3":
-  version "7.16.7"
-  resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.16.7.tgz#4184b5ec6a22106e9dd64bbcaa2eb22675ff595d"
-  integrity sha512-0iBF+G2Qml0y3mY5dirolyToLSR88a/KB6F2Gm8J/lOnyL8wbEOHak0DHF8gjc9XZGgTDGv/jYXNiapvsYyHTA==
+  version "7.17.0"
+  resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.17.0.tgz#9b932d8f08a2e218fcdd9bba456044eb0a2e0b2c"
+  integrity sha512-es10YH/ejXbg551vtnmEzIPe3MQRNOS644o3pf8vUr1tIeNzVNlP8BBvs1Eh7roh5A+k2fEHUas+ZptOWHA1fQ==
   dependencies:
     commander "^4.0.1"
     convert-source-map "^1.1.0"
