@@ -109,6 +109,7 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
             }),
             inputValue,
             isHighlighted: highlightedIndex === index,
+            title: child.props.children,
           })
         })}
       {inputValue && !items.length && <NoResults>{inputValue}</NoResults>}

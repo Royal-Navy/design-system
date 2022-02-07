@@ -18,11 +18,25 @@ describe('SelectE', () => {
 
     describe('and `th` is typed', () => {
       before(() => {
-        cy.get(selectors.selectE.outerWrapper).type('th{enter}')
+        cy.get(selectors.selectE.outerWrapper).type('Th{enter}')
+        cy.get('body').click()
       })
 
       it('sets the value as the item', () => {
-        cy.get(selectors.selectE.input).should('have.value', 'Three')
+        cy.get(selectors.selectE.input).should(
+          'have.value',
+          'This is a really, really long select option label that overflows the container when selected'
+        )
+      })
+
+      describe('and the user hovers on the input', () => {
+        beforeEach(() => {
+          cy.get(selectors.selectE.input).trigger('mouseover')
+        })
+
+        it('displays a tooltip', () => {
+          cy.get(selectors.selectE.tooltip).should('be.visible')
+        })
       })
     })
   })
