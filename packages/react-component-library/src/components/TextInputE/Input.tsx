@@ -9,7 +9,7 @@ import { useInputValue } from '../../hooks/useInputValue'
 export interface InputProps extends ComponentWithClass {
   hasFocus: boolean
   id?: string
-  isDisabled: boolean
+  isDisabled?: boolean
   label?: string
   name: string
   onBlur: (event: React.FormEvent) => void
