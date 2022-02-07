@@ -10,7 +10,7 @@ export const Breadcrumbs: React.FC<Nav<BreadcrumbsItemProps>> = ({
   ...rest
 }) => {
   const mapped = React.Children.map(
-    children,
+    children ?? [],
     (child: React.ReactElement<BreadcrumbsItemProps>, index: number) => {
       warnIfOverwriting(child.props, 'isFirst', BreadcrumbsItem.name)
       warnIfOverwriting(child.props, 'isLast', BreadcrumbsItem.name)
