@@ -44,14 +44,14 @@ function getAriaAttributes(isCollapsible: boolean, expanded: boolean) {
 }
 
 export const DescriptionList: React.FC<DescriptionListProps> = ({
-  isCollapsible,
+  isCollapsible = false,
   description,
   children,
   ...rest
 }) => {
   const { open, toggle } = useOpenClose(false)
   const ariaAttributes = getAriaAttributes(isCollapsible, open)
-  const sheetId = ariaAttributes && ariaAttributes['aria-owns']
+  const sheetId = ariaAttributes ? ariaAttributes['aria-owns'] : undefined
 
   return (
     <StyledDescriptionList

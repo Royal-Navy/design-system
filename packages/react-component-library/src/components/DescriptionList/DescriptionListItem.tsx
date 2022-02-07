@@ -23,7 +23,7 @@ export interface DescriptionListItemProps {
 export const DescriptionListItem: React.FC<DescriptionListItemProps> = ({
   children,
   title,
-  isCollapsible,
+  isCollapsible = false,
   ...rest
 }) => (
   <StyledItem
