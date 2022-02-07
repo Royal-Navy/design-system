@@ -1,6 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { DismissibleBanner } from '.'
 
@@ -116,6 +117,18 @@ describe('DismissibleBanner', () => {
         'data-arbitrary',
         'arbitrary'
       )
+    })
+  })
+
+  describe('when onDismiss is not set', () => {
+    beforeEach(() => {
+      wrapper = render(<DismissibleBanner>Content</DismissibleBanner>)
+    })
+
+    it('does not throw an error when the dismiss button is clicked', () => {
+      expect(() => {
+        userEvent.click(wrapper.getByTestId('dimissiblebanner-dismiss'))
+      }).not.toThrowError()
     })
   })
 })
