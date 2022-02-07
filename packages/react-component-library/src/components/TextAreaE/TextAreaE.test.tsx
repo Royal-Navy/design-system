@@ -121,7 +121,7 @@ describe('TextArea', () => {
         field = {
           name: 'colour',
           value: '',
-          onBlur: null,
+          onBlur: undefined,
           onChange: jest.fn(),
         }
         form = {
@@ -161,7 +161,7 @@ describe('TextArea', () => {
         field = {
           name: 'colour',
           value: '',
-          onBlur: null,
+          onBlur: undefined,
           onChange: jest.fn(),
         }
         form = {
