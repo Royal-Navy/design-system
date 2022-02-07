@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.79.3](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.2...2.79.3) (2022-02-07)
+
+
+### Bug Fixes
+
+* **RadioE:** Fix glitches with hover and active checkmark borders ([9c5ba1b](https://github.com/defencedigital/mod-uk-design-system/commit/9c5ba1bef76feb313a5dd77e7aa64a320de1c6f9))
+* **RadioE:** Fix styling for disabled states ([236248c](https://github.com/defencedigital/mod-uk-design-system/commit/236248c6aec7d9bfe0664f0d477b414f99986e92))
+
+
+
+
+
 ## [2.79.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.1...2.79.2) (2022-02-02)
 
 
