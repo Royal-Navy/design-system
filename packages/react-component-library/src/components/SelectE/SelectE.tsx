@@ -14,7 +14,7 @@ export const SelectE: React.FC<SelectBaseProps> = ({
   children,
   id = getId('select'),
   onChange,
-  value,
+  value = null,
   ...rest
 }) => {
   const {
@@ -27,7 +27,7 @@ export const SelectE: React.FC<SelectBaseProps> = ({
     reset,
     selectedItem,
     toggleMenu,
-  } = useSelect({
+  } = useSelect<SelectChildWithStringType>({
     itemToString,
     initialSelectedItem: initialSelectedItem(children, value),
     items: React.Children.toArray(children),

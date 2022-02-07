@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event'
 import { AutocompleteE, AutocompleteEOption } from '.'
 
 describe('AutocompleteE', () => {
-  let onChangeSpy: (value: string) => void
+  let onChangeSpy: (value: string | null) => void
   let wrapper: RenderResult
 
   describe('when using the default prop values', () => {
@@ -16,7 +16,11 @@ describe('AutocompleteE', () => {
       onChangeSpy = jest.fn()
 
       wrapper = render(
-        <AutocompleteE id="autocomplete-id" label="Label" onChange={onChangeSpy}>
+        <AutocompleteE
+          id="autocomplete-id"
+          label="Label"
+          onChange={onChangeSpy}
+        >
           <AutocompleteEOption value="one">One</AutocompleteEOption>
           <AutocompleteEOption value="two">Two</AutocompleteEOption>
           <AutocompleteEOption value="three">Three</AutocompleteEOption>
@@ -162,7 +166,7 @@ describe('AutocompleteE', () => {
     })
   })
 
-  describe('when `value` is set', () => {
+  describe('when `value` is set to a valid value', () => {
     beforeEach(() => {
       wrapper = render(
         <AutocompleteE label="Label" value="two">
@@ -175,6 +179,22 @@ describe('AutocompleteE', () => {
 
     it('sets the value', () => {
       expect(wrapper.getByTestId('select-input')).toHaveValue('Two')
+    })
+  })
+
+  describe.each(['invalid', null])('when `value` is set to `%s`', (value) => {
+    beforeEach(() => {
+      wrapper = render(
+        <AutocompleteE label="Label" value={value}>
+          <AutocompleteEOption value="one">One</AutocompleteEOption>
+          <AutocompleteEOption value="two">Two</AutocompleteEOption>
+          <AutocompleteEOption value="three">Three</AutocompleteEOption>
+        </AutocompleteE>
+      )
+    })
+
+    it('does not set the value', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveValue('')
     })
   })
 })

@@ -19,7 +19,7 @@ export function useAutocomplete(
   ) => void
 } {
   const [hasError, setHasError] = useState<boolean>(isInvalid)
-  const inputRef = useRef<HTMLInputElement>()
+  const inputRef = useRef<HTMLInputElement>(null)
   const [items, setItems] = useState<SelectChildWithStringType[]>(children)
 
   function onInputValueChange({
@@ -32,7 +32,7 @@ export function useAutocomplete(
           if (!React.isValidElement(item)) {
             return false
           }
-          const filter = inputValue.toLowerCase()
+          const filter = (inputValue as string).toLowerCase()
           return item.props.children.toLowerCase().indexOf(filter) > -1
         })
       )
@@ -41,7 +41,7 @@ export function useAutocomplete(
     }
   }
 
-  function getHasError(inputValue: string): boolean {
+  function getHasError(inputValue: string | undefined): boolean {
     if (!inputValue) {
       return false
     }
@@ -54,7 +54,7 @@ export function useAutocomplete(
     isOpen,
   }: UseComboboxStateChange<SelectChildWithStringType>) {
     if (isOpen) {
-      inputRef.current.focus()
+      inputRef.current?.focus()
     } else {
       const newHasError = getHasError(inputValue)
       setHasError(newHasError)
@@ -63,7 +63,7 @@ export function useAutocomplete(
         setItems(children)
       }
 
-      inputRef.current.blur()
+      inputRef.current?.blur()
     }
   }
 

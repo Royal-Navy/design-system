@@ -15,7 +15,7 @@ import { SelectE } from '.'
 import { SelectEOption } from './SelectEOption'
 
 describe('SelectE', () => {
-  let onChangeSpy: (value: string) => void
+  let onChangeSpy: (value: string | null) => void
   let wrapper: RenderResult
 
   describe('when using the default prop values', () => {
@@ -262,7 +262,7 @@ describe('SelectE', () => {
     })
   })
 
-  describe('when `value` is set', () => {
+  describe('when `value` is set to a valid value', () => {
     beforeEach(() => {
       wrapper = render(
         <SelectE label="Label" value="two">
@@ -278,10 +278,10 @@ describe('SelectE', () => {
     })
   })
 
-  describe('when `value` is invalidly set', () => {
+  describe.each(['invalid', null])('when `value` is set to `%s`', (value) => {
     beforeEach(() => {
       wrapper = render(
-        <SelectE label="Label" value="invalid">
+        <SelectE label="Label" value={value}>
           <SelectEOption value="one">One</SelectEOption>
           <SelectEOption value="two">Two</SelectEOption>
           <SelectEOption value="three">Three</SelectEOption>

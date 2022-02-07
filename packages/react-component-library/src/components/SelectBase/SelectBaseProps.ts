@@ -30,5 +30,5 @@ export interface SelectBaseProps extends ComponentWithClass {
   /**
    * Optional HTML `value` attribute to apply to the component.
    */
-  value?: string
+  value?: string | null
 }
