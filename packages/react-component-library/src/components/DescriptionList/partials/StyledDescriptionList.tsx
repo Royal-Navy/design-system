@@ -8,6 +8,7 @@ export interface StyledDescriptionListProps {
 export const StyledDescriptionList = styled.dl<StyledDescriptionListProps>`
   overflow: hidden;
   transition: 200ms max-height linear;
+  margin-block: 0;
 
   ${({ $isCollapsible }) =>
     $isCollapsible &&

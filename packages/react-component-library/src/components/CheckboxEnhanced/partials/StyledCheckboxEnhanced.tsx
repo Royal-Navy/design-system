@@ -14,7 +14,6 @@ export const StyledCheckboxEnhanced = styled.div`
   flex-direction: column;
   width: 22rem;
   padding: ${spacing('10')};
-  margin: ${spacing('4')};
   border-radius: 4px;
   border: 1px solid ${color('neutral', '100')};
   outline: none;
