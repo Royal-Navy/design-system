@@ -19,7 +19,7 @@ export interface InputProps {
   onPaste: (event: React.ClipboardEvent<HTMLInputElement>) => void
   placeholder?: string
   size: ComponentSizeType
-  value?: string
+  value?: string | null
 }
 
 export const Input: React.FC<InputProps> = ({

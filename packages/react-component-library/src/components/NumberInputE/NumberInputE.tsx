@@ -125,9 +125,9 @@ export type NumberInputEProps =
   | NumberInputWithSuffixProps
 
 function formatValue(
-  displayValue: string,
-  prefix: string,
-  suffix: string
+  displayValue: string | null,
+  prefix?: string,
+  suffix?: string
 ): string {
   if (isNil(displayValue)) {
     return 'Not set'
