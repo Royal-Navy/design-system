@@ -57,7 +57,7 @@ function getText(
 
 export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
   isFirst,
-  isLast,
+  isLast = false,
   link,
   href,
   children,

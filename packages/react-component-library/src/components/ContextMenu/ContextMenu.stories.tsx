@@ -23,7 +23,7 @@ const ClickArea = styled.div`
 `
 
 export const Default: ComponentStory<typeof ContextMenu> = (props) => {
-  const ref = useRef()
+  const ref = useRef<HTMLDivElement>(null)
 
   return (
     <>
@@ -56,7 +56,7 @@ export const Default: ComponentStory<typeof ContextMenu> = (props) => {
 Default.storyName = 'Default'
 
 export const WithIcons: ComponentStory<typeof ContextMenu> = (props) => {
-  const ref = useRef()
+  const ref = useRef<HTMLDivElement>(null)
 
   return (
     <>

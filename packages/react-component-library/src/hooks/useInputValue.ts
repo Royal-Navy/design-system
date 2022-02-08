@@ -3,7 +3,7 @@ import { ChangeEvent, useMemo, useState } from 'react'
 
 const EMPTY_STRING = ''
 
-export function useInputValue(value: string) {
+export function useInputValue(value: string | undefined) {
   const [committedValue, setCommittedValue] = useState<string>(EMPTY_STRING)
 
   useMemo(() => setCommittedValue(value || EMPTY_STRING), [value])

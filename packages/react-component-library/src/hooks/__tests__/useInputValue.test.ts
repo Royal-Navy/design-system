@@ -4,7 +4,7 @@ import { act, renderHook, RenderResult } from '@testing-library/react-hooks'
 import { useInputValue } from '../useInputValue'
 
 describe('useInputValue', () => {
-  let rerender: (props?: unknown) => void
+  let rerender: (value: string | undefined) => void
   let result: RenderResult<{
     committedValue: string
     hasValue: boolean
@@ -12,9 +12,12 @@ describe('useInputValue', () => {
   }>
 
   beforeEach(() => {
-    const render = renderHook((value) => useInputValue(value), {
-      initialProps: undefined,
-    })
+    const render = renderHook(
+      (value: string | undefined) => useInputValue(value),
+      {
+        initialProps: undefined,
+      }
+    )
 
     rerender = render.rerender
     result = render.result

@@ -19,7 +19,7 @@ const NODE_CURRENT = {
  * to false if the hook needs to be enabled or disabled dynamically
  */
 export function useDocumentClick(
-  nodes: React.MutableRefObject<Element> | React.MutableRefObject<Element>[],
+  nodes: React.RefObject<Element | null> | React.RefObject<Element | null>[],
   onDocumentClick: (event: Event) => void,
   isEnabled = true
 ) {
@@ -29,7 +29,7 @@ export function useDocumentClick(
 
       const nonClickableRef = find(
         nonClickableRefs,
-        (node: React.MutableRefObject<Element>) => {
+        (node: React.RefObject<Element>) => {
           const current = node.current || NODE_CURRENT
           return current.contains(event.target as Element)
         }
@@ -44,7 +44,7 @@ export function useDocumentClick(
 
   useEffect(() => {
     if (!isEnabled) {
-      return null
+      return undefined
     }
 
     document.addEventListener('mousedown', handleDocumentClick)

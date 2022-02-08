@@ -49,7 +49,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   ...rest
 }) => {
   const contentId = getId('tooltip-content')
-  const titleId = title ? getId('tooltip-title') : null
+  const titleId = title ? getId('tooltip-title') : undefined
 
   return (
     <StyledTooltip

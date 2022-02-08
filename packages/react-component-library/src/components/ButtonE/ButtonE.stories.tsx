@@ -60,7 +60,7 @@ PrimaryRightIcon.args = {
 export const IconNoText = Template.bind({})
 IconNoText.storyName = 'Icon, no text'
 IconNoText.args = {
-  children: null,
+  children: undefined,
   icon: <IconBrightnessLow />,
   title: 'Reduce brightness',
 }

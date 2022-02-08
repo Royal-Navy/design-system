@@ -64,49 +64,48 @@ export const Alert: React.FC<AlertProps> = ({
 }) => {
   const { open, handleOnClose } = useOpenClose(true, onClose)
 
-  const titleId = title ? getId('alert-title') : null
+  const titleId = title ? getId('alert-title') : undefined
   const descriptionId = getId('alert-description')
 
+  if (!open) {
+    return null
+  }
+
   return (
-    open && (
-      <StyledAlert
+    <StyledAlert
+      $variant={variant}
+      aria-describedby={descriptionId}
+      aria-labelledby={titleId}
+      data-testid="alert"
+      role="alert"
+      {...rest}
+    >
+      <StyledIcon
         $variant={variant}
-        aria-describedby={descriptionId}
-        aria-labelledby={titleId}
-        data-testid="alert"
-        role="alert"
-        {...rest}
+        aria-hidden="true"
+        data-testid="state-icon"
       >
-        <StyledIcon
-          $variant={variant}
-          aria-hidden="true"
-          data-testid="state-icon"
-        >
-          {VARIANT_ICON_MAP[variant]}
-        </StyledIcon>
-        <StyledContent data-testid="content">
-          {title && (
-            <StyledTitle
-              $variant={variant}
-              data-testid="content-title"
-              id={titleId}
-            >
-              {title}
-            </StyledTitle>
-          )}
-          <StyledDescription
-            data-testid="content-description"
-            id={descriptionId}
+        {VARIANT_ICON_MAP[variant]}
+      </StyledIcon>
+      <StyledContent data-testid="content">
+        {title && (
+          <StyledTitle
+            $variant={variant}
+            data-testid="content-title"
+            id={titleId}
           >
-            {children}
-          </StyledDescription>
-          <StyledFooter>
-            <StyledCloseButton onClick={handleOnClose} data-testid="close">
-              Dismiss
-            </StyledCloseButton>
-          </StyledFooter>
-        </StyledContent>
-      </StyledAlert>
-    )
+            {title}
+          </StyledTitle>
+        )}
+        <StyledDescription data-testid="content-description" id={descriptionId}>
+          {children}
+        </StyledDescription>
+        <StyledFooter>
+          <StyledCloseButton onClick={handleOnClose} data-testid="close">
+            Dismiss
+          </StyledCloseButton>
+        </StyledFooter>
+      </StyledContent>
+    </StyledAlert>
   )
 }
