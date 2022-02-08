@@ -97,10 +97,15 @@ export const WithFormik: ComponentStory<typeof DatePickerE> = (props) => {
     andAnotherStartDate: Date | null
   }
 
-  const errorText = 'Something went wrong!'
+  const requiredError = 'Something went wrong!'
+  const invalidError = 'Enter a valid date'
 
   const validationSchema = yup.object().shape({
-    andAnotherStartDate: yup.date().nullable().required(errorText),
+    andAnotherStartDate: yup
+      .date()
+      .nullable()
+      .required(requiredError)
+      .typeError(invalidError),
   })
 
   const FormikDatePicker = withFormik(DatePickerE)
@@ -113,7 +118,7 @@ export const WithFormik: ComponentStory<typeof DatePickerE> = (props) => {
 
   return (
     <Formik
-      initialErrors={{ andAnotherStartDate: errorText }}
+      initialErrors={{ andAnotherStartDate: requiredError }}
       initialTouched={{ andAnotherStartDate: true }}
       initialValues={initialValues}
       onSubmit={action('onSubmit')}
