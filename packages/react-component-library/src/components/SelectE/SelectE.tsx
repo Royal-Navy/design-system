@@ -82,6 +82,7 @@ export const SelectE: React.FC<SelectBaseProps> = ({
                 key: `select-option-${child.props.children}`,
               }),
               isHighlighted: highlightedIndex === index,
+              title: child.props.children,
             })
           }
         )}

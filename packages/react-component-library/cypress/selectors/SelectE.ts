@@ -4,4 +4,5 @@ export default {
   label: '[data-testid="select-label"]',
   option: '[data-testid="select-option"]',
   outerWrapper: '[data-testid="select-outer-wrapper"]',
+  tooltip: '[data-testid="floating-box"]',
 }

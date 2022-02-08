@@ -28,9 +28,14 @@ export default {
 } as ComponentMeta<typeof SelectE>
 
 const Template: ComponentStory<typeof SelectE> = (args) => (
-  <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
+  <div
+    style={{ height: args.isDisabled ? 'initial' : '18rem', maxWidth: '20rem' }}
+  >
     <SelectE label="Some label" {...args}>
-      <SelectEOption value="one">One</SelectEOption>
+      <SelectEOption value="one">
+        This is a really, really long select option label that overflows the
+        container when selected
+      </SelectEOption>
       <SelectEOption value="two">Two</SelectEOption>
       <SelectEOption value="three">Three</SelectEOption>
       <SelectEOption value="four">Four</SelectEOption>
@@ -39,7 +44,9 @@ const Template: ComponentStory<typeof SelectE> = (args) => (
 )
 
 const TemplateWIthIconsAndBadges: ComponentStory<typeof SelectE> = (args) => (
-  <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
+  <div
+    style={{ height: args.isDisabled ? 'initial' : '18rem', maxWidth: '20rem' }}
+  >
     <SelectE label="Some label" {...args}>
       <SelectEOption badge={100} icon={<IconAnchor />} value="one">
         One
