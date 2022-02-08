@@ -106,7 +106,6 @@ export const CheckboxE = React.forwardRef<HTMLInputElement, CheckboxEProps>(
             <StyledLabel htmlFor={id} data-testid="checkbox-label">
               <StyledInput
                 ref={mergeRefs([localRef, ref])}
-                $isDisabled={isDisabled}
                 id={id}
                 type="checkbox"
                 name={name}
