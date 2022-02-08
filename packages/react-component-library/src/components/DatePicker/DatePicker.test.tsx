@@ -879,19 +879,6 @@ describe('DatePicker', () => {
   })
 
   describe('when form validation classes are provided', () => {
-    describe('when the field is valid', () => {
-      beforeEach(() => {
-        wrapper = render(<DatePicker className="is-valid" />)
-      })
-
-      it('should set the border on the outer wrapper', () => {
-        expect(wrapper.getByTestId('datepicker-outer-wrapper')).toHaveStyleRule(
-          'border',
-          `1px solid ${ColorSuccess600}`
-        )
-      })
-    })
-
     describe('when the field is invalid', () => {
       beforeEach(() => {
         wrapper = render(<DatePicker className="is-invalid" />)

@@ -140,7 +140,6 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   isCondensed,
   isDisabled = false,
   isInvalid,
-  isValid,
   label,
   max,
   min,
@@ -190,7 +189,6 @@ export const NumberInput: React.FC<NumberInputProps> = ({
       <StyledNumberInputOuterWrapper
         $hasFocus={hasFocus}
         $isInvalid={isInvalid || hasClass(className, 'is-invalid')}
-        $isValid={isValid || hasClass(className, 'is-valid')}
       >
         <StartAdornment>{startAdornment}</StartAdornment>
 
@@ -200,7 +198,6 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           id={id}
           isDisabled={isDisabled}
           isCondensed={isCondensed}
-          isValid={isValid || hasClass(className, 'is-valid')}
           isInvalid={isInvalid || hasClass(className, 'is-invalid')}
           label={label}
           name={name}
