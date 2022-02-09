@@ -7,7 +7,7 @@ import { CONTAINER_CONTENT_WIDTH } from '../constants'
 const { spacing } = selectors
 
 interface StyledContainerProps {
-  $size?: ContainerSizeType
+  $size: ContainerSizeType
 }
 
 const sizeStyles = {
