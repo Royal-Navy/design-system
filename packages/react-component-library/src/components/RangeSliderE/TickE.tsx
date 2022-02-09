@@ -44,8 +44,8 @@ export const TickE: React.FC<TickEProps> = ({
   domain,
   isReversed,
   thresholds,
-  tracksLeft,
-  tracksRight,
+  tracksLeft = false,
+  tracksRight = false,
 }) => {
   const percent: number = useMemo(
     () => (isReversed ? 100 - tick.percent : tick.percent),

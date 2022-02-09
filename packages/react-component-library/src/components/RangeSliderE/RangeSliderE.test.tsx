@@ -23,8 +23,8 @@ describe('RangeSliderE', () => {
     values: ReadonlyArray<number>,
     data: { activeHandleID: string }
   ) => void
-  let domain: number[] // lower and upper bounds
-  let values: readonly [number, number?] // initial handle values
+  let domain: readonly [number, number] // lower and upper bounds
+  let values: readonly [number] | readonly [number, number] // initial handle values
   let step: number
   let tickCount: number
 

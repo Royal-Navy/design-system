@@ -42,13 +42,13 @@ export interface RangeSliderEProps extends Omit<SliderProps, SliderOmitType> {
    * Two element array of numbers providing the min and max values for the slider [min, max] e.g. [0, 100].
    * It does not matter if the slider is reversed on the screen, domain is always [min, max] with min < max.
    */
-  domain?: ReadonlyArray<number>
+  domain: readonly [number, number]
   /**
    * An array of numbers. You can supply one for a value slider, two for a range slider.
    * The values should correspond to valid step values in the domain.
    * The numbers will be forced into the domain if they are two small or large.
    */
-  values: readonly [number, number?]
+  values: readonly [number] | readonly [number, number]
   /**
    * The step value for the slider.
    */
@@ -143,13 +143,13 @@ export const RangeSliderE: React.FC<RangeSliderEProps> = ({
 
       // Single handle
       if (sliderValues.length === 1) {
-        handleRefs[0].current.focus()
+        handleRefs[0].current?.focus()
       }
 
       // Multiple handles
       if (sliderValues.length === 2 && staticValues.length === 1) {
         const refId = sliderValues.indexOf(staticValues[0]) === 1 ? 0 : 1
-        handleRefs[refId].current.focus()
+        handleRefs[refId].current?.focus()
       }
     },
     [sliderValues, handleRefs]

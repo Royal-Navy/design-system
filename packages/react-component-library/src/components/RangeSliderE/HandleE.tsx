@@ -51,7 +51,7 @@ export const HandleE = React.forwardRef<HTMLDivElement, HandleEProps>(
         <StyledValue
           data-testid="rangeslider-value"
           onMouseDown={(_) =>
-            (ref as React.RefObject<HTMLDivElement>).current.focus()
+            (ref as React.RefObject<HTMLDivElement>).current?.focus()
           }
         >
           {formatValue(positionBag)}
