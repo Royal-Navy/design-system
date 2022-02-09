@@ -518,4 +518,35 @@ describe('ContextMenu', () => {
       )
     })
   })
+
+  describe('when attachedToRef.current is null', () => {
+    beforeEach(() => {
+      const ContextExample = () => {
+        const ref = useRef<HTMLDivElement>(null)
+
+        return (
+          <>
+            <div>Clickable area</div>
+            <ContextMenu
+              attachedToRef={ref}
+              clickType="left"
+              data-arbitrary="arbitrary"
+            >
+              <ContextMenuItem
+                link={<Link href="/hello-foo">Hello, Foo!</Link>}
+              />
+            </ContextMenu>
+          </>
+        )
+      }
+
+      wrapper = render(<ContextExample />)
+    })
+
+    it('does not throw an error when clicking', () => {
+      expect(() => {
+        userEvent.click(wrapper.getByText('Clickable area'))
+      }).not.toThrowError()
+    })
+  })
 })
