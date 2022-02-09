@@ -32,14 +32,14 @@ describe('Notification', () => {
 
     it('should render the notification as a list item', () => {
       const listItem = wrapper.container.firstElementChild
-      expect(listItem.tagName).toEqual('LI')
+      expect(listItem?.tagName).toEqual('LI')
     })
 
     it('should set the href of the entire notification item', () => {
       const listItem = wrapper.container.firstElementChild
-      const itemWrapper = listItem.firstElementChild
-      const link = itemWrapper.firstElementChild
-      expect(link.getAttribute('href')).toEqual('notifications/1')
+      const itemWrapper = listItem?.firstElementChild
+      const link = itemWrapper?.firstElementChild
+      expect(link?.getAttribute('href')).toEqual('notifications/1')
     })
 
     it('should render the initials as an avatar', () => {

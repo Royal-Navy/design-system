@@ -63,8 +63,8 @@ export interface MastheadProps {
 }
 
 function getServiceName(
-  homeLink: React.ReactElement<LinkTypes>,
-  Logo: React.ComponentType,
+  homeLink: React.ReactElement<LinkTypes> | null,
+  Logo: React.ComponentType | null,
   title: string
 ) {
   const link = homeLink || <span />
@@ -87,7 +87,7 @@ function getServiceName(
 export const Masthead: React.FC<MastheadProps> = ({
   hasDefaultLogo = true,
   hasUnreadNotification,
-  homeLink,
+  homeLink = null,
   Logo,
   nav,
   notifications,
@@ -110,7 +110,7 @@ export const Masthead: React.FC<MastheadProps> = ({
   const DisplayLogo = Logo ?? (hasDefaultLogo ? DefaultLogo : null)
 
   const submitSearch = (term: string) => {
-    onSearch(term)
+    onSearch?.(term)
     setShowSearch(false)
   }
 
