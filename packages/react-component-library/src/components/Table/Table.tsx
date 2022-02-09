@@ -46,7 +46,7 @@ export const Table: React.FC<TableProps> = ({
     (child: React.ReactElement<TableColumnProps>) =>
       React.cloneElement(child, {
         ...child.props,
-        sortOrder: sortField === child.props.field ? sortOrder : null,
+        sortOrder: sortField === child.props.field ? sortOrder : undefined,
         onSortClick: sortTableData,
       })
   )

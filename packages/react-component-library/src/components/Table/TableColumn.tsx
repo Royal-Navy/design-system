@@ -35,7 +35,7 @@ export interface TableColumnProps {
   /**
    * Optional sort order by which to sort the column.
    */
-  sortOrder?: SortOrderType
+  sortOrder?: SortOrderType | null
 }
 
 const SORT_ORDER_ICONS_MAP = {
@@ -47,39 +47,43 @@ const SORT_ORDER_ICONS_MAP = {
   ),
 }
 
-const SORT_ORDER_ARIA_SORT_MAP = {
+const SORT_ORDER_ARIA_SORT_MAP: Record<SortOrderType, AriaSortType> = {
   [TABLE_SORT_ORDER.ASCENDING]: 'ascending',
   [TABLE_SORT_ORDER.DESCENDING]: 'descending',
 }
 
-function getIcon(sortable: boolean, sortOrder: string) {
+function getIcon(sortable: boolean, sortOrder: SortOrderType | null) {
   if (!sortable) {
     return null
   }
 
-  return (
-    get(SORT_ORDER_ICONS_MAP, sortOrder) || (
-      <IconSortUnsorted aria-hidden data-testid="unsorted" />
-    )
-  )
+  if (!sortOrder) {
+    return <IconSortUnsorted aria-hidden data-testid="unsorted" />
+  }
+
+  return SORT_ORDER_ICONS_MAP[sortOrder]
 }
 
 function getAriaSort(
   isSortable: boolean,
-  sortOrder: SortOrderType
-): AriaSortType {
-  if (isSortable) {
-    return (SORT_ORDER_ARIA_SORT_MAP[sortOrder] || 'none') as AriaSortType
+  sortOrder: SortOrderType | null
+): AriaSortType | undefined {
+  if (!isSortable) {
+    return undefined
   }
 
-  return null
+  if (!sortOrder) {
+    return 'none'
+  }
+
+  return SORT_ORDER_ARIA_SORT_MAP[sortOrder]
 }
 
 export const TableColumn: React.FC<TableColumnProps> = ({
   field,
-  isSortable,
+  isSortable = false,
   onSortClick,
-  sortOrder,
+  sortOrder = null,
   children,
   ...rest
 }) => {
@@ -87,7 +91,7 @@ export const TableColumn: React.FC<TableColumnProps> = ({
 
   const onClick = () => {
     if (isSortable) {
-      onSortClick(field)
+      onSortClick?.(field)
     }
   }
 
