@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.80.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.3...2.80.0) (2022-02-09)
+
+**Note:** Version bump only for package @defencedigital/css-framework
+
+
+
+
+
 ## [2.79.3](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.2...2.79.3) (2022-02-07)
 
 **Note:** Version bump only for package @defencedigital/css-framework

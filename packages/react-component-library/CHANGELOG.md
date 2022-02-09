@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.80.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.3...2.80.0) (2022-02-09)
+
+
+### Bug Fixes
+
+* **Alert:** Resolve strict null errors ([d450510](https://github.com/defencedigital/mod-uk-design-system/commit/d450510dbbd1e58b7bb2dbd9a0f1350aaebe2246))
+* **Breadcrumbs:** Resolve strict null errors ([bef0bd2](https://github.com/defencedigital/mod-uk-design-system/commit/bef0bd206bd74ae6d8ea9bd13ae6dab42d4c3620))
+* **ButtonE:** Resolve strict null errors ([8ee7b82](https://github.com/defencedigital/mod-uk-design-system/commit/8ee7b82160a4271dc0f59e0facad5071f8b2d436))
+* **CheckboxE:** Fix disabled, unchecked styling ([4ebed3b](https://github.com/defencedigital/mod-uk-design-system/commit/4ebed3b7cadfebabdb0e4389c6aa6c876d9aec47))
+* **CheckboxE:** Fix hover and active border glitch in Firefox ([1fa60d9](https://github.com/defencedigital/mod-uk-design-system/commit/1fa60d98ff5fea70fb47f9b1c942de38576556ab))
+* **ContextMenu:** Resolve strict null errors ([c3dbd23](https://github.com/defencedigital/mod-uk-design-system/commit/c3dbd23740f3bcea94aaced17c7dd2350f082c6a))
+* **Drawer:** Resolve strict null errors ([9789689](https://github.com/defencedigital/mod-uk-design-system/commit/978968912600945f258b8a082b502e13152cb48f))
+* **Popover:** Resolve strict null errors ([492bccf](https://github.com/defencedigital/mod-uk-design-system/commit/492bccfcabba65b520829f8dba9f2a8e7e76df8c))
+* **TextAreaE:** Resolve strict null errors ([bbd93ac](https://github.com/defencedigital/mod-uk-design-system/commit/bbd93ac77298f330f0c6d3dd3ba97c2401d2b252))
+* **TextInputE:** Resolve strict null error ([3179391](https://github.com/defencedigital/mod-uk-design-system/commit/3179391a375d3a628ef0684aa15587bb7a417046))
+* **Tooltip:** Resolve strict null errors ([9b3cd02](https://github.com/defencedigital/mod-uk-design-system/commit/9b3cd0250124a96b15fc9a57de9744dee7a725a7))
+
+
+### Features
+
+* **SelectE:** Truncate overflowing options and display tooltip ([1b3f4c4](https://github.com/defencedigital/mod-uk-design-system/commit/1b3f4c4ba11c3f31b336e2201535742bb9f3b65c))
+
+
+
+
+
 ## [2.79.3](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.2...2.79.3) (2022-02-07)
 
 
