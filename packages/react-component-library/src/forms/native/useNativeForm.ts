@@ -13,7 +13,7 @@ type FormErrors<FormValues> = Partial<{
 interface SyntheticFormEvent {
   currentTarget: {
     name: string
-    value: string | string[] | number | number[] | Date
+    value: string | string[] | number | number[] | Date | null
   }
 }
 

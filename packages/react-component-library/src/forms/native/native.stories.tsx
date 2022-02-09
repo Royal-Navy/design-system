@@ -27,11 +27,11 @@ export interface FormValues {
   exampleCheckbox: string[]
   exampleRadio: string[]
   exampleSwitch: string
-  exampleNumberInput: number
+  exampleNumberInput: number | null
   exampleDatePicker: Date | null
   exampleSelect: string | null
   exampleAutocomplete: string | null
-  exampleRangeSlider: readonly [number, number?]
+  exampleRangeSlider: readonly [number]
 }
 
 const MINIMUM_DATE = parseISO('2022-01-01')
@@ -75,7 +75,7 @@ export const Example: React.FC<unknown> = () => {
           return 'Enter a valid date'
         }
 
-        if (isBefore(value, MINIMUM_DATE)) {
+        if (value && isBefore(value, MINIMUM_DATE)) {
           return 'Enter a date on or after 1 January 2022'
         }
 
@@ -174,7 +174,7 @@ export const Example: React.FC<unknown> = () => {
             _:
               | React.ChangeEvent<HTMLInputElement>
               | React.MouseEvent<HTMLButtonElement>,
-            newValue: number
+            newValue: number | null
           ) => {
             handleChange({
               currentTarget: {

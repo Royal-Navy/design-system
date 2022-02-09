@@ -89,7 +89,7 @@ interface NumberInputBaseProps
   /**
    * Currently selected value displayed by the component.
    */
-  value?: number
+  value?: number | null
 }
 
 export interface NumberInputWithIconProps extends NumberInputBaseProps {
@@ -162,7 +162,7 @@ export const NumberInputE: React.FC<NumberInputEProps> = ({
   size = COMPONENT_SIZE.FORMS,
   step = 1,
   suffix,
-  value,
+  value = null,
   ...rest
 }) => {
   const isNegativeAllowed = isNil(min) || min < 0
