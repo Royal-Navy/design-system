@@ -115,7 +115,7 @@ describe('SwitchE', () => {
     })
 
     it('should not invoke the onChange handler when an option is clicked', () => {
-      wrapper.queryByText('Option 1').click()
+      wrapper.getByText('Option 1').click()
       expect(onChangeSpy).not.toHaveBeenCalled()
     })
   })

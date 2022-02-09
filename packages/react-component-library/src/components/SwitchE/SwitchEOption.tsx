@@ -55,7 +55,7 @@ export const SwitchEOption: React.FC<SwitchEOptionProps> = ({
 
     if (selectKeys.includes(e.key)) {
       e.preventDefault()
-      localRef.current.click()
+      localRef.current?.click()
     }
   }
 
