@@ -117,7 +117,6 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   isDisabled,
   isInvalid,
   isRange,
-  isValid,
   label = 'Select Date',
   onChange,
   onCalendarFocus,
@@ -196,7 +195,6 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           data-testid="datepicker-outer-wrapper"
           $hasFocus={open}
           $isInvalid={hasError}
-          $isValid={isValid || hasClass(className, 'is-valid')}
         >
           <StyledInputWrapper>
             <StyledLabel
