@@ -32,7 +32,7 @@ export interface FormValues {
   exampleCheckbox: string[]
   exampleRadio: string[]
   exampleSwitch: string
-  exampleNumberInput: number
+  exampleNumberInput: number | null
   exampleDatePicker: Date | null
   exampleSelect: string | null
   exampleAutocomplete: string | null
@@ -100,7 +100,7 @@ export const Example: React.FC<unknown> = () => {
             errors.exampleDatePicker = 'Enter a valid date'
           }
 
-          if (isBefore(exampleDatePicker, MINIMUM_DATE)) {
+          if (exampleDatePicker && isBefore(exampleDatePicker, MINIMUM_DATE)) {
             errors.exampleDatePicker = 'Enter a date on or after 1 January 2022'
           }
 

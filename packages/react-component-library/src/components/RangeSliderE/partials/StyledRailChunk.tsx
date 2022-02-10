@@ -4,7 +4,7 @@ import { setLightness } from 'polished'
 import { ThresholdColor } from '../useThresholdColor'
 
 interface StyledRailChunkProps {
-  $thresholdColor?: ThresholdColor
+  $thresholdColor: ThresholdColor
   $left: string
   $width: string
   $maxWidth: string

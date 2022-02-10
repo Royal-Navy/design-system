@@ -8,13 +8,17 @@ export function useMastheadSearch() {
   function toggleSearch(
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) {
+    if (!mastheadContainerRef.current) {
+      return
+    }
+
     event.currentTarget.blur()
     const newShowSearch = !showSearch
 
     // if opening the searchbar then get the container width and set that
     // as the width of the searchbar so that it does not spill
     // over to other parts of the page, such as the sidebar.
-    if (newShowSearch === true) {
+    if (newShowSearch) {
       setContainerWidth(mastheadContainerRef.current.offsetWidth)
     }
 

@@ -8,7 +8,7 @@ type sortType =
   | typeof TABLE_SORT_ORDER.DESCENDING
 
 function getNextSortOrder(
-  currentSortOrder: sortType,
+  currentSortOrder: sortType | null,
   hasSortFieldChanged: boolean
 ) {
   if (!currentSortOrder || hasSortFieldChanged) {
@@ -24,12 +24,12 @@ function getNextSortOrder(
 
 export function useTableData(data: RowProps[]) {
   const [tableData, setTableData] = useState(data)
-  const [sortOrder, setSortOrder] = useState<sortType>()
-  const [sortField, setSortField] = useState<string>()
+  const [sortOrder, setSortOrder] = useState<sortType | null>(null)
+  const [sortField, setSortField] = useState<string | null>(null)
 
   function sortTableData(field: string) {
     const hasSortFieldChanged = field !== sortField
-    const order: sortType = getNextSortOrder(sortOrder, hasSortFieldChanged)
+    const order = getNextSortOrder(sortOrder, hasSortFieldChanged)
     const sorted = order ? orderBy(tableData, [field], [order]) : data
 
     setSortOrder(order)

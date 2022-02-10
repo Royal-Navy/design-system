@@ -5,7 +5,7 @@ import { AppearanceTypes } from 'react-toast-notifications'
 import { StyledToastLabel } from './StyledToastLabel'
 
 interface StyledToastProps {
-  $appearance?: AppearanceTypes
+  $appearance: AppearanceTypes
 }
 
 const { shadow, color, spacing } = selectors
