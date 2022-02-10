@@ -56,3 +56,12 @@ Invalid.args = {
   name: 'invalid',
   isInvalid: true,
 }
+
+export const WithDescription = Template.bind({})
+WithDescription.args = {
+  id: undefined,
+  description:
+    'She must have hidden the plans in the escape pod. Send a detachment down to retrieve them.',
+  label: 'With description',
+  name: 'with-description',
+}

@@ -5,11 +5,12 @@ import mergeRefs from 'react-merge-refs'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { StyledCheckbox } from './partials/StyledCheckbox'
-import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
-import { StyledLabel } from './partials/StyledLabel'
-import { StyledInput } from './partials/StyledInput'
 import { StyledCheckmark } from './partials/StyledCheckmark'
 import { StyledCheckboxWrapper } from './partials/StyledCheckboxWrapper'
+import { StyledDescription } from './partials/StyledDescription'
+import { StyledInput } from './partials/StyledInput'
+import { StyledLabel } from './partials/StyledLabel'
+import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 
 export interface CheckboxEProps
   extends ComponentWithClass,
@@ -26,6 +27,10 @@ export interface CheckboxEProps
    * Toggles whether the component should be checked on initial render.
    */
   defaultChecked?: boolean
+  /**
+   * Optional description to display below the label.
+   */
+  description?: string
   /**
    * Toggles whether the component is disabled or not (preventing user interaction).
    */
@@ -59,6 +64,7 @@ export const CheckboxE = React.forwardRef<HTMLInputElement, CheckboxEProps>(
       id = uuidv4(),
       checked,
       defaultChecked,
+      description,
       isDisabled,
       label,
       name,
@@ -120,6 +126,11 @@ export const CheckboxE = React.forwardRef<HTMLInputElement, CheckboxEProps>(
               />
               <StyledCheckmark />
               {label}
+              {description && (
+                <StyledDescription data-testid="checkbox-description">
+                  {description}
+                </StyledDescription>
+              )}
             </StyledLabel>
           </StyledOuterWrapper>
         </StyledCheckbox>

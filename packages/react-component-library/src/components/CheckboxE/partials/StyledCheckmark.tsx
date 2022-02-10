@@ -8,9 +8,8 @@ const { animation, color } = selectors
 
 export const StyledCheckmark = styled.div`
   position: absolute;
-  top: 50%;
+  top: 12px;
   left: 12px;
-  transform: translateY(-50%);
   height: 18px;
   width: 18px;
   background-color: ${color('neutral', 'white')};

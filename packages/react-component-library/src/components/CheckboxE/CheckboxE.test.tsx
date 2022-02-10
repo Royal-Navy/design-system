@@ -56,6 +56,10 @@ describe('Checkbox', () => {
       )
     })
 
+    it('should not render a description', () => {
+      expect(checkbox.queryAllByTestId('checkbox-description')).toHaveLength(0)
+    })
+
     it('should populate the field value', () => {
       expect(input).toHaveAttribute('value', 'false')
     })
@@ -209,6 +213,20 @@ describe('Checkbox', () => {
       expect(checkbox.queryByTestId('checkbox-input')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
+      )
+    })
+  })
+
+  describe('when a field has a description', () => {
+    beforeEach(() => {
+      checkbox = render(
+        <CheckboxE description="Description" label="Label" name={field.name} />
+      )
+    })
+
+    it('should render a description', () => {
+      expect(checkbox.getByTestId('checkbox-description')).toHaveTextContent(
+        'Description'
       )
     })
   })
