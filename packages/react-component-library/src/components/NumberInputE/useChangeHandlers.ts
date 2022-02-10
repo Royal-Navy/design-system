@@ -11,9 +11,9 @@ export function useChangeHandlers(
     event:
       | React.ChangeEvent<HTMLInputElement>
       | React.MouseEvent<HTMLButtonElement>,
-    newValue: number
+    newValue: number | null
   ) => void,
-  setCommittedValue: React.Dispatch<React.SetStateAction<string>>
+  setCommittedValue: React.Dispatch<React.SetStateAction<string | null>>
 ): {
   handleButtonClick: (
     event: React.MouseEvent<HTMLButtonElement>,

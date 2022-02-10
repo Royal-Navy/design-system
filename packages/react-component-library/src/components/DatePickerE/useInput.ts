@@ -21,7 +21,7 @@ function parseDate(datePickerFormat: string, value: string) {
 export function useInput(
   datePickerFormat: string,
   isRange: boolean,
-  handleDayClick: (date: Date) => void,
+  handleDayClick: (date: Date | null) => void,
   dispatch: React.Dispatch<DatePickerEAction>
 ) {
   const handleKeyDown = useCallback(

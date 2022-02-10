@@ -12,8 +12,8 @@ export function isValueValid(
 }
 
 export function isWithinRange(
-  max: number,
-  min: number,
+  max: number | undefined,
+  min: number | undefined,
   newValue: number
 ): boolean {
   const isNotBelowMin = isNil(min) || newValue >= min

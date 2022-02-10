@@ -1,4 +1,4 @@
-import { format, isValid, parseISO } from 'date-fns'
+import { format, isValid } from 'date-fns'
 import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { ColorDanger800 } from '@defencedigital/design-tokens'
@@ -23,7 +23,7 @@ const ERROR_BOX_SHADOW = `0 0 0 ${
 } ${ColorDanger800.toUpperCase()}`
 
 function formatDate(date: Date | null) {
-  return isValid(date) ? format(date, 'dd/MM/yyyy') : ''
+  return date && isValid(date) ? format(date, 'dd/MM/yyyy') : ''
 }
 
 describe('DatePickerE', () => {

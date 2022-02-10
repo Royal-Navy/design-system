@@ -7,7 +7,7 @@ import { useCallback, useState } from 'react'
  * @todo Add handleDayBlur after upgrading to react-day-picker v8.
  */
 export function useRangeHoverOrFocusDate(isRange: boolean): {
-  rangeHoverOrFocusDate: Date
+  rangeHoverOrFocusDate: Date | null
   handleDayFocus: (date: Date) => void
   handleDayMouseEnter: (date: Date) => void
   handleDayMouseLeave: () => void

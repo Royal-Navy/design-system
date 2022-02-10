@@ -14,7 +14,7 @@ interface StyledContentProps {
   /**
    * Where to position the tooltip relative to the target element.
    */
-  $position?: string
+  $position: string
 }
 
 function getPositionStyles(position: string): string {

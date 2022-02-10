@@ -44,18 +44,18 @@ export interface SelectLayoutProps extends ComponentWithClass {
   value?: string
 }
 
-const isEllipsisActive = (el: HTMLInputElement): boolean => {
-  return el.offsetWidth < el.scrollWidth
+const isEllipsisActive = (el: HTMLInputElement | null): boolean => {
+  return Boolean(el && el.offsetWidth < el.scrollWidth)
 }
 
 export const SelectLayout: React.FC<SelectLayoutProps> = ({
   children,
-  hasLabelFocus,
+  hasLabelFocus = false,
   hasSelectedItem,
   id,
   inputProps,
   inputWrapperProps,
-  isDisabled,
+  isDisabled = false,
   isInvalid,
   isOpen,
   label,

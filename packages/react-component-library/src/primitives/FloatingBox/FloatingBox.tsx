@@ -30,7 +30,7 @@ export interface FloatingBoxWithExternalTargetProps
   /**
    * External element that the floating box should attach to.
    */
-  targetElement?: Element
+  targetElement?: Element | null
 }
 
 export interface FloatingBoxWithEmbeddedTargetProps

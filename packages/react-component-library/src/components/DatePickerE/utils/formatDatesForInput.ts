@@ -1,13 +1,15 @@
-import { differenceInMinutes, format, isValid } from 'date-fns'
+import { differenceInMinutes, format } from 'date-fns'
+
+import { isDateValid } from '.'
 
 export function formatDatesForInput(
-  startDate: Date,
-  endDate: Date,
+  startDate: Date | null,
+  endDate: Date | null,
   datePickerFormat: string
 ) {
   if (
-    isValid(startDate) &&
-    isValid(endDate) &&
+    isDateValid(startDate) &&
+    isDateValid(endDate) &&
     differenceInMinutes(endDate, startDate) > 0
   ) {
     return `${format(startDate, datePickerFormat)} - ${format(
@@ -16,7 +18,7 @@ export function formatDatesForInput(
     )}`
   }
 
-  if (isValid(startDate)) {
+  if (isDateValid(startDate)) {
     return format(startDate, datePickerFormat)
   }
 

@@ -50,8 +50,8 @@ describe('NumberInputE', () => {
     now,
     text,
   }: {
-    min?: number
-    max?: number
+    min: number | null
+    max: number | null
     now: number
     text: string
   }) {
@@ -75,7 +75,10 @@ describe('NumberInputE', () => {
     })
   }
 
-  function assertOnChangeCall(expected: number, expectedNumberOfTimes = 1) {
+  function assertOnChangeCall(
+    expected: number | null,
+    expectedNumberOfTimes = 1
+  ) {
     it(`calls the \`onChange\` callback ${expectedNumberOfTimes} times with the new value ${expected}`, () => {
       expect(onChangeSpy).toHaveBeenCalledTimes(expectedNumberOfTimes)
       expect(onChangeSpy.mock.calls[expectedNumberOfTimes - 1][1]).toEqual(

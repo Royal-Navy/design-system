@@ -20,9 +20,9 @@ export interface AutocompleteEProps extends SelectBaseProps {}
 export const AutocompleteE: React.FC<AutocompleteEProps> = ({
   children,
   id = getId('autocomplete'),
-  isInvalid,
+  isInvalid = false,
   onChange,
-  value,
+  value = null,
   ...rest
 }) => {
   const { hasError, inputRef, items, onInputValueChange, onIsOpenChange } =
@@ -43,7 +43,7 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
     setHighlightedIndex,
     setInputValue,
     toggleMenu,
-  } = useCombobox({
+  } = useCombobox<SelectChildWithStringType>({
     items,
     itemToString,
     onInputValueChange,

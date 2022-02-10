@@ -19,8 +19,8 @@ export interface ButtonsProps {
     newValue: string
   ) => void
   size: ComponentSizeType
-  step?: number
-  value: string
+  step: number
+  value: string | null
 }
 
 const iconLookup = {

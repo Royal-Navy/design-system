@@ -15,10 +15,10 @@ import {
 
 function getNewState(
   isRange: boolean,
-  day: Date,
+  day: Date | null,
   { startDate, endDate }: DatePickerEState
 ) {
-  if (!isRange) {
+  if (!isRange || !day) {
     return { startDate: day, endDate: day }
   }
 
@@ -33,9 +33,9 @@ function getNewState(
 }
 
 function calculateDateValidity(
-  date: Date,
+  date: Date | null,
   disabledDays: DayPickerProps['disabledDays']
-): DatePickerEDateValidityType {
+): DatePickerEDateValidityType | null {
   if (!date) {
     return null
   }
@@ -57,8 +57,8 @@ export const useHandleDayClick = (
   isRange: boolean,
   disabledDays: DayPickerProps['disabledDays'],
   onChange?: (data: DatePickerEOnChangeData) => void
-): ((day: Date) => { startDate: Date; endDate: Date }) => {
-  function handleDayClick(day: Date) {
+): ((day: Date | null) => { startDate: Date | null; endDate: Date | null }) => {
+  function handleDayClick(day: Date | null) {
     const newState = getNewState(isRange, day, state)
 
     dispatch({
