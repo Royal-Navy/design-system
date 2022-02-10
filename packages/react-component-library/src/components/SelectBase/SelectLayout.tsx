@@ -1,12 +1,11 @@
 import { UseSelectReturnValue, UseComboboxReturnValue } from 'downshift'
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import mergeRefs from 'react-merge-refs'
 
 import { ArrowButton } from '../SelectE/ArrowButton'
 import { ClearButton } from '../SelectE/ClearButton'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { FloatingBox } from '../../primitives/FloatingBox'
-import { getId } from '../../helpers'
 import { SelectChildWithStringType } from './types'
 import { StyledInlineButtons } from './partials/StyledInlineButtons'
 import { StyledInput } from './partials/StyledInput'
@@ -18,6 +17,7 @@ import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledSelect } from './partials/StyledSelect'
 import { StyledTextInput } from './partials/StyledTextInput'
 import { StyledTooltip } from './partials/StyledTooltip'
+import { useExternalId } from '../../hooks/useExternalId'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
 
 type ComboboxReturnValueType = UseComboboxReturnValue<SelectChildWithStringType>
@@ -66,7 +66,7 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
   ...rest
 }) => {
   const [hasHover, setHasHover] = useState<boolean>(false)
-  const labelId = useMemo(() => getId('label'), [])
+  const labelId = useExternalId('label')
   const [floatingBoxTarget, setFloatingBoxTarget] =
     useStatefulRef<HTMLInputElement>()
   const { ref, ...inputPropsRest } = inputProps
