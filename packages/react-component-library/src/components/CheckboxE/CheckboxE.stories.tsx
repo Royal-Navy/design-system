@@ -1,7 +1,8 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { CheckboxE } from '.'
+import { CheckboxE, CheckboxEProps } from '.'
+import { CHECKBOX_VARIANT } from './constants'
 
 export default {
   component: CheckboxE,
@@ -14,6 +15,24 @@ export default {
 const Template: ComponentStory<typeof CheckboxE> = (props) => (
   <CheckboxE {...props} />
 )
+
+const MultipleItemsTemplate: ComponentStory<typeof CheckboxE> = (props) => {
+  function getProps(i: number): CheckboxEProps {
+    return {
+      ...props,
+      label: `${props.label} ${i}`,
+      name: `${props.name}-${i}`,
+    }
+  }
+
+  return (
+    <>
+      <CheckboxE {...getProps(1)} />
+      <CheckboxE {...getProps(2)} />
+      <CheckboxE {...getProps(3)} />
+    </>
+  )
+}
 
 export const Default = Template.bind({})
 Default.args = {
@@ -55,6 +74,14 @@ Invalid.args = {
   label: 'Invalid checkbox',
   name: 'invalid',
   isInvalid: true,
+}
+
+export const NoContainer = MultipleItemsTemplate.bind({})
+NoContainer.args = {
+  id: undefined,
+  label: 'Item without container',
+  name: 'no-container',
+  variant: CHECKBOX_VARIANT.NO_CONTAINER,
 }
 
 export const WithDescription = Template.bind({})

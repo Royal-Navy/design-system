@@ -1,15 +1,28 @@
 import { position } from 'polished'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
 import { StyledCheckbox } from './StyledCheckbox'
 
 const { animation, color } = selectors
 
-export const StyledCheckmark = styled.div`
+interface StyledCheckmarkProps {
+  $hasContainer?: boolean
+}
+
+function getCheckboxActiveStyle() {
+  return css`
+    &::before {
+      box-shadow: 0 0 0 2px ${color('action', '500')};
+      transition: all ${animation('default')};
+    }
+  `
+}
+
+export const StyledCheckmark = styled.div<StyledCheckmarkProps>`
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: ${({ $hasContainer }) => ($hasContainer ? '12px' : '4px')};
+  left: ${({ $hasContainer }) => ($hasContainer ? '12px' : '4px')};
   height: 18px;
   width: 18px;
   background-color: ${color('neutral', 'white')};
@@ -29,12 +42,21 @@ export const StyledCheckmark = styled.div`
     color: ${color('neutral', 'white')};
   }
 
-  ${StyledCheckbox}:hover &, ${StyledCheckbox}:active & {
-    &::before {
-      box-shadow: 0 0 0 2px ${color('action', '500')};
-      transition: all ${animation('default')};
+  ${({ $hasContainer }) => {
+    if ($hasContainer) {
+      return css`
+        ${StyledCheckbox}:hover &, ${StyledCheckbox}:active & {
+          ${getCheckboxActiveStyle()}
+        }
+      `
     }
-  }
+
+    return css`
+      ${StyledCheckbox}:hover &, ${StyledCheckbox}:active &, ${StyledCheckbox}:focus-within & {
+        ${getCheckboxActiveStyle()}
+      }
+    `
+  }}
 
   ${StyledCheckbox} input:checked ~ & {
     background-color: ${color('action', '500')};
