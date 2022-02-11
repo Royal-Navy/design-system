@@ -116,8 +116,7 @@ export const Example: React.FC<unknown> = () => {
             data-testid="form-example-TextAreaE-description"
           />
         </Field>
-        <Fieldset>
-          <legend>Example checkbox selection</legend>
+        <Fieldset legend="Example checkbox selection">
           <CheckboxE
             onChange={handleCheckboxGroup}
             name="exampleCheckbox"
@@ -137,8 +136,7 @@ export const Example: React.FC<unknown> = () => {
             value="Option 3"
           />
         </Fieldset>
-        <Fieldset>
-          <legend>Example radio selection</legend>
+        <Fieldset legend="Example radio selection">
           <RadioE
             onChange={handleRadioGroup}
             name="exampleRadio"

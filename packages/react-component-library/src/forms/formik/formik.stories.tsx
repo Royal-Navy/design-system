@@ -140,8 +140,7 @@ export const Example: React.FC<unknown> = () => {
                 )
               }}
             </FormikField>
-            <Fieldset>
-              <legend>Example checkbox selection</legend>
+            <Fieldset legend="Example checkbox selection">
               <FormikField
                 name="exampleCheckbox"
                 value="Option 1"
@@ -170,8 +169,7 @@ export const Example: React.FC<unknown> = () => {
                 )}
               </FormikField>
             </Fieldset>
-            <Fieldset>
-              <legend>Example radio selection</legend>
+            <Fieldset legend="Example radio selection">
               <FormikField name="exampleRadio" value="Option 1" type="radio">
                 {({ field }: FieldProps) => (
                   <RadioE label="Option 1" {...field} />
