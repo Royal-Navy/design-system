@@ -35,7 +35,7 @@ export interface CheckboxEProps
   /**
    * Optional description to display below the label.
    */
-  description?: string
+  description?: React.ReactNode
   /**
    * Toggles whether the component is disabled or not (preventing user interaction).
    */

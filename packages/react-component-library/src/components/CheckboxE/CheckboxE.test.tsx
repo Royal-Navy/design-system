@@ -244,6 +244,22 @@ describe('Checkbox', () => {
     })
   })
 
+  describe('when a field has a description that is arbitrary JSX', () => {
+    beforeEach(() => {
+      checkbox = render(
+        <CheckboxE
+          description={<div>Arbitrary content</div>}
+          label="Label"
+          name={field.name}
+        />
+      )
+    })
+
+    it('should render a arbitrary description', () => {
+      expect(checkbox.getByText('Arbitrary content')).toBeInTheDocument()
+    })
+  })
+
   describe('when a field does not have a container', () => {
     beforeEach(() => {
       checkbox = render(
