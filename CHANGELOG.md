@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.80.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.0...2.80.1) (2022-02-11)
+
+
+### Bug Fixes
+
+* **CheckboxE:** Resolve strict null errors ([d374ab7](https://github.com/defencedigital/mod-uk-design-system/commit/d374ab7d9790fd0daf6bf3b21d25e781c113d97f))
+* **Container:** Resolve strict null errors ([821d7f4](https://github.com/defencedigital/mod-uk-design-system/commit/821d7f47e924483d6d2e6ff15a13e6f57534cb06))
+* **DatePickerE:** Resolve strict null errors ([c9ea13f](https://github.com/defencedigital/mod-uk-design-system/commit/c9ea13f97b197f4880a96fdf8111ec8d5e309df8))
+* **FloatingBox:** Resolve strict null errors ([0e7edc0](https://github.com/defencedigital/mod-uk-design-system/commit/0e7edc06d496c6f6900f80d38c24f8093a03f0e8))
+* **GlobalStyleProvider:** Resolve strict null error ([a0957ee](https://github.com/defencedigital/mod-uk-design-system/commit/a0957ee4cce50ee1e30a1a5c9cd6773ef8471ae4))
+* **List:** Resolve strict null errors ([fb8c3f2](https://github.com/defencedigital/mod-uk-design-system/commit/fb8c3f2fe3e4812163e97df35a22e4c0d3a5bc67))
+* **Masthead:** Resolve strict null errors ([7d4c9d2](https://github.com/defencedigital/mod-uk-design-system/commit/7d4c9d26973ab044a1872f87c584fd7067567111))
+* **NumberInputE:** Resolve strict null errors ([19bcb14](https://github.com/defencedigital/mod-uk-design-system/commit/19bcb14d8fa1cf9d7d4f6b4cd5b42ec63719c747))
+* **RadioE:** Resolve strict null errors ([298fbcd](https://github.com/defencedigital/mod-uk-design-system/commit/298fbcd7964e2bce74f371c1a51cbf7b27363405))
+* **RangeSliderE:** Resolve strict null errors ([8b6800c](https://github.com/defencedigital/mod-uk-design-system/commit/8b6800caeb407464cea3edca5bf50dfe344d2d29))
+* **SelectE:** Resolve strict null errors ([de80514](https://github.com/defencedigital/mod-uk-design-system/commit/de80514fabaefd7d82c9d3991bd9e7eed66284e0))
+* **SidebarE:** Resolve strict null errors ([778ac36](https://github.com/defencedigital/mod-uk-design-system/commit/778ac3684949bd8ebff65b172089de7808caaac5))
+* **SwitchE:** Resolve strict null errors ([f1736e5](https://github.com/defencedigital/mod-uk-design-system/commit/f1736e57ae1896b553524975ae3caeb4a3c6306c))
+* **Table:** Resolve strict null errors ([88c7574](https://github.com/defencedigital/mod-uk-design-system/commit/88c7574ae57ca24137e6caad5dfbb5780faab167))
+* **Toast:** Resolve strict null errors ([02b1520](https://github.com/defencedigital/mod-uk-design-system/commit/02b15201208770fc81194b6caaa60f9550cd968c))
+* **Tooltip:** Resolve strict null error ([f16a198](https://github.com/defencedigital/mod-uk-design-system/commit/f16a19873b719847e6450af2fae1bd96aebc8dd8))
+* **UseClickMenu:** Resolve strict null errors ([385688b](https://github.com/defencedigital/mod-uk-design-system/commit/385688b7de187773b1c519eca1068b545a3a4b8b))
+
+
+
+
+
 # [2.80.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.3...2.80.0) (2022-02-09)
 
 
