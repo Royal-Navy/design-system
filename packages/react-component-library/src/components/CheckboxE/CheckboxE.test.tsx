@@ -6,7 +6,6 @@ import userEvent from '@testing-library/user-event'
 import { CheckboxE } from '.'
 import { FieldProps } from '../../common/FieldProps'
 import { FormProps } from '../../common/FormProps'
-import { withFormik } from '../../enhancers/withFormik'
 
 describe('Checkbox', () => {
   let field: FieldProps
@@ -144,69 +143,6 @@ describe('Checkbox', () => {
 
     it('should initially render as checked', () => {
       expect(checkbox.getByTestId('checkbox-input')).toBeChecked()
-    })
-  })
-
-  describe('when a field has an error and the form has not been touched', () => {
-    beforeEach(() => {
-      form.errors = {
-        example1: 'Something bad',
-      }
-
-      form.touched = {}
-
-      const FormikCheckbox = withFormik(CheckboxE)
-
-      checkbox = render(<FormikCheckbox field={field} form={form} />)
-    })
-
-    it('should not add the aria attributes', () => {
-      expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute(
-        'aria-invalid'
-      )
-      expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute(
-        'aria-describedBy'
-      )
-    })
-
-    it('should not indicate the field has an error', () => {
-      expect(checkbox.queryByTestId('checkbox')).not.toHaveClass('is-invalid')
-    })
-
-    it('should not show the error', () => {
-      expect(checkbox.queryAllByText('Something bad')).toHaveLength(0)
-    })
-  })
-
-  describe('when a field has na error and the form has been touched', () => {
-    beforeEach(() => {
-      form.errors = {
-        example1: 'Something bad',
-      }
-
-      form.touched.example1 = true
-
-      const FormikCheckbox = withFormik(CheckboxE)
-
-      checkbox = render(<FormikCheckbox field={field} form={form} />)
-    })
-
-    it('should add the aria attributes', () => {
-      expect(checkbox.getByTestId('checkbox-input')).toHaveAttribute(
-        'aria-invalid',
-        'true'
-      )
-      expect(checkbox.getByTestId('checkbox-input')).toHaveAttribute(
-        'aria-describedby'
-      )
-    })
-
-    it('should indicate the field has an error', () => {
-      expect(checkbox.queryByTestId('checkbox')).toHaveClass('is-invalid')
-    })
-
-    it('should show the error', () => {
-      expect(checkbox.getByText('Something bad')).toBeInTheDocument()
     })
   })
 

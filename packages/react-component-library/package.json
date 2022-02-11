@@ -185,7 +185,6 @@
     "usehooks-ts": "^2.2.1"
   },
   "peerDependencies": {
-    "formik": "^2 || ^3",
     "styled-components": ">= 5"
   }
 }

@@ -2,12 +2,6 @@ import { useToasts } from 'react-toast-notifications'
 
 export { useToasts }
 
-// Formik components (enhanced)
-export { Formik } from './components/Formik'
-
-// Enhancers
-export * from './enhancers'
-
 // Hooks
 export * from './hooks'
 
@@ -36,7 +30,6 @@ export * from './components/Drawer'
 export * from './components/Dropdown'
 export * from './components/Field'
 export * from './components/Fieldset'
-export * from './components/FormikGroup'
 export * from './components/Forms'
 export * from './components/Link'
 export * from './components/List'

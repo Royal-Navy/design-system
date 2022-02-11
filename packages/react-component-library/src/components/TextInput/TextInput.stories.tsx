@@ -1,14 +1,8 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { Field, Formik, Form } from 'formik'
-import * as yup from 'yup'
 
 import { IconSearch } from '@defencedigital/icon-library'
-import { Button } from '../Button'
 import { TextInput } from '.'
-
-import { withFormik } from '../../enhancers/withFormik'
 
 export default {
   component: TextInput,
@@ -63,39 +57,3 @@ export const WithEndAdornment: ComponentStory<typeof TextInput> = (props) => (
 )
 
 WithEndAdornment.storyName = 'With end adornment'
-
-export const WithFormik: ComponentStory<typeof TextInput> = (props) => {
-  interface Data {
-    'text-input-formik': string
-  }
-
-  const initialValues: Data = {
-    'text-input-formik': '',
-  }
-
-  const validationSchema = yup.object().shape({
-    'text-input-formik': yup.string().required('Something went wrong!'),
-  })
-
-  const FormikTextInput = withFormik(TextInput)
-
-  return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={action('onSubmit')}
-    >
-      <Form>
-        <Field
-          name="text-input-formik"
-          label="Example label"
-          component={FormikTextInput}
-        />
-        <br />
-        <Button type="submit">Submit</Button>
-      </Form>
-    </Formik>
-  )
-}
-
-WithFormik.storyName = 'Formik'

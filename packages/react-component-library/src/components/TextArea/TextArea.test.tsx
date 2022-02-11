@@ -6,7 +6,6 @@ import userEvent from '@testing-library/user-event'
 import { FieldProps } from '../../common/FieldProps'
 import { FormProps } from '../../common/FormProps'
 import { TextArea } from '.'
-import { withFormik } from '../../enhancers/withFormik'
 
 describe('TextArea', () => {
   let onBlurSpy: (event: React.FormEvent) => void
@@ -121,93 +120,6 @@ describe('TextArea', () => {
 
       it('should update the value', () => {
         expect(wrapper.getByTestId('textarea-input')).toHaveValue('')
-      })
-    })
-  })
-
-  describe('when a Formik enhanced field has an error', () => {
-    let field: FieldProps
-    let form: FormProps
-
-    describe('and the form has not been touched', () => {
-      beforeEach(() => {
-        field = {
-          name: 'colour',
-          value: '',
-          onBlur: null,
-          onChange: jest.fn(),
-        }
-        form = {
-          errors: {
-            colour: 'Something bad',
-          },
-          touched: {},
-        }
-
-        const FormikTextArea = withFormik(TextArea)
-
-        wrapper = render(<FormikTextArea field={field} form={form} />)
-      })
-
-      it('should add the aria attributes', () => {
-        expect(wrapper.getByTestId('textarea-input')).not.toHaveAttribute(
-          'aria-invalid'
-        )
-        expect(wrapper.getByTestId('textarea-input')).not.toHaveAttribute(
-          'aria-describedby'
-        )
-      })
-
-      it('should not indicate the field has an error', () => {
-        expect(wrapper.queryByTestId('textarea-container')).not.toHaveClass(
-          'is-invalid'
-        )
-      })
-
-      it('should not show the error', () => {
-        expect(wrapper.queryAllByText('Something bad')).toHaveLength(0)
-      })
-    })
-
-    describe('and the form has been touched', () => {
-      beforeEach(() => {
-        field = {
-          name: 'colour',
-          value: '',
-          onBlur: null,
-          onChange: jest.fn(),
-        }
-        form = {
-          errors: {
-            colour: 'Something bad',
-          },
-          touched: {
-            colour: true,
-          },
-        }
-
-        const FormikTextArea = withFormik(TextArea)
-
-        wrapper = render(<FormikTextArea field={field} form={form} />)
-      })
-
-      it('should add the aria attributes', () => {
-        expect(wrapper.getByTestId('textarea-input')).toHaveAttribute(
-          'aria-invalid'
-        )
-        expect(wrapper.getByTestId('textarea-input')).toHaveAttribute(
-          'aria-describedby'
-        )
-      })
-
-      it('should indicate the field has an error', () => {
-        expect(wrapper.queryByTestId('textarea-container')).toHaveClass(
-          'is-invalid'
-        )
-      })
-
-      it('should show the error', () => {
-        expect(wrapper.getByText('Something bad')).toBeInTheDocument()
       })
     })
   })

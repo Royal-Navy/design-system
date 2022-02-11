@@ -6,7 +6,6 @@ import userEvent from '@testing-library/user-event'
 import { FieldProps } from '../../common/FieldProps'
 import { FormProps } from '../../common/FormProps'
 import { RadioE } from '.'
-import { withFormik } from '../../enhancers/withFormik'
 
 describe('RadioE', () => {
   let field: FieldProps
@@ -79,66 +78,6 @@ describe('RadioE', () => {
           expect(field.onChange).toHaveBeenCalledTimes(1)
         })
       })
-    })
-  })
-
-  describe('when the field has an error and the form has not been touched', () => {
-    beforeEach(() => {
-      form.errors = {
-        colour: 'Something bad',
-      }
-
-      form.touched = {}
-
-      const FormikRadio = withFormik(RadioE)
-
-      radio = render(<FormikRadio field={field} form={form} />)
-    })
-
-    it('should not add the aria attributes', () => {
-      expect(radio.getByTestId('radio-input')).not.toHaveAttribute(
-        'aria-invalid'
-      )
-      expect(radio.getByTestId('radio-input')).not.toHaveAttribute(
-        'aria-describedBy'
-      )
-    })
-
-    it('should not indicate the field has an error', () => {
-      expect(radio.queryByTestId('radio')).not.toHaveClass('is-invalid')
-    })
-
-    it('should not show the error', () => {
-      expect(radio.queryAllByText('Something bad')).toHaveLength(0)
-    })
-  })
-
-  describe('when the field has an error and the form has been touched', () => {
-    beforeEach(() => {
-      form.errors = {
-        colour: 'Something bad',
-      }
-
-      form.touched.colour = true
-
-      const FormikRadio = withFormik(RadioE)
-
-      radio = render(<FormikRadio field={field} form={form} />)
-    })
-
-    it('should add the aria attributes', () => {
-      expect(radio.getByTestId('radio-input')).toHaveAttribute('aria-invalid')
-      expect(radio.getByTestId('radio-input')).toHaveAttribute(
-        'aria-describedby'
-      )
-    })
-
-    it('should indicate the field has an error', () => {
-      expect(radio.queryByTestId('radio')).toHaveClass('is-invalid')
-    })
-
-    it('should show the error', () => {
-      expect(radio.getByText('Something bad')).toBeInTheDocument()
     })
   })
 

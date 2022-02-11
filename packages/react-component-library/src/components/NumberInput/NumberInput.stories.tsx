@@ -1,13 +1,8 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { Field, Formik, Form } from 'formik'
 import { IconBrightnessHigh } from '@defencedigital/icon-library'
-import * as yup from 'yup'
 
-import { Button } from '../Button'
 import { NumberInput } from './NumberInput'
-import { withFormik } from '../../enhancers/withFormik'
 import { UNIT_POSITION } from './constants'
 
 const chromaticIgnore = { chromatic: { disable: true } }
@@ -134,33 +129,3 @@ export const UnitBefore: ComponentStory<typeof NumberInput> = (props) => (
 )
 
 UnitBefore.storyName = 'With unit before'
-
-export const WithFormik: ComponentStory<typeof NumberInput> = (props) => {
-  const errorText = 'Something went wrong!'
-
-  const validationSchema = yup.object().shape({
-    gold: yup.number().required(errorText),
-  })
-
-  const FormikNumberInput = withFormik(NumberInput)
-
-  return (
-    <Formik
-      initialErrors={{ gold: errorText }}
-      initialTouched={{ gold: true }}
-      initialValues={{ age: 13, btc: 10 }}
-      onSubmit={action('onSubmit')}
-      validationSchema={validationSchema}
-    >
-      <Form>
-        <Field component={FormikNumberInput} name="gold" label="Gold bars" />
-        <Field component={FormikNumberInput} name="btc" label="Bitcoins" />
-        <Button type="submit" variant="primary">
-          Submit
-        </Button>
-      </Form>
-    </Formik>
-  )
-}
-
-WithFormik.storyName = 'Formik'

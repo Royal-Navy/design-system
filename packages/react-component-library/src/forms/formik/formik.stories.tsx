@@ -1,8 +1,7 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
-import { Formik, Field } from 'formik'
-import styled from 'styled-components'
+import { Formik, Field as FormikField, FieldProps } from 'formik'
 
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
@@ -19,11 +18,11 @@ import {
   DatePickerEOnChangeData,
 } from '../../components/DatePickerE'
 import { SelectE, SelectEOption } from '../../components/SelectE'
-import { SwitchE, SwitchEOption, SwitchEProps } from '../../components/SwitchE'
+import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { RangeSliderE } from '../../components/RangeSliderE'
-import { FormikGroupE } from '../../components/FormikGroup'
-import { withFormik } from '../../enhancers/withFormik'
 import { sleep } from '../../helpers'
+import { Field } from '../../components/Field'
+import { Fieldset } from '../../components/Fieldset'
 
 export interface FormValues {
   email: string
@@ -38,33 +37,6 @@ export interface FormValues {
   exampleAutocomplete: string | null
   exampleRangeSlider: number[]
 }
-
-const SwitchEFormed: React.FC<SwitchEProps> = (props) => (
-  <SwitchE
-    {...props}
-    label="Example switch selection"
-    data-testid="form-example-SwitchE"
-  >
-    <SwitchEOption label="One" value="1" />
-    <SwitchEOption label="Two" value="2" />
-    <SwitchEOption label="Three" value="3" />
-  </SwitchE>
-)
-
-const StyledRangeSliderE = styled(RangeSliderE)`
-  margin-top: 3rem;
-`
-
-const FormikTextInputE = withFormik(TextInputE)
-const FormikTextAreaE = withFormik(TextAreaE)
-const FormikCheckboxE = withFormik(CheckboxE)
-const FormikRadioE = withFormik(RadioE)
-const FormikSwitchE = withFormik(SwitchEFormed)
-const FormikDatePickerE = withFormik(DatePickerE)
-const FormikNumberInputE = withFormik(NumberInputE)
-const FormikSelectE = withFormik(SelectE)
-const FormikAutocompleteE = withFormik(AutocompleteE)
-const FormikRangeSliderE = withFormik(StyledRangeSliderE)
 
 const MINIMUM_DATE = parseISO('2022-01-01')
 
@@ -123,130 +95,235 @@ export const Example: React.FC<unknown> = () => {
           setFieldValue,
         }) => (
           <form onSubmit={handleSubmit}>
-            <Field
+            <FormikField
               name="email"
-              label="Email"
-              component={FormikTextInputE}
               data-testid="form-example-TextInputE-email"
-            />
-            <Field
-              type="password"
+            >
+              {({ field, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <TextInputE label="Email" {...field} />
+                  </Field>
+                )
+              }}
+            </FormikField>
+            <FormikField
               name="password"
-              label="Password"
-              component={FormikTextInputE}
               data-testid="form-example-TextInputE-password"
-            />
-            <Field
+            >
+              {({ field, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <TextInputE type="password" label="Password" {...field} />
+                  </Field>
+                )
+              }}
+            </FormikField>
+            <FormikField
               name="description"
-              label="Description"
-              component={FormikTextAreaE}
               data-testid="form-example-TextAreaE-description"
-            />
-            <FormikGroupE label="Example checkbox selection">
-              <Field
-                component={FormikCheckboxE}
+            >
+              {({ field, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <TextAreaE label="Description" {...field} />
+                  </Field>
+                )
+              }}
+            </FormikField>
+            <Fieldset>
+              <legend>Example checkbox selection</legend>
+              <FormikField
                 name="exampleCheckbox"
-                label="Option 1"
                 value="Option 1"
                 type="checkbox"
-              />
-              <Field
-                component={FormikCheckboxE}
+              >
+                {({ field }: FieldProps) => (
+                  <CheckboxE label="Option 1" {...field} />
+                )}
+              </FormikField>
+              <FormikField
                 name="exampleCheckbox"
-                label="Option 2"
                 value="Option 2"
                 type="checkbox"
-              />
-              <Field
-                component={FormikCheckboxE}
+              >
+                {({ field }: FieldProps) => (
+                  <CheckboxE label="Option 2" {...field} />
+                )}
+              </FormikField>
+              <FormikField
                 name="exampleCheckbox"
-                label="Option 3"
                 value="Option 3"
                 type="checkbox"
-              />
-            </FormikGroupE>
-            <FormikGroupE label="Example radio selection">
-              <Field
-                component={FormikRadioE}
-                name="exampleRadio"
-                label="Option 1"
-                value="Option 1"
-              />
-              <Field
-                component={FormikRadioE}
-                name="exampleRadio"
-                label="Option 2"
-                value="Option 2"
-              />
-            </FormikGroupE>
-            <Field
-              name="exampleSwitch"
-              component={FormikSwitchE}
-              onChange={(event: React.FormEvent<HTMLInputElement>) => {
-                setFieldValue('exampleSwitch', event.currentTarget.value)
+              >
+                {({ field }: FieldProps) => (
+                  <CheckboxE label="Option 3" {...field} />
+                )}
+              </FormikField>
+            </Fieldset>
+            <Fieldset>
+              <legend>Example radio selection</legend>
+              <FormikField name="exampleRadio" value="Option 1" type="radio">
+                {({ field }: FieldProps) => (
+                  <RadioE label="Option 1" {...field} />
+                )}
+              </FormikField>
+              <FormikField name="exampleRadio" value="Option 2" type="radio">
+                {({ field }: FieldProps) => (
+                  <RadioE label="Option 2" {...field} />
+                )}
+              </FormikField>
+            </Fieldset>
+            <FormikField name="exampleSwitch">
+              {({ field: { name, value }, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <SwitchE
+                      label="Example switch selection"
+                      name={name}
+                      value={value}
+                      data-testid="form-example-SwitchE"
+                      onChange={(event: React.FormEvent<HTMLInputElement>) => {
+                        setFieldValue(
+                          'exampleSwitch',
+                          event.currentTarget.value
+                        )
+                      }}
+                    >
+                      <SwitchEOption label="One" value="1" />
+                      <SwitchEOption label="Two" value="2" />
+                      <SwitchEOption label="Three" value="3" />
+                    </SwitchE>
+                  </Field>
+                )
               }}
-            />
-            <Field
-              name="exampleNumberInput"
-              component={FormikNumberInputE}
-              onChange={(
-                _:
-                  | React.ChangeEvent<HTMLInputElement>
-                  | React.MouseEvent<HTMLButtonElement>,
-                newValue: number
-              ) => {
-                setFieldValue('exampleNumberInput', newValue)
+            </FormikField>
+            <FormikField name="exampleNumberInput">
+              {({ field: { name, value }, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <NumberInputE
+                      label="Example number input"
+                      name={name}
+                      value={value}
+                      onChange={(
+                        _:
+                          | React.ChangeEvent<HTMLInputElement>
+                          | React.MouseEvent<HTMLButtonElement>,
+                        newValue: number | null
+                      ) => {
+                        setFieldValue('exampleNumberInput', newValue)
+                      }}
+                    />
+                  </Field>
+                )
               }}
-            />
-            <Field
-              name="exampleDatePicker"
-              component={FormikDatePickerE}
-              disabledDays={{ before: MINIMUM_DATE }}
-              startDate={values.exampleDatePicker}
-              onChange={({ startDate }: DatePickerEOnChangeData) => {
-                setFieldValue('exampleDatePicker', startDate)
+            </FormikField>
+            <FormikField name="exampleDatePicker">
+              {({ field: { name, value }, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <DatePickerE
+                      name={name}
+                      disabledDays={{ before: MINIMUM_DATE }}
+                      startDate={value}
+                      onChange={({ startDate }: DatePickerEOnChangeData) => {
+                        setFieldValue('exampleDatePicker', startDate)
+                      }}
+                    />
+                  </Field>
+                )
               }}
-            />
-            <Field
-              name="exampleSelect"
-              component={FormikSelectE}
-              label="Example select"
-              value={values.exampleSelect}
-              onChange={(value: string | null) => {
-                setFieldValue('exampleSelect', value)
+            </FormikField>
+            <FormikField name="exampleSelect">
+              {({ field: { value }, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <SelectE
+                      value={value}
+                      label="Example select"
+                      onChange={(newValue: string | null) => {
+                        setFieldValue('exampleSelect', newValue)
+                      }}
+                    >
+                      <SelectEOption value="one">One</SelectEOption>
+                      <SelectEOption value="two">Two</SelectEOption>
+                      <SelectEOption value="three">Three</SelectEOption>
+                      <SelectEOption value="four">Four</SelectEOption>
+                    </SelectE>
+                  </Field>
+                )
               }}
-            >
-              <SelectEOption value="one">One</SelectEOption>
-              <SelectEOption value="two">Two</SelectEOption>
-              <SelectEOption value="three">Three</SelectEOption>
-              <SelectEOption value="four">Four</SelectEOption>
-            </Field>
-            <Field
-              name="exampleAutocomplete"
-              component={FormikAutocompleteE}
-              label="Example autocomplete"
-              value={values.exampleAutocomplete}
-              onChange={(value: string | null) => {
-                setFieldValue('exampleAutocomplete', value)
+            </FormikField>
+            <FormikField name="exampleAutocomplete">
+              {({ field: { value }, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <AutocompleteE
+                      value={value}
+                      label="Example autocomplete"
+                      onChange={(newValue: string | null) => {
+                        setFieldValue('exampleAutocomplete', newValue)
+                      }}
+                    >
+                      <AutocompleteEOption value="one">One</AutocompleteEOption>
+                      <AutocompleteEOption value="two">Two</AutocompleteEOption>
+                      <AutocompleteEOption value="three">
+                        Three
+                      </AutocompleteEOption>
+                      <AutocompleteEOption value="four">
+                        Four
+                      </AutocompleteEOption>
+                    </AutocompleteE>
+                  </Field>
+                )
               }}
-            >
-              <AutocompleteEOption value="one">One</AutocompleteEOption>
-              <AutocompleteEOption value="two">Two</AutocompleteEOption>
-              <AutocompleteEOption value="three">Three</AutocompleteEOption>
-              <AutocompleteEOption value="four">Four</AutocompleteEOption>
-            </Field>
-            <Field
-              name="exampleRangeSlider"
-              component={FormikRangeSliderE}
-              onChange={(newValues: ReadonlyArray<number>) => {
-                setFieldValue('exampleRangeSlider', newValues)
+            </FormikField>
+            <FormikField name="exampleRangeSlider">
+              {({ meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <RangeSliderE
+                      domain={[0, 40]}
+                      mode={1}
+                      values={[20]}
+                      tracksLeft
+                      step={2}
+                      onChange={(newValues: ReadonlyArray<number>) => {
+                        setFieldValue('exampleRangeSlider', newValues)
+                      }}
+                    />
+                  </Field>
+                )
               }}
-              domain={[0, 40]}
-              mode={1}
-              values={[20]}
-              tracksLeft
-              step={2}
-            />
+            </FormikField>
             <ButtonE
               type="submit"
               isDisabled={isSubmitting}
