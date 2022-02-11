@@ -12,7 +12,11 @@ describe('Field', () => {
     beforeEach(() => {
       wrapper = render(
         <Field hintText="Example hint text." errors={[{ error: 'Required' }]}>
-          <TextInputE label="Example text input" name="example" />
+          <TextInputE
+            label="Example text input"
+            name="example"
+            data-testid="example-component"
+          />
         </Field>
       )
     })
@@ -26,6 +30,27 @@ describe('Field', () => {
 
       expect(errorMessages).toHaveLength(1)
       expect(errorMessages[0]).toHaveTextContent('Required')
+    })
+
+    it('adds the aria aria-invalid attribute', () => {
+      expect(wrapper.getByTestId('example-component')).toHaveAttribute(
+        'aria-invalid',
+        'true'
+      )
+    })
+
+    it('adds the `aria-describedby` attribute', () => {
+      expect(wrapper.getByTestId('example-component')).toHaveAttribute(
+        'aria-describedby',
+        expect.stringMatching(/(?<=field-)(.*)(?!-errormessage)/)
+      )
+    })
+
+    it('sets the `aria-errormessage` attribute', () => {
+      expect(wrapper.getByTestId('example-component')).toHaveAttribute(
+        'aria-errormessage',
+        expect.stringMatching(/(?<=field-)(.*)(?=-errormessage)/)
+      )
     })
   })
 })

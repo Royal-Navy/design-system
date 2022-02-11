@@ -4,6 +4,7 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledField } from './partials/StyledField'
 import { StyledError } from './partials/StyledError'
 import { StyledHintText } from './partials/StyledHintText'
+import { getId } from '../../helpers'
 
 export type ErrorType = {
   error: boolean | string
@@ -12,6 +13,19 @@ export type ErrorType = {
 export interface FieldProps extends ComponentWithClass {
   hintText?: string
   errors?: ErrorType[]
+}
+
+export function ariaAttributes(
+  isInvalid: boolean,
+  fieldId: string
+): Record<string, string | boolean> {
+  return {
+    'aria-describedby': fieldId,
+    ...(isInvalid && {
+      'aria-errormessage': `${fieldId}-errormessage`,
+      'aria-invalid': true,
+    }),
+  }
 }
 
 export const Field: React.FC<FieldProps> = ({
@@ -24,6 +38,8 @@ export const Field: React.FC<FieldProps> = ({
     return errors.some(({ error }) => error)
   }, [errors])
 
+  const fieldId: string = useMemo(() => getId('field'), [])
+
   return (
     <StyledField className={className}>
       {isInvalid &&
@@ -31,7 +47,12 @@ export const Field: React.FC<FieldProps> = ({
           return (
             error &&
             typeof error === 'string' && (
-              <StyledError key={error} data-testid="field-error-message">
+              <StyledError
+                id={`${fieldId}-errormessage`}
+                key={error}
+                data-testid="field-error-message"
+                role="alert"
+              >
                 {error}
               </StyledError>
             )
@@ -44,11 +65,12 @@ export const Field: React.FC<FieldProps> = ({
 
         return React.cloneElement(child, {
           ...child.props,
+          ...ariaAttributes(isInvalid, fieldId),
           isInvalid,
         })
       })}
       {hintText && (
-        <StyledHintText data-testid="field-hint-text">
+        <StyledHintText id={fieldId} data-testid="field-hint-text">
           {hintText}
         </StyledHintText>
       )}
