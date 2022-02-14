@@ -4,11 +4,12 @@ import mergeRefs from 'react-merge-refs'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
-import { StyledRadio } from './partials/StyledRadio'
-import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
-import { StyledLabel } from './partials/StyledLabel'
-import { StyledInput } from './partials/StyledInput'
 import { StyledCheckmark } from './partials/StyledCheckmark'
+import { StyledDescription } from './partials/StyledDescription'
+import { StyledInput } from './partials/StyledInput'
+import { StyledLabel } from './partials/StyledLabel'
+import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
+import { StyledRadio } from './partials/StyledRadio'
 import { StyledRadioWrapper } from './partials/StyledRadioWrapper'
 
 export interface RadioEProps extends ComponentWithClass, InputValidationProps {
@@ -20,6 +21,10 @@ export interface RadioEProps extends ComponentWithClass, InputValidationProps {
    * Toggles whether or not the component is marked as checked by default.
    */
   defaultChecked?: boolean
+  /**
+   * Optional description to display below the label.
+   */
+  description?: string
   /**
    * Toggles whether the component is disabled or not (preventing user interaction).
    */
@@ -52,6 +57,7 @@ export const RadioE = React.forwardRef<HTMLInputElement, RadioEProps>(
       className = '',
       id = uuidv4(),
       defaultChecked,
+      description,
       isDisabled = false,
       label,
       name,
@@ -105,6 +111,11 @@ export const RadioE = React.forwardRef<HTMLInputElement, RadioEProps>(
               />
               <StyledCheckmark />
               {label}
+              {description && (
+                <StyledDescription data-testid="checkbox-description">
+                  {description}
+                </StyledDescription>
+              )}
             </StyledLabel>
           </StyledOuterWrapper>
         </StyledRadio>

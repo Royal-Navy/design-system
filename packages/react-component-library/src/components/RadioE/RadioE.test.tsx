@@ -52,6 +52,10 @@ describe('RadioE', () => {
       expect(radio.getByTestId('radio-label')).toHaveTextContent('My Label 1')
     })
 
+    it('should not render a description', () => {
+      expect(radio.queryAllByTestId('checkbox-description')).toHaveLength(0)
+    })
+
     it('should populate the field value', () => {
       expect(input).toHaveAttribute('value', 'option1')
     })
@@ -138,6 +142,20 @@ describe('RadioE', () => {
       expect(radio.getByTestId('radio-input')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
+      )
+    })
+  })
+
+  describe('when a field has a description', () => {
+    beforeEach(() => {
+      radio = render(
+        <RadioE description="Description" label="Label" name={field.name} />
+      )
+    })
+
+    it('should render a description', () => {
+      expect(radio.getByTestId('checkbox-description')).toHaveTextContent(
+        'Description'
       )
     })
   })

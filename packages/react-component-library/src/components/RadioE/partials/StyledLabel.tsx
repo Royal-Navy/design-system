@@ -6,6 +6,6 @@ const { color, fontSize } = selectors
 export const StyledLabel = styled.label`
   color: ${color('neutral', '400')};
   font-size: ${fontSize('m')};
-  padding: 0 16px;
+  padding: 12px 12px 12px 17px;
   pointer-events: none;
 `
