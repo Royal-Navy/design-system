@@ -182,8 +182,8 @@ export const DatePickerE: React.FC<DatePickerEProps> = ({
   ...rest
 }) => {
   const id = useExternalId(externalId)
-  const titleId = `datepicker-title-${useExternalId()}`
-  const contentId = `datepicker-contentId-${useExternalId()}`
+  const titleId = useExternalId('datepicker-title')
+  const contentId = useExternalId('datepicker-contentId')
   const buttonRef = useRef<HTMLButtonElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 

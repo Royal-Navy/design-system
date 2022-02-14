@@ -4,10 +4,10 @@ import { IconForward } from '@defencedigital/icon-library'
 import { ButtonProps } from '../Button'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { Footer } from './Footer'
-import { getId } from '../../helpers'
 import { Header } from './Header'
 import { StyledModal } from './partials/StyledModal'
 import { StyledMain } from './partials/StyledMain'
+import { useExternalId } from '../../hooks/useExternalId'
 import { useOpenClose } from '../../hooks/useOpenClose'
 
 export interface ModalProps extends ComponentWithClass {
@@ -51,29 +51,17 @@ export interface ModalProps extends ComponentWithClass {
   titleId?: string
 }
 
-function getTitleId(title: string, titleId: string) {
-  if (titleId) {
-    return titleId
-  }
-
-  if (title) {
-    return getId('modal-title')
-  }
-
-  return null
-}
-
 export const Modal: React.FC<ModalProps> = ({
   children,
   className,
-  descriptionId = getId('modal-description'),
-  isOpen,
+  descriptionId: externalDescriptionId,
+  isOpen = false,
   onClose,
   primaryButton,
   secondaryButton,
   tertiaryButton,
   title,
-  titleId,
+  titleId: externalTitleId,
   ...rest
 }) => {
   const { handleOnClose, open } = useOpenClose(isOpen, onClose)
@@ -82,7 +70,11 @@ export const Modal: React.FC<ModalProps> = ({
     ...primaryButton,
   }
 
-  const modalTitleId = getTitleId(title, titleId)
+  const descriptionId = useExternalId(
+    'modal-description',
+    externalDescriptionId
+  )
+  const titleId = useExternalId('modal-title', externalTitleId)
 
   return (
     <StyledModal
@@ -90,18 +82,14 @@ export const Modal: React.FC<ModalProps> = ({
       className={className}
       role="dialog"
       aria-modal
-      aria-labelledby={modalTitleId}
+      aria-labelledby={title || externalTitleId ? titleId : undefined}
       aria-describedby={descriptionId}
       data-testid="modal-wrapper"
       {...rest}
     >
       <StyledMain data-testid="modal-main">
         {title && (
-          <Header
-            titleId={modalTitleId}
-            title={title}
-            onClose={handleOnClose}
-          />
+          <Header titleId={titleId} title={title} onClose={handleOnClose} />
         )}
         <section id={descriptionId} data-testid="modal-body">
           {children}

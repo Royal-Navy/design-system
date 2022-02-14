@@ -14,6 +14,9 @@ function getKey(prefix: string, suffix: string | number): string {
   return `${prefix}-${suffix}`.replace(/\s/g, '')
 }
 
+/**
+ * @deprecated Use the useExternalId() hook instead as it's memoised.
+ */
 function getId(prefix: string): string {
   return getKey(prefix, uuidv4())
 }

@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import React, { useState, useEffect } from 'react'
 
 import { warnIfOverwriting, getKey } from '../../helpers'
 import { SwitchEOption, SwitchEOptionProps } from '.'
@@ -9,6 +8,7 @@ import { StyledSwitch } from './partials/StyledSwitch'
 import { StyledLegend } from './partials/StyledLegend'
 import { StyledContainer } from './partials/StyledContainer'
 import { ComponentSizeType, COMPONENT_SIZE } from '../Forms'
+import { useExternalId } from '../../hooks/useExternalId'
 
 export type SwitchEChildType =
   | React.ReactElement<SwitchEOptionProps>
@@ -60,7 +60,7 @@ export const SwitchE: React.FC<SwitchEProps> = ({
   ...rest
 }) => {
   const [active, setActive] = useState<string | undefined>()
-  const id = useMemo(() => uuidv4(), [])
+  const id = useExternalId()
 
   useEffect(() => {
     setActive(value)
