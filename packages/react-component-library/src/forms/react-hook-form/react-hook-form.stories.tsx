@@ -286,6 +286,6 @@ export const Example: React.FC<unknown> = () => {
 }
 
 export default {
-  title: 'Forms/react-hook-form',
+  title: 'Forms/Usage/react-hook-form',
   component: Example,
 } as ComponentMeta<typeof Example>

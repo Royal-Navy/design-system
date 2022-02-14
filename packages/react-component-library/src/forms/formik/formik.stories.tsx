@@ -97,47 +97,51 @@ export const Example: React.FC<unknown> = () => {
         }) => (
           <form onSubmit={handleSubmit}>
             <SectionDivider title="Example Form" />
-            <FormikField
-              name="email"
-              data-testid="form-example-TextInputE-email"
-            >
+            <FormikField name="email">
               {({ field, meta }: FieldProps) => {
                 return (
                   <Field
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <TextInputE label="Email" {...field} />
+                    <TextInputE
+                      label="Email"
+                      {...field}
+                      data-testid="form-example-TextInputE-email"
+                    />
                   </Field>
                 )
               }}
             </FormikField>
-            <FormikField
-              name="password"
-              data-testid="form-example-TextInputE-password"
-            >
+            <FormikField name="password">
               {({ field, meta }: FieldProps) => {
                 return (
                   <Field
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <TextInputE type="password" label="Password" {...field} />
+                    <TextInputE
+                      type="password"
+                      label="Password"
+                      {...field}
+                      data-testid="form-example-TextInputE-password"
+                    />
                   </Field>
                 )
               }}
             </FormikField>
-            <FormikField
-              name="description"
-              data-testid="form-example-TextAreaE-description"
-            >
+            <FormikField name="description">
               {({ field, meta }: FieldProps) => {
                 return (
                   <Field
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <TextAreaE label="Description" {...field} />
+                    <TextAreaE
+                      label="Description"
+                      {...field}
+                      data-testid="form-example-TextAreaE-description"
+                    />
                   </Field>
                 )
               }}
@@ -343,6 +347,6 @@ export const Example: React.FC<unknown> = () => {
 }
 
 export default {
-  title: 'Forms/Formik',
+  title: 'Forms/Usage/Formik',
   component: Example,
 } as ComponentMeta<typeof Example>
