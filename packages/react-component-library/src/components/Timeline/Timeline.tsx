@@ -1,5 +1,5 @@
 import React from 'react'
-import { isAfter } from 'date-fns'
+import { isAfter, setHours, startOfToday } from 'date-fns'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineProvider } from './context'
@@ -40,7 +40,7 @@ export interface TimelineProps extends ComponentWithClass {
   /**
    * A month will display either side of this start date.
    */
-  startDate?: Date
+  startDate: Date
   /**
    * Bound the timeline by the specified start and end dates.
    */
@@ -74,7 +74,7 @@ function getHoursBlockSize(
   )
 }
 
-function getEndDate(startDate: Date, endDate: Date) {
+function getEndDate(startDate: Date, endDate: Date | null) {
   if (startDate && endDate && isAfter(startDate, endDate)) {
     logger.error('`startDate` is after `endDate`')
     return null
@@ -92,9 +92,9 @@ export const Timeline: React.FC<TimelineProps> = ({
   hideToolbar = false,
   isFullWidth = false,
   startDate,
-  endDate,
-  today,
-  range,
+  endDate = null,
+  today = setHours(startOfToday(), 12),
+  range = 1,
   unitWidth,
   ...rest
 }) => {

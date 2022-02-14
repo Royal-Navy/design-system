@@ -32,6 +32,11 @@ export const TimelineDays: React.FC<TimelineDaysProps> = memo(
     const {
       state: { currentScaleOption, days },
     } = useContext(TimelineContext)
+
+    if (!currentScaleOption) {
+      return null
+    }
+
     const isBelowThreshold =
       currentScaleOption.widths.day < DISPLAY_THRESHOLDS.DAY
 

@@ -41,7 +41,7 @@ export interface TimelineRowProps extends ComponentWithClass {
   /**
    * Supply a custom presentation layer for the row header.
    */
-  render?: (props: { name: string }) => React.ReactElement
+  render?: (props: { name?: string }) => React.ReactElement
   /**
    * @private
    */
@@ -56,7 +56,7 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
   name,
   ariaLabel,
   render,
-  isHeader,
+  isHeader = false,
   className,
   ...rest
 }) => {

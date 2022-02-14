@@ -15,7 +15,7 @@ interface TimelineWeekProps {
   days: TimelineDay[]
   dayWidth: number
   index: number
-  render: (props: {
+  render?: (props: {
     index: number
     isOddNumber: boolean
     offsetPx: string

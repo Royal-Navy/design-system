@@ -36,6 +36,11 @@ export type TimelineHoursProps =
 export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
   const { state } = useContext(TimelineContext)
   const { currentScaleOption, days, hours } = state
+
+  if (!currentScaleOption) {
+    return null
+  }
+
   const isBelowThreshold =
     currentScaleOption.widths.hour < DISPLAY_THRESHOLDS.HOUR
 

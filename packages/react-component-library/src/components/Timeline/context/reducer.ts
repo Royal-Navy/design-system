@@ -3,7 +3,7 @@ import {
   eachMonthOfInterval,
   eachWeekOfInterval,
 } from 'date-fns'
-import { padStart } from 'lodash'
+import { clamp, padStart } from 'lodash'
 
 import {
   TIMELINE_ACTIONS,
@@ -52,7 +52,7 @@ export function getDays(start: Date, end: Date): TimelineDay[] {
   })
 }
 
-export function getHours(blockSize: number): TimelineHour[] {
+export function getHours(blockSize: number | null): TimelineHour[] {
   if (!blockSize) {
     return []
   }
@@ -89,7 +89,7 @@ export function buildCalendar({
 function transformOptions(
   options: TimelineOptions,
   currentScaleOption: TimelineScaleOption
-) {
+): TimelineOptions {
   return {
     ...options,
     endDate: options.endDate ? currentScaleOption.to : null,
@@ -100,7 +100,7 @@ function transformOptions(
 export function reducer(
   state: TimelineState,
   action: TimelineAction
-): TimelineState | never {
+): TimelineState {
   switch (action.type) {
     case TIMELINE_ACTIONS.CHANGE_WIDTH:
     case TIMELINE_ACTIONS.INITIALISE: {
@@ -120,6 +120,10 @@ export function reducer(
     case TIMELINE_ACTIONS.CHANGE_START_DATE:
     case TIMELINE_ACTIONS.GET_PREV:
     case TIMELINE_ACTIONS.GET_NEXT:
+      if (state.currentScaleIndex === null) {
+        throw new Error('Timeline currentScaleIndex cannot be null')
+      }
+
       return {
         ...state,
         ...buildCalendar(action.scaleOptions[state.currentScaleIndex]),
@@ -130,17 +134,28 @@ export function reducer(
         ),
         scaleOptions: action.scaleOptions,
       }
-    case TIMELINE_ACTIONS.SCALE:
+    case TIMELINE_ACTIONS.SCALE: {
+      if (state.currentScaleIndex === null) {
+        throw new Error('Timeline currentScaleIndex cannot be null')
+      }
+
+      const newScaleIndex = clamp(
+        action.getScaleIndex(state.currentScaleIndex),
+        0,
+        state.scaleOptions.length - 1
+      )
+
       return {
         ...state,
-        ...buildCalendar(state.scaleOptions[action.scaleIndex]),
-        currentScaleIndex: action.scaleIndex,
-        currentScaleOption: state.scaleOptions[action.scaleIndex],
+        ...buildCalendar(state.scaleOptions[newScaleIndex]),
+        currentScaleIndex: newScaleIndex,
+        currentScaleOption: state.scaleOptions[newScaleIndex],
         options: transformOptions(
           state.options,
           state.scaleOptions[state.currentScaleIndex]
         ),
       }
+    }
     default:
       throw new Error('Unknown reducer action type')
   }

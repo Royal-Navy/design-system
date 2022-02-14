@@ -79,7 +79,7 @@ function renderDefault({
   startsBeforeStart,
   endsAfterEnd,
 }: {
-  barColor: string
+  barColor?: string
   children: React.ReactNode
   offsetPx: string
   startDate: Date

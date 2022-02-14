@@ -15,12 +15,16 @@ export function useTimelineWidth(
   hasSide: boolean,
   isFullWidth: boolean
 ): {
-  timelineRef: MutableRefObject<HTMLDivElement>
+  timelineRef: MutableRefObject<HTMLDivElement | null>
 } {
-  const timelineRef = useRef<HTMLDivElement>()
+  const timelineRef = useRef<HTMLDivElement>(null)
   const { dispatch } = useContext(TimelineContext)
 
   const getWidth = useCallback(() => {
+    if (!timelineRef.current) {
+      return null
+    }
+
     const timelineWidth = timelineRef.current.getBoundingClientRect().width
     const sideWidth = hasSide ? TIMELINE_ROW_HEADER_WIDTH : 0
     return timelineWidth - 1 - sideWidth

@@ -50,7 +50,13 @@ const TimelineDates: React.FC<TimelineDaysProps> = () => {
 describe('Timeline', () => {
   let wrapper: RenderResult
 
+  beforeEach(() => {
+    jest.useFakeTimers()
+    jest.setSystemTime(new Date(2020, 1, 15))
+  })
+
   afterEach(() => {
+    jest.useRealTimers()
     jest.clearAllMocks()
   })
 
@@ -86,7 +92,7 @@ describe('Timeline', () => {
         </Timeline>
       )
 
-      wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+      userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
     })
 
     it('should set the `role` attribute to `grid` on the timeline', () => {
@@ -944,7 +950,7 @@ describe('Timeline', () => {
         </Timeline>
       )
 
-      wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+      userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
     })
 
     it('should render the day dates as specified', () => {
@@ -981,7 +987,7 @@ describe('Timeline', () => {
         </Timeline>
       )
 
-      wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+      userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
     })
 
     it('renders the correct number of hours', () => {
@@ -1214,6 +1220,23 @@ describe('Timeline', () => {
         'title',
         'Begins on 16th April 2020 and ends on 20th April 2020'
       )
+    })
+  })
+
+  describe('when the today marker is displayed and today is omitted', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline startDate={new Date(2020, 1, 1, 0, 0, 0)}>
+          <TimelineTodayMarker />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('positions the today marker at the current date', () => {
+      expect(wrapper.getByTestId('timeline-today-marker')).toHaveStyle({
+        left: '435px',
+      })
     })
   })
 
@@ -1736,7 +1759,7 @@ describe('Timeline', () => {
 
     describe('and then zooming out once (year view)', () => {
       beforeEach(() => {
-        wrapper.getByTestId('timeline-toolbar-zoom-out').click()
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-out'))
       })
 
       it('should render months', () => {
@@ -1779,8 +1802,8 @@ describe('Timeline', () => {
 
     describe('and then zooming out twice (5 year view)', () => {
       beforeEach(() => {
-        wrapper.getByTestId('timeline-toolbar-zoom-out').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-out').click()
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-out'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-out'))
       })
 
       it('should render months', () => {
@@ -1823,7 +1846,7 @@ describe('Timeline', () => {
 
     describe('and then zooming in once (week view)', () => {
       beforeEach(() => {
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
       })
 
       it('should render months', () => {
@@ -1845,8 +1868,8 @@ describe('Timeline', () => {
 
     describe('and then zooming in twice (day view)', () => {
       beforeEach(() => {
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
       })
 
       it('should render months', () => {
@@ -1868,9 +1891,9 @@ describe('Timeline', () => {
 
     describe('and then zooming in thrice (1/4 day view)', () => {
       beforeEach(() => {
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
       })
 
       it('should render months', () => {
@@ -1892,10 +1915,10 @@ describe('Timeline', () => {
 
     describe('and then zooming in four times (1 hour view)', () => {
       beforeEach(() => {
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
       })
 
       it('should render months', () => {
@@ -2340,7 +2363,7 @@ describe('Timeline', () => {
 
       wrapper = render(<TimelineWithUpdate />)
 
-      wrapper.getByText('Update').click()
+      userEvent.click(wrapper.getByText('Update'))
     })
 
     it('should not show the event', async () => {
@@ -2409,7 +2432,7 @@ describe('Timeline', () => {
       expect(eventSpy).toBeCalledTimes(1)
       eventSpy.mockClear()
 
-      wrapper.getByText('Force update').click()
+      userEvent.click(wrapper.getByText('Force update'))
       expect(await wrapper.findByText('Render: 2')).toBeInTheDocument()
       expect(eventSpy).not.toBeCalled()
     })

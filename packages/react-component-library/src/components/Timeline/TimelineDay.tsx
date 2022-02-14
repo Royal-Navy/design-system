@@ -9,7 +9,7 @@ interface TimelineDayProps {
   date: Date
   dayWidth: number
   index: number
-  render: (props: {
+  render?: (props: {
     index: number
     dayWidth: number
     date: Date

@@ -1,6 +1,5 @@
 import React, { useContext, memo } from 'react'
 import { differenceInDays, endOfMonth, min as minDate, max } from 'date-fns'
-import { min as minNumber } from 'lodash'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { getKey } from '../../helpers'
@@ -34,7 +33,7 @@ const MONTH_SMALL_THRESHOLD = 30
 const MONTH_MEDIUM_THRESHOLD = 160
 
 function getSize(monthWidths: { daysTotal: number; monthWidth: number }[]) {
-  const smallest = minNumber(monthWidths.map(({ monthWidth }) => monthWidth))
+  const smallest = Math.min(...monthWidths.map(({ monthWidth }) => monthWidth))
 
   if (smallest < MONTH_SMALL_THRESHOLD) {
     return MONTH_SIZE.SMALL
@@ -52,6 +51,10 @@ export const TimelineMonths = memo<TimelineMonthsProps>(
     const {
       state: { currentScaleOption, days, months },
     } = useContext(TimelineContext)
+
+    if (!currentScaleOption) {
+      return null
+    }
 
     const monthWidths = months.map(({ startDate }) => {
       const firstDateDisplayed = max([startDate, days[0].date])
