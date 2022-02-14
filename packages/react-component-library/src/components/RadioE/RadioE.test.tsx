@@ -173,6 +173,22 @@ describe('RadioE', () => {
     })
   })
 
+  describe('when a field has a description that is arbitrary JSX', () => {
+    beforeEach(() => {
+      radio = render(
+        <RadioE
+          description={<div>Arbitrary content</div>}
+          label="Label"
+          name={field.name}
+        />
+      )
+    })
+
+    it('should render a arbitrary description', () => {
+      expect(radio.getByText('Arbitrary content')).toBeInTheDocument()
+    })
+  })
+
   describe('when a field does not have a container', () => {
     beforeEach(() => {
       radio = render(
