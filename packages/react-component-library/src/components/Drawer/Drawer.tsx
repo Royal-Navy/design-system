@@ -24,7 +24,7 @@ export interface DrawerProps extends ComponentWithClass {
 }
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
-  ({ children, onClose, isOpen, className, ...rest }, ref) => {
+  ({ children, onClose, isOpen = false, className, ...rest }, ref) => {
     const { handleOnClose, open } = useOpenClose(isOpen, onClose)
 
     return (

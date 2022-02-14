@@ -99,7 +99,7 @@ const Fonts = createGlobalStyle`
 `
 
 const globalStyleContextDefaults: GlobalStyleContextDefaults = {
-  theme: null,
+  theme: undefined,
 }
 
 export const GlobalStyleContext = createContext(globalStyleContextDefaults)

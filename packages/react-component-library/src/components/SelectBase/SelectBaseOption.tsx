@@ -11,6 +11,7 @@ export interface SelectBaseOptionBaseProps extends ComponentWithClass {
   icon?: React.ReactNode
   isHighlighted?: boolean
   value: string
+  title?: string
 }
 
 export interface SelectBaseOptionAsArrayProps
@@ -30,7 +31,7 @@ export type SelectBaseOptionProps =
 export const SelectBaseOption = React.forwardRef<
   HTMLLIElement,
   SelectBaseOptionProps
->(({ badge, icon, children, isHighlighted, ...rest }, ref) => {
+>(({ badge, icon, children, isHighlighted, title, ...rest }, ref) => {
   return (
     <StyledOption
       $isHighlighted={isHighlighted}
@@ -39,7 +40,7 @@ export const SelectBaseOption = React.forwardRef<
       {...rest}
     >
       {icon}
-      <StyledOptionText>{children}</StyledOptionText>
+      <StyledOptionText title={title}>{children}</StyledOptionText>
       {badge && (
         <StyledOptionBadge
           data-testid="select-badge"

@@ -45,9 +45,9 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
   const { coordinates, isOpen, menuRef } = useClickMenu<HTMLOListElement>({
     attachedToRef,
     clickType,
+    position,
     onHide,
     onShow,
-    position,
   })
 
   const hasIcons = !!React.Children.toArray(children).filter(

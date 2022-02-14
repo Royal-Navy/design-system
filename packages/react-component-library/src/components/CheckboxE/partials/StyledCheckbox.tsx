@@ -1,8 +1,6 @@
 import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
 
-import { StyledCheckmark } from './StyledCheckmark'
-
 const { color, fontSize } = selectors
 
 export interface StyledCheckboxProps {
@@ -32,13 +30,6 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
       0 0 0 5px ${color('action', '100')};
   }
 
-  &:hover ${StyledCheckmark}, &:active ${StyledCheckmark} {
-    border: 1px solid ${color('action', '500')};
-    outline: none;
-    box-shadow: 0 0 0 1px ${color('action', '500')};
-    transition: all 0.2s;
-  }
-
   ${({ $isInvalid }) =>
     $isInvalid &&
     css`
@@ -59,12 +50,6 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
 
       * {
         cursor: not-allowed;
-      }
-
-      &&& ${StyledCheckmark} {
-        background-color: ${color('neutral', '200')};
-        border-color: ${color('neutral', '200')};
-        box-shadow: none;
       }
 
       background-color: ${color('neutral', '000')};

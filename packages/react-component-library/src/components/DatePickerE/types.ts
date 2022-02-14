@@ -1,6 +1,6 @@
 export interface DatePickerEState {
-  startDate?: Date
-  endDate?: Date
+  startDate: Date | null
+  endDate: Date | null
   inputValue: string
   datePickerFormat: string
   hasError: boolean

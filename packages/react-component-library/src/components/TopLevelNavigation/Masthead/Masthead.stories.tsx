@@ -107,7 +107,7 @@ export const Default: ComponentStory<typeof Masthead> = (props) => {
 }
 
 Default.args = {
-  searchPlaceholder: null,
+  searchPlaceholder: undefined,
   title: 'Defence Digital Design System',
   hasUnreadNotification: true,
 }
@@ -118,7 +118,7 @@ export const CustomLogo: ComponentStory<typeof Masthead> = (props) => (
 
 CustomLogo.storyName = 'Custom logo'
 CustomLogo.args = {
-  onSearch: null,
+  onSearch: null as undefined,
 }
 
 export const WithoutLogo: ComponentStory<typeof Masthead> = (props) => (
@@ -131,7 +131,7 @@ export const WithoutLogo: ComponentStory<typeof Masthead> = (props) => (
 
 WithoutLogo.storyName = 'Without logo'
 WithoutLogo.args = {
-  onSearch: null,
+  onSearch: null as undefined,
 }
 
 export const WithSearch: ComponentStory<typeof Masthead> = (props) => (
@@ -173,7 +173,7 @@ export const WithAvatarLinks: ComponentStory<typeof Masthead> = (props) => {
 
 WithAvatarLinks.storyName = 'With avatar links'
 WithAvatarLinks.args = {
-  onSearch: null,
+  onSearch: null as undefined,
 }
 
 export const WithNavigation: ComponentStory<typeof Masthead> = (props) => {
@@ -198,7 +198,7 @@ export const WithNavigation: ComponentStory<typeof Masthead> = (props) => {
 
 WithNavigation.storyName = 'With navigation'
 WithNavigation.args = {
-  onSearch: null,
+  onSearch: null as undefined,
 }
 
 export const WithNotifications: ComponentStory<typeof Masthead> = (props) => {
@@ -242,5 +242,5 @@ export const WithNotifications: ComponentStory<typeof Masthead> = (props) => {
 
 WithNotifications.storyName = 'With notifications'
 WithNotifications.args = {
-  onSearch: null,
+  onSearch: null as undefined,
 }

@@ -85,8 +85,8 @@ export const Toast: React.FC<ToastProps> = ({
     })
   )
 
-  const titleId = label ? getId('toast-title') : null
-  const descriptionId = children ? getId('toast-description') : null
+  const titleId = label ? getId('toast-title') : undefined
+  const descriptionId = children ? getId('toast-description') : undefined
 
   return (
     <StyledToast

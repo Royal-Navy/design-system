@@ -4,8 +4,8 @@ import { useDocumentClick } from '.'
 
 export function useHideShow(isClick: boolean, closeDelay: number) {
   const [isVisible, setIsVisible] = useState(false)
-  const timerRef = useRef(null)
-  const floatingBoxChildrenRef = useRef()
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const floatingBoxChildrenRef = useRef(null)
 
   const hideElement = useCallback(() => {
     if (isVisible) {

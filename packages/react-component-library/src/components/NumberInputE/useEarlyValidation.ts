@@ -7,8 +7,11 @@ import { isValueValid } from './validation'
  * new value will be based on the cursor position ond selection.
  */
 function getNewInputValue(input: HTMLInputElement, newText: string): string {
-  const textBeforeSelection = input.value.substring(0, input.selectionStart)
-  const textAfterSelection = input.value.substring(input.selectionEnd)
+  const textBeforeSelection = input.value.substring(
+    0,
+    input.selectionStart || 0
+  )
+  const textAfterSelection = input.value.substring(input.selectionEnd || 0)
   return `${textBeforeSelection}${newText}${textAfterSelection}`
 }
 

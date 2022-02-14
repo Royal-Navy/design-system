@@ -23,7 +23,7 @@ export const SearchBar: React.FC<SearchbarProps> = ({
   setShowSearch,
   ...rest
 }) => {
-  const searchBoxRef = useRef()
+  const searchBoxRef = useRef(null)
   const [term, setTerm] = useState('')
 
   const onDocumentClick = useCallback(

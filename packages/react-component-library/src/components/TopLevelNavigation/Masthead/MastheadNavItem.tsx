@@ -5,7 +5,7 @@ import { getKey } from '../../../helpers'
 import { StyledScrollableNavItem } from './partials/StyledScrollableNavItem'
 
 export const MastheadNavItem: React.FC<NavItem> = ({
-  isActive,
+  isActive = false,
   link,
   ...rest
 }) => (

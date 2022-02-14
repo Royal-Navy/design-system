@@ -14,12 +14,15 @@ function getKey(prefix: string, suffix: string | number): string {
   return `${prefix}-${suffix}`.replace(/\s/g, '')
 }
 
+/**
+ * @deprecated Use the useExternalId() hook instead as it's memoised.
+ */
 function getId(prefix: string): string {
   return getKey(prefix, uuidv4())
 }
 
-function hasClass(allClasses: string, className: string): boolean {
-  return allClasses && allClasses.split(' ').includes(className)
+function hasClass(allClasses: string | undefined, className: string): boolean {
+  return Boolean(allClasses) && allClasses.split(' ').includes(className)
 }
 
 function isIE11(): boolean {

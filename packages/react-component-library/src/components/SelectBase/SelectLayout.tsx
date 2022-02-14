@@ -1,10 +1,11 @@
-import React, { useMemo, useState } from 'react'
 import { UseSelectReturnValue, UseComboboxReturnValue } from 'downshift'
+import React, { useState } from 'react'
+import mergeRefs from 'react-merge-refs'
 
 import { ArrowButton } from '../SelectE/ArrowButton'
 import { ClearButton } from '../SelectE/ClearButton'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { getId } from '../../helpers'
+import { FloatingBox } from '../../primitives/FloatingBox'
 import { SelectChildWithStringType } from './types'
 import { StyledInlineButtons } from './partials/StyledInlineButtons'
 import { StyledInput } from './partials/StyledInput'
@@ -15,6 +16,9 @@ import { StyledOptionsWrapper } from './partials/StyledOptionsWrapper'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledSelect } from './partials/StyledSelect'
 import { StyledTextInput } from './partials/StyledTextInput'
+import { StyledTooltip } from './partials/StyledTooltip'
+import { useExternalId } from '../../hooks/useExternalId'
+import { useStatefulRef } from '../../hooks/useStatefulRef'
 
 type ComboboxReturnValueType = UseComboboxReturnValue<SelectChildWithStringType>
 type SelectReturnValueType = UseSelectReturnValue<SelectChildWithStringType>
@@ -40,14 +44,18 @@ export interface SelectLayoutProps extends ComponentWithClass {
   value?: string
 }
 
+const isEllipsisActive = (el: HTMLInputElement | null): boolean => {
+  return Boolean(el && el.offsetWidth < el.scrollWidth)
+}
+
 export const SelectLayout: React.FC<SelectLayoutProps> = ({
   children,
-  hasLabelFocus,
+  hasLabelFocus = false,
   hasSelectedItem,
   id,
   inputProps,
   inputWrapperProps,
-  isDisabled,
+  isDisabled = false,
   isInvalid,
   isOpen,
   label,
@@ -58,67 +66,81 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
   ...rest
 }) => {
   const [hasHover, setHasHover] = useState<boolean>(false)
-  const labelId = useMemo(() => getId('label'), [])
+  const labelId = useExternalId('label')
+  const [floatingBoxTarget, setFloatingBoxTarget] =
+    useStatefulRef<HTMLInputElement>()
+  const { ref, ...inputPropsRest } = inputProps
 
   return (
-    <StyledSelect data-testid="select" aria-labelledby={labelId}>
-      <StyledTextInput data-testid="text-input-container">
-        <StyledOuterWrapper
-          $hasFocus={isOpen}
-          $isDisabled={isDisabled}
-          $isInvalid={isInvalid}
-          data-testid="select-outer-wrapper"
-        >
-          <StyledInputWrapper
-            data-testid="text-input-input-wrapper"
-            {...inputWrapperProps}
+    <>
+      <StyledSelect data-testid="select" aria-labelledby={labelId}>
+        <StyledTextInput data-testid="text-input-container">
+          <StyledOuterWrapper
+            $hasFocus={isOpen}
+            $isDisabled={isDisabled}
+            $isInvalid={isInvalid}
+            data-testid="select-outer-wrapper"
           >
-            <StyledLabel
-              $hasContent={hasSelectedItem}
-              $hasFocus={hasLabelFocus}
-              htmlFor={id}
-              id={labelId}
-              data-testid="select-label"
+            <StyledInputWrapper
+              data-testid="text-input-input-wrapper"
+              {...inputWrapperProps}
             >
-              {label}
-            </StyledLabel>
-            <StyledInput
-              $hasLabel
-              data-testid="select-input"
-              disabled={isDisabled}
-              value={value}
-              onMouseEnter={() => {
-                if (!isDisabled) {
-                  setHasHover(true)
-                }
-              }}
-              onMouseLeave={() => setHasHover(false)}
-              {...rest}
-              {...inputProps}
-              aria-labelledby={labelId}
-              id={id}
-            />
-          </StyledInputWrapper>
-          <StyledInlineButtons>
-            {hasSelectedItem && (
-              <ClearButton
-                isDisabled={isDisabled}
-                onClick={onClearButtonClick}
+              <StyledLabel
+                $hasContent={hasSelectedItem}
+                $hasFocus={hasLabelFocus}
+                htmlFor={id}
+                id={labelId}
+                data-testid="select-label"
+              >
+                {label}
+              </StyledLabel>
+              <StyledInput
+                ref={mergeRefs([setFloatingBoxTarget, ref])}
+                $hasLabel
+                data-testid="select-input"
+                disabled={isDisabled}
+                value={value}
+                onMouseEnter={() => {
+                  if (!isDisabled) {
+                    setHasHover(true)
+                  }
+                }}
+                onMouseLeave={() => setHasHover(false)}
+                {...rest}
+                {...inputPropsRest}
+                aria-labelledby={labelId}
+                id={id}
               />
-            )}
-            <ArrowButton
-              hasHover={hasHover}
-              isDisabled={isDisabled}
-              isOpen={isOpen}
-              {...toggleButtonProps}
-            />
-          </StyledInlineButtons>
-        </StyledOuterWrapper>
-      </StyledTextInput>
-      <StyledOptionsWrapper $isVisible={isOpen}>
-        <StyledOptions {...menuProps}>{children}</StyledOptions>
-      </StyledOptionsWrapper>
-    </StyledSelect>
+            </StyledInputWrapper>
+            <StyledInlineButtons>
+              {hasSelectedItem && (
+                <ClearButton
+                  isDisabled={isDisabled}
+                  onClick={onClearButtonClick}
+                />
+              )}
+              <ArrowButton
+                hasHover={hasHover}
+                isDisabled={isDisabled}
+                isOpen={isOpen}
+                {...toggleButtonProps}
+              />
+            </StyledInlineButtons>
+          </StyledOuterWrapper>
+        </StyledTextInput>
+        <StyledOptionsWrapper $isVisible={isOpen}>
+          <StyledOptions {...menuProps}>{children}</StyledOptions>
+        </StyledOptionsWrapper>
+      </StyledSelect>
+      <FloatingBox
+        placement="bottom"
+        scheme="dark"
+        isVisible={hasHover && isEllipsisActive(floatingBoxTarget)}
+        targetElement={floatingBoxTarget}
+      >
+        <StyledTooltip>{value}</StyledTooltip>
+      </FloatingBox>
+    </>
   )
 }
 

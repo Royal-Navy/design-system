@@ -87,7 +87,7 @@ export const Example: React.FC<unknown> = () => {
     _:
       | React.ChangeEvent<HTMLInputElement>
       | React.MouseEvent<HTMLButtonElement>,
-    newValue: number
+    newValue: number | null
   ) => setValue('exampleNumberInput', newValue)
 
   return (

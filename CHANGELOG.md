@@ -3,6 +3,83 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.80.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.0...2.80.1) (2022-02-11)
+
+
+### Bug Fixes
+
+* **CheckboxE:** Resolve strict null errors ([d374ab7](https://github.com/defencedigital/mod-uk-design-system/commit/d374ab7d9790fd0daf6bf3b21d25e781c113d97f))
+* **Container:** Resolve strict null errors ([821d7f4](https://github.com/defencedigital/mod-uk-design-system/commit/821d7f47e924483d6d2e6ff15a13e6f57534cb06))
+* **DatePickerE:** Resolve strict null errors ([c9ea13f](https://github.com/defencedigital/mod-uk-design-system/commit/c9ea13f97b197f4880a96fdf8111ec8d5e309df8))
+* **FloatingBox:** Resolve strict null errors ([0e7edc0](https://github.com/defencedigital/mod-uk-design-system/commit/0e7edc06d496c6f6900f80d38c24f8093a03f0e8))
+* **GlobalStyleProvider:** Resolve strict null error ([a0957ee](https://github.com/defencedigital/mod-uk-design-system/commit/a0957ee4cce50ee1e30a1a5c9cd6773ef8471ae4))
+* **List:** Resolve strict null errors ([fb8c3f2](https://github.com/defencedigital/mod-uk-design-system/commit/fb8c3f2fe3e4812163e97df35a22e4c0d3a5bc67))
+* **Masthead:** Resolve strict null errors ([7d4c9d2](https://github.com/defencedigital/mod-uk-design-system/commit/7d4c9d26973ab044a1872f87c584fd7067567111))
+* **NumberInputE:** Resolve strict null errors ([19bcb14](https://github.com/defencedigital/mod-uk-design-system/commit/19bcb14d8fa1cf9d7d4f6b4cd5b42ec63719c747))
+* **RadioE:** Resolve strict null errors ([298fbcd](https://github.com/defencedigital/mod-uk-design-system/commit/298fbcd7964e2bce74f371c1a51cbf7b27363405))
+* **RangeSliderE:** Resolve strict null errors ([8b6800c](https://github.com/defencedigital/mod-uk-design-system/commit/8b6800caeb407464cea3edca5bf50dfe344d2d29))
+* **SelectE:** Resolve strict null errors ([de80514](https://github.com/defencedigital/mod-uk-design-system/commit/de80514fabaefd7d82c9d3991bd9e7eed66284e0))
+* **SidebarE:** Resolve strict null errors ([778ac36](https://github.com/defencedigital/mod-uk-design-system/commit/778ac3684949bd8ebff65b172089de7808caaac5))
+* **SwitchE:** Resolve strict null errors ([f1736e5](https://github.com/defencedigital/mod-uk-design-system/commit/f1736e57ae1896b553524975ae3caeb4a3c6306c))
+* **Table:** Resolve strict null errors ([88c7574](https://github.com/defencedigital/mod-uk-design-system/commit/88c7574ae57ca24137e6caad5dfbb5780faab167))
+* **Toast:** Resolve strict null errors ([02b1520](https://github.com/defencedigital/mod-uk-design-system/commit/02b15201208770fc81194b6caaa60f9550cd968c))
+* **Tooltip:** Resolve strict null error ([f16a198](https://github.com/defencedigital/mod-uk-design-system/commit/f16a19873b719847e6450af2fae1bd96aebc8dd8))
+* **UseClickMenu:** Resolve strict null errors ([385688b](https://github.com/defencedigital/mod-uk-design-system/commit/385688b7de187773b1c519eca1068b545a3a4b8b))
+
+
+
+
+
+# [2.80.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.3...2.80.0) (2022-02-09)
+
+
+### Bug Fixes
+
+* **Alert:** Resolve strict null errors ([d450510](https://github.com/defencedigital/mod-uk-design-system/commit/d450510dbbd1e58b7bb2dbd9a0f1350aaebe2246))
+* **Breadcrumbs:** Resolve strict null errors ([bef0bd2](https://github.com/defencedigital/mod-uk-design-system/commit/bef0bd206bd74ae6d8ea9bd13ae6dab42d4c3620))
+* **ButtonE:** Resolve strict null errors ([8ee7b82](https://github.com/defencedigital/mod-uk-design-system/commit/8ee7b82160a4271dc0f59e0facad5071f8b2d436))
+* **CheckboxE:** Fix disabled, unchecked styling ([4ebed3b](https://github.com/defencedigital/mod-uk-design-system/commit/4ebed3b7cadfebabdb0e4389c6aa6c876d9aec47))
+* **CheckboxE:** Fix hover and active border glitch in Firefox ([1fa60d9](https://github.com/defencedigital/mod-uk-design-system/commit/1fa60d98ff5fea70fb47f9b1c942de38576556ab))
+* **ContextMenu:** Resolve strict null errors ([c3dbd23](https://github.com/defencedigital/mod-uk-design-system/commit/c3dbd23740f3bcea94aaced17c7dd2350f082c6a))
+* **Drawer:** Resolve strict null errors ([9789689](https://github.com/defencedigital/mod-uk-design-system/commit/978968912600945f258b8a082b502e13152cb48f))
+* **Popover:** Resolve strict null errors ([492bccf](https://github.com/defencedigital/mod-uk-design-system/commit/492bccfcabba65b520829f8dba9f2a8e7e76df8c))
+* **TextAreaE:** Resolve strict null errors ([bbd93ac](https://github.com/defencedigital/mod-uk-design-system/commit/bbd93ac77298f330f0c6d3dd3ba97c2401d2b252))
+* **TextInputE:** Resolve strict null error ([3179391](https://github.com/defencedigital/mod-uk-design-system/commit/3179391a375d3a628ef0684aa15587bb7a417046))
+* **Tooltip:** Resolve strict null errors ([9b3cd02](https://github.com/defencedigital/mod-uk-design-system/commit/9b3cd0250124a96b15fc9a57de9744dee7a725a7))
+
+
+### Features
+
+* **SelectE:** Truncate overflowing options and display tooltip ([1b3f4c4](https://github.com/defencedigital/mod-uk-design-system/commit/1b3f4c4ba11c3f31b336e2201535742bb9f3b65c))
+
+
+
+
+
+## [2.79.3](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.2...2.79.3) (2022-02-07)
+
+
+### Bug Fixes
+
+* **RadioE:** Fix glitches with hover and active checkmark borders ([9c5ba1b](https://github.com/defencedigital/mod-uk-design-system/commit/9c5ba1bef76feb313a5dd77e7aa64a320de1c6f9))
+* **RadioE:** Fix styling for disabled states ([236248c](https://github.com/defencedigital/mod-uk-design-system/commit/236248c6aec7d9bfe0664f0d477b414f99986e92))
+
+
+
+
+
+## [2.79.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.1...2.79.2) (2022-02-02)
+
+
+### Bug Fixes
+
+* **CheckboxE:** Fix inability to use space to toggle state in Firefox ([666b6f9](https://github.com/defencedigital/mod-uk-design-system/commit/666b6f9148ff07fd7a6ff28fbba0f0dd186136cb))
+* **RadioE:** Prevent possible loop in click handler ([6b3e82d](https://github.com/defencedigital/mod-uk-design-system/commit/6b3e82dbfe9edddacf390d2c89e74244d24a8e62))
+
+
+
+
+
 ## [2.79.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.79.0...2.79.1) (2022-01-28)
 
 

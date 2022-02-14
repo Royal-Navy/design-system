@@ -10,7 +10,7 @@ import {
 import { StyledRailChunk } from './partials/StyledRailChunk'
 
 export interface ThresholdRailEProps {
-  thresholds?: number[]
+  thresholds: number[]
 }
 
 export interface RailChunkEProps {

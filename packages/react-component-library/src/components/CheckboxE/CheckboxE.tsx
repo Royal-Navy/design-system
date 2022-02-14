@@ -73,12 +73,14 @@ export const CheckboxE = React.forwardRef<HTMLInputElement, CheckboxEProps>(
     const localRef = useRef<HTMLInputElement>(null)
     const [isChecked, setIsChecked] = useState(defaultChecked || checked)
 
-    const handleClick = (_: React.MouseEvent<HTMLDivElement>) => {
-      localRef.current.click()
+    const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+      if (event.target !== localRef.current) {
+        localRef.current?.click()
+      }
     }
 
     const handleKeyUp = (_: React.KeyboardEvent) => {
-      localRef.current.focus()
+      localRef.current?.focus()
     }
 
     const handleOnChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -104,7 +106,6 @@ export const CheckboxE = React.forwardRef<HTMLInputElement, CheckboxEProps>(
             <StyledLabel htmlFor={id} data-testid="checkbox-label">
               <StyledInput
                 ref={mergeRefs([localRef, ref])}
-                $isDisabled={isDisabled}
                 id={id}
                 type="checkbox"
                 name={name}

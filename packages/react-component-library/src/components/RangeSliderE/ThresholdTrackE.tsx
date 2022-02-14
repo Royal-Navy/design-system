@@ -11,7 +11,7 @@ import { StyledTrackChunk } from './partials/StyledTrackChunk'
 
 export interface ThresholdTrackEProps extends TrackItem {
   getTrackProps: GetTrackProps
-  thresholds?: number[]
+  thresholds: number[]
 }
 
 export interface TrackChunkEProps {

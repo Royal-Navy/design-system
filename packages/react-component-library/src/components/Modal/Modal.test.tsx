@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import {
@@ -296,6 +295,40 @@ describe('Modal', () => {
         'data-arbitrary',
         'arbitrary'
       )
+    })
+  })
+
+  describe('when the Modal content changes', () => {
+    let initialIds: Record<string, string>
+
+    const ExampleModal = ({ content }: { content: string }) => (
+      <Modal title="Example title" isOpen>
+        <span>{content}</span>
+      </Modal>
+    )
+
+    function getIds() {
+      return {
+        titleId: wrapper.getByTestId('modal-header-text').id,
+        descriptionId: wrapper.getByTestId('modal-body').id,
+        labelledBy: wrapper
+          .getByTestId('modal-wrapper')
+          .getAttribute('aria-labelledby'),
+        describedBy: wrapper
+          .getByTestId('modal-wrapper')
+          .getAttribute('aria-describedby'),
+      }
+    }
+
+    beforeEach(() => {
+      wrapper = render(<ExampleModal content="initial content" />)
+      initialIds = getIds()
+
+      wrapper.rerender(<ExampleModal content="new content" />)
+    })
+
+    it('does not generate new IDs', () => {
+      expect(getIds()).toEqual(initialIds)
     })
   })
 })

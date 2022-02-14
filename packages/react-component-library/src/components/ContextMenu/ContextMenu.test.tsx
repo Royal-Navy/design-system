@@ -27,7 +27,7 @@ describe('ContextMenu', () => {
   describe('With links, no icons and closed', () => {
     beforeEach(() => {
       const ContextExample = () => {
-        const ref = useRef()
+        const ref = useRef<HTMLDivElement>(null)
 
         return (
           <>
@@ -55,7 +55,7 @@ describe('ContextMenu', () => {
   describe('With a clickType of left', () => {
     beforeEach(() => {
       const ContextExample = () => {
-        const ref = useRef()
+        const ref = useRef<HTMLDivElement>(null)
 
         return (
           <>
@@ -133,7 +133,7 @@ describe('ContextMenu', () => {
     }: {
       position: ClickMenuPositionType
     }) => {
-      const ref = useRef()
+      const ref = useRef<HTMLDivElement>(null)
 
       return (
         <>
@@ -279,7 +279,7 @@ describe('ContextMenu', () => {
   describe('With links, no icons and and open', () => {
     beforeEach(() => {
       const ContextExample = () => {
-        const ref = useRef()
+        const ref = useRef<HTMLDivElement>(null)
 
         return (
           <>
@@ -332,7 +332,7 @@ describe('ContextMenu', () => {
       onClickSpy = jest.fn()
 
       const ContextExample = () => {
-        const ref: React.Ref<HTMLDivElement> = useRef()
+        const ref: React.Ref<HTMLDivElement> = useRef(null)
 
         return (
           <>
@@ -365,7 +365,7 @@ describe('ContextMenu', () => {
   describe('With icons and open', () => {
     beforeEach(() => {
       const ContextExample = () => {
-        const ref = useRef()
+        const ref = useRef<HTMLDivElement>(null)
 
         return (
           <>
@@ -399,7 +399,7 @@ describe('ContextMenu', () => {
   describe('With dividers and open', () => {
     beforeEach(() => {
       const ContextExample = () => {
-        const ref = useRef()
+        const ref = useRef<HTMLDivElement>(null)
 
         return (
           <>
@@ -435,7 +435,7 @@ describe('ContextMenu', () => {
       onHideSpy = jest.fn()
 
       const ContextExample = () => {
-        const ref = useRef()
+        const ref = useRef<HTMLDivElement>(null)
 
         return (
           <>
@@ -493,7 +493,7 @@ describe('ContextMenu', () => {
   describe('With arbitrary props', () => {
     beforeEach(() => {
       const ContextExample = () => {
-        const ref = useRef()
+        const ref = useRef<HTMLDivElement>(null)
 
         return (
           <>
@@ -522,6 +522,37 @@ describe('ContextMenu', () => {
         'data-arbitrary',
         'arbitrary'
       )
+    })
+  })
+
+  describe('when attachedToRef.current is null', () => {
+    beforeEach(() => {
+      const ContextExample = () => {
+        const ref = useRef<HTMLDivElement>(null)
+
+        return (
+          <>
+            <div>Clickable area</div>
+            <ContextMenu
+              attachedToRef={ref}
+              clickType="left"
+              data-arbitrary="arbitrary"
+            >
+              <ContextMenuItem
+                link={<Link href="/hello-foo">Hello, Foo!</Link>}
+              />
+            </ContextMenu>
+          </>
+        )
+      }
+
+      wrapper = render(<ContextExample />)
+    })
+
+    it('does not throw an error when clicking', () => {
+      expect(() => {
+        userEvent.click(wrapper.getByText('Clickable area'))
+      }).not.toThrowError()
     })
   })
 })

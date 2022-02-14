@@ -6,7 +6,7 @@ import { Toast } from '.'
 
 describe('Toast', () => {
   let wrapper: RenderResult
-  let onDismissSpy: (id: string) => void
+  let onDismissSpy: (id?: string) => void
   let onMouseEnterSpy: () => void
   let onMouseLeaveSpy: () => void
   const LABEL = 'Example label'

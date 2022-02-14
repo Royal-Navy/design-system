@@ -5,7 +5,7 @@ import { selectors } from '@defencedigital/design-tokens'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 
 export interface SheetButtonProps extends ComponentWithClass {
-  children?: React.ReactElement
+  children?: React.ReactNode
   icon: React.ReactElement
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }

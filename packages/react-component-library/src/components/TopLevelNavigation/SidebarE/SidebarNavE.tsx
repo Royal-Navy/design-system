@@ -30,7 +30,7 @@ export interface SidebarNavEProps extends Nav<NavItem> {
 
 function mapNavItem(
   navItem: React.ReactElement<SidebarNavItemEProps>,
-  onClick: (e: React.MouseEvent<HTMLElement>) => void
+  onClick: ((e: React.MouseEvent<HTMLElement>) => void) | undefined
 ) {
   warnIfOverwriting(navItem.props, 'onClick', SidebarNavItemE.name)
 
@@ -41,7 +41,7 @@ function mapNavItem(
 }
 
 export const SidebarNavE: React.FC<SidebarNavEProps> = ({
-  children,
+  children = [],
   onBlur,
   onFocus,
   onItemClick,

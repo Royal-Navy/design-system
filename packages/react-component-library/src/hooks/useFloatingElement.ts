@@ -7,9 +7,9 @@ import { useStatefulRef } from './useStatefulRef'
 export const useFloatingElement = (
   placement: Placement = 'bottom',
   strategy: PositioningStrategy = 'fixed',
-  externalTargetElement: Element = undefined
+  externalTargetElement: Element | null = null
 ): {
-  targetElementRef: Dispatch<SetStateAction<Element>>
+  targetElementRef: Dispatch<SetStateAction<Element | null>>
   floatingElementRef: Dispatch<SetStateAction<HTMLElement | null>>
   arrowElementRef: Dispatch<SetStateAction<HTMLElement | null>>
   styles: { [key: string]: React.CSSProperties }

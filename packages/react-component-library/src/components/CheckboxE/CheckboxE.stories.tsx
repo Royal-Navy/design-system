@@ -27,13 +27,31 @@ Default.args = {
   name: 'default',
 }
 
-export const Disabled = Template.bind({})
-Disabled.args = {
+export const Checked = Template.bind({})
+Checked.args = {
+  id: undefined,
+  defaultChecked: true,
+  label: 'Checked',
+  name: 'checked',
+}
+
+export const DisabledUnchecked = Template.bind({})
+DisabledUnchecked.storyName = 'Disabled, unchecked'
+DisabledUnchecked.args = {
   id: undefined,
   isDisabled: true,
-  label: 'Disabled checkbox',
+  label: 'Disabled, unchecked',
   name: 'disabled',
-  checked: true,
+}
+
+export const DisabledChecked = Template.bind({})
+DisabledChecked.storyName = 'Disabled, checked'
+DisabledChecked.args = {
+  id: undefined,
+  defaultChecked: true,
+  isDisabled: true,
+  label: 'Disabled, checked',
+  name: 'disabled',
 }
 
 export const Invalid = Template.bind({})
