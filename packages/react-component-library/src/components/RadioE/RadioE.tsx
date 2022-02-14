@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import mergeRefs from 'react-merge-refs'
 
+import { RADIO_VARIANT } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { StyledCheckmark } from './partials/StyledCheckmark'
@@ -11,6 +12,8 @@ import { StyledLabel } from './partials/StyledLabel'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledRadio } from './partials/StyledRadio'
 import { StyledRadioWrapper } from './partials/StyledRadioWrapper'
+
+type RadioVariantType = typeof RADIO_VARIANT[keyof typeof RADIO_VARIANT]
 
 export interface RadioEProps extends ComponentWithClass, InputValidationProps {
   /**
@@ -49,6 +52,10 @@ export interface RadioEProps extends ComponentWithClass, InputValidationProps {
    * Optional HTML `value` attribute associated with the component.
    */
   value?: string
+  /**
+   * Optional variant to set container visibility.
+   */
+  variant?: RadioVariantType
 }
 
 export const RadioE = React.forwardRef<HTMLInputElement, RadioEProps>(
@@ -59,12 +66,13 @@ export const RadioE = React.forwardRef<HTMLInputElement, RadioEProps>(
       defaultChecked,
       description,
       isDisabled = false,
+      isInvalid,
       label,
       name,
       onChange,
       onBlur,
       value,
-      isInvalid,
+      variant = RADIO_VARIANT.DEFAULT,
       ...rest
     },
     ref
@@ -81,6 +89,8 @@ export const RadioE = React.forwardRef<HTMLInputElement, RadioEProps>(
       localRef.current?.focus()
     }
 
+    const hasContainer = variant !== RADIO_VARIANT.NO_CONTAINER
+
     return (
       <StyledRadioWrapper>
         <StyledRadio
@@ -88,14 +98,19 @@ export const RadioE = React.forwardRef<HTMLInputElement, RadioEProps>(
           role="radio"
           aria-checked={defaultChecked}
           $isDisabled={isDisabled}
+          $hasContainer={hasContainer}
           $isInvalid={isInvalid}
           $isChecked={defaultChecked}
           onClick={handleClick}
           onKeyUp={handleKeyUp}
           data-testid="radio"
         >
-          <StyledOuterWrapper>
-            <StyledLabel htmlFor={id} data-testid="radio-label">
+          <StyledOuterWrapper $hasContainer={hasContainer}>
+            <StyledLabel
+              $hasContainer={hasContainer}
+              htmlFor={id}
+              data-testid="radio-label"
+            >
               <StyledInput
                 ref={mergeRefs([localRef, ref])}
                 defaultChecked={defaultChecked}
@@ -109,7 +124,7 @@ export const RadioE = React.forwardRef<HTMLInputElement, RadioEProps>(
                 data-testid="radio-input"
                 {...rest}
               />
-              <StyledCheckmark />
+              <StyledCheckmark $hasContainer={hasContainer} />
               {label}
               {description && (
                 <StyledDescription data-testid="checkbox-description">

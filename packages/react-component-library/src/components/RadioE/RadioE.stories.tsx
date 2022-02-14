@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { RadioE } from '.'
+import { RADIO_VARIANT, RadioE, RadioEProps } from '.'
 
 export default {
   component: RadioE,
@@ -12,6 +12,23 @@ export default {
 } as ComponentMeta<typeof RadioE>
 
 const Template: ComponentStory<typeof RadioE> = (props) => <RadioE {...props} />
+
+const MultipleItemsTemplate: ComponentStory<typeof RadioE> = (props) => {
+  function getProps(i: number): RadioEProps {
+    return {
+      ...props,
+      label: `${props.label} ${i}`,
+    }
+  }
+
+  return (
+    <>
+      <RadioE {...getProps(1)} />
+      <RadioE {...getProps(2)} />
+      <RadioE {...getProps(3)} />
+    </>
+  )
+}
 
 export const Default = Template.bind({})
 Default.args = {
@@ -52,6 +69,14 @@ Invalid.args = {
   label: 'Invalid radio',
   name: 'invalid',
   isInvalid: true,
+}
+
+export const NoContainer = MultipleItemsTemplate.bind({})
+NoContainer.args = {
+  id: undefined,
+  label: 'Item without container',
+  name: 'no-container',
+  variant: RADIO_VARIANT.NO_CONTAINER,
 }
 
 export const WithDescription = Template.bind({})

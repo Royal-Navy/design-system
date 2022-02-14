@@ -5,6 +5,7 @@ import { StyledCheckmark } from './StyledCheckmark'
 import { StyledInput } from './StyledInput'
 
 interface StyledRadioProps {
+  $hasContainer?: boolean
   $isDisabled?: boolean
   $isInvalid?: boolean
   $isChecked?: boolean
@@ -29,6 +30,18 @@ const CheckmarkCheckedFillColor = css<StyledRadioProps>`
     $isDisabled ? color('neutral', '200') : color('action', '500')}
 `
 
+function getCheckmarkCheckedSelector($hasContainer: boolean) {
+  if ($hasContainer) {
+    return css`
+      ${StyledInput}:checked ~ ${StyledCheckmark}
+    `
+  }
+
+  return css`
+    ${StyledInput}:checked ~ ${StyledCheckmark}, ${StyledInput}:focus-within ~ ${StyledCheckmark}
+  `
+}
+
 export const StyledRadio = styled.div<StyledRadioProps>`
   display: inline-flex;
   position: relative;
@@ -42,17 +55,6 @@ export const StyledRadio = styled.div<StyledRadioProps>`
     cursor: pointer;
   }
 
-  border: 1px solid ${color('neutral', '200')};
-  border-radius: 15px;
-
-  &:focus-within,
-  &:active {
-    outline: none;
-    border-color: ${color('action', '500')};
-    box-shadow: 0 0 0 2px ${color('action', '500')},
-      0 0 0 5px ${color('action', '100')};
-  }
-
   ${StyledCheckmark} {
     background: ${BackgroundColor};
 
@@ -62,6 +64,21 @@ export const StyledRadio = styled.div<StyledRadioProps>`
       transition: all ${animation('default')};
     }
   }
+
+  ${({ $hasContainer }) =>
+    $hasContainer &&
+    css`
+      border: 1px solid ${color('neutral', '200')};
+      border-radius: 15px;
+
+      &:focus-within,
+      &:active {
+        outline: none;
+        border-color: ${color('action', '500')};
+        box-shadow: 0 0 0 2px ${color('action', '500')},
+          0 0 0 5px ${color('action', '100')};
+      }
+    `}
 
   /* Checkmark hover and active states, blue border */
 
@@ -78,7 +95,7 @@ export const StyledRadio = styled.div<StyledRadioProps>`
 
   /* Checkmark checked state */
 
-  ${StyledInput}:checked ~ ${StyledCheckmark} {
+  ${({ $hasContainer }) => getCheckmarkCheckedSelector($hasContainer)} {
     background-color: ${color('neutral', 'white')};
 
     /* Blue border (grey if disabled) */
