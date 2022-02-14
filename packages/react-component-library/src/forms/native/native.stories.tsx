@@ -19,6 +19,7 @@ import { ButtonE } from '../../components/ButtonE'
 import { Fieldset } from '../../components/Fieldset'
 import { useNativeForm } from './useNativeForm'
 import { Field } from '../../components/Field'
+import { SectionDivider } from '../../components/SectionDivider'
 
 export interface FormValues {
   email: string
@@ -84,6 +85,7 @@ export const Example: React.FC<unknown> = () => {
   return (
     <main>
       <form onSubmit={onSubmit}>
+        <SectionDivider title="Example Form" />
         <Field
           hintText="Example hint text."
           errors={[{ error: formErrors.email && 'Required' }]}

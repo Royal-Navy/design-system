@@ -23,6 +23,7 @@ import { RangeSliderE } from '../../components/RangeSliderE'
 import { sleep } from '../../helpers'
 import { Field } from '../../components/Field'
 import { Fieldset } from '../../components/Fieldset'
+import { SectionDivider } from '../../components/SectionDivider'
 
 export interface FormValues {
   email: string
@@ -95,6 +96,7 @@ export const Example: React.FC<unknown> = () => {
           setFieldValue,
         }) => (
           <form onSubmit={handleSubmit}>
+            <SectionDivider title="Example Form" />
             <FormikField
               name="email"
               data-testid="form-example-TextInputE-email"
