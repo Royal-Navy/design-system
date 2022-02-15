@@ -1,7 +1,6 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React from 'react'
 import { ComponentMeta } from '@storybook/react'
-import styled from 'styled-components'
 
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
@@ -19,6 +18,8 @@ import { RangeSliderE } from '../../components/RangeSliderE'
 import { ButtonE } from '../../components/ButtonE'
 import { Fieldset } from '../../components/Fieldset'
 import { useNativeForm } from './useNativeForm'
+import { Field } from '../../components/Field'
+import { SectionDivider } from '../../components/SectionDivider'
 
 export interface FormValues {
   email: string
@@ -35,10 +36,6 @@ export interface FormValues {
 }
 
 const MINIMUM_DATE = parseISO('2022-01-01')
-
-const StyledRangeSliderE = styled(RangeSliderE)`
-  margin-top: 3rem;
-`
 
 export const Example: React.FC<unknown> = () => {
   const {
@@ -88,33 +85,40 @@ export const Example: React.FC<unknown> = () => {
   return (
     <main>
       <form onSubmit={onSubmit}>
-        <TextInputE
-          type="email"
-          name="email"
-          label="Email"
-          value={formState.email}
-          onChange={handleChange}
-          isInvalid={Boolean(formErrors.email)}
-          data-testid="form-example-TextInputE-email"
-        />
-        {formErrors.email && <span>Required</span>}
-        <TextInputE
-          type="password"
-          name="password"
-          label="Password"
-          value={formState.password}
-          onChange={handleChange}
-          data-testid="form-example-TextInputE-password"
-        />
-        <TextAreaE
-          name="description"
-          label="Description"
-          value={formState.description}
-          onChange={handleChange}
-          data-testid="form-example-TextAreaE-description"
-        />
-        <Fieldset>
-          <legend>Example checkbox selection</legend>
+        <SectionDivider title="Example Form" />
+        <Field
+          hintText="Example hint text."
+          errors={[{ error: formErrors.email && 'Required' }]}
+        >
+          <TextInputE
+            type="email"
+            name="email"
+            label="Email"
+            value={formState.email}
+            onChange={handleChange}
+            data-testid="form-example-TextInputE-email"
+          />
+        </Field>
+        <Field hintText="Example hint text.">
+          <TextInputE
+            type="password"
+            name="password"
+            label="Password"
+            value={formState.password}
+            onChange={handleChange}
+            data-testid="form-example-TextInputE-password"
+          />
+        </Field>
+        <Field hintText="Example hint text.">
+          <TextAreaE
+            name="description"
+            label="Description"
+            value={formState.description}
+            onChange={handleChange}
+            data-testid="form-example-TextAreaE-description"
+          />
+        </Field>
+        <Fieldset legend="Example checkbox selection">
           <CheckboxE
             onChange={handleCheckboxGroup}
             name="exampleCheckbox"
@@ -134,8 +138,7 @@ export const Example: React.FC<unknown> = () => {
             value="Option 3"
           />
         </Fieldset>
-        <Fieldset>
-          <legend>Example radio selection</legend>
+        <Fieldset legend="Example radio selection">
           <RadioE
             onChange={handleRadioGroup}
             name="exampleRadio"
@@ -149,107 +152,119 @@ export const Example: React.FC<unknown> = () => {
             value="Option 2"
           />
         </Fieldset>
-        <SwitchE
-          name="exampleSwitch"
-          label="Example switch selection"
-          onChange={(e: React.FormEvent<HTMLInputElement>) =>
-            handleChange({
-              currentTarget: {
-                name: 'exampleSwitch',
-                value: e.currentTarget.value,
-              },
-            })
-          }
-          value={formState.exampleSwitch}
-          data-testid="form-example-SwitchE"
+        <Field hintText="Example hint text.">
+          <SwitchE
+            name="exampleSwitch"
+            label="Example switch selection"
+            onChange={(e: React.FormEvent<HTMLInputElement>) =>
+              handleChange({
+                currentTarget: {
+                  name: 'exampleSwitch',
+                  value: e.currentTarget.value,
+                },
+              })
+            }
+            value={formState.exampleSwitch}
+            data-testid="form-example-SwitchE"
+          >
+            <SwitchEOption label="One" value="1" />
+            <SwitchEOption label="Two" value="2" />
+            <SwitchEOption label="Three" value="3" />
+          </SwitchE>
+        </Field>
+        <Field hintText="Example hint text.">
+          <NumberInputE
+            name="exampleNumberInput"
+            label="Example number input"
+            onChange={(
+              _:
+                | React.ChangeEvent<HTMLInputElement>
+                | React.MouseEvent<HTMLButtonElement>,
+              newValue: number | null
+            ) => {
+              handleChange({
+                currentTarget: {
+                  name: 'exampleNumberInput',
+                  value: newValue,
+                },
+              })
+            }}
+            value={formState.exampleNumberInput}
+            data-testid="form-example-NumberInputE"
+          />
+        </Field>
+        <Field
+          hintText="Example hint text."
+          errors={[{ error: formErrors.exampleDatePicker }]}
         >
-          <SwitchEOption label="One" value="1" />
-          <SwitchEOption label="Two" value="2" />
-          <SwitchEOption label="Three" value="3" />
-        </SwitchE>
-        <NumberInputE
-          name="exampleNumberInput"
-          label="Example number input"
-          onChange={(
-            _:
-              | React.ChangeEvent<HTMLInputElement>
-              | React.MouseEvent<HTMLButtonElement>,
-            newValue: number | null
-          ) => {
-            handleChange({
-              currentTarget: {
-                name: 'exampleNumberInput',
-                value: newValue,
-              },
-            })
-          }}
-          value={formState.exampleNumberInput}
-          data-testid="form-example-NumberInputE"
-        />
-        <DatePickerE
-          disabledDays={{ before: MINIMUM_DATE }}
-          onChange={({ startDate }) => {
-            handleChange({
-              currentTarget: {
-                name: 'exampleDatePicker',
-                value: startDate,
-              },
-            })
-          }}
-          startDate={formState.exampleDatePicker}
-        />
-        {formErrors.exampleDatePicker && (
-          <span>{formErrors.exampleDatePicker}</span>
-        )}
-        <SelectE
-          label="Example select"
-          onChange={(value) => {
-            handleChange({
-              currentTarget: {
-                name: 'exampleSelect',
-                value,
-              },
-            })
-          }}
-          value={formState.exampleSelect}
-        >
-          <SelectEOption value="one">One</SelectEOption>
-          <SelectEOption value="two">Two</SelectEOption>
-          <SelectEOption value="three">Three</SelectEOption>
-          <SelectEOption value="four">Four</SelectEOption>
-        </SelectE>
-        <AutocompleteE
-          label="Example autocomplete"
-          onChange={(value) => {
-            handleChange({
-              currentTarget: {
-                name: 'exampleAutocomplete',
-                value,
-              },
-            })
-          }}
-          value={formState.exampleAutocomplete}
-        >
-          <AutocompleteEOption value="one">One</AutocompleteEOption>
-          <AutocompleteEOption value="two">Two</AutocompleteEOption>
-          <AutocompleteEOption value="three">Three</AutocompleteEOption>
-          <AutocompleteEOption value="four">Four</AutocompleteEOption>
-        </AutocompleteE>
-        <StyledRangeSliderE
-          onChange={(values: ReadonlyArray<number>) => {
-            handleChange({
-              currentTarget: {
-                name: 'exampleRangeSlider',
-                value: values as [],
-              },
-            })
-          }}
-          values={formState.exampleRangeSlider}
-          domain={[0, 40]}
-          mode={1}
-          tracksLeft
-          step={2}
-        />
+          <DatePickerE
+            disabledDays={{ before: MINIMUM_DATE }}
+            onChange={({ startDate }) => {
+              handleChange({
+                currentTarget: {
+                  name: 'exampleDatePicker',
+                  value: startDate,
+                },
+              })
+            }}
+            startDate={formState.exampleDatePicker}
+          />
+        </Field>
+        <Field hintText="Example hint text.">
+          <SelectE
+            label="Example select"
+            onChange={(value) => {
+              handleChange({
+                currentTarget: {
+                  name: 'exampleSelect',
+                  value,
+                },
+              })
+            }}
+            value={formState.exampleSelect}
+          >
+            <SelectEOption value="one">One</SelectEOption>
+            <SelectEOption value="two">Two</SelectEOption>
+            <SelectEOption value="three">Three</SelectEOption>
+            <SelectEOption value="four">Four</SelectEOption>
+          </SelectE>
+        </Field>
+        <Field hintText="Example hint text.">
+          <AutocompleteE
+            label="Example autocomplete"
+            onChange={(value) => {
+              handleChange({
+                currentTarget: {
+                  name: 'exampleAutocomplete',
+                  value,
+                },
+              })
+            }}
+            value={formState.exampleAutocomplete}
+          >
+            <AutocompleteEOption value="one">One</AutocompleteEOption>
+            <AutocompleteEOption value="two">Two</AutocompleteEOption>
+            <AutocompleteEOption value="three">Three</AutocompleteEOption>
+            <AutocompleteEOption value="four">Four</AutocompleteEOption>
+          </AutocompleteE>
+        </Field>
+        <Field hintText="Example hint text.">
+          <RangeSliderE
+            onChange={(values: ReadonlyArray<number>) => {
+              handleChange({
+                currentTarget: {
+                  name: 'exampleRangeSlider',
+                  value: values as [],
+                },
+              })
+            }}
+            values={formState.exampleRangeSlider}
+            domain={[0, 40]}
+            mode={1}
+            tracksLeft
+            step={2}
+          />
+        </Field>
         <ButtonE
           type="submit"
           data-testid="form-example-submit"
@@ -267,6 +282,6 @@ export const Example: React.FC<unknown> = () => {
 }
 
 export default {
-  title: 'Forms/Native',
+  title: 'Forms/Usage/Native',
   component: Example,
 } as ComponentMeta<typeof Example>

@@ -1,10 +1,5 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-
-import { Field, Formik, Form } from 'formik'
-import { withFormik } from '../../enhancers/withFormik'
-import { Button } from '../Button'
 
 import { ResponsiveSwitch, Switch, SWITCH_SIZE } from '.'
 
@@ -77,41 +72,3 @@ export const Large: ComponentStory<typeof Switch> = (props) => (
 )
 
 Large.storyName = 'Large'
-
-export const WithFormik: ComponentStory<typeof Switch> = (props) => {
-  interface Data {
-    'switch-formik': string
-  }
-
-  const initialValues: Data = {
-    'switch-formik': '3',
-  }
-
-  const FormikSwitch = withFormik(ResponsiveSwitch)
-
-  return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={action('onSubmit')}
-      render={({ setFieldValue }) => {
-        return (
-          <Form>
-            <Field
-              name="switch-formik"
-              component={FormikSwitch}
-              options={options}
-              onChange={(event: React.FormEvent<HTMLInputElement>) => {
-                setFieldValue('example-switch-field', event.currentTarget.value)
-                console.log(event)
-              }}
-            />
-            <br />
-            <Button type="submit">Submit</Button>
-          </Form>
-        )
-      }}
-    />
-  )
-}
-
-WithFormik.storyName = 'Formik'

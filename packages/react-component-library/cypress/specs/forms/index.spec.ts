@@ -61,15 +61,15 @@ describe('Form Examples', () => {
       const examples = [
         {
           name: 'Formik',
-          uri: '/iframe.html?id=forms-formik--example&viewMode=story',
+          uri: '/iframe.html?id=forms-usage-formik--example&viewMode=story',
         },
         {
           name: 'react-hook-form',
-          uri: '/iframe.html?id=forms-react-hook-form--example&viewMode=story',
+          uri: '/iframe.html?id=forms-usage-react-hook-form--example&viewMode=story',
         },
         {
           name: 'Native',
-          uri: '/iframe.html?id=forms-native--example&viewMode=story',
+          uri: '/iframe.html?id=forms-usage-native--example&viewMode=story',
         },
       ]
 

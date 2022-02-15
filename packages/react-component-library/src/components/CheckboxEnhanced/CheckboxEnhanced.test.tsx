@@ -6,7 +6,6 @@ import userEvent from '@testing-library/user-event'
 import { CheckboxEnhanced } from '.'
 import { FieldProps } from '../../common/FieldProps'
 import { FormProps } from '../../common/FormProps'
-import { withFormik } from '../../enhancers/withFormik'
 
 describe('CheckboxEnhanced', () => {
   let field: FieldProps
@@ -96,69 +95,6 @@ describe('CheckboxEnhanced', () => {
         expect(checkbox.getByTestId('checkbox')).toHaveFocus()
         expect(checkbox.getByTestId('checkbox')).toBeChecked()
       })
-    })
-  })
-
-  describe('when a field has an error and the form has not been touched', () => {
-    beforeEach(() => {
-      form.errors = {
-        example1: 'Something bad',
-      }
-
-      form.touched = {}
-
-      const FormikCheckboxEnhanced = withFormik(CheckboxEnhanced)
-
-      checkbox = render(<FormikCheckboxEnhanced field={field} form={form} />)
-    })
-
-    it('should not add the aria attributes', () => {
-      expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute(
-        'aria-invalid'
-      )
-      expect(checkbox.getByTestId('checkbox')).not.toHaveAttribute(
-        'aria-describedBy'
-      )
-    })
-
-    it('should not indicate the field has an error', () => {
-      expect(checkbox.queryByTestId('container')).not.toHaveClass('is-invalid')
-    })
-
-    it('should not show the error', () => {
-      expect(checkbox.queryAllByText('Something bad')).toHaveLength(0)
-    })
-  })
-
-  describe('when a field has an error and the form has been touched', () => {
-    beforeEach(() => {
-      form.errors = {
-        example1: 'Something bad',
-      }
-
-      form.touched.example1 = true
-
-      const FormikCheckboxEnhanced = withFormik(CheckboxEnhanced)
-
-      checkbox = render(<FormikCheckboxEnhanced field={field} form={form} />)
-    })
-
-    it('should add the aria attributes', () => {
-      expect(checkbox.getByTestId('checkbox')).toHaveAttribute(
-        'aria-invalid',
-        'true'
-      )
-      expect(checkbox.getByTestId('checkbox')).toHaveAttribute(
-        'aria-describedby'
-      )
-    })
-
-    it('should indicate the field has an error', () => {
-      expect(checkbox.queryByTestId('container')).toHaveClass('is-invalid')
-    })
-
-    it('should show the error', () => {
-      expect(checkbox.getByText('Something bad')).toBeInTheDocument()
     })
   })
 

@@ -3,7 +3,6 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { withFormik } from '../../enhancers/withFormik'
 import { TextInput } from '.'
 
 describe('TextInput', () => {
@@ -208,93 +207,6 @@ describe('TextInput', () => {
         'type',
         'password'
       )
-    })
-  })
-
-  describe('when the component has been enhanced with Formik', () => {
-    describe('and not touched', () => {
-      beforeEach(() => {
-        const FormikTextInput = withFormik(TextInput)
-
-        wrapper = render(
-          <FormikTextInput
-            field={{
-              name: 'name',
-              value: '',
-              onBlur: () => null,
-              onChange: () => null,
-            }}
-            form={{
-              errors: {},
-              touched: {},
-            }}
-          />
-        )
-      })
-
-      it('should not add the aria attributes', () => {
-        expect(wrapper.getByTestId('text-input-input')).not.toHaveAttribute(
-          'aria-invalid'
-        )
-        expect(wrapper.getByTestId('text-input-input')).not.toHaveAttribute(
-          'aria-describedBy'
-        )
-      })
-
-      it('should not have an error', () => {
-        expect(wrapper.getByTestId('text-input-container')).not.toHaveClass(
-          'is-invalid'
-        )
-      })
-
-      it('should not show the error', () => {
-        expect(wrapper.queryAllByText('Something bad')).toHaveLength(0)
-      })
-    })
-
-    describe('and the input has been touched', () => {
-      beforeEach(() => {
-        const FormikTextInput = withFormik(TextInput)
-
-        wrapper = render(
-          <FormikTextInput
-            field={{
-              name: 'name',
-              value: '',
-              onBlur: () => null,
-              onChange: () => null,
-            }}
-            form={{
-              errors: {
-                name: 'error',
-              },
-              touched: {
-                name: true,
-              },
-            }}
-          />
-        )
-      })
-
-      it('should add the aria attributes', () => {
-        expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
-          'aria-invalid',
-          'true'
-        )
-        expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
-          'aria-describedby'
-        )
-      })
-
-      it('should have an error', () => {
-        expect(wrapper.getByTestId('text-input-container')).toHaveClass(
-          'is-invalid'
-        )
-      })
-
-      it('should show the error', () => {
-        expect(wrapper.getByText('error')).toBeInTheDocument()
-      })
     })
   })
 })
