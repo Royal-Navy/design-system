@@ -1,24 +1,11 @@
-// @ts-nocheck
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import {
-  fireEvent,
-  render,
-  RenderResult,
-  waitFor,
-} from '@testing-library/react'
+import { fireEvent, render, RenderResult } from '@testing-library/react'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { TabSetItem, TabSet } from '.'
-import { SCROLL_DIRECTION } from './constants'
+import { TabSet, TabSetItem } from '.'
 
 const { color } = selectors
-
-function flushPromises() {
-  return new Promise((resolve) => {
-    setImmediate(resolve)
-  })
-}
 
 describe('TabSet', () => {
   let wrapper: RenderResult
@@ -303,7 +290,10 @@ describe('TabSet', () => {
 
           Object.assign(clickEventSpy, { preventDefault: jest.fn() })
 
-          fireEvent(wrapper.getByText('Title 2').parentElement, clickEventSpy)
+          fireEvent(
+            wrapper.getByText('Title 2').parentElement as HTMLElement,
+            clickEventSpy
+          )
         })
 
         it('should invoke preventDefault', () => {
@@ -336,16 +326,6 @@ describe('TabSet', () => {
   })
 
   describe('when the tab set is scrollable', () => {
-    let scrollToSpy: jest.SpyInstance
-
-    async function scroll(
-      direction: typeof SCROLL_DIRECTION.LEFT | typeof SCROLL_DIRECTION.RIGHT
-    ) {
-      wrapper.getByTestId(`scroll-${direction}`).click()
-
-      await waitFor(flushPromises)
-    }
-
     beforeEach(() => {
       wrapper = render(
         <TabSet isScrollable>
@@ -354,129 +334,14 @@ describe('TabSet', () => {
           <TabSetItem title="Title 3">Content 3</TabSetItem>
         </TabSet>
       )
-
-      const tabs = wrapper.getByTestId('tabs')
-      tabs.scrollTo = () => {
-        return true
-      }
-
-      scrollToSpy = jest
-        .spyOn(tabs, 'scrollTo')
-        // @ts-ignore
-        .mockImplementation(({ left }) => {
-          Object.defineProperty(tabs, 'scrollLeft', {
-            configurable: true,
-            value: left,
-          })
-          fireEvent.scroll(tabs)
-        })
-
-      Object.defineProperty(tabs, 'offsetLeft', { value: 50 })
-
-      Object.defineProperty(
-        wrapper.getByText('Title 1').parentElement.parentElement,
-        'offsetLeft',
-        { value: 150 }
-      )
-      Object.defineProperty(
-        wrapper.getByText('Title 2').parentElement.parentElement,
-        'offsetLeft',
-        { value: 250 }
-      )
-      Object.defineProperty(
-        wrapper.getByText('Title 3').parentElement.parentElement,
-        'offsetLeft',
-        { value: 350 }
-      )
     })
 
-    it('should add the `aria-label` attributes to the scroll buttons', () => {
-      expect(wrapper.getByTestId('scroll-left')).toHaveAttribute(
-        'aria-label',
-        'Scroll left'
-      )
-      expect(wrapper.getByTestId('scroll-right')).toHaveAttribute(
-        'aria-label',
-        'Scroll right'
-      )
+    it('displays a left scroll button', () => {
+      expect(wrapper.getByTestId('scroll-left')).toBeInTheDocument()
     })
 
-    describe('when scrolling right', () => {
-      describe('when the scroll right button is clicked twice', () => {
-        beforeEach(async () => {
-          await scroll(SCROLL_DIRECTION.RIGHT)
-          await scroll(SCROLL_DIRECTION.RIGHT)
-        })
-
-        it('should scroll the tabs twice', () => {
-          expect(scrollToSpy).toHaveBeenCalledWith({
-            left: 200,
-            behavior: 'smooth',
-          })
-          expect(scrollToSpy).toHaveBeenCalledWith({
-            left: 300,
-            behavior: 'smooth',
-          })
-        })
-      })
-
-      describe('when the scroll right button is clicked three times (once more than available tabs)', () => {
-        beforeEach(async () => {
-          await scroll(SCROLL_DIRECTION.RIGHT)
-          await scroll(SCROLL_DIRECTION.RIGHT)
-          await scroll(SCROLL_DIRECTION.RIGHT)
-        })
-
-        it('should scroll the tabs only twice', () => {
-          expect(scrollToSpy).toHaveBeenCalledTimes(2)
-        })
-      })
-    })
-
-    describe('when scrolling left', () => {
-      describe('when scroll right is clicked twice and scroll left is clicked once', () => {
-        beforeEach(async () => {
-          await scroll(SCROLL_DIRECTION.RIGHT)
-          await scroll(SCROLL_DIRECTION.RIGHT)
-          await scroll(SCROLL_DIRECTION.LEFT)
-        })
-
-        it('should scroll the tabs twice', () => {
-          expect(scrollToSpy).toHaveBeenCalledTimes(3)
-          expect(scrollToSpy.mock.calls[0][0]).toEqual({
-            left: 200,
-            behavior: 'smooth',
-          })
-          expect(scrollToSpy.mock.calls[1][0]).toEqual({
-            left: 300,
-            behavior: 'smooth',
-          })
-          expect(scrollToSpy.mock.calls[2][0]).toEqual({
-            left: 200,
-            behavior: 'smooth',
-          })
-        })
-      })
-
-      describe('when scroll right button is clicked once and scroll left is clicked twice', () => {
-        beforeEach(async () => {
-          await scroll(SCROLL_DIRECTION.RIGHT)
-          await scroll(SCROLL_DIRECTION.LEFT)
-          await scroll(SCROLL_DIRECTION.LEFT)
-        })
-
-        it('should scroll the tabs twice', () => {
-          expect(scrollToSpy).toHaveBeenCalledTimes(2)
-          expect(scrollToSpy).toHaveBeenCalledWith({
-            left: 200,
-            behavior: 'smooth',
-          })
-          expect(scrollToSpy).toHaveBeenCalledWith({
-            left: 100,
-            behavior: 'smooth',
-          })
-        })
-      })
+    it('displays a right scroll button', () => {
+      expect(wrapper.getByTestId('scroll-right')).toBeInTheDocument()
     })
   })
 })

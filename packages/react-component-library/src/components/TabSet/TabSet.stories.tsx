@@ -9,6 +9,12 @@ export default {
   title: 'Tab Set',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    docs: {
+      description: {
+        component:
+          'This component requires a [ResizeObserver polyfill](https://github.com/ZeeCoder/use-resize-observer#transpilation--polyfilling) in older browsers.',
+      },
+    },
     layout: 'fullscreen',
   },
 } as ComponentMeta<typeof TabSet>

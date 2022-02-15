@@ -1,6 +1,9 @@
 import '@defencedigital/fonts'
+import { ResizeObserver } from '@juggle/resize-observer'
 
 import { GlobalStyleProvider } from '../src/styled-components/GlobalStyle'
+
+window.ResizeObserver ??= ResizeObserver
 
 /**
  * Hacky way of clicking on Docs button on first load of page.
