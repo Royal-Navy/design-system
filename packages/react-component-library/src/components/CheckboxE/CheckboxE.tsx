@@ -2,14 +2,20 @@ import React, { useState, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import mergeRefs from 'react-merge-refs'
 
+import { CHECKBOX_VARIANT } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { StyledCheckbox } from './partials/StyledCheckbox'
-import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
-import { StyledLabel } from './partials/StyledLabel'
-import { StyledInput } from './partials/StyledInput'
 import { StyledCheckmark } from './partials/StyledCheckmark'
 import { StyledCheckboxWrapper } from './partials/StyledCheckboxWrapper'
+import { StyledDescription } from './partials/StyledDescription'
+import { StyledInput } from './partials/StyledInput'
+import { StyledLabel } from './partials/StyledLabel'
+import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
+
+type CheckboxVariantType =
+  | typeof CHECKBOX_VARIANT.DEFAULT
+  | typeof CHECKBOX_VARIANT.NO_CONTAINER
 
 export interface CheckboxEProps
   extends ComponentWithClass,
@@ -26,6 +32,10 @@ export interface CheckboxEProps
    * Toggles whether the component should be checked on initial render.
    */
   defaultChecked?: boolean
+  /**
+   * Optional description to display below the label.
+   */
+  description?: React.ReactNode
   /**
    * Toggles whether the component is disabled or not (preventing user interaction).
    */
@@ -50,22 +60,28 @@ export interface CheckboxEProps
    * Optional HTML `value` attribute associated with the component.
    */
   value?: string
+  /**
+   * Optional variant to set container visibility.
+   */
+  variant?: CheckboxVariantType
 }
 
 export const CheckboxE = React.forwardRef<HTMLInputElement, CheckboxEProps>(
   (
     {
       className = '',
-      id = uuidv4(),
       checked,
       defaultChecked,
+      description,
+      id = uuidv4(),
       isDisabled,
+      isInvalid,
       label,
       name,
       onBlur,
       onChange,
       value,
-      isInvalid,
+      variant = CHECKBOX_VARIANT.DEFAULT,
       ...rest
     },
     ref
@@ -91,9 +107,12 @@ export const CheckboxE = React.forwardRef<HTMLInputElement, CheckboxEProps>(
       }
     }
 
+    const hasContainer = variant !== CHECKBOX_VARIANT.NO_CONTAINER
+
     return (
       <StyledCheckboxWrapper>
         <StyledCheckbox
+          $hasContainer={hasContainer}
           $isDisabled={isDisabled}
           $isInvalid={isInvalid}
           $isChecked={isChecked}
@@ -102,8 +121,12 @@ export const CheckboxE = React.forwardRef<HTMLInputElement, CheckboxEProps>(
           onKeyUp={handleKeyUp}
           data-testid="checkbox"
         >
-          <StyledOuterWrapper>
-            <StyledLabel htmlFor={id} data-testid="checkbox-label">
+          <StyledOuterWrapper $hasContainer={hasContainer}>
+            <StyledLabel
+              $hasContainer={hasContainer}
+              htmlFor={id}
+              data-testid="checkbox-label"
+            >
               <StyledInput
                 ref={mergeRefs([localRef, ref])}
                 id={id}
@@ -118,8 +141,13 @@ export const CheckboxE = React.forwardRef<HTMLInputElement, CheckboxEProps>(
                 {...rest}
                 data-testid="checkbox-input"
               />
-              <StyledCheckmark />
+              <StyledCheckmark $hasContainer={hasContainer} />
               {label}
+              {description && (
+                <StyledDescription data-testid="checkbox-description">
+                  {description}
+                </StyledDescription>
+              )}
             </StyledLabel>
           </StyledOuterWrapper>
         </StyledCheckbox>

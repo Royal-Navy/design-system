@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 const { color, fontSize } = selectors
 
 export interface StyledCheckboxProps {
+  $hasContainer?: boolean
   $isDisabled?: boolean
   $isInvalid?: boolean
   $isChecked?: boolean
@@ -14,20 +15,10 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
   position: relative;
   font-size: ${fontSize('base')};
   user-select: none;
-  border: 1px solid ${color('neutral', '200')};
-  border-radius: 15px;
   cursor: pointer;
 
   * {
     cursor: pointer;
-  }
-
-  &:focus-within,
-  &:active {
-    outline: none;
-    border-color: ${color('action', '500')};
-    box-shadow: 0 0 0 2px ${color('action', '500')},
-      0 0 0 5px ${color('action', '100')};
   }
 
   ${({ $isInvalid }) =>
@@ -37,10 +28,26 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
       box-shadow: 0 0 0 2px ${color('danger', '800')};
     `}
 
-  ${({ $isChecked }) =>
+  ${({ $hasContainer, $isChecked }) =>
+    $hasContainer &&
     $isChecked &&
     css`
       background-color: ${color('action', '000')};
+    `}
+
+  ${({ $hasContainer }) =>
+    $hasContainer &&
+    css`
+      border: 1px solid ${color('neutral', '200')};
+      border-radius: 15px;
+
+      &:focus-within,
+      &:active {
+        outline: none;
+        border-color: ${color('action', '500')};
+        box-shadow: 0 0 0 2px ${color('action', '500')},
+          0 0 0 5px ${color('action', '100')};
+      }
     `}
 
   ${({ $isDisabled }) =>

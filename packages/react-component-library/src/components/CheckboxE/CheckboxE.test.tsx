@@ -1,9 +1,11 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
+import 'jest-styled-components'
+import { ColorNeutral200 } from '@defencedigital/design-tokens'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { CheckboxE } from '.'
+import { CheckboxE, CHECKBOX_VARIANT } from '.'
 import { FieldProps } from '../../common/FieldProps'
 import { FormProps } from '../../common/FormProps'
 
@@ -56,6 +58,10 @@ describe('Checkbox', () => {
       )
     })
 
+    it('should not render a description', () => {
+      expect(checkbox.queryAllByTestId('checkbox-description')).toHaveLength(0)
+    })
+
     it('should populate the field value', () => {
       expect(input).toHaveAttribute('value', 'false')
     })
@@ -101,6 +107,17 @@ describe('Checkbox', () => {
           })
         })
       })
+    })
+
+    it('should render a container', () => {
+      expect(checkbox.getByTestId('checkbox')).toHaveStyleRule(
+        'border',
+        `1px solid ${ColorNeutral200}`
+      )
+      expect(checkbox.getByTestId('checkbox')).toHaveStyleRule(
+        'border-radius',
+        '15px'
+      )
     })
   })
 
@@ -209,6 +226,59 @@ describe('Checkbox', () => {
       expect(checkbox.queryByTestId('checkbox-input')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
+      )
+    })
+  })
+
+  describe('when a field has a description', () => {
+    beforeEach(() => {
+      checkbox = render(
+        <CheckboxE description="Description" label="Label" name={field.name} />
+      )
+    })
+
+    it('should render a description', () => {
+      expect(checkbox.getByTestId('checkbox-description')).toHaveTextContent(
+        'Description'
+      )
+    })
+  })
+
+  describe('when a field has a description that is arbitrary JSX', () => {
+    beforeEach(() => {
+      checkbox = render(
+        <CheckboxE
+          description={<div>Arbitrary content</div>}
+          label="Label"
+          name={field.name}
+        />
+      )
+    })
+
+    it('should render a arbitrary description', () => {
+      expect(checkbox.getByText('Arbitrary content')).toBeInTheDocument()
+    })
+  })
+
+  describe('when a field does not have a container', () => {
+    beforeEach(() => {
+      checkbox = render(
+        <CheckboxE
+          label="Label"
+          name={field.name}
+          variant={CHECKBOX_VARIANT.NO_CONTAINER}
+        />
+      )
+    })
+
+    it('should not render a container', () => {
+      expect(checkbox.getByTestId('checkbox')).not.toHaveStyleRule(
+        'border',
+        `1px solid ${ColorNeutral200}`
+      )
+      expect(checkbox.getByTestId('checkbox')).not.toHaveStyleRule(
+        'border-radius',
+        '15px'
       )
     })
   })
