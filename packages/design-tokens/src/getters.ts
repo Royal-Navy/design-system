@@ -1,4 +1,4 @@
-import get from 'lodash/get'
+import { get, isNil } from 'lodash'
 import { css } from 'styled-components'
 
 import defaultTheme from './themes/light'
@@ -20,10 +20,11 @@ function getTheme(theme?: Theme): Theme {
   return theme?.colorsTokens ? theme : defaultTheme
 }
 
-export function getBreakpoint(
-  size: BreakpointSize,
-  theme?: Theme
-): Breakpoint | undefined {
+function isTokenValid(token: unknown): boolean {
+  return !isNil(token) && token !== ''
+}
+
+export function getBreakpoint(size: BreakpointSize, theme?: Theme): Breakpoint {
   const { breakpointsTokens } = getTheme(theme)
 
   const breakpoint = get(
@@ -31,9 +32,13 @@ export function getBreakpoint(
     `breakpoint[${size}].breakpoint.value`
   )
 
-  return {
-    breakpoint,
+  if (isTokenValid(breakpoint)) {
+    return {
+      breakpoint,
+    }
   }
+
+  throw new Error(`Invalid breakpoint token for size: '${size}'`)
 }
 
 export function getMediaQuery(
@@ -88,48 +93,79 @@ export function getMediaQuery(
   }
 }
 
-export function getAnimation(
-  index: AnimationTiming,
-  theme?: Theme
-): string | undefined {
-  return get(getTheme(theme).animationTokens, `timing[${index}].value`)
+export function getAnimation(index: AnimationTiming, theme?: Theme): string {
+  const value = get(getTheme(theme).animationTokens, `timing[${index}].value`)
+
+  if (isTokenValid(value)) {
+    return value
+  }
+
+  throw new Error(`Invalid animation token for index: '${index}'`)
 }
 
 export function getColor(
   group: ColorGroup,
   weight: ColorShade,
   theme?: Theme
-): string | undefined {
-  return get(getTheme(theme).colorsTokens, `color[${group}][${weight}].value`)
+): string {
+  const value = get(
+    getTheme(theme).colorsTokens,
+    `color[${group}][${weight}].value`
+  )
+
+  if (isTokenValid(value)) {
+    return value
+  }
+
+  throw new Error(
+    `Invalid color token for group: '${group}' weight: '${weight}'`
+  )
 }
 
-export function getTypography(
-  size: TypographySize,
-  theme?: Theme
-): string | undefined {
-  return get(getTheme(theme).typographyTokens, `typography[${size}].value`)
+export function getTypography(size: TypographySize, theme?: Theme): string {
+  const value = get(
+    getTheme(theme).typographyTokens,
+    `typography[${size}].value`
+  )
+
+  if (isTokenValid(value)) {
+    return value
+  }
+
+  throw new Error(`Invalid typography token for size: '${size}'`)
 }
 
-export function getShadow(
-  weight: ShadowWeight,
-  theme?: Theme
-): string | undefined {
-  return get(getTheme(theme).shadowsTokens, `shadow[${weight}].value`)
+export function getShadow(weight: ShadowWeight, theme?: Theme): string {
+  const value = get(getTheme(theme).shadowsTokens, `shadow[${weight}].value`)
+
+  if (isTokenValid(value)) {
+    return value
+  }
+
+  throw new Error(`Invalid shadow token for weight: '${weight}'`)
 }
 
-export function getSpacing(
-  spacing: Spacing,
-  theme?: Theme
-): string | undefined {
-  return get(getTheme(theme).spacingTokens, `spacing[${spacing}].value`)
+export function getSpacing(spacing: Spacing, theme?: Theme): string {
+  const value = get(getTheme(theme).spacingTokens, `spacing[${spacing}].value`)
+
+  if (isTokenValid(value)) {
+    return value
+  }
+
+  throw new Error(`Invalid spacing token for value: '${spacing}'`)
 }
 
 export function getZIndex(
   group: ZIndexGroup,
   offset: number,
   theme?: Theme
-): number | undefined {
-  return (
-    Number(get(getTheme(theme).zindexTokens, `zindex[${group}].value`)) + offset
+): number {
+  const value = get(getTheme(theme).zindexTokens, `zindex[${group}].value`)
+  if (isTokenValid(value)) {
+    return Number(value) + offset
+  }
+
+  throw new Error(
+    `Invalid z-index token for: group '${group}' offset: ${offset}`
   )
 }

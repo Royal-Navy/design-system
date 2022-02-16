@@ -4,7 +4,17 @@ import { render, RenderResult } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import 'jest-styled-components'
 
-import { selectors } from '..'
+import {
+  AnimationTiming,
+  BreakpointSize,
+  ColorGroup,
+  ColorShade,
+  selectors,
+  ShadowWeight,
+  Spacing,
+  TypographySize,
+  ZIndexGroup,
+} from '..'
 
 const {
   mediaQuery,
@@ -121,125 +131,203 @@ describe('mediaQuery / mq', () => {
 })
 
 describe('breakpoint', () => {
-  const StyledComponent = styled.div`
-    @media only screen and (min-width: ${breakpoint('xs').breakpoint}) {
-      font-size: 14px;
-    }
-  `
-
-  beforeEach(() => {
-    wrapper = render(<StyledComponent data-testid="test-element" />)
+  describe('when the breakpoint is invalid', () => {
+    it('throws a friendly error', () => {
+      expect(() => breakpoint('invalid' as BreakpointSize)).toThrowError(
+        'Invalid breakpoint token'
+      )
+    })
   })
 
-  it('should set styles correctly', () => {
-    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
-      'font-size',
-      '14px',
-      {
-        media: 'only screen and (min-width:576px)',
+  describe('when the breakpoint is valid', () => {
+    const StyledComponent = styled.div`
+      @media only screen and (min-width: ${breakpoint('xs').breakpoint}) {
+        font-size: 14px;
       }
-    )
+    `
+
+    beforeEach(() => {
+      wrapper = render(<StyledComponent data-testid="test-element" />)
+    })
+
+    it('should set styles correctly', () => {
+      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+        'font-size',
+        '14px',
+        {
+          media: 'only screen and (min-width:576px)',
+        }
+      )
+    })
   })
 })
 
 describe('animation', () => {
-  const StyledComponent = styled.div`
-    transition: opacity ${animation('default')} linear;
-  `
-
-  beforeEach(() => {
-    wrapper = render(<StyledComponent data-testid="test-element" />)
+  describe('when the index is invalid', () => {
+    it('throws a friendly error', () => {
+      expect(() => animation('invalid' as AnimationTiming)).toThrowError(
+        'Invalid animation token'
+      )
+    })
   })
 
-  it('should set styles correctly', () => {
-    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
-      'transition',
-      'opacity 0.2s linear'
-    )
+  describe('when the index is valid', () => {
+    const StyledComponent = styled.div`
+      transition: opacity ${animation('default')} linear;
+    `
+
+    beforeEach(() => {
+      wrapper = render(<StyledComponent data-testid="test-element" />)
+    })
+
+    it('should set styles correctly', () => {
+      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+        'transition',
+        'opacity 0.2s linear'
+      )
+    })
   })
 })
 
 describe('color', () => {
-  const StyledComponent = styled.div`
-    color: ${color('neutral', '100')};
-  `
-
-  beforeEach(() => {
-    wrapper = render(<StyledComponent data-testid="test-element" />)
+  describe('when the group is invalid', () => {
+    it('throws a friendly error', () => {
+      expect(() => color('invalid' as ColorGroup, '400')).toThrowError(
+        'Invalid color token'
+      )
+    })
   })
 
-  it('should set styles correctly', () => {
-    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
-      'color',
-      '#e2e9ee'
-    )
+  describe('when the shade is invalid', () => {
+    it('throws a friendly error', () => {
+      expect(() => color('action', 'invalid' as ColorShade)).toThrowError(
+        'Invalid color token'
+      )
+    })
+  })
+
+  describe('when the group and shade are valid', () => {
+    const StyledComponent = styled.div`
+      color: ${color('neutral', '100')};
+    `
+
+    beforeEach(() => {
+      wrapper = render(<StyledComponent data-testid="test-element" />)
+    })
+
+    it('should set styles correctly', () => {
+      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+        'color',
+        '#e2e9ee'
+      )
+    })
   })
 })
 
 describe('fontSize', () => {
-  const StyledComponent = styled.div`
-    font-size: ${fontSize('xs')};
-  `
-
-  beforeEach(() => {
-    wrapper = render(<StyledComponent data-testid="test-element" />)
+  describe('when the size is invalid', () => {
+    it('throws a friendly error', () => {
+      expect(() => fontSize('invalid' as TypographySize)).toThrowError(
+        'Invalid typography token'
+      )
+    })
   })
 
-  it('should set styles correctly', () => {
-    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
-      'font-size',
-      '0.625rem'
-    )
+  describe('when the size is valid', () => {
+    const StyledComponent = styled.div`
+      font-size: ${fontSize('xs')};
+    `
+
+    beforeEach(() => {
+      wrapper = render(<StyledComponent data-testid="test-element" />)
+    })
+
+    it('should set styles correctly', () => {
+      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+        'font-size',
+        '0.625rem'
+      )
+    })
   })
 })
 
 describe('shadow', () => {
-  const StyledComponent = styled.div`
-    box-shadow: ${shadow('0')};
-  `
-
-  beforeEach(() => {
-    wrapper = render(<StyledComponent data-testid="test-element" />)
+  describe('when the weight is invalid', () => {
+    it('throws a friendly error', () => {
+      expect(() => shadow('invalid' as ShadowWeight)).toThrowError(
+        'Invalid shadow token'
+      )
+    })
   })
 
-  it('should set styles correctly', () => {
-    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
-      'box-shadow',
-      '0 0 0 transparent'
-    )
+  describe('when the weight is valid', () => {
+    const StyledComponent = styled.div`
+      box-shadow: ${shadow('0')};
+    `
+
+    beforeEach(() => {
+      wrapper = render(<StyledComponent data-testid="test-element" />)
+    })
+
+    it('should set styles correctly', () => {
+      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+        'box-shadow',
+        '0 0 0 transparent'
+      )
+    })
   })
 })
 
 describe('spacing', () => {
-  const StyledComponent = styled.div`
-    padding: ${spacing('4')};
-  `
-
-  beforeEach(() => {
-    wrapper = render(<StyledComponent data-testid="test-element" />)
+  describe('when the spacing value is invalid', () => {
+    it('throws a friendly error', () => {
+      expect(() => spacing('invalid' as Spacing)).toThrowError(
+        'Invalid spacing token'
+      )
+    })
   })
 
-  it('should set styles correctly', () => {
-    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
-      'padding',
-      '0.5rem'
-    )
+  describe('when the value is valid', () => {
+    const StyledComponent = styled.div`
+      padding: ${spacing('4')};
+    `
+
+    beforeEach(() => {
+      wrapper = render(<StyledComponent data-testid="test-element" />)
+    })
+
+    it('should set styles correctly', () => {
+      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+        'padding',
+        '0.5rem'
+      )
+    })
   })
 })
 
 describe('zIndex', () => {
-  const StyledComponent = styled.div`
-    z-index: ${zIndex('overlay', 1)};
-  `
-
-  beforeEach(() => {
-    wrapper = render(<StyledComponent data-testid="test-element" />)
+  describe('when the group is invalid', () => {
+    it('throws a friendly error', () => {
+      expect(() => zIndex('invalid' as ZIndexGroup, 1)).toThrowError(
+        'Invalid z-index token'
+      )
+    })
   })
 
-  it('should set styles correctly', () => {
-    expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
-      'z-index',
-      '6001'
-    )
+  describe('when the group and offset are valid', () => {
+    const StyledComponent = styled.div`
+      z-index: ${zIndex('overlay', 1)};
+    `
+
+    beforeEach(() => {
+      wrapper = render(<StyledComponent data-testid="test-element" />)
+    })
+
+    it('should set styles correctly', () => {
+      expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
+        'z-index',
+        '6001'
+      )
+    })
   })
 })

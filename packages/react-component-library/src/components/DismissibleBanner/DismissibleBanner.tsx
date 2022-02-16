@@ -40,7 +40,7 @@ export interface DismissibleBannerWithArbitraryContentProps
   /**
    * Arbitrary JSX content to display in the main body of the component.
    */
-  children: React.ReactElement
+  children: React.ReactChild
   /**
    * Optional handler function to be invoked when the Dismiss button is clicked.
    */
@@ -68,7 +68,7 @@ export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
   const [canShowAgain, setCanShowAgain] = useState(true)
 
   const onButtonClick = (event: React.FormEvent<HTMLButtonElement>) => {
-    onDismiss(event, canShowAgain)
+    onDismiss?.(event, canShowAgain)
   }
 
   return (
