@@ -37,6 +37,10 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = memo(
       state: { currentScaleOption, days, weeks },
     } = useContext(TimelineContext)
 
+    if (!currentScaleOption) {
+      return null
+    }
+
     const isBelowThreshold =
       currentScaleOption.widths.day * 7 < DISPLAY_THRESHOLDS.WEEK
 

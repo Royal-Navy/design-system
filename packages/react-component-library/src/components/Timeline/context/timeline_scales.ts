@@ -25,7 +25,7 @@ type ScaleConfigType = { [key: string]: ScaleConfigOptionType }
 
 function getDefaultScaleConfigOption(
   startDate: Date,
-  endDate: Date,
+  endDate: Date | null,
   monthIntervalSize: number
 ) {
   if (endDate) {
@@ -45,7 +45,7 @@ function getDefaultScaleConfigOption(
 
 function getScaleConfig(
   startDate: Date,
-  endDate: Date,
+  endDate: Date | null,
   monthIntervalSize: number
 ): ScaleConfigType {
   return {
@@ -81,7 +81,7 @@ function getScaleConfig(
 function mapScaleOption(
   startDate: Date,
   maxWidth: number,
-  hoursBlockSize: BlockSizeType
+  hoursBlockSize: BlockSizeType | null
 ) {
   return ({
     calculateDate,
@@ -112,7 +112,7 @@ function mapScaleOption(
 }
 
 function getMaxWidth(
-  timelineWidth: number,
+  timelineWidth: number | null,
   unitWidth: number,
   numberOfDays: number
 ) {
@@ -127,10 +127,15 @@ function getMaxWidth(
 
 function buildScaleOptions(
   { endDate, hoursBlockSize, range, startDate, unitWidth }: TimelineOptions,
-  timelineWidth?: number
+  timelineWidth: number | null
 ): TimelineScaleOption[] {
   const scaleConfig = getScaleConfig(startDate, endDate, range)
-  const defaultConfig = find(scaleConfig, ({ isDefault }) => isDefault)
+  const defaultConfig = find(scaleConfig, { isDefault: true })
+
+  if (!defaultConfig) {
+    throw new Error('Failed to find default Timeline scale configuration')
+  }
+
   const numberOfDays = endDate
     ? defaultConfig.intervalSize
     : differenceInDays(

@@ -8,7 +8,7 @@ const { color } = selectors
 interface StyledEventBarProps {
   $width: string
   $maxWidth?: string
-  $barColor: string
+  $barColor?: string
   $startsBeforeStart?: boolean
   $endsAfterEnd?: boolean
 }

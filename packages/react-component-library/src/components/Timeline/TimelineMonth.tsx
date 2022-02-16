@@ -28,7 +28,7 @@ interface TimelineMonthProps {
   daysTotal: number
   dayWidth: number
   index: number
-  render: (props: {
+  render?: (props: {
     index: number
     dayWidth: number
     daysTotal: number

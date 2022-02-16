@@ -14,19 +14,20 @@ export function useTimelineZoom(): {
     dispatch,
     state: { currentScaleIndex, scaleOptions },
   } = useContext(TimelineContext)
-  const canZoomIn = isNil(currentScaleIndex) || currentScaleIndex > 0
-  const canZoomOut = currentScaleIndex < scaleOptions.length - 1
+  const canZoomIn = !isNil(currentScaleIndex) && currentScaleIndex > 0
+  const canZoomOut =
+    !isNil(currentScaleIndex) && currentScaleIndex < scaleOptions.length - 1
 
   function zoomIn() {
     dispatch({
-      scaleIndex: currentScaleIndex - 1,
+      getScaleIndex: (scaleIndex: number) => scaleIndex - 1,
       type: TIMELINE_ACTIONS.SCALE,
     })
   }
 
   function zoomOut() {
     dispatch({
-      scaleIndex: currentScaleIndex + 1,
+      getScaleIndex: (scaleIndex: number) => scaleIndex + 1,
       type: TIMELINE_ACTIONS.SCALE,
     })
   }

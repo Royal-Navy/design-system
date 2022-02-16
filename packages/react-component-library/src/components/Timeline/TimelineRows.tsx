@@ -38,6 +38,10 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
     state: { currentScaleOption, days },
   } = useContext(TimelineContext)
 
+  if (!currentScaleOption) {
+    return null
+  }
+
   return (
     <StyledRows
       $hasDefaultStyles={!render}

@@ -6,7 +6,7 @@ import { StyledHourTitle } from './partials/StyledHourTitle'
 
 interface TimelineHourProps {
   date: Date
-  render: (props: { width: number; time: string }) => React.ReactElement
+  render?: (props: { width: number; time: string }) => React.ReactElement
   time: string
   timelineEndDate: Date
   width: number

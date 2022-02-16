@@ -42,38 +42,40 @@ export const TimelineWeekColumns: React.FC<TimelineWeekColumnProps> = ({
   render,
 }) => (
   <TimelineContext.Consumer>
-    {({ state: { currentScaleOption, days, weeks } }) => (
-      <StyledWeekColumnsWrapper>
-        <StyledWeekColumns role="presentation" data-testid="timeline-columns">
-          {weeks.map(({ startDate }, index) => {
-            const lastDateDisplayed = min([
-              endOfWeek(startDate, { weekStartsOn: WEEK_START }),
-              days[days.length - 1].date,
-            ])
-            const offsetInDays = differenceInDays(
-              startDate,
-              max([startDate, days[0].date])
-            )
-            const offsetPx = formatPx(
-              currentScaleOption.widths.day,
-              offsetInDays
-            )
-            const widthPx = formatPx(
-              currentScaleOption.widths.day,
-              differenceInDays(lastDateDisplayed, startDate) + 1
-            )
+    {({ state: { currentScaleOption, days, weeks } }) =>
+      currentScaleOption && (
+        <StyledWeekColumnsWrapper>
+          <StyledWeekColumns role="presentation" data-testid="timeline-columns">
+            {weeks.map(({ startDate }, index) => {
+              const lastDateDisplayed = min([
+                endOfWeek(startDate, { weekStartsOn: WEEK_START }),
+                days[days.length - 1].date,
+              ])
+              const offsetInDays = differenceInDays(
+                startDate,
+                max([startDate, days[0].date])
+              )
+              const offsetPx = formatPx(
+                currentScaleOption.widths.day,
+                offsetInDays
+              )
+              const widthPx = formatPx(
+                currentScaleOption.widths.day,
+                differenceInDays(lastDateDisplayed, startDate) + 1
+              )
 
-            const isOddNumber = isOdd(index)
+              const isOddNumber = isOdd(index)
 
-            const column = render
-              ? render({ index, isOddNumber, offsetPx, widthPx })
-              : renderDefault({ index, isOddNumber, offsetPx, widthPx })
+              const column = render
+                ? render({ index, isOddNumber, offsetPx, widthPx })
+                : renderDefault({ index, isOddNumber, offsetPx, widthPx })
 
-            return withKey(column, 'timeline-column', startDate.toString())
-          })}
-        </StyledWeekColumns>
-      </StyledWeekColumnsWrapper>
-    )}
+              return withKey(column, 'timeline-column', startDate.toString())
+            })}
+          </StyledWeekColumns>
+        </StyledWeekColumnsWrapper>
+      )
+    }
   </TimelineContext.Consumer>
 )
 
