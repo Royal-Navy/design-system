@@ -25,13 +25,16 @@ export default {
       enableShortcuts: false,
     },
   },
+  args: {
+    label: 'Some label',
+  },
 } as ComponentMeta<typeof Select>
 
 const Template: ComponentStory<typeof Select> = (args) => (
   <div
     style={{ height: args.isDisabled ? 'initial' : '18rem', maxWidth: '20rem' }}
   >
-    <Select label="Some label" {...args}>
+    <Select {...args}>
       <SelectOption value="one">
         This is a really, really long select option label that overflows the
         container when selected
@@ -47,7 +50,7 @@ const TemplateWIthIconsAndBadges: ComponentStory<typeof Select> = (args) => (
   <div
     style={{ height: args.isDisabled ? 'initial' : '18rem', maxWidth: '20rem' }}
   >
-    <Select label="Some label" {...args}>
+    <Select {...args}>
       <SelectOption badge={100} icon={<IconAnchor />} value="one">
         One
       </SelectOption>

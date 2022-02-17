@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import '@testing-library/jest-dom/extend-expect'
@@ -144,7 +143,7 @@ describe('Drawer', () => {
   describe('when a `ref` prop is specified', () => {
     beforeEach(() => {
       const DrawerWithRef: React.FC = () => {
-        const [content, setContent] = useState<string>('Not set')
+        const [content, setContent] = useState<string | null>('Not set')
 
         return (
           <Drawer

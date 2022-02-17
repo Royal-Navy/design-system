@@ -5,7 +5,7 @@ import { StyledCheckmark } from './StyledCheckmark'
 import { StyledInput } from './StyledInput'
 
 interface StyledRadioProps {
-  $hasContainer?: boolean
+  $hasContainer: boolean
   $isDisabled?: boolean
   $isInvalid?: boolean
   $isChecked?: boolean

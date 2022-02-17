@@ -145,7 +145,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 }) => {
   const onChange = (option: ValueType<DropdownOption, boolean>) => {
     const dropdownOption = option as DropdownOption
-    onSelect(dropdownOption.value)
+    onSelect?.(dropdownOption.value)
   }
 
   return (

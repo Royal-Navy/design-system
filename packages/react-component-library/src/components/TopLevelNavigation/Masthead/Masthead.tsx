@@ -49,7 +49,9 @@ export interface MastheadProps {
   /**
    * Optional handler invoked when the submit search button is clicked.
    */
-  onSearch?: (event: React.FormEvent<HTMLFormElement>, term: string) => void
+  onSearch?:
+    | ((event: React.FormEvent<HTMLFormElement>, term: string) => void)
+    | null
   /**
    * Text title of the application.
    */

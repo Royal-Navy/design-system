@@ -15,11 +15,14 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
+  args: {
+    label: 'Some label',
+  },
 } as ComponentMeta<typeof Autocomplete>
 
 const Template: ComponentStory<typeof Autocomplete> = (args) => (
   <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
-    <Autocomplete label="Some label" {...args}>
+    <Autocomplete {...args}>
       <AutocompleteOption value="one">One</AutocompleteOption>
       <AutocompleteOption value="two">Two</AutocompleteOption>
       <AutocompleteOption value="three">Three</AutocompleteOption>
@@ -32,7 +35,7 @@ const TemplateWIthIconsAndBadges: ComponentStory<typeof Autocomplete> = (
   args
 ) => (
   <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
-    <Autocomplete label="Some label" {...args}>
+    <Autocomplete {...args}>
       <AutocompleteOption badge={100} icon={<IconAnchor />} value="one">
         One
       </AutocompleteOption>
