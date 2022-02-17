@@ -1,11 +1,13 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
+import 'jest-styled-components'
+import { ColorNeutral200 } from '@defencedigital/design-tokens'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import { RADIO_VARIANT, RadioE } from '.'
 import { FieldProps } from '../../common/FieldProps'
 import { FormProps } from '../../common/FormProps'
-import { RadioE } from '.'
 
 describe('RadioE', () => {
   let field: FieldProps
@@ -48,8 +50,23 @@ describe('RadioE', () => {
       input = radio.getByTestId('radio-input')
     })
 
+    it('should render a container', () => {
+      expect(radio.getByTestId('radio')).toHaveStyleRule(
+        'border',
+        `1px solid ${ColorNeutral200}`
+      )
+      expect(radio.getByTestId('radio')).toHaveStyleRule(
+        'border-radius',
+        '15px'
+      )
+    })
+
     it('should render a field with a label', () => {
       expect(radio.getByTestId('radio-label')).toHaveTextContent('My Label 1')
+    })
+
+    it('should not render a description', () => {
+      expect(radio.queryAllByTestId('checkbox-description')).toHaveLength(0)
     })
 
     it('should populate the field value', () => {
@@ -138,6 +155,59 @@ describe('RadioE', () => {
       expect(radio.getByTestId('radio-input')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
+      )
+    })
+  })
+
+  describe('when a field has a description', () => {
+    beforeEach(() => {
+      radio = render(
+        <RadioE description="Description" label="Label" name={field.name} />
+      )
+    })
+
+    it('should render a description', () => {
+      expect(radio.getByTestId('checkbox-description')).toHaveTextContent(
+        'Description'
+      )
+    })
+  })
+
+  describe('when a field has a description that is arbitrary JSX', () => {
+    beforeEach(() => {
+      radio = render(
+        <RadioE
+          description={<div>Arbitrary content</div>}
+          label="Label"
+          name={field.name}
+        />
+      )
+    })
+
+    it('should render a arbitrary description', () => {
+      expect(radio.getByText('Arbitrary content')).toBeInTheDocument()
+    })
+  })
+
+  describe('when a field does not have a container', () => {
+    beforeEach(() => {
+      radio = render(
+        <RadioE
+          label="Label"
+          name={field.name}
+          variant={RADIO_VARIANT.NO_CONTAINER}
+        />
+      )
+    })
+
+    it('should not render a container', () => {
+      expect(radio.getByTestId('radio')).not.toHaveStyleRule(
+        'border',
+        `1px solid ${ColorNeutral200}`
+      )
+      expect(radio.getByTestId('radio')).not.toHaveStyleRule(
+        'border-radius',
+        '15px'
       )
     })
   })

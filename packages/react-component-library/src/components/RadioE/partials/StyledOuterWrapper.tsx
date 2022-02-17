@@ -1,13 +1,22 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const StyledOuterWrapper = styled.div`
+interface StyledOuterWrapperProps {
+  $hasContainer?: boolean
+}
+
+export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
   display: inline-flex;
   align-items: center;
   flex-direction: row;
-  height: 44px;
   border-radius: 15px;
 
   &:active {
     pointer-events: none;
   }
+
+  ${({ $hasContainer }) =>
+    $hasContainer &&
+    css`
+      min-height: 44px;
+    `}
 `
