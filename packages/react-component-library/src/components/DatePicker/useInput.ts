@@ -2,7 +2,7 @@ import { addHours, isValid, parse } from 'date-fns'
 import React, { useCallback } from 'react'
 
 import { RETURN } from '../../utils/keyCodes'
-import { DATEPICKER_E_ACTION, DatePickerEAction } from './types'
+import { DATEPICKER_E_ACTION, DatePickerAction } from './types'
 
 function parseDate(datePickerFormat: string, value: string) {
   if (!value) {
@@ -22,7 +22,7 @@ export function useInput(
   datePickerFormat: string,
   isRange: boolean,
   handleDayClick: (date: Date | null) => void,
-  dispatch: React.Dispatch<DatePickerEAction>
+  dispatch: React.Dispatch<DatePickerAction>
 ) {
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {

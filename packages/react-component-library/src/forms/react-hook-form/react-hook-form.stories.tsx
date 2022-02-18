@@ -10,7 +10,7 @@ import { TextAreaE } from '../../components/TextAreaE'
 import { Radio } from '../../components/Radio'
 import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
 import { Checkbox } from '../../components/Checkbox'
-import { DatePickerE } from '../../components/DatePickerE'
+import { DatePicker } from '../../components/DatePicker'
 import { NumberInputE } from '../../components/NumberInputE'
 import { SelectE, SelectEOption } from '../../components/SelectE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
@@ -205,7 +205,7 @@ export const Example: React.FC<unknown> = () => {
             }}
             render={({ onChange, value }) => {
               return (
-                <DatePickerE
+                <DatePicker
                   disabledDays={{ before: MINIMUM_DATE }}
                   onChange={({ startDate }) => {
                     onChange(startDate)

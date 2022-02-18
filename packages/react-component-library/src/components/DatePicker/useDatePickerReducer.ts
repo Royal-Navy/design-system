@@ -1,17 +1,13 @@
 import React, { useEffect, useReducer } from 'react'
 
 import { areDatesEqual, isDateValid, formatDatesForInput } from './utils'
-import {
-  DATEPICKER_E_ACTION,
-  DatePickerEAction,
-  DatePickerEState,
-} from './types'
+import { DATEPICKER_E_ACTION, DatePickerAction, DatePickerState } from './types'
 
 function init({
   startDate,
   endDate,
   datePickerFormat,
-}: Omit<DatePickerEState, 'hasError' | 'inputValue'>) {
+}: Omit<DatePickerState, 'hasError' | 'inputValue'>) {
   return {
     startDate,
     endDate,
@@ -22,9 +18,9 @@ function init({
 }
 
 function reducer(
-  state: DatePickerEState,
-  action: DatePickerEAction
-): DatePickerEState {
+  state: DatePickerState,
+  action: DatePickerAction
+): DatePickerState {
   switch (action.type) {
     case DATEPICKER_E_ACTION.RESET:
       return init(action.data)
@@ -54,7 +50,7 @@ function reducer(
 }
 
 function shouldReset(
-  state: DatePickerEState,
+  state: DatePickerState,
   startDate: Date | null | undefined,
   endDate: Date | null | undefined,
   datePickerFormat: string,
@@ -71,14 +67,14 @@ function shouldReset(
   )
 }
 
-export function useDatePickerEReducer(
+export function useDatePickerReducer(
   startDate: Date | null | undefined,
   endDate: Date | null | undefined,
   initialStartDate: Date | null,
   initialEndDate: Date | null,
   datePickerFormat: string,
   isRange: boolean
-): [DatePickerEState, React.Dispatch<DatePickerEAction>] {
+): [DatePickerState, React.Dispatch<DatePickerAction>] {
   const [state, dispatch] = useReducer(
     reducer,
     {

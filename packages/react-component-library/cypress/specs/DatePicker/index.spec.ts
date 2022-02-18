@@ -1,18 +1,18 @@
 import { describe, cy, it, before } from 'local-cypress'
 import { addDays, startOfMonth, format } from 'date-fns'
-import { ColorAction600, ColorNeutral200 } from '@defencedigital/design-tokens'
+import { ColorNeutral200 } from '@defencedigital/design-tokens'
 
 import { DATE_FORMAT } from '../../../src/constants'
 import { hexToRgb } from '../../helpers'
 import selectors from '../../selectors'
-import { transformDates } from '../../../src/components/DatePicker/useInputValue'
+import { formatDatesForInput } from '../../../src/components/DatePicker/utils/formatDatesForInput'
 
 describe('DatePicker', () => {
   describe('when a day is selected', () => {
     before(() => {
       cy.visit('/iframe.html?id=date-picker--default&viewMode=story')
 
-      cy.get(selectors.datePicker.input).focus()
+      cy.get(selectors.datePicker.button).click()
     })
 
     it('should show the days', () => {
@@ -30,16 +30,16 @@ describe('DatePicker', () => {
 
       it('should set the value of the input to the date', () => {
         const from = startOfMonth(new Date())
-        const expected = transformDates(from, null, DATE_FORMAT.SHORT)
+        const expected = formatDatesForInput(from, null, DATE_FORMAT.SHORT)
 
         cy.get(selectors.datePicker.input).should('have.value', expected)
       })
 
       it('should not be in an error state', () => {
         cy.get(selectors.datePicker.outerWrapper).should(
-          'has.border',
-          'color',
-          hexToRgb(ColorNeutral200)
+          'have.css',
+          'box-shadow',
+          `${hexToRgb(ColorNeutral200)} 0px 0px 0px 1px`
         )
       })
     })
@@ -49,7 +49,7 @@ describe('DatePicker', () => {
     before(() => {
       cy.visit('/iframe.html?id=date-picker--range&viewMode=story')
 
-      cy.get(selectors.datePicker.input).focus()
+      cy.get(selectors.datePicker.input).click()
     })
 
     it('should show the days', () => {
@@ -78,24 +78,23 @@ describe('DatePicker', () => {
         it('should set the value of the input to the range', () => {
           const from = startOfMonth(new Date())
           const to = addDays(from, 9)
-          const expected = transformDates(from, to, DATE_FORMAT.SHORT)
+          const expected = formatDatesForInput(from, to, DATE_FORMAT.SHORT)
 
           cy.get(selectors.datePicker.input).should('have.value', expected)
         })
 
-        describe('and again focuses on the input to subsequently click away', () => {
+        describe('and the picker is closed', () => {
           before(() => {
-            cy.get(selectors.datePicker.input).focus()
-            cy.get(selectors.datePicker.input).blur()
+            cy.get(selectors.datePicker.button).click()
 
             cy.wait(1000)
           })
 
           it('should not be in an error state', () => {
             cy.get(selectors.datePicker.outerWrapper).should(
-              'has.border',
-              'color',
-              hexToRgb(ColorAction600)
+              'have.css',
+              'box-shadow',
+              `${hexToRgb(ColorNeutral200)} 0px 0px 0px 1px`
             )
           })
         })

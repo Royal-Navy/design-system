@@ -10,10 +10,7 @@ import { Checkbox } from '../../components/Checkbox'
 import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
 import { Button } from '../../components/Button'
 import { NumberInputE } from '../../components/NumberInputE'
-import {
-  DatePickerE,
-  DatePickerEOnChangeData,
-} from '../../components/DatePickerE'
+import { DatePicker, DatePickerOnChangeData } from '../../components/DatePicker'
 import { SelectE, SelectEOption } from '../../components/SelectE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { RangeSliderE } from '../../components/RangeSliderE'
@@ -242,11 +239,11 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <DatePickerE
+                    <DatePicker
                       name={name}
                       disabledDays={{ before: MINIMUM_DATE }}
                       startDate={value}
-                      onChange={({ startDate }: DatePickerEOnChangeData) => {
+                      onChange={({ startDate }: DatePickerOnChangeData) => {
                         setFieldValue('exampleDatePicker', startDate)
                       }}
                     />

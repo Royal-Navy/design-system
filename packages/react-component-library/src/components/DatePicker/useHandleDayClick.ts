@@ -3,20 +3,16 @@ import React from 'react'
 import { DayPickerProps, ModifiersUtils } from 'react-day-picker'
 
 import {
-  DatePickerEDateValidityType,
-  DatePickerEOnChangeData,
-} from './DatePickerE'
+  DatePickerDateValidityType,
+  DatePickerOnChangeData,
+} from './DatePicker'
 import { DATE_VALIDITY } from './constants'
-import {
-  DATEPICKER_E_ACTION,
-  DatePickerEAction,
-  DatePickerEState,
-} from './types'
+import { DATEPICKER_E_ACTION, DatePickerAction, DatePickerState } from './types'
 
 function getNewState(
   isRange: boolean,
   day: Date | null,
-  { startDate, endDate }: DatePickerEState
+  { startDate, endDate }: DatePickerState
 ) {
   if (!isRange || !day) {
     return { startDate: day, endDate: day }
@@ -35,7 +31,7 @@ function getNewState(
 function calculateDateValidity(
   date: Date | null,
   disabledDays: DayPickerProps['disabledDays']
-): DatePickerEDateValidityType | null {
+): DatePickerDateValidityType | null {
   if (!date) {
     return null
   }
@@ -52,11 +48,11 @@ function calculateDateValidity(
 }
 
 export const useHandleDayClick = (
-  state: DatePickerEState,
-  dispatch: React.Dispatch<DatePickerEAction>,
+  state: DatePickerState,
+  dispatch: React.Dispatch<DatePickerAction>,
   isRange: boolean,
   disabledDays: DayPickerProps['disabledDays'],
-  onChange?: (data: DatePickerEOnChangeData) => void
+  onChange?: (data: DatePickerOnChangeData) => void
 ): ((day: Date | null) => { startDate: Date | null; endDate: Date | null }) => {
   function handleDayClick(day: Date | null) {
     const newState = getNewState(isRange, day, state)

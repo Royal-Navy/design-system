@@ -1,17 +1,8 @@
 import styled from 'styled-components'
-import { selectors } from '@defencedigital/design-tokens'
 
-import {
-  getOuterWrapperBorder,
-  StyledOuterWrapperProps,
-} from '../../../styled-components/input'
+import { StyledOuterWrapper as StyledOuterWrapperBase } from '../../../styled-components'
 
-const { color } = selectors
-
-export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
+export const StyledOuterWrapper = styled(StyledOuterWrapperBase)`
   display: inline-flex;
   flex-direction: row;
-  background-color: ${color('neutral', 'white')};
-
-  ${(props) => getOuterWrapperBorder(props)}
 `
