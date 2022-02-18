@@ -107,7 +107,6 @@ export const Default: ComponentStory<typeof Masthead> = (props) => {
 }
 
 Default.args = {
-  searchPlaceholder: undefined,
   title: 'Defence Digital Design System',
   hasUnreadNotification: true,
 }
@@ -135,11 +134,7 @@ WithoutLogo.args = {
 }
 
 export const WithSearch: ComponentStory<typeof Masthead> = (props) => (
-  <Masthead
-    {...props}
-    searchPlaceholder="Search..."
-    title="Defence Digital Design System"
-  />
+  <Masthead {...props} title="Defence Digital Design System" />
 )
 
 WithSearch.storyName = 'With search'

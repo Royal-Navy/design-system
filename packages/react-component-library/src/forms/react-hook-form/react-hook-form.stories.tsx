@@ -5,7 +5,7 @@ import { useForm, Controller } from 'react-hook-form/dist/index.ie11'
 import { ComponentMeta } from '@storybook/react'
 import styled from 'styled-components'
 
-import { TextInputE } from '../../components/TextInputE'
+import { TextInput } from '../../components/TextInput'
 import { TextArea } from '../../components/TextArea'
 import { Radio } from '../../components/Radio'
 import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
@@ -97,21 +97,21 @@ export const Example: React.FC<unknown> = () => {
           hintText="Example hint text."
           errors={[{ error: !!errors.email && 'Required' }]}
         >
-          <TextInputE
+          <TextInput
             type="email"
             name="email"
             ref={register({ required: true })}
             label="Email"
-            data-testid="form-example-TextInputE-email"
+            data-testid="form-example-TextInput-email"
           />
         </Field>
         <Field hintText="Example hint text.">
-          <TextInputE
+          <TextInput
             type="password"
             name="password"
             ref={register}
             label="Password"
-            data-testid="form-example-TextInputE-password"
+            data-testid="form-example-TextInput-password"
           />
         </Field>
         <Field hintText="Example hint text.">

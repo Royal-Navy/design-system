@@ -2,9 +2,9 @@ import React from 'react'
 import { isNil } from 'lodash'
 
 import { ComponentSizeType } from '../Forms'
-import { StyledInput } from '../TextInputE/partials/StyledInput'
+import { StyledInput } from '../TextInput/partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
-import { StyledLabel } from '../TextInputE/partials/StyledLabel'
+import { StyledLabel } from '../TextInput/partials/StyledLabel'
 
 export interface InputProps {
   hasFocus: boolean

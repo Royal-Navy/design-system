@@ -7,7 +7,7 @@ interface StyledAdornmentProps {
   $position: AdornmentPositionType
 }
 
-const { spacing } = selectors
+const { color, spacing } = selectors
 
 const positionStyles = {
   start: css`
@@ -26,6 +26,7 @@ export const StyledAdornment = styled.div<StyledAdornmentProps>`
   flex-direction: column;
   text-align: center;
   padding: ${spacing('6')};
+  color: ${color('neutral', '400')};
 
   ${({ $position }) => positionStyles[$position]}
 `

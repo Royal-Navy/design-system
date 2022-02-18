@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { StyledInput } from '../../TextInputE/partials/StyledInput'
+import { StyledInput } from '../../TextInput/partials/StyledInput'
 
 interface StyledDatePickerInputProps {
   $isDisabled?: boolean

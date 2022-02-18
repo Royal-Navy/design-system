@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
 import { Field } from '.'
-import { TextInputE } from '../TextInputE'
+import { TextInput } from '../TextInput'
 
 describe('Field', () => {
   let wrapper: RenderResult
@@ -12,7 +12,7 @@ describe('Field', () => {
     beforeEach(() => {
       wrapper = render(
         <Field hintText="Example hint text." errors={[{ error: 'Required' }]}>
-          <TextInputE
+          <TextInput
             label="Example text input"
             name="example"
             data-testid="example-component"

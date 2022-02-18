@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Field } from './index'
-import { TextInputE } from '../TextInputE'
+import { TextInput } from '../TextInput'
 
 export default {
   component: Field,
@@ -12,7 +12,7 @@ export default {
 
 const Template: ComponentStory<typeof Field> = (args) => (
   <Field {...args}>
-    <TextInputE label="Example text input" name="example" />
+    <TextInput label="Example text input" name="example" />
   </Field>
 )
 

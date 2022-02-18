@@ -27,7 +27,6 @@ describe('Searchbar', () => {
         <SearchBar
           onSearch={onSearchSpy}
           searchButton={searchButton}
-          searchPlaceholder="placeholder"
           setShowSearch={setShowSearchSpy}
         />
       )
@@ -39,13 +38,6 @@ describe('Searchbar', () => {
 
     it('should auto focus on the search field', () => {
       expect(wrapper.getByTestId('text-input-input')).toHaveFocus()
-    })
-
-    it('should render the input with a placeholder', () => {
-      expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
-        'placeholder',
-        'placeholder'
-      )
     })
 
     it('should set the `aria-label` attribute to `Search` on the search button', () => {
@@ -125,7 +117,6 @@ describe('Searchbar', () => {
         <SearchBar
           onSearch={onSearchSpy}
           searchButton={searchButton}
-          searchPlaceholder="placeholder"
           setShowSearch={setShowSearchSpy}
         />
       )
@@ -164,7 +155,6 @@ describe('Searchbar', () => {
           data-arbitrary="arbitrary"
           onSearch={onSearchSpy}
           searchButton={searchButton}
-          searchPlaceholder="placeholder"
           setShowSearch={setShowSearchSpy}
         />
       )

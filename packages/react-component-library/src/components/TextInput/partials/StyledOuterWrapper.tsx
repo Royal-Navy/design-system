@@ -1,14 +1,13 @@
 import styled from 'styled-components'
-import { selectors } from '@defencedigital/design-tokens'
 
-const { color } = selectors
+import {
+  StyledOuterWrapper as StyledOuterWrapperBase,
+  StyledOuterWrapperProps,
+} from '../../../styled-components'
 
-export const StyledOuterWrapper = styled.div`
+export const StyledOuterWrapper = styled(
+  StyledOuterWrapperBase
+)<StyledOuterWrapperProps>`
   display: inline-flex;
   flex-direction: row;
-  background-color: ${color('neutral', 'white')};
-  border: 1px solid ${color('neutral', '200')};
-  border-radius: 4px;
-  transition: border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 `

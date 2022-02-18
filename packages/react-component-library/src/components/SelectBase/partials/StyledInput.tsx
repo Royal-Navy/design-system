@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {
   StyledInput as StyledTextInputInput,
   StyledInputProps,
-} from '../../TextInputE/partials/StyledInput'
+} from '../../TextInput/partials/StyledInput'
 
 export const StyledInput = styled(StyledTextInputInput)<StyledInputProps>`
   overflow: hidden;

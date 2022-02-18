@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
 import { COMPONENT_SIZE } from '../../Forms'
-import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInputE/partials/StyledInput'
+import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInput/partials/StyledInput'
 
 const { color, fontSize } = selectors
 

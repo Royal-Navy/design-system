@@ -2,7 +2,7 @@ import { isBefore, isValid, parseISO } from 'date-fns'
 import React from 'react'
 import { ComponentMeta } from '@storybook/react'
 
-import { TextInputE } from '../../components/TextInputE'
+import { TextInput } from '../../components/TextInput'
 import { TextArea } from '../../components/TextArea'
 import { Radio } from '../../components/Radio'
 import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
@@ -87,23 +87,23 @@ export const Example: React.FC<unknown> = () => {
           hintText="Example hint text."
           errors={[{ error: formErrors.email && 'Required' }]}
         >
-          <TextInputE
+          <TextInput
             type="email"
             name="email"
             label="Email"
             value={formState.email}
             onChange={handleChange}
-            data-testid="form-example-TextInputE-email"
+            data-testid="form-example-TextInput-email"
           />
         </Field>
         <Field hintText="Example hint text.">
-          <TextInputE
+          <TextInput
             type="password"
             name="password"
             label="Password"
             value={formState.password}
             onChange={handleChange}
-            data-testid="form-example-TextInputE-password"
+            data-testid="form-example-TextInput-password"
           />
         </Field>
         <Field hintText="Example hint text.">

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import { Formik, Field as FormikField, FieldProps } from 'formik'
 
-import { TextInputE } from '../../components/TextInputE'
+import { TextInput } from '../../components/TextInput'
 import { TextArea } from '../../components/TextArea'
 import { Radio } from '../../components/Radio'
 import { Checkbox } from '../../components/Checkbox'
@@ -98,10 +98,10 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <TextInputE
+                    <TextInput
                       label="Email"
                       {...field}
-                      data-testid="form-example-TextInputE-email"
+                      data-testid="form-example-TextInput-email"
                     />
                   </Field>
                 )
@@ -114,11 +114,11 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <TextInputE
+                    <TextInput
                       type="password"
                       label="Password"
                       {...field}
-                      data-testid="form-example-TextInputE-password"
+                      data-testid="form-example-TextInput-password"
                     />
                   </Field>
                 )
