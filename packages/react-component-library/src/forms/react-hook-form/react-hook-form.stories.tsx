@@ -13,7 +13,7 @@ import { Checkbox } from '../../components/Checkbox'
 import { DatePicker } from '../../components/DatePicker'
 import { NumberInput } from '../../components/NumberInput'
 import { Select, SelectOption } from '../../components/Select'
-import { SwitchE, SwitchEOption } from '../../components/SwitchE'
+import { Switch, SwitchOption } from '../../components/Switch'
 import { RangeSlider } from '../../components/RangeSlider'
 import { Button } from '../../components/Button'
 import { Fieldset } from '../../components/Fieldset'
@@ -79,7 +79,7 @@ export const Example: React.FC<unknown> = () => {
     register({ name: 'exampleNumberInput' })
   }, [register])
 
-  const handleSwitchEChange = (e: React.FormEvent<HTMLInputElement>) =>
+  const handleSwitchChange = (e: React.FormEvent<HTMLInputElement>) =>
     setValue('exampleSwitch', e.currentTarget.value)
 
   const handleNumberInputChange = (
@@ -157,17 +157,17 @@ export const Example: React.FC<unknown> = () => {
           />
         </Fieldset>
         <Field hintText="Example hint text.">
-          <SwitchE
+          <Switch
             name="exampleSwitch"
             label="Example switch selection"
-            onChange={handleSwitchEChange}
+            onChange={handleSwitchChange}
             value={exampleSwitchValue}
-            data-testid="form-example-SwitchE"
+            data-testid="form-example-Switch"
           >
-            <SwitchEOption label="One" value="1" />
-            <SwitchEOption label="Two" value="2" />
-            <SwitchEOption label="Three" value="3" />
-          </SwitchE>
+            <SwitchOption label="One" value="1" />
+            <SwitchOption label="Two" value="2" />
+            <SwitchOption label="Three" value="3" />
+          </Switch>
         </Field>
         <Field hintText="Example hint text.">
           <NumberInput

@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-interface StyledSwitchEOptionProps {
+interface StyledSwitchOptionProps {
   $isActive?: boolean
   $isDisabled?: boolean
 }
 
 const { spacing, color } = selectors
 
-export const StyledSwitchOption = styled.label<StyledSwitchEOptionProps>`
+export const StyledSwitchOption = styled.label<StyledSwitchOptionProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;

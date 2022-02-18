@@ -12,7 +12,7 @@ import { Button } from '../../components/Button'
 import { NumberInput } from '../../components/NumberInput'
 import { DatePicker, DatePickerOnChangeData } from '../../components/DatePicker'
 import { Select, SelectOption } from '../../components/Select'
-import { SwitchE, SwitchEOption } from '../../components/SwitchE'
+import { Switch, SwitchOption } from '../../components/Switch'
 import { RangeSlider } from '../../components/RangeSlider'
 import { sleep } from '../../helpers'
 import { Field } from '../../components/Field'
@@ -188,11 +188,11 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <SwitchE
+                    <Switch
                       label="Example switch selection"
                       name={name}
                       value={value}
-                      data-testid="form-example-SwitchE"
+                      data-testid="form-example-Switch"
                       onChange={(event: React.FormEvent<HTMLInputElement>) => {
                         setFieldValue(
                           'exampleSwitch',
@@ -200,10 +200,10 @@ export const Example: React.FC<unknown> = () => {
                         )
                       }}
                     >
-                      <SwitchEOption label="One" value="1" />
-                      <SwitchEOption label="Two" value="2" />
-                      <SwitchEOption label="Three" value="3" />
-                    </SwitchE>
+                      <SwitchOption label="One" value="1" />
+                      <SwitchOption label="Two" value="2" />
+                      <SwitchOption label="Three" value="3" />
+                    </Switch>
                   </Field>
                 )
               }}
