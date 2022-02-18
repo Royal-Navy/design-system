@@ -3,19 +3,28 @@ import { selectors } from '@defencedigital/design-tokens'
 
 const { color } = selectors
 
-export const StyledCheckmark = styled.span`
+interface StyledCheckmarkProps {
+  $hasContainer?: boolean
+}
+
+export const StyledCheckmark = styled.div<StyledCheckmarkProps>`
   position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
+  top: ${({ $hasContainer }) => ($hasContainer ? '12px' : '4px')};
+  left: ${({ $hasContainer }) => ($hasContainer ? '12px' : '4px')};
   height: 16px;
   width: 16px;
-  background-color: ${color('neutral', 'white')};
   border-radius: 999px;
   border: 1px solid ${color('neutral', '200')};
+  outline: none;
 
-  &::after {
+  &::after,
+  &::before {
     content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 999px;
     position: absolute;
     display: none;
   }

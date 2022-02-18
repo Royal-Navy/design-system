@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
-import { RadioE } from '../../components/RadioE'
+import { Radio } from '../../components/Radio'
 import {
   AutocompleteE,
   AutocompleteEOption,
@@ -146,13 +146,13 @@ export const Example: React.FC<unknown> = () => {
           />
         </Fieldset>
         <Fieldset legend="Example radio selection">
-          <RadioE
+          <Radio
             name="exampleRadio"
             label="Option 1"
             ref={register}
             value="Option 1"
           />
-          <RadioE
+          <Radio
             name="exampleRadio"
             label="Option 2"
             ref={register}

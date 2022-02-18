@@ -5,7 +5,7 @@ import { Formik, Field as FormikField, FieldProps } from 'formik'
 
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
-import { RadioE } from '../../components/RadioE'
+import { Radio } from '../../components/Radio'
 import { Checkbox } from '../../components/Checkbox'
 import {
   AutocompleteE,
@@ -178,12 +178,12 @@ export const Example: React.FC<unknown> = () => {
             <Fieldset legend="Example radio selection">
               <FormikField name="exampleRadio" value="Option 1" type="radio">
                 {({ field }: FieldProps) => (
-                  <RadioE label="Option 1" {...field} />
+                  <Radio label="Option 1" {...field} />
                 )}
               </FormikField>
               <FormikField name="exampleRadio" value="Option 2" type="radio">
                 {({ field }: FieldProps) => (
-                  <RadioE label="Option 2" {...field} />
+                  <Radio label="Option 2" {...field} />
                 )}
               </FormikField>
             </Fieldset>
