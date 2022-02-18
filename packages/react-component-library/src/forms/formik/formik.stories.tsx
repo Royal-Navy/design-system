@@ -1,6 +1,6 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState } from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Formik, Field as FormikField, FieldProps } from 'formik'
 
 import { TextInput } from '../../components/TextInput'
@@ -18,42 +18,20 @@ import { sleep } from '../../helpers'
 import { Field } from '../../components/Field'
 import { Fieldset } from '../../components/Fieldset'
 import { SectionDivider } from '../../components/SectionDivider'
-
-export interface FormValues {
-  email: string
-  password: string
-  description: string
-  exampleCheckbox: string[]
-  exampleRadio: string[]
-  exampleSwitch: string
-  exampleNumberInput: number | null
-  exampleDatePicker: Date | null
-  exampleSelect: string | null
-  exampleAutocomplete: string | null
-  exampleRangeSlider: number[]
-}
+import { EMPTY_FORM_VALUES, PREPOPULATED_FORM_VALUES } from '../constants'
+import { FormValues } from '../types'
 
 const MINIMUM_DATE = parseISO('2022-01-01')
 
-export const Example: React.FC<unknown> = () => {
+const Example: React.FC<{ initialValues: FormValues }> = ({
+  initialValues,
+}) => {
   const [formValues, setFormValues] = useState<FormValues>()
 
   return (
     <main>
       <Formik<FormValues>
-        initialValues={{
-          email: '',
-          password: '',
-          description: '',
-          exampleCheckbox: [],
-          exampleRadio: [],
-          exampleSwitch: '',
-          exampleNumberInput: null,
-          exampleDatePicker: null,
-          exampleSelect: null,
-          exampleAutocomplete: null,
-          exampleRangeSlider: [20],
-        }}
+        initialValues={initialValues}
         validate={({ email, exampleDatePicker }) => {
           const errors: Record<string, unknown> = {}
 
@@ -309,7 +287,7 @@ export const Example: React.FC<unknown> = () => {
                     <RangeSlider
                       domain={[0, 40]}
                       mode={1}
-                      values={[20]}
+                      values={values.exampleRangeSlider}
                       tracksLeft
                       step={2}
                       onChange={(newValues: ReadonlyArray<number>) => {
@@ -342,3 +320,15 @@ export default {
   title: 'Forms/Usage/Formik',
   component: Example,
 } as ComponentMeta<typeof Example>
+
+const Template: ComponentStory<typeof Example> = (args) => <Example {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+  initialValues: EMPTY_FORM_VALUES,
+}
+
+export const Prepopulated = Template.bind({})
+Prepopulated.args = {
+  initialValues: PREPOPULATED_FORM_VALUES,
+}

@@ -2,7 +2,7 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form/dist/index.ie11'
-import { ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import styled from 'styled-components'
 
 import { TextInput } from '../../components/TextInput'
@@ -20,20 +20,8 @@ import { Fieldset } from '../../components/Fieldset'
 import { sleep } from '../../helpers'
 import { Field } from '../../components/Field'
 import { SectionDivider } from '../../components/SectionDivider'
-
-export interface FormValues {
-  email: string
-  password: string
-  description: string
-  exampleCheckbox: string[]
-  exampleDatePicker: Date | null
-  exampleRadio: string[]
-  exampleSwitch: string
-  exampleNumberInput: number
-  exampleSelect: string | null
-  exampleAutocomplete: null
-  exampleRangeSlider: number[]
-}
+import { EMPTY_FORM_VALUES, PREPOPULATED_FORM_VALUES } from '../constants'
+import { FormValues } from '../types'
 
 const MINIMUM_DATE = parseISO('2022-01-01')
 
@@ -41,7 +29,9 @@ const StyledRangeSlider = styled(RangeSlider)`
   margin-top: 3rem;
 `
 
-export const Example: React.FC<unknown> = () => {
+const Example: React.FC<{ initialValues: FormValues }> = ({
+  initialValues,
+}) => {
   const {
     control,
     setValue,
@@ -50,18 +40,7 @@ export const Example: React.FC<unknown> = () => {
     watch,
     formState: { errors, isSubmitting },
   } = useForm({
-    defaultValues: {
-      email: '',
-      password: '',
-      description: '',
-      exampleCheckbox: [],
-      exampleDatePicker: null,
-      exampleRadio: [],
-      exampleSelect: null,
-      exampleSwitch: '',
-      exampleNumberInput: null,
-      exampleRangeSlider: [20],
-    },
+    defaultValues: initialValues,
   })
 
   const exampleSwitchValue = watch('exampleSwitch')
@@ -286,3 +265,15 @@ export default {
   title: 'Forms/Usage/react-hook-form',
   component: Example,
 } as ComponentMeta<typeof Example>
+
+const Template: ComponentStory<typeof Example> = (args) => <Example {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+  initialValues: EMPTY_FORM_VALUES,
+}
+
+export const Prepopulated = Template.bind({})
+Prepopulated.args = {
+  initialValues: PREPOPULATED_FORM_VALUES,
+}
