@@ -4,9 +4,13 @@ import { selectors } from '@defencedigital/design-tokens'
 const { color, spacing } = selectors
 
 export const StyledIconRight = styled.div`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
   svg {
     color: ${color('neutral', '400')};
     overflow: visible;
-    margin-left: ${spacing('2')};
+    margin-left: ${spacing('6')};
   }
 `

@@ -14,7 +14,7 @@ import { DatePicker } from '../../components/DatePicker'
 import { NumberInput } from '../../components/NumberInput'
 import { SelectE, SelectEOption } from '../../components/SelectE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
-import { RangeSliderE } from '../../components/RangeSliderE'
+import { RangeSlider } from '../../components/RangeSlider'
 import { Button } from '../../components/Button'
 import { Fieldset } from '../../components/Fieldset'
 import { sleep } from '../../helpers'
@@ -37,7 +37,7 @@ export interface FormValues {
 
 const MINIMUM_DATE = parseISO('2022-01-01')
 
-const StyledRangeSliderE = styled(RangeSliderE)`
+const StyledRangeSlider = styled(RangeSlider)`
   margin-top: 3rem;
 `
 
@@ -254,7 +254,7 @@ export const Example: React.FC<unknown> = () => {
             name="exampleRangeSlider"
             render={({ onChange, value }) => {
               return (
-                <StyledRangeSliderE
+                <StyledRangeSlider
                   onChange={onChange}
                   values={value}
                   domain={[0, 40]}

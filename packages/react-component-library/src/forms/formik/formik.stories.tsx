@@ -13,7 +13,7 @@ import { NumberInput } from '../../components/NumberInput'
 import { DatePicker, DatePickerOnChangeData } from '../../components/DatePicker'
 import { SelectE, SelectEOption } from '../../components/SelectE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
-import { RangeSliderE } from '../../components/RangeSliderE'
+import { RangeSlider } from '../../components/RangeSlider'
 import { sleep } from '../../helpers'
 import { Field } from '../../components/Field'
 import { Fieldset } from '../../components/Fieldset'
@@ -306,7 +306,7 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <RangeSliderE
+                    <RangeSlider
                       domain={[0, 40]}
                       mode={1}
                       values={[20]}

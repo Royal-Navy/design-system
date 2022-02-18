@@ -23,8 +23,8 @@ describe('RangeSlider', () => {
     values: ReadonlyArray<number>,
     data: { activeHandleID: string }
   ) => void
-  let domain: number[] // lower and upper bounds
-  let values: number[] // initial handle values
+  let domain: readonly [number, number] // lower and upper bounds
+  let values: readonly [number] | readonly [number, number] // initial handle values
   let step: number
   let tickCount: number
 
@@ -51,10 +51,6 @@ describe('RangeSlider', () => {
           onUpdate={onUpdateSpy}
         />
       )
-    })
-
-    it('should not display the percentage value next to the handle', () => {
-      expect(wrapper.getByTestId('rangeslider-percentage')).not.toBeVisible()
     })
 
     it('should set the correct `tabindex`', () => {
@@ -92,6 +88,10 @@ describe('RangeSlider', () => {
 
     it('should not render any labels', () => {
       expect(wrapper.queryAllByTestId('rangeslider-label')).toHaveLength(0)
+    })
+
+    it('should not render any markers', () => {
+      expect(wrapper.queryAllByTestId('rangeslider-marker')).toHaveLength(2)
     })
 
     describe('and the end user moves the handle to the right using keyboard', () => {
@@ -140,7 +140,7 @@ describe('RangeSlider', () => {
 
     it('renders the correct track chunks', () => {
       expect(
-        wrapper.queryByTestId('rangeslider-chunk-below-first-threshold')
+        wrapper.queryByTestId('rangeslider-track-below-first-threshold')
       ).toBeInTheDocument()
     })
   })
@@ -160,10 +160,10 @@ describe('RangeSlider', () => {
 
     it('renders the correct track chunks', () => {
       expect(
-        wrapper.queryByTestId('rangeslider-chunk-below-first-threshold')
+        wrapper.queryByTestId('rangeslider-track-below-first-threshold')
       ).toBeInTheDocument()
       expect(
-        wrapper.queryByTestId('rangeslider-chunk-between-thresholds')
+        wrapper.queryByTestId('rangeslider-track-between-thresholds')
       ).toBeInTheDocument()
     })
   })
@@ -246,7 +246,7 @@ describe('RangeSlider', () => {
 
   describe('multiple handles', () => {
     beforeEach(() => {
-      values = [10, 20, 30]
+      values = [10, 20]
 
       wrapper = render(
         <RangeSlider
@@ -260,27 +260,7 @@ describe('RangeSlider', () => {
     })
 
     it('should render two handles', () => {
-      expect(wrapper.queryAllByTestId('rangeslider-handle')).toHaveLength(3)
-    })
-  })
-
-  describe('when the `hasPercentage` prop is provided', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <RangeSlider
-          domain={[0, 40]}
-          mode={1}
-          values={[20]}
-          tracksLeft
-          tickCount={4}
-          thresholds={[40, 60]}
-          hasPercentage
-        />
-      )
-    })
-
-    it('should display the percentage value next to the handle', () => {
-      expect(wrapper.getByTestId('rangeslider-percentage')).toBeVisible()
+      expect(wrapper.queryAllByTestId('rangeslider-handle')).toHaveLength(2)
     })
   })
 
@@ -321,6 +301,31 @@ describe('RangeSlider', () => {
 
     it('formats the handle label using the provided formatter', () => {
       expect(wrapper.getByTestId('rangeslider-value')).toHaveTextContent('£20')
+    })
+  })
+
+  describe('when markers and labels are enabled', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <RangeSlider
+          domain={[0, 40]}
+          mode={1}
+          values={[20]}
+          tracksLeft
+          tickCount={4}
+          thresholds={[40, 60]}
+          hasMarkers
+          hasLabels
+        />
+      )
+    })
+
+    it('should render the correct number of labels', () => {
+      expect(wrapper.queryAllByTestId('rangeslider-label')).toHaveLength(5)
+    })
+
+    it('should render the correct number of markers', () => {
+      expect(wrapper.queryAllByTestId('rangeslider-marker')).toHaveLength(5)
     })
   })
 

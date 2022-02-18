@@ -4,7 +4,8 @@ export const StyledTicks = styled.div`
   div:first-of-type,
   div:last-of-type {
     div {
-      height: 16px;
+      height: 20px;
+      width: 2px;
     }
   }
 `

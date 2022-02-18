@@ -11,7 +11,7 @@ import { DatePicker } from '../../components/DatePicker'
 import { NumberInput } from '../../components/NumberInput'
 import { SelectE, SelectEOption } from '../../components/SelectE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
-import { RangeSliderE } from '../../components/RangeSliderE'
+import { RangeSlider } from '../../components/RangeSlider'
 import { Button } from '../../components/Button'
 import { Fieldset } from '../../components/Fieldset'
 import { useNativeForm } from './useNativeForm'
@@ -246,7 +246,7 @@ export const Example: React.FC<unknown> = () => {
           </Autocomplete>
         </Field>
         <Field hintText="Example hint text.">
-          <RangeSliderE
+          <RangeSlider
             onChange={(values: ReadonlyArray<number>) => {
               handleChange({
                 currentTarget: {

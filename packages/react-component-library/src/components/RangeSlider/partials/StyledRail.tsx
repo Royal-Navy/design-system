@@ -8,4 +8,5 @@ export const StyledRail = styled.div`
   width: 100%;
   height: 40px;
   transform: translateY(-100%);
+  cursor: pointer;
 `

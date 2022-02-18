@@ -11,7 +11,7 @@ export type ThresholdColor =
 
 export function useThresholdColor(
   percent: number,
-  thresholds: number[]
+  thresholds: number[] | undefined
 ): ThresholdColor | undefined {
   const singleThreshold = thresholds?.length === 1
   const doubleThreshold = thresholds?.length === 2

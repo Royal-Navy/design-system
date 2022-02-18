@@ -6,7 +6,7 @@ import datePicker from './DatePicker'
 import dismissibleBanner from './DismissibleBanner'
 import form from './form'
 import NumberInput from './NumberInput'
-import rangeSliderE from './RangeSliderE'
+import RangeSlider from './RangeSlider'
 import selectE from './SelectE'
 import timeline from './timeline'
 
@@ -19,7 +19,7 @@ export default {
   dismissibleBanner,
   form,
   NumberInput,
-  rangeSliderE,
+  RangeSlider,
   selectE,
   timeline,
 }
