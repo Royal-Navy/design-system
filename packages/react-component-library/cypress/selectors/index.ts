@@ -1,4 +1,4 @@
-import autocompleteE from './AutocompleteE'
+import Autocomplete from './Autocomplete'
 import avatar from './Avatar'
 import Checkbox from './Checkbox'
 import contextMenu from './ContextMenu'
@@ -11,7 +11,7 @@ import selectE from './SelectE'
 import timeline from './timeline'
 
 export default {
-  autocompleteE,
+  Autocomplete,
   avatar,
   Checkbox,
   contextMenu,

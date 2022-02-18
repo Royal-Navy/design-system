@@ -9,11 +9,9 @@ import {
 import { hexToRgb } from '../../helpers'
 import selectors from '../../selectors'
 
-describe('AutocompleteE', () => {
+describe('Autocomplete', () => {
   beforeEach(() => {
-    cy.visit(
-      '/iframe.html?id=autocomplete-experimental--default&viewMode=story'
-    )
+    cy.visit('/iframe.html?id=autocomplete--default&viewMode=story')
   })
 
   describe('when the component is focused', () => {
@@ -41,7 +39,7 @@ describe('AutocompleteE', () => {
       })
 
       it('does not render the `No results for t` text', () => {
-        cy.get(selectors.autocompleteE.noResults).should('not.exist')
+        cy.get(selectors.Autocomplete.noResults).should('not.exist')
       })
 
       it('highlights the first item', () => {
@@ -170,7 +168,7 @@ describe('AutocompleteE', () => {
       })
 
       it('renders the `No results for z` text', () => {
-        cy.get(selectors.autocompleteE.noResults).should('be.visible')
+        cy.get(selectors.Autocomplete.noResults).should('be.visible')
       })
 
       describe('and the user clicks away from the component', () => {

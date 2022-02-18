@@ -11,6 +11,7 @@ export * from './styled-components'
 // Components
 export * from './components/Alert'
 export * from './components/Avatar'
+export * from './components/Autocomplete'
 export * from './components/Badge'
 export * from './components/Breadcrumbs'
 export * from './components/Button'

@@ -15,9 +15,9 @@ import { useAutocomplete } from './hooks/useAutocomplete'
 import { useMenuVisibility } from './hooks/useMenuVisibility'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface AutocompleteEProps extends SelectBaseProps {}
+export interface AutocompleteProps extends SelectBaseProps {}
 
-export const AutocompleteE: React.FC<AutocompleteEProps> = ({
+export const Autocomplete: React.FC<AutocompleteProps> = ({
   children,
   id = getId('autocomplete'),
   isInvalid = false,
@@ -117,4 +117,4 @@ export const AutocompleteE: React.FC<AutocompleteEProps> = ({
   )
 }
 
-AutocompleteE.displayName = 'AutocompleteE'
+Autocomplete.displayName = 'Autocomplete'

@@ -3,9 +3,9 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { AutocompleteE, AutocompleteEOption } from '.'
+import { Autocomplete, AutocompleteOption } from '.'
 
-describe('AutocompleteE', () => {
+describe('Autocomplete', () => {
   let onChangeSpy: (value: string | null) => void
   let wrapper: RenderResult
 
@@ -16,18 +16,14 @@ describe('AutocompleteE', () => {
       onChangeSpy = jest.fn()
 
       wrapper = render(
-        <AutocompleteE
-          id="autocomplete-id"
-          label="Label"
-          onChange={onChangeSpy}
-        >
-          <AutocompleteEOption value="one">One</AutocompleteEOption>
-          <AutocompleteEOption value="two">Two</AutocompleteEOption>
-          <AutocompleteEOption value="three">Three</AutocompleteEOption>
+        <Autocomplete id="autocomplete-id" label="Label" onChange={onChangeSpy}>
+          <AutocompleteOption value="one">One</AutocompleteOption>
+          <AutocompleteOption value="two">Two</AutocompleteOption>
+          <AutocompleteOption value="three">Three</AutocompleteOption>
           {canShowFourthOption && (
-            <AutocompleteEOption value="four">Four</AutocompleteEOption>
+            <AutocompleteOption value="four">Four</AutocompleteOption>
           )}
-        </AutocompleteE>
+        </Autocomplete>
       )
     })
 
@@ -169,11 +165,11 @@ describe('AutocompleteE', () => {
   describe('when `value` is set to a valid value', () => {
     beforeEach(() => {
       wrapper = render(
-        <AutocompleteE label="Label" value="two">
-          <AutocompleteEOption value="one">One</AutocompleteEOption>
-          <AutocompleteEOption value="two">Two</AutocompleteEOption>
-          <AutocompleteEOption value="three">Three</AutocompleteEOption>
-        </AutocompleteE>
+        <Autocomplete label="Label" value="two">
+          <AutocompleteOption value="one">One</AutocompleteOption>
+          <AutocompleteOption value="two">Two</AutocompleteOption>
+          <AutocompleteOption value="three">Three</AutocompleteOption>
+        </Autocomplete>
       )
     })
 
@@ -185,11 +181,11 @@ describe('AutocompleteE', () => {
   describe.each(['invalid', null])('when `value` is set to `%s`', (value) => {
     beforeEach(() => {
       wrapper = render(
-        <AutocompleteE label="Label" value={value}>
-          <AutocompleteEOption value="one">One</AutocompleteEOption>
-          <AutocompleteEOption value="two">Two</AutocompleteEOption>
-          <AutocompleteEOption value="three">Three</AutocompleteEOption>
-        </AutocompleteE>
+        <Autocomplete label="Label" value={value}>
+          <AutocompleteOption value="one">One</AutocompleteOption>
+          <AutocompleteOption value="two">Two</AutocompleteOption>
+          <AutocompleteOption value="three">Three</AutocompleteOption>
+        </Autocomplete>
       )
     })
 

@@ -5,10 +5,7 @@ import { ComponentMeta } from '@storybook/react'
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { Radio } from '../../components/Radio'
-import {
-  AutocompleteE,
-  AutocompleteEOption,
-} from '../../components/AutocompleteE'
+import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
 import { Checkbox } from '../../components/Checkbox'
 import { DatePickerE } from '../../components/DatePickerE'
 import { NumberInputE } from '../../components/NumberInputE'
@@ -230,7 +227,7 @@ export const Example: React.FC<unknown> = () => {
           </SelectE>
         </Field>
         <Field hintText="Example hint text.">
-          <AutocompleteE
+          <Autocomplete
             label="Example autocomplete"
             onChange={(value) => {
               handleChange({
@@ -242,11 +239,11 @@ export const Example: React.FC<unknown> = () => {
             }}
             value={formState.exampleAutocomplete}
           >
-            <AutocompleteEOption value="one">One</AutocompleteEOption>
-            <AutocompleteEOption value="two">Two</AutocompleteEOption>
-            <AutocompleteEOption value="three">Three</AutocompleteEOption>
-            <AutocompleteEOption value="four">Four</AutocompleteEOption>
-          </AutocompleteE>
+            <AutocompleteOption value="one">One</AutocompleteOption>
+            <AutocompleteOption value="two">Two</AutocompleteOption>
+            <AutocompleteOption value="three">Three</AutocompleteOption>
+            <AutocompleteOption value="four">Four</AutocompleteOption>
+          </Autocomplete>
         </Field>
         <Field hintText="Example hint text.">
           <RangeSliderE

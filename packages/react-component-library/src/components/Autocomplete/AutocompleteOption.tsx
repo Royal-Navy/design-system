@@ -4,14 +4,13 @@ import reactStringReplace from 'react-string-replace'
 import { SelectBaseOption, SelectBaseOptionAsStringProps } from '../SelectBase'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface AutocompleteEOptionProps
-  extends SelectBaseOptionAsStringProps {
+export interface AutocompleteOptionProps extends SelectBaseOptionAsStringProps {
   inputValue?: string
 }
 
-export const AutocompleteEOption = React.forwardRef<
+export const AutocompleteOption = React.forwardRef<
   HTMLLIElement,
-  AutocompleteEOptionProps
+  AutocompleteOptionProps
 >(({ children, inputValue, ...rest }, ref) => {
   return (
     <SelectBaseOption ref={ref} {...rest}>
@@ -22,4 +21,4 @@ export const AutocompleteEOption = React.forwardRef<
   )
 })
 
-AutocompleteEOption.displayName = 'AutocompleteEOption'
+AutocompleteOption.displayName = 'AutocompleteOption'

@@ -7,10 +7,7 @@ import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { Radio } from '../../components/Radio'
 import { Checkbox } from '../../components/Checkbox'
-import {
-  AutocompleteE,
-  AutocompleteEOption,
-} from '../../components/AutocompleteE'
+import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
 import { Button } from '../../components/Button'
 import { NumberInputE } from '../../components/NumberInputE'
 import {
@@ -287,22 +284,20 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <AutocompleteE
+                    <Autocomplete
                       value={value}
                       label="Example autocomplete"
                       onChange={(newValue: string | null) => {
                         setFieldValue('exampleAutocomplete', newValue)
                       }}
                     >
-                      <AutocompleteEOption value="one">One</AutocompleteEOption>
-                      <AutocompleteEOption value="two">Two</AutocompleteEOption>
-                      <AutocompleteEOption value="three">
+                      <AutocompleteOption value="one">One</AutocompleteOption>
+                      <AutocompleteOption value="two">Two</AutocompleteOption>
+                      <AutocompleteOption value="three">
                         Three
-                      </AutocompleteEOption>
-                      <AutocompleteEOption value="four">
-                        Four
-                      </AutocompleteEOption>
-                    </AutocompleteE>
+                      </AutocompleteOption>
+                      <AutocompleteOption value="four">Four</AutocompleteOption>
+                    </Autocomplete>
                   </Field>
                 )
               }}

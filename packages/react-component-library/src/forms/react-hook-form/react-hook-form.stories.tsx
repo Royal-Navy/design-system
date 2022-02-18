@@ -8,10 +8,7 @@ import styled from 'styled-components'
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { Radio } from '../../components/Radio'
-import {
-  AutocompleteE,
-  AutocompleteEOption,
-} from '../../components/AutocompleteE'
+import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
 import { Checkbox } from '../../components/Checkbox'
 import { DatePickerE } from '../../components/DatePickerE'
 import { NumberInputE } from '../../components/NumberInputE'
@@ -238,16 +235,16 @@ export const Example: React.FC<unknown> = () => {
             control={control}
             name="exampleAutocomplete"
             render={({ onChange, value }) => (
-              <AutocompleteE
+              <Autocomplete
                 label="Example autocomplete"
                 onChange={onChange}
                 value={value}
               >
-                <AutocompleteEOption value="one">One</AutocompleteEOption>
-                <AutocompleteEOption value="two">Two</AutocompleteEOption>
-                <AutocompleteEOption value="three">Three</AutocompleteEOption>
-                <AutocompleteEOption value="four">Four</AutocompleteEOption>
-              </AutocompleteE>
+                <AutocompleteOption value="one">One</AutocompleteOption>
+                <AutocompleteOption value="two">Two</AutocompleteOption>
+                <AutocompleteOption value="three">Three</AutocompleteOption>
+                <AutocompleteOption value="four">Four</AutocompleteOption>
+              </Autocomplete>
             )}
           />
         </Field>
