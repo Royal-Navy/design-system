@@ -2,34 +2,32 @@ import { before, cy, describe, it } from 'local-cypress'
 
 import selectors from '../../selectors'
 
-describe('NumberInputE', () => {
+describe('NumberInput', () => {
   beforeEach(() => {
-    cy.visit(
-      '/iframe.html?id=number-input-experimental--default&viewMode=story'
-    )
+    cy.visit('/iframe.html?id=number-input--default&viewMode=story')
   })
 
   it('renders the number input without a value', () => {
-    cy.get(selectors.numberInputE.input).should('have.value', '')
+    cy.get(selectors.NumberInput.input).should('have.value', '')
   })
 
   describe('when the increase button is clicked', () => {
     beforeEach(() => {
-      cy.get(selectors.numberInputE.increase).click()
+      cy.get(selectors.NumberInput.increase).click()
     })
 
     it('should increment the value', () => {
-      cy.get(selectors.numberInputE.input).should('have.value', '1')
+      cy.get(selectors.NumberInput.input).should('have.value', '1')
     })
   })
 
   describe('when the decrease button is clicked', () => {
     beforeEach(() => {
-      cy.get(selectors.numberInputE.decrease).click()
+      cy.get(selectors.NumberInput.decrease).click()
     })
 
     it('should decrement the value', () => {
-      cy.get(selectors.numberInputE.input).should('have.value', '-1')
+      cy.get(selectors.NumberInput.input).should('have.value', '-1')
     })
   })
 
@@ -48,11 +46,11 @@ describe('NumberInputE', () => {
   TYPED_VALUE_CASES.forEach(([textToType, expectedValue]) => {
     describe(`when typing "${textToType}"`, () => {
       beforeEach(() => {
-        cy.get(selectors.numberInputE.input).type(textToType)
+        cy.get(selectors.NumberInput.input).type(textToType)
       })
 
       it(`the value is "${expectedValue}"`, () => {
-        cy.get(selectors.numberInputE.input).should('have.value', expectedValue)
+        cy.get(selectors.NumberInput.input).should('have.value', expectedValue)
       })
     })
   })

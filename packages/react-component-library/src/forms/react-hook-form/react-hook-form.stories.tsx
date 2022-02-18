@@ -11,7 +11,7 @@ import { Radio } from '../../components/Radio'
 import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
 import { Checkbox } from '../../components/Checkbox'
 import { DatePicker } from '../../components/DatePicker'
-import { NumberInputE } from '../../components/NumberInputE'
+import { NumberInput } from '../../components/NumberInput'
 import { SelectE, SelectEOption } from '../../components/SelectE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { RangeSliderE } from '../../components/RangeSliderE'
@@ -82,7 +82,7 @@ export const Example: React.FC<unknown> = () => {
   const handleSwitchEChange = (e: React.FormEvent<HTMLInputElement>) =>
     setValue('exampleSwitch', e.currentTarget.value)
 
-  const handleNumberInputEChange = (
+  const handleNumberInputChange = (
     _:
       | React.ChangeEvent<HTMLInputElement>
       | React.MouseEvent<HTMLButtonElement>,
@@ -170,12 +170,12 @@ export const Example: React.FC<unknown> = () => {
           </SwitchE>
         </Field>
         <Field hintText="Example hint text.">
-          <NumberInputE
+          <NumberInput
             name="exampleNumberInput"
             label="Example number input"
-            onChange={handleNumberInputEChange}
+            onChange={handleNumberInputChange}
             value={exampleNumberInputValue}
-            data-testid="form-example-NumberInputE"
+            data-testid="form-example-NumberInput"
           />
         </Field>
         <Field

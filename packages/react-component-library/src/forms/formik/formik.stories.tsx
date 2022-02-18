@@ -9,7 +9,7 @@ import { Radio } from '../../components/Radio'
 import { Checkbox } from '../../components/Checkbox'
 import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
 import { Button } from '../../components/Button'
-import { NumberInputE } from '../../components/NumberInputE'
+import { NumberInput } from '../../components/NumberInput'
 import { DatePicker, DatePickerOnChangeData } from '../../components/DatePicker'
 import { SelectE, SelectEOption } from '../../components/SelectE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
@@ -215,7 +215,7 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <NumberInputE
+                    <NumberInput
                       label="Example number input"
                       name={name}
                       value={value}

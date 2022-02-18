@@ -2,130 +2,77 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { IconBrightnessHigh } from '@defencedigital/icon-library'
 
+import { COMPONENT_SIZE } from '../Forms'
 import { NumberInput } from './NumberInput'
-import { UNIT_POSITION } from './constants'
-
-const chromaticIgnore = { chromatic: { disable: true } }
 
 export default {
   component: NumberInput,
   title: 'Number Input',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    docs: {
+      description: {
+        component:
+          'This component leverages a [custom `Decimal` type](https://github.com/MikeMcl/decimal.js) for handling floating point arithmetic.',
+      },
+    },
   },
 } as ComponentMeta<typeof NumberInput>
 
-export const Default: ComponentStory<typeof NumberInput> = (props) => (
-  <NumberInput {...props} />
+const Template: ComponentStory<typeof NumberInput> = (args) => (
+  <NumberInput {...args} />
 )
 
-Default.args = {
-  id: undefined,
-  name: 'number-input-default',
+export const Default = Template.bind({})
+
+export const SteppedFloats = Template.bind({})
+SteppedFloats.args = {
+  step: 0.25,
 }
 
-export const Condensed: ComponentStory<typeof NumberInput> = (props) => (
-  <NumberInput {...props} isCondensed name="number-input-condensed" />
-)
+export const Placeholder = Template.bind({})
+Placeholder.args = {
+  placeholder: 'Example placeholder',
+}
 
-Condensed.storyName = 'Condensed'
+export const Small = Template.bind({})
+Small.args = {
+  size: COMPONENT_SIZE.SMALL,
+}
 
-export const Clearable: ComponentStory<typeof NumberInput> = (props) => (
-  <NumberInput {...props} canClear name="number-input-clearable" value={10} />
-)
+export const Disabled = Template.bind({})
+Disabled.args = {
+  isDisabled: true,
+}
 
-Clearable.storyName = 'Clearable'
+export const WithFootnote = Template.bind({})
+WithFootnote.args = {
+  footnote: 'Footnote',
+}
 
-export const Disabled: ComponentStory<typeof NumberInput> = (props) => (
-  <NumberInput {...props} isDisabled name="number-input-disabled" />
-)
+export const WithLabel = Template.bind({})
+WithLabel.args = {
+  label: 'Label',
+}
 
-Disabled.storyName = 'Disabled'
+export const WithIcon = Template.bind({})
+WithIcon.args = {
+  icon: <IconBrightnessHigh />,
+}
 
-export const WithFootnote: ComponentStory<typeof NumberInput> = (props) => (
-  <NumberInput
-    {...props}
-    footnote="Footnote"
-    name="number-input-with-footnote"
-  />
-)
+export const WithPrefix = Template.bind({})
+WithPrefix.args = {
+  prefix: String.fromCharCode(163),
+  value: 1000,
+}
 
-WithFootnote.storyName = 'With footnote'
+export const WithSuffix = Template.bind({})
+WithSuffix.args = {
+  suffix: `m${String.fromCharCode(179)}`,
+  value: 1000,
+}
 
-export const WithLabel: ComponentStory<typeof NumberInput> = (props) => (
-  <NumberInput {...props} label="Label" name="number-input-label" />
-)
-
-WithLabel.storyName = 'With label'
-
-export const Placeholder: ComponentStory<typeof NumberInput> = (props) => (
-  <NumberInput
-    {...props}
-    label="Label"
-    name="number-input-placeholder"
-    placeholder="Placeholder"
-  />
-)
-
-Placeholder.storyName = 'With placeholder'
-
-export const StartAdornmentIcon: ComponentStory<typeof NumberInput> = (
-  props
-) => (
-  <NumberInput
-    {...props}
-    name="number-input-start-adornment-icon"
-    startAdornment={<IconBrightnessHigh />}
-  />
-)
-
-StartAdornmentIcon.storyName = 'With start adornment icon'
-
-export const StartAdornmentText: ComponentStory<typeof NumberInput> = (
-  props
-) => (
-  <NumberInput
-    {...props}
-    name="number-input-start-adornment-text"
-    startAdornment="Kts"
-  />
-)
-
-StartAdornmentText.storyName = 'With start adornment text'
-
-export const WithUnit: ComponentStory<typeof NumberInput> = (props) => (
-  <NumberInput
-    {...props}
-    name="number-input-unit"
-    value={1000}
-    unit="m&sup3;"
-  />
-)
-
-WithUnit.storyName = 'With unit'
-WithUnit.parameters = chromaticIgnore
-
-export const WithUnitLabel: ComponentStory<typeof NumberInput> = (props) => (
-  <NumberInput
-    {...props}
-    label="Cost"
-    name="number-input-unit-label"
-    value={1000}
-    unit="m&sup3;"
-  />
-)
-
-WithUnitLabel.storyName = 'With unit and label'
-WithUnitLabel.parameters = chromaticIgnore
-
-export const UnitBefore: ComponentStory<typeof NumberInput> = (props) => (
-  <NumberInput
-    {...props}
-    name="number-input-unit-before"
-    value={1000}
-    unit="&pound;"
-    unitPosition={UNIT_POSITION.BEFORE}
-  />
-)
-
-UnitBefore.storyName = 'With unit before'
+export const WithError = Template.bind({})
+WithError.args = {
+  isInvalid: true,
+}
