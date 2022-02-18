@@ -11,7 +11,7 @@ import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
 import { Button } from '../../components/Button'
 import { NumberInput } from '../../components/NumberInput'
 import { DatePicker, DatePickerOnChangeData } from '../../components/DatePicker'
-import { SelectE, SelectEOption } from '../../components/SelectE'
+import { Select, SelectOption } from '../../components/Select'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { RangeSlider } from '../../components/RangeSlider'
 import { sleep } from '../../helpers'
@@ -258,18 +258,18 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <SelectE
+                    <Select
                       value={value}
                       label="Example select"
                       onChange={(newValue: string | null) => {
                         setFieldValue('exampleSelect', newValue)
                       }}
                     >
-                      <SelectEOption value="one">One</SelectEOption>
-                      <SelectEOption value="two">Two</SelectEOption>
-                      <SelectEOption value="three">Three</SelectEOption>
-                      <SelectEOption value="four">Four</SelectEOption>
-                    </SelectE>
+                      <SelectOption value="one">One</SelectOption>
+                      <SelectOption value="two">Two</SelectOption>
+                      <SelectOption value="three">Three</SelectOption>
+                      <SelectOption value="four">Four</SelectOption>
+                    </Select>
                   </Field>
                 )
               }}

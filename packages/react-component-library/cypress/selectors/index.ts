@@ -7,7 +7,7 @@ import dismissibleBanner from './DismissibleBanner'
 import form from './form'
 import NumberInput from './NumberInput'
 import RangeSlider from './RangeSlider'
-import selectE from './SelectE'
+import Select from './Select'
 import timeline from './timeline'
 
 export default {
@@ -20,6 +20,6 @@ export default {
   form,
   NumberInput,
   RangeSlider,
-  selectE,
+  Select,
   timeline,
 }

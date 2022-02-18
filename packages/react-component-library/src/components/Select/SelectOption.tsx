@@ -3,12 +3,11 @@ import React from 'react'
 import { SelectBaseOption, SelectBaseOptionAsStringProps } from '../SelectBase'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SelectEOptionProps
+export interface SelectOptionProps
   extends Omit<SelectBaseOptionAsStringProps, 'title'> {}
 
-export const SelectEOption = React.forwardRef<
-  HTMLLIElement,
-  SelectEOptionProps
->((props, ref) => <SelectBaseOption {...props} ref={ref} />)
+export const SelectOption = React.forwardRef<HTMLLIElement, SelectOptionProps>(
+  (props, ref) => <SelectBaseOption {...props} ref={ref} />
+)
 
-SelectEOption.displayName = 'SelectEOption'
+SelectOption.displayName = 'SelectOption'

@@ -9,7 +9,7 @@ import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
 import { Checkbox } from '../../components/Checkbox'
 import { DatePicker } from '../../components/DatePicker'
 import { NumberInput } from '../../components/NumberInput'
-import { SelectE, SelectEOption } from '../../components/SelectE'
+import { Select, SelectOption } from '../../components/Select'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { RangeSlider } from '../../components/RangeSlider'
 import { Button } from '../../components/Button'
@@ -208,7 +208,7 @@ export const Example: React.FC<unknown> = () => {
           />
         </Field>
         <Field hintText="Example hint text.">
-          <SelectE
+          <Select
             label="Example select"
             onChange={(value) => {
               handleChange({
@@ -220,11 +220,11 @@ export const Example: React.FC<unknown> = () => {
             }}
             value={formState.exampleSelect}
           >
-            <SelectEOption value="one">One</SelectEOption>
-            <SelectEOption value="two">Two</SelectEOption>
-            <SelectEOption value="three">Three</SelectEOption>
-            <SelectEOption value="four">Four</SelectEOption>
-          </SelectE>
+            <SelectOption value="one">One</SelectOption>
+            <SelectOption value="two">Two</SelectOption>
+            <SelectOption value="three">Three</SelectOption>
+            <SelectOption value="four">Four</SelectOption>
+          </Select>
         </Field>
         <Field hintText="Example hint text.">
           <Autocomplete

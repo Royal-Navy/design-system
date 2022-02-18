@@ -12,7 +12,7 @@ import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
 import { Checkbox } from '../../components/Checkbox'
 import { DatePicker } from '../../components/DatePicker'
 import { NumberInput } from '../../components/NumberInput'
-import { SelectE, SelectEOption } from '../../components/SelectE'
+import { Select, SelectOption } from '../../components/Select'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { RangeSlider } from '../../components/RangeSlider'
 import { Button } from '../../components/Button'
@@ -221,12 +221,12 @@ export const Example: React.FC<unknown> = () => {
             control={control}
             name="exampleSelect"
             render={({ onChange, value }) => (
-              <SelectE label="Example select" onChange={onChange} value={value}>
-                <SelectEOption value="one">One</SelectEOption>
-                <SelectEOption value="two">Two</SelectEOption>
-                <SelectEOption value="three">Three</SelectEOption>
-                <SelectEOption value="four">Four</SelectEOption>
-              </SelectE>
+              <Select label="Example select" onChange={onChange} value={value}>
+                <SelectOption value="one">One</SelectOption>
+                <SelectOption value="two">Two</SelectOption>
+                <SelectOption value="three">Three</SelectOption>
+                <SelectOption value="four">Four</SelectOption>
+              </Select>
             )}
           />
         </Field>
