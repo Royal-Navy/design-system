@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.80.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.1...2.80.2) (2022-02-15)
+
+
+### Bug Fixes
+
+* **Modal:** Stop regenerating IDs on every render ([ba3d2a0](https://github.com/defencedigital/mod-uk-design-system/commit/ba3d2a01866fcf91f0c02dd760143774d45589e0))
+
+
+
+
+
 ## [2.80.1](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.0...2.80.1) (2022-02-11)
 
 
