@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { Nav, NavItem } from '../../../common/Nav'
-import { SidebarNavItemE, SidebarNavItemEProps } from './index'
+import { SidebarNavItem, SidebarNavItemProps } from './index'
 import { warnIfOverwriting } from '../../../helpers'
 import { StyledNav } from './partials/StyledNav'
 
-export interface SidebarNavEProps extends Nav<NavItem> {
+export interface SidebarNavProps extends Nav<NavItem> {
   /**
    * Optional handler invoked when `onBlur` event is emitted.
    */
@@ -29,10 +29,10 @@ export interface SidebarNavEProps extends Nav<NavItem> {
 }
 
 function mapNavItem(
-  navItem: React.ReactElement<SidebarNavItemEProps>,
+  navItem: React.ReactElement<SidebarNavItemProps>,
   onClick: ((e: React.MouseEvent<HTMLElement>) => void) | undefined
 ) {
-  warnIfOverwriting(navItem.props, 'onClick', SidebarNavItemE.name)
+  warnIfOverwriting(navItem.props, 'onClick', SidebarNavItem.name)
 
   return React.cloneElement(navItem, {
     ...navItem.props,
@@ -40,7 +40,7 @@ function mapNavItem(
   })
 }
 
-export const SidebarNavE: React.FC<SidebarNavEProps> = ({
+export const SidebarNav: React.FC<SidebarNavProps> = ({
   children = [],
   onBlur,
   onFocus,
@@ -59,11 +59,11 @@ export const SidebarNavE: React.FC<SidebarNavEProps> = ({
   >
     {React.Children.map(
       children,
-      (child: React.ReactElement<SidebarNavItemEProps>) => {
+      (child: React.ReactElement<SidebarNavItemProps>) => {
         return mapNavItem(child, onItemClick)
       }
     )}
   </StyledNav>
 )
 
-SidebarNavE.displayName = 'SidebarNavE'
+SidebarNav.displayName = 'SidebarNav'

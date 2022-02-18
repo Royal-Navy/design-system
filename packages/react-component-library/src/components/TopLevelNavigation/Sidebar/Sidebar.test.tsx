@@ -9,19 +9,19 @@ import {
 import { IconHome, IconGrain } from '@defencedigital/icon-library'
 
 import {
-  SidebarE,
-  SidebarNavE,
-  SidebarNavItemE,
-  SidebarUserE,
-  SidebarWrapperE,
+  Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
+  SidebarWrapper,
 } from '.'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 
-const user = <SidebarUserE initials="HN" name="Horatio Nelson" />
+const user = <SidebarUser initials="HN" name="Horatio Nelson" />
 
 const userWithLinks = (
-  <SidebarUserE
+  <SidebarUser
     initials="HN"
     name="Horatio Nelson"
     userLink={<Link href="/user-profile">Profile</Link>}
@@ -50,24 +50,24 @@ const notifications = (
   </Notifications>
 )
 
-describe('SidebarE', () => {
+describe('Sidebar', () => {
   let wrapper: RenderResult
 
   describe('when `initialIsOpen` is set', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapperE>
-          <SidebarE initialIsOpen icon={<IconGrain />} title="Application Name">
-            <SidebarNavE>
-              <SidebarNavItemE
+        <SidebarWrapper>
+          <Sidebar initialIsOpen icon={<IconGrain />} title="Application Name">
+            <SidebarNav>
+              <SidebarNavItem
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               />
-              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
-            </SidebarNavE>
-          </SidebarE>
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
           <main>Hello, World!</main>
-        </SidebarWrapperE>
+        </SidebarWrapper>
       )
       fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
     })
@@ -82,7 +82,7 @@ describe('SidebarE', () => {
       expect(() => {
         wrapper = render(
           <React.StrictMode>
-            <SidebarE />
+            <Sidebar />
           </React.StrictMode>
         )
 
@@ -93,7 +93,7 @@ describe('SidebarE', () => {
 
   describe('when composed with minimal props', () => {
     beforeEach(() => {
-      wrapper = render(<SidebarE />)
+      wrapper = render(<Sidebar />)
     })
 
     it('does not render the header', () => {
@@ -104,18 +104,18 @@ describe('SidebarE', () => {
   describe('when composed with single level of navigaton and header items', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapperE>
-          <SidebarE icon={<IconGrain />} title="Application Name">
-            <SidebarNavE>
-              <SidebarNavItemE
+        <SidebarWrapper>
+          <Sidebar icon={<IconGrain />} title="Application Name">
+            <SidebarNav>
+              <SidebarNavItem
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               />
-              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
-            </SidebarNavE>
-          </SidebarE>
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
           <main>Hello, World!</main>
-        </SidebarWrapperE>
+        </SidebarWrapper>
       )
     })
 
@@ -223,18 +223,18 @@ describe('SidebarE', () => {
   describe('when composed with a user with user or exit links', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapperE>
-          <SidebarE icon={<IconGrain />} title="Application Name" user={user}>
-            <SidebarNavE>
-              <SidebarNavItemE
+        <SidebarWrapper>
+          <Sidebar icon={<IconGrain />} title="Application Name" user={user}>
+            <SidebarNav>
+              <SidebarNavItem
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               />
-              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
-            </SidebarNavE>
-          </SidebarE>
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
           <main>Hello, World!</main>
-        </SidebarWrapperE>
+        </SidebarWrapper>
       )
     })
 
@@ -277,22 +277,22 @@ describe('SidebarE', () => {
   describe('when composed with a user menu, user link and exit link', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapperE>
-          <SidebarE
+        <SidebarWrapper>
+          <Sidebar
             icon={<IconGrain />}
             title="Application Name"
             user={userWithLinks}
           >
-            <SidebarNavE>
-              <SidebarNavItemE
+            <SidebarNav>
+              <SidebarNavItem
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               />
-              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
-            </SidebarNavE>
-          </SidebarE>
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
           <main>Hello, World!</main>
-        </SidebarWrapperE>
+        </SidebarWrapper>
       )
     })
 
@@ -380,22 +380,22 @@ describe('SidebarE', () => {
   describe('when composed with notifications and the `hasUnreadNotification` prop is not set', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapperE>
-          <SidebarE
+        <SidebarWrapper>
+          <Sidebar
             icon={<IconGrain />}
             title="Application Name"
             notifications={notifications}
           >
-            <SidebarNavE>
-              <SidebarNavItemE
+            <SidebarNav>
+              <SidebarNavItem
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               />
-              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
-            </SidebarNavE>
-          </SidebarE>
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
           <main>Hello, World!</main>
-        </SidebarWrapperE>
+        </SidebarWrapper>
       )
     })
 
@@ -407,23 +407,23 @@ describe('SidebarE', () => {
   describe('when composed with notifications and the `hasUnreadNotification prop is set`', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapperE>
-          <SidebarE
+        <SidebarWrapper>
+          <Sidebar
             icon={<IconGrain />}
             title="Application Name"
             notifications={notifications}
             hasUnreadNotification
           >
-            <SidebarNavE>
-              <SidebarNavItemE
+            <SidebarNav>
+              <SidebarNavItem
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               />
-              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
-            </SidebarNavE>
-          </SidebarE>
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
           <main>Hello, World!</main>
-        </SidebarWrapperE>
+        </SidebarWrapper>
       )
     })
 
@@ -499,30 +499,30 @@ describe('SidebarE', () => {
   describe('when composed with nested navigation', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapperE>
-          <SidebarE
+        <SidebarWrapper>
+          <Sidebar
             icon={<IconGrain />}
             title="Application Name"
             notifications={notifications}
             hasUnreadNotification
           >
-            <SidebarNavE>
-              <SidebarNavItemE
+            <SidebarNav>
+              <SidebarNavItem
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               >
-                <SidebarNavItemE
+                <SidebarNavItem
                   link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
                 />
-                <SidebarNavItemE
+                <SidebarNavItem
                   link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
                 />
-              </SidebarNavItemE>
-              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
-            </SidebarNavE>
-          </SidebarE>
+              </SidebarNavItem>
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
           <main>Hello, World!</main>
-        </SidebarWrapperE>
+        </SidebarWrapper>
       )
     })
 
@@ -592,29 +592,29 @@ describe('SidebarE', () => {
   describe('when composed with arbitrary props', () => {
     beforeEach(() => {
       wrapper = render(
-        <SidebarWrapperE data-arbitrary="arbitrary-wrapper">
-          <SidebarE
+        <SidebarWrapper data-arbitrary="arbitrary-wrapper">
+          <Sidebar
             data-arbitrary="arbitrary-sidebar"
             notifications={notifications}
           >
-            <SidebarNavE data-arbitrary="arbitrary-nav">
-              <SidebarNavItemE
+            <SidebarNav data-arbitrary="arbitrary-nav">
+              <SidebarNavItem
                 data-arbitrary="arbitrary-nav-item"
                 icon={<IconHome />}
                 link={<Link href="/dashboard">Dashboard</Link>}
               >
-                <SidebarNavItemE
+                <SidebarNavItem
                   link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
                 />
-                <SidebarNavItemE
+                <SidebarNavItem
                   link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
                 />
-              </SidebarNavItemE>
-              <SidebarNavItemE link={<Link href="/reports">Reports</Link>} />
-            </SidebarNavE>
-          </SidebarE>
+              </SidebarNavItem>
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
           <main>Hello, World!</main>
-        </SidebarWrapperE>
+        </SidebarWrapper>
       )
     })
 

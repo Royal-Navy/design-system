@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { Transition } from 'react-transition-group'
 
 import { SidebarHandle } from './SidebarHandle'
-import { SidebarUserEProps } from './SidebarUserE'
+import { SidebarUserProps } from './SidebarUser'
 import { SidebarNotifications } from './SidebarNotifications'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext, SidebarProvider } from './context'
@@ -13,7 +13,7 @@ import { StyledHead } from './partials/StyledHead'
 import { StyledHeadIcon } from './partials/StyledHeadIcon'
 import { StyledHeadTitle } from './partials/StyledHeadTitle'
 
-export interface SidebarEProps extends ComponentWithClass {
+export interface SidebarProps extends ComponentWithClass {
   /**
    * Optional icon to display at the top of the component (JSX).
    */
@@ -25,7 +25,7 @@ export interface SidebarEProps extends ComponentWithClass {
   /**
    * Optional JSX to render a user menu.
    */
-  user?: React.ReactElement<SidebarUserEProps>
+  user?: React.ReactElement<SidebarUserProps>
   /**
    * Toggle whether there are unread notifications.
    */
@@ -40,7 +40,7 @@ export interface SidebarEProps extends ComponentWithClass {
   initialIsOpen?: boolean
 }
 
-export const SidebarE: React.FC<SidebarEProps> = ({
+export const Sidebar: React.FC<SidebarProps> = ({
   icon,
   title,
   children,
@@ -109,4 +109,4 @@ export const SidebarE: React.FC<SidebarEProps> = ({
   )
 }
 
-SidebarE.displayName = 'SidebarE'
+Sidebar.displayName = 'Sidebar'

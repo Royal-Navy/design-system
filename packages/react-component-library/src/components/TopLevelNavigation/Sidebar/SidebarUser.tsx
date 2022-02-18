@@ -5,7 +5,7 @@ import { Transition } from 'react-transition-group'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { LinkTypes } from '../../../common/Link'
 import { SidebarContext } from './context'
-import { SidebarUserItemE } from './SidebarUserItemE'
+import { SidebarUserItem } from './SidebarUserItem'
 import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
 import { Sheet } from '../Sheet/Sheet'
 import { StyledUserAvatar } from './partials/StyledUserAvatar'
@@ -14,7 +14,7 @@ import { StyledUser } from './partials/StyledUser'
 import { StyledSheetList } from './partials/StyledSheetList'
 import { StyledUserText } from './partials/StyledUserText'
 
-export interface SidebarUserEProps extends ComponentWithClass {
+export interface SidebarUserProps extends ComponentWithClass {
   children?: never
   /**
    * Initials of the end user (e.g. Joe Bloggs => JB).
@@ -34,7 +34,7 @@ export interface SidebarUserEProps extends ComponentWithClass {
   name?: string
 }
 
-type SidebarAvatarWithItemsProps = Omit<SidebarUserEProps, 'link'>
+type SidebarAvatarWithItemsProps = Omit<SidebarUserProps, 'link'>
 
 const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
   initials,
@@ -56,15 +56,13 @@ const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
     placement="right"
   >
     <StyledSheetList>
-      {userLink && <SidebarUserItemE icon={<IconPerson />} link={userLink} />}
-      {exitLink && (
-        <SidebarUserItemE icon={<IconExitToApp />} link={exitLink} />
-      )}
+      {userLink && <SidebarUserItem icon={<IconPerson />} link={userLink} />}
+      {exitLink && <SidebarUserItem icon={<IconExitToApp />} link={exitLink} />}
     </StyledSheetList>
   </Sheet>
 )
 
-export const SidebarUserE: React.FC<SidebarUserEProps> = ({
+export const SidebarUser: React.FC<SidebarUserProps> = ({
   initials,
   userLink,
   exitLink,
@@ -111,4 +109,4 @@ export const SidebarUserE: React.FC<SidebarUserEProps> = ({
   )
 }
 
-SidebarUserE.displayName = 'SidebarUserE'
+SidebarUser.displayName = 'SidebarUser'

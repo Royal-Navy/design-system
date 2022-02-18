@@ -13,11 +13,11 @@ import {
 } from '@defencedigital/icon-library'
 
 import {
-  SidebarE,
-  SidebarNavE,
-  SidebarNavItemE,
-  SidebarUserE,
-  SidebarWrapperE,
+  Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
+  SidebarWrapper,
 } from '.'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
@@ -36,16 +36,16 @@ const disableColorContrastRule = {
 }
 
 export default {
-  component: SidebarE,
+  component: Sidebar,
   subcomponents: {
-    SidebarNavE,
-    SidebarNavItemE,
-    SidebarUserE,
-    SidebarWrapperE,
+    SidebarNav,
+    SidebarNavItem,
+    SidebarUser,
+    SidebarWrapper,
     Notifications,
     Notification,
   },
-  title: 'Sidebar (Experimental)',
+  title: 'Sidebar',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     docs: {
@@ -56,47 +56,47 @@ export default {
     },
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof SidebarE>
+} as ComponentMeta<typeof Sidebar>
 
-const StyledSidebarE = styled(SidebarE)`
+const StyledSidebar = styled(Sidebar)`
   max-height: 30rem;
 `
 
-export const Default: ComponentStory<typeof SidebarE> = (props) => {
+export const Default: ComponentStory<typeof Sidebar> = (props) => {
   const sidebarNav = (
-    <SidebarNavE>
-      <SidebarNavItemE
+    <SidebarNav>
+      <SidebarNavItem
         icon={<IconHome />}
         link={<Link href="#">Dashboard</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconVerifiedUser />}
         link={<Link href="#">Reports</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconLocalShipping />}
         link={<Link href="#">Platforms</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconFeedback />}
         link={<Link href="#">Data&nbsp;Feed</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         isActive
         icon={<IconMessage />}
         link={<Link href="#">Messages</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconSettings />}
         link={<Link href="#">Settings</Link>}
       />
-    </SidebarNavE>
+    </SidebarNav>
   )
 
   return (
-    <SidebarWrapperE>
+    <SidebarWrapper>
       <div style={{ maxHeight: '30rem' }}>
-        <StyledSidebarE {...props}>{sidebarNav}</StyledSidebarE>
+        <StyledSidebar {...props}>{sidebarNav}</StyledSidebar>
       </div>
       <main
         style={{
@@ -107,49 +107,49 @@ export const Default: ComponentStory<typeof SidebarE> = (props) => {
       >
         Hello, World!
       </main>
-    </SidebarWrapperE>
+    </SidebarWrapper>
   )
 }
 
 Default.args = {}
 
-export const InitiallyOpen: ComponentStory<typeof SidebarE> = (props) => {
+export const InitiallyOpen: ComponentStory<typeof Sidebar> = (props) => {
   const sidebarNav = (
-    <SidebarNavE>
-      <SidebarNavItemE
+    <SidebarNav>
+      <SidebarNavItem
         icon={<IconHome />}
         link={<Link href="#">Dashboard</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconVerifiedUser />}
         link={<Link href="#">Reports</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconLocalShipping />}
         link={<Link href="#">Platforms</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconFeedback />}
         link={<Link href="#">Data&nbsp;Feed</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         isActive
         icon={<IconMessage />}
         link={<Link href="#">Messages</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconSettings />}
         link={<Link href="#">Settings</Link>}
       />
-    </SidebarNavE>
+    </SidebarNav>
   )
 
   return (
-    <SidebarWrapperE>
+    <SidebarWrapper>
       <div style={{ maxHeight: '30rem' }}>
-        <StyledSidebarE {...props} initialIsOpen>
+        <StyledSidebar {...props} initialIsOpen>
           {sidebarNav}
-        </StyledSidebarE>
+        </StyledSidebar>
       </div>
       <main
         style={{
@@ -160,7 +160,7 @@ export const InitiallyOpen: ComponentStory<typeof SidebarE> = (props) => {
       >
         Hello, World!
       </main>
-    </SidebarWrapperE>
+    </SidebarWrapper>
   )
 }
 
@@ -170,62 +170,62 @@ InitiallyOpen.parameters = disableColorContrastRule
 
 InitiallyOpen.storyName = 'Initially open'
 
-export const WithSubNavigation: ComponentStory<typeof SidebarE> = (props) => {
+export const WithSubNavigation: ComponentStory<typeof Sidebar> = (props) => {
   const sidebarNavWithSub = (
-    <SidebarNavE>
-      <SidebarNavItemE
+    <SidebarNav>
+      <SidebarNavItem
         icon={<IconHome />}
         link={<Link href="#">Dashboard</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconVerifiedUser />}
         link={<Link href="#">Reports</Link>}
       >
-        <SidebarNavE>
-          <SidebarNavItemE link={<Link href="#">Sub-nav-item 1</Link>} />
-          <SidebarNavItemE link={<Link href="#">Sub-nav-item 2</Link>} />
-          <SidebarNavItemE link={<Link href="#">Sub-nav-item 3</Link>} />
-        </SidebarNavE>
-      </SidebarNavItemE>
-      <SidebarNavItemE
+        <SidebarNav>
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 1</Link>} />
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 2</Link>} />
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 3</Link>} />
+        </SidebarNav>
+      </SidebarNavItem>
+      <SidebarNavItem
         icon={<IconLocalShipping />}
         link={<Link href="#">Platforms</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconFeedback />}
         link={<Link href="#">Data&nbsp;Feed</Link>}
       >
-        <SidebarNavE>
-          <SidebarNavItemE link={<Link href="#">Sub-nav-item 1</Link>} />
-          <SidebarNavItemE link={<Link href="#">Sub-nav-item 2</Link>} />
-          <SidebarNavItemE link={<Link href="#">Sub-nav-item 3</Link>} />
-        </SidebarNavE>
-      </SidebarNavItemE>
-      <SidebarNavItemE
+        <SidebarNav>
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 1</Link>} />
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 2</Link>} />
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 3</Link>} />
+        </SidebarNav>
+      </SidebarNavItem>
+      <SidebarNavItem
         isActive
         icon={<IconMessage />}
         link={<Link href="#">Messages</Link>}
       >
-        <SidebarNavE>
-          <SidebarNavItemE link={<Link href="#">Sub-nav-item 1</Link>} />
-          <SidebarNavItemE link={<Link href="#">Sub-nav-item 2</Link>} />
-          <SidebarNavItemE
+        <SidebarNav>
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 1</Link>} />
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 2</Link>} />
+          <SidebarNavItem
             isActive
             link={<Link href="#">Sub-nav-item 3</Link>}
           />
-        </SidebarNavE>
-      </SidebarNavItemE>
-      <SidebarNavItemE
+        </SidebarNav>
+      </SidebarNavItem>
+      <SidebarNavItem
         icon={<IconSettings />}
         link={<Link href="#">Settings</Link>}
       />
-    </SidebarNavE>
+    </SidebarNav>
   )
 
   return (
-    <SidebarWrapperE>
+    <SidebarWrapper>
       <div style={{ maxHeight: '30rem' }}>
-        <StyledSidebarE {...props}>{sidebarNavWithSub}</StyledSidebarE>
+        <StyledSidebar {...props}>{sidebarNavWithSub}</StyledSidebar>
       </div>
       <main
         style={{
@@ -236,53 +236,49 @@ export const WithSubNavigation: ComponentStory<typeof SidebarE> = (props) => {
       >
         Hello, World!
       </main>
-    </SidebarWrapperE>
+    </SidebarWrapper>
   )
 }
 
 WithSubNavigation.storyName = 'With sub-navigation'
 
-export const WithHeader: ComponentStory<typeof SidebarE> = (props) => {
+export const WithHeader: ComponentStory<typeof Sidebar> = (props) => {
   const sidebarNav = (
-    <SidebarNavE>
-      <SidebarNavItemE
+    <SidebarNav>
+      <SidebarNavItem
         icon={<IconHome />}
         link={<Link href="#">Dashboard</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconVerifiedUser />}
         link={<Link href="#">Reports</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconLocalShipping />}
         link={<Link href="#">Platforms</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconFeedback />}
         link={<Link href="#">Data&nbsp;Feed</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         isActive
         icon={<IconMessage />}
         link={<Link href="#">Messages</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconSettings />}
         link={<Link href="#">Settings</Link>}
       />
-    </SidebarNavE>
+    </SidebarNav>
   )
 
   return (
-    <SidebarWrapperE>
+    <SidebarWrapper>
       <div style={{ maxHeight: '30rem' }}>
-        <StyledSidebarE
-          {...props}
-          icon={<IconGrain />}
-          title="Application Name"
-        >
+        <StyledSidebar {...props} icon={<IconGrain />} title="Application Name">
           {sidebarNav}
-        </StyledSidebarE>
+        </StyledSidebar>
       </div>
       <main
         style={{
@@ -293,15 +289,15 @@ export const WithHeader: ComponentStory<typeof SidebarE> = (props) => {
       >
         Hello, World!
       </main>
-    </SidebarWrapperE>
+    </SidebarWrapper>
   )
 }
 
 WithHeader.storyName = 'With header'
 
-export const WithUserMenu: ComponentStory<typeof SidebarE> = (props) => {
+export const WithUserMenu: ComponentStory<typeof Sidebar> = (props) => {
   const userWithLinks = (
-    <SidebarUserE
+    <SidebarUser
       initials="HN"
       name="Horatio Nelson"
       userLink={<Link href="#">Profile</Link>}
@@ -310,41 +306,41 @@ export const WithUserMenu: ComponentStory<typeof SidebarE> = (props) => {
   )
 
   const sidebarNav = (
-    <SidebarNavE>
-      <SidebarNavItemE
+    <SidebarNav>
+      <SidebarNavItem
         icon={<IconHome />}
         link={<Link href="#">Dashboard</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconVerifiedUser />}
         link={<Link href="#">Reports</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconLocalShipping />}
         link={<Link href="#">Platforms</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconFeedback />}
         link={<Link href="#">Data&nbsp;Feed</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         isActive
         icon={<IconMessage />}
         link={<Link href="#">Messages</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconSettings />}
         link={<Link href="#">Settings</Link>}
       />
-    </SidebarNavE>
+    </SidebarNav>
   )
 
   return (
-    <SidebarWrapperE>
+    <SidebarWrapper>
       <div style={{ maxHeight: '30rem' }}>
-        <StyledSidebarE {...props} user={userWithLinks}>
+        <StyledSidebar {...props} user={userWithLinks}>
           {sidebarNav}
-        </StyledSidebarE>
+        </StyledSidebar>
       </div>
       <main
         style={{
@@ -355,13 +351,13 @@ export const WithUserMenu: ComponentStory<typeof SidebarE> = (props) => {
       >
         Hello, World!
       </main>
-    </SidebarWrapperE>
+    </SidebarWrapper>
   )
 }
 
 WithUserMenu.storyName = 'With user menu'
 
-export const WithNotifications: ComponentStory<typeof SidebarE> = (props) => {
+export const WithNotifications: ComponentStory<typeof Sidebar> = (props) => {
   const notifications = (
     <Notifications link={<Link href="#" />}>
       <Notification
@@ -392,45 +388,45 @@ export const WithNotifications: ComponentStory<typeof SidebarE> = (props) => {
   )
 
   const sidebarNav = (
-    <SidebarNavE>
-      <SidebarNavItemE
+    <SidebarNav>
+      <SidebarNavItem
         icon={<IconHome />}
         link={<Link href="#">Dashboard</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconVerifiedUser />}
         link={<Link href="#">Reports</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconLocalShipping />}
         link={<Link href="#">Platforms</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconFeedback />}
         link={<Link href="#">Data&nbsp;Feed</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         isActive
         icon={<IconMessage />}
         link={<Link href="#">Messages</Link>}
       />
-      <SidebarNavItemE
+      <SidebarNavItem
         icon={<IconSettings />}
         link={<Link href="#">Settings</Link>}
       />
-    </SidebarNavE>
+    </SidebarNav>
   )
 
   return (
-    <SidebarWrapperE>
+    <SidebarWrapper>
       <div style={{ maxHeight: '30rem' }}>
-        <StyledSidebarE
+        <StyledSidebar
           {...props}
           notifications={notifications}
           hasUnreadNotification
         >
           {sidebarNav}
-        </StyledSidebarE>
+        </StyledSidebar>
       </div>
       <main
         style={{
@@ -441,7 +437,7 @@ export const WithNotifications: ComponentStory<typeof SidebarE> = (props) => {
       >
         Hello, World!
       </main>
-    </SidebarWrapperE>
+    </SidebarWrapper>
   )
 }
 

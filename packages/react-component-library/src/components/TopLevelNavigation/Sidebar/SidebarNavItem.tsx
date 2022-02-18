@@ -10,9 +10,7 @@ import { StyledNavItem } from './partials/StyledNavItem'
 import { StyledNavItemIcon } from './partials/StyledNavItemIcon'
 import { StyledNavItemText } from './partials/StyledNavItemText'
 
-export interface SidebarNavItemEProps
-  extends NavItem,
-    Nav<SidebarNavItemEProps> {
+export interface SidebarNavItemProps extends NavItem, Nav<SidebarNavItemProps> {
   /**
    * Optiona icon to display to the left of the navigation item.
    */
@@ -23,7 +21,7 @@ export interface SidebarNavItemEProps
   onClick?: (e: React.MouseEvent<HTMLElement>) => void
 }
 
-export const SidebarNavItemE: React.FC<SidebarNavItemEProps> = ({
+export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
   isActive,
   link,
   icon,
@@ -83,4 +81,4 @@ export const SidebarNavItemE: React.FC<SidebarNavItemEProps> = ({
   )
 }
 
-SidebarNavItemE.displayName = 'SidebarNavItemE'
+SidebarNavItem.displayName = 'SidebarNavItem'
