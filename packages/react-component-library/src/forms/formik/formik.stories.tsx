@@ -4,7 +4,7 @@ import { ComponentMeta } from '@storybook/react'
 import { Formik, Field as FormikField, FieldProps } from 'formik'
 
 import { TextInputE } from '../../components/TextInputE'
-import { TextAreaE } from '../../components/TextAreaE'
+import { TextArea } from '../../components/TextArea'
 import { Radio } from '../../components/Radio'
 import { Checkbox } from '../../components/Checkbox'
 import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
@@ -131,10 +131,10 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <TextAreaE
+                    <TextArea
                       label="Description"
                       {...field}
-                      data-testid="form-example-TextAreaE-description"
+                      data-testid="form-example-TextArea-description"
                     />
                   </Field>
                 )

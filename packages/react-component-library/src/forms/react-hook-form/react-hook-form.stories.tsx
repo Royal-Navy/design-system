@@ -6,7 +6,7 @@ import { ComponentMeta } from '@storybook/react'
 import styled from 'styled-components'
 
 import { TextInputE } from '../../components/TextInputE'
-import { TextAreaE } from '../../components/TextAreaE'
+import { TextArea } from '../../components/TextArea'
 import { Radio } from '../../components/Radio'
 import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
 import { Checkbox } from '../../components/Checkbox'
@@ -115,11 +115,11 @@ export const Example: React.FC<unknown> = () => {
           />
         </Field>
         <Field hintText="Example hint text.">
-          <TextAreaE
+          <TextArea
             name="description"
             ref={register}
             label="Description"
-            data-testid="form-example-TextAreaE-description"
+            data-testid="form-example-TextArea-description"
           />
         </Field>
         <Fieldset legend="Example checkbox selection">

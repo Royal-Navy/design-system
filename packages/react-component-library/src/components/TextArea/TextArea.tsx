@@ -1,18 +1,16 @@
 import React, { TextareaHTMLAttributes } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
-import { hasClass } from '../../helpers'
-import { useFocus } from '../../hooks/useFocus'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { InputValidationProps } from '../../common/InputValidationProps'
 import { StyledTextArea } from './partials/StyledTextArea'
-import { StyledTextAreaWrapper } from './partials/StyledTextAreaWrapperProps'
-import { StyledTextAreaLabel } from './partials/StyledTextAreaLabel'
-import { StyledTextAreaLabelInner } from './partials/StyledTextAreaLabelInner'
-import { StyledTextAreaInput } from './partials/StyledTextAreaInput'
+import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
+import { StyledLabel } from './partials/StyledLabel'
+import { StyledInput } from './partials/StyledInput'
+import { getId } from '../../helpers'
+import { InputValidationProps } from '../../common/InputValidationProps'
+import { useFocus } from '../../hooks/useFocus'
 import { useInputValue } from '../../hooks/useInputValue'
 
-export interface TextAreaInputProps
+export interface TextAreaProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement>,
     Omit<ComponentWithClass, 'children'>,
     InputValidationProps {
@@ -21,13 +19,9 @@ export interface TextAreaInputProps
    */
   isDisabled?: boolean
   /**
-   * Optional text footnote to display below the component.
+   * Label to display within the component.
    */
-  footnote?: string
-  /**
-   * Optional text label to display within the component.
-   */
-  label?: string
+  label: string
   /**
    * Optional handler invoked when the `onBlur` event is emitted.
    */
@@ -38,69 +32,59 @@ export interface TextAreaInputProps
   value?: string
 }
 
-export const TextArea: React.FC<TextAreaInputProps> = (props) => {
-  const {
-    className = '',
-    isDisabled = false,
-    footnote,
-    id = uuidv4(),
-    label,
-    name,
-    onBlur,
-    onChange,
-    placeholder = '',
-    value,
-    ...rest
-  } = props
+export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  (
+    {
+      className,
+      isDisabled,
+      isInvalid,
+      id = getId('text-area'),
+      label,
+      onBlur,
+      onChange,
+      value,
+      ...rest
+    },
+    ref
+  ) => {
+    const { hasFocus, onLocalBlur, onLocalFocus } = useFocus(onBlur)
+    const { committedValue, hasValue, onValueChange } = useInputValue(value)
 
-  const { hasFocus, onLocalBlur, onLocalFocus } = useFocus(onBlur)
-  const { committedValue, hasValue, onValueChange } = useInputValue(value)
-  const hasLabel = !!(label && label.length)
-
-  return (
-    <StyledTextArea className={className} data-testid="textarea-container">
-      <StyledTextAreaWrapper
-        $hasFocus={hasFocus}
-        $hasLabel={hasLabel}
-        $isInvalid={hasClass(className, 'is-invalid')}
-      >
-        {hasLabel && (
-          <StyledTextAreaLabel
+    return (
+      <StyledTextArea className={className} data-testid="textarea-container">
+        <StyledOuterWrapper
+          $hasFocus={hasFocus}
+          $isDisabled={isDisabled}
+          $isInvalid={isInvalid}
+        >
+          <StyledLabel
             $hasContent={hasValue}
             $hasFocus={hasFocus}
             data-testid="textarea-label"
             htmlFor={id}
           >
-            <StyledTextAreaLabelInner
-              $hasContent={hasValue}
-              $hasFocus={hasFocus}
-            >
-              {label}
-            </StyledTextAreaLabelInner>
-          </StyledTextAreaLabel>
-        )}
-        <StyledTextAreaInput
-          $hasLabel={hasLabel}
-          data-testid="textarea-input"
-          disabled={isDisabled}
-          id={id}
-          name={name}
-          onBlur={onLocalBlur}
-          onChange={(e) => {
-            onValueChange(e)
-            if (onChange) {
-              onChange(e)
-            }
-          }}
-          onFocus={onLocalFocus}
-          placeholder={placeholder}
-          value={committedValue}
-          {...rest}
-        />
-      </StyledTextAreaWrapper>
-      {footnote && <small data-testid="textarea-footnote">{footnote}</small>}
-    </StyledTextArea>
-  )
-}
+            {label}
+          </StyledLabel>
+          <StyledInput
+            ref={ref}
+            data-testid="textarea-input"
+            disabled={isDisabled}
+            id={id}
+            onBlur={onLocalBlur}
+            onChange={(e) => {
+              onValueChange(e)
+              if (onChange) {
+                onChange(e)
+              }
+            }}
+            onFocus={onLocalFocus}
+            value={committedValue}
+            {...rest}
+          />
+        </StyledOuterWrapper>
+      </StyledTextArea>
+    )
+  }
+)
 
 TextArea.displayName = 'TextArea'
