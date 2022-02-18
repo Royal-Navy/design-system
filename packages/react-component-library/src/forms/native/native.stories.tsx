@@ -15,7 +15,7 @@ import { NumberInputE } from '../../components/NumberInputE'
 import { SelectE, SelectEOption } from '../../components/SelectE'
 import { SwitchE, SwitchEOption } from '../../components/SwitchE'
 import { RangeSliderE } from '../../components/RangeSliderE'
-import { ButtonE } from '../../components/ButtonE'
+import { Button } from '../../components/Button'
 import { Fieldset } from '../../components/Fieldset'
 import { useNativeForm } from './useNativeForm'
 import { Field } from '../../components/Field'
@@ -265,13 +265,13 @@ export const Example: React.FC<unknown> = () => {
             step={2}
           />
         </Field>
-        <ButtonE
+        <Button
           type="submit"
           data-testid="form-example-submit"
           isDisabled={isSubmitting}
         >
           Submit
-        </ButtonE>
+        </Button>
       </form>
 
       <pre data-testid="form-example-values">

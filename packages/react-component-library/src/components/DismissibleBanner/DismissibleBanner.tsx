@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
-import { Button, BUTTON_SIZE, BUTTON_VARIANT } from '../Button'
+import { Button, BUTTON_VARIANT } from '../Button'
+import { COMPONENT_SIZE } from '../Forms'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledDismissibleBanner } from './partials/StyledDismissibleBanner'
 import { StyledContent } from './partials/StyledContent'
@@ -99,7 +100,7 @@ export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
         <Button
           data-testid="dimissiblebanner-dismiss"
           onClick={onButtonClick}
-          size={BUTTON_SIZE.SMALL}
+          size={COMPONENT_SIZE.SMALL}
           variant={BUTTON_VARIANT.SECONDARY}
         >
           Dismiss

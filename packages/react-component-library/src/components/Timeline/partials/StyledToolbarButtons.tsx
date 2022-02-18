@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { StyledIcon } from '../../Button/partials/StyledIcon'
-
 const { spacing } = selectors
 
 export const StyledToolbarButtons = styled.div`
@@ -10,11 +8,9 @@ export const StyledToolbarButtons = styled.div`
   margin: ${spacing('4')} ${spacing('6')};
 
   button {
-    &:first-of-type {
-      margin-right: ${spacing('4')};
-    }
+    margin: 0 ${spacing('2')};
 
-    ${StyledIcon} {
+    &:first-of-type {
       margin-left: 0;
     }
   }

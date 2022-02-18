@@ -11,7 +11,7 @@ import {
   AutocompleteE,
   AutocompleteEOption,
 } from '../../components/AutocompleteE'
-import { ButtonE } from '../../components/ButtonE'
+import { Button } from '../../components/Button'
 import { NumberInputE } from '../../components/NumberInputE'
 import {
   DatePickerE,
@@ -328,13 +328,13 @@ export const Example: React.FC<unknown> = () => {
                 )
               }}
             </FormikField>
-            <ButtonE
+            <Button
               type="submit"
               isDisabled={isSubmitting}
               data-testid="form-example-submit"
             >
               Submit
-            </ButtonE>
+            </Button>
           </form>
         )}
       </Formik>

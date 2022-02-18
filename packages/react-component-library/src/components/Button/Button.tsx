@@ -1,52 +1,40 @@
+import { IconLoader } from '@defencedigital/icon-library'
 import React, { FormEvent } from 'react'
 
-import {
-  BUTTON_COLOR,
-  BUTTON_SIZE,
-  BUTTON_VARIANT,
-  BUTTON_ICON_POSITION,
-} from './constants'
+import { BUTTON_ICON_POSITION, BUTTON_VARIANT } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledButton } from './partials/StyledButton'
-import { StyledIcon } from './partials/StyledIcon'
+import { StyledIconWrapper } from './partials/StyledIconWrapper'
 import { StyledText } from './partials/StyledText'
-
-export type ButtonSizeType =
-  | typeof BUTTON_SIZE.SMALL
-  | typeof BUTTON_SIZE.REGULAR
-  | typeof BUTTON_SIZE.LARGE
-  | typeof BUTTON_SIZE.XLARGE
+import { StyledIconLoaderWrapper } from './partials/StyledIconLoader'
+import { ComponentSizeType, COMPONENT_SIZE } from '../Forms'
 
 export type ButtonVariantType =
   | typeof BUTTON_VARIANT.PRIMARY
   | typeof BUTTON_VARIANT.SECONDARY
   | typeof BUTTON_VARIANT.TERTIARY
+  | typeof BUTTON_VARIANT.DANGER
 
 export type ButtonIconPositionType =
   | typeof BUTTON_ICON_POSITION.LEFT
   | typeof BUTTON_ICON_POSITION.RIGHT
 
-export interface ButtonProps extends ComponentWithClass {
-  /**
-   * Text to display within the component.
-   */
-  children?: string
-  /**
-   * Custom color variant of the component (only default and `danger` is currently supported).
-   */
-  color?: typeof BUTTON_COLOR.DANGER
-  /**
-   * Toggles whether the component is disabled or not (preventing user interaction).
-   */
-  isDisabled?: boolean
-  /**
-   * Optional icon to display beside the component text.
-   */
-  icon?: React.ReactNode
+interface ButtonBaseProps extends Omit<ComponentWithClass, 'children'> {
   /**
    * Position of the optional icon.
    */
   iconPosition?: ButtonIconPositionType
+  /**
+   * Toggles whether the component is disabled or not (preventing user
+   * interaction).
+   */
+  isDisabled?: boolean
+  /**
+   * Whether an operation is in progress and the button temporarily can't be
+   * used. If set, the button will be disabled and a loading icon displayed in
+   * place of the button text.
+   */
+  isLoading?: boolean
   /**
    * Optional handler called when the component is clicked.
    */
@@ -54,7 +42,7 @@ export interface ButtonProps extends ComponentWithClass {
   /**
    * Size of the component.
    */
-  size?: ButtonSizeType
+  size?: ComponentSizeType
   /**
    * HTML type of the component (forms should use the `submit` type).
    */
@@ -65,44 +53,75 @@ export interface ButtonProps extends ComponentWithClass {
   variant?: ButtonVariantType
 }
 
+export interface ButtonWithTextProps extends ButtonBaseProps {
+  /**
+   * Text to display within the component.
+   */
+  children: string
+  /**
+   * Optional icon to display beside the component text.
+   */
+  icon?: React.ReactNode
+  /**
+   * Value for the HTML title attribute. Should be set for
+   * icon-only buttons to make them accessible.
+   */
+  title?: string
+}
+
+export interface ButtonWithIconOnlyProps extends ButtonBaseProps {
+  children?: never
+  icon: React.ReactNode
+  title: string
+}
+
+export type ButtonProps = ButtonWithTextProps | ButtonWithIconOnlyProps
+
 export const Button: React.FC<ButtonProps> = ({
   children,
   className,
-  color,
   isDisabled,
+  isLoading = false,
   icon,
   iconPosition = BUTTON_ICON_POSITION.RIGHT,
   onClick,
-  size = BUTTON_SIZE.REGULAR,
+  size = COMPONENT_SIZE.FORMS,
+  title,
   type = 'button',
-  variant,
+  variant = BUTTON_VARIANT.PRIMARY,
   ...rest
 }) => {
   return (
     <StyledButton
       className={className}
-      $disabled={isDisabled}
       $variant={variant}
-      $color={color}
       $size={size}
       $iconPosition={iconPosition}
       data-testid="button"
-      disabled={isDisabled}
+      disabled={isDisabled || isLoading}
       type={type}
-      onClick={(e) => {
-        e.currentTarget.blur()
-
-        if (onClick) {
-          onClick(e)
-        }
-      }}
+      aria-label={children}
+      title={title}
+      onClick={onClick}
       {...rest}
     >
-      <StyledText>{children}</StyledText>
+      {isLoading && (
+        <StyledIconLoaderWrapper data-testid="loading-icon" aria-hidden>
+          <IconLoader size={size === COMPONENT_SIZE.FORMS ? 26 : 21} />
+        </StyledIconLoaderWrapper>
+      )}
+      <StyledText $isLoading={isLoading}>{children}</StyledText>
       {icon && (
-        <StyledIcon aria-hidden data-testid="button-icon">
+        <StyledIconWrapper
+          $buttonHasText={Boolean(children)}
+          $buttonSize={size}
+          $iconPosition={iconPosition}
+          $isLoading={isLoading}
+          aria-hidden
+          data-testid="button-icon"
+        >
           {icon}
-        </StyledIcon>
+        </StyledIconWrapper>
       )}
     </StyledButton>
   )

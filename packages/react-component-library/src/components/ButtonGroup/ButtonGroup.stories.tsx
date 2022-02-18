@@ -4,8 +4,8 @@ import { action } from '@storybook/addon-actions'
 
 import { IconBrightnessLow } from '@defencedigital/icon-library'
 
-import { ButtonGroup, ButtonGroupProps, ButtonGroupItem } from '.'
-import { BUTTON_SIZE } from '../Button'
+import { ButtonGroup, ButtonGroupItem } from '.'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   component: ButtonGroup,
@@ -31,7 +31,7 @@ export const Default: ComponentStory<typeof ButtonGroup> = ({ size }) => (
 )
 
 Default.args = {
-  size: BUTTON_SIZE.REGULAR,
+  size: COMPONENT_SIZE.FORMS,
 }
 
 export const Small: ComponentStory<typeof ButtonGroup> = ({ size }) => (
@@ -45,21 +45,5 @@ export const Small: ComponentStory<typeof ButtonGroup> = ({ size }) => (
 )
 
 Small.args = {
-  size: BUTTON_SIZE.SMALL,
-}
-
-export const Large: ComponentStory<typeof ButtonGroup> = ({
-  size,
-}: ButtonGroupProps) => (
-  <ButtonGroup size={size}>
-    <ButtonGroupItem onClick={action('onClick')}>One</ButtonGroupItem>
-    <ButtonGroupItem>Two</ButtonGroupItem>
-    <ButtonGroupItem isDisabled icon={<IconBrightnessLow />}>
-      Three
-    </ButtonGroupItem>
-  </ButtonGroup>
-)
-
-Large.args = {
-  size: BUTTON_SIZE.LARGE,
+  size: COMPONENT_SIZE.SMALL,
 }
