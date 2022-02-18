@@ -1,6 +1,6 @@
 import autocompleteE from './AutocompleteE'
 import avatar from './Avatar'
-import checkboxE from './CheckboxE'
+import Checkbox from './Checkbox'
 import contextMenu from './ContextMenu'
 import datePicker from './DatePicker'
 import dismissibleBanner from './DismissibleBanner'
@@ -13,7 +13,7 @@ import timeline from './timeline'
 export default {
   autocompleteE,
   avatar,
-  checkboxE,
+  Checkbox,
   contextMenu,
   datePicker,
   dismissibleBanner,

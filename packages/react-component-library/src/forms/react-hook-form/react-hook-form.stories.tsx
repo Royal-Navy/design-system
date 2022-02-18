@@ -12,7 +12,7 @@ import {
   AutocompleteE,
   AutocompleteEOption,
 } from '../../components/AutocompleteE'
-import { CheckboxE } from '../../components/CheckboxE'
+import { Checkbox } from '../../components/Checkbox'
 import { DatePickerE } from '../../components/DatePickerE'
 import { NumberInputE } from '../../components/NumberInputE'
 import { SelectE, SelectEOption } from '../../components/SelectE'
@@ -126,19 +126,19 @@ export const Example: React.FC<unknown> = () => {
           />
         </Field>
         <Fieldset legend="Example checkbox selection">
-          <CheckboxE
+          <Checkbox
             name="exampleCheckbox"
             label="Option 1"
             ref={register}
             value="Option 1"
           />
-          <CheckboxE
+          <Checkbox
             name="exampleCheckbox"
             label="Option 2"
             ref={register}
             value="Option 2"
           />
-          <CheckboxE
+          <Checkbox
             name="exampleCheckbox"
             label="Option 3"
             ref={register}

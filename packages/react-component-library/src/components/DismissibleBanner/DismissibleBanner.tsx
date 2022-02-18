@@ -9,6 +9,7 @@ import { StyledTitle } from './partials/StyledTitle'
 import { StyledFooter } from './partials/StyledFooter'
 import { StyledDontShow } from './partials/StyledDontShow'
 import { StyledDescription } from './partials/StyledDescription'
+import { CHECKBOX_VARIANT } from '../Checkbox'
 
 export interface DismissibleBannerWithTitleProps extends ComponentWithClass {
   /**
@@ -90,10 +91,10 @@ export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
       <StyledFooter>
         {hasCheckbox && (
           <StyledDontShow
-            data-testid="dimissiblebanner-dontshow"
             label="Don't show this again"
             name="dimissiblebanner-dontshow"
             onChange={() => setCanShowAgain(!canShowAgain)}
+            variant={CHECKBOX_VARIANT.NO_CONTAINER}
           />
         )}
         {!hasCheckbox && <span />}

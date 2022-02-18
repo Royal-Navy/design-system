@@ -6,7 +6,7 @@ import { Formik, Field as FormikField, FieldProps } from 'formik'
 import { TextInputE } from '../../components/TextInputE'
 import { TextAreaE } from '../../components/TextAreaE'
 import { RadioE } from '../../components/RadioE'
-import { CheckboxE } from '../../components/CheckboxE'
+import { Checkbox } from '../../components/Checkbox'
 import {
   AutocompleteE,
   AutocompleteEOption,
@@ -153,7 +153,7 @@ export const Example: React.FC<unknown> = () => {
                 type="checkbox"
               >
                 {({ field }: FieldProps) => (
-                  <CheckboxE label="Option 1" {...field} />
+                  <Checkbox label="Option 1" {...field} />
                 )}
               </FormikField>
               <FormikField
@@ -162,7 +162,7 @@ export const Example: React.FC<unknown> = () => {
                 type="checkbox"
               >
                 {({ field }: FieldProps) => (
-                  <CheckboxE label="Option 2" {...field} />
+                  <Checkbox label="Option 2" {...field} />
                 )}
               </FormikField>
               <FormikField
@@ -171,7 +171,7 @@ export const Example: React.FC<unknown> = () => {
                 type="checkbox"
               >
                 {({ field }: FieldProps) => (
-                  <CheckboxE label="Option 3" {...field} />
+                  <Checkbox label="Option 3" {...field} />
                 )}
               </FormikField>
             </Fieldset>
