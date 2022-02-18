@@ -108,7 +108,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "concurrently": "^6.0.2",
     "css-loader": "^6.5.1",
-    "cypress": "^7.2.0",
+    "cypress": "^9.5.0",
     "cypress-plugin-tab": "^1.0.5",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^18.0.1",
