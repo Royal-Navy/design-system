@@ -73,7 +73,7 @@ export const useNativeForm = <FormValues>(
     handleChange({
       currentTarget: {
         name,
-        value: [value],
+        value,
       },
     })
   }
