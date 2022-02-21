@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.80.3](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.2...2.80.3) (2022-02-21)
+
+**Note:** Version bump only for package moduk-design-system
+
+
+
+
+
 ## [2.80.2](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.1...2.80.2) (2022-02-15)
 
 
