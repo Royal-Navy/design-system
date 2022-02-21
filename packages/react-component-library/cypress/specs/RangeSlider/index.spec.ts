@@ -9,26 +9,26 @@ describe('RangeSlider', () => {
     before(() => {
       cy.visit('/iframe.html?id=range-slider--default&viewMode=story')
 
-      cy.get(selectors.RangeSlider.rail).click(800, 0)
+      cy.get(selectors.rangeSlider.rail).click(800, 0)
     })
 
     it('should apply focus to the handle', () => {
-      cy.get(selectors.RangeSlider.handle.handle).should('have.focus')
+      cy.get(selectors.rangeSlider.handle.handle).should('have.focus')
     })
 
     it('should move the handle to that position', () => {
-      cy.get(selectors.RangeSlider.handle.value)
+      cy.get(selectors.rangeSlider.handle.value)
         .contains('33')
         .should('be.visible')
     })
 
     describe('the user clicks on the rail (within selected range)', () => {
       before(() => {
-        cy.get(selectors.RangeSlider.rail).click(200, 0)
+        cy.get(selectors.rangeSlider.rail).click(200, 0)
       })
 
       it('should move the handle to that position', () => {
-        cy.get(selectors.RangeSlider.handle.value)
+        cy.get(selectors.rangeSlider.handle.value)
           .contains('8')
           .should('be.visible')
       })
@@ -41,24 +41,24 @@ describe('RangeSlider', () => {
     })
 
     it('renders both thresholds', () => {
-      cy.get(selectors.RangeSlider.thresholds.betweenThresholds).should(
+      cy.get(selectors.rangeSlider.thresholds.betweenThresholds).should(
         'be.visible'
       )
-      cy.get(selectors.RangeSlider.thresholds.aboveThresholds).should(
+      cy.get(selectors.rangeSlider.thresholds.aboveThresholds).should(
         'be.visible'
       )
     })
 
     describe.skip('the user clicks on the rail (below both thresholds)', () => {
       beforeEach(() => {
-        cy.get(selectors.RangeSlider.rail).click(0, 0)
+        cy.get(selectors.rangeSlider.rail).click(0, 0)
       })
 
       it('should no longer render either threshold', () => {
-        cy.get(selectors.RangeSlider.thresholds.betweenThresholds).should(
+        cy.get(selectors.rangeSlider.thresholds.betweenThresholds).should(
           'not.be.visible'
         )
-        cy.get(selectors.RangeSlider.thresholds.aboveThresholds).should(
+        cy.get(selectors.rangeSlider.thresholds.aboveThresholds).should(
           'not.be.visible'
         )
       })
@@ -72,7 +72,7 @@ describe('RangeSlider', () => {
 
     it('correctly sets each marker active state', () => {
       // [- - * * * * * - -]
-      cy.get(selectors.RangeSlider.markers).should(($marker) => {
+      cy.get(selectors.rangeSlider.markers).should(($marker) => {
         expect($marker.eq(0), 'marker 1').to.have.css(
           'background-color',
           hexToRgb(ColorNeutral200)

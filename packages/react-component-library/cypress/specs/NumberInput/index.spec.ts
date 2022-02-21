@@ -8,26 +8,26 @@ describe('NumberInput', () => {
   })
 
   it('renders the number input without a value', () => {
-    cy.get(selectors.NumberInput.input).should('have.value', '')
+    cy.get(selectors.numberInput.input).should('have.value', '')
   })
 
   describe('when the increase button is clicked', () => {
     beforeEach(() => {
-      cy.get(selectors.NumberInput.increase).click()
+      cy.get(selectors.numberInput.increase).click()
     })
 
     it('should increment the value', () => {
-      cy.get(selectors.NumberInput.input).should('have.value', '1')
+      cy.get(selectors.numberInput.input).should('have.value', '1')
     })
   })
 
   describe('when the decrease button is clicked', () => {
     beforeEach(() => {
-      cy.get(selectors.NumberInput.decrease).click()
+      cy.get(selectors.numberInput.decrease).click()
     })
 
     it('should decrement the value', () => {
-      cy.get(selectors.NumberInput.input).should('have.value', '-1')
+      cy.get(selectors.numberInput.input).should('have.value', '-1')
     })
   })
 
@@ -46,11 +46,11 @@ describe('NumberInput', () => {
   TYPED_VALUE_CASES.forEach(([textToType, expectedValue]) => {
     describe(`when typing "${textToType}"`, () => {
       beforeEach(() => {
-        cy.get(selectors.NumberInput.input).type(textToType)
+        cy.get(selectors.numberInput.input).type(textToType)
       })
 
       it(`the value is "${expectedValue}"`, () => {
-        cy.get(selectors.NumberInput.input).should('have.value', expectedValue)
+        cy.get(selectors.numberInput.input).should('have.value', expectedValue)
       })
     })
   })
