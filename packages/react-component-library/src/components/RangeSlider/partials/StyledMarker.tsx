@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components'
-import { transparentize } from 'polished'
+import { setLightness } from 'polished'
 
 import { ThresholdColor } from '../useThresholdColor'
 import {
+  RANGE_SLIDER_TRACK_BELOW_FIRST_THRESHOLD,
   RANGE_SLIDER_BG_COLOR,
-  RANGE_SLIDER_TRACK_ABOVE_THRESHOLDS,
 } from '../constants'
 
 interface StyledMarkerProps {
@@ -15,26 +15,30 @@ interface StyledMarkerProps {
 
 export const StyledMarker = styled.div<StyledMarkerProps>`
   position: absolute;
-  width: 2px;
-  height: 12px;
-  transform: translateY(-50%);
-  background-color: ${RANGE_SLIDER_TRACK_ABOVE_THRESHOLDS};
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background-color: ${RANGE_SLIDER_BG_COLOR};
   left: ${({ $left }) => $left};
+
+  ${({ $isActive }) =>
+    $isActive &&
+    css`
+      background-color: ${RANGE_SLIDER_TRACK_BELOW_FIRST_THRESHOLD};
+    `};
 
   ${({ $thresholdColor }) =>
     $thresholdColor &&
     css`
-      background-color: ${$thresholdColor};
-
-      &::after {
-        color: ${$thresholdColor};
-        background-color: ${transparentize(0.75, $thresholdColor)};
-      }
+      background-color: ${setLightness(0.85, $thresholdColor)};
     `}
 
-  ${({ $isActive }) =>
-    !$isActive &&
+  ${({ $isActive, $thresholdColor }) =>
+    $isActive &&
+    $thresholdColor &&
     css`
-      background-color: ${RANGE_SLIDER_BG_COLOR};
+      background-color: ${$thresholdColor};
     `};
 `

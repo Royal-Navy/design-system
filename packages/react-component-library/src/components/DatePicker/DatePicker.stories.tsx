@@ -1,5 +1,6 @@
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { parseISO } from 'date-fns'
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { DatePicker } from '.'
 
@@ -21,62 +22,65 @@ export default {
   },
 } as ComponentMeta<typeof DatePicker>
 
-export const Default: ComponentStory<typeof DatePicker> = (props) => (
-  <DatePicker {...props} />
+const Template: ComponentStory<typeof DatePicker> = (args) => (
+  <DatePicker {...args} />
 )
 
-Default.args = {
-  id: undefined,
-  startDate: undefined,
+export const Default = Template.bind({})
+
+export const WithInitialValue = Template.bind({})
+WithInitialValue.storyName = 'With initial value'
+WithInitialValue.args = {
+  initialStartDate: parseISO('2021-12-15'),
 }
 
-export const CustomFormat: ComponentStory<typeof DatePicker> = (props) => (
-  <DatePicker
-    {...props}
-    format="yyyy/MM/dd"
-    startDate={new Date(2021, 0, 11)}
-  />
-)
-
+export const CustomFormat = Template.bind({})
 CustomFormat.storyName = 'Custom format'
+CustomFormat.args = {
+  format: 'yyyy/MM/dd',
+  initialStartDate: parseISO('2021-01-11'),
+}
 
-export const CustomInitialMonth: ComponentStory<typeof DatePicker> = (
-  props
-) => <DatePicker {...props} initialMonth={new Date(2021, 1)} />
-
+export const CustomInitialMonth = Template.bind({})
 CustomInitialMonth.storyName = 'Custom initial month'
+CustomInitialMonth.args = {
+  initialMonth: parseISO('2021-01-01'),
+}
 
-export const CustomLabel: ComponentStory<typeof DatePicker> = (props) => (
-  <DatePicker {...props} label="Custom label" />
-)
-
+export const CustomLabel = Template.bind({})
 CustomLabel.storyName = 'Custom label'
+CustomLabel.args = {
+  label: 'Custom label',
+}
 
-export const Disabled: ComponentStory<typeof DatePicker> = (props) => (
-  <DatePicker {...props} isDisabled />
-)
+export const Disabled = Template.bind({})
+Disabled.args = {
+  isDisabled: true,
+}
 
-Disabled.storyName = 'Disabled'
-
-export const DisabledDays: ComponentStory<typeof DatePicker> = (props) => (
-  <DatePicker
-    {...props}
-    startDate={new Date(2021, 3, 1)}
-    disabledDays={[
-      new Date(2021, 3, 12),
-      new Date(2021, 3, 2),
-      {
-        after: new Date(2021, 3, 20),
-        before: new Date(2021, 3, 25),
-      },
-    ]}
-  />
-)
-
+export const DisabledDays = Template.bind({})
 DisabledDays.storyName = 'Disabled days'
+DisabledDays.args = {
+  initialStartDate: parseISO('2021-04-01'),
+  disabledDays: [
+    parseISO('2021-04-12'),
+    parseISO('2021-04-02'),
+    {
+      after: parseISO('2021-03-20'),
+      before: parseISO('2021-03-25'),
+    },
+  ],
+}
 
-export const Range: ComponentStory<typeof DatePicker> = (props) => (
-  <DatePicker {...props} isRange />
-)
+export const Range = Template.bind({})
+Range.args = {
+  isRange: true,
+}
 
-Range.storyName = 'Range'
+export const RangeWithInitialValue = Template.bind({})
+RangeWithInitialValue.storyName = 'Range, with initial values'
+RangeWithInitialValue.args = {
+  isRange: true,
+  initialStartDate: parseISO('2021-12-05'),
+  initialEndDate: parseISO('2021-12-15'),
+}

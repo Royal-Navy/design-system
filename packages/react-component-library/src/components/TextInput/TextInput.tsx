@@ -1,16 +1,13 @@
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
-import { useFocus } from '../../hooks/useFocus'
-import { useInputValue } from '../../hooks/useInputValue'
+import { Input } from './Input'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { StyledAdornment } from './partials/StyledAdornment'
-import { StyledInput } from './partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
-import { StyledLabel } from './partials/StyledLabel'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledTextInput } from './partials/StyledTextInput'
+import { useFocus } from '../../hooks/useFocus'
 
 type TextInputType =
   | 'color'
@@ -41,10 +38,6 @@ export interface TextInputProps
    */
   endAdornment?: React.ReactNode
   /**
-   * Optional text footnote to display below the component.
-   */
-  footnote?: string
-  /**
    * Optional HTML `id` attribute to apply to the component.
    */
   id?: string
@@ -53,9 +46,13 @@ export interface TextInputProps
    */
   isDisabled?: boolean
   /**
-   * Optional text label to display within the component.
+   * Toggles whether the component is invalid or not.
    */
-  label?: string
+  isInvalid?: boolean
+  /**
+   * Label to display within the component.
+   */
+  label: string
   /**
    * HTML `name` attribute to apply to the component.
    */
@@ -73,10 +70,6 @@ export interface TextInputProps
    */
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void
   /**
-   * Optional placeholder text to display within the component.
-   */
-  placeholder?: string
-  /**
    * Optional adornment to display to the left of the input value.
    */
   startAdornment?: React.ReactNode
@@ -90,73 +83,50 @@ export interface TextInputProps
   value?: string
 }
 
-export const TextInput: React.FC<TextInputProps> = (props) => {
-  const {
-    className = '',
-    isDisabled = false,
-    endAdornment,
-    value,
-    name,
-    onChange,
-    onBlur,
-    footnote,
-    id = uuidv4(),
-    label,
-    placeholder = '',
-    startAdornment,
-    type = 'text',
-    isInvalid,
-    ...rest
-  } = props
+export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
+  (
+    {
+      className,
+      endAdornment,
+      isDisabled,
+      isInvalid,
+      onBlur,
+      startAdornment,
+      ...rest
+    },
+    ref
+  ) => {
+    const { hasFocus, onLocalBlur, onLocalFocus } = useFocus(onBlur)
 
-  const { hasFocus, onLocalBlur, onLocalFocus } = useFocus(onBlur)
-  const { committedValue, hasValue, onValueChange } = useInputValue(value)
-  const hasLabel = label && label.length
-
-  return (
-    <StyledTextInput
-      className={className}
-      $hasFocus={hasFocus}
-      $hasContent={hasValue}
-      $noLabel={!hasLabel}
-      data-testid="text-input-container"
-    >
-      <StyledOuterWrapper>
-        {startAdornment && (
-          <StyledAdornment $position="start">{startAdornment}</StyledAdornment>
-        )}
-        <StyledInputWrapper data-testid="text-input-input-wrapper">
-          {hasLabel && (
-            <StyledLabel htmlFor={id} data-testid="text-input-label">
-              {label}
-            </StyledLabel>
+    return (
+      <StyledTextInput className={className} data-testid="text-input-container">
+        <StyledOuterWrapper
+          $hasFocus={hasFocus}
+          $isDisabled={isDisabled}
+          $isInvalid={isInvalid}
+        >
+          {startAdornment && (
+            <StyledAdornment $position="start">
+              {startAdornment}
+            </StyledAdornment>
           )}
-          <StyledInput
-            data-testid="text-input-input"
-            disabled={isDisabled}
-            id={id}
-            name={name}
-            onBlur={onLocalBlur}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              onValueChange(e)
-              if (onChange) {
-                onChange(e)
-              }
-            }}
-            onFocus={onLocalFocus}
-            placeholder={placeholder}
-            type={type}
-            value={committedValue}
-            {...rest}
-          />
-        </StyledInputWrapper>
-        {endAdornment && (
-          <StyledAdornment $position="end">{endAdornment}</StyledAdornment>
-        )}
-      </StyledOuterWrapper>
-      {footnote && <small>{footnote}</small>}
-    </StyledTextInput>
-  )
-}
+          <StyledInputWrapper data-testid="text-input-input-wrapper">
+            <Input
+              ref={ref}
+              hasFocus={hasFocus}
+              isDisabled={isDisabled}
+              onBlur={onLocalBlur}
+              onFocus={onLocalFocus}
+              {...rest}
+            />
+          </StyledInputWrapper>
+          {endAdornment && (
+            <StyledAdornment $position="end">{endAdornment}</StyledAdornment>
+          )}
+        </StyledOuterWrapper>
+      </StyledTextInput>
+    )
+  }
+)
 
 TextInput.displayName = 'TextInput'

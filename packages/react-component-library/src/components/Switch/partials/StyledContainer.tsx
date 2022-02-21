@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { SWITCH_BORDER_COLOR, SWITCH_BACKGROUND_COLOR } from '../constants'
+const { color } = selectors
 
-const { spacing } = selectors
-
-export const StyledContainer = styled.div`
+export const StyledContainer = styled.fieldset`
   display: inline-flex;
-  padding: ${spacing('2')};
-  border: 1px solid ${SWITCH_BORDER_COLOR};
-  background-color: ${SWITCH_BACKGROUND_COLOR};
-  border-radius: 4px;
+  height: 46px;
+  background-color: ${color('neutral', 'white')};
+  border-radius: 15px;
+  border: none;
+  padding: 0;
+  margin: 0;
 `

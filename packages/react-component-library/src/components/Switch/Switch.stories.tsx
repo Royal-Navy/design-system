@@ -1,74 +1,64 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { ResponsiveSwitch, Switch, SWITCH_SIZE } from '.'
+import { Switch, SwitchOption } from '.'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   component: Switch,
-  subcomponents: { ResponsiveSwitch },
   title: 'Switch',
+  subcomponents: { SwitchOption },
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
 } as ComponentMeta<typeof Switch>
 
-const options = [
-  { label: 'One', value: '1' },
-  { label: 'Two', value: '2' },
-  { label: 'Three', value: '3' },
-  { label: 'Four', value: '4' },
-]
-
-export const Default: ComponentStory<typeof Switch> = (props) => (
-  <Switch {...props} />
+const Template: ComponentStory<typeof Switch> = (props) => (
+  <Switch {...props}>
+    <SwitchOption label="Day" value="1" />
+    <SwitchOption label="Week" value="2" />
+    <SwitchOption label="Month" value="3" />
+    <SwitchOption label="Year" value="4" />
+  </Switch>
 )
 
+export const Default = Template.bind({})
 Default.args = {
   name: 'switch-default',
-  options,
 }
 
-export const WithLegend: ComponentStory<typeof Switch> = (props) => (
-  <Switch
-    {...props}
-    name="switch-legend"
-    label="Example legend"
-    options={options}
-  />
-)
+export const Disabled = Template.bind({})
+Disabled.storyName = 'Disabled'
+Disabled.args = {
+  name: 'switch-disabled',
+  value: '2',
+  isDisabled: true,
+}
 
+export const Invalid = Template.bind({})
+Invalid.storyName = 'Invalid'
+Invalid.args = {
+  name: 'switch-invalid',
+  isInvalid: true,
+}
+
+export const WithLegend = Template.bind({})
 WithLegend.storyName = 'With legend'
+WithLegend.args = {
+  name: 'switch-legend',
+  label: 'Example legend',
+}
 
-export const Responsive: ComponentStory<typeof Switch> = (props) => (
-  <ResponsiveSwitch {...props} name="switch-responsive" options={options} />
-)
-
-Responsive.storyName = 'Responsive'
-
-export const SelectedValue: ComponentStory<typeof Switch> = (props) => (
-  <Switch {...props} name="switch-selected-value" options={options} value="2" />
-)
-
+export const SelectedValue = Template.bind({})
 SelectedValue.storyName = 'With value selected'
+SelectedValue.args = {
+  name: 'switch-selected-value',
+  value: '2',
+}
 
-export const Small: ComponentStory<typeof Switch> = (props) => (
-  <Switch
-    {...props}
-    name="switch-small"
-    options={options}
-    size={SWITCH_SIZE.SMALL}
-  />
-)
-
+export const Small = Template.bind({})
 Small.storyName = 'Small'
-
-export const Large: ComponentStory<typeof Switch> = (props) => (
-  <Switch
-    {...props}
-    name="switch-large"
-    options={options}
-    size={SWITCH_SIZE.LARGE}
-  />
-)
-
-Large.storyName = 'Large'
+Small.args = {
+  name: 'switch-small',
+  size: COMPONENT_SIZE.SMALL,
+}

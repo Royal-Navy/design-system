@@ -1,19 +1,14 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { IconAnchor } from '@defencedigital/icon-library'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import {
+  IconAgriculture,
+  IconAnchor,
+  IconBrightnessAuto,
+  IconRemove,
+} from '@defencedigital/icon-library'
 
 import { Select } from './index'
-
-const options = [
-  { value: 'chocolate', label: 'Chocolate', badge: 100 },
-  { value: 'melon', label: 'Melon' },
-  { value: 'strawberry', label: 'Strawberry' },
-  {
-    value: 'foo',
-    label:
-      'This is a really, really long select option label that overflows the container when selected',
-  },
-]
+import { SelectOption } from './SelectOption'
 
 export default {
   component: Select,
@@ -23,55 +18,67 @@ export default {
     docs: {
       description: {
         component:
-          'This component wraps a popular open-source library. See comprehensive documentation [here](https://github.com/JedWatson/react-select#readme).',
+          'This component wraps a popular open-source library. See comprehensive documentation [here](https://www.downshift-js.com/downshift/).',
       },
+    },
+    options: {
+      enableShortcuts: false,
     },
   },
 } as ComponentMeta<typeof Select>
 
 const Template: ComponentStory<typeof Select> = (args) => (
   <div
-    style={{
-      height: args.isDisabled ? 'initial' : '13rem',
-      maxWidth: '25rem',
-    }}
+    style={{ height: args.isDisabled ? 'initial' : '18rem', maxWidth: '20rem' }}
   >
-    <Select {...args} />
+    <Select label="Some label" {...args}>
+      <SelectOption value="one">
+        This is a really, really long select option label that overflows the
+        container when selected
+      </SelectOption>
+      <SelectOption value="two">Two</SelectOption>
+      <SelectOption value="three">Three</SelectOption>
+      <SelectOption value="four">Four</SelectOption>
+    </Select>
+  </div>
+)
+
+const TemplateWIthIconsAndBadges: ComponentStory<typeof Select> = (args) => (
+  <div
+    style={{ height: args.isDisabled ? 'initial' : '18rem', maxWidth: '20rem' }}
+  >
+    <Select label="Some label" {...args}>
+      <SelectOption badge={100} icon={<IconAnchor />} value="one">
+        One
+      </SelectOption>
+      <SelectOption badge={110} icon={<IconRemove />} value="two">
+        Two
+      </SelectOption>
+      <SelectOption badge={111} icon={<IconAgriculture />} value="three">
+        Three
+      </SelectOption>
+      <SelectOption badge={112} icon={<IconBrightnessAuto />} value="four">
+        Four
+      </SelectOption>
+    </Select>
   </div>
 )
 
 export const Default = Template.bind({})
-Default.args = {
-  options,
-  label: 'Example label',
-  name: 'select-default',
-  defaultMenuIsOpen: true,
-}
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  options,
-  label: 'Example label',
-  name: 'select-disabled',
   isDisabled: true,
 }
 
-export const NotClearable = Template.bind({})
-NotClearable.storyName = 'Not clearable'
-NotClearable.args = {
-  options,
-  label: 'Example label',
-  name: 'select-not-clearable',
-  isClearable: false,
+export const WithError = Template.bind({})
+WithError.args = {
+  isInvalid: true,
 }
 
-export const WithIcons = Template.bind({})
-WithIcons.storyName = 'With icons'
-WithIcons.args = {
-  options: options.map((option) => ({
-    ...option,
-    icon: <IconAnchor />,
-  })),
-  label: 'Example label',
-  name: 'select-icons',
+export const WithValue = Template.bind({})
+WithValue.args = {
+  value: 'two',
 }
+
+export const WithIconsAndBadges = TemplateWIthIconsAndBadges.bind({})

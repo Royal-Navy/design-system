@@ -51,10 +51,6 @@ export interface MastheadProps {
    */
   onSearch?: (event: React.FormEvent<HTMLFormElement>, term: string) => void
   /**
-   * Optional placeholder text to display in the search bar.
-   */
-  searchPlaceholder?: string
-  /**
    * Text title of the application.
    */
   title: string
@@ -94,7 +90,6 @@ export const Masthead: React.FC<MastheadProps> = ({
   nav,
   notifications,
   onSearch,
-  searchPlaceholder = '',
   title,
   user,
   ...rest
@@ -178,7 +173,6 @@ export const Masthead: React.FC<MastheadProps> = ({
         <SearchBar
           onSearch={submitSearch}
           searchButton={searchButtonRef}
-          searchPlaceholder={searchPlaceholder}
           setShowSearch={setShowSearch}
           style={{ width: containerWidth }}
         />

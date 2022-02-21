@@ -75,6 +75,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       <StyledListItem>
         {hasError && <PaginationErrorMessage />}
         <StyledTextInput
+          label=""
           aria-label="Enter page number"
           onKeyDown={onKeyDown}
           name={name}

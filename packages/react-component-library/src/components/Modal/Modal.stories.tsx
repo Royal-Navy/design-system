@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Modal } from './index'
 import { StyledMain } from './partials/StyledMain'
 import { StyledModal } from './partials/StyledModal'
-import { BUTTON_COLOR, ButtonProps } from '../Button'
+import { ButtonProps, BUTTON_VARIANT } from '../Button'
 
 export default {
   component: Modal,
@@ -92,7 +92,7 @@ DangerButton.args = {
   title: 'Example Title',
   primaryButton: {
     ...primaryButton,
-    color: BUTTON_COLOR.DANGER,
+    variant: BUTTON_VARIANT.DANGER,
     icon: undefined,
   },
   secondaryButton,

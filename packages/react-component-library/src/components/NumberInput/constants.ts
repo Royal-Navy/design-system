@@ -1,11 +1,6 @@
-const END_ADORNMENT_TYPE = {
+const NUMBER_INPUT_BUTTON_TYPE = {
   DECREASE: 'decrease',
   INCREASE: 'increase',
 } as const
 
-const UNIT_POSITION = {
-  AFTER: 'after',
-  BEFORE: 'before',
-} as const
-
-export { END_ADORNMENT_TYPE, UNIT_POSITION }
+export { NUMBER_INPUT_BUTTON_TYPE }

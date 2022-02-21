@@ -124,7 +124,6 @@ describe('Masthead', () => {
           </Notifications>
         ),
         onSearch: () => true,
-        searchPlaceholder: 2,
         title: 'title',
         user: (
           <MastheadUser

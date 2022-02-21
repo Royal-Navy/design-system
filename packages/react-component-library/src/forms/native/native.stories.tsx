@@ -2,20 +2,17 @@ import { isBefore, isValid, parseISO } from 'date-fns'
 import React from 'react'
 import { ComponentMeta } from '@storybook/react'
 
-import { TextInputE } from '../../components/TextInputE'
-import { TextAreaE } from '../../components/TextAreaE'
-import { RadioE } from '../../components/RadioE'
-import {
-  AutocompleteE,
-  AutocompleteEOption,
-} from '../../components/AutocompleteE'
-import { CheckboxE } from '../../components/CheckboxE'
-import { DatePickerE } from '../../components/DatePickerE'
-import { NumberInputE } from '../../components/NumberInputE'
-import { SelectE, SelectEOption } from '../../components/SelectE'
-import { SwitchE, SwitchEOption } from '../../components/SwitchE'
-import { RangeSliderE } from '../../components/RangeSliderE'
-import { ButtonE } from '../../components/ButtonE'
+import { TextInput } from '../../components/TextInput'
+import { TextArea } from '../../components/TextArea'
+import { Radio } from '../../components/Radio'
+import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
+import { Checkbox } from '../../components/Checkbox'
+import { DatePicker } from '../../components/DatePicker'
+import { NumberInput } from '../../components/NumberInput'
+import { Select, SelectOption } from '../../components/Select'
+import { Switch, SwitchOption } from '../../components/Switch'
+import { RangeSlider } from '../../components/RangeSlider'
+import { Button } from '../../components/Button'
 import { Fieldset } from '../../components/Fieldset'
 import { useNativeForm } from './useNativeForm'
 import { Field } from '../../components/Field'
@@ -90,48 +87,48 @@ export const Example: React.FC<unknown> = () => {
           hintText="Example hint text."
           errors={[{ error: formErrors.email && 'Required' }]}
         >
-          <TextInputE
+          <TextInput
             type="email"
             name="email"
             label="Email"
             value={formState.email}
             onChange={handleChange}
-            data-testid="form-example-TextInputE-email"
+            data-testid="form-example-TextInput-email"
           />
         </Field>
         <Field hintText="Example hint text.">
-          <TextInputE
+          <TextInput
             type="password"
             name="password"
             label="Password"
             value={formState.password}
             onChange={handleChange}
-            data-testid="form-example-TextInputE-password"
+            data-testid="form-example-TextInput-password"
           />
         </Field>
         <Field hintText="Example hint text.">
-          <TextAreaE
+          <TextArea
             name="description"
             label="Description"
             value={formState.description}
             onChange={handleChange}
-            data-testid="form-example-TextAreaE-description"
+            data-testid="form-example-TextArea-description"
           />
         </Field>
         <Fieldset legend="Example checkbox selection">
-          <CheckboxE
+          <Checkbox
             onChange={handleCheckboxGroup}
             name="exampleCheckbox"
             label="Option 1"
             value="Option 1"
           />
-          <CheckboxE
+          <Checkbox
             onChange={handleCheckboxGroup}
             name="exampleCheckbox"
             label="Option 2"
             value="Option 2"
           />
-          <CheckboxE
+          <Checkbox
             onChange={handleCheckboxGroup}
             name="exampleCheckbox"
             label="Option 3"
@@ -139,13 +136,13 @@ export const Example: React.FC<unknown> = () => {
           />
         </Fieldset>
         <Fieldset legend="Example radio selection">
-          <RadioE
+          <Radio
             onChange={handleRadioGroup}
             name="exampleRadio"
             label="Option 1"
             value="Option 1"
           />
-          <RadioE
+          <Radio
             onChange={handleRadioGroup}
             name="exampleRadio"
             label="Option 2"
@@ -153,7 +150,7 @@ export const Example: React.FC<unknown> = () => {
           />
         </Fieldset>
         <Field hintText="Example hint text.">
-          <SwitchE
+          <Switch
             name="exampleSwitch"
             label="Example switch selection"
             onChange={(e: React.FormEvent<HTMLInputElement>) =>
@@ -165,15 +162,15 @@ export const Example: React.FC<unknown> = () => {
               })
             }
             value={formState.exampleSwitch}
-            data-testid="form-example-SwitchE"
+            data-testid="form-example-Switch"
           >
-            <SwitchEOption label="One" value="1" />
-            <SwitchEOption label="Two" value="2" />
-            <SwitchEOption label="Three" value="3" />
-          </SwitchE>
+            <SwitchOption label="One" value="1" />
+            <SwitchOption label="Two" value="2" />
+            <SwitchOption label="Three" value="3" />
+          </Switch>
         </Field>
         <Field hintText="Example hint text.">
-          <NumberInputE
+          <NumberInput
             name="exampleNumberInput"
             label="Example number input"
             onChange={(
@@ -190,14 +187,14 @@ export const Example: React.FC<unknown> = () => {
               })
             }}
             value={formState.exampleNumberInput}
-            data-testid="form-example-NumberInputE"
+            data-testid="form-example-NumberInput"
           />
         </Field>
         <Field
           hintText="Example hint text."
           errors={[{ error: formErrors.exampleDatePicker }]}
         >
-          <DatePickerE
+          <DatePicker
             disabledDays={{ before: MINIMUM_DATE }}
             onChange={({ startDate }) => {
               handleChange({
@@ -211,7 +208,7 @@ export const Example: React.FC<unknown> = () => {
           />
         </Field>
         <Field hintText="Example hint text.">
-          <SelectE
+          <Select
             label="Example select"
             onChange={(value) => {
               handleChange({
@@ -223,14 +220,14 @@ export const Example: React.FC<unknown> = () => {
             }}
             value={formState.exampleSelect}
           >
-            <SelectEOption value="one">One</SelectEOption>
-            <SelectEOption value="two">Two</SelectEOption>
-            <SelectEOption value="three">Three</SelectEOption>
-            <SelectEOption value="four">Four</SelectEOption>
-          </SelectE>
+            <SelectOption value="one">One</SelectOption>
+            <SelectOption value="two">Two</SelectOption>
+            <SelectOption value="three">Three</SelectOption>
+            <SelectOption value="four">Four</SelectOption>
+          </Select>
         </Field>
         <Field hintText="Example hint text.">
-          <AutocompleteE
+          <Autocomplete
             label="Example autocomplete"
             onChange={(value) => {
               handleChange({
@@ -242,14 +239,14 @@ export const Example: React.FC<unknown> = () => {
             }}
             value={formState.exampleAutocomplete}
           >
-            <AutocompleteEOption value="one">One</AutocompleteEOption>
-            <AutocompleteEOption value="two">Two</AutocompleteEOption>
-            <AutocompleteEOption value="three">Three</AutocompleteEOption>
-            <AutocompleteEOption value="four">Four</AutocompleteEOption>
-          </AutocompleteE>
+            <AutocompleteOption value="one">One</AutocompleteOption>
+            <AutocompleteOption value="two">Two</AutocompleteOption>
+            <AutocompleteOption value="three">Three</AutocompleteOption>
+            <AutocompleteOption value="four">Four</AutocompleteOption>
+          </Autocomplete>
         </Field>
         <Field hintText="Example hint text.">
-          <RangeSliderE
+          <RangeSlider
             onChange={(values: ReadonlyArray<number>) => {
               handleChange({
                 currentTarget: {
@@ -265,13 +262,13 @@ export const Example: React.FC<unknown> = () => {
             step={2}
           />
         </Field>
-        <ButtonE
+        <Button
           type="submit"
           data-testid="form-example-submit"
           isDisabled={isSubmitting}
         >
           Submit
-        </ButtonE>
+        </Button>
       </form>
 
       <pre data-testid="form-example-values">

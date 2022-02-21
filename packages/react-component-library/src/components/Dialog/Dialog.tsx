@@ -46,8 +46,7 @@ export const Dialog: React.FC<DialogProps> = ({
   const confirmButton: ButtonProps = {
     onClick: onConfirm,
     children: 'Confirm',
-    variant: 'primary',
-    color: isDanger ? 'danger' : undefined,
+    variant: isDanger ? 'danger' : 'primary',
   }
 
   const cancelButton: ButtonProps = {

@@ -1,25 +1,25 @@
-import autocompleteE from './AutocompleteE'
+import autocomplete from './Autocomplete'
 import avatar from './Avatar'
-import checkboxE from './CheckboxE'
+import checkbox from './Checkbox'
 import contextMenu from './ContextMenu'
 import datePicker from './DatePicker'
 import dismissibleBanner from './DismissibleBanner'
 import form from './form'
-import numberInputE from './NumberInputE'
-import rangeSliderE from './RangeSliderE'
-import selectE from './SelectE'
+import numberInput from './NumberInput'
+import rangeSlider from './RangeSlider'
+import select from './Select'
 import timeline from './timeline'
 
 export default {
-  autocompleteE,
+  autocomplete,
   avatar,
-  checkboxE,
+  checkbox,
   contextMenu,
   datePicker,
   dismissibleBanner,
   form,
-  numberInputE,
-  rangeSliderE,
-  selectE,
+  numberInput,
+  rangeSlider,
+  select,
   timeline,
 }

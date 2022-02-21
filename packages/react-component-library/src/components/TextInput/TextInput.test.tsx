@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, RenderResult } from '@testing-library/react'
+import { render, RenderResult, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { TextInput } from '.'
@@ -27,10 +27,8 @@ describe('TextInput', () => {
             name="name"
             onBlur={onBlurSpy}
             onChange={onChangeSpy}
-            footnote="footnote"
             id="id"
             label="label"
-            placeholder="placeholder"
             startAdornment={<span>start</span>}
             type="text"
           />
@@ -42,7 +40,7 @@ describe('TextInput', () => {
     it('should apply the `$hasContent` style rule to label', () => {
       expect(wrapper.getByTestId('text-input-label')).toHaveStyleRule(
         'transform',
-        'translate(0.75rem,0.75rem) scale(1)'
+        'translate(11px,6px) scale(0.75)'
       )
     })
 
@@ -92,13 +90,6 @@ describe('TextInput', () => {
       )
     })
 
-    it('should set the placeholder', () => {
-      expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
-        'placeholder',
-        'placeholder'
-      )
-    })
-
     it('should set the type', () => {
       expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
         'type',
@@ -117,8 +108,23 @@ describe('TextInput', () => {
       expect(wrapper.getByText('end')).toBeInTheDocument()
     })
 
-    it('should render the footnote', () => {
-      expect(wrapper.getByText('footnote')).toBeInTheDocument()
+    it('should remove auto fill backgrounds', () => {
+      expect(wrapper.getByTestId('text-input-input')).toHaveStyleRule(
+        '-webkit-autofill'
+      )
+      expect(wrapper.getByTestId('text-input-input')).toHaveStyleRule(
+        '-webkit-autofill:hover'
+      )
+      expect(wrapper.getByTestId('text-input-input')).toHaveStyleRule(
+        '-webkit-autofill:focus'
+      )
+      expect(wrapper.getByTestId('text-input-input')).toHaveStyleRule(
+        '-webkit-autofill:active'
+      )
+      expect(wrapper.getByTestId('text-input-input')).toHaveStyleRule(
+        'filter',
+        'none'
+      )
     })
 
     describe('and focusing on the input', () => {
@@ -152,41 +158,30 @@ describe('TextInput', () => {
 
     describe('when the value is deleted', () => {
       beforeEach(async () => {
-        await userEvent.type(
-          wrapper.getByTestId('text-input-input'),
-          '{backspace}{backspace}{backspace}{backspace}{backspace}'
-        )
+        const input = wrapper.getByTestId('text-input-input')
+        await userEvent.type(input, '{backspace}')
+        await userEvent.type(input, '{backspace}')
+        await userEvent.type(input, '{backspace}')
+        await userEvent.type(input, '{backspace}')
+        await userEvent.type(input, '{backspace}')
+
+        wrapper.getByTestId('next-input').focus()
       })
 
       it('should remove the `$hasContent` style rule from label', () => {
-        expect(wrapper.getByTestId('text-input-label')).toHaveStyleRule(
-          'transform',
-          'translate(0.75rem,0.75rem) scale(1)'
-        )
+        return waitFor(() => {
+          expect(wrapper.getByTestId('text-input-label')).toHaveStyleRule(
+            'transform',
+            'translate(11px,13px) scale(1)'
+          )
+        })
       })
-
-      it('should update the value', () => {
-        expect(wrapper.getByTestId('text-input-input')).toHaveValue('')
-      })
-    })
-  })
-
-  describe('minimal props', () => {
-    beforeEach(() => {
-      wrapper = render(<TextInput name="name" />)
-    })
-
-    it('should have the no-label class', () => {
-      expect(wrapper.getByTestId('text-input-input')).toHaveStyleRule(
-        'padding',
-        '1.25rem 0.75rem 0.25rem'
-      )
     })
   })
 
   describe('disabled', () => {
     beforeEach(() => {
-      wrapper = render(<TextInput name="name" isDisabled />)
+      wrapper = render(<TextInput label="label" name="name" isDisabled />)
     })
 
     it('should correctly apply the `disabled` attribute to the input element', () => {
@@ -199,7 +194,7 @@ describe('TextInput', () => {
 
   describe('type', () => {
     beforeEach(() => {
-      wrapper = render(<TextInput name="name" type="password" />)
+      wrapper = render(<TextInput label="label" name="name" type="password" />)
     })
 
     it('should correctly apply the custom `type` attribute to the input element', () => {

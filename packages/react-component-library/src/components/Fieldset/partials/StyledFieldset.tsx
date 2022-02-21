@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { StyledCheckboxWrapper } from '../../CheckboxE/partials/StyledCheckboxWrapper'
-import { StyledCheckbox } from '../../CheckboxE/partials/StyledCheckbox'
-import { StyledRadioWrapper } from '../../RadioE/partials/StyledRadioWrapper'
-import { StyledRadio } from '../../RadioE/partials/StyledRadio'
+import { StyledCheckboxWrapper } from '../../Checkbox/partials/StyledCheckboxWrapper'
+import { StyledCheckbox } from '../../Checkbox/partials/StyledCheckbox'
+import { StyledRadioWrapper } from '../../Radio/partials/StyledRadioWrapper'
+import { StyledRadio } from '../../Radio/partials/StyledRadio'
 import { StyledField } from '../../Field/partials/StyledField'
 import { FieldsetType } from '../Fieldset'
 

@@ -1,6 +1,6 @@
 import React, { FormEvent } from 'react'
 
-import { ButtonGroupSizeType } from './ButtonGroup'
+import { ComponentSizeType } from '../Forms'
 import { Button } from '../Button'
 
 export interface ButtonGroupItemProps {
@@ -23,7 +23,7 @@ export interface ButtonGroupItemProps {
   /**
    * Size of the component.
    */
-  size?: ButtonGroupSizeType
+  size?: ComponentSizeType
 }
 
 export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({

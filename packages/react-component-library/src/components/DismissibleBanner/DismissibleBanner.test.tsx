@@ -47,7 +47,7 @@ describe('DismissibleBanner', () => {
 
     describe("when the `Don't show this again` checkbox is clicked before the component is dismissed", () => {
       beforeEach(() => {
-        wrapper.getByTestId('dimissiblebanner-dontshow').click()
+        wrapper.getByTestId('checkbox-input').click()
         wrapper.getByText('Dismiss').click()
       })
 

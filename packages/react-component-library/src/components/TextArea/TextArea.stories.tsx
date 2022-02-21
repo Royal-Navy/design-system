@@ -1,5 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import { TextArea } from '.'
 
 export default {
@@ -19,20 +20,14 @@ Default.args = {
   label: 'Example label',
 }
 
-export const WithLabel: ComponentStory<typeof TextArea> = (props) => (
-  <TextArea {...props} label="Example label" />
-)
-
-WithLabel.storyName = 'With label'
-
-export const WithFootnote: ComponentStory<typeof TextArea> = (props) => (
-  <TextArea {...props} label="Example label" footnote="Example footnote" />
-)
-
-WithFootnote.storyName = 'With footnote'
-
 export const Disabled: ComponentStory<typeof TextArea> = (props) => (
-  <TextArea {...props} label="Example label" isDisabled />
+  <TextArea {...props} isDisabled label="Example label" />
 )
 
 Disabled.storyName = 'Disabled'
+
+export const WithError: ComponentStory<typeof TextArea> = (props) => (
+  <TextArea {...props} isInvalid label="Example label" />
+)
+
+WithError.storyName = 'With error'

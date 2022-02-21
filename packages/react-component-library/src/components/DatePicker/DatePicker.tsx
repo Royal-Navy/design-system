@@ -1,50 +1,69 @@
-import React, { useState } from 'react'
+import { IconEvent } from '@defencedigital/icon-library'
+import FocusTrap from 'focus-trap-react'
+import React, { useRef } from 'react'
 import { Placement } from '@popperjs/core'
-import { v4 as uuidv4 } from 'uuid'
-import { DayPickerProps } from 'react-day-picker'
-import { Transition } from 'react-transition-group'
+import { DayModifiers, DayPickerProps } from 'react-day-picker'
+import { useBoolean } from 'usehooks-ts'
 
-import {
-  FLOATING_BOX_PLACEMENT,
-  FLOATING_BOX_SCHEME,
-} from '../../primitives/FloatingBox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
-import { DATEPICKER_PLACEMENT } from './constants'
-import { DatePickerInput } from './DatePickerInput'
-import { DropdownIndicatorIcon } from '../Dropdown/DropdownIndicatorIcon'
-import { FloatingBoxContent } from '../../primitives/FloatingBox/FloatingBoxContent'
-import { getId, hasClass } from '../../helpers'
+import { DATE_VALIDITY, WEEKDAY_TITLES } from './constants'
+import { DATEPICKER_E_ACTION } from './types'
+import { hasClass } from '../../helpers'
+import { InlineButton } from '../InlineButtons/InlineButton'
 import { InputValidationProps } from '../../common/InputValidationProps'
-import { StyledArrow } from '../../primitives/FloatingBox/partials/StyledArrow'
-import { StyledButton } from './partials/StyledButton'
+import { isDateValid } from './utils'
+import { StyledLabel } from '../TextInput/partials/StyledLabel'
 import { StyledDatePickerInput } from './partials/StyledDatePickerInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
-import { StyledFloatingBox } from '../../primitives/FloatingBox/partials/StyledFloatingBox'
+import { StyledFloatingBox } from './partials/StyledFloatingBox'
+import { StyledInlineButtons } from '../InlineButtons/partials/StyledInlineButtons'
+import { StyledInput } from '../TextInput/partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
-import { StyledLabel } from './partials/StyledLabel'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
-import { StyledSeparator } from './partials/StyledSeparator'
-import { useDatePickerOpenClose } from './useDatePickerOpenClose'
-import { useFloatingElement } from '../../hooks/useFloatingElement'
-import { useSelection } from './useSelection'
+import { useExternalId } from '../../hooks/useExternalId'
+import { useFocus } from '../../hooks/useFocus'
+import { useFocusTrapOptions } from './useFocusTrapOptions'
+import { useHandleDayClick } from './useHandleDayClick'
+import { useInput } from './useInput'
+import { useRangeHoverOrFocusDate } from './useRangeHoverOrFocusDate'
+import { useStatefulRef } from '../../hooks/useStatefulRef'
+import { useDatePickerReducer } from './useDatePickerReducer'
 
-/**
- * @deprecated
- */
-export type DatePickerPlacement =
-  | typeof DATEPICKER_PLACEMENT.ABOVE
-  | typeof DATEPICKER_PLACEMENT.BELOW
-  | typeof DATEPICKER_PLACEMENT.LEFT
-  | typeof DATEPICKER_PLACEMENT.RIGHT
+declare module 'react-day-picker' {
+  // eslint-disable-next-line no-shadow
+  interface DayPickerProps {
+    // This prop is currently missing from the react-day-picker types
+    onDayFocus?: (
+      day: Date,
+      modifiers: DayModifiers,
+      e: React.FocusEvent<HTMLDivElement>
+    ) => void
+  }
+}
+
+export type DatePickerDateValidityType =
+  | typeof DATE_VALIDITY.VALID
+  | typeof DATE_VALIDITY.INVALID
+  | typeof DATE_VALIDITY.DISABLED
+
+export interface DatePickerOnChangeData {
+  startDate: Date | null
+  startDateValidity: DatePickerDateValidityType | null
+  endDate: Date | null
+  endDateValidity: DatePickerDateValidityType | null
+}
 
 export interface DatePickerProps
   extends ComponentWithClass,
     InputValidationProps {
   /**
-   * End date of the picker (only relevant in range mode).
+   * The end of the selected date range. (Only relevant if isRange is set.)
+   *
+   * If set, it should be kept updated with the `endDate` value provided
+   * by the `onChange` callback.
    */
-  endDate?: Date
+  endDate?: Date | null
   /**
    * Custom date format (e.g. `yyyy/MM/dd`).
    */
@@ -75,27 +94,42 @@ export interface DatePickerProps
   onBlur?: (event: React.FormEvent) => void
   /**
    * Optional handler to be invoked when the value of the component changes.
+   *
+   * Note: If an invalid date is typed, `data.startDate` will be set to an
+   * invalid date object and the `data.startDateValidity` will be set to
+   * `"invalid"`. (If you're using `yup` for validation, you may wish to
+   * use the `.typeError()` chainer to display an appropriate error message.)
+   *
+   * If a date that is disabled using the `disabledDays` prop is typed,
+   * `data.startDate` will be populated and `data.startDateValidity` will
+   * be set to `"disabled"`. You should check for this and ensure an
+   * appropriate error message is displayed.
    */
-  onChange?: (data: { startDate: Date; endDate: Date }) => void
+  onChange?: (data: DatePickerOnChangeData) => void
   /**
    * Optional handler to be invoked when the calendar is focussed.
    */
   onCalendarFocus?: (e: React.SyntheticEvent) => void
   /**
-   * Start date of the picker (the first date selected by end user).
+   * The selected date, or the start of the selected date range if `isRange`
+   * is set.
+   *
+   * If set, it should be kept updated with the `startDate` provided
+   * by the `onChange` callback.
    */
-  startDate?: Date
+  startDate?: Date | null
   /**
-   * Optional HTML `value` attribute associated with the component.
-   * @deprecated
+   * Toggles whether the picker is open on first render.
    */
-  value?: string
+  initialIsOpen?: boolean
   /**
-   * Toggles whether or not the picker is open.
-   */
-  isOpen?: boolean
-  /**
-   * An array of dates to disabled within the picker (preventing user interaction).
+   * An array of dates to disabled within the picker, preventing them from
+   * being selected in the date picker calendar.
+   *
+   * Note that these dates can still be manually typed in. You should still
+   * check for them in your validation logic and display an appropriate
+   * error message if they are received. See the `onChange` prop for more
+   * information.
    */
   disabledDays?: DayPickerProps['disabledDays']
   /**
@@ -103,85 +137,110 @@ export interface DatePickerProps
    */
   initialMonth?: DayPickerProps['initialMonth']
   /**
+   * Initial value for `startDate`. Only used when the `startDate` prop is not set.
+   */
+  initialStartDate?: Date | null
+  /**
+   * Initial value for `endDate`. Only used when the `endDate` prop is not set.
+   */
+  initialEndDate?: Date | null
+  /**
    * Position to display the picker relative to the input.
    * NOTE: This is now calculated automatically by default based on available screen real-estate.
    */
-  placement?: DatePickerPlacement | Placement
+  placement?: Placement
+  /**
+   * Not used. Use `startDate` and `endDate` instead.
+   */
+  value?: never
 }
+
+const replaceInvalidDate = (date: Date | null | undefined): Date | undefined =>
+  isDateValid(date) ? date : undefined
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   className,
-  endDate,
+  endDate: externalEndDate,
   format: datePickerFormat = DATE_FORMAT.SHORT,
-  id = uuidv4(),
-  isDisabled,
+  id: externalId,
+  isDisabled = false,
   isInvalid,
-  isRange,
-  label = 'Select Date',
+  isRange = false,
+  label = 'Date',
   onChange,
   onCalendarFocus,
-  startDate,
-  value,
-  isOpen,
+  startDate: externalStartDate,
+  initialIsOpen,
   disabledDays,
   initialMonth,
-  placement = FLOATING_BOX_PLACEMENT.BOTTOM,
+  initialStartDate = null,
+  initialEndDate = null,
+  placement = 'bottom-start',
+  onBlur,
+  // Formik can pass value – drop it to stop it being forwarded to the input
+  value: _,
   ...rest
 }) => {
-  const {
-    floatingBoxChildrenRef,
-    handleOnClose,
-    handleOnFocus,
-    inputButtonRef,
-    inputRef,
-    open,
-  } = useDatePickerOpenClose(isOpen)
+  const id = useExternalId(externalId)
+  const titleId = useExternalId('datepicker-title')
+  const contentId = useExternalId('datepicker-contentId')
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
-  const { state, handleDayClick } = useSelection(
-    startDate,
-    endDate,
+  const { hasFocus, onLocalBlur, onLocalFocus } = useFocus()
+  const {
+    setFalse: close,
+    value: isOpen,
+    toggle: toggleIsOpen,
+  } = useBoolean(initialIsOpen)
+  const focusTrapOptions = useFocusTrapOptions(
+    close,
+    isRange ? [buttonRef, inputRef] : [buttonRef]
+  )
+
+  const [state, dispatch] = useDatePickerReducer(
+    externalStartDate,
+    externalEndDate,
+    initialStartDate,
+    initialEndDate,
+    datePickerFormat,
+    isRange
+  )
+  const handleDayClick = useHandleDayClick(
+    state,
+    dispatch,
     isRange,
-    onChange,
-    handleOnClose
+    disabledDays,
+    onChange
   )
+  const { startDate, endDate } = state
+  const hasError =
+    state.hasError || isInvalid || hasClass(className, 'is-invalid')
 
-  const [hasError, setHasError] = useState<boolean>(
-    isInvalid || hasClass(className, 'is-invalid')
-  )
-  const [currentMonth, setCurrentMonth] = useState<Date>(null)
-
-  const { from, to } = state
-  const modifiers = { start: from, end: to }
-
-  const hasContent = !!((value && value.length) || from)
-
-  const titleId = getId('datepicker-title')
-  const contentId = getId('day-picker')
-
-  const placeholder = isRange ? null : datePickerFormat.toLowerCase()
-
-  /**
-   * Maintain compatability with legacy interface
-   */
-  const legacyPlacementMap = {
-    above: 'top',
-    below: 'bottom',
-  }
+  const [floatingBoxTarget, setFloatingBoxTarget] = useStatefulRef()
 
   const {
-    targetElementRef,
-    floatingElementRef,
-    arrowElementRef,
-    styles,
-    attributes,
-  } = useFloatingElement(legacyPlacementMap[placement] || placement)
+    rangeHoverOrFocusDate,
+    handleDayFocus,
+    handleDayMouseEnter,
+    handleDayMouseLeave,
+  } = useRangeHoverOrFocusDate(isRange)
 
-  const TRANSITION_STYLES = {
-    entering: { opacity: 0 },
-    entered: { opacity: 1 },
-    exiting: { opacity: 0 },
-    exited: { opacity: 0 },
+  const { handleKeyDown, handleInputBlur, handleInputChange } = useInput(
+    datePickerFormat,
+    isRange,
+    handleDayClick,
+    dispatch
+  )
+
+  const modifiers = {
+    start: replaceInvalidDate(startDate),
+    end: replaceInvalidDate(endDate),
   }
+
+  const hasContent = Boolean(startDate)
+
+  const placeholder = !isRange ? datePickerFormat.toLowerCase() : undefined
 
   return (
     <>
@@ -189,108 +248,119 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         className={className}
         data-testid="datepicker-input-wrapper"
         $isDisabled={isDisabled}
-        ref={targetElementRef}
+        ref={setFloatingBoxTarget}
       >
         <StyledOuterWrapper
           data-testid="datepicker-outer-wrapper"
-          $hasFocus={open}
+          $hasFocus={hasFocus}
           $isInvalid={hasError}
+          $isDisabled={isDisabled}
         >
-          <StyledInputWrapper>
+          <StyledInputWrapper $isRange={isRange}>
             <StyledLabel
               id={titleId}
-              $isOpen={open}
+              $hasFocus={hasFocus && !isRange}
               $hasContent={hasContent}
-              $hasPlaceholder={!!placeholder}
               htmlFor={id}
               data-testid="datepicker-label"
             >
               {label}
+              {placeholder && ` (${placeholder})`}
             </StyledLabel>
-            <DatePickerInput
-              disabledDays={disabledDays}
+            <StyledInput
+              ref={inputRef}
+              $hasLabel={Boolean(label)}
+              aria-label="Choose date"
+              data-testid="datepicker-input"
               id={id}
-              isDisabled={isDisabled}
-              isRange={isRange}
-              format={datePickerFormat}
-              from={from}
-              onComplete={handleOnClose}
-              onDayChange={(day: Date) => {
-                setCurrentMonth(day)
-                handleDayClick(day)
-              }}
-              onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
-                if (!isRange) {
-                  e.target.select()
+              type="text"
+              disabled={isDisabled}
+              readOnly={isRange}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+              onBlur={(e) => {
+                onLocalBlur(e)
+                handleInputBlur()
+                if (onBlur) {
+                  onBlur(e)
                 }
-                handleOnFocus(e)
+              }}
+              onFocus={() => {
+                onLocalFocus()
+                if (isRange) {
+                  buttonRef.current?.focus()
+                }
+              }}
+              onClick={() => {
+                if (isRange) {
+                  toggleIsOpen()
+                }
               }}
               placeholder={placeholder}
-              ref={inputRef}
-              setHasError={setHasError}
-              to={to}
+              value={state.inputValue}
               {...rest}
             />
           </StyledInputWrapper>
-          <StyledButton
-            aria-expanded={!!open}
-            aria-label={`${open ? 'Hide' : 'Show'} day picker`}
-            aria-owns={contentId}
-            ref={inputButtonRef}
-            type="button"
-            onClick={open ? handleOnClose : handleOnFocus}
-            disabled={isDisabled}
-            data-testid="datepicker-input-button"
-          >
-            <StyledSeparator />
-            <DropdownIndicatorIcon isOpen={open} />
-          </StyledButton>
+          <StyledInlineButtons>
+            <InlineButton
+              aria-expanded={isOpen}
+              aria-label={`${isOpen ? 'Hide' : 'Show'} day picker`}
+              aria-owns={contentId}
+              data-testid="datepicker-input-button"
+              isDisabled={isDisabled}
+              onClick={toggleIsOpen}
+              ref={buttonRef}
+            >
+              <IconEvent size={18} />
+            </InlineButton>
+          </StyledInlineButtons>
         </StyledOuterWrapper>
       </StyledDatePickerInput>
-      <Transition in={open} timeout={0} unmountOnExit>
-        {(transitionState) => (
-          <StyledFloatingBox
-            ref={floatingElementRef}
-            role="dialog"
-            data-testid="floating-box"
-            aria-modal
-            aria-labelledby={titleId}
-            aria-live="polite"
-            style={{ ...styles.popper, ...TRANSITION_STYLES[transitionState] }}
-            {...attributes.popper}
-            {...rest}
-          >
-            <FloatingBoxContent
-              contentId={contentId}
-              scheme={FLOATING_BOX_SCHEME.LIGHT}
-              data-testid="floating-box-content"
-            >
-              <StyledArrow
-                $placement={
-                  attributes?.popper?.['data-popper-placement'] as Placement
-                }
-                ref={arrowElementRef}
-                style={styles.arrow}
-                {...attributes.arrow}
-              />
-              <div ref={floatingBoxChildrenRef}>
-                <StyledDayPicker
-                  numberOfMonths={isRange ? 2 : 1}
-                  selectedDays={[from, { from, to }]}
-                  modifiers={modifiers}
-                  month={currentMonth}
-                  onDayClick={handleDayClick}
-                  initialMonth={startDate || initialMonth}
-                  disabledDays={disabledDays}
-                  $isRange={isRange}
-                  $isVisible={open}
-                  onFocus={onCalendarFocus}
-                />
-              </div>
-            </FloatingBoxContent>
-          </StyledFloatingBox>
-        )}
-      </Transition>
+      <StyledFloatingBox
+        isVisible={isOpen}
+        placement={placement}
+        targetElement={floatingBoxTarget}
+        role="dialog"
+        aria-modal
+        aria-labelledby={titleId}
+        aria-live="polite"
+      >
+        <FocusTrap focusTrapOptions={focusTrapOptions}>
+          <StyledDayPicker
+            firstDayOfWeek={1}
+            weekdaysShort={WEEKDAY_TITLES}
+            selectedDays={[
+              {
+                from: replaceInvalidDate(startDate),
+                to: replaceInvalidDate(endDate) || rangeHoverOrFocusDate,
+              },
+            ]}
+            modifiers={modifiers}
+            onDayClick={(day, { disabled }) => {
+              if (disabled) {
+                return
+              }
+
+              const newState = handleDayClick(day)
+
+              dispatch({ type: DATEPICKER_E_ACTION.REFRESH_HAS_ERROR })
+              dispatch({ type: DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE })
+
+              if (newState.endDate || !isRange) {
+                setTimeout(() => close())
+              }
+            }}
+            initialMonth={replaceInvalidDate(startDate) || initialMonth}
+            disabledDays={disabledDays}
+            $isRange={isRange}
+            $isVisible={isOpen}
+            onFocus={onCalendarFocus}
+            onDayMouseEnter={handleDayMouseEnter}
+            onDayMouseLeave={handleDayMouseLeave}
+            onDayFocus={handleDayFocus}
+          />
+        </FocusTrap>
+      </StyledFloatingBox>
     </>
   )
 }

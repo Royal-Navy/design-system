@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
-import { Button, BUTTON_SIZE, BUTTON_VARIANT } from '../Button'
+import { Button, BUTTON_VARIANT } from '../Button'
+import { COMPONENT_SIZE } from '../Forms'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledDismissibleBanner } from './partials/StyledDismissibleBanner'
 import { StyledContent } from './partials/StyledContent'
@@ -8,6 +9,7 @@ import { StyledTitle } from './partials/StyledTitle'
 import { StyledFooter } from './partials/StyledFooter'
 import { StyledDontShow } from './partials/StyledDontShow'
 import { StyledDescription } from './partials/StyledDescription'
+import { CHECKBOX_VARIANT } from '../Checkbox'
 
 export interface DismissibleBannerWithTitleProps extends ComponentWithClass {
   /**
@@ -89,17 +91,17 @@ export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
       <StyledFooter>
         {hasCheckbox && (
           <StyledDontShow
-            data-testid="dimissiblebanner-dontshow"
             label="Don't show this again"
             name="dimissiblebanner-dontshow"
             onChange={() => setCanShowAgain(!canShowAgain)}
+            variant={CHECKBOX_VARIANT.NO_CONTAINER}
           />
         )}
         {!hasCheckbox && <span />}
         <Button
           data-testid="dimissiblebanner-dismiss"
           onClick={onButtonClick}
-          size={BUTTON_SIZE.SMALL}
+          size={COMPONENT_SIZE.SMALL}
           variant={BUTTON_VARIANT.SECONDARY}
         >
           Dismiss

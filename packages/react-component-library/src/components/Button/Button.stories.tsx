@@ -3,12 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { IconBrightnessLow } from '@defencedigital/icon-library'
 import { Button } from './index'
-import {
-  BUTTON_COLOR,
-  BUTTON_SIZE,
-  BUTTON_VARIANT,
-  BUTTON_ICON_POSITION,
-} from './constants'
+import { BUTTON_VARIANT, BUTTON_ICON_POSITION } from './constants'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   component: Button,
@@ -16,116 +12,164 @@ export default {
   parameters: { actions: { argTypesRegex: '^on.*' } },
 } as ComponentMeta<typeof Button>
 
-export const Default: ComponentStory<typeof Button> = ({
-  children,
-  ...rest
-}) => <Button {...rest}>{children}</Button>
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
+export const Default = Template.bind({})
 Default.args = {
   children: 'Default',
 }
 
-export const Primary: ComponentStory<typeof Button> = ({
-  children,
-  ...rest
-}) => <Button {...rest}>{children}</Button>
-
+export const Primary = Template.bind({})
 Primary.args = {
   variant: BUTTON_VARIANT.PRIMARY,
   children: 'Primary',
 }
 
-export const Secondary: ComponentStory<typeof Button> = ({
-  children,
-  ...rest
-}) => <Button {...rest}>{children}</Button>
+export const PrimaryDisabled = Template.bind({})
+PrimaryDisabled.storyName = 'Primary, disabled'
+PrimaryDisabled.args = {
+  variant: BUTTON_VARIANT.PRIMARY,
+  isDisabled: true,
+  children: 'Primary, disabled',
+}
 
+export const PrimaryLoading = Template.bind({})
+PrimaryLoading.storyName = 'Primary, loading'
+PrimaryLoading.args = {
+  variant: BUTTON_VARIANT.PRIMARY,
+  isLoading: true,
+  children: 'Primary, loading',
+}
+
+export const PrimaryLeftIcon = Template.bind({})
+PrimaryLeftIcon.storyName = 'Primary, with left icon'
+PrimaryLeftIcon.args = {
+  children: 'Primary',
+  icon: <IconBrightnessLow />,
+  iconPosition: BUTTON_ICON_POSITION.LEFT,
+}
+
+export const PrimaryRightIcon = Template.bind({})
+PrimaryRightIcon.storyName = 'Primary, with right icon'
+PrimaryRightIcon.args = {
+  children: 'Primary',
+  icon: <IconBrightnessLow />,
+  iconPosition: BUTTON_ICON_POSITION.RIGHT,
+}
+
+export const IconNoText = Template.bind({})
+IconNoText.storyName = 'Icon, no text'
+IconNoText.args = {
+  children: undefined,
+  icon: <IconBrightnessLow />,
+  title: 'Reduce brightness',
+}
+
+export const Secondary = Template.bind({})
 Secondary.args = {
   variant: BUTTON_VARIANT.SECONDARY,
   children: 'Secondary',
 }
 
-export const Tertiary: ComponentStory<typeof Button> = ({
-  children,
-  ...rest
-}) => <Button {...rest}>{children}</Button>
+export const SecondaryLeftIcon = Template.bind({})
+SecondaryLeftIcon.storyName = 'Secondary, with left icon'
+SecondaryLeftIcon.args = {
+  variant: BUTTON_VARIANT.SECONDARY,
+  children: 'Secondary',
+  icon: <IconBrightnessLow />,
+  iconPosition: BUTTON_ICON_POSITION.LEFT,
+}
 
+export const SecondaryDisabled = Template.bind({})
+SecondaryDisabled.storyName = 'Secondary, disabled'
+SecondaryDisabled.args = {
+  variant: BUTTON_VARIANT.SECONDARY,
+  isDisabled: true,
+  children: 'Secondary, disabled',
+}
+
+export const SecondaryLoading = Template.bind({})
+SecondaryLoading.storyName = 'Secondary, loading'
+SecondaryLoading.args = {
+  variant: BUTTON_VARIANT.SECONDARY,
+  isLoading: true,
+  children: 'Secondary, loading',
+}
+
+export const Tertiary = Template.bind({})
 Tertiary.args = {
   variant: BUTTON_VARIANT.TERTIARY,
   children: 'Tertiary',
 }
 
-export const Danger: ComponentStory<typeof Button> = ({
-  children,
-  ...rest
-}) => <Button {...rest}>{children}</Button>
-
-Danger.args = {
-  variant: BUTTON_VARIANT.PRIMARY,
-  color: BUTTON_COLOR.DANGER,
-  children: 'Danger',
-}
-
-export const Small: ComponentStory<typeof Button> = ({ children, ...rest }) => (
-  <Button {...rest}>{children}</Button>
-)
-
-Small.args = {
-  variant: BUTTON_VARIANT.PRIMARY,
-  size: BUTTON_SIZE.SMALL,
-  children: 'Small',
-}
-
-export const Large: ComponentStory<typeof Button> = ({ children, ...rest }) => (
-  <Button {...rest}>{children}</Button>
-)
-
-Large.args = {
-  variant: BUTTON_VARIANT.PRIMARY,
-  size: BUTTON_SIZE.LARGE,
-  children: 'Large',
-}
-
-export const Disabled: ComponentStory<typeof Button> = ({ children }) => (
-  <Button isDisabled>{children}</Button>
-)
-
-Disabled.args = {
-  children: 'Disabled',
-}
-
-export const WithLeftIcon: ComponentStory<typeof Button> = ({
-  icon,
-  iconPosition,
-  children,
-}) => (
-  <Button icon={icon} iconPosition={iconPosition}>
-    {children}
-  </Button>
-)
-
-WithLeftIcon.args = {
-  children: 'Default',
+export const TertiaryLeftIcon = Template.bind({})
+TertiaryLeftIcon.storyName = 'Tertiary, with left icon'
+TertiaryLeftIcon.args = {
+  variant: BUTTON_VARIANT.TERTIARY,
+  children: 'Tertiary',
   icon: <IconBrightnessLow />,
   iconPosition: BUTTON_ICON_POSITION.LEFT,
 }
 
-WithLeftIcon.storyName = 'With left icon'
-
-export const WithRightIcon: ComponentStory<typeof Button> = ({
-  icon,
-  iconPosition,
-  children,
-}) => (
-  <Button icon={icon} iconPosition={iconPosition}>
-    {children}
-  </Button>
-)
-
-WithRightIcon.args = {
-  children: 'Default',
-  icon: <IconBrightnessLow />,
-  iconPosition: BUTTON_ICON_POSITION.RIGHT,
+export const TertiaryDisabled = Template.bind({})
+TertiaryDisabled.storyName = 'Tertiary, disabled'
+TertiaryDisabled.args = {
+  variant: BUTTON_VARIANT.TERTIARY,
+  isDisabled: true,
+  children: 'Tertiary, disabled',
 }
 
-WithRightIcon.storyName = 'With right icon'
+export const TertiaryLoading = Template.bind({})
+TertiaryLoading.storyName = 'Tertiary, loading'
+TertiaryLoading.args = {
+  variant: BUTTON_VARIANT.TERTIARY,
+  isLoading: true,
+  children: 'Tertiary, loading',
+}
+
+export const Danger = Template.bind({})
+Danger.args = {
+  variant: BUTTON_VARIANT.DANGER,
+  children: 'Danger',
+}
+
+export const DangerDisabled = Template.bind({})
+DangerDisabled.storyName = 'Danger, disabled'
+DangerDisabled.args = {
+  variant: BUTTON_VARIANT.DANGER,
+  isDisabled: true,
+  children: 'Danger, disabled',
+}
+
+export const DangerLoading = Template.bind({})
+DangerLoading.storyName = 'Danger, loading'
+DangerLoading.args = {
+  variant: BUTTON_VARIANT.DANGER,
+  isLoading: true,
+  children: 'Danger, loading',
+}
+
+export const Small = Template.bind({})
+Small.args = {
+  variant: BUTTON_VARIANT.PRIMARY,
+  size: COMPONENT_SIZE.SMALL,
+  children: 'Small',
+}
+
+export const SmallLoading = Template.bind({})
+SmallLoading.storyName = 'Small, loading'
+SmallLoading.args = {
+  variant: BUTTON_VARIANT.PRIMARY,
+  size: COMPONENT_SIZE.SMALL,
+  children: 'Small, loading',
+  isLoading: true,
+}
+
+export const SmallIconNoText = Template.bind({})
+SmallIconNoText.storyName = 'Small, with icon, no text '
+SmallIconNoText.args = {
+  variant: BUTTON_VARIANT.PRIMARY,
+  size: COMPONENT_SIZE.SMALL,
+  icon: <IconBrightnessLow />,
+  title: 'Reduce brightness',
+}

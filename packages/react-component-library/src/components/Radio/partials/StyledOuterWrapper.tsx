@@ -1,11 +1,22 @@
-import styled from 'styled-components'
-import { selectors } from '@defencedigital/design-tokens'
+import styled, { css } from 'styled-components'
 
-const { spacing } = selectors
+interface StyledOuterWrapperProps {
+  $hasContainer?: boolean
+}
 
-export const StyledOuterWrapper = styled.div`
+export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
   display: inline-flex;
   align-items: center;
   flex-direction: row;
-  padding: ${spacing('2')} 0;
+  border-radius: 15px;
+
+  &:active {
+    pointer-events: none;
+  }
+
+  ${({ $hasContainer }) =>
+    $hasContainer &&
+    css`
+      min-height: 44px;
+    `}
 `

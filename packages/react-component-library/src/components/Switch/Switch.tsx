@@ -1,33 +1,21 @@
-import React, { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import React, { useState, useEffect } from 'react'
 
-import { getKey } from '../../helpers'
-import { SWITCH_SIZE } from '.'
+import { warnIfOverwriting, getKey } from '../../helpers'
+import { SwitchOption, SwitchOptionProps } from '.'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { StyledSwitch } from './partials/StyledSwitch'
 import { StyledLegend } from './partials/StyledLegend'
 import { StyledContainer } from './partials/StyledContainer'
-import { StyledOption } from './partials/StyledOption'
-import { SwitchInput } from './partials/SwitchInput'
+import { ComponentSizeType, COMPONENT_SIZE } from '../Forms'
+import { useExternalId } from '../../hooks/useExternalId'
 
-function getActiveOption(options: SwitchOptionProps[], value: string) {
-  const initial: SwitchOptionProps | string = options.find(
-    (item) => item.value === value
-  )
-
-  return (initial && initial.label) || null
-}
-
-export type SwitchSizeType =
-  | typeof SWITCH_SIZE.LARGE
-  | typeof SWITCH_SIZE.SMALL
-  | typeof SWITCH_SIZE.REGULAR
-
-export interface SwitchOptionProps {
-  label: string
-  value: string
-}
+export type SwitchChildType =
+  | React.ReactElement<SwitchOptionProps>
+  | React.ReactFragment
+  | false
+  | null
+  | undefined
 
 export interface SwitchProps extends ComponentWithClass, InputValidationProps {
   /**
@@ -45,56 +33,81 @@ export interface SwitchProps extends ComponentWithClass, InputValidationProps {
   /**
    * Optional handler invoked when the selected value changes.
    */
-  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
-  /**
-   * Collection of options to display within the Switch (JSON).
-   */
-  options: SwitchOptionProps[]
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void
   /**
    * Size of the component.
    */
-  size?: SwitchSizeType
+  size?: ComponentSizeType
+  /**
+   * Toggles whether the component is disabled or not (preventing user interaction).
+   */
+  isDisabled?: boolean
+  /**
+   * Collection of options to display within the Switch.
+   */
+  children: SwitchChildType | SwitchChildType[]
 }
 
 export const Switch: React.FC<SwitchProps> = ({
-  label,
   name,
-  onChange,
-  options = [],
-  size = SWITCH_SIZE.REGULAR,
   value,
+  label,
+  onChange,
+  size = COMPONENT_SIZE.FORMS,
+  isDisabled,
+  isInvalid,
+  children,
   ...rest
 }) => {
-  const [active, setActive] = useState(getActiveOption(options, value))
-  const id = uuidv4()
+  const [active, setActive] = useState<string | undefined>()
+  const id = useExternalId()
+
+  useEffect(() => {
+    setActive(value)
+  }, [value])
 
   return (
-    <StyledSwitch data-testid="switch-wrapper" $size={size} {...rest}>
+    <StyledSwitch
+      $size={size}
+      $isDisabled={isDisabled}
+      $isInvalid={isInvalid}
+      {...rest}
+      data-testid="switch"
+    >
       {label && (
         <StyledLegend data-testid="switch-legend">{label}</StyledLegend>
       )}
       <StyledContainer>
-        {options.map(({ label: optionLabel, value: optionValue }) => (
-          <StyledOption
-            key={getKey('switch-option', optionLabel)}
-            $isActive={active === optionLabel}
-            htmlFor={`${id}-${optionLabel}`}
-            data-testid="switch-option"
-          >
-            {optionLabel}
-            <SwitchInput
-              data-testid="switch-input"
-              id={`${id}-${optionLabel}`}
-              name={name || id}
-              value={optionValue}
-              type="radio"
-              onClick={(event) => {
-                setActive(optionLabel)
-                onChange(event)
-              }}
-            />
-          </StyledOption>
-        ))}
+        {React.Children.map(children, (child: SwitchChildType) => {
+          if (!React.isValidElement(child)) {
+            return null
+          }
+
+          warnIfOverwriting(child.props, 'name', SwitchOption.name)
+          warnIfOverwriting(child.props, 'id', SwitchOption.name)
+          warnIfOverwriting(child.props, 'isActive', SwitchOption.name)
+          warnIfOverwriting(child.props, 'onChange', SwitchOption.name)
+
+          if (isDisabled) {
+            warnIfOverwriting(child.props, 'isDisabled', SwitchOption.name)
+          }
+
+          return React.cloneElement(child, {
+            ...child.props,
+            name,
+            id,
+            isDisabled: isDisabled || child.props.isDisabled,
+            isActive: active === child.props.value,
+            onChange: (e: React.FormEvent<HTMLInputElement>) => {
+              setActive(child.props.value)
+
+              if (onChange) {
+                onChange(e)
+              }
+            },
+            key: getKey('switch-option', child.props.label),
+          })
+        })}
       </StyledContainer>
     </StyledSwitch>
   )

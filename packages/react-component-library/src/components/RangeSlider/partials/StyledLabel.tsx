@@ -11,8 +11,8 @@ const { fontSize, color } = selectors
 
 export const StyledLabel = styled.span<StyledLabelProps>`
   position: absolute;
-  margin-top: 22px;
-  font-size: ${fontSize('xs')};
+  margin-top: 14px;
+  font-size: ${fontSize('s')};
   color: ${color('neutral', '400')};
   text-align: center;
   margin-left: ${({ $marginLeft }) => $marginLeft};

@@ -1,8 +1,8 @@
 export default {
   input: {
-    email: '[data-testid="form-example-TextInputE-email"]',
-    password: '[data-testid="form-example-TextInputE-password"]',
-    description: '[data-testid="form-example-TextAreaE-description"]',
+    email: '[data-testid="form-example-TextInput-email"]',
+    password: '[data-testid="form-example-TextInput-password"]',
+    description: '[data-testid="form-example-TextArea-description"]',
     checkbox: '[data-testid="checkbox"]',
     radio: '[data-testid="radio"]',
     switch: '[data-testid="switch"]',

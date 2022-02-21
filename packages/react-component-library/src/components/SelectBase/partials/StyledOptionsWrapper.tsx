@@ -3,7 +3,7 @@ import { selectors } from '@defencedigital/design-tokens'
 
 import { BORDER_RADIUS } from '../../../styled-components'
 import { COMPONENT_SIZE } from '../../Forms'
-import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInputE/partials/StyledInput'
+import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInput/partials/StyledInput'
 
 const { color, zIndex } = selectors
 

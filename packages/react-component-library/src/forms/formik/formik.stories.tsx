@@ -3,23 +3,17 @@ import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import { Formik, Field as FormikField, FieldProps } from 'formik'
 
-import { TextInputE } from '../../components/TextInputE'
-import { TextAreaE } from '../../components/TextAreaE'
-import { RadioE } from '../../components/RadioE'
-import { CheckboxE } from '../../components/CheckboxE'
-import {
-  AutocompleteE,
-  AutocompleteEOption,
-} from '../../components/AutocompleteE'
-import { ButtonE } from '../../components/ButtonE'
-import { NumberInputE } from '../../components/NumberInputE'
-import {
-  DatePickerE,
-  DatePickerEOnChangeData,
-} from '../../components/DatePickerE'
-import { SelectE, SelectEOption } from '../../components/SelectE'
-import { SwitchE, SwitchEOption } from '../../components/SwitchE'
-import { RangeSliderE } from '../../components/RangeSliderE'
+import { TextInput } from '../../components/TextInput'
+import { TextArea } from '../../components/TextArea'
+import { Radio } from '../../components/Radio'
+import { Checkbox } from '../../components/Checkbox'
+import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
+import { Button } from '../../components/Button'
+import { NumberInput } from '../../components/NumberInput'
+import { DatePicker, DatePickerOnChangeData } from '../../components/DatePicker'
+import { Select, SelectOption } from '../../components/Select'
+import { Switch, SwitchOption } from '../../components/Switch'
+import { RangeSlider } from '../../components/RangeSlider'
 import { sleep } from '../../helpers'
 import { Field } from '../../components/Field'
 import { Fieldset } from '../../components/Fieldset'
@@ -104,10 +98,10 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <TextInputE
+                    <TextInput
                       label="Email"
                       {...field}
-                      data-testid="form-example-TextInputE-email"
+                      data-testid="form-example-TextInput-email"
                     />
                   </Field>
                 )
@@ -120,11 +114,11 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <TextInputE
+                    <TextInput
                       type="password"
                       label="Password"
                       {...field}
-                      data-testid="form-example-TextInputE-password"
+                      data-testid="form-example-TextInput-password"
                     />
                   </Field>
                 )
@@ -137,10 +131,10 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <TextAreaE
+                    <TextArea
                       label="Description"
                       {...field}
-                      data-testid="form-example-TextAreaE-description"
+                      data-testid="form-example-TextArea-description"
                     />
                   </Field>
                 )
@@ -153,7 +147,7 @@ export const Example: React.FC<unknown> = () => {
                 type="checkbox"
               >
                 {({ field }: FieldProps) => (
-                  <CheckboxE label="Option 1" {...field} />
+                  <Checkbox label="Option 1" {...field} />
                 )}
               </FormikField>
               <FormikField
@@ -162,7 +156,7 @@ export const Example: React.FC<unknown> = () => {
                 type="checkbox"
               >
                 {({ field }: FieldProps) => (
-                  <CheckboxE label="Option 2" {...field} />
+                  <Checkbox label="Option 2" {...field} />
                 )}
               </FormikField>
               <FormikField
@@ -171,19 +165,19 @@ export const Example: React.FC<unknown> = () => {
                 type="checkbox"
               >
                 {({ field }: FieldProps) => (
-                  <CheckboxE label="Option 3" {...field} />
+                  <Checkbox label="Option 3" {...field} />
                 )}
               </FormikField>
             </Fieldset>
             <Fieldset legend="Example radio selection">
               <FormikField name="exampleRadio" value="Option 1" type="radio">
                 {({ field }: FieldProps) => (
-                  <RadioE label="Option 1" {...field} />
+                  <Radio label="Option 1" {...field} />
                 )}
               </FormikField>
               <FormikField name="exampleRadio" value="Option 2" type="radio">
                 {({ field }: FieldProps) => (
-                  <RadioE label="Option 2" {...field} />
+                  <Radio label="Option 2" {...field} />
                 )}
               </FormikField>
             </Fieldset>
@@ -194,11 +188,11 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <SwitchE
+                    <Switch
                       label="Example switch selection"
                       name={name}
                       value={value}
-                      data-testid="form-example-SwitchE"
+                      data-testid="form-example-Switch"
                       onChange={(event: React.FormEvent<HTMLInputElement>) => {
                         setFieldValue(
                           'exampleSwitch',
@@ -206,10 +200,10 @@ export const Example: React.FC<unknown> = () => {
                         )
                       }}
                     >
-                      <SwitchEOption label="One" value="1" />
-                      <SwitchEOption label="Two" value="2" />
-                      <SwitchEOption label="Three" value="3" />
-                    </SwitchE>
+                      <SwitchOption label="One" value="1" />
+                      <SwitchOption label="Two" value="2" />
+                      <SwitchOption label="Three" value="3" />
+                    </Switch>
                   </Field>
                 )
               }}
@@ -221,7 +215,7 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <NumberInputE
+                    <NumberInput
                       label="Example number input"
                       name={name}
                       value={value}
@@ -245,11 +239,11 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <DatePickerE
+                    <DatePicker
                       name={name}
                       disabledDays={{ before: MINIMUM_DATE }}
                       startDate={value}
-                      onChange={({ startDate }: DatePickerEOnChangeData) => {
+                      onChange={({ startDate }: DatePickerOnChangeData) => {
                         setFieldValue('exampleDatePicker', startDate)
                       }}
                     />
@@ -264,18 +258,18 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <SelectE
+                    <Select
                       value={value}
                       label="Example select"
                       onChange={(newValue: string | null) => {
                         setFieldValue('exampleSelect', newValue)
                       }}
                     >
-                      <SelectEOption value="one">One</SelectEOption>
-                      <SelectEOption value="two">Two</SelectEOption>
-                      <SelectEOption value="three">Three</SelectEOption>
-                      <SelectEOption value="four">Four</SelectEOption>
-                    </SelectE>
+                      <SelectOption value="one">One</SelectOption>
+                      <SelectOption value="two">Two</SelectOption>
+                      <SelectOption value="three">Three</SelectOption>
+                      <SelectOption value="four">Four</SelectOption>
+                    </Select>
                   </Field>
                 )
               }}
@@ -287,22 +281,20 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <AutocompleteE
+                    <Autocomplete
                       value={value}
                       label="Example autocomplete"
                       onChange={(newValue: string | null) => {
                         setFieldValue('exampleAutocomplete', newValue)
                       }}
                     >
-                      <AutocompleteEOption value="one">One</AutocompleteEOption>
-                      <AutocompleteEOption value="two">Two</AutocompleteEOption>
-                      <AutocompleteEOption value="three">
+                      <AutocompleteOption value="one">One</AutocompleteOption>
+                      <AutocompleteOption value="two">Two</AutocompleteOption>
+                      <AutocompleteOption value="three">
                         Three
-                      </AutocompleteEOption>
-                      <AutocompleteEOption value="four">
-                        Four
-                      </AutocompleteEOption>
-                    </AutocompleteE>
+                      </AutocompleteOption>
+                      <AutocompleteOption value="four">Four</AutocompleteOption>
+                    </Autocomplete>
                   </Field>
                 )
               }}
@@ -314,7 +306,7 @@ export const Example: React.FC<unknown> = () => {
                     hintText="Example hint text."
                     errors={[{ error: meta.touched && meta.error }]}
                   >
-                    <RangeSliderE
+                    <RangeSlider
                       domain={[0, 40]}
                       mode={1}
                       values={[20]}
@@ -328,13 +320,13 @@ export const Example: React.FC<unknown> = () => {
                 )
               }}
             </FormikField>
-            <ButtonE
+            <Button
               type="submit"
               isDisabled={isSubmitting}
               data-testid="form-example-submit"
             >
               Submit
-            </ButtonE>
+            </Button>
           </form>
         )}
       </Formik>

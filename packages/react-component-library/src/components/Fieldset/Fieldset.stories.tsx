@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Fieldset } from './index'
 import { Field } from '../Field'
-import { TextInputE } from '../TextInputE'
+import { TextInput } from '../TextInput'
 
 export default {
   component: Fieldset,
@@ -14,13 +14,13 @@ export default {
 const Template: ComponentStory<typeof Fieldset> = (args) => (
   <Fieldset {...args}>
     <Field>
-      <TextInputE label="Address line 1" name="address1" />
+      <TextInput label="Address line 1" name="address1" />
     </Field>
     <Field>
-      <TextInputE label="Address line 2" name="address2" />
+      <TextInput label="Address line 2" name="address2" />
     </Field>
     <Field>
-      <TextInputE label="City" name="city" />
+      <TextInput label="City" name="city" />
     </Field>
   </Fieldset>
 )
@@ -34,24 +34,24 @@ const TemplateHorizontal: ComponentStory<typeof Fieldset> = (_) => (
   <>
     <Fieldset legend="Home address">
       <Field>
-        <TextInputE label="Address line 1" name="address1" />
+        <TextInput label="Address line 1" name="address1" />
       </Field>
       <Field>
-        <TextInputE label="Address line 2" name="address2" />
+        <TextInput label="Address line 2" name="address2" />
       </Field>
       <Field>
-        <TextInputE label="City" name="city" />
+        <TextInput label="City" name="city" />
       </Field>
     </Fieldset>
     <Fieldset legend="Work address">
       <Field>
-        <TextInputE label="Address line 1" name="address1" />
+        <TextInput label="Address line 1" name="address1" />
       </Field>
       <Field>
-        <TextInputE label="Address line 2" name="address2" />
+        <TextInput label="Address line 2" name="address2" />
       </Field>
       <Field>
-        <TextInputE label="City" name="city" />
+        <TextInput label="City" name="city" />
       </Field>
     </Fieldset>
   </>
@@ -63,24 +63,24 @@ const TemplateVertical: ComponentStory<typeof Fieldset> = (_) => (
   <>
     <Fieldset type="block" legend="Home address">
       <Field>
-        <TextInputE label="Address line 1" name="address1" />
+        <TextInput label="Address line 1" name="address1" />
       </Field>
       <Field>
-        <TextInputE label="Address line 2" name="address2" />
+        <TextInput label="Address line 2" name="address2" />
       </Field>
       <Field>
-        <TextInputE label="City" name="city" />
+        <TextInput label="City" name="city" />
       </Field>
     </Fieldset>
     <Fieldset type="block" legend="Work address">
       <Field>
-        <TextInputE label="Address line 1" name="address1" />
+        <TextInput label="Address line 1" name="address1" />
       </Field>
       <Field>
-        <TextInputE label="Address line 2" name="address2" />
+        <TextInput label="Address line 2" name="address2" />
       </Field>
       <Field>
-        <TextInputE label="City" name="city" />
+        <TextInput label="City" name="city" />
       </Field>
     </Fieldset>
   </>

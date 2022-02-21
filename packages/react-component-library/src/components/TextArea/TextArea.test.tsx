@@ -3,8 +3,6 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { FieldProps } from '../../common/FieldProps'
-import { FormProps } from '../../common/FormProps'
 import { TextArea } from '.'
 
 describe('TextArea', () => {
@@ -20,13 +18,11 @@ describe('TextArea', () => {
       wrapper = render(
         <TextArea
           className="rn-textarea--modifier"
-          footnote="footnote"
           id="id"
           label="label"
           name="name"
           onBlur={onBlurSpy}
           onChange={onChangeSpy}
-          placeholder="placeholder"
           value="ab"
           data-arbitrary="123"
         />
@@ -37,10 +33,6 @@ describe('TextArea', () => {
       expect(wrapper.getByTestId('textarea-container').classList).toContain(
         'rn-textarea--modifier'
       )
-    })
-
-    it('renders the footnote', () => {
-      expect(wrapper.getByText('footnote')).toBeInTheDocument()
     })
 
     it('sets the `id` on the input', () => {
@@ -59,13 +51,6 @@ describe('TextArea', () => {
       expect(wrapper.getByTestId('textarea-input')).toHaveAttribute(
         'name',
         'name'
-      )
-    })
-
-    it('sets the `placeholder` on the input', () => {
-      expect(wrapper.getByTestId('textarea-input')).toHaveAttribute(
-        'placeholder',
-        'placeholder'
       )
     })
 

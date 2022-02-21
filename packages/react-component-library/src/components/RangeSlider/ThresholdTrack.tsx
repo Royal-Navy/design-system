@@ -7,14 +7,14 @@ import {
   RANGE_SLIDER_TRACK_BETWEEN_THRESHOLDS,
   RANGE_SLIDER_TRACK_ABOVE_THRESHOLDS,
 } from './constants'
-import { StyledChunk } from './partials/StyledChunk'
+import { StyledTrackChunk } from './partials/StyledTrackChunk'
 
 export interface ThresholdTrackProps extends TrackItem {
   getTrackProps: GetTrackProps
-  thresholds?: number[]
+  thresholds: number[]
 }
 
-export interface ChunkProps {
+export interface TrackChunkProps {
   getTrackProps: GetTrackProps
   $left: number
   $width: number
@@ -23,7 +23,7 @@ export interface ChunkProps {
   $thresholdColor?: ThresholdColor
 }
 
-const Chunk: React.FC<ChunkProps> = ({
+const TrackChunk: React.FC<TrackChunkProps> = ({
   getTrackProps,
   $left,
   $width,
@@ -32,13 +32,13 @@ const Chunk: React.FC<ChunkProps> = ({
   $thresholdColor,
 }) => {
   return (
-    <StyledChunk
+    <StyledTrackChunk
       $thresholdColor={$thresholdColor}
       $left={`${$left}%`}
-      $width={`${Math.max($width, 0)}%`}
+      $width={`${$width}%`}
       $maxWidth={`${$maxWidth}%`}
       {...getTrackProps()}
-      data-testid={`rangeslider-chunk-${testId}`}
+      data-testid={`rangeslider-track-${testId}`}
     />
   )
 }
@@ -54,7 +54,7 @@ export const ThresholdTrack: React.FC<ThresholdTrackProps> = ({
   return (
     <>
       {(singleThreshold || doubleThreshold) && (
-        <Chunk
+        <TrackChunk
           $thresholdColor={RANGE_SLIDER_TRACK_BELOW_FIRST_THRESHOLD}
           $left={0}
           $width={target.percent}
@@ -65,21 +65,24 @@ export const ThresholdTrack: React.FC<ThresholdTrackProps> = ({
       )}
 
       {doubleThreshold && (
-        <Chunk
+        <TrackChunk
           $thresholdColor={RANGE_SLIDER_TRACK_BETWEEN_THRESHOLDS}
           $left={thresholds[0]}
-          $width={thresholds[1] - thresholds[0]}
+          $width={Math.max(0, target.percent - thresholds[0])}
           $maxWidth={Math.max(0, target.percent - thresholds[0])}
           getTrackProps={getTrackProps}
           testId="between-thresholds"
         />
       )}
 
-      <Chunk
+      <TrackChunk
         $thresholdColor={RANGE_SLIDER_TRACK_ABOVE_THRESHOLDS}
         $left={thresholds[thresholds.length - 1]}
-        $width={target.percent - thresholds[thresholds.length - 1]}
-        $maxWidth={target.percent}
+        $width={Math.max(0, target.percent - thresholds[thresholds.length - 1])}
+        $maxWidth={Math.max(
+          0,
+          target.percent - thresholds[thresholds.length - 1]
+        )}
         getTrackProps={getTrackProps}
         testId="above-thresholds"
       />
