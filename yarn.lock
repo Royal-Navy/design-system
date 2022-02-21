@@ -18530,9 +18530,9 @@ use@^3.1.0:
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
 usehooks-ts@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/usehooks-ts/-/usehooks-ts-2.2.1.tgz#9bb9af81d4680cf9cdb9234331a37e4be39d1183"
-  integrity sha512-n6Rat52iF+Tz9CFU2IIuaFsm9uCXX4dU565lKaAKMEXLLGTg9qYwzDSpXkCPRnx9lTdkm8M+W+YJ36Lb13zjEA==
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/usehooks-ts/-/usehooks-ts-2.4.1.tgz#90066cbc4ee509de190c00d91a8aace81f7ba95d"
+  integrity sha512-8H+qEX/5KiLr7diCZ485dJMTyr9Ta815Dw8zTV2b8PiiTy6breZF1TQ7/j+QoGuy9RMs8CToqAO05dztWuxcFA==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
