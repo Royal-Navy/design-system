@@ -1,5 +1,0 @@
-@use "../abstracts/functions/non-destructive-map-merge" as *;
-@use "../config";
-@use "../contexts" as context;
-
-$typography: non-destructive-map-merge(context.$typography, config.$typography);

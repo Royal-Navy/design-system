@@ -156,7 +156,6 @@
   ],
   "dependencies": {
     "@datepicker-react/hooks": "^2.4.1",
-    "@defencedigital/css-framework": "^2.80.2",
     "@defencedigital/design-tokens": "^2.80.2",
     "@defencedigital/fonts": "^2.80.2",
     "@defencedigital/icon-library": "^2.80.2",

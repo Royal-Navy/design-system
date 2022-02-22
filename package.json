@@ -2,7 +2,6 @@
   "name": "moduk-design-system",
   "private": true,
   "workspaces": [
-    "packages/css-framework",
     "packages/eslint-config-react",
     "packages/icon-library",
     "packages/react-component-library",

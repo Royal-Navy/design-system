@@ -66,7 +66,7 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 >
 >To solve these (and many other) problems, some projects will organize their codebases into multi-package repositories (sometimes called monorepos).
 
-Each package folder has it's own npm package.json and can act like a stand alone project. Yarn workspaces detects dependencies that are held within the monorepo and creates a link between them, so you can work on a react component and it's styles in the css-framework and see instant updates in storybook.
+Each package folder has it's own npm package.json and can act like a stand alone project. Yarn workspaces detects dependencies that are held within the monorepo and creates a link between them, so you can work on a react component and see instant updates in Storybook.
 
 Manage dependencies for packages like normal, but remember to use `yarn add` instead of `npm install`.
 
