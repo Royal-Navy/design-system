@@ -9,7 +9,7 @@ import { StyledEndAdornment } from './partials/StyledEndAdornment'
 
 export const DropdownLabel: React.FC<DropdownOption> = ({
   icon,
-  isDisabled,
+  isDisabled = false,
   isHidden,
   label,
   rightContent,

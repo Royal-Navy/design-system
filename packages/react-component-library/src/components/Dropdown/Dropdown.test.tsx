@@ -2,6 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { IconLayers, IconAnchor, IconShare } from '@defencedigital/icon-library'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { Dropdown } from './Dropdown'
 
@@ -48,8 +49,8 @@ describe('Dropdown', () => {
 
     describe('when the dropdown is clicked', () => {
       beforeEach(() => {
-        fireEvent.focus(wrapper.container.querySelector('input'))
-        fireEvent.keyDown(wrapper.container.querySelector('input'), {
+        fireEvent.focus(wrapper.getByRole('textbox'))
+        fireEvent.keyDown(wrapper.getByRole('textbox'), {
           key: 'ArrowDown',
           code: 40,
         })
@@ -135,8 +136,8 @@ describe('Dropdown', () => {
         />
       )
 
-      fireEvent.focus(wrapper.container.querySelector('input'))
-      fireEvent.keyDown(wrapper.container.querySelector('input'), {
+      fireEvent.focus(wrapper.getByRole('textbox'))
+      fireEvent.keyDown(wrapper.getByRole('textbox'), {
         key: 'ArrowDown',
         code: 40,
       })
@@ -156,6 +157,17 @@ describe('Dropdown', () => {
       expect(
         wrapper.getByTestId('dropdown-label-icon-share')
       ).toBeInTheDocument()
+    })
+  })
+
+  describe('when onChange is omitted and the dropdown is clicked', () => {
+    beforeEach(() => {
+      wrapper = render(<Dropdown options={options} label="Dropdown label" />)
+      userEvent.click(wrapper.getByRole('textbox'))
+    })
+
+    it('does not throw an error when an option is clicked', () => {
+      expect(() => wrapper.getByText('Option 1').click()).not.toThrowError()
     })
   })
 })

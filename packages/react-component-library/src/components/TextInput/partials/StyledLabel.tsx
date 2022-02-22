@@ -16,7 +16,7 @@ function getYPosition($size: ComponentSizeType) {
 }
 
 export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
-  ${({ $size }) => css`
+  ${({ $size = COMPONENT_SIZE.FORMS }) => css`
     transform: translate(11px, ${getYPosition($size)}) scale(1);
   `}
 

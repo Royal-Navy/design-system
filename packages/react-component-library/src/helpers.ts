@@ -22,7 +22,7 @@ function getId(prefix: string): string {
 }
 
 function hasClass(allClasses: string | undefined, className: string): boolean {
-  return Boolean(allClasses) && allClasses.split(' ').includes(className)
+  return Boolean(allClasses && allClasses.split(' ').includes(className))
 }
 
 function isIE11(): boolean {
@@ -52,7 +52,7 @@ function withKey(
   element: React.ReactElement,
   prefix: string,
   suffix: string | number
-): React.ReactElement {
+): React.ReactNode {
   if (element) {
     return React.cloneElement(element, {
       key: getKey(prefix, suffix),

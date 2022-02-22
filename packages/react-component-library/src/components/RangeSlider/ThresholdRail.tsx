@@ -18,7 +18,7 @@ export interface RailChunkProps {
   $width: number
   $maxWidth: number
   testId: string
-  $thresholdColor?: ThresholdColor
+  $thresholdColor: ThresholdColor
 }
 
 const RailChunk: React.FC<RailChunkProps> = ({

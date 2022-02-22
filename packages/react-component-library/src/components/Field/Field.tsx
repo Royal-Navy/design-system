@@ -7,7 +7,7 @@ import { StyledHintText } from './partials/StyledHintText'
 import { getId } from '../../helpers'
 
 export type ErrorType = {
-  error: boolean | string
+  error: boolean | string | null | undefined
 }
 
 export interface FieldProps extends ComponentWithClass {

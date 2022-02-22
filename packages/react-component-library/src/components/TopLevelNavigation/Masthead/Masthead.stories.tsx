@@ -117,7 +117,7 @@ export const CustomLogo: ComponentStory<typeof Masthead> = (props) => (
 
 CustomLogo.storyName = 'Custom logo'
 CustomLogo.args = {
-  onSearch: null as undefined,
+  onSearch: null,
 }
 
 export const WithoutLogo: ComponentStory<typeof Masthead> = (props) => (
@@ -130,7 +130,7 @@ export const WithoutLogo: ComponentStory<typeof Masthead> = (props) => (
 
 WithoutLogo.storyName = 'Without logo'
 WithoutLogo.args = {
-  onSearch: null as undefined,
+  onSearch: null,
 }
 
 export const WithSearch: ComponentStory<typeof Masthead> = (props) => (
@@ -168,7 +168,7 @@ export const WithAvatarLinks: ComponentStory<typeof Masthead> = (props) => {
 
 WithAvatarLinks.storyName = 'With avatar links'
 WithAvatarLinks.args = {
-  onSearch: null as undefined,
+  onSearch: null,
 }
 
 export const WithNavigation: ComponentStory<typeof Masthead> = (props) => {
@@ -193,7 +193,7 @@ export const WithNavigation: ComponentStory<typeof Masthead> = (props) => {
 
 WithNavigation.storyName = 'With navigation'
 WithNavigation.args = {
-  onSearch: null as undefined,
+  onSearch: null,
 }
 
 export const WithNotifications: ComponentStory<typeof Masthead> = (props) => {
@@ -237,5 +237,5 @@ export const WithNotifications: ComponentStory<typeof Masthead> = (props) => {
 
 WithNotifications.storyName = 'With notifications'
 WithNotifications.args = {
-  onSearch: null as undefined,
+  onSearch: null,
 }
