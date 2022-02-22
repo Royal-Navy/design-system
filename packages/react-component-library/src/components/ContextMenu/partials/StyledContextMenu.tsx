@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components'
 import { StyledText } from './StyledText'
 
 interface StyledContextMenuProps {
-  top: number
-  left: number
+  top: number | undefined
+  left: number | undefined
   $hasIcons: boolean
   $isOpen: boolean
 }

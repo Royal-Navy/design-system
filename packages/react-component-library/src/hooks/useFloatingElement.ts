@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
-import { PositioningStrategy, Placement } from '@popperjs/core'
+import { PositioningStrategy, Placement, VirtualElement } from '@popperjs/core'
 import { usePopper } from 'react-popper'
 
 import { useStatefulRef } from './useStatefulRef'
@@ -7,7 +7,7 @@ import { useStatefulRef } from './useStatefulRef'
 export const useFloatingElement = (
   placement: Placement = 'bottom',
   strategy: PositioningStrategy = 'fixed',
-  externalTargetElement: Element | null = null
+  externalTargetElement: Element | VirtualElement | null = null
 ): {
   targetElementRef: Dispatch<SetStateAction<Element | null>>
   floatingElementRef: Dispatch<SetStateAction<HTMLElement | null>>
