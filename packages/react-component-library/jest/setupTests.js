@@ -2,8 +2,11 @@ import 'babel-polyfill'
 import 'jest-canvas-mock'
 import 'jest-styled-components'
 import { format } from 'util'
+import { ResizeObserver } from '@juggle/resize-observer'
 
 const originalConsoleError = global.console.error
+
+global.ResizeObserver ??= ResizeObserver
 
 global.console.error = (...args) => {
   const blocked = [/Failed prop type/, /Warning: /, /StrictMode/]

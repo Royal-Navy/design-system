@@ -66,6 +66,7 @@
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
     "@defencedigital/eslint-config-react": "^2.80.2",
+    "@juggle/resize-observer": "^3.3.1",
     "@storybook/addon-a11y": "^6.5.0-alpha.34",
     "@storybook/addon-actions": "^6.5.0-alpha.34",
     "@storybook/addon-docs": "^6.5.0-alpha.34",
@@ -180,6 +181,7 @@
     "react-transition-group": "^4.4.1",
     "styled-normalize": "^8.0.7",
     "styled-theming": "^2.2.0",
+    "use-resize-observer": "^8.0.0",
     "usehooks-ts": "^2.2.1"
   },
   "peerDependencies": {
