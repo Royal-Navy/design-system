@@ -1,6 +1,6 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { TextInput } from '../../components/TextInput'
 import { TextArea } from '../../components/TextArea'
@@ -14,27 +14,18 @@ import { Switch, SwitchOption } from '../../components/Switch'
 import { RangeSlider } from '../../components/RangeSlider'
 import { Button } from '../../components/Button'
 import { Fieldset } from '../../components/Fieldset'
-import { useNativeForm } from './useNativeForm'
+import { FormErrors, useNativeForm } from './useNativeForm'
 import { Field } from '../../components/Field'
 import { SectionDivider } from '../../components/SectionDivider'
-
-export interface FormValues {
-  email: string
-  password: string
-  description: string
-  exampleCheckbox: string[]
-  exampleRadio: string[]
-  exampleSwitch: string
-  exampleNumberInput: number | null
-  exampleDatePicker: Date | null
-  exampleSelect: string | null
-  exampleAutocomplete: string | null
-  exampleRangeSlider: readonly [number]
-}
+import { EMPTY_FORM_VALUES, PREPOPULATED_FORM_VALUES } from '../constants'
+import { FormValues } from '../types'
 
 const MINIMUM_DATE = parseISO('2022-01-01')
 
-export const Example: React.FC<unknown> = () => {
+const Example: React.FC<{
+  initialValues: FormValues
+  initialErrors?: FormErrors<FormValues>
+}> = ({ initialValues, initialErrors = {} }) => {
   const {
     formErrors,
     formPayload,
@@ -44,40 +35,21 @@ export const Example: React.FC<unknown> = () => {
     handleRadioGroup,
     isSubmitting,
     onSubmit,
-  } = useNativeForm<FormValues>(
-    {
-      email: '',
-      password: '',
-      description: '',
-      exampleCheckbox: [],
-      exampleRadio: [],
-      exampleSwitch: '',
-      exampleNumberInput: null,
-      exampleDatePicker: null,
-      exampleSelect: null,
-      exampleAutocomplete: null,
-      exampleRangeSlider: [20],
-    },
-    {
-      email: true,
-      // ...
-    },
-    {
-      email: (value: string): boolean => !value,
-      exampleDatePicker: (value) => {
-        if (value && !isValid(value)) {
-          return 'Enter a valid date'
-        }
+  } = useNativeForm<FormValues>(initialValues, initialErrors, {
+    email: (value: string): boolean => !value,
+    exampleDatePicker: (value) => {
+      if (value && !isValid(value)) {
+        return 'Enter a valid date'
+      }
 
-        if (value && isBefore(value, MINIMUM_DATE)) {
-          return 'Enter a date on or after 1 January 2022'
-        }
+      if (value && isBefore(value, MINIMUM_DATE)) {
+        return 'Enter a date on or after 1 January 2022'
+      }
 
-        return false
-      },
-      // ...
-    }
-  )
+      return false
+    },
+    // ...
+  })
 
   return (
     <main>
@@ -282,3 +254,18 @@ export default {
   title: 'Forms/Usage/Native',
   component: Example,
 } as ComponentMeta<typeof Example>
+
+const Template: ComponentStory<typeof Example> = (args) => <Example {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+  initialValues: EMPTY_FORM_VALUES,
+  initialErrors: {
+    email: true,
+  },
+}
+
+export const Prepopulated = Template.bind({})
+Prepopulated.args = {
+  initialValues: PREPOPULATED_FORM_VALUES,
+}

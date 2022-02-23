@@ -1,47 +1,19 @@
-import { describe, cy, it, before } from 'local-cypress'
+import { describe, cy, expect, it, before } from 'local-cypress'
 
 import selectors from '../../selectors'
 
 const expectedResult = {
-  'react-hook-form': {
-    email: 'hello@world.com',
-    password: 'password',
-    description: 'Hello, World!',
-    exampleCheckbox: [],
-    exampleRadio: 'Option 1',
-    exampleDatePicker: '2022-01-31T12:00:00.000Z',
-    exampleSelect: 'three',
-    exampleAutocomplete: 'four',
-    exampleRangeSlider: [28],
-    exampleSwitch: '1',
-    exampleNumberInput: 1,
-  },
-  Formik: {
-    email: 'hello@world.com',
-    password: 'password',
-    description: 'Hello, World!',
-    exampleCheckbox: [],
-    exampleRadio: 'Option 1',
-    exampleSwitch: '1',
-    exampleNumberInput: 1,
-    exampleDatePicker: '2022-01-31T12:00:00.000Z',
-    exampleSelect: 'three',
-    exampleAutocomplete: 'four',
-    exampleRangeSlider: [28],
-  },
-  Native: {
-    email: 'hello@world.com',
-    password: 'password',
-    description: 'Hello, World!',
-    exampleCheckbox: [],
-    exampleRadio: ['Option 1'],
-    exampleSwitch: '1',
-    exampleNumberInput: 1,
-    exampleDatePicker: '2022-01-31T12:00:00.000Z',
-    exampleSelect: 'three',
-    exampleAutocomplete: 'four',
-    exampleRangeSlider: [28],
-  },
+  email: 'hello@world.com',
+  password: 'password',
+  description: 'Hello, World!',
+  exampleCheckbox: ['Option 2'],
+  exampleRadio: 'Option 1',
+  exampleSwitch: '1',
+  exampleNumberInput: 1,
+  exampleDatePicker: '2022-01-31T12:00:00.000Z',
+  exampleSelect: 'three',
+  exampleAutocomplete: 'four',
+  exampleRangeSlider: [28],
 }
 
 const getSelect = () =>
@@ -50,7 +22,7 @@ const getSelect = () =>
 const getAutocomplete = () =>
   cy.contains(selectors.form.input.select, 'Example autocomplete')
 
-describe('Form Examples', () => {
+describe('Form Examples (empty)', () => {
   describe(
     'when browsing on desktop',
     {
@@ -61,15 +33,15 @@ describe('Form Examples', () => {
       const examples = [
         {
           name: 'Formik',
-          uri: '/iframe.html?id=forms-usage-formik--example&viewMode=story',
+          uri: '/iframe.html?id=forms-usage-formik--default&viewMode=story',
         },
         {
           name: 'react-hook-form',
-          uri: '/iframe.html?id=forms-usage-react-hook-form--example&viewMode=story',
+          uri: '/iframe.html?id=forms-usage-react-hook-form--default&viewMode=story',
         },
         {
           name: 'Native',
-          uri: '/iframe.html?id=forms-usage-native--example&viewMode=story',
+          uri: '/iframe.html?id=forms-usage-native--default&viewMode=story',
         },
       ]
 
@@ -83,6 +55,8 @@ describe('Form Examples', () => {
             cy.get(selectors.form.input.email).should('be.visible')
             cy.get(selectors.form.input.password).should('be.visible')
             cy.get(selectors.form.input.description).should('be.visible')
+            cy.get(selectors.form.input.radio).should('be.visible')
+            cy.get(selectors.form.input.checkbox).should('be.visible')
             cy.get(selectors.form.input.switch).should('be.visible')
             cy.get(selectors.form.input.numberInput).should('be.visible')
             cy.get(selectors.form.input.datePicker).should('be.visible')
@@ -107,6 +81,7 @@ describe('Form Examples', () => {
               cy.get(selectors.form.input.password).type('password')
               cy.get(selectors.form.input.description).type('Hello, World!')
               cy.get(selectors.form.input.radio).eq(0).click()
+              cy.get(selectors.form.input.checkbox).eq(1).click()
               cy.get(selectors.form.input.switchOption).eq(0).click()
               cy.get(selectors.form.input.numberInputIncrease).click()
               cy.get(selectors.form.input.datePickerInput).type('31/01/2022')
@@ -129,9 +104,13 @@ describe('Form Examples', () => {
               })
 
               it('should supply form the field values', () => {
-                cy.get(selectors.form.values).contains(
-                  JSON.stringify(expectedResult[name], null, 2)
-                )
+                cy.get(selectors.form.values)
+                  .invoke('text')
+                  .should((submittedData) => {
+                    expect(JSON.parse(submittedData)).to.deep.equal(
+                      expectedResult
+                    )
+                  })
               })
             })
           })
