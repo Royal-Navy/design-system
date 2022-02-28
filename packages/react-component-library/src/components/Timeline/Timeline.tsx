@@ -18,10 +18,6 @@ export interface TimelineProps extends ComponentWithClass {
    */
   children: timelineChildrenType | timelineChildrenType[]
   /**
-   * Width of a single day unit (pixels).
-   */
-  dayWidth?: number
-  /**
    * Specify whether or not to output sidebar headings.
    */
   hasSide?: boolean
@@ -86,7 +82,6 @@ function getEndDate(startDate: Date, endDate: Date | null) {
 export const Timeline: React.FC<TimelineProps> = ({
   children,
   className,
-  dayWidth,
   hasSide = false,
   hideScaling = false,
   hideToolbar = false,
@@ -103,7 +98,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     startDate,
     endDate: getEndDate(startDate, endDate),
     hoursBlockSize: getHoursBlockSize(children),
-    unitWidth: dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH,
+    unitWidth: unitWidth || DEFAULTS.UNIT_WIDTH,
   }
 
   return (
