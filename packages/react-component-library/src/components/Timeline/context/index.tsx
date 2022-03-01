@@ -13,7 +13,9 @@ import { buildScaleOptions } from './timeline_scales'
 const timelineContextDefaults: TimelineContextDefault = {
   hasSide: false,
   state: initialState,
-  dispatch: null,
+  dispatch: () => {
+    throw Error('TimelineContext not initialised')
+  },
 }
 
 export const TimelineContext = createContext(timelineContextDefaults)

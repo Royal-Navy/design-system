@@ -1,18 +1,38 @@
-import styled from 'styled-components'
-import { selectors } from '@defencedigital/design-tokens'
+import styled, { css } from 'styled-components'
 
-const { spacing, color, fontSize } = selectors
+import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
+import { isIE11 } from '../../../helpers'
+import {
+  StyledLabel as StyledLabelBase,
+  StyledLabelProps,
+} from '../../../styled-components/partials/StyledLabel'
 
-export const StyledLabel = styled.label`
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform-origin: top left;
-  transform: translate(${spacing('6')}, ${spacing('6')}) scale(1);
-  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
-    transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-  pointer-events: none;
-  color: ${color('neutral', '400')};
-  font-size: ${fontSize('base')};
+function getYPosition($size: ComponentSizeType) {
+  if ($size === COMPONENT_SIZE.SMALL) {
+    return isIE11() ? '8px' : '6px'
+  }
+
+  return isIE11() ? '15px' : '13px'
+}
+
+export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
+  ${({ $size = COMPONENT_SIZE.FORMS }) => css`
+    transform: translate(11px, ${getYPosition($size)}) scale(1);
+  `}
+
+  ${({ $hasContent, $hasFocus, $size }) => {
+    if (!$hasContent && !$hasFocus) {
+      return null
+    }
+
+    if ($size === COMPONENT_SIZE.SMALL) {
+      return css`
+        display: none;
+      `
+    }
+
+    return css`
+      transform: translate(11px, 6px) scale(0.75);
+    `
+  }}
 `

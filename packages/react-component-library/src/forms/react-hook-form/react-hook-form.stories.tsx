@@ -2,47 +2,36 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form/dist/index.ie11'
-import { ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import styled from 'styled-components'
 
-import { TextInputE } from '../../components/TextInputE'
-import { TextAreaE } from '../../components/TextAreaE'
-import { RadioE } from '../../components/RadioE'
-import {
-  AutocompleteE,
-  AutocompleteEOption,
-} from '../../components/AutocompleteE'
-import { CheckboxE } from '../../components/CheckboxE'
-import { DatePickerE } from '../../components/DatePickerE'
-import { NumberInputE } from '../../components/NumberInputE'
-import { SelectE, SelectEOption } from '../../components/SelectE'
-import { SwitchE, SwitchEOption } from '../../components/SwitchE'
-import { RangeSliderE } from '../../components/RangeSliderE'
-import { ButtonE } from '../../components/ButtonE'
+import { TextInput } from '../../components/TextInput'
+import { TextArea } from '../../components/TextArea'
+import { Radio } from '../../components/Radio'
+import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
+import { Checkbox } from '../../components/Checkbox'
+import { DatePicker } from '../../components/DatePicker'
+import { NumberInput } from '../../components/NumberInput'
+import { Select, SelectOption } from '../../components/Select'
+import { Switch, SwitchOption } from '../../components/Switch'
+import { RangeSlider } from '../../components/RangeSlider'
+import { Button } from '../../components/Button'
 import { Fieldset } from '../../components/Fieldset'
 import { sleep } from '../../helpers'
-
-export interface FormValues {
-  email: string
-  password: string
-  description: string
-  exampleCheckbox: string[]
-  exampleDatePicker: Date | null
-  exampleRadio: string[]
-  exampleSwitch: string
-  exampleNumberInput: number
-  exampleSelect: string | null
-  exampleAutocomplete: null
-  exampleRangeSlider: number[]
-}
+import { Field } from '../../components/Field'
+import { SectionDivider } from '../../components/SectionDivider'
+import { EMPTY_FORM_VALUES, PREPOPULATED_FORM_VALUES } from '../constants'
+import { FormValues } from '../types'
 
 const MINIMUM_DATE = parseISO('2022-01-01')
 
-const StyledRangeSliderE = styled(RangeSliderE)`
+const StyledRangeSlider = styled(RangeSlider)`
   margin-top: 3rem;
 `
 
-export const Example: React.FC<unknown> = () => {
+const Example: React.FC<{ initialValues: FormValues }> = ({
+  initialValues,
+}) => {
   const {
     control,
     setValue,
@@ -51,18 +40,7 @@ export const Example: React.FC<unknown> = () => {
     watch,
     formState: { errors, isSubmitting },
   } = useForm({
-    defaultValues: {
-      email: '',
-      password: '',
-      description: '',
-      exampleCheckbox: [],
-      exampleDatePicker: null,
-      exampleRadio: [],
-      exampleSelect: null,
-      exampleSwitch: '',
-      exampleNumberInput: null,
-      exampleRangeSlider: [20],
-    },
+    defaultValues: initialValues,
   })
 
   const exampleSwitchValue = watch('exampleSwitch')
@@ -80,10 +58,10 @@ export const Example: React.FC<unknown> = () => {
     register({ name: 'exampleNumberInput' })
   }, [register])
 
-  const handleSwitchEChange = (e: React.FormEvent<HTMLInputElement>) =>
+  const handleSwitchChange = (e: React.FormEvent<HTMLInputElement>) =>
     setValue('exampleSwitch', e.currentTarget.value)
 
-  const handleNumberInputEChange = (
+  const handleNumberInputChange = (
     _:
       | React.ChangeEvent<HTMLInputElement>
       | React.MouseEvent<HTMLButtonElement>,
@@ -93,164 +71,187 @@ export const Example: React.FC<unknown> = () => {
   return (
     <main>
       <form onSubmit={handleSubmit(onSubmit, (err, e) => console.log(err, e))}>
-        <TextInputE
-          type="email"
-          name="email"
-          ref={register({ required: true })}
-          label="Email"
-          isInvalid={!!errors.email}
-          data-testid="form-example-TextInputE-email"
-        />
-        {errors.email && <span>Required</span>}
-        <TextInputE
-          type="password"
-          name="password"
-          ref={register}
-          label="Password"
-          data-testid="form-example-TextInputE-password"
-        />
-        <TextAreaE
-          name="description"
-          ref={register}
-          label="Description"
-          data-testid="form-example-TextAreaE-description"
-        />
-        <Fieldset>
-          <legend>Example checkbox selection</legend>
-          <CheckboxE
+        <SectionDivider title="Example Form" />
+        <Field
+          hintText="Example hint text."
+          errors={[{ error: !!errors.email && 'Required' }]}
+        >
+          <TextInput
+            type="email"
+            name="email"
+            ref={register({ required: true })}
+            label="Email"
+            data-testid="form-example-TextInput-email"
+          />
+        </Field>
+        <Field hintText="Example hint text.">
+          <TextInput
+            type="password"
+            name="password"
+            ref={register}
+            label="Password"
+            data-testid="form-example-TextInput-password"
+          />
+        </Field>
+        <Field hintText="Example hint text.">
+          <TextArea
+            name="description"
+            ref={register}
+            label="Description"
+            data-testid="form-example-TextArea-description"
+          />
+        </Field>
+        <Fieldset legend="Example checkbox selection">
+          <Checkbox
             name="exampleCheckbox"
             label="Option 1"
             ref={register}
             value="Option 1"
           />
-          <CheckboxE
+          <Checkbox
             name="exampleCheckbox"
             label="Option 2"
             ref={register}
             value="Option 2"
           />
-          <CheckboxE
+          <Checkbox
             name="exampleCheckbox"
             label="Option 3"
             ref={register}
             value="Option 3"
           />
         </Fieldset>
-        <Fieldset>
-          <legend>Example radio selection</legend>
-          <RadioE
+        <Fieldset legend="Example radio selection">
+          <Radio
             name="exampleRadio"
             label="Option 1"
             ref={register}
             value="Option 1"
           />
-          <RadioE
+          <Radio
             name="exampleRadio"
             label="Option 2"
             ref={register}
             value="Option 2"
           />
         </Fieldset>
-        <SwitchE
-          name="exampleSwitch"
-          label="Example switch selection"
-          onChange={handleSwitchEChange}
-          value={exampleSwitchValue}
-          data-testid="form-example-SwitchE"
-        >
-          <SwitchEOption label="One" value="1" />
-          <SwitchEOption label="Two" value="2" />
-          <SwitchEOption label="Three" value="3" />
-        </SwitchE>
-        <NumberInputE
-          name="exampleNumberInput"
-          label="Example number input"
-          onChange={handleNumberInputEChange}
-          value={exampleNumberInputValue}
-          data-testid="form-example-NumberInputE"
-        />
-        <Controller
-          control={control}
-          name="exampleDatePicker"
-          rules={{
-            validate: (value) => {
-              if (value && !isValid(value)) {
-                return 'Enter a valid date'
-              }
-
-              if (isBefore(value, MINIMUM_DATE)) {
-                return 'Enter a date on or after 1 January 2022'
-              }
-
-              return true
+        <Field hintText="Example hint text.">
+          <Switch
+            name="exampleSwitch"
+            label="Example switch selection"
+            onChange={handleSwitchChange}
+            value={exampleSwitchValue}
+            data-testid="form-example-Switch"
+          >
+            <SwitchOption label="One" value="1" />
+            <SwitchOption label="Two" value="2" />
+            <SwitchOption label="Three" value="3" />
+          </Switch>
+        </Field>
+        <Field hintText="Example hint text.">
+          <NumberInput
+            name="exampleNumberInput"
+            label="Example number input"
+            onChange={handleNumberInputChange}
+            value={exampleNumberInputValue}
+            data-testid="form-example-NumberInput"
+          />
+        </Field>
+        <Field
+          hintText="Example hint text."
+          errors={[
+            {
+              error:
+                errors.exampleDatePicker && errors.exampleDatePicker.message,
             },
-          }}
-          render={({ onChange, value }) => {
-            return (
-              <DatePickerE
-                disabledDays={{ before: MINIMUM_DATE }}
-                onChange={({ startDate }) => {
-                  onChange(startDate)
-                }}
-                startDate={value}
-              />
-            )
-          }}
-        />
-        {errors.exampleDatePicker && (
-          <span>{errors.exampleDatePicker.message}</span>
-        )}
-        <Controller
-          control={control}
-          name="exampleSelect"
-          render={({ onChange, value }) => (
-            <SelectE label="Example select" onChange={onChange} value={value}>
-              <SelectEOption value="one">One</SelectEOption>
-              <SelectEOption value="two">Two</SelectEOption>
-              <SelectEOption value="three">Three</SelectEOption>
-              <SelectEOption value="four">Four</SelectEOption>
-            </SelectE>
-          )}
-        />
-        <Controller
-          control={control}
-          name="exampleAutocomplete"
-          render={({ onChange, value }) => (
-            <AutocompleteE
-              label="Example autocomplete"
-              onChange={onChange}
-              value={value}
-            >
-              <AutocompleteEOption value="one">One</AutocompleteEOption>
-              <AutocompleteEOption value="two">Two</AutocompleteEOption>
-              <AutocompleteEOption value="three">Three</AutocompleteEOption>
-              <AutocompleteEOption value="four">Four</AutocompleteEOption>
-            </AutocompleteE>
-          )}
-        />
-        <Controller
-          control={control}
-          name="exampleRangeSlider"
-          render={({ onChange, value }) => {
-            return (
-              <StyledRangeSliderE
+          ]}
+        >
+          <Controller
+            control={control}
+            name="exampleDatePicker"
+            rules={{
+              validate: (value) => {
+                if (value && !isValid(value)) {
+                  return 'Enter a valid date'
+                }
+
+                if (isBefore(value, MINIMUM_DATE)) {
+                  return 'Enter a date on or after 1 January 2022'
+                }
+
+                return true
+              },
+            }}
+            render={({ onChange, value }) => {
+              return (
+                <DatePicker
+                  disabledDays={{ before: MINIMUM_DATE }}
+                  onChange={({ startDate }) => {
+                    onChange(startDate)
+                  }}
+                  startDate={value}
+                />
+              )
+            }}
+          />
+        </Field>
+        <Field hintText="Example hint text.">
+          <Controller
+            control={control}
+            name="exampleSelect"
+            render={({ onChange, value }) => (
+              <Select label="Example select" onChange={onChange} value={value}>
+                <SelectOption value="one">One</SelectOption>
+                <SelectOption value="two">Two</SelectOption>
+                <SelectOption value="three">Three</SelectOption>
+                <SelectOption value="four">Four</SelectOption>
+              </Select>
+            )}
+          />
+        </Field>
+        <Field hintText="Example hint text.">
+          <Controller
+            control={control}
+            name="exampleAutocomplete"
+            render={({ onChange, value }) => (
+              <Autocomplete
+                label="Example autocomplete"
                 onChange={onChange}
-                values={value}
-                domain={[0, 40]}
-                mode={1}
-                tracksLeft
-                step={2}
-              />
-            )
-          }}
-        />
-        <ButtonE
+                value={value}
+              >
+                <AutocompleteOption value="one">One</AutocompleteOption>
+                <AutocompleteOption value="two">Two</AutocompleteOption>
+                <AutocompleteOption value="three">Three</AutocompleteOption>
+                <AutocompleteOption value="four">Four</AutocompleteOption>
+              </Autocomplete>
+            )}
+          />
+        </Field>
+        <Field hintText="Example hint text.">
+          <Controller
+            control={control}
+            name="exampleRangeSlider"
+            render={({ onChange, value }) => {
+              return (
+                <StyledRangeSlider
+                  onChange={onChange}
+                  values={value}
+                  domain={[0, 40]}
+                  mode={1}
+                  tracksLeft
+                  step={2}
+                />
+              )
+            }}
+          />
+        </Field>
+        <Button
           type="submit"
           data-testid="form-example-submit"
           isDisabled={isSubmitting}
         >
           Submit
-        </ButtonE>
+        </Button>
       </form>
 
       <pre data-testid="form-example-values">
@@ -261,6 +262,18 @@ export const Example: React.FC<unknown> = () => {
 }
 
 export default {
-  title: 'Forms/react-hook-form',
+  title: 'Forms/Usage/react-hook-form',
   component: Example,
 } as ComponentMeta<typeof Example>
+
+const Template: ComponentStory<typeof Example> = (args) => <Example {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+  initialValues: EMPTY_FORM_VALUES,
+}
+
+export const Prepopulated = Template.bind({})
+Prepopulated.args = {
+  initialValues: PREPOPULATED_FORM_VALUES,
+}

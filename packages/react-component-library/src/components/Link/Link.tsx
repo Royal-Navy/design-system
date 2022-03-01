@@ -8,12 +8,7 @@ export const Link: React.FC<AnchorType> = ({
   href,
   ...rest
 }) => (
-  <a
-    className={`rn-link ${className}`}
-    href={href}
-    data-testid="link"
-    {...rest}
-  >
+  <a className={className} href={href} data-testid="link" {...rest}>
     {children}
   </a>
 )

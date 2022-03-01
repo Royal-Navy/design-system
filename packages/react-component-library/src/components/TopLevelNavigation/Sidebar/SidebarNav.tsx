@@ -3,33 +3,34 @@ import React from 'react'
 import { Nav, NavItem } from '../../../common/Nav'
 import { SidebarNavItem, SidebarNavItemProps } from './index'
 import { warnIfOverwriting } from '../../../helpers'
+import { StyledNav } from './partials/StyledNav'
 
 export interface SidebarNavProps extends Nav<NavItem> {
   /**
    * Optional handler invoked when `onBlur` event is emitted.
    */
-  onBlur?: () => void
+  onBlur?: (e: React.FocusEvent<HTMLElement>) => void
   /**
    * Optional handler invoked when `onFocus` event is emitted.
    */
-  onFocus?: () => void
+  onFocus?: (e: React.FocusEvent<HTMLElement>) => void
   /**
    * Optional handler invoked when an item is clicked.
    */
-  onItemClick?: () => void
+  onItemClick?: (e: React.MouseEvent<HTMLElement>) => void
   /**
    * Optional handler invoked when the `onMouseOut` event is emitted.
    */
-  onMouseOut?: () => void
+  onMouseOut?: (e: React.MouseEvent<HTMLElement>) => void
   /**
    * Optional handler invoked when the `onMouseOver` event is emitted.
    */
-  onMouseOver?: () => void
+  onMouseOver?: (e: React.MouseEvent<HTMLElement>) => void
 }
 
 function mapNavItem(
   navItem: React.ReactElement<SidebarNavItemProps>,
-  onClick: () => void
+  onClick: ((e: React.MouseEvent<HTMLElement>) => void) | undefined
 ) {
   warnIfOverwriting(navItem.props, 'onClick', SidebarNavItem.name)
 
@@ -39,20 +40,30 @@ function mapNavItem(
   })
 }
 
-/**
- * @deprecated
- */
 export const SidebarNav: React.FC<SidebarNavProps> = ({
-  children,
+  children = [],
+  onBlur,
+  onFocus,
   onItemClick,
+  onMouseOut,
+  onMouseOver,
   ...rest
 }) => (
-  <nav className="rn-sidebar__top" data-testid="sidebar-nav" {...rest}>
+  <StyledNav
+    onBlur={onBlur}
+    onFocus={onFocus}
+    onMouseOut={onMouseOut}
+    onMouseOver={onMouseOver}
+    data-testid="sidebar-nav"
+    {...rest}
+  >
     {React.Children.map(
       children,
       (child: React.ReactElement<SidebarNavItemProps>) => {
         return mapNavItem(child, onItemClick)
       }
     )}
-  </nav>
+  </StyledNav>
 )
+
+SidebarNav.displayName = 'SidebarNav'

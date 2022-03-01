@@ -299,7 +299,7 @@ describe('Modal', () => {
   })
 
   describe('when the Modal content changes', () => {
-    let initialIds: Record<string, string>
+    let initialIds: Record<string, string | null>
 
     const ExampleModal = ({ content }: { content: string }) => (
       <Modal title="Example title" isOpen>

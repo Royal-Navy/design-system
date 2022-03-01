@@ -8,6 +8,7 @@ import { StyledList } from './partials/StyledList'
 import { StyledListItem } from './partials/StyledListItem'
 import { StyledTextInput } from './partials/StyledTextInput'
 import { StyledTotalPages } from './partials/StyledTotalPages'
+import { OnChangeEventType } from './types'
 
 const KEY_PREFIX = 'pagination-item'
 
@@ -23,7 +24,11 @@ export interface PaginationProps {
   /**
    * Optional handler called when the value of currently selected page changes.
    */
-  onChange?: (currentPage: number, totalPages: number) => void
+  onChange?: (
+    event: OnChangeEventType,
+    currentPage: number,
+    totalPages: number
+  ) => void
   /**
    * Number of items within a paginated collection per page.
    */
@@ -43,11 +48,8 @@ export const Pagination: React.FC<PaginationProps> = ({
   ...rest
 }) => {
   const totalPages = Math.ceil(total / pageSize)
-  const { changePage, currentPage, hasError, onKeyDown } = usePageChange(
-    initialPage,
-    totalPages,
-    onChange
-  )
+  const { currentPage, hasError, onKeyDown, onPaginationButtonClickHandler } =
+    usePageChange(initialPage, totalPages, onChange)
 
   const isOnFirstPage = currentPage === 1
   const isOnLastPage = currentPage === totalPages
@@ -57,7 +59,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       <StyledListItem key={getKey(KEY_PREFIX, 'first')}>
         <PaginationButton
           disabled={isOnFirstPage}
-          onClick={() => changePage(1)}
+          onClick={onPaginationButtonClickHandler(1)}
         >
           {PAGINATION_BUTTON_VARIANT.FIRST}
         </PaginationButton>
@@ -65,7 +67,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       <StyledListItem key={getKey(KEY_PREFIX, 'previous')}>
         <PaginationButton
           disabled={isOnFirstPage}
-          onClick={() => changePage(currentPage - 1)}
+          onClick={onPaginationButtonClickHandler(currentPage - 1)}
         >
           {PAGINATION_BUTTON_VARIANT.PREV}
         </PaginationButton>
@@ -73,6 +75,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       <StyledListItem>
         {hasError && <PaginationErrorMessage />}
         <StyledTextInput
+          label=""
           aria-label="Enter page number"
           onKeyDown={onKeyDown}
           name={name}
@@ -83,7 +86,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       <StyledListItem key={getKey(KEY_PREFIX, 'next')}>
         <PaginationButton
           disabled={isOnLastPage}
-          onClick={() => changePage(currentPage + 1)}
+          onClick={onPaginationButtonClickHandler(currentPage + 1)}
         >
           {PAGINATION_BUTTON_VARIANT.NEXT}
         </PaginationButton>
@@ -91,7 +94,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       <StyledListItem key={getKey(KEY_PREFIX, 'last')}>
         <PaginationButton
           disabled={isOnLastPage}
-          onClick={() => changePage(totalPages)}
+          onClick={onPaginationButtonClickHandler(totalPages)}
         >
           {PAGINATION_BUTTON_VARIANT.LAST}
         </PaginationButton>

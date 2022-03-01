@@ -1,92 +1,37 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState } from 'react'
-import { ComponentMeta } from '@storybook/react'
-import { Formik, Field } from 'formik'
-import styled from 'styled-components'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Formik, Field as FormikField, FieldProps } from 'formik'
 
-import { TextInputE } from '../../components/TextInputE'
-import { TextAreaE } from '../../components/TextAreaE'
-import { RadioE } from '../../components/RadioE'
-import { CheckboxE } from '../../components/CheckboxE'
-import {
-  AutocompleteE,
-  AutocompleteEOption,
-} from '../../components/AutocompleteE'
-import { ButtonE } from '../../components/ButtonE'
-import { NumberInputE } from '../../components/NumberInputE'
-import {
-  DatePickerE,
-  DatePickerEOnChangeData,
-} from '../../components/DatePickerE'
-import { SelectE, SelectEOption } from '../../components/SelectE'
-import { SwitchE, SwitchEOption, SwitchEProps } from '../../components/SwitchE'
-import { RangeSliderE } from '../../components/RangeSliderE'
-import { FormikGroupE } from '../../components/FormikGroup'
-import { withFormik } from '../../enhancers/withFormik'
+import { TextInput } from '../../components/TextInput'
+import { TextArea } from '../../components/TextArea'
+import { Radio } from '../../components/Radio'
+import { Checkbox } from '../../components/Checkbox'
+import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
+import { Button } from '../../components/Button'
+import { NumberInput } from '../../components/NumberInput'
+import { DatePicker, DatePickerOnChangeData } from '../../components/DatePicker'
+import { Select, SelectOption } from '../../components/Select'
+import { Switch, SwitchOption } from '../../components/Switch'
+import { RangeSlider } from '../../components/RangeSlider'
 import { sleep } from '../../helpers'
-
-export interface FormValues {
-  email: string
-  password: string
-  description: string
-  exampleCheckbox: string[]
-  exampleRadio: string[]
-  exampleSwitch: string
-  exampleNumberInput: number | null
-  exampleDatePicker: Date | null
-  exampleSelect: string | null
-  exampleAutocomplete: string | null
-  exampleRangeSlider: number[]
-}
-
-const SwitchEFormed: React.FC<SwitchEProps> = (props) => (
-  <SwitchE
-    {...props}
-    label="Example switch selection"
-    data-testid="form-example-SwitchE"
-  >
-    <SwitchEOption label="One" value="1" />
-    <SwitchEOption label="Two" value="2" />
-    <SwitchEOption label="Three" value="3" />
-  </SwitchE>
-)
-
-const StyledRangeSliderE = styled(RangeSliderE)`
-  margin-top: 3rem;
-`
-
-const FormikTextInputE = withFormik(TextInputE)
-const FormikTextAreaE = withFormik(TextAreaE)
-const FormikCheckboxE = withFormik(CheckboxE)
-const FormikRadioE = withFormik(RadioE)
-const FormikSwitchE = withFormik(SwitchEFormed)
-const FormikDatePickerE = withFormik(DatePickerE)
-const FormikNumberInputE = withFormik(NumberInputE)
-const FormikSelectE = withFormik(SelectE)
-const FormikAutocompleteE = withFormik(AutocompleteE)
-const FormikRangeSliderE = withFormik(StyledRangeSliderE)
+import { Field } from '../../components/Field'
+import { Fieldset } from '../../components/Fieldset'
+import { SectionDivider } from '../../components/SectionDivider'
+import { EMPTY_FORM_VALUES, PREPOPULATED_FORM_VALUES } from '../constants'
+import { FormValues } from '../types'
 
 const MINIMUM_DATE = parseISO('2022-01-01')
 
-export const Example: React.FC<unknown> = () => {
+const Example: React.FC<{ initialValues: FormValues }> = ({
+  initialValues,
+}) => {
   const [formValues, setFormValues] = useState<FormValues>()
 
   return (
     <main>
       <Formik<FormValues>
-        initialValues={{
-          email: '',
-          password: '',
-          description: '',
-          exampleCheckbox: [],
-          exampleRadio: [],
-          exampleSwitch: '',
-          exampleNumberInput: null,
-          exampleDatePicker: null,
-          exampleSelect: null,
-          exampleAutocomplete: null,
-          exampleRangeSlider: [20],
-        }}
+        initialValues={initialValues}
         validate={({ email, exampleDatePicker }) => {
           const errors: Record<string, unknown> = {}
 
@@ -123,137 +68,243 @@ export const Example: React.FC<unknown> = () => {
           setFieldValue,
         }) => (
           <form onSubmit={handleSubmit}>
-            <Field
-              name="email"
-              label="Email"
-              component={FormikTextInputE}
-              data-testid="form-example-TextInputE-email"
-            />
-            <Field
-              type="password"
-              name="password"
-              label="Password"
-              component={FormikTextInputE}
-              data-testid="form-example-TextInputE-password"
-            />
-            <Field
-              name="description"
-              label="Description"
-              component={FormikTextAreaE}
-              data-testid="form-example-TextAreaE-description"
-            />
-            <FormikGroupE label="Example checkbox selection">
-              <Field
-                component={FormikCheckboxE}
+            <SectionDivider title="Example Form" />
+            <FormikField name="email">
+              {({ field, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <TextInput
+                      label="Email"
+                      {...field}
+                      data-testid="form-example-TextInput-email"
+                    />
+                  </Field>
+                )
+              }}
+            </FormikField>
+            <FormikField name="password">
+              {({ field, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <TextInput
+                      type="password"
+                      label="Password"
+                      {...field}
+                      data-testid="form-example-TextInput-password"
+                    />
+                  </Field>
+                )
+              }}
+            </FormikField>
+            <FormikField name="description">
+              {({ field, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <TextArea
+                      label="Description"
+                      {...field}
+                      data-testid="form-example-TextArea-description"
+                    />
+                  </Field>
+                )
+              }}
+            </FormikField>
+            <Fieldset legend="Example checkbox selection">
+              <FormikField
                 name="exampleCheckbox"
-                label="Option 1"
                 value="Option 1"
                 type="checkbox"
-              />
-              <Field
-                component={FormikCheckboxE}
+              >
+                {({ field }: FieldProps) => (
+                  <Checkbox label="Option 1" {...field} />
+                )}
+              </FormikField>
+              <FormikField
                 name="exampleCheckbox"
-                label="Option 2"
                 value="Option 2"
                 type="checkbox"
-              />
-              <Field
-                component={FormikCheckboxE}
+              >
+                {({ field }: FieldProps) => (
+                  <Checkbox label="Option 2" {...field} />
+                )}
+              </FormikField>
+              <FormikField
                 name="exampleCheckbox"
-                label="Option 3"
                 value="Option 3"
                 type="checkbox"
-              />
-            </FormikGroupE>
-            <FormikGroupE label="Example radio selection">
-              <Field
-                component={FormikRadioE}
-                name="exampleRadio"
-                label="Option 1"
-                value="Option 1"
-              />
-              <Field
-                component={FormikRadioE}
-                name="exampleRadio"
-                label="Option 2"
-                value="Option 2"
-              />
-            </FormikGroupE>
-            <Field
-              name="exampleSwitch"
-              component={FormikSwitchE}
-              onChange={(event: React.FormEvent<HTMLInputElement>) => {
-                setFieldValue('exampleSwitch', event.currentTarget.value)
+              >
+                {({ field }: FieldProps) => (
+                  <Checkbox label="Option 3" {...field} />
+                )}
+              </FormikField>
+            </Fieldset>
+            <Fieldset legend="Example radio selection">
+              <FormikField name="exampleRadio" value="Option 1" type="radio">
+                {({ field }: FieldProps) => (
+                  <Radio label="Option 1" {...field} />
+                )}
+              </FormikField>
+              <FormikField name="exampleRadio" value="Option 2" type="radio">
+                {({ field }: FieldProps) => (
+                  <Radio label="Option 2" {...field} />
+                )}
+              </FormikField>
+            </Fieldset>
+            <FormikField name="exampleSwitch">
+              {({ field: { name, value }, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <Switch
+                      label="Example switch selection"
+                      name={name}
+                      value={value}
+                      data-testid="form-example-Switch"
+                      onChange={(event: React.FormEvent<HTMLInputElement>) => {
+                        setFieldValue(
+                          'exampleSwitch',
+                          event.currentTarget.value
+                        )
+                      }}
+                    >
+                      <SwitchOption label="One" value="1" />
+                      <SwitchOption label="Two" value="2" />
+                      <SwitchOption label="Three" value="3" />
+                    </Switch>
+                  </Field>
+                )
               }}
-            />
-            <Field
-              name="exampleNumberInput"
-              component={FormikNumberInputE}
-              onChange={(
-                _:
-                  | React.ChangeEvent<HTMLInputElement>
-                  | React.MouseEvent<HTMLButtonElement>,
-                newValue: number
-              ) => {
-                setFieldValue('exampleNumberInput', newValue)
+            </FormikField>
+            <FormikField name="exampleNumberInput">
+              {({ field: { name, value }, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <NumberInput
+                      label="Example number input"
+                      name={name}
+                      value={value}
+                      onChange={(
+                        _:
+                          | React.ChangeEvent<HTMLInputElement>
+                          | React.MouseEvent<HTMLButtonElement>,
+                        newValue: number | null
+                      ) => {
+                        setFieldValue('exampleNumberInput', newValue)
+                      }}
+                    />
+                  </Field>
+                )
               }}
-            />
-            <Field
-              name="exampleDatePicker"
-              component={FormikDatePickerE}
-              disabledDays={{ before: MINIMUM_DATE }}
-              startDate={values.exampleDatePicker}
-              onChange={({ startDate }: DatePickerEOnChangeData) => {
-                setFieldValue('exampleDatePicker', startDate)
+            </FormikField>
+            <FormikField name="exampleDatePicker">
+              {({ field: { name, value }, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <DatePicker
+                      name={name}
+                      disabledDays={{ before: MINIMUM_DATE }}
+                      startDate={value}
+                      onChange={({ startDate }: DatePickerOnChangeData) => {
+                        setFieldValue('exampleDatePicker', startDate)
+                      }}
+                    />
+                  </Field>
+                )
               }}
-            />
-            <Field
-              name="exampleSelect"
-              component={FormikSelectE}
-              label="Example select"
-              value={values.exampleSelect}
-              onChange={(value: string | null) => {
-                setFieldValue('exampleSelect', value)
+            </FormikField>
+            <FormikField name="exampleSelect">
+              {({ field: { value }, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <Select
+                      value={value}
+                      label="Example select"
+                      onChange={(newValue: string | null) => {
+                        setFieldValue('exampleSelect', newValue)
+                      }}
+                    >
+                      <SelectOption value="one">One</SelectOption>
+                      <SelectOption value="two">Two</SelectOption>
+                      <SelectOption value="three">Three</SelectOption>
+                      <SelectOption value="four">Four</SelectOption>
+                    </Select>
+                  </Field>
+                )
               }}
-            >
-              <SelectEOption value="one">One</SelectEOption>
-              <SelectEOption value="two">Two</SelectEOption>
-              <SelectEOption value="three">Three</SelectEOption>
-              <SelectEOption value="four">Four</SelectEOption>
-            </Field>
-            <Field
-              name="exampleAutocomplete"
-              component={FormikAutocompleteE}
-              label="Example autocomplete"
-              value={values.exampleAutocomplete}
-              onChange={(value: string | null) => {
-                setFieldValue('exampleAutocomplete', value)
+            </FormikField>
+            <FormikField name="exampleAutocomplete">
+              {({ field: { value }, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <Autocomplete
+                      value={value}
+                      label="Example autocomplete"
+                      onChange={(newValue: string | null) => {
+                        setFieldValue('exampleAutocomplete', newValue)
+                      }}
+                    >
+                      <AutocompleteOption value="one">One</AutocompleteOption>
+                      <AutocompleteOption value="two">Two</AutocompleteOption>
+                      <AutocompleteOption value="three">
+                        Three
+                      </AutocompleteOption>
+                      <AutocompleteOption value="four">Four</AutocompleteOption>
+                    </Autocomplete>
+                  </Field>
+                )
               }}
-            >
-              <AutocompleteEOption value="one">One</AutocompleteEOption>
-              <AutocompleteEOption value="two">Two</AutocompleteEOption>
-              <AutocompleteEOption value="three">Three</AutocompleteEOption>
-              <AutocompleteEOption value="four">Four</AutocompleteEOption>
-            </Field>
-            <Field
-              name="exampleRangeSlider"
-              component={FormikRangeSliderE}
-              onChange={(newValues: ReadonlyArray<number>) => {
-                setFieldValue('exampleRangeSlider', newValues)
+            </FormikField>
+            <FormikField name="exampleRangeSlider">
+              {({ meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <RangeSlider
+                      domain={[0, 40]}
+                      mode={1}
+                      values={values.exampleRangeSlider}
+                      tracksLeft
+                      step={2}
+                      onChange={(newValues: ReadonlyArray<number>) => {
+                        setFieldValue('exampleRangeSlider', newValues)
+                      }}
+                    />
+                  </Field>
+                )
               }}
-              domain={[0, 40]}
-              mode={1}
-              values={[20]}
-              tracksLeft
-              step={2}
-            />
-            <ButtonE
+            </FormikField>
+            <Button
               type="submit"
               isDisabled={isSubmitting}
               data-testid="form-example-submit"
             >
               Submit
-            </ButtonE>
+            </Button>
           </form>
         )}
       </Formik>
@@ -266,6 +317,18 @@ export const Example: React.FC<unknown> = () => {
 }
 
 export default {
-  title: 'Forms/Formik',
+  title: 'Forms/Usage/Formik',
   component: Example,
 } as ComponentMeta<typeof Example>
+
+const Template: ComponentStory<typeof Example> = (args) => <Example {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+  initialValues: EMPTY_FORM_VALUES,
+}
+
+export const Prepopulated = Template.bind({})
+Prepopulated.args = {
+  initialValues: PREPOPULATED_FORM_VALUES,
+}

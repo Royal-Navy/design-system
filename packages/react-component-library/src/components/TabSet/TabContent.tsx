@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { StyledContent } from './partials/StyledContent'
-import { TabProps } from '.'
+import { TabSetItemProps } from '.'
 
 interface TabContentProps {
   tabId: string
   isActive: boolean
-  children: React.ReactElement<TabProps>
+  children: React.ReactElement<TabSetItemProps>
 }
 
 export const TabContent: React.FC<TabContentProps> = ({

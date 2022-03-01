@@ -6,7 +6,7 @@ type Validators<FormValues> = Partial<{
   [key in keyof FormValues]: (value: FormValues[key]) => boolean | string
 }>
 
-type FormErrors<FormValues> = Partial<{
+export type FormErrors<FormValues> = Partial<{
   [key in keyof FormValues]: boolean | string
 }>
 
@@ -73,7 +73,7 @@ export const useNativeForm = <FormValues>(
     handleChange({
       currentTarget: {
         name,
-        value: [value],
+        value,
       },
     })
   }

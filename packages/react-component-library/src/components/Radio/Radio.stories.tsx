@@ -1,13 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { Field, Formik, Form } from 'formik'
-import * as yup from 'yup'
 
-import { withFormik } from '../../enhancers/withFormik'
-import { Radio } from '.'
-import { Button } from '../Button'
-import { FormikGroup } from '../FormikGroup'
+import { RADIO_VARIANT, Radio, RadioProps } from '.'
 
 export default {
   component: Radio,
@@ -17,21 +11,41 @@ export default {
   },
 } as ComponentMeta<typeof Radio>
 
-export const Default: ComponentStory<typeof Radio> = (props) => (
-  <Radio {...props} />
-)
+const Template: ComponentStory<typeof Radio> = (props) => <Radio {...props} />
 
+const MultipleItemsTemplate: ComponentStory<typeof Radio> = (props) => {
+  function getProps(i: number): RadioProps {
+    return {
+      ...props,
+      label: `${props.label} ${i}`,
+    }
+  }
+
+  return (
+    <>
+      <Radio {...getProps(1)} />
+      <Radio {...getProps(2)} />
+      <Radio {...getProps(3)} />
+    </>
+  )
+}
+
+export const Default = Template.bind({})
 Default.args = {
   id: undefined,
   label: 'Default radio',
   name: 'default',
-  isChecked: true,
 }
 
-export const Disabled: ComponentStory<typeof Radio> = (props) => (
-  <Radio {...props} />
-)
+export const Checked = Template.bind({})
+Checked.args = {
+  id: undefined,
+  defaultChecked: true,
+  label: 'Checked radio',
+  name: 'checked',
+}
 
+export const Disabled = Template.bind({})
 Disabled.args = {
   id: undefined,
   isDisabled: true,
@@ -39,10 +53,17 @@ Disabled.args = {
   name: 'disabled',
 }
 
-export const Invalid: ComponentStory<typeof Radio> = (props) => (
-  <Radio {...props} />
-)
+export const DisabledChecked = Template.bind({})
+DisabledChecked.storyName = 'Disabled, checked'
+DisabledChecked.args = {
+  id: undefined,
+  isDisabled: true,
+  defaultChecked: true,
+  label: 'Disabled, checked radio',
+  name: 'disabled-checked',
+}
 
+export const Invalid = Template.bind({})
 Invalid.args = {
   id: undefined,
   label: 'Invalid radio',
@@ -50,132 +71,19 @@ Invalid.args = {
   isInvalid: true,
 }
 
-export const WithFormik: ComponentStory<typeof Radio> = () => {
-  const RadioForm = () => {
-    interface Data {
-      [key: string]: string
-    }
-
-    const initialValues: Data = {
-      example: 'Option 1',
-    }
-
-    const validationSchema = yup.object().shape({
-      example: yup.string(),
-    })
-
-    const FormikRadio = withFormik(Radio)
-
-    return (
-      <Formik
-        initialValues={initialValues}
-        onSubmit={action('onSubmit')}
-        validationSchema={validationSchema}
-      >
-        <Form>
-          <Field
-            name="example"
-            component={FormikRadio}
-            label="Option 1"
-            value="Option 1"
-          />
-          <Field
-            name="example"
-            component={FormikRadio}
-            label="Option 2"
-            value="Option 2"
-          />
-          <Field
-            name="example"
-            component={FormikRadio}
-            label="Option 3"
-            value="Option 3"
-          />
-          <br />
-          <Button type="submit">Submit</Button>
-        </Form>
-      </Formik>
-    )
-  }
-
-  return <RadioForm />
+export const NoContainer = MultipleItemsTemplate.bind({})
+NoContainer.args = {
+  id: undefined,
+  label: 'Item without container',
+  name: 'no-container',
+  variant: RADIO_VARIANT.NO_CONTAINER,
 }
 
-WithFormik.storyName = 'Formik'
-
-export const WithFormikGroup: ComponentStory<typeof Radio> = () => {
-  const RadioForm = () => {
-    interface Data {
-      [key: string]: string
-    }
-
-    const initialValues: Data = {
-      example: '',
-      exampleWithError: '',
-    }
-
-    const validationSchema = yup.object().shape({
-      exampleWithError: yup.string().required('Field is required'),
-    })
-
-    const FormikRadio = withFormik(Radio)
-
-    return (
-      <Formik
-        initialValues={initialValues}
-        onSubmit={action('onSubmit')}
-        validationSchema={validationSchema}
-      >
-        <Form>
-          <FormikGroup label="Select an option">
-            <Field
-              component={FormikRadio}
-              name="example"
-              label="Option 1"
-              value="Option 1"
-            />
-            <Field
-              component={FormikRadio}
-              name="example"
-              label="Option 2"
-              value="Option 2"
-            />
-            <Field
-              component={FormikRadio}
-              name="example"
-              label="Option 3"
-              value="Option 3"
-            />
-          </FormikGroup>
-          <br />
-          <FormikGroup label="Select another option">
-            <Field
-              component={FormikRadio}
-              name="exampleWithError"
-              label="Another option 1"
-              value="Another option 1"
-            />
-            <Field
-              component={FormikRadio}
-              name="exampleWithError"
-              label="Another option 2"
-              value="Another option 2"
-            />
-            <Field
-              component={FormikRadio}
-              name="exampleWithError"
-              label="Another option 3"
-              value="3"
-            />
-          </FormikGroup>
-          <br />
-          <Button type="submit">Submit</Button>
-        </Form>
-      </Formik>
-    )
-  }
-
-  return <RadioForm />
+export const WithDescription = Template.bind({})
+WithDescription.args = {
+  id: undefined,
+  description:
+    'She must have hidden the plans in the escape pod. Send a detachment down to retrieve them.',
+  label: 'With description',
+  name: 'with-description',
 }
-
-WithFormikGroup.storyName = 'Formik Group'

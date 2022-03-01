@@ -3,14 +3,16 @@ import { selectors } from '@defencedigital/design-tokens'
 
 const { fontSize, spacing, color } = selectors
 
-export const StyledValue = styled.span`
+export const StyledValue = styled.div`
   position: absolute;
-  transform: translate(-50%, -155%);
-  font-size: ${fontSize('xs')};
-  color: ${color('neutral', '600')};
-  opacity: 1;
-  transition: opacity 0.15s ease-in-out;
-  padding: ${spacing('2')} ${spacing('3')};
-  border-radius: 12px;
+  display: inline-block;
+  transform: translate(-50%, -160%);
+  font-size: ${fontSize('m')};
+  color: ${color('neutral', '500')};
+  padding: ${spacing('3')} ${spacing('4')};
+  border-radius: 8px;
+  border: 1px solid ${color('neutral', '200')};
   font-weight: 600;
+  background-color: ${color('neutral', 'white')};
+  cursor: pointer;
 `

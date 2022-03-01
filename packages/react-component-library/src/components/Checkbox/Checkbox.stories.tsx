@@ -1,13 +1,8 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { Field, Formik, Form } from 'formik'
-import * as yup from 'yup'
 
-import { withFormik } from '../../enhancers/withFormik'
-import { Checkbox } from '.'
-import { Button } from '../Button'
-import { FormikGroup } from '../FormikGroup'
+import { Checkbox, CheckboxProps } from '.'
+import { CHECKBOX_VARIANT } from './constants'
 
 export default {
   component: Checkbox,
@@ -17,32 +12,63 @@ export default {
   },
 } as ComponentMeta<typeof Checkbox>
 
-export const Default: ComponentStory<typeof Checkbox> = (props) => (
+const Template: ComponentStory<typeof Checkbox> = (props) => (
   <Checkbox {...props} />
 )
 
+const MultipleItemsTemplate: ComponentStory<typeof Checkbox> = (props) => {
+  function getProps(i: number): CheckboxProps {
+    return {
+      ...props,
+      label: `${props.label} ${i}`,
+      name: `${props.name}-${i}`,
+    }
+  }
+
+  return (
+    <>
+      <Checkbox {...getProps(1)} />
+      <Checkbox {...getProps(2)} />
+      <Checkbox {...getProps(3)} />
+    </>
+  )
+}
+
+export const Default = Template.bind({})
 Default.args = {
   id: undefined,
   label: 'Default checkbox',
   name: 'default',
-  isChecked: true,
 }
 
-export const Disabled: ComponentStory<typeof Checkbox> = (props) => (
-  <Checkbox {...props} />
-)
+export const Checked = Template.bind({})
+Checked.args = {
+  id: undefined,
+  defaultChecked: true,
+  label: 'Checked',
+  name: 'checked',
+}
 
-Disabled.args = {
+export const DisabledUnchecked = Template.bind({})
+DisabledUnchecked.storyName = 'Disabled, unchecked'
+DisabledUnchecked.args = {
   id: undefined,
   isDisabled: true,
-  label: 'Disabled checkbox',
+  label: 'Disabled, unchecked',
   name: 'disabled',
 }
 
-export const Invalid: ComponentStory<typeof Checkbox> = (props) => (
-  <Checkbox {...props} />
-)
+export const DisabledChecked = Template.bind({})
+DisabledChecked.storyName = 'Disabled, checked'
+DisabledChecked.args = {
+  id: undefined,
+  defaultChecked: true,
+  isDisabled: true,
+  label: 'Disabled, checked',
+  name: 'disabled',
+}
 
+export const Invalid = Template.bind({})
 Invalid.args = {
   id: undefined,
   label: 'Invalid checkbox',
@@ -50,140 +76,19 @@ Invalid.args = {
   isInvalid: true,
 }
 
-export const WithFormik: ComponentStory<typeof Checkbox> = () => {
-  const CheckboxForm = () => {
-    interface Data {
-      [key: string]: boolean
-    }
-
-    const initialValues: Data = {
-      example1: true,
-      example2: false,
-      example3: false,
-    }
-
-    const validationSchema = yup.object().shape({
-      example: yup.string(),
-    })
-
-    const FormikCheckbox = withFormik(Checkbox)
-
-    return (
-      <Formik
-        initialValues={initialValues}
-        onSubmit={action('onSubmit')}
-        validationSchema={validationSchema}
-      >
-        <Form>
-          <Field
-            name="example1"
-            component={FormikCheckbox}
-            label="Option 1"
-            type="checkbox"
-          />
-          <Field
-            name="example2"
-            component={FormikCheckbox}
-            label="Option 2"
-            type="checkbox"
-          />
-          <Field
-            name="example3"
-            component={FormikCheckbox}
-            label="Option 3"
-            type="checkbox"
-          />
-          <br />
-          <Button type="submit">Submit</Button>
-        </Form>
-      </Formik>
-    )
-  }
-
-  return <CheckboxForm />
+export const NoContainer = MultipleItemsTemplate.bind({})
+NoContainer.args = {
+  id: undefined,
+  label: 'Item without container',
+  name: 'no-container',
+  variant: CHECKBOX_VARIANT.NO_CONTAINER,
 }
 
-WithFormik.storyName = 'Formik'
-
-export const WithFormikGroup: ComponentStory<typeof Checkbox> = () => {
-  const CheckboxForm = () => {
-    interface Data {
-      [key: string]: string
-    }
-
-    const initialValues: Data = {
-      example: '',
-      exampleWithError: '',
-    }
-
-    const validationSchema = yup.object().shape({
-      exampleWithError: yup.array().min(0).required('Field is required'),
-    })
-
-    const FormikCheckbox = withFormik(Checkbox)
-
-    return (
-      <Formik
-        initialValues={initialValues}
-        onSubmit={action('onSubmit')}
-        validationSchema={validationSchema}
-      >
-        <Form>
-          <FormikGroup label="Select an option">
-            <Field
-              component={FormikCheckbox}
-              name="example"
-              label="Option 1"
-              value="Option 1"
-              type="checkbox"
-            />
-            <Field
-              component={FormikCheckbox}
-              name="example"
-              label="Option 2"
-              value="Option 2"
-              type="checkbox"
-            />
-            <Field
-              component={FormikCheckbox}
-              name="example"
-              label="Option 3"
-              value="Option 3"
-              type="checkbox"
-            />
-          </FormikGroup>
-          <br />
-          <FormikGroup label="Select another option">
-            <Field
-              component={FormikCheckbox}
-              name="exampleWithError"
-              label="Another option 1"
-              value="Another option 1"
-              type="checkbox"
-            />
-            <Field
-              component={FormikCheckbox}
-              name="exampleWithError"
-              label="Another option 2"
-              value="Another option 2"
-              type="checkbox"
-            />
-            <Field
-              component={FormikCheckbox}
-              name="exampleWithError"
-              label="Another option 3"
-              value="3"
-              type="checkbox"
-            />
-          </FormikGroup>
-          <br />
-          <Button type="submit">Submit</Button>
-        </Form>
-      </Formik>
-    )
-  }
-
-  return <CheckboxForm />
+export const WithDescription = Template.bind({})
+WithDescription.args = {
+  id: undefined,
+  description:
+    'She must have hidden the plans in the escape pod. Send a detachment down to retrieve them.',
+  label: 'With description',
+  name: 'with-description',
 }
-
-WithFormikGroup.storyName = 'Formik Group'

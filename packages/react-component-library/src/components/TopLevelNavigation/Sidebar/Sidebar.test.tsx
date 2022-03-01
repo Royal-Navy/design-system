@@ -1,93 +1,627 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, render, RenderResult } from '@testing-library/react'
+import {
+  fireEvent,
+  render,
+  RenderResult,
+  waitFor,
+} from '@testing-library/react'
+import { IconHome, IconGrain } from '@defencedigital/icon-library'
 
+import {
+  Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
+  SidebarWrapper,
+} from '.'
 import { Link } from '../../Link'
-import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './index'
-import { Graph, House, Tools } from '../../../icons'
 import { Notification, Notifications } from '../NotificationPanel'
+
+const user = <SidebarUser initials="HN" name="Horatio Nelson" />
+
+const userWithLinks = (
+  <SidebarUser
+    initials="HN"
+    name="Horatio Nelson"
+    userLink={<Link href="/user-profile">Profile</Link>}
+    exitLink={<Link href="/logout">Logout</Link>}
+  />
+)
+
+const notifications = (
+  <Notifications link={<Link href="notifications" />}>
+    <Notification
+      link={<Link href="notifications/1" />}
+      name="User 1"
+      action="added a new comment to your"
+      on="review"
+      when={new Date('2019-11-05T14:25:02.178Z')}
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+    />
+    <Notification
+      link={<Link href="notifications/2" />}
+      name="User 2"
+      action="added a new comment to your"
+      on="review"
+      when={new Date('2019-11-01T14:25:02.178Z')}
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+    />
+  </Notifications>
+)
 
 describe('Sidebar', () => {
   let wrapper: RenderResult
+
+  describe('when `initialIsOpen` is set', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper>
+          <Sidebar initialIsOpen icon={<IconGrain />} title="Application Name">
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
+      )
+      fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+    })
+
+    it('should display the text titles for navigation items', () => {
+      expect(wrapper.queryByText('Dashboard')).toBeInTheDocument()
+    })
+  })
+
+  describe('when rendered in React strict mode', () => {
+    it('should not throw deprecation warning about findDOMNode', () => {
+      expect(() => {
+        wrapper = render(
+          <React.StrictMode>
+            <Sidebar />
+          </React.StrictMode>
+        )
+
+        fireEvent.mouseOver(wrapper.getByTestId('sidebar'))
+      }).not.toThrowError(/findDOMNode is deprecated in StrictMode/)
+    })
+  })
 
   describe('when composed with minimal props', () => {
     beforeEach(() => {
       wrapper = render(<Sidebar />)
     })
 
-    it('should render the sidebar', () => {
-      expect(wrapper.getByTestId('sidebar')).toBeInTheDocument()
-    })
-
-    it('should not render the nav', () => {
-      expect(wrapper.queryAllByTestId('sidebar-nav')).toHaveLength(0)
-    })
-
-    it('should not render the notifications', () => {
-      expect(wrapper.queryAllByTestId('notification-button')).toHaveLength(0)
-    })
-
-    it('should not render the user', () => {
-      expect(wrapper.queryAllByTestId('sidebar-user')).toHaveLength(0)
+    it('does not render the header', () => {
+      expect(wrapper.queryByTestId('sidebar-head')).not.toBeInTheDocument()
     })
   })
 
-  describe('when composed with all props', () => {
+  describe('when composed with single level of navigaton and header items', () => {
     beforeEach(() => {
       wrapper = render(
-        <Sidebar
-          data-arbitrary="arbitrary-sidebar"
-          hasUnreadNotification
-          nav={
+        <SidebarWrapper>
+          <Sidebar icon={<IconGrain />} title="Application Name">
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
+      )
+    })
+
+    describe('and sidebar is collapsed', () => {
+      it('should not render any user information', () => {
+        expect(
+          wrapper.queryByTestId('sidebar-user-open')
+        ).not.toBeInTheDocument()
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed')
+        ).not.toBeInTheDocument()
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed-children')
+        ).not.toBeInTheDocument()
+      })
+
+      it('should not display the sidebar handle', () => {
+        expect(wrapper.queryByTestId('sidebar-handle')).not.toBeInTheDocument()
+      })
+
+      it('should apply the correct `aria-label` attribute to the navigation links', () => {
+        expect(wrapper.getAllByTestId('sidebar-nav-item')[0]).toHaveAttribute(
+          'aria-label',
+          'Dashboard'
+        )
+      })
+
+      it('should not render the application name', () => {
+        expect(wrapper.queryByText('Application Name')).not.toBeInTheDocument()
+      })
+
+      it('should not display the text titles for navigation items', () => {
+        expect(wrapper.queryByText('Dashboard')).not.toBeInTheDocument()
+      })
+
+      describe('and we hover over a top level nav item', () => {
+        beforeEach(() => {
+          fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+        })
+
+        it('should display the sidebar handle', () => {
+          expect(wrapper.queryByTestId('sidebar-handle')).toBeInTheDocument()
+        })
+
+        it('should apply the correct `aria-label` value to the handle', () => {
+          expect(wrapper.getByTestId('sidebar-handle')).toHaveAttribute(
+            'aria-label',
+            'Expand sidebar'
+          )
+        })
+
+        it('should display a tooltip on hover', () => {
+          expect(wrapper.queryAllByTestId('tooltip')).toHaveLength(1)
+        })
+
+        describe('and we move the mouse away', () => {
+          beforeEach(() => {
+            fireEvent.mouseLeave(wrapper.getAllByTestId('sidebar-nav-item')[0])
+          })
+
+          it('should display a tooltip on hover', () => {
+            expect(wrapper.queryAllByTestId('tooltip')).toHaveLength(0)
+          })
+        })
+      })
+    })
+
+    describe('and sidebar is expanded', () => {
+      beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+        wrapper.getByTestId('sidebar-handle').click()
+      })
+
+      it('should apply the correct `aria-label` value to the handle', () => {
+        expect(wrapper.getByTestId('sidebar-handle')).toHaveAttribute(
+          'aria-label',
+          'Collapse sidebar'
+        )
+      })
+
+      it('should render the application name', () => {
+        expect(wrapper.queryByText('Application Name')).toBeInTheDocument()
+      })
+
+      it('should display the text titles for navigation items', () => {
+        expect(wrapper.queryByText('Dashboard')).toBeInTheDocument()
+      })
+
+      it('should not disply a tooltip on hover', () => {
+        expect(wrapper.queryAllByTestId('tooltip')).toHaveLength(0)
+      })
+
+      describe('and we hover over a top level nav item', () => {
+        beforeEach(() => {
+          fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+        })
+
+        it('should not display a tooltip on hover', () => {
+          expect(wrapper.queryAllByTestId('tooltip')).toHaveLength(0)
+        })
+      })
+    })
+  })
+
+  describe('when composed with a user with user or exit links', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper>
+          <Sidebar icon={<IconGrain />} title="Application Name" user={user}>
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
+      )
+    })
+
+    describe('and the sidebar is collapsed', () => {
+      it('should render the correct user information', () => {
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed')
+        ).not.toBeInTheDocument()
+
+        expect(
+          wrapper.queryByTestId('sidebar-user-open')
+        ).not.toBeInTheDocument()
+
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed-children')
+        ).toBeInTheDocument()
+      })
+    })
+
+    describe('and the sidebar is expanded', () => {
+      beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+        wrapper.getByTestId('sidebar-handle').click()
+      })
+
+      it('should not render the exit link', () => {
+        expect(
+          wrapper.queryByTestId('sidebar-exit-link')
+        ).not.toBeInTheDocument()
+      })
+
+      it('should not render the user profile link', () => {
+        expect(
+          wrapper.queryByTestId('sidebar-user-link')
+        ).not.toBeInTheDocument()
+      })
+    })
+  })
+
+  describe('when composed with a user menu, user link and exit link', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper>
+          <Sidebar
+            icon={<IconGrain />}
+            title="Application Name"
+            user={userWithLinks}
+          >
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
+      )
+    })
+
+    describe('and sidebar is collapsed', () => {
+      it('should render the correct user information', () => {
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed-children')
+        ).toBeInTheDocument()
+
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed')
+        ).not.toBeInTheDocument()
+
+        expect(
+          wrapper.queryByTestId('sidebar-user-open')
+        ).not.toBeInTheDocument()
+      })
+
+      describe('and the avatar is clicked', () => {
+        beforeEach(() => {
+          wrapper.getByText('HN').click()
+        })
+        it('should show the links', () => {
+          expect(wrapper.getByText('Profile')).toBeInTheDocument()
+          expect(wrapper.getByText('Logout')).toBeInTheDocument()
+        })
+
+        describe('and the avatar is clicked again', () => {
+          beforeEach(() => {
+            wrapper.getByText('HN').click()
+          })
+
+          it('should not show the links', () => {
+            return waitFor(() => {
+              expect(wrapper.queryByText('Profile')).not.toBeVisible()
+              expect(wrapper.queryByText('Logout')).not.toBeVisible()
+            })
+          })
+
+          describe('and the elsewhere in the document is clicked', () => {
+            beforeEach(() => {
+              fireEvent(
+                document,
+                new MouseEvent('mousedown', {
+                  bubbles: true,
+                  cancelable: true,
+                })
+              )
+            })
+
+            it('should not show the links', () => {
+              return waitFor(() => {
+                expect(wrapper.queryByText('Profile')).not.toBeVisible()
+                expect(wrapper.queryByText('Logout')).not.toBeVisible()
+              })
+            })
+          })
+        })
+      })
+    })
+
+    describe('and the sidebar is expanded', () => {
+      beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+        wrapper.getByTestId('sidebar-handle').click()
+      })
+
+      it('should render the correct user information', () => {
+        expect(wrapper.queryByTestId('sidebar-user-open')).toBeInTheDocument()
+
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed')
+        ).not.toBeInTheDocument()
+        expect(
+          wrapper.queryByTestId('sidebar-user-closed-children')
+        ).not.toBeInTheDocument()
+      })
+
+      it('should render the exit link', () => {
+        expect(wrapper.queryByTestId('sidebar-exit-link')).toBeInTheDocument()
+      })
+    })
+  })
+
+  describe('when composed with notifications and the `hasUnreadNotification` prop is not set', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper>
+          <Sidebar
+            icon={<IconGrain />}
+            title="Application Name"
+            notifications={notifications}
+          >
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
+      )
+    })
+
+    it('does not display the indicator dot', () => {
+      expect(wrapper.queryByTestId('not-read')).not.toBeInTheDocument()
+    })
+  })
+
+  describe('when composed with notifications and the `hasUnreadNotification prop is set`', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper>
+          <Sidebar
+            icon={<IconGrain />}
+            title="Application Name"
+            notifications={notifications}
+            hasUnreadNotification
+          >
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
+      )
+    })
+
+    describe('and sidebar is collapsed', () => {
+      it('does not display the button title', () => {
+        expect(wrapper.queryByText('Notifications')).not.toBeInTheDocument()
+      })
+
+      it('displays the correct number of unread notifications', () => {
+        expect(wrapper.getByTestId('not-read')).toHaveTextContent('2')
+      })
+
+      describe('and the notification button is clicked', () => {
+        beforeEach(() => {
+          wrapper.getByTestId('notification-button').click()
+        })
+
+        it('shows the notifications', () => {
+          expect(wrapper.getByText('User 1')).toBeInTheDocument()
+          expect(wrapper.getByText('User 2')).toBeInTheDocument()
+        })
+
+        describe('and the notification button is clicked again', () => {
+          beforeEach(() => {
+            wrapper.getByTestId('notification-button').click()
+          })
+
+          it('should not show the notifications', () => {
+            return waitFor(() => {
+              expect(wrapper.queryByText('User 1')).not.toBeVisible()
+              expect(wrapper.queryByText('User 2')).not.toBeVisible()
+            })
+          })
+
+          describe('and then elsewhere in the document is clicked', () => {
+            beforeEach(() => {
+              fireEvent(
+                document,
+                new MouseEvent('mousedown', {
+                  bubbles: true,
+                  cancelable: true,
+                })
+              )
+            })
+
+            it('should not show the notifications', () => {
+              return waitFor(() => {
+                expect(wrapper.queryByText('User 1')).not.toBeVisible()
+                expect(wrapper.queryByText('User 2')).not.toBeVisible()
+              })
+            })
+          })
+        })
+      })
+    })
+
+    describe('and sidebar is expanded', () => {
+      beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+        wrapper.getByTestId('sidebar-handle').click()
+      })
+
+      it('does display the button title', () => {
+        expect(wrapper.queryByText('Notifications')).toBeInTheDocument()
+      })
+
+      it('displays the correct number of unread notifications', () => {
+        expect(wrapper.getByTestId('not-read')).toHaveTextContent('2')
+      })
+    })
+  })
+
+  describe('when composed with nested navigation', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper>
+          <Sidebar
+            icon={<IconGrain />}
+            title="Application Name"
+            notifications={notifications}
+            hasUnreadNotification
+          >
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              >
+                <SidebarNavItem
+                  link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
+                />
+                <SidebarNavItem
+                  link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
+                />
+              </SidebarNavItem>
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
+      )
+    })
+
+    describe('and the sidebar is collapsed', () => {
+      it('does not render the sub nav', () => {
+        expect(wrapper.queryAllByTestId('sidebar-sub-nav')).toHaveLength(0)
+      })
+    })
+
+    describe('and the sidebar is expanded', () => {
+      beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+        wrapper.getByTestId('sidebar-handle').click()
+      })
+
+      it('renders the expand button for the correct top-level menu item', () => {
+        expect(
+          wrapper.getByTestId('sub-menu-expand-button')
+        ).toBeInTheDocument()
+      })
+
+      describe('and the expand button is clicked', () => {
+        beforeEach(() => {
+          wrapper.getByTestId('sub-menu-expand-button').click()
+        })
+
+        it('renders the sub nav', () => {
+          expect(wrapper.getByText('Sub-nav-item 1')).toBeInTheDocument()
+          expect(wrapper.getByText('Sub-nav-item 2')).toBeInTheDocument()
+        })
+
+        describe('and the expand button is clicked again', () => {
+          beforeEach(() => {
+            wrapper.getByTestId('sub-menu-expand-button').click()
+          })
+
+          it('should not show the sub nav', () => {
+            return waitFor(() => {
+              expect(wrapper.queryByText('Sub-nav-item 1')).not.toBeVisible()
+              expect(wrapper.queryByText('Sub-nav-item 2')).not.toBeVisible()
+            })
+          })
+
+          describe('and then elsewhere in the document is clicked', () => {
+            beforeEach(() => {
+              fireEvent(
+                document,
+                new MouseEvent('mousedown', {
+                  bubbles: true,
+                  cancelable: true,
+                })
+              )
+            })
+
+            it('should not show the sub nav', () => {
+              return waitFor(() => {
+                expect(wrapper.queryByText('Sub-nav-item 1')).not.toBeVisible()
+                expect(wrapper.queryByText('Sub-nav-item 2')).not.toBeVisible()
+              })
+            })
+          })
+        })
+      })
+    })
+  })
+
+  describe('when composed with arbitrary props', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper data-arbitrary="arbitrary-wrapper">
+          <Sidebar
+            data-arbitrary="arbitrary-sidebar"
+            notifications={notifications}
+          >
             <SidebarNav data-arbitrary="arbitrary-nav">
               <SidebarNavItem
                 data-arbitrary="arbitrary-nav-item"
-                Image={House}
-                link={<Link href="/">Home</Link>}
-              />
-              <SidebarNavItem
-                Image={Graph}
-                link={<Link href="/stats">Stats</Link>}
-                isActive
-              />
-              <SidebarNavItem
-                Image={Tools}
-                link={<Link href="/tools">Tools</Link>}
-              />
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              >
+                <SidebarNavItem
+                  link={<Link href="/sub-nav-item-1">Sub-nav-item 1</Link>}
+                />
+                <SidebarNavItem
+                  link={<Link href="/sub-nav-item-2">Sub-nav-item 2</Link>}
+                />
+              </SidebarNavItem>
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
             </SidebarNav>
-          }
-          notifications={
-            <Notifications
-              data-arbitrary="arbitrary-notifications"
-              link={<Link href="notifications" />}
-            >
-              <Notification
-                data-arbitrary="arbitrary-notification"
-                link={<Link href="notifications/1" />}
-                name="Thomas Stephens"
-                action="added a new comment to your"
-                on="review"
-                when={new Date('2019-11-05T14:25:02.178Z')}
-                description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
-              />
-              <Notification
-                link={<Link href="notifications/2" />}
-                name="Thomas Stephens"
-                action="added a new comment to your"
-                on="review"
-                when={new Date('2019-11-01T14:25:02.178Z')}
-                description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
-              />
-            </Notifications>
-          }
-          user={
-            <SidebarUser
-              data-arbitrary="arbitrary-user"
-              initials="XT"
-              link={<Link href="/user-profile" />}
-            />
-          }
-        />
+          </Sidebar>
+          <main>Hello, World!</main>
+        </SidebarWrapper>
+      )
+    })
+
+    it('should spread arbitrary props on the sidebar wrapper', () => {
+      expect(wrapper.getByTestId('sidebar-wrapper')).toHaveAttribute(
+        'data-arbitrary',
+        'arbitrary-wrapper'
       )
     })
 
@@ -98,241 +632,17 @@ describe('Sidebar', () => {
       )
     })
 
-    it('should spread arbitrary props on the nav', () => {
+    it('should spread arbitrary props on the sidebar nav', () => {
       expect(wrapper.getByTestId('sidebar-nav')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary-nav'
       )
     })
 
-    it('should spread arbitrary props on the nav item', () => {
+    it('should spread arbitrary props on the sidebar nav item', () => {
       expect(wrapper.getAllByTestId('sidebar-nav-item')[0]).toHaveAttribute(
         'data-arbitrary',
         'arbitrary-nav-item'
-      )
-    })
-
-    it('should spread arbitrary props on the user', () => {
-      expect(wrapper.getByTestId('sidebar-user')).toHaveAttribute(
-        'data-arbitrary',
-        'arbitrary-user'
-      )
-    })
-
-    it('should set the `aria-hidden` attribute for each nav item image', () => {
-      const images = wrapper.getAllByTestId('sidebar-nav-item-image')
-
-      images.forEach((image) => {
-        expect(image).toHaveAttribute('aria-hidden', 'true')
-      })
-    })
-
-    it('should set the `aria-expanded` attribute on the notification button to `false`', () => {
-      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
-        'aria-expanded',
-        'false'
-      )
-    })
-
-    it('should set the `aria-label` attribute on the notification button to `Show notifications`', () => {
-      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
-        'aria-label',
-        'Show notifications'
-      )
-    })
-
-    it('should set the `aria-haspopup` attribute on the notification button to `true`', () => {
-      expect(wrapper.queryByTestId('notification-button')).toHaveAttribute(
-        'aria-haspopup',
-        'true'
-      )
-    })
-
-    it('should render the user', () => {
-      expect(wrapper.getByTestId('sidebar-user')).toBeInTheDocument()
-    })
-
-    describe('when the user opens the notifications', () => {
-      beforeEach(() => {
-        wrapper.queryByTestId('notification-button').click()
-      })
-
-      it('should maintain static sheet ID', () => {
-        expect(wrapper.getByTestId('notification-button')).toHaveAttribute(
-          'aria-owns',
-          'sidebar-notifications'
-        )
-        expect(wrapper.getByTestId('notifications-sheet')).toHaveAttribute(
-          'id',
-          'sidebar-notifications'
-        )
-      })
-
-      it('should spread arbitrary props on the notifications', () => {
-        expect(wrapper.getByTestId('notifications-sheet')).toHaveAttribute(
-          'data-arbitrary',
-          'arbitrary-notifications'
-        )
-      })
-
-      it('should spread arbitrary props on the notifications item', () => {
-        expect(wrapper.getAllByTestId('notification')[0]).toHaveAttribute(
-          'data-arbitrary',
-          'arbitrary-notification'
-        )
-      })
-    })
-  })
-
-  describe('when the mouse enters and leaves the nav', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <Sidebar
-          nav={
-            <SidebarNav>
-              <SidebarNavItem link={<Link href="/">Home</Link>} />
-              <SidebarNavItem
-                link={<Link href="/stats">Stats</Link>}
-                isActive
-              />
-              <SidebarNavItem link={<Link href="/tools">Tools</Link>} />
-            </SidebarNav>
-          }
-        />
-      )
-    })
-
-    it('should not have the `is-open` class', () => {
-      expect(wrapper.getByTestId('sidebar').classList).not.toContain('is-open')
-    })
-
-    describe('when the mouse pointer is moved over the nav', () => {
-      beforeEach(() => {
-        fireEvent.mouseOver(wrapper.getByTestId('sidebar-nav'))
-      })
-
-      it('should have the `is-open` class', () => {
-        expect(wrapper.getByTestId('sidebar').classList).toContain('is-open')
-      })
-
-      describe('when the mouse pointer leaves the nav', () => {
-        beforeEach(() => {
-          fireEvent.mouseLeave(wrapper.getByTestId('sidebar-nav'))
-        })
-
-        it('should not have the `is-open` class', () => {
-          expect(wrapper.getByTestId('sidebar').classList).not.toContain(
-            'is-open'
-          )
-        })
-      })
-    })
-  })
-
-  describe('when the mouse enters the nav and an item is clicked', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <Sidebar
-          nav={
-            <SidebarNav>
-              <SidebarNavItem link={<Link href="/">Home</Link>} />
-            </SidebarNav>
-          }
-        />
-      )
-    })
-
-    it('should not have the `is-open` class', () => {
-      expect(wrapper.getByTestId('sidebar').classList).not.toContain('is-open')
-    })
-
-    describe('when the mouse pointer is moved over the nav', () => {
-      beforeEach(() => {
-        fireEvent.mouseOver(wrapper.getByTestId('sidebar-nav'))
-      })
-
-      it('should have the `is-open` class', () => {
-        expect(wrapper.getByTestId('sidebar').classList).toContain('is-open')
-      })
-
-      describe('when an item is clicked', () => {
-        beforeEach(() => {
-          wrapper.getByTestId('sidebar-nav-item').click()
-        })
-
-        it('should not have the `is-open` class', () => {
-          expect(wrapper.getByTestId('sidebar').classList).not.toContain(
-            'is-open'
-          )
-        })
-      })
-    })
-  })
-
-  describe('when the nav is focused and then loses focus', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <Sidebar
-          nav={
-            <SidebarNav>
-              <SidebarNavItem link={<Link href="/">Home</Link>} />
-            </SidebarNav>
-          }
-        />
-      )
-    })
-
-    it('should not have the `is-open` class', () => {
-      expect(wrapper.getByTestId('sidebar').classList).not.toContain('is-open')
-    })
-
-    describe('when the nav is focused', () => {
-      beforeEach(() => {
-        fireEvent.focus(wrapper.getByTestId('sidebar-nav'))
-      })
-
-      it('should have the `is-open` class', () => {
-        expect(wrapper.getByTestId('sidebar').classList).toContain('is-open')
-      })
-
-      describe('when the nav loses focus', () => {
-        beforeEach(() => {
-          fireEvent.blur(wrapper.getByTestId('sidebar-nav'))
-        })
-
-        it('should not have the `is-open` class', () => {
-          expect(wrapper.getByTestId('sidebar').classList).not.toContain(
-            'is-open'
-          )
-        })
-      })
-    })
-  })
-
-  describe('when specifying `onClick` of a nav item', () => {
-    let consoleWarnSpy: jest.SpyInstance
-
-    beforeEach(() => {
-      consoleWarnSpy = jest.spyOn(global.console, 'warn')
-
-      wrapper = render(
-        <Sidebar
-          nav={
-            <SidebarNav>
-              <SidebarNavItem
-                link={<Link href="/">Home</Link>}
-                onClick={() => undefined}
-              />
-            </SidebarNav>
-          }
-        />
-      )
-    })
-
-    it('should warn the consumer `onClick` will be overwritten', () => {
-      expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
-      expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - RNDS - Prop `onClick` on `SidebarNavItem` will be overwritten'
       )
     })
   })

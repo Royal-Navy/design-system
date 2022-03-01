@@ -1,88 +1,111 @@
-import React from 'react'
-import classNames from 'classnames'
+import React, { useRef } from 'react'
+import { Transition } from 'react-transition-group'
 
-import { NotificationsProps } from '../NotificationPanel'
-import { SidebarNavProps, SidebarUserProps } from './index'
-import { Sheet } from '../Sheet/Sheet'
-import { SheetButton } from '../Sheet/SheetButton'
-import { Bell } from '../../../icons'
-import { useOpenClose } from '../../../hooks'
-import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
+import { SidebarHandle } from './SidebarHandle'
+import { SidebarUserProps } from './SidebarUser'
+import { SidebarNotifications } from './SidebarNotifications'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
+import { SidebarContext, SidebarProvider } from './context'
+import { NotificationsProps } from '../NotificationPanel'
+import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
+import { StyledSidebar } from './partials/StyledSidebar'
+import { StyledHead } from './partials/StyledHead'
+import { StyledHeadIcon } from './partials/StyledHeadIcon'
+import { StyledHeadTitle } from './partials/StyledHeadTitle'
 
 export interface SidebarProps extends ComponentWithClass {
+  /**
+   * Optional icon to display at the top of the component (JSX).
+   */
+  icon?: React.ReactNode
+  /**
+   * Optional text title to display at the top of the component.
+   */
+  title?: string
+  /**
+   * Optional JSX to render a user menu.
+   */
+  user?: React.ReactElement<SidebarUserProps>
   /**
    * Toggle whether there are unread notifications.
    */
   hasUnreadNotification?: boolean
   /**
-   * Optional JSX to render the primary navigation.
-   */
-  nav?: React.ReactElement<SidebarNavProps>
-  /**
    * Optional JSX to render a collection of notifications.
    */
   notifications?: React.ReactElement<NotificationsProps>
   /**
-   * Optional JSX to render a user menu.
+   * Initial `isOpen` state on first render.
    */
-  user?: React.ReactElement<SidebarUserProps>
+  initialIsOpen?: boolean
 }
 
-/**
- * @deprecated
- */
 export const Sidebar: React.FC<SidebarProps> = ({
-  nav,
-  notifications,
-  hasUnreadNotification,
+  icon,
+  title,
+  children,
   user,
-  className,
+  hasUnreadNotification,
+  notifications,
+  initialIsOpen = false,
   ...rest
 }) => {
-  const { open, setOpen } = useOpenClose(false)
-  const classes = classNames(
-    'rn-sidebar',
-    {
-      'is-open': open,
-    },
-    className
-  )
+  const nodeRef = useRef(null)
 
   return (
-    <div className={classes} data-testid="sidebar" {...rest}>
-      {nav &&
-        React.cloneElement(nav, {
-          ...nav.props,
-          onBlur: () => setOpen(false),
-          onFocus: () => setOpen(true),
-          onItemClick: () => setOpen(false),
-          onMouseOut: () => setOpen(false),
-          onMouseOver: () => setOpen(true),
-        })}
-
-      <div className="rn-sidebar__bottom">
-        {notifications && (
-          <Sheet
-            id="sidebar-notifications"
-            button={
-              <SheetButton
-                aria-label="Show notifications"
-                data-testid="notification-button"
-                icon={<Bell className="rn-sheet__icon" />}
-              >
-                {hasUnreadNotification && (
-                  <StyledNotRead data-testid="not-read" />
-                )}
-              </SheetButton>
-            }
+    <SidebarProvider initialIsOpen={initialIsOpen}>
+      <SidebarContext.Consumer>
+        {({ isOpen, hasMouseOver, setHasMouseOver }) => (
+          <StyledSidebar
+            data-testid="sidebar"
+            isOpen={isOpen}
+            onMouseEnter={(_) => setHasMouseOver(true)}
+            onMouseLeave={(_) => setHasMouseOver(false)}
+            {...rest}
           >
-            {notifications}
-          </Sheet>
+            <Transition
+              nodeRef={nodeRef}
+              in={hasMouseOver}
+              timeout={0}
+              unmountOnExit
+            >
+              {(state) => (
+                <SidebarHandle
+                  ref={nodeRef}
+                  style={{ ...TRANSITION_STYLES[state] }}
+                />
+              )}
+            </Transition>
+            {title && (
+              <StyledHead data-testid="sidebar-head">
+                {icon && <StyledHeadIcon>{icon}</StyledHeadIcon>}
+                <Transition
+                  in={isOpen}
+                  timeout={TRANSITION_TIMEOUT}
+                  unmountOnExit
+                >
+                  {(state) => (
+                    <StyledHeadTitle style={{ ...TRANSITION_STYLES[state] }}>
+                      {title}
+                    </StyledHeadTitle>
+                  )}
+                </Transition>
+              </StyledHead>
+            )}
+            {children}
+
+            {notifications && (
+              <SidebarNotifications
+                notifications={notifications}
+                hasUnreadNotification={hasUnreadNotification}
+              />
+            )}
+
+            {user}
+          </StyledSidebar>
         )}
-        {user}
-      </div>
-    </div>
+      </SidebarContext.Consumer>
+    </SidebarProvider>
   )
 }
 

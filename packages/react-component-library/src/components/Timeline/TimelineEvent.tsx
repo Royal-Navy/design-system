@@ -27,15 +27,15 @@ export interface TimelineEventWithRenderContentProps
   /**
    * Supply a custom presentation layer.
    */
-  render: (
-    startDate: Date,
-    endDate: Date,
-    widthPx: string,
-    offsetPx: string,
-    maxWidthPx: string,
-    startsBeforeStart: boolean,
+  render: (props: {
+    startDate: Date
+    endDate: Date
+    widthPx: string
+    offsetPx: string
+    maxWidthPx: string
+    startsBeforeStart: boolean
     endsAfterEnd: boolean
-  ) => React.ReactNode
+  }) => React.ReactNode
   /**
    * The start date of the event.
    */
@@ -79,7 +79,7 @@ function renderDefault({
   startsBeforeStart,
   endsAfterEnd,
 }: {
-  barColor: string
+  barColor?: string
   children: React.ReactNode
   offsetPx: string
   startDate: Date
@@ -137,15 +137,15 @@ export const TimelineEvent: React.FC<TimelineEventProps> = ({
   }
 
   const event = render
-    ? render(
+    ? render({
         startDate,
         endDate,
         widthPx,
         offsetPx,
         maxWidthPx,
         startsBeforeStart,
-        endsAfterEnd
-      )
+        endsAfterEnd,
+      })
     : renderDefault({
         barColor,
         children,

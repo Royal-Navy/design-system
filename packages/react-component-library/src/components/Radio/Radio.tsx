@@ -1,13 +1,19 @@
-import React, { forwardRef } from 'react'
+import React, { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import mergeRefs from 'react-merge-refs'
 
+import { RADIO_VARIANT } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
-import { StyledRadio } from './partials/StyledRadio'
-import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
-import { StyledLabel } from './partials/StyledLabel'
-import { StyledInput } from './partials/StyledInput'
 import { StyledCheckmark } from './partials/StyledCheckmark'
+import { StyledDescription } from './partials/StyledDescription'
+import { StyledInput } from './partials/StyledInput'
+import { StyledLabel } from './partials/StyledLabel'
+import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
+import { StyledRadio } from './partials/StyledRadio'
+import { StyledRadioWrapper } from './partials/StyledRadioWrapper'
+
+type RadioVariantType = typeof RADIO_VARIANT[keyof typeof RADIO_VARIANT]
 
 export interface RadioProps extends ComponentWithClass, InputValidationProps {
   /**
@@ -15,10 +21,13 @@ export interface RadioProps extends ComponentWithClass, InputValidationProps {
    */
   id?: string
   /**
-   * Toggles whether or not the component is marked as checked.
-   * @deprecated
+   * Toggles whether or not the component is marked as checked by default.
    */
-  isChecked?: boolean
+  defaultChecked?: boolean
+  /**
+   * Optional description to display below the label.
+   */
+  description?: React.ReactNode
   /**
    * Toggles whether the component is disabled or not (preventing user interaction).
    */
@@ -43,54 +52,89 @@ export interface RadioProps extends ComponentWithClass, InputValidationProps {
    * Optional HTML `value` attribute associated with the component.
    */
   value?: string
+  /**
+   * Optional variant to set container visibility.
+   */
+  variant?: RadioVariantType
 }
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>(
+export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   (
     {
       className = '',
       id = uuidv4(),
-      isChecked,
+      defaultChecked,
+      description,
       isDisabled = false,
+      isInvalid,
       label,
       name,
       onChange,
       onBlur,
       value,
-      isInvalid,
+      variant = RADIO_VARIANT.DEFAULT,
       ...rest
     },
     ref
   ) => {
+    const localRef = useRef<HTMLInputElement>(null)
+
+    const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+      if (event.target !== localRef.current) {
+        localRef.current?.click()
+      }
+    }
+
+    const handleKeyUp = (_: React.KeyboardEvent) => {
+      localRef.current?.focus()
+    }
+
+    const hasContainer = variant !== RADIO_VARIANT.NO_CONTAINER
+
     return (
-      <StyledRadio
-        className={className}
-        data-testid="container"
-        role="radio"
-        aria-checked={isChecked}
-        $isDisabled={isDisabled}
-        $isInvalid={isInvalid}
-      >
-        <StyledOuterWrapper>
-          <StyledLabel htmlFor={id} data-testid="label">
-            <StyledInput
-              ref={ref}
-              defaultChecked={isChecked}
-              id={id}
-              type="radio"
-              name={name}
-              value={value}
-              onChange={onChange}
-              onBlur={onBlur}
-              disabled={isDisabled}
-              data-testid="radio"
-              {...rest}
-            />
-            <StyledCheckmark />
-            {label}
-          </StyledLabel>
-        </StyledOuterWrapper>
-      </StyledRadio>
+      <StyledRadioWrapper>
+        <StyledRadio
+          className={className}
+          role="radio"
+          aria-checked={defaultChecked}
+          $isDisabled={isDisabled}
+          $hasContainer={hasContainer}
+          $isInvalid={isInvalid}
+          $isChecked={defaultChecked}
+          onClick={handleClick}
+          onKeyUp={handleKeyUp}
+          data-testid="radio"
+        >
+          <StyledOuterWrapper $hasContainer={hasContainer}>
+            <StyledLabel
+              $hasContainer={hasContainer}
+              htmlFor={id}
+              data-testid="radio-label"
+            >
+              <StyledInput
+                ref={mergeRefs([localRef, ref])}
+                defaultChecked={defaultChecked}
+                id={id}
+                type="radio"
+                name={name}
+                value={value}
+                onChange={onChange}
+                onBlur={onBlur}
+                disabled={isDisabled}
+                data-testid="radio-input"
+                {...rest}
+              />
+              <StyledCheckmark $hasContainer={hasContainer} />
+              {label}
+              {description && (
+                <StyledDescription data-testid="checkbox-description">
+                  {description}
+                </StyledDescription>
+              )}
+            </StyledLabel>
+          </StyledOuterWrapper>
+        </StyledRadio>
+      </StyledRadioWrapper>
     )
   }
 )

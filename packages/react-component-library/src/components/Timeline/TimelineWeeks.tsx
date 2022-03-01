@@ -14,15 +14,13 @@ export interface TimelineWeeksWithRenderContentProps
   /**
    * Supply a custom presentation layer.
    */
-  render: (
-    index: number,
-    isOddNumber: boolean,
-    offsetPx: string,
-    widthPx: string,
-    dayWidth: number,
-    daysTotal: number,
+  render: (props: {
+    index: number
+    isOddNumber: boolean
+    offsetPx: string
+    widthPx: string
     startDate: Date
-  ) => React.ReactElement
+  }) => React.ReactElement
 }
 
 export interface TimelineWeeksWithChildrenProps extends ComponentWithClass {
@@ -33,48 +31,51 @@ export type TimelineWeeksProps =
   | TimelineWeeksWithRenderContentProps
   | TimelineWeeksWithChildrenProps
 
-export const TimelineWeeks: React.FC<TimelineWeeksProps> = memo(({
-  render,
-  ...rest
-}) => {
-  const {
-    state: { currentScaleOption, days, weeks },
-  } = useContext(TimelineContext)
+export const TimelineWeeks: React.FC<TimelineWeeksProps> = memo(
+  ({ render, ...rest }) => {
+    const {
+      state: { currentScaleOption, days, weeks },
+    } = useContext(TimelineContext)
 
-  const isBelowThreshold =
-    currentScaleOption.widths.day * 7 < DISPLAY_THRESHOLDS.WEEK
+    if (!currentScaleOption) {
+      return null
+    }
 
-  const rowChildren = isBelowThreshold ? (
-    <TimelineColumnHeader
-      aria-label="No weeks"
-      data-testid="timeline-no-weeks"
-    />
-  ) : (
-    <StyledWeeks>
-      {weeks.map(({ startDate }, index) => (
-        <TimelineWeek
-          days={days}
-          dayWidth={currentScaleOption.widths.day}
-          index={index}
-          key={getKey('timeline-week', startDate.toString())}
-          render={render}
-          startDate={startDate}
-        />
-      ))}
-    </StyledWeeks>
-  )
+    const isBelowThreshold =
+      currentScaleOption.widths.day * 7 < DISPLAY_THRESHOLDS.WEEK
 
-  return (
-    <TimelineHeaderRow
-      className="timeline__weeks"
-      isShort
-      name="Weeks"
-      data-testid="timeline-weeks"
-      {...rest}
-    >
-      {rowChildren}
-    </TimelineHeaderRow>
-  )
-})
+    const rowChildren = isBelowThreshold ? (
+      <TimelineColumnHeader
+        aria-label="No weeks"
+        data-testid="timeline-no-weeks"
+      />
+    ) : (
+      <StyledWeeks>
+        {weeks.map(({ startDate }, index) => (
+          <TimelineWeek
+            days={days}
+            dayWidth={currentScaleOption.widths.day}
+            index={index}
+            key={getKey('timeline-week', startDate.toString())}
+            render={render}
+            startDate={startDate}
+          />
+        ))}
+      </StyledWeeks>
+    )
+
+    return (
+      <TimelineHeaderRow
+        className="timeline__weeks"
+        isShort
+        name="Weeks"
+        data-testid="timeline-weeks"
+        {...rest}
+      >
+        {rowChildren}
+      </TimelineHeaderRow>
+    )
+  }
+)
 
 TimelineWeeks.displayName = 'TimelineWeeks'

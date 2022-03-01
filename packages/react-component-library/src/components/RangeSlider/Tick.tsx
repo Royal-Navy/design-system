@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { SliderItem } from 'react-compound-slider'
 
 import { useThresholdColor } from './useThresholdColor'
@@ -9,35 +9,68 @@ export interface TickProps {
   tick: SliderItem
   count: number
   hasLabels?: boolean
+  hasMarkers?: boolean
   values: ReadonlyArray<number>
   domain: ReadonlyArray<number>
   isReversed?: boolean
   thresholds?: number[]
+  tracksLeft?: boolean
+  tracksRight?: boolean
 }
 
-function isActive(values: ReadonlyArray<number>, tickValue: number): boolean {
-  return values.some((item) => item >= tickValue)
+function isActive(
+  values: ReadonlyArray<number>,
+  tickValue: number,
+  tracksLeft: boolean,
+  tracksRight: boolean
+): boolean {
+  if (!tracksLeft && !tracksRight) {
+    return tickValue >= values[0] && tickValue <= values[1]
+  }
+
+  if (tracksLeft && tracksRight) {
+    return true
+  }
+
+  return values.some((item) => tickValue <= item)
 }
 
 export const Tick: React.FC<TickProps> = ({
   tick,
   count,
   hasLabels,
+  hasMarkers,
   values,
   domain,
   isReversed,
   thresholds,
+  tracksLeft = false,
+  tracksRight = false,
 }) => {
-  const percent: number = isReversed ? 100 - tick.percent : tick.percent // invert if reversed
-  const tickValue: number = (domain[1] / 100) * percent
+  const percent: number = useMemo(
+    () => (isReversed ? 100 - tick.percent : tick.percent),
+    [tick.percent, isReversed]
+  ) // invert if reversed
+
+  const tickValue: number = useMemo(
+    () => (domain[1] / 100) * percent,
+    [domain, percent]
+  )
+
+  const thresholdColor = useThresholdColor(percent, thresholds)
+
+  const showMarker = percent === 0 || percent === 100 || hasMarkers
 
   return (
     <div data-testid="rangeslider-tick">
-      <StyledMarker
-        $left={`${tick.percent}%`}
-        $isActive={isActive(values, tickValue)}
-        $thresholdColor={useThresholdColor(percent, thresholds)}
-      />
+      {showMarker && (
+        <StyledMarker
+          $left={`${tick.percent}%`}
+          $isActive={isActive(values, tickValue, tracksLeft, tracksRight)}
+          $thresholdColor={thresholdColor}
+          data-testid="rangeslider-marker"
+        />
+      )}
       {hasLabels && (
         <StyledLabel
           $marginLeft={`${-(100 / count) / 2}%`}

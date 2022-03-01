@@ -76,23 +76,6 @@ jobs:
           node ./scripts/commitlint ${{ github.event.pull_request._links.html.href }}
           node ./scripts/check-fixup ${{ github.event.pull_request._links.html.href }}
 
-  Lint_css-framework:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Git clone repository
-        uses: actions/checkout@v2
-
-      - name: Cache Node modules
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Get dependencies & run lint
-        run: |
-          yarn install --frozen-lockfile
-          yarn --cwd packages/css-framework --silent stylelint --formatter verbose ./index.scss
-
   Lint_react-component-library:
     runs-on: ubuntu-latest
     steps:

@@ -1,11 +1,7 @@
-import React, { createContext } from 'react'
+import React, { createContext, useMemo } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
-import {
-  selectors,
-  BreakpointSize,
-  lightTheme,
-} from '@defencedigital/design-tokens'
+import { selectors, lightTheme } from '@defencedigital/design-tokens'
 
 export interface GlobalStyleContextDefaults {
   theme?: Record<string, any>
@@ -16,9 +12,7 @@ export interface GlobalStyleProviderProps {
   theme?: Record<string, any>
 }
 
-const breakpoints: BreakpointSize[] = ['s', 'xs', 'm', 'l', 'xl', 'xxl']
-
-const { mq, breakpoint, fontSize } = selectors
+const { fontSize, color } = selectors
 
 /**
  * Globally setting `border-box`
@@ -38,19 +32,26 @@ const BoxSizing = createGlobalStyle`
 `
 
 /**
+ * Globally setting anchor styles
+ */
+const Hyperlinks = createGlobalStyle`
+  a {
+    color: ${color('action', '500')};
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+`
+
+/**
  * Generate base font size
  */
 const Fonts = createGlobalStyle`
   html {
     font-family: "lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
-    ${breakpoints
-      .map((bp) => {
-        return mq({ gte: bp })`
-          font-size: ${breakpoint(bp).baseFontSize};
-        `
-      })
-      .join('\n\n')}
+    font-size: ${fontSize('m')};
   }
 
   h1,
@@ -107,10 +108,18 @@ export const GlobalStyleProvider: React.FC<GlobalStyleProviderProps> = ({
   children,
   theme = lightTheme,
 }) => {
+  const contextValue = useMemo(
+    () => ({
+      theme,
+    }),
+    [theme]
+  )
+
   return (
-    <GlobalStyleContext.Provider value={{ theme }}>
+    <GlobalStyleContext.Provider value={contextValue}>
       <Normalize />
       <BoxSizing />
+      <Hyperlinks />
       <Fonts />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </GlobalStyleContext.Provider>

@@ -1,16 +1,10 @@
 import React from 'react'
 
 import { ButtonGroupItemProps } from '.'
-import { BUTTON_SIZE } from '../Button'
+import { COMPONENT_SIZE, ComponentSizeType } from '../Forms'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import logger from '../../utils/logger'
 import { StyledButtonGroup } from './partials/StyledButtonGroup'
-
-export type ButtonGroupSizeType =
-  | typeof BUTTON_SIZE.LARGE
-  | typeof BUTTON_SIZE.REGULAR
-  | typeof BUTTON_SIZE.SMALL
-  | typeof BUTTON_SIZE.XLARGE
 
 export interface ButtonGroupProps extends ComponentWithClass {
   /**
@@ -20,12 +14,12 @@ export interface ButtonGroupProps extends ComponentWithClass {
   /**
    * Size of the component.
    */
-  size?: ButtonGroupSizeType
+  size?: ComponentSizeType
 }
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   children,
-  size = BUTTON_SIZE.REGULAR,
+  size = COMPONENT_SIZE.FORMS,
   ...rest
 }) => {
   const mappedChildren = React.Children.map(

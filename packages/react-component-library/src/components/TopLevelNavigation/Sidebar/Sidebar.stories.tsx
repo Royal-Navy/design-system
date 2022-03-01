@@ -1,10 +1,39 @@
 import React from 'react'
+import styled from 'styled-components'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Graph, House, Tools } from '../../../icons'
+import {
+  IconHome,
+  IconLocalShipping,
+  IconVerifiedUser,
+  IconMessage,
+  IconFeedback,
+  IconSettings,
+  IconGrain,
+} from '@defencedigital/icon-library'
+
+import {
+  Sidebar,
+  SidebarNav,
+  SidebarNavItem,
+  SidebarUser,
+  SidebarWrapper,
+} from '.'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
-import { Sidebar, SidebarNav, SidebarNavItem, SidebarUser } from './index'
+
+const disableColorContrastRule = {
+  a11y: {
+    config: {
+      rules: [
+        {
+          id: 'color-contrast',
+          enabled: false,
+        },
+      ],
+    },
+  },
+}
 
 export default {
   component: Sidebar,
@@ -12,66 +41,321 @@ export default {
     SidebarNav,
     SidebarNavItem,
     SidebarUser,
+    SidebarWrapper,
     Notifications,
     Notification,
   },
-  title: 'Sidebar (Deprecated)',
+  title: 'Sidebar',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     docs: {
       description: {
         component:
-          'This API has been marked as deprecated. Consider using the new experimental Sidebar implementation.',
+          'This API is experimental and may change outside of the typical semver release cycle.',
       },
     },
     layout: 'fullscreen',
   },
 } as ComponentMeta<typeof Sidebar>
 
+const StyledSidebar = styled(Sidebar)`
+  max-height: 30rem;
+`
+
 export const Default: ComponentStory<typeof Sidebar> = (props) => {
-  const nav = (
+  const sidebarNav = (
     <SidebarNav>
-      <SidebarNavItem Image={House} link={<Link href="#">Home</Link>} />
       <SidebarNavItem
-        Image={Graph}
-        link={<Link href="#">Stats</Link>}
-        isActive
+        icon={<IconHome />}
+        link={<Link href="#">Dashboard</Link>}
       />
-      <SidebarNavItem Image={Tools} link={<Link href="#">Tools</Link>} />
-    </SidebarNav>
-  )
-
-  return <Sidebar {...props} className="rn-sidebar--storybook" nav={nav} />
-}
-
-Default.args = {}
-
-export const WithUser: ComponentStory<typeof Sidebar> = (props) => {
-  const user = <SidebarUser initials="XT" link={<Link href="#" />} />
-
-  const nav = (
-    <SidebarNav>
-      <SidebarNavItem Image={House} link={<Link href="#">Home</Link>} />
       <SidebarNavItem
-        Image={Graph}
-        link={<Link href="#">Stats</Link>}
-        isActive
+        icon={<IconVerifiedUser />}
+        link={<Link href="#">Reports</Link>}
       />
-      <SidebarNavItem Image={Tools} link={<Link href="#">Tools</Link>} />
+      <SidebarNavItem
+        icon={<IconLocalShipping />}
+        link={<Link href="#">Platforms</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconFeedback />}
+        link={<Link href="#">Data&nbsp;Feed</Link>}
+      />
+      <SidebarNavItem
+        isActive
+        icon={<IconMessage />}
+        link={<Link href="#">Messages</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconSettings />}
+        link={<Link href="#">Settings</Link>}
+      />
     </SidebarNav>
   )
 
   return (
-    <Sidebar
-      {...props}
-      className="rn-sidebar--storybook"
-      nav={nav}
-      user={user}
-    />
+    <SidebarWrapper>
+      <div style={{ maxHeight: '30rem' }}>
+        <StyledSidebar {...props}>{sidebarNav}</StyledSidebar>
+      </div>
+      <main
+        style={{
+          padding: '2rem',
+          backgroundColor: '#c9c9c9',
+          width: '100%',
+        }}
+      >
+        Hello, World!
+      </main>
+    </SidebarWrapper>
   )
 }
 
-WithUser.storyName = 'With user'
+Default.args = {}
+
+export const InitiallyOpen: ComponentStory<typeof Sidebar> = (props) => {
+  const sidebarNav = (
+    <SidebarNav>
+      <SidebarNavItem
+        icon={<IconHome />}
+        link={<Link href="#">Dashboard</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconVerifiedUser />}
+        link={<Link href="#">Reports</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconLocalShipping />}
+        link={<Link href="#">Platforms</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconFeedback />}
+        link={<Link href="#">Data&nbsp;Feed</Link>}
+      />
+      <SidebarNavItem
+        isActive
+        icon={<IconMessage />}
+        link={<Link href="#">Messages</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconSettings />}
+        link={<Link href="#">Settings</Link>}
+      />
+    </SidebarNav>
+  )
+
+  return (
+    <SidebarWrapper>
+      <div style={{ maxHeight: '30rem' }}>
+        <StyledSidebar {...props} initialIsOpen>
+          {sidebarNav}
+        </StyledSidebar>
+      </div>
+      <main
+        style={{
+          padding: '2rem',
+          backgroundColor: '#c9c9c9',
+          width: '100%',
+        }}
+      >
+        Hello, World!
+      </main>
+    </SidebarWrapper>
+  )
+}
+
+InitiallyOpen.args = {}
+
+InitiallyOpen.parameters = disableColorContrastRule
+
+InitiallyOpen.storyName = 'Initially open'
+
+export const WithSubNavigation: ComponentStory<typeof Sidebar> = (props) => {
+  const sidebarNavWithSub = (
+    <SidebarNav>
+      <SidebarNavItem
+        icon={<IconHome />}
+        link={<Link href="#">Dashboard</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconVerifiedUser />}
+        link={<Link href="#">Reports</Link>}
+      >
+        <SidebarNav>
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 1</Link>} />
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 2</Link>} />
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 3</Link>} />
+        </SidebarNav>
+      </SidebarNavItem>
+      <SidebarNavItem
+        icon={<IconLocalShipping />}
+        link={<Link href="#">Platforms</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconFeedback />}
+        link={<Link href="#">Data&nbsp;Feed</Link>}
+      >
+        <SidebarNav>
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 1</Link>} />
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 2</Link>} />
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 3</Link>} />
+        </SidebarNav>
+      </SidebarNavItem>
+      <SidebarNavItem
+        isActive
+        icon={<IconMessage />}
+        link={<Link href="#">Messages</Link>}
+      >
+        <SidebarNav>
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 1</Link>} />
+          <SidebarNavItem link={<Link href="#">Sub-nav-item 2</Link>} />
+          <SidebarNavItem
+            isActive
+            link={<Link href="#">Sub-nav-item 3</Link>}
+          />
+        </SidebarNav>
+      </SidebarNavItem>
+      <SidebarNavItem
+        icon={<IconSettings />}
+        link={<Link href="#">Settings</Link>}
+      />
+    </SidebarNav>
+  )
+
+  return (
+    <SidebarWrapper>
+      <div style={{ maxHeight: '30rem' }}>
+        <StyledSidebar {...props}>{sidebarNavWithSub}</StyledSidebar>
+      </div>
+      <main
+        style={{
+          padding: '2rem',
+          backgroundColor: '#c9c9c9',
+          width: '100%',
+        }}
+      >
+        Hello, World!
+      </main>
+    </SidebarWrapper>
+  )
+}
+
+WithSubNavigation.storyName = 'With sub-navigation'
+
+export const WithHeader: ComponentStory<typeof Sidebar> = (props) => {
+  const sidebarNav = (
+    <SidebarNav>
+      <SidebarNavItem
+        icon={<IconHome />}
+        link={<Link href="#">Dashboard</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconVerifiedUser />}
+        link={<Link href="#">Reports</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconLocalShipping />}
+        link={<Link href="#">Platforms</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconFeedback />}
+        link={<Link href="#">Data&nbsp;Feed</Link>}
+      />
+      <SidebarNavItem
+        isActive
+        icon={<IconMessage />}
+        link={<Link href="#">Messages</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconSettings />}
+        link={<Link href="#">Settings</Link>}
+      />
+    </SidebarNav>
+  )
+
+  return (
+    <SidebarWrapper>
+      <div style={{ maxHeight: '30rem' }}>
+        <StyledSidebar {...props} icon={<IconGrain />} title="Application Name">
+          {sidebarNav}
+        </StyledSidebar>
+      </div>
+      <main
+        style={{
+          padding: '2rem',
+          backgroundColor: '#c9c9c9',
+          width: '100%',
+        }}
+      >
+        Hello, World!
+      </main>
+    </SidebarWrapper>
+  )
+}
+
+WithHeader.storyName = 'With header'
+
+export const WithUserMenu: ComponentStory<typeof Sidebar> = (props) => {
+  const userWithLinks = (
+    <SidebarUser
+      initials="HN"
+      name="Horatio Nelson"
+      userLink={<Link href="#">Profile</Link>}
+      exitLink={<Link href="#">Logout</Link>}
+    />
+  )
+
+  const sidebarNav = (
+    <SidebarNav>
+      <SidebarNavItem
+        icon={<IconHome />}
+        link={<Link href="#">Dashboard</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconVerifiedUser />}
+        link={<Link href="#">Reports</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconLocalShipping />}
+        link={<Link href="#">Platforms</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconFeedback />}
+        link={<Link href="#">Data&nbsp;Feed</Link>}
+      />
+      <SidebarNavItem
+        isActive
+        icon={<IconMessage />}
+        link={<Link href="#">Messages</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconSettings />}
+        link={<Link href="#">Settings</Link>}
+      />
+    </SidebarNav>
+  )
+
+  return (
+    <SidebarWrapper>
+      <div style={{ maxHeight: '30rem' }}>
+        <StyledSidebar {...props} user={userWithLinks}>
+          {sidebarNav}
+        </StyledSidebar>
+      </div>
+      <main
+        style={{
+          padding: '2rem',
+          backgroundColor: '#c9c9c9',
+          width: '100%',
+        }}
+      >
+        Hello, World!
+      </main>
+    </SidebarWrapper>
+  )
+}
+
+WithUserMenu.storyName = 'With user menu'
 
 export const WithNotifications: ComponentStory<typeof Sidebar> = (props) => {
   const notifications = (
@@ -89,7 +373,7 @@ export const WithNotifications: ComponentStory<typeof Sidebar> = (props) => {
         name="Thomas Stephens"
         action="added a new comment to your"
         on="review"
-        when={new Date('2019-11-05T14:25:02.178Z')}
+        when={new Date('2019-11-01T14:25:02.178Z')}
         description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
       />
       <Notification
@@ -97,32 +381,63 @@ export const WithNotifications: ComponentStory<typeof Sidebar> = (props) => {
         name="Thomas Stephens"
         action="added a new comment to your"
         on="review"
-        when={new Date('2019-11-05T14:25:02.178Z')}
+        when={new Date('2019-11-01T14:25:02.178Z')}
         description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
       />
     </Notifications>
   )
 
-  const nav = (
+  const sidebarNav = (
     <SidebarNav>
-      <SidebarNavItem Image={House} link={<Link href="#">Home</Link>} />
       <SidebarNavItem
-        Image={Graph}
-        link={<Link href="#">Stats</Link>}
-        isActive
+        icon={<IconHome />}
+        link={<Link href="#">Dashboard</Link>}
       />
-      <SidebarNavItem Image={Tools} link={<Link href="#">Tools</Link>} />
+      <SidebarNavItem
+        icon={<IconVerifiedUser />}
+        link={<Link href="#">Reports</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconLocalShipping />}
+        link={<Link href="#">Platforms</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconFeedback />}
+        link={<Link href="#">Data&nbsp;Feed</Link>}
+      />
+      <SidebarNavItem
+        isActive
+        icon={<IconMessage />}
+        link={<Link href="#">Messages</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconSettings />}
+        link={<Link href="#">Settings</Link>}
+      />
     </SidebarNav>
   )
 
   return (
-    <Sidebar
-      {...props}
-      className="rn-sidebar--storybook"
-      hasUnreadNotification
-      nav={nav}
-      notifications={notifications}
-    />
+    <SidebarWrapper>
+      <div style={{ maxHeight: '30rem' }}>
+        <StyledSidebar
+          {...props}
+          notifications={notifications}
+          hasUnreadNotification
+        >
+          {sidebarNav}
+        </StyledSidebar>
+      </div>
+      <main
+        style={{
+          padding: '2rem',
+          backgroundColor: '#c9c9c9',
+          width: '100%',
+        }}
+      >
+        Hello, World!
+      </main>
+    </SidebarWrapper>
   )
 }
 

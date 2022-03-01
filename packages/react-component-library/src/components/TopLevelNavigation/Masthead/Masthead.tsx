@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-import { Bell, Logo as DefaultLogo, Search as SearchIcon } from '../../../icons'
+import { Logo as DefaultLogo } from './Logo'
 import { LinkTypes } from '../../../common/Link'
 import { MastheadUserProps } from './index'
 import { Nav, NavItem } from '../../../common/Nav'
@@ -18,6 +18,8 @@ import { StyledVerticalSeparator } from './partials/StyledVerticalSeparator'
 import { StyledBanner } from './partials/StyledBanner'
 import { SearchBar } from '../SearchBar/SearchBar'
 import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
+import { StyledIconNotifications } from './partials/StyledIconNotifications'
+import { StyledIconSearch } from './partials/StyledIconSearch'
 
 export interface MastheadProps {
   /**
@@ -47,11 +49,9 @@ export interface MastheadProps {
   /**
    * Optional handler invoked when the submit search button is clicked.
    */
-  onSearch?: (term: string) => void
-  /**
-   * Optional placeholder text to display in the search bar.
-   */
-  searchPlaceholder?: string
+  onSearch?:
+    | ((event: React.FormEvent<HTMLFormElement>, term: string) => void)
+    | null
   /**
    * Text title of the application.
    */
@@ -73,7 +73,7 @@ function getServiceName(
     children: (
       <StyledServiceName>
         {Logo &&
-          React.cloneElement(<Logo />, {
+          React.cloneElement(<Logo data-testid="logo" />, {
             role: 'presentation',
           })}
         <StyledTitle $hasLogo={!!Logo} data-testid="masthead-servicename">
@@ -92,7 +92,6 @@ export const Masthead: React.FC<MastheadProps> = ({
   nav,
   notifications,
   onSearch,
-  searchPlaceholder = '',
   title,
   user,
   ...rest
@@ -109,8 +108,8 @@ export const Masthead: React.FC<MastheadProps> = ({
 
   const DisplayLogo = Logo ?? (hasDefaultLogo ? DefaultLogo : null)
 
-  const submitSearch = (term: string) => {
-    onSearch?.(term)
+  const submitSearch = (e: React.FormEvent<HTMLFormElement>, term: string) => {
+    onSearch?.(e, term)
     setShowSearch(false)
   }
 
@@ -133,7 +132,7 @@ export const Masthead: React.FC<MastheadProps> = ({
                 ref={searchButtonRef}
                 data-testid="masthead-search-button"
               >
-                <SearchIcon />
+                <StyledIconSearch />
               </StyledOption>
               {user && (
                 <StyledVerticalSeparator>
@@ -150,7 +149,7 @@ export const Masthead: React.FC<MastheadProps> = ({
                   aria-label="Show notifications"
                   as={SheetButton}
                   data-testid="notification-button"
-                  icon={<Bell />}
+                  icon={<StyledIconNotifications />}
                 >
                   {hasUnreadNotification && (
                     <StyledNotRead data-testid="not-read" />
@@ -176,7 +175,6 @@ export const Masthead: React.FC<MastheadProps> = ({
         <SearchBar
           onSearch={submitSearch}
           searchButton={searchButtonRef}
-          searchPlaceholder={searchPlaceholder}
           setShowSearch={setShowSearch}
           style={{ width: containerWidth }}
         />

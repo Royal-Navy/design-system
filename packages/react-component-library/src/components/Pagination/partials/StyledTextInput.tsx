@@ -1,7 +1,10 @@
 import styled from 'styled-components'
+import { selectors } from '@defencedigital/design-tokens'
 
 import { TextInput } from '../../TextInput'
 import { StyledInput } from '../../TextInput/partials/StyledInput'
+
+const { spacing } = selectors
 
 export const StyledTextInput = styled(TextInput)`
   width: 51px;
@@ -9,5 +12,6 @@ export const StyledTextInput = styled(TextInput)`
 
   ${StyledInput} {
     height: 31px;
+    padding: 0 0 0 ${spacing('6')};
   }
 `

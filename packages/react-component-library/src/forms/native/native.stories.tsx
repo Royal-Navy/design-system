@@ -1,46 +1,31 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React from 'react'
-import { ComponentMeta } from '@storybook/react'
-import styled from 'styled-components'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import { TextInputE } from '../../components/TextInputE'
-import { TextAreaE } from '../../components/TextAreaE'
-import { RadioE } from '../../components/RadioE'
-import {
-  AutocompleteE,
-  AutocompleteEOption,
-} from '../../components/AutocompleteE'
-import { CheckboxE } from '../../components/CheckboxE'
-import { DatePickerE } from '../../components/DatePickerE'
-import { NumberInputE } from '../../components/NumberInputE'
-import { SelectE, SelectEOption } from '../../components/SelectE'
-import { SwitchE, SwitchEOption } from '../../components/SwitchE'
-import { RangeSliderE } from '../../components/RangeSliderE'
-import { ButtonE } from '../../components/ButtonE'
+import { TextInput } from '../../components/TextInput'
+import { TextArea } from '../../components/TextArea'
+import { Radio } from '../../components/Radio'
+import { Autocomplete, AutocompleteOption } from '../../components/Autocomplete'
+import { Checkbox } from '../../components/Checkbox'
+import { DatePicker } from '../../components/DatePicker'
+import { NumberInput } from '../../components/NumberInput'
+import { Select, SelectOption } from '../../components/Select'
+import { Switch, SwitchOption } from '../../components/Switch'
+import { RangeSlider } from '../../components/RangeSlider'
+import { Button } from '../../components/Button'
 import { Fieldset } from '../../components/Fieldset'
-import { useNativeForm } from './useNativeForm'
-
-export interface FormValues {
-  email: string
-  password: string
-  description: string
-  exampleCheckbox: string[]
-  exampleRadio: string[]
-  exampleSwitch: string
-  exampleNumberInput: number | null
-  exampleDatePicker: Date | null
-  exampleSelect: string | null
-  exampleAutocomplete: string | null
-  exampleRangeSlider: readonly [number]
-}
+import { FormErrors, useNativeForm } from './useNativeForm'
+import { Field } from '../../components/Field'
+import { SectionDivider } from '../../components/SectionDivider'
+import { EMPTY_FORM_VALUES, PREPOPULATED_FORM_VALUES } from '../constants'
+import { FormValues } from '../types'
 
 const MINIMUM_DATE = parseISO('2022-01-01')
 
-const StyledRangeSliderE = styled(RangeSliderE)`
-  margin-top: 3rem;
-`
-
-export const Example: React.FC<unknown> = () => {
+const Example: React.FC<{
+  initialValues: FormValues
+  initialErrors?: FormErrors<FormValues>
+}> = ({ initialValues, initialErrors = {} }) => {
   const {
     formErrors,
     formPayload,
@@ -50,213 +35,212 @@ export const Example: React.FC<unknown> = () => {
     handleRadioGroup,
     isSubmitting,
     onSubmit,
-  } = useNativeForm<FormValues>(
-    {
-      email: '',
-      password: '',
-      description: '',
-      exampleCheckbox: [],
-      exampleRadio: [],
-      exampleSwitch: '',
-      exampleNumberInput: null,
-      exampleDatePicker: null,
-      exampleSelect: null,
-      exampleAutocomplete: null,
-      exampleRangeSlider: [20],
-    },
-    {
-      email: true,
-      // ...
-    },
-    {
-      email: (value: string): boolean => !value,
-      exampleDatePicker: (value) => {
-        if (value && !isValid(value)) {
-          return 'Enter a valid date'
-        }
+  } = useNativeForm<FormValues>(initialValues, initialErrors, {
+    email: (value: string): boolean => !value,
+    exampleDatePicker: (value) => {
+      if (value && !isValid(value)) {
+        return 'Enter a valid date'
+      }
 
-        if (value && isBefore(value, MINIMUM_DATE)) {
-          return 'Enter a date on or after 1 January 2022'
-        }
+      if (value && isBefore(value, MINIMUM_DATE)) {
+        return 'Enter a date on or after 1 January 2022'
+      }
 
-        return false
-      },
-      // ...
-    }
-  )
+      return false
+    },
+    // ...
+  })
 
   return (
     <main>
       <form onSubmit={onSubmit}>
-        <TextInputE
-          type="email"
-          name="email"
-          label="Email"
-          value={formState.email}
-          onChange={handleChange}
-          isInvalid={Boolean(formErrors.email)}
-          data-testid="form-example-TextInputE-email"
-        />
-        {formErrors.email && <span>Required</span>}
-        <TextInputE
-          type="password"
-          name="password"
-          label="Password"
-          value={formState.password}
-          onChange={handleChange}
-          data-testid="form-example-TextInputE-password"
-        />
-        <TextAreaE
-          name="description"
-          label="Description"
-          value={formState.description}
-          onChange={handleChange}
-          data-testid="form-example-TextAreaE-description"
-        />
-        <Fieldset>
-          <legend>Example checkbox selection</legend>
-          <CheckboxE
+        <SectionDivider title="Example Form" />
+        <Field
+          hintText="Example hint text."
+          errors={[{ error: formErrors.email && 'Required' }]}
+        >
+          <TextInput
+            type="email"
+            name="email"
+            label="Email"
+            value={formState.email}
+            onChange={handleChange}
+            data-testid="form-example-TextInput-email"
+          />
+        </Field>
+        <Field hintText="Example hint text.">
+          <TextInput
+            type="password"
+            name="password"
+            label="Password"
+            value={formState.password}
+            onChange={handleChange}
+            data-testid="form-example-TextInput-password"
+          />
+        </Field>
+        <Field hintText="Example hint text.">
+          <TextArea
+            name="description"
+            label="Description"
+            value={formState.description}
+            onChange={handleChange}
+            data-testid="form-example-TextArea-description"
+          />
+        </Field>
+        <Fieldset legend="Example checkbox selection">
+          <Checkbox
             onChange={handleCheckboxGroup}
             name="exampleCheckbox"
             label="Option 1"
             value="Option 1"
           />
-          <CheckboxE
+          <Checkbox
             onChange={handleCheckboxGroup}
             name="exampleCheckbox"
             label="Option 2"
             value="Option 2"
           />
-          <CheckboxE
+          <Checkbox
             onChange={handleCheckboxGroup}
             name="exampleCheckbox"
             label="Option 3"
             value="Option 3"
           />
         </Fieldset>
-        <Fieldset>
-          <legend>Example radio selection</legend>
-          <RadioE
+        <Fieldset legend="Example radio selection">
+          <Radio
             onChange={handleRadioGroup}
             name="exampleRadio"
             label="Option 1"
             value="Option 1"
           />
-          <RadioE
+          <Radio
             onChange={handleRadioGroup}
             name="exampleRadio"
             label="Option 2"
             value="Option 2"
           />
         </Fieldset>
-        <SwitchE
-          name="exampleSwitch"
-          label="Example switch selection"
-          onChange={(e: React.FormEvent<HTMLInputElement>) =>
-            handleChange({
-              currentTarget: {
-                name: 'exampleSwitch',
-                value: e.currentTarget.value,
-              },
-            })
-          }
-          value={formState.exampleSwitch}
-          data-testid="form-example-SwitchE"
+        <Field hintText="Example hint text.">
+          <Switch
+            name="exampleSwitch"
+            label="Example switch selection"
+            onChange={(e: React.FormEvent<HTMLInputElement>) =>
+              handleChange({
+                currentTarget: {
+                  name: 'exampleSwitch',
+                  value: e.currentTarget.value,
+                },
+              })
+            }
+            value={formState.exampleSwitch}
+            data-testid="form-example-Switch"
+          >
+            <SwitchOption label="One" value="1" />
+            <SwitchOption label="Two" value="2" />
+            <SwitchOption label="Three" value="3" />
+          </Switch>
+        </Field>
+        <Field hintText="Example hint text.">
+          <NumberInput
+            name="exampleNumberInput"
+            label="Example number input"
+            onChange={(
+              _:
+                | React.ChangeEvent<HTMLInputElement>
+                | React.MouseEvent<HTMLButtonElement>,
+              newValue: number | null
+            ) => {
+              handleChange({
+                currentTarget: {
+                  name: 'exampleNumberInput',
+                  value: newValue,
+                },
+              })
+            }}
+            value={formState.exampleNumberInput}
+            data-testid="form-example-NumberInput"
+          />
+        </Field>
+        <Field
+          hintText="Example hint text."
+          errors={[{ error: formErrors.exampleDatePicker }]}
         >
-          <SwitchEOption label="One" value="1" />
-          <SwitchEOption label="Two" value="2" />
-          <SwitchEOption label="Three" value="3" />
-        </SwitchE>
-        <NumberInputE
-          name="exampleNumberInput"
-          label="Example number input"
-          onChange={(
-            _:
-              | React.ChangeEvent<HTMLInputElement>
-              | React.MouseEvent<HTMLButtonElement>,
-            newValue: number | null
-          ) => {
-            handleChange({
-              currentTarget: {
-                name: 'exampleNumberInput',
-                value: newValue,
-              },
-            })
-          }}
-          value={formState.exampleNumberInput}
-          data-testid="form-example-NumberInputE"
-        />
-        <DatePickerE
-          disabledDays={{ before: MINIMUM_DATE }}
-          onChange={({ startDate }) => {
-            handleChange({
-              currentTarget: {
-                name: 'exampleDatePicker',
-                value: startDate,
-              },
-            })
-          }}
-          startDate={formState.exampleDatePicker}
-        />
-        {formErrors.exampleDatePicker && (
-          <span>{formErrors.exampleDatePicker}</span>
-        )}
-        <SelectE
-          label="Example select"
-          onChange={(value) => {
-            handleChange({
-              currentTarget: {
-                name: 'exampleSelect',
-                value,
-              },
-            })
-          }}
-          value={formState.exampleSelect}
-        >
-          <SelectEOption value="one">One</SelectEOption>
-          <SelectEOption value="two">Two</SelectEOption>
-          <SelectEOption value="three">Three</SelectEOption>
-          <SelectEOption value="four">Four</SelectEOption>
-        </SelectE>
-        <AutocompleteE
-          label="Example autocomplete"
-          onChange={(value) => {
-            handleChange({
-              currentTarget: {
-                name: 'exampleAutocomplete',
-                value,
-              },
-            })
-          }}
-          value={formState.exampleAutocomplete}
-        >
-          <AutocompleteEOption value="one">One</AutocompleteEOption>
-          <AutocompleteEOption value="two">Two</AutocompleteEOption>
-          <AutocompleteEOption value="three">Three</AutocompleteEOption>
-          <AutocompleteEOption value="four">Four</AutocompleteEOption>
-        </AutocompleteE>
-        <StyledRangeSliderE
-          onChange={(values: ReadonlyArray<number>) => {
-            handleChange({
-              currentTarget: {
-                name: 'exampleRangeSlider',
-                value: values as [],
-              },
-            })
-          }}
-          values={formState.exampleRangeSlider}
-          domain={[0, 40]}
-          mode={1}
-          tracksLeft
-          step={2}
-        />
-        <ButtonE
+          <DatePicker
+            disabledDays={{ before: MINIMUM_DATE }}
+            onChange={({ startDate }) => {
+              handleChange({
+                currentTarget: {
+                  name: 'exampleDatePicker',
+                  value: startDate,
+                },
+              })
+            }}
+            startDate={formState.exampleDatePicker}
+          />
+        </Field>
+        <Field hintText="Example hint text.">
+          <Select
+            label="Example select"
+            onChange={(value) => {
+              handleChange({
+                currentTarget: {
+                  name: 'exampleSelect',
+                  value,
+                },
+              })
+            }}
+            value={formState.exampleSelect}
+          >
+            <SelectOption value="one">One</SelectOption>
+            <SelectOption value="two">Two</SelectOption>
+            <SelectOption value="three">Three</SelectOption>
+            <SelectOption value="four">Four</SelectOption>
+          </Select>
+        </Field>
+        <Field hintText="Example hint text.">
+          <Autocomplete
+            label="Example autocomplete"
+            onChange={(value) => {
+              handleChange({
+                currentTarget: {
+                  name: 'exampleAutocomplete',
+                  value,
+                },
+              })
+            }}
+            value={formState.exampleAutocomplete}
+          >
+            <AutocompleteOption value="one">One</AutocompleteOption>
+            <AutocompleteOption value="two">Two</AutocompleteOption>
+            <AutocompleteOption value="three">Three</AutocompleteOption>
+            <AutocompleteOption value="four">Four</AutocompleteOption>
+          </Autocomplete>
+        </Field>
+        <Field hintText="Example hint text.">
+          <RangeSlider
+            onChange={(values: ReadonlyArray<number>) => {
+              handleChange({
+                currentTarget: {
+                  name: 'exampleRangeSlider',
+                  value: values as [],
+                },
+              })
+            }}
+            values={formState.exampleRangeSlider}
+            domain={[0, 40]}
+            mode={1}
+            tracksLeft
+            step={2}
+          />
+        </Field>
+        <Button
           type="submit"
           data-testid="form-example-submit"
           isDisabled={isSubmitting}
         >
           Submit
-        </ButtonE>
+        </Button>
       </form>
 
       <pre data-testid="form-example-values">
@@ -267,6 +251,21 @@ export const Example: React.FC<unknown> = () => {
 }
 
 export default {
-  title: 'Forms/Native',
+  title: 'Forms/Usage/Native',
   component: Example,
 } as ComponentMeta<typeof Example>
+
+const Template: ComponentStory<typeof Example> = (args) => <Example {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+  initialValues: EMPTY_FORM_VALUES,
+  initialErrors: {
+    email: true,
+  },
+}
+
+export const Prepopulated = Template.bind({})
+Prepopulated.args = {
+  initialValues: PREPOPULATED_FORM_VALUES,
+}

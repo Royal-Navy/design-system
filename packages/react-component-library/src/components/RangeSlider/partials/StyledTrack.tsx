@@ -10,8 +10,7 @@ interface StyledTrackProps {
 export const StyledTrack = styled.div<StyledTrackProps>`
   position: absolute;
   transform: translate(0%, -50%);
-  height: 2px;
-  z-index: 1;
+  height: 6px;
   background-color: ${RANGE_SLIDER_TRACK_COLOR};
   cursor: pointer;
   width: ${({ $width }) => $width};

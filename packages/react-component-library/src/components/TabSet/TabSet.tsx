@@ -1,32 +1,37 @@
-import React, { Children, KeyboardEvent, useState } from 'react'
+import React, { Children, KeyboardEvent, MouseEvent, useState } from 'react'
 import {
   IconKeyboardArrowLeft,
   IconKeyboardArrowRight,
 } from '@defencedigital/icon-library'
 
-import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { Tab, TabContent, TabItem, TabProps } from '.'
-import { useScrollableTabSet } from './useScrollableTabSet'
-import { SCROLL_DIRECTION } from './constants'
-import { getId } from '../../helpers'
 import { ARROW_LEFT, ARROW_RIGHT } from '../../utils/keyCodes'
-import { StyledTabSet } from './partials/StyledTabSet'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { getId } from '../../helpers'
+import { SCROLL_DIRECTION } from './constants'
+import { StyledBody } from './partials/StyledBody'
 import { StyledHeader } from './partials/StyledHeader'
 import { StyledNavigation } from './partials/StyledNavigation'
-import { StyledTabs } from './partials/StyledTabs'
-import { StyledBody } from './partials/StyledBody'
-import { StyledScrollRight } from './partials/StyledScrollRight'
 import { StyledScrollLeft } from './partials/StyledScrollLeft'
+import { StyledScrollRight } from './partials/StyledScrollRight'
+import { StyledTabs } from './partials/StyledTabs'
+import { StyledTabSet } from './partials/StyledTabSet'
+import { TabSetItem, TabContent, TabItem, TabSetItemProps } from '.'
+import { useScrollableTabSet } from './useScrollableTabSet'
+
+type OnChangeEventType =
+  | KeyboardEvent<HTMLLIElement>
+  | KeyboardEvent<HTMLButtonElement>
+  | MouseEvent<HTMLButtonElement>
 
 export interface TabSetProps extends ComponentWithClass {
   /**
    * Collection of `Tab` components that make up the tab set.
    */
-  children: React.ReactElement<TabProps>[]
+  children: React.ReactElement<TabSetItemProps>[]
   /**
    * Optional handler invoked when the currently selected tab is changed.
    */
-  onChange?: (id: number) => void
+  onChange?: (e: OnChangeEventType, id: number) => void
   /**
    * Toggles whether to display the tab set full width.
    */
@@ -41,11 +46,11 @@ export interface ScrollableTabSetProps extends ComponentWithClass {
   /**
    * Collection of `Tab` components that make up the tab set.
    */
-  children: React.ReactElement<TabProps>[]
+  children: React.ReactElement<TabSetItemProps>[]
   /**
    * Optional handler invoked when the currently selected tab is changed.
    */
-  onChange?: (id: number) => void
+  onChange?: (e: OnChangeEventType, id: number) => void
   /**
    * Toggles whether to display the tab set full width.
    */
@@ -84,11 +89,11 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
   const [activeTab, setActiveTab] = useState(getActiveIndex(children))
   const { scrollToNextTab, tabsRef, itemsRef } = useScrollableTabSet(children)
 
-  const handleClick = (index: number) => {
+  function handleClick(e: OnChangeEventType, index: number) {
     setActiveTab(index)
 
     if (onChange) {
-      onChange(index)
+      onChange(e, index)
     }
   }
 
@@ -106,7 +111,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
 
     if ([ARROW_LEFT, ARROW_RIGHT].includes(which)) {
       const index = getNextIndex(which)
-      handleClick(index)
+      handleClick(event, index)
     }
   }
 
@@ -133,7 +138,9 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
               ({ props }: React.ReactElement, index: number) => (
                 <TabItem
                   tabId={tabIds[index]}
-                  onClick={() => handleClick(index)}
+                  onClick={(e: MouseEvent<HTMLButtonElement>) =>
+                    handleClick(e, index)
+                  }
                   onKeyDown={handleKeyDown}
                   isActive={index === activeTab}
                   isFullWidth={isFullWidth}
@@ -162,11 +169,11 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
       <StyledBody $isScrollable={isScrollable}>
         {Children.map(
           children,
-          (child: React.ReactElement<TabProps>, index: number) => {
+          (child: React.ReactElement<TabSetItemProps>, index: number) => {
             const {
               children: tabChildren,
               title,
-              isActive,
+              isActive: _,
               ...tabRest
             } = child.props
 
@@ -176,7 +183,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
                 isActive={index === activeTab}
                 {...tabRest}
               >
-                <Tab title={title}>{tabChildren}</Tab>
+                <TabSetItem title={title}>{tabChildren}</TabSetItem>
               </TabContent>
             )
           }

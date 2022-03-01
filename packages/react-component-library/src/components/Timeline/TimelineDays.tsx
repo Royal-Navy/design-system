@@ -12,7 +12,11 @@ export interface TimelineDaysWithRenderContentProps {
   /**
    * Supply a custom presentation layer.
    */
-  render: (index: number, dayWidth: number, date: Date) => React.ReactElement
+  render: (props: {
+    index: number
+    dayWidth: number
+    date: Date
+  }) => React.ReactElement
 }
 
 export interface TimelineDaysWithChildrenProps {
@@ -23,44 +27,51 @@ export type TimelineDaysProps =
   | TimelineDaysWithRenderContentProps
   | TimelineDaysWithChildrenProps
 
-export const TimelineDays: React.FC<TimelineDaysProps> = memo(({
-  render,
-  ...rest
-}) => {
-  const {
-    state: { currentScaleOption, days },
-  } = useContext(TimelineContext)
-  const isBelowThreshold =
-    currentScaleOption.widths.day < DISPLAY_THRESHOLDS.DAY
+export const TimelineDays: React.FC<TimelineDaysProps> = memo(
+  ({ render, ...rest }) => {
+    const {
+      state: { currentScaleOption, days },
+    } = useContext(TimelineContext)
 
-  const rowChildren = isBelowThreshold ? (
-    <TimelineColumnHeader aria-label="No days" data-testid="timeline-no-days" />
-  ) : (
-    <StyledDays>
-      {days.map(({ date }, index) => (
-        <TimelineDay
-          date={date}
-          dayWidth={currentScaleOption.widths.day}
-          index={index}
-          key={getKey('timeline-day', date.toString())}
-          render={render}
-          timelineEndDate={currentScaleOption.to}
-        />
-      ))}
-    </StyledDays>
-  )
+    if (!currentScaleOption) {
+      return null
+    }
 
-  return (
-    <TimelineHeaderRow
-      className="timeline__days"
-      isShort
-      name="Days"
-      data-testid="timeline-days"
-      {...rest}
-    >
-      {rowChildren}
-    </TimelineHeaderRow>
-  )
-})
+    const isBelowThreshold =
+      currentScaleOption.widths.day < DISPLAY_THRESHOLDS.DAY
+
+    const rowChildren = isBelowThreshold ? (
+      <TimelineColumnHeader
+        aria-label="No days"
+        data-testid="timeline-no-days"
+      />
+    ) : (
+      <StyledDays>
+        {days.map(({ date }, index) => (
+          <TimelineDay
+            date={date}
+            dayWidth={currentScaleOption.widths.day}
+            index={index}
+            key={getKey('timeline-day', date.toString())}
+            render={render}
+            timelineEndDate={currentScaleOption.to}
+          />
+        ))}
+      </StyledDays>
+    )
+
+    return (
+      <TimelineHeaderRow
+        className="timeline__days"
+        isShort
+        name="Days"
+        data-testid="timeline-days"
+        {...rest}
+      >
+        {rowChildren}
+      </TimelineHeaderRow>
+    )
+  }
+)
 
 TimelineDays.displayName = 'TimelineDays'

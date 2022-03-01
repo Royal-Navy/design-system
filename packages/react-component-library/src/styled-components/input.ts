@@ -6,11 +6,10 @@ const { color, spacing } = selectors
 export interface StyledOuterWrapperProps {
   $hasFocus?: boolean
   $isInvalid?: boolean
-  $isValid?: boolean
 }
 
 function getBorderColor(
-  { $hasFocus, $isInvalid, $isValid }: StyledOuterWrapperProps,
+  { $hasFocus, $isInvalid }: StyledOuterWrapperProps,
   borderColorDefault: string
 ) {
   if ($isInvalid) {
@@ -19,10 +18,6 @@ function getBorderColor(
 
   if ($hasFocus) {
     return color('action', '600')
-  }
-
-  if ($isValid) {
-    return color('success', '600')
   }
 
   return borderColorDefault

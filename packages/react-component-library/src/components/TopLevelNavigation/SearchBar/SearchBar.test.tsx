@@ -5,7 +5,10 @@ import { fireEvent, render, RenderResult } from '@testing-library/react'
 import { SearchBar } from '.'
 
 describe('Searchbar', () => {
-  let onSearchSpy: (term: string) => void
+  let onSearchSpy: (
+    event: React.FormEvent<HTMLFormElement>,
+    term: string
+  ) => void
   let wrapper: RenderResult
   let setShowSearchSpy: (isVisible: boolean) => void
 
@@ -24,7 +27,6 @@ describe('Searchbar', () => {
         <SearchBar
           onSearch={onSearchSpy}
           searchButton={searchButton}
-          searchPlaceholder="placeholder"
           setShowSearch={setShowSearchSpy}
         />
       )
@@ -36,13 +38,6 @@ describe('Searchbar', () => {
 
     it('should auto focus on the search field', () => {
       expect(wrapper.getByTestId('text-input-input')).toHaveFocus()
-    })
-
-    it('should render the input with a placeholder', () => {
-      expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
-        'placeholder',
-        'placeholder'
-      )
     })
 
     it('should set the `aria-label` attribute to `Search` on the search button', () => {
@@ -101,7 +96,10 @@ describe('Searchbar', () => {
 
         it('should call the `onSearch` callback with the search term', () => {
           expect(onSearchSpy).toHaveBeenCalledTimes(1)
-          expect(onSearchSpy).toHaveBeenCalledWith('A')
+          expect(onSearchSpy).toHaveBeenCalledWith(
+            expect.objectContaining({ _reactName: 'onSubmit' }),
+            'A'
+          )
         })
       })
     })
@@ -119,7 +117,6 @@ describe('Searchbar', () => {
         <SearchBar
           onSearch={onSearchSpy}
           searchButton={searchButton}
-          searchPlaceholder="placeholder"
           setShowSearch={setShowSearchSpy}
         />
       )
@@ -158,7 +155,6 @@ describe('Searchbar', () => {
           data-arbitrary="arbitrary"
           onSearch={onSearchSpy}
           searchButton={searchButton}
-          searchPlaceholder="placeholder"
           setShowSearch={setShowSearchSpy}
         />
       )

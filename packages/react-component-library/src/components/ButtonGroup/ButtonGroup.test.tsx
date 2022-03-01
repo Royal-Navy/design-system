@@ -3,7 +3,7 @@ import React, { FormEvent } from 'react'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
 import { ButtonGroup, ButtonGroupItem } from '.'
-import { BUTTON_SIZE } from '../Button'
+import { COMPONENT_SIZE } from '../Forms'
 
 describe('ButtonGroup', () => {
   let wrapper: RenderResult
@@ -135,26 +135,19 @@ describe('ButtonGroup', () => {
   describe('when a different size is provided for each item', () => {
     beforeEach(() => {
       wrapper = render(
-        <ButtonGroup size={BUTTON_SIZE.REGULAR}>
-          <ButtonGroupItem onClick={oneClickSpy} size={BUTTON_SIZE.SMALL}>
+        <ButtonGroup size={COMPONENT_SIZE.FORMS}>
+          <ButtonGroupItem onClick={oneClickSpy} size={COMPONENT_SIZE.SMALL}>
             One
           </ButtonGroupItem>
-          <ButtonGroupItem onClick={twoClickSpy} size={BUTTON_SIZE.REGULAR}>
+          <ButtonGroupItem onClick={twoClickSpy} size={COMPONENT_SIZE.FORMS}>
             Two
-          </ButtonGroupItem>
-          <ButtonGroupItem
-            onClick={threeClickSpy}
-            isDisabled
-            size={BUTTON_SIZE.LARGE}
-          >
-            Three
           </ButtonGroupItem>
         </ButtonGroup>
       )
     })
 
     it('should warn the consumer about specifying sizes for each item', () => {
-      expect(consoleWarnSpy).toHaveBeenCalledTimes(3)
+      expect(consoleWarnSpy).toHaveBeenCalledTimes(2)
       expect(consoleWarnSpy).toHaveBeenCalledWith(
         'WARN - RNDS - Prop `size` on `ButtonGroupItem` will be replaced by `size` from `ButtonGroup`'
       )

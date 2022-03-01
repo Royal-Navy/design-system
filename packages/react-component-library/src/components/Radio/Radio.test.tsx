@@ -1,11 +1,13 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
+import 'jest-styled-components'
+import { ColorNeutral200 } from '@defencedigital/design-tokens'
 import { render, RenderResult } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
+import { RADIO_VARIANT, Radio } from '.'
 import { FieldProps } from '../../common/FieldProps'
 import { FormProps } from '../../common/FormProps'
-import { Radio } from '.'
-import { withFormik } from '../../enhancers/withFormik'
 
 describe('Radio', () => {
   let field: FieldProps
@@ -30,6 +32,8 @@ describe('Radio', () => {
   })
 
   describe('when the field has no errors, a label and a value', () => {
+    let input: HTMLElement
+
     beforeEach(() => {
       label = 'My Label 1'
       field.value = 'option1'
@@ -42,68 +46,55 @@ describe('Radio', () => {
           label={label}
         />
       )
+
+      input = radio.getByTestId('radio-input')
+    })
+
+    it('should render a container', () => {
+      expect(radio.getByTestId('radio')).toHaveStyleRule(
+        'border',
+        `1px solid ${ColorNeutral200}`
+      )
+      expect(radio.getByTestId('radio')).toHaveStyleRule(
+        'border-radius',
+        '15px'
+      )
     })
 
     it('should render a field with a label', () => {
-      expect(radio.getByTestId('label')).toHaveTextContent('My Label 1')
+      expect(radio.getByTestId('radio-label')).toHaveTextContent('My Label 1')
+    })
+
+    it('should not render a description', () => {
+      expect(radio.queryAllByTestId('checkbox-description')).toHaveLength(0)
     })
 
     it('should populate the field value', () => {
-      expect(radio.queryByTestId('radio')).toHaveAttribute('value', 'option1')
-    })
-  })
-
-  describe('when the field has an error and the form has not been touched', () => {
-    beforeEach(() => {
-      form.errors = {
-        colour: 'Something bad',
-      }
-
-      form.touched = {}
-
-      const FormikRadio = withFormik(Radio)
-
-      radio = render(<FormikRadio field={field} form={form} />)
+      expect(input).toHaveAttribute('value', 'option1')
     })
 
-    it('should not add the aria attributes', () => {
-      expect(radio.getByTestId('radio')).not.toHaveAttribute('aria-invalid')
-      expect(radio.getByTestId('radio')).not.toHaveAttribute('aria-describedBy')
-    })
+    describe('and tab is pressed', () => {
+      beforeEach(() => {
+        userEvent.tab()
+      })
 
-    it('should not indicate the field has an error', () => {
-      expect(radio.queryByTestId('container')).not.toHaveClass('is-invalid')
-    })
+      it('focuses the input', () => {
+        expect(input).toHaveFocus()
+      })
 
-    it('should not show the error', () => {
-      expect(radio.queryAllByText('Something bad')).toHaveLength(0)
-    })
-  })
+      describe('and space is pressed', () => {
+        beforeEach(() => {
+          userEvent.keyboard('[Space]')
+        })
 
-  describe('when the field has an error and the form has been touched', () => {
-    beforeEach(() => {
-      form.errors = {
-        colour: 'Something bad',
-      }
+        it('checks the input', () => {
+          expect(input).toBeChecked()
+        })
 
-      form.touched.colour = true
-
-      const FormikRadio = withFormik(Radio)
-
-      radio = render(<FormikRadio field={field} form={form} />)
-    })
-
-    it('should add the aria attributes', () => {
-      expect(radio.getByTestId('radio')).toHaveAttribute('aria-invalid')
-      expect(radio.getByTestId('radio')).toHaveAttribute('aria-describedby')
-    })
-
-    it('should indicate the field has an error', () => {
-      expect(radio.queryByTestId('container')).toHaveClass('is-invalid')
-    })
-
-    it('should show the error', () => {
-      expect(radio.getByText('Something bad')).toBeInTheDocument()
+        it('calls onChange once', () => {
+          expect(field.onChange).toHaveBeenCalledTimes(1)
+        })
+      })
     })
   })
 
@@ -121,7 +112,7 @@ describe('Radio', () => {
     })
 
     it('should attach the class to the wrapper', () => {
-      expect(radio.queryByTestId('container')).toHaveClass('test')
+      expect(radio.queryByTestId('radio')).toHaveClass('test')
     })
   })
 
@@ -139,11 +130,11 @@ describe('Radio', () => {
     })
 
     it('should attach the id to the field', () => {
-      expect(radio.queryByTestId('radio')).toHaveAttribute('id', 'test')
+      expect(radio.queryByTestId('radio-input')).toHaveAttribute('id', 'test')
     })
 
     it('should associate the label to the field with the custom id', () => {
-      expect(radio.queryByTestId('label')).toHaveAttribute('for', 'test')
+      expect(radio.queryByTestId('radio-label')).toHaveAttribute('for', 'test')
     })
   })
 
@@ -161,9 +152,62 @@ describe('Radio', () => {
     })
 
     it('should spread arbitrary props', () => {
-      expect(radio.getByTestId('radio')).toHaveAttribute(
+      expect(radio.getByTestId('radio-input')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
+      )
+    })
+  })
+
+  describe('when a field has a description', () => {
+    beforeEach(() => {
+      radio = render(
+        <Radio description="Description" label="Label" name={field.name} />
+      )
+    })
+
+    it('should render a description', () => {
+      expect(radio.getByTestId('checkbox-description')).toHaveTextContent(
+        'Description'
+      )
+    })
+  })
+
+  describe('when a field has a description that is arbitrary JSX', () => {
+    beforeEach(() => {
+      radio = render(
+        <Radio
+          description={<div>Arbitrary content</div>}
+          label="Label"
+          name={field.name}
+        />
+      )
+    })
+
+    it('should render a arbitrary description', () => {
+      expect(radio.getByText('Arbitrary content')).toBeInTheDocument()
+    })
+  })
+
+  describe('when a field does not have a container', () => {
+    beforeEach(() => {
+      radio = render(
+        <Radio
+          label="Label"
+          name={field.name}
+          variant={RADIO_VARIANT.NO_CONTAINER}
+        />
+      )
+    })
+
+    it('should not render a container', () => {
+      expect(radio.getByTestId('radio')).not.toHaveStyleRule(
+        'border',
+        `1px solid ${ColorNeutral200}`
+      )
+      expect(radio.getByTestId('radio')).not.toHaveStyleRule(
+        'border-radius',
+        '15px'
       )
     })
   })

@@ -1,12 +1,17 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, RenderResult, fireEvent } from '@testing-library/react'
+import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { Pagination } from '.'
+import { OnChangeEventType } from './types'
 
 describe('Pagination', () => {
-  let onChangeSpy: (currentPage: number, totalPages: number) => void
+  let onChangeSpy: (
+    event: OnChangeEventType,
+    currentPage: number,
+    totalPages: number
+  ) => void
   let wrapper: RenderResult
 
   describe('when there is ten pages of data', () => {
@@ -99,7 +104,11 @@ describe('Pagination', () => {
       })
 
       it('should call the onChange callback', () => {
-        expect(onChangeSpy).toHaveBeenCalledWith(2, 10)
+        expect(onChangeSpy).toHaveBeenCalledWith(
+          expect.objectContaining({ _reactName: 'onClick' }),
+          2,
+          10
+        )
         expect(onChangeSpy).toHaveBeenCalledTimes(1)
       })
 
@@ -114,7 +123,11 @@ describe('Pagination', () => {
       })
 
       it('should call the onChange callback', () => {
-        expect(onChangeSpy).toHaveBeenCalledWith(10, 10)
+        expect(onChangeSpy).toHaveBeenCalledWith(
+          expect.objectContaining({ _reactName: 'onClick' }),
+          10,
+          10
+        )
         expect(onChangeSpy).toHaveBeenCalledTimes(1)
       })
 
@@ -150,7 +163,11 @@ describe('Pagination', () => {
         })
 
         it('should call the onChange callback', () => {
-          expect(onChangeSpy).toHaveBeenCalledWith(8, 10)
+          expect(onChangeSpy).toHaveBeenCalledWith(
+            expect.objectContaining({ _reactName: 'onKeyDown' }),
+            8,
+            10
+          )
           expect(onChangeSpy).toHaveBeenCalledTimes(1)
         })
       })
@@ -192,7 +209,11 @@ describe('Pagination', () => {
             })
 
             it('should call the onChange callback', () => {
-              expect(onChangeSpy).toHaveBeenCalledWith(2, 10)
+              expect(onChangeSpy).toHaveBeenCalledWith(
+                expect.objectContaining({ _reactName: 'onClick' }),
+                2,
+                10
+              )
               expect(onChangeSpy).toHaveBeenCalledTimes(1)
             })
           })
@@ -309,7 +330,11 @@ describe('Pagination', () => {
       })
 
       it('should call the onChange callback', () => {
-        expect(onChangeSpy).toHaveBeenCalledWith(4, 10)
+        expect(onChangeSpy).toHaveBeenCalledWith(
+          expect.objectContaining({ _reactName: 'onClick' }),
+          4,
+          10
+        )
         expect(onChangeSpy).toHaveBeenCalledTimes(1)
       })
 
@@ -324,7 +349,11 @@ describe('Pagination', () => {
       })
 
       it('should call the onChange callback', () => {
-        expect(onChangeSpy).toHaveBeenCalledWith(1, 10)
+        expect(onChangeSpy).toHaveBeenCalledWith(
+          expect.objectContaining({ _reactName: 'onClick' }),
+          1,
+          10
+        )
         expect(onChangeSpy).toHaveBeenCalledTimes(1)
       })
 

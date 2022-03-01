@@ -1,19 +1,15 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { Field, Formik, Form } from 'formik'
-import * as yup from 'yup'
 
 import { IconSearch } from '@defencedigital/icon-library'
-import { Button } from '../Button'
 import { TextInput } from '.'
-
-import { withFormik } from '../../enhancers/withFormik'
 
 export default {
   component: TextInput,
   title: 'Text Input',
-  argTypes: { onBlur: { action: 'onBlur' } },
+  parameters: {
+    argTypes: { onBlur: { action: 'onBlur' } },
+  },
 } as ComponentMeta<typeof TextInput>
 
 export const Default: ComponentStory<typeof TextInput> = (props) => (
@@ -24,12 +20,6 @@ Default.args = {
   name: 'text-input-default',
   label: 'Example label',
 }
-
-export const WithLabel: ComponentStory<typeof TextInput> = (props) => (
-  <TextInput {...props} name="text-input-label" label="Example label" />
-)
-
-WithLabel.storyName = 'With label'
 
 export const Disabled: ComponentStory<typeof TextInput> = (props) => (
   <TextInput
@@ -64,38 +54,13 @@ export const WithEndAdornment: ComponentStory<typeof TextInput> = (props) => (
 
 WithEndAdornment.storyName = 'With end adornment'
 
-export const WithFormik: ComponentStory<typeof TextInput> = (props) => {
-  interface Data {
-    'text-input-formik': string
-  }
+export const WithError: ComponentStory<typeof TextInput> = (props) => (
+  <TextInput
+    {...props}
+    isInvalid
+    label="Example label"
+    name="text-input-end-adornment"
+  />
+)
 
-  const initialValues: Data = {
-    'text-input-formik': '',
-  }
-
-  const validationSchema = yup.object().shape({
-    'text-input-formik': yup.string().required('Something went wrong!'),
-  })
-
-  const FormikTextInput = withFormik(TextInput)
-
-  return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={action('onSubmit')}
-    >
-      <Form>
-        <Field
-          name="text-input-formik"
-          label="Example label"
-          component={FormikTextInput}
-        />
-        <br />
-        <Button type="submit">Submit</Button>
-      </Form>
-    </Formik>
-  )
-}
-
-WithFormik.storyName = 'Formik'
+WithError.storyName = 'With error'

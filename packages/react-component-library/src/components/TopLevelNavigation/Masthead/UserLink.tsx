@@ -16,7 +16,7 @@ export const UserLink: React.FC<UserLinkProps> = ({
   user: { initials, ...rest },
 }) => (
   <LinkComponent className={className} {...rest} data-testid="userlink">
-    <Avatar initials={initials} variant={AVATAR_VARIANT.DARK} />
+    <Avatar variant={AVATAR_VARIANT.DARK}>{initials}</Avatar>
   </LinkComponent>
 )
 

@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react'
+import { IconChevronRight } from '@defencedigital/icon-library'
 
 import { TextInput } from '../../TextInput'
-import { RightArrow } from '../../../icons'
 import { useDocumentClick } from '../../../hooks'
 import { StyledSearchBar } from './partials/StyledSearchBar'
 import { StyledForm } from './partials/StyledForm'
@@ -9,9 +9,8 @@ import { StyledButton } from './partials/StyledButton'
 
 export interface SearchbarProps {
   className?: string
-  onSearch: (term: string) => void
+  onSearch: (event: React.FormEvent<HTMLFormElement>, term: string) => void
   searchButton: any
-  searchPlaceholder: string
   setShowSearch: (isVisible: boolean) => void
   style?: Record<string, unknown>
 }
@@ -19,7 +18,6 @@ export interface SearchbarProps {
 export const SearchBar: React.FC<SearchbarProps> = ({
   onSearch,
   searchButton,
-  searchPlaceholder,
   setShowSearch,
   ...rest
 }) => {
@@ -39,7 +37,7 @@ export const SearchBar: React.FC<SearchbarProps> = ({
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    onSearch(term)
+    onSearch(event, term)
   }
 
   return (
@@ -49,10 +47,10 @@ export const SearchBar: React.FC<SearchbarProps> = ({
           autoFocus
           id="term"
           name="term"
-          onChange={(event) => {
+          label=""
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             setTerm(event.target.value)
           }}
-          placeholder={searchPlaceholder}
           value={term}
         />
         <StyledButton
@@ -60,7 +58,7 @@ export const SearchBar: React.FC<SearchbarProps> = ({
           data-testid="searchbar-submit-button"
           type="submit"
         >
-          <RightArrow />
+          <IconChevronRight />
         </StyledButton>
       </StyledForm>
     </StyledSearchBar>

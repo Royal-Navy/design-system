@@ -2,17 +2,12 @@ const LOCALE = {
   UK: 'en-GB',
 }
 
-const DATEPICKER_PLACEMENT = {
-  ABOVE: 'above',
-  BELOW: 'below',
-  LEFT: 'left',
-  RIGHT: 'right'
+const WEEKDAY_TITLES = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+
+const DATE_VALIDITY = {
+  VALID: 'valid',
+  INVALID: 'invalid',
+  DISABLED: 'disabled',
 } as const
 
-const DATEPICKER_AUTO_CLOSE_DELAY = 0
-
-export {
-  LOCALE,
-  DATEPICKER_PLACEMENT,
-  DATEPICKER_AUTO_CLOSE_DELAY
-}
+export { DATE_VALIDITY, LOCALE, WEEKDAY_TITLES }

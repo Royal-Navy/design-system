@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, createRef } from 'react'
+import intersection from 'lodash/intersection'
 import {
   SliderProps,
   CustomMode,
@@ -13,6 +14,7 @@ import {
   RangeSliderValueFormatter,
   Track,
   ThresholdTrack,
+  ThresholdRail,
   Tick,
 } from '.'
 import { StyledSlider } from './partials/StyledSlider'
@@ -40,13 +42,13 @@ export interface RangeSliderProps extends Omit<SliderProps, SliderOmitType> {
    * Two element array of numbers providing the min and max values for the slider [min, max] e.g. [0, 100].
    * It does not matter if the slider is reversed on the screen, domain is always [min, max] with min < max.
    */
-  domain?: ReadonlyArray<number>
+  domain: readonly [number, number]
   /**
-   * An array of numbers. You can supply one for a value slider, two for a range slider or more to create n-handled sliders.
+   * An array of numbers. You can supply one for a value slider, two for a range slider.
    * The values should correspond to valid step values in the domain.
    * The numbers will be forced into the domain if they are two small or large.
    */
-  values: ReadonlyArray<number>
+  values: readonly [number] | readonly [number, number]
   /**
    * The step value for the slider.
    */
@@ -63,6 +65,10 @@ export interface RangeSliderProps extends Omit<SliderProps, SliderOmitType> {
    */
   hasLabels?: boolean
   /**
+   * Toggles whether or not to display value markers along the slider.
+   */
+  hasMarkers?: boolean
+  /**
    * Toggles whether to display colored tracks to the left of the handle.
    */
   tracksLeft?: boolean
@@ -71,7 +77,7 @@ export interface RangeSliderProps extends Omit<SliderProps, SliderOmitType> {
    */
   tracksRight?: boolean
   /**
-   * The number of tickets to display along the slider track.
+   * The number of Tickts to display along the slider track.
    */
   tickCount?: number
   /**
@@ -95,10 +101,6 @@ export interface RangeSliderProps extends Omit<SliderProps, SliderOmitType> {
    */
   thresholds?: number[]
   /**
-   * Toggles whether to display percentage values alongside the draggable handles.
-   */
-  hasPercentage?: boolean
-  /**
    * Toggles whether to display unit values alongside the draggable handles.
    */
   displayUnit?: string
@@ -112,6 +114,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   domain,
   step,
   hasLabels,
+  hasMarkers,
   tracksLeft = false,
   tracksRight = false,
   tickCount = 10,
@@ -123,7 +126,6 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   onChange,
   onUpdate,
   thresholds,
-  hasPercentage,
   displayUnit = '',
   formatValue,
   mode,
@@ -131,17 +133,38 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   onSlideEnd,
   ...rest
 }) => {
-  const [sliderValues, setSliderValues] = useState(values)
+  const [sliderValues, setSliderValues] =
+    useState<ReadonlyArray<number>>(values)
+  const handleRefs = values.map(() => createRef<HTMLDivElement>())
+
+  const focusHandle = useCallback(
+    (newValues: ReadonlyArray<number>): void => {
+      const staticValues = intersection(sliderValues, newValues)
+
+      // Single handle
+      if (sliderValues.length === 1) {
+        handleRefs[0].current?.focus()
+      }
+
+      // Multiple handles
+      if (sliderValues.length === 2 && staticValues.length === 1) {
+        const refId = sliderValues.indexOf(staticValues[0]) === 1 ? 0 : 1
+        handleRefs[refId].current?.focus()
+      }
+    },
+    [sliderValues, handleRefs]
+  )
 
   const onUpdateHandler = useCallback(
     (newValues: ReadonlyArray<number>): void => {
+      focusHandle(newValues)
       setSliderValues(newValues)
 
       if (onUpdate) {
         onUpdate(newValues)
       }
     },
-    [onUpdate, setSliderValues]
+    [onUpdate, setSliderValues, focusHandle]
   )
 
   const formatValueDefault: RangeSliderValueFormatter = useCallback(
@@ -153,13 +176,12 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
     <StyledRangeSlider
       $isReversed={isReversed}
       $isDisabled={isDisabled}
-      $hasPercentage={hasPercentage}
       data-testid="rangeslider"
       {...rest}
     >
       {IconLeft && (
         <StyledIconLeft aria-hidden data-testid="rangeslider-icon-left">
-          <IconLeft />
+          <IconLeft size={22} />
         </StyledIconLeft>
       )}
       <StyledSlider
@@ -177,23 +199,24 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
       >
         <Rail>
           {({ getRailProps }) => (
-            <StyledRail>
-              <StyledRailInner {...getRailProps()} />
+            <StyledRail {...getRailProps()} data-testid="rangeslider-rail">
+              <StyledRailInner>
+                {thresholds && <ThresholdRail thresholds={thresholds} />}
+              </StyledRailInner>
             </StyledRail>
           )}
         </Rail>
         <Handles>
-          {({ activeHandleID, handles, getHandleProps }) => (
+          {({ handles, getHandleProps }) => (
             <div>
-              {handles.map((handle) => (
+              {handles.map((handle, index) => (
                 <Handle
+                  ref={handleRefs[index]}
                   key={handle.id}
                   handle={handle}
                   domain={domain}
-                  activeHandleID={activeHandleID}
                   getHandleProps={getHandleProps}
                   formatValue={formatValue ?? formatValueDefault}
-                  thresholds={thresholds}
                 />
               ))}
             </div>
@@ -238,11 +261,14 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
                     key={tick.id}
                     tick={tick}
                     count={ticks.length}
+                    hasMarkers={hasMarkers}
                     hasLabels={hasLabels}
                     values={sliderValues}
                     domain={domain}
                     isReversed={isReversed}
                     thresholds={thresholds}
+                    tracksLeft={tracksLeft}
+                    tracksRight={tracksRight}
                   />
                 ))}
               </StyledTicks>
@@ -252,7 +278,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
       </StyledSlider>
       {IconRight && (
         <StyledIconRight aria-hidden data-testid="rangeslider-icon-right">
-          <IconRight />
+          <IconRight size={22} />
         </StyledIconRight>
       )}
     </StyledRangeSlider>

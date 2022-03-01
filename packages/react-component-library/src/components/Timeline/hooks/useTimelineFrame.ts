@@ -15,6 +15,10 @@ export function useTimelineFrame(): {
     type: typeof TIMELINE_ACTIONS.GET_NEXT | typeof TIMELINE_ACTIONS.GET_PREV,
     intervalMultiplier = 1
   ) {
+    if (!currentScaleOption) {
+      return
+    }
+
     const newStartDate = currentScaleOption.calculateDate(
       currentScaleOption.from,
       currentScaleOption.intervalSize * intervalMultiplier

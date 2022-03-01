@@ -1,5 +1,5 @@
 import React from 'react'
-import { format, endOfMonth, differenceInDays, max, min } from 'date-fns'
+import { format } from 'date-fns'
 
 import { DATE_MONTH_FORMAT } from './constants'
 import { StyledMonth } from './partials/StyledMonth'
@@ -28,12 +28,12 @@ interface TimelineMonthProps {
   daysTotal: number
   dayWidth: number
   index: number
-  render: (
-    index: number,
-    dayWidth: number,
-    daysTotal: number,
+  render?: (props: {
+    index: number
+    dayWidth: number
+    daysTotal: number
     startDate: Date
-  ) => React.ReactElement
+  }) => React.ReactElement
   size: TimelineMonthSizeType
   startDate: Date
 }
@@ -84,7 +84,7 @@ function renderDefault({
 }
 
 export const TimelineMonth: React.FC<TimelineMonthProps> = ({
-  days,
+  days: _,
   daysTotal,
   dayWidth,
   index,
@@ -94,7 +94,7 @@ export const TimelineMonth: React.FC<TimelineMonthProps> = ({
   ...rest
 }) => {
   const child = render
-    ? render(index, dayWidth, daysTotal, startDate)
+    ? render({ index, dayWidth, daysTotal, startDate })
     : renderDefault({ dayWidth, daysTotal, size, startDate })
 
   return React.cloneElement(child, {

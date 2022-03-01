@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { renderToStaticMarkup } from 'react-dom/server'
@@ -50,7 +49,7 @@ describe('Popover', () => {
     })
 
     it('allows button covered by Popover to be clicked when Popover is hidden', () => {
-      wrapper.queryByText('Click me!').click()
+      wrapper.getByText('Click me!').click()
       expect(clickSpy).toHaveBeenCalledTimes(1)
     })
 

@@ -3,11 +3,8 @@ import React from 'react'
 import { TimelineDaysProps } from '../TimelineDays'
 import { TimelineMonthsProps } from '../TimelineMonths'
 import { TimelineRowsProps } from '../TimelineRows'
-import { TimelineSideProps } from '../TimelineSide'
 import { TimelineTodayMarkerProps } from '../TimelineTodayMarker'
 import { TimelineWeeksProps } from '../TimelineWeeks'
-
-type TimelineRootChildrenType = React.ReactElement<TimelineSideProps>
 
 type TimelineHeadChildrenType =
   | React.ReactElement<TimelineTodayMarkerProps>
@@ -18,7 +15,6 @@ type TimelineHeadChildrenType =
 type TimelineBodyChildrenType = React.ReactElement<TimelineRowsProps>
 
 export type timelineChildrenType =
-  | TimelineRootChildrenType
   | TimelineHeadChildrenType
   | TimelineBodyChildrenType
 

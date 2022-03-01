@@ -18,18 +18,18 @@ export interface TimelineRowsProps extends ComponentWithClass {
   /**
    * Supply a custom presentation layer.
    */
-  renderColumns?: (
-    index: number,
-    isOddNumber: boolean,
-    offsetPx: string,
+  render?: (props: {
+    index: number
+    isOddNumber: boolean
+    offsetPx: string
     widthPx: string
-  ) => React.ReactElement
+  }) => React.ReactElement
 }
 
 export const TimelineRows: React.FC<TimelineRowsProps> = ({
   children,
   className,
-  renderColumns,
+  render,
   ...rest
 }) => {
   const hasChildren = React.Children.count(children) > 0
@@ -38,9 +38,13 @@ export const TimelineRows: React.FC<TimelineRowsProps> = ({
     state: { currentScaleOption, days },
   } = useContext(TimelineContext)
 
+  if (!currentScaleOption) {
+    return null
+  }
+
   return (
     <StyledRows
-      $hasDefaultStyles={!renderColumns}
+      $hasDefaultStyles={!render}
       $width={currentScaleOption.widths.day * days.length}
       className={mainClasses}
       role="rowgroup"

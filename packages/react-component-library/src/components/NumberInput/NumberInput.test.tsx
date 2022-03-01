@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import {
+  createEvent,
   fireEvent,
   render,
   RenderResult,
@@ -10,31 +11,37 @@ import {
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { Button, NumberInput } from '../..'
-import { UNIT_POSITION } from './constants'
+import { ColorAction500, ColorDanger800 } from '@defencedigital/design-tokens'
+import { Button, COMPONENT_SIZE } from '../..'
+import { NumberInput } from '.'
+
+const defaultProps = {
+  name: 'number-input',
+  onChange: (
+    _: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>
+  ) => true,
+}
+
+function paste(element: HTMLElement, text: string) {
+  // userEvent 13.x doesn't set clipboardData automatically, though
+  // React always does
+  userEvent.paste(element, text, {
+    clipboardData: {
+      getData: () => text,
+    } as unknown as DataTransfer,
+  })
+}
 
 describe('NumberInput', () => {
   let wrapper: RenderResult
-  let onChangeSpy: (event: any) => void
+  let onChangeSpy: jest.SpyInstance
 
-  function assertInputValue(expectedValue: string, expectedUnit?: string) {
-    it('should set the input value', () => {
+  function assertInputValue(expectedValue: string) {
+    it('sets the input value', () => {
       expect(wrapper.getByTestId('number-input-input')).toHaveValue(
         expectedValue
       )
     })
-
-    if (expectedUnit) {
-      it('should display the unit', () => {
-        expect(wrapper.getByTestId('number-input-unit')).toHaveTextContent(
-          expectedUnit
-        )
-      })
-    } else {
-      it('should not show the unit', () => {
-        expect(wrapper.queryAllByTestId('number-input-unit')).toHaveLength(0)
-      })
-    }
   }
 
   function assertAriaValueAttributes({
@@ -43,15 +50,13 @@ describe('NumberInput', () => {
     now,
     text,
   }: {
-    min?: number
-    max?: number
+    min: number | null
+    max: number | null
     now: number
     text: string
   }) {
-    it('should set the `aria-value*` attribute', () => {
-      const container = wrapper.getByTestId(
-        'number-input-container'
-      ) as HTMLDivElement
+    it('sets the `aria-value*` attribute', () => {
+      const container = wrapper.getByTestId('number-input') as HTMLDivElement
 
       if (min) {
         expect(container).toHaveAttribute('aria-valuemin', min.toString())
@@ -66,41 +71,45 @@ describe('NumberInput', () => {
       }
 
       expect(container).toHaveAttribute('aria-valuenow', now.toString())
-      expect(container).toHaveAttribute('aria-valuetext', text)
+      expect(container).toHaveAttribute('aria-valuetext', text.toString())
     })
   }
 
-  function assertOnChangeCall(expected: number, expectedNumberOfTimes = 1) {
-    it('should call the onChange callback with the new value', () => {
+  function assertOnChangeCall(
+    expected: number | null,
+    expectedNumberOfTimes = 1
+  ) {
+    it(`calls the \`onChange\` callback ${expectedNumberOfTimes} times with the new value ${expected}`, () => {
       expect(onChangeSpy).toHaveBeenCalledTimes(expectedNumberOfTimes)
-      expect(onChangeSpy).toHaveBeenCalledWith({
-        target: {
-          name: 'number-input',
-          value: expected,
-        },
-      })
+      expect(onChangeSpy.mock.calls[expectedNumberOfTimes - 1][1]).toEqual(
+        expected
+      )
     })
   }
 
-  beforeEach(() => {
-    onChangeSpy = jest.fn()
+  afterEach(() => {
+    jest.clearAllMocks()
   })
 
   describe('when minimal props', () => {
+    let input: HTMLInputElement
+
     beforeEach(() => {
-      wrapper = render(
-        <NumberInput name="number-input" onChange={onChangeSpy} />
-      )
+      onChangeSpy = jest.spyOn(defaultProps, 'onChange')
+
+      wrapper = render(<NumberInput {...defaultProps} />)
+
+      input = wrapper.getByTestId('number-input-input') as HTMLInputElement
     })
 
-    it('should set the default `aria-label` attribute', () => {
-      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+    it('sets the default `aria-label` attribute', () => {
+      expect(wrapper.getByTestId('number-input')).toHaveAttribute(
         'aria-label',
         'Number input'
       )
     })
 
-    it('should apply the `aria-label` attribute to buttons', () => {
+    it('applies the `aria-label` attribute to buttons', () => {
       expect(wrapper.getByTestId('number-input-decrease')).toHaveAttribute(
         'aria-label',
         'Decrease the input value'
@@ -112,30 +121,30 @@ describe('NumberInput', () => {
       )
     })
 
-    it('should apply the correct `role` attribute', () => {
-      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+    it('applies the correct `role` attribute', () => {
+      expect(wrapper.getByTestId('number-input')).toHaveAttribute(
         'role',
         'spinbutton'
       )
     })
 
-    assertAriaValueAttributes({ min: null, max: null, now: 0, text: '0' })
+    assertAriaValueAttributes({ min: null, max: null, now: 0, text: 'Not set' })
 
-    it('should not display a start adornment', () => {
+    it('does not display a start adornment', () => {
       expect(
         wrapper.queryAllByTestId('number-input-start-adornment')
       ).toHaveLength(0)
     })
 
-    it('should not display a label', () => {
+    it('does not display a label', () => {
       expect(wrapper.queryAllByTestId('number-input-label')).toHaveLength(0)
     })
 
-    assertInputValue('0')
+    assertInputValue('')
 
-    it('should set the `aria-labelledby` attribute', () => {
+    it('does not set the `aria-labelledby` attribute', () => {
       const numberInputId = wrapper
-        .getByTestId('number-input-container')
+        .getByTestId('number-input')
         .getAttribute('id')
 
       expect(
@@ -145,13 +154,11 @@ describe('NumberInput', () => {
       ).toEqual(numberInputId)
     })
 
-    it('should set the name attribute', () => {
-      expect(
-        wrapper.getByTestId('number-input-input').getAttribute('name')
-      ).toEqual('number-input')
+    it('sets the name attribute', () => {
+      expect(input.getAttribute('name')).toEqual('number-input')
     })
 
-    it('should not display a footnote', () => {
+    it('does not display a footnote', () => {
       expect(wrapper.queryAllByTestId('number-input-footnote')).toHaveLength(0)
     })
 
@@ -182,36 +189,77 @@ describe('NumberInput', () => {
       })
     })
 
-    describe('and the user types values', () => {
-      beforeEach(async () => {
-        const input = wrapper.getByTestId('number-input-input')
+    describe.each([
+      { buttonType: 'increase', expectedValue: '1' },
+      { buttonType: 'decrease', expectedValue: '-1' },
+    ])(
+      'and Enter is pressed with the $buttonType button focused',
+      ({ buttonType, expectedValue }) => {
+        let increase: HTMLElement
 
-        await userEvent.type(input, '1')
-        await userEvent.type(input, '2')
-        await userEvent.type(input, '3')
+        beforeEach(() => {
+          increase = wrapper.getByTestId(`number-input-${buttonType}`)
+          increase.focus()
+          userEvent.keyboard('{Enter}')
+        })
+
+        assertInputValue(expectedValue)
+
+        it(`does not blur the ${buttonType} button`, () => {
+          expect(increase).toHaveFocus()
+        })
+      }
+    )
+
+    describe('and the user types values', () => {
+      beforeEach(() => {
+        userEvent.type(input, '1')
+        userEvent.type(input, '2')
+        userEvent.type(input, '3')
+      })
+
+      it('calls the `onChange` callback once with `1`', () => {
+        expect(onChangeSpy.mock.calls[0][1]).toEqual(1)
+      })
+
+      it('calls the `onChange` callback once with `12`', () => {
+        expect(onChangeSpy.mock.calls[1][1]).toEqual(12)
       })
 
       assertInputValue('123')
-      assertOnChangeCall(1, 3)
-      assertOnChangeCall(12, 3)
       assertOnChangeCall(123, 3)
     })
 
-    describe('and the user types a value', () => {
-      beforeEach(async () => {
-        const input = wrapper.getByTestId('number-input-input')
+    describe('and the user types a value with invalid characters', () => {
+      beforeEach(() => {
+        userEvent.type(input, '1')
+        userEvent.type(input, 'a')
+        userEvent.type(input, '2')
+      })
 
-        await userEvent.type(input, '1')
+      it('calls the `onChange` callback with `1`', () => {
+        expect(onChangeSpy.mock.calls[0][1]).toEqual(1)
+      })
+
+      it('calls the `onChange` callback again with `12`', () => {
+        expect(onChangeSpy.mock.calls[1][1]).toEqual(12)
+      })
+
+      assertInputValue('12')
+      assertOnChangeCall(12, 2)
+    })
+
+    describe('and the user types a value', () => {
+      beforeEach(() => {
+        userEvent.type(input, '1')
       })
 
       assertInputValue('1')
       assertOnChangeCall(1, 1)
 
       describe('and the user deletes the value', () => {
-        beforeEach(async () => {
-          const input = wrapper.getByTestId('number-input-input')
-
-          await userEvent.type(input, '{backspace}')
+        beforeEach(() => {
+          userEvent.type(input, '{backspace}')
         })
 
         assertInputValue('')
@@ -227,20 +275,213 @@ describe('NumberInput', () => {
         })
       })
     })
+
+    describe('and the user types a negative value', () => {
+      beforeEach(() => {
+        userEvent.type(input, '-100')
+      })
+
+      assertInputValue('-100')
+      assertOnChangeCall(-100, 4)
+    })
+
+    describe('and the user types only a minus sign', () => {
+      beforeEach(() => {
+        userEvent.type(input, '-')
+      })
+
+      assertInputValue('-')
+      assertOnChangeCall(NaN, 1)
+
+      it('shows a focus border and not an error border', () => {
+        expect(
+          wrapper.getByTestId('number-input-outer-wrapper')
+        ).toHaveStyleRule('box-shadow', expect.stringContaining(ColorAction500))
+      })
+
+      describe('and the input is blurred', () => {
+        beforeEach(() => {
+          input.blur()
+        })
+
+        it('shows an error border', () => {
+          expect(
+            wrapper.getByTestId('number-input-outer-wrapper')
+          ).toHaveStyleRule(
+            'box-shadow',
+            expect.stringContaining(ColorDanger800.toUpperCase())
+          )
+        })
+      })
+
+      describe('and the increase button is clicked', () => {
+        beforeEach(() => {
+          onChangeSpy.mockReset()
+          wrapper.getByTestId('number-input-increase').click()
+        })
+
+        assertInputValue('-')
+
+        it('does not call the onChange callback', () => {
+          expect(onChangeSpy).not.toHaveBeenCalled()
+        })
+      })
+
+      describe('and the decrease button is clicked', () => {
+        beforeEach(() => {
+          onChangeSpy.mockReset()
+          wrapper.getByTestId('number-input-decrease').click()
+        })
+
+        assertInputValue('-')
+
+        it('does not call the onChange callback', () => {
+          expect(onChangeSpy).not.toHaveBeenCalled()
+        })
+      })
+    })
+
+    describe('and the user types a fractional value', () => {
+      beforeEach(() => {
+        userEvent.type(input, '100.1')
+      })
+
+      assertInputValue('100.1')
+      assertOnChangeCall(100.1, 5)
+
+      describe('and a second decimal point is typed after the first', () => {
+        beforeEach(() => {
+          onChangeSpy.mockReset()
+          userEvent.type(input, '.25')
+        })
+
+        assertInputValue('100.125')
+        assertOnChangeCall(100.125, 2)
+      })
+    })
+
+    // Note: Testing Library currently doesn't trigger React's simulated
+    // beforeInput event, so the next two describe blocks do that
+    // manually using the keyPress event.
+    describe.each(['1', '.'])(
+      'and beforeInput is triggered with the valid character %s',
+      (char) => {
+        let event: Event
+
+        beforeEach(() => {
+          event = createEvent.keyPress(input, {
+            which: char.charCodeAt(0),
+          })
+          fireEvent(input, event)
+        })
+
+        it('does not cancel the event', () => {
+          expect(event.defaultPrevented).toBeFalsy()
+        })
+      }
+    )
+
+    describe.each(['f', '@'])(
+      'and beforeInput is triggered with the invalid character %s',
+      (char) => {
+        let event: Event
+
+        beforeEach(() => {
+          event = createEvent.keyPress(input, {
+            which: char.charCodeAt(0),
+          })
+          fireEvent(input, event)
+        })
+
+        it('cancels the event', () => {
+          expect(event.defaultPrevented).toBeTruthy()
+        })
+      }
+    )
+
+    describe.each(['123.456', '-123', '-123.456'])(
+      'and the user pastes the valid value "%s" in an empty input',
+      (pastedValue) => {
+        beforeEach(() => {
+          paste(input, pastedValue)
+        })
+
+        assertInputValue(pastedValue)
+
+        it('calls onChange with the value', () => {
+          expect(onChangeSpy).toHaveBeenLastCalledWith(
+            expect.anything(),
+            parseFloat(pastedValue)
+          )
+        })
+      }
+    )
+
+    describe.each(['123.456', '-123', '-123.456'])(
+      'and the user pastes the valid value "%s" with existing text selected',
+      (pastedValue) => {
+        beforeEach(() => {
+          userEvent.type(input, '999{selectall}')
+          paste(input, pastedValue)
+        })
+
+        assertInputValue(pastedValue)
+
+        it('calls onChange with the value', () => {
+          expect(onChangeSpy).toHaveBeenLastCalledWith(
+            expect.anything(),
+            parseFloat(pastedValue)
+          )
+        })
+      }
+    )
+
+    describe.each(['123.456.789', '123invalid', '-123-456'])(
+      'and the user pastes the invalid value "%s" in an empty input',
+      (pastedValue) => {
+        beforeEach(() => {
+          paste(input, pastedValue)
+        })
+
+        assertInputValue('')
+
+        it('does not call onChange', () => {
+          expect(onChangeSpy).not.toHaveBeenCalled()
+        })
+      }
+    )
+
+    describe.each(['123.456.789', '123invalid', '-123'])(
+      'and the user pastes the invalid value "%s" after an existing value',
+      (pastedValue) => {
+        beforeEach(() => {
+          userEvent.type(input, '100')
+          onChangeSpy.mockReset()
+          paste(input, pastedValue)
+        })
+
+        assertInputValue('100')
+
+        it('does not call onChange', () => {
+          expect(onChangeSpy).not.toHaveBeenCalled()
+        })
+      }
+    )
   })
 
   describe('when there is a footnote', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInput
-          footnote="Footnote"
-          name="number-input"
-          onChange={onChangeSpy}
-        />
-      )
+      const props = {
+        ...defaultProps,
+        footnote: 'Footnote',
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInput {...props} />)
     })
 
-    it('should display the footnote', () => {
+    it('displays the footnote', () => {
       expect(wrapper.getByTestId('number-input-footnote').textContent).toEqual(
         'Footnote'
       )
@@ -249,19 +490,24 @@ describe('NumberInput', () => {
 
   describe('when there is a label', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInput label="Label" name="number-input" onChange={onChangeSpy} />
-      )
+      const props = {
+        ...defaultProps,
+        label: 'Label',
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInput {...props} />)
     })
 
-    it('should apple the `aria-label` attribute to the root element', () => {
-      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+    it('sets the `aria-label` attribute to the root element', () => {
+      expect(wrapper.getByTestId('number-input')).toHaveAttribute(
         'aria-label',
         'Label'
       )
     })
 
-    it('should display the footnote', () => {
+    it('displays the footnote', () => {
       expect(wrapper.getByTestId('number-input-label').textContent).toEqual(
         'Label'
       )
@@ -269,32 +515,60 @@ describe('NumberInput', () => {
   })
 
   describe('when max and min are specified', () => {
+    let input: HTMLElement
+
     beforeEach(() => {
+      const props = {
+        ...defaultProps,
+        max: 3,
+        min: 0,
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
       wrapper = render(
         <>
-          <NumberInput
-            max={3}
-            min={0}
-            name="number-input"
-            onChange={onChangeSpy}
-          />
+          <NumberInput {...props} />
           <input type="text" data-testid="next-field" />
         </>
       )
+
+      input = wrapper.getByTestId('number-input-input')
     })
 
-    it('should apply the correct `aria-valuemin` attribute', () => {
-      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+    it('sets the correct `aria-valuemin` attribute', () => {
+      expect(wrapper.getByTestId('number-input')).toHaveAttribute(
         'aria-valuemin',
         '0'
       )
     })
 
-    it('should apply the correct `aria-valuemax` attribute', () => {
-      expect(wrapper.getByTestId('number-input-container')).toHaveAttribute(
+    it('applies the `aria-valuemax` attribute', () => {
+      expect(wrapper.getByTestId('number-input')).toHaveAttribute(
         'aria-valuemax',
         '3'
       )
+    })
+
+    describe('and the user types -3', () => {
+      beforeEach(() => {
+        userEvent.type(input, '-3')
+      })
+
+      assertInputValue('3')
+      assertOnChangeCall(3, 1)
+    })
+
+    describe('and the user pastes -3', () => {
+      beforeEach(() => {
+        paste(input, '-3')
+      })
+
+      assertInputValue('')
+
+      it('does not call onChange', () => {
+        expect(onChangeSpy).not.toHaveBeenCalled()
+      })
     })
 
     describe('and the increase button is clicked four times', () => {
@@ -326,12 +600,12 @@ describe('NumberInput', () => {
         const increase = wrapper.getByTestId('number-input-increase')
         increase.click()
 
-        wrapper.getByTestId('number-input-input').focus()
+        input.focus()
       })
 
-      describe('and the user types an invalid character', () => {
+      describe('and the value is changed to an alpha character', () => {
         beforeEach(() => {
-          fireEvent.change(wrapper.getByTestId('number-input-input'), {
+          fireEvent.change(input, {
             target: {
               value: 'a',
             },
@@ -341,9 +615,9 @@ describe('NumberInput', () => {
         assertInputValue('1')
       })
 
-      describe('and the user types a valid number', () => {
+      describe('and the value is changed to a valid number', () => {
         beforeEach(() => {
-          fireEvent.change(wrapper.getByTestId('number-input-input'), {
+          fireEvent.change(input, {
             target: {
               value: '3',
             },
@@ -353,9 +627,9 @@ describe('NumberInput', () => {
         assertInputValue('3')
       })
 
-      describe('and the user types an number outside the max min range', () => {
+      describe('and the value is changed to a number outside the max min range', () => {
         beforeEach(() => {
-          fireEvent.change(wrapper.getByTestId('number-input-input'), {
+          fireEvent.change(input, {
             target: {
               value: '4',
             },
@@ -375,11 +649,20 @@ describe('NumberInput', () => {
     })
   })
 
-  describe('when the step is specified', () => {
+  describe.each([
+    [3, 0, 3],
+    [0.1, 0, 0.1],
+    [0.25, 0.9, 1.15],
+  ])('when a step of %s is specified', (step, initial, sum) => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInput name="number-input" step={3} onChange={onChangeSpy} />
-      )
+      const props = {
+        ...defaultProps,
+        step: Number(step),
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInput value={initial} {...props} />)
     })
 
     describe('and the increase button is clicked', () => {
@@ -388,7 +671,7 @@ describe('NumberInput', () => {
         increase.click()
       })
 
-      assertInputValue('3')
+      assertInputValue(String(sum))
 
       describe('and the decrease button is clicked', () => {
         beforeEach(() => {
@@ -396,42 +679,25 @@ describe('NumberInput', () => {
           decrease.click()
         })
 
-        assertInputValue('0')
+        assertInputValue(String(initial))
       })
-    })
-  })
-
-  describe('when the start adornment is specified', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <NumberInput
-          name="number-input"
-          startAdornment="Example"
-          onChange={onChangeSpy}
-        />
-      )
-    })
-
-    it('should render the text', () => {
-      expect(
-        wrapper.getByTestId('number-input-start-adornment')
-      ).toHaveTextContent('Example')
     })
   })
 
   describe('when a CSS class name is specified', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInput
-          className="number-input__custom"
-          name="number-input"
-          onChange={onChangeSpy}
-        />
-      )
+      const props = {
+        ...defaultProps,
+        className: 'number-input__custom',
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInput {...props} />)
     })
 
-    it('should add the CSS modifier', () => {
-      expect(wrapper.getByTestId('number-input-container').classList).toContain(
+    it('sets the CSS modifier', () => {
+      expect(wrapper.getByTestId('number-input').classList).toContain(
         'number-input__custom'
       )
     })
@@ -439,23 +705,24 @@ describe('NumberInput', () => {
 
   describe('when an ID is specified', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInput
-          id="number-input-id"
-          label="Label"
-          name="number-input"
-          onChange={onChangeSpy}
-        />
-      )
+      const props = {
+        ...defaultProps,
+        id: 'number-input-id',
+        label: 'Label',
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInput {...props} />)
     })
 
-    it('should add the ID attribute', () => {
+    it('sets the `id` attribute', () => {
       expect(
         wrapper.getByTestId('number-input-input').getAttribute('id')
       ).toEqual('number-input-id')
     })
 
-    it('should associate the label with the field', () => {
+    it('associates the label with the field', () => {
       expect(
         wrapper.getByTestId('number-input-label').getAttribute('for')
       ).toEqual('number-input-id')
@@ -463,18 +730,20 @@ describe('NumberInput', () => {
   })
 
   describe('when the onBlur callback is specified', () => {
-    let onBlurSpy: (event: React.FormEvent) => void
+    let onBlurSpy: jest.SpyInstance
 
     beforeEach(() => {
-      onBlurSpy = jest.fn()
+      const props = {
+        ...defaultProps,
+        onBlur: (_: React.FormEvent) => true,
+      }
+
+      onBlurSpy = jest.spyOn(props, 'onBlur')
+      onChangeSpy = jest.spyOn(props, 'onChange')
 
       wrapper = render(
         <>
-          <NumberInput
-            name="number-input"
-            onBlur={onBlurSpy}
-            onChange={onChangeSpy}
-          />
+          <NumberInput {...props} />
           <input type="text" data-testid="next-field" />
         </>
       )
@@ -486,132 +755,53 @@ describe('NumberInput', () => {
         wrapper.getByTestId('next-field').focus()
       })
 
-      it('should call the onBlur callback', () => {
+      it('calls the `onBlur` callback', () => {
         expect(onBlurSpy).toHaveBeenCalledTimes(1)
       })
     })
   })
 
-  describe('when there is a unit', () => {
+  describe('when there is a prefix', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInput
-          name="number-input"
-          onChange={onChangeSpy}
-          value={1000}
-          unit="m"
-        />
-      )
+      const props = {
+        ...defaultProps,
+        prefix: String.fromCharCode(163),
+        value: 1000,
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInput {...props} />)
     })
 
-    assertInputValue('1000', 'm')
-    assertAriaValueAttributes({
-      min: null,
-      max: null,
-      now: 1000,
-      text: '1000 m',
-    })
-
-    describe('and the increase button is clicked', () => {
-      beforeEach(() => {
-        wrapper.getByTestId('number-input-increase').click()
-      })
-
-      assertInputValue('1001', 'm')
-      assertAriaValueAttributes({
-        min: null,
-        max: null,
-        now: 1001,
-        text: '1001 m',
-      })
-      assertOnChangeCall(1001)
-    })
-
-    describe('and the decrease button is clicked', () => {
-      beforeEach(() => {
-        wrapper.getByTestId('number-input-decrease').click()
-      })
-
-      assertInputValue('999', 'm')
-      assertAriaValueAttributes({
-        min: null,
-        max: null,
-        now: 999,
-        text: '999 m',
-      })
-      assertOnChangeCall(999)
-    })
-  })
-
-  describe('when there is a unit before', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <NumberInput
-          name="number-input"
-          onChange={onChangeSpy}
-          value={1000}
-          unit="&pound;"
-          unitPosition={UNIT_POSITION.BEFORE}
-        />
-      )
-    })
-
-    assertInputValue('1000', '£')
+    assertInputValue('1000')
     assertAriaValueAttributes({
       min: null,
       max: null,
       now: 1000,
       text: '£ 1000',
     })
+  })
 
-    describe('and the increase button is clicked', () => {
-      beforeEach(() => {
-        wrapper.getByTestId('number-input-increase').click()
-      })
+  describe('when there is a suffix', () => {
+    beforeEach(() => {
+      const props = {
+        ...defaultProps,
+        value: 1000,
+        suffix: 'm',
+      }
 
-      assertInputValue('1001', '£')
-      assertAriaValueAttributes({
-        min: null,
-        max: null,
-        now: 1001,
-        text: '£ 1001',
-      })
-      assertOnChangeCall(1001)
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInput {...props} />)
     })
 
-    describe('and the decrease button is clicked', () => {
-      beforeEach(() => {
-        wrapper.getByTestId('number-input-decrease').click()
-      })
-
-      assertInputValue('999', '£')
-      assertAriaValueAttributes({
-        min: null,
-        max: null,
-        now: 999,
-        text: '£ 999',
-      })
-      assertOnChangeCall(999)
-    })
-
-    describe('and the user focuses and then blurs the input', () => {
-      beforeEach(() => {
-        const input = wrapper.getByTestId(
-          'number-input-input'
-        ) as HTMLInputElement
-
-        fireEvent.focus(input)
-        fireEvent.blur(input)
-      })
-
-      assertInputValue('1000', '£')
-      assertAriaValueAttributes({
-        min: null,
-        max: null,
-        now: 1000,
-        text: '£ 1000',
-      })
-      assertOnChangeCall(1000)
+    assertInputValue('1000')
+    assertAriaValueAttributes({
+      min: null,
+      max: null,
+      now: 1000,
+      text: '1000 m',
     })
   })
 
@@ -620,14 +810,17 @@ describe('NumberInput', () => {
       function NumberInputWithUpdate() {
         const [value, setValue] = useState<number>(1)
 
+        const props = {
+          ...defaultProps,
+          value,
+        }
+
+        onChangeSpy = jest.spyOn(props, 'onChange')
+
         return (
           <>
             <Button onClick={() => setValue(1)}>Update</Button>
-            <NumberInput
-              name="number-input"
-              onChange={onChangeSpy}
-              value={value}
-            />
+            <NumberInput {...props} />
           </>
         )
       }
@@ -636,48 +829,82 @@ describe('NumberInput', () => {
       wrapper.getByTestId('button').click()
     })
 
-    it('should update the value in the field', async () => {
+    it('updates the value in the field', async () => {
       await waitFor(() => {
         expect(wrapper.getByTestId('number-input-input')).toHaveValue('1')
       })
     })
   })
 
-  describe('when there is a clear button', () => {
-    describe('and the clear button is clicked', () => {
-      beforeEach(() => {
-        wrapper = render(
-          <NumberInput
-            canClear
-            name="number-input"
-            onChange={onChangeSpy}
-            value={1000}
-          />
-        )
-
-        wrapper.getByTestId('number-input-clear').click()
-      })
-
-      assertInputValue('')
-    })
-  })
-
   describe('when arbitrary props are specified', () => {
     beforeEach(() => {
-      wrapper = render(
-        <NumberInput
-          data-arbitrary="arbitrary"
-          name="number-input"
-          onChange={onChangeSpy}
-        />
-      )
+      const props = {
+        ...defaultProps,
+        'data-arbitrary': 'arbitrary',
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInput {...props} />)
     })
 
-    it('should spread arbitrary props', () => {
+    it('spreads arbitrary props', () => {
       expect(wrapper.getByTestId('number-input-input')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
       )
+    })
+  })
+
+  describe('when small', () => {
+    beforeEach(() => {
+      const props = {
+        ...defaultProps,
+        label: 'Label',
+        size: COMPONENT_SIZE.SMALL,
+      }
+
+      onChangeSpy = jest.spyOn(props, 'onChange')
+
+      wrapper = render(<NumberInput {...props} />)
+    })
+
+    it('displays the label', () => {
+      expect(wrapper.getByTestId('number-input-label').textContent).toEqual(
+        'Label'
+      )
+    })
+
+    describe('and the increase button is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('number-input-increase').click()
+      })
+
+      it('hides the label', () => {
+        expect(wrapper.getByTestId('number-input-label')).not.toBeVisible()
+      })
+    })
+
+    describe('when focusing on the input', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('number-input-input').focus()
+      })
+
+      it('hides the label', () => {
+        expect(wrapper.getByTestId('number-input-label')).not.toBeVisible()
+      })
+
+      describe('and the number input loses focus', () => {
+        beforeEach(() => {
+          wrapper.getByTestId('number-input-increase').focus()
+        })
+
+        it('displays the label', () => {
+          expect(wrapper.getByTestId('number-input-label').textContent).toEqual(
+            'Label'
+          )
+        })
+      })
     })
   })
 })

@@ -8,18 +8,16 @@ import { Button } from './index'
 describe('Button', () => {
   let wrapper: RenderResult
   let onClickSpy: (event: FormEvent<HTMLButtonElement>) => void
-  let blurSpy: jest.SpyInstance
   let button: HTMLElement
 
   beforeEach(() => {
     onClickSpy = jest.fn()
-    blurSpy = jest.fn()
   })
 
   describe('default props', () => {
     beforeEach(() => {
       wrapper = render(<Button onClick={onClickSpy}>Click me</Button>)
-      button = wrapper.getByText('Click me').parentElement
+      button = wrapper.getByLabelText('Click me')
     })
 
     it('should default the type to "button"', () => {
@@ -32,15 +30,7 @@ describe('Button', () => {
 
     describe('when the button is clicked', () => {
       beforeEach(() => {
-        fireEvent.click(button, {
-          target: {
-            blur: blurSpy,
-          },
-        })
-      })
-
-      it('should blur the button so it does not remain active', () => {
-        expect(blurSpy).toHaveBeenCalledTimes(1)
+        fireEvent.click(button)
       })
 
       it('should handle the click event', () => {
@@ -52,21 +42,11 @@ describe('Button', () => {
   describe('when the onClick callback has not been specified', () => {
     beforeEach(() => {
       wrapper = render(<Button>Click me</Button>)
-      button = wrapper.getByText('Click me').parentElement
+      button = wrapper.getByLabelText('Click me')
     })
 
-    describe('when the button is clicked', () => {
-      beforeEach(() => {
-        fireEvent.click(button, {
-          target: {
-            blur: blurSpy,
-          },
-        })
-      })
-
-      it('should blur the button so it does not remain active', () => {
-        expect(blurSpy).toHaveBeenCalledTimes(1)
-      })
+    it('does not throw an error when the button is clicked', () => {
+      expect(() => fireEvent.click(button)).not.toThrow()
     })
   })
 
@@ -81,7 +61,7 @@ describe('Button', () => {
           Click me
         </Button>
       )
-      button = wrapper.getByText('Click me').parentElement
+      button = wrapper.getByLabelText('Click me')
 
       expect(button).toHaveAttribute('type', expected)
     })
@@ -98,6 +78,41 @@ describe('Button', () => {
 
     it('should render the icon with an `aria-hidden` attribute', () => {
       expect(wrapper.queryByTestId('button-icon')).toHaveAttribute(
+        'aria-hidden',
+        'true'
+      )
+    })
+  })
+
+  describe('when the button is loading', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Button icon={<IconBrightnessLow />} isLoading>
+          Click me
+        </Button>
+      )
+    })
+
+    it('disables the button', () => {
+      expect(wrapper.getByTestId('button')).toBeDisabled()
+    })
+
+    it('hides the user-provided icon', () => {
+      expect(wrapper.getByTestId('button-icon')).toHaveStyleRule(
+        'visibility',
+        'hidden'
+      )
+    })
+
+    it('hides the button text', () => {
+      expect(wrapper.getByTestId('button-icon')).toHaveStyleRule(
+        'visibility',
+        'hidden'
+      )
+    })
+
+    it('shows a loading icon with the `aria-hidden` attribute', () => {
+      expect(wrapper.getByTestId('loading-icon')).toHaveAttribute(
         'aria-hidden',
         'true'
       )

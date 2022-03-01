@@ -24,12 +24,10 @@ function getOffset(startDate: Date, timelineStart: Date): number {
 
 export function useTimelinePosition(
   startDate: Date,
-  endDate: Date
+  endDate: Date = startDate
 ): {
   endsAfterEnd: boolean
   endsBeforeStart: boolean
-  isAfterEnd: boolean
-  isBeforeStart: boolean
   maxWidth: string
   offset: string
   startsAfterEnd: boolean
@@ -39,6 +37,10 @@ export function useTimelinePosition(
   const {
     state: { currentScaleOption },
   } = useContext(TimelineContext)
+
+  if (!currentScaleOption) {
+    throw new Error('Timeline has no current scale option')
+  }
 
   const { from: firstDateDisplayed, to: lastDateDisplayed } = currentScaleOption
 
@@ -65,8 +67,6 @@ export function useTimelinePosition(
     endsBeforeStart,
     startsAfterEnd,
     startsBeforeStart,
-    isAfterEnd: startsAfterEnd,
-    isBeforeStart: startsBeforeStart,
     maxWidth: formatPx(currentScaleOption.widths.day, maxWidth),
     offset: formatPx(currentScaleOption.widths.day, offset),
     width: formatPx(currentScaleOption.widths.day, width),

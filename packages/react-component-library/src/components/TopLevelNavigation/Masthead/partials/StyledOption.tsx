@@ -27,7 +27,7 @@ export const StyledOption = styled.button<StyledOptionProps>`
     box-shadow: 0 0 0 0.2rem rgba(${color('action', '700')}, 0.5);
   }
 
-  .rn-iconfill {
+  > svg {
     fill: ${({ $isActive }) => color('neutral', $isActive ? 'white' : '400')};
   }
 `

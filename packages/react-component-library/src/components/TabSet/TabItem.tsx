@@ -7,7 +7,7 @@ interface TabItemProps {
   tabId: string
   children: React.ReactElement | string
   isActive: boolean
-  onClick: () => void
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void
   onKeyDown: (event: KeyboardEvent<HTMLLIElement>) => void
   isFullWidth?: boolean
   isScrollable?: boolean
@@ -28,7 +28,7 @@ export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
   ) => {
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
-      onClick()
+      onClick(e)
     }
 
     return (

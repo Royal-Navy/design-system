@@ -1,12 +1,12 @@
 import React from 'react'
-import { isAfter } from 'date-fns'
+import { isAfter, setHours, startOfToday } from 'date-fns'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TimelineProvider } from './context'
 import logger from '../../utils/logger'
 
 import { extractChildren, timelineChildrenType } from './helpers/children'
-import { TimelineHours, TimelineHoursProps, TimelineSide } from '.'
+import { TimelineHours, TimelineHoursProps } from '.'
 
 import { TimelineOptions } from './context/types'
 import { DEFAULTS } from './constants'
@@ -17,10 +17,6 @@ export interface TimelineProps extends ComponentWithClass {
    * Collection of composable Timeline compound components.
    */
   children: timelineChildrenType | timelineChildrenType[]
-  /**
-   * Width of a single day unit (pixels).
-   */
-  dayWidth?: number
   /**
    * Specify whether or not to output sidebar headings.
    */
@@ -40,7 +36,7 @@ export interface TimelineProps extends ComponentWithClass {
   /**
    * A month will display either side of this start date.
    */
-  startDate?: Date
+  startDate: Date
   /**
    * Bound the timeline by the specified start and end dates.
    */
@@ -59,19 +55,6 @@ export interface TimelineProps extends ComponentWithClass {
   unitWidth?: number
 }
 
-function hasTimelineSideComponent(
-  children: timelineChildrenType | timelineChildrenType[]
-) {
-  const sideChildren = extractChildren(children, [TimelineSide])
-
-  if (!sideChildren.length) {
-    return false
-  }
-
-  logger.warn('Component `TimelineSide` is deprecated')
-  return true
-}
-
 function getHoursBlockSize(
   children: timelineChildrenType | timelineChildrenType[]
 ) {
@@ -87,7 +70,7 @@ function getHoursBlockSize(
   )
 }
 
-function getEndDate(startDate: Date, endDate: Date) {
+function getEndDate(startDate: Date, endDate: Date | null) {
   if (startDate && endDate && isAfter(startDate, endDate)) {
     logger.error('`startDate` is after `endDate`')
     return null
@@ -99,15 +82,14 @@ function getEndDate(startDate: Date, endDate: Date) {
 export const Timeline: React.FC<TimelineProps> = ({
   children,
   className,
-  dayWidth,
   hasSide = false,
   hideScaling = false,
   hideToolbar = false,
   isFullWidth = false,
   startDate,
-  endDate,
-  today,
-  range,
+  endDate = null,
+  today = setHours(startOfToday(), 12),
+  range = 1,
   unitWidth,
   ...rest
 }) => {
@@ -116,20 +98,14 @@ export const Timeline: React.FC<TimelineProps> = ({
     startDate,
     endDate: getEndDate(startDate, endDate),
     hoursBlockSize: getHoursBlockSize(children),
-    unitWidth: dayWidth || unitWidth || DEFAULTS.UNIT_WIDTH,
+    unitWidth: unitWidth || DEFAULTS.UNIT_WIDTH,
   }
 
-  const hasTimelineSide = hasTimelineSideComponent(children)
-
   return (
-    <TimelineProvider
-      hasSide={hasSide || hasTimelineSide}
-      options={options}
-      today={today}
-    >
+    <TimelineProvider hasSide={hasSide} options={options} today={today}>
       <TimelineGrid
         className={className}
-        hasSide={hasSide || hasTimelineSide}
+        hasSide={hasSide}
         hideScaling={hideScaling}
         hideToolbar={hideToolbar}
         isFullWidth={isFullWidth}

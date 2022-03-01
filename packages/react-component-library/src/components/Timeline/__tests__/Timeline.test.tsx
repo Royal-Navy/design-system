@@ -26,7 +26,6 @@ import {
   TimelineRow,
   TimelineRowProps,
   TimelineRows,
-  TimelineSide,
   TimelineTodayMarker,
   TimelineWeeks,
 } from '..'
@@ -51,7 +50,13 @@ const TimelineDates: React.FC<TimelineDaysProps> = () => {
 describe('Timeline', () => {
   let wrapper: RenderResult
 
+  beforeEach(() => {
+    jest.useFakeTimers()
+    jest.setSystemTime(new Date(2020, 1, 15))
+  })
+
   afterEach(() => {
+    jest.useRealTimers()
     jest.clearAllMocks()
   })
 
@@ -87,7 +92,7 @@ describe('Timeline', () => {
         </Timeline>
       )
 
-      wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+      userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
     })
 
     it('should set the `role` attribute to `grid` on the timeline', () => {
@@ -493,30 +498,20 @@ describe('Timeline', () => {
     })
   })
 
-  describe('when `TimelineSide` is specified', () => {
-    let consoleWarnSpy: jest.SpyInstance
-
+  describe('when `hasSide` prop is specified', () => {
     beforeEach(() => {
-      consoleWarnSpy = jest.spyOn(global.console, 'warn')
-
       wrapper = render(
         <Timeline
           startDate={new Date(2020, 3, 1)}
           today={new Date(2020, 3, 15)}
+          hasSide
         >
-          <TimelineSide />
           <TimelineTodayMarker />
           <TimelineMonths />
           <TimelineWeeks />
           <TimelineDays />
           <TimelineRows>{}</TimelineRows>
         </Timeline>
-      )
-    })
-
-    it('should warn the consumer about using the deprecated component', () => {
-      expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - RNDS - Component `TimelineSide` is deprecated'
       )
     })
 
@@ -794,7 +789,7 @@ describe('Timeline', () => {
           today={new Date(2020, 1, 7, 0, 0, 0)}
         >
           <TimelineMonths
-            render={(index, dayWidth, daysTotal, startDate) => (
+            render={({ index, dayWidth, daysTotal, startDate }) => (
               <CustomMonth
                 data-testid="timeline-custom-month"
                 index={index}
@@ -824,8 +819,6 @@ describe('Timeline', () => {
       isOddNumber,
       offsetPx,
       widthPx,
-      dayWidth,
-      daysTotal,
       startDate,
       ...rest
     }: {
@@ -833,14 +826,12 @@ describe('Timeline', () => {
       isOddNumber: boolean
       offsetPx: string
       widthPx: string
-      dayWidth: number
-      daysTotal: number
       startDate: Date
     }) => {
       return (
         <span {...rest}>
           {startDate.toString()} - {index} - {isOddNumber.toString()} -{' '}
-          {offsetPx} - {widthPx} - {dayWidth} - {daysTotal}
+          {offsetPx} - {widthPx}
         </span>
       )
     }
@@ -852,23 +843,13 @@ describe('Timeline', () => {
           today={new Date(2020, 1, 7, 0, 0, 0)}
         >
           <TimelineWeeks
-            render={(
-              index,
-              isOddNumber,
-              offsetPx,
-              widthPx,
-              dayWidth,
-              daysTotal,
-              startDate
-            ) => (
+            render={({ index, isOddNumber, offsetPx, widthPx, startDate }) => (
               <CustomWeek
                 data-testid="timeline-custom-week"
                 index={index}
                 isOddNumber={isOddNumber}
                 offsetPx={offsetPx}
                 widthPx={widthPx}
-                dayWidth={dayWidth}
-                daysTotal={daysTotal}
                 startDate={startDate}
               />
             )}
@@ -880,7 +861,7 @@ describe('Timeline', () => {
 
     it('should render the day dates as specified', () => {
       const expected =
-        'Mon Jan 27 2020 00:00:00 GMT+0000 (Coordinated Universal Time) - 0 - false - -150px - 210px - 30 - 7'
+        'Mon Jan 27 2020 00:00:00 GMT+0000 (Coordinated Universal Time) - 0 - false - -150px - 210px'
       const firstWeek = wrapper.getAllByTestId('timeline-custom-week')[0]
 
       expect(firstWeek).toHaveTextContent(expected)
@@ -914,7 +895,7 @@ describe('Timeline', () => {
           <TimelineMonths />
           <TimelineWeeks />
           <TimelineDays
-            render={(index, dayWidth, date) => (
+            render={({ index, dayWidth, date }) => (
               <CustomDay
                 data-testid="timeline-custom-day"
                 index={index}
@@ -939,7 +920,7 @@ describe('Timeline', () => {
 
   describe('when hours has `render` specified', () => {
     const CustomHour = ({
-      width,
+      width: _,
       time,
       ...rest
     }: {
@@ -957,7 +938,7 @@ describe('Timeline', () => {
           <TimelineWeeks />
           <TimelineDays />
           <TimelineHours
-            render={(width, time) => (
+            render={({ width, time }) => (
               <CustomHour
                 data-testid="timeline-custom-hour"
                 width={width}
@@ -969,7 +950,7 @@ describe('Timeline', () => {
         </Timeline>
       )
 
-      wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+      userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
     })
 
     it('should render the day dates as specified', () => {
@@ -1006,7 +987,7 @@ describe('Timeline', () => {
         </Timeline>
       )
 
-      wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+      userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
     })
 
     it('renders the correct number of hours', () => {
@@ -1084,7 +1065,7 @@ describe('Timeline', () => {
           <TimelineWeeks />
           <TimelineDays />
           <TimelineRows
-            renderColumns={(index, isOddNumber, offsetPx, widthPx) => (
+            render={({ index, isOddNumber, offsetPx, widthPx }) => (
               <CustomColumn
                 index={index}
                 isOddNumber={isOddNumber}
@@ -1139,16 +1120,16 @@ describe('Timeline', () => {
         <TimelineEvent
           startDate={new Date(2020, 3, 16)}
           endDate={new Date(2020, 3, 20)}
-          render={(
-            startDate: Date,
-            endDate: Date,
-            widthPx: string,
-            offsetPx: string,
-            maxWidthPx: string,
-            startsBeforeStart: boolean,
-            endsAfterEnd: boolean,
+          render={({
+            startDate,
+            endDate,
+            widthPx,
+            offsetPx,
+            maxWidthPx,
+            startsBeforeStart,
+            endsAfterEnd,
             ...rest
-          ) => {
+          }) => {
             return (
               <div data-testid="timeline-custom-event" {...rest}>
                 <span data-testid="timeline-custom-event-start-date">
@@ -1242,6 +1223,23 @@ describe('Timeline', () => {
     })
   })
 
+  describe('when the today marker is displayed and today is omitted', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Timeline startDate={new Date(2020, 1, 1, 0, 0, 0)}>
+          <TimelineTodayMarker />
+          <TimelineRows>{}</TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('positions the today marker at the current date', () => {
+      expect(wrapper.getByTestId('timeline-today-marker')).toHaveStyle({
+        left: '435px',
+      })
+    })
+  })
+
   describe('when today marker has `render` specified', () => {
     const CustomTodayMarker = ({
       today,
@@ -1264,7 +1262,7 @@ describe('Timeline', () => {
           today={new Date(2020, 1, 7, 0, 0, 0)}
         >
           <TimelineTodayMarker
-            render={(today, offset) => (
+            render={({ today, offset }) => (
               <CustomTodayMarker today={today} offset={offset} />
             )}
           />
@@ -1761,7 +1759,7 @@ describe('Timeline', () => {
 
     describe('and then zooming out once (year view)', () => {
       beforeEach(() => {
-        wrapper.getByTestId('timeline-toolbar-zoom-out').click()
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-out'))
       })
 
       it('should render months', () => {
@@ -1804,8 +1802,8 @@ describe('Timeline', () => {
 
     describe('and then zooming out twice (5 year view)', () => {
       beforeEach(() => {
-        wrapper.getByTestId('timeline-toolbar-zoom-out').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-out').click()
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-out'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-out'))
       })
 
       it('should render months', () => {
@@ -1848,7 +1846,7 @@ describe('Timeline', () => {
 
     describe('and then zooming in once (week view)', () => {
       beforeEach(() => {
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
       })
 
       it('should render months', () => {
@@ -1870,8 +1868,8 @@ describe('Timeline', () => {
 
     describe('and then zooming in twice (day view)', () => {
       beforeEach(() => {
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
       })
 
       it('should render months', () => {
@@ -1893,9 +1891,9 @@ describe('Timeline', () => {
 
     describe('and then zooming in thrice (1/4 day view)', () => {
       beforeEach(() => {
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
       })
 
       it('should render months', () => {
@@ -1917,10 +1915,10 @@ describe('Timeline', () => {
 
     describe('and then zooming in four times (1 hour view)', () => {
       beforeEach(() => {
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
-        wrapper.getByTestId('timeline-toolbar-zoom-in').click()
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
       })
 
       it('should render months', () => {
@@ -2059,7 +2057,7 @@ describe('Timeline', () => {
               contentProps={rowContentProps}
               headerProps={rowHeaderProps}
               name="Row 1"
-              renderRowHeader={() => <span>Row with custom style</span>}
+              render={() => <span>Row with custom style</span>}
             >
               <TimelineEvents>
                 <TimelineEvent
@@ -2365,7 +2363,7 @@ describe('Timeline', () => {
 
       wrapper = render(<TimelineWithUpdate />)
 
-      wrapper.getByText('Update').click()
+      userEvent.click(wrapper.getByText('Update'))
     })
 
     it('should not show the event', async () => {
@@ -2434,7 +2432,7 @@ describe('Timeline', () => {
       expect(eventSpy).toBeCalledTimes(1)
       eventSpy.mockClear()
 
-      wrapper.getByText('Force update').click()
+      userEvent.click(wrapper.getByText('Force update'))
       expect(await wrapper.findByText('Render: 2')).toBeInTheDocument()
       expect(eventSpy).not.toBeCalled()
     })
