@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.3...3.1.0) (2022-03-01)
+
+
+### Features
+
+* **TabSet:** Improve scrolling behaviour ([a8bbd60](https://github.com/defencedigital/mod-uk-design-system/commit/a8bbd60eae2c5c2df6b9c422b06d86cc87b62563))
+
+
+
+
+
 ## [2.80.3](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.2...2.80.3) (2022-02-21)
 
 **Note:** Version bump only for package cra-template-defencedigital

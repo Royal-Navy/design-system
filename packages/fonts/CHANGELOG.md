@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.3...3.1.0) (2022-03-01)
+
+
+### Bug Fixes
+
+* **Fonts:** Update Lato source files ([fce45b3](https://github.com/defencedigital/mod-uk-design-system/commit/fce45b3a8a78d7868f9a941e9e83811b14c5e583))
+
+
+
+
+
 ## [2.80.3](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.2...2.80.3) (2022-02-21)
 
 **Note:** Version bump only for package @defencedigital/fonts

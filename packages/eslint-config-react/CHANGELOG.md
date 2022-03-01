@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.3...3.1.0) (2022-03-01)
+
+
+### Bug Fixes
+
+* **ReactComponentLibrary:** Fix react/jsx-no-useless-fragment ([0abab68](https://github.com/defencedigital/mod-uk-design-system/commit/0abab68b67e6a8bc004618e3d4c8b01808f65689))
+
+
+### Features
+
+* **ESLintConfigReact:** Update eslint-config-airbnb to version 19 ([baa39fb](https://github.com/defencedigital/mod-uk-design-system/commit/baa39fb59575257df38bdeeb5f49e6a3cf17bf21))
+
+
+
+
+
 ## [2.80.3](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.2...2.80.3) (2022-02-21)
 
 **Note:** Version bump only for package @defencedigital/eslint-config-react

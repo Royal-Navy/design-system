@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.3...3.1.0) (2022-03-01)
+
+
+### Features
+
+* **DesignTokens:** Enable strict null checks ([22426a2](https://github.com/defencedigital/mod-uk-design-system/commit/22426a2dea99e6a4634d4513ae19dcc3ed3ba884))
+* **GlobalStyleProvider:** Remove root font-size breakpoints ([8ad9bbc](https://github.com/defencedigital/mod-uk-design-system/commit/8ad9bbcf00ae5b66c708b7a6d6b8d243d3cb9117))
+
+
+
+
+
 ## [2.80.3](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.2...2.80.3) (2022-02-21)
 
 **Note:** Version bump only for package @defencedigital/design-tokens

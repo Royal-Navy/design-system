@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.3...3.1.0) (2022-03-01)
+
+
+### Bug Fixes
+
+* **DataList:** Adjust styles ([71f196f](https://github.com/defencedigital/mod-uk-design-system/commit/71f196f4a1561ca1148b3d8950100dce3bc10eb0))
+* **DescriptionList:** Resolve strict null errors ([ac2908e](https://github.com/defencedigital/mod-uk-design-system/commit/ac2908eeb58f7abeec4209e765bd9ea5557303df))
+* **DismissibleBanner:** Fix typo ([64ea6e5](https://github.com/defencedigital/mod-uk-design-system/commit/64ea6e51f68d140f888fb2fc9149c885f0a2afa6))
+* **DismissibleBanner:** Resolve strict null errors ([502fbfd](https://github.com/defencedigital/mod-uk-design-system/commit/502fbfde6807fdcfadbb92032c311b08542fcd5e))
+* **Drawer:** Resolve Storybook docs rendering issues ([bc2e79f](https://github.com/defencedigital/mod-uk-design-system/commit/bc2e79f568bac986303d5cf818cab89c03af4055))
+* **GlobalStyleProvider:** Add missing anchor styles ([e26c9ed](https://github.com/defencedigital/mod-uk-design-system/commit/e26c9edec006e58f3753268c17436049f5db454f))
+* **GlobalStyleProvider:** Correctly set the root font-size ([27dde5b](https://github.com/defencedigital/mod-uk-design-system/commit/27dde5b723d415a4a68808840130d9c06051286c))
+* **ReactComponentLibrary:** Fix default-param-last ([b482364](https://github.com/defencedigital/mod-uk-design-system/commit/b4823644f753ef056d22c7efb45dfe5137906f39))
+* **ReactComponentLibrary:** Fix no-promise-executor-return ([77457f3](https://github.com/defencedigital/mod-uk-design-system/commit/77457f3001be70698ca5de2ce824ecdea87121e6))
+* **ReactComponentLibrary:** Fix react/jsx-no-constructed-context-values ([ae5fc7a](https://github.com/defencedigital/mod-uk-design-system/commit/ae5fc7ac8b83feff41cda0fd40c74d72dbb1ea79))
+* **ReactComponentLibrary:** Fix react/jsx-no-useless-fragment ([0abab68](https://github.com/defencedigital/mod-uk-design-system/commit/0abab68b67e6a8bc004618e3d4c8b01808f65689))
+* **ReactComponentLibrary:** Fix react/no-unstable-nested-components ([5bce765](https://github.com/defencedigital/mod-uk-design-system/commit/5bce765f765e172cedd258009e6aaee8bbc5073e))
+* **Storybook:** Add `GlobalStyleProvider` global decorator ([cbc3b4a](https://github.com/defencedigital/mod-uk-design-system/commit/cbc3b4a9ccac6b180dd7a26fbb8219bd99d36d2f))
+* **Storybook:** Remove duplicate font loading ([d9a91c9](https://github.com/defencedigital/mod-uk-design-system/commit/d9a91c9097f84cfa002495ffb380d6b523f3b53c))
+* **Timeline:** Add hasSide prop ([d715369](https://github.com/defencedigital/mod-uk-design-system/commit/d715369856625e5aa15d349a744985c0aadeb0fc))
+* **Timeline:** Resolve strict null errors and correct default today date ([63c4848](https://github.com/defencedigital/mod-uk-design-system/commit/63c4848877a872115940fd3d87a13f9d3f337998))
+
+
+### Features
+
+* **Autocomplete:** Expose stable implementation ([9f3cab0](https://github.com/defencedigital/mod-uk-design-system/commit/9f3cab09ed3ba665df0f28250705140ebfa0a821))
+* **Button:** Replace deprecated implementation ([f416322](https://github.com/defencedigital/mod-uk-design-system/commit/f4163227744569d22dcbd1a966f0dacc5ea8a42c))
+* **CheckboxE:** Add description ([778d11f](https://github.com/defencedigital/mod-uk-design-system/commit/778d11ff0cdd489ebcf9a4e1ce03c52b090f475d))
+* **CheckboxE:** Add no-container variant ([7e487ee](https://github.com/defencedigital/mod-uk-design-system/commit/7e487eea0d5cead15e886e0c285547a350a02afd))
+* **CheckboxE:** Allow arbitrary content ([448dfa3](https://github.com/defencedigital/mod-uk-design-system/commit/448dfa35702ff086e8d632364d7e338db71c8b06))
+* **Checkbox:** Replace deprecated implementation ([8594ea1](https://github.com/defencedigital/mod-uk-design-system/commit/8594ea1b3e0f01a041a2cb97bda504977e0dd19a))
+* **ContextMenu:** Position based on available screen real estate ([abfb7d3](https://github.com/defencedigital/mod-uk-design-system/commit/abfb7d3b2110fb857e0b04860d159c061783c1c1))
+* **ContextMenu:** Raise callback with event ([261842e](https://github.com/defencedigital/mod-uk-design-system/commit/261842e699170145bb8290336a5e7fc26cb44e5e))
+* **DatePicker:** Replace deprecated implementation ([cd7d589](https://github.com/defencedigital/mod-uk-design-system/commit/cd7d589e8e5712735702c4548c0f68cd01051e44))
+* **Field:** Apply ARIA attributes ([18fc18a](https://github.com/defencedigital/mod-uk-design-system/commit/18fc18a7bcd92f6758436c779026f683619f07ac))
+* **Fieldset:** Implement component ([5af37a8](https://github.com/defencedigital/mod-uk-design-system/commit/5af37a857ef6eef8bc117d76365486c2522b604d))
+* **Forms:** Create base `Field` component ([e1e9012](https://github.com/defencedigital/mod-uk-design-system/commit/e1e901262e725e312898f203824530875669ec9b))
+* **Forms:** Leverage `Field` component in Native form ([b44e69d](https://github.com/defencedigital/mod-uk-design-system/commit/b44e69dfaecc974ecbe159766408d7d6d49d3c14))
+* **Forms:** Leverage `Field` component in react-hook-form ([b807bec](https://github.com/defencedigital/mod-uk-design-system/commit/b807beca63acffc3e985ca3fcb474663a78a4cbb))
+* **Forms:** Remove `Formik` centric code ([7800239](https://github.com/defencedigital/mod-uk-design-system/commit/78002391500683837e64877cfc50378c6eab1150))
+* **GlobalStyleProvider:** Remove root font-size breakpoints ([8ad9bbc](https://github.com/defencedigital/mod-uk-design-system/commit/8ad9bbcf00ae5b66c708b7a6d6b8d243d3cb9117))
+* **Masthead:** Call callback with event ([85bddec](https://github.com/defencedigital/mod-uk-design-system/commit/85bddecd17c7a4cdbd04ecafb02dfa568a095ed3))
+* **Masthead:** Update default `Logo` icon ([b87113a](https://github.com/defencedigital/mod-uk-design-system/commit/b87113a36a953f7ac846f7477129129d6c575835))
+* **NumberInput:** Replace deprecated implementation ([bb26195](https://github.com/defencedigital/mod-uk-design-system/commit/bb26195dbb1beb5638afa637d501f00de26f2dfb))
+* **Pagination:** Call callback with event ([54eee8e](https://github.com/defencedigital/mod-uk-design-system/commit/54eee8e9ad19058dafc9d2d880141d55699a376a))
+* **RadioE:** Add description ([71c5910](https://github.com/defencedigital/mod-uk-design-system/commit/71c5910c0f7f7976f80ce8ab84dffef976d09cd1))
+* **RadioE:** Add no-container variant ([fd1e2a8](https://github.com/defencedigital/mod-uk-design-system/commit/fd1e2a8d3ba361799352fbb86cd815bdbd17e997))
+* **RadioE:** Allow arbitrary content ([1db03de](https://github.com/defencedigital/mod-uk-design-system/commit/1db03de56258faa0f0b0dcfe61cba5c156e5ed3d))
+* **Radio:** Replace deprecated implementation ([8ed9f3f](https://github.com/defencedigital/mod-uk-design-system/commit/8ed9f3f757928ef6bfb3423dcc483a12a1e8ef3a))
+* **RangeSlider:** Replace deprecated implementation ([a86e222](https://github.com/defencedigital/mod-uk-design-system/commit/a86e22230a45af052aacae65d75398a3997015f1))
+* **ReactComponentLibrary:** Turn on strict null checks ([f7bc716](https://github.com/defencedigital/mod-uk-design-system/commit/f7bc7164ed46f5f38df38bf2c4ae1bcd735b40bd))
+* **Searchbar:** Call callback with event ([9e862b8](https://github.com/defencedigital/mod-uk-design-system/commit/9e862b83226f56fae2f305763f5f9ce6527c8eb9))
+* **SectionDivider:** Implement component ([9a12b10](https://github.com/defencedigital/mod-uk-design-system/commit/9a12b1063457c914e7eb875e6f06358c7266712f))
+* **Select:** Replace deprecated implementation ([f6b56ac](https://github.com/defencedigital/mod-uk-design-system/commit/f6b56aca3bc78eca2ad37f8757cd3c653c73c2a4))
+* **Sidebar:** Expose stable implementation ([0f53a32](https://github.com/defencedigital/mod-uk-design-system/commit/0f53a3299f8c788fcdd681b60b6aa7afa5c4c61d))
+* **Switch:** Replace deprecated implementation ([aabe4ac](https://github.com/defencedigital/mod-uk-design-system/commit/aabe4ac3fa0473148ee1e40e7864db637c66825c))
+* **TabSet:** Call callback with event ([d941b7b](https://github.com/defencedigital/mod-uk-design-system/commit/d941b7bf812dd84edeaa0016e027be989d22f6c2))
+* **TabSet:** Improve scrolling behaviour ([a8bbd60](https://github.com/defencedigital/mod-uk-design-system/commit/a8bbd60eae2c5c2df6b9c422b06d86cc87b62563))
+* **TextArea:** Replace deprecated implementation ([67897e4](https://github.com/defencedigital/mod-uk-design-system/commit/67897e4d064bd7b62c1b417e9070239e253ca38b))
+* **TextInput:** Replace deprecated implementation ([2592488](https://github.com/defencedigital/mod-uk-design-system/commit/25924882e6a2778e5d215f1d376d24aa28513c4f))
+* **Timeline:** Remove deprecated `isBeforeStart` and `isAfterEnd` ([2f1304a](https://github.com/defencedigital/mod-uk-design-system/commit/2f1304a4ceb7e4b9e10802564dae31c329266ca3))
+* **Timeline:** Remove deprecated `TimelineSide` ([d6db84a](https://github.com/defencedigital/mod-uk-design-system/commit/d6db84aa5ec2532fe9b258242350e916d953e495))
+* **TimelineWeeks:** Remove some redundant `render` params ([757f1bd](https://github.com/defencedigital/mod-uk-design-system/commit/757f1bd28f54140e4d4cd2ab729956aab32376da))
+
+
+
+
+
 ## [2.80.3](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.2...2.80.3) (2022-02-21)
 
 **Note:** Version bump only for package @defencedigital/react-component-library
