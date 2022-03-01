@@ -48,12 +48,6 @@ export default {
   title: 'Sidebar',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
-    docs: {
-      description: {
-        component:
-          'This API is experimental and may change outside of the typical semver release cycle.',
-      },
-    },
     layout: 'fullscreen',
   },
 } as ComponentMeta<typeof Sidebar>
