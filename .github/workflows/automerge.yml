@@ -5,7 +5,7 @@ on:
     types:
       - completed
     workflows:
-      - 'Build & Test Feature'
+      - 'Build & Test'
     branches:
       - 'dependabot/**'
 

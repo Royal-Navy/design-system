@@ -57,6 +57,25 @@ jobs:
       - name: Run audit
         run: yarn run audit
 
+  Check_commits:
+    runs-on: ubuntu-latest
+    needs: Build_icon_library
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: Git clone repository
+        uses: actions/checkout@v2
+
+      - name: Cache Node modules
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: check commits
+        run: |
+          node ./scripts/commitlint ${{ github.event.pull_request._links.html.href }}
+          node ./scripts/check-fixup ${{ github.event.pull_request._links.html.href }}
+
   Lint_react-component-library:
     runs-on: ubuntu-latest
     steps:
