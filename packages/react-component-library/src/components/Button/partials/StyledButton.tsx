@@ -12,7 +12,12 @@ interface StyledButtonProps {
   $iconPosition: ButtonIconPositionType
 }
 
-const { color, spacing, fontSize } = selectors
+const { color, spacing, fontSize, shadow } = selectors
+
+const DROP_SHADOW = `0 2px 6px ${rgba(0, 0, 0, 0.3)}`
+const TRANSPARENT_SHADOW = shadow('0')
+const DEFAULT_HOVER_BORDER_SHADOW = `0 0 0 3px ${color('action', '100')}`
+const DANGER_HOVER_BORDER_SHADOW = `0 0 0 3px ${color('danger', '100')}`
 
 export const StyledButton = styled.button<StyledButtonProps>`
   position: relative;
@@ -23,6 +28,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   align-items: center;
   justify-content: center;
   border-radius: 15px;
+  box-shadow: ${TRANSPARENT_SHADOW}, ${DROP_SHADOW};
   outline: 0;
   padding: 0 ${spacing('6')};
   font-size: ${fontSize('m')};
@@ -48,70 +54,54 @@ export const StyledButton = styled.button<StyledButtonProps>`
   ${({ $variant }) =>
     $variant === BUTTON_VARIANT.PRIMARY &&
     css`
-      border: 1px solid ${color('action', '600')};
       color: ${color('neutral', 'white')};
       background-color: ${color('action', '600')};
-      box-shadow: 0 1px 3px ${rgba(0, 0, 0, 0.1)};
+      border: 2px solid ${color('action', '800')};
 
       &:focus,
       &:hover {
-        background-color: ${color('action', '700')};
+        background-color: ${color('action', '800')};
       }
 
       &:active {
-        background-color: ${color('action', '800')};
+        background-color: ${color('action', '900')};
       }
     `}
 
   ${({ $variant }) =>
     $variant === BUTTON_VARIANT.SECONDARY &&
     css`
-      color: ${color('neutral', '500')};
-      background-color: ${color('neutral', 'white')};
-      border: 1px solid ${color('neutral', '200')};
-      box-shadow: 0 1px 3px ${rgba(0, 0, 0, 0.1)};
+      color: ${color('action', '900')};
+      background-color: ${color('action', '100')};
+      border: 2px solid ${color('action', '600')};
+
+      &:focus,
+      &:hover {
+        background-color: ${color('action', '200')};
+      }
+
+      &:active {
+        background-color: ${color('action', '300')};
+      }
     `}
 
   ${({ $variant }) =>
     $variant === BUTTON_VARIANT.TERTIARY &&
     css`
-      background-color: transparent;
-      background-image: none;
-      border: 1px solid transparent;
-      color: ${color('neutral', '500')};
-      text-decoration: underline;
+      color: ${color('action', '600')};
+      background-color: ${color('neutral', 'white')};
+      border: 1px solid ${color('action', '600')};
 
-      &:disabled {
-        text-decoration: none;
-        text-decoration-line: underline;
-        text-decoration-color: transparent;
-      }
-
-      &:active,
       &:focus,
       &:hover {
-        color: ${color('neutral', '500')};
-        border: 1px solid ${color('neutral', '200')};
-        text-decoration: none;
-        text-decoration-line: underline;
-        text-decoration-color: transparent;
-      }
-    `}
-
-
-  ${({ $variant }) =>
-    ($variant === BUTTON_VARIANT.TERTIARY ||
-      $variant === BUTTON_VARIANT.SECONDARY) &&
-    css`
-      &:focus,
-      &:hover {
-        background-color: ${color('neutral', 'white')};
+        background-color: ${color('neutral', '000')};
       }
 
       &:active {
         background-color: ${color('neutral', '100')};
       }
     `}
+
 
   ${({ $variant }) =>
     ($variant === BUTTON_VARIANT.PRIMARY ||
@@ -120,12 +110,11 @@ export const StyledButton = styled.button<StyledButtonProps>`
     css`
       &:focus,
       &:hover {
-        box-shadow: 0 1px 3px ${rgba(0, 0, 0, 0.1)},
-          0 0 0 3px ${color('action', '100')};
+        box-shadow: ${DEFAULT_HOVER_BORDER_SHADOW}, ${DROP_SHADOW};
       }
 
       &:active {
-        box-shadow: 0 1px 3px transparent, 0 0 0 3px ${color('action', '100')};
+        box-shadow: ${TRANSPARENT_SHADOW}, ${TRANSPARENT_SHADOW};
       }
 
       &:disabled {
@@ -134,9 +123,10 @@ export const StyledButton = styled.button<StyledButtonProps>`
         &:active,
         &:focus {
           background: ${color('neutral', '000')};
-          border: 1px solid ${color('neutral', '200')};
+          border: ${$variant === BUTTON_VARIANT.TERTIARY ? '1px' : '2px'} solid
+            ${color('neutral', '200')};
           box-shadow: none;
-          color: ${color('neutral', '300')};
+          color: ${color('neutral', '400')};
           cursor: not-allowed;
         }
       }
@@ -145,20 +135,19 @@ export const StyledButton = styled.button<StyledButtonProps>`
   ${({ $variant }) =>
     $variant === BUTTON_VARIANT.DANGER &&
     css`
-      background-color: ${color('danger', '700')};
-      border: 1px solid ${color('danger', '700')};
       color: ${color('neutral', 'white')};
+      background-color: ${color('danger', '700')};
+      border: 2px solid ${color('danger', '900')};
 
       &:focus,
       &:hover {
         background-color: ${color('danger', '800')};
-        box-shadow: 0 1px 3px ${rgba(0, 0, 0, 0.1)},
-          0 0 0 3px ${color('danger', '100')};
+        box-shadow: ${DANGER_HOVER_BORDER_SHADOW}, ${DROP_SHADOW};
       }
 
       &:active {
         background-color: ${color('danger', '900')};
-        box-shadow: 0 1px 3px transparent, 0 0 0 3px ${color('danger', '100')};
+        box-shadow: ${TRANSPARENT_SHADOW}, ${TRANSPARENT_SHADOW};
       }
 
       &:disabled {
@@ -166,10 +155,10 @@ export const StyledButton = styled.button<StyledButtonProps>`
         &:hover,
         &:active,
         &:focus {
-          background: ${color('danger', '000')};
-          border: 1px solid ${color('neutral', '200')};
+          background: ${color('neutral', '000')};
+          border: 2px solid ${color('neutral', '200')};
           box-shadow: none;
-          color: ${color('neutral', '300')};
+          color: ${color('neutral', '400')};
           cursor: not-allowed;
         }
       }
