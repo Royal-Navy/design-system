@@ -19,6 +19,45 @@ const TRANSPARENT_SHADOW = shadow('0')
 const DEFAULT_HOVER_BORDER_SHADOW = `0 0 0 3px ${color('action', '100')}`
 const DANGER_HOVER_BORDER_SHADOW = `0 0 0 3px ${color('danger', '100')}`
 
+const COLOR_MAP = {
+  [BUTTON_VARIANT.PRIMARY]: {
+    color: color('neutral', 'white'),
+    backgroundColor: color('action', '600'),
+    borderColor: color('action', '800'),
+    borderWidth: '2px',
+    hoverBackgroundColor: color('action', '800'),
+    hoverBoxShadow: DEFAULT_HOVER_BORDER_SHADOW,
+    activeBackgroundColor: color('action', '900'),
+  },
+  [BUTTON_VARIANT.SECONDARY]: {
+    color: color('action', '900'),
+    backgroundColor: color('action', '100'),
+    borderColor: color('action', '600'),
+    borderWidth: '2px',
+    hoverBackgroundColor: color('action', '200'),
+    hoverBoxShadow: DEFAULT_HOVER_BORDER_SHADOW,
+    activeBackgroundColor: color('action', '300'),
+  },
+  [BUTTON_VARIANT.TERTIARY]: {
+    color: color('action', '600'),
+    backgroundColor: color('neutral', 'white'),
+    borderColor: color('action', '600'),
+    borderWidth: '1px',
+    hoverBackgroundColor: color('neutral', '000'),
+    hoverBoxShadow: DEFAULT_HOVER_BORDER_SHADOW,
+    activeBackgroundColor: color('neutral', '100'),
+  },
+  [BUTTON_VARIANT.DANGER]: {
+    color: color('neutral', 'white'),
+    backgroundColor: color('danger', '700'),
+    borderColor: color('danger', '900'),
+    borderWidth: '2px',
+    hoverBackgroundColor: color('danger', '800'),
+    hoverBoxShadow: DANGER_HOVER_BORDER_SHADOW,
+    activeBackgroundColor: color('danger', '900'),
+  },
+}
+
 export const StyledButton = styled.button<StyledButtonProps>`
   position: relative;
   height: 46px;
@@ -43,6 +82,10 @@ export const StyledButton = styled.button<StyledButtonProps>`
     text-decoration: none;
   }
 
+  &:active {
+    box-shadow: ${TRANSPARENT_SHADOW}, ${TRANSPARENT_SHADOW};
+  }
+
   ${({ $size }) =>
     $size === COMPONENT_SIZE.SMALL &&
     css`
@@ -52,115 +95,35 @@ export const StyledButton = styled.button<StyledButtonProps>`
     `}
 
   ${({ $variant }) =>
-    $variant === BUTTON_VARIANT.PRIMARY &&
     css`
-      color: ${color('neutral', 'white')};
-      background-color: ${color('action', '600')};
-      border: 2px solid ${color('action', '800')};
+      color: ${COLOR_MAP[$variant].color};
+      background-color: ${COLOR_MAP[$variant].backgroundColor};
+      border: ${COLOR_MAP[$variant].borderWidth} solid
+        ${COLOR_MAP[$variant].borderColor};
 
       &:focus,
       &:hover {
-        background-color: ${color('action', '800')};
+        background-color: ${COLOR_MAP[$variant].hoverBackgroundColor};
+        box-shadow: ${COLOR_MAP[$variant].hoverBoxShadow}, ${DROP_SHADOW};
       }
 
       &:active {
-        background-color: ${color('action', '900')};
-      }
-    `}
-
-  ${({ $variant }) =>
-    $variant === BUTTON_VARIANT.SECONDARY &&
-    css`
-      color: ${color('action', '900')};
-      background-color: ${color('action', '100')};
-      border: 2px solid ${color('action', '600')};
-
-      &:focus,
-      &:hover {
-        background-color: ${color('action', '200')};
-      }
-
-      &:active {
-        background-color: ${color('action', '300')};
-      }
-    `}
-
-  ${({ $variant }) =>
-    $variant === BUTTON_VARIANT.TERTIARY &&
-    css`
-      color: ${color('action', '600')};
-      background-color: ${color('neutral', 'white')};
-      border: 1px solid ${color('action', '600')};
-
-      &:focus,
-      &:hover {
-        background-color: ${color('neutral', '000')};
-      }
-
-      &:active {
-        background-color: ${color('neutral', '100')};
-      }
-    `}
-
-
-  ${({ $variant }) =>
-    ($variant === BUTTON_VARIANT.PRIMARY ||
-      $variant === BUTTON_VARIANT.SECONDARY ||
-      $variant === BUTTON_VARIANT.TERTIARY) &&
-    css`
-      &:focus,
-      &:hover {
-        box-shadow: ${DEFAULT_HOVER_BORDER_SHADOW}, ${DROP_SHADOW};
-      }
-
-      &:active {
+        background-color: ${COLOR_MAP[$variant].activeBackgroundColor};
         box-shadow: ${TRANSPARENT_SHADOW}, ${TRANSPARENT_SHADOW};
       }
-
-      &:disabled {
-        &,
-        &:hover,
-        &:active,
-        &:focus {
-          background: ${color('neutral', '000')};
-          border: ${$variant === BUTTON_VARIANT.TERTIARY ? '1px' : '2px'} solid
-            ${color('neutral', '200')};
-          box-shadow: none;
-          color: ${color('neutral', '400')};
-          cursor: not-allowed;
-        }
-      }
     `}
 
-  ${({ $variant }) =>
-    $variant === BUTTON_VARIANT.DANGER &&
-    css`
-      color: ${color('neutral', 'white')};
-      background-color: ${color('danger', '700')};
-      border: 2px solid ${color('danger', '900')};
-
-      &:focus,
-      &:hover {
-        background-color: ${color('danger', '800')};
-        box-shadow: ${DANGER_HOVER_BORDER_SHADOW}, ${DROP_SHADOW};
-      }
-
-      &:active {
-        background-color: ${color('danger', '900')};
-        box-shadow: ${TRANSPARENT_SHADOW}, ${TRANSPARENT_SHADOW};
-      }
-
-      &:disabled {
-        &,
-        &:hover,
-        &:active,
-        &:focus {
-          background: ${color('neutral', '000')};
-          border: 2px solid ${color('neutral', '200')};
-          box-shadow: none;
-          color: ${color('neutral', '400')};
-          cursor: not-allowed;
-        }
-      }
-    `}
+  &:disabled {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      color: ${color('neutral', '400')};
+      background-color: ${color('neutral', '000')};
+      border: ${({ $variant }) => COLOR_MAP[$variant].borderWidth} solid
+        ${color('neutral', '200')};
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+  }
 `
