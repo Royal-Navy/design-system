@@ -6,12 +6,6 @@ import { BUTTON_ICON_POSITION, BUTTON_VARIANT } from '../constants'
 import { ButtonIconPositionType, ButtonVariantType } from '../Button'
 import { ComponentSizeType, COMPONENT_SIZE } from '../../Forms'
 
-interface StyledButtonProps {
-  $variant: ButtonVariantType
-  $size: ComponentSizeType
-  $iconPosition: ButtonIconPositionType
-}
-
 const { color, spacing, fontSize, shadow } = selectors
 
 const DROP_SHADOW = `0 2px 6px ${rgba(0, 0, 0, 0.3)}`
@@ -58,44 +52,59 @@ const COLOR_MAP = {
   },
 }
 
-export const StyledButton = styled.button<StyledButtonProps>`
-  position: relative;
-  height: 46px;
-  display: inline-flex;
-  flex-direction: ${({ $iconPosition }) =>
-    $iconPosition === BUTTON_ICON_POSITION.LEFT ? 'row-reverse' : 'row'};
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
-  box-shadow: ${TRANSPARENT_SHADOW}, ${DROP_SHADOW};
-  outline: 0;
-  padding: 0 ${spacing('6')};
-  font-size: ${fontSize('m')};
-  font-weight: 400;
-  text-decoration: none;
-  cursor: pointer;
-  user-select: none;
-  transition: all 75ms cubic-bezier(0, 1.19, 0.82, 0.9);
-  white-space: nowrap;
+const SIZE_MAP = {
+  [COMPONENT_SIZE.FORMS]: {
+    height: '46px',
+    fontSize: fontSize('m'),
+    borderRadius: '15px',
+  },
+  [COMPONENT_SIZE.SMALL]: {
+    height: '33px',
+    fontSize: fontSize('base'),
+    borderRadius: '10px',
+  },
+}
 
-  &:hover {
+interface StyledButtonProps {
+  $variant: ButtonVariantType
+  $size: ComponentSizeType
+  $iconPosition?: ButtonIconPositionType
+}
+
+export function getButtonStyles({
+  $size,
+  $variant,
+  $iconPosition = BUTTON_ICON_POSITION.RIGHT,
+}: StyledButtonProps) {
+  return css`
+    height: ${SIZE_MAP[$size].height};
+    display: inline-flex;
+    flex-direction: ${$iconPosition === BUTTON_ICON_POSITION.LEFT
+      ? 'row-reverse'
+      : 'row'};
+    align-items: center;
+    justify-content: center;
+    border-radius: ${SIZE_MAP[$size].borderRadius};
+    box-shadow: ${TRANSPARENT_SHADOW}, ${DROP_SHADOW};
+    outline: 0;
+    padding: 0 ${spacing('6')};
+    font-size: ${SIZE_MAP[$size].fontSize};
+    font-weight: 400;
     text-decoration: none;
-  }
+    cursor: pointer;
+    user-select: none;
+    transition: all 75ms cubic-bezier(0, 1.19, 0.82, 0.9);
+    white-space: nowrap;
 
-  &:active {
-    box-shadow: ${TRANSPARENT_SHADOW}, ${TRANSPARENT_SHADOW};
-  }
+    &:hover {
+      text-decoration: none;
+    }
 
-  ${({ $size }) =>
-    $size === COMPONENT_SIZE.SMALL &&
-    css`
-      border-radius: 10px;
-      height: 33px;
-      font-size: ${fontSize('base')};
-    `}
+    &:active {
+      box-shadow: ${TRANSPARENT_SHADOW}, ${TRANSPARENT_SHADOW};
+    }
 
-  ${({ $variant }) =>
-    css`
+    ${css`
       color: ${COLOR_MAP[$variant].color};
       background-color: ${COLOR_MAP[$variant].backgroundColor};
       border: ${COLOR_MAP[$variant].borderWidth} solid
@@ -113,17 +122,23 @@ export const StyledButton = styled.button<StyledButtonProps>`
       }
     `}
 
-  &:disabled {
-    &,
-    &:hover,
-    &:active,
-    &:focus {
-      color: ${color('neutral', '400')};
-      background-color: ${color('neutral', '000')};
-      border: ${({ $variant }) => COLOR_MAP[$variant].borderWidth} solid
-        ${color('neutral', '200')};
-      box-shadow: none;
-      cursor: not-allowed;
+    &:disabled {
+      &,
+      &:hover,
+      &:active,
+      &:focus {
+        color: ${color('neutral', '400')};
+        background-color: ${color('neutral', '000')};
+        border: ${COLOR_MAP[$variant].borderWidth} solid
+          ${color('neutral', '200')};
+        box-shadow: none;
+        cursor: not-allowed;
+      }
     }
-  }
+  `
+}
+
+export const StyledButton = styled.button<StyledButtonProps>`
+  position: relative;
+  ${getButtonStyles};
 `

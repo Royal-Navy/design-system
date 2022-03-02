@@ -1,6 +1,10 @@
 import DayPicker from 'react-day-picker'
 import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
+
+import { BUTTON_VARIANT } from '../../Button'
+import { COMPONENT_SIZE } from '../../Forms'
+import { getButtonStyles } from '../../Button/partials/StyledButton'
 import { isIE11 } from '../../../helpers'
 
 const { color, spacing, fontSize } = selectors
@@ -50,36 +54,16 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
   }
 
   .DayPicker-NavButton {
+    ${getButtonStyles({
+      $size: COMPONENT_SIZE.SMALL,
+      $variant: BUTTON_VARIANT.SECONDARY,
+    })};
     position: absolute;
     top: ${spacing('6')};
-    cursor: pointer;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
     width: 38px;
-    height: 33px;
-    padding: 0;
-    border: 1px solid ${color('neutral', '200')};
-    border-radius: 10px;
-    outline: none;
-    color: ${color('neutral', '300')};
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    background-color: ${color('neutral', 'white')};
     background-position: center;
     background-size: 18px;
     background-repeat: no-repeat;
-
-    &:focus,
-    &:hover {
-      background-color: ${color('neutral', 'white')};
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1),
-        0 0 0 3px ${color('action', '100')};
-    }
-
-    &:active {
-      background-color: ${color('neutral', '100')};
-      box-shadow: 0 1px 3px transparent, 0 0 0 3px ${color('action', '100')};
-    }
   }
 
   .DayPicker-NavButton--prev {
