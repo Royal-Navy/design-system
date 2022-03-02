@@ -10,13 +10,13 @@ To install it, run the relevant command for your package manager:
 
 ```shell
 // npm
-npm install @defencedigital/fonts @defencedigital/react-component-library styled-components formik
+npm install @defencedigital/fonts @defencedigital/react-component-library styled-components
 
 // yarn
-yarn add @defencedigital/fonts @defencedigital/react-component-library styled-components formik
+yarn add @defencedigital/fonts @defencedigital/react-component-library styled-components
 ```
 
-Note: [`styled-components`](https://styled-components.com/) and [`formik`](https://formik.org/) are required [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/) and are installed with the above commands.
+Note: [`styled-components`](https://styled-components.com/) is a required [peer dependency](https://nodejs.org/en/blog/npm/peer-dependencies/) and is installed with the above command.
 
 ## Usage
 

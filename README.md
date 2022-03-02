@@ -29,13 +29,13 @@ To install and save to your project's package.json dependencies, run:
 
 ```
 # with npm
-npm install @defencedigital/fonts @defencedigital/react-component-library styled-components formik
+npm install @defencedigital/fonts @defencedigital/react-component-library styled-components
 
 # ...or with yarn
-yarn add @defencedigital/fonts @defencedigital/react-component-library styled-components formik
+yarn add @defencedigital/fonts @defencedigital/react-component-library styled-components
 ```
 
-Note: [`styled-components`](https://styled-components.com/) and [`formik`](https://formik.org/) are required [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/) and are installed with the above commands.
+Note: [`styled-components`](https://styled-components.com/) is a required [peer dependency](https://nodejs.org/en/blog/npm/peer-dependencies/) and is installed with the above command.
 
 ### Quick start
 
