@@ -99,8 +99,18 @@ describe('Pagination', () => {
     })
 
     describe('and the `Next` button is clicked', () => {
+      let inputName: string | null
+
       beforeEach(() => {
+        inputName = wrapper.getByTestId('text-input-input').getAttribute('name')
         userEvent.click(wrapper.getByTestId('page-next'))
+      })
+
+      it('does not generate new a new input `name`', () => {
+        expect(wrapper.getByTestId('text-input-input')).toHaveAttribute(
+          'name',
+          inputName
+        )
       })
 
       it('should call the onChange callback', () => {
