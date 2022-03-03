@@ -94,4 +94,39 @@ describe('Modal', () => {
       })
     })
   })
+
+  describe('when the Dialog description changes', () => {
+    let initialTitleId: string
+    let initialDescriptionId: string
+
+    const ExampleDialog = ({
+      exampleDescription,
+    }: {
+      exampleDescription: string
+    }) => (
+      <Dialog title="Example title" description={exampleDescription} isOpen />
+    )
+
+    beforeEach(() => {
+      wrapper = render(<ExampleDialog exampleDescription="initial content" />)
+      initialTitleId = wrapper.getByTestId('dialog-title').id
+      initialDescriptionId = wrapper.getByTestId('modal-body').id
+
+      wrapper.rerender(<ExampleDialog exampleDescription="new content" />)
+    })
+
+    it('does not generate new a new title `id`', () => {
+      expect(wrapper.getByTestId('dialog-title')).toHaveAttribute(
+        'id',
+        initialTitleId
+      )
+    })
+
+    it('does not generate new a new description `id`', () => {
+      expect(wrapper.getByTestId('modal-body')).toHaveAttribute(
+        'id',
+        initialDescriptionId
+      )
+    })
+  })
 })
