@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelect } from 'downshift'
 
-import { getId } from '../../helpers'
 import {
   initialSelectedItem,
   itemToString,
@@ -9,14 +8,16 @@ import {
   SelectChildWithStringType,
   SelectLayout,
 } from '../SelectBase'
+import { useExternalId } from '../../hooks/useExternalId'
 
 export const Select: React.FC<SelectBaseProps> = ({
   children,
-  id = getId('select'),
+  id: externalId,
   onChange,
   value = null,
   ...rest
 }) => {
+  const id = useExternalId('select', externalId)
   const {
     getItemProps,
     getMenuProps,

@@ -186,6 +186,27 @@ describe('Select', () => {
     })
   })
 
+  describe('when the default `id` is used and the arrow button is clicked', () => {
+    let initialId: string
+
+    beforeEach(() => {
+      wrapper = render(
+        <Select label="Label" value="two">
+          <SelectOption value="one">One</SelectOption>
+        </Select>
+      )
+      initialId = wrapper.getByTestId('select-input').id
+      userEvent.click(wrapper.getByTestId('select-arrow-button'))
+    })
+
+    it('does not generate a new `id`', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveAttribute(
+        'id',
+        initialId
+      )
+    })
+  })
+
   describe('when disabled', () => {
     beforeEach(() => {
       wrapper = render(
