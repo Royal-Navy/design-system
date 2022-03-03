@@ -7,7 +7,6 @@ import {
 } from '@defencedigital/icon-library'
 
 import { ALERT_VARIANT } from './constants'
-import { getId } from '../../helpers'
 import { useOpenClose } from '../../hooks'
 import { StyledAlert } from './partials/StyledAlert'
 import { StyledIcon } from './partials/StyledIcon'
@@ -16,6 +15,7 @@ import { StyledTitle } from './partials/StyledTitle'
 import { StyledDescription } from './partials/StyledDescription'
 import { StyledFooter } from './partials/StyledFooter'
 import { StyledCloseButton } from './partials/StyledCloseButton'
+import { useExternalId } from '../../hooks/useExternalId'
 
 const VARIANT_ICON_MAP = {
   [ALERT_VARIANT.DANGER]: (
@@ -63,9 +63,8 @@ export const Alert: React.FC<AlertProps> = ({
   ...rest
 }) => {
   const { open, handleOnClose } = useOpenClose(true, onClose)
-
-  const titleId = title ? getId('alert-title') : undefined
-  const descriptionId = getId('alert-description')
+  const titleId = useExternalId('alert-title')
+  const descriptionId = useExternalId('alert-description')
 
   if (!open) {
     return null
@@ -75,7 +74,7 @@ export const Alert: React.FC<AlertProps> = ({
     <StyledAlert
       $variant={variant}
       aria-describedby={descriptionId}
-      aria-labelledby={titleId}
+      aria-labelledby={title ? titleId : undefined}
       data-testid="alert"
       role="alert"
       {...rest}
