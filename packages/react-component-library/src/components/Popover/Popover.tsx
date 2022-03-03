@@ -8,9 +8,9 @@ import {
   FloatingBoxProps,
   FloatingBoxSchemeType,
 } from '../../primitives/FloatingBox'
-import { getId } from '../../helpers'
 import { POPOVER_CLOSE_DELAY } from './constants'
 import { useHideShow } from '../../hooks/useHideShow'
+import { useExternalId } from '../../hooks/useExternalId'
 
 export interface PopoverProps
   extends Omit<
@@ -57,7 +57,7 @@ export const Popover: React.FC<PopoverProps> = ({
     closeDelay
   )
 
-  const contentId = getId('popover-content')
+  const contentId = useExternalId('popover-content')
 
   const PopoverTarget = () => {
     return React.Children.map(children, (item: React.ReactElement) =>
