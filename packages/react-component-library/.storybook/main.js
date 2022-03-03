@@ -9,6 +9,7 @@ module.exports = {
       },
     },
     '@storybook/addon-a11y',
+    '@storybook/addon-controls',
     '@storybook/addon-actions',
   ],
   core: {
