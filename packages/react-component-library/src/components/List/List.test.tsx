@@ -121,8 +121,18 @@ describe('List', () => {
     })
 
     describe('when the mouse pointer enters the first item', () => {
+      let initialItemHeadingId: string
+
       beforeEach(() => {
+        initialItemHeadingId = wrapper.getAllByTestId('list-item-heading')[0].id
         fireEvent.mouseEnter(wrapper.getAllByText('This is the description')[0])
+      })
+
+      it('does not generate a new `id` for the list item heading', () => {
+        expect(wrapper.getAllByTestId('list-item-heading')[0]).toHaveAttribute(
+          'id',
+          initialItemHeadingId
+        )
       })
 
       it('should not give the first item the `is-inactive` class', () => {
