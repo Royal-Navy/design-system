@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://github.com/defencedigital/mod-uk-design-system/compare/3.1.0...3.1.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* **CRATemplate:** Remove Formik dependency ([760e433](https://github.com/defencedigital/mod-uk-design-system/commit/760e433b62a6d910e74273e16d41f56539f8faaa))
+
+
+
+
+
 # [3.1.0](https://github.com/defencedigital/mod-uk-design-system/compare/2.80.3...3.1.0) (2022-03-01)
 
 
