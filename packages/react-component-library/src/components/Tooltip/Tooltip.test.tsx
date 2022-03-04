@@ -116,4 +116,30 @@ describe('Tooltip', () => {
       expect(wrapper.getByText('Content')).toBeInTheDocument()
     })
   })
+
+  describe('when the default `id` is used and the content changes', () => {
+    let initialTitleId: string
+    let initialContentId: string
+
+    beforeEach(() => {
+      wrapper = render(<Tooltip title="Title">Initial content</Tooltip>)
+      initialTitleId = wrapper.getByTestId('tooltip-title').id
+      initialContentId = wrapper.getByTestId('tooltip-content').id
+      wrapper.rerender(<Tooltip title="Title">New content</Tooltip>)
+    })
+
+    it('does not generate new title `id`', () => {
+      expect(wrapper.getByTestId('tooltip-title')).toHaveAttribute(
+        'id',
+        initialTitleId
+      )
+    })
+
+    it('does not generate new content `id`', () => {
+      expect(wrapper.getByTestId('tooltip-content')).toHaveAttribute(
+        'id',
+        initialContentId
+      )
+    })
+  })
 })
