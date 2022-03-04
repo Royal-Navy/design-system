@@ -1,7 +1,11 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import 'jest-styled-components'
-import { ColorNeutral200 } from '@defencedigital/design-tokens'
+import {
+  ColorNeutral200,
+  ColorAction000,
+  ColorNeutralWhite,
+} from '@defencedigital/design-tokens'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -59,6 +63,11 @@ describe('Radio', () => {
         'border-radius',
         '15px'
       )
+
+      expect(radio.getByTestId('radio')).toHaveStyleRule(
+        'background',
+        ColorNeutralWhite
+      )
     })
 
     it('should render a field with a label', () => {
@@ -93,6 +102,13 @@ describe('Radio', () => {
 
         it('calls onChange once', () => {
           expect(field.onChange).toHaveBeenCalledTimes(1)
+        })
+
+        it('styles the container as active', () => {
+          expect(radio.getByTestId('radio')).toHaveStyleRule(
+            'background',
+            ColorAction000
+          )
         })
       })
     })

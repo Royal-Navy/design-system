@@ -112,11 +112,13 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <StyledCheckboxWrapper>
         <StyledCheckbox
+          className={className}
+          role="checkbox"
+          aria-checked={isChecked}
           $hasContainer={hasContainer}
           $isDisabled={isDisabled}
           $isInvalid={isInvalid}
           $isChecked={isChecked}
-          className={className}
           onClick={handleClick}
           onKeyUp={handleKeyUp}
           data-testid="checkbox"

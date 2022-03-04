@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import mergeRefs from 'react-merge-refs'
 
@@ -24,6 +24,10 @@ export interface RadioProps extends ComponentWithClass, InputValidationProps {
    * Toggles whether or not the component is marked as checked by default.
    */
   defaultChecked?: boolean
+  /**
+   * Optional HTML `checked` attribute denoting checked state of component.
+   */
+  checked?: boolean
   /**
    * Optional description to display below the label.
    */
@@ -64,6 +68,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
       className = '',
       id = uuidv4(),
       defaultChecked,
+      checked,
       description,
       isDisabled = false,
       isInvalid,
@@ -78,6 +83,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     ref
   ) => {
     const localRef = useRef<HTMLInputElement>(null)
+    const [isChecked, setIsChecked] = useState(defaultChecked || checked)
 
     const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
       if (event.target !== localRef.current) {
@@ -89,6 +95,14 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
       localRef.current?.focus()
     }
 
+    const handleOnChange = (e: React.FormEvent<HTMLInputElement>) => {
+      setIsChecked(!isChecked)
+
+      if (onChange) {
+        onChange(e)
+      }
+    }
+
     const hasContainer = variant !== RADIO_VARIANT.NO_CONTAINER
 
     return (
@@ -96,11 +110,11 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
         <StyledRadio
           className={className}
           role="radio"
-          aria-checked={defaultChecked}
+          aria-checked={isChecked}
           $isDisabled={isDisabled}
           $hasContainer={hasContainer}
           $isInvalid={isInvalid}
-          $isChecked={defaultChecked}
+          $isChecked={isChecked}
           onClick={handleClick}
           onKeyUp={handleKeyUp}
           data-testid="radio"
@@ -114,11 +128,12 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
               <StyledInput
                 ref={mergeRefs([localRef, ref])}
                 defaultChecked={defaultChecked}
+                checked={checked}
                 id={id}
                 type="radio"
                 name={name}
                 value={value}
-                onChange={onChange}
+                onChange={handleOnChange}
                 onBlur={onBlur}
                 disabled={isDisabled}
                 data-testid="radio-input"
