@@ -107,4 +107,35 @@ describe('FloatingBox', () => {
       )
     })
   })
+
+  describe('when the content changes', () => {
+    const ExampleFloatingBox = ({
+      children: content,
+    }: {
+      children: string
+    }) => (
+      <FloatingBox
+        isVisible
+        renderTarget={<div>Hello, World!</div>}
+        role="dialog"
+        aria-modal
+      >
+        <>{content}</>
+      </FloatingBox>
+    )
+    let initialId: string
+
+    beforeEach(() => {
+      wrapper = render(<ExampleFloatingBox>Initial content</ExampleFloatingBox>)
+      initialId = wrapper.getByTestId('floating-box-content').id
+      wrapper.rerender(<ExampleFloatingBox>Updated content</ExampleFloatingBox>)
+    })
+
+    it('does not generate a new content `id`', () => {
+      expect(wrapper.getByTestId('floating-box-content')).toHaveAttribute(
+        'id',
+        initialId
+      )
+    })
+  })
 })

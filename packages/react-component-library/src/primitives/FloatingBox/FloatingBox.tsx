@@ -5,13 +5,13 @@ import { Transition } from 'react-transition-group'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { FloatingBoxContent } from './FloatingBoxContent'
 import { FloatingBoxSchemeType } from './types'
-import { getId } from '../../helpers'
 import { PositionType } from '../../common/Position'
 import { StyledFloatingBox } from './partials/StyledFloatingBox'
 import { StyledTarget } from './partials/StyledTarget'
 import { StyledArrow } from './partials/StyledArrow'
 import { useFloatingElement } from '../../hooks/useFloatingElement'
 import { FLOATING_BOX_SCHEME } from './constants'
+import { useExternalId } from '../../hooks/useExternalId'
 
 export interface FloatingBoxBaseProps extends PositionType, ComponentWithClass {
   role?: string
@@ -55,7 +55,7 @@ const TRANSITION_STYLES = {
 }
 
 export const FloatingBox: React.FC<FloatingBoxProps> = ({
-  contentId = getId('floating-box'),
+  contentId: externalContentId,
   scheme = FLOATING_BOX_SCHEME.LIGHT,
   onMouseEnter,
   onMouseLeave,
@@ -66,6 +66,7 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
   placement = 'auto',
   ...rest
 }) => {
+  const contentId = useExternalId('floating-box', externalContentId)
   const {
     targetElementRef,
     floatingElementRef,
