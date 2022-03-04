@@ -108,4 +108,22 @@ describe('TextArea', () => {
       })
     })
   })
+
+  describe('when the default `id` is used and text is typed in the input', () => {
+    let initialId: string
+
+    beforeEach(() => {
+      wrapper = render(<TextArea label="label" name="name" />)
+      const input = wrapper.getByTestId('textarea-input')
+      initialId = input.id
+      userEvent.type(input, 'some text')
+    })
+
+    it('does not generate a new `id`', () => {
+      expect(wrapper.getByTestId('textarea-input')).toHaveAttribute(
+        'id',
+        initialId
+      )
+    })
+  })
 })
