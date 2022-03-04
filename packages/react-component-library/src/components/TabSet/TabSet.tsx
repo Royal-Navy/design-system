@@ -3,10 +3,10 @@ import {
   IconKeyboardArrowLeft,
   IconKeyboardArrowRight,
 } from '@defencedigital/icon-library'
+import { v4 as uuidv4 } from 'uuid'
 
 import { ARROW_LEFT, ARROW_RIGHT } from '../../utils/keyCodes'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { getId } from '../../helpers'
 import { SCROLL_DIRECTION } from './constants'
 import { StyledBody } from './partials/StyledBody'
 import { StyledHeader } from './partials/StyledHeader'
@@ -83,8 +83,8 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
     return activeIndex === -1 ? 0 : activeIndex
   }
 
-  const [tabIds] = useState(
-    Array.from({ length: children.length }).map(() => getId('tab-content'))
+  const [tabIds] = useState(() =>
+    [...Array(children.length)].map(() => `tab-content-${uuidv4()}`)
   )
   const [activeTab, setActiveTab] = useState(getActiveIndex(children))
   const { scrollToNextTab, tabsRef, itemsRef } = useScrollableTabSet(children)

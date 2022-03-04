@@ -4,7 +4,7 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledField } from './partials/StyledField'
 import { StyledError } from './partials/StyledError'
 import { StyledHintText } from './partials/StyledHintText'
-import { getId } from '../../helpers'
+import { useExternalId } from '../../hooks/useExternalId'
 
 export type ErrorType = {
   error: boolean | string | null | undefined
@@ -38,7 +38,7 @@ export const Field: React.FC<FieldProps> = ({
     return errors.some(({ error }) => error)
   }, [errors])
 
-  const fieldId: string = useMemo(() => getId('field'), [])
+  const fieldId: string = useExternalId('field')
 
   return (
     <StyledField className={className}>
