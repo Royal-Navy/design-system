@@ -9,7 +9,7 @@ interface StyledCheckmarkProps {
 
 export const StyledCheckmark = styled.div<StyledCheckmarkProps>`
   position: absolute;
-  top: ${({ $hasContainer }) => ($hasContainer ? '12px' : '4px')};
+  top: ${({ $hasContainer }) => ($hasContainer ? '13px' : '4px')};
   left: ${({ $hasContainer }) => ($hasContainer ? '12px' : '4px')};
   height: 16px;
   width: 16px;

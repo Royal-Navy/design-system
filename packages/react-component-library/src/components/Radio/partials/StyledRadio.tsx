@@ -2,10 +2,10 @@ import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
 import { StyledCheckmark } from './StyledCheckmark'
-import { StyledInput } from './StyledInput'
+import { StyledInput } from '../../CheckboxRadioBase/partials/StyledInput'
 
 interface StyledRadioProps {
-  $hasContainer: boolean
+  $hasContainer?: boolean
   $isDisabled?: boolean
   $isInvalid?: boolean
   $isChecked?: boolean
@@ -13,7 +13,7 @@ interface StyledRadioProps {
 
 const RADIO_ACTIVE_BORDER_WIDTH = '2px'
 
-const { spacing, fontSize, color, animation } = selectors
+const { spacing, fontSize, color } = selectors
 
 const BackgroundColor = css<StyledRadioProps>`
   ${({ $isDisabled, $hasContainer, $isChecked }) => {
@@ -39,7 +39,7 @@ const CheckmarkCheckedFillColor = css<StyledRadioProps>`
     $isDisabled ? color('neutral', '200') : color('action', '500')}
 `
 
-function getCheckmarkCheckedSelector($hasContainer: boolean) {
+function getCheckmarkCheckedSelector($hasContainer: boolean | undefined) {
   if ($hasContainer) {
     return css`
       ${StyledInput}:checked ~ ${StyledCheckmark}
@@ -54,7 +54,8 @@ function getCheckmarkCheckedSelector($hasContainer: boolean) {
 export const StyledRadio = styled.div<StyledRadioProps>`
   display: inline-flex;
   position: relative;
-  padding-left: ${spacing('11')};
+  padding: ${({ $hasContainer }) =>
+    $hasContainer ? `0 0 0 ${spacing('13')}` : `0 0 0 ${spacing('12')}`};
   cursor: pointer;
   font-size: ${fontSize('base')};
   user-select: none;
@@ -70,7 +71,6 @@ export const StyledRadio = styled.div<StyledRadioProps>`
     &::before {
       display: block;
       box-shadow: 0 0 0 0 transparent;
-      transition: all ${animation('default')};
     }
   }
 
@@ -111,7 +111,6 @@ export const StyledRadio = styled.div<StyledRadioProps>`
         ${CheckmarkActiveBorderColor};
     }
 
-    /* Central blue dot (grey dot if disabled) */
     &::after {
       display: block;
       background: ${CheckmarkCheckedFillColor};

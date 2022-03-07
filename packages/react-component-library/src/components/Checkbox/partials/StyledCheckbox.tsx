@@ -1,7 +1,7 @@
 import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
 
-const { color, fontSize } = selectors
+const { color, fontSize, spacing } = selectors
 
 export interface StyledCheckboxProps {
   $hasContainer?: boolean
@@ -13,6 +13,8 @@ export interface StyledCheckboxProps {
 export const StyledCheckbox = styled.div<StyledCheckboxProps>`
   display: inline-flex;
   position: relative;
+  padding: ${({ $hasContainer }) =>
+    $hasContainer ? `0 0 0 ${spacing('13')}` : `0 0 0 ${spacing('12')}`};
   font-size: ${fontSize('base')};
   user-select: none;
   cursor: pointer;

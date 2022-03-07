@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components'
 
-interface StyledOuterWrapperProps {
+interface StyledInnerWrapperProps {
   $hasContainer?: boolean
 }
 
-export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
+export const StyledInnerWrapper = styled.div<StyledInnerWrapperProps>`
   display: inline-flex;
   align-items: center;
   flex-direction: row;

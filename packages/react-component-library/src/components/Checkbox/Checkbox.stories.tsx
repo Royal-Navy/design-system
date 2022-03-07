@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Checkbox, CheckboxProps } from '.'
-import { CHECKBOX_VARIANT } from './constants'
+import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
 
 export default {
   component: Checkbox,
@@ -81,7 +81,7 @@ NoContainer.args = {
   id: undefined,
   label: 'Item without container',
   name: 'no-container',
-  variant: CHECKBOX_VARIANT.NO_CONTAINER,
+  variant: CHECKBOX_RADIO_VARIANT.NO_CONTAINER,
 }
 
 export const WithDescription = Template.bind({})

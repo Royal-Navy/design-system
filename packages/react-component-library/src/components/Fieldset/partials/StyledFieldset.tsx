@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { StyledCheckboxWrapper } from '../../Checkbox/partials/StyledCheckboxWrapper'
+import { StyledWrapper } from '../../CheckboxRadioBase/partials/StyledWrapper'
 import { StyledCheckbox } from '../../Checkbox/partials/StyledCheckbox'
-import { StyledRadioWrapper } from '../../Radio/partials/StyledRadioWrapper'
 import { StyledRadio } from '../../Radio/partials/StyledRadio'
 import { StyledField } from '../../Field/partials/StyledField'
 import { FieldsetType } from '../Fieldset'
@@ -58,7 +57,7 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
     }
   `}
 
-  ${StyledRadioWrapper}, ${StyledCheckboxWrapper} {
+  ${StyledWrapper} {
     margin-top: -1px;
 
     &:first-of-type {
@@ -66,7 +65,7 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
     }
   }
 
-  ${StyledRadioWrapper}, ${StyledCheckboxWrapper} {
+  ${StyledWrapper} {
     ${StyledCheckbox}, ${StyledRadio} {
       border-radius: 0;
       border-bottom-width: 1px;
@@ -82,14 +81,14 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
     }
   }
 
-  ${StyledRadioWrapper}:first-of-type, ${StyledCheckboxWrapper}:first-of-type {
+  ${StyledWrapper}:first-of-type {
     ${StyledCheckbox}, ${StyledRadio} {
       border-top-left-radius: 15px;
       border-top-right-radius: 15px;
     }
   }
 
-  ${StyledRadioWrapper}:last-of-type, ${StyledCheckboxWrapper}:last-of-type {
+  ${StyledWrapper}:last-of-type {
     ${StyledCheckbox}, ${StyledRadio} {
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
@@ -121,8 +120,7 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
         pointer-events: none;
       }
 
-      ${StyledRadioWrapper},
-      ${StyledCheckboxWrapper} {
+      ${StyledWrapper} {
         ${StyledCheckbox}, ${StyledRadio} {
           border-color: ${color('neutral', '200')};
           box-shadow: none;
@@ -131,8 +129,7 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
         }
       }
 
-      ${StyledRadioWrapper}:first-of-type,
-      ${StyledCheckboxWrapper}:first-of-type {
+      ${StyledWrapper}:first-of-type {
         ${StyledCheckbox}, ${StyledRadio} {
           border-top-color: transparent;
 
@@ -143,8 +140,7 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
         }
       }
 
-      ${StyledRadioWrapper}:last-of-type,
-      ${StyledCheckboxWrapper}:last-of-type {
+      ${StyledWrapper}:last-of-type {
         ${StyledCheckbox}, ${StyledRadio} {
           border-bottom-color: transparent;
 
