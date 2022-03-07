@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.1.1...3.2.0) (2022-03-07)
+
+
+### Features
+
+* **Button:** Update styles to match updated design ([405badc](https://github.com/defencedigital/mod-uk-design-system/commit/405badc6f99a2431244b443ab2a5824e8bbe09c9))
+* **DatePicker:** Integrate updated button styles ([e098e72](https://github.com/defencedigital/mod-uk-design-system/commit/e098e721a8e5f3dd2e2aaf959982b35a9511aa6a))
+
+
+
+
+
 ## [3.1.1](https://github.com/defencedigital/mod-uk-design-system/compare/3.1.0...3.1.1) (2022-03-04)
 
 
