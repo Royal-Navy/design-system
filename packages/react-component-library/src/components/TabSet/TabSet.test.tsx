@@ -145,9 +145,12 @@ describe('TabSet', () => {
           wrapper.getByText('Title 2').click()
         })
 
-        it('should apply the `is-active` class to the appropriate tab', () => {
+        it('should display the tab as active', () => {
           const tab = wrapper.getByText('Title 2').parentElement
-          expect(tab).toHaveStyleRule('color', color('neutral', '500'))
+          expect(tab).toHaveStyleRule(
+            'background-color',
+            color('neutral', 'white')
+          )
         })
 
         it('should invoke the onChange function', () => {
@@ -192,7 +195,10 @@ describe('TabSet', () => {
 
           it('sets the previous tab to active', () => {
             const tab = wrapper.getByText('Title 1').parentElement
-            expect(tab).toHaveStyleRule('color', color('neutral', '500'))
+            expect(tab).toHaveStyleRule(
+              'background-color',
+              color('neutral', 'white')
+            )
           })
 
           describe('and the user presses the right arrow key', () => {
@@ -205,7 +211,10 @@ describe('TabSet', () => {
 
             it('sets the next tab to active', () => {
               const tab = wrapper.getByText('Title 2').parentElement
-              expect(tab).toHaveStyleRule('color', color('neutral', '500'))
+              expect(tab).toHaveStyleRule(
+                'background-color',
+                color('neutral', 'white')
+              )
             })
           })
         })
@@ -229,7 +238,10 @@ describe('TabSet', () => {
 
         it('should make the appropriate tab active', () => {
           const tab = wrapper.getByText('Title 2').parentElement
-          expect(tab).toHaveStyleRule('color', color('neutral', '500'))
+          expect(tab).toHaveStyleRule(
+            'background-color',
+            color('neutral', 'white')
+          )
         })
       })
     })
@@ -249,8 +261,14 @@ describe('TabSet', () => {
       it('should make the appropriate tab active', () => {
         const tab1 = wrapper.getByText('Title 1').parentElement
         const tab2 = wrapper.getByText('Title 2').parentElement
-        expect(tab1).not.toHaveStyleRule('color', color('neutral', '500'))
-        expect(tab2).toHaveStyleRule('color', color('neutral', '500'))
+        expect(tab1).toHaveStyleRule(
+          'background-color',
+          color('neutral', '100')
+        )
+        expect(tab2).toHaveStyleRule(
+          'background-color',
+          color('neutral', 'white')
+        )
       })
 
       describe('when the user clicks on a tab', () => {
@@ -261,8 +279,14 @@ describe('TabSet', () => {
         it('should make the appropriate tab active', () => {
           const tab1 = wrapper.getByText('Title 1').parentElement
           const tab2 = wrapper.getByText('Title 2').parentElement
-          expect(tab1).toHaveStyleRule('color', color('neutral', '500'))
-          expect(tab2).not.toHaveStyleRule('color', color('neutral', '500'))
+          expect(tab1).toHaveStyleRule(
+            'background-color',
+            color('neutral', 'white')
+          )
+          expect(tab2).toHaveStyleRule(
+            'background-color',
+            color('neutral', '100')
+          )
         })
       })
     })

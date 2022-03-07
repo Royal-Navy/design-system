@@ -3,65 +3,60 @@ import styled, { css } from 'styled-components'
 
 import { StyledTabSetProps } from './StyledTabSet'
 
-const { color, fontSize, mq, spacing } = selectors
+const { color, fontSize, zIndex } = selectors
 
 interface StyledTabProps extends StyledTabSetProps {
   $isActive: boolean
 }
 
-function getDefaultTab($isActive: boolean) {
-  return css`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-    font-size: ${fontSize('base')};
-    font-weight: 600;
-    color: ${color('neutral', $isActive ? '500' : '400')};
+export const ACTIVE_TAB_BORDER = `1px solid ${color('neutral', '300')}`
+export const ACTIVE_TAB_HEIGHT = '52px'
 
+function getActiveStyles() {
+  return css`
+    text-decoration: none;
     background-color: ${color('neutral', 'white')};
-
-    border: none;
-    border-bottom: 4px solid
-      ${$isActive ? color('action', '600') : 'transparent'};
-
-    padding: ${spacing('10')} ${spacing('6')} ${spacing('9')} ${spacing('6')};
-
-    & > div {
-      margin: 0 auto;
-    }
-
-    &:focus {
-      outline: none;
-    }
-  `
-}
-
-function getScrollableTab($isActive: boolean) {
-  return css`
-    padding: ${spacing('5')} ${spacing('10')};
-    border-radius: 4px 4px 0 0;
-    border: 1px solid ${color('neutral', $isActive ? '200' : '100')};
-    border-bottom: ${$isActive
-      ? css`1px solid ${color('neutral', 'white')}`
-      : 'none'};
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 0;
-    color: ${$isActive ? color('neutral', '500') : 'unset'};
-    background-color: ${color('neutral', $isActive ? 'white' : '000')};
-
-    ${mq({ gte: 'm' })`
-      width: auto;
-    `}
+    height: ${ACTIVE_TAB_HEIGHT};
+    margin-top: 0;
+    border-left: ${ACTIVE_TAB_BORDER};
+    border-right: ${ACTIVE_TAB_BORDER};
+    border-top: ${`6px solid ${color('action', '500')}`};
+    z-index: ${zIndex('header', 2)};
   `
 }
 
 export const StyledTab = styled.button<StyledTabProps>`
-  ${({ $isActive, $isScrollable }) => css`
-    ${getDefaultTab($isActive)}
-    ${$isScrollable && getScrollableTab($isActive)}
-  `}
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: ${fontSize('base')};
+  font-weight: normal;
+  text-decoration: underline;
+
+  color: ${color('neutral', '600')};
+  background-color: ${color('neutral', '100')};
+
+  height: 46px;
+  margin-top: 6px;
+
+  border: 1px solid transparent;
+  border-top: none;
+  border-bottom: none;
+
+  position: relative;
+  z-index: ${zIndex('header', 1)};
+
+  padding: 0 24px;
+
+  & > div {
+    margin: 0 auto;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  ${({ $isActive }) => $isActive && getActiveStyles()}
 `

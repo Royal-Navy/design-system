@@ -1,16 +1,18 @@
 import { selectors } from '@defencedigital/design-tokens'
 import styled from 'styled-components'
+import { ACTIVE_TAB_HEIGHT } from './StyledTab'
 
-const { color, spacing } = selectors
+const { color } = selectors
 
 export const StyledScrollButton = styled.button`
-  padding: ${spacing('6')} ${spacing('2')};
   background: ${color('neutral', 'white')};
-  border: 1px solid ${color('neutral', '100')};
-  border-radius: 3px;
-  color: ${color('neutral', '300')};
+  border: none;
+  color: ${color('action', '500')};
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
   align-self: flex-start;
+  height: ${ACTIVE_TAB_HEIGHT};
+  width: 40px;
+  align-items: center;
 `

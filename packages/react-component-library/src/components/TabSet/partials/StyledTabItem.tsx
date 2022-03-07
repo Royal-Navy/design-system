@@ -1,9 +1,6 @@
-import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
 
 import { StyledTabSetProps } from './StyledTabSet'
-
-const { mq, spacing } = selectors
 
 interface StyledTabItemProps extends StyledTabSetProps {
   $isFullWidth?: boolean
@@ -18,17 +15,7 @@ export const StyledTabItem = styled.li<StyledTabItemProps>`
       flex: 1;
     `}
 
-  ${({ $isScrollable }) =>
-    $isScrollable &&
-    css`
-      padding-left: ${spacing('2')};
-
-      &:last-child {
-        padding-right: ${spacing('2')};
-      }
-
-      ${mq({ gte: 'm' })`
-        width: auto;
-      `}
-    `}
+  &:not(:last-child) {
+    padding-right: 6px;
+  }
 `

@@ -1,11 +1,9 @@
-import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
 import { StyledTabSetProps } from './StyledTabSet'
 
-const { color } = selectors
-
 export const StyledHeader = styled.header<StyledTabSetProps>`
-  border-bottom: 1px solid ${color('neutral', '100')};
+  position: relative;
+  margin-bottom: -1px;
 
   ${({ $isScrollable }) =>
     $isScrollable &&
@@ -13,9 +11,5 @@ export const StyledHeader = styled.header<StyledTabSetProps>`
       display: flex;
       flex-direction: row;
       align-items: flex-end;
-      border-bottom: none;
-      position: relative;
-      z-index: 1;
-      margin-bottom: -1px;
     `}
 `
