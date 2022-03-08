@@ -221,4 +221,19 @@ describe('Radio', () => {
       )
     })
   })
+
+  describe('when the default `id` is used and input is toggled', () => {
+    let initialId: string
+
+    beforeEach(() => {
+      radio = render(<Radio label="label" name="name" />)
+      const input = radio.getByTestId('radio-input')
+      initialId = input.id
+      userEvent.click(radio.getByTestId('radio'))
+    })
+
+    it('does not generate a new `id`', () => {
+      expect(radio.getByTestId('radio-input')).toHaveAttribute('id', initialId)
+    })
+  })
 })

@@ -255,4 +255,22 @@ describe('Checkbox', () => {
       )
     })
   })
+
+  describe('when the default `id` is used and input is toggled', () => {
+    let initialId: string
+
+    beforeEach(() => {
+      checkbox = render(<Checkbox label="label" name="name" />)
+      const input = checkbox.getByTestId('checkbox-input')
+      initialId = input.id
+      userEvent.click(checkbox.getByTestId('checkbox'))
+    })
+
+    it('does not generate a new `id`', () => {
+      expect(checkbox.getByTestId('checkbox-input')).toHaveAttribute(
+        'id',
+        initialId
+      )
+    })
+  })
 })
