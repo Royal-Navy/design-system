@@ -47,6 +47,7 @@ export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
         <StyledTab
           $isActive={isActive}
           $isScrollable={isScrollable}
+          data-testid="tab-set-tab-button"
           onClick={handleClick}
         >
           <div>{children}</div>
