@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import mergeRefs from 'react-merge-refs'
 
@@ -37,6 +37,32 @@ export const CheckboxRadioBase = React.forwardRef<
     const localRef = useRef<HTMLInputElement>(null)
     const [isChecked, setIsChecked] = useState(defaultChecked)
 
+    // Handle implicit deselection of radio in collection
+    useEffect(() => {
+      const handleSelected = (e: Event) => {
+        const {
+          detail: { ref: emittedRef },
+        } = e as CustomEvent
+
+        const isDifferent = emittedRef !== localRef
+        const isInCollection = emittedRef.current.attributes.name.value === name
+        const isRadio = type === 'radio'
+
+        if (isDifferent && isInCollection && isRadio) {
+          setIsChecked(false)
+        }
+      }
+
+      document.addEventListener('_mod-uk-ds:radio:selected', handleSelected)
+
+      return () => {
+        document.removeEventListener(
+          '_mod-uk-ds:radio:selected',
+          handleSelected
+        )
+      }
+    }, [type, name])
+
     const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
       if (event.target !== localRef.current) {
         localRef.current?.click()
@@ -49,6 +75,14 @@ export const CheckboxRadioBase = React.forwardRef<
 
     const handleOnChange = (e: React.FormEvent<HTMLInputElement>) => {
       setIsChecked(!isChecked)
+
+      if (type === 'radio') {
+        const event = new CustomEvent('_mod-uk-ds:radio:selected', {
+          detail: { ref: localRef },
+        })
+
+        document.dispatchEvent(event)
+      }
 
       if (onChange) {
         onChange(e)
