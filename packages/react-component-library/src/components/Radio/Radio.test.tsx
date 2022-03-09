@@ -1,17 +1,20 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import 'jest-styled-components'
-import { ColorNeutral200 } from '@defencedigital/design-tokens'
+import {
+  ColorNeutral200,
+  ColorAction000,
+  ColorNeutralWhite,
+} from '@defencedigital/design-tokens'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { RADIO_VARIANT, Radio } from '.'
+import { Radio } from '.'
+import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
 import { FieldProps } from '../../common/FieldProps'
-import { FormProps } from '../../common/FormProps'
 
 describe('Radio', () => {
   let field: FieldProps
-  let form: FormProps
   let label: string
   let radio: RenderResult
 
@@ -23,11 +26,6 @@ describe('Radio', () => {
       value: '',
       onChange: jest.fn(),
       onBlur: jest.fn(),
-    }
-
-    form = {
-      errors: {},
-      touched: {},
     }
   })
 
@@ -59,6 +57,11 @@ describe('Radio', () => {
         'border-radius',
         '15px'
       )
+
+      expect(radio.getByTestId('radio')).toHaveStyleRule(
+        'background',
+        ColorNeutralWhite
+      )
     })
 
     it('should render a field with a label', () => {
@@ -66,7 +69,7 @@ describe('Radio', () => {
     })
 
     it('should not render a description', () => {
-      expect(radio.queryAllByTestId('checkbox-description')).toHaveLength(0)
+      expect(radio.queryAllByTestId('radio-description')).toHaveLength(0)
     })
 
     it('should populate the field value', () => {
@@ -93,6 +96,13 @@ describe('Radio', () => {
 
         it('calls onChange once', () => {
           expect(field.onChange).toHaveBeenCalledTimes(1)
+        })
+
+        it('styles the container as active', () => {
+          expect(radio.getByTestId('radio')).toHaveStyleRule(
+            'background',
+            ColorAction000
+          )
         })
       })
     })
@@ -167,7 +177,7 @@ describe('Radio', () => {
     })
 
     it('should render a description', () => {
-      expect(radio.getByTestId('checkbox-description')).toHaveTextContent(
+      expect(radio.getByTestId('radio-description')).toHaveTextContent(
         'Description'
       )
     })
@@ -195,7 +205,7 @@ describe('Radio', () => {
         <Radio
           label="Label"
           name={field.name}
-          variant={RADIO_VARIANT.NO_CONTAINER}
+          variant={CHECKBOX_RADIO_VARIANT.NO_CONTAINER}
         />
       )
     })

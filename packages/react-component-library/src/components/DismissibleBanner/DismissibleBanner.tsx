@@ -9,7 +9,7 @@ import { StyledTitle } from './partials/StyledTitle'
 import { StyledFooter } from './partials/StyledFooter'
 import { StyledDontShow } from './partials/StyledDontShow'
 import { StyledDescription } from './partials/StyledDescription'
-import { CHECKBOX_VARIANT } from '../Checkbox'
+import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
 
 export interface DismissibleBannerWithTitleProps extends ComponentWithClass {
   /**
@@ -94,7 +94,7 @@ export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
             label="Don't show this again"
             name="dimissiblebanner-dontshow"
             onChange={() => setCanShowAgain(!canShowAgain)}
-            variant={CHECKBOX_VARIANT.NO_CONTAINER}
+            variant={CHECKBOX_RADIO_VARIANT.NO_CONTAINER}
           />
         )}
         {!hasCheckbox && <span />}

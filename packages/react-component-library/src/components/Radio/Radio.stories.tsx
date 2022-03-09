@@ -1,7 +1,8 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { RADIO_VARIANT, Radio, RadioProps } from '.'
+import { Radio, RadioProps } from '.'
+import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
 
 export default {
   component: Radio,
@@ -76,7 +77,7 @@ NoContainer.args = {
   id: undefined,
   label: 'Item without container',
   name: 'no-container',
-  variant: RADIO_VARIANT.NO_CONTAINER,
+  variant: CHECKBOX_RADIO_VARIANT.NO_CONTAINER,
 }
 
 export const WithDescription = Template.bind({})
