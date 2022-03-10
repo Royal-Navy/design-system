@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/defencedigital/mod-uk-design-system/compare/3.2.0...3.2.1) (2022-03-10)
+
+
+### Bug Fixes
+
+* **ComponentSizeType:** Correct type definition ([19c79b9](https://github.com/defencedigital/mod-uk-design-system/commit/19c79b91ca9294516ba072a07c5818b4e63a23c5))
+* **Radio:** Handle implicit deselection of radio ([faa2067](https://github.com/defencedigital/mod-uk-design-system/commit/faa20675832b3a23ca20ee3f2371b29424d89855))
+* **Radio:** Resolve incorrect active container background color ([b90c381](https://github.com/defencedigital/mod-uk-design-system/commit/b90c381744226d50f4df25f12a29de7fc4bf4079))
+
+
+
+
+
 # [3.2.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.1.1...3.2.0) (2022-03-07)
 
 
