@@ -1,5 +1,4 @@
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 import logger from './utils/logger'
 
@@ -12,13 +11,6 @@ function getInitials(name: string): string {
 
 function getKey(prefix: string, suffix: string | number): string {
   return `${prefix}-${suffix}`.replace(/\s/g, '')
-}
-
-/**
- * @deprecated Use the useExternalId() hook instead as it's memoised.
- */
-function getId(prefix: string): string {
-  return getKey(prefix, uuidv4())
 }
 
 function hasClass(allClasses: string | undefined, className: string): boolean {
@@ -70,7 +62,6 @@ function sleep(ms: number): Promise<undefined> {
 
 export {
   getInitials,
-  getId,
   getKey,
   hasClass,
   isIE11,

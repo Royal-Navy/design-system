@@ -4,7 +4,7 @@ import formatDistanceStrict from 'date-fns/formatDistanceStrict'
 import format from 'date-fns/format'
 
 import { Avatar, AVATAR_VARIANT } from '../../Avatar'
-import { getInitials, getId } from '../../../helpers'
+import { getInitials } from '../../../helpers'
 import { LinkTypes } from '../../../common/Link'
 import { StyledNotification } from './partials/StyledNotification'
 import { StyledWrapper } from './partials/StyledWrapper'
@@ -14,6 +14,7 @@ import { StyledItemNotRead } from './partials/StyledItemNotRead'
 import { StyledContent } from './partials/StyledContent'
 import { StyledCircle } from './partials/StyledCircle'
 import { StyledDescription } from './partials/StyledDescription'
+import { useExternalId } from '../../../hooks/useExternalId'
 
 export interface NotificationProps {
   /**
@@ -71,7 +72,7 @@ export const Notification: React.FC<NotificationProps> = ({
   description,
   ...rest
 }) => {
-  const contentId = getId('content')
+  const contentId = useExternalId('content')
 
   return (
     <StyledNotification data-testid="notification" {...rest}>

@@ -162,6 +162,27 @@ describe('Autocomplete', () => {
     })
   })
 
+  describe('when the default `id` is used and the arrow button is clicked', () => {
+    let initialId: string
+
+    beforeEach(() => {
+      wrapper = render(
+        <Autocomplete label="Label" value="two">
+          <AutocompleteOption value="one">One</AutocompleteOption>
+        </Autocomplete>
+      )
+      initialId = wrapper.getByTestId('select-input').id
+      userEvent.click(wrapper.getByTestId('select-arrow-button'))
+    })
+
+    it('does not generate a new `id`', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveAttribute(
+        'id',
+        initialId
+      )
+    })
+  })
+
   describe('when `value` is set to a valid value', () => {
     beforeEach(() => {
       wrapper = render(

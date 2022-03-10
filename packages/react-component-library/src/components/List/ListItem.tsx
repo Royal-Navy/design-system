@@ -2,12 +2,12 @@ import React from 'react'
 import { IconChevronRight } from '@defencedigital/icon-library'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { getId } from '../../helpers'
 import { StyledItem } from './partials/StyledItem'
 import { StyledItemContent } from './partials/StyledItemContent'
 import { StyledItemTitle } from './partials/StyledItemTitle'
 import { StyledItemDescription } from './partials/StyledItemDescription'
 import { StyledItemAction } from './partials/StyledItemAction'
+import { useExternalId } from '../../hooks/useExternalId'
 
 export interface ListItemProps extends ComponentWithClass {
   /**
@@ -45,7 +45,7 @@ export const ListItem: React.FC<ListItemProps> = ({
   title,
   ...rest
 }) => {
-  const titleId = getId('list-title')
+  const titleId = useExternalId('list-title')
 
   return (
     <StyledItem

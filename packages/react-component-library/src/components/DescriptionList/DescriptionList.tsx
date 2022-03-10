@@ -3,7 +3,7 @@ import { IconKeyboardArrowDown } from '@defencedigital/icon-library'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DescriptionListItem, DescriptionListItemProps } from '.'
-import { getId, warnIfOverwriting } from '../../helpers'
+import { warnIfOverwriting } from '../../helpers'
 import { useOpenClose } from '../../hooks'
 import { StyledAction } from './partials/StyledAction'
 import { StyledBadge } from './partials/StyledBadge'
@@ -11,6 +11,7 @@ import { StyledDescriptionList } from './partials/StyledDescriptionList'
 import { StyledHeader } from './partials/StyledHeader'
 import { StyledSheet } from './partials/StyledSheet'
 import { StyledDescription } from './partials/StyledDescription'
+import { useExternalId } from '../../hooks/useExternalId'
 
 export interface DescriptionListProps extends ComponentWithClass {
   /**
@@ -29,8 +30,8 @@ export interface DescriptionListProps extends ComponentWithClass {
   description: string
 }
 
-function getAriaAttributes(isCollapsible: boolean, expanded: boolean) {
-  const sheetId = getId('sheet')
+function useAriaAttributes(isCollapsible: boolean, expanded: boolean) {
+  const sheetId = useExternalId('sheet')
 
   if (isCollapsible) {
     return {
@@ -50,7 +51,7 @@ export const DescriptionList: React.FC<DescriptionListProps> = ({
   ...rest
 }) => {
   const { open, toggle } = useOpenClose(false)
-  const ariaAttributes = getAriaAttributes(isCollapsible, open)
+  const ariaAttributes = useAriaAttributes(isCollapsible, open)
   const sheetId = ariaAttributes ? ariaAttributes['aria-owns'] : undefined
 
   return (

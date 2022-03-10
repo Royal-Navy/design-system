@@ -117,8 +117,18 @@ describe('DescriptionList', () => {
     })
 
     describe('when the header is clicked', () => {
+      let initialSheetId: string
+
       beforeEach(() => {
+        initialSheetId = wrapper.getByTestId('description-list-sheet').id
         wrapper.getByTestId('description-list-header').click()
+      })
+
+      it('does not generate a new sheet `id`', () => {
+        expect(wrapper.getByTestId('description-list-sheet')).toHaveAttribute(
+          'id',
+          initialSheetId
+        )
       })
 
       it('should set `aria-expanded` on the button to `true`', () => {

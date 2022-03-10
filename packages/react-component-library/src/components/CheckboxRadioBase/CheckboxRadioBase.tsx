@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 import mergeRefs from 'react-merge-refs'
 
 import { CHECKBOX_RADIO_VARIANT } from './types'
@@ -9,6 +8,7 @@ import { StyledInnerWrapper } from './partials/StyledInnerWrapper'
 import { StyledDescription } from './partials/StyledDescription'
 import { StyledLabel } from './partials/StyledLabel'
 import { StyledInput } from './partials/StyledInput'
+import { useExternalId } from '../../hooks/useExternalId'
 
 export const CheckboxRadioBase = React.forwardRef<
   HTMLInputElement,
@@ -17,7 +17,7 @@ export const CheckboxRadioBase = React.forwardRef<
   (
     {
       className = '',
-      id = uuidv4(),
+      id: externalId,
       defaultChecked,
       description,
       isDisabled = false,
@@ -34,6 +34,7 @@ export const CheckboxRadioBase = React.forwardRef<
     },
     ref
   ) => {
+    const id = useExternalId(`${type}-input`, externalId)
     const localRef = useRef<HTMLInputElement>(null)
     const [isChecked, setIsChecked] = useState(defaultChecked)
 

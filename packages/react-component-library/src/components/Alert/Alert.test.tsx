@@ -155,4 +155,35 @@ describe('Alert', () => {
       })
     })
   })
+
+  describe('when the Alert content changes', () => {
+    let initialContentId: string
+    let initialTitleId: string | null
+
+    const ExampleAlert = ({ content }: { content: string }) => (
+      <Alert title="Example title">{content}</Alert>
+    )
+
+    beforeEach(() => {
+      wrapper = render(<ExampleAlert content="initial content" />)
+      initialContentId = wrapper.getByTestId('content-description').id
+      initialTitleId = wrapper.getByTestId('content-title').id
+
+      wrapper.rerender(<ExampleAlert content="new content" />)
+    })
+
+    it('does not generate a new content `id`', () => {
+      expect(wrapper.getByTestId('content-description')).toHaveAttribute(
+        'id',
+        initialContentId
+      )
+    })
+
+    it('does not generate a new title `id`', () => {
+      expect(wrapper.getByTestId('content-title')).toHaveAttribute(
+        'id',
+        initialTitleId
+      )
+    })
+  })
 })

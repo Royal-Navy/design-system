@@ -13,7 +13,6 @@ import {
 } from '@defencedigital/icon-library'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { getId } from '../../helpers'
 import { StyledToast } from './partials/StyledToast'
 import { StyledToastHeader } from './partials/StyledToastHeader'
 import { StyledToastTitle } from './partials/StyledToastTitle'
@@ -22,6 +21,7 @@ import { StyledToastTime } from './partials/StyledToastTime'
 import { StyledToastButton } from './partials/StyledToastButton'
 import { StyledToastContent } from './partials/StyledToastContent'
 import { StyledToastDescription } from './partials/StyledToastDescription'
+import { useExternalId } from '../../hooks/useExternalId'
 
 export interface ToastProps
   extends BaseToastProps,
@@ -85,8 +85,8 @@ export const Toast: React.FC<ToastProps> = ({
     })
   )
 
-  const titleId = label ? getId('toast-title') : undefined
-  const descriptionId = children ? getId('toast-description') : undefined
+  const titleId = useExternalId('toast-title')
+  const descriptionId = useExternalId('toast-description')
 
   return (
     <StyledToast
@@ -99,8 +99,8 @@ export const Toast: React.FC<ToastProps> = ({
         ...transitionStates(placement)[transitionState],
       }}
       role="alert"
-      aria-labelledby={titleId}
-      aria-describedby={descriptionId}
+      aria-labelledby={label ? titleId : undefined}
+      aria-describedby={children ? descriptionId : undefined}
       data-testid="toast-wrapper"
       {...rest}
     >

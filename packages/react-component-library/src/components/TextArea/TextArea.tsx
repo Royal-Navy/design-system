@@ -5,8 +5,8 @@ import { StyledTextArea } from './partials/StyledTextArea'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledLabel } from './partials/StyledLabel'
 import { StyledInput } from './partials/StyledInput'
-import { getId } from '../../helpers'
 import { InputValidationProps } from '../../common/InputValidationProps'
+import { useExternalId } from '../../hooks/useExternalId'
 import { useFocus } from '../../hooks/useFocus'
 import { useInputValue } from '../../hooks/useInputValue'
 
@@ -38,7 +38,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       className,
       isDisabled,
       isInvalid,
-      id = getId('text-area'),
+      id: externalId,
       label,
       onBlur,
       onChange,
@@ -47,6 +47,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     },
     ref
   ) => {
+    const id = useExternalId('text-area', externalId)
     const { hasFocus, onLocalBlur, onLocalFocus } = useFocus(onBlur)
     const { committedValue, hasValue, onValueChange } = useInputValue(value)
 

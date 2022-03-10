@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getId, getKey } from '../../helpers'
+import { getKey } from '../../helpers'
 import { usePageChange } from './usePageChange'
 import { PAGINATION_BUTTON_VARIANT, PaginationButton } from './PaginationButton'
 import { PaginationErrorMessage } from './PaginationErrorMessage'
@@ -9,6 +9,7 @@ import { StyledListItem } from './partials/StyledListItem'
 import { StyledTextInput } from './partials/StyledTextInput'
 import { StyledTotalPages } from './partials/StyledTotalPages'
 import { OnChangeEventType } from './types'
+import { useExternalId } from '../../hooks/useExternalId'
 
 const KEY_PREFIX = 'pagination-item'
 
@@ -41,7 +42,7 @@ export interface PaginationProps {
 
 export const Pagination: React.FC<PaginationProps> = ({
   initialPage = 1,
-  name = getId('pagination'),
+  name: externalName,
   onChange,
   pageSize,
   total,
@@ -50,6 +51,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   const totalPages = Math.ceil(total / pageSize)
   const { currentPage, hasError, onKeyDown, onPaginationButtonClickHandler } =
     usePageChange(initialPage, totalPages, onChange)
+  const name = useExternalId('pagination', externalName)
 
   const isOnFirstPage = currentPage === 1
   const isOnLastPage = currentPage === totalPages

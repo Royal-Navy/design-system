@@ -1,10 +1,9 @@
 import React from 'react'
 import { isNil } from 'lodash'
-import { v4 as uuidv4 } from 'uuid'
 
 import { Buttons } from './Buttons'
 import { COMPONENT_SIZE, ComponentSizeType } from '../Forms'
-import { getId, hasClass } from '../../helpers'
+import { hasClass } from '../../helpers'
 import { Input } from './Input'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
@@ -19,6 +18,7 @@ import { StyledNumberInput } from './partials/StyledNumberInput'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledPrefix } from './partials/StyledPrefix'
 import { StyledSuffix } from './partials/StyledSuffix'
+import { useExternalId } from '../../hooks/useExternalId'
 
 interface NumberInputBaseProps
   extends ComponentWithClass,
@@ -148,7 +148,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   className,
   footnote,
   icon,
-  id = uuidv4(),
+  id: externalId,
   isDisabled = false,
   isInvalid,
   label,
@@ -165,6 +165,8 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   value = null,
   ...rest
 }) => {
+  const wrapperId = useExternalId('number-input')
+  const inputId = useExternalId('number-input-input', externalId)
   const isNegativeAllowed = isNil(min) || min < 0
   const { committedValue, setCommittedValue } = useValue(
     value ? String(value) : null
@@ -180,7 +182,6 @@ export const NumberInput: React.FC<NumberInputProps> = ({
     setCommittedValue
   )
 
-  const numberInputId = getId('number-input')
   const isCommittedValueInvalid =
     committedValue && !Number.isFinite(parseFloat(committedValue))
 
@@ -189,7 +190,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
       aria-label={label || 'Number input'}
       className={className}
       data-testid="number-input"
-      id={numberInputId}
+      id={wrapperId}
       role="spinbutton"
       aria-valuemin={min}
       aria-valuemax={max}
@@ -221,9 +222,9 @@ export const NumberInput: React.FC<NumberInputProps> = ({
         )}
 
         <Input
-          aria-labelledby={numberInputId}
+          aria-labelledby={wrapperId}
           hasFocus={hasFocus}
-          id={id}
+          id={inputId}
           isDisabled={isDisabled}
           label={label}
           name={name}

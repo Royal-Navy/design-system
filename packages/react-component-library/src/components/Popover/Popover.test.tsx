@@ -217,4 +217,32 @@ describe('Popover', () => {
       })
     })
   })
+
+  describe('when the popover content changes after being hovered', () => {
+    let initialContentId: string
+
+    beforeEach(() => {
+      wrapper = render(
+        <Popover content={<>initial content</>}>
+          <div>{HOVER_ON_ME}</div>
+        </Popover>
+      )
+
+      fireEvent.mouseEnter(wrapper.getByText(HOVER_ON_ME))
+      initialContentId = wrapper.getByTestId('floating-box-content').id
+
+      wrapper.rerender(
+        <Popover content={<>new content</>}>
+          <div>{HOVER_ON_ME}</div>
+        </Popover>
+      )
+    })
+
+    it('does not generate a new content `id`', () => {
+      expect(wrapper.getByTestId('floating-box-content')).toHaveAttribute(
+        'id',
+        initialContentId
+      )
+    })
+  })
 })

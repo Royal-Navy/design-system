@@ -907,4 +907,32 @@ describe('NumberInput', () => {
       })
     })
   })
+
+  describe('when the default `id` is used and a number is typed in the input', () => {
+    let initialInputId: string
+    let initialWrapperId: string
+
+    beforeEach(() => {
+      wrapper = render(<NumberInput onChange={jest.fn()} name="example" />)
+      initialWrapperId = wrapper.getByTestId('number-input').id
+
+      const input = wrapper.getByTestId('number-input-input')
+      initialInputId = input.id
+      userEvent.type(input, '123')
+    })
+
+    it('does not generate a new `id` for the wrapper', () => {
+      expect(wrapper.getByTestId('number-input')).toHaveAttribute(
+        'id',
+        initialWrapperId
+      )
+    })
+
+    it('does not generate a new `id` for the input', () => {
+      expect(wrapper.getByTestId('number-input-input')).toHaveAttribute(
+        'id',
+        initialInputId
+      )
+    })
+  })
 })

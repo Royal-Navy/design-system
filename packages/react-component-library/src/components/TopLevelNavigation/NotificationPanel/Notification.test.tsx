@@ -1,4 +1,5 @@
 import React from 'react'
+import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 
 import { Link } from '../../Link'
@@ -151,6 +152,34 @@ describe('Notification', () => {
 
     it('should not render the not-read indicator', () => {
       expect(wrapper.queryAllByTestId('not-read')).toHaveLength(0)
+    })
+  })
+
+  describe('when isRead changes', () => {
+    const ExampleNotification = ({ isRead }: { isRead?: boolean }) => (
+      <Notification
+        link={<Link href="notifications/1" />}
+        name="Thomas Stephens"
+        action="added a new comment to your"
+        on="review"
+        when={new Date('2019-11-05T10:57:00.000Z')}
+        description="description"
+        isRead={isRead}
+      />
+    )
+    let initialId: string
+
+    beforeEach(() => {
+      wrapper = render(<ExampleNotification />)
+      initialId = wrapper.getByTestId('notification-content').id
+      wrapper.rerender(<ExampleNotification isRead />)
+    })
+
+    it('does not generate a new content `id`', () => {
+      expect(wrapper.getByTestId('notification-content')).toHaveAttribute(
+        'id',
+        initialId
+      )
     })
   })
 })

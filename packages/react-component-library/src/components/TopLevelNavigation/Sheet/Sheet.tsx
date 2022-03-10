@@ -6,8 +6,8 @@ import {
   FloatingBox,
 } from '../../../primitives/FloatingBox'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
-import { getId } from '../../../helpers'
 import { SheetButtonProps } from './SheetButton'
+import { useExternalId } from '../../../hooks/useExternalId'
 import { useHideShow } from '../../../hooks/useHideShow'
 
 export interface SheetProps extends ComponentWithClass {
@@ -23,8 +23,9 @@ export const Sheet: React.FC<SheetProps> = ({
   children,
   placement = FLOATING_BOX_PLACEMENT.RIGHT,
   closeDelay = 250,
-  id = getId('sheet'),
+  id: externalId,
 }) => {
+  const id = useExternalId('sheet', externalId)
   const { floatingBoxChildrenRef, isVisible, mouseEvents } = useHideShow(
     true,
     closeDelay

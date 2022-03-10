@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { getId } from '../../helpers'
 import { StyledInput } from './partials/StyledInput'
 import { StyledLabel } from './partials/StyledLabel'
+import { useExternalId } from '../../hooks/useExternalId'
 import { useInputValue } from '../../hooks/useInputValue'
 
 export interface InputProps extends ComponentWithClass {
@@ -22,17 +22,10 @@ export interface InputProps extends ComponentWithClass {
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    {
-      hasFocus,
-      id = getId('text-input'),
-      isDisabled,
-      label,
-      onChange,
-      value,
-      ...rest
-    },
+    { hasFocus, id: externalId, isDisabled, label, onChange, value, ...rest },
     ref
   ) => {
+    const id = useExternalId('text-input', externalId)
     const { committedValue, hasValue, onValueChange } = useInputValue(value)
 
     return (

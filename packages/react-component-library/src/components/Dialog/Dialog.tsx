@@ -2,11 +2,11 @@ import React from 'react'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { ButtonProps } from '../Button'
-import { getId } from '../../helpers'
 import { StyledBody } from './partials/StyledBody'
 import { StyledDialog } from './partials/StyledDialog'
 import { StyledDescription } from './partials/StyledDescription'
 import { StyledTitle } from './partials/StyledTitle'
+import { useExternalId } from '../../hooks/useExternalId'
 
 export interface DialogProps extends ComponentWithClass {
   /**
@@ -55,8 +55,8 @@ export const Dialog: React.FC<DialogProps> = ({
     variant: 'secondary',
   }
 
-  const titleId = getId('dialog-title')
-  const descriptionId = getId('dialog-description')
+  const titleId = useExternalId('dialog-title')
+  const descriptionId = useExternalId('dialog-description')
 
   return (
     <StyledDialog
