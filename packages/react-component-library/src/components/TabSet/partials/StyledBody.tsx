@@ -1,17 +1,15 @@
+import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
-import styled, { css } from 'styled-components'
 
 import { StyledTabSetProps } from './StyledTabSet'
+import { ACTIVE_TAB_BORDER } from './StyledTab'
 
-const { color, spacing } = selectors
+const { zIndex } = selectors
 
 export const StyledBody = styled.div<StyledTabSetProps>`
-  padding: ${spacing('12')} 0;
+  padding: 24px 16px;
   overflow-y: auto;
-
-  ${({ $isScrollable }) =>
-    $isScrollable &&
-    css`
-      border-top: 1px solid ${color('neutral', '200')};
-    `}
+  border: ${ACTIVE_TAB_BORDER};
+  position: relative;
+  z-index: ${zIndex('header', 1)};
 `

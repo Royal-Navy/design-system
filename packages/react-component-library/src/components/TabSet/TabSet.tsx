@@ -1,8 +1,5 @@
 import React, { Children, KeyboardEvent, MouseEvent, useState } from 'react'
-import {
-  IconKeyboardArrowLeft,
-  IconKeyboardArrowRight,
-} from '@defencedigital/icon-library'
+import { IconChevronLeft, IconChevronRight } from '@defencedigital/icon-library'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ARROW_LEFT, ARROW_RIGHT } from '../../utils/keyCodes'
@@ -124,7 +121,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
             onClick={scrollToNextTab((currentTabIndex) => currentTabIndex - 1)}
             data-testid={`scroll-${SCROLL_DIRECTION.LEFT}`}
           >
-            <IconKeyboardArrowLeft />
+            <IconChevronLeft size={36} />
           </StyledScrollLeft>
         )}
         <StyledNavigation
@@ -162,7 +159,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
             onClick={scrollToNextTab((currentTabIndex) => currentTabIndex + 1)}
             data-testid={`scroll-${SCROLL_DIRECTION.RIGHT}`}
           >
-            <IconKeyboardArrowRight />
+            <IconChevronRight size={36} />
           </StyledScrollRight>
         )}
       </StyledHeader>

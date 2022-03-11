@@ -11,10 +11,10 @@ function clickNTimes(selector: string, numClicks: number) {
   })
 }
 
-describe('TabSet (scrollable)', () => {
+describe('TabSet - Scrollable', () => {
   beforeEach(() => {
     cy.viewport(INITIAL_VIEWPORT_WIDTH, VIEWPORT_HEIGHT)
-    cy.visit('/iframe.html?args=&id=tab-set--scrollable&viewMode=story')
+    cy.visit('/iframe.html?id=tab-set--scrollable&viewMode=story')
     cy.get(selectors.tabSet.tabItem).eq(0).as('tabItem')
   })
 
@@ -82,7 +82,7 @@ describe('TabSet (scrollable)', () => {
         cy.get('@tabItem').then(($tabItem) => {
           cy.get(selectors.tabSet.tabs)
             .invoke('scrollLeft')
-            .should('be.closeTo', $tabItem.outerWidth() * 2, 1)
+            .should('be.closeTo', $tabItem.outerWidth() * 4, 1)
         })
       })
     })
@@ -122,7 +122,7 @@ describe('TabSet (scrollable)', () => {
           cy.get('@tabItem').then(($tabItem) => {
             cy.get(selectors.tabSet.tabs)
               .invoke('scrollLeft')
-              .should('be.closeTo', $tabItem.outerWidth() * 5, 1)
+              .should('be.closeTo', $tabItem.outerWidth() * 7, 1)
           })
         })
       })
@@ -154,14 +154,14 @@ describe('TabSet (scrollable)', () => {
           cy.get('@tabItem').then(($tabItem) => {
             cy.get(selectors.tabSet.tabs)
               .invoke('scrollLeft')
-              .should('be.closeTo', $tabItem.outerWidth() * 3, 1)
+              .should('be.closeTo', $tabItem.outerWidth() * 5, 1)
           })
         })
       })
 
-      describe('and the scroll left button is clicked four times', () => {
+      describe('and the scroll left button is clicked six times', () => {
         beforeEach(() => {
-          clickNTimes(selectors.tabSet.scrollLeft, 4)
+          clickNTimes(selectors.tabSet.scrollLeft, 6)
         })
 
         it('scrolls left all the way', () => {
