@@ -19,13 +19,12 @@ describe('TabNav', () => {
       )
     })
 
-    it('should output the correct number of regular tab links', () => {
-      expect(wrapper.queryAllByTestId('tab').length).toEqual(2)
-    })
-
-    it('should indicate an active tab link', () => {
-      expect(wrapper.queryAllByTestId('tab-active').length).toEqual(1)
-      expect(wrapper.getByTestId('tab-active')).toHaveTextContent('Thing 2')
+    it('should render the tabs', () => {
+      const tabs = wrapper.queryAllByTestId('tab-nav-tab')
+      expect(tabs[0]).toHaveTextContent('Thing 1')
+      expect(tabs[1]).toHaveTextContent('Thing 2')
+      expect(tabs[2]).toHaveTextContent('Thing 3')
+      expect(tabs).toHaveLength(3)
     })
   })
 })
