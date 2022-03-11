@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { ACTIVE_TAB_BORDER } from '../../TabSet/partials/StyledTab'
+import { ACTIVE_TAB_BORDER } from '../../TabBase/partials/StyledTab'
 
 const { zIndex } = selectors
 

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { StyledTabSetProps } from './StyledTabSet'
+import { StyledTabSetProps } from '../../TabSet/partials/StyledTabSet'
 
 interface StyledTabItemProps extends StyledTabSetProps {
   $isFullWidth?: boolean

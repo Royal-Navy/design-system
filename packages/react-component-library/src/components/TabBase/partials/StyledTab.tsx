@@ -1,7 +1,7 @@
 import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
 
-import { StyledTabSetProps } from './StyledTabSet'
+import { StyledTabSetProps } from '../../TabSet/partials/StyledTabSet'
 
 const { color, fontSize, zIndex } = selectors
 

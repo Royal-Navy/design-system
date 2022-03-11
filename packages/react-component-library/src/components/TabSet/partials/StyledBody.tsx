@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
 import { StyledTabSetProps } from './StyledTabSet'
-import { ACTIVE_TAB_BORDER } from './StyledTab'
+import { ACTIVE_TAB_BORDER } from '../../TabBase/partials/StyledTab'
 
 const { zIndex } = selectors
 
