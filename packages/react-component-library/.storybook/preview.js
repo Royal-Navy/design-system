@@ -1,4 +1,5 @@
 import '@defencedigital/fonts'
+import 'iframe-resizer/js/iframeResizer.contentWindow'
 import { ResizeObserver } from '@juggle/resize-observer'
 
 import { GlobalStyleProvider } from '../src/styled-components/GlobalStyle'
