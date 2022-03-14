@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.2.2...3.3.0) (2022-03-14)
+
+
+### Features
+
+* **TabSet:** Update styles ([7295bba](https://github.com/defencedigital/mod-uk-design-system/commit/7295bbaaa2406d41bb3282909f8981dc1a070c44))
+
+
+
+
+
 ## [3.2.2](https://github.com/defencedigital/mod-uk-design-system/compare/3.2.1...3.2.2) (2022-03-11)
 
 
