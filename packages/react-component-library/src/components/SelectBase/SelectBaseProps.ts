@@ -20,6 +20,10 @@ export interface SelectBaseProps extends ComponentWithClass {
    */
   isInvalid?: boolean
   /**
+   * Whether to hide the clear button.
+   */
+  hideClearButton?: boolean
+  /**
    * Text label to display within the component.
    */
   label: string

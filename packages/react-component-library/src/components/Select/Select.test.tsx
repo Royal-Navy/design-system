@@ -297,6 +297,28 @@ describe('Select', () => {
     it('sets the value', () => {
       expect(wrapper.getByTestId('select-input')).toHaveValue('Two')
     })
+
+    it('shows a clear button', () => {
+      expect(wrapper.getByTestId('select-clear-button')).toBeInTheDocument()
+    })
+  })
+
+  describe('when `value` and hideClearButton are set', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Select label="Label" value="two" hideClearButton>
+          <SelectOption value="one">One</SelectOption>
+          <SelectOption value="two">Two</SelectOption>
+          <SelectOption value="three">Three</SelectOption>
+        </Select>
+      )
+    })
+
+    it('does not show a clear button', () => {
+      expect(
+        wrapper.queryByTestId('select-clear-button')
+      ).not.toBeInTheDocument()
+    })
   })
 
   describe.each(['invalid', null])('when `value` is set to `%s`', (value) => {
