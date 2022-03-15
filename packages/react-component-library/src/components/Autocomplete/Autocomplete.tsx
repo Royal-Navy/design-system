@@ -14,8 +14,13 @@ import { useAutocomplete } from './hooks/useAutocomplete'
 import { useMenuVisibility } from './hooks/useMenuVisibility'
 import { useExternalId } from '../../hooks/useExternalId'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface AutocompleteProps extends SelectBaseProps {}
+export interface AutocompleteProps extends SelectBaseProps {
+  /**
+   * Whether to hide the clear button. (Note that the component can still
+   * be cleared by manually deleting the text in the input.)
+   */
+  hideClearButton?: boolean
+}
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
   children,

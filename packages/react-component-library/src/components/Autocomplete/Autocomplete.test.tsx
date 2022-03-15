@@ -197,6 +197,28 @@ describe('Autocomplete', () => {
     it('sets the value', () => {
       expect(wrapper.getByTestId('select-input')).toHaveValue('Two')
     })
+
+    it('shows a clear button', () => {
+      expect(wrapper.getByTestId('select-clear-button')).toBeInTheDocument()
+    })
+  })
+
+  describe('when `value` and hideClearButton are set', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Autocomplete label="Label" value="two" hideClearButton>
+          <AutocompleteOption value="one">One</AutocompleteOption>
+          <AutocompleteOption value="two">Two</AutocompleteOption>
+          <AutocompleteOption value="three">Three</AutocompleteOption>
+        </Autocomplete>
+      )
+    })
+
+    it('does not show a clear button', () => {
+      expect(
+        wrapper.queryByTestId('select-clear-button')
+      ).not.toBeInTheDocument()
+    })
   })
 
   describe.each(['invalid', null])('when `value` is set to `%s`', (value) => {

@@ -46,7 +46,7 @@ const Template: ComponentStory<typeof Select> = (args) => (
   </div>
 )
 
-const TemplateWIthIconsAndBadges: ComponentStory<typeof Select> = (args) => (
+const TemplateWithIconsAndBadges: ComponentStory<typeof Select> = (args) => (
   <div
     style={{ height: args.isDisabled ? 'initial' : '18rem', maxWidth: '20rem' }}
   >
@@ -74,6 +74,12 @@ Disabled.args = {
   isDisabled: true,
 }
 
+export const NoClearButton = Template.bind({})
+NoClearButton.args = {
+  hideClearButton: true,
+  value: 'two',
+}
+
 export const WithError = Template.bind({})
 WithError.args = {
   isInvalid: true,
@@ -84,4 +90,4 @@ WithValue.args = {
   value: 'two',
 }
 
-export const WithIconsAndBadges = TemplateWIthIconsAndBadges.bind({})
+export const WithIconsAndBadges = TemplateWithIconsAndBadges.bind({})

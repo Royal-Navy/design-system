@@ -32,6 +32,7 @@ export interface SelectLayoutProps extends ComponentWithClass {
   isDisabled?: boolean
   isInvalid?: boolean
   isOpen: boolean
+  hideClearButton?: boolean
   label: string
   menuProps:
     | ReturnType<ComboboxReturnValueType['getMenuProps']>
@@ -58,6 +59,7 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
   isDisabled = false,
   isInvalid,
   isOpen,
+  hideClearButton,
   label,
   menuProps,
   onClearButtonClick,
@@ -113,7 +115,7 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
               />
             </StyledInputWrapper>
             <StyledInlineButtons>
-              {hasSelectedItem && (
+              {hasSelectedItem && !hideClearButton && (
                 <ClearButton
                   isDisabled={isDisabled}
                   onClick={onClearButtonClick}

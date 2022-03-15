@@ -31,7 +31,7 @@ const Template: ComponentStory<typeof Autocomplete> = (args) => (
   </div>
 )
 
-const TemplateWIthIconsAndBadges: ComponentStory<typeof Autocomplete> = (
+const TemplateWithIconsAndBadges: ComponentStory<typeof Autocomplete> = (
   args
 ) => (
   <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
@@ -63,6 +63,12 @@ Disabled.args = {
   isDisabled: true,
 }
 
+export const NoClearButton = Template.bind({})
+NoClearButton.args = {
+  hideClearButton: true,
+  value: 'two',
+}
+
 export const WithError = Template.bind({})
 WithError.args = {
   isInvalid: true,
@@ -73,4 +79,4 @@ WithValue.args = {
   value: 'two',
 }
 
-export const WithIconsAndBadges = TemplateWIthIconsAndBadges.bind({})
+export const WithIconsAndBadges = TemplateWithIconsAndBadges.bind({})
