@@ -15,6 +15,19 @@ describe('TabSet - Default', () => {
     cy.get(selectors.tabSet.tabItemButton)
       .eq(0)
       .should('have.css', 'border-top', ACTIVE_TAB_BORDER_TOP)
+      .should('have.css', 'font-weight', '700')
+  })
+
+  it('shows the second and third tabs as inactive', () => {
+    cy.get(selectors.tabSet.tabItemButton)
+      .eq(1)
+      .should('have.css', 'border-top-style', 'none')
+      .should('have.css', 'font-weight', '400')
+
+    cy.get(selectors.tabSet.tabItemButton)
+      .eq(2)
+      .should('have.css', 'border-top-style', 'none')
+      .should('have.css', 'font-weight', '400')
   })
 
   describe('and the second tab is clicked', () => {
@@ -26,6 +39,19 @@ describe('TabSet - Default', () => {
       cy.get(selectors.tabSet.tabItemButton)
         .eq(1)
         .should('have.css', 'border-top', ACTIVE_TAB_BORDER_TOP)
+        .should('have.css', 'font-weight', '700')
+    })
+
+    it('shows the first and third tabs as inactive', () => {
+      cy.get(selectors.tabSet.tabItemButton)
+        .eq(0)
+        .should('have.css', 'border-top-style', 'none')
+        .should('have.css', 'font-weight', '400')
+
+      cy.get(selectors.tabSet.tabItemButton)
+        .eq(2)
+        .should('have.css', 'border-top-style', 'none')
+        .should('have.css', 'font-weight', '400')
     })
   })
 })

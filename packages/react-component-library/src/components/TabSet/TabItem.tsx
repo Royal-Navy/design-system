@@ -1,5 +1,6 @@
 import React, { forwardRef, MouseEvent, KeyboardEvent } from 'react'
 
+import { StyledHiddenBoldTextWidthFix } from './partials/StyledHiddenBoldTextWidthFix'
 import { StyledTabItem } from '../TabBase/partials/StyledTabItem'
 import { StyledTab } from '../TabBase/partials/StyledTab'
 
@@ -51,6 +52,9 @@ export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
           onClick={handleClick}
         >
           <div>{children}</div>
+          <StyledHiddenBoldTextWidthFix>
+            {children}
+          </StyledHiddenBoldTextWidthFix>
         </StyledTab>
       </StyledTabItem>
     )

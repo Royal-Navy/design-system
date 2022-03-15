@@ -15,6 +15,7 @@ export const ACTIVE_TAB_HEIGHT = '52px'
 function getActiveStyles() {
   return css`
     text-decoration: none;
+    font-weight: bold;
     background-color: ${color('neutral', 'white')};
     height: ${ACTIVE_TAB_HEIGHT};
     margin-top: 0;
@@ -27,8 +28,6 @@ function getActiveStyles() {
 
 export const StyledTab = styled.button<StyledTabProps>`
   width: 100%;
-  display: flex;
-  align-items: center;
   text-align: center;
   cursor: pointer;
   font-size: ${fontSize('base')};
