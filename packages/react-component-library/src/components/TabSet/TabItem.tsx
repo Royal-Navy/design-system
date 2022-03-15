@@ -1,7 +1,7 @@
 import React, { forwardRef, MouseEvent, KeyboardEvent } from 'react'
 
-import { StyledTabItem } from './partials/StyledTabItem'
-import { StyledTab } from './partials/StyledTab'
+import { StyledTabItem } from '../TabBase/partials/StyledTabItem'
+import { StyledTab } from '../TabBase/partials/StyledTab'
 
 interface TabItemProps {
   tabId: string

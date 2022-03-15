@@ -1,12 +1,12 @@
 import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
 
-import { StyledTabSetProps } from './StyledTabSet'
+import { StyledTabSetProps } from '../../TabSet/partials/StyledTabSet'
 
 const { color, fontSize, zIndex } = selectors
 
 interface StyledTabProps extends StyledTabSetProps {
-  $isActive: boolean
+  $isActive?: boolean
 }
 
 export const ACTIVE_TAB_BORDER = `1px solid ${color('neutral', '300')}`
@@ -35,7 +35,6 @@ export const StyledTab = styled.button<StyledTabProps>`
   font-weight: normal;
   text-decoration: underline;
 
-  color: ${color('neutral', '600')};
   background-color: ${color('neutral', '100')};
 
   height: 46px;
@@ -56,6 +55,10 @@ export const StyledTab = styled.button<StyledTabProps>`
 
   &:focus {
     outline: none;
+  }
+
+  * {
+    color: ${color('neutral', '600')};
   }
 
   ${({ $isActive }) => $isActive && getActiveStyles()}

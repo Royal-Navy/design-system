@@ -1,6 +1,6 @@
 import { selectors } from '@defencedigital/design-tokens'
 import styled from 'styled-components'
-import { ACTIVE_TAB_HEIGHT } from './StyledTab'
+import { ACTIVE_TAB_HEIGHT } from '../../TabBase/partials/StyledTab'
 
 const { color } = selectors
 

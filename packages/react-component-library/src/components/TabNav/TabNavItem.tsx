@@ -1,17 +1,13 @@
 import React from 'react'
-import { getKey } from '../../helpers'
 
 import { NavItem } from '../../common/Nav'
-import { StyledTabNavItem } from './partials/StyledTabNavItem'
+import { StyledTabItem } from '../TabBase/partials/StyledTabItem'
+import { StyledTab } from '../TabBase/partials/StyledTab'
 
-export const TabNavItem: React.FC<NavItem> = ({ isActive, link }) => {
-  return (
-    <StyledTabNavItem
-      key={getKey('tab-nav-item', link.toString())}
-      $isActive={isActive}
-      data-testid={isActive ? 'tab-active' : 'tab'}
-    >
-      {link}
-    </StyledTabNavItem>
-  )
-}
+export const TabNavItem: React.FC<NavItem> = ({ isActive, link }) => (
+  <StyledTabItem data-testid="tab-nav-tab">
+    <StyledTab $isActive={isActive} data-testid="tab-nav-tab-button">
+      <div>{link}</div>
+    </StyledTab>
+  </StyledTabItem>
+)
