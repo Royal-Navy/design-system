@@ -142,11 +142,11 @@ describe('TabSet', () => {
 
       describe('when the user clicks on a tab', () => {
         beforeEach(() => {
-          wrapper.getByText('Title 2').click()
+          wrapper.getAllByText('Title 2')[0].click()
         })
 
         it('should display the tab as active', () => {
-          const tab = wrapper.getByText('Title 2').parentElement
+          const tab = wrapper.getAllByText('Title 2')[0].parentElement
           expect(tab).toHaveStyleRule(
             'background-color',
             color('neutral', 'white')
@@ -194,7 +194,7 @@ describe('TabSet', () => {
           })
 
           it('sets the previous tab to active', () => {
-            const tab = wrapper.getByText('Title 1').parentElement
+            const tab = wrapper.getAllByText('Title 1')[0].parentElement
             expect(tab).toHaveStyleRule(
               'background-color',
               color('neutral', 'white')
@@ -210,7 +210,7 @@ describe('TabSet', () => {
             })
 
             it('sets the next tab to active', () => {
-              const tab = wrapper.getByText('Title 2').parentElement
+              const tab = wrapper.getAllByText('Title 2')[0].parentElement
               expect(tab).toHaveStyleRule(
                 'background-color',
                 color('neutral', 'white')
@@ -233,11 +233,11 @@ describe('TabSet', () => {
 
       describe('when the user clicks on a tab', () => {
         beforeEach(() => {
-          wrapper.getByText('Title 2').click()
+          wrapper.getAllByText('Title 2')[0].click()
         })
 
         it('should make the appropriate tab active', () => {
-          const tab = wrapper.getByText('Title 2').parentElement
+          const tab = wrapper.getAllByText('Title 2')[0].parentElement
           expect(tab).toHaveStyleRule(
             'background-color',
             color('neutral', 'white')
@@ -259,8 +259,8 @@ describe('TabSet', () => {
       })
 
       it('should make the appropriate tab active', () => {
-        const tab1 = wrapper.getByText('Title 1').parentElement
-        const tab2 = wrapper.getByText('Title 2').parentElement
+        const tab1 = wrapper.getAllByText('Title 1')[0].parentElement
+        const tab2 = wrapper.getAllByText('Title 2')[0].parentElement
         expect(tab1).toHaveStyleRule(
           'background-color',
           color('neutral', '100')
@@ -273,12 +273,12 @@ describe('TabSet', () => {
 
       describe('when the user clicks on a tab', () => {
         beforeEach(() => {
-          wrapper.getByText('Title 1').click()
+          wrapper.getAllByText('Title 1')[0].click()
         })
 
         it('should make the appropriate tab active', () => {
-          const tab1 = wrapper.getByText('Title 1').parentElement
-          const tab2 = wrapper.getByText('Title 2').parentElement
+          const tab1 = wrapper.getAllByText('Title 1')[0].parentElement
+          const tab2 = wrapper.getAllByText('Title 2')[0].parentElement
           expect(tab1).toHaveStyleRule(
             'background-color',
             color('neutral', 'white')
@@ -315,7 +315,7 @@ describe('TabSet', () => {
           Object.assign(clickEventSpy, { preventDefault: jest.fn() })
 
           fireEvent(
-            wrapper.getByText('Title 2').parentElement as HTMLElement,
+            wrapper.getAllByText('Title 2')[0].parentElement as HTMLElement,
             clickEventSpy
           )
         })
@@ -341,9 +341,9 @@ describe('TabSet', () => {
       })
 
       it('should render the elements', () => {
-        expect(wrapper.getByText('Title 1')).toBeInTheDocument()
+        expect(wrapper.getAllByText('Title 1')[0]).toBeInTheDocument()
         expect(wrapper.getByText('Content 1')).toBeInTheDocument()
-        expect(wrapper.getByText('Title 2')).toBeInTheDocument()
+        expect(wrapper.getAllByText('Title 2')[0]).toBeInTheDocument()
         expect(wrapper.getByText('Content 2')).toBeInTheDocument()
       })
     })
