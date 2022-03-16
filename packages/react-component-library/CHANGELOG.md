@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.3.0...3.4.0) (2022-03-16)
+
+
+### Features
+
+* **Select:** Add ability to hide clear button ([a8c8b6b](https://github.com/defencedigital/mod-uk-design-system/commit/a8c8b6b55f58d82f357ad23cca22babe583e29da))
+* **TabNav:** Update styles ([38201c1](https://github.com/defencedigital/mod-uk-design-system/commit/38201c1373ce19ca98c2e194162b60fef2e92788))
+
+
+
+
+
 # [3.3.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.2.2...3.3.0) (2022-03-14)
 
 
