@@ -23,38 +23,6 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(scss|css)$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: false,
-              importLoaders: 2,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('sass'),
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [
-                  require('postcss-flexbugs-fixes'),
-                  require('autoprefixer')({
-                    flexbox: 'no-2009',
-                  }),
-                ],
-              },
-            },
-          },
-        ],
-      },
-      {
         test: /\.(png|woff|woff2|eot|ttf)$/,
         use: ['url-loader?limit=100000'],
       },
