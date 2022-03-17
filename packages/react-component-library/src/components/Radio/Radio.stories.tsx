@@ -5,6 +5,11 @@ import { Radio, RadioProps } from '.'
 import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
 
 export default {
+  argTypes: {
+    description: {
+      control: false,
+    },
+  },
   component: Radio,
   title: 'Radio',
   parameters: {

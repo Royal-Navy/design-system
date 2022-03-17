@@ -7,6 +7,11 @@ import { BUTTON_VARIANT, BUTTON_ICON_POSITION } from './constants'
 import { COMPONENT_SIZE } from '../Forms'
 
 export default {
+  argTypes: {
+    icon: {
+      control: false,
+    },
+  },
   component: Button,
   title: 'Button',
   parameters: { actions: { argTypesRegex: '^on.*' } },

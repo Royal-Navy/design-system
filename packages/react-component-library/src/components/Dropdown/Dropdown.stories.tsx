@@ -6,6 +6,11 @@ import { IconLayers, IconAnchor } from '@defencedigital/icon-library'
 import { Dropdown } from './Dropdown'
 
 export default {
+  argTypes: {
+    labelIcon: {
+      control: false,
+    },
+  },
   component: Dropdown,
   title: 'Dropdown',
   parameters: {
