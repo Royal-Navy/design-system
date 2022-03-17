@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.4.0...3.5.0) (2022-03-17)
+
+
+### Features
+
+* **TabSet:** Add bold text ([d3ade47](https://github.com/defencedigital/mod-uk-design-system/commit/d3ade477b2412155c9ed978efc90ed498e94386a))
+
+
+
+
+
 # [3.4.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.3.0...3.4.0) (2022-03-16)
 
 
