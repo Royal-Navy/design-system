@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react'
 import orderBy from 'lodash/orderBy'
 
-import { RowProps, TABLE_SORT_ORDER } from '.'
-
-type sortType =
-  | typeof TABLE_SORT_ORDER.ASCENDING
-  | typeof TABLE_SORT_ORDER.DESCENDING
+import { RowProps, SortOrderType, TABLE_SORT_ORDER } from '.'
 
 function getNextSortOrder(
-  currentSortOrder: sortType | null,
+  currentSortOrder: SortOrderType | null,
   hasSortFieldChanged: boolean
 ) {
   if (!currentSortOrder || hasSortFieldChanged) {
@@ -24,7 +20,7 @@ function getNextSortOrder(
 
 export function useTableData(data: RowProps[]) {
   const [tableData, setTableData] = useState(data)
-  const [sortOrder, setSortOrder] = useState<sortType | null>(null)
+  const [sortOrder, setSortOrder] = useState<SortOrderType | null>(null)
   const [sortField, setSortField] = useState<string | null>(null)
 
   function sortTableData(field: string) {

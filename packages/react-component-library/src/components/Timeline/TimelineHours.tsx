@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { getKey } from '../../helpers'
+import { getKey, ValueOf } from '../../helpers'
 import { StyledHours } from './partials/StyledHours'
 import { DISPLAY_THRESHOLDS, TIMELINE_BLOCK_SIZE } from './constants'
 import { TimelineContext } from './context'
@@ -8,10 +8,7 @@ import { TimelineColumnHeader } from './TimelineColumnHeader'
 import { TimelineHour } from './TimelineHour'
 import { TimelineHeaderRow } from './TimelineHeaderRow'
 
-export type BlockSizeType =
-  | typeof TIMELINE_BLOCK_SIZE.SINGLE_HOUR
-  | typeof TIMELINE_BLOCK_SIZE.QUARTER_DAY
-  | typeof TIMELINE_BLOCK_SIZE.HALF_DAY
+export type BlockSizeType = ValueOf<typeof TIMELINE_BLOCK_SIZE>
 
 export interface TimelineHoursWithRenderContentProps {
   /**

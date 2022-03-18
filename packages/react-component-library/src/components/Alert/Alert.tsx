@@ -16,6 +16,7 @@ import { StyledDescription } from './partials/StyledDescription'
 import { StyledFooter } from './partials/StyledFooter'
 import { StyledCloseButton } from './partials/StyledCloseButton'
 import { useExternalId } from '../../hooks/useExternalId'
+import { ValueOf } from '../../helpers'
 
 const VARIANT_ICON_MAP = {
   [ALERT_VARIANT.DANGER]: (
@@ -30,11 +31,7 @@ const VARIANT_ICON_MAP = {
   ),
 }
 
-export type AlertVariantType =
-  | typeof ALERT_VARIANT.DANGER
-  | typeof ALERT_VARIANT.INFO
-  | typeof ALERT_VARIANT.SUCCESS
-  | typeof ALERT_VARIANT.WARNING
+export type AlertVariantType = ValueOf<typeof ALERT_VARIANT>
 
 export interface AlertProps {
   /**

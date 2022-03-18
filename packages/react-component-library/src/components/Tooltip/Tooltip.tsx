@@ -7,12 +7,9 @@ import { StyledContent } from './partials/StyledContent'
 import { StyledTitle } from './partials/StyledTitle'
 import { StyledMessage } from './partials/StyledMessage'
 import { useExternalId } from '../../hooks/useExternalId'
+import { ValueOf } from '../../helpers'
 
-type TooltipPositionType =
-  | typeof TOOLTIP_POSITION.ABOVE
-  | typeof TOOLTIP_POSITION.BELOW
-  | typeof TOOLTIP_POSITION.LEFT
-  | typeof TOOLTIP_POSITION.RIGHT
+type TooltipPositionType = ValueOf<typeof TOOLTIP_POSITION>
 
 export interface TooltipProps extends PositionType {
   /**

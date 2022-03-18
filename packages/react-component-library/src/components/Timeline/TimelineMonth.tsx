@@ -9,6 +9,7 @@ import { StyledMonthTitle } from './partials/StyledMonthTitle'
 import { StyledMonthTitleMedium } from './partials/StyledMonthTitleMedium'
 import { StyledMonthTitleSmall } from './partials/StyledMonthTitleSmall'
 import { TimelineDay } from './context/types'
+import { ValueOf } from '../../helpers'
 
 const DECEMBER_INDEX = 11
 
@@ -18,10 +19,7 @@ export const MONTH_SIZE = {
   LARGE: 'large',
 } as const
 
-export type TimelineMonthSizeType =
-  | typeof MONTH_SIZE.SMALL
-  | typeof MONTH_SIZE.MEDIUM
-  | typeof MONTH_SIZE.LARGE
+export type TimelineMonthSizeType = ValueOf<typeof MONTH_SIZE>
 
 interface TimelineMonthProps {
   days: TimelineDay[]

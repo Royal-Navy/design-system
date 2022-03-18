@@ -7,6 +7,7 @@ import {
 } from '@defencedigital/icon-library'
 
 import { StyledButton } from './partials/StyledButton'
+import { ValueOf } from '../../helpers'
 
 export const PAGINATION_BUTTON_VARIANT = {
   FIRST: 'First',
@@ -15,11 +16,7 @@ export const PAGINATION_BUTTON_VARIANT = {
   NEXT: 'Next',
 } as const
 
-type PaginationButtonChildrenType =
-  | typeof PAGINATION_BUTTON_VARIANT.FIRST
-  | typeof PAGINATION_BUTTON_VARIANT.LAST
-  | typeof PAGINATION_BUTTON_VARIANT.PREV
-  | typeof PAGINATION_BUTTON_VARIANT.NEXT
+type PaginationButtonChildrenType = ValueOf<typeof PAGINATION_BUTTON_VARIANT>
 
 interface PaginationButtonProps {
   children: PaginationButtonChildrenType
