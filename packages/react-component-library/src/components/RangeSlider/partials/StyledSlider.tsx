@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import { Slider, SliderProps } from 'react-compound-slider'
 

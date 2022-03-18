@@ -10,21 +10,6 @@ updates:
   - thyhjwb6
   labels:
   - "Type: Dependencies"
-  ignore:
-  - dependency-name: webpack-cli
-    versions:
-    - 4.5.0
-  - dependency-name: source-map-loader
-    versions:
-    - 2.0.0
-    - 2.0.1
-  - dependency-name: yup
-    versions:
-    - 0.32.9
-  - dependency-name: webpack
-    versions:
-    - 5.15.0
-    - 5.22.0
   commit-message:
     prefix: chore(Security)
   rebase-strategy: auto

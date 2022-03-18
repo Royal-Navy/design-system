@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { PositioningStrategy, Placement, VirtualElement } from '@popperjs/core'
 import { usePopper } from 'react-popper'
 
