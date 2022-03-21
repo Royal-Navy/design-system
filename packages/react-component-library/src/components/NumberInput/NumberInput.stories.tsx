@@ -6,6 +6,11 @@ import { COMPONENT_SIZE } from '../Forms'
 import { NumberInput } from './NumberInput'
 
 export default {
+  argTypes: {
+    icon: {
+      control: false,
+    },
+  },
   component: NumberInput,
   title: 'Number Input',
   parameters: {

@@ -5,10 +5,20 @@ import { IconSearch } from '@defencedigital/icon-library'
 import { TextInput } from '.'
 
 export default {
+  argTypes: {
+    endAdornment: {
+      control: false,
+    },
+    startAdornment: {
+      control: false,
+    },
+  },
   component: TextInput,
   title: 'Text Input',
   parameters: {
-    argTypes: { onBlur: { action: 'onBlur' } },
+    argTypes: {
+      onBlur: { action: 'onBlur' },
+    },
   },
 } as ComponentMeta<typeof TextInput>
 
