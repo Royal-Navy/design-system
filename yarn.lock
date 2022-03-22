@@ -7163,10 +7163,10 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@4.3.3, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.3:
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
-  integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
+debug@4, debug@4.3.4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.3:
+  version "4.3.4"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
+  integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
   dependencies:
     ms "2.1.2"
 
@@ -11810,11 +11810,11 @@ loader-utils@^2.0.0:
     json5 "^2.1.2"
 
 local-cypress@^1.2.1:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/local-cypress/-/local-cypress-1.2.3.tgz#f979b4ab153b7a3592b1d43334eb49b3e84d8695"
-  integrity sha512-nNw160F8SdCaaS1MFEHyyTzW6Liv4LVIdzlKeX7arcFU+Hk0YOmvkLpt65IY3EQtdYOm6HBgw1So8Jn/A6nVRA==
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/local-cypress/-/local-cypress-1.2.4.tgz#32e68a554b71bfe6aab81d630e4df61f9edba8a4"
+  integrity sha512-XeRLsBmBj+xCCtP+3JSvvHIczkpGGTl6DhO4MYx6opw2nTehf4uWMG+W8MeAp5cUIj29hIJA8/D+Djbzc2zkSg==
   dependencies:
-    debug "4.3.3"
+    debug "4.3.4"
 
 locate-path@^2.0.0:
   version "2.0.0"
