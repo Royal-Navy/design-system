@@ -13,3 +13,7 @@ updates:
   commit-message:
     prefix: chore(Security)
   rebase-strategy: auto
+  ignore:
+    # Newer versions break older browsers, see e.g. https://github.com/juliencrn/usehooks-ts/issues/97
+    - dependency-name: "usehooks-ts"
+      versions: [">2.2.1"]

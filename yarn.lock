@@ -12384,7 +12384,7 @@ minimist-options@4.1.0:
     is-plain-obj "^1.1.0"
     kind-of "^6.0.3"
 
-minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.5, minimist@^1.2.6:
+minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
   integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
@@ -16985,10 +16985,10 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
-usehooks-ts@2.4.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/usehooks-ts/-/usehooks-ts-2.4.2.tgz#a9a5df9d04dcce993d7e8ec088965ba44dfcd9cc"
-  integrity sha512-YqD5HaloGpRSoNaXhAxR+CHTKda44mDtFqNJk5gRuy4qeHVxpp8ycN3LY0txYqNudCVuAk1f8m6M0ojQ5Aph8Q==
+usehooks-ts@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/usehooks-ts/-/usehooks-ts-2.2.1.tgz#9bb9af81d4680cf9cdb9234331a37e4be39d1183"
+  integrity sha512-n6Rat52iF+Tz9CFU2IIuaFsm9uCXX4dU565lKaAKMEXLLGTg9qYwzDSpXkCPRnx9lTdkm8M+W+YJ36Lb13zjEA==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
