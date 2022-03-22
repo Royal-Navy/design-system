@@ -60,6 +60,8 @@ function sleep(ms: number): Promise<undefined> {
   })
 }
 
+export type ValueOf<T> = T[keyof T]
+
 export {
   getInitials,
   getKey,

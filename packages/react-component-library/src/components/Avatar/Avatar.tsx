@@ -3,6 +3,7 @@ import React from 'react'
 import { AVATAR_VARIANT } from '.'
 import { StyledAvatar } from './partials/StyledAvatar'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { ValueOf } from '../../helpers'
 
 export interface AvatarProps extends ComponentWithClass {
   /**
@@ -12,7 +13,7 @@ export interface AvatarProps extends ComponentWithClass {
   /**
    * Type of component to display (style varies accordingly).
    */
-  variant?: typeof AVATAR_VARIANT.DARK | typeof AVATAR_VARIANT.LIGHT
+  variant?: ValueOf<typeof AVATAR_VARIANT>
 }
 
 export const Avatar: React.FC<AvatarProps> = ({ variant, ...rest }) => (

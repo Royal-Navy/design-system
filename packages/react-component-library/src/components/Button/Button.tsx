@@ -8,16 +8,11 @@ import { StyledIconWrapper } from './partials/StyledIconWrapper'
 import { StyledText } from './partials/StyledText'
 import { StyledIconLoaderWrapper } from './partials/StyledIconLoader'
 import { ComponentSizeType, COMPONENT_SIZE } from '../Forms'
+import { ValueOf } from '../../helpers'
 
-export type ButtonVariantType =
-  | typeof BUTTON_VARIANT.PRIMARY
-  | typeof BUTTON_VARIANT.SECONDARY
-  | typeof BUTTON_VARIANT.TERTIARY
-  | typeof BUTTON_VARIANT.DANGER
+export type ButtonVariantType = ValueOf<typeof BUTTON_VARIANT>
 
-export type ButtonIconPositionType =
-  | typeof BUTTON_ICON_POSITION.LEFT
-  | typeof BUTTON_ICON_POSITION.RIGHT
+export type ButtonIconPositionType = ValueOf<typeof BUTTON_ICON_POSITION>
 
 interface ButtonBaseProps extends Omit<ComponentWithClass, 'children'> {
   /**

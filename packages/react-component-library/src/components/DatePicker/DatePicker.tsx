@@ -9,7 +9,7 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
 import { DATE_VALIDITY, WEEKDAY_TITLES } from './constants'
 import { DATEPICKER_E_ACTION } from './types'
-import { hasClass } from '../../helpers'
+import { hasClass, ValueOf } from '../../helpers'
 import { InlineButton } from '../InlineButtons/InlineButton'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { isDateValid } from './utils'
@@ -42,10 +42,7 @@ declare module 'react-day-picker' {
   }
 }
 
-export type DatePickerDateValidityType =
-  | typeof DATE_VALIDITY.VALID
-  | typeof DATE_VALIDITY.INVALID
-  | typeof DATE_VALIDITY.DISABLED
+export type DatePickerDateValidityType = ValueOf<typeof DATE_VALIDITY>
 
 export interface DatePickerOnChangeData {
   startDate: Date | null

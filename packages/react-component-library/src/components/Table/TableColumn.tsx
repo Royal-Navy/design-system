@@ -1,5 +1,4 @@
 import React from 'react'
-import get from 'lodash/get'
 import {
   IconSortAscending,
   IconSortDescending,
@@ -8,10 +7,9 @@ import {
 
 import { TABLE_SORT_ORDER } from './constants'
 import { StyledTableColumn } from './partials/StyledTableColumn'
+import { ValueOf } from '../../helpers'
 
-type SortOrderType =
-  | typeof TABLE_SORT_ORDER.ASCENDING
-  | typeof TABLE_SORT_ORDER.DESCENDING
+export type SortOrderType = ValueOf<typeof TABLE_SORT_ORDER>
 
 type AriaSortType = 'ascending' | 'descending' | 'none'
 
