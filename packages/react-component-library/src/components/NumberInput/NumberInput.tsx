@@ -45,6 +45,10 @@ interface NumberInputBaseProps
   label?: string
   /**
    * Maximum value selectable by the component (upper bound).
+   *
+   * Deprecated: Use app-side validation (ideally triggered `onBlur`).
+   *
+   * @deprecated
    */
   max?: number
   /**
@@ -52,6 +56,10 @@ interface NumberInputBaseProps
    *
    * To disable the entry of negative numbers, set this to `0` or
    * greater.
+   *
+   * Deprecated: Use app-side validation (ideally triggered `onBlur`).
+   *
+   * @deprecated
    */
   min?: number
   /**
