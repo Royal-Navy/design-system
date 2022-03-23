@@ -18,9 +18,9 @@ export const TabContent: React.FC<TabContentProps> = ({
   <StyledContent
     $isActive={isActive}
     role="tabpanel"
-    aria-labelledby={tabId}
+    aria-labelledby={`tab-button-${tabId}`}
     aria-hidden={!isActive}
-    id={tabId}
+    id={`tab-content-${tabId}`}
     tabIndex={0}
     data-testid="tab-set-content"
     {...rest}

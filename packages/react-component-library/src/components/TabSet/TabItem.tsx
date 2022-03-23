@@ -9,7 +9,7 @@ interface TabItemProps {
   children: React.ReactElement | string
   isActive: boolean
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
-  onKeyDown: (event: KeyboardEvent<HTMLLIElement>) => void
+  onKeyDown: (event: KeyboardEvent<HTMLButtonElement>) => void
   isFullWidth?: boolean
   isScrollable?: boolean
 }
@@ -37,22 +37,23 @@ export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
         $isFullWidth={isFullWidth}
         $isScrollable={isScrollable}
         ref={ref}
-        role="tab"
-        aria-controls={tabId}
-        aria-selected={!!isActive}
-        tabIndex={!isActive ? -1 : 0}
+        role="presentation"
         data-testid="tab-set-tab"
-        aria-label={children.toString()}
-        onKeyDown={onKeyDown}
       >
         <StyledTab
           $isActive={isActive}
           $isScrollable={isScrollable}
+          id={`tab-button-${tabId}`}
+          role="tab"
+          aria-controls={`tab-content-${tabId}`}
+          aria-selected={!!isActive}
+          onKeyDown={onKeyDown}
+          tabIndex={!isActive ? -1 : 0}
           data-testid="tab-set-tab-button"
           onClick={handleClick}
         >
-          <div>{children}</div>
-          <StyledHiddenBoldTextWidthFix>
+          <div role="presentation">{children}</div>
+          <StyledHiddenBoldTextWidthFix aria-hidden="true">
             {children}
           </StyledHiddenBoldTextWidthFix>
         </StyledTab>

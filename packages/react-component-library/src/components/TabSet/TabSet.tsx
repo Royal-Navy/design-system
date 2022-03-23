@@ -81,7 +81,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
   }
 
   const [tabIds] = useState(() =>
-    [...Array(children.length)].map(() => `tab-content-${uuidv4()}`)
+    [...Array(children.length)].map(() => `${uuidv4()}`)
   )
   const [activeTab, setActiveTab] = useState(getActiveIndex(children))
   const { scrollToNextTab, tabsRef, itemsRef } = useScrollableTabSet(children)
@@ -94,7 +94,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
     }
   }
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLLIElement>) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     const { which } = event
 
     const getNextIndex = (keyCode: number): number => {
