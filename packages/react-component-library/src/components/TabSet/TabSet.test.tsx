@@ -48,11 +48,10 @@ describe('TabSet', () => {
         )
       })
 
-      it('should apply the `aria-label` attribute to the tab', () => {
-        expect(wrapper.getAllByTestId('tab-set-tab')[0]).toHaveAttribute(
-          'aria-label',
-          'Title 1'
-        )
+      it('should give tabs an appropriate accessible name', () => {
+        expect(
+          wrapper.getByRole('tab', { name: 'Title 1' })
+        ).toBeInTheDocument()
       })
 
       it('should apply the correct roles', () => {
@@ -62,6 +61,11 @@ describe('TabSet', () => {
         )
 
         expect(wrapper.getAllByTestId('tab-set-tab')[0]).toHaveAttribute(
+          'role',
+          'presentation'
+        )
+
+        expect(wrapper.getAllByTestId('tab-set-tab-button')[0]).toHaveAttribute(
           'role',
           'tab'
         )
@@ -73,32 +77,32 @@ describe('TabSet', () => {
       })
 
       it('should set the `aria-labelledby` and `id` attributes to the ID of the tab', () => {
-        const tabId0 = wrapper
-          .getAllByTestId('tab-set-tab')[0]
-          .getAttribute('aria-controls')
+        const tabButton0 = wrapper.getAllByTestId('tab-set-tab-button')[0]
+        const tabButtonId0 = tabButton0.getAttribute('id')
+        const tabContentId0 = tabButton0.getAttribute('aria-controls')
 
         expect(wrapper.getAllByTestId('tab-set-content')[0]).toHaveAttribute(
           'aria-labelledby',
-          tabId0
+          tabButtonId0
         )
 
         expect(wrapper.getAllByTestId('tab-set-content')[0]).toHaveAttribute(
           'id',
-          tabId0
+          tabContentId0
         )
 
-        const tabId1 = wrapper
-          .getAllByTestId('tab-set-tab')[1]
-          .getAttribute('aria-controls')
+        const tabButton1 = wrapper.getAllByTestId('tab-set-tab-button')[1]
+        const tabButtonId1 = tabButton1.getAttribute('id')
+        const tabContentId1 = tabButton1.getAttribute('aria-controls')
 
         expect(wrapper.getAllByTestId('tab-set-content')[1]).toHaveAttribute(
           'aria-labelledby',
-          tabId1
+          tabButtonId1
         )
 
         expect(wrapper.getAllByTestId('tab-set-content')[1]).toHaveAttribute(
           'id',
-          tabId1
+          tabContentId1
         )
       })
 
@@ -117,12 +121,12 @@ describe('TabSet', () => {
       })
 
       it('should set the `tabIndex` values correctly', () => {
-        expect(wrapper.getAllByTestId('tab-set-tab')[0]).toHaveAttribute(
+        expect(wrapper.getAllByTestId('tab-set-tab-button')[0]).toHaveAttribute(
           'tabIndex',
           '0'
         )
 
-        expect(wrapper.getAllByTestId('tab-set-tab')[1]).toHaveAttribute(
+        expect(wrapper.getAllByTestId('tab-set-tab-button')[1]).toHaveAttribute(
           'tabIndex',
           '-1'
         )
@@ -162,15 +166,13 @@ describe('TabSet', () => {
         })
 
         it('should set the first tab `tabIndex` to -1', () => {
-          expect(wrapper.getAllByTestId('tab-set-tab')[0]).toHaveAttribute(
-            'tabIndex',
-            '-1'
-          )
+          expect(
+            wrapper.getAllByTestId('tab-set-tab-button')[0]
+          ).toHaveAttribute('tabIndex', '-1')
 
-          expect(wrapper.getAllByTestId('tab-set-tab')[1]).toHaveAttribute(
-            'tabIndex',
-            '0'
-          )
+          expect(
+            wrapper.getAllByTestId('tab-set-tab-button')[1]
+          ).toHaveAttribute('tabIndex', '0')
         })
 
         it('should set the `aria-hidden` attributes correctly', () => {
@@ -187,7 +189,7 @@ describe('TabSet', () => {
 
         describe('and the user presses the left arrow key', () => {
           beforeEach(() => {
-            fireEvent.keyDown(wrapper.getAllByTestId('tab-set-tab')[0], {
+            fireEvent.keyDown(wrapper.getAllByTestId('tab-set-tab-button')[0], {
               key: 'ArrowLeft',
               keyCode: 37,
             })
@@ -203,10 +205,13 @@ describe('TabSet', () => {
 
           describe('and the user presses the right arrow key', () => {
             beforeEach(() => {
-              fireEvent.keyDown(wrapper.getAllByTestId('tab-set-tab')[1], {
-                key: 'ArrowRight',
-                keyCode: 39,
-              })
+              fireEvent.keyDown(
+                wrapper.getAllByTestId('tab-set-tab-button')[1],
+                {
+                  key: 'ArrowRight',
+                  keyCode: 39,
+                }
+              )
             })
 
             it('sets the next tab to active', () => {

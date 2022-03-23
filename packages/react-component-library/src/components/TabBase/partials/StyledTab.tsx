@@ -52,10 +52,6 @@ export const StyledTab = styled.button<StyledTabProps>`
     margin: 0 auto;
   }
 
-  &:focus {
-    outline: none;
-  }
-
   * {
     color: ${color('neutral', '600')};
   }
