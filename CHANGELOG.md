@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.3](https://github.com/defencedigital/mod-uk-design-system/compare/3.5.2...3.5.3) (2022-03-23)
+
+
+### Bug Fixes
+
+* **NumberInputE:** Deprecate `min` and `max` ([6dbf271](https://github.com/defencedigital/mod-uk-design-system/commit/6dbf2717f6e608a8fe6efb28438da1fb4c5febf0))
+
+
+
+
+
 ## [3.5.2](https://github.com/defencedigital/mod-uk-design-system/compare/3.5.1...3.5.2) (2022-03-22)
 
 
