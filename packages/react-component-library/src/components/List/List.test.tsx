@@ -42,13 +42,13 @@ describe('List', () => {
       )
     })
 
-    it('should apply the group role to the root element', () => {
-      expect(wrapper.getByTestId('list')).toHaveAttribute('role', 'group')
+    it('should apply the list role to the root element', () => {
+      expect(wrapper.getByRole('list')).toHaveAttribute('data-testid', 'list')
     })
 
-    it('should apply the presentation role to the li element', () => {
-      wrapper.getAllByTestId('list-item').forEach((item) => {
-        expect(item).toHaveAttribute('role', 'presentation')
+    it('should apply the listitem role to the li element', () => {
+      wrapper.getAllByRole('listitem').forEach((item) => {
+        expect(item).toHaveAttribute('data-testid', 'list-item')
       })
     })
 
