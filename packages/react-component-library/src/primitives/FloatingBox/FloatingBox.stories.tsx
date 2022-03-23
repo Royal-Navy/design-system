@@ -13,7 +13,7 @@ export default {
   },
 } as Meta<FloatingBoxWithEmbeddedTargetProps>
 
-export const Default: Story<FloatingBoxWithEmbeddedTargetProps> = (props) => (
+const Template: Story<FloatingBoxWithEmbeddedTargetProps> = (props) => (
   <FloatingBox isVisible renderTarget={<div />} {...props}>
     <div style={{ padding: '0 1rem' }}>
       <pre>Arbitrary JSX content</pre>
@@ -21,21 +21,16 @@ export const Default: Story<FloatingBoxWithEmbeddedTargetProps> = (props) => (
   </FloatingBox>
 )
 
+export const Default = Template.bind({})
 Default.args = {
   scheme: FLOATING_BOX_SCHEME.LIGHT,
+  'aria-label': 'A floating box',
 }
 
-export const Dark: Story<FloatingBoxWithEmbeddedTargetProps> = (props) => (
-  <FloatingBox
-    isVisible
-    renderTarget={<div />}
-    {...props}
-    scheme={FLOATING_BOX_SCHEME.DARK}
-  >
-    <div style={{ padding: '0 1rem' }}>
-      <pre>Arbitrary JSX content</pre>
-    </div>
-  </FloatingBox>
-)
+export const Dark = Template.bind({})
 
 Dark.storyName = 'Dark'
+Dark.args = {
+  scheme: FLOATING_BOX_SCHEME.DARK,
+  'aria-label': 'A floating box',
+}
