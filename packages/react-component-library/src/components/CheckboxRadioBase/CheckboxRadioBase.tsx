@@ -96,8 +96,6 @@ export const CheckboxRadioBase = React.forwardRef<
       <StyledWrapper>
         <Root
           className={className}
-          role={type}
-          aria-checked={isChecked}
           $isDisabled={isDisabled}
           $hasContainer={hasContainer}
           $isInvalid={isInvalid}
