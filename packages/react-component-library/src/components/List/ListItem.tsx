@@ -51,7 +51,7 @@ export const ListItem: React.FC<ListItemProps> = ({
     <StyledItem
       $isInactive={isActive === false}
       data-testid="list-item"
-      role="presentation"
+      aria-labelledby={titleId}
       {...rest}
     >
       <StyledItemContent
@@ -59,7 +59,7 @@ export const ListItem: React.FC<ListItemProps> = ({
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <div role="listitem" aria-labelledby={titleId}>
+        <div>
           <StyledItemTitle id={titleId} data-testid="list-item-heading">
             {title}
           </StyledItemTitle>
