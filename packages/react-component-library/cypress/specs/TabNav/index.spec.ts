@@ -1,10 +1,7 @@
 import { cy, describe, expect, it } from 'local-cypress'
-import { ColorAction500, ColorNeutral100 } from '@defencedigital/design-tokens'
 
+import { ACTIVE_TAB_BORDER_TOP } from './constants'
 import selectors from '../../selectors'
-import { hexToRgb } from '../../helpers'
-
-const ACTIVE_TAB_BORDER_TOP = `6px solid ${hexToRgb(ColorAction500)}`
 
 describe('TabNav - Default', () => {
   beforeEach(() => {

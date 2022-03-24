@@ -5,6 +5,7 @@ import contextMenu from './ContextMenu'
 import datePicker from './DatePicker'
 import dismissibleBanner from './DismissibleBanner'
 import form from './form'
+import masthead from './Masthead'
 import numberInput from './NumberInput'
 import rangeSlider from './RangeSlider'
 import select from './Select'
@@ -20,6 +21,7 @@ export default {
   datePicker,
   dismissibleBanner,
   form,
+  masthead,
   numberInput,
   rangeSlider,
   select,
