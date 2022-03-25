@@ -8,7 +8,7 @@ import { useBoolean } from 'usehooks-ts'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
 import { DATE_VALIDITY, WEEKDAY_TITLES } from './constants'
-import { DATEPICKER_E_ACTION } from './types'
+import { DATEPICKER_ACTION } from './types'
 import { hasClass, ValueOf } from '../../helpers'
 import { InlineButton } from '../InlineButtons/InlineButton'
 import { InputValidationProps } from '../../common/InputValidationProps'
@@ -340,8 +340,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 
               const newState = handleDayClick(day)
 
-              dispatch({ type: DATEPICKER_E_ACTION.REFRESH_HAS_ERROR })
-              dispatch({ type: DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE })
+              dispatch({ type: DATEPICKER_ACTION.REFRESH_HAS_ERROR })
+              dispatch({ type: DATEPICKER_ACTION.REFRESH_INPUT_VALUE })
 
               if (newState.endDate || !isRange) {
                 setTimeout(() => close())
