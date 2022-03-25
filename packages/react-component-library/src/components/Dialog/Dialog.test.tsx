@@ -95,6 +95,34 @@ describe('Modal', () => {
     })
   })
 
+  describe('when aria-label but no title is set', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Dialog
+          aria-label="Accessible name"
+          data-arbitrary="arbitrary"
+          description={description}
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+          isOpen={isOpen}
+        />
+      )
+    })
+
+    it('does not set the `aria-labelledby` attribute', () => {
+      expect(wrapper.getByTestId('dialog')).not.toHaveAttribute(
+        'aria-labelledby'
+      )
+    })
+
+    it('sets the `aria-label` attribute', () => {
+      expect(wrapper.getByTestId('dialog')).toHaveAttribute(
+        'aria-label',
+        'Accessible name'
+      )
+    })
+  })
+
   describe('when the Dialog description changes', () => {
     let initialTitleId: string
     let initialDescriptionId: string

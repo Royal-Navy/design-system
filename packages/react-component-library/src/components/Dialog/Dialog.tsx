@@ -10,6 +10,10 @@ import { useExternalId } from '../../hooks/useExternalId'
 
 export interface DialogProps extends ComponentWithClass {
   /**
+   * Optional override for the accessible name of the Modal.
+   */
+  'aria-label'?: string
+  /**
    * Optional text description to display under the component title.
    */
   description?: string
@@ -31,6 +35,9 @@ export interface DialogProps extends ComponentWithClass {
   onConfirm?: (event: React.FormEvent<HTMLButtonElement>) => void
   /**
    * Optional text title to display at the top of the component.
+   *
+   * If no title is set, you should set aria-label instead to ensure
+   * the Modal is accessible.
    */
   title?: string
 }
@@ -61,7 +68,7 @@ export const Dialog: React.FC<DialogProps> = ({
   return (
     <StyledDialog
       data-testid="dialog"
-      titleId={titleId}
+      titleId={title ? titleId : undefined}
       descriptionId={descriptionId}
       primaryButton={confirmButton}
       secondaryButton={cancelButton}
