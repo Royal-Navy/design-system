@@ -5,7 +5,6 @@ import mergeRefs from 'react-merge-refs'
 import { ArrowButton } from '../Select/ArrowButton'
 import { ClearButton } from '../Select/ClearButton'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { FloatingBox } from '../../primitives/FloatingBox'
 import { SelectChildWithStringType } from './types'
 import { StyledInlineButtons } from './partials/StyledInlineButtons'
 import { StyledInput } from './partials/StyledInput'
@@ -19,6 +18,7 @@ import { StyledTextInput } from './partials/StyledTextInput'
 import { StyledTooltip } from './partials/StyledTooltip'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
+import { StyledFloatingBox } from './partials/StyledFloatingBox'
 
 type ComboboxReturnValueType = UseComboboxReturnValue<SelectChildWithStringType>
 type SelectReturnValueType = UseSelectReturnValue<SelectChildWithStringType>
@@ -134,14 +134,14 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
           <StyledOptions {...menuProps}>{children}</StyledOptions>
         </StyledOptionsWrapper>
       </StyledSelect>
-      <FloatingBox
+      <StyledFloatingBox
         placement="bottom"
         scheme="dark"
         isVisible={hasHover && isEllipsisActive(floatingBoxTarget)}
         targetElement={floatingBoxTarget}
       >
         <StyledTooltip>{value}</StyledTooltip>
-      </FloatingBox>
+      </StyledFloatingBox>
     </>
   )
 }
