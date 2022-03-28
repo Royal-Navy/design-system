@@ -25,6 +25,10 @@ export interface DescriptionListProps extends ComponentWithClass {
    */
   isCollapsible?: boolean
   /**
+   * Denotes whether the collapsible variant is open.
+   */
+  isOpen?: boolean
+  /**
    * Text description to display at the top of the component.
    */
   description: string
@@ -46,11 +50,12 @@ function useAriaAttributes(isCollapsible: boolean, expanded: boolean) {
 
 export const DescriptionList: React.FC<DescriptionListProps> = ({
   isCollapsible = false,
+  isOpen = false,
   description,
   children,
   ...rest
 }) => {
-  const { open, toggle } = useOpenClose(false)
+  const { open, toggle } = useOpenClose(isOpen)
   const ariaAttributes = useAriaAttributes(isCollapsible, open)
   const sheetId = ariaAttributes ? ariaAttributes['aria-owns'] : undefined
 

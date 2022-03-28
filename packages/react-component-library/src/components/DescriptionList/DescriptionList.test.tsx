@@ -150,4 +150,40 @@ describe('DescriptionList', () => {
       })
     })
   })
+
+  describe('when collapsible and `isOpen` prop is set', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <DescriptionList description="title" isCollapsible isOpen>
+          <DescriptionListItem title="One">1</DescriptionListItem>
+          <DescriptionListItem title="Two">2</DescriptionListItem>
+          <DescriptionListItem title="Three">3</DescriptionListItem>
+        </DescriptionList>
+      )
+    })
+
+    it('should set `aria-expanded` on the button to `true`', () => {
+      expect(wrapper.getByTestId('description-list-header')).toHaveAttribute(
+        'aria-expanded',
+        'true'
+      )
+    })
+
+    it('should set `aria-label` on the button to `Hide data`', () => {
+      expect(wrapper.getByTestId('description-list-header')).toHaveAttribute(
+        'aria-label',
+        'Hide data'
+      )
+    })
+
+    it('should show the items', () => {
+      expect(wrapper.getAllByTestId('description-list-item')[0]).toBeVisible()
+    })
+
+    describe('when the header is clicked', () => {
+      it('should hide the items', () => {
+        expect(wrapper.getAllByTestId('description-list-item')[0]).toBeVisible()
+      })
+    })
+  })
 })

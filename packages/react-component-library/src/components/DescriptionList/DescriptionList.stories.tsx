@@ -62,3 +62,18 @@ export const Collapsible: ComponentStory<typeof DescriptionList> = () => (
 Collapsible.parameters = disableDefinitionList
 
 Collapsible.storyName = 'Collapsible'
+
+export const CollapsibleOpen: ComponentStory<typeof DescriptionList> = () => (
+  <DescriptionList description="Example description" isCollapsible isOpen>
+    <DescriptionListItem title="Name">Horatio Nelson</DescriptionListItem>
+    <DescriptionListItem title="Age">44</DescriptionListItem>
+    <DescriptionListItem title="Location">Portsmouth</DescriptionListItem>
+    <DescriptionListItem title="Departure">2230</DescriptionListItem>
+    <DescriptionListItem title="Water Temperature">25C</DescriptionListItem>
+    <DescriptionListItem title="Wind Speed">8Kts</DescriptionListItem>
+  </DescriptionList>
+)
+
+CollapsibleOpen.parameters = disableDefinitionList
+
+CollapsibleOpen.storyName = 'Collapsible (Open)'
