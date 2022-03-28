@@ -56,7 +56,7 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
   .DayPicker-NavButton {
     ${getButtonStyles({
       $size: COMPONENT_SIZE.SMALL,
-      $variant: BUTTON_VARIANT.SECONDARY,
+      $variant: BUTTON_VARIANT.TERTIARY,
     })};
     position: absolute;
     top: ${spacing('6')};

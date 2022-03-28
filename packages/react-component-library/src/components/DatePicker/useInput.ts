@@ -2,7 +2,7 @@ import { addHours, isValid, parse } from 'date-fns'
 import React, { useCallback } from 'react'
 
 import { RETURN } from '../../utils/keyCodes'
-import { DATEPICKER_E_ACTION, DatePickerAction } from './types'
+import { DATEPICKER_ACTION, DatePickerAction } from './types'
 
 function parseDate(datePickerFormat: string, value: string) {
   if (!value) {
@@ -30,7 +30,7 @@ export function useInput(
         return
       }
 
-      dispatch({ type: DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE })
+      dispatch({ type: DATEPICKER_ACTION.REFRESH_INPUT_VALUE })
     },
     [dispatch, isRange]
   )
@@ -40,8 +40,8 @@ export function useInput(
       return
     }
 
-    dispatch({ type: DATEPICKER_E_ACTION.REFRESH_HAS_ERROR })
-    dispatch({ type: DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE })
+    dispatch({ type: DATEPICKER_ACTION.REFRESH_HAS_ERROR })
+    dispatch({ type: DATEPICKER_ACTION.REFRESH_INPUT_VALUE })
   }, [dispatch, isRange])
 
   const handleInputChange = useCallback(
@@ -51,7 +51,7 @@ export function useInput(
       }
 
       dispatch({
-        type: DATEPICKER_E_ACTION.UPDATE,
+        type: DATEPICKER_ACTION.UPDATE,
         data: {
           inputValue: event.currentTarget.value,
         },

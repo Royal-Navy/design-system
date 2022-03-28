@@ -6,7 +6,7 @@ export interface DatePickerState {
   hasError: boolean
 }
 
-export const DATEPICKER_E_ACTION = {
+export const DATEPICKER_ACTION = {
   RESET: 'reset',
   UPDATE: 'update',
   REFRESH_HAS_ERROR: 'refreshHasError',
@@ -14,22 +14,22 @@ export const DATEPICKER_E_ACTION = {
 } as const
 
 interface ResetAction {
-  type: typeof DATEPICKER_E_ACTION.RESET
+  type: typeof DATEPICKER_ACTION.RESET
   data: Omit<DatePickerState, 'hasError' | 'inputValue'>
 }
 
 interface UpdateAction {
-  type: typeof DATEPICKER_E_ACTION.UPDATE
+  type: typeof DATEPICKER_ACTION.UPDATE
   data: Partial<DatePickerState>
 }
 
 interface RefreshHasErrorAction {
-  type: typeof DATEPICKER_E_ACTION.REFRESH_HAS_ERROR
+  type: typeof DATEPICKER_ACTION.REFRESH_HAS_ERROR
   data?: never
 }
 
 interface RefreshInputValueAction {
-  type: typeof DATEPICKER_E_ACTION.REFRESH_INPUT_VALUE
+  type: typeof DATEPICKER_ACTION.REFRESH_INPUT_VALUE
   data?: never
 }
 

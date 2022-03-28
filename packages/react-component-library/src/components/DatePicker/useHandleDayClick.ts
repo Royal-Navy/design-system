@@ -7,7 +7,7 @@ import {
   DatePickerOnChangeData,
 } from './DatePicker'
 import { DATE_VALIDITY } from './constants'
-import { DATEPICKER_E_ACTION, DatePickerAction, DatePickerState } from './types'
+import { DATEPICKER_ACTION, DatePickerAction, DatePickerState } from './types'
 
 function getNewState(
   isRange: boolean,
@@ -58,7 +58,7 @@ export const useHandleDayClick = (
     const newState = getNewState(isRange, day, state)
 
     dispatch({
-      type: DATEPICKER_E_ACTION.UPDATE,
+      type: DATEPICKER_ACTION.UPDATE,
       data: newState,
     })
 
