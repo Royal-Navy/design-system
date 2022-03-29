@@ -1,13 +1,12 @@
 const template = ({ componentName, exports, interfaces, jsx }, { tpl }) => {
   return tpl`
 import React from 'react'
-import { SVGUniqueID } from 'react-svg-unique-id'
 import { SVGIconProps } from '../types'
 
 ${interfaces}
 
 const ${componentName} = ({ size = 16, ...props }: SVGIconProps) => (
-  <SVGUniqueID>{${jsx}}</SVGUniqueID>
+  ${jsx}
 );
 
 ${exports}
@@ -20,6 +19,11 @@ module.exports = {
   prettierConfig: {
     ...require('./prettier.config.js'),
     parser: 'typescript',
+  },
+  jsx: {
+    babelConfig: {
+      plugins: ['react-inline-svg-unique-id'],
+    },
   },
   svgProps: {
     width: '{size}',
