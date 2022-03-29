@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.5.3...3.6.0) (2022-03-29)
+
+
+### Bug Fixes
+
+* **SelectBase:** Resolve inconsistent popover in Chrome ([dcbd104](https://github.com/defencedigital/mod-uk-design-system/commit/dcbd10448a989150bddbbc57cb3be770a3a30cdb))
+
+
+### Features
+
+* **DatePicker:** Change button variant to tertiary ([86321e3](https://github.com/defencedigital/mod-uk-design-system/commit/86321e39e921b27b5806705780d3a0eb8fecf60c))
+* **DescriptionList:** Add ability to programmatically toggle `isOpen` ([1f5ff9d](https://github.com/defencedigital/mod-uk-design-system/commit/1f5ff9d531f35c7b3de2c6d3c623454870cdf428))
+* **Timeline:** Change toolbar button variant to tertiary ([b68ed74](https://github.com/defencedigital/mod-uk-design-system/commit/b68ed743060cfc3da330f97a1f66b3143ccb943c))
+
+
+
+
+
 ## [3.5.3](https://github.com/defencedigital/mod-uk-design-system/compare/3.5.2...3.5.3) (2022-03-23)
 
 
