@@ -274,31 +274,11 @@ describe('Masthead', () => {
       expect(wrapper.queryByTestId('not-read')).toBeInTheDocument()
     })
 
-    it('should set the nav `role` to `menubar`', () => {
-      expect(wrapper.getByTestId('masthead-nav-list')).toHaveAttribute(
-        'role',
-        'menubar'
-      )
-    })
-
-    it('should set each nav list item `role` to `none`', () => {
-      const listItems = wrapper.getAllByTestId('masthead-nav-item')
-
-      listItems.forEach((listItem) => {
-        expect(listItem).toHaveAttribute('role', 'none')
-      })
-    })
-
     it('should render the nav items', () => {
       expect(wrapper.getByText('First').getAttribute('href')).toEqual('/first')
       expect(wrapper.getByText('Second').getAttribute('href')).toEqual(
         '/second'
       )
-    })
-
-    it('should set each nav item `role` to `menuitem`', () => {
-      expect(wrapper.getByText('First')).toHaveAttribute('role', 'menuitem')
-      expect(wrapper.getByText('Second')).toHaveAttribute('role', 'menuitem')
     })
 
     describe('when the user clicks on the search option', () => {

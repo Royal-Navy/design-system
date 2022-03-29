@@ -1,25 +1,21 @@
 import React from 'react'
 
-import { NavItem } from '../../../common/Nav'
 import { getKey } from '../../../helpers'
-import { StyledScrollableNavItem } from './partials/StyledScrollableNavItem'
+import { NavItem } from '../../../common/Nav'
+import { TabNavItem } from '../../TabNav'
 
 export const MastheadNavItem: React.FC<NavItem> = ({
   isActive = false,
   link,
   ...rest
 }) => (
-  <StyledScrollableNavItem
-    $isActive={isActive}
-    key={getKey('masthead-nav-item', link.toString())}
+  <TabNavItem
     data-testid="masthead-nav-item"
-    role="none"
+    isActive={isActive}
+    key={getKey('masthead-nav-item', link.toString())}
+    link={React.cloneElement(link as React.ReactElement)}
     {...rest}
-  >
-    {React.cloneElement(link as React.ReactElement, {
-      role: 'menuitem',
-    })}
-  </StyledScrollableNavItem>
+  />
 )
 
 MastheadNavItem.displayName = 'MastheadNavItem'
