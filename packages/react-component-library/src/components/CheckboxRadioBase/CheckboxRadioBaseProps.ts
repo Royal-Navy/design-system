@@ -22,13 +22,17 @@ export interface CheckboxRadioBaseProps
    */
   id?: string
   /**
-   * Toggles whether or not the component is marked as checked by default.
-   */
-  defaultChecked?: boolean
-  /**
    * Optional description to display below the label.
    */
   description?: React.ReactNode
+  /**
+   * Toggles whether or not to the component is initially marked as checked.
+   */
+  defaultChecked?: boolean
+  /**
+   * Toggles whether or not the component is marked as checked.
+   */
+  checked?: boolean
   /**
    * Toggles whether the component is disabled or not (preventing user interaction).
    */

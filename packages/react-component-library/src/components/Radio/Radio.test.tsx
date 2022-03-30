@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import 'jest-styled-components'
 import {
@@ -234,6 +234,72 @@ describe('Radio', () => {
 
     it('does not generate a new `id`', () => {
       expect(radio.getByTestId('radio-input')).toHaveAttribute('id', initialId)
+    })
+  })
+
+  describe('when a field has `defaultChecked` prop set', () => {
+    beforeEach(() => {
+      label = 'My Label 1'
+      field.value = 'false'
+
+      radio = render(
+        <Radio
+          name={field.name}
+          value={field.value}
+          label={label}
+          onChange={field.onChange}
+          defaultChecked
+        />
+      )
+    })
+
+    it('should initially render as checked', () => {
+      expect(radio.getByTestId('radio-input')).toBeChecked()
+    })
+  })
+
+  describe('when a field has `checked` prop set', () => {
+    beforeEach(() => {
+      label = 'My Label 1'
+      field.value = 'false'
+
+      const StateWrapper = () => {
+        const [isChecked, setIsChecked] = useState<boolean>(true)
+
+        return (
+          <>
+            <Radio
+              name={field.name}
+              value={field.value}
+              label={label}
+              onChange={field.onChange}
+              checked={isChecked}
+            />
+            <button
+              data-testid="change-checked-state"
+              onClick={(_) => setIsChecked(false)}
+            >
+              Click Me!
+            </button>
+          </>
+        )
+      }
+
+      radio = render(<StateWrapper />)
+    })
+
+    it('should initially render as checked', () => {
+      expect(radio.getByTestId('radio-input')).toBeChecked()
+    })
+
+    describe('and the button is clicked, changing the `isChecked` state', () => {
+      beforeEach(() => {
+        userEvent.click(radio.getByTestId('change-checked-state'))
+      })
+
+      it('should uncheck the radio', () => {
+        expect(radio.getByTestId('radio-input')).not.toBeChecked()
+      })
     })
   })
 })

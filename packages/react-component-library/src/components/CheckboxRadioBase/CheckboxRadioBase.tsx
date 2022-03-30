@@ -18,6 +18,7 @@ export const CheckboxRadioBase = React.forwardRef<
     {
       className = '',
       id: externalId,
+      checked = false,
       defaultChecked,
       description,
       isDisabled = false,
@@ -36,7 +37,16 @@ export const CheckboxRadioBase = React.forwardRef<
   ) => {
     const id = useExternalId(`${type}-input`, externalId)
     const localRef = useRef<HTMLInputElement>(null)
-    const [isChecked, setIsChecked] = useState(defaultChecked)
+    const isControlled = defaultChecked === undefined
+    const hasContainer = variant !== CHECKBOX_RADIO_VARIANT.NO_CONTAINER
+    const [isChecked, setIsChecked] = useState<boolean>(
+      defaultChecked ?? checked
+    )
+
+    // Respect external changes to `defaultChecked` and `checked`
+    useEffect(() => {
+      setIsChecked(defaultChecked ?? checked)
+    }, [defaultChecked, checked])
 
     // Handle implicit deselection of radio in collection
     useEffect(() => {
@@ -75,7 +85,7 @@ export const CheckboxRadioBase = React.forwardRef<
     }
 
     const handleOnChange = (e: React.FormEvent<HTMLInputElement>) => {
-      setIsChecked(!isChecked)
+      setIsChecked(e.currentTarget.checked)
 
       if (type === 'radio') {
         const event = new CustomEvent('_mod-uk-ds:radio:selected', {
@@ -89,8 +99,6 @@ export const CheckboxRadioBase = React.forwardRef<
         onChange(e)
       }
     }
-
-    const hasContainer = variant !== CHECKBOX_RADIO_VARIANT.NO_CONTAINER
 
     return (
       <StyledWrapper>
@@ -114,8 +122,8 @@ export const CheckboxRadioBase = React.forwardRef<
               data-testid={`${type}-label`}
             >
               <StyledInput
-                ref={mergeRefs([localRef, ref])}
                 defaultChecked={defaultChecked}
+                ref={mergeRefs([localRef, ref])}
                 id={id}
                 type={type}
                 name={name}
@@ -124,6 +132,7 @@ export const CheckboxRadioBase = React.forwardRef<
                 onBlur={onBlur}
                 disabled={isDisabled}
                 data-testid={`${type}-input`}
+                checked={isControlled ? isChecked : undefined}
                 {...rest}
               />
               <Checkmark $hasContainer={hasContainer} />
