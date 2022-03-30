@@ -73,6 +73,7 @@ Default.args = {
 export const NoHeader = Template.bind({})
 NoHeader.args = {
   isOpen: true,
+  'aria-label': 'Modal with no header',
   primaryButton,
   secondaryButton,
   tertiaryButton,
@@ -111,5 +112,6 @@ NoTertiaryButton.storyName = 'No tertiary button'
 export const Blank = Template.bind({})
 Blank.args = {
   isOpen: true,
+  'aria-label': 'Blank modal',
 }
 Blank.storyName = 'Blank'

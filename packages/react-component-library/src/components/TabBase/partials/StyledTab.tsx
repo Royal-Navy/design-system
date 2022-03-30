@@ -5,7 +5,7 @@ import { StyledTabSetProps } from '../../TabSet/partials/StyledTabSet'
 
 const { color, fontSize, zIndex } = selectors
 
-interface StyledTabProps extends StyledTabSetProps {
+export interface StyledTabProps extends StyledTabSetProps {
   $isActive?: boolean
 }
 
@@ -50,10 +50,6 @@ export const StyledTab = styled.button<StyledTabProps>`
 
   & > div {
     margin: 0 auto;
-  }
-
-  &:focus {
-    outline: none;
   }
 
   * {

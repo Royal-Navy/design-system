@@ -13,7 +13,10 @@ import { useFloatingElement } from '../../hooks/useFloatingElement'
 import { FLOATING_BOX_SCHEME } from './constants'
 import { useExternalId } from '../../hooks/useExternalId'
 
-export interface FloatingBoxBaseProps extends PositionType, ComponentWithClass {
+export interface FloatingBoxBaseProps
+  extends PositionType,
+    ComponentWithClass,
+    Pick<React.AriaAttributes, 'aria-label' | 'aria-labelledby'> {
   role?: string
   contentId?: string
   scheme?: FloatingBoxSchemeType
@@ -64,6 +67,7 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
   targetElement,
   isVisible,
   placement = 'auto',
+  role = 'dialog',
   ...rest
 }) => {
   const contentId = useExternalId('floating-box', externalContentId)
@@ -92,7 +96,7 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
             ref={floatingElementRef}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
-            role="dialog"
+            role={role}
             data-testid="floating-box"
             {...attributes.popper}
             {...rest}

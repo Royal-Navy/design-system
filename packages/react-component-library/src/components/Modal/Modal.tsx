@@ -12,6 +12,10 @@ import { useOpenClose } from '../../hooks/useOpenClose'
 
 export interface ModalProps extends ComponentWithClass {
   /**
+   * Optional override for the accessible name of the Modal.
+   */
+  'aria-label'?: string
+  /**
    * Optional arbitrary JSX content to display in the main body of the component.
    */
   children?: React.ReactNode
@@ -42,6 +46,9 @@ export interface ModalProps extends ComponentWithClass {
   tertiaryButton?: ButtonProps
   /**
    * Optional text title to display at the top of the component.
+   *
+   * If no title is set, you should set aria-label instead to ensure
+   * the Modal is accessible.
    */
   title?: string
   /**
@@ -52,6 +59,7 @@ export interface ModalProps extends ComponentWithClass {
 }
 
 export const Modal: React.FC<ModalProps> = ({
+  'aria-label': ariaLabel,
   children,
   className,
   descriptionId: externalDescriptionId,
@@ -82,7 +90,10 @@ export const Modal: React.FC<ModalProps> = ({
       className={className}
       role="dialog"
       aria-modal
-      aria-labelledby={title || externalTitleId ? titleId : undefined}
+      aria-label={ariaLabel}
+      aria-labelledby={
+        (title || externalTitleId) && !ariaLabel ? titleId : undefined
+      }
       aria-describedby={descriptionId}
       data-testid="modal-wrapper"
       {...rest}

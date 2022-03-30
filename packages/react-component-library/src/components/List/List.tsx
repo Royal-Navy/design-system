@@ -34,7 +34,7 @@ export const List: React.FC<ListProps> = ({ children, ...rest }) => {
   )
 
   return (
-    <StyledList role="group" data-testid="list" {...rest}>
+    <StyledList data-testid="list" {...rest}>
       {mapped}
     </StyledList>
   )

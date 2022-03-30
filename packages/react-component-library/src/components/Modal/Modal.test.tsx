@@ -34,7 +34,7 @@ describe('Modal', () => {
     describe('and it is set to be initially open', () => {
       beforeEach(() => {
         wrapper = render(
-          <Modal isOpen>
+          <Modal aria-label="Accessible name" isOpen>
             <span>Example child JSX</span>
           </Modal>
         )
@@ -43,6 +43,13 @@ describe('Modal', () => {
       it('does not set the `aria-labelledby` attribute', () => {
         expect(wrapper.getByTestId('modal-wrapper')).not.toHaveAttribute(
           'aria-labelledby'
+        )
+      })
+
+      it('sets the `aria-label` attribute', () => {
+        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+          'aria-label',
+          'Accessible name'
         )
       })
 
@@ -209,6 +216,31 @@ describe('Modal', () => {
           expect(wrapper.queryByTestId('modal-primary-confirm')).toBeNull()
         })
       })
+    })
+  })
+
+  describe('when both title and aria-label are set', () => {
+    beforeEach(() => {
+      onClose = jest.fn()
+
+      wrapper = render(
+        <Modal isOpen title="Title" aria-label="Accessible name">
+          <span>Example child JSX</span>
+        </Modal>
+      )
+    })
+
+    it('does not set the `aria-labelledby` attribute', () => {
+      expect(wrapper.getByTestId('modal-wrapper')).not.toHaveAttribute(
+        'aria-labelledby'
+      )
+    })
+
+    it('sets the `aria-label` attribute', () => {
+      expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+        'aria-label',
+        'Accessible name'
+      )
     })
   })
 
