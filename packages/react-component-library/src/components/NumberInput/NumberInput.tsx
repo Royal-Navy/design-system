@@ -258,9 +258,6 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 
         <Buttons
           isDisabled={isDisabled}
-          max={max}
-          min={min}
-          name={name}
           onClick={handleButtonClick}
           size={size}
           step={step}
