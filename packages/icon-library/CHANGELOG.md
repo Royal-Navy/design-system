@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.6.0...3.7.0) (2022-03-30)
+
+
+### Bug Fixes
+
+* **IconLibrary:** Resolve installation errors ([131c193](https://github.com/defencedigital/mod-uk-design-system/commit/131c19373617a15192c2f01977bf25800529c383))
+
+
+
+
+
 # [3.6.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.5.3...3.6.0) (2022-03-29)
 
 **Note:** Version bump only for package @defencedigital/icon-library
