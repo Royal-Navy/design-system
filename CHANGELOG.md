@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.1](https://github.com/defencedigital/mod-uk-design-system/compare/3.7.0...3.7.1) (2022-03-31)
+
+
+### Bug Fixes
+
+* **FloatingBox:** Resolve 'aria-dialog-name' axe v4 error in stories ([42d2120](https://github.com/defencedigital/mod-uk-design-system/commit/42d2120facadbf211fd9e25a642dd9a11b1eeef3))
+* **List:** Resolve 'aria-required-parent' axe v4 errors ([11a9027](https://github.com/defencedigital/mod-uk-design-system/commit/11a9027c9bf3b204b2f70596ecf38f400c56270e))
+* **Modal:** Resolve 'aria-dialog-name' axe v4 error in stories ([fdc8416](https://github.com/defencedigital/mod-uk-design-system/commit/fdc8416b12d8324a7531ac4b4ab7d45f047e8408))
+* **TabNav:** Resolve 'nested-interactive' axe v4 errors ([c4e23e9](https://github.com/defencedigital/mod-uk-design-system/commit/c4e23e95cdc8d5637b76489bb5dc0174bd5cbbe6))
+* **TabSet:** Resolve 'nested-interactive' axe v4 errors ([f62fa7c](https://github.com/defencedigital/mod-uk-design-system/commit/f62fa7cc21f021577ec441ee33906f8eda35e30a))
+
+
+
+
+
 # [3.7.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.6.0...3.7.0) (2022-03-30)
 
 
