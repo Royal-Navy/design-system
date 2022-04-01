@@ -118,6 +118,7 @@ export const CheckboxRadioBase = React.forwardRef<
             <StyledLabel
               $hasContainer={hasContainer}
               $hasDescription={!!description}
+              $isDisabled={isDisabled}
               htmlFor={id}
               data-testid={`${type}-label`}
             >

@@ -52,7 +52,7 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
       }
     `}
 
-  ${({ $isDisabled }) =>
+  ${({ $isDisabled, $hasContainer }) =>
     $isDisabled &&
     css`
       cursor: not-allowed;
@@ -61,8 +61,12 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
         cursor: not-allowed;
       }
 
-      background-color: ${color('neutral', '000')};
       border-color: transparent;
+
+      ${$hasContainer &&
+      css`
+        background-color: ${color('neutral', '000')};
+      `};
 
       &:focus,
       &:active {

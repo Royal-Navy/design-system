@@ -6,10 +6,12 @@ const { color, fontSize } = selectors
 interface StyledLabelProps {
   $hasContainer?: boolean
   $hasDescription?: boolean
+  $isDisabled: boolean
 }
 
 export const StyledLabel = styled.label<StyledLabelProps>`
-  color: ${color('neutral', '400')};
+  color: ${({ $hasContainer, $isDisabled }) =>
+    color('neutral', $isDisabled && !$hasContainer ? '300' : '400')};
   font-size: ${fontSize('m')};
   pointer-events: none;
   padding: 4px;
@@ -17,7 +19,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   ${({ $hasContainer }) =>
     $hasContainer &&
     css`
-      padding: 0px 12px 0 0;
+      padding: 0 12px 0 0;
     `}
 
   ${({ $hasDescription }) =>
