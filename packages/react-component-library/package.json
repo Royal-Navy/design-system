@@ -100,7 +100,7 @@
     "babel-plugin-search-and-replace": "1.1.0",
     "babel-plugin-styled-components": "^2.0.2",
     "babel-polyfill": "^6.26.0",
-    "chromatic": "6.4.3",
+    "chromatic": "6.5.3",
     "clean-webpack-plugin": "^4.0.0",
     "concurrently": "^6.0.2",
     "cypress": "^9.5.0",
