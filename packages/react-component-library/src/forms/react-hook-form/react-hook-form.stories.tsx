@@ -91,29 +91,54 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
           hintText="Example hint text."
           errors={[{ error: !!errors.email && 'Required' }]}
         >
-          <TextInput
-            type="email"
+          <Controller
+            control={control}
             name="email"
-            ref={register({ required: true })}
-            label="Email"
-            data-testid="form-example-TextInput-email"
+            rules={{ required: true }}
+            render={({ onChange, value, name, ref }) => (
+              <TextInput
+                type="email"
+                name={name}
+                ref={ref}
+                onChange={onChange}
+                value={value}
+                label="Email"
+                data-testid="form-example-TextInput-email"
+              />
+            )}
           />
         </Field>
         <Field hintText="Example hint text.">
-          <TextInput
-            type="password"
+          <Controller
+            control={control}
             name="password"
-            ref={register}
-            label="Password"
-            data-testid="form-example-TextInput-password"
+            render={({ onChange, value, name, ref }) => (
+              <TextInput
+                type="password"
+                name={name}
+                ref={ref}
+                onChange={onChange}
+                value={value}
+                label="Password"
+                data-testid="form-example-TextInput-password"
+              />
+            )}
           />
         </Field>
         <Field hintText="Example hint text.">
-          <TextArea
+          <Controller
+            control={control}
             name="description"
-            ref={register}
-            label="Description"
-            data-testid="form-example-TextArea-description"
+            render={({ onChange, value, name, ref }) => (
+              <TextInput
+                name={name}
+                ref={ref}
+                onChange={onChange}
+                value={value}
+                label="Description"
+                data-testid="form-example-TextArea-description"
+              />
+            )}
           />
         </Field>
         <Fieldset legend="Example checkbox selection">
