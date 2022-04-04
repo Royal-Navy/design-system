@@ -46,7 +46,7 @@ Default.args = {
 export const Checked = Template.bind({})
 Checked.args = {
   id: undefined,
-  defaultChecked: true,
+  checked: true,
   label: 'Checked radio',
   name: 'checked',
 }
@@ -64,7 +64,7 @@ DisabledChecked.storyName = 'Disabled, checked'
 DisabledChecked.args = {
   id: undefined,
   isDisabled: true,
-  defaultChecked: true,
+  checked: true,
   label: 'Disabled, checked radio',
   name: 'disabled-checked',
 }

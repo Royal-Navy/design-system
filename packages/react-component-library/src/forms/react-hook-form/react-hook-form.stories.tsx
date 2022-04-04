@@ -1,7 +1,11 @@
 /* eslint-disable no-console */
 import { isBefore, isValid, parseISO } from 'date-fns'
-import React, { useState, useEffect } from 'react'
-import { useForm, Controller } from 'react-hook-form/dist/index.ie11'
+import React, { useState, useEffect, useMemo } from 'react'
+import {
+  useForm,
+  Controller,
+  useController,
+} from 'react-hook-form/dist/index.ie11'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import styled from 'styled-components'
 
@@ -39,6 +43,7 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
     handleSubmit,
     watch,
     formState: { errors, isSubmitting },
+    getValues,
   } = useForm({
     defaultValues: initialValues,
   })
@@ -67,6 +72,16 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
       | React.MouseEvent<HTMLButtonElement>,
     newValue: number | null
   ) => setValue('exampleNumberInput', newValue)
+
+  const handleCheckboxChange = (value: string, name: string) => {
+    const values = getValues()
+
+    if (values[name]?.includes(value)) {
+      return values[name]?.filter((id: string) => id !== value)
+    }
+
+    return [...(values[name] ?? []), value]
+  }
 
   return (
     <main>
@@ -102,37 +117,83 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
           />
         </Field>
         <Fieldset legend="Example checkbox selection">
-          <Checkbox
+          <Controller
+            control={control}
             name="exampleCheckbox"
-            label="Option 1"
-            ref={register}
-            value="Option 1"
+            render={({ onChange, value, name, ref }) => (
+              <Checkbox
+                name={name}
+                label="Option 1"
+                value="Option 1"
+                ref={ref}
+                onChange={() =>
+                  onChange(handleCheckboxChange('Option 1', name))
+                }
+                checked={Array.isArray(value) && value.includes('Option 1')}
+              />
+            )}
           />
-          <Checkbox
+          <Controller
+            control={control}
             name="exampleCheckbox"
-            label="Option 2"
-            ref={register}
-            value="Option 2"
+            render={({ onChange, value, name, ref }) => (
+              <Checkbox
+                name={name}
+                label="Option 2"
+                value="Option 2"
+                ref={ref}
+                onChange={() =>
+                  onChange(handleCheckboxChange('Option 2', name))
+                }
+                checked={Array.isArray(value) && value.includes('Option 2')}
+              />
+            )}
           />
-          <Checkbox
+          <Controller
+            control={control}
             name="exampleCheckbox"
-            label="Option 3"
-            ref={register}
-            value="Option 3"
+            render={({ onChange, value, name, ref }) => (
+              <Checkbox
+                name={name}
+                label="Option 3"
+                value="Option 3"
+                ref={ref}
+                onChange={() =>
+                  onChange(handleCheckboxChange('Option 3', name))
+                }
+                checked={Array.isArray(value) && value.includes('Option 3')}
+              />
+            )}
           />
         </Fieldset>
         <Fieldset legend="Example radio selection">
-          <Radio
+          <Controller
+            control={control}
             name="exampleRadio"
-            label="Option 1"
-            ref={register}
-            value="Option 1"
+            render={({ onChange, value, name, ref }) => (
+              <Radio
+                name={name}
+                label="Option 1"
+                value="Option 1"
+                ref={ref}
+                onChange={() => onChange('Option 1')}
+                checked={value === 'Option 1'}
+              />
+            )}
           />
-          <Radio
+          <Controller
+            control={control}
             name="exampleRadio"
-            label="Option 2"
-            ref={register}
-            value="Option 2"
+            render={({ onChange, value, name, ref }) => (
+              <Radio
+                name={name}
+                label="Option 2"
+                value="Option 2"
+                ref={ref}
+                onChange={() => onChange('Option 2')}
+                checked={value === 'Option 2'}
+              />
+            )}
           />
         </Fieldset>
         <Field hintText="Example hint text.">

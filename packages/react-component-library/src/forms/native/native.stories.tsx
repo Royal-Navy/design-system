@@ -93,18 +93,30 @@ const Example: React.FC<{
             name="exampleCheckbox"
             label="Option 1"
             value="Option 1"
+            checked={
+              Array.isArray(initialValues.exampleCheckbox) &&
+              initialValues.exampleCheckbox.includes('Option 1')
+            }
           />
           <Checkbox
             onChange={handleCheckboxGroup}
             name="exampleCheckbox"
             label="Option 2"
             value="Option 2"
+            checked={
+              Array.isArray(initialValues.exampleCheckbox) &&
+              initialValues.exampleCheckbox.includes('Option 2')
+            }
           />
           <Checkbox
             onChange={handleCheckboxGroup}
             name="exampleCheckbox"
             label="Option 3"
             value="Option 3"
+            checked={
+              Array.isArray(initialValues.exampleCheckbox) &&
+              initialValues.exampleCheckbox.includes('Option 3')
+            }
           />
         </Fieldset>
         <Fieldset legend="Example radio selection">
@@ -113,12 +125,14 @@ const Example: React.FC<{
             name="exampleRadio"
             label="Option 1"
             value="Option 1"
+            checked={initialValues.exampleRadio === 'Option 1'}
           />
           <Radio
             onChange={handleRadioGroup}
             name="exampleRadio"
             label="Option 2"
             value="Option 2"
+            checked={initialValues.exampleRadio === 'Option 2'}
           />
         </Fieldset>
         <Field hintText="Example hint text.">
