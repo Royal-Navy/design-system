@@ -11,9 +11,6 @@ import { StyledInlineButtons } from '../InlineButtons/partials/StyledInlineButto
 
 export interface ButtonsProps {
   isDisabled: boolean
-  max?: number
-  min?: number
-  name: string
   onClick: (
     event: React.MouseEvent<HTMLButtonElement>,
     newValue: string

@@ -15,7 +15,11 @@ export interface TabSetItemProps {
   isActive?: boolean
 }
 
-export const TabSetItem: React.FC<TabSetItemProps> = ({ children }) => {
+export const TabSetItem: React.FC<TabSetItemProps> = ({
+  children,
+  title: _title,
+  isActive: _isActive,
+}) => {
   return <>{children}</>
 }
 
