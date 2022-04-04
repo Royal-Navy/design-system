@@ -136,7 +136,10 @@ export const CheckboxRadioBase = React.forwardRef<
                 checked={isControlled ? isChecked : undefined}
                 {...rest}
               />
-              <Checkmark $hasContainer={hasContainer} />
+              <Checkmark
+                $hasContainer={hasContainer}
+                $isDisabled={isDisabled}
+              />
               {label}
               {description && (
                 <StyledDescription data-testid={`${type}-description`}>

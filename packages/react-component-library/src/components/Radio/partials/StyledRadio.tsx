@@ -17,26 +17,37 @@ const { spacing, fontSize, color } = selectors
 
 const BackgroundColor = css<StyledRadioProps>`
   ${({ $isDisabled, $hasContainer, $isChecked }) => {
+    if (!$hasContainer) {
+      return 'transparent'
+    }
+
     if ($isDisabled) {
       return color('neutral', '000')
     }
 
-    if ($hasContainer && $isChecked) {
+    if ($isChecked) {
       return color('action', '000')
     }
 
     return color('neutral', 'white')
+  }}}
+`
+
+const CheckmarkBackgroundColor = css<StyledRadioProps>`
+  ${({ $isDisabled, $hasContainer }) => {
+    if ($hasContainer) {
+      return BackgroundColor
+    }
+
+    return color('neutral', $isDisabled ? '000' : 'white')
   }}
 `
 
-const CheckmarkActiveBorderColor = css<StyledRadioProps>`
-  ${({ $isDisabled }) =>
-    $isDisabled ? color('neutral', '200') : color('action', '500')}
-`
-
 const CheckmarkCheckedFillColor = css<StyledRadioProps>`
-  ${({ $isDisabled }) =>
-    $isDisabled ? color('neutral', '200') : color('action', '500')}
+  ${({ $isDisabled, $hasContainer }) =>
+    $isDisabled
+      ? color('neutral', $hasContainer ? '200' : '100')
+      : color('action', '500')}
 `
 
 function getCheckmarkCheckedSelector($hasContainer: boolean | undefined) {
@@ -66,10 +77,9 @@ export const StyledRadio = styled.div<StyledRadioProps>`
   }
 
   ${StyledCheckmark} {
-    background: ${BackgroundColor};
-
     &::before {
       display: block;
+      background: ${CheckmarkBackgroundColor};
       box-shadow: 0 0 0 0 transparent;
     }
   }
@@ -108,13 +118,13 @@ export const StyledRadio = styled.div<StyledRadioProps>`
     /* Blue border (grey if disabled) */
     &::before {
       box-shadow: 0 0 0 ${RADIO_ACTIVE_BORDER_WIDTH}
-        ${CheckmarkActiveBorderColor};
+        ${CheckmarkCheckedFillColor};
     }
 
     &::after {
       display: block;
       background: ${CheckmarkCheckedFillColor};
-      border: 2px solid ${BackgroundColor};
+      border: 2px solid ${CheckmarkBackgroundColor};
     }
   }
 
