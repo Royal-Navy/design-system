@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.2](https://github.com/defencedigital/mod-uk-design-system/compare/3.7.1...3.7.2) (2022-04-05)
+
+
+### Bug Fixes
+
+* **CheckboxRadioBase:** Enable usage as controlled component ([db88bc3](https://github.com/defencedigital/mod-uk-design-system/commit/db88bc3d055b2b874fafe6a406030082f11a01e4))
+* **Forms:** Resolve broken react-hook-form prepopulated usage ([5537eb4](https://github.com/defencedigital/mod-uk-design-system/commit/5537eb4f1d46f272be58219ed211f5dad9a186c5))
+* **Forms:** Set checked attribute for native initialValues ([563c864](https://github.com/defencedigital/mod-uk-design-system/commit/563c8644d4f7e5bc2fe796fab081284353b52096))
+
+
+
+
+
 ## [3.7.1](https://github.com/defencedigital/mod-uk-design-system/compare/3.7.0...3.7.1) (2022-03-31)
 
 
