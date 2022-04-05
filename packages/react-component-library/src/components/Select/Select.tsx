@@ -8,6 +8,7 @@ import {
   SelectChildWithStringType,
   SelectLayout,
 } from '../SelectBase'
+import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useExternalId } from '../../hooks/useExternalId'
 
 export const Select: React.FC<SelectBaseProps> = ({
@@ -39,21 +40,19 @@ export const Select: React.FC<SelectBaseProps> = ({
     },
   })
 
+  const { onInputFocusHandler, onInputMouseDownHandler } = useMenuVisibility(
+    isOpen,
+    openMenu,
+    toggleMenu
+  )
+
   return (
     <SelectLayout
       hasSelectedItem={!!selectedItem}
       id={id}
       inputProps={{
-        onFocus: () => {
-          if (!isOpen) {
-            openMenu()
-          }
-        },
-        onMouseDown: (e: React.MouseEvent) => {
-          toggleMenu()
-          e.stopPropagation()
-          e.preventDefault()
-        },
+        onFocus: onInputFocusHandler,
+        onMouseDown: onInputMouseDownHandler,
       }}
       isOpen={isOpen}
       menuProps={getMenuProps()}

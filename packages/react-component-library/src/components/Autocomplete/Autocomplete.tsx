@@ -11,7 +11,7 @@ import {
 import { NoResults } from './NoResults'
 import { useHighlightedIndex } from './hooks/useHighlightedIndex'
 import { useAutocomplete } from './hooks/useAutocomplete'
-import { useMenuVisibility } from './hooks/useMenuVisibility'
+import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useExternalId } from '../../hooks/useExternalId'
 
 export interface AutocompleteProps extends SelectBaseProps {
