@@ -241,7 +241,13 @@ jobs:
         with:
           name: dist
 
-      - name: Run visual regression tests
+      - name: Prep visual regression tests
         run: |
           tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
-          yarn --cwd packages/react-component-library chromatic --project-token=${{secrets.CHROMATIC_TOKEN}} --ci
+
+      - name: Run visual regression tests
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{secrets.CHROMATIC_TOKEN}}
+          workingDir: packages/react-component-library
+          buildScriptName: storybook:static
