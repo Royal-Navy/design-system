@@ -17,22 +17,22 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
         with:
-            fetch-depth: 0
+          fetch-depth: 0
       - name: Cache Node modules
         uses: actions/cache@v3
         with:
-            path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}
       - name: Build icon-library
         run: |
-            yarn install --frozen-lockfile
-            yarn --cwd packages/icon-library build
+          yarn install --frozen-lockfile
+          yarn --cwd packages/icon-library build
       - name: Build design-tokens
         run: |
-            yarn --cwd packages/design-tokens build
+          yarn --cwd packages/design-tokens build
       - name: Run visual regression tests
         run: |
-            yarn --cwd packages/react-component-library chromatic --project-token=${{secrets.CHROMATIC_TOKEN}}
+          yarn --cwd packages/react-component-library chromatic --project-token=${{secrets.CHROMATIC_TOKEN}}
   Automerge:
     name: Merge Dependabot PR's
     runs-on: ubuntu-latest
