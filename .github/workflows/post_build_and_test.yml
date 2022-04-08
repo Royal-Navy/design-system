@@ -1,0 +1,69 @@
+name: Post Build & Test
+
+on:
+  workflow_run:
+    types:
+      - completed
+    workflows:
+      - 'Build & Test'
+
+jobs:
+  # This runs Chromatic visual regression tests without exposing secrets to untrusted code from
+  # third-party PRs.
+  #
+  # For more details, see:
+  # https://github.blog/changelog/2021-02-19-github-actions-workflows-triggered-by-dependabot-prs-will-run-with-read-only-permissions/
+  # https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
+  Test_visual_regression:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
+    steps:
+      - name: Git clone repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Cache Node modules
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        run: |
+          yarn install --frozen-lockfile
+
+      - name: Download pre-built Storybook
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { downloadStorybookArtifact } = await import('${{ github.workspace }}/scripts/github-actions/downloadStorybookArtifact.mjs')
+            await downloadStorybookArtifact({ github, context })
+
+      - name: Unzip pre-built Storybook
+        run: |
+          unzip storybook-static.zip -d packages/react-component-library/.static_storybook
+          echo "CHROMATIC_SHA=$(<packages/react-component-library/.static_storybook/sha)" >> $GITHUB_ENV
+          echo "CHROMATIC_BRANCH=$(<packages/react-component-library/.static_storybook/branch)" >> $GITHUB_ENV
+          echo "CHROMATIC_SLUG=$(<packages/react-component-library/.static_storybook/slug)" >> $GITHUB_ENV
+
+      - name: Fetch original ref
+        run: |
+          git fetch origin "+$CHROMATIC_SHA"
+
+      - name: Run visual regression tests
+        run: |
+          cd packages/react-component-library
+          npm exec --no -- chromatic --project-token=${{secrets.CHROMATIC_TOKEN}} --storybook-build-dir=.static_storybook
+
+  Automerge:
+    name: Merge Dependabot PR's
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    needs: [Test_visual_regression]
+    steps:
+      - name: Auto merge Dependabot minor and patch version bumps
+        uses: defencedigital/design-system-mergeme-action@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.MERGE_BOT }}
+          PRESET: DEPENDABOT_MINOR
