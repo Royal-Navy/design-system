@@ -25,6 +25,7 @@ const MultipleItemsTemplate: ComponentStory<typeof Checkbox> = (props) => {
   function getProps(i: number): CheckboxProps {
     return {
       ...props,
+      variant: CHECKBOX_RADIO_VARIANT.NO_CONTAINER,
       label: `${props.label} ${i}`,
       name: `${props.name}-${i}`,
     }
@@ -34,7 +35,7 @@ const MultipleItemsTemplate: ComponentStory<typeof Checkbox> = (props) => {
     <>
       <Checkbox {...getProps(1)} />
       <Checkbox {...getProps(2)} />
-      <Checkbox {...getProps(3)} />
+      <Checkbox defaultChecked {...getProps(3)} />
     </>
   )
 }
@@ -82,14 +83,24 @@ Invalid.args = {
 }
 
 export const NoContainer = MultipleItemsTemplate.bind({})
+NoContainer.storyName = 'No container'
 NoContainer.args = {
   id: undefined,
   label: 'Item without container',
   name: 'no-container',
-  variant: CHECKBOX_RADIO_VARIANT.NO_CONTAINER,
+}
+
+export const NoContainerDisabled = MultipleItemsTemplate.bind({})
+NoContainerDisabled.storyName = 'No container, disabled'
+NoContainerDisabled.args = {
+  id: undefined,
+  label: 'Item without container',
+  name: 'no-container',
+  isDisabled: true,
 }
 
 export const WithDescription = Template.bind({})
+WithDescription.storyName = 'With description'
 WithDescription.args = {
   id: undefined,
   description:

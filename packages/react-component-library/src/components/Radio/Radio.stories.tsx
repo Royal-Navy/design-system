@@ -23,6 +23,7 @@ const MultipleItemsTemplate: ComponentStory<typeof Radio> = (props) => {
   function getProps(i: number): RadioProps {
     return {
       ...props,
+      variant: CHECKBOX_RADIO_VARIANT.NO_CONTAINER,
       label: `${props.label} ${i}`,
     }
   }
@@ -31,7 +32,7 @@ const MultipleItemsTemplate: ComponentStory<typeof Radio> = (props) => {
     <>
       <Radio {...getProps(1)} />
       <Radio {...getProps(2)} />
-      <Radio {...getProps(3)} />
+      <Radio defaultChecked {...getProps(3)} />
     </>
   )
 }
@@ -78,14 +79,24 @@ Invalid.args = {
 }
 
 export const NoContainer = MultipleItemsTemplate.bind({})
+NoContainer.storyName = 'No container'
 NoContainer.args = {
   id: undefined,
   label: 'Item without container',
   name: 'no-container',
-  variant: CHECKBOX_RADIO_VARIANT.NO_CONTAINER,
+}
+
+export const NoContainerDisabled = MultipleItemsTemplate.bind({})
+NoContainerDisabled.storyName = 'No container, disabled'
+NoContainerDisabled.args = {
+  id: undefined,
+  label: 'Disabled item without container',
+  name: 'no-container-disabled',
+  isDisabled: true,
 }
 
 export const WithDescription = Template.bind({})
+WithDescription.storyName = 'With description'
 WithDescription.args = {
   id: undefined,
   description:

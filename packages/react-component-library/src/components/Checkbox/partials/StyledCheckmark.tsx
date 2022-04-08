@@ -64,16 +64,18 @@ export const StyledCheckmark = styled.div<CheckmarkProps>`
     }
   }
 
-  ${StyledCheckbox} input:disabled ~ & {
+  ${StyledCheckbox} input:disabled ~ && {
     background-color: ${color('neutral', '000')};
-    border-color: ${color('neutral', '200')};
+    border-color: ${({ $hasContainer }) =>
+      color('neutral', $hasContainer ? '200' : '100')};
 
     &::before {
       box-shadow: none;
     }
   }
 
-  ${StyledCheckbox} input:disabled:checked ~ & {
-    background-color: ${color('neutral', '200')};
+  ${StyledCheckbox} input:disabled:checked ~ && {
+    background-color: ${({ $hasContainer }) =>
+      color('neutral', $hasContainer ? '200' : '100')};
   }
 `

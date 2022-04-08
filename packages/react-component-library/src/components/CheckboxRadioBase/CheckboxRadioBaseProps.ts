@@ -12,6 +12,7 @@ export interface CheckboxRootProps extends React.HTMLAttributes<HTMLElement> {
 
 export interface CheckmarkProps {
   $hasContainer?: boolean
+  $isDisabled?: boolean
 }
 
 export interface CheckboxRadioBaseProps
