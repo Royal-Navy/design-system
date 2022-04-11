@@ -1,16 +1,11 @@
 import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
 
+import { CheckboxRootProps } from '../../CheckboxRadioBase'
+
 const { color, fontSize, spacing } = selectors
 
-export interface StyledCheckboxProps {
-  $hasContainer?: boolean
-  $isDisabled?: boolean
-  $isInvalid?: boolean
-  $isChecked?: boolean
-}
-
-export const StyledCheckbox = styled.div<StyledCheckboxProps>`
+export const StyledCheckbox = styled.div<CheckboxRootProps>`
   display: inline-flex;
   position: relative;
   padding: ${({ $hasContainer }) =>
