@@ -5,12 +5,11 @@ import { CheckmarkProps } from '../../CheckboxRadioBase'
 
 const { color } = selectors
 
-export const StyledCheckmark = styled.div<CheckmarkProps>`
-  position: absolute;
-  top: ${({ $hasContainer }) => ($hasContainer ? '13px' : '4px')};
-  left: ${({ $hasContainer }) => ($hasContainer ? '12px' : '4px')};
-  height: 16px;
-  width: 16px;
+export const StyledCheckmark = styled.span<CheckmarkProps>`
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
   border-radius: 999px;
   border: 1px solid
     ${({ $hasContainer, $isDisabled }) =>
