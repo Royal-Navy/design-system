@@ -13,6 +13,7 @@ import { useHighlightedIndex } from './hooks/useHighlightedIndex'
 import { useAutocomplete } from './hooks/useAutocomplete'
 import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useExternalId } from '../../hooks/useExternalId'
+import { useToggleButton } from './hooks/useToggleButton'
 
 export interface AutocompleteProps extends SelectBaseProps {
   /**
@@ -32,6 +33,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 }) => {
   const { hasError, inputRef, items, onInputValueChange, onIsOpenChange } =
     useAutocomplete(React.Children.toArray(children), isInvalid)
+  const { onToggleButtonKeyDownHandler } = useToggleButton(inputRef)
   const id = useExternalId('autocomplete', externalId)
 
   const {
@@ -96,7 +98,11 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       onClearButtonClick={() => {
         reset()
       }}
-      toggleButtonProps={getToggleButtonProps()}
+      toggleButtonProps={getToggleButtonProps({
+        onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => {
+          onToggleButtonKeyDownHandler(e)
+        },
+      })}
       value={selectedItem ? itemToString(selectedItem) : ''}
       {...rest}
     >
