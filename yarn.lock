@@ -12562,9 +12562,9 @@ loader-utils@^2.0.0:
     json5 "^2.1.2"
 
 local-cypress@^1.2.1:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/local-cypress/-/local-cypress-1.2.4.tgz#32e68a554b71bfe6aab81d630e4df61f9edba8a4"
-  integrity sha512-XeRLsBmBj+xCCtP+3JSvvHIczkpGGTl6DhO4MYx6opw2nTehf4uWMG+W8MeAp5cUIj29hIJA8/D+Djbzc2zkSg==
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/local-cypress/-/local-cypress-1.2.5.tgz#fd83a8598acf4f4869e1652a4a0a66db0cb0e220"
+  integrity sha512-pRYKv4jm+ILkCYws3Jw8PYIJJ6qNW1p0yd++X2rVMo/gQOslrsZzNVvy3vTf0Rk9tZAkGo20O+Tj2M/9cs0UhA==
   dependencies:
     debug "4.3.4"
 
