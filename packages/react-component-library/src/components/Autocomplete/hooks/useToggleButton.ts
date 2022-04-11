@@ -1,10 +1,28 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useRef } from 'react'
 
 export function useToggleButton(inputRef: React.RefObject<HTMLInputElement>): {
+  buttonRef: React.RefObject<HTMLButtonElement>
+  focusToggleButton: () => void
+  onInputEscapeKeyHandler: (e: React.KeyboardEvent<HTMLInputElement>) => void
   onToggleButtonKeyDownHandler: (
     e: React.KeyboardEvent<HTMLButtonElement>
   ) => void
 } {
+  const buttonRef = useRef<HTMLButtonElement>(null)
+
+  function focusToggleButton() {
+    buttonRef.current?.focus()
+  }
+
+  const onInputEscapeKeyHandler = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.code === 'Escape') {
+        buttonRef.current?.focus()
+      }
+    },
+    []
+  )
+
   const onToggleButtonKeyDownHandler = useCallback(
     (e: React.KeyboardEvent<HTMLButtonElement>) => {
       if (e.code === 'ArrowDown') {
@@ -15,6 +33,9 @@ export function useToggleButton(inputRef: React.RefObject<HTMLInputElement>): {
   )
 
   return {
+    buttonRef,
+    focusToggleButton,
+    onInputEscapeKeyHandler,
     onToggleButtonKeyDownHandler,
   }
 }

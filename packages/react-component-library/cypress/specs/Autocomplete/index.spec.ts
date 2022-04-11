@@ -64,6 +64,10 @@ describe('Autocomplete', () => {
           cy.get(selectors.select.input).should('have.value', 'Three')
         })
 
+        it('focuses the toggle button', () => {
+          cy.get(selectors.select.toggleButton).should('have.focus')
+        })
+
         describe('and the component is focused', () => {
           beforeEach(() => {
             cy.get(selectors.select.outerWrapper).click()
@@ -88,6 +92,26 @@ describe('Autocomplete', () => {
 
         it.skip('sets the value to the highlighted item', () => {
           cy.get(selectors.select.input).should('have.value', 'Three')
+        })
+      })
+
+      describe('and the user escapes out', () => {
+        beforeEach(() => {
+          cy.get(selectors.select.input).type('{esc}')
+        })
+
+        it('focuses the toggle button', () => {
+          cy.get(selectors.select.toggleButton).should('have.focus')
+        })
+
+        describe('and the down arrow is pressed', () => {
+          beforeEach(() => {
+            cy.get(selectors.select.toggleButton).type('{downArrow}')
+          })
+
+          it('renders four options', () => {
+            cy.get(selectors.select.option).should('have.length', 4)
+          })
         })
       })
 
@@ -145,6 +169,23 @@ describe('Autocomplete', () => {
               )
             })
           })
+        })
+      })
+    })
+
+    describe('and the down arrow is pressed', () => {
+      beforeEach(() => {
+        cy.get(selectors.select.input).type('{downArrow}')
+      })
+
+      it('highlights the first item', () => {
+        const options = cy.get(selectors.select.option)
+
+        options.should(($option) => {
+          expect($option.eq(0), 'option 1').to.have.css(
+            'background-color',
+            hexToRgb(ColorNeutral100)
+          )
         })
       })
     })

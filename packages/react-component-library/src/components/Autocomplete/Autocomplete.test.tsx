@@ -126,6 +126,10 @@ describe('Autocomplete', () => {
           expect(onChangeSpy).toHaveBeenCalledWith('two')
         })
 
+        it('focuses the toggle button', () => {
+          expect(wrapper.getByTestId('select-arrow-button')).toHaveFocus()
+        })
+
         describe('and the clear button is clicked', () => {
           beforeEach(() => {
             userEvent.click(wrapper.getByTestId('select-clear-button'))

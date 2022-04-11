@@ -33,7 +33,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 }) => {
   const { hasError, inputRef, items, onInputValueChange, onIsOpenChange } =
     useAutocomplete(React.Children.toArray(children), isInvalid)
-  const { onToggleButtonKeyDownHandler } = useToggleButton(inputRef)
+  const {
+    buttonRef,
+    focusToggleButton,
+    onInputEscapeKeyHandler,
+    onToggleButtonKeyDownHandler,
+  } = useToggleButton(inputRef)
   const id = useExternalId('autocomplete', externalId)
 
   const {
@@ -61,10 +66,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       if (onChange) {
         onChange(React.isValidElement(newItem) ? newItem.props.value : null)
       }
+
+      focusToggleButton()
     },
   })
 
-  const { onInputBlurHandler, onInputKeyDownHandler } = useHighlightedIndex(
+  const { onInputBlurHandler, onInputTabKeyHandler } = useHighlightedIndex(
     highlightedIndex,
     inputValue,
     isOpen,
@@ -87,7 +94,10 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       inputProps={getInputProps({
         onBlur: onInputBlurHandler,
         onFocus: onInputFocusHandler,
-        onKeyDown: onInputKeyDownHandler,
+        onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
+          onInputTabKeyHandler(e)
+          onInputEscapeKeyHandler(e)
+        },
         onMouseDown: onInputMouseDownHandler,
         ref: inputRef,
       })}
@@ -102,6 +112,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => {
           onToggleButtonKeyDownHandler(e)
         },
+        ref: buttonRef,
       })}
       value={selectedItem ? itemToString(selectedItem) : ''}
       {...rest}
