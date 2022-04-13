@@ -92,7 +92,7 @@ export const StyledContent = styled.div<StyledContentProps>`
   z-index: ${zIndex('modal', 1)};
   background: ${TOOLTIP_DARK_BG};
   color: ${color('neutral', 'white')};
-  border: ${TOOLTIP_DARK_BORDER} solid ${TOOLTIP_BORDER_THICK};
+  border: ${TOOLTIP_DARK_BORDER} solid ${TOOLTIP_BORDER_THICK}px;
   border-radius: 5px;
   padding: ${spacing('6')} ${spacing('8')};
   position: relative;
