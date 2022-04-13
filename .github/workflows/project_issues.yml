@@ -8,11 +8,11 @@ jobs:
   Move_labelled_issues:
     runs-on: ubuntu-latest
     steps:
-    - name: Move small/med labeled issues to Candidates column
-      uses: defencedigital/design-system-moveissue-action@master
-      with:
-        action-token: "${{ secrets.GHA_ISSUES_TOKEN }}"
-        project-url: "https://github.com/defencedigital/mod-uk-design-system/projects/6"
-        column-name: "Candidates for Ready"
-        label-name: "Size: Small,Size: Medium"
-        columns-to-ignore: "Ready,In Progress,In Review,Done"
+      - name: Move small/med labeled issues to Candidates column
+        uses: defencedigital/design-system-moveissue-action@master
+        with:
+          action-token: '${{ secrets.GHA_ISSUES_TOKEN }}'
+          project-url: 'https://github.com/defencedigital/mod-uk-design-system/projects/6'
+          column-name: 'Candidates for Ready'
+          label-name: 'Size: Small,Size: Medium'
+          columns-to-ignore: 'Ready,In Progress,In Review,Done'

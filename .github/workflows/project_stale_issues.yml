@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add label & comment to stale issues
-        uses: actions/stale@v3
+        uses: actions/stale@v5
         with:
           stale-issue-message: 'This issue has been marked as stale because it has been open for 60 days with no activity'
           days-before-stale: 60
