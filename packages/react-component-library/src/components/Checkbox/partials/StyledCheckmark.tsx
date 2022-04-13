@@ -15,12 +15,11 @@ function getCheckboxActiveStyle() {
   `
 }
 
-export const StyledCheckmark = styled.div<CheckmarkProps>`
-  position: absolute;
-  top: ${({ $hasContainer }) => ($hasContainer ? '12px' : '4px')};
-  left: ${({ $hasContainer }) => ($hasContainer ? '12px' : '4px')};
-  height: 18px;
-  width: 18px;
+export const StyledCheckmark = styled.span<CheckmarkProps>`
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
   background-color: ${color('neutral', 'white')};
   border: 1px solid ${color('neutral', '200')};
   border-radius: 3px;

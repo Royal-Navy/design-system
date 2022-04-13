@@ -15,6 +15,10 @@ export interface CheckmarkProps {
   $isDisabled?: boolean
 }
 
+export interface CheckmarkWrapperProps {
+  $hasContainer: boolean
+}
+
 export interface CheckboxRadioBaseProps
   extends ComponentWithClass,
     InputValidationProps {
@@ -72,5 +76,6 @@ export interface CheckboxRadioBaseProps
   partials: {
     Root: React.ComponentType<CheckboxRootProps>
     Checkmark: React.ComponentType<CheckmarkProps>
+    CheckmarkWrapper: React.ComponentType<CheckmarkWrapperProps>
   }
 }

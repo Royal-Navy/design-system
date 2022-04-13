@@ -30,7 +30,7 @@ export const CheckboxRadioBase = React.forwardRef<
       value,
       variant = CHECKBOX_RADIO_VARIANT.DEFAULT,
       type,
-      partials: { Root, Checkmark },
+      partials: { Root, Checkmark, CheckmarkWrapper },
       ...rest
     },
     ref
@@ -104,8 +104,6 @@ export const CheckboxRadioBase = React.forwardRef<
       <StyledWrapper>
         <Root
           className={className}
-          role={type}
-          aria-checked={isChecked}
           $isDisabled={isDisabled}
           $hasContainer={hasContainer}
           $isInvalid={isInvalid}
@@ -122,24 +120,26 @@ export const CheckboxRadioBase = React.forwardRef<
               htmlFor={id}
               data-testid={`${type}-label`}
             >
-              <StyledInput
-                defaultChecked={defaultChecked}
-                ref={mergeRefs([localRef, ref])}
-                id={id}
-                type={type}
-                name={name}
-                value={value}
-                onChange={handleOnChange}
-                onBlur={onBlur}
-                disabled={isDisabled}
-                data-testid={`${type}-input`}
-                checked={isControlled ? isChecked : undefined}
-                {...rest}
-              />
-              <Checkmark
-                $hasContainer={hasContainer}
-                $isDisabled={isDisabled}
-              />
+              <CheckmarkWrapper $hasContainer={hasContainer}>
+                <StyledInput
+                  defaultChecked={defaultChecked}
+                  ref={mergeRefs([localRef, ref])}
+                  id={id}
+                  type={type}
+                  name={name}
+                  value={value}
+                  onChange={handleOnChange}
+                  onBlur={onBlur}
+                  disabled={isDisabled}
+                  data-testid={`${type}-input`}
+                  checked={isControlled ? isChecked : undefined}
+                  {...rest}
+                />
+                <Checkmark
+                  $hasContainer={hasContainer}
+                  $isDisabled={isDisabled}
+                />
+              </CheckmarkWrapper>
               {label}
               {description && (
                 <StyledDescription data-testid={`${type}-description`}>
