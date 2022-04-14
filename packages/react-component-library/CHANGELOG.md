@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.4](https://github.com/defencedigital/mod-uk-design-system/compare/3.7.3...3.7.4) (2022-04-14)
+
+
+### Bug Fixes
+
+* **CheckboxRadioBase:** Resolve 'nested-interactive' axe v4 error ([369d808](https://github.com/defencedigital/mod-uk-design-system/commit/369d80884acf93c047406edfb556563554832e1b))
+* **Radio:** Correct no-container focus styling ([14defe9](https://github.com/defencedigital/mod-uk-design-system/commit/14defe9e0553c0be921683537561f1ae6d6d9f06))
+* **Tooltip:** Add missing border unit ([8507d7f](https://github.com/defencedigital/mod-uk-design-system/commit/8507d7f9656dbe74593c33ef9bb02aeed243498a))
+
+
+
+
+
 ## [3.7.3](https://github.com/defencedigital/mod-uk-design-system/compare/3.7.2...3.7.3) (2022-04-11)
 
 
