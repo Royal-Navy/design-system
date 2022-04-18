@@ -10,7 +10,7 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react'
 import 'jest-styled-components'
-import userEvent from '@testing-library/user-event'
+import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event'
 
 import { BORDER_WIDTH } from '../../styled-components'
 import { COMPONENT_SIZE } from '../Forms'
@@ -28,6 +28,7 @@ function formatDate(date: Date | null) {
 
 describe('DatePicker', () => {
   let wrapper: RenderResult
+  let user: ReturnType<typeof userEvent['setup']>
   let initialStartDate: Date
   let label: string
   let onBlur: (e: React.FormEvent) => void
@@ -62,6 +63,7 @@ describe('DatePicker', () => {
   beforeEach(() => {
     jest.useFakeTimers()
     jest.setSystemTime(Date.parse(NOW))
+    user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
   })
 
   afterEach(() => {
@@ -139,7 +141,7 @@ describe('DatePicker', () => {
 
     describe('when the end user clicks the open close button', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('datepicker-input-button'))
+        return user.click(wrapper.getByTestId('datepicker-input-button'))
       })
 
       assertInputButtonAria({
@@ -155,7 +157,7 @@ describe('DatePicker', () => {
 
       describe('and the user clicks it again', () => {
         beforeEach(() => {
-          userEvent.click(wrapper.getByTestId('datepicker-input-button'))
+          return user.click(wrapper.getByTestId('datepicker-input-button'))
         })
 
         assertInputButtonAria({
@@ -174,7 +176,7 @@ describe('DatePicker', () => {
 
       describe('and the input is clicked on', () => {
         beforeEach(() => {
-          userEvent.click(wrapper.getByTestId('datepicker-input'))
+          return user.click(wrapper.getByTestId('datepicker-input'))
         })
 
         it('hides the day picker container', () => {
@@ -201,7 +203,7 @@ describe('DatePicker', () => {
 
     describe('when the input is cleared using the keyboard', () => {
       beforeEach(() => {
-        userEvent.clear(wrapper.getByTestId('datepicker-input'))
+        return user.clear(wrapper.getByTestId('datepicker-input'))
       })
 
       it('calls the `onChange` callback with null dates', () => {
@@ -220,7 +222,7 @@ describe('DatePicker', () => {
           beforeEach(() => {
             const input = wrapper.getByTestId('datepicker-input')
 
-            userEvent.type(input, '{selectall}01/05/2016')
+            return user.type(input, '{Control>}a{/Control}01/05/2016')
           })
 
           it('set the value of the component to this date', () => {
@@ -240,7 +242,7 @@ describe('DatePicker', () => {
 
           describe('and the day picker is opened', () => {
             beforeEach(() => {
-              userEvent.click(wrapper.getByTestId('datepicker-input-button'))
+              return user.click(wrapper.getByTestId('datepicker-input-button'))
             })
 
             it('displays the new date', () => {
@@ -253,7 +255,7 @@ describe('DatePicker', () => {
             beforeEach(() => {
               wrapper.getByTestId('datepicker-input').focus()
 
-              userEvent.tab()
+              return user.tab()
             })
 
             it('focuses the picker open/close button', () => {
@@ -266,7 +268,7 @@ describe('DatePicker', () => {
               beforeEach(() => {
                 const button = wrapper.getByTestId('datepicker-input-button')
 
-                userEvent.type(button, '{space}', { skipClick: true })
+                return user.type(button, '[Space]', { skipClick: true })
               })
 
               it('opens the picker container', () => {
@@ -277,7 +279,7 @@ describe('DatePicker', () => {
 
               describe('and the tab key is pressed again', () => {
                 beforeEach(() => {
-                  userEvent.tab()
+                  return user.tab()
                 })
 
                 it('focuses the picker container', () => {
@@ -288,7 +290,7 @@ describe('DatePicker', () => {
 
               describe('and clicks on a day', () => {
                 beforeEach(() => {
-                  userEvent.click(wrapper.getByText('31'))
+                  return user.click(wrapper.getByText('31'))
                 })
 
                 it('set the value of the component to this date', () => {
@@ -324,12 +326,12 @@ describe('DatePicker', () => {
           beforeEach(() => {
             input = wrapper.getByTestId('datepicker-input')
 
-            userEvent.type(input, '{selectall}1/5/2016')
+            return user.type(input, '{Control>}a{/Control}1/5/2016')
           })
 
           describe('and enter is pressed', () => {
             beforeEach(() => {
-              userEvent.type(input, '{enter}')
+              return user.type(input, '{enter}')
             })
 
             it('updates the value of the input with the formatted date', () => {
@@ -341,7 +343,7 @@ describe('DatePicker', () => {
 
           describe('and tab is pressed', () => {
             beforeEach(() => {
-              userEvent.tab()
+              return user.tab()
             })
 
             it('updates the value of the input with the formatted date', () => {
@@ -374,7 +376,7 @@ describe('DatePicker', () => {
 
           describe('and the open/close button is clicked', () => {
             beforeEach(() => {
-              userEvent.click(wrapper.getByTestId('datepicker-input-button'))
+              return user.click(wrapper.getByTestId('datepicker-input-button'))
             })
 
             it('updates the selected day', () => {
@@ -389,12 +391,12 @@ describe('DatePicker', () => {
         beforeEach(() => {
           const input = wrapper.getByTestId('datepicker-input')
 
-          userEvent.type(input, '{selectall}20')
+          return user.type(input, '{Control>}a{/Control}20')
         })
         describe('and a day is selected', () => {
-          beforeEach(() => {
-            userEvent.click(wrapper.getByTestId('datepicker-input-button'))
-            userEvent.click(wrapper.getByText('21'))
+          beforeEach(async () => {
+            await user.click(wrapper.getByTestId('datepicker-input-button'))
+            await user.click(wrapper.getByText('21'))
           })
 
           it('set the value of the component to the selected date', () => {
@@ -419,7 +421,7 @@ describe('DatePicker', () => {
           beforeEach(() => {
             const input = wrapper.getByTestId('datepicker-input')
 
-            userEvent.type(input, '{selectall}abcd')
+            return user.type(input, '{Control>}a{/Control}abcd')
           })
 
           it('calls the `onChange` callback with an invalid date', () => {
@@ -433,7 +435,7 @@ describe('DatePicker', () => {
 
           describe('and the tab key is pressed', () => {
             beforeEach(() => {
-              userEvent.tab()
+              return user.tab()
             })
 
             it('is in an error state', () => {
@@ -453,7 +455,7 @@ describe('DatePicker', () => {
               const newValue =
                 '{backspace}{backspace}{backspace}{backspace}01/03/2021'
 
-              userEvent.type(input, newValue)
+              return user.type(input, newValue)
             })
 
             it('invokes the `onChange` callback', () => {
@@ -492,9 +494,9 @@ describe('DatePicker', () => {
         })
 
         describe('when using a two digit year', () => {
-          beforeEach(() => {
+          beforeEach(async () => {
             const input = wrapper.getByTestId('datepicker-input')
-            userEvent.type(input, '{selectall}12/12/20')
+            await user.type(input, '{Control>}a{/Control}12/12/20')
             input.blur()
           })
 
@@ -515,9 +517,9 @@ describe('DatePicker', () => {
         })
 
         describe('when using a date that does not exist', () => {
-          beforeEach(() => {
+          beforeEach(async () => {
             const input = wrapper.getByTestId('datepicker-input')
-            userEvent.type(input, '{selectall}15/15/20')
+            await user.type(input, '{Control>}a{/Control}15/15/20')
             input.blur()
           })
 
@@ -540,10 +542,11 @@ describe('DatePicker', () => {
     })
 
     describe('when a new date is pasted', () => {
-      beforeEach(() => {
+      beforeEach(async () => {
         const input = wrapper.getByTestId('datepicker-input')
-        userEvent.clear(input)
-        userEvent.paste(input, '01/05/2021')
+        await user.clear(input)
+        input.focus()
+        await user.paste('01/05/2021')
       })
 
       it('calls the `onChange` callback with the new date', () => {
@@ -594,7 +597,7 @@ describe('DatePicker', () => {
     beforeEach(() => {
       wrapper = render(<DatePicker />)
 
-      userEvent.click(wrapper.getByTestId('datepicker-input-button'))
+      return user.click(wrapper.getByTestId('datepicker-input-button'))
     })
 
     it('displays the current month', () => {
@@ -607,27 +610,24 @@ describe('DatePicker', () => {
       )
     })
 
-    describe('when the day picker is focused and Shift-Tab is pressed', () => {
-      let dayPicker: Element
-
-      beforeEach(() => {
-        dayPicker = wrapper.container.querySelectorAll('.DayPicker-wrapper')[0]
-
-        fireEvent.focus(dayPicker)
-
-        userEvent.tab({ shift: true })
-      })
+    describe('when Shift-Tab is pressed twice', () => {
+      beforeEach(async () => {
+        await user.tab({ shift: true })
+        await user.tab({ shift: true })
+      }, 10_000)
 
       it('traps the focus within the picker', () => {
         expect(wrapper.getByText('1')).toHaveFocus()
       })
 
-      describe('and Tab is then pressed', () => {
+      describe('and Tab is then pressed once', () => {
         beforeEach(() => {
-          userEvent.tab()
+          return user.tab()
         })
 
         it('still traps the focus within the picker', () => {
+          const dayPicker =
+            wrapper.container.querySelectorAll('.DayPicker-wrapper')[0]
           expect(dayPicker).toHaveFocus()
         })
       })
@@ -649,7 +649,7 @@ describe('DatePicker', () => {
       },
     ])('when the escape key is pressed in $name', ({ selector }) => {
       beforeEach(() => {
-        userEvent.type(selector(), '{esc}')
+        return user.type(selector(), '{Escape}')
       })
 
       it('closes the day picker', () => {
@@ -667,7 +667,7 @@ describe('DatePicker', () => {
 
     describe('when the next month button is clicked', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByLabelText('Next Month'))
+        return user.click(wrapper.getByLabelText('Next Month'))
       })
 
       it('displays the next month', () => {
@@ -676,7 +676,7 @@ describe('DatePicker', () => {
 
       describe('when the first day is clicked', () => {
         beforeEach(() => {
-          userEvent.click(wrapper.getByText('1'))
+          return user.click(wrapper.getByText('1'))
         })
 
         it('updates the input value', () => {
@@ -706,8 +706,11 @@ describe('DatePicker', () => {
             await waitForElementToBeRemoved(
               wrapper.queryByTestId('floating-box')
             )
-
-            userEvent.click(wrapper.getByTestId('datepicker-input-button'))
+            // Does not use `user` due to https://github.com/testing-library/user-event/issues/922
+            await userEvent.click(
+              wrapper.getByTestId('datepicker-input-button'),
+              { advanceTimers: jest.advanceTimersByTime }
+            )
           })
 
           it('opens the picker on the previously selected month', () => {
@@ -744,7 +747,7 @@ describe('DatePicker', () => {
 
     describe('when the end user clicks on the Input', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('datepicker-input'))
+        return user.click(wrapper.getByTestId('datepicker-input'))
       })
 
       it('opens the day picker', () => {
@@ -755,7 +758,7 @@ describe('DatePicker', () => {
 
       describe('and hovers over a second date', () => {
         beforeEach(() => {
-          userEvent.hover(wrapper.getByText('13'))
+          return user.hover(wrapper.getByText('13'))
         })
 
         it('shades the date range', () => {
@@ -776,7 +779,7 @@ describe('DatePicker', () => {
 
         describe('and unhovers the second date', () => {
           beforeEach(() => {
-            userEvent.unhover(wrapper.getByText('13'))
+            return user.unhover(wrapper.getByText('13'))
           })
 
           it('does not shade any days', () => {
@@ -811,7 +814,7 @@ describe('DatePicker', () => {
 
       describe('and clicks on a second date', () => {
         beforeEach(() => {
-          userEvent.click(wrapper.getByText('20'))
+          return user.click(wrapper.getByText('20'))
         })
 
         it('closes the day picker', () => {
@@ -849,7 +852,7 @@ describe('DatePicker', () => {
 
       describe('and clicks on a date less than the first', () => {
         beforeEach(() => {
-          userEvent.click(wrapper.getByText('9'))
+          return user.click(wrapper.getByText('9'))
         })
 
         it('closes the day picker', () => {
@@ -913,7 +916,7 @@ describe('DatePicker', () => {
     // in range mode
     describe('and return is pressed in the input', () => {
       beforeEach(() => {
-        userEvent.type(input, '{enter}')
+        return user.type(input, '{enter}')
       })
 
       it('the input value is unchanged', () => {
@@ -960,7 +963,7 @@ describe('DatePicker', () => {
 
     describe('and the open/close button is clicked', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('datepicker-input-button'))
+        return user.click(wrapper.getByTestId('datepicker-input-button'))
       })
 
       it('does not submit the form', () => {
@@ -999,8 +1002,9 @@ describe('DatePicker', () => {
 
     describe('and a disabled day is clicked', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByText('12'), undefined, {
-          skipPointerEventsCheck: true,
+        return userEvent.click(wrapper.getByText('12'), {
+          pointerEventsCheck: PointerEventsCheckLevel.Never,
+          advanceTimers: jest.advanceTimersByTime,
         })
       })
 
@@ -1013,7 +1017,7 @@ describe('DatePicker', () => {
       beforeEach(() => {
         const input = wrapper.getByTestId('datepicker-input')
 
-        userEvent.type(input, '{selectall}12/04/2020')
+        return user.type(input, '{Control>}a{/Control}12/04/2020')
       })
 
       it('calls the `onChange` callback with the disabled date', () => {
@@ -1098,7 +1102,7 @@ describe('DatePicker', () => {
       beforeEach(() => {
         const input = wrapper.getByTestId('datepicker-input')
 
-        userEvent.type(input, `{selectall}2016/02/03`)
+        return user.type(input, `{Control>}a{/Control}2016/02/03`)
       })
 
       it('invokes the `onChange` callback', () => {
@@ -1126,7 +1130,7 @@ describe('DatePicker', () => {
         beforeEach(() => {
           input = wrapper.getByTestId('datepicker-input')
 
-          userEvent.type(input, date)
+          return user.type(input, date)
         })
 
         it('calls the `onChange` callback with an invalid date', () => {
@@ -1188,7 +1192,7 @@ describe('DatePicker', () => {
 
     describe('and a date is typed', () => {
       beforeEach(() => {
-        userEvent.type(input, '06/05/2022')
+        return user.type(input, '06/05/2022')
       })
 
       it('updates the input value', () => {
@@ -1202,7 +1206,7 @@ describe('DatePicker', () => {
 
     describe('and the external state is updated with a new date', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByText('Today'))
+        return user.click(wrapper.getByText('Today'))
       })
 
       it('updates the input value', () => {
@@ -1215,7 +1219,7 @@ describe('DatePicker', () => {
 
       describe('and the external state is then updated with a null value', () => {
         beforeEach(() => {
-          userEvent.click(wrapper.getByText('Clear date'))
+          return user.click(wrapper.getByText('Clear date'))
         })
 
         it('updates the input value', () => {
@@ -1278,7 +1282,7 @@ describe('DatePicker', () => {
 
     describe('and the start date is updated externally', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByText('Update start date'))
+        return user.click(wrapper.getByText('Update start date'))
       })
 
       it('updates the input value', () => {
@@ -1295,7 +1299,7 @@ describe('DatePicker', () => {
 
     describe('and the end date is updated externally', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByText('Update end date'))
+        return user.click(wrapper.getByText('Update end date'))
       })
 
       it('updates the input value', () => {
@@ -1312,7 +1316,7 @@ describe('DatePicker', () => {
 
     describe('and the dates are cleared', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByText('Clear dates'))
+        return user.click(wrapper.getByText('Clear dates'))
       })
 
       it('updates the input value', () => {

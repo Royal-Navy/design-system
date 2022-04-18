@@ -106,7 +106,7 @@ describe('ContextMenu', () => {
 
       describe('and outside is clicked', () => {
         beforeEach(() => {
-          userEvent.click(wrapper.getByTestId('outside'))
+          return userEvent.click(wrapper.getByTestId('outside'))
         })
 
         it('should hide the context menu', () => {
@@ -398,7 +398,7 @@ describe('ContextMenu', () => {
 
     it('does not throw an error when clicking', () => {
       expect(() => {
-        userEvent.click(wrapper.getByText('Clickable area'))
+        return userEvent.click(wrapper.getByText('Clickable area'))
       }).not.toThrowError()
     })
   })

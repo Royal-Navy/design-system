@@ -78,7 +78,7 @@ describe('Radio', () => {
 
     describe('and tab is pressed', () => {
       beforeEach(() => {
-        userEvent.tab()
+        return userEvent.tab()
       })
 
       it('focuses the input', () => {
@@ -87,7 +87,7 @@ describe('Radio', () => {
 
       describe('and space is pressed', () => {
         beforeEach(() => {
-          userEvent.keyboard('[Space]')
+          return userEvent.keyboard('[Space]')
         })
 
         it('checks the input', () => {
@@ -229,7 +229,7 @@ describe('Radio', () => {
       radio = render(<Radio label="label" name="name" />)
       const input = radio.getByTestId('radio-input')
       initialId = input.id
-      userEvent.click(radio.getByTestId('radio'))
+      return userEvent.click(radio.getByTestId('radio'))
     })
 
     it('does not generate a new `id`', () => {
@@ -294,7 +294,7 @@ describe('Radio', () => {
 
     describe('and the button is clicked, changing the `isChecked` state', () => {
       beforeEach(() => {
-        userEvent.click(radio.getByTestId('change-checked-state'))
+        return userEvent.click(radio.getByTestId('change-checked-state'))
       })
 
       it('should uncheck the radio', () => {

@@ -22,14 +22,9 @@ const defaultProps = {
   ) => true,
 }
 
-function paste(element: HTMLElement, text: string) {
-  // userEvent 13.x doesn't set clipboardData automatically, though
-  // React always does
-  userEvent.paste(element, text, {
-    clipboardData: {
-      getData: () => text,
-    } as unknown as DataTransfer,
-  })
+async function paste(element: HTMLElement, text: string) {
+  element.focus()
+  return userEvent.paste(text)
 }
 
 describe('NumberInput', () => {
@@ -200,7 +195,7 @@ describe('NumberInput', () => {
         beforeEach(() => {
           increase = wrapper.getByTestId(`number-input-${buttonType}`)
           increase.focus()
-          userEvent.keyboard('{Enter}')
+          return userEvent.keyboard('{Enter}')
         })
 
         assertInputValue(expectedValue)
@@ -212,10 +207,10 @@ describe('NumberInput', () => {
     )
 
     describe('and the user types values', () => {
-      beforeEach(() => {
-        userEvent.type(input, '1')
-        userEvent.type(input, '2')
-        userEvent.type(input, '3')
+      beforeEach(async () => {
+        await userEvent.type(input, '1')
+        await userEvent.type(input, '2')
+        await userEvent.type(input, '3')
       })
 
       it('calls the `onChange` callback once with `1`', () => {
@@ -231,10 +226,10 @@ describe('NumberInput', () => {
     })
 
     describe('and the user types a value with invalid characters', () => {
-      beforeEach(() => {
-        userEvent.type(input, '1')
-        userEvent.type(input, 'a')
-        userEvent.type(input, '2')
+      beforeEach(async () => {
+        await userEvent.type(input, '1')
+        await userEvent.type(input, 'a')
+        await userEvent.type(input, '2')
       })
 
       it('calls the `onChange` callback with `1`', () => {
@@ -251,7 +246,7 @@ describe('NumberInput', () => {
 
     describe('and the user types a value', () => {
       beforeEach(() => {
-        userEvent.type(input, '1')
+        return userEvent.type(input, '1')
       })
 
       assertInputValue('1')
@@ -259,7 +254,7 @@ describe('NumberInput', () => {
 
       describe('and the user deletes the value', () => {
         beforeEach(() => {
-          userEvent.type(input, '{backspace}')
+          return userEvent.type(input, '{backspace}')
         })
 
         assertInputValue('')
@@ -278,7 +273,7 @@ describe('NumberInput', () => {
 
     describe('and the user types a negative value', () => {
       beforeEach(() => {
-        userEvent.type(input, '-100')
+        return userEvent.type(input, '-100')
       })
 
       assertInputValue('-100')
@@ -287,7 +282,7 @@ describe('NumberInput', () => {
 
     describe('and the user types only a minus sign', () => {
       beforeEach(() => {
-        userEvent.type(input, '-')
+        return userEvent.type(input, '-')
       })
 
       assertInputValue('-')
@@ -343,7 +338,7 @@ describe('NumberInput', () => {
 
     describe('and the user types a fractional value', () => {
       beforeEach(() => {
-        userEvent.type(input, '100.1')
+        return userEvent.type(input, '100.1')
       })
 
       assertInputValue('100.1')
@@ -352,7 +347,7 @@ describe('NumberInput', () => {
       describe('and a second decimal point is typed after the first', () => {
         beforeEach(() => {
           onChangeSpy.mockReset()
-          userEvent.type(input, '.25')
+          return userEvent.type(input, '.25')
         })
 
         assertInputValue('100.125')
@@ -403,7 +398,7 @@ describe('NumberInput', () => {
       'and the user pastes the valid value "%s" in an empty input',
       (pastedValue) => {
         beforeEach(() => {
-          paste(input, pastedValue)
+          return paste(input, pastedValue)
         })
 
         assertInputValue(pastedValue)
@@ -420,9 +415,9 @@ describe('NumberInput', () => {
     describe.each(['123.456', '-123', '-123.456'])(
       'and the user pastes the valid value "%s" with existing text selected',
       (pastedValue) => {
-        beforeEach(() => {
-          userEvent.type(input, '999{selectall}')
-          paste(input, pastedValue)
+        beforeEach(async () => {
+          await userEvent.type(input, '999{Control>}a{/Control}')
+          await paste(input, pastedValue)
         })
 
         assertInputValue(pastedValue)
@@ -440,7 +435,7 @@ describe('NumberInput', () => {
       'and the user pastes the invalid value "%s" in an empty input',
       (pastedValue) => {
         beforeEach(() => {
-          paste(input, pastedValue)
+          return paste(input, pastedValue)
         })
 
         assertInputValue('')
@@ -454,10 +449,10 @@ describe('NumberInput', () => {
     describe.each(['123.456.789', '123invalid', '-123'])(
       'and the user pastes the invalid value "%s" after an existing value',
       (pastedValue) => {
-        beforeEach(() => {
-          userEvent.type(input, '100')
+        beforeEach(async () => {
+          await userEvent.type(input, '100')
           onChangeSpy.mockReset()
-          paste(input, pastedValue)
+          await paste(input, pastedValue)
         })
 
         assertInputValue('100')
@@ -552,7 +547,7 @@ describe('NumberInput', () => {
 
     describe('and the user types -3', () => {
       beforeEach(() => {
-        userEvent.type(input, '-3')
+        return userEvent.type(input, '-3')
       })
 
       assertInputValue('3')
@@ -561,7 +556,7 @@ describe('NumberInput', () => {
 
     describe('and the user pastes -3', () => {
       beforeEach(() => {
-        paste(input, '-3')
+        return paste(input, '-3')
       })
 
       assertInputValue('')
@@ -918,7 +913,7 @@ describe('NumberInput', () => {
 
       const input = wrapper.getByTestId('number-input-input')
       initialInputId = input.id
-      userEvent.type(input, '123')
+      return userEvent.type(input, '123')
     })
 
     it('does not generate a new `id` for the wrapper', () => {

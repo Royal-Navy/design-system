@@ -213,7 +213,7 @@ describe('TextInput', () => {
       wrapper = render(<TextInput label="label" name="name" />)
       const input = wrapper.getByTestId('text-input-input')
       initialId = input.id
-      userEvent.type(input, 'some text')
+      return userEvent.type(input, 'some text')
     })
 
     it('does not generate a new `id`', () => {

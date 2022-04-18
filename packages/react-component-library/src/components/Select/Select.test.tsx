@@ -115,7 +115,7 @@ describe('Select', () => {
 
     describe('when the arrow button is clicked', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('select-arrow-button'))
+        return userEvent.click(wrapper.getByTestId('select-arrow-button'))
       })
 
       it('displays the items', () => {
@@ -129,7 +129,7 @@ describe('Select', () => {
 
       describe('and the second item is clicked', () => {
         beforeEach(() => {
-          userEvent.click(wrapper.getByText('Two'))
+          return userEvent.click(wrapper.getByText('Two'))
         })
 
         it('hides the items', () => {
@@ -147,7 +147,7 @@ describe('Select', () => {
 
         describe('and the clear button is clicked', () => {
           beforeEach(() => {
-            userEvent.click(wrapper.getByTestId('select-clear-button'))
+            return userEvent.click(wrapper.getByTestId('select-clear-button'))
           })
 
           it('resets the value', () => {
@@ -163,7 +163,7 @@ describe('Select', () => {
 
     describe('when tabbing to the input', () => {
       beforeEach(() => {
-        userEvent.tab()
+        return userEvent.tab()
       })
 
       it('shows the items', () => {
@@ -173,7 +173,7 @@ describe('Select', () => {
 
     describe('when clicking on the input', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('select-input'))
+        return userEvent.click(wrapper.getByTestId('select-input'))
       })
 
       it('shows the items', () => {
@@ -196,7 +196,7 @@ describe('Select', () => {
         </Select>
       )
       initialId = wrapper.getByTestId('select-input').id
-      userEvent.click(wrapper.getByTestId('select-arrow-button'))
+      return userEvent.click(wrapper.getByTestId('select-arrow-button'))
     })
 
     it('does not generate a new `id`', () => {
@@ -233,7 +233,7 @@ describe('Select', () => {
 
     describe('when tabbing to the input', () => {
       beforeEach(() => {
-        userEvent.tab()
+        return userEvent.tab()
       })
 
       it('does not show the items', () => {
@@ -243,7 +243,7 @@ describe('Select', () => {
 
     describe('when clicking on the input', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('select-input'))
+        return userEvent.click(wrapper.getByTestId('select-input'))
       })
 
       it('does not show the items', () => {
@@ -253,7 +253,7 @@ describe('Select', () => {
 
     describe('when clicking on the arrow button', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('select-arrow-button'))
+        return userEvent.click(wrapper.getByTestId('select-arrow-button'))
       })
 
       it('does not show the items', () => {
@@ -365,7 +365,7 @@ describe('Select', () => {
 
     describe('and clicking on the input', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('select-input'))
+        return userEvent.click(wrapper.getByTestId('select-input'))
       })
 
       it('displays 3 icons', () => {
@@ -393,7 +393,7 @@ describe('Select', () => {
 
     describe('when clicking on the input', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('select-input'))
+        return userEvent.click(wrapper.getByTestId('select-input'))
       })
 
       it('displays 3 badges', () => {

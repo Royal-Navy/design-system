@@ -103,7 +103,7 @@ describe('Pagination', () => {
 
       beforeEach(() => {
         inputName = wrapper.getByTestId('text-input-input').getAttribute('name')
-        userEvent.click(wrapper.getByTestId('page-next'))
+        return userEvent.click(wrapper.getByTestId('page-next'))
       })
 
       it('does not generate new a new input `name`', () => {
@@ -129,7 +129,7 @@ describe('Pagination', () => {
 
     describe('and the `Last` button is clicked', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('page-last'))
+        return userEvent.click(wrapper.getByTestId('page-last'))
       })
 
       it('should call the onChange callback', () => {
@@ -209,7 +209,7 @@ describe('Pagination', () => {
 
           describe('and the next button is clicked', () => {
             beforeEach(() => {
-              userEvent.click(wrapper.getByTestId('page-next'))
+              return userEvent.click(wrapper.getByTestId('page-next'))
             })
 
             it('should hide the error', () => {
@@ -336,7 +336,7 @@ describe('Pagination', () => {
 
     describe('and the `Previous` button is clicked', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('page-previous'))
+        return userEvent.click(wrapper.getByTestId('page-previous'))
       })
 
       it('should call the onChange callback', () => {
@@ -355,7 +355,7 @@ describe('Pagination', () => {
 
     describe('and the `First` button is clicked', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('page-first'))
+        return userEvent.click(wrapper.getByTestId('page-first'))
       })
 
       it('should call the onChange callback', () => {

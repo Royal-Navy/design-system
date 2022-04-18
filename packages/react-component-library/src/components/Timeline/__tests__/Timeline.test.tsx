@@ -49,10 +49,12 @@ const TimelineDates: React.FC<TimelineDaysProps> = () => {
 
 describe('Timeline', () => {
   let wrapper: RenderResult
+  let user: ReturnType<typeof userEvent['setup']>
 
   beforeEach(() => {
     jest.useFakeTimers()
     jest.setSystemTime(new Date(2020, 1, 15))
+    user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
   })
 
   afterEach(() => {
@@ -80,7 +82,7 @@ describe('Timeline', () => {
   })
 
   describe('when no data is provided', () => {
-    beforeEach(() => {
+    beforeEach(async () => {
       wrapper = render(
         <Timeline startDate={new Date(2020, 3, 1)} today={new Date(2020, 3, 6)}>
           <TimelineTodayMarker />
@@ -92,7 +94,7 @@ describe('Timeline', () => {
         </Timeline>
       )
 
-      userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+      await user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
     })
 
     it('should set the `role` attribute to `grid` on the timeline', () => {
@@ -462,7 +464,7 @@ describe('Timeline', () => {
 
       describe('and when the left button is clicked', () => {
         beforeEach(() => {
-          userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
+          return user.click(wrapper.getByTestId('timeline-side-button-left'))
         })
 
         it('should move to the previous month', () => {
@@ -480,7 +482,7 @@ describe('Timeline', () => {
 
       describe('and when the right button is clicked', () => {
         beforeEach(() => {
-          userEvent.click(wrapper.getByTestId('timeline-side-button-right'))
+          return user.click(wrapper.getByTestId('timeline-side-button-right'))
         })
 
         it('should move to the next month', () => {
@@ -950,7 +952,7 @@ describe('Timeline', () => {
         </Timeline>
       )
 
-      userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+      return user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
     })
 
     it('should render the day dates as specified', () => {
@@ -987,7 +989,7 @@ describe('Timeline', () => {
         </Timeline>
       )
 
-      userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+      return user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
     })
 
     it('renders the correct number of hours', () => {
@@ -1352,11 +1354,11 @@ describe('Timeline', () => {
     })
 
     describe('when moving left four times', () => {
-      beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
-        userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
-        userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
-        userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
+      beforeEach(async () => {
+        await user.click(wrapper.getByTestId('timeline-side-button-left'))
+        await user.click(wrapper.getByTestId('timeline-side-button-left'))
+        await user.click(wrapper.getByTestId('timeline-side-button-left'))
+        await user.click(wrapper.getByTestId('timeline-side-button-left'))
       })
 
       it('the first day should be 01', () => {
@@ -1424,7 +1426,7 @@ describe('Timeline', () => {
 
     describe('when navigating left', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('timeline-side-button-left'))
+        return user.click(wrapper.getByTestId('timeline-side-button-left'))
       })
 
       it('renders the correct number of days', () => {
@@ -1449,7 +1451,7 @@ describe('Timeline', () => {
 
     describe('when navigating right', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('timeline-side-button-right'))
+        return user.click(wrapper.getByTestId('timeline-side-button-right'))
       })
 
       it('renders the correct number of days', () => {
@@ -1759,7 +1761,7 @@ describe('Timeline', () => {
 
     describe('and then zooming out once (year view)', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-out'))
+        return user.click(wrapper.getByTestId('timeline-toolbar-zoom-out'))
       })
 
       it('should render months', () => {
@@ -1801,9 +1803,9 @@ describe('Timeline', () => {
     })
 
     describe('and then zooming out twice (5 year view)', () => {
-      beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-out'))
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-out'))
+      beforeEach(async () => {
+        await user.click(wrapper.getByTestId('timeline-toolbar-zoom-out'))
+        await user.click(wrapper.getByTestId('timeline-toolbar-zoom-out'))
       })
 
       it('should render months', () => {
@@ -1846,7 +1848,7 @@ describe('Timeline', () => {
 
     describe('and then zooming in once (week view)', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        return user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
       })
 
       it('should render months', () => {
@@ -1867,9 +1869,9 @@ describe('Timeline', () => {
     })
 
     describe('and then zooming in twice (day view)', () => {
-      beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+      beforeEach(async () => {
+        await user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        await user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
       })
 
       it('should render months', () => {
@@ -1890,10 +1892,10 @@ describe('Timeline', () => {
     })
 
     describe('and then zooming in thrice (1/4 day view)', () => {
-      beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+      beforeEach(async () => {
+        await user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        await user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        await user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
       })
 
       it('should render months', () => {
@@ -1914,11 +1916,11 @@ describe('Timeline', () => {
     })
 
     describe('and then zooming in four times (1 hour view)', () => {
-      beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
-        userEvent.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+      beforeEach(async () => {
+        await user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        await user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        await user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
+        await user.click(wrapper.getByTestId('timeline-toolbar-zoom-in'))
       })
 
       it('should render months', () => {
@@ -2363,7 +2365,7 @@ describe('Timeline', () => {
 
       wrapper = render(<TimelineWithUpdate />)
 
-      userEvent.click(wrapper.getByText('Update'))
+      return user.click(wrapper.getByText('Update'))
     })
 
     it('should not show the event', async () => {
@@ -2432,7 +2434,7 @@ describe('Timeline', () => {
       expect(eventSpy).toBeCalledTimes(1)
       eventSpy.mockClear()
 
-      userEvent.click(wrapper.getByText('Force update'))
+      await user.click(wrapper.getByText('Force update'))
       expect(await wrapper.findByText('Render: 2')).toBeInTheDocument()
       expect(eventSpy).not.toBeCalled()
     })
