@@ -1,3 +1,4 @@
+import { TypographyS, TypographyM } from '@defencedigital/design-tokens'
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, waitFor } from '@testing-library/react'
@@ -39,8 +40,8 @@ describe('TextInput', () => {
 
     it('should apply the `$hasContent` style rule to label', () => {
       expect(wrapper.getByTestId('text-input-label')).toHaveStyleRule(
-        'transform',
-        'translate(11px,6px) scale(0.75)'
+        'font-size',
+        TypographyS
       )
     })
 
@@ -171,8 +172,8 @@ describe('TextInput', () => {
       it('should remove the `$hasContent` style rule from label', () => {
         return waitFor(() => {
           expect(wrapper.getByTestId('text-input-label')).toHaveStyleRule(
-            'transform',
-            'translate(11px,13px) scale(1)'
+            'font-size',
+            TypographyM
           )
         })
       })

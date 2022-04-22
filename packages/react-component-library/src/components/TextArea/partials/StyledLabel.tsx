@@ -7,19 +7,20 @@ import {
   StyledLabelProps,
 } from '../../../styled-components/partials/StyledLabel'
 
-const { color, spacing } = selectors
+const { fontSize, spacing } = selectors
 
 export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
   padding-bottom: ${spacing('2')};
+  padding-left: 10px;
+  padding-right: 7px;
+  padding-top: ${isIE11() ? '9px' : '11px'};
   pointer-events: none;
-  background-color: ${color('neutral', 'white')};
   border-radius: 3px 3px 0 0;
-
-  transform: translate(10px, ${isIE11() ? '9px' : '11px'}) scale(1);
 
   ${({ $hasFocus, $hasContent }) =>
     ($hasFocus || $hasContent) &&
     css`
-      transform: translate(10px, ${isIE11() ? '6px' : '4px'}) scale(0.75);
+      padding-top: ${isIE11() ? '6px' : '4px'};
+      font-size: ${fontSize('s')};
     `}
 `

@@ -1,3 +1,4 @@
+import { TypographyS } from '@defencedigital/design-tokens'
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
@@ -85,8 +86,8 @@ describe('Autocomplete', () => {
 
       it('renders the label smaller', () => {
         expect(wrapper.getByText('Label')).toHaveStyleRule(
-          'transform',
-          'translate(11px,6px) scale(0.75)'
+          'font-size',
+          TypographyS
         )
       })
 

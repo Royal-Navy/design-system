@@ -1,5 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { css } from 'styled-components'
 
 import { TextArea } from '.'
 
@@ -31,3 +32,18 @@ export const WithError: ComponentStory<typeof TextArea> = (props) => (
 )
 
 WithError.storyName = 'With error'
+
+export const WithLongLabel: ComponentStory<typeof TextArea> = (props) => (
+  <div
+    css={css`
+      max-width: 400px;
+    `}
+  >
+    <TextArea
+      {...props}
+      label="This text input has a long label that doesn't fit in the container"
+    />
+  </div>
+)
+
+WithLongLabel.storyName = 'With long label'

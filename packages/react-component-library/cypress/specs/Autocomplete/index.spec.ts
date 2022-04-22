@@ -4,7 +4,9 @@ import {
   ColorDanger800,
   ColorNeutral100,
   ColorNeutral200,
+  TypographyS,
 } from '@defencedigital/design-tokens'
+import { remToPx } from 'polished'
 
 import { hexToRgb } from '../../helpers'
 import selectors from '../../selectors'
@@ -179,8 +181,8 @@ describe('Autocomplete', () => {
         it('keeps the small label', () => {
           cy.get(selectors.select.label).should(
             'have.css',
-            'transform',
-            'matrix(0.75, 0, 0, 0.75, 11, 6)'
+            'font-size',
+            remToPx(TypographyS)
           )
         })
       })

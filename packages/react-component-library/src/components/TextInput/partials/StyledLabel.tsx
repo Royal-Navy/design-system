@@ -1,3 +1,4 @@
+import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
 
 import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
@@ -6,6 +7,8 @@ import {
   StyledLabel as StyledLabelBase,
   StyledLabelProps,
 } from '../../../styled-components/partials/StyledLabel'
+
+const { fontSize } = selectors
 
 function getYPosition($size: ComponentSizeType) {
   if ($size === COMPONENT_SIZE.SMALL) {
@@ -16,8 +19,11 @@ function getYPosition($size: ComponentSizeType) {
 }
 
 export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
+  padding-left: 11px;
+  padding-right: 7px;
+
   ${({ $size = COMPONENT_SIZE.FORMS }) => css`
-    transform: translate(11px, ${getYPosition($size)}) scale(1);
+    padding-top: ${getYPosition($size)};
   `}
 
   ${({ $hasContent, $hasFocus, $size }) => {
@@ -32,7 +38,8 @@ export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
     }
 
     return css`
-      transform: translate(11px, 6px) scale(0.75);
+      padding-top: 6px;
+      font-size: ${fontSize('s')};
     `
   }}
 `
