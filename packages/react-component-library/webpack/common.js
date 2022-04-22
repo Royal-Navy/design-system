@@ -1,10 +1,27 @@
-// shared config (dev and prod)
 const { resolve } = require('path')
 
 module.exports = {
   target: 'node',
   entry: ['./index.ts'],
+  output: {
+    filename: 'index.js',
+    path: resolve(__dirname, '../dist/cjs'),
+    libraryTarget: 'commonjs2',
+  },
   externals: {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react',
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+      umd: 'react-dom',
+    },
     'styled-components': {
       commonjs: 'styled-components',
       commonjs2: 'styled-components',
@@ -28,7 +45,6 @@ module.exports = {
       },
     ],
   },
-
   performance: {
     hints: false,
   },
