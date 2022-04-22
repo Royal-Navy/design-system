@@ -45,7 +45,13 @@ module.exports = {
       ],
     },
     test: {
-      plugins: ['@babel/plugin-transform-modules-commonjs'],
+      plugins: [
+        'babel-plugin-styled-components',
+        '@babel/plugin-transform-modules-commonjs',
+      ],
+    },
+    'storybook-test': {
+      plugins: ['babel-plugin-styled-components'],
     },
   },
 }
