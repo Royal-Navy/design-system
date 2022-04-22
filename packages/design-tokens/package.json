@@ -20,7 +20,7 @@
   "scripts": {
     "build": "run-s build:dict build:cjs types",
     "build:dict": "node ./build-dictionary.js",
-    "build:cjs": "webpack --mode production --config=webpack/prod.js",
+    "build:cjs": "webpack --config=webpack/prod.js",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --allowJs false --outDir dist/types",
     "prepare": "yarn build",
     "test": "jest",

@@ -26,12 +26,12 @@
     "directory": "packages/react-component-library"
   },
   "scripts": {
-    "analyze": "webpack --mode production --config=webpack/analyze.js",
+    "analyze": "webpack --config=webpack/analyze.js",
     "build": "run-s build:es build:cjs types",
-    "build:cjs": "BABEL_ENV=cjs webpack --mode production --config=webpack/prod.js",
+    "build:cjs": "BABEL_ENV=cjs webpack --config=webpack/prod.js",
     "build:es": "BABEL_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\"",
     "build:dev": "RNDS_LOG_LEVEL=debug run-s build:ts:dev types",
-    "build:ts:dev": "webpack --mode production --config=webpack/dev.js",
+    "build:ts:dev": "webpack --config=webpack/dev.js",
     "chromatic": "chromatic --build-script-name storybook:static",
     "dev": "concurrently \"webpack --watch --config=webpack/dev.js\" \"yarn types --watch\"",
     "lint": "eslint src cypress --ext .js --ext .jsx --ext .ts --ext .tsx",

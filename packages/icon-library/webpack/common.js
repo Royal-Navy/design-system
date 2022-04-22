@@ -6,22 +6,13 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: resolve(__dirname, '../dist/cjs'),
-    libraryTarget: 'commonjs2',
+    library: {
+      type: 'commonjs2',
+    },
   },
   externals: {
-    react: {
-      root: 'React',
-      commonjs2: 'react',
-      commonjs: 'react',
-      amd: 'react',
-    },
-    'react-dom': {
-      root: 'ReactDOM',
-      commonjs2: 'react-dom',
-      commonjs: 'react-dom',
-      amd: 'react-dom',
-      umd: 'react-dom',
-    },
+    react: 'react',
+    'react-dom': 'react-dom',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
