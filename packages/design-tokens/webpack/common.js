@@ -1,3 +1,4 @@
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { resolve } = require('path')
 
 module.exports = {
@@ -31,4 +32,5 @@ module.exports = {
   performance: {
     hints: false,
   },
+  plugins: [new CleanWebpackPlugin()],
 }
