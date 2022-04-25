@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.5](https://github.com/defencedigital/mod-uk-design-system/compare/3.7.4...3.7.5) (2022-04-25)
+
+
+### Bug Fixes
+
+* **Forms:** Stop long input labels wrapping ([8aff253](https://github.com/defencedigital/mod-uk-design-system/commit/8aff2534a751f7cf18d73c677fe7113059b90d1c))
+
+
+
+
+
 ## [3.7.4](https://github.com/defencedigital/mod-uk-design-system/compare/3.7.3...3.7.4) (2022-04-14)
 
 
