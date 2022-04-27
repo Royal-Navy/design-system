@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useSelect } from 'downshift'
 
 import {
@@ -9,6 +9,8 @@ import {
   SelectLayout,
 } from '../SelectBase'
 import { useExternalId } from '../../hooks/useExternalId'
+import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
+import { useSelectMenu } from './hooks/useSelectMenu'
 
 export const Select: React.FC<SelectBaseProps> = ({
   children,
@@ -18,6 +20,7 @@ export const Select: React.FC<SelectBaseProps> = ({
   ...rest
 }) => {
   const id = useExternalId('select', externalId)
+  const inputRef = useRef<HTMLInputElement>(null)
   const {
     getItemProps,
     getMenuProps,
@@ -39,24 +42,27 @@ export const Select: React.FC<SelectBaseProps> = ({
     },
   })
 
+  const { onInputFocusHandler, onInputMouseDownHandler } = useMenuVisibility(
+    isOpen,
+    openMenu,
+    toggleMenu
+  )
+
+  const { onMenuKeyDownHandler } = useSelectMenu(inputRef)
+
   return (
     <SelectLayout
       hasSelectedItem={!!selectedItem}
       id={id}
       inputProps={{
-        onFocus: () => {
-          if (!isOpen) {
-            openMenu()
-          }
-        },
-        onMouseDown: (e: React.MouseEvent) => {
-          toggleMenu()
-          e.stopPropagation()
-          e.preventDefault()
-        },
+        onFocus: onInputFocusHandler,
+        onMouseDown: onInputMouseDownHandler,
+        ref: inputRef,
       }}
       isOpen={isOpen}
-      menuProps={getMenuProps()}
+      menuProps={getMenuProps({
+        onKeyDown: onMenuKeyDownHandler,
+      })}
       onClearButtonClick={() => {
         reset()
       }}

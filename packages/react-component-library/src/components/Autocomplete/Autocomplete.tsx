@@ -11,8 +11,9 @@ import {
 import { NoResults } from './NoResults'
 import { useHighlightedIndex } from './hooks/useHighlightedIndex'
 import { useAutocomplete } from './hooks/useAutocomplete'
-import { useMenuVisibility } from './hooks/useMenuVisibility'
+import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useExternalId } from '../../hooks/useExternalId'
+import { useToggleButton } from './hooks/useToggleButton'
 
 export interface AutocompleteProps extends SelectBaseProps {
   /**
@@ -32,6 +33,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 }) => {
   const { hasError, inputRef, items, onInputValueChange, onIsOpenChange } =
     useAutocomplete(React.Children.toArray(children), isInvalid)
+  const {
+    buttonRef,
+    focusToggleButton,
+    onInputEscapeKeyHandler,
+    onToggleButtonKeyDownHandler,
+  } = useToggleButton(inputRef)
   const id = useExternalId('autocomplete', externalId)
 
   const {
@@ -59,10 +66,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       if (onChange) {
         onChange(React.isValidElement(newItem) ? newItem.props.value : null)
       }
+
+      focusToggleButton()
     },
   })
 
-  const { onInputBlurHandler, onInputKeyDownHandler } = useHighlightedIndex(
+  const { onInputBlurHandler, onInputTabKeyHandler } = useHighlightedIndex(
     highlightedIndex,
     inputValue,
     isOpen,
@@ -85,7 +94,10 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       inputProps={getInputProps({
         onBlur: onInputBlurHandler,
         onFocus: onInputFocusHandler,
-        onKeyDown: onInputKeyDownHandler,
+        onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
+          onInputTabKeyHandler(e)
+          onInputEscapeKeyHandler(e)
+        },
         onMouseDown: onInputMouseDownHandler,
         ref: inputRef,
       })}
@@ -96,7 +108,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       onClearButtonClick={() => {
         reset()
       }}
-      toggleButtonProps={getToggleButtonProps()}
+      toggleButtonProps={getToggleButtonProps({
+        onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => {
+          onToggleButtonKeyDownHandler(e)
+        },
+        ref: buttonRef,
+      })}
       value={selectedItem ? itemToString(selectedItem) : ''}
       {...rest}
     >

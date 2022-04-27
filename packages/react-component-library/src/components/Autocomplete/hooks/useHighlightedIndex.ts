@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
+
 import { findIndexOfInputValue } from '../helpers'
 import { SelectChildWithStringType } from '../../SelectBase'
 
@@ -11,7 +12,7 @@ export function useHighlightedIndex(
   setInputValue: (value: string) => void
 ): {
   onInputBlurHandler: () => void
-  onInputKeyDownHandler: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  onInputTabKeyHandler: (e: React.KeyboardEvent<HTMLInputElement>) => void
 } {
   useEffect(() => {
     if (inputValue && highlightedIndex < 0) {
@@ -32,9 +33,9 @@ export function useHighlightedIndex(
     setHighlightedIndex,
   ])
 
-  const onInputKeyDownHandler = useCallback(
+  const onInputTabKeyHandler = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.code === 'Tab' && highlightedIndex !== -1) {
+      if (e.key === 'Tab' && highlightedIndex !== -1) {
         const item = React.Children.toArray(items)[highlightedIndex]
         if (React.isValidElement(item)) {
           setInputValue(item.props.children)
@@ -46,6 +47,6 @@ export function useHighlightedIndex(
 
   return {
     onInputBlurHandler,
-    onInputKeyDownHandler,
+    onInputTabKeyHandler,
   }
 }
