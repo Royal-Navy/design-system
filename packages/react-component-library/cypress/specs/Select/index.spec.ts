@@ -1,4 +1,5 @@
-import { describe, cy, it, before } from 'local-cypress'
+/// <reference types="cypress-plugin-tab/src" />
+import { describe, cy, it, before, beforeEach } from 'local-cypress'
 
 import selectors from '../../selectors'
 
@@ -37,6 +38,16 @@ describe('Select', () => {
         it('displays a tooltip', () => {
           cy.get(selectors.select.tooltip).should('be.visible')
         })
+      })
+    })
+
+    describe('and the user tabs out', () => {
+      beforeEach(() => {
+        cy.get(selectors.select.input).tab()
+      })
+
+      it.skip('focuses the toggle button', () => {
+        cy.get(selectors.select.toggleButton).should('have.focus')
       })
     })
   })

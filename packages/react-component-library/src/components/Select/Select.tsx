@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useSelect } from 'downshift'
 
 import {
@@ -8,8 +8,9 @@ import {
   SelectChildWithStringType,
   SelectLayout,
 } from '../SelectBase'
-import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useExternalId } from '../../hooks/useExternalId'
+import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
+import { useSelectMenu } from './hooks/useSelectMenu'
 
 export const Select: React.FC<SelectBaseProps> = ({
   children,
@@ -19,6 +20,7 @@ export const Select: React.FC<SelectBaseProps> = ({
   ...rest
 }) => {
   const id = useExternalId('select', externalId)
+  const inputRef = useRef<HTMLInputElement>(null)
   const {
     getItemProps,
     getMenuProps,
@@ -46,6 +48,8 @@ export const Select: React.FC<SelectBaseProps> = ({
     toggleMenu
   )
 
+  const { onMenuKeyDownHandler } = useSelectMenu(inputRef)
+
   return (
     <SelectLayout
       hasSelectedItem={!!selectedItem}
@@ -53,9 +57,12 @@ export const Select: React.FC<SelectBaseProps> = ({
       inputProps={{
         onFocus: onInputFocusHandler,
         onMouseDown: onInputMouseDownHandler,
+        ref: inputRef,
       }}
       isOpen={isOpen}
-      menuProps={getMenuProps()}
+      menuProps={getMenuProps({
+        onKeyDown: onMenuKeyDownHandler,
+      })}
       onClearButtonClick={() => {
         reset()
       }}
