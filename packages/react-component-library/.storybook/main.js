@@ -20,4 +20,7 @@ module.exports = {
     ${process.env.NETLIFY ? newRelic.script : ''}
   `,
   stories: ['../src/**/*.stories.tsx'],
+  reactOptions: {
+    strictMode: process.env.REACT_STRICT_MODE === '1',
+  },
 }

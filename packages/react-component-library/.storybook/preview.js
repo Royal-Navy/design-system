@@ -58,11 +58,6 @@ export const parameters = {
 }
 
 export const decorators = [
-  (Story) => (
-    <React.StrictMode>
-      <GlobalStyleProvider>
-        <Story />
-      </GlobalStyleProvider>
-    </React.StrictMode>
-  ),
+  // https://github.com/storybookjs/storybook/issues/15223#issuecomment-1092837912
+  (Story) => <GlobalStyleProvider>{Story()}</GlobalStyleProvider>,
 ]
