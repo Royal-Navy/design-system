@@ -35,7 +35,7 @@ export function useHighlightedIndex(
 
   const onInputTabKeyHandler = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.code === 'Tab' && highlightedIndex !== -1) {
+      if (e.key === 'Tab' && highlightedIndex !== -1) {
         const item = React.Children.toArray(items)[highlightedIndex]
         if (React.isValidElement(item)) {
           setInputValue(item.props.children)

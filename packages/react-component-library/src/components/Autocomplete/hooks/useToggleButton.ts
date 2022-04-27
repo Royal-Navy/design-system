@@ -16,7 +16,7 @@ export function useToggleButton(inputRef: React.RefObject<HTMLInputElement>): {
 
   const onInputEscapeKeyHandler = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.code === 'Escape') {
+      if (e.key === 'Escape') {
         buttonRef.current?.focus()
       }
     },
@@ -25,7 +25,7 @@ export function useToggleButton(inputRef: React.RefObject<HTMLInputElement>): {
 
   const onToggleButtonKeyDownHandler = useCallback(
     (e: React.KeyboardEvent<HTMLButtonElement>) => {
-      if (e.code === 'ArrowDown') {
+      if (e.key === 'ArrowDown') {
         inputRef.current?.focus()
       }
     },
