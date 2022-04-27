@@ -1,3 +1,4 @@
+import React from 'react'
 import '@defencedigital/fonts'
 import 'iframe-resizer/js/iframeResizer.contentWindow'
 import { ResizeObserver } from '@juggle/resize-observer'
@@ -57,9 +58,6 @@ export const parameters = {
 }
 
 export const decorators = [
-  (Story) => (
-    <GlobalStyleProvider>
-      <Story />
-    </GlobalStyleProvider>
-  ),
+  // https://github.com/storybookjs/storybook/issues/15223#issuecomment-1092837912
+  (Story) => <GlobalStyleProvider>{Story()}</GlobalStyleProvider>,
 ]
