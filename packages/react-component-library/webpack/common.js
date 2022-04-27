@@ -1,15 +1,20 @@
-// shared config (dev and prod)
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { resolve } = require('path')
 
 module.exports = {
   target: 'node',
   entry: ['./index.ts'],
-  externals: {
-    'styled-components': {
-      commonjs: 'styled-components',
-      commonjs2: 'styled-components',
-      amd: 'styled-components',
+  output: {
+    filename: 'index.js',
+    path: resolve(__dirname, '../dist/cjs'),
+    library: {
+      type: 'commonjs2',
     },
+  },
+  externals: {
+    react: 'react',
+    'react-dom': 'react-dom',
+    'styled-components': 'styled-components',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -28,8 +33,8 @@ module.exports = {
       },
     ],
   },
-
   performance: {
     hints: false,
   },
+  plugins: [new CleanWebpackPlugin()],
 }
