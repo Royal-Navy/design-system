@@ -163,7 +163,7 @@ describe('Dropdown', () => {
   describe('when onChange is omitted and the dropdown is clicked', () => {
     beforeEach(() => {
       wrapper = render(<Dropdown options={options} label="Dropdown label" />)
-      userEvent.click(wrapper.getByRole('textbox'))
+      return userEvent.click(wrapper.getByRole('textbox'))
     })
 
     it('does not throw an error when an option is clicked', () => {

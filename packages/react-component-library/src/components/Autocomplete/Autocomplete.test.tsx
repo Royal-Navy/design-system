@@ -81,7 +81,7 @@ describe('Autocomplete', () => {
 
     describe('when the arrow button is clicked', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('select-arrow-button'))
+        return userEvent.click(wrapper.getByTestId('select-arrow-button'))
       })
 
       it('renders the label smaller', () => {
@@ -106,7 +106,7 @@ describe('Autocomplete', () => {
 
       describe('and the second item is clicked', () => {
         beforeEach(() => {
-          userEvent.click(wrapper.getByText('Two'))
+          return userEvent.click(wrapper.getByText('Two'))
         })
 
         it('hides the items', () => {
@@ -132,7 +132,7 @@ describe('Autocomplete', () => {
 
         describe('and the clear button is clicked', () => {
           beforeEach(() => {
-            userEvent.click(wrapper.getByTestId('select-clear-button'))
+            return userEvent.click(wrapper.getByTestId('select-clear-button'))
           })
 
           it('resets the value', () => {
@@ -148,7 +148,7 @@ describe('Autocomplete', () => {
 
     describe('when tabbing to the input', () => {
       beforeEach(() => {
-        userEvent.tab()
+        return userEvent.tab()
       })
 
       it('shows the items', () => {
@@ -158,7 +158,7 @@ describe('Autocomplete', () => {
 
     describe('when clicking on the input', () => {
       beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('select-input'))
+        return userEvent.click(wrapper.getByTestId('select-input'))
       })
 
       it('shows the items', () => {
@@ -177,7 +177,7 @@ describe('Autocomplete', () => {
         </Autocomplete>
       )
       initialId = wrapper.getByTestId('select-input').id
-      userEvent.click(wrapper.getByTestId('select-arrow-button'))
+      return userEvent.click(wrapper.getByTestId('select-arrow-button'))
     })
 
     it('does not generate a new `id`', () => {

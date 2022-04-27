@@ -2,7 +2,6 @@
 import React, { useCallback, useState } from 'react'
 
 import { OnChangeEventType } from './types'
-import { RETURN } from '../../utils/keyCodes'
 
 export const usePageChange = (
   initialPage: number,
@@ -45,7 +44,7 @@ export const usePageChange = (
   function onKeyDown(event: React.KeyboardEvent) {
     setHasError(false)
 
-    if (event.keyCode === RETURN) {
+    if (event.key === 'Enter') {
       const { value } = event.target as HTMLInputElement
 
       if (!Number.isNaN(value)) {

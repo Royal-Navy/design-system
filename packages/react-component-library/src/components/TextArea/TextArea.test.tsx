@@ -116,7 +116,7 @@ describe('TextArea', () => {
       wrapper = render(<TextArea label="label" name="name" />)
       const input = wrapper.getByTestId('textarea-input')
       initialId = input.id
-      userEvent.type(input, 'some text')
+      return userEvent.type(input, 'some text')
     })
 
     it('does not generate a new `id`', () => {

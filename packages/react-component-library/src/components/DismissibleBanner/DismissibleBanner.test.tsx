@@ -127,7 +127,7 @@ describe('DismissibleBanner', () => {
 
     it('does not throw an error when the dismiss button is clicked', () => {
       expect(() => {
-        userEvent.click(wrapper.getByTestId('dimissiblebanner-dismiss'))
+        return userEvent.click(wrapper.getByTestId('dimissiblebanner-dismiss'))
       }).not.toThrowError()
     })
   })

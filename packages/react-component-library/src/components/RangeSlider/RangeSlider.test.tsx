@@ -95,8 +95,8 @@ describe('RangeSlider', () => {
     })
 
     describe('and the end user moves the handle to the right using keyboard', () => {
-      beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('rangeslider-handle'))
+      beforeEach(async () => {
+        await userEvent.click(wrapper.getByTestId('rangeslider-handle'))
 
         fireEvent.keyDown(wrapper.getByTestId('rangeslider-handle'), {
           key: 'ArrowRight',
@@ -189,8 +189,8 @@ describe('RangeSlider', () => {
     })
 
     describe('and the user attempts to move the slider', () => {
-      beforeEach(() => {
-        userEvent.click(wrapper.getByTestId('rangeslider-handle'))
+      beforeEach(async () => {
+        await userEvent.click(wrapper.getByTestId('rangeslider-handle'))
 
         fireEvent.keyDown(wrapper.getByTestId('rangeslider-handle'), {
           key: 'ArrowRight',

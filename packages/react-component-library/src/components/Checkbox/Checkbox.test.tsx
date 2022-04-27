@@ -66,7 +66,7 @@ describe('Checkbox', () => {
 
     describe('and tab is pressed', () => {
       beforeEach(() => {
-        userEvent.tab()
+        return userEvent.tab()
       })
 
       it('focuses the input', () => {
@@ -75,7 +75,7 @@ describe('Checkbox', () => {
 
       describe('and space is pressed', () => {
         beforeEach(() => {
-          userEvent.keyboard('[Space]')
+          return userEvent.keyboard('[Space]')
         })
 
         it('checks the input', () => {
@@ -89,7 +89,7 @@ describe('Checkbox', () => {
         describe('and space is pressed again', () => {
           beforeEach(() => {
             onChangeSpy.mockReset()
-            userEvent.keyboard('[Space]')
+            return userEvent.keyboard('[Space]')
           })
 
           it('unchecks the input', () => {
@@ -172,7 +172,7 @@ describe('Checkbox', () => {
 
     describe('and the button is clicked, changing the `isChecked` state', () => {
       beforeEach(() => {
-        userEvent.click(checkbox.getByTestId('change-checked-state'))
+        return userEvent.click(checkbox.getByTestId('change-checked-state'))
       })
 
       it('should uncheck the checkbox', () => {
@@ -308,7 +308,7 @@ describe('Checkbox', () => {
       checkbox = render(<Checkbox label="label" name="name" />)
       const input = checkbox.getByTestId('checkbox-input')
       initialId = input.id
-      userEvent.click(checkbox.getByTestId('checkbox'))
+      return userEvent.click(checkbox.getByTestId('checkbox'))
     })
 
     it('does not generate a new `id`', () => {

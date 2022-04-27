@@ -2,7 +2,6 @@ import React, { Children, KeyboardEvent, MouseEvent, useState } from 'react'
 import { IconChevronLeft, IconChevronRight } from '@defencedigital/icon-library'
 import { v4 as uuidv4 } from 'uuid'
 
-import { ARROW_LEFT, ARROW_RIGHT } from '../../utils/keyCodes'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { SCROLL_DIRECTION } from './constants'
 import { StyledBody } from './partials/StyledBody'
@@ -95,19 +94,14 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
-    const { which } = event
-
-    const getNextIndex = (keyCode: number): number => {
-      const index = {
-        [ARROW_LEFT]: activeTab === 0 ? children.length - 1 : activeTab - 1,
-        [ARROW_RIGHT]: activeTab === children.length - 1 ? 0 : activeTab + 1,
-      }
-
-      return index[keyCode]
+    const keyMap = {
+      ArrowLeft: activeTab === 0 ? children.length - 1 : activeTab - 1,
+      ArrowRight: activeTab === children.length - 1 ? 0 : activeTab + 1,
     }
+    const { key } = event
 
-    if ([ARROW_LEFT, ARROW_RIGHT].includes(which)) {
-      const index = getNextIndex(which)
+    if (key in keyMap) {
+      const index = keyMap[key]
       handleClick(event, index)
     }
   }

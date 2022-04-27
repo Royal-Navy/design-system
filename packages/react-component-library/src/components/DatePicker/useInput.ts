@@ -1,7 +1,6 @@
 import { addHours, isValid, parse } from 'date-fns'
 import React, { useCallback } from 'react'
 
-import { RETURN } from '../../utils/keyCodes'
 import { DATEPICKER_ACTION, DatePickerAction } from './types'
 
 function parseDate(datePickerFormat: string, value: string) {
@@ -26,7 +25,7 @@ export function useInput(
 ) {
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
-      if (isRange || event.keyCode !== RETURN) {
+      if (isRange || event.key !== 'Enter') {
         return
       }
 

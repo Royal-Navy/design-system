@@ -1,7 +1,8 @@
+import { selectors } from '@defencedigital/design-tokens'
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
-import { selectors } from '@defencedigital/design-tokens'
+import userEvent from '@testing-library/user-event'
 
 import { TabSet, TabSetItem } from '.'
 
@@ -146,7 +147,7 @@ describe('TabSet', () => {
 
       describe('when the user clicks on a tab', () => {
         beforeEach(() => {
-          wrapper.getAllByText('Title 2')[0].click()
+          return userEvent.click(wrapper.getAllByText('Title 2')[0])
         })
 
         it('should display the tab as active', () => {
@@ -189,10 +190,7 @@ describe('TabSet', () => {
 
         describe('and the user presses the left arrow key', () => {
           beforeEach(() => {
-            fireEvent.keyDown(wrapper.getAllByTestId('tab-set-tab-button')[0], {
-              key: 'ArrowLeft',
-              keyCode: 37,
-            })
+            return userEvent.keyboard('[ArrowLeft]')
           })
 
           it('sets the previous tab to active', () => {
@@ -205,13 +203,7 @@ describe('TabSet', () => {
 
           describe('and the user presses the right arrow key', () => {
             beforeEach(() => {
-              fireEvent.keyDown(
-                wrapper.getAllByTestId('tab-set-tab-button')[1],
-                {
-                  key: 'ArrowRight',
-                  keyCode: 39,
-                }
-              )
+              return userEvent.keyboard('[ArrowRight]')
             })
 
             it('sets the next tab to active', () => {
@@ -238,7 +230,7 @@ describe('TabSet', () => {
 
       describe('when the user clicks on a tab', () => {
         beforeEach(() => {
-          wrapper.getAllByText('Title 2')[0].click()
+          return userEvent.click(wrapper.getAllByText('Title 2')[0])
         })
 
         it('should make the appropriate tab active', () => {
@@ -278,7 +270,7 @@ describe('TabSet', () => {
 
       describe('when the user clicks on a tab', () => {
         beforeEach(() => {
-          wrapper.getAllByText('Title 1')[0].click()
+          return userEvent.click(wrapper.getAllByText('Title 1')[0])
         })
 
         it('should make the appropriate tab active', () => {
