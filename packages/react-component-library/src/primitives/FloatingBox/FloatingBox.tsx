@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Placement } from '@popperjs/core'
 import { Transition } from 'react-transition-group'
+import mergeRefs from 'react-merge-refs'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { FloatingBoxContent } from './FloatingBoxContent'
@@ -70,6 +71,7 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
   role = 'dialog',
   ...rest
 }) => {
+  const nodeRef = useRef(null)
   const contentId = useExternalId('floating-box', externalContentId)
   const {
     targetElementRef,
@@ -89,11 +91,11 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
           {renderTarget}
         </StyledTarget>
       )}
-      <Transition in={isVisible} timeout={0} unmountOnExit>
+      <Transition nodeRef={nodeRef} in={isVisible} timeout={0} unmountOnExit>
         {(state) => (
           <StyledFloatingBox
             style={{ ...styles.popper, ...TRANSITION_STYLES[state] }}
-            ref={floatingElementRef}
+            ref={mergeRefs([nodeRef, floatingElementRef])}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
             role={role}
