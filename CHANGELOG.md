@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.8.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.7.5...3.8.0) (2022-04-28)
+
+
+### Bug Fixes
+
+* **FloatingBox:** Resolve strict mode transition warning ([b63c57c](https://github.com/defencedigital/mod-uk-design-system/commit/b63c57cf5e7c9ee1aa06153428ac31648f3d1a07))
+* **Select:** Escape trapped focus ([5eab040](https://github.com/defencedigital/mod-uk-design-system/commit/5eab040d5d7625194d57c25094682b7d3fac0fb6))
+
+
+### Features
+
+* **Autocomplete:** Focus toggle button ([381a3a1](https://github.com/defencedigital/mod-uk-design-system/commit/381a3a1077a056ce87eee5949e7dc1ae6fdf663d))
+
+
+
+
+
 ## [3.7.5](https://github.com/defencedigital/mod-uk-design-system/compare/3.7.4...3.7.5) (2022-04-25)
 
 
