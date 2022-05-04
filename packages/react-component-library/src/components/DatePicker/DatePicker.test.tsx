@@ -614,7 +614,7 @@ describe('DatePicker', () => {
       beforeEach(async () => {
         await user.tab({ shift: true })
         await user.tab({ shift: true })
-      }, 10_000)
+      })
 
       it('traps the focus within the picker', () => {
         expect(wrapper.getByText('1')).toHaveFocus()
