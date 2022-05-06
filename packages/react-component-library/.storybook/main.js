@@ -11,6 +11,7 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-controls',
     '@storybook/addon-actions',
+    'storybook-addon-performance/dist/cjs/register',
   ],
   core: {
     builder: 'webpack5',
