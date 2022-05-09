@@ -61,7 +61,7 @@ export const StyledCheckbox = styled.div<CheckboxRootProps>`
       ${$hasContainer &&
       css`
         background-color: ${color('neutral', '000')};
-      `};
+      `}
 
       &:focus,
       &:active {

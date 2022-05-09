@@ -46,7 +46,7 @@ export const StyledSwitch = styled.div<StyledSwitchProps>`
           }
         }
       }
-    `};
+    `}
 
   ${({ $isDisabled }) =>
     $isDisabled &&
