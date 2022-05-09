@@ -21,7 +21,7 @@ function removeAutoFillBackground() {
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
-      -webkit-transition: background-color 9999s ease-out;
+      transition: background-color 9999s ease-out;
     }
 
     filter: none; // Firefox
