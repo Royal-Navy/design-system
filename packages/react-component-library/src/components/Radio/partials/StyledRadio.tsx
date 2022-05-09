@@ -24,7 +24,7 @@ const BackgroundColor = css<CheckboxRootProps>`
     }
 
     return color('neutral', 'white')
-  }}}
+  }}
 `
 
 const CheckmarkBackgroundColor = css<CheckboxRootProps>`
