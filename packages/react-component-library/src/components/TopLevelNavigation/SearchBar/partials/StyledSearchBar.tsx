@@ -4,7 +4,7 @@ import { selectors } from '@defencedigital/design-tokens'
 const { zIndex, mq, fontSize } = selectors
 
 export const StyledSearchBar = styled.div`
-  z-index: ${zIndex('dropdown', 1)}
+  z-index: ${zIndex('dropdown', 1)};
   display: block;
   margin-top: -1px;
   position: absolute;
