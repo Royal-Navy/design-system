@@ -9,7 +9,7 @@ import { DropdownLabel } from './DropdownLabel'
 import { DropdownOption } from './DropdownOption'
 import { DropdownPlaceholder } from './DropdownPlaceholder'
 
-const { color, spacing } = selectors
+const { color, shadow, spacing } = selectors
 
 export interface DropdownProps {
   /**
@@ -71,7 +71,7 @@ const StyledSelect = styled(Select)`
   }
 
   .rn-dropdown__menu {
-    @include m.shadow('1');
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
     top: 102%;
     margin: ${spacing('6')} 0 0 5%;
     width: 95%;
