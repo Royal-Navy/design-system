@@ -27,7 +27,7 @@ export const StyledMarker = styled.div<StyledMarkerProps>`
     $isActive &&
     css`
       background-color: ${RANGE_SLIDER_TRACK_BELOW_FIRST_THRESHOLD};
-    `};
+    `}
 
   ${({ $thresholdColor }) =>
     $thresholdColor &&
@@ -40,5 +40,5 @@ export const StyledMarker = styled.div<StyledMarkerProps>`
     $thresholdColor &&
     css`
       background-color: ${$thresholdColor};
-    `};
+    `}
 `

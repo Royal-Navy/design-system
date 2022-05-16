@@ -4,12 +4,10 @@ import { selectors } from '@defencedigital/design-tokens'
 const { color, fontSize, spacing } = selectors
 
 export const StyledToastLabel = styled.span`
-  display: inline-flex;
-  align-items: center;
+  display: block;
   color: ${color('neutral', '500')};
   font-size: ${fontSize('m')};
   font-weight: 600;
-  display: block;
   padding: 0;
 
   > svg {

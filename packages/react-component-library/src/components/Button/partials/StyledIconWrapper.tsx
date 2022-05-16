@@ -35,5 +35,5 @@ export const StyledIconWrapper = styled.span<StyledIconWrapperProps>`
       margin-right: ${$iconPosition === BUTTON_ICON_POSITION.LEFT
         ? spacing('5')
         : '0'};
-    `};
+    `}
 `

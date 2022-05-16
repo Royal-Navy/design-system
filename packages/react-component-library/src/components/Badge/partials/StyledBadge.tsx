@@ -218,7 +218,7 @@ export const StyledBadge = styled.span<StyledBadgeProps>`
 
   ${({ $color, $colorVariant, $size, $variant }) => css`
     ${StyledBadgeSizeMap[$size]}
-    ${StyledBadgeColorVariantMap[$color][$colorVariant]}}
+    ${StyledBadgeColorVariantMap[$color][$colorVariant]}
     ${$variant === BADGE_VARIANT.PILL && StyledBadgePillMap[$size]}
   `}
 `

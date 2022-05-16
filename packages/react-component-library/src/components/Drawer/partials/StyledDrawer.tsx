@@ -13,7 +13,7 @@ export const StyledDrawer = styled.div<StyledDrawerProps>`
   right: 0;
   width: 280px;
   height: 100%;
-  @include ${zIndex('overlay', 1)};
+  z-index: ${zIndex('overlay', 1)};
   overflow: hidden;
   background-color: ${color('neutral', 'white')};
   box-shadow: inset 1px 0px 0px 0px rgb(226, 233, 238),
