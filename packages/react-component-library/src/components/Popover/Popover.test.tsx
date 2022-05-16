@@ -30,7 +30,7 @@ describe('Popover', () => {
 
       wrapper = render(
         <>
-          <Popover content={content}>
+          <Popover content={content} aria-label="Hello, World!">
             <div
               style={{
                 display: 'inline-block',
@@ -60,6 +60,13 @@ describe('Popover', () => {
 
       afterEach(() => {
         jest.clearAllTimers()
+      })
+
+      it('should set the `aria-label` attribute to the supplied value', () => {
+        expect(wrapper.getByTestId('popover')).toHaveAttribute(
+          'aria-label',
+          'Hello, World!'
+        )
       })
 
       it('should set the `aria-describedby` attribute to the ID of the content', () => {
@@ -127,6 +134,13 @@ describe('Popover', () => {
         return waitFor(() => {
           expect(wrapper.getByTestId('floating-box-content')).toBeVisible()
         })
+      })
+
+      it('should set the `aria-label` attribute to the defualt value', () => {
+        expect(wrapper.getByTestId('popover')).toHaveAttribute(
+          'aria-label',
+          'Popover'
+        )
       })
 
       describe('and the user clicks on the target again', () => {

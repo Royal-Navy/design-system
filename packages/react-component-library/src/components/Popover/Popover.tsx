@@ -50,6 +50,7 @@ export const Popover: React.FC<PopoverProps> = ({
   isClick = false,
   scheme = FLOATING_BOX_SCHEME.LIGHT,
   placement = FLOATING_BOX_PLACEMENT.RIGHT,
+  'aria-label': ariaLabel,
   ...rest
 }) => {
   const { floatingBoxChildrenRef, isVisible, mouseEvents } = useHideShow(
@@ -73,6 +74,7 @@ export const Popover: React.FC<PopoverProps> = ({
       renderTarget={<PopoverTarget />}
       scheme={scheme}
       aria-describedby={contentId}
+      aria-label={ariaLabel || 'Popover'}
       contentId={contentId}
       data-testid="popover"
       placement={placement}
