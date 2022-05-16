@@ -3,14 +3,17 @@ import { before, cy, describe, it } from 'local-cypress'
 import selectors from '../../selectors'
 
 // https://github.com/storybookjs/storybook/issues/8928
+// https://github.com/storybookjs/storybook/issues/18232
 
 describe('ContextMenu', () => {
-  describe('Storybook: Docs Mode', () => {
+  describe.skip('Storybook: Docs Mode', () => {
     describe('the user opens the menu', () => {
       before(() => {
-        cy.visit('/iframe.html?id=context-menu--default&viewMode=docs')
+        cy.visit('/iframe.html?viewMode=docs&id=context-menu--default')
 
-        cy.get(selectors.contextMenu.target).eq(0).rightclick()
+        cy.get(selectors.contextMenu.target)
+          .eq(0)
+          .rightclick({ scrollBehavior: false })
       })
 
       it('should show the Context Menu unobscured', () => {

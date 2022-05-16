@@ -2,6 +2,7 @@ import React from 'react'
 import '@defencedigital/fonts'
 import 'iframe-resizer/js/iframeResizer.contentWindow'
 import { ResizeObserver } from '@juggle/resize-observer'
+import { withPerformance } from 'storybook-addon-performance/dist/cjs'
 
 import { GlobalStyleProvider } from '../src/styled-components/GlobalStyle'
 
@@ -60,4 +61,5 @@ export const parameters = {
 export const decorators = [
   // https://github.com/storybookjs/storybook/issues/15223#issuecomment-1092837912
   (Story) => <GlobalStyleProvider>{Story()}</GlobalStyleProvider>,
+  withPerformance,
 ]
