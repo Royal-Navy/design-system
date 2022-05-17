@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.9.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.8.2...3.9.0) (2022-05-17)
+
+
+### Bug Fixes
+
+* **Drawer:** Correct z-index CSS rule ([7e81018](https://github.com/defencedigital/mod-uk-design-system/commit/7e81018ef8d3d4d9e3f2f62ba316458eff6d8f29))
+* **Dropdown:** Correct box-shadow CSS rule ([d596aae](https://github.com/defencedigital/mod-uk-design-system/commit/d596aaeca6472d22d9af4779cfae9ec25aefdd72))
+* **Masthead:** Correct search bar z-index ([1c080b5](https://github.com/defencedigital/mod-uk-design-system/commit/1c080b5ad1351b5a7ade10f9ff17af39e3c43806))
+* **Masthead:** Remove broken search box input font-size rules ([ea15bc9](https://github.com/defencedigital/mod-uk-design-system/commit/ea15bc906043fbe16ca08a70bd3ae7d213b18773))
+* **Popover:** Apply missing `aria-label` attribute ([6ad3162](https://github.com/defencedigital/mod-uk-design-system/commit/6ad31628f52a7773adab1fb8aa67286fe02b07f2))
+
+
+### Features
+
+* **Storybook:** Add performance addon ([af655ea](https://github.com/defencedigital/mod-uk-design-system/commit/af655eab841086788fe36db8a7c168467b138f44))
+
+
+
+
+
 ## [3.8.2](https://github.com/defencedigital/mod-uk-design-system/compare/3.8.1...3.8.2) (2022-05-09)
 
 **Note:** Version bump only for package @defencedigital/react-component-library

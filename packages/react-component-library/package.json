@@ -1,7 +1,7 @@
 {
   "name": "@defencedigital/react-component-library",
   "description": "A collection of react components and helpers to assist in building applications for the Defence Digital",
-  "version": "3.8.2",
+  "version": "3.9.0",
   "publishConfig": {
     "access": "public"
   },
@@ -62,7 +62,7 @@
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
-    "@defencedigital/eslint-config-react": "^3.8.2",
+    "@defencedigital/eslint-config-react": "^3.9.0",
     "@juggle/resize-observer": "^3.3.1",
     "@storybook/addon-a11y": "^6.5.0-beta.6",
     "@storybook/addon-actions": "^6.5.0-beta.6",
@@ -74,8 +74,8 @@
     "@storybook/builder-webpack5": "^6.5.0-beta.6",
     "@storybook/manager-webpack5": "^6.5.0-beta.6",
     "@storybook/react": "^6.5.0-beta.6",
-    "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/dom": "^8.0.0",
+    "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.0.0",
     "@testing-library/react-hooks": "^7.0.0",
     "@testing-library/user-event": "^14.1.1",
@@ -143,9 +143,9 @@
     "dist"
   ],
   "dependencies": {
-    "@defencedigital/design-tokens": "^3.8.2",
-    "@defencedigital/fonts": "^3.8.2",
-    "@defencedigital/icon-library": "^3.8.2",
+    "@defencedigital/design-tokens": "^3.9.0",
+    "@defencedigital/fonts": "^3.9.0",
+    "@defencedigital/icon-library": "^3.9.0",
     "@popperjs/core": "^2.9.2",
     "@types/react-toast-notifications": "^2.4.0",
     "classnames": "^2.2.6",
