@@ -30,7 +30,6 @@ export const Select: React.FC<SelectBaseProps> = ({
     openMenu,
     reset,
     selectedItem,
-    toggleMenu,
   } = useSelect<SelectChildWithStringType>({
     itemToString,
     initialSelectedItem: initialSelectedItem(children, value),
@@ -42,11 +41,7 @@ export const Select: React.FC<SelectBaseProps> = ({
     },
   })
 
-  const { onInputFocusHandler, onInputMouseDownHandler } = useMenuVisibility(
-    isOpen,
-    openMenu,
-    toggleMenu
-  )
+  const { onInputFocusHandler } = useMenuVisibility(isOpen, openMenu)
 
   const { onMenuKeyDownHandler } = useSelectMenu(inputRef)
 
@@ -56,7 +51,6 @@ export const Select: React.FC<SelectBaseProps> = ({
       id={id}
       inputProps={{
         onFocus: onInputFocusHandler,
-        onMouseDown: onInputMouseDownHandler,
         ref: inputRef,
       }}
       isOpen={isOpen}

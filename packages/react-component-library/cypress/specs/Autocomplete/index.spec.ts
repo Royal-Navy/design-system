@@ -83,6 +83,18 @@ describe('Autocomplete', () => {
               .should('have.css', 'background-color', hexToRgb(ColorNeutral100))
           })
         })
+
+        describe.skip('and the text is clicked in the middle', () => {
+          beforeEach(() => {
+            cy.get(selectors.select.input)
+              .click('bottomLeft', { force: true })
+              .type('more')
+          })
+
+          it('should set the text input correctly', () => {
+            cy.get(selectors.select.input).should('have.value', 'moreThree')
+          })
+        })
       })
 
       describe('and the user tabs out', () => {
