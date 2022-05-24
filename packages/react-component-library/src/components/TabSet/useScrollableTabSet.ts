@@ -1,24 +1,30 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import useResizeObserver from 'use-resize-observer'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { TabSetItemProps } from './TabSetItem'
 
 export function useScrollableTabSet(
   items: React.ReactElement<TabSetItemProps>[]
 ) {
-  const [currentScrollToTab, setCurrentScrollToTab] = useState(0)
+  const currentScrollToTab = useRef(0)
   const itemsRef = useRef<Array<HTMLLIElement | null>>([])
   const tabsRef = useRef<HTMLDivElement>(null)
+  const [lastTabsWidth, setLastTabsWidth] = useState<number>()
 
   useEffect(() => {
     itemsRef.current = itemsRef.current.slice(0, items.length)
   }, [items])
 
-  const handleResize = useCallback(() => {
+  function checkForResize() {
     const tabs = tabsRef.current
     const firstTabItem = itemsRef.current[0]
 
     if (!tabs || !firstTabItem) {
+      return
+    }
+
+    setLastTabsWidth(tabs.offsetWidth)
+
+    if (lastTabsWidth === tabs.offsetWidth) {
       return
     }
 
@@ -28,19 +34,15 @@ export function useScrollableTabSet(
         tab.offsetLeft + tab.offsetWidth / 2 - firstTabItem.offsetLeft >=
           tabs.scrollLeft
     )
-
-    setCurrentScrollToTab(Math.max(0, newScrollTabIndex))
-  }, [])
-
-  useResizeObserver<HTMLDivElement>({
-    ref: tabsRef,
-    onResize: handleResize,
-  })
+    currentScrollToTab.current = Math.max(0, newScrollTabIndex)
+  }
 
   function scrollToNextTab(change: (currentTab: number) => number) {
     return () => {
+      checkForResize()
+
       const tabs = tabsRef.current
-      const nextTabIndex = change(currentScrollToTab)
+      const nextTabIndex = change(currentScrollToTab.current)
       const nextTabItem = itemsRef.current[nextTabIndex]
       const firstTabItem = itemsRef.current[0]
 
@@ -59,7 +61,7 @@ export function useScrollableTabSet(
       // If this was a scroll to the very right, only update the tab index if
       // we've scrolled more than half a tab
       if (newScrollLeft - nextTabItem.offsetWidth / 2 < maxScrollLeft) {
-        setCurrentScrollToTab(nextTabIndex)
+        currentScrollToTab.current = nextTabIndex
       }
     }
   }
