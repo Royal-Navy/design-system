@@ -177,7 +177,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   const inputId = useExternalId('number-input-input', externalId)
   const isNegativeAllowed = isNil(min) || min < 0
   const { committedValue, setCommittedValue } = useValue(
-    value ? String(value) : null
+    isNil(value) ? null : String(value)
   )
   const { hasFocus, onLocalFocus, onLocalBlur } = useFocus(onBlur)
   const { handleBeforeInput, handlePaste } =

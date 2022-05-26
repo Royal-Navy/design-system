@@ -679,6 +679,17 @@ describe('NumberInput', () => {
     })
   })
 
+  describe.each([
+    { value: null, expected: '' },
+    { value: 0, expected: '0' },
+  ])('when the initial value is `$value`', ({ value, expected }) => {
+    beforeEach(() => {
+      wrapper = render(<NumberInput {...defaultProps} value={value} />)
+    })
+
+    assertInputValue(expected)
+  })
+
   describe('when a CSS class name is specified', () => {
     beforeEach(() => {
       const props = {
