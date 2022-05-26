@@ -1,12 +1,9 @@
 import React from 'react'
 import '@defencedigital/fonts'
 import 'iframe-resizer/js/iframeResizer.contentWindow'
-import { ResizeObserver } from '@juggle/resize-observer'
 import { withPerformance } from 'storybook-addon-performance/dist/cjs'
 
 import { GlobalStyleProvider } from '../src/styled-components/GlobalStyle'
-
-window.ResizeObserver ??= ResizeObserver
 
 /**
  * Hacky way of clicking on Docs button on first load of page.
