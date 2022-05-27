@@ -17,10 +17,9 @@ describe('Select', () => {
       cy.get(selectors.select.option).should('have.length', 4)
     })
 
-    describe('and `th` is typed', () => {
+    describe('and `t` is typed', () => {
       before(() => {
-        cy.get(selectors.select.outerWrapper).type('Th{enter}')
-        cy.get('body').click()
+        cy.get(selectors.select.listBox).type('t{enter}')
       })
 
       it('sets the value as the item', () => {
