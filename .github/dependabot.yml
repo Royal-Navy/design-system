@@ -1,19 +1,15 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: weekly
-  open-pull-requests-limit: 5
-  reviewers:
-  - m7kvqbe1
-  - thyhjwb6
-  labels:
-  - "Type: Dependencies"
-  commit-message:
-    prefix: chore(Security)
-  rebase-strategy: auto
-  ignore:
-    # Newer versions break older browsers, see e.g. https://github.com/juliencrn/usehooks-ts/issues/97
-    - dependency-name: "usehooks-ts"
-      versions: [">2.2.1"]
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    reviewers:
+      - m7kvqbe1
+      - thyhjwb6
+    labels:
+      - 'Type: Dependencies'
+    commit-message:
+      prefix: chore(Security)
+    rebase-strategy: auto

@@ -1,9 +1,8 @@
 import { IconEvent } from '@defencedigital/icon-library'
 import FocusTrap from 'focus-trap-react'
-import React, { useRef } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { Placement } from '@popperjs/core'
 import { DayModifiers, DayPickerProps } from 'react-day-picker'
-import { useBoolean } from 'usehooks-ts'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
@@ -167,7 +166,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   onChange,
   onCalendarFocus,
   startDate: externalStartDate,
-  initialIsOpen,
+  initialIsOpen = false,
   disabledDays,
   initialMonth,
   initialStartDate = null,
@@ -185,11 +184,12 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   const inputRef = useRef<HTMLInputElement>(null)
 
   const { hasFocus, onLocalBlur, onLocalFocus } = useFocus()
-  const {
-    setFalse: close,
-    value: isOpen,
-    toggle: toggleIsOpen,
-  } = useBoolean(initialIsOpen)
+  const [isOpen, setIsOpen] = useState(initialIsOpen)
+  const close = useCallback(() => setIsOpen(false), [])
+  const toggleIsOpen = useCallback(
+    () => setIsOpen((previousIsOpen) => !previousIsOpen),
+    []
+  )
   const focusTrapOptions = useFocusTrapOptions(
     close,
     isRange ? [buttonRef, inputRef] : [buttonRef]

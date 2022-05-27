@@ -165,7 +165,6 @@
     "react-transition-group": "^4.4.1",
     "styled-normalize": "^8.0.7",
     "styled-theming": "^2.2.0",
-    "usehooks-ts": "2.2.1",
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
