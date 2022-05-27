@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import '@defencedigital/fonts'
 import { GlobalStyleProvider } from '@defencedigital/react-component-library'
-import { Redirect, BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { ApolloProvider } from '@apollo/client/react'
 
 import { Home } from './pages'
@@ -13,12 +13,12 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <GlobalStyleProvider>
     <ApolloProvider client={client}>
-      <Router>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-        <Route exact path="/home" component={Home} />
-      </Router>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     </ApolloProvider>
   </GlobalStyleProvider>
 )
