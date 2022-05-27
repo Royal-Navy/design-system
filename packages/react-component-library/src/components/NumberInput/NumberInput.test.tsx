@@ -18,7 +18,10 @@ import { NumberInput } from '.'
 const defaultProps = {
   name: 'number-input',
   onChange: (
-    _: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>
+    _:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.MouseEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLInputElement>
   ) => true,
 }
 
@@ -223,6 +226,24 @@ describe('NumberInput', () => {
 
       assertInputValue('123')
       assertOnChangeCall(123, 3)
+
+      describe('and the user presses the keyboard up arrow', () => {
+        beforeEach(async () => {
+          await userEvent.type(input, '{arrowup}')
+        })
+
+        assertInputValue('124')
+        assertOnChangeCall(124, 4)
+      })
+
+      describe('and the user presses the keyboard down arrow', () => {
+        beforeEach(async () => {
+          await userEvent.type(input, '{arrowdown}')
+        })
+
+        assertInputValue('122')
+        assertOnChangeCall(122, 4)
+      })
     })
 
     describe('and the user types a value with invalid characters', () => {

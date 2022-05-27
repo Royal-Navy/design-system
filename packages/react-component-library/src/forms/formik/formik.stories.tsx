@@ -200,7 +200,8 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
                       onChange={(
                         _:
                           | React.ChangeEvent<HTMLInputElement>
-                          | React.MouseEvent<HTMLButtonElement>,
+                          | React.MouseEvent<HTMLButtonElement>
+                          | React.KeyboardEvent<HTMLInputElement>,
                         newValue: number | null
                       ) => {
                         setFieldValue('exampleNumberInput', newValue)

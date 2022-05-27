@@ -162,7 +162,8 @@ const Example: React.FC<{
             onChange={(
               _:
                 | React.ChangeEvent<HTMLInputElement>
-                | React.MouseEvent<HTMLButtonElement>,
+                | React.MouseEvent<HTMLButtonElement>
+                | React.KeyboardEvent<HTMLInputElement>,
               newValue: number | null
             ) => {
               handleChange({

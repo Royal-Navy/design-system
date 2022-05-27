@@ -79,7 +79,8 @@ interface NumberInputBaseProps
   onChange: (
     event:
       | React.ChangeEvent<HTMLInputElement>
-      | React.MouseEvent<HTMLButtonElement>,
+      | React.MouseEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLInputElement>,
     newValue: number | null
   ) => void
   /**
