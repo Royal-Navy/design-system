@@ -3,6 +3,8 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
 import { selectors, lightTheme } from '@defencedigital/design-tokens'
 
+import { useIsFirstInstance } from '../hooks/useIsFirstInstance'
+
 export interface GlobalStyleContextDefaults {
   theme?: Record<string, any>
 }
@@ -108,6 +110,7 @@ export const GlobalStyleProvider: React.FC<GlobalStyleProviderProps> = ({
   children,
   theme = lightTheme,
 }) => {
+  const isFirstInstance = useIsFirstInstance('GlobalStyleProvider')
   const contextValue = useMemo(
     () => ({
       theme,
@@ -117,10 +120,14 @@ export const GlobalStyleProvider: React.FC<GlobalStyleProviderProps> = ({
 
   return (
     <GlobalStyleContext.Provider value={contextValue}>
-      <Normalize />
-      <BoxSizing />
-      <Hyperlinks />
-      <Fonts />
+      {isFirstInstance && (
+        <>
+          <Normalize />
+          <BoxSizing />
+          <Hyperlinks />
+          <Fonts />
+        </>
+      )}
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </GlobalStyleContext.Provider>
   )
