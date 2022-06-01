@@ -1,5 +1,10 @@
 import { Cypress, cy } from 'local-cypress'
 
+const IGNORED_MESSAGES = [
+  // See https://github.com/storybookjs/storybook/issues/18103
+  'The pseudo class ":first-child" is potentially unsafe when doing server-side rendering. Try changing it to ":first-of-type".',
+]
+
 function check() {
   let stub
 
@@ -9,9 +14,10 @@ function check() {
 
   Cypress.on('command:end', () => {
     if (stub && stub.called) {
-      chai
-        .expect(stub, 'There should be no console errors')
-        .to.have.callCount(0)
+      const calls = stub
+        .getCalls()
+        .filter((call) => !IGNORED_MESSAGES.includes(call.args[0]))
+      chai.expect(calls, 'There should be no console errors').to.have.length(0)
     }
   })
 }

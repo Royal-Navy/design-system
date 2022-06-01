@@ -6,7 +6,7 @@ import selectors from '../../selectors'
 // https://github.com/storybookjs/storybook/issues/18232
 
 describe('ContextMenu', () => {
-  describe.skip('Storybook: Docs Mode', () => {
+  describe('Storybook: Docs Mode', () => {
     describe('the user opens the menu', () => {
       before(() => {
         cy.visit('/iframe.html?viewMode=docs&id=context-menu--default')

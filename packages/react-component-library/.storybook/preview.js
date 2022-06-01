@@ -1,6 +1,8 @@
+import { DocsPage } from '@storybook/addon-docs'
 import React from 'react'
 import '@defencedigital/fonts'
 import 'iframe-resizer/js/iframeResizer.contentWindow'
+import 'url-search-params-polyfill'
 import { withPerformance } from 'storybook-addon-performance/dist/cjs'
 
 import { GlobalStyleProvider } from '../src/styled-components/GlobalStyle'
@@ -46,6 +48,11 @@ export const parameters = {
       // there
       type: typeof WeakSet === undefined ? 'code' : 'auto',
     },
+    page: () => (
+      <GlobalStyleProvider>
+        <DocsPage />
+      </GlobalStyleProvider>
+    ),
   },
   options: {
     storySort: {
@@ -57,6 +64,14 @@ export const parameters = {
 
 export const decorators = [
   // https://github.com/storybookjs/storybook/issues/15223#issuecomment-1092837912
-  (Story) => <GlobalStyleProvider>{Story()}</GlobalStyleProvider>,
+  (Story) => {
+    const queryParams = new URLSearchParams(window.location.search)
+
+    if (queryParams.get('viewMode') === 'docs') {
+      return Story()
+    }
+
+    return <GlobalStyleProvider>{Story()}</GlobalStyleProvider>
+  },
   withPerformance,
 ]
