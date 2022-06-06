@@ -9,6 +9,12 @@ export default {
   title: 'Tab Set',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    docs: {
+      description: {
+        component:
+          'Use this component to switch between visible areas within the confines of a page.',
+      },
+    },
     layout: 'fullscreen',
   },
 } as ComponentMeta<typeof TabSet>

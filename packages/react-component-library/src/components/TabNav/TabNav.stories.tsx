@@ -10,6 +10,12 @@ export default {
   title: 'Tab Nav',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    docs: {
+      description: {
+        component:
+          'Use this component to navigate between different pages or routes.',
+      },
+    },
   },
 } as ComponentMeta<typeof TabNav>
 
