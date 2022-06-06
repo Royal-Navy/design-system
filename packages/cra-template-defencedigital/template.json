@@ -6,7 +6,7 @@
       "lint": "eslint src --ext .ts --ext .tsx"
     },
     "dependencies": {
-      "@apollo/client": "^3.6.0-rc.1",
+      "@apollo/client": "^3.6.5",
       "@defencedigital/design-tokens": "latest",
       "@defencedigital/eslint-config-react": "latest",
       "@defencedigital/fonts": "latest",
@@ -18,7 +18,7 @@
       "@graphql-codegen/typescript-react-apollo": "^3.2.2",
       "@testing-library/jest-dom": "^5.5.0",
       "@testing-library/react": "^13.1.1",
-      "@testing-library/user-event": "^13.5.0",
+      "@testing-library/user-event": "^14.2.0",
       "@types/jest": "^27.0.3",
       "@types/node": "^16.11.13",
       "@types/react": "^18.0.0",
@@ -27,13 +27,15 @@
       "@types/styled-components": "^5.1.18",
       "graphql": "^16.1.0",
       "jest-canvas-mock": "^2.3.0",
-      "react-router-dom": "^5.1.2",
+      "react-router-dom": "^6.3.0",
       "styled-components": "^5.3.3",
       "ts-node": "^10.4.0",
       "typescript": "^4.5.4"
     },
     "overrides": {
-      "nth-check": "^2.0.1"
+      "nth-check": "^2.0.1",
+      "react": "^18.1.0",
+      "react-dom": "^18.1.0"
     },
     "browserslist": {
       "production": [">0.2%", "not dead", "not op_mini all"],
