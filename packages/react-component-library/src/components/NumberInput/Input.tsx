@@ -1,5 +1,6 @@
-import React, { KeyboardEventHandler } from 'react'
+import React, { KeyboardEventHandler, useCallback } from 'react'
 import { isNil } from 'lodash'
+import { Decimal } from 'decimal.js'
 
 import { ComponentSizeType } from '../Forms'
 import { StyledInput } from '../TextInput/partials/StyledInput'
@@ -23,6 +24,7 @@ export interface InputProps {
   onPaste: (event: React.ClipboardEvent<HTMLInputElement>) => void
   placeholder?: string
   size: ComponentSizeType
+  step: number
   value?: string | null
 }
 
@@ -32,6 +34,7 @@ export const Input: React.FC<InputProps> = ({
   id,
   label,
   size,
+  step,
   value,
   onChange,
   ...rest
@@ -41,32 +44,40 @@ export const Input: React.FC<InputProps> = ({
   const KEY_ARROW_UP = 'ArrowUp'
   const KEY_ARROW_DOWN = 'ArrowDown'
 
-  const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
-    const {
-      code,
-      currentTarget: { value: eventValue },
-    } = event
+  const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = useCallback(
+    (event) => {
+      const {
+        code,
+        currentTarget: { value: eventValue },
+      } = event
 
-    if ([KEY_ARROW_UP, KEY_ARROW_DOWN].includes(code)) {
+      if (![KEY_ARROW_UP, KEY_ARROW_DOWN].includes(code)) {
+        return
+      }
+
       event.preventDefault()
+
+      // Do nothing if the value is e.g. only `-`
+      if (value && !Number.isFinite(parseFloat(value))) {
+        return
+      }
+
+      const decimal = new Decimal(eventValue || 0)
 
       const newEvent = {
         ...event,
         currentTarget: {
           ...event.currentTarget,
           value: String(
-            code === KEY_ARROW_UP
-              ? Number(eventValue) + 1
-              : Number(eventValue) - 1
+            code === KEY_ARROW_UP ? decimal.plus(step) : decimal.minus(step)
           ),
         },
       }
 
-      if (onChange) {
-        onChange(newEvent)
-      }
-    }
-  }
+      onChange(newEvent)
+    },
+    [step, value, onChange]
+  )
 
   return (
     <StyledInputWrapper>

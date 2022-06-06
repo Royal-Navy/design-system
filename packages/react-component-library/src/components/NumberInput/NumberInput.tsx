@@ -244,6 +244,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           onFocus={onLocalFocus}
           placeholder={placeholder}
           size={size}
+          step={step}
           value={committedValue}
           {...rest}
         />
