@@ -3247,13 +3247,13 @@
     util-deprecate "^1.0.2"
 
 "@storybook/addon-storyshots-puppeteer@^6.5.0-beta.6":
-  version "6.5.5"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots-puppeteer/-/addon-storyshots-puppeteer-6.5.5.tgz#123e2476dbf6a7ca0e9d7716ff110a16c58deb5b"
-  integrity sha512-uxTVvT8RXAwutlVQ9u5Jdj77eF9V4Ed4GueCKcr+dmFpMYyhK20DaZqPZdM6kZzfWibIXXB37eQHK+LA+bz30w==
+  version "6.5.7"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots-puppeteer/-/addon-storyshots-puppeteer-6.5.7.tgz#9cc05c483ecfaf188965c15394487dec084374b2"
+  integrity sha512-17AtV7GAX3t+op3V7QgfHOdcEUhhTHFRzYRD885SctLwfvXaeAwlK21xm5BNZqszRGyMUXzXX3q3KFvax8h5xw==
   dependencies:
     "@axe-core/puppeteer" "^4.2.0"
     "@storybook/csf" "0.0.2--canary.4566f4d.1"
-    "@storybook/node-logger" "6.5.5"
+    "@storybook/node-logger" "6.5.7"
     "@types/jest-image-snapshot" "^4.1.3"
     core-js "^3.8.2"
     jest-image-snapshot "^4.3.0"
@@ -4444,17 +4444,6 @@
   version "6.5.0-beta.6"
   resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.5.0-beta.6.tgz#0b272174f829dcf7ae61d2762aaecd12171c855a"
   integrity sha512-ytx8rfmzVMf1cvzJKGo/npLYEwyjp1weX9BrVo1+9kXn3bWJoPl4c5UhJZVjNc1PXqerCOMmiMSKVlYHam2LQg==
-  dependencies:
-    "@types/npmlog" "^4.1.2"
-    chalk "^4.1.0"
-    core-js "^3.8.2"
-    npmlog "^5.0.1"
-    pretty-hrtime "^1.0.3"
-
-"@storybook/node-logger@6.5.5":
-  version "6.5.5"
-  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.5.5.tgz#9045195e654ac40b1eda63820b7d7864437e0dd1"
-  integrity sha512-q4R/KI2EondSkqVNTPimrLDMk/hx6cWMpTx7hXX2nR7rgP/ajLuE1TaVE4pneQV6dyNpgV+gkz9k/30VlM8Vmw==
   dependencies:
     "@types/npmlog" "^4.1.2"
     chalk "^4.1.0"
