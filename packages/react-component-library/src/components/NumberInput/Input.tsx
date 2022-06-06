@@ -1,11 +1,11 @@
-import React, { KeyboardEventHandler, useCallback } from 'react'
+import React from 'react'
 import { isNil } from 'lodash'
-import { Decimal } from 'decimal.js'
 
 import { ComponentSizeType } from '../Forms'
 import { StyledInput } from '../TextInput/partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledLabel } from '../TextInput/partials/StyledLabel'
+import { useInputKeys } from './useInputKeys'
 
 export interface InputProps {
   hasFocus: boolean
@@ -40,44 +40,7 @@ export const Input: React.FC<InputProps> = ({
   ...rest
 }) => {
   const hasLabel = !!(label && label.length)
-
-  const KEY_ARROW_UP = 'ArrowUp'
-  const KEY_ARROW_DOWN = 'ArrowDown'
-
-  const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = useCallback(
-    (event) => {
-      const {
-        code,
-        currentTarget: { value: eventValue },
-      } = event
-
-      if (![KEY_ARROW_UP, KEY_ARROW_DOWN].includes(code)) {
-        return
-      }
-
-      event.preventDefault()
-
-      // Do nothing if the value is e.g. only `-`
-      if (value && !Number.isFinite(parseFloat(value))) {
-        return
-      }
-
-      const decimal = new Decimal(eventValue || 0)
-
-      const newEvent = {
-        ...event,
-        currentTarget: {
-          ...event.currentTarget,
-          value: String(
-            code === KEY_ARROW_UP ? decimal.plus(step) : decimal.minus(step)
-          ),
-        },
-      }
-
-      onChange(newEvent)
-    },
-    [step, value, onChange]
-  )
+  const { handleKeyDown } = useInputKeys(step, onChange)
 
   return (
     <StyledInputWrapper>
