@@ -4369,19 +4369,19 @@
     webpack-virtual-modules "^0.2.2"
 
 "@storybook/manager-webpack5@^6.5.0-beta.6":
-  version "6.5.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@storybook/manager-webpack5/-/manager-webpack5-6.5.0-beta.6.tgz#55505f410993fbd1e4e2b2a56335aee53014cd13"
-  integrity sha512-JTB1peasUTMhKQUaJyFT9R2fDiJ2cEsiG5Y0vUwmpJSGcuYmCJJg7JeqJfFchRmB6RgrHtW8vNY6xq9KBPUgGA==
+  version "6.5.7"
+  resolved "https://registry.yarnpkg.com/@storybook/manager-webpack5/-/manager-webpack5-6.5.7.tgz#a7446c86d96bb4b91e5dc554d21da8102795a11f"
+  integrity sha512-4TZKe71noCRui8sUxSuSqO6zMnCxCLn7dE1dOlCr/UvyZbCaGWACO5olUDQrT+n1glZL8i9L998JGQroksucNw==
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/plugin-transform-template-literals" "^7.12.1"
     "@babel/preset-react" "^7.12.10"
-    "@storybook/addons" "6.5.0-beta.6"
-    "@storybook/core-client" "6.5.0-beta.6"
-    "@storybook/core-common" "6.5.0-beta.6"
-    "@storybook/node-logger" "6.5.0-beta.6"
-    "@storybook/theming" "6.5.0-beta.6"
-    "@storybook/ui" "6.5.0-beta.6"
+    "@storybook/addons" "6.5.7"
+    "@storybook/core-client" "6.5.7"
+    "@storybook/core-common" "6.5.7"
+    "@storybook/node-logger" "6.5.7"
+    "@storybook/theming" "6.5.7"
+    "@storybook/ui" "6.5.7"
     "@types/node" "^14.0.10 || ^16.0.0"
     babel-loader "^8.0.0"
     case-sensitive-paths-webpack-plugin "^2.3.0"
@@ -4398,7 +4398,7 @@
     regenerator-runtime "^0.13.7"
     resolve-from "^5.0.0"
     style-loader "^2.0.0"
-    telejson "^5.3.3"
+    telejson "^6.0.8"
     terser-webpack-plugin "^5.0.3"
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
@@ -4788,7 +4788,7 @@
     core-js "^3.8.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/theming@6.5.6", "@storybook/theming@^6.2.9":
+"@storybook/theming@6.5.6":
   version "6.5.6"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.5.6.tgz#519e1675a7ff5c780f5a41b05b4b679c37b62fe8"
   integrity sha512-JEKl9gdVD2Ef9xSwRtaq6EpjJD5xe7X2OP/4e61ucrp/rSOk7SOpYUZYQh6PhYLGhnGbgQkedVVc9CUhK8bs6Q==
@@ -4797,7 +4797,7 @@
     core-js "^3.8.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/theming@6.5.7":
+"@storybook/theming@6.5.7", "@storybook/theming@^6.2.9":
   version "6.5.7"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.5.7.tgz#63afa3838a9c1ba07d443ce6988f6ed99af62b75"
   integrity sha512-6zp1V84DSBcS8BtFOCJlF2/nIonjQmr+dILPxaM3lCm/X003i2jAQrBKTfPlmzCeDn07PBhzHaRJ3wJskfmeNw==
