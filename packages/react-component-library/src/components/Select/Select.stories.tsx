@@ -35,13 +35,13 @@ const Template: ComponentStory<typeof Select> = (args) => (
     style={{ height: args.isDisabled ? 'initial' : '18rem', maxWidth: '20rem' }}
   >
     <Select {...args}>
-      <SelectOption value="one">
+      <SelectOption value="one">A</SelectOption>
+      <SelectOption value="two">B</SelectOption>
+      <SelectOption value="three">
         This is a really, really long select option label that overflows the
         container when selected
       </SelectOption>
-      <SelectOption value="two">Two</SelectOption>
-      <SelectOption value="three">Three</SelectOption>
-      <SelectOption value="four">Four</SelectOption>
+      <SelectOption value="four">Three</SelectOption>
     </Select>
   </div>
 )

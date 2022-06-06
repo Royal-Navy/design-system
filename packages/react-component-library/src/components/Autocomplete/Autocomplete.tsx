@@ -55,7 +55,6 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     selectedItem,
     setHighlightedIndex,
     setInputValue,
-    toggleMenu,
   } = useCombobox<SelectChildWithStringType>({
     items,
     itemToString,
@@ -80,11 +79,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     setInputValue
   )
 
-  const { onInputFocusHandler, onInputMouseDownHandler } = useMenuVisibility(
-    isOpen,
-    openMenu,
-    toggleMenu
-  )
+  const { onInputFocusHandler } = useMenuVisibility(isOpen, openMenu)
 
   return (
     <SelectLayout
@@ -98,7 +93,6 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           onInputTabKeyHandler(e)
           onInputEscapeKeyHandler(e)
         },
-        onMouseDown: onInputMouseDownHandler,
         ref: inputRef,
       })}
       inputWrapperProps={getComboboxProps()}
