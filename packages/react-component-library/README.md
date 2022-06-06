@@ -42,7 +42,10 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 
 ## `<GlobalStyleProvider />`
 
-This context provider component applies global Defence Digital Design System styles to your application (resets, normalize and fonts). You should wrap the root of your app in this component.
+This context provider component applies global Defence Digital Design System styles
+to your application (resets, normalize and fonts). You should wrap the root of your
+app in a single instance of this component. (Take care to avoid having multiple
+instances mounted at once, as this will lead to duplicated global styles.)
 
 ### Theming
 
@@ -60,7 +63,7 @@ When utilising this pattern remember to extend a base token set:
 
 ### `useFloatingElement`
 
-This hook aids in the positioning of arbitrary elements relative to a target element. The positoning engine will intelligently position the element based on available screen real-estate.
+This hook aids in the positioning of arbitrary elements relative to a target element. The positioning engine will intelligently position the element based on available screen real-estate.
 
 ```javascript
 import { useFloatingElement } from '@defencedigital/react-component-library'
