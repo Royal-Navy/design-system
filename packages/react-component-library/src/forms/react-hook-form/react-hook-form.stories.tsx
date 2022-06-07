@@ -69,7 +69,8 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
   const handleNumberInputChange = (
     _:
       | React.ChangeEvent<HTMLInputElement>
-      | React.MouseEvent<HTMLButtonElement>,
+      | React.MouseEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLInputElement>,
     newValue: number | null
   ) => setValue('exampleNumberInput', newValue)
 

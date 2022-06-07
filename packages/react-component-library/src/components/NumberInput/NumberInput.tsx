@@ -79,7 +79,8 @@ interface NumberInputBaseProps
   onChange: (
     event:
       | React.ChangeEvent<HTMLInputElement>
-      | React.MouseEvent<HTMLButtonElement>,
+      | React.MouseEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLInputElement>,
     newValue: number | null
   ) => void
   /**
@@ -243,6 +244,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           onFocus={onLocalFocus}
           placeholder={placeholder}
           size={size}
+          step={step}
           value={committedValue}
           {...rest}
         />

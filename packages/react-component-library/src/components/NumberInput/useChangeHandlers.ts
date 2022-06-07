@@ -10,7 +10,8 @@ export function useChangeHandlers(
   onChange: (
     event:
       | React.ChangeEvent<HTMLInputElement>
-      | React.MouseEvent<HTMLButtonElement>,
+      | React.MouseEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLInputElement>,
     newValue: number | null
   ) => void,
   setCommittedValue: React.Dispatch<React.SetStateAction<string | null>>
@@ -19,10 +20,18 @@ export function useChangeHandlers(
     event: React.MouseEvent<HTMLButtonElement>,
     newValue: string
   ) => void
-  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  handleInputChange: (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.KeyboardEvent<HTMLInputElement>
+  ) => void
 } {
   const handleInputChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (
+      event:
+        | React.ChangeEvent<HTMLInputElement>
+        | React.KeyboardEvent<HTMLInputElement>
+    ) => {
       if (!isValueValid(event.currentTarget.value, isNegativeAllowed)) {
         return
       }
