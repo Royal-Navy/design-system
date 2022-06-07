@@ -1,4 +1,4 @@
-process.env.RNDS_LOG_LEVEL = 'debug'
+process.env.MODDS_LOG_LEVEL = 'debug'
 
 module.exports = {
   moduleNameMapper: {

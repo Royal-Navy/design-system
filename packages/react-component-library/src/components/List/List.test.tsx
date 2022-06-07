@@ -228,19 +228,19 @@ describe('List', () => {
 
     it('should warn the consumer `isActive` will be overwritten', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - RNDS - Prop `isActive` on `ListItem` will be overwritten'
+        'WARN - MODDS - Prop `isActive` on `ListItem` will be overwritten'
       )
     })
 
     it('should warn the consumer `onMouseEnter` will be overwritten', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - RNDS - Prop `onMouseEnter` on `ListItem` will be overwritten'
+        'WARN - MODDS - Prop `onMouseEnter` on `ListItem` will be overwritten'
       )
     })
 
     it('should warn the consumer `onMouseLeave` will be overwritten', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - RNDS - Prop `onMouseLeave` on `ListItem` will be overwritten'
+        'WARN - MODDS - Prop `onMouseLeave` on `ListItem` will be overwritten'
       )
     })
   })

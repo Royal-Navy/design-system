@@ -149,7 +149,7 @@ describe('ButtonGroup', () => {
     it('should warn the consumer about specifying sizes for each item', () => {
       expect(consoleWarnSpy).toHaveBeenCalledTimes(2)
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - RNDS - Prop `size` on `ButtonGroupItem` will be replaced by `size` from `ButtonGroup`'
+        'WARN - MODDS - Prop `size` on `ButtonGroupItem` will be replaced by `size` from `ButtonGroup`'
       )
     })
   })
