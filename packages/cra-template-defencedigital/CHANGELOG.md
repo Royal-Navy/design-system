@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.10.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.9.2...3.10.0) (2022-06-07)
+
+
+### Bug Fixes
+
+* **CRATemplate:** Add override for React to avoid mixed React versions ([031ba46](https://github.com/defencedigital/mod-uk-design-system/commit/031ba4618f0a95ca07e848c5bbeeb507c04e6c60))
+* **CRATemplate:** Use React 18 createRoot API ([177237f](https://github.com/defencedigital/mod-uk-design-system/commit/177237f8eb60b5a847be47a8c55951f621a927d9))
+
+
+### Features
+
+* **CRATemplate:** Update to React Router v6 ([ec6cfda](https://github.com/defencedigital/mod-uk-design-system/commit/ec6cfdad078e076a32c800250e06db7dae712805))
+* **CRATemplate:** Update user-event and Apollo client ([f783ed4](https://github.com/defencedigital/mod-uk-design-system/commit/f783ed43c4fc24e7168b079b0a8f475c31988434))
+
+
+
+
+
 ## [3.9.2](https://github.com/defencedigital/mod-uk-design-system/compare/3.9.1...3.9.2) (2022-05-30)
 
 **Note:** Version bump only for package cra-template-defencedigital
