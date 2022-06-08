@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.11.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.10.0...3.11.0) (2022-06-08)
+
+
+### Features
+
+* **Logger:** Update `RNDS_LOG_LEVEL` env var ([da12d80](https://github.com/defencedigital/mod-uk-design-system/commit/da12d804cfcb91fb0dcf8f05402f804ad55319b0))
+* **NumberInput:** Add ability to increment decrement with keyboard ([536bce4](https://github.com/defencedigital/mod-uk-design-system/commit/536bce411164734d871820fdbd5ba6f45407334c))
+* **NumberInput:** Handle floating point arithmetic ([141ac6e](https://github.com/defencedigital/mod-uk-design-system/commit/141ac6eebf92518fa2d5599d611bff08591a9e4a))
+
+
+
+
+
 # [3.10.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.9.2...3.10.0) (2022-06-07)
 
 
