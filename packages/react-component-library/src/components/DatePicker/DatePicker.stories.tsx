@@ -72,6 +72,12 @@ DisabledDays.args = {
   ],
 }
 
+export const Open = Template.bind({})
+Open.storyName = 'Open'
+Open.args = {
+  initialIsOpen: true,
+}
+
 export const Range = Template.bind({})
 Range.args = {
   isRange: true,

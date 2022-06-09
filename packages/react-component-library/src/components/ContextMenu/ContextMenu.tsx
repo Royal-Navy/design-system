@@ -14,6 +14,10 @@ export interface ContextMenuProps extends ComponentWithClass {
    */
   clickType?: ClickType
   /**
+   * Toggles whether the menu is open on first render.
+   */
+  initialIsOpen?: boolean
+  /**
    * Optional handler function to be invoked when the component is hidden.
    */
   onHide?: (e: MouseEvent) => void
@@ -27,6 +31,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
   attachedToRef,
   children,
   clickType = CLICK_BUTTON.RIGHT,
+  initialIsOpen = false,
   onHide,
   onShow,
   ...rest
@@ -35,6 +40,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
     useClickMenu({
       attachedToRef,
       clickType,
+      initialIsOpen,
       onHide,
       onShow,
     })

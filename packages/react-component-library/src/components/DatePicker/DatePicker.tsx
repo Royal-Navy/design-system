@@ -179,7 +179,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 }) => {
   const id = useExternalId(externalId)
   const titleId = useExternalId('datepicker-title')
-  const contentId = useExternalId('datepicker-contentId')
+  const floatingBoxId = useExternalId('datepicker-contentId')
   const buttonRef = useRef<HTMLButtonElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -302,7 +302,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             <InlineButton
               aria-expanded={isOpen}
               aria-label={`${isOpen ? 'Hide' : 'Show'} day picker`}
-              aria-owns={contentId}
+              aria-owns={floatingBoxId}
               data-testid="datepicker-input-button"
               isDisabled={isDisabled}
               onClick={toggleIsOpen}
@@ -314,6 +314,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         </StyledOuterWrapper>
       </StyledDatePickerInput>
       <StyledFloatingBox
+        id={floatingBoxId}
         isVisible={isOpen}
         placement={placement}
         targetElement={floatingBoxTarget}

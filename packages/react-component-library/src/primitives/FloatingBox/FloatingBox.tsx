@@ -17,7 +17,8 @@ import { useExternalId } from '../../hooks/useExternalId'
 export interface FloatingBoxBaseProps
   extends PositionType,
     ComponentWithClass,
-    Pick<React.AriaAttributes, 'aria-label' | 'aria-labelledby'> {
+    Pick<React.AriaAttributes, 'aria-label' | 'aria-labelledby'>,
+    Pick<React.HTMLAttributes<HTMLDivElement>, 'id'> {
   role?: string
   contentId?: string
   scheme?: FloatingBoxSchemeType
