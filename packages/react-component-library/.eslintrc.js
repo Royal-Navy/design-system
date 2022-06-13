@@ -18,7 +18,7 @@ module.exports = {
       },
     },
     {
-      files: ['cypress/specs/**/*.ts'],
+      files: ['cypress/**/*.cy.ts'],
       rules: {
         'jest/expect-expect': 'off',
         'jest/no-standalone-expect': 'off',
