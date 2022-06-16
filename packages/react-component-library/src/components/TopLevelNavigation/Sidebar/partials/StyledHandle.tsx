@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
+import {
+  getTransitionOpacity,
+  TransitionProps,
+} from '../../../../styled-components'
+
 const { color, zIndex } = selectors
 
-export const StyledHandle = styled.button`
+export const StyledHandle = styled.button<TransitionProps>`
   position: absolute;
   top: 1.15rem;
   right: -1rem;
@@ -16,6 +21,8 @@ export const StyledHandle = styled.button`
   height: 2rem;
   border: none;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+  opacity: ${({ $transitionStatus }) =>
+    getTransitionOpacity($transitionStatus)};
   transition: 100ms opacity linear;
   z-index: ${zIndex('sidebar', 2)};
 

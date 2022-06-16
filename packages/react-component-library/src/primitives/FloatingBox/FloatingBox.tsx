@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { Placement } from '@popperjs/core'
 import { Transition } from 'react-transition-group'
 import mergeRefs from 'react-merge-refs'
+import { CSSObject } from 'styled-components'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { FloatingBoxContent } from './FloatingBoxContent'
@@ -52,13 +53,6 @@ export type FloatingBoxProps =
   | FloatingBoxWithExternalTargetProps
   | FloatingBoxWithEmbeddedTargetProps
 
-const TRANSITION_STYLES = {
-  entering: { opacity: 0 },
-  entered: { opacity: 1 },
-  exiting: { opacity: 0 },
-  exited: { opacity: 0 },
-}
-
 export const FloatingBox: React.FC<FloatingBoxProps> = ({
   contentId: externalContentId,
   scheme = FLOATING_BOX_SCHEME.LIGHT,
@@ -95,7 +89,8 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
       <Transition nodeRef={nodeRef} in={isVisible} timeout={0} unmountOnExit>
         {(state) => (
           <StyledFloatingBox
-            style={{ ...styles.popper, ...TRANSITION_STYLES[state] }}
+            $transitionStatus={state}
+            css={styles.popper as CSSObject}
             ref={mergeRefs([nodeRef, floatingElementRef])}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
@@ -114,7 +109,7 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
                   attributes?.popper?.['data-popper-placement'] as Placement
                 }
                 ref={arrowElementRef}
-                style={styles.arrow}
+                css={styles.arrow as CSSObject}
                 {...attributes.arrow}
               />
               {children}

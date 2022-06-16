@@ -3,10 +3,14 @@ import { selectors } from '@defencedigital/design-tokens'
 
 const { zIndex } = selectors
 
-export const StyledSearchBar = styled.div`
+interface StyledSearchBarProps {
+  $width: string
+}
+
+export const StyledSearchBar = styled.div<StyledSearchBarProps>`
   z-index: ${zIndex('dropdown', 1)};
   display: block;
   margin-top: -1px;
   position: absolute;
-  width: 100%;
+  width: ${({ $width }) => $width};
 `

@@ -25,6 +25,7 @@ describe('Searchbar', () => {
 
       wrapper = render(
         <SearchBar
+          containerWidth={100}
           onSearch={onSearchSpy}
           searchButton={searchButton}
           setShowSearch={setShowSearchSpy}
@@ -115,6 +116,7 @@ describe('Searchbar', () => {
 
       wrapper = render(
         <SearchBar
+          containerWidth={100}
           onSearch={onSearchSpy}
           searchButton={searchButton}
           setShowSearch={setShowSearchSpy}
@@ -153,6 +155,7 @@ describe('Searchbar', () => {
       wrapper = render(
         <SearchBar
           data-arbitrary="arbitrary"
+          containerWidth={100}
           onSearch={onSearchSpy}
           searchButton={searchButton}
           setShowSearch={setShowSearchSpy}

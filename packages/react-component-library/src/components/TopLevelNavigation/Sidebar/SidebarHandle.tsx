@@ -1,16 +1,20 @@
 import React, { useContext, forwardRef } from 'react'
 import { IconChevronLeft, IconChevronRight } from '@defencedigital/icon-library'
+import { TransitionStatus } from 'react-transition-group'
 
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext } from './context'
 import { StyledHandle } from './partials/StyledHandle'
 
 export interface SidebarHandleProps extends ComponentWithClass {
-  style: React.CSSProperties
+  transitionStatus: TransitionStatus
 }
 
 export const SidebarHandle = forwardRef(
-  (props: SidebarHandleProps, ref?: React.Ref<HTMLButtonElement>) => {
+  (
+    { transitionStatus, ...rest }: SidebarHandleProps,
+    ref?: React.Ref<HTMLButtonElement>
+  ) => {
     const { isOpen, setIsOpen } = useContext(SidebarContext)
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -24,7 +28,8 @@ export const SidebarHandle = forwardRef(
         onClick={handleClick}
         aria-label={`${isOpen ? 'Collapse' : 'Expand'} sidebar`}
         data-testid="sidebar-handle"
-        {...props}
+        $transitionStatus={transitionStatus}
+        {...rest}
       >
         {isOpen ? <IconChevronLeft /> : <IconChevronRight />}
       </StyledHandle>

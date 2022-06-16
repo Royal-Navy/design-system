@@ -9,13 +9,14 @@ import { StyledButton } from './partials/StyledButton'
 
 export interface SearchbarProps {
   className?: string
+  containerWidth: number
   onSearch: (event: React.FormEvent<HTMLFormElement>, term: string) => void
   searchButton: any
   setShowSearch: (isVisible: boolean) => void
-  style?: Record<string, unknown>
 }
 
 export const SearchBar: React.FC<SearchbarProps> = ({
+  containerWidth,
   onSearch,
   searchButton,
   setShowSearch,
@@ -41,7 +42,12 @@ export const SearchBar: React.FC<SearchbarProps> = ({
   }
 
   return (
-    <StyledSearchBar ref={searchBoxRef} data-testid="searchbar" {...rest}>
+    <StyledSearchBar
+      ref={searchBoxRef}
+      data-testid="searchbar"
+      $width={`${containerWidth}px`}
+      {...rest}
+    >
       <StyledForm data-testid="searchbar-form" onSubmit={onSubmit}>
         <TextInput
           autoFocus

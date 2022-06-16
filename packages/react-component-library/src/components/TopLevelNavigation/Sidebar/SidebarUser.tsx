@@ -6,7 +6,7 @@ import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { LinkTypes } from '../../../common/Link'
 import { SidebarContext } from './context'
 import { SidebarUserItem } from './SidebarUserItem'
-import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
+import { TRANSITION_TIMEOUT } from './constants'
 import { Sheet } from '../Sheet/Sheet'
 import { StyledUserAvatar } from './partials/StyledUserAvatar'
 import { StyledUserSheetButton } from './partials/StyledUserSheetButton'
@@ -87,7 +87,7 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
       <StyledUserAvatar>{initials}</StyledUserAvatar>
       <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
         {(state) => (
-          <StyledUserText style={{ ...TRANSITION_STYLES[state] }}>
+          <StyledUserText $transitionStatus={state}>
             <div>
               <span>{name}</span>
               {userLink &&

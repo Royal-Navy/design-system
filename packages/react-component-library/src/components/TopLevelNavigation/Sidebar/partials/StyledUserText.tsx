@@ -1,16 +1,22 @@
 import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
+import {
+  getTransitionOpacity,
+  TransitionProps,
+} from '../../../../styled-components'
+
 const { spacing, color, fontSize } = selectors
 
-export const StyledUserText = styled.div`
+export const StyledUserText = styled.div<TransitionProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: calc(100% - 1rem);
   padding: 0 0 0 ${spacing('6')};
   white-space: nowrap;
-  opacity: 1;
+  opacity: ${({ $transitionStatus }) =>
+    getTransitionOpacity($transitionStatus)};
   transition: opacity 150ms linear;
 
   > div {

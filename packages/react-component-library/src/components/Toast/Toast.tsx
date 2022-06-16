@@ -47,25 +47,6 @@ function getAppearanceIcon(appearance: string): React.ReactNode {
   return appearanceIconMap[appearance] || appearanceIconMap.info
 }
 
-function getTranslate(placement: Placement): string {
-  const pos = placement.split('-')
-  const relevantPlacement = pos[1] === 'center' ? pos[0] : pos[1]
-
-  const translateMap = {
-    right: 'translate3d(120%, 0, 0)',
-    left: 'translate3d(-120%, 0, 0)',
-    bottom: 'translate3d(0, 120%, 0)',
-    top: 'translate3d(0, -120%, 0)',
-  }
-
-  return translateMap[relevantPlacement]
-}
-
-const transitionStates = (placement: Placement) => ({
-  entering: { transform: getTranslate(placement) },
-  entered: { transform: 'translate3d(0,0,0)' },
-})
-
 export const Toast: React.FC<ToastProps> = ({
   label,
   children,
@@ -91,13 +72,9 @@ export const Toast: React.FC<ToastProps> = ({
   return (
     <StyledToast
       $appearance={appearance}
-      style={{
-        transition: `
-          transform ${transitionDuration}ms cubic-bezier(0.2, 0, 0, 1),
-          opacity ${transitionDuration}ms
-        `,
-        ...transitionStates(placement)[transitionState],
-      }}
+      $placement={placement}
+      $transitionState={transitionState}
+      $transitionDuration={transitionDuration}
       role="alert"
       aria-labelledby={label ? titleId : undefined}
       aria-describedby={children ? descriptionId : undefined}

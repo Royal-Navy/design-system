@@ -1,9 +1,13 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
+import {
+  getTransitionOpacity,
+  TransitionProps,
+} from '../../../../styled-components'
 import { StyledNavItem } from './StyledNavItem'
 
-interface StyledTextProps {
+interface StyledTextProps extends TransitionProps {
   isOpen?: boolean
 }
 
@@ -13,7 +17,8 @@ export const StyledNavItemText = styled.div<StyledTextProps>`
   display: inline-block;
   color: ${color('neutral', '100')};
   font-size: ${fontSize('m')};
-  opacity: 1;
+  opacity: ${({ $transitionStatus }) =>
+    getTransitionOpacity($transitionStatus)};
   transition: opacity 150ms linear;
   padding: 0.25rem 0.5rem;
 

@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { CSSObject } from 'styled-components'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { useClickMenu, ClickType, CLICK_BUTTON } from '../../hooks/useClickMenu'
@@ -58,7 +59,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
       $isOpen={isOpen}
       left={mousePointer?.getBoundingClientRect().left}
       top={mousePointer?.getBoundingClientRect().top}
-      style={styles.popper}
+      css={styles.popper as CSSObject}
       {...attributes.popper}
       data-testid="context-menu"
       {...rest}
