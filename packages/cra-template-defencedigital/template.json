@@ -34,8 +34,8 @@
     },
     "overrides": {
       "nth-check": "^2.0.1",
-      "react": "^18.1.0",
-      "react-dom": "^18.1.0"
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
     },
     "browserslist": {
       "production": [">0.2%", "not dead", "not op_mini all"],
