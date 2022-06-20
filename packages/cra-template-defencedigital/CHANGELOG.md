@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.1](https://github.com/defencedigital/mod-uk-design-system/compare/3.11.0...3.11.1) (2022-06-20)
+
+
+### Bug Fixes
+
+* **CRATemplate:** Fix installation error with React 18.2.0 ([3a80788](https://github.com/defencedigital/mod-uk-design-system/commit/3a80788dafd2eda9355d89ce8fe19259cf144522))
+
+
+
+
+
 # [3.11.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.10.0...3.11.0) (2022-06-08)
 
 **Note:** Version bump only for package cra-template-defencedigital
