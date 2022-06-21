@@ -4,6 +4,7 @@ import selectors from '../../selectors'
 
 const INITIAL_VIEWPORT_WIDTH = 1400
 const VIEWPORT_HEIGHT = 200
+const CLOSE_TO_DELTA = 2
 
 function clickNTimes(selector: string, numClicks: number) {
   ;[...Array(numClicks)].forEach(() => {
@@ -27,7 +28,7 @@ describe('TabSet - Scrollable', () => {
       cy.get('@tabItem').then(($tabItem) => {
         cy.get(selectors.tabSet.tabs)
           .invoke('scrollLeft')
-          .should('be.closeTo', $tabItem.outerWidth(), 1)
+          .should('be.closeTo', $tabItem.outerWidth(), CLOSE_TO_DELTA)
       })
     })
   })
@@ -41,7 +42,7 @@ describe('TabSet - Scrollable', () => {
       cy.get('@tabItem').then(($tabItem) => {
         cy.get(selectors.tabSet.tabs)
           .invoke('scrollLeft')
-          .should('be.closeTo', $tabItem.outerWidth() * 2, 1)
+          .should('be.closeTo', $tabItem.outerWidth() * 2, CLOSE_TO_DELTA)
       })
     })
 
@@ -54,7 +55,7 @@ describe('TabSet - Scrollable', () => {
         cy.get('@tabItem').then(($tabItem) => {
           cy.get(selectors.tabSet.tabs)
             .invoke('scrollLeft')
-            .should('be.closeTo', $tabItem.outerWidth(), 1)
+            .should('be.closeTo', $tabItem.outerWidth(), CLOSE_TO_DELTA)
         })
       })
     })
@@ -69,7 +70,11 @@ describe('TabSet - Scrollable', () => {
       cy.get(selectors.tabSet.tabs).then(($tabs) => {
         cy.get(selectors.tabSet.tabs)
           .invoke('scrollLeft')
-          .should('be.closeTo', $tabs[0].scrollWidth - $tabs[0].clientWidth, 1)
+          .should(
+            'be.closeTo',
+            $tabs[0].scrollWidth - $tabs[0].clientWidth,
+            CLOSE_TO_DELTA
+          )
       })
     })
 
@@ -82,7 +87,7 @@ describe('TabSet - Scrollable', () => {
         cy.get('@tabItem').then(($tabItem) => {
           cy.get(selectors.tabSet.tabs)
             .invoke('scrollLeft')
-            .should('be.closeTo', $tabItem.outerWidth() * 4, 1)
+            .should('be.closeTo', $tabItem.outerWidth() * 4, CLOSE_TO_DELTA)
         })
       })
     })
@@ -122,7 +127,7 @@ describe('TabSet - Scrollable', () => {
           cy.get('@tabItem').then(($tabItem) => {
             cy.get(selectors.tabSet.tabs)
               .invoke('scrollLeft')
-              .should('be.closeTo', $tabItem.outerWidth() * 7, 1)
+              .should('be.closeTo', $tabItem.outerWidth() * 7, CLOSE_TO_DELTA)
           })
         })
       })
@@ -154,7 +159,7 @@ describe('TabSet - Scrollable', () => {
           cy.get('@tabItem').then(($tabItem) => {
             cy.get(selectors.tabSet.tabs)
               .invoke('scrollLeft')
-              .should('be.closeTo', $tabItem.outerWidth() * 5, 1)
+              .should('be.closeTo', $tabItem.outerWidth() * 5, CLOSE_TO_DELTA)
           })
         })
       })

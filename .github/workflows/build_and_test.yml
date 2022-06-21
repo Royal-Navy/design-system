@@ -168,7 +168,7 @@ jobs:
           fi
 
       - name: Run e2e tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           CHOKIDAR_USEPOLLING: 1
         with:
