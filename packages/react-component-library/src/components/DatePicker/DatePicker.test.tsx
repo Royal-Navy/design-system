@@ -32,7 +32,7 @@ describe('DatePicker', () => {
   let initialStartDate: Date
   let label: string
   let onBlur: (e: React.FormEvent) => void
-  let onCalendarFocus: (e: React.SyntheticEvent) => void
+  let onCalendarFocus: jest.Mock<void, [React.SyntheticEvent]>
   let days: string[]
   let onSubmitSpy: (e: React.FormEvent) => void
   const onChange = jest.fn<void, [DatePickerOnChangeData]>()
@@ -75,7 +75,7 @@ describe('DatePicker', () => {
     beforeEach(() => {
       initialStartDate = new Date(2019, 11, 1)
       onBlur = jest.fn()
-      onCalendarFocus = jest.fn()
+      onCalendarFocus = jest.fn<void, [React.SyntheticEvent]>()
 
       wrapper = render(
         <>
@@ -279,6 +279,7 @@ describe('DatePicker', () => {
 
               describe('and the tab key is pressed again', () => {
                 beforeEach(() => {
+                  onCalendarFocus.mockClear()
                   return user.tab()
                 })
 
