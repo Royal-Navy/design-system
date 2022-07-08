@@ -31,19 +31,9 @@ describe('Popover', () => {
       wrapper = render(
         <>
           <Popover content={content} aria-label="Hello, World!">
-            <div
-              style={{
-                display: 'inline-block',
-                padding: '1rem',
-                backgroundColor: '#c9c9c9',
-              }}
-            >
-              {HOVER_ON_ME}
-            </div>
+            <div>{HOVER_ON_ME}</div>
           </Popover>
-          <button onClick={clickSpy} style={{ margin: '2rem' }}>
-            Click me!
-          </button>
+          <button onClick={clickSpy}>Click me!</button>
         </>
       )
     })

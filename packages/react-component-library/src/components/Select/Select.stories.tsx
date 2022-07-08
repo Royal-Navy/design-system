@@ -6,6 +6,7 @@ import {
   IconBrightnessAuto,
   IconRemove,
 } from '@defencedigital/icon-library'
+import styled from 'styled-components'
 
 import { Select } from './index'
 import { SelectOption } from './SelectOption'
@@ -30,10 +31,13 @@ export default {
   },
 } as ComponentMeta<typeof Select>
 
+const StyledWrapper = styled.div<{ $isDisabled?: boolean }>`
+  height: ${({ $isDisabled }) => ($isDisabled ? 'initial' : '18rem')};
+  max-width: 20rem;
+`
+
 const Template: ComponentStory<typeof Select> = (args) => (
-  <div
-    style={{ height: args.isDisabled ? 'initial' : '18rem', maxWidth: '20rem' }}
-  >
+  <StyledWrapper $isDisabled={args.isDisabled}>
     <Select {...args}>
       <SelectOption value="one">A</SelectOption>
       <SelectOption value="two">B</SelectOption>
@@ -43,13 +47,11 @@ const Template: ComponentStory<typeof Select> = (args) => (
       </SelectOption>
       <SelectOption value="four">Three</SelectOption>
     </Select>
-  </div>
+  </StyledWrapper>
 )
 
 const TemplateWithIconsAndBadges: ComponentStory<typeof Select> = (args) => (
-  <div
-    style={{ height: args.isDisabled ? 'initial' : '18rem', maxWidth: '20rem' }}
-  >
+  <StyledWrapper $isDisabled={args.isDisabled}>
     <Select {...args}>
       <SelectOption badge={100} icon={<IconAnchor />} value="one">
         One
@@ -64,7 +66,7 @@ const TemplateWithIconsAndBadges: ComponentStory<typeof Select> = (args) => (
         Four
       </SelectOption>
     </Select>
-  </div>
+  </StyledWrapper>
 )
 
 export const Default = Template.bind({})

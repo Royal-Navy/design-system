@@ -65,7 +65,7 @@ export const FullWidth: Story<TabSetProps> = (props) => (
 FullWidth.storyName = 'Full width'
 
 export const ScrollableBody: Story<TabSetProps> = (props) => (
-  <div style={{ height: '200px' }}>
+  <div css={{ height: '200px' }}>
     <TabSet {...props}>
       <TabSetItem title="Example Tab 1">
         <>
@@ -104,8 +104,8 @@ interface TabTitleProps {
 
 const TabTitle: React.FC<TabTitleProps> = ({ year, children }) => (
   <>
-    <div style={{ fontSize: '14px' }}>{children}</div>
-    <div style={{ fontSize: '12px' }}>{year}</div>
+    <div css={{ fontSize: '14px' }}>{children}</div>
+    <div css={{ fontSize: '12px' }}>{year}</div>
   </>
 )
 

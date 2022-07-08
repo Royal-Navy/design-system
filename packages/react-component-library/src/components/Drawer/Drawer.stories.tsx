@@ -1,5 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { css } from 'styled-components'
 
 import { Drawer } from '.'
 
@@ -18,7 +19,7 @@ export default {
 
 export const Default: ComponentStory<typeof Drawer> = (props) => (
   <Drawer {...props}>
-    <pre style={{ padding: '0 1rem' }}>Arbitrary JSX</pre>
+    <pre css={{ padding: '0 1rem' }}>Arbitrary JSX</pre>
   </Drawer>
 )
 

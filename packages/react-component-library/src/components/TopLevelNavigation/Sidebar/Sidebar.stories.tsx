@@ -56,6 +56,12 @@ const StyledSidebar = styled(Sidebar)`
   max-height: 30rem;
 `
 
+const StyledMain = styled.main`
+  padding: 2rem;
+  background-color: #c9c9c9;
+  width: 100%;
+`
+
 export const Default: ComponentStory<typeof Sidebar> = (props) => {
   const sidebarNav = (
     <SidebarNav>
@@ -89,18 +95,8 @@ export const Default: ComponentStory<typeof Sidebar> = (props) => {
 
   return (
     <SidebarWrapper>
-      <div style={{ maxHeight: '30rem' }}>
-        <StyledSidebar {...props}>{sidebarNav}</StyledSidebar>
-      </div>
-      <main
-        style={{
-          padding: '2rem',
-          backgroundColor: '#c9c9c9',
-          width: '100%',
-        }}
-      >
-        Hello, World!
-      </main>
+      <StyledSidebar {...props}>{sidebarNav}</StyledSidebar>
+      <StyledMain>Hello, World!</StyledMain>
     </SidebarWrapper>
   )
 }
@@ -140,20 +136,10 @@ export const InitiallyOpen: ComponentStory<typeof Sidebar> = (props) => {
 
   return (
     <SidebarWrapper>
-      <div style={{ maxHeight: '30rem' }}>
-        <StyledSidebar {...props} initialIsOpen>
-          {sidebarNav}
-        </StyledSidebar>
-      </div>
-      <main
-        style={{
-          padding: '2rem',
-          backgroundColor: '#c9c9c9',
-          width: '100%',
-        }}
-      >
-        Hello, World!
-      </main>
+      <StyledSidebar {...props} initialIsOpen>
+        {sidebarNav}
+      </StyledSidebar>
+      <StyledMain>Hello, World!</StyledMain>
     </SidebarWrapper>
   )
 }
@@ -218,18 +204,8 @@ export const WithSubNavigation: ComponentStory<typeof Sidebar> = (props) => {
 
   return (
     <SidebarWrapper>
-      <div style={{ maxHeight: '30rem' }}>
-        <StyledSidebar {...props}>{sidebarNavWithSub}</StyledSidebar>
-      </div>
-      <main
-        style={{
-          padding: '2rem',
-          backgroundColor: '#c9c9c9',
-          width: '100%',
-        }}
-      >
-        Hello, World!
-      </main>
+      <StyledSidebar {...props}>{sidebarNavWithSub}</StyledSidebar>
+      <StyledMain>Hello, World!</StyledMain>
     </SidebarWrapper>
   )
 }
@@ -269,20 +245,10 @@ export const WithHeader: ComponentStory<typeof Sidebar> = (props) => {
 
   return (
     <SidebarWrapper>
-      <div style={{ maxHeight: '30rem' }}>
-        <StyledSidebar {...props} icon={<IconGrain />} title="Application Name">
-          {sidebarNav}
-        </StyledSidebar>
-      </div>
-      <main
-        style={{
-          padding: '2rem',
-          backgroundColor: '#c9c9c9',
-          width: '100%',
-        }}
-      >
-        Hello, World!
-      </main>
+      <StyledSidebar {...props} icon={<IconGrain />} title="Application Name">
+        {sidebarNav}
+      </StyledSidebar>
+      <StyledMain>Hello, World!</StyledMain>
     </SidebarWrapper>
   )
 }
@@ -331,20 +297,10 @@ export const WithUserMenu: ComponentStory<typeof Sidebar> = (props) => {
 
   return (
     <SidebarWrapper>
-      <div style={{ maxHeight: '30rem' }}>
-        <StyledSidebar {...props} user={userWithLinks}>
-          {sidebarNav}
-        </StyledSidebar>
-      </div>
-      <main
-        style={{
-          padding: '2rem',
-          backgroundColor: '#c9c9c9',
-          width: '100%',
-        }}
-      >
-        Hello, World!
-      </main>
+      <StyledSidebar {...props} user={userWithLinks}>
+        {sidebarNav}
+      </StyledSidebar>
+      <StyledMain>Hello, World!</StyledMain>
     </SidebarWrapper>
   )
 }
@@ -413,24 +369,14 @@ export const WithNotifications: ComponentStory<typeof Sidebar> = (props) => {
 
   return (
     <SidebarWrapper>
-      <div style={{ maxHeight: '30rem' }}>
-        <StyledSidebar
-          {...props}
-          notifications={notifications}
-          hasUnreadNotification
-        >
-          {sidebarNav}
-        </StyledSidebar>
-      </div>
-      <main
-        style={{
-          padding: '2rem',
-          backgroundColor: '#c9c9c9',
-          width: '100%',
-        }}
+      <StyledSidebar
+        {...props}
+        notifications={notifications}
+        hasUnreadNotification
       >
-        Hello, World!
-      </main>
+        {sidebarNav}
+      </StyledSidebar>
+      <StyledMain>Hello, World!</StyledMain>
     </SidebarWrapper>
   )
 }
