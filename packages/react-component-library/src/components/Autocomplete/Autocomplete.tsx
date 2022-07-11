@@ -26,6 +26,7 @@ export interface AutocompleteProps extends SelectBaseProps {
 export const Autocomplete: React.FC<AutocompleteProps> = ({
   children,
   id: externalId,
+  initialIsOpen,
   isInvalid = false,
   onChange,
   value = null,
@@ -49,13 +50,14 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     getToggleButtonProps,
     highlightedIndex,
     inputValue,
-    isOpen,
+    isOpen = false,
     openMenu,
     reset,
     selectedItem,
     setHighlightedIndex,
     setInputValue,
   } = useCombobox<SelectChildWithStringType>({
+    initialIsOpen,
     items,
     itemToString,
     onInputValueChange,
@@ -95,7 +97,9 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         },
         ref: inputRef,
       })}
-      inputWrapperProps={getComboboxProps()}
+      inputWrapperProps={getComboboxProps({
+        'aria-expanded': isOpen,
+      })}
       isInvalid={hasError}
       isOpen={isOpen}
       menuProps={getMenuProps()}

@@ -72,6 +72,13 @@ describe('Autocomplete', () => {
       expect(wrapper.queryAllByTestId('select-option')).toHaveLength(0)
     })
 
+    it('sets `aria-expanded` on the input wrapper to `false`', () => {
+      expect(wrapper.getByTestId('select-input-wrapper')).toHaveAttribute(
+        'aria-expanded',
+        'false'
+      )
+    })
+
     it.skip('does not show the arrow button in a hover state', () => {
       expect(wrapper.getByTestId('select-arrow-button')).toHaveStyleRule(
         'background-color',
@@ -102,6 +109,13 @@ describe('Autocomplete', () => {
         expect(options[1]).toHaveTextContent('Two')
         expect(options[2]).toHaveTextContent('Three')
         expect(options).toHaveLength(3)
+      })
+
+      it('sets `aria-expanded` on the input wrapper to `true`', () => {
+        expect(wrapper.getByTestId('select-input-wrapper')).toHaveAttribute(
+          'aria-expanded',
+          'true'
+        )
       })
 
       describe('and the second item is clicked', () => {

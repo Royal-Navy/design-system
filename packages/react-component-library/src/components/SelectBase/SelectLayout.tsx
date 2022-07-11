@@ -84,7 +84,7 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
             data-testid="select-outer-wrapper"
           >
             <StyledInputWrapper
-              data-testid="text-input-input-wrapper"
+              data-testid="select-input-wrapper"
               {...inputWrapperProps}
             >
               <StyledLabel
