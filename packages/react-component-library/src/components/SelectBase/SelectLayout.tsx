@@ -131,7 +131,13 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
           </StyledOuterWrapper>
         </StyledTextInput>
         <StyledOptionsWrapper $isVisible={isOpen}>
-          <StyledOptions {...menuProps}>{children}</StyledOptions>
+          <StyledOptions
+            {...menuProps}
+            aria-labelledby={labelId}
+            data-testid="select-options"
+          >
+            {children}
+          </StyledOptions>
         </StyledOptionsWrapper>
       </StyledSelect>
       <StyledFloatingBox

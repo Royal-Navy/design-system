@@ -82,6 +82,12 @@ NoClearButton.args = {
   value: 'two',
 }
 
+export const Open = Template.bind({})
+Open.storyName = 'Open'
+Open.args = {
+  initialIsOpen: true,
+}
+
 export const WithError = Template.bind({})
 WithError.args = {
   isInvalid: true,

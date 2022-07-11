@@ -12,6 +12,10 @@ export interface SelectBaseProps extends ComponentWithClass {
    */
   id?: string
   /**
+   * Toggles whether the list is open on first render.
+   */
+  initialIsOpen?: boolean
+  /**
    * Toggles whether the component is disabled or not (preventing user interaction).
    */
   isDisabled?: boolean
