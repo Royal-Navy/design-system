@@ -149,6 +149,15 @@ describe('DatePicker', () => {
         ariaLabel: 'Hide day picker',
       })
 
+      it('sets `aria-owns` on the input button', () => {
+        const button = wrapper.getByTestId('datepicker-input-button')
+        const floatingBoxId = wrapper
+          .getByTestId('floating-box')
+          .getAttribute('id')
+
+        expect(button).toHaveAttribute('aria-owns', floatingBoxId)
+      })
+
       it('displays the container', () => {
         return waitFor(() => {
           expect(wrapper.getByTestId('floating-box')).toBeVisible()

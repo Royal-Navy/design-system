@@ -84,7 +84,7 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
     display: table-caption;
     margin-bottom: ${spacing('8')};
     height: 1.5rem;
-    color: ${color('neutral', '500')};
+    color: ${color('neutral', '600')};
     font-size: ${fontSize('base')};
     line-height: 1.5rem;
     text-align: center;
@@ -106,7 +106,7 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
     text-align: center;
     text-transform: uppercase;
     font-size: ${fontSize('xs')};
-    color: ${color('neutral', '300')};
+    color: ${color('neutral', '400')};
     font-weight: 600;
   }
 
@@ -129,7 +129,7 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
     border: 1px solid ${color('neutral', '000')};
     font-size: ${fontSize('m')};
     font-weight: 400;
-    color: ${color('neutral', '400')};
+    color: ${color('neutral', '500')};
     text-align: center;
     vertical-align: middle;
     height: ${DAY_SIZE};
@@ -173,7 +173,7 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
 
   .DayPicker-Day:not(.DayPicker-Day--outside) {
     &.DayPicker-Day--today {
-      color: ${color('warning', '700')};
+      color: ${color('warning', '800')};
     }
 
     &.DayPicker-Day--selected {

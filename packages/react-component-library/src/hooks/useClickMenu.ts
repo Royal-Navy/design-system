@@ -14,6 +14,7 @@ export type ClickType = typeof CLICK_BUTTON[keyof typeof CLICK_BUTTON]
 interface UseClickMenuParams {
   attachedToRef: React.RefObject<HTMLElement>
   clickType: ClickType
+  initialIsOpen: boolean
   onHide?: (e: MouseEvent) => void
   onShow?: (e: MouseEvent) => void
 }
@@ -44,10 +45,11 @@ function generateVirtualReference({
 export const useClickMenu = ({
   attachedToRef,
   clickType,
+  initialIsOpen,
   onHide,
   onShow,
 }: UseClickMenuParams): UseClickMenuReturnType => {
-  const { open, setOpen } = useOpenClose<boolean>(false)
+  const { open, setOpen } = useOpenClose<boolean>(initialIsOpen)
   const [mousePointer, setMousePointer] = useState<VirtualElement | undefined>()
   const {
     targetElementRef,
