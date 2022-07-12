@@ -13,6 +13,10 @@ const { color, shadow, spacing } = selectors
 
 export interface DropdownProps {
   /**
+   * Toggles whether the list is open on first render.
+   */
+  initialIsOpen?: boolean
+  /**
    * Handler called when an option is clicked.
    */
   onSelect?: (value: string) => void
@@ -138,6 +142,7 @@ const StyledSelect = styled(Select)`
 `
 
 export const Dropdown: React.FC<DropdownProps> = ({
+  initialIsOpen,
   onSelect,
   options,
   label,
@@ -154,6 +159,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       classNamePrefix="rn-dropdown"
       components={{ DropdownIndicator, Placeholder: DropdownPlaceholder }}
       controlShouldRenderValue={false}
+      defaultMenuIsOpen={initialIsOpen}
       formatOptionLabel={DropdownLabel}
       isSearchable={false}
       options={options}

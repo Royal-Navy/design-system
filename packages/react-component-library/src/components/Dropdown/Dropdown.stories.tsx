@@ -36,7 +36,7 @@ const StyledWrapper = styled.div`
   height: 15rem;
 `
 
-export const Default: ComponentStory<typeof Dropdown> = (props) => {
+const Template: ComponentStory<typeof Dropdown> = (props) => {
   return (
     <StyledWrapper>
       <Dropdown {...props} />
@@ -44,8 +44,17 @@ export const Default: ComponentStory<typeof Dropdown> = (props) => {
   )
 }
 
+export const Default = Template.bind({})
 Default.args = {
   options,
+  label: 'Example label',
+}
+
+export const Open = Template.bind({})
+Open.storyName = 'Open'
+Open.args = {
+  options,
+  initialIsOpen: true,
   label: 'Example label',
 }
 

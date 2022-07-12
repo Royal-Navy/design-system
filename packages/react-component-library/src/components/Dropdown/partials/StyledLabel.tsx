@@ -13,6 +13,7 @@ export const StyledLabel = styled.div<StyledLabelProps>`
   ${({ isDisabled }) =>
     isDisabled &&
     css`
-      opacity: 0.25;
+      cursor: not-allowed;
+      opacity: 0.7;
     `}
 `
