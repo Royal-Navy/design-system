@@ -15,6 +15,7 @@ import { useSelectMenu } from './hooks/useSelectMenu'
 export const Select: React.FC<SelectBaseProps> = ({
   children,
   id: externalId,
+  initialIsOpen,
   onChange,
   value = null,
   ...rest
@@ -32,6 +33,7 @@ export const Select: React.FC<SelectBaseProps> = ({
     selectedItem,
   } = useSelect<SelectChildWithStringType>({
     itemToString,
+    initialIsOpen,
     initialSelectedItem: initialSelectedItem(children, value),
     items: React.Children.toArray(children),
     onSelectedItemChange: ({ selectedItem: newItem }) => {

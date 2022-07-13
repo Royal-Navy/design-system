@@ -46,6 +46,10 @@ describe('Select', () => {
         'aria-labelledby',
         labelId
       )
+      expect(wrapper.getByTestId('select-input')).toHaveAttribute(
+        'aria-labelledby',
+        labelId
+      )
     })
 
     it('sets the custom `id` of the input', () => {

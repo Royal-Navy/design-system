@@ -84,7 +84,7 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
             data-testid="select-outer-wrapper"
           >
             <StyledInputWrapper
-              data-testid="text-input-input-wrapper"
+              data-testid="select-input-wrapper"
               {...inputWrapperProps}
             >
               <StyledLabel
@@ -131,7 +131,13 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
           </StyledOuterWrapper>
         </StyledTextInput>
         <StyledOptionsWrapper $isVisible={isOpen}>
-          <StyledOptions {...menuProps}>{children}</StyledOptions>
+          <StyledOptions
+            {...menuProps}
+            aria-labelledby={labelId}
+            data-testid="select-options"
+          >
+            {children}
+          </StyledOptions>
         </StyledOptionsWrapper>
       </StyledSelect>
       <StyledFloatingBox
