@@ -75,45 +75,49 @@ describe('Form Examples (empty)', () => {
             })
           })
 
-          describe('when the user fills in the form successfully', () => {
-            before(() => {
-              cy.get(selectors.form.input.email).type('hello@world.com')
-              cy.get(selectors.form.input.password).type('password')
-              cy.get(selectors.form.input.description).type('Hello, World!')
-              cy.get(selectors.form.input.radio).eq(0).click()
-              cy.get(selectors.form.input.checkbox).eq(1).click()
-              cy.get(selectors.form.input.switchOption).eq(0).click()
-              cy.get(selectors.form.input.numberInputIncrease).click()
-              cy.get(selectors.form.input.datePickerInput).type('31/01/2022')
-              getSelect().type('th{enter}')
-              getAutocomplete().type('fo{downArrow}{enter}')
-              cy.get(selectors.form.input.rangeSliderRail).click(800, 0)
-            })
-
-            it('should not show any validation errors', () => {
-              cy.contains('Required').should('not.exist')
-            })
-
-            describe('when the user submits the form', () => {
+          describe(
+            'when the user fills in the form successfully',
+            { browser: '!firefox' },
+            () => {
               before(() => {
-                cy.get(selectors.form.submit).click()
+                cy.get(selectors.form.input.email).type('hello@world.com')
+                cy.get(selectors.form.input.password).type('password')
+                cy.get(selectors.form.input.description).type('Hello, World!')
+                cy.get(selectors.form.input.radio).eq(0).click()
+                cy.get(selectors.form.input.checkbox).eq(1).click()
+                cy.get(selectors.form.input.switchOption).eq(0).click()
+                cy.get(selectors.form.input.numberInputIncrease).click()
+                cy.get(selectors.form.input.datePickerInput).type('31/01/2022')
+                getSelect().type('th{enter}')
+                getAutocomplete().type('fo{downArrow}{enter}')
+                cy.get(selectors.form.input.rangeSliderRail).click(800, 0)
               })
 
-              it('should set the submit Button state to disabled', () => {
-                cy.get(selectors.form.submit).should('have.attr', 'disabled')
+              it('should not show any validation errors', () => {
+                cy.contains('Required').should('not.exist')
               })
 
-              it('should supply form the field values', () => {
-                cy.get(selectors.form.values)
-                  .invoke('text')
-                  .should((submittedData) => {
-                    expect(JSON.parse(submittedData)).to.deep.equal(
-                      expectedResult
-                    )
-                  })
+              describe('when the user submits the form', () => {
+                before(() => {
+                  cy.get(selectors.form.submit).click()
+                })
+
+                it('should set the submit Button state to disabled', () => {
+                  cy.get(selectors.form.submit).should('have.attr', 'disabled')
+                })
+
+                it('should supply form the field values', () => {
+                  cy.get(selectors.form.values)
+                    .invoke('text')
+                    .should((submittedData) => {
+                      expect(JSON.parse(submittedData)).to.deep.equal(
+                        expectedResult
+                      )
+                    })
+                })
               })
-            })
-          })
+            }
+          )
         })
       })
     }

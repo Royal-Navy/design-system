@@ -8,7 +8,7 @@ describe('Select', () => {
     cy.visit('/iframe.html?id=select--default&viewMode=story')
   })
 
-  describe('when the component is focused', () => {
+  describe('when the component is focused', { browser: '!firefox' }, () => {
     before(() => {
       cy.get(selectors.select.outerWrapper).click()
     })

@@ -99,47 +99,53 @@ describe('Form Examples (pre-populated)', () => {
             })
           })
 
-          describe('when the user edits the form data', () => {
-            before(() => {
-              cy.get(selectors.form.input.email).type(
-                '{selectall}hello@world.com'
-              )
-              cy.get(selectors.form.input.password).type('{selectall}password')
-              cy.get(selectors.form.input.description).type(
-                '{selectall}Hello, World!'
-              )
-              cy.get(selectors.form.input.radio).eq(0).click()
-              cy.get(selectors.form.input.checkbox).eq(0).click()
-              cy.get(selectors.form.input.switchOption).eq(0).click()
-              cy.get(selectors.form.input.numberInputIncrease).click()
-              cy.get(selectors.form.input.datePickerInput).type(
-                '{selectall}31/01/2022'
-              )
-              getSelect().type('th{enter}')
-              getAutocomplete().type('{selectall}fo{downArrow}{enter}')
-              cy.get(selectors.form.input.rangeSliderRail).click(800, 0)
-            })
-
-            it('does not show any validation errors', () => {
-              cy.contains('Required').should('not.exist')
-            })
-
-            describe('when the user submits the form', () => {
+          describe(
+            'when the user edits the form data',
+            { browser: '!firefox' },
+            () => {
               before(() => {
-                cy.get(selectors.form.submit).click()
+                cy.get(selectors.form.input.email).type(
+                  '{selectall}hello@world.com'
+                )
+                cy.get(selectors.form.input.password).type(
+                  '{selectall}password'
+                )
+                cy.get(selectors.form.input.description).type(
+                  '{selectall}Hello, World!'
+                )
+                cy.get(selectors.form.input.radio).eq(0).click()
+                cy.get(selectors.form.input.checkbox).eq(0).click()
+                cy.get(selectors.form.input.switchOption).eq(0).click()
+                cy.get(selectors.form.input.numberInputIncrease).click()
+                cy.get(selectors.form.input.datePickerInput).type(
+                  '{selectall}31/01/2022'
+                )
+                getSelect().type('th{enter}')
+                getAutocomplete().type('{selectall}fo{downArrow}{enter}')
+                cy.get(selectors.form.input.rangeSliderRail).click(800, 0)
               })
 
-              it('submits the updated field values', () => {
-                cy.get(selectors.form.values)
-                  .invoke('text')
-                  .should((submittedData) => {
-                    const parsedData = JSON.parse(submittedData)
-                    parsedData.exampleCheckbox.sort()
-                    expect(parsedData).to.deep.equal(expectedEditedResult)
-                  })
+              it('does not show any validation errors', () => {
+                cy.contains('Required').should('not.exist')
               })
-            })
-          })
+
+              describe('when the user submits the form', () => {
+                before(() => {
+                  cy.get(selectors.form.submit).click()
+                })
+
+                it('submits the updated field values', () => {
+                  cy.get(selectors.form.values)
+                    .invoke('text')
+                    .should((submittedData) => {
+                      const parsedData = JSON.parse(submittedData)
+                      parsedData.exampleCheckbox.sort()
+                      expect(parsedData).to.deep.equal(expectedEditedResult)
+                    })
+                })
+              })
+            }
+          )
         })
       })
     }
