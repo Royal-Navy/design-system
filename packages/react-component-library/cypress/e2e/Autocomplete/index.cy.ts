@@ -16,7 +16,7 @@ describe('Autocomplete', () => {
     cy.visit('/iframe.html?id=autocomplete--default&viewMode=story')
   })
 
-  describe('when the component is focused', () => {
+  describe('when the component is focused', { browser: '!firefox' }, () => {
     beforeEach(() => {
       cy.get(selectors.select.outerWrapper).click()
     })
