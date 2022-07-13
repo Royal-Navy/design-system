@@ -130,3 +130,4 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
 )
 
 TextInput.displayName = 'TextInput'
+// TextInput.whyDidYouRender = true
