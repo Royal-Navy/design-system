@@ -5,7 +5,7 @@ import { SidebarSubNav } from './SidebarSubNav'
 import { Nav, NavItem } from '../../../common/Nav'
 import { SidebarContext } from './context'
 import { Tooltip } from '../../Tooltip'
-import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
+import { TRANSITION_TIMEOUT } from './constants'
 import { StyledNavItem } from './partials/StyledNavItem'
 import { StyledNavItemIcon } from './partials/StyledNavItemIcon'
 import { StyledNavItemText } from './partials/StyledNavItemText'
@@ -48,7 +48,7 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
           {(state) => (
             <StyledNavItemText
               ref={nodeRef}
-              style={{ ...TRANSITION_STYLES[state] }}
+              $transitionStatus={state}
               isOpen={isOpen}
               data-testid="sidebar-nav-item-text"
             >

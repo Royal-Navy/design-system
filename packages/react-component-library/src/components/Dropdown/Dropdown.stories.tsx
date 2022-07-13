@@ -2,6 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { IconLayers, IconAnchor } from '@defencedigital/icon-library'
+import styled from 'styled-components'
 
 import { Dropdown } from './Dropdown'
 
@@ -31,11 +32,15 @@ const options = [
   { value: 'disabled', label: 'Disabled', isDisabled: true },
 ]
 
+const StyledWrapper = styled.div`
+  height: 15rem;
+`
+
 export const Default: ComponentStory<typeof Dropdown> = (props) => {
   return (
-    <div style={{ height: '15rem' }}>
+    <StyledWrapper>
       <Dropdown {...props} />
-    </div>
+    </StyledWrapper>
   )
 }
 
@@ -50,7 +55,7 @@ const iconOptions = options.map((option) => ({
 }))
 
 export const WithIcons: ComponentStory<typeof Dropdown> = (props) => (
-  <div style={{ height: '15rem' }}>
+  <StyledWrapper>
     <Dropdown
       {...props}
       options={iconOptions}
@@ -58,7 +63,7 @@ export const WithIcons: ComponentStory<typeof Dropdown> = (props) => (
       labelIcon={<IconLayers />}
       onSelect={action('onSelect')}
     />
-  </div>
+  </StyledWrapper>
 )
 
 WithIcons.storyName = 'With icons'

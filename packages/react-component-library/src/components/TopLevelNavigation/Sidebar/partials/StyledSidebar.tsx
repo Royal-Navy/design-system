@@ -14,6 +14,7 @@ export const StyledSidebar = styled.aside<StyledSidebarProps>`
   flex-direction: column;
   position: relative;
   z-index: ${zIndex('sidebar', 0)};
+  flex-shrink: 0;
   width: ${({ isOpen }) => (isOpen ? '18rem' : '3.75rem')};
   height: 100vh;
   background-color: ${color('neutral', '700')};

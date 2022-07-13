@@ -5,7 +5,7 @@ import { Transition } from 'react-transition-group'
 import { SidebarContext } from './context'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { NotificationsProps } from '../NotificationPanel'
-import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
+import { TRANSITION_TIMEOUT } from './constants'
 import { StyledNotificationsSheet } from './partials/StyledNotificationsSheet'
 import { StyledNotificationsSheetButton } from './partials/StyledNotificationsSheetButton'
 import { StyledNotificationDot } from './partials/StyledNotificationDot'
@@ -48,7 +48,7 @@ export const SidebarNotifications: React.FC<SidebarNotificationsProps> = ({
           )}
           <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
             {(state) => (
-              <StyledNotificationsLabel style={{ ...TRANSITION_STYLES[state] }}>
+              <StyledNotificationsLabel $transitionStatus={state}>
                 Notifications
               </StyledNotificationsLabel>
             )}

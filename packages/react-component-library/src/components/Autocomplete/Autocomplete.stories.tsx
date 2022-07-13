@@ -6,6 +6,7 @@ import {
   IconRemove,
 } from '@defencedigital/icon-library'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import styled from 'styled-components'
 
 import { Autocomplete, AutocompleteOption } from './index'
 
@@ -20,21 +21,25 @@ export default {
   },
 } as ComponentMeta<typeof Autocomplete>
 
+const StyledWrapper = styled.div<{ $isDisabled?: boolean }>`
+  height: ${({ $isDisabled }) => ($isDisabled ? 'initial' : '18rem')};
+`
+
 const Template: ComponentStory<typeof Autocomplete> = (args) => (
-  <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
+  <StyledWrapper $isDisabled={args.isDisabled}>
     <Autocomplete {...args}>
       <AutocompleteOption value="one">One</AutocompleteOption>
       <AutocompleteOption value="two">Two</AutocompleteOption>
       <AutocompleteOption value="three">Three</AutocompleteOption>
       <AutocompleteOption value="four">Four</AutocompleteOption>
     </Autocomplete>
-  </div>
+  </StyledWrapper>
 )
 
 const TemplateWithIconsAndBadges: ComponentStory<typeof Autocomplete> = (
   args
 ) => (
-  <div style={{ height: args.isDisabled ? 'initial' : '18rem' }}>
+  <StyledWrapper $isDisabled={args.isDisabled}>
     <Autocomplete {...args}>
       <AutocompleteOption badge={100} icon={<IconAnchor />} value="one">
         One
@@ -53,7 +58,7 @@ const TemplateWithIconsAndBadges: ComponentStory<typeof Autocomplete> = (
         Four
       </AutocompleteOption>
     </Autocomplete>
-  </div>
+  </StyledWrapper>
 )
 
 export const Default = Template.bind({})

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
+import { css } from 'styled-components'
 
 import { FloatingBox, FloatingBoxWithEmbeddedTargetProps } from './FloatingBox'
 import { FLOATING_BOX_SCHEME } from './constants'
@@ -15,7 +16,7 @@ export default {
 
 const Template: Story<FloatingBoxWithEmbeddedTargetProps> = (props) => (
   <FloatingBox isVisible renderTarget={<div />} {...props}>
-    <div style={{ padding: '0 1rem' }}>
+    <div css={{ padding: '0 1rem' }}>
       <pre>Arbitrary JSX content</pre>
     </div>
   </FloatingBox>

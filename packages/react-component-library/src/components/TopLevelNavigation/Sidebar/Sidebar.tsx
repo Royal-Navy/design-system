@@ -7,7 +7,7 @@ import { SidebarNotifications } from './SidebarNotifications'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext, SidebarProvider } from './context'
 import { NotificationsProps } from '../NotificationPanel'
-import { TRANSITION_STYLES, TRANSITION_TIMEOUT } from './constants'
+import { TRANSITION_TIMEOUT } from './constants'
 import { StyledSidebar } from './partials/StyledSidebar'
 import { StyledHead } from './partials/StyledHead'
 import { StyledHeadIcon } from './partials/StyledHeadIcon'
@@ -70,10 +70,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               unmountOnExit
             >
               {(state) => (
-                <SidebarHandle
-                  ref={nodeRef}
-                  style={{ ...TRANSITION_STYLES[state] }}
-                />
+                <SidebarHandle ref={nodeRef} transitionStatus={state} />
               )}
             </Transition>
             {title && (
@@ -85,7 +82,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   unmountOnExit
                 >
                   {(state) => (
-                    <StyledHeadTitle style={{ ...TRANSITION_STYLES[state] }}>
+                    <StyledHeadTitle $transitionStatus={state}>
                       {title}
                     </StyledHeadTitle>
                   )}
