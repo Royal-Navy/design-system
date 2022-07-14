@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.7](https://github.com/defencedigital/mod-uk-design-system/compare/3.11.6...3.11.7) (2022-07-14)
+
+
+### Bug Fixes
+
+* **Autocomplete:** Update accessibility ([c089668](https://github.com/defencedigital/mod-uk-design-system/commit/c089668cdb2ba058b269c5b38e7f248e80ee7c0c))
+* **Dropdown:** Adjust disabled opacity ([1c00d88](https://github.com/defencedigital/mod-uk-design-system/commit/1c00d88c39afa222fca42a289a31cf71a4a933e6))
+* **Select:** Update accessibility ([37ac31e](https://github.com/defencedigital/mod-uk-design-system/commit/37ac31e6d6d5440132c730b28afa86e1bd585f34))
+* **Sidebar:** Stop sidebar width being shrunk ([1d84a3a](https://github.com/defencedigital/mod-uk-design-system/commit/1d84a3ae3cda08fe63d4030e489d72a752ab1423))
+
+
+### Performance Improvements
+
+* **ReactComponentLibrary:** Replace uses of style prop ([fcfcbfb](https://github.com/defencedigital/mod-uk-design-system/commit/fcfcbfb1df263c61e0e0ac78e9c4e92decc71a5f))
+
+
+
+
+
 ## [3.11.6](https://github.com/defencedigital/mod-uk-design-system/compare/3.11.5...3.11.6) (2022-07-12)
 
 
