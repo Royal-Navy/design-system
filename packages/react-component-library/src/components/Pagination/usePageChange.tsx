@@ -41,25 +41,28 @@ export const usePageChange = (
     [changePage]
   )
 
-  function onKeyDown(event: React.KeyboardEvent) {
-    setHasError(false)
+  const onKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      setHasError(false)
 
-    if (event.key === 'Enter') {
-      const { value } = event.target as HTMLInputElement
+      if (event.key === 'Enter') {
+        const { value } = event.target as HTMLInputElement
 
-      if (!Number.isNaN(value)) {
-        const valueNumber = Number(value)
-        const isAtLeastZero = valueNumber >= 0
-        const isNoMoreThanTotal = valueNumber <= totalPages
-        if (isAtLeastZero && isNoMoreThanTotal) {
-          changePage(event, valueNumber)
-          return
+        if (!Number.isNaN(value)) {
+          const valueNumber = Number(value)
+          const isAtLeastZero = valueNumber >= 0
+          const isNoMoreThanTotal = valueNumber <= totalPages
+          if (isAtLeastZero && isNoMoreThanTotal) {
+            changePage(event, valueNumber)
+            return
+          }
         }
-      }
 
-      setHasError(true)
-    }
-  }
+        setHasError(true)
+      }
+    },
+    [changePage, totalPages]
+  )
 
   return {
     currentPage,

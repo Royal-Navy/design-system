@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import { Input } from './Input'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
@@ -83,7 +83,7 @@ export interface TextInputProps
   value?: string
 }
 
-export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
+const Component = React.forwardRef<HTMLInputElement, TextInputProps>(
   (
     {
       className,
@@ -128,6 +128,8 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
     )
   }
 )
+
+export const TextInput = memo(Component)
 
 TextInput.displayName = 'TextInput'
 // TextInput.whyDidYouRender = true
