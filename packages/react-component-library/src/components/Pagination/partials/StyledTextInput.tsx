@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
@@ -6,7 +7,7 @@ import { StyledInput } from '../../TextInput/partials/StyledInput'
 
 const { spacing } = selectors
 
-export const StyledTextInput = styled(TextInput)`
+export const StyledTextInput = memo(styled(TextInput)`
   width: 51px;
   margin: 0;
 
@@ -14,4 +15,4 @@ export const StyledTextInput = styled(TextInput)`
     height: 31px;
     padding: 0 0 0 ${spacing('6')};
   }
-`
+`)

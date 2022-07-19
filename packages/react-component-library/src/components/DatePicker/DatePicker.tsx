@@ -249,7 +249,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       >
         <StyledOuterWrapper
           data-testid="datepicker-outer-wrapper"
-          $hasFocus={hasFocus}
+          $hasFocus={hasFocus && !isRange}
           $isInvalid={hasError}
           $isDisabled={isDisabled}
         >
