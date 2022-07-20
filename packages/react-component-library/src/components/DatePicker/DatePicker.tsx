@@ -146,6 +146,11 @@ export interface DatePickerProps
    */
   placement?: Placement
   /**
+   * Optional override for the date marked as today in the picker.
+   * Can be used for e.g. visual regression testing.
+   */
+  today?: Date
+  /**
    * Not used. Use `startDate` and `endDate` instead.
    */
   value?: never
@@ -173,6 +178,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   initialEndDate = null,
   placement = 'bottom-start',
   onBlur,
+  today,
   // Formik can pass value – drop it to stop it being forwarded to the input
   value: _,
   ...rest
@@ -233,6 +239,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   const modifiers = {
     start: replaceInvalidDate(startDate),
     end: replaceInvalidDate(endDate),
+    ...(today ? { today } : {}),
   }
 
   const hasContent = Boolean(startDate)
