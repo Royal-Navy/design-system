@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.8](https://github.com/defencedigital/mod-uk-design-system/compare/3.11.7...3.11.8) (2022-07-20)
+
+
+### Bug Fixes
+
+* **DatePicker:** Resolve regression with outer wrapper styling ([52df5ff](https://github.com/defencedigital/mod-uk-design-system/commit/52df5ffad71fc952f778ae4867d0d1f94b7049e1)), closes [/github.com/defencedigital/mod-uk-design-system/blob/cae408742776d39752d5004f2eea122515461f98/packages/react-component-library/cypress/e2e/DatePicker/index.cy.ts#L93](https://github.com//github.com/defencedigital/mod-uk-design-system/blob/cae408742776d39752d5004f2eea122515461f98/packages/react-component-library/cypress/e2e/DatePicker/index.cy.ts/issues/L93)
+
+
+### Performance Improvements
+
+* **Pagination:** Optimize rerenders ([be0539c](https://github.com/defencedigital/mod-uk-design-system/commit/be0539c59098f52f0adc9161b15783deb551df28))
+* **TextInput:** Optimize rerenders ([dfea6d6](https://github.com/defencedigital/mod-uk-design-system/commit/dfea6d671d4b61dacb74a68492b049a75d0956ea))
+
+
+
+
+
 ## [3.11.7](https://github.com/defencedigital/mod-uk-design-system/compare/3.11.6...3.11.7) (2022-07-14)
 
 
