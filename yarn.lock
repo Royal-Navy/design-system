@@ -1841,9 +1841,9 @@
   integrity sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==
 
 "@inline-svg-unique-id/react@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@inline-svg-unique-id/react/-/react-1.2.2.tgz#c3c71671efe3d71fe924b0d327c810169eda3d94"
-  integrity sha512-LXdtYmLFhjaspgRBX8MXsBTwqPt55K92IdOJjocUZwj/ga5lzetQlcrzZ1agFvfKLi1nbtbJYkJyqa35kjWF/g==
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@inline-svg-unique-id/react/-/react-1.2.3.tgz#7b682183d1d2a4cb9e1ace10569c1d4b45589604"
+  integrity sha512-Tf6u4pTdkeN4BLuh4aHNFDrKxUoiNbCglou3IDem7x0KRCt/rrhRgLljx85X2k5aAUdLvDhQcpeKVePFarF+8w==
 
 "@isaacs/string-locale-compare@^1.1.0":
   version "1.1.0"
