@@ -76,6 +76,8 @@ export const Open = Template.bind({})
 Open.storyName = 'Open'
 Open.args = {
   initialIsOpen: true,
+  initialMonth: parseISO('2022-06-01'),
+  today: parseISO('2022-06-15'),
 }
 
 export const Range = Template.bind({})
