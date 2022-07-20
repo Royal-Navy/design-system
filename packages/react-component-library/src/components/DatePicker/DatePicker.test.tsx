@@ -1,7 +1,7 @@
 import { format, isValid } from 'date-fns'
 import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { ColorDanger800 } from '@defencedigital/design-tokens'
+import { ColorDanger800, ColorWarning800 } from '@defencedigital/design-tokens'
 import {
   fireEvent,
   render,
@@ -161,6 +161,14 @@ describe('DatePicker', () => {
       it('displays the container', () => {
         return waitFor(() => {
           expect(wrapper.getByTestId('floating-box')).toBeVisible()
+        })
+      })
+
+      it('colours the current date', () => {
+        return waitFor(() => {
+          expect(wrapper.getByText(/^5$/)).toHaveStyle({
+            color: ColorWarning800,
+          })
         })
       })
 
@@ -958,6 +966,26 @@ describe('DatePicker', () => {
 
     it('displays the picker as open on initial render', () => {
       expect(wrapper.getByTestId('floating-box')).toBeVisible()
+    })
+  })
+
+  describe('when the today prop is set', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <DatePicker initialIsOpen today={new Date(2019, 11, 15)} />
+      )
+    })
+
+    it('colours the override date', () => {
+      expect(wrapper.getByText(/^15$/)).toHaveStyle({
+        color: ColorWarning800,
+      })
+    })
+
+    it('does not colour the actual current date', () => {
+      expect(wrapper.getByText(/^5$/)).not.toHaveStyle({
+        color: ColorWarning800,
+      })
     })
   })
 
