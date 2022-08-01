@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
-import mergeRefs from 'react-merge-refs'
+import { mergeRefs } from 'react-merge-refs'
 
 import { CHECKBOX_RADIO_VARIANT } from './types'
 import { CheckboxRadioBaseProps } from './CheckboxRadioBaseProps'

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { Placement } from '@popperjs/core'
 import { Transition } from 'react-transition-group'
-import mergeRefs from 'react-merge-refs'
+import { mergeRefs } from 'react-merge-refs'
 import { CSSObject } from 'styled-components'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'

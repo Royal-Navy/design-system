@@ -13,7 +13,6 @@ module.exports = {
   testMatch: ['**/?(*.)(test).ts?(x)'],
   setupFilesAfterEnv: ['<rootDir>/jest/setupTests.js'],
   globalSetup: '<rootDir>/jest/globalSetup.js',
-  transformIgnorePatterns: [
-    '/node_modules/(?!@defencedigital/design-tokens).+\\.js$',
-  ],
+  transform: { '\\.m?[jt]sx?$': 'babel-jest' },
+  transformIgnorePatterns: ['node_modules/(?!(react-merge-refs)/)'],
 }
