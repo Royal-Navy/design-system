@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.3](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.2...3.12.3) (2022-08-18)
+
+**Note:** Version bump only for package @defencedigital/react-component-library
+
+
+
+
+
 ## [3.12.2](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.1...3.12.2) (2022-08-11)
 
 **Note:** Version bump only for package @defencedigital/react-component-library
