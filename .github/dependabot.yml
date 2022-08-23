@@ -5,9 +5,6 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
-    reviewers:
-      - m7kvqbe1
-      - thyhjwb6
     labels:
       - 'Type: Dependencies'
     commit-message:
