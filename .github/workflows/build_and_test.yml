@@ -93,114 +93,6 @@ jobs:
           yarn install --frozen-lockfile
           yarn --cwd packages/react-component-library lint
 
-  Test_react-component-library:
-    runs-on: ubuntu-latest
-    needs: [Build_icon_library, Lint_react-component-library]
-    steps:
-      - name: Git clone repository
-        uses: actions/checkout@v3
-
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Attach workspace
-        uses: actions/download-artifact@v3
-        with:
-          name: dist
-
-      - name: Jest
-        env:
-          JEST_JUNIT_OUTPUT_DIR: test-results/jest
-          JEST_JUNIT_OUTPUT_NAME: react-component-results.xml
-        run: |
-          tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
-          yarn --cwd packages/react-component-library test --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand --testResultsProcessor=jest-sonar-reporter
-
-      - name: SonarCloud Scan
-        uses: defencedigital/design-system-sonarcloud-action@master
-        if: (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && github.actor != 'dependabot[bot]'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-  Test-e2e_react-component-library:
-    runs-on: ubuntu-latest
-    needs: [Build_icon_library, Lint_react-component-library]
-    strategy:
-      matrix:
-        browser: ['chrome', 'firefox']
-    steps:
-      - name: Git clone repository
-        uses: actions/checkout@v3
-
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Cache Cypress binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            cypress-${{ runner.os }}-cypress-
-
-      - name: Attach workspace
-        uses: actions/download-artifact@v3
-        with:
-          name: dist
-
-      - name: Unpack icon library & design tokens
-        run: |
-          tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
-
-      - name: Confirm Cypress binary is installed
-        run: |
-          result=$(yarn cypress version)
-          if [[  `echo $result` == *"not installed"* ]];
-            then echo "cypress binary is not installed, installing binary...." && yarn cypress install;
-            else echo "cypress binary is installed, no action required";
-          fi
-
-      - name: Run e2e tests
-        uses: cypress-io/github-action@v4
-        env:
-          CHOKIDAR_USEPOLLING: 1
-        with:
-          project: ./packages/react-component-library
-          start: yarn --cwd packages/react-component-library storybook:test
-          wait-on: 'http://localhost:6006'
-          wait-on-timeout: 180
-          browser: ${{ matrix.browser }}
-
-  Test_a11y:
-    runs-on: ubuntu-latest
-    needs: [Build_icon_library, Lint_react-component-library]
-    steps:
-      - name: Git clone repository
-        uses: actions/checkout@v3
-
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Attach workspace
-        uses: actions/download-artifact@v3
-        with:
-          name: dist
-
-      - name: Jest a11y
-        run: |
-          tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
-          yarn --cwd packages/react-component-library test:a11y
-
   Test_design-tokens:
     runs-on: ubuntu-latest
     needs: [Build_icon_library]
@@ -248,12 +140,5 @@ jobs:
         run: |
           tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
           yarn --cwd packages/react-component-library storybook:static
-          echo "$CHROMATIC_SHA" > packages/react-component-library/.static_storybook/sha
-          echo "$CHROMATIC_BRANCH" > packages/react-component-library/.static_storybook/branch
-          echo "$CHROMATIC_SLUG" > packages/react-component-library/.static_storybook/slug
-
-      - name: Upload Storybook artefact
-        uses: actions/upload-artifact@v3
-        with:
-          name: storybook-static
-          path: packages/react-component-library/.static_storybook
+          cd packages/react-component-library
+          npm exec --no -- chromatic --project-token=${{secrets.CHROMATIC_TOKEN}} --storybook-build-dir=.static_storybook
