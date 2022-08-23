@@ -95,7 +95,7 @@
     "babel-jest": "^28.0.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-jsx-remove-data-test-id": "^3.0.0",
-    "babel-plugin-search-and-replace": "1.1.0",
+    "babel-plugin-search-and-replace": "1.1.1",
     "babel-plugin-styled-components": "^2.0.2",
     "babel-polyfill": "^6.26.0",
     "chromatic": "6.7.4",
