@@ -2,7 +2,10 @@ import React, { useRef, useState } from 'react'
 import { UseComboboxStateChange } from 'downshift'
 
 import { findIndexOfInputValue } from '../helpers'
-import { SelectChildWithStringType } from '../../SelectBase'
+import {
+  SelectBaseOptionAsStringProps,
+  SelectChildWithStringType,
+} from '../../SelectBase'
 
 export function useAutocomplete(
   children: SelectChildWithStringType[],
@@ -29,7 +32,7 @@ export function useAutocomplete(
     if (isOpen) {
       setItems(
         children.filter((item) => {
-          if (!React.isValidElement(item)) {
+          if (!React.isValidElement<SelectBaseOptionAsStringProps>(item)) {
             return false
           }
           const filter = (inputValue as string).toLowerCase()

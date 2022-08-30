@@ -79,7 +79,7 @@ export const Switch: React.FC<SwitchProps> = ({
       )}
       <StyledContainer>
         {React.Children.map(children, (child: SwitchChildType) => {
-          if (!React.isValidElement(child)) {
+          if (!React.isValidElement<SwitchOptionProps>(child)) {
             return null
           }
 

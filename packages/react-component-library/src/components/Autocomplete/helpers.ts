@@ -1,13 +1,19 @@
 import React from 'react'
 
-import { SelectChildWithStringType } from '../SelectBase'
+import {
+  SelectBaseOptionAsStringProps,
+  SelectChildWithStringType,
+} from '../SelectBase'
 
 function findIndexOfInputValue(
   items: SelectChildWithStringType[],
   inputValue: string
 ): number {
   return items.findIndex((child: SelectChildWithStringType) => {
-    return React.isValidElement(child) && child.props.children === inputValue
+    return (
+      React.isValidElement<SelectBaseOptionAsStringProps>(child) &&
+      child.props.children === inputValue
+    )
   })
 }
 
