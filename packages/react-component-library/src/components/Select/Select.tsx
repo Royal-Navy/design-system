@@ -4,6 +4,7 @@ import { useSelect } from 'downshift'
 import {
   initialSelectedItem,
   itemToString,
+  SelectBaseOptionAsStringProps,
   SelectBaseProps,
   SelectChildWithStringType,
   SelectLayout,
@@ -38,7 +39,11 @@ export const Select: React.FC<SelectBaseProps> = ({
     items: React.Children.toArray(children),
     onSelectedItemChange: ({ selectedItem: newItem }) => {
       if (onChange) {
-        onChange(React.isValidElement(newItem) ? newItem.props.value : null)
+        onChange(
+          React.isValidElement<SelectBaseOptionAsStringProps>(newItem)
+            ? newItem.props.value
+            : null
+        )
       }
     },
   })
@@ -73,7 +78,7 @@ export const Select: React.FC<SelectBaseProps> = ({
         React.Children.map(
           children,
           (child: SelectChildWithStringType, index) => {
-            if (!React.isValidElement(child)) {
+            if (!React.isValidElement<SelectBaseOptionAsStringProps>(child)) {
               return null
             }
 

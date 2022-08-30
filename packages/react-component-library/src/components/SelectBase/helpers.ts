@@ -1,9 +1,12 @@
 import React from 'react'
 
+import { SelectBaseOptionAsStringProps } from './SelectBaseOption'
 import { SelectChildrenType, SelectChildWithStringType } from './types'
 
 function itemToString(item: SelectChildWithStringType) {
-  return React.isValidElement(item) ? item.props.children : ''
+  return React.isValidElement<SelectBaseOptionAsStringProps>(item)
+    ? item.props.children
+    : ''
 }
 
 function initialSelectedItem(

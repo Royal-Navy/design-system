@@ -4,6 +4,7 @@ import { useCombobox } from 'downshift'
 import {
   initialSelectedItem,
   itemToString,
+  SelectBaseOptionAsStringProps,
   SelectBaseProps,
   SelectChildWithStringType,
   SelectLayout,
@@ -65,7 +66,11 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     initialSelectedItem: initialSelectedItem(children, value),
     onSelectedItemChange: ({ selectedItem: newItem }) => {
       if (onChange) {
-        onChange(React.isValidElement(newItem) ? newItem.props.value : null)
+        onChange(
+          React.isValidElement<SelectBaseOptionAsStringProps>(newItem)
+            ? newItem.props.value
+            : null
+        )
       }
 
       focusToggleButton()
@@ -117,7 +122,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     >
       {isOpen &&
         React.Children.map(items, (child: SelectChildWithStringType, index) => {
-          if (!React.isValidElement(child)) {
+          if (!React.isValidElement<SelectBaseOptionAsStringProps>(child)) {
             return null
           }
 
