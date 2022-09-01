@@ -33,8 +33,15 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   value = null,
   ...rest
 }) => {
-  const { hasError, inputRef, items, onInputValueChange, onIsOpenChange } =
-    useAutocomplete(React.Children.toArray(children), isInvalid)
+  const {
+    hasError,
+    inputRef,
+    items,
+    onInputValueChange,
+    onIsOpenChange,
+    onSelectedItemChange,
+  } = useAutocomplete(React.Children.toArray(children), isInvalid)
+
   const {
     buttonRef,
     focusToggleButton,
@@ -64,7 +71,11 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     onInputValueChange,
     onIsOpenChange,
     initialSelectedItem: initialSelectedItem(children, value),
-    onSelectedItemChange: ({ selectedItem: newItem }) => {
+    onSelectedItemChange: (changes) => {
+      onSelectedItemChange(changes)
+
+      const { selectedItem: newItem } = changes
+
       if (onChange) {
         onChange(
           React.isValidElement<SelectBaseOptionAsStringProps>(newItem)
