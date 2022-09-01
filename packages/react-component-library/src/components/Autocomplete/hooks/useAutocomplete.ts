@@ -20,26 +20,39 @@ export function useAutocomplete(
   onIsOpenChange: (
     changes: UseComboboxStateChange<SelectChildWithStringType>
   ) => void
+  onSelectedItemChange: (
+    changes: UseComboboxStateChange<SelectChildWithStringType>
+  ) => void
 } {
   const [hasError, setHasError] = useState<boolean>(isInvalid)
   const inputRef = useRef<HTMLInputElement>(null)
-  const [items, setItems] = useState<SelectChildWithStringType[]>(children)
+  const [filterValue, setFilterValue] = useState<string>('')
+
+  const items = React.Children.toArray(children).filter((child) => {
+    if (!React.isValidElement<SelectBaseOptionAsStringProps>(child)) {
+      return false
+    }
+
+    if (!filterValue) {
+      return true
+    }
+
+    return (
+      (child.props.children || '')
+        .toLowerCase()
+        .indexOf(filterValue.toLowerCase()) > -1
+    )
+  })
 
   function onInputValueChange({
     inputValue,
     isOpen,
   }: UseComboboxStateChange<SelectChildWithStringType>) {
-    if (isOpen) {
-      setItems(
-        children.filter((item) => {
-          if (!React.isValidElement<SelectBaseOptionAsStringProps>(item)) {
-            return false
-          }
-          const filter = (inputValue as string).toLowerCase()
-          return item.props.children.toLowerCase().indexOf(filter) > -1
-        })
-      )
-    } else {
+    if (isOpen || !inputValue) {
+      setFilterValue(inputValue || '')
+    }
+
+    if (!isOpen) {
       setHasError(getHasError(inputValue))
     }
   }
@@ -62,12 +75,12 @@ export function useAutocomplete(
       const newHasError = getHasError(inputValue)
       setHasError(newHasError)
 
-      if (!newHasError) {
-        setItems(children)
-      }
-
       inputRef.current?.blur()
     }
+  }
+
+  function onSelectedItemChange() {
+    setFilterValue('')
   }
 
   return {
@@ -76,5 +89,6 @@ export function useAutocomplete(
     items,
     onInputValueChange,
     onIsOpenChange,
+    onSelectedItemChange,
   }
 }

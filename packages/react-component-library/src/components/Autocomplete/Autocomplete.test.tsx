@@ -181,6 +181,58 @@ describe('Autocomplete', () => {
     })
   })
 
+  describe('when options are added after the initial render', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Autocomplete id="autocomplete-id" label="Label" onChange={jest.fn()}>
+          <>{}</>
+        </Autocomplete>
+      )
+      wrapper.rerender(
+        <Autocomplete id="autocomplete-id" label="Label" onChange={jest.fn()}>
+          <AutocompleteOption value="one">One</AutocompleteOption>
+          <AutocompleteOption value="two">Two</AutocompleteOption>
+        </Autocomplete>
+      )
+      return userEvent.click(wrapper.getByTestId('select-arrow-button'))
+    })
+
+    it('displays the items', () => {
+      const options = wrapper.getAllByTestId('select-option')
+
+      expect(options[0]).toHaveTextContent('One')
+      expect(options[1]).toHaveTextContent('Two')
+      expect(options).toHaveLength(2)
+    })
+  })
+
+  describe('when options are added while the menu is open', () => {
+    beforeEach(async () => {
+      wrapper = render(
+        <Autocomplete id="autocomplete-id" label="Label" onChange={jest.fn()}>
+          <>{}</>
+        </Autocomplete>
+      )
+
+      await userEvent.click(wrapper.getByTestId('select-arrow-button'))
+
+      wrapper.rerender(
+        <Autocomplete id="autocomplete-id" label="Label" onChange={jest.fn()}>
+          <AutocompleteOption value="one">One</AutocompleteOption>
+          <AutocompleteOption value="two">Two</AutocompleteOption>
+        </Autocomplete>
+      )
+    })
+
+    it('displays the items', () => {
+      const options = wrapper.getAllByTestId('select-option')
+
+      expect(options[0]).toHaveTextContent('One')
+      expect(options[1]).toHaveTextContent('Two')
+      expect(options).toHaveLength(2)
+    })
+  })
+
   describe('when the default `id` is used and the arrow button is clicked', () => {
     let initialId: string
 
