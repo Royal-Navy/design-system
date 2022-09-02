@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useCombobox } from 'downshift'
 
 import {
@@ -22,6 +22,10 @@ export interface AutocompleteProps extends SelectBaseProps {
    * be cleared by manually deleting the text in the input.)
    */
   hideClearButton?: boolean
+  /**
+   * Called when the input loses focus.
+   */
+  onBlur?: (event: React.FocusEvent) => void
 }
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
@@ -29,6 +33,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   id: externalId,
   initialIsOpen,
   isInvalid = false,
+  onBlur,
   onChange,
   value = null,
   ...rest
@@ -99,13 +104,22 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
   const { onInputFocusHandler } = useMenuVisibility(isOpen, openMenu)
 
+  const handleInputBlur: React.FocusEventHandler<HTMLInputElement> =
+    useCallback(
+      (...args) => {
+        onInputBlurHandler()
+        onBlur?.(...args)
+      },
+      [onBlur, onInputBlurHandler]
+    )
+
   return (
     <SelectLayout
       hasLabelFocus={isOpen}
       hasSelectedItem={!!inputValue}
       id={id}
       inputProps={getInputProps({
-        onBlur: onInputBlurHandler,
+        onBlur: handleInputBlur,
         onFocus: onInputFocusHandler,
         onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
           onInputTabKeyHandler(e)

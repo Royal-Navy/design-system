@@ -7,17 +7,24 @@ import userEvent from '@testing-library/user-event'
 import { Autocomplete, AutocompleteOption } from '.'
 
 describe('Autocomplete', () => {
-  let onChangeSpy: (value: string | null) => void
+  let onBlurSpy: jest.Mock
+  let onChangeSpy: jest.Mock<void, [string | null]>
   let wrapper: RenderResult
 
   describe('when using the default prop values', () => {
     beforeEach(() => {
       const canShowFourthOption = false
 
-      onChangeSpy = jest.fn()
+      onBlurSpy = jest.fn()
+      onChangeSpy = jest.fn<void, [string | null]>()
 
       wrapper = render(
-        <Autocomplete id="autocomplete-id" label="Label" onChange={onChangeSpy}>
+        <Autocomplete
+          id="autocomplete-id"
+          label="Label"
+          onBlur={onBlurSpy}
+          onChange={onChangeSpy}
+        >
           <AutocompleteOption value="one">One</AutocompleteOption>
           <AutocompleteOption value="two">Two</AutocompleteOption>
           <AutocompleteOption value="three">Three</AutocompleteOption>
@@ -102,6 +109,10 @@ describe('Autocomplete', () => {
         expect(wrapper.getByTestId('select-input')).toHaveFocus()
       })
 
+      it('does not call `onBlur`', () => {
+        expect(onBlurSpy).not.toHaveBeenCalled()
+      })
+
       it('displays the items', () => {
         const options = wrapper.getAllByTestId('select-option')
 
@@ -121,6 +132,12 @@ describe('Autocomplete', () => {
       describe('and the second item is clicked', () => {
         beforeEach(() => {
           return userEvent.click(wrapper.getByText('Two'))
+        })
+
+        it('calls `onBlur`', () => {
+          // This is called twice when an item is clicked on – this is due to
+          // Downshift forcibly focusing the input when an item is clicked.
+          expect(onBlurSpy).toHaveBeenCalled()
         })
 
         it('hides the items', () => {
