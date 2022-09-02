@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.7](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.6...3.12.7) (2022-09-02)
+
+
+### Bug Fixes
+
+* **Autocomplete:** Handle changes to options list after initial render ([0ce97a5](https://github.com/defencedigital/mod-uk-design-system/commit/0ce97a582ccd805112d2ccd289b30973d76d2aae))
+
+
+
+
+
 ## [3.12.6](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.5...3.12.6) (2022-08-31)
 
 **Note:** Version bump only for package moduk-design-system
