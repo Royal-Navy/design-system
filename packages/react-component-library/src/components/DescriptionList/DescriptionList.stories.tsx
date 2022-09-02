@@ -1,6 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
+import { accessibilityConfig } from '../../../.storybook/accessibilityConfig'
 import { DescriptionList, DescriptionListItem } from './index'
 
 export default {
@@ -15,16 +16,7 @@ export default {
 const disableDefinitionList = {
   a11y: {
     config: {
-      rules: [
-        {
-          id: 'definition-list',
-          enabled: false,
-        },
-        {
-          id: 'dlitem',
-          enabled: false,
-        },
-      ],
+      rules: accessibilityConfig['Description List'],
     },
   },
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
+import { accessibilityConfig } from '../../../.storybook/accessibilityConfig'
 import {
   CustomTokenSets as CustomTokenSetsExample,
   StyledTheming as StyledThemingExample,
@@ -12,12 +13,7 @@ export default {
   parameters: {
     a11y: {
       config: {
-        rules: [
-          {
-            id: 'color-contrast',
-            enabled: false,
-          },
-        ],
+        rules: accessibilityConfig['Custom Theming'],
       },
     },
   },

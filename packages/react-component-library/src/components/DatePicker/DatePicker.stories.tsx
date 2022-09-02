@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { parseISO } from 'date-fns'
 import React from 'react'
 
+import { accessibilityConfig } from '../../../.storybook/accessibilityConfig'
 import { DatePicker } from '.'
 
 export default {
@@ -11,12 +12,7 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     a11y: {
       config: {
-        rules: [
-          {
-            id: 'aria-required-attr',
-            enabled: false,
-          },
-        ],
+        rules: accessibilityConfig['Date Picker'],
       },
     },
   },

@@ -12,6 +12,7 @@ import {
   IconGrain,
 } from '@defencedigital/icon-library'
 
+import { accessibilityConfig } from '../../../../.storybook/accessibilityConfig'
 import {
   Sidebar,
   SidebarNav,
@@ -25,12 +26,7 @@ import { Notification, Notifications } from '../NotificationPanel'
 const disableColorContrastRule = {
   a11y: {
     config: {
-      rules: [
-        {
-          id: 'color-contrast',
-          enabled: false,
-        },
-      ],
+      rules: accessibilityConfig.Sidebar,
     },
   },
 }
