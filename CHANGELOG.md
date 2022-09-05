@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.8](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.7...3.12.8) (2022-09-05)
+
+
+### Bug Fixes
+
+* **Autocomplete:** Add missing onBlur prop ([ab5bddd](https://github.com/defencedigital/mod-uk-design-system/commit/ab5bddd0804cb49173d6ca6768b9e28e2b0c06a9))
+
+
+
+
+
 ## [3.12.7](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.6...3.12.7) (2022-09-02)
 
 
