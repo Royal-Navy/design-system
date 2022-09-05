@@ -21,9 +21,7 @@ export function useFocusTrapOptions(
         isEventTargetDescendantOf(event, clickAllowedElementRefs),
       clickOutsideDeactivates: (event) =>
         !isEventTargetDescendantOf(event, clickAllowedElementRefs),
-      // Temporary workaround until we update to react-day-picker v8, which has a way
-      // to set the initial focus to the selected date (or today if no date selected)
-      initialFocus: '[role="button"]',
+      initialFocus: false,
       onDeactivate: close,
     }),
     [clickAllowedElementRefs, close]
