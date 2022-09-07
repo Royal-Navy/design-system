@@ -178,29 +178,6 @@ jobs:
           wait-on-timeout: 180
           browser: ${{ matrix.browser }}
 
-  Test_a11y:
-    runs-on: ubuntu-latest
-    needs: [Build_icon_library, Lint_react-component-library]
-    steps:
-      - name: Git clone repository
-        uses: actions/checkout@v3
-
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Attach workspace
-        uses: actions/download-artifact@v3
-        with:
-          name: dist
-
-      - name: Jest a11y
-        run: |
-          tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
-          yarn --cwd packages/react-component-library test:a11y
-
   Test_design-tokens:
     runs-on: ubuntu-latest
     needs: [Build_icon_library]
@@ -257,3 +234,38 @@ jobs:
         with:
           name: storybook-static
           path: packages/react-component-library/.static_storybook
+
+  Test_a11y:
+    runs-on: ubuntu-latest
+    needs: [Build_storybook]
+    steps:
+      - name: Git clone repository
+        uses: actions/checkout@v3
+
+      - name: Cache Node modules
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v3
+        with:
+          path: '~/.cache/ms-playwright'
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Attach workspace
+        uses: actions/download-artifact@v3
+        with:
+          name: storybook-static
+          path: packages/react-component-library/.static_storybook
+
+      - name: Set up Playwright
+        run: |
+          npm exec --no -- playwright install --with-deps chromium
+
+      - name: Run accessibility tests
+        run: |
+          npm exec --no -- concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "npm exec --no -- http-server packages/react-component-library/.static_storybook --port 6006 --silent" \
+            "npm exec --no -- wait-on tcp:6006 && yarn  --cwd packages/react-component-library test:a11y"

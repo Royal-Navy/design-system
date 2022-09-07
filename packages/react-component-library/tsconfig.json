@@ -19,5 +19,6 @@
     "target": "esnext",
     "types": ["jest", "@testing-library/jest-dom"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"]
 }

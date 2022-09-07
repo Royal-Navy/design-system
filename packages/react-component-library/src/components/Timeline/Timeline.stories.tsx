@@ -22,6 +22,7 @@ import {
   TimelineDays,
 } from '.'
 import { TIMELINE_BLOCK_SIZE } from './constants'
+import { accessibilityConfig } from '../../../.storybook/accessibilityConfig'
 
 const { fontSize } = selectors
 
@@ -41,6 +42,11 @@ export default {
   title: 'Compound Timeline',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
+    a11y: {
+      config: {
+        rules: accessibilityConfig['Compound Timeline'],
+      },
+    },
     docs: {
       description: {
         component:
@@ -68,19 +74,6 @@ export default {
   },
 } as ComponentMeta<typeof Timeline>
 
-const disableScrollableRegionFocusableRule = {
-  a11y: {
-    config: {
-      rules: [
-        {
-          id: 'scrollable-region-focusable',
-          enabled: false,
-        },
-      ],
-    },
-  },
-}
-
 const Template: ComponentStory<typeof Timeline> = (args) => (
   <Timeline {...args}>
     <TimelineTodayMarker />
@@ -96,7 +89,6 @@ Default.args = {
   startDate: new Date(2022, 0, 1),
   today: new Date(2022, 0, 15),
 }
-Default.parameters = disableScrollableRegionFocusableRule
 Default.storyName = 'No data'
 
 export const BoundByFixedDates = Template.bind({})
@@ -105,7 +97,6 @@ BoundByFixedDates.args = {
   startDate: new Date(2021, 0, 13),
   today: new Date(2021, 0, 15),
 }
-BoundByFixedDates.parameters = disableScrollableRegionFocusableRule
 BoundByFixedDates.storyName = 'Bound by fixed dates'
 
 export const WithData: ComponentStory<typeof Timeline> = (props) => (
@@ -143,7 +134,6 @@ export const WithData: ComponentStory<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithData.parameters = disableScrollableRegionFocusableRule
 WithData.storyName = 'With data'
 
 export const WithSidebar: ComponentStory<typeof Timeline> = (props) => (
@@ -192,8 +182,6 @@ export const WithSidebar: ComponentStory<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithSidebar.parameters = disableScrollableRegionFocusableRule
-
 WithSidebar.storyName = 'With sidebar'
 
 export const WithHours: ComponentStory<typeof Timeline> = (props) => (
@@ -233,8 +221,6 @@ export const WithHours: ComponentStory<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithHours.parameters = disableScrollableRegionFocusableRule
-
 WithHours.storyName = 'With hours'
 
 const StyledCustomTimelineMonth = styled.span<{
@@ -272,8 +258,6 @@ export const WithCustomMonths: ComponentStory<typeof Timeline> = (props) => {
     </Timeline>
   )
 }
-
-WithCustomMonths.parameters = disableScrollableRegionFocusableRule
 
 WithCustomMonths.storyName = 'With custom months'
 
@@ -318,8 +302,6 @@ export const WithCustomWeeks: ComponentStory<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithCustomWeeks.parameters = disableScrollableRegionFocusableRule
-
 WithCustomWeeks.storyName = 'With custom weeks'
 
 const StyledCustomTimelineDays = styled.span<{ dayWidth: number }>`
@@ -350,8 +332,6 @@ export const WithCustomDays: ComponentStory<typeof Timeline> = (props) => (
     <TimelineRows>{}</TimelineRows>
   </Timeline>
 )
-
-WithCustomDays.parameters = disableScrollableRegionFocusableRule
 
 WithCustomDays.storyName = 'With custom days'
 
@@ -390,8 +370,6 @@ export const WithCustomHours: ComponentStory<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithCustomHours.parameters = disableScrollableRegionFocusableRule
-
 WithCustomHours.storyName = 'With custom hours'
 
 const StyledCustomTodayMarker = styled.span<{ offset: string }>`
@@ -429,8 +407,6 @@ export const WithCustomTodayMarker: ComponentStory<typeof Timeline> = (
     <TimelineRows>{}</TimelineRows>
   </Timeline>
 )
-
-WithCustomTodayMarker.parameters = disableScrollableRegionFocusableRule
 
 WithCustomTodayMarker.storyName = 'With custom today marker'
 
@@ -490,8 +466,6 @@ export const WithCustomColumns: ComponentStory<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithCustomColumns.parameters = disableScrollableRegionFocusableRule
-
 WithCustomColumns.storyName = 'With custom columns'
 
 export const WithCustomRowCss: ComponentStory<typeof Timeline> = (props) => {
@@ -543,8 +517,6 @@ export const WithCustomRowCss: ComponentStory<typeof Timeline> = (props) => {
   )
 }
 
-WithCustomRowCss.parameters = disableScrollableRegionFocusableRule
-
 WithCustomRowCss.storyName = 'With custom row CSS'
 
 export const WithCustomEventBarColor: ComponentStory<typeof Timeline> = (
@@ -577,8 +549,6 @@ export const WithCustomEventBarColor: ComponentStory<typeof Timeline> = (
     </Timeline>
   )
 }
-
-WithCustomEventBarColor.parameters = disableScrollableRegionFocusableRule
 
 WithCustomEventBarColor.storyName = 'With custom event bar color'
 
@@ -667,8 +637,6 @@ export const WithCustomEventContent: ComponentStory<typeof Timeline> = (
   </Timeline>
 )
 
-WithCustomEventContent.parameters = disableScrollableRegionFocusableRule
-
 WithCustomEventContent.storyName = 'With custom event content'
 
 export const WithCustomDayWidth: ComponentStory<typeof Timeline> = (props) => {
@@ -709,8 +677,6 @@ export const WithCustomDayWidth: ComponentStory<typeof Timeline> = (props) => {
     </Timeline>
   )
 }
-
-WithCustomDayWidth.parameters = disableScrollableRegionFocusableRule
 
 WithCustomDayWidth.storyName = 'With custom day width'
 
@@ -753,8 +719,6 @@ export const WithCustomRange: ComponentStory<typeof Timeline> = (props) => {
   )
 }
 
-WithCustomRange.parameters = disableScrollableRegionFocusableRule
-
 WithCustomRange.storyName = 'With custom range'
 
 export const NoVisibleCells: ComponentStory<typeof Timeline> = (props) => (
@@ -781,8 +745,6 @@ export const NoVisibleCells: ComponentStory<typeof Timeline> = (props) => (
     </TimelineRows>
   </Timeline>
 )
-
-NoVisibleCells.parameters = disableScrollableRegionFocusableRule
 
 NoVisibleCells.storyName = 'No visible cells'
 
@@ -822,8 +784,6 @@ export const HiddenToolbar: ComponentStory<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-HiddenToolbar.parameters = disableScrollableRegionFocusableRule
-
 HiddenToolbar.storyName = 'Hidden toolbar'
 
 export const HiddenScaling: ComponentStory<typeof Timeline> = (props) => (
@@ -862,8 +822,6 @@ export const HiddenScaling: ComponentStory<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-HiddenScaling.parameters = disableScrollableRegionFocusableRule
-
 HiddenScaling.storyName = 'Hidden scaling'
 
 export const FullWidth = () => (
@@ -901,5 +859,4 @@ export const FullWidth = () => (
     </TimelineRows>
   </Timeline>
 )
-FullWidth.parameters = disableScrollableRegionFocusableRule
 FullWidth.storyName = 'Full width'
