@@ -62,6 +62,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
       css={styles.popper as CSSObject}
       {...attributes.popper}
       data-testid="context-menu"
+      role="menu"
       {...rest}
     >
       {children}
