@@ -22,7 +22,7 @@ import {
   TimelineDays,
 } from '.'
 import { TIMELINE_BLOCK_SIZE } from './constants'
-import { accessibilityConfig } from '../../../.storybook/accessibilityConfig'
+import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 
 const { fontSize } = selectors
 
@@ -44,7 +44,7 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     a11y: {
       config: {
-        rules: accessibilityConfig['Compound Timeline'],
+        rules: storyAccessibilityConfig['Compound Timeline'],
       },
     },
     docs: {

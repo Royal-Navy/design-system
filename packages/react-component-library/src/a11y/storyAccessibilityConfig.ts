@@ -1,4 +1,4 @@
-export const accessibilityConfig = {
+export const storyAccessibilityConfig = {
   'Compound Timeline': [
     {
       id: 'scrollable-region-focusable',

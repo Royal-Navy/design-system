@@ -2,14 +2,14 @@ import AxeBuilder from '@axe-core/playwright'
 import { TestRunnerConfig } from '@storybook/test-runner'
 import { red } from 'chalk'
 
-import { accessibilityConfig } from './accessibilityConfig'
+import { storyAccessibilityConfig } from '../src/a11y/storyAccessibilityConfig'
 import { ValueOf } from '../src/helpers'
 
 declare global {
   namespace jest {
     interface Matchers<R> {
       toHaveNoViolations(
-        config?: ValueOf<typeof accessibilityConfig>
+        config?: ValueOf<typeof storyAccessibilityConfig>
       ): CustomMatcherResult
     }
   }
@@ -18,7 +18,7 @@ declare global {
 expect.extend({
   toHaveNoViolations: async (
     page: Parameters<TestRunnerConfig['postRender']>[0],
-    config?: ValueOf<typeof accessibilityConfig>
+    config?: ValueOf<typeof storyAccessibilityConfig>
   ) => {
     const axeResults = await new AxeBuilder({ page })
       .include('#root')
@@ -48,7 +48,7 @@ expect.extend({
 
 const config: TestRunnerConfig = {
   async postRender(page, context) {
-    const config = accessibilityConfig[context.title]
+    const config = storyAccessibilityConfig[context.title]
 
     await expect(page).toHaveNoViolations(config)
   },

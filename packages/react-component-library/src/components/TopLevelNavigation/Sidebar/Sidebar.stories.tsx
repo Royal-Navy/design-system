@@ -12,7 +12,7 @@ import {
   IconGrain,
 } from '@defencedigital/icon-library'
 
-import { accessibilityConfig } from '../../../../.storybook/accessibilityConfig'
+import { storyAccessibilityConfig } from '../../../a11y/storyAccessibilityConfig'
 import {
   Sidebar,
   SidebarNav,
@@ -26,7 +26,7 @@ import { Notification, Notifications } from '../NotificationPanel'
 const disableColorContrastRule = {
   a11y: {
     config: {
-      rules: accessibilityConfig.Sidebar,
+      rules: storyAccessibilityConfig.Sidebar,
     },
   },
 }

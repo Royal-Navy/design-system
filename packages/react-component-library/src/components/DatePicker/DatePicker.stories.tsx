@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { parseISO } from 'date-fns'
 import React from 'react'
 
-import { accessibilityConfig } from '../../../.storybook/accessibilityConfig'
+import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DatePicker } from '.'
 
 export default {
@@ -12,7 +12,7 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     a11y: {
       config: {
-        rules: accessibilityConfig['Date Picker'],
+        rules: storyAccessibilityConfig['Date Picker'],
       },
     },
   },
