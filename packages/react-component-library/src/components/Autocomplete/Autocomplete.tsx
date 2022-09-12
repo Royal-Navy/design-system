@@ -45,7 +45,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     onInputValueChange,
     onIsOpenChange,
     onSelectedItemChange,
-  } = useAutocomplete(React.Children.toArray(children), isInvalid)
+  } = useAutocomplete(React.Children.toArray(children))
 
   const {
     buttonRef,
@@ -130,7 +130,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       inputWrapperProps={getComboboxProps({
         'aria-expanded': isOpen,
       })}
-      isInvalid={hasError}
+      isInvalid={hasError || isInvalid}
       isOpen={isOpen}
       menuProps={getMenuProps()}
       onClearButtonClick={() => {

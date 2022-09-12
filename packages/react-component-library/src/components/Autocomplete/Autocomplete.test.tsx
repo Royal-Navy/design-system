@@ -1,10 +1,16 @@
-import { TypographyS } from '@defencedigital/design-tokens'
+import { ColorDanger800, TypographyS } from '@defencedigital/design-tokens'
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import { COMPONENT_SIZE } from '../Forms'
+import { BORDER_WIDTH } from '../../styled-components'
 import { Autocomplete, AutocompleteOption } from '.'
+
+const ERROR_BOX_SHADOW = `0 0 0 ${
+  BORDER_WIDTH[COMPONENT_SIZE.FORMS]
+} ${ColorDanger800.toUpperCase()}`
 
 describe('Autocomplete', () => {
   let onBlurSpy: jest.Mock
@@ -306,6 +312,46 @@ describe('Autocomplete', () => {
       expect(
         wrapper.queryByTestId('select-clear-button')
       ).not.toBeInTheDocument()
+    })
+  })
+
+  describe('when the `isInvalid` prop is set', () => {
+    beforeEach(() => {
+      onBlurSpy = jest.fn()
+      onChangeSpy = jest.fn<void, [string | null]>()
+
+      wrapper = render(
+        <Autocomplete
+          id="autocomplete-id"
+          label="Label"
+          onBlur={onBlurSpy}
+          onChange={onChangeSpy}
+          isInvalid
+        >
+          <AutocompleteOption value="one">One</AutocompleteOption>
+        </Autocomplete>
+      )
+    })
+
+    it('has an error border', () => {
+      expect(wrapper.getByTestId('select-outer-wrapper')).toHaveStyleRule(
+        'box-shadow',
+        ERROR_BOX_SHADOW
+      )
+    })
+
+    describe('when the input is focused and blurred', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('select-input').focus()
+        wrapper.getByTestId('select-input').blur()
+      })
+
+      it('still has an error border', () => {
+        expect(wrapper.getByTestId('select-outer-wrapper')).toHaveStyleRule(
+          'box-shadow',
+          ERROR_BOX_SHADOW
+        )
+      })
     })
   })
 

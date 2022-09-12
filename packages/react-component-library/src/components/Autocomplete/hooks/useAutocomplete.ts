@@ -7,10 +7,7 @@ import {
   SelectChildWithStringType,
 } from '../../SelectBase'
 
-export function useAutocomplete(
-  children: SelectChildWithStringType[],
-  isInvalid: boolean
-): {
+export function useAutocomplete(children: SelectChildWithStringType[]): {
   hasError: boolean
   inputRef: React.RefObject<HTMLInputElement>
   items: SelectChildWithStringType[]
@@ -24,7 +21,7 @@ export function useAutocomplete(
     changes: UseComboboxStateChange<SelectChildWithStringType>
   ) => void
 } {
-  const [hasError, setHasError] = useState<boolean>(isInvalid)
+  const [hasError, setHasError] = useState<boolean>(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const [filterValue, setFilterValue] = useState<string>('')
 
