@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { accessibilityConfig } from '../../../.storybook/accessibilityConfig'
+import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import {
   CustomTokenSets as CustomTokenSetsExample,
   StyledTheming as StyledThemingExample,
@@ -13,7 +13,7 @@ export default {
   parameters: {
     a11y: {
       config: {
-        rules: accessibilityConfig['Custom Theming'],
+        rules: storyAccessibilityConfig['Custom Theming'],
       },
     },
   },

@@ -6,7 +6,7 @@ import {
   IconBrightnessLow,
   IconBrightnessHigh,
 } from '@defencedigital/icon-library'
-import { accessibilityConfig } from '../../../.storybook/accessibilityConfig'
+import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { RangeSlider } from './index'
 
 export default {
@@ -16,7 +16,7 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     a11y: {
       config: {
-        rules: accessibilityConfig['Range Slider'],
+        rules: storyAccessibilityConfig['Range Slider'],
       },
     },
   },
