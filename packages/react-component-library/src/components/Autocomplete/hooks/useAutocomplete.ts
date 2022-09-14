@@ -7,29 +7,28 @@ import {
   SelectChildWithStringType,
 } from '../../SelectBase'
 
+type ItemsMap = {
+  [id: string]: React.ReactElement<SelectBaseOptionAsStringProps>
+}
+
 export function useAutocomplete(children: SelectChildWithStringType[]): {
+  filteredItems: React.ReactElement<SelectBaseOptionAsStringProps>[]
   hasError: boolean
   inputRef: React.RefObject<HTMLInputElement>
-  items: SelectChildWithStringType[]
-  onInputValueChange: (
-    changes: UseComboboxStateChange<SelectChildWithStringType>
-  ) => void
-  onIsOpenChange: (
-    changes: UseComboboxStateChange<SelectChildWithStringType>
-  ) => void
-  onSelectedItemChange: (
-    changes: UseComboboxStateChange<SelectChildWithStringType>
-  ) => void
+  itemsMap: ItemsMap
+  onInputValueChange: (changes: UseComboboxStateChange<string>) => void
+  onIsOpenChange: (changes: UseComboboxStateChange<string>) => void
+  onSelectedItemChange: (changes: UseComboboxStateChange<string>) => void
 } {
   const [hasError, setHasError] = useState<boolean>(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const [filterValue, setFilterValue] = useState<string>('')
 
-  const items = React.Children.toArray(children).filter((child) => {
-    if (!React.isValidElement<SelectBaseOptionAsStringProps>(child)) {
-      return false
-    }
+  const validChildren = React.Children.toArray(children).filter(
+    React.isValidElement<SelectBaseOptionAsStringProps>
+  )
 
+  const filteredItems = validChildren.filter((child) => {
     if (!filterValue) {
       return true
     }
@@ -41,10 +40,14 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
     )
   })
 
+  const itemsMap = Object.fromEntries(
+    validChildren.map((child) => [child.props.value, child])
+  )
+
   function onInputValueChange({
     inputValue,
     isOpen,
-  }: UseComboboxStateChange<SelectChildWithStringType>) {
+  }: UseComboboxStateChange<string>) {
     if (isOpen || !inputValue) {
       setFilterValue(inputValue || '')
     }
@@ -59,13 +62,13 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
       return false
     }
 
-    return findIndexOfInputValue(items, inputValue) === -1
+    return findIndexOfInputValue(filteredItems, inputValue) === -1
   }
 
   function onIsOpenChange({
     inputValue,
     isOpen,
-  }: UseComboboxStateChange<SelectChildWithStringType>) {
+  }: UseComboboxStateChange<string>) {
     if (isOpen) {
       inputRef.current?.focus()
     } else {
@@ -81,9 +84,10 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
   }
 
   return {
+    filteredItems,
     hasError,
     inputRef,
-    items,
+    itemsMap,
     onInputValueChange,
     onIsOpenChange,
     onSelectedItemChange,

@@ -1,14 +1,8 @@
+import { isNil } from 'lodash'
 import React, { useCallback } from 'react'
 import { useCombobox } from 'downshift'
 
-import {
-  initialSelectedItem,
-  itemToString,
-  SelectBaseOptionAsStringProps,
-  SelectBaseProps,
-  SelectChildWithStringType,
-  SelectLayout,
-} from '../SelectBase'
+import { itemToString, SelectBaseProps, SelectLayout } from '../SelectBase'
 import { NoResults } from './NoResults'
 import { useHighlightedIndex } from './hooks/useHighlightedIndex'
 import { useAutocomplete } from './hooks/useAutocomplete'
@@ -39,9 +33,10 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   ...rest
 }) => {
   const {
+    filteredItems,
     hasError,
     inputRef,
-    items,
+    itemsMap,
     onInputValueChange,
     onIsOpenChange,
     onSelectedItemChange,
@@ -69,24 +64,23 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     selectedItem,
     setHighlightedIndex,
     setInputValue,
-  } = useCombobox<SelectChildWithStringType>({
+  } = useCombobox<string>({
     initialIsOpen,
-    items,
-    itemToString,
+    items: filteredItems.map((item) => item.props.value),
+    itemToString: (itemValue) =>
+      !isNil(itemValue) && itemValue in itemsMap
+        ? itemsMap[itemValue].props.children
+        : '',
     onInputValueChange,
     onIsOpenChange,
-    initialSelectedItem: initialSelectedItem(children, value),
+    initialSelectedItem: !isNil(value) && value in itemsMap ? value : null,
     onSelectedItemChange: (changes) => {
       onSelectedItemChange(changes)
 
-      const { selectedItem: newItem } = changes
+      const { selectedItem: newValue } = changes
 
       if (onChange) {
-        onChange(
-          React.isValidElement<SelectBaseOptionAsStringProps>(newItem)
-            ? newItem.props.value
-            : null
-        )
+        onChange(newValue ?? null)
       }
 
       focusToggleButton()
@@ -97,7 +91,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     highlightedIndex,
     inputValue,
     isOpen,
-    items,
+    filteredItems,
     setHighlightedIndex,
     setInputValue
   )
@@ -146,24 +140,22 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       {...rest}
     >
       {isOpen &&
-        React.Children.map(items, (child: SelectChildWithStringType, index) => {
-          if (!React.isValidElement<SelectBaseOptionAsStringProps>(child)) {
-            return null
-          }
-
+        filteredItems.map((child, index) => {
           return React.cloneElement(child, {
             ...child.props,
             ...getItemProps({
               index,
-              item: child,
-              key: `autocomplete-option-${child.props.children}`,
+              item: child.props.value,
+              key: `autocomplete-option-${child.props.value}`,
             }),
             inputValue,
             isHighlighted: highlightedIndex === index,
             title: child.props.children,
           })
         })}
-      {inputValue && !items.length && <NoResults>{inputValue}</NoResults>}
+      {inputValue && !filteredItems.length && (
+        <NoResults>{inputValue}</NoResults>
+      )}
     </SelectLayout>
   )
 }

@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect } from 'react'
 
 import { findIndexOfInputValue } from '../helpers'
-import { SelectChildWithStringType } from '../../SelectBase'
+import { SelectBaseOptionAsStringProps } from '../../SelectBase'
 
 export function useHighlightedIndex(
   highlightedIndex: number,
   inputValue: string,
   isOpen: boolean,
-  items: SelectChildWithStringType[],
+  items: React.ReactElement<SelectBaseOptionAsStringProps>[],
   setHighlightedIndex: (index: number) => void,
   setInputValue: (value: string) => void
 ): {
@@ -35,11 +35,14 @@ export function useHighlightedIndex(
 
   const onInputTabKeyHandler = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === 'Tab' && highlightedIndex !== -1) {
-        const item = React.Children.toArray(items)[highlightedIndex]
-        if (React.isValidElement(item)) {
-          setInputValue(item.props.children)
-        }
+      if (e.key !== 'Tab') {
+        return
+      }
+
+      const item = items[highlightedIndex]
+
+      if (item) {
+        setInputValue(item.props.children)
       }
     },
     [highlightedIndex, items, setInputValue]
