@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { UseComboboxStateChange } from 'downshift'
+import { useCombobox, UseComboboxStateChange } from 'downshift'
 
 import { findIndexOfInputValue } from '../helpers'
 import {
@@ -7,7 +7,7 @@ import {
   SelectChildWithStringType,
 } from '../../SelectBase'
 
-type ItemsMap = {
+export type ItemsMap = {
   [id: string]: React.ReactElement<SelectBaseOptionAsStringProps>
 }
 
@@ -47,8 +47,12 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
   function onInputValueChange({
     inputValue,
     isOpen,
+    type,
   }: UseComboboxStateChange<string>) {
-    if (isOpen || !inputValue) {
+    const isControlledValueUpdate =
+      type === useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem
+
+    if (!inputValue || (isOpen && !isControlledValueUpdate)) {
       setFilterValue(inputValue || '')
     }
 

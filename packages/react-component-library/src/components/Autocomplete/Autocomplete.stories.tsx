@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   IconAgriculture,
   IconAnchor,
@@ -71,7 +71,7 @@ Disabled.args = {
 export const NoClearButton = Template.bind({})
 NoClearButton.args = {
   hideClearButton: true,
-  value: 'two',
+  initialValue: 'two',
 }
 
 export const Open = Template.bind({})
@@ -87,7 +87,7 @@ WithError.args = {
 
 export const WithValue = Template.bind({})
 WithValue.args = {
-  value: 'two',
+  initialValue: 'two',
 }
 
 export const WithIconsAndBadges = TemplateWithIconsAndBadges.bind({})

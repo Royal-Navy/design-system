@@ -5,7 +5,7 @@ import { useCombobox } from 'downshift'
 import { itemToString, SelectBaseProps, SelectLayout } from '../SelectBase'
 import { NoResults } from './NoResults'
 import { useHighlightedIndex } from './hooks/useHighlightedIndex'
-import { useAutocomplete } from './hooks/useAutocomplete'
+import { ItemsMap, useAutocomplete } from './hooks/useAutocomplete'
 import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useToggleButton } from './hooks/useToggleButton'
@@ -20,16 +20,25 @@ export interface AutocompleteProps extends SelectBaseProps {
    * Called when the input loses focus.
    */
   onBlur?: (event: React.FocusEvent) => void
+  /**
+   * The initially selected item when the component is uncontrolled.
+   */
+  initialValue?: string | null
+}
+
+function getSelectedItem(value: string | null | undefined, itemsMap: ItemsMap) {
+  return !isNil(value) && value in itemsMap ? value : null
 }
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
   children,
   id: externalId,
   initialIsOpen,
+  initialValue,
   isInvalid = false,
   onBlur,
   onChange,
-  value = null,
+  value,
   ...rest
 }) => {
   const {
@@ -49,6 +58,8 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     onToggleButtonKeyDownHandler,
   } = useToggleButton(inputRef)
   const id = useExternalId('autocomplete', externalId)
+
+  const isControlled = value !== undefined
 
   const {
     getComboboxProps,
@@ -73,7 +84,6 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         : '',
     onInputValueChange,
     onIsOpenChange,
-    initialSelectedItem: !isNil(value) && value in itemsMap ? value : null,
     onSelectedItemChange: (changes) => {
       onSelectedItemChange(changes)
 
@@ -84,6 +94,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       }
 
       focusToggleButton()
+    },
+    ...{
+      [isControlled ? 'selectedItem' : 'initialSelectedItem']: getSelectedItem(
+        isControlled ? value : initialValue,
+        itemsMap
+      ),
     },
   })
 
