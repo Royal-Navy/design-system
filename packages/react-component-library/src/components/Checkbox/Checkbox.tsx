@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { CheckboxRadioBase, CheckboxRadioBaseProps } from '../CheckboxRadioBase'
+import { CheckboxRadioBase } from '../CheckboxRadioBase/CheckboxRadioBase'
+import { CheckboxRadioBaseProps } from '../CheckboxRadioBase/CheckboxRadioBaseProps'
 import { StyledCheckbox } from './partials/StyledCheckbox'
 import { StyledCheckmark } from './partials/StyledCheckmark'
 import { StyledCheckmarkWrapper } from './partials/StyledCheckmarkWrapper'

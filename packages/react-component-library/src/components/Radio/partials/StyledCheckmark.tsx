@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { CheckmarkProps } from '../../CheckboxRadioBase'
+import { CheckmarkProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
 
 const { color } = selectors
 
