@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.10](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.9...3.12.10) (2022-09-20)
+
+**Note:** Version bump only for package @defencedigital/eslint-config-react
+
+
+
+
+
 ## [3.12.9](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.8...3.12.9) (2022-09-08)
 
 **Note:** Version bump only for package @defencedigital/eslint-config-react

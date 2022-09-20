@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.10](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.9...3.12.10) (2022-09-20)
+
+
+### Bug Fixes
+
+* **Autocomplete:** Behave as controlled component ([4c497ec](https://github.com/defencedigital/mod-uk-design-system/commit/4c497ec6b819fffdb02dde272b55b13e8e9936d0))
+* **Autocomplete:** Don't clear external error state automatically ([54eb82b](https://github.com/defencedigital/mod-uk-design-system/commit/54eb82bdda8f17eca5e913749ea570be651dacc0))
+* **ContextMenu:** Resolve accessibility problems ([9ea35d2](https://github.com/defencedigital/mod-uk-design-system/commit/9ea35d2a0ce04f903db7b9c0ba8e7d4c819e0a73))
+
+
+
+
+
 ## [3.12.9](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.8...3.12.9) (2022-09-08)
 
 **Note:** Version bump only for package moduk-design-system
