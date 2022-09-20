@@ -36,7 +36,7 @@ export interface SelectBaseProps extends ComponentWithClass {
    */
   onChange?: (value: string | null) => void
   /**
-   * Optional HTML `value` attribute to apply to the component.
+   * The selected value when the component is controlled.
    */
   value?: string | null
 }

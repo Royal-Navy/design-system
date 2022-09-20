@@ -1,17 +1,11 @@
+import { isNil } from 'lodash'
 import React, { useCallback } from 'react'
 import { useCombobox } from 'downshift'
 
-import {
-  initialSelectedItem,
-  itemToString,
-  SelectBaseOptionAsStringProps,
-  SelectBaseProps,
-  SelectChildWithStringType,
-  SelectLayout,
-} from '../SelectBase'
+import { itemToString, SelectBaseProps, SelectLayout } from '../SelectBase'
 import { NoResults } from './NoResults'
 import { useHighlightedIndex } from './hooks/useHighlightedIndex'
-import { useAutocomplete } from './hooks/useAutocomplete'
+import { ItemsMap, useAutocomplete } from './hooks/useAutocomplete'
 import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useToggleButton } from './hooks/useToggleButton'
@@ -26,22 +20,32 @@ export interface AutocompleteProps extends SelectBaseProps {
    * Called when the input loses focus.
    */
   onBlur?: (event: React.FocusEvent) => void
+  /**
+   * The initially selected item when the component is uncontrolled.
+   */
+  initialValue?: string | null
+}
+
+function getSelectedItem(value: string | null | undefined, itemsMap: ItemsMap) {
+  return !isNil(value) && value in itemsMap ? value : null
 }
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
   children,
   id: externalId,
   initialIsOpen,
+  initialValue,
   isInvalid = false,
   onBlur,
   onChange,
-  value = null,
+  value,
   ...rest
 }) => {
   const {
+    filteredItems,
     hasError,
     inputRef,
-    items,
+    itemsMap,
     onInputValueChange,
     onIsOpenChange,
     onSelectedItemChange,
@@ -54,6 +58,8 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     onToggleButtonKeyDownHandler,
   } = useToggleButton(inputRef)
   const id = useExternalId('autocomplete', externalId)
+
+  const isControlled = value !== undefined
 
   const {
     getComboboxProps,
@@ -69,27 +75,31 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     selectedItem,
     setHighlightedIndex,
     setInputValue,
-  } = useCombobox<SelectChildWithStringType>({
+  } = useCombobox<string>({
     initialIsOpen,
-    items,
-    itemToString,
+    items: filteredItems.map((item) => item.props.value),
+    itemToString: (itemValue) =>
+      !isNil(itemValue) && itemValue in itemsMap
+        ? itemsMap[itemValue].props.children
+        : '',
     onInputValueChange,
     onIsOpenChange,
-    initialSelectedItem: initialSelectedItem(children, value),
     onSelectedItemChange: (changes) => {
       onSelectedItemChange(changes)
 
-      const { selectedItem: newItem } = changes
+      const { selectedItem: newValue } = changes
 
       if (onChange) {
-        onChange(
-          React.isValidElement<SelectBaseOptionAsStringProps>(newItem)
-            ? newItem.props.value
-            : null
-        )
+        onChange(newValue ?? null)
       }
 
       focusToggleButton()
+    },
+    ...{
+      [isControlled ? 'selectedItem' : 'initialSelectedItem']: getSelectedItem(
+        isControlled ? value : initialValue,
+        itemsMap
+      ),
     },
   })
 
@@ -97,7 +107,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     highlightedIndex,
     inputValue,
     isOpen,
-    items,
+    filteredItems,
     setHighlightedIndex,
     setInputValue
   )
@@ -146,24 +156,22 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       {...rest}
     >
       {isOpen &&
-        React.Children.map(items, (child: SelectChildWithStringType, index) => {
-          if (!React.isValidElement<SelectBaseOptionAsStringProps>(child)) {
-            return null
-          }
-
+        filteredItems.map((child, index) => {
           return React.cloneElement(child, {
             ...child.props,
             ...getItemProps({
               index,
-              item: child,
-              key: `autocomplete-option-${child.props.children}`,
+              item: child.props.value,
+              key: `autocomplete-option-${child.props.value}`,
             }),
             inputValue,
             isHighlighted: highlightedIndex === index,
             title: child.props.children,
           })
         })}
-      {inputValue && !items.length && <NoResults>{inputValue}</NoResults>}
+      {inputValue && !filteredItems.length && (
+        <NoResults>{inputValue}</NoResults>
+      )}
     </SelectLayout>
   )
 }

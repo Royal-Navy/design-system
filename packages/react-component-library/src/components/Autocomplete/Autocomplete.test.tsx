@@ -204,15 +204,93 @@ describe('Autocomplete', () => {
     })
   })
 
+  describe('when the component is controlled with "One" selected', () => {
+    const ControlledAutocomplete = () => {
+      const [value, setValue] = React.useState<string | null>('one')
+
+      return (
+        <Autocomplete
+          id="autocomplete-id"
+          label="Label"
+          onChange={(newValue) => setValue(newValue)}
+          value={value}
+        >
+          <AutocompleteOption value="one">One</AutocompleteOption>
+          <AutocompleteOption value="two">Two</AutocompleteOption>
+        </Autocomplete>
+      )
+    }
+
+    beforeEach(() => {
+      wrapper = render(<ControlledAutocomplete />)
+    })
+
+    it('has the value "One"', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveValue('One')
+    })
+
+    describe('when the menu is opened and the second item clicked', () => {
+      beforeEach(async () => {
+        await userEvent.click(wrapper.getByTestId('select-arrow-button'))
+        return userEvent.click(wrapper.getByText('Two'))
+      })
+
+      it('has the value "Two"', () => {
+        expect(wrapper.getByTestId('select-input')).toHaveValue('Two')
+      })
+    })
+  })
+
+  describe('when the component is uncontrolled with "One" selected', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Autocomplete
+          id="autocomplete-id"
+          label="Label"
+          onChange={jest.fn()}
+          initialValue="one"
+        >
+          <AutocompleteOption value="one">One</AutocompleteOption>
+          <AutocompleteOption value="two">Two</AutocompleteOption>
+        </Autocomplete>
+      )
+    })
+
+    it('has the value "One"', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveValue('One')
+    })
+
+    describe('when the menu is opened and the second item clicked', () => {
+      beforeEach(async () => {
+        await userEvent.click(wrapper.getByTestId('select-arrow-button'))
+        return userEvent.click(wrapper.getByText('Two'))
+      })
+
+      it('has the value "Two"', () => {
+        expect(wrapper.getByTestId('select-input')).toHaveValue('Two')
+      })
+    })
+  })
+
   describe('when options are added after the initial render', () => {
     beforeEach(() => {
       wrapper = render(
-        <Autocomplete id="autocomplete-id" label="Label" onChange={jest.fn()}>
+        <Autocomplete
+          id="autocomplete-id"
+          label="Label"
+          onChange={jest.fn()}
+          value="one"
+        >
           <>{}</>
         </Autocomplete>
       )
       wrapper.rerender(
-        <Autocomplete id="autocomplete-id" label="Label" onChange={jest.fn()}>
+        <Autocomplete
+          id="autocomplete-id"
+          label="Label"
+          onChange={jest.fn()}
+          value="one"
+        >
           <AutocompleteOption value="one">One</AutocompleteOption>
           <AutocompleteOption value="two">Two</AutocompleteOption>
         </Autocomplete>
@@ -227,12 +305,21 @@ describe('Autocomplete', () => {
       expect(options[1]).toHaveTextContent('Two')
       expect(options).toHaveLength(2)
     })
+
+    it('has the correct value', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveValue('One')
+    })
   })
 
   describe('when options are added while the menu is open', () => {
     beforeEach(async () => {
       wrapper = render(
-        <Autocomplete id="autocomplete-id" label="Label" onChange={jest.fn()}>
+        <Autocomplete
+          id="autocomplete-id"
+          label="Label"
+          onChange={jest.fn()}
+          value="one"
+        >
           <>{}</>
         </Autocomplete>
       )
@@ -240,7 +327,12 @@ describe('Autocomplete', () => {
       await userEvent.click(wrapper.getByTestId('select-arrow-button'))
 
       wrapper.rerender(
-        <Autocomplete id="autocomplete-id" label="Label" onChange={jest.fn()}>
+        <Autocomplete
+          id="autocomplete-id"
+          label="Label"
+          onChange={jest.fn()}
+          value="one"
+        >
           <AutocompleteOption value="one">One</AutocompleteOption>
           <AutocompleteOption value="two">Two</AutocompleteOption>
         </Autocomplete>
@@ -253,6 +345,10 @@ describe('Autocomplete', () => {
       expect(options[0]).toHaveTextContent('One')
       expect(options[1]).toHaveTextContent('Two')
       expect(options).toHaveLength(2)
+    })
+
+    it('has the correct value', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveValue('One')
     })
   })
 
