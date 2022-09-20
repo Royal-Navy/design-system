@@ -30,7 +30,7 @@ export const ContextMenuItem: React.FC<ContextMenuItemProps> = ({
     ),
   })
 
-  return <StyledContextMenuItem>{item}</StyledContextMenuItem>
+  return <StyledContextMenuItem role="menuitem">{item}</StyledContextMenuItem>
 }
 
 ContextMenuItem.displayName = 'ContextMenuItem'

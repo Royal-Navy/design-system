@@ -55,7 +55,7 @@ export const Default: ComponentStory<typeof ContextMenu> = (props) => {
 
 Default.storyName = 'Default'
 
-export const WithIcons: ComponentStory<typeof ContextMenu> = (props) => {
+const WithIconsTemplate: ComponentStory<typeof ContextMenu> = (props) => {
   const ref = useRef<HTMLDivElement>(null)
 
   return (
@@ -95,4 +95,14 @@ export const WithIcons: ComponentStory<typeof ContextMenu> = (props) => {
   )
 }
 
+export const WithIcons = WithIconsTemplate.bind({})
 WithIcons.storyName = 'With icons'
+
+export const Open = WithIconsTemplate.bind({})
+Open.storyName = 'Open'
+Open.args = {
+  initialIsOpen: true,
+}
+Open.parameters = {
+  docs: { disable: true },
+}

@@ -9,7 +9,8 @@ interface StyledTextProps {
 
 const { color, fontSize } = selectors
 
-export const StyledText = styled.div<StyledTextProps>`
+export const StyledText = styled.span<StyledTextProps>`
+  display: block;
   color: ${color('neutral', '400')};
   font-weight: 600;
   font-size: ${fontSize('base')};
