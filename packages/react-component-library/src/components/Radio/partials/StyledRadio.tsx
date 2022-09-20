@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { CheckboxRootProps } from '../../CheckboxRadioBase'
+import { CheckboxRootProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
 import { StyledCheckmark } from './StyledCheckmark'
 import { StyledInput } from '../../CheckboxRadioBase/partials/StyledInput'
 

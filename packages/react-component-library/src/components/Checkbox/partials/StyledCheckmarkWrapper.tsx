@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { CheckmarkWrapperProps } from '../../CheckboxRadioBase'
+import { CheckmarkWrapperProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
 
 export const StyledCheckmarkWrapper = styled.span<CheckmarkWrapperProps>`
   display: block;
