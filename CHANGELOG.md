@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.11](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.10...3.12.11) (2022-09-21)
+
+
+### Bug Fixes
+
+* **CheckboxRadioBase:** Export CHECKBOX_RADIO_VARIANT ([c9d9b34](https://github.com/defencedigital/mod-uk-design-system/commit/c9d9b3411a46d468ca19027dd751be8b9bff41d7))
+
+
+
+
+
 ## [3.12.10](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.9...3.12.10) (2022-09-20)
 
 
