@@ -17,8 +17,9 @@ export const Select: React.FC<SelectBaseProps> = ({
   children,
   id: externalId,
   initialIsOpen,
+  initialValue,
   onChange,
-  value = null,
+  value,
   ...rest
 }) => {
   const id = useExternalId('select', externalId)
@@ -32,6 +33,8 @@ export const Select: React.FC<SelectBaseProps> = ({
     filteredItems.map((item) => [item.props.value, item])
   )
 
+  const isControlled = value !== undefined
+
   const {
     getItemProps,
     getMenuProps,
@@ -44,10 +47,15 @@ export const Select: React.FC<SelectBaseProps> = ({
   } = useSelect<string>({
     itemToString: (item) => itemToString(item, itemsMap),
     initialIsOpen,
-    initialSelectedItem: getSelectedItem(value, itemsMap),
     items,
     onSelectedItemChange: ({ selectedItem: newItem }) => {
       onChange?.(newItem ?? null)
+    },
+    ...{
+      [isControlled ? 'selectedItem' : 'initialSelectedItem']: getSelectedItem(
+        isControlled ? value : initialValue,
+        itemsMap
+      ),
     },
   })
 

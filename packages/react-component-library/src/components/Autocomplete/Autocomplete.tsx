@@ -24,10 +24,6 @@ export interface AutocompleteProps extends SelectBaseProps {
    * Called when the input loses focus.
    */
   onBlur?: (event: React.FocusEvent) => void
-  /**
-   * The initially selected item when the component is uncontrolled.
-   */
-  initialValue?: string | null
 }
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({

@@ -16,6 +16,10 @@ export interface SelectBaseProps extends ComponentWithClass {
    */
   initialIsOpen?: boolean
   /**
+   * The initially selected item when the component is uncontrolled.
+   */
+  initialValue?: string | null
+  /**
    * Toggles whether the component is disabled or not (preventing user interaction).
    */
   isDisabled?: boolean

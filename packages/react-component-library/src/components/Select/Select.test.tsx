@@ -190,6 +190,134 @@ describe('Select', () => {
     })
   })
 
+  describe('when the component is controlled with "One" selected', () => {
+    const ControlledSelect = () => {
+      const [value, setValue] = React.useState<string | null>('one')
+
+      return (
+        <Select
+          id="select-id"
+          label="Label"
+          onChange={(newValue) => setValue(newValue)}
+          value={value}
+        >
+          <SelectOption value="one">One</SelectOption>
+          <SelectOption value="two">Two</SelectOption>
+        </Select>
+      )
+    }
+
+    beforeEach(() => {
+      wrapper = render(<ControlledSelect />)
+    })
+
+    it('has the value "One"', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveValue('One')
+    })
+
+    describe('when the menu is opened and the second item clicked', () => {
+      beforeEach(async () => {
+        await userEvent.click(wrapper.getByTestId('select-arrow-button'))
+        return userEvent.click(wrapper.getByText('Two'))
+      })
+
+      it('has the value "Two"', () => {
+        expect(wrapper.getByTestId('select-input')).toHaveValue('Two')
+      })
+    })
+  })
+
+  describe('when the component is uncontrolled with "One" selected', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Select
+          id="select-id"
+          label="Label"
+          onChange={jest.fn()}
+          initialValue="one"
+        >
+          <SelectOption value="one">One</SelectOption>
+          <SelectOption value="two">Two</SelectOption>
+        </Select>
+      )
+    })
+
+    it('has the value "One"', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveValue('One')
+    })
+
+    describe('when the menu is opened and the second item clicked', () => {
+      beforeEach(async () => {
+        await userEvent.click(wrapper.getByTestId('select-arrow-button'))
+        return userEvent.click(wrapper.getByText('Two'))
+      })
+
+      it('has the value "Two"', () => {
+        expect(wrapper.getByTestId('select-input')).toHaveValue('Two')
+      })
+    })
+  })
+
+  describe('when options are added after the initial render', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Select id="select-id" label="Label" onChange={jest.fn()} value="one">
+          <>{}</>
+        </Select>
+      )
+      wrapper.rerender(
+        <Select id="select-id" label="Label" onChange={jest.fn()} value="one">
+          <SelectOption value="one">One</SelectOption>
+          <SelectOption value="two">Two</SelectOption>
+        </Select>
+      )
+      return userEvent.click(wrapper.getByTestId('select-arrow-button'))
+    })
+
+    it('displays the items', () => {
+      const options = wrapper.getAllByTestId('select-option')
+
+      expect(options[0]).toHaveTextContent('One')
+      expect(options[1]).toHaveTextContent('Two')
+      expect(options).toHaveLength(2)
+    })
+
+    it('has the correct value', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveValue('One')
+    })
+  })
+
+  describe('when options are added while the menu is open', () => {
+    beforeEach(async () => {
+      wrapper = render(
+        <Select id="select-id" label="Label" onChange={jest.fn()} value="one">
+          <>{}</>
+        </Select>
+      )
+
+      await userEvent.click(wrapper.getByTestId('select-arrow-button'))
+
+      wrapper.rerender(
+        <Select id="select-id" label="Label" onChange={jest.fn()} value="one">
+          <SelectOption value="one">One</SelectOption>
+          <SelectOption value="two">Two</SelectOption>
+        </Select>
+      )
+    })
+
+    it('displays the items', () => {
+      const options = wrapper.getAllByTestId('select-option')
+
+      expect(options[0]).toHaveTextContent('One')
+      expect(options[1]).toHaveTextContent('Two')
+      expect(options).toHaveLength(2)
+    })
+
+    it('has the correct value', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveValue('One')
+    })
+  })
+
   describe('when the default `id` is used and the arrow button is clicked', () => {
     let initialId: string
 
