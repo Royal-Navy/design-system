@@ -1,11 +1,15 @@
-import { isNil } from 'lodash'
 import React, { useCallback } from 'react'
 import { useCombobox } from 'downshift'
 
-import { itemToString, SelectBaseProps, SelectLayout } from '../SelectBase'
+import {
+  getSelectedItem,
+  itemToString,
+  SelectBaseProps,
+  SelectLayout,
+} from '../SelectBase'
 import { NoResults } from './NoResults'
 import { useHighlightedIndex } from './hooks/useHighlightedIndex'
-import { ItemsMap, useAutocomplete } from './hooks/useAutocomplete'
+import { useAutocomplete } from './hooks/useAutocomplete'
 import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useToggleButton } from './hooks/useToggleButton'
@@ -24,10 +28,6 @@ export interface AutocompleteProps extends SelectBaseProps {
    * The initially selected item when the component is uncontrolled.
    */
   initialValue?: string | null
-}
-
-function getSelectedItem(value: string | null | undefined, itemsMap: ItemsMap) {
-  return !isNil(value) && value in itemsMap ? value : null
 }
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
@@ -72,16 +72,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     isOpen = false,
     openMenu,
     reset,
-    selectedItem,
     setHighlightedIndex,
     setInputValue,
   } = useCombobox<string>({
     initialIsOpen,
     items: filteredItems.map((item) => item.props.value),
-    itemToString: (itemValue) =>
-      !isNil(itemValue) && itemValue in itemsMap
-        ? itemsMap[itemValue].props.children
-        : '',
+    itemToString: (item) => itemToString(item, itemsMap),
     onInputValueChange,
     onIsOpenChange,
     onSelectedItemChange: (changes) => {
@@ -152,7 +148,6 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         },
         ref: buttonRef,
       })}
-      value={selectedItem ? itemToString(selectedItem) : ''}
       {...rest}
     >
       {isOpen &&

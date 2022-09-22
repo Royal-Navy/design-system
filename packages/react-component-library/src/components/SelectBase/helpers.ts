@@ -1,25 +1,13 @@
-import React from 'react'
+import { isNil } from 'lodash'
 
-import { SelectBaseOptionAsStringProps } from './SelectBaseOption'
-import { SelectChildrenType, SelectChildWithStringType } from './types'
+import { ItemsMap } from './types'
 
-function itemToString(item: SelectChildWithStringType) {
-  return React.isValidElement<SelectBaseOptionAsStringProps>(item)
-    ? item.props.children
-    : ''
+function getSelectedItem(value: string | null | undefined, itemsMap: ItemsMap) {
+  return !isNil(value) && value in itemsMap ? value : null
 }
 
-function initialSelectedItem(
-  children: SelectChildrenType,
-  value: string | null
-) {
-  if (value === null) {
-    return null
-  }
-
-  return React.Children.toArray(children).find((child) => {
-    return React.isValidElement(child) ? child.props.value === value : null
-  })
+function itemToString(item: string | null, itemsMap: ItemsMap) {
+  return !isNil(item) && item in itemsMap ? itemsMap[item].props.children : ''
 }
 
-export { initialSelectedItem, itemToString }
+export { getSelectedItem, itemToString }

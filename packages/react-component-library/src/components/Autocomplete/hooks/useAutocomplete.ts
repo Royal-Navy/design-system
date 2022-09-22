@@ -3,13 +3,10 @@ import { useCombobox, UseComboboxStateChange } from 'downshift'
 
 import { findIndexOfInputValue } from '../helpers'
 import {
+  ItemsMap,
   SelectBaseOptionAsStringProps,
   SelectChildWithStringType,
 } from '../../SelectBase'
-
-export type ItemsMap = {
-  [id: string]: React.ReactElement<SelectBaseOptionAsStringProps>
-}
 
 export function useAutocomplete(children: SelectChildWithStringType[]): {
   filteredItems: React.ReactElement<SelectBaseOptionAsStringProps>[]
