@@ -4,8 +4,6 @@ import styled, { css } from 'styled-components'
 import { StyledText } from './StyledText'
 
 interface StyledContextMenuProps {
-  top: number | undefined
-  left: number | undefined
   $hasIcons: boolean
   $isOpen: boolean
 }
@@ -14,8 +12,6 @@ const { color, spacing, zIndex } = selectors
 
 export const StyledContextMenu = styled.ol<StyledContextMenuProps>`
   position: fixed;
-  top: ${({ top }) => `${top}px`};
-  left: ${({ left }) => `${left}px`};
   min-width: 120px;
   max-width: 240px;
   padding: ${spacing('2')};

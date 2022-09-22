@@ -37,14 +37,13 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
   onShow,
   ...rest
 }) => {
-  const { mousePointer, isOpen, floatingElementRef, styles, attributes } =
-    useClickMenu({
-      attachedToRef,
-      clickType,
-      initialIsOpen,
-      onHide,
-      onShow,
-    })
+  const { isOpen, floatingElementRef, styles, attributes } = useClickMenu({
+    attachedToRef,
+    clickType,
+    initialIsOpen,
+    onHide,
+    onShow,
+  })
 
   const hasIcons = useMemo(() => {
     return !!React.Children.toArray(children).filter(
@@ -57,8 +56,6 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
       ref={floatingElementRef}
       $hasIcons={hasIcons}
       $isOpen={isOpen}
-      left={mousePointer?.getBoundingClientRect().left}
-      top={mousePointer?.getBoundingClientRect().top}
       css={styles.popper as CSSObject}
       {...attributes.popper}
       data-testid="context-menu"
