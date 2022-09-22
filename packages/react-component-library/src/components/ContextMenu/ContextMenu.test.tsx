@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { RenderResult, render, fireEvent, act } from '@testing-library/react'
+import { RenderResult, render, act } from '@testing-library/react'
 import { IconSettings } from '@defencedigital/icon-library'
 import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
@@ -83,7 +83,7 @@ describe('ContextMenu', () => {
 
     describe('and the user left clicks on the target area', () => {
       beforeEach(() => {
-        fireEvent.click(wrapper.getByText('Left click me!'))
+        return userEvent.click(wrapper.getByText('Left click me!'))
       })
 
       it('is is rendered to the DOM', () => {
@@ -147,7 +147,9 @@ describe('ContextMenu', () => {
 
       wrapper = render(<ContextExample />)
 
-      fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+      return userEvent.pointer([
+        { keys: '[MouseRight]', target: wrapper.getByText('Right click me!') },
+      ])
     })
 
     it('should add margin to items', () => {
@@ -167,7 +169,7 @@ describe('ContextMenu', () => {
 
     describe('and the user clicks somewhere in the DOM', () => {
       beforeEach(() => {
-        fireEvent.click(wrapper.getByText('Right click me!'))
+        return userEvent.click(wrapper.getByText('Right click me!'))
       })
 
       it('hides the context menu', () => {
@@ -177,7 +179,7 @@ describe('ContextMenu', () => {
   })
 
   describe('With custom link and open', () => {
-    beforeEach(() => {
+    beforeEach(async () => {
       onClickSpy = jest.fn()
 
       const ContextExample = () => {
@@ -197,13 +199,14 @@ describe('ContextMenu', () => {
 
       wrapper = render(<ContextExample />)
 
-      act(() => {
-        fireEvent.contextMenu(wrapper.getByText('Right click me!'))
-      })
+      await userEvent.pointer([
+        {
+          keys: '[MouseRight]',
+          target: wrapper.getByText('Right click me!'),
+        },
+      ])
 
-      act(() => {
-        wrapper.getByTestId('context-menu-custom-link').click()
-      })
+      wrapper.getByTestId('context-menu-custom-link').click()
     })
 
     it('invokes the supplied onClick callback when the custom link is clicked', () => {
@@ -231,7 +234,9 @@ describe('ContextMenu', () => {
 
       wrapper = render(<ContextExample />)
 
-      fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+      return userEvent.pointer([
+        { keys: '[MouseRight]', target: wrapper.getByText('Right click me!') },
+      ])
     })
 
     it('should not add margin to items', () => {
@@ -267,7 +272,9 @@ describe('ContextMenu', () => {
 
       wrapper = render(<ContextExample />)
 
-      fireEvent.contextMenu(wrapper.getByText('Right click me!'))
+      return userEvent.pointer([
+        { keys: '[MouseRight]', target: wrapper.getByText('Right click me!') },
+      ])
     })
 
     it('renders the dividers', () => {
@@ -311,9 +318,7 @@ describe('ContextMenu', () => {
 
       wrapper = render(<ContextExample />)
 
-      act(() => {
-        fireEvent.click(wrapper.getByText('Click me!'))
-      })
+      return userEvent.click(wrapper.getByText('Click me!'))
     })
 
     it('fires the onShow event', () => {
@@ -325,9 +330,7 @@ describe('ContextMenu', () => {
 
     describe('when the user closes the context', () => {
       beforeEach(() => {
-        act(() => {
-          fireEvent.click(wrapper.getByText('Click elsewhere'))
-        })
+        return userEvent.click(wrapper.getByText('Click elsewhere'))
       })
 
       it('fires the onHide event', () => {
