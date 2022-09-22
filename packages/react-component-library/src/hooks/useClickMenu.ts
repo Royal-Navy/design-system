@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import { VirtualElement } from '@popperjs/core'
 import { useOpenClose } from './useOpenClose'
@@ -20,15 +20,22 @@ interface UseClickMenuParams {
 }
 
 type UseClickMenuReturnType = {
-  mousePointer: VirtualElement | undefined
   isOpen: boolean
 } & ReturnType<typeof useFloatingElement>
 
-function generateVirtualReference({
-  clientY,
-  clientX,
-}: MouseEvent): VirtualElement {
-  return {
+function createVirtualElement(): {
+  virtualElement: VirtualElement
+  setClientPosition: (event: MouseEvent) => void
+} {
+  let clientX = 0
+  let clientY = 0
+
+  const setClientPosition = (event: MouseEvent) => {
+    clientX = event.clientX
+    clientY = event.clientY
+  }
+
+  const virtualElement: VirtualElement = {
     getBoundingClientRect() {
       return {
         top: clientY,
@@ -40,6 +47,11 @@ function generateVirtualReference({
       } as DOMRect
     },
   }
+
+  return {
+    virtualElement,
+    setClientPosition,
+  }
 }
 
 export const useClickMenu = ({
@@ -48,49 +60,58 @@ export const useClickMenu = ({
   initialIsOpen,
   onHide,
   onShow,
-}: UseClickMenuParams): UseClickMenuReturnType => {
+}: UseClickMenuParams): Omit<UseClickMenuReturnType, 'forceUpdate'> => {
   const { open, setOpen } = useOpenClose<boolean>(initialIsOpen)
-  const [mousePointer, setMousePointer] = useState<VirtualElement | undefined>()
+
+  const {
+    current: { virtualElement, setClientPosition },
+  } = useRef(createVirtualElement())
+
   const {
     targetElementRef,
+    floatingElement,
     floatingElementRef,
+    forceUpdate,
     arrowElementRef,
     styles,
     attributes,
-  } = useFloatingElement('auto-end', 'fixed', mousePointer)
+  } = useFloatingElement('auto-end', 'fixed', virtualElement)
 
   const displayMenu = (e: MouseEvent): void => {
-    if (attachedToRef.current?.contains(e.target as Node)) {
-      // Click was within bounds of target area
-      e.preventDefault()
-      e.stopPropagation()
-
-      setMousePointer(generateVirtualReference(e))
-      setOpen(true)
-
-      if (onShow) {
-        onShow(e)
+    if (
+      !(e.target instanceof Node) ||
+      !attachedToRef.current?.contains(e.target)
+    ) {
+      if (open) {
+        setOpen(false)
+        onHide?.(e)
       }
 
       return
     }
 
-    setOpen(false)
-
-    if (onHide) {
-      onHide(e)
-    }
-  }
-
-  const hideMenu = (e: MouseEvent): void => {
+    // Click was within bounds of target area
     e.preventDefault()
     e.stopPropagation()
 
-    setOpen(false)
+    setClientPosition(e)
+    setOpen(true)
 
-    if (onHide) {
-      onHide(e)
+    forceUpdate?.()
+    onShow?.(e)
+  }
+
+  const hideMenu = (e: MouseEvent): void => {
+    if (!open || !floatingElement) {
+      return
     }
+
+    if (e.target instanceof Node && floatingElement.contains(e.target)) {
+      return
+    }
+
+    setOpen(false)
+    onHide?.(e)
   }
 
   useEffect(() => {
@@ -115,9 +136,9 @@ export const useClickMenu = ({
   }, [open])
 
   return {
-    mousePointer,
     isOpen: open,
     targetElementRef,
+    floatingElement,
     floatingElementRef,
     arrowElementRef,
     styles,

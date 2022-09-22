@@ -10,7 +10,9 @@ export const useFloatingElement = (
   externalTargetElement: Element | VirtualElement | null = null
 ): {
   targetElementRef: Dispatch<SetStateAction<Element | null>>
+  floatingElement: HTMLElement | null
   floatingElementRef: Dispatch<SetStateAction<HTMLElement | null>>
+  forceUpdate: ReturnType<typeof usePopper>['forceUpdate']
   arrowElementRef: Dispatch<SetStateAction<HTMLElement | null>>
   styles: { [key: string]: React.CSSProperties }
   attributes: { [key: string]: { [key: string]: string } | undefined }
@@ -19,7 +21,7 @@ export const useFloatingElement = (
   const [floatingElement, floatingElementRef] = useStatefulRef<HTMLElement>()
   const [arrowElement, arrowElementRef] = useStatefulRef<HTMLElement>()
 
-  const { styles, attributes } = usePopper(
+  const { styles, attributes, forceUpdate } = usePopper(
     externalTargetElement || targetElement,
     floatingElement,
     {
@@ -39,7 +41,9 @@ export const useFloatingElement = (
 
   return {
     targetElementRef,
+    floatingElement,
     floatingElementRef,
+    forceUpdate,
     arrowElementRef,
     styles,
     attributes,
