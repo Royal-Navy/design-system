@@ -153,10 +153,14 @@ jobs:
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
 
-      - name: Jest design-tokens
-        run: |
-          yarn --cwd packages/design-tokens build
-          yarn --cwd packages/design-tokens test
+      - name: Lint
+        run: yarn --cwd packages/design-tokens lint
+
+      - name: Build
+        run: yarn --cwd packages/design-tokens build
+
+      - name: Run tests
+        run: yarn --cwd packages/design-tokens test
 
   # See post_built_and_test.yml for details about how this is used
   Build_storybook:
