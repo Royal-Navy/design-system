@@ -73,6 +73,22 @@ jobs:
         run: |
           yarn --cwd packages/react-component-library lint
 
+  Build_react-component-library:
+    runs-on: ubuntu-latest
+    needs: [Build_icon_library, Lint_react-component-library]
+    steps:
+      - name: Git clone repository
+        uses: actions/checkout@v3
+
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
+        with:
+          unpack-prebuilt-libraries: true
+
+      - name: Build
+        run: |
+          yarn --cwd packages/react-component-library build
+
   Test_react-component-library:
     runs-on: ubuntu-latest
     needs: [Build_icon_library, Lint_react-component-library]
