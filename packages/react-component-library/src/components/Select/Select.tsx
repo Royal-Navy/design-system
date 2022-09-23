@@ -1,12 +1,12 @@
 import React, { useRef } from 'react'
 import { useSelect } from 'downshift'
+import { isNil } from 'lodash'
 
 import {
-  initialSelectedItem,
+  getSelectedItem,
   itemToString,
   SelectBaseOptionAsStringProps,
   SelectBaseProps,
-  SelectChildWithStringType,
   SelectLayout,
 } from '../SelectBase'
 import { useExternalId } from '../../hooks/useExternalId'
@@ -17,12 +17,24 @@ export const Select: React.FC<SelectBaseProps> = ({
   children,
   id: externalId,
   initialIsOpen,
+  initialValue,
   onChange,
-  value = null,
+  value,
   ...rest
 }) => {
   const id = useExternalId('select', externalId)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  const filteredItems = React.Children.toArray(children).filter(
+    React.isValidElement<SelectBaseOptionAsStringProps>
+  )
+  const items = filteredItems.map((child) => child.props.value)
+  const itemsMap = Object.fromEntries(
+    filteredItems.map((item) => [item.props.value, item])
+  )
+
+  const isControlled = value !== undefined
+
   const {
     getItemProps,
     getMenuProps,
@@ -32,19 +44,18 @@ export const Select: React.FC<SelectBaseProps> = ({
     openMenu,
     reset,
     selectedItem,
-  } = useSelect<SelectChildWithStringType>({
-    itemToString,
+  } = useSelect<string>({
+    itemToString: (item) => itemToString(item, itemsMap),
     initialIsOpen,
-    initialSelectedItem: initialSelectedItem(children, value),
-    items: React.Children.toArray(children),
+    items,
     onSelectedItemChange: ({ selectedItem: newItem }) => {
-      if (onChange) {
-        onChange(
-          React.isValidElement<SelectBaseOptionAsStringProps>(newItem)
-            ? newItem.props.value
-            : null
-        )
-      }
+      onChange?.(newItem ?? null)
+    },
+    ...{
+      [isControlled ? 'selectedItem' : 'initialSelectedItem']: getSelectedItem(
+        isControlled ? value : initialValue,
+        itemsMap
+      ),
     },
   })
 
@@ -54,7 +65,7 @@ export const Select: React.FC<SelectBaseProps> = ({
 
   return (
     <SelectLayout
-      hasSelectedItem={!!selectedItem}
+      hasSelectedItem={!isNil(selectedItem)}
       id={id}
       inputProps={{
         onFocus: onInputFocusHandler,
@@ -68,32 +79,25 @@ export const Select: React.FC<SelectBaseProps> = ({
         reset()
       }}
       toggleButtonProps={getToggleButtonProps()}
-      value={selectedItem ? itemToString(selectedItem) : ''}
+      value={isNil(selectedItem) ? '' : itemsMap[selectedItem].props.children}
       {...{
         readOnly: true,
         ...rest,
       }}
     >
       {isOpen &&
-        React.Children.map(
-          children,
-          (child: SelectChildWithStringType, index) => {
-            if (!React.isValidElement<SelectBaseOptionAsStringProps>(child)) {
-              return null
-            }
-
-            return React.cloneElement(child, {
-              ...child.props,
-              ...getItemProps({
-                index,
-                item: child,
-                key: `select-option-${child.props.children}`,
-              }),
-              isHighlighted: highlightedIndex === index,
-              title: child.props.children,
-            })
-          }
-        )}
+        filteredItems.map((child, index) => {
+          return React.cloneElement(child, {
+            ...child.props,
+            ...getItemProps({
+              index,
+              item: child.props.value,
+              key: `select-option-${child.props.value}`,
+            }),
+            isHighlighted: highlightedIndex === index,
+            title: child.props.children,
+          })
+        })}
     </SelectLayout>
   )
 }

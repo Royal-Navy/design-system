@@ -18,3 +18,7 @@ export type SelectChildWithStringType =
 export type SelectChildrenType =
   | SelectChildType<SelectBaseOptionProps>
   | SelectChildType<SelectBaseOptionProps>[]
+
+export type ItemsMap = {
+  [id: string]: React.ReactElement<SelectBaseOptionAsStringProps>
+}
