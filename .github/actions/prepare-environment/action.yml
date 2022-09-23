@@ -1,5 +1,10 @@
 name: Set up Node.js and install dependencies
 description: Sets up Node.js and installs dependencies
+inputs:
+  unpack-prebuilt-libraries:
+    description: Whether to unpack pre-built icon-library and design-tokens bundles
+    required: false
+    default: ''
 runs:
   using: composite
   steps:
@@ -26,3 +31,15 @@ runs:
       shell: bash
       run: |
         yarn install --frozen-lockfile
+
+    - name: Download icon-library and design-tokens
+      if: inputs.unpack-prebuilt-libraries
+      uses: actions/download-artifact@v3
+      with:
+        name: dist
+
+    - name: Unpack icon-library and design-tokens
+      if: inputs.unpack-prebuilt-libraries
+      shell: bash
+      run: |
+        tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist

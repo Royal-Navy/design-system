@@ -82,18 +82,14 @@ jobs:
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
-
-      - name: Attach workspace
-        uses: actions/download-artifact@v3
         with:
-          name: dist
+          unpack-prebuilt-libraries: true
 
       - name: Jest
         env:
           JEST_JUNIT_OUTPUT_DIR: test-results/jest
           JEST_JUNIT_OUTPUT_NAME: react-component-results.xml
         run: |
-          tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
           yarn --cwd packages/react-component-library test --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand --testResultsProcessor=jest-sonar-reporter
 
       - name: SonarCloud Scan
@@ -115,15 +111,8 @@ jobs:
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
-
-      - name: Attach workspace
-        uses: actions/download-artifact@v3
         with:
-          name: dist
-
-      - name: Unpack icon library & design tokens
-        run: |
-          tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
+          unpack-prebuilt-libraries: true
 
       - name: Confirm Cypress binary is installed
         run: |
@@ -174,11 +163,8 @@ jobs:
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
-
-      - name: Attach workspace
-        uses: actions/download-artifact@v3
         with:
-          name: dist
+          unpack-prebuilt-libraries: true
 
       - name: Build Storybook
         env:
@@ -186,7 +172,6 @@ jobs:
           CHROMATIC_BRANCH: ${{ github.head_ref || github.ref_name }}
           CHROMATIC_SLUG: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         run: |
-          tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
           yarn --cwd packages/react-component-library storybook:static
           echo "$CHROMATIC_SHA" > packages/react-component-library/.static_storybook/sha
           echo "$CHROMATIC_BRANCH" > packages/react-component-library/.static_storybook/branch
