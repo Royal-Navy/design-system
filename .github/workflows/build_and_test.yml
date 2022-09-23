@@ -47,7 +47,6 @@ jobs:
 
   Check_commits:
     runs-on: ubuntu-latest
-    needs: Build_icon_library
     if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Git clone repository
@@ -147,7 +146,6 @@ jobs:
 
   Test_design-tokens:
     runs-on: ubuntu-latest
-    needs: [Build_icon_library]
     steps:
       - name: Git clone repository
         uses: actions/checkout@v3
@@ -163,7 +161,7 @@ jobs:
   # See post_built_and_test.yml for details about how this is used
   Build_storybook:
     runs-on: ubuntu-latest
-    needs: [Build_icon_library]
+    needs: [Build_icon_library, Lint_react-component-library]
     steps:
       - name: Git clone repository
         uses: actions/checkout@v3
