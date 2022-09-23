@@ -14,23 +14,11 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Cache Cypress binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            cypress-${{ runner.os }}-cypress-
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Build icon-library
         run: |
-          yarn install --frozen-lockfile
           yarn --cwd packages/icon-library build
 
       - name: Build design-tokens
@@ -65,11 +53,8 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: check commits
         run: |
@@ -82,15 +67,11 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Get dependencies & run lint
         run: |
-          yarn install --frozen-lockfile
           yarn --cwd packages/react-component-library lint
 
   Test_react-component-library:
@@ -100,11 +81,8 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Attach workspace
         uses: actions/download-artifact@v3
@@ -136,19 +114,8 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Cache Cypress binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            cypress-${{ runner.os }}-cypress-
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Attach workspace
         uses: actions/download-artifact@v3
@@ -185,11 +152,8 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Jest design-tokens
         run: |
@@ -206,11 +170,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Attach workspace
         uses: actions/download-artifact@v3
@@ -242,11 +203,8 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Cache Playwright browsers
         uses: actions/cache@v3
