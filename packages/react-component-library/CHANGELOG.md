@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.12](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.11...3.12.12) (2022-09-23)
+
+
+### Bug Fixes
+
+* **ContextMenu:** Fix incorrect initial positioning ([de7e196](https://github.com/defencedigital/mod-uk-design-system/commit/de7e196d89c490b50db37db9596d816751367066))
+
+
+
+
+
 ## [3.12.11](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.10...3.12.11) (2022-09-21)
 
 
