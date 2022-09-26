@@ -59,10 +59,6 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
       >
         {({
           values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
           handleSubmit,
           isSubmitting,
           setFieldValue,

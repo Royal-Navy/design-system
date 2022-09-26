@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
-import { TransitionStatus } from 'react-transition-group'
 
 import {
   getTransitionOpacity,

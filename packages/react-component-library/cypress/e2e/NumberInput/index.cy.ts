@@ -1,4 +1,4 @@
-import { before, cy, describe, it } from 'local-cypress'
+import { cy, describe, it } from 'local-cypress'
 
 import selectors from '../../selectors'
 

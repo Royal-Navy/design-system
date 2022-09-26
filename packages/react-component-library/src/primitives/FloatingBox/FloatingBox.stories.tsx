@@ -1,6 +1,5 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { css } from 'styled-components'
 
 import { FloatingBox, FloatingBoxWithEmbeddedTargetProps } from './FloatingBox'
 import { FLOATING_BOX_SCHEME } from './constants'

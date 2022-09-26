@@ -14,9 +14,9 @@ export interface SidebarProviderProps {
 
 const sidebarContextDefaults: SidebarContextDefaults = {
   isOpen: false,
-  setIsOpen: (isOpen: boolean) => undefined,
+  setIsOpen: () => undefined,
   hasMouseOver: false,
-  setHasMouseOver: (hasMouseOver: boolean) => undefined,
+  setHasMouseOver: () => undefined,
 }
 
 export const SidebarContext = createContext(sidebarContextDefaults)
