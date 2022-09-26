@@ -32,7 +32,7 @@ function clickDocsButtonOnFirstLoad() {
   }
 }
 
-if (window.parent !== window)
+if (window.parent !== window && window.parent.document.evaluate)
   window.addEventListener('load', clickDocsButtonOnFirstLoad)
 
 export const parameters = {
