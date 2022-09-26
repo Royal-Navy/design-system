@@ -32,7 +32,8 @@ function clickDocsButtonOnFirstLoad() {
   }
 }
 
-window.addEventListener('load', clickDocsButtonOnFirstLoad)
+if (window.parent !== window)
+  window.addEventListener('load', clickDocsButtonOnFirstLoad)
 
 export const parameters = {
   jsx: {
