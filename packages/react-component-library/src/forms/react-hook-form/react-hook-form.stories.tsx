@@ -130,7 +130,7 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
             control={control}
             name="description"
             render={({ onChange, value, name, ref }) => (
-              <TextInput
+              <TextArea
                 name={name}
                 ref={ref}
                 onChange={onChange}
