@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.13](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.12...3.12.13) (2022-09-26)
+
+
+### Bug Fixes
+
+* **Select:** Behave as controlled component ([acc08ef](https://github.com/defencedigital/mod-uk-design-system/commit/acc08efea46ecfc9a8879e73246f8616296e805e))
+
+
+
+
+
 ## [3.12.12](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.11...3.12.12) (2022-09-23)
 
 
