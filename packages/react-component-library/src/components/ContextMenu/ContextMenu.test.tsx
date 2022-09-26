@@ -8,7 +8,13 @@ import userEvent from '@testing-library/user-event'
 import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
 import { Link } from '../Link'
 
-const CustomLink = ({ children, onClick }: any) => {
+const CustomLink = ({
+  children,
+  onClick,
+}: {
+  children: React.ReactNode
+  onClick: React.MouseEventHandler
+}) => {
   return (
     <button onClick={onClick} data-testid="context-menu-custom-link">
       {children}

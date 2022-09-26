@@ -1,10 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import { find } from 'lodash'
 
-// workaround for undefined error in typescript, node.current might not be defined
-const NODE_CURRENT = {
-  contains: (target: any): boolean => target === null,
-}
 
 /**
  * Handle document click
@@ -30,8 +26,7 @@ export function useDocumentClick(
       const nonClickableRef = find(
         nonClickableRefs,
         (node: React.RefObject<Element>) => {
-          const current = node.current || NODE_CURRENT
-          return current.contains(event.target as Element)
+          return node.current?.contains(event.target as Element)
         }
       )
 

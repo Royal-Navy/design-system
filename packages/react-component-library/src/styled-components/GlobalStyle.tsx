@@ -4,12 +4,12 @@ import { Normalize } from 'styled-normalize'
 import { selectors, lightTheme } from '@defencedigital/design-tokens'
 
 export interface GlobalStyleContextDefaults {
-  theme?: Record<string, any>
+  theme?: Record<string, unknown>
 }
 
 export interface GlobalStyleProviderProps {
   children?: React.ReactNode
-  theme?: Record<string, any>
+  theme?: Record<string, unknown>
 }
 
 const { fontSize, color } = selectors

@@ -1,13 +1,18 @@
+import React from 'react'
 import styled, { css } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
-import { SheetButton } from '../../Sheet/SheetButton'
+import { SheetButton, SheetButtonProps } from '../../Sheet/SheetButton'
 import { StyledNotificationDot } from './StyledNotificationDot'
 import { StyledNotificationsLabel } from './StyledNotificationsLabel'
 
 const { spacing, color } = selectors
 
-export const StyledNotificationsSheetButton = styled<any>(SheetButton)`
+interface StyledNotificationsSheetButtonProps extends SheetButtonProps {
+  isOpen: boolean
+}
+
+export const StyledNotificationsSheetButton = styled<React.ComponentType<StyledNotificationsSheetButtonProps>>(SheetButton)`
   display: flex;
   align-items: center;
   padding: ${spacing('3')};

@@ -174,7 +174,7 @@ export const Masthead: React.FC<MastheadProps> = ({
       {onSearch && showSearch && (
         <SearchBar
           onSearch={submitSearch}
-          searchButton={searchButtonRef}
+          searchButtonRef={searchButtonRef}
           setShowSearch={setShowSearch}
           containerWidth={containerWidth}
         />

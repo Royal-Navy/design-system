@@ -11,14 +11,14 @@ export interface SearchbarProps {
   className?: string
   containerWidth: number
   onSearch: (event: React.FormEvent<HTMLFormElement>, term: string) => void
-  searchButton: any
+  searchButtonRef: React.RefObject<HTMLElement>
   setShowSearch: (isVisible: boolean) => void
 }
 
 export const SearchBar: React.FC<SearchbarProps> = ({
   containerWidth,
   onSearch,
-  searchButton,
+  searchButtonRef,
   setShowSearch,
   ...rest
 }) => {
@@ -27,11 +27,16 @@ export const SearchBar: React.FC<SearchbarProps> = ({
 
   const onDocumentClick = useCallback(
     (event: Event) => {
-      if (!searchButton.current.contains(event.target)) {
-        setShowSearch(false)
+      if (
+        event.target instanceof Node &&
+        searchButtonRef.current?.contains(event.target)
+      ) {
+        return
       }
+
+      setShowSearch(false)
     },
-    [searchButton, setShowSearch]
+    [searchButtonRef, setShowSearch]
   )
 
   useDocumentClick(searchBoxRef, onDocumentClick)

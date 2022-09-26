@@ -20,14 +20,14 @@ describe('Searchbar', () => {
       const searchButton = {
         current: {
           contains: jest.fn().mockReturnValue(false),
-        },
+        } as unknown as HTMLElement,
       }
 
       wrapper = render(
         <SearchBar
           containerWidth={100}
           onSearch={onSearchSpy}
-          searchButton={searchButton}
+          searchButtonRef={searchButton}
           setShowSearch={setShowSearchSpy}
         />
       )
@@ -111,14 +111,14 @@ describe('Searchbar', () => {
       const searchButton = {
         current: {
           contains: jest.fn().mockReturnValue(true),
-        },
+        } as unknown as HTMLElement,
       }
 
       wrapper = render(
         <SearchBar
           containerWidth={100}
           onSearch={onSearchSpy}
-          searchButton={searchButton}
+          searchButtonRef={searchButton}
           setShowSearch={setShowSearchSpy}
         />
       )
@@ -149,7 +149,7 @@ describe('Searchbar', () => {
       const searchButton = {
         current: {
           contains: jest.fn().mockReturnValue(false),
-        },
+        } as unknown as HTMLElement,
       }
 
       wrapper = render(
@@ -157,7 +157,7 @@ describe('Searchbar', () => {
           data-arbitrary="arbitrary"
           containerWidth={100}
           onSearch={onSearchSpy}
-          searchButton={searchButton}
+          searchButtonRef={searchButton}
           setShowSearch={setShowSearchSpy}
         />
       )
