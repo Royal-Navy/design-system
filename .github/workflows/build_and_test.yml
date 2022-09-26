@@ -14,23 +14,11 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Cache Cypress binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            cypress-${{ runner.os }}-cypress-
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Build icon-library
         run: |
-          yarn install --frozen-lockfile
           yarn --cwd packages/icon-library build
 
       - name: Build design-tokens
@@ -59,17 +47,13 @@ jobs:
 
   Check_commits:
     runs-on: ubuntu-latest
-    needs: Build_icon_library
     if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: check commits
         run: |
@@ -82,16 +66,28 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Get dependencies & run lint
         run: |
-          yarn install --frozen-lockfile
           yarn --cwd packages/react-component-library lint
+
+  Build_react-component-library:
+    runs-on: ubuntu-latest
+    needs: [Build_icon_library, Lint_react-component-library]
+    steps:
+      - name: Git clone repository
+        uses: actions/checkout@v3
+
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
+        with:
+          unpack-prebuilt-libraries: true
+
+      - name: Build
+        run: |
+          yarn --cwd packages/react-component-library build
 
   Test_react-component-library:
     runs-on: ubuntu-latest
@@ -100,23 +96,16 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Attach workspace
-        uses: actions/download-artifact@v3
-        with:
-          name: dist
+          unpack-prebuilt-libraries: true
 
       - name: Jest
         env:
           JEST_JUNIT_OUTPUT_DIR: test-results/jest
           JEST_JUNIT_OUTPUT_NAME: react-component-results.xml
         run: |
-          tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
           yarn --cwd packages/react-component-library test --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand --testResultsProcessor=jest-sonar-reporter
 
       - name: SonarCloud Scan
@@ -136,28 +125,10 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Cache Cypress binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            cypress-${{ runner.os }}-cypress-
-
-      - name: Attach workspace
-        uses: actions/download-artifact@v3
-        with:
-          name: dist
-
-      - name: Unpack icon library & design tokens
-        run: |
-          tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
+          unpack-prebuilt-libraries: true
 
       - name: Confirm Cypress binary is installed
         run: |
@@ -180,42 +151,36 @@ jobs:
 
   Test_design-tokens:
     runs-on: ubuntu-latest
-    needs: [Build_icon_library]
     steps:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
-      - name: Jest design-tokens
-        run: |
-          yarn --cwd packages/design-tokens build
-          yarn --cwd packages/design-tokens test
+      - name: Lint
+        run: yarn --cwd packages/design-tokens lint
+
+      - name: Build
+        run: yarn --cwd packages/design-tokens build
+
+      - name: Run tests
+        run: yarn --cwd packages/design-tokens test
 
   # See post_built_and_test.yml for details about how this is used
   Build_storybook:
     runs-on: ubuntu-latest
-    needs: [Build_icon_library]
+    needs: [Build_icon_library, Lint_react-component-library]
     steps:
       - name: Git clone repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Attach workspace
-        uses: actions/download-artifact@v3
-        with:
-          name: dist
+          unpack-prebuilt-libraries: true
 
       - name: Build Storybook
         env:
@@ -223,7 +188,6 @@ jobs:
           CHROMATIC_BRANCH: ${{ github.head_ref || github.ref_name }}
           CHROMATIC_SLUG: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         run: |
-          tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist
           yarn --cwd packages/react-component-library storybook:static
           echo "$CHROMATIC_SHA" > packages/react-component-library/.static_storybook/sha
           echo "$CHROMATIC_BRANCH" > packages/react-component-library/.static_storybook/branch
@@ -242,11 +206,8 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Cache Playwright browsers
         uses: actions/cache@v3

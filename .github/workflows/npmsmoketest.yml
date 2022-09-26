@@ -14,15 +14,8 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Install Dependencies
-        run: |
-          yarn install
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Build design-tokens
         run: yarn --cwd packages/design-tokens build

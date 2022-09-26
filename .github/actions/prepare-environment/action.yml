@@ -1,0 +1,45 @@
+name: Set up Node.js and install dependencies
+description: Sets up Node.js and installs dependencies
+inputs:
+  unpack-prebuilt-libraries:
+    description: Whether to unpack pre-built icon-library and design-tokens bundles
+    required: false
+    default: ''
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: yarn
+
+    - name: Cache Node modules
+      uses: actions/cache@v3
+      with:
+        path: '**/node_modules'
+        key: node-modules-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+    - name: Cache Cypress binary
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/Cypress
+        key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          cypress-${{ runner.os }}-cypress-
+
+    - name: Install dependencies
+      shell: bash
+      run: |
+        yarn install --frozen-lockfile
+
+    - name: Download icon-library and design-tokens
+      if: inputs.unpack-prebuilt-libraries
+      uses: actions/download-artifact@v3
+      with:
+        name: dist
+
+    - name: Unpack icon-library and design-tokens
+      if: inputs.unpack-prebuilt-libraries
+      shell: bash
+      run: |
+        tar -xzf dist.tar.gz && mv distil packages/icon-library/dist && mv distdt packages/design-tokens/dist

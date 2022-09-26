@@ -23,15 +23,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Install dependencies
-        run: |
-          yarn install --frozen-lockfile
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Download pre-built Storybook
         uses: actions/github-script@v6
