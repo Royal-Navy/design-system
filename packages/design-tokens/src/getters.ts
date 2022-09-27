@@ -69,7 +69,7 @@ export function getMediaQuery(
     `breakpoint[${lt}].breakpoint.value`
   )
 
-  return function (
+  return function mqTagFunction(
     strings: TemplateStringsArray,
     ...interpolations: StyledComponentsInterpolation[]
   ): string {
