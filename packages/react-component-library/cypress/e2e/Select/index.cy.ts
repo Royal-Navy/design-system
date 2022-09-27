@@ -1,11 +1,17 @@
 /// <reference types="cypress-plugin-tab/src" />
+import { ColorAction000 } from '@defencedigital/design-tokens'
 import { describe, cy, it, before, beforeEach } from 'local-cypress'
 
+import { hexToRgb } from '../../helpers'
 import selectors from '../../selectors'
 
 describe('Select', () => {
   before(() => {
     cy.visit('/iframe.html?id=select--default&viewMode=story')
+  })
+
+  it('does not give the expand icon a hover appearance', () => {
+    cy.get(selectors.select.toggleIconWrapper).should('not.have.css', 'background-color',  hexToRgb(ColorAction000))
   })
 
   describe('when the component is focused', { browser: '!firefox' }, () => {
@@ -36,6 +42,10 @@ describe('Select', () => {
 
         it('displays a tooltip', () => {
           cy.get(selectors.select.tooltip).should('be.visible')
+        })
+
+        it('gives the expand icon a hover appearance', () => {
+          cy.get(selectors.select.toggleIconWrapper).should('have.css', 'background-color',  hexToRgb(ColorAction000))
         })
       })
     })

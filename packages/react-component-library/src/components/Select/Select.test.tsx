@@ -1,8 +1,8 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, render, RenderResult } from '@testing-library/react'
+import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { ColorAction000, ColorDanger800 } from '@defencedigital/design-tokens'
+import { ColorDanger800 } from '@defencedigital/design-tokens'
 import {
   IconAgriculture,
   IconAnchor,
@@ -82,39 +82,6 @@ describe('Select', () => {
 
     it('does not display the items', () => {
       expect(wrapper.queryAllByTestId('select-option')).toHaveLength(0)
-    })
-
-    it.skip('does not show the arrow button in a hover state', () => {
-      expect(wrapper.getByTestId('select-arrow-button')).toHaveStyleRule(
-        'background-color',
-        'transparent'
-      )
-    })
-
-    describe('when the mouse enters the input', () => {
-      beforeEach(() => {
-        fireEvent.mouseEnter(wrapper.getByTestId('select-input'))
-      })
-
-      it.skip('shows the arrow button in a hover state', () => {
-        expect(wrapper.getByTestId('select-arrow-button')).toHaveStyleRule(
-          'background-color',
-          ColorAction000
-        )
-      })
-
-      describe('and the mouse leaves the input', () => {
-        beforeEach(() => {
-          fireEvent.mouseLeave(wrapper.getByTestId('select-input'))
-        })
-
-        it.skip('shows the arrow button in a hover state', () => {
-          expect(wrapper.getByTestId('select-arrow-button')).toHaveStyleRule(
-            'background-color',
-            'transparent'
-          )
-        })
-      })
     })
 
     describe('when the arrow button is clicked', () => {
@@ -348,19 +315,6 @@ describe('Select', () => {
           <SelectOption value="three">Three</SelectOption>
         </Select>
       )
-    })
-
-    describe('when the mouse enters the input', () => {
-      beforeEach(() => {
-        fireEvent.mouseEnter(wrapper.getByTestId('select-input'))
-      })
-
-      it.skip('does not show the arrow button in a hover state', () => {
-        expect(wrapper.getByTestId('select-arrow-button')).toHaveStyleRule(
-          'background-color',
-          'transparent'
-        )
-      })
     })
 
     describe('when tabbing to the input', () => {

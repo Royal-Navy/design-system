@@ -2,24 +2,24 @@ import { before, cy, describe, it } from 'local-cypress'
 
 import selectors from '../../selectors'
 
-// https://github.com/storybookjs/storybook/issues/8928
-// https://github.com/storybookjs/storybook/issues/18232
-
 describe('ContextMenu', () => {
-  describe('Storybook: Docs Mode', () => {
-    describe('the user opens the menu', () => {
-      before(() => {
-        cy.visit('/iframe.html?viewMode=docs&id=context-menu--default')
+  describe('when the menu is opened', () => {
+    before(() => {
+      cy.visit('/iframe.html?viewMode=docs&id=context-menu--default')
 
-        cy.get(selectors.contextMenu.target)
-          .eq(0)
-          .rightclick({ scrollBehavior: false })
-      })
+      cy.get(selectors.contextMenu.target)
+        .eq(0)
+        .rightclick(10, 10, {  scrollBehavior: false })
+    })
 
-      it('should show the Context Menu unobscured', () => {
+    it('positions the context menu correctly', () => {
+      cy.get(selectors.contextMenu.target).then(($target) => {
+        const left = $target.offset().left + 10
+        const top = $target.offset().top + 10
+
         cy.get(selectors.contextMenu.menu)
-          .contains('This is too much text')
-          .should('be.visible')
+          .invoke('offset')
+          .should('deep.equal', {top, left})
       })
     })
   })

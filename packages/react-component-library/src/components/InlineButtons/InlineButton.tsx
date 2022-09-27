@@ -29,7 +29,7 @@ export const InlineButton = React.forwardRef<
         type="button"
         {...rest}
       >
-        <StyledIconWrapper $size={size}>{children}</StyledIconWrapper>
+        <StyledIconWrapper data-testid="icon-wrapper" $size={size}>{children}</StyledIconWrapper>
       </StyledInlineButton>
     )
   }

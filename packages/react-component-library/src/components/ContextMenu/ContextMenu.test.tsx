@@ -96,15 +96,6 @@ describe('ContextMenu', () => {
         expect(wrapper.queryByTestId('context-menu')).toBeVisible()
       })
 
-      // jest-styled-components doesn't work with css props:
-      // https://github.com/styled-components/jest-styled-components/issues/250
-      it.skip('is is rendered below the mouse pointer', () => {
-        expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
-          'top',
-          '0px'
-        )
-      })
-
       it('should disable scrolling', () => {
         expect(wrapper.baseElement).toHaveAttribute(
           'style',

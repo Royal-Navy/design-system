@@ -92,13 +92,6 @@ describe('Autocomplete', () => {
       )
     })
 
-    it.skip('does not show the arrow button in a hover state', () => {
-      expect(wrapper.getByTestId('select-arrow-button')).toHaveStyleRule(
-        'background-color',
-        'transparent'
-      )
-    })
-
     describe('when the arrow button is clicked', () => {
       beforeEach(() => {
         return userEvent.click(wrapper.getByTestId('select-arrow-button'))
