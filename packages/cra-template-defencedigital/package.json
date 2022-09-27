@@ -1,6 +1,6 @@
 {
   "name": "cra-template-defencedigital",
-  "version": "3.12.13",
+  "version": "3.12.14",
   "main": "template.json",
   "publishConfig": {
     "access": "public"
