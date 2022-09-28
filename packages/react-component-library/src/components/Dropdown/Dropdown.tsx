@@ -9,7 +9,7 @@ import { DropdownLabel } from './DropdownLabel'
 import { DropdownOption } from './DropdownOption'
 import { DropdownPlaceholder } from './DropdownPlaceholder'
 
-const { color, shadow, spacing } = selectors
+const { color, spacing } = selectors
 
 export interface DropdownProps {
   /**

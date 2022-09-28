@@ -21,19 +21,19 @@ export default {
 
 const primaryButton: ButtonProps = {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onClick: (e: React.SyntheticEvent) => {},
+  onClick: () => {},
   children: 'Primary',
 }
 
 const secondaryButton: ButtonProps = {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onClick: (e: React.SyntheticEvent) => {},
+  onClick: () => {},
   children: 'Secondary',
 }
 
 const tertiaryButton: ButtonProps = {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onClick: (e: React.SyntheticEvent) => {},
+  onClick: () => {},
   children: 'Tertiary',
 }
 

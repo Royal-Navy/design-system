@@ -41,6 +41,14 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
     validChildren.map((child) => [child.props.value, child])
   )
 
+  function getHasError(inputValue: string | undefined): boolean {
+    if (!inputValue) {
+      return false
+    }
+
+    return findIndexOfInputValue(filteredItems, inputValue) === -1
+  }
+
   function onInputValueChange({
     inputValue,
     isOpen,
@@ -56,14 +64,6 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
     if (!isOpen) {
       setHasError(getHasError(inputValue))
     }
-  }
-
-  function getHasError(inputValue: string | undefined): boolean {
-    if (!inputValue) {
-      return false
-    }
-
-    return findIndexOfInputValue(filteredItems, inputValue) === -1
   }
 
   function onIsOpenChange({

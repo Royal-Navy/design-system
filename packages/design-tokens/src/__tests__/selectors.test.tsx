@@ -35,7 +35,8 @@ describe('mediaQuery / mq', () => {
     it('throws an error', () => {
       expect(() => {
         // @ts-ignore
-        const css = mq({ gte: 'foo', lt: 'bar' })`
+        // eslint-disable-next-line no-unused-expressions
+        mq({ gte: 'foo', lt: 'bar' })`
           background-color: white;
         `
       }).toThrowError(/Invalid breakpoints/)

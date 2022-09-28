@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 import {
   ToastProps as BaseToastProps,
-  Placement,
 } from 'react-toast-notifications'
 
 import {

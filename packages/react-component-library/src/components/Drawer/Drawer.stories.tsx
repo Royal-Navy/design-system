@@ -1,6 +1,5 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { css } from 'styled-components'
 
 import { Drawer } from '.'
 

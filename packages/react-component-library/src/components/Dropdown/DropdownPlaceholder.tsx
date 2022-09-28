@@ -1,7 +1,9 @@
 import React from 'react'
-import { components } from 'react-select'
+import { components, PlaceholderProps } from 'react-select'
 import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
+
+import { DropdownOption } from './DropdownOption'
 
 const { spacing } = selectors
 
@@ -16,7 +18,7 @@ const StyledLabel = styled.span`
   }
 `
 
-export const DropdownPlaceholder: React.FC<any> = (props) => {
+export const DropdownPlaceholder: React.FC<PlaceholderProps<DropdownOption, false>> = (props) => {
   const {
     selectProps: { labelIcon: icon },
   } = props

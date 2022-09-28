@@ -1,8 +1,13 @@
+import React from 'react'
 import styled, { css } from 'styled-components'
 
-import { TimelineRow } from '../TimelineRow'
+import { TimelineRow, TimelineRowProps } from '../TimelineRow'
 
-export const StyledHeaderRow = styled<any>(TimelineRow)`
+interface StyledHeaderRowProps extends TimelineRowProps {
+  isShort?: boolean
+}
+
+export const StyledHeaderRow = styled<React.ComponentType<StyledHeaderRowProps>>(TimelineRow)`
   width: 100%;
   ${({ isShort }) =>
     isShort &&

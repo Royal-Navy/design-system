@@ -1,16 +1,17 @@
 import React from 'react'
-import { components } from 'react-select'
+import { components, IndicatorComponentType } from 'react-select'
 
 import { DropdownIndicatorIcon } from './DropdownIndicatorIcon'
+import { DropdownOption } from './DropdownOption'
 
-export const DropdownIndicator: React.FC<any> = (props) => {
+export const DropdownIndicator: IndicatorComponentType<DropdownOption, false> = (props) => {
   const {
     selectProps: { menuIsOpen: isOpen },
   } = props
 
   return (
     <components.DropdownIndicator {...props}>
-      <DropdownIndicatorIcon isOpen={isOpen} />
+      <DropdownIndicatorIcon isOpen={Boolean(isOpen)} />
     </components.DropdownIndicator>
   )
 }

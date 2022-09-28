@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { RenderResult, render, act } from '@testing-library/react'
+import { RenderResult, render } from '@testing-library/react'
 import { IconSettings } from '@defencedigital/icon-library'
 import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
@@ -8,7 +8,13 @@ import userEvent from '@testing-library/user-event'
 import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
 import { Link } from '../Link'
 
-const CustomLink = ({ children, onClick }: any) => {
+const CustomLink = ({
+  children,
+  onClick,
+}: {
+  children: React.ReactNode
+  onClick: React.MouseEventHandler
+}) => {
   return (
     <button onClick={onClick} data-testid="context-menu-custom-link">
       {children}
@@ -88,15 +94,6 @@ describe('ContextMenu', () => {
 
       it('is is rendered to the DOM', () => {
         expect(wrapper.queryByTestId('context-menu')).toBeVisible()
-      })
-
-      // jest-styled-components doesn't work with css props:
-      // https://github.com/styled-components/jest-styled-components/issues/250
-      it.skip('is is rendered below the mouse pointer', () => {
-        expect(wrapper.queryByTestId('context-menu')).toHaveStyleRule(
-          'top',
-          '0px'
-        )
       })
 
       it('should disable scrolling', () => {

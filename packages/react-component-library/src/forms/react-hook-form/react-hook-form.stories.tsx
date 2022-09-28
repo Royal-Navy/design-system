@@ -1,10 +1,9 @@
 /* eslint-disable no-console */
 import { isBefore, isValid, parseISO } from 'date-fns'
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   useForm,
   Controller,
-  useController,
 } from 'react-hook-form/dist/index.ie11'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import styled from 'styled-components'
@@ -131,7 +130,7 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
             control={control}
             name="description"
             render={({ onChange, value, name, ref }) => (
-              <TextInput
+              <TextArea
                 name={name}
                 ref={ref}
                 onChange={onChange}

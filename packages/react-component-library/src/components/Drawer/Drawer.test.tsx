@@ -49,9 +49,7 @@ describe('Drawer', () => {
       )
     })
 
-    it.skip('applies the correct open state style', () => {
-      // Why you no have style rule?
-
+    it('applies the correct open state style', () => {
       expect(wrapper.getByTestId('drawer-wrapper')).toHaveStyleRule(
         'margin-right',
         '0'
@@ -73,7 +71,7 @@ describe('Drawer', () => {
         expect(onCloseSpy).toHaveBeenCalled()
       })
 
-      it.skip('applies the correct closed state style', () => {
+      it('applies the correct closed state style', () => {
         expect(wrapper.getByTestId('drawer-wrapper')).toHaveStyleRule(
           'margin-right',
           '-280px'
@@ -101,7 +99,7 @@ describe('Drawer', () => {
         wrapper = render(<DrawerWithUpdate />)
       })
 
-      it.skip('applies the correct closed state style', () => {
+      it('applies the correct closed state style', () => {
         expect(wrapper.getByTestId('drawer-wrapper')).toHaveStyleRule(
           'margin-right',
           '-280px'
@@ -115,7 +113,7 @@ describe('Drawer', () => {
           return waitFor(() => wrapper.queryAllByText('Hide'))
         })
 
-        it.skip('applies the correct open state style', () => {
+        it('applies the correct open state style', () => {
           expect(wrapper.getByTestId('drawer-wrapper')).toHaveStyleRule(
             'margin-right',
             '0'
@@ -129,7 +127,7 @@ describe('Drawer', () => {
             return waitFor(() => wrapper.queryAllByText('Show'))
           })
 
-          it.skip('applies the correct closed state style', () => {
+          it('applies the correct closed state style', () => {
             expect(wrapper.getByTestId('drawer-wrapper')).not.toHaveStyleRule(
               'margin-right',
               '0'

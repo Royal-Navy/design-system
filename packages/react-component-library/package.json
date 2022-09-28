@@ -32,7 +32,7 @@
     "build:es": "BABEL_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\"",
     "build:cjs:dev": "BABEL_ENV=cjs MODDS_LOG_LEVEL=debug webpack --config=webpack/dev.js",
     "chromatic": "chromatic --build-script-name storybook:static",
-    "lint": "eslint src cypress --ext .js --ext .jsx --ext .ts --ext .tsx",
+    "lint": "eslint src cypress --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0",
     "prepare": "yarn build",
     "storybook": "BABEL_ENV=es MODDS_LOG_LEVEL=debug start-storybook -p 6006",
     "storybook:static": "BABEL_ENV=es build-storybook -c .storybook -o .static_storybook",

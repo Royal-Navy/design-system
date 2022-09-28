@@ -1,4 +1,4 @@
-import { beforeEach, cy, describe, expect, it } from 'local-cypress'
+import { beforeEach, cy, describe, it } from 'local-cypress'
 
 import selectors from '../../selectors'
 

@@ -1,7 +1,7 @@
 import React, { createContext, useMemo, useState } from 'react'
 
 export interface SidebarContextDefaults {
-  isOpen?: boolean
+  isOpen: boolean
   setIsOpen: (isOpen: boolean) => void
   hasMouseOver?: boolean
   setHasMouseOver: (hasMouseOver: boolean) => void
@@ -14,9 +14,9 @@ export interface SidebarProviderProps {
 
 const sidebarContextDefaults: SidebarContextDefaults = {
   isOpen: false,
-  setIsOpen: (isOpen: boolean) => undefined,
+  setIsOpen: () => undefined,
   hasMouseOver: false,
-  setHasMouseOver: (hasMouseOver: boolean) => undefined,
+  setHasMouseOver: () => undefined,
 }
 
 export const SidebarContext = createContext(sidebarContextDefaults)

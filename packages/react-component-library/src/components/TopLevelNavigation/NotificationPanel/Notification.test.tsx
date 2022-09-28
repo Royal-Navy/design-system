@@ -9,10 +9,9 @@ const NOW = '2019-11-05T11:00:00.000Z'
 
 describe('Notification', () => {
   let wrapper: RenderResult
-  let dateSpy: jest.SpyInstance
 
   beforeEach(() => {
-    dateSpy = jest
+    jest
       .spyOn(Date, 'now')
       .mockImplementation(() => new Date(NOW).valueOf())
   })
