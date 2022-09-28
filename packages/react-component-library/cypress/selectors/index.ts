@@ -1,4 +1,3 @@
-import avatar from './Avatar'
 import checkbox from './Checkbox'
 import contextMenu from './ContextMenu'
 import datePicker from './DatePicker'
@@ -13,7 +12,6 @@ import tabSet from './TabSet'
 import timeline from './Timeline'
 
 export default {
-  avatar,
   checkbox,
   contextMenu,
   datePicker,
