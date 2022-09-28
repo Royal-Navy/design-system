@@ -1,4 +1,3 @@
-import autocomplete from './Autocomplete'
 import avatar from './Avatar'
 import checkbox from './Checkbox'
 import contextMenu from './ContextMenu'
@@ -14,7 +13,6 @@ import tabSet from './TabSet'
 import timeline from './Timeline'
 
 export default {
-  autocomplete,
   avatar,
   checkbox,
   contextMenu,

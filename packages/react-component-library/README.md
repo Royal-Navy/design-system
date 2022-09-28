@@ -107,13 +107,29 @@ The [documentation website](https://design-system.digital.mod.uk/) contains all 
 
 ## End to end tests
 
-Tests are dependent on the application running.
+Tests are dependent on the Storybook running with a test configuration:
 
-`yarn storybook:test`
+```
+yarn storybook:test
+```
 
-### Run all specs
+### Run all legacy (Cypress) tests
 
-`yarn test:e2e`
+```
+yarn test:e2e
+```
+
+### Run all Playwright tests
+
+```
+yarn test:e2e-pw
+```
+
+### Run all Playwright tests with tracing
+
+```
+yarn test:e2e-pw:trace
+```
 
 ## Contributing
 

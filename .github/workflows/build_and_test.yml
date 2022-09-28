@@ -115,9 +115,35 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  Test-e2e_react-component-library:
+  Build_storybook_e2e:
     runs-on: ubuntu-latest
     needs: [Build_icon_library, Lint_react-component-library]
+    steps:
+      - name: Git clone repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
+        with:
+          unpack-prebuilt-libraries: true
+
+      - name: Build Storybook
+        run: |
+          yarn --cwd packages/react-component-library storybook:static:test
+          tar -czvf /tmp/storybook-static-e2e.tar.gz packages/react-component-library/.static_storybook
+
+      - name: Upload Storybook artefact
+        uses: actions/upload-artifact@v3
+        with:
+          name: storybook-static-e2e
+          path: /tmp/storybook-static-e2e.tar.gz
+          retention-days: 1
+
+  Test-e2e_react-component-library:
+    runs-on: ubuntu-latest
+    needs: [Build_storybook_e2e]
     strategy:
       matrix:
         browser: ['chrome', 'firefox']
@@ -148,6 +174,50 @@ jobs:
           wait-on: 'http://localhost:6006'
           wait-on-timeout: 180
           browser: ${{ matrix.browser }}
+
+  Test-e2e-playwright_react-component-library:
+    runs-on: ubuntu-latest
+    needs: [Build_icon_library, Lint_react-component-library]
+    strategy:
+      matrix:
+        shard: [1/3, 2/3, 3/3]
+    steps:
+      - name: Git clone repository
+        uses: actions/checkout@v2
+
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
+        with:
+          unpack-prebuilt-libraries: true
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-
+
+      - name: Install Playwright
+        run: yarn --cwd packages/react-component-library playwright-install
+
+      - name: Download pre-built storybook
+        uses: actions/download-artifact@v3
+        with:
+          name: storybook-static-e2e
+          path: /tmp
+
+      - name: Unpack pre-built storybook
+        run: tar -xzf /tmp/storybook-static-e2e.tar.gz
+
+      - name: Run e2e tests
+        run: yarn --cwd packages/react-component-library test:e2e-pw --shard ${{ matrix.shard }}
+
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: playwright-test-results
+          path: packages/react-component-library/e2e-output/
 
   Test_design-tokens:
     runs-on: ubuntu-latest
@@ -213,7 +283,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: '~/.cache/ms-playwright'
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/yarn.lock') }}
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-
 
       - name: Attach workspace
         uses: actions/download-artifact@v3
