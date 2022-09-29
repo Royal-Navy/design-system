@@ -11,10 +11,12 @@ export default {
     numberInputIncrease: '[data-testid="number-input-increase"]',
     datePicker: '[data-testid="datepicker-outer-wrapper"]',
     datePickerInput: '[data-testid="datepicker-input"]',
-    select: '[data-testid="select"]',
+    select: '[data-testid="select"]:has-text("Example select") input',
+    autocomplete:
+      '[data-testid="select"]:has-text("Example autocomplete") input',
     rangeSlider: '[data-testid="rangeslider"]',
     rangeSliderRail: '[data-testid="rangeslider-rail"]',
   },
   submit: '[data-testid="form-example-submit"]',
   values: '[data-testid="form-example-values"]',
-}
+} as const

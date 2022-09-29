@@ -1,4 +1,3 @@
-import form from './form'
 import masthead from './Masthead'
 import numberInput from './NumberInput'
 import rangeSlider from './RangeSlider'
@@ -8,7 +7,6 @@ import tabSet from './TabSet'
 import timeline from './Timeline'
 
 export default {
-  form,
   masthead,
   numberInput,
   rangeSlider,
