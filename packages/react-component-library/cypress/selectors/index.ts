@@ -1,4 +1,3 @@
-import datePicker from './DatePicker'
 import dismissibleBanner from './DismissibleBanner'
 import form from './form'
 import masthead from './Masthead'
@@ -10,7 +9,6 @@ import tabSet from './TabSet'
 import timeline from './Timeline'
 
 export default {
-  datePicker,
   dismissibleBanner,
   form,
   masthead,
