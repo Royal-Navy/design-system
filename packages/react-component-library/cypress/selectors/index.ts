@@ -1,4 +1,3 @@
-import checkbox from './Checkbox'
 import contextMenu from './ContextMenu'
 import datePicker from './DatePicker'
 import dismissibleBanner from './DismissibleBanner'
@@ -12,7 +11,6 @@ import tabSet from './TabSet'
 import timeline from './Timeline'
 
 export default {
-  checkbox,
   contextMenu,
   datePicker,
   dismissibleBanner,
