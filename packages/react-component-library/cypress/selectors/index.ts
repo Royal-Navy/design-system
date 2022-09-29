@@ -1,4 +1,3 @@
-import contextMenu from './ContextMenu'
 import datePicker from './DatePicker'
 import dismissibleBanner from './DismissibleBanner'
 import form from './form'
@@ -11,7 +10,6 @@ import tabSet from './TabSet'
 import timeline from './Timeline'
 
 export default {
-  contextMenu,
   datePicker,
   dismissibleBanner,
   form,
