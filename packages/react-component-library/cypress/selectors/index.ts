@@ -1,4 +1,3 @@
-import dismissibleBanner from './DismissibleBanner'
 import form from './form'
 import masthead from './Masthead'
 import numberInput from './NumberInput'
@@ -9,7 +8,6 @@ import tabSet from './TabSet'
 import timeline from './Timeline'
 
 export default {
-  dismissibleBanner,
   form,
   masthead,
   numberInput,
