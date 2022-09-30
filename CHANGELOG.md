@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.16](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.15...3.12.16) (2022-09-30)
+
+
+### Bug Fixes
+
+* **Autocomplete:** Resolve overflowing input text tooltip problems ([46ac9a1](https://github.com/defencedigital/mod-uk-design-system/commit/46ac9a1919b5372386882bad436378ff8eb1be85))
+* **Autocomplete:** Work around input overflow handling in Firefox ([3399d62](https://github.com/defencedigital/mod-uk-design-system/commit/3399d6277d1f257338d1ca5add6d8b0d85cce7cb))
+
+
+
+
+
 ## [3.12.15](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.14...3.12.15) (2022-09-29)
 
 **Note:** Version bump only for package moduk-design-system

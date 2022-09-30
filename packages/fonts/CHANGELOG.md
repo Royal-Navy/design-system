@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.16](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.15...3.12.16) (2022-09-30)
+
+**Note:** Version bump only for package @defencedigital/fonts
+
+
+
+
+
 ## [3.12.15](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.14...3.12.15) (2022-09-29)
 
 **Note:** Version bump only for package @defencedigital/fonts
