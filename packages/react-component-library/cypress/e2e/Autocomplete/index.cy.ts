@@ -202,6 +202,20 @@ describe('Autocomplete', () => {
       })
     })
 
+    describe('and an overflowing option is clicked', () => {
+      beforeEach(() => {
+        cy.contains(selectors.select.option, 'This is a really').click()
+      })
+
+      it('sets the value', () => {
+        cy.get(selectors.select.input).should('have.value', 'This is a really, really long select option label that overflows the container when selected')
+      })
+
+      it('sets the input `scrollLeft` to 0', () => {
+        cy.get(selectors.select.input).invoke('scrollLeft').should('eq', 0)
+      })
+    })
+
     describe('and `*` is typed', () => {
       beforeEach(() => {
         cy.get(selectors.select.input).type('*')

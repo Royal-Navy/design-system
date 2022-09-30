@@ -23,6 +23,7 @@ export default {
 
 const StyledWrapper = styled.div<{ $isDisabled?: boolean }>`
   height: ${({ $isDisabled }) => ($isDisabled ? 'initial' : '18rem')};
+  max-width: 20rem;
 `
 
 const Template: ComponentStory<typeof Autocomplete> = (args) => (
@@ -31,7 +32,10 @@ const Template: ComponentStory<typeof Autocomplete> = (args) => (
       <AutocompleteOption value="one">One</AutocompleteOption>
       <AutocompleteOption value="two">Two</AutocompleteOption>
       <AutocompleteOption value="three">Three</AutocompleteOption>
-      <AutocompleteOption value="four">Four</AutocompleteOption>
+      <AutocompleteOption value="long">
+        This is a really, really long select option label that overflows the
+        container when selected
+      </AutocompleteOption>
     </Autocomplete>
   </StyledWrapper>
 )
