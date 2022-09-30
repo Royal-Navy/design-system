@@ -41,7 +41,7 @@ describe('Select', () => {
         })
 
         it('displays a tooltip', () => {
-          cy.get(selectors.select.tooltip).should('be.visible')
+          cy.get(selectors.select.tooltip).should('contain.text', 'This is a really')
         })
 
         it('gives the expand icon a hover appearance', () => {

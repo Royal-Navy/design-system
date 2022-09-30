@@ -42,6 +42,7 @@ export interface SelectLayoutProps extends ComponentWithClass {
   toggleButtonProps:
     | ReturnType<ComboboxReturnValueType['getToggleButtonProps']>
     | ReturnType<SelectReturnValueType['getToggleButtonProps']>
+  tooltipText: string
   value?: string
 }
 
@@ -64,6 +65,7 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
   menuProps,
   onClearButtonClick,
   toggleButtonProps,
+  tooltipText,
   value,
   ...rest
 }) => {
@@ -143,10 +145,10 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
       <StyledFloatingBox
         placement="bottom"
         scheme="dark"
-        isVisible={hasHover && isEllipsisActive(floatingBoxTarget)}
+        isVisible={hasHover && Boolean(tooltipText) && isEllipsisActive(floatingBoxTarget)}
         targetElement={floatingBoxTarget}
       >
-        <StyledTooltip>{value}</StyledTooltip>
+        <StyledTooltip>{tooltipText}</StyledTooltip>
       </StyledFloatingBox>
     </>
   )

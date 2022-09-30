@@ -214,6 +214,24 @@ describe('Autocomplete', () => {
       it('sets the input `scrollLeft` to 0', () => {
         cy.get(selectors.select.input).invoke('scrollLeft').should('eq', 0)
       })
+
+      it('displays a tooltip when hovering on the input', () => {
+        cy.get(selectors.select.input).trigger('mouseover')
+
+        cy.get(selectors.select.tooltip).should('contain.text', 'This is a really')
+      })
+    })
+
+    describe('and overflowing text is typed', () => {
+      beforeEach(() => {
+        cy.get(selectors.select.input).type('A long piece of text that overflows the input')
+      })
+
+      it('does not display a tooltip when hovering on the input', () => {
+        cy.get(selectors.select.input).trigger('mouseover')
+
+        cy.get(selectors.select.tooltip).should('not.exist')
+      })
     })
 
     describe('and `*` is typed', () => {

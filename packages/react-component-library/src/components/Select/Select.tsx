@@ -63,6 +63,8 @@ export const Select: React.FC<SelectBaseProps> = ({
 
   const { onMenuKeyDownHandler } = useSelectMenu(inputRef)
 
+  const selectedItemText = isNil(selectedItem) ? '' : itemsMap[selectedItem].props.children
+
   return (
     <SelectLayout
       hasSelectedItem={!isNil(selectedItem)}
@@ -79,7 +81,8 @@ export const Select: React.FC<SelectBaseProps> = ({
         reset()
       }}
       toggleButtonProps={getToggleButtonProps()}
-      value={isNil(selectedItem) ? '' : itemsMap[selectedItem].props.children}
+      tooltipText={selectedItemText}
+      value={selectedItemText}
       {...{
         readOnly: true,
         ...rest,
