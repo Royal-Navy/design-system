@@ -1,3 +1,4 @@
+import { isNil } from 'lodash'
 import React, { useCallback } from 'react'
 import { useCombobox } from 'downshift'
 
@@ -40,6 +41,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   const {
     filteredItems,
     hasError,
+    hasFilter,
     inputRef,
     itemsMap,
     onInputValueChange,
@@ -68,6 +70,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     isOpen = false,
     openMenu,
     reset,
+    selectedItem,
     setHighlightedIndex,
     setInputValue,
   } = useCombobox<string>({
@@ -115,6 +118,8 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       [onBlur, onInputBlurHandler]
     )
 
+  const selectedItemText = isNil(selectedItem) || hasFilter ? '' : itemsMap[selectedItem].props.children
+
   return (
     <SelectLayout
       hasLabelFocus={isOpen}
@@ -144,6 +149,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         },
         ref: buttonRef,
       })}
+      tooltipText={selectedItemText}
       {...rest}
     >
       {isOpen &&

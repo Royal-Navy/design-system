@@ -11,6 +11,7 @@ import {
 export function useAutocomplete(children: SelectChildWithStringType[]): {
   filteredItems: React.ReactElement<SelectBaseOptionAsStringProps>[]
   hasError: boolean
+  hasFilter: boolean
   inputRef: React.RefObject<HTMLInputElement>
   itemsMap: ItemsMap
   onInputValueChange: (changes: UseComboboxStateChange<string>) => void
@@ -93,6 +94,7 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
 
   return {
     filteredItems,
+    hasFilter: Boolean(filterValue),
     hasError,
     inputRef,
     itemsMap,
