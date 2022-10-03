@@ -1,4 +1,3 @@
-import masthead from './Masthead'
 import numberInput from './NumberInput'
 import rangeSlider from './RangeSlider'
 import select from './Select'
@@ -7,7 +6,6 @@ import tabSet from './TabSet'
 import timeline from './Timeline'
 
 export default {
-  masthead,
   numberInput,
   rangeSlider,
   select,

@@ -8,4 +8,4 @@ export default {
   navigation: {
     button: '[data-testid="tab-nav-tab-button"]',
   },
-}
+} as const
