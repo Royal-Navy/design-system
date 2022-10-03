@@ -4,4 +4,4 @@ export default {
   tabItem: '[data-testid="tab-set-tab"]',
   tabItemButton: '[data-testid="tab-set-tab-button"]',
   tabs: '[data-testid="tabs"]',
-}
+} as const
