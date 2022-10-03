@@ -28,7 +28,7 @@
     "lint": "eslint src --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json --max-warnings 0"
   },
   "lint-staged": {
-    "*.@(js|jsx|ts|tsx)": "eslint"
+    "*.@(js|jsx|ts|tsx)": ["eslint", "prettier --write"]
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
