@@ -3,6 +3,4 @@ const SCROLL_DIRECTION = {
   RIGHT: 'right',
 } as const
 
-export {
-  SCROLL_DIRECTION,
-}
+export { SCROLL_DIRECTION }

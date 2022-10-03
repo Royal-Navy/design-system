@@ -19,7 +19,9 @@ const tokens = {
 }
 
 export type StyledComponentsInterpolation =
-  | ((executionContext: Record<string, unknown>) => StyledComponentsInterpolation)
+  | ((
+      executionContext: Record<string, unknown>
+    ) => StyledComponentsInterpolation)
   | InterpolationValue
   | readonly StyledComponentsInterpolation[]
 

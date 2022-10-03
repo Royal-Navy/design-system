@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import { find } from 'lodash'
 
-
 /**
  * Handle document click
  * @param nodes - if the click is inside a node then document click event will

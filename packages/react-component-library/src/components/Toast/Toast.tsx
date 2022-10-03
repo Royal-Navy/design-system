@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 
-import {
-  ToastProps as BaseToastProps,
-} from 'react-toast-notifications'
+import { ToastProps as BaseToastProps } from 'react-toast-notifications'
 
 import {
   IconInfo,

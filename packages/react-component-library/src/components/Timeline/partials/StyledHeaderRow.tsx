@@ -7,7 +7,9 @@ interface StyledHeaderRowProps extends TimelineRowProps {
   isShort?: boolean
 }
 
-export const StyledHeaderRow = styled<React.ComponentType<StyledHeaderRowProps>>(TimelineRow)`
+export const StyledHeaderRow = styled<
+  React.ComponentType<StyledHeaderRowProps>
+>(TimelineRow)`
   width: 100%;
   ${({ isShort }) =>
     isShort &&

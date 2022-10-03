@@ -5,6 +5,4 @@ const TOOLTIP_POSITION = {
   RIGHT: 'right',
 } as const
 
-export {
-  TOOLTIP_POSITION,
-}
+export { TOOLTIP_POSITION }
