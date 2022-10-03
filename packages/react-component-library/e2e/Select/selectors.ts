@@ -6,6 +6,7 @@ export default {
   option: '[data-testid="select-option"]',
   outerWrapper: '[data-testid="select-outer-wrapper"]',
   toggleButton: '[data-testid="select-arrow-button"]',
-  toggleIconWrapper: '[data-testid="select-arrow-button"] [data-testid="icon-wrapper"]',
+  toggleIconWrapper:
+    '[data-testid="select-arrow-button"] [data-testid="icon-wrapper"]',
   tooltip: '[data-testid="floating-box"]',
-}
+} as const
