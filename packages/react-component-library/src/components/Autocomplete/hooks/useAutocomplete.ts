@@ -74,12 +74,10 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
     if (isOpen) {
       inputRef.current?.focus()
     } else {
-      setTimeout(() => {
-        if (!filterValue && inputRef.current) {
-          // Scroll to the beginning of the input in Firefox
-          inputRef.current.scrollLeft = 0
-        }
-      })
+      if (!filterValue && inputRef.current) {
+        // Scroll to the beginning of the input in Firefox
+        inputRef.current.scrollLeft = 0
+      }
 
       const newHasError = getHasError(inputValue)
       setHasError(newHasError)

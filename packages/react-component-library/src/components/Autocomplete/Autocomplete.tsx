@@ -118,7 +118,22 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       [onBlur, onInputBlurHandler]
     )
 
-  const selectedItemText = isNil(selectedItem) || hasFilter ? '' : itemsMap[selectedItem].props.children
+  const handleInputScroll: React.UIEventHandler<HTMLInputElement> = useCallback(
+    (event) => {
+      const input = event.currentTarget
+
+      if (document.activeElement !== input && !hasFilter) {
+        // Scroll to the beginning of the input in Firefox
+        input.scrollLeft = 0
+      }
+    },
+    [hasFilter]
+  )
+
+  const selectedItemText =
+    isNil(selectedItem) || hasFilter
+      ? ''
+      : itemsMap[selectedItem].props.children
 
   return (
     <SelectLayout
@@ -132,6 +147,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           onInputTabKeyHandler(e)
           onInputEscapeKeyHandler(e)
         },
+        onScroll: handleInputScroll,
         ref: inputRef,
       })}
       inputWrapperProps={getComboboxProps({
