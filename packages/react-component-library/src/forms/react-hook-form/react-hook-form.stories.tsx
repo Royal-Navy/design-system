@@ -1,10 +1,7 @@
 /* eslint-disable no-console */
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState, useEffect } from 'react'
-import {
-  useForm,
-  Controller,
-} from 'react-hook-form/dist/index.ie11'
+import { useForm, Controller } from 'react-hook-form/dist/index.ie11'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import styled from 'styled-components'
 

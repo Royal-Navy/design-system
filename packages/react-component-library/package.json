@@ -44,7 +44,7 @@
     "types": "tsc"
   },
   "lint-staged": {
-    "*.@(js|jsx|ts|tsx)": "eslint"
+    "*.@(js|jsx|ts|tsx)": ["eslint", "prettier --write"]
   },
   "jestSonar": {
     "reportPath": "coverage",

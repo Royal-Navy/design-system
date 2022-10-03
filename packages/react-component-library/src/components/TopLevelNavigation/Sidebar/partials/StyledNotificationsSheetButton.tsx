@@ -12,7 +12,9 @@ interface StyledNotificationsSheetButtonProps extends SheetButtonProps {
   isOpen: boolean
 }
 
-export const StyledNotificationsSheetButton = styled<React.ComponentType<StyledNotificationsSheetButtonProps>>(SheetButton)`
+export const StyledNotificationsSheetButton = styled<
+  React.ComponentType<StyledNotificationsSheetButtonProps>
+>(SheetButton)`
   display: flex;
   align-items: center;
   padding: ${spacing('3')};

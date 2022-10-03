@@ -1,6 +1,6 @@
 const FLOATING_BOX_SCHEME = {
   LIGHT: 'light',
-  DARK: 'dark'
+  DARK: 'dark',
 } as const
 
 const FLOATING_BOX_PLACEMENT = {
@@ -8,10 +8,7 @@ const FLOATING_BOX_PLACEMENT = {
   RIGHT: 'right',
   TOP: 'top',
   BOTTOM: 'bottom',
-  AUTO: 'auto'
+  AUTO: 'auto',
 } as const
 
-export {
-  FLOATING_BOX_SCHEME,
-  FLOATING_BOX_PLACEMENT
-}
+export { FLOATING_BOX_SCHEME, FLOATING_BOX_PLACEMENT }

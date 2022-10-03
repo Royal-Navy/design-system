@@ -63,7 +63,9 @@ export const Select: React.FC<SelectBaseProps> = ({
 
   const { onMenuKeyDownHandler } = useSelectMenu(inputRef)
 
-  const selectedItemText = isNil(selectedItem) ? '' : itemsMap[selectedItem].props.children
+  const selectedItemText = isNil(selectedItem)
+    ? ''
+    : itemsMap[selectedItem].props.children
 
   return (
     <SelectLayout

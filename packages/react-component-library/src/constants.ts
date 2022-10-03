@@ -1,7 +1,5 @@
 const DATE_FORMAT = {
-  SHORT: 'dd/MM/yyyy'
+  SHORT: 'dd/MM/yyyy',
 }
 
-export {
-  DATE_FORMAT,
-}
+export { DATE_FORMAT }

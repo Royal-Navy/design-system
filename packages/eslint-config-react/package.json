@@ -10,6 +10,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "lint-staged": {
+    "*.@(js|jsx|ts|tsx)": "prettier --write"
+  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.4.0",

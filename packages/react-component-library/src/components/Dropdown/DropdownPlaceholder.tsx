@@ -18,7 +18,9 @@ const StyledLabel = styled.span`
   }
 `
 
-export const DropdownPlaceholder: React.FC<PlaceholderProps<DropdownOption, false>> = (props) => {
+export const DropdownPlaceholder: React.FC<
+  PlaceholderProps<DropdownOption, false>
+> = (props) => {
   const {
     selectProps: { labelIcon: icon },
   } = props

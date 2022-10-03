@@ -14,5 +14,5 @@ export default {
   shadowsTokens,
   spacingTokens,
   typographyTokens,
-  zindexTokens
+  zindexTokens,
 }

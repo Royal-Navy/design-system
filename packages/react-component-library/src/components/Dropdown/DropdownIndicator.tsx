@@ -4,7 +4,10 @@ import { components, IndicatorComponentType } from 'react-select'
 import { DropdownIndicatorIcon } from './DropdownIndicatorIcon'
 import { DropdownOption } from './DropdownOption'
 
-export const DropdownIndicator: IndicatorComponentType<DropdownOption, false> = (props) => {
+export const DropdownIndicator: IndicatorComponentType<
+  DropdownOption,
+  false
+> = (props) => {
   const {
     selectProps: { menuIsOpen: isOpen },
   } = props

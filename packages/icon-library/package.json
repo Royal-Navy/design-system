@@ -28,6 +28,9 @@
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --allowJs false --outDir dist/types",
     "prepare": "yarn build"
   },
+  "lint-staged": {
+    "*.@(js|jsx|ts|tsx)": "prettier --write"
+  },
   "dependencies": {
     "@babel/runtime": "^7.16.7",
     "@inline-svg-unique-id/react": "^1.2.2"

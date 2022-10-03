@@ -145,7 +145,11 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
       <StyledFloatingBox
         placement="bottom"
         scheme="dark"
-        isVisible={hasHover && Boolean(tooltipText) && isEllipsisActive(floatingBoxTarget)}
+        isVisible={
+          hasHover &&
+          Boolean(tooltipText) &&
+          isEllipsisActive(floatingBoxTarget)
+        }
         targetElement={floatingBoxTarget}
       >
         <StyledTooltip>{tooltipText}</StyledTooltip>

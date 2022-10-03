@@ -57,12 +57,7 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
           setSubmitting(false)
         }}
       >
-        {({
-          values,
-          handleSubmit,
-          isSubmitting,
-          setFieldValue,
-        }) => (
+        {({ values, handleSubmit, isSubmitting, setFieldValue }) => (
           <form onSubmit={handleSubmit}>
             <SectionDivider title="Example Form" />
             <FormikField name="email">
