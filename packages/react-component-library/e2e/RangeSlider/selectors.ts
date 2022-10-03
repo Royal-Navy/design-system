@@ -9,4 +9,4 @@ export default {
     betweenThresholds: '[data-testid="rangeslider-track-between-thresholds"]',
     aboveThresholds: '[data-testid="rangeslider-track-above-thresholds"]',
   },
-}
+} as const
