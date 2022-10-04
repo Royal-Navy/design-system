@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.17](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.16...3.12.17) (2022-10-04)
+
+
+### Bug Fixes
+
+* **Autocomplete:** Improve input overflow workaround in Firefox ([9785891](https://github.com/defencedigital/mod-uk-design-system/commit/978589141d32eebbdcf76f2ad6158e771fc28de6)), closes [#3470](https://github.com/defencedigital/mod-uk-design-system/issues/3470)
+
+
+
+
+
 ## [3.12.16](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.15...3.12.16) (2022-09-30)
 
 
