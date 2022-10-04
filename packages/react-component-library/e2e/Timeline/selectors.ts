@@ -10,4 +10,4 @@ export default {
     zoomOut: '[data-testid="timeline-toolbar-zoom-out"]',
   },
   week: '[data-testid="timeline-week"]',
-}
+} as const
