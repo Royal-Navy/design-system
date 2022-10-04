@@ -1,4 +1,3 @@
-import { expect, test } from '@playwright/test'
 import {
   ColorDanger800,
   ColorNeutral100,
@@ -7,8 +6,9 @@ import {
 } from '@defencedigital/design-tokens'
 import { remToPx } from 'polished'
 
-import selectors from './selectors'
 import { hexToRgb } from '../helpers'
+import { expect, test } from '../test'
+import selectors from './selectors'
 
 test.describe('Autocomplete', () => {
   test.beforeEach(async ({ page }) => {

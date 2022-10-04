@@ -1,10 +1,10 @@
 import { ColorNeutral200 } from '@defencedigital/design-tokens'
-import { expect, test } from '@playwright/test'
 import { addDays, startOfMonth, format } from 'date-fns'
 
 import { formatDatesForInput } from '../../src/components/DatePicker/utils'
 import { DATE_FORMAT } from '../../src/constants'
 import { hexToRgb } from '../helpers'
+import { expect, test } from '../test'
 import selectors from './selectors'
 
 test.describe('DatePicker, range', () => {

@@ -1,7 +1,6 @@
-import { expect, test } from '@playwright/test'
-
-import selectors from './selectors'
 import { DEFAULTS } from '../../src/components/Timeline/constants'
+import { expect, test } from '../test'
+import selectors from './selectors'
 
 test.describe('Compound Timeline', () => {
   test.beforeEach(async ({ page }) => {

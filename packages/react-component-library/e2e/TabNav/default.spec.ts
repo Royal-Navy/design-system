@@ -1,7 +1,7 @@
 import { ColorAction500 } from '@defencedigital/design-tokens'
-import { expect, test } from '@playwright/test'
 
 import { hexToRgb } from '../helpers'
+import { expect, test } from '../test'
 import selectors from './selectors'
 
 test.describe('TabNav, default', () => {

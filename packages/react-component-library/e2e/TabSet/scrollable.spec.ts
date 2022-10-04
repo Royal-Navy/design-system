@@ -1,5 +1,6 @@
-import { expect, Page, test } from '@playwright/test'
+import { Page } from '@playwright/test'
 
+import { expect, test } from '../test'
 import selectors from './selectors'
 
 const INITIAL_VIEWPORT_WIDTH = 1400
