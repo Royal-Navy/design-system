@@ -105,30 +105,43 @@ The Design System is maintained by a team at the Defence Digital. If you want to
 
 The [documentation website](https://design-system.digital.mod.uk/) contains all the information you need to build your application using the Defence Digital Design System.
 
-## End to end tests
+## End-to-end tests
 
+End-to-end tests run in both Chrome and Firefox using [Playwright](https://playwright.dev/).
 Tests are dependent on the Storybook running with a test configuration:
 
 ```
 yarn storybook:test
 ```
 
-### Run all legacy (Cypress) tests
+Playwright browsers and dependencies also have to be installed:
+
+```
+yarn test:e2e:install
+```
+
+### Run all tests
 
 ```
 yarn test:e2e
 ```
 
-### Run all Playwright tests
+### Run specific tests
 
 ```
-yarn test:e2e-pw
+yarn test:e2e <regex>
 ```
 
-### Run all Playwright tests with tracing
+### Run all tests with tracing
 
 ```
-yarn test:e2e-pw:trace
+yarn test:e2e:trace
+```
+
+### Open the HTML test report
+
+```
+yarn test:e2e:show-report
 ```
 
 ## Contributing
