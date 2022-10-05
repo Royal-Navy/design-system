@@ -17,5 +17,9 @@ module.exports = {
         project: null,
       },
     },
+    {
+      files: ['e2e/**/*.ts'],
+      extends: ['plugin:playwright/playwright-test'],
+    },
   ],
 }
