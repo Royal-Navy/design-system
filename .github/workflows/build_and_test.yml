@@ -115,39 +115,75 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  Test-e2e_react-component-library:
+  Build_storybook_e2e:
     runs-on: ubuntu-latest
     needs: [Build_icon_library, Lint_react-component-library]
-    strategy:
-      matrix:
-        browser: ['chrome', 'firefox']
     steps:
       - name: Git clone repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
         with:
           unpack-prebuilt-libraries: true
 
-      - name: Confirm Cypress binary is installed
+      - name: Build Storybook
         run: |
-          result=$(yarn cypress version)
-          if [[  `echo $result` == *"not installed"* ]];
-            then echo "cypress binary is not installed, installing binary...." && yarn cypress install;
-            else echo "cypress binary is installed, no action required";
-          fi
+          yarn --cwd packages/react-component-library storybook:static:test
+          tar -czvf /tmp/storybook-static-e2e.tar.gz packages/react-component-library/.static_storybook
+
+      - name: Upload Storybook artefact
+        uses: actions/upload-artifact@v3
+        with:
+          name: storybook-static-e2e
+          path: /tmp/storybook-static-e2e.tar.gz
+          retention-days: 1
+
+  Test-e2e_react-component-library:
+    runs-on: ubuntu-latest
+    needs: [Build_storybook_e2e]
+    strategy:
+      matrix:
+        shard: [1/3, 2/3, 3/3]
+    steps:
+      - name: Git clone repository
+        uses: actions/checkout@v2
+
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
+        with:
+          unpack-prebuilt-libraries: true
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-
+
+      - name: Install Playwright
+        run: yarn --cwd packages/react-component-library test:e2e:install
+
+      - name: Download pre-built storybook
+        uses: actions/download-artifact@v3
+        with:
+          name: storybook-static-e2e
+          path: /tmp
+
+      - name: Unpack pre-built storybook
+        run: tar -xzf /tmp/storybook-static-e2e.tar.gz
 
       - name: Run e2e tests
-        uses: cypress-io/github-action@v4
-        env:
-          CHOKIDAR_USEPOLLING: 1
+        run: yarn --cwd packages/react-component-library test:e2e --shard ${{ matrix.shard }}
+
+      - uses: actions/upload-artifact@v2
+        if: always()
         with:
-          project: ./packages/react-component-library
-          start: yarn --cwd packages/react-component-library storybook:test
-          wait-on: 'http://localhost:6006'
-          wait-on-timeout: 180
-          browser: ${{ matrix.browser }}
+          name: playwright-test-results
+          path: packages/react-component-library/e2e-output/
 
   Test_design-tokens:
     runs-on: ubuntu-latest
@@ -213,7 +249,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: '~/.cache/ms-playwright'
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/yarn.lock') }}
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-
 
       - name: Attach workspace
         uses: actions/download-artifact@v3

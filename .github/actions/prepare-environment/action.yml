@@ -19,14 +19,6 @@ runs:
         path: '**/node_modules'
         key: node-modules-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-    - name: Cache Cypress binary
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/Cypress
-        key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          cypress-${{ runner.os }}-cypress-
-
     - name: Install dependencies
       shell: bash
       run: |

@@ -18,15 +18,8 @@ module.exports = {
       },
     },
     {
-      files: ['cypress/**/*.cy.ts'],
-      rules: {
-        'jest/expect-expect': 'off',
-        'jest/no-standalone-expect': 'off',
-        'jest/valid-expect': 'off',
-        'jest/valid-describe': 'off',
-        'jest/valid-describe-callback': 'off',
-        'jest/valid-title': 'off',
-      },
+      files: ['e2e/**/*.ts'],
+      extends: ['plugin:playwright/playwright-test'],
     },
   ],
 }

@@ -11,6 +11,7 @@ module.exports = {
   restoreMocks: true,
   testEnvironment: 'jsdom',
   testMatch: ['**/?(*.)(test).ts?(x)'],
+  testPathIgnorePatterns: ['e2e'],
   setupFilesAfterEnv: ['<rootDir>/jest/setupTests.js'],
   globalSetup: '<rootDir>/jest/globalSetup.js',
   transformIgnorePatterns: [

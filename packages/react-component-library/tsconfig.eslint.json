@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src", "jest", "cypress", "*.ts"]
+  "include": ["src", "jest", "e2e", "*.ts"]
 }
