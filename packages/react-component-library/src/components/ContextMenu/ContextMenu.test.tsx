@@ -319,7 +319,7 @@ describe('ContextMenu', () => {
     })
 
     it('fires the onShow event', () => {
-      expect(onShowSpy).toBeCalledTimes(1)
+      expect(onShowSpy).toHaveBeenCalledTimes(1)
       expect(onShowSpy).toHaveBeenCalledWith(
         expect.objectContaining({ isTrusted: false })
       )
@@ -331,7 +331,7 @@ describe('ContextMenu', () => {
       })
 
       it('fires the onHide event', () => {
-        expect(onHideSpy).toBeCalledTimes(1)
+        expect(onHideSpy).toHaveBeenCalledTimes(1)
         expect(onHideSpy).toHaveBeenCalledWith(
           expect.objectContaining({ isTrusted: false })
         )
@@ -401,7 +401,7 @@ describe('ContextMenu', () => {
     it('does not throw an error when clicking', () => {
       expect(() => {
         return userEvent.click(wrapper.getByText('Clickable area'))
-      }).not.toThrowError()
+      }).not.toThrow()
     })
   })
 })

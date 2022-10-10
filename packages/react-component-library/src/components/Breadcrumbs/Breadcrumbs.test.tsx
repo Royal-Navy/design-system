@@ -148,6 +148,6 @@ describe('Breadcrumbs', () => {
   })
 
   it('does not throw an error if there are no children', () => {
-    expect(() => render(<Breadcrumbs />)).not.toThrowError()
+    expect(() => render(<Breadcrumbs />)).not.toThrow()
   })
 })
