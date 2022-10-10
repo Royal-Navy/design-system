@@ -47,3 +47,8 @@ ClickToActivate.storyName = 'Click to activate'
 ClickToActivate.args = {
   isClick: true,
 }
+
+export const Open = Template.bind({})
+Open.args = {
+  isVisible: true,
+}
