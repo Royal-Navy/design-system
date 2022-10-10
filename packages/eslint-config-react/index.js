@@ -23,6 +23,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     'import/no-unresolved': 0,
     'import/prefer-default-export': 0,
+    'jest/no-alias-methods': 1,
     'jsx-a11y/label-has-for': 0,
     'no-underscore-dangle': ['error', { allow: ['__typename'] }],
     'no-use-before-define': 0,

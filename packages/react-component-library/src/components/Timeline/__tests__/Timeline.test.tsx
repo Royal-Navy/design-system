@@ -2431,12 +2431,12 @@ describe('Timeline', () => {
     })
 
     it('should not rerender children if props have not changed', async () => {
-      expect(eventSpy).toBeCalledTimes(1)
+      expect(eventSpy).toHaveBeenCalledTimes(1)
       eventSpy.mockClear()
 
       await user.click(wrapper.getByText('Force update'))
       expect(await wrapper.findByText('Render: 2')).toBeInTheDocument()
-      expect(eventSpy).not.toBeCalled()
+      expect(eventSpy).not.toHaveBeenCalled()
     })
   })
 })

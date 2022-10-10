@@ -1200,7 +1200,7 @@ describe('DatePicker', () => {
     const jsxToRender = <DatePicker startDate={new Date()} value={null} />
 
     it('does not throw an error', () => {
-      expect(() => render(jsxToRender)).not.toThrowError()
+      expect(() => render(jsxToRender)).not.toThrow()
     })
   })
 

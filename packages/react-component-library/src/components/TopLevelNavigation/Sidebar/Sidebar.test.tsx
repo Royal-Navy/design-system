@@ -87,7 +87,7 @@ describe('Sidebar', () => {
         )
 
         fireEvent.mouseOver(wrapper.getByTestId('sidebar'))
-      }).not.toThrowError(/findDOMNode is deprecated in StrictMode/)
+      }).not.toThrow(/findDOMNode is deprecated in StrictMode/)
     })
   })
 

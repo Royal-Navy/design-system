@@ -167,7 +167,7 @@ describe('Dropdown', () => {
     })
 
     it('does not throw an error when an option is clicked', () => {
-      expect(() => wrapper.getByText('Option 1').click()).not.toThrowError()
+      expect(() => wrapper.getByText('Option 1').click()).not.toThrow()
     })
   })
 })

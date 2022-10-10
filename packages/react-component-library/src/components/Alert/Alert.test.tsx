@@ -151,7 +151,7 @@ describe('Alert', () => {
       })
 
       it('should call the callback once', () => {
-        expect(onCloseSpy).toBeCalledTimes(1)
+        expect(onCloseSpy).toHaveBeenCalledTimes(1)
       })
     })
   })

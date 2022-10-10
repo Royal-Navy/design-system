@@ -39,7 +39,7 @@ describe('mediaQuery / mq', () => {
         mq({ gte: 'foo', lt: 'bar' })`
           background-color: white;
         `
-      }).toThrowError(/Invalid breakpoints/)
+      }).toThrow(/Invalid breakpoints/)
     })
   })
 
@@ -134,7 +134,7 @@ describe('mediaQuery / mq', () => {
 describe('breakpoint', () => {
   describe('when the breakpoint is invalid', () => {
     it('throws a friendly error', () => {
-      expect(() => breakpoint('invalid' as BreakpointSize)).toThrowError(
+      expect(() => breakpoint('invalid' as BreakpointSize)).toThrow(
         'Invalid breakpoint token'
       )
     })
@@ -166,7 +166,7 @@ describe('breakpoint', () => {
 describe('animation', () => {
   describe('when the index is invalid', () => {
     it('throws a friendly error', () => {
-      expect(() => animation('invalid' as AnimationTiming)).toThrowError(
+      expect(() => animation('invalid' as AnimationTiming)).toThrow(
         'Invalid animation token'
       )
     })
@@ -193,7 +193,7 @@ describe('animation', () => {
 describe('color', () => {
   describe('when the group is invalid', () => {
     it('throws a friendly error', () => {
-      expect(() => color('invalid' as ColorGroup, '400')).toThrowError(
+      expect(() => color('invalid' as ColorGroup, '400')).toThrow(
         'Invalid color token'
       )
     })
@@ -201,7 +201,7 @@ describe('color', () => {
 
   describe('when the shade is invalid', () => {
     it('throws a friendly error', () => {
-      expect(() => color('action', 'invalid' as ColorShade)).toThrowError(
+      expect(() => color('action', 'invalid' as ColorShade)).toThrow(
         'Invalid color token'
       )
     })
@@ -228,7 +228,7 @@ describe('color', () => {
 describe('fontSize', () => {
   describe('when the size is invalid', () => {
     it('throws a friendly error', () => {
-      expect(() => fontSize('invalid' as TypographySize)).toThrowError(
+      expect(() => fontSize('invalid' as TypographySize)).toThrow(
         'Invalid typography token'
       )
     })
@@ -255,7 +255,7 @@ describe('fontSize', () => {
 describe('shadow', () => {
   describe('when the weight is invalid', () => {
     it('throws a friendly error', () => {
-      expect(() => shadow('invalid' as ShadowWeight)).toThrowError(
+      expect(() => shadow('invalid' as ShadowWeight)).toThrow(
         'Invalid shadow token'
       )
     })
@@ -282,7 +282,7 @@ describe('shadow', () => {
 describe('spacing', () => {
   describe('when the spacing value is invalid', () => {
     it('throws a friendly error', () => {
-      expect(() => spacing('invalid' as Spacing)).toThrowError(
+      expect(() => spacing('invalid' as Spacing)).toThrow(
         'Invalid spacing token'
       )
     })
@@ -309,7 +309,7 @@ describe('spacing', () => {
 describe('zIndex', () => {
   describe('when the group is invalid', () => {
     it('throws a friendly error', () => {
-      expect(() => zIndex('invalid' as ZIndexGroup, 1)).toThrowError(
+      expect(() => zIndex('invalid' as ZIndexGroup, 1)).toThrow(
         'Invalid z-index token'
       )
     })
