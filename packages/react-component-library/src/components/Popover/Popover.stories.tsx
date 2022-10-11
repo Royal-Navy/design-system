@@ -5,56 +5,50 @@ import styled, { css } from 'styled-components'
 import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 import { Popover } from '.'
 
+const StyledContent = styled.pre`
+  padding: 1rem;
+`
+
 export default {
   component: Popover,
   title: 'Popover',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
+  args: {
+    content: <StyledContent>This is some arbitrary JSX</StyledContent>,
+  },
 } as ComponentMeta<typeof Popover>
 
-const popoverTarget = (text = 'Hover on me') => (
-  <div
-    css={css`
-      display: inline-block;
-      padding: 1rem;
-      background-color: #c9c9c9;
-    `}
-  >
-    {text}
-  </div>
+const Template: ComponentStory<typeof Popover> = (args) => (
+  <Popover {...args}>
+    <div
+      css={css`
+        display: inline-block;
+        padding: 1rem;
+        background-color: #c9c9c9;
+      `}
+    >
+      {args.isClick ? 'Click on me' : 'Hover on me'}
+    </div>
+  </Popover>
 )
 
-const StyledContent = styled.pre`
-  padding: 1rem;
-`
+export const Default = Template.bind({})
 
-export const Default: ComponentStory<typeof Popover> = (props) => (
-  <Popover {...props}>{popoverTarget()}</Popover>
-)
-
-Default.args = {
-  content: <StyledContent>This is some arbitrary JSX</StyledContent>,
+export const Dark = Template.bind({})
+Dark.storyName = 'Dark'
+Dark.args = {
+  scheme: FLOATING_BOX_SCHEME.DARK,
 }
 
-export const Dark: ComponentStory<typeof Popover> = () => (
-  <Popover
-    content={<StyledContent>This is some arbitrary JSX</StyledContent>}
-    scheme={FLOATING_BOX_SCHEME.DARK}
-  >
-    {popoverTarget()}
-  </Popover>
-)
-
-Dark.storyName = 'Dark'
-
-export const ClickToActivate: ComponentStory<typeof Popover> = () => (
-  <Popover
-    content={<StyledContent>This is some arbitrary JSX</StyledContent>}
-    isClick
-  >
-    {popoverTarget('Click on me')}
-  </Popover>
-)
-
+export const ClickToActivate = Template.bind({})
 ClickToActivate.storyName = 'Click to activate'
+ClickToActivate.args = {
+  isClick: true,
+}
+
+export const Open = Template.bind({})
+Open.args = {
+  isVisible: true,
+}
