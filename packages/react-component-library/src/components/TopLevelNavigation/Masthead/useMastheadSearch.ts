@@ -1,14 +1,22 @@
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 
-export function useMastheadSearch() {
-  const [showSearch, setShowSearch] = useState(false)
+export function useMastheadSearch(initialIsOpen: boolean) {
+  const [showSearch, setShowSearch] = useState(initialIsOpen)
   const [containerWidth, setContainerWidth] = useState(0)
-  const mastheadContainerRef = useRef<HTMLDivElement>(null)
+  const mastheadRefObject = useRef<HTMLDivElement | null>(null)
+
+  const mastheadRef = useCallback((element) => {
+    mastheadRefObject.current = element
+
+    if (element) {
+      setContainerWidth(element.offsetWidth)
+    }
+  }, [])
 
   function toggleSearch(
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) {
-    if (!mastheadContainerRef.current) {
+    if (!mastheadRefObject.current) {
       return
     }
 
@@ -19,7 +27,7 @@ export function useMastheadSearch() {
     // as the width of the searchbar so that it does not spill
     // over to other parts of the page, such as the sidebar.
     if (newShowSearch) {
-      setContainerWidth(mastheadContainerRef.current.offsetWidth)
+      setContainerWidth(mastheadRefObject.current.offsetWidth)
     }
 
     setShowSearch(!showSearch)
@@ -27,7 +35,7 @@ export function useMastheadSearch() {
 
   return {
     containerWidth,
-    mastheadContainerRef,
+    mastheadRef,
     setShowSearch,
     showSearch,
     toggleSearch,

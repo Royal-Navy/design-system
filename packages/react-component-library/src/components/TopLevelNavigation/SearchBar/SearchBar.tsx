@@ -55,6 +55,7 @@ export const SearchBar: React.FC<SearchbarProps> = ({
     >
       <StyledForm data-testid="searchbar-form" onSubmit={onSubmit}>
         <TextInput
+          aria-label="Search terms"
           autoFocus
           id="term"
           name="term"

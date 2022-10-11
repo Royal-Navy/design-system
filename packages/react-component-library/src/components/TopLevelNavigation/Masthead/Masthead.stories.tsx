@@ -17,6 +17,7 @@ import {
   MastheadUserItem,
 } from '.'
 import { Notification, Notifications } from '../NotificationPanel'
+import { MASTHEAD_SUBCOMPONENT } from './constants'
 
 export default {
   component: Masthead,
@@ -238,4 +239,13 @@ export const WithNotifications: ComponentStory<typeof Masthead> = (props) => {
 WithNotifications.storyName = 'With notifications'
 WithNotifications.args = {
   onSearch: null,
+}
+
+export const WithSearchOpen = Default.bind({})
+WithSearchOpen.args = {
+  initialOpenSubcomponent: MASTHEAD_SUBCOMPONENT.SEARCH,
+}
+WithSearchOpen.storyName = 'With search open'
+WithSearchOpen.parameters = {
+  docs: { disable: true },
 }
