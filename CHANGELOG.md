@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.13.0](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.18...3.13.0) (2022-10-11)
+
+
+### Features
+
+* **Deps:** Update eslint-plugin-jest ([827524e](https://github.com/defencedigital/mod-uk-design-system/commit/827524e0c057bb47100a55a952988d542276c542))
+
+
+
+
+
 ## [3.12.18](https://github.com/defencedigital/mod-uk-design-system/compare/3.12.17...3.12.18) (2022-10-07)
 
 **Note:** Version bump only for package moduk-design-system
