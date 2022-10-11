@@ -20,6 +20,9 @@ import { Notification, Notifications } from '../NotificationPanel'
 import { MASTHEAD_SUBCOMPONENT } from './constants'
 
 export default {
+  args: {
+    title: 'MOD.UK Design System',
+  },
   component: Masthead,
   subcomponents: {
     MastheadNav,
@@ -108,12 +111,11 @@ export const Default: ComponentStory<typeof Masthead> = (props) => {
 }
 
 Default.args = {
-  title: 'Defence Digital Design System',
   hasUnreadNotification: true,
 }
 
 export const CustomLogo: ComponentStory<typeof Masthead> = (props) => (
-  <Masthead {...props} title="Defence Digital Design System" Logo={IconHome} />
+  <Masthead {...props} Logo={IconHome} />
 )
 
 CustomLogo.storyName = 'Custom logo'
@@ -122,11 +124,7 @@ CustomLogo.args = {
 }
 
 export const WithoutLogo: ComponentStory<typeof Masthead> = (props) => (
-  <Masthead
-    {...props}
-    title="Defence Digital Design System"
-    hasDefaultLogo={false}
-  />
+  <Masthead {...props} hasDefaultLogo={false} />
 )
 
 WithoutLogo.storyName = 'Without logo'
@@ -135,7 +133,7 @@ WithoutLogo.args = {
 }
 
 export const WithSearch: ComponentStory<typeof Masthead> = (props) => (
-  <Masthead {...props} title="Defence Digital Design System" />
+  <Masthead {...props} />
 )
 
 WithSearch.storyName = 'With search'
@@ -162,9 +160,7 @@ export const WithAvatarLinks: ComponentStory<typeof Masthead> = (props) => {
     </MastheadUser>
   )
 
-  return (
-    <Masthead {...props} title="Defence Digital Design System" user={user} />
-  )
+  return <Masthead {...props} user={user} />
 }
 
 WithAvatarLinks.storyName = 'With avatar links'
@@ -182,14 +178,7 @@ export const WithNavigation: ComponentStory<typeof Masthead> = (props) => {
     </MastheadNav>
   )
 
-  return (
-    <Masthead
-      {...props}
-      homeLink={<Link href="#" />}
-      title="Defence Digital Design System"
-      nav={nav}
-    />
-  )
+  return <Masthead {...props} homeLink={<Link href="#" />} nav={nav} />
 }
 
 WithNavigation.storyName = 'With navigation'
@@ -227,13 +216,7 @@ export const WithNotifications: ComponentStory<typeof Masthead> = (props) => {
     </Notifications>
   )
 
-  return (
-    <Masthead
-      {...props}
-      title="Defence Digital Design System"
-      notifications={notifications}
-    />
-  )
+  return <Masthead {...props} notifications={notifications} />
 }
 
 WithNotifications.storyName = 'With notifications'
