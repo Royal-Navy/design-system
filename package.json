@@ -19,7 +19,7 @@
     "@octokit/rest": "^19.0.4",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.1",
+    "husky": "^8.0.1",
     "lerna": "^5.5.1",
     "lint-staged": "^12.3.6",
     "prettier": "^2.0.5"
