@@ -252,3 +252,41 @@ WithNotificationsOpen.storyName = 'With notifications open'
 WithNotificationsOpen.parameters = {
   docs: { disable: true },
 }
+
+export const WithUserMenuOpen: ComponentStory<typeof Masthead> = (args) => {
+  const user = (
+    <MastheadUser initials="AB" initialIsOpen>
+      <MastheadUserItem
+        icon={<IconPerson />}
+        link={<Link href="#">Profile</Link>}
+      />
+      <MastheadUserItem
+        icon={<IconSettings />}
+        link={<Link href="#">Settings</Link>}
+      />
+    </MastheadUser>
+  )
+
+  const nav = (
+    <MastheadNav>
+      <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
+      <MastheadNavItem link={<Link href="#">Styles</Link>} />
+      <MastheadNavItem link={<Link href="#">Components</Link>} />
+      <MastheadNavItem link={<Link href="#">About</Link>} />
+    </MastheadNav>
+  )
+
+  return (
+    <div
+      css={css`
+        height: 10rem;
+      `}
+    >
+      <Masthead {...args} homeLink={<Link href="#" />} nav={nav} user={user} />
+    </div>
+  )
+}
+WithUserMenuOpen.storyName = 'With user options open'
+WithUserMenuOpen.parameters = {
+  docs: { disable: true },
+}

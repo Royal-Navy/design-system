@@ -21,6 +21,10 @@ export interface MastheadUserWithItemsProps extends Nav<MastheadUserItemProps> {
    * Link component to apply to the user avatar.
    */
   link?: never
+  /**
+   * @private
+   */
+  initialIsOpen?: boolean
 }
 
 export interface MastheadUserWithLinkProps extends ComponentWithClass {
@@ -58,8 +62,11 @@ const MastheadUserWithLink: React.FC<MastheadUserWithLinkProps> = ({
 const MastheadUserWithItems: React.FC<MastheadUserWithItemsProps> = ({
   children,
   initials,
+  initialIsOpen,
 }) => (
   <Sheet
+    aria-label="User options"
+    initialIsOpen={initialIsOpen}
     button={
       <StyledOption
         aria-label="Show user options"
