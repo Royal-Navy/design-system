@@ -47,13 +47,6 @@ describe('Notifications', () => {
       )
     })
 
-    it('should set the `role` attribute on the notification sheet to `grid`', () => {
-      expect(wrapper.getByTestId('notifications-sheet')).toHaveAttribute(
-        'role',
-        'grid'
-      )
-    })
-
     it('should render the items', () => {
       const items = wrapper.getAllByTestId('notification')
       expect(items).toHaveLength(2)
@@ -67,20 +60,6 @@ describe('Notifications', () => {
       const items = wrapper.getAllByTestId('notification-row')
       items.forEach((item, i) => {
         expect(item).toHaveAttribute('aria-describedby', contentIds[i])
-      })
-    })
-
-    it('should set the `role` attribute of each notification row to `row`', () => {
-      const items = wrapper.getAllByTestId('notification-row')
-      items.forEach((item) => {
-        expect(item).toHaveAttribute('role', 'row')
-      })
-    })
-
-    it('should set the `role` attribute of each notification content to `gridcell`', () => {
-      const items = wrapper.getAllByTestId('notification-content')
-      items.forEach((item) => {
-        expect(item).toHaveAttribute('role', 'gridcell')
       })
     })
 

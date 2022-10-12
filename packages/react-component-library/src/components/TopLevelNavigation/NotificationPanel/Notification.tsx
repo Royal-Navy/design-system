@@ -83,19 +83,19 @@ export const Notification: React.FC<NotificationProps> = ({
             <StyledItem
               aria-describedby={contentId}
               data-testid="notification-row"
-              role="row"
             >
-              <StyledAvatar role="gridcell">
-                <Avatar variant={AVATAR_VARIANT.DARK}>
+              <StyledAvatar>
+                <Avatar variant={AVATAR_VARIANT.DARK} aria-hidden>
                   {getInitials(name)}
                 </Avatar>
-                {!isRead && <StyledItemNotRead data-testid="not-read-item" />}
+                {!isRead && (
+                  <StyledItemNotRead
+                    title="Unread"
+                    data-testid="not-read-item"
+                  />
+                )}
               </StyledAvatar>
-              <StyledContent
-                data-testid="notification-content"
-                id={contentId}
-                role="gridcell"
-              >
+              <StyledContent data-testid="notification-content" id={contentId}>
                 <strong>{name}</strong>
                 {` ${action} `}
                 <strong>{on}</strong>

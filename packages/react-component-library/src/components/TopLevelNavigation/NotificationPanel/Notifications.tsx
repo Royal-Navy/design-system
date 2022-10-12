@@ -25,7 +25,7 @@ export const Notifications: React.FC<NotificationsProps> = ({
   link,
   ...rest
 }) => (
-  <StyledNotifications data-testid="notifications-sheet" role="grid" {...rest}>
+  <StyledNotifications data-testid="notifications-sheet" {...rest}>
     <StyledList data-testid="notifications">{children}</StyledList>
     <StyledViewAll>
       {React.cloneElement(link as ReactElement, {

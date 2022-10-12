@@ -7,6 +7,7 @@ import {
   IconSettings,
   IconHome,
 } from '@defencedigital/icon-library'
+import { css } from 'styled-components'
 
 import { Link } from '../../Link'
 import {
@@ -230,5 +231,24 @@ WithSearchOpen.args = {
 }
 WithSearchOpen.storyName = 'With search open'
 WithSearchOpen.parameters = {
+  docs: { disable: true },
+}
+
+export const WithNotificationsOpen: ComponentStory<typeof Masthead> = (
+  args
+) => (
+  <div
+    css={css`
+      height: 25rem;
+    `}
+  >
+    <Default {...args} />
+  </div>
+)
+WithNotificationsOpen.args = {
+  initialOpenSubcomponent: MASTHEAD_SUBCOMPONENT.NOTIFICATIONS,
+}
+WithNotificationsOpen.storyName = 'With notifications open'
+WithNotificationsOpen.parameters = {
   docs: { disable: true },
 }

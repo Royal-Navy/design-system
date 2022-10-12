@@ -44,6 +44,10 @@ describe('Notification', () => {
       expect(wrapper.getByText('TS')).toBeTruthy()
     })
 
+    it('adds the aria-hidden attribute to the initials', () => {
+      expect(wrapper.getByText('TS')).toHaveAttribute('aria-hidden')
+    })
+
     it('should render the not-read indicator', () => {
       expect(wrapper.getByTestId('not-read-item')).toBeTruthy()
     })

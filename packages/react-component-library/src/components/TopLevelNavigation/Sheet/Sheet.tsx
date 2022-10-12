@@ -16,6 +16,7 @@ export interface SheetProps extends ComponentWithClass {
   placement?: Placement
   closeDelay?: number
   id?: string
+  initialIsOpen?: boolean
 }
 
 export const Sheet: React.FC<SheetProps> = ({
@@ -24,11 +25,14 @@ export const Sheet: React.FC<SheetProps> = ({
   placement = FLOATING_BOX_PLACEMENT.RIGHT,
   closeDelay = 250,
   id: externalId,
+  initialIsOpen = false,
+  ...rest
 }) => {
   const id = useExternalId('sheet', externalId)
   const { floatingBoxChildrenRef, isVisible, mouseEvents } = useHideShow(
     true,
-    closeDelay
+    closeDelay,
+    initialIsOpen
   )
 
   const SheetTarget = () => {
@@ -46,11 +50,11 @@ export const Sheet: React.FC<SheetProps> = ({
       placement={placement}
       renderTarget={<SheetTarget />}
       scheme="dark"
+      {...rest}
     >
       <div ref={floatingBoxChildrenRef}>
         {React.cloneElement(children, {
           id,
-          'aria-expanded': isVisible,
         })}
       </div>
     </FloatingBox>

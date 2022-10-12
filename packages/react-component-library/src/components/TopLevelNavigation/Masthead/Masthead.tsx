@@ -154,6 +154,7 @@ export const Masthead: React.FC<MastheadProps> = ({
 
           {notifications && (
             <Sheet
+              aria-label="Notifications"
               button={
                 <StyledOption
                   aria-label="Show notifications"
@@ -165,6 +166,9 @@ export const Masthead: React.FC<MastheadProps> = ({
                     <StyledNotRead data-testid="not-read" />
                   )}
                 </StyledOption>
+              }
+              initialIsOpen={
+                initialOpenSubcomponent === MASTHEAD_SUBCOMPONENT.NOTIFICATIONS
               }
               placement="bottom"
             >
