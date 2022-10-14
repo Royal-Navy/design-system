@@ -7,6 +7,7 @@ import {
   IconSettings,
   IconHome,
 } from '@defencedigital/icon-library'
+import { css } from 'styled-components'
 
 import { Link } from '../../Link'
 import {
@@ -17,8 +18,12 @@ import {
   MastheadUserItem,
 } from '.'
 import { Notification, Notifications } from '../NotificationPanel'
+import { MASTHEAD_SUBCOMPONENT } from './constants'
 
 export default {
+  args: {
+    title: 'MOD.UK Design System',
+  },
   component: Masthead,
   subcomponents: {
     MastheadNav,
@@ -107,12 +112,11 @@ export const Default: ComponentStory<typeof Masthead> = (props) => {
 }
 
 Default.args = {
-  title: 'Defence Digital Design System',
   hasUnreadNotification: true,
 }
 
 export const CustomLogo: ComponentStory<typeof Masthead> = (props) => (
-  <Masthead {...props} title="Defence Digital Design System" Logo={IconHome} />
+  <Masthead {...props} Logo={IconHome} />
 )
 
 CustomLogo.storyName = 'Custom logo'
@@ -121,11 +125,7 @@ CustomLogo.args = {
 }
 
 export const WithoutLogo: ComponentStory<typeof Masthead> = (props) => (
-  <Masthead
-    {...props}
-    title="Defence Digital Design System"
-    hasDefaultLogo={false}
-  />
+  <Masthead {...props} hasDefaultLogo={false} />
 )
 
 WithoutLogo.storyName = 'Without logo'
@@ -134,7 +134,7 @@ WithoutLogo.args = {
 }
 
 export const WithSearch: ComponentStory<typeof Masthead> = (props) => (
-  <Masthead {...props} title="Defence Digital Design System" />
+  <Masthead {...props} />
 )
 
 WithSearch.storyName = 'With search'
@@ -161,9 +161,7 @@ export const WithAvatarLinks: ComponentStory<typeof Masthead> = (props) => {
     </MastheadUser>
   )
 
-  return (
-    <Masthead {...props} title="Defence Digital Design System" user={user} />
-  )
+  return <Masthead {...props} user={user} />
 }
 
 WithAvatarLinks.storyName = 'With avatar links'
@@ -181,14 +179,7 @@ export const WithNavigation: ComponentStory<typeof Masthead> = (props) => {
     </MastheadNav>
   )
 
-  return (
-    <Masthead
-      {...props}
-      homeLink={<Link href="#" />}
-      title="Defence Digital Design System"
-      nav={nav}
-    />
-  )
+  return <Masthead {...props} homeLink={<Link href="#" />} nav={nav} />
 }
 
 WithNavigation.storyName = 'With navigation'
@@ -226,16 +217,76 @@ export const WithNotifications: ComponentStory<typeof Masthead> = (props) => {
     </Notifications>
   )
 
-  return (
-    <Masthead
-      {...props}
-      title="Defence Digital Design System"
-      notifications={notifications}
-    />
-  )
+  return <Masthead {...props} notifications={notifications} />
 }
 
 WithNotifications.storyName = 'With notifications'
 WithNotifications.args = {
   onSearch: null,
+}
+
+export const WithSearchOpen = Default.bind({})
+WithSearchOpen.args = {
+  initialOpenSubcomponent: MASTHEAD_SUBCOMPONENT.SEARCH,
+}
+WithSearchOpen.storyName = 'With search open'
+WithSearchOpen.parameters = {
+  docs: { disable: true },
+}
+
+export const WithNotificationsOpen: ComponentStory<typeof Masthead> = (
+  args
+) => (
+  <div
+    css={css`
+      height: 25rem;
+    `}
+  >
+    <Default {...args} />
+  </div>
+)
+WithNotificationsOpen.args = {
+  initialOpenSubcomponent: MASTHEAD_SUBCOMPONENT.NOTIFICATIONS,
+}
+WithNotificationsOpen.storyName = 'With notifications open'
+WithNotificationsOpen.parameters = {
+  docs: { disable: true },
+}
+
+export const WithUserMenuOpen: ComponentStory<typeof Masthead> = (args) => {
+  const user = (
+    <MastheadUser initials="AB" initialIsOpen>
+      <MastheadUserItem
+        icon={<IconPerson />}
+        link={<Link href="#">Profile</Link>}
+      />
+      <MastheadUserItem
+        icon={<IconSettings />}
+        link={<Link href="#">Settings</Link>}
+      />
+    </MastheadUser>
+  )
+
+  const nav = (
+    <MastheadNav>
+      <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
+      <MastheadNavItem link={<Link href="#">Styles</Link>} />
+      <MastheadNavItem link={<Link href="#">Components</Link>} />
+      <MastheadNavItem link={<Link href="#">About</Link>} />
+    </MastheadNav>
+  )
+
+  return (
+    <div
+      css={css`
+        height: 10rem;
+      `}
+    >
+      <Masthead {...args} homeLink={<Link href="#" />} nav={nav} user={user} />
+    </div>
+  )
+}
+WithUserMenuOpen.storyName = 'With user options open'
+WithUserMenuOpen.parameters = {
+  docs: { disable: true },
 }

@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 
 import { Logo as DefaultLogo } from './Logo'
 import { LinkTypes } from '../../../common/Link'
+import { MASTHEAD_SUBCOMPONENT } from './constants'
 import { MastheadUserProps } from './index'
 import { Nav, NavItem } from '../../../common/Nav'
 import { NotificationsProps } from '../NotificationPanel'
@@ -20,6 +21,7 @@ import { SearchBar } from '../SearchBar/SearchBar'
 import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
 import { StyledIconNotifications } from './partials/StyledIconNotifications'
 import { StyledIconSearch } from './partials/StyledIconSearch'
+import { ValueOf } from '../../../helpers'
 
 export interface MastheadProps {
   /**
@@ -34,6 +36,11 @@ export interface MastheadProps {
    * Link component for when a user clicks on the logo / app name.
    */
   homeLink?: React.ReactElement<LinkTypes>
+  /**
+   * Which subcomponent is initially open.
+   * @private
+   */
+  initialOpenSubcomponent?: ValueOf<typeof MASTHEAD_SUBCOMPONENT>
   /**
    * Optional custom logo component (SVG reccomended).
    */
@@ -88,6 +95,7 @@ export const Masthead: React.FC<MastheadProps> = ({
   hasDefaultLogo = true,
   hasUnreadNotification,
   homeLink = null,
+  initialOpenSubcomponent,
   Logo,
   nav,
   notifications,
@@ -100,11 +108,13 @@ export const Masthead: React.FC<MastheadProps> = ({
 
   const {
     containerWidth,
-    mastheadContainerRef,
+    mastheadRef,
     setShowSearch,
     showSearch,
     toggleSearch,
-  } = useMastheadSearch()
+  } = useMastheadSearch(
+    initialOpenSubcomponent === MASTHEAD_SUBCOMPONENT.SEARCH
+  )
 
   const DisplayLogo = Logo ?? (hasDefaultLogo ? DefaultLogo : null)
 
@@ -114,7 +124,7 @@ export const Masthead: React.FC<MastheadProps> = ({
   }
 
   return (
-    <StyledMastHead data-testid="masthead" ref={mastheadContainerRef} {...rest}>
+    <StyledMastHead data-testid="masthead" ref={mastheadRef} {...rest}>
       <StyledMain>
         <StyledBanner data-testid="masthead-banner" role="banner">
           {getServiceName(homeLink, DisplayLogo, title)}
@@ -144,6 +154,7 @@ export const Masthead: React.FC<MastheadProps> = ({
 
           {notifications && (
             <Sheet
+              aria-label="Notifications"
               button={
                 <StyledOption
                   aria-label="Show notifications"
@@ -155,6 +166,9 @@ export const Masthead: React.FC<MastheadProps> = ({
                     <StyledNotRead data-testid="not-read" />
                   )}
                 </StyledOption>
+              }
+              initialIsOpen={
+                initialOpenSubcomponent === MASTHEAD_SUBCOMPONENT.NOTIFICATIONS
               }
               placement="bottom"
             >

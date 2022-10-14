@@ -2,8 +2,12 @@ import { useCallback, useRef, useState } from 'react'
 
 import { useDocumentClick } from '.'
 
-export function useHideShow(isClick: boolean, closeDelay: number) {
-  const [isVisible, setIsVisible] = useState(false)
+export function useHideShow(
+  isClick: boolean,
+  closeDelay: number,
+  initialIsVisible = false
+) {
+  const [isVisible, setIsVisible] = useState(initialIsVisible)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const floatingBoxChildrenRef = useRef(null)
 
