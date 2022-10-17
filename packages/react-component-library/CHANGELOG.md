@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.2](https://github.com/defencedigital/mod-uk-design-system/compare/3.13.1...3.13.2) (2022-10-17)
+
+
+### Bug Fixes
+
+* **Masthead:** Resolve notifications accessibility problems ([274a2e1](https://github.com/defencedigital/mod-uk-design-system/commit/274a2e17a74181bbda8cb2157b91c3789768238f))
+* **Masthead:** Resolve search bar accessibility problem ([653e65f](https://github.com/defencedigital/mod-uk-design-system/commit/653e65f2252d9c232a410d48b7d3db629d97ffd9))
+* **Masthead:** Resolve user options accessibility problem ([4df9aba](https://github.com/defencedigital/mod-uk-design-system/commit/4df9abafb879f0717a78d682ac6628dbfbebb34c))
+
+
+
+
+
 ## [3.13.1](https://github.com/defencedigital/mod-uk-design-system/compare/3.13.0...3.13.1) (2022-10-12)
 
 **Note:** Version bump only for package @defencedigital/react-component-library
