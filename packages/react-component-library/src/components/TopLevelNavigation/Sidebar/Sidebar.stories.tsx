@@ -215,7 +215,7 @@ export const WithUserMenu: ComponentStory<typeof Sidebar> = (props) => {
 
 WithUserMenu.storyName = 'With user menu'
 
-export const WithNotifications: ComponentStory<typeof Sidebar> = (props) => {
+const WithNotificationsTemplate: ComponentStory<typeof Sidebar> = (props) => {
   const notifications = (
     <Notifications link={<Link href="#" />}>
       <Notification
@@ -259,4 +259,39 @@ export const WithNotifications: ComponentStory<typeof Sidebar> = (props) => {
   )
 }
 
+export const WithNotifications = WithNotificationsTemplate.bind({})
 WithNotifications.storyName = 'With notifications'
+
+export const WithUserMenuOpen: ComponentStory<typeof Sidebar> = (props) => {
+  const userWithLinks = (
+    <SidebarUser
+      initials="HN"
+      name="Horatio Nelson"
+      userLink={<Link href="#">Profile</Link>}
+      exitLink={<Link href="#">Logout</Link>}
+      initialIsOpen
+    />
+  )
+
+  return (
+    <SidebarWrapper>
+      <StyledSidebar {...props} user={userWithLinks}>
+        <SimpleSidebarNav />
+      </StyledSidebar>
+      <StyledMain>Hello, World!</StyledMain>
+    </SidebarWrapper>
+  )
+}
+WithUserMenuOpen.parameters = {
+  docs: { disable: true },
+}
+WithUserMenuOpen.storyName = 'With user menu open'
+
+export const WithNotificationsOpen = WithNotifications.bind({})
+WithNotificationsOpen.args = {
+  initialIsNotificationsOpen: true,
+}
+WithNotificationsOpen.parameters = {
+  docs: { disable: true },
+}
+WithNotificationsOpen.storyName = 'With notifications open'

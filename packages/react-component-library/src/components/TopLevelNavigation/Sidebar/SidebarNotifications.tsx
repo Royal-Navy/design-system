@@ -17,12 +17,17 @@ export interface SidebarNotificationsProps extends ComponentWithClass {
    */
   hasUnreadNotification?: boolean
   /**
+   * Whether the sheet is initially open.
+   */
+  initialIsOpen?: boolean
+  /**
    * Collection of Notification item components.
    */
   notifications?: React.ReactElement<NotificationsProps>
 }
 
 export const SidebarNotifications: React.FC<SidebarNotificationsProps> = ({
+  initialIsOpen,
   notifications,
   hasUnreadNotification,
 }) => {
@@ -34,6 +39,7 @@ export const SidebarNotifications: React.FC<SidebarNotificationsProps> = ({
 
   return (
     <StyledNotificationsSheet
+      aria-label="Notifications"
       button={
         <StyledNotificationsSheetButton
           aria-label="Show notifications"
@@ -55,6 +61,7 @@ export const SidebarNotifications: React.FC<SidebarNotificationsProps> = ({
           </Transition>
         </StyledNotificationsSheetButton>
       }
+      initialIsOpen={initialIsOpen}
       placement="right"
     >
       {notifications}

@@ -35,6 +35,11 @@ export interface SidebarProps extends ComponentWithClass {
    */
   notifications?: React.ReactElement<NotificationsProps>
   /**
+   * Whether the notifications list is initially open.
+   * @private
+   */
+  initialIsNotificationsOpen?: boolean
+  /**
    * Initial `isOpen` state on first render.
    */
   initialIsOpen?: boolean
@@ -47,6 +52,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   user,
   hasUnreadNotification,
   notifications,
+  initialIsNotificationsOpen,
   initialIsOpen = false,
   ...rest
 }) => {
@@ -93,6 +99,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
             {notifications && (
               <SidebarNotifications
+                initialIsOpen={initialIsNotificationsOpen}
                 notifications={notifications}
                 hasUnreadNotification={hasUnreadNotification}
               />
