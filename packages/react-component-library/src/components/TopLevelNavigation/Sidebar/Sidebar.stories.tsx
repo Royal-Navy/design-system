@@ -58,40 +58,42 @@ const StyledMain = styled.main`
   width: 100%;
 `
 
-export const Default: ComponentStory<typeof Sidebar> = (props) => {
-  const sidebarNav = (
-    <SidebarNav>
-      <SidebarNavItem
-        icon={<IconHome />}
-        link={<Link href="#">Dashboard</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconVerifiedUser />}
-        link={<Link href="#">Reports</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconLocalShipping />}
-        link={<Link href="#">Platforms</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconFeedback />}
-        link={<Link href="#">Data&nbsp;Feed</Link>}
-      />
-      <SidebarNavItem
-        isActive
-        icon={<IconMessage />}
-        link={<Link href="#">Messages</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconSettings />}
-        link={<Link href="#">Settings</Link>}
-      />
-    </SidebarNav>
-  )
+const SimpleSidebarNav: React.FC = () => (
+  <SidebarNav>
+    <SidebarNavItem
+      icon={<IconHome />}
+      link={<Link href="#">Dashboard</Link>}
+    />
+    <SidebarNavItem
+      icon={<IconVerifiedUser />}
+      link={<Link href="#">Reports</Link>}
+    />
+    <SidebarNavItem
+      icon={<IconLocalShipping />}
+      link={<Link href="#">Platforms</Link>}
+    />
+    <SidebarNavItem
+      icon={<IconFeedback />}
+      link={<Link href="#">Data&nbsp;Feed</Link>}
+    />
+    <SidebarNavItem
+      isActive
+      icon={<IconMessage />}
+      link={<Link href="#">Messages</Link>}
+    />
+    <SidebarNavItem
+      icon={<IconSettings />}
+      link={<Link href="#">Settings</Link>}
+    />
+  </SidebarNav>
+)
 
+export const Default: ComponentStory<typeof Sidebar> = (props) => {
   return (
     <SidebarWrapper>
-      <StyledSidebar {...props}>{sidebarNav}</StyledSidebar>
+      <StyledSidebar {...props}>
+        <SimpleSidebarNav />
+      </StyledSidebar>
       <StyledMain>Hello, World!</StyledMain>
     </SidebarWrapper>
   )
@@ -100,40 +102,10 @@ export const Default: ComponentStory<typeof Sidebar> = (props) => {
 Default.args = {}
 
 export const InitiallyOpen: ComponentStory<typeof Sidebar> = (props) => {
-  const sidebarNav = (
-    <SidebarNav>
-      <SidebarNavItem
-        icon={<IconHome />}
-        link={<Link href="#">Dashboard</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconVerifiedUser />}
-        link={<Link href="#">Reports</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconLocalShipping />}
-        link={<Link href="#">Platforms</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconFeedback />}
-        link={<Link href="#">Data&nbsp;Feed</Link>}
-      />
-      <SidebarNavItem
-        isActive
-        icon={<IconMessage />}
-        link={<Link href="#">Messages</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconSettings />}
-        link={<Link href="#">Settings</Link>}
-      />
-    </SidebarNav>
-  )
-
   return (
     <SidebarWrapper>
       <StyledSidebar {...props} initialIsOpen>
-        {sidebarNav}
+        <SimpleSidebarNav />
       </StyledSidebar>
       <StyledMain>Hello, World!</StyledMain>
     </SidebarWrapper>
@@ -209,40 +181,10 @@ export const WithSubNavigation: ComponentStory<typeof Sidebar> = (props) => {
 WithSubNavigation.storyName = 'With sub-navigation'
 
 export const WithHeader: ComponentStory<typeof Sidebar> = (props) => {
-  const sidebarNav = (
-    <SidebarNav>
-      <SidebarNavItem
-        icon={<IconHome />}
-        link={<Link href="#">Dashboard</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconVerifiedUser />}
-        link={<Link href="#">Reports</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconLocalShipping />}
-        link={<Link href="#">Platforms</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconFeedback />}
-        link={<Link href="#">Data&nbsp;Feed</Link>}
-      />
-      <SidebarNavItem
-        isActive
-        icon={<IconMessage />}
-        link={<Link href="#">Messages</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconSettings />}
-        link={<Link href="#">Settings</Link>}
-      />
-    </SidebarNav>
-  )
-
   return (
     <SidebarWrapper>
       <StyledSidebar {...props} icon={<IconGrain />} title="Application Name">
-        {sidebarNav}
+        <SimpleSidebarNav />
       </StyledSidebar>
       <StyledMain>Hello, World!</StyledMain>
     </SidebarWrapper>
@@ -261,40 +203,10 @@ export const WithUserMenu: ComponentStory<typeof Sidebar> = (props) => {
     />
   )
 
-  const sidebarNav = (
-    <SidebarNav>
-      <SidebarNavItem
-        icon={<IconHome />}
-        link={<Link href="#">Dashboard</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconVerifiedUser />}
-        link={<Link href="#">Reports</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconLocalShipping />}
-        link={<Link href="#">Platforms</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconFeedback />}
-        link={<Link href="#">Data&nbsp;Feed</Link>}
-      />
-      <SidebarNavItem
-        isActive
-        icon={<IconMessage />}
-        link={<Link href="#">Messages</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconSettings />}
-        link={<Link href="#">Settings</Link>}
-      />
-    </SidebarNav>
-  )
-
   return (
     <SidebarWrapper>
       <StyledSidebar {...props} user={userWithLinks}>
-        {sidebarNav}
+        <SimpleSidebarNav />
       </StyledSidebar>
       <StyledMain>Hello, World!</StyledMain>
     </SidebarWrapper>
@@ -333,36 +245,6 @@ export const WithNotifications: ComponentStory<typeof Sidebar> = (props) => {
     </Notifications>
   )
 
-  const sidebarNav = (
-    <SidebarNav>
-      <SidebarNavItem
-        icon={<IconHome />}
-        link={<Link href="#">Dashboard</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconVerifiedUser />}
-        link={<Link href="#">Reports</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconLocalShipping />}
-        link={<Link href="#">Platforms</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconFeedback />}
-        link={<Link href="#">Data&nbsp;Feed</Link>}
-      />
-      <SidebarNavItem
-        isActive
-        icon={<IconMessage />}
-        link={<Link href="#">Messages</Link>}
-      />
-      <SidebarNavItem
-        icon={<IconSettings />}
-        link={<Link href="#">Settings</Link>}
-      />
-    </SidebarNav>
-  )
-
   return (
     <SidebarWrapper>
       <StyledSidebar
@@ -370,7 +252,7 @@ export const WithNotifications: ComponentStory<typeof Sidebar> = (props) => {
         notifications={notifications}
         hasUnreadNotification
       >
-        {sidebarNav}
+        <SimpleSidebarNav />
       </StyledSidebar>
       <StyledMain>Hello, World!</StyledMain>
     </SidebarWrapper>
