@@ -21,6 +21,11 @@ export interface SidebarUserProps extends ComponentWithClass {
    */
   initials: string
   /**
+   * Whether the user options sheet is initially open.
+   * @private
+   */
+  initialIsOpen?: boolean
+  /**
    * Link component to apply to the user avatar.
    */
   userLink?: React.ReactElement<LinkTypes>
@@ -38,10 +43,12 @@ type SidebarAvatarWithItemsProps = Omit<SidebarUserProps, 'link'>
 
 const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
   initials,
+  initialIsOpen,
   userLink,
   exitLink,
 }) => (
   <Sheet
+    aria-label="User options"
     button={
       <StyledUserSheetButton
         aria-label="Show user options"
@@ -53,6 +60,7 @@ const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
         }
       />
     }
+    initialIsOpen={initialIsOpen}
     placement="right"
   >
     <StyledSheetList>
@@ -64,6 +72,7 @@ const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
 
 export const SidebarUser: React.FC<SidebarUserProps> = ({
   initials,
+  initialIsOpen,
   userLink,
   exitLink,
   name,
@@ -75,6 +84,7 @@ export const SidebarUser: React.FC<SidebarUserProps> = ({
       <StyledUser data-testid="sidebar-user-closed-children">
         <SidebarAvatarWithItems
           initials={initials}
+          initialIsOpen={initialIsOpen}
           userLink={userLink}
           exitLink={exitLink}
         />
