@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.4](https://github.com/defencedigital/mod-uk-design-system/compare/3.13.3...3.13.4) (2022-10-20)
+
+
+### Bug Fixes
+
+* **Sidebar:** Add accessible names to sheets ([a8452c0](https://github.com/defencedigital/mod-uk-design-system/commit/a8452c0f492f597c905e37b39109ce3823e5435f))
+
+
+
+
+
 ## [3.13.3](https://github.com/defencedigital/mod-uk-design-system/compare/3.13.2...3.13.3) (2022-10-18)
 
 **Note:** Version bump only for package moduk-design-system
