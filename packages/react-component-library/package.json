@@ -102,7 +102,7 @@
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@welldone-software/why-did-you-render": "^7.0.1",
     "babel-jest": "^29.0.3",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^9.0.1",
     "babel-plugin-jsx-remove-data-test-id": "^3.0.0",
     "babel-plugin-search-and-replace": "1.1.1",
     "babel-plugin-styled-components": "^2.0.2",
