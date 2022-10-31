@@ -104,7 +104,7 @@ git rebase -i --autosquash origin/master
 `master` is [released](https://github.com/defencedigital/mod-uk-design-system/actions?query=workflow%3ARelease) on a nightly schedule.
 
 ## Hot fixing
-If there is an issue (never happens :sunglasses:) then follow the process for adding a new feature. Hotfixes can be released & published by Design-System team members using the 'manual release' GitHub Actions workflow.
+If there is an issue (never happens :sunglasses:) then follow the process for adding a new feature. Hotfixes can be released & published by Design-System team members by manually running using the 'Release' GitHub Actions workflow.
 
 ## Styled Components
 We use the [`styled-components`](https://github.com/styled-components/styled-components) library for styling the component library.
