@@ -1,4 +1,5 @@
 import { DocsPage } from '@storybook/addon-docs'
+import isChromatic from 'chromatic'
 import React from 'react'
 import '@defencedigital/fonts'
 import 'iframe-resizer/js/iframeResizer.contentWindow'
@@ -76,3 +77,11 @@ export const decorators = [
   },
   withPerformance,
 ]
+
+// Preload the body font on Chromatic to avoid problem with
+// inconsistent floating box positioning
+const fontLoader = async () => ({
+  fonts: await document.fonts.load('400 1em Lato'),
+})
+
+export const loaders = isChromatic() && document.fonts ? [fontLoader] : []
