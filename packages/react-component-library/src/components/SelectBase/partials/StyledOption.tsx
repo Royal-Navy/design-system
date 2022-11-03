@@ -16,11 +16,16 @@ export const StyledOption = styled.li<StyledOptionsProps>`
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: ${color('neutral', '400')};
+  color: ${color('neutral', '900')};
   font-size: ${fontSize('m')};
 
-  &:hover {
+  &:hover:not([disabled]) {
     background-color: ${color('neutral', '100')};
+  }
+
+  &[disabled] {
+    color: ${color('neutral', '400')};
+    cursor: not-allowed;
   }
 
   ${({ $isHighlighted }) =>

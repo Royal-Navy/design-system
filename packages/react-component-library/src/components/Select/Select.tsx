@@ -5,13 +5,13 @@ import { isNil } from 'lodash'
 import {
   getSelectedItem,
   itemToString,
-  SelectBaseOptionAsStringProps,
   SelectBaseProps,
   SelectLayout,
 } from '../SelectBase'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useSelectMenu } from './hooks/useSelectMenu'
+import { SelectOptionProps } from './SelectOption'
 
 export const Select: React.FC<SelectBaseProps> = ({
   children,
@@ -26,7 +26,7 @@ export const Select: React.FC<SelectBaseProps> = ({
   const inputRef = useRef<HTMLInputElement>(null)
 
   const filteredItems = React.Children.toArray(children).filter(
-    React.isValidElement<SelectBaseOptionAsStringProps>
+    React.isValidElement<SelectOptionProps>
   )
   const items = filteredItems.map((child) => child.props.value)
   const itemsMap = Object.fromEntries(
@@ -96,6 +96,7 @@ export const Select: React.FC<SelectBaseProps> = ({
             ...child.props,
             ...getItemProps({
               index,
+              disabled: child.props.isDisabled,
               item: child.props.value,
               key: `select-option-${child.props.value}`,
             }),

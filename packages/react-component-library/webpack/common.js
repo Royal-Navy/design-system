@@ -27,6 +27,17 @@ module.exports = {
         use: ['babel-loader', 'source-map-loader'],
         exclude: /node_modules/,
       },
+      // Transpile Downshift for IE11 compatibility
+      {
+        test: /\.m?js$/,
+        include: /node_modules\/downshift\//,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
       {
         test: /\.(png|woff|woff2|eot|ttf)$/,
         use: ['url-loader?limit=100000'],
