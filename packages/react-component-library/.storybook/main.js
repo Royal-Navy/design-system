@@ -20,6 +20,28 @@ module.exports = {
     ${head}
     ${process.env.NETLIFY ? newRelic.script : ''}
   `,
+  webpackFinal: (config) => {
+    // Transpile Downshift for IE11 compatibility
+    return {
+      ...config,
+      module: {
+        ...config.module,
+        rules: [
+          ...config.module.rules,
+          {
+            test: /\.m?js$/,
+            include: /node_modules\/downshift\//,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env'],
+              },
+            },
+          },
+        ],
+      },
+    }
+  },
   stories: ['../src/**/*.stories.tsx'],
   reactOptions: {
     strictMode: process.env.REACT_STRICT_MODE === '1',

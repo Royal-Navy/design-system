@@ -1,4 +1,4 @@
-import { ColorAction000 } from '@defencedigital/design-tokens'
+import { ColorAction000, ColorNeutral100 } from '@defencedigital/design-tokens'
 
 import { hexToRgb } from '../helpers'
 import { expect, test } from '../test'
@@ -61,6 +61,33 @@ test.describe('Select, default', () => {
             hexToRgb(ColorAction000)
           )
         })
+      })
+    })
+
+    test.describe('and ArrowUp is pressed', () => {
+      test.beforeEach(async ({ page }) => {
+        await page.keyboard.press('ArrowUp')
+      })
+
+      test('highlights the third option', async ({ page }) => {
+        await expect(page.locator(selectors.option).nth(2)).toHaveCSS(
+          'background-color',
+          hexToRgb(ColorNeutral100)
+        )
+      })
+    })
+
+    test.describe('and the disabled option is clicked', () => {
+      test.beforeEach(async ({ page }) => {
+        await page.locator(selectors.option, { hasText: 'disabled' }).click()
+      })
+
+      test('does not close the menu', async ({ page }) => {
+        await expect(page.locator(selectors.listBox)).toBeVisible()
+      })
+
+      test('does not update the input value', async ({ page }) => {
+        await expect(page.locator(selectors.input)).toHaveValue('')
       })
     })
   })
