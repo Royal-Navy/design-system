@@ -3389,18 +3389,18 @@
     "@sinonjs/commons" "^1.7.0"
 
 "@storybook/addon-a11y@^6.5.12":
-  version "6.5.12"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.5.12.tgz#ade4938a6f94a9c8823fd120a65f0c966f1b80a6"
-  integrity sha512-uCMak9yP5gaYC/umSwyjqILTOhMEgTGCNDoa4+F3XhdFKZbX6PUpy++2upmm7pBqz6r4sokcxGSmHTkRMqm2yw==
+  version "6.5.13"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.5.13.tgz#3934b12dc2f3bf7a1a1bc660aa7b84b856bc2b6c"
+  integrity sha512-+Tcl/4LWRh3ygLUZFGvkjT42CF/tJcP+kgsIho7i2MxpgZyD6+BUhL9srPZusjbR+uHcHXJ/yxw/vxFQ+UCTLA==
   dependencies:
-    "@storybook/addons" "6.5.12"
-    "@storybook/api" "6.5.12"
-    "@storybook/channels" "6.5.12"
-    "@storybook/client-logger" "6.5.12"
-    "@storybook/components" "6.5.12"
-    "@storybook/core-events" "6.5.12"
+    "@storybook/addons" "6.5.13"
+    "@storybook/api" "6.5.13"
+    "@storybook/channels" "6.5.13"
+    "@storybook/client-logger" "6.5.13"
+    "@storybook/components" "6.5.13"
+    "@storybook/core-events" "6.5.13"
     "@storybook/csf" "0.0.2--canary.4566f4d.1"
-    "@storybook/theming" "6.5.12"
+    "@storybook/theming" "6.5.13"
     axe-core "^4.2.0"
     core-js "^3.8.2"
     global "^4.4.0"
@@ -3728,7 +3728,7 @@
     global "^4.4.0"
     telejson "^6.0.8"
 
-"@storybook/channels@6.5.10", "@storybook/channels@^6.2.9":
+"@storybook/channels@6.5.10":
   version "6.5.10"
   resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-6.5.10.tgz#fca5b0d1ea8d30b022e805301ed436407c867ac4"
   integrity sha512-lo26YZ6kWpHXLhuHJF4P/bICY7jD/rXEZqReKtGOSk1Lv99/xvG6pqmcy3hWLf3v3Dy/8otjRPSR7izFVIIZgQ==
@@ -3746,7 +3746,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/channels@6.5.13":
+"@storybook/channels@6.5.13", "@storybook/channels@^6.2.9":
   version "6.5.13"
   resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-6.5.13.tgz#f3f86b90a7832484ee3dcbc6845f5a47f62f028f"
   integrity sha512-sGYSilE30bz0jG+HdHnkv0B4XkAv2hP+KRZr4xmnv+MOOQpRnZpJ5Z3HVU16s17cj/83NWihKj6BuKcEVzyilg==
@@ -3971,7 +3971,7 @@
     util-deprecate "^1.0.2"
     webpack "4"
 
-"@storybook/core-events@6.5.10", "@storybook/core-events@^6.2.9":
+"@storybook/core-events@6.5.10":
   version "6.5.10"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-6.5.10.tgz#66d87c8ea18db8e448018a16a3d0198ddbcbc683"
   integrity sha512-EVb1gO1172klVIAABLOoigFMx0V88uctY0K/qVCO8n6v+wd2+0Ccn63kl+gTxsAC3WZ8XhXh9q2w5ImHklVECw==
@@ -3985,7 +3985,7 @@
   dependencies:
     core-js "^3.8.2"
 
-"@storybook/core-events@6.5.13":
+"@storybook/core-events@6.5.13", "@storybook/core-events@^6.2.9":
   version "6.5.13"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-6.5.13.tgz#a8c0cc92694f09981ca6501d5c5ef328db18db8a"
   integrity sha512-kL745tPpRKejzHToA3/CoBNbI+NPRVk186vGxXBmk95OEg0TlwgQExP8BnqEtLlRZMbW08e4+6kilc1M1M4N5w==
@@ -6129,12 +6129,7 @@ autoprefixer@^9.8.6:
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
 
-axe-core@^4.2.0, axe-core@^4.3.5:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.4.2.tgz#dcf7fb6dea866166c3eab33d68208afe4d5f670c"
-  integrity sha512-LVAaGp/wkkgYJcjmHsoKx4juT1aQvJyPcW09MLCjVTh3V2cc6PnyempiLMNH5iMdfIX/zdbjUx2KDjMLCTdPeA==
-
-axe-core@^4.4.2:
+axe-core@^4.2.0, axe-core@^4.3.5, axe-core@^4.4.2:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.4.3.tgz#11c74d23d5013c0fa5d183796729bc3482bd2f6f"
   integrity sha512-32+ub6kkdhhWick/UjvEwRchgoetXqTK14INLqbGm5U2TzBkBNF3nQtLYm8ovxSkQWArjEQvftCKryjZaATu3w==
