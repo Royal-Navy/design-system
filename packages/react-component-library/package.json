@@ -98,7 +98,7 @@
     "@types/styled-components": "^5.1.24",
     "@types/styled-theming": "^2.2.5",
     "@types/testing-library__react": "^10.0.1",
-    "@types/uuid": "^8.0.0",
+    "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@welldone-software/why-did-you-render": "^7.0.1",
     "babel-jest": "^29.0.3",
@@ -175,7 +175,7 @@
     "react-transition-group": "^4.4.1",
     "styled-normalize": "^8.0.7",
     "styled-theming": "^2.2.0",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   },
   "peerDependencies": {
     "styled-components": ">= 5"
