@@ -136,7 +136,7 @@
     "react-dom": "^17.0.2",
     "react-hook-form": "6.15.8",
     "react-hot-loader": "^4.12.19",
-    "source-map-loader": "^3.0.0",
+    "source-map-loader": "^4.0.1",
     "storybook-addon-performance": "^0.16.1",
     "styled-components": "^5.3.3",
     "timezone-mock": "^1.1.3",
