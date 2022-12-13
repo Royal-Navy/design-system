@@ -1,8 +1,7 @@
 import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
 
-import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
-import { isIE11 } from '../../../helpers'
+import { COMPONENT_SIZE } from '../../Forms'
 import {
   StyledLabel as StyledLabelBase,
   StyledLabelProps,
@@ -10,20 +9,12 @@ import {
 
 const { fontSize } = selectors
 
-function getYPosition($size: ComponentSizeType) {
-  if ($size === COMPONENT_SIZE.SMALL) {
-    return isIE11() ? '8px' : '6px'
-  }
-
-  return isIE11() ? '15px' : '13px'
-}
-
 export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
   padding-left: 11px;
   padding-right: 7px;
 
   ${({ $size = COMPONENT_SIZE.FORMS }) => css`
-    padding-top: ${getYPosition($size)};
+    padding-top: ${$size === COMPONENT_SIZE.SMALL ? '6px' : '13px'};
   `}
 
   ${({ $hasContent, $hasFocus, $size }) => {
