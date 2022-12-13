@@ -10,7 +10,6 @@ export const StyledText = styled.span`
   font-weight: 500;
   margin-left: ${spacing('4')};
   color: ${color('neutral', '400')};
-  margin-top: ${spacing('1')};
 
   a {
     color: ${color('neutral', '700')};
