@@ -10,7 +10,7 @@
     "packages/design-tokens"
   ],
   "engines": {
-    "node": ">=12.18.3 <17"
+    "node": "^16.13.0 || ^18.12.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
