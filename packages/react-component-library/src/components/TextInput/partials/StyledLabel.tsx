@@ -10,27 +10,25 @@ import {
 const { fontSize } = selectors
 
 export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
+  display: inline-flex;
+  height: 100%;
+  align-items: center;
   padding-left: 11px;
   padding-right: 7px;
 
-  ${({ $size = COMPONENT_SIZE.FORMS }) => css`
-    padding-top: ${$size === COMPONENT_SIZE.SMALL ? '6px' : '13px'};
-  `}
-
-  ${({ $hasContent, $hasFocus, $size }) => {
-    if (!$hasContent && !$hasFocus) {
-      return null
-    }
-
-    if ($size === COMPONENT_SIZE.SMALL) {
-      return css`
-        display: none;
-      `
-    }
-
-    return css`
-      padding-top: 6px;
-      font-size: ${fontSize('s')};
+  ${({ $hasFocus, $hasContent, $size = COMPONENT_SIZE.FORMS }) => css`
+    ${$size === COMPONENT_SIZE.FORMS &&
+    ($hasContent || $hasFocus) &&
     `
-  }}
+      height: 18px;
+      margin-top: 2px;
+      font-size: ${fontSize('s')}
+    `}
+
+    ${$size === COMPONENT_SIZE.SMALL &&
+    ($hasContent || $hasFocus) &&
+    `
+      display: none;
+    `}
+  `}
 `
