@@ -71,7 +71,7 @@
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
     "@defencedigital/eslint-config-react": "^3.13.8",
-    "@playwright/test": "^1.26.1",
+    "@playwright/test": "^1.28.1",
     "@storybook/addon-a11y": "^6.5.12",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-controls": "^6.5.12",
