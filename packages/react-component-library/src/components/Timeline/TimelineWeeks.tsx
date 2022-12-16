@@ -45,10 +45,7 @@ export const TimelineWeeks: React.FC<TimelineWeeksProps> = memo(
       currentScaleOption.widths.day * 7 < DISPLAY_THRESHOLDS.WEEK
 
     const rowChildren = isBelowThreshold ? (
-      <TimelineColumnHeader
-        aria-label="No weeks"
-        data-testid="timeline-no-weeks"
-      />
+      <TimelineColumnHeader data-testid="timeline-no-weeks" name="No weeks" />
     ) : (
       <StyledWeeks>
         {weeks.map(({ startDate }, index) => (
