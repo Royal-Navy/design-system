@@ -41,10 +41,7 @@ export const TimelineDays: React.FC<TimelineDaysProps> = memo(
       currentScaleOption.widths.day < DISPLAY_THRESHOLDS.DAY
 
     const rowChildren = isBelowThreshold ? (
-      <TimelineColumnHeader
-        aria-label="No days"
-        data-testid="timeline-no-days"
-      />
+      <TimelineColumnHeader data-testid="timeline-no-days" name="No days" />
     ) : (
       <StyledDays>
         {days.map(({ date }, index) => (

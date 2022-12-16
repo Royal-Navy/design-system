@@ -10,6 +10,7 @@ import { StyledRowHeader } from './partials/StyledRowHeader'
 import { SubcomponentProps } from '../../common/SubcomponentProps'
 import { TimelineContext, TimelineEventsProps } from '.'
 import { useTimelineRowContent } from './hooks/useTimelineRowContent'
+import { StyledVisuallyHiddenText } from '../../styled-components/partials/StyledVisuallyHiddenText'
 
 export interface TimelineRowProps extends ComponentWithClass {
   /**
@@ -81,10 +82,14 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
               $isHeader={isHeader}
               data-testid="timeline-row-header"
               role="rowheader"
-              aria-label={ariaLabel || name}
+              aria-label={ariaLabel}
               {...restHeaderProps}
             >
-              {render ? render({ name }) : name}
+              {render && render({ name })}
+              {!render && isHeader && (
+                <StyledVisuallyHiddenText>{name}</StyledVisuallyHiddenText>
+              )}
+              {!render && !isHeader && name}
             </StyledRowHeader>
           )}
           <StyledRowContent
