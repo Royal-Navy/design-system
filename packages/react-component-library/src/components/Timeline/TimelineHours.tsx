@@ -46,10 +46,7 @@ export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
   }
 
   const rowChildren = isBelowThreshold ? (
-    <TimelineColumnHeader
-      aria-label="No hours"
-      data-testid="timeline-no-hours"
-    />
+    <TimelineColumnHeader name="No hours" data-testid="timeline-no-hours" />
   ) : (
     <StyledHours>
       {days.map(({ date }) => {

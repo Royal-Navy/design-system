@@ -386,12 +386,13 @@ describe('Timeline', () => {
         )
       })
 
-      it('should apply `aria-label` for row headers', () => {
+      it('adds text to the row headers', () => {
         const rowHeaders = wrapper.getAllByTestId('timeline-row-header')
 
-        expect(rowHeaders[0]).toHaveAttribute('aria-label', 'Months')
-        expect(rowHeaders[1]).toHaveAttribute('aria-label', 'Weeks')
-        expect(rowHeaders[2]).toHaveAttribute('aria-label', 'Days')
+        // Text is visually hidden
+        expect(rowHeaders[0]).toHaveTextContent('Months')
+        expect(rowHeaders[1]).toHaveTextContent('Weeks')
+        expect(rowHeaders[2]).toHaveTextContent('Days')
       })
     })
 
@@ -517,12 +518,13 @@ describe('Timeline', () => {
       )
     })
 
-    it('should apply `aria-label` for row headers', () => {
+    it('adds text to the row headers', () => {
       const rowHeaders = wrapper.getAllByTestId('timeline-row-header')
 
-      expect(rowHeaders[0]).toHaveAttribute('aria-label', 'Months')
-      expect(rowHeaders[1]).toHaveAttribute('aria-label', 'Weeks')
-      expect(rowHeaders[2]).toHaveAttribute('aria-label', 'Days')
+      // Text is visually hidden
+      expect(rowHeaders[0]).toHaveTextContent('Months')
+      expect(rowHeaders[1]).toHaveTextContent('Weeks')
+      expect(rowHeaders[2]).toHaveTextContent('Days')
     })
   })
 
@@ -1753,8 +1755,7 @@ describe('Timeline', () => {
     })
 
     it('should render a no hours column header', () => {
-      expect(wrapper.getByTestId('timeline-no-hours')).toHaveAttribute(
-        'aria-label',
+      expect(wrapper.getByTestId('timeline-no-hours')).toHaveTextContent(
         'No hours'
       )
     })
@@ -1773,8 +1774,7 @@ describe('Timeline', () => {
       })
 
       it('should render a no weeks column header', () => {
-        expect(wrapper.getByTestId('timeline-no-weeks')).toHaveAttribute(
-          'aria-label',
+        expect(wrapper.getByTestId('timeline-no-weeks')).toHaveTextContent(
           'No weeks'
         )
       })
@@ -1784,8 +1784,7 @@ describe('Timeline', () => {
       })
 
       it('should render a no days column header', () => {
-        expect(wrapper.getByTestId('timeline-no-days')).toHaveAttribute(
-          'aria-label',
+        expect(wrapper.getByTestId('timeline-no-days')).toHaveTextContent(
           'No days'
         )
       })
@@ -1795,8 +1794,7 @@ describe('Timeline', () => {
       })
 
       it('should render a no hours column header', () => {
-        expect(wrapper.getByTestId('timeline-no-hours')).toHaveAttribute(
-          'aria-label',
+        expect(wrapper.getByTestId('timeline-no-hours')).toHaveTextContent(
           'No hours'
         )
       })
@@ -1817,8 +1815,7 @@ describe('Timeline', () => {
       })
 
       it('should render a no weeks column header', () => {
-        expect(wrapper.getByTestId('timeline-no-weeks')).toHaveAttribute(
-          'aria-label',
+        expect(wrapper.getByTestId('timeline-no-weeks')).toHaveTextContent(
           'No weeks'
         )
       })
@@ -1828,8 +1825,7 @@ describe('Timeline', () => {
       })
 
       it('should render a no days column header', () => {
-        expect(wrapper.getByTestId('timeline-no-days')).toHaveAttribute(
-          'aria-label',
+        expect(wrapper.getByTestId('timeline-no-days')).toHaveTextContent(
           'No days'
         )
       })
@@ -1839,8 +1835,7 @@ describe('Timeline', () => {
       })
 
       it('should render a no hours column header', () => {
-        expect(wrapper.getByTestId('timeline-no-hours')).toHaveAttribute(
-          'aria-label',
+        expect(wrapper.getByTestId('timeline-no-hours')).toHaveTextContent(
           'No hours'
         )
       })
