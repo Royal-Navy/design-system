@@ -1,8 +1,7 @@
 import { selectors } from '@defencedigital/design-tokens'
 import styled, { css } from 'styled-components'
 
-import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
-import { isIE11 } from '../../../helpers'
+import { COMPONENT_SIZE } from '../../Forms'
 import {
   StyledLabel as StyledLabelBase,
   StyledLabelProps,
@@ -10,36 +9,26 @@ import {
 
 const { fontSize } = selectors
 
-function getYPosition($size: ComponentSizeType) {
-  if ($size === COMPONENT_SIZE.SMALL) {
-    return isIE11() ? '8px' : '6px'
-  }
-
-  return isIE11() ? '15px' : '13px'
-}
-
 export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
+  display: inline-flex;
+  height: 100%;
+  align-items: center;
   padding-left: 11px;
   padding-right: 7px;
 
-  ${({ $size = COMPONENT_SIZE.FORMS }) => css`
-    padding-top: ${getYPosition($size)};
-  `}
-
-  ${({ $hasContent, $hasFocus, $size }) => {
-    if (!$hasContent && !$hasFocus) {
-      return null
-    }
-
-    if ($size === COMPONENT_SIZE.SMALL) {
-      return css`
-        display: none;
-      `
-    }
-
-    return css`
-      padding-top: 6px;
-      font-size: ${fontSize('s')};
+  ${({ $hasFocus, $hasContent, $size = COMPONENT_SIZE.FORMS }) => css`
+    ${$size === COMPONENT_SIZE.FORMS &&
+    ($hasContent || $hasFocus) &&
     `
-  }}
+      height: 18px;
+      margin-top: 2px;
+      font-size: ${fontSize('s')}
+    `}
+
+    ${$size === COMPONENT_SIZE.SMALL &&
+    ($hasContent || $hasFocus) &&
+    `
+      display: none;
+    `}
+  `}
 `
