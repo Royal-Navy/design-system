@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.9](https://github.com/defencedigital/mod-uk-design-system/compare/3.13.8...3.13.9) (2023-01-05)
+
+### Bug Fixes
+
+- **Fonts:** Correct vertical metrics in font files ([714f1aa](https://github.com/defencedigital/mod-uk-design-system/commit/714f1aa9541eabf908125c9878936649acf48ef2))
+- **TextInput:** Improve text alignment ([f368d05](https://github.com/defencedigital/mod-uk-design-system/commit/f368d05a58e28d6e05353b331a2d007973d19d51))
+- **Timeline:** Use visually hidden text for header rows ([2086d47](https://github.com/defencedigital/mod-uk-design-system/commit/2086d4794074a0e0dfe9a82489a359a066656ed5))
+
 ## [3.13.8](https://github.com/defencedigital/mod-uk-design-system/compare/3.13.7...3.13.8) (2023-01-04)
 
 **Note:** Version bump only for package moduk-design-system
