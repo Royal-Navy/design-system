@@ -55,10 +55,15 @@ jobs:
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
 
-      - name: check commits
-        run: |
-          node ./scripts/commitlint ${{ github.event.pull_request._links.html.href }}
-          node ./scripts/check-fixup ${{ github.event.pull_request._links.html.href }}
+      - name: Check commits
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { runCommitLint } = await import('${{ github.workspace }}/scripts/github-actions/runCommitlint.mjs')
+            await runCommitLint({ github, context, core })
+
+            const { checkForFixups } = await import('${{ github.workspace }}/scripts/github-actions/checkForFixups.mjs')
+            await checkForFixups({ github, context, core })
 
   Lint_react-component-library:
     runs-on: ubuntu-latest
