@@ -81,7 +81,10 @@ export const decorators = [
 // Preload the body font on Chromatic to avoid problem with
 // inconsistent floating box positioning
 const fontLoader = async () => ({
-  fonts: await document.fonts.load('400 1em Lato'),
+  fonts: await Promise.all([
+    document.fonts.load('400 1em Lato'),
+    document.fonts.load('700 1em Lato'),
+  ]),
 })
 
 export const loaders = isChromatic() && document.fonts ? [fontLoader] : []
