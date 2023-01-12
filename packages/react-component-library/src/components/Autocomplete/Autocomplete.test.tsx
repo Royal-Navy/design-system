@@ -119,6 +119,7 @@ describe('Autocomplete', () => {
         expect(options[1]).toHaveTextContent('Two')
         expect(options[2]).toHaveTextContent('Three')
         expect(options).toHaveLength(3)
+        expect(wrapper.container.querySelectorAll('strong')).toHaveLength(0)
       })
 
       it('sets `aria-expanded` on the input wrapper to `true`', () => {
@@ -230,6 +231,23 @@ describe('Autocomplete', () => {
 
       it('has the value "Two"', () => {
         expect(wrapper.getByTestId('select-input')).toHaveValue('Two')
+      })
+    })
+
+    describe('when the menu is opened and "tw" is typed into the input', () => {
+      beforeEach(async () => {
+        await userEvent.clear(wrapper.getByTestId('select-input'))
+        await userEvent.type(wrapper.getByTestId('select-input'), 'tw')
+      })
+
+      it('has filters the options', () => {
+        expect(wrapper.getByRole('option')).toHaveTextContent('Two')
+      })
+
+      it('has wraps the match characters in a <strong> element', () => {
+        expect(wrapper.getByRole('option')).toContainHTML(
+          '<strong>Tw</strong>o'
+        )
       })
     })
   })
