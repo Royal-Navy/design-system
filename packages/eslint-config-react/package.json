@@ -1,6 +1,6 @@
 {
   "name": "@defencedigital/eslint-config-react",
-  "version": "3.13.10",
+  "version": "3.13.11",
   "files": [
     "index.js",
     "prettier.config.js"

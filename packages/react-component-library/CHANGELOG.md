@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.11](https://github.com/defencedigital/mod-uk-design-system/compare/3.13.10...3.13.11) (2023-01-17)
+
+### Bug Fixes
+
+- **Autocomplete:** Fix <strong/> on empty string ([bd2ac72](https://github.com/defencedigital/mod-uk-design-system/commit/bd2ac72682f38b9d6873ceea1c2bad0b596da99a))
+
 ## [3.13.10](https://github.com/defencedigital/mod-uk-design-system/compare/3.13.9...3.13.10) (2023-01-11)
 
 **Note:** Version bump only for package @defencedigital/react-component-library
