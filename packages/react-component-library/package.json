@@ -114,7 +114,7 @@
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-playwright": "^0.11.2",
+    "eslint-plugin-playwright": "^0.12.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.18.0",
     "express": "^4.17.1",
