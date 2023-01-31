@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.12](https://github.com/defencedigital/mod-uk-design-system/compare/3.13.11...3.13.12) (2023-01-31)
+
+**Note:** Version bump only for package @defencedigital/icon-library
+
 ## [3.13.11](https://github.com/defencedigital/mod-uk-design-system/compare/3.13.10...3.13.11) (2023-01-17)
 
 **Note:** Version bump only for package @defencedigital/icon-library
