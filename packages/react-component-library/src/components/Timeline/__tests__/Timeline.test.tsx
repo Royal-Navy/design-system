@@ -49,7 +49,7 @@ const TimelineDates: React.FC<TimelineDaysProps> = () => {
 
 describe('Timeline', () => {
   let wrapper: RenderResult
-  let user: ReturnType<typeof userEvent['setup']>
+  let user: ReturnType<(typeof userEvent)['setup']>
 
   beforeEach(() => {
     jest.useFakeTimers()
@@ -2371,6 +2371,121 @@ describe('Timeline', () => {
       })
 
       expect(wrapper.queryAllByText('Event 1')).toHaveLength(0)
+    })
+  })
+
+  describe('when `startDate` and `endDate` is updated externally', () => {
+    beforeEach(() => {
+      const TimelineWithUpdate = () => {
+        const [startDate, setStartDate] = useState<Date>(new Date(2023, 0, 1))
+        const [endDate, setEndDate] = useState<Date>(new Date(2023, 5, 1))
+
+        return (
+          <>
+            <Button
+              onClick={() => {
+                setStartDate(new Date(2023, 6, 1))
+                setEndDate(new Date(2023, 11, 1))
+              }}
+            >
+              Next
+            </Button>
+            <Timeline startDate={startDate} endDate={endDate}>
+              <TimelineMonths />
+              <TimelineWeeks />
+              <TimelineDays />
+              <TimelineRows>
+                <TimelineRow name="Row 1">{}</TimelineRow>
+              </TimelineRows>
+            </Timeline>
+          </>
+        )
+      }
+
+      wrapper = render(<TimelineWithUpdate />)
+    })
+
+    it('renders the months correctly', async () => {
+      const { getAllByTestId, getByText } = wrapper
+
+      const originalMonths = getAllByTestId('timeline-month')
+      expect(originalMonths[0]).toHaveTextContent('Jan2023')
+      expect(originalMonths[1]).toHaveTextContent('Feb2023')
+      expect(originalMonths[2]).toHaveTextContent('Mar2023')
+      expect(originalMonths[3]).toHaveTextContent('Apr2023')
+      expect(originalMonths[4]).toHaveTextContent('May2023')
+      expect(originalMonths[5]).toHaveTextContent('Jun2023')
+      expect(originalMonths).toHaveLength(6)
+      await user.click(getByText('Next'))
+
+      const newMonths = getAllByTestId('timeline-month')
+      expect(newMonths[0]).toHaveTextContent('Jul2023')
+      expect(newMonths[1]).toHaveTextContent('Aug2023')
+      expect(newMonths[2]).toHaveTextContent('Sep2023')
+      expect(newMonths[3]).toHaveTextContent('Oct2023')
+      expect(newMonths[4]).toHaveTextContent('Nov2023')
+      expect(newMonths[5]).toHaveTextContent('Dec2023')
+      expect(newMonths).toHaveLength(6)
+    })
+  })
+
+  describe('when and `endDate` is updated externally', () => {
+    beforeEach(() => {
+      const TimelineWithUpdate = () => {
+        const [startDate] = useState<Date>(new Date(2023, 0, 1))
+        const [endDate, setEndDate] = useState<Date>(new Date(2023, 5, 1))
+
+        return (
+          <>
+            <Button
+              onClick={() => {
+                setEndDate(new Date(2023, 11, 1))
+              }}
+            >
+              Update
+            </Button>
+            <Timeline startDate={startDate} endDate={endDate}>
+              <TimelineMonths />
+              <TimelineWeeks />
+              <TimelineDays />
+              <TimelineRows>
+                <TimelineRow name="Row 1">{}</TimelineRow>
+              </TimelineRows>
+            </Timeline>
+          </>
+        )
+      }
+
+      wrapper = render(<TimelineWithUpdate />)
+    })
+
+    it('renders the months correctly', async () => {
+      const { getAllByTestId, getByText } = wrapper
+
+      const originalMonths = getAllByTestId('timeline-month')
+      expect(originalMonths[0]).toHaveTextContent('Jan2023')
+      expect(originalMonths[1]).toHaveTextContent('Feb2023')
+      expect(originalMonths[2]).toHaveTextContent('Mar2023')
+      expect(originalMonths[3]).toHaveTextContent('Apr2023')
+      expect(originalMonths[4]).toHaveTextContent('May2023')
+      expect(originalMonths[5]).toHaveTextContent('Jun2023')
+      expect(originalMonths).toHaveLength(6)
+      await user.click(getByText('Update'))
+
+      const newMonths = getAllByTestId('timeline-month')
+      expect(newMonths[0]).toHaveTextContent('Jan2023')
+      expect(newMonths[1]).toHaveTextContent('Feb2023')
+      expect(newMonths[2]).toHaveTextContent('Mar2023')
+      expect(newMonths[3]).toHaveTextContent('Apr2023')
+      expect(newMonths[4]).toHaveTextContent('May2023')
+      expect(newMonths[5]).toHaveTextContent('Jun2023')
+      expect(newMonths[6]).toHaveTextContent('Jul2023')
+      expect(newMonths[7]).toHaveTextContent('Aug2023')
+      expect(newMonths[8]).toHaveTextContent('Sep2023')
+      expect(newMonths[9]).toHaveTextContent('Oct2023')
+      expect(newMonths[10]).toHaveTextContent('Nov2023')
+      expect(newMonths[11]).toHaveTextContent('Dec2023')
+      expect(newMonths).toHaveLength(12)
     })
   })
 

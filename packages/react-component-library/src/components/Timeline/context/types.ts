@@ -59,6 +59,7 @@ export type TimelineState = {
 
 export const TIMELINE_ACTIONS = {
   CHANGE_START_DATE: 'CHANGE_START_DATE',
+  CHANGE_DATE: 'CHANGE_DATE',
   CHANGE_WIDTH: 'CHANGE_WIDTH',
   GET_NEXT: 'GET_NEXT',
   GET_PREV: 'GET_PREV',
@@ -67,6 +68,10 @@ export const TIMELINE_ACTIONS = {
 } as const
 
 export type TimelineAction =
+  | {
+      type: typeof TIMELINE_ACTIONS.CHANGE_DATE
+      scaleOptions: TimelineScaleOption[]
+    }
   | {
       type: typeof TIMELINE_ACTIONS.CHANGE_START_DATE
       scaleOptions: TimelineScaleOption[]

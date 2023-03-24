@@ -117,6 +117,7 @@ export function reducer(
         width: action.width,
       }
     }
+    case TIMELINE_ACTIONS.CHANGE_DATE:
     case TIMELINE_ACTIONS.CHANGE_START_DATE:
     case TIMELINE_ACTIONS.GET_PREV:
     case TIMELINE_ACTIONS.GET_NEXT:
