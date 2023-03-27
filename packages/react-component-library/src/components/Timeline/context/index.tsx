@@ -33,27 +33,35 @@ export const TimelineProvider: React.FC<TimelineProviderProps> = ({
   })
 
   const prevStartDate = usePrevious(options.startDate)
+  const prevEndDateDate = usePrevious(options.endDate)
+
+  const isEqualOrUndefined = (
+    previousDateTime: Date | undefined | null,
+    currentDateTime: Date | undefined | null
+  ) => previousDateTime === undefined || previousDateTime === currentDateTime
 
   useEffect(() => {
     if (!state.currentScaleOption) {
       return
     }
 
-    if (prevStartDate === undefined || prevStartDate === options.startDate) {
+    if (
+      isEqualOrUndefined(prevStartDate, options.startDate) &&
+      isEqualOrUndefined(prevEndDateDate, options.endDate)
+    ) {
       return
     }
 
     const scaleOptions = buildScaleOptions(
       {
         ...options,
-        endDate: state.getNewEndDate(),
+        ...(!options.endDate ? { endDate: state.getNewEndDate() } : {}),
         hoursBlockSize: state.currentScaleOption.hoursBlockSize,
       },
       state.width
     )
-
-    dispatch({ scaleOptions, type: TIMELINE_ACTIONS.CHANGE_START_DATE })
-  }, [options, prevStartDate, state])
+    dispatch({ scaleOptions, type: TIMELINE_ACTIONS.CHANGE_DATE })
+  }, [options, prevEndDateDate, prevStartDate, state])
 
   const value = useMemo(
     () => ({ hasSide, state, dispatch }),
