@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.13](https://github.com/defencedigital/mod-uk-design-system/compare/3.13.12...3.13.13) (2023-03-28)
+
+### Bug Fixes
+
+- **Timeline:** Fix issue with the timeline when updating the `endDate` ([cd867a7](https://github.com/defencedigital/mod-uk-design-system/commit/cd867a7b46da1ce2e8b0531818c4f0873959655b))
+
 ## [3.13.12](https://github.com/defencedigital/mod-uk-design-system/compare/3.13.11...3.13.12) (2023-01-31)
 
 **Note:** Version bump only for package moduk-design-system
