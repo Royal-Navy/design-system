@@ -1,6 +1,6 @@
 import { ColorAction500, ColorNeutral200 } from '@defencedigital/design-tokens'
 
-import { expect, test } from '../test'
+import { expect, test } from '../fixtures'
 import { hexToRgb } from '../helpers'
 import selectors from './selectors'
 

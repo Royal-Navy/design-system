@@ -1,5 +1,5 @@
 import { DEFAULTS } from '../../src/components/Timeline/constants'
-import { expect, test } from '../test'
+import { expect, test } from '../fixtures'
 import selectors from './selectors'
 
 test.describe('Compound Timeline', () => {

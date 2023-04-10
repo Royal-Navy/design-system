@@ -1,4 +1,4 @@
-import { expect, test } from '../test'
+import { expect, test } from '../fixtures'
 
 function getGlobalStyles(selectorText) {
   return Array.prototype.flatMap
