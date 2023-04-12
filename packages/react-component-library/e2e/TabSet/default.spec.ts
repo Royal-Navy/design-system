@@ -1,7 +1,7 @@
 import { ColorAction500 } from '@defencedigital/design-tokens'
 
 import { hexToRgb } from '../helpers'
-import { expect, test } from '../test'
+import { expect, test } from '../fixtures'
 import selectors from './selectors'
 
 const ACTIVE_TAB_BORDER_TOP = `6px solid ${hexToRgb(ColorAction500)}`

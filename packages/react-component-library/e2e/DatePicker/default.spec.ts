@@ -3,7 +3,7 @@ import { startOfMonth } from 'date-fns'
 
 import { formatDatesForInput } from '../../src/components/DatePicker/utils'
 import { DATE_FORMAT } from '../../src/constants'
-import { expect, test } from '../test'
+import { expect, test } from '../fixtures'
 import { hexToRgb } from '../helpers'
 import selectors from './selectors'
 

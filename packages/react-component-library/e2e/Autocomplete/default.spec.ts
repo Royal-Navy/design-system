@@ -7,7 +7,7 @@ import {
 import { remToPx } from 'polished'
 
 import { hexToRgb } from '../helpers'
-import { expect, test } from '../test'
+import { expect, test } from '../fixtures'
 import selectors from './selectors'
 
 test.describe('Autocomplete', () => {
