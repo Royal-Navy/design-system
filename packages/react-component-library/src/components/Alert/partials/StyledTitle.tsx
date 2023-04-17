@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
 import { AlertVariantType } from '../Alert'
@@ -12,26 +12,21 @@ import {
 } from '../constants'
 
 interface StyledTitleProps {
-  $variant?: AlertVariantType
+  $variant: AlertVariantType
 }
 
 const { spacing, fontSize } = selectors
 
 const TITLE_VARIANT_MAP = {
   [ALERT_VARIANT.DANGER]: DANGER_ALERT_TITLE_COLOR,
+  [ALERT_VARIANT.INFO]: ALERT_TITLE_COLOR,
   [ALERT_VARIANT.SUCCESS]: SUCCESS_ALERT_TITLE_COLOR,
   [ALERT_VARIANT.WARNING]: WARNING_ALERT_TITLE_COLOR,
 }
 
 export const StyledTitle = styled.h2<StyledTitleProps>`
-  color: ${ALERT_TITLE_COLOR};
+  color: ${({ $variant }) => TITLE_VARIANT_MAP[$variant]};
   font-size: ${fontSize('l')};
   font-weight: bold;
   margin-bottom: ${spacing('2')};
-
-  ${({ $variant }) =>
-    $variant &&
-    css`
-      color: ${TITLE_VARIANT_MAP[$variant]};
-    `}
 `

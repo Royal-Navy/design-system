@@ -17,7 +17,7 @@ import { Switch, SwitchOption } from '../../components/Switch'
 import { RangeSlider } from '../../components/RangeSlider'
 import { Button } from '../../components/Button'
 import { Fieldset } from '../../components/Fieldset'
-import { sleep } from '../../helpers'
+import { KeysWithValueType, sleep } from '../../helpers'
 import { Field } from '../../components/Field'
 import { SectionDivider } from '../../components/SectionDivider'
 import { EMPTY_FORM_VALUES, PREPOPULATED_FORM_VALUES } from '../constants'
@@ -72,12 +72,13 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
 
   const handleCheckboxChange = (value: string, name: string) => {
     const values = getValues()
+    const fieldValues = values[name as KeysWithValueType<FormValues, string[]>]
 
-    if (values[name]?.includes(value)) {
-      return values[name]?.filter((id: string) => id !== value)
+    if (fieldValues.includes(value)) {
+      return fieldValues.filter((id: string) => id !== value)
     }
 
-    return [...(values[name] ?? []), value]
+    return [...fieldValues, value]
   }
 
   return (

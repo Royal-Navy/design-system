@@ -101,7 +101,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
     const { key } = event
 
     if (key in keyMap) {
-      const index = keyMap[key]
+      const index = keyMap[key as keyof typeof keyMap]
       handleClick(event, index)
     }
   }

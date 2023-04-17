@@ -1,11 +1,14 @@
-export type LogLevel = 'debug' | 'info' | 'warn' | 'error' | '__MODDS_LOG_LEVEL'
+export type LogLevel = 'debug' | 'info' | 'warn' | 'error'
 
 export type Logger = Record<LogLevel, typeof console.log>
 
-const MODDS_LOG_LEVEL: LogLevel = '__MODDS_LOG_LEVEL'
+const MODDS_LOG_LEVEL = '__MODDS_LOG_LEVEL'
 const levels: LogLevel[] = ['debug', 'info', 'warn', 'error']
 
-function isValidLogLevel(logLevel: LogLevel, index: number): boolean {
+function isValidLogLevel(
+  logLevel: string,
+  index: number
+): logLevel is LogLevel {
   const enabledLevel = levels.indexOf(
     logLevel.toString().toLowerCase() as LogLevel
   )

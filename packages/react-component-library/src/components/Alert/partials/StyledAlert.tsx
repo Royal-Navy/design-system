@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
 
 import { AlertVariantType } from '../Alert'
@@ -14,13 +14,14 @@ import {
 } from '../constants'
 
 interface StyledAlertProps {
-  $variant?: AlertVariantType
+  $variant: AlertVariantType
 }
 
 const { spacing, mq } = selectors
 
 const STATE_VARIANT_MAP = {
   [ALERT_VARIANT.DANGER]: DANGER_ALERT_STATE_COLOR,
+  [ALERT_VARIANT.INFO]: ALERT_STATE_COLOR,
   [ALERT_VARIANT.SUCCESS]: SUCCESS_ALERT_STATE_COLOR,
   [ALERT_VARIANT.WARNING]: WARNING_ALERT_STATE_COLOR,
 }
@@ -46,15 +47,7 @@ export const StyledAlert = styled.div<StyledAlertProps>`
     bottom: 8px;
     content: '';
     width: 4px;
-    background: ${ALERT_STATE_COLOR};
+    background: ${({ $variant }) => STATE_VARIANT_MAP[$variant]};
     border-radius: 4px;
   }
-
-  ${({ $variant }) =>
-    $variant &&
-    css`
-      &::before {
-        background-color: ${STATE_VARIANT_MAP[$variant]};
-      }
-    `}
 `

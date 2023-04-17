@@ -43,7 +43,7 @@ export const PaginationButton: React.FC<PaginationButtonProps> = ({
   children,
   disabled,
   ...rest
-}) => (
+}: PaginationButtonProps) => (
   <StyledButton
     $isDisabled={disabled}
     aria-label={`${children} page`}

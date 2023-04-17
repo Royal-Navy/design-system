@@ -9,7 +9,7 @@ import { StyledTableHead } from './partials/StyledTableHead'
 import { StyledTableRow } from './partials/StyledTableRow'
 import { StyledTableCell } from './partials/StyledTableCell'
 
-export interface RowProps {
+export interface RowProps extends Record<string, unknown> {
   id: string
 }
 
