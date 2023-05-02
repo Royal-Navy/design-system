@@ -9,7 +9,7 @@ import { StyledMessage } from './partials/StyledMessage'
 import { useExternalId } from '../../hooks/useExternalId'
 import { ValueOf } from '../../helpers'
 
-type TooltipPositionType = ValueOf<typeof TOOLTIP_POSITION>
+export type TooltipPositionType = ValueOf<typeof TOOLTIP_POSITION>
 
 export interface TooltipProps extends PositionType {
   /**

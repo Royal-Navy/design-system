@@ -15,7 +15,6 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "strict": true,
-    "suppressImplicitAnyIndexErrors": true,
     "target": "esnext",
     "types": ["jest", "@testing-library/jest-dom"]
   },

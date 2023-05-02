@@ -1,5 +1,7 @@
-import styled, { css } from 'styled-components'
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { selectors } from '@defencedigital/design-tokens'
+
+import { TooltipPositionType } from '../Tooltip'
 
 const { color, spacing, zIndex } = selectors
 
@@ -14,10 +16,12 @@ interface StyledContentProps {
   /**
    * Where to position the tooltip relative to the target element.
    */
-  $position: string
+  $position: TooltipPositionType
 }
 
-function getPositionStyles(position: string): string {
+function getPositionStyles(
+  position: TooltipPositionType
+): FlattenSimpleInterpolation {
   const styles = {
     above: css`
       &::before {

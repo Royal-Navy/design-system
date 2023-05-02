@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Placement } from '@popperjs/core'
+import { BasePlacement, Placement, VariationPlacement } from '@popperjs/core'
 import { Transition } from 'react-transition-group'
 import mergeRefs from 'react-merge-refs'
 import { CSSObject } from 'styled-components'
@@ -76,6 +76,15 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
     attributes,
   } = useFloatingElement(placement, undefined, targetElement)
 
+  const calculatedPlacement = attributes?.popper?.['data-popper-placement'] as
+    | BasePlacement
+    | VariationPlacement
+    | undefined
+
+  const basePlacement = calculatedPlacement?.split('-', 1)?.[0] as
+    | BasePlacement
+    | undefined
+
   return (
     <>
       {renderTarget && (
@@ -105,9 +114,7 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
               data-testid="floating-box-content"
             >
               <StyledArrow
-                $placement={
-                  attributes?.popper?.['data-popper-placement'] as Placement
-                }
+                $placement={basePlacement}
                 ref={arrowElementRef}
                 css={styles.arrow as CSSObject}
                 {...attributes.arrow}

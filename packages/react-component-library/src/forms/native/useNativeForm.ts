@@ -32,11 +32,12 @@ export const useNativeForm = <FormValues>(
     e: React.FormEvent<HTMLInputElement> | SyntheticFormEvent
   ): void => {
     const { name, value } = e.currentTarget
+    const validator = validation[name as keyof Validators<FormValues>]
 
-    if (validation[name]) {
+    if (validator) {
       setFormErrors({
         ...formErrors,
-        ...{ [name]: validation[name](value) },
+        ...{ [name]: validator(value as FormValues[keyof FormValues]) },
       })
     }
 
@@ -51,7 +52,7 @@ export const useNativeForm = <FormValues>(
   const handleCheckboxGroup = ({
     currentTarget: { name, value, checked },
   }: React.FormEvent<HTMLInputElement>): void => {
-    let newValues = [...formState[name]]
+    let newValues = [...(formState[name as keyof FormValues] as string[])]
 
     if (checked && !newValues.includes(value)) {
       newValues.push(value)

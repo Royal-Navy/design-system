@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 
-import { ToastProps as BaseToastProps } from 'react-toast-notifications'
+import {
+  AppearanceTypes,
+  ToastProps as BaseToastProps,
+} from 'react-toast-notifications'
 
 import {
   IconInfo,
@@ -33,7 +36,7 @@ export interface ToastProps
   dateTime?: Date
 }
 
-function getAppearanceIcon(appearance: string): React.ReactNode {
+function getAppearanceIcon(appearance: AppearanceTypes): React.ReactNode {
   const appearanceIconMap = {
     success: <IconCheckCircle aria-hidden data-testid="toast-icon" />,
     error: <IconError aria-hidden data-testid="toast-icon" />,
