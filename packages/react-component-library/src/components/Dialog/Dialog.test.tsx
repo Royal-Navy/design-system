@@ -1,20 +1,21 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
+import { renderToStaticMarkup } from 'react-dom/server'
 
 import { Dialog } from '.'
 
 describe('Modal', () => {
   let wrapper: RenderResult
   let title: string
-  let description: string
+  let description: React.ReactElement
   let onConfirm: (event: React.FormEvent<HTMLButtonElement>) => void
   let onCancel: (event: React.FormEvent<HTMLButtonElement>) => void
   let isOpen: boolean
 
   beforeEach(() => {
     title = 'Dialog Title'
-    description = 'Dialog description.'
+    description = <span>Dialog description.</span>
     isOpen = true
     onConfirm = jest.fn()
     onCancel = jest.fn()
@@ -56,8 +57,8 @@ describe('Modal', () => {
       })
 
       it('should render the description', () => {
-        expect(wrapper.getByTestId('dialog-description')).toHaveTextContent(
-          description
+        expect(wrapper.getByTestId('dialog-description').innerHTML).toContain(
+          renderToStaticMarkup(description)
         )
       })
 
