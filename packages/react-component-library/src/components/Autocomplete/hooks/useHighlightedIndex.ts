@@ -42,6 +42,7 @@ export function useHighlightedIndex(
       const item = items[highlightedIndex]
 
       if (item) {
+        console.log('this is where we reset the text')
         setInputValue(item.props.children)
       }
     },

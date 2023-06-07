@@ -10,15 +10,19 @@ import {
 
 export function useAutocomplete(children: SelectChildWithStringType[]): {
   filteredItems: React.ReactElement<SelectBaseOptionAsStringProps>[]
+  /**
+   * @deprecated Prefer to use hasMatchingValues
+   */
   hasError: boolean
+  hasMatchingValues: boolean
   hasFilter: boolean
   inputRef: React.RefObject<HTMLInputElement>
   itemsMap: ItemsMap
   onInputValueChange: (changes: UseComboboxStateChange<string>) => void
   onIsOpenChange: (changes: UseComboboxStateChange<string>) => void
-  onSelectedItemChange: (changes: UseComboboxStateChange<string>) => void
+  resetFilterValue: () => void
 } {
-  const [hasError, setHasError] = useState<boolean>(false)
+  const [hasMatchingValues, setHasMatchingValues] = useState<boolean>(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const [filterValue, setFilterValue] = useState<string>('')
 
@@ -42,7 +46,7 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
     validChildren.map((child) => [child.props.value, child])
   )
 
-  function getHasError(inputValue: string | undefined): boolean {
+  function getHasMatchingValues(inputValue: string | undefined): boolean {
     if (!inputValue) {
       return false
     }
@@ -50,27 +54,26 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
     return findIndexOfInputValue(filteredItems, inputValue) === -1
   }
 
-  function onInputValueChange({
-    inputValue,
-    isOpen,
-    type,
-  }: UseComboboxStateChange<string>) {
+  function onInputValueChange(props: UseComboboxStateChange<string>) {
+    const { inputValue, isOpen, type } = props
+
     const isControlledValueUpdate =
       type === useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem
 
+    // Code golf!?
     if (!inputValue || (isOpen && !isControlledValueUpdate)) {
+      console.log('resetting filter value')
       setFilterValue(inputValue || '')
     }
 
     if (!isOpen) {
-      setHasError(getHasError(inputValue))
+      setHasMatchingValues(getHasMatchingValues(inputValue))
     }
   }
 
-  function onIsOpenChange({
-    inputValue,
-    isOpen,
-  }: UseComboboxStateChange<string>) {
+  function onIsOpenChange(props: UseComboboxStateChange<string>) {
+    const { inputValue, isOpen } = props
+
     if (isOpen) {
       inputRef.current?.focus()
     } else {
@@ -79,25 +82,26 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
         inputRef.current.scrollLeft = 0
       }
 
-      const newHasError = getHasError(inputValue)
-      setHasError(newHasError)
+      const newHasError = getHasMatchingValues(inputValue)
+      setHasMatchingValues(newHasError)
 
       inputRef.current?.blur()
     }
   }
 
-  function onSelectedItemChange() {
+  function resetFilterValue() {
     setFilterValue('')
   }
 
   return {
     filteredItems,
     hasFilter: Boolean(filterValue),
-    hasError,
+    hasError: hasMatchingValues,
+    hasMatchingValues,
     inputRef,
     itemsMap,
     onInputValueChange,
     onIsOpenChange,
-    onSelectedItemChange,
+    resetFilterValue,
   }
 }

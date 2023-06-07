@@ -22,7 +22,7 @@
     "build": "run-s svgr-icons svgr-silhouettes exports build:es build:cjs types",
     "build:es": "BABEL_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\"",
     "build:cjs": "BABEL_ENV=cjs webpack --config=webpack/prod.js",
-    "svgr-icons": "rm -rf src/icons; svgr -d src/icons -- src/assets/icons/**/; rm src/icons/index.ts",
+    "svgr-icons": "rm -rf src/icons; svgr -d src/icons -- src/assets/icons/**/*; rm src/icons/index.ts",
     "svgr-silhouettes": "rm -rf src/silhouettes; svgr -d src/silhouettes -- src/assets/silhouettes/; rm src/silhouettes/index.ts",
     "exports": "./generate-exports.sh",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --allowJs false --outDir dist/types",

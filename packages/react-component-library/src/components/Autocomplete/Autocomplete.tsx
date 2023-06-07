@@ -25,6 +25,15 @@ export interface AutocompleteProps extends SelectBaseProps {
    * Called when the input loses focus.
    */
   onBlur?: (event: React.FocusEvent) => void
+  /**
+   * When true the component will accept input that does not exist in the list
+   */
+  acceptUnmatchedInput?: boolean
+  /**
+   *
+   * @param value the text that has been added
+   */
+  onNotInList?: (value: string ) => void
 }
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
@@ -36,17 +45,18 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   onBlur,
   onChange,
   value,
+  onNotInList,
   ...rest
 }) => {
   const {
     filteredItems,
-    hasError,
+    hasMatchingValues,
     hasFilter,
     inputRef,
     itemsMap,
     onInputValueChange,
     onIsOpenChange,
-    onSelectedItemChange,
+    resetFilterValue,
   } = useAutocomplete(React.Children.toArray(children))
 
   const {
@@ -80,8 +90,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     onInputValueChange,
     onIsOpenChange,
     onSelectedItemChange: (changes) => {
-      onSelectedItemChange(changes)
-
+      resetFilterValue()
       const { selectedItem: newValue } = changes
 
       if (onChange) {
@@ -113,9 +122,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     useCallback(
       (...args) => {
         onInputBlurHandler()
+        if (onNotInList && inputValue) {
+          onNotInList(inputValue)
+        }
         onBlur?.(...args)
       },
-      [onBlur, onInputBlurHandler]
+      [onBlur, onInputBlurHandler, inputValue, onChange]
     )
 
   const handleInputScroll: React.UIEventHandler<HTMLInputElement> = useCallback(
@@ -135,6 +147,8 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       ? ''
       : itemsMap[selectedItem].props.children
 
+  const noResults = inputValue && !filteredItems.length
+
   return (
     <SelectLayout
       hasLabelFocus={isOpen}
@@ -153,7 +167,9 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       inputWrapperProps={getComboboxProps({
         'aria-expanded': isOpen,
       })}
-      isInvalid={hasError || isInvalid}
+      isInvalid={
+        rest.acceptUnmatchedInput ? isInvalid : hasMatchingValues || isInvalid
+      }
       isOpen={isOpen}
       menuProps={getMenuProps()}
       onClearButtonClick={() => {
@@ -182,7 +198,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
             title: child.props.children,
           })
         })}
-      {inputValue && !filteredItems.length && (
+      {(noResults && !rest.acceptUnmatchedInput) && (
         <NoResults>{inputValue}</NoResults>
       )}
     </SelectLayout>

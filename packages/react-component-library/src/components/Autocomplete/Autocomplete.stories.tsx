@@ -7,6 +7,7 @@ import {
 } from '@defencedigital/icon-library'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import styled from 'styled-components'
+import { useArgs } from '@storybook/addons'
 
 import { Autocomplete, AutocompleteOption } from './index'
 
@@ -26,19 +27,38 @@ const StyledWrapper = styled.div<{ $isDisabled?: boolean }>`
   max-width: 20rem;
 `
 
-const Template: ComponentStory<typeof Autocomplete> = (args) => (
-  <StyledWrapper $isDisabled={args.isDisabled}>
-    <Autocomplete {...args}>
-      <AutocompleteOption value="one">One</AutocompleteOption>
-      <AutocompleteOption value="two">Two</AutocompleteOption>
-      <AutocompleteOption value="three">Three</AutocompleteOption>
-      <AutocompleteOption value="long">
-        This is a really, really long select option label that overflows the
-        container when selected
-      </AutocompleteOption>
-    </Autocomplete>
-  </StyledWrapper>
-)
+const Template: ComponentStory<typeof Autocomplete> = (args) => {
+  const [{ value }, updateArgs] = useArgs()
+  const defaultArgs = { ...args }
+  delete defaultArgs.value
+  delete defaultArgs.onChange
+
+  return (
+    <StyledWrapper $isDisabled={args.isDisabled}>
+      {value}
+      <Autocomplete
+        {...defaultArgs}
+        value={value}
+        onNotInList={(v) => {
+          console.log('not in list', v)
+          updateArgs({value:v})
+        }}
+        onChange={(v) => {
+          console.log(v)
+          updateArgs({ value: v })
+        }}
+      >
+        <AutocompleteOption value="one">One</AutocompleteOption>
+        <AutocompleteOption value="two">Two</AutocompleteOption>
+        <AutocompleteOption value="three">Three</AutocompleteOption>
+        <AutocompleteOption value="long">
+          This is a really, really long select option label that overflows the
+          container when selected
+        </AutocompleteOption>
+      </Autocomplete>
+    </StyledWrapper>
+  )
+}
 
 const TemplateWithIconsAndBadges: ComponentStory<typeof Autocomplete> = (
   args
@@ -76,12 +96,6 @@ export const NoClearButton = Template.bind({})
 NoClearButton.args = {
   hideClearButton: true,
   initialValue: 'two',
-}
-
-export const Open = Template.bind({})
-Open.storyName = 'Open'
-Open.args = {
-  initialIsOpen: true,
 }
 
 export const WithError = Template.bind({})
