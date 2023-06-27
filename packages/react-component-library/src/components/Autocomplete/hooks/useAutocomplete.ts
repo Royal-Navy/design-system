@@ -11,7 +11,8 @@ import {
 export function useAutocomplete(children: SelectChildWithStringType[]): {
   filteredItems: React.ReactElement<SelectBaseOptionAsStringProps>[]
   hasError: boolean
-  hasFilter: boolean
+  hasFilter: boolean,
+  isExactMatch: boolean,
   inputRef: React.RefObject<HTMLInputElement>
   itemsMap: ItemsMap
   onInputValueChange: (changes: UseComboboxStateChange<string>) => void
@@ -35,6 +36,12 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
       (child.props.children || '')
         .toLowerCase()
         .indexOf(filterValue.toLowerCase()) > -1
+    )
+  })
+
+  const isExactMatch = validChildren.some(child => {
+    return (
+      (child.props.children || '').toLowerCase() === filterValue.toLowerCase()
     )
   })
 
@@ -99,5 +106,6 @@ export function useAutocomplete(children: SelectChildWithStringType[]): {
     onInputValueChange,
     onIsOpenChange,
     onSelectedItemChange,
+    isExactMatch
   }
 }
