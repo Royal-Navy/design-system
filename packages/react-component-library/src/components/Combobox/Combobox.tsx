@@ -122,7 +122,7 @@ export const Combobox: React.FC<ComboboxProps> = (props: ComboboxProps) => {
   )
 
   const selectedItemText =
-    isNil(selectedItem) || hasFilter
+    isNil(selectedItem) || isNil(itemsMap[selectedItem]) || hasFilter 
       ? ''
       : itemsMap[selectedItem].props.children
 
