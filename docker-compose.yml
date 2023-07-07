@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  cli:
+    build: .
+    volumes:
+      - .:/moduk-design-system
+      # Keep node_modules inside the image
+      - /moduk-design-system/packages/design-tokens/node_modules
+      - /moduk-design-system/packages/eslint-config-react/node_modules
+      - /moduk-design-system/packages/icon-library/node_modules
+      - /moduk-design-system/packages/react-component-library/node_modules

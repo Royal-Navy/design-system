@@ -1,0 +1,7 @@
+node_modules
+env
+front_end/
+docs
+.husky
+.github
+.parcel-cache
