@@ -29,6 +29,7 @@
     "**/git-url-parse": "^13.1.0",
     "**/glob-parent": "^5.1.2",
     "**/playwright": "^1.32.3",
+    "**/semver": "^7.5.3",
     "**/trim": "^0.0.3",
     "**/trim-newlines": "^3.0.1"
   },
