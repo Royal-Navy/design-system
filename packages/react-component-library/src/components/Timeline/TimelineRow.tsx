@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classNames from 'classnames'
 import { CSSProp } from 'styled-components'
 
@@ -49,61 +49,69 @@ export interface TimelineRowProps extends ComponentWithClass {
   isHeader?: boolean
 }
 
-export const TimelineRow: React.FC<TimelineRowProps> = ({
-  children,
-  contentProps = {},
-  css,
-  headerProps = {},
-  name,
-  ariaLabel,
-  render,
-  isHeader = false,
-  className,
-  ...rest
-}) => {
-  const classes = classNames('timeline__row', className)
-  const { noCells, rowContentRef } = useTimelineRowContent(isHeader, children)
-  const { css: contentCss, ...restContentProps } = contentProps
-  const { css: headerCss, ...restHeaderProps } = headerProps
+export const TimelineRow = forwardRef<HTMLDivElement, TimelineRowProps>(
+  (
+    {
+      children,
+      contentProps = {},
+      css,
+      headerProps = {},
+      name,
+      ariaLabel,
+      render,
+      isHeader = false,
+      className,
+      ...rest
+    },
+    ref
+  ) => {
+    const classes = classNames('timeline__row', className)
+    const { noCells, rowContentRef } = useTimelineRowContent(isHeader, children)
+    const { css: contentCss, ...restContentProps } = contentProps
+    const { css: headerCss, ...restHeaderProps } = headerProps
 
-  return (
-    <TimelineContext.Consumer>
-      {({ hasSide }) => (
-        <StyledRow
-          $css={css}
-          className={classes}
-          data-testid="timeline-row"
-          role="row"
-          {...rest}
-        >
-          {hasSide && (
-            <StyledRowHeader
-              $css={headerCss}
-              $isHeader={isHeader}
-              data-testid="timeline-row-header"
-              role="rowheader"
-              aria-label={ariaLabel}
-              {...restHeaderProps}
-            >
-              {render && render({ name })}
-              {!render && isHeader && (
-                <StyledVisuallyHiddenText>{name}</StyledVisuallyHiddenText>
-              )}
-              {!render && !isHeader && name}
-            </StyledRowHeader>
-          )}
-          <StyledRowContent
-            $css={contentCss}
-            ref={rowContentRef}
-            {...restContentProps}
+    return (
+      <TimelineContext.Consumer>
+        {({ hasSide }) => (
+          <StyledRow
+            $css={css}
+            className={classes}
+            data-testid="timeline-row"
+            role="row"
+            ref={ref}
+            {...rest}
           >
-            {noCells && <StyledNoEvents role="cell">No events</StyledNoEvents>}
-            {children}
-          </StyledRowContent>
-        </StyledRow>
-      )}
-    </TimelineContext.Consumer>
-  )
-}
+            {hasSide && (
+              <StyledRowHeader
+                $css={headerCss}
+                $isHeader={isHeader}
+                data-testid="timeline-row-header"
+                role="rowheader"
+                aria-label={ariaLabel}
+                {...restHeaderProps}
+              >
+                {render && render({ name })}
+                {!render && isHeader && (
+                  <StyledVisuallyHiddenText>{name}</StyledVisuallyHiddenText>
+                )}
+                {!render && !isHeader && name}
+              </StyledRowHeader>
+            )}
+            <StyledRowContent
+              $css={contentCss}
+              ref={rowContentRef}
+              {...restContentProps}
+            >
+              {noCells && (
+                <StyledNoEvents role="cell">No events</StyledNoEvents>
+              )}
+              {children}
+            </StyledRowContent>
+          </StyledRow>
+        )}
+      </TimelineContext.Consumer>
+    )
+  }
+)
 
 TimelineRow.displayName = 'TimelineRow'

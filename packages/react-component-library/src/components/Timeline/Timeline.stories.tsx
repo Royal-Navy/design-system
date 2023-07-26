@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createRef } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import styled, { css, CSSProp } from 'styled-components'
 import { format } from 'date-fns'
@@ -135,6 +135,39 @@ export const WithData: ComponentStory<typeof Timeline> = (props) => (
 )
 
 WithData.storyName = 'With data'
+
+export const VirtualizedRows: ComponentStory<typeof Timeline> = (props) => (
+  <Timeline
+    {...props}
+    startDate={new Date(2020, 9, 1)}
+    today={new Date(2020, 9, 15, 12)}
+    isFullWidth
+    range={3}
+  >
+    <TimelineTodayMarker />
+    <TimelineMonths />
+    <TimelineWeeks />
+    <TimelineDays />
+    <TimelineRows isVirtualized>
+      {[...Array(100)].map((_, index) => {
+        return (
+          <TimelineRow name={`Row ${index}`}>
+            <TimelineEvents>
+              <TimelineEvent
+                startDate={new Date(2020, 9, 14, 12)}
+                endDate={new Date(2020, 9, 18, 12)}
+              >
+                Event 1
+              </TimelineEvent>
+            </TimelineEvents>
+          </TimelineRow>
+        )
+      })}
+    </TimelineRows>
+  </Timeline>
+)
+
+VirtualizedRows.storyName = 'Virtualized rows'
 
 export const WithSidebar: ComponentStory<typeof Timeline> = (props) => (
   <Timeline
