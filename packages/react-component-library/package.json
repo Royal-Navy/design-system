@@ -74,7 +74,7 @@
     "@playwright/test": "^1.32.3",
     "@storybook/addon-a11y": "^6.5.12",
     "@storybook/addon-actions": "^6.5.12",
-    "@storybook/addon-controls": "^6.5.12",
+    "@storybook/addon-controls": "^7.3.2",
     "@storybook/addon-docs": "^6.5.12",
     "@storybook/addons": "^6.5.12",
     "@storybook/builder-webpack5": "^6.5.12",
