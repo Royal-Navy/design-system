@@ -83,8 +83,8 @@ jobs:
         if: failure()
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: defencedigital/design-system-slacknotify-action@master
+        uses: Royal-Navy/design-system-slacknotify-action@master
         with:
-          channel_id: C02H226CT33
+          channel_id: ${{ secrets.CHANNEL_ID }}
           status: FAILED
           color: danger
