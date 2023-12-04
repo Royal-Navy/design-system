@@ -4,7 +4,7 @@ import {
   IconAnchor,
   IconBrightnessAuto,
   IconRemove,
-} from '@defencedigital/icon-library'
+} from '@royalnavy/icon-library'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import styled from 'styled-components'
 

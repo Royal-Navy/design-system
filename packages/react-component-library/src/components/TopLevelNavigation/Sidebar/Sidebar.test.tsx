@@ -6,7 +6,7 @@ import {
   RenderResult,
   waitFor,
 } from '@testing-library/react'
-import { IconHome, IconGrain } from '@defencedigital/icon-library'
+import { IconHome, IconGrain } from '@royalnavy/icon-library'
 
 import {
   Sidebar,

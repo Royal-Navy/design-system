@@ -37,7 +37,7 @@ jobs:
           )
           for i in "${PACKAGES[@]}";
            do
-             contents="$(jq '.package.dependencies."@defencedigital/'$i'" = "file:'$GITHUB_WORKSPACE'/packages/'$i'"' $TEMPLATE)" \
+             contents="$(jq '.package.dependencies."@royalnavy/'$i'" = "file:'$GITHUB_WORKSPACE'/packages/'$i'"' $TEMPLATE)" \
              && echo "${contents}" > $TEMPLATE
            done
           cat $TEMPLATE
@@ -50,7 +50,7 @@ jobs:
       - name: Build boilerlate app
         run: |
           cd $RUNNER_TEMP/my-app
-          grep version node_modules/@defencedigital/**/package.json
+          grep version node_modules/@royalnavy/**/package.json
           yarn build
 
       - name: Lint boilerlate app

@@ -1,4 +1,4 @@
-import { IconLoader } from '@defencedigital/icon-library'
+import { IconLoader } from '@royalnavy/icon-library'
 import React, { FormEvent } from 'react'
 
 import { BUTTON_ICON_POSITION, BUTTON_VARIANT } from './constants'

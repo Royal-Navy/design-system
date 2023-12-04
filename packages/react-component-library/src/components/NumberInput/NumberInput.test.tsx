@@ -11,7 +11,7 @@ import {
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { ColorAction500, ColorDanger800 } from '@defencedigital/design-tokens'
+import { ColorAction500, ColorDanger800 } from '@royalnavy/design-tokens'
 import { Button, COMPONENT_SIZE } from '../..'
 import { NumberInput } from '.'
 

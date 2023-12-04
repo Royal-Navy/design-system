@@ -1,5 +1,5 @@
 import DayPicker from 'react-day-picker'
-import { selectors } from '@defencedigital/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 import { BUTTON_VARIANT } from '../../Button'
@@ -188,7 +188,9 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
   }
 
   &:not(.DayPicker--interactionDisabled) {
-    .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside):hover {
+    .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--start):not(
+        .DayPicker-Day--end
+      ):not(.DayPicker-Day--outside):hover {
       background-color: ${color('neutral', '100')};
     }
   }

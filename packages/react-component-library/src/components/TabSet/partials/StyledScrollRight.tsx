@@ -1,4 +1,4 @@
-import { selectors } from '@defencedigital/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
 import { StyledScrollButton } from './StyledScrollButton'

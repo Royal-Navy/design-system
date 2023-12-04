@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@defencedigital/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { StyledSubComponentProps } from './StyledSubComponent'
 import { TIMELINE_BORDER_COLOR, TIMELINE_ROW_HEADER_WIDTH } from '../constants'

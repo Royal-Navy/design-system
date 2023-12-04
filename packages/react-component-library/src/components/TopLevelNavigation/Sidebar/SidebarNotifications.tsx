@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { IconNotifications } from '@defencedigital/icon-library'
+import { IconNotifications } from '@royalnavy/icon-library'
 import { Transition } from 'react-transition-group'
 
 import { SidebarContext } from './context'

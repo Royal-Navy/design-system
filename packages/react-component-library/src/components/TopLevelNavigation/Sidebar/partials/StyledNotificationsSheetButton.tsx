@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { selectors } from '@defencedigital/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { SheetButton, SheetButtonProps } from '../../Sheet/SheetButton'
 import { StyledNotificationDot } from './StyledNotificationDot'

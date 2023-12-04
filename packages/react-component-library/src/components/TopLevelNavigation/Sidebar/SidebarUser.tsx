@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { IconPerson, IconExitToApp } from '@defencedigital/icon-library'
+import { IconPerson, IconExitToApp } from '@royalnavy/icon-library'
 import { Transition } from 'react-transition-group'
 
 import { ComponentWithClass } from '../../../common/ComponentWithClass'

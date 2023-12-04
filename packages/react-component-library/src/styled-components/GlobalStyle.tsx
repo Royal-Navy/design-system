@@ -1,7 +1,7 @@
 import React, { createContext, useMemo } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
-import { selectors, lightTheme } from '@defencedigital/design-tokens'
+import { selectors, lightTheme } from '@royalnavy/design-tokens'
 
 export interface GlobalStyleContextDefaults {
   theme?: Record<string, unknown>

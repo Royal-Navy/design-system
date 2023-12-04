@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { css } from 'styled-components'
 
-import { IconSearch } from '@defencedigital/icon-library'
+import { IconSearch } from '@royalnavy/icon-library'
 import { TextInput } from '.'
 
 export default {

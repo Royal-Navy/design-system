@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@defencedigital/eslint-config-react'],
+  extends: ['@royalnavy/eslint-config-react'],
   rules: {
     'import/extensions': [
       'error',

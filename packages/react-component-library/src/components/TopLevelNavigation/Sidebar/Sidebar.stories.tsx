@@ -10,7 +10,7 @@ import {
   IconFeedback,
   IconSettings,
   IconGrain,
-} from '@defencedigital/icon-library'
+} from '@royalnavy/icon-library'
 
 import { storyAccessibilityConfig } from '../../../a11y/storyAccessibilityConfig'
 import {

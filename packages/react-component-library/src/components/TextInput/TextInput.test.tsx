@@ -1,4 +1,4 @@
-import { TypographyS, TypographyM } from '@defencedigital/design-tokens'
+import { TypographyS, TypographyM } from '@royalnavy/design-tokens'
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult, waitFor } from '@testing-library/react'

@@ -1,6 +1,6 @@
 import { position } from 'polished'
 import styled, { css } from 'styled-components'
-import { selectors } from '@defencedigital/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { StyledCheckbox } from './StyledCheckbox'
 import { CheckmarkProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'

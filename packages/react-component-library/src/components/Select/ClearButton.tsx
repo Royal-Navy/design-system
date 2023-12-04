@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconClose } from '@defencedigital/icon-library'
+import { IconClose } from '@royalnavy/icon-library'
 
 import { COMPONENT_SIZE } from '../Forms'
 import { InlineButton } from '../InlineButtons/InlineButton'

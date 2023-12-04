@@ -1,7 +1,7 @@
 import { format, isValid } from 'date-fns'
 import React, { useState } from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { ColorDanger800, ColorWarning800 } from '@defencedigital/design-tokens'
+import { ColorDanger800, ColorWarning800 } from '@royalnavy/design-tokens'
 import {
   fireEvent,
   render,
@@ -28,7 +28,7 @@ function formatDate(date: Date | null) {
 
 describe('DatePicker', () => {
   let wrapper: RenderResult
-  let user: ReturnType<typeof userEvent['setup']>
+  let user: ReturnType<(typeof userEvent)['setup']>
   let initialStartDate: Date
   let label: string
   let onBlur: (e: React.FormEvent) => void

@@ -1,11 +1,11 @@
 {
-  "name": "@defencedigital/eslint-config-react",
+  "name": "@royalnavy/eslint-config-react",
   "version": "3.13.17",
   "files": [
     "index.js",
     "prettier.config.js"
   ],
-  "author": "Defence Digital",
+  "author": "Royal Navy",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/defencedigital/mod-uk-design-system.git",
+    "url": "https://github.com/Royal-Navy/design-system.git",
     "directory": "packages/eslint-config-react"
   }
 }

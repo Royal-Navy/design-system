@@ -2,10 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import {
-  IconBrightnessLow,
-  IconBrightnessHigh,
-} from '@defencedigital/icon-library'
+import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { RangeSlider } from './index'
 

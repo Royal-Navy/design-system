@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@defencedigital/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
-import { IconArrowDropDown } from '@defencedigital/icon-library'
+import { IconArrowDropDown } from '@royalnavy/icon-library'
 
 const { color } = selectors
 

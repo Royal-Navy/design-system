@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { RenderResult, render } from '@testing-library/react'
-import { IconSettings } from '@defencedigital/icon-library'
+import { IconSettings } from '@royalnavy/icon-library'
 import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
 

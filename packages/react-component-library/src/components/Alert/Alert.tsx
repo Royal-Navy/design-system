@@ -4,7 +4,7 @@ import {
   IconError,
   IconCheckCircle,
   IconWarning,
-} from '@defencedigital/icon-library'
+} from '@royalnavy/icon-library'
 
 import { ALERT_VARIANT } from './constants'
 import { useOpenClose } from '../../hooks'

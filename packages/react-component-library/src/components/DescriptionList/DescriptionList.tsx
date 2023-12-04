@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconKeyboardArrowDown } from '@defencedigital/icon-library'
+import { IconKeyboardArrowDown } from '@royalnavy/icon-library'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DescriptionListItem, DescriptionListItemProps } from '.'

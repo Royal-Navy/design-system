@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@defencedigital/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { StyledTabSetProps } from './StyledTabSet'
 import { ACTIVE_TAB_BORDER } from '../../TabBase/partials/StyledTab'

@@ -1,17 +1,16 @@
 {
   "package": {
-    "author": "Defence Digital",
     "scripts": {
       "codegen": "gql-gen --config codegen.yml",
       "lint": "eslint src --ext .ts --ext .tsx"
     },
     "dependencies": {
       "@apollo/client": "^3.6.5",
-      "@defencedigital/design-tokens": "latest",
-      "@defencedigital/eslint-config-react": "latest",
-      "@defencedigital/fonts": "latest",
-      "@defencedigital/icon-library": "latest",
-      "@defencedigital/react-component-library": "latest",
+      "@royalnavy/design-tokens": "latest",
+      "@royalnavy/eslint-config-react": "latest",
+      "@royalnavy/fonts": "latest",
+      "@royalnavy/icon-library": "latest",
+      "@royalnavy/react-component-library": "latest",
       "@graphql-codegen/cli": "^2.3.0",
       "@graphql-codegen/typescript": "^2.4.1",
       "@graphql-codegen/typescript-operations": "^2.2.1",

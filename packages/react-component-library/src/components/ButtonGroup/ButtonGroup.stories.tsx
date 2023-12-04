@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import { IconBrightnessLow } from '@defencedigital/icon-library'
+import { IconBrightnessLow } from '@royalnavy/icon-library'
 
 import { ButtonGroup, ButtonGroupItem } from '.'
 import { COMPONENT_SIZE } from '../Forms'
