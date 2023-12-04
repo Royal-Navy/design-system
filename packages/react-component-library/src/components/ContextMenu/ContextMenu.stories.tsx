@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import styled from 'styled-components'
 
-import { IconEdit, IconDelete, IconAdd } from '@defencedigital/icon-library'
+import { IconEdit, IconDelete, IconAdd } from '@royalnavy/icon-library'
 
 import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
 import { Link } from '../Link'

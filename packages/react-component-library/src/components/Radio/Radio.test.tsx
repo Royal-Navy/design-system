@@ -5,7 +5,7 @@ import {
   ColorNeutral200,
   ColorAction000,
   ColorNeutralWhite,
-} from '@defencedigital/design-tokens'
+} from '@royalnavy/design-tokens'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 

@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@defencedigital/eslint-config-react'],
+  extends: ['@royalnavy/eslint-config-react'],
 }

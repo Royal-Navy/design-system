@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@defencedigital/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { StyledWrapper } from '../../CheckboxRadioBase/partials/StyledWrapper'
 import { StyledCheckbox } from '../../Checkbox/partials/StyledCheckbox'

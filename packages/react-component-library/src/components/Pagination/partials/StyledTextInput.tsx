@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import styled from 'styled-components'
-import { selectors } from '@defencedigital/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { TextInput } from '../../TextInput'
 import { StyledInput } from '../../TextInput/partials/StyledInput'

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { IconBrightnessLow } from '@defencedigital/icon-library'
+import { IconBrightnessLow } from '@royalnavy/icon-library'
 import { Button } from './index'
 import { BUTTON_VARIANT, BUTTON_ICON_POSITION } from './constants'
 import { COMPONENT_SIZE } from '../Forms'

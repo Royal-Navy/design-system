@@ -1,4 +1,4 @@
-import { ColorAction500 } from '@defencedigital/design-tokens'
+import { ColorAction500 } from '@royalnavy/design-tokens'
 
 import { hexToRgb } from '../helpers'
 import { expect, test } from '../fixtures'

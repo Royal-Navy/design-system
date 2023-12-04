@@ -4,7 +4,7 @@ import {
   IconLastPage,
   IconKeyboardArrowLeft,
   IconKeyboardArrowRight,
-} from '@defencedigital/icon-library'
+} from '@royalnavy/icon-library'
 
 import { StyledButton } from './partials/StyledButton'
 import { ValueOf } from '../../helpers'

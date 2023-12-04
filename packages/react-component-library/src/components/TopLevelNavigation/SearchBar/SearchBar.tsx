@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react'
-import { IconChevronRight } from '@defencedigital/icon-library'
+import { IconChevronRight } from '@royalnavy/icon-library'
 
 import { TextInput } from '../../TextInput'
 import { useDocumentClick } from '../../../hooks'

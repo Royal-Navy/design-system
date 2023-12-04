@@ -10,7 +10,7 @@ import {
   IconWarning,
   IconError,
   IconCheckCircle,
-} from '@defencedigital/icon-library'
+} from '@royalnavy/icon-library'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { StyledToast } from './partials/StyledToast'

@@ -2,12 +2,12 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { ColorDanger800 } from '@defencedigital/design-tokens'
+import { ColorDanger800 } from '@royalnavy/design-tokens'
 import {
   IconAgriculture,
   IconAnchor,
   IconRemove,
-} from '@defencedigital/icon-library'
+} from '@royalnavy/icon-library'
 
 import { BORDER_WIDTH } from '../../styled-components'
 import { COMPONENT_SIZE } from '../Forms'

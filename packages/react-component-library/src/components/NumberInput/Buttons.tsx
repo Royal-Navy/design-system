@@ -1,6 +1,6 @@
 import React from 'react'
 import capitalize from 'lodash/capitalize'
-import { IconAdd, IconRemove } from '@defencedigital/icon-library'
+import { IconAdd, IconRemove } from '@royalnavy/icon-library'
 import { Decimal } from 'decimal.js'
 
 import { ComponentSizeType } from '../Forms'

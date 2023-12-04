@@ -1,5 +1,5 @@
 import React, { Children, KeyboardEvent, MouseEvent, useState } from 'react'
-import { IconChevronLeft, IconChevronRight } from '@defencedigital/icon-library'
+import { IconChevronLeft, IconChevronRight } from '@royalnavy/icon-library'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'

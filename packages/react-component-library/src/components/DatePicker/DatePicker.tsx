@@ -1,4 +1,4 @@
-import { IconEvent } from '@defencedigital/icon-library'
+import { IconEvent } from '@royalnavy/icon-library'
 import FocusTrap from 'focus-trap-react'
 import React, { useCallback, useRef, useState } from 'react'
 import { Placement } from '@popperjs/core'

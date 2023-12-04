@@ -11,19 +11,19 @@
     "template",
     "typescript"
   ],
-  "description": "The base Defence Digital template for Create React App.",
+  "description": "The base Royal Navy template for Create React App.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/defencedigital/mod-uk-design-system.git",
+    "url": "https://github.com/Royal-Navy/design-system.git",
     "directory": "packages/cra-template-defencedigital"
   },
-  "author": "Defence Digital",
+  "author": "Royal Navy",
   "license": "Apache-2.0",
   "engines": {
     "node": ">=10"
   },
   "bugs": {
-    "url": "https://github.com/defencedigital/mod-uk-design-system/issues"
+    "url": "https://github.com/Royal-Navy/design-system/issues"
   },
   "files": [
     "template",

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import theme from 'styled-theming'
 
-import { lightTheme, darkTheme, selectors } from '@defencedigital/design-tokens'
+import { lightTheme, darkTheme, selectors } from '@royalnavy/design-tokens'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { GlobalStyleProvider } from '../../styled-components/GlobalStyle'
 

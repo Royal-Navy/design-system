@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@defencedigital/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import { BORDER_RADIUS } from '../../../styled-components'
 import { COMPONENT_SIZE } from '../../Forms'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconExpandLess, IconExpandMore } from '@defencedigital/icon-library'
+import { IconExpandLess, IconExpandMore } from '@royalnavy/icon-library'
 
 import { COMPONENT_SIZE } from '../Forms'
 import { InlineButton } from '../InlineButtons/InlineButton'

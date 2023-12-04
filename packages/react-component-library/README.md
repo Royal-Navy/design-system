@@ -1,19 +1,19 @@
 # React Component Library
 
-A collection of React components written for Defence Digital web applications.
+A collection of React components written for Royal Navy web applications.
 
 ## Installation
 
-The Defence Digital React Component Library is available as an [NPM package](https://www.npmjs.com/package/@defencedigital/react-component-library).
+The Royal Navy React Component Library is available as an [NPM package](https://www.npmjs.com/package/@royalnavy/react-component-library).
 
 To install it, run the relevant command for your package manager:
 
 ```shell
 // npm
-npm install @defencedigital/fonts @defencedigital/react-component-library styled-components
+npm install @royalnavy/fonts @royalnavy/react-component-library styled-components
 
 // yarn
-yarn add @defencedigital/fonts @defencedigital/react-component-library styled-components
+yarn add @royalnavy/fonts @royalnavy/react-component-library styled-components
 ```
 
 Note: [`styled-components`](https://styled-components.com/) is a required [peer dependency](https://nodejs.org/en/blog/npm/peer-dependencies/) and is installed with the above command.
@@ -23,16 +23,14 @@ Note: [`styled-components`](https://styled-components.com/) is a required [peer 
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
-import '@defencedigital/fonts'
-import { GlobalStyleProvider, Button } from '@defencedigital/react-component-library'
-import { lightTheme } from '@defencedigital/design-tokens'
+import '@royalnavy/fonts'
+import { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
+import { lightTheme } from '@royalnavy/design-tokens'
 
 function App() {
   return (
     <GlobalStyleProvider theme={lightTheme}>
-      <Button variant="primary">
-        Hello, World!
-      </Button>
+      <Button variant="primary">Hello, World!</Button>
     </GlobalStyleProvider>
   )
 }
@@ -42,14 +40,14 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 
 ## `<GlobalStyleProvider />`
 
-This context provider component applies global Defence Digital Design System styles
+This context provider component applies global Royal Navy Design System styles
 to your application (resets, normalize and fonts). You should wrap the root of your
 app in a single instance of this component. (Take care to avoid having multiple
 instances mounted at once, as this will lead to duplicated global styles.)
 
 ### Theming
 
-By default the `GlobalStyleProvider` will use the `lightTheme` exported by the `@defencedigital/design-tokens` package. You can create your own themes by injecting your own custom token set via the `theme` prop.
+By default the `GlobalStyleProvider` will use the `lightTheme` exported by the `@royalnavy/design-tokens` package. You can create your own themes by injecting your own custom token set via the `theme` prop.
 
 We recommend reading the following blog post on [`styled-theming`](https://jamie.build/styled-theming.html). Using this pattern you can selectively theme individual components. Inverting responsibility for the implementation of the theme to the component itself.
 
@@ -66,7 +64,7 @@ When utilising this pattern remember to extend a base token set:
 This hook aids in the positioning of arbitrary elements relative to a target element. The positioning engine will intelligently position the element based on available screen real-estate.
 
 ```javascript
-import { useFloatingElement } from '@defencedigital/react-component-library'
+import { useFloatingElement } from '@royalnavy/react-component-library'
 
 const Example = () => {
   const {
@@ -77,7 +75,7 @@ const Example = () => {
     attributes,
   } = useFloatingElement(placement)
 
-  return (    
+  return (
     <>
       <Target ref={targetElementRef} />
       <Float
@@ -90,20 +88,19 @@ const Example = () => {
     </>
   )
 }
-
 ```
 
-The hook wraps a popular underlying positioning engine called [Popper](https://github.com/popperjs/react-popper). 
+The hook wraps a popular underlying positioning engine called [Popper](https://github.com/popperjs/react-popper).
 
 If you want opinionated styling for your floating element please consider the [Popover](https://storybook.royalnavy.io/?path=/docs/popover--default) component.
 
 ## Questions
 
-The Design System is maintained by a team at the Defence Digital. If you want to know more about the Defence Digital Design System, please email the [Design System Team](mailto:design-system@digital.mod.uk).
+The Design System is maintained by a team at the Royal Navy. If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:design-system@digital.mod.uk).
 
 ## Documentation
 
-The [documentation website](https://design-system.digital.mod.uk/) contains all the information you need to build your application using the Defence Digital Design System.
+The [documentation website](https://design-system.digital.mod.uk/) contains all the information you need to build your application using the Royal Navy Design System.
 
 ## End-to-end tests
 
@@ -146,16 +143,16 @@ yarn test:e2e:show-report
 
 ## Contributing
 
-The [contributing guide](https://github.com/defencedigital/mod-uk-design-system/blob/master/docs/contributing.md) resource presents information about our development process. 
+The [contributing guide](https://github.com/Royal-Navy/design-system/blob/master/docs/contributing.md) resource presents information about our development process.
 
 ## Changelog
 
-If you have recently updated then read the [release notes](https://github.com/defencedigital/mod-uk-design-system/releases)
+If you have recently updated then read the [release notes](https://github.com/Royal-Navy/design-system/releases)
 
 ## Roadmap
 
-The [Design System Roadmap Board](https://github.com/defencedigital/mod-uk-design-system/projects/7) contains the work that has been prioritised for the next 12 months.
+The [Design System Roadmap Board](https://github.com/Royal-Navy/design-system/projects/7) contains the work that has been prioritised for the next 12 months.
 
 ## License
 
-The Defence Digital Design System is licensed under the [Apache License 2.0](https://github.com/defencedigital/mod-uk-design-system/blob/master/LICENSE).
+The Royal Navy Design System is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE).

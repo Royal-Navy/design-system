@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconWarning, IconDangerous } from '@defencedigital/icon-library'
+import { IconWarning, IconDangerous } from '@royalnavy/icon-library'
 
 import { ThresholdColor } from './useThresholdColor'
 import {

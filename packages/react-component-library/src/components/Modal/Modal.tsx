@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconForward } from '@defencedigital/icon-library'
+import { IconForward } from '@royalnavy/icon-library'
 
 import { ButtonProps } from '../Button'
 import { ComponentWithClass } from '../../common/ComponentWithClass'

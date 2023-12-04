@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { IconLayers, IconAnchor } from '@defencedigital/icon-library'
+import { IconLayers, IconAnchor } from '@royalnavy/icon-library'
 import styled from 'styled-components'
 
 import { Dropdown } from './Dropdown'

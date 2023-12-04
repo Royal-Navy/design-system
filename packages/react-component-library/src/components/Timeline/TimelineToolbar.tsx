@@ -4,7 +4,7 @@ import {
   IconChevronLeft,
   IconZoomIn,
   IconZoomOut,
-} from '@defencedigital/icon-library'
+} from '@royalnavy/icon-library'
 
 import { Button, BUTTON_VARIANT } from '../Button'
 import { COMPONENT_SIZE } from '../Forms'

@@ -6,7 +6,7 @@ import {
   IconPerson,
   IconSettings,
   IconHome,
-} from '@defencedigital/icon-library'
+} from '@royalnavy/icon-library'
 import { css } from 'styled-components'
 
 import { Link } from '../../Link'
@@ -22,7 +22,7 @@ import { MASTHEAD_SUBCOMPONENT } from './constants'
 
 export default {
   args: {
-    title: 'MOD.UK Design System',
+    title: 'Royal Navy Design System',
   },
   component: Masthead,
   subcomponents: {

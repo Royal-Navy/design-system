@@ -1,4 +1,4 @@
-import { selectors } from '@defencedigital/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 const { spacing } = selectors

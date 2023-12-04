@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { IconBrightnessHigh } from '@defencedigital/icon-library'
+import { IconBrightnessHigh } from '@royalnavy/icon-library'
 
 import { COMPONENT_SIZE } from '../Forms'
 import { NumberInput } from './NumberInput'

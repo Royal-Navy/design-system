@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { IconClose } from '@defencedigital/icon-library'
+import { IconClose } from '@royalnavy/icon-library'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { useOpenClose } from '../../hooks/useOpenClose'

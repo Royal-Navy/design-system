@@ -3,7 +3,7 @@ import {
   ColorNeutral100,
   ColorNeutral200,
   TypographyS,
-} from '@defencedigital/design-tokens'
+} from '@royalnavy/design-tokens'
 import { remToPx } from 'polished'
 
 import { hexToRgb } from '../helpers'

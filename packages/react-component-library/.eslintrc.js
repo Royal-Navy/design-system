@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@defencedigital/eslint-config-react'],
+  extends: ['@royalnavy/eslint-config-react'],
   parserOptions: {
     tsconfigRootDir: __dirname,
     project: './tsconfig.eslint.json',
