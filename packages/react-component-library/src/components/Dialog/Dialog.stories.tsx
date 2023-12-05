@@ -49,3 +49,14 @@ Danger.args = {
   isDanger: true,
   isOpen: true,
 }
+
+export const RichDescription = Template.bind({})
+RichDescription.args = {
+  title: 'Example Title',
+  description: (
+    <div>
+      Support Arbitrary JSX for <strong>rich</strong> description text.
+    </div>
+  ),
+  isOpen: true,
+}
