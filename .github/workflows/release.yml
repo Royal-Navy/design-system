@@ -72,7 +72,6 @@ jobs:
           npm publish --tag latest ./packages/fonts
           npm publish --tag latest ./packages/icon-library
           npm publish --tag latest ./packages/react-component-library
-          npm publish --tag latest ./packages/cra-template-defencedigital
 
       - name: Publish Storybook
         if: steps.initversion.outputs.version != steps.extractver.outputs.version

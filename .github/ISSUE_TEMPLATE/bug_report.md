@@ -16,16 +16,6 @@ assignees: ''
 
 Please provide a reference to a repository that includes a minimal reproduction of the issue.
 
-We recommend spawning a new application using the [Royal Navy CRA Template](https://www.npmjs.com/package/cra-template-defencedigital):
-
-```bash
-// npx
-npx create-react-app my-app --template defencedigital
-
-// yarn create
-yarn create react-app my-app --template defencedigital
-```
-
 ### Screenshot
 
 _Add a screenshot_
