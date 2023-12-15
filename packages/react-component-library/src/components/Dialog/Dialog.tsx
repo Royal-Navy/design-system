@@ -14,9 +14,9 @@ export interface DialogProps extends ComponentWithClass {
    */
   'aria-label'?: string
   /**
-   * Optional text description to display under the component title.
+   * Arbitrary JSX representing a description to display under the component title.
    */
-  description?: string
+  description?: React.ReactNode
   /**
    * Toggles whether to display the type of the component (style varies accordingly).
    */

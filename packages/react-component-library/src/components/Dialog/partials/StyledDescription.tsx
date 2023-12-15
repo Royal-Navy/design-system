@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const { color, fontSize, mq } = selectors
 
-export const StyledDescription = styled.p`
+export const StyledDescription = styled.div`
   font-size: ${fontSize('m')};
   color: ${color('neutral', '400')};
 
