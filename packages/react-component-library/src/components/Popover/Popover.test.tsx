@@ -249,4 +249,27 @@ describe('Popover', () => {
       )
     })
   })
+
+  describe('when the target element has `onMouseEnter` and `onMouseLeave` callbacks', () => {
+    const onMouseEnterSpy = jest.fn<void, []>()
+    const onMouseLeaveSpy = jest.fn<void, []>()
+
+    beforeEach(() => {
+      wrapper = render(
+        <Popover content={content} aria-label="Hello, World!">
+          <div onMouseEnter={onMouseEnterSpy} onMouseLeave={onMouseLeaveSpy}>
+            {HOVER_ON_ME}
+          </div>
+        </Popover>
+      )
+
+      fireEvent.mouseEnter(wrapper.getByText(HOVER_ON_ME))
+      fireEvent.mouseLeave(wrapper.getByText(HOVER_ON_ME))
+    })
+
+    it('appends `onMouseOver` and `onMouseLeave` callbacks', () => {
+      expect(onMouseEnterSpy).toHaveBeenCalledTimes(1)
+      expect(onMouseLeaveSpy).toHaveBeenCalledTimes(1)
+    })
+  })
 })

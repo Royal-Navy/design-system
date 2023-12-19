@@ -9,7 +9,7 @@ import {
   FloatingBoxSchemeType,
 } from '../../primitives/FloatingBox'
 import { POPOVER_CLOSE_DELAY } from './constants'
-import { useHideShow } from '../../hooks/useHideShow'
+import { HideShowMouseEvents, useHideShow } from '../../hooks/useHideShow'
 import { useExternalId } from '../../hooks/useExternalId'
 
 export interface PopoverProps
@@ -43,6 +43,37 @@ export interface PopoverProps
   scheme?: FloatingBoxSchemeType
 }
 
+function getMouseEvents(
+  isClick: boolean,
+  item: React.ReactElement,
+  mouseEvents: HideShowMouseEvents
+) {
+  if (mouseEvents.onClick) {
+    return mouseEvents
+  }
+
+  return {
+    onMouseEnter: () => {
+      if (item.props.onMouseEnter) {
+        item.props.onMouseEnter()
+      }
+
+      if (mouseEvents.onMouseEnter) {
+        mouseEvents.onMouseEnter()
+      }
+    },
+    onMouseLeave: () => {
+      if (item.props.onMouseLeave) {
+        item.props.onMouseLeave()
+      }
+
+      if (mouseEvents.onMouseLeave) {
+        mouseEvents.onMouseLeave()
+      }
+    },
+  }
+}
+
 export const Popover: React.FC<PopoverProps> = ({
   children,
   closeDelay = POPOVER_CLOSE_DELAY,
@@ -63,7 +94,7 @@ export const Popover: React.FC<PopoverProps> = ({
   const PopoverTarget = () => {
     return React.Children.map(children, (item: React.ReactElement) =>
       React.cloneElement(item, {
-        ...mouseEvents,
+        ...getMouseEvents(isClick, item, mouseEvents),
       })
     )[0]
   }

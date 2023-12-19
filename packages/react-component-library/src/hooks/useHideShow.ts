@@ -2,6 +2,18 @@ import { useCallback, useRef, useState } from 'react'
 
 import { useDocumentClick } from '.'
 
+export type HideShowMouseEvents =
+  | {
+      onClick?: never
+      onMouseEnter: () => void
+      onMouseLeave: () => void
+    }
+  | {
+      onClick: () => void
+      onMouseEnter?: never
+      onMouseLeave?: never
+    }
+
 export function useHideShow(
   isClick: boolean,
   closeDelay: number,
