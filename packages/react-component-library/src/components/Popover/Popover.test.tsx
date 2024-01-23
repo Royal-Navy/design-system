@@ -6,7 +6,9 @@ import {
   render,
   RenderResult,
   waitFor,
+  screen,
 } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { Popover } from '.'
 
@@ -270,6 +272,42 @@ describe('Popover', () => {
     it('appends `onMouseOver` and `onMouseLeave` callbacks', () => {
       expect(onMouseEnterSpy).toHaveBeenCalledTimes(1)
       expect(onMouseLeaveSpy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('when the user moves the mouse between adjacent Popover targets quickly', () => {
+    it('does not clear the pending timer, leaving the Popover visible', async () => {
+      jest.useFakeTimers()
+
+      render(
+        <>
+          <Popover content={<>foo</>} aria-label="Popover 1">
+            <div>Popover 1</div>
+          </Popover>
+          <Popover content={<>bar</>} aria-label="Popover 2">
+            <div>Popover 2</div>
+          </Popover>
+          <Popover content={<>baz</>} aria-label="Popover 3">
+            <div>Popover 3</div>
+          </Popover>
+          <Popover content={<>qux</>} aria-label="Popover 4">
+            <div>Popover 4</div>
+          </Popover>
+        </>
+      )
+
+      userEvent.hover(screen.getByText('Popover 1'))
+      userEvent.hover(screen.getByText('Popover 2'))
+      userEvent.hover(screen.getByText('Popover 3'))
+      userEvent.hover(screen.getByText('Popover 4'))
+
+      jest.runAllTimers()
+
+      expect(screen.queryByText('foo')).not.toBeInTheDocument()
+      expect(screen.queryByText('bar')).not.toBeInTheDocument()
+      expect(screen.queryByText('baz')).not.toBeInTheDocument()
+
+      expect(await screen.findByText('qux')).toBeVisible()
     })
   })
 })
