@@ -24,15 +24,21 @@ export function useHideShow(
   const floatingBoxChildrenRef = useRef(null)
 
   const hideElement = useCallback(() => {
-    if (isVisible) {
-      timerRef.current = setTimeout(() => {
-        timerRef.current = null
-        setIsVisible(false)
-      }, closeDelay)
+    if (!isVisible) {
+      return
     }
+
+    timerRef.current = setTimeout(() => {
+      timerRef.current = null
+      setIsVisible(false)
+    }, closeDelay)
   }, [closeDelay, isVisible])
 
   function showElement() {
+    if (isVisible) {
+      return
+    }
+
     if (timerRef.current !== null) {
       clearTimeout(timerRef.current)
     }
