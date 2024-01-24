@@ -1,7 +1,7 @@
 {
   "name": "@royalnavy/react-component-library",
   "description": "A collection of react components and helpers to assist in building applications for the Royal Navy",
-  "version": "3.14.1",
+  "version": "3.14.2",
   "publishConfig": {
     "access": "public"
   },
@@ -71,7 +71,7 @@
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
     "@playwright/test": "^1.32.3",
-    "@royalnavy/eslint-config-react": "^3.14.1",
+    "@royalnavy/eslint-config-react": "^3.14.2",
     "@storybook/addon-a11y": "^6.5.12",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-controls": "^6.5.12",
@@ -153,9 +153,9 @@
   ],
   "dependencies": {
     "@popperjs/core": "^2.9.2",
-    "@royalnavy/design-tokens": "^3.14.1",
-    "@royalnavy/fonts": "^3.14.1",
-    "@royalnavy/icon-library": "^3.14.1",
+    "@royalnavy/design-tokens": "^3.14.2",
+    "@royalnavy/fonts": "^3.14.2",
+    "@royalnavy/icon-library": "^3.14.2",
     "@types/react-toast-notifications": "^2.4.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.9.0",

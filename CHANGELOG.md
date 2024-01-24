@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.14.2](https://github.com/Royal-Navy/design-system/compare/3.14.1...3.14.2) (2024-01-24)
+
+### Bug Fixes
+
+- **Popover:** Prevent pending timer being cleared early ([2feb948](https://github.com/Royal-Navy/design-system/commit/2feb9482aac265bfe2612a8c167a383033033ffa))
+
 ## [3.14.1](https://github.com/Royal-Navy/design-system/compare/3.14.0...3.14.1) (2023-12-20)
 
 ### Bug Fixes
