@@ -368,6 +368,44 @@ describe('Table', () => {
     })
   })
 
+  describe('when an onRowClick handler is provided', () => {
+    const mockOnRowClick = jest.fn()
+    const tableDataMock = [
+      {
+        id: 'a',
+        first: 'a1',
+        second: 'a2',
+        third: 'a3',
+      },
+      {
+        id: 'b',
+        first: 'b1',
+        second: 'b2',
+        third: 'b3',
+      },
+      {
+        id: 'c',
+        first: 'c1',
+        second: 'c2',
+        third: 'c3',
+      },
+    ]
+    beforeEach(() => {
+      wrapper = render(
+        <Table data={tableDataMock} onRowClick={mockOnRowClick}>
+          <TableColumn field="first">First</TableColumn>
+          <TableColumn field="second">Second</TableColumn>
+          <TableColumn field="third">Third</TableColumn>
+        </Table>
+      )
+    })
+
+    it.each(tableDataMock)('callsback with id when %s is clicked', (row) => {
+      wrapper.getByText(row.first).click()
+      expect(mockOnRowClick).toHaveBeenCalledWith(row.id)
+    })
+  })
+
   describe('when arbitrary props are provided', () => {
     beforeEach(() => {
       const tableDataMock = [

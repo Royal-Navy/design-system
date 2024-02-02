@@ -26,6 +26,11 @@ export interface TableProps extends ComponentWithClass {
    * Optional text caption to display above the component.
    */
   caption?: string
+  /**
+   * Optional, handler invoked when a row is clicked.
+   * @param id - the id of the row
+   */
+  onRowClick?: (id: string) => void
 }
 
 function getKey(prefix: string, id: string) {
@@ -37,6 +42,7 @@ export const Table: React.FC<TableProps> = ({
   caption,
   children,
   className,
+  onRowClick,
   ...rest
 }) => {
   const { tableData, sortTableData, sortField, sortOrder } = useTableData(data)
@@ -51,6 +57,14 @@ export const Table: React.FC<TableProps> = ({
       })
   )
 
+  const handleRowClick = (id: string) => {
+    if (!onRowClick) {
+      return
+    }
+
+    onRowClick(id)
+  }
+
   return (
     <StyledTableWrapper className={className} data-testid="table-wrapper">
       <StyledTable data-testid="table" role="grid" {...rest}>
@@ -61,6 +75,7 @@ export const Table: React.FC<TableProps> = ({
         <tbody>
           {tableData.map((row: RowProps) => (
             <StyledTableRow
+              onClick={() => handleRowClick(row.id)}
               key={getKey(`table-row`, row.id)}
               data-testid="table-row"
             >
