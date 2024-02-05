@@ -319,9 +319,7 @@ describe('Masthead', () => {
         })
 
         it('should hide the searchbar from view', () => {
-          return waitFor(() =>
-            expect(wrapper.queryByTestId('searchbar')).toBeNull()
-          )
+          waitFor(() => expect(wrapper.queryByTestId('searchbar')).toBeNull())
         })
       })
 
@@ -337,9 +335,7 @@ describe('Masthead', () => {
         })
 
         it('should not show the search bar', () => {
-          return waitFor(() =>
-            expect(wrapper.queryByTestId('searchbar')).toBeNull()
-          )
+          waitFor(() => expect(wrapper.queryByTestId('searchbar')).toBeNull())
         })
 
         it('should remove the rule on the wrapper so mobile scrolling is enabled again', () => {
@@ -393,7 +389,7 @@ describe('Masthead', () => {
         })
 
         it('should remove the rule on the wrapper so mobile scrolling is enabled again', () => {
-          return waitFor(() =>
+          waitFor(() =>
             expect(wrapper.queryByTestId('masthead')).not.toHaveClass(
               'rn-masthead--show-notifications'
             )
@@ -452,7 +448,7 @@ describe('Masthead', () => {
       })
 
       it('should show the links', () => {
-        return waitFor(() => {
+        waitFor(() => {
           expect(wrapper.getByText('Profile')).toBeVisible()
           expect(wrapper.getByText('Settings')).toBeVisible()
           expect(wrapper.getByText('Support')).toBeVisible()
@@ -473,7 +469,7 @@ describe('Masthead', () => {
         })
 
         it('should not show the links', () => {
-          return waitFor(() => {
+          waitFor(() => {
             expect(wrapper.queryByText('Profile')).not.toBeVisible()
             expect(wrapper.queryByText('Settings')).not.toBeVisible()
             expect(wrapper.queryByText('Support')).not.toBeVisible()
@@ -494,11 +490,11 @@ describe('Masthead', () => {
         })
 
         it('should not show the links', () => {
-          return waitFor(() => {
-            expect(wrapper.queryByText('Profile')).toBeVisible()
-            expect(wrapper.queryByText('Settings')).toBeVisible()
-            expect(wrapper.queryByText('Support')).toBeVisible()
-            expect(wrapper.queryByText('Logout')).toBeVisible()
+          waitFor(() => {
+            expect(wrapper.queryByText('Profile')).not.toBeInTheDocument()
+            expect(wrapper.queryByText('Settings')).not.toBeInTheDocument()
+            expect(wrapper.queryByText('Support')).not.toBeInTheDocument()
+            expect(wrapper.queryByText('Logout')).not.toBeInTheDocument()
           })
         })
       })

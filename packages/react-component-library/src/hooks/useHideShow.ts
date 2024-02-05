@@ -16,7 +16,7 @@ export type HideShowMouseEvents =
 
 export function useHideShow(
   isClick: boolean,
-  closeDelay: number,
+  closeDelay = 0,
   initialIsVisible = false
 ) {
   const [isVisible, setIsVisible] = useState(initialIsVisible)
@@ -28,9 +28,14 @@ export function useHideShow(
       return
     }
 
-    timerRef.current = setTimeout(() => {
-      timerRef.current = null
+    if (!closeDelay) {
       setIsVisible(false)
+      return
+    }
+
+    timerRef.current = setTimeout(() => {
+      setIsVisible(false)
+      timerRef.current = null
     }, closeDelay)
   }, [closeDelay, isVisible])
 
