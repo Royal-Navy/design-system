@@ -66,7 +66,7 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
   role = 'dialog',
   ...rest
 }) => {
-  const nodeRef = useRef(null)
+  const nodeRef = useRef<HTMLDivElement>(null)
   const contentId = useExternalId('floating-box', externalContentId)
   const {
     targetElementRef,
