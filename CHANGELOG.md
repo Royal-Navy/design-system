@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.15.0](https://github.com/Royal-Navy/design-system/compare/3.14.2...3.15.0) (2024-02-06)
+
+### Bug Fixes
+
+- **Popover:** Avoid timeout usage for a 0 closeDelay ([d275897](https://github.com/Royal-Navy/design-system/commit/d275897804bc9c009e4f414dcd85e015ad47bba8))
+
+### Features
+
+- **Table:** Add onRowClick event ([253f95b](https://github.com/Royal-Navy/design-system/commit/253f95ba84457a05aad9b63dd0b0b75eda92b1d3))
+
 ## [3.14.2](https://github.com/Royal-Navy/design-system/compare/3.14.1...3.14.2) (2024-01-24)
 
 ### Bug Fixes
