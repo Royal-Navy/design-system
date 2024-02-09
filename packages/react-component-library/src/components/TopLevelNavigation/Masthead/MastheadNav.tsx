@@ -3,7 +3,7 @@ import React from 'react'
 import { Nav, NavItem } from '../../../common/Nav'
 import { TabNav } from '../../TabNav'
 
-export const MastheadNav: React.FC<Nav<NavItem>> = ({ children, ...rest }) => (
+export const MastheadNav = ({ children, ...rest }: Nav<NavItem>) => (
   <TabNav data-testid="masthead-nav" {...rest}>
     {children}
   </TabNav>

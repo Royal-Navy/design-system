@@ -30,7 +30,7 @@ import {
   TimelineWeeks,
 } from '..'
 
-const TimelineDates: React.FC<TimelineDaysProps> = () => {
+const TimelineDates = () => {
   const {
     state: {
       options: { startDate, endDate },
@@ -725,7 +725,7 @@ describe('Timeline', () => {
 
   describe('when an event is outside the range', () => {
     beforeEach(() => {
-      const EventWithinRange: React.FC = () => (
+      const EventWithinRange = () => (
         <TimelineEvent
           startDate={new Date(2020, 1, 1, 0, 0, 0)}
           endDate={new Date(2020, 1, 10, 0, 0, 0)}
@@ -734,7 +734,7 @@ describe('Timeline', () => {
         </TimelineEvent>
       )
 
-      const EventOutsideRange: React.FC = () => (
+      const EventOutsideRange = () => (
         <TimelineEvent
           startDate={new Date(2020, 6, 1, 0, 0, 0)}
           endDate={new Date(2020, 6, 10, 0, 0, 0)}
@@ -1120,7 +1120,7 @@ describe('Timeline', () => {
 
   describe('when an event has `render` specified', () => {
     beforeEach(() => {
-      const EventWithRender: React.FC = () => (
+      const EventWithRender = () => (
         <TimelineEvent
           startDate={new Date(2020, 3, 16)}
           endDate={new Date(2020, 3, 20)}
@@ -2500,9 +2500,11 @@ describe('Timeline', () => {
 
       let counter = 0
 
-      const TimelineWithUpdate: React.FC<{
+      const TimelineWithUpdate = ({
+        children,
+      }: {
         children: React.ReactElement<TimelineRowProps>
-      }> = ({ children }) => {
+      }) => {
         const [_, forceRerender] = useState({})
         counter += 1
 

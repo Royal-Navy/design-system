@@ -14,7 +14,7 @@ const ThemedMain = styled.div`
   padding: ${(props) => spacing('4', props.theme)};
 `
 
-export const CustomTokenSets: React.FC<ComponentWithClass> = () => {
+export const CustomTokenSets = () => {
   return (
     <>
       <ThemedMain>No Provider - Default Theme (Light)</ThemedMain>
@@ -47,7 +47,7 @@ const ThemedMain2 = styled.div`
   padding: ${(props) => spacing('4', props.theme)};
 `
 
-export const StyledTheming: React.FC<ComponentWithClass> = () => {
+export const StyledTheming = () => {
   return (
     <>
       <GlobalStyleProvider theme={{ customThemeMode: 'foo', ...lightTheme }}>

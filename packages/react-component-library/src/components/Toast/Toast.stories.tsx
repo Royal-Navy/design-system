@@ -24,11 +24,11 @@ const LABEL = 'Example label'
 const DESCRIPTION = 'This is an example toast message'
 const DATE_TIME = new Date('Tue, 18 Feb 2020 14:36:43 GMT')
 
-const ToastButton: React.FC<Options> = ({
+const ToastButton = ({
   appearance = 'info',
   autoDismiss = false,
   onDismiss,
-}) => {
+}: Options) => {
   const { addToast } = useToasts()
 
   return (

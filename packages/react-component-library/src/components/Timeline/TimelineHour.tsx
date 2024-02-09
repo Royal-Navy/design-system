@@ -22,14 +22,14 @@ function renderDefault({ width, time }: { width: number; time: string }) {
   )
 }
 
-export const TimelineHour: React.FC<TimelineHourProps> = ({
+export const TimelineHour = ({
   date,
   render,
   time,
   timelineEndDate,
   width,
   ...rest
-}) => {
+}: TimelineHourProps) => {
   if (isAfter(date, timelineEndDate)) {
     return null
   }

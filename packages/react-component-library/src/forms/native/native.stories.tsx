@@ -1,5 +1,5 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { TextInput } from '../../components/TextInput'
@@ -22,10 +22,13 @@ import { FormValues } from '../types'
 
 const MINIMUM_DATE = parseISO('2022-01-01')
 
-const Example: React.FC<{
+const Example = ({
+  initialValues,
+  initialErrors = {},
+}: {
   initialValues: FormValues
   initialErrors?: FormErrors<FormValues>
-}> = ({ initialValues, initialErrors = {} }) => {
+}) => {
   const {
     formErrors,
     formPayload,
@@ -270,7 +273,10 @@ export default {
   component: Example,
 } as ComponentMeta<typeof Example>
 
-const Template: ComponentStory<typeof Example> = (args) => <Example {...args} />
+const Template: ComponentStory<typeof Example> = ({
+  initialValues,
+  initialErrors,
+}) => <Example initialValues={initialValues} initialErrors={initialErrors} />
 
 export const Default = Template.bind({})
 Default.args = {

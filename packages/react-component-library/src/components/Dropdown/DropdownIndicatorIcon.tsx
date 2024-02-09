@@ -6,8 +6,8 @@ interface DropdownIndicatorProps {
   isOpen: boolean
 }
 
-export const DropdownIndicatorIcon: React.FC<DropdownIndicatorProps> = ({
-  isOpen,
-}) => <StyledIconArrowDropDown $isOpen={isOpen} />
+export const DropdownIndicatorIcon = ({ isOpen }: DropdownIndicatorProps) => (
+  <StyledIconArrowDropDown $isOpen={isOpen} />
+)
 
 DropdownIndicatorIcon.displayName = 'DropdownIndicatorIcon'

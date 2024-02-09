@@ -102,7 +102,7 @@ interface TabTitleProps {
   year: number
 }
 
-const TabTitle: React.FC<TabTitleProps> = ({ year, children }) => (
+const TabTitle = ({ year, children }: TabTitleProps) => (
   <>
     <div css={{ fontSize: '14px' }}>{children}</div>
     <div css={{ fontSize: '12px' }}>{year}</div>

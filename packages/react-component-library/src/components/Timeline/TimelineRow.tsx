@@ -49,7 +49,7 @@ export interface TimelineRowProps extends ComponentWithClass {
   isHeader?: boolean
 }
 
-export const TimelineRow: React.FC<TimelineRowProps> = ({
+export const TimelineRow = ({
   children,
   contentProps = {},
   css,
@@ -60,7 +60,7 @@ export const TimelineRow: React.FC<TimelineRowProps> = ({
   isHeader = false,
   className,
   ...rest
-}) => {
+}: TimelineRowProps) => {
   const classes = classNames('timeline__row', className)
   const { noCells, rowContentRef } = useTimelineRowContent(isHeader, children)
   const { css: contentCss, ...restContentProps } = contentProps

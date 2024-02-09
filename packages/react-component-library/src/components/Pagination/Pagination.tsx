@@ -40,14 +40,14 @@ export interface PaginationProps {
   total: number
 }
 
-export const Pagination: React.FC<PaginationProps> = ({
+export const Pagination = ({
   initialPage = 1,
   name: externalName,
   onChange,
   pageSize,
   total,
   ...rest
-}) => {
+}: PaginationProps) => {
   const totalPages = Math.ceil(total / pageSize)
   const { currentPage, hasError, onKeyDown, onPaginationButtonClickHandler } =
     usePageChange(initialPage, totalPages, onChange)

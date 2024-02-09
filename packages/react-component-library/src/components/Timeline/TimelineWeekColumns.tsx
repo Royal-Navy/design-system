@@ -38,9 +38,7 @@ export interface TimelineWeekColumnProps {
   }) => React.ReactElement
 }
 
-export const TimelineWeekColumns: React.FC<TimelineWeekColumnProps> = ({
-  render,
-}) => (
+export const TimelineWeekColumns = ({ render }: TimelineWeekColumnProps) => (
   <TimelineContext.Consumer>
     {({ state: { currentScaleOption, days, weeks } }) =>
       currentScaleOption && (

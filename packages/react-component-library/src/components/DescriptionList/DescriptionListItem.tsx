@@ -20,12 +20,12 @@ export interface DescriptionListItemProps {
   isCollapsible?: boolean
 }
 
-export const DescriptionListItem: React.FC<DescriptionListItemProps> = ({
+export const DescriptionListItem = ({
   children,
   title,
   isCollapsible = false,
   ...rest
-}) => (
+}: DescriptionListItemProps) => (
   <StyledItem
     $isCollapsible={isCollapsible}
     data-testid="description-list-item"

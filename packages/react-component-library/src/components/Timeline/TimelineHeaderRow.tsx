@@ -9,7 +9,7 @@ interface TimelineHeaderRowProps extends ComponentWithClass {
   isShort?: boolean
 }
 
-export const TimelineHeaderRow: React.FC<TimelineHeaderRowProps> = (props) => (
+export const TimelineHeaderRow = (props: TimelineHeaderRowProps) => (
   <StyledHeaderRow isHeader {...props} />
 )
 

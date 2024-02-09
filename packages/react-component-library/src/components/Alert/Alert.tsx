@@ -52,13 +52,13 @@ export interface AlertProps {
   variant?: AlertVariantType
 }
 
-export const Alert: React.FC<AlertProps> = ({
+export const Alert = ({
   children,
   onClose,
   title,
   variant = ALERT_VARIANT.INFO,
   ...rest
-}) => {
+}: AlertProps) => {
   const { open, handleOnClose } = useOpenClose(true, onClose)
   const titleId = useExternalId('alert-title')
   const descriptionId = useExternalId('alert-description')

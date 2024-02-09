@@ -41,12 +41,12 @@ export interface SidebarUserProps extends ComponentWithClass {
 
 type SidebarAvatarWithItemsProps = Omit<SidebarUserProps, 'link'>
 
-const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
+const SidebarAvatarWithItems = ({
   initials,
   initialIsOpen,
   userLink,
   exitLink,
-}) => (
+}: SidebarAvatarWithItemsProps) => (
   <Sheet
     aria-label="User options"
     button={
@@ -70,13 +70,13 @@ const SidebarAvatarWithItems: React.FC<SidebarAvatarWithItemsProps> = ({
   </Sheet>
 )
 
-export const SidebarUser: React.FC<SidebarUserProps> = ({
+export const SidebarUser = ({
   initials,
   initialIsOpen,
   userLink,
   exitLink,
   name,
-}) => {
+}: SidebarUserProps) => {
   const { isOpen } = useContext(SidebarContext)
 
   if (!isOpen) {

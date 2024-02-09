@@ -72,14 +72,14 @@ function getWidth(startDate: Date, days: TimelineDay[], dayWidth: number) {
   }
 }
 
-export const TimelineWeek: React.FC<TimelineWeekProps> = ({
+export const TimelineWeek = ({
   days,
   dayWidth,
   index,
   render,
   startDate,
   ...rest
-}) => {
+}: TimelineWeekProps) => {
   const isOddNumber = isOdd(index)
   const { widthPx, daysTotal } = getWidth(startDate, days, dayWidth)
 

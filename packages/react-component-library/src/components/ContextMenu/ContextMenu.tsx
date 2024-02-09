@@ -28,7 +28,7 @@ export interface ContextMenuProps extends ComponentWithClass {
   onShow?: (e: MouseEvent) => void
 }
 
-export const ContextMenu: React.FC<ContextMenuProps> = ({
+export const ContextMenu = ({
   attachedToRef,
   children,
   clickType = CLICK_BUTTON.RIGHT,
@@ -36,7 +36,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
   onHide,
   onShow,
   ...rest
-}) => {
+}: ContextMenuProps) => {
   const { isOpen, floatingElementRef, styles, attributes } = useClickMenu({
     attachedToRef,
     clickType,

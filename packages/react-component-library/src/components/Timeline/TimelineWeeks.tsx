@@ -31,48 +31,46 @@ export type TimelineWeeksProps =
   | TimelineWeeksWithRenderContentProps
   | TimelineWeeksWithChildrenProps
 
-export const TimelineWeeks: React.FC<TimelineWeeksProps> = memo(
-  ({ render, ...rest }) => {
-    const {
-      state: { currentScaleOption, days, weeks },
-    } = useContext(TimelineContext)
+export const TimelineWeeks = memo(({ render, ...rest }: TimelineWeeksProps) => {
+  const {
+    state: { currentScaleOption, days, weeks },
+  } = useContext(TimelineContext)
 
-    if (!currentScaleOption) {
-      return null
-    }
-
-    const isBelowThreshold =
-      currentScaleOption.widths.day * 7 < DISPLAY_THRESHOLDS.WEEK
-
-    const rowChildren = isBelowThreshold ? (
-      <TimelineColumnHeader data-testid="timeline-no-weeks" name="No weeks" />
-    ) : (
-      <StyledWeeks>
-        {weeks.map(({ startDate }, index) => (
-          <TimelineWeek
-            days={days}
-            dayWidth={currentScaleOption.widths.day}
-            index={index}
-            key={getKey('timeline-week', startDate.toString())}
-            render={render}
-            startDate={startDate}
-          />
-        ))}
-      </StyledWeeks>
-    )
-
-    return (
-      <TimelineHeaderRow
-        className="timeline__weeks"
-        isShort
-        name="Weeks"
-        data-testid="timeline-weeks"
-        {...rest}
-      >
-        {rowChildren}
-      </TimelineHeaderRow>
-    )
+  if (!currentScaleOption) {
+    return null
   }
-)
+
+  const isBelowThreshold =
+    currentScaleOption.widths.day * 7 < DISPLAY_THRESHOLDS.WEEK
+
+  const rowChildren = isBelowThreshold ? (
+    <TimelineColumnHeader data-testid="timeline-no-weeks" name="No weeks" />
+  ) : (
+    <StyledWeeks>
+      {weeks.map(({ startDate }, index) => (
+        <TimelineWeek
+          days={days}
+          dayWidth={currentScaleOption.widths.day}
+          index={index}
+          key={getKey('timeline-week', startDate.toString())}
+          render={render}
+          startDate={startDate}
+        />
+      ))}
+    </StyledWeeks>
+  )
+
+  return (
+    <TimelineHeaderRow
+      className="timeline__weeks"
+      isShort
+      name="Weeks"
+      data-testid="timeline-weeks"
+      {...rest}
+    >
+      {rowChildren}
+    </TimelineHeaderRow>
+  )
+})
 
 TimelineWeeks.displayName = 'TimelineWeeks'

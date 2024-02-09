@@ -40,7 +40,7 @@ function mapNavItem(
   })
 }
 
-export const SidebarNav: React.FC<SidebarNavProps> = ({
+export const SidebarNav = ({
   children = [],
   onBlur,
   onFocus,
@@ -48,7 +48,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({
   onMouseOut,
   onMouseOver,
   ...rest
-}) => (
+}: SidebarNavProps) => (
   <StyledNav
     onBlur={onBlur}
     onFocus={onFocus}

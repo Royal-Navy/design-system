@@ -77,14 +77,14 @@ function getAriaSort(
   return SORT_ORDER_ARIA_SORT_MAP[sortOrder]
 }
 
-export const TableColumn: React.FC<TableColumnProps> = ({
+export const TableColumn = ({
   field,
   isSortable = false,
   onSortClick,
   sortOrder = null,
   children,
   ...rest
-}) => {
+}: TableColumnProps) => {
   const icon = getIcon(isSortable, sortOrder)
 
   const onClick = () => {

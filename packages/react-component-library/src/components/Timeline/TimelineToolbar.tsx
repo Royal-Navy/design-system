@@ -18,9 +18,7 @@ interface TimelineToolbarProps {
   hideScaling: boolean
 }
 
-export const TimelineToolbar: React.FC<TimelineToolbarProps> = ({
-  hideScaling,
-}) => {
+export const TimelineToolbar = ({ hideScaling }: TimelineToolbarProps) => {
   const { canZoomIn, canZoomOut, zoomIn, zoomOut } = useTimelineZoom()
   const { moveNext, movePrevious } = useTimelineFrame()
 

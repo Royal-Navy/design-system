@@ -12,10 +12,7 @@ export interface SidebarUserItemProps extends NavItem {
   icon?: React.ReactNode
 }
 
-export const SidebarUserItem: React.FC<SidebarUserItemProps> = ({
-  icon,
-  link,
-}) => {
+export const SidebarUserItem = ({ icon, link }: SidebarUserItemProps) => {
   const linkElement = link as React.ReactElement
 
   return (

@@ -55,14 +55,14 @@ function getText(
   return link || <a href={href}>{children}</a>
 }
 
-export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
+export const BreadcrumbsItem = ({
   isFirst,
   isLast = false,
   link,
   href,
   children,
   ...rest
-}) => {
+}: BreadcrumbsItemProps) => {
   return (
     <StyledBreadcrumbsItem data-testid="breadcrumb" {...rest}>
       {!isFirst && (

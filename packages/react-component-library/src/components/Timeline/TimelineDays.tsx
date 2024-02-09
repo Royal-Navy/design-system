@@ -27,48 +27,46 @@ export type TimelineDaysProps =
   | TimelineDaysWithRenderContentProps
   | TimelineDaysWithChildrenProps
 
-export const TimelineDays: React.FC<TimelineDaysProps> = memo(
-  ({ render, ...rest }) => {
-    const {
-      state: { currentScaleOption, days },
-    } = useContext(TimelineContext)
+export const TimelineDays = memo(({ render, ...rest }: TimelineDaysProps) => {
+  const {
+    state: { currentScaleOption, days },
+  } = useContext(TimelineContext)
 
-    if (!currentScaleOption) {
-      return null
-    }
-
-    const isBelowThreshold =
-      currentScaleOption.widths.day < DISPLAY_THRESHOLDS.DAY
-
-    const rowChildren = isBelowThreshold ? (
-      <TimelineColumnHeader data-testid="timeline-no-days" name="No days" />
-    ) : (
-      <StyledDays>
-        {days.map(({ date }, index) => (
-          <TimelineDay
-            date={date}
-            dayWidth={currentScaleOption.widths.day}
-            index={index}
-            key={getKey('timeline-day', date.toString())}
-            render={render}
-            timelineEndDate={currentScaleOption.to}
-          />
-        ))}
-      </StyledDays>
-    )
-
-    return (
-      <TimelineHeaderRow
-        className="timeline__days"
-        isShort
-        name="Days"
-        data-testid="timeline-days"
-        {...rest}
-      >
-        {rowChildren}
-      </TimelineHeaderRow>
-    )
+  if (!currentScaleOption) {
+    return null
   }
-)
+
+  const isBelowThreshold =
+    currentScaleOption.widths.day < DISPLAY_THRESHOLDS.DAY
+
+  const rowChildren = isBelowThreshold ? (
+    <TimelineColumnHeader data-testid="timeline-no-days" name="No days" />
+  ) : (
+    <StyledDays>
+      {days.map(({ date }, index) => (
+        <TimelineDay
+          date={date}
+          dayWidth={currentScaleOption.widths.day}
+          index={index}
+          key={getKey('timeline-day', date.toString())}
+          render={render}
+          timelineEndDate={currentScaleOption.to}
+        />
+      ))}
+    </StyledDays>
+  )
+
+  return (
+    <TimelineHeaderRow
+      className="timeline__days"
+      isShort
+      name="Days"
+      data-testid="timeline-days"
+      {...rest}
+    >
+      {rowChildren}
+    </TimelineHeaderRow>
+  )
+})
 
 TimelineDays.displayName = 'TimelineDays'

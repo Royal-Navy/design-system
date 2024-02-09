@@ -29,10 +29,10 @@ function renderDefault({ offset }: { offset: string }) {
   )
 }
 
-export const TimelineTodayMarker: React.FC<TimelineTodayMarkerProps> = ({
+export const TimelineTodayMarker = ({
   render,
   ...rest
-}) => {
+}: TimelineTodayMarkerProps) => {
   const {
     state: { today },
   } = useContext(TimelineContext)

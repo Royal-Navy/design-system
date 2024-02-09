@@ -36,7 +36,7 @@ export interface ListItemProps extends ComponentWithClass {
   title: string
 }
 
-export const ListItem: React.FC<ListItemProps> = ({
+export const ListItem = ({
   children,
   isActive,
   onClick,
@@ -44,7 +44,7 @@ export const ListItem: React.FC<ListItemProps> = ({
   onMouseLeave,
   title,
   ...rest
-}) => {
+}: ListItemProps) => {
   const titleId = useExternalId('list-title')
 
   return (

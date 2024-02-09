@@ -72,7 +72,7 @@ export interface ButtonWithIconOnlyProps extends ButtonBaseProps {
 
 export type ButtonProps = ButtonWithTextProps | ButtonWithIconOnlyProps
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   children,
   className,
   isDisabled,
@@ -85,7 +85,7 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'button',
   variant = BUTTON_VARIANT.PRIMARY,
   ...rest
-}) => {
+}: ButtonProps) => {
   return (
     <StyledButton
       className={className}

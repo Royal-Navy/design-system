@@ -58,7 +58,7 @@ const StyledMain = styled.main`
   width: 100%;
 `
 
-const SimpleSidebarNav: React.FC = () => (
+const SimpleSidebarNav = () => (
   <SidebarNav>
     <SidebarNavItem
       icon={<IconHome />}

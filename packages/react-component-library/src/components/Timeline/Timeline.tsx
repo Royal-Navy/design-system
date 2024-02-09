@@ -79,7 +79,7 @@ function getEndDate(startDate: Date, endDate: Date | null) {
   return endDate
 }
 
-export const Timeline: React.FC<TimelineProps> = ({
+export const Timeline = ({
   children,
   className,
   hasSide = false,
@@ -92,7 +92,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   range = 1,
   unitWidth,
   ...rest
-}) => {
+}: TimelineProps) => {
   const options: TimelineOptions = {
     range,
     startDate,

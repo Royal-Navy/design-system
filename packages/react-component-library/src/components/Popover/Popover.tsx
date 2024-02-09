@@ -74,7 +74,7 @@ function getMouseEvents(
   }
 }
 
-export const Popover: React.FC<PopoverProps> = ({
+export const Popover = ({
   children,
   closeDelay = POPOVER_CLOSE_DELAY,
   content,
@@ -83,7 +83,7 @@ export const Popover: React.FC<PopoverProps> = ({
   placement = FLOATING_BOX_PLACEMENT.RIGHT,
   'aria-label': ariaLabel,
   ...rest
-}) => {
+}: PopoverProps) => {
   const { floatingBoxChildrenRef, isVisible, mouseEvents } = useHideShow(
     isClick,
     closeDelay

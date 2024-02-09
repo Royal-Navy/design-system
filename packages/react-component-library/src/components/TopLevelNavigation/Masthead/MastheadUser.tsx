@@ -43,11 +43,11 @@ export type MastheadUserProps =
   | MastheadUserWithLinkProps
   | MastheadUserWithItemsProps
 
-const MastheadUserWithLink: React.FC<MastheadUserWithLinkProps> = ({
+const MastheadUserWithLink = ({
   link,
   initials,
   ...rest
-}) =>
+}: MastheadUserWithLinkProps) =>
   React.cloneElement(link as ReactElement, {
     ...link.props,
     children: (
@@ -59,11 +59,11 @@ const MastheadUserWithLink: React.FC<MastheadUserWithLinkProps> = ({
     ),
   })
 
-const MastheadUserWithItems: React.FC<MastheadUserWithItemsProps> = ({
+const MastheadUserWithItems = ({
   children,
   initials,
   initialIsOpen,
-}) => (
+}: MastheadUserWithItemsProps) => (
   <Sheet
     aria-label="User options"
     initialIsOpen={initialIsOpen}
@@ -85,11 +85,11 @@ const MastheadUserWithItems: React.FC<MastheadUserWithItemsProps> = ({
   </Sheet>
 )
 
-export const MastheadUser: React.FC<MastheadUserProps> = ({
+export const MastheadUser = ({
   children,
   link,
   ...rest
-}) => {
+}: MastheadUserProps) => {
   if (link) {
     logger.warn('The `link` prop is deprecated')
     return <MastheadUserWithLink link={link} {...rest} />

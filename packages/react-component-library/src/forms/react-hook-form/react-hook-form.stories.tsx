@@ -29,9 +29,7 @@ const StyledRangeSlider = styled(RangeSlider)`
   margin-top: 3rem;
 `
 
-const Example: React.FC<{ initialValues: FormValues }> = ({
-  initialValues,
-}) => {
+const Example = ({ initialValues }: { initialValues: FormValues }) => {
   const {
     control,
     setValue,

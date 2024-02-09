@@ -50,7 +50,7 @@ const isEllipsisActive = (el: HTMLInputElement | null): boolean => {
   return Boolean(el && el.offsetWidth < el.scrollWidth)
 }
 
-export const SelectLayout: React.FC<SelectLayoutProps> = ({
+export const SelectLayout = ({
   children,
   hasLabelFocus = false,
   hasSelectedItem,
@@ -68,7 +68,7 @@ export const SelectLayout: React.FC<SelectLayoutProps> = ({
   tooltipText,
   value,
   ...rest
-}) => {
+}: SelectLayoutProps) => {
   const [hasHover, setHasHover] = useState<boolean>(false)
   const labelId = useExternalId('label')
   const [floatingBoxTarget, setFloatingBoxTarget] =

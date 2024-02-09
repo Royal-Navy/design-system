@@ -81,7 +81,7 @@ function renderDefault({
   return MONTHS_BY_SIZE[size](startDate, width)
 }
 
-export const TimelineMonth: React.FC<TimelineMonthProps> = ({
+export const TimelineMonth = ({
   days: _,
   daysTotal,
   dayWidth,
@@ -90,7 +90,7 @@ export const TimelineMonth: React.FC<TimelineMonthProps> = ({
   size,
   startDate,
   ...rest
-}) => {
+}: TimelineMonthProps) => {
   const child = render
     ? render({ index, dayWidth, daysTotal, startDate })
     : renderDefault({ dayWidth, daysTotal, size, startDate })

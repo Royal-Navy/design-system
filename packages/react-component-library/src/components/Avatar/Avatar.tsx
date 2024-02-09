@@ -16,7 +16,7 @@ export interface AvatarProps extends ComponentWithClass {
   variant?: ValueOf<typeof AVATAR_VARIANT>
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ variant, ...rest }) => (
+export const Avatar = ({ variant, ...rest }: AvatarProps) => (
   <StyledAvatar
     $dark={variant === AVATAR_VARIANT.DARK}
     data-testid="avatar-content"

@@ -39,7 +39,7 @@ const icons = {
   ),
 }
 
-export const PaginationButton: React.FC<PaginationButtonProps> = ({
+export const PaginationButton = ({
   children,
   disabled,
   ...rest

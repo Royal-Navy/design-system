@@ -15,13 +15,13 @@ export interface SearchbarProps {
   setShowSearch: (isVisible: boolean) => void
 }
 
-export const SearchBar: React.FC<SearchbarProps> = ({
+export const SearchBar = ({
   containerWidth,
   onSearch,
   searchButtonRef,
   setShowSearch,
   ...rest
-}) => {
+}: SearchbarProps) => {
   const searchBoxRef = useRef(null)
   const [term, setTerm] = useState('')
 

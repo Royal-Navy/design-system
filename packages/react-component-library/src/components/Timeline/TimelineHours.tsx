@@ -30,7 +30,7 @@ export type TimelineHoursProps =
   | TimelineHoursWithRenderContentProps
   | TimelineHoursWithChildrenProps
 
-export const TimelineHours: React.FC<TimelineHoursProps> = ({ render }) => {
+export const TimelineHours = ({ render }: TimelineHoursProps) => {
   const { state } = useContext(TimelineContext)
   const { currentScaleOption, days, hours } = state
 

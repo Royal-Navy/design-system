@@ -62,7 +62,7 @@ function formatWhen(when: Date) {
   return format(when, 'dd MMM yyyy')
 }
 
-export const Notification: React.FC<NotificationProps> = ({
+export const Notification = ({
   link,
   name,
   isRead,
@@ -71,7 +71,7 @@ export const Notification: React.FC<NotificationProps> = ({
   when,
   description,
   ...rest
-}) => {
+}: NotificationProps) => {
   const contentId = useExternalId('content')
 
   return (

@@ -23,9 +23,7 @@ import { FormValues } from '../types'
 
 const MINIMUM_DATE = parseISO('2022-01-01')
 
-const Example: React.FC<{ initialValues: FormValues }> = ({
-  initialValues,
-}) => {
+const Example = ({ initialValues }: { initialValues: FormValues }) => {
   const [formValues, setFormValues] = useState<FormValues>()
 
   return (
@@ -300,7 +298,6 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
           </form>
         )}
       </Formik>
-
       <pre data-testid="form-example-values">
         {JSON.stringify(formValues, null, 2)}
       </pre>

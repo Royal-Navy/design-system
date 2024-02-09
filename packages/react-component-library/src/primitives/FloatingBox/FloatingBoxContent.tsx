@@ -8,12 +8,12 @@ export interface FloatingBoxContentProps {
   scheme: FloatingBoxSchemeType
 }
 
-export const FloatingBoxContent: React.FC<FloatingBoxContentProps> = ({
+export const FloatingBoxContent = ({
   children,
   contentId,
   scheme,
   ...rest
-}) => (
+}: FloatingBoxContentProps) => (
   <StyledContent
     $scheme={scheme}
     id={contentId}

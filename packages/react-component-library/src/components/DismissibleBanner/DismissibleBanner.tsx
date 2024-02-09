@@ -60,13 +60,13 @@ export type DismissibleBannerProps =
   | DismissibleBannerWithTitleProps
   | DismissibleBannerWithArbitraryContentProps
 
-export const DismissibleBanner: React.FC<DismissibleBannerProps> = ({
+export const DismissibleBanner = ({
   hasCheckbox = true,
   children,
   onDismiss,
   title,
   ...rest
-}) => {
+}: DismissibleBannerProps) => {
   const [canShowAgain, setCanShowAgain] = useState(true)
 
   const onButtonClick = (event: React.FormEvent<HTMLButtonElement>) => {

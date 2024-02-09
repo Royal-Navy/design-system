@@ -4,11 +4,11 @@ import { getKey } from '../../../helpers'
 import { NavItem } from '../../../common/Nav'
 import { TabNavItem } from '../../TabNav'
 
-export const MastheadNavItem: React.FC<NavItem> = ({
+export const MastheadNavItem = ({
   isActive = false,
   link,
   ...rest
-}) => (
+}: NavItem) => (
   <TabNavItem
     data-testid="masthead-nav-item"
     isActive={isActive}

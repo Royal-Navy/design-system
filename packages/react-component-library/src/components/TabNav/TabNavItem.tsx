@@ -4,7 +4,7 @@ import { NavItem } from '../../common/Nav'
 import { StyledTabItem } from '../TabBase/partials/StyledTabItem'
 import { StyledTabNavTab } from './partials/StyledTabNavTab'
 
-export const TabNavItem: React.FC<NavItem> = ({ isActive, link, ...rest }) => (
+export const TabNavItem = ({ isActive, link, ...rest }: NavItem) => (
   <StyledTabItem data-testid="tab-nav-tab" {...rest}>
     <StyledTabNavTab
       as="div"

@@ -58,7 +58,7 @@ export interface ModalProps extends ComponentWithClass {
   titleId?: string
 }
 
-export const Modal: React.FC<ModalProps> = ({
+export const Modal = ({
   'aria-label': ariaLabel,
   children,
   className,
@@ -71,7 +71,7 @@ export const Modal: React.FC<ModalProps> = ({
   title,
   titleId: externalTitleId,
   ...rest
-}) => {
+}: ModalProps) => {
   const { handleOnClose, open } = useOpenClose(isOpen, onClose)
   const primaryButtonWithIcon = primaryButton && {
     icon: <IconForward data-testid="modal-primary-confirm" />,

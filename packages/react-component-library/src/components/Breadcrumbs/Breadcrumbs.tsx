@@ -5,10 +5,10 @@ import { Nav } from '../../common/Nav'
 import { warnIfOverwriting } from '../../helpers'
 import { StyledBreadcrumbsList } from './partials/StyledBreadcrumbsList'
 
-export const Breadcrumbs: React.FC<Nav<BreadcrumbsItemProps>> = ({
+export const Breadcrumbs = ({
   children,
   ...rest
-}) => {
+}: Nav<BreadcrumbsItemProps>) => {
   const mapped = React.Children.map(
     children ?? [],
     (child: React.ReactElement<BreadcrumbsItemProps>, index: number) => {

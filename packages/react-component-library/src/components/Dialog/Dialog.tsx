@@ -42,14 +42,14 @@ export interface DialogProps extends ComponentWithClass {
   title?: string
 }
 
-export const Dialog: React.FC<DialogProps> = ({
+export const Dialog = ({
   description,
   isDanger = false,
   onCancel,
   onConfirm,
   title,
   ...rest
-}) => {
+}: DialogProps) => {
   const confirmButton: ButtonProps = {
     onClick: onConfirm,
     children: 'Confirm',

@@ -23,14 +23,14 @@ export interface TrackChunkProps {
   $thresholdColor?: ThresholdColor
 }
 
-const TrackChunk: React.FC<TrackChunkProps> = ({
+const TrackChunk = ({
   getTrackProps,
   $left,
   $width,
   $maxWidth,
   testId,
   $thresholdColor,
-}) => {
+}: TrackChunkProps) => {
   return (
     <StyledTrackChunk
       $thresholdColor={$thresholdColor}
@@ -43,11 +43,11 @@ const TrackChunk: React.FC<TrackChunkProps> = ({
   )
 }
 
-export const ThresholdTrack: React.FC<ThresholdTrackProps> = ({
+export const ThresholdTrack = ({
   target,
   getTrackProps,
   thresholds,
-}) => {
+}: ThresholdTrackProps) => {
   const singleThreshold = thresholds?.length === 1
   const doubleThreshold = thresholds?.length === 2
 

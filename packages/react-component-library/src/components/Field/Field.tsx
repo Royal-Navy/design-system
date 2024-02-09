@@ -28,12 +28,12 @@ export function ariaAttributes(
   }
 }
 
-export const Field: React.FC<FieldProps> = ({
+export const Field = ({
   children,
   errors = [],
   hintText,
   className,
-}) => {
+}: FieldProps) => {
   const isInvalid: boolean = useMemo(() => {
     return errors.some(({ error }) => error)
   }, [errors])

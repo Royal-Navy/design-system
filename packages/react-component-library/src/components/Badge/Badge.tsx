@@ -39,14 +39,14 @@ export interface BadgeProps extends ComponentWithClass {
   children: React.ReactNode | React.ReactNode[]
 }
 
-export const Badge: React.FC<BadgeProps> = ({
+export const Badge = ({
   children,
   color: badgeColor = BADGE_COLOR.NEUTRAL,
   colorVariant = BADGE_COLOR_VARIANT.SOLID,
   size = BADGE_SIZE.REGULAR,
   variant = BADGE_VARIANT.REGULAR,
   ...rest
-}) => (
+}: BadgeProps) => (
   <StyledBadge
     $color={badgeColor}
     $colorVariant={colorVariant}

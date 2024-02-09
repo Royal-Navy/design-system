@@ -20,12 +20,12 @@ const timelineContextDefaults: TimelineContextDefault = {
 
 export const TimelineContext = createContext(timelineContextDefaults)
 
-export const TimelineProvider: React.FC<TimelineProviderProps> = ({
+export const TimelineProvider = ({
   children,
   hasSide,
   options,
   today,
-}) => {
+}: TimelineProviderProps) => {
   const [state, dispatch] = useReducer(reducer, {
     ...initialState,
     options,

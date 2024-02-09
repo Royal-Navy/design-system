@@ -27,7 +27,7 @@ export interface AutocompleteProps extends SelectBaseProps {
   onBlur?: (event: React.FocusEvent) => void
 }
 
-export const Autocomplete: React.FC<AutocompleteProps> = ({
+export const Autocomplete = ({
   children,
   id: externalId,
   initialIsOpen,
@@ -37,7 +37,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   onChange,
   value,
   ...rest
-}) => {
+}: AutocompleteProps) => {
   const {
     filteredItems,
     hasError,

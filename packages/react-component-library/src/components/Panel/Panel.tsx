@@ -13,6 +13,6 @@ const StyledPanel = styled.div`
   border-radius: 3px;
 `
 
-export const Panel: React.FC<ComponentWithClass> = (props) => (
+export const Panel = (props: ComponentWithClass) => (
   <StyledPanel data-testid="panel" {...props} />
 )

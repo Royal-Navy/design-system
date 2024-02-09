@@ -91,7 +91,7 @@ function getServiceName(
   })
 }
 
-export const Masthead: React.FC<MastheadProps> = ({
+export const Masthead = ({
   hasDefaultLogo = true,
   hasUnreadNotification,
   homeLink = null,
@@ -103,7 +103,7 @@ export const Masthead: React.FC<MastheadProps> = ({
   title,
   user,
   ...rest
-}) => {
+}: MastheadProps) => {
   const searchButtonRef = useRef<HTMLButtonElement>(null)
 
   const {

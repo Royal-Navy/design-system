@@ -47,7 +47,7 @@ function getAppearanceIcon(appearance: AppearanceTypes): React.ReactNode {
   return appearanceIconMap[appearance] || appearanceIconMap.info
 }
 
-export const Toast: React.FC<ToastProps> = ({
+export const Toast = ({
   label,
   children,
   onDismiss,
@@ -57,7 +57,7 @@ export const Toast: React.FC<ToastProps> = ({
   transitionState,
   dateTime,
   ...rest
-}) => {
+}: ToastProps) => {
   const [time] = useState<string>(
     (dateTime || new Date()).toLocaleTimeString('en-GB', {
       hour: 'numeric',

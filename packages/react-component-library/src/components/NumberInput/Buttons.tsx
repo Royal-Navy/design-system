@@ -25,13 +25,13 @@ const iconLookup = {
   [NUMBER_INPUT_BUTTON_TYPE.INCREASE]: <IconAdd size={18} />,
 }
 
-export const Buttons: React.FC<ButtonsProps> = ({
+export const Buttons = ({
   isDisabled,
   onClick,
   size,
   step,
   value,
-}) => {
+}: ButtonsProps) => {
   function handleClick(
     event: React.MouseEvent<HTMLButtonElement>,
     isDecrease: boolean

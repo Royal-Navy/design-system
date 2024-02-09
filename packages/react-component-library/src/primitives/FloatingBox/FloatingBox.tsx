@@ -53,7 +53,7 @@ export type FloatingBoxProps =
   | FloatingBoxWithExternalTargetProps
   | FloatingBoxWithEmbeddedTargetProps
 
-export const FloatingBox: React.FC<FloatingBoxProps> = ({
+export const FloatingBox = ({
   contentId: externalContentId,
   scheme = FLOATING_BOX_SCHEME.LIGHT,
   onMouseEnter,
@@ -65,7 +65,7 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
   placement = 'auto',
   role = 'dialog',
   ...rest
-}) => {
+}: FloatingBoxProps) => {
   const nodeRef = useRef<HTMLDivElement>(null)
   const contentId = useExternalId('floating-box', externalContentId)
   const {

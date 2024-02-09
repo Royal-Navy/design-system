@@ -9,10 +9,7 @@ import { Toast } from '.'
 
 export type ToastProviderProps = BaseToastProviderProps
 
-export const ToastProvider: React.FC<ToastProviderProps> = ({
-  children,
-  ...props
-}) => {
+export const ToastProvider = ({ children, ...props }: ToastProviderProps) => {
   return (
     <BaseToastProvider components={{ Toast }} {...props}>
       {children}

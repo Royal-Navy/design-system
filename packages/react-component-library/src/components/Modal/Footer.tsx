@@ -11,11 +11,11 @@ export interface FooterProps {
   tertiaryButton?: ButtonProps
 }
 
-export const Footer: React.FC<FooterProps> = ({
+export const Footer = ({
   primaryButton,
   secondaryButton,
   tertiaryButton,
-}) => (
+}: FooterProps) => (
   <StyledFooter
     $hasTertiaryButton={!!tertiaryButton}
     data-testid="modal-footer"

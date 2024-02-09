@@ -12,10 +12,7 @@ export interface ContextMenuItemProps extends NavItem {
   icon?: React.ReactNode
 }
 
-export const ContextMenuItem: React.FC<ContextMenuItemProps> = ({
-  icon,
-  link,
-}) => {
+export const ContextMenuItem = ({ icon, link }: ContextMenuItemProps) => {
   const linkElement = link as React.ReactElement
 
   const item = React.cloneElement(linkElement, {
