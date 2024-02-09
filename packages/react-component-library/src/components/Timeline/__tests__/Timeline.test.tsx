@@ -2124,7 +2124,7 @@ describe('Timeline', () => {
 
     it('writes an error to the console', () => {
       expect(consoleErrorSpy).toHaveBeenCalledWith(
-        'ERROR - MODDS - `startDate` is after `endDate`'
+        'ERROR - RNDS - `startDate` is after `endDate`'
       )
     })
   })

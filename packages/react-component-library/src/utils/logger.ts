@@ -2,7 +2,7 @@ export type LogLevel = 'debug' | 'info' | 'warn' | 'error'
 
 export type Logger = Record<LogLevel, typeof console.log>
 
-const MODDS_LOG_LEVEL = '__MODDS_LOG_LEVEL'
+const RNDS_LOG_LEVEL = '__RNDS_LOG_LEVEL'
 const levels: LogLevel[] = ['debug', 'info', 'warn', 'error']
 
 function isValidLogLevel(
@@ -18,7 +18,7 @@ function isValidLogLevel(
 
 /**
  * Generates a `logger[debug | info | warn | error](...args)`
- * Log level is set at build time via `MODDS_LOG_LEVEL` env var
+ * Log level is set at build time via `RNDS_LOG_LEVEL` env var
  *
  */
 export default levels.reduce((logger, level: LogLevel, index: number) => {
@@ -27,15 +27,11 @@ export default levels.reduce((logger, level: LogLevel, index: number) => {
     [level]: (...args: unknown[]) => {
       const func = level === 'debug' ? 'log' : level
 
-      if (
-        MODDS_LOG_LEVEL &&
-        console &&
-        isValidLogLevel(MODDS_LOG_LEVEL, index)
-      ) {
+      if (RNDS_LOG_LEVEL && console && isValidLogLevel(RNDS_LOG_LEVEL, index)) {
         const [message, ...rest] = [...args]
 
         // eslint-disable-next-line no-console
-        console[func](`${level.toUpperCase()} - MODDS - ${message}`, ...rest)
+        console[func](`${level.toUpperCase()} - RNDS - ${message}`, ...rest)
       }
     },
   }

@@ -11,9 +11,7 @@ describe('logger', () => {
       logger.debug('Hello, World!')
 
       expect(consoleLogSpy).toHaveBeenCalledTimes(1)
-      expect(consoleLogSpy).toHaveBeenCalledWith(
-        'DEBUG - MODDS - Hello, World!'
-      )
+      expect(consoleLogSpy).toHaveBeenCalledWith('DEBUG - RNDS - Hello, World!')
     })
   })
 
@@ -23,9 +21,7 @@ describe('logger', () => {
       logger.warn('Hello, World!')
 
       expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
-      expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - MODDS - Hello, World!'
-      )
+      expect(consoleWarnSpy).toHaveBeenCalledWith('WARN - RNDS - Hello, World!')
     })
   })
 
@@ -36,7 +32,7 @@ describe('logger', () => {
 
       expect(consoleErrorSpy).toHaveBeenCalledTimes(1)
       expect(consoleErrorSpy).toHaveBeenCalledWith(
-        'ERROR - MODDS - Hello, World!'
+        'ERROR - RNDS - Hello, World!'
       )
     })
   })

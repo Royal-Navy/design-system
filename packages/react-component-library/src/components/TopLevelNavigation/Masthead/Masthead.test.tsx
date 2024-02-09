@@ -178,7 +178,7 @@ describe('Masthead', () => {
     it('should warn the consumer for using the deprecated `link` prop', () => {
       expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - MODDS - The `link` prop is deprecated'
+        'WARN - RNDS - The `link` prop is deprecated'
       )
     })
 
