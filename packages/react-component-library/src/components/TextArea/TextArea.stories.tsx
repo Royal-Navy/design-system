@@ -1,6 +1,5 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { css } from 'styled-components'
 
 import { TextArea } from '.'
 
@@ -35,7 +34,7 @@ WithError.storyName = 'With error'
 
 export const WithLongLabel: ComponentStory<typeof TextArea> = (props) => (
   <div
-    css={css`
+    css={`
       max-width: 400px;
     `}
   >

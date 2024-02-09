@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
 import { Popover } from '.'
@@ -23,7 +23,7 @@ export default {
 const Template: ComponentStory<typeof Popover> = (args) => (
   <Popover {...args}>
     <div
-      css={css`
+      css={`
         display: inline-block;
         padding: 1rem;
         background-color: #c9c9c9;

@@ -18,7 +18,6 @@ import {
   Timeline,
   TimelineContext,
   TimelineDays,
-  TimelineDaysProps,
   TimelineEvent,
   TimelineEvents,
   TimelineHours,
@@ -2022,17 +2021,17 @@ describe('Timeline', () => {
 
   describe('when using custom row CSS', () => {
     beforeEach(() => {
-      const rowCss: CSSProp = css`
+      const rowCss: CSSProp = `
         height: 40px;
       `
       const rowContentProps: SubcomponentProps = {
-        css: css`
+        css: `
           background-color: ${ColorNeutral100};
         `,
         'data-testid': `content-1`,
       }
       const rowHeaderProps: SubcomponentProps = {
-        css: css`
+        css: `
           background-color: ${ColorNeutral200};
         `,
         'data-testid': `header-1`,

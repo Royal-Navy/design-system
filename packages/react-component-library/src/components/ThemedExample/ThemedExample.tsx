@@ -2,16 +2,20 @@ import React from 'react'
 import styled from 'styled-components'
 import theme from 'styled-theming'
 
-import { lightTheme, darkTheme, selectors } from '@royalnavy/design-tokens'
-import { ComponentWithClass } from '../../common/ComponentWithClass'
+import {
+  lightTheme,
+  darkTheme,
+  selectors,
+  Theme,
+} from '@royalnavy/design-tokens'
 import { GlobalStyleProvider } from '../../styled-components/GlobalStyle'
 
 const { color, spacing } = selectors
 
 const ThemedMain = styled.div`
-  background-color: ${(props) => color('neutral', '100', props.theme)};
+  background-color: ${(props) => color('neutral', '100', props.theme as Theme)};
   color: white;
-  padding: ${(props) => spacing('4', props.theme)};
+  padding: ${(props) => spacing('4', props.theme as Theme)};
 `
 
 export const CustomTokenSets = () => {
@@ -44,7 +48,7 @@ const backgroundColor = theme('customThemeMode', {
 const ThemedMain2 = styled.div`
   color: ${textColor};
   background-color: ${backgroundColor};
-  padding: ${(props) => spacing('4', props.theme)};
+  padding: ${(props) => spacing('4', props.theme as Theme)};
 `
 
 export const StyledTheming = () => {

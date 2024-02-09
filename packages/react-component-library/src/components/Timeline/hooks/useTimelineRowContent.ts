@@ -4,7 +4,7 @@ import { TimelineEventsProps } from '../TimelineEvents'
 
 export function useTimelineRowContent(
   isHeader: boolean,
-  children:
+  children?:
     | React.ReactElement<TimelineEventsProps>
     | React.ReactElement<TimelineEventsProps>[]
 ): {

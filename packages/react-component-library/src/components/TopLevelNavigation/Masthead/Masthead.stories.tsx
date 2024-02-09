@@ -7,7 +7,6 @@ import {
   IconSettings,
   IconHome,
 } from '@royalnavy/icon-library'
-import { css } from 'styled-components'
 
 import { Link } from '../../Link'
 import {
@@ -238,7 +237,7 @@ export const WithNotificationsOpen: ComponentStory<typeof Masthead> = (
   args
 ) => (
   <div
-    css={css`
+    css={`
       height: 25rem;
     `}
   >
@@ -278,7 +277,7 @@ export const WithUserMenuOpen: ComponentStory<typeof Masthead> = (args) => {
 
   return (
     <div
-      css={css`
+      css={`
         height: 10rem;
       `}
     >

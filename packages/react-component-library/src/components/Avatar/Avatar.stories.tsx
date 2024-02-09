@@ -1,6 +1,5 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { css } from 'styled-components'
 
 import { Avatar, AVATAR_VARIANT } from '.'
 
@@ -12,7 +11,7 @@ export default {
 
 const Template: ComponentStory<typeof Avatar> = (props) => (
   <div
-    css={css`
+    css={`
       background: #c9c9c9;
       padding: 20px;
     `}

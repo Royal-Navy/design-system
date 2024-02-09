@@ -1,6 +1,5 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { css } from 'styled-components'
 
 import { IconSearch } from '@royalnavy/icon-library'
 import { TextInput } from '.'
@@ -78,7 +77,7 @@ WithError.storyName = 'With error'
 
 export const WithLongLabel: ComponentStory<typeof TextInput> = (props) => (
   <div
-    css={css`
+    css={`
       max-width: 400px;
     `}
   >

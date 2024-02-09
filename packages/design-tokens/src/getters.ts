@@ -1,5 +1,5 @@
 import { get, isNil } from 'lodash'
-import { css } from 'styled-components'
+import { css, Interpolation } from 'styled-components'
 
 import defaultTheme from './themes/light'
 import {
@@ -12,7 +12,6 @@ import {
   Spacing,
   TypographySize,
   ZIndexGroup,
-  StyledComponentsInterpolation,
   Theme,
 } from './types'
 
@@ -50,7 +49,7 @@ export function getMediaQuery(
   theme?: Theme
 ): (
   strings: TemplateStringsArray,
-  ...interpolations: StyledComponentsInterpolation[]
+  ...interpolations: Interpolation<object>[]
 ) => string {
   const { gte, lt, media } = {
     media: 'only screen and',
@@ -71,7 +70,7 @@ export function getMediaQuery(
 
   return function mqTagFunction(
     strings: TemplateStringsArray,
-    ...interpolations: StyledComponentsInterpolation[]
+    ...interpolations: Interpolation<object>[]
   ): string {
     if (breakpointGTE && !breakpointLT) {
       return css`

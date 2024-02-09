@@ -16,7 +16,7 @@ export interface TimelineRowProps extends ComponentWithClass {
   /**
    * Supply children to be rendered.
    */
-  children:
+  children?:
     | React.ReactElement<TimelineEventsProps>
     | React.ReactElement<TimelineEventsProps>[]
   /**

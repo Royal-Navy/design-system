@@ -469,16 +469,16 @@ export const WithCustomColumns: ComponentStory<typeof Timeline> = (props) => (
 WithCustomColumns.storyName = 'With custom columns'
 
 export const WithCustomRowCss: ComponentStory<typeof Timeline> = (props) => {
-  const rowCss: CSSProp = css`
+  const rowCss: CSSProp = `
     height: 40px;
   `
   const rowContentProps = {
-    css: css`
+    css: `
       background-color: ${ColorNeutral100};
     `,
   }
   const rowHeaderProps = {
-    css: css`
+    css: `
       background-color: ${ColorNeutral200};
     `,
   }

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { render, RenderResult } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 import 'jest-styled-components'
 
 import {
@@ -84,7 +83,7 @@ describe('mediaQuery / mq', () => {
         'background-color',
         'blue',
         {
-          media: 'only screen and (min-width:576px)',
+          media: 'only screen and (min-width: 576px)',
         }
       )
 
@@ -92,7 +91,7 @@ describe('mediaQuery / mq', () => {
         'padding',
         '0.25rem',
         {
-          media: 'only screen and (min-width:576px)',
+          media: 'only screen and (min-width: 576px)',
         }
       )
 
@@ -100,7 +99,7 @@ describe('mediaQuery / mq', () => {
         'background-color',
         'green',
         {
-          media: 'only screen and (min-width:768px) and (max-width:1024px)',
+          media: 'only screen and (min-width: 768px) and (max-width: 1024px)',
         }
       )
 
@@ -108,7 +107,7 @@ describe('mediaQuery / mq', () => {
         'padding',
         '0.5rem',
         {
-          media: 'only screen and (min-width:768px) and (max-width:1024px)',
+          media: 'only screen and (min-width: 768px) and (max-width: 1024px)',
         }
       )
 
@@ -116,7 +115,7 @@ describe('mediaQuery / mq', () => {
         'background-color',
         'black',
         {
-          media: '(min-width:1200px) and (max-width:1400px)',
+          media: '(min-width: 1200px) and (max-width: 1400px)',
         }
       )
 
@@ -124,7 +123,7 @@ describe('mediaQuery / mq', () => {
         'padding',
         '0.75rem',
         {
-          media: '(min-width:1200px) and (max-width:1400px)',
+          media: '(min-width: 1200px) and (max-width: 1400px)',
         }
       )
     })
@@ -156,7 +155,7 @@ describe('breakpoint', () => {
         'font-size',
         '14px',
         {
-          media: 'only screen and (min-width:576px)',
+          media: 'only screen and (min-width: 576px)',
         }
       )
     })
