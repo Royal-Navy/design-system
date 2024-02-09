@@ -4,8 +4,9 @@ import { LinkTypes } from '../../common/Link'
 import { StyledBreadcrumbsItem } from './partials/StyledBreadcrumbsItem'
 import { StyledEndTitle } from './partials/StyledEndTitle'
 import { StyledIcon } from './partials/StyledIcon'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 
-export interface BreadcrumbsItemBaseProps {
+export interface BreadcrumbsItemBaseProps extends ComponentWithClass {
   /**
    * Denotes whether this is the first item.
    * @private

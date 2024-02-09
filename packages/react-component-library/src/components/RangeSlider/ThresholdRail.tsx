@@ -19,6 +19,7 @@ export interface RailChunkProps {
   $maxWidth: number
   testId: string
   $thresholdColor: ThresholdColor
+  children?: React.ReactNode
 }
 
 const RailChunk = ({

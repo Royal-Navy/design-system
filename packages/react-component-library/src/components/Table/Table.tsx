@@ -85,7 +85,7 @@ export const Table = ({
                   <StyledTableCell
                     key={getKey(`table-cell-${child.props.field}`, row.id)}
                   >
-                    {row[child.props.field]}
+                    {row[child.props.field] as React.ReactNode}
                   </StyledTableCell>
                 )
               )}

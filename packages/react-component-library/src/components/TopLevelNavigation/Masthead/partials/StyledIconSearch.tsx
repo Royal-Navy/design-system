@@ -4,7 +4,7 @@ import { IconSearch } from '@royalnavy/icon-library'
 
 const { color } = selectors
 
-export const StyledIconSearch = styled(IconSearch)`
+export const StyledIconSearch: typeof IconSearch = styled(IconSearch)`
   width: 24px;
   height: 24px;
   color: ${color('neutral', '400')};

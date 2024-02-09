@@ -70,13 +70,13 @@ function getHoursBlockSize(
   )
 }
 
-function getEndDate(startDate: Date, endDate: Date | null) {
+function getEndDate(startDate: Date, endDate?: Date) {
   if (startDate && endDate && isAfter(startDate, endDate)) {
     logger.error('`startDate` is after `endDate`')
     return null
   }
 
-  return endDate
+  return endDate ?? null
 }
 
 export const Timeline = ({
@@ -87,7 +87,7 @@ export const Timeline = ({
   hideToolbar = false,
   isFullWidth = false,
   startDate,
-  endDate = null,
+  endDate,
   today = setHours(startOfToday(), 12),
   range = 1,
   unitWidth,

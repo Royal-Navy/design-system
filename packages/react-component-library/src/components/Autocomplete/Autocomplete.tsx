@@ -6,6 +6,7 @@ import {
   getSelectedItem,
   itemToString,
   SelectBaseProps,
+  SelectChildWithStringType,
   SelectLayout,
 } from '../SelectBase'
 import { NoResults } from './NoResults'
@@ -47,7 +48,9 @@ export const Autocomplete = ({
     onInputValueChange,
     onIsOpenChange,
     onSelectedItemChange,
-  } = useAutocomplete(React.Children.toArray(children))
+  } = useAutocomplete(
+    React.Children.toArray(children) as SelectChildWithStringType[]
+  )
 
   const {
     buttonRef,

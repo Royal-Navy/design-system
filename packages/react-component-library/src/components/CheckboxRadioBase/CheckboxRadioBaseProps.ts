@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
 import { CheckboxRadioVariantType } from './types'
@@ -17,6 +19,7 @@ export interface CheckmarkProps {
 
 export interface CheckmarkWrapperProps {
   $hasContainer: boolean
+  children: ReactNode
 }
 
 export interface CheckboxRadioBaseProps

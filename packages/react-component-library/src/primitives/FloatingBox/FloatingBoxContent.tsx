@@ -6,6 +6,7 @@ import { StyledContent } from './partials/StyledContent'
 export interface FloatingBoxContentProps {
   contentId?: string
   scheme: FloatingBoxSchemeType
+  children: React.ReactNode
 }
 
 export const FloatingBoxContent = ({

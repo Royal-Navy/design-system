@@ -70,9 +70,9 @@ export interface MastheadProps {
 }
 
 function getServiceName(
-  homeLink: React.ReactElement<LinkTypes> | null,
   Logo: React.ComponentType | null,
-  title: string
+  title: string,
+  homeLink?: React.ReactElement<LinkTypes>
 ) {
   const link = homeLink || <span />
   return React.cloneElement(link as React.ReactElement, {
@@ -94,7 +94,7 @@ function getServiceName(
 export const Masthead = ({
   hasDefaultLogo = true,
   hasUnreadNotification,
-  homeLink = null,
+  homeLink,
   initialOpenSubcomponent,
   Logo,
   nav,
@@ -127,7 +127,7 @@ export const Masthead = ({
     <StyledMastHead data-testid="masthead" ref={mastheadRef} {...rest}>
       <StyledMain>
         <StyledBanner data-testid="masthead-banner" role="banner">
-          {getServiceName(homeLink, DisplayLogo, title)}
+          {getServiceName(DisplayLogo, title, homeLink)}
         </StyledBanner>
 
         <StyledOptions>

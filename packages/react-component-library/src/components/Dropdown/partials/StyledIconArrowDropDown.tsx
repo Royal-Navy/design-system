@@ -9,7 +9,7 @@ interface StyledIconArrowDropDownProps {
   $isOpen: boolean
 }
 
-export const StyledIconArrowDropDown = styled(
+export const StyledIconArrowDropDown: React.ComponentType<StyledIconArrowDropDownProps> = styled(
   IconArrowDropDown
 )<StyledIconArrowDropDownProps>`
   position: relative;
