@@ -131,6 +131,8 @@ export const RangeSlider = ({
   mode,
   onSlideStart,
   onSlideEnd,
+  // @ts-expect-error -- Forwarded by `Field` component
+  isInvalid: _isInvalid,
   ...rest
 }: RangeSliderProps) => {
   const [sliderValues, setSliderValues] =

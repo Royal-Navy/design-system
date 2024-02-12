@@ -20,7 +20,7 @@ export const ContextMenuItem = ({ icon, link }: ContextMenuItemProps) => {
     children: (
       <>
         {icon && <StyledIcon>{icon}</StyledIcon>}
-        <StyledText hasIcon={!!icon} data-testid="context-menu-item-text">
+        <StyledText $hasIcon={!!icon} data-testid="context-menu-item-text">
           {linkElement.props.children}
         </StyledText>
       </>

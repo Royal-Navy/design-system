@@ -8,6 +8,7 @@ const { color, fontSize, spacing } = selectors
 
 export interface StyledOptionsProps {
   $isHighlighted?: boolean
+  disabled?: boolean
 }
 
 export const StyledOption = styled.li<StyledOptionsProps>`
