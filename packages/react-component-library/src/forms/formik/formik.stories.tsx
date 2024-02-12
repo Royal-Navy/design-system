@@ -1,6 +1,6 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState } from 'react'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { Formik, Field as FormikField, FieldProps } from 'formik'
 
 import { TextInput } from '../../components/TextInput'
@@ -308,9 +308,9 @@ const Example = ({ initialValues }: { initialValues: FormValues }) => {
 export default {
   title: 'Forms/Usage/Formik',
   component: Example,
-} as ComponentMeta<typeof Example>
+} as Meta<typeof Example>
 
-const Template: ComponentStory<typeof Example> = (args) => <Example {...args} />
+const Template: StoryFn<typeof Example> = (args) => <Example {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

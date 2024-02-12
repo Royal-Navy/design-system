@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Badge, BADGE_COLOR_VARIANT, BADGE_COLOR } from '../Badge'
 import { Table, TableColumn } from '.'
@@ -12,7 +12,7 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof Table>
+} as Meta<typeof Table>
 
 const tableData = [
   {
@@ -33,7 +33,7 @@ const tableData = [
   },
 ]
 
-export const Default: ComponentStory<typeof Table> = (props) => {
+export const Default: StoryFn<typeof Table> = (props) => {
   return (
     <Table {...props}>
       <TableColumn field="first">First column</TableColumn>
@@ -76,7 +76,7 @@ const tableDataArbitraryCellContent = [
   },
 ]
 
-export const ArbitraryCellContent: ComponentStory<typeof Table> = (props) => (
+export const ArbitraryCellContent: StoryFn<typeof Table> = (props) => (
   <Table {...props} data={tableDataArbitraryCellContent}>
     <TableColumn field="first">First column</TableColumn>
     <TableColumn field="second">Status</TableColumn>
@@ -85,7 +85,7 @@ export const ArbitraryCellContent: ComponentStory<typeof Table> = (props) => (
 
 ArbitraryCellContent.storyName = 'Arbitrary cell content'
 
-export const Sortable: ComponentStory<typeof Table> = (props) => {
+export const Sortable: StoryFn<typeof Table> = (props) => {
   const tableDataSortable = [
     {
       id: 'a',
@@ -122,9 +122,7 @@ export const Sortable: ComponentStory<typeof Table> = (props) => {
   )
 }
 
-Sortable.storyName = 'Sortable'
-
-export const WithCaption: ComponentStory<typeof Table> = (props) => {
+export const WithCaption: StoryFn<typeof Table> = (props) => {
   const tableDataWithCaption = [
     {
       id: 'a',

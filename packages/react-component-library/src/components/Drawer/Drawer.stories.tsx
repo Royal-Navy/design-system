@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Drawer } from '.'
 
@@ -14,9 +14,9 @@ export default {
       iframeHeight: 500,
     },
   },
-} as ComponentMeta<typeof Drawer>
+} as Meta<typeof Drawer>
 
-export const Default: ComponentStory<typeof Drawer> = (props) => (
+export const Default: StoryFn<typeof Drawer> = (props) => (
   <Drawer {...props}>
     <pre css={{ padding: '0 1rem' }}>Arbitrary JSX</pre>
   </Drawer>

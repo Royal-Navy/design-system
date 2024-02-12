@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import {
   IconAgriculture,
   IconAnchor,
@@ -29,14 +29,14 @@ export default {
   args: {
     label: 'Some label',
   },
-} as ComponentMeta<typeof Select>
+} as Meta<typeof Select>
 
 const StyledWrapper = styled.div<{ $isDisabled?: boolean }>`
   height: ${({ $isDisabled }) => ($isDisabled ? 'initial' : '18rem')};
   max-width: 20rem;
 `
 
-const Template: ComponentStory<typeof Select> = (args) => (
+const Template: StoryFn<typeof Select> = (args) => (
   <StyledWrapper $isDisabled={args.isDisabled}>
     <Select {...args}>
       <SelectOption value="one">A</SelectOption>
@@ -52,7 +52,7 @@ const Template: ComponentStory<typeof Select> = (args) => (
   </StyledWrapper>
 )
 
-const TemplateWithIconsAndBadges: ComponentStory<typeof Select> = (args) => (
+const TemplateWithIconsAndBadges: StoryFn<typeof Select> = (args) => (
   <StyledWrapper $isDisabled={args.isDisabled}>
     <Select {...args}>
       <SelectOption badge={100} icon={<IconAnchor />} value="one">
@@ -85,7 +85,6 @@ NoClearButton.args = {
 }
 
 export const Open = Template.bind({})
-Open.storyName = 'Open'
 Open.args = {
   initialIsOpen: true,
 }

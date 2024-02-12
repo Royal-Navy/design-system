@@ -21,7 +21,7 @@ expect.extend({
     config?: ValueOf<typeof storyAccessibilityConfig>
   ) => {
     const axeResults = await new AxeBuilder({ page })
-      .include('#root')
+      .include('#storybook-root')
       .disableRules(config?.map((entry) => entry.id) || [])
       .analyze()
 

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 
 import { ColorNeutral100, ColorNeutral200 } from '@royalnavy/design-tokens'
-import { css, CSSProp } from 'styled-components'
+import { CSSProp } from 'styled-components'
 import { render, RenderResult, waitFor } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import timezoneMock from 'timezone-mock'

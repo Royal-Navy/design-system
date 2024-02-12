@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import {
   IconHome,
@@ -46,7 +46,7 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof Sidebar>
+} as Meta<typeof Sidebar>
 
 const StyledSidebar = styled(Sidebar)`
   max-height: 30rem;
@@ -88,7 +88,7 @@ const SimpleSidebarNav = () => (
   </SidebarNav>
 )
 
-export const Default: ComponentStory<typeof Sidebar> = (props) => {
+export const Default: StoryFn<typeof Sidebar> = (props) => {
   return (
     <SidebarWrapper>
       <StyledSidebar {...props}>
@@ -101,7 +101,7 @@ export const Default: ComponentStory<typeof Sidebar> = (props) => {
 
 Default.args = {}
 
-export const InitiallyOpen: ComponentStory<typeof Sidebar> = (props) => {
+export const InitiallyOpen: StoryFn<typeof Sidebar> = (props) => {
   return (
     <SidebarWrapper>
       <StyledSidebar {...props} initialIsOpen>
@@ -118,7 +118,7 @@ InitiallyOpen.parameters = disableColorContrastRule
 
 InitiallyOpen.storyName = 'Initially open'
 
-export const WithSubNavigation: ComponentStory<typeof Sidebar> = (props) => {
+export const WithSubNavigation: StoryFn<typeof Sidebar> = (props) => {
   const sidebarNavWithSub = (
     <SidebarNav>
       <SidebarNavItem
@@ -180,7 +180,7 @@ export const WithSubNavigation: ComponentStory<typeof Sidebar> = (props) => {
 
 WithSubNavigation.storyName = 'With sub-navigation'
 
-export const WithHeader: ComponentStory<typeof Sidebar> = (props) => {
+export const WithHeader: StoryFn<typeof Sidebar> = (props) => {
   return (
     <SidebarWrapper>
       <StyledSidebar {...props} icon={<IconGrain />} title="Application Name">
@@ -193,7 +193,7 @@ export const WithHeader: ComponentStory<typeof Sidebar> = (props) => {
 
 WithHeader.storyName = 'With header'
 
-export const WithUserMenu: ComponentStory<typeof Sidebar> = (props) => {
+export const WithUserMenu: StoryFn<typeof Sidebar> = (props) => {
   const userWithLinks = (
     <SidebarUser
       initials="HN"
@@ -215,7 +215,7 @@ export const WithUserMenu: ComponentStory<typeof Sidebar> = (props) => {
 
 WithUserMenu.storyName = 'With user menu'
 
-const WithNotificationsTemplate: ComponentStory<typeof Sidebar> = (props) => {
+const WithNotificationsTemplate: StoryFn<typeof Sidebar> = (props) => {
   const notifications = (
     <Notifications link={<Link href="#" />}>
       <Notification
@@ -262,7 +262,7 @@ const WithNotificationsTemplate: ComponentStory<typeof Sidebar> = (props) => {
 export const WithNotifications = WithNotificationsTemplate.bind({})
 WithNotifications.storyName = 'With notifications'
 
-export const WithUserMenuOpen: ComponentStory<typeof Sidebar> = (props) => {
+export const WithUserMenuOpen: StoryFn<typeof Sidebar> = (props) => {
   const userWithLinks = (
     <SidebarUser
       initials="HN"

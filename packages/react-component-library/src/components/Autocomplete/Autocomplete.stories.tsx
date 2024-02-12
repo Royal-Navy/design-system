@@ -5,7 +5,7 @@ import {
   IconBrightnessAuto,
   IconRemove,
 } from '@royalnavy/icon-library'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import styled from 'styled-components'
 
 import { Autocomplete, AutocompleteOption } from './index'
@@ -19,14 +19,14 @@ export default {
   args: {
     label: 'Some label',
   },
-} as ComponentMeta<typeof Autocomplete>
+} as Meta<typeof Autocomplete>
 
 const StyledWrapper = styled.div<{ $isDisabled?: boolean }>`
   height: ${({ $isDisabled }) => ($isDisabled ? 'initial' : '18rem')};
   max-width: 20rem;
 `
 
-const Template: ComponentStory<typeof Autocomplete> = (args) => (
+const Template: StoryFn<typeof Autocomplete> = (args) => (
   <StyledWrapper $isDisabled={args.isDisabled}>
     <Autocomplete {...args}>
       <AutocompleteOption value="one">One</AutocompleteOption>
@@ -40,9 +40,7 @@ const Template: ComponentStory<typeof Autocomplete> = (args) => (
   </StyledWrapper>
 )
 
-const TemplateWithIconsAndBadges: ComponentStory<typeof Autocomplete> = (
-  args
-) => (
+const TemplateWithIconsAndBadges: StoryFn<typeof Autocomplete> = (args) => (
   <StyledWrapper $isDisabled={args.isDisabled}>
     <Autocomplete {...args}>
       <AutocompleteOption badge={100} icon={<IconAnchor />} value="one">
@@ -79,7 +77,6 @@ NoClearButton.args = {
 }
 
 export const Open = Template.bind({})
-Open.storyName = 'Open'
 Open.args = {
   initialIsOpen: true,
 }

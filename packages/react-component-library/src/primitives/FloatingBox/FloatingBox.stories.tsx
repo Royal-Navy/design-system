@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { FloatingBox, FloatingBoxWithEmbeddedTargetProps } from './FloatingBox'
 import { FLOATING_BOX_SCHEME } from './constants'
@@ -13,7 +13,7 @@ export default {
   },
 } as Meta<FloatingBoxWithEmbeddedTargetProps>
 
-const Template: Story<FloatingBoxWithEmbeddedTargetProps> = (props) => (
+const Template: StoryFn<FloatingBoxWithEmbeddedTargetProps> = (props) => (
   <FloatingBox isVisible renderTarget={<div />} {...props}>
     <div css={{ padding: '0 1rem' }}>
       <pre>Arbitrary JSX content</pre>
@@ -29,7 +29,6 @@ Default.args = {
 
 export const Dark = Template.bind({})
 
-Dark.storyName = 'Dark'
 Dark.args = {
   scheme: FLOATING_BOX_SCHEME.DARK,
   'aria-label': 'A floating box',

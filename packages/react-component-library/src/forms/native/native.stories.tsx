@@ -1,6 +1,6 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
-import React, { ReactNode } from 'react'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import React from 'react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import { TextInput } from '../../components/TextInput'
 import { TextArea } from '../../components/TextArea'
@@ -271,9 +271,9 @@ const Example = ({
 export default {
   title: 'Forms/Usage/Native',
   component: Example,
-} as ComponentMeta<typeof Example>
+} as Meta<typeof Example>
 
-const Template: ComponentStory<typeof Example> = ({
+const Template: StoryFn<typeof Example> = ({
   initialValues,
   initialErrors,
 }) => <Example initialValues={initialValues} initialErrors={initialErrors} />

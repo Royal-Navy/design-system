@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { useToasts, Options } from 'react-toast-notifications'
 
 import { ToastProvider, Toast } from '.'
@@ -18,7 +18,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Toast>
+} as Meta<typeof Toast>
 
 const LABEL = 'Example label'
 const DESCRIPTION = 'This is an example toast message'
@@ -46,7 +46,7 @@ const ToastButton = ({
     </Button>
   )
 }
-export const Default: Story<Options> = (props) => (
+export const Default: StoryFn<Options> = (props) => (
   <ToastProvider>
     <ToastButton {...props} />
   </ToastProvider>
@@ -54,7 +54,7 @@ export const Default: Story<Options> = (props) => (
 
 Default.args = {}
 
-export const AutoDismiss: Story<Options> = (props) => (
+export const AutoDismiss: StoryFn<Options> = (props) => (
   <ToastProvider>
     <ToastButton {...props} appearance="info" autoDismiss />
   </ToastProvider>
@@ -62,7 +62,7 @@ export const AutoDismiss: Story<Options> = (props) => (
 
 AutoDismiss.storyName = 'Auto dismiss'
 
-export const ComponentOnly: ComponentStory<typeof Toast> = (props) => (
+export const ComponentOnly: StoryFn<typeof Toast> = (props) => (
   <Toast
     {...props}
     appearance="info"
@@ -81,7 +81,7 @@ export const ComponentOnly: ComponentStory<typeof Toast> = (props) => (
 
 ComponentOnly.storyName = 'Component only'
 
-export const Danger: ComponentStory<typeof Toast> = (props) => (
+export const Danger: StoryFn<typeof Toast> = (props) => (
   <Toast
     {...props}
     appearance="error"
@@ -98,9 +98,7 @@ export const Danger: ComponentStory<typeof Toast> = (props) => (
   </Toast>
 )
 
-Danger.storyName = 'Danger'
-
-export const Success: ComponentStory<typeof Toast> = (props) => (
+export const Success: StoryFn<typeof Toast> = (props) => (
   <Toast
     {...props}
     appearance="success"
@@ -117,9 +115,7 @@ export const Success: ComponentStory<typeof Toast> = (props) => (
   </Toast>
 )
 
-Success.storyName = 'Success'
-
-export const Warning: ComponentStory<typeof Toast> = (props) => (
+export const Warning: StoryFn<typeof Toast> = (props) => (
   <Toast
     {...props}
     appearance="warning"
@@ -135,5 +131,3 @@ export const Warning: ComponentStory<typeof Toast> = (props) => (
     {DESCRIPTION}
   </Toast>
 )
-
-Warning.storyName = 'Warning'

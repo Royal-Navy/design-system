@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { TextArea } from '.'
 
@@ -9,9 +9,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as ComponentMeta<typeof TextArea>
+} as Meta<typeof TextArea>
 
-export const Default: ComponentStory<typeof TextArea> = (props) => (
+export const Default: StoryFn<typeof TextArea> = (props) => (
   <TextArea {...props} />
 )
 
@@ -20,19 +20,17 @@ Default.args = {
   label: 'Example label',
 }
 
-export const Disabled: ComponentStory<typeof TextArea> = (props) => (
+export const Disabled: StoryFn<typeof TextArea> = (props) => (
   <TextArea {...props} isDisabled label="Example label" />
 )
 
-Disabled.storyName = 'Disabled'
-
-export const WithError: ComponentStory<typeof TextArea> = (props) => (
+export const WithError: StoryFn<typeof TextArea> = (props) => (
   <TextArea {...props} isInvalid label="Example label" />
 )
 
 WithError.storyName = 'With error'
 
-export const WithLongLabel: ComponentStory<typeof TextArea> = (props) => (
+export const WithLongLabel: StoryFn<typeof TextArea> = (props) => (
   <div
     css={`
       max-width: 400px;

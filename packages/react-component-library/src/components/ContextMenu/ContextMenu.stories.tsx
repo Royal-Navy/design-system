@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import styled from 'styled-components'
 
 import { IconEdit, IconDelete, IconAdd } from '@royalnavy/icon-library'
@@ -14,7 +14,7 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as ComponentMeta<typeof ContextMenu>
+} as Meta<typeof ContextMenu>
 
 const ClickArea = styled.div`
   display: inline-block;
@@ -22,7 +22,7 @@ const ClickArea = styled.div`
   background-color: #c9c9c9;
 `
 
-export const Default: ComponentStory<typeof ContextMenu> = (props) => {
+export const Default: StoryFn<typeof ContextMenu> = (props) => {
   const ref = useRef<HTMLDivElement>(null)
 
   return (
@@ -53,9 +53,7 @@ export const Default: ComponentStory<typeof ContextMenu> = (props) => {
   )
 }
 
-Default.storyName = 'Default'
-
-const WithIconsTemplate: ComponentStory<typeof ContextMenu> = (props) => {
+const WithIconsTemplate: StoryFn<typeof ContextMenu> = (props) => {
   const ref = useRef<HTMLDivElement>(null)
 
   return (
@@ -99,7 +97,6 @@ export const WithIcons = WithIconsTemplate.bind({})
 WithIcons.storyName = 'With icons'
 
 export const Open = WithIconsTemplate.bind({})
-Open.storyName = 'Open'
 Open.args = {
   initialIsOpen: true,
 }

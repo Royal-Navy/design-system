@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Radio, RadioProps } from '.'
 import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
@@ -15,11 +15,11 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as ComponentMeta<typeof Radio>
+} as Meta<typeof Radio>
 
-const Template: ComponentStory<typeof Radio> = (props) => <Radio {...props} />
+const Template: StoryFn<typeof Radio> = (props) => <Radio {...props} />
 
-const MultipleItemsTemplate: ComponentStory<typeof Radio> = (props) => {
+const MultipleItemsTemplate: StoryFn<typeof Radio> = (props) => {
   function getProps(i: number): RadioProps {
     return {
       ...props,

@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { parseISO } from 'date-fns'
 import React from 'react'
 
@@ -16,11 +16,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof DatePicker>
+} as Meta<typeof DatePicker>
 
-const Template: ComponentStory<typeof DatePicker> = (args) => (
-  <DatePicker {...args} />
-)
+const Template: StoryFn<typeof DatePicker> = (args) => <DatePicker {...args} />
 
 export const Default = Template.bind({})
 
@@ -69,7 +67,6 @@ DisabledDays.args = {
 }
 
 export const Open = Template.bind({})
-Open.storyName = 'Open'
 Open.args = {
   initialIsOpen: true,
   initialMonth: parseISO('2022-06-01'),

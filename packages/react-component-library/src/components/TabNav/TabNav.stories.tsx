@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Link } from '../Link'
 import { TabNav, TabNavItem } from '.'
@@ -17,9 +17,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof TabNav>
+} as Meta<typeof TabNav>
 
-export const Default: ComponentStory<typeof TabNav> = (props) => (
+export const Default: StoryFn<typeof TabNav> = (props) => (
   <TabNav {...props}>
     <TabNavItem link={<Link href="#">Example Tab 1</Link>} isActive />
     <TabNavItem link={<Link href="#">Example Tab 2</Link>} />

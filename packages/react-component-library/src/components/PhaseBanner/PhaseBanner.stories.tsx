@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { PhaseBanner } from '.'
 
@@ -10,25 +10,23 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof PhaseBanner>
+} as Meta<typeof PhaseBanner>
 
-export const Default: ComponentStory<typeof PhaseBanner> = (props) => (
+export const Default: StoryFn<typeof PhaseBanner> = (props) => (
   <PhaseBanner {...props} />
 )
 
-export const Beta: ComponentStory<typeof PhaseBanner> = () => (
+export const Beta: StoryFn<typeof PhaseBanner> = () => (
   <PhaseBanner phase="beta" />
 )
 
-Beta.storyName = 'Beta'
-
-export const CustomLink: ComponentStory<typeof PhaseBanner> = () => (
+export const CustomLink: StoryFn<typeof PhaseBanner> = () => (
   <PhaseBanner link="#" />
 )
 
 CustomLink.storyName = 'Custom link'
 
-export const CustomText: ComponentStory<typeof PhaseBanner> = () => (
+export const CustomText: StoryFn<typeof PhaseBanner> = () => (
   <PhaseBanner>
     Custom html can go here. <strong>This part is in bold!</strong>
   </PhaseBanner>
@@ -36,7 +34,7 @@ export const CustomText: ComponentStory<typeof PhaseBanner> = () => (
 
 CustomText.storyName = 'Custom text'
 
-export const FullWidth: ComponentStory<typeof PhaseBanner> = () => (
+export const FullWidth: StoryFn<typeof PhaseBanner> = () => (
   <PhaseBanner isFullWidth />
 )
 

@@ -4,7 +4,6 @@ import React from 'react'
 import '@royalnavy/fonts'
 import 'iframe-resizer/js/iframeResizer.contentWindow'
 import 'url-search-params-polyfill'
-import { withPerformance } from 'storybook-addon-performance/dist/cjs'
 
 import { GlobalStyleProvider } from '../src/styled-components/GlobalStyle'
 
@@ -75,7 +74,6 @@ export const decorators = [
 
     return <GlobalStyleProvider>{Story()}</GlobalStyleProvider>
   },
-  withPerformance,
 ]
 
 // Preload the body font on Chromatic to avoid problem with

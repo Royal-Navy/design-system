@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { IconSearch } from '@royalnavy/icon-library'
 import { TextInput } from '.'
@@ -20,9 +20,9 @@ export default {
       onBlur: { action: 'onBlur' },
     },
   },
-} as ComponentMeta<typeof TextInput>
+} as Meta<typeof TextInput>
 
-export const Default: ComponentStory<typeof TextInput> = (props) => (
+export const Default: StoryFn<typeof TextInput> = (props) => (
   <TextInput {...props} />
 )
 
@@ -31,7 +31,7 @@ Default.args = {
   label: 'Example label',
 }
 
-export const Disabled: ComponentStory<typeof TextInput> = (props) => (
+export const Disabled: StoryFn<typeof TextInput> = (props) => (
   <TextInput
     {...props}
     name="text-input-disabled"
@@ -40,9 +40,7 @@ export const Disabled: ComponentStory<typeof TextInput> = (props) => (
   />
 )
 
-Disabled.storyName = 'Disabled'
-
-export const WithStartAdornment: ComponentStory<typeof TextInput> = (props) => (
+export const WithStartAdornment: StoryFn<typeof TextInput> = (props) => (
   <TextInput
     {...props}
     name="text-input-start-adornment"
@@ -53,7 +51,7 @@ export const WithStartAdornment: ComponentStory<typeof TextInput> = (props) => (
 
 WithStartAdornment.storyName = 'With start adornment'
 
-export const WithEndAdornment: ComponentStory<typeof TextInput> = (props) => (
+export const WithEndAdornment: StoryFn<typeof TextInput> = (props) => (
   <TextInput
     {...props}
     name="text-input-end-adornment"
@@ -64,7 +62,7 @@ export const WithEndAdornment: ComponentStory<typeof TextInput> = (props) => (
 
 WithEndAdornment.storyName = 'With end adornment'
 
-export const WithError: ComponentStory<typeof TextInput> = (props) => (
+export const WithError: StoryFn<typeof TextInput> = (props) => (
   <TextInput
     {...props}
     isInvalid
@@ -75,7 +73,7 @@ export const WithError: ComponentStory<typeof TextInput> = (props) => (
 
 WithError.storyName = 'With error'
 
-export const WithLongLabel: ComponentStory<typeof TextInput> = (props) => (
+export const WithLongLabel: StoryFn<typeof TextInput> = (props) => (
   <div
     css={`
       max-width: 400px;

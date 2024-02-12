@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Checkbox, CheckboxProps } from '.'
 import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
@@ -15,13 +15,11 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as ComponentMeta<typeof Checkbox>
+} as Meta<typeof Checkbox>
 
-const Template: ComponentStory<typeof Checkbox> = (props) => (
-  <Checkbox {...props} />
-)
+const Template: StoryFn<typeof Checkbox> = (props) => <Checkbox {...props} />
 
-const MultipleItemsTemplate: ComponentStory<typeof Checkbox> = (props) => {
+const MultipleItemsTemplate: StoryFn<typeof Checkbox> = (props) => {
   function getProps(i: number): CheckboxProps {
     return {
       ...props,

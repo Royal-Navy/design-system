@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { IconBrightnessLow } from '@royalnavy/icon-library'
 import { Button } from './index'
@@ -15,9 +15,9 @@ export default {
   component: Button,
   title: 'Button',
   parameters: { actions: { argTypesRegex: '^on.*' } },
-} as ComponentMeta<typeof Button>
+} as Meta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
+const Template: StoryFn<typeof Button> = (args) => <Button {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

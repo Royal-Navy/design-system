@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import styled from 'styled-components'
 
 import { FLOATING_BOX_SCHEME } from '../../primitives/FloatingBox'
@@ -18,9 +18,9 @@ export default {
   args: {
     content: <StyledContent>This is some arbitrary JSX</StyledContent>,
   },
-} as ComponentMeta<typeof Popover>
+} as Meta<typeof Popover>
 
-const Template: ComponentStory<typeof Popover> = (args) => (
+const Template: StoryFn<typeof Popover> = (args) => (
   <Popover {...args}>
     <div
       css={`
@@ -37,7 +37,6 @@ const Template: ComponentStory<typeof Popover> = (args) => (
 export const Default = Template.bind({})
 
 export const Dark = Template.bind({})
-Dark.storyName = 'Dark'
 Dark.args = {
   scheme: FLOATING_BOX_SCHEME.DARK,
 }
