@@ -1,5 +1,5 @@
 import React from 'react'
-import '@testing-library/jest-dom/extend-expect'
+
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'

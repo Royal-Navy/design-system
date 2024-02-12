@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom/extend-expect'
 import React, { FormEvent } from 'react'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 

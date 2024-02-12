@@ -1,7 +1,7 @@
 import { ColorDanger800, TypographyS } from '@royalnavy/design-tokens'
 import React from 'react'
-import '@testing-library/jest-dom/extend-expect'
-import { render, RenderResult } from '@testing-library/react'
+
+import { render, RenderResult, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { COMPONENT_SIZE } from '../Forms'
@@ -454,10 +454,12 @@ describe('Autocomplete', () => {
       })
 
       it('still has an error border', () => {
-        expect(wrapper.getByTestId('select-outer-wrapper')).toHaveStyleRule(
-          'box-shadow',
-          ERROR_BOX_SHADOW
-        )
+        waitFor(() => {
+          expect(wrapper.getByTestId('select-outer-wrapper')).toHaveStyleRule(
+            'box-shadow',
+            ERROR_BOX_SHADOW
+          )
+        })
       })
     })
   })

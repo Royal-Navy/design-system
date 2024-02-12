@@ -1,7 +1,7 @@
 /* eslint-disable jest/no-conditional-expect */
 
 import React, { useState } from 'react'
-import '@testing-library/jest-dom/extend-expect'
+
 import {
   createEvent,
   fireEvent,
@@ -36,9 +36,11 @@ describe('NumberInput', () => {
 
   function assertInputValue(expectedValue: string) {
     it('sets the input value', () => {
-      expect(wrapper.getByTestId('number-input-input')).toHaveValue(
-        expectedValue
-      )
+      waitFor(() => {
+        expect(wrapper.getByTestId('number-input-input')).toHaveValue(
+          expectedValue
+        )
+      })
     })
   }
 

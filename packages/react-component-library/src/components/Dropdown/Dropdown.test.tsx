@@ -1,5 +1,5 @@
 import React from 'react'
-import '@testing-library/jest-dom/extend-expect'
+
 import { IconLayers, IconAnchor, IconShare } from '@royalnavy/icon-library'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import '@testing-library/jest-dom/extend-expect'
+
 import {
   render,
   RenderResult,

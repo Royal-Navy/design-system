@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import '@testing-library/jest-dom/extend-expect'
+
 import { ColorNeutral100, ColorNeutral200 } from '@royalnavy/design-tokens'
 import { css, CSSProp } from 'styled-components'
 import { render, RenderResult, waitFor } from '@testing-library/react'
