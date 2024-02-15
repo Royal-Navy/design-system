@@ -27,14 +27,14 @@ function renderDefault({ dayWidth, date }: { dayWidth: number; date: Date }) {
   )
 }
 
-export const TimelineDay: React.FC<TimelineDayProps> = ({
+export const TimelineDay = ({
   date,
   dayWidth,
   index,
   render,
   timelineEndDate,
   ...rest
-}) => {
+}: TimelineDayProps) => {
   if (isAfter(date, timelineEndDate)) {
     return null
   }

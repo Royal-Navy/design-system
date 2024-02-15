@@ -153,7 +153,7 @@ function formatValue(
   return displayValue
 }
 
-export const NumberInput: React.FC<NumberInputProps> = ({
+export const NumberInput = ({
   className,
   footnote,
   icon,
@@ -173,7 +173,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   suffix,
   value = null,
   ...rest
-}) => {
+}: NumberInputProps) => {
   const wrapperId = useExternalId('number-input')
   const inputId = useExternalId('number-input-input', externalId)
   const isNegativeAllowed = isNil(min) || min < 0

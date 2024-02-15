@@ -1,6 +1,6 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
-import styled, { css, CSSProp } from 'styled-components'
+import { StoryFn, Meta } from '@storybook/react'
+import styled, { CSSProp } from 'styled-components'
 import { format } from 'date-fns'
 import {
   ColorDanger500,
@@ -72,9 +72,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Timeline>
+} as Meta<typeof Timeline>
 
-const Template: ComponentStory<typeof Timeline> = (args) => (
+const Template: StoryFn<typeof Timeline> = (args) => (
   <Timeline {...args}>
     <TimelineTodayMarker />
     <TimelineMonths />
@@ -99,7 +99,7 @@ BoundByFixedDates.args = {
 }
 BoundByFixedDates.storyName = 'Bound by fixed dates'
 
-export const WithData: ComponentStory<typeof Timeline> = (props) => (
+export const WithData: StoryFn<typeof Timeline> = (props) => (
   <Timeline
     {...props}
     startDate={new Date(2020, 9, 1)}
@@ -136,7 +136,7 @@ export const WithData: ComponentStory<typeof Timeline> = (props) => (
 
 WithData.storyName = 'With data'
 
-export const WithSidebar: ComponentStory<typeof Timeline> = (props) => (
+export const WithSidebar: StoryFn<typeof Timeline> = (props) => (
   <Timeline
     {...props}
     hasSide
@@ -184,7 +184,7 @@ export const WithSidebar: ComponentStory<typeof Timeline> = (props) => (
 
 WithSidebar.storyName = 'With sidebar'
 
-export const WithHours: ComponentStory<typeof Timeline> = (props) => (
+export const WithHours: StoryFn<typeof Timeline> = (props) => (
   <Timeline
     {...props}
     hasSide
@@ -236,7 +236,7 @@ const StyledCustomTimelineMonth = styled.span<{
   padding-left: 0.5rem;
 `
 
-export const WithCustomMonths: ComponentStory<typeof Timeline> = (props) => {
+export const WithCustomMonths: StoryFn<typeof Timeline> = (props) => {
   return (
     <Timeline
       {...props}
@@ -277,7 +277,7 @@ const StyledCustomTimelineWeek = styled.span<{
   padding-left: 0.5rem;
 `
 
-export const WithCustomWeeks: ComponentStory<typeof Timeline> = (props) => (
+export const WithCustomWeeks: StoryFn<typeof Timeline> = (props) => (
   <Timeline
     {...props}
     hasSide
@@ -312,7 +312,7 @@ const StyledCustomTimelineDays = styled.span<{ dayWidth: number }>`
   color: white;
 `
 
-export const WithCustomDays: ComponentStory<typeof Timeline> = (props) => (
+export const WithCustomDays: StoryFn<typeof Timeline> = (props) => (
   <Timeline
     {...props}
     hasSide
@@ -348,7 +348,7 @@ const StyledCustomTimelineHours = styled.div<{ width: number }>`
   }
 `
 
-export const WithCustomHours: ComponentStory<typeof Timeline> = (props) => (
+export const WithCustomHours: StoryFn<typeof Timeline> = (props) => (
   <Timeline
     {...props}
     hasSide
@@ -385,9 +385,7 @@ const StyledCustomTodayMarker = styled.span<{ offset: string }>`
   z-index: 1;
 `
 
-export const WithCustomTodayMarker: ComponentStory<typeof Timeline> = (
-  props
-) => (
+export const WithCustomTodayMarker: StoryFn<typeof Timeline> = (props) => (
   <Timeline
     {...props}
     hasSide
@@ -422,7 +420,7 @@ const StyledCustomTimelineColumn = styled.div<{
   height: 100vh;
 `
 
-export const WithCustomColumns: ComponentStory<typeof Timeline> = (props) => (
+export const WithCustomColumns: StoryFn<typeof Timeline> = (props) => (
   <Timeline
     {...props}
     hasSide
@@ -468,17 +466,17 @@ export const WithCustomColumns: ComponentStory<typeof Timeline> = (props) => (
 
 WithCustomColumns.storyName = 'With custom columns'
 
-export const WithCustomRowCss: ComponentStory<typeof Timeline> = (props) => {
-  const rowCss: CSSProp = css`
+export const WithCustomRowCss: StoryFn<typeof Timeline> = (props) => {
+  const rowCss: CSSProp = `
     height: 40px;
   `
   const rowContentProps = {
-    css: css`
+    css: `
       background-color: ${ColorNeutral100};
     `,
   }
   const rowHeaderProps = {
-    css: css`
+    css: `
       background-color: ${ColorNeutral200};
     `,
   }
@@ -519,9 +517,7 @@ export const WithCustomRowCss: ComponentStory<typeof Timeline> = (props) => {
 
 WithCustomRowCss.storyName = 'With custom row CSS'
 
-export const WithCustomEventBarColor: ComponentStory<typeof Timeline> = (
-  props
-) => {
+export const WithCustomEventBarColor: StoryFn<typeof Timeline> = (props) => {
   return (
     <Timeline
       {...props}
@@ -567,9 +563,7 @@ const StyledCustomEvent = styled.div<{
   width: ${({ widthPx }) => widthPx};
 `
 
-export const WithCustomEventContent: ComponentStory<typeof Timeline> = (
-  props
-) => (
+export const WithCustomEventContent: StoryFn<typeof Timeline> = (props) => (
   <Timeline
     {...props}
     hasSide
@@ -639,7 +633,7 @@ export const WithCustomEventContent: ComponentStory<typeof Timeline> = (
 
 WithCustomEventContent.storyName = 'With custom event content'
 
-export const WithCustomDayWidth: ComponentStory<typeof Timeline> = (props) => {
+export const WithCustomDayWidth: StoryFn<typeof Timeline> = (props) => {
   return (
     <Timeline
       {...props}
@@ -680,7 +674,7 @@ export const WithCustomDayWidth: ComponentStory<typeof Timeline> = (props) => {
 
 WithCustomDayWidth.storyName = 'With custom day width'
 
-export const WithCustomRange: ComponentStory<typeof Timeline> = (props) => {
+export const WithCustomRange: StoryFn<typeof Timeline> = (props) => {
   return (
     <Timeline
       {...props}
@@ -721,7 +715,7 @@ export const WithCustomRange: ComponentStory<typeof Timeline> = (props) => {
 
 WithCustomRange.storyName = 'With custom range'
 
-export const NoVisibleCells: ComponentStory<typeof Timeline> = (props) => (
+export const NoVisibleCells: StoryFn<typeof Timeline> = (props) => (
   <Timeline
     {...props}
     startDate={new Date(2020, 0, 1)}
@@ -748,7 +742,7 @@ export const NoVisibleCells: ComponentStory<typeof Timeline> = (props) => (
 
 NoVisibleCells.storyName = 'No visible cells'
 
-export const HiddenToolbar: ComponentStory<typeof Timeline> = (props) => (
+export const HiddenToolbar: StoryFn<typeof Timeline> = (props) => (
   <Timeline
     {...props}
     hideToolbar
@@ -786,7 +780,7 @@ export const HiddenToolbar: ComponentStory<typeof Timeline> = (props) => (
 
 HiddenToolbar.storyName = 'Hidden toolbar'
 
-export const HiddenScaling: ComponentStory<typeof Timeline> = (props) => (
+export const HiddenScaling: StoryFn<typeof Timeline> = (props) => (
   <Timeline
     {...props}
     hideScaling

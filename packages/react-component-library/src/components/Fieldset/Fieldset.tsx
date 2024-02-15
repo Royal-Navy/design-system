@@ -12,13 +12,13 @@ export interface FieldsetProps extends ComponentWithClass {
   type?: FieldsetType
 }
 
-export const Fieldset: React.FC<FieldsetProps> = ({
+export const Fieldset = ({
   isInvalid,
   legend,
   type = 'inline',
   children,
   ...rest
-}) => {
+}: FieldsetProps) => {
   return (
     <StyledFieldset $isInvalid={isInvalid} $type={type} {...rest}>
       {legend && <StyledLegend>{legend}</StyledLegend>}

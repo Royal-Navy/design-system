@@ -4,37 +4,8 @@ import React from 'react'
 import '@royalnavy/fonts'
 import 'iframe-resizer/js/iframeResizer.contentWindow'
 import 'url-search-params-polyfill'
-import { withPerformance } from 'storybook-addon-performance/dist/cjs'
 
 import { GlobalStyleProvider } from '../src/styled-components/GlobalStyle'
-
-/**
- * Hacky way of clicking on Docs button on first load of page.
- * https://github.com/storybookjs/storybook/issues/13128
- *
- */
-function clickDocsButtonOnFirstLoad() {
-  window.removeEventListener('load', clickDocsButtonOnFirstLoad)
-
-  try {
-    const docsButtonSelector = window.parent.document.evaluate(
-      "//button[contains(., 'Docs')]",
-      window.parent.document,
-      null,
-      XPathResult.ANY_TYPE,
-      null
-    )
-
-    const button = docsButtonSelector.iterateNext()
-
-    button.click()
-  } catch (error) {
-    console.warn('Failed to set default Storybook tab', error)
-  }
-}
-
-if (window.parent !== window && window.parent.document.evaluate)
-  window.addEventListener('load', clickDocsButtonOnFirstLoad)
 
 export const parameters = {
   jsx: {
@@ -75,7 +46,6 @@ export const decorators = [
 
     return <GlobalStyleProvider>{Story()}</GlobalStyleProvider>
   },
-  withPerformance,
 ]
 
 // Preload the body font on Chromatic to avoid problem with

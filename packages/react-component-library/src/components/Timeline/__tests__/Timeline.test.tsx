@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
-import '@testing-library/jest-dom/extend-expect'
+
 import { ColorNeutral100, ColorNeutral200 } from '@royalnavy/design-tokens'
-import { css, CSSProp } from 'styled-components'
+import { CSSProp } from 'styled-components'
 import { render, RenderResult, waitFor } from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import timezoneMock from 'timezone-mock'
@@ -18,7 +18,6 @@ import {
   Timeline,
   TimelineContext,
   TimelineDays,
-  TimelineDaysProps,
   TimelineEvent,
   TimelineEvents,
   TimelineHours,
@@ -30,7 +29,7 @@ import {
   TimelineWeeks,
 } from '..'
 
-const TimelineDates: React.FC<TimelineDaysProps> = () => {
+const TimelineDates = () => {
   const {
     state: {
       options: { startDate, endDate },
@@ -725,7 +724,7 @@ describe('Timeline', () => {
 
   describe('when an event is outside the range', () => {
     beforeEach(() => {
-      const EventWithinRange: React.FC = () => (
+      const EventWithinRange = () => (
         <TimelineEvent
           startDate={new Date(2020, 1, 1, 0, 0, 0)}
           endDate={new Date(2020, 1, 10, 0, 0, 0)}
@@ -734,7 +733,7 @@ describe('Timeline', () => {
         </TimelineEvent>
       )
 
-      const EventOutsideRange: React.FC = () => (
+      const EventOutsideRange = () => (
         <TimelineEvent
           startDate={new Date(2020, 6, 1, 0, 0, 0)}
           endDate={new Date(2020, 6, 10, 0, 0, 0)}
@@ -1120,7 +1119,7 @@ describe('Timeline', () => {
 
   describe('when an event has `render` specified', () => {
     beforeEach(() => {
-      const EventWithRender: React.FC = () => (
+      const EventWithRender = () => (
         <TimelineEvent
           startDate={new Date(2020, 3, 16)}
           endDate={new Date(2020, 3, 20)}
@@ -2022,17 +2021,17 @@ describe('Timeline', () => {
 
   describe('when using custom row CSS', () => {
     beforeEach(() => {
-      const rowCss: CSSProp = css`
+      const rowCss: CSSProp = `
         height: 40px;
       `
       const rowContentProps: SubcomponentProps = {
-        css: css`
+        css: `
           background-color: ${ColorNeutral100};
         `,
         'data-testid': `content-1`,
       }
       const rowHeaderProps: SubcomponentProps = {
-        css: css`
+        css: `
           background-color: ${ColorNeutral200};
         `,
         'data-testid': `header-1`,
@@ -2125,7 +2124,7 @@ describe('Timeline', () => {
 
     it('writes an error to the console', () => {
       expect(consoleErrorSpy).toHaveBeenCalledWith(
-        'ERROR - MODDS - `startDate` is after `endDate`'
+        'ERROR - RNDS - `startDate` is after `endDate`'
       )
     })
   })
@@ -2500,9 +2499,11 @@ describe('Timeline', () => {
 
       let counter = 0
 
-      const TimelineWithUpdate: React.FC<{
+      const TimelineWithUpdate = ({
+        children,
+      }: {
         children: React.ReactElement<TimelineRowProps>
-      }> = ({ children }) => {
+      }) => {
         const [_, forceRerender] = useState({})
         counter += 1
 

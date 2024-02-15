@@ -1,5 +1,5 @@
 import React from 'react'
-import '@testing-library/jest-dom/extend-expect'
+
 import { render, RenderResult } from '@testing-library/react'
 import { selectors } from '@royalnavy/design-tokens'
 

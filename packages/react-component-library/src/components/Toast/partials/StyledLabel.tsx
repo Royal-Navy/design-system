@@ -3,7 +3,7 @@ import { selectors } from '@royalnavy/design-tokens'
 
 const { color, fontSize, spacing } = selectors
 
-export const StyledToastLabel = styled.span`
+export const StyledLabel = styled.span`
   display: block;
   color: ${color('neutral', '500')};
   font-size: ${fontSize('m')};

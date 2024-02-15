@@ -26,12 +26,12 @@ export interface TimelineRowsProps extends ComponentWithClass {
   }) => React.ReactElement
 }
 
-export const TimelineRows: React.FC<TimelineRowsProps> = ({
+export const TimelineRows = ({
   children,
   className,
   render,
   ...rest
-}) => {
+}: TimelineRowsProps) => {
   const hasChildren = React.Children.count(children) > 0
   const mainClasses = classNames('timeline__main', className)
   const {

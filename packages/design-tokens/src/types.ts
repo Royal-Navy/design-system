@@ -1,5 +1,3 @@
-import type { InterpolationValue } from 'styled-components'
-
 import * as animationTokens from './tokens/light/animation.json'
 import * as breakpointsTokens from './tokens/light/breakpoints.json'
 import * as colorsTokens from './tokens/light/colors.json'
@@ -17,13 +15,6 @@ const tokens = {
   typographyTokens,
   zindexTokens,
 }
-
-export type StyledComponentsInterpolation =
-  | ((
-      executionContext: Record<string, unknown>
-    ) => StyledComponentsInterpolation)
-  | InterpolationValue
-  | readonly StyledComponentsInterpolation[]
 
 export type Tokens = typeof tokens
 

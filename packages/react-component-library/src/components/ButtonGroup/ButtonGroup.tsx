@@ -17,11 +17,11 @@ export interface ButtonGroupProps extends ComponentWithClass {
   size?: ComponentSizeType
 }
 
-export const ButtonGroup: React.FC<ButtonGroupProps> = ({
+export const ButtonGroup = ({
   children,
   size = COMPONENT_SIZE.FORMS,
   ...rest
-}) => {
+}: ButtonGroupProps) => {
   const mappedChildren = React.Children.map(
     children,
     (child: React.ReactElement<ButtonGroupItemProps>) => {

@@ -20,11 +20,11 @@ export interface NotificationsProps {
   link: React.ReactElement<LinkTypes>
 }
 
-export const Notifications: React.FC<NotificationsProps> = ({
+export const Notifications = ({
   children,
   link,
   ...rest
-}) => (
+}: NotificationsProps) => (
   <StyledNotifications data-testid="notifications-sheet" {...rest}>
     <StyledList data-testid="notifications">{children}</StyledList>
     <StyledViewAll>

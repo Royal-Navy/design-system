@@ -13,7 +13,7 @@ import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useSelectMenu } from './hooks/useSelectMenu'
 import { SelectOptionProps } from './SelectOption'
 
-export const Select: React.FC<SelectBaseProps> = ({
+export const Select = ({
   children,
   id: externalId,
   initialIsOpen,
@@ -21,7 +21,7 @@ export const Select: React.FC<SelectBaseProps> = ({
   onChange,
   value,
   ...rest
-}) => {
+}: SelectBaseProps) => {
   const id = useExternalId('select', externalId)
   const inputRef = useRef<HTMLInputElement>(null)
 

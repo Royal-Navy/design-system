@@ -3,7 +3,7 @@ import { selectors } from '@royalnavy/design-tokens'
 
 const { color, fontSize, spacing } = selectors
 
-export const StyledToastTime = styled.span`
+export const StyledTime = styled.span`
   color: ${color('neutral', '400')};
   font-style: italic;
   font-size: ${fontSize('base')};

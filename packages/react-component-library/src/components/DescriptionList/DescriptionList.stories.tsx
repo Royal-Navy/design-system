@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DescriptionList, DescriptionListItem } from './index'
@@ -11,7 +11,7 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as ComponentMeta<typeof DescriptionList>
+} as Meta<typeof DescriptionList>
 
 const disableDefinitionList = {
   a11y: {
@@ -21,7 +21,7 @@ const disableDefinitionList = {
   },
 }
 
-export const Default: ComponentStory<typeof DescriptionList> = (props) => (
+export const Default: StoryFn<typeof DescriptionList> = (props) => (
   <DescriptionList {...props}>
     <DescriptionListItem title="Name">Horatio Nelson</DescriptionListItem>
     <DescriptionListItem title="Age">44</DescriptionListItem>
@@ -38,9 +38,7 @@ Default.args = {
   description: 'Example description',
 }
 
-Default.storyName = 'Default'
-
-export const Collapsible: ComponentStory<typeof DescriptionList> = () => (
+export const Collapsible: StoryFn<typeof DescriptionList> = () => (
   <DescriptionList description="Example description" isCollapsible>
     <DescriptionListItem title="Name">Horatio Nelson</DescriptionListItem>
     <DescriptionListItem title="Age">44</DescriptionListItem>
@@ -53,9 +51,7 @@ export const Collapsible: ComponentStory<typeof DescriptionList> = () => (
 
 Collapsible.parameters = disableDefinitionList
 
-Collapsible.storyName = 'Collapsible'
-
-export const CollapsibleOpen: ComponentStory<typeof DescriptionList> = () => (
+export const CollapsibleOpen: StoryFn<typeof DescriptionList> = () => (
   <DescriptionList description="Example description" isCollapsible isOpen>
     <DescriptionListItem title="Name">Horatio Nelson</DescriptionListItem>
     <DescriptionListItem title="Age">44</DescriptionListItem>

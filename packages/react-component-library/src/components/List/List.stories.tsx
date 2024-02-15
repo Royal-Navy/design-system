@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import { List, ListItem } from '.'
@@ -11,9 +11,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as ComponentMeta<typeof List>
+} as Meta<typeof List>
 
-export const Default: ComponentStory<typeof List> = (props) => (
+export const Default: StoryFn<typeof List> = (props) => (
   <List {...props}>
     <ListItem onClick={action('onClick')} title="List item 1">
       This is the description for item 1

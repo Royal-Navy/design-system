@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 
-export const Logo: React.FC<ComponentWithClass> = ({ ...rest }) => (
+export const Logo = ({ ...rest }: ComponentWithClass) => (
   <svg
     width="16px"
     height="16px"

@@ -6,6 +6,7 @@ import {
   getSelectedItem,
   itemToString,
   SelectBaseProps,
+  SelectChildWithStringType,
   SelectLayout,
 } from '../SelectBase'
 import { NoResults } from './NoResults'
@@ -27,7 +28,7 @@ export interface AutocompleteProps extends SelectBaseProps {
   onBlur?: (event: React.FocusEvent) => void
 }
 
-export const Autocomplete: React.FC<AutocompleteProps> = ({
+export const Autocomplete = ({
   children,
   id: externalId,
   initialIsOpen,
@@ -37,7 +38,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   onChange,
   value,
   ...rest
-}) => {
+}: AutocompleteProps) => {
   const {
     filteredItems,
     hasError,
@@ -47,7 +48,9 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     onInputValueChange,
     onIsOpenChange,
     onSelectedItemChange,
-  } = useAutocomplete(React.Children.toArray(children))
+  } = useAutocomplete(
+    React.Children.toArray(children) as SelectChildWithStringType[]
+  )
 
   const {
     buttonRef,

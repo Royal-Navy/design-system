@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom/extend-expect'
 import React, { FormEvent } from 'react'
 import { render, RenderResult, fireEvent } from '@testing-library/react'
 
@@ -149,7 +148,7 @@ describe('ButtonGroup', () => {
     it('should warn the consumer about specifying sizes for each item', () => {
       expect(consoleWarnSpy).toHaveBeenCalledTimes(2)
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - MODDS - Prop `size` on `ButtonGroupItem` will be replaced by `size` from `ButtonGroup`'
+        'WARN - RNDS - Prop `size` on `ButtonGroupItem` will be replaced by `size` from `ButtonGroup`'
       )
     })
   })

@@ -19,16 +19,17 @@ export interface RailChunkProps {
   $maxWidth: number
   testId: string
   $thresholdColor: ThresholdColor
+  children?: React.ReactNode
 }
 
-const RailChunk: React.FC<RailChunkProps> = ({
+const RailChunk = ({
   $left,
   $width,
   $maxWidth,
   testId,
   $thresholdColor,
   children,
-}) => {
+}: RailChunkProps) => {
   return (
     <StyledRailChunk
       $thresholdColor={$thresholdColor}
@@ -42,7 +43,7 @@ const RailChunk: React.FC<RailChunkProps> = ({
   )
 }
 
-export const ThresholdRail: React.FC<ThresholdRailProps> = ({ thresholds }) => {
+export const ThresholdRail = ({ thresholds }: ThresholdRailProps) => {
   const singleThreshold = thresholds?.length === 1
   const doubleThreshold = thresholds?.length === 2
 

@@ -114,14 +114,14 @@ function getTitle(children: React.ReactNode, startDate: Date, endDate: Date) {
   )} and ends on ${format(endDate, ACCESSIBLE_DATE_FORMAT)}`
 }
 
-export const TimelineEvent: React.FC<TimelineEventProps> = ({
+export const TimelineEvent = ({
   barColor,
   children,
   endDate,
   render,
   startDate,
   ...rest
-}) => {
+}: TimelineEventProps) => {
   const {
     startsBeforeStart,
     startsAfterEnd,

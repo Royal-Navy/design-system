@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import { IconBrightnessHigh } from '@royalnavy/icon-library'
 
 import { COMPONENT_SIZE } from '../Forms'
@@ -22,9 +22,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof NumberInput>
+} as Meta<typeof NumberInput>
 
-const Template: ComponentStory<typeof NumberInput> = (args) => (
+const Template: StoryFn<typeof NumberInput> = (args) => (
   <NumberInput {...args} />
 )
 

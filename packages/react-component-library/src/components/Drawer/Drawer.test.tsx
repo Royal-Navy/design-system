@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import '@testing-library/jest-dom/extend-expect'
+
 import {
   render,
   RenderResult,
@@ -140,7 +140,7 @@ describe('Drawer', () => {
 
   describe('when a `ref` prop is specified', () => {
     beforeEach(() => {
-      const DrawerWithRef: React.FC = () => {
+      const DrawerWithRef = () => {
         const [content, setContent] = useState<string | null>('Not set')
 
         return (

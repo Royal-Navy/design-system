@@ -1,4 +1,4 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import styled, { css, CSSProp } from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 
 import { TooltipPositionType } from '../Tooltip'
@@ -19,9 +19,7 @@ interface StyledContentProps {
   $position: TooltipPositionType
 }
 
-function getPositionStyles(
-  position: TooltipPositionType
-): FlattenSimpleInterpolation {
+function getPositionStyles(position: TooltipPositionType): CSSProp {
   const styles = {
     above: css`
       &::before {

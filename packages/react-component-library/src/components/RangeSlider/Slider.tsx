@@ -110,7 +110,7 @@ export interface RangeSliderProps extends Omit<SliderProps, SliderOmitType> {
   formatValue?: RangeSliderValueFormatter
 }
 
-export const RangeSlider: React.FC<RangeSliderProps> = ({
+export const RangeSlider = ({
   domain,
   step,
   hasLabels,
@@ -131,8 +131,10 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
   mode,
   onSlideStart,
   onSlideEnd,
+  // @ts-expect-error -- Forwarded by `Field` component
+  isInvalid: _isInvalid,
   ...rest
-}) => {
+}: RangeSliderProps) => {
   const [sliderValues, setSliderValues] =
     useState<ReadonlyArray<number>>(values)
   const handleRefs = values.map(() => createRef<HTMLDivElement>())

@@ -15,7 +15,7 @@ export interface ListProps extends ComponentWithClass {
     | React.ReactElement<ListItemProps>[]
 }
 
-export const List: React.FC<ListProps> = ({ children, ...rest }) => {
+export const List = ({ children, ...rest }: ListProps) => {
   const { isActive, setActiveIndex } = useListItem()
 
   const mapped = React.Children.map(

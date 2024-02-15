@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { IconBrightnessLow, IconBrightnessHigh } from '@royalnavy/icon-library'
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
@@ -17,7 +17,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof RangeSlider>
+} as Meta<typeof RangeSlider>
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ const StyledWrapper = styled.div`
   padding: 0 1.5rem;
 `
 
-const Template: ComponentStory<typeof RangeSlider> = (props) => (
+const Template: StoryFn<typeof RangeSlider> = (props) => (
   <StyledWrapper>
     <RangeSlider {...props} />
   </StyledWrapper>
@@ -95,7 +95,6 @@ Stepped.args = {
   tracksLeft: true,
   hasMarkers: true,
 }
-Stepped.storyName = 'Stepped'
 
 export const WithIcons = Template.bind({})
 WithIcons.args = {
@@ -148,4 +147,3 @@ Disabled.args = {
   hasMarkers: true,
   isDisabled: true,
 }
-Disabled.storyName = 'Disabled'

@@ -31,7 +31,8 @@
     "**/semver": "^7.5.3",
     "**/trim": "^0.0.3",
     "**/trim-newlines": "^3.0.1",
-    "lerna/axios": "^1.6.0"
+    "lerna/axios": "^1.6.0",
+    "**/@types/react": "^18.2.25"
   },
   "prettier": {
     "bracketSpacing": true,

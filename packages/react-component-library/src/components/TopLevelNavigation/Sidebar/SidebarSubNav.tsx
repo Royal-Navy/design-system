@@ -7,9 +7,7 @@ import { Sheet } from '../Sheet/Sheet'
 import { StyledSheetList } from './partials/StyledSheetList'
 import { StyledSubNavSheetButton } from './partials/StyledSubNavSheetButton'
 
-export const SidebarSubNav: React.FC<Nav<SidebarNavItemProps>> = ({
-  children,
-}) => {
+export const SidebarSubNav = ({ children }: Nav<SidebarNavItemProps>) => {
   return (
     <Sheet
       button={

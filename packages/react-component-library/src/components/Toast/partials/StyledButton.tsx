@@ -3,7 +3,7 @@ import { selectors } from '@royalnavy/design-tokens'
 
 const { color, fontSize, spacing } = selectors
 
-export const StyledToastButton = styled.button`
+export const StyledButton = styled.button`
   background: none;
   border: none;
   color: ${color('neutral', '400')};

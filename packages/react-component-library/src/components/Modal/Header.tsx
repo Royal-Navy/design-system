@@ -10,7 +10,7 @@ export interface HeaderProps {
   titleId: string
 }
 
-export const Header: React.FC<HeaderProps> = ({ onClose, title, titleId }) => (
+export const Header = ({ onClose, title, titleId }: HeaderProps) => (
   <StyledHeader data-testid="modal-header">
     <StyledTitle id={titleId} data-testid="modal-header-text">
       {title}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Pagination } from '.'
 
@@ -9,9 +9,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as ComponentMeta<typeof Pagination>
+} as Meta<typeof Pagination>
 
-export const Default: ComponentStory<typeof Pagination> = (props) => (
+export const Default: StoryFn<typeof Pagination> = (props) => (
   <Pagination {...props} />
 )
 
@@ -21,7 +21,7 @@ Default.args = {
   total: 1000,
 }
 
-export const InitialPage: ComponentStory<typeof Pagination> = (props) => (
+export const InitialPage: StoryFn<typeof Pagination> = (props) => (
   <Pagination {...props} initialPage={5} pageSize={10} total={1000} />
 )
 

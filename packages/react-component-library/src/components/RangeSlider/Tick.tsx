@@ -35,7 +35,7 @@ function isActive(
   return values.some((item) => tickValue <= item)
 }
 
-export const Tick: React.FC<TickProps> = ({
+export const Tick = ({
   tick,
   count,
   hasLabels,
@@ -46,7 +46,7 @@ export const Tick: React.FC<TickProps> = ({
   thresholds,
   tracksLeft = false,
   tracksRight = false,
-}) => {
+}: TickProps) => {
   const percent: number = useMemo(
     () => (isReversed ? 100 - tick.percent : tick.percent),
     [tick.percent, isReversed]

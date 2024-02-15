@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentMeta, Story } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 
 import { DismissibleBanner, DismissibleBannerWithTitleProps } from '.'
 
@@ -9,7 +9,7 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as ComponentMeta<typeof DismissibleBanner>
+} as Meta<typeof DismissibleBanner>
 
 export const Default: Story<DismissibleBannerWithTitleProps> = ({
   children,

@@ -7,14 +7,14 @@ import { StyledIcon } from './partials/StyledIcon'
 import { StyledStartAdornment } from './partials/StyledStartAdornment'
 import { StyledEndAdornment } from './partials/StyledEndAdornment'
 
-export const DropdownLabel: React.FC<DropdownOption> = ({
+export const DropdownLabel = ({
   icon,
   isDisabled = false,
   isHidden,
   label,
   rightContent,
   isVisible,
-}) => (
+}: DropdownOption) => (
   <StyledLabel isDisabled={isDisabled}>
     {icon && <StyledIcon data-testid="dropdown-label-icon">{icon}</StyledIcon>}
     <StyledStartAdornment data-testid="dropdown-label-label">

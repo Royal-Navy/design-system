@@ -21,10 +21,10 @@ const sidebarContextDefaults: SidebarContextDefaults = {
 
 export const SidebarContext = createContext(sidebarContextDefaults)
 
-export const SidebarProvider: React.FC<SidebarProviderProps> = ({
+export const SidebarProvider = ({
   children,
   initialIsOpen = false,
-}) => {
+}: SidebarProviderProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(initialIsOpen)
   const [hasMouseOver, setHasMouseOver] = useState<boolean>(false)
   const contextValue = useMemo(

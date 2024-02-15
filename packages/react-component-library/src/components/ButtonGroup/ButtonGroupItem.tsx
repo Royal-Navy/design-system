@@ -26,14 +26,14 @@ export interface ButtonGroupItemProps {
   size?: ComponentSizeType
 }
 
-export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
+export const ButtonGroupItem = ({
   children,
   isDisabled,
   icon,
   onClick,
   size,
   ...rest
-}) => (
+}: ButtonGroupItemProps) => (
   <Button
     isDisabled={isDisabled}
     icon={icon}

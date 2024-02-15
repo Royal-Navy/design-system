@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
+import noop from 'lodash/noop'
 
 import { Modal } from './index'
 import { StyledMain } from './partials/StyledMain'
@@ -17,23 +18,20 @@ export default {
       showFunctions: true,
     },
   },
-} as ComponentMeta<typeof Modal>
+} as Meta<typeof Modal>
 
 const primaryButton: ButtonProps = {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onClick: () => {},
+  onClick: noop,
   children: 'Primary',
 }
 
 const secondaryButton: ButtonProps = {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onClick: () => {},
+  onClick: noop,
   children: 'Secondary',
 }
 
 const tertiaryButton: ButtonProps = {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onClick: () => {},
+  onClick: noop,
   children: 'Tertiary',
 }
 
@@ -51,7 +49,7 @@ const Wrapper = styled.div<{ $height: string }>`
   }
 `
 
-const Template: ComponentStory<typeof Modal> = (args) => (
+const Template: StoryFn<typeof Modal> = (args) => (
   <Wrapper $height={args.title && args.primaryButton ? '17rem' : '12rem'}>
     <Modal {...args}>
       <pre css={{ padding: '1rem' }}>Arbitrary JSX content</pre>
@@ -114,4 +112,3 @@ Blank.args = {
   isOpen: true,
   'aria-label': 'Blank modal',
 }
-Blank.storyName = 'Blank'

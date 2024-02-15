@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-import { CSSObject } from 'styled-components'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { useClickMenu, ClickType, CLICK_BUTTON } from '../../hooks/useClickMenu'
@@ -21,14 +20,14 @@ export interface ContextMenuProps extends ComponentWithClass {
   /**
    * Optional handler function to be invoked when the component is hidden.
    */
-  onHide?: (e: MouseEvent) => void
+  onHide?: (event: MouseEvent) => void
   /**
    * Optional handler function to be invoked when the component is displayed.
    */
-  onShow?: (e: MouseEvent) => void
+  onShow?: (event: MouseEvent) => void
 }
 
-export const ContextMenu: React.FC<ContextMenuProps> = ({
+export const ContextMenu = ({
   attachedToRef,
   children,
   clickType = CLICK_BUTTON.RIGHT,
@@ -36,7 +35,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
   onHide,
   onShow,
   ...rest
-}) => {
+}: ContextMenuProps) => {
   const { isOpen, floatingElementRef, styles, attributes } = useClickMenu({
     attachedToRef,
     clickType,
@@ -56,7 +55,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
       ref={floatingElementRef}
       $hasIcons={hasIcons}
       $isOpen={isOpen}
-      css={styles.popper as CSSObject}
+      style={styles.popper}
       {...attributes.popper}
       data-testid="context-menu"
       role="menu"

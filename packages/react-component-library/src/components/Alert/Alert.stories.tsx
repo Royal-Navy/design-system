@@ -1,13 +1,11 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Alert, ALERT_VARIANT } from './index'
 
-export default { component: Alert, title: 'Alert' } as ComponentMeta<
-  typeof Alert
->
+export default { component: Alert, title: 'Alert' } as Meta<typeof Alert>
 
-export const Default: ComponentStory<typeof Alert> = ({
+export const Default: StoryFn<typeof Alert> = ({
   title,
   children,
   variant,
@@ -24,10 +22,9 @@ Default.args = {
   variant: ALERT_VARIANT.INFO,
 }
 
-export const WithoutTitle: ComponentStory<typeof Alert> = ({
-  children,
-  variant,
-}) => <Alert variant={variant}>{children}</Alert>
+export const WithoutTitle: StoryFn<typeof Alert> = ({ children, variant }) => (
+  <Alert variant={variant}>{children}</Alert>
+)
 
 WithoutTitle.args = {
   children:

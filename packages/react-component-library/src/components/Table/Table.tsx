@@ -37,14 +37,14 @@ function getKey(prefix: string, id: string) {
   return `${prefix}_${id}`
 }
 
-export const Table: React.FC<TableProps> = ({
+export const Table = ({
   data,
   caption,
   children,
   className,
   onRowClick,
   ...rest
-}) => {
+}: TableProps) => {
   const { tableData, sortTableData, sortField, sortOrder } = useTableData(data)
 
   const childrenWithSort = React.Children.map(
@@ -85,7 +85,7 @@ export const Table: React.FC<TableProps> = ({
                   <StyledTableCell
                     key={getKey(`table-cell-${child.props.field}`, row.id)}
                   >
-                    {row[child.props.field]}
+                    {row[child.props.field] as React.ReactNode}
                   </StyledTableCell>
                 )
               )}

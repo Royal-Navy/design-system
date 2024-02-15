@@ -23,13 +23,13 @@ const StyledSheetButton = styled.button`
   position: relative;
 `
 
-export const SheetButton: React.FC<SheetButtonProps> = ({
+export const SheetButton = ({
   children,
   className,
   icon,
   onClick,
   ...rest
-}) => {
+}: SheetButtonProps) => {
   return (
     <StyledSheetButton
       aria-haspopup

@@ -12,10 +12,7 @@ export interface ContextMenuItemProps extends NavItem {
   icon?: React.ReactNode
 }
 
-export const ContextMenuItem: React.FC<ContextMenuItemProps> = ({
-  icon,
-  link,
-}) => {
+export const ContextMenuItem = ({ icon, link }: ContextMenuItemProps) => {
   const linkElement = link as React.ReactElement
 
   const item = React.cloneElement(linkElement, {
@@ -23,7 +20,7 @@ export const ContextMenuItem: React.FC<ContextMenuItemProps> = ({
     children: (
       <>
         {icon && <StyledIcon>{icon}</StyledIcon>}
-        <StyledText hasIcon={!!icon} data-testid="context-menu-item-text">
+        <StyledText $hasIcon={!!icon} data-testid="context-menu-item-text">
           {linkElement.props.children}
         </StyledText>
       </>

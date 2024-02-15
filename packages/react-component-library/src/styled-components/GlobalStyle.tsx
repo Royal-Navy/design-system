@@ -104,10 +104,10 @@ const globalStyleContextDefaults: GlobalStyleContextDefaults = {
 
 export const GlobalStyleContext = createContext(globalStyleContextDefaults)
 
-export const GlobalStyleProvider: React.FC<GlobalStyleProviderProps> = ({
+export const GlobalStyleProvider = ({
   children,
   theme = lightTheme,
-}) => {
+}: GlobalStyleProviderProps) => {
   const contextValue = useMemo(
     () => ({
       theme,

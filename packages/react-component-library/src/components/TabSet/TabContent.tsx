@@ -9,12 +9,12 @@ interface TabContentProps {
   children: React.ReactElement<TabSetItemProps>
 }
 
-export const TabContent: React.FC<TabContentProps> = ({
+export const TabContent = ({
   tabId,
   isActive,
   children,
   ...rest
-}) => (
+}: TabContentProps) => (
   <StyledContent
     $isActive={isActive}
     role="tabpanel"

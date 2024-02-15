@@ -6,14 +6,15 @@ import { StyledContent } from './partials/StyledContent'
 export interface FloatingBoxContentProps {
   contentId?: string
   scheme: FloatingBoxSchemeType
+  children: React.ReactNode
 }
 
-export const FloatingBoxContent: React.FC<FloatingBoxContentProps> = ({
+export const FloatingBoxContent = ({
   children,
   contentId,
   scheme,
   ...rest
-}) => (
+}: FloatingBoxContentProps) => (
   <StyledContent
     $scheme={scheme}
     id={contentId}

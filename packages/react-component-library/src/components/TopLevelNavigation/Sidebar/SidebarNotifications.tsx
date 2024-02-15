@@ -26,11 +26,11 @@ export interface SidebarNotificationsProps extends ComponentWithClass {
   notifications?: React.ReactElement<NotificationsProps>
 }
 
-export const SidebarNotifications: React.FC<SidebarNotificationsProps> = ({
+export const SidebarNotifications = ({
   initialIsOpen,
   notifications,
   hasUnreadNotification,
-}) => {
+}: SidebarNotificationsProps) => {
   const { isOpen } = useContext(SidebarContext)
 
   if (!notifications) {

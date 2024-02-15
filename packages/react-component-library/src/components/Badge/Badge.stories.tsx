@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import {
   Badge,
@@ -9,11 +9,9 @@ import {
   BADGE_VARIANT,
 } from '.'
 
-export default { component: Badge, title: 'Badge' } as ComponentMeta<
-  typeof Badge
->
+export default { component: Badge, title: 'Badge' } as Meta<typeof Badge>
 
-export const Default: ComponentStory<typeof Badge> = ({
+export const Default: StoryFn<typeof Badge> = ({
   color,
   colorVariant,
   size,

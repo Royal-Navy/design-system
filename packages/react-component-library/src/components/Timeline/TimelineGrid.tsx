@@ -33,7 +33,7 @@ function getRenderColumns(
   return (rowsChildren[0] as React.ReactElement<TimelineRowsProps>).props.render
 }
 
-export const TimelineGrid: React.FC<ComponentNameProps> = ({
+export const TimelineGrid = ({
   children,
   className,
   hasSide,
@@ -41,7 +41,7 @@ export const TimelineGrid: React.FC<ComponentNameProps> = ({
   hideToolbar,
   isFullWidth,
   ...rest
-}) => {
+}: ComponentNameProps) => {
   const {
     state: { currentScaleOption },
   } = useContext(TimelineContext)

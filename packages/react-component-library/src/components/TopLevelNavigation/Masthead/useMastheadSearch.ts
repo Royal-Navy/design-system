@@ -5,7 +5,7 @@ export function useMastheadSearch(initialIsOpen: boolean) {
   const [containerWidth, setContainerWidth] = useState(0)
   const mastheadRefObject = useRef<HTMLDivElement | null>(null)
 
-  const mastheadRef = useCallback((element) => {
+  const mastheadRef = useCallback((element: HTMLDivElement | null) => {
     mastheadRefObject.current = element
 
     if (element) {

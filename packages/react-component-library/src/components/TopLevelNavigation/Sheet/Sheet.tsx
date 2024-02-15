@@ -19,7 +19,7 @@ export interface SheetProps extends ComponentWithClass {
   initialIsOpen?: boolean
 }
 
-export const Sheet: React.FC<SheetProps> = ({
+export const Sheet = ({
   button,
   children,
   placement = FLOATING_BOX_PLACEMENT.RIGHT,
@@ -27,7 +27,7 @@ export const Sheet: React.FC<SheetProps> = ({
   id: externalId,
   initialIsOpen = false,
   ...rest
-}) => {
+}: SheetProps) => {
   const id = useExternalId('sheet', externalId)
   const { floatingBoxChildrenRef, isVisible, mouseEvents } = useHideShow(
     true,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { SectionDivider } from './index'
 
@@ -12,9 +12,9 @@ export default {
       type: 'string',
     },
   },
-} as ComponentMeta<typeof SectionDivider>
+} as Meta<typeof SectionDivider>
 
-const Template: ComponentStory<typeof SectionDivider> = (args) => (
+const Template: StoryFn<typeof SectionDivider> = (args) => (
   <SectionDivider {...args} />
 )
 

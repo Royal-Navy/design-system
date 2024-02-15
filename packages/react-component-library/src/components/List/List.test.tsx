@@ -1,5 +1,5 @@
 import React from 'react'
-import '@testing-library/jest-dom/extend-expect'
+
 import {
   fireEvent,
   render,
@@ -228,19 +228,19 @@ describe('List', () => {
 
     it('should warn the consumer `isActive` will be overwritten', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - MODDS - Prop `isActive` on `ListItem` will be overwritten'
+        'WARN - RNDS - Prop `isActive` on `ListItem` will be overwritten'
       )
     })
 
     it('should warn the consumer `onMouseEnter` will be overwritten', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - MODDS - Prop `onMouseEnter` on `ListItem` will be overwritten'
+        'WARN - RNDS - Prop `onMouseEnter` on `ListItem` will be overwritten'
       )
     })
 
     it('should warn the consumer `onMouseLeave` will be overwritten', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - MODDS - Prop `onMouseLeave` on `ListItem` will be overwritten'
+        'WARN - RNDS - Prop `onMouseLeave` on `ListItem` will be overwritten'
       )
     })
   })

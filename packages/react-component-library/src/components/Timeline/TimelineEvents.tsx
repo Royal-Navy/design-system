@@ -9,7 +9,7 @@ export interface TimelineEventsProps extends ComponentWithClass {
     | React.ReactElement<TimelineEventProps>[]
 }
 
-export const TimelineEvents: React.FC<TimelineEventsProps> = (props) => {
+export const TimelineEvents = (props: TimelineEventsProps) => {
   const { children, ...rest } = props
 
   return (

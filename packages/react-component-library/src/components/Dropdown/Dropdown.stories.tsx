@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { IconLayers, IconAnchor } from '@royalnavy/icon-library'
 import styled from 'styled-components'
@@ -23,7 +23,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Dropdown>
+} as Meta<typeof Dropdown>
 
 const options = [
   { value: 'option', label: 'Option' },
@@ -36,7 +36,7 @@ const StyledWrapper = styled.div`
   height: 15rem;
 `
 
-const Template: ComponentStory<typeof Dropdown> = (props) => {
+const Template: StoryFn<typeof Dropdown> = (props) => {
   return (
     <StyledWrapper>
       <Dropdown {...props} />
@@ -51,7 +51,6 @@ Default.args = {
 }
 
 export const Open = Template.bind({})
-Open.storyName = 'Open'
 Open.args = {
   options,
   initialIsOpen: true,
@@ -63,7 +62,7 @@ const iconOptions = options.map((option) => ({
   icon: <IconAnchor />,
 }))
 
-export const WithIcons: ComponentStory<typeof Dropdown> = (props) => (
+export const WithIcons: StoryFn<typeof Dropdown> = (props) => (
   <StyledWrapper>
     <Dropdown
       {...props}

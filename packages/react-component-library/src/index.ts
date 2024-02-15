@@ -1,7 +1,3 @@
-import { useToasts } from 'react-toast-notifications'
-
-export { useToasts }
-
 // Hooks
 export * from './hooks'
 

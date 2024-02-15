@@ -1,139 +1,49 @@
-import React from 'react'
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
-import { useToasts, Options } from 'react-toast-notifications'
+import React, { useEffect } from 'react'
+import { Meta, StoryFn } from '@storybook/react'
 
-import { ToastProvider, Toast } from '.'
+import { TOAST_APPEARANCE, Toast, ToastProps, showToast } from '.'
 import { Button } from '../Button'
 
 export default {
   component: Toast,
-  subcomponents: { ToastProvider },
   title: 'Toast',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
-    docs: {
-      description: {
-        component:
-          'This component wraps a popular open-source library. See comprehensive documentation [here](https://github.com/jossmac/react-toast-notifications#readme).',
-      },
-    },
   },
-} as ComponentMeta<typeof Toast>
+} as Meta<typeof Toast>
 
-const LABEL = 'Example label'
-const DESCRIPTION = 'This is an example toast message'
+const LABEL = 'Hello, World!'
+const DESCRIPTION =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, vestibulum mi nec, lacinia ipsum.'
 const DATE_TIME = new Date('Tue, 18 Feb 2020 14:36:43 GMT')
 
-const ToastButton: React.FC<Options> = ({
-  appearance = 'info',
-  autoDismiss = false,
-  onDismiss,
-}) => {
-  const { addToast } = useToasts()
+const ToastButton = (props: ToastProps) => {
+  useEffect(() => {
+    showToast(DESCRIPTION, Infinity)
+  })
 
   return (
-    <Button
-      onClick={(_) => {
-        addToast(DESCRIPTION, {
-          label: LABEL,
-          appearance,
-          autoDismiss,
-          onDismiss,
-        })
-      }}
-    >
-      Add Toast
-    </Button>
+    <div style={{ minHeight: '10rem' }}>
+      <Toast {...props} />
+      <Button
+        onClick={(_: React.FormEvent<HTMLButtonElement>) => {
+          showToast(DESCRIPTION)
+        }}
+      >
+        Show Toast
+      </Button>
+    </div>
   )
 }
-export const Default: Story<Options> = (props) => (
-  <ToastProvider>
-    <ToastButton {...props} />
-  </ToastProvider>
-)
 
-Default.args = {}
+export const Default: StoryFn<typeof Toast> = ({
+  dateTime,
+  label,
+  appearance,
+}) => <ToastButton dateTime={dateTime} label={label} appearance={appearance} />
 
-export const AutoDismiss: Story<Options> = (props) => (
-  <ToastProvider>
-    <ToastButton {...props} appearance="info" autoDismiss />
-  </ToastProvider>
-)
-
-AutoDismiss.storyName = 'Auto dismiss'
-
-export const ComponentOnly: ComponentStory<typeof Toast> = (props) => (
-  <Toast
-    {...props}
-    appearance="info"
-    autoDismiss={false}
-    autoDismissTimeout={300}
-    isRunning={false}
-    placement="top-right"
-    transitionDuration={300}
-    transitionState="entered"
-    label={LABEL}
-    dateTime={DATE_TIME}
-  >
-    {DESCRIPTION}
-  </Toast>
-)
-
-ComponentOnly.storyName = 'Component only'
-
-export const Danger: ComponentStory<typeof Toast> = (props) => (
-  <Toast
-    {...props}
-    appearance="error"
-    autoDismiss={false}
-    autoDismissTimeout={300}
-    isRunning={false}
-    placement="top-right"
-    transitionDuration={300}
-    transitionState="entered"
-    label={LABEL}
-    dateTime={DATE_TIME}
-  >
-    {DESCRIPTION}
-  </Toast>
-)
-
-Danger.storyName = 'Danger'
-
-export const Success: ComponentStory<typeof Toast> = (props) => (
-  <Toast
-    {...props}
-    appearance="success"
-    autoDismiss={false}
-    autoDismissTimeout={300}
-    isRunning={false}
-    placement="top-right"
-    transitionDuration={300}
-    transitionState="entered"
-    label={LABEL}
-    dateTime={DATE_TIME}
-  >
-    {DESCRIPTION}
-  </Toast>
-)
-
-Success.storyName = 'Success'
-
-export const Warning: ComponentStory<typeof Toast> = (props) => (
-  <Toast
-    {...props}
-    appearance="warning"
-    autoDismiss={false}
-    autoDismissTimeout={300}
-    isRunning={false}
-    placement="top-right"
-    transitionDuration={300}
-    transitionState="entered"
-    label={LABEL}
-    dateTime={DATE_TIME}
-  >
-    {DESCRIPTION}
-  </Toast>
-)
-
-Warning.storyName = 'Warning'
+Default.args = {
+  dateTime: DATE_TIME,
+  label: LABEL,
+  appearance: TOAST_APPEARANCE.INFO,
+}

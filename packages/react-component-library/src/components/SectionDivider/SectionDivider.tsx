@@ -10,10 +10,7 @@ export interface SectionDividerProps extends ComponentWithClass {
   children?: string
 }
 
-export const SectionDivider: React.FC<SectionDividerProps> = ({
-  title,
-  children,
-}) => {
+export const SectionDivider = ({ title, children }: SectionDividerProps) => {
   return (
     <StyledSectionDivider>
       {title && (

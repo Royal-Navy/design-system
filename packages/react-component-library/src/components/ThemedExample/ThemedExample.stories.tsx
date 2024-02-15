@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import {
@@ -17,18 +17,17 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof CustomTokenSetsExample>
+} as Meta<typeof CustomTokenSetsExample>
 
-export const Default: ComponentStory<typeof CustomTokenSetsExample> = () => (
+export const Default: StoryFn<typeof CustomTokenSetsExample> = () => (
   <CustomTokenSetsExample />
 )
 
 Default.args = {}
 Default.storyName = 'Custom Token Sets'
 
-export const StyledTheming: ComponentStory<
-  typeof CustomTokenSetsExample
-> = () => <StyledThemingExample />
+export const StyledTheming: StoryFn<typeof CustomTokenSetsExample> = () => (
+  <StyledThemingExample />
+)
 
 StyledTheming.args = {}
-StyledTheming.storyName = 'Styled Theming'

@@ -9,10 +9,7 @@ interface InlineButtonProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export const ClearButton: React.FC<InlineButtonProps> = ({
-  isDisabled,
-  ...rest
-}) => (
+export const ClearButton = ({ isDisabled, ...rest }: InlineButtonProps) => (
   <InlineButton
     aria-label="Clear value"
     data-testid="select-clear-button"

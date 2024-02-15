@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Fieldset } from './index'
 import { Field } from '../Field'
@@ -9,9 +9,9 @@ export default {
   component: Fieldset,
   title: 'Forms/Fieldset',
   parameters: { actions: { argTypesRegex: '^on.*' } },
-} as ComponentMeta<typeof Fieldset>
+} as Meta<typeof Fieldset>
 
-const Template: ComponentStory<typeof Fieldset> = (args) => (
+const Template: StoryFn<typeof Fieldset> = (args) => (
   <Fieldset {...args}>
     <Field>
       <TextInput label="Address line 1" name="address1" />
@@ -30,7 +30,7 @@ Default.args = {
   legend: 'Example legend',
 }
 
-const TemplateHorizontal: ComponentStory<typeof Fieldset> = (_) => (
+const TemplateHorizontal: StoryFn<typeof Fieldset> = (_) => (
   <>
     <Fieldset legend="Home address">
       <Field>
@@ -59,7 +59,7 @@ const TemplateHorizontal: ComponentStory<typeof Fieldset> = (_) => (
 
 export const Horizontal = TemplateHorizontal.bind({})
 
-const TemplateVertical: ComponentStory<typeof Fieldset> = (_) => (
+const TemplateVertical: StoryFn<typeof Fieldset> = (_) => (
   <>
     <Fieldset type="block" legend="Home address">
       <Field>

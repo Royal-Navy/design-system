@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Switch, SwitchOption } from '.'
 import { COMPONENT_SIZE } from '../Forms'
@@ -11,9 +11,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as ComponentMeta<typeof Switch>
+} as Meta<typeof Switch>
 
-const Template: ComponentStory<typeof Switch> = (props) => (
+const Template: StoryFn<typeof Switch> = (props) => (
   <Switch {...props}>
     <SwitchOption label="Day" value="1" />
     <SwitchOption label="Week" value="2" />
@@ -28,7 +28,6 @@ Default.args = {
 }
 
 export const Disabled = Template.bind({})
-Disabled.storyName = 'Disabled'
 Disabled.args = {
   name: 'switch-disabled',
   value: '2',
@@ -36,7 +35,6 @@ Disabled.args = {
 }
 
 export const Invalid = Template.bind({})
-Invalid.storyName = 'Invalid'
 Invalid.args = {
   name: 'switch-invalid',
   isInvalid: true,
@@ -57,7 +55,6 @@ SelectedValue.args = {
 }
 
 export const Small = Template.bind({})
-Small.storyName = 'Small'
 Small.args = {
   name: 'switch-small',
   size: COMPONENT_SIZE.SMALL,

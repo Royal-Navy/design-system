@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Dialog } from './index'
 import { StyledDialog } from './partials/StyledDialog'
@@ -27,9 +27,9 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof Dialog>
+} as Meta<typeof Dialog>
 
-const Template: ComponentStory<typeof Dialog> = (args) => (
+const Template: StoryFn<typeof Dialog> = (args) => (
   <Wrapper>
     <Dialog {...args} />
   </Wrapper>

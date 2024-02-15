@@ -1,4 +1,4 @@
-process.env.MODDS_LOG_LEVEL = 'debug'
+process.env.RNDS_LOG_LEVEL = 'debug'
 
 module.exports = {
   moduleNameMapper: {
@@ -12,7 +12,10 @@ module.exports = {
   testEnvironment: 'jsdom',
   testMatch: ['**/?(*.)(test).ts?(x)'],
   testPathIgnorePatterns: ['e2e'],
-  setupFilesAfterEnv: ['<rootDir>/jest/setupTests.js'],
+  setupFilesAfterEnv: [
+    '<rootDir>/jest/setupTests.js',
+    '<rootDir>/jest/setupPolyfills.js',
+  ],
   globalSetup: '<rootDir>/jest/globalSetup.js',
   transformIgnorePatterns: [
     '/node_modules/(?!@royalnavy/design-tokens).+\\.js$',

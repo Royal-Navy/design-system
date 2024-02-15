@@ -2,7 +2,7 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form/dist/index.ie11'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import styled from 'styled-components'
 
 import { TextInput } from '../../components/TextInput'
@@ -29,9 +29,7 @@ const StyledRangeSlider = styled(RangeSlider)`
   margin-top: 3rem;
 `
 
-const Example: React.FC<{ initialValues: FormValues }> = ({
-  initialValues,
-}) => {
+const Example = ({ initialValues }: { initialValues: FormValues }) => {
   const {
     control,
     setValue,
@@ -348,9 +346,9 @@ const Example: React.FC<{ initialValues: FormValues }> = ({
 export default {
   title: 'Forms/Usage/react-hook-form',
   component: Example,
-} as ComponentMeta<typeof Example>
+} as Meta<typeof Example>
 
-const Template: ComponentStory<typeof Example> = (args) => <Example {...args} />
+const Template: StoryFn<typeof Example> = (args) => <Example {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

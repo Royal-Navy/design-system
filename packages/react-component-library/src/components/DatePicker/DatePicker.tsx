@@ -159,7 +159,7 @@ export interface DatePickerProps
 const replaceInvalidDate = (date: Date | null | undefined): Date | undefined =>
   isDateValid(date) ? date : undefined
 
-export const DatePicker: React.FC<DatePickerProps> = ({
+export const DatePicker = ({
   className,
   endDate: externalEndDate,
   format: datePickerFormat = DATE_FORMAT.SHORT,
@@ -179,10 +179,12 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   placement = 'bottom-start',
   onBlur,
   today,
+
   // Formik can pass value – drop it to stop it being forwarded to the input
   value: _,
+
   ...rest
-}) => {
+}: DatePickerProps) => {
   const id = useExternalId(externalId)
   const titleId = useExternalId('datepicker-title')
   const floatingBoxId = useExternalId('datepicker-contentId')

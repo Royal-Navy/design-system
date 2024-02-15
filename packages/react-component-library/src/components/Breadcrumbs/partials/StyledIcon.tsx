@@ -4,7 +4,7 @@ import { IconChevronRight } from '@royalnavy/icon-library'
 
 const { color } = selectors
 
-export const StyledIcon = styled(IconChevronRight)`
+export const StyledIcon: typeof IconChevronRight = styled(IconChevronRight)`
   display: inline-block;
   color: ${color('neutral', '200')};
 `

@@ -28,7 +28,7 @@ export interface InputProps {
   value?: string | null
 }
 
-export const Input: React.FC<InputProps> = ({
+export const Input = ({
   hasFocus,
   isDisabled,
   id,
@@ -38,7 +38,7 @@ export const Input: React.FC<InputProps> = ({
   value,
   onChange,
   ...rest
-}) => {
+}: InputProps) => {
   const hasLabel = !!(label && label.length)
   const { handleKeyDown } = useInputKeys(step, onChange)
 

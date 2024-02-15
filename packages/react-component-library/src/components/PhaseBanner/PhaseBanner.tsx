@@ -22,13 +22,13 @@ export interface PhaseBannerProps extends ComponentWithClass {
   phase?: 'alpha' | 'beta'
 }
 
-export const PhaseBanner: React.FC<PhaseBannerProps> = ({
+export const PhaseBanner = ({
   children,
   isFullWidth = false,
   link = '/feedback',
   phase = 'alpha',
   ...rest
-}) => (
+}: PhaseBannerProps) => (
   <StyledPhaseBanner data-testid="phase-banner" {...rest}>
     <StyledWrapper
       $isFullWidth={isFullWidth}

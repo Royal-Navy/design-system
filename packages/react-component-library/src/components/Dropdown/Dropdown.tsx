@@ -141,13 +141,13 @@ const StyledSelect = styled(Select)`
   }
 `
 
-export const Dropdown: React.FC<DropdownProps> = ({
+export const Dropdown = ({
   initialIsOpen,
   onSelect,
   options,
   label,
   ...rest
-}) => {
+}: DropdownProps) => {
   const onChange = (option: ValueType<DropdownOption, boolean>) => {
     const dropdownOption = option as DropdownOption
     onSelect?.(dropdownOption.value)

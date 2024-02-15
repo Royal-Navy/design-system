@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@royalnavy/eslint-config-react'],
+  extends: ['@royalnavy/eslint-config-react', 'plugin:storybook/recommended'],
   parserOptions: {
     tsconfigRootDir: __dirname,
     project: './tsconfig.eslint.json',

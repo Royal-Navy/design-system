@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import { IconBrightnessLow } from '@royalnavy/icon-library'
@@ -14,9 +14,9 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as ComponentMeta<typeof ButtonGroup>
+} as Meta<typeof ButtonGroup>
 
-export const Default: ComponentStory<typeof ButtonGroup> = ({ size }) => (
+export const Default: StoryFn<typeof ButtonGroup> = ({ size }) => (
   <ButtonGroup size={size}>
     <ButtonGroupItem onClick={action('onClick - One')}>One</ButtonGroupItem>
     <ButtonGroupItem onClick={action('onClick - Two')}>Two</ButtonGroupItem>
@@ -34,7 +34,7 @@ Default.args = {
   size: COMPONENT_SIZE.FORMS,
 }
 
-export const Small: ComponentStory<typeof ButtonGroup> = ({ size }) => (
+export const Small: StoryFn<typeof ButtonGroup> = ({ size }) => (
   <ButtonGroup size={size}>
     <ButtonGroupItem onClick={action('onClick')}>One</ButtonGroupItem>
     <ButtonGroupItem>Two</ButtonGroupItem>

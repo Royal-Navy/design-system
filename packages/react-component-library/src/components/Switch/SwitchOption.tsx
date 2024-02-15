@@ -39,7 +39,7 @@ export interface SwitchOptionProps extends ComponentWithClass {
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
 }
 
-export const SwitchOption: React.FC<SwitchOptionProps> = ({
+export const SwitchOption = ({
   label,
   value,
   isDisabled,
@@ -47,7 +47,7 @@ export const SwitchOption: React.FC<SwitchOptionProps> = ({
   id,
   isActive,
   onChange,
-}) => {
+}: SwitchOptionProps) => {
   const localRef = useRef<HTMLInputElement>(null)
 
   const handleKeyDown = (e: React.KeyboardEvent) => {

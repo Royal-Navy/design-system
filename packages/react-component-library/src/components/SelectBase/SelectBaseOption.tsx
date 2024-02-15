@@ -12,6 +12,7 @@ export interface SelectBaseOptionProps extends ComponentWithClass {
   isHighlighted?: boolean
   value: string
   title?: string
+  isDisabled?: boolean
 }
 
 export interface SelectBaseOptionAsStringProps extends SelectBaseOptionProps {
@@ -21,27 +22,33 @@ export interface SelectBaseOptionAsStringProps extends SelectBaseOptionProps {
 export const SelectBaseOption = React.forwardRef<
   HTMLLIElement,
   SelectBaseOptionProps
->(({ badge, icon, children, isHighlighted, title, ...rest }, ref) => {
-  return (
-    <StyledOption
-      $isHighlighted={isHighlighted}
-      data-testid="select-option"
-      ref={ref}
-      {...rest}
-    >
-      {icon}
-      <StyledOptionText title={title}>{children}</StyledOptionText>
-      {badge && (
-        <StyledOptionBadge
-          data-testid="select-badge"
-          size={BADGE_SIZE.XSMALL}
-          variant={BADGE_VARIANT.PILL}
-        >
-          {badge}
-        </StyledOptionBadge>
-      )}
-    </StyledOption>
-  )
-})
+>(
+  (
+    { badge, icon, children, isHighlighted, title, isDisabled, ...rest },
+    ref
+  ) => {
+    return (
+      <StyledOption
+        $isHighlighted={isHighlighted}
+        data-testid="select-option"
+        ref={ref}
+        disabled={isDisabled}
+        {...rest}
+      >
+        {icon}
+        <StyledOptionText title={title}>{children}</StyledOptionText>
+        {badge && (
+          <StyledOptionBadge
+            data-testid="select-badge"
+            size={BADGE_SIZE.XSMALL}
+            variant={BADGE_VARIANT.PILL}
+          >
+            {badge}
+          </StyledOptionBadge>
+        )}
+      </StyledOption>
+    )
+  }
+)
 
 SelectBaseOption.displayName = 'SelectBaseOption'

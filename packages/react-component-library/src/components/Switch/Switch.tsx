@@ -48,7 +48,7 @@ export interface SwitchProps extends ComponentWithClass, InputValidationProps {
   children: SwitchChildType | SwitchChildType[]
 }
 
-export const Switch: React.FC<SwitchProps> = ({
+export const Switch = ({
   name,
   value,
   label,
@@ -58,7 +58,7 @@ export const Switch: React.FC<SwitchProps> = ({
   isInvalid,
   children,
   ...rest
-}) => {
+}: SwitchProps) => {
   const [active, setActive] = useState<string | undefined>()
   const id = useExternalId()
 

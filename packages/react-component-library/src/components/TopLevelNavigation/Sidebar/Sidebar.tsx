@@ -45,7 +45,7 @@ export interface SidebarProps extends ComponentWithClass {
   initialIsOpen?: boolean
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({
+export const Sidebar = ({
   icon,
   title,
   children,
@@ -55,7 +55,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   initialIsNotificationsOpen,
   initialIsOpen = false,
   ...rest
-}) => {
+}: SidebarProps) => {
   const nodeRef = useRef(null)
 
   return (

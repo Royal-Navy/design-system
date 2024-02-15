@@ -4,7 +4,7 @@ import { Nav, NavItem } from '../../common/Nav'
 import { StyledTabNav } from './partials/StyledTabNav'
 import { StyledTabs } from '../TabBase/partials/StyledTabs'
 
-export const TabNav: React.FC<Nav<NavItem>> = ({ children, ...rest }) => (
+export const TabNav = ({ children, ...rest }: Nav<NavItem>) => (
   <StyledTabNav {...rest}>
     <StyledTabs>{children}</StyledTabs>
   </StyledTabNav>

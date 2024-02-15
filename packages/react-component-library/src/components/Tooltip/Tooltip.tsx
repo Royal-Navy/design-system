@@ -34,7 +34,7 @@ export interface TooltipProps extends PositionType {
   width?: number
 }
 
-export const Tooltip: React.FC<TooltipProps> = ({
+export const Tooltip = ({
   bottom,
   children,
   left,
@@ -44,7 +44,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   top,
   width,
   ...rest
-}) => {
+}: TooltipProps) => {
   const contentId = useExternalId('tooltip-content')
   const titleId = useExternalId('tooltip-title')
 

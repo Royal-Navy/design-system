@@ -1,4 +1,9 @@
+const { dirname, join } = require('path')
 const newRelic = require('./newRelic')
+
+function getAbsolutePath(value) {
+  return dirname(require.resolve(join(value, 'package.json')))
+}
 
 module.exports = {
   addons: [
@@ -8,18 +13,17 @@ module.exports = {
         configureJSX: true,
       },
     },
-    '@storybook/addon-a11y',
-    '@storybook/addon-controls',
-    '@storybook/addon-actions',
-    'storybook-addon-performance/dist/cjs/register',
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-interactions'),
+    getAbsolutePath('@storybook/addon-a11y'),
   ],
-  core: {
-    builder: 'webpack5',
-  },
+
   previewHead: (head) => `
     ${head}
     ${process.env.NETLIFY ? newRelic.script : ''}
   `,
+
   webpackFinal: (config) => {
     // Transpile Downshift for IE11 compatibility
     return {
@@ -42,8 +46,22 @@ module.exports = {
       },
     }
   },
+
   stories: ['../src/**/*.stories.tsx'],
-  reactOptions: {
-    strictMode: process.env.REACT_STRICT_MODE === '1',
+
+  framework: {
+    name: getAbsolutePath('@storybook/react-webpack5'),
+
+    options: {
+      strictMode: false,
+    },
+  },
+
+  docs: {
+    autodocs: true,
+  },
+
+  typescript: {
+    reactDocgen: 'react-docgen',
   },
 }

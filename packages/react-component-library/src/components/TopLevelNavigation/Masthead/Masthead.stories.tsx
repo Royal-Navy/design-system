@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import {
   IconChatBubble,
   IconExitToApp,
@@ -7,7 +7,6 @@ import {
   IconSettings,
   IconHome,
 } from '@royalnavy/icon-library'
-import { css } from 'styled-components'
 
 import { Link } from '../../Link'
 import {
@@ -38,9 +37,9 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof Masthead>
+} as Meta<typeof Masthead>
 
-export const Default: ComponentStory<typeof Masthead> = (props) => {
+export const Default: StoryFn<typeof Masthead> = (props) => {
   const notifications = (
     <Notifications link={<Link href="#" />}>
       <Notification
@@ -115,7 +114,7 @@ Default.args = {
   hasUnreadNotification: true,
 }
 
-export const CustomLogo: ComponentStory<typeof Masthead> = (props) => (
+export const CustomLogo: StoryFn<typeof Masthead> = (props) => (
   <Masthead {...props} Logo={IconHome} />
 )
 
@@ -124,7 +123,7 @@ CustomLogo.args = {
   onSearch: null,
 }
 
-export const WithoutLogo: ComponentStory<typeof Masthead> = (props) => (
+export const WithoutLogo: StoryFn<typeof Masthead> = (props) => (
   <Masthead {...props} hasDefaultLogo={false} />
 )
 
@@ -133,13 +132,13 @@ WithoutLogo.args = {
   onSearch: null,
 }
 
-export const WithSearch: ComponentStory<typeof Masthead> = (props) => (
+export const WithSearch: StoryFn<typeof Masthead> = (props) => (
   <Masthead {...props} />
 )
 
 WithSearch.storyName = 'With search'
 
-export const WithAvatarLinks: ComponentStory<typeof Masthead> = (props) => {
+export const WithAvatarLinks: StoryFn<typeof Masthead> = (props) => {
   const user = (
     <MastheadUser initials="RN">
       <MastheadUserItem
@@ -169,7 +168,7 @@ WithAvatarLinks.args = {
   onSearch: null,
 }
 
-export const WithNavigation: ComponentStory<typeof Masthead> = (props) => {
+export const WithNavigation: StoryFn<typeof Masthead> = (props) => {
   const nav = (
     <MastheadNav>
       <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
@@ -187,7 +186,7 @@ WithNavigation.args = {
   onSearch: null,
 }
 
-export const WithNotifications: ComponentStory<typeof Masthead> = (props) => {
+export const WithNotifications: StoryFn<typeof Masthead> = (props) => {
   const notifications = (
     <Notifications link={<Link href="#" />}>
       <Notification
@@ -234,11 +233,9 @@ WithSearchOpen.parameters = {
   docs: { disable: true },
 }
 
-export const WithNotificationsOpen: ComponentStory<typeof Masthead> = (
-  args
-) => (
+export const WithNotificationsOpen: StoryFn<typeof Masthead> = (args) => (
   <div
-    css={css`
+    css={`
       height: 25rem;
     `}
   >
@@ -253,7 +250,7 @@ WithNotificationsOpen.parameters = {
   docs: { disable: true },
 }
 
-export const WithUserMenuOpen: ComponentStory<typeof Masthead> = (args) => {
+export const WithUserMenuOpen: StoryFn<typeof Masthead> = (args) => {
   const user = (
     <MastheadUser initials="AB" initialIsOpen>
       <MastheadUserItem
@@ -278,7 +275,7 @@ export const WithUserMenuOpen: ComponentStory<typeof Masthead> = (args) => {
 
   return (
     <div
-      css={css`
+      css={`
         height: 10rem;
       `}
     >

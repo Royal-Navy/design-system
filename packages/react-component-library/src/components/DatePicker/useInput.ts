@@ -44,7 +44,7 @@ export function useInput(
   }, [dispatch, isRange])
 
   const handleInputChange = useCallback(
-    (event) => {
+    (event: React.ChangeEvent<HTMLInputElement>) => {
       if (isRange) {
         return
       }

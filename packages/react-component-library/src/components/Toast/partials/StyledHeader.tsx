@@ -3,7 +3,7 @@ import { selectors } from '@royalnavy/design-tokens'
 
 const { spacing } = selectors
 
-export const StyledToastHeader = styled.div`
+export const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: stretch;

@@ -1,6 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { css } from 'styled-components'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { Avatar, AVATAR_VARIANT } from '.'
 
@@ -8,11 +7,11 @@ export default {
   component: Avatar,
   parameters: { layout: 'fullscreen' },
   title: 'Avatar',
-} as ComponentMeta<typeof Avatar>
+} as Meta<typeof Avatar>
 
-const Template: ComponentStory<typeof Avatar> = (props) => (
+const Template: StoryFn<typeof Avatar> = (props) => (
   <div
-    css={css`
+    css={`
       background: #c9c9c9;
       padding: 20px;
     `}

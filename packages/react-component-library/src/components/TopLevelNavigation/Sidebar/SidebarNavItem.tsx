@@ -21,14 +21,14 @@ export interface SidebarNavItemProps extends NavItem, Nav<SidebarNavItemProps> {
   onClick?: (e: React.MouseEvent<HTMLElement>) => void
 }
 
-export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
+export const SidebarNavItem = ({
   isActive,
   link,
   icon,
   onClick,
   children,
   ...rest
-}) => {
+}: SidebarNavItemProps) => {
   const [hasMouseOver, setHasMouseOver] = useState(false)
   const { isOpen } = useContext(SidebarContext)
   const linkElement = link as React.ReactElement

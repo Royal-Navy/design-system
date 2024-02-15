@@ -13,11 +13,11 @@ export interface MastheadUserItemProps extends NavItem {
   icon: React.ReactNode
 }
 
-export const MastheadUserItem: React.FC<MastheadUserItemProps> = ({
+export const MastheadUserItem = ({
   icon,
   link,
   ...rest
-}) => {
+}: MastheadUserItemProps) => {
   const linkElement = link as React.ReactElement
 
   const item = React.cloneElement(linkElement, {

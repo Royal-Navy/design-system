@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import { BasePlacement, Placement, VariationPlacement } from '@popperjs/core'
 import { Transition } from 'react-transition-group'
 import mergeRefs from 'react-merge-refs'
-import { CSSObject } from 'styled-components'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { FloatingBoxContent } from './FloatingBoxContent'
@@ -53,7 +52,7 @@ export type FloatingBoxProps =
   | FloatingBoxWithExternalTargetProps
   | FloatingBoxWithEmbeddedTargetProps
 
-export const FloatingBox: React.FC<FloatingBoxProps> = ({
+export const FloatingBox = ({
   contentId: externalContentId,
   scheme = FLOATING_BOX_SCHEME.LIGHT,
   onMouseEnter,
@@ -65,7 +64,7 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
   placement = 'auto',
   role = 'dialog',
   ...rest
-}) => {
+}: FloatingBoxProps) => {
   const nodeRef = useRef<HTMLDivElement>(null)
   const contentId = useExternalId('floating-box', externalContentId)
   const {
@@ -99,7 +98,7 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
         {(state) => (
           <StyledFloatingBox
             $transitionStatus={state}
-            css={styles.popper as CSSObject}
+            style={styles.popper}
             ref={mergeRefs([nodeRef, floatingElementRef])}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
@@ -116,7 +115,7 @@ export const FloatingBox: React.FC<FloatingBoxProps> = ({
               <StyledArrow
                 $placement={basePlacement}
                 ref={arrowElementRef}
-                css={styles.arrow as CSSObject}
+                style={styles.arrow}
                 {...attributes.arrow}
               />
               {children}

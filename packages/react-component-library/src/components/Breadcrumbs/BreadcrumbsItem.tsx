@@ -4,8 +4,9 @@ import { LinkTypes } from '../../common/Link'
 import { StyledBreadcrumbsItem } from './partials/StyledBreadcrumbsItem'
 import { StyledEndTitle } from './partials/StyledEndTitle'
 import { StyledIcon } from './partials/StyledIcon'
+import { ComponentWithClass } from '../../common/ComponentWithClass'
 
-export interface BreadcrumbsItemBaseProps {
+export interface BreadcrumbsItemBaseProps extends ComponentWithClass {
   /**
    * Denotes whether this is the first item.
    * @private
@@ -55,14 +56,14 @@ function getText(
   return link || <a href={href}>{children}</a>
 }
 
-export const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
+export const BreadcrumbsItem = ({
   isFirst,
   isLast = false,
   link,
   href,
   children,
   ...rest
-}) => {
+}: BreadcrumbsItemProps) => {
   return (
     <StyledBreadcrumbsItem data-testid="breadcrumb" {...rest}>
       {!isFirst && (

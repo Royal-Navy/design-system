@@ -7,11 +7,7 @@ interface TrackProps extends TrackItem {
   getTrackProps: GetTrackProps
 }
 
-export const Track: React.FC<TrackProps> = ({
-  source,
-  target,
-  getTrackProps,
-}) => {
+export const Track = ({ source, target, getTrackProps }: TrackProps) => {
   return (
     <StyledTrack
       $left={`${source.percent}%`}

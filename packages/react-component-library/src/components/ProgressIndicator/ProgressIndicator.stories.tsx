@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { StyledProgressIndicator } from './partials/StyledProgressIndicator'
 import { ProgressIndicator } from './index'
@@ -11,7 +11,7 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-} as ComponentMeta<typeof ProgressIndicator>
+} as Meta<typeof ProgressIndicator>
 
 const Wrapper = styled.div`
   height: 10rem;
@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   }
 `
 
-export const Default: ComponentStory<typeof ProgressIndicator> = (props) => (
+export const Default: StoryFn<typeof ProgressIndicator> = (props) => (
   <Wrapper>
     <ProgressIndicator {...props} />
   </Wrapper>

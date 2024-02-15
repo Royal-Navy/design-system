@@ -4,7 +4,7 @@ import { selectors } from '@royalnavy/design-tokens'
 import { StyledContextMenuItem } from './StyledContextMenuItem'
 
 interface StyledTextProps {
-  hasIcon?: boolean
+  $hasIcon?: boolean
 }
 
 const { color, fontSize } = selectors
@@ -18,7 +18,7 @@ export const StyledText = styled.span<StyledTextProps>`
   text-overflow: ellipsis;
   overflow: hidden;
 
-  ${({ hasIcon }) => !hasIcon && `margin-left: 1.25rem;`}
+  ${({ $hasIcon }) => !$hasIcon && `margin-left: 1.25rem;`}
 
   ${StyledContextMenuItem}:hover & {
     color: ${color('neutral', '400')};

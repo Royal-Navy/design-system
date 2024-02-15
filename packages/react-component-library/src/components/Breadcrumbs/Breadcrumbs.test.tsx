@@ -1,5 +1,5 @@
 import React from 'react'
-import '@testing-library/jest-dom/extend-expect'
+
 import { render, RenderResult } from '@testing-library/react'
 
 import { Breadcrumbs, BreadcrumbsItem } from '.'
@@ -102,13 +102,13 @@ describe('Breadcrumbs', () => {
 
     it('should warn the consumer `isFirst` will be overwritten', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - MODDS - Prop `isFirst` on `BreadcrumbsItem` will be overwritten'
+        'WARN - RNDS - Prop `isFirst` on `BreadcrumbsItem` will be overwritten'
       )
     })
 
     it('should warn the consumer `isLast` will be overwritten', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        'WARN - MODDS - Prop `isLast` on `BreadcrumbsItem` will be overwritten'
+        'WARN - RNDS - Prop `isLast` on `BreadcrumbsItem` will be overwritten'
       )
     })
   })

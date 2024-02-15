@@ -9,11 +9,11 @@ export interface ContainerProps extends ComponentWithClass {
   size?: ContainerSizeType
 }
 
-export const Container: React.FC<ContainerProps> = ({
+export const Container = ({
   className,
   size = 'regular',
   children,
-}) => {
+}: ContainerProps) => {
   return (
     <StyledContainer $size={size} className={className} data-testid="container">
       {children}
