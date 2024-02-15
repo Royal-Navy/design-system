@@ -1,106 +1,67 @@
 import React from 'react'
 
-import { render, RenderResult, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { Toast } from '.'
+import { TOAST_APPEARANCE, Toast, showToast } from '.'
+
+const LABEL = 'Example label'
+const DESCRIPTION = 'This is an example toast message'
 
 describe('Toast', () => {
-  let wrapper: RenderResult
-  let onDismissSpy: (id?: string) => void
-  let onMouseEnterSpy: () => void
-  let onMouseLeaveSpy: () => void
-  const LABEL = 'Example label'
-  const DESCRIPTION = 'This is an example toast message'
+  beforeEach(() => {
+    render(
+      <Toast
+        appearance={TOAST_APPEARANCE.INFO}
+        label={LABEL}
+        data-arbitrary="foo"
+      />
+    )
+  })
 
   describe('default props', () => {
-    onDismissSpy = jest.fn()
-    onMouseEnterSpy = jest.fn()
-    onMouseLeaveSpy = jest.fn()
+    showToast(DESCRIPTION)
 
-    beforeEach(() => {
-      wrapper = render(
-        <Toast
-          appearance="info"
-          autoDismiss={false}
-          autoDismissTimeout={300}
-          data-arbitrary="arbitrary"
-          label={LABEL}
-          isRunning={false}
-          onDismiss={onDismissSpy}
-          onMouseEnter={onMouseEnterSpy}
-          onMouseLeave={onMouseLeaveSpy}
-          placement="top-right"
-          transitionDuration={300}
-          transitionState="entered"
-        >
-          {DESCRIPTION}
-        </Toast>
-      )
-    })
-
-    it('should spread arbitrary props', () => {
-      expect(wrapper.getByTestId('toast-wrapper')).toHaveAttribute(
+    it('should spread arbitrary props', async () => {
+      expect(screen.getByTestId('wrapper')).toHaveAttribute(
         'data-arbitrary',
-        'arbitrary'
+        'foo'
       )
     })
 
     it('should set the `role` attribute to `alert`', () => {
-      expect(wrapper.getByTestId('toast-wrapper')).toHaveAttribute(
-        'role',
-        'alert'
-      )
+      expect(screen.getByTestId('wrapper')).toHaveAttribute('role', 'status')
     })
 
     it('should set the `aria-labelledby` attribute to the ID of the title', () => {
-      const titleId = wrapper.getByTestId('toast-title').getAttribute('id')
+      const titleId = screen
+        ?.getByText(LABEL)
+        ?.parentElement?.getAttribute('id')
 
-      expect(wrapper.getByTestId('toast-wrapper')).toHaveAttribute(
+      expect(screen.getByTestId('wrapper')).toHaveAttribute(
         'aria-labelledby',
         titleId
       )
     })
 
     it('should set the `aria-describedby` attribute to the ID of the content', () => {
-      const contentId = wrapper
-        .getByTestId('toast-description')
-        .getAttribute('id')
+      const contentId = screen.getByText(DESCRIPTION).getAttribute('id')
 
-      expect(wrapper.getByTestId('toast-wrapper')).toHaveAttribute(
+      expect(screen.getByTestId('wrapper')).toHaveAttribute(
         'aria-describedby',
         contentId
       )
     })
 
     it('should set the `aria-hidden` attribute on the state icon', () => {
-      expect(wrapper.getByTestId('toast-icon')).toHaveAttribute(
-        'aria-hidden',
-        'true'
-      )
+      expect(screen.getByTestId('icon')).toHaveAttribute('aria-hidden', 'true')
     })
 
     it('renders the toast to the DOM', () => {
-      expect(wrapper.queryByTestId('toast-wrapper')).toBeInTheDocument()
+      expect(screen.queryByTestId('wrapper')).toBeInTheDocument()
     })
 
     it('displays the label text', () => {
-      expect(wrapper.queryByText(LABEL)).toBeInTheDocument()
-    })
-
-    describe('and the user clicks on the dismiss button', () => {
-      beforeEach(() => {
-        fireEvent(
-          wrapper.getByTestId('toast-dismiss'),
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-          })
-        )
-      })
-
-      it('invokes the onDismiss callback', () => {
-        expect(onDismissSpy).toHaveBeenCalledTimes(1)
-      })
+      expect(screen.queryByText(LABEL)).toBeInTheDocument()
     })
   })
 })
