@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/Royal-Navy/design-system/compare/3.15.0...4.0.0) (2024-02-16)
+
+### Bug Fixes
+
+- **Logger:** Rename MODDS references to RNDS ([345c394](https://github.com/Royal-Navy/design-system/commit/345c394e72840f344d336f5669475467753b9fb0))
+- **ReactComponentLibrary:** Mark some props as transient or drop ([c78fd08](https://github.com/Royal-Navy/design-system/commit/c78fd082d61cac0585e38937dbed6378009c7419))
+- **Timeline:** Correctly mark prop as transient ([ab500aa](https://github.com/Royal-Navy/design-system/commit/ab500aae1b72c99e737c44d669401cbdce8e2178))
+
+### Features
+
+- **ReactComponentLibrary:** Upgrade React and ReactDOM to 18 ([732b652](https://github.com/Royal-Navy/design-system/commit/732b6522e9dde806a00eb86a735570746937ca57))
+- **StyledComponents:** Upgrade to 6.1.8 ([9e34a97](https://github.com/Royal-Navy/design-system/commit/9e34a974e25c85cd5c9a096f2151d794052401eb))
+- **Toast:** Remove reliance on defunct library ([e1d5a00](https://github.com/Royal-Navy/design-system/commit/e1d5a000ac504fc98fca5fa21189740337ab788b))
+
+### BREAKING CHANGES
+
+- **ReactComponentLibrary:** Downstream consumers will need to upgrade React and ReactDOM from this point forward.
+
 # [3.15.0](https://github.com/Royal-Navy/design-system/compare/3.14.2...3.15.0) (2024-02-06)
 
 ### Bug Fixes

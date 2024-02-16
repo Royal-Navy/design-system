@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/Royal-Navy/design-system/compare/3.15.0...4.0.0) (2024-02-16)
+
+### Features
+
+- **StyledComponents:** Upgrade to 6.1.8 ([9e34a97](https://github.com/Royal-Navy/design-system/commit/9e34a974e25c85cd5c9a096f2151d794052401eb))
+
 # [3.15.0](https://github.com/Royal-Navy/design-system/compare/3.14.2...3.15.0) (2024-02-06)
 
 **Note:** Version bump only for package @royalnavy/design-tokens
