@@ -55,10 +55,11 @@ const getAppearanceIcon = (appearance: Appearance) => {
   return appearanceIconMap[appearance] || appearanceIconMap.info
 }
 
-const { spacing } = selectors
+const { spacing, zIndex } = selectors
 
 export const Toast = (props: ToastProps) => {
   const { dateTime, label, appearance = TOAST_APPEARANCE.INFO, ...rest } = props
+
   const { toasts, handlers } = useToaster()
   const { startPause, endPause, updateHeight, calculateOffset } = handlers
 
@@ -84,6 +85,7 @@ export const Toast = (props: ToastProps) => {
         top: 0,
         right: 0,
         padding: spacing('4'),
+        zIndex: zIndex('overlay', 999),
       }}
     >
       {toasts.map((item) => {

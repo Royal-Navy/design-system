@@ -11,6 +11,7 @@ export const StyledButton = styled.button`
   font-weight: 500;
   margin: 0;
   padding: ${spacing('6')} ${spacing('6')};
+  cursor: pointer;
 
   &:hover {
     color: ${color('neutral', '400')};
