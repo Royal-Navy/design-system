@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/Royal-Navy/design-system/compare/4.0.0...4.0.1) (2024-02-23)
+
+### Bug Fixes
+
+- **Toast:** Adjust zIndex overlay styles ([e2cd6a7](https://github.com/Royal-Navy/design-system/commit/e2cd6a76ec775f29f920572569a53a8e26186329))
+
 # [4.0.0](https://github.com/Royal-Navy/design-system/compare/3.15.0...4.0.0) (2024-02-16)
 
 ### Bug Fixes
