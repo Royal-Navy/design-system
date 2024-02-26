@@ -32,6 +32,7 @@
     "**/trim": "^0.0.3",
     "**/trim-newlines": "^3.0.1",
     "lerna/axios": "^1.6.0",
+    "lerna/ip": "^1.1.9",
     "**/@types/react": "^18.2.25"
   },
   "prettier": {
