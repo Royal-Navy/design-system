@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.2](https://github.com/Royal-Navy/design-system/compare/4.0.1...4.0.2) (2024-03-14)
+
+### Bug Fixes
+
+- **ReactComponentLibrary:** Update logo in Masthead ([0b1a832](https://github.com/Royal-Navy/design-system/commit/0b1a832b2f814b0e0d8a4da8b64db4ad3e8927b8))
+
 ## [4.0.1](https://github.com/Royal-Navy/design-system/compare/4.0.0...4.0.1) (2024-02-23)
 
 ### Bug Fixes
