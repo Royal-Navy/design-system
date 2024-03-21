@@ -48,23 +48,23 @@ export interface CheckboxRadioBaseProps
   /**
    * Label to display to the right of the component.
    */
-  label: string
+  label?: string
   /**
    * HTML `name` attribute associated with the component.
    */
-  name: string
+  name?: string
   /**
    * Optional handler to be invoked when the value of the component changes.
    */
-  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
   /**
    * Optional handler to be invoked when the blur event is emitted.
    */
-  onBlur?: (event: React.FormEvent<HTMLInputElement>) => void
+  onBlur?: React.FocusEventHandler<HTMLInputElement>
   /**
    * Optional HTML `value` attribute associated with the component.
    */
-  value?: string
+  value?: string | number | readonly string[]
   /**
    * Optional variant to set container visibility.
    */
