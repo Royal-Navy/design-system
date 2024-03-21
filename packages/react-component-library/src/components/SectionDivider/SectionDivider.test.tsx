@@ -9,7 +9,9 @@ describe('SectionDivider', () => {
 
   describe('with title', () => {
     beforeEach(() => {
-      wrapper = render(<SectionDivider title="Example title" />)
+      wrapper = render(
+        <SectionDivider title="Example title" className="example-class" />
+      )
     })
 
     it('renders the title text', () => {
@@ -18,6 +20,12 @@ describe('SectionDivider', () => {
 
     it('does not render the description text', () => {
       expect(wrapper.queryByText('Example description')).not.toBeInTheDocument()
+    })
+
+    it('drills the supplied className prop to the outer element', () => {
+      expect(wrapper.getByText('Example title').parentElement).toHaveClass(
+        'example-class'
+      )
     })
   })
 

@@ -10,9 +10,13 @@ export interface SectionDividerProps extends ComponentWithClass {
   children?: string
 }
 
-export const SectionDivider = ({ title, children }: SectionDividerProps) => {
+export const SectionDivider = ({
+  title,
+  children,
+  className,
+}: SectionDividerProps) => {
   return (
-    <StyledSectionDivider>
+    <StyledSectionDivider className={className}>
       {title && (
         <StyledTitle data-testid="sectiondivider-title">{title}</StyledTitle>
       )}
