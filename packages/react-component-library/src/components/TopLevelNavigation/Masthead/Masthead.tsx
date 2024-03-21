@@ -15,7 +15,6 @@ import { StyledMain } from './partials/StyledMain'
 import { StyledMastHead } from './partials/StyledMasthead'
 import { StyledServiceName } from './partials/StyledServiceName'
 import { StyledTitle } from './partials/StyledTitle'
-import { StyledVerticalSeparator } from './partials/StyledVerticalSeparator'
 import { StyledBanner } from './partials/StyledBanner'
 import { SearchBar } from '../SearchBar/SearchBar'
 import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
@@ -132,24 +131,17 @@ export const Masthead = ({
 
         <StyledOptions>
           {onSearch && (
-            <>
-              <StyledOption
-                $isActive={showSearch}
-                aria-expanded={showSearch}
-                aria-label="Show search"
-                as="button"
-                onClick={toggleSearch}
-                ref={searchButtonRef}
-                data-testid="masthead-search-button"
-              >
-                <StyledIconSearch />
-              </StyledOption>
-              {user && (
-                <StyledVerticalSeparator>
-                  <line x1="0" y1="14" x2="0" y2="44" />
-                </StyledVerticalSeparator>
-              )}
-            </>
+            <StyledOption
+              $isActive={showSearch}
+              aria-expanded={showSearch}
+              aria-label="Show search"
+              as="button"
+              onClick={toggleSearch}
+              ref={searchButtonRef}
+              data-testid="masthead-search-button"
+            >
+              <StyledIconSearch />
+            </StyledOption>
           )}
 
           {notifications && (
@@ -176,11 +168,6 @@ export const Masthead = ({
             </Sheet>
           )}
 
-          {(notifications || onSearch) && user && (
-            <StyledVerticalSeparator>
-              <line x1="0" y1="14" x2="0" y2="44" />
-            </StyledVerticalSeparator>
-          )}
           {user}
         </StyledOptions>
       </StyledMain>
