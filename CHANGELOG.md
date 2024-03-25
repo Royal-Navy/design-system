@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/Royal-Navy/design-system/compare/4.0.2...4.1.0) (2024-03-25)
+
+### Bug Fixes
+
+- **SectionDivider:** Correctly apply supplied className prop ([11bb270](https://github.com/Royal-Navy/design-system/commit/11bb270785aaec8050879f32e9bd2b78da1cdaaf))
+
+### Features
+
+- **Masthead:** Remove vertical seperator ([d304190](https://github.com/Royal-Navy/design-system/commit/d30419093008cf568fad693b4f9fa4490cbe3304))
+
 ## [4.0.2](https://github.com/Royal-Navy/design-system/compare/4.0.1...4.0.2) (2024-03-14)
 
 ### Bug Fixes
