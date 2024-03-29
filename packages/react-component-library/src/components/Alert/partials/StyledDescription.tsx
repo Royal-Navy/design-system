@@ -5,7 +5,7 @@ import { ALERT_DESCRIPTION_COLOR } from '../constants'
 
 const { fontSize } = selectors
 
-export const StyledDescription = styled.p`
+export const StyledDescription = styled.div`
   color: ${ALERT_DESCRIPTION_COLOR};
   font-size: ${fontSize('base')};
   font-weight: 400;

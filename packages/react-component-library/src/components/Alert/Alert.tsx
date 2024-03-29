@@ -37,7 +37,7 @@ export interface AlertProps {
   /**
    * Description text to display under the component title.
    */
-  children: string
+  children: React.ReactNode
   /**
    * Optional handler to be invoked when the component is closed.
    */

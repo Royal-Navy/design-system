@@ -33,3 +33,25 @@ WithoutTitle.args = {
 }
 
 WithoutTitle.storyName = 'Without title'
+
+export const ArbitraryContent: StoryFn<typeof Alert> = ({
+  title,
+  children,
+  variant,
+}) => (
+  <Alert variant={variant} title={title}>
+    {children}
+  </Alert>
+)
+
+ArbitraryContent.args = {
+  title: 'Using arbitrary JSX as content',
+  children: (
+    <div>
+      <p>
+        Hello, <strong>world!</strong>
+      </p>
+    </div>
+  ),
+  variant: ALERT_VARIANT.INFO,
+}
