@@ -1,4 +1,5 @@
 import React from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 
 import {
   fireEvent,
@@ -300,6 +301,32 @@ describe('List', () => {
       expect(wrapper.getAllByTestId('list-item')[0]).toHaveAttribute(
         'data-arbitrary',
         'arbitrary-list-item'
+      )
+    })
+  })
+
+  describe('Arbitrary Markup', () => {
+    let children: React.ReactElement
+
+    beforeEach(() => {
+      children = <div>Arbitrary JSX</div>
+
+      wrapper = render(
+        <List data-arbitrary="arbitrary-list">
+          <ListItem
+            data-arbitrary="arbitrary-list-item"
+            onClick={onClickSpy1}
+            title="List item"
+          >
+            {children}
+          </ListItem>
+        </List>
+      )
+    })
+
+    it('renders the arbitrary JSX in the correct place', () => {
+      expect(wrapper.getAllByTestId('list-item')[0].innerHTML).toContain(
+        renderToStaticMarkup(children)
       )
     })
   })
