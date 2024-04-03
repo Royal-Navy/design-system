@@ -1,4 +1,5 @@
 import React from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 
 import { render, RenderResult } from '@testing-library/react'
 
@@ -186,4 +187,23 @@ describe('Alert', () => {
       )
     })
   })
+
+  describe('Arbitrary Markup', () => {
+    let children: React.ReactElement
+
+      beforeEach(() => {
+      children = <div>Arbitrary JSX</div>
+
+      wrapper = render(<Alert>{children}</Alert>)
+    })
+
+
+    it('renders the arbitrary JSX in the correct place', () => {
+      expect(wrapper.getByTestId('content-description').innerHTML).toContain(
+        renderToStaticMarkup(children)
+      )
+    })
+
+  })
+
 })
