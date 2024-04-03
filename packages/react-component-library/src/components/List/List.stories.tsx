@@ -20,6 +20,9 @@ export const Default: StoryFn<typeof List> = (props) => (
     </ListItem>
     <ListItem title="List item 2">This is the description for item 2</ListItem>
     <ListItem title="List item 3">This is the description for item 3</ListItem>
-    <ListItem title="List item 4">This is the description for item 4</ListItem>
+    <ListItem title="List item 4">
+      This is the&nbsp;
+      <strong>description for item 4</strong>
+    </ListItem>
   </List>
 )

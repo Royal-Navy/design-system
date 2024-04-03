@@ -11,9 +11,9 @@ import { useExternalId } from '../../hooks/useExternalId'
 
 export interface ListItemProps extends ComponentWithClass {
   /**
-   * Description text to display for an individual item.
+   * Description to display for an individual item.
    */
-  children: string | string[]
+  children: React.ReactNode
   /**
    * Toggles whether the item is in an active state.
    */
