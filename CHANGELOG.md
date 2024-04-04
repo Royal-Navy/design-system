@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/Royal-Navy/design-system/compare/4.1.0...4.2.0) (2024-04-04)
+
+### Bug Fixes
+
+- **List:** Allow arbitrary contents in List Item ([#3741](https://github.com/Royal-Navy/design-system/issues/3741)) ([c6d3cc8](https://github.com/Royal-Navy/design-system/commit/c6d3cc854c5345b6e419bb03a3e9c39350de3da3))
+
+### Features
+
+- **Alert:** Allow arbitrary content in Alert ([f987645](https://github.com/Royal-Navy/design-system/commit/f98764521f4d98284a76dca94f24d328c93bdcce))
+
 # [4.1.0](https://github.com/Royal-Navy/design-system/compare/4.0.2...4.1.0) (2024-03-25)
 
 ### Bug Fixes
