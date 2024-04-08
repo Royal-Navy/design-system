@@ -17,6 +17,60 @@ import {
   MastheadUserItem,
 } from '.'
 import { Notification, Notifications } from '../NotificationPanel'
+import { ACTIVE_TAB_BORDER } from '../../TabBase/partials/StyledTab'
+
+const notification = (
+  <Notification
+    data-arbitrary="arbitrary-notification"
+    link={<Link href="notifications/1" />}
+    name="Thomas Stephens"
+    action="added a new comment to your"
+    on="review"
+    when={new Date('2019-11-05T10:57:00.000Z')}
+    description="A long description that will be shortened"
+  />
+)
+
+const props = {
+  'data-arbitrary': 'arbitrary-masthead',
+  hasUnreadNotification: true,
+  homeLink: (
+    <Link
+      data-arbitrary="arbitrary-home-link"
+      data-testid="masthead-home-link"
+      href="/"
+    />
+  ),
+  Logo: ({ role }) => <svg data-testid="custom-logo" role={role} />,
+  nav: (
+    <MastheadNav data-arbitrary="arbitrary-nav">
+      <MastheadNavItem
+        data-arbitrary="arbitrary-nav-item"
+        link={<Link href="/first">First</Link>}
+      />
+      <MastheadNavItem link={<Link href="/second">Second</Link>} />
+    </MastheadNav>
+  ),
+  notifications: (
+    <Notifications
+      data-arbitrary="arbitrary-notifications"
+      link={<Link href="notifications" />}
+    >
+      {notification}
+      {notification}
+    </Notifications>
+  ),
+  onSearch: () => true,
+  title: 'title',
+  user: (
+    <MastheadUser
+      data-arbitrary="arbitrary-user"
+      data-testid="masthead-user"
+      initials="AB"
+      link={<Link href="/user-profile" />}
+    />
+  ),
+}
 
 describe('Masthead', () => {
   let wrapper: RenderResult
@@ -75,65 +129,40 @@ describe('Masthead', () => {
     })
   })
 
+  describe('inline nav', () => {
+    it('should render nav inline', () => {
+      wrapper = render(<Masthead {...props} hasInlineNav />)
+      expect(wrapper.getByTestId('masthead-inline-nav')).toBeInTheDocument()
+    })
+
+    it('should add bottom borders when nav is inline', () => {
+      wrapper = render(<Masthead {...props} hasInlineNav />)
+
+      expect(wrapper.getByTestId('masthead-banner')).toHaveStyleRule(
+        'border-bottom',
+        ACTIVE_TAB_BORDER
+      )
+
+      expect(wrapper.getByTestId('masthead-options')).toHaveStyleRule(
+        'border-bottom',
+        ACTIVE_TAB_BORDER
+      )
+    })
+
+    it('should render nav below the masthead', () => {
+      wrapper = render(<Masthead {...props} />)
+      expect(
+        wrapper.queryByTestId('masthead-inline-nav')
+      ).not.toBeInTheDocument()
+    })
+  })
+
   describe('all props', () => {
     let consoleWarnSpy: jest.SpyInstance
     let onSearchSpy: jest.SpyInstance
 
     beforeEach(() => {
       consoleWarnSpy = jest.spyOn(global.console, 'warn')
-
-      const notification = (
-        <Notification
-          data-arbitrary="arbitrary-notification"
-          link={<Link href="notifications/1" />}
-          name="Thomas Stephens"
-          action="added a new comment to your"
-          on="review"
-          when={new Date('2019-11-05T10:57:00.000Z')}
-          description="A long description that will be shortened"
-        />
-      )
-
-      const props = {
-        'data-arbitrary': 'arbitrary-masthead',
-        hasUnreadNotification: true,
-        homeLink: (
-          <Link
-            data-arbitrary="arbitrary-home-link"
-            data-testid="masthead-home-link"
-            href="/"
-          />
-        ),
-        Logo: ({ role }) => <svg data-testid="custom-logo" role={role} />,
-        nav: (
-          <MastheadNav data-arbitrary="arbitrary-nav">
-            <MastheadNavItem
-              data-arbitrary="arbitrary-nav-item"
-              link={<Link href="/first">First</Link>}
-            />
-            <MastheadNavItem link={<Link href="/second">Second</Link>} />
-          </MastheadNav>
-        ),
-        notifications: (
-          <Notifications
-            data-arbitrary="arbitrary-notifications"
-            link={<Link href="notifications" />}
-          >
-            {notification}
-            {notification}
-          </Notifications>
-        ),
-        onSearch: () => true,
-        title: 'title',
-        user: (
-          <MastheadUser
-            data-arbitrary="arbitrary-user"
-            data-testid="masthead-user"
-            initials="AB"
-            link={<Link href="/user-profile" />}
-          />
-        ),
-      }
 
       onSearchSpy = jest.spyOn(props, 'onSearch')
 
