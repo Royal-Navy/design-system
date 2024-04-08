@@ -48,7 +48,7 @@ module.exports = {
     }
   },
 
-  stories: ['../src/**/*.stories.tsx'],
+  stories: ['../src/**/*.stories.tsx', '../src/**/*.mdx'],
 
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),

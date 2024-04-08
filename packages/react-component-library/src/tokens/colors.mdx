@@ -1,0 +1,215 @@
+import { ColorItem, ColorPalette, Meta, Source } from '@storybook/blocks'
+import { selectors } from '@royalnavy/design-tokens'
+
+<Meta title="Tokens/Colours" />
+
+# Colour Tokens
+
+We use named colours (e.g. Neutral or Action) instead of colour literals (e.g. blue). Colour palettes represent functions, so that we can make interactions and contexts easy to distinguish.
+
+## Usage
+<Source code={`import { selectors } from '@royalnavy/design-tokens'
+const { color } = selectors
+
+<div style={{ color: color('action', '400') }}>Hello world</div>
+
+`} />
+
+## Base palettes
+
+<ColorPalette>
+  <ColorItem title="neutral" subtitle="Use the Neutral palette for application UI."
+             colors={
+               {
+                 "900": selectors.color('neutral', '900'),
+                 "800": selectors.color('neutral', '800'),
+                 "700": selectors.color('neutral', '700'),
+                 "600": selectors.color('neutral', '600'),
+                 "500": selectors.color('neutral', '500'),
+                 "400": selectors.color('neutral', '400'),
+                 "300": selectors.color('neutral', '300'),
+                 "200": selectors.color('neutral', '200'),
+                 "100": selectors.color('neutral', '100'),
+                 "000": selectors.color('neutral', '000'),
+               }}
+  />
+  <ColorItem
+    title="action"
+    subtitle="Use the Action palette for primary actions."
+    colors={
+      {
+        "900": selectors.color('action', '900'),
+        "800": selectors.color('action', '800'),
+        "700": selectors.color('action', '700'),
+        "600": selectors.color('action', '600'),
+        "500": selectors.color('action', '500'),
+        "400": selectors.color('action', '400'),
+        "300": selectors.color('action', '300'),
+        "200": selectors.color('action', '200'),
+        "100": selectors.color('action', '100'),
+        "000": selectors.color('action', '000'),
+      }}
+  />
+  <ColorItem
+    title="success"
+    subtitle="Use the Success palette for positive feedback."
+    colors={
+      {
+        "900": selectors.color('success', '900'),
+        "800": selectors.color('success', '800'),
+        "700": selectors.color('success', '700'),
+        "600": selectors.color('success', '600'),
+        "500": selectors.color('success', '500'),
+        "400": selectors.color('success', '400'),
+        "300": selectors.color('success', '300'),
+        "200": selectors.color('success', '200'),
+        "100": selectors.color('success', '100'),
+        "000": selectors.color('success', '000'),
+      }}
+  />
+  <ColorItem
+    title="warning"
+    subtitle="Use the Warning palette to indicate an action or message that may produce undesirable results."
+    colors={
+      {
+        "900": selectors.color('warning', '900'),
+        "800": selectors.color('warning', '800'),
+        "700": selectors.color('warning', '700'),
+        "600": selectors.color('warning', '600'),
+        "500": selectors.color('warning', '500'),
+        "400": selectors.color('warning', '400'),
+        "300": selectors.color('warning', '300'),
+        "200": selectors.color('warning', '200'),
+        "100": selectors.color('warning', '100'),
+        "000": selectors.color('warning', '000'),
+      }}
+  />
+  <ColorItem
+    title="danger"
+    subtitle="Use the Danger palette for destructive actions."
+    colors={
+      {
+        "900": selectors.color('danger', '900'),
+        "800": selectors.color('danger', '800'),
+        "700": selectors.color('danger', '700'),
+        "600": selectors.color('danger', '600'),
+        "500": selectors.color('danger', '500'),
+        "400": selectors.color('danger', '400'),
+        "300": selectors.color('danger', '300'),
+        "200": selectors.color('danger', '200'),
+        "100": selectors.color('danger', '100'),
+        "000": selectors.color('danger', '000'),
+      }}
+  />
+</ColorPalette>
+
+---
+
+## Supplementary palettes
+
+Use supplementary colours to support the main colour palettes only. They can be used for categorisation and data visualisation, but they don’t have any state associated with them.
+
+<ColorPalette>
+  <ColorItem
+    title="supa"
+    subtitle="supplementary type a"
+    colors={
+      {
+        "900": selectors.color('supa', '900'),
+        "800": selectors.color('supa', '800'),
+        "700": selectors.color('supa', '700'),
+        "600": selectors.color('supa', '600'),
+        "500": selectors.color('supa', '500'),
+        "400": selectors.color('supa', '400'),
+        "300": selectors.color('supa', '300'),
+        "200": selectors.color('supa', '200'),
+        "100": selectors.color('supa', '100'),
+        "000": selectors.color('supa', '000'),
+      }}
+  />
+  <ColorItem
+    title="supb"
+    subtitle="supplementary type b"
+    colors={
+      {
+        "900": selectors.color('supb', '900'),
+        "800": selectors.color('supb', '800'),
+        "700": selectors.color('supb', '700'),
+        "600": selectors.color('supb', '600'),
+        "500": selectors.color('supb', '500'),
+        "400": selectors.color('supb', '400'),
+        "300": selectors.color('supb', '300'),
+        "200": selectors.color('supb', '200'),
+        "100": selectors.color('supb', '100'),
+        "000": selectors.color('supb', '000'),
+      }}
+  />
+  <ColorItem
+    title="supc"
+    subtitle="supplementary type c"
+    colors={
+      {
+        "900": selectors.color('supc', '900'),
+        "800": selectors.color('supc', '800'),
+        "700": selectors.color('supc', '700'),
+        "600": selectors.color('supc', '600'),
+        "500": selectors.color('supc', '500'),
+        "400": selectors.color('supc', '400'),
+        "300": selectors.color('supc', '300'),
+        "200": selectors.color('supc', '200'),
+        "100": selectors.color('supc', '100'),
+        "000": selectors.color('supc', '000'),
+      }}
+  />
+  <ColorItem
+    title="supd"
+    subtitle="supplementary type d"
+    colors={
+      {
+        "900": selectors.color('supd', '900'),
+        "800": selectors.color('supd', '800'),
+        "700": selectors.color('supd', '700'),
+        "600": selectors.color('supd', '600'),
+        "500": selectors.color('supd', '500'),
+        "400": selectors.color('supd', '400'),
+        "300": selectors.color('supd', '300'),
+        "200": selectors.color('supd', '200'),
+        "100": selectors.color('supd', '100'),
+        "000": selectors.color('supd', '000'),
+      }}
+  />
+  <ColorItem
+    title="supe"
+    subtitle="supplementary type e"
+    colors={
+      {
+        "900": selectors.color('supe', '900'),
+        "800": selectors.color('supe', '800'),
+        "700": selectors.color('supe', '700'),
+        "600": selectors.color('supe', '600'),
+        "500": selectors.color('supe', '500'),
+        "400": selectors.color('supe', '400'),
+        "300": selectors.color('supe', '300'),
+        "200": selectors.color('supe', '200'),
+        "100": selectors.color('supe', '100'),
+        "000": selectors.color('supe', '000'),
+      }}
+  />
+  <ColorItem
+    title="supf"
+    subtitle="supplementary type f"
+    colors={
+      {
+        "900": selectors.color('supf', '900'),
+        "800": selectors.color('supf', '800'),
+        "700": selectors.color('supf', '700'),
+        "600": selectors.color('supf', '600'),
+        "500": selectors.color('supf', '500'),
+        "400": selectors.color('supf', '400'),
+        "300": selectors.color('supf', '300'),
+        "200": selectors.color('supf', '200'),
+        "100": selectors.color('supf', '100'),
+        "000": selectors.color('supf', '000'),
+      }}
+  />
+</ColorPalette>
