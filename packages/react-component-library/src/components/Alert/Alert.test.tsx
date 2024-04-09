@@ -191,19 +191,16 @@ describe('Alert', () => {
   describe('Arbitrary Markup', () => {
     let children: React.ReactElement
 
-      beforeEach(() => {
+    beforeEach(() => {
       children = <div>Arbitrary JSX</div>
 
       wrapper = render(<Alert>{children}</Alert>)
     })
-
 
     it('renders the arbitrary JSX in the correct place', () => {
       expect(wrapper.getByTestId('content-description').innerHTML).toContain(
         renderToStaticMarkup(children)
       )
     })
-
   })
-
 })

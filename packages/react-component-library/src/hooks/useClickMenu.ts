@@ -9,7 +9,7 @@ export const CLICK_BUTTON = {
   RIGHT: 'right',
 } as const
 
-export type ClickType = typeof CLICK_BUTTON[keyof typeof CLICK_BUTTON]
+export type ClickType = (typeof CLICK_BUTTON)[keyof typeof CLICK_BUTTON]
 
 interface UseClickMenuParams {
   attachedToRef: React.RefObject<HTMLElement>

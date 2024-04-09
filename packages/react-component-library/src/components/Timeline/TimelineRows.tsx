@@ -14,7 +14,7 @@ export interface TimelineRowsProps extends ComponentWithClass {
   /**
    * Supply children to be rendered.
    */
-  children: TimelineRowsChildrenType
+  children?: TimelineRowsChildrenType
   /**
    * Supply a custom presentation layer.
    */

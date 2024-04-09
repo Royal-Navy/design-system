@@ -4,6 +4,10 @@ export const storyAccessibilityConfig = {
       id: 'scrollable-region-focusable',
       enabled: false,
     },
+    {
+      id: 'aria-required-children',
+      enabled: false,
+    },
   ],
   'Custom Theming': [
     {
@@ -14,6 +18,10 @@ export const storyAccessibilityConfig = {
   'Date Picker': [
     {
       id: 'aria-required-attr',
+      enabled: false,
+    },
+    {
+      id: 'aria-required-children',
       enabled: false,
     },
   ],

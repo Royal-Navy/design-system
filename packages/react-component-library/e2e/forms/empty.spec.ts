@@ -12,7 +12,7 @@ const expectedResult = {
   exampleDatePicker: '2022-01-31T12:00:00.000Z',
   exampleSelect: 'three',
   exampleAutocomplete: 'four',
-  exampleRangeSlider: [20],
+  exampleRangeSlider: [28],
 }
 
 const examples = [
@@ -38,7 +38,7 @@ test.describe('Form examples, empty', () => {
   examples.forEach(({ name, uri }) => {
     test.describe(name, () => {
       test.beforeEach(async ({ page }) => {
-        await page.goto(uri)
+        await page.goto(uri, { waitUntil: 'domcontentloaded' })
       })
 
       test('renders the relevant fields', async ({ page }) => {
@@ -67,11 +67,11 @@ test.describe('Form examples, empty', () => {
 
       test.describe('when the form is filled in correctly', () => {
         test.beforeEach(async ({ page }) => {
-          await page.type(selectors.input.email, 'hello@world.com')
+          await page.fill(selectors.input.email, 'hello@world.com')
 
-          await page.type(selectors.input.password, 'password')
+          await page.fill(selectors.input.password, 'password')
 
-          await page.type(selectors.input.description, 'Hello, World!')
+          await page.fill(selectors.input.description, 'Hello, World!')
 
           await page.locator(selectors.input.radio).nth(0).click()
 
@@ -81,23 +81,19 @@ test.describe('Form examples, empty', () => {
 
           await page.click(selectors.input.numberInputIncrease)
 
-          await page.type(selectors.input.datePickerInput, '31/01/2022')
+          await page.fill(selectors.input.datePickerInput, '31/01/2022')
 
-          // eslint-disable-next-line playwright/no-wait-for-timeout
-          page.waitForTimeout(1000)
-
-          await page.type(selectors.input.select, 'th')
+          await page.click(selectors.input.select)
+          await page.keyboard.press('t')
+          await page.keyboard.press('h')
           await page.keyboard.press('Enter')
 
-          // eslint-disable-next-line playwright/no-wait-for-timeout
-          page.waitForTimeout(1000)
-
-          await page.type(selectors.input.autocomplete, 'fo')
+          await page.fill(selectors.input.autocomplete, 'fo')
           await page.keyboard.press('Enter')
 
-          // await page.click(selectors.input.rangeSliderRail, {
-          //   position: { x: 800, y: 5 },
-          // })
+          await page.click(selectors.input.rangeSliderRail, {
+            position: { x: 800, y: 5 },
+          })
         })
 
         test('shows no validation errors', async ({ page }) => {
@@ -115,10 +111,14 @@ test.describe('Form examples, empty', () => {
 
           test('submits the form values', async ({ page }) => {
             await page.locator(selectors.values).waitFor({ state: 'visible' })
+
             const submittedValues = await page
               .locator(selectors.values)
               .textContent()
-            await expect(JSON.parse(submittedValues)).toEqual(expectedResult)
+
+            await expect(JSON.parse(submittedValues as string)).toEqual(
+              expectedResult
+            )
           })
         })
       })

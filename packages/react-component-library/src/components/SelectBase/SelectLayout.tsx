@@ -87,6 +87,7 @@ export const SelectLayout = ({
           >
             <StyledInputWrapper
               data-testid="select-input-wrapper"
+              aria-controls={id}
               {...inputWrapperProps}
             >
               <StyledLabel

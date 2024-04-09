@@ -32,7 +32,7 @@
     "build:es": "BABEL_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\"",
     "build:cjs:dev": "BABEL_ENV=cjs RNDS_LOG_LEVEL=debug webpack --config=webpack/dev.js",
     "chromatic": "chromatic --build-script-name storybook:static",
-    "lint": "eslint src e2e --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0",
+    "lint": "eslint src e2e --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0 --resolve-plugins-relative-to ../eslint-config-react",
     "prepare": "yarn build",
     "storybook": "BABEL_ENV=es RNDS_LOG_LEVEL=debug storybook dev -p 6006",
     "storybook:static": "BABEL_ENV=es storybook build -c .storybook -o .static_storybook",
@@ -49,7 +49,7 @@
   },
   "lint-staged": {
     "*.@(js|jsx|ts|tsx)": [
-      "eslint",
+      "eslint --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0 --resolve-plugins-relative-to ../eslint-config-react",
       "prettier --write"
     ]
   },
@@ -72,15 +72,15 @@
     "@babel/preset-typescript": "^7.8.3",
     "@playwright/test": "^1.32.3",
     "@royalnavy/eslint-config-react": "^4.2.0",
-    "@storybook/addon-a11y": "^7.6.14",
-    "@storybook/addon-actions": "^7.6.14",
-    "@storybook/addon-essentials": "^7.6.14",
-    "@storybook/addon-interactions": "^7.6.14",
-    "@storybook/addon-links": "^7.6.14",
-    "@storybook/react": "^7.6.14",
-    "@storybook/react-webpack5": "^7.6.14",
-    "@storybook/test-runner": "^0.9.4",
-    "@storybook/testing-library": "^0.0.13",
+    "@storybook/addon-a11y": "^8.0.6",
+    "@storybook/addon-actions": "^8.0.6",
+    "@storybook/addon-essentials": "^8.0.6",
+    "@storybook/addon-interactions": "^8.0.6",
+    "@storybook/addon-links": "^8.0.6",
+    "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
+    "@storybook/react": "^8.0.6",
+    "@storybook/react-webpack5": "^8.0.6",
+    "@storybook/test-runner": "^0.17.0",
     "@testing-library/dom": "^9.3.4",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
@@ -98,8 +98,8 @@
     "@types/styled-theming": "^2.2.5",
     "@types/testing-library__react": "^10.0.1",
     "@types/uuid": "^8.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@welldone-software/why-did-you-render": "^7.0.1",
+    "axe-playwright": "^2.0.1",
     "babel-jest": "^29.0.3",
     "babel-loader": "^9.0.1",
     "babel-plugin-jsx-remove-data-test-id": "^3.0.0",
@@ -111,11 +111,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "concurrently": "^7.3.0",
     "eslint": "^8.2.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-playwright": "^0.12.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-storybook": "^0.6.15",
     "express": "^4.17.1",
     "formik": "^2.2.9",
@@ -137,10 +133,10 @@
     "react-hook-form": "6.15.8",
     "react-hot-loader": "^4.12.19",
     "source-map-loader": "^4.0.1",
-    "storybook": "^7.6.14",
+    "storybook": "^8.0.6",
     "styled-components": "^6.1.8",
     "timezone-mock": "^1.1.3",
-    "typescript": "^5.0.4",
+    "typescript": "^5.4.4",
     "undici": "^6.6.2",
     "url-search-params-polyfill": "^8.1.1",
     "wait-on": "^7.0.1",
@@ -157,6 +153,7 @@
     "@royalnavy/design-tokens": "^4.2.0",
     "@royalnavy/fonts": "^4.2.0",
     "@royalnavy/icon-library": "^4.2.0",
+    "@storybook/test": "^8.0.6",
     "classnames": "^2.2.6",
     "date-fns": "^2.9.0",
     "decimal.js": "^10.3.1",
@@ -178,6 +175,6 @@
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
-    "styled-components": ">= 5"
+    "styled-components": ">= 6"
   }
 }

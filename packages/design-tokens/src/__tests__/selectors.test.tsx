@@ -211,11 +211,9 @@ describe('color', () => {
       color: ${color('neutral', '100')};
     `
 
-    beforeEach(() => {
-      wrapper = render(<StyledComponent data-testid="test-element" />)
-    })
-
     it('should set styles correctly', () => {
+      wrapper = render(<StyledComponent data-testid="test-element" />)
+
       expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
         'color',
         '#e2e9ee'
