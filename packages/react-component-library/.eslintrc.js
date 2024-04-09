@@ -9,6 +9,7 @@ module.exports = {
       files: ['**/*.stories.tsx'],
       rules: {
         'jsx-a11y/anchor-is-valid': 'off',
+        'react/no-unknown-property': ['error', { ignore: ['css'] }],
       },
     },
     {

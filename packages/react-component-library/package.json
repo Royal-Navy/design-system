@@ -32,7 +32,7 @@
     "build:es": "BABEL_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\"",
     "build:cjs:dev": "BABEL_ENV=cjs RNDS_LOG_LEVEL=debug webpack --config=webpack/dev.js",
     "chromatic": "chromatic --build-script-name storybook:static",
-    "lint": "eslint src e2e --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0",
+    "lint": "eslint src e2e --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0 --resolve-plugins-relative-to ../eslint-config-react",
     "prepare": "yarn build",
     "storybook": "BABEL_ENV=es RNDS_LOG_LEVEL=debug storybook dev -p 6006",
     "storybook:static": "BABEL_ENV=es storybook build -c .storybook -o .static_storybook",
@@ -49,7 +49,7 @@
   },
   "lint-staged": {
     "*.@(js|jsx|ts|tsx)": [
-      "eslint",
+      "eslint --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0 --resolve-plugins-relative-to ../eslint-config-react",
       "prettier --write"
     ]
   },
@@ -98,7 +98,6 @@
     "@types/styled-theming": "^2.2.5",
     "@types/testing-library__react": "^10.0.1",
     "@types/uuid": "^8.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@welldone-software/why-did-you-render": "^7.0.1",
     "babel-jest": "^29.0.3",
     "babel-loader": "^9.0.1",
@@ -111,11 +110,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "concurrently": "^7.3.0",
     "eslint": "^8.2.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-playwright": "^0.12.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-storybook": "^0.6.15",
     "express": "^4.17.1",
     "formik": "^2.2.9",

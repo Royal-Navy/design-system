@@ -24,12 +24,11 @@
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --allowJs false --outDir dist/types",
     "prepare": "yarn build",
     "test": "jest",
-    "lint-staged": "lint-staged",
-    "lint": "eslint src --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json --max-warnings 0"
+    "lint": "eslint src --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json --max-warnings 0 --resolve-plugins-relative-to ../eslint-config-react"
   },
   "lint-staged": {
     "*.@(js|jsx|ts|tsx)": [
-      "eslint",
+      "eslint --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json --max-warnings 0 --resolve-plugins-relative-to ../eslint-config-react",
       "prettier --write"
     ]
   },
