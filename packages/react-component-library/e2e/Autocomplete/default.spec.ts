@@ -12,7 +12,9 @@ import selectors from './selectors'
 
 test.describe('Autocomplete', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=autocomplete--default&viewMode=story')
+    await page.goto('/iframe.html?id=autocomplete--default&viewMode=story', {
+      waitUntil: 'domcontentloaded',
+    })
   })
 
   test.describe('when the component is focused', () => {
@@ -26,7 +28,7 @@ test.describe('Autocomplete', () => {
 
     test.describe('and `hr` is typed', () => {
       test.beforeEach(async ({ page }) => {
-        await page.type(selectors.input, 'hr')
+        await page.fill(selectors.input, 'hr')
       })
 
       test('renders one option', async ({ page }) => {
@@ -85,7 +87,10 @@ test.describe('Autocomplete', () => {
           page,
         }) => {
           await page.click(selectors.input, { position: { x: 20, y: 25 } })
-          await page.type(selectors.input, 'more')
+          await page.keyboard.press('m')
+          await page.keyboard.press('o')
+          await page.keyboard.press('r')
+          await page.keyboard.press('e')
 
           await expect(page.locator(selectors.input)).toHaveValue('Tmorehree')
         })
@@ -211,7 +216,7 @@ test.describe('Autocomplete', () => {
     test('does not display a tooltip when overflowing text is typed', async ({
       page,
     }) => {
-      await page.type(
+      await page.fill(
         selectors.input,
         'A long piece of text that overflows the input'
       )
@@ -221,13 +226,13 @@ test.describe('Autocomplete', () => {
     })
 
     test('renders no options when `*` is typed', async ({ page }) => {
-      await page.type(selectors.input, '*')
+      await page.fill(selectors.input, '*')
       await expect(page.locator(selectors.option)).toHaveCount(0)
     })
 
     test.describe('and `z` is typed', () => {
       test.beforeEach(async ({ page }) => {
-        await page.type(selectors.input, 'z')
+        await page.fill(selectors.input, 'z')
       })
 
       test('renders no options', async ({ page }) => {

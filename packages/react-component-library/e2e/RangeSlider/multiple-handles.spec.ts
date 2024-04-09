@@ -7,7 +7,8 @@ import selectors from './selectors'
 test.describe('RangeSlider, multiple handles', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(
-      '/iframe.html?id=range-slider--multiple-handles&viewMode=story'
+      '/iframe.html?id=range-slider--multiple-handles&viewMode=story',
+      { waitUntil: 'domcontentloaded' }
     )
   })
 
