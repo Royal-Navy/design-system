@@ -1,5 +1,5 @@
 import React from 'react'
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn as Story } from '@storybook/react'
 
 import { DismissibleBanner, DismissibleBannerWithTitleProps } from '.'
 

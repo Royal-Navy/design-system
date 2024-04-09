@@ -107,10 +107,8 @@ export function getColor(
   weight: ColorShade,
   theme?: Theme
 ): string {
-  const value = get(
-    getTheme(theme).colorsTokens,
-    `color[${group}][${weight}].value`
-  )
+  const value =
+    get(getTheme(theme).colorsTokens, `color[${group}][${weight}].value`) ?? ''
 
   if (isTokenValid(value)) {
     return value
