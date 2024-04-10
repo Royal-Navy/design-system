@@ -49,7 +49,7 @@ ArbitraryContent.args = {
   children: (
     <div>
       <p>
-        Hello, <strong>world!</strong>
+        Hello, <strong>World!</strong>
       </p>
     </div>
   ),
