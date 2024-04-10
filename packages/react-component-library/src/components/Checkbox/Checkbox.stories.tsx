@@ -11,7 +11,7 @@ export default {
     },
   },
   component: Checkbox,
-  title: 'Checkbox',
+  title: 'Components/Checkbox',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

@@ -6,7 +6,7 @@ import { PhaseBanner } from '.'
 
 export default {
   component: PhaseBanner,
-  title: 'Phase Banner',
+  title: 'Components/Phase Banner',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',

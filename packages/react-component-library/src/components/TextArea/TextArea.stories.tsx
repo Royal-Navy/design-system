@@ -5,7 +5,7 @@ import { TextArea } from '.'
 
 export default {
   component: TextArea,
-  title: 'Text Area',
+  title: 'Components/Text Area',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

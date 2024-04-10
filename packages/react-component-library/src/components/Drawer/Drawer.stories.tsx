@@ -5,7 +5,7 @@ import { Drawer } from '.'
 
 export default {
   component: Drawer,
-  title: 'Drawer',
+  title: 'Components/Drawer',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',

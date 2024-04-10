@@ -7,7 +7,7 @@ import { DescriptionList, DescriptionListItem } from './index'
 export default {
   component: DescriptionList,
   subcomponents: { DescriptionListItem },
-  title: 'Description List',
+  title: 'Components/Description List',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

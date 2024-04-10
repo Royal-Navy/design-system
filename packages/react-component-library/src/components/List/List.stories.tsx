@@ -7,7 +7,7 @@ import { List, ListItem } from '.'
 export default {
   component: List,
   subcomponents: { ListItem },
-  title: 'List',
+  title: 'Components/List',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

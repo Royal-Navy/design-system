@@ -41,7 +41,7 @@ export default {
     Notifications,
     Notification,
   },
-  title: 'Sidebar',
+  title: 'Components/Sidebar',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',

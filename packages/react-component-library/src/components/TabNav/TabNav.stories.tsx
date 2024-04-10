@@ -7,7 +7,7 @@ import { TabNav, TabNavItem } from '.'
 export default {
   component: TabNav,
   subcomponents: { TabNavItem },
-  title: 'Tab Nav',
+  title: 'Components/Tab Nav',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     docs: {

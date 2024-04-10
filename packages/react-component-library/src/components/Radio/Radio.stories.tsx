@@ -11,7 +11,7 @@ export default {
     },
   },
   component: Radio,
-  title: 'Radio',
+  title: 'Components/Radio',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

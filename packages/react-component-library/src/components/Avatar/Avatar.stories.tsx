@@ -6,7 +6,7 @@ import { Avatar, AVATAR_VARIANT } from '.'
 export default {
   component: Avatar,
   parameters: { layout: 'fullscreen' },
-  title: 'Avatar',
+  title: 'Components/Avatar',
 } as Meta<typeof Avatar>
 
 const Template: StoryFn<typeof Avatar> = (props) => (

@@ -9,7 +9,9 @@ import {
   BADGE_VARIANT,
 } from '.'
 
-export default { component: Badge, title: 'Badge' } as Meta<typeof Badge>
+export default { component: Badge, title: 'Components/Badge' } as Meta<
+  typeof Badge
+>
 
 export const Default: StoryFn<typeof Badge> = ({
   color,

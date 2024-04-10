@@ -8,7 +8,7 @@ import { RangeSlider } from './index'
 
 export default {
   component: RangeSlider,
-  title: 'Range Slider',
+  title: 'Components/Range Slider',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     a11y: {

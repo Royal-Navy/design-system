@@ -7,7 +7,7 @@ import { Link } from '../Link'
 export default {
   component: Breadcrumbs,
   subcomponents: { BreadcrumbsItem },
-  title: 'Breadcrumbs',
+  title: 'Components/Breadcrumbs',
 } as Meta<typeof Breadcrumbs>
 
 export const Default: StoryFn<typeof Breadcrumbs> = ({ className }) => (

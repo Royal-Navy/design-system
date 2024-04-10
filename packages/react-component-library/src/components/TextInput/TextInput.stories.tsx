@@ -14,7 +14,7 @@ export default {
     },
   },
   component: TextInput,
-  title: 'Text Input',
+  title: 'Components/Text Input',
   parameters: {
     argTypes: {
       onBlur: { action: 'onBlur' },

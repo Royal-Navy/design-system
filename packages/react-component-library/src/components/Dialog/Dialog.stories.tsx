@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 
 export default {
   component: Dialog,
-  title: 'Dialog',
+  title: 'Components/Dialog',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',

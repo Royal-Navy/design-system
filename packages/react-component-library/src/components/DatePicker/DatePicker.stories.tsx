@@ -7,7 +7,7 @@ import { DatePicker } from '.'
 
 export default {
   component: DatePicker,
-  title: 'Date Picker',
+  title: 'Components/Date Picker',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     a11y: {

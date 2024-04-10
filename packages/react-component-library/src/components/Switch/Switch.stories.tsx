@@ -6,7 +6,7 @@ import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   component: Switch,
-  title: 'Switch',
+  title: 'Components/Switch',
   subcomponents: { SwitchOption },
   parameters: {
     actions: { argTypesRegex: '^on.*' },
