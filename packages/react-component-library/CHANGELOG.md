@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/Royal-Navy/design-system/compare/4.2.0...4.3.0) (2024-04-10)
+
+### Features
+
+- **Components:** Upgrade storybook ([#3748](https://github.com/Royal-Navy/design-system/issues/3748)) ([083696e](https://github.com/Royal-Navy/design-system/commit/083696eea26b1c8ffc32716e2803bc09039d717b))
+
 # [4.2.0](https://github.com/Royal-Navy/design-system/compare/4.1.0...4.2.0) (2024-04-04)
 
 ### Bug Fixes
