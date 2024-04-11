@@ -1,0 +1,36 @@
+import { Meta, Source } from '@storybook/blocks'
+
+<Meta title="Developers" />
+
+# Royal Navy Design System
+
+The Royal Navy Design System is the foundation for all UK defence applications. A single source for intuitive and consistent user interfaces, helping us all to create the best possible digital experiences.
+
+## Installation
+
+To install and save to your project's package.json dependencies, run:
+
+<Source dark code={`npm install @royalnavy/fonts @royalnavy/react-component-library styled-components`} />
+
+_`styled-components` is a required peer dependency and is installed with the above command._
+
+## Quick start
+
+Here's a quick example to get you started:
+
+<Source dark code={`import React from 'react'
+import ReactDOM from 'react-dom'
+import '@royalnavy/fonts'
+import { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
+
+function App() {
+  return (
+    <GlobalStyleProvider>
+      <Button variant="primary">
+        Hello, World!
+      </Button>
+    </GlobalStyleProvider>
+  )
+}
+
+ReactDOM.render(<App />, document.querySelector('#app'))`} />

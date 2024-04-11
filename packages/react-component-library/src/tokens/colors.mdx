@@ -7,13 +7,7 @@ import { selectors } from '@royalnavy/design-tokens'
 
 We use named colours (e.g. Neutral or Action) instead of colour literals (e.g. blue). Colour palettes represent functions, so that we can make interactions and contexts easy to distinguish.
 
-## Usage
-<Source code={`import { selectors } from '@royalnavy/design-tokens'
-const { color } = selectors
 
-<div style={{ color: color('action', '400') }}>Hello world</div>
-
-`} />
 
 ## Base palettes
 
@@ -213,3 +207,15 @@ Use supplementary colours to support the main colour palettes only. They can be 
       }}
   />
 </ColorPalette>
+
+---
+
+## Usage
+<Source dark code={`import { selectors } from '@royalnavy/design-tokens'
+const { color } = selectors
+
+<div style={{ backgroundColor: color('action', '400') }}>
+  Hello colo(u)rful world
+</div>
+
+`} />

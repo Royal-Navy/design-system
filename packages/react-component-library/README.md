@@ -92,15 +92,16 @@ const Example = () => {
 
 The hook wraps a popular underlying positioning engine called [Popper](https://github.com/popperjs/react-popper).
 
-If you want opinionated styling for your floating element please consider the [Popover](https://storybook.royalnavy.io/?path=/docs/popover--default) component.
+If you want opinionated styling for your floating element please consider the Popover component.
 
 ## Questions
 
-The Design System is maintained by a team at the Royal Navy. If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:design-system@digital.mod.uk).
+The Design System is maintained by a team at the Royal Navy. 
+If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:navydigital-dnadesignsystem@mod.gov.uk).
 
 ## Documentation
 
-The [documentation website](https://design-system.digital.mod.uk/) contains all the information you need to build your application using the Royal Navy Design System.
+The [documentation website](https://storybook.design-system.navy.digital.mod.uk/) contains all the information you need to build your application using the Royal Navy Design System.
 
 ## End-to-end tests
 
@@ -153,6 +154,3 @@ If you have recently updated then read the [release notes](https://github.com/Ro
 
 The [Design System Roadmap Board](https://github.com/Royal-Navy/design-system/projects/7) contains the work that has been prioritised for the next 12 months.
 
-## License
-
-The Royal Navy Design System is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE).
