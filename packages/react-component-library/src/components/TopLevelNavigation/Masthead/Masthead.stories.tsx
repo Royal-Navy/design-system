@@ -1,5 +1,6 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
+import styled from 'styled-components'
 import {
   IconChatBubble,
   IconExitToApp,
@@ -18,6 +19,10 @@ import {
 } from '.'
 import { Notification, Notifications } from '../NotificationPanel'
 import { MASTHEAD_SUBCOMPONENT } from './constants'
+
+const StyledContainer = styled.div`
+  min-height: 10rem;
+`
 
 export default {
   args: {
@@ -100,13 +105,15 @@ export const Default: StoryFn<typeof Masthead> = (props) => {
   )
 
   return (
-    <Masthead
-      {...props}
-      homeLink={<Link href="#" />}
-      nav={nav}
-      notifications={notifications}
-      user={user}
-    />
+    <StyledContainer>
+      <Masthead
+        {...props}
+        homeLink={<Link href="#" />}
+        nav={nav}
+        notifications={notifications}
+        user={user}
+      />
+    </StyledContainer>
   )
 }
 

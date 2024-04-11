@@ -16,11 +16,12 @@ import { StyledMastHead } from './partials/StyledMasthead'
 import { StyledServiceName } from './partials/StyledServiceName'
 import { StyledTitle } from './partials/StyledTitle'
 import { StyledBanner } from './partials/StyledBanner'
-import { SearchBar } from '../SearchBar/SearchBar'
+import { SearchBar } from '../SearchBar'
 import { StyledNotRead } from '../NotificationPanel/partials/StyledNotRead'
 import { StyledIconNotifications } from './partials/StyledIconNotifications'
 import { StyledIconSearch } from './partials/StyledIconSearch'
 import { ValueOf } from '../../../helpers'
+import { StyledInlineNav } from './partials/StyledInlineNav'
 
 export interface MastheadProps {
   /**
@@ -66,6 +67,10 @@ export interface MastheadProps {
    * Optional JSX to render a user menu.
    */
   user?: React.ReactElement<MastheadUserProps>
+  /**
+   * Whether to display the nav below (default) or within the masthead
+   */
+  hasInlineNav?: boolean
 }
 
 function getServiceName(
@@ -97,6 +102,7 @@ export const Masthead = ({
   initialOpenSubcomponent,
   Logo,
   nav,
+  hasInlineNav = false,
   notifications,
   onSearch,
   title,
@@ -125,11 +131,23 @@ export const Masthead = ({
   return (
     <StyledMastHead data-testid="masthead" ref={mastheadRef} {...rest}>
       <StyledMain>
-        <StyledBanner data-testid="masthead-banner" role="banner">
+        <StyledBanner
+          data-testid="masthead-banner"
+          role="banner"
+          $withInlineNav={hasInlineNav}
+        >
           {getServiceName(DisplayLogo, title, homeLink)}
         </StyledBanner>
+        {hasInlineNav ? (
+          <StyledInlineNav data-testid="masthead-inline-nav">
+            {nav}
+          </StyledInlineNav>
+        ) : null}
 
-        <StyledOptions>
+        <StyledOptions
+          $withInlineNav={hasInlineNav}
+          data-testid="masthead-options"
+        >
           {onSearch && (
             <StyledOption
               $isActive={showSearch}
@@ -181,7 +199,7 @@ export const Masthead = ({
         />
       )}
 
-      {nav}
+      {!hasInlineNav ? nav : null}
     </StyledMastHead>
   )
 }
