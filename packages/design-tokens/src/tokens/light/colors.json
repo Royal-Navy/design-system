@@ -264,34 +264,34 @@
     },
     "supd": {
       "000": {
-        "value": "#fff3ff"
+        "value": "#ffeef6"
       },
       "100": {
-        "value": "#fee9ff"
+        "value": "#ffe1f0"
       },
       "200": {
-        "value": "#fcd3fd"
+        "value": "#ffcce5"
       },
       "300": {
-        "value": "#f7b5f9"
+        "value": "#ffa2b5"
       },
       "400": {
-        "value": "#ee89f1"
+        "value": "#f77f97"
       },
       "500": {
-        "value": "#e46fe8"
+        "value": "#f35d7b"
       },
       "600": {
-        "value": "#cc4fd0"
+        "value": "#d84b67"
       },
       "700": {
-        "value": "#b43fb8"
+        "value": "#c43854"
       },
       "800": {
-        "value": "#8c358f"
+        "value": "#972b41"
       },
       "900": {
-        "value": "#6c2d6e"
+        "value": "#702232"
       }
     },
     "supe": {
