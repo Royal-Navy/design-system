@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/Royal-Navy/design-system/compare/4.3.0...4.4.0) (2024-04-12)
+
+### Features
+
+- **MastHead:** Add inline nav for masthead ([#3744](https://github.com/Royal-Navy/design-system/issues/3744)) ([44a061b](https://github.com/Royal-Navy/design-system/commit/44a061b50ff1bc1f3133289458ff534c990a2a0e))
+
 # [4.3.0](https://github.com/Royal-Navy/design-system/compare/4.2.0...4.3.0) (2024-04-10)
 
 ### Features
