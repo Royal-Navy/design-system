@@ -1,0 +1,51 @@
+import { Meta, Source } from '@storybook/blocks'
+
+<Meta title="Forms/Guidance" />
+
+# Forms
+
+## Introduction
+A form is a group of related components that allow users to provide data and/or configure any number of options.
+
+Users should be able to use forms with as little difficulty and mental effort as possible. Form behaviour and layout consistency are key to achieving this goal. This is why we ask that, when building forms, you follow the Standards outlined in this section - no matter how simple or complex your form is.
+
+### A note on terminology
+> MUST: You must not deviate from the Design System.
+
+If you need a new variant of a component or pattern, please contact the Design System team outlining the variant you need and why.
+
+We will work with you to either suggest an alternative approach, update the Design System or support your team to make the required updates.
+
+> SHOULD: You are strongly encouraged not to deviate from the Design System, unless there is a good reason.
+
+Carefully consider the implications and deviate only when absolutely necessary.
+
+Consider speaking to the Design System team for advice first.
+
+### A note on Standards implementation
+Several Standards are 'by default' taken care of by the Design System (DS). These have not been marked here, but will eventually be marked accordingly. This means that, unless a downstream team changes our implementation, the Standard is automatically satisfied by using the default implementation provided by the DS.
+
+However, if a downstream team chooses to develop their own implementation, they will have to ensure adherence to those Standards.
+
+## Anatomy of a form
+<img src="/anatomy_of_a_form.svg" />
+
+A form can be made up of some or all of the following:
+
+<img src="/anatomy_of_a_form_2.svg" />
+
+1. Form error summary. Appears after a failed form submission; outlines all errors and links to the respective form inputs.
+
+2. Sections. Break up long forms into smaller blocks that are easier to process.
+
+3. Fieldsets. Group closely related form inputs, eg. a group of inputs that allows the user to enter an address.
+
+4. Input components. Enable users to provide data and/or configure options.
+
+5. Contextual help. Help text that appears in an overlay, providing information about the relevant field(s).
+
+6. Hint text. Short contextual cues, to assist the user in providing the right data.
+
+7. Error message. Contextual error message, related to the field directly below.
+
+8. Buttons. Allow users to submit, save or exit a form

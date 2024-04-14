@@ -1,0 +1,189 @@
+<svg width="850" height="653" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter x="-3.4%" y="-8.7%" width="106.8%" height="121.7%" filterUnits="objectBoundingBox" id="a">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.239443906 0" in="shadowBlurOuter1"/>
+    </filter>
+    <rect id="b" x="0" y="0" width="146" height="46" rx="15"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#EDF2F7" d="M0 0h850v653H0z"/>
+    <path fill="#FFF" d="M209 30h451v593H209z"/>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="bold" fill="#12202B">
+      <tspan x="260" y="203">Name</tspan>
+    </text>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="bold" fill="#12202B">
+      <tspan x="445" y="203">Contact</tspan>
+    </text>
+    <path
+      d="M601.5 415.333h1.667v-1.666H601.5v1.666Zm.833-13.333a8.336 8.336 0 0 0-8.333 8.333c0 4.6 3.733 8.334 8.333 8.334s8.334-3.734 8.334-8.334-3.734-8.333-8.334-8.333Zm0 15a6.676 6.676 0 0 1-6.666-6.667 6.676 6.676 0 0 1 6.666-6.666 6.676 6.676 0 0 1 6.667 6.666 6.676 6.676 0 0 1-6.667 6.667Zm0-11.667a3.332 3.332 0 0 0-3.333 3.334h1.667c0-.917.75-1.667 1.666-1.667.917 0 1.667.75 1.667 1.667 0 1.666-2.5 1.458-2.5 4.166h1.667c0-1.875 2.5-2.083 2.5-4.166a3.332 3.332 0 0 0-3.334-3.334Z"
+      fill="#2661A7" fill-rule="nonzero"/>
+    <g transform="translate(259 219)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="164" height="45" rx="15"/>
+      <rect stroke="#ABC1CB" fill="#FFF" x="186.5" y=".5" width="164" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="17">First name</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="36">Horatio</tspan>
+      </text>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="198" y="17">Email address</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="198" y="36">hn@mod.gov.uk</tspan>
+      </text>
+    </g>
+    <g transform="translate(259 387)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="322" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="14.837" y="18">ID number</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="14.837" y="37">20349124</tspan>
+      </text>
+    </g>
+    <g transform="translate(259 189)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y="88.5" width="164" height="45" rx="15"/>
+      <path fill="#E2E9EE" d="M175 0h1v134h-1z"/>
+      <rect stroke="#ABC1CB" fill="#FFF" x="186.5" y="88.5" width="164" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="105">Last name</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="124">Nelson</tspan>
+      </text>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="198" y="105">Contact number</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="198" y="124">+447985392581</tspan>
+      </text>
+    </g>
+    <path fill="#E2E9EE" d="M259 354h351v1H259zM259 163h351v1H259z"/>
+    <g transform="translate(102 556)">
+      <path fill="#3F5567" d="M9.5 10h132v2H9.5z"/>
+      <circle fill="#3F5567" cx="10.5" cy="10.5" r="10.5"/>
+      <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#FFF">
+        <tspan x="7" y="14.5">8</tspan>
+      </text>
+      <circle fill="#3F5567" cx="140.5" cy="11" r="2.5"/>
+    </g>
+    <g transform="translate(117 504)">
+      <path fill="#3F5567" d="M9.5 10h132v2H9.5z"/>
+      <circle fill="#3F5567" cx="10.5" cy="10.5" r="10.5"/>
+      <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#FFF">
+        <tspan x="7" y="14.5">6</tspan>
+      </text>
+      <circle fill="#3F5567" cx="140.5" cy="11" r="2.5"/>
+    </g>
+    <g transform="translate(107 133)">
+      <path fill="#3F5567" d="M9.5 10h132v2H9.5z"/>
+      <circle fill="#3F5567" cx="10.5" cy="10.5" r="10.5"/>
+      <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#FFF">
+        <tspan x="7" y="14.5">2</tspan>
+      </text>
+      <circle fill="#3F5567" cx="140.5" cy="11" r="2.5"/>
+    </g>
+    <g transform="translate(259 442)">
+      <rect stroke="#B22920" stroke-width="3" fill="#FFF" y="17" width="351" height="46" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="45">Unit</tspan>
+      </text>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="400" fill="#2F424F">
+        <tspan x="10" y="78">As shown on your security pass</tspan>
+      </text>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="11" font-weight="400" fill="#B22920">
+        <tspan x="10" y="11">Unit can’t be blank</tspan>
+      </text>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="18" font-weight="bold" fill="#12202B">
+      <tspan x="259" y="149">Personal details</tspan>
+    </text>
+    <g transform="translate(259 543)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <use fill="#2976C7" xlink:href="#b"/>
+    </g>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#FFF" transform="translate(259 543)">
+      <tspan x="31" y="29">Save details</tspan>
+    </text>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+      <tspan x="43" y="572">Button</tspan>
+    </text>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+      <tspan x="43" y="520">Hint text</tspan>
+    </text>
+    <g transform="translate(160 436)">
+      <path fill="#3F5567" d="M9.5 10h92v2h-92z"/>
+      <circle fill="#3F5567" cx="10.5" cy="10.5" r="10.5"/>
+      <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#FFF">
+        <tspan x="7" y="14.5">7</tspan>
+      </text>
+      <circle fill="#3F5567" cx="100.5" cy="11" r="2.5"/>
+    </g>
+    <g transform="translate(615 399)">
+      <path fill="#3F5567" d="M4.5 10h42v2h-42z"/>
+      <circle fill="#3F5567" cx="55.5" cy="10.5" r="10.5"/>
+      <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#FFF">
+        <tspan x="52" y="14.5">5</tspan>
+      </text>
+      <circle fill="#3F5567" cx="2.5" cy="11" r="2.5"/>
+    </g>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+      <tspan x="43" y="452">Error messages</tspan>
+    </text>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+      <tspan x="691" y="415">Contextual help</tspan>
+    </text>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+      <tspan x="43" y="149">Section</tspan>
+    </text>
+    <g transform="translate(196 71)">
+      <path fill="#3F5567" d="M10.5 10h42v2h-42z"/>
+      <circle fill="#3F5567" cx="10.5" cy="10.5" r="10.5"/>
+      <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#FFF">
+        <tspan x="7" y="14.5">1</tspan>
+      </text>
+      <circle fill="#3F5567" cx="51.5" cy="11" r="2.5"/>
+    </g>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+      <tspan x="43" y="87">Form error summary</tspan>
+    </text>
+    <g transform="translate(109 185)">
+      <path fill="#3F5567" d="M9.5 10h130v2H9.5z"/>
+      <circle fill="#3F5567" cx="10.5" cy="10.5" r="10.5"/>
+      <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#FFF">
+        <tspan x="7" y="14.5">3</tspan>
+      </text>
+      <circle fill="#3F5567" cx="138.5" cy="11" r="2.5"/>
+    </g>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+      <tspan x="43" y="201">Fieldset</tspan>
+    </text>
+    <g transform="translate(182 228)">
+      <path fill="#3F5567" d="M7.5 10h60v2h-60z"/>
+      <circle fill="#3F5567" cx="10.5" cy="10.5" r="10.5"/>
+      <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#FFF">
+        <tspan x="7" y="14.5">4</tspan>
+      </text>
+      <circle fill="#3F5567" cx="66.5" cy="11" r="2.5"/>
+    </g>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+      <tspan x="43" y="244">Input components</tspan>
+    </text>
+    <g transform="translate(258 50)" fill="#B22920">
+      <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="bold">
+        <tspan x="40" y="25">There is 1 error in this form</tspan>
+      </text>
+      <text font-family="Lato-Regular,-apple-system, BlinkMacSystemFont" font-size="16" letter-spacing="-.1" text-decoration="underline">
+        <tspan x="58" y="49">Unit can’t be blank</tspan>
+      </text>
+      <rect width="4" height="66" rx="2"/>
+      <path
+        d="M22 26c-4.416 0-8-3.584-8-8s3.584-8 8-8 8 3.584 8 8-3.584 8-8 8Zm.8-12h-1.6v4.8h1.6V14Zm0 6.4h-1.6V22h1.6v-1.6Z"
+        fill-rule="nonzero"/>
+      <circle cx="45.5" cy="43.5" r="2.5"/>
+    </g>
+  </g>
+</svg>
