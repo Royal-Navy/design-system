@@ -4,6 +4,7 @@ async function getInjectedStyles(page) {
   await page.waitForSelector('style[data-styled]', { state: 'attached' })
 
   return page.evaluate(() => {
+    // @ts-ignore
     const styles = [...document.head.querySelectorAll('style')]
     return styles.map((style) => style.innerHTML).join('\n')
   })
