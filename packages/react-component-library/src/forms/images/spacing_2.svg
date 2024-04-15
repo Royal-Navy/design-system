@@ -1,0 +1,527 @@
+<svg width="850" height="1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter x="-.2%" y="-3.1%" width="100.3%" height="106.2%" filterUnits="objectBoundingBox" id="b">
+      <feOffset dy="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-.2%" y="-3.1%" width="100.3%" height="106.2%" filterUnits="objectBoundingBox" id="d">
+      <feOffset dy="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-.2%" y="-3.1%" width="100.3%" height="106.2%" filterUnits="objectBoundingBox" id="f">
+      <feOffset dy="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-.2%" y="-3.1%" width="100.3%" height="106.2%" filterUnits="objectBoundingBox" id="h">
+      <feOffset dy="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-.2%" y="-3.1%" width="100.3%" height="106.2%" filterUnits="objectBoundingBox" id="j">
+      <feOffset dy="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-.2%" y="-3.1%" width="100.3%" height="106.2%" filterUnits="objectBoundingBox" id="l">
+      <feOffset dy="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-.2%" y="-3.1%" width="100.3%" height="106.2%" filterUnits="objectBoundingBox" id="n">
+      <feOffset dy="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-.2%" y="-2.5%" width="100.3%" height="105%" filterUnits="objectBoundingBox" id="p">
+      <feOffset dy="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-.2%" y="-2.5%" width="100.3%" height="105%" filterUnits="objectBoundingBox" id="r">
+      <feOffset dy="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-3.6%" y="-.1%" width="107.1%" height="100.2%" filterUnits="objectBoundingBox" id="t">
+      <feOffset dx="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.109803922 0 0 0 0 0.392156863 0 0 0 0 0.949019608 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dx="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.109803922 0 0 0 0 0.392156863 0 0 0 0 0.949019608 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-5.6%" y="-.6%" width="111.1%" height="101.2%" filterUnits="objectBoundingBox" id="v">
+      <feOffset dx="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.109803922 0 0 0 0 0.392156863 0 0 0 0 0.949019608 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dx="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.109803922 0 0 0 0 0.392156863 0 0 0 0 0.949019608 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-5.6%" y="-.8%" width="111.1%" height="101.6%" filterUnits="objectBoundingBox" id="x">
+      <feOffset dx="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.109803922 0 0 0 0 0.392156863 0 0 0 0 0.949019608 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dx="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.109803922 0 0 0 0 0.392156863 0 0 0 0 0.949019608 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-3.6%" y="-.1%" width="107.1%" height="100.2%" filterUnits="objectBoundingBox" id="z">
+      <feOffset dx="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.109803922 0 0 0 0 0.392156863 0 0 0 0 0.949019608 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dx="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.109803922 0 0 0 0 0.392156863 0 0 0 0 0.949019608 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <filter x="-3.4%" y="-8.7%" width="106.8%" height="121.7%" filterUnits="objectBoundingBox" id="A">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.239443906 0" in="shadowBlurOuter1"/>
+    </filter>
+    <filter x="-.3%" y="-7.1%" width="100.6%" height="114.3%" filterUnits="objectBoundingBox" id="D">
+      <feOffset dy="-2" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner1" result="shadowMatrixInner1"/>
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"
+                   result="shadowInnerInner2"/>
+      <feColorMatrix values="0 0 0 0 0.925490196 0 0 0 0 0.254901961 0 0 0 0 0.219607843 0 0 0 1 0"
+                     in="shadowInnerInner2" result="shadowMatrixInner2"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <path id="a" d="M106 100h638v32H106z"/>
+    <path id="c" d="M106 267h639v32H106z"/>
+    <path id="e" d="M106 494h639v32H106z"/>
+    <path id="g" d="M106 721h638v32H106z"/>
+    <path id="i" d="M106 755h638v32H106z"/>
+    <path id="k" d="M106 852h638v32H106z"/>
+    <path id="m" d="M106 930h638v32H106z"/>
+    <path id="o" d="M106 194h638v40H106z"/>
+    <path id="q" d="M106 422h639v40H106z"/>
+    <path id="s" d="M78 100h28v862H78z"/>
+    <path id="u" d="M407 558h18v163h-18z"/>
+    <path id="w" d="M416 298h18v124h-18z"/>
+    <path id="y" d="M744 100h28v862h-28z"/>
+    <path id="C" d="M106 544h320v14H106z"/>
+    <rect id="B" x="0" y="0" width="146" height="46" rx="15"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#EDF2F7" d="M0 0h850v1024H0z"/>
+    <path fill="#FFF" d="M40 30h770v932H40z"/>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#B22922">
+      <tspan x="418" y="121">32</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#EC4138" xlink:href="#a"/>
+      <use fill="#000" filter="url(#b)" xlink:href="#a"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#B22922">
+      <tspan x="418" y="288">32</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#EC4138" xlink:href="#c"/>
+      <use fill="#000" filter="url(#d)" xlink:href="#c"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#B22922">
+      <tspan x="418" y="515">32</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#EC4138" xlink:href="#e"/>
+      <use fill="#000" filter="url(#f)" xlink:href="#e"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#B22922">
+      <tspan x="418" y="742">32</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#EC4138" xlink:href="#g"/>
+      <use fill="#000" filter="url(#h)" xlink:href="#g"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#B22922">
+      <tspan x="418" y="776">32</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#EC4138" xlink:href="#i"/>
+      <use fill="#000" filter="url(#j)" xlink:href="#i"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#B22922">
+      <tspan x="418" y="873">32</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#EC4138" xlink:href="#k"/>
+      <use fill="#000" filter="url(#l)" xlink:href="#k"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#B22922">
+      <tspan x="418" y="951">32</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#EC4138" xlink:href="#m"/>
+      <use fill="#000" filter="url(#n)" xlink:href="#m"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#B22922">
+      <tspan x="418" y="218">40</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#EC4138" xlink:href="#o"/>
+      <use fill="#000" filter="url(#p)" xlink:href="#o"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#B22922">
+      <tspan x="418" y="446">40</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#EC4138" xlink:href="#q"/>
+      <use fill="#000" filter="url(#r)" xlink:href="#q"/>
+    </g>
+    <path fill="#B8C7D2" d="M41 30h770v70H41z"/>
+    <path fill="#B8C7D2" d="M40 30h38v964H40z"/>
+    <path fill="#B8C7D2" d="M40 961h770v33H40z"/>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#12202B">
+      <tspan x="375" y="983">Other content</tspan>
+    </text>
+    <path fill="#B8C7D2" d="M772 30h38v964h-38z"/>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#12202B">
+      <tspan x="376" y="71">Other content</tspan>
+    </text>
+    <g transform="translate(106 132)" fill="#B22920">
+      <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="bold">
+        <tspan x="40" y="25">There is 1 error in this form</tspan>
+      </text>
+      <text font-family="Lato-Regular,-apple-system, BlinkMacSystemFont" font-size="16" letter-spacing="-.1" text-decoration="underline">
+        <tspan x="58" y="49">Line manager can’t be blank</tspan>
+      </text>
+      <rect width="4" height="62" rx="2"/>
+      <path
+        d="M22 26c-4.416 0-8-3.584-8-8s3.584-8 8-8 8 3.584 8 8-3.584 8-8 8Zm.8-12h-1.6v4.8h1.6V14Zm0 6.4h-1.6V22h1.6v-1.6Z"
+        fill-rule="nonzero"/>
+      <circle cx="45.5" cy="43.5" r="2.5"/>
+    </g>
+    <g transform="translate(106 299)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="312" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">First name</tspan>
+      </text>
+      <text opacity=".1" font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Horatio</tspan>
+      </text>
+    </g>
+    <g transform="translate(107 806)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="312" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Unit</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Whale Island</tspan>
+      </text>
+    </g>
+    <g transform="translate(431 299)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="314" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Last name</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Nelson</tspan>
+      </text>
+    </g>
+    <g transform="translate(432 786)">
+      <rect stroke="#B22920" stroke-width="3" fill="#FFF" y="19" width="313" height="46" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="38">Line manager</tspan>
+      </text>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="11" font-weight="400" fill="#B22920">
+        <tspan x="13" y="11">Line manager can’t be blank</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="57">Nelson</tspan>
+      </text>
+    </g>
+    <g transform="translate(106 357)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="312" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Email address</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Horatio.Nelson@royalnavy.io</tspan>
+      </text>
+    </g>
+    <g transform="translate(107 559)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="301" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Address line 1</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">147 New Bond Street</tspan>
+      </text>
+    </g>
+    <path fill="#E2E9EE" d="M107 493h637v1H107zM107 753h637v1H107zM107 266h637v1H107z"/>
+    <g transform="translate(442 559)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="301" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Address line 1</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Trafalgar Square</tspan>
+      </text>
+    </g>
+    <g transform="translate(107 617)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="301" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Address line 2</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Mayfair</tspan>
+      </text>
+    </g>
+    <g transform="translate(442 617)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="301" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Address line 2</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Charing Cross</tspan>
+      </text>
+    </g>
+    <g transform="translate(442 675)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="144" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">City</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">London</tspan>
+      </text>
+    </g>
+    <g transform="translate(107 675)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="145" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">City</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">London</tspan>
+      </text>
+    </g>
+    <g transform="translate(598 675)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="145" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Postcode</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">WC2N 5DN</tspan>
+      </text>
+    </g>
+    <g transform="translate(263 675)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="144" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Postcode</tspan>
+      </text>
+      <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">W15 2TS</tspan>
+      </text>
+    </g>
+    <g transform="translate(431 357)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="282" height="45" rx="15"/>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="28">ID number</tspan>
+      </text>
+      <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="400" fill="#2F424F">
+        <tspan x="14" y="61">As shown on your security pass</tspan>
+      </text>
+    </g>
+    <g>
+      <use fill-opacity=".113" fill="#1C64F2" xlink:href="#s"/>
+      <use fill="#000" filter="url(#t)" xlink:href="#s"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#0A48C3">
+      <tspan x="85" y="495">32</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#1C64F2" xlink:href="#u"/>
+      <use fill="#000" filter="url(#v)" xlink:href="#u"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#0A48C3">
+      <tspan x="409" y="630">16</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#1C64F2" xlink:href="#w"/>
+      <use fill="#000" filter="url(#x)" xlink:href="#w"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#0A48C3">
+      <tspan x="418" y="370">12</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#1C64F2" xlink:href="#y"/>
+      <use fill="#000" filter="url(#z)" xlink:href="#y"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#0A48C3">
+      <tspan x="750" y="495">32</tspan>
+    </text>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="bold" fill="#12202B">
+      <tspan x="106" y="542">Home address</tspan>
+    </text>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="18" font-weight="bold" fill="#12202B">
+      <tspan x="106" y="479">Address details</tspan>
+    </text>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="18" font-weight="bold" fill="#12202B">
+      <tspan x="106" y="252">Personal details</tspan>
+    </text>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="bold" fill="#12202B">
+      <tspan x="442" y="542">Work address</tspan>
+    </text>
+    <path fill="#E2E9EE" d="M425 526h1v195h-1z"/>
+    <path d="M726 368h20v20h-20z"/>
+    <path
+      d="M735.167 383h1.666v-1.667h-1.666V383Zm.833-13.333a8.336 8.336 0 0 0-8.333 8.333c0 4.6 3.733 8.333 8.333 8.333s8.333-3.733 8.333-8.333-3.733-8.333-8.333-8.333Zm0 15a6.676 6.676 0 0 1-6.667-6.667 6.676 6.676 0 0 1 6.667-6.667 6.676 6.676 0 0 1 6.667 6.667 6.676 6.676 0 0 1-6.667 6.667ZM736 373a3.332 3.332 0 0 0-3.333 3.333h1.666c0-.916.75-1.666 1.667-1.666s1.667.75 1.667 1.666c0 1.667-2.5 1.459-2.5 4.167h1.666c0-1.875 2.5-2.083 2.5-4.167A3.332 3.332 0 0 0 736 373Z"
+      fill="#2661A7" fill-rule="nonzero"/>
+    <g transform="translate(106 884)">
+      <use fill="#000" filter="url(#A)" xlink:href="#B"/>
+      <use fill="#2976C7" xlink:href="#B"/>
+    </g>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#FFF" transform="translate(106 884)">
+      <tspan x="31" y="29">Save details</tspan>
+    </text>
+    <g>
+      <use fill-opacity=".113" fill="#EC4138" xlink:href="#C"/>
+      <use fill="#000" filter="url(#D)" xlink:href="#C"/>
+    </g>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="bold" fill="#B22922">
+      <tspan x="261" y="555.3">14</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,71 @@
+<svg width="850" height="349" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <rect id="a" x="95" y="49" width="1" height="190" rx=".5"/>
+    <rect id="b" x="197" y="49" width="1" height="190" rx=".5"/>
+    <rect id="c" x="590" y="49" width="1" height="190" rx=".5"/>
+    <rect id="d" x="752" y="49" width="1" height="190" rx=".5"/>
+    <rect id="e" x="302" y="49" width="1" height="190" rx=".5"/>
+    <rect id="f" x="406" y="49" width="1" height="190" rx=".5"/>
+    <rect id="g" x="509" y="49" width="1" height="190" rx=".5"/>
+    <mask id="h" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="1" height="190"
+          fill="#fff">
+      <use xlink:href="#a"/>
+    </mask>
+    <mask id="i" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="1" height="190"
+          fill="#fff">
+      <use xlink:href="#b"/>
+    </mask>
+    <mask id="j" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="1" height="190"
+          fill="#fff">
+      <use xlink:href="#c"/>
+    </mask>
+    <mask id="k" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="1" height="190"
+          fill="#fff">
+      <use xlink:href="#d"/>
+    </mask>
+    <mask id="l" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="1" height="190"
+          fill="#fff">
+      <use xlink:href="#e"/>
+    </mask>
+    <mask id="m" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="1" height="190"
+          fill="#fff">
+      <use xlink:href="#f"/>
+    </mask>
+    <mask id="n" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="1" height="190"
+          fill="#fff">
+      <use xlink:href="#g"/>
+    </mask>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#EDF2F7" d="M0 0h850v290H0z"/>
+    <path fill="#60B255" d="M0 0h850v10H0z"/>
+    <text font-family="-apple-system, BlinkMacSystemFont-Regular, -apple-system, BlinkMacSystemFont" font-size="16" fill="#233645">
+      <tspan x="40" y="317">Ensure your forms are left aligned, input fields reflect the expected input length</tspan>
+      <tspan x="40" y="341">and that you are not using more than four different widths for form components.</tspan>
+    </text>
+    <path
+      d="m24.825 309.317-5.492 5.491-2.991-2.983L15.167 313l4.166 4.167L26 310.5l-1.175-1.183ZM21 304.667A8.336 8.336 0 0 0 12.667 313c0 4.6 3.733 8.333 8.333 8.333s8.333-3.733 8.333-8.333-3.733-8.333-8.333-8.333Zm0 15A6.665 6.665 0 0 1 14.333 313 6.665 6.665 0 0 1 21 306.333 6.665 6.665 0 0 1 27.667 313 6.665 6.665 0 0 1 21 319.667Z"
+      fill="#60B255" fill-rule="nonzero"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="99.5" y="110.5" width="197" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="99.5" y="70.5" width="197" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="307.5" y="110.5" width="197" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="307.5" y="70.5" width="197" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="99.5" y="150.5" width="301" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="99.5" y="190.5" width="93" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="307.5" y="190.5" width="93" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="203.5" y="190.5" width="93" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="411.5" y="190.5" width="93" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="411.5" y="150.5" width="93" height="29" rx="8"/>
+    <use stroke="#3F5567" mask="url(#h)" stroke-width="4" fill="#FFF" stroke-dasharray="4,4" xlink:href="#a"/>
+    <use stroke="#3F5567" mask="url(#i)" stroke-width="4" fill="#FFF" stroke-dasharray="4,4" xlink:href="#b"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="594.5" y="110.5" width="93" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="594.5" y="70.5" width="93" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="594.5" y="150.5" width="153" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="594.5" y="190.5" width="93" height="29" rx="8"/>
+    <use stroke="#3F5567" mask="url(#j)" stroke-width="4" fill="#FFF" stroke-dasharray="4,4" xlink:href="#c"/>
+    <use stroke="#3F5567" mask="url(#k)" stroke-width="4" fill="#FFF" stroke-dasharray="4,4" xlink:href="#d"/>
+    <use stroke="#3F5567" mask="url(#l)" stroke-width="4" fill="#FFF" stroke-dasharray="4,4" xlink:href="#e"/>
+    <use stroke="#3F5567" mask="url(#m)" stroke-width="4" fill="#FFF" stroke-dasharray="4,4" xlink:href="#f"/>
+    <use stroke="#3F5567" mask="url(#n)" stroke-width="4" fill="#FFF" stroke-dasharray="4,4" xlink:href="#g"/>
+  </g>
+</svg>

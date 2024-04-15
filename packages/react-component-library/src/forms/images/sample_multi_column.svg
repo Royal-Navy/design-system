@@ -1,0 +1,195 @@
+<svg width="850" height="996" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter x="-4.4%" y="-8.7%" width="108.8%" height="121.7%" filterUnits="objectBoundingBox" id="a">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.126291555 0" in="shadowBlurOuter1"/>
+    </filter>
+    <filter x="-3%" y="-8.7%" width="106%" height="121.7%" filterUnits="objectBoundingBox" id="c">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.239443906 0" in="shadowBlurOuter1"/>
+    </filter>
+    <rect id="b" x="0" y="0" width="113" height="46" rx="15"/>
+    <rect id="d" x="0" y="0" width="168" height="46" rx="15"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#EDF2F7" d="M0 0h850v996H0z"/>
+    <path fill="#FFF" d="M40 30h770v936H40z"/>
+    <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#233645" text-decoration="underline">
+      <tspan x="105" y="610">Add another item</tspan>
+    </text>
+    <g transform="translate(285 888)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <rect stroke="#ABC1CB" stroke-linejoin="square" fill="#FFF" x=".5" y=".5" width="112" height="45" rx="15"/>
+    </g>
+    <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#233645"
+          transform="translate(285 888)">
+      <tspan x="32.22" y="29">Cancel</tspan>
+    </text>
+    <g transform="translate(105 424)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="637" height="85" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Description</tspan>
+      </text>
+    </g>
+    <g transform="rotate(-45 971.553 -624.86)" fill="#ABC1CB">
+      <rect width="14" height="1" rx=".5"/>
+      <rect x="2.8" y="3.414" width="8.4" height="1" rx=".5"/>
+    </g>
+    <g transform="translate(105 770)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="637" height="85" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="19">Other information</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="38">Payment terms: 30 days</tspan>
+      </text>
+    </g>
+    <g transform="rotate(-45 1389.212 -451.86)" fill="#ABC1CB">
+      <rect width="14" height="1" rx=".5"/>
+      <rect x="2.8" y="3.414" width="8.4" height="1" rx=".5"/>
+    </g>
+    <rect fill="#748899" x="105" y="247" width="36" height="20" rx="10"/>
+    <rect fill="#FFF" x="109" y="250" width="14" height="14" rx="7"/>
+    <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#435565">
+      <tspan x="157" y="263">Advanced options</tspan>
+    </text>
+    <g transform="translate(105 127)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="312" height="45" rx="15"/>
+      <path d="m292.364 20 1.414 1.414-6.364 6.364-.025-.025-.025.025L281 21.414 282.414 20l4.974 4.974L292.364 20Z"
+            fill="#2661A7"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Client</tspan>
+      </text>
+    </g>
+    <g transform="translate(430 127)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="312" height="45" rx="15"/>
+      <path d="m292.364 20 1.414 1.414-6.364 6.364-.025-.025-.025.025L281 21.414 282.414 20l4.974 4.974L292.364 20Z"
+            fill="#2661A7"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Issuing office</tspan>
+      </text>
+    </g>
+    <g transform="translate(105 187)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="203" height="45" rx="15"/>
+      <path fill="#ABC1CB" d="M155 0h1v46h-1z"/>
+      <path
+        d="M183.444 23.778H179v4.444h4.444v-4.444ZM182.556 14v1.778h-7.112V14h-1.777v1.778h-.89c-.986 0-1.768.8-1.768 1.778L171 30c0 .978.791 1.778 1.778 1.778h12.444c.978 0 1.778-.8 1.778-1.778V17.556c0-.978-.8-1.778-1.778-1.778h-.889V14h-1.777Zm2.666 16h-12.444v-9.778h12.444V30Z"
+        fill="#2561A7" fill-rule="nonzero"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Invoice date</tspan>
+      </text>
+    </g>
+    <g transform="translate(322 187)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="203" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Invoice number</tspan>
+      </text>
+    </g>
+    <g transform="translate(539 187)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="203" height="45" rx="15"/>
+      <path d="m183.364 20 1.414 1.414-6.364 6.364-.025-.025-.025.025L172 21.414 173.414 20l4.974 4.974L183.364 20Z"
+            fill="#2661A7"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Status</tspan>
+      </text>
+    </g>
+    <g transform="translate(105 364)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="203" height="45" rx="15"/>
+      <path d="m183.364 20 1.414 1.414-6.364 6.364-.025-.025-.025.025L172 21.414 173.414 20l4.974 4.974L183.364 20Z"
+            fill="#2661A7"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Item</tspan>
+      </text>
+    </g>
+    <g transform="translate(322 364)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="203" height="45" rx="15"/>
+      <path fill="#2661A7" d="M135 22h11v2h-11z"/>
+      <path fill="#B8C7D2" d="M161 10h1v26h-1zM121 0h1v46h-1z"/>
+      <path d="M182.5 17.5V22h4.5v2h-4.5v4.5h-2V24H176v-2h4.5v-4.5h2Z" fill="#2661A7"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Quantity</tspan>
+      </text>
+    </g>
+    <g transform="translate(539 364)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="203" height="45" rx="15"/>
+      <path fill="#B8C7D2" d="M33 10h1v26h-1zM119 10h1v26h-1z"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">£</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="45" y="29">Rates</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="132" y="29">per item</tspan>
+      </text>
+    </g>
+    <g transform="translate(105 710)">
+      <rect fill="#F8FAFC" width="204" height="46" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Bank</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#3F5567">
+        <tspan x="13" y="37">HSBC</tspan>
+      </text>
+    </g>
+    <g transform="translate(322 710)">
+      <rect fill="#F8FAFC" width="204" height="46" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Sort code</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#3F5567">
+        <tspan x="13" y="37">11-22-33</tspan>
+      </text>
+    </g>
+    <g transform="translate(539 710)">
+      <rect fill="#F8FAFC" width="204" height="46" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Account number</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#3F5567">
+        <tspan x="13" y="37">12345678</tspan>
+      </text>
+    </g>
+    <g transform="translate(105 524)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="203" height="45" rx="15"/>
+      <path d="m183.364 20 1.414 1.414-6.364 6.364-.025-.025-.025.025L172 21.414 173.414 20l4.974 4.974L183.364 20Z"
+            fill="#2661A7"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">VAT rate</tspan>
+      </text>
+    </g>
+    <g transform="translate(322 524)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="203" height="45" rx="15"/>
+      <path fill="#B8C7D2" d="M165 10h1v26h-1z"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Discount</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="177" y="29">%</tspan>
+      </text>
+    </g>
+    <path fill="#E2E9EE" d="M106 331h637v1H106zM106 677h637v1H106zM106 94h637v1H106z"/>
+    <text font-family="-apple-system, BlinkMacSystemFont-Bold, -apple-system, BlinkMacSystemFont" font-size="18" font-weight="bold" fill="#12202B">
+      <tspan x="105" y="317">Invoice item 1</tspan>
+    </text>
+    <text font-family="-apple-system, BlinkMacSystemFont-Bold, -apple-system, BlinkMacSystemFont" font-size="18" font-weight="bold" fill="#12202B">
+      <tspan x="105" y="80">Create invoice</tspan>
+    </text>
+    <text font-family="-apple-system, BlinkMacSystemFont-Bold, -apple-system, BlinkMacSystemFont" font-size="18" font-weight="bold" fill="#12202B">
+      <tspan x="105" y="663">Payment details</tspan>
+    </text>
+    <g>
+      <g transform="translate(105 888)">
+        <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+        <use fill="#2976C7" xlink:href="#d"/>
+      </g>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#FFF"
+            transform="translate(105 888)">
+        <tspan x="32" y="29">Review invoice</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,66 @@
+<svg width="850" height="541" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter x="-1.4%" y="-8.7%" width="102.8%" height="121.7%" filterUnits="objectBoundingBox" id="a">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.239443906 0" in="shadowBlurOuter1"/>
+    </filter>
+    <filter x="-1.4%" y="-8.7%" width="102.8%" height="121.7%" filterUnits="objectBoundingBox" id="c">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.126291555 0" in="shadowBlurOuter1"/>
+    </filter>
+    <rect id="b" x="0" y="0" width="351" height="46" rx="15"/>
+    <rect id="d" x="0" y="0" width="351" height="46" rx="15"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#EDF2F7" d="M0 0h850v541H0z"/>
+    <path fill="#FFF" d="M40 30h770v481H40z"/>
+    <g transform="translate(249 135)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="350" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Event name</tspan>
+      </text>
+    </g>
+    <g transform="translate(249 251)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="350" height="85" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Notes (optional)</tspan>
+      </text>
+    </g>
+    <g transform="translate(249 193)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="350" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Start date and time</tspan>
+      </text>
+    </g>
+    <path fill="#E2E9EE" d="M249 102h351v1H249z"/>
+    <text font-family="-apple-system, BlinkMacSystemFont-Bold, -apple-system, BlinkMacSystemFont" font-size="18" font-weight="bold" fill="#12202B">
+      <tspan x="249" y="88">Add event</tspan>
+    </text>
+    <g transform="translate(249 367)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <use fill="#2976C7" xlink:href="#b"/>
+    </g>
+    <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#FFF" transform="translate(249 367)">
+      <tspan x="133" y="29">Save details</tspan>
+    </text>
+    <g transform="translate(249 425)">
+      <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+      <rect stroke="#ABC1CB" stroke-linejoin="square" fill="#FFF" x=".5" y=".5" width="350" height="45" rx="15"/>
+    </g>
+    <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#233645"
+          transform="translate(249 425)">
+      <tspan x="151" y="29">Cancel</tspan>
+    </text>
+    <g transform="rotate(-45 691.224 -538.743)" fill="#ABC1CB">
+      <rect width="14" height="1" rx=".5"/>
+      <rect x="2.8" y="3.414" width="8.4" height="1" rx=".5"/>
+    </g>
+    <path fill="#ABC1CB" d="M550 193h1v46h-1z"/>
+    <path
+      d="M578.444 216.778H574v4.444h4.444v-4.444Zm-.888-9.778v1.778h-7.112V207h-1.777v1.778h-.89c-.986 0-1.768.8-1.768 1.778L566 223c0 .978.791 1.778 1.778 1.778h12.444c.978 0 1.778-.8 1.778-1.778v-12.444c0-.978-.8-1.778-1.778-1.778h-.889V207h-1.777Zm2.666 16h-12.444v-9.778h12.444V223Z"
+      fill="#2561A7" fill-rule="nonzero"/>
+  </g>
+</svg>
