@@ -3,7 +3,9 @@ import selectors from './selectors'
 
 test.describe('ContextMenu', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=context-menu--default&viewMode=story')
+    await page.goto(
+      '/iframe.html?id=components-context-menu--default&viewMode=story'
+    )
 
     await page
       .locator(selectors.target)

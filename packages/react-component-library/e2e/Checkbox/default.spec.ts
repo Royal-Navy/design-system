@@ -3,7 +3,9 @@ import selectors from './selectors'
 
 test.describe('Checkbox', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=checkbox--default&viewMode=story')
+    await page.goto(
+      '/iframe.html?id=components-checkbox--default&viewMode=story'
+    )
   })
 
   test('does not check the input by default', async ({ page }) => {

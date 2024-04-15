@@ -3,7 +3,9 @@ import selectors from './selectors'
 
 test.describe('NumberInput', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=number-input--default&viewMode=story')
+    await page.goto(
+      '/iframe.html?id=components-number-input--default&viewMode=story'
+    )
   })
 
   test('renders the number input without a value', async ({ page }) => {

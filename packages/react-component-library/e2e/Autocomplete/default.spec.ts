@@ -12,9 +12,12 @@ import selectors from './selectors'
 
 test.describe('Autocomplete', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=autocomplete--default&viewMode=story', {
-      waitUntil: 'domcontentloaded',
-    })
+    await page.goto(
+      '/iframe.html?id=components-autocomplete--default&viewMode=story',
+      {
+        waitUntil: 'domcontentloaded',
+      }
+    )
   })
 
   test.describe('when the component is focused', () => {
