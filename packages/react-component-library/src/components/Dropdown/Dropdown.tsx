@@ -34,6 +34,9 @@ export interface DropdownProps {
   labelIcon?: React.ReactNode
 }
 
+/**
+ * @deprecated
+ */
 const StyledSelect = styled(Select)`
   .rn-dropdown__control {
     border-color: ${color('neutral', '200')};

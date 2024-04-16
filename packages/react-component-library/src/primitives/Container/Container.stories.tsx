@@ -6,7 +6,7 @@ import { Container } from '.'
 export default {
   component: Container,
   parameters: { layout: 'fullscreen' },
-  title: 'Container',
+  title: 'Primitives/Container',
 } as Meta<typeof Container>
 
 export const Default: StoryFn<typeof Container> = ({ children, ...rest }) => (

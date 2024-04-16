@@ -37,6 +37,9 @@ function getKey(prefix: string, id: string) {
   return `${prefix}_${id}`
 }
 
+/**
+ * @deprecated
+ */
 export const Table = ({
   data,
   caption,

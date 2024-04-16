@@ -13,7 +13,7 @@ export default {
     },
   },
   component: Dropdown,
-  title: 'Dropdown',
+  title: 'Deprecated/Dropdown',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     docs: {

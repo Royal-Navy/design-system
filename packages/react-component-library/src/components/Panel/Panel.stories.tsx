@@ -3,7 +3,9 @@ import { StoryFn, Meta } from '@storybook/react'
 
 import { Panel } from './index'
 
-export default { component: Panel, title: 'Panel' } as Meta<typeof Panel>
+export default { component: Panel, title: 'Primitives/Panel' } as Meta<
+  typeof Panel
+>
 
 export const Default: StoryFn<typeof Panel> = ({ children, ...rest }) => (
   <Panel {...rest}>{children}</Panel>

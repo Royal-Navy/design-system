@@ -9,7 +9,7 @@ import {
 
 export default {
   component: CustomTokenSetsExample,
-  title: 'Custom Theming',
+  title: 'Utility/Custom Theming',
   parameters: {
     a11y: {
       config: {
