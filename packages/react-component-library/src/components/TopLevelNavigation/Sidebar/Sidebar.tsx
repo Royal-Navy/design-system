@@ -12,6 +12,7 @@ import { StyledSidebar } from './partials/StyledSidebar'
 import { StyledHead } from './partials/StyledHead'
 import { StyledHeadIcon } from './partials/StyledHeadIcon'
 import { StyledHeadTitle } from './partials/StyledHeadTitle'
+import { ClassificationProps } from '../../ClassificationBar'
 
 export interface SidebarProps extends ComponentWithClass {
   /**
@@ -43,6 +44,10 @@ export interface SidebarProps extends ComponentWithClass {
    * Initial `isOpen` state on first render.
    */
   initialIsOpen?: boolean
+  /**
+   * Optional jsx to render the classification bar above the masthead.
+   */
+  classificationBar?: React.ReactElement<ClassificationProps>
 }
 
 export const Sidebar = ({
@@ -54,6 +59,7 @@ export const Sidebar = ({
   notifications,
   initialIsNotificationsOpen,
   initialIsOpen = false,
+  classificationBar,
   ...rest
 }: SidebarProps) => {
   const nodeRef = useRef(null)
@@ -69,6 +75,11 @@ export const Sidebar = ({
             onMouseLeave={(_) => setHasMouseOver(false)}
             {...rest}
           >
+            {classificationBar &&
+              React.cloneElement(classificationBar, {
+                isCondensed: !isOpen,
+                inSidebar: true,
+              })}
             <Transition
               nodeRef={nodeRef}
               in={hasMouseOver}

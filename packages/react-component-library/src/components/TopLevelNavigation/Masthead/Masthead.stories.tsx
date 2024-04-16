@@ -19,6 +19,7 @@ import {
 } from '.'
 import { Notification, Notifications } from '../NotificationPanel'
 import { MASTHEAD_SUBCOMPONENT } from './constants'
+import { ClassificationBar } from '../../ClassificationBar'
 
 const StyledContainer = styled.div`
   min-height: 10rem;
@@ -302,3 +303,10 @@ WithUserMenuOpen.storyName = 'With user options open'
 WithUserMenuOpen.parameters = {
   docs: { disable: true },
 }
+
+export const WithClassificationBar = Default.bind({})
+WithClassificationBar.args = {
+  ...Default.args,
+  classificationBar: <ClassificationBar />,
+}
+WithClassificationBar.storyName = 'With classification bar'

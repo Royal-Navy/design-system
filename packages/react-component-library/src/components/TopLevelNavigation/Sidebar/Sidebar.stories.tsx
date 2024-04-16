@@ -22,6 +22,7 @@ import {
 } from '.'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
+import { ClassificationBar } from '../../ClassificationBar'
 
 const disableColorContrastRule = {
   a11y: {
@@ -295,3 +296,10 @@ WithNotificationsOpen.parameters = {
   docs: { disable: true },
 }
 WithNotificationsOpen.storyName = 'With notifications open'
+
+export const WithClassificationBar = Default.bind({})
+WithClassificationBar.args = {
+  ...Default.args,
+  classificationBar: <ClassificationBar />,
+}
+WithClassificationBar.storyName = 'With classification bar'

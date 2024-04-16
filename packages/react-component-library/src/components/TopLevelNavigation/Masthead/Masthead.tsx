@@ -22,6 +22,7 @@ import { StyledIconNotifications } from './partials/StyledIconNotifications'
 import { StyledIconSearch } from './partials/StyledIconSearch'
 import { ValueOf } from '../../../helpers'
 import { StyledInlineNav } from './partials/StyledInlineNav'
+import { ClassificationProps } from '../../ClassificationBar'
 
 export interface MastheadProps {
   /**
@@ -71,6 +72,10 @@ export interface MastheadProps {
    * Whether to display the nav below (default) or within the masthead
    */
   hasInlineNav?: boolean
+  /**
+   * Optional jsx to render the classification bar above the masthead.
+   */
+  classificationBar?: React.ReactElement<ClassificationProps>
 }
 
 function getServiceName(
@@ -107,6 +112,7 @@ export const Masthead = ({
   onSearch,
   title,
   user,
+  classificationBar,
   ...rest
 }: MastheadProps) => {
   const searchButtonRef = useRef<HTMLButtonElement>(null)
@@ -130,6 +136,7 @@ export const Masthead = ({
 
   return (
     <StyledMastHead data-testid="masthead" ref={mastheadRef} {...rest}>
+      {classificationBar}
       <StyledMain>
         <StyledBanner
           data-testid="masthead-banner"
