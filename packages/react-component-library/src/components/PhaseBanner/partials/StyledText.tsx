@@ -4,9 +4,7 @@ import { selectors } from '@royalnavy/design-tokens'
 const { fontSize, spacing, color, animation } = selectors
 
 export const StyledText = styled.span`
-  display: inline-block;
   font-size: ${fontSize('base')};
-  vertical-align: middle;
   font-weight: 500;
   margin-left: ${spacing('4')};
   color: ${color('neutral', '400')};

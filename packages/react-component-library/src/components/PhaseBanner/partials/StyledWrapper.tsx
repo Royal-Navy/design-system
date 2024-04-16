@@ -10,6 +10,8 @@ interface StyledWrapperProps {
 }
 
 export const StyledWrapper = styled.div<StyledWrapperProps>`
+  display: flex;
+  align-items: center;
   ${({ $isFullWidth }) =>
     !$isFullWidth &&
     css`
