@@ -1,5 +1,6 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
+import styled from 'styled-components'
 
 import { PhaseBanner } from '.'
 
@@ -39,3 +40,15 @@ export const FullWidth: StoryFn<typeof PhaseBanner> = () => (
 )
 
 FullWidth.storyName = 'Full width'
+
+const StyledNarrowContainer = styled.div`
+  padding-top: 1rem;
+  max-width: 360px;
+  margin: 0 auto;
+`
+
+export const NarrowScreen: StoryFn<typeof PhaseBanner> = () => (
+  <StyledNarrowContainer>
+    <PhaseBanner />
+  </StyledNarrowContainer>
+)

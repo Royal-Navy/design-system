@@ -9,6 +9,22 @@ describe('PhaseBanner', () => {
   let wrapper: RenderResult
   let content: React.ReactElement
 
+  describe('default content', () => {
+    beforeEach(() => {
+      wrapper = render(<PhaseBanner />)
+    })
+
+    it('should use default feedback link', () => {
+      expect(
+        wrapper.getByRole('link', { name: 'Your feedback' })
+      ).toHaveAttribute('href', '/feedback')
+    })
+
+    it('should default to alpha phase', () => {
+      expect(wrapper.getByTestId('badge')).toHaveTextContent('alpha')
+    })
+  })
+
   describe('with custom content', () => {
     beforeEach(() => {
       content = (
