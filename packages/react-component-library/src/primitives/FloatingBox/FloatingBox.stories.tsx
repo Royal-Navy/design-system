@@ -6,7 +6,7 @@ import { FLOATING_BOX_SCHEME } from './constants'
 
 export default {
   component: FloatingBox,
-  title: 'Floating Box',
+  title: 'Primitives/Floating Box',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',

@@ -77,6 +77,9 @@ function getAriaSort(
   return SORT_ORDER_ARIA_SORT_MAP[sortOrder]
 }
 
+/**
+ * @deprecated
+ */
 export const TableColumn = ({
   field,
   isSortable = false,

@@ -32,7 +32,7 @@
     "build:es": "BABEL_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\"",
     "build:cjs:dev": "BABEL_ENV=cjs RNDS_LOG_LEVEL=debug webpack --config=webpack/dev.js",
     "chromatic": "chromatic --build-script-name storybook:static",
-    "lint": "eslint src e2e --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0 --resolve-plugins-relative-to ../eslint-config-react",
+    "lint": "eslint src e2e --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0 --resolve-plugins-relative-to ../eslint-config-react --ignore-pattern \"*.d.ts\"",
     "prepare": "yarn build",
     "storybook": "BABEL_ENV=es RNDS_LOG_LEVEL=debug storybook dev -p 6006",
     "storybook:static": "BABEL_ENV=es storybook build -c .storybook -o .static_storybook",
@@ -49,7 +49,7 @@
   },
   "lint-staged": {
     "*.@(js|jsx|ts|tsx)": [
-      "eslint --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0 --resolve-plugins-relative-to ../eslint-config-react",
+      "eslint --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 1 --resolve-plugins-relative-to ../eslint-config-react --ignore-pattern \"*.d.ts\"",
       "prettier --write"
     ]
   },
@@ -70,6 +70,7 @@
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
+    "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.32.3",
     "@royalnavy/eslint-config-react": "^4.4.0",
     "@storybook/addon-a11y": "^8.0.6",
@@ -113,7 +114,6 @@
     "eslint": "^8.2.0",
     "eslint-plugin-playwright": "^0.12.0",
     "eslint-plugin-storybook": "^0.6.15",
-    "express": "^4.17.1",
     "formik": "^2.2.9",
     "hex-rgb": "^5.0.0",
     "html-webpack-plugin": "^5.2.0",
@@ -154,6 +154,7 @@
     "@royalnavy/fonts": "^4.4.0",
     "@royalnavy/icon-library": "^4.4.0",
     "@storybook/test": "^8.0.6",
+    "@tanstack/react-table": "^8.14.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.9.0",
     "decimal.js": "^10.3.1",

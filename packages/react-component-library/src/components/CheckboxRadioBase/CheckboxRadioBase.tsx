@@ -81,7 +81,7 @@ export const CheckboxRadioBase = React.forwardRef<
       localRef.current?.focus()
     }
 
-    const handleOnChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setIsChecked(e.currentTarget.checked)
 
       if (type === 'radio') {

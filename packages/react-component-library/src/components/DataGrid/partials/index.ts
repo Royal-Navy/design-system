@@ -1,0 +1,7 @@
+export * from './StyledBody'
+export * from './StyledCell'
+export * from './StyledCol'
+export * from './StyledDataGrid'
+export * from './StyledHead'
+export * from './StyledRow'
+export * from './StyledTable'

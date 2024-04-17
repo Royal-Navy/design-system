@@ -53,6 +53,21 @@ export const StyledCheckmark = styled.span<CheckmarkProps>`
     `
   }}
 
+  ${StyledCheckbox} input:indeterminate ~ & {
+    background-color: ${color('action', '500')};
+    border: 1px solid ${color('action', '500')};
+
+    &::after {
+      content: '-';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: ${color('neutral', 'white')};
+    }
+  }
+
   ${StyledCheckbox} input:checked ~ & {
     background-color: ${color('action', '500')};
     border: 1px solid ${color('action', '500')};

@@ -3,7 +3,7 @@ import { StoryFn, Meta } from '@storybook/react'
 
 import { CardFrame } from './index'
 
-export default { component: CardFrame, title: 'Card Frame' } as Meta<
+export default { component: CardFrame, title: 'Primitives/Card Frame' } as Meta<
   typeof CardFrame
 >
 

@@ -7,7 +7,7 @@ import { Table, TableColumn } from '.'
 export default {
   component: Table,
   subcomponents: { TableColumn },
-  title: 'Table',
+  title: 'Deprecated/Table',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',

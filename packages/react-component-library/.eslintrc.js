@@ -13,6 +13,12 @@ module.exports = {
       },
     },
     {
+      files: ['**/*.test.tsx'],
+      rules: {
+        'no-promise-executor-return': 'off',
+      },
+    },
+    {
       files: ['*.js'],
       parserOptions: {
         project: null,
