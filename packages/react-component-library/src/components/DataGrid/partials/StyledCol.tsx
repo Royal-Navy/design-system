@@ -5,14 +5,18 @@ const { fontSize, spacing } = selectors
 
 interface StyledColProps {
   $isSortable?: boolean
+  $alignment?: 'left' | 'right' | 'center'
+  $width?: number
 }
 
 export const StyledCol = styled.th<StyledColProps>`
   padding: ${spacing('8')} ${spacing('4')};
+  width: ${({ $width }) => $width || 'auto'};
   text-align: left;
   font-size: ${fontSize('s')};
   font-weight: 600;
   text-transform: uppercase;
+  text-align: ${({ $alignment }) => $alignment || 'left'};
 
   ${({ $isSortable }) =>
     $isSortable &&

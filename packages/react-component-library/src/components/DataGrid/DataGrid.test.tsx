@@ -254,6 +254,52 @@ describe('DataGrid', () => {
     expect(onSelectedRowsChange).toHaveBeenNthCalledWith(2, [data[0]])
   })
 
+  it('aligns the table cells correctly', () => {
+    const columnsWithAlignment: ColumnDef<DataRow>[] = [
+      {
+        accessorKey: 'first',
+        header: 'First',
+        cell: (info) => info.getValue(),
+        meta: {
+          align: 'center',
+        },
+      },
+      {
+        accessorKey: 'second',
+        header: 'Second',
+        cell: (info) => info.getValue(),
+        meta: {
+          align: 'right',
+        },
+      },
+      {
+        accessorKey: 'third',
+        header: 'Third',
+        cell: (info) => info.getValue(),
+        meta: {
+          align: 'left',
+        },
+      },
+    ]
+
+    render(<DataGrid data={data} columns={columnsWithAlignment} />)
+
+    const rows = screen.getAllByRole('row')
+
+    expect(within(rows[1]).getAllByRole('cell')[0]).toHaveStyleRule(
+      'text-align',
+      'center'
+    )
+    expect(within(rows[1]).getAllByRole('cell')[1]).toHaveStyleRule(
+      'text-align',
+      'right'
+    )
+    expect(within(rows[1]).getAllByRole('cell')[2]).toHaveStyleRule(
+      'text-align',
+      'left'
+    )
+  })
+
   describe('with sortable columns', () => {
     beforeEach(() => {
       render(<DataGrid data={data} columns={columns} />)

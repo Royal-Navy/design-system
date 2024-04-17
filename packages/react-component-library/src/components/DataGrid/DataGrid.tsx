@@ -239,11 +239,10 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
                     <StyledCol
                       aria-sort={getAriaSort(getCanSort(), getIsSorted())}
                       $isSortable={getCanSort()}
+                      $alignment={columnDef.meta?.align}
+                      $width={getSize() === 150 ? undefined : getSize()}
                       key={headerId}
                       onClick={getToggleSortingHandler()}
-                      style={{
-                        width: getSize() === 150 ? undefined : getSize(),
-                      }}
                     >
                       {isPlaceholder
                         ? null
@@ -277,7 +276,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
                     ({
                       id: cellId,
                       column: {
-                        columnDef: { cell },
+                        columnDef: { cell, meta },
                         getSize,
                       },
                       getContext,
@@ -285,9 +284,8 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
                       <StyledCell
                         as="td"
                         key={cellId}
-                        style={{
-                          width: getSize() === 150 ? undefined : getSize(),
-                        }}
+                        $alignment={meta?.align}
+                        $width={getSize() === 150 ? undefined : getSize()}
                         onClick={
                           !!enableRowSelection && hasHover
                             ? getToggleSelectedHandler()

@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker'
 import { StoryFn, Meta } from '@storybook/react'
 import { ColumnDef } from '@tanstack/react-table'
 
-import { DataGrid } from '.'
+import { DataGrid, TABLE_COLUMN_ALIGNMENT } from '.'
 import { Badge } from '../Badge'
 
 type Order = {
@@ -180,19 +180,36 @@ Caption.args = {
   onSelectedRowsChange: fn(),
 }
 
-const columnsWithCustomSizing = columns.map((item) => ({
+const columnsWithSizing = columns.map((item) => ({
   ...item,
   size: 200,
 }))
 
-export const CustomColumnSizing: StoryFn<typeof DataGrid> = (props) => {
+export const ColumnSizing: StoryFn<typeof DataGrid> = (props) => {
   return <DataGrid {...props} />
 }
 
-CustomColumnSizing.storyName = 'Custom column sizing'
-CustomColumnSizing.args = {
-  columns: columnsWithCustomSizing,
+ColumnSizing.storyName = 'Column sizing'
+ColumnSizing.args = {
+  columns: columnsWithSizing,
   data,
+  onSelectedRowsChange: fn(),
+}
+
+const columnsWithAlignment = columns.map((item) => ({
+  ...item,
+  meta: { align: TABLE_COLUMN_ALIGNMENT.RIGHT },
+}))
+
+export const ColumnAlignment: StoryFn<typeof DataGrid> = (props) => {
+  return <DataGrid {...props} />
+}
+
+ColumnAlignment.storyName = 'Column alignment'
+ColumnAlignment.args = {
+  columns: columnsWithAlignment,
+  data,
+  isFullWidth: true,
   onSelectedRowsChange: fn(),
 }
 
