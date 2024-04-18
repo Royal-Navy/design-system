@@ -53,7 +53,7 @@ export const SpacingScaleTable = () => {
           <div
             style={{
               backgroundColor: '#FFF',
-              border: `dotted 1px ${color('neutral', '300')}`,
+              border: `solid 1px ${color('neutral', '300')}`,
               width: spacing(key),
               paddingTop: spacing('4'),
               paddingBottom: spacing('4'),
@@ -68,7 +68,7 @@ export const SpacingScaleTable = () => {
 }
 
 export const ExampleComponent = () => {
-  /*  This is a contrived example to show individual usage
+  /**  This is a contrived example to show individual usage
       Please don't write your code like this
   */
   const borderSize = spacing('4')
