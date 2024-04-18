@@ -1,0 +1,54 @@
+import { ColorPalette, Meta, Source } from '@storybook/blocks'
+import { DesignSystemColorItem } from './DesignSystemColorItem'
+
+<Meta title="Tokens/Colours" />
+
+# Colour Tokens
+
+We use named colours (e.g. Neutral or Action) instead of colour literals (e.g. blue).
+Colour palettes represent functions, so that we can make interactions and contexts easy
+to distinguish.
+
+## Base palettes
+
+<ColorPalette>
+  <DesignSystemColorItem group='neutral' title='neutral' subtitle='Use the Neutral palette for application UI.' />
+  <DesignSystemColorItem group='action' title='action' subtitle='Use the Neutral palette for application UI.' />
+  <DesignSystemColorItem group='success' title='success'
+                         subtitle="Use the Success palette for positive feedback."
+  />
+  <DesignSystemColorItem title="warning" group="warning"
+                         subtitle="Use the Warning palette to indicate an action or message that may produce undesirable results." />
+  <DesignSystemColorItem group="danger" title="danger"
+                         subtitle="Use the Danger palette for destructive actions."
+  />
+</ColorPalette>
+
+---
+
+## Supplementary palettes
+
+Use supplementary colours to support the main colour palettes only. They can be used for
+categorisation and data visualisation, but they don’t have any state associated with them.
+
+<ColorPalette>
+  <DesignSystemColorItem group="supa" title="supa" />
+  <DesignSystemColorItem group="supb" title="supb" />
+  <DesignSystemColorItem group="supc" title="supc" />
+  <DesignSystemColorItem group="supd" title="supd" />
+  <DesignSystemColorItem group="supe" title="supe" />
+  <DesignSystemColorItem group="supf" title="supf" />
+</ColorPalette>
+
+---
+
+## Usage
+<Source dark code={`import { selectors } from '@royalnavy/design-tokens'
+const { color } = selectors
+
+<div style={{ backgroundColor: color('action', '400') }}>
+  Hello colo(u)rful World!
+</div>
+
+`} />
+

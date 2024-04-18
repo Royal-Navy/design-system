@@ -1,0 +1,127 @@
+import { Meta, Source } from '@storybook/blocks'
+
+<Meta title="Forms/Layout" />
+
+# Form layout
+
+## 5. Long forms
+While you should always aim to minimise the amount of input required by the user, there may be times when you have to work with long forms.
+
+###### 5.0 You *must* always consider the context of use before deciding which techniques to use for managing long forms.
+###### 5.1 You *should* test a working version of the form with your users, where possible.
+
+There are various techniques to make such forms more manageable, but you should always test your approach with your users,
+because a lot depends on the context of use.
+
+For example, while for some applications it may make sense to paginate a long form,
+for highly complex data forms in a Defence environment it may be necessary to frequently check
+previously entered values, which would be very disruptive with a paginated form.
+
+## Splitting up long forms
+Consider using one or more of the following techniques to make a long form more manageable:
+
+- Group related inputs together
+- Introduce collapsible sections
+- Split the form into multiple columns
+- Paginate (split up the form over multiple steps or pages)
+
+## Single vs. multi-column forms
+Multi-column form layouts are often appropriate in complex Defence settings. Single column forms, however, are simpler to design and generally recommended for shorter forms.
+
+To decide which approach is more appropriate, you should consider the following:
+
+- Task at hand: _Does it only require serial data input or does the user need to constantly refer to previously entered data?_
+
+- Total number of input fields. _If it all fits into a single screen, is it really necessary to split into multiple columns?_
+
+- Average input length. _Several small number input components can easily fit into multiple columns, but long textual narratives are easier to edit in full-width components_
+
+- Connections between input fields. _Can fields be organised into small, coherent groups which can be meaningfully arranged over multiple columns without losing their connection?_
+
+- Target screen size and technology. _If the majority of your users will be completing the form on a handheld device and your technology does not allow a responsive layout, what effect would multiple columns have on the user experience?_
+
+## 6. Laying out forms over multiple columns
+
+###### 6.0 You *must* ensure your form tab order works correctly and follows your intended form layout.
+
+In practice, this means making sure that:
+
+- Columns, nested columns and Fieldsets are in the right tab order in relation to their neighbouring components
+
+- All components inside a column follow the intended tab order
+
+- Tabbing through your entire form is seamless - meaning that you can tab in and out of the Form without having to use a mouse
+
+When laying out forms over multiple columns, consider the best way to group your form fields (horizontally or vertically) and avoid mixing different layouts.
+
+While your form layout will influence the field order, it should not dictate how you group the fields. Grouping should only depend on the logical relationships between the fields themselves. To achieve this within a multi-column layout, you can use the Fieldset component.
+
+When using multi-column layouts, consider the following guidelines:
+
+<img src='/layout_1.svg' alt='do maintain a consistent form flow' />
+
+<img src='/layout_2.svg' alt='do maintain a consistent form flow' />
+
+## Sample form templates
+
+### Multi-column layout
+
+<img src="/sample_multi_column.svg" alt="multi column layout form"/>
+
+#### Design Notes
+- Mixing numbers and columns is ok, provided that there is a clear way of filling the form in (left-to-right, top-to-bottom in this instance).
+- Toggle for advanced options, keeping the form as simple as possible, with only the most frequently used inputs visible initially (Progressive Disclosure).
+- Additional form actions (such as "Add another item") using tertiary buttons
+- Disabled inputs confirm details that the user doesn't have permission to change but which may need double-checking.
+- Buttons left-aligned
+- Primary button first on the left
+- Cancel as secondary button
+
+### Single narrow column layout
+
+<img src='/sample_narrow_column.svg' alt='single narrow column layout' />
+
+#### Design notes
+- Stacked buttons
+- All buttons full-width, regardless of the length of their label
+- Primary button first
+
+### Dialog
+
+<img src="/sample_dialog.svg" alt="dialog" />
+
+#### Design notes
+- Buttons right-aligned
+- Special button top and bottom margins for Modal
+
+### Multistep form
+
+<img src="/sample_multi_step.svg" alt="multistep form" />
+
+#### Design notes
+- Buttons right-aligned
+- Primary button first on the right
+- Icon-right button variant used to denote this is a multistep form
+
+### Two column layout with Fieldsets
+
+<img src="/sample_two_column_with_fieldsets.svg" alt="two column layout with fieldsets"/>
+
+#### Design notes
+- Logical grouping and labelling supported by Section dividers and Fieldsets
+- Buttons left-aligned
+- Primary button first on the left
+- Cancel action uses Secondary button
+
+### Destructive action confirmation pattern
+
+<img src="/sample_destructive_action.svg" alt="Destructive action confirmation pattern" />
+
+#### Design Notes
+- Uses a Dialog component
+- Dialog appears centred on the user's window, disabling the parent application UI behind it
+- The parent application UI remains in its current state whilst the confirmation dialog is visible
+- If the user chooses to not proceed with a destructive action (e.g. "Keep event"), the confirmation Dialog disappears and the user is back to the same application state they were in before clicking on the destructive link
+- Users must interact with the dialog window before they return to the parent application
+
+

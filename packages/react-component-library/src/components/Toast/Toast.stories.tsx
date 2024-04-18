@@ -6,7 +6,7 @@ import { Button } from '../Button'
 
 export default {
   component: Toast,
-  title: 'Toast',
+  title: 'Components/Toast',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

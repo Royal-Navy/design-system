@@ -13,7 +13,7 @@ export default {
     },
   },
   component: Button,
-  title: 'Button',
+  title: 'Components/Button',
   parameters: { actions: { argTypesRegex: '^on.*' } },
 } as Meta<typeof Button>
 

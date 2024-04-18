@@ -10,7 +10,7 @@ import { COMPONENT_SIZE } from '../Forms'
 export default {
   component: ButtonGroup,
   subcomponents: { ButtonGroupItem },
-  title: 'Button Group',
+  title: 'Components/Button Group',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

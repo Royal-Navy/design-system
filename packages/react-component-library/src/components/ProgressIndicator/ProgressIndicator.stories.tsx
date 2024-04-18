@@ -7,7 +7,7 @@ import { ProgressIndicator } from './index'
 
 export default {
   component: ProgressIndicator,
-  title: 'Progress Indicator',
+  title: 'Components/Progress Indicator',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

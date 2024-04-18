@@ -5,7 +5,7 @@ import { DismissibleBanner, DismissibleBannerWithTitleProps } from '.'
 
 export default {
   component: DismissibleBanner,
-  title: 'Dismissible Banner',
+  title: 'Components/Dismissible Banner',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

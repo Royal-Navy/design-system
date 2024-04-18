@@ -6,7 +6,9 @@ import selectors from './selectors'
 
 test.describe('ContextMenu, Storybook docs mode', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=context-menu--default&viewMode=docs')
+    await page.goto(
+      '/iframe.html?id=components-context-menu--default&viewMode=docs'
+    )
 
     await page.locator(selectors.target).nth(0).click({ button: 'right' })
   })

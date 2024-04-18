@@ -27,7 +27,9 @@ test.describe('TabSet, scrollable', () => {
       width: INITIAL_VIEWPORT_WIDTH,
       height: VIEWPORT_HEIGHT,
     })
-    await page.goto('/iframe.html?id=tab-set--scrollable&viewMode=story')
+    await page.goto(
+      '/iframe.html?id=components-tab-set--scrollable&viewMode=story'
+    )
   })
 
   test('scrolls right one tab when the scroll right button is clicked', async ({

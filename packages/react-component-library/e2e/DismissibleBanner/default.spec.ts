@@ -4,7 +4,7 @@ import selectors from './selectors'
 test.describe('DismissibleBanner', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(
-      '/iframe.html?id=dismissible-banner--default&viewMode=story'
+      '/iframe.html?id=components-dismissible-banner--default&viewMode=story'
     )
   })
 

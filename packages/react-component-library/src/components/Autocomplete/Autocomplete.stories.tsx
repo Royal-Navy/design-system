@@ -12,7 +12,7 @@ import { Autocomplete, AutocompleteOption } from './index'
 
 export default {
   component: Autocomplete,
-  title: 'Autocomplete',
+  title: 'Components/Autocomplete',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

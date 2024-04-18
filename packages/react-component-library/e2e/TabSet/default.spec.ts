@@ -8,7 +8,9 @@ const ACTIVE_TAB_BORDER_TOP = `6px solid ${hexToRgb(ColorAction500)}`
 
 test.describe('TabSet, default', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=tab-set--default&viewMode=story')
+    await page.goto(
+      '/iframe.html?id=components-tab-set--default&viewMode=story'
+    )
   })
 
   test('shows the first tab as active', async ({ page }) => {

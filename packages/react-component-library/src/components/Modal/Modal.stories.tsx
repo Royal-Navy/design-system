@@ -10,7 +10,7 @@ import { ButtonProps, BUTTON_VARIANT } from '../Button'
 
 export default {
   component: Modal,
-  title: 'Modal',
+  title: 'Components/Modal',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',

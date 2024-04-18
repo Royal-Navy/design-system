@@ -39,7 +39,7 @@ export default {
     TimelineWeeks,
     TimelineDays,
   },
-  title: 'Compound Timeline',
+  title: 'Components/Compound Timeline',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     a11y: {

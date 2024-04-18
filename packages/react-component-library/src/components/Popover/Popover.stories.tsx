@@ -11,7 +11,7 @@ const StyledContent = styled.pre`
 
 export default {
   component: Popover,
-  title: 'Popover',
+  title: 'Components/Popover',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

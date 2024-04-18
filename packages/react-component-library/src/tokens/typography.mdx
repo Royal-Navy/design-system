@@ -1,0 +1,40 @@
+import { Meta, Source } from '@storybook/blocks'
+
+import { TypographyTable } from './TypographyTable'
+
+
+<Meta title="Tokens/Typography" />
+
+# Typography
+
+All Royal Navy Design System applications are set in [Lato](https://www.latofonts.com/).
+We also provide the System Font Stack as a fallback to Lato in case a system doesn't support it:
+
+<Source dark code={`system-ui,
+BlinkMacSystemFont,
+-apple-system,
+Segoe UI,
+Roboto,
+Oxygen,
+Ubuntu,
+Cantarell,
+Fira Sans,
+Droid Sans,
+Helvetica Neue,
+sans-serif;
+`} />
+
+## Typography scale
+<TypographyTable />
+
+## Usage
+
+<Source dark code={`import { selectors } from '@royalnavy/design-tokens'
+
+const { fontSize } = selectors
+
+<p style={{ fontSize: fontSize('xl') }}>
+  A contrived example of using fontSize
+</p>
+
+`} />

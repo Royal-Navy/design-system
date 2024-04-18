@@ -5,7 +5,7 @@ import { Pagination } from '.'
 
 export default {
   component: Pagination,
-  title: 'Pagination',
+  title: 'Components/Pagination',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

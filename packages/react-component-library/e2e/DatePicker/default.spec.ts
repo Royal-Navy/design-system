@@ -9,7 +9,9 @@ import selectors from './selectors'
 
 test.describe('DatePicker, default', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=date-picker--default&viewMode=story')
+    await page.goto(
+      '/iframe.html?id=components-date-picker--default&viewMode=story'
+    )
   })
 
   test.describe('when the expand button is clicked', () => {

@@ -1,0 +1,183 @@
+<svg width="850" height="801" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter x="-4.4%" y="-8.7%" width="108.8%" height="121.7%" filterUnits="objectBoundingBox" id="a">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.126291555 0" in="shadowBlurOuter1"/>
+    </filter>
+    <filter x="-3.4%" y="-8.7%" width="106.8%" height="121.7%" filterUnits="objectBoundingBox" id="c">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.239443906 0" in="shadowBlurOuter1"/>
+    </filter>
+    <rect id="b" x="0" y="0" width="113" height="46" rx="15"/>
+    <rect id="d" x="0" y="0" width="146" height="46" rx="15"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#EDF2F7" d="M0 0h850v801H0z"/>
+    <path fill="#FFF" d="M40 30h770v741H40z"/>
+    <g transform="translate(264 693)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <rect stroke="#ABC1CB" stroke-linejoin="square" fill="#FFF" x=".5" y=".5" width="112" height="45" rx="15"/>
+    </g>
+    <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#233645"
+          transform="translate(264 693)">
+      <tspan x="32.22" y="29">Cancel</tspan>
+    </text>
+    <g transform="translate(105 127)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="312" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">First name</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Horatio</tspan>
+      </text>
+    </g>
+    <g transform="translate(106 615)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="312" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Unit</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Whale Island</tspan>
+      </text>
+    </g>
+    <g transform="translate(430 127)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="312" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Last name</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Nelson</tspan>
+      </text>
+    </g>
+    <g transform="translate(431 614)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="312" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="19">Line manager</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="38">Nelson</tspan>
+      </text>
+    </g>
+    <g transform="translate(105 185)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="312" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Email address</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Horatio.Nelson@royalnavy.io</tspan>
+      </text>
+    </g>
+    <g transform="translate(106 387)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="301" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Address line 1</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">147 New Bond Street</tspan>
+      </text>
+    </g>
+    <path fill="#E2E9EE" d="M106 321h637v1H106zM106 581h637v1H106zM106 94h637v1H106z"/>
+    <g transform="translate(441 387)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="301" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Address line 1</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Trafalgar Square</tspan>
+      </text>
+    </g>
+    <g transform="translate(106 445)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="301" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Address line 2</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Mayfair</tspan>
+      </text>
+    </g>
+    <g transform="translate(441 445)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="301" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Address line 2</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">Charing Cross</tspan>
+      </text>
+    </g>
+    <g transform="translate(441 503)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="144" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">City</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">London</tspan>
+      </text>
+    </g>
+    <g transform="translate(106 503)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="145" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">City</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">London</tspan>
+      </text>
+    </g>
+    <g transform="translate(597 503)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="145" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Postcode</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">WC2N 5DN</tspan>
+      </text>
+    </g>
+    <g transform="translate(262 503)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="144" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="18">Postcode</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+        <tspan x="13" y="37">W15 2TS</tspan>
+      </text>
+    </g>
+    <g transform="translate(430 185)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="282" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="28">ID number</tspan>
+      </text>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="12" font-weight="400" fill="#2F424F">
+        <tspan x="14" y="61">As shown on your security pass</tspan>
+      </text>
+    </g>
+    <text font-family="-apple-system, BlinkMacSystemFont-Bold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="bold" fill="#12202B">
+      <tspan x="105" y="370">Home address</tspan>
+    </text>
+    <text font-family="-apple-system, BlinkMacSystemFont-Bold, -apple-system, BlinkMacSystemFont" font-size="18" font-weight="bold" fill="#12202B">
+      <tspan x="105" y="307">Address details</tspan>
+    </text>
+    <text font-family="-apple-system, BlinkMacSystemFont-Bold, -apple-system, BlinkMacSystemFont" font-size="18" font-weight="bold" fill="#12202B">
+      <tspan x="105" y="80">Personal details</tspan>
+    </text>
+    <text font-family="-apple-system, BlinkMacSystemFont-Bold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="bold" fill="#12202B">
+      <tspan x="441" y="370">Work address</tspan>
+    </text>
+    <path fill="#E2E9EE" d="M424 354h1v195h-1z"/>
+    <path d="M725 196h20v20h-20z"/>
+    <path
+      d="M734.167 211h1.666v-1.667h-1.666V211Zm.833-13.333a8.336 8.336 0 0 0-8.333 8.333c0 4.6 3.733 8.333 8.333 8.333s8.333-3.733 8.333-8.333-3.733-8.333-8.333-8.333Zm0 15a6.676 6.676 0 0 1-6.667-6.667 6.676 6.676 0 0 1 6.667-6.667 6.676 6.676 0 0 1 6.667 6.667 6.676 6.676 0 0 1-6.667 6.667ZM735 201a3.332 3.332 0 0 0-3.333 3.333h1.666c0-.916.75-1.666 1.667-1.666s1.667.75 1.667 1.666c0 1.667-2.5 1.459-2.5 4.167h1.666c0-1.875 2.5-2.083 2.5-4.167A3.332 3.332 0 0 0 735 201Z"
+      fill="#2661A7" fill-rule="nonzero"/>
+    <g>
+      <g transform="translate(106 693)">
+        <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+        <use fill="#2976C7" xlink:href="#d"/>
+      </g>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#FFF"
+            transform="translate(106 693)">
+        <tspan x="31" y="29">Save details</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

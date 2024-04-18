@@ -37,7 +37,7 @@ export default {
     Notifications,
     Notification,
   },
-  title: 'Masthead',
+  title: 'Components/Masthead',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',

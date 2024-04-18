@@ -1,0 +1,63 @@
+<svg width="850" height="556" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#EDF2F7" d="M0 0h850v556H0z"/>
+    <path fill="#FFF" d="M40 30h770v496H40z"/>
+    <path fill="#B8C7D2" d="M40 30h770v70H40z"/>
+    <g transform="translate(126 132)" fill="#B22920">
+      <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="bold">
+        <tspan x="40" y="25">There are 2 errors in this form</tspan>
+      </text>
+      <text font-family="Lato-Regular,-apple-system, BlinkMacSystemFont" font-size="16" letter-spacing="-.1" text-decoration="underline">
+        <tspan x="58" y="49">Last name can’t be blank</tspan>
+      </text>
+      <rect width="4" height="91" rx="2"/>
+      <path
+        d="M22 26c-4.416 0-8-3.584-8-8s3.584-8 8-8 8 3.584 8 8-3.584 8-8 8Zm.8-12h-1.6v4.8h1.6V14Zm0 6.4h-1.6V22h1.6v-1.6Z"
+        fill-rule="nonzero"/>
+      <circle cx="45.5" cy="43.5" r="2.5"/>
+      <text font-family="Lato-Regular,-apple-system, BlinkMacSystemFont" font-size="16" letter-spacing="-.1" text-decoration="underline">
+        <tspan x="58" y="78">Incorrect ID number. ID numbers start with a K, followed by a six-digit number</tspan>
+      </text>
+      <circle cx="45.5" cy="72.5" r="2.5"/>
+    </g>
+    <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="400" fill="#B22920">
+      <tspan x="444" y="339">Last name can’t be blank</tspan>
+    </text>
+    <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="12" font-weight="400" fill="#B22920">
+      <tspan x="444" y="418">Incorrect ID number. ID numbers start with a K,</tspan>
+      <tspan x="444" y="433">followed by a six-digit number</tspan>
+    </text>
+    <rect stroke="#ABC1CB" fill="#FFF" x="126.5" y="346.5" width="292" height="45" rx="15"/>
+    <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+      <tspan x="139" y="364">First name</tspan>
+    </text>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+      <tspan x="139" y="383">Horatio</tspan>
+    </text>
+    <rect stroke="#B22920" stroke-width="3" fill="#FFF" x="431" y="346" width="293" height="46" rx="15"/>
+    <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+      <tspan x="444" y="375">Last name</tspan>
+    </text>
+    <rect stroke="#ABC1CB" fill="#FFF" x="126.5" y="440.5" width="292" height="45" rx="15"/>
+    <rect stroke="#B22920" stroke-width="3" fill="#FFF" x="431" y="440" width="293" height="46" rx="15"/>
+    <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+      <tspan x="139" y="458">Email address</tspan>
+    </text>
+    <text font-family="Lato-Medium,-apple-system, BlinkMacSystemFont" font-size="13" font-weight="400" fill="#2F424F">
+      <tspan x="444" y="458">ID number</tspan>
+    </text>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+      <tspan x="139" y="477">Horatio.Nelson@royalnavy.io</tspan>
+    </text>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#162930">
+      <tspan x="444" y="477">123</tspan>
+    </text>
+    <path fill="#E2E9EE" d="M127 295h597v1H127z"/>
+    <text font-family="Lato-Bold,-apple-system, BlinkMacSystemFont" font-size="18" font-weight="bold" fill="#12202B">
+      <tspan x="126" y="281">Personal details</tspan>
+    </text>
+    <text font-family="Lato-Semibold,-apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#12202B">
+      <tspan x="375" y="71">Other content</tspan>
+    </text>
+  </g>
+</svg>

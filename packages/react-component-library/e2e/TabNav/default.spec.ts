@@ -6,7 +6,9 @@ import selectors from './selectors'
 
 test.describe('TabNav, default', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=tab-nav--default&viewMode=story')
+    await page.goto(
+      '/iframe.html?id=components-tab-nav--default&viewMode=story'
+    )
   })
 
   test('shows the first tab as active', async ({ page }) => {

@@ -12,7 +12,7 @@ export default {
     },
   },
   component: NumberInput,
-  title: 'Number Input',
+  title: 'Components/Number Input',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     docs: {

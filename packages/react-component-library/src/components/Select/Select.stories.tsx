@@ -13,7 +13,7 @@ import { SelectOption } from './SelectOption'
 
 export default {
   component: Select,
-  title: 'Select',
+  title: 'Components/Select',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     docs: {

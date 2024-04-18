@@ -6,7 +6,7 @@ import { ScrollableTabSetProps, TabSetItem, TabSet, TabSetProps } from '.'
 export default {
   component: TabSet,
   subcomponents: { TabSetItem },
-  title: 'Tab Set',
+  title: 'Components/Tab Set',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     docs: {

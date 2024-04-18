@@ -1,0 +1,69 @@
+<svg width="850" height="413" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter x="-4.4%" y="-8.7%" width="108.8%" height="121.7%" filterUnits="objectBoundingBox" id="a">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.126291555 0" in="shadowBlurOuter1"/>
+    </filter>
+    <filter x="-4.4%" y="-8.7%" width="108.8%" height="121.7%" filterUnits="objectBoundingBox" id="c">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.239443906 0" in="shadowBlurOuter1"/>
+    </filter>
+    <rect id="b" x="0" y="0" width="113" height="46" rx="15"/>
+    <rect id="d" x="0" y="0" width="114" height="46" rx="15"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#EDF2F7" d="M0 0h850v413H0z"/>
+    <path fill="#FFF" d="M40 30h770v353H40z"/>
+    <path fill="#E2E9EE" d="M126 94h598v1H126z"/>
+    <text font-family="-apple-system, BlinkMacSystemFont-Bold, -apple-system, BlinkMacSystemFont" font-size="18" font-weight="bold" fill="#12202B">
+      <tspan x="126" y="80">Section title (optional)</tspan>
+    </text>
+    <g transform="translate(485 305)">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <rect stroke="#ABC1CB" stroke-linejoin="square" fill="#FFF" x=".5" y=".5" width="112" height="45" rx="15"/>
+    </g>
+    <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#233645"
+          transform="translate(485 305)">
+      <tspan x="32.22" y="29">Cancel</tspan>
+    </text>
+    <g transform="translate(126 187)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="597" height="85" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="29">Notes (optional)</tspan>
+      </text>
+    </g>
+    <g transform="rotate(-45 675.47 -719.217)" fill="#ABC1CB">
+      <rect width="14" height="1" rx=".5"/>
+      <rect x="2.8" y="3.414" width="8.4" height="1" rx=".5"/>
+    </g>
+    <g transform="translate(431 127)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="292" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="28">Type</tspan>
+      </text>
+      <path d="m272.364 20 1.414 1.414-6.364 6.364-.025-.025-.025.025L261 21.414 262.414 20l4.974 4.974L272.364 20Z"
+            fill="#2661A7"/>
+    </g>
+    <g transform="translate(126 127)">
+      <rect stroke="#ABC1CB" fill="#FFF" x=".5" y=".5" width="292" height="45" rx="15"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Medium, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="400" fill="#2F424F">
+        <tspan x="13" y="28">Name</tspan>
+      </text>
+    </g>
+    <g>
+      <g transform="translate(610 305)">
+        <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+        <use fill="#2976C7" xlink:href="#d"/>
+      </g>
+      <path d="m686.5 324.717 1.09-1.217 4.91 5.478-.02.022.02.022-4.91 5.478-1.09-1.217 3.838-4.283-3.838-4.283Z"
+            fill="#FFF"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Semibold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="500" fill="#FFF"
+            transform="translate(610 305)">
+        <tspan x="32" y="29">Next</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

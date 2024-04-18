@@ -5,7 +5,7 @@ import { Tooltip } from '.'
 
 export default {
   component: Tooltip,
-  title: 'Tooltip',
+  title: 'Components/Tooltip',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

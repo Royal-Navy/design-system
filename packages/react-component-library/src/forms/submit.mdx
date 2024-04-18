@@ -1,0 +1,148 @@
+import { Meta, Source } from '@storybook/blocks'
+
+<Meta title="Forms/Validation" />
+
+# Submit, validate and show form errors
+
+Our goal is to promote applications that behave in a consistent way, reducing a user’s cognitive load. It’s important
+to maintain a consistent approach, no matter how simple a form may be - users moving between applications shouldn’t
+have to change the way they think and work based on which application they are using at any given moment.
+
+This is why we ask that you adhere to these Standards, regardless of how straightforward your
+forms are - consistency is key, and this applies to form validation as much as any other aspect of form design.
+
+## 9. Optional vs mandatory fields
+###### 9.0 You *should* mark all optional fields with “(optional)” appended to their label. Eg. “Notes (optional)”.
+
+###### 9.1 You *should not* mark mandatory fields. All fields are mandatory, unless marked as optional.
+
+## 10. Submitting a form
+
+###### 10.0 You must not disable form submission buttons, except to prevent duplicate submissions as per 10.1. Disabling a form submission button does not clearly communicate the system status; not all users will understand that the button is disabled because of a form validation error.
+
+###### 10.1. Where duplicate form submissions would result in data quality or other issues, you must set the primary form button to its Loading state immediately after a user submits a form.
+> However, please note Standard 11.4, on re-enabling the button if form submission fails.
+
+###### 10.2 If your system takes on average more than 5 seconds to process a form submission and display the result, you must set the primary form button to its Wait state immediately after a user submits the form.
+> However, please note Standard 11.4, on re-enabling the button if form submission fails.
+
+## 11. Form validation, error prevention and error messaging
+Since 1994, Jakob Nielsen's [general principles for interaction design](https://www.nngroup.com/articles/ten-usability-heuristics/) have become popular rules of thumb for
+good human-computer interaction design.
+
+Our Standards for Form validation, error prevention and error messaging are based on Nielsen’s principles
+  * #1. Visibility of system status
+  * #5. Error prevention and
+  * #9. Help users recognise, diagnose, and recover from errors.
+
+###### 11.0 The status of the system must always be clear, through appropriate feedback within a reasonable amount of time.
+Whenever users interact with a system, they need to know whether the interaction was successful.
+Did the system actually register a button press? Is it still working on it? Was the data saved?
+Should they press the button again?
+
+Feedback can be as simple as showing:
+
+- a spinner once the user has clicked on a button (see 10.2)
+- a success message to confirm task completion
+- a clear error message if there are validation errors or if the system failed to process the user’s request (see 11.2)
+
+If a form submission merely results in refreshing data on the page, the data refresh must be clear to the user.
+Bear in mind that the data refreshed may be outside the currently visible part of the screen or that it may
+refresh so quickly that the user is not aware of the refresh. In such instances you should
+show a ‘toaster’ confirmation message, a ‘spinner’ for a couple of seconds, or even a ‘fake’ screen
+refresh, if it helps your users be confident that the form was submitted and the data updated correctly.
+
+###### 11.1 You should prevent user errors by offering suggestions, utilising constraints, and being appropriately flexible.
+Both expert users familiar with the process at hand and novice users still learning are prone to making mistakes,
+especially under pressure. When users move between systems - and especially systems that use different
+conventions - the chances of making a mistake increase.
+For example, entering a date in a `mm/dd/yyyy` format when the system expects a `dd/mm/yyyy` format
+or typing a time using a 12-hour clock when the system uses a 24-hour format are both difficult
+to validate and could have severe consequences.
+
+We can reduce such errors using good design. For example, when asking the user to enter a date,
+show a `(dd/mm/yyyy)` note. When choosing a time, you can immediately display the entered time into 24-hour
+format, so if a user typed 8:15 you can display as 08:15 or 08.15am. If a user typed 1310 in a time field,
+you can convert and display as 13:10 or 01.10pm depending on the format your application uses.
+
+The most appropriate format depends on your application’s users and its wider
+context (see "Consider the wider context" above). Where possible, you should test a live version of
+your form with your users in order to validate your assumptions.
+
+###### 11.2 Error messages must be expressed in plain language, indicating the problem and, where possible, constructively suggesting a solution.
+
+<table>
+  <thead>
+  <tr>
+    <th>Don't write vague error messages</th>
+    <th>Do write helpful error messages</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Fields highlighted in red have errors.</td>
+    <td>There are 2 errors in this form:<br/>
+      First name is required<br />
+      Telephone number should not contain letters</td>
+  </tr>
+  <tr>
+    <td>Error 503 while processing form.</td>
+    <td>Service temporarily unavailable (server error 503). Your form was not sent.
+      <br />Please try again in a minute.</td>
+  </tr>
+  <tr>
+    <td>Incorrect ID.</td>
+    <td>Valid ID numbers start with the letter K, followed by a 9-digit number.</td>
+  </tr>
+  </tbody>
+</table>
+
+###### 11.3 Error messages for individual form fields should not exceed 20 words.
+
+###### 11.4 If form submission fails or times out, you must show an error message and re-enable the primary form button.
+
+###### 11.5 If form submission fails or times out, your application must retain all entered data, unless doing so poses a specific security concern.
+
+> This is in order to allow the user to re-submit the form without having to re-enter all data. Any non-sensitive data already entered must be retained, including values of Select, Multi-select, Radio button and Checkbox components. Consider if sensitive data (eg. a password) should be requested again. If this is the case, you must also mark the fields that need to be requested again as an error, in order to draw the user’s attention to those fields before they resubmit the form.
+
+###### 11.6 Where possible, you must offer immediate inline field validation, but only after a form field loses focus.
+
+> If you can determine that an input fails validation (with or without sending data to the server), you must not wait until a user submits the form to report the error.
+> For example, if a date is entered as 35/12/2021 or a username is already taken, show the inline error immediately after focus moves away from the respective form input. Validation must not be real-time (i.e. while the user is still typing their input), as this is likely to become distracting and annoying by constantly reporting errors before a user has finished typing their input.
+
+###### 11.6.1 When offering immediate inline field validation, you must not alter the list of errors at the top of the form.
+> If the list is not already visible, do not show it. If the list is visible because of an earlier failed submission, do not alter it. Doing so would cause the page to jump around considerably. The list at the top of the form should only be altered as a result of a form submission (see 11.7).
+
+###### 11.7 If a form fails validation after submission, in addition to the inline errors, you must show a list of all errors at the top of the form, and move focus to that area; this includes scrolling the screen as appropriate, so that the list of errors is visible near the top of the screen
+> Moving the focus to the list of errors should also ensure that screen readers will announce the error messages and begin at the start of the form, helping users with accessibility requirements understand what has happened. See Design for more information.
+
+###### 11.8 You should avoid ‘Reset’ Buttons that erase unsaved form data.
+
+> If you do need a ‘Reset’ Button, ensure a confirmation dialogue is displayed before erasing all form data.
+
+### Character limits
+
+###### 11.9 You should avoid imposing character limits if you can. You should consider where the information entered will be stored and how it will be displayed.
+
+### Design
+If a user tries to submit a form which fails validation:
+
+- All fields that fail validation must be set to their error state
+- A summary of all errors must be shown at the top of the form
+- The page must scroll automatically to the summary of errors (see auto-scroll animation details below)
+- The summary of errors container should have the role attribute set to alert to make assistive technology users aware of this change
+
+### Auto-scroll animation
+
+<Source dark code={`easeInOutCubic, 250ms;
+# https://easings.net/#easeInOutCubic`}/>
+
+#### Autoscroll Example Form
+<img src="/auto_scroll_example.svg" alt="auto scroll example" />
+
+#### Validation Example Form
+<img src="/validation_example_2.svg" alt="validation example form 2" />
+
+#### Validation example layout
+<img src="/validation_example_3.svg" alt="validation example layout" />
+

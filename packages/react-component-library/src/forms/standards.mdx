@@ -1,0 +1,47 @@
+import { Meta, Source } from '@storybook/blocks'
+
+<Meta title="Forms/Standards" />
+
+# General form Standards
+
+## 1. Labels, Hint text and Section dividers
+
+###### 1.0 You **must** use sentence-style capitalisation.
+###### 1.1 You *must not* use colons or full stops (periods) after labels or section titles.
+###### 1.2 You *must not* truncate labels, hint text or section titles.
+###### 1.3 Labels *must not* span multiple lines.
+###### 1.4 Labels *should* be up to 5 words. Use Hint text or Contextual help to provide more detail.
+###### 1.5 You *must not* use placeholder or ‘default’ text. Placeholder text results in poor user experience and accessibility. Use the Hint text component instead.
+###### 1.6 You *should not* disable the option to copy from or paste into any form field. Except for Password fields, which do not allow copying by design.
+###### 1.7 You *should not* disable autocomplete, unless it poses a specific security concern.
+###### 1.8 If you have to disable autocomplete, you *must* do so at the lowest level possible. Specifically, you *must not* disable autocomplete for the entire form, but only for those fields that pose a security concern.
+###### 1.9 You *must not* pre-fill form inputs, unless they represent data that already exists in the system.
+> You *must* not introduce new data ‘by default’, because a user may overlook a pre-filled input. The form will pass validation with the default values, introducing new data to the system without the user’s knowledge. For example, you must not pre-select consent for receiving a newsletter during a sign-up flow, but you should do so on an existing user profile page, if that’s what they selected when they signed up.
+
+## 2. Language
+
+###### 2.0 You *must* use the same words when you mean the same thing.
+> Users should not have to wonder whether different words or actions mean the same thing. Maintain consistency within your application and consider the context of use. For example: Consider terminology used in other applications your audience is familiar with. Is there a glossary? Would Contextual help be appropriate?
+###### 2.1 You *should* avoid or explain acronyms and jargon where possible.
+> Consider industry conventions, but do not assume that all your users will be familiar with jargon or acronyms. Use Hint text or Contextual help when appropriate to explain acronyms and terms which users may not be familiar with.
+###### 2.2 You *should* test your language with both novice and expert users.
+> This does not refer only to IT literacy, but also experience in their field. An expert user is more likely to be familiar with established terms and processes. On the other hand, a novice user (or someone who is an expert in their field but not in the particular process you’re testing) may need more guidance or make more mistakes under pressure.
+###### 2.4 You *should* avoid or explain acronyms and jargon where possible.
+> Consider industry conventions, but do not assume that all your users will be familiar with jargon or acronyms. Use Hint text or Contextual help when appropriate to explain acronyms and terms which users may not be familiar with.
+###### 2.5 You *should* test your language with both novice and expert users.
+> This does not refer only to IT literacy, but also experience in their field. An expert user is more likely to be familiar with established terms and processes. On the other hand, a novice user (or someone who is an expert in their field but not in the particular process you’re testing) may need more guidance or make more mistakes under pressure.
+
+## 3. Consider the wider context
+
+Always consider the wider context in which your forms exist. This includes not just your own service, but also relevant services, offline processes, and the wider organisational culture.
+###### 3.0 If you are converting a form that currently only exists on paper, don’t just translate it to an online form without considering how you can improve the user experience and even transform how your service is delivered.
+
+###### 3.1 You *must* carefully consider why you’re asking users for each item of information. Challenge all questions, with the aim of simplifying the overall user experience. How will each item of information be used? Where is it saved? Can it be edited at a later stage? Could it be retrieved from a database instead?
+
+> You must consider the most appropriate way to capture the answer to each question. Guide your users and ensure data quality. For instance, an address is best captured by multiple single-line text fields, rather than a single text area. Even though they may make your form longer, multiple fields help direct users and validate their answers, eg. by ensuring they haven’t forgotten the postcode.
+
+## 4. Printing
+###### 4.0 If there is a user need to print out information supplied via a form, your app *should* provide the relevant print functionality, with appropriate formatting.
+This should be designed to strip out information and UI that's not needed, so that your users can print out a proper document, rather than a web page.
+
+

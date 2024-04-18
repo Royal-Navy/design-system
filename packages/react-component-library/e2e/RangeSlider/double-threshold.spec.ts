@@ -4,7 +4,7 @@ import selectors from './selectors'
 test.describe('RangeSlider, double threshold', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(
-      '/iframe.html?id=range-slider--double-threshold&viewMode=story'
+      '/iframe.html?id=components-range-slider--double-threshold&viewMode=story'
     )
   })
 

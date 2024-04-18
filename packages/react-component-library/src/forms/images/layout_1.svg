@@ -1,0 +1,74 @@
+<svg width="850" height="349" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#EDF2F7" d="M0 0h420v290H0z"/>
+    <path fill="#60B255" d="M0 0h420v10H0z"/>
+    <text font-family="-apple-system, BlinkMacSystemFont-Bold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="bold" fill="#233645">
+      <tspan x="40" y="317">Do</tspan>
+      <tspan x="65.144" y="317" font-family="-apple-system, BlinkMacSystemFont-Regular, -apple-system, BlinkMacSystemFont" font-weight="normal">maintain a consistent form flow
+      </tspan>
+    </text>
+    <path
+      d="m24.825 309.317-5.492 5.491-2.991-2.983L15.167 313l4.166 4.167L26 310.5l-1.175-1.183ZM21 304.667A8.336 8.336 0 0 0 12.667 313c0 4.6 3.733 8.333 8.333 8.333s8.333-3.733 8.333-8.333-3.733-8.333-8.333-8.333Zm0 15A6.665 6.665 0 0 1 14.333 313 6.665 6.665 0 0 1 21 306.333 6.665 6.665 0 0 1 27.667 313 6.665 6.665 0 0 1 21 319.667Z"
+      fill="#60B255" fill-rule="nonzero"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="33.5" y="50.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="118.5" y="50.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="33.5" y="90.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="118.5" y="90.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="33.5" y="130.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="118.5" y="130.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="33.5" y="170.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="118.5" y="170.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="33.5" y="210.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="118.5" y="210.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="225.5" y="50.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="310.5" y="50.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="225.5" y="90.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="310.5" y="90.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="225.5" y="130.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="310.5" y="130.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="225.5" y="170.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="310.5" y="170.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="225.5" y="210.5" width="76" height="29" rx="8"/>
+    <rect stroke="#B8C7D2" fill="#FFF" x="310.5" y="210.5" width="76" height="29" rx="8"/>
+    <path stroke="#4C9941" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+          d="M263.5 65h85l-85 40h85l-85 40h85l-85 40h85l-85 40h85M71.5 65v160l85-160v160"/>
+    <path stroke="#4C9941" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+          d="m340.5 231.28 9.106-6.28-9.106-6.656m-177.68.915-6.28 9.106-6.655-9.106"/>
+    <g transform="translate(430)">
+      <path fill="#EDF2F7" d="M0 0h420v290H0z"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="33.5" y="50.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="118.5" y="50.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="33.5" y="90.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="118.5" y="90.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="33.5" y="130.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="118.5" y="130.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="33.5" y="170.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="118.5" y="170.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="33.5" y="210.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="118.5" y="210.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="225.5" y="50.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="310.5" y="50.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="225.5" y="90.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="310.5" y="90.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="225.5" y="130.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="310.5" y="130.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="310.5" y="170.5" width="76" height="29" rx="8"/>
+      <rect stroke="#B8C7D2" fill="#FFF" x="310.5" y="210.5" width="76" height="29" rx="8"/>
+      <path fill="#EC4138" d="M0 0h420v10H0z"/>
+      <text font-family="-apple-system, BlinkMacSystemFont-Bold, -apple-system, BlinkMacSystemFont" font-size="16" font-weight="bold" fill="#233645">
+        <tspan x="39" y="317">Don’t</tspan>
+        <tspan x="85" y="317" font-family="-apple-system, BlinkMacSystemFont-Regular, -apple-system, BlinkMacSystemFont" font-weight="normal">mix form layouts that result in
+          broken or
+        </tspan>
+        <tspan x="39" y="341" font-family="-apple-system, BlinkMacSystemFont-Regular, -apple-system, BlinkMacSystemFont" font-weight="normal">confusing flows</tspan>
+      </text>
+      <path
+        d="M22.158 309.667 20 311.825l-2.158-2.158-1.175 1.175L18.825 313l-2.158 2.158 1.175 1.175L20 314.175l2.158 2.158 1.175-1.175L21.175 313l2.158-2.158-1.175-1.175Zm-2.158-5A8.326 8.326 0 0 0 11.667 313 8.326 8.326 0 0 0 20 321.333 8.326 8.326 0 0 0 28.333 313 8.326 8.326 0 0 0 20 304.667Zm0 15A6.676 6.676 0 0 1 13.333 313 6.676 6.676 0 0 1 20 306.333 6.676 6.676 0 0 1 26.667 313 6.676 6.676 0 0 1 20 319.667Z"
+        fill="#EC4138" fill-rule="nonzero"/>
+      <path stroke="#D03931" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            d="M263.5 65v80h85v80M71.5 65h85l-85 40h85v80l-85-40v40l90.944 40H71.5"/>
+      <path stroke="#D03931" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            d="M80.606 231.28 71.5 225l9.106-6.656m274.514.915-6.28 9.106-6.655-9.106"/>
+    </g>
+  </g>
+</svg>

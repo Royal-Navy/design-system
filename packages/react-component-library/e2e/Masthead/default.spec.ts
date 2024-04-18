@@ -6,7 +6,9 @@ import selectors from './selectors'
 
 test.describe('Masthead', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=masthead--default&viewMode=story')
+    await page.goto(
+      '/iframe.html?id=components-masthead--default&viewMode=story'
+    )
   })
 
   test('shows the banner', async ({ page }) => {

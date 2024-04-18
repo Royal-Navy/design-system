@@ -3,7 +3,9 @@ import selectors from './selectors'
 
 test.describe('RangeSlider, default', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=range-slider--default&viewMode=story')
+    await page.goto(
+      '/iframe.html?id=components-range-slider--default&viewMode=story'
+    )
   })
 
   test.describe('when clicking on the rail beyond the selected range', () => {

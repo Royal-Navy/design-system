@@ -43,7 +43,7 @@ const columns = [
 export default {
   component: DataGrid,
   subcomponents: {},
-  title: 'Data Grid',
+  title: 'Components/Data Grid',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',

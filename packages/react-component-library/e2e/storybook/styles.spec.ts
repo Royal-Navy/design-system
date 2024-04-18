@@ -4,6 +4,7 @@ async function getInjectedStyles(page) {
   await page.waitForSelector('style[data-styled]', { state: 'attached' })
 
   return page.evaluate(() => {
+    // @ts-ignore
     const styles = [...document.head.querySelectorAll('style')]
     return styles.map((style) => style.innerHTML).join('\n')
   })
@@ -13,7 +14,9 @@ async function getInjectedStyles(page) {
 test.describe.skip('Storybook, global styles', () => {
   test.describe('canvas tab', () => {
     test.beforeEach(async ({ page }) => {
-      await page.goto('/iframe.html?args=&id=button--default&viewMode=story')
+      await page.goto(
+        '/iframe.html?args=&id=components-components-button--default&viewMode=story'
+      )
     })
 
     test('renders the global styles once', async ({ page }) => {
@@ -23,7 +26,9 @@ test.describe.skip('Storybook, global styles', () => {
 
   test.describe('docs tab', () => {
     test.beforeEach(async ({ page }) => {
-      await page.goto('/iframe.html?args=&id=button--default&viewMode=docs')
+      await page.goto(
+        '/iframe.html?args=&id=components-button--default&viewMode=docs'
+      )
     })
 
     test('renders the global styles once', async ({ page }) => {

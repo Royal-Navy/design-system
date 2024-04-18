@@ -1,0 +1,54 @@
+import { Meta, Source } from '@storybook/blocks'
+import { SpacingScaleTable, ExampleComponent } from './SpacingScaleTable'
+
+<Meta title="Tokens/Spacing" />
+
+# Spacing
+
+Spacing is a key (and often overlooked) aspect of ensuring your application is easy to read and understand. Too little whitespace will cause components to become visually cramped, therefore decreasing readability. The general rule is to start with whitespace that is too large for an element and then decrease it until it is at an appropriate size. It is far better to have too much whitespace than too little.
+
+## The Spacing Scale
+
+By reducing application Spacing to a predetermined scale, it is easy to ensure all elements and components are spaced in proportion to each other, rather than with arbitrary values.
+
+The Spacing Scale values, much like the Typography Scale values, doesn't increase in a linear fashion. This is because as elements get positioned further apart, the difference between adjacent values becomes less noticeable. Whilst the Scale values itself increases non-linearly, the Scale is linear. This is to help developers quickly adjust spacing, without having to worry about the underlying Spacing API values.
+
+<SpacingScaleTable />
+
+## Usage
+
+<Source dark code={`# Typescript usage of spacing
+import { selectors } from '@royalnavy/design-tokens'
+
+const { spacing } = selectors
+
+export const ExampleComponent = () => {
+  /*  This is a contrived example to show individual usage
+      Please don't write your code like this
+  */
+  const borderSize = spacing('4')
+  const borderColor = color('action', '200')
+  const paddingSize = spacing('8')
+  const marginSize = spacing('2')
+
+  return (
+    <div
+      style={{
+        margin: marginSize,
+        padding: paddingSize,
+        border: \`solid \${borderSize} \${borderColor}\`,
+      }}
+    >
+    <div style={{ fontSize: fontSize('xl') }}>Example component</div>
+      <div>Padding: {paddingSize} </div>
+      <div>Margin: {marginSize}</div>
+      <div>
+        Border: {borderSize} {borderColor}
+      </div>
+    </div>
+  )
+}
+
+`} />
+
+<ExampleComponent />

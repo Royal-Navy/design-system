@@ -5,7 +5,7 @@ import selectors from './selectors'
 test.describe('Compound Timeline', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(
-      '/iframe.html?id=compound-timeline--full-width&viewMode=story'
+      '/iframe.html?id=components-compound-timeline--full-width&viewMode=story'
     )
   })
 

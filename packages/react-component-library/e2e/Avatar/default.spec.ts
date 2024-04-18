@@ -3,7 +3,7 @@ import selectors from './selectors'
 
 test.describe('Avatar', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=avatar--default&viewMode=story')
+    await page.goto('/iframe.html?id=components-avatar--default&viewMode=story')
   })
 
   test('renders the avatar', async ({ page }) => {

@@ -10,7 +10,7 @@ import { Link } from '../Link'
 export default {
   component: ContextMenu,
   subcomponents: { ContextMenuItem, ContextMenuDivider },
-  title: 'Context Menu',
+  title: 'Components/Context Menu',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

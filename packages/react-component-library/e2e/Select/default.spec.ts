@@ -6,7 +6,7 @@ import selectors from './selectors'
 
 test.describe('Select, default', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/iframe.html?id=select--default&viewMode=story')
+    await page.goto('/iframe.html?id=components-select--default&viewMode=story')
   })
 
   test('does not gives the expand icon a hover appearance', async ({
