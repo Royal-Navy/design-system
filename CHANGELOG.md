@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/Royal-Navy/design-system/compare/4.4.0...4.5.0) (2024-04-18)
+
+### Bug Fixes
+
+- **PhaseBanner:** Wrap text to the right of the phase badge ([#3754](https://github.com/Royal-Navy/design-system/issues/3754)) ([4f011f1](https://github.com/Royal-Navy/design-system/commit/4f011f1cadb0f712dd455145cdb7b847b74de032))
+
+### Features
+
+- **DataGrid:** Add ability to specify column alignments ([75e1673](https://github.com/Royal-Navy/design-system/commit/75e167315d0e6271a83aa49830f6cbd510d15377))
+- **DataGrid:** Add base implementation ([19bac79](https://github.com/Royal-Navy/design-system/commit/19bac79f36fcef20a35d6c0b8520065538e0cc7f))
+
 # [4.4.0](https://github.com/Royal-Navy/design-system/compare/4.3.0...4.4.0) (2024-04-12)
 
 ### Features
