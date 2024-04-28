@@ -6,4 +6,5 @@ export const StyledTabNavTab = styled(StyledTab)`
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
 `
