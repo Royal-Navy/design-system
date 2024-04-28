@@ -294,3 +294,25 @@ WithUserMenuOpen.storyName = 'With user options open'
 WithUserMenuOpen.parameters = {
   docs: { disable: true },
 }
+
+export const WithInlineNav: StoryFn<typeof Masthead> = (args) => {
+  const nav = (
+    <MastheadNav>
+      <MastheadNavItem link={<Link href="#">Get started</Link>} isActive />
+      <MastheadNavItem link={<Link href="#">Styles</Link>} />
+      <MastheadNavItem link={<Link href="#">Components</Link>} />
+      <MastheadNavItem link={<Link href="#">About</Link>} />
+    </MastheadNav>
+  )
+  return (
+    <div
+      css={`
+        height: 10rem;
+      `}
+    >
+      <Masthead hasInlineNav {...args} homeLink={<Link href="#" />} nav={nav} />
+    </div>
+  )
+}
+
+WithInlineNav.storyName = 'With inline nav'
