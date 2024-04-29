@@ -1,0 +1,20 @@
+name: Dependabot
+
+on:
+  workflow_run:
+    types:
+      - completed
+    workflows:
+      - 'Build & Test'
+
+jobs:
+  Automerge:
+    name: Merge Dependabot PR's
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Auto merge Dependabot minor and patch version bumps
+        uses: Royal-Navy/design-system-mergeme-action@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.MERGE_BOT }}
+          PRESET: DEPENDABOT_MINOR
