@@ -7,5 +7,4 @@ export const StyledMastHead = styled.div`
   width: 100%;
   overflow: hidden;
   background-color: ${color('neutral', 'white')};
-  background: #000;
 `
