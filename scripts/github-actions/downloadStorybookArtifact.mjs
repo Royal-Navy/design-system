@@ -2,8 +2,6 @@ import fs from 'fs'
 
 /**
  * Used by .github/workflows/post_build_and_test.yml
- *
- * Based on
  * https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#using-data-from-the-triggering-workflow
  */
 export const downloadStorybookArtifact = async ({ github, context }) => {

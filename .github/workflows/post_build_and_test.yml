@@ -8,10 +8,7 @@ on:
       - 'Build & Test'
 
 jobs:
-  # This runs Chromatic visual regression tests without exposing secrets to untrusted code from
-  # third-party PRs.
-  #
-  # For more details, see:
+  # This runs Chromatic visual regression tests without exposing secrets to untrusted code from third-party PRs.
   # https://github.blog/changelog/2021-02-19-github-actions-workflows-triggered-by-dependabot-prs-will-run-with-read-only-permissions/
   # https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
   Test_visual_regression:
@@ -44,10 +41,12 @@ jobs:
         run: |
           git fetch origin "+$CHROMATIC_SHA"
 
-      - name: Run visual regression tests
-        run: |
-          cd packages/react-component-library
-          npm exec --no -- chromatic --project-token=${{secrets.CHROMATIC_TOKEN}} --storybook-build-dir=.static_storybook
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
+          workingDir: packages/react-component-library
+          storybookBuildDir: .static_storybook
 
   Automerge:
     name: Merge Dependabot PR's
