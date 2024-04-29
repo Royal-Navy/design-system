@@ -44,10 +44,15 @@ jobs:
         run: |
           git fetch origin "+$CHROMATIC_SHA"
 
-      - name: Run visual regression tests
-        run: |
-          cd packages/react-component-library
-          npm exec --no -- chromatic --project-token=${{secrets.CHROMATIC_TOKEN}} --storybook-build-dir=.static_storybook
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
+
+      # - name: Run visual regression tests
+      #   run: |
+      #     cd packages/react-component-library
+      #     npm exec --no -- chromatic --project-token=${{secrets.CHROMATIC_TOKEN}} --storybook-build-dir=.static_storybook
 
   Automerge:
     name: Merge Dependabot PR's
