@@ -23,7 +23,7 @@ import {
   IconSortUnsorted,
 } from '@royalnavy/icon-library'
 
-import { IndeterminateCheckbox } from './IndeterminateCheckbox'
+import { IndeterminateCheckbox } from '../Checkbox/IndeterminateCheckbox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TABLE_SORT_ORDER } from './constants'
 import {

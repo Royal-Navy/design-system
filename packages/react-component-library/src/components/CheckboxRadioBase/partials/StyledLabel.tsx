@@ -5,6 +5,7 @@ const { color, fontSize } = selectors
 
 interface StyledLabelProps {
   $hasContainer?: boolean
+  $hasLabel?: boolean
   $hasDescription?: boolean
   $isDisabled: boolean
 }
@@ -26,5 +27,11 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     $hasDescription &&
     css`
       padding: 12px 12px 12px 0;
+    `}
+
+  ${({ $hasLabel }) =>
+    !$hasLabel &&
+    css`
+      padding: unset;
     `}
 `

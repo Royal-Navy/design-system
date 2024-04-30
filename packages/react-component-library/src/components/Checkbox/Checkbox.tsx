@@ -6,12 +6,7 @@ import { StyledCheckbox } from './partials/StyledCheckbox'
 import { StyledCheckmark } from './partials/StyledCheckmark'
 import { StyledCheckmarkWrapper } from './partials/StyledCheckmarkWrapper'
 
-export type CheckboxProps = Omit<
-  CheckboxRadioBaseProps,
-  'type' | 'partials'
-> & {
-  indeterminate?: boolean
-}
+export type CheckboxProps = Omit<CheckboxRadioBaseProps, 'type' | 'partials'>
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (props, ref) => {

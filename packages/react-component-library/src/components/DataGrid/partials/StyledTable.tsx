@@ -17,7 +17,11 @@ export const StyledTable = styled.table<StyledTableProps>`
     $hasRowSelection &&
     `
     th:first-child, td:first-child {
-      width: calc(24px + ${spacing('6')}) !important;
+      width: calc(22px + ${spacing('6')}) !important;
+
+      > * {
+        margin-top: -2px;
+      }
     }
   `}
 `
