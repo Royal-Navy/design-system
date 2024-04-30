@@ -1,5 +1,5 @@
 import { ColorPalette, Meta, Source } from '@storybook/blocks'
-import { DesignSystemColorItem } from './DesignSystemColorItem'
+import { DesignSystemPalette } from './DesignSystemPalette'
 
 <Meta title="Tokens/Colours" />
 
@@ -11,18 +11,27 @@ to distinguish.
 
 ## Base palettes
 
-<ColorPalette>
-  <DesignSystemColorItem group='neutral' title='neutral' subtitle='Use the Neutral palette for application UI.' />
-  <DesignSystemColorItem group='action' title='action' subtitle='Use the Neutral palette for application UI.' />
-  <DesignSystemColorItem group='success' title='success'
-                         subtitle="Use the Success palette for positive feedback."
-  />
-  <DesignSystemColorItem title="warning" group="warning"
-                         subtitle="Use the Warning palette to indicate an action or message that may produce undesirable results." />
-  <DesignSystemColorItem group="danger" title="danger"
-                         subtitle="Use the Danger palette for destructive actions."
-  />
-</ColorPalette>
+<DesignSystemPalette
+  group="neutral"
+  subtitle="Use the Neutral palette for application UI."
+/>
+
+<DesignSystemPalette
+  group="action"
+  subtitle="Use the Neutral palette for application UI."
+/>
+<DesignSystemPalette
+  group="success"
+  subtitle="Use the Success palette for positive feedback."
+/>
+<DesignSystemPalette
+  group="warning"
+  subtitle="Use the Warning palette to indicate an action or message that may produce undesirable results."
+/>
+<DesignSystemPalette
+  group="danger"
+  subtitle="Use the Danger palette for destructive actions."
+/>
 
 ---
 
@@ -31,15 +40,12 @@ to distinguish.
 Use supplementary colours to support the main colour palettes only. They can be used for
 categorisation and data visualisation, but they don’t have any state associated with them.
 
-<ColorPalette>
-  <DesignSystemColorItem group="supa" title="supa" />
-  <DesignSystemColorItem group="supb" title="supb" />
-  <DesignSystemColorItem group="supc" title="supc" />
-  <DesignSystemColorItem group="supd" title="supd" />
-  <DesignSystemColorItem group="supe" title="supe" />
-  <DesignSystemColorItem group="supf" title="supf" />
-</ColorPalette>
-
+<DesignSystemPalette group="supa" />
+<DesignSystemPalette group="supb" />
+<DesignSystemPalette group="supc" />
+<DesignSystemPalette group="supd" />
+<DesignSystemPalette group="supe" />
+<DesignSystemPalette group="supf" />
 ---
 
 ## Usage
