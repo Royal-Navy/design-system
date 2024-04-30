@@ -1,0 +1,7 @@
+{
+  "projectId": "Project:5e25c277526d380020b5e418",
+  "autoAcceptChanges": "master",
+  "exitOnceUploaded": true,
+  "onlyChanged": true,
+  "skip": "dependabot/**"
+}
