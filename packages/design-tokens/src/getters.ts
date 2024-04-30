@@ -102,6 +102,18 @@ export function getAnimation(index: AnimationTiming, theme?: Theme): string {
   throw new Error(`Invalid animation token for index: '${index}'`)
 }
 
+/**
+ * Returns an array of the color shades available for the color group
+ * Not intended for use by design system consumers
+ * @param group neutral, action etc
+ * @param theme optional: light (default)  or dark
+ */
+export function getColors(group: ColorGroup, theme?: Theme): ColorShade[] {
+  const tokens = getTheme(theme).colorsTokens
+  const values = Object.keys(tokens.color[group])
+  return values as ColorShade[]
+}
+
 export function getColor(
   group: ColorGroup,
   weight: ColorShade,
