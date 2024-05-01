@@ -6,6 +6,8 @@ import {
   selectors,
 } from '@royalnavy/design-tokens'
 
+import styled from 'styled-components'
+
 import {
   StyledDescription,
   StyledHexValue,
@@ -14,13 +16,17 @@ import {
   StyledWeight,
 } from './partials'
 
-const { shadow } = selectors
+const { shadow, spacing } = selectors
+
+const StyledContainer = styled.div`
+  padding-bottom: ${spacing('13')};
+`
 
 export const ElevationTable = () => {
   const shadows = getShadows()
 
   return (
-    <>
+    <StyledContainer>
       {shadows.map((shadowWeight) => {
         return (
           <StyledRow key={shadowWeight}>
@@ -34,6 +40,18 @@ export const ElevationTable = () => {
           </StyledRow>
         )
       })}
-    </>
+    </StyledContainer>
   )
 }
+
+export const UsageText = `
+import styled from 'styled-components'
+
+import { selectors } from '@royalnavy/design-tokens'
+
+const { shadow } = selectors
+
+export const StyledPanel = styled.div\`
+  box-shadow: \${ shadow('1') })};
+\`
+`
