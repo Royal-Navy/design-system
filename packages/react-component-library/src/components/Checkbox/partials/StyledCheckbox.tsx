@@ -47,6 +47,14 @@ export const StyledCheckbox = styled.div<CheckboxRootProps>`
       }
     `}
 
+  ${({ $hasLabel }) =>
+    !$hasLabel &&
+    css`
+      height: 20px;
+      width: 20px;
+      padding: unset;
+    `}
+
   ${({ $isDisabled, $hasContainer }) =>
     $isDisabled &&
     css`

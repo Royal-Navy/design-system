@@ -102,7 +102,8 @@ export const CheckboxRadioBase = React.forwardRef<
         <Root
           className={className}
           $isDisabled={isDisabled}
-          $hasContainer={hasContainer}
+          $hasContainer={hasContainer && !!label}
+          $hasLabel={!!label}
           $isInvalid={isInvalid}
           $isChecked={isChecked}
           onClick={handleClick}
@@ -111,13 +112,17 @@ export const CheckboxRadioBase = React.forwardRef<
         >
           <StyledInnerWrapper $hasContainer={hasContainer}>
             <StyledLabel
-              $hasContainer={hasContainer}
+              $hasContainer={hasContainer && !!label}
+              $hasLabel={!!label}
               $hasDescription={!!description}
               $isDisabled={isDisabled}
               htmlFor={id}
               data-testid={`${type}-label`}
             >
-              <CheckmarkWrapper $hasContainer={hasContainer}>
+              <CheckmarkWrapper
+                $hasContainer={hasContainer && !!label}
+                $hasLabel={!!label}
+              >
                 <StyledInput
                   defaultChecked={defaultChecked}
                   ref={mergeRefs([localRef, ref])}
@@ -133,7 +138,7 @@ export const CheckboxRadioBase = React.forwardRef<
                   {...rest}
                 />
                 <Checkmark
-                  $hasContainer={hasContainer}
+                  $hasContainer={hasContainer && !!label}
                   $isDisabled={isDisabled}
                 />
               </CheckmarkWrapper>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 
-import { Checkbox, CheckboxProps } from '.'
+import { Checkbox, IndeterminateCheckbox, CheckboxProps } from '.'
 import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
 
 export default {
@@ -95,6 +95,25 @@ NoContainerDisabled.args = {
   label: 'Item without container',
   name: 'no-container',
   isDisabled: true,
+}
+
+export const NoLabel = Template.bind({})
+NoLabel.storyName = 'No label'
+NoLabel.args = {
+  id: undefined,
+  name: 'no-label',
+  // @ts-expect-error
+  'aria-label': 'No label',
+}
+
+export const Indeterminate: StoryFn<typeof IndeterminateCheckbox> = (props) => {
+  return <IndeterminateCheckbox {...props} />
+}
+Indeterminate.args = {
+  id: undefined,
+  name: 'indeterminate',
+  indeterminate: true,
+  'aria-label': 'Indeterminate',
 }
 
 export const WithDescription = Template.bind({})

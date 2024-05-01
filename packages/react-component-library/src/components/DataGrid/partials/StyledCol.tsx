@@ -10,7 +10,7 @@ interface StyledColProps {
 }
 
 export const StyledCol = styled.th<StyledColProps>`
-  padding: ${spacing('8')} ${spacing('4')};
+  padding: ${spacing('8')} ${spacing('4')} ${spacing('8')} ${spacing('8')};
   width: ${({ $width }) => $width || 'auto'};
   text-align: left;
   font-size: ${fontSize('s')};

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, HTMLProps } from 'react'
 
-import { Checkbox } from '../Checkbox'
+import { Checkbox } from '.'
 import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
 
 export const IndeterminateCheckbox = ({
