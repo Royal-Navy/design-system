@@ -174,6 +174,21 @@ export function getShadow(weight: ShadowWeight, theme?: Theme): string {
   throw new Error(`Invalid shadow token for weight: '${weight}'`)
 }
 
+export function getShadowDescription(
+  weight: ShadowWeight,
+  theme?: Theme
+): string {
+  return (
+    get(getTheme(theme).shadowsTokens, `shadow[${weight}].description`) || ''
+  )
+}
+
+export function getShadows(theme?: Theme): ShadowWeight[] {
+  const tokens = getTheme(theme).shadowsTokens
+  const values = Object.keys(tokens.shadow)
+  return values as ShadowWeight[]
+}
+
 export function getSpacing(spacing: Spacing, theme?: Theme): string {
   const value = get(getTheme(theme).spacingTokens, `spacing[${spacing}].value`)
 

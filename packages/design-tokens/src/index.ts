@@ -1,7 +1,12 @@
 export * from './types'
 export * from './flat'
 
-export { getColors, getColorDescription } from './getters'
+export {
+  getColorDescription,
+  getColors,
+  getShadowDescription,
+  getShadows,
+} from './getters'
 
 export { default as selectors } from './selectors'
 
