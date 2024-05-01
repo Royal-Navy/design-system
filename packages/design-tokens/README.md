@@ -10,8 +10,8 @@ The Royal Navy Design Tokens are available as an [NPM package](https://www.npmjs
 // npm
 npm install @royalnavy/design-tokens
 
-// yarn
-yarn add @royalnavy/design-tokens
+// pnpm
+pnpm add @royalnavy/design-tokens
 ```
 
 ## Selectors

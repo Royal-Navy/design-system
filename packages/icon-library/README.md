@@ -16,8 +16,8 @@ The Royal Navy Icon Library is available as an [NPM package](https://www.npmjs.c
 // npm
 npm install @royalnavy/icon-library
 
-// yarn
-yarn add @royalnavy/icon-library
+// pnpm
+pnpm add @royalnavy/icon-library
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ The `size` prop sets the `width` and `height` attribute values of the wrapped SV
 
 ## Contributing
 
-Add an SVG icon to `src/assets/**/` and run `yarn build` to generate the consumable artefacts.
+Add an SVG icon to `src/assets/**/` and run `pnpm run build` to generate the consumable artefacts.
 
 The [contributing guide](https://github.com/Royal-Navy/design-system/blob/master/docs/contributing.md) resource presents information about our development process.
 

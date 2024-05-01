@@ -18,8 +18,8 @@ The Royal Navy ESLint config is available as an [NPM package](https://www.npmjs.
 // npm
 npm install @royalnavy/eslint-config-react
 
-// yarn
-yarn add @royalnavy/eslint-config-react
+// pnpm
+pnpm add @royalnavy/eslint-config-react
 ```
 
 In the root of your project create the following files:

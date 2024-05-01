@@ -1,16 +1,10 @@
 {
   "name": "royal-navy-design-system",
   "private": true,
-  "workspaces": [
-    "packages/eslint-config-react",
-    "packages/icon-library",
-    "packages/react-component-library",
-    "packages/fonts",
-    "packages/design-tokens"
-  ],
   "engines": {
-    "node": "^16.13.0 || ^18.12.0"
+    "node": "^18.12.0"
   },
+  "packageManager": "pnpm@9.1.1",
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
@@ -21,12 +15,6 @@
     "lerna": "^8.1.2",
     "lint-staged": "^13.2.2",
     "prettier": "^2.0.5"
-  },
-  "resolutions": {
-    "lerna/axios": "^1.6.0",
-    "**/tar": "^6.2.1",
-    "**/semver": "^7.5.2",
-    "**/ejs": "^3.1.10"
   },
   "prettier": {
     "bracketSpacing": true,
@@ -43,8 +31,8 @@
     "lint": "lerna run --parallel lint",
     "test": "lerna run --parallel test",
     "storybook:static": "lerna run --parallel storybook:static",
-    "lerna:prerelease": "yarn lerna:run-version --conventional-prerelease=* --no-changelog -m \"chore(Prerelease): %v [skip ci]\"",
-    "lerna:version": "yarn lerna:run-version --conventional-graduate --create-release github -m \"chore(Release): %v\"",
+    "lerna:prerelease": "pnpm run lerna:run-version --conventional-prerelease=* --no-changelog -m \"chore(Prerelease): %v [skip ci]\"",
+    "lerna:version": "pnpm run lerna:run-version --conventional-graduate --create-release github -m \"chore(Release): %v\"",
     "lerna:run-version": "lerna version --force-publish=* --tag-version-prefix=''",
     "audit": "./scripts/audit/audit.sh",
     "prepare": "husky install"

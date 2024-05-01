@@ -33,7 +33,7 @@
     "build:cjs:dev": "BABEL_ENV=cjs RNDS_LOG_LEVEL=debug webpack --config=webpack/dev.js",
     "chromatic": "chromatic --build-script-name storybook:static",
     "lint": "eslint src e2e --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0 --resolve-plugins-relative-to ../eslint-config-react --ignore-pattern \"*.d.ts\"",
-    "prepare": "yarn build",
+    "prepare": "pnpm run build",
     "storybook": "BABEL_ENV=es RNDS_LOG_LEVEL=debug storybook dev -p 6006",
     "storybook:static": "BABEL_ENV=es storybook build -c .storybook -o .static_storybook --webpack-stats-json",
     "storybook:static:test": "BABEL_ENV=storybook-test storybook build -c .storybook -o .static_storybook --test",
@@ -45,7 +45,10 @@
     "test:e2e:install": "playwright install --with-deps",
     "test:e2e:show-report": "playwright show-report e2e-output/html",
     "test:e2e:trace": "playwright test --trace retain-on-failure",
-    "types": "tsc"
+    "types": "tsc",
+    "playwright:install": "playwright install --with-deps chromium",
+    "ci:server:storybook": "http-server .static_storybook --port 6006 --silent",
+    "ci:test:a11y": "concurrently -k -s first -n 'SB,TEST' -c 'magenta,blue' 'pnpm run ci:server:storybook' 'wait-on tcp:6006 && pnpm run test:a11y'"
   },
   "lint-staged": {
     "*.@(js|jsx|ts|tsx)": [
@@ -158,7 +161,8 @@
     "@royalnavy/fonts": "^4.7.1",
     "@royalnavy/icon-library": "^4.7.1",
     "@storybook/test": "^8.0.6",
-    "@tanstack/react-table": "^8.14.0",
+    "@tanstack/react-table": "^8.5.28",
+    "@tanstack/table-core": "8.14.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.9.0",
     "decimal.js": "^10.3.1",

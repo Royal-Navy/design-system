@@ -18,13 +18,13 @@ jobs:
         uses: ./.github/actions/prepare-environment
 
       - name: Build design-tokens
-        run: yarn --cwd packages/design-tokens build
+        run: pnpm --prefix packages/design-tokens run build
 
       - name: Build icon-library
-        run: yarn --cwd packages/icon-library build
+        run: pnpm --prefix packages/icon-library run build
 
       - name: Build react-component-library
-        run: yarn --cwd packages/react-component-library build
+        run: pnpm --prefix packages/react-component-library run build
 
       - name: Update CRA template to use local packages
         run: |
@@ -51,9 +51,9 @@ jobs:
         run: |
           cd $RUNNER_TEMP/my-app
           grep version node_modules/@royalnavy/**/package.json
-          yarn build
+          pnpm run build
 
       - name: Lint boilerlate app
         run: |
           cd $RUNNER_TEMP/my-app
-          yarn lint
+          pnpm run lint

@@ -102,7 +102,6 @@ NoLabel.storyName = 'No label'
 NoLabel.args = {
   id: undefined,
   name: 'no-label',
-  // @ts-expect-error
   'aria-label': 'No label',
 }
 

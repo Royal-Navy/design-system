@@ -28,7 +28,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
 
       - name: Get version from lerna.json before release step
         id: initversion
@@ -50,7 +50,7 @@ jobs:
           GIT_COMMITTER_NAME: ${{ secrets.GH_NAME }}
           GIT_COMMITTER_EMAIL: ${{ secrets.GH_EMAIL }}
         if: contains(steps.changes.outputs.changed, 'ready to publish')
-        run: 'yarn lerna:run-version --yes --create-release github -m "chore(Release): %v [skip ci]" --conventional-commits'
+        run: 'pnpm run lerna:run-version --yes --create-release github -m "chore(Release): %v [skip ci]" --conventional-commits'
 
       - name: Get version from package.json after release step
         id: extractver
