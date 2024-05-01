@@ -4,15 +4,15 @@ import { css, Interpolation } from 'styled-components'
 import defaultTheme from './themes/light'
 import {
   AnimationTiming,
-  BreakpointSize,
   Breakpoint,
+  BreakpointSize,
   ColorGroup,
   ColorShade,
   ShadowWeight,
   Spacing,
+  Theme,
   TypographySize,
   ZIndexGroup,
-  Theme,
 } from './types'
 
 function getTheme(theme?: Theme): Theme {
@@ -106,12 +106,32 @@ export function getAnimation(index: AnimationTiming, theme?: Theme): string {
  * Returns an array of the color shades available for the color group
  * Not intended for use by design system consumers
  * @param group neutral, action etc
- * @param theme optional: light (default)  or dark
+ * @param theme optional: light (default) or dark
  */
 export function getColors(group: ColorGroup, theme?: Theme): ColorShade[] {
   const tokens = getTheme(theme).colorsTokens
   const values = Object.keys(tokens.color[group])
   return values as ColorShade[]
+}
+
+/**
+ * Returns descriptive text where it exists for the color group and weighting
+ * Not intended for use by design system consumers
+ * @param group ColorGroup: neutral, action etc
+ * @param weight ColorShade: 100, 200 etc
+ * @param theme options: light (default) or dark
+ */
+export function getColorDescription(
+  group: ColorGroup,
+  weight: ColorShade,
+  theme?: Theme
+): string {
+  return (
+    get(
+      getTheme(theme).colorsTokens,
+      `color[${group}][${weight}].description`
+    ) ?? ''
+  )
 }
 
 export function getColor(
