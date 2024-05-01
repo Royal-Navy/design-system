@@ -145,29 +145,29 @@ export const WithSearch: StoryFn<typeof Masthead> = (props) => (
 
 WithSearch.storyName = 'With search'
 
-export const WithAvatarLinks: StoryFn<typeof Masthead> = (props) => {
-  const user = (
-    <MastheadUser initials="RN">
-      <MastheadUserItem
-        icon={<IconPerson />}
-        link={<Link href="#">Profile</Link>}
-      />
-      <MastheadUserItem
-        icon={<IconSettings />}
-        link={<Link href="#">Settings</Link>}
-      />
-      <MastheadUserItem
-        icon={<IconChatBubble />}
-        link={<Link href="#">Support</Link>}
-      />
-      <MastheadUserItem
-        icon={<IconExitToApp />}
-        link={<Link href="#">Logout</Link>}
-      />
-    </MastheadUser>
-  )
+const userWithAvatar = (
+  <MastheadUser initials="RN">
+    <MastheadUserItem
+      icon={<IconPerson />}
+      link={<Link href="#">Profile</Link>}
+    />
+    <MastheadUserItem
+      icon={<IconSettings />}
+      link={<Link href="#">Settings</Link>}
+    />
+    <MastheadUserItem
+      icon={<IconChatBubble />}
+      link={<Link href="#">Support</Link>}
+    />
+    <MastheadUserItem
+      icon={<IconExitToApp />}
+      link={<Link href="#">Logout</Link>}
+    />
+  </MastheadUser>
+)
 
-  return <Masthead {...props} user={user} />
+export const WithAvatarLinks: StoryFn<typeof Masthead> = (props) => {
+  return <Masthead {...props} user={userWithAvatar} />
 }
 
 WithAvatarLinks.storyName = 'With avatar links'
@@ -191,6 +191,14 @@ export const WithNavigation: StoryFn<typeof Masthead> = (props) => {
 WithNavigation.storyName = 'With navigation'
 WithNavigation.args = {
   onSearch: null,
+}
+
+export const WithInlineNav = WithNavigation.bind({})
+WithInlineNav.storyName = 'With inline navigation'
+WithInlineNav.args = {
+  ...WithNavigation.args,
+  hasInlineNav: true,
+  user: userWithAvatar,
 }
 
 export const WithNotifications: StoryFn<typeof Masthead> = (props) => {
