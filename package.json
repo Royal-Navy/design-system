@@ -25,7 +25,8 @@
   "resolutions": {
     "lerna/axios": "^1.6.0",
     "**/tar": "^6.2.1",
-    "**/semver": "^7.5.2"
+    "**/semver": "^7.5.2",
+    "**/ejs": "^3.1.10"
   },
   "prettier": {
     "bracketSpacing": true,
