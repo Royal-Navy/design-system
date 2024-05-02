@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.3](https://github.com/Royal-Navy/design-system/compare/4.5.2...4.5.3) (2024-05-02)
+
+### Bug Fixes
+
+- **Checkbox:** Adjust styling for no label variant ([1f79169](https://github.com/Royal-Navy/design-system/commit/1f79169818c330494ce57d98648f7a818baea4c3))
+- **ProgressIndicator:** Use CSS instead of inline transform-origin ([e7c32a2](https://github.com/Royal-Navy/design-system/commit/e7c32a273800448a83961430decf5867066347be))
+
 ## [4.5.2](https://github.com/Royal-Navy/design-system/compare/4.5.1...4.5.2) (2024-05-01)
 
 **Note:** Version bump only for package royal-navy-design-system
