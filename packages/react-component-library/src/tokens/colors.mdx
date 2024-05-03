@@ -1,5 +1,6 @@
-import { ColorPalette, Meta, Source } from '@storybook/blocks'
-import { DesignSystemColorItem } from './DesignSystemColorItem'
+import { Meta, Source } from '@storybook/blocks'
+
+import { DesignSystemPalette } from './DesignSystemPalette'
 
 <Meta title="Tokens/Colours" />
 
@@ -11,35 +12,69 @@ to distinguish.
 
 ## Base palettes
 
-<ColorPalette>
-  <DesignSystemColorItem group='neutral' title='neutral' subtitle='Use the Neutral palette for application UI.' />
-  <DesignSystemColorItem group='action' title='action' subtitle='Use the Neutral palette for application UI.' />
-  <DesignSystemColorItem group='success' title='success'
-                         subtitle="Use the Success palette for positive feedback."
-  />
-  <DesignSystemColorItem title="warning" group="warning"
-                         subtitle="Use the Warning palette to indicate an action or message that may produce undesirable results." />
-  <DesignSystemColorItem group="danger" title="danger"
-                         subtitle="Use the Danger palette for destructive actions."
-  />
-</ColorPalette>
+### Neutral
+> For general application use, structure, data and information where we don't want to infer meaning via specific colour usage.
 
----
+<DesignSystemPalette
+  group="neutral"
+  subtitle=""
+/>
+
+### Action
+> To show an item is interactive.
+
+<DesignSystemPalette
+  group="action"
+  subtitle="To show an item is interactive."
+/>
+
+### Success
+> For positive action such as adding, or feedback. eg: "Data saved"
+
+<DesignSystemPalette
+  group="success"
+  subtitle="Use the Success palette for positive feedback."
+/>
+
+### Warning
+> To indicate an action or message that may produce undesirable results but not critical. eg: "Another user is editing this page"
+
+<DesignSystemPalette
+  group="warning"
+  subtitle="Use the Warning palette to indicate an action or message that may produce undesirable results."
+/>
+
+### Danger
+> For destructive actions such as deletion, or for a critical or blocking warning. eg: "Unable to reach server"
+
+<DesignSystemPalette
+  group="danger"
+  subtitle="Use the Danger palette for destructive actions."
+/>
+
 
 ## Supplementary palettes
 
 Use supplementary colours to support the main colour palettes only. They can be used for
 categorisation and data visualisation, but they don’t have any state associated with them.
 
-<ColorPalette>
-  <DesignSystemColorItem group="supa" title="supa" />
-  <DesignSystemColorItem group="supb" title="supb" />
-  <DesignSystemColorItem group="supc" title="supc" />
-  <DesignSystemColorItem group="supd" title="supd" />
-  <DesignSystemColorItem group="supe" title="supe" />
-  <DesignSystemColorItem group="supf" title="supf" />
-</ColorPalette>
+### supa
+<DesignSystemPalette group="supa" />
 
+### supb
+<DesignSystemPalette group="supb" />
+
+### supc
+<DesignSystemPalette group="supc" />
+
+### supd
+<DesignSystemPalette group="supd" />
+
+### supe
+<DesignSystemPalette group="supe" />
+
+### supf
+<DesignSystemPalette group="supf" />
 ---
 
 ## Usage

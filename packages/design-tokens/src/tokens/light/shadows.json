@@ -1,19 +1,24 @@
 {
   "shadow": {
     "0": {
-      "value": "0 0 0 transparent"
+      "value": "0 0 0 transparent",
+      "description": "Buttons"
     },
     "1": {
-      "value": "0 1px 3px rgba(0, 0, 0, 0.04)"
+      "value": "0 1px 3px rgba(0, 0, 0, 0.04)",
+      "description": "Card, Panel"
     },
     "2": {
-      "value": "0 2px 4px rgba(0, 0, 0, 0.08)"
+      "value": "0 2px 4px rgba(0, 0, 0, 0.08)",
+      "description": "Button, popover, context menus, datepicker"
     },
     "3": {
-      "value": "0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.14)"
+      "value": "0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.14)",
+      "description": "Dialog, modal, toasts"
     },
     "4": {
-      "value": "0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.12)"
+      "value": "0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.12)",
+      "description": "No description"
     }
   }
 }

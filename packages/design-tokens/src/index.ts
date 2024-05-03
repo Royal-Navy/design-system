@@ -1,5 +1,8 @@
 export * from './types'
 export * from './flat'
+
+export { getTheme } from './getters'
+
 export { default as selectors } from './selectors'
 
 export { default as lightTheme } from './themes/light'

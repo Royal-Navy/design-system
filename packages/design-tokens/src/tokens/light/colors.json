@@ -8,28 +8,36 @@
         "value": "#ffffff"
       },
       "000": {
-        "value": "#f8fafc"
+        "value": "#f8fafc",
+        "description": "Backgrounds, Disabled button"
       },
       "100": {
-        "value": "#e2e9ee"
+        "value": "#e2e9ee",
+        "description": "Borders and dividers, Inactive tab"
       },
       "200": {
-        "value": "#b8c7d2"
+        "value": "#b8c7d2",
+        "description": "Input borders, Disabled button border, Toggle off disabled"
       },
       "300": {
-        "value": "#748999"
+        "value": "#748999",
+        "description": "Breadcrumb divider, Toggle off"
       },
       "400": {
-        "value": "#3e5667"
+        "value": "#3e5667",
+        "description": "Body text, Input labels, Disabled button label"
       },
       "500": {
-        "value": "#233745"
+        "value": "#233745",
+        "description": "Sidebar user menu background"
       },
       "600": {
-        "value": "#1c2d39"
+        "value": "#1c2d39",
+        "description": "Headings, Input text"
       },
       "700": {
-        "value": "#12202b"
+        "value": "#12202b",
+        "description": "Sidebar"
       },
       "800": {
         "value": "#0c1720"
@@ -40,13 +48,16 @@
     },
     "action": {
       "000": {
-        "value": "#ecf8ff"
+        "value": "#ecf8ff",
+        "description": "Checked/selected radio box background"
       },
       "100": {
-        "value": "#ddf4ff"
+        "value": "#ddf4ff",
+        "description": "Secondary button, Hovered primary button border, Phase banner"
       },
       "200": {
-        "value": "#b7dff7"
+        "value": "#b7dff7",
+        "description": "Hovered secondary and tertiary button, Toggle on disabled"
       },
       "300": {
         "value": "#85c6f2"
@@ -55,19 +66,24 @@
         "value": "#58aae9"
       },
       "500": {
-        "value": "#3a8fdd"
+        "value": "#3a8fdd",
+        "description": "Info alert elements, Focus state, Checked/selected radio, Toggle on"
       },
       "600": {
-        "value": "#2a77c7"
+        "value": "#2a77c7",
+        "description": "Primary button, Secondary and tertiary button border"
       },
       "700": {
-        "value": "#2661a7"
+        "value": "#2661a7",
+        "description": "Input interactions"
       },
       "800": {
-        "value": "#274776"
+        "value": "#274776",
+        "description": "Primary button border, Hovered primary button"
       },
       "900": {
-        "value": "#253b5b"
+        "value": "#253b5b",
+        "description": "Secondary and tertiary button label"
       }
     },
     "success": {
@@ -87,7 +103,8 @@
         "value": "#8fd57f"
       },
       "500": {
-        "value": "#76c767"
+        "value": "#76c767",
+        "description": "Success icon"
       },
       "600": {
         "value": "#60b255"
@@ -99,7 +116,8 @@
         "value": "#3b6f33"
       },
       "900": {
-        "value": "#3b612c"
+        "value": "#3b612c",
+        "description": "Success text"
       }
     },
     "warning": {
@@ -119,7 +137,8 @@
         "value": "#f5db54"
       },
       "500": {
-        "value": "#e8c242"
+        "value": "#e8c242",
+        "description": "Warning icon"
       },
       "600": {
         "value": "#cf9328"
@@ -131,7 +150,8 @@
         "value": "#8c4f17"
       },
       "900": {
-        "value": "#693a12"
+        "value": "#693a12",
+        "description": "Warning text"
       }
     },
     "danger": {
@@ -139,7 +159,8 @@
         "value": "#fff3f4"
       },
       "100": {
-        "value": "#feeaec"
+        "value": "#feeaec",
+        "description": "Hovered danger button border"
       },
       "200": {
         "value": "#fed1d1"
@@ -151,19 +172,23 @@
         "value": "#fc7c75"
       },
       "500": {
-        "value": "#f45249"
+        "value": "#f45249",
+        "description": "Danger icon"
       },
       "600": {
         "value": "#ec4138"
       },
       "700": {
-        "value": "#d53229"
+        "value": "#d53229",
+        "description": "Danger button"
       },
       "800": {
-        "value": "#B22820"
+        "value": "#B22820",
+        "description": "Hovered danger button, Input error border"
       },
       "900": {
-        "value": "#841c1b"
+        "value": "#841c1b",
+        "description": "Danger button border"
       }
     },
     "supa": {

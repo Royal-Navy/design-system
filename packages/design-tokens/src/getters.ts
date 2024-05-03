@@ -4,18 +4,18 @@ import { css, Interpolation } from 'styled-components'
 import defaultTheme from './themes/light'
 import {
   AnimationTiming,
-  BreakpointSize,
   Breakpoint,
+  BreakpointSize,
   ColorGroup,
   ColorShade,
   ShadowWeight,
   Spacing,
+  Theme,
   TypographySize,
   ZIndexGroup,
-  Theme,
 } from './types'
 
-function getTheme(theme?: Theme): Theme {
+export function getTheme(theme?: Theme): Theme {
   return theme?.colorsTokens ? theme : defaultTheme
 }
 
