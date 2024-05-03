@@ -1,22 +1,11 @@
 import React from 'react'
-import { selectors, TypographySize } from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
+import { getTypographySizes } from './utils'
 
 const { fontSize, color, spacing } = selectors
 
-const tokens = [
-  'base',
-  'display',
-  'display-l',
-  'display-xl',
-  'l',
-  'm',
-  's',
-  'xl',
-  'xs',
-  'xxl',
-  'xxs',
-] as TypographySize[]
+const tokens = getTypographySizes()
 
 const StyledRow = styled.div`
   border-bottom: solid 1px ${color('neutral', '000')};

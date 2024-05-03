@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  ColorGroup,
-  getColorDescription,
-  getColors,
-  selectors,
-} from '@royalnavy/design-tokens'
+import { ColorGroup, selectors } from '@royalnavy/design-tokens'
 
 import {
   StyledDescription,
@@ -13,6 +8,7 @@ import {
   StyledSwatch,
   StyledWeight,
 } from './partials'
+import { getColorDescription, getColors } from './utils'
 
 const { color } = selectors
 

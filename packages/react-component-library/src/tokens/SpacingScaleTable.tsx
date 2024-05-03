@@ -1,36 +1,9 @@
-// @ts-ignore
 import React from 'react'
 import styled from 'styled-components'
-import { selectors, Spacing } from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
+import { getSpacings } from './utils'
 
 const { spacing, fontSize, color } = selectors
-
-const keys = [
-  '0',
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '10',
-  '11',
-  '12',
-  '13',
-  '14',
-  '15',
-  '16',
-  '17',
-  '18',
-  '19',
-  '20',
-  'full',
-  'half',
-  'px',
-] as Spacing[]
 
 const StyledTable = styled.div`
   padding: 0 ${spacing('8')};
@@ -46,6 +19,7 @@ const StyledRow = styled.div`
 `
 
 export const SpacingScaleTable = () => {
+  const keys = getSpacings()
   return (
     <StyledTable>
       {keys.map((key) => (

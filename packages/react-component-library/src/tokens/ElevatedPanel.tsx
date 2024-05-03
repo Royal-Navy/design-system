@@ -1,10 +1,6 @@
 import React from 'react'
 
-import {
-  getShadowDescription,
-  getShadows,
-  selectors,
-} from '@royalnavy/design-tokens'
+import { selectors } from '@royalnavy/design-tokens'
 
 import styled from 'styled-components'
 
@@ -15,6 +11,7 @@ import {
   StyledSwatch,
   StyledWeight,
 } from './partials'
+import { getShadowDescription, getShadows } from './utils'
 
 const { shadow, spacing } = selectors
 

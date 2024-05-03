@@ -15,7 +15,7 @@ import {
   ZIndexGroup,
 } from './types'
 
-function getTheme(theme?: Theme): Theme {
+export function getTheme(theme?: Theme): Theme {
   return theme?.colorsTokens ? theme : defaultTheme
 }
 
@@ -102,38 +102,6 @@ export function getAnimation(index: AnimationTiming, theme?: Theme): string {
   throw new Error(`Invalid animation token for index: '${index}'`)
 }
 
-/**
- * Returns an array of the color shades available for the color group
- * Not intended for use by design system consumers
- * @param group neutral, action etc
- * @param theme optional: light (default) or dark
- */
-export function getColors(group: ColorGroup, theme?: Theme): ColorShade[] {
-  const tokens = getTheme(theme).colorsTokens
-  const values = Object.keys(tokens.color[group])
-  return values as ColorShade[]
-}
-
-/**
- * Returns descriptive text where it exists for the color group and weighting
- * Not intended for use by design system consumers
- * @param group ColorGroup: neutral, action etc
- * @param weight ColorShade: 100, 200 etc
- * @param theme options: light (default) or dark
- */
-export function getColorDescription(
-  group: ColorGroup,
-  weight: ColorShade,
-  theme?: Theme
-): string {
-  return (
-    get(
-      getTheme(theme).colorsTokens,
-      `color[${group}][${weight}].description`
-    ) ?? ''
-  )
-}
-
 export function getColor(
   group: ColorGroup,
   weight: ColorShade,
@@ -172,21 +140,6 @@ export function getShadow(weight: ShadowWeight, theme?: Theme): string {
   }
 
   throw new Error(`Invalid shadow token for weight: '${weight}'`)
-}
-
-export function getShadowDescription(
-  weight: ShadowWeight,
-  theme?: Theme
-): string {
-  return (
-    get(getTheme(theme).shadowsTokens, `shadow[${weight}].description`) || ''
-  )
-}
-
-export function getShadows(theme?: Theme): ShadowWeight[] {
-  const tokens = getTheme(theme).shadowsTokens
-  const values = Object.keys(tokens.shadow)
-  return values as ShadowWeight[]
 }
 
 export function getSpacing(spacing: Spacing, theme?: Theme): string {
