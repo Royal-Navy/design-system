@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
@@ -6,6 +6,7 @@ import noop from 'lodash/noop'
 
 import { Modal, ModalProps, ModalImperativeHandle } from '.'
 import { Button, ButtonProps, BUTTON_VARIANT } from '../Button'
+import { useIsInDocs } from '../../hooks/useIsInDocs'
 
 const { spacing } = selectors
 
@@ -42,6 +43,13 @@ const StyledWrapper = styled.div`
 
 const Example = (props: ModalProps) => {
   const ref = useRef<ModalImperativeHandle>(null)
+  const isInDocs = useIsInDocs()
+
+  useEffect(() => {
+    if (ref.current && isInDocs) {
+      ref?.current?.close()
+    }
+  })
 
   return (
     <StyledWrapper>
@@ -66,22 +74,24 @@ Default.args = {
   isOpen: true,
 }
 
-const NoHeader: StoryFn<typeof Modal> = (args) => <Example {...args} />
+export const NoHeader = Template.bind({})
 NoHeader.args = {
   'aria-label': 'Modal with no header',
   primaryButton,
   secondaryButton,
   tertiaryButton,
+  isOpen: true,
 }
 NoHeader.storyName = 'No header'
 
-const NoButtons: StoryFn<typeof Modal> = (args) => <Example {...args} />
+export const NoButtons = Template.bind({})
 NoButtons.args = {
   title: 'Example Title',
+  isOpen: true,
 }
 NoButtons.storyName = 'No buttons'
 
-const DangerButton: StoryFn<typeof Modal> = (args) => <Example {...args} />
+export const DangerButton = Template.bind({})
 DangerButton.args = {
   title: 'Example Title',
   primaryButton: {
@@ -90,18 +100,21 @@ DangerButton.args = {
     icon: undefined,
   },
   secondaryButton,
+  isOpen: true,
 }
 DangerButton.storyName = 'Danger button with no icon'
 
-const NoTertiaryButton: StoryFn<typeof Modal> = (args) => <Example {...args} />
+export const NoTertiaryButton = Template.bind({})
 NoTertiaryButton.args = {
   title: 'Example Title',
   primaryButton,
   secondaryButton,
+  isOpen: true,
 }
 NoTertiaryButton.storyName = 'No tertiary button'
 
-const Blank: StoryFn<typeof Modal> = (args) => <Example {...args} />
+export const Blank = Template.bind({})
 Blank.args = {
   'aria-label': 'Blank modal',
+  isOpen: true,
 }

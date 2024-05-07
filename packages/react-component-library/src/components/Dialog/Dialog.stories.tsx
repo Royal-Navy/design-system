@@ -1,24 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useRef, useEffect } from 'react'
 import { StoryFn, Meta } from '@storybook/react'
+import styled from 'styled-components'
+import { selectors } from '@royalnavy/design-tokens'
 
-import { Dialog } from './index'
-import { StyledDialog } from './partials/StyledDialog'
-import { StyledMain } from '../Modal/partials/StyledMain'
+import { Dialog, DialogProps } from '.'
+import { ModalImperativeHandle } from '../Modal'
+import { Button } from '../Button'
+import { useIsInDocs } from '../../hooks/useIsInDocs'
 
-const Wrapper = styled.div`
-  height: 14rem;
-
-  /* Styles extended for Storybook presentation */
-  ${StyledDialog} {
-    position: absolute;
-    z-index: 1;
-
-    ${StyledMain} {
-      position: absolute;
-    }
-  }
-`
+const { spacing } = selectors
 
 export default {
   component: Dialog,
@@ -29,11 +19,29 @@ export default {
   },
 } as Meta<typeof Dialog>
 
-const Template: StoryFn<typeof Dialog> = (args) => (
-  <Wrapper>
-    <Dialog {...args} />
-  </Wrapper>
-)
+const StyledWrapper = styled.div`
+  padding: ${spacing('8')};
+`
+
+const Example = (props: DialogProps) => {
+  const ref = useRef<ModalImperativeHandle>(null)
+  const isInDocs = useIsInDocs()
+
+  useEffect(() => {
+    if (ref.current && isInDocs) {
+      ref?.current?.close()
+    }
+  })
+
+  return (
+    <StyledWrapper>
+      <Button onClick={() => ref?.current?.show()}>Open Dialog</Button>
+      <Dialog {...props} ref={ref} />
+    </StyledWrapper>
+  )
+}
+
+const Template: StoryFn<typeof Dialog> = (args) => <Example {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
