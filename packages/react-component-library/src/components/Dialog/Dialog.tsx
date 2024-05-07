@@ -7,6 +7,7 @@ import { StyledDialog } from './partials/StyledDialog'
 import { StyledDescription } from './partials/StyledDescription'
 import { StyledTitle } from './partials/StyledTitle'
 import { useExternalId } from '../../hooks/useExternalId'
+import { ModalImperativeHandle } from '../Modal'
 
 export interface DialogProps extends ComponentWithClass {
   /**
@@ -42,52 +43,58 @@ export interface DialogProps extends ComponentWithClass {
   title?: string
 }
 
-export const Dialog = ({
-  description,
-  isDanger = false,
-  onCancel,
-  onConfirm,
-  title,
-  ...rest
-}: DialogProps) => {
-  const confirmButton: ButtonProps = {
-    onClick: onConfirm,
-    children: 'Confirm',
-    variant: isDanger ? 'danger' : 'primary',
+export const Dialog = React.forwardRef<ModalImperativeHandle, DialogProps>(
+  (
+    {
+      description,
+      isDanger = false,
+      onCancel,
+      onConfirm,
+      title,
+      ...rest
+    }: DialogProps,
+    ref
+  ) => {
+    const confirmButton: ButtonProps = {
+      onClick: onConfirm,
+      children: 'Confirm',
+      variant: isDanger ? 'danger' : 'primary',
+    }
+
+    const cancelButton: ButtonProps = {
+      onClick: onCancel,
+      children: 'Cancel',
+      variant: 'secondary',
+    }
+
+    const titleId = useExternalId('dialog-title')
+    const descriptionId = useExternalId('dialog-description')
+
+    return (
+      <StyledDialog
+        ref={ref}
+        data-testid="dialog"
+        titleId={title ? titleId : undefined}
+        descriptionId={descriptionId}
+        primaryButton={confirmButton}
+        secondaryButton={cancelButton}
+        {...rest}
+      >
+        <StyledBody data-testid="dialog-body">
+          {title && (
+            <StyledTitle id={titleId} data-testid="dialog-title">
+              {title}
+            </StyledTitle>
+          )}
+          {description && (
+            <StyledDescription data-testid="dialog-description">
+              {description}
+            </StyledDescription>
+          )}
+        </StyledBody>
+      </StyledDialog>
+    )
   }
-
-  const cancelButton: ButtonProps = {
-    onClick: onCancel,
-    children: 'Cancel',
-    variant: 'secondary',
-  }
-
-  const titleId = useExternalId('dialog-title')
-  const descriptionId = useExternalId('dialog-description')
-
-  return (
-    <StyledDialog
-      data-testid="dialog"
-      titleId={title ? titleId : undefined}
-      descriptionId={descriptionId}
-      primaryButton={confirmButton}
-      secondaryButton={cancelButton}
-      {...rest}
-    >
-      <StyledBody data-testid="dialog-body">
-        {title && (
-          <StyledTitle id={titleId} data-testid="dialog-title">
-            {title}
-          </StyledTitle>
-        )}
-        {description && (
-          <StyledDescription data-testid="dialog-description">
-            {description}
-          </StyledDescription>
-        )}
-      </StyledBody>
-    </StyledDialog>
-  )
-}
+)
 
 Dialog.displayName = 'Dialog'
