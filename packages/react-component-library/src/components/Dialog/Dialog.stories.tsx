@@ -30,12 +30,14 @@ const Example = (props: DialogProps) => {
   useEffect(() => {
     if (ref.current && isInDocs) {
       ref?.current?.close()
+    } else {
+      ref?.current?.open()
     }
   })
 
   return (
     <StyledWrapper>
-      <Button onClick={() => ref?.current?.show()}>Open Dialog</Button>
+      <Button onClick={() => ref?.current?.open()}>Open Dialog</Button>
       <Dialog {...props} ref={ref} />
     </StyledWrapper>
   )
@@ -47,7 +49,6 @@ export const Default = Template.bind({})
 Default.args = {
   title: 'Example Title',
   description: 'Example description',
-  isOpen: true,
 }
 
 export const Danger = Template.bind({})
@@ -55,7 +56,6 @@ Danger.args = {
   title: 'Example Title',
   description: 'Example description',
   isDanger: true,
-  isOpen: true,
 }
 
 export const RichDescription = Template.bind({})
@@ -67,5 +67,4 @@ RichDescription.args = {
       Support Arbitrary JSX for <strong>rich</strong> description text.
     </div>
   ),
-  isOpen: true,
 }

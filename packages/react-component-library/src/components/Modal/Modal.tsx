@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useImperativeHandle } from 'react'
+import React, { useRef, useImperativeHandle } from 'react'
 import { IconForward } from '@royalnavy/icon-library'
 
 import { ButtonProps } from '../Button'
@@ -8,7 +8,6 @@ import { Header } from './Header'
 import { StyledModal } from './partials/StyledModal'
 import { StyledMain } from './partials/StyledMain'
 import { useExternalId } from '../../hooks/useExternalId'
-import { useOpenClose } from '../../hooks/useOpenClose'
 
 export interface ModalProps extends ComponentWithClass {
   /**
@@ -25,13 +24,21 @@ export interface ModalProps extends ComponentWithClass {
    */
   descriptionId?: string
   /**
-   * Toggles whether the component is visible or hidden from view.
+   * Denotes whether the component is visible or hidden from view.
+   *
+   * You should use the imperative handle to manage the state of the Modal.
+   *
+   * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
    */
   isOpen?: boolean
   /**
-   * Optional handler called when the close button is clicked.
+   * Optional handler invoked when the component is opened.
    */
-  onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
+  onOpen?: () => void
+  /**
+   * Optional handler invoked when the component is closed.
+   */
+  onClose?: () => void
   /**
    * Optional primary action button to display in the component.
    */
@@ -62,11 +69,15 @@ export interface ModalImperativeHandle {
   /**
    * Method that opens the Dialog or Modal when invoked.
    */
-  show: () => void
+  open: () => void
   /**
    * Method that closes the Dialog or Modal when invoked.
    */
   close: () => void
+  /**
+   * Denotes whether or not the Modal is currently open.
+   */
+  isOpen: boolean
 }
 
 export const Modal = React.forwardRef<ModalImperativeHandle, ModalProps>(
@@ -76,7 +87,8 @@ export const Modal = React.forwardRef<ModalImperativeHandle, ModalProps>(
       children,
       className,
       descriptionId: externalDescriptionId,
-      isOpen = false,
+      isOpen,
+      onOpen,
       onClose,
       primaryButton,
       secondaryButton,
@@ -89,8 +101,6 @@ export const Modal = React.forwardRef<ModalImperativeHandle, ModalProps>(
   ) => {
     const dialogRef = useRef<HTMLDialogElement>(null)
 
-    const { handleOnClose, open } = useOpenClose(isOpen, onClose)
-
     const primaryButtonWithIcon = primaryButton && {
       icon: <IconForward data-testid="modal-primary-confirm" />,
       ...primaryButton,
@@ -102,19 +112,16 @@ export const Modal = React.forwardRef<ModalImperativeHandle, ModalProps>(
     )
     const titleId = useExternalId('modal-title', externalTitleId)
 
-    useEffect(() => {
-      if (open && dialogRef.current) {
-        dialogRef.current.showModal()
-      }
-
-      if (!open && dialogRef.current) {
-        dialogRef.current.close()
-      }
-    }, [open])
-
     useImperativeHandle(ref, () => ({
-      show: () => dialogRef.current?.showModal(),
-      close: () => dialogRef.current?.close(),
+      open: () => {
+        dialogRef.current?.showModal()
+        onOpen?.()
+      },
+      close: () => {
+        dialogRef.current?.close()
+        onClose?.()
+      },
+      isOpen: !!dialogRef.current?.open,
     }))
 
     return (
@@ -128,12 +135,19 @@ export const Modal = React.forwardRef<ModalImperativeHandle, ModalProps>(
           (title || externalTitleId) && !ariaLabel ? titleId : undefined
         }
         aria-describedby={descriptionId}
-        data-testid="modal-wrapper"
         {...rest}
+        open={!!isOpen}
       >
         <StyledMain data-testid="modal-main">
           {title && (
-            <Header titleId={titleId} title={title} onClose={handleOnClose} />
+            <Header
+              titleId={titleId}
+              title={title}
+              onClose={(_) => {
+                dialogRef?.current?.close?.()
+                onClose?.()
+              }}
+            />
           )}
           <section id={descriptionId} data-testid="modal-body">
             {children}

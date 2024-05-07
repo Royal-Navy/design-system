@@ -7,9 +7,11 @@ import { StyledDialog } from './partials/StyledDialog'
 import { StyledDescription } from './partials/StyledDescription'
 import { StyledTitle } from './partials/StyledTitle'
 import { useExternalId } from '../../hooks/useExternalId'
-import { ModalImperativeHandle } from '../Modal'
+import { ModalProps, ModalImperativeHandle } from '../Modal'
 
-export interface DialogProps extends ComponentWithClass {
+export interface DialogProps
+  extends ComponentWithClass,
+    Pick<ModalProps, 'isOpen'> {
   /**
    * Optional override for the accessible name of the Modal.
    */
@@ -23,17 +25,13 @@ export interface DialogProps extends ComponentWithClass {
    */
   isDanger?: boolean
   /**
-   * Toggles whether the component is visible or hidden from view.
-   */
-  isOpen?: boolean
-  /**
    * Optional handler called when the Cancel button is clicked.
    */
-  onCancel?: (event: React.FormEvent<HTMLButtonElement>) => void
+  onCancel?: (event: React.MouseEvent<HTMLButtonElement>) => void
   /**
    * Optional handler called when the Confirm button is clicked.
    */
-  onConfirm?: (event: React.FormEvent<HTMLButtonElement>) => void
+  onConfirm?: (event: React.MouseEvent<HTMLButtonElement>) => void
   /**
    * Optional text title to display at the top of the component.
    *
@@ -73,7 +71,6 @@ export const Dialog = React.forwardRef<ModalImperativeHandle, DialogProps>(
     return (
       <StyledDialog
         ref={ref}
-        data-testid="dialog"
         titleId={title ? titleId : undefined}
         descriptionId={descriptionId}
         primaryButton={confirmButton}

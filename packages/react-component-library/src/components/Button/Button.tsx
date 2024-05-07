@@ -1,5 +1,5 @@
 import { IconLoader } from '@royalnavy/icon-library'
-import React, { FormEvent } from 'react'
+import React from 'react'
 
 import { BUTTON_ICON_POSITION, BUTTON_VARIANT } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
@@ -33,7 +33,7 @@ interface ButtonBaseProps extends Omit<ComponentWithClass, 'children'> {
   /**
    * Optional handler called when the component is clicked.
    */
-  onClick?: (event: FormEvent<HTMLButtonElement>) => void
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   /**
    * Size of the component.
    */

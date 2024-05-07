@@ -48,12 +48,14 @@ const Example = (props: ModalProps) => {
   useEffect(() => {
     if (ref.current && isInDocs) {
       ref?.current?.close()
+    } else {
+      ref?.current?.open()
     }
   })
 
   return (
     <StyledWrapper>
-      <Button onClick={() => ref?.current?.show()}>Open Modal</Button>
+      <Button onClick={() => ref?.current?.open()}>Open Modal</Button>
       <Modal {...props} ref={ref}>
         <pre css={{ padding: '1rem' }}>Arbitrary JSX content</pre>
       </Modal>
@@ -71,7 +73,6 @@ Default.args = {
   primaryButton,
   secondaryButton,
   tertiaryButton,
-  isOpen: true,
 }
 
 export const NoHeader = Template.bind({})
@@ -80,14 +81,12 @@ NoHeader.args = {
   primaryButton,
   secondaryButton,
   tertiaryButton,
-  isOpen: true,
 }
 NoHeader.storyName = 'No header'
 
 export const NoButtons = Template.bind({})
 NoButtons.args = {
   title: 'Example Title',
-  isOpen: true,
 }
 NoButtons.storyName = 'No buttons'
 
@@ -100,7 +99,6 @@ DangerButton.args = {
     icon: undefined,
   },
   secondaryButton,
-  isOpen: true,
 }
 DangerButton.storyName = 'Danger button with no icon'
 
@@ -109,12 +107,10 @@ NoTertiaryButton.args = {
   title: 'Example Title',
   primaryButton,
   secondaryButton,
-  isOpen: true,
 }
 NoTertiaryButton.storyName = 'No tertiary button'
 
 export const Blank = Template.bind({})
 Blank.args = {
   'aria-label': 'Blank modal',
-  isOpen: true,
 }

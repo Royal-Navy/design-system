@@ -6,7 +6,7 @@ import { StyledTitle } from './partials/StyledTitle'
 import { StyledCloseButton } from './partials/StyledCloseButton'
 
 export interface HeaderProps {
-  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onClose: (event: React.MouseEvent<HTMLButtonElement>) => void
   title?: string
   titleId: string
 }
