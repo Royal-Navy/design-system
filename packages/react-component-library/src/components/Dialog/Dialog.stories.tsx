@@ -6,7 +6,7 @@ import { selectors } from '@royalnavy/design-tokens'
 import { Dialog, DialogProps } from '.'
 import { ModalImperativeHandle } from '../Modal'
 import { Button } from '../Button'
-import { useIsInDocs } from '../../hooks/useIsInDocs'
+import { useIsInDocs } from '../../../.storybook/hooks/useIsInDocs'
 
 const { spacing } = selectors
 
@@ -59,6 +59,7 @@ Danger.args = {
 }
 
 export const RichDescription = Template.bind({})
+RichDescription.storyName = 'Rich description'
 RichDescription.args = {
   title: 'Example Title',
   description: (

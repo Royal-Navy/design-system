@@ -6,7 +6,7 @@ import noop from 'lodash/noop'
 
 import { Modal, ModalProps, ModalImperativeHandle } from '.'
 import { Button, ButtonProps, BUTTON_VARIANT } from '../Button'
-import { useIsInDocs } from '../../hooks/useIsInDocs'
+import { useIsInDocs } from '../../../.storybook/hooks/useIsInDocs'
 
 const { spacing } = selectors
 
