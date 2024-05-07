@@ -1,4 +1,5 @@
 import React from 'react'
+import { IconClose } from '@royalnavy/icon-library'
 
 import { StyledHeader } from './partials/StyledHeader'
 import { StyledTitle } from './partials/StyledTitle'
@@ -20,7 +21,7 @@ export const Header = ({ onClose, title, titleId }: HeaderProps) => (
       onClick={onClose}
       data-testid="modal-close"
     >
-      &times;
+      <IconClose />
     </StyledCloseButton>
   </StyledHeader>
 )
