@@ -114,14 +114,16 @@ export const Modal = React.forwardRef<ModalImperativeHandle, ModalProps>(
 
     useImperativeHandle(ref, () => ({
       open: () => {
-        dialogRef.current?.showModal()
+        dialogRef?.current?.showModal?.()
         onOpen?.()
       },
       close: () => {
-        dialogRef.current?.close()
+        dialogRef?.current?.close?.()
         onClose?.()
       },
-      isOpen: !!dialogRef.current?.open,
+      get isOpen() {
+        return dialogRef.current?.open ?? false
+      },
     }))
 
     return (
