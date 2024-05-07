@@ -1,12 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useRef } from 'react'
 import { StoryFn, Meta } from '@storybook/react'
+import styled from 'styled-components'
+import { selectors } from '@royalnavy/design-tokens'
 import noop from 'lodash/noop'
 
-import { Modal } from './index'
-import { StyledMain } from './partials/StyledMain'
-import { StyledModal } from './partials/StyledModal'
-import { ButtonProps, BUTTON_VARIANT } from '../Button'
+import { Modal, ModalProps, ModalImperativeHandle } from '.'
+import { Button, ButtonProps, BUTTON_VARIANT } from '../Button'
+
+const { spacing } = selectors
 
 export default {
   component: Modal,
@@ -35,42 +36,38 @@ const tertiaryButton: ButtonProps = {
   children: 'Tertiary',
 }
 
-const Wrapper = styled.div<{ $height: string }>`
-  height: ${({ $height }) => $height};
-
-  /* Styles extended for Storybook presentation */
-  ${StyledModal} {
-    position: absolute;
-    z-index: 1;
-
-    ${StyledMain} {
-      position: absolute;
-    }
-  }
+const StyledWrapper = styled.div`
+  padding: ${spacing('8')};
 `
 
-const Template: StoryFn<typeof Modal> = (args) => (
-  <Wrapper $height={args.title && args.primaryButton ? '17rem' : '12rem'}>
-    <Modal {...args}>
-      <pre css={{ padding: '1rem' }}>Arbitrary JSX content</pre>
-    </Modal>
-  </Wrapper>
-)
+const Example = (props: ModalProps) => {
+  const ref = useRef<ModalImperativeHandle>(null)
+
+  return (
+    <StyledWrapper>
+      <Button onClick={() => ref?.current?.show()}>Open Modal</Button>
+      <Modal {...props} ref={ref}>
+        <pre css={{ padding: '1rem' }}>Arbitrary JSX content</pre>
+      </Modal>
+    </StyledWrapper>
+  )
+}
+
+const Template: StoryFn<typeof Modal> = (args) => <Example {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
   titleId: undefined,
   descriptionId: undefined,
   title: 'Example Title',
-  isOpen: true,
   primaryButton,
   secondaryButton,
   tertiaryButton,
+  isOpen: true,
 }
 
-export const NoHeader = Template.bind({})
+const NoHeader: StoryFn<typeof Modal> = (args) => <Example {...args} />
 NoHeader.args = {
-  isOpen: true,
   'aria-label': 'Modal with no header',
   primaryButton,
   secondaryButton,
@@ -78,16 +75,14 @@ NoHeader.args = {
 }
 NoHeader.storyName = 'No header'
 
-export const NoButtons = Template.bind({})
+const NoButtons: StoryFn<typeof Modal> = (args) => <Example {...args} />
 NoButtons.args = {
   title: 'Example Title',
-  isOpen: true,
 }
 NoButtons.storyName = 'No buttons'
 
-export const DangerButton = Template.bind({})
+const DangerButton: StoryFn<typeof Modal> = (args) => <Example {...args} />
 DangerButton.args = {
-  isOpen: true,
   title: 'Example Title',
   primaryButton: {
     ...primaryButton,
@@ -98,17 +93,15 @@ DangerButton.args = {
 }
 DangerButton.storyName = 'Danger button with no icon'
 
-export const NoTertiaryButton = Template.bind({})
+const NoTertiaryButton: StoryFn<typeof Modal> = (args) => <Example {...args} />
 NoTertiaryButton.args = {
   title: 'Example Title',
-  isOpen: true,
   primaryButton,
   secondaryButton,
 }
 NoTertiaryButton.storyName = 'No tertiary button'
 
-export const Blank = Template.bind({})
+const Blank: StoryFn<typeof Modal> = (args) => <Example {...args} />
 Blank.args = {
-  isOpen: true,
   'aria-label': 'Blank modal',
 }

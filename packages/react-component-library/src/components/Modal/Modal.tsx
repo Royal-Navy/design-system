@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useImperativeHandle } from 'react'
 import { IconForward } from '@royalnavy/icon-library'
 
 import { ButtonProps } from '../Button'
@@ -58,63 +58,97 @@ export interface ModalProps extends ComponentWithClass {
   titleId?: string
 }
 
-export const Modal = ({
-  'aria-label': ariaLabel,
-  children,
-  className,
-  descriptionId: externalDescriptionId,
-  isOpen = false,
-  onClose,
-  primaryButton,
-  secondaryButton,
-  tertiaryButton,
-  title,
-  titleId: externalTitleId,
-  ...rest
-}: ModalProps) => {
-  const { handleOnClose, open } = useOpenClose(isOpen, onClose)
-  const primaryButtonWithIcon = primaryButton && {
-    icon: <IconForward data-testid="modal-primary-confirm" />,
-    ...primaryButton,
-  }
-
-  const descriptionId = useExternalId(
-    'modal-description',
-    externalDescriptionId
-  )
-  const titleId = useExternalId('modal-title', externalTitleId)
-
-  return (
-    <StyledModal
-      $isOpen={open}
-      className={className}
-      role="dialog"
-      aria-modal
-      aria-label={ariaLabel}
-      aria-labelledby={
-        (title || externalTitleId) && !ariaLabel ? titleId : undefined
-      }
-      aria-describedby={descriptionId}
-      data-testid="modal-wrapper"
-      {...rest}
-    >
-      <StyledMain data-testid="modal-main">
-        {title && (
-          <Header titleId={titleId} title={title} onClose={handleOnClose} />
-        )}
-        <section id={descriptionId} data-testid="modal-body">
-          {children}
-        </section>
-        {(primaryButton || secondaryButton || tertiaryButton) && (
-          <Footer
-            primaryButton={primaryButtonWithIcon}
-            secondaryButton={secondaryButton}
-            tertiaryButton={tertiaryButton}
-          />
-        )}
-      </StyledMain>
-    </StyledModal>
-  )
+export interface ModalImperativeHandle {
+  /**
+   * Method that opens the Dialog or Modal when invoked.
+   */
+  show: () => void
+  /**
+   * Method that closes the Dialog or Modal when invoked.
+   */
+  close: () => void
 }
+
+export const Modal = React.forwardRef<ModalImperativeHandle, ModalProps>(
+  (
+    {
+      'aria-label': ariaLabel,
+      children,
+      className,
+      descriptionId: externalDescriptionId,
+      isOpen = false,
+      onClose,
+      primaryButton,
+      secondaryButton,
+      tertiaryButton,
+      title,
+      titleId: externalTitleId,
+      ...rest
+    },
+    ref
+  ) => {
+    const dialogRef = useRef<HTMLDialogElement>(null)
+
+    const { handleOnClose, open } = useOpenClose(isOpen, onClose)
+
+    const primaryButtonWithIcon = primaryButton && {
+      icon: <IconForward data-testid="modal-primary-confirm" />,
+      ...primaryButton,
+    }
+
+    const descriptionId = useExternalId(
+      'modal-description',
+      externalDescriptionId
+    )
+    const titleId = useExternalId('modal-title', externalTitleId)
+
+    useEffect(() => {
+      if (open && dialogRef.current) {
+        dialogRef.current.showModal()
+      }
+
+      if (!open && dialogRef.current) {
+        dialogRef.current.close()
+      }
+    }, [open])
+
+    useImperativeHandle(ref, () => ({
+      show: () => dialogRef.current?.showModal(),
+      close: () => dialogRef.current?.close(),
+    }))
+
+    return (
+      <StyledModal
+        ref={dialogRef}
+        className={className}
+        role="dialog"
+        aria-modal="true"
+        aria-label={ariaLabel}
+        aria-labelledby={
+          (title || externalTitleId) && !ariaLabel ? titleId : undefined
+        }
+        aria-describedby={descriptionId}
+        data-testid="modal-wrapper"
+        {...rest}
+      >
+        <StyledMain data-testid="modal-main">
+          {title && (
+            <Header titleId={titleId} title={title} onClose={handleOnClose} />
+          )}
+          <section id={descriptionId} data-testid="modal-body">
+            {children}
+          </section>
+          {(primaryButton || secondaryButton || tertiaryButton) && (
+            <Footer
+              primaryButton={primaryButtonWithIcon}
+              secondaryButton={secondaryButton}
+              tertiaryButton={tertiaryButton}
+            />
+          )}
+        </StyledMain>
+      </StyledModal>
+    )
+  }
+)
 
 Modal.displayName = 'Modal'
