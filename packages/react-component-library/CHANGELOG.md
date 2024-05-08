@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.6.0](https://github.com/Royal-Navy/design-system/compare/4.5.5...4.6.0) (2024-05-08)
+
+### Bug Fixes
+
+- **Drawer:** Align close button styling with Modal ([e1f8915](https://github.com/Royal-Navy/design-system/commit/e1f8915a2e514e0e80316688db93946c70bd649c))
+- **Modal:** Adjust close button styling and use icon ([9d6dc3d](https://github.com/Royal-Navy/design-system/commit/9d6dc3d08cf2ecf0fb29e095cf8fc75aead7a035))
+- **Modal:** Apply focus trap and expose imperative handle ([555434a](https://github.com/Royal-Navy/design-system/commit/555434ae4f9b28ab9ca0ef169b160b3fe03ef941))
+- **Modal:** Resolve some a11y violations ([a0bc597](https://github.com/Royal-Navy/design-system/commit/a0bc59724b5ab8809d20c48c25d794f5a7d10e8e))
+
+### Features
+
+- **ButtonGroup:** Mark as deprecated ([ec94e59](https://github.com/Royal-Navy/design-system/commit/ec94e59ca51e07c81501662a87f1b2747425a824))
+- **Dialog:** Apply forwardedRef to underlying Modal ([7ea8504](https://github.com/Royal-Navy/design-system/commit/7ea850426c2fa7e153b8b55b45bb67f27e5a7919))
+
 ## [4.5.5](https://github.com/Royal-Navy/design-system/compare/4.5.4...4.5.5) (2024-05-08)
 
 **Note:** Version bump only for package @royalnavy/react-component-library
