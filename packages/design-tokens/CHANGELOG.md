@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.5](https://github.com/Royal-Navy/design-system/compare/4.5.4...4.5.5) (2024-05-08)
+
+### Bug Fixes
+
+- **Shadows:** Remove unused level 4 shadow ([#3784](https://github.com/Royal-Navy/design-system/issues/3784)) ([494fa76](https://github.com/Royal-Navy/design-system/commit/494fa7688071e420ff02ebf1fe59dfc1424762e8))
+
 ## [4.5.4](https://github.com/Royal-Navy/design-system/compare/4.5.3...4.5.4) (2024-05-06)
 
 **Note:** Version bump only for package @royalnavy/design-tokens
