@@ -34,9 +34,6 @@ export interface DropdownProps {
   labelIcon?: React.ReactNode
 }
 
-/**
- * @deprecated
- */
 const StyledSelect = styled(Select)`
   .rn-dropdown__control {
     border-color: ${color('neutral', '200')};
@@ -143,7 +140,9 @@ const StyledSelect = styled(Select)`
     display: none;
   }
 `
-
+/**
+ * @deprecated
+ */
 export const Dropdown = ({
   initialIsOpen,
   onSelect,

@@ -17,6 +17,9 @@ export interface ButtonGroupProps extends ComponentWithClass {
   size?: ComponentSizeType
 }
 
+/**
+ * @deprecated
+ */
 export const ButtonGroup = ({
   children,
   size = COMPONENT_SIZE.FORMS,
