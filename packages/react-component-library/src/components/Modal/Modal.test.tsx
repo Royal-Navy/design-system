@@ -1,13 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import {
-  render,
-  RenderResult,
-  fireEvent,
-  waitFor,
-} from '@testing-library/react'
+import { render, RenderResult, fireEvent } from '@testing-library/react'
 
-import { Button, ButtonProps } from '../Button'
+import { ButtonProps } from '../Button'
 import { Modal } from './Modal'
 
 const primaryButton: ButtonProps = {
@@ -28,7 +23,7 @@ const tertiaryButton: ButtonProps = {
 describe('Modal', () => {
   let wrapper: RenderResult
   let title: string
-  let onClose: (event: React.FormEvent<HTMLButtonElement>) => void
+  let onClose: () => void
 
   describe('when the component is provided no title or buttons', () => {
     describe('and it is set to be initially open', () => {
@@ -41,27 +36,24 @@ describe('Modal', () => {
       })
 
       it('does not set the `aria-labelledby` attribute', () => {
-        expect(wrapper.getByTestId('modal-wrapper')).not.toHaveAttribute(
+        expect(wrapper.getByRole('dialog')).not.toHaveAttribute(
           'aria-labelledby'
         )
       })
 
       it('sets the `aria-label` attribute', () => {
-        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+        expect(wrapper.getByRole('dialog')).toHaveAttribute(
           'aria-label',
           'Accessible name'
         )
       })
 
       it('should apply the `role` attribute', () => {
-        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
-          'role',
-          'dialog'
-        )
+        expect(wrapper.getByRole('dialog')).toHaveAttribute('role', 'dialog')
       })
 
       it('should apply the `aria-modal` attribute', () => {
-        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+        expect(wrapper.getByRole('dialog')).toHaveAttribute(
           'aria-modal',
           'true'
         )
@@ -72,17 +64,14 @@ describe('Modal', () => {
           .getByTestId('modal-body')
           .getAttribute('id')
 
-        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+        expect(wrapper.getByRole('dialog')).toHaveAttribute(
           'aria-describedby',
           descriptionId
         )
       })
 
       it('should open the modal', () => {
-        expect(wrapper.getByTestId('modal-wrapper')).toHaveStyleRule(
-          'display',
-          'block'
-        )
+        expect(wrapper.getByRole('dialog')).toHaveAttribute('open')
       })
 
       it('should scroll on lower resolution screens', () => {
@@ -127,7 +116,7 @@ describe('Modal', () => {
           .getByTestId('modal-header-text')
           .getAttribute('id')
 
-        expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+        expect(wrapper.getByRole('dialog')).toHaveAttribute(
           'aria-labelledby',
           titleId
         )
@@ -153,15 +142,9 @@ describe('Modal', () => {
             })
           )
         })
+
         it('should invoke the onClose callback', () => {
           expect(onClose).toHaveBeenCalled()
-        })
-
-        it('should close the modal', () => {
-          expect(wrapper.getByTestId('modal-wrapper')).toHaveStyleRule(
-            'display',
-            'none'
-          )
         })
       })
 
@@ -231,85 +214,14 @@ describe('Modal', () => {
     })
 
     it('does not set the `aria-labelledby` attribute', () => {
-      expect(wrapper.getByTestId('modal-wrapper')).not.toHaveAttribute(
-        'aria-labelledby'
-      )
+      expect(wrapper.getByRole('dialog')).not.toHaveAttribute('aria-labelledby')
     })
 
     it('sets the `aria-label` attribute', () => {
-      expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+      expect(wrapper.getByRole('dialog')).toHaveAttribute(
         'aria-label',
         'Accessible name'
       )
-    })
-  })
-
-  describe('when the state is being updated externally', () => {
-    describe('and the model is instantiated as closed', () => {
-      beforeEach(() => {
-        const ModalWithUpdate = () => {
-          const [isOpen, setIsOpen] = useState(false)
-
-          return (
-            <>
-              <Button
-                onClick={() => {
-                  setIsOpen(!isOpen)
-                }}
-              >
-                {isOpen ? 'Hide' : 'Show'}
-              </Button>
-              <Modal
-                isOpen={isOpen}
-                onClose={() => {
-                  setIsOpen(false)
-                }}
-              >
-                <span>Example child JSX</span>
-              </Modal>
-            </>
-          )
-        }
-
-        wrapper = render(<ModalWithUpdate />)
-      })
-
-      it('should be closed', () => {
-        expect(wrapper.getByTestId('modal-wrapper')).toHaveStyleRule(
-          'display',
-          'none'
-        )
-      })
-
-      describe('and the button is clicked', () => {
-        beforeEach(() => {
-          wrapper.getByText('Show').click()
-
-          return waitFor(() => wrapper.queryAllByText('Hide'))
-        })
-
-        it('should be open', () => {
-          expect(wrapper.getByTestId('modal-wrapper')).toHaveStyleRule(
-            'display',
-            'block'
-          )
-        })
-
-        describe('and the button is clicked again', () => {
-          beforeEach(() => {
-            wrapper.getByText('Hide').click()
-
-            return waitFor(() => wrapper.queryAllByText('Show'))
-          })
-
-          it('should be closed again', () => {
-            expect(wrapper.getByTestId('modal-wrapper')).toHaveStyleRule(
-              'display',
-              'none'
-            )
-          })
-        })
-      })
     })
   })
 
@@ -323,7 +235,7 @@ describe('Modal', () => {
     })
 
     it('should spread arbitrary props', () => {
-      expect(wrapper.getByTestId('modal-wrapper')).toHaveAttribute(
+      expect(wrapper.getByRole('dialog', { hidden: true })).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
       )
@@ -334,7 +246,7 @@ describe('Modal', () => {
     let initialIds: Record<string, string | null>
 
     const ExampleModal = ({ content }: { content: string }) => (
-      <Modal title="Example title" isOpen>
+      <Modal title="Example title">
         <span>{content}</span>
       </Modal>
     )
@@ -344,10 +256,10 @@ describe('Modal', () => {
         titleId: wrapper.getByTestId('modal-header-text').id,
         descriptionId: wrapper.getByTestId('modal-body').id,
         labelledBy: wrapper
-          .getByTestId('modal-wrapper')
+          .getByRole('dialog', { hidden: true })
           .getAttribute('aria-labelledby'),
         describedBy: wrapper
-          .getByTestId('modal-wrapper')
+          .getByRole('dialog', { hidden: true })
           .getAttribute('aria-describedby'),
       }
     }

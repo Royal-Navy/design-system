@@ -5,18 +5,16 @@ import { renderToStaticMarkup } from 'react-dom/server'
 
 import { Dialog } from '.'
 
-describe('Modal', () => {
+describe('Dialog', () => {
   let wrapper: RenderResult
   let title: string
   let description: React.ReactElement
   let onConfirm: (event: React.FormEvent<HTMLButtonElement>) => void
   let onCancel: (event: React.FormEvent<HTMLButtonElement>) => void
-  let isOpen: boolean
 
   beforeEach(() => {
     title = 'Dialog Title'
     description = <span>Dialog description.</span>
-    isOpen = true
     onConfirm = jest.fn()
     onCancel = jest.fn()
   })
@@ -31,13 +29,13 @@ describe('Modal', () => {
             description={description}
             onConfirm={onConfirm}
             onCancel={onCancel}
-            isOpen={isOpen}
+            isOpen
           />
         )
       })
 
       it('should spread arbitrary props', () => {
-        expect(wrapper.getByTestId('dialog')).toHaveAttribute(
+        expect(wrapper.getByRole('dialog')).toHaveAttribute(
           'data-arbitrary',
           'arbitrary'
         )
@@ -46,7 +44,7 @@ describe('Modal', () => {
       it('should set the `aria-labelledby` attribute to the ID of the title', () => {
         const titleId = wrapper.getByTestId('dialog-title').getAttribute('id')
 
-        expect(wrapper.getByTestId('dialog')).toHaveAttribute(
+        expect(wrapper.getByRole('dialog')).toHaveAttribute(
           'aria-labelledby',
           titleId
         )
@@ -105,19 +103,17 @@ describe('Modal', () => {
           description={description}
           onConfirm={onConfirm}
           onCancel={onCancel}
-          isOpen={isOpen}
+          isOpen
         />
       )
     })
 
     it('does not set the `aria-labelledby` attribute', () => {
-      expect(wrapper.getByTestId('dialog')).not.toHaveAttribute(
-        'aria-labelledby'
-      )
+      expect(wrapper.getByRole('dialog')).not.toHaveAttribute('aria-labelledby')
     })
 
     it('sets the `aria-label` attribute', () => {
-      expect(wrapper.getByTestId('dialog')).toHaveAttribute(
+      expect(wrapper.getByRole('dialog')).toHaveAttribute(
         'aria-label',
         'Accessible name'
       )

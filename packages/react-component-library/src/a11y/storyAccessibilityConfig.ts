@@ -47,4 +47,10 @@ export const storyAccessibilityConfig = {
       enabled: false,
     },
   ],
+  Modal: [
+    {
+      id: 'color-contrast',
+      enabled: false,
+    },
+  ],
 } as const

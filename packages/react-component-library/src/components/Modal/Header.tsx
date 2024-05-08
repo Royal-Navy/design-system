@@ -1,11 +1,12 @@
 import React from 'react'
+import { IconClose } from '@royalnavy/icon-library'
 
 import { StyledHeader } from './partials/StyledHeader'
 import { StyledTitle } from './partials/StyledTitle'
 import { StyledCloseButton } from './partials/StyledCloseButton'
 
 export interface HeaderProps {
-  onClose?: (event: React.FormEvent<HTMLButtonElement>) => void
+  onClose: (event: React.MouseEvent<HTMLButtonElement>) => void
   title?: string
   titleId: string
 }
@@ -19,8 +20,9 @@ export const Header = ({ onClose, title, titleId }: HeaderProps) => (
       type="button"
       onClick={onClose}
       data-testid="modal-close"
+      aria-label="Close modal"
     >
-      &times;
+      <IconClose />
     </StyledCloseButton>
   </StyledHeader>
 )
