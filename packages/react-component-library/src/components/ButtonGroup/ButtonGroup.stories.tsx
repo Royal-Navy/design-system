@@ -1,7 +1,6 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-
 import { IconBrightnessLow } from '@royalnavy/icon-library'
 
 import { ButtonGroup, ButtonGroupItem } from '.'
@@ -10,7 +9,7 @@ import { COMPONENT_SIZE } from '../Forms'
 export default {
   component: ButtonGroup,
   subcomponents: { ButtonGroupItem },
-  title: 'Components/Button Group',
+  title: 'Deprecated/Button Group',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
