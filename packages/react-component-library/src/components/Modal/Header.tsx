@@ -20,6 +20,7 @@ export const Header = ({ onClose, title, titleId }: HeaderProps) => (
       type="button"
       onClick={onClose}
       data-testid="modal-close"
+      aria-label="Close modal"
     >
       <IconClose />
     </StyledCloseButton>

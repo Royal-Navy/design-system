@@ -7,8 +7,17 @@ import noop from 'lodash/noop'
 import { Modal, ModalProps, ModalImperativeHandle } from '.'
 import { Button, ButtonProps, BUTTON_VARIANT } from '../Button'
 import { useIsInDocs } from '../../../.storybook/hooks/useIsInDocs'
+import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 
 const { spacing } = selectors
+
+const disableColorContrastRule = {
+  a11y: {
+    config: {
+      rules: storyAccessibilityConfig.Modal,
+    },
+  },
+}
 
 export default {
   component: Modal,
@@ -76,6 +85,7 @@ Default.args = {
 }
 
 export const NoHeader = Template.bind({})
+NoHeader.parameters = disableColorContrastRule
 NoHeader.args = {
   'aria-label': 'Modal with no header',
   primaryButton,
