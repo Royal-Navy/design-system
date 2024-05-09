@@ -41,14 +41,14 @@ Invalid.args = {
 }
 
 export const WithLegend = Template.bind({})
-WithLegend.storyName = 'With legend'
+WithLegend.storyName = 'Legend'
 WithLegend.args = {
   name: 'switch-legend',
   label: 'Example legend',
 }
 
 export const SelectedValue = Template.bind({})
-SelectedValue.storyName = 'With value selected'
+SelectedValue.storyName = 'Value selected'
 SelectedValue.args = {
   name: 'switch-selected-value',
   value: '2',

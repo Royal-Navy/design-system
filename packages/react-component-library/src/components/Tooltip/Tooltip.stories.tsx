@@ -29,4 +29,4 @@ export const WithTitle: StoryFn<typeof Tooltip> = (props) => (
   </div>
 )
 
-WithTitle.storyName = 'With title'
+WithTitle.storyName = 'Title'

@@ -94,7 +94,7 @@ const WithIconsTemplate: StoryFn<typeof ContextMenu> = (props) => {
 }
 
 export const WithIcons = WithIconsTemplate.bind({})
-WithIcons.storyName = 'With icons'
+WithIcons.storyName = 'Icons'
 
 export const Open = WithIconsTemplate.bind({})
 Open.args = {

@@ -23,7 +23,7 @@ const Template: StoryFn<typeof DatePicker> = (args) => <DatePicker {...args} />
 export const Default = Template.bind({})
 
 export const WithInitialValue = Template.bind({})
-WithInitialValue.storyName = 'With initial value'
+WithInitialValue.storyName = 'Initial value'
 WithInitialValue.args = {
   initialStartDate: parseISO('2021-12-15'),
 }

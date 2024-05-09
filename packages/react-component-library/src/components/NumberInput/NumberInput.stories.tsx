@@ -50,34 +50,34 @@ Disabled.args = {
   isDisabled: true,
 }
 
-export const WithFootnote = Template.bind({})
-WithFootnote.args = {
+export const Footnote = Template.bind({})
+Footnote.args = {
   footnote: 'Footnote',
 }
 
-export const WithLabel = Template.bind({})
-WithLabel.args = {
+export const Label = Template.bind({})
+Label.args = {
   label: 'Label',
 }
 
-export const WithIcon = Template.bind({})
-WithIcon.args = {
+export const Icon = Template.bind({})
+Icon.args = {
   icon: <IconBrightnessHigh />,
 }
 
-export const WithPrefix = Template.bind({})
-WithPrefix.args = {
+export const Prefix = Template.bind({})
+Prefix.args = {
   prefix: String.fromCharCode(163),
   value: 1000,
 }
 
-export const WithSuffix = Template.bind({})
-WithSuffix.args = {
+export const Suffix = Template.bind({})
+Suffix.args = {
   suffix: `m${String.fromCharCode(179)}`,
   value: 1000,
 }
 
-export const WithError = Template.bind({})
-WithError.args = {
+export const Error = Template.bind({})
+Error.args = {
   isInvalid: true,
 }

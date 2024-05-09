@@ -144,7 +144,7 @@ export const WithSearch: StoryFn<typeof Masthead> = (props) => (
   <Masthead {...props} />
 )
 
-WithSearch.storyName = 'With search'
+WithSearch.storyName = 'Search'
 
 const userWithAvatar = (
   <MastheadUser initials="RN">
@@ -171,7 +171,7 @@ export const WithAvatarLinks: StoryFn<typeof Masthead> = (props) => {
   return <Masthead {...props} user={userWithAvatar} />
 }
 
-WithAvatarLinks.storyName = 'With avatar links'
+WithAvatarLinks.storyName = 'Avatar links'
 WithAvatarLinks.args = {
   onSearch: null,
 }
@@ -189,13 +189,13 @@ export const WithNavigation: StoryFn<typeof Masthead> = (props) => {
   return <Masthead {...props} homeLink={<Link href="#" />} nav={nav} />
 }
 
-WithNavigation.storyName = 'With navigation'
+WithNavigation.storyName = 'Navigation'
 WithNavigation.args = {
   onSearch: null,
 }
 
 export const WithInlineNav = WithNavigation.bind({})
-WithInlineNav.storyName = 'With inline navigation'
+WithInlineNav.storyName = 'Inline navigation'
 WithInlineNav.args = {
   ...WithNavigation.args,
   hasInlineNav: true,
@@ -235,7 +235,7 @@ export const WithNotifications: StoryFn<typeof Masthead> = (props) => {
   return <Masthead {...props} notifications={notifications} />
 }
 
-WithNotifications.storyName = 'With notifications'
+WithNotifications.storyName = 'Notifications'
 WithNotifications.args = {
   onSearch: null,
 }
@@ -244,7 +244,7 @@ export const WithSearchOpen = Default.bind({})
 WithSearchOpen.args = {
   initialOpenSubcomponent: MASTHEAD_SUBCOMPONENT.SEARCH,
 }
-WithSearchOpen.storyName = 'With search open'
+WithSearchOpen.storyName = 'Search open'
 WithSearchOpen.parameters = {
   docs: { disable: true },
 }
@@ -261,7 +261,7 @@ export const WithNotificationsOpen: StoryFn<typeof Masthead> = (args) => (
 WithNotificationsOpen.args = {
   initialOpenSubcomponent: MASTHEAD_SUBCOMPONENT.NOTIFICATIONS,
 }
-WithNotificationsOpen.storyName = 'With notifications open'
+WithNotificationsOpen.storyName = 'Notifications open'
 WithNotificationsOpen.parameters = {
   docs: { disable: true },
 }
@@ -299,7 +299,7 @@ export const WithUserMenuOpen: StoryFn<typeof Masthead> = (args) => {
     </div>
   )
 }
-WithUserMenuOpen.storyName = 'With user options open'
+WithUserMenuOpen.storyName = 'User options open'
 WithUserMenuOpen.parameters = {
   docs: { disable: true },
 }
@@ -309,4 +309,4 @@ WithClassificationBar.args = {
   ...Default.args,
   classificationBar: <ClassificationBar />,
 }
-WithClassificationBar.storyName = 'With classification bar'
+WithClassificationBar.storyName = 'Classification bar'

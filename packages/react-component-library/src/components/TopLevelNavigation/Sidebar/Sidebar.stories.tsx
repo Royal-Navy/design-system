@@ -179,7 +179,7 @@ export const WithSubNavigation: StoryFn<typeof Sidebar> = (props) => {
   )
 }
 
-WithSubNavigation.storyName = 'With sub-navigation'
+WithSubNavigation.storyName = 'Sub-navigation'
 
 export const WithHeader: StoryFn<typeof Sidebar> = (props) => {
   return (
@@ -192,7 +192,7 @@ export const WithHeader: StoryFn<typeof Sidebar> = (props) => {
   )
 }
 
-WithHeader.storyName = 'With header'
+WithHeader.storyName = 'Header'
 
 export const WithUserMenu: StoryFn<typeof Sidebar> = (props) => {
   const userWithLinks = (
@@ -214,7 +214,7 @@ export const WithUserMenu: StoryFn<typeof Sidebar> = (props) => {
   )
 }
 
-WithUserMenu.storyName = 'With user menu'
+WithUserMenu.storyName = 'User menu'
 
 const WithNotificationsTemplate: StoryFn<typeof Sidebar> = (props) => {
   const notifications = (
@@ -261,7 +261,7 @@ const WithNotificationsTemplate: StoryFn<typeof Sidebar> = (props) => {
 }
 
 export const WithNotifications = WithNotificationsTemplate.bind({})
-WithNotifications.storyName = 'With notifications'
+WithNotifications.storyName = 'Notifications'
 
 export const WithUserMenuOpen: StoryFn<typeof Sidebar> = (props) => {
   const userWithLinks = (
@@ -286,7 +286,7 @@ export const WithUserMenuOpen: StoryFn<typeof Sidebar> = (props) => {
 WithUserMenuOpen.parameters = {
   docs: { disable: true },
 }
-WithUserMenuOpen.storyName = 'With user menu open'
+WithUserMenuOpen.storyName = 'User menu open'
 
 export const WithNotificationsOpen = WithNotifications.bind({})
 WithNotificationsOpen.args = {
@@ -295,11 +295,11 @@ WithNotificationsOpen.args = {
 WithNotificationsOpen.parameters = {
   docs: { disable: true },
 }
-WithNotificationsOpen.storyName = 'With notifications open'
+WithNotificationsOpen.storyName = 'Notifications open'
 
 export const WithClassificationBar = Default.bind({})
 WithClassificationBar.args = {
   ...Default.args,
   classificationBar: <ClassificationBar />,
 }
-WithClassificationBar.storyName = 'With classification bar'
+WithClassificationBar.storyName = 'Classification bar'
