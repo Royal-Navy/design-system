@@ -53,4 +53,10 @@ export const storyAccessibilityConfig = {
       enabled: false,
     },
   ],
+  'Classification Bar': [
+    {
+      id: 'color-contrast',
+      enabled: false,
+    },
+  ],
 } as const

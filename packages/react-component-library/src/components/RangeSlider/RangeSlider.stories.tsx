@@ -108,7 +108,7 @@ WithIcons.args = {
   IconLeft: IconBrightnessLow,
   IconRight: IconBrightnessHigh,
 }
-WithIcons.storyName = 'With icons'
+WithIcons.storyName = 'Icons'
 
 export const WithLabels = Template.bind({})
 WithLabels.args = {
@@ -121,7 +121,7 @@ WithLabels.args = {
   hasMarkers: true,
   tickCount: 20,
 }
-WithLabels.storyName = 'With labels'
+WithLabels.storyName = 'Labels'
 
 export const ReversedScale = Template.bind({})
 ReversedScale.args = {

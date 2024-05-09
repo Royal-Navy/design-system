@@ -28,7 +28,7 @@ export const WithError: StoryFn<typeof TextArea> = (props) => (
   <TextArea {...props} isInvalid label="Example label" />
 )
 
-WithError.storyName = 'With error'
+WithError.storyName = 'Error'
 
 export const WithLongLabel: StoryFn<typeof TextArea> = (props) => (
   <div
@@ -43,4 +43,4 @@ export const WithLongLabel: StoryFn<typeof TextArea> = (props) => (
   </div>
 )
 
-WithLongLabel.storyName = 'With long label'
+WithLongLabel.storyName = 'Long label'

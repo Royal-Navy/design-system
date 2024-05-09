@@ -89,14 +89,14 @@ Open.args = {
   initialIsOpen: true,
 }
 
-export const WithError = Template.bind({})
-WithError.args = {
+export const Error = Template.bind({})
+Error.args = {
   isInvalid: true,
 }
 
-export const WithValue = Template.bind({})
-WithValue.args = {
+export const Value = Template.bind({})
+Value.args = {
   initialValue: 'two',
 }
 
-export const WithIconsAndBadges = TemplateWithIconsAndBadges.bind({})
+export const IconsAndBadges = TemplateWithIconsAndBadges.bind({})

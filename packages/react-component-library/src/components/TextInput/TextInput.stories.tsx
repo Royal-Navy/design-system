@@ -49,7 +49,7 @@ export const WithStartAdornment: StoryFn<typeof TextInput> = (props) => (
   />
 )
 
-WithStartAdornment.storyName = 'With start adornment'
+WithStartAdornment.storyName = 'Start adornment'
 
 export const WithEndAdornment: StoryFn<typeof TextInput> = (props) => (
   <TextInput
@@ -60,7 +60,7 @@ export const WithEndAdornment: StoryFn<typeof TextInput> = (props) => (
   />
 )
 
-WithEndAdornment.storyName = 'With end adornment'
+WithEndAdornment.storyName = 'End adornment'
 
 export const WithError: StoryFn<typeof TextInput> = (props) => (
   <TextInput
@@ -71,7 +71,7 @@ export const WithError: StoryFn<typeof TextInput> = (props) => (
   />
 )
 
-WithError.storyName = 'With error'
+WithError.storyName = 'Error'
 
 export const WithLongLabel: StoryFn<typeof TextInput> = (props) => (
   <div
@@ -87,4 +87,4 @@ export const WithLongLabel: StoryFn<typeof TextInput> = (props) => (
   </div>
 )
 
-WithLongLabel.storyName = 'With long label'
+WithLongLabel.storyName = 'Long label'

@@ -147,4 +147,4 @@ export const WithCaption: StoryFn<typeof Table> = (props) => {
   )
 }
 
-WithCaption.storyName = 'With caption'
+WithCaption.storyName = 'Caption'

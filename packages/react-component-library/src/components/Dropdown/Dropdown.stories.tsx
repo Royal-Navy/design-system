@@ -68,4 +68,4 @@ export const WithIcons: StoryFn<typeof Dropdown> = (props) => (
   </StyledWrapper>
 )
 
-WithIcons.storyName = 'With icons'
+WithIcons.storyName = 'Icons'

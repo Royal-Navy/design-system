@@ -134,7 +134,7 @@ export const WithData: StoryFn<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithData.storyName = 'With data'
+WithData.storyName = 'Data'
 
 export const WithSidebar: StoryFn<typeof Timeline> = (props) => (
   <Timeline
@@ -182,7 +182,7 @@ export const WithSidebar: StoryFn<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithSidebar.storyName = 'With sidebar'
+WithSidebar.storyName = 'Sidebar'
 
 export const WithHours: StoryFn<typeof Timeline> = (props) => (
   <Timeline
@@ -221,7 +221,7 @@ export const WithHours: StoryFn<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithHours.storyName = 'With hours'
+WithHours.storyName = 'Hours'
 
 const StyledCustomTimelineMonth = styled.span<{
   dayWidth: number
@@ -259,7 +259,7 @@ export const WithCustomMonths: StoryFn<typeof Timeline> = (props) => {
   )
 }
 
-WithCustomMonths.storyName = 'With custom months'
+WithCustomMonths.storyName = 'Custom months'
 
 const StyledCustomTimelineWeek = styled.span<{
   isOddNumber: boolean
@@ -302,7 +302,7 @@ export const WithCustomWeeks: StoryFn<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithCustomWeeks.storyName = 'With custom weeks'
+WithCustomWeeks.storyName = 'Custom weeks'
 
 const StyledCustomTimelineDays = styled.span<{ dayWidth: number }>`
   display: inline-block;
@@ -333,7 +333,7 @@ export const WithCustomDays: StoryFn<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithCustomDays.storyName = 'With custom days'
+WithCustomDays.storyName = 'Custom days'
 
 const StyledCustomTimelineHours = styled.div<{ width: number }>`
   display: inline-block;
@@ -370,7 +370,7 @@ export const WithCustomHours: StoryFn<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithCustomHours.storyName = 'With custom hours'
+WithCustomHours.storyName = 'Custom hours'
 
 const StyledCustomTodayMarker = styled.span<{ offset: string }>`
   position: absolute;
@@ -406,7 +406,7 @@ export const WithCustomTodayMarker: StoryFn<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithCustomTodayMarker.storyName = 'With custom today marker'
+WithCustomTodayMarker.storyName = 'Custom today marker'
 
 const StyledCustomTimelineColumn = styled.div<{
   isOddNumber: boolean
@@ -464,7 +464,7 @@ export const WithCustomColumns: StoryFn<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithCustomColumns.storyName = 'With custom columns'
+WithCustomColumns.storyName = 'Custom columns'
 
 export const WithCustomRowCss: StoryFn<typeof Timeline> = (props) => {
   const rowCss: CSSProp = `
@@ -515,7 +515,7 @@ export const WithCustomRowCss: StoryFn<typeof Timeline> = (props) => {
   )
 }
 
-WithCustomRowCss.storyName = 'With custom row CSS'
+WithCustomRowCss.storyName = 'Custom row CSS'
 
 export const WithCustomEventBarColor: StoryFn<typeof Timeline> = (props) => {
   return (
@@ -546,7 +546,7 @@ export const WithCustomEventBarColor: StoryFn<typeof Timeline> = (props) => {
   )
 }
 
-WithCustomEventBarColor.storyName = 'With custom event bar color'
+WithCustomEventBarColor.storyName = 'Custom event bar color'
 
 const StyledCustomEvent = styled.div<{
   startDate: Date
@@ -631,7 +631,7 @@ export const WithCustomEventContent: StoryFn<typeof Timeline> = (props) => (
   </Timeline>
 )
 
-WithCustomEventContent.storyName = 'With custom event content'
+WithCustomEventContent.storyName = 'Custom event content'
 
 export const WithCustomDayWidth: StoryFn<typeof Timeline> = (props) => {
   return (
@@ -672,7 +672,7 @@ export const WithCustomDayWidth: StoryFn<typeof Timeline> = (props) => {
   )
 }
 
-WithCustomDayWidth.storyName = 'With custom day width'
+WithCustomDayWidth.storyName = 'Custom day width'
 
 export const WithCustomRange: StoryFn<typeof Timeline> = (props) => {
   return (
@@ -713,7 +713,7 @@ export const WithCustomRange: StoryFn<typeof Timeline> = (props) => {
   )
 }
 
-WithCustomRange.storyName = 'With custom range'
+WithCustomRange.storyName = 'Custom range'
 
 export const NoVisibleCells: StoryFn<typeof Timeline> = (props) => (
   <Timeline
