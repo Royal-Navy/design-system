@@ -12,7 +12,11 @@ const StyledSwatch = styled.span<{ $backgroundColor: string }>`
   min-height: 100%;
 `
 
-export const Swatch = ({ backgroundColor }: { backgroundColor: string }) => {
+export const SpacingSwatch = ({
+  backgroundColor,
+}: {
+  backgroundColor: string
+}) => {
   return <StyledSwatch $backgroundColor={backgroundColor}>&nbsp;</StyledSwatch>
 }
 

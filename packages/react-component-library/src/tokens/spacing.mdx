@@ -1,5 +1,5 @@
 import { Meta, Source } from '@storybook/blocks'
-import {  ExampleComponent,Swatch } from './SpacingScaleTable'
+import { ExampleComponent, SpacingSwatch } from './SpacingScaleTable'
 
 <Meta title="Tokens/Spacing" />
 
@@ -13,16 +13,48 @@ By reducing application Spacing to a predetermined scale, it is easy to ensure a
 
 The Spacing Scale values, much like the Typography Scale values, doesn't increase in a linear fashion. This is because as elements get positioned further apart, the difference between adjacent values becomes less noticeable. Whilst the Scale values itself increases non-linearly, the Scale is linear. This is to help developers quickly adjust spacing, without having to worry about the underlying Spacing API values.
 
-## Examples
-<Swatch backgroundColor='#d36f57' /> Red = 32px / 4rem: Above and below headline
-
-<Swatch backgroundColor='white' /> Orange = 24px / 3rem: Spacing between elements, above and below dividing lines and titles.
-
-<Swatch backgroundColor='white' /> Yellow = 16px / 2rem: Spacing and padding for cards.
-
-<Swatch backgroundColor='#a5d497' /> Green = 8px / 1rem: Condensed spacing such as in an alert.
-
-<Swatch backgroundColor='white' /> Blue = 4px / 0.5rem: In rare cases where a full rem is too much such as between tab options.
+<table style={{width: '100%'}}>
+  <thead>
+    <tr>
+      <th>Color</th>
+      <th>Value</th>
+      <th>Token</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><SpacingSwatch backgroundColor='#c74c2e' /> Red</td>
+      <td>4rem</td>
+      <td>`spacing('15')`</td>
+      <td>Above and below headlines</td>
+    </tr>
+    <tr>
+      <td><SpacingSwatch backgroundColor='#cf6349' /> Orange</td>
+      <td>3rem</td>
+      <td>`spacing('14')`</td>
+      <td>Spacing between elements, above and below dividing lines and titles</td>
+    </tr>
+    <tr>
+      <td><SpacingSwatch backgroundColor='#eccc67' /> Yellow</td>
+      <td>2rem</td>
+      <td>`spacing('12')`</td>
+      <td>Spacing between elements, above and below dividing lines and titles</td>
+    </tr>
+    <tr>
+      <td><SpacingSwatch backgroundColor='#a5d497' /> Green</td>
+      <td>1rem</td>
+      <td>`spacing('8')`</td>
+      <td>Condensed spacing such as in an alert</td>
+    </tr>
+    <tr>
+      <td><SpacingSwatch backgroundColor='#62aeea' /> Blue</td>
+      <td>0.5rem</td>
+      <td>`spacing('4')`</td>
+      <td>In rare cases where a full rem is too much such as between tab options</td>
+  </tr>
+  </tbody>
+</table>
 
 <img src="/spacing-examples.png" alt="Example layout" />
 
