@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.1](https://github.com/Royal-Navy/design-system/compare/4.7.0...4.7.1) (2024-05-10)
+
+### Bug Fixes
+
+- **Components:** Update typings path ([#3791](https://github.com/Royal-Navy/design-system/issues/3791)) ([0ab3758](https://github.com/Royal-Navy/design-system/commit/0ab3758b9f37455a0875667379d91dd4ff998df2))
+
 # [4.7.0](https://github.com/Royal-Navy/design-system/compare/4.6.0...4.7.0) (2024-05-10)
 
 ### Features
