@@ -16,7 +16,7 @@
   ],
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/types/src/index.d.ts",
   "sideEffects": false,
   "author": "Royal Navy",
   "license": "Apache-2.0",
