@@ -43,19 +43,24 @@ Here's a quick example application to get you started:
 
 ```javascript
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from "react-dom/client";
 import '@royalnavy/fonts'
 import { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
 
 function App() {
   return (
     <GlobalStyleProvider>
-      <Button variant="primary">Hello, World!</Button>
+      <Button variant="primary">
+        Hello, World!
+      </Button>
     </GlobalStyleProvider>
   )
 }
 
-ReactDOM.render(<App />, document.querySelector('#app'))
+root.render(<App />)
 ```
 
 ## Monorepo & package management
