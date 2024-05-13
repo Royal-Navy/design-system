@@ -14814,9 +14814,9 @@ undici-types@~5.26.4:
   integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
 
 undici@^6.6.2:
-  version "6.12.0"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-6.12.0.tgz#396d4dbd2ea2351094c00be44655d489afe4fb8a"
-  integrity sha512-d87yk8lqSFUYtR5fTFe2frpkMIrUEz+lgoJmhcL+J3StVl+8fj8ytE4lLnJOTPCE12YbumNGzf4LYsQyusdV5g==
+  version "6.16.1"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-6.16.1.tgz#ff8f49c56e5a8629f92ad2ce00d4841b9619b19e"
+  integrity sha512-NeNiTT7ixpeiL1qOIU/xTVpHpVP0svmI6PwoCKaMGaI5AsHOaRdwqU/f7Fi9eyU4u03nd5U/BC8wmRMnS9nqoA==
 
 unicode-canonical-property-names-ecmascript@^2.0.0:
   version "2.0.0"
