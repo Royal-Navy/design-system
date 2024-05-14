@@ -10,8 +10,8 @@ The Royal Navy Fonts are available as an [NPM package](https://www.npmjs.com/pac
 // npm
 npm install @royalnavy/fonts
 
-// yarn
-yarn add @royalnavy/fonts
+// pnpm
+pnpm add @royalnavy/fonts
 ```
 
 ## Usage

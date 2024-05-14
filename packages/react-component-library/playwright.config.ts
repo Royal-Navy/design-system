@@ -49,7 +49,7 @@ const config: PlaywrightTestConfig = {
   webServer: process.env.CI
     ? {
         command:
-          'npm exec --no -- http-server .static_storybook --port 6006 --silent',
+          'pnpm exec -- http-server .static_storybook --port 6006 --silent',
         url: 'http://localhost:6006',
       }
     : undefined,

@@ -12,17 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
 
       - name: Build icon-library
         run: |
-          yarn --cwd packages/icon-library build
+          pnpm --prefix packages/icon-library run build
 
       - name: Build design-tokens
-        run: yarn --cwd packages/design-tokens build
+        run: pnpm --prefix packages/design-tokens run build
 
       - name: Create tar
         run: |
@@ -31,7 +31,7 @@ jobs:
           tar -czvf dist.tar.gz distil distdt
 
       - name: Persist artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: ./dist.tar.gz
@@ -40,23 +40,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Set up environment
+        uses: ./.github/actions/prepare-environment
 
       - name: Run audit
-        run: yarn run audit
+        run: pnpm run audit
 
   Check_commits:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
 
       - name: Check commits
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const { runCommitLint } = await import('${{ github.workspace }}/scripts/github-actions/runCommitlint.mjs')
@@ -69,21 +72,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
 
       - name: Get dependencies & run lint
         run: |
-          yarn --cwd packages/react-component-library lint
+          pnpm --prefix packages/react-component-library run lint
 
   Build_react-component-library:
     runs-on: ubuntu-latest
     needs: [Build_icon_library, Lint_react-component-library]
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
@@ -92,14 +95,14 @@ jobs:
 
       - name: Build
         run: |
-          yarn --cwd packages/react-component-library build
+          pnpm --prefix packages/react-component-library run build
 
   Test_react-component-library:
     runs-on: ubuntu-latest
     needs: [Build_icon_library, Lint_react-component-library]
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
@@ -111,7 +114,7 @@ jobs:
           JEST_JUNIT_OUTPUT_DIR: test-results/jest
           JEST_JUNIT_OUTPUT_NAME: react-component-results.xml
         run: |
-          yarn --cwd packages/react-component-library test --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand --testResultsProcessor=jest-sonar-reporter
+          pnpm --prefix packages/react-component-library run test --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand --testResultsProcessor=jest-sonar-reporter
 
       - name: SonarCloud Scan
         uses: Royal-Navy/design-system-sonarcloud-action@master
@@ -125,7 +128,7 @@ jobs:
     needs: [Build_icon_library, Lint_react-component-library]
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -136,11 +139,11 @@ jobs:
 
       - name: Build Storybook
         run: |
-          yarn --cwd packages/react-component-library storybook:static:test
+          pnpm --prefix packages/react-component-library run storybook:static:test
           tar -czvf /tmp/storybook-static-e2e.tar.gz packages/react-component-library/.static_storybook
 
       - name: Upload Storybook artefact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: storybook-static-e2e
           path: /tmp/storybook-static-e2e.tar.gz
@@ -156,7 +159,7 @@ jobs:
         total_shards: [3]
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
@@ -164,18 +167,18 @@ jobs:
           unpack-prebuilt-libraries: true
 
       - name: Cache Playwright browsers
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             playwright-${{ runner.os }}-
 
       - name: Install Playwright
-        run: yarn --cwd packages/react-component-library test:e2e:install
+        run: pnpm --prefix packages/react-component-library run test:e2e:install
 
       - name: Download pre-built storybook
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: storybook-static-e2e
           path: /tmp
@@ -186,9 +189,9 @@ jobs:
       - name: Run e2e tests
         env:
           NODE_OPTIONS: --dns-result-order=ipv4first
-        run: yarn --cwd packages/react-component-library test:e2e --shard ${{ matrix.shard }}/${{ matrix.total_shards }}
+        run: pnpm --prefix packages/react-component-library run test:e2e --shard ${{ matrix.shard }}/${{ matrix.total_shards }}
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-test-results-${{ matrix.shard }}
@@ -198,26 +201,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
 
       - name: Lint
-        run: yarn --cwd packages/design-tokens lint
+        run: pnpm --prefix packages/design-tokens run lint
 
       - name: Build
-        run: yarn --cwd packages/design-tokens build
+        run: pnpm --prefix packages/design-tokens run build
 
       - name: Run tests
-        run: yarn --cwd packages/design-tokens test
+        run: pnpm --prefix packages/design-tokens run test
 
   Build_storybook:
     runs-on: ubuntu-latest
     needs: [Build_icon_library, Lint_react-component-library]
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
@@ -233,13 +236,13 @@ jobs:
           CHROMATIC_BRANCH: ${{ github.head_ref || github.ref_name }}
           CHROMATIC_SLUG: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         run: |
-          yarn --cwd packages/react-component-library storybook:static
+          pnpm --prefix packages/react-component-library run storybook:static
           echo "$CHROMATIC_SHA" > packages/react-component-library/.static_storybook/sha
           echo "$CHROMATIC_BRANCH" > packages/react-component-library/.static_storybook/branch
           echo "$CHROMATIC_SLUG" > packages/react-component-library/.static_storybook/slug
 
       - name: Upload Storybook artefact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: storybook-static
           path: packages/react-component-library/.static_storybook
@@ -249,33 +252,33 @@ jobs:
     needs: [Build_storybook]
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
 
       - name: Cache Playwright browsers
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: '~/.cache/ms-playwright'
-          key: playwright-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             playwright-${{ runner.os }}-
 
       - name: Attach workspace
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: storybook-static
           path: packages/react-component-library/.static_storybook
 
       - name: Set up Playwright
+        working-directory: packages/react-component-library
         run: |
-          npm exec --no -- playwright install --with-deps chromium
+          pnpm run playwright:install
 
       - name: Run accessibility tests
         env:
           NODE_OPTIONS: --dns-result-order=ipv4first
+        working-directory: packages/react-component-library
         run: |
-          npm exec --no -- concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "npm exec --no -- http-server packages/react-component-library/.static_storybook --port 6006 --silent" \
-            "npm exec --no -- wait-on tcp:6006 && yarn  --cwd packages/react-component-library test:a11y"
+          pnpm run ci:test:a11y

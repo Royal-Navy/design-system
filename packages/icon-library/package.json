@@ -26,7 +26,7 @@
     "svgr-silhouettes": "rm -rf src/silhouettes; svgr -d src/silhouettes -- src/assets/silhouettes/; rm src/silhouettes/index.ts",
     "exports": "./generate-exports.sh",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --allowJs false --outDir dist/types",
-    "prepare": "yarn build"
+    "prepare": "pnpm run build"
   },
   "lint-staged": {
     "*.@(js|jsx|ts|tsx)": "prettier --write"

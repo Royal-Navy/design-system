@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="./DataGrid.d.ts" />
+
 import React, { useState, useEffect } from 'react'
 import _noop from 'lodash/noop'
 import {

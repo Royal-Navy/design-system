@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "noImplicitAny": false,
+    "preserveSymlinks": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "declarationMap": true,

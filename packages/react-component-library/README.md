@@ -12,8 +12,8 @@ To install it, run the relevant command for your package manager:
 // npm
 npm install @royalnavy/fonts @royalnavy/react-component-library styled-components
 
-// yarn
-yarn add @royalnavy/fonts @royalnavy/react-component-library styled-components
+// pnpm
+pnpm add @royalnavy/fonts @royalnavy/react-component-library styled-components
 ```
 
 Note: [`styled-components`](https://styled-components.com/) is a required [peer dependency](https://nodejs.org/en/blog/npm/peer-dependencies/) and is installed with the above command.
@@ -96,7 +96,7 @@ If you want opinionated styling for your floating element please consider the Po
 
 ## Questions
 
-The Design System is maintained by a team at the Royal Navy. 
+The Design System is maintained by a team at the Royal Navy.
 If you want to know more about the Royal Navy Design System, please email the [Design System Team](mailto:navydigital-dnadesignsystem@mod.gov.uk).
 
 ## Documentation
@@ -109,37 +109,37 @@ End-to-end tests run in both Chrome and Firefox using [Playwright](https://playw
 Tests are dependent on the Storybook running with a test configuration:
 
 ```
-yarn storybook:test
+pnpm run storybook:test
 ```
 
 Playwright browsers and dependencies also have to be installed:
 
 ```
-yarn test:e2e:install
+pnpm run test:e2e:install
 ```
 
 ### Run all tests
 
 ```
-yarn test:e2e
+pnpm run test:e2e
 ```
 
 ### Run specific tests
 
 ```
-yarn test:e2e <regex>
+pnpm run test:e2e <regex>
 ```
 
 ### Run all tests with tracing
 
 ```
-yarn test:e2e:trace
+pnpm run test:e2e:trace
 ```
 
 ### Open the HTML test report
 
 ```
-yarn test:e2e:show-report
+pnpm run test:e2e:show-report
 ```
 
 ## Contributing
@@ -153,4 +153,3 @@ If you have recently updated then read the [release notes](https://github.com/Ro
 ## Roadmap
 
 The [Design System Roadmap Board](https://github.com/Royal-Navy/design-system/projects/7) contains the work that has been prioritised for the next 12 months.
-

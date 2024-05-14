@@ -31,8 +31,8 @@ To install and save to your project's package.json dependencies, run:
 # with npm
 npm install @royalnavy/fonts @royalnavy/react-component-library styled-components
 
-# ...or with yarn
-yarn add @royalnavy/fonts @royalnavy/react-component-library styled-components
+# ...or with pnpm
+pnpm add @royalnavy/fonts @royalnavy/react-component-library styled-components
 ```
 
 Note: [`styled-components`](https://styled-components.com/) is a required [peer dependency](https://nodejs.org/en/blog/npm/peer-dependencies/) and is installed with the above command.
@@ -69,9 +69,9 @@ root.render(<App />)
 >
 > To solve these (and many other) problems, some projects will organize their codebases into multi-package repositories (sometimes called monorepos).
 
-Each package folder has it's own npm package.json and can act like a stand alone project. Yarn workspaces detects dependencies that are held within the monorepo and creates a link between them, so you can work on a react component and see instant updates in Storybook.
+Each package folder has it's own npm package.json and can act like a stand alone project. Pnpm workspaces detects dependencies that are held within the monorepo and creates a link between them, so you can work on a react component and see instant updates in Storybook.
 
-Manage dependencies for packages like normal, but remember to use `yarn add` instead of `npm install`.
+Manage dependencies for packages like normal, but remember to use `pnpm add` instead of `npm install`.
 
 ## Run locally
 

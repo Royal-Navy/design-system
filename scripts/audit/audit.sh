@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# workaround for missing feature
-# https://github.com/yarnpkg/yarn/issues/6669
-
 set -u
 
 set +e
-output=$(yarn audit --json)
+output=$(pnpm audit --json)
 result=$?
 set -e
 
@@ -15,7 +12,7 @@ if [ $result -eq 0 ]; then
 	exit 0
 fi
 
-if [ -f yarn-audit-known-issues ] && echo "$output" | grep auditAdvisory | diff -q yarn-audit-known-issues - > /dev/null 2>&1; then
+if [ -f pnpm-audit-known-issues ] && echo "$output" | grep auditAdvisory | diff -q pnpm-audit-known-issues - > /dev/null 2>&1; then
 	echo
 	echo Ignorning known vulnerabilities
 	exit 0
@@ -30,8 +27,8 @@ echo fixes and they do not apply to production, you may ignore them
 echo
 echo To ignore these vulnerabilities, run:
 echo
-echo "yarn audit --json | grep auditAdvisory > yarn-audit-known-issues"
+echo "pnpm audit --json | grep auditAdvisory > pnpm-audit-known-issues"
 echo
-echo and commit the yarn-audit-known-issues file
+echo and commit the pnpm-audit-known-issues file
 echo
 exit "$result"
