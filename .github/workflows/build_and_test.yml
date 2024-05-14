@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
@@ -31,7 +31,7 @@ jobs:
           tar -czvf dist.tar.gz distil distdt
 
       - name: Persist artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: ./dist.tar.gz
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
@@ -53,13 +53,13 @@ jobs:
     if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
 
       - name: Check commits
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const { runCommitLint } = await import('${{ github.workspace }}/scripts/github-actions/runCommitlint.mjs')
@@ -72,7 +72,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
@@ -86,7 +86,7 @@ jobs:
     needs: [Build_icon_library, Lint_react-component-library]
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
@@ -102,7 +102,7 @@ jobs:
     needs: [Build_icon_library, Lint_react-component-library]
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
@@ -128,7 +128,7 @@ jobs:
     needs: [Build_icon_library, Lint_react-component-library]
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -143,7 +143,7 @@ jobs:
           tar -czvf /tmp/storybook-static-e2e.tar.gz packages/react-component-library/.static_storybook
 
       - name: Upload Storybook artefact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: storybook-static-e2e
           path: /tmp/storybook-static-e2e.tar.gz
@@ -159,7 +159,7 @@ jobs:
         total_shards: [3]
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
@@ -167,7 +167,7 @@ jobs:
           unpack-prebuilt-libraries: true
 
       - name: Cache Playwright browsers
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -178,7 +178,7 @@ jobs:
         run: pnpm --prefix packages/react-component-library run test:e2e:install
 
       - name: Download pre-built storybook
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: storybook-static-e2e
           path: /tmp
@@ -191,7 +191,7 @@ jobs:
           NODE_OPTIONS: --dns-result-order=ipv4first
         run: pnpm --prefix packages/react-component-library run test:e2e --shard ${{ matrix.shard }}/${{ matrix.total_shards }}
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-test-results-${{ matrix.shard }}
@@ -201,7 +201,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
@@ -220,7 +220,7 @@ jobs:
     needs: [Build_icon_library, Lint_react-component-library]
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
@@ -242,7 +242,7 @@ jobs:
           echo "$CHROMATIC_SLUG" > packages/react-component-library/.static_storybook/slug
 
       - name: Upload Storybook artefact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: storybook-static
           path: packages/react-component-library/.static_storybook
@@ -252,13 +252,13 @@ jobs:
     needs: [Build_storybook]
     steps:
       - name: Git clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
 
       - name: Cache Playwright browsers
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: '~/.cache/ms-playwright'
           key: playwright-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -266,7 +266,7 @@ jobs:
             playwright-${{ runner.os }}-
 
       - name: Attach workspace
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: storybook-static
           path: packages/react-component-library/.static_storybook
