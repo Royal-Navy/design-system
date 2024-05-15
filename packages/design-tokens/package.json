@@ -22,7 +22,7 @@
     "build:dict": "node ./build-dictionary.js",
     "build:cjs": "webpack --config=webpack/prod.js",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --allowJs false --outDir dist/types",
-    "prepare": "pnpm run build",
+    "prepack": "pnpm run build",
     "test": "jest",
     "lint": "eslint src --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json --max-warnings 0 --resolve-plugins-relative-to ../eslint-config-react"
   },

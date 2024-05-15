@@ -33,7 +33,7 @@
     "build:cjs:dev": "BABEL_ENV=cjs RNDS_LOG_LEVEL=debug webpack --config=webpack/dev.js",
     "chromatic": "chromatic --build-script-name storybook:static",
     "lint": "eslint src e2e --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0 --resolve-plugins-relative-to ../eslint-config-react --ignore-pattern \"*.d.ts\"",
-    "prepare": "pnpm run build",
+    "prepack": "pnpm run build",
     "storybook": "BABEL_ENV=es RNDS_LOG_LEVEL=debug storybook dev -p 6006",
     "storybook:static": "BABEL_ENV=es storybook build -c .storybook -o .static_storybook --webpack-stats-json",
     "storybook:static:test": "BABEL_ENV=storybook-test storybook build -c .storybook -o .static_storybook --test",
