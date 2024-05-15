@@ -35,6 +35,6 @@
     "lerna:version": "pnpm run lerna:run-version --conventional-graduate --create-release github -m \"chore(Release): %v\"",
     "lerna:run-version": "lerna version --force-publish=* --tag-version-prefix=''",
     "audit": "./scripts/audit/audit.sh",
-    "prepare": "husky install"
+    "prepack": "husky install"
   }
 }
