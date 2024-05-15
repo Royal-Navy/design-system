@@ -1,4 +1,5 @@
-import React, { memo } from 'react'
+import React, { memo, useRef } from 'react'
+import mergeRefs from 'react-merge-refs'
 
 import { Input } from './Input'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
@@ -98,6 +99,12 @@ const Component = React.forwardRef<HTMLInputElement, TextInputProps>(
   ) => {
     const { hasFocus, onLocalBlur, onLocalFocus } = useFocus(onBlur)
 
+    const localRef = useRef<HTMLInputElement>(null)
+
+    const handleAdornmentClick = () => {
+      localRef.current?.focus()
+    }
+
     return (
       <StyledTextInput className={className} data-testid="text-input-container">
         <StyledOuterWrapper
@@ -106,13 +113,13 @@ const Component = React.forwardRef<HTMLInputElement, TextInputProps>(
           $isInvalid={isInvalid}
         >
           {startAdornment && (
-            <StyledAdornment $position="start">
+            <StyledAdornment $position="start" onClick={handleAdornmentClick}>
               {startAdornment}
             </StyledAdornment>
           )}
           <StyledInputWrapper data-testid="text-input-input-wrapper">
             <Input
-              ref={ref}
+              ref={mergeRefs([localRef, ref])}
               hasFocus={hasFocus}
               isDisabled={isDisabled}
               onBlur={onLocalBlur}
@@ -121,7 +128,9 @@ const Component = React.forwardRef<HTMLInputElement, TextInputProps>(
             />
           </StyledInputWrapper>
           {endAdornment && (
-            <StyledAdornment $position="end">{endAdornment}</StyledAdornment>
+            <StyledAdornment $position="end" onClick={handleAdornmentClick}>
+              {endAdornment}
+            </StyledAdornment>
           )}
         </StyledOuterWrapper>
       </StyledTextInput>
