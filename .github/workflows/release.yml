@@ -21,6 +21,12 @@ jobs:
         # pulls all tags (needed for lerna / semantic release to correctly version)
         run: git fetch --all --tags
 
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9.1.1
+          run_install: false
+          standalone: true
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
