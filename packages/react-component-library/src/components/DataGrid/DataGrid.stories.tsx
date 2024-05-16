@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { selectors } from '@royalnavy/design-tokens'
 import { fn } from '@storybook/test'
-import { faker } from '@faker-js/faker'
 import { StoryFn, Meta } from '@storybook/react'
 import { ColumnDef } from '@tanstack/react-table'
 
@@ -16,20 +15,82 @@ type Order = {
   price: string
 }
 
-const generateRandomData = (length: number): Order[] => {
-  const data: Order[] = Array.from({ length }, (_, i) => {
-    return {
-      id: i + 1,
-      productName: faker.commerce.productName(),
-      quantity: faker.number.int({ min: 1, max: 100 }),
-      price: `£${faker.commerce.price()}`,
-    }
-  })
+// const generateRandomData = (length: number): Order[] => {
+//   const data: Order[] = Array.from({ length }, (_, i) => {
+//     return {
+//       id: i + 1,
+//       productName: faker.commerce.productName(),
+//       quantity: faker.number.int({ min: 1, max: 100 }),
+//       price: `£${faker.commerce.price()}`,
+//     }
+//   })
 
-  return data
-}
+//   return data
+// }
 
-const data: Order[] = generateRandomData(10)
+// Static copy from Faker (play nice with Chromatic snapshots)
+const data: Order[] = [
+  {
+    id: 1,
+    productName: 'Unbranded Steel Sausages',
+    quantity: 59,
+    price: '£782.00',
+  },
+  {
+    id: 2,
+    productName: 'Modern Plastic Sausages',
+    quantity: 38,
+    price: '£175.00',
+  },
+  {
+    id: 3,
+    productName: 'Oriental Bronze Tuna',
+    quantity: 34,
+    price: '£72.00',
+  },
+  {
+    id: 4,
+    productName: 'Rustic Steel Bike',
+    quantity: 59,
+    price: '£693.00',
+  },
+  {
+    id: 5,
+    productName: 'Electronic Frozen Chips',
+    quantity: 79,
+    price: '£837.00',
+  },
+  {
+    id: 6,
+    productName: 'Small Bronze Computer',
+    quantity: 86,
+    price: '£694.00',
+  },
+  {
+    id: 7,
+    productName: 'Licensed Steel Hat',
+    quantity: 84,
+    price: '£415.00',
+  },
+  {
+    id: 8,
+    productName: 'Intelligent Steel Ball',
+    quantity: 14,
+    price: '£441.00',
+  },
+  {
+    id: 9,
+    productName: 'Licensed Concrete Bacon',
+    quantity: 68,
+    price: '£337.00',
+  },
+  {
+    id: 10,
+    productName: 'Practical Wooden Ball',
+    quantity: 10,
+    price: '£673.00',
+  },
+]
 
 const columns = [
   {
