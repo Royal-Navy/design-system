@@ -1,4 +1,6 @@
 import React from 'react'
+import styled from 'styled-components'
+import { selectors } from '@royalnavy/design-tokens'
 import { fn } from '@storybook/test'
 import { faker } from '@faker-js/faker'
 import { StoryFn, Meta } from '@storybook/react'
@@ -11,6 +13,7 @@ type Order = {
   id: number
   productName: string
   quantity: number
+  price: string
 }
 
 const generateRandomData = (length: number): Order[] => {
@@ -19,6 +22,7 @@ const generateRandomData = (length: number): Order[] => {
       id: i + 1,
       productName: faker.commerce.productName(),
       quantity: faker.number.int({ min: 1, max: 100 }),
+      price: `£${faker.commerce.price()}`,
     }
   })
 
@@ -38,7 +42,18 @@ const columns = [
     accessorKey: 'quantity',
     enableSorting: false,
   },
+  {
+    header: 'Price',
+    accessorKey: 'price',
+    enableSorting: false,
+  },
 ]
+
+const { spacing } = selectors
+
+const Wrapper = styled.div`
+  padding: ${spacing('4')};
+`
 
 export default {
   component: DataGrid,
@@ -57,7 +72,11 @@ export default {
 } as Meta<typeof DataGrid>
 
 export const Default: StoryFn<typeof DataGrid> = (props) => {
-  return <DataGrid {...props} />
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
 }
 
 Default.args = {
@@ -73,7 +92,11 @@ const columnsWithSorting = columns.map((item) => ({
 }))
 
 export const Sorting: StoryFn<typeof DataGrid> = (props) => {
-  return <DataGrid {...props} />
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
 }
 
 Sorting.args = {
@@ -104,7 +127,11 @@ const columnsWithArbitraryContent: ColumnDef<object>[] = columns.map(
 )
 
 export const ArbitraryCellContent: StoryFn<typeof DataGrid> = (props) => {
-  return <DataGrid {...props} />
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
 }
 
 ArbitraryCellContent.storyName = 'Arbitrary cell content'
@@ -125,7 +152,11 @@ ArbitraryCellContent.parameters = {
 }
 
 export const RowSelection: StoryFn<typeof DataGrid> = (props) => {
-  return <DataGrid {...props} enableRowSelection />
+  return (
+    <Wrapper>
+      <DataGrid {...props} enableRowSelection />
+    </Wrapper>
+  )
 }
 
 RowSelection.storyName = 'Row selection'
@@ -152,7 +183,11 @@ RowSelection.parameters = {
 }
 
 export const RowSelectionWithHover: StoryFn<typeof DataGrid> = (props) => {
-  return <DataGrid {...props} enableRowSelection hasHover hideCheckboxes />
+  return (
+    <Wrapper>
+      <DataGrid {...props} enableRowSelection hasHover hideCheckboxes />
+    </Wrapper>
+  )
 }
 
 RowSelectionWithHover.storyName = 'Row selection with hover'
@@ -170,7 +205,11 @@ RowSelectionWithHover.args = {
 }
 
 export const Caption: StoryFn<typeof DataGrid> = (props) => {
-  return <DataGrid {...props} caption="Example Caption" />
+  return (
+    <Wrapper>
+      <DataGrid {...props} caption="Example Caption" />
+    </Wrapper>
+  )
 }
 
 Caption.args = {
@@ -186,7 +225,11 @@ const columnsWithSizing = columns.map((item) => ({
 }))
 
 export const ColumnSizing: StoryFn<typeof DataGrid> = (props) => {
-  return <DataGrid {...props} />
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
 }
 
 ColumnSizing.storyName = 'Column sizing'
@@ -202,7 +245,11 @@ const columnsWithAlignment = columns.map((item) => ({
 }))
 
 export const ColumnAlignment: StoryFn<typeof DataGrid> = (props) => {
-  return <DataGrid {...props} />
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
 }
 
 ColumnAlignment.storyName = 'Column alignment'
@@ -215,19 +262,21 @@ ColumnAlignment.args = {
 
 const mergedColumns = columns.map((item, index) => ({
   ...item,
-  ...columnsWithSorting[index],
   ...columnsWithArbitraryContent[index],
+  enableSorting: true,
 }))
 
 export const KitchenSink: StoryFn<typeof DataGrid> = (props) => {
   return (
-    <DataGrid
-      {...props}
-      enableRowSelection
-      hasHover
-      isFullWidth
-      caption="Example Caption"
-    />
+    <Wrapper>
+      <DataGrid
+        {...props}
+        enableRowSelection
+        hasHover
+        isFullWidth
+        caption="Example Caption"
+      />
+    </Wrapper>
   )
 }
 
