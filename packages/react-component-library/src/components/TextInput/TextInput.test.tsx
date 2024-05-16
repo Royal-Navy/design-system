@@ -9,6 +9,37 @@ import { TextInput } from '.'
 describe('TextInput', () => {
   let wrapper: RenderResult
 
+  describe('adornment', () => {
+    let onBlurSpy: (event: React.FormEvent) => void
+    let onChangeSpy: (event: React.ChangeEvent<HTMLInputElement>) => void
+    const adornmentId = 'adornment-test-id'
+    beforeEach(() => {
+      onBlurSpy = jest.fn()
+      onChangeSpy = jest.fn()
+
+      wrapper = render(
+        <TextInput
+          autoFocus
+          className="custom-class"
+          data-arbitrary="arbitrary"
+          endAdornment={<span>end</span>}
+          value="value"
+          name="name"
+          onBlur={onBlurSpy}
+          onChange={onChangeSpy}
+          id="id"
+          label="label"
+          startAdornment={<span data-testid={adornmentId}>start</span>}
+          type="text"
+        />
+      )
+    })
+    it('should focus the text input when adornment is clicked', async () => {
+      await userEvent.click(wrapper.getByTestId(adornmentId))
+      expect(wrapper.getByRole('textbox')).toHaveFocus()
+    })
+  })
+
   describe('when all props are provided', () => {
     let onBlurSpy: (event: React.FormEvent) => void
     let onChangeSpy: (event: React.ChangeEvent<HTMLInputElement>) => void
