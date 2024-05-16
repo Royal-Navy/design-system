@@ -21,9 +21,9 @@ import type {
   TableOptions,
 } from '@tanstack/react-table'
 import {
-  IconSortAscending,
-  IconSortDescending,
-  IconSortUnsorted,
+  IconSwapVert,
+  IconArrowDownward,
+  IconArrowUpward,
 } from '@royalnavy/icon-library'
 
 import { IndeterminateCheckbox } from '../Checkbox'
@@ -31,6 +31,7 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TABLE_SORT_ORDER } from '../Table'
 import {
   StyledDataGrid,
+  StyledCaption,
   StyledTable,
   StyledHead,
   StyledBody,
@@ -83,10 +84,10 @@ export interface DataGridProps<T extends object>
 
 const SORT_ORDER_ICONS_MAP = {
   [TABLE_SORT_ORDER.ASCENDING]: (
-    <IconSortAscending aria-hidden data-testid="ascending" />
+    <IconArrowDownward aria-hidden data-testid="ascending" />
   ),
   [TABLE_SORT_ORDER.DESCENDING]: (
-    <IconSortDescending aria-hidden data-testid="descending" />
+    <IconArrowUpward aria-hidden data-testid="descending" />
   ),
 }
 
@@ -101,7 +102,7 @@ function getIcon(sortable: boolean, sortOrder?: SortDirection | false) {
   }
 
   if (!sortOrder) {
-    return <IconSortUnsorted aria-hidden data-testid="unsorted" />
+    return <IconSwapVert aria-hidden data-testid="unsorted" />
   }
 
   return SORT_ORDER_ICONS_MAP[sortOrder]
@@ -220,7 +221,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
         $isFullWidth={isFullWidth}
         role="grid"
       >
-        {caption && <caption>{caption}</caption>}
+        {caption && <StyledCaption>{caption}</StyledCaption>}
         <StyledHead>
           {table
             .getHeaderGroups()
@@ -247,10 +248,12 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
                       key={headerId}
                       onClick={getToggleSortingHandler()}
                     >
-                      {isPlaceholder
-                        ? null
-                        : flexRender(columnDef.header, getContext())}
-                      {getIcon(getCanSort(), getIsSorted())}
+                      <div>
+                        {isPlaceholder
+                          ? null
+                          : flexRender(columnDef.header, getContext())}
+                        {getIcon(getCanSort(), getIsSorted())}
+                      </div>
                     </StyledCol>
                   )
                 )}

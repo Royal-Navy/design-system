@@ -9,9 +9,14 @@ interface StyledCellProps {
 const { spacing, fontSize, color } = selectors
 
 export const StyledCell = styled.td<StyledCellProps>`
-  padding: ${spacing('4')} ${spacing('4')} ${spacing('4')} ${spacing('8')};
+  padding: ${spacing('9')} ${spacing('4')} ${spacing('9')} ${spacing('8')};
   width: ${({ $width }) => $width || 'auto'};
   font-size: ${fontSize('s')};
-  color: ${color('neutral', '500')};
+  color: ${color('neutral', '400')};
   text-align: ${({ $alignment }) => $alignment || 'left'};
+  border-bottom: 1px solid ${color('neutral', '200')};
+
+  &:last-of-type {
+    border-right: unset;
+  }
 `

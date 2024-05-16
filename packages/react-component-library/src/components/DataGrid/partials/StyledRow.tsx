@@ -9,10 +9,12 @@ interface StyledRowProps {
 const { color } = selectors
 
 export const StyledRow = styled.tr<StyledRowProps>`
-  border-bottom: 1px solid ${color('neutral', '100')};
-
   &:last-child {
     border-bottom: none;
+
+    td {
+      border-bottom: unset;
+    }
   }
 
   ${({ $hasHover }) =>
