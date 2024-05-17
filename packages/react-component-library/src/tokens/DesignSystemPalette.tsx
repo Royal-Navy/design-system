@@ -1,5 +1,5 @@
 import React from 'react'
-import { ColorGroup, selectors } from '@royalnavy/design-tokens'
+import { color, ColorGroup } from '@royalnavy/design-tokens'
 
 import {
   StyledDescription,
@@ -9,8 +9,6 @@ import {
   StyledWeight,
 } from './partials'
 import { getColorDescription, getColors } from './utils'
-
-const { color } = selectors
 
 type PaletteProps = {
   group: ColorGroup

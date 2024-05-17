@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { selectors } from '@royalnavy/design-tokens'
+import { shadow, spacing } from '@royalnavy/design-tokens'
 
 import styled from 'styled-components'
 
@@ -12,8 +12,6 @@ import {
   StyledWeight,
 } from './partials'
 import { getShadowDescription, getShadows } from './utils'
-
-const { shadow, spacing } = selectors
 
 const StyledContainer = styled.div`
   padding-bottom: ${spacing('13')};
@@ -44,9 +42,7 @@ export const ElevationTable = () => {
 export const UsageText = `
 import styled from 'styled-components'
 
-import { selectors } from '@royalnavy/design-tokens'
-
-const { shadow } = selectors
+import { shadow } from '@royalnavy/design-tokens'
 
 export const StyledPanel = styled.div\`
   box-shadow: \${ shadow('1') })};

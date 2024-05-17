@@ -1,9 +1,7 @@
 import React from 'react'
-import { selectors } from '@royalnavy/design-tokens'
+import { fontSize, color, spacing } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 import { getTypographySizes } from './utils'
-
-const { fontSize, color, spacing } = selectors
 
 const tokens = getTypographySizes()
 
