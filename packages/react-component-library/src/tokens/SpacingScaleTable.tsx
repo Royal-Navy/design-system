@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { spacing, fontSize, color } = selectors
+import { spacing, fontSize, color } from '@royalnavy/design-tokens'
 
 const StyledSwatch = styled.span<{ $backgroundColor: string }>`
   background-color: ${({ $backgroundColor }) => $backgroundColor ?? 'none'};
