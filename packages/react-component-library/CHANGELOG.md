@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.8.0](https://github.com/Royal-Navy/design-system/compare/4.7.2...4.8.0) (2024-05-17)
+
+### Bug Fixes
+
+- **TextInput:** Focus on input when adornments are clicked ([#3800](https://github.com/Royal-Navy/design-system/issues/3800)) ([aa23102](https://github.com/Royal-Navy/design-system/commit/aa2310266bc4e08b24331f493570e230d107ac8a))
+
+### Features
+
+- **DataGrid:** Update styling inline with new designs ([9fd3fed](https://github.com/Royal-Navy/design-system/commit/9fd3fed34df3fa528e1116c2b84aa1685e55f108))
+
 ## [4.7.2](https://github.com/Royal-Navy/design-system/compare/4.7.1...4.7.2) (2024-05-15)
 
 **Note:** Version bump only for package @royalnavy/react-component-library
