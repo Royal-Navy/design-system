@@ -15,6 +15,12 @@ export const storyAccessibilityConfig = {
       enabled: false,
     },
   ],
+  'Data Grid': [
+    {
+      id: 'empty-table-header',
+      enabled: false,
+    },
+  ],
   'Date Picker': [
     {
       id: 'aria-required-attr',

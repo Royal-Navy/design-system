@@ -5,6 +5,7 @@ import { fn } from '@storybook/test'
 import { StoryFn, Meta } from '@storybook/react'
 import { ColumnDef } from '@tanstack/react-table'
 
+import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DataGrid, TABLE_COLUMN_ALIGNMENT } from '.'
 import { Badge } from '../Badge'
 
@@ -13,6 +14,14 @@ type Order = {
   productName: string
   quantity: number
   price: string
+}
+
+const disableEmptyTableHeaderRule = {
+  a11y: {
+    config: {
+      rules: storyAccessibilityConfig['Data Grid'],
+    },
+  },
 }
 
 // const generateRandomData = (length: number): Order[] => {
@@ -321,10 +330,59 @@ ColumnAlignment.args = {
   onSelectedRowsChange: fn(),
 }
 
-const mergedColumns = columns.map((item, index) => ({
-  ...item,
-  ...columnsWithArbitraryContent[index],
-  enableSorting: true,
+const groupedColumns = [
+  {
+    header: 'Group 1',
+    columns: [
+      {
+        header: 'Name',
+        accessorKey: 'productName',
+        enableSorting: false,
+      },
+      {
+        header: 'Price',
+        accessorKey: 'price',
+        enableSorting: false,
+      },
+    ],
+  },
+  {
+    header: 'Group 2',
+    columns: [
+      {
+        header: 'Quantity',
+        accessorKey: 'quantity',
+        enableSorting: false,
+      },
+    ],
+  },
+]
+
+export const ColumnGrouping: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid {...props} columns={groupedColumns} />
+    </Wrapper>
+  )
+}
+
+ColumnGrouping.storyName = 'Column grouping'
+ColumnGrouping.args = {
+  data,
+  isFullWidth: true,
+  onSelectedRowsChange: fn(),
+}
+
+const mergedColumns = groupedColumns.map((group) => ({
+  ...group,
+  columns: group.columns.map((column) => ({
+    ...column,
+    ...columnsWithArbitraryContent.find(
+      // @ts-ignore
+      (c) => c.accessorKey === column.accessorKey
+    ),
+    enableSorting: true,
+  })),
 }))
 
 export const KitchenSink: StoryFn<typeof DataGrid> = (props) => {
@@ -342,6 +400,7 @@ export const KitchenSink: StoryFn<typeof DataGrid> = (props) => {
 }
 
 KitchenSink.storyName = 'Kitchen sink'
+KitchenSink.parameters = disableEmptyTableHeaderRule
 KitchenSink.args = {
   columns: mergedColumns,
   data,

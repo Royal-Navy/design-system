@@ -488,4 +488,65 @@ describe('DataGrid', () => {
       })
     })
   })
+
+  describe('with column grouping', () => {
+    const columnGroups: ColumnDef<DataRow>[] = [
+      {
+        header: 'Group 1',
+        columns: [
+          {
+            accessorKey: 'first',
+            header: 'First',
+            cell: (info) => info.getValue(),
+            enableSorting: true,
+          },
+          {
+            accessorKey: 'second',
+            header: 'Second',
+            cell: (info) => info.getValue(),
+            enableSorting: false,
+          },
+        ],
+      },
+      {
+        header: 'Group 2',
+        columns: [
+          {
+            accessorKey: 'third',
+            header: 'Third',
+            cell: (info) => info.getValue(),
+            enableSorting: true,
+          },
+        ],
+      },
+    ]
+
+    beforeEach(() => {
+      render(<DataGrid data={data} columns={columnGroups} />)
+    })
+
+    it('should render the column groups correctly', () => {
+      expect(screen.getByText('Group 1')).toBeInTheDocument()
+      expect(screen.getByText('Group 2')).toBeInTheDocument()
+
+      expect(screen.getByText('First')).toBeInTheDocument()
+      expect(screen.getByText('Second')).toBeInTheDocument()
+      expect(screen.getByText('Third')).toBeInTheDocument()
+    })
+
+    it('should render the column groups with the correct order', () => {
+      const firstRow = screen.getAllByRole('row')[0]
+      const firstRowHeaders = within(firstRow).getAllByRole('columnheader')
+
+      expect(firstRowHeaders[0]).toHaveTextContent('Group 1')
+      expect(firstRowHeaders[1]).toHaveTextContent('Group 2')
+
+      const secondRow = screen.getAllByRole('row')[1]
+      const secondRowHeaders = within(secondRow).getAllByRole('columnheader')
+
+      expect(secondRowHeaders[0]).toHaveTextContent('First')
+      expect(secondRowHeaders[1]).toHaveTextContent('Second')
+      expect(secondRowHeaders[2]).toHaveTextContent('Third')
+    })
+  })
 })
