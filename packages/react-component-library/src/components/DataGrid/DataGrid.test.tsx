@@ -185,7 +185,7 @@ describe('DataGrid', () => {
 
     await hackyWaitForHook()
 
-    expect(rows[1]).toHaveStyleRule('background-color', color('neutral', '100'))
+    expect(rows[1]).toHaveStyleRule('background-color', color('action', '100'))
 
     userEvent.click(within(rows[1]).getAllByRole('cell')[1], {
       pointerEventsCheck: PointerEventsCheckLevel.Never,
