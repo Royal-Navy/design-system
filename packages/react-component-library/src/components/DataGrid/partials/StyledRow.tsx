@@ -21,7 +21,7 @@ export const StyledRow = styled.tr<StyledRowProps>`
     $hasHover &&
     css`
       &:hover {
-        background-color: ${color('neutral', '100')};
+        background-color: ${color('action', '200')};
         cursor: pointer;
       }
     `}
@@ -29,6 +29,6 @@ export const StyledRow = styled.tr<StyledRowProps>`
   ${({ $hasFocus }) =>
     $hasFocus &&
     css`
-      background-color: ${color('neutral', '100')};
+      background-color: ${color('action', '100')};
     `}
 `

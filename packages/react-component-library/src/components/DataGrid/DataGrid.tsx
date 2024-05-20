@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="./DataGrid.d.ts" />
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import _noop from 'lodash/noop'
 import {
   flexRender,
@@ -214,6 +214,12 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     )
   }, [rowSelection, table, onSelectedRowsChange])
 
+  const hasGroupedHeaders = useMemo(() => {
+    return table.getHeaderGroups().reduce((acc, group) => {
+      return acc || group.headers.some((header) => header.depth > 1)
+    }, false)
+  }, [table])
+
   return (
     <StyledDataGrid className={className}>
       <StyledTable
@@ -225,7 +231,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
         <StyledHead>
           {table
             .getHeaderGroups()
-            .map(({ id: headerGroupId, headers }: HeaderGroup<T>) => (
+            .map(({ id: headerGroupId, headers, depth }: HeaderGroup<T>) => (
               <StyledRow key={headerGroupId}>
                 {headers.map(
                   ({
@@ -239,14 +245,17 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
                     id: headerId,
                     isPlaceholder,
                     getContext,
+                    colSpan,
                   }: Header<T, unknown>) => (
                     <StyledCol
                       aria-sort={getAriaSort(getCanSort(), getIsSorted())}
                       $isSortable={getCanSort()}
+                      $isHeaderGroup={hasGroupedHeaders && depth === 0}
                       $alignment={columnDef.meta?.align}
                       $width={getSize() === 150 ? undefined : getSize()}
                       key={headerId}
                       onClick={getToggleSortingHandler()}
+                      colSpan={colSpan}
                     >
                       <div>
                         {isPlaceholder

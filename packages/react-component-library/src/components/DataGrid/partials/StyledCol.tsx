@@ -7,18 +7,19 @@ interface StyledColProps {
   $isSortable?: boolean
   $alignment?: 'left' | 'right' | 'center'
   $width?: number
+  $isHeaderGroup?: boolean
 }
 
 export const StyledCol = styled.th<StyledColProps>`
   position: relative;
   padding: ${spacing('9')} ${spacing('4')} ${spacing('9')} ${spacing('8')};
   width: ${({ $width }) => $width || 'auto'};
-  text-align: left;
-  font-size: ${fontSize('s')};
-  color: ${color('neutral', '600')};
-  font-weight: 600;
-  text-transform: capitalize;
   border-bottom: 1px solid ${color('neutral', '200')};
+  color: ${color('neutral', '600')};
+  font-weight: 700;
+  text-align: left;
+  text-transform: 'capitalize';
+  font-size: ${fontSize('s')};
 
   > div {
     display: flex;
@@ -42,6 +43,18 @@ export const StyledCol = styled.th<StyledColProps>`
     height: 16px;
     background: ${color('neutral', '200')};
   }
+
+  ${({ $isHeaderGroup }) =>
+    $isHeaderGroup &&
+    css`
+      text-transform: uppercase;
+      font-size: ${fontSize('m')};
+
+      &:not(:last-of-type) > div::after {
+        top: 100%;
+        height: 80px;
+      }
+    `}
 
   ${({ $isSortable }) =>
     $isSortable &&
