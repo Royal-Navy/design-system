@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing, zIndex } from '@royalnavy/design-tokens'
 
 import { TIMELINE_BORDER_COLOR } from '../constants'
-
-const { color, spacing, zIndex } = selectors
 
 export interface StyledMonthProps {
   $hasThickBorder?: boolean

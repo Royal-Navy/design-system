@@ -1,10 +1,8 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { mq } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
 import { Modal } from '../../Modal'
 import { StyledMain } from '../../Modal/partials/StyledMain'
-
-const { mq } = selectors
 
 export const StyledDialog = styled(Modal)`
   ${StyledMain} {

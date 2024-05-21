@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 
 import { StyledHeadTitle } from './StyledHeadTitle'
-
-const { color, spacing } = selectors
 
 export const StyledHeadIcon = styled.div`
   display: inline-flex;

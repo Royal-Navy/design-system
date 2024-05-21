@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { fontSize, spacing, color, animation } = selectors
+import { animation, color, fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledText = styled.span`
   font-size: ${fontSize('base')};

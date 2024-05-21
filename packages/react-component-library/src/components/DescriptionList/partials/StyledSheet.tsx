@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { StyledDescriptionListProps } from './StyledDescriptionList'
-
-const { color } = selectors
 
 export const StyledSheet = styled.div<StyledDescriptionListProps>`
   height: auto;

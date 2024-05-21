@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { color, fontSize } = selectors
+import { color, fontSize } from '@royalnavy/design-tokens'
 
 export const StyledMessage = styled.div`
   font-size: ${fontSize('base')};

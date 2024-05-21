@@ -1,9 +1,7 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, zIndex } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 import { StyledTabSetProps } from '../../TabSet/partials/StyledTabSet'
-
-const { color, fontSize, zIndex } = selectors
 
 export interface StyledTabProps extends StyledTabSetProps {
   $isActive?: boolean

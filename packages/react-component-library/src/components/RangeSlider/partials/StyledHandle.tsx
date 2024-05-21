@@ -1,10 +1,8 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 import { transparentize } from 'polished'
 
 import { RANGE_SLIDER_HANDLE_COLOR } from '../constants'
-
-const { color } = selectors
 
 export const StyledHandle = styled.div`
   position: absolute;

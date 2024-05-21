@@ -5,7 +5,7 @@ import {
   IconError,
   IconCheckCircle,
 } from '@royalnavy/icon-library'
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing, zIndex } from '@royalnavy/design-tokens'
 import { useToaster, toast, resolveValue } from 'react-hot-toast'
 
 import { StyledToast } from './partials/StyledToast'
@@ -54,8 +54,6 @@ const getAppearanceIcon = (appearance: Appearance) => {
 
   return appearanceIconMap[appearance] || appearanceIconMap.info
 }
-
-const { spacing, zIndex } = selectors
 
 export const Toast = (props: ToastProps) => {
   const { dateTime, label, appearance = TOAST_APPEARANCE.INFO, ...rest } = props

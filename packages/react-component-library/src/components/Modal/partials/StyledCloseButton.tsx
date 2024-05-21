@@ -1,7 +1,5 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
-
-const { color } = selectors
 
 export const StyledCloseButton = styled.button`
   display: inline-flex;

@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { fontSize, spacing } = selectors
+import { fontSize, spacing } from '@royalnavy/design-tokens'
 
 interface StyledTableColumnProps {
   $isSortable?: boolean

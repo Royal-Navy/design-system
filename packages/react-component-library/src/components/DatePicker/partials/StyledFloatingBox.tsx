@@ -1,11 +1,9 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
 import { FloatingBox } from '../../../primitives'
 import { StyledArrow } from '../../../primitives/FloatingBox/partials/StyledArrow'
 import { StyledContent } from '../../../primitives/FloatingBox/partials/StyledContent'
-
-const { color } = selectors
 
 export const StyledFloatingBox = styled(FloatingBox)`
   padding: 0;

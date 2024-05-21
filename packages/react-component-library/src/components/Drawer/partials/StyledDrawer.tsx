@@ -1,11 +1,9 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, zIndex } from '@royalnavy/design-tokens'
 
 interface StyledDrawerProps {
   $isOpen?: boolean
 }
-
-const { color, zIndex } = selectors
 
 export const StyledDrawer = styled.div<StyledDrawerProps>`
   position: fixed;

@@ -1,11 +1,9 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, mq, spacing } from '@royalnavy/design-tokens'
 
 import { FloatingBoxSchemeType } from '../types'
 import { FLOATING_BOX_SCHEME } from '../constants'
 import { StyledArrow } from './StyledArrow'
-
-const { mq, color, spacing } = selectors
 
 interface StyledContentProps {
   $scheme: FloatingBoxSchemeType

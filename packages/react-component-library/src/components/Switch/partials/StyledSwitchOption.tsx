@@ -1,12 +1,10 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 
 interface StyledSwitchOptionProps {
   $isActive?: boolean
   $isDisabled?: boolean
 }
-
-const { spacing, color } = selectors
 
 export const StyledSwitchOption = styled.label<StyledSwitchOptionProps>`
   display: inline-flex;

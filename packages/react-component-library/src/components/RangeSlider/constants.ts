@@ -1,6 +1,4 @@
-import { selectors } from '@royalnavy/design-tokens'
-
-const { color } = selectors
+import { color } from '@royalnavy/design-tokens'
 
 export const RANGE_SLIDER_BG_COLOR = color('neutral', '200')
 export const RANGE_SLIDER_HANDLE_COLOR = color('action', '500')

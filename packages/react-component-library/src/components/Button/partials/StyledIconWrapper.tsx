@@ -1,11 +1,9 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 
 import { BUTTON_ICON_POSITION } from '../constants'
 import { ButtonIconPositionType } from '../Button'
 import { ComponentSizeType, COMPONENT_SIZE } from '../../Forms'
-
-const { spacing } = selectors
 
 interface StyledIconWrapperProps {
   $buttonHasText: boolean

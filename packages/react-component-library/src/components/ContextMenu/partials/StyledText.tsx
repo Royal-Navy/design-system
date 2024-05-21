@@ -1,13 +1,11 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize } from '@royalnavy/design-tokens'
 
 import { StyledContextMenuItem } from './StyledContextMenuItem'
 
 interface StyledTextProps {
   $hasIcon?: boolean
 }
-
-const { color, fontSize } = selectors
 
 export const StyledText = styled.span<StyledTextProps>`
   display: block;

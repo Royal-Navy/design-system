@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 import { fn } from '@storybook/test'
 import { StoryFn, Meta } from '@storybook/react'
 import { ColumnDef } from '@tanstack/react-table'
@@ -180,8 +180,6 @@ const columns = [
     enableSorting: false,
   },
 ]
-
-const { spacing } = selectors
 
 const Wrapper = styled.div`
   padding: ${spacing('4')};

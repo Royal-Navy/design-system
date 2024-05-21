@@ -6,7 +6,7 @@ import {
   ColorDanger500,
   ColorNeutral100,
   ColorNeutral200,
-  selectors,
+  fontSize,
 } from '@royalnavy/design-tokens'
 
 import {
@@ -23,8 +23,6 @@ import {
 } from '.'
 import { TIMELINE_BLOCK_SIZE } from './constants'
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
-
-const { fontSize } = selectors
 
 export default {
   component: Timeline,

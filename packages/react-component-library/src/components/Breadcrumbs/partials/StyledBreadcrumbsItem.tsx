@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { color, spacing, animation } = selectors
+import { animation, color, spacing } from '@royalnavy/design-tokens'
 
 export const StyledBreadcrumbsItem = styled.li`
   display: inline-flex;

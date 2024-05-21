@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { breakpoint, spacing } from '@royalnavy/design-tokens'
 
 import { ALERT_FOOTER_BORDER_COLOR } from '../constants'
-
-const { spacing, breakpoint } = selectors
 
 export const StyledFooter = styled.div`
   border-top: ${spacing('px')} solid ${ALERT_FOOTER_BORDER_COLOR};

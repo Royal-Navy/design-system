@@ -1,11 +1,9 @@
 import { rgba } from 'polished'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
 import { MAIN_HEIGHT } from './constants'
 import { ACTIVE_TAB_BORDER } from '../../../TabBase/partials/StyledTab'
-
-const { color, spacing } = selectors
 
 export const StyledBanner = styled.div<{ $withInlineNav?: boolean }>`
   display: flex;

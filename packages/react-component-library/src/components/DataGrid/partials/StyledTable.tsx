@@ -1,13 +1,11 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 
 interface StyledTableProps {
   $hasRowSelection?: boolean
   $isFullWidth?: boolean
   $hasSubRows?: boolean
 }
-
-const { color, spacing } = selectors
 
 export const StyledTable = styled.table<StyledTableProps>`
   table-layout: fixed;

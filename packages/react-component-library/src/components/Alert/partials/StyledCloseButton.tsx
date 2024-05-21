@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { breakpoint, fontSize, spacing } from '@royalnavy/design-tokens'
 
 import {
   ALERT_CLOSE_COLOR,
@@ -7,8 +7,6 @@ import {
   ALERT_CLOSE_BACKGROUND_COLOR,
   ALERT_CLOSE_COLOR_HOVER,
 } from '../constants'
-
-const { spacing, fontSize, breakpoint } = selectors
 
 export const StyledCloseButton = styled.button`
   margin-left: auto;

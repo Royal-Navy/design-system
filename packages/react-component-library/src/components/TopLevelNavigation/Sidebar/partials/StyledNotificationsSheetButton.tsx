@@ -1,12 +1,10 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 
 import { SheetButton, SheetButtonProps } from '../../Sheet/SheetButton'
 import { StyledNotificationDot } from './StyledNotificationDot'
 import { StyledNotificationsLabel } from './StyledNotificationsLabel'
-
-const { spacing, color } = selectors
 
 interface StyledNotificationsSheetButtonProps extends SheetButtonProps {
   isOpen: boolean

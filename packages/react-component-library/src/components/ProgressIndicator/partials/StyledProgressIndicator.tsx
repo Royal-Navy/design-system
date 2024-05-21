@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { spacing, fontSize } = selectors
+import { fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledProgressIndicator = styled.div`
   position: fixed;

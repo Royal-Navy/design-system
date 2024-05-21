@@ -1,7 +1,5 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
-
-const { spacing, color, fontSize } = selectors
 
 export const StyledRow = styled.div`
   border-bottom: solid 1px ${color('neutral', '100')};

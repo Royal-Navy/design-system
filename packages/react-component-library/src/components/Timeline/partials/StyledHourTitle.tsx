@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, zIndex } from '@royalnavy/design-tokens'
 
 import { TIMELINE_BG_COLOR } from '../constants'
-
-const { color, fontSize, zIndex } = selectors
 
 export const StyledHourTitle = styled.span`
   font-weight: 600;

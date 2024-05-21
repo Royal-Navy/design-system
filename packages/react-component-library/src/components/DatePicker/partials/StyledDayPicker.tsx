@@ -1,13 +1,11 @@
 import DayPicker from 'react-day-picker'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 import { BUTTON_VARIANT } from '../../Button'
 import { COMPONENT_SIZE } from '../../Forms'
 import { getButtonStyles } from '../../Button/partials/StyledButton'
 import { isIE11 } from '../../../helpers'
-
-const { color, spacing, fontSize } = selectors
 
 interface StyledDayPickerProps {
   $isRange: boolean

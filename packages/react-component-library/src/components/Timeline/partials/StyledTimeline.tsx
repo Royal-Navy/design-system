@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { color, zIndex } = selectors
+import { color, zIndex } from '@royalnavy/design-tokens'
 
 export const StyledTimeline = styled.div`
   position: relative;

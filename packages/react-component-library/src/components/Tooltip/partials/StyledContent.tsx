@@ -1,9 +1,7 @@
 import styled, { css, CSSProp } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing, zIndex } from '@royalnavy/design-tokens'
 
 import { TooltipPositionType } from '../Tooltip'
-
-const { color, spacing, zIndex } = selectors
 
 const TOOLTIP_BORDER_THICK = 1
 const TOOLTIP_INNER = 4

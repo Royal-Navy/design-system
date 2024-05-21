@@ -1,12 +1,10 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { fontSize, spacing } from '@royalnavy/design-tokens'
 
 import {
   StyledLabel as StyledLabelBase,
   StyledLabelProps,
 } from '../../../styled-components/partials/StyledLabel'
-
-const { fontSize, spacing } = selectors
 
 export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
   padding-bottom: ${spacing('2')};

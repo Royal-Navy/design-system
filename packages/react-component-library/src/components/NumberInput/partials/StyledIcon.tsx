@@ -1,7 +1,5 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
-
-const { spacing, color } = selectors
 
 export const StyledIcon = styled.div`
   position: relative;

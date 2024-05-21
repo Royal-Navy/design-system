@@ -1,7 +1,5 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
-
-const { spacing } = selectors
 
 export const StyledHexValue = styled.div`
   min-width: ${spacing('15')};

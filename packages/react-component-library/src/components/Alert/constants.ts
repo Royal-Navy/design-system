@@ -1,6 +1,4 @@
-import { selectors } from '@royalnavy/design-tokens'
-
-const { color } = selectors
+import { color } from '@royalnavy/design-tokens'
 
 const ALERT_VARIANT = {
   DANGER: 'danger',

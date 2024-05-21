@@ -1,10 +1,8 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 
 import { COMPONENT_SIZE } from '../../Forms'
 import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInput/partials/StyledInput'
-
-const { color, fontSize, spacing } = selectors
 
 export interface StyledOptionsProps {
   $isHighlighted?: boolean

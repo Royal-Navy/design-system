@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { animation, color, fontSize } from '@royalnavy/design-tokens'
 
 import { ComponentSizeType } from '../../components/Forms'
-
-const { animation, color, fontSize } = selectors
 
 export interface StyledLabelProps {
   $hasContent: boolean

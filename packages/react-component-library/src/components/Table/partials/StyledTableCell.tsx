@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { spacing, fontSize, color } = selectors
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledTableCell = styled.td`
   padding: ${spacing('4')} ${spacing('4')};

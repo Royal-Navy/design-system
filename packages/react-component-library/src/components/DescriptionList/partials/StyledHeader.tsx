@@ -1,10 +1,8 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { animation, color, spacing } from '@royalnavy/design-tokens'
 
 import { StyledAction } from './StyledAction'
 import { StyledDescriptionListProps } from './StyledDescriptionList'
-
-const { animation, color, spacing } = selectors
 
 export const StyledHeader = styled.button<StyledDescriptionListProps>`
   position: relative;

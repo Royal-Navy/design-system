@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { CheckmarkProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
-
-const { color } = selectors
 
 export const StyledCheckmark = styled.span<CheckmarkProps>`
   display: block;

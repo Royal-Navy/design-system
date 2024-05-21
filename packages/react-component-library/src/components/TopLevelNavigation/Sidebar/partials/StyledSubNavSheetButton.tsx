@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 
 import { SheetButton } from '../../Sheet/SheetButton'
-
-const { spacing, color } = selectors
 
 export const StyledSubNavSheetButton = styled(SheetButton)`
   display: inline-flex;

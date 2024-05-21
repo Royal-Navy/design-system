@@ -1,13 +1,11 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { StyledNavItem } from './StyledNavItem'
 
 interface StyledNavItemIconProps {
   isOpen?: boolean
 }
-
-const { color } = selectors
 
 export const StyledNavItemIcon = styled.div<StyledNavItemIconProps>`
   display: inline-flex;

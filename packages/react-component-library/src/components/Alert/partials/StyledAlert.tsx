@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { mq, spacing } from '@royalnavy/design-tokens'
 
 import { AlertVariantType } from '../Alert'
 
@@ -16,8 +16,6 @@ import {
 interface StyledAlertProps {
   $variant: AlertVariantType
 }
-
-const { spacing, mq } = selectors
 
 const STATE_VARIANT_MAP = {
   [ALERT_VARIANT.DANGER]: DANGER_ALERT_STATE_COLOR,

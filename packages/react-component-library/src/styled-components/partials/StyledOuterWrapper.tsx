@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { COMPONENT_SIZE, ComponentSizeType } from '../../components/Forms'
-
-const { color } = selectors
 
 // Note: These are used with box shadows rather than borders, and for box
 // shadows the values are taken to the inner edge of the shadow (rather

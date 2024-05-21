@@ -1,14 +1,12 @@
 import React, { useRef, useEffect } from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 
 import { Dialog, DialogProps } from '.'
 import { ModalImperativeHandle } from '../Modal'
 import { Button } from '../Button'
 import { useIsInDocs } from '../../../.storybook/hooks/useIsInDocs'
-
-const { spacing } = selectors
 
 export default {
   component: Dialog,

@@ -1,10 +1,8 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
 import { StyledInlineButton } from '../../InlineButtons/partials/StyledInlineButton'
-
-const { color } = selectors
 
 interface StyledDividerProps {
   $size: ComponentSizeType

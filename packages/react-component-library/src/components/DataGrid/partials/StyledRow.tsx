@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 interface StyledRowProps {
   $hasHover?: boolean
@@ -7,8 +7,6 @@ interface StyledRowProps {
   $depth?: number
   $isLastInBranch?: boolean
 }
-
-const { color } = selectors
 
 export const StyledRow = styled.tr<StyledRowProps>`
   position: relative;

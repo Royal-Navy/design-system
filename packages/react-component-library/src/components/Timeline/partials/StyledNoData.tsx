@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { color, spacing, zIndex } = selectors
+import { color, spacing, zIndex } from '@royalnavy/design-tokens'
 
 export const StyledNoData = styled.div`
   display: flex;

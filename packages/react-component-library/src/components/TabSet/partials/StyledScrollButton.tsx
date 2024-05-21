@@ -1,8 +1,6 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 import { ACTIVE_TAB_HEIGHT } from '../../TabBase/partials/StyledTab'
-
-const { color } = selectors
 
 export const StyledScrollButton = styled.button`
   background: ${color('neutral', 'white')};

@@ -1,13 +1,11 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize } from '@royalnavy/design-tokens'
 
 interface StyledLabelProps {
   $marginLeft: string
   $width: string
   $left: string
 }
-
-const { fontSize, color } = selectors
 
 export const StyledLabel = styled.span<StyledLabelProps>`
   position: absolute;

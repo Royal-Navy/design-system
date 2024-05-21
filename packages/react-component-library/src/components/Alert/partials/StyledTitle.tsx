@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { fontSize, spacing } from '@royalnavy/design-tokens'
 
 import { AlertVariantType } from '../Alert'
 
@@ -14,8 +14,6 @@ import {
 interface StyledTitleProps {
   $variant: AlertVariantType
 }
-
-const { spacing, fontSize } = selectors
 
 const TITLE_VARIANT_MAP = {
   [ALERT_VARIANT.DANGER]: DANGER_ALERT_TITLE_COLOR,

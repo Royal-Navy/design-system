@@ -1,11 +1,9 @@
 import { position } from 'polished'
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { StyledCheckbox } from './StyledCheckbox'
 import { CheckmarkProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
-
-const { color } = selectors
 
 function getCheckboxActiveStyle() {
   return css`

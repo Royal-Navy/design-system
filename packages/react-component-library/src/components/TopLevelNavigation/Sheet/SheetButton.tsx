@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 
@@ -9,8 +9,6 @@ export interface SheetButtonProps extends ComponentWithClass {
   icon: React.ReactElement
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
-
-const { spacing } = selectors
 
 const StyledSheetButton = styled.button`
   background: transparent;

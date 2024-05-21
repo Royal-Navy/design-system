@@ -1,4 +1,4 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 const ACCESSIBLE_DATE_FORMAT = 'do MMMM y'
 
@@ -27,8 +27,6 @@ const DISPLAY_THRESHOLDS = {
 const NO_DATA_MESSAGE = 'No data available'
 
 const WEEK_START = 1 // Monday
-
-const { color } = selectors
 
 const TIMELINE_BORDER_COLOR = color('neutral', '100')
 const TIMELINE_BG_COLOR = color('neutral', '000')

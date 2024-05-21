@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { color, fontSize, spacing, zIndex } = selectors
+import { color, fontSize, spacing, zIndex } from '@royalnavy/design-tokens'
 
 interface StyledTodayMarkerProps {
   $leftPx: string

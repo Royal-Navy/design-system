@@ -1,12 +1,10 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 
 interface StyledCellProps {
   $alignment?: 'left' | 'right' | 'center'
   $width?: number
 }
-
-const { spacing, fontSize, color } = selectors
 
 export const StyledCell = styled.td<StyledCellProps>`
   padding: ${spacing('9')} ${spacing('4')} ${spacing('9')} ${spacing('8')};

@@ -7,7 +7,7 @@ import {
 } from '@testing-library/react'
 import { ColumnDef } from '@tanstack/react-table'
 import { userEvent, PointerEventsCheckLevel } from '@testing-library/user-event'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { DataGrid } from './DataGrid'
 import { Button } from '../Button'
@@ -17,8 +17,6 @@ type DataRow = {
   second: string
   third: string
 }
-
-const { color } = selectors
 
 async function hackyWaitFor(customDelay?: number) {
   // @tanstack/react-table updates asynchronously and

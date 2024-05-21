@@ -1,13 +1,11 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, shadow } from '@royalnavy/design-tokens'
 
 import { StyledButton } from '../../Button/partials/StyledButton'
 
 interface StyledButtonGroupProps {
   $size?: string
 }
-
-const { color, shadow } = selectors
 
 export const StyledButtonGroup = styled.div<StyledButtonGroupProps>`
   position: relative;

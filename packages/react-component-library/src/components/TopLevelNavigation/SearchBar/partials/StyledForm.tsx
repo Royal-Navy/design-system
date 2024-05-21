@@ -1,11 +1,9 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing, zIndex } from '@royalnavy/design-tokens'
 
 import { StyledInput } from '../../../TextInput/partials/StyledInput'
 import { StyledOuterWrapper } from '../../../TextInput/partials/StyledOuterWrapper'
 import { StyledTextInput } from '../../../TextInput/partials/StyledTextInput'
-
-const { zIndex, color, spacing } = selectors
 
 export const StyledForm = styled.form`
   z-index: ${zIndex('overlay', 1)};
