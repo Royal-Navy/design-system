@@ -6,38 +6,44 @@ import _noop from 'lodash/noop'
 import {
   flexRender,
   getCoreRowModel,
+  getExpandedRowModel,
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
 import type {
-  ColumnDef,
   Cell,
-  Row,
+  ColumnDef,
+  ExpandedState,
   Header,
   HeaderGroup,
-  SortingState,
-  SortDirection,
+  Row,
   RowSelectionState,
+  SortDirection,
+  SortingState,
   TableOptions,
 } from '@tanstack/react-table'
 import {
-  IconSwapVert,
   IconArrowDownward,
   IconArrowUpward,
+  IconKeyboardArrowDown,
+  IconKeyboardArrowRight,
+  IconSwapVert,
 } from '@royalnavy/icon-library'
 
 import { IndeterminateCheckbox } from '../Checkbox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TABLE_SORT_ORDER } from '../Table'
 import {
-  StyledDataGrid,
-  StyledCaption,
-  StyledTable,
-  StyledHead,
   StyledBody,
+  StyledCaption,
   StyledCell,
   StyledCol,
+  StyledControlCell,
+  StyledDataGrid,
+  StyledExpandButton,
+  StyledHead,
   StyledRow,
+  StyledTable,
 } from './partials'
 
 type AriaSortType = 'ascending' | 'descending' | 'none'
@@ -123,30 +129,71 @@ function getAriaSort(
   return SORT_ORDER_ARIA_SORT_MAP[sortOrder]
 }
 
+function isLastInBranch<T>(row: Row<T>, allRows: Row<T>[]) {
+  if (row.depth === 0) {
+    return false
+  }
+
+  const parentRow = allRows.find((r) => r.id === row.parentId)
+
+  if (!parentRow) {
+    return false
+  }
+
+  const siblingRows = parentRow.subRows
+  const lastSiblingRow = siblingRows[siblingRows.length - 1]
+
+  return lastSiblingRow.id === row.id
+}
+
 function getColumns<T>(
   columns: ColumnDef<T>[],
   enableRowSelection?: boolean,
-  hideCheckboxes?: boolean
+  hideCheckboxes?: boolean,
+  hasSubRows?: boolean
 ): ColumnDef<T>[] {
-  if (!enableRowSelection || hideCheckboxes) {
+  if ((!enableRowSelection || hideCheckboxes) && !hasSubRows) {
     return columns
   }
 
-  const rowSelectionColumn: ColumnDef<T> = {
-    id: 'select',
+  const showCheckboxes = enableRowSelection && !hideCheckboxes
+
+  const rowSelectExpandColumn: ColumnDef<T> = {
+    id: 'select-expand',
     header: ({
       table: {
         getIsAllRowsSelected,
         getIsSomeRowsSelected,
         getToggleAllRowsSelectedHandler,
+        getToggleAllRowsExpandedHandler,
+        getIsAllRowsExpanded,
+        getCanSomeRowsExpand,
       },
     }) => (
-      <IndeterminateCheckbox
-        checked={getIsAllRowsSelected()}
-        indeterminate={getIsSomeRowsSelected()}
-        onChange={getToggleAllRowsSelectedHandler()}
-        aria-label="Select / deselect all rows"
-      />
+      <>
+        {showCheckboxes && (
+          <IndeterminateCheckbox
+            checked={getIsAllRowsSelected()}
+            indeterminate={getIsSomeRowsSelected()}
+            onChange={getToggleAllRowsSelectedHandler()}
+            aria-label="Select / deselect all rows"
+          />
+        )}
+        {getCanSomeRowsExpand() && (
+          <StyledExpandButton
+            {...{
+              onClick: getToggleAllRowsExpandedHandler(),
+            }}
+            aria-label="Expand / collapse all rows"
+          >
+            {getIsAllRowsExpanded() ? (
+              <IconKeyboardArrowDown />
+            ) : (
+              <IconKeyboardArrowRight />
+            )}
+          </StyledExpandButton>
+        )}
+      </>
     ),
     cell: ({
       row: {
@@ -154,20 +201,44 @@ function getColumns<T>(
         getCanSelect,
         getIsSomeSelected,
         getToggleSelectedHandler,
+        getToggleExpandedHandler,
+        getIsExpanded,
+        getCanExpand,
         id,
+        depth,
       },
     }) => (
-      <IndeterminateCheckbox
-        checked={getIsSelected()}
-        disabled={!getCanSelect()}
-        indeterminate={getIsSomeSelected()}
-        onChange={getToggleSelectedHandler()}
-        aria-labelledby={id}
-      />
+      <StyledControlCell $depth={depth}>
+        {showCheckboxes && (
+          <IndeterminateCheckbox
+            checked={getIsSelected()}
+            disabled={!getCanSelect()}
+            indeterminate={getIsSomeSelected()}
+            onChange={getToggleSelectedHandler()}
+            aria-labelledby={id}
+          />
+        )}
+        {getCanExpand() && (
+          <StyledExpandButton
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+              e.stopPropagation()
+              getToggleExpandedHandler()()
+            }}
+            aria-expanded={getIsExpanded()}
+            aria-label="Expand / collapse row"
+          >
+            {getIsExpanded() ? (
+              <IconKeyboardArrowDown />
+            ) : (
+              <IconKeyboardArrowRight />
+            )}
+          </StyledExpandButton>
+        )}
+      </StyledControlCell>
     ),
   }
 
-  return [rowSelectionColumn, ...columns]
+  return [rowSelectExpandColumn, ...columns]
 }
 
 export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
@@ -186,24 +257,41 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     ...rest
   } = props
 
+  const [sorting, setSorting] = useState<SortingState>([])
+
+  const [expanded, setExpanded] = useState<ExpandedState>({})
+
   const [rowSelection, setRowSelection] = useState<RowSelectionState>(
     !!enableRowSelection && initialRowSelection ? initialRowSelection : {}
   )
 
-  const [sorting, setSorting] = useState<SortingState>([])
+  const hasSubRows = useMemo(() => {
+    // @ts-expect-error
+    return data.some((row) => row?.subRows?.length > 0)
+  }, [data])
 
   const table = useReactTable({
     data,
-    columns: getColumns(columns, !!enableRowSelection, hideCheckboxes),
+    columns: getColumns(
+      columns,
+      !!enableRowSelection,
+      hideCheckboxes,
+      hasSubRows
+    ),
     state: {
       sorting,
       rowSelection,
+      expanded,
     },
     enableRowSelection,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
+    onExpandedChange: setExpanded,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    getExpandedRowModel: getExpandedRowModel(),
+    // @ts-expect-error
+    getSubRows: (row) => row?.subRows || [],
     debugTable,
     ...rest,
   })
@@ -225,6 +313,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
       <StyledTable
         $hasRowSelection={!!enableRowSelection && !hideCheckboxes}
         $isFullWidth={isFullWidth}
+        $hasSubRows={hasSubRows}
         role="grid"
       >
         {caption && <StyledCaption>{caption}</StyledCaption>}
@@ -278,10 +367,17 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
                 id: rowId,
                 getToggleSelectedHandler,
                 getIsSelected,
+                depth,
+                parentId,
               }: Row<T>) => (
                 <StyledRow
                   key={rowId}
                   id={rowId}
+                  $depth={depth}
+                  $isLastInBranch={isLastInBranch(
+                    { id: rowId, parentId, depth } as Row<T>,
+                    table.getRowModel().rows
+                  )}
                   $hasHover={!!enableRowSelection && hasHover}
                   $hasFocus={
                     !!enableRowSelection && hasHover && getIsSelected()

@@ -20,7 +20,7 @@ type DataRow = {
 
 const { color } = selectors
 
-async function hackyWaitForHook(customDelay?: number) {
+async function hackyWaitFor(customDelay?: number) {
   // @tanstack/react-table updates asynchronously and
   // waitFor swallows failed assertions (untrustworthy)
   return new Promise((resolve) => setTimeout(resolve, customDelay ?? 100))
@@ -144,7 +144,7 @@ describe('DataGrid', () => {
       pointerEventsCheck: PointerEventsCheckLevel.Never,
     })
 
-    await hackyWaitForHook()
+    await hackyWaitFor()
 
     expect(checkboxes[0]).not.toBeChecked()
     expect(checkboxes[1]).toBeChecked()
@@ -162,7 +162,7 @@ describe('DataGrid', () => {
       />
     )
 
-    await hackyWaitForHook()
+    await hackyWaitFor()
 
     const checkboxes = screen.getAllByRole('checkbox')
 
@@ -183,7 +183,7 @@ describe('DataGrid', () => {
       pointerEventsCheck: PointerEventsCheckLevel.Never,
     })
 
-    await hackyWaitForHook()
+    await hackyWaitFor()
 
     expect(rows[1]).toHaveStyleRule('background-color', color('action', '100'))
 
@@ -191,7 +191,7 @@ describe('DataGrid', () => {
       pointerEventsCheck: PointerEventsCheckLevel.Never,
     })
 
-    await hackyWaitForHook()
+    await hackyWaitFor()
 
     expect(rows[1]).not.toHaveStyleRule('background-color')
   })
@@ -247,7 +247,7 @@ describe('DataGrid', () => {
       pointerEventsCheck: PointerEventsCheckLevel.Never,
     })
 
-    await hackyWaitForHook()
+    await hackyWaitFor()
 
     expect(onSelectedRowsChange).toHaveBeenCalledTimes(2)
     expect(onSelectedRowsChange).toHaveBeenNthCalledWith(1, [])
@@ -322,7 +322,7 @@ describe('DataGrid', () => {
     describe('when the second cell header is clicked', () => {
       beforeEach(async () => {
         userEvent.click(screen.getByText('Second'))
-        await hackyWaitForHook()
+        await hackyWaitFor()
       })
 
       it('should have sort icons', () => {
@@ -351,7 +351,7 @@ describe('DataGrid', () => {
     describe('when the first cell header is clicked for the first time', () => {
       beforeEach(async () => {
         userEvent.click(screen.getByText('First'))
-        await hackyWaitForHook()
+        await hackyWaitFor()
       })
 
       it('should have sort icons', () => {
@@ -390,7 +390,7 @@ describe('DataGrid', () => {
       describe('when the first cell header is clicked for the second time', () => {
         beforeEach(async () => {
           userEvent.click(screen.getByText('First'))
-          await hackyWaitForHook()
+          await hackyWaitFor()
         })
 
         it('should have sort icons', () => {
@@ -429,7 +429,7 @@ describe('DataGrid', () => {
         describe('when the first cell header is clicked for the third time', () => {
           beforeEach(async () => {
             userEvent.click(screen.getByText('First'))
-            await hackyWaitForHook()
+            await hackyWaitFor()
           })
 
           it('should have sort icons', () => {
@@ -460,9 +460,9 @@ describe('DataGrid', () => {
     describe('when the first cell header is clicked once and then the third cell header is clicked', () => {
       beforeEach(async () => {
         userEvent.click(screen.getByText('First'))
-        await hackyWaitForHook()
+        await hackyWaitFor()
         userEvent.click(screen.getByText('Third'))
-        await hackyWaitForHook()
+        await hackyWaitFor()
       })
 
       it('should have sort icons', () => {
@@ -547,6 +547,114 @@ describe('DataGrid', () => {
       expect(secondRowHeaders[0]).toHaveTextContent('First')
       expect(secondRowHeaders[1]).toHaveTextContent('Second')
       expect(secondRowHeaders[2]).toHaveTextContent('Third')
+    })
+  })
+
+  describe('with sub rows', () => {
+    const subRowData = [
+      {
+        first: 'b1',
+        second: 'b2',
+        third: 'c6',
+        subRows: [
+          {
+            first: 'b1',
+            second: 'b2',
+            third: 'c6',
+          },
+          {
+            first: 'b1',
+            second: 'b2',
+            third: 'c6',
+          },
+        ],
+      },
+      {
+        first: 'a1',
+        second: 'a2',
+        third: 'c5',
+        subRows: [
+          {
+            first: 'a1',
+            second: 'a2',
+            third: 'c5',
+          },
+          {
+            first: 'a1',
+            second: 'a2',
+            third: 'c5',
+          },
+        ],
+      },
+      {
+        first: 'c1',
+        second: 'c2',
+        third: 'c4',
+        subRows: [
+          {
+            first: 'c1',
+            second: 'c2',
+            third: 'c4',
+          },
+          {
+            first: 'c1',
+            second: 'c2',
+            third: 'c4',
+          },
+        ],
+      },
+    ]
+
+    beforeEach(() => {
+      render(<DataGrid data={subRowData} columns={columns} />)
+    })
+
+    it('should render only the top level rows when collapsed', () => {
+      const rows = screen.getAllByRole('row')
+
+      expect(rows).toHaveLength(4)
+
+      expect(rows[1]).toHaveTextContent('b1')
+      expect(rows[2]).toHaveTextContent('a1')
+      expect(rows[3]).toHaveTextContent('c1')
+    })
+
+    it('should show all the rows when the "Expand all rows" button is clicked', async () => {
+      const expandAllButton = screen.getByRole('button', {
+        name: 'Expand / collapse all rows',
+      })
+
+      expect(screen.getAllByRole('row')).toHaveLength(4)
+
+      userEvent.click(expandAllButton)
+      await hackyWaitFor()
+
+      expect(screen.getAllByRole('row')).toHaveLength(10)
+
+      const rows = screen.getAllByRole('row')
+
+      expect(rows[1]).toHaveTextContent('b1')
+      expect(rows[2]).toHaveTextContent('b1') // Sub row
+      expect(rows[3]).toHaveTextContent('b1') // Sub row
+      expect(rows[4]).toHaveTextContent('a1')
+      expect(rows[5]).toHaveTextContent('a1') // Sub row
+      expect(rows[6]).toHaveTextContent('a1') // Sub row
+      expect(rows[7]).toHaveTextContent('c1')
+      expect(rows[8]).toHaveTextContent('c1') // Sub row
+      expect(rows[9]).toHaveTextContent('c1') // Sub row
+    })
+
+    it('should show individual groups of sub rows when an "Expand row" button is clicked', async () => {
+      const expandRowButtons = screen.getAllByRole('button', {
+        name: 'Expand / collapse row',
+      })
+
+      expect(screen.getAllByRole('row')).toHaveLength(4)
+
+      userEvent.click(expandRowButtons[0])
+      await hackyWaitFor()
+
+      expect(screen.getAllByRole('row')).toHaveLength(6)
     })
   })
 })

@@ -14,6 +14,7 @@ type Order = {
   productName: string
   quantity: number
   price: string
+  subRows?: Order[]
 }
 
 const disableEmptyTableHeaderRule = {
@@ -80,6 +81,67 @@ const data: Order[] = [
     productName: 'Licensed Steel Hat',
     quantity: 84,
     price: '£415.00',
+  },
+  {
+    id: 8,
+    productName: 'Intelligent Steel Ball',
+    quantity: 14,
+    price: '£441.00',
+  },
+  {
+    id: 9,
+    productName: 'Licensed Concrete Bacon',
+    quantity: 68,
+    price: '£337.00',
+  },
+  {
+    id: 10,
+    productName: 'Practical Wooden Ball',
+    quantity: 10,
+    price: '£673.00',
+  },
+]
+
+const subRowsData = [
+  {
+    id: 1,
+    productName: 'Unbranded Steel Sausages',
+    quantity: 59,
+    price: '£782.00',
+    subRows: [
+      {
+        id: 2,
+        productName: 'Modern Plastic Sausages',
+        quantity: 38,
+        price: '£175.00',
+      },
+      {
+        id: 3,
+        productName: 'Oriental Bronze Tuna',
+        quantity: 34,
+        price: '£72.00',
+      },
+    ],
+  },
+  {
+    id: 4,
+    productName: 'Rustic Steel Bike',
+    quantity: 59,
+    price: '£693.00',
+    subRows: [
+      {
+        id: 5,
+        productName: 'Electronic Frozen Chips',
+        quantity: 79,
+        price: '£837.00',
+      },
+      {
+        id: 6,
+        productName: 'Small Bronze Computer',
+        quantity: 86,
+        price: '£694.00',
+      },
+    ],
   },
   {
     id: 8,
@@ -335,7 +397,7 @@ const groupedColumns = [
     header: 'Group 1',
     columns: [
       {
-        header: 'Name',
+        header: 'Product Name',
         accessorKey: 'productName',
         enableSorting: false,
       },
@@ -373,6 +435,22 @@ ColumnGrouping.args = {
   onSelectedRowsChange: fn(),
 }
 
+export const ExpandableRows: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
+}
+
+ExpandableRows.storyName = 'Expandable rows'
+ExpandableRows.args = {
+  columns,
+  data: subRowsData,
+  isFullWidth: true,
+  onSelectedRowsChange: fn(),
+}
+
 const mergedColumns = groupedColumns.map((group) => ({
   ...group,
   columns: group.columns.map((column) => ({
@@ -391,8 +469,8 @@ export const KitchenSink: StoryFn<typeof DataGrid> = (props) => {
       <DataGrid
         {...props}
         enableRowSelection
-        hasHover
         isFullWidth
+        hasHover
         caption="Example Caption"
       />
     </Wrapper>
@@ -403,12 +481,9 @@ KitchenSink.storyName = 'Kitchen sink'
 KitchenSink.parameters = disableEmptyTableHeaderRule
 KitchenSink.args = {
   columns: mergedColumns,
-  data,
+  data: subRowsData,
   initialRowSelection: {
     1: true,
-    3: true,
-    4: true,
-    5: true,
   },
   onSelectedRowsChange: fn(),
 }

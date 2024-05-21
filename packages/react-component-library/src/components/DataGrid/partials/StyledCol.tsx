@@ -18,7 +18,7 @@ export const StyledCol = styled.th<StyledColProps>`
   color: ${color('neutral', '600')};
   font-weight: 700;
   text-align: left;
-  text-transform: 'capitalize';
+  text-transform: capitalize;
   font-size: ${fontSize('s')};
 
   > div {
@@ -29,7 +29,6 @@ export const StyledCol = styled.th<StyledColProps>`
 
     & svg {
       height: 1rem;
-      margin-left: ${spacing('2')};
     }
   }
 
