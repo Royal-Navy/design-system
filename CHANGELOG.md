@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.9.0](https://github.com/Royal-Navy/design-system/compare/4.8.1...4.9.0) (2024-05-21)
+
+### Features
+
+- **DataGrid:** Add column grouping ([c443f69](https://github.com/Royal-Navy/design-system/commit/c443f6902ff2e238ac11c855a437f0ed4ae50775))
+- **DataGrid:** Update hover and selection state colours ([8dcce95](https://github.com/Royal-Navy/design-system/commit/8dcce9532c1724f2b266d8f80546d75b7c5deb97))
+
 ## [4.8.1](https://github.com/Royal-Navy/design-system/compare/4.8.0...4.8.1) (2024-05-20)
 
 **Note:** Version bump only for package royal-navy-design-system
