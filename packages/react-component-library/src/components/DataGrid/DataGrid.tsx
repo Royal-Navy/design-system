@@ -51,7 +51,12 @@ type AriaSortType = 'ascending' | 'descending' | 'none'
 export interface DataGridProps<T extends object>
   extends Omit<
       TableOptions<T>,
-      'state' | 'data' | 'columns' | 'getCoreRowModel' | 'getSortedRowModel'
+      | 'state'
+      | 'data'
+      | 'columns'
+      | 'getCoreRowModel'
+      | 'getSortedRowModel'
+      | 'onExpandedChange'
     >,
     Omit<ComponentWithClass, 'children'> {
   /**
@@ -86,6 +91,10 @@ export interface DataGridProps<T extends object>
    * Optional handler invoked when the selected rows change.
    */
   onSelectedRowsChange?: (rows: T[]) => void
+  /**
+   * Optional handler invoked when the expanded rows change.
+   */
+  onExpandedChange?: (expanded: ExpandedState) => void
 }
 
 const SORT_ORDER_ICONS_MAP = {
@@ -134,12 +143,7 @@ function isLastInBranch<T>(row: Row<T>, allRows: Row<T>[]) {
     return false
   }
 
-  const parentRow = allRows.find((r) => r.id === row.parentId)
-
-  if (!parentRow) {
-    return false
-  }
-
+  const parentRow = allRows.find((r) => r.id === row.parentId)!
   const siblingRows = parentRow.subRows
   const lastSiblingRow = siblingRows[siblingRows.length - 1]
 
@@ -181,9 +185,7 @@ function getColumns<T>(
         )}
         {getCanSomeRowsExpand() && (
           <StyledExpandButton
-            {...{
-              onClick: getToggleAllRowsExpandedHandler(),
-            }}
+            onClick={getToggleAllRowsExpandedHandler()}
             aria-label="Expand / collapse all rows"
           >
             {getIsAllRowsExpanded() ? (
@@ -254,6 +256,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     isFullWidth,
     className,
     onSelectedRowsChange = _noop,
+    onExpandedChange = _noop,
     ...rest
   } = props
 
@@ -301,6 +304,10 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
       table.getSelectedRowModel().flatRows.map(({ original }) => original)
     )
   }, [rowSelection, table, onSelectedRowsChange])
+
+  useEffect(() => {
+    onExpandedChange?.(expanded)
+  }, [expanded, onExpandedChange])
 
   const hasGroupedHeaders = useMemo(() => {
     return table.getHeaderGroups().reduce((acc, group) => {

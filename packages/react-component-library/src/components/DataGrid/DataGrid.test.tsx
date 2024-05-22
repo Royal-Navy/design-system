@@ -603,8 +603,16 @@ describe('DataGrid', () => {
       },
     ]
 
+    const onExpandedChangeStub = jest.fn()
+
     beforeEach(() => {
-      render(<DataGrid data={subRowData} columns={columns} />)
+      render(
+        <DataGrid
+          data={subRowData}
+          columns={columns}
+          onExpandedChange={onExpandedChangeStub}
+        />
+      )
     })
 
     it('should render only the top level rows when collapsed', () => {
@@ -640,6 +648,8 @@ describe('DataGrid', () => {
       expect(rows[7]).toHaveTextContent('c1')
       expect(rows[8]).toHaveTextContent('c1') // Sub row
       expect(rows[9]).toHaveTextContent('c1') // Sub row
+
+      expect(onExpandedChangeStub).toHaveBeenNthCalledWith(3, true)
     })
 
     it('should show individual groups of sub rows when an "Expand row" button is clicked', async () => {

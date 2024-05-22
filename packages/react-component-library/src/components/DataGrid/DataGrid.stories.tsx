@@ -214,6 +214,7 @@ Default.args = {
   data,
   isFullWidth: true,
   onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
 }
 
 const columnsWithSorting = columns.map((item) => ({
@@ -234,6 +235,7 @@ Sorting.args = {
   data,
   isFullWidth: true,
   onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
 }
 
 Sorting.parameters = {
@@ -270,6 +272,7 @@ ArbitraryCellContent.args = {
   data,
   isFullWidth: true,
   onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
 }
 
 ArbitraryCellContent.parameters = {
@@ -301,6 +304,7 @@ RowSelection.args = {
   },
   isFullWidth: true,
   onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
 }
 
 RowSelection.parameters = {
@@ -332,6 +336,7 @@ RowSelectionWithHover.args = {
   },
   isFullWidth: true,
   onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
 }
 
 export const Caption: StoryFn<typeof DataGrid> = (props) => {
@@ -347,6 +352,7 @@ Caption.args = {
   data,
   isFullWidth: true,
   onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
 }
 
 const columnsWithSizing = columns.map((item) => ({
@@ -367,6 +373,7 @@ ColumnSizing.args = {
   columns: columnsWithSizing,
   data,
   onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
 }
 
 const columnsWithAlignment = columns.map((item) => ({
@@ -388,6 +395,7 @@ ColumnAlignment.args = {
   data,
   isFullWidth: true,
   onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
 }
 
 const groupedColumns = [
@@ -431,6 +439,7 @@ ColumnGrouping.args = {
   data,
   isFullWidth: true,
   onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
 }
 
 export const ExpandableRows: StoryFn<typeof DataGrid> = (props) => {
@@ -447,6 +456,7 @@ ExpandableRows.args = {
   data: subRowsData,
   isFullWidth: true,
   onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
 }
 
 const mergedColumns = groupedColumns.map((group) => ({
@@ -484,4 +494,5 @@ KitchenSink.args = {
     1: true,
   },
   onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
 }
