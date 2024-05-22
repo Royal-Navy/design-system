@@ -1,12 +1,10 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 
 import {
   getTransitionOpacity,
   TransitionProps,
 } from '../../../../styled-components'
-
-const { color, fontSize, spacing } = selectors
 
 export const StyledNotificationsLabel = styled.span<TransitionProps>`
   flex: 1;

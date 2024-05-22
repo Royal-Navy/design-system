@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 
 import { StyledContent } from '../../../../primitives/FloatingBox/partials/StyledContent'
-
-const { spacing, color } = selectors
 
 export const StyledNav = styled.nav`
   height: 100%;

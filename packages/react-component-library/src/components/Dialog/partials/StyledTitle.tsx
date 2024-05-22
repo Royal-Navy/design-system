@@ -1,7 +1,5 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, mq, spacing } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
-
-const { color, fontSize, mq, spacing } = selectors
 
 export const StyledTitle = styled.span`
   display: block;

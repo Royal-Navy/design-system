@@ -1,9 +1,7 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
 import { MAIN_HEIGHT } from './constants'
-
-const { color } = selectors
 
 interface StyledOptionProps {
   $isActive?: boolean

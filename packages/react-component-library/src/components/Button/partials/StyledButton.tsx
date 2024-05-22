@@ -1,12 +1,10 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, shadow, spacing } from '@royalnavy/design-tokens'
 import { rgba } from 'polished'
 
 import { BUTTON_ICON_POSITION, BUTTON_VARIANT } from '../constants'
 import { ButtonIconPositionType, ButtonVariantType } from '../Button'
 import { ComponentSizeType, COMPONENT_SIZE } from '../../Forms'
-
-const { color, spacing, fontSize, shadow } = selectors
 
 const DROP_SHADOW = `0 2px 6px ${rgba(0, 0, 0, 0.3)}`
 const TRANSPARENT_SHADOW = shadow('0')

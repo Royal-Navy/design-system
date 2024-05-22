@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-
-const { color } = selectors
 
 const StyledPanel = styled.div`
   background: ${color('neutral', 'white')};

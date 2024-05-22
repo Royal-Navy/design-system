@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize } from '@royalnavy/design-tokens'
 
 import {
   getTransitionOpacity,
@@ -10,8 +10,6 @@ import { StyledNavItem } from './StyledNavItem'
 interface StyledTextProps extends TransitionProps {
   isOpen?: boolean
 }
-
-const { color, fontSize } = selectors
 
 export const StyledNavItemText = styled.div<StyledTextProps>`
   display: inline-block;

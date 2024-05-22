@@ -1,13 +1,11 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 
 import { CheckboxRootProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
 import { StyledCheckmark } from './StyledCheckmark'
 import { StyledInput } from '../../CheckboxRadioBase/partials/StyledInput'
 
 const RADIO_ACTIVE_BORDER_WIDTH = '2px'
-
-const { spacing, fontSize, color } = selectors
 
 const BackgroundColor = css<CheckboxRootProps>`
   ${({ $isDisabled, $hasContainer, $isChecked }) => {

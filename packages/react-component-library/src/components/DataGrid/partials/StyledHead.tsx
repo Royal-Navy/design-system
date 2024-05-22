@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { color } = selectors
+import { color } from '@royalnavy/design-tokens'
 
 export const StyledHead = styled.thead`
   background: ${color('neutral', '000')};

@@ -1,4 +1,4 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing, zIndex } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 import { StyledText } from './StyledText'
@@ -7,8 +7,6 @@ interface StyledContextMenuProps {
   $hasIcons: boolean
   $isOpen: boolean
 }
-
-const { color, spacing, zIndex } = selectors
 
 export const StyledContextMenu = styled.ol<StyledContextMenuProps>`
   position: fixed;

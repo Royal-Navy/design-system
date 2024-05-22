@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { color, spacing } = selectors
+import { color, spacing } from '@royalnavy/design-tokens'
 
 export const StyledContextMenuItem = styled.li`
   border-radius: 2px;

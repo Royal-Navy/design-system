@@ -1,9 +1,7 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color, mq, spacing } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 import { StyledButton } from './StyledButton'
-
-const { color, mq, spacing } = selectors
 
 interface StyledFooterProps {
   $hasTertiaryButton: boolean

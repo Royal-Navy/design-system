@@ -1,7 +1,5 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
-
-const { color, spacing } = selectors
 
 export const StyledDismissibleBanner = styled.div`
   background: ${color('neutral', 'white')};

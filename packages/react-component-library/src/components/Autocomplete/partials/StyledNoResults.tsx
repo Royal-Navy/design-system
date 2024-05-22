@@ -1,10 +1,8 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize } from '@royalnavy/design-tokens'
 
 import { COMPONENT_SIZE } from '../../Forms'
 import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInput/partials/StyledInput'
-
-const { color, fontSize } = selectors
 
 export const StyledNoResults = styled.span`
   height: ${TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.FORMS]};

@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { fontSize, spacing } = selectors
+import { fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledTooltip = styled.span`
   display: inline-flex;

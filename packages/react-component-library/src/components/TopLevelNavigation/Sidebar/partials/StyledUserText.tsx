@@ -1,12 +1,10 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 
 import {
   getTransitionOpacity,
   TransitionProps,
 } from '../../../../styled-components'
-
-const { spacing, color, fontSize } = selectors
 
 export const StyledUserText = styled.div<TransitionProps>`
   display: flex;

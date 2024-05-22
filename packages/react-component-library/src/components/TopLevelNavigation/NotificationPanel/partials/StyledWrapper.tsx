@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { StyledAvatar } from '../../../Avatar/partials/StyledAvatar'
-
-const { color } = selectors
 
 export const StyledWrapper = styled.div`
   a,

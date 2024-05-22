@@ -1,12 +1,10 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, zIndex } from '@royalnavy/design-tokens'
 
 import {
   getTransitionOpacity,
   TransitionProps,
 } from '../../../../styled-components'
-
-const { color, zIndex } = selectors
 
 export const StyledHandle = styled.button<TransitionProps>`
   position: absolute;

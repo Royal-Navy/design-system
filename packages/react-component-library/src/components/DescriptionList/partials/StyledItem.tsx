@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 import { StyledDescriptionListProps } from './StyledDescriptionList'
-
-const { spacing } = selectors
 
 export const StyledItem = styled.div<StyledDescriptionListProps>`
   display: flex;

@@ -1,7 +1,5 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
-
-const { color, spacing, fontSize } = selectors
 
 const getColorStyles = (isSecret?: boolean, inSidebar?: boolean) => {
   if (isSecret) {

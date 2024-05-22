@@ -1,13 +1,11 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 
 import {
   TIMELINE_ALT_BG_COLOR,
   TIMELINE_BG_COLOR,
   TIMELINE_BORDER_COLOR,
 } from '../constants'
-
-const { spacing } = selectors
 
 interface StyledWeekProps {
   $isOddNumber: boolean

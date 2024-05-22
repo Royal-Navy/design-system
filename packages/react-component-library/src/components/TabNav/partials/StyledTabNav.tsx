@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { zIndex } from '@royalnavy/design-tokens'
 
 import { ACTIVE_TAB_BORDER } from '../../TabBase/partials/StyledTab'
-
-const { zIndex } = selectors
 
 export const StyledTabNav = styled.nav`
   padding: 0 16px;

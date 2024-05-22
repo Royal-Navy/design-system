@@ -1,11 +1,9 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 interface StyledAvatarProps {
   $dark?: boolean
 }
-
-const { color } = selectors
 
 export const StyledAvatar = styled.span<StyledAvatarProps>`
   display: flex;

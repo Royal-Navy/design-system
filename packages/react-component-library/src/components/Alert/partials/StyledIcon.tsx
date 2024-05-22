@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 
 import { AlertVariantType } from '../Alert'
 
@@ -14,8 +14,6 @@ import {
 interface StyledIconProps {
   $variant: AlertVariantType
 }
-
-const { spacing } = selectors
 
 const ICON_VARIANT_MAP = {
   [ALERT_VARIANT.DANGER]: DANGER_ALERT_ICON_COLOR,

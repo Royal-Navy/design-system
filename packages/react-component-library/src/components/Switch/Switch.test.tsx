@@ -1,11 +1,9 @@
 import React from 'react'
 
 import { render, RenderResult } from '@testing-library/react'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { Switch, SwitchOption } from '.'
-
-const { color } = selectors
 
 describe('Switch', () => {
   let wrapper: RenderResult

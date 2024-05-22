@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { animation, color, spacing } = selectors
+import { animation, color, spacing } from '@royalnavy/design-tokens'
 
 interface StyledButtonProps {
   $isDisabled: boolean

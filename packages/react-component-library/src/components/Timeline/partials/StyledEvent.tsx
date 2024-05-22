@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { spacing, zIndex } = selectors
+import { spacing, zIndex } from '@royalnavy/design-tokens'
 
 interface StyledEventProps {
   $leftPx: string

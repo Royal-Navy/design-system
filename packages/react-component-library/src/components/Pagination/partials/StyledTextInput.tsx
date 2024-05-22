@@ -1,11 +1,9 @@
 import { memo } from 'react'
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 
 import { TextInput } from '../../TextInput'
 import { StyledInput } from '../../TextInput/partials/StyledInput'
-
-const { spacing } = selectors
 
 export const StyledTextInput = memo(styled(TextInput)`
   width: 51px;

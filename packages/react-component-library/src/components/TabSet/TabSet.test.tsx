@@ -1,12 +1,10 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 import React from 'react'
 
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { TabSet, TabSetItem } from '.'
-
-const { color } = selectors
 
 describe('TabSet', () => {
   let wrapper: RenderResult

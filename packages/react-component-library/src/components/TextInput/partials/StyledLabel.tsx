@@ -1,4 +1,4 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { fontSize } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 import { COMPONENT_SIZE } from '../../Forms'
@@ -6,8 +6,6 @@ import {
   StyledLabel as StyledLabelBase,
   StyledLabelProps,
 } from '../../../styled-components/partials/StyledLabel'
-
-const { fontSize } = selectors
 
 export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
   display: inline-flex;

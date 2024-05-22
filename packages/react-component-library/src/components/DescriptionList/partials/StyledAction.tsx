@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { animation, color, spacing } from '@royalnavy/design-tokens'
 import { StyledDescriptionListProps } from './StyledDescriptionList'
-
-const { animation, color, spacing } = selectors
 
 export const StyledAction = styled.span<StyledDescriptionListProps>`
   display: none;

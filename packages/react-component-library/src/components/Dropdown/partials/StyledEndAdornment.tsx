@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { spacing } = selectors
+import { spacing } from '@royalnavy/design-tokens'
 
 export const StyledEndAdornment = styled.span`
   position: absolute;

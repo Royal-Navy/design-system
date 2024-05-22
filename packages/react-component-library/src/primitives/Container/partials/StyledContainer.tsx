@@ -1,10 +1,8 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 
 import { ContainerSizeType } from '../Container'
 import { CONTAINER_CONTENT_WIDTH } from '../constants'
-
-const { spacing } = selectors
 
 interface StyledContainerProps {
   $size: ContainerSizeType

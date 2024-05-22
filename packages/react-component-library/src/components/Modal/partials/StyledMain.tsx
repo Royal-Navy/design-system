@@ -1,7 +1,5 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color, mq, shadow } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
-
-const { color, mq, shadow } = selectors
 
 export const StyledMain = styled.article`
   text-shadow: ${shadow('2')};

@@ -7,11 +7,9 @@ import {
   RenderResult,
   waitFor,
 } from '@testing-library/react'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { List, ListItem } from '.'
-
-const { color } = selectors
 
 describe('List', () => {
   let consoleWarnSpy: jest.SpyInstance

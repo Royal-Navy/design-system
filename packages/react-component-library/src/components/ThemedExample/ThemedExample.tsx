@@ -1,16 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import theme from 'styled-theming'
-
 import {
   lightTheme,
   darkTheme,
-  selectors,
   Theme,
+  color,
+  spacing,
 } from '@royalnavy/design-tokens'
-import { GlobalStyleProvider } from '../../styled-components/GlobalStyle'
 
-const { color, spacing } = selectors
+import { GlobalStyleProvider } from '../../styled-components/GlobalStyle'
 
 const ThemedMain = styled.div`
   background-color: ${(props) => color('neutral', '100', props.theme as Theme)};

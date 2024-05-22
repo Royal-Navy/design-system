@@ -1,4 +1,4 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, shadow, spacing } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 import {
@@ -13,8 +13,6 @@ import {
   BadgeSizeType,
   BadgeVariantType,
 } from '../types'
-
-const { color, fontSize, shadow, spacing } = selectors
 
 interface StyledBadgeProps {
   $color: BadgeColorType

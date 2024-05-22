@@ -1,12 +1,10 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { fontSize } from '@royalnavy/design-tokens'
 
 import {
   getTransitionOpacity,
   TransitionProps,
 } from '../../../../styled-components'
-
-const { fontSize } = selectors
 
 export const StyledHeadTitle = styled.div<TransitionProps>`
   font-weight: 600;

@@ -1,7 +1,5 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
-
-const { spacing } = selectors
 
 const CONTENT_WIDTH = '1280px'
 

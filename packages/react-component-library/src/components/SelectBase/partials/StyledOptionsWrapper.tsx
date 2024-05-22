@@ -1,11 +1,9 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, zIndex } from '@royalnavy/design-tokens'
 
 import { BORDER_RADIUS } from '../../../styled-components'
 import { COMPONENT_SIZE } from '../../Forms'
 import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInput/partials/StyledInput'
-
-const { color, zIndex } = selectors
 
 interface StyledOptionsWrapperProps {
   $isVisible: boolean

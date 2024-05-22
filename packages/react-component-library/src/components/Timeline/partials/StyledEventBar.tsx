@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { StyledEventTitle } from './StyledEventTitle'
-
-const { color } = selectors
 
 interface StyledEventBarProps {
   $width: string

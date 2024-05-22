@@ -1,9 +1,7 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 import { CheckboxRootProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
-
-const { color, fontSize, spacing } = selectors
 
 export const StyledCheckbox = styled.div<CheckboxRootProps>`
   display: inline-flex;

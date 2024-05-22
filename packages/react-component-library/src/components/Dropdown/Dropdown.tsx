@@ -1,15 +1,13 @@
 import React from 'react'
 import Select from 'react-select'
 import { ValueType } from 'react-select/src/types'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
 import { DropdownIndicator } from './DropdownIndicator'
 import { DropdownLabel } from './DropdownLabel'
 import { DropdownOption } from './DropdownOption'
 import { DropdownPlaceholder } from './DropdownPlaceholder'
-
-const { color, spacing } = selectors
 
 export interface DropdownProps {
   /**

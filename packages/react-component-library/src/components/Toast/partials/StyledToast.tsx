@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, shadow, spacing } from '@royalnavy/design-tokens'
 
 import { StyledLabel } from './StyledLabel'
 import { Appearance } from '../Toast'
@@ -7,8 +7,6 @@ import { Appearance } from '../Toast'
 interface StyledToastProps {
   $appearance: Appearance
 }
-
-const { shadow, color, spacing } = selectors
 
 const colors = {
   success: color('success', '500'),

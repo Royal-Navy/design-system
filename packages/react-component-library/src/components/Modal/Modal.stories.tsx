@@ -1,15 +1,13 @@
 import React, { useRef, useEffect } from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 import noop from 'lodash/noop'
 
 import { Modal, ModalProps, ModalImperativeHandle } from '.'
 import { Button, ButtonProps, BUTTON_VARIANT } from '../Button'
 import { useIsInDocs } from '../../../.storybook/hooks/useIsInDocs'
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
-
-const { spacing } = selectors
 
 const disableColorContrastRule = {
   a11y: {

@@ -1,10 +1,8 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { ComponentSizeType } from '../../Forms'
 import { StyledIconWrapper } from './StyledIconWrapper'
-
-const { color } = selectors
 
 interface StyledButtonProps {
   $hasHover?: boolean

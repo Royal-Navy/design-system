@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { zIndex } = selectors
+import { zIndex } from '@royalnavy/design-tokens'
 
 interface StyledSearchBarProps {
   $width: string

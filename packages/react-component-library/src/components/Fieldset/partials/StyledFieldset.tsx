@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 
 import { StyledWrapper } from '../../CheckboxRadioBase/partials/StyledWrapper'
 import { StyledCheckbox } from '../../Checkbox/partials/StyledCheckbox'
@@ -11,8 +11,6 @@ export interface StyledFieldsetProps {
   $isInvalid?: boolean
   $type: FieldsetType
 }
-
-const { color, spacing } = selectors
 
 export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   display: inline-flex;

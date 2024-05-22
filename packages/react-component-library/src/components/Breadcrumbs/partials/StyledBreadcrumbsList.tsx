@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { fontSize } from '@royalnavy/design-tokens'
 
 import { StyledBreadcrumbsItem } from './StyledBreadcrumbsItem'
-
-const { fontSize } = selectors
 
 export const StyledBreadcrumbsList = styled.ol`
   display: flex;

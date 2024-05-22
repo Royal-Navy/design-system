@@ -1,13 +1,11 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, zIndex } from '@royalnavy/design-tokens'
 
 import { StyledContent } from '../../../../primitives/FloatingBox/partials/StyledContent'
 
 interface StyledSidebarProps {
   isOpen?: boolean
 }
-
-const { zIndex, color } = selectors
 
 export const StyledSidebar = styled.aside<StyledSidebarProps>`
   display: inline-flex;

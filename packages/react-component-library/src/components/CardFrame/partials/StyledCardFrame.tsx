@@ -1,7 +1,5 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { color, shadow } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
-
-const { color, shadow } = selectors
 
 export const StyledCardFrame = styled.div`
   border-radius: 3px;

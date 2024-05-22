@@ -1,7 +1,5 @@
-import { selectors } from '@royalnavy/design-tokens'
+import { zIndex } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
-
-const { zIndex } = selectors
 
 export const StyledModal = styled.dialog`
   position: fixed;

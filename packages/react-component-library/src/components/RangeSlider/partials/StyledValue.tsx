@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { fontSize, spacing, color } = selectors
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledValue = styled.div`
   position: absolute;

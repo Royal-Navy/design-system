@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize } from '@royalnavy/design-tokens'
 
 import { StyledContainer } from './StyledContainer'
 import { StyledSwitchOption } from './StyledSwitchOption'
@@ -11,8 +11,6 @@ interface StyledSwitchProps {
   $isDisabled?: boolean
   $isInvalid?: boolean
 }
-
-const { fontSize, color } = selectors
 
 export const StyledSwitch = styled.div<StyledSwitchProps>`
   position: relative;

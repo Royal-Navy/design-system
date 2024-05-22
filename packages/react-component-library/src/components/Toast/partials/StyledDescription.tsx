@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { color, fontSize, spacing } = selectors
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledDescription = styled.span`
   color: ${color('neutral', '400')};

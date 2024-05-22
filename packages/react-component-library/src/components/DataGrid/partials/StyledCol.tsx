@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
-
-const { fontSize, spacing, color } = selectors
+import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 
 interface StyledColProps {
   $isSortable?: boolean
@@ -18,7 +16,7 @@ export const StyledCol = styled.th<StyledColProps>`
   color: ${color('neutral', '600')};
   font-weight: 700;
   text-align: left;
-  text-transform: 'capitalize';
+  text-transform: capitalize;
   font-size: ${fontSize('s')};
 
   > div {
@@ -29,7 +27,6 @@ export const StyledCol = styled.th<StyledColProps>`
 
     & svg {
       height: 1rem;
-      margin-left: ${spacing('2')};
     }
   }
 

@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { IconArrowDropDown } from '@royalnavy/icon-library'
-
-const { color } = selectors
 
 interface StyledIconArrowDropDownProps {
   $isOpen: boolean

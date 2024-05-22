@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components'
-import { selectors } from '@royalnavy/design-tokens'
+import { color, fontSize } from '@royalnavy/design-tokens'
 
 import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
-
-const { color, fontSize } = selectors
 
 const TEXT_INPUT_FONT_SIZE = {
   [COMPONENT_SIZE.FORMS]: fontSize('m'),
