@@ -23,6 +23,7 @@ import {
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 import { ClassificationBar } from '../../ClassificationBar'
+import { Masthead } from '../Masthead'
 
 const disableColorContrastRule = {
   a11y: {
@@ -303,3 +304,26 @@ WithClassificationBar.args = {
   classificationBar: <ClassificationBar />,
 }
 WithClassificationBar.storyName = 'Classification bar'
+
+export const WithMastheadAndSidebar: StoryFn<typeof Sidebar> = (props) => {
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+  }
+
+  return (
+    <>
+      <Masthead
+        homeLink={<Link href="#">Home</Link>}
+        title="Application Name"
+        onSearch={handleSearch}
+      />
+      <SidebarWrapper>
+        <StyledSidebar {...props}>
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <StyledMain>Hello, World!</StyledMain>
+      </SidebarWrapper>
+    </>
+  )
+}
+WithMastheadAndSidebar.storyName = 'Masthead and Sidebar'
