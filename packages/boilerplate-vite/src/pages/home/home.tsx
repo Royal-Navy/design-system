@@ -1,17 +1,10 @@
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 import dnaLogo from './../../assets/dna.svg'
-import {
-  Button,
-  COMPONENT_SIZE,
-  List,
-  ListItem,
-  Masthead,
-  SectionDivider,
-} from '@royalnavy/react-component-library'
-import { Link } from 'react-router-dom'
+import { List, ListItem, Masthead } from '@royalnavy/react-component-library'
 import { Paths } from '../../paths.ts'
 import { ApplicationConstants } from '../../constants.ts'
+import { StyledApp } from './partials'
 
 const StyledContents = styled.div`
   flex: 1;
@@ -27,7 +20,7 @@ export const HomePage = () => {
   }
 
   return (
-    <>
+    <StyledApp>
       <Masthead title={ApplicationConstants.title} />
       <StyledContents>
         <List>
@@ -38,6 +31,12 @@ export const HomePage = () => {
             Using SideNav
           </ListItem>
           <ListItem
+            title="Side Navigation #2"
+            onClick={() => handleClick(Paths.sideNavOutside)}
+          >
+            Using SideNav 2
+          </ListItem>
+          <ListItem
             title="Top navigation"
             onClick={() => handleClick(Paths.topNav)}
           >
@@ -46,6 +45,6 @@ export const HomePage = () => {
           </ListItem>
         </List>
       </StyledContents>
-    </>
+    </StyledApp>
   )
 }
