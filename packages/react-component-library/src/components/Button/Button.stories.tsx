@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Meta, StoryFn } from '@storybook/react'
-import { ArgTypes } from '@storybook/types'
 
 import { IconBrightnessLow } from '@royalnavy/icon-library'
 import { spacing } from '@royalnavy/design-tokens'
@@ -126,7 +125,7 @@ export const RegularButtons: StoryFn<typeof Button> = (args) => {
   )
 }
 
-const paletteArgTypes: Partial<ArgTypes<ButtonProps>> = {
+const paletteArgTypes = {
   isDisabled: { table: { disable: true } },
   isLoading: {
     control: 'boolean',
