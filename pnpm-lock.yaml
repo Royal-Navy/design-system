@@ -60,7 +60,7 @@ importers:
         specifier: ^7.10.4
         version: 7.24.1(@babel/core@7.24.4)
       '@royalnavy/eslint-config-react':
-        specifier: ^4.9.1
+        specifier: ^4.10.0
         version: link:../eslint-config-react
       '@testing-library/jest-dom':
         specifier: ^6.4.2
@@ -195,7 +195,7 @@ importers:
         specifier: ^7.8.3
         version: 7.24.1(@babel/core@7.24.4)
       '@royalnavy/eslint-config-react':
-        specifier: ^4.9.1
+        specifier: ^4.10.0
         version: link:../eslint-config-react
       '@svgr/cli':
         specifier: ^8.1.0
@@ -243,13 +243,13 @@ importers:
         specifier: ^2.9.2
         version: 2.11.8
       '@royalnavy/design-tokens':
-        specifier: ^4.9.1
+        specifier: ^4.10.0
         version: link:../design-tokens
       '@royalnavy/fonts':
-        specifier: ^4.9.1
+        specifier: ^4.10.0
         version: link:../fonts
       '@royalnavy/icon-library':
-        specifier: ^4.9.1
+        specifier: ^4.10.0
         version: link:../icon-library
       '@storybook/test':
         specifier: ^8.0.6
@@ -361,7 +361,7 @@ importers:
         specifier: ^1.32.3
         version: 1.43.0
       '@royalnavy/eslint-config-react':
-        specifier: ^4.9.1
+        specifier: ^4.10.0
         version: link:../eslint-config-react
       '@storybook/addon-a11y':
         specifier: ^8.0.6
@@ -8840,6 +8840,7 @@ packages:
       {
         integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==,
       }
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution:

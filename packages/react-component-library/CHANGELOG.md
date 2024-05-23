@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.10.0](https://github.com/Royal-Navy/design-system/compare/4.9.1...4.10.0) (2024-05-23)
+
+### Features
+
+- **DataGrid:** Add expandable sub rows ([69ce8fe](https://github.com/Royal-Navy/design-system/commit/69ce8fe889ca94278842bc23e0ed8a47b0023b1b))
+- **DataGrid:** Add onExpandedChange handler ([487c8f1](https://github.com/Royal-Navy/design-system/commit/487c8f1713018d9e43ca1915983ea45df01b299a))
+
 ## [4.9.1](https://github.com/Royal-Navy/design-system/compare/4.9.0...4.9.1) (2024-05-22)
 
 **Note:** Version bump only for package @royalnavy/react-component-library
