@@ -3,11 +3,13 @@ import React from 'react'
 
 import { BUTTON_ICON_POSITION, BUTTON_VARIANT } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
-import { StyledButton } from './partials/StyledButton'
-import { StyledIconWrapper } from './partials/StyledIconWrapper'
-import { StyledText } from './partials/StyledText'
-import { StyledIconLoaderWrapper } from './partials/StyledIconLoader'
-import { ComponentSizeType, COMPONENT_SIZE } from '../Forms'
+import {
+  StyledButton,
+  StyledIconLoaderWrapper,
+  StyledIconWrapper,
+  StyledText,
+} from './partials'
+import { COMPONENT_SIZE, ComponentSizeType } from '../Forms'
 import { ValueOf } from '../../helpers'
 
 export type ButtonVariantType = ValueOf<typeof BUTTON_VARIANT>

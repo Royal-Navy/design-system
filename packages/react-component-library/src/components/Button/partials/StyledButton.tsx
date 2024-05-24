@@ -8,27 +8,29 @@ import { ComponentSizeType, COMPONENT_SIZE } from '../../Forms'
 
 const DROP_SHADOW = `0 2px 6px ${rgba(0, 0, 0, 0.3)}`
 const TRANSPARENT_SHADOW = shadow('0')
-const DEFAULT_HOVER_BORDER_SHADOW = `0 0 0 3px ${color('action', '100')}`
-const DANGER_HOVER_BORDER_SHADOW = `0 0 0 3px ${color('danger', '100')}`
+const DEFAULT_HOVER_BORDER_SHADOW = `0 0 0 2px ${color('action', '900')}`
+const DANGER_HOVER_BORDER_SHADOW = `0 0 0 2px ${color('danger', '900')}`
 
 const COLOR_MAP = {
   [BUTTON_VARIANT.PRIMARY]: {
     color: color('neutral', 'white'),
     backgroundColor: color('action', '600'),
-    borderColor: color('action', '800'),
-    borderWidth: '2px',
-    hoverBackgroundColor: color('action', '800'),
+    borderColor: color('action', '600'),
+    borderWidth: 0,
+    hoverBackgroundColor: color('action', '700'),
     hoverBoxShadow: DEFAULT_HOVER_BORDER_SHADOW,
     activeBackgroundColor: color('action', '900'),
+    focusBorderColor: color('action', '800'),
   },
   [BUTTON_VARIANT.SECONDARY]: {
     color: color('action', '900'),
     backgroundColor: color('action', '100'),
     borderColor: color('action', '600'),
-    borderWidth: '2px',
+    borderWidth: '1px',
     hoverBackgroundColor: color('action', '200'),
     hoverBoxShadow: DEFAULT_HOVER_BORDER_SHADOW,
     activeBackgroundColor: color('action', '300'),
+    focusBorderColor: color('action', '300'),
   },
   [BUTTON_VARIANT.TERTIARY]: {
     color: color('action', '600'),
@@ -38,15 +40,17 @@ const COLOR_MAP = {
     hoverBackgroundColor: color('neutral', '000'),
     hoverBoxShadow: DEFAULT_HOVER_BORDER_SHADOW,
     activeBackgroundColor: color('neutral', '100'),
+    focusBorderColor: color('action', '800'),
   },
   [BUTTON_VARIANT.DANGER]: {
     color: color('neutral', 'white'),
     backgroundColor: color('danger', '700'),
     borderColor: color('danger', '900'),
-    borderWidth: '2px',
+    borderWidth: 0,
     hoverBackgroundColor: color('danger', '800'),
     hoverBoxShadow: DANGER_HOVER_BORDER_SHADOW,
     activeBackgroundColor: color('danger', '900'),
+    focusBorderColor: color('action', '800'),
   },
 }
 
@@ -54,12 +58,12 @@ const SIZE_MAP = {
   [COMPONENT_SIZE.FORMS]: {
     height: '46px',
     fontSize: fontSize('m'),
-    borderRadius: '15px',
+    borderRadius: '8px',
   },
   [COMPONENT_SIZE.SMALL]: {
     height: '33px',
     fontSize: fontSize('base'),
-    borderRadius: '10px',
+    borderRadius: '8px',
   },
 }
 
@@ -83,9 +87,8 @@ export function getButtonStyles({
     align-items: center;
     justify-content: center;
     border-radius: ${SIZE_MAP[$size].borderRadius};
-    box-shadow: ${TRANSPARENT_SHADOW}, ${DROP_SHADOW};
     outline: 0;
-    padding: 0 ${spacing('6')};
+    padding: 0 ${spacing('7')};
     font-size: ${SIZE_MAP[$size].fontSize};
     font-weight: 400;
     text-decoration: none;
@@ -108,6 +111,11 @@ export function getButtonStyles({
       border: ${COLOR_MAP[$variant].borderWidth} solid
         ${COLOR_MAP[$variant].borderColor};
 
+      &:focus {
+        border: ${COLOR_MAP[$variant].borderWidth} solid
+          ${COLOR_MAP[$variant].focusBorderColor};
+      }
+
       &:focus,
       &:hover {
         background-color: ${COLOR_MAP[$variant].hoverBackgroundColor};
@@ -116,7 +124,6 @@ export function getButtonStyles({
 
       &:active {
         background-color: ${COLOR_MAP[$variant].activeBackgroundColor};
-        box-shadow: ${TRANSPARENT_SHADOW}, ${TRANSPARENT_SHADOW};
       }
     `}
 

@@ -1,9 +1,14 @@
 import React from 'react'
-import { StoryFn, Meta } from '@storybook/react'
+import styled from 'styled-components'
+
+import { Meta, StoryFn } from '@storybook/react'
 
 import { IconBrightnessLow } from '@royalnavy/icon-library'
-import { Button } from './index'
-import { BUTTON_VARIANT, BUTTON_ICON_POSITION } from './constants'
+import { spacing } from '@royalnavy/design-tokens'
+
+import { Button, ButtonProps } from './index'
+import { BUTTON_ICON_POSITION, BUTTON_VARIANT } from './constants'
+import { SectionDivider } from '../SectionDivider'
 import { COMPONENT_SIZE } from '../Forms'
 
 export default {
@@ -24,157 +29,121 @@ Default.args = {
   children: 'Default',
 }
 
-export const Primary = Template.bind({})
-Primary.args = {
-  variant: BUTTON_VARIANT.PRIMARY,
-  children: 'Primary',
+const StyledButtonStrip = styled.div`
+  max-width: 500px;
+  display: flex;
+  justify-content: start;
+  gap: ${spacing('2')};
+  padding: ${spacing('4')} 0;
+`
+
+type ButtonStripArgs = ButtonProps & {
+  title?: string
+  hideText?: boolean
 }
 
-export const PrimaryDisabled = Template.bind({})
-PrimaryDisabled.storyName = 'Primary, disabled'
-PrimaryDisabled.args = {
-  variant: BUTTON_VARIANT.PRIMARY,
-  isDisabled: true,
-  children: 'Primary, disabled',
+const ButtonStrip = (args: ButtonStripArgs) => {
+  const localArgs = { ...args }
+  const shouldHideButtonText = !!args.hideText
+  delete localArgs.variant
+  delete localArgs.isDisabled
+  const disabledStates = [false, true]
+
+  return (
+    <>
+      <SectionDivider title={args.title} />
+      {disabledStates.map((state) => (
+        <StyledButtonStrip key={`disabled:${state}`}>
+          <Button
+            variant={BUTTON_VARIANT.PRIMARY}
+            isDisabled={state}
+            {...localArgs}
+          >
+            {shouldHideButtonText ? '' : 'Primary'}
+          </Button>
+          &nbsp;
+          <Button
+            variant={BUTTON_VARIANT.SECONDARY}
+            isDisabled={state}
+            {...localArgs}
+          >
+            {shouldHideButtonText ? '' : 'Secondary'}
+          </Button>
+          &nbsp;
+          <Button
+            variant={BUTTON_VARIANT.TERTIARY}
+            isDisabled={state}
+            {...localArgs}
+          >
+            {shouldHideButtonText ? '' : 'Tertiary'}
+          </Button>
+          &nbsp;
+          <Button
+            variant={BUTTON_VARIANT.DANGER}
+            isDisabled={state}
+            {...localArgs}
+          >
+            {shouldHideButtonText ? '' : 'Danger'}
+          </Button>
+        </StyledButtonStrip>
+      ))}
+
+      <hr />
+    </>
+  )
 }
 
-export const PrimaryLoading = Template.bind({})
-PrimaryLoading.storyName = 'Primary, loading'
-PrimaryLoading.args = {
-  variant: BUTTON_VARIANT.PRIMARY,
-  isLoading: true,
-  children: 'Primary, loading',
+export const RegularButtons: StoryFn<typeof Button> = (args) => {
+  const iconLeftArgs = {
+    ...args,
+    icon: <IconBrightnessLow />,
+    iconPosition: BUTTON_ICON_POSITION.LEFT,
+  }
+  const iconRightArgs = {
+    ...iconLeftArgs,
+    iconPosition: BUTTON_ICON_POSITION.RIGHT,
+  }
+  const loadingArgs = {
+    ...args,
+    isLoading: true,
+  }
+
+  const iconOnlyArgs = {
+    ...iconLeftArgs,
+    showText: false,
+  }
+
+  return (
+    <>
+      <p>All variants of {args.size} buttons</p>
+      <ButtonStrip {...args} title="Default" />
+      <ButtonStrip {...iconLeftArgs} title="With icons left" />
+      <ButtonStrip {...iconRightArgs} title="With icons right" />
+      <ButtonStrip {...iconOnlyArgs} title="Icon only" hideText />
+      <ButtonStrip {...loadingArgs} title="Loading" />
+    </>
+  )
 }
 
-export const PrimaryLeftIcon = Template.bind({})
-PrimaryLeftIcon.storyName = 'Primary, with left icon'
-PrimaryLeftIcon.args = {
-  children: 'Primary',
-  icon: <IconBrightnessLow />,
-  iconPosition: BUTTON_ICON_POSITION.LEFT,
+const paletteArgTypes = {
+  isDisabled: { table: { disable: true } },
+  isLoading: {
+    control: 'boolean',
+  },
+  size: { table: { disable: true } },
+  icon: { table: { disable: true } },
+  variant: { table: { disable: true } },
+  iconPosition: { table: { disable: true } },
+  type: { table: { disable: true } },
 }
 
-export const PrimaryRightIcon = Template.bind({})
-PrimaryRightIcon.storyName = 'Primary, with right icon'
-PrimaryRightIcon.args = {
-  children: 'Primary',
-  icon: <IconBrightnessLow />,
-  iconPosition: BUTTON_ICON_POSITION.RIGHT,
+RegularButtons.argTypes = paletteArgTypes
+RegularButtons.args = {
+  size: COMPONENT_SIZE.FORMS,
 }
 
-export const IconNoText = Template.bind({})
-IconNoText.storyName = 'Icon, no text'
-IconNoText.args = {
-  children: undefined,
-  icon: <IconBrightnessLow />,
-  title: 'Reduce brightness',
-}
-
-export const Secondary = Template.bind({})
-Secondary.args = {
-  variant: BUTTON_VARIANT.SECONDARY,
-  children: 'Secondary',
-}
-
-export const SecondaryLeftIcon = Template.bind({})
-SecondaryLeftIcon.storyName = 'Secondary, with left icon'
-SecondaryLeftIcon.args = {
-  variant: BUTTON_VARIANT.SECONDARY,
-  children: 'Secondary',
-  icon: <IconBrightnessLow />,
-  iconPosition: BUTTON_ICON_POSITION.LEFT,
-}
-
-export const SecondaryDisabled = Template.bind({})
-SecondaryDisabled.storyName = 'Secondary, disabled'
-SecondaryDisabled.args = {
-  variant: BUTTON_VARIANT.SECONDARY,
-  isDisabled: true,
-  children: 'Secondary, disabled',
-}
-
-export const SecondaryLoading = Template.bind({})
-SecondaryLoading.storyName = 'Secondary, loading'
-SecondaryLoading.args = {
-  variant: BUTTON_VARIANT.SECONDARY,
-  isLoading: true,
-  children: 'Secondary, loading',
-}
-
-export const Tertiary = Template.bind({})
-Tertiary.args = {
-  variant: BUTTON_VARIANT.TERTIARY,
-  children: 'Tertiary',
-}
-
-export const TertiaryLeftIcon = Template.bind({})
-TertiaryLeftIcon.storyName = 'Tertiary, with left icon'
-TertiaryLeftIcon.args = {
-  variant: BUTTON_VARIANT.TERTIARY,
-  children: 'Tertiary',
-  icon: <IconBrightnessLow />,
-  iconPosition: BUTTON_ICON_POSITION.LEFT,
-}
-
-export const TertiaryDisabled = Template.bind({})
-TertiaryDisabled.storyName = 'Tertiary, disabled'
-TertiaryDisabled.args = {
-  variant: BUTTON_VARIANT.TERTIARY,
-  isDisabled: true,
-  children: 'Tertiary, disabled',
-}
-
-export const TertiaryLoading = Template.bind({})
-TertiaryLoading.storyName = 'Tertiary, loading'
-TertiaryLoading.args = {
-  variant: BUTTON_VARIANT.TERTIARY,
-  isLoading: true,
-  children: 'Tertiary, loading',
-}
-
-export const Danger = Template.bind({})
-Danger.args = {
-  variant: BUTTON_VARIANT.DANGER,
-  children: 'Danger',
-}
-
-export const DangerDisabled = Template.bind({})
-DangerDisabled.storyName = 'Danger, disabled'
-DangerDisabled.args = {
-  variant: BUTTON_VARIANT.DANGER,
-  isDisabled: true,
-  children: 'Danger, disabled',
-}
-
-export const DangerLoading = Template.bind({})
-DangerLoading.storyName = 'Danger, loading'
-DangerLoading.args = {
-  variant: BUTTON_VARIANT.DANGER,
-  isLoading: true,
-  children: 'Danger, loading',
-}
-
-export const Small = Template.bind({})
-Small.args = {
-  variant: BUTTON_VARIANT.PRIMARY,
+export const SmallButtons = RegularButtons.bind({})
+SmallButtons.argTypes = paletteArgTypes
+SmallButtons.args = {
   size: COMPONENT_SIZE.SMALL,
-  children: 'Small',
-}
-
-export const SmallLoading = Template.bind({})
-SmallLoading.storyName = 'Small, loading'
-SmallLoading.args = {
-  variant: BUTTON_VARIANT.PRIMARY,
-  size: COMPONENT_SIZE.SMALL,
-  children: 'Small, loading',
-  isLoading: true,
-}
-
-export const SmallIconNoText = Template.bind({})
-SmallIconNoText.storyName = 'Small, with icon, no text '
-SmallIconNoText.args = {
-  variant: BUTTON_VARIANT.PRIMARY,
-  size: COMPONENT_SIZE.SMALL,
-  icon: <IconBrightnessLow />,
-  title: 'Reduce brightness',
 }
