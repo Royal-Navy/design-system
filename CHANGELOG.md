@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.11.0](https://github.com/Royal-Navy/design-system/compare/4.10.0...4.11.0) (2024-05-27)
+
+### Features
+
+- **Button:** Update button styles ([#3804](https://github.com/Royal-Navy/design-system/issues/3804)) ([b4496b5](https://github.com/Royal-Navy/design-system/commit/b4496b55910a973ba961f353fadb98c033bfd419))
+
 # [4.10.0](https://github.com/Royal-Navy/design-system/compare/4.9.1...4.10.0) (2024-05-23)
 
 ### Features
