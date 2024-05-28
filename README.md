@@ -35,7 +35,8 @@ npm install @royalnavy/fonts @royalnavy/react-component-library styled-component
 pnpm add @royalnavy/fonts @royalnavy/react-component-library styled-components
 ```
 
-Note: [`styled-components`](https://styled-components.com/) is a required [peer dependency](https://nodejs.org/en/blog/npm/peer-dependencies/) and is installed with the above command.
+>[!NOTE]
+>[`styled-components`](https://styled-components.com/) is a required [peer dependency](https://nodejs.org/en/blog/npm/peer-dependencies/) and is installed with the above command.
 
 ### Quick start
 
@@ -77,11 +78,12 @@ Manage dependencies for packages like normal, but remember to use `pnpm add` ins
 
 You'll need [Git](https://help.github.com/articles/set-up-git/) and [Node.js](https://nodejs.org/en/) installed to get this project running.
 
-Note: You will need the [active LTS (Long-term support)](https://github.com/nodejs/Release#release-schedule) Node.js version for this project (as specified in [.nvmrc](./.nvmrc))
+>[!NOTE]
+>You will need the [active LTS (Long-term support)](https://github.com/nodejs/Release#release-schedule) Node.js version for this project (as specified in [.nvmrc](./.nvmrc)).
 
 ### Fork repository (optional)
 
-If you're an external contributor make sure to [fork this project first](https://help.github.com/articles/fork-a-repo/)
+If you're an external contributor make sure to [fork this project first](https://help.github.com/articles/fork-a-repo/).
 
 ### Clone repository
 
@@ -102,11 +104,11 @@ To enable this we use [nvm (Node Version Manager)](https://github.com/creationix
 
 ## Scripts
 
-The top level project contains scripts that are then executed for all packages.
+The top level project contains scripts that are then executed for all packages:
 
-- `lint` Checks syntax and simple errors in javascript files.
-- `test` Runs Jest tests in all the packages.
-- `build` Runs the build script in all packages.
+- `lint` checks syntax and simple errors in javascript files
+- `test` runs Jest tests in all the packages
+- `build` runs the build script in all packages
 
 ## Git hooks
 
@@ -126,7 +128,7 @@ The Royal-Navy/design-system is licensed under the [Apache License 2.0](https://
 
 ## Contributing
 
-Read the [contributing guidelines](docs/contributing.md).
+Read the [Contributing Guidelines](docs/CONTRIBUTING.md).
 
 ## Thanks
 
