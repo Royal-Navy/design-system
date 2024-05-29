@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
-import dnaLogo from './../../assets/dna.svg'
 import { List, ListItem, Masthead } from '@royalnavy/react-component-library'
 import { Paths } from '../../paths.ts'
 import { ApplicationConstants } from '../../constants.ts'
@@ -40,7 +39,6 @@ export const HomePage = () => {
             title="Top navigation"
             onClick={() => handleClick(Paths.topNav)}
           >
-            <img src={dnaLogo} />
             Using masthead navigation at the top of the page
           </ListItem>
         </List>
