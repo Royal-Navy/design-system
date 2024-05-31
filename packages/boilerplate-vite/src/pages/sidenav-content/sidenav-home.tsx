@@ -4,7 +4,7 @@ import {
   SidebarNav,
   SidebarNavItem,
 } from '@royalnavy/react-component-library'
-import { Link, useOutletContext } from 'react-router-dom'
+import { Link, useLocation, useOutletContext } from 'react-router-dom'
 import { useEffect } from 'react'
 import { ApplicationConstants, Links } from '../../constants.ts'
 import { StyledContents } from './partials/StyledContents.ts'
@@ -25,22 +25,25 @@ const mastHead = () => {
   )
 }
 
-const SideNav = () => (
-  <SidebarNav>
-    {/*<SidebarNavItem*/}
-    {/*  icon={<IconHome />}*/}
-    {/*  link={<Link to={Paths.home}>Home</Link>}*/}
-    {/*/>*/}
-    {/*<SidebarNavItem icon={<IconMap />} link={<Link to={'/'}>Maps</Link>} />*/}
-    {/*<SidebarNavItem icon={<IconMap />} link={<Link to={'/'}>Maps</Link>} />*/}
-    {Links.map((link) => (
-      <SidebarNavItem
-        icon={<IconSettings />}
-        link={<Link to={link.route}>{link.title}</Link>}
-      />
-    ))}
-  </SidebarNav>
-)
+const isActive = (currentPath: string, linkPath: string) => {
+  console.log(currentPath, linkPath)
+  return currentPath === linkPath
+}
+
+const SideNav = () => {
+  const location = useLocation()
+  return (
+    <SidebarNav>
+      {Links.map((link) => (
+        <SidebarNavItem
+          isActive={isActive(location.pathname, link.route)}
+          icon={<IconSettings />}
+          link={<Link to={link.route}>{link.title}</Link>}
+        />
+      ))}
+    </SidebarNav>
+  )
+}
 
 const StyledPhaseBanner = styled(PhaseBanner)`
   padding-left: ${spacing('11')};
