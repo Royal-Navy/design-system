@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { spacing } from '@royalnavy/design-tokens'
 import { fn } from '@storybook/test'
-import { StoryFn, Meta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { ColumnDef } from '@tanstack/react-table'
 
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
@@ -247,16 +247,42 @@ Sorting.parameters = {
   },
 }
 
-const columnsWithArbitraryContent: ColumnDef<object>[] = columns.map(
-  (item) => ({
+const arbitraryData = [
+  ...data,
+  {
+    id: 11,
+    productName:
+      'Long product name: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    quantity: 10,
+    price: '£673.00',
+  },
+]
+
+const StyledCell = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
+const columnsWithArbitraryContent: ColumnDef<object>[] = columns.map((item) => {
+  if (item.accessorKey !== 'productName') {
+    return {
+      ...item,
+      cell: (info) => {
+        const value = info.getValue() as string
+        return <Badge>{value}</Badge>
+      },
+    }
+  }
+
+  return {
     ...item,
     cell: (info) => {
       const value = info.getValue() as string
 
-      return <Badge>{value}</Badge>
+      return <StyledCell>{value}</StyledCell>
     },
-  })
-)
+  }
+})
 
 export const ArbitraryCellContent: StoryFn<typeof DataGrid> = (props) => {
   return (
@@ -269,7 +295,7 @@ export const ArbitraryCellContent: StoryFn<typeof DataGrid> = (props) => {
 ArbitraryCellContent.storyName = 'Arbitrary cell content'
 ArbitraryCellContent.args = {
   columns: columnsWithArbitraryContent,
-  data,
+  data: arbitraryData,
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
