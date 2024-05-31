@@ -22,7 +22,7 @@ export const SideNavLayout = () => {
   )
   return (
     <SidebarWrapper>
-      <Sidebar initialIsOpen>{nav}</Sidebar>
+      <Sidebar>{nav}</Sidebar>
       <StyledMain>
         {masthead}
         <Outlet context={{ setNav, setMasthead }} />

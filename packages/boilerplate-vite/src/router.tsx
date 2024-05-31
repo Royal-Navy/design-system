@@ -11,7 +11,11 @@ export const router = createBrowserRouter([
     path: Paths.home,
     Component: HomePage,
   },
-  { path: Paths.topNav, Component: TopNavLayout },
+  {
+    path: Paths.topNav,
+    Component: TopNavLayout,
+    children: [{ path: '', Component: SideNavHome }],
+  },
   {
     path: Paths.sideNav,
     Component: SideNavLayout,

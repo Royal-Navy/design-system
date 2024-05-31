@@ -6,6 +6,4 @@ const { spacing, color } = selectors
 
 export const StyledContents = styled.main`
   border-top: solid ${spacing('px')} ${color('neutral', '100')};
-  padding-left: ${spacing('8')};
-  padding-top: ${spacing('8')};
 `
