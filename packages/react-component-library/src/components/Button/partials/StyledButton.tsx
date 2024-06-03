@@ -57,7 +57,7 @@ const COLOR_MAP = {
   [BUTTON_VARIANT.NO_CONTAINER]: {
     color: color('action', '600'),
     backgroundColor: 'transparent',
-    borderColor: color('danger', '900'),
+    borderColor: color('neutral', '900'),
     borderWidth: 0,
     hoverBackgroundColor: color('action', '100'),
     hoverBoxShadow: TRANSPARENT_SHADOW,
