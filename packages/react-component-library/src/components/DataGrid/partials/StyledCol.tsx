@@ -11,7 +11,7 @@ interface StyledColProps {
 export const StyledCol = styled.th<StyledColProps>`
   position: relative;
   padding: ${spacing('9')} ${spacing('4')} ${spacing('9')} ${spacing('8')};
-  width: ${({ $width }) => $width || 'auto'};
+  width: ${({ $width }) => ($width ? `${$width}px` : 'auto')};
   border-bottom: 1px solid ${color('neutral', '200')};
   color: ${color('neutral', '600')};
   font-weight: 700;
