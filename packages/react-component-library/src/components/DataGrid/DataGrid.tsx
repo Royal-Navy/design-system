@@ -293,7 +293,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
   })
 
   const hasSubRows = useMemo(() => {
-    // @ts-expect-error
+    // @ts-ignore
     return data.some((row) => row?.subRows?.length > 0)
   }, [data])
 
@@ -323,7 +323,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     manualPagination,
     paginateExpandedRows: false,
     pageCount: manualPagination ? pageCount : undefined,
-    // @ts-expect-error
+    // @ts-ignore
     getSubRows: (row) => row?.subRows || [],
     debugTable,
     ...rest,
@@ -348,7 +348,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
   const handlePagination = useCallback(
     (event, currentPage, totalPages) => {
       table.setPageIndex(currentPage - 1)
-      // @ts-expect-error
+      // @ts-ignore
       onPageChange?.(event, currentPage, totalPages)
     },
     [table, onPageChange]

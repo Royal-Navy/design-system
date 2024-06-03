@@ -381,9 +381,9 @@ Caption.args = {
   onExpandedChange: fn(),
 }
 
-const columnsWithSizing = columns.map((item) => ({
+const columnsWithSizing = columns.map((item, index) => ({
   ...item,
-  size: 200,
+  size: index === 0 ? '200' : '100',
 }))
 
 export const ColumnSizing: StoryFn<typeof DataGrid> = (props) => {

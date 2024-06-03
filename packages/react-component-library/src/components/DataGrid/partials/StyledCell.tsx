@@ -8,7 +8,7 @@ interface StyledCellProps {
 
 export const StyledCell = styled.td<StyledCellProps>`
   padding: ${spacing('9')} ${spacing('4')} ${spacing('9')} ${spacing('8')};
-  width: ${({ $width }) => $width || 'auto'};
+  width: ${({ $width }) => ($width ? `${$width}px` : 'auto')};
   font-size: ${fontSize('s')};
   color: ${color('neutral', '400')};
   text-align: ${({ $alignment }) => $alignment || 'left'};

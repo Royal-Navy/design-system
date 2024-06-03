@@ -709,4 +709,37 @@ describe('DataGrid', () => {
       expect(onPageChangeSpy).toHaveBeenCalledWith(expect.any(Object), 2, 100)
     })
   })
+
+  describe('custom column sizing', () => {
+    const columnsWithWidths: ColumnDef<DataRow>[] = [
+      {
+        accessorKey: 'first',
+        header: 'First',
+        cell: (info) => info.getValue(),
+        size: 100,
+      },
+      {
+        accessorKey: 'second',
+        header: 'Second',
+        cell: (info) => info.getValue(),
+        size: 200,
+      },
+      {
+        accessorKey: 'third',
+        header: 'Third',
+        cell: (info) => info.getValue(),
+        size: 300,
+      },
+    ]
+
+    it('should render the columns with the correct widths', () => {
+      render(<DataGrid data={data} columns={columnsWithWidths} />)
+
+      const columnHeaders = screen.getAllByRole('columnheader')
+
+      expect(columnHeaders[0]).toHaveStyleRule('width', '100px')
+      expect(columnHeaders[1]).toHaveStyleRule('width', '200px')
+      expect(columnHeaders[2]).toHaveStyleRule('width', '300px')
+    })
+  })
 })
