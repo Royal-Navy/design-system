@@ -23,7 +23,6 @@ import {
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 import { ClassificationBar } from '../../ClassificationBar'
-import { Masthead } from '../Masthead'
 
 const disableColorContrastRule = {
   a11y: {
