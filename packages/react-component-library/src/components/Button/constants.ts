@@ -3,6 +3,7 @@ const BUTTON_VARIANT = {
   SECONDARY: 'secondary',
   TERTIARY: 'tertiary',
   DANGER: 'danger',
+  NO_CONTAINER: 'no-container',
 } as const
 
 const BUTTON_ICON_POSITION = {

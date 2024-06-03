@@ -1,12 +1,10 @@
 import styled, { css } from 'styled-components'
 import { color, fontSize, shadow, spacing } from '@royalnavy/design-tokens'
-import { rgba } from 'polished'
 
 import { BUTTON_ICON_POSITION, BUTTON_VARIANT } from '../constants'
 import { ButtonIconPositionType, ButtonVariantType } from '../Button'
-import { ComponentSizeType, COMPONENT_SIZE } from '../../Forms'
+import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
 
-const DROP_SHADOW = `0 2px 6px ${rgba(0, 0, 0, 0.3)}`
 const TRANSPARENT_SHADOW = shadow('0')
 const DEFAULT_HOVER_BORDER_SHADOW = `0 0 0 2px ${color('action', '900')}`
 const DANGER_HOVER_BORDER_SHADOW = `0 0 0 2px ${color('danger', '900')}`
@@ -21,6 +19,7 @@ const COLOR_MAP = {
     hoverBoxShadow: DEFAULT_HOVER_BORDER_SHADOW,
     activeBackgroundColor: color('action', '900'),
     focusBorderColor: color('action', '800'),
+    hoverTextDecoration: 'none',
   },
   [BUTTON_VARIANT.SECONDARY]: {
     color: color('action', '900'),
@@ -31,6 +30,7 @@ const COLOR_MAP = {
     hoverBoxShadow: DEFAULT_HOVER_BORDER_SHADOW,
     activeBackgroundColor: color('action', '300'),
     focusBorderColor: color('action', '300'),
+    hoverTextDecoration: 'none',
   },
   [BUTTON_VARIANT.TERTIARY]: {
     color: color('action', '600'),
@@ -41,6 +41,7 @@ const COLOR_MAP = {
     hoverBoxShadow: DEFAULT_HOVER_BORDER_SHADOW,
     activeBackgroundColor: color('neutral', '100'),
     focusBorderColor: color('action', '800'),
+    hoverTextDecoration: 'none',
   },
   [BUTTON_VARIANT.DANGER]: {
     color: color('neutral', 'white'),
@@ -51,6 +52,18 @@ const COLOR_MAP = {
     hoverBoxShadow: DANGER_HOVER_BORDER_SHADOW,
     activeBackgroundColor: color('danger', '900'),
     focusBorderColor: color('action', '800'),
+    hoverTextDecoration: 'none',
+  },
+  [BUTTON_VARIANT.NO_CONTAINER]: {
+    color: color('action', '600'),
+    backgroundColor: 'transparent',
+    borderColor: color('danger', '900'),
+    borderWidth: 0,
+    hoverBackgroundColor: color('action', '100'),
+    hoverBoxShadow: TRANSPARENT_SHADOW,
+    activeBackgroundColor: color('action', '100'),
+    focusBorderColor: color('action', '100'),
+    hoverTextDecoration: 'underline',
   },
 }
 
@@ -98,11 +111,7 @@ export function getButtonStyles({
     white-space: nowrap;
 
     &:hover {
-      text-decoration: none;
-    }
-
-    &:active {
-      box-shadow: ${TRANSPARENT_SHADOW}, ${TRANSPARENT_SHADOW};
+      text-decoration: ${COLOR_MAP[$variant].hoverTextDecoration ?? 'none'};
     }
 
     ${css`
@@ -119,7 +128,6 @@ export function getButtonStyles({
       &:focus,
       &:hover {
         background-color: ${COLOR_MAP[$variant].hoverBackgroundColor};
-        box-shadow: ${COLOR_MAP[$variant].hoverBoxShadow}, ${DROP_SHADOW};
       }
 
       &:active {
@@ -138,6 +146,7 @@ export function getButtonStyles({
           ${color('neutral', '200')};
         box-shadow: none;
         cursor: not-allowed;
+        text-decoration: none;
       }
     }
   `

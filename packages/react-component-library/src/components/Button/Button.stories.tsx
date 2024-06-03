@@ -76,6 +76,13 @@ const ButtonStrip = (args: ButtonStripArgs) => {
             {shouldHideButtonText ? '' : 'Tertiary'}
           </Button>
           <Button
+            variant={BUTTON_VARIANT.NO_CONTAINER}
+            isDisabled={state}
+            {...localArgs}
+          >
+            {shouldHideButtonText ? '' : 'No container'}
+          </Button>
+          <Button
             variant={BUTTON_VARIANT.DANGER}
             isDisabled={state}
             {...localArgs}
