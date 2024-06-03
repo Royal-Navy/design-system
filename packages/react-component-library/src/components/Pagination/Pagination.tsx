@@ -8,10 +8,11 @@ import { StyledList } from './partials/StyledList'
 import { StyledListItem } from './partials/StyledListItem'
 import { StyledTextInput } from './partials/StyledTextInput'
 import { StyledTotalPages } from './partials/StyledTotalPages'
-import { OnChangeEventType } from './types'
 import { useExternalId } from '../../hooks/useExternalId'
 
 const KEY_PREFIX = 'pagination-item'
+
+export type OnChangeEventType = React.KeyboardEvent | React.MouseEvent
 
 export interface PaginationProps {
   /**

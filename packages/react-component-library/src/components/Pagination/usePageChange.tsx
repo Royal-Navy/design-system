@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 import React, { useCallback, useState } from 'react'
 
-import { OnChangeEventType } from './types'
+import { OnChangeEventType } from '.'
 
 export const usePageChange = (
   initialPage: number,
@@ -52,6 +52,7 @@ export const usePageChange = (
           const valueNumber = Number(value)
           const isAtLeastZero = valueNumber >= 0
           const isNoMoreThanTotal = valueNumber <= totalPages
+
           if (isAtLeastZero && isNoMoreThanTotal) {
             changePage(event, valueNumber)
             return

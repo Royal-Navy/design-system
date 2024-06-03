@@ -32,7 +32,7 @@ import {
   IconSwapVert,
 } from '@royalnavy/icon-library'
 
-import { PaginationProps } from '../Pagination'
+import { PaginationProps, OnChangeEventType } from '../Pagination'
 import { IndeterminateCheckbox } from '../Checkbox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TABLE_SORT_ORDER } from '../Table'
@@ -107,7 +107,11 @@ export interface DataGridProps<T extends object>
   /**
    * Optional handler called when the value of currently selected page changes.
    */
-  onPageChange?: Pick<PaginationProps, 'onChange'>
+  onPageChange?: (
+    event: OnChangeEventType,
+    currentPage: number,
+    totalPages: number
+  ) => void
 }
 
 const SORT_ORDER_ICONS_MAP = {
@@ -346,10 +350,10 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
   }, [table])
 
   const handlePagination = useCallback(
-    (event, currentPage, totalPages) => {
+    (...args) => {
+      const [_, currentPage] = args
       table.setPageIndex(currentPage - 1)
-      // @ts-ignore
-      onPageChange?.(event, currentPage, totalPages)
+      onPageChange?.(...args)
     },
     [table, onPageChange]
   )
