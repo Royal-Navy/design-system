@@ -1,13 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="./DataGrid.d.ts" />
 
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import _noop from 'lodash/noop'
 import {
   flexRender,
   getCoreRowModel,
   getExpandedRowModel,
   getSortedRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from '@tanstack/react-table'
 import type {
@@ -21,6 +22,7 @@ import type {
   SortDirection,
   SortingState,
   TableOptions,
+  PaginationState,
 } from '@tanstack/react-table'
 import {
   IconArrowDownward,
@@ -30,6 +32,7 @@ import {
   IconSwapVert,
 } from '@royalnavy/icon-library'
 
+import { PaginationProps } from '../Pagination'
 import { IndeterminateCheckbox } from '../Checkbox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { TABLE_SORT_ORDER } from '../Table'
@@ -44,12 +47,14 @@ import {
   StyledHead,
   StyledRow,
   StyledTable,
+  StyledPagination,
 } from './partials'
 
 type AriaSortType = 'ascending' | 'descending' | 'none'
 
 export interface DataGridProps<T extends object>
-  extends Omit<
+  extends Pick<Partial<PaginationProps>, 'pageSize'>,
+    Omit<
       TableOptions<T>,
       | 'state'
       | 'data'
@@ -84,7 +89,7 @@ export interface DataGridProps<T extends object>
    */
   hasHover?: boolean
   /**
-   * Hide row selection checkboxes (requires `enableRowSelection` and `hasHover`)
+   * Hide row selection checkboxes (requires `enableRowSelection` and `hasHover`).
    */
   hideCheckboxes?: boolean
   /**
@@ -95,6 +100,14 @@ export interface DataGridProps<T extends object>
    * Optional handler invoked when the expanded rows change.
    */
   onExpandedChange?: (expanded: ExpandedState) => void
+  /**
+   * Total number of pages in the dataset (requires `manualPagination` mode).
+   */
+  pageCount?: number
+  /**
+   * Optional handler called when the value of currently selected page changes.
+   */
+  onPageChange?: Pick<PaginationProps, 'onChange'>
 }
 
 const SORT_ORDER_ICONS_MAP = {
@@ -257,8 +270,14 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     className,
     onSelectedRowsChange = _noop,
     onExpandedChange = _noop,
+    onPageChange = _noop,
+    manualPagination,
+    pageCount,
+    pageSize,
     ...rest
   } = props
+
+  const isPaginated = manualPagination || !!pageSize
 
   const [sorting, setSorting] = useState<SortingState>([])
 
@@ -267,6 +286,11 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
   const [rowSelection, setRowSelection] = useState<RowSelectionState>(
     !!enableRowSelection && initialRowSelection ? initialRowSelection : {}
   )
+
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: pageSize ?? data.length,
+  })
 
   const hasSubRows = useMemo(() => {
     // @ts-expect-error
@@ -285,14 +309,20 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
       sorting,
       rowSelection,
       expanded,
+      pagination,
     },
     enableRowSelection,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
     onExpandedChange: setExpanded,
+    onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    manualPagination,
+    paginateExpandedRows: false,
+    pageCount: manualPagination ? pageCount : undefined,
     // @ts-expect-error
     getSubRows: (row) => row?.subRows || [],
     debugTable,
@@ -314,6 +344,15 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
       return acc || group.headers.some((header) => header.depth > 1)
     }, false)
   }, [table])
+
+  const handlePagination = useCallback(
+    (event, currentPage, totalPages) => {
+      table.setPageIndex(currentPage - 1)
+      // @ts-expect-error
+      onPageChange?.(event, currentPage, totalPages)
+    },
+    [table, onPageChange]
+  )
 
   return (
     <StyledDataGrid className={className}>
@@ -419,6 +458,15 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
             )}
         </StyledBody>
       </StyledTable>
+      {isPaginated && (
+        <StyledPagination
+          name="datagrid-pagination"
+          initialPage={pagination.pageIndex + 1}
+          pageSize={pagination.pageSize}
+          total={data.length || pageCount! * pageSize!}
+          onChange={handlePagination}
+        />
+      )}
     </StyledDataGrid>
   )
 }

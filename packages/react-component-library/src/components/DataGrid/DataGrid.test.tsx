@@ -665,4 +665,48 @@ describe('DataGrid', () => {
       expect(screen.getAllByRole('row')).toHaveLength(6)
     })
   })
+
+  describe('paginated data', () => {
+    const paginatedData = Array.from({ length: 1000 }, (_, i) => ({
+      first: `a${i + 1}`,
+      second: `b${i + 1}`,
+      third: `c${i + 1}`,
+    }))
+
+    it('should render the correct rows on initial render', async () => {
+      render(<DataGrid data={paginatedData} columns={columns} pageSize={10} />)
+
+      expect(screen.getAllByRole('row')).toHaveLength(11)
+      expect(screen.getByText('a1')).toBeVisible()
+    })
+
+    it('should render the correct rows when the page is changed', async () => {
+      const onPageChangeSpy = jest.fn()
+
+      render(
+        <DataGrid
+          data={paginatedData}
+          columns={columns}
+          pageSize={10}
+          // @ts-ignore
+          onPageChange={onPageChangeSpy}
+        />
+      )
+
+      userEvent.click(
+        screen.getByRole('button', {
+          name: 'Next page',
+        })
+      )
+      await hackyWaitFor()
+
+      expect(screen.getAllByRole('row')).toHaveLength(11)
+
+      expect(screen.queryByText('a1')).not.toBeInTheDocument()
+      expect(screen.getByText('a11')).toBeVisible()
+
+      expect(onPageChangeSpy).toHaveBeenCalledTimes(1)
+      expect(onPageChangeSpy).toHaveBeenCalledWith(expect.any(Object), 2, 100)
+    })
+  })
 })
