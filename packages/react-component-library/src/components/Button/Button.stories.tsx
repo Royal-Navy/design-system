@@ -119,7 +119,6 @@ export const RegularButtons: StoryFn<typeof Button> = (args) => {
 
   return (
     <>
-      <p>All variants of {args.size} buttons</p>
       <ButtonStrip {...args} title="Default" />
       <ButtonStrip {...iconLeftArgs} title="With icons left" />
       <ButtonStrip {...iconRightArgs} title="With icons right" />
