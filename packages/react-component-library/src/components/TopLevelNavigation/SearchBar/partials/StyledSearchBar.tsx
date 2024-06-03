@@ -6,9 +6,9 @@ interface StyledSearchBarProps {
 }
 
 export const StyledSearchBar = styled.div<StyledSearchBarProps>`
-  z-index: ${zIndex('dropdown', 1)};
+  z-index: ${zIndex('masthead', 1)};
   display: block;
   margin-top: -1px;
-  position: relative;
+  position: absolute;
   width: ${({ $width }) => $width};
 `
