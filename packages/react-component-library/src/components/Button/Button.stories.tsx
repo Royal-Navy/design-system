@@ -33,7 +33,7 @@ const StyledButtonStrip = styled.div`
   max-width: 500px;
   display: flex;
   justify-content: start;
-  gap: ${spacing('2')};
+  gap: ${spacing('4')};
   padding: ${spacing('4')} 0;
 `
 
@@ -61,7 +61,6 @@ const ButtonStrip = (args: ButtonStripArgs) => {
           >
             {shouldHideButtonText ? '' : 'Primary'}
           </Button>
-          &nbsp;
           <Button
             variant={BUTTON_VARIANT.SECONDARY}
             isDisabled={state}
@@ -69,7 +68,6 @@ const ButtonStrip = (args: ButtonStripArgs) => {
           >
             {shouldHideButtonText ? '' : 'Secondary'}
           </Button>
-          &nbsp;
           <Button
             variant={BUTTON_VARIANT.TERTIARY}
             isDisabled={state}
@@ -77,7 +75,6 @@ const ButtonStrip = (args: ButtonStripArgs) => {
           >
             {shouldHideButtonText ? '' : 'Tertiary'}
           </Button>
-          &nbsp;
           <Button
             variant={BUTTON_VARIANT.DANGER}
             isDisabled={state}
