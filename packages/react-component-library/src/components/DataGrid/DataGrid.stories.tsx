@@ -381,9 +381,9 @@ Caption.args = {
   onExpandedChange: fn(),
 }
 
-const columnsWithSizing = columns.map((item) => ({
+const columnsWithSizing = columns.map((item, index) => ({
   ...item,
-  size: 200,
+  size: index === 0 ? '200' : '100',
 }))
 
 export const ColumnSizing: StoryFn<typeof DataGrid> = (props) => {
@@ -485,6 +485,22 @@ ExpandableRows.args = {
   onExpandedChange: fn(),
 }
 
+export const Paginated: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
+}
+Paginated.args = {
+  columns,
+  data,
+  isFullWidth: true,
+  onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
+  pageSize: 5,
+}
+
 const mergedColumns = groupedColumns.map((group) => ({
   ...group,
   columns: group.columns.map((column) => ({
@@ -521,4 +537,5 @@ KitchenSink.args = {
   },
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  pageSize: 3,
 }

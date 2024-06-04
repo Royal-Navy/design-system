@@ -3,8 +3,7 @@ import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { Pagination } from '.'
-import { OnChangeEventType } from './types'
+import { Pagination, OnChangeEventType } from '.'
 
 describe('Pagination', () => {
   let onChangeSpy: (
