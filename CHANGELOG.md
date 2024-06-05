@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.12.0](https://github.com/Royal-Navy/design-system/compare/4.11.2...4.12.0) (2024-06-05)
+
+### Bug Fixes
+
+- **DataGrid:** Resolve issue with column sizing ([582305b](https://github.com/Royal-Navy/design-system/commit/582305b817b9c9515e13f0b436a78d75581aabe6))
+- **SearchBar:** Fixed searchbar obscuring text ([#3815](https://github.com/Royal-Navy/design-system/issues/3815)) ([437b14d](https://github.com/Royal-Navy/design-system/commit/437b14d98ca2c175780d92a8bc3b5d2b403ad11d))
+
+### Features
+
+- **DataGrid:** Add pagination ([08fcf5b](https://github.com/Royal-Navy/design-system/commit/08fcf5b00ab128982726dfa2773c0a0a7d532a0f))
+
 ## [4.11.2](https://github.com/Royal-Navy/design-system/compare/4.11.1...4.11.2) (2024-06-03)
 
 **Note:** Version bump only for package royal-navy-design-system
