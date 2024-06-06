@@ -136,7 +136,6 @@ export const STYLES_MAP: { [key: string]: ButtonStyles } = {
       textDecoration: 'none',
     },
     hover: {
-      backgroundColor: color('action', '100'),
       color: color('action', '800'),
       textDecoration: 'underline',
     },
