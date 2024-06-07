@@ -44,11 +44,11 @@ Here's a quick example application to get you started:
 
 ```javascript
 import React from 'react'
-import { createRoot } from "react-dom/client";
+import { createRoot } from 'react-dom/client';
 import '@royalnavy/fonts'
 import { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 function App() {
