@@ -49,17 +49,18 @@ export function getButtonStyles({
 
     color: ${styles.default.color};
     background-color: ${styles.default.backgroundColor};
-    border: ${styles.default.border};
-    outline: ${styles.default.outline};
 
+    border: 0;
+    outline: 0;
+    box-shadow: ${styles.default.boxShadow};
     text-decoration: ${styles.default.textDecoration};
 
     &:hover {
       color: ${styles.hover?.color ?? styles.default.color};
       background-color: ${styles.hover?.backgroundColor ??
       styles.default.backgroundColor};
-      border: ${styles.hover?.border ?? styles.default.border};
-      outline: ${styles.hover?.outline ?? styles.default.outline};
+      box-shadow: ${styles.hover?.boxShadow ?? styles.default.boxShadow};
+
       text-decoration: ${styles.hover?.textDecoration ??
       styles.default.textDecoration};
     }
@@ -68,8 +69,10 @@ export function getButtonStyles({
       color: ${styles.focus?.color ?? styles.default.color};
       background-color: ${styles.focus?.backgroundColor ??
       styles.default.backgroundColor};
-      border: ${styles.focus?.border ?? styles.default.border};
-      outline: ${styles.focus?.outline ?? styles.default.outline};
+
+      outline: 0;
+      box-shadow: ${styles.focus?.boxShadow ?? styles.default.boxShadow};
+
       text-decoration: ${styles.focus?.textDecoration ??
       styles.default.textDecoration};
     }
@@ -78,7 +81,8 @@ export function getButtonStyles({
       color: ${styles.active?.color ?? styles.default.color};
       background-color: ${styles.active?.backgroundColor ??
       styles.default.backgroundColor};
-      border: ${styles.active?.border ?? styles.default.border};
+
+      box-shadow: ${styles.active?.boxShadow ?? styles.default.boxShadow};
     }
 
     &:disabled {
@@ -88,8 +92,6 @@ export function getButtonStyles({
       &:focus {
         color: ${styles.disabled.color};
         background-color: ${styles.disabled.backgroundColor};
-        border: ${styles.disabled.border};
-        outline: ${styles.disabled.outline};
         text-decoration: ${styles.disabled.textDecoration};
 
         box-shadow: none;
