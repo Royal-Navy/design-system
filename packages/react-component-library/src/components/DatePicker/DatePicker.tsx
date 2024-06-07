@@ -11,7 +11,7 @@ import { DATEPICKER_ACTION } from './types'
 import { hasClass, ValueOf } from '../../helpers'
 import { InlineButton } from '../InlineButtons/InlineButton'
 import { InputValidationProps } from '../../common/InputValidationProps'
-import { isDateValid } from './utils'
+import { isDateValid, isDateDisabled } from './utils'
 import { StyledLabel } from '../TextInput/partials/StyledLabel'
 import { StyledDatePickerInput } from './partials/StyledDatePickerInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
@@ -218,6 +218,12 @@ export const DatePicker = ({
     disabledDays,
     onChange
   )
+
+  const handleDaySelection = () => {
+    dispatch({ type: DATEPICKER_ACTION.REFRESH_HAS_ERROR })
+    dispatch({ type: DATEPICKER_ACTION.REFRESH_INPUT_VALUE })
+  }
+
   const { startDate, endDate } = state
   const hasError =
     state.hasError || isInvalid || hasClass(className, 'is-invalid')
@@ -335,6 +341,15 @@ export const DatePicker = ({
         <FocusTrap focusTrapOptions={focusTrapOptions}>
           <StyledDayPicker
             firstDayOfWeek={1}
+            todayButton="Jump to today"
+            onTodayButtonClick={(day) => {
+              if (isDateDisabled(day, disabledDays)) {
+                return
+              }
+
+              handleDayClick(day)
+              handleDaySelection()
+            }}
             weekdaysShort={WEEKDAY_TITLES}
             selectedDays={[
               {
@@ -349,10 +364,7 @@ export const DatePicker = ({
               }
 
               const newState = handleDayClick(day)
-
-              dispatch({ type: DATEPICKER_ACTION.REFRESH_HAS_ERROR })
-              dispatch({ type: DATEPICKER_ACTION.REFRESH_INPUT_VALUE })
-
+              handleDaySelection()
               if (newState.endDate || !isRange) {
                 setTimeout(() => close())
               }

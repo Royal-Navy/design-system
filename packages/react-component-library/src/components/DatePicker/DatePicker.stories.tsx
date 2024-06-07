@@ -55,13 +55,14 @@ Disabled.args = {
 export const DisabledDays = Template.bind({})
 DisabledDays.storyName = 'Disabled days'
 DisabledDays.args = {
-  initialStartDate: parseISO('2021-04-01'),
+  initialStartDate: parseISO('2024-01-01'),
   disabledDays: [
-    parseISO('2021-04-12'),
-    parseISO('2021-04-02'),
+    parseISO('2024-06-12'),
+    parseISO('2024-06-18'),
+    new Date(),
     {
-      after: parseISO('2021-03-20'),
-      before: parseISO('2021-03-25'),
+      after: parseISO('2024-12-31'),
+      before: parseISO('2024-01-01'),
     },
   ],
 }

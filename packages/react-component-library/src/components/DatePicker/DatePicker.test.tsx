@@ -345,8 +345,9 @@ describe('DatePicker', () => {
       )
     })
 
-    describe('when Shift-Tab is pressed twice', () => {
+    describe('when Shift-Tab is pressed three times', () => {
       beforeEach(async () => {
+        await user.tab({ shift: true })
         await user.tab({ shift: true })
         await user.tab({ shift: true })
       })
@@ -356,13 +357,14 @@ describe('DatePicker', () => {
       })
 
       describe('and Tab is then pressed once', () => {
-        beforeEach(() => {
-          return user.tab()
+        beforeEach(async () => {
+          await user.tab({ shift: true })
         })
 
         it('still traps the focus within the picker', () => {
-          const dayPicker =
-            wrapper.container.querySelectorAll('.DayPicker-wrapper')[0]
+          const dayPicker = wrapper.container.querySelectorAll(
+            '.DayPicker-NavButton--next'
+          )[0]
           expect(dayPicker).toHaveFocus()
         })
       })
