@@ -87,6 +87,7 @@ export const STYLES_MAP: { [key: string]: ButtonStyles } = {
     hover: {
       backgroundColor: color('action', '200'),
       boxShadow: `0 0 0 2px ${color('action', '700')}`,
+      color: color('action', '700'),
     },
     focus: {
       color: color('action', '800'),
