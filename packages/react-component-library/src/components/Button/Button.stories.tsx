@@ -40,11 +40,13 @@ const StyledButtonStrip = styled.div`
 type ButtonStripArgs = ButtonProps & {
   title?: string
   hideText?: boolean
+  hideNoContainer?: boolean
 }
 
 const ButtonStrip = (args: ButtonStripArgs) => {
   const localArgs = { ...args }
   const shouldHideButtonText = !!args.hideText
+  const shouldDisplayNoContainerButton = !args.hideNoContainer
   delete localArgs.variant
   delete localArgs.isDisabled
   const disabledStates = [false, true]
@@ -75,13 +77,15 @@ const ButtonStrip = (args: ButtonStripArgs) => {
           >
             {shouldHideButtonText ? '' : 'Tertiary button'}
           </Button>
-          <Button
-            variant={BUTTON_VARIANT.NO_CONTAINER}
-            isDisabled={state}
-            {...localArgs}
-          >
-            {shouldHideButtonText ? '' : 'No container button'}
-          </Button>
+          {shouldDisplayNoContainerButton && (
+            <Button
+              variant={BUTTON_VARIANT.NO_CONTAINER}
+              isDisabled={state}
+              {...localArgs}
+            >
+              {shouldHideButtonText ? '' : 'No container button'}
+            </Button>
+          )}
           <Button
             variant={BUTTON_VARIANT.DANGER}
             isDisabled={state}
@@ -119,11 +123,11 @@ export const RegularButtons: StoryFn<typeof Button> = (args) => {
 
   return (
     <>
-      <ButtonStrip {...args} title="Default" />
+      <ButtonStrip {...args} title="Default" hideNoContainer />
       <ButtonStrip {...iconLeftArgs} title="With icons left" />
       <ButtonStrip {...iconRightArgs} title="With icons right" />
       <ButtonStrip {...iconOnlyArgs} title="Icon only" hideText />
-      <ButtonStrip {...loadingArgs} title="Loading" />
+      <ButtonStrip {...loadingArgs} title="Loading" hideNoContainer />
     </>
   )
 }
