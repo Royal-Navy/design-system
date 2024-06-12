@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { Meta, StoryFn } from '@storybook/react'
 
-import { IconBrightnessLow } from '@royalnavy/icon-library'
+import { IconWifi } from '@royalnavy/icon-library'
 import { spacing } from '@royalnavy/design-tokens'
 
 import { Button, ButtonProps } from './index'
@@ -33,18 +33,20 @@ const StyledButtonStrip = styled.div`
   max-width: 500px;
   display: flex;
   justify-content: start;
-  gap: ${spacing('2')};
+  gap: ${spacing('4')};
   padding: ${spacing('4')} 0;
 `
 
 type ButtonStripArgs = ButtonProps & {
   title?: string
   hideText?: boolean
+  hideNoContainer?: boolean
 }
 
 const ButtonStrip = (args: ButtonStripArgs) => {
   const localArgs = { ...args }
   const shouldHideButtonText = !!args.hideText
+  const shouldDisplayNoContainerButton = !args.hideNoContainer
   delete localArgs.variant
   delete localArgs.isDisabled
   const disabledStates = [false, true]
@@ -59,31 +61,37 @@ const ButtonStrip = (args: ButtonStripArgs) => {
             isDisabled={state}
             {...localArgs}
           >
-            {shouldHideButtonText ? '' : 'Primary'}
+            {shouldHideButtonText ? '' : 'Primary button'}
           </Button>
-          &nbsp;
           <Button
             variant={BUTTON_VARIANT.SECONDARY}
             isDisabled={state}
             {...localArgs}
           >
-            {shouldHideButtonText ? '' : 'Secondary'}
+            {shouldHideButtonText ? '' : 'Secondary button'}
           </Button>
-          &nbsp;
           <Button
             variant={BUTTON_VARIANT.TERTIARY}
             isDisabled={state}
             {...localArgs}
           >
-            {shouldHideButtonText ? '' : 'Tertiary'}
+            {shouldHideButtonText ? '' : 'Tertiary button'}
           </Button>
-          &nbsp;
+          {shouldDisplayNoContainerButton && (
+            <Button
+              variant={BUTTON_VARIANT.NO_CONTAINER}
+              isDisabled={state}
+              {...localArgs}
+            >
+              {shouldHideButtonText ? '' : 'No container button'}
+            </Button>
+          )}
           <Button
             variant={BUTTON_VARIANT.DANGER}
             isDisabled={state}
             {...localArgs}
           >
-            {shouldHideButtonText ? '' : 'Danger'}
+            {shouldHideButtonText ? '' : 'Danger button'}
           </Button>
         </StyledButtonStrip>
       ))}
@@ -96,7 +104,7 @@ const ButtonStrip = (args: ButtonStripArgs) => {
 export const RegularButtons: StoryFn<typeof Button> = (args) => {
   const iconLeftArgs = {
     ...args,
-    icon: <IconBrightnessLow />,
+    icon: <IconWifi />,
     iconPosition: BUTTON_ICON_POSITION.LEFT,
   }
   const iconRightArgs = {
@@ -115,12 +123,11 @@ export const RegularButtons: StoryFn<typeof Button> = (args) => {
 
   return (
     <>
-      <p>All variants of {args.size} buttons</p>
-      <ButtonStrip {...args} title="Default" />
+      <ButtonStrip {...args} title="Default" hideNoContainer />
       <ButtonStrip {...iconLeftArgs} title="With icons left" />
       <ButtonStrip {...iconRightArgs} title="With icons right" />
       <ButtonStrip {...iconOnlyArgs} title="Icon only" hideText />
-      <ButtonStrip {...loadingArgs} title="Loading" />
+      <ButtonStrip {...loadingArgs} title="Loading" hideNoContainer />
     </>
   )
 }
