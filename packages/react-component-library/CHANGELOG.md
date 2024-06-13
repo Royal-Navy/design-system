@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.13.0](https://github.com/Royal-Navy/design-system/compare/4.12.1...4.13.0) (2024-06-13)
+
+### Features
+
+- **Button:** No container button variant ([#3823](https://github.com/Royal-Navy/design-system/issues/3823)) ([a221894](https://github.com/Royal-Navy/design-system/commit/a221894c132fce05abe5f1b5d4ee7350553cd742))
+
 ## [4.12.1](https://github.com/Royal-Navy/design-system/compare/4.12.0...4.12.1) (2024-06-10)
 
 **Note:** Version bump only for package @royalnavy/react-component-library
