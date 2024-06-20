@@ -2,33 +2,170 @@ import { Meta, Source } from '@storybook/blocks'
 
 <Meta title="Designers" />
 
-# Design Principles
+# Axure Design Library
 
-Here’s a checklist of everything you need to get started:
+Designers can use our Axure libraries to quickly prototype, test and validate ideas with users. There are 2 libraries:
 
-## Design tokens
-The Royal Navy Design System provides tokens for colour, typography, spacing and much more. Tokens make it easy to ensure consistency across defence applications.
+### Design Component library
 
-### The case for using tokens
-The number one reason is consistency<sup>[1](#references)</sup>: the palette of `danger` is the same everywhere. End-users of Royal Navy applications highly benefit from consistency across interfaces, where the colour of danger may save lives.
+Contains RNDS Widget with ready to use interactivity.
 
-Another excellent reason to always use tokens, is that if we adjust the colours of `success`, these changes are automatically made wherever it’s in use, in every single live application. Magic.
+- Ideal for creating rich prototypes or quickly putting together static design mockups
+- Interactivity has been programmed for you, depending on the level of realism you need but some effort may be needed.
 
-#### [Colour Tokens](?path=/docs/tokens-colours--docs)
-We use named colours (e.g. Neutral or Action) instead of colour literals (e.g. blue). Colour palettes represent functions, so that we can make interactions and contexts easy to distinguish.
+[Download RNDS Axure Library v4.0](https://www.)
 
+### Icon Library
 
-#### [Spacing](?path=/docs/tokens-spacing--docs)
-Spacing is a key (and often overlooked) aspect of ensuring your application is easy to read and understand. Too little whitespace will cause components to become visually cramped, therefore decreasing readability. The general rule is to start with whitespace that is too large for an element and then decrease it until it is at an appropriate size. It is far better to have too much whitespace than too little.
+A library of approved iconography for clear visual communication.
 
-#### [Typography](?path=/docs/tokens-typography--docs)
-All Royal Navy Design System applications are set in Lato
+[Download RNDS Axure Icon Library](https://www.)
 
 
----
+## Installing Axure libraries
 
-### References
-<sup>1</sup> [Usability Heuristics for User Interface Design](https://www.nngroup.com/articles/ten-usability-heuristics/)
+1. **Download** from the links above.
+2. **Double-click** on the file you downloaded.
+3. Axure will ask where you want to **save** the library. Commonly you might choose *'Documents > Axure > Libraries'*
+4. The library will automatically be available under the **Libraries pane**. This is near the middle left-hand side area of the screen.
+
+
+## Using RNDS library in a design file
+
+When you are creating a new design using the RNDS you must do one of the following:
+
+### A. Set the library widget styles
+
+1. In Axure, select **'File > Import'** from RP file and locate the library.
+
+    Note: *If you previously chose the option to move the library file to
+the Axure application’s directory, the library file should now be
+under 'Documents > Axure > Libraries'.*
+
+1. On the first screen **'IMPORT PAGES'**, just click the **Next** button.
+2. On the second screen **'IMPORT COMPONENTS'**, click the **All** button
+3. Click the **Next** button until you get to **'IMPORT WIDGET STYLES'**.
+4. Tick **Import all styles**, then click the **Skip to End** button
+5. Click the **Finish** button.
+6. **Save** your file after you’ve completed this.
+
+You shouldn't need to do this again for this file, unless the library is updated.
+
+### OR
+
+### B. Use the Boilerplate design file *(coming soon)*
+
+If you use an existing design file the above process is not necessary. Because of that we plan to create a boilerplate design file with some of the most common patterns set up ready to use. This may include phase banner, masthead, and dashboard or landing page. Please let us know if you have any ideas you'd like to see implemented.
+
+
+## Updating the library
+
+When we modify or update the library the following must be done:
+
+### Remove old library
+
+1. In the Libraries pane, select the library that needs updating
+2. Click on the three dots and click Remove Library.
+
+### To install the new version
+
+1. Download from the links above.
+2. Double-click on the file you downloaded.
+3. Axure will ask where you want to save the library.
+4. Commonly you might choose 'Documents > Axure > Libraries'
+5. The library will automatically be available under the Libraries pane. This is near the middle left-hand side area of the screen.
+6. In Axure, select **'File > Import'** from RP file and locate the library.
+
+    Note: *If you previously chose the option to move the library file to
+the Axure application’s directory, the library file should now be
+under 'Documents > Axure > Libraries'.*
+
+7. On the first screen **'IMPORT PAGES'**, just click the **Next** button.
+8. On the second screen **'IMPORT COMPONENTS'**, click the **All** button
+9. Click the **Next** button until you get to **'IMPORT WIDGET STYLES'**.
+10. Tick **Import all styles**, then click the **Skip to End** button
+11. Click the **Finish** button.
+12. **Save** your file after you’ve completed this.
+
+
+## Using a library
+This is a very short guide to help you take your first steps. For more detail, visit the official Axure documentation. There are also some very useful Youtube video guides.
+
+RNDS library components are preconstructed groups of Axure widgets with custom styles. Just like any other Axure widgets you can drag and drop them directly onto your canvas. You can then edit them in order to change labels, size etc.
+
+For example: the Alert component is made up of a background box widget, three text widgets, an image widget (icon), and a vertical line widget.
+
+## Editing component instances
+
+Continuing with the example of an Alert component, to edit the title of an Alert, you need to select the title widget first, then type the new title. To select an individual widget within a group of widgets, either:
+
+- **Click once** on the group, wait for one second and **click again** on the widget you want to select within that group (eg. Title
+
+or
+
+- Hold **CMD ⌘** (or CTRL in Windows) pressed on your keyboard and click on the widget your want to select - this will directly choose the individual widget, rather than the group
+
+
+## Using flexible widgets
+
+To help you put together your designs in a more flexible way, some widgets are made up of several individual parts.
+
+You will find all these available in the library, just mix-and-match as required. All widgets should automatically snap together when moved close enough. Once you’ve completed your widget, you can select all individual widgets with your mouse and press CMD ⌘ + G (or CTRL + G in Windows) to group them all as one group, to make your life easier when moving or copying the entire group.
+
+## Finding a widget
+All library widgets have been grouped using the respective widget names that you will find in our Docs site. Groups are in alphabetical order.
+
+- You can click on a group title to collapse the entire group, so it’s easier to navigate between groups.
+- You can also search, using the search function at the top of the Libraries pane.
+- If you can’t see the entire name of a component, just hover your mouse over the thumbnail and Axure will show a tooltip with the entire widget name.
+
+## Getting more information about a library widget
+
+Some widgets have additional help text that highlights certain functions. These show a small question mark icon when you move your mouse over their thumbnail. Click on the question mark to see the help text.
+
+## Selecting the right widget
+
+As your designs get more complex, there will be times when multiple widgets overlap each other and choosing the right widget can be tricky. There are two ways to ensure you select the right widget:
+
+- Clicking once selects the topmost widget in the z-axis. If you wait for one second and click again, then the next widget underneath will be selected. You can keep going until you select the widget you need.
+- Right-click over the area where the widget you need to select is (even if it’s not currently visible). Then click on the “Select widget” option and find the widget you want to select. It is generally a good idea to name key widgets, so you can find them easily. You can name a widget under the “Style” tab.
+
+## Sharing prototypes and testing with users
+There are several ways to share your prototype:
+
+### Axure Cloud
+
+It’s the quickest and easiest way, but this is not appropriate for OFFICIAL - SENSITIVE or above material.
+
+1. In Axure, select **'Publish > Publish to Axure Cloud'**.
+2. You can **choose a password** if you’d like.
+3. Once you publish, Axure will provide you with a **shareable link**.
+
+By default, Axure allows viewers to add comments to your designs, which you can then access via your Axure Cloud account.
+
+Note: *If you re-upload your prototype, any existing comments will be lost!*
+
+### HTML prototype
+
+Axure produces HTML prototypes which can be opened in any web browser. Viewers may have to install a plugin or change a security setting in their browser to be able to view local HTML files. Either way, the prototype will guide them accordingly. 
+
+Alternatively, if you have a secure hosting environment, you can host the HTML files and provide a direct link to your users, which would allow them to view and interact with your prototype without having to install any plugins or change security settings.
+
+1. In Axure, select **'Publish > Generate HTML files'**.
+2. Clicking on the cog icon allows you to choose which pages will be published (if you don’t want to export your entire work).
+
+### Static mock-ups
+
+If you don’t have any interactivity in your designs, you can simply export as static mock-ups. You have two options:
+
+- Single PDF file
+    1. In Axure, select **'File > Print'**.
+    2. Check the Scaling options and choose which pages you want to export.
+    3. Make sure to select PDF and not an actual Printer.
+- Individual image files
+    1. In Axure, select **'File'**.
+    2. Then Export all pages to Image or Export [current page] to Image
+
 
 
 
