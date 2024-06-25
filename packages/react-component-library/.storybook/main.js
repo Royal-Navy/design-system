@@ -49,7 +49,11 @@ module.exports = {
   },
 
   stories: ['../src/**/*.stories.tsx', '../src/**/*.mdx'],
-  staticDirs: ['../src/forms/images', '../src/tokens/images'],
+  staticDirs: [
+    '../src/forms/images',
+    '../src/tokens/images',
+    '../src/intro/static',
+  ],
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
 
