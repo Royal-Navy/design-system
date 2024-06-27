@@ -27,9 +27,10 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
   }
 
   .DayPicker-wrapper {
+    display: flex;
     position: relative;
-    flex-direction: row;
-    padding-bottom: ${spacing('8')};
+    flex-direction: column-reverse;
+    padding: ${spacing('6')};
     user-select: none;
     border-radius: 15px;
     outline: none;
@@ -56,7 +57,7 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
       $variant: BUTTON_VARIANT.TERTIARY,
     })};
     position: absolute;
-    top: ${spacing('6')};
+    top: ${spacing('15')};
     width: 38px;
     background-position: center;
     background-size: 18px;
@@ -195,5 +196,20 @@ export const StyledDayPicker = styled(DayPicker)<StyledDayPickerProps>`
   .DayPicker-Day--disabled {
     color: ${color('neutral', '200')};
     pointer-events: none;
+  }
+
+  .DayPicker-TodayButton {
+    ${getButtonStyles({
+      $size: COMPONENT_SIZE.SMALL,
+      $variant: BUTTON_VARIANT.TERTIARY,
+    })};
+    width: 100%;
+    margin-bottom: ${spacing('6')};
+  }
+
+  .DayPicker-NavBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 `
