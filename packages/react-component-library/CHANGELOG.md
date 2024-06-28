@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.1](https://github.com/Royal-Navy/design-system/compare/4.14.0...4.14.1) (2024-06-28)
+
+### Bug Fixes
+
+- **ProgressIndicator:** Positioning was missing transform ([#3834](https://github.com/Royal-Navy/design-system/issues/3834)) ([ffed07e](https://github.com/Royal-Navy/design-system/commit/ffed07e2e655d8c82cf83ad1e9a8b40e8b0a61ae))
+
 # [4.14.0](https://github.com/Royal-Navy/design-system/compare/4.13.2...4.14.0) (2024-06-28)
 
 ### Features
