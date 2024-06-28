@@ -7,6 +7,7 @@ export const StyledProgressIndicator = styled.div`
   left: 50%;
   text-align: center;
   text-transform: uppercase;
+  transform: translate(-50%, -50%);
 
   span {
     display: block;
