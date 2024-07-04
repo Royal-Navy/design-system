@@ -1,3 +1,4 @@
 src/tokens
 src/flat.ts
 babel.config.js
+build-dictionary.js

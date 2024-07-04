@@ -16,4 +16,15 @@ StyleDictionary.registerFormat({
   formatter: mapDeepDoubleQuotesTemplate,
 })
 
+StyleDictionary.registerFormat({
+  name: 'css/variables',
+  formatter: function ({ dictionary, options }) {
+    return `${this.selector || ':root'} {
+  ${dictionary.allProperties
+    .map((prop) => `--${prop.name}: ${prop.value};`)
+    .join('\n  ')}
+}`
+  },
+})
+
 StyleDictionary.buildAllPlatforms()
