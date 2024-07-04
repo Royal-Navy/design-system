@@ -1,14 +1,26 @@
 {
   "source": ["src/tokens/light/*.json"],
   "platforms": {
+    "web": {
+      "transformGroup": "css",
+      "buildPath": "dist/",
+      "files": [
+        {
+          "destination": "variables.css",
+          "format": "css/variables"
+        }
+      ]
+    },
     "scss": {
       "transformGroup": "scss",
       "buildPath": "dist/",
-      "files": [{
-        "destination": "index.scss",
-        "format": "sass/map-deep-double-quotes",
-        "mapName": "tokens"
-      }]
+      "files": [
+        {
+          "destination": "variables.scss",
+          "format": "sass/map-deep-double-quotes",
+          "mapName": "tokens"
+        }
+      ]
     },
     "ts-flat": {
       "transformGroup": "js",
