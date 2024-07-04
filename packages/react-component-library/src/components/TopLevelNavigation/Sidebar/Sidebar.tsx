@@ -1,11 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useRef, useContext, useLayoutEffect } from 'react'
 import { Transition } from 'react-transition-group'
 
 import { SidebarHandle } from './SidebarHandle'
 import { SidebarUserProps } from './SidebarUser'
 import { SidebarNotifications } from './SidebarNotifications'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
-import { SidebarContext, SidebarProvider } from './context'
+import { SidebarContext } from './context'
 import { NotificationsProps } from '../NotificationPanel'
 import { TRANSITION_TIMEOUT } from './constants'
 import { StyledSidebar } from './partials/StyledSidebar'
@@ -63,64 +63,53 @@ export const Sidebar = ({
   ...rest
 }: SidebarProps) => {
   const nodeRef = useRef(null)
+  const { isOpen, hasMouseOver, setHasMouseOver, setIsOpen } =
+    useContext(SidebarContext)
+
+  useLayoutEffect(() => {
+    setIsOpen(initialIsOpen)
+  }, [initialIsOpen, setIsOpen])
 
   return (
-    <SidebarProvider initialIsOpen={initialIsOpen}>
-      <SidebarContext.Consumer>
-        {({ isOpen, hasMouseOver, setHasMouseOver }) => (
-          <StyledSidebar
-            data-testid="sidebar"
-            isOpen={isOpen}
-            onMouseEnter={(_) => setHasMouseOver(true)}
-            onMouseLeave={(_) => setHasMouseOver(false)}
-            {...rest}
-          >
-            {classificationBar &&
-              React.cloneElement(classificationBar, {
-                isCondensed: !isOpen,
-                inSidebar: true,
-              })}
-            <Transition
-              nodeRef={nodeRef}
-              in={hasMouseOver}
-              timeout={0}
-              unmountOnExit
-            >
-              {(state) => (
-                <SidebarHandle ref={nodeRef} transitionStatus={state} />
-              )}
-            </Transition>
-            {title && (
-              <StyledHead data-testid="sidebar-head">
-                {icon && <StyledHeadIcon>{icon}</StyledHeadIcon>}
-                <Transition
-                  in={isOpen}
-                  timeout={TRANSITION_TIMEOUT}
-                  unmountOnExit
-                >
-                  {(state) => (
-                    <StyledHeadTitle $transitionStatus={state}>
-                      {title}
-                    </StyledHeadTitle>
-                  )}
-                </Transition>
-              </StyledHead>
+    <StyledSidebar
+      data-testid="sidebar"
+      $isOpen={isOpen}
+      onMouseEnter={(_) => setHasMouseOver(true)}
+      onMouseLeave={(_) => setHasMouseOver(false)}
+      {...rest}
+    >
+      {classificationBar &&
+        React.cloneElement(classificationBar, {
+          isCondensed: !isOpen,
+          inSidebar: true,
+        })}
+      <Transition nodeRef={nodeRef} in={hasMouseOver} timeout={0} unmountOnExit>
+        {(state) => <SidebarHandle ref={nodeRef} transitionStatus={state} />}
+      </Transition>
+      {title && (
+        <StyledHead data-testid="sidebar-head">
+          {icon && <StyledHeadIcon>{icon}</StyledHeadIcon>}
+          <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
+            {(state) => (
+              <StyledHeadTitle $transitionStatus={state}>
+                {title}
+              </StyledHeadTitle>
             )}
-            {children}
+          </Transition>
+        </StyledHead>
+      )}
+      {children}
 
-            {notifications && (
-              <SidebarNotifications
-                initialIsOpen={initialIsNotificationsOpen}
-                notifications={notifications}
-                hasUnreadNotification={hasUnreadNotification}
-              />
-            )}
+      {notifications && (
+        <SidebarNotifications
+          initialIsOpen={initialIsNotificationsOpen}
+          notifications={notifications}
+          hasUnreadNotification={hasUnreadNotification}
+        />
+      )}
 
-            {user}
-          </StyledSidebar>
-        )}
-      </SidebarContext.Consumer>
-    </SidebarProvider>
+      {user}
+    </StyledSidebar>
   )
 }
 
