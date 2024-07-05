@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.15.0](https://github.com/Royal-Navy/design-system/compare/4.14.1...4.15.0) (2024-07-05)
+
+### Features
+
+- **DesignTokens:** Generate and expose CSS vars ([aa27ff4](https://github.com/Royal-Navy/design-system/commit/aa27ff476432cb2cf74479415e584442eee8a9ef))
+
 ## [4.14.1](https://github.com/Royal-Navy/design-system/compare/4.14.0...4.14.1) (2024-06-28)
 
 ### Bug Fixes
