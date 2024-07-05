@@ -41,7 +41,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@royalnavy/eslint-config-react": "^4.15.0",
     "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^15.0.5",
+    "@testing-library/react": "^16.0.0",
     "@types/jest": "^29.0.3",
     "@types/lodash": "^4.14.149",
     "@types/react": "^18.2.25",
