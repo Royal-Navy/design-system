@@ -1,13 +1,36 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
+import { color } from '@royalnavy/design-tokens'
 
 import { Checkbox, IndeterminateCheckbox, CheckboxProps } from '.'
 import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
 
 export default {
   argTypes: {
+    checked: {
+      control: 'boolean',
+    },
+    variant: {
+      control: 'select',
+      options: Object.values(CHECKBOX_RADIO_VARIANT),
+    },
+    isDisabled: {
+      control: 'boolean',
+    },
     description: {
-      control: false,
+      control: 'select',
+      options: ['None', 'Plain text', 'Rich text'],
+      mapping: {
+        None: null,
+        'Plain text':
+          'She must have hidden the plans in the escape pod. Send a detachment down to retrieve them.',
+        // prettier-ignore
+        'Rich text': (
+          <div>
+            Marked up content with <strong>bold typefaces</strong>, <i>italics</i> and <span style={{color: color('action', '400')}}>colour</span>
+          </div>
+        ),
+      },
     },
   },
   component: Checkbox,
