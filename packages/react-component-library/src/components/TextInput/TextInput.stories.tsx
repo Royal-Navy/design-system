@@ -12,6 +12,15 @@ export default {
     startAdornment: {
       control: false,
     },
+    isDisabled: {
+      control: 'boolean',
+    },
+    isInvalid: {
+      control: 'boolean',
+    },
+    type: {
+      control: 'text',
+    },
   },
   component: TextInput,
   title: 'Components/Text Input',
