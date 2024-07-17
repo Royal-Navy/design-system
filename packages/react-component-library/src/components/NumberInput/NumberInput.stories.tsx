@@ -1,14 +1,50 @@
 import React from 'react'
-import { StoryFn, Meta } from '@storybook/react'
-import { IconBrightnessHigh } from '@royalnavy/icon-library'
-
+import { Meta, StoryFn } from '@storybook/react'
+import {
+  IconAnchor,
+  IconBrightnessHigh,
+  IconWeb,
+  IconWifi,
+} from '@royalnavy/icon-library'
 import { COMPONENT_SIZE } from '../Forms'
 import { NumberInput } from './NumberInput'
 
 export default {
   argTypes: {
     icon: {
-      control: false,
+      type: 'select',
+      options: ['None', 'Wifi', 'Web', 'Anchor'],
+      mapping: {
+        None: null,
+        Wifi: <IconWifi />,
+        Web: <IconWeb />,
+        Anchor: <IconAnchor />,
+      },
+    },
+    footnote: {
+      control: 'text',
+    },
+    isDisabled: {
+      control: 'boolean',
+    },
+    label: {
+      control: 'text',
+    },
+    max: {
+      control: 'number',
+    },
+    min: {
+      control: 'number',
+    },
+    placeholder: {
+      control: 'text',
+    },
+    size: {
+      control: 'select',
+      options: Object.values(COMPONENT_SIZE),
+    },
+    step: {
+      control: 'number',
     },
   },
   component: NumberInput,

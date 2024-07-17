@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { Meta, StoryFn } from '@storybook/react'
 
-import { IconWifi } from '@royalnavy/icon-library'
+import { IconWifi, IconWeb, IconAnchor } from '@royalnavy/icon-library'
 import { spacing } from '@royalnavy/design-tokens'
 
 import { Button, ButtonProps } from './index'
@@ -14,7 +14,36 @@ import { COMPONENT_SIZE } from '../Forms'
 export default {
   argTypes: {
     icon: {
-      control: false,
+      type: 'select',
+      options: ['None', 'Wifi', 'Web', 'Anchor'],
+      mapping: {
+        None: null,
+        Wifi: <IconWifi />,
+        Web: <IconWeb />,
+        Anchor: <IconAnchor />,
+      },
+    },
+    isLoading: {
+      control: 'boolean',
+    },
+    iconPosition: {
+      control: 'select',
+      options: Object.values(BUTTON_ICON_POSITION),
+    },
+    size: {
+      control: 'select',
+      options: Object.values(COMPONENT_SIZE),
+    },
+    variant: {
+      control: 'select',
+      options: Object.values(BUTTON_VARIANT),
+    },
+    isDisabled: {
+      control: 'boolean',
+    },
+    type: {
+      control: 'select',
+      options: ['button', 'submit'],
     },
   },
   component: Button,

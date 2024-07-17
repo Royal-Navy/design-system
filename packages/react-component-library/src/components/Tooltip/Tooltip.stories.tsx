@@ -1,7 +1,8 @@
+import styled from 'styled-components'
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 
-import { Tooltip } from '.'
+import { Tooltip, TOOLTIP_POSITION } from '.'
 
 export default {
   component: Tooltip,
@@ -9,12 +10,22 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
+  argTypes: {
+    position: {
+      control: 'select',
+      options: Object.values(TOOLTIP_POSITION),
+    },
+  },
 } as Meta<typeof Tooltip>
 
+const StyledContainer = styled.div`
+  min-height: 8rem;
+`
+
 export const Default: StoryFn<typeof Tooltip> = ({ children, ...rest }) => (
-  <div css={{ height: '4rem' }}>
+  <StyledContainer>
     <Tooltip {...rest}>{children}</Tooltip>
-  </div>
+  </StyledContainer>
 )
 
 Default.args = {
