@@ -9,7 +9,6 @@ export interface SidebarContextDefaults {
 
 export interface SidebarProviderProps {
   children?: React.ReactNode
-  initialIsOpen?: boolean
 }
 
 const sidebarContextDefaults: SidebarContextDefaults = {
@@ -21,11 +20,8 @@ const sidebarContextDefaults: SidebarContextDefaults = {
 
 export const SidebarContext = createContext(sidebarContextDefaults)
 
-export const SidebarProvider = ({
-  children,
-  initialIsOpen = false,
-}: SidebarProviderProps) => {
-  const [isOpen, setIsOpen] = useState<boolean>(initialIsOpen)
+export const SidebarProvider = ({ children }: SidebarProviderProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const [hasMouseOver, setHasMouseOver] = useState<boolean>(false)
   const contextValue = useMemo(
     () => ({ isOpen, setIsOpen, hasMouseOver, setHasMouseOver }),

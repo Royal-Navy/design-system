@@ -57,6 +57,7 @@ const StyledMain = styled.main`
   padding: 2rem;
   background-color: #c9c9c9;
   width: 100%;
+  height: 30rem;
 `
 
 const SimpleSidebarNav = () => (
