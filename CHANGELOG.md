@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.15.2](https://github.com/Royal-Navy/design-system/compare/4.15.1...4.15.2) (2024-07-24)
+
+### Bug Fixes
+
+- **Sidebar:** Sidebar now overlays page content ([#3837](https://github.com/Royal-Navy/design-system/issues/3837)) ([3ab2bdc](https://github.com/Royal-Navy/design-system/commit/3ab2bdc213e31ac64592cec3b97d9bd4012c80a7))
+
 ## [4.15.1](https://github.com/Royal-Navy/design-system/compare/4.15.0...4.15.1) (2024-07-18)
 
 **Note:** Version bump only for package royal-navy-design-system
