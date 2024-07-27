@@ -1,28 +1,62 @@
 import React from 'react'
 import styled from 'styled-components'
-import { StoryFn, Meta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 
 import {
+  IconFeedback,
+  IconGrain,
   IconHome,
   IconLocalShipping,
-  IconVerifiedUser,
   IconMessage,
-  IconFeedback,
   IconSettings,
-  IconGrain,
+  IconVerifiedUser,
 } from '@royalnavy/icon-library'
 
-import { storyAccessibilityConfig } from '../../../a11y/storyAccessibilityConfig'
+import { storyAccessibilityConfig } from '../../../../a11y/storyAccessibilityConfig'
 import {
   Sidebar,
   SidebarNav,
   SidebarNavItem,
   SidebarUser,
   SidebarWrapper,
-} from '.'
-import { Link } from '../../Link'
-import { Notification, Notifications } from '../NotificationPanel'
-import { ClassificationBar } from '../../ClassificationBar'
+} from '../index'
+import { Link } from '../../../Link'
+import { Notification, Notifications } from '../../NotificationPanel'
+import { ClassificationBar } from '../../../ClassificationBar'
+import { StyledContainer, StyledMain } from './partials'
+import { FourTextPanels } from './FourTextPanels'
+
+const SimpleSidebarNav = () => {
+  return (
+    <SidebarNav>
+      <SidebarNavItem
+        icon={<IconHome />}
+        link={<Link href="#">Dashboard</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconVerifiedUser />}
+        link={<Link href="#">Reports</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconLocalShipping />}
+        link={<Link href="#">Platforms</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconFeedback />}
+        link={<Link href="#">Data&nbsp;Feed</Link>}
+      />
+      <SidebarNavItem
+        isActive
+        icon={<IconMessage />}
+        link={<Link href="#">Messages</Link>}
+      />
+      <SidebarNavItem
+        icon={<IconSettings />}
+        link={<Link href="#">Settings</Link>}
+      />
+    </SidebarNav>
+  )
+}
 
 const disableColorContrastRule = {
   a11y: {
@@ -47,57 +81,32 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
   },
+  argTypes: {
+    icon: {
+      control: 'select',
+      options: ['None', 'Grain'],
+      mapping: {
+        None: null,
+        Grain: <IconGrain />,
+      },
+    },
+  },
 } as Meta<typeof Sidebar>
 
-const StyledSidebar = styled(Sidebar)`
-  max-height: 30rem;
-`
-
-const StyledMain = styled.main`
-  padding: 2rem;
-  background-color: #c9c9c9;
-  width: 100%;
-  height: 30rem;
-`
-
-const SimpleSidebarNav = () => (
-  <SidebarNav>
-    <SidebarNavItem
-      icon={<IconHome />}
-      link={<Link href="#">Dashboard</Link>}
-    />
-    <SidebarNavItem
-      icon={<IconVerifiedUser />}
-      link={<Link href="#">Reports</Link>}
-    />
-    <SidebarNavItem
-      icon={<IconLocalShipping />}
-      link={<Link href="#">Platforms</Link>}
-    />
-    <SidebarNavItem
-      icon={<IconFeedback />}
-      link={<Link href="#">Data&nbsp;Feed</Link>}
-    />
-    <SidebarNavItem
-      isActive
-      icon={<IconMessage />}
-      link={<Link href="#">Messages</Link>}
-    />
-    <SidebarNavItem
-      icon={<IconSettings />}
-      link={<Link href="#">Settings</Link>}
-    />
-  </SidebarNav>
-)
+const StyledSidebar = styled(Sidebar)``
 
 export const Default: StoryFn<typeof Sidebar> = (props) => {
   return (
-    <SidebarWrapper>
-      <StyledSidebar {...props}>
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar {...props}>
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <StyledMain>
+          <FourTextPanels />
+        </StyledMain>
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 

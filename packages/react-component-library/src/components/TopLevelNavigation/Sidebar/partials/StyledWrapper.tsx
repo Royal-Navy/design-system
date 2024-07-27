@@ -6,7 +6,7 @@ export const StyledWrapper = styled.div`
   display: flex;
   flex-direction: row;
 
-  > *:nth-child(2) {
-    margin-left: ${SIDEBAR_CLOSED_WIDTH};
-  }
+  height: 100%;
+
+  margin-left: ${SIDEBAR_CLOSED_WIDTH};
 `
