@@ -1,43 +1,19 @@
 import React, { useContext } from 'react'
-import { IconPerson, IconExitToApp } from '@royalnavy/icon-library'
+import { IconExitToApp, IconPerson } from '@royalnavy/icon-library'
 import { Transition } from 'react-transition-group'
 
-import { ComponentWithClass } from '../../../common/ComponentWithClass'
-import { LinkTypes } from '../../../common/Link'
 import { SidebarContext } from './context'
 import { SidebarUserItem } from './SidebarUserItem'
 import { TRANSITION_TIMEOUT } from './constants'
 import { Sheet } from '../Sheet/Sheet'
-import { StyledUserAvatar } from './partials/StyledUserAvatar'
-import { StyledUserSheetButton } from './partials/StyledUserSheetButton'
-import { StyledUser } from './partials/StyledUser'
-import { StyledSheetList } from './partials/StyledSheetList'
-import { StyledUserText } from './partials/StyledUserText'
-
-export interface SidebarUserProps extends ComponentWithClass {
-  children?: never
-  /**
-   * Initials of the end user (e.g. Joe Bloggs => JB).
-   */
-  initials: string
-  /**
-   * Whether the user options sheet is initially open.
-   * @private
-   */
-  initialIsOpen?: boolean
-  /**
-   * Link component to apply to the user avatar.
-   */
-  userLink?: React.ReactElement<LinkTypes>
-  /**
-   * Link component to apply to the exit icon.
-   */
-  exitLink?: React.ReactElement<LinkTypes>
-  /**
-   * Full name of the end user (e.g. Joe Bloggs).
-   */
-  name?: string
-}
+import {
+  StyledSheetList,
+  StyledUser,
+  StyledUserAvatar,
+  StyledUserSheetButton,
+  StyledUserText,
+} from './partials'
+import { SidebarUserProps } from './types'
 
 type SidebarAvatarWithItemsProps = Omit<SidebarUserProps, 'link'>
 

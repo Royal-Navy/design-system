@@ -1,54 +1,17 @@
-import React, { useRef, useContext, useLayoutEffect } from 'react'
+import React, { useContext, useLayoutEffect, useRef } from 'react'
 import { Transition } from 'react-transition-group'
 
 import { SidebarHandle } from './SidebarHandle'
-import { SidebarUserProps } from './SidebarUser'
 import { SidebarNotifications } from './SidebarNotifications'
-import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext } from './context'
-import { NotificationsProps } from '../NotificationPanel'
 import { TRANSITION_TIMEOUT } from './constants'
-import { StyledSidebar } from './partials/StyledSidebar'
-import { StyledHead } from './partials/StyledHead'
-import { StyledHeadIcon } from './partials/StyledHeadIcon'
-import { StyledHeadTitle } from './partials/StyledHeadTitle'
-import { ClassificationProps } from '../../ClassificationBar'
-
-export interface SidebarProps extends ComponentWithClass {
-  /**
-   * Optional icon to display at the top of the component (JSX).
-   */
-  icon?: React.ReactNode
-  /**
-   * Optional text title to display at the top of the component.
-   */
-  title?: string
-  /**
-   * Optional JSX to render a user menu.
-   */
-  user?: React.ReactElement<SidebarUserProps>
-  /**
-   * Toggle whether there are unread notifications.
-   */
-  hasUnreadNotification?: boolean
-  /**
-   * Optional JSX to render a collection of notifications.
-   */
-  notifications?: React.ReactElement<NotificationsProps>
-  /**
-   * Whether the notifications list is initially open.
-   * @private
-   */
-  initialIsNotificationsOpen?: boolean
-  /**
-   * Initial `isOpen` state on first render.
-   */
-  initialIsOpen?: boolean
-  /**
-   * Optional jsx to render the classification bar above the masthead.
-   */
-  classificationBar?: React.ReactElement<ClassificationProps>
-}
+import {
+  StyledHead,
+  StyledHeadIcon,
+  StyledHeadTitle,
+  StyledSidebar,
+} from './partials'
+import { SidebarProps } from './types'
 
 export const Sidebar = ({
   icon,

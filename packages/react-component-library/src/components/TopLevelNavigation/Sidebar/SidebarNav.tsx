@@ -1,32 +1,7 @@
 import React from 'react'
-
-import { Nav, NavItem } from '../../../common/Nav'
-import { SidebarNavItem, SidebarNavItemProps } from './index'
+import { SidebarNavItem, SidebarNavItemProps, SidebarNavProps } from './index'
 import { warnIfOverwriting } from '../../../helpers'
-import { StyledNav } from './partials/StyledNav'
-
-export interface SidebarNavProps extends Nav<NavItem> {
-  /**
-   * Optional handler invoked when `onBlur` event is emitted.
-   */
-  onBlur?: (e: React.FocusEvent<HTMLElement>) => void
-  /**
-   * Optional handler invoked when `onFocus` event is emitted.
-   */
-  onFocus?: (e: React.FocusEvent<HTMLElement>) => void
-  /**
-   * Optional handler invoked when an item is clicked.
-   */
-  onItemClick?: (e: React.MouseEvent<HTMLElement>) => void
-  /**
-   * Optional handler invoked when the `onMouseOut` event is emitted.
-   */
-  onMouseOut?: (e: React.MouseEvent<HTMLElement>) => void
-  /**
-   * Optional handler invoked when the `onMouseOver` event is emitted.
-   */
-  onMouseOver?: (e: React.MouseEvent<HTMLElement>) => void
-}
+import { StyledNav } from './partials'
 
 function mapNavItem(
   navItem: React.ReactElement<SidebarNavItemProps>,

@@ -2,10 +2,10 @@ import React from 'react'
 import { IconMoreVert } from '@royalnavy/icon-library'
 
 import { Nav } from '../../../common/Nav'
-import { SidebarNavItemProps } from './SidebarNavItem'
 import { Sheet } from '../Sheet/Sheet'
 import { StyledSheetList } from './partials/StyledSheetList'
 import { StyledSubNavSheetButton } from './partials/StyledSubNavSheetButton'
+import { SidebarNavItemProps } from './types'
 
 export const SidebarSubNav = ({ children }: Nav<SidebarNavItemProps>) => {
   return (
