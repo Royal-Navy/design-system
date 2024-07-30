@@ -30,10 +30,6 @@ export interface SidebarProps extends ComponentWithClass {
    */
   initialIsNotificationsOpen?: boolean
   /**
-   * Initial `isOpen` state on first render.
-   */
-  initialIsOpen?: boolean
-  /**
    * Optional jsx to render the classification bar above the masthead.
    */
   classificationBar?: React.ReactElement<ClassificationProps>

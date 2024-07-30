@@ -12,7 +12,6 @@ import {
   IconGrain,
 } from '@royalnavy/icon-library'
 
-import { storyAccessibilityConfig } from '../../../a11y/storyAccessibilityConfig'
 import {
   Sidebar,
   SidebarNav,
@@ -23,14 +22,6 @@ import {
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 import { ClassificationBar } from '../../ClassificationBar'
-
-const disableColorContrastRule = {
-  a11y: {
-    config: {
-      rules: storyAccessibilityConfig.Sidebar,
-    },
-  },
-}
 
 export default {
   component: Sidebar,
@@ -102,23 +93,6 @@ export const Default: StoryFn<typeof Sidebar> = (props) => {
 }
 
 Default.args = {}
-
-export const InitiallyOpen: StoryFn<typeof Sidebar> = (props) => {
-  return (
-    <SidebarWrapper>
-      <StyledSidebar {...props} initialIsOpen>
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
-    </SidebarWrapper>
-  )
-}
-
-InitiallyOpen.args = {}
-
-InitiallyOpen.parameters = disableColorContrastRule
-
-InitiallyOpen.storyName = 'Initially open'
 
 export const WithSubNavigation: StoryFn<typeof Sidebar> = (props) => {
   const sidebarNavWithSub = (

@@ -53,30 +53,6 @@ const notifications = (
 describe('Sidebar', () => {
   let wrapper: RenderResult
 
-  describe('when `initialIsOpen` is set', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <SidebarWrapper>
-          <Sidebar initialIsOpen icon={<IconGrain />} title="Application Name">
-            <SidebarNav>
-              <SidebarNavItem
-                icon={<IconHome />}
-                link={<Link href="/dashboard">Dashboard</Link>}
-              />
-              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-            </SidebarNav>
-          </Sidebar>
-          <main>Hello, World!</main>
-        </SidebarWrapper>
-      )
-      fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
-    })
-
-    it('should display the text titles for navigation items', () => {
-      expect(wrapper.queryByText('Dashboard')).toBeInTheDocument()
-    })
-  })
-
   describe('when rendered in React strict mode', () => {
     it('should not throw deprecation warning about findDOMNode', () => {
       expect(() => {

@@ -1,4 +1,4 @@
-import React, { useContext, useLayoutEffect, useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { Transition } from 'react-transition-group'
 
 import { SidebarHandle } from './SidebarHandle'
@@ -21,17 +21,11 @@ export const Sidebar = ({
   hasUnreadNotification,
   notifications,
   initialIsNotificationsOpen,
-  initialIsOpen = false,
   classificationBar,
   ...rest
 }: SidebarProps) => {
   const nodeRef = useRef(null)
-  const { isOpen, hasMouseOver, setHasMouseOver, setIsOpen } =
-    useContext(SidebarContext)
-
-  useLayoutEffect(() => {
-    setIsOpen(initialIsOpen)
-  }, [initialIsOpen, setIsOpen])
+  const { isOpen, hasMouseOver, setHasMouseOver } = useContext(SidebarContext)
 
   return (
     <StyledSidebar
