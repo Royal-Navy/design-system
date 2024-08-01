@@ -40,6 +40,10 @@ export interface TimelineEventWithRenderContentProps
    * The start date of the event.
    */
   startDate: Date
+  /**
+   * The title of the event.
+   */
+  title?: string
 }
 
 export interface TimelineEventWithChildrenProps extends ComponentWithClass {
@@ -63,6 +67,10 @@ export interface TimelineEventWithChildrenProps extends ComponentWithClass {
    * The start date of the event.
    */
   startDate: Date
+  /**
+   * The HTML title attribute associated with the event.
+   */
+  title?: string
 }
 
 export type TimelineEventProps =
@@ -78,6 +86,7 @@ function renderDefault({
   maxWidthPx,
   startsBeforeStart,
   endsAfterEnd,
+  title,
 }: {
   barColor?: string
   children: React.ReactNode
@@ -87,6 +96,7 @@ function renderDefault({
   maxWidthPx: string
   startsBeforeStart: boolean
   endsAfterEnd: boolean
+  title: string
 }) {
   return (
     <StyledEvent $leftPx={offsetPx} data-testid="timeline-event">
@@ -98,14 +108,23 @@ function renderDefault({
         $endsAfterEnd={endsAfterEnd}
         data-testid="timeline-event-bar"
       />
-      <StyledEventTitle data-testid="timeline-event-title">
+      <StyledEventTitle data-testid="timeline-event-title" title={title}>
         {children || `Task ${format(new Date(startDate), DATE_FORMAT.SHORT)}`}
       </StyledEventTitle>
     </StyledEvent>
   )
 }
 
-function getTitle(children: React.ReactNode, startDate: Date, endDate: Date) {
+function getTitle(
+  children: React.ReactNode,
+  startDate: Date,
+  endDate: Date,
+  title?: string
+) {
+  if (title) {
+    return title
+  }
+
   const start = isString(children) ? `${children} begins` : `Begins`
 
   return `${start} on ${format(
@@ -120,6 +139,7 @@ export const TimelineEvent = ({
   endDate,
   render,
   startDate,
+  title,
   ...rest
 }: TimelineEventProps) => {
   const {
@@ -135,6 +155,8 @@ export const TimelineEvent = ({
   if (startsAfterEnd || endsBeforeStart) {
     return null
   }
+
+  const eventTitle = getTitle(children, startDate, endDate, title)
 
   const event = render
     ? render({
@@ -155,15 +177,14 @@ export const TimelineEvent = ({
         maxWidthPx,
         startsBeforeStart,
         endsAfterEnd,
+        title: eventTitle,
       })
 
-  const title = getTitle(children, startDate, endDate)
-
   return (
-    <div data-testid="timeline-event-wrapper">
+    <div data-testid="timeline-event-wrapper" title={title}>
       {React.cloneElement(event as React.ReactElement, {
-        title,
-        'aria-label': title,
+        title: eventTitle,
+        'aria-label': eventTitle,
         role: 'cell',
         ...rest,
       })}
