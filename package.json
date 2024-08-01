@@ -28,7 +28,7 @@
   },
   "scripts": {
     "tsc-version": "tsc --version",
-    "build": "lerna run --stream --concurrency 1 build",
+    "build": "CI='' lerna run --stream --concurrency 1 build",
     "lint": "lerna run --parallel lint",
     "test": "lerna run --parallel test",
     "storybook:static": "lerna run --parallel storybook:static",
