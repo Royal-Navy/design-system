@@ -26,8 +26,9 @@
     "directory": "packages/react-component-library"
   },
   "scripts": {
+    "ts-version": "tsc --version",
     "analyze": "webpack --config=webpack/analyze.js",
-    "build": "run-s build:es build:cjs types",
+    "build": "run-s ts-version build:es build:cjs types",
     "build:cjs": "BABEL_ENV=cjs webpack --config=webpack/prod.js",
     "build:es": "BABEL_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\"",
     "build:cjs:dev": "BABEL_ENV=cjs RNDS_LOG_LEVEL=debug webpack --config=webpack/dev.js",

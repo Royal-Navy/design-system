@@ -27,6 +27,7 @@
     "url": "https://github.com/Royal-Navy/design-system.git"
   },
   "scripts": {
+    "tsc-version": "tsc --version",
     "build": "lerna run --stream --concurrency 1 build",
     "lint": "lerna run --parallel lint",
     "test": "lerna run --parallel test",
