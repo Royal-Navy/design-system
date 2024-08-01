@@ -3,16 +3,9 @@ import { StoryFn, Meta } from '@storybook/react'
 
 import { Alert, ALERT_VARIANT } from './index'
 
-export default {
-  component: Alert,
-  title: 'Components/Alert',
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: Object.values(ALERT_VARIANT),
-    },
-  },
-} as Meta<typeof Alert>
+export default { component: Alert, title: 'Components/Alert' } as Meta<
+  typeof Alert
+>
 
 export const Default: StoryFn<typeof Alert> = ({
   title,

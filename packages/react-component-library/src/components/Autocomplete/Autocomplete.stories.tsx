@@ -19,11 +19,6 @@ export default {
   args: {
     label: 'Some label',
   },
-  argTypes: {
-    hideClearButton: {
-      control: 'boolean',
-    },
-  },
 } as Meta<typeof Autocomplete>
 
 const StyledWrapper = styled.div<{ $isDisabled?: boolean }>`

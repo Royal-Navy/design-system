@@ -43,18 +43,6 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
   },
-  argTypes: {
-    initialOpenSubcomponent: {
-      control: false,
-    },
-    Logo: { control: false },
-    classificationBar: { control: false },
-    homeLink: { control: false },
-    nav: { control: false },
-    notifications: { control: false },
-    onSearch: { control: false },
-    user: { control: false },
-  },
 } as Meta<typeof Masthead>
 
 export const Default: StoryFn<typeof Masthead> = (props) => {

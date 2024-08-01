@@ -6,10 +6,6 @@ import { TextArea } from '.'
 export default {
   component: TextArea,
   title: 'Components/Text Area',
-  argTypes: {
-    isDisabled: { control: 'boolean' },
-    isInvalid: { control: 'boolean' },
-  },
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

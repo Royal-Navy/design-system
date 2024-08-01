@@ -10,12 +10,6 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-  argTypes: {
-    appearance: {
-      control: 'select',
-      options: Object.values(TOAST_APPEARANCE),
-    },
-  },
 } as Meta<typeof Toast>
 
 const LABEL = 'Hello, World!'

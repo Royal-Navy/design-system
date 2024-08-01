@@ -1,59 +1,16 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 
-import { IconSearch, IconSettings } from '@royalnavy/icon-library'
+import { IconSearch } from '@royalnavy/icon-library'
 import { TextInput } from '.'
 
 export default {
   argTypes: {
-    startAdornment: {
-      // TODO - why doesn't this get picked up from the props
-      description:
-        'Optional adornment to display to the left of the input value.',
-      control: 'select',
-      options: ['None', 'Search', 'Settings'],
-      mapping: {
-        None: null,
-        Search: <IconSearch />,
-        Settings: <IconSettings />,
-      },
-    },
     endAdornment: {
-      description:
-        'Optional adornment to display to the right of the input value.',
-      control: 'select',
-      options: ['None', 'Search', 'Settings'],
-      mapping: {
-        None: null,
-        Search: <IconSearch />,
-        Settings: <IconSettings />,
-      },
+      control: false,
     },
-    isDisabled: {
-      control: 'boolean',
-    },
-    isInvalid: {
-      control: 'boolean',
-    },
-    type: {
-      control: 'select',
-      options: [
-        'color',
-        'date',
-        'datatime-local',
-        'email',
-        'file',
-        'image',
-        'month',
-        'number',
-        'password',
-        'search',
-        'tel',
-        'text',
-        'time',
-        'url',
-        'week',
-      ],
+    startAdornment: {
+      control: false,
     },
   },
   component: TextInput,

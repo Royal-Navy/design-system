@@ -9,11 +9,6 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-  argTypes: {
-    hasCheckbox: {
-      control: 'boolean',
-    },
-  },
 } as Meta<typeof DismissibleBanner>
 
 export const Default: Story<DismissibleBannerWithTitleProps> = ({

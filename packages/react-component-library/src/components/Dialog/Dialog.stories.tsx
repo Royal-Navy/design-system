@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import { color, spacing } from '@royalnavy/design-tokens'
+import React, { useRef, useEffect } from 'react'
+import { StoryFn, Meta } from '@storybook/react'
 import styled from 'styled-components'
+import { spacing } from '@royalnavy/design-tokens'
 
 import { Dialog, DialogProps } from '.'
 import { ModalImperativeHandle } from '../Modal'
@@ -14,30 +14,6 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
-  },
-  argTypes: {
-    description: {
-      control: 'select',
-      options: ['Plain text', 'ReactNode'],
-
-      mapping: {
-        ReactNode: (
-          <p style={{ textAlign: 'justify' }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod <i>tempor incididunt ut labore et dolore magna</i> aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            <strong> nisi ut aliquip ex ea commodo </strong>. Duis aute irure
-            dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur.{' '}
-            <span style={{ color: color('warning', '800') }}>
-              Excepteur sint occaecat cupidatat
-            </span>{' '}
-            non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
-          </p>
-        ),
-      },
-    },
   },
 } as Meta<typeof Dialog>
 
@@ -57,19 +33,10 @@ const Example = (props: DialogProps) => {
     }
   })
 
-  const dismissDialog = () => {
-    ref?.current?.close()
-  }
-
   return (
     <StyledWrapper>
       <Button onClick={() => ref?.current?.open()}>Open Dialog</Button>
-      <Dialog
-        {...props}
-        ref={ref}
-        onCancel={dismissDialog}
-        onConfirm={dismissDialog}
-      />
+      <Dialog {...props} ref={ref} />
     </StyledWrapper>
   )
 }

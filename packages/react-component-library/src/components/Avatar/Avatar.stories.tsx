@@ -5,12 +5,6 @@ import { Avatar, AVATAR_VARIANT } from '.'
 
 export default {
   component: Avatar,
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: Object.values(AVATAR_VARIANT),
-    },
-  },
   parameters: { layout: 'fullscreen' },
   title: 'Components/Avatar',
 } as Meta<typeof Avatar>

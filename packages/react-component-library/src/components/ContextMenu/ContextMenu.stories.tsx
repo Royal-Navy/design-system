@@ -1,13 +1,11 @@
 import React, { useRef } from 'react'
 import { StoryFn, Meta } from '@storybook/react'
-import { color } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
 import { IconEdit, IconDelete, IconAdd } from '@royalnavy/icon-library'
 
 import { ContextMenu, ContextMenuItem, ContextMenuDivider } from '.'
 import { Link } from '../Link'
-import { CLICK_BUTTON } from '../../hooks/useClickMenu'
 
 export default {
   component: ContextMenu,
@@ -16,30 +14,19 @@ export default {
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
-  argTypes: {
-    clickType: {
-      control: 'select',
-      options: Object.values(CLICK_BUTTON),
-    },
-  },
 } as Meta<typeof ContextMenu>
-
-const StyledContainer = styled.div`
-  min-height: 14rem;
-`
 
 const ClickArea = styled.div`
   display: inline-block;
   padding: 1rem;
-  color: ${color('neutral', '700')};
-  background-color: ${color('neutral', '100')};
+  background-color: #c9c9c9;
 `
 
 export const Default: StoryFn<typeof ContextMenu> = (props) => {
   const ref = useRef<HTMLDivElement>(null)
 
   return (
-    <StyledContainer>
+    <>
       <ClickArea ref={ref} data-testid="storybook-context-menu-target">
         {props.clickType === 'left' ? 'Click on me' : 'Right click on me'}
       </ClickArea>
@@ -62,7 +49,7 @@ export const Default: StoryFn<typeof ContextMenu> = (props) => {
           }
         />
       </ContextMenu>
-    </StyledContainer>
+    </>
   )
 }
 
