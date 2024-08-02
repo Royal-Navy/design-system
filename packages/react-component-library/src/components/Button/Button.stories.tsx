@@ -14,7 +14,7 @@ import { COMPONENT_SIZE } from '../Forms'
 export default {
   argTypes: {
     icon: {
-      type: 'select',
+      control: 'select',
       options: ['None', 'Wifi', 'Web', 'Anchor'],
       mapping: {
         None: null,
