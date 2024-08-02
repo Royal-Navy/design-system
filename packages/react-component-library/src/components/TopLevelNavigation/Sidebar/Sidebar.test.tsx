@@ -14,6 +14,7 @@ import {
   SidebarNavItem,
   SidebarUser,
   SidebarWrapper,
+  useSidebar,
 } from '.'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
@@ -77,7 +78,7 @@ describe('Sidebar', () => {
     })
   })
 
-  describe('when composed with single level of navigaton and header items', () => {
+  describe('when composed with single level of navigation and header items', () => {
     beforeEach(() => {
       wrapper = render(
         <SidebarWrapper>
@@ -562,6 +563,26 @@ describe('Sidebar', () => {
           })
         })
       })
+    })
+  })
+
+  describe('when testing context', () => {
+    const MainComponent = () => {
+      const { isOpen } = useSidebar()!
+      return <main>isOpen{isOpen}</main>
+    }
+
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper>
+          <Sidebar />
+          <MainComponent />
+        </SidebarWrapper>
+      )
+    })
+
+    it('renders whether the sidebar is open', () => {
+      expect(wrapper.getByText('isOpen')).toBeInTheDocument()
     })
   })
 

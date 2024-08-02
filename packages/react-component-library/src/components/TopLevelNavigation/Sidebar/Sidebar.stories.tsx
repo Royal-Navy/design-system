@@ -18,6 +18,7 @@ import {
   SidebarNavItem,
   SidebarUser,
   SidebarWrapper,
+  useSidebar,
 } from '.'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
@@ -49,6 +50,7 @@ const StyledMain = styled.main`
   background-color: #c9c9c9;
   width: 100%;
   height: 30rem;
+  text-align: right;
 `
 
 const SimpleSidebarNav = () => (
@@ -81,13 +83,22 @@ const SimpleSidebarNav = () => (
   </SidebarNav>
 )
 
+const ExampleContent = () => {
+  const { isOpen } = useSidebar()!
+  return (
+    <StyledMain>
+      Hello, World! Sidebar is {isOpen ? 'Open' : 'Closed'}
+    </StyledMain>
+  )
+}
+
 export const Default: StoryFn<typeof Sidebar> = (props) => {
   return (
     <SidebarWrapper>
       <StyledSidebar {...props}>
         <SimpleSidebarNav />
       </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
+      <ExampleContent />
     </SidebarWrapper>
   )
 }
