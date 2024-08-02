@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Transition } from 'react-transition-group'
 
 import { SidebarSubNav } from './SidebarSubNav'
@@ -20,6 +20,11 @@ export const SidebarNavItem = ({
   const { isOpen } = useContext(SidebarContext)
   const linkElement = link as React.ReactElement
   const nodeRef = useRef(null)
+
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    onClick?.(e)
+    setHasMouseOver(false)
+  }
 
   const item = React.cloneElement(linkElement, {
     ...link.props,
@@ -50,7 +55,7 @@ export const SidebarNavItem = ({
         )}
       </>
     ),
-    onClick,
+    onClick: handleClick,
     'aria-label': linkElement.props.children,
     'data-testid': 'sidebar-nav-item',
     ...rest,
@@ -63,7 +68,9 @@ export const SidebarNavItem = ({
       onMouseLeave={(_) => setHasMouseOver(false)}
     >
       {item}
-      {isOpen && children && <SidebarSubNav>{children}</SidebarSubNav>}
+      {isOpen && children && (
+        <SidebarSubNav onClick={handleClick}>{children}</SidebarSubNav>
+      )}
     </StyledNavItem>
   )
 }

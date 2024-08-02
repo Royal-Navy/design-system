@@ -10,6 +10,7 @@ import {
   StyledHeadIcon,
   StyledHeadTitle,
   StyledSidebar,
+  StyledSidebarModal,
 } from './partials'
 import { SidebarProps } from './types'
 
@@ -25,48 +26,57 @@ export const Sidebar = ({
   ...rest
 }: SidebarProps) => {
   const nodeRef = useRef(null)
-  const { isOpen, hasMouseOver, setHasMouseOver } = useContext(SidebarContext)
+  const { isOpen, hasMouseOver, setHasMouseOver, setIsOpen } =
+    useContext(SidebarContext)
 
   return (
-    <StyledSidebar
-      data-testid="sidebar"
-      $isOpen={isOpen}
-      onMouseEnter={(_) => setHasMouseOver(true)}
-      onMouseLeave={(_) => setHasMouseOver(false)}
-      {...rest}
-    >
-      {classificationBar &&
-        React.cloneElement(classificationBar, {
-          isCondensed: !isOpen,
-          inSidebar: true,
-        })}
-      <Transition nodeRef={nodeRef} in={hasMouseOver} timeout={0} unmountOnExit>
-        {(state) => <SidebarHandle ref={nodeRef} transitionStatus={state} />}
-      </Transition>
-      {title && (
-        <StyledHead data-testid="sidebar-head">
-          {icon && <StyledHeadIcon>{icon}</StyledHeadIcon>}
-          <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
-            {(state) => (
-              <StyledHeadTitle $transitionStatus={state}>
-                {title}
-              </StyledHeadTitle>
-            )}
-          </Transition>
-        </StyledHead>
-      )}
-      {children}
+    <>
+      <StyledSidebar
+        data-testid="sidebar"
+        $isOpen={isOpen}
+        onMouseEnter={(_) => setHasMouseOver(true)}
+        onMouseLeave={(_) => setHasMouseOver(false)}
+        {...rest}
+      >
+        {classificationBar &&
+          React.cloneElement(classificationBar, {
+            isCondensed: !isOpen,
+            inSidebar: true,
+          })}
+        <Transition
+          nodeRef={nodeRef}
+          in={hasMouseOver}
+          timeout={0}
+          unmountOnExit
+        >
+          {(state) => <SidebarHandle ref={nodeRef} transitionStatus={state} />}
+        </Transition>
+        {title && (
+          <StyledHead data-testid="sidebar-head">
+            {icon && <StyledHeadIcon>{icon}</StyledHeadIcon>}
+            <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
+              {(state) => (
+                <StyledHeadTitle $transitionStatus={state}>
+                  {title}
+                </StyledHeadTitle>
+              )}
+            </Transition>
+          </StyledHead>
+        )}
+        {children}
 
-      {notifications && (
-        <SidebarNotifications
-          initialIsOpen={initialIsNotificationsOpen}
-          notifications={notifications}
-          hasUnreadNotification={hasUnreadNotification}
-        />
-      )}
+        {notifications && (
+          <SidebarNotifications
+            initialIsOpen={initialIsNotificationsOpen}
+            notifications={notifications}
+            hasUnreadNotification={hasUnreadNotification}
+          />
+        )}
 
-      {user}
-    </StyledSidebar>
+        {user}
+      </StyledSidebar>
+      {isOpen && <StyledSidebarModal onClick={() => setIsOpen(false)} />}
+    </>
   )
 }
 

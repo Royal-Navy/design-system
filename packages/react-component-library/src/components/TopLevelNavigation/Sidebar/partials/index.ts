@@ -1,12 +1,13 @@
 export { StyledHead } from './StyledHead'
 export { StyledHeadIcon } from './StyledHeadIcon'
 export { StyledHeadTitle } from './StyledHeadTitle'
-export { StyledSidebar } from './StyledSidebar'
+export { StyledSidebar, StyledSidebarModal } from './StyledSidebar'
 
 export { StyledUserAvatar } from './StyledUserAvatar'
 export { StyledUserSheetButton } from './StyledUserSheetButton'
 export { StyledUser } from './StyledUser'
 export { StyledSheetList } from './StyledSheetList'
+export { StyledSubNavSheetButton } from './StyledSubNavSheetButton'
 export { StyledUserText } from './StyledUserText'
 
 export { StyledHandle } from './StyledHandle'

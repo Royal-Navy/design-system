@@ -10,3 +10,7 @@ export interface SidebarNavItemProps extends NavItem, Nav<SidebarNavItemProps> {
    */
   onClick?: (e: React.MouseEvent<HTMLElement>) => void
 }
+
+export interface SidebarSubNavProps extends Nav<SidebarNavItemProps> {
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void
+}

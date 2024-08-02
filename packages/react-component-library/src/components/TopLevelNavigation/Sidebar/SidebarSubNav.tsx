@@ -1,13 +1,11 @@
 import React from 'react'
 import { IconMoreVert } from '@royalnavy/icon-library'
-
-import { Nav } from '../../../common/Nav'
 import { Sheet } from '../Sheet/Sheet'
-import { StyledSheetList } from './partials/StyledSheetList'
-import { StyledSubNavSheetButton } from './partials/StyledSubNavSheetButton'
-import { SidebarNavItemProps } from './types'
+import { StyledSheetList, StyledSubNavSheetButton } from './partials'
+import { SidebarSubNavProps } from './types'
+import { mapNavItem } from './SidebarNav'
 
-export const SidebarSubNav = ({ children }: Nav<SidebarNavItemProps>) => {
+export const SidebarSubNav = ({ children, onClick }: SidebarSubNavProps) => {
   return (
     <Sheet
       button={
@@ -21,7 +19,9 @@ export const SidebarSubNav = ({ children }: Nav<SidebarNavItemProps>) => {
       placement="right"
       closeDelay={0}
     >
-      <StyledSheetList>{children}</StyledSheetList>
+      <StyledSheetList>
+        {React.Children.map(children, (child) => mapNavItem(child!, onClick))}
+      </StyledSheetList>
     </Sheet>
   )
 }

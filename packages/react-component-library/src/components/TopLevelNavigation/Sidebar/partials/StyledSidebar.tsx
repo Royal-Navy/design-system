@@ -10,6 +10,16 @@ interface StyledSidebarProps {
 export const SIDEBAR_OPEN_WIDTH = '18rem'
 export const SIDEBAR_CLOSED_WIDTH = '3.75rem'
 
+export const StyledSidebarModal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: ${zIndex('sidebar', -1)};
+`
+
 export const StyledSidebar = styled.aside<StyledSidebarProps>`
   display: inline-flex;
   flex-direction: column;
@@ -18,7 +28,9 @@ export const StyledSidebar = styled.aside<StyledSidebarProps>`
   flex-shrink: 0;
   width: ${({ $isOpen }) =>
     $isOpen ? SIDEBAR_OPEN_WIDTH : SIDEBAR_CLOSED_WIDTH};
-  height: 100vh;
+  height: 100%;
+  left: 0;
+  top: 0;
   background-color: ${color('neutral', '700')};
   color: ${color('neutral', 'white')};
 

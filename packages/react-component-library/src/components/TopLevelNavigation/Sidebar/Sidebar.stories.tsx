@@ -1,15 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { StoryFn, Meta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
+
+import { spacing } from '@royalnavy/design-tokens'
 
 import {
+  IconFeedback,
+  IconGrain,
   IconHome,
   IconLocalShipping,
-  IconVerifiedUser,
   IconMessage,
-  IconFeedback,
   IconSettings,
-  IconGrain,
+  IconVerifiedUser,
 } from '@royalnavy/icon-library'
 
 import {
@@ -23,6 +25,19 @@ import {
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 import { ClassificationBar } from '../../ClassificationBar'
+import { Button } from '../../Button'
+
+const classificationBarArgTypes = {
+  classificationBar: {
+    control: 'select',
+    options: ['None', 'Official', 'Secret'],
+    mapping: {
+      None: null,
+      Official: <ClassificationBar />,
+      Secret: <ClassificationBar isSecret />,
+    },
+  },
+}
 
 export default {
   component: Sidebar,
@@ -39,18 +54,23 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
   },
+  argTypes: classificationBarArgTypes,
 } as Meta<typeof Sidebar>
 
-const StyledSidebar = styled(Sidebar)`
-  max-height: 30rem;
+const StyledContainer = styled.div`
+  height: 30rem;
 `
 
+const StyledSidebar = styled(Sidebar)``
 const StyledMain = styled.main`
-  padding: 2rem;
-  background-color: #c9c9c9;
-  width: 100%;
-  height: 30rem;
+  flex: 1;
   text-align: right;
+`
+
+const StyledHeader = styled.div`
+  padding: ${spacing('8')};
+  display: flex;
+  justify-content: space-between;
 `
 
 const SimpleSidebarNav = () => (
@@ -84,22 +104,29 @@ const SimpleSidebarNav = () => (
 )
 
 const ExampleContent = () => {
-  const { isOpen } = useSidebar()!
+  const { isOpen, setIsOpen } = useSidebar()!
   return (
     <StyledMain>
-      Hello, World! Sidebar is {isOpen ? 'Open' : 'Closed'}
+      <StyledHeader>
+        <span>Hello, World!</span>
+        <Button onClick={() => setIsOpen(!isOpen)} size="small">{`${
+          isOpen ? 'Close' : 'Open'
+        } sidebar`}</Button>
+      </StyledHeader>
     </StyledMain>
   )
 }
 
 export const Default: StoryFn<typeof Sidebar> = (props) => {
   return (
-    <SidebarWrapper>
-      <StyledSidebar {...props}>
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <ExampleContent />
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar {...props}>
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 
@@ -158,10 +185,12 @@ export const WithSubNavigation: StoryFn<typeof Sidebar> = (props) => {
   )
 
   return (
-    <SidebarWrapper>
-      <StyledSidebar {...props}>{sidebarNavWithSub}</StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar {...props}>{sidebarNavWithSub}</StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 
@@ -173,7 +202,7 @@ export const WithHeader: StoryFn<typeof Sidebar> = (props) => {
       <StyledSidebar {...props} icon={<IconGrain />} title="Application Name">
         <SimpleSidebarNav />
       </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
+      <ExampleContent />
     </SidebarWrapper>
   )
 }
@@ -195,7 +224,7 @@ export const WithUserMenu: StoryFn<typeof Sidebar> = (props) => {
       <StyledSidebar {...props} user={userWithLinks}>
         <SimpleSidebarNav />
       </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
+      <ExampleContent />
     </SidebarWrapper>
   )
 }
@@ -241,7 +270,7 @@ const WithNotificationsTemplate: StoryFn<typeof Sidebar> = (props) => {
       >
         <SimpleSidebarNav />
       </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
+      <ExampleContent />
     </SidebarWrapper>
   )
 }
@@ -265,7 +294,7 @@ export const WithUserMenuOpen: StoryFn<typeof Sidebar> = (props) => {
       <StyledSidebar {...props} user={userWithLinks}>
         <SimpleSidebarNav />
       </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
+      <ExampleContent />
     </SidebarWrapper>
   )
 }
@@ -288,4 +317,9 @@ WithClassificationBar.args = {
   ...Default.args,
   classificationBar: <ClassificationBar />,
 }
+
+WithClassificationBar.argTypes = {
+  classificationBar: classificationBarArgTypes,
+}
+
 WithClassificationBar.storyName = 'Classification bar'
