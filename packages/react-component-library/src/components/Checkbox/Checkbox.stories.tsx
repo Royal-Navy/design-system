@@ -125,6 +125,7 @@ NoLabel.storyName = 'No label'
 NoLabel.args = {
   id: undefined,
   name: 'no-label',
+  // @ts-ignore
   'aria-label': 'No label',
 }
 

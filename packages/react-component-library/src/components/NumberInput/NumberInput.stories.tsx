@@ -12,7 +12,7 @@ import { NumberInput } from './NumberInput'
 export default {
   argTypes: {
     icon: {
-      type: 'select',
+      control: 'select',
       options: ['None', 'Wifi', 'Web', 'Anchor'],
       mapping: {
         None: null,
