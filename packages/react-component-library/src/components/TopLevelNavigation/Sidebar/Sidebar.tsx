@@ -75,7 +75,14 @@ export const Sidebar = ({
 
         {user}
       </StyledSidebar>
-      {isOpen && <StyledSidebarModal onClick={() => setIsOpen(false)} />}
+      {isOpen && (
+        <StyledSidebarModal
+          role="dialog"
+          aria-modal="true"
+          data-testid="sidebar-modal"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
     </>
   )
 }

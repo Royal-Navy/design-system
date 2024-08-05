@@ -6,7 +6,7 @@ import {
   RenderResult,
   waitFor,
 } from '@testing-library/react'
-import { IconHome, IconGrain } from '@royalnavy/icon-library'
+import { IconGrain, IconHome } from '@royalnavy/icon-library'
 
 import {
   Sidebar,
@@ -575,14 +575,34 @@ describe('Sidebar', () => {
     beforeEach(() => {
       wrapper = render(
         <SidebarWrapper>
-          <Sidebar />
+          <Sidebar icon={<IconGrain />} title="Application Name">
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
           <MainComponent />
         </SidebarWrapper>
       )
+
+      fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+      wrapper.getByTestId('sidebar-handle').click()
     })
 
-    it('renders whether the sidebar is open', () => {
-      expect(wrapper.getByText('isOpen')).toBeInTheDocument()
+    it('should display the modal overlay', () => {
+      expect(wrapper.getByRole('dialog')).toBeInTheDocument()
+    })
+
+    describe('and when the overlay is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByRole('dialog').click()
+      })
+      it('should close the sidebar', () => {
+        expect(wrapper.queryByRole('dialog')).toBeNull()
+      })
     })
   })
 
