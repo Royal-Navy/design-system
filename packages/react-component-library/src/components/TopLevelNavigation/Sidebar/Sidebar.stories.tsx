@@ -198,12 +198,14 @@ WithSubNavigation.storyName = 'Sub-navigation'
 
 export const WithHeader: StoryFn<typeof Sidebar> = (props) => {
   return (
-    <SidebarWrapper>
-      <StyledSidebar {...props} icon={<IconGrain />} title="Application Name">
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <ExampleContent />
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar {...props} icon={<IconGrain />} title="Application Name">
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 
@@ -220,12 +222,14 @@ export const WithUserMenu: StoryFn<typeof Sidebar> = (props) => {
   )
 
   return (
-    <SidebarWrapper>
-      <StyledSidebar {...props} user={userWithLinks}>
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <ExampleContent />
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar {...props} user={userWithLinks}>
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 
@@ -262,16 +266,18 @@ const WithNotificationsTemplate: StoryFn<typeof Sidebar> = (props) => {
   )
 
   return (
-    <SidebarWrapper>
-      <StyledSidebar
-        {...props}
-        notifications={notifications}
-        hasUnreadNotification
-      >
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <ExampleContent />
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar
+          {...props}
+          notifications={notifications}
+          hasUnreadNotification
+        >
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 
@@ -290,12 +296,14 @@ export const WithUserMenuOpen: StoryFn<typeof Sidebar> = (props) => {
   )
 
   return (
-    <SidebarWrapper>
-      <StyledSidebar {...props} user={userWithLinks}>
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <ExampleContent />
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar {...props} user={userWithLinks}>
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 WithUserMenuOpen.parameters = {
