@@ -1,7 +1,7 @@
 export { StyledHead } from './StyledHead'
 export { StyledHeadIcon } from './StyledHeadIcon'
 export { StyledHeadTitle } from './StyledHeadTitle'
-export { StyledSidebar, StyledSidebarModal } from './StyledSidebar'
+export { StyledSidebar, StyledSidebarOverlay } from './StyledSidebar'
 
 export { StyledUserAvatar } from './StyledUserAvatar'
 export { StyledUserSheetButton } from './StyledUserSheetButton'

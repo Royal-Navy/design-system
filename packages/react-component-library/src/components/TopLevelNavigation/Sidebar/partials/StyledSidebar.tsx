@@ -10,7 +10,7 @@ interface StyledSidebarProps {
 export const SIDEBAR_OPEN_WIDTH = '18rem'
 export const SIDEBAR_CLOSED_WIDTH = '3.75rem'
 
-export const StyledSidebarModal = styled.div`
+export const StyledSidebarOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;

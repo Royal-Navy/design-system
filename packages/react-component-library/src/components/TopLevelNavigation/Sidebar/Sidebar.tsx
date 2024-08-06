@@ -10,7 +10,7 @@ import {
   StyledHeadIcon,
   StyledHeadTitle,
   StyledSidebar,
-  StyledSidebarModal,
+  StyledSidebarOverlay,
 } from './partials'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { NotificationsProps } from '../NotificationPanel'
@@ -111,7 +111,7 @@ export const Sidebar = ({
         {user}
       </StyledSidebar>
       {isOpen && (
-        <StyledSidebarModal
+        <StyledSidebarOverlay
           role="dialog"
           aria-modal="true"
           data-testid="sidebar-modal"
