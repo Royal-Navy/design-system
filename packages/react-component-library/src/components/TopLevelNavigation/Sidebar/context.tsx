@@ -1,8 +1,11 @@
-import React, { createContext, useMemo, useState } from 'react'
+import React, { createContext, useContext, useMemo, useState } from 'react'
 
-export interface SidebarContextDefaults {
+export interface SidebarClientContext {
   isOpen: boolean
   setIsOpen: (isOpen: boolean) => void
+}
+
+export interface SidebarContextDefaults extends SidebarClientContext {
   hasMouseOver?: boolean
   setHasMouseOver: (hasMouseOver: boolean) => void
 }
@@ -33,4 +36,8 @@ export const SidebarProvider = ({ children }: SidebarProviderProps) => {
       {children}
     </SidebarContext.Provider>
   )
+}
+
+export const useSidebar = () => {
+  return useContext(SidebarContext) as SidebarClientContext
 }

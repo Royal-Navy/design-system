@@ -1,23 +1,25 @@
-import React, { useState, useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { Transition } from 'react-transition-group'
 
 import { SidebarSubNav } from './SidebarSubNav'
-import { Nav, NavItem } from '../../../common/Nav'
 import { SidebarContext } from './context'
 import { Tooltip } from '../../Tooltip'
 import { TRANSITION_TIMEOUT } from './constants'
-import { StyledNavItem } from './partials/StyledNavItem'
-import { StyledNavItemIcon } from './partials/StyledNavItemIcon'
-import { StyledNavItemText } from './partials/StyledNavItemText'
+import { StyledNavItem, StyledNavItemIcon, StyledNavItemText } from './partials'
+import { Nav, NavItem } from '../../../common/Nav'
 
 export interface SidebarNavItemProps extends NavItem, Nav<SidebarNavItemProps> {
   /**
-   * Optiona icon to display to the left of the navigation item.
+   * Optional icon to display to the left of the navigation item.
    */
   icon?: React.ReactNode
   /**
    * Optional handler invoked when an item is clicked on.
    */
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void
+}
+
+export interface SidebarSubNavProps extends Nav<SidebarNavItemProps> {
   onClick?: (e: React.MouseEvent<HTMLElement>) => void
 }
 
@@ -33,6 +35,11 @@ export const SidebarNavItem = ({
   const { isOpen } = useContext(SidebarContext)
   const linkElement = link as React.ReactElement
   const nodeRef = useRef(null)
+
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    onClick?.(e)
+    setHasMouseOver(false)
+  }
 
   const item = React.cloneElement(linkElement, {
     ...link.props,
@@ -63,7 +70,7 @@ export const SidebarNavItem = ({
         )}
       </>
     ),
-    onClick,
+    onClick: handleClick,
     'aria-label': linkElement.props.children,
     'data-testid': 'sidebar-nav-item',
     ...rest,
@@ -76,7 +83,9 @@ export const SidebarNavItem = ({
       onMouseLeave={(_) => setHasMouseOver(false)}
     >
       {item}
-      {isOpen && children && <SidebarSubNav>{children}</SidebarSubNav>}
+      {isOpen && children && (
+        <SidebarSubNav onClick={handleClick}>{children}</SidebarSubNav>
+      )}
     </StyledNavItem>
   )
 }

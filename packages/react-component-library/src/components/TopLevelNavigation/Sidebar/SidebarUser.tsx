@@ -1,18 +1,20 @@
 import React, { useContext } from 'react'
-import { IconPerson, IconExitToApp } from '@royalnavy/icon-library'
+import { IconExitToApp, IconPerson } from '@royalnavy/icon-library'
 import { Transition } from 'react-transition-group'
 
-import { ComponentWithClass } from '../../../common/ComponentWithClass'
-import { LinkTypes } from '../../../common/Link'
 import { SidebarContext } from './context'
 import { SidebarUserItem } from './SidebarUserItem'
 import { TRANSITION_TIMEOUT } from './constants'
 import { Sheet } from '../Sheet/Sheet'
-import { StyledUserAvatar } from './partials/StyledUserAvatar'
-import { StyledUserSheetButton } from './partials/StyledUserSheetButton'
-import { StyledUser } from './partials/StyledUser'
-import { StyledSheetList } from './partials/StyledSheetList'
-import { StyledUserText } from './partials/StyledUserText'
+import {
+  StyledSheetList,
+  StyledUser,
+  StyledUserAvatar,
+  StyledUserSheetButton,
+  StyledUserText,
+} from './partials'
+import { ComponentWithClass } from '../../../common/ComponentWithClass'
+import { LinkTypes } from '../../../common/Link'
 
 export interface SidebarUserProps extends ComponentWithClass {
   children?: never

@@ -1,33 +1,40 @@
 import React from 'react'
 import styled from 'styled-components'
-import { StoryFn, Meta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
+
+import { spacing } from '@royalnavy/design-tokens'
 
 import {
+  IconFeedback,
+  IconGrain,
   IconHome,
   IconLocalShipping,
-  IconVerifiedUser,
   IconMessage,
-  IconFeedback,
   IconSettings,
-  IconGrain,
+  IconVerifiedUser,
 } from '@royalnavy/icon-library'
 
-import { storyAccessibilityConfig } from '../../../a11y/storyAccessibilityConfig'
 import {
   Sidebar,
   SidebarNav,
   SidebarNavItem,
   SidebarUser,
   SidebarWrapper,
+  useSidebar,
 } from '.'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
 import { ClassificationBar } from '../../ClassificationBar'
+import { Button } from '../../Button'
 
-const disableColorContrastRule = {
-  a11y: {
-    config: {
-      rules: storyAccessibilityConfig.Sidebar,
+const classificationBarArgTypes = {
+  classificationBar: {
+    control: 'select',
+    options: ['None', 'Official', 'Secret'],
+    mapping: {
+      None: null,
+      Official: <ClassificationBar />,
+      Secret: <ClassificationBar isSecret />,
     },
   },
 }
@@ -47,17 +54,23 @@ export default {
     actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
   },
+  argTypes: classificationBarArgTypes,
 } as Meta<typeof Sidebar>
 
-const StyledSidebar = styled(Sidebar)`
-  max-height: 30rem;
+const StyledContainer = styled.div`
+  height: 30rem;
 `
 
+const StyledSidebar = styled(Sidebar)``
 const StyledMain = styled.main`
-  padding: 2rem;
-  background-color: #c9c9c9;
-  width: 100%;
-  height: 30rem;
+  flex: 1;
+  text-align: right;
+`
+
+const StyledHeader = styled.div`
+  padding: ${spacing('8')};
+  display: flex;
+  justify-content: space-between;
 `
 
 const SimpleSidebarNav = () => (
@@ -90,35 +103,34 @@ const SimpleSidebarNav = () => (
   </SidebarNav>
 )
 
+const ExampleContent = () => {
+  const { isOpen, setIsOpen } = useSidebar()!
+  return (
+    <StyledMain>
+      <StyledHeader>
+        <span>Hello, World!</span>
+        <Button onClick={() => setIsOpen(!isOpen)} size="small">{`${
+          isOpen ? 'Close' : 'Open'
+        } sidebar`}</Button>
+      </StyledHeader>
+    </StyledMain>
+  )
+}
+
 export const Default: StoryFn<typeof Sidebar> = (props) => {
   return (
-    <SidebarWrapper>
-      <StyledSidebar {...props}>
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar {...props}>
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 
 Default.args = {}
-
-export const InitiallyOpen: StoryFn<typeof Sidebar> = (props) => {
-  return (
-    <SidebarWrapper>
-      <StyledSidebar {...props} initialIsOpen>
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
-    </SidebarWrapper>
-  )
-}
-
-InitiallyOpen.args = {}
-
-InitiallyOpen.parameters = disableColorContrastRule
-
-InitiallyOpen.storyName = 'Initially open'
 
 export const WithSubNavigation: StoryFn<typeof Sidebar> = (props) => {
   const sidebarNavWithSub = (
@@ -173,10 +185,12 @@ export const WithSubNavigation: StoryFn<typeof Sidebar> = (props) => {
   )
 
   return (
-    <SidebarWrapper>
-      <StyledSidebar {...props}>{sidebarNavWithSub}</StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar {...props}>{sidebarNavWithSub}</StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 
@@ -184,12 +198,14 @@ WithSubNavigation.storyName = 'Sub-navigation'
 
 export const WithHeader: StoryFn<typeof Sidebar> = (props) => {
   return (
-    <SidebarWrapper>
-      <StyledSidebar {...props} icon={<IconGrain />} title="Application Name">
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar {...props} icon={<IconGrain />} title="Application Name">
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 
@@ -206,12 +222,14 @@ export const WithUserMenu: StoryFn<typeof Sidebar> = (props) => {
   )
 
   return (
-    <SidebarWrapper>
-      <StyledSidebar {...props} user={userWithLinks}>
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar {...props} user={userWithLinks}>
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 
@@ -248,16 +266,18 @@ const WithNotificationsTemplate: StoryFn<typeof Sidebar> = (props) => {
   )
 
   return (
-    <SidebarWrapper>
-      <StyledSidebar
-        {...props}
-        notifications={notifications}
-        hasUnreadNotification
-      >
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar
+          {...props}
+          notifications={notifications}
+          hasUnreadNotification
+        >
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 
@@ -276,12 +296,14 @@ export const WithUserMenuOpen: StoryFn<typeof Sidebar> = (props) => {
   )
 
   return (
-    <SidebarWrapper>
-      <StyledSidebar {...props} user={userWithLinks}>
-        <SimpleSidebarNav />
-      </StyledSidebar>
-      <StyledMain>Hello, World!</StyledMain>
-    </SidebarWrapper>
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar {...props} user={userWithLinks}>
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
   )
 }
 WithUserMenuOpen.parameters = {
@@ -303,4 +325,9 @@ WithClassificationBar.args = {
   ...Default.args,
   classificationBar: <ClassificationBar />,
 }
+
+WithClassificationBar.argTypes = {
+  classificationBar: classificationBarArgTypes,
+}
+
 WithClassificationBar.storyName = 'Classification bar'

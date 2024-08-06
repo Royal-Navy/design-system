@@ -1,18 +1,21 @@
-import React, { useRef, useContext, useLayoutEffect } from 'react'
+import React, { useContext, useRef } from 'react'
 import { Transition } from 'react-transition-group'
 
 import { SidebarHandle } from './SidebarHandle'
-import { SidebarUserProps } from './SidebarUser'
 import { SidebarNotifications } from './SidebarNotifications'
-import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext } from './context'
-import { NotificationsProps } from '../NotificationPanel'
 import { TRANSITION_TIMEOUT } from './constants'
-import { StyledSidebar } from './partials/StyledSidebar'
-import { StyledHead } from './partials/StyledHead'
-import { StyledHeadIcon } from './partials/StyledHeadIcon'
-import { StyledHeadTitle } from './partials/StyledHeadTitle'
+import {
+  StyledHead,
+  StyledHeadIcon,
+  StyledHeadTitle,
+  StyledSidebar,
+  StyledSidebarOverlay,
+} from './partials'
+import { ComponentWithClass } from '../../../common/ComponentWithClass'
+import { NotificationsProps } from '../NotificationPanel'
 import { ClassificationProps } from '../../ClassificationBar'
+import { SidebarUserProps } from './SidebarUser'
 
 export interface SidebarProps extends ComponentWithClass {
   /**
@@ -41,10 +44,6 @@ export interface SidebarProps extends ComponentWithClass {
    */
   initialIsNotificationsOpen?: boolean
   /**
-   * Initial `isOpen` state on first render.
-   */
-  initialIsOpen?: boolean
-  /**
    * Optional jsx to render the classification bar above the masthead.
    */
   classificationBar?: React.ReactElement<ClassificationProps>
@@ -58,7 +57,6 @@ export const Sidebar = ({
   hasUnreadNotification,
   notifications,
   initialIsNotificationsOpen,
-  initialIsOpen = false,
   classificationBar,
   ...rest
 }: SidebarProps) => {
@@ -66,50 +64,61 @@ export const Sidebar = ({
   const { isOpen, hasMouseOver, setHasMouseOver, setIsOpen } =
     useContext(SidebarContext)
 
-  useLayoutEffect(() => {
-    setIsOpen(initialIsOpen)
-  }, [initialIsOpen, setIsOpen])
-
   return (
-    <StyledSidebar
-      data-testid="sidebar"
-      $isOpen={isOpen}
-      onMouseEnter={(_) => setHasMouseOver(true)}
-      onMouseLeave={(_) => setHasMouseOver(false)}
-      {...rest}
-    >
-      {classificationBar &&
-        React.cloneElement(classificationBar, {
-          isCondensed: !isOpen,
-          inSidebar: true,
-        })}
-      <Transition nodeRef={nodeRef} in={hasMouseOver} timeout={0} unmountOnExit>
-        {(state) => <SidebarHandle ref={nodeRef} transitionStatus={state} />}
-      </Transition>
-      {title && (
-        <StyledHead data-testid="sidebar-head">
-          {icon && <StyledHeadIcon>{icon}</StyledHeadIcon>}
-          <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
-            {(state) => (
-              <StyledHeadTitle $transitionStatus={state}>
-                {title}
-              </StyledHeadTitle>
-            )}
-          </Transition>
-        </StyledHead>
-      )}
-      {children}
+    <>
+      <StyledSidebar
+        data-testid="sidebar"
+        $isOpen={isOpen}
+        onMouseEnter={(_) => setHasMouseOver(true)}
+        onMouseLeave={(_) => setHasMouseOver(false)}
+        {...rest}
+      >
+        {classificationBar &&
+          React.cloneElement(classificationBar, {
+            isCondensed: !isOpen,
+            inSidebar: true,
+          })}
+        <Transition
+          nodeRef={nodeRef}
+          in={hasMouseOver}
+          timeout={0}
+          unmountOnExit
+        >
+          {(state) => <SidebarHandle ref={nodeRef} transitionStatus={state} />}
+        </Transition>
+        {title && (
+          <StyledHead data-testid="sidebar-head">
+            {icon && <StyledHeadIcon>{icon}</StyledHeadIcon>}
+            <Transition in={isOpen} timeout={TRANSITION_TIMEOUT} unmountOnExit>
+              {(state) => (
+                <StyledHeadTitle $transitionStatus={state}>
+                  {title}
+                </StyledHeadTitle>
+              )}
+            </Transition>
+          </StyledHead>
+        )}
+        {children}
 
-      {notifications && (
-        <SidebarNotifications
-          initialIsOpen={initialIsNotificationsOpen}
-          notifications={notifications}
-          hasUnreadNotification={hasUnreadNotification}
+        {notifications && (
+          <SidebarNotifications
+            initialIsOpen={initialIsNotificationsOpen}
+            notifications={notifications}
+            hasUnreadNotification={hasUnreadNotification}
+          />
+        )}
+
+        {user}
+      </StyledSidebar>
+      {isOpen && (
+        <StyledSidebarOverlay
+          role="dialog"
+          aria-modal="true"
+          data-testid="sidebar-modal"
+          onClick={() => setIsOpen(false)}
         />
       )}
-
-      {user}
-    </StyledSidebar>
+    </>
   )
 }
 

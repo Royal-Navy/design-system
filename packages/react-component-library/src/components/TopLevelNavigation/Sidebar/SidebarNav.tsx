@@ -1,9 +1,9 @@
 import React from 'react'
-
-import { Nav, NavItem } from '../../../common/Nav'
-import { SidebarNavItem, SidebarNavItemProps } from './index'
+import { useSidebar } from './index'
 import { warnIfOverwriting } from '../../../helpers'
-import { StyledNav } from './partials/StyledNav'
+import { StyledNav } from './partials'
+import { Nav, NavItem } from '../../../common/Nav'
+import { SidebarNavItem, SidebarNavItemProps } from './SidebarNavItem'
 
 export interface SidebarNavProps extends Nav<NavItem> {
   /**
@@ -28,7 +28,7 @@ export interface SidebarNavProps extends Nav<NavItem> {
   onMouseOver?: (e: React.MouseEvent<HTMLElement>) => void
 }
 
-function mapNavItem(
+export function mapNavItem(
   navItem: React.ReactElement<SidebarNavItemProps>,
   onClick: ((e: React.MouseEvent<HTMLElement>) => void) | undefined
 ) {
@@ -48,22 +48,31 @@ export const SidebarNav = ({
   onMouseOut,
   onMouseOver,
   ...rest
-}: SidebarNavProps) => (
-  <StyledNav
-    onBlur={onBlur}
-    onFocus={onFocus}
-    onMouseOut={onMouseOut}
-    onMouseOver={onMouseOver}
-    data-testid="sidebar-nav"
-    {...rest}
-  >
-    {React.Children.map(
-      children,
-      (child: React.ReactElement<SidebarNavItemProps>) => {
-        return mapNavItem(child, onItemClick)
-      }
-    )}
-  </StyledNav>
-)
+}: SidebarNavProps) => {
+  const { setIsOpen } = useSidebar()
+
+  const handleItemClick = (e: React.MouseEvent<HTMLElement>) => {
+    onItemClick?.(e)
+    setIsOpen(false)
+  }
+
+  return (
+    <StyledNav
+      onBlur={onBlur}
+      onFocus={onFocus}
+      onMouseOut={onMouseOut}
+      onMouseOver={onMouseOver}
+      data-testid="sidebar-nav"
+      {...rest}
+    >
+      {React.Children.map(
+        children,
+        (child: React.ReactElement<SidebarNavItemProps>) => {
+          return mapNavItem(child, handleItemClick)
+        }
+      )}
+    </StyledNav>
+  )
+}
 
 SidebarNav.displayName = 'SidebarNav'

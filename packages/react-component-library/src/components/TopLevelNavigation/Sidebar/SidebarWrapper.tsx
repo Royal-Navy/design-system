@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
-import { StyledWrapper } from './partials/StyledWrapper'
+import { StyledWrapper } from './partials'
 import { SidebarProvider } from './context'
 
 export const SidebarWrapper = (props: ComponentWithClass) => {

@@ -1,9 +1,10 @@
 import React from 'react'
-
+import {
+  StyledUserItem,
+  StyledUserItemIcon,
+  StyledUserItemText,
+} from './partials'
 import { NavItem } from '../../../common/Nav'
-import { StyledUserItem } from './partials/StyledUserItem'
-import { StyledUserItemIcon } from './partials/StyledUserItemIcon'
-import { StyledUserItemText } from './partials/StyledUserItemText'
 
 export interface SidebarUserItemProps extends NavItem {
   /**

@@ -4,7 +4,7 @@ import { TransitionStatus } from 'react-transition-group'
 
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
 import { SidebarContext } from './context'
-import { StyledHandle } from './partials/StyledHandle'
+import { StyledHandle } from './partials'
 
 export interface SidebarHandleProps extends ComponentWithClass {
   transitionStatus: TransitionStatus

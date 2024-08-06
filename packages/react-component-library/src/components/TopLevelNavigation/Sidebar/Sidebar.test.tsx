@@ -6,7 +6,7 @@ import {
   RenderResult,
   waitFor,
 } from '@testing-library/react'
-import { IconHome, IconGrain } from '@royalnavy/icon-library'
+import { IconGrain, IconHome } from '@royalnavy/icon-library'
 
 import {
   Sidebar,
@@ -14,6 +14,7 @@ import {
   SidebarNavItem,
   SidebarUser,
   SidebarWrapper,
+  useSidebar,
 } from '.'
 import { Link } from '../../Link'
 import { Notification, Notifications } from '../NotificationPanel'
@@ -53,30 +54,6 @@ const notifications = (
 describe('Sidebar', () => {
   let wrapper: RenderResult
 
-  describe('when `initialIsOpen` is set', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <SidebarWrapper>
-          <Sidebar initialIsOpen icon={<IconGrain />} title="Application Name">
-            <SidebarNav>
-              <SidebarNavItem
-                icon={<IconHome />}
-                link={<Link href="/dashboard">Dashboard</Link>}
-              />
-              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
-            </SidebarNav>
-          </Sidebar>
-          <main>Hello, World!</main>
-        </SidebarWrapper>
-      )
-      fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
-    })
-
-    it('should display the text titles for navigation items', () => {
-      expect(wrapper.queryByText('Dashboard')).toBeInTheDocument()
-    })
-  })
-
   describe('when rendered in React strict mode', () => {
     it('should not throw deprecation warning about findDOMNode', () => {
       expect(() => {
@@ -101,7 +78,7 @@ describe('Sidebar', () => {
     })
   })
 
-  describe('when composed with single level of navigaton and header items', () => {
+  describe('when composed with single level of navigation and header items', () => {
     beforeEach(() => {
       wrapper = render(
         <SidebarWrapper>
@@ -585,6 +562,46 @@ describe('Sidebar', () => {
             })
           })
         })
+      })
+    })
+  })
+
+  describe('when testing context', () => {
+    const MainComponent = () => {
+      const { isOpen } = useSidebar()!
+      return <main>isOpen{isOpen}</main>
+    }
+
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper>
+          <Sidebar icon={<IconGrain />} title="Application Name">
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+              <SidebarNavItem link={<Link href="/reports">Reports</Link>} />
+            </SidebarNav>
+          </Sidebar>
+          <MainComponent />
+        </SidebarWrapper>
+      )
+
+      fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+      wrapper.getByTestId('sidebar-handle').click()
+    })
+
+    it('should display the modal overlay', () => {
+      expect(wrapper.getByRole('dialog')).toBeInTheDocument()
+    })
+
+    describe('and when the overlay is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByRole('dialog').click()
+      })
+      it('should close the sidebar', () => {
+        expect(wrapper.queryByRole('dialog')).toBeNull()
       })
     })
   })
