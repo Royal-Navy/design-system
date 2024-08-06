@@ -113,6 +113,7 @@ export const WithData: StoryFn<typeof Timeline> = (props) => (
           <TimelineEvent
             startDate={new Date(2020, 9, 14, 12)}
             endDate={new Date(2020, 9, 18, 12)}
+            title="Test Event"
           >
             Event 1
           </TimelineEvent>

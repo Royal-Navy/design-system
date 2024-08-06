@@ -61,6 +61,41 @@ describe('Timeline', () => {
     jest.clearAllMocks()
   })
 
+  describe('when the title attribute is provided', () => {
+    beforeEach(() => {
+      const startDate = new Date(2023, 0, 1)
+      const endDate = new Date(2023, 0, 2)
+      const title = 'Custom Event Title'
+
+      wrapper = render(
+        <Timeline startDate={startDate}>
+          <TimelineTodayMarker />
+          <TimelineMonths />
+          <TimelineWeeks />
+          <TimelineDays />
+          <TimelineRows>
+            <TimelineRow name="Row 1">
+              <TimelineEvents>
+                <TimelineEvent
+                  startDate={startDate}
+                  endDate={endDate}
+                  title={title}
+                >
+                  Event 1
+                </TimelineEvent>
+              </TimelineEvents>
+            </TimelineRow>
+          </TimelineRows>
+        </Timeline>
+      )
+    })
+
+    it('sets the title attribute correctly', () => {
+      const eventWrapper = wrapper.getByTestId('timeline-event-wrapper')
+      expect(eventWrapper).toHaveAttribute('title', 'Custom Event Title')
+    })
+  })
+
   describe('when a custom className is provided', () => {
     beforeEach(() => {
       wrapper = render(
