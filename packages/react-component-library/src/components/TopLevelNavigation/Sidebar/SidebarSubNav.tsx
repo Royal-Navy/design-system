@@ -2,8 +2,8 @@ import React from 'react'
 import { IconMoreVert } from '@royalnavy/icon-library'
 import { Sheet } from '../Sheet/Sheet'
 import { StyledSheetList, StyledSubNavSheetButton } from './partials'
-import { SidebarSubNavProps } from './types'
 import { mapNavItem } from './SidebarNav'
+import { SidebarSubNavProps } from './SidebarNavItem'
 
 export const SidebarSubNav = ({ children, onClick }: SidebarSubNavProps) => {
   return (

@@ -4,7 +4,14 @@ import {
   StyledUserItemIcon,
   StyledUserItemText,
 } from './partials'
-import { SidebarUserItemProps } from './types'
+import { NavItem } from '../../../common/Nav'
+
+export interface SidebarUserItemProps extends NavItem {
+  /**
+   * Optional icon to display to the left of the user navigation item.
+   */
+  icon?: React.ReactNode
+}
 
 export const SidebarUserItem = ({ icon, link }: SidebarUserItemProps) => {
   const linkElement = link as React.ReactElement

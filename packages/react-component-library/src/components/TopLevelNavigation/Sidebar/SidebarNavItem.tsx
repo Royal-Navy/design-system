@@ -6,7 +6,22 @@ import { SidebarContext } from './context'
 import { Tooltip } from '../../Tooltip'
 import { TRANSITION_TIMEOUT } from './constants'
 import { StyledNavItem, StyledNavItemIcon, StyledNavItemText } from './partials'
-import { SidebarNavItemProps } from './types'
+import { Nav, NavItem } from '../../../common/Nav'
+
+export interface SidebarNavItemProps extends NavItem, Nav<SidebarNavItemProps> {
+  /**
+   * Optional icon to display to the left of the navigation item.
+   */
+  icon?: React.ReactNode
+  /**
+   * Optional handler invoked when an item is clicked on.
+   */
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void
+}
+
+export interface SidebarSubNavProps extends Nav<SidebarNavItemProps> {
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void
+}
 
 export const SidebarNavItem = ({
   isActive,
