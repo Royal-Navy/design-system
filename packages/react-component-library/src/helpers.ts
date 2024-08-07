@@ -2,6 +2,16 @@ import React from 'react'
 
 import logger from './utils/logger'
 
+type ValueOf<T> = T[keyof T]
+
+type KeysWithValueType<Obj, ValueType> = {
+  [Key in keyof Obj]: Obj[Key] extends ValueType ? Key : never
+}[keyof Obj & string]
+
+type PrefixKeys<T, Prefix extends string> = {
+  [K in keyof T as `${Prefix}${Extract<K, string>}`]: T[K]
+}
+
 function getInitials(name: string): string {
   return name
     .split(/[\s-]+/)
@@ -60,12 +70,6 @@ function sleep(ms: number): Promise<undefined> {
   })
 }
 
-export type ValueOf<T> = T[keyof T]
-
-export type KeysWithValueType<Obj, ValueType> = {
-  [Key in keyof Obj]: Obj[Key] extends ValueType ? Key : never
-}[keyof Obj & string]
-
 export {
   getInitials,
   getKey,
@@ -74,4 +78,7 @@ export {
   warnIfOverwriting,
   withKey,
   sleep,
+  type ValueOf,
+  type KeysWithValueType,
+  type PrefixKeys,
 }
