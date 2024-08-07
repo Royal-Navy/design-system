@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.16.0](https://github.com/Royal-Navy/design-system/compare/4.15.3...4.16.0) (2024-08-07)
+
+### Bug Fixes
+
+- **Timeline:** Added title prop to timeline component ([#3848](https://github.com/Royal-Navy/design-system/issues/3848)) ([663fdc9](https://github.com/Royal-Navy/design-system/commit/663fdc990daeada4610056dce219246def455b18))
+
+### Features
+
+- **Sidebar:** Display overlay when Sidebar is open ([#3844](https://github.com/Royal-Navy/design-system/issues/3844)) ([52b1392](https://github.com/Royal-Navy/design-system/commit/52b1392bebc7df791e72eff5e9a17ececc322e29))
+
 ## [4.15.3](https://github.com/Royal-Navy/design-system/compare/4.15.2...4.15.3) (2024-08-05)
 
 **Note:** Version bump only for package royal-navy-design-system
