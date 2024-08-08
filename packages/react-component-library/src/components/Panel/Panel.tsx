@@ -9,6 +9,7 @@ const StyledPanel = styled.div`
   border: 1px solid ${color('neutral', '100')};
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   border-radius: 3px;
+  box-sizing: border-box;
 `
 
 export const Panel = (props: ComponentWithClass) => (
