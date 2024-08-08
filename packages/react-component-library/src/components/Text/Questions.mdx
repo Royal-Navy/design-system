@@ -1,0 +1,17 @@
+import { Meta, Source } from '@storybook/blocks'
+
+import {Text} from './Text'
+
+<Meta title="Questions" />
+
+# Text component questions
+
+- Do we have a defined vertical rhythm?
+- Should we really expose the sizes and the elements
+  - Perhaps just expose text type and set font size, padding, line-height based on it
+- What about readability? Should we restrict width based on good practice (50ch?)
+ 
+
+<Text size="xxl" el="h1">Example header text</Text>
+<Text>Example body text</Text>
+<Text>Not a particularly good example because these mdx files inherit the styles from the storybook containers</Text>
