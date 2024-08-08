@@ -1,8 +1,7 @@
-import { color, mq, shadow } from '@royalnavy/design-tokens'
+import { color, mq } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
 export const StyledMain = styled.article`
-  text-shadow: ${shadow('2')};
   border: 1px solid ${color('neutral', '200')};
   background: ${color('neutral', 'white')};
   width: 100%;
