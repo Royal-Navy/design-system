@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.17.0](https://github.com/Royal-Navy/design-system/compare/4.16.0...4.17.0) (2024-08-09)
+
+### Bug Fixes
+
+- **Modal:** Remove rogue text-shadow ([24553d9](https://github.com/Royal-Navy/design-system/commit/24553d9190f85ef544fc62c41eeb3034aa1d95c4))
+
+### Features
+
+- **Group:** Implement layout utility component ([1850416](https://github.com/Royal-Navy/design-system/commit/185041601ca6f6db4c4c0d9e60fa7aed149c0d53))
+- **Stack:** Implement layout utility component ([9874d1d](https://github.com/Royal-Navy/design-system/commit/9874d1ded4d10e62726d8fab4bd7a8bac8889a6f))
+
 # [4.16.0](https://github.com/Royal-Navy/design-system/compare/4.15.3...4.16.0) (2024-08-07)
 
 ### Bug Fixes
