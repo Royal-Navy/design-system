@@ -10,4 +10,5 @@ export interface FormValues {
   exampleSelect: string | null
   exampleAutocomplete: string | null
   exampleRangeSlider: [number]
+  exampleToggle: boolean
 }

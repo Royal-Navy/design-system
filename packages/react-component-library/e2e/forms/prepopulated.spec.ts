@@ -13,6 +13,7 @@ const expectedInitialResult = {
   exampleSelect: 'three',
   exampleAutocomplete: 'two',
   exampleRangeSlider: [4],
+  exampleToggle: false,
 }
 
 const expectedEditedResult = {
@@ -27,6 +28,7 @@ const expectedEditedResult = {
   exampleSelect: 'three',
   exampleAutocomplete: 'four',
   exampleRangeSlider: [28],
+  exampleToggle: true,
 }
 
 const examples = [
@@ -69,6 +71,7 @@ test.describe('Form examples, pre-populated', () => {
         await expect(page.locator(selectors.input.select)).toBeVisible()
         await expect(page.locator(selectors.input.autocomplete)).toBeVisible()
         await expect(page.locator(selectors.input.rangeSlider)).toBeVisible()
+        await expect(page.locator(selectors.input.toggle)).toBeVisible()
       })
 
       test.describe('when the form is submitted unchanged', () => {
@@ -110,6 +113,7 @@ test.describe('Form examples, pre-populated', () => {
           await page.click(selectors.input.rangeSliderRail, {
             position: { x: 800, y: 5 },
           })
+          await page.click(selectors.input.toggle)
         })
 
         test('shows no validation errors', async ({ page }) => {
