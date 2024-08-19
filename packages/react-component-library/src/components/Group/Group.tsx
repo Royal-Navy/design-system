@@ -14,11 +14,11 @@ interface GroupProps extends ComponentWithClass {
    */
   gap?: Spacing
   /**
-   * Controls `justify-content` CSS property, `'flex-start'` by default.
+   * Controls horizontal `justify-content` CSS property, `'flex-start'` by default.
    */
   justify?: CSS.Properties['justifyContent']
   /**
-   * Controls `align-items` CSS property, `'center'` by default.
+   * Controls vertical `align-items` CSS property, `'center'` by default.
    */
   align?: CSS.Properties['alignItems']
   /**
@@ -30,12 +30,6 @@ interface GroupProps extends ComponentWithClass {
    * style, `false` by default.
    */
   grow?: boolean
-  /**
-   * Determines whether children should take only dedicated amount of
-   * space (`max-width` style is set based on the number of children)
-   * , `true` by default.
-   */
-  preventGrowOverflow?: boolean
   /**
    * The type of element to use for the root node, `'div'` by default.
    */
@@ -55,17 +49,11 @@ const StyledGroup = styled.div<StyledGroupProps>`
   justify-content: ${({ $justify }) => $justify};
   flex-wrap: ${({ $wrap }) => $wrap};
 
-  ${({ $grow, $gap, $preventGrowOverflow }) =>
+  ${({ $grow }) =>
     $grow &&
     css`
       > * {
-        flex-grow: 1;
-        ${$preventGrowOverflow &&
-        css`
-          max-width: ${$gap === '0'
-            ? '33.333333333333336%'
-            : `calc(33.333333333333336% - (${spacing($gap!)} / 3))`};
-        `}
+        flex: 1;
       }
     `}
 `
@@ -79,7 +67,6 @@ export const Group = ({
   justify = 'flex-start',
   wrap = 'wrap',
   grow = false,
-  preventGrowOverflow = true,
 }: GroupProps) => {
   return (
     children && (
@@ -91,7 +78,6 @@ export const Group = ({
         $justify={justify}
         $wrap={wrap}
         $grow={grow}
-        $preventGrowOverflow={preventGrowOverflow}
       >
         {children}
       </StyledGroup>

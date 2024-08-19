@@ -39,27 +39,11 @@ describe('Group', () => {
     expect(container.firstChild).toHaveStyleRule('flex-wrap', 'nowrap')
   })
 
-  it('apply flex-grow to children when grow is true', () => {
+  it('apply flex:1 to children when grow is true', () => {
     const { container } = render(<Group grow>Content</Group>)
-    expect(container.firstChild).toHaveStyleRule('flex-grow', '1', {
+    expect(container.firstChild).toHaveStyleRule('flex', '1', {
       modifier: '> *',
     })
-  })
-
-  it('apply max-width to children when preventGrowOverflow is true', () => {
-    const customGap = '2'
-    const { container } = render(
-      <Group grow preventGrowOverflow gap={customGap}>
-        <div>Child 1</div>
-        <div>Child 2</div>
-        <div>Child 3</div>
-      </Group>
-    )
-    expect(container.firstChild).toHaveStyleRule(
-      'max-width',
-      `calc(33.333333333333336% - (${spacing(customGap)} / 3))`,
-      { modifier: '> *' }
-    )
   })
 
   it('render with the specified HTML element', () => {
