@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.17.1](https://github.com/Royal-Navy/design-system/compare/4.17.0...4.17.1) (2024-08-20)
+
+### Bug Fixes
+
+- **Group:** Use flexbox styles for growing group child elements ([#3863](https://github.com/Royal-Navy/design-system/issues/3863)) ([889b914](https://github.com/Royal-Navy/design-system/commit/889b9140fef2f610fb34a5d2d2fed9d592c63f2c))
+
 # [4.17.0](https://github.com/Royal-Navy/design-system/compare/4.16.0...4.17.0) (2024-08-09)
 
 ### Bug Fixes
