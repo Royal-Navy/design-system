@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react'
+import React, { type JSX, Children } from 'react'
 import type * as CSS from 'csstype'
 import styled, { css } from 'styled-components'
 import { type Spacing, spacing } from '@royalnavy/design-tokens'
@@ -39,7 +39,9 @@ interface GroupProps extends ComponentWithClass {
 type StyledGroupProps = PrefixKeys<
   Omit<GroupProps, 'el' | 'children' | 'className'>,
   '$'
->
+> & {
+  $childCount: number
+}
 
 const StyledGroup = styled.div<StyledGroupProps>`
   display: flex;
@@ -49,11 +51,12 @@ const StyledGroup = styled.div<StyledGroupProps>`
   justify-content: ${({ $justify }) => $justify};
   flex-wrap: ${({ $wrap }) => $wrap};
 
-  ${({ $grow }) =>
+  ${({ $grow, $childCount }) =>
     $grow &&
     css`
       > * {
         flex: 1;
+        max-width: ${100 / $childCount}%;
       }
     `}
 `
@@ -78,6 +81,7 @@ export const Group = ({
         $justify={justify}
         $wrap={wrap}
         $grow={grow}
+        $childCount={Children.count(children)}
       >
         {children}
       </StyledGroup>
