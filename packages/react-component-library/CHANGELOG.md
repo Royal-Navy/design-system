@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.18.0](https://github.com/Royal-Navy/design-system/compare/4.17.1...4.18.0) (2024-09-02)
+
+### Features
+
+- **Text:** Create experimental Text component for displaying text content ([#3857](https://github.com/Royal-Navy/design-system/issues/3857)) ([aebb910](https://github.com/Royal-Navy/design-system/commit/aebb910f7ea77da87b29fc58a59a696f8a0dda4b))
+
 ## [4.17.1](https://github.com/Royal-Navy/design-system/compare/4.17.0...4.17.1) (2024-08-20)
 
 ### Bug Fixes
