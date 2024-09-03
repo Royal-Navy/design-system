@@ -501,6 +501,62 @@ Paginated.args = {
   pageSize: 5,
 }
 
+const fullSpanColumnData = data.slice(0, 3).map((item) => {
+  return {
+    ...item,
+    fullSpanColumn:
+      'This is a full span column, it renders within a seperate row.',
+  }
+})
+
+export const FullSpanColumn: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
+}
+FullSpanColumn.storyName = 'Full span column'
+FullSpanColumn.args = {
+  columns: [
+    {
+      header: 'Product Name',
+      accessorKey: 'productName',
+      enableSorting: false,
+    },
+    {
+      header: 'Qty',
+      accessorKey: 'quantity',
+      enableSorting: false,
+    },
+    {
+      header: 'Price',
+      accessorKey: 'price',
+      enableSorting: false,
+    },
+    {
+      header: 'Actions',
+      accessorKey: 'actions',
+      enableSorting: false,
+      size: '100%',
+    },
+    {
+      accessorKey: 'fullSpanColumn',
+      meta: {
+        fullSpanColumn: true,
+      },
+      cell: (info) => {
+        const value = info.getValue() as string
+        return <h2>{value}</h2>
+      },
+    },
+  ],
+  data: fullSpanColumnData,
+  isFullWidth: true,
+  onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
+}
+
 const mergedColumns = groupedColumns.map((group) => ({
   ...group,
   columns: group.columns.map((column) => ({

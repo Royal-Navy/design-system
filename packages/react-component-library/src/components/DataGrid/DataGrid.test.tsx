@@ -742,4 +742,148 @@ describe('DataGrid', () => {
       expect(columnHeaders[2]).toHaveStyleRule('width', '300px')
     })
   })
+
+  describe('with fullSpanColumn', () => {
+    const columnsWithFullSpan: ColumnDef<DataRow>[] = [
+      {
+        accessorKey: 'first',
+        header: 'First',
+        cell: (info) => info.getValue(),
+      },
+      {
+        accessorKey: 'second',
+        header: 'Second',
+        cell: (info) => info.getValue(),
+      },
+      {
+        accessorKey: 'third',
+        header: 'Third',
+        cell: (info) => info.getValue(),
+      },
+      {
+        id: 'fullSpan',
+        header: 'Full Span',
+        cell: () => 'Full Span Content',
+        meta: { fullSpanColumn: true },
+      },
+    ]
+
+    const dataWithFullSpan = [
+      {
+        first: 'a1',
+        second: 'a2',
+        third: 'a3',
+      },
+      {
+        first: 'b1',
+        second: 'b2',
+        third: 'b3',
+      },
+    ]
+
+    it('renders fullSpanColumn correctly', () => {
+      render(<DataGrid data={dataWithFullSpan} columns={columnsWithFullSpan} />)
+
+      const fullSpanContent = screen.getAllByText('Full Span Content')
+      expect(fullSpanContent).toHaveLength(2) // One for each row
+
+      fullSpanContent.forEach((content) => {
+        const parentRow = content.closest('tr')
+        expect(parentRow).toHaveAttribute(
+          'id',
+          expect.stringContaining('-fullspan')
+        )
+      })
+    })
+
+    it('calculates totalColumns correctly with fullSpanColumn', () => {
+      render(
+        <DataGrid
+          data={dataWithFullSpan}
+          columns={columnsWithFullSpan}
+          enableRowSelection
+        />
+      )
+
+      const fullSpanCells = screen.getAllByText('Full Span Content')
+      fullSpanCells.forEach((cell) => {
+        // 3 normal columns + 1 selection column
+        expect(cell.closest('td')).toHaveAttribute('colspan', '4')
+      })
+    })
+
+    it('renders normal cells and fullSpanColumn cells in separate rows', () => {
+      render(<DataGrid data={dataWithFullSpan} columns={columnsWithFullSpan} />)
+
+      const rows = screen.getAllByRole('row')
+      // 1 header row + 2 normal rows + 2 fullSpan rows
+      expect(rows).toHaveLength(5)
+
+      // Check normal rows
+      expect(within(rows[1]).getByText('a1')).toBeInTheDocument()
+      expect(within(rows[1]).getByText('a2')).toBeInTheDocument()
+      expect(within(rows[1]).getByText('a3')).toBeInTheDocument()
+      expect(
+        within(rows[1]).queryByText('Full Span Content')
+      ).not.toBeInTheDocument()
+
+      // Check fullSpan rows
+      expect(within(rows[2]).getByText('Full Span Content')).toBeInTheDocument()
+      expect(within(rows[2]).queryByText('a1')).not.toBeInTheDocument()
+      expect(within(rows[2]).queryByText('a2')).not.toBeInTheDocument()
+      expect(within(rows[2]).queryByText('a3')).not.toBeInTheDocument()
+    })
+
+    it('does not render fullSpanColumn in the header', () => {
+      render(<DataGrid data={dataWithFullSpan} columns={columnsWithFullSpan} />)
+
+      const headerRow = screen.getAllByRole('row')[0]
+      expect(within(headerRow).queryByText('Full Span')).not.toBeInTheDocument()
+    })
+
+    it('handles sorting correctly with fullSpanColumn', async () => {
+      render(<DataGrid data={dataWithFullSpan} columns={columnsWithFullSpan} />)
+
+      // Click to sort by 'First' column
+      userEvent.click(screen.getByText('First'))
+      await hackyWaitFor()
+
+      const rows = screen.getAllByRole('row')
+
+      // Check that the main rows are sorted
+      expect(within(rows[1]).getByText('a1')).toBeInTheDocument()
+      expect(within(rows[3]).getByText('b1')).toBeInTheDocument()
+
+      // Check that fullSpanColumns follow their respective rows
+      expect(within(rows[2]).getByText('Full Span Content')).toBeInTheDocument()
+      expect(within(rows[4]).getByText('Full Span Content')).toBeInTheDocument()
+    })
+
+    it('handles row selection correctly with fullSpanColumn', async () => {
+      render(
+        <DataGrid
+          data={dataWithFullSpan}
+          columns={columnsWithFullSpan}
+          enableRowSelection
+        />
+      )
+
+      const checkboxes = screen.getAllByRole('checkbox')
+
+      userEvent.click(checkboxes[1], {
+        pointerEventsCheck: PointerEventsCheckLevel.Never,
+      })
+
+      await hackyWaitFor()
+
+      expect(checkboxes[1]).toBeChecked()
+
+      const fullSpanRows = screen.getAllByText('Full Span Content')
+      fullSpanRows.forEach((row) => {
+        expect(
+          within(row.closest('tr') as HTMLElement).queryByRole('checkbox')
+        ).not.toBeInTheDocument()
+      })
+    })
+  })
 })
