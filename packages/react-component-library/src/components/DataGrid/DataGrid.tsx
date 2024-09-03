@@ -15,6 +15,7 @@ import {
   getExpandedRowModel,
   getSortedRowModel,
   getPaginationRowModel,
+  getFilteredRowModel,
   useReactTable,
 } from '@tanstack/react-table'
 import type {
@@ -29,6 +30,7 @@ import type {
   SortingState,
   TableOptions,
   PaginationState,
+  ColumnFiltersState,
 } from '@tanstack/react-table'
 import {
   IconArrowDownward,
@@ -36,8 +38,10 @@ import {
   IconKeyboardArrowDown,
   IconKeyboardArrowRight,
   IconSwapVert,
+  IconFilterList,
 } from '@royalnavy/icon-library'
 
+import { Popover } from '../Popover'
 import { PaginationProps, OnChangeEventType } from '../Pagination'
 import { IndeterminateCheckbox } from '../Checkbox'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
@@ -54,6 +58,8 @@ import {
   StyledRow,
   StyledTable,
   StyledPagination,
+  StyledFilterInput,
+  StyledColButton,
 } from './partials'
 
 type AriaSortType = 'ascending' | 'descending' | 'none'
@@ -134,11 +140,7 @@ const SORT_ORDER_ARIA_SORT_MAP: Record<SortDirection, AriaSortType> = {
   [TABLE_SORT_ORDER.DESCENDING]: 'descending',
 }
 
-function getIcon(sortable: boolean, sortOrder?: SortDirection | false) {
-  if (!sortable) {
-    return null
-  }
-
+function getSortIcon(sortOrder?: SortDirection | false) {
   if (!sortOrder) {
     return <IconSwapVert aria-hidden data-testid="unsorted" />
   }
@@ -302,6 +304,8 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     pageSize: pageSize ?? data.length,
   })
 
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+
   const hasSubRows = useMemo(() => {
     // @ts-ignore
     return data.some((row) => row?.subRows?.length > 0)
@@ -320,16 +324,19 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
       rowSelection,
       expanded,
       pagination,
+      columnFilters,
     },
     enableRowSelection,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
     onExpandedChange: setExpanded,
     onPaginationChange: setPagination,
+    onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     manualPagination,
     paginateExpandedRows: false,
     pageCount: manualPagination ? pageCount : undefined,
@@ -407,6 +414,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
                       getCanSort,
                       getIsSorted,
                       getToggleSortingHandler,
+                      getCanFilter,
                       columnDef,
                       getSize,
                     },
@@ -419,19 +427,59 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
                       !columnDef.meta?.fullSpanColumn && (
                         <StyledCol
                           aria-sort={getAriaSort(getCanSort(), getIsSorted())}
-                          $isSortable={getCanSort()}
                           $isHeaderGroup={hasGroupedHeaders && depth === 0}
                           $alignment={columnDef.meta?.align}
                           $width={getSize() === 150 ? undefined : getSize()}
                           key={headerId}
-                          onClick={getToggleSortingHandler()}
                           colSpan={colSpan}
                         >
                           <div>
-                            {isPlaceholder
-                              ? null
-                              : flexRender(columnDef.header, getContext())}
-                            {getIcon(getCanSort(), getIsSorted())}
+                            {!isPlaceholder &&
+                              flexRender(columnDef.header, getContext())}
+                            {getCanSort() && (
+                              <StyledColButton
+                                onClick={getToggleSortingHandler()}
+                                aria-label="Sort column"
+                              >
+                                {getSortIcon(getIsSorted())}
+                              </StyledColButton>
+                            )}
+                            {getCanFilter() && (
+                              <Popover
+                                closeDelay={0}
+                                placement="bottom"
+                                isClick
+                                content={
+                                  <StyledFilterInput
+                                    autoFocus
+                                    type="text"
+                                    onChange={(
+                                      e: React.ChangeEvent<HTMLInputElement>
+                                    ) =>
+                                      table
+                                        .getColumn(headerId)
+                                        ?.setFilterValue(e.target.value)
+                                    }
+                                    placeholder={`Filter ${String(
+                                      columnDef.header
+                                    )}`}
+                                    value={
+                                      (table
+                                        .getColumn(headerId)
+                                        ?.getFilterValue() as string) ?? ''
+                                    }
+                                  />
+                                }
+                              >
+                                <StyledColButton
+                                  aria-label={`Filter ${String(
+                                    columnDef.header
+                                  )}`}
+                                >
+                                  <IconFilterList />
+                                </StyledColButton>
+                              </Popover>
+                            )}
                           </div>
                         </StyledCol>
                       )

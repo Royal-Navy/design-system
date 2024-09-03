@@ -25,6 +25,10 @@ export const StyledCol = styled.th<StyledColProps>`
     justify-content: ${({ $alignment }) =>
       $alignment === 'right' ? 'flex-end' : 'space-between'};
 
+    > span {
+      margin-right: auto;
+    }
+
     & svg {
       height: 1rem;
     }
@@ -50,19 +54,6 @@ export const StyledCol = styled.th<StyledColProps>`
       &:not(:last-of-type) > div::after {
         top: 100%;
         height: 80px;
-      }
-    `}
-
-  ${({ $isSortable }) =>
-    $isSortable &&
-    css`
-      cursor: pointer;
-      user-select: none;
-
-      &:hover {
-        svg {
-          opacity: 0.75;
-        }
       }
     `}
 `

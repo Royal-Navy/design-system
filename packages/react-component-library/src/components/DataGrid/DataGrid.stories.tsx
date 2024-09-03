@@ -168,16 +168,19 @@ const columns = [
     header: 'Product Name',
     accessorKey: 'productName',
     enableSorting: false,
+    enableColumnFilter: false,
   },
   {
     header: 'Qty',
     accessorKey: 'quantity',
     enableSorting: false,
+    enableColumnFilter: false,
   },
   {
     header: 'Price',
     accessorKey: 'price',
     enableSorting: false,
+    enableColumnFilter: false,
   },
 ]
 
@@ -557,6 +560,27 @@ FullSpanColumn.args = {
   onExpandedChange: fn(),
 }
 
+const columnsWithFiltering = columns.map((item) => ({
+  ...item,
+  enableColumnFilter: true,
+}))
+
+export const ColumnFiltering: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
+}
+ColumnFiltering.storyName = 'Column filtering'
+ColumnFiltering.args = {
+  columns: columnsWithFiltering,
+  data,
+  isFullWidth: true,
+  onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
+}
+
 const mergedColumns = groupedColumns.map((group) => ({
   ...group,
   columns: group.columns.map((column) => ({
@@ -566,6 +590,7 @@ const mergedColumns = groupedColumns.map((group) => ({
       (c) => c.accessorKey === column.accessorKey
     ),
     enableSorting: true,
+    enableColumnFilter: true,
   })),
 }))
 

@@ -31,18 +31,21 @@ describe('DataGrid', () => {
       header: 'First',
       cell: (info) => info.getValue(),
       enableSorting: true,
+      enableColumnFilter: false,
     },
     {
       accessorKey: 'second',
       header: 'Second',
       cell: (info) => info.getValue(),
       enableSorting: false,
+      enableColumnFilter: false,
     },
     {
       accessorKey: 'third',
       header: 'Third',
       cell: (info) => info.getValue(),
       enableSorting: true,
+      enableColumnFilter: false,
     },
   ]
 
@@ -317,38 +320,21 @@ describe('DataGrid', () => {
       expect(tableHeaderCells[2]).toHaveAttribute('aria-sort', 'none')
     })
 
-    describe('when the second cell header is clicked', () => {
-      beforeEach(async () => {
-        userEvent.click(screen.getByText('Second'))
-        await hackyWaitFor()
+    it('should not have a sort button in the second cell header', () => {
+      const secondColumnHeader = screen.getByRole('columnheader', {
+        name: 'Second',
       })
-
-      it('should have sort icons', () => {
-        expect(screen.queryAllByTestId('unsorted').length).toEqual(2)
-        expect(screen.queryAllByTestId('descending').length).toEqual(0)
-        expect(screen.queryAllByTestId('ascending').length).toEqual(0)
-      })
-
-      it('should set the `aria-sort` attribute on the table header cells', () => {
-        const tableHeaderCells = screen.queryAllByRole('columnheader')
-
-        expect(tableHeaderCells[0]).toHaveAttribute('aria-sort', 'none')
-        expect(tableHeaderCells[1]).not.toHaveAttribute('aria-sort')
-        expect(tableHeaderCells[2]).toHaveAttribute('aria-sort', 'none')
-      })
-
-      it('should not change the order of the rows', () => {
-        const rows = screen.getAllByRole('row')
-
-        expect(rows[1].children[0].textContent).toEqual('b1')
-        expect(rows[2].children[0].textContent).toEqual('a1')
-        expect(rows[3].children[0].textContent).toEqual('c1')
-      })
+      const sortButton = within(secondColumnHeader).queryByRole('button')
+      expect(sortButton).not.toBeInTheDocument()
     })
 
-    describe('when the first cell header is clicked for the first time', () => {
+    describe('when the first cell header sort button is clicked for the first time', () => {
       beforeEach(async () => {
-        userEvent.click(screen.getByText('First'))
+        const firstColumnHeader = screen.getByRole('columnheader', {
+          name: 'First',
+        })
+        const sortButton = within(firstColumnHeader).getByRole('button')
+        userEvent.click(sortButton)
         await hackyWaitFor()
       })
 
@@ -385,9 +371,13 @@ describe('DataGrid', () => {
         expect(rows[3].children[0].textContent).toEqual('c1')
       })
 
-      describe('when the first cell header is clicked for the second time', () => {
+      describe('when the first cell header sort button is clicked for the second time', () => {
         beforeEach(async () => {
-          userEvent.click(screen.getByText('First'))
+          const firstColumnHeader = screen.getByRole('columnheader', {
+            name: 'First',
+          })
+          const sortButton = within(firstColumnHeader).getByRole('button')
+          userEvent.click(sortButton)
           await hackyWaitFor()
         })
 
@@ -424,9 +414,13 @@ describe('DataGrid', () => {
           expect(rows[3].children[0].textContent).toEqual('a1')
         })
 
-        describe('when the first cell header is clicked for the third time', () => {
+        describe('when the first cell header sort button is clicked for the third time', () => {
           beforeEach(async () => {
-            userEvent.click(screen.getByText('First'))
+            const firstColumnHeader = screen.getByRole('columnheader', {
+              name: 'First',
+            })
+            const sortButton = within(firstColumnHeader).getByRole('button')
+            userEvent.click(sortButton)
             await hackyWaitFor()
           })
 
@@ -455,11 +449,20 @@ describe('DataGrid', () => {
       })
     })
 
-    describe('when the first cell header is clicked once and then the third cell header is clicked', () => {
+    describe('when the first cell header sort button is clicked once and then the third cell header sort button is clicked', () => {
       beforeEach(async () => {
-        userEvent.click(screen.getByText('First'))
+        const firstColumnHeader = screen.getByRole('columnheader', {
+          name: 'First',
+        })
+        const firstSortButton = within(firstColumnHeader).getByRole('button')
+        userEvent.click(firstSortButton)
         await hackyWaitFor()
-        userEvent.click(screen.getByText('Third'))
+
+        const thirdColumnHeader = screen.getByRole('columnheader', {
+          name: 'Third',
+        })
+        const thirdSortButton = within(thirdColumnHeader).getByRole('button')
+        userEvent.click(thirdSortButton)
         await hackyWaitFor()
       })
 
@@ -477,7 +480,7 @@ describe('DataGrid', () => {
         expect(tableHeaderCells[2]).toHaveAttribute('aria-sort', 'ascending')
       })
 
-      it('should sort the data in descending order of the third column', () => {
+      it('should sort the data in ascending order of the third column', () => {
         const rows = screen.getAllByRole('row')
 
         expect(rows[1].children[2].textContent).toEqual('c4')
@@ -884,6 +887,160 @@ describe('DataGrid', () => {
           within(row.closest('tr') as HTMLElement).queryByRole('checkbox')
         ).not.toBeInTheDocument()
       })
+    })
+  })
+
+  describe('with column filtering', () => {
+    const columnsWithFiltering: ColumnDef<DataRow>[] = [
+      {
+        accessorKey: 'first',
+        header: 'First',
+        cell: (info) => info.getValue(),
+        enableColumnFilter: true,
+      },
+      {
+        accessorKey: 'second',
+        header: 'Second',
+        cell: (info) => info.getValue(),
+        enableColumnFilter: true,
+      },
+      {
+        accessorKey: 'third',
+        header: 'Third',
+        cell: (info) => info.getValue(),
+        enableColumnFilter: false,
+      },
+    ]
+
+    const dataWithFiltering = [
+      { first: 'alpha', second: 'bravo', third: 'charlie' },
+      { first: 'delta', second: 'echo', third: 'foxtrot' },
+      { first: 'golf', second: 'hotel', third: 'india' },
+    ]
+
+    it('renders filter buttons for columns with enableColumnFilter', () => {
+      render(
+        <DataGrid data={dataWithFiltering} columns={columnsWithFiltering} />
+      )
+
+      const filterButtons = screen.getAllByRole('button', { name: /filter/i })
+      expect(filterButtons).toHaveLength(2)
+    })
+
+    it('opens filter input when filter button is clicked', async () => {
+      render(
+        <DataGrid data={dataWithFiltering} columns={columnsWithFiltering} />
+      )
+
+      const firstColumnFilterButton = screen.getByRole('button', {
+        name: 'Filter First',
+      })
+      userEvent.click(firstColumnFilterButton)
+
+      await hackyWaitFor()
+
+      const filterInput = screen.getByPlaceholderText('Filter First')
+      expect(filterInput).toBeInTheDocument()
+    })
+
+    it('filters data when input is provided', async () => {
+      render(
+        <DataGrid data={dataWithFiltering} columns={columnsWithFiltering} />
+      )
+
+      const firstColumnFilterButton = screen.getByRole('button', {
+        name: 'Filter First',
+      })
+      userEvent.click(firstColumnFilterButton)
+
+      await hackyWaitFor()
+
+      const filterInput = screen.getByPlaceholderText('Filter First')
+      userEvent.type(filterInput, 'alpha')
+
+      await hackyWaitFor()
+
+      const rows = screen.getAllByRole('row')
+      expect(rows).toHaveLength(2) // Header row + 1 data row
+      expect(within(rows[1]).getByText('alpha')).toBeInTheDocument()
+      expect(screen.queryByText('delta')).not.toBeInTheDocument()
+      expect(screen.queryByText('golf')).not.toBeInTheDocument()
+    })
+
+    it('shows all data when filter is cleared', async () => {
+      render(
+        <DataGrid data={dataWithFiltering} columns={columnsWithFiltering} />
+      )
+
+      const firstColumnFilterButton = screen.getByRole('button', {
+        name: 'Filter First',
+      })
+      userEvent.click(firstColumnFilterButton)
+
+      await hackyWaitFor()
+
+      const filterInput = screen.getByPlaceholderText('Filter First')
+      userEvent.type(filterInput, 'alpha')
+
+      await hackyWaitFor()
+
+      userEvent.clear(filterInput)
+
+      await hackyWaitFor()
+
+      const rows = screen.getAllByRole('row')
+      expect(rows).toHaveLength(4) // Header row + 3 data rows
+      expect(screen.getByText('alpha')).toBeInTheDocument()
+      expect(screen.getByText('delta')).toBeInTheDocument()
+      expect(screen.getByText('golf')).toBeInTheDocument()
+    })
+
+    it('does not render filter button for columns with enableColumnFilter set to false', () => {
+      render(
+        <DataGrid data={dataWithFiltering} columns={columnsWithFiltering} />
+      )
+
+      const filterThirdButton = screen.queryByRole('button', {
+        name: 'Filter Third',
+      })
+      expect(filterThirdButton).not.toBeInTheDocument()
+    })
+
+    it('applies multiple filters correctly', async () => {
+      render(
+        <DataGrid data={dataWithFiltering} columns={columnsWithFiltering} />
+      )
+
+      const firstColumnFilterButton = screen.getByRole('button', {
+        name: 'Filter First',
+      })
+      userEvent.click(firstColumnFilterButton)
+
+      await hackyWaitFor()
+
+      const firstFilterInput = screen.getByPlaceholderText('Filter First')
+      userEvent.type(firstFilterInput, 'alpha')
+
+      await hackyWaitFor()
+
+      const secondColumnFilterButton = screen.getByRole('button', {
+        name: 'Filter Second',
+      })
+      userEvent.click(secondColumnFilterButton)
+
+      await hackyWaitFor()
+
+      const secondFilterInput = screen.getByPlaceholderText('Filter Second')
+      userEvent.type(secondFilterInput, 'bravo')
+
+      await hackyWaitFor()
+
+      const rows = screen.getAllByRole('row')
+      expect(rows).toHaveLength(2) // Header row + 1 data row
+      expect(within(rows[1]).getByText('alpha')).toBeInTheDocument()
+      expect(within(rows[1]).getByText('bravo')).toBeInTheDocument()
+      expect(screen.queryByText('delta')).not.toBeInTheDocument()
+      expect(screen.queryByText('golf')).not.toBeInTheDocument()
     })
   })
 })
