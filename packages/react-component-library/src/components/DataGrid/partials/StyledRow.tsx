@@ -6,6 +6,7 @@ interface StyledRowProps {
   $hasFocus?: boolean
   $depth?: number
   $isLastInBranch?: boolean
+  $fullSpanColumn?: boolean
 }
 
 export const StyledRow = styled.tr<StyledRowProps>`
@@ -18,6 +19,14 @@ export const StyledRow = styled.tr<StyledRowProps>`
       border-bottom: unset;
     }
   }
+
+  ${({ $fullSpanColumn }) =>
+    $fullSpanColumn &&
+    css`
+      td {
+        padding-top: unset;
+      }
+    `}
 
   ${({ $hasHover }) =>
     $hasHover &&

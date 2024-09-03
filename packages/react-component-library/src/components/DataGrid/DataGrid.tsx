@@ -1,7 +1,13 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="./DataGrid.d.ts" />
 
-import React, { useState, useEffect, useMemo, useCallback } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  Fragment,
+} from 'react'
 import _noop from 'lodash/noop'
 import {
   flexRender,
@@ -358,6 +364,29 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     [table, onPageChange]
   )
 
+  const totalColumns = useMemo(() => {
+    let baseColumnCount = columns.length
+
+    if (enableRowSelection && !hideCheckboxes) {
+      baseColumnCount += 1
+    }
+
+    if (hasSubRows) {
+      baseColumnCount += 1
+    }
+
+    if (enableRowSelection && !hideCheckboxes && hasSubRows) {
+      baseColumnCount -= 1
+    }
+
+    const fullSpanColumnCount = columns.filter(
+      (column) => column.meta?.fullSpanColumn
+    ).length
+    baseColumnCount -= fullSpanColumnCount
+
+    return baseColumnCount
+  }, [columns, enableRowSelection, hideCheckboxes, hasSubRows])
+
   return (
     <StyledDataGrid className={className}>
       <StyledTable
@@ -385,25 +414,29 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
                     isPlaceholder,
                     getContext,
                     colSpan,
-                  }: Header<T, unknown>) => (
-                    <StyledCol
-                      aria-sort={getAriaSort(getCanSort(), getIsSorted())}
-                      $isSortable={getCanSort()}
-                      $isHeaderGroup={hasGroupedHeaders && depth === 0}
-                      $alignment={columnDef.meta?.align}
-                      $width={getSize() === 150 ? undefined : getSize()}
-                      key={headerId}
-                      onClick={getToggleSortingHandler()}
-                      colSpan={colSpan}
-                    >
-                      <div>
-                        {isPlaceholder
-                          ? null
-                          : flexRender(columnDef.header, getContext())}
-                        {getIcon(getCanSort(), getIsSorted())}
-                      </div>
-                    </StyledCol>
-                  )
+                  }: Header<T, unknown>) => {
+                    return (
+                      !columnDef.meta?.fullSpanColumn && (
+                        <StyledCol
+                          aria-sort={getAriaSort(getCanSort(), getIsSorted())}
+                          $isSortable={getCanSort()}
+                          $isHeaderGroup={hasGroupedHeaders && depth === 0}
+                          $alignment={columnDef.meta?.align}
+                          $width={getSize() === 150 ? undefined : getSize()}
+                          key={headerId}
+                          onClick={getToggleSortingHandler()}
+                          colSpan={colSpan}
+                        >
+                          <div>
+                            {isPlaceholder
+                              ? null
+                              : flexRender(columnDef.header, getContext())}
+                            {getIcon(getCanSort(), getIsSorted())}
+                          </div>
+                        </StyledCol>
+                      )
+                    )
+                  }
                 )}
               </StyledRow>
             ))}
@@ -419,46 +452,95 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
                 getIsSelected,
                 depth,
                 parentId,
-              }: Row<T>) => (
-                <StyledRow
-                  key={rowId}
-                  id={rowId}
-                  $depth={depth}
-                  $isLastInBranch={isLastInBranch(
-                    { id: rowId, parentId, depth } as Row<T>,
-                    table.getRowModel().rows
-                  )}
-                  $hasHover={!!enableRowSelection && hasHover}
-                  $hasFocus={
-                    !!enableRowSelection && hasHover && getIsSelected()
-                  }
-                >
-                  {getVisibleCells().map(
-                    ({
-                      id: cellId,
-                      column: {
-                        columnDef: { cell, meta },
-                        getSize,
-                      },
-                      getContext,
-                    }: Cell<T, unknown>) => (
-                      <StyledCell
-                        as="td"
-                        key={cellId}
-                        $alignment={meta?.align}
-                        $width={getSize() === 150 ? undefined : getSize()}
-                        onClick={
-                          !!enableRowSelection && hasHover
-                            ? getToggleSelectedHandler()
-                            : undefined
-                        }
+              }: Row<T>) => {
+                const normalCells = getVisibleCells().filter(
+                  ({
+                    column: {
+                      columnDef: { meta },
+                    },
+                  }) => !meta?.fullSpanColumn
+                )
+
+                const fullSpanCells = getVisibleCells().filter(
+                  ({
+                    column: {
+                      columnDef: { meta },
+                    },
+                  }) => meta?.fullSpanColumn
+                )
+
+                return (
+                  <Fragment key={rowId}>
+                    <StyledRow
+                      id={rowId}
+                      $depth={depth}
+                      $isLastInBranch={isLastInBranch(
+                        { id: rowId, parentId, depth } as Row<T>,
+                        table.getRowModel().rows
+                      )}
+                      $hasHover={!!enableRowSelection && hasHover}
+                      $hasFocus={
+                        !!enableRowSelection && hasHover && getIsSelected()
+                      }
+                    >
+                      {normalCells.map(
+                        ({
+                          id: cellId,
+                          column: {
+                            columnDef: { cell, meta },
+                            getSize,
+                          },
+                          getContext,
+                        }: Cell<T, unknown>) => (
+                          <StyledCell
+                            as="td"
+                            key={cellId}
+                            $alignment={meta?.align}
+                            colSpan={1}
+                            $width={getSize() === 150 ? undefined : getSize()}
+                            $hasBorder={!fullSpanCells.length}
+                            onClick={
+                              !!enableRowSelection && hasHover
+                                ? getToggleSelectedHandler()
+                                : undefined
+                            }
+                          >
+                            {flexRender(cell, getContext())}
+                          </StyledCell>
+                        )
+                      )}
+                    </StyledRow>
+
+                    {fullSpanCells.length > 0 && (
+                      <StyledRow
+                        key={`${rowId}-fullspan`}
+                        id={`${rowId}-fullspan`}
+                        $fullSpanColumn
                       >
-                        {flexRender(cell, getContext())}
-                      </StyledCell>
-                    )
-                  )}
-                </StyledRow>
-              )
+                        {fullSpanCells.map(
+                          ({
+                            id: cellId,
+                            column: {
+                              columnDef: { cell, meta },
+                            },
+                            getContext,
+                          }: Cell<T, unknown>) => (
+                            <StyledCell
+                              as="td"
+                              colSpan={totalColumns}
+                              key={cellId}
+                              $alignment={meta?.align}
+                              $hasBorder
+                            >
+                              {flexRender(cell, getContext())}
+                            </StyledCell>
+                          )
+                        )}
+                      </StyledRow>
+                    )}
+                  </Fragment>
+                )
+              }
             )}
         </StyledBody>
       </StyledTable>
