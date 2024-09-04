@@ -7,6 +7,7 @@ import {
   type ColumnDef,
   type ExpandedState,
   type RowSelectionState,
+  type ColumnFiltersState,
   useReactTable,
   getCoreRowModel,
   getExpandedRowModel,
@@ -51,6 +52,7 @@ export interface DataGridProps<T extends object>
   hideCheckboxes?: boolean
   onSelectedRowsChange?: (rows: T[]) => void
   onExpandedChange?: (expanded: ExpandedState) => void
+  onColumnFiltersChange?: (columnFilters: ColumnFiltersState) => void
   pageCount?: number
   onPageChange?: (
     event: OnChangeEventType,
@@ -71,6 +73,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     initialRowSelection,
     isFullWidth,
     className,
+    onColumnFiltersChange,
     onSelectedRowsChange,
     onExpandedChange,
     onPageChange,
@@ -142,6 +145,10 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
   useEffect(() => {
     onExpandedChange?.(expanded)
   }, [expanded, onExpandedChange])
+
+  useEffect(() => {
+    onColumnFiltersChange?.(columnFilters)
+  }, [columnFilters, onColumnFiltersChange])
 
   const handlePagination = useCallback(
     (...args) => {

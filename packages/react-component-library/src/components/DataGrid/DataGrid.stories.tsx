@@ -218,6 +218,7 @@ Default.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 const columnsWithSorting = columns.map((item) => ({
@@ -239,6 +240,7 @@ Sorting.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 Sorting.parameters = {
@@ -302,6 +304,7 @@ ArbitraryCellContent.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 ArbitraryCellContent.parameters = {
@@ -334,6 +337,7 @@ RowSelection.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 RowSelection.parameters = {
@@ -366,6 +370,7 @@ RowSelectionWithHover.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 export const Caption: StoryFn<typeof DataGrid> = (props) => {
@@ -382,6 +387,7 @@ Caption.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 const columnsWithSizing = columns.map((item, index) => ({
@@ -403,6 +409,7 @@ ColumnSizing.args = {
   data,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 const columnsWithAlignment = columns.map((item) => ({
@@ -425,6 +432,7 @@ ColumnAlignment.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 const groupedColumns = [
@@ -469,6 +477,7 @@ ColumnGrouping.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 export const ExpandableRows: StoryFn<typeof DataGrid> = (props) => {
@@ -486,6 +495,7 @@ ExpandableRows.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 export const Paginated: StoryFn<typeof DataGrid> = (props) => {
@@ -501,6 +511,7 @@ Paginated.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
   pageSize: 5,
 }
 
@@ -552,6 +563,7 @@ FullSpanColumn.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 const columnsWithFiltering = columns.map((item) => ({
@@ -573,6 +585,7 @@ ColumnFiltering.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 const mergedColumns = groupedColumns.map((group) => ({
@@ -612,5 +625,6 @@ KitchenSink.args = {
   },
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
   pageSize: 3,
 }

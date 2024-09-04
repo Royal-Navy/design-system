@@ -1042,5 +1042,109 @@ describe('DataGrid', () => {
       expect(screen.queryByText('delta')).not.toBeInTheDocument()
       expect(screen.queryByText('golf')).not.toBeInTheDocument()
     })
+
+    it('calls onColumnFiltersChange when a filter is applied', async () => {
+      const onColumnFiltersChange = jest.fn()
+      render(
+        <DataGrid
+          data={dataWithFiltering}
+          columns={columnsWithFiltering}
+          onColumnFiltersChange={onColumnFiltersChange}
+        />
+      )
+
+      const firstColumnFilterButton = screen.getByRole('button', {
+        name: 'Filter First',
+      })
+      userEvent.click(firstColumnFilterButton)
+
+      await hackyWaitFor()
+
+      const filterInput = screen.getByPlaceholderText('Filter First')
+      userEvent.type(filterInput, 'alpha')
+
+      await hackyWaitFor()
+
+      expect(onColumnFiltersChange).toHaveBeenCalledWith([
+        { id: 'first', value: 'alpha' },
+      ])
+    })
+
+    it('calls onColumnFiltersChange when a filter is cleared', async () => {
+      const onColumnFiltersChange = jest.fn()
+      render(
+        <DataGrid
+          data={dataWithFiltering}
+          columns={columnsWithFiltering}
+          onColumnFiltersChange={onColumnFiltersChange}
+        />
+      )
+
+      const firstColumnFilterButton = screen.getByRole('button', {
+        name: 'Filter First',
+      })
+      userEvent.click(firstColumnFilterButton)
+
+      await hackyWaitFor()
+
+      const filterInput = screen.getByPlaceholderText('Filter First')
+      userEvent.type(filterInput, 'alpha')
+
+      await hackyWaitFor()
+
+      expect(onColumnFiltersChange).toHaveBeenCalledWith([
+        { id: 'first', value: 'alpha' },
+      ])
+
+      userEvent.clear(filterInput)
+
+      await hackyWaitFor()
+
+      expect(onColumnFiltersChange).toHaveBeenCalledWith([])
+    })
+
+    it('calls onColumnFiltersChange with multiple filters', async () => {
+      const onColumnFiltersChange = jest.fn()
+      render(
+        <DataGrid
+          data={dataWithFiltering}
+          columns={columnsWithFiltering}
+          onColumnFiltersChange={onColumnFiltersChange}
+        />
+      )
+
+      const firstColumnFilterButton = screen.getByRole('button', {
+        name: 'Filter First',
+      })
+      userEvent.click(firstColumnFilterButton)
+
+      await hackyWaitFor()
+
+      const firstFilterInput = screen.getByPlaceholderText('Filter First')
+      userEvent.type(firstFilterInput, 'alpha')
+
+      await hackyWaitFor()
+
+      expect(onColumnFiltersChange).toHaveBeenCalledWith([
+        { id: 'first', value: 'alpha' },
+      ])
+
+      const secondColumnFilterButton = screen.getByRole('button', {
+        name: 'Filter Second',
+      })
+      userEvent.click(secondColumnFilterButton)
+
+      await hackyWaitFor()
+
+      const secondFilterInput = screen.getByPlaceholderText('Filter Second')
+      userEvent.type(secondFilterInput, 'bravo')
+
+      await hackyWaitFor()
+
+      expect(onColumnFiltersChange).toHaveBeenCalledWith([
+        { id: 'first', value: 'alpha' },
+        { id: 'second', value: 'bravo' },
+      ])
+    })
   })
 })
