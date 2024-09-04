@@ -168,16 +168,19 @@ const columns = [
     header: 'Product Name',
     accessorKey: 'productName',
     enableSorting: false,
+    enableColumnFilter: false,
   },
   {
     header: 'Qty',
     accessorKey: 'quantity',
     enableSorting: false,
+    enableColumnFilter: false,
   },
   {
     header: 'Price',
     accessorKey: 'price',
     enableSorting: false,
+    enableColumnFilter: false,
   },
 ]
 
@@ -215,6 +218,7 @@ Default.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 const columnsWithSorting = columns.map((item) => ({
@@ -236,6 +240,7 @@ Sorting.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 Sorting.parameters = {
@@ -299,6 +304,7 @@ ArbitraryCellContent.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 ArbitraryCellContent.parameters = {
@@ -331,6 +337,7 @@ RowSelection.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 RowSelection.parameters = {
@@ -363,6 +370,7 @@ RowSelectionWithHover.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 export const Caption: StoryFn<typeof DataGrid> = (props) => {
@@ -379,6 +387,7 @@ Caption.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 const columnsWithSizing = columns.map((item, index) => ({
@@ -400,6 +409,7 @@ ColumnSizing.args = {
   data,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 const columnsWithAlignment = columns.map((item) => ({
@@ -422,6 +432,7 @@ ColumnAlignment.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 const groupedColumns = [
@@ -466,6 +477,7 @@ ColumnGrouping.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 export const ExpandableRows: StoryFn<typeof DataGrid> = (props) => {
@@ -483,6 +495,7 @@ ExpandableRows.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 export const Paginated: StoryFn<typeof DataGrid> = (props) => {
@@ -498,6 +511,7 @@ Paginated.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
   pageSize: 5,
 }
 
@@ -535,12 +549,6 @@ FullSpanColumn.args = {
       enableSorting: false,
     },
     {
-      header: 'Actions',
-      accessorKey: 'actions',
-      enableSorting: false,
-      size: '100%',
-    },
-    {
       accessorKey: 'fullSpanColumn',
       meta: {
         fullSpanColumn: true,
@@ -555,6 +563,29 @@ FullSpanColumn.args = {
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
+}
+
+const columnsWithFiltering = columns.map((item) => ({
+  ...item,
+  enableColumnFilter: true,
+}))
+
+export const ColumnFiltering: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
+}
+ColumnFiltering.storyName = 'Column filtering'
+ColumnFiltering.args = {
+  columns: columnsWithFiltering,
+  data,
+  isFullWidth: true,
+  onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }
 
 const mergedColumns = groupedColumns.map((group) => ({
@@ -566,6 +597,7 @@ const mergedColumns = groupedColumns.map((group) => ({
       (c) => c.accessorKey === column.accessorKey
     ),
     enableSorting: true,
+    enableColumnFilter: true,
   })),
 }))
 
@@ -593,5 +625,6 @@ KitchenSink.args = {
   },
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
   pageSize: 3,
 }
