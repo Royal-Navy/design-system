@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.19.0](https://github.com/Royal-Navy/design-system/compare/4.18.0...4.19.0) (2024-09-04)
+
+### Features
+
+- **DataGrid:** Implement full span columns ([9677af6](https://github.com/Royal-Navy/design-system/commit/9677af647ae78b2a8f91738866f189f3a8b6c82b))
+
 # [4.18.0](https://github.com/Royal-Navy/design-system/compare/4.17.1...4.18.0) (2024-09-02)
 
 ### Features
