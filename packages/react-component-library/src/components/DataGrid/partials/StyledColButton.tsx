@@ -6,7 +6,7 @@ export const StyledColButton = styled.button`
   background: unset;
   padding: unset;
   cursor: pointer;
-  margin-right: ${spacing('6')};
+  padding: 0 ${spacing('3')};
   margin-left: auto;
 
   &:hover {

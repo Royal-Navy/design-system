@@ -538,12 +538,6 @@ FullSpanColumn.args = {
       enableSorting: false,
     },
     {
-      header: 'Actions',
-      accessorKey: 'actions',
-      enableSorting: false,
-      size: '100%',
-    },
-    {
       accessorKey: 'fullSpanColumn',
       meta: {
         fullSpanColumn: true,
