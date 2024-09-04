@@ -55,3 +55,6 @@ export * from './components/TopLevelNavigation/NotificationPanel'
 export * from './components/TopLevelNavigation/Sidebar'
 export * from './primitives/Container'
 export * from './primitives/FloatingBox'
+
+export * from './components/Stack'
+export * from './components/Group'
