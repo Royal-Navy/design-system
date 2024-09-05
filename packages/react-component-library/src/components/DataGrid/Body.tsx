@@ -79,25 +79,23 @@ const Row = <T extends object>({
         ))}
       </StyledRow>
 
-      {fullSpanCells.length > 0 && (
+      {fullSpanCells.map((cell, index) => (
         <StyledRow
-          key={`${row.id}-fullspan`}
-          id={`${row.id}-fullspan`}
+          key={`${cell.id}-fullspan`}
+          id={`${cell.id}-fullspan`}
           $fullSpanColumn
         >
-          {fullSpanCells.map((cell) => (
-            <StyledCell
-              key={cell.id}
-              as="td"
-              colSpan={totalColumns}
-              $alignment={cell.column.columnDef.meta?.align}
-              $hasBorder
-            >
-              {flexRender(cell.column.columnDef.cell, cell.getContext())}
-            </StyledCell>
-          ))}
+          <StyledCell
+            key={cell.id}
+            as="td"
+            colSpan={totalColumns}
+            $alignment={cell.column.columnDef.meta?.align}
+            $hasBorder={index === fullSpanCells.length - 1}
+          >
+            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+          </StyledCell>
         </StyledRow>
-      )}
+      ))}
     </>
   )
 }

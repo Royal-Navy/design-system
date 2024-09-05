@@ -888,6 +888,96 @@ describe('DataGrid', () => {
         ).not.toBeInTheDocument()
       })
     })
+
+    it('renders multiple fullSpanColumn cells correctly', () => {
+      const columnsWithMultipleFullSpan = [
+        {
+          accessorKey: 'first',
+          header: 'First',
+          cell: (info) => info.getValue(),
+        },
+        {
+          accessorKey: 'second',
+          header: 'Second',
+          cell: (info) => info.getValue(),
+        },
+        {
+          id: 'fullSpan1',
+          header: 'Full Span 1',
+          cell: () => 'Full Span Content 1',
+          meta: { fullSpanColumn: true },
+        },
+        {
+          id: 'fullSpan2',
+          header: 'Full Span 2',
+          cell: () => 'Full Span Content 2',
+          meta: { fullSpanColumn: true },
+        },
+      ]
+
+      const dataWithMultipleFullSpan = [
+        {
+          first: 'a1',
+          second: 'a2',
+        },
+        {
+          first: 'b1',
+          second: 'b2',
+        },
+      ]
+
+      render(
+        <DataGrid
+          data={dataWithMultipleFullSpan}
+          columns={columnsWithMultipleFullSpan}
+        />
+      )
+
+      const rows = screen.getAllByRole('row')
+
+      // Expected: 1 header row + 2 * (1 normal row + 2 fullSpan rows) = 7 rows total
+      expect(rows).toHaveLength(7)
+
+      // Check normal rows
+      expect(within(rows[1]).getByText('a1')).toBeInTheDocument()
+      expect(within(rows[1]).getByText('a2')).toBeInTheDocument()
+      expect(within(rows[4]).getByText('b1')).toBeInTheDocument()
+      expect(within(rows[4]).getByText('b2')).toBeInTheDocument()
+
+      // Check fullSpan rows
+      expect(
+        within(rows[2]).getByText('Full Span Content 1')
+      ).toBeInTheDocument()
+      expect(
+        within(rows[3]).getByText('Full Span Content 2')
+      ).toBeInTheDocument()
+      expect(
+        within(rows[5]).getByText('Full Span Content 1')
+      ).toBeInTheDocument()
+      expect(
+        within(rows[6]).getByText('Full Span Content 2')
+      ).toBeInTheDocument()
+
+      // Check that fullSpan cells are in separate rows
+      expect(
+        within(rows[2]).queryByText('Full Span Content 2')
+      ).not.toBeInTheDocument()
+      expect(
+        within(rows[3]).queryByText('Full Span Content 1')
+      ).not.toBeInTheDocument()
+      expect(
+        within(rows[5]).queryByText('Full Span Content 2')
+      ).not.toBeInTheDocument()
+      expect(
+        within(rows[6]).queryByText('Full Span Content 1')
+      ).not.toBeInTheDocument()
+
+      // Check colspan for fullSpan cells (should be 2 for normal columns)
+      const fullSpanCells = screen.getAllByText(/Full Span Content [12]/)
+      fullSpanCells.forEach((cell) => {
+        expect(cell.closest('td')).toHaveAttribute('colspan', '2')
+      })
+    })
   })
 
   describe('with column filtering', () => {

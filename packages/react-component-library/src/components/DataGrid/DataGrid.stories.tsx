@@ -520,6 +520,8 @@ const fullSpanColumnData = data.slice(0, 3).map((item) => {
     ...item,
     fullSpanColumn:
       'This is a full span column, it renders within a seperate row.',
+    fullSpanColumn2:
+      'This is a another full span column, it renders within a seperate row.',
   }
 })
 
@@ -556,6 +558,16 @@ FullSpanColumn.args = {
       cell: (info) => {
         const value = info.getValue() as string
         return <h2>{value}</h2>
+      },
+    },
+    {
+      accessorKey: 'fullSpanColumn2',
+      meta: {
+        fullSpanColumn: true,
+      },
+      cell: (info) => {
+        const value = info.getValue() as string
+        return <p>{value}</p>
       },
     },
   ],
