@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.20.1](https://github.com/Royal-Navy/design-system/compare/4.20.0...4.20.1) (2024-09-05)
+
+### Bug Fixes
+
+- **DataGrid:** Handle multiple fullSpanColumn cols ([e35bac1](https://github.com/Royal-Navy/design-system/commit/e35bac1345df023dbd68bab6ad4ddb6b171c9fdd))
+
 # [4.20.0](https://github.com/Royal-Navy/design-system/compare/4.19.1...4.20.0) (2024-09-05)
 
 ### Features
