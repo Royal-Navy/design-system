@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.20.0](https://github.com/Royal-Navy/design-system/compare/4.19.1...4.20.0) (2024-09-05)
+
+### Features
+
+- **DataGrid:** Add basic column filtering ([db593db](https://github.com/Royal-Navy/design-system/commit/db593db21d1af3ee7f3041101d5e7514ef39c22d))
+- **DataGrid:** Add onColumnFiltersChange handler ([adeb2eb](https://github.com/Royal-Navy/design-system/commit/adeb2eb9c7d48b76ea963b4b4ab4998a6e152b6f))
+
 ## [4.19.1](https://github.com/Royal-Navy/design-system/compare/4.19.0...4.19.1) (2024-09-04)
 
 **Note:** Version bump only for package royal-navy-design-system
