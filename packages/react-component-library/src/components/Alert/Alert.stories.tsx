@@ -78,3 +78,20 @@ HideDismiss.args = {
   variant: ALERT_VARIANT.INFO,
 }
 HideDismiss.storyName = 'Hide dismiss button'
+
+export const HideBorder: StoryFn<typeof Alert> = ({
+  title,
+  children,
+  variant,
+}) => (
+  <Alert title={title} variant={variant} hideBorder>
+    {children}
+  </Alert>
+)
+HideBorder.args = {
+  title: 'Example Title',
+  children:
+    'The alert description provides context to the user, bringing attention to information that needs to be consumed.',
+  variant: ALERT_VARIANT.INFO,
+}
+HideBorder.storyName = 'Hide border'

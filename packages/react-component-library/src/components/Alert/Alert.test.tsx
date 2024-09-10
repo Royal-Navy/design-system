@@ -200,4 +200,15 @@ describe('Alert', () => {
       expect(within(alert).getByTestId('state-icon')).toBeInTheDocument()
     })
   })
+
+  describe('when hideBorder prop is provided', () => {
+    beforeEach(() => {
+      render(<Alert hideBorder>Description</Alert>)
+    })
+
+    it('should not render the border', () => {
+      const alert = screen.getByRole('alert')
+      expect(alert).toHaveStyle('border: none')
+    })
+  })
 })

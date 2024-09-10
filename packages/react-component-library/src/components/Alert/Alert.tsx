@@ -54,6 +54,10 @@ export interface AlertProps {
    * Optional flag to hide the Dismiss button.
    */
   hideDismiss?: boolean
+  /**
+   * Optional flag to render without a border.
+   */
+  hideBorder?: boolean
 }
 
 export const Alert = ({
@@ -62,6 +66,7 @@ export const Alert = ({
   title,
   variant = ALERT_VARIANT.INFO,
   hideDismiss = false,
+  hideBorder = false,
   ...rest
 }: AlertProps) => {
   const { open, handleOnClose } = useOpenClose(true, onClose)
@@ -78,6 +83,7 @@ export const Alert = ({
       aria-describedby={descriptionId}
       aria-labelledby={title ? titleId : undefined}
       role="alert"
+      $hideBorder={hideBorder}
       {...rest}
     >
       <StyledIcon
