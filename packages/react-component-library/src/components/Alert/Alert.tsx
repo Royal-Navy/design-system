@@ -77,7 +77,6 @@ export const Alert = ({
       $variant={variant}
       aria-describedby={descriptionId}
       aria-labelledby={title ? titleId : undefined}
-      data-testid="alert"
       role="alert"
       {...rest}
     >
@@ -90,20 +89,14 @@ export const Alert = ({
       </StyledIcon>
       <StyledContent data-testid="content">
         {title && (
-          <StyledTitle
-            $variant={variant}
-            data-testid="content-title"
-            id={titleId}
-          >
+          <StyledTitle $variant={variant} id={titleId}>
             {title}
           </StyledTitle>
         )}
-        <StyledDescription data-testid="content-description" id={descriptionId}>
-          {children}
-        </StyledDescription>
+        <StyledDescription id={descriptionId}>{children}</StyledDescription>
         <StyledFooter>
           {!hideDismiss && (
-            <StyledCloseButton onClick={handleOnClose} data-testid="close">
+            <StyledCloseButton onClick={handleOnClose}>
               Dismiss
             </StyledCloseButton>
           )}
