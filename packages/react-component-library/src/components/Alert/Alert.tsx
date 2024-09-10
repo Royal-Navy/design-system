@@ -50,6 +50,14 @@ export interface AlertProps {
    * Type of component to display (style varies accordingly).
    */
   variant?: AlertVariantType
+  /**
+   * Optional flag to hide the Dismiss button.
+   */
+  hideDismiss?: boolean
+  /**
+   * Optional flag to render without a border.
+   */
+  hideBorder?: boolean
 }
 
 export const Alert = ({
@@ -57,6 +65,8 @@ export const Alert = ({
   onClose,
   title,
   variant = ALERT_VARIANT.INFO,
+  hideDismiss = false,
+  hideBorder = false,
   ...rest
 }: AlertProps) => {
   const { open, handleOnClose } = useOpenClose(true, onClose)
@@ -72,8 +82,8 @@ export const Alert = ({
       $variant={variant}
       aria-describedby={descriptionId}
       aria-labelledby={title ? titleId : undefined}
-      data-testid="alert"
       role="alert"
+      $hideBorder={hideBorder}
       {...rest}
     >
       <StyledIcon
@@ -85,21 +95,17 @@ export const Alert = ({
       </StyledIcon>
       <StyledContent data-testid="content">
         {title && (
-          <StyledTitle
-            $variant={variant}
-            data-testid="content-title"
-            id={titleId}
-          >
+          <StyledTitle $variant={variant} id={titleId}>
             {title}
           </StyledTitle>
         )}
-        <StyledDescription data-testid="content-description" id={descriptionId}>
-          {children}
-        </StyledDescription>
+        <StyledDescription id={descriptionId}>{children}</StyledDescription>
         <StyledFooter>
-          <StyledCloseButton onClick={handleOnClose} data-testid="close">
-            Dismiss
-          </StyledCloseButton>
+          {!hideDismiss && (
+            <StyledCloseButton onClick={handleOnClose}>
+              Dismiss
+            </StyledCloseButton>
+          )}
         </StyledFooter>
       </StyledContent>
     </StyledAlert>
