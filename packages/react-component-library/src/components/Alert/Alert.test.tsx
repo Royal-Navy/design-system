@@ -203,4 +203,20 @@ describe('Alert', () => {
       )
     })
   })
+
+  describe('when hideDismiss prop is provided', () => {
+    beforeEach(() => {
+      wrapper = render(<Alert hideDismiss>Description</Alert>)
+    })
+
+    it('should not render the close button', () => {
+      expect(wrapper.queryByTestId('close')).not.toBeInTheDocument()
+    })
+
+    it('should still render the alert content', () => {
+      expect(wrapper.getByTestId('content-description')).toHaveTextContent(
+        'Description'
+      )
+    })
+  })
 })

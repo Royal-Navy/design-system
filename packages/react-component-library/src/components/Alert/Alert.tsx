@@ -50,6 +50,10 @@ export interface AlertProps {
    * Type of component to display (style varies accordingly).
    */
   variant?: AlertVariantType
+  /**
+   * Optional flag to hide the Dismiss button.
+   */
+  hideDismiss?: boolean
 }
 
 export const Alert = ({
@@ -57,6 +61,7 @@ export const Alert = ({
   onClose,
   title,
   variant = ALERT_VARIANT.INFO,
+  hideDismiss = false,
   ...rest
 }: AlertProps) => {
   const { open, handleOnClose } = useOpenClose(true, onClose)
@@ -97,9 +102,11 @@ export const Alert = ({
           {children}
         </StyledDescription>
         <StyledFooter>
-          <StyledCloseButton onClick={handleOnClose} data-testid="close">
-            Dismiss
-          </StyledCloseButton>
+          {!hideDismiss && (
+            <StyledCloseButton onClick={handleOnClose} data-testid="close">
+              Dismiss
+            </StyledCloseButton>
+          )}
         </StyledFooter>
       </StyledContent>
     </StyledAlert>
