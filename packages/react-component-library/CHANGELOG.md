@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.21.0](https://github.com/Royal-Navy/design-system/compare/4.20.1...4.21.0) (2024-09-11)
+
+### Features
+
+- **Alert:** Add ability to hide Dismiss button ([231a8ed](https://github.com/Royal-Navy/design-system/commit/231a8ed0ac492be2892100c3a4db00f85cdc00ef))
+- **Alert:** Add hidden border variant ([28ba144](https://github.com/Royal-Navy/design-system/commit/28ba144b0057d4d625297860e91ca6f60b6b574e))
+
 ## [4.20.1](https://github.com/Royal-Navy/design-system/compare/4.20.0...4.20.1) (2024-09-05)
 
 ### Bug Fixes
