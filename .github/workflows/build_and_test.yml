@@ -240,14 +240,14 @@ jobs:
           echo "$CHROMATIC_SHA" > packages/react-component-library/.static_storybook/sha
           echo "$CHROMATIC_BRANCH" > packages/react-component-library/.static_storybook/branch
           echo "$CHROMATIC_SLUG" > packages/react-component-library/.static_storybook/slug
-          cp -r packages/react-component-library/.static_storybook /tmp/
+          mv -r packages/react-component-library/.static_storybook /tmp
 
       - name: Upload Storybook artefact
         uses: actions/upload-artifact@v4
         with:
           if-no-files-found: error
           name: storybook-static
-          path: /tmp/.static_storybook
+          path: /tmp/.static_storybook/
 
   Test_a11y:
     runs-on: ubuntu-latest
