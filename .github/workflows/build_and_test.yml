@@ -244,6 +244,7 @@ jobs:
       - name: Upload Storybook artefact
         uses: actions/upload-artifact@v4
         with:
+          if-no-files-found: error
           name: storybook-static
           path: packages/react-component-library/.static_storybook
 
