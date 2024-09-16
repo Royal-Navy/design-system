@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { mq, spacing, shadow } from '@royalnavy/design-tokens'
+import { spacing, shadow, mq } from '@royalnavy/design-tokens'
 
 import { AlertVariantType } from '../Alert'
 
@@ -16,6 +16,7 @@ import {
 interface StyledAlertProps {
   $variant: AlertVariantType
   $hideBorder?: boolean
+  $hideDismiss?: boolean
 }
 
 const STATE_VARIANT_MAP = {
@@ -42,17 +43,20 @@ const getBorderStyles = ({ $hideBorder }: StyledAlertProps) => {
 }
 
 export const StyledAlert = styled.div<StyledAlertProps>`
-  background-color: ${ALERT_BACKGROUND_COLOR};
-  padding: ${spacing('4')} ${spacing('4')} ${spacing('4')} ${spacing('6')};
   position: relative;
   display: flex;
-  align-items: flex-start;
-
-  ${getBorderStyles}
+  align-items: stretch;
+  flex-wrap: wrap;
+  background-color: ${ALERT_BACKGROUND_COLOR};
+  padding: ${spacing('4')};
+  padding-left: ${spacing('10')};
 
   ${mq({ gte: 'xs' })`
-    padding-right: ${spacing('18')};
+    flex-wrap: unset;
+    padding: ${spacing('4')};
   `}
+
+  ${getBorderStyles}
 
   &::before {
     content: '';

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoint, fontSize, spacing } from '@royalnavy/design-tokens'
+import { fontSize, spacing, mq } from '@royalnavy/design-tokens'
 
 import {
   ALERT_CLOSE_COLOR,
@@ -9,26 +9,22 @@ import {
 } from '../constants'
 
 export const StyledCloseButton = styled.button`
-  margin-left: auto;
+  flex-basis: 100%;
   border: none;
   font-size: ${fontSize('base')};
   color: ${ALERT_CLOSE_COLOR};
   font-weight: 600;
   transition: all 0.3s;
   border-radius: 2px;
-  padding: ${spacing('4')} ${spacing('10')};
-  background-color: ${ALERT_CLOSE_BACKGROUND_COLOR_HOVER};
+  padding: ${spacing('4')};
+  margin-top: ${spacing('4')};
+  background-color: ${ALERT_CLOSE_BACKGROUND_COLOR};
+  text-align: center;
 
-  @media only screen and (min-width: ${breakpoint('xs').breakpoint}) {
-    position: absolute;
-    background-color: ${ALERT_CLOSE_BACKGROUND_COLOR};
-    margin-top: 0;
-    top: ${spacing('4')};
-    right: ${spacing('4')};
-    bottom: ${spacing('4')};
-    padding: ${spacing('2')};
-    width: ${spacing('17')};
-  }
+  ${mq({ gte: 'xs' })`
+    flex-basis: auto;
+    width: ${spacing('18')};
+  `}
 
   &:hover {
     background-color: ${ALERT_CLOSE_BACKGROUND_COLOR_HOVER};
