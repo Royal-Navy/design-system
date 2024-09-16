@@ -241,6 +241,7 @@ jobs:
           echo "$CHROMATIC_BRANCH" > packages/react-component-library/.static_storybook/branch
           echo "$CHROMATIC_SLUG" > packages/react-component-library/.static_storybook/slug
           mv packages/react-component-library/.static_storybook /tmp
+          ls -l /tmp/.static_storybook
 
       - name: Upload Storybook artefact
         uses: actions/upload-artifact@v4
