@@ -248,7 +248,7 @@ jobs:
         with:
           if-no-files-found: error
           name: storybook-static
-          path: /tmp/.static_storybook/
+          path: /tmp/.static_storybook
 
   Test_a11y:
     runs-on: ubuntu-latest
