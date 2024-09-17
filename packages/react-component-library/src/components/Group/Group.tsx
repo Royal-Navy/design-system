@@ -66,7 +66,7 @@ export const Group = ({
   className,
   el = 'div',
   gap = '0',
-  align = 'stretch',
+  align = 'center',
   justify = 'flex-start',
   wrap = 'wrap',
   grow = false,
