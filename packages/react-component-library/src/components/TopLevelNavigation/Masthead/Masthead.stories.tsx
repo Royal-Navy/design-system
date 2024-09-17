@@ -8,6 +8,7 @@ import {
   IconSettings,
   IconHome,
 } from '@royalnavy/icon-library'
+import { spacing } from '@royalnavy/design-tokens'
 
 import { Link } from '../../Link'
 import {
@@ -20,6 +21,8 @@ import {
 import { Notification, Notifications } from '../NotificationPanel'
 import { MASTHEAD_SUBCOMPONENT } from './constants'
 import { ClassificationBar } from '../../ClassificationBar'
+
+import { TextE } from '../../Text'
 
 const StyledContainer = styled.div`
   min-height: 10rem;
@@ -322,3 +325,22 @@ WithClassificationBar.args = {
   classificationBar: <ClassificationBar />,
 }
 WithClassificationBar.storyName = 'Classification bar'
+
+const StyledClientComponent = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-right: ${spacing('2')};
+`
+
+export const RightSlot = Default.bind({})
+RightSlot.storyName = 'Right slot'
+RightSlot.args = {
+  ...Default.args,
+  rightSlot: (
+    <StyledClientComponent>
+      <TextE>Arbitrary text</TextE>
+    </StyledClientComponent>
+  ),
+}
