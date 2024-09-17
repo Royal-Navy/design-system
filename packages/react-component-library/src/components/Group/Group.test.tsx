@@ -10,7 +10,7 @@ describe('Group', () => {
     expect(container.firstChild).toHaveStyleRule('display', 'flex')
     expect(container.firstChild).toHaveStyleRule('flex-direction', 'row')
     expect(container.firstChild).toHaveStyleRule('gap', spacing('0'))
-    expect(container.firstChild).toHaveStyleRule('align-items', 'stretch')
+    expect(container.firstChild).toHaveStyleRule('align-items', 'center')
     expect(container.firstChild).toHaveStyleRule(
       'justify-content',
       'flex-start'
