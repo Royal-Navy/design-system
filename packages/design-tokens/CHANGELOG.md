@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.21.1](https://github.com/Royal-Navy/design-system/compare/4.21.0...4.21.1) (2024-09-17)
+
+**Note:** Version bump only for package @royalnavy/design-tokens
+
 # [4.21.0](https://github.com/Royal-Navy/design-system/compare/4.20.1...4.21.0) (2024-09-11)
 
 **Note:** Version bump only for package @royalnavy/design-tokens
