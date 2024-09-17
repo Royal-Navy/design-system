@@ -1,12 +1,49 @@
 version: 2
 updates:
-  - package-ecosystem: npm
+  - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: weekly
-    open-pull-requests-limit: 5
+      interval: 'monthly'
+      time: '00:00'
+      timezone: 'Europe/London'
+    versioning-strategy: 'increase'
     labels:
       - 'Type: Dependencies'
+    groups:
+      react:
+        patterns:
+          - 'react*'
+          - '@types/react*'
+      testing:
+        patterns:
+          - '@testing-library/*'
+          - 'jest*'
+          - '@types/jest'
+      storybook:
+        patterns:
+          - '@storybook/*'
+          - 'storybook'
+      babel:
+        patterns:
+          - '@babel/*'
+      typescript:
+        patterns:
+          - 'typescript'
+          - '@types/*'
+      styling:
+        patterns:
+          - 'styled-components'
+          - '@types/styled-components'
+          - 'styled-theming'
+          - '@types/styled-theming'
+      bundler:
+        patterns:
+          - 'webpack*'
+      other-minor-and-patch:
+        update-types:
+          - 'minor'
+          - 'patch'
+    open-pull-requests-limit: 3
     commit-message:
-      prefix: chore(Security)
-    rebase-strategy: auto
+      prefix: 'chore(Security)'
+    rebase-strategy: 'auto'
