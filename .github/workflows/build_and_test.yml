@@ -248,6 +248,7 @@ jobs:
         with:
           if-no-files-found: error
           name: storybook-static
+          include-hidden-files: true
           path: /tmp/.static_storybook
 
   Test_a11y:
