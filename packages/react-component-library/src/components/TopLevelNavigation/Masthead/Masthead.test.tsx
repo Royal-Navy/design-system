@@ -129,6 +129,15 @@ describe('Masthead', () => {
     })
   })
 
+  describe('custom client component', () => {
+    it('should render custom client component', () => {
+      wrapper = render(
+        <Masthead {...props} customClientComponent={<div>Hello world</div>} />
+      )
+      expect(wrapper.getByText('Hello world')).toBeInTheDocument()
+    })
+  })
+
   describe('inline nav', () => {
     it('should render nav inline', () => {
       wrapper = render(<Masthead {...props} hasInlineNav />)
