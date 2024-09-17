@@ -246,6 +246,8 @@ jobs:
         with:
           name: storybook-static
           path: packages/react-component-library/.static_storybook
+          if-no-files-found: error
+          include-hidden-files: true
 
   Test_a11y:
     runs-on: ubuntu-latest
