@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { spacing } from '@royalnavy/design-tokens'
+import { spacing, mq } from '@royalnavy/design-tokens'
 
 import { AlertVariantType } from '../Alert'
 
@@ -24,8 +24,12 @@ const ICON_VARIANT_MAP = {
 
 export const StyledIcon = styled.div<StyledIconProps>`
   display: inline-flex;
-  align-self: flex-start;
+  align-self: stretch;
+  flex: 0 0 auto;
   color: ${({ $variant }) => ICON_VARIANT_MAP[$variant]};
-  padding: ${spacing('4')} ${spacing('5')} ${spacing('4')} ${spacing('6')};
   transform: translateY(1px);
+
+  ${mq({ gte: 'xs' })`
+    padding: ${spacing('4')} ${spacing('4')} 0 ${spacing('8')};
+  `}
 `

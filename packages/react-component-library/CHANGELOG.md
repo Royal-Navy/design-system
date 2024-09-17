@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.21.1](https://github.com/Royal-Navy/design-system/compare/4.21.0...4.21.1) (2024-09-17)
+
+### Bug Fixes
+
+- **Alert:** Prevent constained text with hideDismiss ([2ad5ab8](https://github.com/Royal-Navy/design-system/commit/2ad5ab8c3d6416927a2afa0e6b0e721f0219b669))
+
 # [4.21.0](https://github.com/Royal-Navy/design-system/compare/4.20.1...4.21.0) (2024-09-11)
 
 ### Features

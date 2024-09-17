@@ -13,7 +13,6 @@ import { StyledIcon } from './partials/StyledIcon'
 import { StyledContent } from './partials/StyledContent'
 import { StyledTitle } from './partials/StyledTitle'
 import { StyledDescription } from './partials/StyledDescription'
-import { StyledFooter } from './partials/StyledFooter'
 import { StyledCloseButton } from './partials/StyledCloseButton'
 import { useExternalId } from '../../hooks/useExternalId'
 import { ValueOf } from '../../helpers'
@@ -84,6 +83,7 @@ export const Alert = ({
       aria-labelledby={title ? titleId : undefined}
       role="alert"
       $hideBorder={hideBorder}
+      $hideDismiss={hideDismiss}
       {...rest}
     >
       <StyledIcon
@@ -100,14 +100,10 @@ export const Alert = ({
           </StyledTitle>
         )}
         <StyledDescription id={descriptionId}>{children}</StyledDescription>
-        <StyledFooter>
-          {!hideDismiss && (
-            <StyledCloseButton onClick={handleOnClose}>
-              Dismiss
-            </StyledCloseButton>
-          )}
-        </StyledFooter>
       </StyledContent>
+      {!hideDismiss && (
+        <StyledCloseButton onClick={handleOnClose}>Dismiss</StyledCloseButton>
+      )}
     </StyledAlert>
   )
 }
