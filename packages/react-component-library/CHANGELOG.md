@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.21.2](https://github.com/Royal-Navy/design-system/compare/4.21.1...4.21.2) (2024-09-18)
+
+### Bug Fixes
+
+- **Group:** Adjust align prop default value ([5e95748](https://github.com/Royal-Navy/design-system/commit/5e957486d9ca97f4e029a0067a66fc7e3d3e6099))
+
 ## [4.21.1](https://github.com/Royal-Navy/design-system/compare/4.21.0...4.21.1) (2024-09-17)
 
 ### Bug Fixes
