@@ -76,6 +76,10 @@ export interface MastheadProps {
    * Optional jsx to render the classification bar above the masthead.
    */
   classificationBar?: React.ReactElement<ClassificationProps>
+  /**
+   * Optional jsx to insert before the icons
+   */
+  rightSlot?: React.ReactNode
 }
 
 function getServiceName(
@@ -113,6 +117,7 @@ export const Masthead = ({
   title,
   user,
   classificationBar,
+  rightSlot,
   ...rest
 }: MastheadProps) => {
   const searchButtonRef = useRef<HTMLButtonElement>(null)
@@ -150,7 +155,7 @@ export const Masthead = ({
             {nav}
           </StyledInlineNav>
         ) : null}
-
+        {rightSlot}
         <StyledOptions
           $withInlineNav={hasInlineNav}
           data-testid="masthead-options"
