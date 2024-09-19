@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.22.0](https://github.com/Royal-Navy/design-system/compare/4.21.2...4.22.0) (2024-09-19)
+
+### Features
+
+- **Masthead:** Add slot for custom client jsx ([#3888](https://github.com/Royal-Navy/design-system/issues/3888)) ([376b147](https://github.com/Royal-Navy/design-system/commit/376b147017f085f63348c8237d7d0ead918f2b98))
+
 ## [4.21.2](https://github.com/Royal-Navy/design-system/compare/4.21.1...4.21.2) (2024-09-18)
 
 ### Bug Fixes
