@@ -35,7 +35,7 @@ interface ButtonBaseProps extends Omit<ComponentWithClass, 'children'> {
   /**
    * Optional handler called when the component is clicked.
    */
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>
   /**
    * Size of the component.
    */
