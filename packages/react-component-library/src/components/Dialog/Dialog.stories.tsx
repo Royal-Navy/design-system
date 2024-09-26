@@ -65,10 +65,10 @@ const Example = (props: DialogProps) => {
     <StyledWrapper>
       <Button onClick={() => ref?.current?.open()}>Open Dialog</Button>
       <Dialog
-        {...props}
         ref={ref}
         onCancel={dismissDialog}
         onConfirm={dismissDialog}
+        {...props}
       />
     </StyledWrapper>
   )
@@ -98,4 +98,15 @@ RichDescription.args = {
       Support Arbitrary JSX for <strong>rich</strong> description text.
     </div>
   ),
+}
+
+export const AsyncAction = Template.bind({})
+AsyncAction.storyName = 'Async action'
+AsyncAction.args = {
+  title: 'Example Title',
+  description: 'Example description',
+  onConfirm: () =>
+    new Promise((resolve) => {
+      setTimeout(resolve, 2000)
+    }),
 }

@@ -1,6 +1,11 @@
 import React from 'react'
 
-import { render, RenderResult, fireEvent } from '@testing-library/react'
+import {
+  render,
+  RenderResult,
+  fireEvent,
+  waitFor,
+} from '@testing-library/react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
 import { Dialog } from '.'
@@ -152,6 +157,55 @@ describe('Dialog', () => {
         'id',
         initialDescriptionId
       )
+    })
+  })
+
+  describe('when onConfirm is async and the Confirm button is clicked', () => {
+    let resolvePromise: () => void
+
+    const onConfirmMock: (
+      event: React.MouseEvent<HTMLButtonElement>
+    ) => Promise<void> = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          resolvePromise = resolve
+        })
+    )
+
+    beforeEach(() => {
+      wrapper = render(
+        <Dialog
+          title={title}
+          description={description}
+          onConfirm={onConfirmMock}
+          onCancel={onCancel}
+          isOpen
+        />
+      )
+
+      fireEvent(
+        wrapper.getByTestId('modal-primary'),
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+        })
+      )
+    })
+
+    it('renders the buttons', async () => {
+      expect(await wrapper.findByTestId('loading-icon')).toBeInTheDocument()
+
+      const buttons = wrapper.getAllByRole('button')
+      expect(buttons[0]).toBeDisabled()
+      expect(buttons[1]).toBeDisabled()
+
+      resolvePromise()
+
+      await waitFor(() => {
+        expect(wrapper.queryByTestId('loading-icon')).not.toBeInTheDocument()
+        expect(buttons[0]).toBeEnabled()
+        expect(buttons[1]).toBeEnabled()
+      })
     })
   })
 })

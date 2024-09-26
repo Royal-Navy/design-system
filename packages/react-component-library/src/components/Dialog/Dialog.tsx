@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { ButtonProps } from '../Button'
@@ -31,7 +31,9 @@ export interface DialogProps
   /**
    * Optional handler called when the Confirm button is clicked.
    */
-  onConfirm?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onConfirm?: (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => void | Promise<void>
   /**
    * Optional text title to display at the top of the component.
    *
@@ -53,16 +55,24 @@ export const Dialog = React.forwardRef<ModalImperativeHandle, DialogProps>(
     }: DialogProps,
     ref
   ) => {
+    const [isLoading, setIsLoading] = useState(false)
+
     const confirmButton: ButtonProps = {
-      onClick: onConfirm,
+      onClick: (event) => {
+        setIsLoading(true)
+
+        Promise.resolve(onConfirm?.(event)).finally(() => setIsLoading(false))
+      },
       children: 'Confirm',
       variant: isDanger ? 'danger' : 'primary',
+      isLoading,
     }
 
     const cancelButton: ButtonProps = {
       onClick: onCancel,
       children: 'Cancel',
       variant: 'secondary',
+      isDisabled: isLoading,
     }
 
     const titleId = useExternalId('dialog-title')
