@@ -62,7 +62,7 @@
     "indent": 4
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.4.4",
+    "@axe-core/playwright": "^4.10.0",
     "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -75,7 +75,7 @@
     "@babel/preset-typescript": "^7.8.3",
     "@faker-js/faker": "^8.4.1",
     "@happy-dom/jest-environment": "^14.10.1",
-    "@playwright/test": "^1.32.3",
+    "@playwright/test": "^1.47.2",
     "@royalnavy/eslint-config-react": "^4.22.0",
     "@storybook/addon-a11y": "^8.3.1",
     "@storybook/addon-actions": "^8.3.1",
@@ -108,7 +108,7 @@
     "@types/testing-library__react": "^10.0.1",
     "@types/uuid": "^8.0.0",
     "@welldone-software/why-did-you-render": "^7.0.1",
-    "axe-playwright": "^2.0.1",
+    "axe-playwright": "^2.0.3",
     "babel-jest": "^29.0.3",
     "babel-loader": "^9.0.1",
     "babel-plugin-jsx-remove-data-test-id": "^3.0.0",
