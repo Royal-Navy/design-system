@@ -254,4 +254,19 @@ describe('TextInput', () => {
       )
     })
   })
+
+  describe('when autoComplete is set to off', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <TextInput autoComplete="off" label="label" name="name" />
+      )
+    })
+
+    it('sets autocomplete to off', () => {
+      expect(wrapper.getByLabelText('label')).toHaveAttribute(
+        'autocomplete',
+        'off'
+      )
+    })
+  })
 })

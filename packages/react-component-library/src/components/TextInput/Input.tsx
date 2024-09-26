@@ -7,6 +7,7 @@ import { useExternalId } from '../../hooks/useExternalId'
 import { useInputValue } from '../../hooks/useInputValue'
 
 export interface InputProps extends ComponentWithClass {
+  autoComplete?: string
   hasFocus: boolean
   id?: string
   isDisabled?: boolean

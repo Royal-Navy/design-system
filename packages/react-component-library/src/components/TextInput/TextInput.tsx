@@ -31,6 +31,10 @@ export interface TextInputProps
   extends ComponentWithClass,
     InputValidationProps {
   /**
+   * Toggle whether auto complete is enabled on the text input.
+   */
+  autoComplete?: string
+  /**
    * Toggle whether to auto focus the component upon initial render.
    */
   autoFocus?: boolean
