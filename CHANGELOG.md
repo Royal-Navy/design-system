@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.23.0](https://github.com/Royal-Navy/design-system/compare/4.22.1...4.23.0) (2024-09-27)
+
+### Features
+
+- **Dialog:** Handle async action ([1c22cf8](https://github.com/Royal-Navy/design-system/commit/1c22cf83161f345693e4d2d5efb7fbaaacab502f))
+- **TextInput:** Add autoComplete prop ([a7f21bd](https://github.com/Royal-Navy/design-system/commit/a7f21bd739af20205067523b2deb51f5721aefe8))
+
 ## [4.22.1](https://github.com/Royal-Navy/design-system/compare/4.22.0...4.22.1) (2024-09-27)
 
 **Note:** Version bump only for package royal-navy-design-system
