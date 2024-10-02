@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { isValidElement, useState } from 'react'
 import {
   IconInfo,
   IconWarning,
@@ -156,18 +156,28 @@ export const Toast = (props: ToastProps) => {
   )
 }
 
+type ToastContentProps = ToastProps & { message: string | JSX.Element }
+
 export const showToast = (
-  toastContent: string | (ToastProps & { message: string }),
+  toastContent: string | JSX.Element | ToastContentProps,
   duration = 4000,
   options = {}
 ) => {
   const isToastContentString = typeof toastContent === 'string'
-  const message = isToastContentString ? toastContent : toastContent.message
-  const toastContentProps = isToastContentString ? {} : toastContent
+  const isToastContentJsx = isValidElement(toastContent)
 
-  toast(message, {
-    duration,
-    ...options,
-    ...toastContentProps,
-  })
+  if (isToastContentString || isToastContentJsx) {
+    toast(toastContent, {
+      duration,
+      ...options,
+    })
+  } else {
+    const { message } = toastContent as ToastContentProps
+
+    toast(message, {
+      duration,
+      ...options,
+      ...toastContent,
+    })
+  }
 }

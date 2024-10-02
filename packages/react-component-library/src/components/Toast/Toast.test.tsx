@@ -72,3 +72,25 @@ it('sets new props when `showToast` is called with new props', async () => {
     color: color('danger', '500'),
   })
 })
+
+it('sets the message when the message is JSX', async () => {
+  setup()
+
+  const expectedNewLabel = 'JSX'
+  const expectedNewMessage = (
+    <>
+      <p>one</p>
+      <p>two</p>
+    </>
+  )
+
+  showToast({
+    label: expectedNewLabel,
+    message: expectedNewMessage,
+  })
+
+  const lastToast = await getLastToast(expectedNewLabel)
+
+  expect(within(lastToast).getByText(expectedNewLabel)).toBeInTheDocument()
+  expect(within(lastToast).getAllByRole('paragraph')).toHaveLength(2)
+})
