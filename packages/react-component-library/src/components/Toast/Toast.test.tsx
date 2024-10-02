@@ -5,63 +5,32 @@ import { render, screen } from '@testing-library/react'
 import { TOAST_APPEARANCE, Toast, showToast } from '.'
 
 const LABEL = 'Example label'
-const DESCRIPTION = 'This is an example toast message'
+const MESSAGE = 'This is an example toast message'
 
-describe('Toast', () => {
-  beforeEach(() => {
-    render(
-      <Toast
-        appearance={TOAST_APPEARANCE.INFO}
-        label={LABEL}
-        data-arbitrary="foo"
-      />
-    )
-  })
+function setup() {
+  render(
+    <Toast
+      appearance={TOAST_APPEARANCE.INFO}
+      label={LABEL}
+      data-arbitrary="foo"
+    />
+  )
+}
 
-  describe('default props', () => {
-    showToast(DESCRIPTION)
+it('renders the toast', async () => {
+  setup()
 
-    it('should spread arbitrary props', async () => {
-      expect(screen.getByTestId('wrapper')).toHaveAttribute(
-        'data-arbitrary',
-        'foo'
-      )
-    })
+  showToast(MESSAGE)
 
-    it('should set the `role` attribute to `alert`', () => {
-      expect(screen.getByTestId('wrapper')).toHaveAttribute('role', 'status')
-    })
+  const wrapper = await screen.findByRole('status')
+  expect(wrapper).toHaveAttribute('data-arbitrary', 'foo')
 
-    it('should set the `aria-labelledby` attribute to the ID of the title', () => {
-      const titleId = screen
-        ?.getByText(LABEL)
-        ?.parentElement?.getAttribute('id')
+  const titleId = screen?.getByText(LABEL)?.parentElement?.getAttribute('id')
+  expect(wrapper).toHaveAttribute('aria-labelledby', titleId)
 
-      expect(screen.getByTestId('wrapper')).toHaveAttribute(
-        'aria-labelledby',
-        titleId
-      )
-    })
+  const contentId = screen.getByText(MESSAGE).getAttribute('id')
+  expect(wrapper).toHaveAttribute('aria-describedby', contentId)
 
-    it('should set the `aria-describedby` attribute to the ID of the content', () => {
-      const contentId = screen.getByText(DESCRIPTION).getAttribute('id')
-
-      expect(screen.getByTestId('wrapper')).toHaveAttribute(
-        'aria-describedby',
-        contentId
-      )
-    })
-
-    it('should set the `aria-hidden` attribute on the state icon', () => {
-      expect(screen.getByTestId('icon')).toHaveAttribute('aria-hidden', 'true')
-    })
-
-    it('renders the toast to the DOM', () => {
-      expect(screen.queryByTestId('wrapper')).toBeInTheDocument()
-    })
-
-    it('displays the label text', () => {
-      expect(screen.queryByText(LABEL)).toBeInTheDocument()
-    })
-  })
+  expect(screen.getByTestId('icon')).toHaveAttribute('aria-hidden', 'true')
+  expect(screen.getByText(LABEL)).toBeInTheDocument()
 })
