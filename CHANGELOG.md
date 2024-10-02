@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.23.3](https://github.com/Royal-Navy/design-system/compare/4.23.2...4.23.3) (2024-10-02)
+
+### Bug Fixes
+
+- **Toast:** Add JSX type ([1545155](https://github.com/Royal-Navy/design-system/commit/15451555cdc41226e4d86bb337d6c9fe1b6fff9d))
+
 ## [4.23.2](https://github.com/Royal-Navy/design-system/compare/4.23.1...4.23.2) (2024-10-02)
 
 ### Bug Fixes
