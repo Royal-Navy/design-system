@@ -33,7 +33,7 @@ const ToastButton = (props: ToastProps) => {
       <Toast {...props} />
       <Button
         onClick={(_: React.FormEvent<HTMLButtonElement>) => {
-          showToast(DESCRIPTION)
+          showToast({ label: 'another', message: DESCRIPTION })
         }}
       >
         Show Toast

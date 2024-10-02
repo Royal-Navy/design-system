@@ -6,7 +6,12 @@ import {
   IconCheckCircle,
 } from '@royalnavy/icon-library'
 import { spacing, zIndex } from '@royalnavy/design-tokens'
-import { useToaster, toast, resolveValue } from 'react-hot-toast'
+import {
+  useToaster,
+  toast,
+  resolveValue,
+  Toast as HotToast,
+} from 'react-hot-toast'
 
 import { StyledToast } from './partials/StyledToast'
 import { StyledHeader } from './partials/StyledHeader'
@@ -86,8 +91,10 @@ export const Toast = (props: ToastProps) => {
         zIndex: zIndex('overlay', 999),
       }}
     >
-      {toasts.map((item) => {
+      {toasts.map((item: HotToast & ToastProps) => {
         const { id, height = 0, visible, message, ariaProps } = item
+        const toastAppearance = item.appearance ?? appearance
+        const toastLabel = item.label ?? label
 
         const offset = calculateOffset(item, {
           reverseOrder: true,
@@ -111,7 +118,7 @@ export const Toast = (props: ToastProps) => {
             ref={ref}
           >
             <StyledToast
-              $appearance={appearance}
+              $appearance={toastAppearance}
               aria-labelledby={message ? titleId : undefined}
               aria-describedby={message ? descriptionId : undefined}
               data-testid="wrapper"
@@ -120,10 +127,10 @@ export const Toast = (props: ToastProps) => {
             >
               <StyledHeader>
                 <StyledTitle id={titleId}>
-                  {label && (
+                  {toastLabel && (
                     <StyledLabel>
                       <Icon aria-hidden data-testid="icon" />
-                      {label}
+                      {toastLabel}
                     </StyledLabel>
                   )}
                   <StyledTime>{time}</StyledTime>
@@ -149,9 +156,18 @@ export const Toast = (props: ToastProps) => {
   )
 }
 
-export const showToast = (message: string, duration = 4000, options = {}) => {
+export const showToast = (
+  toastContent: string | (ToastProps & { message: string }),
+  duration = 4000,
+  options = {}
+) => {
+  const isToastContentString = typeof toastContent === 'string'
+  const message = isToastContentString ? toastContent : toastContent.message
+  const toastContentProps = isToastContentString ? {} : toastContent
+
   toast(message, {
     duration,
     ...options,
+    ...toastContentProps,
   })
 }
