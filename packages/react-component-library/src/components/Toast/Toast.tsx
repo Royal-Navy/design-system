@@ -95,6 +95,8 @@ export const Toast = (props: ToastProps) => {
         const { id, height = 0, visible, message, ariaProps } = item
         const toastAppearance = item.appearance ?? appearance
         const toastLabel = item.label ?? label
+        const toastTitleId = `${titleId}-${item.id}`
+        const toastDescriptionId = `${descriptionId}-${item.id}`
 
         const offset = calculateOffset(item, {
           reverseOrder: true,
@@ -119,14 +121,14 @@ export const Toast = (props: ToastProps) => {
           >
             <StyledToast
               $appearance={toastAppearance}
-              aria-labelledby={message ? titleId : undefined}
-              aria-describedby={message ? descriptionId : undefined}
+              aria-labelledby={toastTitleId}
+              aria-describedby={message ? toastDescriptionId : undefined}
               data-testid="wrapper"
               {...rest}
               {...ariaProps}
             >
               <StyledHeader>
-                <StyledTitle id={titleId}>
+                <StyledTitle id={toastTitleId}>
                   {toastLabel && (
                     <StyledLabel>
                       <Icon aria-hidden data-testid="icon" />
@@ -144,7 +146,7 @@ export const Toast = (props: ToastProps) => {
                 </StyledButton>
               </StyledHeader>
               <StyledContent>
-                <StyledDescription id={descriptionId}>
+                <StyledDescription id={toastDescriptionId}>
                   {resolveValue(message, item)}
                 </StyledDescription>
               </StyledContent>
