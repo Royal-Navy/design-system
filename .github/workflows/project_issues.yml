@@ -1,6 +1,8 @@
-name: Project Automation - move issues
+name: Test Issue Mover in Pull Requests
 
 on:
+  pull_request:
+    types: [opened, synchronize, reopened]
   issues:
     types: [labeled]
 
@@ -9,8 +11,59 @@ env:
   PROJECT_URL: https://github.com/orgs/Royal-Navy/projects/9
 
 jobs:
+  Test_issue_mover:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create test issue
+        id: create_issue
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Test issue for PR #' + context.issue.number,
+              body: 'This is a test issue created to verify the issue mover script.',
+              labels: ['Size: Small']
+            });
+            console.log('Test issue created:', issue.data.html_url);
+            return issue.data.number;
+
+      - name: Run issue mover script
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { moveIssues } = await import('${{ github.workspace }}/scripts/github-actions/moveIssues.mjs')
+            const issue = {number: ${{ steps.create_issue.outputs.result }}}
+            await moveIssues({
+              github,
+              context: {...context, payload: {issue}},
+              core,
+            })
+
+      - name: Clean up test issue
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.create_issue.outputs.result }},
+              state: 'closed'
+            });
+            console.log('Test issue closed');
+
   Move_labeled_issues:
     runs-on: ubuntu-latest
+    if: github.event_name == 'issues'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
