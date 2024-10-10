@@ -1,4 +1,4 @@
-name: Test Issue Mover in Pull Requests
+name: Move Issues to Project Column
 
 on:
   pull_request:
@@ -32,7 +32,7 @@ jobs:
               labels: ['Size: Small']
             });
             console.log('Test issue created:', issue.data.html_url);
-            return issue.data.number;
+            return issue.data.node_id;
 
       - name: Run issue mover script
         uses: actions/github-script@v6
@@ -40,10 +40,16 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { moveIssues } = await import('${{ github.workspace }}/scripts/github-actions/moveIssues.mjs')
-            const issue = {number: ${{ steps.create_issue.outputs.result }}}
+            const issueNodeId = '${{ steps.create_issue.outputs.result }}'
+            const issue = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            issue.data.node_id = issueNodeId;
             await moveIssues({
               github,
-              context: {...context, payload: {issue}},
+              context: { ...context, payload: { issue: issue.data } },
               core,
             })
 
@@ -56,7 +62,7 @@ jobs:
             await github.rest.issues.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: ${{ steps.create_issue.outputs.result }},
+              issue_number: context.issue.number,
               state: 'closed'
             });
             console.log('Test issue closed');
