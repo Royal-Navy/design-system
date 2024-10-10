@@ -35,7 +35,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
         ref={ref}
         {...rest}
       >
-        <StyledDrawerInner>
+        <StyledDrawerInner data-testid="drawer-inner">
           <StyledDrawerButton
             onClick={handleOnClose}
             data-testid="drawer-close"
