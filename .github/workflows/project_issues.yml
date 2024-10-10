@@ -4,15 +4,21 @@ on:
   issues:
     types: [labeled]
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  PROJECT_URL: https://github.com/orgs/Royal-Navy/projects/9
+
 jobs:
-  Move_labelled_issues:
+  Move_labeled_issues:
     runs-on: ubuntu-latest
     steps:
-      - name: Move small/med labeled issues to Candidates column
-        uses: Royal-Navy/design-system-moveissue-action@master
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Move issues to project column
+        uses: actions/github-script@v6
         with:
-          action-token: '${{ secrets.GHA_ISSUES_TOKEN }}'
-          project-url: 'https://github.com/Royal-Navy/design-system/projects/6'
-          column-name: 'Candidates for Ready'
-          label-name: 'Size: Small,Size: Medium'
-          columns-to-ignore: 'Ready,In Progress,In Review,Done'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { moveIssues } = await import('${{ github.workspace }}/scripts/github-actions/moveIssues.mjs')
+            await moveIssues({ github, context, core })
