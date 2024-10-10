@@ -94,3 +94,30 @@ it('sets the message when the message is JSX', async () => {
   expect(within(lastToast).getByText(expectedNewLabel)).toBeInTheDocument()
   expect(within(lastToast).getAllByRole('paragraph')).toHaveLength(2)
 })
+
+it('sets unique IDs when there are multiple toasts', async () => {
+  setup()
+
+  showToast(MESSAGE)
+  showToast(MESSAGE)
+
+  const [toast1, toast2] = await screen.findAllByRole('status')
+
+  expect(toast1.getAttribute('aria-labelledby')).not.toEqual(
+    toast2.getAttribute('aria-labelledby')
+  )
+  expect(toast1.getAttribute('aria-describedby')).not.toEqual(
+    toast2.getAttribute('aria-describedby')
+  )
+})
+
+it('sets an accessible name when there is no message', async () => {
+  setup()
+
+  const label = 'toast-with-no-message'
+  showToast({ label, message: '' })
+
+  const toast = await getLastToast(label)
+
+  expect(toast).toHaveAccessibleName(new RegExp(label))
+})
