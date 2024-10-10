@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
 import {
+  fireEvent,
   render,
   RenderResult,
-  fireEvent,
   waitFor,
 } from '@testing-library/react'
 
@@ -163,6 +163,23 @@ describe('Drawer', () => {
       expect(wrapper.getByTestId('drawer-content')).toHaveTextContent(
         'drawer-wrapper'
       )
+    })
+  })
+
+  describe('when drawer contents are taller than container height', () => {
+    beforeEach(() => {
+      children = <div style={{ height: '300px' }}>Arbitrary JSX</div>
+
+      wrapper = render(
+        <div style={{ height: '100px', overflow: 'hidden' }}>
+          <Drawer>{children}</Drawer>
+        </div>
+      )
+    })
+
+    it('should have 100% height', () => {
+      const inner = wrapper.getByTestId('drawer-inner')
+      expect(inner).toHaveStyleRule('height', '100%')
     })
   })
 

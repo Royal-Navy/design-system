@@ -62,3 +62,5 @@ export const WithScrollableContent: StoryFn<typeof Drawer> = (props) => (
 WithScrollableContent.args = {
   isOpen: true,
 }
+
+WithScrollableContent.storyName = 'With scrollable content'
