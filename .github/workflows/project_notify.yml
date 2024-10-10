@@ -1,4 +1,4 @@
-name: Project Automation - notify
+name: Project Automation - Notify
 
 on:
   schedule:

@@ -1,4 +1,4 @@
-name: Project Atuomation - Move Issues
+name: Project Automation - Move Issues
 
 on:
   pull_request:

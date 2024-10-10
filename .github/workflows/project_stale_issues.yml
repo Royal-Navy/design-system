@@ -1,4 +1,4 @@
-name: Project Automation - stale issues
+name: Project Automation - Stale Issues
 
 on:
   schedule:
