@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.23.4](https://github.com/Royal-Navy/design-system/compare/4.23.3...4.23.4) (2024-10-11)
+
+### Bug Fixes
+
+- **Toast:** Use unique IDs when multiple toasts shown ([42f3028](https://github.com/Royal-Navy/design-system/commit/42f30282037d77933d82de952a45ab2d60b24e24))
+
 ## [4.23.3](https://github.com/Royal-Navy/design-system/compare/4.23.2...4.23.3) (2024-10-02)
 
 ### Bug Fixes
