@@ -1,8 +1,6 @@
 name: Project Automation - Move Issues
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
   issues:
     types: [labeled]
 
@@ -11,62 +9,6 @@ env:
   PROJECT_URL: https://github.com/orgs/Royal-Navy/projects/9
 
 jobs:
-  Test_issue_mover:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Create test issue
-        id: create_issue
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.PAT_TOKEN }}
-          script: |
-            const issue = await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: 'Test issue for PR #' + context.issue.number,
-              body: 'This is a test issue created to verify the issue mover script.',
-              labels: ['Size: Small']
-            });
-            console.log('Test issue created:', issue.data.html_url);
-            core.setOutput('issue_number', issue.data.number);
-            core.setOutput('issue_node_id', issue.data.node_id);
-
-      - name: Run issue mover script
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.PAT_TOKEN }}
-          script: |
-            const { moveIssues } = await import('${{ github.workspace }}/scripts/github-actions/moveIssues.mjs')
-            const issue = await github.rest.issues.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: ${{ steps.create_issue.outputs.issue_number }}
-            });
-            issue.data.node_id = '${{ steps.create_issue.outputs.issue_node_id }}';
-            await moveIssues({
-              github,
-              context: { ...context, payload: { issue: issue.data } },
-              core,
-            })
-
-      - name: Clean up test issue
-        if: always()
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.PAT_TOKEN }}
-          script: |
-            await github.rest.issues.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: ${{ steps.create_issue.outputs.issue_number }},
-              state: 'closed'
-            });
-            console.log('Test issue closed');
-
   Move_labeled_issues:
     runs-on: ubuntu-latest
     if: github.event_name == 'issues'
