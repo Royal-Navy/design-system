@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Move issue to project column
-        uses: m7kvqbe1/github-action-move-issues@v1.0.5
+        uses: m7kvqbe1/github-action-move-issues@v1.0.6
         with:
           github-token: ${{ secrets.GHA_ISSUES_TOKEN }}
           project-url: 'https://github.com/orgs/Royal-Navy/projects/9'
