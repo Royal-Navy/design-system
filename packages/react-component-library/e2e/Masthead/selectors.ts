@@ -6,6 +6,6 @@ export default {
     user: '[data-testid="user-button"]',
   },
   navigation: {
-    button: '[data-testid="tab-nav-tab-button"]',
+    button: '[data-testid="masthead-nav-item"] a[data-testid="link"] span',
   },
 } as const

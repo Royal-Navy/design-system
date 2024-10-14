@@ -14,7 +14,7 @@ import {
   StyledUserText,
 } from './partials'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
-import { LinkTypes } from '../../../common/Link'
+import { LinkProps } from '../../../common/Link'
 
 export interface SidebarUserProps extends ComponentWithClass {
   children?: never
@@ -30,11 +30,11 @@ export interface SidebarUserProps extends ComponentWithClass {
   /**
    * Link component to apply to the user avatar.
    */
-  userLink?: React.ReactElement<LinkTypes>
+  userLink?: React.ReactElement<LinkProps>
   /**
    * Link component to apply to the exit icon.
    */
-  exitLink?: React.ReactElement<LinkTypes>
+  exitLink?: React.ReactElement<LinkProps>
   /**
    * Full name of the end user (e.g. Joe Bloggs).
    */

@@ -1,3 +1,3 @@
 export default {
-  tabItemButton: '[data-testid="tab-nav-tab-button"]',
+  tabItemButton: 'a[data-testid="link"] span',
 } as const

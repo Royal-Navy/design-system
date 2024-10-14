@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 
-import { LinkTypes } from '../../common/Link'
+import { LinkProps } from '../../common/Link'
 import { StyledBreadcrumbsItem } from './partials/StyledBreadcrumbsItem'
 import { StyledEndTitle } from './partials/StyledEndTitle'
 import { StyledIcon } from './partials/StyledIcon'
@@ -23,7 +23,7 @@ export interface BreadcrumbsItemWithLinkProps extends BreadcrumbsItemBaseProps {
   /**
    * Optional Link component to use for the item (redundant if `href` is used).
    */
-  link: React.ReactElement<LinkTypes>
+  link: React.ReactElement<LinkProps>
   href?: never
 }
 
@@ -41,7 +41,7 @@ export type BreadcrumbsItemProps =
 
 function getText(
   isLast: boolean,
-  link?: React.ReactElement<LinkTypes>,
+  link?: React.ReactElement<LinkProps>,
   href?: string,
   children?: React.ReactNode
 ): React.ReactElement {

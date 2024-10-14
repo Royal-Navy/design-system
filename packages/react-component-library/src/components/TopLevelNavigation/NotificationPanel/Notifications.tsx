@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { IconKeyboardArrowRight } from '@royalnavy/icon-library'
 
-import { LinkTypes } from '../../../common/Link'
+import { LinkProps } from '../../../common/Link'
 import { NotificationProps } from './index'
 import { StyledNotifications } from './partials/StyledNotifications'
 import { StyledList } from './partials/StyledList'
@@ -17,7 +17,7 @@ export interface NotificationsProps {
   /**
    * Link component for 'View all notifications'.
    */
-  link: React.ReactElement<LinkTypes>
+  link: React.ReactElement<LinkProps>
 }
 
 export const Notifications = ({

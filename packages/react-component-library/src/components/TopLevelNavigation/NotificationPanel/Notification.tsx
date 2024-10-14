@@ -5,7 +5,7 @@ import format from 'date-fns/format'
 
 import { Avatar, AVATAR_VARIANT } from '../../Avatar'
 import { getInitials } from '../../../helpers'
-import { LinkTypes } from '../../../common/Link'
+import { LinkProps } from '../../../common/Link'
 import { StyledNotification } from './partials/StyledNotification'
 import { StyledWrapper } from './partials/StyledWrapper'
 import { StyledItem } from './partials/StyledItem'
@@ -20,7 +20,7 @@ export interface NotificationProps {
   /**
    * Link component for the notification item.
    */
-  link: React.ReactElement<LinkTypes>
+  link: React.ReactElement<LinkProps>
   /**
    * Text name for the notification.
    */

@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { AnchorType } from '../../common/Link'
+import { AnchorLinkProps } from '../../common/Link'
 
 export const Link = ({
   children,
   className = '',
   href,
   ...rest
-}: AnchorType) => (
+}: AnchorLinkProps) => (
   <a className={className} href={href} data-testid="link" {...rest}>
     {children}
   </a>

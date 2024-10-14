@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react'
 
 import { Avatar, AVATAR_VARIANT } from '../../Avatar'
 import { ComponentWithClass } from '../../../common/ComponentWithClass'
-import { LinkTypes } from '../../../common/Link'
+import { LinkProps } from '../../../common/Link'
 import { MastheadUserItemProps } from './MastheadUserItem'
 import { Nav } from '../../../common/Nav'
 import { Sheet } from '../Sheet/Sheet'
@@ -36,7 +36,7 @@ export interface MastheadUserWithLinkProps extends ComponentWithClass {
   /**
    * Link component to apply to the user avatar.
    */
-  link: React.ReactElement<LinkTypes>
+  link: React.ReactElement<LinkProps>
 }
 
 export type MastheadUserProps =
