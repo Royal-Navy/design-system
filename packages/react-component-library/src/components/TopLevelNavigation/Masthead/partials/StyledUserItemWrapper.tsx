@@ -5,8 +5,9 @@ import { StyledUserItemIcon } from './StyledUserItemIcon'
 import { StyledUserItemText } from './StyledUserItemText'
 
 export const StyledUserItemWrapper = styled.div`
-  a,
-  a:hover {
+  position: relative;
+
+  a {
     color: ${color('neutral', 'white')};
     text-decoration: none;
   }
@@ -15,6 +16,25 @@ export const StyledUserItemWrapper = styled.div`
     ${StyledUserItemIcon},
     ${StyledUserItemText} {
       color: ${color('action', '500')};
+    }
+  }
+
+  > form button {
+    margin: unset;
+    padding: unset;
+    border: unset;
+    background: unset;
+    color: inherit;
+    cursor: pointer;
+
+    &:hover {
+      color: inherit;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
     }
   }
 `
