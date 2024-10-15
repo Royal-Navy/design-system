@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 
 import { Logo as DefaultLogo } from './Logo'
-import { LinkTypes } from '../../../common/Link'
+import { LinkProps } from '../../../common/Link'
 import { MASTHEAD_SUBCOMPONENT } from './constants'
 import { MastheadUserProps } from './index'
 import { Nav, NavItem } from '../../../common/Nav'
@@ -36,7 +36,7 @@ export interface MastheadProps {
   /**
    * Link component for when a user clicks on the logo / app name.
    */
-  homeLink?: React.ReactElement<LinkTypes>
+  homeLink?: React.ReactElement<LinkProps>
   /**
    * Which subcomponent is initially open.
    * @private
@@ -85,7 +85,7 @@ export interface MastheadProps {
 function getServiceName(
   Logo: React.ComponentType | null,
   title: string,
-  homeLink?: React.ReactElement<LinkTypes>
+  homeLink?: React.ReactElement<LinkProps>
 ) {
   const link = homeLink || <span />
   return React.cloneElement(link as React.ReactElement, {

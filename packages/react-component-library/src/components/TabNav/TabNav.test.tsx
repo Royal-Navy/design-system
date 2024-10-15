@@ -1,30 +1,56 @@
 import React from 'react'
-
-import { render, RenderResult } from '@testing-library/react'
+import { color } from '@royalnavy/design-tokens'
+import { render, screen } from '@testing-library/react'
 
 import { Link } from '../Link'
 import { TabNav, TabNavItem } from '.'
 
-describe('TabNav', () => {
-  let wrapper: RenderResult
+function setup() {
+  render(
+    <TabNav>
+      <TabNavItem link={<Link href="/foo">Foo</Link>} />
+      <TabNavItem link={<Link href="/bar">Bar</Link>} isActive />
+      <TabNavItem link={<Link href="/baz">Baz</Link>} />
+    </TabNav>
+  )
+}
 
-  describe('with props', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <TabNav>
-          <TabNavItem link={<Link href="/thing1">Thing 1</Link>} />
-          <TabNavItem link={<Link href="/thing2">Thing 2</Link>} isActive />
-          <TabNavItem link={<Link href="/thing3">Thing 3</Link>} />
-        </TabNav>
-      )
-    })
+it('correctly renders the links', () => {
+  setup()
 
-    it('should render the tabs', () => {
-      const tabs = wrapper.queryAllByTestId('tab-nav-tab')
-      expect(tabs[0]).toHaveTextContent('Thing 1')
-      expect(tabs[1]).toHaveTextContent('Thing 2')
-      expect(tabs[2]).toHaveTextContent('Thing 3')
-      expect(tabs).toHaveLength(3)
-    })
+  expect(screen.getAllByRole('link')).toHaveLength(3)
+
+  expect(screen.getByRole('link', { name: 'Foo' })).toHaveAttribute(
+    'href',
+    '/foo'
+  )
+  expect(screen.getByRole('link', { name: 'Bar' })).toHaveAttribute(
+    'href',
+    '/bar'
+  )
+  expect(screen.getByRole('link', { name: 'Baz' })).toHaveAttribute(
+    'href',
+    '/baz'
+  )
+})
+
+it('anchor takes up full space of tab', () => {
+  setup()
+
+  expect(screen.getByRole('link', { name: 'Foo' })).toHaveStyle({
+    display: 'block',
+    width: '100%',
+    height: '100%',
   })
+})
+
+it('applies styles to indicate an active tab', () => {
+  setup()
+
+  const activeTab = screen.getByText('Bar')
+
+  expect(activeTab).toHaveStyleRule(
+    'border-top',
+    `6px solid ${color('action', '500')}`
+  )
 })

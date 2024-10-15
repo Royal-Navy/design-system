@@ -60,36 +60,57 @@ export default {
   },
 } as Meta<typeof Masthead>
 
-export const Default: StoryFn<typeof Masthead> = (props) => {
-  const notifications = (
-    <Notifications link={<Link href="#" />}>
-      <Notification
-        link={<Link href="#" />}
-        name="Thomas Stephens"
-        action="added a new comment to your"
-        on="review"
-        when={new Date('2019-11-05T14:25:02.178Z')}
-        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
-      />
-      <Notification
-        link={<Link href="#" />}
-        name="Thomas Stephens"
-        action="added a new comment to your"
-        on="review"
-        when={new Date('2019-11-05T14:25:02.178Z')}
-        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
-      />
-      <Notification
-        link={<Link href="#" />}
-        name="Thomas Stephens"
-        action="added a new comment to your"
-        on="review"
-        when={new Date('2019-11-05T14:25:02.178Z')}
-        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
-      />
-    </Notifications>
-  )
+const notifications = (
+  <Notifications link={<Link href="#" />}>
+    <Notification
+      link={<Link href="#" />}
+      name="Thomas Stephens"
+      action="added a new comment to your"
+      on="review"
+      when={new Date('2019-11-05T14:25:02.178Z')}
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+    />
+    <Notification
+      link={<Link href="#" />}
+      name="Thomas Stephens"
+      action="added a new comment to your"
+      on="review"
+      when={new Date('2019-11-05T14:25:02.178Z')}
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+    />
+    <Notification
+      link={<Link href="#" />}
+      name="Thomas Stephens"
+      action="added a new comment to your"
+      on="review"
+      when={new Date('2019-11-05T14:25:02.178Z')}
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
+    />
+  </Notifications>
+)
 
+const userWithAvatar = (
+  <MastheadUser initials="RN">
+    <MastheadUserItem
+      icon={<IconPerson />}
+      link={<Link href="#">Profile</Link>}
+    />
+    <MastheadUserItem
+      icon={<IconSettings />}
+      link={<Link href="#">Settings</Link>}
+    />
+    <MastheadUserItem
+      icon={<IconChatBubble />}
+      link={<Link href="#">Support</Link>}
+    />
+    <MastheadUserItem
+      icon={<IconExitToApp />}
+      link={<Link href="#">Logout</Link>}
+    />
+  </MastheadUser>
+)
+
+export const Default: StoryFn<typeof Masthead> = (props) => {
   const user = (
     <MastheadUser initials="RN">
       <MastheadUserItem
@@ -132,63 +153,8 @@ export const Default: StoryFn<typeof Masthead> = (props) => {
     </StyledContainer>
   )
 }
-
 Default.args = {
   hasUnreadNotification: true,
-}
-
-export const CustomLogo: StoryFn<typeof Masthead> = (props) => (
-  <Masthead {...props} Logo={IconHome} />
-)
-
-CustomLogo.storyName = 'Custom logo'
-CustomLogo.args = {
-  onSearch: null,
-}
-
-export const WithoutLogo: StoryFn<typeof Masthead> = (props) => (
-  <Masthead {...props} hasDefaultLogo={false} />
-)
-
-WithoutLogo.storyName = 'Without logo'
-WithoutLogo.args = {
-  onSearch: null,
-}
-
-export const WithSearch: StoryFn<typeof Masthead> = (props) => (
-  <Masthead {...props} />
-)
-
-WithSearch.storyName = 'Search'
-
-const userWithAvatar = (
-  <MastheadUser initials="RN">
-    <MastheadUserItem
-      icon={<IconPerson />}
-      link={<Link href="#">Profile</Link>}
-    />
-    <MastheadUserItem
-      icon={<IconSettings />}
-      link={<Link href="#">Settings</Link>}
-    />
-    <MastheadUserItem
-      icon={<IconChatBubble />}
-      link={<Link href="#">Support</Link>}
-    />
-    <MastheadUserItem
-      icon={<IconExitToApp />}
-      link={<Link href="#">Logout</Link>}
-    />
-  </MastheadUser>
-)
-
-export const WithAvatarLinks: StoryFn<typeof Masthead> = (props) => {
-  return <Masthead {...props} user={userWithAvatar} />
-}
-
-WithAvatarLinks.storyName = 'Avatar links'
-WithAvatarLinks.args = {
-  onSearch: null,
 }
 
 export const WithNavigation: StoryFn<typeof Masthead> = (props) => {
@@ -203,7 +169,6 @@ export const WithNavigation: StoryFn<typeof Masthead> = (props) => {
 
   return <Masthead {...props} homeLink={<Link href="#" />} nav={nav} />
 }
-
 WithNavigation.storyName = 'Navigation'
 WithNavigation.args = {
   onSearch: null,
@@ -217,39 +182,38 @@ WithInlineNav.args = {
   user: userWithAvatar,
 }
 
-export const WithNotifications: StoryFn<typeof Masthead> = (props) => {
-  const notifications = (
-    <Notifications link={<Link href="#" />}>
-      <Notification
-        link={<Link href="#" />}
-        name="Thomas Stephens"
-        action="added a new comment to your"
-        on="review"
-        when={new Date('2019-11-05T14:25:02.178Z')}
-        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
-      />
-      <Notification
-        link={<Link href="#" />}
-        name="Thomas Stephens"
-        action="added a new comment to your"
-        on="review"
-        when={new Date('2019-11-05T14:25:02.178Z')}
-        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
-      />
-      <Notification
-        link={<Link href="#" />}
-        name="Thomas Stephens"
-        action="added a new comment to your"
-        on="review"
-        when={new Date('2019-11-05T14:25:02.178Z')}
-        description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores"
-      />
-    </Notifications>
-  )
-
-  return <Masthead {...props} notifications={notifications} />
+export const CustomLogo: StoryFn<typeof Masthead> = (props) => (
+  <Masthead {...props} Logo={IconHome} />
+)
+CustomLogo.storyName = 'Custom logo'
+CustomLogo.args = {
+  onSearch: null,
 }
 
+export const WithoutLogo: StoryFn<typeof Masthead> = (props) => (
+  <Masthead {...props} hasDefaultLogo={false} />
+)
+WithoutLogo.storyName = 'Without logo'
+WithoutLogo.args = {
+  onSearch: null,
+}
+
+export const WithSearch: StoryFn<typeof Masthead> = (props) => (
+  <Masthead {...props} />
+)
+WithSearch.storyName = 'Search'
+
+export const WithAvatarLinks: StoryFn<typeof Masthead> = (props) => {
+  return <Masthead {...props} user={userWithAvatar} />
+}
+WithAvatarLinks.storyName = 'Avatar links'
+WithAvatarLinks.args = {
+  onSearch: null,
+}
+
+export const WithNotifications: StoryFn<typeof Masthead> = (props) => {
+  return <Masthead {...props} notifications={notifications} />
+}
 WithNotifications.storyName = 'Notifications'
 WithNotifications.args = {
   onSearch: null,
@@ -319,12 +283,13 @@ WithUserMenuOpen.parameters = {
   docs: { disable: true },
 }
 
-export const WithClassificationBar = Default.bind({})
-WithClassificationBar.args = {
-  ...Default.args,
-  classificationBar: <ClassificationBar />,
-}
+export const WithClassificationBar: StoryFn<typeof Masthead> = (props) => (
+  <Masthead {...props} classificationBar={<ClassificationBar />} />
+)
 WithClassificationBar.storyName = 'Classification bar'
+WithClassificationBar.args = {
+  onSearch: null,
+}
 
 const StyledClientComponent = styled.div`
   flex: 1;
@@ -334,13 +299,17 @@ const StyledClientComponent = styled.div`
   padding-right: ${spacing('2')};
 `
 
-export const RightSlot = Default.bind({})
+export const RightSlot: StoryFn<typeof Masthead> = (props) => (
+  <Masthead
+    {...props}
+    rightSlot={
+      <StyledClientComponent>
+        <TextE>Arbitrary text</TextE>
+      </StyledClientComponent>
+    }
+  />
+)
 RightSlot.storyName = 'Right slot'
 RightSlot.args = {
-  ...Default.args,
-  rightSlot: (
-    <StyledClientComponent>
-      <TextE>Arbitrary text</TextE>
-    </StyledClientComponent>
-  ),
+  onSearch: null,
 }

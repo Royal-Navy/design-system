@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ComponentWithClass } from './ComponentWithClass'
-import { LinkTypes } from './Link'
+import { LinkProps } from './Link'
 
 export interface Nav<T> extends ComponentWithClass {
   children?: React.ReactElement<T> | React.ReactElement<T>[]
@@ -15,5 +15,5 @@ export interface NavItem {
   /**
    * Link component (custom implementation welcome).
    */
-  link: React.ReactElement<LinkTypes>
+  link: React.ReactElement<LinkProps>
 }

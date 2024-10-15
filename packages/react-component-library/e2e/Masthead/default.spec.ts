@@ -15,8 +15,7 @@ test.describe('Masthead', () => {
     await expect(page.locator(selectors.banner)).toBeVisible()
   })
 
-  // eslint-disable-next-line playwright/no-skipped-test
-  test.skip('shows the buttons', async ({ page }) => {
+  test('shows the buttons', async ({ page }) => {
     await expect(page.locator(selectors.buttons.search)).toBeVisible()
     await expect(page.locator(selectors.buttons.notifications)).toBeVisible()
     await expect(page.locator(selectors.buttons.user)).toBeVisible()
@@ -29,6 +28,7 @@ test.describe('Masthead', () => {
       'border-top',
       `6px solid ${hexToRgb(ColorAction500)}`
     )
+
     await expect(navigationButtons.nth(1)).toHaveCSS('border-top-style', 'none')
     await expect(navigationButtons.nth(2)).toHaveCSS('border-top-style', 'none')
     await expect(navigationButtons.nth(3)).toHaveCSS('border-top-style', 'none')

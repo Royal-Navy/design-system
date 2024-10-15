@@ -1,11 +1,11 @@
 // @ts-nocheck
 import React from 'react'
-
 import {
   fireEvent,
   render,
   RenderResult,
   waitFor,
+  screen,
 } from '@testing-library/react'
 
 import { Link } from '../../Link'
@@ -313,10 +313,12 @@ describe('Masthead', () => {
     })
 
     it('should render the nav items', () => {
-      expect(wrapper.getByText('First').getAttribute('href')).toEqual('/first')
-      expect(wrapper.getByText('Second').getAttribute('href')).toEqual(
-        '/second'
-      )
+      expect(
+        screen.getByText('First').closest('a').getAttribute('href')
+      ).toEqual('/first')
+      expect(
+        screen.getByText('Second').closest('a').getAttribute('href')
+      ).toEqual('/second')
     })
 
     describe('when the user clicks on the search option', () => {
