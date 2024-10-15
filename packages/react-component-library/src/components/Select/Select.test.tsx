@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, RenderResult } from '@testing-library/react'
+import { render, RenderResult, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ColorDanger800 } from '@royalnavy/design-tokens'
 import {
@@ -488,6 +488,78 @@ describe('Select', () => {
         expect(badges[1]).toHaveTextContent('2')
         expect(badges[2]).toHaveTextContent('3')
         expect(badges).toHaveLength(3)
+      })
+    })
+  })
+
+  describe('when clicking to open, close, and reopen', () => {
+    it('should toggle the dropdown on each click', async () => {
+      render(
+        <Select id="select-id" label="Label">
+          <SelectOption value="option1">Option 1</SelectOption>
+          <SelectOption value="option2">Option 2</SelectOption>
+          <SelectOption value="option3">Option 3</SelectOption>
+        </Select>
+      )
+
+      const input = screen.getByRole('textbox', { name: 'Label' })
+
+      await userEvent.click(input)
+      await waitFor(() => {
+        expect(screen.getByText('Option 1')).toBeVisible()
+        expect(screen.getByText('Option 2')).toBeVisible()
+        expect(screen.getByText('Option 3')).toBeVisible()
+      })
+
+      await userEvent.click(input)
+      await waitFor(() => {
+        expect(screen.queryByText('Option 1')).not.toBeInTheDocument()
+        expect(screen.queryByText('Option 2')).not.toBeInTheDocument()
+        expect(screen.queryByText('Option 3')).not.toBeInTheDocument()
+      })
+
+      await userEvent.click(input)
+      await waitFor(() => {
+        expect(screen.getByText('Option 1')).toBeVisible()
+        expect(screen.getByText('Option 2')).toBeVisible()
+        expect(screen.getByText('Option 3')).toBeVisible()
+      })
+    })
+  })
+
+  describe('when focusing with keyboard and then interacting', () => {
+    it('should open on focus and allow reopening after closing', async () => {
+      render(
+        <Select id="select-id" label="Label">
+          <SelectOption value="option1">Option 1</SelectOption>
+          <SelectOption value="option2">Option 2</SelectOption>
+          <SelectOption value="option3">Option 3</SelectOption>
+        </Select>
+      )
+
+      const input = screen.getByRole('textbox', { name: 'Label' })
+
+      await userEvent.tab()
+      expect(screen.getByRole('listbox', { name: 'Label' })).toHaveFocus()
+
+      await waitFor(() => {
+        expect(screen.getByText('Option 1')).toBeVisible()
+        expect(screen.getByText('Option 2')).toBeVisible()
+        expect(screen.getByText('Option 3')).toBeVisible()
+      })
+
+      await userEvent.keyboard('{Escape}')
+      await waitFor(() => {
+        expect(screen.queryByText('Option 1')).not.toBeInTheDocument()
+        expect(screen.queryByText('Option 2')).not.toBeInTheDocument()
+        expect(screen.queryByText('Option 3')).not.toBeInTheDocument()
+      })
+
+      await userEvent.click(input)
+      await waitFor(() => {
+        expect(screen.getByText('Option 1')).toBeVisible()
+        expect(screen.getByText('Option 2')).toBeVisible()
+        expect(screen.getByText('Option 3')).toBeVisible()
       })
     })
   })

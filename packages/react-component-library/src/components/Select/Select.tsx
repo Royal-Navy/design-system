@@ -72,8 +72,16 @@ export const Select = ({
       hasSelectedItem={!isNil(selectedItem)}
       id={id}
       inputProps={{
-        onFocus: onInputFocusHandler,
+        ...getToggleButtonProps({
+          onFocus: onInputFocusHandler,
+          onMouseDown: (event) => {
+            // This is crucial for correct focus and click behavior
+            // Without this, Downshift internal state gets mixed up
+            event.preventDefault()
+          },
+        }),
         ref: inputRef,
+        'aria-expanded': undefined,
       }}
       isOpen={isOpen}
       menuProps={getMenuProps({
