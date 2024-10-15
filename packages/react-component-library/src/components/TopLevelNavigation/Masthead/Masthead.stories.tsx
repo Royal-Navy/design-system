@@ -105,7 +105,11 @@ const userWithAvatar = (
     />
     <MastheadUserItem
       icon={<IconExitToApp />}
-      link={<Link href="#">Logout</Link>}
+      link={
+        <form action="#">
+          <button type="submit">Sign out</button>
+        </form>
+      }
     />
   </MastheadUser>
 )
@@ -127,7 +131,11 @@ export const Default: StoryFn<typeof Masthead> = (props) => {
       />
       <MastheadUserItem
         icon={<IconExitToApp />}
-        link={<Link href="#">Logout</Link>}
+        link={
+          <form action="#">
+            <button type="submit">Sign out</button>
+          </form>
+        }
       />
     </MastheadUser>
   )

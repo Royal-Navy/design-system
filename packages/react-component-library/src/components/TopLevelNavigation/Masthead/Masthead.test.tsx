@@ -7,6 +7,7 @@ import {
   waitFor,
   screen,
 } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { Link } from '../../Link'
 import {
@@ -456,6 +457,13 @@ describe('Masthead', () => {
                 />
                 <MastheadUserItem link={<Link href="/support">Support</Link>} />
                 <MastheadUserItem link={<Link href="/logout">Logout</Link>} />
+                <MastheadUserItem
+                  link={
+                    <form action="#">
+                      <button type="submit">Form action</button>
+                    </form>
+                  }
+                />
               </MastheadUser>
             }
           />
@@ -483,17 +491,17 @@ describe('Masthead', () => {
     })
 
     describe('and the avatar is clicked', () => {
-      beforeEach(() => {
-        wrapper.getByText('AB').click()
+      beforeEach(async () => {
+        await userEvent.click(
+          screen.getByRole('button', { name: 'Show user options' })
+        )
       })
 
       it('should show the links', () => {
-        waitFor(() => {
-          expect(wrapper.getByText('Profile')).toBeVisible()
-          expect(wrapper.getByText('Settings')).toBeVisible()
-          expect(wrapper.getByText('Support')).toBeVisible()
-          expect(wrapper.getByText('Logout')).toBeVisible()
-        })
+        expect(wrapper.getByText('Profile')).toBeVisible()
+        expect(wrapper.getByText('Settings')).toBeVisible()
+        expect(wrapper.getByText('Support')).toBeVisible()
+        expect(wrapper.getByText('Logout')).toBeVisible()
       })
 
       it('should spread arbitrary props on the user item', () => {
@@ -501,6 +509,31 @@ describe('Masthead', () => {
           'data-arbitrary',
           'arbitrary-user-item'
         )
+      })
+
+      it('clicking to the left of the MastheadUserItem with a form button should submit the form', async () => {
+        const button = screen.getByRole('button', { name: 'Form action' })
+        expect(button).toHaveAttribute('type', 'submit')
+        expect(button).toBeEnabled()
+        expect(button).toBeVisible()
+
+        const form = button.closest('form')
+        expect(form).not.toBeNull()
+
+        const mockSubmit = jest.fn((e) => {
+          e.preventDefault()
+        })
+        form.addEventListener('submit', mockSubmit)
+
+        const rect = button.getBoundingClientRect()
+
+        // Click 5 pixels to the left of the button's left edge
+        await userEvent.click(button, {
+          clientX: rect.left - 5,
+          clientY: rect.top + rect.height / 2,
+        })
+
+        expect(mockSubmit).toHaveBeenCalledTimes(1)
       })
 
       describe('and the avatar is clicked again', () => {

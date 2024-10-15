@@ -13,7 +13,15 @@ export interface RouterLinkProps extends ComponentWithClass {
 export interface AnchorLinkProps
   extends AnchorHTMLAttributes<HTMLAnchorElement> {}
 
-export type LinkProps = NextLinkProps | RouterLinkProps | AnchorLinkProps
+export interface FormType extends ComponentWithClass {
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+}
+
+export type LinkProps =
+  | NextLinkProps
+  | RouterLinkProps
+  | AnchorLinkProps
+  | FormType
 
 export type LinkType = React.ReactElement<LinkProps>
 
