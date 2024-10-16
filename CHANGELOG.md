@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.23.6](https://github.com/Royal-Navy/design-system/compare/4.23.5...4.23.6) (2024-10-16)
+
+### Bug Fixes
+
+- **Masthead:** Correctly support form as a link ([0ce3e29](https://github.com/Royal-Navy/design-system/commit/0ce3e291d1fbf2f7b87395ee692b08285adb9ae6))
+- **Select:** Ensure that menu toggles correctly ([86d2c44](https://github.com/Royal-Navy/design-system/commit/86d2c4426c40fa64297668aa640c7e51d09da3fb))
+- **TabNav:** Expand click area to full tab ([23e201f](https://github.com/Royal-Navy/design-system/commit/23e201f160cc455ce2e3fc60be76310fbc04841d))
+
 ## [4.23.5](https://github.com/Royal-Navy/design-system/compare/4.23.4...4.23.5) (2024-10-14)
 
 **Note:** Version bump only for package royal-navy-design-system
