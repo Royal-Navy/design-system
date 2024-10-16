@@ -13,6 +13,7 @@ const expectedResult = {
   exampleSelect: 'three',
   exampleAutocomplete: 'four',
   exampleRangeSlider: [28],
+  exampleToggle: true,
 }
 
 const examples = [
@@ -55,6 +56,7 @@ test.describe('Form examples, empty', () => {
         await expect(page.locator(selectors.input.select)).toBeVisible()
         await expect(page.locator(selectors.input.autocomplete)).toBeVisible()
         await expect(page.locator(selectors.input.rangeSlider)).toBeVisible()
+        await expect(page.locator(selectors.input.toggle)).toBeVisible()
       })
 
       test('shows validation errors when an empty form is submitted', async ({
@@ -94,6 +96,8 @@ test.describe('Form examples, empty', () => {
           await page.click(selectors.input.rangeSliderRail, {
             position: { x: 800, y: 5 },
           })
+
+          await page.click(selectors.input.toggle)
         })
 
         test('shows no validation errors', async ({ page }) => {

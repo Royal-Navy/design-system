@@ -2,6 +2,7 @@ import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState } from 'react'
 import { Meta, StoryFn } from '@storybook/react'
 import { Formik, Field as FormikField, FieldProps } from 'formik'
+import { IconCheck, IconClose } from '@royalnavy/icon-library'
 
 import { TextInput } from '../../components/TextInput'
 import { TextArea } from '../../components/TextArea'
@@ -18,6 +19,7 @@ import { sleep } from '../../helpers'
 import { Field } from '../../components/Field'
 import { Fieldset } from '../../components/Fieldset'
 import { SectionDivider } from '../../components/SectionDivider'
+import { Toggle } from '../../components/Toggle'
 import { EMPTY_FORM_VALUES, PREPOPULATED_FORM_VALUES } from '../constants'
 import { FormValues } from '../types'
 
@@ -283,6 +285,25 @@ const Example = ({ initialValues }: { initialValues: FormValues }) => {
                       onChange={(newValues: ReadonlyArray<number>) => {
                         setFieldValue('exampleRangeSlider', newValues)
                       }}
+                    />
+                  </Field>
+                )
+              }}
+            </FormikField>
+            <FormikField name="exampleToggle">
+              {({ field: { name, value }, meta }: FieldProps) => {
+                return (
+                  <Field
+                    hintText="Example hint text."
+                    errors={[{ error: meta.touched && meta.error }]}
+                  >
+                    <Toggle
+                      defaultChecked={value}
+                      onChange={(event) => {
+                        setFieldValue(name, event.target.checked)
+                      }}
+                      OnIcon={IconCheck}
+                      OffIcon={IconClose}
                     />
                   </Field>
                 )

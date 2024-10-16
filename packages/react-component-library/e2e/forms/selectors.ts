@@ -16,6 +16,7 @@ export default {
       '[data-testid="select"]:has-text("Example autocomplete") input',
     rangeSlider: '[data-testid="rangeslider"]',
     rangeSliderRail: '[data-testid="rangeslider-rail"]',
+    toggle: '[data-testid="toggle"]',
   },
   submit: '[data-testid="form-example-submit"]',
   values: '[data-testid="form-example-values"]',

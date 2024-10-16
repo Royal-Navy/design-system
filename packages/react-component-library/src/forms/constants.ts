@@ -12,6 +12,7 @@ export const EMPTY_FORM_VALUES: FormValues = {
   exampleSelect: null,
   exampleAutocomplete: null,
   exampleRangeSlider: [20],
+  exampleToggle: false,
 }
 
 export const PREPOPULATED_FORM_VALUES: FormValues = {
@@ -26,4 +27,5 @@ export const PREPOPULATED_FORM_VALUES: FormValues = {
   exampleSelect: 'three',
   exampleAutocomplete: 'two',
   exampleRangeSlider: [4],
+  exampleToggle: false,
 }
