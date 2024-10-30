@@ -8,3 +8,7 @@ type DateAny = Parameters<typeof isValid>[0]
 export function isDateValid(value: DateAny): value is Date | number {
   return isValid(value)
 }
+
+export const replaceInvalidDate = (
+  date: Date | null | undefined
+): Date | undefined => (isDateValid(date) ? date : undefined)

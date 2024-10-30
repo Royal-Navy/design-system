@@ -15,7 +15,6 @@ export const StyledDatePickerInput = styled.div<StyledDatePickerInputProps>`
   border: 0;
   vertical-align: top;
   width: 100%;
-  min-width: 16rem;
 
   ${StyledInput}:not(:focus)::placeholder {
     color: transparent;

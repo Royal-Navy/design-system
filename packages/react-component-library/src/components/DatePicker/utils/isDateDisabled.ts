@@ -5,11 +5,11 @@ import {
   isWithinInterval,
   startOfDay,
 } from 'date-fns'
-import { type Modifier } from 'react-day-picker'
+import { type Matcher } from 'react-day-picker'
 
 export const isDateDisabled = (
   date: Date,
-  disabledDays: Modifier | Modifier[]
+  disabledDays: Matcher | Matcher[] | undefined
 ) => {
   const disabledDaysArray = Array.isArray(disabledDays)
     ? disabledDays

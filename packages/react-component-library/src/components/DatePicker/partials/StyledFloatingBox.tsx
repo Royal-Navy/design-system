@@ -1,7 +1,7 @@
 import { color } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
-import { FloatingBox } from '../../../primitives'
+import { FloatingBox } from '../../../primitives/FloatingBox'
 import { StyledArrow } from '../../../primitives/FloatingBox/partials/StyledArrow'
 import { StyledContent } from '../../../primitives/FloatingBox/partials/StyledContent'
 

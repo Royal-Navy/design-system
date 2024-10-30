@@ -67,6 +67,11 @@ function shouldReset(
   )
 }
 
+const getEffectiveDate = (
+  date: Date | null | undefined,
+  initialDate: Date | null
+) => (date === undefined ? initialDate : date)
+
 export function useDatePickerReducer(
   startDate: Date | null | undefined,
   endDate: Date | null | undefined,
@@ -75,11 +80,14 @@ export function useDatePickerReducer(
   datePickerFormat: string,
   isRange: boolean
 ): [DatePickerState, React.Dispatch<DatePickerAction>] {
+  const effectiveStartDate = getEffectiveDate(startDate, initialStartDate)
+  const effectiveEndDate = getEffectiveDate(endDate, initialEndDate)
+
   const [state, dispatch] = useReducer(
     reducer,
     {
-      startDate: startDate === undefined ? initialStartDate : startDate,
-      endDate: endDate === undefined ? initialEndDate : endDate,
+      startDate: effectiveStartDate,
+      endDate: effectiveEndDate,
       datePickerFormat,
     },
     init

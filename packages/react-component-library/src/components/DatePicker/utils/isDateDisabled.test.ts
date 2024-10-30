@@ -1,3 +1,4 @@
+import { type Matcher } from 'react-day-picker'
 import { isDateDisabled } from './isDateDisabled'
 
 describe('isDateDisabled', () => {
@@ -76,7 +77,9 @@ describe('isDateDisabled', () => {
   it.each(testCases)(
     'should return $expectedResult if $description',
     ({ disabledDays, expectedResult }) => {
-      expect(isDateDisabled(date, disabledDays)).toBe(expectedResult)
+      expect(isDateDisabled(date, disabledDays as Matcher[])).toBe(
+        expectedResult
+      )
     }
   )
 })
