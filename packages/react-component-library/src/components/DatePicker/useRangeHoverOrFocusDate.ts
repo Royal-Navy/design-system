@@ -3,14 +3,11 @@ import { useCallback, useState } from 'react'
 /**
  * Hook to keep track of the date being hovered over or focused
  * when in range mode.
- *
- * @todo Add handleDayBlur after upgrading to react-day-picker v8.
  */
 export function useRangeHoverOrFocusDate(isRange: boolean): {
   rangeHoverOrFocusDate: Date | null
-  handleDayFocus: (date: Date) => void
-  handleDayMouseEnter: (date: Date) => void
-  handleDayMouseLeave: () => void
+  handleDayFocusOrMouseEnter: (date: Date) => void
+  handleDayBlurOrMouseLeave: () => void
 } {
   const [rangeHoverOrFocusDate, setRangeHoverOrFocusDate] =
     useState<Date | null>(null)
@@ -24,7 +21,7 @@ export function useRangeHoverOrFocusDate(isRange: boolean): {
     [isRange]
   )
 
-  const handleDayMouseLeave = useCallback(() => {
+  const handleDayBlurOrMouseLeave = useCallback(() => {
     if (isRange) {
       setRangeHoverOrFocusDate(null)
     }
@@ -32,8 +29,7 @@ export function useRangeHoverOrFocusDate(isRange: boolean): {
 
   return {
     rangeHoverOrFocusDate,
-    handleDayFocus: handleDayFocusOrMouseEnter,
-    handleDayMouseEnter: handleDayFocusOrMouseEnter,
-    handleDayMouseLeave,
+    handleDayFocusOrMouseEnter,
+    handleDayBlurOrMouseLeave,
   }
 }

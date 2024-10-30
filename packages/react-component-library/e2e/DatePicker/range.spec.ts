@@ -25,7 +25,7 @@ test.describe('DatePicker, range', () => {
 
     test.describe('and a day is clicked', () => {
       test.beforeEach(async ({ page }) => {
-        await page.click(`${selectors.day.inside}:has-text("1")`)
+        await page.click(`${selectors.day}:has-text("1")`)
       })
 
       test('sets the value of the input to the date', async ({ page }) => {
@@ -36,7 +36,7 @@ test.describe('DatePicker, range', () => {
 
       test.describe('and another day is clicked', () => {
         test.beforeEach(async ({ page }) => {
-          await page.click(`${selectors.day.inside}:has-text("10")`)
+          await page.click(`${selectors.day}:has-text("10")`)
         })
 
         test('sets the value of the input to the date range', async ({

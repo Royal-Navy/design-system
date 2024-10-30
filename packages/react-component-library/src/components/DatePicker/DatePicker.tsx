@@ -1,17 +1,19 @@
 import { IconEvent } from '@royalnavy/icon-library'
+import { format } from 'date-fns'
+import { enGB } from 'date-fns/locale'
 import FocusTrap from 'focus-trap-react'
 import React, { useCallback, useRef, useState } from 'react'
 import { Placement } from '@popperjs/core'
-import { DayModifiers, DayPickerProps } from 'react-day-picker'
+import { DayPickerProps } from 'react-day-picker'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { DATE_FORMAT } from '../../constants'
-import { DATE_VALIDITY, WEEKDAY_TITLES } from './constants'
+import { DATE_VALIDITY } from './constants'
 import { DATEPICKER_ACTION } from './types'
 import { hasClass, ValueOf } from '../../helpers'
 import { InlineButton } from '../InlineButtons/InlineButton'
 import { InputValidationProps } from '../../common/InputValidationProps'
-import { isDateValid, isDateDisabled } from './utils'
+import { isDateValid } from './utils'
 import { StyledLabel } from '../TextInput/partials/StyledLabel'
 import { StyledDatePickerInput } from './partials/StyledDatePickerInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
@@ -28,18 +30,6 @@ import { useInput } from './useInput'
 import { useRangeHoverOrFocusDate } from './useRangeHoverOrFocusDate'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
 import { useDatePickerReducer } from './useDatePickerReducer'
-
-declare module 'react-day-picker' {
-  // eslint-disable-next-line no-shadow
-  interface DayPickerProps {
-    // This prop is currently missing from the react-day-picker types
-    onDayFocus?: (
-      day: Date,
-      modifiers: DayModifiers,
-      e: React.FocusEvent<HTMLDivElement>
-    ) => void
-  }
-}
 
 export type DatePickerDateValidityType = ValueOf<typeof DATE_VALIDITY>
 
@@ -103,10 +93,6 @@ export interface DatePickerProps
    */
   onChange?: (data: DatePickerOnChangeData) => void
   /**
-   * Optional handler to be invoked when the calendar is focussed.
-   */
-  onCalendarFocus?: (e: React.SyntheticEvent) => void
-  /**
    * The selected date, or the start of the selected date range if `isRange`
    * is set.
    *
@@ -127,11 +113,11 @@ export interface DatePickerProps
    * error message if they are received. See the `onChange` prop for more
    * information.
    */
-  disabledDays?: DayPickerProps['disabledDays']
+  disabledDays?: DayPickerProps['disabled']
   /**
    * Optional month from which to display the picker calendar on first render.
    */
-  initialMonth?: DayPickerProps['initialMonth']
+  initialMonth?: DayPickerProps['defaultMonth']
   /**
    * Initial value for `startDate`. Only used when the `startDate` prop is not set.
    */
@@ -169,7 +155,6 @@ export const DatePicker = ({
   isRange = false,
   label = 'Date',
   onChange,
-  onCalendarFocus,
   startDate: externalStartDate,
   initialIsOpen = false,
   disabledDays,
@@ -219,11 +204,6 @@ export const DatePicker = ({
     onChange
   )
 
-  const handleDaySelection = () => {
-    dispatch({ type: DATEPICKER_ACTION.REFRESH_HAS_ERROR })
-    dispatch({ type: DATEPICKER_ACTION.REFRESH_INPUT_VALUE })
-  }
-
   const { startDate, endDate } = state
   const hasError =
     state.hasError || isInvalid || hasClass(className, 'is-invalid')
@@ -232,9 +212,8 @@ export const DatePicker = ({
 
   const {
     rangeHoverOrFocusDate,
-    handleDayFocus,
-    handleDayMouseEnter,
-    handleDayMouseLeave,
+    handleDayFocusOrMouseEnter,
+    handleDayBlurOrMouseLeave,
   } = useRangeHoverOrFocusDate(isRange)
 
   const { handleKeyDown, handleInputBlur, handleInputChange } = useInput(
@@ -245,9 +224,16 @@ export const DatePicker = ({
   )
 
   const modifiers = {
-    start: replaceInvalidDate(startDate),
-    end: replaceInvalidDate(endDate),
-    ...(today ? { today } : {}),
+    start: replaceInvalidDate(startDate) || false,
+    end: replaceInvalidDate(endDate) || false,
+  }
+  const modifiersClassNames = {
+    start: 'rdp-day_start',
+    end: 'rdp-day_end',
+  }
+  const selected = {
+    from: replaceInvalidDate(startDate),
+    to: replaceInvalidDate(endDate) || rangeHoverOrFocusDate || undefined,
   }
 
   const hasContent = Boolean(startDate)
@@ -339,45 +325,41 @@ export const DatePicker = ({
         aria-live="polite"
       >
         <FocusTrap focusTrapOptions={focusTrapOptions}>
-          <StyledDayPicker
-            firstDayOfWeek={1}
-            todayButton="Jump to today"
-            onTodayButtonClick={(day) => {
-              if (isDateDisabled(day, disabledDays)) {
-                return
-              }
+          <div>
+            <StyledDayPicker
+              locale={enGB}
+              formatters={{
+                formatWeekdayName: (date, options) =>
+                  format(date, 'ccc', options),
+              }}
+              mode="default"
+              modifiers={modifiers}
+              modifiersClassNames={modifiersClassNames}
+              selected={selected}
+              today={today}
+              onDayClick={(day, { disabled }) => {
+                if (disabled) {
+                  return
+                }
 
-              handleDayClick(day)
-              handleDaySelection()
-            }}
-            weekdaysShort={WEEKDAY_TITLES}
-            selectedDays={[
-              {
-                from: replaceInvalidDate(startDate),
-                to: replaceInvalidDate(endDate) || rangeHoverOrFocusDate,
-              },
-            ]}
-            modifiers={modifiers}
-            onDayClick={(day, { disabled }) => {
-              if (disabled) {
-                return
-              }
+                const newState = handleDayClick(day)
 
-              const newState = handleDayClick(day)
-              handleDaySelection()
-              if (newState.endDate || !isRange) {
-                setTimeout(() => close())
-              }
-            }}
-            initialMonth={replaceInvalidDate(startDate) || initialMonth}
-            disabledDays={disabledDays}
-            $isRange={isRange}
-            $isVisible={isOpen}
-            onFocus={onCalendarFocus}
-            onDayMouseEnter={handleDayMouseEnter}
-            onDayMouseLeave={handleDayMouseLeave}
-            onDayFocus={handleDayFocus}
-          />
+                dispatch({ type: DATEPICKER_ACTION.REFRESH_HAS_ERROR })
+                dispatch({ type: DATEPICKER_ACTION.REFRESH_INPUT_VALUE })
+
+                if (newState.endDate || !isRange) {
+                  setTimeout(() => close())
+                }
+              }}
+              defaultMonth={replaceInvalidDate(startDate) || initialMonth}
+              disabled={disabledDays}
+              onDayMouseEnter={handleDayFocusOrMouseEnter}
+              onDayMouseLeave={handleDayBlurOrMouseLeave}
+              onDayFocus={handleDayFocusOrMouseEnter}
+              onDayBlur={handleDayBlurOrMouseLeave}
+              initialFocus
+            />
+          </div>
         </FocusTrap>
       </StyledFloatingBox>
     </>
