@@ -15,6 +15,16 @@ it('sets the line height', () => {
   expect(container.firstChild).toHaveStyleRule('line-height', '24px')
 })
 
+it('sets the arbitrary attribute', () => {
+  const { container } = render(<TextE data-arbitrary="value">Content</TextE>)
+  expect(container.firstChild).toHaveAttribute('data-arbitrary', 'value')
+})
+
+it('sets the id attribute', () => {
+  const { container } = render(<TextE id="value">Content</TextE>)
+  expect(container.firstChild).toHaveAttribute('id', 'value')
+})
+
 it('sets the size for default body text', () => {
   const result = getTextStyles('p', 'body')
   expect(result.fontSize).toEqual(fontSize('m'))
