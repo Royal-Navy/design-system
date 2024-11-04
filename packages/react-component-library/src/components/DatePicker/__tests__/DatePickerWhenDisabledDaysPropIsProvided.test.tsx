@@ -35,16 +35,14 @@ describe('when disabled days prop is provided', () => {
   })
 
   it('applies the disabled modifier class to the correct days', () => {
-    expect(
-      wrapper.getByRole('button', { name: '12th April (Sunday)' })
-    ).toHaveClass('rdp-day_disabled')
+    expect(wrapper.getByRole('gridcell', { name: '12' })).toHaveClass(
+      'rdp-day_disabled'
+    )
   })
 
   describe('and a disabled day is clicked', () => {
     beforeEach(() => {
-      const button = wrapper.getByRole('button', {
-        name: '12th April (Sunday)',
-      })
+      const button = wrapper.getByRole('gridcell', { name: '12' })
 
       return userEvent.click(button, {
         pointerEventsCheck: PointerEventsCheckLevel.Never,

@@ -33,9 +33,7 @@ describe('when single DatePicker is rendered and opened', () => {
   })
 
   it('focuses the current date', () => {
-    expect(
-      wrapper.getByRole('button', { name: '5th December (Thursday)' })
-    ).toHaveFocus()
+    expect(wrapper.getByRole('gridcell', { name: '5' })).toHaveFocus()
   })
 
   describe('when Shift-Tab is pressed once', () => {
@@ -53,9 +51,7 @@ describe('when single DatePicker is rendered and opened', () => {
       })
 
       it('still traps the focus within the picker', () => {
-        expect(
-          wrapper.getByRole('button', { name: '5th December (Thursday)' })
-        ).toHaveFocus()
+        expect(wrapper.getByRole('gridcell', { name: '5' })).toHaveFocus()
       })
     })
   })
@@ -67,8 +63,7 @@ describe('when single DatePicker is rendered and opened', () => {
     },
     {
       name: 'day picker day',
-      selector: () =>
-        wrapper.getByRole('button', { name: '10th December (Tuesday)' }),
+      selector: () => wrapper.getByRole('gridcell', { name: '10' }),
     },
   ])('when the escape key is pressed in $name', ({ selector }) => {
     beforeEach(() => {
@@ -99,7 +94,7 @@ describe('when single DatePicker is rendered and opened', () => {
 
     describe('when the first day is clicked', () => {
       beforeEach(() => {
-        return user.click(wrapper.getByText('1'))
+        return user.click(wrapper.getByRole('gridcell', { name: '1' }))
       })
 
       it('updates the input value', () => {

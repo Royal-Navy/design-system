@@ -164,9 +164,7 @@ describe('DatePicker', () => {
 
       it('colours the current date', () => {
         return waitFor(() => {
-          expect(
-            wrapper.getByRole('button', { name: '5th December (Thursday)' })
-          ).toHaveStyle({
+          expect(wrapper.getByRole('gridcell', { name: '5' })).toHaveStyle({
             color: ColorWarning800,
           })
         })
@@ -631,9 +629,7 @@ describe('DatePicker', () => {
     })
 
     it('focuses the current date', () => {
-      expect(
-        wrapper.getByRole('button', { name: '18th January (Tuesday)' })
-      ).toHaveFocus()
+      expect(wrapper.getByRole('gridcell', { name: '18' })).toHaveFocus()
     })
   })
 

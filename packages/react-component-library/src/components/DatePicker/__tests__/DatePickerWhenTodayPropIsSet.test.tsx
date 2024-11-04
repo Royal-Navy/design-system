@@ -27,17 +27,13 @@ describe('when today prop is set', () => {
   })
 
   it('colours the override date', () => {
-    expect(
-      wrapper.getByRole('button', { name: '15th December (Sunday)' })
-    ).toHaveStyle({
+    expect(wrapper.getByRole('gridcell', { name: '15' })).toHaveStyle({
       color: ColorWarning800,
     })
   })
 
   it('does not colour the actual current date', () => {
-    expect(
-      wrapper.getByRole('button', { name: '5th December (Thursday)' })
-    ).not.toHaveStyle({
+    expect(wrapper.getByRole('gridcell', { name: '5' })).not.toHaveStyle({
       color: ColorWarning800,
     })
   })
