@@ -20,6 +20,11 @@
   "sideEffects": false,
   "author": "Royal Navy",
   "license": "Apache-2.0",
+  "exports": {
+    "types": "./dist/types/src/index.d.ts",
+    "import": "./dist/es/index.js",
+    "require": "./dist/cjs/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Royal-Navy/design-system.git",
