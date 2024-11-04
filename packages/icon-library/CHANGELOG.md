@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.23.8](https://github.com/Royal-Navy/design-system/compare/4.23.7...4.23.8) (2024-11-04)
+
+### Bug Fixes
+
+- **Exports:** Set exports property in package.json for ESM packages ([2645688](https://github.com/Royal-Navy/design-system/commit/26456885ec584a0fa3f66b8cd7ee6a1424debf60))
+
 ## [4.23.7](https://github.com/Royal-Navy/design-system/compare/4.23.6...4.23.7) (2024-11-04)
 
 **Note:** Version bump only for package @royalnavy/icon-library
