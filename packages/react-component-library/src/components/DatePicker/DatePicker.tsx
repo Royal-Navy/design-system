@@ -1,13 +1,24 @@
 import { DayPickerProps } from 'react-day-picker'
 import { enGB } from 'date-fns/locale'
-import FocusTrap from 'focus-trap-react'
 import { format } from 'date-fns'
 import { IconEvent } from '@royalnavy/icon-library'
 import { Placement } from '@popperjs/core'
+import {
+  addMonths,
+  setMonth as changeMonth,
+  setYear as changeYear,
+} from 'date-fns/fp'
+import FocusTrap from 'focus-trap-react'
 import React, { useCallback, useRef, useState } from 'react'
 
-import { DATE_VALIDITY } from './constants'
+import {
+  CALENDAR_TABLE_VARIANT,
+  DATE_VALIDITY,
+  type CalendarTableVariant,
+} from './constants'
 import { BUTTON_VARIANT } from '../Button'
+import { CalendarNavigation } from './CalendarNavigation'
+import { CalendarTable } from './CalendarTable'
 import { COMPONENT_SIZE } from '../Forms'
 import { DATE_FORMAT } from '../../constants'
 import { DATEPICKER_ACTION } from './types'
@@ -152,6 +163,10 @@ export interface DatePickerProps
    * Enable the Jump To Today button that sets the current date to today.
    */
   jumpToToday?: boolean
+  /**
+   * Enable navigation via the Month and Year grids.
+   */
+  navigateMonthYear?: boolean
 }
 
 export const DatePicker = ({
@@ -171,6 +186,7 @@ export const DatePicker = ({
   initialEndDate = null,
   initialMonth,
   placement = 'bottom-start',
+  navigateMonthYear = false,
   jumpToToday = false,
   onBlur,
   today = new Date(),
@@ -188,6 +204,9 @@ export const DatePicker = ({
   const inputRef = useRef<HTMLInputElement>(null)
 
   const [isOpen, setIsOpen] = useState(initialIsOpen)
+
+  const [calendarTableVariant, setCalendarTableVariant] =
+    useState<CalendarTableVariant>(CALENDAR_TABLE_VARIANT.HIDE)
 
   const { hasFocus, onLocalBlur, onLocalFocus } = useFocus()
 
@@ -258,6 +277,29 @@ export const DatePicker = ({
   const handleDaySelection = () => {
     dispatch({ type: DATEPICKER_ACTION.REFRESH_HAS_ERROR })
     dispatch({ type: DATEPICKER_ACTION.REFRESH_INPUT_VALUE })
+  }
+
+  const handleMonthClick = (monthIndex: number) => {
+    dispatch({
+      type: DATEPICKER_ACTION.UPDATE,
+      data: { currentMonth: changeMonth(monthIndex, currentMonth) },
+    })
+    setCalendarTableVariant(CALENDAR_TABLE_VARIANT.HIDE)
+  }
+
+  const handleYearClick = (year: number) => {
+    dispatch({
+      type: DATEPICKER_ACTION.UPDATE,
+      data: { currentMonth: changeYear(year, currentMonth) },
+    })
+    setCalendarTableVariant(CALENDAR_TABLE_VARIANT.HIDE)
+  }
+
+  const handleMonthChange = (increment: number) => {
+    dispatch({
+      type: DATEPICKER_ACTION.UPDATE,
+      data: { currentMonth: addMonths(increment, currentMonth) },
+    })
   }
 
   return (
@@ -334,7 +376,10 @@ export const DatePicker = ({
               aria-owns={floatingBoxId}
               data-testid="datepicker-input-button"
               isDisabled={isDisabled}
-              onClick={toggleIsOpen}
+              onClick={() => {
+                toggleIsOpen()
+                setCalendarTableVariant(CALENDAR_TABLE_VARIANT.HIDE)
+              }}
               ref={buttonRef}
             >
               <IconEvent size={18} />
@@ -354,6 +399,14 @@ export const DatePicker = ({
       >
         <FocusTrap focusTrapOptions={focusTrapOptions}>
           <div>
+            {calendarTableVariant !== CALENDAR_TABLE_VARIANT.HIDE && (
+              <CalendarTable
+                month={currentMonth}
+                variant={calendarTableVariant}
+                onMonthClick={handleMonthClick}
+                onYearClick={handleYearClick}
+              />
+            )}
             {jumpToToday && (
               <StyledJumpToToday
                 variant={BUTTON_VARIANT.TERTIARY}
@@ -377,6 +430,18 @@ export const DatePicker = ({
               >
                 Jump to today
               </StyledJumpToToday>
+            )}
+            {navigateMonthYear && (
+              <CalendarNavigation
+                month={currentMonth}
+                onMonthChange={handleMonthChange}
+                onMonthPickerClick={() =>
+                  setCalendarTableVariant(CALENDAR_TABLE_VARIANT.MONTHS)
+                }
+                onYearPickerClick={() =>
+                  setCalendarTableVariant(CALENDAR_TABLE_VARIANT.YEARS)
+                }
+              />
             )}
             <StyledDayPicker
               locale={enGB}

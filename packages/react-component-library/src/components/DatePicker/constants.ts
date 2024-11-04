@@ -1,5 +1,13 @@
 import { ValueOf } from '../../helpers'
 
+const CALENDAR_TABLE_VARIANT = {
+  HIDE: 'hide',
+  MONTHS: 'months',
+  YEARS: 'years',
+} as const
+
+type CalendarTableVariant = ValueOf<typeof CALENDAR_TABLE_VARIANT>
+
 const DATE_VALIDITY = {
   VALID: 'valid',
   INVALID: 'invalid',
@@ -8,4 +16,9 @@ const DATE_VALIDITY = {
 
 type DateValidity = ValueOf<typeof DATE_VALIDITY>
 
-export { DATE_VALIDITY, type DateValidity }
+export {
+  CALENDAR_TABLE_VARIANT,
+  DATE_VALIDITY,
+  type CalendarTableVariant,
+  type DateValidity,
+}

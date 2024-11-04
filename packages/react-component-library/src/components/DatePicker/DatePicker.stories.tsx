@@ -92,3 +92,9 @@ JumpToToday.storyName = 'Jump to today'
 JumpToToday.args = {
   jumpToToday: true,
 }
+
+export const NavigateMonthYear = Template.bind({})
+NavigateMonthYear.storyName = 'Navigate Months and Years'
+NavigateMonthYear.args = {
+  navigateMonthYear: true,
+}

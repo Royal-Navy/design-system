@@ -79,7 +79,7 @@ test.describe('DatePicker, jump to today', () => {
     await expect(page.locator(selectors.monthHeading)).toHaveText(expectedMonth)
 
     const todayButton = page.getByRole('gridcell', {
-      name: /^5$/,
+      name: new RegExp(`^${today.getDate()}$`),
     })
 
     await expect(todayButton).toHaveClass(/rdp-day_selected/)
