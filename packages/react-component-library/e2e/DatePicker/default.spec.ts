@@ -25,7 +25,7 @@ test.describe('DatePicker, default', () => {
 
     test.describe('and the first day is clicked', () => {
       test.beforeEach(async ({ page }) => {
-        await page.click(`${selectors.day.inside}:has-text("1")`)
+        await page.click(`${selectors.day}:has-text("1")`)
       })
 
       test('sets the value of the input to the date', async ({ page }) => {

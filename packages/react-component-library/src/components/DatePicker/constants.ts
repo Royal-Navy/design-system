@@ -1,8 +1,12 @@
-const LOCALE = {
-  UK: 'en-GB',
-}
+import { ValueOf } from '../../helpers'
 
-const WEEKDAY_TITLES = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+const CALENDAR_TABLE_VIEW = {
+  HIDE: 'hide',
+  MONTHS: 'months',
+  YEARS: 'years',
+} as const
+
+type CalendarTableView = ValueOf<typeof CALENDAR_TABLE_VIEW>
 
 const DATE_VALIDITY = {
   VALID: 'valid',
@@ -10,4 +14,11 @@ const DATE_VALIDITY = {
   DISABLED: 'disabled',
 } as const
 
-export { DATE_VALIDITY, LOCALE, WEEKDAY_TITLES }
+type DateValidity = ValueOf<typeof DATE_VALIDITY>
+
+export {
+  CALENDAR_TABLE_VIEW,
+  DATE_VALIDITY,
+  type CalendarTableView,
+  type DateValidity,
+}

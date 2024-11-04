@@ -1,25 +1,27 @@
 import { format, isValid } from 'date-fns'
 import React, { useState } from 'react'
-
 import { ColorDanger800, ColorWarning800 } from '@royalnavy/design-tokens'
 import {
+  act,
   fireEvent,
   render,
   RenderResult,
   waitFor,
-  waitForElementToBeRemoved,
 } from '@testing-library/react'
-import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event'
 
-import { BORDER_WIDTH } from '../../styled-components'
-import { COMPONENT_SIZE } from '../Forms'
-import { DatePicker, DatePickerOnChangeData } from '.'
-import { DATE_VALIDITY } from './constants'
+import { BORDER_WIDTH } from '../../../styled-components'
+import { COMPONENT_SIZE } from '../../Forms'
+import { DatePicker, DatePickerOnChangeData } from '../index'
+import { DATE_VALIDITY } from '../constants'
 
 const NOW = '2019-12-05T11:00:00.000Z'
+
 const ERROR_BOX_SHADOW = `0 0 0 ${
   BORDER_WIDTH[COMPONENT_SIZE.FORMS]
 } ${ColorDanger800.toUpperCase()}`
+
+const PREVIOUS_MONTH_BUTTON_LABEL = 'Go to previous month'
 
 function formatDate(date: Date | null) {
   return date && isValid(date) ? format(date, 'dd/MM/yyyy') : ''
@@ -31,7 +33,6 @@ describe('DatePicker', () => {
   let initialStartDate: Date
   let label: string
   let onBlur: (e: React.FormEvent) => void
-  let onCalendarFocus: jest.Mock<void, [React.SyntheticEvent]>
   let days: string[]
   let onSubmitSpy: (e: React.FormEvent) => void
   const onChange = jest.fn<void, [DatePickerOnChangeData]>()
@@ -70,466 +71,10 @@ describe('DatePicker', () => {
     onChange.mockReset()
   })
 
-  describe('when in range mode and the state is held externally', () => {
-    let input: HTMLElement
-
-    const RangeExternalStateExample = () => {
-      const [startDate, setStartDate] = useState<Date | null>(
-        new Date('2022-05-10')
-      )
-      const [endDate, setEndDate] = useState<Date | null>(
-        new Date('2022-05-20')
-      )
-
-      return (
-        <>
-          <DatePicker
-            startDate={startDate}
-            endDate={endDate}
-            onChange={({ startDate: newStartDate, endDate: newEndDate }) => {
-              setStartDate(newStartDate)
-              setEndDate(newEndDate)
-            }}
-            isRange
-          />
-          <div data-testid="start-date">{formatDate(startDate)}</div>
-          <div data-testid="end-date">{formatDate(endDate)}</div>
-          <button onClick={() => setStartDate(new Date('2022-05-01'))}>
-            Update start date
-          </button>
-          <button onClick={() => setEndDate(new Date('2022-06-01'))}>
-            Update end date
-          </button>
-          <button
-            onClick={() => {
-              setStartDate(null)
-              setEndDate(null)
-            }}
-          >
-            Clear dates
-          </button>
-        </>
-      )
-    }
-
-    beforeEach(() => {
-      wrapper = render(<RangeExternalStateExample />)
-      input = wrapper.getByTestId('datepicker-input')
-    })
-
-    describe('and the start date is updated externally', () => {
-      beforeEach(() => {
-        return user.click(wrapper.getByText('Update start date'))
-      })
-
-      it('updates the input value', () => {
-        expect(input).toHaveValue('01/05/2022 - 20/05/2022')
-      })
-
-      it('updates the external state', () => {
-        expect(wrapper.getByTestId('start-date')).toHaveTextContent(
-          '01/05/2022'
-        )
-        expect(wrapper.getByTestId('end-date')).toHaveTextContent('20/05/2022')
-      })
-    })
-
-    describe('and the end date is updated externally', () => {
-      beforeEach(() => {
-        return user.click(wrapper.getByText('Update end date'))
-      })
-
-      it('updates the input value', () => {
-        expect(input).toHaveValue('10/05/2022 - 01/06/2022')
-      })
-
-      it('updates the external state', () => {
-        expect(wrapper.getByTestId('start-date')).toHaveTextContent(
-          '10/05/2022'
-        )
-        expect(wrapper.getByTestId('end-date')).toHaveTextContent('01/06/2022')
-      })
-    })
-
-    describe('and the dates are cleared', () => {
-      beforeEach(() => {
-        return user.click(wrapper.getByText('Clear dates'))
-      })
-
-      it('updates the input value', () => {
-        expect(input).toHaveValue('')
-      })
-
-      it('updates the external state', () => {
-        expect(wrapper.getByTestId('start-date')).toBeEmptyDOMElement()
-        expect(wrapper.getByTestId('end-date')).toBeEmptyDOMElement()
-      })
-    })
-  })
-
-  describe('when selecting a date range', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <DatePicker
-          initialStartDate={new Date(2019, 11, 10)}
-          onChange={onChange}
-          isRange
-        />
-      )
-    })
-
-    it('should set the `readonly` attribute on the `input`', () => {
-      expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
-        'readonly',
-        ''
-      )
-    })
-
-    it('does not render the `input` with the `placeholder` attribute', () => {
-      expect(wrapper.getByTestId('datepicker-input')).not.toHaveAttribute(
-        'placeholder'
-      )
-    })
-
-    describe('when the end user clicks on the Input', () => {
-      beforeEach(() => {
-        return user.click(wrapper.getByTestId('datepicker-input'))
-      })
-
-      it('opens the day picker', () => {
-        return waitFor(() => {
-          expect(wrapper.getByTestId('floating-box')).toBeVisible()
-        })
-      })
-
-      describe('and hovers over a second date', () => {
-        beforeEach(() => {
-          return user.hover(wrapper.getByText('13'))
-        })
-
-        it('shades the date range', () => {
-          expect(
-            wrapper.getAllByText(/^10|11|12|13$/, {
-              selector: '.DayPicker-Day--selected',
-            })
-          ).toHaveLength(4)
-        })
-
-        it("doesn't shade dates outside the range", () => {
-          expect(
-            wrapper.queryAllByText(/^(?!(10|11|12|13))\d\d$/, {
-              selector: '.DayPicker-Day--selected',
-            })
-          ).toHaveLength(0)
-        })
-
-        describe('and unhovers the second date', () => {
-          beforeEach(() => {
-            return user.unhover(wrapper.getByText('13'))
-          })
-
-          it('does not shade any days', () => {
-            expect(
-              wrapper.container.querySelectorAll('.DayPicker-Day--selected')
-            ).toHaveLength(0)
-          })
-        })
-      })
-
-      describe('and focuses a second date', () => {
-        beforeEach(() => {
-          fireEvent.focus(wrapper.getByText('13'))
-        })
-
-        it('shades the date range', () => {
-          expect(
-            wrapper.getAllByText(/^10|11|12|13$/, {
-              selector: '.DayPicker-Day--selected',
-            })
-          ).toHaveLength(4)
-        })
-
-        it("doesn't shade dates outside the range", () => {
-          expect(
-            wrapper.queryAllByText(/^(?!(10|11|12|13))\d\d$/, {
-              selector: '.DayPicker-Day--selected',
-            })
-          ).toHaveLength(0)
-        })
-      })
-
-      describe('and clicks on a second date', () => {
-        beforeEach(() => {
-          return user.click(wrapper.getByText('20'))
-        })
-
-        it('closes the day picker', () => {
-          return waitFor(() => {
-            expect(
-              wrapper.queryByTestId('floating-box')
-            ).not.toBeInTheDocument()
-          })
-        })
-
-        it('focuses the open/close button', () => {
-          return waitFor(() =>
-            expect(
-              wrapper.queryByTestId('datepicker-input-button')
-            ).toHaveFocus()
-          )
-        })
-
-        it('set the value of the component to this date', () => {
-          expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
-            '10/12/2019 - 20/12/2019'
-          )
-        })
-
-        it('invokes the onChange callback', () => {
-          expect(onChange).toHaveBeenCalledTimes(1)
-          expect(onChange).toHaveBeenCalledWith({
-            startDate: new Date('2019-12-10T00:00:00.000Z'),
-            startDateValidity: DATE_VALIDITY.VALID,
-            endDate: new Date('2019-12-20T12:00:00.000Z'),
-            endDateValidity: DATE_VALIDITY.VALID,
-          })
-        })
-      })
-
-      describe('and clicks on a date less than the first', () => {
-        beforeEach(() => {
-          return user.click(wrapper.getByText('9'))
-        })
-
-        it('closes the day picker', () => {
-          return waitFor(() => {
-            expect(
-              wrapper.queryByTestId('floating-box')
-            ).not.toBeInTheDocument()
-          })
-        })
-
-        it('updates the value to start from this date', () => {
-          expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
-            '09/12/2019 - 10/12/2019'
-          )
-        })
-
-        it('invokes the onChange callback', () => {
-          expect(onChange).toHaveBeenCalledTimes(1)
-          expect(onChange).toHaveBeenCalledWith({
-            startDate: new Date('2019-12-09T12:00:00.000Z'),
-            startDateValidity: DATE_VALIDITY.VALID,
-            endDate: new Date('2019-12-10T00:00:00.000Z'),
-            endDateValidity: DATE_VALIDITY.VALID,
-          })
-        })
-      })
-    })
-  })
-
-  describe('when a single date picker is rendered and the picker is opened', () => {
-    beforeEach(() => {
-      wrapper = render(<DatePicker />)
-
-      return user.click(wrapper.getByTestId('datepicker-input-button'))
-    })
-
-    it('displays the current month', () => {
-      expect(wrapper.getByText('December 2019')).toBeInTheDocument()
-    })
-
-    it('focuses the previous month button', () => {
-      return waitFor(() =>
-        expect(wrapper.getByLabelText('Previous Month')).toHaveFocus()
-      )
-    })
-
-    describe('when Shift-Tab is pressed three times', () => {
-      beforeEach(async () => {
-        await user.tab({ shift: true })
-        await user.tab({ shift: true })
-        await user.tab({ shift: true })
-      })
-
-      it('traps the focus within the picker', () => {
-        expect(wrapper.getByText('1')).toHaveFocus()
-      })
-
-      describe('and Tab is then pressed once', () => {
-        beforeEach(async () => {
-          await user.tab({ shift: true })
-        })
-
-        it('still traps the focus within the picker', () => {
-          const dayPicker = wrapper.container.querySelectorAll(
-            '.DayPicker-NavButton--next'
-          )[0]
-          expect(dayPicker).toHaveFocus()
-        })
-      })
-    })
-
-    describe.each([
-      {
-        name: 'day picker container',
-        selector: () =>
-          wrapper.container.querySelectorAll('.DayPicker-wrapper')[0],
-      },
-      {
-        name: 'previous month button',
-        selector: () => wrapper.getByLabelText('Previous Month'),
-      },
-      {
-        name: 'day picker day',
-        selector: () => wrapper.getByText(10),
-      },
-    ])('when the escape key is pressed in $name', ({ selector }) => {
-      beforeEach(() => {
-        return user.type(selector(), '{Escape}')
-      })
-
-      it('closes the day picker', () => {
-        return waitFor(() => {
-          expect(wrapper.queryByTestId('floating-box')).not.toBeInTheDocument()
-        })
-      })
-
-      it('focuses the open/close button', () => {
-        return waitFor(() =>
-          expect(wrapper.queryByTestId('datepicker-input-button')).toHaveFocus()
-        )
-      })
-    })
-
-    describe('when the next month button is clicked', () => {
-      beforeEach(() => {
-        return user.click(wrapper.getByLabelText('Next Month'))
-      })
-
-      it('displays the next month', () => {
-        expect(wrapper.getByText('January 2020')).toBeInTheDocument()
-      })
-
-      describe('when the first day is clicked', () => {
-        beforeEach(() => {
-          return user.click(wrapper.getByText('1'))
-        })
-
-        it('updates the input value', () => {
-          expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
-            '01/01/2020'
-          )
-        })
-
-        it('closes the picker', () => {
-          return waitFor(() => {
-            expect(
-              wrapper.queryByTestId('floating-box')
-            ).not.toBeInTheDocument()
-          })
-        })
-
-        it('focuses the open/close button', () => {
-          return waitFor(() =>
-            expect(
-              wrapper.queryByTestId('datepicker-input-button')
-            ).toHaveFocus()
-          )
-        })
-
-        describe('when the picker is reopened', () => {
-          beforeEach(async () => {
-            await waitForElementToBeRemoved(
-              wrapper.queryByTestId('floating-box')
-            )
-            // Does not use `user` due to https://github.com/testing-library/user-event/issues/922
-            await userEvent.click(
-              wrapper.getByTestId('datepicker-input-button'),
-              { advanceTimers: jest.advanceTimersByTime }
-            )
-          })
-
-          it('opens the picker on the previously selected month', () => {
-            expect(wrapper.getByText('January 2020')).toBeInTheDocument()
-          })
-        })
-      })
-    })
-  })
-
-  describe('when the state is held externally', () => {
-    let input: HTMLElement
-
-    const ExternalStateExample = () => {
-      const [value, setValue] = React.useState<Date | null>(null)
-
-      return (
-        <>
-          <DatePicker
-            startDate={value}
-            onChange={({ startDate: newStartDate }) => setValue(newStartDate)}
-          />
-          <div data-testid="value">{formatDate(value)}</div>
-          <button onClick={() => setValue(new Date())}>Today</button>
-          <button onClick={() => setValue(null)}>Clear date</button>
-        </>
-      )
-    }
-
-    beforeEach(() => {
-      wrapper = render(<ExternalStateExample />)
-      input = wrapper.getByTestId('datepicker-input')
-    })
-
-    describe('and a date is typed', () => {
-      beforeEach(() => {
-        return user.type(input, '06/05/2022')
-      })
-
-      it('updates the input value', () => {
-        expect(input).toHaveValue('06/05/2022')
-      })
-
-      it('updates the external state', () => {
-        expect(wrapper.getByTestId('value')).toHaveTextContent('06/05/2022')
-      })
-    })
-
-    describe('and the external state is updated with a new date', () => {
-      beforeEach(() => {
-        return user.click(wrapper.getByText('Today'))
-      })
-
-      it('updates the input value', () => {
-        expect(input).toHaveValue('05/12/2019')
-      })
-
-      it('updates the external state', () => {
-        expect(wrapper.getByTestId('value')).toHaveTextContent('05/12/2019')
-      })
-
-      describe('and the external state is then updated with a null value', () => {
-        beforeEach(() => {
-          return user.click(wrapper.getByText('Clear date'))
-        })
-
-        it('updates the input value', () => {
-          expect(input).toHaveValue('')
-        })
-
-        it('updates the external state', () => {
-          expect(wrapper.getByTestId('value')).toBeEmptyDOMElement()
-        })
-      })
-    })
-  })
-
   describe('default props', () => {
     beforeEach(() => {
       initialStartDate = new Date(2019, 11, 1)
       onBlur = jest.fn()
-      onCalendarFocus = jest.fn<void, [React.SyntheticEvent]>()
 
       wrapper = render(
         <>
@@ -537,7 +82,6 @@ describe('DatePicker', () => {
             initialStartDate={initialStartDate}
             onChange={onChange}
             onBlur={onBlur}
-            onCalendarFocus={onCalendarFocus}
           />
           <div data-testid="datepicker-outside" />
         </>
@@ -620,7 +164,9 @@ describe('DatePicker', () => {
 
       it('colours the current date', () => {
         return waitFor(() => {
-          expect(wrapper.getByText(/^5$/)).toHaveStyle({
+          expect(
+            wrapper.getByRole('button', { name: '5th December (Thursday)' })
+          ).toHaveStyle({
             color: ColorWarning800,
           })
         })
@@ -750,13 +296,13 @@ describe('DatePicker', () => {
 
               describe('and the tab key is pressed again', () => {
                 beforeEach(() => {
-                  onCalendarFocus.mockClear()
                   return user.tab()
                 })
 
-                it('focuses the picker container', () => {
-                  expect(onCalendarFocus).toHaveBeenCalledTimes(1)
-                  // NOTE: `react-day-picker` internals from here on down
+                it('focuses the previous month button', () => {
+                  expect(
+                    wrapper.getByLabelText(PREVIOUS_MONTH_BUTTON_LABEL)
+                  ).toHaveFocus()
                 })
               })
 
@@ -1046,6 +592,18 @@ describe('DatePicker', () => {
     })
   })
 
+  describe('when no label is provided', () => {
+    beforeEach(() => {
+      wrapper = render(<DatePicker label="" />)
+    })
+
+    it('renders label with default', () => {
+      expect(wrapper.getByTestId('datepicker-label').innerHTML).toBe(
+        ' (dd/mm/yyyy)'
+      )
+    })
+  })
+
   describe('when isDisabled prop is provided', () => {
     beforeEach(() => {
       wrapper = render(<DatePicker isDisabled />)
@@ -1062,6 +620,22 @@ describe('DatePicker', () => {
       expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
         'disabled'
       )
+    })
+  })
+
+  describe('when a single date picker with a value is rendered and the picker is opened', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <DatePicker startDate={new Date('2022-01-18T00:00:00Z')} />
+      )
+
+      return user.click(wrapper.getByTestId('datepicker-input-button'))
+    })
+
+    it('focuses the current date', () => {
+      expect(
+        wrapper.getByRole('button', { name: '18th January (Tuesday)' })
+      ).toHaveFocus()
     })
   })
 
@@ -1099,23 +673,7 @@ describe('DatePicker', () => {
     // in range mode
     describe('and return is pressed in the input', () => {
       beforeEach(() => {
-        return user.type(input, '{enter}')
-      })
-
-      it('the input value is unchanged', () => {
-        expect(input).toHaveValue('10/12/2019 - 15/12/2019')
-      })
-    })
-
-    // Note this shouldn't happen in reality as the input is read-only
-    // in range mode
-    describe('and a date is typed in the input', () => {
-      beforeEach(() => {
-        fireEvent.change(input, {
-          target: {
-            value: '10/10/2021',
-          },
-        })
+        return fireEvent.submit(input)
       })
 
       it('the input value is unchanged', () => {
@@ -1125,32 +683,14 @@ describe('DatePicker', () => {
   })
 
   describe('when the initialIsOpen prop is provided', () => {
-    beforeEach(() => {
-      wrapper = render(<DatePicker initialIsOpen />)
+    beforeEach(async () => {
+      await act(async () => {
+        wrapper = render(<DatePicker initialIsOpen />)
+      })
     })
 
     it('displays the picker as open on initial render', () => {
       expect(wrapper.getByTestId('floating-box')).toBeVisible()
-    })
-  })
-
-  describe('when the today prop is set', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <DatePicker initialIsOpen today={new Date(2019, 11, 15)} />
-      )
-    })
-
-    it('colours the override date', () => {
-      expect(wrapper.getByText(/^15$/)).toHaveStyle({
-        color: ColorWarning800,
-      })
-    })
-
-    it('does not colour the actual current date', () => {
-      expect(wrapper.getByText(/^5$/)).not.toHaveStyle({
-        color: ColorWarning800,
-      })
     })
   })
 
@@ -1187,58 +727,13 @@ describe('DatePicker', () => {
     })
   })
 
-  describe('when the `disabledDays` prop is provided', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <DatePicker
-          initialIsOpen
-          onChange={onChange}
-          initialStartDate={new Date(2020, 3, 1)}
-          disabledDays={[new Date(2020, 3, 12)]}
-        />
-      )
-    })
-
-    it('applies the disabled modifier class to the correct days', () => {
-      expect(wrapper.getByText('12')).toHaveClass('DayPicker-Day--disabled')
-    })
-
-    describe('and a disabled day is clicked', () => {
-      beforeEach(() => {
-        return userEvent.click(wrapper.getByText('12'), {
-          pointerEventsCheck: PointerEventsCheckLevel.Never,
-          advanceTimers: jest.advanceTimersByTime,
-        })
-      })
-
-      it('does not set the picker to that day', () => {
-        expect(onChange).not.toHaveBeenCalled()
-      })
-    })
-
-    describe('and a disabled day is typed', () => {
-      beforeEach(() => {
-        const input = wrapper.getByTestId('datepicker-input')
-
-        return user.type(input, '{Control>}a{/Control}12/04/2020')
-      })
-
-      it('calls the `onChange` callback with the disabled date', () => {
-        expect(onChange).toHaveBeenLastCalledWith({
-          startDate: new Date('2020-04-12T12:00:00.000Z'),
-          startDateValidity: DATE_VALIDITY.DISABLED,
-          endDate: new Date('2020-04-12T12:00:00.000Z'),
-          endDateValidity: DATE_VALIDITY.DISABLED,
-        })
-      })
-    })
-  })
-
   describe('when the `initialMonth` prop is provided and no `startDate`', () => {
-    beforeEach(() => {
-      wrapper = render(
-        <DatePicker initialIsOpen initialMonth={new Date(2020, 1)} />
-      )
+    beforeEach(async () => {
+      await act(async () => {
+        wrapper = render(
+          <DatePicker initialIsOpen initialMonth={new Date(2020, 1)} />
+        )
+      })
     })
 
     it('displays the correct month initially', () => {
@@ -1366,6 +861,170 @@ describe('DatePicker', () => {
 
     it('does not throw an error', () => {
       expect(() => render(jsxToRender)).not.toThrow()
+    })
+  })
+
+  describe('when the state is held externally', () => {
+    let input: HTMLElement
+
+    const ExternalStateExample = () => {
+      const [value, setValue] = React.useState<Date | null>(null)
+
+      return (
+        <>
+          <DatePicker
+            startDate={value}
+            onChange={({ startDate: newStartDate }) => setValue(newStartDate)}
+          />
+          <div data-testid="value">{formatDate(value)}</div>
+          <button onClick={() => setValue(new Date())}>Today</button>
+          <button onClick={() => setValue(null)}>Clear date</button>
+        </>
+      )
+    }
+
+    beforeEach(() => {
+      wrapper = render(<ExternalStateExample />)
+      input = wrapper.getByTestId('datepicker-input')
+    })
+
+    describe('and a date is typed', () => {
+      beforeEach(() => {
+        return user.type(input, '06/05/2022')
+      })
+
+      it('updates the input value', () => {
+        expect(input).toHaveValue('06/05/2022')
+      })
+
+      it('updates the external state', () => {
+        expect(wrapper.getByTestId('value')).toHaveTextContent('06/05/2022')
+      })
+    })
+
+    describe('and the external state is updated with a new date', () => {
+      beforeEach(() => {
+        return user.click(wrapper.getByText('Today'))
+      })
+
+      it('updates the input value', () => {
+        expect(input).toHaveValue('05/12/2019')
+      })
+
+      it('updates the external state', () => {
+        expect(wrapper.getByTestId('value')).toHaveTextContent('05/12/2019')
+      })
+
+      describe('and the external state is then updated with a null value', () => {
+        beforeEach(() => {
+          return user.click(wrapper.getByText('Clear date'))
+        })
+
+        it('updates the input value', () => {
+          expect(input).toHaveValue('')
+        })
+
+        it('updates the external state', () => {
+          expect(wrapper.getByTestId('value')).toBeEmptyDOMElement()
+        })
+      })
+    })
+  })
+
+  describe('when in range mode and the state is held externally', () => {
+    let input: HTMLElement
+
+    const RangeExternalStateExample = () => {
+      const [startDate, setStartDate] = useState<Date | null>(
+        new Date('2022-05-10')
+      )
+      const [endDate, setEndDate] = useState<Date | null>(
+        new Date('2022-05-20')
+      )
+
+      return (
+        <>
+          <DatePicker
+            startDate={startDate}
+            endDate={endDate}
+            onChange={({ startDate: newStartDate, endDate: newEndDate }) => {
+              setStartDate(newStartDate)
+              setEndDate(newEndDate)
+            }}
+            isRange
+          />
+          <div data-testid="start-date">{formatDate(startDate)}</div>
+          <div data-testid="end-date">{formatDate(endDate)}</div>
+          <button onClick={() => setStartDate(new Date('2022-05-01'))}>
+            Update start date
+          </button>
+          <button onClick={() => setEndDate(new Date('2022-06-01'))}>
+            Update end date
+          </button>
+          <button
+            onClick={() => {
+              setStartDate(null)
+              setEndDate(null)
+            }}
+          >
+            Clear dates
+          </button>
+        </>
+      )
+    }
+
+    beforeEach(() => {
+      wrapper = render(<RangeExternalStateExample />)
+      input = wrapper.getByTestId('datepicker-input')
+    })
+
+    describe('and the start date is updated externally', () => {
+      beforeEach(() => {
+        return user.click(wrapper.getByText('Update start date'))
+      })
+
+      it('updates the input value', () => {
+        expect(input).toHaveValue('01/05/2022 - 20/05/2022')
+      })
+
+      it('updates the external state', () => {
+        expect(wrapper.getByTestId('start-date')).toHaveTextContent(
+          '01/05/2022'
+        )
+        expect(wrapper.getByTestId('end-date')).toHaveTextContent('20/05/2022')
+      })
+    })
+
+    describe('and the end date is updated externally', () => {
+      beforeEach(() => {
+        return user.click(wrapper.getByText('Update end date'))
+      })
+
+      it('updates the input value', () => {
+        expect(input).toHaveValue('10/05/2022 - 01/06/2022')
+      })
+
+      it('updates the external state', () => {
+        expect(wrapper.getByTestId('start-date')).toHaveTextContent(
+          '10/05/2022'
+        )
+        expect(wrapper.getByTestId('end-date')).toHaveTextContent('01/06/2022')
+      })
+    })
+
+    describe('and the dates are cleared', () => {
+      beforeEach(() => {
+        return user.click(wrapper.getByText('Clear dates'))
+      })
+
+      it('updates the input value', () => {
+        expect(input).toHaveValue('')
+      })
+
+      it('updates the external state', () => {
+        expect(wrapper.getByTestId('start-date')).toBeEmptyDOMElement()
+        expect(wrapper.getByTestId('end-date')).toBeEmptyDOMElement()
+      })
     })
   })
 

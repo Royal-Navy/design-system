@@ -4,6 +4,7 @@ export interface DatePickerState {
   inputValue: string
   datePickerFormat: string
   hasError: boolean
+  currentMonth: Date
 }
 
 export const DATEPICKER_ACTION = {

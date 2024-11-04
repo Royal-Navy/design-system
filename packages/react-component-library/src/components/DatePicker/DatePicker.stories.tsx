@@ -86,3 +86,15 @@ RangeWithInitialValue.args = {
   initialStartDate: parseISO('2021-12-05'),
   initialEndDate: parseISO('2021-12-15'),
 }
+
+export const JumpToToday = Template.bind({})
+JumpToToday.storyName = 'Jump to today'
+JumpToToday.args = {
+  jumpToToday: true,
+}
+
+export const NavigateMonthYear = Template.bind({})
+NavigateMonthYear.storyName = 'Navigate Months and Years'
+NavigateMonthYear.args = {
+  navigateMonthYear: true,
+}

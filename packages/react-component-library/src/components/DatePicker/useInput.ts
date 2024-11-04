@@ -1,4 +1,4 @@
-import { addHours, isValid, parse } from 'date-fns'
+import { isValid, parse } from 'date-fns'
 import React, { useCallback } from 'react'
 
 import { DATEPICKER_ACTION, DatePickerAction } from './types'
@@ -14,7 +14,7 @@ function parseDate(datePickerFormat: string, value: string) {
     return new Date(NaN)
   }
 
-  return addHours(date, 12)
+  return date
 }
 
 export function useInput(
@@ -44,7 +44,7 @@ export function useInput(
   }, [dispatch, isRange])
 
   const handleInputChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event) => {
       if (isRange) {
         return
       }
