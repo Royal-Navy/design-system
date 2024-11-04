@@ -297,8 +297,10 @@ describe('DatePicker', () => {
                   return user.tab()
                 })
 
-                it('focuses the Jump to Today button', () => {
-                  expect(wrapper.getByLabelText('Jump to today')).toHaveFocus()
+                it('focuses the previous month button', () => {
+                  expect(
+                    wrapper.getByLabelText(PREVIOUS_MONTH_BUTTON_LABEL)
+                  ).toHaveFocus()
                 })
               })
 

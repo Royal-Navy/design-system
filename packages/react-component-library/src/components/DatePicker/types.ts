@@ -1,6 +1,7 @@
 export interface DatePickerState {
   startDate: Date | null
   endDate: Date | null
+  currentMonth: Date
   inputValue: string
   datePickerFormat: string
   hasError: boolean

@@ -30,13 +30,20 @@ function getNewState(
 
 export function isDateInMatcher(
   date: Date,
-  matcher: Matcher | Matcher[]
-): boolean {
-  const matchersArray = Array.isArray(matcher) ? matcher : [matcher]
-  return isMatch(date, matchersArray)
+  matcher: Matcher | Matcher[] | undefined
+) {
+  if (!matcher) {
+    return false
+  }
+
+  if (Array.isArray(matcher)) {
+    return isMatch(date, matcher)
+  }
+
+  return isMatch(date, [matcher])
 }
 
-function calculateDateValidity(
+export function calculateDateValidity(
   date: Date | null,
   disabledDays: DayPickerProps['disabled']
 ): DatePickerDateValidityType | null {

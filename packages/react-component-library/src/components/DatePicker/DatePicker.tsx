@@ -13,7 +13,7 @@ import { DATE_FORMAT } from '../../constants'
 import { DATEPICKER_ACTION } from './types'
 import { hasClass, type ValueOf } from '../../helpers'
 import { InlineButton } from '../InlineButtons/InlineButton'
-import { isDateDisabled, replaceInvalidDate } from './utils'
+import { isDateValid, replaceInvalidDate } from './utils'
 import { StyledDatePickerInput } from './partials/StyledDatePickerInput'
 import { StyledDayPicker } from './partials/StyledDayPicker'
 import { StyledFloatingBox } from './partials/StyledFloatingBox'
@@ -29,10 +29,15 @@ import { useDatePickerReducer } from './useDatePickerReducer'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useFocus } from '../../hooks/useFocus'
 import { useFocusTrapOptions } from './useFocusTrapOptions'
-import { useHandleDayClick } from './useHandleDayClick'
+import { useHandleDayClick, calculateDateValidity } from './useHandleDayClick'
 import { useInput } from './useInput'
 import { useRangeHoverOrFocusDate } from './useRangeHoverOrFocusDate'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
+
+const MODIFIERS_CLASS_NAMES = {
+  start: 'rdp-day_start',
+  end: 'rdp-day_end',
+}
 
 export type DatePickerDateValidityType = ValueOf<typeof DATE_VALIDITY>
 
@@ -41,11 +46,6 @@ export interface DatePickerOnChangeData {
   startDateValidity: DatePickerDateValidityType | null
   endDate: Date | null
   endDateValidity: DatePickerDateValidityType | null
-}
-
-const MODIFIERS_CLASS_NAMES = {
-  start: 'rdp-day_start',
-  end: 'rdp-day_end',
 }
 
 export interface DatePickerProps
@@ -148,6 +148,10 @@ export interface DatePickerProps
    * Not used. Use `startDate` and `endDate` instead.
    */
   value?: never
+  /**
+   * Enable the Jump To Today button that sets the current date to today.
+   */
+  jumpToToday?: boolean
 }
 
 export const DatePicker = ({
@@ -167,6 +171,7 @@ export const DatePicker = ({
   initialEndDate = null,
   initialMonth,
   placement = 'bottom-start',
+  jumpToToday = false,
   onBlur,
   today = new Date(),
 
@@ -204,7 +209,8 @@ export const DatePicker = ({
     initialStartDate,
     initialEndDate,
     datePickerFormat,
-    isRange
+    isRange,
+    initialMonth
   )
 
   const handleDayClick = useHandleDayClick(
@@ -215,7 +221,7 @@ export const DatePicker = ({
     onChange
   )
 
-  const { startDate, endDate } = state
+  const { startDate, endDate, currentMonth } = state
 
   const hasError =
     state.hasError || isInvalid || hasClass(className, 'is-invalid')
@@ -293,6 +299,14 @@ export const DatePicker = ({
               onBlur={(e) => {
                 onLocalBlur(e)
                 handleInputBlur()
+
+                if (isDateValid(state.startDate)) {
+                  dispatch({
+                    type: DATEPICKER_ACTION.UPDATE,
+                    data: { currentMonth: state.startDate },
+                  })
+                }
+
                 if (onBlur) {
                   onBlur(e)
                 }
@@ -340,22 +354,30 @@ export const DatePicker = ({
       >
         <FocusTrap focusTrapOptions={focusTrapOptions}>
           <div>
-            <StyledJumpToToday
-              variant={BUTTON_VARIANT.TERTIARY}
-              size={COMPONENT_SIZE.SMALL}
-              aria-label="Jump to today"
-              aria-disabled="false"
-              onClick={() => {
-                if (isDateDisabled(today, disabledDays)) {
-                  return
-                }
+            {jumpToToday && (
+              <StyledJumpToToday
+                variant={BUTTON_VARIANT.TERTIARY}
+                size={COMPONENT_SIZE.SMALL}
+                onClick={() => {
+                  if (
+                    calculateDateValidity(today, disabledDays) !==
+                    DATE_VALIDITY.VALID
+                  ) {
+                    return
+                  }
 
-                handleDayClick(today)
-                handleDaySelection()
-              }}
-            >
-              Jump to today
-            </StyledJumpToToday>
+                  dispatch({
+                    type: DATEPICKER_ACTION.UPDATE,
+                    data: { currentMonth: today },
+                  })
+
+                  handleDayClick(today)
+                  handleDaySelection()
+                }}
+              >
+                Jump to today
+              </StyledJumpToToday>
+            )}
             <StyledDayPicker
               locale={enGB}
               formatters={{
@@ -380,8 +402,14 @@ export const DatePicker = ({
                   setTimeout(() => close())
                 }
               }}
+              month={currentMonth}
+              onMonthChange={(month) => {
+                dispatch({
+                  type: DATEPICKER_ACTION.UPDATE,
+                  data: { currentMonth: month },
+                })
+              }}
               disabled={disabledDays}
-              defaultMonth={replaceInvalidDate(startDate) || initialMonth}
               onDayMouseEnter={handleDayFocusOrMouseEnter}
               onDayMouseLeave={handleDayBlurOrMouseLeave}
               onDayFocus={handleDayFocusOrMouseEnter}
