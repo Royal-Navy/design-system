@@ -25,7 +25,7 @@ test.describe('DatePicker, default', () => {
 
     test.describe('and the first day is clicked', () => {
       test.beforeEach(async ({ page }) => {
-        await page.click(`${selectors.day.inside}:has-text("1")`)
+        await page.click(`${selectors.day}:has-text("1")`)
       })
 
       test('sets the value of the input to the date', async ({ page }) => {
@@ -42,5 +42,48 @@ test.describe('DatePicker, default', () => {
         )
       })
     })
+  })
+})
+
+test.describe('DatePicker, jump to today', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(
+      '/iframe.html?id=components-date-picker--jump-to-today&viewMode=story'
+    )
+  })
+
+  test('jumps to today when button is clicked', async ({ page }) => {
+    await page.click(selectors.button)
+
+    const prevMonthButton = page.getByRole('button', {
+      name: /go to previous month/i,
+    })
+    await prevMonthButton.click()
+    await prevMonthButton.click()
+    await prevMonthButton.click()
+
+    const initialMonth = await page
+      .locator(selectors.monthHeading)
+      .textContent()
+
+    await page.getByRole('button', { name: /jump to today/i }).click()
+
+    const today = new Date()
+    const expectedMonth = today.toLocaleString('default', {
+      month: 'long',
+      year: 'numeric',
+    })
+
+    expect(initialMonth).not.toBe(expectedMonth)
+
+    await expect(page.locator(selectors.monthHeading)).toHaveText(expectedMonth)
+
+    const todayButton = page.getByRole('gridcell', {
+      name: /^5$/,
+    })
+
+    await expect(todayButton).toHaveClass(/rdp-day_selected/)
+    await expect(todayButton).toHaveClass(/rdp-day_today/)
+    await expect(todayButton).toHaveAttribute('aria-selected', 'true')
   })
 })

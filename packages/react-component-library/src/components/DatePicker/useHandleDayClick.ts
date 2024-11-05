@@ -1,6 +1,6 @@
-import { isValid, max, min } from 'date-fns'
+import { addHours, isValid, max, min, startOfDay } from 'date-fns'
 import React from 'react'
-import { DayPickerProps, ModifiersUtils } from 'react-day-picker'
+import { DayPickerProps, isMatch, Matcher } from 'react-day-picker'
 
 import {
   DatePickerDateValidityType,
@@ -28,9 +28,24 @@ function getNewState(
   return { startDate: day, endDate: null }
 }
 
-function calculateDateValidity(
+export function isDateInMatcher(
+  date: Date,
+  matcher: Matcher | Matcher[] | undefined
+) {
+  if (!matcher) {
+    return false
+  }
+
+  if (Array.isArray(matcher)) {
+    return isMatch(date, matcher)
+  }
+
+  return isMatch(date, [matcher])
+}
+
+export function calculateDateValidity(
   date: Date | null,
-  disabledDays: DayPickerProps['disabledDays']
+  disabledDays: DayPickerProps['disabled']
 ): DatePickerDateValidityType | null {
   if (!date) {
     return null
@@ -40,22 +55,30 @@ function calculateDateValidity(
     return DATE_VALIDITY.INVALID
   }
 
-  if (ModifiersUtils.dayMatchesModifier(date, disabledDays)) {
+  if (disabledDays && isDateInMatcher(date, disabledDays)) {
     return DATE_VALIDITY.DISABLED
   }
 
   return DATE_VALIDITY.VALID
 }
 
+function normaliseDate(date: Date | null): Date | null {
+  if (!date) {
+    return date
+  }
+
+  return addHours(startOfDay(date), 12)
+}
+
 export const useHandleDayClick = (
   state: DatePickerState,
   dispatch: React.Dispatch<DatePickerAction>,
   isRange: boolean,
-  disabledDays: DayPickerProps['disabledDays'],
+  disabledDays: DayPickerProps['disabled'],
   onChange?: (data: DatePickerOnChangeData) => void
 ): ((day: Date | null) => { startDate: Date | null; endDate: Date | null }) => {
   function handleDayClick(day: Date | null) {
-    const newState = getNewState(isRange, day, state)
+    const newState = getNewState(isRange, normaliseDate(day), state)
 
     dispatch({
       type: DATEPICKER_ACTION.UPDATE,

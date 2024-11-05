@@ -1,8 +1,4 @@
-const LOCALE = {
-  UK: 'en-GB',
-}
-
-const WEEKDAY_TITLES = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+import { ValueOf } from '../../helpers'
 
 const DATE_VALIDITY = {
   VALID: 'valid',
@@ -10,4 +6,6 @@ const DATE_VALIDITY = {
   DISABLED: 'disabled',
 } as const
 
-export { DATE_VALIDITY, LOCALE, WEEKDAY_TITLES }
+type DateValidity = ValueOf<typeof DATE_VALIDITY>
+
+export { DATE_VALIDITY, type DateValidity }

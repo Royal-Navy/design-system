@@ -1,16 +1,23 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useEffect, useMemo, useReducer } from 'react'
 
-import { areDatesEqual, isDateValid, formatDatesForInput } from './utils'
+import {
+  areDatesEqual,
+  isDateValid,
+  formatDatesForInput,
+  replaceInvalidDate,
+} from './utils'
 import { DATEPICKER_ACTION, DatePickerAction, DatePickerState } from './types'
 
 function init({
   startDate,
   endDate,
+  currentMonth,
   datePickerFormat,
 }: Omit<DatePickerState, 'hasError' | 'inputValue'>) {
   return {
     startDate,
     endDate,
+    currentMonth,
     datePickerFormat,
     hasError: false,
     inputValue: formatDatesForInput(startDate, endDate, datePickerFormat),
@@ -67,19 +74,34 @@ function shouldReset(
   )
 }
 
+const getEffectiveDate = (
+  date: Date | null | undefined,
+  initialDate: Date | null
+) => (date === undefined ? initialDate : date)
+
 export function useDatePickerReducer(
   startDate: Date | null | undefined,
   endDate: Date | null | undefined,
   initialStartDate: Date | null,
   initialEndDate: Date | null,
   datePickerFormat: string,
-  isRange: boolean
+  isRange: boolean,
+  initialMonth: Date | null | undefined
 ): [DatePickerState, React.Dispatch<DatePickerAction>] {
+  const effectiveStartDate = getEffectiveDate(startDate, initialStartDate)
+  const effectiveEndDate = getEffectiveDate(endDate, initialEndDate)
+
+  const currentMonth = useMemo(
+    () => replaceInvalidDate(effectiveStartDate) || initialMonth || new Date(),
+    [effectiveStartDate, initialMonth]
+  )
+
   const [state, dispatch] = useReducer(
     reducer,
     {
-      startDate: startDate === undefined ? initialStartDate : startDate,
-      endDate: endDate === undefined ? initialEndDate : endDate,
+      startDate: effectiveStartDate,
+      endDate: effectiveEndDate,
+      currentMonth,
       datePickerFormat,
     },
     init
@@ -92,11 +114,12 @@ export function useDatePickerReducer(
         data: {
           startDate: startDate ?? null,
           endDate: endDate ?? null,
+          currentMonth,
           datePickerFormat,
         },
       })
     }
-  }, [datePickerFormat, endDate, isRange, startDate, state])
+  }, [datePickerFormat, endDate, isRange, startDate, state, currentMonth])
 
   return [state, dispatch]
 }
