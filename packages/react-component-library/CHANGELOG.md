@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.24.0](https://github.com/Royal-Navy/design-system/compare/4.23.8...4.24.0) (2024-11-06)
+
+### Features
+
+- **DatePicker:** Add jumpToToday prop and story ([58dbbf7](https://github.com/Royal-Navy/design-system/commit/58dbbf746d4ab3cfa0eab40b94dd1b82d8022a75))
+- **DatePicker:** Upgrade react-day-picker to 8.10.1 ([1f79efa](https://github.com/Royal-Navy/design-system/commit/1f79efa16f2528ec1974f28e2b1095fb3e6ba6f2))
+- **DatePicker:** Upgrade react-day-picker to 8.3.1 ([0b791b1](https://github.com/Royal-Navy/design-system/commit/0b791b1546696ea1f96010ca25ce8d616cbe6bbc))
+
 ## [4.23.8](https://github.com/Royal-Navy/design-system/compare/4.23.7...4.23.8) (2024-11-04)
 
 ### Bug Fixes
