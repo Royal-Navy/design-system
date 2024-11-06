@@ -36,7 +36,7 @@ export const StyledDayPicker = styled(DayPicker)`
   }
 
   .rdp-month {
-    margin: ${spacing('6')} ${spacing('6')} 0;
+    margin: ${spacing('8')} ${spacing('6')} 0;
     user-select: none;
   }
 
@@ -46,7 +46,7 @@ export const StyledDayPicker = styled(DayPicker)`
       $variant: BUTTON_VARIANT.TERTIARY,
     })}
     position: absolute;
-    top: ${spacing('4')};
+    top: ${spacing('6')};
     width: 38px;
     background-position: center;
     background-size: 18px;
