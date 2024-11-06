@@ -19,11 +19,14 @@ export interface TextEProps extends ComponentWithClass {
    * The type of element to use for the root node, `'p'` by default.
    */
   el?: TextElement
+  /**
+   * Optional id attribute for the root node
+   */
+  id?: string
   /*
     The display variant to use, 'body' by default
    */
   variant?: TextVariant
-
   /**
    * Optional CSS color value for the text color
    */
@@ -44,9 +47,9 @@ export const TextE = ({
   el = 'p',
   color,
   backgroundColor = 'none',
-  className,
   variant,
   wordWrap = true,
+  ...rest
 }: TextEProps) => {
   const { fontSize, lineHeight, defaultColor, element, display } =
     getTextStyles(el, variant)
@@ -57,7 +60,6 @@ export const TextE = ({
   return (
     <StyledTextComponent
       as={element}
-      className={className}
       $align={align}
       $backgroundColor={backgroundColor}
       $lineHeight={lineHeight}
@@ -65,6 +67,7 @@ export const TextE = ({
       $size={fontSize}
       $textColor={textColor}
       style={extraStyles}
+      {...rest}
     >
       {children}
     </StyledTextComponent>
