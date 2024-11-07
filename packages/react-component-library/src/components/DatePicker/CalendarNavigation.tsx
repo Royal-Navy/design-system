@@ -12,8 +12,8 @@ import {
 interface CalendarNavigationProps {
   month: Date
   onMonthChange: (increment: number) => void
-  onMonthPickerClick: () => void
-  onYearPickerClick: () => void
+  onMonthPickerClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onYearPickerClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export const CalendarNavigation = ({

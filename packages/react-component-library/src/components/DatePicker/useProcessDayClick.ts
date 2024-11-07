@@ -1,6 +1,6 @@
 import { addHours, isValid, max, min, startOfDay } from 'date-fns'
-import React from 'react'
 import { DayPickerProps, isMatch, Matcher } from 'react-day-picker'
+import React from 'react'
 
 import {
   DatePickerDateValidityType,
@@ -70,14 +70,14 @@ function normaliseDate(date: Date | null): Date | null {
   return addHours(startOfDay(date), 12)
 }
 
-export const useHandleDayClick = (
+export const useProcessDayClick = (
   state: DatePickerState,
   dispatch: React.Dispatch<DatePickerAction>,
   isRange: boolean,
   disabledDays: DayPickerProps['disabled'],
   onChange?: (data: DatePickerOnChangeData) => void
 ): ((day: Date | null) => { startDate: Date | null; endDate: Date | null }) => {
-  function handleDayClick(day: Date | null) {
+  function processDayClick(day: Date | null) {
     const newState = getNewState(isRange, normaliseDate(day), state)
 
     dispatch({
@@ -99,5 +99,5 @@ export const useHandleDayClick = (
     return newState
   }
 
-  return handleDayClick
+  return processDayClick
 }
