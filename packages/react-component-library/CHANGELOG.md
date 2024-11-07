@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.25.0](https://github.com/Royal-Navy/design-system/compare/4.24.0...4.25.0) (2024-11-07)
+
+### Features
+
+- **DatePicker:** Enhance with Year Month selection ([c45c3b9](https://github.com/Royal-Navy/design-system/commit/c45c3b9176ca25d973205b144b7531b7cbfb9862))
+- **Text:** Allow arbitrary props ([396fafe](https://github.com/Royal-Navy/design-system/commit/396fafe5d833d20ef32c95c53cdfe3f9250490ab))
+
 # [4.24.0](https://github.com/Royal-Navy/design-system/compare/4.23.8...4.24.0) (2024-11-06)
 
 ### Features
