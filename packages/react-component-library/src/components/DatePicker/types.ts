@@ -1,22 +1,27 @@
+import { CalendarTableVariant } from './constants'
+
 export interface DatePickerState {
   startDate: Date | null
   endDate: Date | null
   currentMonth: Date
-  inputValue: string
   datePickerFormat: string
   hasError: boolean
+  inputValue: string
+  isOpen: boolean
+  calendarTableVariant: CalendarTableVariant
 }
 
 export const DATEPICKER_ACTION = {
-  RESET: 'reset',
-  UPDATE: 'update',
-  REFRESH_HAS_ERROR: 'refreshHasError',
-  REFRESH_INPUT_VALUE: 'refreshInputValue',
+  RESET: 'RESET',
+  UPDATE: 'UPDATE',
+  REFRESH_HAS_ERROR: 'REFRESH_HAS_ERROR',
+  REFRESH_INPUT_VALUE: 'REFRESH_INPUT_VALUE',
+  TOGGLE_OPEN: 'TOGGLE_OPEN',
 } as const
 
 interface ResetAction {
   type: typeof DATEPICKER_ACTION.RESET
-  data: Omit<DatePickerState, 'hasError' | 'inputValue'>
+  data: Omit<DatePickerState, 'hasError' | 'inputValue' | 'isOpen'>
 }
 
 interface UpdateAction {
@@ -34,8 +39,14 @@ interface RefreshInputValueAction {
   data?: never
 }
 
+interface ToggleOpenAction {
+  type: typeof DATEPICKER_ACTION.TOGGLE_OPEN
+  data?: never
+}
+
 export type DatePickerAction =
   | ResetAction
   | UpdateAction
   | RefreshHasErrorAction
   | RefreshInputValueAction
+  | ToggleOpenAction

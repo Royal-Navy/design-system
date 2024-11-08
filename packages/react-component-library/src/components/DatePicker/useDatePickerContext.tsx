@@ -1,19 +1,47 @@
-import React, { useEffect, useMemo, useReducer } from 'react'
-
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+} from 'react'
+import { DatePickerState, DATEPICKER_ACTION, DatePickerAction } from './types'
 import {
   areDatesEqual,
   isDateValid,
   formatDatesForInput,
   replaceInvalidDate,
 } from './utils'
-import { DATEPICKER_ACTION, DatePickerAction, DatePickerState } from './types'
+import { CALENDAR_TABLE_VARIANT } from './constants'
+
+interface DatePickerContextType {
+  state: DatePickerState
+  dispatch: React.Dispatch<DatePickerAction>
+}
+
+const DatePickerContext = createContext<DatePickerContextType | undefined>(
+  undefined
+)
+
+interface DatePickerProviderProps {
+  children: React.ReactNode
+  startDate: Date | null | undefined
+  endDate: Date | null | undefined
+  initialStartDate: Date | null
+  initialEndDate: Date | null
+  datePickerFormat: string
+  isRange: boolean
+  initialMonth: Date | null | undefined
+  initialIsOpen?: boolean
+}
 
 function init({
   startDate,
   endDate,
   currentMonth,
   datePickerFormat,
-}: Omit<DatePickerState, 'hasError' | 'inputValue'>) {
+  isOpen = false,
+}: Omit<DatePickerState, 'hasError' | 'inputValue' | 'calendarTableVariant'>) {
   return {
     startDate,
     endDate,
@@ -21,6 +49,8 @@ function init({
     datePickerFormat,
     hasError: false,
     inputValue: formatDatesForInput(startDate, endDate, datePickerFormat),
+    isOpen,
+    calendarTableVariant: CALENDAR_TABLE_VARIANT.HIDE,
   }
 }
 
@@ -30,7 +60,7 @@ function reducer(
 ): DatePickerState {
   switch (action.type) {
     case DATEPICKER_ACTION.RESET:
-      return init(action.data)
+      return init({ ...action.data, isOpen: state.isOpen })
     case DATEPICKER_ACTION.UPDATE:
       return { ...state, ...action.data }
     case DATEPICKER_ACTION.REFRESH_HAS_ERROR:
@@ -50,6 +80,11 @@ function reducer(
           state.endDate,
           state.datePickerFormat
         ),
+      }
+    case DATEPICKER_ACTION.TOGGLE_OPEN:
+      return {
+        ...state,
+        isOpen: !state.isOpen,
       }
     default:
       throw new Error('Unknown reducer action type')
@@ -79,15 +114,17 @@ const getEffectiveDate = (
   initialDate: Date | null
 ) => (date === undefined ? initialDate : date)
 
-export function useDatePickerReducer(
-  startDate: Date | null | undefined,
-  endDate: Date | null | undefined,
-  initialStartDate: Date | null,
-  initialEndDate: Date | null,
-  datePickerFormat: string,
-  isRange: boolean,
-  initialMonth: Date | null | undefined
-): [DatePickerState, React.Dispatch<DatePickerAction>] {
+export function DatePickerProvider({
+  children,
+  startDate,
+  endDate,
+  initialStartDate,
+  initialEndDate,
+  datePickerFormat,
+  isRange,
+  initialMonth,
+  initialIsOpen = false,
+}: DatePickerProviderProps) {
   const effectiveStartDate = getEffectiveDate(startDate, initialStartDate)
   const effectiveEndDate = getEffectiveDate(endDate, initialEndDate)
 
@@ -103,6 +140,7 @@ export function useDatePickerReducer(
       endDate: effectiveEndDate,
       currentMonth,
       datePickerFormat,
+      isOpen: initialIsOpen,
     },
     init
   )
@@ -116,10 +154,43 @@ export function useDatePickerReducer(
           endDate: endDate ?? null,
           currentMonth,
           datePickerFormat,
+          calendarTableVariant: CALENDAR_TABLE_VARIANT.HIDE,
         },
       })
     }
-  }, [datePickerFormat, endDate, isRange, startDate, state, currentMonth])
+  }, [
+    datePickerFormat,
+    endDate,
+    isRange,
+    startDate,
+    state,
+    currentMonth,
+    initialIsOpen,
+  ])
 
-  return [state, dispatch]
+  const value = useMemo(
+    () => ({
+      state,
+      dispatch,
+    }),
+    [state]
+  )
+
+  return (
+    <DatePickerContext.Provider value={value}>
+      {children}
+    </DatePickerContext.Provider>
+  )
+}
+
+export function useDatePickerContext() {
+  const context = useContext(DatePickerContext)
+
+  if (context === undefined) {
+    throw new Error(
+      'useDatePickerContext must be used within a DatePickerProvider'
+    )
+  }
+
+  return context
 }

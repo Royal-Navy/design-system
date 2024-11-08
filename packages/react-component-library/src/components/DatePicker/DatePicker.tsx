@@ -1,54 +1,17 @@
 import { DayPickerProps } from 'react-day-picker'
-import { enGB } from 'date-fns/locale'
-import { format } from 'date-fns'
-import { IconEvent } from '@royalnavy/icon-library'
 import { Placement } from '@popperjs/core'
-import {
-  addMonths,
-  setMonth as changeMonth,
-  setYear as changeYear,
-} from 'date-fns/fp'
-import FocusTrap from 'focus-trap-react'
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 
-import {
-  CALENDAR_TABLE_VARIANT,
-  DATE_VALIDITY,
-  type CalendarTableVariant,
-} from './constants'
-import { BUTTON_VARIANT } from '../Button'
-import { CalendarNavigation } from './CalendarNavigation'
-import { CalendarTable } from './CalendarTable'
-import { COMPONENT_SIZE } from '../Forms'
 import { DATE_FORMAT } from '../../constants'
-import { DATEPICKER_ACTION } from './types'
-import { hasClass, type ValueOf } from '../../helpers'
-import { InlineButton } from '../InlineButtons/InlineButton'
-import { isDateValid, replaceInvalidDate } from './utils'
-import { StyledDatePickerInput } from './partials/StyledDatePickerInput'
-import { StyledDayPicker } from './partials/StyledDayPicker'
-import { StyledFloatingBox } from './partials/StyledFloatingBox'
-import { StyledInlineButtons } from '../InlineButtons/partials/StyledInlineButtons'
-import { StyledInput } from '../TextInput/partials/StyledInput'
-import { StyledInputWrapper } from './partials/StyledInputWrapper'
-import { StyledJumpToToday } from './partials/StyledJumpToToday'
-import { StyledLabel } from '../TextInput/partials/StyledLabel'
-import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
+import { DATE_VALIDITY } from './constants'
+import { DatePickerProvider } from './useDatePickerContext'
+import { FloatingCalendar } from './FloatingCalendar'
+import { Input } from './Input'
 import { type ComponentWithClass } from '../../common/ComponentWithClass'
 import { type InputValidationProps } from '../../common/InputValidationProps'
-import { useDatePickerReducer } from './useDatePickerReducer'
+import { type ValueOf } from '../../helpers'
 import { useExternalId } from '../../hooks/useExternalId'
-import { useFocus } from '../../hooks/useFocus'
-import { useFocusTrapOptions } from './useFocusTrapOptions'
-import { useHandleDayClick, calculateDateValidity } from './useHandleDayClick'
-import { useInput } from './useInput'
-import { useRangeHoverOrFocusDate } from './useRangeHoverOrFocusDate'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
-
-const MODIFIERS_CLASS_NAMES = {
-  start: 'rdp-day_start',
-  end: 'rdp-day_end',
-}
 
 export type DatePickerDateValidityType = ValueOf<typeof DATE_VALIDITY>
 
@@ -171,24 +134,24 @@ export interface DatePickerProps
 
 export const DatePicker = ({
   className,
+  disabledDays,
   endDate: externalEndDate,
   format: datePickerFormat = DATE_FORMAT.SHORT,
-  id: externalId,
+  id,
+  initialEndDate = null,
+  initialIsOpen = false,
+  initialMonth,
+  initialStartDate = null,
   isDisabled = false,
   isInvalid,
   isRange = false,
-  label = 'Date',
-  onChange,
-  startDate: externalStartDate,
-  initialIsOpen = false,
-  disabledDays,
-  initialStartDate = null,
-  initialEndDate = null,
-  initialMonth,
-  placement = 'bottom-start',
-  navigateMonthYear = false,
   jumpToToday = false,
+  label = 'Date',
+  navigateMonthYear = false,
   onBlur,
+  onChange,
+  placement = 'bottom-start',
+  startDate: externalStartDate,
   today = new Date(),
 
   // Formik can pass value – drop it to stop it being forwarded to the input
@@ -196,295 +159,58 @@ export const DatePicker = ({
 
   ...rest
 }: DatePickerProps) => {
-  const id = useExternalId(externalId)
   const titleId = useExternalId('datepicker-title')
   const floatingBoxId = useExternalId('datepicker-contentId')
 
   const buttonRef = useRef<HTMLButtonElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const [isOpen, setIsOpen] = useState(initialIsOpen)
-
-  const [calendarTableVariant, setCalendarTableVariant] =
-    useState<CalendarTableVariant>(CALENDAR_TABLE_VARIANT.HIDE)
-
-  const { hasFocus, onLocalBlur, onLocalFocus } = useFocus()
-
-  const close = useCallback(() => setIsOpen(false), [])
-
-  const toggleIsOpen = useCallback(
-    () => setIsOpen((previousIsOpen) => !previousIsOpen),
-    []
-  )
-
-  const focusTrapOptions = useFocusTrapOptions(
-    close,
-    isRange ? [buttonRef, inputRef] : [buttonRef]
-  )
-
-  const [state, dispatch] = useDatePickerReducer(
-    externalStartDate,
-    externalEndDate,
-    initialStartDate,
-    initialEndDate,
-    datePickerFormat,
-    isRange,
-    initialMonth
-  )
-
-  const handleDayClick = useHandleDayClick(
-    state,
-    dispatch,
-    isRange,
-    disabledDays,
-    onChange
-  )
-
-  const { startDate, endDate, currentMonth } = state
-
-  const hasError =
-    state.hasError || isInvalid || hasClass(className, 'is-invalid')
-
   const [floatingBoxTarget, setFloatingBoxTarget] = useStatefulRef()
 
-  const {
-    rangeHoverOrFocusDate,
-    handleDayFocusOrMouseEnter,
-    handleDayBlurOrMouseLeave,
-  } = useRangeHoverOrFocusDate(isRange)
-
-  const { handleKeyDown, handleInputBlur, handleInputChange } = useInput(
-    datePickerFormat,
-    isRange,
-    handleDayClick,
-    dispatch
-  )
-
-  const modifiers = {
-    start: replaceInvalidDate(startDate) || false,
-    end: replaceInvalidDate(endDate) || false,
-  }
-
-  const selected = {
-    from: replaceInvalidDate(startDate),
-    to: replaceInvalidDate(endDate) || rangeHoverOrFocusDate || undefined,
-  }
-
-  const hasContent = Boolean(startDate)
-
-  const placeholder = !isRange ? datePickerFormat.toLowerCase() : undefined
-
-  const handleDaySelection = () => {
-    dispatch({ type: DATEPICKER_ACTION.REFRESH_HAS_ERROR })
-    dispatch({ type: DATEPICKER_ACTION.REFRESH_INPUT_VALUE })
-  }
-
-  const handleMonthClick = (monthIndex: number) => {
-    dispatch({
-      type: DATEPICKER_ACTION.UPDATE,
-      data: { currentMonth: changeMonth(monthIndex, currentMonth) },
-    })
-    setCalendarTableVariant(CALENDAR_TABLE_VARIANT.HIDE)
-  }
-
-  const handleYearClick = (year: number) => {
-    dispatch({
-      type: DATEPICKER_ACTION.UPDATE,
-      data: { currentMonth: changeYear(year, currentMonth) },
-    })
-    setCalendarTableVariant(CALENDAR_TABLE_VARIANT.HIDE)
-  }
-
-  const handleMonthChange = (increment: number) => {
-    dispatch({
-      type: DATEPICKER_ACTION.UPDATE,
-      data: { currentMonth: addMonths(increment, currentMonth) },
-    })
-  }
-
   return (
-    <>
-      <StyledDatePickerInput
+    <DatePickerProvider
+      datePickerFormat={datePickerFormat}
+      endDate={externalEndDate}
+      initialEndDate={initialEndDate}
+      initialIsOpen={initialIsOpen}
+      initialMonth={initialMonth}
+      initialStartDate={initialStartDate}
+      isRange={isRange}
+      startDate={externalStartDate}
+    >
+      <Input
+        buttonRef={buttonRef}
         className={className}
-        data-testid="datepicker-input-wrapper"
-        $isDisabled={isDisabled}
-        ref={setFloatingBoxTarget}
-      >
-        <StyledOuterWrapper
-          data-testid="datepicker-outer-wrapper"
-          $hasFocus={hasFocus && !isRange}
-          $isInvalid={hasError}
-          $isDisabled={isDisabled}
-        >
-          <StyledInputWrapper $isRange={isRange}>
-            <StyledLabel
-              id={titleId}
-              $hasFocus={hasFocus && !isRange}
-              $hasContent={hasContent}
-              htmlFor={id}
-              data-testid="datepicker-label"
-            >
-              {label}
-              {placeholder && ` (${placeholder})`}
-            </StyledLabel>
-            <StyledInput
-              ref={inputRef}
-              $hasLabel={Boolean(label)}
-              aria-label="Choose date"
-              data-testid="datepicker-input"
-              id={id}
-              type="text"
-              disabled={isDisabled}
-              readOnly={isRange}
-              onChange={handleInputChange}
-              onKeyDown={handleKeyDown}
-              onBlur={(e) => {
-                onLocalBlur(e)
-                handleInputBlur()
-
-                if (isDateValid(state.startDate)) {
-                  dispatch({
-                    type: DATEPICKER_ACTION.UPDATE,
-                    data: { currentMonth: state.startDate },
-                  })
-                }
-
-                if (onBlur) {
-                  onBlur(e)
-                }
-              }}
-              onFocus={() => {
-                onLocalFocus()
-                if (isRange) {
-                  buttonRef.current?.focus()
-                }
-              }}
-              onClick={() => {
-                if (isRange) {
-                  toggleIsOpen()
-                }
-              }}
-              placeholder={placeholder}
-              value={state.inputValue}
-              {...rest}
-            />
-          </StyledInputWrapper>
-          <StyledInlineButtons>
-            <InlineButton
-              aria-expanded={isOpen}
-              aria-label={`${isOpen ? 'Hide' : 'Show'} day picker`}
-              aria-owns={floatingBoxId}
-              data-testid="datepicker-input-button"
-              isDisabled={isDisabled}
-              onClick={() => {
-                toggleIsOpen()
-                setCalendarTableVariant(CALENDAR_TABLE_VARIANT.HIDE)
-              }}
-              ref={buttonRef}
-            >
-              <IconEvent size={18} />
-            </InlineButton>
-          </StyledInlineButtons>
-        </StyledOuterWrapper>
-      </StyledDatePickerInput>
-      <StyledFloatingBox
-        id={floatingBoxId}
-        isVisible={isOpen}
+        disabledDays={disabledDays}
+        floatingBoxId={floatingBoxId}
+        format={datePickerFormat}
+        id={id}
+        inputRef={inputRef}
+        isDisabled={isDisabled}
+        isInvalid={isInvalid}
+        isRange={isRange}
+        label={label}
+        onBlur={onBlur}
+        onChange={onChange}
+        setFloatingBoxTarget={setFloatingBoxTarget}
+        titleId={titleId}
+        {...rest}
+      />
+      <FloatingCalendar
+        buttonRef={buttonRef}
+        disabledDays={disabledDays}
+        floatingBoxId={floatingBoxId}
+        floatingBoxTarget={floatingBoxTarget}
+        inputRef={inputRef}
+        isRange={isRange}
+        jumpToToday={jumpToToday}
+        navigateMonthYear={navigateMonthYear}
+        onChange={onChange}
         placement={placement}
-        targetElement={floatingBoxTarget}
-        role="dialog"
-        aria-modal
-        aria-labelledby={titleId}
-        aria-live="polite"
-      >
-        <FocusTrap focusTrapOptions={focusTrapOptions}>
-          <div>
-            {calendarTableVariant !== CALENDAR_TABLE_VARIANT.HIDE && (
-              <CalendarTable
-                month={currentMonth}
-                variant={calendarTableVariant}
-                onMonthClick={handleMonthClick}
-                onYearClick={handleYearClick}
-              />
-            )}
-            {jumpToToday && (
-              <StyledJumpToToday
-                variant={BUTTON_VARIANT.TERTIARY}
-                size={COMPONENT_SIZE.SMALL}
-                onClick={() => {
-                  if (
-                    calculateDateValidity(today, disabledDays) !==
-                    DATE_VALIDITY.VALID
-                  ) {
-                    return
-                  }
-
-                  dispatch({
-                    type: DATEPICKER_ACTION.UPDATE,
-                    data: { currentMonth: today },
-                  })
-
-                  handleDayClick(today)
-                  handleDaySelection()
-                }}
-              >
-                Jump to today
-              </StyledJumpToToday>
-            )}
-            {navigateMonthYear && (
-              <CalendarNavigation
-                month={currentMonth}
-                onMonthChange={handleMonthChange}
-                onMonthPickerClick={() =>
-                  setCalendarTableVariant(CALENDAR_TABLE_VARIANT.MONTHS)
-                }
-                onYearPickerClick={() =>
-                  setCalendarTableVariant(CALENDAR_TABLE_VARIANT.YEARS)
-                }
-              />
-            )}
-            <StyledDayPicker
-              locale={enGB}
-              formatters={{
-                formatWeekdayName: (date, options) =>
-                  format(date, 'ccc', options),
-              }}
-              mode="default"
-              modifiers={modifiers}
-              modifiersClassNames={MODIFIERS_CLASS_NAMES}
-              selected={selected}
-              today={today}
-              onDayClick={(day, { disabled }) => {
-                if (disabled) {
-                  return
-                }
-
-                const newState = handleDayClick(day)
-
-                handleDaySelection()
-
-                if (newState.endDate || !isRange) {
-                  setTimeout(() => close())
-                }
-              }}
-              month={currentMonth}
-              onMonthChange={(month) => {
-                dispatch({
-                  type: DATEPICKER_ACTION.UPDATE,
-                  data: { currentMonth: month },
-                })
-              }}
-              disabled={disabledDays}
-              onDayMouseEnter={handleDayFocusOrMouseEnter}
-              onDayMouseLeave={handleDayBlurOrMouseLeave}
-              onDayFocus={handleDayFocusOrMouseEnter}
-              onDayBlur={handleDayBlurOrMouseLeave}
-              initialFocus
-            />
-          </div>
-        </FocusTrap>
-      </StyledFloatingBox>
-    </>
+        titleId={titleId}
+        today={today}
+      />
+    </DatePickerProvider>
   )
 }
 
