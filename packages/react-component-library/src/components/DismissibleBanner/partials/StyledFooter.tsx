@@ -6,4 +6,8 @@ export const StyledFooter = styled.div`
   display: flex;
   justify-content: space-between;
   padding: ${spacing('4')};
+
+  > div {
+    display: flex;
+  }
 `
