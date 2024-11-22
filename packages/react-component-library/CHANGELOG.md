@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.25.2](https://github.com/Royal-Navy/design-system/compare/4.25.1...4.25.2) (2024-11-22)
+
+### Bug Fixes
+
+- **DismissibleBanner:** Adjust Checkbox alignment ([e1416a0](https://github.com/Royal-Navy/design-system/commit/e1416a0e7b95e1484e4f325c10d3429420585d80))
+
 ## [4.25.1](https://github.com/Royal-Navy/design-system/compare/4.25.0...4.25.1) (2024-11-11)
 
 **Note:** Version bump only for package @royalnavy/react-component-library
