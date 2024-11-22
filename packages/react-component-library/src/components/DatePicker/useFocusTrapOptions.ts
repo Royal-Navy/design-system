@@ -19,10 +19,21 @@ export function useFocusTrapOptions(
     () => ({
       allowOutsideClick: (event) =>
         isEventTargetDescendantOf(event, clickAllowedElementRefs),
-      clickOutsideDeactivates: (event) =>
-        !isEventTargetDescendantOf(event, clickAllowedElementRefs),
+      clickOutsideDeactivates: (event) => {
+        const shouldDeactivate = !isEventTargetDescendantOf(
+          event,
+          clickAllowedElementRefs
+        )
+        if (shouldDeactivate) {
+          close()
+        }
+        return shouldDeactivate
+      },
+      escapeDeactivates: () => {
+        close()
+        return true
+      },
       initialFocus: false,
-      onDeactivate: close,
     }),
     [clickAllowedElementRefs, close]
   )

@@ -120,9 +120,15 @@ export const Input = memo(
 
     const handleInputClick = useCallback(() => {
       if (isRange) {
-        dispatch({ type: DATEPICKER_ACTION.TOGGLE_OPEN })
+        dispatch({
+          type: DATEPICKER_ACTION.UPDATE,
+          data: {
+            calendarTableVariant: CALENDAR_TABLE_VARIANT.HIDE,
+            isOpen: !isOpen,
+          },
+        })
       }
-    }, [isRange, dispatch])
+    }, [isOpen, isRange, dispatch])
 
     const handleShowHideClick = useCallback(() => {
       dispatch({
