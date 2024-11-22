@@ -16,7 +16,6 @@ export const DATEPICKER_ACTION = {
   UPDATE: 'UPDATE',
   REFRESH_HAS_ERROR: 'REFRESH_HAS_ERROR',
   REFRESH_INPUT_VALUE: 'REFRESH_INPUT_VALUE',
-  TOGGLE_OPEN: 'TOGGLE_OPEN',
 } as const
 
 interface ResetAction {
@@ -39,14 +38,8 @@ interface RefreshInputValueAction {
   data?: never
 }
 
-interface ToggleOpenAction {
-  type: typeof DATEPICKER_ACTION.TOGGLE_OPEN
-  data?: never
-}
-
 export type DatePickerAction =
   | ResetAction
   | UpdateAction
   | RefreshHasErrorAction
   | RefreshInputValueAction
-  | ToggleOpenAction

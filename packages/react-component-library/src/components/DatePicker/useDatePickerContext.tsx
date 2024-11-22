@@ -81,11 +81,6 @@ function reducer(
           state.datePickerFormat
         ),
       }
-    case DATEPICKER_ACTION.TOGGLE_OPEN:
-      return {
-        ...state,
-        isOpen: !state.isOpen,
-      }
     default:
       throw new Error('Unknown reducer action type')
   }
