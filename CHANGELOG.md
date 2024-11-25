@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.25.3](https://github.com/Royal-Navy/design-system/compare/4.25.2...4.25.3) (2024-11-25)
+
+### Bug Fixes
+
+- **DatePicker:** Fix compatibility with strict mode ([b5c1b3f](https://github.com/Royal-Navy/design-system/commit/b5c1b3f8ed2321facac027c52e8d6c0b4c90649f))
+- **DatePicker:** Update focus-trap-react to fix findDOMNode warnings ([6b64f8c](https://github.com/Royal-Navy/design-system/commit/6b64f8c4b87ecce695ed391d06f5d8e226669c78))
+
 ## [4.25.2](https://github.com/Royal-Navy/design-system/compare/4.25.1...4.25.2) (2024-11-22)
 
 ### Bug Fixes
