@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { color, shadow, spacing } from '@royalnavy/design-tokens'
+import { color, shadow } from '@royalnavy/design-tokens'
 
 import { StyledLabel } from './StyledLabel'
 import { Appearance } from '../Toast'
@@ -22,7 +22,6 @@ export const StyledToast = styled.div<StyledToastProps>`
   border: 1px solid ${color('neutral', '100')};
   border-radius: 4px;
   width: 340px;
-  margin-bottom: ${spacing('6')};
   background-color: ${color('neutral', 'white')};
 
   ${({ $appearance }) => css`

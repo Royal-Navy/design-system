@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { Meta, StoryFn } from '@storybook/react'
 
-import { TOAST_APPEARANCE, Toast, ToastProps, showToast } from '.'
+import { TOAST_APPEARANCE, Toast, ToastProps, showToast, dismissToast } from '.'
 import { Button } from '../Button'
+import { Group } from '../Group'
 
 export default {
   component: Toast,
@@ -31,13 +32,22 @@ const ToastButton = (props: ToastProps) => {
   return (
     <div style={{ minHeight: '10rem' }}>
       <Toast {...props} />
-      <Button
-        onClick={(_: React.FormEvent<HTMLButtonElement>) => {
-          showToast({ label: 'another', message: DESCRIPTION })
-        }}
-      >
-        Show Toast
-      </Button>
+      <Group gap="6">
+        <Button
+          onClick={(_: React.FormEvent<HTMLButtonElement>) => {
+            showToast({ label: 'Another Toast', message: DESCRIPTION })
+          }}
+        >
+          Show Toast
+        </Button>
+        <Button
+          onClick={(_: React.FormEvent<HTMLButtonElement>) => {
+            dismissToast()
+          }}
+        >
+          Dismiss All Toasts
+        </Button>
+      </Group>
     </div>
   )
 }
