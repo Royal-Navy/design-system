@@ -64,7 +64,7 @@ export const Toast = (props: ToastProps) => {
   const { dateTime, label, appearance = TOAST_APPEARANCE.INFO, ...rest } = props
 
   const { toasts, handlers } = useToaster()
-  const { startPause, endPause, updateHeight, calculateOffset } = handlers
+  const { startPause, endPause, updateHeight } = handlers
 
   const [time] = useState<string>(
     (dateTime || new Date()).toLocaleTimeString('en-GB', {
@@ -85,10 +85,12 @@ export const Toast = (props: ToastProps) => {
       onMouseLeave={endPause}
       style={{
         position: 'fixed',
-        top: 0,
-        right: 0,
-        padding: spacing('4'),
+        top: spacing('4'),
+        right: spacing('4'),
         zIndex: zIndex('overlay', 999),
+        display: 'flex',
+        flexDirection: 'column',
+        gap: spacing('4'),
       }}
     >
       {toasts.map((item: HotToast & ToastProps) => {
@@ -97,11 +99,6 @@ export const Toast = (props: ToastProps) => {
         const toastLabel = item.label ?? label
         const toastTitleId = `${titleId}-${item.id}`
         const toastDescriptionId = `${descriptionId}-${item.id}`
-
-        const offset = calculateOffset(item, {
-          reverseOrder: true,
-          gutter: 1,
-        })
 
         const ref = (el: HTMLDivElement) => {
           if (el && typeof height !== 'number') {
@@ -115,7 +112,6 @@ export const Toast = (props: ToastProps) => {
             style={{
               transition: 'all 0.5s ease-out',
               opacity: visible ? 1 : 0,
-              transform: `translateY(${offset - height}px)`,
             }}
             ref={ref}
           >
