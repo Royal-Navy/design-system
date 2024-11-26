@@ -183,3 +183,7 @@ export const showToast = (
     })
   }
 }
+
+export const dismissToast = (id?: string) => {
+  toast.dismiss(id)
+}
