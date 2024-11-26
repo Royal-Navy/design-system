@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.26.0](https://github.com/Royal-Navy/design-system/compare/4.25.3...4.26.0) (2024-11-26)
+
+### Bug Fixes
+
+- **Toast:** Adjust styling to reduce click area ([71189d8](https://github.com/Royal-Navy/design-system/commit/71189d8ecc1a958231de0b6fc7681597ae280d64))
+
+### Features
+
+- **Toast:** Expose dismissToast function ([fb6d0ab](https://github.com/Royal-Navy/design-system/commit/fb6d0abe35d510c26348e1daa616ae3a516b330f))
+
 ## [4.25.3](https://github.com/Royal-Navy/design-system/compare/4.25.2...4.25.3) (2024-11-25)
 
 ### Bug Fixes
