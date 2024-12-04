@@ -8,6 +8,7 @@ import {
   type ExpandedState,
   type RowSelectionState,
   type ColumnFiltersState,
+  type SortingState,
   useReactTable,
   getCoreRowModel,
   getExpandedRowModel,
@@ -24,7 +25,7 @@ import { Table } from './Table'
 import { Pagination } from './Pagination'
 import { StyledDataGrid } from './partials'
 
-export interface DataGridProps<T extends object>
+export interface DataGridBaseProps<T extends object>
   extends Pick<Partial<PaginationProps>, 'pageSize'>,
     Omit<
       TableOptions<T>,
@@ -37,10 +38,10 @@ export interface DataGridProps<T extends object>
       | 'getPaginationRowModel'
       | 'getFilteredRowModel'
       | 'onRowSelectionChange'
-      | 'onSortingChange'
       | 'onExpandedChange'
       | 'onPaginationChange'
       | 'onColumnFiltersChange'
+      | 'onSortingChange'
     >,
     Omit<ComponentWithClass, 'children'> {
   data: T[]
@@ -59,7 +60,27 @@ export interface DataGridProps<T extends object>
     currentPage: number,
     totalPages: number
   ) => void
+  manualSorting?: boolean
+  sortingState?: SortingState
 }
+
+export interface DataGridPropsWithExternalSorting<T extends object>
+  extends DataGridBaseProps<T>,
+    Pick<TableOptions<T>, 'onSortingChange'> {
+  manualSorting: true
+  sorting: SortingState
+}
+
+export interface DataGridPropsWithInternalSorting<T extends object>
+  extends DataGridBaseProps<T> {
+  onSortingChange?: never
+  manualSorting?: false
+  sorting?: never
+}
+
+export type DataGridProps<T extends object> =
+  | DataGridPropsWithExternalSorting<T>
+  | DataGridPropsWithInternalSorting<T>
 
 export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
   const {
@@ -80,11 +101,14 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     manualPagination,
     pageCount,
     pageSize,
+    manualSorting,
+    onSortingChange,
+    sorting: externalSorting,
     ...rest
   } = props
 
   const {
-    sorting,
+    sorting: internalSorting,
     setSorting,
     expanded,
     setExpanded,
@@ -110,7 +134,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
       hasSubRows
     ),
     state: {
-      sorting,
+      sorting: externalSorting ?? internalSorting,
       rowSelection,
       expanded,
       pagination,
@@ -118,12 +142,12 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     },
     enableRowSelection,
     onRowSelectionChange: setRowSelection,
-    onSortingChange: setSorting,
+    onSortingChange: manualSorting ? onSortingChange : setSorting,
     onExpandedChange: setExpanded,
     onPaginationChange: setPagination,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
+    getSortedRowModel: manualSorting ? undefined : getSortedRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -133,6 +157,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     // @ts-ignore
     getSubRows: (row) => row?.subRows || [],
     debugTable,
+    manualSorting,
     ...rest,
   } as TableOptions<T>)
 

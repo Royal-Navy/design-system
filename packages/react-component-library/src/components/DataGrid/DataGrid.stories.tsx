@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { spacing } from '@royalnavy/design-tokens'
 import { fn } from '@storybook/test'
 import { Meta, StoryFn } from '@storybook/react'
-import { ColumnDef } from '@tanstack/react-table'
+import type { ColumnDef, SortingState } from '@tanstack/react-table'
 
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DataGrid, TABLE_COLUMN_ALIGNMENT } from '.'
@@ -639,4 +639,74 @@ KitchenSink.args = {
   onExpandedChange: fn(),
   onColumnFiltersChange: fn(),
   pageSize: 3,
+}
+
+export const ManualSorting: StoryFn<typeof DataGrid> = () => {
+  const [sortedData, setSortedData] = useState(data)
+  const [sorting, setSorting] = useState<SortingState>([])
+
+  const handleSortingChange = useCallback(
+    (newSorting: SortingState) => {
+      setSorting(newSorting)
+
+      setTimeout(() => {
+        const sorted = [...sortedData]
+
+        if (newSorting.length) {
+          const { id: sortKey, desc } = newSorting[0]
+
+          sorted.sort((a: Order, b: Order) => {
+            const aValue = a[sortKey]
+            const bValue = b[sortKey]
+
+            if (typeof aValue === 'number') {
+              return desc ? bValue - aValue : aValue - bValue
+            }
+
+            if (sortKey === 'price') {
+              const aPrice = parseFloat(aValue.replace('£', ''))
+              const bPrice = parseFloat(bValue.replace('£', ''))
+              return desc ? bPrice - aPrice : aPrice - bPrice
+            }
+
+            return desc
+              ? bValue.localeCompare(aValue)
+              : aValue.localeCompare(bValue)
+          })
+        }
+
+        setSortedData(sorted)
+      }, 500)
+    },
+    [sortedData]
+  )
+
+  return (
+    <Wrapper>
+      <DataGrid
+        columns={columnsWithSorting}
+        data={sortedData}
+        manualSorting
+        onSortingChange={(updaterOrValue) => {
+          const newSorting =
+            typeof updaterOrValue === 'function'
+              ? updaterOrValue(sorting)
+              : updaterOrValue
+
+          handleSortingChange(newSorting)
+        }}
+        sorting={sorting}
+        isFullWidth
+      />
+    </Wrapper>
+  )
+}
+
+ManualSorting.storyName = 'Manual sorting'
+ManualSorting.parameters = {
+  docs: {
+    description: {
+      story: `Manual sorting allows you to handle the sorting logic externally, typically on the server side (simulated with a 500ms delay).`,
+    },
+  },
 }

@@ -5,7 +5,7 @@ import {
   within,
   waitForElementToBeRemoved,
 } from '@testing-library/react'
-import { ColumnDef } from '@tanstack/react-table'
+import type { ColumnDef, SortingState } from '@tanstack/react-table'
 import { userEvent, PointerEventsCheckLevel } from '@testing-library/user-event'
 import { color } from '@royalnavy/design-tokens'
 
@@ -1234,6 +1234,137 @@ describe('DataGrid', () => {
       expect(onColumnFiltersChange).toHaveBeenCalledWith([
         { id: 'first', value: 'alpha' },
         { id: 'second', value: 'bravo' },
+      ])
+    })
+  })
+
+  describe('with manual sorting', () => {
+    it('updates sort icons and maintains correct sorting state', async () => {
+      const mockOnSortingChange = jest.fn()
+      const TestComponent = () => {
+        const [sorting, setSorting] = useState<SortingState>([])
+
+        const handleSortingChange = (
+          updaterOrValue: SortingState | ((prev: SortingState) => SortingState)
+        ) => {
+          const newSorting =
+            typeof updaterOrValue === 'function'
+              ? updaterOrValue(sorting)
+              : updaterOrValue
+
+          setSorting(newSorting)
+          mockOnSortingChange(newSorting)
+        }
+
+        return (
+          <DataGrid
+            data={data}
+            columns={columns}
+            manualSorting
+            onSortingChange={handleSortingChange}
+            sorting={sorting}
+          />
+        )
+      }
+
+      render(<TestComponent />)
+
+      const firstColumnHeader = screen.getByRole('columnheader', {
+        name: 'First',
+      })
+      const sortButton = within(firstColumnHeader).getByRole('button')
+
+      expect(
+        within(firstColumnHeader).getByTestId('unsorted')
+      ).toBeInTheDocument()
+      expect(mockOnSortingChange).not.toHaveBeenCalled()
+
+      userEvent.click(sortButton)
+      await hackyWaitFor()
+      expect(
+        within(firstColumnHeader).getByTestId('ascending')
+      ).toBeInTheDocument()
+      expect(mockOnSortingChange).toHaveBeenCalledWith([
+        { id: 'first', desc: false },
+      ])
+
+      userEvent.click(sortButton)
+      await hackyWaitFor()
+      expect(
+        within(firstColumnHeader).getByTestId('descending')
+      ).toBeInTheDocument()
+      expect(mockOnSortingChange).toHaveBeenCalledWith([
+        { id: 'first', desc: true },
+      ])
+
+      userEvent.click(sortButton)
+      await hackyWaitFor()
+      expect(
+        within(firstColumnHeader).getByTestId('unsorted')
+      ).toBeInTheDocument()
+      expect(mockOnSortingChange).toHaveBeenCalledWith([])
+
+      expect(mockOnSortingChange).toHaveBeenCalledTimes(3)
+    })
+
+    it('handles multiple column sorting correctly', async () => {
+      const mockOnSortingChange = jest.fn()
+      const TestComponent = () => {
+        const [sorting, setSorting] = useState<SortingState>([])
+
+        const handleSortingChange = (
+          updaterOrValue: SortingState | ((prev: SortingState) => SortingState)
+        ) => {
+          const newSorting =
+            typeof updaterOrValue === 'function'
+              ? updaterOrValue(sorting)
+              : updaterOrValue
+          setSorting(newSorting)
+          mockOnSortingChange(newSorting)
+        }
+
+        return (
+          <DataGrid
+            data={data}
+            columns={columns}
+            manualSorting
+            onSortingChange={handleSortingChange}
+            sorting={sorting}
+          />
+        )
+      }
+
+      render(<TestComponent />)
+
+      const firstColumnHeader = screen.getByRole('columnheader', {
+        name: 'First',
+      })
+      const thirdColumnHeader = screen.getByRole('columnheader', {
+        name: 'Third',
+      })
+
+      userEvent.click(within(firstColumnHeader).getByRole('button'))
+      await hackyWaitFor()
+      expect(
+        within(firstColumnHeader).getByTestId('ascending')
+      ).toBeInTheDocument()
+      expect(
+        within(thirdColumnHeader).getByTestId('unsorted')
+      ).toBeInTheDocument()
+      expect(mockOnSortingChange).toHaveBeenLastCalledWith([
+        { id: 'first', desc: false },
+      ])
+
+      userEvent.click(within(thirdColumnHeader).getByRole('button'))
+      await hackyWaitFor()
+      expect(
+        within(firstColumnHeader).getByTestId('unsorted')
+      ).toBeInTheDocument()
+      expect(
+        within(thirdColumnHeader).getByTestId('ascending')
+      ).toBeInTheDocument()
+      expect(mockOnSortingChange).toHaveBeenLastCalledWith([
+        { id: 'third', desc: false },
       ])
     })
   })
