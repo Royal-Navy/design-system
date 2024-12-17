@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { renderToStaticMarkup } from 'react-dom/server'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 
 import { FloatingBox } from '.'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
@@ -76,4 +76,43 @@ it('does not generate a new content `id` when the content changes', () => {
     'id',
     initialId
   )
+})
+
+it('sets the position of the floating box', async () => {
+  const offsetHeight = 100
+
+  jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({
+    top: 0,
+    left: 0,
+    right: 100,
+    bottom: 100,
+    width: 100,
+    height: 100,
+    x: 0,
+    y: 0,
+    toJSON() {
+      return this
+    },
+  })
+
+  Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+    value: offsetHeight,
+  })
+
+  render(
+    <FloatingBox
+      isVisible
+      renderTarget={<div>Hello, World!</div>}
+      placement="bottom"
+      aria-modal
+    >
+      <pre>This is some arbitrary JSX</pre>
+    </FloatingBox>
+  )
+
+  await waitFor(() => {
+    expect(screen.getByTestId('floating-box')).toHaveStyle({
+      transform: `translate(0px, ${offsetHeight}px)`,
+    })
+  })
 })
