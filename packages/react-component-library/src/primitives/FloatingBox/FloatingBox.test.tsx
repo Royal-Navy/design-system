@@ -1,141 +1,130 @@
 import React from 'react'
 
 import { renderToStaticMarkup } from 'react-dom/server'
-import { render, RenderResult } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 
 import { FloatingBox } from '.'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
 
-describe('FloatingBox', () => {
-  let wrapper: RenderResult
-  let children: React.ReactElement
+function setupOffsetHeightMock(offsetHeight: number) {
+  jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({
+    top: 0,
+    left: 0,
+    right: 100,
+    bottom: 100,
+    width: 100,
+    height: 100,
+    x: 0,
+    y: 0,
+    toJSON() {
+      return this
+    },
+  })
 
-  describe('when provided a `renderTarget` and arbitrary JSX content', () => {
-    beforeEach(() => {
-      children = <pre>This is some arbitrary JSX</pre>
+  Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+    value: offsetHeight,
+  })
+}
 
-      wrapper = render(
-        <FloatingBox
-          isVisible
-          renderTarget={<div>Hello, World!</div>}
-          role="dialog"
-          aria-modal
-        >
-          {children}
+function setup() {
+  render(
+    <FloatingBox
+      isVisible
+      placement="bottom"
+      renderTarget={<div>Hello, World!</div>}
+      role="dialog"
+      aria-modal
+    >
+      <pre>This is some arbitrary JSX</pre>
+    </FloatingBox>
+  )
+}
+
+it('renders the floating box when provided with a `renderTarget` and arbitrary JSX content', () => {
+  setup()
+
+  expect(screen.getByTestId('floating-box')).toHaveAttribute('role', 'dialog')
+  expect(screen.getByTestId('floating-box')).toHaveAttribute('aria-modal')
+  expect(screen.getByText('Hello, World!')).toBeInTheDocument()
+  expect(screen.getByTestId('floating-box-content').innerHTML).toContain(
+    renderToStaticMarkup(<pre>This is some arbitrary JSX</pre>)
+  )
+  expect(screen.getByTestId('floating-box-styled-target')).toBeInTheDocument()
+})
+
+it('renders the floating box when provided with a `renderTargetElement` and arbitrary JSX content', () => {
+  const TestComponent = () => {
+    const [element, setElement] = useStatefulRef()
+
+    return (
+      <>
+        <div ref={setElement}>Hello, World!</div>
+        <FloatingBox isVisible targetElement={element} role="dialog" aria-modal>
+          <pre>This is some arbitrary JSX</pre>
         </FloatingBox>
-      )
-    })
-
-    it('applies the supplied `role`', () => {
-      expect(wrapper.queryByTestId('floating-box')).toHaveAttribute(
-        'role',
-        'dialog'
-      )
-    })
-
-    it('applies additional arbitrary props to wrapper', () => {
-      expect(wrapper.queryByTestId('floating-box')).toHaveAttribute(
-        'aria-modal'
-      )
-    })
-
-    it('applies the `role` attribute', () => {
-      expect(wrapper.getByTestId('floating-box')).toHaveAttribute(
-        'role',
-        'dialog'
-      )
-    })
-
-    it('renders an embedded target', () => {
-      expect(
-        wrapper.getByTestId('floating-box-styled-target')
-      ).toBeInTheDocument()
-    })
-
-    it('renders the box', () => {
-      expect(wrapper.getByTestId('floating-box')).toBeInTheDocument()
-    })
-
-    it('renders the provided renderTarget JSX', () => {
-      expect(wrapper.getByText('Hello, World!')).toBeInTheDocument()
-    })
-
-    it('renders the provided arbitrary JSX', () => {
-      expect(wrapper.getByTestId('floating-box-content').innerHTML).toContain(
-        renderToStaticMarkup(children)
-      )
-    })
-  })
-
-  describe('when provided a `renderTargetElement` and arbitrary JSX content', () => {
-    beforeEach(() => {
-      children = <pre>This is some arbitrary JSX</pre>
-
-      const TestComponent = () => {
-        const [element, setElement] = useStatefulRef()
-
-        return (
-          <>
-            <div ref={setElement}>Hello, World!</div>
-            <FloatingBox
-              isVisible
-              targetElement={element}
-              role="dialog"
-              aria-modal
-            >
-              {children}
-            </FloatingBox>
-          </>
-        )
-      }
-      wrapper = render(<TestComponent />)
-    })
-
-    it('renders the box', () => {
-      expect(wrapper.queryByTestId('floating-box')).toBeInTheDocument()
-    })
-
-    it('does not render an embedded target', () => {
-      expect(
-        wrapper.queryByTestId('floating-box-styled-target')
-      ).not.toBeInTheDocument()
-    })
-
-    it('renders the provided arbitrary JSX', () => {
-      expect(wrapper.getByTestId('floating-box-content').innerHTML).toContain(
-        renderToStaticMarkup(children)
-      )
-    })
-  })
-
-  describe('when the content changes', () => {
-    const ExampleFloatingBox = ({
-      children: content,
-    }: {
-      children: string
-    }) => (
-      <FloatingBox
-        isVisible
-        renderTarget={<div>Hello, World!</div>}
-        role="dialog"
-        aria-modal
-      >
-        <>{content}</>
-      </FloatingBox>
+      </>
     )
-    let initialId: string
+  }
 
-    beforeEach(() => {
-      wrapper = render(<ExampleFloatingBox>Initial content</ExampleFloatingBox>)
-      initialId = wrapper.getByTestId('floating-box-content').id
-      wrapper.rerender(<ExampleFloatingBox>Updated content</ExampleFloatingBox>)
+  render(<TestComponent />)
+
+  expect(screen.getByTestId('floating-box')).toHaveAttribute('role', 'dialog')
+  expect(screen.getByTestId('floating-box')).toHaveAttribute('aria-modal')
+  expect(screen.getByText('Hello, World!')).toBeInTheDocument()
+  expect(screen.getByTestId('floating-box-content').innerHTML).toContain(
+    renderToStaticMarkup(<pre>This is some arbitrary JSX</pre>)
+  )
+  expect(
+    screen.queryByTestId('floating-box-styled-target')
+  ).not.toBeInTheDocument()
+})
+
+it('does not generate a new content `id` when the content changes', () => {
+  const ExampleFloatingBox = ({ children: content }: { children: string }) => (
+    <FloatingBox
+      isVisible
+      renderTarget={<div>Hello, World!</div>}
+      role="dialog"
+      aria-modal
+    >
+      <>{content}</>
+    </FloatingBox>
+  )
+
+  const { rerender } = render(
+    <ExampleFloatingBox>Initial content</ExampleFloatingBox>
+  )
+  const initialId = screen.getByTestId('floating-box-content').id
+  rerender(<ExampleFloatingBox>Updated content</ExampleFloatingBox>)
+
+  expect(screen.getByTestId('floating-box-content')).toHaveAttribute(
+    'id',
+    initialId
+  )
+})
+
+it('sets the position of the floating box', async () => {
+  const offsetHeight = 100
+
+  setupOffsetHeightMock(offsetHeight)
+  setup()
+
+  await waitFor(() => {
+    expect(screen.getByTestId('floating-box')).toHaveStyle({
+      transform: `translate(0px, ${offsetHeight}px)`,
     })
+  })
+})
 
-    it('does not generate a new content `id`', () => {
-      expect(wrapper.getByTestId('floating-box-content')).toHaveAttribute(
-        'id',
-        initialId
-      )
+it('sets the position of the floating box when the ref is null', async () => {
+  const offsetHeight = 100
+
+  setupOffsetHeightMock(offsetHeight)
+  setup()
+
+  await waitFor(() => {
+    expect(screen.getByTestId('floating-box')).toHaveStyle({
+      transform: `translate(0px, ${offsetHeight}px)`,
     })
   })
 })
