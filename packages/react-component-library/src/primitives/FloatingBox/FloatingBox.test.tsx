@@ -116,3 +116,43 @@ it('sets the position of the floating box', async () => {
     })
   })
 })
+
+it('sets the position of the floating box when the ref is null', async () => {
+  const offsetHeight = 100
+
+  jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({
+    top: 0,
+    left: 0,
+    right: 100,
+    bottom: 100,
+    width: 100,
+    height: 100,
+    x: 0,
+    y: 0,
+    toJSON() {
+      return this
+    },
+  })
+
+  Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+    value: offsetHeight,
+  })
+
+  render(
+    <FloatingBox
+      isVisible
+      renderTarget={<div>Hello, World!</div>}
+      placement="bottom"
+      aria-modal
+      ref={null}
+    >
+      <pre>This is some arbitrary JSX</pre>
+    </FloatingBox>
+  )
+
+  await waitFor(() => {
+    expect(screen.getByTestId('floating-box')).toHaveStyle({
+      transform: `translate(0px, ${offsetHeight}px)`,
+    })
+  })
+})

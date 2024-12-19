@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { forwardRef, useRef } from 'react'
 import { BasePlacement, Placement, VariationPlacement } from '@popperjs/core'
 import { Transition } from 'react-transition-group'
 import mergeRefs from 'react-merge-refs'
@@ -52,79 +52,98 @@ export type FloatingBoxProps =
   | FloatingBoxWithExternalTargetProps
   | FloatingBoxWithEmbeddedTargetProps
 
-export const FloatingBox = ({
-  contentId: externalContentId,
-  scheme = FLOATING_BOX_SCHEME.LIGHT,
-  onMouseEnter,
-  onMouseLeave,
-  children,
-  renderTarget,
-  targetElement,
-  isVisible,
-  placement = 'auto',
-  role = 'dialog',
-  ...rest
-}: FloatingBoxProps) => {
-  const nodeRef = useRef<HTMLDivElement>(null)
-  const contentId = useExternalId('floating-box', externalContentId)
-  const {
-    targetElementRef,
-    floatingElementRef,
-    arrowElementRef,
-    styles,
-    attributes,
-  } = useFloatingElement(placement, undefined, targetElement)
+// forwardRef` is being used to replicate an issue when using React 19, because
+// `ref` is a prop. When upgrading, `forwardRef` can be removed.
+// https://react.dev/blog/2024/12/05/react-19#ref-as-a-prop
+// https://github.com/Royal-Navy/design-system/issues/3969
+export const FloatingBox = forwardRef<HTMLDivElement, FloatingBoxProps>(
+  (
+    {
+      contentId: externalContentId,
+      scheme = FLOATING_BOX_SCHEME.LIGHT,
+      onMouseEnter,
+      onMouseLeave,
+      children,
+      renderTarget,
+      targetElement,
+      isVisible,
+      placement = 'auto',
+      role = 'dialog',
+      ...rest
+    },
+    ref
+  ) => {
+    const nodeRef = useRef<HTMLDivElement>(null)
+    const contentId = useExternalId('floating-box', externalContentId)
+    const {
+      targetElementRef,
+      floatingElementRef,
+      arrowElementRef,
+      styles,
+      attributes,
+    } = useFloatingElement(placement, undefined, targetElement)
 
-  const calculatedPlacement = attributes?.popper?.['data-popper-placement'] as
-    | BasePlacement
-    | VariationPlacement
-    | undefined
+    const calculatedPlacement = attributes?.popper?.[
+      'data-popper-placement'
+    ] as BasePlacement | VariationPlacement | undefined
 
-  const basePlacement = calculatedPlacement?.split('-', 1)?.[0] as
-    | BasePlacement
-    | undefined
+    const basePlacement = calculatedPlacement?.split('-', 1)?.[0] as
+      | BasePlacement
+      | undefined
 
-  return (
-    <>
-      {renderTarget && (
-        <StyledTarget
-          ref={targetElementRef}
-          data-testid="floating-box-styled-target"
-        >
-          {renderTarget}
-        </StyledTarget>
-      )}
-      <Transition nodeRef={nodeRef} in={isVisible} timeout={0} unmountOnExit>
-        {(state) => (
-          <StyledFloatingBox
-            $transitionStatus={state}
-            style={styles.popper}
-            ref={mergeRefs([nodeRef, floatingElementRef])}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-            role={role}
-            data-testid="floating-box"
-            {...attributes.popper}
-            {...rest}
+    // Set `floatingBoxRest` to replicate what is happening in React 19 because
+    // `ref` is a prop leading to the merged refs being overwritten with
+    // `{...rest}`. When upgrading to React 19, `forwardRef` will be removed, and
+    // we can revert to using `{...rest}` rather than setting `floatingBoxRest`.
+    // https://react.dev/blog/2024/12/05/react-19#ref-as-a-prop
+    // https://github.com/Royal-Navy/design-system/issues/3969
+    const floatingBoxRest = {
+      ...rest,
+      ref,
+    }
+
+    return (
+      <>
+        {renderTarget && (
+          <StyledTarget
+            ref={targetElementRef}
+            data-testid="floating-box-styled-target"
           >
-            <FloatingBoxContent
-              contentId={contentId}
-              scheme={scheme}
-              data-testid="floating-box-content"
-            >
-              <StyledArrow
-                $placement={basePlacement}
-                ref={arrowElementRef}
-                style={styles.arrow}
-                {...attributes.arrow}
-              />
-              {children}
-            </FloatingBoxContent>
-          </StyledFloatingBox>
+            {renderTarget}
+          </StyledTarget>
         )}
-      </Transition>
-    </>
-  )
-}
+        <Transition nodeRef={nodeRef} in={isVisible} timeout={0} unmountOnExit>
+          {(state) => (
+            <StyledFloatingBox
+              $transitionStatus={state}
+              style={styles.popper}
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
+              role={role}
+              data-testid="floating-box"
+              {...attributes.popper}
+              {...floatingBoxRest}
+              ref={mergeRefs([nodeRef, floatingElementRef, ref])}
+            >
+              <FloatingBoxContent
+                contentId={contentId}
+                scheme={scheme}
+                data-testid="floating-box-content"
+              >
+                <StyledArrow
+                  $placement={basePlacement}
+                  ref={arrowElementRef}
+                  style={styles.arrow}
+                  {...attributes.arrow}
+                />
+                {children}
+              </FloatingBoxContent>
+            </StyledFloatingBox>
+          )}
+        </Transition>
+      </>
+    )
+  }
+)
 
 FloatingBox.displayName = 'FloatingBox'
