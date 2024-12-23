@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.27.1](https://github.com/Royal-Navy/design-system/compare/4.27.0...4.27.1) (2024-12-23)
+
+### Bug Fixes
+
+- **FloatingBox:** Move setting of refs ([a093355](https://github.com/Royal-Navy/design-system/commit/a0933553bb673e2d6926c6a336e43db125a82217))
+
 # [4.27.0](https://github.com/Royal-Navy/design-system/compare/4.26.0...4.27.0) (2024-12-06)
 
 ### Features
