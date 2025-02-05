@@ -1,2 +1,2 @@
-export type { Alignment, TextEProps } from './Text'
-export { TextE } from './Text'
+export type { Alignment, TextProps, TextEProps } from './Text'
+export { Text, TextE } from './Text'

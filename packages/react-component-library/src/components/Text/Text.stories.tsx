@@ -2,12 +2,12 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 import { Meta, StoryFn } from '@storybook/react'
-import { textAlignments, TextE } from './Text'
+import { textAlignments, Text } from './Text'
 import { allowedElements } from './textStyles'
 
 export default {
-  component: TextE,
-  title: 'Experimental/Text',
+  component: Text,
+  title: 'Utility/Text',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },
@@ -34,7 +34,7 @@ export default {
       description: 'Show vertical text baseline',
     },
   },
-} as Meta<typeof TextE>
+} as Meta<typeof Text>
 
 const StyledContainerWithBaseline = styled.div<{ $showBaseline: boolean }>`
   ${({ $showBaseline }) =>
@@ -53,8 +53,8 @@ const StyledContainerWithBaseline = styled.div<{ $showBaseline: boolean }>`
 
 export const Default: StoryFn<typeof Text> = (props) => (
   <StyledContainerWithBaseline $showBaseline={props.showBaseline}>
-    <TextE {...props} />
-    <TextE {...props} />
+    <Text {...props} />
+    <Text {...props} />
   </StyledContainerWithBaseline>
 )
 

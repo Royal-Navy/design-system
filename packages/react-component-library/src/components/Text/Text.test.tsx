@@ -2,26 +2,26 @@ import React from 'react'
 import { fontSize } from '@royalnavy/design-tokens'
 import { render } from '@testing-library/react'
 
-import { TextE } from '.'
+import { Text } from '.'
 import { getTextStyles } from './textStyles'
 
 it('renders with default styles', () => {
-  const { container } = render(<TextE>Content</TextE>)
+  const { container } = render(<Text>Content</Text>)
   expect(container).toHaveTextContent('Content')
 })
 
 it('sets the line height', () => {
-  const { container } = render(<TextE>Content</TextE>)
+  const { container } = render(<Text>Content</Text>)
   expect(container.firstChild).toHaveStyleRule('line-height', '24px')
 })
 
 it('sets the arbitrary attribute', () => {
-  const { container } = render(<TextE data-arbitrary="value">Content</TextE>)
+  const { container } = render(<Text data-arbitrary="value">Content</Text>)
   expect(container.firstChild).toHaveAttribute('data-arbitrary', 'value')
 })
 
 it('sets the id attribute', () => {
-  const { container } = render(<TextE id="value">Content</TextE>)
+  const { container } = render(<Text id="value">Content</Text>)
   expect(container.firstChild).toHaveAttribute('id', 'value')
 })
 
@@ -46,7 +46,7 @@ it.each([
   ['span', '24px'],
 ])('sets the line height for %s', (el, expectedLineHeight) => {
   // @ts-ignore
-  const { container } = render(<TextE el={el}>Content</TextE>)
+  const { container } = render(<Text el={el}>Content</Text>)
   expect(container.firstChild).toHaveStyleRule(
     'line-height',
     expectedLineHeight
@@ -59,9 +59,9 @@ it.each([
 ])('sets the line height for small %s', (el, expectedLineHeight) => {
   const { container } = render(
     // @ts-ignore
-    <TextE el={el} variant="small">
+    <Text el={el} variant="small">
       Content
-    </TextE>
+    </Text>
   )
 
   expect(container.firstChild).toHaveStyleRule(
@@ -82,9 +82,9 @@ it.each([
 ])('sets the line height for display %s', (el, expectedLineHeight) => {
   const { container } = render(
     // @ts-ignore
-    <TextE el={el} variant="display">
+    <Text el={el} variant="display">
       Content
-    </TextE>
+    </Text>
   )
 
   expect(container.firstChild).toHaveStyleRule(

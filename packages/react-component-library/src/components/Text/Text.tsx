@@ -13,7 +13,7 @@ export const textAlignments = {
 
 export type Alignment = (typeof textAlignments)[keyof typeof textAlignments]
 
-export interface TextEProps extends ComponentWithClass {
+export interface TextProps extends ComponentWithClass {
   align?: Alignment
   /**
    * The type of element to use for the root node, `'p'` by default.
@@ -41,7 +41,7 @@ export interface TextEProps extends ComponentWithClass {
   wordWrap?: boolean
 }
 
-export const TextE = ({
+export const Text = ({
   children,
   align = 'start',
   el = 'p',
@@ -50,7 +50,7 @@ export const TextE = ({
   variant,
   wordWrap = true,
   ...rest
-}: TextEProps) => {
+}: TextProps) => {
   const { fontSize, lineHeight, defaultColor, element, display } =
     getTextStyles(el, variant)
 
@@ -73,3 +73,13 @@ export const TextE = ({
     </StyledTextComponent>
   )
 }
+
+/**
+ * @deprecated Use Text instead
+ */
+export const TextE = Text
+
+/**
+ * @deprecated Use TextProps instead
+ */
+export type TextEProps = TextProps
