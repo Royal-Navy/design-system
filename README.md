@@ -1,4 +1,4 @@
-# Royal Navy [Design System](https://design-system.navy.digital.mod.uk/)
+# Royal Navy Design System
 
 ![Build & Test Master](https://github.com/Royal-Navy/design-system/actions/workflows/build_and_test.yml/badge.svg)
 [![GitHub release](https://img.shields.io/github/release/royal-navy/design-system.svg)](https://github.com/Royal-Navy/design-system/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/design-system/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) 
