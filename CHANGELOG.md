@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.28.0](https://github.com/Royal-Navy/design-system/compare/4.27.1...4.28.0) (2025-02-07)
+
+### Features
+
+- **Text:** Deprecate TextE in favour of Text ([2177b8f](https://github.com/Royal-Navy/design-system/commit/2177b8f74562ec8029417f04ab20098797b18125))
+
 ## [4.27.1](https://github.com/Royal-Navy/design-system/compare/4.27.0...4.27.1) (2024-12-23)
 
 ### Bug Fixes
