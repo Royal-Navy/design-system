@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.29.0](https://github.com/Royal-Navy/design-system/compare/4.28.0...4.29.0) (2025-02-17)
+
+### Features
+
+- **DatePicker:** Set aria-invalid attribute ([e41d4b3](https://github.com/Royal-Navy/design-system/commit/e41d4b3a2da7e3fb8b8ffa7ad257e872203b2000))
+
 # [4.28.0](https://github.com/Royal-Navy/design-system/compare/4.27.1...4.28.0) (2025-02-07)
 
 ### Features
