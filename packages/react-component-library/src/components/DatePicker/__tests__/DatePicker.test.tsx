@@ -458,6 +458,11 @@ describe('DatePicker', () => {
               expect(
                 wrapper.getByTestId('datepicker-outer-wrapper')
               ).toHaveStyleRule('box-shadow', ERROR_BOX_SHADOW)
+
+              expect(wrapper.getByTestId('datepicker-input')).toHaveAttribute(
+                'aria-invalid',
+                'true'
+              )
             })
 
             it('calls the `onBlur` callback', () => {

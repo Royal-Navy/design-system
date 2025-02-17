@@ -167,6 +167,7 @@ export const Input = memo(
             <StyledInput
               ref={inputRef}
               $hasLabel={Boolean(label)}
+              aria-invalid={effectiveHasError}
               aria-label="Choose date"
               data-testid="datepicker-input"
               id={id}
