@@ -4,6 +4,6 @@ import { spacing } from '@royalnavy/design-tokens'
 import { Pagination } from '../../Pagination'
 
 export const StyledPagination = styled(Pagination)`
-  align-self: flex-end;
+  align-self: flex-start;
   margin: ${spacing('8')} 0 0 ${spacing('8')};
 `
