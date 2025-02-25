@@ -269,7 +269,7 @@ const StyledCell = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
 `
-const columnsWithArbitraryContent: ColumnDef<object>[] = columns.map((item) => {
+const columnsWithArbitraryContent = columns.map((item) => {
   if (item.accessorKey !== 'productName') {
     return {
       ...item,
@@ -685,7 +685,7 @@ export const ManualSorting: StoryFn<typeof DataGrid> = () => {
   return (
     <Wrapper>
       <DataGrid
-        columns={columnsWithSorting}
+        columns={columnsWithSorting as ColumnDef<Order>[]}
         data={sortedData}
         manualSorting
         onSortingChange={(updaterOrValue) => {
