@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
 import { spacing } from '@royalnavy/design-tokens'
 import { fn } from '@storybook/test'
@@ -67,13 +67,13 @@ const data: Order[] = [
   {
     id: 5,
     productName: 'Electronic Frozen Chips',
-    quantity: 79,
+    quantity: 11,
     price: '£837.00',
   },
   {
     id: 6,
     productName: 'Small Bronze Computer',
-    quantity: 86,
+    quantity: 111,
     price: '£694.00',
   },
   {
@@ -147,7 +147,7 @@ const subRowsData = [
     id: 8,
     productName: 'Intelligent Steel Ball',
     quantity: 14,
-    price: '£441.00',
+    price: '£111.00',
   },
   {
     id: 9,
@@ -175,6 +175,7 @@ const columns = [
     accessorKey: 'quantity',
     enableSorting: false,
     enableColumnFilter: false,
+    filterFn: 'equalsString',
   },
   {
     header: 'Price',
