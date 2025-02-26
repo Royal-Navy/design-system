@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.30.0](https://github.com/Royal-Navy/design-system/compare/4.29.0...4.30.0) (2025-02-26)
+
+### Features
+
+- **Select:** Set className on root element ([5822156](https://github.com/Royal-Navy/design-system/commit/58221565642b274aa943e6a19c65ce9b77f2133c))
+
 # [4.29.0](https://github.com/Royal-Navy/design-system/compare/4.28.0...4.29.0) (2025-02-17)
 
 ### Features
