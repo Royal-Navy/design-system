@@ -25,7 +25,12 @@ describe('Select', () => {
       onChangeSpy = jest.fn()
 
       wrapper = render(
-        <Select id="select-id" label="Label" onChange={onChangeSpy}>
+        <Select
+          className="custom-class"
+          id="select-id"
+          label="Label"
+          onChange={onChangeSpy}
+        >
           <SelectOption value="one">One</SelectOption>
           <SelectOption value="two">Two</SelectOption>
           <SelectOption value="three">Three</SelectOption>
@@ -57,6 +62,10 @@ describe('Select', () => {
         'id',
         'select-id'
       )
+    })
+
+    it('sets the custom class name', () => {
+      expect(wrapper.getByTestId('select')).toHaveClass('custom-class')
     })
 
     it('renders the label', () => {
