@@ -1000,12 +1000,19 @@ describe('DataGrid', () => {
         cell: (info) => info.getValue(),
         enableColumnFilter: false,
       },
+      {
+        accessorKey: 'numeric',
+        header: 'Numeric',
+        cell: (info) => info.getValue(),
+        enableColumnFilter: true,
+        filterFn: 'equalsString',
+      }
     ]
 
     const dataWithFiltering = [
-      { first: 'alpha', second: 'bravo', third: 'charlie' },
-      { first: 'delta', second: 'echo', third: 'foxtrot' },
-      { first: 'golf', second: 'hotel', third: 'india' },
+      { first: 'alpha', second: 'bravo', third: 'charlie', numeric: 11 },
+      { first: 'delta', second: 'echo', third: 'foxtrot', numeric: 111 },
+      { first: 'golf', second: 'hotel', third: 'india', numeric: 3 },
     ]
 
     it('renders filter buttons for columns with enableColumnFilter', () => {
@@ -1014,7 +1021,7 @@ describe('DataGrid', () => {
       )
 
       const filterButtons = screen.getAllByRole('button', { name: /filter/i })
-      expect(filterButtons).toHaveLength(2)
+      expect(filterButtons).toHaveLength(3)
     })
 
     it('opens filter input when filter button is clicked', async () => {
@@ -1031,6 +1038,26 @@ describe('DataGrid', () => {
 
       const filterInput = screen.getByPlaceholderText('Filter First')
       expect(filterInput).toBeInTheDocument()
+    })
+
+    it('filters numeric data', async () => {
+      render(
+        <DataGrid data={dataWithFiltering} columns={columnsWithFiltering} />
+      )
+
+      const filterButton = screen.getByRole('button', { name: 'Filter Numeric' })
+      userEvent.click(filterButton)
+
+      await hackyWaitFor()
+
+      const filterInput = screen.getByPlaceholderText('Filter Numeric')
+      userEvent.type(filterInput, '11')
+
+      await hackyWaitFor()
+
+      const rows = screen.getAllByRole('row')
+      expect(rows).toHaveLength(2)// Header row + 1 data row
+
     })
 
     it('filters data when input is provided', async () => {
