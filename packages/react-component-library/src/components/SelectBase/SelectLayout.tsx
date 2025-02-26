@@ -52,6 +52,7 @@ const isEllipsisActive = (el: HTMLInputElement | null): boolean => {
 
 export const SelectLayout = ({
   children,
+  className,
   hasLabelFocus = false,
   hasSelectedItem,
   id,
@@ -77,7 +78,11 @@ export const SelectLayout = ({
 
   return (
     <>
-      <StyledSelect data-testid="select" aria-labelledby={labelId}>
+      <StyledSelect
+        className={className}
+        data-testid="select"
+        aria-labelledby={labelId}
+      >
         <StyledTextInput data-testid="text-input-container">
           <StyledOuterWrapper
             $hasFocus={isOpen}
