@@ -5,5 +5,5 @@ import { Pagination } from '../../Pagination'
 
 export const StyledPagination = styled(Pagination)`
   align-self: flex-start;
-  margin: ${spacing('8')} 0 0 ${spacing('8')};
+  margin-top: ${spacing('8')};
 `
