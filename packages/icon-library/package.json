@@ -37,7 +37,7 @@
     "*.@(js|jsx|ts|tsx)": "prettier --write"
   },
   "dependencies": {
-    "@babel/runtime": "^7.25.6",
+    "@babel/runtime": "^7.26.10",
     "@inline-svg-unique-id/react": "^1.2.2"
   },
   "devDependencies": {
