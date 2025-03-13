@@ -1,6 +1,6 @@
 {
   "name": "@royalnavy/design-tokens",
-  "version": "4.30.3",
+  "version": "4.30.4",
   "main": "dist/cjs/index.js",
   "author": "Royal Navy",
   "license": "Apache-2.0",
@@ -39,7 +39,7 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
-    "@royalnavy/eslint-config-react": "^4.30.3",
+    "@royalnavy/eslint-config-react": "^4.30.4",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
     "@types/jest": "^29.5.13",
