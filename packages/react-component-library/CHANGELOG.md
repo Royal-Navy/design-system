@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.31.0](https://github.com/Royal-Navy/design-system/compare/4.30.4...4.31.0) (2025-03-25)
+
+### Features
+
+- **ClassificationBanner:** Update secret messaging ([2f6ebe3](https://github.com/Royal-Navy/design-system/commit/2f6ebe31cffb2addcbf742587dbaa9aafcab22e6))
+
 ## [4.30.4](https://github.com/Royal-Navy/design-system/compare/4.30.3...4.30.4) (2025-03-13)
 
 **Note:** Version bump only for package @royalnavy/react-component-library
