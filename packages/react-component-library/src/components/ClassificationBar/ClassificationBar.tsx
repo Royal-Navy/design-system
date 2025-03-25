@@ -19,8 +19,12 @@ export interface ClassificationProps extends ComponentWithClass {
 }
 
 function getClassificationText({ isSecret, isCondensed }: ClassificationProps) {
+  if (isCondensed && isSecret) {
+    return 'SUKEO'
+  }
+
   if (isSecret) {
-    return 'Secret'
+    return 'SECRET UK EYES ONLY'
   }
 
   if (isCondensed) {
