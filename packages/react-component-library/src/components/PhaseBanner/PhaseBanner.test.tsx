@@ -16,7 +16,7 @@ describe('PhaseBanner', () => {
 
     it('should use default feedback link', () => {
       expect(
-        wrapper.getByRole('link', { name: 'Your feedback' })
+        wrapper.getByRole('link', { name: 'your feedback' })
       ).toHaveAttribute('href', '/feedback')
     })
 

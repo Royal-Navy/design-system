@@ -40,8 +40,8 @@ export const PhaseBanner = ({
       <StyledText data-testid="phase-banner-content">
         {children || (
           <>
-            This is a new service, <a href={link}>Your feedback</a> will help to
-            improve it
+            This is a new service, <a href={link}>your feedback</a> will help to
+            improve it.
           </>
         )}
       </StyledText>
