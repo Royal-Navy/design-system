@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.31.1](https://github.com/Royal-Navy/design-system/compare/4.31.0...4.31.1) (2025-03-26)
+
+### Bug Fixes
+
+- **PhaseBanner:** Adjust spacing and default text ([d83b8c5](https://github.com/Royal-Navy/design-system/commit/d83b8c5cc6c9e72b3b9612816f4aa75efebc4200))
+
 # [4.31.0](https://github.com/Royal-Navy/design-system/compare/4.30.4...4.31.0) (2025-03-25)
 
 ### Features
