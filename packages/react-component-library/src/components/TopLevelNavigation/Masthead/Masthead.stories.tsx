@@ -183,11 +183,12 @@ WithNavigation.args = {
 }
 
 export const WithInlineNav = WithNavigation.bind({})
-WithInlineNav.storyName = 'Inline navigation'
+WithInlineNav.storyName = 'Inline navigation with version'
 WithInlineNav.args = {
   ...WithNavigation.args,
   hasInlineNav: true,
   user: userWithAvatar,
+  version: '1.0.0',
 }
 
 export const CustomLogo: StoryFn<typeof Masthead> = (props) => (

@@ -23,6 +23,7 @@ import { StyledIconSearch } from './partials/StyledIconSearch'
 import { ValueOf } from '../../../helpers'
 import { StyledInlineNav } from './partials/StyledInlineNav'
 import { ClassificationProps } from '../../ClassificationBar'
+import { StyledVersion } from './partials/StyledVersion'
 
 export interface MastheadProps {
   /**
@@ -69,6 +70,10 @@ export interface MastheadProps {
    */
   user?: React.ReactElement<MastheadUserProps>
   /**
+   * Optional text to render the version number.
+   */
+  version?: string
+  /**
    * Whether to display the nav below (default) or within the masthead
    */
   hasInlineNav?: boolean
@@ -82,11 +87,17 @@ export interface MastheadProps {
   rightSlot?: React.ReactNode
 }
 
-function getServiceName(
-  Logo: React.ComponentType | null,
-  title: string,
+function getServiceName({
+  Logo,
+  title,
+  homeLink,
+  version,
+}: {
+  Logo: React.ComponentType | null
+  title: string
   homeLink?: React.ReactElement<LinkProps>
-) {
+  version?: string
+}) {
   const link = homeLink || <span />
   return React.cloneElement(link as React.ReactElement, {
     ...link.props,
@@ -99,6 +110,7 @@ function getServiceName(
         <StyledTitle $hasLogo={!!Logo} data-testid="masthead-servicename">
           {title}
         </StyledTitle>
+        {version && <StyledVersion>{version}</StyledVersion>}
       </StyledServiceName>
     ),
   })
@@ -118,6 +130,7 @@ export const Masthead = ({
   user,
   classificationBar,
   rightSlot,
+  version,
   ...rest
 }: MastheadProps) => {
   const searchButtonRef = useRef<HTMLButtonElement>(null)
@@ -148,7 +161,7 @@ export const Masthead = ({
           role="banner"
           $withInlineNav={hasInlineNav}
         >
-          {getServiceName(DisplayLogo, title, homeLink)}
+          {getServiceName({ Logo: DisplayLogo, title, homeLink, version })}
         </StyledBanner>
         {hasInlineNav ? (
           <StyledInlineNav data-testid="masthead-inline-nav">
