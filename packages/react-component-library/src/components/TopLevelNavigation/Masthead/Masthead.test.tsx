@@ -71,6 +71,7 @@ const props = {
       link={<Link href="/user-profile" />}
     />
   ),
+  version: '1.0.0',
 }
 
 describe('Masthead', () => {
@@ -251,6 +252,10 @@ describe('Masthead', () => {
         'role',
         'presentation'
       )
+    })
+
+    it('should render the version', () => {
+      expect(wrapper.getByText('1.0.0')).toBeInTheDocument()
     })
 
     it('should render the avatar', () => {
