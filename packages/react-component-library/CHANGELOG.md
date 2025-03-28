@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.32.0](https://github.com/Royal-Navy/design-system/compare/4.31.1...4.32.0) (2025-03-28)
+
+### Features
+
+- **Masthead:** Show version in badge ([5b241cc](https://github.com/Royal-Navy/design-system/commit/5b241cc9a44ac7b32175958a42086a30d0c79b2d))
+
 ## [4.31.1](https://github.com/Royal-Navy/design-system/compare/4.31.0...4.31.1) (2025-03-26)
 
 ### Bug Fixes
