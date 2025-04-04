@@ -185,6 +185,17 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     [table, onPageChange]
   )
 
+  // Reset pagination to first page when data changes
+  useEffect(() => {
+    if (!manualPagination) {
+      setPagination((prev) => ({
+        ...prev,
+        pageIndex: 0,
+        pageSize: pageSize ?? data.length,
+      }))
+    }
+  }, [data.length, manualPagination, pageSize, setPagination])
+
   const isPaginated = manualPagination || !!pageSize
 
   const totalColumns = useMemo(() => {
