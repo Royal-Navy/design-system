@@ -106,6 +106,7 @@ export const Body = <T extends object>({
   hasHover,
   totalColumns,
 }: BodyProps<T>) => {
+  console.log(table.getRowModel().rows.length)
   return (
     <StyledBody>
       {table.getRowModel().rows.map((row) => (

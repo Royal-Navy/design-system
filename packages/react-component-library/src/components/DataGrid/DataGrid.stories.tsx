@@ -4,13 +4,18 @@ import { spacing } from '@royalnavy/design-tokens'
 import { fn } from '@storybook/test'
 import { Meta, StoryFn } from '@storybook/react'
 import type { ColumnDef, SortingState } from '@tanstack/react-table'
+import { v4 as uuidv4 } from 'uuid'
+import { faker } from '@faker-js/faker'
 
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DataGrid, TABLE_COLUMN_ALIGNMENT } from '.'
 import { Badge } from '../Badge'
+import { Button } from '../Button'
+
+import { Group } from '../Group'
 
 type Order = {
-  id: number
+  id: string
   productName: string
   quantity: number
   price: string
@@ -25,80 +30,48 @@ const disableEmptyTableHeaderRule = {
   },
 }
 
-// const generateRandomData = (length: number): Order[] => {
-//   const data: Order[] = Array.from({ length }, (_, i) => {
-//     return {
-//       id: i + 1,
-//       productName: faker.commerce.productName(),
-//       quantity: faker.number.int({ min: 1, max: 100 }),
-//       price: `£${faker.commerce.price()}`,
-//     }
-//   })
-
-//   return data
-// }
+const generateRandomData = (length: number): Order[] => {
+  return Array.from({ length }, (_, i) => {
+    return {
+      id: uuidv4(),
+      productName: faker.commerce.productName(),
+      quantity: faker.number.int({ min: 1, max: 100 }),
+      price: `£${faker.commerce.price()}`,
+    }
+  })
+}
 
 // Static copy from Faker (play nice with Chromatic snapshots)
 const data: Order[] = [
   {
-    id: 1,
+    id: '1',
     productName: 'Unbranded Steel Sausages',
     quantity: 59,
     price: '£782.00',
   },
   {
-    id: 2,
+    id: '2',
     productName: 'Modern Plastic Sausages',
     quantity: 38,
     price: '£175.00',
   },
   {
-    id: 3,
+    id: '3',
     productName: 'Oriental Bronze Tuna',
     quantity: 34,
     price: '£72.00',
   },
   {
-    id: 4,
+    id: '4',
     productName: 'Rustic Steel Bike',
     quantity: 59,
     price: '£693.00',
   },
   {
-    id: 5,
+    id: '5',
     productName: 'Electronic Frozen Chips',
     quantity: 11,
     price: '£837.00',
-  },
-  {
-    id: 6,
-    productName: 'Small Bronze Computer',
-    quantity: 111,
-    price: '£694.00',
-  },
-  {
-    id: 7,
-    productName: 'Licensed Steel Hat',
-    quantity: 84,
-    price: '£415.00',
-  },
-  {
-    id: 8,
-    productName: 'Intelligent Steel Ball',
-    quantity: 14,
-    price: '£441.00',
-  },
-  {
-    id: 9,
-    productName: 'Licensed Concrete Bacon',
-    quantity: 68,
-    price: '£337.00',
-  },
-  {
-    id: 10,
-    productName: 'Practical Wooden Ball',
-    quantity: 10,
-    price: '£673.00',
   },
 ]
 
@@ -206,9 +179,29 @@ export default {
 } as Meta<typeof DataGrid>
 
 export const Default: StoryFn<typeof DataGrid> = (props) => {
+  const [rowData, setRowData] = useState(props.data)
+
+  const addRandomData = () => {
+    const newRows = generateRandomData(1)
+    setRowData((rows) => [...rows, ...newRows])
+  }
+
   return (
     <Wrapper>
-      <DataGrid {...props} />
+      <Group justify="end">
+        <Button size="small" onClick={addRandomData}>
+          Add row
+        </Button>
+      </Group>
+      <Group gap="2" align="start">
+        <DataGrid {...props} data={rowData} isFullWidth={false} debugTable />
+        <ul>
+          <legend>Row count: {rowData.length}</legend>
+          {rowData.map((row) => (
+            <li key={`${row.id}-l`}>{row.productName}</li>
+          ))}
+        </ul>
+      </Group>
     </Wrapper>
   )
 }
