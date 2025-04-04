@@ -203,6 +203,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     }
 
     const fullSpanColumnCount = columns.filter(
+      // @ts-ignore
       (column) => column.meta?.fullSpanColumn
     ).length
     baseColumnCount -= fullSpanColumnCount
@@ -212,6 +213,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
 
   return (
     <StyledDataGrid className={className}>
+      <div>Row count: {data.length}</div>
       <Table
         table={table}
         caption={caption}
