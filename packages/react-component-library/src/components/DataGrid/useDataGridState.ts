@@ -38,5 +38,8 @@ export const useDataGridState = (
     setPagination,
     columnFilters,
     setColumnFilters,
+    // Used for fetch
+    limit: pagination.pageSize,
+    skip : pagination.pageIndex * pagination.pageSize,
   }
 }

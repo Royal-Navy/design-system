@@ -1,28 +1,28 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="./DataGrid.d.ts" />
 
-import React, { useEffect, useMemo, useCallback } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import {
-  type TableOptions,
   type ColumnDef,
-  type ExpandedState,
-  type RowSelectionState,
   type ColumnFiltersState,
-  type SortingState,
-  useReactTable,
+  type ExpandedState,
   getCoreRowModel,
   getExpandedRowModel,
   getFilteredRowModel,
-  getSortedRowModel,
   getPaginationRowModel,
+  getSortedRowModel, PaginationState,
+  type RowSelectionState,
+  type SortingState,
+  type TableOptions,
+  useReactTable,
 } from '@tanstack/react-table'
 
-import { type PaginationProps, type OnChangeEventType } from '../Pagination'
+import { type OnChangeEventType, type PaginationProps } from '../Pagination'
 import { type ComponentWithClass } from '../../common/ComponentWithClass'
 import { useDataGridState } from './useDataGridState'
 import { getColumns } from './getColumns'
 import { Table } from './Table'
-import { Pagination } from './Pagination'
+import { Pagination, usePagination } from './Pagination'
 import { StyledDataGrid } from './partials'
 
 export interface DataGridBaseProps<T extends object>
@@ -56,9 +56,8 @@ export interface DataGridBaseProps<T extends object>
   onColumnFiltersChange?: (columnFilters: ColumnFiltersState) => void
   pageCount?: number
   onPageChange?: (
-    event: OnChangeEventType,
     currentPage: number,
-    totalPages: number
+    pageSize: number
   ) => void
   manualSorting?: boolean
   sortingState?: SortingState
@@ -125,6 +124,17 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     return data.some((row) => row?.subRows?.length > 0)
   }, [data])
 
+  const handlePageChange = useCallback((updater: PaginationState | ((old: PaginationState) => PaginationState)) => {
+    setPagination((prev) => {
+      const newState = typeof updater === 'function' ? updater(prev) : updater
+
+      onPageChange?.(newState.pageIndex, pageSize!)
+
+      return newState
+    })
+
+  }, [setPagination, onPageChange, pageSize])
+
   const table = useReactTable({
     data,
     columns: getColumns(
@@ -144,7 +154,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     onRowSelectionChange: setRowSelection,
     onSortingChange: manualSorting ? onSortingChange : setSorting,
     onExpandedChange: setExpanded,
-    onPaginationChange: setPagination,
+    onPaginationChange: handlePageChange,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: manualSorting ? undefined : getSortedRowModel(),
@@ -174,16 +184,6 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
   useEffect(() => {
     onColumnFiltersChange?.(columnFilters)
   }, [columnFilters, onColumnFiltersChange])
-
-  const handlePagination = useCallback(
-    (...args) => {
-      const [_, currentPage] = args
-      table.setPageIndex(currentPage - 1)
-      // @ts-ignore
-      onPageChange?.(...args)
-    },
-    [table, onPageChange]
-  )
 
   const isPaginated = manualPagination || !!pageSize
 
@@ -222,15 +222,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
         hasSubRows={hasSubRows}
         totalColumns={totalColumns}
       />
-      {isPaginated && (
-        <Pagination
-          pagination={pagination}
-          pageSize={pageSize!}
-          dataLength={data.length}
-          pageCount={pageCount!}
-          onChange={handlePagination}
-        />
-      )}
+      {isPaginated && <Pagination table={table} />}
     </StyledDataGrid>
   )
 }

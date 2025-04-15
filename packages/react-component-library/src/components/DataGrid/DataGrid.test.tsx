@@ -776,11 +776,13 @@ describe('DataGrid', () => {
         first: 'a1',
         second: 'a2',
         third: 'a3',
+        fullSpan: 'Full Span Content',
       },
       {
         first: 'b1',
         second: 'b2',
         third: 'b3',
+        fullSpan: 'Full Span Content 2',
       },
     ]
 
@@ -1311,15 +1313,18 @@ describe('DataGrid', () => {
       expect(
         within(firstColumnHeader).getByTestId('ascending')
       ).toBeInTheDocument()
+
       expect(mockOnSortingChange).toHaveBeenCalledWith([
         { id: 'first', desc: false },
       ])
 
       userEvent.click(sortButton)
       await hackyWaitFor()
+
       expect(
         within(firstColumnHeader).getByTestId('descending')
       ).toBeInTheDocument()
+
       expect(mockOnSortingChange).toHaveBeenCalledWith([
         { id: 'first', desc: true },
       ])
@@ -1372,24 +1377,30 @@ describe('DataGrid', () => {
 
       userEvent.click(within(firstColumnHeader).getByRole('button'))
       await hackyWaitFor()
+
       expect(
         within(firstColumnHeader).getByTestId('ascending')
       ).toBeInTheDocument()
+
       expect(
         within(thirdColumnHeader).getByTestId('unsorted')
       ).toBeInTheDocument()
+
       expect(mockOnSortingChange).toHaveBeenLastCalledWith([
         { id: 'first', desc: false },
       ])
 
       userEvent.click(within(thirdColumnHeader).getByRole('button'))
       await hackyWaitFor()
+
       expect(
         within(firstColumnHeader).getByTestId('unsorted')
       ).toBeInTheDocument()
+
       expect(
         within(thirdColumnHeader).getByTestId('ascending')
       ).toBeInTheDocument()
+
       expect(mockOnSortingChange).toHaveBeenLastCalledWith([
         { id: 'third', desc: false },
       ])
