@@ -74,19 +74,19 @@ function useFetchData({
 }) {
   const [data, setData] = useState<Order[]>([])
   const [count, setCount] = useState<number>(0)
-  const [loading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState(false)
 
   useEffect(() => {
     setLoading(true)
     setTimeout(() => {
       const sortedData = [...rowData]
-      
+
       if (sorting.length > 0) {
         sortedData.sort((a, b) => {
           const sort = sorting[0] as ColumnSort
           const aValue = a[sort.id as keyof Order] ?? ''
           const bValue = b[sort.id as keyof Order] ?? ''
-          
+
           if (sort.desc) {
             return aValue > bValue ? -1 : 1
           }
@@ -100,14 +100,13 @@ function useFetchData({
     }, 1000)
   }, [limit, skip, sorting])
 
-  return { data, count, loading }
+  return { data, count, isLoading }
 }
 
 export const Default: StoryFn<typeof DataGrid> = (props) => {
   const [skip, setSkip] = useState<number>(0)
   const [sorting, setSorting] = useState<SortingState>([])
-
-  const { data, count } = useFetchData({ pagination: { skip }, sorting })
+  const { data, count, isLoading } = useFetchData({ pagination: { skip }, sorting })
 
   const handleSortingChange = useCallback((newSorting: SortingState) => {
     console.log('newSorting', newSorting)
@@ -122,24 +121,27 @@ export const Default: StoryFn<typeof DataGrid> = (props) => {
   )
 
   return (
-    <DataGrid
-      debugTable
-      manualPagination
-      manualSorting
-      rowCount={count}
-      sorting={sorting}
-      onPageChange={handlePageChange}
-      onSortingChange={(updaterOrValue) => {
-        const newSorting =
-          typeof updaterOrValue === 'function'
-            ? updaterOrValue(sorting)
-            : updaterOrValue
+    <>
+      {isLoading && <div>Loading</div>}
+      <DataGrid
+        debugTable
+        manualPagination
+        manualSorting
+        rowCount={count}
+        sorting={sorting}
+        onPageChange={handlePageChange}
+        onSortingChange={(updaterOrValue) => {
+          const newSorting =
+            typeof updaterOrValue === 'function'
+              ? updaterOrValue(sorting)
+              : updaterOrValue
 
-        handleSortingChange(newSorting)
-      }}
-      {...props}
-      data={data}
-    />
+          handleSortingChange(newSorting)
+        }}
+        {...props}
+        data={data}
+      />
+    </>
   )
 }
 
