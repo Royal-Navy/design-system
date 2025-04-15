@@ -3,7 +3,11 @@ import styled from 'styled-components'
 import { spacing } from '@royalnavy/design-tokens'
 import { fn } from '@storybook/test'
 import { Meta, StoryFn } from '@storybook/react'
-import type { ColumnDef, SortingState } from '@tanstack/react-table'
+import type {
+  ColumnDef,
+  SortingState,
+  PaginationState,
+} from '@tanstack/react-table'
 
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DataGrid, TABLE_COLUMN_ALIGNMENT } from '.'
@@ -708,6 +712,62 @@ ManualSorting.parameters = {
   docs: {
     description: {
       story: `Manual sorting allows you to handle the sorting logic externally, typically on the server side (simulated with a 500ms delay).`,
+    },
+  },
+}
+
+export const ManualPagination: StoryFn<typeof DataGrid> = () => {
+  const [paginatedData, setPaginatedData] = useState(data.slice(0, 3))
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 3,
+  })
+
+  const totalCount = data.length
+  const totalPages = Math.ceil(totalCount / 3)
+
+  const handlePaginationChange = useCallback(
+    (newPagination: PaginationState) => {
+      setPagination(newPagination)
+
+      setTimeout(() => {
+        const startIndex = newPagination.pageIndex * newPagination.pageSize
+        const endIndex = startIndex + newPagination.pageSize
+        const newPageData = data.slice(startIndex, endIndex)
+        setPaginatedData(newPageData)
+      }, 500)
+    },
+    []
+  )
+
+  return (
+    <Wrapper>
+      <DataGrid
+        columns={columns as ColumnDef<Order>[]}
+        data={paginatedData}
+        manualPagination
+        pageSize={3}
+        pageCount={totalPages}
+        onPaginationChange={(updaterOrValue) => {
+          const newPagination =
+            typeof updaterOrValue === 'function'
+              ? updaterOrValue(pagination)
+              : updaterOrValue
+
+          handlePaginationChange(newPagination)
+        }}
+        pagination={pagination}
+        isFullWidth
+      />
+    </Wrapper>
+  )
+}
+
+ManualPagination.storyName = 'Manual pagination'
+ManualPagination.parameters = {
+  docs: {
+    description: {
+      story: `Manual pagination allows you to handle the pagination logic externally, typically on the server side (simulated with a 500ms delay).`,
     },
   },
 }

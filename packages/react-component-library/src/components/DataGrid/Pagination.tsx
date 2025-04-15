@@ -7,7 +7,7 @@ import { StyledPagination } from './partials'
 interface PaginationProps
   extends Pick<BasePaginationProps, 'onChange' | 'pageSize'> {
   pagination: PaginationState
-  dataLength: number
+  dataLength?: number
   pageCount: number
 }
 
@@ -23,7 +23,7 @@ export const Pagination = ({
       name="datagrid-pagination"
       initialPage={pagination.pageIndex + 1}
       pageSize={pagination.pageSize}
-      total={dataLength || pageCount! * pageSize!}
+      total={dataLength ?? pageCount * pageSize}
       onChange={onChange}
     />
   )

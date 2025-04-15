@@ -5,7 +5,11 @@ import {
   within,
   waitForElementToBeRemoved,
 } from '@testing-library/react'
-import type { ColumnDef, SortingState } from '@tanstack/react-table'
+import type {
+  ColumnDef,
+  SortingState,
+  PaginationState,
+} from '@tanstack/react-table'
 import { userEvent, PointerEventsCheckLevel } from '@testing-library/user-event'
 import { color } from '@royalnavy/design-tokens'
 
@@ -1006,7 +1010,7 @@ describe('DataGrid', () => {
         cell: (info) => info.getValue(),
         enableColumnFilter: true,
         filterFn: 'equalsString',
-      }
+      },
     ]
 
     const dataWithFiltering = [
@@ -1045,7 +1049,9 @@ describe('DataGrid', () => {
         <DataGrid data={dataWithFiltering} columns={columnsWithFiltering} />
       )
 
-      const filterButton = screen.getByRole('button', { name: 'Filter Numeric' })
+      const filterButton = screen.getByRole('button', {
+        name: 'Filter Numeric',
+      })
       userEvent.click(filterButton)
 
       await hackyWaitFor()
@@ -1056,8 +1062,7 @@ describe('DataGrid', () => {
       await hackyWaitFor()
 
       const rows = screen.getAllByRole('row')
-      expect(rows).toHaveLength(2)// Header row + 1 data row
-
+      expect(rows).toHaveLength(2) // Header row + 1 data row
     })
 
     it('filters data when input is provided', async () => {
@@ -1393,6 +1398,99 @@ describe('DataGrid', () => {
       expect(mockOnSortingChange).toHaveBeenLastCalledWith([
         { id: 'third', desc: false },
       ])
+    })
+  })
+
+  describe('with manual pagination', () => {
+    it('handles pagination correctly with external state and changes displayed data', async () => {
+      const pageSize = 3
+      const pageCount = 3
+
+      const paginatedTestData = [
+        { first: 'page1-item1', second: 'a2', third: 'a3' },
+        { first: 'page1-item2', second: 'b2', third: 'b3' },
+        { first: 'page1-item3', second: 'c2', third: 'c3' },
+        { first: 'page2-item1', second: 'd2', third: 'd3' },
+        { first: 'page2-item2', second: 'e2', third: 'e3' },
+        { first: 'page2-item3', second: 'f2', third: 'f3' },
+        { first: 'page3-item1', second: 'g2', third: 'g3' },
+        { first: 'page3-item2', second: 'h2', third: 'h3' },
+        { first: 'page3-item3', second: 'i2', third: 'i3' },
+      ]
+
+      function TestComponent() {
+        const [pageData, setPageData] = useState(
+          paginatedTestData.slice(0, pageSize)
+        )
+        const [pagination, setPagination] = useState<PaginationState>({
+          pageIndex: 0,
+          pageSize,
+        })
+
+        const handlePaginationChange = (
+          updaterOrValue:
+            | PaginationState
+            | ((prev: PaginationState) => PaginationState)
+        ) => {
+          const newPagination =
+            typeof updaterOrValue === 'function'
+              ? updaterOrValue(pagination)
+              : updaterOrValue
+
+          setPagination(newPagination)
+
+          const startIndex = newPagination.pageIndex * pageSize
+          const endIndex = startIndex + pageSize
+          setPageData(paginatedTestData.slice(startIndex, endIndex))
+        }
+
+        return (
+          <DataGrid
+            data={pageData}
+            columns={columns}
+            manualPagination
+            pageSize={pageSize}
+            pageCount={pageCount}
+            onPaginationChange={handlePaginationChange}
+            pagination={pagination}
+          />
+        )
+      }
+
+      render(<TestComponent />)
+
+      // Check initial render shows first page data
+      expect(screen.getByText('page1-item1')).toBeInTheDocument()
+      expect(screen.getByText('page1-item2')).toBeInTheDocument()
+      expect(screen.getByText('page1-item3')).toBeInTheDocument()
+      expect(screen.queryByText('page2-item1')).not.toBeInTheDocument()
+
+      // Test clicking the next page button
+      const nextPageButton = screen.getByRole('button', { name: 'Next page' })
+      userEvent.click(nextPageButton)
+      await hackyWaitFor()
+
+      // Check that second page data is now displayed
+      expect(screen.getByText('page2-item1')).toBeInTheDocument()
+      expect(screen.getByText('page2-item2')).toBeInTheDocument()
+      expect(screen.getByText('page2-item3')).toBeInTheDocument()
+
+      // First page data should no longer be visible
+      expect(screen.queryByText('page1-item1')).not.toBeInTheDocument()
+      expect(screen.queryByText('page1-item3')).not.toBeInTheDocument()
+
+      // Go to third page
+      userEvent.click(nextPageButton)
+      await hackyWaitFor()
+
+      // Check that third page data is now displayed
+      expect(screen.getByText('page3-item1')).toBeInTheDocument()
+      expect(screen.getByText('page3-item2')).toBeInTheDocument()
+      expect(screen.getByText('page3-item3')).toBeInTheDocument()
+
+      // Second page data should no longer be visible
+      expect(screen.queryByText('page2-item1')).not.toBeInTheDocument()
+      expect(screen.queryByText('page2-item3')).not.toBeInTheDocument()
     })
   })
 })
